@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Wed, 10 Dec 2025 18:33:06 GMT
+**Last Update:** Thu, 11 Dec 2025 01:49:27 GMT
 
 ---
 
@@ -72,70 +72,72 @@ The post Bridging the Silence: How LEO Satellites and Edge AI Will Democratize C
 
 ## 🔒 Cybersecurity
 
-### 1. [Over 10,000 Docker Hub images found leaking credentials, auth keys](https://www.bleepingcomputer.com/news/security/over-10-000-docker-hub-images-found-leaking-credentials-auth-keys/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Google ads for shared ChatGPT, Grok guides push macOS infostealer malware](https://www.bleepingcomputer.com/news/security/google-ads-for-shared-chatgpt-grok-guides-push-macos-infostealer-malware/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new AMOS infostealer campaign is abusing Google search ads to lure users into Grok and ChatGPT conversations that appear to offer "helpful" instructions but ultimately lead to installing the AMOS info-stealing malware on macOS. [...]
+
+### 2. [New DroidLock malware locks Android devices and demands a ransom](https://www.bleepingcomputer.com/news/security/new-droidlock-malware-locks-android-devices-and-demands-a-ransom/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new Android malware called DroidLock has emerged with capabilities to lock screens for ransom payments, erase data, access text messages, call logs, contacts, and audio data. [...]
+
+### 3. [React2Shell Exploitation Delivers Crypto Miners and New Malware Across Multiple Sectors](https://thehackernews.com/2025/12/react2shell-exploitation-delivers.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+React2Shell continues to witness heavy exploitation, with threat actors leveraging the maximum-severity security flaw in React Server Components (RSC) to deliver cryptocurrency miners and an array of previously undocumented malware families, according to new findings from Huntress.
+This includes a L
+
+### 4. [Microsoft Teams to warn of suspicious traffic with external domains](https://www.bleepingcomputer.com/news/security/microsoft-teams-to-warn-of-suspicious-traffic-with-external-domains/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Microsoft is working on a new Teams security feature that will analyze suspicious traffic with external domains to help IT administrators tackle potential security threats. [...]
+
+### 5. [.NET SOAPwn Flaw Opens Door for File Writes and Remote Code Execution via Rogue WSDL](https://thehackernews.com/2025/12/net-soapwn-flaw-opens-door-for-file.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+New research has uncovered exploitation primitives in the .NET Framework that could be leveraged against enterprise-grade applications to achieve remote code execution.
+WatchTowr Labs, which has codenamed the "invalid cast vulnerability" SOAPwn, said the issue impacts Barracuda Service Center RMM, I
+
+### 6. [Over 10,000 Docker Hub images found leaking credentials, auth keys](https://www.bleepingcomputer.com/news/security/over-10-000-docker-hub-images-found-leaking-credentials-auth-keys/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 More than 10,000 Docker Hub container images expose data that should be protected, including live credentials to production systems, CI/CD databases, or LLM model keys. [...]
 
-### 2. [Why a secure software development life cycle is critical for manufacturers](https://www.bleepingcomputer.com/news/security/why-a-secure-software-development-life-cycle-is-critical-for-manufacturers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [Why a secure software development life cycle is critical for manufacturers](https://www.bleepingcomputer.com/news/security/why-a-secure-software-development-life-cycle-is-critical-for-manufacturers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Recent supply-chain breaches show how attackers exploit development tools, compromised credentials, and malicious NPM packages to infiltrate manufacturing and production environments. Acronis explains why secure software development life cycle (SSDLC) practices are now critical for evaluating partne
 
-### 3. [New Spiderman phishing service targets dozens of European banks](https://www.bleepingcomputer.com/news/security/new-spiderman-phishing-service-targets-dozens-of-european-banks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [New Spiderman phishing service targets dozens of European banks](https://www.bleepingcomputer.com/news/security/new-spiderman-phishing-service-targets-dozens-of-european-banks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new phishing kit called Spiderman is being used to target customers of dozens of European banks and cryptocurrency holders with pixel-perfect cloned sites impersonating brands and organizations. [...]
 
-### 4. [Three PCIe Encryption Weaknesses Expose PCIe 5.0+ Systems to Faulty Data Handling](https://thehackernews.com/2025/12/three-pcie-encryption-weaknesses-expose.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [Three PCIe Encryption Weaknesses Expose PCIe 5.0+ Systems to Faulty Data Handling](https://thehackernews.com/2025/12/three-pcie-encryption-weaknesses-expose.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Three security vulnerabilities have been disclosed in the Peripheral Component Interconnect Express (PCIe) Integrity and Data Encryption (IDE) protocol specification that could expose a local attacker to serious risks.
 The flaws impact PCIe Base Specification Revision 5.0 and onwards in the protocol
 
-### 5. [Ukrainian hacker charged with helping Russian hacktivist groups](https://www.bleepingcomputer.com/news/security/ukrainian-hacker-charged-with-helping-russian-hacktivist-groups/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Ukrainian hacker charged with helping Russian hacktivist groups](https://www.bleepingcomputer.com/news/security/ukrainian-hacker-charged-with-helping-russian-hacktivist-groups/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 U.S. prosecutors have charged a Ukrainian national for her role in cyberattacks targeting critical infrastructure worldwide, including U.S. water systems, election systems, and nuclear facilities, on behalf of Russian state-backed hacktivist groups. [...]
 
-### 6. [Webinar: How Attackers Exploit Cloud Misconfigurations Across AWS, AI Models, and Kubernetes](https://thehackernews.com/2025/12/webinar-how-attackers-exploit-cloud.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [Webinar: How Attackers Exploit Cloud Misconfigurations Across AWS, AI Models, and Kubernetes](https://thehackernews.com/2025/12/webinar-how-attackers-exploit-cloud.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cloud security is changing. Attackers are no longer just breaking down the door; they are finding unlocked windows in your configurations, your identities, and your code.
 Standard security tools often miss these threats because they look like normal activity. To stop them, you need to see exactly ho
 
-### 7. [Warning: WinRAR Vulnerability CVE-2025-6218 Under Active Attack by Multiple Threat Groups](https://thehackernews.com/2025/12/warning-winrar-vulnerability-cve-2025.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [Warning: WinRAR Vulnerability CVE-2025-6218 Under Active Attack by Multiple Threat Groups](https://thehackernews.com/2025/12/warning-winrar-vulnerability-cve-2025.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a security flaw impacting the WinRAR file archiver and compression utility to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
 The vulnerability, tracked as CVE-2025-6218 (CVSS
 
-### 8. [Microsoft Issues Security Fixes for 56 Flaws, Including Active Exploit and Two Zero-Days](https://thehackernews.com/2025/12/microsoft-issues-security-fixes-for-56.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [Microsoft Issues Security Fixes for 56 Flaws, Including Active Exploit and Two Zero-Days](https://thehackernews.com/2025/12/microsoft-issues-security-fixes-for-56.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft closed out 2025 with patches for 56 security flaws in various products across the Windows platform, including one vulnerability that has been actively exploited in the wild.
 Of the 56 flaws, three are rated Critical, and 53 are rated Important in severity. Two other defects are listed as p
 
-### 9. [Fortinet, Ivanti, and SAP Issue Urgent Patches for Authentication and Code Execution Flaws](https://thehackernews.com/2025/12/fortinet-ivanti-and-sap-issue-urgent.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [Fortinet, Ivanti, and SAP Issue Urgent Patches for Authentication and Code Execution Flaws](https://thehackernews.com/2025/12/fortinet-ivanti-and-sap-issue-urgent.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet, Ivanti, and SAP have moved to address critical security flaws in their products that, if successfully exploited, could result in an authentication bypass and code execution.
 The Fortinet vulnerabilities affect FortiOS, FortiWeb, FortiProxy, and FortiSwitchManager and relate to a case of im
 
-### 10. [Microsoft Patch Tuesday, December 2025 Edition](https://krebsonsecurity.com/2025/12/microsoft-patch-tuesday-december-2025-edition/?utm_source=krebs-on-security&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [Microsoft Patch Tuesday, December 2025 Edition](https://krebsonsecurity.com/2025/12/microsoft-patch-tuesday-december-2025-edition/?utm_source=krebs-on-security&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 Microsoft today pushed updates to fix at least 56 security flaws in its Windows operating systems and supported software. This final Patch Tuesday of 2025 tackles one zero-day bug that is already being exploited, as well as two publicly disclosed vulnerabilities.
-
-### 11. [SAP fixes three critical vulnerabilities across multiple products](https://www.bleepingcomputer.com/news/security/sap-fixes-three-critical-vulnerabilities-across-multiple-products/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-SAP has released its December security updates addressing 14 vulnerabilities across a range of products, including three critical-severity flaws. [...]
-
-### 12. [Windows PowerShell now warns when running Invoke-WebRequest scripts](https://www.bleepingcomputer.com/news/security/microsoft-windows-powershell-now-warns-when-running-invoke-webrequest-scripts/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft says Windows PowerShell now warns when running scripts that use the Invoke-WebRequest cmdlet to download web content, aiming to prevent potentially risky code from executing. [...]
-
-### 13. [Microsoft releases Windows 10 KB5071546 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5071546-extended-security-update/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft has released the KB5071546 extended security update to resolve 57 security vulnerabilities, including three zero-day flaws. [...]
-
-### 14. [Microsoft December 2025 Patch Tuesday fixes 3 zero-days, 57 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-december-2025-patch-tuesday-fixes-3-zero-days-57-flaws/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft's December 2025 Patch Tuesday fixes 57 flaws, including one actively exploited and two publicly disclosed zero-day vulnerabilities. [...]
-
-### 15. [Fortinet warns of critical FortiCloud SSO login auth bypass flaws](https://www.bleepingcomputer.com/news/security/fortinet-warns-of-critical-forticloud-sso-login-auth-bypass-flaws/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Fortinet has released security updates to address two critical vulnerabilities in FortiOS, FortiWeb, FortiProxy, and FortiSwitchManager that could allow attackers to bypass FortiCloud SSO authentication. [...]
 
 ---
 
