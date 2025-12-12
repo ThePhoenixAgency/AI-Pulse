@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Thu, 11 Dec 2025 18:33:08 GMT
+**Last Update:** Fri, 12 Dec 2025 01:48:30 GMT
 
 ---
 
@@ -72,70 +72,68 @@ The post Personal, Agentic Assistants: A Practical Blueprint for a Secure, Multi
 
 ## 🔒 Cybersecurity
 
-### 1. [UK fines LastPass over 2022 data breach impacting 1.6 million users](https://www.bleepingcomputer.com/news/security/uk-fines-lastpass-over-2022-data-breach-impacting-16-million-users/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Brave browser starts testing agentic AI mode for automated tasks](https://www.bleepingcomputer.com/news/artificial-intelligence/brave-browser-starts-testing-agentic-ai-mode-for-automated-tasks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Brave has introduced a new AI browsing feature that leverages Leo, its privacy-respecting AI assistant, to perform automated tasks for the user. [...]
+
+### 2. [Hackers exploit Gladinet CentreStack cryptographic flaw in RCE attacks](https://www.bleepingcomputer.com/news/security/hackers-exploit-gladinet-centrestack-cryptographic-flaw-in-rce-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Hackers are exploiting a new, undocumented vulnerability in the implementation of the cryptographic algorithm present in Gladinet's CentreStack and Triofox products for secure remote file access and sharing. [...]
+
+### 3. [Notepad++ fixes flaw that let attackers push malicious update files](https://www.bleepingcomputer.com/news/security/notepad-plus-plus-fixes-flaw-that-let-attackers-push-malicious-update-files/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Notepad++ version 8.8.9 was released to fix a security weakness in its WinGUp update tool after researchers and users reported incidents in which the updater retrieved malicious executables instead of legitimate update packages. [...]
+
+### 4. [Malicious VSCode Marketplace extensions hid trojan in fake PNG file](https://www.bleepingcomputer.com/news/security/malicious-vscode-marketplace-extensions-hid-trojan-in-fake-png-file/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A stealthy campaign with 19 extensions on the VSCode Marketplace has been active since February, targeting developers with malware hidden inside dependency folders. [...]
+
+### 5. [UK fines LastPass over 2022 data breach impacting 1.6 million users](https://www.bleepingcomputer.com/news/security/uk-fines-lastpass-over-2022-data-breach-impacting-16-million-users/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The UK Information Commissioner's Office (ICO) fined the LastPass password management firm £1.2 million for failing to implement security measures that allowed an attacker to steal personal information and encrypted password vaults belonging to up to 1.6 million UK users in a 2022 breach. [...]
 
-### 2. [Microsoft bounty program now includes any flaw impacting its services](https://www.bleepingcomputer.com/news/microsoft/microsoft-bounty-program-now-includes-any-flaw-impacting-its-services/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Microsoft bounty program now includes any flaw impacting its services](https://www.bleepingcomputer.com/news/microsoft/microsoft-bounty-program-now-includes-any-flaw-impacting-its-services/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft now pays security researchers for finding critical vulnerabilities in any of its online services, regardless of whether the code was written by Microsoft or a third party. [...]
 
-### 3. [New ConsentFix attack hijacks Microsoft accounts via Azure CLI](https://www.bleepingcomputer.com/news/security/new-consentfix-attack-hijacks-microsoft-accounts-via-azure-cli/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [New ConsentFix attack hijacks Microsoft accounts via Azure CLI](https://www.bleepingcomputer.com/news/security/new-consentfix-attack-hijacks-microsoft-accounts-via-azure-cli/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new variation of the ClickFix attack dubbed 'ConsentFix' abuses the Azure CLI OAuth app to hijack Microsoft accounts without the need for a password or to bypass multi-factor authentication (MFA) verifications. [...]
 
-### 4. [AI is accelerating cyberattacks. Is your network prepared?](https://www.bleepingcomputer.com/news/security/ai-is-accelerating-cyberattacks-is-your-network-prepared/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [AI is accelerating cyberattacks. Is your network prepared?](https://www.bleepingcomputer.com/news/security/ai-is-accelerating-cyberattacks-is-your-network-prepared/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 AI-driven attacks now automate reconnaissance, generate malware variants, and evade detection at a speed that overwhelms traditional defenses. Corelight explains how network detection and response (NDR) provides the visibility and behavioral insights SOC teams need to spot and stop these fast-moving
 
-### 5. [ThreatsDay Bulletin: Spyware Alerts, Mirai Strikes, Docker Leaks, ValleyRAT Rootkit — and 20 More Stories](https://thehackernews.com/2025/12/threatsday-bulletin-spyware-alerts.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [ThreatsDay Bulletin: Spyware Alerts, Mirai Strikes, Docker Leaks, ValleyRAT Rootkit — and 20 More Stories](https://thehackernews.com/2025/12/threatsday-bulletin-spyware-alerts.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 This week’s cyber stories show how fast the online world can turn risky. Hackers are sneaking malware into movie downloads, browser add-ons, and even software updates people trust. Tech giants and governments are racing to plug new holes while arguing over privacy and control. And researchers keep u
 
-### 6. [Hackers exploit unpatched Gogs zero-day to breach 700 servers](https://www.bleepingcomputer.com/news/security/unpatched-gogs-zero-day-rce-flaw-actively-exploited-in-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Hackers exploit unpatched Gogs zero-day to breach 700 servers](https://www.bleepingcomputer.com/news/security/unpatched-gogs-zero-day-rce-flaw-actively-exploited-in-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An unpatched zero-day vulnerability in Gogs, a popular self-hosted Git service, has enabled attackers to gain remote code execution on Internet-facing instances and compromise hundreds of servers. [...]
 
-### 7. [NANOREMOTE Malware Uses Google Drive API for Hidden Control on Windows Systems](https://thehackernews.com/2025/12/nanoremote-malware-uses-google-drive.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [NANOREMOTE Malware Uses Google Drive API for Hidden Control on Windows Systems](https://thehackernews.com/2025/12/nanoremote-malware-uses-google-drive.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a new fully-featured Windows backdoor called NANOREMOTE that uses the Google Drive API for command-and-control (C2) purposes.
 According to a report from Elastic Security Labs, the malware shares code similarities with another implant codenamed FINA
 
-### 8. [The Impact of Robotic Process Automation (RPA) on Identity and Access Management](https://thehackernews.com/2025/12/the-impact-of-robotic-process.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [The Impact of Robotic Process Automation (RPA) on Identity and Access Management](https://thehackernews.com/2025/12/the-impact-of-robotic-process.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As enterprises refine their strategies for handling Non-Human Identities (NHIs), Robotic Process Automation (RPA) has become a powerful tool for streamlining operations and enhancing security. However, since RPA bots have varying levels of access to sensitive information, enterprises must be prepare
 
-### 9. [WIRTE Leverages AshenLoader Sideloading to Install the AshTag Espionage Backdoor](https://thehackernews.com/2025/12/wirte-leverages-ashenloader-sideloading.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [WIRTE Leverages AshenLoader Sideloading to Install the AshTag Espionage Backdoor](https://thehackernews.com/2025/12/wirte-leverages-ashenloader-sideloading.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 An advanced persistent threat (APT) known as WIRTE has been attributed to attacks targeting government and diplomatic entities across the Middle East with a previously undocumented malware suite dubbed AshTag since 2020.
 Palo Alto Networks Unit 42 is tracking the activity cluster under the name Ashe
 
-### 10. [Unpatched Gogs Zero-Day Exploited Across 700+ Instances Amid Active Attacks](https://thehackernews.com/2025/12/unpatched-gogs-zero-day-exploited.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [Unpatched Gogs Zero-Day Exploited Across 700+ Instances Amid Active Attacks](https://thehackernews.com/2025/12/unpatched-gogs-zero-day-exploited.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A high-severity unpatched security vulnerability in Gogs has come under active exploitation, with more than 700 compromised instances accessible over the internet, according to new findings from Wiz.
 The flaw, tracked as CVE-2025-8110 (CVSS score: 8.7), is a case of file overwrite in the file update
 
-### 11. [Microsoft fixes Windows Explorer white flashes in dark mode](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-windows-explorer-white-flashes-in-dark-mode/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [Microsoft fixes Windows Explorer white flashes in dark mode](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-windows-explorer-white-flashes-in-dark-mode/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has fixed a known issue that caused bright white flashes when launching File Explorer in dark mode on Windows 11 systems after installing the KB5070311 optional update. [...]
-
-### 12. [Google fixes eighth Chrome zero-day exploited in attacks in 2025](https://www.bleepingcomputer.com/news/security/google-fixes-eighth-chrome-zero-day-exploited-in-attacks-in-2025/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Google has released emergency updates to fix another Chrome zero-day vulnerability exploited in the wild, marking the eighth such security flaw patched since the start of the year. [...]
-
-### 13. [Chrome Targeted by Active In-the-Wild Exploit Tied to Undisclosed High-Severity Flaw](https://thehackernews.com/2025/12/chrome-targeted-by-active-in-wild.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Google on Wednesday shipped security updates for its Chrome browser to address three security flaws, including one it said has come under active exploitation in the wild.
-The vulnerability, rated high in severity, is being tracked under the Chromium issue tracker ID "466192044." Unlike other disclos
-
-### 14. [Active Attacks Exploit Gladinet's Hard-Coded Keys for Unauthorized Access and Code Execution](https://thehackernews.com/2025/12/hard-coded-gladinet-keys-let-attackers.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Huntress is warning of a new actively exploited vulnerability in Gladinet's CentreStack and Triofox products stemming from the use of hard-coded cryptographic keys that have affected nine organizations so far.
-"Threat actors can potentially abuse this as a way to access the web.config file, opening 
-
-### 15. [Google ads for shared ChatGPT, Grok guides push macOS infostealer malware](https://www.bleepingcomputer.com/news/security/google-ads-for-shared-chatgpt-grok-guides-push-macos-infostealer-malware/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A new AMOS infostealer campaign is abusing Google search ads to lure users into Grok and ChatGPT conversations that appear to offer "helpful" instructions but ultimately lead to installing the AMOS info-stealing malware on macOS. [...]
 
 ---
 
