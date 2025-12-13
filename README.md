@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Fri, 12 Dec 2025 18:34:22 GMT
+**Last Update:** Sat, 13 Dec 2025 01:42:43 GMT
 
 ---
 
@@ -70,69 +70,70 @@ The post How to Maximize Agentic Memory for Continual Learning appeared first on
 
 ## 🔒 Cybersecurity
 
-### 1. [Coupang data breach traced to ex-employee who retained system access](https://www.bleepingcomputer.com/news/security/coupang-data-breach-traced-to-ex-employee-who-retained-system-access/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Apple fixes two zero-day flaws exploited in 'sophisticated' attacks](https://www.bleepingcomputer.com/news/security/apple-fixes-two-zero-day-flaws-exploited-in-sophisticated-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Apple has released emergency updates to patch two zero-day vulnerabilities that were exploited in an "extremely sophisticated attack" targeting specific individuals. [...]
+
+### 2. [Fake OSINT and GPT Utility GitHub Repos Spread PyStoreRAT Malware Payloads](https://thehackernews.com/2025/12/fake-osint-and-gpt-utility-github-repos.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity researchers are calling attention to a new campaign that's leveraging GitHub-hosted Python repositories to distribute a previously undocumented JavaScript-based Remote Access Trojan (RAT) dubbed PyStoreRAT.
+"These repositories, often themed as development utilities or OSINT tools, cont
+
+### 3. [Coupang data breach traced to ex-employee who retained system access](https://www.bleepingcomputer.com/news/security/coupang-data-breach-traced-to-ex-employee-who-retained-system-access/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A data breach at Coupang that exposed the information of 33.7 million customers has been tied to a former employee who retained access to internal systems after leaving the company. [...]
 
-### 2. [Fake ‘One Battle After Another’ torrent hides malware in subtitles](https://www.bleepingcomputer.com/news/security/fake-one-battle-after-another-torrent-hides-malware-in-subtitles/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [Fake ‘One Battle After Another’ torrent hides malware in subtitles](https://www.bleepingcomputer.com/news/security/fake-one-battle-after-another-torrent-hides-malware-in-subtitles/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fake torrent for Leonardo DiCaprio's 'One Battle After Another' hides malicious PowerShell malware loaders inside subtitle files that ultimately infect devices with the Agent Tesla RAT malware. [...]
 
-### 3. [Kali Linux 2025.4 released with 3 new tools, desktop updates](https://www.bleepingcomputer.com/news/security/kali-linux-20254-released-with-3-new-tools-desktop-updates/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Kali Linux 2025.4 released with 3 new tools, desktop updates](https://www.bleepingcomputer.com/news/security/kali-linux-20254-released-with-3-new-tools-desktop-updates/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Kali Linux has released version 2025.4, its final update of the year, introducing three new tools, desktop environment improvements, and enhanced Wayland support. [...]
+Kali Linux has released version 2025.4, its final update of the year, introducing three new hacking tools, desktop environment improvements, the preview of Wifipumpkin3 in NetHunter, and enhanced Wayland support. [...]
 
-### 4. [Shadow spreadsheets: The security gap your tools can’t see](https://www.bleepingcomputer.com/news/security/shadow-spreadsheets-the-security-gap-your-tools-cant-see/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Shadow spreadsheets: The security gap your tools can’t see](https://www.bleepingcomputer.com/news/security/shadow-spreadsheets-the-security-gap-your-tools-cant-see/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 When official systems can't support everyday workflows, employees turn to spreadsheets — creating "shadow spreadsheets" that circulate unchecked. Grist shows how these spreadsheets expose sensitive data, create version sprawl, and remove the audit trails security teams depend on. [...]
 
-### 5. [New Advanced Phishing Kits Use AI and MFA Bypass Tactics to Steal Credentials at Scale](https://thehackernews.com/2025/12/new-advanced-phishing-kits-use-ai-and.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [New Advanced Phishing Kits Use AI and MFA Bypass Tactics to Steal Credentials at Scale](https://thehackernews.com/2025/12/new-advanced-phishing-kits-use-ai-and.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have documented four new phishing kits named BlackForce, GhostFrame, InboxPrime AI, and Spiderman that are capable of facilitating credential theft at scale.
 BlackForce, first detected in August 2025, is designed to steal credentials and perform Man-in-the-Browser (MitB) at
 
-### 6. [New Windows RasMan zero-day flaw gets free, unofficial patches](https://www.bleepingcomputer.com/news/microsoft/new-windows-rasman-zero-day-flaw-gets-free-unofficial-patches/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [New Windows RasMan zero-day flaw gets free, unofficial patches](https://www.bleepingcomputer.com/news/microsoft/new-windows-rasman-zero-day-flaw-gets-free-unofficial-patches/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Free unofficial patches are available for a new Windows zero-day vulnerability that allows attackers to crash the Remote Access Connection Manager (RasMan) service. [...]
 
-### 7. [Securing GenAI in the Browser: Policy, Isolation, and Data Controls That Actually Work](https://thehackernews.com/2025/12/securing-genai-in-browser-policy.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [Securing GenAI in the Browser: Policy, Isolation, and Data Controls That Actually Work](https://thehackernews.com/2025/12/securing-genai-in-browser-policy.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The browser has become the main interface to GenAI for most enterprises: from web-based LLMs and copilots, to GenAI‑powered extensions and agentic browsers like ChatGPT Atlas. Employees are leveraging the power of GenAI to draft emails, summarize documents, work on code, and analyze data, often by c
 
-### 8. [CISA orders feds to patch actively exploited Geoserver flaw](https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-geoserver-flaw/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [CISA orders feds to patch actively exploited Geoserver flaw](https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-actively-exploited-geoserver-flaw/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CISA has ordered U.S. federal agencies to patch a critical GeoServer vulnerability now actively exploited in XML External Entity (XXE) injection attacks. [...]
 
-### 9. [New React RSC Vulnerabilities Enable DoS and Source Code Exposure](https://thehackernews.com/2025/12/new-react-rsc-vulnerabilities-enable.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [New React RSC Vulnerabilities Enable DoS and Source Code Exposure](https://thehackernews.com/2025/12/new-react-rsc-vulnerabilities-enable.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The React team has released fixes for two new types of flaws in React Server Components (RSC) that, if successfully exploited, could result in denial-of-service (DoS) or source code exposure.
 The team said the issues were found by the security community while attempting to exploit the patches releas
 
-### 10. [MITRE shares 2025's top 25 most dangerous software weaknesses](https://www.bleepingcomputer.com/news/security/mitre-shares-2025s-top-25-most-dangerous-software-weaknesses/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [MITRE shares 2025's top 25 most dangerous software weaknesses](https://www.bleepingcomputer.com/news/security/mitre-shares-2025s-top-25-most-dangerous-software-weaknesses/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 MITRE has shared this year's top 25 list of the most dangerous software weaknesses behind over 39,000 security vulnerabilities disclosed between June 2024 and June 2025. [...]
 
-### 11. [React2Shell Exploitation Escalates into Large-Scale Global Attacks, Forcing Emergency Mitigation](https://thehackernews.com/2025/12/react2shell-exploitation-escalates-into.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [React2Shell Exploitation Escalates into Large-Scale Global Attacks, Forcing Emergency Mitigation](https://thehackernews.com/2025/12/react2shell-exploitation-escalates-into.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has urged federal agencies to patch the recent React2Shell vulnerability by December 12, 2025, amid reports of widespread exploitation.
 The critical vulnerability, tracked as CVE-2025-55182 (CVSS score: 10.0), affects the React Server 
 
-### 12. [MKVCinemas streaming piracy service with 142M visits shuts down](https://www.bleepingcomputer.com/news/security/mkvcinemas-streaming-piracy-service-with-142m-visits-shuts-down/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [MKVCinemas streaming piracy service with 142M visits shuts down](https://www.bleepingcomputer.com/news/security/mkvcinemas-streaming-piracy-service-with-142m-visits-shuts-down/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An anti-piracy coalition has dismantled one of India's most popular streaming piracy services, which has provided free access to movies and TV shows to millions over the past two years. [...]
 
-### 13. [CISA Flags Actively Exploited GeoServer XXE Flaw in Updated KEV Catalog](https://thehackernews.com/2025/12/cisa-flags-actively-exploited-geoserver.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [CISA Flags Actively Exploited GeoServer XXE Flaw in Updated KEV Catalog](https://thehackernews.com/2025/12/cisa-flags-actively-exploited-geoserver.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday added a high-severity security flaw impacting OSGeo GeoServer to its Known Exploited Vulnerabilities (KEV) catalog, based on evidence of active exploitation in the wild.
 The vulnerability in question is CVE-2025-58360 (CVSS
-
-### 14. [Brave browser starts testing agentic AI mode for automated tasks](https://www.bleepingcomputer.com/news/artificial-intelligence/brave-browser-starts-testing-agentic-ai-mode-for-automated-tasks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Brave has introduced a new AI browsing feature that leverages Leo, its privacy-respecting AI assistant, to perform automated tasks for the user. [...]
-
-### 15. [Hackers exploit Gladinet CentreStack cryptographic flaw in RCE attacks](https://www.bleepingcomputer.com/news/security/hackers-exploit-gladinet-centrestack-cryptographic-flaw-in-rce-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Hackers are exploiting a new, undocumented vulnerability in the implementation of the cryptographic algorithm present in Gladinet's CentreStack and Triofox products for secure remote file access and sharing. [...]
 
 ---
 
