@@ -13,58 +13,58 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Sat, 13 Dec 2025 06:32:37 GMT
+**Last Update:** Sat, 13 Dec 2025 12:41:31 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-12-logistic-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Attention Gating](https://towardsdatascience.com/neurips-2025-best-paper-review-qwens-systematic-exploration-of-attention-gating/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+This one little trick can bring about enhanced training stability, the use of larger learning rates and improved scaling properties
+The post NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Attention Gating appeared first on Towards Data Science.
+
+### 2. [The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-12-logistic-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 In this article, we rebuild Logistic Regression step by step directly in Excel.
 The post The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel appeared first on Towards Data Science.
 
-### 2. [Decentralized Computation: The Hidden Principle Behind Deep Learning](https://towardsdatascience.com/the-power-of-decentralization/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 3. [Decentralized Computation: The Hidden Principle Behind Deep Learning](https://towardsdatascience.com/the-power-of-decentralization/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Most breakthroughs in deep learning — from simple neural networks to large language models — are built upon a principle that is much older than AI itself: decentralization. Instead of relying on a powerful “central planner” coordinating and commanding the behaviors of other components, modern deep-l
 
-### 3. [EDA in Public (Part 1): Cleaning and Exploring Sales Data with Pandas](https://towardsdatascience.com/eda-in-public-part-1-cleaning-exploring-sales-data-with-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [EDA in Public (Part 1): Cleaning and Exploring Sales Data with Pandas](https://towardsdatascience.com/eda-in-public-part-1-cleaning-exploring-sales-data-with-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Hey everyone! Welcome to the start of a major data journey that I’m calling “EDA in Public.” For those who know me, I believe the best way to learn anything is to tackle a real-world problem and share the entire messy process — including mistakes, victories, and everything in between. If you’ve been
 
-### 4. [Spectral Community Detection in Clinical Knowledge Graphs](https://towardsdatascience.com/spectral-community-detection-in-clinical-knowledge-graphs/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Spectral Community Detection in Clinical Knowledge Graphs](https://towardsdatascience.com/spectral-community-detection-in-clinical-knowledge-graphs/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Introduction How do we identify latent groups of patients in a large cohort? How can we find similarities among patients that go beyond the well-known comorbidity clusters associated with specific diseases? And more importantly, how can we extract quantitative signals that can be analyzed, compared,
 
-### 5. [The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-11-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-11-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Linear Regression looks simple, but it introduces the core ideas of modern machine learning: loss functions, optimization, gradients, scaling, and interpretation.
 The post The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel appeared first on Towards Data Science.
 
-### 6. [Drawing Shapes with the Python Turtle Module](https://towardsdatascience.com/drawing-shapes-with-the-python-turtle-module/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [Drawing Shapes with the Python Turtle Module](https://towardsdatascience.com/drawing-shapes-with-the-python-turtle-module/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A step-by-step tutorial that explores the Python Turtle Module
 The post Drawing Shapes with the Python Turtle Module appeared first on Towards Data Science.
 
-### 7. [7 Pandas Performance Tricks Every Data Scientist Should Know](https://towardsdatascience.com/7-pandas-performance-tricks-every-data-scientist-should-know/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [7 Pandas Performance Tricks Every Data Scientist Should Know](https://towardsdatascience.com/7-pandas-performance-tricks-every-data-scientist-should-know/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 What I've learned about making Pandas faster after too many slow notebooks and frozen sessions
 The post 7 Pandas Performance Tricks Every Data Scientist Should Know appeared first on Towards Data Science.
 
-### 8. [How Agent Handoffs Work in Multi-Agent Systems](https://towardsdatascience.com/how-agent-handoffs-work-in-multi-agent-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [How Agent Handoffs Work in Multi-Agent Systems](https://towardsdatascience.com/how-agent-handoffs-work-in-multi-agent-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding how LLM agents transfer control to each other in a multi-agent system with LangGraph
 The post How Agent Handoffs Work in Multi-Agent Systems appeared first on Towards Data Science.
 
-### 9. [The Machine Learning “Advent Calendar” Day 10: DBSCAN in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-10-dbscan-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [The Machine Learning “Advent Calendar” Day 10: DBSCAN in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-10-dbscan-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 DBSCAN shows how far we can go with a very simple idea: count how many neighbors live close to each point.
 The post The Machine Learning “Advent Calendar” Day 10: DBSCAN in Excel appeared first on Towards Data Science.
-
-### 10. [How to Maximize Agentic Memory for Continual Learning](https://towardsdatascience.com/how-to-maximize-agentic-memory-for-continual-learning/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Learn how to become an effective engineer with continual learning LLMs
-The post How to Maximize Agentic Memory for Continual Learning appeared first on Towards Data Science.
 
 ---
 
