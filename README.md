@@ -13,57 +13,56 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Sun, 14 Dec 2025 06:32:28 GMT
+**Last Update:** Sun, 14 Dec 2025 12:41:58 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [The Machine Learning “Advent Calendar” Day 13: LASSO and Ridge Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-13-lasso-and-ridge-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Stop Writing Spaghetti if-else Chains: Parsing JSON with Python’s match-case](https://towardsdatascience.com/stop-writing-spaghetti-if-else-chains-parsing-json-with-pythons-match-case/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Introduction If you work in data science, data engineering, or as as a frontend/backend developer, you deal with JSON. For professionals, its basically only death, taxes, and JSON-parsing that is inevitable. The issue is that parsing JSON is often a serious pain. Whether you are pulling data from a 
+
+### 2. [The Machine Learning “Advent Calendar” Day 13: LASSO and Ridge Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-13-lasso-and-ridge-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Ridge and Lasso regression are often perceived as more complex versions of linear regression. In reality, the prediction model remains exactly the same. What changes is the training objective. By adding a penalty on the coefficients, regularization forces the model to choose more stable solutions, e
 
-### 2. [How to Increase Coding Iteration Speed](https://towardsdatascience.com/how-to-increase-coding-iteration-speed/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 3. [How to Increase Coding Iteration Speed](https://towardsdatascience.com/how-to-increase-coding-iteration-speed/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to become a more efficient programmer with local testing
 The post How to Increase Coding Iteration Speed appeared first on Towards Data Science.
 
-### 3. [NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Attention Gating](https://towardsdatascience.com/neurips-2025-best-paper-review-qwens-systematic-exploration-of-attention-gating/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Attention Gating](https://towardsdatascience.com/neurips-2025-best-paper-review-qwens-systematic-exploration-of-attention-gating/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 This one little trick can bring about enhanced training stability, the use of larger learning rates and improved scaling properties
 The post NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Attention Gating appeared first on Towards Data Science.
 
-### 4. [The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-12-logistic-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-12-logistic-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 In this article, we rebuild Logistic Regression step by step directly in Excel.
 The post The Machine Learning “Advent Calendar” Day 12: Logistic Regression in Excel appeared first on Towards Data Science.
 
-### 5. [Decentralized Computation: The Hidden Principle Behind Deep Learning](https://towardsdatascience.com/the-power-of-decentralization/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Decentralized Computation: The Hidden Principle Behind Deep Learning](https://towardsdatascience.com/the-power-of-decentralization/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Most breakthroughs in deep learning — from simple neural networks to large language models — are built upon a principle that is much older than AI itself: decentralization. Instead of relying on a powerful “central planner” coordinating and commanding the behaviors of other components, modern deep-l
 
-### 6. [EDA in Public (Part 1): Cleaning and Exploring Sales Data with Pandas](https://towardsdatascience.com/eda-in-public-part-1-cleaning-exploring-sales-data-with-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [EDA in Public (Part 1): Cleaning and Exploring Sales Data with Pandas](https://towardsdatascience.com/eda-in-public-part-1-cleaning-exploring-sales-data-with-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Hey everyone! Welcome to the start of a major data journey that I’m calling “EDA in Public.” For those who know me, I believe the best way to learn anything is to tackle a real-world problem and share the entire messy process — including mistakes, victories, and everything in between. If you’ve been
 
-### 7. [Spectral Community Detection in Clinical Knowledge Graphs](https://towardsdatascience.com/spectral-community-detection-in-clinical-knowledge-graphs/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Spectral Community Detection in Clinical Knowledge Graphs](https://towardsdatascience.com/spectral-community-detection-in-clinical-knowledge-graphs/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Introduction How do we identify latent groups of patients in a large cohort? How can we find similarities among patients that go beyond the well-known comorbidity clusters associated with specific diseases? And more importantly, how can we extract quantitative signals that can be analyzed, compared,
 
-### 8. [The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-11-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-11-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Linear Regression looks simple, but it introduces the core ideas of modern machine learning: loss functions, optimization, gradients, scaling, and interpretation.
 The post The Machine Learning “Advent Calendar” Day 11: Linear Regression in Excel appeared first on Towards Data Science.
 
-### 9. [Drawing Shapes with the Python Turtle Module](https://towardsdatascience.com/drawing-shapes-with-the-python-turtle-module/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Drawing Shapes with the Python Turtle Module](https://towardsdatascience.com/drawing-shapes-with-the-python-turtle-module/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A step-by-step tutorial that explores the Python Turtle Module
 The post Drawing Shapes with the Python Turtle Module appeared first on Towards Data Science.
-
-### 10. [7 Pandas Performance Tricks Every Data Scientist Should Know](https://towardsdatascience.com/7-pandas-performance-tricks-every-data-scientist-should-know/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-What I've learned about making Pandas faster after too many slow notebooks and frozen sessions
-The post 7 Pandas Performance Tricks Every Data Scientist Should Know appeared first on Towards Data Science.
 
 ---
 
