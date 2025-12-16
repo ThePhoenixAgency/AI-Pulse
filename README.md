@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Tue, 16 Dec 2025 01:49:20 GMT
+**Last Update:** Tue, 16 Dec 2025 06:36:13 GMT
 
 ---
 
@@ -70,69 +70,69 @@ The post NeurIPS 2025 Best Paper Review: Qwen’s Systematic Exploration of Atte
 
 ## 🔒 Cybersecurity
 
-### 1. [SoundCloud confirms breach after member data stolen, VPN access disrupted](https://www.bleepingcomputer.com/news/security/soundcloud-confirms-breach-after-member-data-stolen-vpn-access-disrupted/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Audio streaming platform SoundCloud has confirmed that outages and VPN connection issues over the past few days were caused by a security breach in which threat actors stole a database containing user information. [...]
+### 1. [Google to Shut Down Dark Web Monitoring Tool in February 2026](https://thehackernews.com/2025/12/google-to-shut-down-dark-web-monitoring.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Google has announced that it's discontinuing its dark web report tool in February 2026, less than two years after it was launched as a way for users to monitor if their personal information is found on the dark web.
+To that end, scans for new dark web breaches will be stopped on January 15, 2026, an
 
-### 2. [Google is shutting down its dark web report feature in January](https://www.bleepingcomputer.com/news/google/google-is-shutting-down-its-dark-web-report-feature-in-january/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 2. [SoundCloud confirms breach after member data stolen, VPN access disrupted](https://www.bleepingcomputer.com/news/security/soundcloud-confirms-breach-after-member-data-stolen-vpn-access-disrupted/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Audio streaming platform SoundCloud has confirmed that outages and VPN connection issues over the past few days were caused by a security breach in which threat actors stole a database exposing users' email addresses and profile information. [...]
+
+### 3. [Google is shutting down its dark web report feature in January](https://www.bleepingcomputer.com/news/google/google-is-shutting-down-its-dark-web-report-feature-in-january/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Google is discontinuing its "dark web report" security tool, stating that it wants to focus on other tools it believes are more helpful. [...]
 
-### 3. [Askul confirms theft of 740k customer records in ransomware attack](https://www.bleepingcomputer.com/news/security/askul-confirms-theft-of-740k-customer-records-in-ransomhouse-attack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [Askul confirms theft of 740k customer records in ransomware attack](https://www.bleepingcomputer.com/news/security/askul-confirms-theft-of-740k-customer-records-in-ransomhouse-attack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Japanese e-commerce giant Askul Corporation has confirmed that RansomHouse hackers stole around 740,000 customer records in the ransomware attack it suffered in October. [...]
 
-### 4. [New SantaStealer malware steals data from browsers, crypto wallets](https://www.bleepingcomputer.com/news/security/new-santastealer-malware-steals-data-from-browsers-crypto-wallets/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [New SantaStealer malware steals data from browsers, crypto wallets](https://www.bleepingcomputer.com/news/security/new-santastealer-malware-steals-data-from-browsers-crypto-wallets/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new malware-as-a-service (MaaS) information stealer named SantaStealer is being advertised on Telegram and hacker forums as operating in memory to avoid file-based detection. [...]
 
-### 5. [PornHub extorted after hackers steal Premium member activity data](https://www.bleepingcomputer.com/news/security/pornhub-extorted-after-hackers-steal-premium-member-activity-data/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [PornHub extorted after hackers steal Premium member activity data](https://www.bleepingcomputer.com/news/security/pornhub-extorted-after-hackers-steal-premium-user-activity-data/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Adult video platform PornHub is being extorted by the ShinyHunters extortion gang after the search and watch history of its Premium members was reportedly stolen in a recent Mixpanel data breach. [...]
 
-### 6. [Ongoing SoundCloud issue blocks VPN users with 403 server error](https://www.bleepingcomputer.com/news/security/ongoing-soundcloud-issue-blocks-vpn-users-with-403-server-error/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [Ongoing SoundCloud issue blocks VPN users with 403 server error](https://www.bleepingcomputer.com/news/security/ongoing-soundcloud-issue-blocks-vpn-users-with-403-server-error/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Users accessing the SoundCloud audio streaming platform through a virtual private network (VPN) connection are denied access to the service and see a 403 'forbidden' error. [...]
 
-### 7. [Featured Chrome Browser Extension Caught Intercepting Millions of Users' AI Chats](https://thehackernews.com/2025/12/featured-chrome-browser-extension.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Featured Chrome Browser Extension Caught Intercepting Millions of Users' AI Chats](https://thehackernews.com/2025/12/featured-chrome-browser-extension.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A Google Chrome extension with a "Featured" badge and six million users has been observed silently gathering every prompt entered by users into artificial intelligence (AI)-powered chatbots like OpenAI ChatGPT, Anthropic Claude, Microsoft Copilot, DeepSeek, Google Gemini, xAI Grok, Meta AI, and Perp
 
-### 8. [700Credit data breach impacts 5.8 million vehicle dealership customers](https://www.bleepingcomputer.com/news/security/700credit-data-breach-impacts-58-million-vehicle-dealership-customers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [700Credit data breach impacts 5.8 million vehicle dealership customers](https://www.bleepingcomputer.com/news/security/700credit-data-breach-impacts-58-million-vehicle-dealership-customers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 700Credit, a U.S.-based financial services and fintech company, will start notifying more than 5.8 million people that their personal information has been exposed in a data breach incident. [...]
 
-### 9. [2025’s Top Phishing Trends and What They Mean for Your Security Strategy](https://www.bleepingcomputer.com/news/security/2025s-top-phishing-trends-and-what-they-mean-for-your-security-strategy/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [2025’s Top Phishing Trends and What They Mean for Your Security Strategy](https://www.bleepingcomputer.com/news/security/2025s-top-phishing-trends-and-what-they-mean-for-your-security-strategy/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Phishing attacks in 2025 increasingly moved beyond email, with attackers using social platforms, search ads, and browser-based techniques to bypass MFA and steal sessions. Push Security outlines key phishing trends and what security teams must know as identity-based attacks continue to evolve in 202
 
-### 10. [Microsoft: Recent Windows updates break VPN access for WSL users](https://www.bleepingcomputer.com/news/microsoft/microsoft-recent-windows-updates-cause-wsl-networking-issues/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [Microsoft: Recent Windows updates break VPN access for WSL users](https://www.bleepingcomputer.com/news/microsoft/microsoft-recent-windows-updates-cause-wsl-networking-issues/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft says that recent Windows 11 security updates are causing VPN networking failures for enterprise users running Windows Subsystem for Linux. [...]
 
-### 11. [FreePBX Patches Critical SQLi, File-Upload, and AUTHTYPE Bypass Flaws Enabling RCE](https://thehackernews.com/2025/12/freepbx-authentication-bypass-exposed.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [FreePBX Patches Critical SQLi, File-Upload, and AUTHTYPE Bypass Flaws Enabling RCE](https://thehackernews.com/2025/12/freepbx-authentication-bypass-exposed.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Multiple security vulnerabilities have been disclosed in the open-source private branch exchange (PBX) platform FreePBX, including a critical flaw that could result in an authentication bypass under certain configurations.
 The shortcomings, discovered by Horizon3.ai and reported to the project maint
 
-### 12. [Google links more Chinese hacking groups to React2Shell attacks](https://www.bleepingcomputer.com/news/security/google-links-more-chinese-hacking-groups-to-react2shell-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [Google links more Chinese hacking groups to React2Shell attacks](https://www.bleepingcomputer.com/news/security/google-links-more-chinese-hacking-groups-to-react2shell-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Over the weekend, ​Google's threat intelligence team linked five more Chinese hacking groups to attacks exploiting the maximum-severity "React2Shell" remote code execution vulnerability. [...]
 
-### 13. [⚡ Weekly Recap: Apple 0-Days, WinRAR Exploit, LastPass Fines, .NET RCE, OAuth Scams & More](https://thehackernews.com/2025/12/weekly-recap-apple-0-days-winrar.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [⚡ Weekly Recap: Apple 0-Days, WinRAR Exploit, LastPass Fines, .NET RCE, OAuth Scams & More](https://thehackernews.com/2025/12/weekly-recap-apple-0-days-winrar.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 If you use a smartphone, browse the web, or unzip files on your computer, you are in the crosshairs this week. Hackers are currently exploiting critical flaws in the daily software we all rely on—and in some cases, they started attacking before a fix was even ready.
 Below, we list the urgent updates
 
-### 14. [A Browser Extension Risk Guide After the ShadyPanda Campaign](https://thehackernews.com/2025/12/a-browser-extension-risk-guide-after.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [A Browser Extension Risk Guide After the ShadyPanda Campaign](https://thehackernews.com/2025/12/a-browser-extension-risk-guide-after.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 In early December 2025, security researchers exposed a cybercrime campaign that had quietly hijacked popular Chrome and Edge browser extensions on a massive scale.
 A threat group dubbed ShadyPanda spent seven years playing the long game, publishing or acquiring harmless extensions, letting them run 
-
-### 15. [Phantom Stealer Spread by ISO Phishing Emails Hitting Russian Finance Sector](https://thehackernews.com/2025/12/phantom-stealer-spread-by-iso-phishing.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of an active phishing campaign that's targeting a wide range of sectors in Russia with phishing emails that deliver Phantom Stealer via malicious ISO optical disc images.
-The activity, codenamed Operation MoneyMount-ISO by Seqrite Labs, has primarily 
 
 ---
 
