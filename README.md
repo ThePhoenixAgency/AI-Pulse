@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Tue, 16 Dec 2025 18:34:50 GMT
+**Last Update:** Wed, 17 Dec 2025 01:44:53 GMT
 
 ---
 
@@ -71,71 +71,69 @@ In the Author Spotlight series, TDS Editors chat with members of our community a
 
 ## 🔒 Cybersecurity
 
-### 1. [Texas sues TV makers for taking screenshots of what people watch](https://www.bleepingcomputer.com/news/security/texas-sues-tv-makers-for-spying-on-users-selling-data-without-consent/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Cellik Android malware builds malicious versions from Google Play apps](https://www.bleepingcomputer.com/news/security/cellik-android-malware-builds-malicious-versions-from-google-play-apps/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new Android malware-as-a-service (MaaS) named Cellik is being advertised on underground cybercrime forums offering a robust set of capabilities that include the option to embed it in any app available on the Google Play Store. [...]
+
+### 2. [GhostPoster attacks hide malicious JavaScript in Firefox addon logos](https://www.bleepingcomputer.com/news/security/ghostposter-attacks-hide-malicious-javascript-in-firefox-addon-logos/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new campaign dubbed 'GhostPoster' is hiding JavaScript code in the image logo of malicious Firefox extensions counting more than 50,000 downloads, to monitor browser activity and plant a backdoor. [...]
+
+### 3. [Amazon disrupts Russian GRU hackers attacking edge network devices](https://www.bleepingcomputer.com/news/security/amazon-disrupts-russian-gru-hackers-attacking-edge-network-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The Amazon Threat Intelligence team has disrupted active operations attributed to hackers working for the Russian foreign military intelligence agency, the GRU, who targeted customers' cloud infrastructure. [...]
+
+### 4. [Texas sues TV makers for taking screenshots of what people watch](https://www.bleepingcomputer.com/news/security/texas-sues-tv-makers-for-spying-on-users-selling-data-without-consent/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Texas Attorney General sued five major television manufacturers, accusing them of illegally collecting their users' data by secretly recording what they watch using Automated Content Recognition (ACR) technology. [...]
 
-### 2. [Compromised IAM Credentials Power a Large AWS Crypto Mining Campaign](https://thehackernews.com/2025/12/compromised-iam-credentials-power-large.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Compromised IAM Credentials Power a Large AWS Crypto Mining Campaign](https://thehackernews.com/2025/12/compromised-iam-credentials-power-large.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 An ongoing campaign has been observed targeting Amazon Web Services (AWS) customers using compromised Identity and Access Management (IAM) credentials to enable cryptocurrency mining.
 The activity, first detected by Amazon's GuardDuty managed threat detection service and its automated security monit
 
-### 3. [Hackers exploit newly patched Fortinet auth bypass flaws](https://www.bleepingcomputer.com/news/security/hackers-exploit-newly-patched-fortinet-auth-bypass-flaws/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Hackers exploit newly patched Fortinet auth bypass flaws](https://www.bleepingcomputer.com/news/security/hackers-exploit-newly-patched-fortinet-auth-bypass-flaws/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are exploiting critical-severity vulnerabilities affecting multiple Fortinet products to get unauthorized access to admin accounts and steal system configuration files. [...]
 
-### 4. [Rogue NuGet Package Poses as Tracer.Fody, Steals Cryptocurrency Wallet Data](https://thehackernews.com/2025/12/rogue-nuget-package-poses-as-tracerfody.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [Rogue NuGet Package Poses as Tracer.Fody, Steals Cryptocurrency Wallet Data](https://thehackernews.com/2025/12/rogue-nuget-package-poses-as-tracerfody.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new malicious NuGet package that typosquats and impersonates the popular .NET tracing library and its author to sneak in a cryptocurrency wallet stealer.
 The malicious package, named "Tracer.Fody.NLog," remained on the repository for nearly six years. It w
 
-### 5. [Cyberattack disrupts Venezuelan oil giant PDVSA's operations](https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-venezuelan-oil-giant-pdvsas-operations/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Cyberattack disrupts Venezuelan oil giant PDVSA's operations](https://www.bleepingcomputer.com/news/security/cyberattack-disrupts-venezuelan-oil-giant-pdvsas-operations/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Petróleos de Venezuela (PDVSA), Venezuela's state-owned oil company, was hit by a cyberattack over the weekend that disrupted its export operations. [...]
 
-### 6. [The Hidden Risk in Virtualization: Why Hypervisors are a Ransomware Magnet](https://www.bleepingcomputer.com/news/security/the-hidden-risk-in-virtualization-why-hypervisors-are-a-ransomware-magnet/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [The Hidden Risk in Virtualization: Why Hypervisors are a Ransomware Magnet](https://www.bleepingcomputer.com/news/security/the-hidden-risk-in-virtualization-why-hypervisors-are-a-ransomware-magnet/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ransomware groups are targeting hypervisors to maximize impact, allowing a single breach to encrypt dozens of virtual machines at once. Drawing on real-world incident data, Huntress explains how attackers exploit visibility gaps at the hypervisor layer and outlines steps orgs can take to harden virt
 
-### 7. [Most Parked Domains Now Serving Malicious Content](https://krebsonsecurity.com/2025/12/most-parked-domains-now-serving-malicious-content/?utm_source=krebs-on-security&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Most Parked Domains Now Serving Malicious Content](https://krebsonsecurity.com/2025/12/most-parked-domains-now-serving-malicious-content/?utm_source=krebs-on-security&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 Direct navigation -- the act of visiting a website by manually typing a domain name in a web browser -- has never been riskier: A new study finds the vast majority of "parked" domains -- mostly expired or dormant domain names, or common misspellings of popular websites -- are now configured to redir
 
-### 8. [Microsoft to block Exchange Online access for outdated mobile devices](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-block-exchange-online-access-for-outdated-mobile-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [Microsoft to block Exchange Online access for outdated mobile devices](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-block-exchange-online-access-for-outdated-mobile-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced on Monday that it will soon block mobile devices running outdated email software from accessing Exchange Online services until they're updated. [...]
 
-### 9. [Amazon Exposes Years-Long GRU Cyber Campaign Targeting Energy and Cloud Infrastructure](https://thehackernews.com/2025/12/amazon-exposes-years-long-gru-cyber.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [Amazon Exposes Years-Long GRU Cyber Campaign Targeting Energy and Cloud Infrastructure](https://thehackernews.com/2025/12/amazon-exposes-years-long-gru-cyber.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Amazon's threat intelligence team has disclosed details of a "years-long" Russian state-sponsored campaign that targeted Western critical infrastructure between 2021 and 2025.
 Targets of the campaign included energy sector organizations across Western nations, critical infrastructure providers in No
 
-### 10. [European authorities dismantle call center fraud ring in Ukraine](https://www.bleepingcomputer.com/news/security/european-authorities-dismantle-call-center-fraud-ring-in-ukraine/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [European authorities dismantle call center fraud ring in Ukraine](https://www.bleepingcomputer.com/news/security/european-authorities-dismantle-call-center-fraud-ring-in-ukraine/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 European law enforcement authorities dismantled a fraud network operating call centers in Ukraine that scammed victims across Europe out of more than 10 million euros. [...]
 
-### 11. [Why Data Security and Privacy Need to Start in Code](https://thehackernews.com/2025/12/why-data-security-and-privacy-need-to.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [Why Data Security and Privacy Need to Start in Code](https://thehackernews.com/2025/12/why-data-security-and-privacy-need-to.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 AI-assisted coding and AI app generation platforms have created an unprecedented surge in software development. Companies are now facing rapid growth in both the number of applications and the pace of change within those applications. Security and privacy teams are under significant pressure as the 
 
-### 12. [Fortinet FortiGate Under Active Attack Through SAML SSO Authentication Bypass](https://thehackernews.com/2025/12/fortinet-fortigate-under-active-attack.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [Fortinet FortiGate Under Active Attack Through SAML SSO Authentication Bypass](https://thehackernews.com/2025/12/fortinet-fortigate-under-active-attack.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat actors have begun to exploit two newly disclosed security flaws in Fortinet FortiGate devices, less than a week after public disclosure.
 Cybersecurity company Arctic Wolf said it observed active intrusions involving malicious single sign-on (SSO) logins on FortiGate appliances on December 12,
-
-### 13. [React2Shell Vulnerability Actively Exploited to Deploy Linux Backdoors](https://thehackernews.com/2025/12/react2shell-vulnerability-actively.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The security vulnerability known as React2Shell is being exploited by threat actors to deliver malware families like KSwapDoor and ZnDoor, according to findings from Palo Alto Networks Unit 42 and NTT Security.
-"KSwapDoor is a professionally engineered remote access tool designed with stealth in min
-
-### 14. [Google to Shut Down Dark Web Monitoring Tool in February 2026](https://thehackernews.com/2025/12/google-to-shut-down-dark-web-monitoring.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Google has announced that it's discontinuing its dark web report tool in February 2026, less than two years after it was launched as a way for users to monitor if their personal information is found on the dark web.
-To that end, scans for new dark web breaches will be stopped on January 15, 2026, an
-
-### 15. [SoundCloud confirms breach after member data stolen, VPN access disrupted](https://www.bleepingcomputer.com/news/security/soundcloud-confirms-breach-after-member-data-stolen-vpn-access-disrupted/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Audio streaming platform SoundCloud has confirmed that outages and VPN connection issues over the past few days were caused by a security breach in which threat actors stole a database exposing users' email addresses and profile information. [...]
 
 ---
 
