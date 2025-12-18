@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Wed, 17 Dec 2025 18:35:11 GMT
+**Last Update:** Thu, 18 Dec 2025 01:45:16 GMT
 
 ---
 
@@ -70,70 +70,70 @@ The post 6 Technical Skills That Make You a Senior Data Scientist appeared first
 
 ## 🔒 Cybersecurity
 
-### 1. [Sonicwall warns of new SMA1000 zero-day exploited in attacks](https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-sma1000-zero-day-exploited-in-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Zeroday Cloud hacking event awards $320,0000 for 11 zero days](https://www.bleepingcomputer.com/news/security/zeroday-cloud-hacking-event-awards-320-0000-for-11-zero-days/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The Zeroday Cloud hacking competition in London has awarded researchers $320,000 for demonstrating critical remote code execution vulnerabilities in components used in cloud infrastructure. [...]
+
+### 2. [France arrests suspect tied to cyberattack on Interior Ministry](https://www.bleepingcomputer.com/news/security/france-arrests-suspect-tied-to-cyberattack-on-interior-ministry/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+French authorities arrested a 22-year-old suspect on Tuesday for a cyberattack that targeted France's Ministry of the Interior earlier this month. [...]
+
+### 3. [Amazon: Ongoing cryptomining campaign uses hacked AWS accounts](https://www.bleepingcomputer.com/news/security/amazon-ongoing-cryptomining-campaign-uses-hacked-aws-accounts/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Amazon's AWS GuardDuty security team is warning of an ongoing crypto-mining campaign that targets its Elastic Compute Cloud (EC2) and Elastic Container Service (ECS) using compromised credentials for Identity and Access Management (IAM). [...]
+
+### 4. [WhatsApp device linking abused in account hijacking attacks](https://www.bleepingcomputer.com/news/security/whatsapp-device-linking-abused-in-account-hijacking-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Threat actors are abusing the legitimate device-linking feature to hijack WhatsApp accounts via pairing codes in a campaign dubbed GhostPairing. [...]
+
+### 5. [Cisco warns of unpatched AsyncOS zero-day exploited in attacks](https://www.bleepingcomputer.com/news/security/cisco-warns-of-unpatched-asyncos-zero-day-exploited-in-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+​Cisco warned customers today of an unpatched, maximum-severity Cisco AsyncOS zero-day actively exploited in attacks targeting Secure Email Gateway (SEG) and Secure Email and Web Manager (SEWM) appliances. [...]
+
+### 6. [SonicWall Fixes Actively Exploited CVE-2025-40602 in SMA 100 Appliances](https://thehackernews.com/2025/12/sonicwall-fixes-actively-exploited-cve.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+SonicWall has rolled out fixes to address a security flaw in Secure Mobile Access (SMA) 100 series appliances that it said has been actively exploited in the wild.
+The vulnerability, tracked as CVE-2025-40602 (CVSS score: 6.6), concerns a case of local privilege escalation that arises as a result of
+
+### 7. [Kimwolf Botnet Hijacks 1.8 Million Android TVs, Launches Large-Scale DDoS Attacks](https://thehackernews.com/2025/12/kimwolf-botnet-hijacks-18-million.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A new distributed denial-of-service (DDoS) botnet known as Kimwolf has enlisted a massive army of no less than 1.8 million infected devices comprising Android-based TVs, set-top boxes, and tablets, and may be associated with another botnet known as AISURU, according to findings from QiAnXin XLab.
+"K
+
+### 8. [Sonicwall warns of new SMA1000 zero-day exploited in attacks](https://www.bleepingcomputer.com/news/security/sonicwall-warns-of-new-sma1000-zero-day-exploited-in-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 SonicWall warned customers today to patch a vulnerability in the SonicWall SMA1000 Appliance Management Console (AMC) that was chained in zero-day attacks to escalate privileges. [...]
 
-### 2. [Critical React2Shell flaw exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/critical-react2shell-flaw-exploited-in-ransomware-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [Critical React2Shell flaw exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/critical-react2shell-flaw-exploited-in-ransomware-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A ransomware gang exploited the critical React2Shell vulnerability (CVE-2025-55182) to gain initial access to corporate networks and deployed the file-encrypting malware less than a minute later. [...]
 
-### 3. [APT28 Targets Ukrainian UKR-net Users in Long-Running Credential Phishing Campaign](https://thehackernews.com/2025/12/apt28-targets-ukrainian-ukr-net-users.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [APT28 Targets Ukrainian UKR-net Users in Long-Running Credential Phishing Campaign](https://thehackernews.com/2025/12/apt28-targets-ukrainian-ukr-net-users.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Russian state-sponsored threat actor known as APT28 has been attributed to what has been described as a "sustained" credential-harvesting campaign targeting users of UKR[.]net, a webmail and news service popular in Ukraine.
 The activity, observed by Recorded Future's Insikt Group between June 20
 
-### 4. [New ForumTroll Phishing Attacks Target Russian Scholars Using Fake eLibrary Emails](https://thehackernews.com/2025/12/new-forumtroll-phishing-attacks-target.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [New ForumTroll Phishing Attacks Target Russian Scholars Using Fake eLibrary Emails](https://thehackernews.com/2025/12/new-forumtroll-phishing-attacks-target.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The threat actor linked to Operation ForumTroll has been attributed to a fresh set of phishing attacks targeting individuals within Russia, according to Kaspersky.
 The Russian cybersecurity vendor said it detected the new activity in October 2025. The origins of the threat actor are presently unknow
 
-### 5. [Your MFA Is Costing You Millions. It Doesn't Have To.](https://www.bleepingcomputer.com/news/security/your-mfa-is-costing-you-millions-it-doesnt-have-to/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [Your MFA Is Costing You Millions. It Doesn't Have To.](https://www.bleepingcomputer.com/news/security/your-mfa-is-costing-you-millions-it-doesnt-have-to/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Passwords and app-based MFA add hidden costs through lost productivity, frequent resets, and risk of phishing and social engineering attacks. Token explains how wireless biometric, passwordless authentication eliminates credential-based attacks and delivers measurable financial returns by reducing l
 
-### 6. [Microsoft asks admins to reach out for Windows IIS failures fix](https://www.bleepingcomputer.com/news/microsoft/microsoft-asks-it-admins-to-reach-out-for-windows-iis-failures-fix/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [Microsoft asks admins to reach out for Windows IIS failures fix](https://www.bleepingcomputer.com/news/microsoft/microsoft-asks-it-admins-to-reach-out-for-windows-iis-failures-fix/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has asked businesses to reach out for advice on how to temporarily mitigate a Message Queuing (MSMQ) issue causing enterprise apps and Internet Information Services (IIS) sites to fail. [...]
 
-### 7. [Fix SOC Blind Spots: See Threats to Your Industry & Country in Real Time](https://thehackernews.com/2025/12/fix-soc-blind-spots-see-threats-to-your.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [Fix SOC Blind Spots: See Threats to Your Industry & Country in Real Time](https://thehackernews.com/2025/12/fix-soc-blind-spots-see-threats-to-your.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Modern security teams often feel like they’re driving through fog with failing headlights. Threats accelerate, alerts multiply, and SOCs struggle to understand which dangers matter right now for their business. Breaking out of reactive defense is no longer optional. It’s the difference between preve
 
-### 8. [China-Linked Ink Dragon Hacks Governments Using ShadowPad and FINALDRAFT Malware](https://thehackernews.com/2025/12/china-linked-ink-dragon-hacks.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [China-Linked Ink Dragon Hacks Governments Using ShadowPad and FINALDRAFT Malware](https://thehackernews.com/2025/12/china-linked-ink-dragon-hacks.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The threat actor known as Jewelbug has been increasingly focusing on government targets in Europe since July 2025, even as it continues to attack entities located in Southeast Asia and South America.
 Check Point Research is tracking the cluster under the name Ink Dragon. It's also referenced by the 
-
-### 9. [GhostPoster Malware Found in 17 Firefox Add-ons with 50,000+ Downloads](https://thehackernews.com/2025/12/ghostposter-malware-found-in-17-firefox.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-A new campaign named GhostPoster has leveraged logo files associated with 17 Mozilla Firefox browser add-ons to embed malicious JavaScript code designed to hijack affiliate links, inject tracking code, and commit click and ad fraud.
-The extensions have been collectively downloaded over 50,000 times,
-
-### 10. [Cellik Android malware builds malicious versions from Google Play apps](https://www.bleepingcomputer.com/news/security/cellik-android-malware-builds-malicious-versions-from-google-play-apps/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A new Android malware-as-a-service (MaaS) named Cellik is being advertised on underground cybercrime forums offering a robust set of capabilities that include the option to embed it in any app available on the Google Play Store. [...]
-
-### 11. [GhostPoster attacks hide malicious JavaScript in Firefox addon logos](https://www.bleepingcomputer.com/news/security/ghostposter-attacks-hide-malicious-javascript-in-firefox-addon-logos/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A new campaign dubbed 'GhostPoster' is hiding JavaScript code in the image logo of malicious Firefox extensions counting more than 50,000 downloads, to monitor browser activity and plant a backdoor. [...]
-
-### 12. [Amazon disrupts Russian GRU hackers attacking edge network devices](https://www.bleepingcomputer.com/news/security/amazon-disrupts-russian-gru-hackers-attacking-edge-network-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The Amazon Threat Intelligence team has disrupted active operations attributed to hackers working for the Russian foreign military intelligence agency, the GRU, who targeted customers' cloud infrastructure. [...]
-
-### 13. [Texas sues TV makers for taking screenshots of what people watch](https://www.bleepingcomputer.com/news/security/texas-sues-tv-makers-for-spying-on-users-selling-data-without-consent/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The Texas Attorney General sued five major television manufacturers, accusing them of illegally collecting their users' data by secretly recording what they watch using Automated Content Recognition (ACR) technology. [...]
-
-### 14. [Compromised IAM Credentials Power a Large AWS Crypto Mining Campaign](https://thehackernews.com/2025/12/compromised-iam-credentials-power-large.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-An ongoing campaign has been observed targeting Amazon Web Services (AWS) customers using compromised Identity and Access Management (IAM) credentials to enable cryptocurrency mining.
-The activity, first detected by Amazon's GuardDuty managed threat detection service and its automated security monit
-
-### 15. [Hackers exploit newly patched Fortinet auth bypass flaws](https://www.bleepingcomputer.com/news/security/hackers-exploit-newly-patched-fortinet-auth-bypass-flaws/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Hackers are exploiting critical-severity vulnerabilities affecting multiple Fortinet products to get unauthorized access to admin accounts and steal system configuration files. [...]
 
 ---
 
