@@ -13,61 +13,61 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Sun, 21 Dec 2025 12:41:39 GMT
+**Last Update:** Sun, 21 Dec 2025 18:30:28 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Understanding the Generative AI User](https://towardsdatascience.com/understanding-the-generative-ai-user/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [How to Do Evals on a Bloated RAG Pipeline](https://towardsdatascience.com/doing-evals-on-a-bloated-rag-pipeline/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Comparing metrics across datasets and models
+The post How to Do Evals on a Bloated RAG Pipeline appeared first on Towards Data Science.
+
+### 2. [Tools for Your LLM: a Deep Dive into MCP](https://towardsdatascience.com/tools-for-your-llm-a-deep-dive-into-mcp/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+MCP is a key enabler into turning your LLM into an agent by providing it with tools to retrieve real-time information or perform actions.
+The post Tools for Your LLM: a Deep Dive into MCP appeared first on Towards Data Science.
+
+### 3. [Understanding the Generative AI User](https://towardsdatascience.com/understanding-the-generative-ai-user/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 What do regular technology users think (and know) about AI?
 The post Understanding the Generative AI User appeared first on Towards Data Science.
 
-### 2. [EDA in Public (Part 2): Product Deep Dive & Time-Series Analysis in Pandas](https://towardsdatascience.com/eda-in-public-part-2-product-deep-dive-time-series-analysis-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [EDA in Public (Part 2): Product Deep Dive & Time-Series Analysis in Pandas](https://towardsdatascience.com/eda-in-public-part-2-product-deep-dive-time-series-analysis-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to analyze product performance, extract time-series features, and uncover key seasonal trends in your sales data.
 The post EDA in Public (Part 2): Product Deep Dive & Time-Series Analysis in Pandas appeared first on Towards Data Science.
 
-### 3. [The Machine Learning “Advent Calendar” Day 19: Bagging in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-19-bagging-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [The Machine Learning “Advent Calendar” Day 19: Bagging in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-19-bagging-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding ensemble learning from first principles in Excel
 The post The Machine Learning “Advent Calendar” Day 19: Bagging in Excel appeared first on Towards Data Science.
 
-### 4. [Agentic AI Swarm Optimization using Artificial Bee Colonization (ABC)](https://towardsdatascience.com/agentic-ai-swarm-optimization-using-artificial-bee-colonization-abc/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Agentic AI Swarm Optimization using Artificial Bee Colonization (ABC)](https://towardsdatascience.com/agentic-ai-swarm-optimization-using-artificial-bee-colonization-abc/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Using Agentic AI prompts with the Artificial Bee Colony algorithm to enhance unsupervised clustering and optimization workflows.
 The post Agentic AI Swarm Optimization using Artificial Bee Colonization (ABC) appeared first on Towards Data Science.
 
-### 5. [How I Optimized My Leaf Raking Strategy Using Linear Programming](https://towardsdatascience.com/how-i-optimized-my-leaf-raking-strategy-using-linear-programming/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [How I Optimized My Leaf Raking Strategy Using Linear Programming](https://towardsdatascience.com/how-i-optimized-my-leaf-raking-strategy-using-linear-programming/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From a weekend chore to a fun application of valuable operations research principles
 The post How I Optimized My Leaf Raking Strategy Using Linear Programming appeared first on Towards Data Science.
 
-### 6. [Six Lessons Learned Building RAG Systems in Production](https://towardsdatascience.com/six-lessons-learned-building-rag-systems-in-production/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Six Lessons Learned Building RAG Systems in Production](https://towardsdatascience.com/six-lessons-learned-building-rag-systems-in-production/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Best practices for data quality, retrieval design, and evaluation in production RAG systems
 The post Six Lessons Learned Building RAG Systems in Production appeared first on Towards Data Science.
 
-### 7. [2025 Must-Reads: Agents, Python, LLMs, and More](https://towardsdatascience.com/2025-must-reads-agents-python-llms-and-more/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [2025 Must-Reads: Agents, Python, LLMs, and More](https://towardsdatascience.com/2025-must-reads-agents-python-llms-and-more/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Don't miss our most popular articles of the past year!
 The post 2025 Must-Reads: Agents, Python, LLMs, and More appeared first on Towards Data Science.
 
-### 8. [The Machine Learning “Advent Calendar” Day 18: Neural Network Classifier in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-18-neural-network-classifier-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [The Machine Learning “Advent Calendar” Day 18: Neural Network Classifier in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-18-neural-network-classifier-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding forward propagation and backpropagation through explicit formulas
 The post The Machine Learning “Advent Calendar” Day 18: Neural Network Classifier in Excel appeared first on Towards Data Science.
-
-### 9. [4 Ways to Supercharge Your Data Science Workflow with Google AI Studio](https://towardsdatascience.com/4-ways-to-supercharge-your-data-science-workflow-with-google-ai-studio/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-With concrete examples of using AI Studio Build mode to learn faster, prototype smarter, communicate clearer, and automate quicker.
-The post 4 Ways to Supercharge Your Data Science Workflow with Google AI Studio appeared first on Towards Data Science.
-
-### 10. [The Subset Sum Problem Solved in Linear Time for Dense Enough Inputs](https://towardsdatascience.com/subset-sum-problem-solved-in-linear-time-for-dense-enough-inputs/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-An optimal solution to the well-known NP-complete problem, when the input values are close enough to each other.
-The post The Subset Sum Problem Solved in Linear Time for Dense Enough Inputs appeared first on Towards Data Science.
 
 ---
 
