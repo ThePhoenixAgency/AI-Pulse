@@ -13,60 +13,60 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Wed, 24 Dec 2025 01:47:53 GMT
+**Last Update:** Wed, 24 Dec 2025 06:36:24 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [How Agents Plan Tasks with To-Do Lists](https://towardsdatascience.com/how-agents-plan-tasks-with-to-do-lists/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [The Machine Learning “Advent Calendar” Day 23: CNN in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-23-cnn-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+A step-by-step 1D CNN for text, built in Excel, where every filter, weight, and decision is fully visible.
+The post The Machine Learning “Advent Calendar” Day 23: CNN in Excel appeared first on Towards Data Science.
+
+### 2. [How Agents Plan Tasks with To-Do Lists](https://towardsdatascience.com/how-agents-plan-tasks-with-to-do-lists/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding the process behind agentic planning and task management in LangChain
 The post How Agents Plan Tasks with To-Do Lists appeared first on Towards Data Science.
 
-### 2. [Stop Retraining Blindly: Use PSI to Build a Smarter Monitoring Pipeline](https://towardsdatascience.com/stop-retraining-blindly-use-psi-to-build-a-smarter-monitoring-pipeline/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 3. [Stop Retraining Blindly: Use PSI to Build a Smarter Monitoring Pipeline](https://towardsdatascience.com/stop-retraining-blindly-use-psi-to-build-a-smarter-monitoring-pipeline/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A data scientist's guide to population stability index (PSI)
 The post Stop Retraining Blindly: Use PSI to Build a Smarter Monitoring Pipeline appeared first on Towards Data Science.
 
-### 3. [Synergy in Clicks: Harsanyi Dividends for E-Commerce](https://towardsdatascience.com/synergy-in-clicks-harsanyi-dividends-for-e-commerce/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [Synergy in Clicks: Harsanyi Dividends for E-Commerce](https://towardsdatascience.com/synergy-in-clicks-harsanyi-dividends-for-e-commerce/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A brief overview of the math behind the Harsanyi Dividend and a real-world application in Streamlit
 The post Synergy in Clicks: Harsanyi Dividends for E-Commerce appeared first on Towards Data Science.
 
-### 4. [The Machine Learning “Advent Calendar” Day 22: Embeddings in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-22-embeddings-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [The Machine Learning “Advent Calendar” Day 22: Embeddings in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-22-embeddings-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding text embeddings through simple models and Excel
 The post The Machine Learning “Advent Calendar” Day 22: Embeddings in Excel appeared first on Towards Data Science.
 
-### 5. [The Machine Learning “Advent Calendar” Day 21: Gradient Boosted Decision Tree Regressor in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-21-gradient-boosted-decision-tree-regressor-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [The Machine Learning “Advent Calendar” Day 21: Gradient Boosted Decision Tree Regressor in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-21-gradient-boosted-decision-tree-regressor-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Gradient descent in function space with decision trees
 The post The Machine Learning “Advent Calendar” Day 21: Gradient Boosted Decision Tree Regressor in Excel appeared first on Towards Data Science.
 
-### 6. [The Machine Learning “Advent Calendar” Day 20: Gradient Boosted Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-20-gradient-boosted-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [The Machine Learning “Advent Calendar” Day 20: Gradient Boosted Linear Regression in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-20-gradient-boosted-linear-regression-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From Random Ensembles to Optimization: Gradient Boosting Explained
 The post The Machine Learning “Advent Calendar” Day 20: Gradient Boosted Linear Regression in Excel appeared first on Towards Data Science.
 
-### 7. [ChatLLM Presents a Streamlined Solution to Addressing the Real Bottleneck in AI](https://towardsdatascience.com/chatllm-presents-a-streamlined-solution-to-addressing-the-real-bottleneck-in-ai/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [ChatLLM Presents a Streamlined Solution to Addressing the Real Bottleneck in AI](https://towardsdatascience.com/chatllm-presents-a-streamlined-solution-to-addressing-the-real-bottleneck-in-ai/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 For the last couple of years, a lot of the conversation around AI has revolved around a single, deceptively simple question: Which model is the best? But the next question was always, the best for what?  The best for reasoning? Writing? Coding? Or maybe it’s the best for images, audio, or video? Tha
 
-### 8. [The Geometry of Laziness: What Angles Reveal About AI Hallucinations](https://towardsdatascience.com/the-geometry-of-laziness-what-angles-reveal-about-ai-hallucinations/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [The Geometry of Laziness: What Angles Reveal About AI Hallucinations](https://towardsdatascience.com/the-geometry-of-laziness-what-angles-reveal-about-ai-hallucinations/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A story about failing forward, spheres you can’t visualize, and why sometimes the math knows things before we do
 The post The Geometry of Laziness: What Angles Reveal About AI Hallucinations appeared first on Towards Data Science.
 
-### 9. [Understanding Vibe Proving](https://towardsdatascience.com/understanding-vibe-proving-part-1/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Understanding Vibe Proving](https://towardsdatascience.com/understanding-vibe-proving-part-1/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to make LLMs reason with verifiable, step-by-step logic (Part 1)
 The post Understanding Vibe Proving appeared first on Towards Data Science.
-
-### 10. [What Happens When You Build an LLM Using Only 1s and 0s](https://towardsdatascience.com/what-happens-when-you-build-an-llm-using-only-1s-and-0s/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-An LLM that's 41× more efficient and 9× faster than today's standard models
-The post What Happens When You Build an LLM Using Only 1s and 0s appeared first on Towards Data Science.
 
 ---
 
