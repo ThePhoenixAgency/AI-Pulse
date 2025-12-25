@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Thu, 25 Dec 2025 06:35:58 GMT
+**Last Update:** Thu, 25 Dec 2025 12:45:00 GMT
 
 ---
 
@@ -73,71 +73,73 @@ The post The Machine Learning “Advent Calendar” Day 21: Gradient Boosted Dec
 
 ## 🔒 Cybersecurity
 
-### 1. [OpenAI is reportedly testing Claude-like Skills for ChatGPT](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-reportedly-testing-claude-like-skills-for-chatgpt/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Fortinet Warns of Active Exploitation of FortiOS SSL VPN 2FA Bypass Vulnerability](https://thehackernews.com/2025/12/fortinet-warns-of-active-exploitation.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Fortinet on Wednesday said it observed "recent abuse" of a five-year-old security flaw in FortiOS SSL VPN in the wild under certain configurations.
+The vulnerability in question is CVE-2020-12812 (CVSS score: 5.2), an improper authentication vulnerability in SSL VPN in FortiOS that could allow a use
+
+### 2. [CISA Flags Actively Exploited Digiever NVR Vulnerability Allowing Remote Code Execution](https://thehackernews.com/2025/12/cisa-flags-actively-exploited-digiever.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) added a security flaw impacting Digiever DS-2105 Pro network video recorders (NVRs) to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
+The vulnerability, tracked as CVE-2023-52163 (CVSS score:
+
+### 3. [OpenAI is reportedly testing Claude-like Skills for ChatGPT](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-reportedly-testing-claude-like-skills-for-chatgpt/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 OpenAI is testing a new ChatGPT feature called "Skills," which will be similar to Claude's feature, also called Skills. [...]
 
-### 2. [Fake MAS Windows activation domain used to spread PowerShell malware](https://www.bleepingcomputer.com/news/security/fake-mas-windows-activation-domain-used-to-spread-powershell-malware/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [Fake MAS Windows activation domain used to spread PowerShell malware](https://www.bleepingcomputer.com/news/security/fake-mas-windows-activation-domain-used-to-spread-powershell-malware/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A typosquatted domain impersonating the Microsoft Activation Scripts (MAS) tool was used to distribute malicious PowerShell scripts that infect Windows systems with the 'Cosmali Loader'. [...]
 
-### 3. [New MacSync macOS Stealer Uses Signed App to Bypass Apple Gatekeeper](https://thehackernews.com/2025/12/new-macsync-macos-stealer-uses-signed.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [New MacSync macOS Stealer Uses Signed App to Bypass Apple Gatekeeper](https://thehackernews.com/2025/12/new-macsync-macos-stealer-uses-signed.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new variant of a macOS information stealer called MacSync that's delivered by means of a digitally signed, notarized Swift application masquerading as a messaging app installer to bypass Apple's Gatekeeper checks.
 "Unlike earlier MacSync Stealer variants t
 
-### 4. [Microsoft Teams to let admins block external users via Defender portal](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-let-admins-block-external-users-via-defender-portal/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Microsoft Teams to let admins block external users via Defender portal](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-let-admins-block-external-users-via-defender-portal/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced that security administrators will soon be able to block external users from sending messages, calls, or meeting invitations to members of their organization via Teams. [...]
 
-### 5. [MongoDB warns admins to patch severe RCE flaw immediately](https://www.bleepingcomputer.com/news/security/mongodb-warns-admins-to-patch-severe-rce-flaw-immediately/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [MongoDB warns admins to patch severe RCE flaw immediately](https://www.bleepingcomputer.com/news/security/mongodb-warns-admins-to-patch-severe-rce-flaw-immediately/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-MongoDB has warned IT admins to immediately patch a high-severity vulnerability that can be exploited in remote code execution (RCE) attacks targeting vulnerable servers. [...]
+MongoDB has warned IT admins to immediately patch a high-severity vulnerability that may be exploited in remote code execution (RCE) attacks targeting vulnerable servers. [...]
 
-### 6. [FBI seizes domain storing bank credentials stolen from U.S. victims](https://www.bleepingcomputer.com/news/security/fbi-seizes-domain-storing-bank-credentials-stolen-from-us-victims/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [FBI seizes domain storing bank credentials stolen from U.S. victims](https://www.bleepingcomputer.com/news/security/fbi-seizes-domain-storing-bank-credentials-stolen-from-us-victims/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. government has seized the 'web3adspanels.org' domain and the associated database used by cybercriminals to host bank login credentials stolen in account takeover attacks. [...]
 
-### 7. [Nomani Investment Scam Surges 62% Using AI Deepfake Ads on Social Media](https://thehackernews.com/2025/12/nomani-investment-scam-surges-62-using.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [Nomani Investment Scam Surges 62% Using AI Deepfake Ads on Social Media](https://thehackernews.com/2025/12/nomani-investment-scam-surges-62-using.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The fraudulent investment scheme known as Nomani has witnessed an increase by 62%, according to data from ESET, as campaigns distributing the threat have also expanded beyond Facebook to include other social media platforms, such as YouTube.
 The Slovak cybersecurity company said it blocked over 64,0
 
-### 8. [Attacks are Evolving: 3 Ways to Protect Your Business in 2026](https://thehackernews.com/2025/12/attacks-are-evolving-3-ways-to-protect.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Attacks are Evolving: 3 Ways to Protect Your Business in 2026](https://thehackernews.com/2025/12/attacks-are-evolving-3-ways-to-protect.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Every year, cybercriminals find new ways to steal money and data from businesses. Breaching a business network, extracting sensitive data, and selling it on the dark web has become a reliable payday. 
 But in 2025, the data breaches that affected small and medium-sized businesses (SMBs) challenged ou
 
-### 9. [SEC Files Charges Over $14 Million Crypto Scam Using Fake AI-Themed Investment Tips](https://thehackernews.com/2025/12/sec-files-charges-over-14-million.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [SEC Files Charges Over $14 Million Crypto Scam Using Fake AI-Themed Investment Tips](https://thehackernews.com/2025/12/sec-files-charges-over-14-million.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Securities and Exchange Commission (SEC) has filed charges against multiple companies for their alleged involvement in an elaborate cryptocurrency scam that swindled more than $14 million from retail investors.
 The complaint charged crypto asset trading platforms Morocoin Tech Corp., Berge 
 
-### 10. [Italy Fines Apple €98.6 Million Over ATT Rules Limiting App Store Competition](https://thehackernews.com/2025/12/italy-fines-apple-986-million-over-att.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [Italy Fines Apple €98.6 Million Over ATT Rules Limiting App Store Competition](https://thehackernews.com/2025/12/italy-fines-apple-986-million-over-att.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Apple has been fined €98.6 million ($116 million) by Italy's antitrust authority after finding that the company's App Tracking Transparency (ATT) privacy framework restricted App Store competition.
 The Italian Competition Authority (Autorità Garante della Concorrenza e del Mercato, or AGCM) said the
 
-### 11. [Microsoft rolls out hardware-accelerated BitLocker in Windows 11](https://www.bleepingcomputer.com/news/security/microsoft-rolls-out-hardware-accelerated-bitlocker-in-windows-11/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [Microsoft rolls out hardware-accelerated BitLocker in Windows 11](https://www.bleepingcomputer.com/news/security/microsoft-rolls-out-hardware-accelerated-bitlocker-in-windows-11/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is rolling out hardware-accelerated BitLocker in Windows 11 to address growing performance and security concerns by leveraging the capabilities of system-on-a-chip and CPU. [...]
 
-### 12. [WebRAT malware spread via fake vulnerability exploits on GitHub](https://www.bleepingcomputer.com/news/security/webrat-malware-spread-via-fake-vulnerability-exploits-on-github/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [WebRAT malware spread via fake vulnerability exploits on GitHub](https://www.bleepingcomputer.com/news/security/webrat-malware-spread-via-fake-vulnerability-exploits-on-github/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The WebRAT malware is now being distributed through GitHub repositories that claim to host proof-of-concept exploits for recently disclosed vulnerabilities. [...]
 
-### 13. [Two Chrome Extensions Caught Secretly Stealing Credentials from Over 170 Sites](https://thehackernews.com/2025/12/two-chrome-extensions-caught-secretly.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [Two Chrome Extensions Caught Secretly Stealing Credentials from Over 170 Sites](https://thehackernews.com/2025/12/two-chrome-extensions-caught-secretly.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered two malicious Google Chrome extensions with the same name and published by the same developer that come with capabilities to intercept traffic and capture user credentials.
 The extensions are advertised as a "multi-location network speed test plug-in" for de
-
-### 14. [Malicious extensions in Chrome Web store steal user credentials](https://www.bleepingcomputer.com/news/security/malicious-extensions-in-chrome-web-store-steal-user-credentials/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Two Chrome extensions in the Web Store named 'Phantom Shuttle' are posing as plugins for a proxy service to hijack user traffic and steal sensitive data. [...]
-
-### 15. [Microsoft Teams strengthens messaging security by default in January](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-strengthens-messaging-security-by-default-in-january/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft Teams will automatically enable messaging safety features by default in January to strengthen defenses against content tagged as malicious. [...]
 
 ---
 
