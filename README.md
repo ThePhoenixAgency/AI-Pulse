@@ -13,61 +13,60 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Sat, 27 Dec 2025 12:42:40 GMT
+**Last Update:** Sat, 27 Dec 2025 18:30:41 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Think Your Python Code Is Slow? Stop Guessing and Start Measuring](https://towardsdatascience.com/think-your-python-code-is-slow-stop-guessing-and-start-measuring/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Exploring TabPFN: A Foundation Model Built for Tabular Data](https://towardsdatascience.com/exploring-tabpfn-a-foundation-model-built-for-tabular-data/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Understanding the architecture, training pipeline and implementing TabPFN in practice
+The post Exploring TabPFN: A Foundation Model Built for Tabular Data appeared first on Towards Data Science.
+
+### 2. [How IntelliNode Automates Complex Workflows with Vibe Agents](https://towardsdatascience.com/agents-that-write-agents/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Many AI systems focus on isolated tasks or simple prompt engineering. This approach allowed us to build interesting applications from a single prompt, but we are starting to hit a limit. Simple prompting falls short when we tackle complex AI tasks that require multiple stages or enterprise systems t
+
+### 3. [Think Your Python Code Is Slow? Stop Guessing and Start Measuring](https://towardsdatascience.com/think-your-python-code-is-slow-stop-guessing-and-start-measuring/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A hands-on tour of using cProfile + SnakeViz to find (and fix) the "hot" paths in your code.
 The post Think Your Python Code Is Slow? Stop Guessing and Start Measuring appeared first on Towards Data Science.
 
-### 2. [How to Build an AI-Powered Weather ETL Pipeline with Databricks and GPT-4o: From API To Dashboard](https://towardsdatascience.com/how-to-build-an-ai-powered-weather-etl-pipeline-with-databricks-and-gpt-4o-from-api-to-dashboard/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [How to Build an AI-Powered Weather ETL Pipeline with Databricks and GPT-4o: From API To Dashboard](https://towardsdatascience.com/how-to-build-an-ai-powered-weather-etl-pipeline-with-databricks-and-gpt-4o-from-api-to-dashboard/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A step-by-step guide from weather API ETL to dashboard on Databricks
 The post How to Build an AI-Powered Weather ETL Pipeline with Databricks and GPT-4o: From API To Dashboard appeared first on Towards Data Science.
 
-### 3. [Keeping Probabilities Honest: The Jacobian Adjustment](https://towardsdatascience.com/keeping-probabilities-honest-the-jacobian-adjustment/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Keeping Probabilities Honest: The Jacobian Adjustment](https://towardsdatascience.com/keeping-probabilities-honest-the-jacobian-adjustment/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An intuitive explanation of transforming random variables correctly.
 The post Keeping Probabilities Honest: The Jacobian Adjustment appeared first on Towards Data Science.
 
-### 4. [Why MAP and MRR Fail for Search Ranking (and What to Use Instead)](https://towardsdatascience.com/why-map-and-mrr-fail-for-search-ranking-and-what-to-use-instead/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Why MAP and MRR Fail for Search Ranking (and What to Use Instead)](https://towardsdatascience.com/why-map-and-mrr-fail-for-search-ranking-and-what-to-use-instead/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 MAP and MRR look intuitive, but they quietly break ranking evaluation. Here’s why these metrics mislead—and how better alternatives fix it. 
 The post Why MAP and MRR Fail for Search Ranking (and What to Use Instead) appeared first on Towards Data Science.
 
-### 5. [The Machine Learning “Advent Calendar” Day 24: Transformers for Text in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-24-transformers-for-text-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [The Machine Learning “Advent Calendar” Day 24: Transformers for Text in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-24-transformers-for-text-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An intuitive, step-by-step look at how Transformers use self-attention to turn static word embeddings into contextual representations, illustrated with simple examples and an Excel-friendly walkthrough.
 The post The Machine Learning “Advent Calendar” Day 24: Transformers for Text in Excel appeared f
 
-### 6. [Is Your Model Time-Blind? The Case for Cyclical Feature Encoding](https://towardsdatascience.com/is-your-model-time-blind-the-case-for-cyclical-feature-encoding/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Is Your Model Time-Blind? The Case for Cyclical Feature Encoding](https://towardsdatascience.com/is-your-model-time-blind-the-case-for-cyclical-feature-encoding/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How cyclical encoding improves machine learning prediction
 The post Is Your Model Time-Blind? The Case for Cyclical Feature Encoding appeared first on Towards Data Science.
 
-### 7. [4 Techniques to Optimize AI Coding Efficiency](https://towardsdatascience.com/4-techniques-to-optimize-ai-coding-efficiency/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [4 Techniques to Optimize AI Coding Efficiency](https://towardsdatascience.com/4-techniques-to-optimize-ai-coding-efficiency/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to code more effectively using AI
 The post 4 Techniques to Optimize AI Coding Efficiency appeared first on Towards Data Science.
 
-### 8. [Bonferroni vs. Benjamini-Hochberg: Choosing Your P-Value Correction](https://towardsdatascience.com/the-time-10-99-was-too-big-superheavy-elements-and-deceit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Bonferroni vs. Benjamini-Hochberg: Choosing Your P-Value Correction](https://towardsdatascience.com/the-time-10-99-was-too-big-superheavy-elements-and-deceit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Multiple hypothesis testing, P-values, and Monte Carlo
 The post Bonferroni vs. Benjamini-Hochberg: Choosing Your P-Value Correction appeared first on Towards Data Science.
-
-### 9. [The Machine Learning “Advent Calendar” Day 23: 1D CNN for Text in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-day-23-cnn-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-A step-by-step 1D CNN for text, built in Excel, where every filter, weight, and decision is fully visible.
-The post The Machine Learning “Advent Calendar” Day 23: 1D CNN for Text in Excel appeared first on Towards Data Science.
-
-### 10. [How Agents Plan Tasks with To-Do Lists](https://towardsdatascience.com/how-agents-plan-tasks-with-to-do-lists/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Understanding the process behind agentic planning and task management in LangChain
-The post How Agents Plan Tasks with To-Do Lists appeared first on Towards Data Science.
 
 ---
 
