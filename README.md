@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Thu, 01 Jan 2026 06:36:14 GMT
+**Last Update:** Thu, 01 Jan 2026 12:47:05 GMT
 
 ---
 
@@ -71,71 +71,72 @@ The post Implementing Vibe Proving with Reinforcement Learning appeared first on
 
 ## 🔒 Cybersecurity
 
-### 1. [NYC mayoral inauguration bans Flipper Zero, Raspberry Pi devices ](https://www.bleepingcomputer.com/news/security/nyc-mayoral-inauguration-bans-flipper-zero-raspberry-pi-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [RondoDox Botnet Exploits Critical React2Shell Flaw to Hijack IoT Devices and Web Servers](https://thehackernews.com/2026/01/rondodox-botnet-exploits-critical.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity researchers have disclosed details of a persistent nine-month-long campaign that has targeted Internet of Things (IoT) devices and web applications to enroll them into a botnet known as RondoDox.
+As of December 2025, the activity has been observed leveraging the recently disclosed Reac
+
+### 2. [NYC mayoral inauguration bans Flipper Zero, Raspberry Pi devices ](https://www.bleepingcomputer.com/news/security/nyc-mayoral-inauguration-bans-flipper-zero-raspberry-pi-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 New York City's 2026 mayoral inauguration of Zohran Mamdani has published a list of banned items for the event, specifically prohibiting the Flipper Zero and Raspberry Pi devices. [...]
 
-### 2. [Trust Wallet Chrome Extension Hack Drains $8.5M via Shai-Hulud Supply Chain Attack](https://thehackernews.com/2025/12/trust-wallet-chrome-extension-hack.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 3. [Trust Wallet Chrome Extension Hack Drains $8.5M via Shai-Hulud Supply Chain Attack](https://thehackernews.com/2025/12/trust-wallet-chrome-extension-hack.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Trust Wallet on Tuesday revealed that the second iteration of the Shai-Hulud (aka Sha1-Hulud) supply chain outbreak in November 2025 was likely responsible for the hack of its Google Chrome extension, ultimately resulting in the theft of approximately $8.5 million in assets.
 "Our Developer GitHub se
 
-### 3. [DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide](https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide](https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The threat actor behind two malicious browser extension campaigns, ShadyPanda and GhostPoster, has been attributed to a third attack campaign codenamed DarkSpectre that has impacted 2.2 million users of Google Chrome, Microsoft Edge, and Mozilla Firefox.
 The activity is assessed to be the work of a 
 
-### 4. [Hackers drain $3.9M from Unleash Protocol after multisig hijack](https://www.bleepingcomputer.com/news/security/hackers-drain-39m-from-unleash-protocol-after-multisig-hijack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Hackers drain $3.9M from Unleash Protocol after multisig hijack](https://www.bleepingcomputer.com/news/security/hackers-drain-39m-from-unleash-protocol-after-multisig-hijack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The decentralized intellectual property platform Unleash Protocol has lost around $3.9 million worth of cryptocurrency after someone executed an unauthorized contract upgrade that allowed asset withdrawals. [...]
 
-### 5. [RondoDox botnet exploits React2Shell flaw to breach Next.js servers](https://www.bleepingcomputer.com/news/security/rondodox-botnet-exploits-react2shell-flaw-to-breach-nextjs-servers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [RondoDox botnet exploits React2Shell flaw to breach Next.js servers](https://www.bleepingcomputer.com/news/security/rondodox-botnet-exploits-react2shell-flaw-to-breach-nextjs-servers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The RondoDox botnet has been observed exploiting the critical React2Shell flaw (CVE-2025-55182) to infect vulnerable Next.js servers with malware and cryptominers. [...]
 
-### 6. [Critical CVSS 9.8 Flaw Found in IBM API Connect Authentication System](https://thehackernews.com/2025/12/ibm-warns-of-critical-api-connect-bug.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [Critical CVSS 9.8 Flaw Found in IBM API Connect Authentication System](https://thehackernews.com/2025/12/ibm-warns-of-critical-api-connect-bug.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 IBM has disclosed details of a critical security flaw in API Connect that could allow attackers to gain remote access to the application.
 The vulnerability, tracked as CVE-2025-13915, is rated 9.8 out of a maximum of 10.0 on the CVSS scoring system. It has been described as an authentication bypass 
 
-### 7. [Researchers Spot Modified Shai-Hulud Worm Testing Payload on npm Registry](https://thehackernews.com/2025/12/researchers-spot-modified-shai-hulud.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Researchers Spot Modified Shai-Hulud Worm Testing Payload on npm Registry](https://thehackernews.com/2025/12/researchers-spot-modified-shai-hulud.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of what appears to be a new strain of Shai Hulud on the npm registry with slight modifications from the previous wave observed last month.
 The npm package that embeds the novel Shai Hulud strain is "@vietmoney/react-big-calendar," which was uploaded t
 
-### 8. [IBM warns of critical API Connect auth bypass vulnerability](https://www.bleepingcomputer.com/news/security/ibm-warns-of-critical-api-connect-auth-bypass-vulnerability/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [IBM warns of critical API Connect auth bypass vulnerability](https://www.bleepingcomputer.com/news/security/ibm-warns-of-critical-api-connect-auth-bypass-vulnerability/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 IBM urged customers to patch a critical authentication bypass vulnerability in its API Connect enterprise platform that could allow attackers to access apps remotely. [...]
 
-### 9. [Disney will pay $10 million to settle children's data privacy lawsuit](https://www.bleepingcomputer.com/news/security/disney-will-pay-10m-to-settle-claims-of-childrens-privacy-violations-on-youtube/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Disney will pay $10 million to settle children's data privacy lawsuit](https://www.bleepingcomputer.com/news/security/disney-will-pay-10m-to-settle-claims-of-childrens-privacy-violations-on-youtube/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Disney has agreed to pay a $10 million civil penalty to settle claims that it violated the Children's Online Privacy Protection Act by mislabeling videos and allowing data collection for targeted advertising. [...]
 
-### 10. [U.S. Treasury Lifts Sanctions on Three Individuals Linked to Intellexa and Predator Spyware](https://thehackernews.com/2025/12/us-treasury-lifts-sanctions-on-three.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [U.S. Treasury Lifts Sanctions on Three Individuals Linked to Intellexa and Predator Spyware](https://thehackernews.com/2025/12/us-treasury-lifts-sanctions-on-three.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Department of the Treasury's Office of Foreign Assets Control (OFAC) on Tuesday removed three individuals linked to the Intellexa Consortium, the holding company behind a commercial spyware known as Predator, from the specially designated nationals list.
 The names of the individuals are as 
 
-### 11. [New ErrTraffic service enables ClickFix attacks via fake browser glitches](https://www.bleepingcomputer.com/news/security/new-errtraffic-service-enables-clickfix-attacks-via-fake-browser-glitches/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [New ErrTraffic service enables ClickFix attacks via fake browser glitches](https://www.bleepingcomputer.com/news/security/new-errtraffic-service-enables-clickfix-attacks-via-fake-browser-glitches/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new cybercrime tool called ErrTraffic allows threat actors to automate ClickFix attacks by generating 'fake glitches' on compromised websites to lure users into downloading payloads or following malicious instructions [...]
 
-### 12. [CSA Issues Alert on Critical SmarterMail Bug Allowing Remote Code Execution](https://thehackernews.com/2025/12/csa-issues-alert-on-critical.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [CSA Issues Alert on Critical SmarterMail Bug Allowing Remote Code Execution](https://thehackernews.com/2025/12/csa-issues-alert-on-critical.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Cyber Security Agency of Singapore (CSA) has issued a bulletin warning of a maximum-severity security flaw in SmarterTools SmarterMail email software that could be exploited to achieve remote code execution.
 The vulnerability, tracked as CVE-2025-52691, carries a CVSS score of 10.0. It relates t
 
-### 13. [European Space Agency confirms breach of "external servers"](https://www.bleepingcomputer.com/news/security/european-space-agency-confirms-breach-of-external-servers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [European Space Agency confirms breach of "external servers"](https://www.bleepingcomputer.com/news/security/european-space-agency-confirms-breach-of-external-servers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The European Space Agency (ESA) confirmed that attackers recently breached servers outside its corporate network, which contained what it described as "unclassified" information on collaborative engineering activities. [...]
 
-### 14. [Zoom Stealer browser extensions harvest corporate meeting intelligence](https://www.bleepingcomputer.com/news/security/zoom-stealer-browser-extensions-harvest-corporate-meeting-intelligence/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [Zoom Stealer browser extensions harvest corporate meeting intelligence](https://www.bleepingcomputer.com/news/security/zoom-stealer-browser-extensions-harvest-corporate-meeting-intelligence/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly discovered campaign, which researchers call Zoom Stealer, is affecting 2.2 million Chrome, Firefox, and Microsoft Edge users through 18 extensions that collect online meeting-related data like URLs, IDs, topics, descriptions, and embedded passwords. [...]
-
-### 15. [US cybersecurity experts plead guilty to BlackCat ransomware attacks](https://www.bleepingcomputer.com/news/security/us-cybersecurity-experts-plead-guilty-to-blackcat-alphv-ransomware-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Two former employees of cybersecurity incident response companies Sygnia and DigitalMint have pleaded guilty to targeting U.S. companies in BlackCat (ALPHV) ransomware attacks in 2023. [...]
 
 ---
 
