@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Thu, 01 Jan 2026 02:00:44 GMT
+**Last Update:** Thu, 01 Jan 2026 06:36:14 GMT
 
 ---
 
@@ -93,7 +93,7 @@ The decentralized intellectual property platform Unleash Protocol has lost aroun
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The RondoDox botnet has been observed exploiting the critical React2Shell flaw (CVE-2025-55182) to infect vulnerable Next.js servers with malware and cryptominers. [...]
 
-### 6. [IBM Warns of Critical API Connect Bug Allowing Remote Authentication Bypass](https://thehackernews.com/2025/12/ibm-warns-of-critical-api-connect-bug.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Critical CVSS 9.8 Flaw Found in IBM API Connect Authentication System](https://thehackernews.com/2025/12/ibm-warns-of-critical-api-connect-bug.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 IBM has disclosed details of a critical security flaw in API Connect that could allow attackers to gain remote access to the application.
 The vulnerability, tracked as CVE-2025-13915, is rated 9.8 out of a maximum of 10.0 on the CVSS scoring system. It has been described as an authentication bypass 
