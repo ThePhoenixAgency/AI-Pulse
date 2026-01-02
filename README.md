@@ -13,7 +13,7 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Fri, 02 Jan 2026 01:52:07 GMT
+**Last Update:** Fri, 02 Jan 2026 06:36:29 GMT
 
 ---
 
