@@ -13,132 +13,129 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Fri, 02 Jan 2026 12:45:13 GMT
+**Last Update:** Fri, 02 Jan 2026 18:32:56 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity](https://towardsdatascience.com/the-real-challenge-in-data-storytelling-getting-buy-in-for-simplicity/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Drift Detection in Robust Machine Learning Systems](https://towardsdatascience.com/drift-detection-in-robust-machine-learning-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+A prerequisite for long-term success of machine learning systems
+The post Drift Detection in Robust Machine Learning Systems appeared first on Towards Data Science.
+
+### 2. [Off-Beat Careers That Are the Future Of Data](https://towardsdatascience.com/off-beat-careers-that-are-the-future-of-data/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+The unconventional career paths you need to explore
+The post Off-Beat Careers That Are the Future Of Data appeared first on Towards Data Science.
+
+### 3. [The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity](https://towardsdatascience.com/the-real-challenge-in-data-storytelling-getting-buy-in-for-simplicity/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 What happens when your clear dashboard meets stakeholders who want everything on one screen
 The post The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity appeared first on Towards Data Science.
 
-### 2. [EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas](https://towardsdatascience.com/eda-in-public-part-3-rfm-analysis-for-customer-segmentation-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas](https://towardsdatascience.com/eda-in-public-part-3-rfm-analysis-for-customer-segmentation-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to build, score, and interpret RFM segments step by step
 The post EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas appeared first on Towards Data Science.
 
-### 3. [Deep Reinforcement Learning: The Actor-Critic Method](https://towardsdatascience.com/deep-reinforcement-learning-the-actor-critic-method/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Deep Reinforcement Learning: The Actor-Critic Method](https://towardsdatascience.com/deep-reinforcement-learning-the-actor-critic-method/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Robot friends collaborate to learn to fly a drone
 The post Deep Reinforcement Learning: The Actor-Critic Method appeared first on Towards Data Science.
 
-### 4. [Production-Ready LLMs Made Simple with the NeMo Agent Toolkit](https://towardsdatascience.com/production-ready-llms-made-simple-with-nemo-agent-toolkit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Production-Ready LLMs Made Simple with the NeMo Agent Toolkit](https://towardsdatascience.com/production-ready-llms-made-simple-with-nemo-agent-toolkit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From simple chat to multi-agent reasoning and real-time REST APIs
 The post Production-Ready LLMs Made Simple with the NeMo Agent Toolkit appeared first on Towards Data Science.
 
-### 5. [What Advent of Code Has Taught Me About Data Science](https://towardsdatascience.com/what-advent-of-code-has-taught-me-about-data-science/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [What Advent of Code Has Taught Me About Data Science](https://towardsdatascience.com/what-advent-of-code-has-taught-me-about-data-science/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Five key learnings that I discovered during a programming challenge and how they apply to data science
 The post What Advent of Code Has Taught Me About Data Science appeared first on Towards Data Science.
 
-### 6. [Chunk Size as an Experimental Variable in RAG Systems](https://towardsdatascience.com/chunk-size-as-an-experimental-variable-in-rag-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Chunk Size as an Experimental Variable in RAG Systems](https://towardsdatascience.com/chunk-size-as-an-experimental-variable-in-rag-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understanding retrieval in RAG systems by experimenting with different chunk sizes
 The post Chunk Size as an Experimental Variable in RAG Systems appeared first on Towards Data Science.
 
-### 7. [The Machine Learning “Advent Calendar” Bonus 2: Gradient Descent Variants in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-bonus-2-gradient-descent-variants-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [The Machine Learning “Advent Calendar” Bonus 2: Gradient Descent Variants in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-bonus-2-gradient-descent-variants-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Gradient Descent, Momentum, RMSProp, and Adam all aim for the same minimum. They do not change the destination, only the path. Each method adds a mechanism that fixes a limitation of the previous one, making the movement faster, more stable, or more adaptive. The goal stays the same. The update beco
 
-### 8. [Overcoming Nonsmoothness and Control Chattering in Nonconvex Optimal Control Problems](https://towardsdatascience.com/optimal-path-planning-for-wheeled-robots/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Overcoming Nonsmoothness and Control Chattering in Nonconvex Optimal Control Problems](https://towardsdatascience.com/optimal-path-planning-for-wheeled-robots/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 With some hints for good numerics
 The post Overcoming Nonsmoothness and Control Chattering in Nonconvex Optimal Control Problems appeared first on Towards Data Science.
-
-### 9. [The Machine Learning “Advent Calendar” Bonus 1: AUC in Excel](https://towardsdatascience.com/the-machine-learning-advent-calendar-bonus-1-auc-in-excel/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-AUC measures how well a model ranks positives above negatives, independent of any chosen threshold.
-The post The Machine Learning “Advent Calendar” Bonus 1: AUC in Excel appeared first on Towards Data Science.
-
-### 10. [Agents Under the Curve (AUC)](https://towardsdatascience.com/agents-under-the-curve-auc/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Towards understanding if your agentic solution is actually better
-The post Agents Under the Curve (AUC) appeared first on Towards Data Science.
 
 ---
 
 ## 🔒 Cybersecurity
 
-### 1. [The ROI Problem in Attack Surface Management](https://thehackernews.com/2026/01/the-roi-problem-in-attack-surface.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Cryptocurrency theft attacks traced to 2022 LastPass breach](https://www.bleepingcomputer.com/news/security/cryptocurrency-theft-attacks-traced-to-2022-lastpass-breach/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Blockchain investigation firm TRM Labs says ongoing cryptocurrency thefts have been traced to the 2022 LastPass breach, with attackers draining wallets years after encrypted vaults were stolen and laundering the crypto through Russian exchanges. [...]
+
+### 2. [Over 10K Fortinet firewalls exposed to actively exploited 2FA bypass](https://www.bleepingcomputer.com/news/security/over-10-000-fortinet-firewalls-exposed-to-ongoing-2fa-bypass-attacks/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Over 10,000 Internet-exposed Fortinet firewalls are still vulnerable to attacks exploiting a five-year-old two-factor authentication (2FA) bypass vulnerability. [...]
+
+### 3. [Google is testing a new image AI and it's going to be its fastest model](https://www.bleepingcomputer.com/news/google/google-is-testing-a-new-image-ai-and-its-going-to-be-its-fastest-model/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Google is testing a new image AI model called "Nano Banana 2 Flash," and it's going to be as good as the Gemini 3 Pro Nano Banana, but it'll be cheaper. [...]
+
+### 4. [The Kimwolf Botnet is Stalking Your Local Network](https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/?utm_source=krebs-on-security&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+The story you are reading is a series of scoops nestled inside a far more urgent Internet-wide security advisory. The vulnerability at issue has been exploited for months already, and it's time for a broader awareness of the threat. The short version is that everything you thought you knew about the
+
+### 5. [Trust Wallet links $8.5 million crypto theft to Shai-Hulud NPM attack](https://www.bleepingcomputer.com/news/security/trust-wallet-links-85-million-crypto-theft-to-shai-hulud-npm-attack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Trust Wallet believes the compromise of its web browser to steal roughly $8.5 million from over 2,500 crypto wallets is likely related to an "industry-wide" Sha1-Hulud attack in November. [...]
+
+### 6. [Transparent Tribe Launches New RAT Attacks Against Indian Government and Academia](https://thehackernews.com/2026/01/transparent-tribe-launches-new-rat.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The threat actor known as Transparent Tribe has been attributed to a fresh set of attacks targeting Indian governmental, academic, and strategic entities with a remote access trojan (RAT) that grants them persistent control over compromised hosts.
+"The campaign employs deceptive delivery techniques,
+
+### 7. [The ROI Problem in Attack Surface Management](https://thehackernews.com/2026/01/the-roi-problem-in-attack-surface.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Attack Surface Management (ASM) tools promise reduced risk. What they usually deliver is more information. 
 Security teams deploy ASM, asset inventories grow, alerts start flowing, and dashboards fill up. There is visible activity and measurable output. But when leadership asks a simple question, “I
 
-### 2. [Cybercriminals Abuse Google Cloud Email Feature in Multi-Stage Phishing Campaign](https://thehackernews.com/2026/01/cybercriminals-abuse-google-cloud-email.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [Cybercriminals Abuse Google Cloud Email Feature in Multi-Stage Phishing Campaign](https://thehackernews.com/2026/01/cybercriminals-abuse-google-cloud-email.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a phishing campaign that involves the attackers impersonating legitimate Google-generated messages by abusing Google Cloud's Application Integration service to distribute emails.
 The activity, Check Point said, takes advantage of the trust associat
 
-### 3. [OpenAI is offering $20 ChatGPT Plus for free to some users](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-offering-20-chatgpt-plus-for-free-to-some-users/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [OpenAI is offering $20 ChatGPT Plus for free to some users](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-offering-20-chatgpt-plus-for-free-to-some-users/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 If you're already subscribed to ChatGPT Plus, which costs $20, you can request OpenAI to cancel your subscription, and it may offer one month of free usage. [...]
 
-### 4. [The biggest cybersecurity and cyberattack stories of 2025](https://www.bleepingcomputer.com/news/security/the-biggest-cybersecurity-and-cyberattack-stories-of-2025/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [The biggest cybersecurity and cyberattack stories of 2025](https://www.bleepingcomputer.com/news/security/the-biggest-cybersecurity-and-cyberattack-stories-of-2025/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 2025 was a big year for cybersecurity, with cyberattacks, data breaches, threat groups reaching new notoriety levels, and, of course, zero-day flaws exploited in breaches. Some stories, though, were more impactful or popular with our readers than others. This article explores 15 of the biggest cyber
 
-### 5. [ThreatsDay Bulletin: GhostAd Drain, macOS Attacks, Proxy Botnets, Cloud Exploits, and 12+ Stories](https://thehackernews.com/2026/01/threatsday-bulletin-ghostad-drain-macos.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 11. [ThreatsDay Bulletin: GhostAd Drain, macOS Attacks, Proxy Botnets, Cloud Exploits, and 12+ Stories](https://thehackernews.com/2026/01/threatsday-bulletin-ghostad-drain-macos.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The first ThreatsDay Bulletin of 2026 lands on a day that already feels symbolic — new year, new breaches, new tricks. If the past twelve months taught defenders anything, it’s that threat actors don’t pause for holidays or resolutions. They just evolve faster. This week’s round-up shows how subtle 
 
-### 6. [New GlassWorm malware wave targets Macs with trojanized crypto wallets](https://www.bleepingcomputer.com/news/security/new-glassworm-malware-wave-targets-macs-with-trojanized-crypto-wallets/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 12. [New GlassWorm malware wave targets Macs with trojanized crypto wallets](https://www.bleepingcomputer.com/news/security/new-glassworm-malware-wave-targets-macs-with-trojanized-crypto-wallets/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fourth wave of the "GlassWorm" campaign is targeting macOS developers with malicious VSCode/OpenVSX extensions that deliver trojanized versions of crypto wallet applications. [...]
 
-### 7. [RondoDox Botnet Exploits Critical React2Shell Flaw to Hijack IoT Devices and Web Servers](https://thehackernews.com/2026/01/rondodox-botnet-exploits-critical.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 13. [RondoDox Botnet Exploits Critical React2Shell Flaw to Hijack IoT Devices and Web Servers](https://thehackernews.com/2026/01/rondodox-botnet-exploits-critical.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a persistent nine-month-long campaign that has targeted Internet of Things (IoT) devices and web applications to enroll them into a botnet known as RondoDox.
 As of December 2025, the activity has been observed leveraging the recently disclosed Reac
 
-### 8. [How To Browse Faster and Get More Done Using Adapt Browser](https://thehackernews.com/2026/01/how-to-browse-fast-using-a-lightweight-browser.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 14. [How To Browse Faster and Get More Done Using Adapt Browser](https://thehackernews.com/2026/01/how-to-browse-fast-using-a-lightweight-browser.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As web browsers evolve into all-purpose platforms, performance and productivity often suffer. 
 Feature overload, excessive background processes, and fragmented workflows can slow down browsing sessions and introduce unnecessary friction, especially for users who rely on the browser as a primary work
 
-### 9. [NYC mayoral inauguration bans Flipper Zero, Raspberry Pi devices ](https://www.bleepingcomputer.com/news/security/nyc-mayoral-inauguration-bans-flipper-zero-raspberry-pi-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 15. [NYC mayoral inauguration bans Flipper Zero, Raspberry Pi devices ](https://www.bleepingcomputer.com/news/security/nyc-mayoral-inauguration-bans-flipper-zero-raspberry-pi-devices/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 New York City's 2026 mayoral inauguration of Zohran Mamdani has published a list of banned items for the event, specifically prohibiting the Flipper Zero and Raspberry Pi devices. [...]
-
-### 10. [Trust Wallet Chrome Extension Hack Drains $8.5M via Shai-Hulud Supply Chain Attack](https://thehackernews.com/2025/12/trust-wallet-chrome-extension-hack.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Trust Wallet on Tuesday revealed that the second iteration of the Shai-Hulud (aka Sha1-Hulud) supply chain outbreak in November 2025 was likely responsible for the hack of its Google Chrome extension, ultimately resulting in the theft of approximately $8.5 million in assets.
-"Our Developer GitHub se
-
-### 11. [DarkSpectre Browser Extension Campaigns Exposed After Impacting 8.8 Million Users Worldwide](https://thehackernews.com/2025/12/darkspectre-browser-extension-campaigns.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The threat actor behind two malicious browser extension campaigns, ShadyPanda and GhostPoster, has been attributed to a third attack campaign codenamed DarkSpectre that has impacted 2.2 million users of Google Chrome, Microsoft Edge, and Mozilla Firefox.
-The activity is assessed to be the work of a 
-
-### 12. [Hackers drain $3.9M from Unleash Protocol after multisig hijack](https://www.bleepingcomputer.com/news/security/hackers-drain-39m-from-unleash-protocol-after-multisig-hijack/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The decentralized intellectual property platform Unleash Protocol has lost around $3.9 million worth of cryptocurrency after someone executed an unauthorized contract upgrade that allowed asset withdrawals. [...]
-
-### 13. [RondoDox botnet exploits React2Shell flaw to breach Next.js servers](https://www.bleepingcomputer.com/news/security/rondodox-botnet-exploits-react2shell-flaw-to-breach-nextjs-servers/?utm_source=bleeping-computer&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The RondoDox botnet has been observed exploiting the critical React2Shell flaw (CVE-2025-55182) to infect vulnerable Next.js servers with malware and cryptominers. [...]
-
-### 14. [Critical CVSS 9.8 Flaw Found in IBM API Connect Authentication System](https://thehackernews.com/2025/12/ibm-warns-of-critical-api-connect-bug.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-IBM has disclosed details of a critical security flaw in API Connect that could allow attackers to gain remote access to the application.
-The vulnerability, tracked as CVE-2025-13915, is rated 9.8 out of a maximum of 10.0 on the CVSS scoring system. It has been described as an authentication bypass 
-
-### 15. [Researchers Spot Modified Shai-Hulud Worm Testing Payload on npm Registry](https://thehackernews.com/2025/12/researchers-spot-modified-shai-hulud.html?utm_source=the-hacker-news&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of what appears to be a new strain of Shai Hulud on the npm registry with slight modifications from the previous wave observed last month.
-The npm package that embeds the novel Shai Hulud strain is "@vietmoney/react-big-calendar," which was uploaded t
 
 ---
 
