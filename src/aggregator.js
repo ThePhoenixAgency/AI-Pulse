@@ -36,7 +36,7 @@ function sanitizeArticle(article, sourceName, tags) {
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: article.contentSnippet?.replace(/<[^>]*>/g, '').slice(0, 300) || ''
+    summary: article.contentSnippet?.replace(/<[^>]*>/g, '').slice(0, 600) || ''
   };
 }
 

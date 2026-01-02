@@ -41,11 +41,13 @@ jobs:
         rm -rf README.md && mv NEW-README.md README.md
 
     - name: Commit and push changes
+      env:
+        GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
       run: |
         git config --global user.name 'ThePhoenixAgency'
-        git config --global user.email 'phoenix.project@outlook.fr'
+        git config --global user.email "${GIT_AUTHOR_EMAIL}"
         git add .
-        
+
         if ! git diff --cached --exit-code; then
           UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
           git commit -m "Updated AI-Pulse: $UTC_DATE"
