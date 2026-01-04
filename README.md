@@ -13,61 +13,61 @@
 
 > Curated AI & Cybersecurity news - Auto-updated every 6 hours
 
-**Last Update:** Sun, 04 Jan 2026 12:43:27 GMT
+**Last Update:** Sun, 04 Jan 2026 18:31:33 GMT
 
 ---
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Optimizing Data Transfer in AI/ML Workloads](https://towardsdatascience.com/optimizing-data-transfer-in-ai-ml-workloads/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 1. [Prompt Engineering vs RAG for Editing Resumes](https://towardsdatascience.com/prompting-engineering-vs-rag-for-editing-resumes/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Running a code-free comparison in Azure
+The post Prompt Engineering vs RAG for Editing Resumes appeared first on Towards Data Science.
+
+### 2. [How to Filter for Dates, Including or Excluding Future Dates, in Semantic Models](https://towardsdatascience.com/how-to-filter-for-dates-including-or-excluding-future-dates-in-semantic-models/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+It is common to have either planning data or the previous year's data displayed beyond today's date. But future data can be confusing. How can I add a Slicer to show or hide future data? Let’s see how to do it.
+The post How to Filter for Dates, Including or Excluding Future Dates, in Semantic Models
+
+### 3. [Optimizing Data Transfer in AI/ML Workloads](https://towardsdatascience.com/optimizing-data-transfer-in-ai-ml-workloads/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A deep dive on data transfer bottlenecks, their identification, and their resolution with the help of NVIDIA Nsight™ Systems
 The post Optimizing Data Transfer in AI/ML Workloads appeared first on Towards Data Science.
 
-### 2. [How to Keep MCPs Useful in Agentic Pipelines](https://towardsdatascience.com/master-mcp-as-a-way-to-keep-mcps-useful-in-agentic-pipelines/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 4. [How to Keep MCPs Useful in Agentic Pipelines](https://towardsdatascience.com/master-mcp-as-a-way-to-keep-mcps-useful-in-agentic-pipelines/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Check the tools your LLM uses before replacing it with just a more powerful model
 The post How to Keep MCPs Useful in Agentic Pipelines appeared first on Towards Data Science.
 
-### 3. [Drift Detection in Robust Machine Learning Systems](https://towardsdatascience.com/drift-detection-in-robust-machine-learning-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 5. [Drift Detection in Robust Machine Learning Systems](https://towardsdatascience.com/drift-detection-in-robust-machine-learning-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A prerequisite for long-term success of machine learning systems
 The post Drift Detection in Robust Machine Learning Systems appeared first on Towards Data Science.
 
-### 4. [Off-Beat Careers That Are the Future Of Data](https://towardsdatascience.com/off-beat-careers-that-are-the-future-of-data/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 6. [Off-Beat Careers That Are the Future Of Data](https://towardsdatascience.com/off-beat-careers-that-are-the-future-of-data/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The unconventional career paths you need to explore
 The post Off-Beat Careers That Are the Future Of Data appeared first on Towards Data Science.
 
-### 5. [The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity](https://towardsdatascience.com/the-real-challenge-in-data-storytelling-getting-buy-in-for-simplicity/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 7. [The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity](https://towardsdatascience.com/the-real-challenge-in-data-storytelling-getting-buy-in-for-simplicity/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 What happens when your clear dashboard meets stakeholders who want everything on one screen
 The post The Real Challenge in Data Storytelling: Getting Buy-In for Simplicity appeared first on Towards Data Science.
 
-### 6. [EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas](https://towardsdatascience.com/eda-in-public-part-3-rfm-analysis-for-customer-segmentation-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 8. [EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas](https://towardsdatascience.com/eda-in-public-part-3-rfm-analysis-for-customer-segmentation-in-pandas/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to build, score, and interpret RFM segments step by step
 The post EDA in Public (Part 3): RFM Analysis for Customer Segmentation in Pandas appeared first on Towards Data Science.
 
-### 7. [Deep Reinforcement Learning: The Actor-Critic Method](https://towardsdatascience.com/deep-reinforcement-learning-the-actor-critic-method/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 9. [Deep Reinforcement Learning: The Actor-Critic Method](https://towardsdatascience.com/deep-reinforcement-learning-the-actor-critic-method/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Robot friends collaborate to learn to fly a drone
 The post Deep Reinforcement Learning: The Actor-Critic Method appeared first on Towards Data Science.
 
-### 8. [Production-Ready LLMs Made Simple with the NeMo Agent Toolkit](https://towardsdatascience.com/production-ready-llms-made-simple-with-nemo-agent-toolkit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
+### 10. [Production-Ready LLMs Made Simple with the NeMo Agent Toolkit](https://towardsdatascience.com/production-ready-llms-made-simple-with-nemo-agent-toolkit/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From simple chat to multi-agent reasoning and real-time REST APIs
 The post Production-Ready LLMs Made Simple with the NeMo Agent Toolkit appeared first on Towards Data Science.
-
-### 9. [What Advent of Code Has Taught Me About Data Science](https://towardsdatascience.com/what-advent-of-code-has-taught-me-about-data-science/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Five key learnings that I discovered during a programming challenge and how they apply to data science
-The post What Advent of Code Has Taught Me About Data Science appeared first on Towards Data Science.
-
-### 10. [Chunk Size as an Experimental Variable in RAG Systems](https://towardsdatascience.com/chunk-size-as-an-experimental-variable-in-rag-systems/?utm_source=towards-data-science&utm_medium=rss&utm_campaign=ai-pulse&utm_content=aggregator)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Understanding retrieval in RAG systems by experimenting with different chunk sizes
-The post Chunk Size as an Experimental Variable in RAG Systems appeared first on Towards Data Science.
 
 ---
 
