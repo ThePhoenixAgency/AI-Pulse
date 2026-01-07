@@ -1,14 +1,3 @@
-🚀 Starting AI-Pulse aggregation...
-
-
-📡 Aggregating ai feeds...
-  ✓ Fetching: Medium AI
-  ✓ Fetching: Towards Data Science
-
-📡 Aggregating cybersecurity feeds...
-  ✓ Fetching: The Hacker News
-  ✓ Fetching: Bleeping Computer
-  ✓ Fetching: Krebs on Security
 <div align="center">
 
 <img src="./favicon.svg" alt="AI-PULSE Logo" width="120" height="120">
@@ -212,6 +201,3 @@ Non-human employees are becoming the future of cybersecurity, and enterprises ne
 
 </div>
 
-⚠️  LinkedIn token not configured, skipping auto-post
-
-✅ Aggregation complete!
