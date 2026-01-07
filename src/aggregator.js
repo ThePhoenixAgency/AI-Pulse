@@ -39,8 +39,45 @@ function generateReaderLink(article) {
   return `${baseUrl}?${params.toString()}`;
 }
 
+/**
+ * Smart truncate: cut at last punctuation before limit
+ * Avoids cutting words in the middle
+ * @param {string} text - Text to truncate
+ * @param {number} maxLength - Maximum length
+ * @returns {string} Properly truncated text
+ */
+function smartTruncate(text, maxLength = 500) {
+  if (!text || text.length <= maxLength) {
+    return text;
+  }
+
+  // Cut at maxLength
+  let truncated = text.slice(0, maxLength);
+
+  // Find last punctuation mark (. ! ? ; :)
+  const punctuationRegex = /[.!?;:](?=\s|$)/g;
+  const matches = [...truncated.matchAll(punctuationRegex)];
+
+  if (matches.length > 0) {
+    // Cut at last punctuation
+    const lastMatch = matches[matches.length - 1];
+    return text.slice(0, lastMatch.index + 1).trim();
+  }
+
+  // If no punctuation, cut at last space to avoid mid-word cut
+  const lastSpace = truncated.lastIndexOf(' ');
+  if (lastSpace > 0) {
+    return truncated.slice(0, lastSpace).trim() + '...';
+  }
+
+  // Fallback: return as is with ellipsis
+  return truncated.trim() + '...';
+}
+
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags) {
+  const rawSummary = article.contentSnippet?.replace(/<[^>]*>/g, '') || '';
+
   return {
     title: article.title?.replace(/<[^>]*>/g, '').slice(0, 200) || 'Untitled',
     link: addUTMParams(article.link, sourceName.toLowerCase().replace(/\s/g, '-')),
@@ -48,7 +85,7 @@ function sanitizeArticle(article, sourceName, tags) {
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: article.contentSnippet?.replace(/<[^>]*>/g, '').slice(0, 300) || ''
+    summary: smartTruncate(rawSummary, 500)  // Increased from 300 to 500 with smart truncation
   };
 }
 
@@ -89,7 +126,7 @@ function generateREADME(categorizedArticles) {
 
 <div align="center">
 
-# 🚀 AI-Pulse
+# 🚀 AI-PULSE
 
 ### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
