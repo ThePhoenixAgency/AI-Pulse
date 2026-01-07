@@ -21,9 +21,10 @@ const FEED_CATEGORIES = {
   ]
 };
 
-// UTM parameters for analytics tracking
-function addUTMParams(url, source, medium = 'rss', campaign = 'ai-pulse') {
-  const utmParams = `utm_source=${source}&utm_medium=${medium}&utm_campaign=${campaign}&utm_content=aggregator`;
+// UTM parameters for AI-Pulse traffic tracking
+// Tracks clicks sent FROM AI-Pulse TO external sites
+function addUTMParams(url, category = 'general') {
+  const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
   return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
 }
 
@@ -75,12 +76,12 @@ function smartTruncate(text, maxLength = 500) {
 }
 
 // Sanitize and process articles
-function sanitizeArticle(article, sourceName, tags) {
+function sanitizeArticle(article, sourceName, tags, category) {
   const rawSummary = article.contentSnippet?.replace(/<[^>]*>/g, '') || '';
 
   return {
     title: article.title?.replace(/<[^>]*>/g, '').slice(0, 200) || 'Untitled',
-    link: addUTMParams(article.link, sourceName.toLowerCase().replace(/\s/g, '-')),
+    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
@@ -98,8 +99,8 @@ async function aggregateCategory(categoryName, feeds) {
     try {
       console.log(`  ✓ Fetching: ${feed.name}`);
       const feedData = await parser.parseURL(feed.url);
-      const items = feedData.items.slice(0, 10).map(item => 
-        sanitizeArticle(item, feed.name, feed.tags)
+      const items = feedData.items.slice(0, 10).map(item =>
+        sanitizeArticle(item, feed.name, feed.tags, categoryName)
       );
       articles.push(...items);
     } catch (error) {
