@@ -27,6 +27,18 @@ function addUTMParams(url, source, medium = 'rss', campaign = 'ai-pulse') {
   return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
 }
 
+// Generate reader link for iframe display
+function generateReaderLink(article) {
+  const baseUrl = 'https://thephoenixagency.github.io/AI-Pulse/reader.html';
+  const params = new URLSearchParams({
+    url: article.link,
+    title: article.title,
+    source: article.source,
+    tags: article.tags.join(', ')
+  });
+  return `${baseUrl}?${params.toString()}`;
+}
+
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags) {
   return {
@@ -82,7 +94,8 @@ function generateREADME(categorizedArticles) {
 
     articles.slice(0, 15).forEach((article, index) => {
       const tags = article.tags.map(t => `\`${t}\``).join(' ');
-      readme += `### ${index + 1}. [${article.title}](${article.link})\n`;
+      const readerLink = generateReaderLink(article);
+      readme += `### ${index + 1}. [${article.title}](${readerLink})\n`;
       readme += `**Source:** ${article.source} | **Tags:** ${tags}\n`;
       readme += `${article.summary}\n\n`;
     });
