@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Pulse Reader</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,99 +12,172 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-color: #5e72e4;
+            --secondary-color: #825ee4;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #2d3748;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
             height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Navigation */
+        .header {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 0 24px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 18px;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-tab {
+            padding: 8px 16px;
+            border: none;
+            background: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-tab:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .nav-tab-icon {
+            font-size: 16px;
+        }
+
+        /* Main Content Area */
+        .main-container {
+            flex: 1;
+            display: flex;
             overflow: hidden;
         }
 
-        .header {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        /* Article Info Bar */
+        .article-info-bar {
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: none;
         }
 
-        .header h1 {
-            font-size: 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .article-info-bar.visible {
+            display: block;
         }
 
-        .header-controls {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-home {
-            background: #48bb78;
-            color: white;
-        }
-
-        .btn-home:hover {
-            background: #38a169;
-        }
-
-        .btn-external {
-            background: #4299e1;
-            color: white;
-        }
-
-        .btn-external:hover {
-            background: #3182ce;
-        }
-
-        .article-info {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 30px;
-            border-bottom: 3px solid #667eea;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .article-title {
-            font-size: 18px;
+        .article-title-text {
+            font-size: 16px;
             font-weight: 600;
-            color: #2d3748;
-            max-width: 70%;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
 
         .article-meta {
             display: flex;
-            gap: 20px;
-            color: #718096;
-            font-size: 14px;
+            gap: 16px;
+            color: var(--text-secondary);
+            font-size: 13px;
+            flex-wrap: wrap;
         }
 
-        .article-meta span {
+        .meta-item {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 4px;
+            font-weight: 500;
+        }
+
+        /* Content Area */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            overflow: hidden;
         }
 
         .iframe-container {
-            width: 100%;
-            height: calc(100vh - 140px);
-            background: white;
+            flex: 1;
             position: relative;
+            background: white;
         }
 
         iframe {
@@ -112,23 +186,24 @@
             border: none;
         }
 
+        /* Loading State */
         .loading {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            color: #667eea;
+            color: var(--primary-color);
         }
 
         .spinner {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #667eea;
+            width: 48px;
+            height: 48px;
+            border: 4px solid var(--bg-secondary);
+            border-top: 4px solid var(--primary-color);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
             animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 16px;
         }
 
         @keyframes spin {
@@ -136,6 +211,13 @@
             100% { transform: rotate(360deg); }
         }
 
+        .loading-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Error Message */
         .error-message {
             display: none;
             position: absolute;
@@ -143,139 +225,247 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
             text-align: center;
             max-width: 500px;
+            border: 1px solid var(--border-color);
+        }
+
+        .error-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
         }
 
         .error-message h2 {
-            color: #e53e3e;
-            margin-bottom: 15px;
+            color: #ef4444;
+            margin-bottom: 16px;
+            font-size: 20px;
+            font-weight: 600;
         }
 
         .error-message p {
-            color: #4a5568;
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
             line-height: 1.6;
+            font-size: 14px;
         }
 
-        .tag {
-            display: inline-block;
-            background: #edf2f7;
-            color: #4a5568;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            margin-right: 5px;
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(94, 114, 228, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .nav-tab-text {
+                display: none;
+            }
+
+            .article-info-bar {
+                padding: 12px 16px;
+            }
+        }
+
+        /* View States */
+        .view {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .view.active {
+            display: flex;
+            flex-direction: column;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <div class="header">
-        <h1>
-            🤖 AI-Pulse Reader
-        </h1>
-        <div class="header-controls">
-            <a href="/" class="btn btn-home">🏠 Accueil</a>
-            <a href="#" id="openExternal" class="btn btn-external" target="_blank">🔗 Ouvrir dans un nouvel onglet</a>
+        <div class="header-content">
+            <a href="javascript:showView('home')" class="logo">
+                <span class="logo-icon">🤖</span>
+                <span class="logo-text">AI-Pulse</span>
+            </a>
+
+            <div class="nav-tabs">
+                <a href="javascript:showView('home')" class="nav-tab" id="tab-home">
+                    <span class="nav-tab-icon">🏠</span>
+                    <span class="nav-tab-text">Accueil</span>
+                </a>
+                <a href="#" class="nav-tab" id="tab-article" style="display: none;">
+                    <span class="nav-tab-icon">📰</span>
+                    <span class="nav-tab-text">Article</span>
+                </a>
+                <a href="#" class="nav-tab" id="openExternal" target="_blank" style="display: none;">
+                    <span class="nav-tab-icon">🔗</span>
+                    <span class="nav-tab-text">Ouvrir en externe</span>
+                </a>
+            </div>
         </div>
     </div>
 
-    <div class="article-info">
-        <div class="article-title" id="articleTitle">Chargement de l'article...</div>
-        <div class="article-meta">
-            <span id="articleSource"></span>
-            <span id="articleTags"></span>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Home View (README) -->
+        <div class="view active" id="view-home">
+            <div class="iframe-container">
+                <iframe src="https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/README.md" id="readmeFrame"></iframe>
+            </div>
         </div>
-    </div>
 
-    <div class="iframe-container">
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Chargement de l'article...</p>
-        </div>
-        <iframe id="articleFrame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
-        <div class="error-message" id="errorMessage">
-            <h2>⚠️ Impossible de charger l'article</h2>
-            <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
-            <a href="#" id="openExternalError" class="btn btn-external" target="_blank">Ouvrir l'article sur le site source</a>
+        <!-- Article View -->
+        <div class="view" id="view-article">
+            <div class="article-info-bar" id="articleInfoBar">
+                <div class="article-title-text" id="articleTitleText">Chargement...</div>
+                <div class="article-meta">
+                    <span class="meta-item" id="articleSource"></span>
+                    <span class="meta-item" id="articleTags"></span>
+                </div>
+            </div>
+
+            <div class="iframe-container">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Chargement de l'article...</p>
+                </div>
+                <iframe id="articleFrame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"></iframe>
+                <div class="error-message" id="errorMessage">
+                    <div class="error-icon">⚠️</div>
+                    <h2>Impossible de charger l'article</h2>
+                    <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
+                    <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
+                        <span>🔗</span>
+                        <span>Ouvrir sur le site source</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        // Récupérer les paramètres de l'URL
+        // View Management
+        let currentView = 'home';
+
+        function showView(viewName) {
+            document.querySelectorAll('.view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const view = document.getElementById(`view-${viewName}`);
+            const tab = document.getElementById(`tab-${viewName}`);
+
+            if (view) view.classList.add('active');
+            if (tab) tab.classList.add('active');
+
+            currentView = viewName;
+        }
+
+        // Parse URL Parameters
         const params = new URLSearchParams(window.location.search);
         const articleUrl = params.get('url');
-        const articleTitle = params.get('title') || 'Article';
-        const articleSource = params.get('source') || '';
-        const articleTags = params.get('tags') || '';
+        const articleTitle = params.get('title');
+        const articleSource = params.get('source');
+        const articleTags = params.get('tags');
 
-        // Afficher les informations de l'article
-        document.getElementById('articleTitle').textContent = decodeURIComponent(articleTitle);
-
-        if (articleSource) {
-            document.getElementById('articleSource').innerHTML = `📰 <strong>${decodeURIComponent(articleSource)}</strong>`;
-        }
-
-        if (articleTags) {
-            const tags = decodeURIComponent(articleTags).split(',');
-            const tagsHtml = tags.map(tag => `<span class="tag">${tag.trim()}</span>`).join('');
-            document.getElementById('articleTags').innerHTML = tagsHtml;
-        }
-
-        // Configurer le lien externe
-        document.getElementById('openExternal').href = articleUrl;
-        document.getElementById('openExternalError').href = articleUrl;
-
-        // Charger l'iframe
-        const iframe = document.getElementById('articleFrame');
-        const loading = document.getElementById('loading');
-        const errorMessage = document.getElementById('errorMessage');
-
+        // If article parameters exist, show article view
         if (articleUrl) {
+            showView('article');
+
+            // Show article tab and external link button
+            document.getElementById('tab-article').style.display = 'inline-flex';
+            document.getElementById('openExternal').style.display = 'inline-flex';
+
+            // Display article information
+            if (articleTitle) {
+                document.getElementById('articleTitleText').textContent = decodeURIComponent(articleTitle);
+                document.getElementById('articleInfoBar').classList.add('visible');
+            }
+
+            if (articleSource) {
+                document.getElementById('articleSource').innerHTML = `📰 <strong>${decodeURIComponent(articleSource)}</strong>`;
+            }
+
+            if (articleTags) {
+                const tags = decodeURIComponent(articleTags).split(',');
+                const tagsHtml = tags.map(tag => `<span class="tag">${tag.trim()}</span>`).join('');
+                document.getElementById('articleTags').innerHTML = tagsHtml;
+            }
+
+            // Configure external links
+            document.getElementById('openExternal').href = articleUrl;
+            document.getElementById('openExternalError').href = articleUrl;
+
+            // Load article in iframe
+            const iframe = document.getElementById('articleFrame');
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
+
             iframe.src = articleUrl;
 
-            // Détecter si l'iframe est chargée avec succès
             iframe.onload = function() {
                 loading.style.display = 'none';
-
-                // Vérifier si l'iframe peut être accédée (même origine ou CORS)
                 try {
                     const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                     if (iframeDoc.body === null || iframeDoc.body.innerHTML === '') {
                         throw new Error('Iframe bloquée');
                     }
                 } catch (e) {
-                    // Si on ne peut pas accéder au contenu de l'iframe, c'est probablement bloqué
-                    // Mais on laisse quand même l'iframe visible car elle peut quand même charger le contenu
-                    console.log('Note: Accès iframe restreint (comportement normal pour les sites externes)');
+                    console.log('Note: Accès iframe restreint (comportement normal)');
                 }
             };
 
-            // Gérer les erreurs de chargement
             iframe.onerror = function() {
                 loading.style.display = 'none';
                 errorMessage.style.display = 'block';
             };
 
-            // Timeout de sécurité (si rien ne se passe après 10 secondes)
             setTimeout(function() {
                 if (loading.style.display !== 'none') {
                     loading.style.display = 'none';
-                    // Ne pas afficher l'erreur automatiquement, l'iframe peut encore charger
                 }
             }, 10000);
         } else {
-            loading.style.display = 'none';
-            errorMessage.style.display = 'block';
-            document.getElementById('errorMessage').querySelector('p').textContent = 'Aucune URL d\'article fournie.';
+            // Show home view by default
+            showView('home');
         }
 
-        // Détecter si l'iframe est bloquée par X-Frame-Options
-        window.addEventListener('message', function(event) {
-            // Gérer les messages de l'iframe si nécessaire
+        // Tab click handler for article tab
+        document.getElementById('tab-article').addEventListener('click', function(e) {
+            e.preventDefault();
+            showView('article');
         });
     </script>
 </body>

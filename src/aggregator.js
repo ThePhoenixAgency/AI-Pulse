@@ -75,10 +75,36 @@ async function aggregateCategory(categoryName, feeds) {
 
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = `# 🚀 AI-Pulse\n\n`;
-  readme += `> Curated AI & Cybersecurity news - Auto-updated every 6 hours\n\n`;
-  readme += `**Last Update:** ${new Date().toUTCString()}\n\n`;
-  readme += `---\n\n`;
+  let readme = `\`\`\`
+   ▄████████  ▄█              ▄███████▄ ███    █▄   ▄█        ▄████████    ▄████████
+  ███    ███ ███             ███    ███ ███    ███ ███       ███    ███   ███    ███
+  ███    ███ ███▌            ███    ███ ███    ███ ███       ███    █▀    ███    █▀
+  ███    ███ ███▌            ███    ███ ███    ███ ███       ███         ▄███▄▄▄
+▀███████████ ███▌          ▀█████████▀  ███    ███ ███       ███        ▀▀███▀▀▀
+  ███    ███ ███             ███        ███    ███ ███       ███    █▄    ███    █▄
+  ███    ███ ███             ███        ███    ███ ███▌    ▄ ███    ███   ███    ███
+  ███    █▀  █▀             ▄████▀      ████████▀  █████▄▄██ ████████▀    ██████████
+                                                    ▀
+\`\`\`
+
+<div align="center">
+
+# 🚀 AI-Pulse
+
+### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
+
+> Curated content from the best sources - Auto-updated every 6 hours
+
+[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%206h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+
+**Last Update:** ${new Date().toUTCString()}
+
+</div>
+
+---
+`;
 
   // Generate sections for each category
   for (const [category, articles] of Object.entries(categorizedArticles)) {
