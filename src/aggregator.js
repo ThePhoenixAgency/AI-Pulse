@@ -101,6 +101,38 @@ function generateREADME(categorizedArticles) {
 
 **Last Update:** ${new Date().toUTCString()}
 
+---
+
+---
+
+## 👨‍💻 About The Developer
+
+**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
+
+🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
+📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
+🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+
+> Passionate about building secure, privacy-first applications that make a difference.
+> This project showcases my expertise in full-stack development, security engineering, and data privacy.
+
+### 🛠️ Tech Stack
+
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
+![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Ready-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+
+### 🔒 Security & Compliance
+
+![XSS Protection](https://img.shields.io/badge/XSS-Protected-success?style=flat-square&logo=security&logoColor=white)
+![0 CVE](https://img.shields.io/badge/CVE-0%20Known-success?style=flat-square)
+![GDPR](https://img.shields.io/badge/GDPR-Compliant-blue?style=flat-square)
+![RLS](https://img.shields.io/badge/RLS-Enabled-blueviolet?style=flat-square)
+![Dependabot](https://img.shields.io/badge/Dependabot-Auto--Merge-green?style=flat-square&logo=dependabot&logoColor=white)
+![Anonymous Analytics](https://img.shields.io/badge/Analytics-Anonymous%20Only-orange?style=flat-square)
+
 </div>
 
 ---
@@ -130,8 +162,21 @@ function generateREADME(categorizedArticles) {
   }
 
   readme += `\n---\n\n`;
-  readme += `*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source*\n`;
-  
+  readme += `## 🧭 Navigation\n\n`;
+  readme += `<div align="center">\n\n`;
+  readme += `### Explore AI-Pulse\n\n`;
+  readme += `| 🏠 [Main App](https://thephoenixagency.github.io/AI-Pulse/reader.html) | 👨‍💻 [Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html) | 📊 [Stats](https://thephoenixagency.github.io/AI-Pulse/stats.html) | 📚 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
+  readme += `|:---:|:---:|:---:|:---:|\n`;
+  readme += `| Read articles in-app | View my projects | Analytics dashboard | Migration guide |\n\n`;
+  readme += `---\n\n`;
+  readme += `### 🤝 Connect With Me\n\n`;
+  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-EthanThePhoenix38-181717?style=for-the-badge&logo=github)](https://github.com/EthanThePhoenix38)\n`;
+  readme += `[![Organization](https://img.shields.io/badge/Organization-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
+  readme += `[![Website](https://img.shields.io/badge/Website-ThePhoenixAgency.github.io-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ThePhoenixAgency.github.io)\n\n`;
+  readme += `---\n\n`;
+  readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
+  readme += `</div>\n`;
+
   return readme;
 }
 

@@ -137,3 +137,70 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# ============================================================================
+# AI-Pulse Security & Production Settings
+# Author: ThePhoenixAgency
+# ============================================================================
+
+# Security: Never commit secrets or credentials
+.env.local
+.env.production
+**/secrets/
+**/credentials/
+*.key
+*.pem
+*.p12
+*.pfx
+supabase-service-key.txt
+
+# Analytics data (use Supabase, not local files)
+stats.json
+analytics.json
+*.analytics
+
+# Local database files (use Supabase, not local DB)
+*.db
+*.sqlite
+*.sqlite3
+
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE-specific files
+.idea/
+*.swp
+*.swo
+*~
+.vscode/settings.json
+.vscode/launch.json
+
+# Build artifacts (keep dist/ for GitHub Pages if needed)
+build/
+temp/
+tmp/
+
+# Test files (keep test results private)
+test-results/
+coverage/
+.nyc_output/
+
+# IMPORTANT: Do NOT ignore these files (needed for GitHub Pages)
+# Uncomment if accidentally ignored:
+# !*.html
+# !*.css
+# !*.js
+# !*.md
+# !*.json (except analytics.json)
+
+# ============================================================================
+# End of AI-Pulse specific rules
+# ============================================================================
