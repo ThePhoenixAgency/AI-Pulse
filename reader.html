@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src 'self' data: https:">
     <title>AI-Pulse Reader</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -440,7 +441,7 @@
 
         // Parse URL Parameters
         const params = new URLSearchParams(window.location.search);
-        const articleUrl = params.get('url');
+        const rawArticleUrl = params.get('url');
         const articleTitle = params.get('title');
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
@@ -454,6 +455,12 @@
             } catch (_) {
                 return false;
             }
+        }
+
+        // Validate and sanitize URL - only proceed if URL is safe
+        let articleUrl = null;
+        if (rawArticleUrl && isValidHttpUrl(rawArticleUrl)) {
+            articleUrl = rawArticleUrl; // Now articleUrl is guaranteed to be a valid http(s) URL
         }
 
         // If article parameters exist and URL is valid, show article view
@@ -472,7 +479,6 @@
             } catch (_) {
                 return false;
             }
-        }
 
         // If article parameters exist and URL is valid and allowed, show article view
         if (articleUrl && isAllowedArticleUrl(articleUrl)) {

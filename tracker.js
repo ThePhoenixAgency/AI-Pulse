@@ -44,7 +44,8 @@ class AIPlulseTracker {
     }
 
     /**
-     * Generate a unique session ID (not personally identifiable)
+     * Generate a unique session ID using cryptographically secure randomness
+     * (not personally identifiable)
      */
     generateSessionId() {
         // Use cryptographically secure random values instead of Math.random

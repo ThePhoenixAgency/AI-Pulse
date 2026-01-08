@@ -22,11 +22,27 @@ const FEED_CATEGORIES = {
   ]
 };
 
-// UTM parameters for AI-Pulse traffic tracking
-// Tracks clicks sent FROM AI-Pulse TO external sites
-function addUTMParams(url, category = 'general') {
-  const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
-  return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
+// Article links for external sources
+function getArticleLink(url, category = 'general') {
+  // Return direct link without any tracking parameters
+  // Users can add their own UTM if needed
+  return url;
+}
+
+/**
+ * HTML-escape a string so it is safe to insert into HTML contexts.
+ * Converts &, <, and > to their corresponding entities.
+ * @param {string} input
+ * @returns {string}
+ */
+function htmlEscape(input) {
+  if (!input) {
+    return '';
+  }
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
 }
 
 // Robust HTML sanitization: strip all tags and unsafe content
@@ -108,7 +124,7 @@ function sanitizeArticle(article, sourceName, tags, category) {
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 600)  // Increased to 600 with smart truncation for better article previews
+    summary: smartTruncate(htmlEscape(cleanSummary), 600)  // DOMPurify removes tags, htmlEscape handles entities
   };
 }
 
@@ -169,9 +185,9 @@ function generateREADME(categorizedArticles) {
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
+📊 **[Organization](https://github.com/ThePhoenixAgency)** |
+🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -224,14 +240,14 @@ function generateREADME(categorizedArticles) {
   readme += `## 🧭 Navigation\n\n`;
   readme += `<div align="center">\n\n`;
   readme += `### Explore AI-Pulse\n\n`;
-  readme += `| 🏠 [Main App](https://thephoenixagency.github.io/AI-Pulse/reader.html) | 👨‍💻 [Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html) | 📊 [Stats](https://thephoenixagency.github.io/AI-Pulse/stats.html) | 📚 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
-  readme += `|:---:|:---:|:---:|:---:|\n`;
-  readme += `| Read articles in-app | View my projects | Analytics dashboard | Migration guide |\n\n`;
+  readme += `| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
+  readme += `|:---:|:---:|:---:|\n`;
+  readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
   readme += `---\n\n`;
   readme += `### 🤝 Connect With Me\n\n`;
-  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-EthanThePhoenix38-181717?style=for-the-badge&logo=github)](https://github.com/EthanThePhoenix38)\n`;
-  readme += `[![Organization](https://img.shields.io/badge/Organization-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
-  readme += `[![Website](https://img.shields.io/badge/Website-ThePhoenixAgency.github.io-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ThePhoenixAgency.github.io)\n\n`;
+  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
+  readme += `[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)\n`;
+  readme += `[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
   readme += `---\n\n`;
   readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
   readme += `</div>\n`;

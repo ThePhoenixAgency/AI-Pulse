@@ -1,4 +1,16 @@
 {
+  "name": "ai-pulse",
+  "version": "1.0.0",
+  "description": "Curated AI & Cybersecurity news aggregator",
+  "main": "src/aggregator.js",
+  "scripts": {
+    "start": "node src/aggregator.js",
+    "dev": "node src/aggregator.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ai", "cybersecurity", "news", "aggregator", "rss"],
+  "author": "ThePhoenixAgency",
+  "license": "MIT",
   "dependencies": {
     "@octokit/rest": "^22.0.1",
     "axios": "^1.13.2",
@@ -7,6 +19,10 @@
     "dompurify": "^3.3.1",
     "express": "^5.2.1",
     "isomorphic-dompurify": "^2.35.0",
+    "rss-parser": "^3.13.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
     "rss-parser": "^3.13.0",
     "sanitize-html": "^2.17.0"
   }
