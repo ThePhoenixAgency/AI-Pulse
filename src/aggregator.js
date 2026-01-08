@@ -2,6 +2,7 @@
 const Parser = require('rss-parser');
 const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
+const DOMPurify = require('isomorphic-dompurify');
 
 const parser = new Parser({
   timeout: 10000,
@@ -81,18 +82,18 @@ function smartTruncate(text, maxLength = 500) {
 
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
-  const rawSummary = htmlEscape(
-    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
-  );
+  // Use DOMPurify to safely remove all HTML/script tags - prevents incomplete sanitization attacks
+  const cleanTitle = DOMPurify.sanitize(article.title || '', { ALLOWED_TAGS: [] });
+  const cleanSummary = DOMPurify.sanitize(article.contentSnippet || '', { ALLOWED_TAGS: [] });
 
   return {
-    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
+    title: htmlEscape(cleanTitle).slice(0, 200) || 'Untitled',
     link: article.link,  // Direct link, no tracking
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 600)  // Increased to 600 with smart truncation for better article previews
+    summary: smartTruncate(htmlEscape(cleanSummary), 600)  // DOMPurify removes tags, htmlEscape handles entities
   };
 }
 
