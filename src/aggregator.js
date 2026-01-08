@@ -29,6 +29,22 @@ function getArticleLink(url, category = 'general') {
 }
 
 /**
+ * HTML-escape a string so it is safe to insert into HTML contexts.
+ * Converts &, <, and > to their corresponding entities.
+ * @param {string} input
+ * @returns {string}
+ */
+function htmlEscape(input) {
+  if (!input) {
+    return '';
+  }
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+/**
  * Smart truncate: cut at last punctuation before limit
  * Avoids cutting words in the middle
  * @param {string} text - Text to truncate
@@ -65,10 +81,12 @@ function smartTruncate(text, maxLength = 500) {
 
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
-  const rawSummary = article.contentSnippet?.replace(/<[^>]*>/g, '') || '';
+  const rawSummary = htmlEscape(
+    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
+  );
 
   return {
-    title: article.title?.replace(/<[^>]*>/g, '').slice(0, 200) || 'Untitled',
+    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
     link: article.link,  // Direct link, no tracking
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
