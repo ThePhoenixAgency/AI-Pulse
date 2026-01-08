@@ -85,13 +85,13 @@ jobs:
             --title "chore: dependency updates" \
             --body "Automated dependency and package updates from automated tools.
 
-## Changes
+\## Changes
 This PR includes automatic dependency updates validated in the securite branch.
 
-## Security
+\## Security
 All dependency updates have been vetted for security vulnerabilities.
 
-## Testing
+\## Testing
 - [ ] Dependencies properly installed
 - [ ] No breaking changes detected
 - [ ] Application runs without errors" \
@@ -135,16 +135,16 @@ All dependency updates have been vetted for security vulnerabilities.
           --title "⚠️ Dependency Interdependency Issue Detected" \
           --body "A dependency conflict has been detected in the automated update process.
 
-## Details
+\## Details
 \`\`\`
 ${{ steps.check-conflicts.outputs.conflict_details }}
 \`\`\`
 
-## Action Required
+\## Action Required
 Please review the dependency conflicts and resolve manually if needed.
 
 ## Notification
-Contact: ${{ secrets.GIT_AUTHOR_EMAIL }}" \
+\Contact: ${{ secrets.GIT_AUTHOR_EMAIL }}" \
           --label "bug" \
           --label "dependencies" || echo "Issue creation skipped"
       env:
