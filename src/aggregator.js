@@ -2,7 +2,7 @@
 const Parser = require('rss-parser');
 const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
-const DOMPurify = require('isomorphic-dompurify');
+const sanitizeHtml = require('sanitize-html');
 
 const parser = new Parser({
   timeout: 10000,
@@ -45,6 +45,17 @@ function htmlEscape(input) {
     .replace(/>/g, '&gt;');
 }
 
+// Robust HTML sanitization: strip all tags and unsafe content
+function sanitizeText(input) {
+  if (!input) {
+    return '';
+  }
+  return sanitizeHtml(input, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
+}
+
 /**
  * Smart truncate: cut at last punctuation before limit
  * Avoids cutting words in the middle
@@ -80,15 +91,35 @@ function smartTruncate(text, maxLength = 500) {
   return truncated.trim() + '...';
 }
 
+/**
+ * HTML-escape a string so it is safe to insert into HTML contexts.
+ * Converts &, <, and > to their corresponding entities.
+ * @param {string} input
+ * @returns {string}
+ */
+function htmlEscape(input) {
+  if (!input) {
+    return '';
+  }
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
-  // Use DOMPurify to safely remove all HTML/script tags - prevents incomplete sanitization attacks
-  const cleanTitle = DOMPurify.sanitize(article.title || '', { ALLOWED_TAGS: [] });
-  const cleanSummary = DOMPurify.sanitize(article.contentSnippet || '', { ALLOWED_TAGS: [] });
+  const rawSummary = htmlEscape(
+    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
+  );
 
   return {
-    title: htmlEscape(cleanTitle).slice(0, 200) || 'Untitled',
-    link: article.link,  // Direct link, no tracking
+    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
+  const rawSummary = sanitizeText(article.contentSnippet) || '';
+
+  return {
+    title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
+    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,

@@ -1,0 +1,56 @@
+# .github/labeler.yml
+# Auto-labeling configuration for AI-Pulse repository
+
+# Backend/Source code
+backend:
+  - src/**
+  - '*.js'
+
+# Frontend/UI
+frontend:
+  - reader.html
+  - '*.html'
+  - '*.css'
+
+# Documentation
+documentation:
+  - '*.md'
+  - docs/**
+  - README.md
+
+# Configuration
+configuration:
+  - '*.json'
+  - '*.yaml'
+  - '*.yml'
+  - .github/**
+
+# Dependencies
+dependencies:
+  - package.json
+  - package-lock.json
+
+# Database
+database:
+  - database/**
+  - '*.sql'
+
+# Modules
+modules:
+  - modules/**
+
+# Security
+security:
+  - .github/workflows/*security*
+  - .github/workflows/*snyk*
+  - .github/workflows/*codeql*
+
+# CI/CD
+ci-cd:
+  - .github/workflows/**
+
+# Tests
+tests:
+  - test/**
+  - '*.test.js'
+  - '*.spec.js'

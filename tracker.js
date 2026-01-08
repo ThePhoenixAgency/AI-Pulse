@@ -48,11 +48,22 @@ class AIPlulseTracker {
      * (not personally identifiable)
      */
     generateSessionId() {
-        // Use crypto.getRandomValues for secure randomness instead of Math.random()
-        const randomBytes = new Uint8Array(6);
-        crypto.getRandomValues(randomBytes);
-        const randomHex = Array.from(randomBytes).map(b => b.toString(16).padStart(2, '0')).join('');
-        return 'sess_' + Date.now() + '_' + randomHex;
+        // Use cryptographically secure random values instead of Math.random
+        const cryptoObj = (typeof window !== 'undefined' && window.crypto) || (typeof self !== 'undefined' && self.crypto);
+
+        if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
+            // Generate 8 random bytes and encode them as hex (16 characters)
+            const bytes = new Uint8Array(8);
+            cryptoObj.getRandomValues(bytes);
+            let randomPart = '';
+            for (let i = 0; i < bytes.length; i++) {
+                randomPart += bytes[i].toString(16).padStart(2, '0');
+            }
+            return 'sess_' + Date.now() + '_' + randomPart;
+        }
+
+        // Fallback (very old browsers without crypto): keep previous non-crypto behavior
+        return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
     }
 
     /**
