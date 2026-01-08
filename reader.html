@@ -349,6 +349,9 @@
       gtag('js', new Date());
       gtag('config', 'G-LWN1RSPQMJ');
     </script>
+
+    <!-- DOMPurify for XSS protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -457,12 +460,16 @@
             }
 
             if (articleSource) {
-                document.getElementById('articleSource').innerHTML = `📰 <strong>${decodeURIComponent(articleSource)}</strong>`;
+                const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
+                document.getElementById('articleSource').innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
             }
 
             if (articleTags) {
                 const tags = decodeURIComponent(articleTags).split(',');
-                const tagsHtml = tags.map(tag => `<span class="tag">${tag.trim()}</span>`).join('');
+                const tagsHtml = tags.map(tag => {
+                    const sanitizedTag = DOMPurify.sanitize(tag.trim());
+                    return `<span class="tag">${sanitizedTag}</span>`;
+                }).join('');
                 document.getElementById('articleTags').innerHTML = tagsHtml;
             }
 

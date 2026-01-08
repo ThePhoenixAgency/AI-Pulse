@@ -323,6 +323,9 @@
       gtag('js', new Date());
       gtag('config', 'G-LWN1RSPQMJ');
     </script>
+
+    <!-- DOMPurify for XSS protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 <body>
     <!-- Hero Section -->
@@ -521,11 +524,11 @@
                 const card = document.createElement('div');
                 card.className = 'project-card';
 
-                // Sanitize strings to prevent XSS
-                const name = escapeHtml(repo.name || 'Untitled');
-                const description = escapeHtml(repo.description || 'No description available');
-                const language = escapeHtml(repo.language || 'Unknown');
-                const url = escapeHtml(repo.html_url || '#');
+                // Sanitize strings to prevent XSS using DOMPurify
+                const name = DOMPurify.sanitize(repo.name || 'Untitled');
+                const description = DOMPurify.sanitize(repo.description || 'No description available');
+                const language = DOMPurify.sanitize(repo.language || 'Unknown');
+                const url = DOMPurify.sanitize(repo.html_url || '#');
 
                 card.innerHTML = `
                     <div class="project-header">
