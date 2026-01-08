@@ -528,7 +528,19 @@
                 const name = DOMPurify.sanitize(repo.name || 'Untitled');
                 const description = DOMPurify.sanitize(repo.description || 'No description available');
                 const language = DOMPurify.sanitize(repo.language || 'Unknown');
-                const url = DOMPurify.sanitize(repo.html_url || '#');
+
+                // Validate URL scheme
+                let url = '#';
+                if (repo.html_url) {
+                    try {
+                        const urlObj = new URL(repo.html_url);
+                        if (urlObj.protocol === 'http:' || urlObj.protocol === 'https:') {
+                            url = DOMPurify.sanitize(repo.html_url);
+                        }
+                    } catch (_) {
+                        url = '#';
+                    }
+                }
 
                 card.innerHTML = `
                     <div class="project-header">

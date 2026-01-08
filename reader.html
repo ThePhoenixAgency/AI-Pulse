@@ -445,8 +445,19 @@
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
 
-        // If article parameters exist, show article view
-        if (articleUrl) {
+        // Validate URL scheme to prevent XSS
+        function isValidHttpUrl(string) {
+            if (!string) return false;
+            try {
+                const url = new URL(string);
+                return url.protocol === 'http:' || url.protocol === 'https:';
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // If article parameters exist and URL is valid, show article view
+        if (articleUrl && isValidHttpUrl(articleUrl)) {
             showView('article');
 
             // Show article tab and external link button
