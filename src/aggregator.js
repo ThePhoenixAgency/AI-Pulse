@@ -63,12 +63,30 @@ function smartTruncate(text, maxLength = 500) {
   return truncated.trim() + '...';
 }
 
+/**
+ * HTML-escape a string so it is safe to insert into HTML contexts.
+ * Converts &, <, and > to their corresponding entities.
+ * @param {string} input
+ * @returns {string}
+ */
+function htmlEscape(input) {
+  if (!input) {
+    return '';
+  }
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
-  const rawSummary = article.contentSnippet?.replace(/<[^>]*>/g, '') || '';
+  const rawSummary = htmlEscape(
+    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
+  );
 
   return {
-    title: article.title?.replace(/<[^>]*>/g, '').slice(0, 200) || 'Untitled',
+    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
     link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
