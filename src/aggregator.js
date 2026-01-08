@@ -154,10 +154,11 @@ async function main() {
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  // Auto-post top AI article to LinkedIn (optional)
-  if (categorizedArticles.ai?.length > 0) {
-    await postToLinkedIn(categorizedArticles.ai[0]);
-  }
+  // Auto-post top AI article to LinkedIn (PAUSED - articles not working yet)
+  // TODO: Re-enable when article fetching is fixed
+  // if (categorizedArticles.ai?.length > 0) {
+  //   await postToLinkedIn(categorizedArticles.ai[0]);
+  // }
 
   console.log('\n✅ Aggregation complete!');
 }
