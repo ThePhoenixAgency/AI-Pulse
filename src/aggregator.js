@@ -75,8 +75,30 @@ function smartTruncate(text, maxLength = 500) {
   return truncated.trim() + '...';
 }
 
+/**
+ * HTML-escape a string so it is safe to insert into HTML contexts.
+ * Converts &, <, and > to their corresponding entities.
+ * @param {string} input
+ * @returns {string}
+ */
+function htmlEscape(input) {
+  if (!input) {
+    return '';
+  }
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
+  const rawSummary = htmlEscape(
+    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
+  );
+
+  return {
+    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
   const rawSummary = sanitizeText(article.contentSnippet) || '';
 
   return {
