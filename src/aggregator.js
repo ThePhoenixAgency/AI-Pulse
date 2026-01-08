@@ -2,6 +2,7 @@
 const Parser = require('rss-parser');
 const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
+const sanitizeHtml = require('sanitize-html');
 
 const parser = new Parser({
   timeout: 10000,
@@ -26,6 +27,17 @@ const FEED_CATEGORIES = {
 function addUTMParams(url, category = 'general') {
   const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
   return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
+}
+
+// Robust HTML sanitization: strip all tags and unsafe content
+function sanitizeText(input) {
+  if (!input) {
+    return '';
+  }
+  return sanitizeHtml(input, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
 }
 
 /**
@@ -87,6 +99,10 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
   return {
     title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
+  const rawSummary = sanitizeText(article.contentSnippet) || '';
+
+  return {
+    title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
     link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
