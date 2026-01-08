@@ -1,5 +1,5 @@
 # Dependabot configuration for AI-Pulse
-# Auto-updates dependencies 2x per day with auto-merge
+# Auto-updates dependencies 2x per day with security focus
 # Author: ThePhoenixAgency
 # Security: Ensures 0 vulnerabilities through automated updates
 
@@ -13,10 +13,10 @@ updates:
       interval: "daily"
       time: "06:00"
       timezone: "UTC"
-    # Auto-merge security and patch updates silently
+    # Security-focused update strategy
     open-pull-requests-limit: 10
-    reviewers: []  # No reviewers needed - auto-merge enabled
-    assignees: []  # No assignees - fully automated
+    reviewers:
+      - "ThePhoenixAgency"
     labels:
       - "dependencies"
       - "auto-merge"
@@ -25,8 +25,8 @@ updates:
     versioning-strategy: "increase"
     # Commit message prefix
     commit-message:
-      prefix: "deps"
-      prefix-development: "deps-dev"
+      prefix: "chore: "
+      prefix-development: "chore: "
       include: "scope"
     # Allow both direct and indirect updates
     allow:
@@ -40,14 +40,11 @@ updates:
       time: "18:00"
       timezone: "UTC"
     open-pull-requests-limit: 5
+    reviewers:
+      - "ThePhoenixAgency"
     labels:
       - "github-actions"
       - "auto-merge"
     commit-message:
-      prefix: "ci"
-
-# Security notes:
-# - All updates are security-focused
-# - Auto-merge via GitHub Actions workflow
-# - No email notifications (silent operation)
-# - Zero manual intervention required
+      prefix: "ci: "
+      include: "scope"

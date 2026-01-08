@@ -86,7 +86,7 @@ function sanitizeArticle(article, sourceName, tags, category) {
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 500)  // Increased from 300 to 500 with smart truncation
+    summary: smartTruncate(rawSummary, 600)  // Increased to 600 with smart truncation for better article previews
   };
 }
 
@@ -283,10 +283,11 @@ async function main() {
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  // Auto-post top AI article to LinkedIn (optional)
-  if (categorizedArticles.ai?.length > 0) {
-    await postToLinkedIn(categorizedArticles.ai[0]);
-  }
+  // Auto-post top AI article to LinkedIn (PAUSED - articles not working yet)
+  // TODO: Re-enable when article fetching is fixed
+  // if (categorizedArticles.ai?.length > 0) {
+  //   await postToLinkedIn(categorizedArticles.ai[0]);
+  // }
 
   console.log('\n✅ Aggregation complete!');
 }
