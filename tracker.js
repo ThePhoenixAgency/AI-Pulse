@@ -44,10 +44,15 @@ class AIPlulseTracker {
     }
 
     /**
-     * Generate a unique session ID (not personally identifiable)
+     * Generate a unique session ID using cryptographically secure randomness
+     * (not personally identifiable)
      */
     generateSessionId() {
-        return 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+        // Use crypto.getRandomValues for secure randomness instead of Math.random()
+        const randomBytes = new Uint8Array(6);
+        crypto.getRandomValues(randomBytes);
+        const randomHex = Array.from(randomBytes).map(b => b.toString(16).padStart(2, '0')).join('');
+        return 'sess_' + Date.now() + '_' + randomHex;
     }
 
     /**
