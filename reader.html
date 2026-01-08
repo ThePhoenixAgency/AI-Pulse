@@ -456,8 +456,23 @@
             }
         }
 
-        // If article parameters exist and URL is valid, show article view
-        if (articleUrl && isValidHttpUrl(articleUrl)) {
+        // Restrict which URLs are allowed to be used for article loading/navigation
+        function isAllowedArticleUrl(string) {
+            if (!isValidHttpUrl(string)) {
+                return false;
+            }
+            try {
+                const url = new URL(string);
+                // Allow only same-host articles by default. Extend this list if needed.
+                const allowedHosts = [window.location.hostname];
+                return allowedHosts.includes(url.hostname);
+            } catch (_) {
+                return false;
+            }
+        }
+
+        // If article parameters exist and URL is valid and allowed, show article view
+        if (articleUrl && isAllowedArticleUrl(articleUrl)) {
             showView('article');
 
             // Show article tab and external link button
