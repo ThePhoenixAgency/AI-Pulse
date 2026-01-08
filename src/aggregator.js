@@ -135,9 +135,9 @@ function generateREADME(categorizedArticles) {
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
+📊 **[Organization](https://github.com/ThePhoenixAgency)** |
+🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -190,9 +190,9 @@ function generateREADME(categorizedArticles) {
   readme += `## 🧭 Navigation\n\n`;
   readme += `<div align="center">\n\n`;
   readme += `### Explore AI-Pulse\n\n`;
-  readme += `| 🏠 [Main App](https://thephoenixagency.github.io/AI-Pulse/reader.html) | 👨‍💻 [Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html) | 📊 [Stats](https://thephoenixagency.github.io/AI-Pulse/stats.html) | 📚 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
-  readme += `|:---:|:---:|:---:|:---:|\n`;
-  readme += `| Read articles in-app | View my projects | Analytics dashboard | Migration guide |\n\n`;
+  readme += `| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
+  readme += `|:---:|:---:|:---:|\n`;
+  readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
   readme += `---\n\n`;
   readme += `### 🤝 Connect With Me\n\n`;
   readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-EthanThePhoenix38-181717?style=for-the-badge&logo=github)](https://github.com/EthanThePhoenix38)\n`;
