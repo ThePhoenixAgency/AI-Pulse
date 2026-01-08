@@ -267,6 +267,9 @@
       gtag('js', new Date());
       gtag('config', 'G-LWN1RSPQMJ');
     </script>
+
+    <!-- DOMPurify for XSS protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -401,10 +404,11 @@
             let html = '';
             sorted.forEach(([label, value]) => {
                 const percentage = (value / maxValue) * 100;
+                const sanitizedLabel = DOMPurify.sanitize(label);
                 html += `
                     <div class="chart-bar-container">
                         <div class="chart-bar-label">
-                            <span class="chart-bar-label-name">${label}</span>
+                            <span class="chart-bar-label-name">${sanitizedLabel}</span>
                             <span class="chart-bar-label-value">${value}</span>
                         </div>
                         <div class="chart-bar-bg">
@@ -429,11 +433,13 @@
 
             let html = '';
             articles.forEach((article, index) => {
+                const sanitizedTitle = DOMPurify.sanitize(article.title);
+                const sanitizedSource = DOMPurify.sanitize(article.source);
                 html += `
                     <li class="article-item">
                         <div class="article-info">
-                            <div class="article-title-stat">${index + 1}. ${article.title}</div>
-                            <div class="article-source">Source: ${article.source}</div>
+                            <div class="article-title-stat">${index + 1}. ${sanitizedTitle}</div>
+                            <div class="article-source">Source: ${sanitizedSource}</div>
                         </div>
                         <div class="article-clicks">${article.clicks}</div>
                     </li>

@@ -222,6 +222,4 @@ Non-human employees are becoming the future of cybersecurity, and enterprises ne
 
 </div>
 
-⏰ Not posting time (current: 2h UTC, scheduled: 7h UTC)
 
-✅ Aggregation complete!
