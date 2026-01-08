@@ -458,6 +458,7 @@
 
         // If article parameters exist and URL is valid, show article view
         if (articleUrl && isValidHttpUrl(articleUrl)) {
+            const safeArticleUrl = new URL(articleUrl).toString();
             showView('article');
 
             // Show article tab and external link button
@@ -485,15 +486,15 @@
             }
 
             // Configure external links
-            document.getElementById('openExternal').href = articleUrl;
-            document.getElementById('openExternalError').href = articleUrl;
+            document.getElementById('openExternal').href = safeArticleUrl;
+            document.getElementById('openExternalError').href = safeArticleUrl;
 
             // Load article in iframe
             const iframe = document.getElementById('articleFrame');
             const loading = document.getElementById('loading');
             const errorMessage = document.getElementById('errorMessage');
 
-            iframe.src = articleUrl;
+            iframe.src = safeArticleUrl;
 
             iframe.onload = function() {
                 loading.style.display = 'none';
