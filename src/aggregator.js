@@ -121,7 +121,9 @@ function generateREADME(categorizedArticles) {
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
-📅 **Auto-updated every 6 hours** | ✨ **Fresh AI & Cybersecurity news** | 🔓 **100% Open Source**
+[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%206h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
 **Last Update:** ${new Date().toUTCString()}
 
@@ -142,20 +144,20 @@ function generateREADME(categorizedArticles) {
 
 ### 🛠️ Tech Stack
 
-- **Node.js** 20.x runtime
-- **JavaScript** ES6+ with security-first design
-- **DOMPurify** 3.0+ for XSS protection
-- **Express** 4.18+ server framework
-- **Supabase** PostgreSQL with RLS enabled
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
+![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Ready-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 
 ### 🔒 Security & Compliance
 
-- ✅ **XSS Protection** - DOMPurify sanitization
-- ✅ **0 Known CVEs** - Verified dependencies
-- ✅ **GDPR Compliant** - Privacy-focused
-- ✅ **RLS Enabled** - Row-Level Security on database
-- ✅ **Dependabot** - Automated security updates 2x daily
-- ✅ **Anonymous Analytics** - No tracking, privacy first
+![XSS Protection](https://img.shields.io/badge/XSS-Protected-success?style=flat-square&logo=security&logoColor=white)
+![0 CVE](https://img.shields.io/badge/CVE-0%20Known-success?style=flat-square)
+![GDPR](https://img.shields.io/badge/GDPR-Compliant-blue?style=flat-square)
+![RLS](https://img.shields.io/badge/RLS-Enabled-blueviolet?style=flat-square)
+![Dependabot](https://img.shields.io/badge/Dependabot-Auto--Merge-green?style=flat-square&logo=dependabot&logoColor=white)
+![Anonymous Analytics](https://img.shields.io/badge/Analytics-Anonymous%20Only-orange?style=flat-square)
 
 </div>
 
@@ -193,7 +195,9 @@ function generateREADME(categorizedArticles) {
   readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
   readme += `---\n\n`;
   readme += `### 🤝 Connect With Me\n\n`;
-  readme += `[GitHub Organization](https://github.com/ThePhoenixAgency) | [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | [Issues & Support](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
+  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
+  readme += `[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)\n`;
+  readme += `[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
   readme += `---\n\n`;
   readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
   readme += `</div>\n`;
