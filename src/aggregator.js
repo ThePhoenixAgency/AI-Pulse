@@ -21,11 +21,11 @@ const FEED_CATEGORIES = {
   ]
 };
 
-// UTM parameters for AI-Pulse traffic tracking
-// Tracks clicks sent FROM AI-Pulse TO external sites
-function addUTMParams(url, category = 'general') {
-  const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
-  return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
+// Article links for external sources
+function getArticleLink(url, category = 'general') {
+  // Return direct link without any tracking parameters
+  // Users can add their own UTM if needed
+  return url;
 }
 
 /**
@@ -69,7 +69,7 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
   return {
     title: article.title?.replace(/<[^>]*>/g, '').slice(0, 200) || 'Untitled',
-    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
+    link: article.link,  // Direct link, no tracking
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
