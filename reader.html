@@ -440,7 +440,7 @@
 
         // Parse URL Parameters
         const params = new URLSearchParams(window.location.search);
-        const articleUrl = params.get('url');
+        const rawArticleUrl = params.get('url');
         const articleTitle = params.get('title');
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
@@ -456,8 +456,14 @@
             }
         }
 
+        // Validate and sanitize URL - only proceed if URL is safe
+        let articleUrl = null;
+        if (rawArticleUrl && isValidHttpUrl(rawArticleUrl)) {
+            articleUrl = rawArticleUrl; // Now articleUrl is guaranteed to be a valid http(s) URL
+        }
+
         // If article parameters exist and URL is valid, show article view
-        if (articleUrl && isValidHttpUrl(articleUrl)) {
+        if (articleUrl) {
             showView('article');
 
             // Show article tab and external link button
