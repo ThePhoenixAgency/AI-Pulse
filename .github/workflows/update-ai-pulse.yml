@@ -30,9 +30,8 @@ jobs:
 
     - name: Aggregate AI and Cybersecurity articles
       env:
-        LINKEDIN_CLIENT_ID: ${{ secrets.LINKEDIN_CLIENT_ID }}
-        LINKEDIN_CLIENT_SECRET: ${{ secrets.LINKEDIN_CLIENT_SECRET }}
         LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
       run: |
         node src/aggregator.js | tee NEW-README.md
 

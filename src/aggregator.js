@@ -220,8 +220,15 @@ function generateREADME(categorizedArticles) {
 
 // LinkedIn auto-posting function
 async function postToLinkedIn(article) {
-  if (!process.env.LINKEDIN_ACCESS_TOKEN) {
+  if (!process.env.LINKEDIN_ACCESS_TOKEN || !process.env.LINKEDIN_USER_ID) {
     console.log('⚠️  LinkedIn token not configured, skipping auto-post');
+    return;
+  }
+
+  // Only post once per day at 7h UTC
+  const currentHour = new Date().getUTCHours();
+  if (currentHour !== 7) {
+    console.log(`⏰ Not posting time (current: ${currentHour}h UTC, scheduled: 7h UTC)`);
     return;
   }
 
@@ -234,7 +241,7 @@ async function postToLinkedIn(article) {
         specificContent: {
           'com.linkedin.ugc.ShareContent': {
             shareCommentary: {
-              text: `${article.title}\n\n${article.summary}\n\n🔗 Read more: ${article.link}`
+              text: `🚀 ${article.title}\n\n${article.summary}\n\n🔗 ${article.link}\n\n#AI #Tech #Innovation`
             },
             shareMediaCategory: 'ARTICLE',
             media: [{
