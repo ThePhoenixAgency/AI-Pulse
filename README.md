@@ -3,17 +3,12 @@
 
 📡 Aggregating ai feeds...
   ✓ Fetching: Medium AI
-  ✗ Failed to fetch Medium AI: getaddrinfo EAI_AGAIN medium.com
   ✓ Fetching: Towards Data Science
-  ✗ Failed to fetch Towards Data Science: getaddrinfo EAI_AGAIN towardsdatascience.com
 
 📡 Aggregating cybersecurity feeds...
   ✓ Fetching: The Hacker News
-  ✗ Failed to fetch The Hacker News: getaddrinfo EAI_AGAIN feeds.feedburner.com
   ✓ Fetching: Bleeping Computer
-  ✗ Failed to fetch Bleeping Computer: getaddrinfo EAI_AGAIN www.bleepingcomputer.com
   ✓ Fetching: Krebs on Security
-  ✗ Failed to fetch Krebs on Security: getaddrinfo EAI_AGAIN krebsonsecurity.com
 ```
     ___    ____   ____  __  ____   _____ ______
    /   |  /  _/  / __ \/ / / / /  / ___// ____/
@@ -34,7 +29,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Wed, 14 Jan 2026 20:11:51 GMT
+**Last Update:** Wed, 14 Jan 2026 20:12:55 GMT
 
 ---
 
@@ -73,11 +68,130 @@
 ---
 ## 🤖 Artificial Intelligence
 
-*No articles available*
+### 1. [Why Human-Centered Data Analytics Matters More Than Ever](https://towardsdatascience.com/why-human-centered-data-analytics-matters-more-than-ever/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+From optimizing metrics to designing meaning: putting people back into data-driven decisions
+The post Why Human-Centered Data Analytics Matters More Than Ever appeared first on Towards Data Science.
+
+### 2. [What Is a Knowledge Graph — and Why It Matters](https://towardsdatascience.com/what-is-a-knowledge-graph-and-why-it-matters/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+How structured knowledge became healthcare’s quiet advantage
+The post What Is a Knowledge Graph — and Why It Matters appeared first on Towards Data Science.
+
+### 3. [Glitches in the Attention Matrix](https://towardsdatascience.com/glitches-in-the-attention-matrix-a-history-of-transformer-artifacts-and-the-latest-research-on-how-to-fix-them/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+A history of Transformer artifacts and the latest research on how to fix them
+The post Glitches in the Attention Matrix appeared first on Towards Data Science.
+
+### 4. [Topic Modeling Techniques for 2026: Seeded Modeling, LLM Integration, and Data Summaries](https://towardsdatascience.com/topic-modeling-techniques-for-2026-seeded-modeling-llm-integration-and-data-summaries/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Seeded topic modeling, integration with LLMs, and training on summarized data are the fresh parts of the NLP toolkit.
+The post Topic Modeling Techniques for 2026: Seeded Modeling, LLM Integration, and Data Summaries appeared first on Towards Data Science.
+
+### 5. [An introduction to AWS Bedrock](https://towardsdatascience.com/an-introduction-to-aws-bedrock/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+The how, why, what and where of Amazon’s LLM access layer
+The post An introduction to AWS Bedrock appeared first on Towards Data Science.
+
+### 6. [From ‘Dataslows’ to Dataflows: The Gen2 Performance Revolution in Microsoft Fabric](https://towardsdatascience.com/from-dataslows-to-dataflows-the-gen2-performance-revolution-in-microsoft-fabric/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Dataflows were (rightly?) considered "the slowest and least performant option" for ingesting data into Power BI/Microsoft Fabric. However, things are changing rapidly and the latest Dataflow enhancements changes how we play the game
+The post From ‘Dataslows’ to Dataflows: The Gen2 Performance Revolution in Microsoft Fabric appeared first on Towards Data Science.
+
+### 7. [Under the Uzès Sun: When Historical Data Reveals the Climate Change](https://towardsdatascience.com/under-the-uzes-sun-when-historical-data-reveals-the-climate-change/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Longer summers, milder winters: analysis of temperature trends in Uzès, France, year after year.
+The post Under the Uzès Sun: When Historical Data Reveals the Climate Change appeared first on Towards Data Science.
+
+### 8. [Why Your ML Model Works in Training But Fails in Production](https://towardsdatascience.com/why-your-ml-model-works-in-training-but-fails-in-production/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Hard lessons from building production ML systems where data leaks, defaults lie, populations shift, and time does not behave the way we expect.
+The post Why Your ML Model Works in Training But Fails in Production appeared first on Towards Data Science.
+
+### 9. [How to Maximize Claude Code Effectiveness](https://towardsdatascience.com/how-to-maximize-claude-code-effectiveness/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Learn how to get the most out of agentic coding
+The post How to Maximize Claude Code Effectiveness appeared first on Towards Data Science.
+
+### 10. [How AI Can Become Your Personal Language Tutor](https://towardsdatascience.com/how-ai-can-become-your-personal-language-tutor/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+How I used n8n to build AI study partners for learning Mandarin: vocabulary, listening, and pronunciation correction.
+The post How AI Can Become Your Personal Language Tutor appeared first on Towards Data Science.
+
+---
 
 ## 🔒 Cybersecurity
 
-*No articles available*
+### 1. [France fines Free Mobile €42 million over 2024 data breach incident](https://www.bleepingcomputer.com/news/security/france-fines-free-mobile-42-million-over-2024-data-breach-incident/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The French data protection authority (CNIL) has imposed cumulative fines of €42 million on Free Mobile and its parent company, Free, for inadequate protection of customer data against cyber threats. [...]
+
+### 2. [Researchers Null-Route Over 550 Kimwolf and Aisuru Botnet Command Servers](https://thehackernews.com/2026/01/kimwolf-botnet-infected-over-2-million.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The Black Lotus Labs team at Lumen Technologies said it null-routed traffic to more than 550 command-and-control (C2) nodes associated with the AISURU/Kimwolf botnet since early October 2025.
+AISURU and its Android counterpart, Kimwolf, have emerged as some of the biggest botnets in recent times, capable of directing enslaved devices to participate in distributed denial-of-service (DDoS)
+
+### 3. [Exploit code public for critical FortiSIEM command injection flaw](https://www.bleepingcomputer.com/news/security/exploit-code-public-for-critical-fortisiem-command-injection-flaw/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Technical details and a public exploit have been published for a critical vulnerability affecting Fortinet's Security Information and Event Management (SIEM) solution that could be leveraged by a remote, unauthenticated attacker to execute commands or code. [...]
+
+### 4. [Verizon Wireless outage puts phones in SOS mode without cell service](https://www.bleepingcomputer.com/news/mobile/verizon-wireless-outage-puts-phones-in-sos-mode-without-cell-service/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Verizon Wireless is suffering a massive outage in the US, with customers reporting their phones stuck in SOS mode with no cellular service. [...]
+
+### 5. [Microsoft updates Windows DLL that triggered security alerts](https://www.bleepingcomputer.com/news/microsoft/microsoft-updates-windows-dll-that-triggered-security-alerts/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Microsoft has resolved a known issue that was causing security applications to incorrectly flag a core Windows component, the company said in a service alert posted this week. [...]
+
+### 6. [AI Agents Are Becoming Privilege Escalation Paths](https://thehackernews.com/2026/01/ai-agents-are-becoming-privilege.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+AI agents have quickly moved from experimental tools to core components of daily workflows across security, engineering, IT, and operations. What began as individual productivity aids, like personal code assistants, chatbots, and copilots, has evolved into shared, organization-wide agents embedded in critical processes. These agents can orchestrate workflows across multiple systems, for example:
+
+### 7. [ConsentFix debrief: Insights from the new OAuth phishing attack](https://www.bleepingcomputer.com/news/security/consentfix-debrief-insights-from-the-new-oauth-phishing-attack/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+ConsentFix is an OAuth phishing technique abusing browser-based authorization flows to hijack Microsoft accounts. Push Security shares new insights from continued tracking, community research, and evolving attacker techniques. [...]
+
+### 8. [Hackers Exploit c-ares DLL Side-Loading to Bypass Security and Deploy Malware](https://thehackernews.com/2026/01/hackers-exploit-c-ares-dll-side-loading.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Security experts have disclosed details of an active malware campaign that's exploiting a DLL side-loading vulnerability in a legitimate binary associated with the open-source c-ares library to bypass security controls and deliver a wide range of commodity trojans and stealers.
+"Attackers achieve evasion by pairing a malicious libcares-2.dll with any signed version of the legitimate ahost.exe (
+
+### 9. [Reprompt attack hijacked Microsoft Copilot sessions for data theft](https://www.bleepingcomputer.com/news/security/reprompt-attack-let-hackers-hijack-microsoft-copilot-sessions/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Researchers identified an attack method dubbed "Reprompt" that could allow attackers to infiltrate a user's Microsoft Copilot session and issue commands to exfiltrate sensitive data. [...]
+
+### 10. [Cloud marketplace Pax8 accidentally exposes data on 1,800 MSP partners](https://www.bleepingcomputer.com/news/security/cloud-marketplace-pax8-accidentally-exposes-data-on-1-800-msp-partners/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Cloud marketplace and distributor Pax8 has confirmed that it mistakenly sent an email to fewer than 40 UK-based partners containing a spreadsheet with internal business information, including MSP customer and Microsoft licensing data. [...]
+
+### 11. [Fortinet Fixes Critical FortiSIEM Flaw Allowing Unauthenticated Remote Code Execution](https://thehackernews.com/2026/01/fortinet-fixes-critical-fortisiem-flaw.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Fortinet has released updates to fix a critical security flaw impacting FortiSIEM that could allow an unauthenticated attacker to achieve code execution on susceptible instances.
+The operating system (OS) injection vulnerability, tracked as CVE-2025-64155, is rated 9.4 out of 10.0 on the CVSS scoring system.
+"An improper neutralization of special elements used in an OS command ('OS command
+
+### 12. [Victorian Department of Education says hackers stole students’ data](https://www.bleepingcomputer.com/news/security/victorian-department-of-education-notifies-parents-of-data-breach/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The Department of Education in Victoria, Australia, notified parents that attackers gained access to a database containing the personal information of current and former students. [...]
+
+### 13. [New Research: 64% of 3rd-Party Applications Access Sensitive Data Without Justification](https://thehackernews.com/2026/01/new-research-64-of-3rd-party.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Research analyzing 4,700 leading websites reveals that 64% of third-party applications now access sensitive data without business justification, up from 51% in 2024. 
+Government sector malicious activity spiked from 2% to 12.9%, while 1 in 7 Education sites show active compromise.
+Specific offenders: Google Tag Manager (8% of violations), Shopify (5%), Facebook Pixel (4%).
+
+Download the
+
+### 14. [Microsoft: Windows 365 update blocks access to Cloud PC sessions](https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-365-update-blocks-access-to-cloud-pc-sessions/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Microsoft confirmed that a recent Windows 365 update is blocking customers from accessing their Microsoft 365 Cloud PC sessions. [...]
+
+### 15. [Microsoft Fixes 114 Windows Flaws in January 2026 Patch, One Actively Exploited](https://thehackernews.com/2026/01/microsoft-fixes-114-windows-flaws-in.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Microsoft on Tuesday rolled out its first security update for 2026, addressing 114 security flaws, including one vulnerability that it said has been actively exploited in the wild.
+Of the 114 flaws, eight are rated Critical, and 106 are rated Important in severity. As many as 58 vulnerabilities have been classified as privilege escalation, followed by 22 information disclosure, 21 remote code
+
+---
 
 
 ---
