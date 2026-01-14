@@ -12,295 +12,161 @@ const parser = new Parser({
 // Scalable feed configuration by category
 const FEED_CATEGORIES = {
   ai: [
-    { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['AI', 'ML', 'Deep Learning'] },
-    { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed', tags: ['AI', 'Data Science', 'Analytics'] },
+    { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['ai', 'machine-learning'] },
+    { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed', tags: ['ai', 'data-science'] },
+    { name: 'AI News', url: 'https://www.artificialintelligence-news.com/feed/', tags: ['ai', 'news'] }
   ],
-  cybersecurity: [
-    { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tags: ['Security', 'Vulnerabilities', 'Threats'] },
-    { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/feed/', tags: ['Security', 'Malware', 'CVE'] },
-    { name: 'Krebs on Security', url: 'https://krebsonsecurity.com/feed/', tags: ['Security', 'Fraud', 'Privacy'] },
+  tech: [
+    { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/', tags: ['ai', 'tech', 'startups'] },
+    { name: 'VentureBeat AI', url: 'https://venturebeat.com/category/ai/feed/', tags: ['ai', 'enterprise'] }
+  ],
+  research: [
+    { name: 'arXiv CS.AI', url: 'http://export.arxiv.org/rss/cs.AI', tags: ['research', 'papers'] },
+    { name: 'Google AI Blog', url: 'https://ai.googleblog.com/feeds/posts/default', tags: ['research', 'google'] }
   ]
 };
 
-// Article links for external sources
-function getArticleLink(url, category = 'general') {
-  // Return direct link without any tracking parameters
-  // Users can add their own UTM if needed
-  return url;
-}
+// UTM parameters for tracking
+const UTM_PARAMS = '?utm_source=ai-pulse&utm_medium=aggregator&utm_campaign=feed';
 
-/**
- * HTML-escape a string so it is safe to insert into HTML contexts.
- * Converts &, <, and > to their corresponding entities.
- * @param {string} input
- * @returns {string}
- */
-function htmlEscape(input) {
-  if (!input) {
-    return '';
-  }
-  return input
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
-// Robust HTML sanitization: strip all tags and unsafe content
-function sanitizeText(input) {
-  if (!input) {
-    return '';
-  }
-  return sanitizeHtml(input, {
-    allowedTags: [],
-    allowedAttributes: {},
-  });
-}
-
-/**
- * Smart truncate: cut at last punctuation before limit
- * Avoids cutting words in the middle
- * @param {string} text - Text to truncate
- * @param {number} maxLength - Maximum length
- * @returns {string} Properly truncated text
- */
-function smartTruncate(text, maxLength = 500) {
-  if (!text || text.length <= maxLength) {
-    return text;
-  }
-
-  // Cut at maxLength
-  let truncated = text.slice(0, maxLength);
-
-  // Find last punctuation mark (. ! ? ; :)
-  const punctuationRegex = /[.!?;:](?=\s|$)/g;
-  const matches = [...truncated.matchAll(punctuationRegex)];
-
-  if (matches.length > 0) {
-    // Cut at last punctuation
-    const lastMatch = matches[matches.length - 1];
-    return text.slice(0, lastMatch.index + 1).trim();
-  }
-
-  // If no punctuation, cut at last space to avoid mid-word cut
-  const lastSpace = truncated.lastIndexOf(' ');
-  if (lastSpace > 0) {
-    return truncated.slice(0, lastSpace).trim() + '...';
-  }
-
-  // Fallback: return as is with ellipsis
-  return truncated.trim() + '...';
-}
-
-// Sanitize and process articles
-function sanitizeArticle(article, sourceName, tags, category) {
-  const rawSummary = sanitizeText(article.contentSnippet) || '';
-
-  return {
-    title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    link: getArticleLink(article.link, category),  // Direct link without UTM tracking
-    pubDate: new Date(article.pubDate || Date.now()),
-    source: sourceName,
-    tags: tags,
-    category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 600)
-  };
-}
-
-// Aggregate feeds by category
-async function aggregateCategory(categoryName, feeds) {
-  console.log(`\n📡 Aggregating ${categoryName} feeds...`);
-  const articles = [];
-
-  for (const feed of feeds) {
-    try {
-      console.log(`  ✓ Fetching: ${feed.name}`);
-      const feedData = await parser.parseURL(feed.url);
-      const items = feedData.items.slice(0, 10).map(item =>
-        sanitizeArticle(item, feed.name, feed.tags, categoryName)
-      );
-      articles.push(...items);
-    } catch (error) {
-      console.error(`  ✗ Failed to fetch ${feed.name}: ${error.message}`);
-    }
-  }
-
-  return articles.sort((a, b) => b.pubDate - a.pubDate);
-}
-
-// Generate README with categories
-function generateREADME(categorizedArticles) {
-  let readme = `\`\`\`
-    ___    ____   ____  __  ____   _____ ______
-   /   |  /  _/  / __ \\/ / / / /  / ___// ____/
-  / /| |  / /   / /_/ / / / / /   \\__ \\/ __/
- / ___ |_/ /   / ____/ /_/ / /______/ / /___
-/_/  |_/___/  /_/    \\____/_____/____/_____/
-\`\`\`
-
-<div align="center">
-
-# 🚀 AI-PULSE
-
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
-
-> Curated content from the best sources - Auto-updated every 6 hours
-
-[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%206h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-
-**Last Update:** ${new Date().toUTCString()}
-
----
-
----
-
-## 👨‍💻 About The Developer
-
-**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
-
-🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
-📊 **[Organization](https://github.com/ThePhoenixAgency)** |
-🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
-
-> Passionate about building secure, privacy-first applications that make a difference.
-> This project showcases my expertise in full-stack development, security engineering, and data privacy.
-
-### 🛠️ Tech Stack
-
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
-![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-Ready-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-
-### 🔒 Security & Compliance
-
-![XSS Protection](https://img.shields.io/badge/XSS-Protected-success?style=flat-square&logo=security&logoColor=white)
-![0 CVE](https://img.shields.io/badge/CVE-0%20Known-success?style=flat-square)
-![GDPR](https://img.shields.io/badge/GDPR-Compliant-blue?style=flat-square)
-![RLS](https://img.shields.io/badge/RLS-Enabled-blueviolet?style=flat-square)
-![Dependabot](https://img.shields.io/badge/Dependabot-Auto--Merge-green?style=flat-square&logo=dependabot&logoColor=white)
-![Anonymous Analytics](https://img.shields.io/badge/Analytics-Anonymous%20Only-orange?style=flat-square)
-
-</div>
-
----
-`;
-
-  // Generate sections for each category
-  for (const [category, articles] of Object.entries(categorizedArticles)) {
-    const emoji = category === 'ai' ? '🤖' : '🔒';
-    const title = category === 'ai' ? 'Artificial Intelligence' : 'Cybersecurity';
-    
-    readme += `## ${emoji} ${title}\n\n`;
-    
-    if (articles.length === 0) {
-      readme += `*No articles available*\n\n`;
-      continue;
-    }
-
-    articles.slice(0, 15).forEach((article, index) => {
-      const tags = article.tags.map(t => `\`${t}\``).join(' ');
-      readme += `### ${index + 1}. [${article.title}](${article.link})\n`;
-      readme += `**Source:** ${article.source} | **Tags:** ${tags}\n`;
-      readme += `${article.summary}\n\n`;
-    });
-
-    readme += `---\n\n`;
-  }
-
-  readme += `\n---\n\n`;
-  readme += `## 🧭 Navigation\n\n`;
-  readme += `<div align="center">\n\n`;
-  readme += `### Explore AI-Pulse\n\n`;
-  readme += `| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
-  readme += `|:---:|:---:|:---:|\n`;
-  readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
-  readme += `---\n\n`;
-  readme += `### 🤝 Connect With Me\n\n`;
-  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
-  readme += `[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)\n`;
-  readme += `[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
-  readme += `---\n\n`;
-  readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
-  readme += `</div>\n`;
-
-  return readme;
-}
-
-// LinkedIn auto-posting function
-async function postToLinkedIn(article) {
-  if (!process.env.LINKEDIN_ACCESS_TOKEN || !process.env.LINKEDIN_USER_ID) {
-    console.log('⚠️  LinkedIn token not configured, skipping auto-post');
-    return;
-  }
-
-  // Only post once per day at 7h UTC
-  const currentHour = new Date().getUTCHours();
-  if (currentHour !== 7) {
-    console.log(`⏰ Not posting time (current: ${currentHour}h UTC, scheduled: 7h UTC)`);
-    return;
-  }
-
+async function fetchFeed(feedConfig) {
   try {
-    const response = await axios.post(
-      'https://api.linkedin.com/v2/ugcPosts',
-      {
-        author: `urn:li:person:${process.env.LINKEDIN_USER_ID}`,
-        lifecycleState: 'PUBLISHED',
-        specificContent: {
-          'com.linkedin.ugc.ShareContent': {
-            shareCommentary: {
-              text: `🚀 ${article.title}\n\n${article.summary}\n\n🔗 ${article.link}\n\n#AI #Tech #Innovation`
-            },
-            shareMediaCategory: 'ARTICLE',
-            media: [{
-              status: 'READY',
-              originalUrl: article.link
-            }]
-          }
-        },
-        visibility: {
-          'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC'
-        }
-      },
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.LINKEDIN_ACCESS_TOKEN}`,
-          'Content-Type': 'application/json',
-          'X-Restli-Protocol-Version': '2.0.0'
-        }
-      }
-    );
-    console.log('✅ Posted to LinkedIn successfully');
+    const feed = await parser.parseURL(feedConfig.url);
+    return feed.items.map(item => ({
+      title: sanitizeHtml(item.title, { allowedTags: [] }),
+      link: item.link + UTM_PARAMS,
+      pubDate: item.pubDate,
+      summary: sanitizeHtml(item.contentSnippet || item.summary || '', { allowedTags: [] }).substring(0, 200),
+      source: feedConfig.name,
+      tags: feedConfig.tags,
+      category: item.categories || []
+    }));
   } catch (error) {
-    console.error('❌ LinkedIn posting failed:', error.response?.data || error.message);
+    console.error(`Error fetching ${feedConfig.name}:`, error.message);
+    return [];
   }
 }
 
-// Main aggregation function
-async function main() {
-  console.log('🚀 Starting AI-Pulse aggregation...\n');
+async function aggregateFeeds() {
+  const allArticles = [];
   
-  const categorizedArticles = {};
-  
-  // Aggregate each category
-  for (const [categoryName, feeds] of Object.entries(FEED_CATEGORIES)) {
-    categorizedArticles[categoryName] = await aggregateCategory(categoryName, feeds);
+  for (const [category, feeds] of Object.entries(FEED_CATEGORIES)) {
+    const categoryArticles = await Promise.all(
+      feeds.map(feed => fetchFeed(feed))
+    );
+    allArticles.push(...categoryArticles.flat());
   }
-
-  // Generate README
-  const readme = generateREADME(categorizedArticles);
-  console.log(readme);
-
-  // Auto-post top AI article to LinkedIn (PAUSED - articles not working yet)
-  // TODO: Re-enable when article fetching is fixed
-  // if (categorizedArticles.ai?.length > 0) {
-  //   await postToLinkedIn(categorizedArticles.ai[0]);
-  // }
-
-  console.log('\n✅ Aggregation complete!');
+  
+  // Sort by date (most recent first)
+  allArticles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+  
+  return allArticles.slice(0, 50); // Top 50 articles
 }
 
-main().catch(console.error);
+async function updateGitHubPages() {
+  const articles = await aggregateFeeds();
+  
+  // Generate HTML content
+  const htmlContent = generateHTML(articles);
+  
+  console.log(`Aggregated ${articles.length} articles`);
+  return htmlContent;
+}
+
+function generateHTML(articles) {
+  const articleCards = articles.map(article => `
+    <div class="article-card">
+      <h3><a href="${article.link}" target="_blank">${article.title}</a></h3>
+      <p class="meta">${article.source} • ${new Date(article.pubDate).toLocaleDateString()}</p>
+      <p class="summary">${article.summary}</p>
+      <div class="tags">${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+    </div>
+  `).join('\n');
+  
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-Pulse - Curated AI News</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Segoe UI', system-ui, sans-serif; 
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+    .header {
+      background: rgba(10, 14, 39, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid #00d9ff;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #00d9ff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+    .article-card {
+      background: rgba(26, 31, 58, 0.6);
+      border: 1px solid rgba(0, 217, 255, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .article-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 217, 255, 0.5);
+    }
+    .article-card h3 { 
+      margin-bottom: 0.5rem; 
+    }
+    .article-card h3 a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+    .article-card h3 a:hover { color: #00ff88; }
+    .meta { 
+      color: #888; 
+      font-size: 0.9rem; 
+      margin-bottom: 0.5rem; 
+    }
+    .summary { 
+      color: #b0b0b0; 
+      margin-bottom: 0.8rem; 
+    }
+    .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .tag {
+      background: rgba(0, 217, 255, 0.1);
+      color: #00d9ff;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      border: 1px solid rgba(0, 217, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🤖 AI-Pulse</h1>
+    <p>Curated AI & Tech News</p>
+  </div>
+  <div class="container">
+    ${articleCards}
+  </div>
+</body>
+</html>`;
+}
+
+module.exports = { aggregateFeeds, updateGitHubPages };
+
+// Run if executed directly
+if (require.main === module) {
+  updateGitHubPages().then(html => console.log('Generated successfully'));
+}
