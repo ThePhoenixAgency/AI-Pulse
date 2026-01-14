@@ -15,15 +15,11 @@
   ✓ Fetching: Krebs on Security
   ✗ Failed to fetch Krebs on Security: getaddrinfo EAI_AGAIN krebsonsecurity.com
 ```
-   ▄████████  ▄█          ▄███████▄  ███    █▄   ▄█        ▄████████    ▄████████
-  ███    ███ ███         ███    ███ ███    ███ ███       ███    ███   ███    ███
-  ███    ███ ███         ███    ███ ███    ███ ███       ███    █▀    ███    █▀
-  ███    ███ ███         ███    ███ ███    ███ ███       ███         ▄███▄▄▄
-▀███████████ ███       ▀█████████▀  ███    ███ ███       ███        ▀▀███▀▀▀
-  ███    ███ ███         ███        ███    ███ ███       ███    █▄    ███    █▄
-  ███    ███ ███▌    ▄   ███        ███    ███ ███▌    ▄ ███    ███   ███    ███
-  ███    █▀  █████▄▄██  ▄████▀      ████████▀  █████▄▄██ ████████▀    ██████████
-             ▀                                  ▀
+    ___    ____   ____  __  ____   _____ ______
+   /   |  /  _/  / __ \/ / / / /  / ___// ____/
+  / /| |  / /   / /_/ / / / / /   \__ \/ __/
+ / ___ |_/ /   / ____/ /_/ / /______/ / /___
+/_/  |_/___/  /_/    \____/_____/____/_____/
 ```
 
 <div align="center">
@@ -38,7 +34,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Wed, 14 Jan 2026 20:05:45 GMT
+**Last Update:** Wed, 14 Jan 2026 20:11:51 GMT
 
 ---
 
