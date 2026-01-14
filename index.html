@@ -3,39 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Pulse</title>    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <title>AI-Pulse - AI & Cybersecurity News</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         body {
-            font-family: monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #0a0e27;
-            color: #00d9ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+            color: #e6edf3;
             margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        #content {
+            background: #0d1117;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        h1, h2 { color: #00d9ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
+        code {
+            background: #161b22;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
         }
         pre {
-            font-size: 0.8rem;
-            line-height: 1.2;
-            color: #00d9ff;
-            text-align: center;
+            background: #161b22;
+            padding: 16px;
+            border-radius: 6px;
+            overflow-x: auto;
+            border: 1px solid #30363d;
         }
+        pre code { background: none; padding: 0; }
+        img { max-width: 100%; }
+        .reader-link {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #00d9ff;
+            color: #0a0e27;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+            transition: transform 0.2s;
+        }
+        .reader-link:hover { transform: scale(1.05); text-decoration: none; }
     </style>
 </head>
 <body>
-    <pre>
- ```
-    ___    ____   ____  __  ____   _____ ______
-   /   |  /  _/  / __ \/ / / / /  / ___// ____/
-  / /| |  / /   / /_/ / / / / /   \__ \/ __/
- / ___ |_/ /   / ____/ /_/ / /______/ / /___
-/_/  |_/___/  /_/    \____/_____/____/_____/
-```
-        
-    </pre>
+    <div class="container">
+        <div id="content">Loading content...</div>
+    </div>
+    <a href="./reader.html" class="reader-link">📡 Go to Reader</a>
     <script>
-        window.location.href = './reader.html';
+        fetch('https://raw.githubusercontent.com/ThePhoenixAgency/AI-Pulse/main/README.md')
+            .then(response => response.text())
+            .then(markdown => {
+                document.getElementById('content').innerHTML = marked.parse(markdown);
+            })
+            .catch(error => {
+                document.getElementById('content').innerHTML = '<h1>Error</h1><p>Please visit the <a href="https://github.com/ThePhoenixAgency/AI-Pulse">GitHub repository</a>.</p>';
+            });
     </script>
 </body>
 </html>
