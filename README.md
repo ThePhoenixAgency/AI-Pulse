@@ -33,7 +33,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Thu, 08 Jan 2026 20:17:47 GMT
+**Last Update:** Wed, 14 Jan 2026 14:35:46 GMT
 
 ---
 
@@ -43,9 +43,9 @@
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
+📊 **[Organization](https://github.com/ThePhoenixAgency)** |
+🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -72,152 +72,129 @@
 ---
 ## 🤖 Artificial Intelligence
 
-### 1. [Beyond Prompting: The Power of Context Engineering](https://towardsdatascience.com/beyond-prompting-the-power-of-context-engineering/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Glitches in the Attention Matrix](https://towardsdatascience.com/glitches-in-the-attention-matrix-a-history-of-transformer-artifacts-and-the-latest-research-on-how-to-fix-them/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Using ACE to create self-improving LLM workflows and structured playbooks
-The post Beyond Prompting: The Power of Context Engineering appeared first on Towards Data Science.
+A history of Transformer artifacts and the latest research on how to fix them
+The post Glitches in the Attention Matrix appeared first on Towards Data Science.
 
-### 2. [Retrieval for Time-Series: How Looking Back Improves Forecasts](https://towardsdatascience.com/retrieval-for-time-series-how-looking-back-improves-forecasts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 2. [Topic Modeling Techniques for 2026: Seeded Modeling, LLM Integration, and Data Summaries](https://towardsdatascience.com/topic-modeling-techniques-for-2026-seeded-modeling-llm-integration-and-data-summaries/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Why Retrieval Helps in Time Series Forecasting We all know how it goes: Time-series data is tricky. Traditional forecasting models are unprepared for incidents like sudden market crashes, black swan events, or rare weather patterns. Even large fancy models like Chronos sometimes struggle because they haven’t dealt with that kind of pattern before. We can […]
-The post Retrieval for Time-Series: How Looking Back Improves Forecasts appeared first on Towards Data Science.
+Seeded topic modeling, integration with LLMs, and training on summarized data are the fresh parts of the NLP toolkit.
+The post Topic Modeling Techniques for 2026: Seeded Modeling, LLM Integration, and Data Summaries appeared first on Towards Data Science.
 
-### 3. [How to Improve the Performance of Visual Anomaly Detection Models](https://towardsdatascience.com/how-to-improve-the-performance-of-visual-anomaly-detection-models/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 3. [An introduction to AWS Bedrock](https://towardsdatascience.com/an-introduction-to-aws-bedrock/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Apply the best methods from academia to get the most out of practical applications
-The post How to Improve the Performance of Visual Anomaly Detection Models appeared first on Towards Data Science.
+The how, why, what and where of Amazon’s LLM access layer
+The post An introduction to AWS Bedrock appeared first on Towards Data Science.
 
-### 4. [Faster Is Not Always Better: Choosing the Right PostgreSQL Insert Strategy in Python (+Benchmarks)](https://towardsdatascience.com/faster-is-not-always-better-choosing-the-right-postgresql-insert-strategy-in-python-benchmarks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [From ‘Dataslows’ to Dataflows: The Gen2 Performance Revolution in Microsoft Fabric](https://towardsdatascience.com/from-dataslows-to-dataflows-the-gen2-performance-revolution-in-microsoft-fabric/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-PostgreSQL is fast. Whether your Python code can or should keep up depends on context. This article compares and benchmarks various insert strategies, focusing not on micro-benchmarks but on trade-offs between safety, abstraction, and throughput — and choosing the right tool for the job.
-The post Faster Is Not Always Better: Choosing the Right PostgreSQL Insert Strategy in Python (+Benchmarks) appeared first on Towards Data Science.
+Dataflows were (rightly?) considered "the slowest and least performant option" for ingesting data into Power BI/Microsoft Fabric. However, things are changing rapidly and the latest Dataflow enhancements changes how we play the game
+The post From ‘Dataslows’ to Dataflows: The Gen2 Performance Revolution in Microsoft Fabric appeared first on Towards Data Science.
 
-### 5. [HNSW at Scale: Why Your RAG System Gets Worse as the Vector Database Grows](https://towardsdatascience.com/hnsw-at-scale-why-your-rag-system-gets-worse-as-the-vector-database-grows/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Under the Uzès Sun: When Historical Data Reveals the Climate Change](https://towardsdatascience.com/under-the-uzes-sun-when-historical-data-reveals-the-climate-change/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-How approximate vector search silently degrades Recall—and what to do about It
-The post HNSW at Scale: Why Your RAG System Gets Worse as the Vector Database Grows appeared first on Towards Data Science.
+Longer summers, milder winters: analysis of temperature trends in Uzès, France, year after year.
+The post Under the Uzès Sun: When Historical Data Reveals the Climate Change appeared first on Towards Data Science.
 
-### 6. [I Evaluated Half a Million Credit Records with Federated Learning. Here’s What I Found](https://towardsdatascience.com/i-evaluated-half-a-million-credit-records-with-federated-learning-heres-what-i-found/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [Why Your ML Model Works in Training But Fails in Production](https://towardsdatascience.com/why-your-ml-model-works-in-training-but-fails-in-production/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Why privacy breaks fairness at small scale—and how collaboration fixes both without sharing a single record
-The post I Evaluated Half a Million Credit Records with Federated Learning. Here’s What I Found appeared first on Towards Data Science.
+Hard lessons from building production ML systems where data leaks, defaults lie, populations shift, and time does not behave the way we expect.
+The post Why Your ML Model Works in Training But Fails in Production appeared first on Towards Data Science.
 
-### 7. [Probabilistic Multi-Variant Reasoning: Turning Fluent LLM Answers Into Weighted Options](https://towardsdatascience.com/probabilistic-multi-variant-reasoning-turning-fluent-llm-answers-into-weighted-options/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [How to Maximize Claude Code Effectiveness](https://towardsdatascience.com/how-to-maximize-claude-code-effectiveness/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Human-guided AI collaboration
-The post Probabilistic Multi-Variant Reasoning: Turning Fluent LLM Answers Into Weighted Options appeared first on Towards Data Science.
+Learn how to get the most out of agentic coding
+The post How to Maximize Claude Code Effectiveness appeared first on Towards Data Science.
 
-### 8. [Why Supply Chain is the Best Domain for Data Scientists in 2026 (And How to Learn It)](https://towardsdatascience.com/why-supply-chain-is-the-best-domain-for-data-scientists-in-2026-and-how-to-learn-it/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [How AI Can Become Your Personal Language Tutor](https://towardsdatascience.com/how-ai-can-become-your-personal-language-tutor/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-My take after 10 years in Supply Chain on why this can be an excellent playground for data scientists who want to see their skills valued.
-The post Why Supply Chain is the Best Domain for Data Scientists in 2026 (And How to Learn It) appeared first on Towards Data Science.
+How I used n8n to build AI study partners for learning Mandarin: vocabulary, listening, and pronunciation correction.
+The post How AI Can Become Your Personal Language Tutor appeared first on Towards Data Science.
 
-### 9. [Measuring What Matters with NeMo Agent Toolkit](https://towardsdatascience.com/measuring-what-matters-with-nemo-agent-toolkit/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Why 90% Accuracy in Text-to-SQL is 100% Useless](https://towardsdatascience.com/why-90-accuracy-in-text-to-sql-is-100-useless/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-A practical guide to observability, evaluations, and model comparisons
-The post Measuring What Matters with NeMo Agent Toolkit appeared first on Towards Data Science.
+The eternal promise of self-service analytics
+The post Why 90% Accuracy in Text-to-SQL is 100% Useless appeared first on Towards Data Science.
 
-### 10. [The Best Data Scientists Are Always Learning](https://towardsdatascience.com/the-best-data-scientists-are-always-learning/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [When Does Adding Fancy RAG Features Work?](https://towardsdatascience.com/when-does-adding-fancy-rag-features-work/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Part 2: Avoiding burnout, learning strategies and the superpower of solitude
-The post The Best Data Scientists Are Always Learning appeared first on Towards Data Science.
+Looking at the performance of different pipelines
+The post When Does Adding Fancy RAG Features Work? appeared first on Towards Data Science.
 
 ---
 
 ## 🔒 Cybersecurity
 
-### 1. [WhatsApp Worm Spreads Astaroth Banking Trojan Across Brazil via Contact Auto-Messaging](https://thehackernews.com/2026/01/whatsapp-worm-spreads-astaroth-banking.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [Hackers Exploit c-ares DLL Side-Loading to Bypass Security and Deploy Malware](https://thehackernews.com/2026/01/hackers-exploit-c-ares-dll-side-loading.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of a new campaign that uses WhatsApp as a distribution vector for a Windows banking trojan called Astaroth in attacks targeting Brazil.
-The campaign has been codenamed Boto Cor-de-Rosa by Acronis Threat Research Unit.
-"The malware retrieves the victim's WhatsApp contact list and automatically sends malicious messages to each contact to further
+Security experts have disclosed details of an active malware campaign that's exploiting a DLL side-loading vulnerability in a legitimate binary associated with the open-source c-ares library to bypass security controls and deliver a wide range of commodity trojans and stealers.
+"Attackers achieve evasion by pairing a malicious libcares-2.dll with any signed version of the legitimate ahost.exe (
 
-### 2. [Texas court blocks Samsung from collecting smart TV viewing data](https://www.bleepingcomputer.com/news/security/texas-court-blocks-samsung-from-collecting-smart-tv-viewing-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 2. [Reprompt attack let hackers hijack Microsoft Copilot sessions](https://www.bleepingcomputer.com/news/security/reprompt-attack-let-hackers-hijack-microsoft-copilot-sessions/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The State of Texas has obtained a temporary restraining order (TRO) against Samsung that prohibits the South Korean company from collecting audio and visual data about what Texas consumers are watching on their TVs. [...]
+Researchers identified an attack method dubbed "Reprompt" that could allow attackers to infiltrate a user's Microsoft Copilot session and issue commands to exfiltrate sensitive data. [...]
 
-### 3. [Six for 2026: The cyber threats you can’t ignore](https://www.bleepingcomputer.com/news/security/six-for-2026-the-cyber-threats-you-cant-ignore/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 3. [Cloud marketplace Pax8 accidentally exposes data on 1,800 MSP partners](https://www.bleepingcomputer.com/news/security/cloud-marketplace-pax8-accidentally-exposes-data-on-1-800-msp-partners/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Cybersecurity threats in 2026 are accelerating, driven by AI, automation, and more effective social engineering. Corelight outlines six emerging attack trends and explains how network visibility can help defenders respond faster. [...]
+Cloud marketplace and distributor Pax8 has confirmed that it mistakenly sent an email to fewer than 40 UK-based partners containing a spreadsheet with internal business information, including MSP customer and Microsoft licensing data. [...]
 
-### 4. [China-Linked UAT-7290 Targets Telecoms with Linux Malware and ORB Nodes](https://thehackernews.com/2026/01/china-linked-uat-7290-targets-telecoms.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 4. [Fortinet Fixes Critical FortiSIEM Flaw Allowing Unauthenticated Remote Code Execution](https://thehackernews.com/2026/01/fortinet-fixes-critical-fortisiem-flaw.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-A China-nexus threat actor known as UAT-7290 has been attributed to espionage-focused intrusions against entities in South Asia and Southeastern Europe.
-The activity cluster, which has been active since at least 2022, primarily focuses on extensive technical reconnaissance of target organizations before initiating attacks, ultimately leading to the deployment of malware families such as RushDrop
+Fortinet has released updates to fix a critical security flaw impacting FortiSIEM that could allow an unauthenticated attacker to achieve code execution on susceptible instances.
+The operating system (OS) injection vulnerability, tracked as CVE-2025-64155, is rated 9.4 out of 10.0 on the CVSS scoring system.
+"An improper neutralization of special elements used in an OS command ('OS command
 
-### 5. [ThreatsDay Bulletin: RustFS Flaw, Iranian Ops, WebUI RCE, Cloud Leaks, and 12 More Stories](https://thehackernews.com/2026/01/threatsday-bulletin-rustfs-flaw-iranian.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The internet never stays quiet. Every week, new hacks, scams, and security problems show up somewhere.
-This week’s stories show how fast attackers change their tricks, how small mistakes turn into big risks, and how the same old tools keep finding new ways to break in.
-Read on to catch up before the next wave hits.
-
-
-
-
-
-
-
-
-  
-  
-    Honeypot Traps Hackers
-    
-      Hackers Fall for
-
-### 6. [Microsoft Exchange Online outage blocks access to mailboxes via IMAP4](https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-outage-blocks-access-to-mailboxes-via-imap4/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 5. [Victorian Department of Education says hackers stole students’ data](https://www.bleepingcomputer.com/news/security/victorian-department-of-education-notifies-parents-of-data-breach/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft is working to fix an Exchange Online service outage that intermittently prevents users from accessing their mailboxes via the Internet Mailbox Access Protocol 4 (IMAP4). [...]
+The Department of Education in Victoria, Australia, notified parents that attackers gained access to a database containing the personal information of current and former students. [...]
 
-### 7. [Microsoft to enforce MFA for Microsoft 365 admin center sign-ins](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-enforce-mfa-for-microsoft-365-admin-center-sign-ins/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 6. [New Research: 64% of 3rd-Party Applications Access Sensitive Data Without Justification](https://thehackernews.com/2026/01/new-research-64-of-3rd-party.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Research analyzing 4,700 leading websites reveals that 64% of third-party applications now access sensitive data without business justification, up from 51% in 2024. 
+Government sector malicious activity spiked from 2% to 12.9%, while 1 in 7 Education sites show active compromise.
+Specific offenders: Google Tag Manager (8% of violations), Shopify (5%), Facebook Pixel (4%).
+
+Download the
+
+### 7. [Microsoft: Windows 365 update blocks access to Cloud PC sessions](https://www.bleepingcomputer.com/news/microsoft/microsoft-windows-365-update-blocks-access-to-cloud-pc-sessions/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft will start enforcing multi-factor authentication (MFA) for all users accessing the Microsoft 365 admin center starting next month. [...]
+Microsoft confirmed that a recent Windows 365 update is blocking customers from accessing their Microsoft 365 Cloud PC sessions. [...]
 
-### 8. [The State of Trusted Open Source](https://thehackernews.com/2026/01/the-state-of-trusted-open-source.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [Microsoft Fixes 114 Windows Flaws in January 2026 Patch, One Actively Exploited](https://thehackernews.com/2026/01/microsoft-fixes-114-windows-flaws-in.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Chainguard, the trusted source for open source, has a unique view into how modern organizations actually consume open source software and where they run into risk and operational burdens. Across a growing customer base and an extensive catalog of over 1800 container image projects, 148,000 versions, 290,000 images, and 100,000 language libraries, and almost half a billion builds, they can see
+Microsoft on Tuesday rolled out its first security update for 2026, addressing 114 security flaws, including one vulnerability that it said has been actively exploited in the wild.
+Of the 114 flaws, eight are rated Critical, and 106 are rated Important in severity. As many as 58 vulnerabilities have been classified as privilege escalation, followed by 22 information disclosure, 21 remote code
 
-### 9. [Cisco Patches ISE Security Vulnerability After Public PoC Exploit Release](https://thehackernews.com/2026/01/cisco-patches-ise-security.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cisco has released updates to address a medium-severity security flaw in Identity Services Engine (ISE) and ISE Passive Identity Connector (ISE-PIC) with a public proof-of-concept (PoC) exploit.
-The vulnerability, tracked as CVE-2026-20029 (CVSS score: 4.9), resides in the licensing feature and could allow an authenticated, remote attacker with administrative privileges to gain access to
-
-### 10. [Researchers Uncover NodeCordRAT Hidden in npm Bitcoin-Themed Packages](https://thehackernews.com/2026/01/researchers-uncover-nodecordrat-hidden.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have discovered three malicious npm packages that are designed to deliver a previously undocumented malware called NodeCordRAT.
-The names of the packages, all of which were taken down as of November 2025, are listed below. They were uploaded by a user named "wenmoonx."
-
-bitcoin-main-lib (2,300 Downloads)
-bitcoin-lib-js (193 Downloads)
-bip40 (970 Downloads)
-
-"The
-
-### 11. [Coolify Discloses 11 Critical Flaws Enabling Full Server Compromise on Self-Hosted Instances](https://thehackernews.com/2026/01/coolify-discloses-11-critical-flaws.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of multiple critical-severity security flaws affecting Coolify, an open-source, self-hosting platform, that could result in authentication bypass and remote code execution.
-The list of vulnerabilities is as follows -
-
-CVE-2025-66209 (CVSS score: 10.0) - A command injection vulnerability in the database backup functionality allows any authenticated
-
-### 12. [Cisco warns of Identity Service Engine flaw with exploit code](https://www.bleepingcomputer.com/news/security/cisco-warns-of-identity-service-engine-flaw-with-exploit-code/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [Monroe University says 2024 data breach affects 320,000 people](https://www.bleepingcomputer.com/news/security/monroe-university-says-2024-data-breach-affects-320-000-people/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Cisco has patched an ISE vulnerability with public proof-of-concept exploit code that can be abused by attackers with admin privileges. [...]
+Monroe University revealed that threat actors stole the personal, financial, and health information of over 320,000 people after breaching its systems in a December 2024 cyberattack. [...]
 
-### 13. [CISA tags max severity HPE OneView flaw as actively exploited](https://www.bleepingcomputer.com/news/security/cisa-tags-max-severity-hpe-oneview-flaw-as-actively-exploited/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Critical Node.js Vulnerability Can Cause Server Crashes via async_hooks Stack Overflow](https://thehackernews.com/2026/01/critical-nodejs-vulnerability-can-cause.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Node.js has released updates to fix what it described as a critical security issue impacting "virtually every production Node.js app" that, if successfully exploited, could trigger a denial-of-service (DoS) condition.
+"Node.js/V8 makes a best-effort attempt to recover from stack space exhaustion with a catchable error, which frameworks have come to rely on for service availability," Node.js's
+
+### 11. [PLUGGYAPE Malware Uses Signal and WhatsApp to Target Ukrainian Defense Forces](https://thehackernews.com/2026/01/pluggyape-malware-uses-signal-and.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The Computer Emergency Response Team of Ukraine (CERT-UA) has disclosed details of new cyber attacks targeting its defense forces with malware known as PLUGGYAPE between October and December 2025.
+The activity has been attributed with medium confidence to a Russian hacking group tracked as Void Blizzard (aka Laundry Bear or UAC-0190). The threat actor is believed to be active since at least
+
+### 12. [Ukraine's army targeted in new charity-themed malware campaign](https://www.bleepingcomputer.com/news/security/ukraines-army-targeted-in-new-charity-themed-malware-campaign/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has flagged a maximum-severity HPE OneView vulnerability as actively exploited in attacks. [...]
+Officials of Ukraine's Defense Forces were targeted in a charity-themed campaign between October and December 2025 that delivered backdoor malware called PluggyApe. [...]
 
-### 14. [OpenAI Launches ChatGPT Health with Isolated, Encrypted Health Data Controls](https://thehackernews.com/2026/01/openai-launches-chatgpt-health-with.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Artificial intelligence (AI) company OpenAI on Wednesday announced the launch of ChatGPT Health, a dedicated space that allows users to have conversations with the chatbot about their health.
-To that end, the sandboxed experience offers users the optional ability to securely connect medical records and wellness apps, including Apple Health, Function, MyFitnessPal, Weight Watchers, AllTrails,
+### 13. [New VoidLink malware framework targets Linux cloud servers](https://www.bleepingcomputer.com/news/security/new-voidlink-malware-framework-targets-linux-cloud-servers/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A newly discovered advanced cloud-native Linux malware framework named VoidLink focuses on cloud environments, providing attackers with custom loaders, implants, rootkits, and plugins designed for modern infrastructures. [...]
 
-### 15. [CISA Flags Microsoft Office and HPE OneView Bugs as Actively Exploited](https://thehackernews.com/2026/01/cisa-flags-microsoft-office-and-hpe.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Wednesday added two security flaws impacting Microsoft Office and Hewlett Packard Enterprise (HPE) OneView to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation.
-The vulnerabilities are listed below -
+### 14. [Central Maine Healthcare breach exposed data of over 145,000 people](https://www.bleepingcomputer.com/news/security/central-maine-healthcare-breach-exposed-data-of-over-145-000-people/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A data breach last year at Central Maine Healthcare (CMH) exposed sensitive information of more than 145,000 individuals. [...]
 
-CVE-2009-0556 (CVSS score: 8.8) - A code injection vulnerability in Microsoft Office
+### 15. [Belgian hospital AZ Monica shuts down servers after cyberattack](https://www.bleepingcomputer.com/news/security/belgian-hospital-az-monica-shuts-down-servers-after-cyberattack/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Belgian hospital AZ Monica was forced to shut down all servers, cancel scheduled procedures, and transfer critical patients earlier today due to a cyberattack. [...]
 
 ---
 
@@ -230,17 +207,17 @@ CVE-2009-0556 (CVSS score: 8.8) - A code injection vulnerability in Microsoft Of
 
 ### Explore AI-Pulse
 
-| 🏠 [Main App](https://thephoenixagency.github.io/AI-Pulse/reader.html) | 👨‍💻 [Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html) | 📊 [Stats](https://thephoenixagency.github.io/AI-Pulse/stats.html) | 📚 [Docs](./database/SUPABASE_MIGRATION.md) |
-|:---:|:---:|:---:|:---:|
-| Read articles in-app | View my projects | Analytics dashboard | Migration guide |
+| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
+|:---:|:---:|:---:|
+| Source Code | Team Profile | Technical Docs |
 
 ---
 
 ### 🤝 Connect With Me
 
-[![GitHub Profile](https://img.shields.io/badge/GitHub-EthanThePhoenix38-181717?style=for-the-badge&logo=github)](https://github.com/EthanThePhoenix38)
-[![Organization](https://img.shields.io/badge/Organization-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
-[![Website](https://img.shields.io/badge/Website-ThePhoenixAgency.github.io-blue?style=for-the-badge&logo=google-chrome&logoColor=white)](https://ThePhoenixAgency.github.io)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
+[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
 ---
 
