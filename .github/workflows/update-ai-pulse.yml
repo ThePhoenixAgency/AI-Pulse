@@ -29,9 +29,10 @@ jobs:
         npm install axios cheerio rss-parser @octokit/rest
 
     - name: Aggregate AI and Cybersecurity articles
-      env:
-        LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-        LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
+      # LinkedIn integration temporarily disabled
+      # env:
+      #   LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      #   LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
       run: |
         node src/aggregator.js | tee NEW-README.md
 

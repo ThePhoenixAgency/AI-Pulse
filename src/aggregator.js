@@ -91,40 +91,18 @@ function smartTruncate(text, maxLength = 500) {
   return truncated.trim() + '...';
 }
 
-/**
- * HTML-escape a string so it is safe to insert into HTML contexts.
- * Converts &, <, and > to their corresponding entities.
- * @param {string} input
- * @returns {string}
- */
-function htmlEscape(input) {
-  if (!input) {
-    return '';
-  }
-  return input
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
-}
-
 // Sanitize and process articles
 function sanitizeArticle(article, sourceName, tags, category) {
-  const rawSummary = htmlEscape(
-    article.contentSnippet?.replace(/<[^>]*>/g, '') || ''
-  );
-
-  return {
-    title: htmlEscape(article.title?.replace(/<[^>]*>/g, '') || '').slice(0, 200) || 'Untitled',
   const rawSummary = sanitizeText(article.contentSnippet) || '';
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
+    link: getArticleLink(article.link, category),  // Direct link without UTM tracking
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(htmlEscape(cleanSummary), 600)  // DOMPurify removes tags, htmlEscape handles entities
+    summary: smartTruncate(rawSummary, 600)
   };
 }
 
