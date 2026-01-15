@@ -32,9 +32,9 @@ const FEED_CATEGORIES = {
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
 function addUTMParams(url, category = 'general') {
-  // Use Freedium for Medium articles to bypass paywall
+  // Use Freedium mirror for Medium articles to bypass paywall
   if (url.includes('medium.com') || url.includes('towardsdatascience.com')) {
-    url = `https://freedium.cfd/${url}`;
+    url = `https://freedium.cloud/${url}`;
   }
 
   const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
