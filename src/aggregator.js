@@ -34,12 +34,10 @@ async function fetchFeed(feedConfig) {
     const feed = await parser.parseURL(feedConfig.url);
     return feed.items.map(item => ({
       title: sanitizeHtml(item.title, { allowedTags: [] }),
-      link: item.link + UTM_PARAMS,
       pubDate: item.pubDate,
       summary: sanitizeHtml(item.contentSnippet || item.summary || '', { allowedTags: [] }).substring(0, 200),
       source: feedConfig.name,
-      tags: feedConfig.tags,
-      category: item.categories || []
+link: `./reader.html?url=${encodeURIComponent(item.link + UTM_PARAMS)}`,      category: item.categories || []
     }));
   } catch (error) {
     console.error(`Error fetching ${feedConfig.name}:`, error.message);
@@ -76,7 +74,7 @@ async function updateGitHubPages() {
 function generateHTML(articles) {
   const articleCards = articles.map(article => `
     <div class="article-card">
-      <h3><a href="${article.link}" target="_blank">${article.title}</a></h3>
+      <h3><a href="${article.link}">${article.title}</a></h3>
       <p class="meta">${article.source} • ${new Date(article.pubDate).toLocaleDateString()}</p>
       <p class="summary">${article.summary}</p>
       <div class="tags">${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
