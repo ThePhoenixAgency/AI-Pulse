@@ -74,3 +74,32 @@
 - Ajouter mode sombre/clair
 - Créer API backend pour stats custom
 - Ajouter notifications push pour nouveaux articles
+
+
+## ✅ TÂCHES COMPLÉTÉES (15 Jan 2026)
+
+### Thème et Design
+- ✅ Appliqué le thème dark du site partout (gradient #0a0e27 → #1a1e47, accents cyan #00d9ff)
+- ✅ Harmonisé les couleurs de index.html et home.html
+- ✅ Créé readme-viewer.html avec le même thème que le reste du site
+
+### Liens et Navigation
+- ✅ Modifié src/aggregator.js pour wrapper les liens articles avec reader.html?url=...
+- ✅ Ajouté paramètres UTM automatiques: utm_source=ai-pulse&utm_medium=aggregator&utm_campaign=feed
+- ✅ Supprimé target="_blank" pour compatibilité iframe
+- ✅ Ajouté fonction UTM dans readme-viewer.html pour liens externes
+
+### Corrections Techniques
+- ✅ Corrigé erreur YAML workflow (indentation ligne push:)
+- ✅ Workflow update-ai-pulse.yml maintenant fonctionnel
+- ✅ README chargé via GitHub API au lieu d'iframe (contournement X-Frame-Options)
+
+### Fichiers Modifiés
+1. `src/aggregator.js` - Middleware UTM + iframe handler
+2. `readme-viewer.html` - Thème + conversion liens en iframe
+3. `index.html` - Gradient background uniforme
+4. `.github/workflows/update-ai-pulse.yml` - Fix indentation push trigger
+
+### À Tester
+- ⏳ Attendre prochain run workflow (toutes les 3h) pour voir les nouveaux liens avec reader.html
+- ⏳ Vérifier que les articles s'ouvrent correctement dans l'iframe avec UTM
