@@ -3,6 +3,7 @@ const Parser = require('rss-parser');
 const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
 const sanitizeHtml = require('sanitize-html');
+const { URL } = require('url');
 
 const parser = new Parser({
   timeout: 10000,
@@ -33,8 +34,22 @@ const FEED_CATEGORIES = {
 // Tracks clicks sent FROM AI-Pulse TO external sites
 function addUTMParams(url, category = 'general') {
   // Use Freedium mirror for Medium articles to bypass paywall
-  if (url.includes('medium.com') || url.includes('towardsdatascience.com')) {
-    url = `https://freedium.cloud/${url}`;
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+    const mediumHosts = [
+      'medium.com',
+      'www.medium.com',
+      'towardsdatascience.com',
+      'www.towardsdatascience.com'
+    ];
+
+    if (mediumHosts.includes(hostname)) {
+      // Rewrite only genuine Medium/TDS URLs to Freedium
+      url = `https://freedium.cloud/${url}`;
+    }
+  } catch (e) {
+    // If URL parsing fails, skip Freedium rewrite and just append UTM params
   }
 
   const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
