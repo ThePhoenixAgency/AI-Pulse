@@ -51,23 +51,6 @@
             transition: opacity 0.3s ease;
         }
 
-        /* Header */
-        .header {
-            background: rgba(10, 14, 39, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            width: 200px;
-            height: auto;
-            filter: drop-shadow(var(--glow));
-            animation: pulse 2s infinite;
-        }
 
         @keyframes pulse {
             0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.6)); }
@@ -165,12 +148,6 @@
     <!-- Mouse Glow Effect -->
     <div id="cursor-glow"></div>
 
-    <!-- Header -->
-    <div class="header">
-        <a href="https://ThePhoenixAgency.github.io/AI-Pulse/">
-            <img src="./logo.svg" alt="AI-PULSE Logo" class="logo">
-        </a>
-    </div>
 
     <!-- Main Content -->
     <div class="container">
