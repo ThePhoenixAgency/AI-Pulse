@@ -1,14 +1,3 @@
-🚀 Starting AI-Pulse aggregation...
-
-
-📡 Aggregating ai feeds...
-  ✓ Fetching: Medium AI
-  ✓ Fetching: Towards Data Science
-
-📡 Aggregating cybersecurity feeds...
-  ✓ Fetching: The Hacker News
-  ✓ Fetching: Bleeping Computer
-  ✓ Fetching: Krebs on Security
 ```
     ___    ____   ____  __  ____   _____ ______
    /   |  /  _/  / __ \/ / / / /  / ___// ____/
@@ -17,11 +6,11 @@
 /_/  |_/___/  /_/    \____/_____/____/_____/
 ```
 
-<div align="center">
+
 
 # 🚀 AI-PULSE
 
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
+### Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
@@ -40,8 +29,13 @@
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
 🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
+
 📊 **[Organization](https://github.com/ThePhoenixAgency)** |
+
 🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
+
+🤖 **[Professionnel website](https://ThePoenixAgency.github.io)**
+
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -216,7 +210,7 @@ Of the 114 flaws, eight are rated Critical, and 106 are rated Important in sever
 
 ---
 
-<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
+<sub>*Powered by [AI-Pulse](https://ThePhoenixAgency.github.io/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by PhoenixProject*</sub>
 
 </div>
 
