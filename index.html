@@ -1,16 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- ========== META TAGS ========== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=./reader.html">
-    <title>AI-Pulse - Redirecting...</title>
+    <title>AI-Pulse - AI & Cybersecurity News Aggregator</title>
+    
+    <!-- ========== FAVICON ========== -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    
+    <!-- ========== STYLES ========== -->
+    <style>
+        /* Reset CSS complet */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Body en flexbox vertical */
+        body {
+            background: #0a0e27;
+            font-family: monospace;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header fixe avec gradient */
+        .header {
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
+            padding: 20px;
+            border-bottom: 2px solid #00d9ff;
+            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.2);
+            text-align: center;
+        }
+        
+        /* Logo image avec animation */
+        .logo {
+            max-width: 400px;
+            width: 100%;
+            height: auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        /* Animation de pulsation du logo */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 10px rgba(0, 217, 255, 0.5));
+            }
+            50% {
+                transform: scale(1.02);
+                filter: drop-shadow(0 0 20px rgba(0, 217, 255, 0.8));
+            }
+        }
+        
+        /* Iframe prend tout l'espace restant */
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #0d1117;
+        }
+    </style>
 </head>
 <body>
-    <p>Redirection vers <a href="./reader.html">AI-Pulse Reader</a>...</p>
-    <script>
-        window.location.href = './reader.html';
-    </script>
+    <!-- ========== HEADER AVEC LOGO ========== -->
+    <div class="header">
+        <!-- Logo AI-PULSE en SVG avec effet lumineux -->
+        <img src="./logo.svg" alt="AI-PULSE Logo" class="logo">
+    </div>
+    
+    <!-- ========== IFRAME POUR READER.HTML ========== -->
+    <!-- Le reader.html s'affiche dans cette iframe -->
+    <iframe src="./reader.html" title="AI-Pulse Content"></iframe>
 </body>
 </html>

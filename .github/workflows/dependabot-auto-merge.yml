@@ -1,54 +1,7 @@
-# Auto-merge Dependabot PRs - Silencieux et automatique
-# Author: ThePhoenixAgency
-# Security: Auto-approves and merges only patch and minor updates
-# Runs: On every Dependabot PR creation
+# Dependabot Auto-Merge - DÉSACTIVÉ (flooding)
+# Pour réactiver: retirer ce commentaire et remettre le code
 
-name: Dependabot Auto-Merge
-
-on:
-  pull_request:
-    types: [opened, reopened, synchronize]
-
-permissions:
-  contents: write
-  pull-requests: write
-
-jobs:
-  auto-merge:
-    runs-on: ubuntu-latest
-    # Only run for Dependabot PRs
-    if: github.actor == 'dependabot[bot]'
-
-    steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-
-      - name: Auto-approve PR
-        # Only auto-approve patch and minor updates for security
-        if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr review --approve "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Enable auto-merge
-        # Silent merge: no notifications, no reviews required
-        if: |
-          steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-minor'
-        run: gh pr merge --auto --squash "$PR_URL"
-        env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-# Security notes:
-# - Only auto-merges patch and minor updates (not major)
-# - Major updates require manual review for breaking changes
-# - All PRs are tested before merge (if tests are configured)
-# - Zero email notifications
-# - Fully automated, zero manual intervention
+# name: Dependabot Auto-Merge
+# on:
+#   pull_request:
+#     types: [opened, reopened, synchronize]

@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+        <!-- Redirect to index.html if opened directly (not in iframe) -->
+    <script>
+        if (window.self === window.top) {
+            window.location.replace('./index.html');
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src 'self' data: https:">
@@ -35,87 +41,6 @@
             flex-direction: column;
         }
 
-        /* Header Navigation */
-        .header {
-            background: var(--bg-primary);
-            border-bottom: 1px solid var(--border-color);
-            padding: 0;
-            display: flex;
-            align-items: center;
-            height: 60px;
-            box-shadow: var(--shadow);
-            position: relative;
-            z-index: 100;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 0 24px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            font-size: 18px;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: opacity 0.2s;
-        }
-
-        .logo:hover {
-            opacity: 0.8;
-        }
-
-        .logo-icon {
-            font-size: 24px;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .nav-tab {
-            padding: 8px 16px;
-            border: none;
-            background: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-            border-radius: 6px;
-            transition: all 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-tab:hover {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-        }
-
-        .nav-tab.active {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .nav-tab-icon {
-            font-size: 16px;
-        }
-
-        /* Main Content Area */
-        .main-container {
-            flex: 1;
-            display: flex;
-            overflow: hidden;
         }
 
         /* Article Info Bar */
@@ -353,40 +278,11 @@
 
     <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
-</head>
-<body>
-    <!-- Header -->
-    <div class="header">
-        <div class="header-content">
-            <a href="javascript:showView('home')" class="logo">
-                <span class="logo-icon">🤖</span>
-                <span class="logo-text">AI-Pulse</span>
-            </a>
-
-            <div class="nav-tabs">
-                <a href="javascript:showView('home')" class="nav-tab" id="tab-home">
-                    <span class="nav-tab-icon">🏠</span>
-                    <span class="nav-tab-text">Accueil</span>
-                </a>
-                <a href="#" class="nav-tab" id="tab-article" style="display: none;">
-                    <span class="nav-tab-icon">📰</span>
-                    <span class="nav-tab-text">Article</span>
-                </a>
-                <a href="#" class="nav-tab" id="openExternal" target="_blank" style="display: none;">
-                    <span class="nav-tab-icon">🔗</span>
-                    <span class="nav-tab-text">Ouvrir en externe</span>
-                </a>
             </div>
-        </div>
-    </div>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Home View (README) -->
         <div class="view active" id="view-home">
             <div class="iframe-container">
-                <iframe src="https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/README.md" id="readmeFrame"></iframe>
-            </div>
+                <iframe src="./readme-viewer.html" id="readmeFrame"></iframe>            </div>
         </div>
 
         <!-- Article View -->
@@ -571,16 +467,8 @@
 
     <!-- Footer -->
     <div class="footer">
-        <span>🔒 Données anonymisées</span>
-        <span>•</span>
-        <a href="portfolio.html">👨‍💻 Portfolio</a>
-        <span>•</span>
-        <a href="stats.html" target="_blank">📊 Statistiques</a>
-        <span>•</span>
-        <span>Made with 🤖 by <a href="https://github.com/ThePhoenixAgency" target="_blank">ThePhoenixAgency</a></span>
-    </div>
-
-    <!-- Anonymous Analytics Tracker -->
-    <script src="tracker.js"></script>
-</body>
-</html>
+            <a href="privacy.html">Privacy</a>
+            <span>•</span>
+            <a href="stats.html">Statistics</a>
+            <span>•</span>
+                    <a href="about.html">ThePhoenixAgency</a>
