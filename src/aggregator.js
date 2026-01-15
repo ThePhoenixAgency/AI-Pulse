@@ -23,12 +23,20 @@ const FEED_CATEGORIES = {
     { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tags: ['Security', 'Vulnerabilities', 'Threats'] },
     { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/feed/', tags: ['Security', 'Malware', 'CVE'] },
     { name: 'Krebs on Security', url: 'https://krebsonsecurity.com/feed/', tags: ['Security', 'Fraud', 'Privacy'] },
+    { name: 'Dark Reading', url: 'https://www.darkreading.com/rss_simple.asp', tags: ['Security', 'CVE', 'Enterprise'] },
+    { name: 'SecurityWeek', url: 'https://www.securityweek.com/feed/', tags: ['Security', 'CVE', 'News'] },
+    { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
   ]
 };
 
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
 function addUTMParams(url, category = 'general') {
+  // Use Freedium for Medium articles to bypass paywall
+  if (url.includes('medium.com') || url.includes('towardsdatascience.com')) {
+    url = `https://freedium.cfd/${url}`;
+  }
+
   const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
   return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
 }
