@@ -14,6 +14,10 @@ const FEED_CATEGORIES = {
   ai: [
     { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['AI', 'ML', 'Deep Learning'] },
     { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed', tags: ['AI', 'Data Science', 'Analytics'] },
+    { name: 'AI News', url: 'https://www.artificialintelligence-news.com/feed/', tags: ['AI', 'News', 'Industry'] },
+    { name: 'TechCrunch AI', url: 'https://techcrunch.com/category/artificial-intelligence/feed/', tags: ['AI', 'Startups', 'Tech'] },
+    { name: 'VentureBeat AI', url: 'https://venturebeat.com/category/ai/feed/', tags: ['AI', 'Enterprise', 'Business'] },
+    { name: 'Google AI Blog', url: 'https://ai.googleblog.com/feeds/posts/default', tags: ['AI', 'Research', 'Google'] },
   ],
   cybersecurity: [
     { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tags: ['Security', 'Vulnerabilities', 'Threats'] },
