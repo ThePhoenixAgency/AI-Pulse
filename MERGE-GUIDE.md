@@ -1,0 +1,80 @@
+# 🔥 GUIDE DE MERGE - QUEL CODE GARDER
+
+## ⚠️ EN CAS DE CONFLIT SUR `src/aggregator.js`
+
+### ✅ **GARDER: "INCOMING" (la nouvelle version)**
+
+**POURQUOI?**
+- ✅ 12 sources (6 AI + 6 Cybersecurity) au lieu de 7
+- ✅ UTM corrects: `utm_medium=reader` et `utm_campaign=article` (TES utm)
+- ✅ Freedium.cloud pour contourner les paywalls Medium
+- ✅ Catégories: `ai` et `cybersecurity` au lieu de `ai`, `tech`, `research`
+
+### ❌ **NE PAS GARDER: "CURRENT" (version actuelle sur main)**
+
+**POURQUOI?**
+- ❌ Seulement 7 sources
+- ❌ Mauvais UTM: `utm_medium=aggregator` et `utm_campaign=feed`
+- ❌ Pas de Freedium
+- ❌ 3 catégories séparées au lieu de 2
+
+---
+
+## 📝 CHOIX DANS L'INTERFACE GITHUB
+
+Quand tu vois:
+```
+<<<<<<< HEAD (Current Change)
+[ancien code]
+=======
+[nouveau code]
+>>>>>>> incoming change
+```
+
+**ACTION:** Clique sur **"Accept Incoming Change"** ou **"Accept Incoming"**
+
+---
+
+## 🎯 CE QUE ÇA VA CHANGER
+
+### Sources qui RESTENT (6):
+- Medium AI
+- Towards Data Science
+- AI News
+
+### Sources AJOUTÉES (6):
+- TechCrunch AI ← NOUVEAU
+- VentureBeat AI ← NOUVEAU
+- Google AI Blog ← NOUVEAU
+- Dark Reading (CVE) ← NOUVEAU
+- SecurityWeek (CVE) ← NOUVEAU
+- Threatpost (CVE) ← NOUVEAU
+
+### UTM qui changent:
+- AVANT: `?utm_source=ai-pulse&utm_medium=aggregator&utm_campaign=feed`
+- APRÈS: `?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai`
+
+### Freedium ajouté:
+- Tous les liens Medium passent par `https://freedium.cloud/` pour éviter le paywall
+
+---
+
+## 🚀 APRÈS LE MERGE
+
+1. Le workflow se déclenche automatiquement
+2. Il va fetcher les 12 sources RSS
+3. Il génère le README avec les articles du 15 janvier
+4. Commit automatique sur main
+
+---
+
+## ❓ EN RÉSUMÉ
+
+**Si tu vois un conflit:**
+- Choisis **"Accept Incoming"**
+- OU choisis **"Accept Incoming Change"**
+- NE CHOISIS PAS "Current" ou "Both"
+
+**Si GitHub te demande de résoudre les conflits dans l'éditeur web:**
+- Supprime les lignes avec `<<<<<<<`, `=======`, `>>>>>>>`
+- Garde SEULEMENT le code entre `=======` et `>>>>>>>`
