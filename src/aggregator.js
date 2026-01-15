@@ -29,8 +29,8 @@ function addUTMParams(url, category = 'general') {
   try {
     const urlObj = new URL(url);
     urlObj.searchParams.set('utm_source', 'ai-pulse');
-    urlObj.searchParams.set('utm_medium', 'aggregator');
-    urlObj.searchParams.set('utm_campaign', 'feed');
+    urlObj.searchParams.set('utm_medium', 'reader');
+    urlObj.searchParams.set('utm_campaign', 'article');
     urlObj.searchParams.set('utm_content', category);
     return urlObj.toString();
   } catch (e) {
@@ -110,20 +110,11 @@ async function aggregateCategory(categoryName, feeds) {
 
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = `\`\`\`
-   ▄████████  ▄█              ▄███████▄ ███    █▄   ▄█        ▄████████    ▄████████
-  ███    ███ ███             ███    ███ ███    ███ ███       ███    ███   ███    ███
-  ███    ███ ███▌            ███    ███ ███    ███ ███       ███    █▀    ███    █▀
-  ███    ███ ███▌            ███    ███ ███    ███ ███       ███         ▄███▄▄▄
-▀███████████ ███▌          ▀█████████▀  ███    ███ ███       ███        ▀▀███▀▀▀
-  ███    ███ ███             ███        ███    ███ ███       ███    █▄    ███    █▄
-  ███    ███ ███             ███        ███    ███ ███▌    ▄ ███    ███   ███    ███
-  ███    █▀  █▀             ▄████▀      ████████▀  █████▄▄██ ████████▀    ██████████
-                                                    ▀
-\`\`\`
+  let readme = `<div align="center">
 
+# 🚀 AI-PULSE
 
-### Your Real-Time AI & Cybersecurity News Aggregator
+### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
@@ -141,13 +132,10 @@ function generateREADME(categorizedArticles) {
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
+📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
+🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
 
-📊 **[Organization](https://github.com/EthanThePhoenix38)** |
-
-🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
-
-🤖 **[Professionnel website](https://ThePhoenixAgency.github.io)**
+> Passionate about building secure, privacy-first applications that make a difference.
 
 
 > Passionate about building secure, privacy-first applications that make a difference.
