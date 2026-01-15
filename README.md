@@ -28,11 +28,11 @@
 
 🔥 **[GitHub Repository](https://github.com/ThePhoenixAgency/AI-Pulse)** |
 
-📊 **[Organization](https://github.com/ThePhoenixAgency)** |
+📊 **[Organization](https://github.com/EthanThePhoenix38)** |
 
 🚀 **[Follow Us](https://github.com/ThePhoenixAgency)**
 
-🤖 **[Professionnel website](https://ThePoenixAgency.github.io)**
+🤖 **[Professionnel website](https://ThePhoenixAgency.github.io)**
 
 
 > Passionate about building secure, privacy-first applications that make a difference.
@@ -44,5 +44,4 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
 ![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-Ready-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
 
