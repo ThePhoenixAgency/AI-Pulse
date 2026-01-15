@@ -57,7 +57,19 @@
         }
 
         .logo {
-            display: flex;
+                        display: flex;
+            align-items: center;
+        }
+        
+                .logo img {
+            height: 40px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }display: flex;
             align-items: center;
             gap: 12px;
             font-weight: 700;
@@ -362,6 +374,9 @@
                 <span class="logo-icon">🤖</span>
                 <span class="logo-text">AI-Pulse</span>
             </a>
+                        <div class="logo">
+                <img src="img/logo.png" alt="AI-Pulse Logo">
+            </div>
 
             <div class="nav-tabs">
                 <a href="javascript:showView('home')" class="nav-tab" id="tab-home">
