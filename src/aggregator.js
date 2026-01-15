@@ -22,23 +22,14 @@ const FEED_CATEGORIES = {
   ]
 };
 
-// Add UTM parameters for tracking
+// UTM parameters for AI-Pulse traffic tracking
+// Tracks clicks sent FROM AI-Pulse TO external sites
 function addUTMParams(url, category = 'general') {
-  if (!url) return url;
-
-  try {
-    const urlObj = new URL(url);
-    urlObj.searchParams.set('utm_source', 'ai-pulse');
-    urlObj.searchParams.set('utm_medium', 'reader');
-    urlObj.searchParams.set('utm_campaign', 'article');
-    urlObj.searchParams.set('utm_content', category);
-    return urlObj.toString();
-  } catch (e) {
-    return url;
-  }
+  const utmParams = `utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=${category}`;
+  return url.includes('?') ? `${url}&${utmParams}` : `${url}?${utmParams}`;
 }
 
-// Sanitize text - strip all HTML tags
+// Robust HTML sanitization: strip all tags and unsafe content
 function sanitizeText(input) {
   if (!input) {
     return '';
@@ -49,26 +40,38 @@ function sanitizeText(input) {
   });
 }
 
-// Smart truncate at punctuation
+/**
+ * Smart truncate: cut at last punctuation before limit
+ * Avoids cutting words in the middle
+ * @param {string} text - Text to truncate
+ * @param {number} maxLength - Maximum length
+ * @returns {string} Properly truncated text
+ */
 function smartTruncate(text, maxLength = 500) {
   if (!text || text.length <= maxLength) {
     return text;
   }
 
+  // Cut at maxLength
   let truncated = text.slice(0, maxLength);
+
+  // Find last punctuation mark (. ! ? ; :)
   const punctuationRegex = /[.!?;:](?=\s|$)/g;
   const matches = [...truncated.matchAll(punctuationRegex)];
 
   if (matches.length > 0) {
+    // Cut at last punctuation
     const lastMatch = matches[matches.length - 1];
     return text.slice(0, lastMatch.index + 1).trim();
   }
 
+  // If no punctuation, cut at last space to avoid mid-word cut
   const lastSpace = truncated.lastIndexOf(' ');
   if (lastSpace > 0) {
     return truncated.slice(0, lastSpace).trim() + '...';
   }
 
+  // Fallback: return as is with ellipsis
   return truncated.trim() + '...';
 }
 
@@ -78,23 +81,23 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    link: addUTMParams(article.link, category),
+    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 600)
+    summary: smartTruncate(rawSummary, 600)  // Increased to 600 with smart truncation for better article previews
   };
 }
 
 // Aggregate feeds by category
 async function aggregateCategory(categoryName, feeds) {
-  console.log(`\n📡 Aggregating ${categoryName} feeds...`);
+  console.error(`\n📡 Aggregating ${categoryName} feeds...`);
   const articles = [];
 
   for (const feed of feeds) {
     try {
-      console.log(`  ✓ Fetching: ${feed.name}`);
+      console.error(`  ✓ Fetching: ${feed.name}`);
       const feedData = await parser.parseURL(feed.url);
       const items = feedData.items.slice(0, 10).map(item =>
         sanitizeArticle(item, feed.name, feed.tags, categoryName)
@@ -110,7 +113,19 @@ async function aggregateCategory(categoryName, feeds) {
 
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = `<div align="center">
+  let readme = `\`\`\`
+   ▄████████  ▄█              ▄███████▄ ███    █▄   ▄█        ▄████████    ▄████████
+  ███    ███ ███             ███    ███ ███    ███ ███       ███    ███   ███    ███
+  ███    ███ ███▌            ███    ███ ███    ███ ███       ███    █▀    ███    █▀
+  ███    ███ ███▌            ███    ███ ███    ███ ███       ███         ▄███▄▄▄
+▀███████████ ███▌          ▀█████████▀  ███    ███ ███       ███        ▀▀███▀▀▀
+  ███    ███ ███             ███        ███    ███ ███       ███    █▄    ███    █▄
+  ███    ███ ███             ███        ███    ███ ███▌    ▄ ███    ███   ███    ███
+  ███    █▀  █▀             ▄████▀      ████████▀  █████▄▄██ ████████▀    ██████████
+                                                    ▀
+\`\`\`
+
+<div align="center">
 
 # 🚀 AI-PULSE
 
@@ -132,11 +147,9 @@ function generateREADME(categorizedArticles) {
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
+🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
 📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
 🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
-
-> Passionate about building secure, privacy-first applications that make a difference.
-
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -194,7 +207,7 @@ function generateREADME(categorizedArticles) {
 
 // Main aggregation function
 async function main() {
-  console.log('🚀 Starting AI-Pulse aggregation...\n');
+  console.error('🚀 Starting AI-Pulse aggregation...\n');
 
   const categorizedArticles = {};
 
@@ -207,7 +220,7 @@ async function main() {
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  console.log('\n✅ Aggregation complete!');
+  console.error('\n✅ Aggregation complete!');
 }
 
 main().catch(console.error);
