@@ -3,7 +3,7 @@ name: AI-Pulse Auto Aggregator
 on:
   schedule:
     - cron: '0 */3 * * *'  # Every 3 hours  
-      push:
+  push:
     branches:
       - main
   workflow_dispatch:  # Manual trigger
