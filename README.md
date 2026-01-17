@@ -8,6 +8,8 @@
 
 <div align="center">
 
+# 🚀 AI-PULSE
+
 ### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
@@ -16,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sat, 17 Jan 2026 19:34:46 GMT
+**Last Update:** Sat, 17 Jan 2026 20:10:19 GMT
 
 ---
 
@@ -24,7 +26,7 @@
 
 ## 👨‍💻 About The Developer
 
-**Built by [ThePhoenixAgency](https://ThePhoenixAgency.github.io)** - AI & Cybersecurity Enthousiast lover
+**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
 🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
 📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
