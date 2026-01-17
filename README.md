@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sat, 17 Jan 2026 12:52:11 GMT
+**Last Update:** Sat, 17 Jan 2026 15:08:39 GMT
 
 ---
 
@@ -45,71 +45,71 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Musk wants up to $134B in OpenAI lawsuit, despite $700B fortune](https://techcrunch.com/2026/01/17/musk-wants-up-to-134b-in-openai-lawsuit-despite-700b-fortune/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Data Poisoning in Machine Learning: Why and How People Manipulate Training Data](https://freedium.cloud/https://towardsdatascience.com/data-poisoning-in-machine-learning-why-and-how-people-manipulate-training-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Do you know where your data has been?
+The post Data Poisoning in Machine Learning: Why and How People Manipulate Training Data appeared first on Towards Data Science.
+
+### 2. [A Geometric Method to Spot Hallucinations Without an LLM Judge](https://freedium.cloud/https://towardsdatascience.com/the-red-bird/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Imagine a flock of birds in flight. There’s no leader. No central command. Each bird aligns with its neighbors—matching direction, adjusting speed, maintaining coherence through purely local coordination. The result is global order emerging from local consistency. Now imagine one bird flying with the same conviction as the others. Its wingbeats are confident. Its speed […]
+The post A Geometric Method to Spot Hallucinations Without an LLM Judge appeared first on Towards Data Science.
+
+### 3. [Musk wants up to $134B in OpenAI lawsuit, despite $700B fortune](https://techcrunch.com/2026/01/17/musk-wants-up-to-134b-in-openai-lawsuit-despite-700b-fortune/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Musk's legal team argues he should be compensated as an early startup investor who sees returns "many orders of magnitude greater" than his initial investment.
 
-### 2. [AI cloud startup Runpod hits $120M in ARR — and it started with a Reddit post  ](https://techcrunch.com/2026/01/16/ai-cloud-startup-runpod-hits-120m-in-arr-and-it-started-with-a-reddit-post/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [AI cloud startup Runpod hits $120M in ARR — and it started with a Reddit post  ](https://techcrunch.com/2026/01/16/ai-cloud-startup-runpod-hits-120m-in-arr-and-it-started-with-a-reddit-post/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Their startup journey is a wild example of how if you build it well and the timing is lucky, they will definitely come.
 
-### 3. [California AG sends Musk’s xAI a cease-and-desist order over sexual deepfakes](https://techcrunch.com/2026/01/16/california-ag-sends-musks-xai-a-cease-and-desist-order-over-sexual-deepfakes/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [California AG sends Musk’s xAI a cease-and-desist order over sexual deepfakes](https://techcrunch.com/2026/01/16/california-ag-sends-musks-xai-a-cease-and-desist-order-over-sexual-deepfakes/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The flood of AI-generated sexual imagery has spurred concern from state and congressional officials alike.
 
-### 4. [From OpenAI’s offices to a deal with Eli Lilly — how Chai Discovery became one of the flashiest names in AI drug development](https://techcrunch.com/2026/01/16/from-openais-offices-to-a-deal-with-eli-lilly-how-chai-discovery-became-one-of-the-flashiest-names-in-ai-drug-development/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [From OpenAI’s offices to a deal with Eli Lilly — how Chai Discovery became one of the flashiest names in AI drug development](https://techcrunch.com/2026/01/16/from-openais-offices-to-a-deal-with-eli-lilly-how-chai-discovery-became-one-of-the-flashiest-names-in-ai-drug-development/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The startup has partnered with Eli Lilly and enjoys the backing of some of Silicon Valley's most influential VCs.
 
-### 5. [ChatGPT users are about to get hit with targeted ads](https://techcrunch.com/2026/01/16/chatgpt-users-are-about-to-get-hit-with-targeted-ads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [ChatGPT users are about to get hit with targeted ads](https://techcrunch.com/2026/01/16/chatgpt-users-are-about-to-get-hit-with-targeted-ads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI says that users impacted by the ads will have some control over what they see.
 
-### 6. [Trump administration wants tech companies to buy $15B of power plants they may not use](https://techcrunch.com/2026/01/16/trump-administration-wants-tech-companies-to-buy-15b-of-power-plants-they-may-not-use/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Trump administration wants tech companies to buy $15B of power plants they may not use](https://techcrunch.com/2026/01/16/trump-administration-wants-tech-companies-to-buy-15b-of-power-plants-they-may-not-use/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 In an attempt to alleviate rising electricity prices, the White House wants grid operator PJM to hold an auction for new generating capacity, and it wants tech companies to bid.
 
-### 7. [The AI healthcare gold rush is here](https://techcrunch.com/video/the-ai-healthcare-gold-rush-is-here/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [The AI healthcare gold rush is here](https://techcrunch.com/video/the-ai-healthcare-gold-rush-is-here/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI companies are clustering around healthcare and fast.  In just the past week, OpenAI bought health startup Torch, Anthropic launched Claude for healthcare, and Sam Altman-backed MergeLabs closed a $250 million seed round at an $850 million valuation. The money and products are pouring into health and voice AI, but so are concerns about hallucination risks, inaccurate medical information, and […]
 
-### 8. [OpenAI and Anthropic are making their play for healthcare, and we’re not surprised](https://techcrunch.com/podcast/openai-and-anthropic-are-making-their-play-for-healthcare-and-were-not-surprised/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [OpenAI and Anthropic are making their play for healthcare, and we’re not surprised](https://techcrunch.com/podcast/openai-and-anthropic-are-making-their-play-for-healthcare-and-were-not-surprised/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI companies are clustering around healthcare, and fast.  In just the past week, OpenAI bought health startup Torch, Anthropic launched Claude for Health, and Sam Altman-backed Merge Labs closed a $250 million seed round at an $850 million valuation. The money and products are pouring into health and voice AI, but so are concerns about […]
 
-### 9. [Maximum-Effiency Coding Setup](https://freedium.cloud/https://towardsdatascience.com/maximum-effiency-coding-setup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [Maximum-Effiency Coding Setup](https://freedium.cloud/https://towardsdatascience.com/maximum-effiency-coding-setup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to be a more efficient programmer
 The post Maximum-Effiency Coding Setup appeared first on Towards Data Science.
 
-### 10. [Cutting LLM Memory by 84%: A Deep Dive into Fused Kernels](https://freedium.cloud/https://towardsdatascience.com/cutting-llm-memory-by-84-a-deep-dive-into-fused-kernels/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [Cutting LLM Memory by 84%: A Deep Dive into Fused Kernels](https://freedium.cloud/https://towardsdatascience.com/cutting-llm-memory-by-84-a-deep-dive-into-fused-kernels/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Why your final LLM layer is OOMing and how to fix it with a custom Triton kernel.
 The post Cutting LLM Memory by 84%: A Deep Dive into Fused Kernels appeared first on Towards Data Science.
 
-### 11. [The rise of ‘micro’ apps: non-developers are writing apps instead of buying them](https://techcrunch.com/2026/01/16/the-rise-of-micro-apps-non-developers-are-writing-apps-instead-of-buying-them/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [The rise of ‘micro’ apps: non-developers are writing apps instead of buying them](https://techcrunch.com/2026/01/16/the-rise-of-micro-apps-non-developers-are-writing-apps-instead-of-buying-them/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 A new era of app creation is here. It's fun, it's fast, and it's fleeting.
 
-### 12. [Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews](https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 14. [Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews](https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** VentureBeat AI | **Tags:** `AI` `Enterprise` `Business`
 Alfred Wahlforss was running out of options. His startup, Listen Labs, needed to hire over 100 engineers, but competing against Mark Zuckerberg's $100 million offers seemed impossible. So he spent $5,000 — a fifth of his marketing budget — on a billboard in San Francisco displaying what looked like gibberish: five strings of random numbers.
 The numbers were actually AI tokens. Decoded, they led to a coding challenge: build an algorithm to act as a digital bouncer at Berghain, the Berlin nightclub famous for rejecting nearly everyone at the door. Within days, thousands attempted the puzzle.
 
-### 13. [From RGB to Lab: Addressing Color Artifacts in AI Image Compositing](https://freedium.cloud/https://towardsdatascience.com/from-rgb-to-lab-addressing-color-artifacts-in-ai-image-compositing/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 15. [From RGB to Lab: Addressing Color Artifacts in AI Image Compositing](https://freedium.cloud/https://towardsdatascience.com/from-rgb-to-lab-addressing-color-artifacts-in-ai-image-compositing/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A multi-tier approach to segmentation, color correction, and domain-specific enhancement
 The post From RGB to Lab: Addressing Color Artifacts in AI Image Compositing appeared first on Towards Data Science.
-
-### 14. [Retailers bring conversational AI and analytics closer to the user](https://www.artificialintelligence-news.com/news/retailers-bring-conversational-ai-and-analytics-closer-to-the-user/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-After years of experimentation with artificial intelligence, retailers are striving to embed consumer insight directly into everyday commercial decisions. First Insight, a US-based analytics company specialising in predictive consumer feedback, argues that the next phase of retail AI should be epitomised by dialogue, not dashboards. Following a three-month beta programme, First Insight has made its […]
-The post Retailers bring conversational AI and analytics closer to the user appeared first on AI News.
-
-### 15. [Banks operationalise as Plumery AI launches standardised integration](https://www.artificialintelligence-news.com/news/banks-operationalise-ai-as-plumery-ai-launches-standardised-integration/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-A new technology from digital banking platform Plumery AI aims to address a dilemma for financial institutions: how to move beyond proofs of concept and embed artificial intelligence into everyday banking operations without compromising governance, security, or regulatory compliance. Plumery’s “AI Fabric” has been positioned by the company as a standardised framework for connecting generative […]
-The post Banks operationalise as Plumery AI launches standardised integration appeared first on AI News.
 
 ---
 
