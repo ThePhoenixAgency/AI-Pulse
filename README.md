@@ -8,8 +8,6 @@
 
 <div align="center">
 
-# 🚀 AI-PULSE
-
 ### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
@@ -26,7 +24,7 @@
 
 ## 👨‍💻 About The Developer
 
-**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
+**Built by [ThePhoenixAgency](https://ThePhoenixAgency.github.io)** - AI & Cybersecurity Enthousiast lover
 
 🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
 📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
