@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Tue, 20 Jan 2026 12:39:25 GMT
+**Last Update:** Tue, 20 Jan 2026 13:04:12 GMT
 
 ---
 
@@ -64,13 +64,13 @@ The post SAP and Fresenius to build sovereign AI backbone for healthcare appeare
 Diluting complex research, spotting silent data leaks, and why the best way to learn is often backwards.
 The post Bridging the Gap Between Research and Readability with Marco Hening Tallarico appeared first on Towards Data Science.
 
-### 5. [Well, there goes the metaverse!](https://techcrunch.com/2026/01/19/well-there-goes-the-metaverse/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The metaverse is on its last legs as VR is eclipsed by AI. But that's not the only thing that went wrong for Meta's VR ambitions.
-
-### 6. [Rogue agents and shadow AI: Why VCs are betting big on AI security](https://techcrunch.com/2026/01/19/rogue-agents-and-shadow-ai-why-vcs-are-betting-big-on-ai-security/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Rogue agents and shadow AI: Why VCs are betting big on AI security](https://techcrunch.com/2026/01/19/rogue-agents-and-shadow-ai-why-vcs-are-betting-big-on-ai-security/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Misaligned agents are just one layer of the AI security challenge that startup Witness AI is trying to solve. It detects employee use of unapproved tools, blocking attacks, and ensuring compliance.
+
+### 6. [Well, there goes the metaverse!](https://techcrunch.com/2026/01/19/well-there-goes-the-metaverse/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The metaverse is on its last legs as VR is eclipsed by AI. But that's not the only thing that went wrong for Meta's VR ambitions.
 
 ### 7. [Scaling AI value beyond pilot phase purgatory](https://www.artificialintelligence-news.com/news/scaling-ai-value-beyond-pilot-phase-purgatory/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
