@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Tue, 20 Jan 2026 06:46:57 GMT
+**Last Update:** Tue, 20 Jan 2026 09:39:16 GMT
 
 ---
 
@@ -120,71 +120,71 @@ The post A Geometric Method to Spot Hallucinations Without an LLM Judge appeared
 
 ## 🔒 Cybersecurity
 
-### 1. [ChatGPT Go now unlocks unlimited access to GPT-5.2 Instant for $8](https://www.bleepingcomputer.com/news/artificial-intelligence/chatgpt-go-now-unlocks-unlimited-access-to-gpt-52-instant-for-8/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [Tudou Guarantee Marketplace Halts Telegram Transactions After Processing Over $12 Billion](https://thehackernews.com/2026/01/tudou-guarantee-marketplace-halts.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A Telegram-based guarantee marketplace known for advertising a broad range of illicit services appears to be winding down its operations, according to new findings from Elliptic.
+The blockchain intelligence company said Tudou Guarantee has effectively ceased transactions through its public Telegram groups following a period of significant growth. The marketplace is estimated to have processed
+
+### 2. [ChatGPT Go now unlocks unlimited access to GPT-5.2 Instant for $8](https://www.bleepingcomputer.com/news/artificial-intelligence/chatgpt-go-now-unlocks-unlimited-access-to-gpt-52-instant-for-8/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 ChatGPT Go is finally worth your money, as OpenAI has almost doubled the usage limits and enabled ultimate access to GPT 5.2 Instant. [...]
 
-### 2. [You can get ChatGPT's $20 Plus subscription for free for a limited time](https://www.bleepingcomputer.com/news/artificial-intelligence/you-can-get-chatgpts-20-plus-subscription-for-free-for-a-limited-time/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 3. [You can get ChatGPT's $20 Plus subscription for free for a limited time](https://www.bleepingcomputer.com/news/artificial-intelligence/you-can-get-chatgpts-20-plus-subscription-for-free-for-a-limited-time/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 OpenAI is offering ChatGPT Plus, which costs $20 in the United States, for free, but the offer is valid for some accounts only, and it's a limited-time deal. [...]
 
-### 3. [Fake ad blocker extension crashes the browser for ClickFix attacks](https://www.bleepingcomputer.com/news/security/fake-ad-blocker-extension-crashes-the-browser-for-clickfix-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 4. [Fake ad blocker extension crashes the browser for ClickFix attacks](https://www.bleepingcomputer.com/news/security/fake-ad-blocker-extension-crashes-the-browser-for-clickfix-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A malvertising campaign is using a fake ad-blocking Chrome and Edge extension named NexShield that intentionally crashes the browser in preparation for ClickFix attacks. [...]
 
-### 4. [New PDFSider Windows malware deployed on Fortune 100 firm's network](https://www.bleepingcomputer.com/news/security/new-pdfsider-windows-malware-deployed-on-fortune-100-firms-network/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 5. [New PDFSider Windows malware deployed on Fortune 100 firm's network](https://www.bleepingcomputer.com/news/security/new-pdfsider-windows-malware-deployed-on-fortune-100-firms-network/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ransomware attackers targeting a Fortune 100 company in the finance sector used a new malware strain, dubbed PDFSider, to deliver malicious payloads on Windows systems. [...]
 
-### 5. [Google Gemini Prompt Injection Flaw Exposed Private Calendar Data via Malicious Invites](https://thehackernews.com/2026/01/google-gemini-prompt-injection-flaw.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 6. [Google Gemini Prompt Injection Flaw Exposed Private Calendar Data via Malicious Invites](https://thehackernews.com/2026/01/google-gemini-prompt-injection-flaw.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a security flaw that leverages indirect prompt injection targeting Google Gemini as a way to bypass authorization guardrails and use Google Calendar as a data extraction mechanism.
 The vulnerability, Miggo Security's Head of Research, Liad Eliyahu, said, made it possible to circumvent Google Calendar's privacy controls by hiding a dormant
 
-### 6. [UK govt. warns about ongoing Russian hacktivist group attacks](https://www.bleepingcomputer.com/news/security/uk-govt-warns-about-ongoing-russian-hacktivist-group-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [UK govt. warns about ongoing Russian hacktivist group attacks](https://www.bleepingcomputer.com/news/security/uk-govt-warns-about-ongoing-russian-hacktivist-group-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.K. government is warning of continued malicious activity from Russian-aligned hacktivist groups targeting critical infrastructure and local government organizations in the country in disruptive denial-of-service (DDoS) attacks. [...]
 
-### 7. [Hacker admits to leaking stolen Supreme Court data on Instagram](https://www.bleepingcomputer.com/news/security/hacker-admits-to-leaking-stolen-supreme-court-data-on-instagram/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [Hacker admits to leaking stolen Supreme Court data on Instagram](https://www.bleepingcomputer.com/news/security/hacker-admits-to-leaking-stolen-supreme-court-data-on-instagram/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A Tennessee man has pleaded guilty to hacking the U.S. Supreme Court's electronic filing system and breaching accounts at the AmeriCorps U.S. federal agency and the Department of Veterans Affairs. [...]
 
-### 8. [TP-Link Patches Vulnerability Exposing VIGI Cameras to Remote Hacking](https://www.securityweek.com/tp-link-patches-vulnerability-exposing-vigi-cameras-to-hacking/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [TP-Link Patches Vulnerability Exposing VIGI Cameras to Remote Hacking](https://www.securityweek.com/tp-link-patches-vulnerability-exposing-vigi-cameras-to-hacking/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The researcher who discovered the vulnerability saw more than 2,500 internet-exposed devices.
 The post TP-Link Patches Vulnerability Exposing VIGI Cameras to Remote Hacking appeared first on SecurityWeek.
 
-### 9. [Jordanian pleads guilty to selling access to 50 corporate networks](https://www.bleepingcomputer.com/news/security/jordanian-pleads-guilty-to-selling-access-to-50-corporate-networks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Jordanian pleads guilty to selling access to 50 corporate networks](https://www.bleepingcomputer.com/news/security/jordanian-pleads-guilty-to-selling-access-to-50-corporate-networks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A Jordanian man has pleaded guilty to operating as an "access broker" who sold access to the computer networks of at least 50 companies. [...]
 
-### 10. [Jordanian Admits in US Court to Selling Access to 50 Enterprise Networks](https://www.securityweek.com/jordanian-admits-in-us-court-to-selling-access-to-50-enterprise-networks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [Jordanian Admits in US Court to Selling Access to 50 Enterprise Networks](https://www.securityweek.com/jordanian-admits-in-us-court-to-selling-access-to-50-enterprise-networks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Operating as an access broker, the defendant sold unauthorized access to compromised networks to an undercover agent.
 The post Jordanian Admits in US Court to Selling Access to 50 Enterprise Networks appeared first on SecurityWeek.
 
-### 11. [‘SolyxImmortal’ Information Stealer Emerges](https://www.securityweek.com/solyximmortal-information-stealer-emerges/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [‘SolyxImmortal’ Information Stealer Emerges](https://www.securityweek.com/solyximmortal-information-stealer-emerges/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The information stealer abuses legitimate APIs and libraries to exfiltrate data to Discord webhooks.
 The post ‘SolyxImmortal’ Information Stealer Emerges appeared first on SecurityWeek.
 
-### 12. [Ingram Micro says ransomware attack affected 42,000 people](https://www.bleepingcomputer.com/news/security/ingram-micro-says-ransomware-attack-affected-42-000-people/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Ingram Micro says ransomware attack affected 42,000 people](https://www.bleepingcomputer.com/news/security/ingram-micro-says-ransomware-attack-affected-42-000-people/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 ​Information technology giant Ingram Micro has revealed that a ransomware attack on its systems in July 2025 led to a data breach affecting over 42,000 individuals. [...]
 
-### 13. [Cyber Insights 2026: Information Sharing](https://www.securityweek.com/cyber-insights-2026-information-sharing/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [Cyber Insights 2026: Information Sharing](https://www.securityweek.com/cyber-insights-2026-information-sharing/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Information sharing is necessary for efficient cybersecurity, and is widespread; but never quite perfect in practice.
 The post Cyber Insights 2026: Information Sharing appeared first on SecurityWeek.
 
-### 14. [⚡ Weekly Recap: Fortinet Exploits, RedLine Clipjack, NTLM Crack, Copilot Attack &amp; More](https://thehackernews.com/2026/01/weekly-recap-fortinet-exploits-redline.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [⚡ Weekly Recap: Fortinet Exploits, RedLine Clipjack, NTLM Crack, Copilot Attack &amp; More](https://thehackernews.com/2026/01/weekly-recap-fortinet-exploits-redline.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 In cybersecurity, the line between a normal update and a serious incident keeps getting thinner. Systems that once felt reliable are now under pressure from constant change. New AI tools, connected devices, and automated systems quietly create more ways in, often faster than security teams can react. This week’s stories show how easily a small mistake or hidden service can turn into a real
-
-### 15. [New Reports Reinforce Cyberattack’s Role in Maduro Capture Blackout](https://www.securityweek.com/new-reports-reinforce-cyberattacks-role-in-maduro-capture-blackout/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-US officials told The New York Times that cyberattacks were used to turn off the lights in Caracas and disrupt air defense radars.
-The post New Reports Reinforce Cyberattack’s Role in Maduro Capture Blackout appeared first on SecurityWeek.
 
 ---
 
