@@ -180,11 +180,6 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-
----
-
-## Navigation
-
 <div align="center">
 
 ---
