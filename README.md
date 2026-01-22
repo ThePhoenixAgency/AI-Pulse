@@ -8,9 +8,7 @@
 
 <div align="center">
 
-# 🚀 AI-PULSE
-
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
+### 🤖 Your Real-Time AI, iOT & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
@@ -185,15 +183,9 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-## 🧭 Navigation
+## Navigation
 
 <div align="center">
-
-### Explore AI-Pulse
-
-| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
-|:---:|:---:|:---:|
-| Source Code | Team Profile | Technical Docs |
 
 ---
 
@@ -205,7 +197,7 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
+<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built by PhoenixProject*</sub>
 
 </div>
 
