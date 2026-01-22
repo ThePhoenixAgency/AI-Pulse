@@ -8,7 +8,9 @@
 
 <div align="center">
 
-### 🤖 Your Real-Time AI, iOT & Cybersecurity News Aggregator
+# 🚀 AI-PULSE
+
+### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
@@ -16,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Thu, 22 Jan 2026 07:46:45 GMT
+**Last Update:** Thu, 22 Jan 2026 08:51:37 GMT
 
 ---
 
@@ -180,7 +182,18 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
+
+---
+
+## 🧭 Navigation
+
 <div align="center">
+
+### Explore AI-Pulse
+
+| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
+|:---:|:---:|:---:|
+| Source Code | Team Profile | Technical Docs |
 
 ---
 
@@ -192,7 +205,7 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built by PhoenixProject*</sub>
+<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
 
 </div>
 
