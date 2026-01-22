@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Thu, 22 Jan 2026 06:44:09 GMT
+**Last Update:** Thu, 22 Jan 2026 07:46:45 GMT
 
 ---
 
@@ -73,113 +73,112 @@ The newly revised document offers a roadmap for what Anthropic says is a safer a
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Research from startup GPTZero points to the impossible problem prestigious conferences face in the age of AI slop.
 
-### 8. [YouTube will soon let creators make Shorts with their own AI likeness](https://techcrunch.com/2026/01/21/youtube-will-soon-let-creators-make-shorts-with-their-own-ai-likeness/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Google Trends is Misleading You: How to Do Machine Learning with Google Trends Data](https://freedium.cloud/https://towardsdatascience.com/google-trends-is-misleading-you-how-to-do-machine-learning-with-google-trends-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Google Trends is one of the most widely used tools for analysing human behaviour at scale. Journalists use it. Data scientists use it. Entire papers are built on it. But there is a fundamental property of Google Trends data that makes it very easy to misuse, especially if you are working with time series or trying to build models, and most people never realise they are doing it.
+The post Google Trends is Misleading You: How to Do Machine Learning with Google Trends Data appeared first on Towards Data Science.
+
+### 9. [YouTube will soon let creators make Shorts with their own AI likeness](https://techcrunch.com/2026/01/21/youtube-will-soon-let-creators-make-shorts-with-their-own-ai-likeness/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 YouTube Shorts viewers might soon see AI versions of their favorite creators when scrolling through their feeds.
 
-### 9. [OpenAI aims to ship its first device in 2026, and it could be earbuds](https://techcrunch.com/2026/01/21/openai-aims-to-ship-its-first-device-in-2026-and-it-could-be-earbuds/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [OpenAI aims to ship its first device in 2026, and it could be earbuds](https://techcrunch.com/2026/01/21/openai-aims-to-ship-its-first-device-in-2026-and-it-could-be-earbuds/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The AI startup is on track to announce its first hardware device in the second half of this year, OpenAI Chief Global Affairs Officer Chris Lehane said during an interview at Davos.
 
-### 10. [TechCrunch Disrupt 2026 tickets now on sale: Lowest rates all year ](https://techcrunch.com/2026/01/21/techcrunch-disrupt-2026-tickets-now-on-sale-lowest-rates-all-year/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [If You Want to Become a Data Scientist in 2026, Do This](https://freedium.cloud/https://towardsdatascience.com/why-most-people-struggle-to-get-data-science-jobs-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Learn from my mistakes and fast track your data science career
+The post If You Want to Become a Data Scientist in 2026, Do This appeared first on Towards Data Science.
+
+### 12. [TechCrunch Disrupt 2026 tickets now on sale: Lowest rates all year ](https://techcrunch.com/2026/01/21/techcrunch-disrupt-2026-tickets-now-on-sale-lowest-rates-all-year/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 TechCrunch Disrupt 2026 tickets are officially on sale. Save up to $680 on your ticket and be among the first 500 registrants to score a plus-one pass at 50% off. Don't miss 10,000 tech leaders, founders, and VCs in San Francisco from October 13-15. Register before these one-time deals vanish.
 
-### 11. [Balancing AI cost efficiency with data sovereignty](https://www.artificialintelligence-news.com/news/balancing-ai-cost-efficiency-with-data-sovereignty/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [Building a Self-Healing Data Pipeline That Fixes Its Own Python Errors](https://freedium.cloud/https://towardsdatascience.com/building-a-self-healing-data-pipeline-that-fixes-its-own-python-errors/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+How I built a self-healing pipeline that automatically fixes bad CSVs, schema changes, and weird delimiters.
+The post Building a Self-Healing Data Pipeline That Fixes Its Own Python Errors appeared first on Towards Data Science.
+
+### 14. [A Case for the T-statistic](https://freedium.cloud/https://towardsdatascience.com/a-case-for-the-t-statistic/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+And how it compares to the run-of-the-mill z-score
+The post A Case for the T-statistic appeared first on Towards Data Science.
+
+### 15. [Balancing AI cost efficiency with data sovereignty](https://www.artificialintelligence-news.com/news/balancing-ai-cost-efficiency-with-data-sovereignty/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 AI cost efficiency and data sovereignty are at odds, forcing a rethink of enterprise risk frameworks for global organisations. For over a year, the generative AI narrative focused on a race for capability, often measuring success by parameter counts and flawed benchmark scores. Boardroom conversations, however, are undergoing a necessary correction. While the allure of […]
 The post Balancing AI cost efficiency with data sovereignty appeared first on AI News.
-
-### 12. [The quiet work behind Citi’s 4,000-person internal AI rollout](https://www.artificialintelligence-news.com/news/the-quiet-work-behind-citi-4000-person-internal-ai-rollout/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-For many large companies, artificial intelligence still lives in side projects. Small teams test tools, run pilots, and present results that struggle to spread beyond a few departments. Citi has taken a different path, where instead of keeping AI limited to specialists, the bank has spent the past two years pushing the technology into daily […]
-The post The quiet work behind Citi’s 4,000-person internal AI rollout appeared first on AI News.
-
-### 13. [SAP and Fresenius to build sovereign AI backbone for healthcare](https://www.artificialintelligence-news.com/news/sap-and-fresenius-build-sovereign-ai-backbone-for-healthcare/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-SAP and Fresenius are building a sovereign AI platform for healthcare that brings secure data processing to clinical settings. For data leaders in the medical sector, deploying AI requires strict governance that public cloud solutions often lack. This collaboration addresses that gap by creating a “controlled environment” where AI models can operate without compromising data […]
-The post SAP and Fresenius to build sovereign AI backbone for healthcare appeared first on AI News.
-
-### 14. [Scaling AI value beyond pilot phase purgatory](https://www.artificialintelligence-news.com/news/scaling-ai-value-beyond-pilot-phase-purgatory/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-Scaling AI value from isolated pilots to enterprise-wide adoption remains a primary hurdle for many organisations. While experimentation with generative models has become ubiquitous, industrialising these tools (i.e. wrapping them in necessary governance, security, and integration layers) often stalls. Addressing the gap between investment and operational return, IBM has introduced a new service model designed […]
-The post Scaling AI value beyond pilot phase purgatory appeared first on AI News.
-
-### 15. [Claude Code costs up to $200 a month. Goose does the same thing for free.](https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** VentureBeat AI | **Tags:** `AI` `Enterprise` `Business`
-The artificial intelligence coding revolution comes with a catch: it's expensive.
-Claude Code, Anthropic's terminal-based AI agent that can write, debug, and deploy code autonomously, has captured the imagination of software developers worldwide. But its pricing — ranging from $20 to $200 per month depending on usage — has sparked a growing rebellion among the very programmers it aims to serve.
-Now, a free alternative is gaining traction.
 
 ---
 
 ## 🔒 Cybersecurity
 
-### 1. [Cisco Fixes Actively Exploited Zero-Day CVE-2026-20045 in Unified CM and Webex](https://thehackernews.com/2026/01/cisco-fixes-actively-exploited-zero-day.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [Automated FortiGate Attacks Exploit FortiCloud SSO to Alter Firewall Configurations](https://thehackernews.com/2026/01/automated-fortigate-attacks-exploit.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity company Arctic Wolf has warned of a "new cluster of automated malicious activity" that involves unauthorized firewall configuration changes on Fortinet FortiGate devices.
+The activity, it said, commenced on January 15, 2026, adding it shares similarities with a December 2025 campaign in which malicious SSO logins on FortiGate appliances were recorded against the admin account from
+
+### 2. [Cisco Fixes Actively Exploited Zero-Day CVE-2026-20045 in Unified CM and Webex](https://thehackernews.com/2026/01/cisco-fixes-actively-exploited-zero-day.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cisco has released fresh patches to address what it described as a "critical" security vulnerability impacting multiple Unified Communications (CM) products and Webex Calling Dedicated Instance that it has been actively exploited as a zero-day in the wild.
 The vulnerability, CVE-2026-20045 (CVSS score: 8.2), could permit an unauthenticated remote attacker to execute arbitrary commands on the
 
-### 2. [Zendesk ticket systems hijacked in massive global spam wave](https://www.bleepingcomputer.com/news/security/zendesk-ticket-systems-hijacked-in-massive-global-spam-wave/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 3. [Zendesk ticket systems hijacked in massive global spam wave](https://www.bleepingcomputer.com/news/security/zendesk-ticket-systems-hijacked-in-massive-global-spam-wave/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 People worldwide are being targeted by a massive spam wave originating from unsecured Zendesk support systems, with victims reporting receiving hundreds of emails with strange and sometimes alarming subject lines. [...]
 
-### 3. [Chainlit AI framework bugs let hackers breach cloud environments](https://www.bleepingcomputer.com/news/security/chainlit-ai-framework-bugs-let-hackers-breach-cloud-environments/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 4. [Chainlit AI framework bugs let hackers breach cloud environments](https://www.bleepingcomputer.com/news/security/chainlit-ai-framework-bugs-let-hackers-breach-cloud-environments/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Two high-severity vulnerabilities in Chainlit, a popular open-source framework for building conversational AI applications, allow reading any file on the server and leak sensitive information. [...]
 
-### 4. [Cisco fixes Unified Communications RCE zero day exploited in attacks](https://www.bleepingcomputer.com/news/security/cisco-fixes-unified-communications-rce-zero-day-exploited-in-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 5. [Cisco fixes Unified Communications RCE zero day exploited in attacks](https://www.bleepingcomputer.com/news/security/cisco-fixes-unified-communications-rce-zero-day-exploited-in-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cisco has fixed a critical Unified Communications and Webex Calling remote code execution vulnerability, tracked as CVE-2026-20045, that has been actively exploited as a zero-day in attacks. [...]
 
-### 5. [New Android malware uses AI to click on hidden browser ads](https://www.bleepingcomputer.com/news/security/new-android-malware-uses-ai-to-click-on-hidden-browser-ads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 6. [New Android malware uses AI to click on hidden browser ads](https://www.bleepingcomputer.com/news/security/new-android-malware-uses-ai-to-click-on-hidden-browser-ads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new family of Android click-fraud trojans leverages TensorFlow machine learning models to automatically detect and interact with specific advertisement elements. [...]
 
-### 6. [Online retailer PcComponentes says data breach claims are fake](https://www.bleepingcomputer.com/news/security/online-retailer-pccomponentes-says-data-breach-claims-are-fake/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [Online retailer PcComponentes says data breach claims are fake](https://www.bleepingcomputer.com/news/security/online-retailer-pccomponentes-says-data-breach-claims-are-fake/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 PcComponentes, a major technology retailer in Spain, has denied claims of a data breach on its systems impacting 16 million customers, but confirmed it suffered a credential stuffing attack. [...]
 
-### 7. [Fortinet admins report patched FortiGate firewalls getting hacked](https://www.bleepingcomputer.com/news/security/fortinet-admins-report-patched-fortigate-firewalls-getting-hacked/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [Fortinet admins report patched FortiGate firewalls getting hacked](https://www.bleepingcomputer.com/news/security/fortinet-admins-report-patched-fortigate-firewalls-getting-hacked/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Fortinet customers are seeing attackers exploiting a patch bypass for a previously fixed critical FortiGate authentication vulnerability (CVE-2025-59718) to hack patched firewalls. [...]
 
-### 8. [North Korean PurpleBravo Campaign Targeted 3,136 IP Addresses via Fake Job Interviews](https://thehackernews.com/2026/01/north-korean-purplebravo-campaign.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [North Korean PurpleBravo Campaign Targeted 3,136 IP Addresses via Fake Job Interviews](https://thehackernews.com/2026/01/north-korean-purplebravo-campaign.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As many as 3,136 individual IP addresses linked to likely targets of the Contagious Interview activity have been identified, with the campaign claiming 20 potential victim organizations spanning artificial intelligence (AI), cryptocurrency, financial services, IT services, marketing, and software development sectors in Europe, South Asia, the Middle East, and Central America.
 The new findings
 
-### 9. [Fake Lastpass emails pose as password vault backup alerts](https://www.bleepingcomputer.com/news/security/fake-lastpass-emails-pose-as-password-vault-backup-alerts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Fake Lastpass emails pose as password vault backup alerts](https://www.bleepingcomputer.com/news/security/fake-lastpass-emails-pose-as-password-vault-backup-alerts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 LastPass is warning of a new phishing campaign disguised as a maintenance notification from the service, asking users to back up their vaults in the next 24 hours. [...]
 
-### 10. [CyberNut Closes $5M Growth Capital for K-12 Security Awareness Training](https://www.securityweek.com/cybernut-closes-5m-growth-capital-for-k-12-security-awareness-training/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [CyberNut Closes $5M Growth Capital for K-12 Security Awareness Training](https://www.securityweek.com/cybernut-closes-5m-growth-capital-for-k-12-security-awareness-training/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CyberNut emerged from stealth in May 2024 with $800k in pre-seed funding for its cybersecurity platform.
 The post CyberNut Closes $5M Growth Capital for K-12 Security Awareness Training appeared first on SecurityWeek.
 
-### 11. [Zoom and GitLab Release Security Updates Fixing RCE, DoS, and 2FA Bypass Flaws](https://thehackernews.com/2026/01/zoom-and-gitlab-release-security.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [Zoom and GitLab Release Security Updates Fixing RCE, DoS, and 2FA Bypass Flaws](https://thehackernews.com/2026/01/zoom-and-gitlab-release-security.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Zoom and GitLab have released security updates to resolve a number of security vulnerabilities that could result in denial-of-service (DoS) and remote code execution.
 The most severe of the lot is a critical security flaw impacting Zoom Node Multimedia Routers (MMRs) that could permit a meeting participant to conduct remote code execution attacks. The vulnerability, tracked as CVE-2026-22844
 
-### 12. [Asymmetric Security Emerges From Stealth With $4.2 Million in Funding](https://www.securityweek.com/asymmetric-security-emerges-from-stealth-with-4-2-million-in-funding/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Asymmetric Security Emerges From Stealth With $4.2 Million in Funding](https://www.securityweek.com/asymmetric-security-emerges-from-stealth-with-4-2-million-in-funding/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup’s platform leverages AI to automate forensic investigations, accelerating incident response.
 The post Asymmetric Security Emerges From Stealth With $4.2 Million in Funding appeared first on SecurityWeek.
 
-### 13. [Microsoft shares workaround for Outlook freezes after Windows update](https://www.bleepingcomputer.com/news/microsoft/microsoft-shares-workaround-for-outlook-freezes-after-windows-update/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [Microsoft shares workaround for Outlook freezes after Windows update](https://www.bleepingcomputer.com/news/microsoft/microsoft-shares-workaround-for-outlook-freezes-after-windows-update/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft shared a temporary workaround for customers experiencing Outlook freezes after installing this month's Windows security updates. [...]
 
-### 14. [You Got Phished? Of Course! You're Human...](https://www.bleepingcomputer.com/news/security/you-got-phished-of-course-youre-human/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [You Got Phished? Of Course! You're Human...](https://www.bleepingcomputer.com/news/security/you-got-phished-of-course-youre-human/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Phishing succeeds not because users are careless, but because attackers exploit human timing, context, and emotion. Flare shows how modern phishing has become industrialized, scalable, and increasingly hard to spot. [...]
-
-### 15. [aiFWall Emerges From Stealth With an AI Firewall](https://www.securityweek.com/aifwall-emerges-from-stealth-with-an-ai-firewall/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-aiFWall is a firewall protection for AI deployments built to use AI to improve its own performance.
-The post aiFWall Emerges From Stealth With an AI Firewall appeared first on SecurityWeek.
 
 ---
 
