@@ -185,20 +185,16 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-## 🧭 Navigation
-
+## Navigation
 <div align="center">
+## Explore AI-Pulse
 
-### Explore AI-Pulse
-
-|  [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
-|:---:|:---:|:---:|
+| [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | [Website](https://ThePhoenixAgency.github.io) ||:---:|:---:|:---:|
 | Source Code | Team Profile | Technical Docs |
 
 ---
 
-### 🤝 Connect With Me
-
+## Connect
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
 [![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
