@@ -8,7 +8,7 @@
 
 <div align="center">
 
-# 🚀 AI-PULSE
+#  AI-PULSE
 
 ### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
@@ -30,7 +30,7 @@
 
 🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
 📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+ **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
@@ -191,7 +191,7 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ### Explore AI-Pulse
 
-| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
+|  [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
 |:---:|:---:|:---:|
 | Source Code | Team Profile | Technical Docs |
 
@@ -205,7 +205,7 @@ Phishing succeeds not because users are careless, but because attackers exploit 
 
 ---
 
-<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
+<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with  by ThePhoenixAgency*</sub>
 
 </div>
 
