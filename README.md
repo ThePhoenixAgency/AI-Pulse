@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Fri, 23 Jan 2026 02:10:19 GMT
+**Last Update:** Fri, 23 Jan 2026 04:07:29 GMT
 
 ---
 
@@ -45,55 +45,55 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [OpenAI is coming for those sweet enterprise dollars in 2026](https://techcrunch.com/2026/01/22/openai-is-coming-for-those-sweet-enterprise-dollars-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Former Sequoia partner’s new startup uses AI to negotiate your calendar for you](https://techcrunch.com/2026/01/22/former-sequoia-partners-new-startup-uses-ai-to-negotiate-your-calendar-for-you/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Blockit, an AI agent that communicates directly with other calendars, has raised $5 million in seed funding led by Sequoia.
+
+### 2. [OpenAI is coming for those sweet enterprise dollars in 2026](https://techcrunch.com/2026/01/22/openai-is-coming-for-those-sweet-enterprise-dollars-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI has reportedly appointed Barret Zoph to lead its push into enterprise just a week after Zoph rejoined the company.
 
-### 2. [Voice AI engine and OpenAI partner LiveKit hits $1B valuation](https://techcrunch.com/2026/01/22/voice-ai-engine-and-openai-partner-livekit-hits-1b-valuation/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 3. [Voice AI engine and OpenAI partner LiveKit hits $1B valuation](https://techcrunch.com/2026/01/22/voice-ai-engine-and-openai-partner-livekit-hits-1b-valuation/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The five-year-old-startup powers OpenAI’s ChatGPT voice mode and raised a $100 million round led by Index Ventures.
 
-### 3. [Inference startup Inferact lands $150M to commercialize vLLM](https://techcrunch.com/2026/01/22/inference-startup-inferact-lands-150m-to-commercialize-vllm/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [Inference startup Inferact lands $150M to commercialize vLLM](https://techcrunch.com/2026/01/22/inference-startup-inferact-lands-150m-to-commercialize-vllm/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The seed round values the newly formed startup at $800 million.
 
-### 4. [Are AI agents ready for the workplace? A new benchmark raises doubts](https://techcrunch.com/2026/01/22/are-ai-agents-ready-for-the-workplace-a-new-benchmark-raises-doubts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Are AI agents ready for the workplace? A new benchmark raises doubts](https://techcrunch.com/2026/01/22/are-ai-agents-ready-for-the-workplace-a-new-benchmark-raises-doubts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 New research looks at how leading AI models hold up doing actual white-collar work tasks, drawn from consulting, investment banking, and law. Most models failed.
 
-### 5. [Google DeepMind CEO is ‘surprised’ OpenAI is rushing forward with ads in ChatGPT](https://techcrunch.com/2026/01/22/google-deepmind-ceo-is-surprised-openai-is-rushing-forward-with-ads-in-chatgpt/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [Google DeepMind CEO is ‘surprised’ OpenAI is rushing forward with ads in ChatGPT](https://techcrunch.com/2026/01/22/google-deepmind-ceo-is-surprised-openai-is-rushing-forward-with-ads-in-chatgpt/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Google DeepMind CEO Demis Hassabis says the tech giant isn't pressuring him to insert ads into the AI chatbot experience.
 
-### 6. [Humans&amp; thinks coordination is the next frontier for AI, and they’re building a model to prove it](https://techcrunch.com/2026/01/22/humans-thinks-coordination-is-the-next-frontier-for-ai-and-theyre-building-a-model-to-prove-it/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [Humans&amp; thinks coordination is the next frontier for AI, and they’re building a model to prove it](https://techcrunch.com/2026/01/22/humans-thinks-coordination-is-the-next-frontier-for-ai-and-theyre-building-a-model-to-prove-it/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Humans&amp;, a new startup founded by alumni of Anthropic, Meta, OpenAI, xAI, and Google DeepMind, is building the next generation of foundation models for collaboration, not chat.
 
-### 7. [Google now offers free SAT practice exams, powered by Gemini](https://techcrunch.com/2026/01/22/google-now-offers-free-sat-practice-exams-powered-by-gemini/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Google now offers free SAT practice exams, powered by Gemini](https://techcrunch.com/2026/01/22/google-now-offers-free-sat-practice-exams-powered-by-gemini/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Students can prompt Gemini by typing "I want to take a practice SAT test,” and the AI will provide them with a free practice exam. Gemini then analyzes the results, highlighting strengths and identifying areas that need further review. It also offers detailed explanations for any incorrect answers.
 
-### 8. [Controlling AI agent sprawl: The CIO’s guide to governance](https://www.artificialintelligence-news.com/news/controlling-ai-agent-sprawl-cio-guide-to-governance/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Controlling AI agent sprawl: The CIO’s guide to governance](https://www.artificialintelligence-news.com/news/controlling-ai-agent-sprawl-cio-guide-to-governance/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Corporate networks are filling up with AI agents, creating a governance blind spot for leaders managing multi-cloud infrastructures. As distinct business units race to adopt generative technologies, CIOs especially find their ecosystems populated by fragmented and unmonitored assets. This mirrors the shadow IT challenges of the cloud era, but involves autonomous actors capable of executing […]
 The post Controlling AI agent sprawl: The CIO’s guide to governance appeared first on AI News.
 
-### 9. [Evaluating Multi-Step LLM-Generated Content: Why Customer Journeys Require Structural Metrics](https://freedium.cloud/https://towardsdatascience.com/evaluating-multi-step-llm-generated-content-why-customer-journeys-require-structural-metrics/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Evaluating Multi-Step LLM-Generated Content: Why Customer Journeys Require Structural Metrics](https://freedium.cloud/https://towardsdatascience.com/evaluating-multi-step-llm-generated-content-why-customer-journeys-require-structural-metrics/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to evaluate goal-oriented content designed to build engagement and deliver business results, and why structure matters.
 The post Evaluating Multi-Step LLM-Generated Content: Why Customer Journeys Require Structural Metrics appeared first on Towards Data Science.
 
-### 10. [Google’s AI Mode can now tap into your Gmail and Photos to provide tailored responses](https://techcrunch.com/2026/01/22/googles-ai-mode-can-now-tap-into-your-gmail-and-photos-to-provide-tailored-responses/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [Google’s AI Mode can now tap into your Gmail and Photos to provide tailored responses](https://techcrunch.com/2026/01/22/googles-ai-mode-can-now-tap-into-your-gmail-and-photos-to-provide-tailored-responses/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company notes that AI Mode doesn’t train directly on your Gmail inbox or Google Photos library. Instead, it trains on specific prompts and the model’s responses.
 
-### 11. [Google snags team behind AI voice startup Hume AI](https://techcrunch.com/2026/01/22/google-reportedly-snags-up-team-behind-ai-voice-startup-hume-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [Google snags team behind AI voice startup Hume AI](https://techcrunch.com/2026/01/22/google-reportedly-snags-up-team-behind-ai-voice-startup-hume-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Google has hired the CEO and top engineer behind voice AI startup Hume AI, signaling that voice is increasingly becoming the preferred interface over screens.
-
-### 12. [From invisibility cloaks to AI chips: Neurophos raises $110M to build tiny optical processors for inferencing](https://techcrunch.com/2026/01/22/from-invisibility-cloaks-to-ai-chips-neurophos-raises-110m-to-build-tiny-optical-processors-for-inferencing/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Neurophos is taking a crack at solving the AI industry's power efficiency problem with an optical chip that uses a composite material to do the math required in AI inferencing tasks.
 
 ### 13. [Why SaaS Product Management Is the Best Domain for Data-Driven Professionals in 2026](https://freedium.cloud/https://towardsdatascience.com/why-saas-product-management-is-the-best-domain-for-data-driven-professionals-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
