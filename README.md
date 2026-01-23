@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Fri, 23 Jan 2026 06:43:43 GMT
+**Last Update:** Fri, 23 Jan 2026 09:36:57 GMT
 
 ---
 
@@ -114,73 +114,74 @@ The post Stop Writing Messy Boolean Masks: 10 Elegant Ways to Filter Pandas Data
 
 ## 🔒 Cybersecurity
 
-### 1. [Okta SSO accounts targeted in vishing-based data theft attacks](https://www.bleepingcomputer.com/news/security/okta-sso-accounts-targeted-in-vishing-based-data-theft-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [2 Venezuelans Convicted in US for Using Malware to Hack ATMs](https://www.securityweek.com/2-venezuelans-convicted-in-us-for-using-malware-to-hack-atms/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Dozens of Venezuelan nationals have been charged by the US for their role in ATM jackpotting attacks. 
+The post 2 Venezuelans Convicted in US for Using Malware to Hack ATMs appeared first on SecurityWeek.
+
+### 2. [Microsoft Flags Multi-Stage AitM Phishing and BEC Attacks Targeting Energy Firms](https://thehackernews.com/2026/01/microsoft-flags-multi-stage-aitm.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Microsoft has warned of a multi‑stage adversary‑in‑the‑middle (AitM) phishing and business email compromise (BEC) campaign targeting multiple organizations in the energy sector.
+"The campaign abused SharePoint file‑sharing services to deliver phishing payloads and relied on inbox rule creation to maintain persistence and evade user awareness," the Microsoft Defender Security Research Team said.
+
+### 3. [Okta SSO accounts targeted in vishing-based data theft attacks](https://www.bleepingcomputer.com/news/security/okta-sso-accounts-targeted-in-vishing-based-data-theft-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Okta is warning about custom phishing kits built specifically for voice-based social engineering (vishing) attacks. BleepingComputer has learned that these kits are being used in active attacks to steal Okta SSO credentials for data theft. [...]
 
-### 2. [Curl ending bug bounty program after flood of AI slop reports](https://www.bleepingcomputer.com/news/security/curl-ending-bug-bounty-program-after-flood-of-ai-slop-reports/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 4. [Curl ending bug bounty program after flood of AI slop reports](https://www.bleepingcomputer.com/news/security/curl-ending-bug-bounty-program-after-flood-of-ai-slop-reports/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The developer of the popular curl command-line utility and library announced that the project will end its HackerOne security bug bounty program at the end of this month, after being overwhelmed by low-quality AI-generated vulnerability reports. [...]
 
-### 3. [SmarterMail auth bypass flaw now exploited to hijack admin accounts](https://www.bleepingcomputer.com/news/security/smartermail-auth-bypass-flaw-now-exploited-to-hijack-admin-accounts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 5. [SmarterMail auth bypass flaw now exploited to hijack admin accounts](https://www.bleepingcomputer.com/news/security/smartermail-auth-bypass-flaw-now-exploited-to-hijack-admin-accounts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers began exploiting an authentication bypass vulnerability in SmarterTools' SmarterMail email server and collaboration tool that allows resetting admin passwords. [...]
 
-### 4. [New Osiris Ransomware Emerges as New Strain Using POORTRY Driver in BYOVD Attack](https://thehackernews.com/2026/01/new-osiris-ransomware-emerges-as-new.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 6. [New Osiris Ransomware Emerges as New Strain Using POORTRY Driver in BYOVD Attack](https://thehackernews.com/2026/01/new-osiris-ransomware-emerges-as-new.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a new ransomware family called Osiris that targeted a major food service franchisee operator in Southeast Asia in November 2025.
 The attack leveraged a malicious driver called POORTRY as part of a known technique referred to as bring your own vulnerable driver (BYOVD) to disarm security software, the Symantec and Carbon Black Threat Hunter
 
-### 5. [Critical GNU InetUtils telnetd Flaw Lets Attackers Bypass Login and Gain Root Access](https://thehackernews.com/2026/01/critical-gnu-inetutils-telnetd-flaw.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [Critical GNU InetUtils telnetd Flaw Lets Attackers Bypass Login and Gain Root Access](https://thehackernews.com/2026/01/critical-gnu-inetutils-telnetd-flaw.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A critical security flaw has been disclosed in the GNU InetUtils telnet daemon (telnetd) that went unnoticed for nearly 11 years.
 The vulnerability, tracked as CVE-2026-24061, is rated 9.8 out of 10.0 on the CVSS scoring system. It affects all versions of GNU InetUtils from version 1.9.3 up to and including version 2.7.
 "Telnetd in GNU Inetutils through 2.7 allows remote authentication bypass
 
-### 6. [The Upside Down is Real: What Stranger Things Teaches Us About Modern Cybersecurity](https://www.securityweek.com/the-upside-down-is-real-what-stranger-things-teaches-us-about-modern-cybersecurity/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [The Upside Down is Real: What Stranger Things Teaches Us About Modern Cybersecurity](https://www.securityweek.com/the-upside-down-is-real-what-stranger-things-teaches-us-about-modern-cybersecurity/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 To all those who are fighting the good fight in the world of cyber, keep collaborating to ensure our world never succumbs to the chaos of the Upside Down.
 The post The Upside Down is Real: What Stranger Things Teaches Us About Modern Cybersecurity appeared first on SecurityWeek.
 
-### 7. [Microsoft Teams to add brand impersonation warnings to calls](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-add-brand-impersonation-warnings-to-calls/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [Microsoft Teams to add brand impersonation warnings to calls](https://www.bleepingcomputer.com/news/microsoft/microsoft-teams-to-add-brand-impersonation-warnings-to-calls/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft will soon add new fraud protection features to Teams calls, warning users about external callers who attempt to impersonate trusted organizations in social engineering attacks. [...]
 
-### 8. [INC ransomware opsec fail allowed data recovery for 12 US orgs](https://www.bleepingcomputer.com/news/security/inc-ransomware-opsec-fail-allowed-data-recovery-for-12-us-orgs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [INC ransomware opsec fail allowed data recovery for 12 US orgs](https://www.bleepingcomputer.com/news/security/inc-ransomware-opsec-fail-allowed-data-recovery-for-12-us-orgs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An operational security failure allowed researchers to recover data that the INC ransomware gang stole from a dozen U.S. organizations. [...]
 
-### 9. [Old Attack, New Speed: Researchers Optimize Page Cache Exploits](https://www.securityweek.com/old-attack-new-speed-researchers-optimize-page-cache-exploits/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [Old Attack, New Speed: Researchers Optimize Page Cache Exploits](https://www.securityweek.com/old-attack-new-speed-researchers-optimize-page-cache-exploits/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 A team of researchers from the Graz University of Technology in Austria has revived page Linux page cache attacks.
 The post Old Attack, New Speed: Researchers Optimize Page Cache Exploits appeared first on SecurityWeek.
 
-### 10. [Why Active Directory password resets are surging in hybrid work](https://www.bleepingcomputer.com/news/security/why-active-directory-password-resets-are-surging-in-hybrid-work/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [Why Active Directory password resets are surging in hybrid work](https://www.bleepingcomputer.com/news/security/why-active-directory-password-resets-are-surging-in-hybrid-work/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hybrid work has driven a surge in Active Directory password resets, turning minor lockouts into major productivity drains. Specops shows why remote access, cached credentials, and security policies are fueling the spike. [...]
 
-### 11. [Webinar Today: Rethinking Email Security for Mid-Sized Organizations](https://www.securityweek.com/webinar-today-rethinking-email-security-for-mid-sized-organizations/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Webinar Today: Rethinking Email Security for Mid-Sized Organizations](https://www.securityweek.com/webinar-today-rethinking-email-security-for-mid-sized-organizations/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 See how modern AI-driven detection can block sophisticated attacks that traditional tools miss
 The post Webinar Today: Rethinking Email Security for Mid-Sized Organizations appeared first on SecurityWeek.
 
-### 12. [ThreatsDay Bulletin: Pixel Zero-Click, Redis RCE, China C2s, RAT Ads, Crypto Scams &amp; 15+ Stories](https://thehackernews.com/2026/01/threatsday-bulletin-pixel-zero-click.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [ThreatsDay Bulletin: Pixel Zero-Click, Redis RCE, China C2s, RAT Ads, Crypto Scams &amp; 15+ Stories](https://thehackernews.com/2026/01/threatsday-bulletin-pixel-zero-click.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Most of this week’s threats didn’t rely on new tricks. They relied on familiar systems behaving exactly as designed, just in the wrong hands. Ordinary files, routine services, and trusted workflows were enough to open doors without forcing them.
 What stands out is how little friction attackers now need. Some activity focused on quiet reach and coverage, others on timing and reuse. The emphasis
 
-### 13. [Microsoft updates Notepad and Paint with more AI features](https://www.bleepingcomputer.com/news/microsoft/microsoft-updates-notepad-and-paint-with-more-ai-features/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [Microsoft updates Notepad and Paint with more AI features](https://www.bleepingcomputer.com/news/microsoft/microsoft-updates-notepad-and-paint-with-more-ai-features/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is rolling out new artificial intelligence features with the latest updates to the Notepad and Paint apps for Windows 11 Insiders. [...]
-
-### 14. [AiStrike Raises $7 Million in Seed Funding](https://www.securityweek.com/aistrike-raises-7-million-in-seed-funding/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The startup’s AI-native platform unifies exposure analysis, threat intelligence, investigation, and response.
-The post AiStrike Raises $7 Million in Seed Funding appeared first on SecurityWeek.
-
-### 15. [Hackers exploit 29 zero-days on second day of Pwn2Own Automotive](https://www.bleepingcomputer.com/news/security/hackers-exploit-29-zero-day-vulnerabilities-on-second-day-of-pwn2own-automotive/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Hackers collect $439,250 after exploiting 29 zero-day vulnerabilities on the second day of Pwn2Own Automotive 2026. [...]
 
 ---
 
