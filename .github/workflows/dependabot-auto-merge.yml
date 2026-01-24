@@ -1,7 +1,41 @@
-# Dependabot Auto-Merge - DÉSACTIVÉ (flooding)
-# Pour réactiver: retirer ce commentaire et remettre le code
+name: Dependabot Auto-Merge
 
-# name: Dependabot Auto-Merge
-# on:
-#   pull_request:
-#     types: [opened, reopened, synchronize]
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge-dependabot:
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+
+      # Facultatif : ne merge automatiquement que les patchs
+      - name: Check update type
+        run: |
+          echo "update-type=${{ steps.metadata.outputs.update-type }}"
+          if [ "${{ steps.metadata.outputs.update-type }}" != "version-update:semver-patch" ]; then
+            echo "Not a patch update, skipping auto-merge."
+            exit 0
+          fi
+
+      - name: Auto-merge PR
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          type -p gh || sudo apt-get update && sudo apt-get install gh -y
+          echo "Enabling auto-merge for $PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
