@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sat, 24 Jan 2026 04:56:02 GMT
+**Last Update:** Sat, 24 Jan 2026 06:39:58 GMT
 
 ---
 
@@ -45,71 +45,71 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Who’s behind AMI Labs, Yann LeCun’s ‘world model’ startup](https://techcrunch.com/2026/01/23/whos-behind-ami-labs-yann-lecuns-world-model-startup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Legal AI giant Harvey acquires Hexus as competition heats up in legal tech](https://techcrunch.com/2026/01/23/legal-ai-giant-harvey-acquires-hexus-as-competition-heats-up-in-legal-tech/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Hexus founder and CEO Sakshi Pratap, who previously held engineering roles at Walmart, Oracle, and Google, tells TechCrunch that her San Francisco-based team has already joined Harvey, while the startup's India-based engineers will come onboard once Harvey establishes a Bangalore office.
+
+### 2. [Who’s behind AMI Labs, Yann LeCun’s ‘world model’ startup](https://techcrunch.com/2026/01/23/whos-behind-ami-labs-yann-lecuns-world-model-startup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Yann LeCun's new venture, AMI Labs, has drawn intense attention since the AI scientist left Meta to found it.
 
-### 2. [How did Davos turn into a tech conference?](https://techcrunch.com/video/how-did-davos-turn-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 3. [How did Davos turn into a tech conference?](https://techcrunch.com/video/how-did-davos-turn-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The World Economic Forum’s annual meeting in Davos felt different this year, and not just because Meta and Salesforce took over storefronts on the main promenade. AI dominated the conversation in a way that overshadowed traditional topics like climate change and global poverty, and the CEOs weren’t holding back. There was public criticism of trade policy, warnings about AI […]
 
-### 3. [Google Photos’ latest feature lets you meme yourself](https://techcrunch.com/2026/01/23/google-photos-latest-feature-lets-you-meme-yourself/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [Google Photos’ latest feature lets you meme yourself](https://techcrunch.com/2026/01/23/google-photos-latest-feature-lets-you-meme-yourself/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The addition is meant to just be a fun way to explore your photos and experiment with Google's Gemini AI technology, and specifically Nano Banana.
 
-### 4. [Meta pauses teen access to AI characters ahead of new version](https://techcrunch.com/2026/01/23/meta-pauses-teen-access-to-ai-characters-ahead-of-new-version/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Meta pauses teen access to AI characters ahead of new version](https://techcrunch.com/2026/01/23/meta-pauses-teen-access-to-ai-characters-ahead-of-new-version/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Meta today said that it is pausing teens' access to its AI characters globally across all its apps. The company mentioned that it is not abandoning its efforts but wants to develop an updated version of AI characters for teens.
 
-### 5. [Optimizing Data Transfer in Distributed AI/ML Training Workloads](https://freedium.cloud/https://towardsdatascience.com/optimizing-data-transfer-in-distributed-ai-ml-training-workloads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [Optimizing Data Transfer in Distributed AI/ML Training Workloads](https://freedium.cloud/https://towardsdatascience.com/optimizing-data-transfer-in-distributed-ai-ml-training-workloads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A deep dive on data transfer bottlenecks, their identification, and their resolution with the help of NVIDIA Nsight™ Systems – part 3
 The post Optimizing Data Transfer in Distributed AI/ML Training Workloads appeared first on Towards Data Science.
 
-### 6. [AI CEOs transformed Davos into a tech conference](https://techcrunch.com/podcast/ai-ceos-transformed-davos-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [AI CEOs transformed Davos into a tech conference](https://techcrunch.com/podcast/ai-ceos-transformed-davos-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The World Economic Forum’s annual meeting in Davos felt different this year, and not just because Meta and Salesforce took over storefronts on the main promenade. AI dominated the conversation in a way that overshadowed traditional topics like climate change and global poverty, and the CEOs weren’t holding back. There was public criticism of trade policy, warnings about AI […]
 
-### 7. [OpenAI chief Sam Altman plans India visit as AI leaders converge in New Delhi: sources](https://techcrunch.com/2026/01/23/openai-chief-sam-altman-plans-india-visit-as-ai-leaders-converge-in-new-delhi-sources/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [OpenAI chief Sam Altman plans India visit as AI leaders converge in New Delhi: sources](https://techcrunch.com/2026/01/23/openai-chief-sam-altman-plans-india-visit-as-ai-leaders-converge-in-new-delhi-sources/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The visit comes as New Delhi prepares to host a major AI summit expected to draw top executives from Meta, Google, and Anthropic. This will be Altman's first visit to the country in nearly a year.
 
-### 8. [Achieving 5x Agentic Coding Performance with Few-Shot Prompting](https://freedium.cloud/https://towardsdatascience.com/5x-agentic-coding-performance-with-few-shot-prompting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Achieving 5x Agentic Coding Performance with Few-Shot Prompting](https://freedium.cloud/https://towardsdatascience.com/5x-agentic-coding-performance-with-few-shot-prompting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn to leverage few-shot prompting to increase your LLMs performance
 The post Achieving 5x Agentic Coding Performance with Few-Shot Prompting appeared first on Towards Data Science.
 
-### 9. [Only 1 week left (or until the first 500 passes are gone): The first TechCrunch Disrupt 2026 ticket discount is ending ](https://techcrunch.com/2026/01/23/only-1-week-left-or-until-the-first-500-passes-are-gone-the-first-disrupt-2026-ticket-discount-is-ending/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Only 1 week left (or until the first 500 passes are gone): The first TechCrunch Disrupt 2026 ticket discount is ending ](https://techcrunch.com/2026/01/23/only-1-week-left-or-until-the-first-500-passes-are-gone-the-first-disrupt-2026-ticket-discount-is-ending/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Register now to save up to $680 on your TechCrunch Disrupt 2026 pass and get a second ticket at 50% off. This offer ends next week on January 30, or once the first 500 tickets are claimed — whichever comes first.
 
-### 10. [Anthropic’s usage stats paint a detailed picture of AI success](https://www.artificialintelligence-news.com/news/anthropic-report-economic-index-summary-key-points-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [Anthropic’s usage stats paint a detailed picture of AI success](https://www.artificialintelligence-news.com/news/anthropic-report-economic-index-summary-key-points-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Anthropic’s Economic Index offers a look at how organisations and individuals are actually using large language models. The report contains the company’s analysis of a million consumer interactions on Claude.ai, plus a million enterprise API calls, all dated from November 2025. The report notes that its figures are based on observations, rather than, for example, […]
 The post Anthropic’s usage stats paint a detailed picture of AI success appeared first on AI News.
 
-### 11. [Why the Sophistication of Your Prompt Correlates Almost Perfectly with the Sophistication of the Response, as Research by Anthropic Found](https://freedium.cloud/https://towardsdatascience.com/the-sophistication-of-your-prompt-correlates-almost-perfectly-with-the-sophistication-of-the-response-anthropic-study-found/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [Why the Sophistication of Your Prompt Correlates Almost Perfectly with the Sophistication of the Response, as Research by Anthropic Found](https://freedium.cloud/https://towardsdatascience.com/the-sophistication-of-your-prompt-correlates-almost-perfectly-with-the-sophistication-of-the-response-anthropic-study-found/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How prompt engineering has evolved, examined scientifically; and implications for the future of conversational AI tools
 The post Why the Sophistication of Your Prompt Correlates Almost Perfectly with the Sophistication of the Response, as Research by Anthropic Found appeared first on Towards Data Science.
 
-### 12. [From Transactions to Trends: Predict When a Customer Is About to Stop Buying](https://freedium.cloud/https://towardsdatascience.com/from-transactions-to-trends-predict-when-a-customer-is-about-to-stop-buying/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [From Transactions to Trends: Predict When a Customer Is About to Stop Buying](https://freedium.cloud/https://towardsdatascience.com/from-transactions-to-trends-predict-when-a-customer-is-about-to-stop-buying/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Customer churn is usually a gradual process, not a sudden event. In this post, we analyze monthly transaction trends and convert regression slopes into degrees to clearly identify declining purchase behavior. A small negative slope today can prevent a big revenue loss tomorrow.
 The post From Transactions to Trends: Predict When a Customer Is About to Stop Buying appeared first on Towards Data Science.
 
-### 13. [Defensive AI and how machine learning strengthens cyber defense](https://www.artificialintelligence-news.com/news/defensive-ai-and-how-machine-learning-strengthens-cyber-defense/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 14. [Defensive AI and how machine learning strengthens cyber defense](https://www.artificialintelligence-news.com/news/defensive-ai-and-how-machine-learning-strengthens-cyber-defense/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Cyber threats don’t follow predictable patterns, forcing security teams to rethink how protection works at scale. Defensive AI is emerging as a practical response, combining machine learning with human oversight. Cybersecurity rarely fails because teams lack tools. It fails because threats move faster than detection can keep pace. As digital systems expand, attackers adapt in […]
 The post Defensive AI and how machine learning strengthens cyber defense appeared first on AI News.
 
-### 14. [Former Sequoia partner’s new startup uses AI to negotiate your calendar for you](https://techcrunch.com/2026/01/22/former-sequoia-partners-new-startup-uses-ai-to-negotiate-your-calendar-for-you/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 15. [Former Sequoia partner’s new startup uses AI to negotiate your calendar for you](https://techcrunch.com/2026/01/22/former-sequoia-partners-new-startup-uses-ai-to-negotiate-your-calendar-for-you/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Blockit, an AI agent that communicates directly with other calendars, has raised $5 million in seed funding led by Sequoia.
-
-### 15. [OpenAI is coming for those sweet enterprise dollars in 2026](https://techcrunch.com/2026/01/22/openai-is-coming-for-those-sweet-enterprise-dollars-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-OpenAI has reportedly appointed Barret Zoph to lead its push into enterprise just a week after Zoph rejoined the company.
 
 ---
 
