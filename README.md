@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sat, 24 Jan 2026 15:26:15 GMT
+**Last Update:** Sat, 24 Jan 2026 18:38:03 GMT
 
 ---
 
@@ -45,72 +45,70 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [How to Build a Neural Machine Translation System for a Low-Resource Language](https://freedium.cloud/https://towardsdatascience.com/how-to-build-a-neural-machine-translation-system-for-a-low-resource-language/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Former Googlers seek to captivate kids with an AI-powered learning app](https://techcrunch.com/2026/01/24/former-google-trio-is-building-an-interactive-ai-powered-learning-app-for-kids/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Sparkli said that education systems often fall behind in teaching modern concepts. The company wants to teach kids about topics like skills design, financial literacy, and entrepreneurship by creating an AI-powered learning "expedition."
+
+### 2. [A new test for AI labs: Are you even trying to make money?](https://techcrunch.com/2026/01/24/a-new-test-for-ai-labs-are-you-even-trying-to-make-money/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+It’s getting hard to tell which AI labs. are actually trying to make money. We created a rating system to help sort it out.
+
+### 3. [How to Build a Neural Machine Translation System for a Low-Resource Language](https://freedium.cloud/https://towardsdatascience.com/how-to-build-a-neural-machine-translation-system-for-a-low-resource-language/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An introduction to neural machine translation
 The post How to Build a Neural Machine Translation System for a Low-Resource Language appeared first on Towards Data Science.
 
-### 2. [Air for Tomorrow: Mapping the Digital Air-Quality Landscape, from Repositories and Data Types to Starter Code](https://freedium.cloud/https://towardsdatascience.com/air-for-tomorrow-mapping-the-digital-air-quality-landscape-repositories-data-types-starter-code/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [Air for Tomorrow: Mapping the Digital Air-Quality Landscape, from Repositories and Data Types to Starter Code](https://freedium.cloud/https://towardsdatascience.com/air-for-tomorrow-mapping-the-digital-air-quality-landscape-repositories-data-types-starter-code/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Understand air quality: access the available data, interpret data types, and execute starter codes
 The post Air for Tomorrow: Mapping the Digital Air-Quality Landscape, from Repositories and Data Types to Starter Code appeared first on Towards Data Science.
 
-### 3. [Legal AI giant Harvey acquires Hexus as competition heats up in legal tech](https://techcrunch.com/2026/01/23/legal-ai-giant-harvey-acquires-hexus-as-competition-heats-up-in-legal-tech/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Legal AI giant Harvey acquires Hexus as competition heats up in legal tech](https://techcrunch.com/2026/01/23/legal-ai-giant-harvey-acquires-hexus-as-competition-heats-up-in-legal-tech/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Hexus founder and CEO Sakshi Pratap, who previously held engineering roles at Walmart, Oracle, and Google, tells TechCrunch that her San Francisco-based team has already joined Harvey, while the startup's India-based engineers will come onboard once Harvey establishes a Bangalore office.
 
-### 4. [Who’s behind AMI Labs, Yann LeCun’s ‘world model’ startup](https://techcrunch.com/2026/01/23/whos-behind-ami-labs-yann-lecuns-world-model-startup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [Who’s behind AMI Labs, Yann LeCun’s ‘world model’ startup](https://techcrunch.com/2026/01/23/whos-behind-ami-labs-yann-lecuns-world-model-startup/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Yann LeCun's new venture, AMI Labs, has drawn intense attention since the AI scientist left Meta to found it.
 
-### 5. [How did Davos turn into a tech conference?](https://techcrunch.com/video/how-did-davos-turn-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [How did Davos turn into a tech conference?](https://techcrunch.com/video/how-did-davos-turn-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The World Economic Forum’s annual meeting in Davos felt different this year, and not just because Meta and Salesforce took over storefronts on the main promenade. AI dominated the conversation in a way that overshadowed traditional topics like climate change and global poverty, and the CEOs weren’t holding back. There was public criticism of trade policy, warnings about AI […]
 
-### 6. [Google Photos’ latest feature lets you meme yourself](https://techcrunch.com/2026/01/23/google-photos-latest-feature-lets-you-meme-yourself/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Google Photos’ latest feature lets you meme yourself](https://techcrunch.com/2026/01/23/google-photos-latest-feature-lets-you-meme-yourself/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The addition is meant to just be a fun way to explore your photos and experiment with Google's Gemini AI technology, and specifically Nano Banana.
 
-### 7. [Meta pauses teen access to AI characters ahead of new version](https://techcrunch.com/2026/01/23/meta-pauses-teen-access-to-ai-characters-ahead-of-new-version/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Meta pauses teen access to AI characters ahead of new version](https://techcrunch.com/2026/01/23/meta-pauses-teen-access-to-ai-characters-ahead-of-new-version/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Meta today said that it is pausing teens' access to its AI characters globally across all its apps. The company mentioned that it is not abandoning its efforts but wants to develop an updated version of AI characters for teens.
 
-### 8. [Optimizing Data Transfer in Distributed AI/ML Training Workloads](https://freedium.cloud/https://towardsdatascience.com/optimizing-data-transfer-in-distributed-ai-ml-training-workloads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Optimizing Data Transfer in Distributed AI/ML Training Workloads](https://freedium.cloud/https://towardsdatascience.com/optimizing-data-transfer-in-distributed-ai-ml-training-workloads/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A deep dive on data transfer bottlenecks, their identification, and their resolution with the help of NVIDIA Nsight™ Systems – part 3
 The post Optimizing Data Transfer in Distributed AI/ML Training Workloads appeared first on Towards Data Science.
 
-### 9. [AI CEOs transformed Davos into a tech conference](https://techcrunch.com/podcast/ai-ceos-transformed-davos-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [AI CEOs transformed Davos into a tech conference](https://techcrunch.com/podcast/ai-ceos-transformed-davos-into-a-tech-conference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The World Economic Forum’s annual meeting in Davos felt different this year, and not just because Meta and Salesforce took over storefronts on the main promenade. AI dominated the conversation in a way that overshadowed traditional topics like climate change and global poverty, and the CEOs weren’t holding back. There was public criticism of trade policy, warnings about AI […]
 
-### 10. [OpenAI chief Sam Altman plans India visit as AI leaders converge in New Delhi: sources](https://techcrunch.com/2026/01/23/openai-chief-sam-altman-plans-india-visit-as-ai-leaders-converge-in-new-delhi-sources/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [OpenAI chief Sam Altman plans India visit as AI leaders converge in New Delhi: sources](https://techcrunch.com/2026/01/23/openai-chief-sam-altman-plans-india-visit-as-ai-leaders-converge-in-new-delhi-sources/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The visit comes as New Delhi prepares to host a major AI summit expected to draw top executives from Meta, Google, and Anthropic. This will be Altman's first visit to the country in nearly a year.
 
-### 11. [Achieving 5x Agentic Coding Performance with Few-Shot Prompting](https://freedium.cloud/https://towardsdatascience.com/5x-agentic-coding-performance-with-few-shot-prompting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [Achieving 5x Agentic Coding Performance with Few-Shot Prompting](https://freedium.cloud/https://towardsdatascience.com/5x-agentic-coding-performance-with-few-shot-prompting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn to leverage few-shot prompting to increase your LLMs performance
 The post Achieving 5x Agentic Coding Performance with Few-Shot Prompting appeared first on Towards Data Science.
 
-### 12. [Only 1 week left (or until the first 500 passes are gone): The first TechCrunch Disrupt 2026 ticket discount is ending ](https://techcrunch.com/2026/01/23/only-1-week-left-or-until-the-first-500-passes-are-gone-the-first-disrupt-2026-ticket-discount-is-ending/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 14. [Only 1 week left (or until the first 500 passes are gone): The first TechCrunch Disrupt 2026 ticket discount is ending ](https://techcrunch.com/2026/01/23/only-1-week-left-or-until-the-first-500-passes-are-gone-the-first-disrupt-2026-ticket-discount-is-ending/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Register now to save up to $680 on your TechCrunch Disrupt 2026 pass and get a second ticket at 50% off. This offer ends next week on January 30, or once the first 500 tickets are claimed — whichever comes first.
 
-### 13. [Anthropic’s usage stats paint a detailed picture of AI success](https://www.artificialintelligence-news.com/news/anthropic-report-economic-index-summary-key-points-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 15. [Anthropic’s usage stats paint a detailed picture of AI success](https://www.artificialintelligence-news.com/news/anthropic-report-economic-index-summary-key-points-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Anthropic’s Economic Index offers a look at how organisations and individuals are actually using large language models. The report contains the company’s analysis of a million consumer interactions on Claude.ai, plus a million enterprise API calls, all dated from November 2025. The report notes that its figures are based on observations, rather than, for example, […]
 The post Anthropic’s usage stats paint a detailed picture of AI success appeared first on AI News.
-
-### 14. [Why the Sophistication of Your Prompt Correlates Almost Perfectly with the Sophistication of the Response, as Research by Anthropic Found](https://freedium.cloud/https://towardsdatascience.com/the-sophistication-of-your-prompt-correlates-almost-perfectly-with-the-sophistication-of-the-response-anthropic-study-found/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-How prompt engineering has evolved, examined scientifically; and implications for the future of conversational AI tools
-The post Why the Sophistication of Your Prompt Correlates Almost Perfectly with the Sophistication of the Response, as Research by Anthropic Found appeared first on Towards Data Science.
-
-### 15. [From Transactions to Trends: Predict When a Customer Is About to Stop Buying](https://freedium.cloud/https://towardsdatascience.com/from-transactions-to-trends-predict-when-a-customer-is-about-to-stop-buying/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Customer churn is usually a gradual process, not a sudden event. In this post, we analyze monthly transaction trends and convert regression slopes into degrees to clearly identify declining purchase behavior. A small negative slope today can prevent a big revenue loss tomorrow.
-The post From Transactions to Trends: Predict When a Customer Is About to Stop Buying appeared first on Towards Data Science.
 
 ---
 
