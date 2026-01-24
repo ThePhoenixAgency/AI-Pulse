@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sat, 24 Jan 2026 09:27:10 GMT
+**Last Update:** Sat, 24 Jan 2026 12:53:14 GMT
 
 ---
 
@@ -115,78 +115,78 @@ Blockit, an AI agent that communicates directly with other calendars, has raised
 
 ## 🔒 Cybersecurity
 
-### 1. [Nike Probing Potential Security Incident as Hackers Threaten to Leak Data](https://www.securityweek.com/nike-probing-potential-security-incident-as-hackers-threaten-to-leak-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [Multi-Stage Phishing Campaign Targets Russia with Amnesia RAT and Ransomware](https://thehackernews.com/2026/01/multi-stage-phishing-campaign-targets.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A new multi-stage phishing campaign has been observed targeting users in Russia with ransomware and a remote access trojan called Amnesia RAT.
+"The attack begins with social engineering lures delivered via business-themed documents crafted to appear routine and benign," Fortinet FortiGuard Labs researcher Cara Lin said in a technical breakdown published this week. "These documents and
+
+### 2. [Nike Probing Potential Security Incident as Hackers Threaten to Leak Data](https://www.securityweek.com/nike-probing-potential-security-incident-as-hackers-threaten-to-leak-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The WorldLeaks cybercrime group claims to have stolen information from the footwear and apparel giant’s systems.
 The post Nike Probing Potential Security Incident as Hackers Threaten to Leak Data appeared first on SecurityWeek.
 
-### 2. [New DynoWiper Malware Used in Attempted Sandworm Attack on Polish Power Sector](https://thehackernews.com/2026/01/new-dynowiper-malware-used-in-attempted.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 3. [New DynoWiper Malware Used in Attempted Sandworm Attack on Polish Power Sector](https://thehackernews.com/2026/01/new-dynowiper-malware-used-in-attempted.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Russian nation-state hacking group known as Sandworm has been attributed to what has been described as the "largest cyber attack" targeting Poland's power system in the last week of December 2025.
 The attack was unsuccessful, the country's energy minister, Milosz Motyka, said last week.
 "The command of the cyberspace forces has diagnosed in the last days of the year the strongest attack on
 
-### 3. [Who Approved This Agent? Rethinking Access, Accountability, and Risk in the Age of AI Agents](https://thehackernews.com/2026/01/who-approved-this-agent-rethinking.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 4. [Who Approved This Agent? Rethinking Access, Accountability, and Risk in the Age of AI Agents](https://thehackernews.com/2026/01/who-approved-this-agent-rethinking.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 AI agents are accelerating how work gets done. They schedule meetings, access data, trigger workflows, write code, and take action in real time, pushing productivity beyond human speed across the enterprise.
 Then comes the moment every security team eventually hits:
 “Wait… who approved this?”
 Unlike users or applications, AI agents are often deployed quickly, shared broadly,
 
-### 4. [CISA Adds Actively Exploited VMware vCenter Flaw CVE-2024-37079 to KEV Catalog](https://thehackernews.com/2026/01/cisa-adds-actively-exploited-vmware.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 5. [CISA Adds Actively Exploited VMware vCenter Flaw CVE-2024-37079 to KEV Catalog](https://thehackernews.com/2026/01/cisa-adds-actively-exploited-vmware.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Friday added a critical security flaw affecting Broadcom VMware vCenter Server that was patched in June 2024 to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation in the wild.
 The vulnerability in question is CVE-2024-37079 (CVSS score: 9.8), which refers to a heap overflow in the
 
-### 5. [ShinyHunters claim to be behind SSO-account data theft attacks](https://www.bleepingcomputer.com/news/security/shinyhunters-claim-to-be-behind-sso-account-data-theft-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 6. [ShinyHunters claim to be behind SSO-account data theft attacks](https://www.bleepingcomputer.com/news/security/shinyhunters-claim-to-be-behind-sso-account-data-theft-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The ShinyHunters extortion gang claims it is behind a wave of ongoing voice phishing attacks targeting single sign-on (SSO) accounts at Okta, Microsoft, and Google, enabling threat actors to breach corporate SaaS platforms and steal company data for extortion. [...]
 
-### 6. [Malicious AI extensions on VSCode Marketplace steal developer data](https://www.bleepingcomputer.com/news/security/malicious-ai-extensions-on-vscode-marketplace-steal-developer-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [Malicious AI extensions on VSCode Marketplace steal developer data](https://www.bleepingcomputer.com/news/security/malicious-ai-extensions-on-vscode-marketplace-steal-developer-data/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Two malicious extensions in Microsoft's Visual Studio Code (VSCode) Marketplace that were collectively installed 1.5 million times, exfiltrate developer data to China-based servers. [...]
 
-### 7. [CISA confirms active exploitation of four enterprise software bugs](https://www.bleepingcomputer.com/news/security/cisa-confirms-active-exploitation-of-four-enterprise-software-bugs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [CISA confirms active exploitation of four enterprise software bugs](https://www.bleepingcomputer.com/news/security/cisa-confirms-active-exploitation-of-four-enterprise-software-bugs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Cybersecurity and Infrastructure Security Agency (CISA) in the U.S. warned of active exploitation of four vulnerabilities impacting enterprise software from Versa and Zimbra, the Vite frontend tooling framework, and the Prettier code formatter. [...]
 
-### 8. [US to deport Venezuelans who emptied bank ATMs using malware](https://www.bleepingcomputer.com/news/security/us-to-deport-venezuelans-who-emptied-bank-atms-using-malware/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [US to deport Venezuelans who emptied bank ATMs using malware](https://www.bleepingcomputer.com/news/security/us-to-deport-venezuelans-who-emptied-bank-atms-using-malware/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 South Carolina federal prosecutors announced that two Venezuelan nationals convicted of stealing hundreds of thousands of dollars from U.S. banks in an ATM jackpotting scheme will be deported after serving their sentences. [...]
 
-### 9. [Hackers exploit critical telnetd auth bypass flaw to get root](https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-telnetd-auth-bypass-flaw-to-get-root/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Hackers exploit critical telnetd auth bypass flaw to get root](https://www.bleepingcomputer.com/news/security/hackers-exploit-critical-telnetd-auth-bypass-flaw-to-get-root/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A coordinated campaign has been observed targeting a recently disclosed critical-severity vulnerability that has been present in the GNU InetUtils telnetd server for 11 years. [...]
 
-### 10. [CISA Updates KEV Catalog with Four Actively Exploited Software Vulnerabilities](https://thehackernews.com/2026/01/cisa-updates-kev-catalog-with-four.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [CISA Updates KEV Catalog with Four Actively Exploited Software Vulnerabilities](https://thehackernews.com/2026/01/cisa-updates-kev-catalog-with-four.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Thursday added four security flaws to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation in the wild.
 The list of vulnerabilities is as follows -
 
 CVE-2025-68645 (CVSS score: 8.8) - A PHP remote file inclusion vulnerability in Synacor Zimbra Collaboration Suite (ZCS) that could allow a
 
-### 11. [What an AI-Written Honeypot Taught Us About Trusting Machines](https://www.bleepingcomputer.com/news/security/what-an-ai-written-honeypot-taught-us-about-trusting-machines/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [What an AI-Written Honeypot Taught Us About Trusting Machines](https://www.bleepingcomputer.com/news/security/what-an-ai-written-honeypot-taught-us-about-trusting-machines/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 AI-generated code can introduce subtle security flaws when teams over-trust automated output. Intruder shows how an AI-written honeypot introduced hidden vulnerabilities that were exploited in attacks. [...]
 
-### 12. [Fortinet Confirms FortiCloud SSO Exploitation Against Patched Devices](https://www.securityweek.com/fortinet-confirms-forticloud-sso-exploitation-against-patched-devices/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Fortinet Confirms FortiCloud SSO Exploitation Against Patched Devices](https://www.securityweek.com/fortinet-confirms-forticloud-sso-exploitation-against-patched-devices/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Similar to recent FortiCloud single sign-on (SSO) login vulnerabilities, the attacks bypass authentication.
 The post Fortinet Confirms FortiCloud SSO Exploitation Against Patched Devices appeared first on SecurityWeek.
 
-### 13. [In Other News: €1.2B GDPR Fines, Net-NTLMv1 Rainbow Tables, Rockwell Security Notice](https://www.securityweek.com/in-other-news-e1-2b-gdpr-fines-net-ntlmv1-rainbow-tables-rockwell-security-notice/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [In Other News: €1.2B GDPR Fines, Net-NTLMv1 Rainbow Tables, Rockwell Security Notice](https://www.securityweek.com/in-other-news-e1-2b-gdpr-fines-net-ntlmv1-rainbow-tables-rockwell-security-notice/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: Cloudflare WAF bypass, Canonical Snap Store abused for malware delivery, Curl terminating bug bounty program
 The post In Other News: €1.2B GDPR Fines, Net-NTLMv1 Rainbow Tables, Rockwell Security Notice appeared first on SecurityWeek.
 
-### 14. [Microsoft: Outlook for iOS crashes, freezes due to coding error](https://www.bleepingcomputer.com/news/microsoft/microsoft-outlook-for-ios-crashes-freezes-due-to-coding-error/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [Microsoft: Outlook for iOS crashes, freezes due to coding error](https://www.bleepingcomputer.com/news/microsoft/microsoft-outlook-for-ios-crashes-freezes-due-to-coding-error/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft confirmed today that Outlook mobile may crash or freeze when launched on iPad devices due to a coding error. [...]
-
-### 15. [Phishers Abuse SharePoint in New Campaign Targeting Energy Sector](https://www.securityweek.com/phishers-abuse-sharepoint-in-new-campaign-targeting-energy-sector/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Threat actors are leveraging the file-sharing service for payload delivery in AitM phishing and BEC attacks.
-The post Phishers Abuse SharePoint in New Campaign Targeting Energy Sector appeared first on SecurityWeek.
 
 ---
 
