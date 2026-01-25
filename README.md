@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sun, 25 Jan 2026 18:37:54 GMT
+**Last Update:** Sun, 25 Jan 2026 21:25:32 GMT
 
 ---
 
@@ -114,7 +114,7 @@ The World Economic Forum’s annual meeting in Davos felt different this year, 
 
 ## 🔒 Cybersecurity
 
-### 1. [1Password adds pop-pup warnings for suspected phishing sites](https://www.bleepingcomputer.com/news/security/1password-adds-pop-pup-warnings-for-suspected-phishing-sites/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [1Password adds pop-up warnings for suspected phishing sites](https://www.bleepingcomputer.com/news/security/1password-adds-pop-up-warnings-for-suspected-phishing-sites/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The 1Password digital vault and password manager has added built-in protection against phishing URLs to help users identify malicious pages and prevent them from sharing account credentials with threat actors. [...]
 
