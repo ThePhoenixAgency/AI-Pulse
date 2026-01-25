@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Sun, 25 Jan 2026 02:27:42 GMT
+**Last Update:** Sun, 25 Jan 2026 04:17:05 GMT
 
 ---
 
@@ -116,7 +116,7 @@ The post Anthropic’s usage stats paint a detailed picture of AI success appear
 
 ### 1. [Microsoft releases emergency OOB update to fix Outlook freezes](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-emergency-oob-update-to-fix-outlook-freezes/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft has released emergency, out-of-band updates on Saturday for Windows 10, Windows 11, and Windows Server to fix an issue that prevented Microsoft Outlook from opening when using PSTs stored in cloud storage. [...]
+Microsoft has released emergency, out-of-band updates on Saturday for Windows 10, Windows 11, and Windows Server to fix an issue that prevented Microsoft Outlook classic from opening when using PSTs stored in cloud storage. [...]
 
 ### 2. [Sandworm hackers linked to failed wiper attack on Poland’s energy systems](https://www.bleepingcomputer.com/news/security/sandworm-hackers-linked-to-failed-wiper-attack-on-polands-energy-systems/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
