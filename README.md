@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Mon, 26 Jan 2026 18:45:52 GMT
+**Last Update:** Mon, 26 Jan 2026 21:30:23 GMT
 
 ---
 
@@ -45,73 +45,72 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Obvious Ventures lands fund five with a 360-degree view of planetary, human, economic health](https://techcrunch.com/2026/01/26/obvious-ventures-lands-fund-five-with-a-360-degree-view-of-planetary-human-economic-health/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [AI startup CVector raises $5M for its industrial ‘nervous system’](https://techcrunch.com/2026/01/26/ai-startup-cvector-raises-5m-for-its-industrial-nervous-system/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The 12-year-old firm raised $360,360,360 for its fifth fund. And there's a reason for that number.
+Now, founders Richard Zhang and Tyler Ruggles are tasked with a bigger challenge: showing customers and investors how this AI-powered software layer translates to real savings on an industrial scale.
 
 ### 2. [Anthropic launches interactive Claude apps, including Slack and other workplace tools](https://techcrunch.com/2026/01/26/anthropic-launches-interactive-claude-apps-including-slack-and-other-workplace-tools/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Claude users will now be able to call up interactive apps inside the chatbot interface, with Cowork integration coming soon.
 
-### 3. [Retailers examine options for on-AI retail](https://www.artificialintelligence-news.com/news/retailers-examine-options-for-on-ai-retail/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 3. [Obvious Ventures lands fund five with a 360-degree view of planetary, human, economic health](https://techcrunch.com/2026/01/26/obvious-ventures-lands-fund-five-with-a-360-degree-view-of-planetary-human-economic-health/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The 12-year-old firm raised $360,360,360 for its fifth fund. And there's a reason for that number.
+
+### 4. [Retailers examine options for on-AI retail](https://www.artificialintelligence-news.com/news/retailers-examine-options-for-on-ai-retail/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Big retailers are committing more heavily to agentic AI-led commerce, and accepting some loss of customer proximity and data control in the process. As reported by Retail Dive, the opening weeks of 2026 have seen Etsy, Target and Walmart push product ranges onto third-party AI platforms, forming new partnerships with Google’s Gemini and Microsoft’s Copilot, […]
 The post Retailers examine options for on-AI retail appeared first on AI News.
 
-### 4. [How Cursor Actually Indexes Your Codebase](https://freedium.cloud/https://towardsdatascience.com/how-cursor-actually-indexes-your-codebase/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [How Cursor Actually Indexes Your Codebase](https://freedium.cloud/https://towardsdatascience.com/how-cursor-actually-indexes-your-codebase/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Exploring the RAG pipeline in Cursor that powers code indexing and retrieval for coding agents
 The post How Cursor Actually Indexes Your Codebase appeared first on Towards Data Science.
 
-### 5. [Tech workers call for CEOs to speak up against ICE after the killing of Alex Pretti](https://techcrunch.com/2026/01/26/tech-workers-call-for-ceos-to-speak-up-against-ice-after-the-killing-of-alex-pretti/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [Tech workers call for CEOs to speak up against ICE after the killing of Alex Pretti](https://techcrunch.com/2026/01/26/tech-workers-call-for-ceos-to-speak-up-against-ice-after-the-killing-of-alex-pretti/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 More than 450 tech workers from companies like Google, Meta, OpenAI, Amazon, and Salesforce have signed a letter urging their CEOs to call the White House and demand ICE leave our cities.
 
-### 6. [Microsoft announces powerful new chip for AI inference](https://techcrunch.com/2026/01/26/microsoft-announces-powerful-new-chip-for-ai-inference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [Microsoft announces powerful new chip for AI inference](https://techcrunch.com/2026/01/26/microsoft-announces-powerful-new-chip-for-ai-inference/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Maia comes equipped with over 100 billion transistors, delivering over 10 petaflops in 4-bit precision and approximately 5 petaflops of 8-bit performance — a substantial increase over its predecessor.
 
-### 7. [Nvidia invests $2B to help debt-ridden CoreWeave add 5GW of AI compute](https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Nvidia invests $2B to help debt-ridden CoreWeave add 5GW of AI compute](https://techcrunch.com/2026/01/26/nvidia-invests-2b-to-help-debt-ridden-coreweave-add-5gw-of-ai-compute/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 CoreWeave will also integrate Nvidia's products across its platform, including the new Rubin chip architecture.
 
-### 8. [Expereo: Enterprise connectivity amid AI surge with ‘visibility at the speed of life’](https://www.artificialintelligence-news.com/news/expereo-enterprise-connectivity-amid-ai-surge-with-visibility-at-the-speed-of-life/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Expereo: Enterprise connectivity amid AI surge with ‘visibility at the speed of life’](https://www.artificialintelligence-news.com/news/expereo-enterprise-connectivity-amid-ai-surge-with-visibility-at-the-speed-of-life/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 AI continues to reshape technology and business; yet for the network, enterprise connectivity in the AI age means being always-on, and extra vigilant for sovereignty and security besides. This means that speed is not the only requirement. As Julian Skeels, chief digital officer at Expereo notes, it is more about ‘certainty.’ “AI workloads are distributed, […]
 The post Expereo: Enterprise connectivity amid AI surge with ‘visibility at the speed of life’ appeared first on AI News.
 
-### 9. [Ray: Distributed Computing For All, Part 2](https://freedium.cloud/https://towardsdatascience.com/ray-distributed-computing-for-all-part-2/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Ray: Distributed Computing For All, Part 2](https://freedium.cloud/https://towardsdatascience.com/ray-distributed-computing-for-all-part-2/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Deploying and running Python code on cloud-based clusters
 The post Ray: Distributed Computing For All, Part 2 appeared first on Towards Data Science.
 
-### 10. [Only 5 days left: Over half of the first 500 TechCrunch Disrupt 2026 plus-one passes at 50% off are already gone](https://techcrunch.com/2026/01/26/only-5-days-left-over-half-of-the-first-500-techcrunch-disrupt-2026-plus-one-passes-at-50-off-are-already-gone/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [Only 5 days left: Over half of the first 500 TechCrunch Disrupt 2026 plus-one passes at 50% off are already gone](https://techcrunch.com/2026/01/26/only-5-days-left-over-half-of-the-first-500-techcrunch-disrupt-2026-plus-one-passes-at-50-off-are-already-gone/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Register now to save up to $680 on your TechCrunch Disrupt 2026 pass and get a +1 ticket at 50% off. Offer ends this Friday, January 30.
 
-### 11. [How Formula E uses Google Cloud AI to meet net zero targets](https://www.artificialintelligence-news.com/news/how-formula-e-uses-google-cloud-ai-to-meet-net-zero-targets/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [How Formula E uses Google Cloud AI to meet net zero targets](https://www.artificialintelligence-news.com/news/how-formula-e-uses-google-cloud-ai-to-meet-net-zero-targets/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Formula E is using Google Cloud AI to meet its net zero targets by driving efficiency across its global logistics and commercial operations. As part of an expanded multi-year agreement, the electric racing series will integrate Gemini models into its ecosystem to support performance analysis, back-office workflows, and event logistics. The collaboration demonstrates how sports […]
 The post How Formula E uses Google Cloud AI to meet net zero targets appeared first on AI News.
 
-### 12. [Nvidia’s new AI weather models probably saw this storm coming weeks ago](https://techcrunch.com/2026/01/26/nvidias-new-ai-weather-models-probably-saw-this-storm-coming-weeks-ago/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [Nvidia’s new AI weather models probably saw this storm coming weeks ago](https://techcrunch.com/2026/01/26/nvidias-new-ai-weather-models-probably-saw-this-storm-coming-weeks-ago/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Nvidia announced three new AI weather tools today. Together, they promise to improve the accuracy of weather forecasts while also making them accessible to more users.
 
-### 13. [How Convolutional Neural Networks Learn Musical Similarity](https://freedium.cloud/https://towardsdatascience.com/how-convolutional-neural-networks-learn-musical-similarity/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 14. [How Convolutional Neural Networks Learn Musical Similarity](https://freedium.cloud/https://towardsdatascience.com/how-convolutional-neural-networks-learn-musical-similarity/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learning audio embeddings with contrastive learning and deploying them in a real music recommendation app
 The post How Convolutional Neural Networks Learn Musical Similarity appeared first on Towards Data Science.
 
-### 14. [Causal ML for the Aspiring Data Scientist](https://freedium.cloud/https://towardsdatascience.com/causal-ml-for-the-aspiring-data-scientist/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 15. [Causal ML for the Aspiring Data Scientist](https://freedium.cloud/https://towardsdatascience.com/causal-ml-for-the-aspiring-data-scientist/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An accessible introduction to causal inference and ML
 The post Causal ML for the Aspiring Data Scientist appeared first on Towards Data Science.
-
-### 15. [Modernising apps triples the odds of AI returns, Cloudflare says](https://www.artificialintelligence-news.com/news/modernising-apps-triples-the-odds-of-ai-returns-cloudflare-says/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-For many organisations, the AI debate has moved on from whether to adopt the technology to a harder question: why do the results feel uneven? New tools are in place, pilots are running, and budgets are rising, yet clear AI returns remain elusive. According to Cloudflare’s 2026 App Innovation Report, the difference often has less […]
-The post Modernising apps triples the odds of AI returns, Cloudflare says appeared first on AI News.
 
 ---
 
