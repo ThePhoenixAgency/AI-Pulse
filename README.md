@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Tue, 27 Jan 2026 04:11:20 GMT
+**Last Update:** Tue, 27 Jan 2026 06:45:49 GMT
 
 ---
 
@@ -139,48 +139,46 @@ The European Commission is now investigating whether X properly assessed risks b
 Cybersecurity researchers have discovered an ongoing campaign that's targeting Indian users with a multi-stage backdoor as part of a suspected cyber espionage campaign.
 The activity, per the eSentire Threat Response Unit (TRU), involves using phishing emails impersonating the Income Tax Department of India to trick victims into downloading a malicious archive, ultimately granting the threat
 
-### 7. [Access System Flaws Enabled Hackers to Unlock Doors at Major European Firms](https://www.securityweek.com/access-system-flaws-enabled-hackers-to-unlock-doors-at-major-european-firms/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [Who Operates the Badbox 2.0 Botnet?](https://krebsonsecurity.com/2026/01/who-operates-the-badbox-2-0-botnet/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+The cybercriminals in control of Kimwolf -- a disruptive botnet that has infected more than 2 million devices -- recently shared a screenshot indicating they'd compromised the control panel for Badbox 2.0, a vast China-based botnet powered by malicious software that comes pre-installed on many Android TV streaming boxes. Both the FBI and Google say they are hunting for the people behind Badbox 2.0, and thanks to bragging by the Kimwolf botmasters we may now have a much clearer idea about that.
+
+### 8. [Access System Flaws Enabled Hackers to Unlock Doors at Major European Firms](https://www.securityweek.com/access-system-flaws-enabled-hackers-to-unlock-doors-at-major-european-firms/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 More than 20 vulnerabilities were found and patched in Dormakaba physical access control systems.
 The post Access System Flaws Enabled Hackers to Unlock Doors at Major European Firms appeared first on SecurityWeek.
 
-### 8. [Malicious VS Code AI Extensions with 1.5 Million Installs Steal Developer Source Code](https://thehackernews.com/2026/01/malicious-vs-code-ai-extensions-with-15.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [Malicious VS Code AI Extensions with 1.5 Million Installs Steal Developer Source Code](https://thehackernews.com/2026/01/malicious-vs-code-ai-extensions-with-15.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered two malicious Microsoft Visual Studio Code (VS Code) extensions that are advertised as artificial intelligence (AI)-powered coding assistants, but also harbor covert functionality to siphon developer data to China-based servers.
 The extensions, which have 1.5 million combined installs and are still available for download from the official Visual Studio
 
-### 9. [Nearly 800,000 Telnet servers exposed to remote attacks](https://www.bleepingcomputer.com/news/security/nearly-800-000-telnet-servers-exposed-to-remote-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Nearly 800,000 Telnet servers exposed to remote attacks](https://www.bleepingcomputer.com/news/security/nearly-800-000-telnet-servers-exposed-to-remote-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Internet security watchdog Shadowserver tracks nearly 800,000 IP addresses with Telnet fingerprints amid ongoing attacks exploiting a critical authentication bypass vulnerability in the GNU InetUtils telnetd server. [...]
 
-### 10. [6 Okta security settings you might have overlooked](https://www.bleepingcomputer.com/news/security/6-okta-security-settings-you-might-have-overlooked/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [6 Okta security settings you might have overlooked](https://www.bleepingcomputer.com/news/security/6-okta-security-settings-you-might-have-overlooked/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Okta misconfigurations can quietly weaken identity security as SaaS environments evolve. Nudge Security shows six Okta security settings teams often overlook and how to fix them. [...]
 
-### 11. [Upwind Raises $250 Million at $1.5 Billion Valuation](https://www.securityweek.com/upwind-raises-250-million-at-1-5-billion-valuation/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [Upwind Raises $250 Million at $1.5 Billion Valuation](https://www.securityweek.com/upwind-raises-250-million-at-1-5-billion-valuation/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The CNAPP company will use the fresh investment to scale its runtime-first cloud security offering across data, AI and code.
 The post Upwind Raises $250 Million at $1.5 Billion Valuation appeared first on SecurityWeek.
 
-### 12. [Hackers can bypass npm’s Shai-Hulud defenses via Git dependencies](https://www.bleepingcomputer.com/news/security/hackers-can-bypass-npms-shai-hulud-defenses-via-git-dependencies/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Hackers can bypass npm’s Shai-Hulud defenses via Git dependencies](https://www.bleepingcomputer.com/news/security/hackers-can-bypass-npms-shai-hulud-defenses-via-git-dependencies/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The defense mechanisms that NPM introduced after the 'Shai-Hulud' supply-chain attacks have weaknesses that allow threat actors to bypass them via Git dependencies. [...]
 
-### 13. [Crunchbase Confirms Data Breach After Hacking Claims](https://www.securityweek.com/crunchbase-confirms-data-breach-after-hacking-claims/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [Crunchbase Confirms Data Breach After Hacking Claims](https://www.securityweek.com/crunchbase-confirms-data-breach-after-hacking-claims/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Crunchbase was targeted alongside SoundCloud and Betterment in a ShinyHunters campaign.
 The post Crunchbase Confirms Data Breach After Hacking Claims appeared first on SecurityWeek.
 
-### 14. [Cyber Insights 2026: Threat Hunting in an Age of Automation and AI](https://www.securityweek.com/cyber-insights-2026-threat-hunting-in-an-age-of-automation-and-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [Cyber Insights 2026: Threat Hunting in an Age of Automation and AI](https://www.securityweek.com/cyber-insights-2026-threat-hunting-in-an-age-of-automation-and-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Understanding how threat hunting differs from reactive security provides a deeper understanding of the role, while hinting at how it will evolve in the future.
 The post Cyber Insights 2026: Threat Hunting in an Age of Automation and AI appeared first on SecurityWeek.
-
-### 15. [⚡ Weekly Recap: Firewall Flaws, AI-Built Malware, Browser Traps, Critical CVEs &amp; More](https://thehackernews.com/2026/01/weekly-recap-firewall-flaws-ai-built.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Security failures rarely arrive loudly. They slip in through trusted tools, half-fixed problems, and habits people stop questioning. This week’s recap shows that pattern clearly.
-Attackers are moving faster than defenses, mixing old tricks with new paths. “Patched” no longer means safe, and every day, software keeps becoming the entry point.
-What follows is a set of small but telling signals.
 
 ---
 
