@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Wed, 28 Jan 2026 02:13:45 GMT
+**Last Update:** Wed, 28 Jan 2026 04:09:34 GMT
 
 ---
 
@@ -69,46 +69,46 @@ Gemini 3 Pro and other AI tools are now available globally through the Google AI
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI has launched a new scientific workspace program called Prism, which integrates AI into existing standards for composing research papers.
 
-### 7. [Databricks: Enterprise AI adoption shifts to agentic systems](https://www.artificialintelligence-news.com/news/databricks-enterprise-ai-adoption-shifts-agentic-systems/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-According to Databricks, enterprise AI adoption is shifting to agentic systems as organisations embrace intelligent workflows. Generative AI’s first wave promised business transformation but often delivered little more than isolated chatbots and stalled pilot programmes. Technology leaders found themselves managing high expectations with limited operational utility. However, new telemetry from Databricks suggests the market has […]
-The post Databricks: Enterprise AI adoption shifts to agentic systems appeared first on AI News.
-
-### 8. [Google now lets users jump from AI Overviews into AI Mode conversations](https://techcrunch.com/2026/01/27/google-now-lets-users-jump-from-ai-overviews-into-ai-mode-conversations/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [Google now lets users jump from AI Overviews into AI Mode conversations](https://techcrunch.com/2026/01/27/google-now-lets-users-jump-from-ai-overviews-into-ai-mode-conversations/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The tech giant also announced that it's making Gemini 3 the new default model for AI Overviews globally.
 
-### 9. [Going Beyond the Context Window: Recursive Language Models in Action](https://freedium.cloud/https://towardsdatascience.com/going-beyond-the-context-window-recursive-language-models-in-action/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [Going Beyond the Context Window: Recursive Language Models in Action](https://freedium.cloud/https://towardsdatascience.com/going-beyond-the-context-window-recursive-language-models-in-action/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Explore a practical approach to analysing massive datasets with LLMs
 The post Going Beyond the Context Window: Recursive Language Models in Action appeared first on Towards Data Science.
 
-### 10. [Risotto raises $10M seed to use AI to make ticketing systems easier to use](https://techcrunch.com/2026/01/27/risotto-raises-10m-seed-to-use-ai-to-make-ticketing-systems-easier-to-use/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Risotto raises $10M seed to use AI to make ticketing systems easier to use](https://techcrunch.com/2026/01/27/risotto-raises-10m-seed-to-use-ai-to-make-ticketing-systems-easier-to-use/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "Our special sauce is the prompt libraries, the eval suites, and the thousands and thousands of real-world examples that the AI gets trained on to ensure it actually does what it's expected to do,” CEO Aron Solberg told TechCrunch.
 
-### 11. [Data Science as Engineering: Foundations, Education, and Professional Identity](https://freedium.cloud/https://towardsdatascience.com/data-science-as-engineering/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Data Science as Engineering: Foundations, Education, and Professional Identity](https://freedium.cloud/https://towardsdatascience.com/data-science-as-engineering/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Recognize data science as an engineering practice and structure education accordingly.
 The post Data Science as Engineering: Foundations, Education, and Professional Identity appeared first on Towards Data Science.
 
-### 12. [Phoebe Gates and Sophia Kianni’s Phia raises $35M to ‘make shopping fun again’](https://techcrunch.com/2026/01/27/phoebe-gates-and-sophia-kiannis-phia-raises-35m-to-make-shopping-fun-again/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [Phoebe Gates and Sophia Kianni’s Phia raises $35M to ‘make shopping fun again’](https://techcrunch.com/2026/01/27/phoebe-gates-and-sophia-kiannis-phia-raises-35m-to-make-shopping-fun-again/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 “We are just at such a prime time of opportunity,” Gates said to explain the new fundraise. “Commerce itself for the consumer hasn’t really been adapted in the last 30 years, and the opportunity to make a truly personalized, end-to-end shopping experience is today.”
 
-### 13. [Airtable jumps into the AI agent game with Superagent](https://techcrunch.com/2026/01/27/airtables-valuation-fell-by-7-million-its-founder-thinks-that-was-just-the-warm-up/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [Airtable jumps into the AI agent game with Superagent](https://techcrunch.com/2026/01/27/airtables-valuation-fell-by-7-million-its-founder-thinks-that-was-just-the-warm-up/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 SuperAgent is Airtable's first stand-alone product in its 13-year history, and signals both the company's ambitions and the reality of the current AI moment: Every serious software player is racing to prove they can deliver on agents.
 
-### 14. [Anthropic selected to build government AI assistant pilot](https://www.artificialintelligence-news.com/news/anthropic-selected-build-government-ai-assistant-pilot/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-Anthropic has been selected to build government AI assistant capabilities to modernise how citizens interact with complex state services. For both public and private sector technology leaders, the integration of LLMs into customer-facing platforms often stalls at the proof-of-concept stage. The UK’s Department for Science, Innovation, and Technology (DSIT) aims to bypass this common hurdle […]
-The post Anthropic selected to build government AI assistant pilot appeared first on AI News.
-
-### 15. [From Connections to Meaning: Why Heterogeneous Graph Transformers (HGT) Change Demand Forecasting](https://freedium.cloud/https://towardsdatascience.com/from-connections-to-meaning-why-heterogeneous-graph-transformers-hgt-change-demand-forecasting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [From Connections to Meaning: Why Heterogeneous Graph Transformers (HGT) Change Demand Forecasting](https://freedium.cloud/https://towardsdatascience.com/from-connections-to-meaning-why-heterogeneous-graph-transformers-hgt-change-demand-forecasting/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How relationship-aware graphs turn connected forecasts into operational insight
 The post From Connections to Meaning: Why Heterogeneous Graph Transformers (HGT) Change Demand Forecasting appeared first on Towards Data Science.
+
+### 14. [Layered Architecture for Building Readable, Robust, and Extensible Apps](https://freedium.cloud/https://towardsdatascience.com/layered-architecture-for-building-readable-robust-and-extensible-apps/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+If adding a feature feels like open-heart surgery on your codebase, the problem isn’t bugs, it’s structure. This article shows how better architecture reduces risk, speeds up change, and keeps teams moving.
+The post Layered Architecture for Building Readable, Robust, and Extensible Apps appeared first on Towards Data Science.
+
+### 15. [How Cursor Actually Indexes Your Codebase](https://freedium.cloud/https://towardsdatascience.com/how-cursor-actually-indexes-your-codebase/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Exploring the RAG pipeline in Cursor that powers code indexing and retrieval for coding agents
+The post How Cursor Actually Indexes Your Codebase appeared first on Towards Data Science.
 
 ---
 
