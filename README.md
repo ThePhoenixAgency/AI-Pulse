@@ -8,8 +8,6 @@
 
 <div align="center">
 
-# 🚀 AI-PULSE
-
 ### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
