@@ -10,13 +10,6 @@
 - ✅ Freedium.cloud pour contourner les paywalls Medium
 - ✅ Catégories: `ai` et `cybersecurity` au lieu de `ai`, `tech`, `research`
 
-### ❌ **NE PAS GARDER: "CURRENT" (version actuelle sur main)**
-
-**POURQUOI?**
-- ❌ Seulement 7 sources
-- ❌ Mauvais UTM: `utm_medium=aggregator` et `utm_campaign=feed`
-- ❌ Pas de Freedium
-- ❌ 3 catégories séparées au lieu de 2
 
 ---
 
@@ -37,12 +30,10 @@ Quand tu vois:
 
 ## 🎯 CE QUE ÇA VA CHANGER
 
-### Sources qui RESTENT (6):
+### Sources:
 - Medium AI
 - Towards Data Science
 - AI News
-
-### Sources AJOUTÉES (6):
 - TechCrunch AI ← NOUVEAU
 - VentureBeat AI ← NOUVEAU
 - Google AI Blog ← NOUVEAU
@@ -51,11 +42,10 @@ Quand tu vois:
 - Threatpost (CVE) ← NOUVEAU
 
 ### UTM qui changent:
-- AVANT: `?utm_source=ai-pulse&utm_medium=aggregator&utm_campaign=feed`
-- APRÈS: `?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai`
+- `?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai`
 
 ### Freedium ajouté:
-- Tous les liens Medium passent par `https://freedium.cloud/` pour éviter le paywall
+- Tous les liens Medium passent par `https://freedium.cloud/`
 
 ---
 
@@ -63,7 +53,7 @@ Quand tu vois:
 
 1. Le workflow se déclenche automatiquement
 2. Il va fetcher les 12 sources RSS
-3. Il génère le README avec les articles du 15 janvier
+3. Il génère le README avec les articles
 4. Commit automatique sur main
 
 ---
