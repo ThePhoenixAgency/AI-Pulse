@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Wed, 28 Jan 2026 07:22:10 GMT
+**Last Update:** Wed, 28 Jan 2026 09:40:20 GMT
 
 ---
 
@@ -114,72 +114,74 @@ The post From Connections to Meaning: Why Heterogeneous Graph Transformers (HGT)
 
 ## 🔒 Cybersecurity
 
-### 1. [Fortinet Patches CVE-2026-24858 After Active FortiOS SSO Exploitation Detected](https://thehackernews.com/2026/01/fortinet-patches-cve-2026-24858-after.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [US Charges 31 More Defendants in Massive ATM Hacking Probe](https://www.securityweek.com/us-charges-31-more-defendants-in-massive-atm-hacking-probe/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+A total of 87 individuals, mostly Venezuelan nationals, have been charged for their role in the ATM jackpotting scheme.
+The post US Charges 31 More Defendants in Massive ATM Hacking Probe appeared first on SecurityWeek.
+
+### 2. [APTs, Cybercriminals Widely Exploiting WinRAR Vulnerability](https://www.securityweek.com/apts-cybercriminals-widely-exploiting-winrar-vulnerability/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Russian and Chinese state-sponsored threat actors have been exploiting CVE-2025-8088 since July 2025.
+The post APTs, Cybercriminals Widely Exploiting WinRAR Vulnerability appeared first on SecurityWeek.
+
+### 3. [Indurex Emerges From Stealth to Close Security Gap in Cyber-Physical Systems](https://www.securityweek.com/indurex-emerges-from-stealth-to-close-security-gap-in-cyber-physical-systems/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Indurex was founded by Jalal Bouhdada, who previously led industrial cybersecurity company Applied Risk.
+The post Indurex Emerges From Stealth to Close Security Gap in Cyber-Physical Systems appeared first on SecurityWeek.
+
+### 4. [Fortinet Patches Exploited FortiCloud SSO Authentication Bypass](https://www.securityweek.com/fortinet-patches-exploited-forticloud-sso-authentication-bypass/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Tracked as CVE-2026-24858, the bug allows attackers to log into devices registered to other FortiCloud accounts.
+The post Fortinet Patches Exploited FortiCloud SSO Authentication Bypass appeared first on SecurityWeek.
+
+### 5. [High-Severity Remote Code Execution Vulnerability Patched in OpenSSL](https://www.securityweek.com/high-severity-remote-code-execution-vulnerability-patched-in-openssl/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+A total of 12 vulnerabilities have been fixed in OpenSSL, all discovered by a single cybersecurity firm.
+The post High-Severity Remote Code Execution Vulnerability Patched in OpenSSL appeared first on SecurityWeek.
+
+### 6. [Fortinet Patches CVE-2026-24858 After Active FortiOS SSO Exploitation Detected](https://thehackernews.com/2026/01/fortinet-patches-cve-2026-24858-after.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet has begun releasing security updates to address a critical flaw impacting FortiOS that has come under active exploitation in the wild.
 The vulnerability, assigned the CVE identifier CVE-2026-24858 (CVSS score: 9.4), has been described as an authentication bypass related to FortiOS single sign-on (SSO). The flaw also affects FortiManager and FortiAnalyzer. The company said it's
 
-### 2. [OpenAI's ChatGPT ad costs are on par with live NFL broadcasts](https://www.bleepingcomputer.com/news/artificial-intelligence/openais-chatgpt-ad-costs-are-on-par-with-live-nfl-broadcasts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 7. [OpenAI's ChatGPT ad costs are on par with live NFL broadcasts](https://www.bleepingcomputer.com/news/artificial-intelligence/openais-chatgpt-ad-costs-are-on-par-with-live-nfl-broadcasts/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 OpenAI plans to begin rolling out ads on ChatGPT in the United States if you have a free or $8 Go subscription, but the catch is that the ads could be very expensive for advertisers. [...]
 
-### 3. [Fortinet blocks exploited FortiCloud SSO zero day until patch is ready](https://www.bleepingcomputer.com/news/security/fortinet-blocks-exploited-forticloud-sso-zero-day-until-patch-is-ready/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [Fortinet blocks exploited FortiCloud SSO zero day until patch is ready](https://www.bleepingcomputer.com/news/security/fortinet-blocks-exploited-forticloud-sso-zero-day-until-patch-is-ready/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Fortinet has confirmed a new, actively exploited critical FortiCloud single sign-on (SSO) authentication bypass vulnerability, tracked as CVE-2026-24858, and says it has mitigated the zero-day attacks by blocking FortiCloud SSO connections from devices running vulnerable firmware versions. [...]
 
-### 4. [Chinese Mustang Panda hackers deploy infostealers via CoolClient backdoor](https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [Chinese Mustang Panda hackers deploy infostealers via CoolClient backdoor](https://www.bleepingcomputer.com/news/security/chinese-mustang-panda-hackers-deploy-infostealers-via-coolclient-backdoor/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Chinese espionage threat group Mustang Panda has updated its CoolClient backdoor to a new variant that can steal login data from browsers and monitor the clipboard. [...]
 
-### 5. [WinRAR path traversal flaw still exploited by numerous hackers](https://www.bleepingcomputer.com/news/security/winrar-path-traversal-flaw-still-exploited-by-numerous-hackers/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [WinRAR path traversal flaw still exploited by numerous hackers](https://www.bleepingcomputer.com/news/security/winrar-path-traversal-flaw-still-exploited-by-numerous-hackers/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Multiple threat actors, both state-sponsored and financially motivated, are exploiting the CVE-2025-8088 high-severity vulnerability in WinRAR for initial access and to deliver various malicious payloads. [...]
 
-### 6. [WhatsApp Rolls Out Lockdown-Style Security Mode to Protect Targeted Users From Spyware](https://thehackernews.com/2026/01/whatsapp-rolls-out-lockdown-style.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [WhatsApp Rolls Out Lockdown-Style Security Mode to Protect Targeted Users From Spyware](https://thehackernews.com/2026/01/whatsapp-rolls-out-lockdown-style.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Meta on Tuesday announced it's adding Strict Account Settings on WhatsApp to secure certain users against advanced cyber attacks because of who they are and what they do.
 The feature, similar to Lockdown Mode in Apple iOS and Advanced Protection in Android, aims to protect individuals, such as journalists or public-facing figures, from sophisticated spyware by trading some functionality for
 
-### 7. [Nike investigates data breach after extortion gang leaks files](https://www.bleepingcomputer.com/news/security/nike-investigates-data-breach-after-extortion-gang-leaks-files/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [Nike investigates data breach after extortion gang leaks files](https://www.bleepingcomputer.com/news/security/nike-investigates-data-breach-after-extortion-gang-leaks-files/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Nike is investigating what it described as a "potential cyber security incident" after the World Leaks ransomware gang leaked 1.4 TB of files allegedly stolen from the sportswear giant. [...]
 
-### 8. [Experts Detect Pakistan-Linked Cyber Campaigns Aimed at Indian Government Entities](https://thehackernews.com/2026/01/experts-detect-pakistan-linked-cyber.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [Experts Detect Pakistan-Linked Cyber Campaigns Aimed at Indian Government Entities](https://thehackernews.com/2026/01/experts-detect-pakistan-linked-cyber.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Indian government entities have been targeted in two campaigns undertaken by a threat actor that operates in Pakistan using previously undocumented tradecraft.
 The campaigns have been codenamed Gopher Strike and Sheet Attack by Zscaler ThreatLabz, which identified them in September 2025.
 "While these campaigns share some similarities with the Pakistan-linked Advanced Persistent Threat (APT)
 
-### 9. [Critical sandbox escape flaw found in popular vm2 NodeJS library](https://www.bleepingcomputer.com/news/security/critical-sandbox-escape-flaw-discovered-in-popular-vm2-nodejs-library/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [Critical sandbox escape flaw found in popular vm2 NodeJS library](https://www.bleepingcomputer.com/news/security/critical-sandbox-escape-flaw-discovered-in-popular-vm2-nodejs-library/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A critical-severity vulnerability in the vm2 Node.js sandbox library, tracked as CVE-2026-22709, allows escaping the sandbox and executing arbitrary code on the underlying host system. [...]
 
-### 10. [US charges 31 more suspects linked to ATM malware attacks](https://www.bleepingcomputer.com/news/security/us-charges-31-more-suspects-linked-to-atm-malware-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [US charges 31 more suspects linked to ATM malware attacks](https://www.bleepingcomputer.com/news/security/us-charges-31-more-suspects-linked-to-atm-malware-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A Nebraska federal grand jury charged 31 additional defendants for their involvement in an ATM jackpotting operation allegedly orchestrated by members of the Venezuelan gang Tren de Aragua. [...]
-
-### 11. [Memcyco Raises $37 Million for Anti-Impersonation Technology](https://www.securityweek.com/memcyco-raises-37-million-for-anti-impersonation-technology/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The startup will use the investment to fuel global expansion of its agentless platform, including in Latin America.
-The post Memcyco Raises $37 Million for Anti-Impersonation Technology appeared first on SecurityWeek.
-
-### 12. [From Cipher to Fear: The psychology behind modern ransomware extortion ](https://www.bleepingcomputer.com/news/security/from-cipher-to-fear-the-psychology-behind-modern-ransomware-extortion/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Modern ransomware has shifted from encryption to psychological extortion that exploits fear, liability, and exposure. Flare shows how today's ransomware groups weaponize stolen data and pressure tactics to force payment. [...]
-
-### 13. [Over 100 Organizations Targeted in ShinyHunters Phishing Campaign](https://www.securityweek.com/over-100-organizations-targeted-in-shinyhunters-phishing-campaign/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Domains set up by the threat actor suggest attacks aimed at Atlassian, Canva, Epic Games, HubSpot, Moderna, ZoomInfo, and WeWork.
-The post Over 100 Organizations Targeted in ShinyHunters Phishing Campaign appeared first on SecurityWeek.
-
-### 14. [ClickFix Attacks Expand Using Fake CAPTCHAs, Microsoft Scripts, and Trusted Web Services](https://thehackernews.com/2026/01/clickfix-attacks-expand-using-fake.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of a new campaign that combines ClickFix-style fake CAPTCHAs with a signed Microsoft Application Virtualization (App-V) script to distribute an information stealer called Amatera.
-"Instead of launching PowerShell directly, the attacker uses this script to control how execution begins and to avoid more common, easily recognized execution paths,"
-
-### 15. [Over 6,000 SmarterMail servers exposed to automated hijacking attacks ](https://www.bleepingcomputer.com/news/security/over-6-000-smartermail-servers-exposed-to-automated-hijacking-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Nonprofit security organization Shadowserver has found over 6,000 SmarterMail servers exposed online and likely vulnerable to attacks exploiting a critical authentication bypass vulnerability. [...]
 
 ---
 
