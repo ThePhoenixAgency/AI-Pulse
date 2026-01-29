@@ -18,7 +18,7 @@
 [![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
-**Last Update:** Thu, 29 Jan 2026 09:52:13 GMT
+**Last Update:** Thu, 29 Jan 2026 13:11:35 GMT
 
 ---
 
@@ -45,140 +45,145 @@
 
 ## 🤖 Artificial Intelligence
 
-### 1. [Zuckerberg teases agentic commerce tools and major AI rollout in 2026](https://techcrunch.com/2026/01/28/zuckerberg-teases-agentic-commerce-tools-and-major-ai-rollout-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 1. [Randomization Works in Experiments, Even Without Balance](https://freedium.cloud/https://towardsdatascience.com/randomization-works-in-experiments-even-without-balance/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Randomization usually balances confounders in experiments, but what happens when it doesn't?
+The post Randomization Works in Experiments, Even Without Balance appeared first on Towards Data Science.
+
+### 2. [Zuckerberg teases agentic commerce tools and major AI rollout in 2026](https://techcrunch.com/2026/01/28/zuckerberg-teases-agentic-commerce-tools-and-major-ai-rollout-in-2026/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Mark Zuckerberg says 2026 will be "a big year for delivering personal super intelligence."
 
-### 2. [Mark Zuckerberg says a future without smart glasses is ‘hard to imagine’](https://techcrunch.com/2026/01/28/mark-zuckerberg-future-smart-glasses/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 3. [Mark Zuckerberg says a future without smart glasses is ‘hard to imagine’](https://techcrunch.com/2026/01/28/mark-zuckerberg-future-smart-glasses/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Take Zuckerberg's outlook with a grain of salt. After all, he thought we'd all be hanging out in the metaverse by now.
 
-### 3. [Tesla to invest $2B in Elon Musk’s xAI](https://techcrunch.com/2026/01/28/tesla-invested-2b-in-elon-musks-xai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 4. [Tesla to invest $2B in Elon Musk’s xAI](https://techcrunch.com/2026/01/28/tesla-invested-2b-in-elon-musks-xai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk's AI company xAI  disclosed earlier this month it had raised $20 billion.
 
-### 4. [Elon Musk teases a new image-labeling system for X… we think?](https://techcrunch.com/2026/01/28/elon-musk-teases-a-new-image-labeling-system-for-xwe-think/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 5. [Elon Musk teases a new image-labeling system for X… we think?](https://techcrunch.com/2026/01/28/elon-musk-teases-a-new-image-labeling-system-for-xwe-think/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk says X will begin identifying "manipulated media" but doesn't share details.
 
-### 5. [ServiceNow inks another AI partnership, this time with Anthropic](https://techcrunch.com/2026/01/28/servicenow-inks-another-ai-partnership-this-time-with-anthropic/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 6. [ServiceNow inks another AI partnership, this time with Anthropic](https://techcrunch.com/2026/01/28/servicenow-inks-another-ai-partnership-this-time-with-anthropic/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 ServiceNow partners with Anthropic just a week after announcing a partnership with OpenAI as the company takes a multi-model approach.
 
-### 6. [WhatsApp will now charge AI chatbots to operate in Italy](https://techcrunch.com/2026/01/28/whatsapp-will-now-charge-ai-chatbots-to-operate-in-italy/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 7. [WhatsApp will now charge AI chatbots to operate in Italy](https://techcrunch.com/2026/01/28/whatsapp-will-now-charge-ai-chatbots-to-operate-in-italy/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 WhatsApp plans to charge developers of AI chatbots per message.
 
-### 7. [AI data labeler Handshake buys  Cleanlab, an acquisition target of multiple others](https://techcrunch.com/2026/01/28/ai-data-labeler-handshake-buys-cleanlab-an-acquisition-target-of-multiple-others/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 8. [AI data labeler Handshake buys  Cleanlab, an acquisition target of multiple others](https://techcrunch.com/2026/01/28/ai-data-labeler-handshake-buys-cleanlab-an-acquisition-target-of-multiple-others/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The deal’s purpose is primarily to acquire talent, aka an acqui-hire, adding nine key Cleanlab employees to Handshake’s research organization.
 
-### 8. [Chrome takes on AI browsers with tighter Gemini integration, agentic features for autonomous tasks](https://techcrunch.com/2026/01/28/chrome-takes-on-ai-browsers-with-tighter-gemini-integration-agentic-features-for-autonomous-tasks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 9. [Chrome takes on AI browsers with tighter Gemini integration, agentic features for autonomous tasks](https://techcrunch.com/2026/01/28/chrome-takes-on-ai-browsers-with-tighter-gemini-integration-agentic-features-for-autonomous-tasks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Google Chrome is adding Gemini in the sidebar and is rolling out an agentic feature for AI Pro and Ultra users.
 
-### 9. [Tiny startup Arcee AI built a 400B-parameter open source LLM from scratch to best Meta’s Llama](https://techcrunch.com/2026/01/28/tiny-startup-arcee-ai-built-a-400b-open-source-llm-from-scratch-to-best-metas-llama/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 10. [Tiny startup Arcee AI built a 400B-parameter open source LLM from scratch to best Meta’s Llama](https://techcrunch.com/2026/01/28/tiny-startup-arcee-ai-built-a-400b-open-source-llm-from-scratch-to-best-metas-llama/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 30-person startup Arcee AI has released a 400B model called Trinity, which it says is one of the biggest open source foundation models from a U.S. company.
 
-### 10. [With Apple’s new Creator Studio Pro, AI is a tool to aid creation, not replace it](https://techcrunch.com/2026/01/28/with-apples-new-creator-studio-pro-ai-is-a-tool-to-aid-creation-not-replace-it/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 11. [With Apple’s new Creator Studio Pro, AI is a tool to aid creation, not replace it](https://techcrunch.com/2026/01/28/with-apples-new-creator-studio-pro-ai-is-a-tool-to-aid-creation-not-replace-it/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Apple’s Creator Studio Pro leverages AI to help creators with tedious tasks — like finding clips or building slides — without trying to do the work for them.
 
-### 11. [Federated Learning, Part 2: Implementation with the Flower Framework 🌼](https://freedium.cloud/https://towardsdatascience.com/federated-learning-part-2-implementation-with-the-flower-framework-%f0%9f%8c%bc/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 12. [Federated Learning, Part 2: Implementation with the Flower Framework 🌼](https://freedium.cloud/https://towardsdatascience.com/federated-learning-part-2-implementation-with-the-flower-framework-%f0%9f%8c%bc/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Implementing cross-silo federated learning step by step
 The post Federated Learning, Part 2: Implementation with the Flower Framework 🌼 appeared first on Towards Data Science.
 
-### 12. [Deloitte sounds alarm as AI agent deployment outruns safety frameworks](https://www.artificialintelligence-news.com/news/deloitte-agentic-ai-guidelines-published/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 13. [Deloitte sounds alarm as AI agent deployment outruns safety frameworks](https://www.artificialintelligence-news.com/news/deloitte-agentic-ai-guidelines-published/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 A new report from Deloitte has warned that businesses are deploying AI agents faster than their safety protocols and safeguards can keep up. Therefore, serious concerns around security, data privacy, and accountability are spreading. According to the survey, agentic systems are moving from pilot to production so quickly that traditional risk controls, which were designed […]
 The post Deloitte sounds alarm as AI agent deployment outruns safety frameworks appeared first on AI News.
 
-### 13. [Franny Hsiao, Salesforce: Scaling enterprise AI](https://www.artificialintelligence-news.com/news/franny-hsiao-salesforce-scaling-enterprise-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 14. [Franny Hsiao, Salesforce: Scaling enterprise AI](https://www.artificialintelligence-news.com/news/franny-hsiao-salesforce-scaling-enterprise-ai/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Scaling enterprise AI requires overcoming architectural oversights that often stall pilots before production, a challenge that goes far beyond model selection. While generative AI prototypes are easy to spin up, turning them into reliable business assets involves solving the difficult problems of data engineering and governance. Ahead of AI &amp; Big Data Global 2026 in […]
 The post Franny Hsiao, Salesforce: Scaling enterprise AI appeared first on AI News.
 
-### 14. [Machine Learning in Production? What This Really Means](https://freedium.cloud/https://towardsdatascience.com/machine-learning-in-production-what-this-really-means/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
+### 15. [Machine Learning in Production? What This Really Means](https://freedium.cloud/https://towardsdatascience.com/machine-learning-in-production-what-this-really-means/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From notebooks to real-world systems
 The post Machine Learning in Production? What This Really Means appeared first on Towards Data Science.
-
-### 15. [I Ditched My Mouse: How I Control My Computer With Hand Gestures (In 60 Lines of Python)](https://freedium.cloud/https://towardsdatascience.com/i-ditched-my-mouse-how-i-control-my-computer-with-hand-gestures-in-60-lines-of-python/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-A step-by-step guide to building a “Minority Report”-style interface using OpenCV and MediaPipe
-The post I Ditched My Mouse: How I Control My Computer With Hand Gestures (In 60 Lines of Python) appeared first on Towards Data Science.
 
 ---
 
 ## 🔒 Cybersecurity
 
-### 1. [PwC and Google Cloud Ink $400 Million Deal to Scale AI-Powered Defense](https://www.securityweek.com/pwc-and-google-cloud-ink-400-million-deal-to-scale-ai-powered-defense/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 1. [Cyber Insights 2026: Zero Trust and Following the Path](https://www.securityweek.com/cyber-insights-2026-zero-trust-and-following-the-path/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Zero Trust is not a thing; it is an idea. It is not a product; it is a concept – it is a destination that has no precise route and may never be reached. 
+The post Cyber Insights 2026: Zero Trust and Following the Path appeared first on SecurityWeek.
+
+### 2. [Google rolls out Android theft protection feature updates](https://www.bleepingcomputer.com/news/google/google-rolls-out-android-theft-protection-feature-updates/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+​Google has introduced stronger Android authentication safeguards and enhanced recovery tools to make smartphones more challenging targets for thieves. [...]
+
+### 3. [Survey of 100+ Energy Systems Reveals Critical OT Cybersecurity Gaps](https://thehackernews.com/2026/01/survey-of-100-energy-systems-reveals.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A study by OMICRON has revealed widespread cybersecurity gaps in the operational technology (OT) networks of substations, power plants, and control centers worldwide. Drawing on data from more than 100 installations, the analysis highlights recurring technical, organizational, and functional issues that leave critical energy infrastructure vulnerable to cyber threats.
+The findings are based on
+
+### 4. [Google Disrupts IPIDEA Proxy Network ](https://www.securityweek.com/google-disrupts-ipidea-proxy-network/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+One of the largest residential proxy networks, IPIDEA enrolled devices through SDKs for mobile and desktop.
+The post Google Disrupts IPIDEA Proxy Network  appeared first on SecurityWeek.
+
+### 5. [3 Decisions CISOs Need to Make to Prevent Downtime Risk in 2026](https://thehackernews.com/2026/01/3-decisions-cisos-need-to-make-to.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Beyond the direct impact of cyberattacks, enterprises suffer from a secondary but potentially even more costly risk: operational downtime, any amount of which translates into very real damage. That’s why for CISOs, it’s key to prioritize decisions that reduce dwell time and protect their company from risk. 
+Three strategic steps you can take this year for better results:
+1. Focus on today's
+
+### 6. [SolarWinds Fixes Four Critical Web Help Desk Flaws With Unauthenticated RCE and Auth Bypass](https://thehackernews.com/2026/01/solarwinds-fixes-four-critical-web-help.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+SolarWinds has released security updates to address multiple security vulnerabilities impacting SolarWinds Web Help Desk, including four critical vulnerabilities that could result in authentication bypass and remote code execution (RCE).
+The list of vulnerabilities is as follows -
+
+CVE-2025-40536 (CVSS score: 8.1) - A security control bypass vulnerability that could allow an unauthenticated
+
+### 7. [PwC and Google Cloud Ink $400 Million Deal to Scale AI-Powered Defense](https://www.securityweek.com/pwc-and-google-cloud-ink-400-million-deal-to-scale-ai-powered-defense/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The announcement comes just weeks after Palo Alto Networks and Google Cloud announced a multibillion-dollar AI and cloud security deal.
 The post PwC and Google Cloud Ink $400 Million Deal to Scale AI-Powered Defense appeared first on SecurityWeek.
 
-### 2. [Google Disrupts IPIDEA — One of the World’s Largest Residential Proxy Networks](https://thehackernews.com/2026/01/google-disrupts-ipidea-one-of-worlds.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 8. [Google Disrupts IPIDEA — One of the World’s Largest Residential Proxy Networks](https://thehackernews.com/2026/01/google-disrupts-ipidea-one-of-worlds.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Google on Wednesday announced that it worked together with other partners to disrupt IPIDEA, which it described as one of the largest residential proxy networks in the world.
 To that end, the company said it took legal action to take down dozens of domains used to control devices and proxy traffic through them. As of writing, IPIDEA's website ("www.ipidea.io") is no longer accessible. It
 
-### 3. [Initial access hackers switch to Tsundere Bot for ransomware attacks](https://www.bleepingcomputer.com/news/security/initial-access-hackers-switch-to-tsundere-bot-for-ransomware-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 9. [Initial access hackers switch to Tsundere Bot for ransomware attacks](https://www.bleepingcomputer.com/news/security/initial-access-hackers-switch-to-tsundere-bot-for-ransomware-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A prolific initial access broker tracked as TA584 has been observed using the Tsundere Bot alongside XWorm remote access trojan to gain network access that could lead to ransomware attacks. [...]
 
-### 4. [Cyberattack on Polish energy grid impacted around 30 facilities](https://www.bleepingcomputer.com/news/security/cyberattack-on-polish-energy-grid-impacted-around-30-facilities/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 10. [Cyberattack on Polish energy grid impacted around 30 facilities](https://www.bleepingcomputer.com/news/security/cyberattack-on-polish-energy-grid-impacted-around-30-facilities/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The coordinated attack on Poland's power grid in late December targeted multiple distributed energy resource (DER) sites across the country, including combined heat and power (CHP) facilities and wind and solar dispatch systems. [...]
 
-### 5. [eScan confirms update server breached to push malicious update](https://www.bleepingcomputer.com/news/security/escan-confirms-update-server-breached-to-push-malicious-update/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 11. [eScan confirms update server breached to push malicious update](https://www.bleepingcomputer.com/news/security/escan-confirms-update-server-breached-to-push-malicious-update/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 MicroWorld Technologies, the maker of the eScan antivirus product, has confirmed that one of its update servers was breached and used to distribute an unauthorized update later analyzed as malicious to a small subset of customers earlier this month. [...]
 
-### 6. [Viral Moltbot AI assistant raises concerns over data security](https://www.bleepingcomputer.com/news/security/viral-moltbot-ai-assistant-raises-concerns-over-data-security/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 12. [Viral Moltbot AI assistant raises concerns over data security](https://www.bleepingcomputer.com/news/security/viral-moltbot-ai-assistant-raises-concerns-over-data-security/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Security researchers are warning of insecure deployments in enterprise environments of the Moltbot (formerly Clawdbot) AI assistant, which can lead to leaking API keys, OAuth tokens, conversation history, and credentials. [...]
 
-### 7. [New sandbox escape flaw exposes n8n instances to RCE attacks](https://www.bleepingcomputer.com/news/security/new-sandbox-escape-flaw-exposes-n8n-instances-to-rce-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 13. [New sandbox escape flaw exposes n8n instances to RCE attacks](https://www.bleepingcomputer.com/news/security/new-sandbox-escape-flaw-exposes-n8n-instances-to-rce-attacks/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Two vulnerabilities in the n8n workflow automation platform could allow attackers to fully compromise affected instances, access sensitive data, and execute arbitrary code on the underlying host. [...]
 
-### 8. [Fake Moltbot AI Coding Assistant on VS Code Marketplace Drops Malware](https://thehackernews.com/2026/01/fake-moltbot-ai-coding-assistant-on-vs.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 14. [Fake Moltbot AI Coding Assistant on VS Code Marketplace Drops Malware](https://thehackernews.com/2026/01/fake-moltbot-ai-coding-assistant-on-vs.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have flagged a new malicious Microsoft Visual Studio Code (VS Code) extension for Moltbot (formerly Clawdbot) on the official Extension Marketplace that claims to be a free artificial intelligence (AI) coding assistant, but stealthily drops a malicious payload on compromised hosts.
 The extension, named "ClawdBot Agent - AI Coding Assistant" ("clawdbot.clawdbot-agent")
 
-### 9. [FBI seizes RAMP cybercrime forum used by ransomware gangs](https://www.bleepingcomputer.com/news/security/fbi-seizes-ramp-cybercrime-forum-used-by-ransomware-gangs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
+### 15. [FBI seizes RAMP cybercrime forum used by ransomware gangs](https://www.bleepingcomputer.com/news/security/fbi-seizes-ramp-cybercrime-forum-used-by-ransomware-gangs/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The FBI has seized the notorious RAMP cybercrime forum, a platform used to advertise a wide range of malware and hacking services, and one of the few remaining forums that openly allowed the promotion of ransomware operations. [...]
-
-### 10. [Empire cybercrime market owner pleads guilty to drug conspiracy](https://www.bleepingcomputer.com/news/security/empire-cybercrime-market-owner-pleads-guilty-to-drug-conspiracy/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-​A Virginia man who co-created Empire Market, one of the largest dark web marketplaces at the time, pleaded guilty to federal drug conspiracy charges for facilitating $430 million in illegal transactions from 2018 to 2020. [...]
-
-### 11. [Russian ELECTRUM Tied to December 2025 Cyber Attack on Polish Power Grid](https://thehackernews.com/2026/01/russian-electrum-tied-to-december-2025.html?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The "coordinated" cyber attack targeting multiple sites across the Polish power grid has been attributed with medium confidence to a Russian state-sponsored hacking crew known as ELECTRUM.
-Operational technology (OT) cybersecurity company Dragos, in a new intelligence brief published Tuesday, described the late December 2025 activity as the first major cyber attack targeting distributed energy
-
-### 12. [AI Is Rewriting Compliance Controls and CISOs Must Take Notice](https://www.bleepingcomputer.com/news/security/ai-is-rewriting-compliance-controls-and-cisos-must-take-notice/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-AI agents are now executing regulated actions, reshaping how compliance controls actually work. Token Security explains why CISOs must rethink identity, access, and auditability as AI becomes a digital employee. [...]
-
-### 13. [SolarWinds warns of critical Web Help Desk RCE, auth bypass flaws](https://www.bleepingcomputer.com/news/security/solarwinds-warns-of-critical-web-help-desk-rce-auth-bypass-flaws/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-SolarWinds has released security updates to patch critical authentication bypass and remote command execution vulnerabilities in its Web Help Desk IT help desk software. [...]
-
-### 14. [Cyber Insights 2026: Offensive Security; Where It Is and Where It’s Going](https://www.securityweek.com/cyber-insights-2026-offensive-security-where-it-is-and-where-its-going/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Malicious attacks are increasing in frequency, sophistication and damage. Defenders need to find and harden system weaknesses before attackers can attack them.
-The post Cyber Insights 2026: Offensive Security; Where It Is and Where It’s Going appeared first on SecurityWeek.
-
-### 15. [Mesh Security Raises $12 Million for CSMA Platform](https://www.securityweek.com/mesh-security-raises-12-million-for-csma-platform/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=cybersecurity)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The investment will allow Mesh to advance its autonomous, agentic capabilities, and scale sales and customer support efforts.
-The post Mesh Security Raises $12 Million for CSMA Platform appeared first on SecurityWeek.
 
 ---
 
