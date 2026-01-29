@@ -29,6 +29,13 @@ const FEED_CATEGORIES = {
     { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
   ]
 };
+  iot: [
+    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
+    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
+    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
+    { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
+    { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
+  ]
 
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
