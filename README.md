@@ -22,8 +22,6 @@
 
 ---
 
----
-
 ## 👨‍💻 About The Developer
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
