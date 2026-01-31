@@ -190,6 +190,8 @@
 
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
+    <!-- DOMPurify for XSS protection -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 
 <body>
@@ -300,12 +302,13 @@
                 } 
                 */
 
-                // Parse markdown to HTML
-                let html = marked.parse(markdown);
+                // Parse markdown to HTML and sanitize IMMEDIATELY
+                let rawHtml = marked.parse(markdown);
+                let html = DOMPurify.sanitize(rawHtml, {
+                    ADD_ATTR: ['target'] // Allow target attribute for links
+                });
 
-                // Custom cursor injection removed by user request
-
-                // Convert links to iframe format with UTM
+                // Convert links to iframe format with UTM (functions on sanitized HTML)
                 html = convertLinksToIframe(html);
 
                 // Display content
