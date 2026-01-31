@@ -170,8 +170,7 @@ const README_HEADER = `<div align="center">
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-**[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-**[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+**[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
