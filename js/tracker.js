@@ -23,7 +23,8 @@ const Tracker = {
             pageViews: 0,
             lastVisit: 0,
             firstVisit: Date.now(),
-            locations: ['Local Global Network'] // Mock location
+            locations: [],
+            articleClicks: 0
         };
 
         const now = Date.now();
@@ -37,10 +38,55 @@ const Tracker = {
         stats.pageViews++;
         stats.lastVisit = now;
 
+        // Fetch location if not present or every 7 days (to avoid API spam)
+        if (stats.locations.length === 0 || (now - (stats.lastLocUpdate || 0) > 7 * 24 * 60 * 60 * 1000)) {
+            this.fetchLocation(stats);
+        } else {
+            localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+        }
+
+        // Ensure stats are saved even if location fetch takes time
         localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
 
         // Expose for other scripts
         window.aiPulseStats = stats;
+        window.aiPulseTracker = this;
+    },
+
+    fetchLocation: function (stats) {
+        fetch('https://ipapi.co/json/')
+            .then(res => res.json())
+            .then(data => {
+                if (data.error) return;
+
+                const locationStr = `${data.city}, ${data.country_name}`;
+                const locationObj = {
+                    city: data.city,
+                    country: data.country_name,
+                    ip: data.ip, // Optional: privacy concern, maybe don't store
+                    timestamp: Date.now()
+                };
+
+                // Add if not already in list (simple check)
+                const exists = stats.locations.some(l => l.city === data.city && l.country === data.country_name);
+                if (!exists) {
+                    // Store full object now
+                    if (typeof stats.locations[0] === 'string') stats.locations = []; // Reset old string format
+                    stats.locations.push(locationObj);
+                }
+
+                stats.lastLocUpdate = Date.now();
+                localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+                console.log("Location updated:", locationObj);
+            })
+            .catch(err => console.error("Location fetch failed:", err));
+    },
+
+    trackArticleClick: function (articleData) {
+        let stats = this.getStats();
+        stats.articleClicks = (stats.articleClicks || 0) + 1;
+        localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+        console.log("Article tracked:", articleData.title);
     },
 
     getStats: function () {
@@ -48,7 +94,8 @@ const Tracker = {
             visitorId: 'Unknown',
             sessions: 0,
             pageViews: 0,
-            locations: []
+            locations: [],
+            articleClicks: 0
         };
     },
 
