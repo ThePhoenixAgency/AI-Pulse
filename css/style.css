@@ -16,7 +16,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none; /* Hide default cursor to replace with custom one */
+    cursor: none;
+    /* Hide default cursor to replace with custom one */
 }
 
 body {
@@ -30,7 +31,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-weight: 700;
     line-height: 1.2;
 }
@@ -47,19 +53,22 @@ a {
     top: 0;
     left: 0;
     pointer-events: none;
-    z-index: 10000;
-    mix-blend-mode: difference; /* Ensures visibility on light and dark backgrounds */
+    z-index: 99999;
+    mix-blend-mode: difference;
+    /* Ensures visibility on light and dark backgrounds */
 }
 
 #cursor-arrow {
-    width: 0; 
-    height: 0; 
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 20px solid var(--primary);
-    transform: rotate(-30deg) translate(-50%, -50%);
-    filter: drop-shadow(0 0 5px var(--primary-glow));
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 24px solid var(--primary);
+    transform: rotate(-25deg) translate(-50%, -10%);
+    filter: drop-shadow(0 0 4px var(--primary-glow));
     transition: transform 0.1s;
+    /* Creating a sharper, more standard cursor shape using clip-path could be an option, but keeping it css-only shape for now */
+    border-bottom-width: 22px;
 }
 
 /* Header */
@@ -99,7 +108,8 @@ a {
     font-size: 0.95rem;
 }
 
-.nav-links a:hover, .nav-links a.active {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--primary);
     text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
 }
@@ -140,8 +150,15 @@ a {
 
 /* Animations */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .fade-in {

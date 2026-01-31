@@ -36,12 +36,12 @@ function initCursor() {
 
     interactiveElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            cursorArrow.style.transform = 'rotate(-30deg) translate(-50%, -50%) scale(1.5)';
+            cursorArrow.style.transform = 'rotate(-25deg) translate(-50%, -10%) scale(1.5)';
             cursorArrow.style.borderBottomColor = 'var(--secondary)';
         });
 
         el.addEventListener('mouseleave', () => {
-            cursorArrow.style.transform = 'rotate(-30deg) translate(-50%, -50%) scale(1)';
+            cursorArrow.style.transform = 'rotate(-25deg) translate(-50%, -10%) scale(1)';
             cursorArrow.style.borderBottomColor = 'var(--primary)';
         });
     });
