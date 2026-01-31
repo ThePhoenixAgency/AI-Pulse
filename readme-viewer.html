@@ -220,6 +220,17 @@
             }
         }
 
+        // Safely detect GitHub links by hostname
+        function isGithubLink(href) {
+            try {
+                const urlObj = new URL(href, window.location.href);
+                const hostname = urlObj.hostname.toLowerCase();
+                return hostname === 'github.com' || hostname.endsWith('.github.com');
+            } catch (e) {
+                return false;
+            }
+        }
+
         // Convert external links to open in iframe
         function convertLinksToIframe(content) {
             const div = document.createElement('div');
@@ -245,7 +256,7 @@
                     link.setAttribute('target', '_parent');
                 }
                 // Handle System Links (Portfolio, Stats, GitHub issues, etc.)
-                else if (href.includes('github.com') || href.includes('portfolio.html') || href.includes('stats.html') || href.includes('about.html')) {
+                else if (isGithubLink(href) || href.includes('portfolio.html') || href.includes('stats.html') || href.includes('about.html')) {
                     link.setAttribute('target', '_top'); // Break out of all iframes
                 }
                 // Handle other external links
