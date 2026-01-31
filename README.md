@@ -8,9 +8,9 @@
 
 <div align="center">
 
-# 🚀 AI-PULSE
+# AI-PULSE
 
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
+### Your Real-Time AI & Cybersecurity News Aggregator
 
 > Curated content from the best sources - Auto-updated every 6 hours
 
@@ -24,18 +24,18 @@
 
 ---
 
-## 👨‍💻 About The Developer
+## About The Developer
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+**[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
+**[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
+**[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
 
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
 
-### 🛠️ Tech Stack
+### Tech Stack
 
 ![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
@@ -43,7 +43,7 @@
 ![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
 
 
-## 🤖 Artificial Intelligence
+## Artificial Intelligence
 
 ### 1. [Physical Intelligence, Stripe veteran Lachy Groom’s latest bet, is building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/?utm_source=ai-pulse&utm_medium=reader&utm_campaign=article&utm_content=ai)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
