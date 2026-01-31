@@ -26,7 +26,7 @@ function initCursor() {
     document.body.appendChild(cursorContainer);
 
     // Track movement
-    document.addEventListener('mousemove', (e) => {
+    window.addEventListener('mousemove', (e) => {
         cursorContainer.style.left = e.clientX + 'px';
         cursorContainer.style.top = e.clientY + 'px';
     });

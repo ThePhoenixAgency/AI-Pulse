@@ -148,52 +148,7 @@ async function aggregateCategory(categoryName, feeds) {
 
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = `\`\`\`
-    ___    ____   ____  __  ____   _____ ______
-   /   |  /  _/  / __ \\/ / / / /  / ___// ____/
-  / /| |  / /   / /_/ / / / / /   \\__ \\/ __/
- / ___ |_/ /   / ____/ /_/ / /______/ / /___
-/_/  |_/___/  /_/    \\____/_____/____/_____/
-\`\`\`
-
-<div align="center">
-
-# 🚀 AI-PULSE
-
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
-
-> Curated content from the best sources - Auto-updated every 6 hours
-
-[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%206h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-
-**Last Update:** ${new Date().toUTCString()}
-
----
-
----
-
-## 👨‍💻 About The Developer
-
-**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
-
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
-
-> Passionate about building secure, privacy-first applications that make a difference.
-> This project showcases my expertise in full-stack development, security engineering, and data privacy.
-
-### 🛠️ Tech Stack
-
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
-![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
-
-
-`;
+  let readme = '';
 
   // Generate sections for each category
   for (const [category, articles] of Object.entries(categorizedArticles)) {
