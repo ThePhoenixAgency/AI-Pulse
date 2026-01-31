@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-        <!-- Redirect to index.html if opened directly (not in iframe) -->
+    <!-- Redirect to index.html if opened directly (not in iframe) -->
     <script>
         if (window.self === window.top) {
             window.location.replace('./index.html');
@@ -9,9 +10,12 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src 'self' data: https:">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src 'self' data: https:">
     <title>AI-Pulse Reader</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/ui.js"></script>
     <style>
         * {
             margin: 0;
@@ -133,8 +137,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .loading-text {
@@ -270,48 +279,50 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWN1RSPQMJ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LWN1RSPQMJ');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LWN1RSPQMJ');
     </script>
 
     <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
-            </div>
+    </div>
 
-        <div class="view active" id="view-home">
-            <div class="iframe-container">
-                <iframe src="./readme-viewer.html" id="readmeFrame"></iframe>            </div>
+    <div class="view active" id="view-home">
+        <div class="iframe-container">
+            <iframe src="./readme-viewer.html" id="readmeFrame"></iframe>
+        </div>
+    </div>
+
+    <!-- Article View -->
+    <div class="view" id="view-article">
+        <div class="article-info-bar" id="articleInfoBar">
+            <div class="article-title-text" id="articleTitleText">Chargement...</div>
+            <div class="article-meta">
+                <span class="meta-item" id="articleSource"></span>
+                <span class="meta-item" id="articleTags"></span>
+            </div>
         </div>
 
-        <!-- Article View -->
-        <div class="view" id="view-article">
-            <div class="article-info-bar" id="articleInfoBar">
-                <div class="article-title-text" id="articleTitleText">Chargement...</div>
-                <div class="article-meta">
-                    <span class="meta-item" id="articleSource"></span>
-                    <span class="meta-item" id="articleTags"></span>
-                </div>
+        <div class="iframe-container">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p class="loading-text">Chargement de l'article...</p>
             </div>
-
-            <div class="iframe-container">
-                <div class="loading" id="loading">
-                    <div class="spinner"></div>
-                    <p class="loading-text">Chargement de l'article...</p>
-                </div>
-                <iframe id="articleFrame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"></iframe>
-                <div class="error-message" id="errorMessage">
-                    <div class="error-icon">⚠️</div>
-                    <h2>Impossible de charger l'article</h2>
-                    <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
-                    <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
-                        <span>🔗</span>
-                        <span>Ouvrir sur le site source</span>
-                    </a>
-                </div>
+            <iframe id="articleFrame"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"></iframe>
+            <div class="error-message" id="errorMessage">
+                <div class="error-icon">⚠️</div>
+                <h2>Impossible de charger l'article</h2>
+                <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
+                <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
+                    <span>🔗</span>
+                    <span>Ouvrir sur le site source</span>
+                </a>
             </div>
         </div>
+    </div>
     </div>
 
     <script>
@@ -362,113 +373,98 @@
         // If article parameters exist and URL is valid, show article view
         if (articleUrl && isValidHttpUrl(articleUrl)) {
             const safeArticleUrl = new URL(articleUrl).toString();
-        // Restrict which URLs are allowed to be used for article loading/navigation
-        function isAllowedArticleUrl(string) {
-            if (!isValidHttpUrl(string)) {
-                return false;
-            }
-            try {
-                const url = new URL(string);
-                // Allow only same-host articles by default. Extend this list if needed.
-                const allowedHosts = [window.location.hostname];
-                return allowedHosts.includes(url.hostname);
-            } catch (_) {
-                return false;
-            }
+            // Restrict which URLs are allowed to be used for article loading/navigation
+            function isAllowedArticleUrl(string) {
 
-        // If article parameters exist and URL is valid and allowed, show article view
-        if (articleUrl && isAllowedArticleUrl(articleUrl)) {
-            showView('article');
-
-            // Show article tab and external link button
-            document.getElementById('tab-article').style.display = 'inline-flex';
-            document.getElementById('openExternal').style.display = 'inline-flex';
-
-            // Display article information
-            if (articleTitle) {
-                document.getElementById('articleTitleText').textContent = decodeURIComponent(articleTitle);
-                document.getElementById('articleInfoBar').classList.add('visible');
-            }
-
-            if (articleSource) {
-                const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
-                document.getElementById('articleSource').innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
-            }
-
-            if (articleTags) {
-                const tags = decodeURIComponent(articleTags).split(',');
-                const tagsHtml = tags.map(tag => {
-                    const sanitizedTag = DOMPurify.sanitize(tag.trim());
-                    return `<span class="tag">${sanitizedTag}</span>`;
-                }).join('');
-                document.getElementById('articleTags').innerHTML = tagsHtml;
-            }
-
-            // Configure external links
-            document.getElementById('openExternal').href = safeArticleUrl;
-            document.getElementById('openExternalError').href = safeArticleUrl;
-
-            // Load article in iframe
-            const iframe = document.getElementById('articleFrame');
-            const loading = document.getElementById('loading');
-            const errorMessage = document.getElementById('errorMessage');
-
-            iframe.src = safeArticleUrl;
-
-            iframe.onload = function() {
-                loading.style.display = 'none';
-                try {
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                    if (iframeDoc.body === null || iframeDoc.body.innerHTML === '') {
-                        throw new Error('Iframe bloquée');
-                    }
-                } catch (e) {
-                    console.log('Note: Accès iframe restreint (comportement normal)');
+                // Display article information
+                if (articleTitle) {
+                    document.getElementById('articleTitleText').textContent = decodeURIComponent(articleTitle);
+                    document.getElementById('articleInfoBar').classList.add('visible');
                 }
-            };
 
-            iframe.onerror = function() {
-                loading.style.display = 'none';
-                errorMessage.style.display = 'block';
-            };
+                if (articleSource) {
+                    const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
+                    document.getElementById('articleSource').innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
+                }
 
-            setTimeout(function() {
-                if (loading.style.display !== 'none') {
+                if (articleTags) {
+                    const tags = decodeURIComponent(articleTags).split(',');
+                    const tagsHtml = tags.map(tag => {
+                        const sanitizedTag = DOMPurify.sanitize(tag.trim());
+                        return `<span class="tag">${sanitizedTag}</span>`;
+                    }).join('');
+                    document.getElementById('articleTags').innerHTML = tagsHtml;
+                }
+
+                // Configure external links
+                document.getElementById('openExternal').href = safeArticleUrl;
+                document.getElementById('openExternalError').href = safeArticleUrl;
+
+                // Load article in iframe
+                const iframe = document.getElementById('articleFrame');
+                const loading = document.getElementById('loading');
+                const errorMessage = document.getElementById('errorMessage');
+
+                iframe.src = safeArticleUrl;
+
+                iframe.onload = function () {
                     loading.style.display = 'none';
-                }
-            }, 10000);
-        } else {
-            // Show home view by default
-            showView('home');
-        }
+                    try {
+                        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (iframeDoc.body === null || iframeDoc.body.innerHTML === '') {
+                            throw new Error('Iframe bloquée');
+                        }
+                    } catch (e) {
+                        console.log('Note: Accès iframe restreint (comportement normal)');
+                    }
+                };
 
-        // Tab click handler for article tab
-        document.getElementById('tab-article').addEventListener('click', function(e) {
-            e.preventDefault();
-            showView('article');
-        });
+                iframe.onerror = function () {
+                    loading.style.display = 'none';
+                    errorMessage.style.display = 'block';
+                };
 
-        // Track article click when article view is loaded
-        if (articleUrl && articleTitle) {
-            window.addEventListener('load', async () => {
-                // Wait for tracker to initialize
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                setTimeout(function () {
+                    if (loading.style.display !== 'none') {
+                        loading.style.display = 'none';
+                    }
+                }, 10000);
+            } else {
+                // Show home view by default
+                showView('home');
+            }
 
-                if (window.aiPulseTracker) {
-                    await window.aiPulseTracker.trackArticleClick({
-                        title: decodeURIComponent(articleTitle),
-                        source: articleSource ? decodeURIComponent(articleSource) : 'Unknown',
-                        url: articleUrl
-                    });
-                }
+            // Tab click handler for article tab
+            document.getElementById('tab-article').addEventListener('click', function (e) {
+                e.preventDefault();
+                showView('article');
             });
-        }
+
+            // Track article click when article view is loaded
+            if (articleUrl && articleTitle) {
+                window.addEventListener('load', async () => {
+                    // Wait for tracker to initialize
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+
+                    if (window.aiPulseTracker) {
+                        await window.aiPulseTracker.trackArticleClick({
+                            title: decodeURIComponent(articleTitle),
+                            source: articleSource ? decodeURIComponent(articleSource) : 'Unknown',
+                            url: articleUrl
+                        });
+                    }
+                });
+            }
     </script>
 
     <!-- Footer -->
     <div class="footer">
-            <a href="privacy.html">Privacy</a>
-            <span>•</span>
-            <a href="stats.html">Statistics</a>
-            <span>•</span>
-                    <a href="about.html">ThePhoenixAgency</a>
+        <a href="privacy.html" target="_top">Privacy</a>
+        <span>•</span>
+        <a href="stats.html" target="_top">Statistics</a>
+        <span>•</span>
+        <a href="about.html" target="_top">ThePhoenixAgency</a>
+    </div>
+    </body>
+
+</html>

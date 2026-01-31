@@ -7,7 +7,7 @@ const { URL } = require('url');
 
 const parser = new Parser({
   timeout: 10000,
-  headers: {'User-Agent': 'AI-Pulse/2.0'}
+  headers: { 'User-Agent': 'AI-Pulse/2.0' }
 });
 
 // Scalable feed configuration by category
@@ -29,13 +29,13 @@ const FEED_CATEGORIES = {
     { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
   ]
 };
-  iot: [
-    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
-    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
-    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
-    { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
-    { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
-  ]
+iot: [
+  { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
+  { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
+  { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
+  { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
+  { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
+]
 
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
@@ -115,7 +115,8 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
+    // Link points to our internal reader app instead of external site directly
+    link: `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(article.link)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}`,
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
@@ -147,52 +148,7 @@ async function aggregateCategory(categoryName, feeds) {
 
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = `\`\`\`
-    ___    ____   ____  __  ____   _____ ______
-   /   |  /  _/  / __ \\/ / / / /  / ___// ____/
-  / /| |  / /   / /_/ / / / / /   \\__ \\/ __/
- / ___ |_/ /   / ____/ /_/ / /______/ / /___
-/_/  |_/___/  /_/    \\____/_____/____/_____/
-\`\`\`
-
-<div align="center">
-
-# 🚀 AI-PULSE
-
-### 🤖 Your Real-Time AI & Cybersecurity News Aggregator
-
-> Curated content from the best sources - Auto-updated every 6 hours
-
-[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%206h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-
-**Last Update:** ${new Date().toUTCString()}
-
----
-
----
-
-## 👨‍💻 About The Developer
-
-**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
-
-🔥 **[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-📊 **[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
-🚀 **[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
-
-> Passionate about building secure, privacy-first applications that make a difference.
-> This project showcases my expertise in full-stack development, security engineering, and data privacy.
-
-### 🛠️ Tech Stack
-
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
-![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
-
-
-`;
+  let readme = '';
 
   // Generate sections for each category
   for (const [category, articles] of Object.entries(categorizedArticles)) {
@@ -217,20 +173,7 @@ function generateREADME(categorizedArticles) {
   }
 
   readme += `\n---\n\n`;
-  readme += `## 🧭 Navigation\n\n`;
-  readme += `<div align="center">\n\n`;
-  readme += `### Explore AI-Pulse\n\n`;
-  readme += `| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
-  readme += `|:---:|:---:|:---:|\n`;
-  readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
-  readme += `---\n\n`;
-  readme += `### 🤝 Connect With Me\n\n`;
-  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
-  readme += `[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)\n`;
-  readme += `[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
-  readme += `---\n\n`;
-  readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
-  readme += `</div>\n`;
+
 
   return readme;
 }

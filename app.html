@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Pulse - Reader</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Specific layout for the app view */
+        body {
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #0d1117;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand-logo">
+            <img src="./logo.svg" alt="AI-Pulse" style="height: 30px; margin-right: 10px;">
+            AI-PULSE
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="app.html" class="active">Reader</a>
+
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Reader Content -->
+    <iframe src="./reader.html" title="AI-Pulse Content"></iframe>
+
+    <script src="./js/tracker.js"></script>
+    <script src="./js/ui.js"></script>
+</body>
+
+</html>

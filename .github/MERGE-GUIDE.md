@@ -1,19 +1,18 @@
-# 🔥 GUIDE DE MERGE - QUEL CODE GARDER
+# GUIDE DE MERGE - QUEL CODE GARDER
 
-## ⚠️ EN CAS DE CONFLIT SUR `src/aggregator.js`
+## EN CAS DE CONFLIT SUR `src/aggregator.js`
 
-### ✅ **GARDER: "INCOMING" (la nouvelle version)**
+### **GARDER: "INCOMING" (la nouvelle version)**
 
 **POURQUOI?**
-- ✅ 12 sources (6 AI + 6 Cybersecurity) au lieu de 7
+- ✅ 12 sources
 - ✅ UTM corrects: `utm_medium=reader` et `utm_campaign=article` (TES utm)
-- ✅ Freedium.cloud pour contourner les paywalls Medium
 - ✅ Catégories: `ai` et `cybersecurity` au lieu de `ai`, `tech`, `research`
 
 
 ---
 
-## 📝 CHOIX DANS L'INTERFACE GITHUB
+## CHOIX DANS L'INTERFACE GITHUB
 
 Quand tu vois:
 ```
@@ -28,7 +27,7 @@ Quand tu vois:
 
 ---
 
-## 🎯 CE QUE ÇA VA CHANGER
+## CE QUE ÇA VA CHANGER
 
 ### Sources:
 - Medium AI
@@ -49,7 +48,7 @@ Quand tu vois:
 
 ---
 
-## 🚀 APRÈS LE MERGE
+## APRÈS LE MERGE
 
 1. Le workflow se déclenche automatiquement
 2. Il va fetcher les 12 sources RSS
@@ -58,7 +57,7 @@ Quand tu vois:
 
 ---
 
-## ❓ EN RÉSUMÉ
+## EN RÉSUMÉ
 
 **Si tu vois un conflit:**
 - Choisis **"Accept Incoming"**

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AI-Pulse</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .about-content {
+            margin: 4rem auto;
+            max-width: 900px;
+            display: grid;
+            gap: 3rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .about-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #825ee4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand-logo">
+            <img src="./logo.svg" alt="AI-Pulse" style="height: 30px; margin-right: 10px;">
+            AI-PULSE
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="app.html">Reader</a>
+
+            <a href="about.html" class="active">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container fade-in">
+        <div class="about-content">
+            <div class="about-header">
+                <h1>About AI-Pulse</h1>
+                <p style="color: var(--text-dim); font-size: 1.2rem;">The future of AI news aggregation, monitored in
+                    real-time.</p>
+            </div>
+
+            <div class="about-card">
+                <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Our Mission</h2>
+                <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 1rem;">
+                    AI-Pulse is a specialized aggregator designed to filter the noise and deliver high-signal
+                    intelligence on <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>.
+                </p>
+                <p style="line-height: 1.8; color: var(--text-light);">
+                    Developed by <strong>ThePhoenixAgency</strong>, this project prioritizes privacy, speed, and cleaner
+                    reading experiences without the tracking clutter of modern web media.
+                </p>
+            </div>
+
+            <div class="about-card">
+                <h2 style="color: var(--secondary); margin-bottom: 1.5rem;">Technology Stack</h2>
+                <p style="color: var(--text-dim); margin-bottom: 1rem;">Built with modern, lightweight web technologies:
+                </p>
+                <div class="tech-stack">
+                    <span class="tech-badge">Vanilla JS</span>
+                    <span class="tech-badge">CSS Variables</span>
+                    <span class="tech-badge">Local Storage Analytics</span>
+                    <span class="tech-badge">RSS Parsing</span>
+                    <span class="tech-badge">GitHub Pages</span>
+                </div>
+            </div>
+
+            <div class="about-card">
+                <h2 style="color: #fff; margin-bottom: 1.5rem;">Privacy First</h2>
+                <p style="line-height: 1.8; color: var(--text-dim);">
+                    We believe in transparency. AI-Pulse operates with:
+                </p>
+                <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light); line-height: 1.8;">
+                    <li>No Third-Party Cookies</li>
+                    <li>No External Tracking Pixels</li>
+                    <li>Local-Only Session Statistics</li>
+                    <li>Open Source Codebase</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="portfolio.html" class="btn">View Developer Portfolio</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+            <a href="privacy.html">Privacy</a>
+            <span style="color: #334155;">•</span>
+            <a href="stats.html">Statistics</a>
+            <span style="color: #334155;">•</span>
+            <a href="about.html">ThePhoenixAgency</a>
+            <span style="color: #334155;">•</span>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+        </div>
+        <p style="color: #475569; font-size: 0.8rem;">&copy; 2026 AI-Pulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/tracker.js"></script>
+    <script src="./js/ui.js"></script>
+</body>
+
+</html>
