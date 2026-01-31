@@ -146,16 +146,85 @@ async function aggregateCategory(categoryName, feeds) {
   return articles.sort((a, b) => b.pubDate - a.pubDate);
 }
 
+// Static Header with no emojis
+const README_HEADER = `<div align="center">
+
+# AI-PULSE
+
+### Your Real-Time AI & Cybersecurity News Aggregator
+
+> Curated content from the best sources - Auto-updated every 3 hours
+
+[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%203h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+
+**Last Update:** ${new Date().toUTCString()}
+
+---
+
+---
+
+## About The Developer
+
+**Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
+
+**[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
+**[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)** |
+**[Launch Reader App](https://thephoenixagency.github.io/AI-Pulse/reader.html)**
+
+> Passionate about building secure, privacy-first applications that make a difference.
+> This project showcases my expertise in full-stack development, security engineering, and data privacy.
+
+### Tech Stack
+
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
+![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
+
+</div>
+
+`;
+
+const README_FOOTER = `
+---
+
+## Navigation
+
+<div align="center">
+
+### Explore AI-Pulse
+
+| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
+|:---:|:---:|:---:|
+| Source Code | Team Profile | Technical Docs |
+
+---
+
+### Connect With Me
+
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
+[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
+
+---
+
+<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
+
+</div>
+`;
+
 // Generate README with categories
 function generateREADME(categorizedArticles) {
-  let readme = '';
+  let readme = README_HEADER;
 
   // Generate sections for each category
   for (const [category, articles] of Object.entries(categorizedArticles)) {
-    const emoji = category === 'ai' ? '🤖' : '🔒';
+    // No emojis
     const title = category === 'ai' ? 'Artificial Intelligence' : 'Cybersecurity';
 
-    readme += `## ${emoji} ${title}\n\n`;
+    readme += `## ${title}\n\n`;
 
     if (articles.length === 0) {
       readme += `*No articles available*\n\n`;
@@ -172,8 +241,7 @@ function generateREADME(categorizedArticles) {
     readme += `---\n\n`;
   }
 
-  readme += `\n---\n\n`;
-
+  readme += README_FOOTER;
 
   return readme;
 }
