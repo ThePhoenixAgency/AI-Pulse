@@ -7,7 +7,7 @@ const { URL } = require('url');
 
 const parser = new Parser({
   timeout: 10000,
-  headers: {'User-Agent': 'AI-Pulse/2.0'}
+  headers: { 'User-Agent': 'AI-Pulse/2.0' }
 });
 
 // Scalable feed configuration by category
@@ -29,13 +29,13 @@ const FEED_CATEGORIES = {
     { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
   ]
 };
-  iot: [
-    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
-    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
-    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
-    { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
-    { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
-  ]
+iot: [
+  { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
+  { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
+  { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
+  { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
+  { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
+]
 
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
@@ -115,7 +115,8 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    link: addUTMParams(article.link, category),  // UTM tracks traffic FROM AI-Pulse
+    // Link points to our internal reader app instead of external site directly
+    link: `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(article.link)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}`,
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
@@ -217,20 +218,7 @@ function generateREADME(categorizedArticles) {
   }
 
   readme += `\n---\n\n`;
-  readme += `## 🧭 Navigation\n\n`;
-  readme += `<div align="center">\n\n`;
-  readme += `### Explore AI-Pulse\n\n`;
-  readme += `| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |\n`;
-  readme += `|:---:|:---:|:---:|\n`;
-  readme += `| Source Code | Team Profile | Technical Docs |\n\n`;
-  readme += `---\n\n`;
-  readme += `### 🤝 Connect With Me\n\n`;
-  readme += `[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)\n`;
-  readme += `[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)\n`;
-  readme += `[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)\n\n`;
-  readme += `---\n\n`;
-  readme += `<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>\n\n`;
-  readme += `</div>\n`;
+
 
   return readme;
 }
