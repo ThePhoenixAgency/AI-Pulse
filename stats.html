@@ -87,6 +87,19 @@
                 <div class="stat-label">Last Visit</div>
                 <div class="stat-value" id="last-visit" style="font-size: 1.2rem; margin: 1.5rem 0;">...</div>
             </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Your Locations</div>
+                <div class="stat-value" id="user-locations"
+                    style="font-size: 1rem; margin: 1.5rem 0; white-space: pre-wrap;">Locating...</div>
+                <p style="font-size: 0.8rem; color: #64748b;">Based on IP</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">Articles Read</div>
+                <div class="stat-value" id="articles-read">0</div>
+                <p style="font-size: 0.8rem; color: #64748b;">Total clicks</p>
+            </div>
         </div>
 
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 40px;">
@@ -120,12 +133,24 @@
             document.getElementById('total-visitors').textContent = stats.sessions;
             document.getElementById('page-views').textContent = stats.pageViews;
             document.getElementById('visitor-id').textContent = stats.visitorId;
+            document.getElementById('articles-read').textContent = stats.articleClicks || 0;
 
             if (stats.lastVisit) {
                 const date = new Date(stats.lastVisit);
                 document.getElementById('last-visit').textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
             } else {
                 document.getElementById('last-visit').textContent = "First Visit";
+            }
+
+            // Format locations
+            if (stats.locations && stats.locations.length > 0) {
+                const locs = stats.locations.map(l => {
+                    if (typeof l === 'string') return l;
+                    return `${l.city}, ${l.country}`;
+                }).join('\n');
+                document.getElementById('user-locations').textContent = locs;
+            } else {
+                document.getElementById('user-locations').textContent = "Unknown";
             }
         });
     </script>
