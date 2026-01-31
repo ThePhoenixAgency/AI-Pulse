@@ -262,15 +262,25 @@
 
                 let markdown = '';
 
+                // Helper to fetch with timeout
+                const fetchWithTimeout = async (resource, options = {}) => {
+                    const { timeout = 2000 } = options;
+                    const controller = new AbortController();
+                    const id = setTimeout(() => controller.abort(), timeout);
+                    const response = await fetch(resource, { ...options, signal: controller.signal });
+                    clearTimeout(id);
+                    return response;
+                };
+
                 try {
-                    const localResponse = await fetch('./README.md');
+                    const localResponse = await fetchWithTimeout('./README.md');
                     if (localResponse.ok) {
                         markdown = await localResponse.text();
                     } else {
                         throw new Error('Local fetch failed');
                     }
                 } catch (e) {
-                    console.log('Local README fetch failed, falling back to GitHub API...');
+                    console.log('Local README fetch failed or timed out, falling back to GitHub API...');
                     const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
                         headers: { 'Accept': 'application/vnd.github.v3.raw' }
                     });
