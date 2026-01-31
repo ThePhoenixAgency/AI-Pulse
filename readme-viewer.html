@@ -226,16 +226,29 @@
             const links = div.querySelectorAll('a');
             links.forEach(link => {
                 const href = link.getAttribute('href');
-                if (href && href.startsWith('http')) {
-                    // Add UTM parameters
-                    const urlWithUTM = addUTMParameters(href);
+                if (!href) return;
 
-                    // Convert to parent reader URL (reader.html) to load in parent frame
-                    const readerUrl = `./reader.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
+                // Handle Article Links (Aggregator generated)
+                if (href.includes('app.html?url=') || href.includes('reader.html?url=')) {
+                    // Extract the actual article URL to avoid double wrapping
+                    const urlParams = new URLSearchParams(href.split('?')[1]);
+                    const actualUrl = urlParams.get('url');
+                    const title = urlParams.get('title') || link.textContent;
+                    const source = urlParams.get('source') || 'README';
+                    const tags = urlParams.get('tags') || '';
+
+                    const readerUrl = `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`;
 
                     link.setAttribute('href', readerUrl);
-                    // Use _parent to navigate the parent reader.html frame, keeping the experience inside the App iframe
                     link.setAttribute('target', '_parent');
+                }
+                // Handle System Links (Portfolio, Stats, GitHub issues, etc.)
+                else if (href.includes('github.com') || href.includes('portfolio.html') || href.includes('stats.html') || href.includes('about.html')) {
+                    link.setAttribute('target', '_top'); // Break out of all iframes
+                }
+                // Handle other external links
+                else if (href.startsWith('http')) {
+                    link.setAttribute('target', '_blank'); // Open in new tab by default if unknown
                 }
             });
 
