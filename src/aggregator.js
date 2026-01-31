@@ -4,6 +4,11 @@ const axios = require('axios');
 const { Octokit } = require('@octokit/rest');
 const sanitizeHtml = require('sanitize-html');
 const { URL } = require('url');
+const fs = require('fs');
+const path = require('path');
+const { Readability } = require('@mozilla/readability');
+const { JSDOM } = require('jsdom');
+const crypto = require('crypto');
 
 const parser = new Parser({
   timeout: 10000,
@@ -12,6 +17,17 @@ const parser = new Parser({
 
 // Scalable feed configuration by category
 const FEED_CATEGORIES = {
+  iot: [
+    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT', 'RaspberryPi', 'Tech'] },
+    { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino', 'Tech'] },
+    { name: 'IRO Wireless', url: 'https://irojournals.com/jws/index.php/jws/gateway/plugin/WebFeedGatewayPlugin/rss2', tags: ['Hardware', 'Wireless', 'Research'] },
+    { name: 'Hackster.io', url: 'https://www.hackster.io/news/feed', tags: ['IoT', 'Hardware', 'Projects'] },
+    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
+    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
+    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
+    { name: 'Domotique News', url: 'http://www.domotique-news.com/feed', tags: ['IoT', 'News'] },
+    { name: 'HomeTech', url: 'https://hometech.fm/articles?format=rss', tags: ['IoT', 'SmartHome', 'Tech'] }
+  ],
   ai: [
     { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['AI', 'ML', 'Deep Learning'] },
     { name: 'Towards Data Science', url: 'https://towardsdatascience.com/feed', tags: ['AI', 'Data Science', 'Analytics'] },
@@ -27,17 +43,6 @@ const FEED_CATEGORIES = {
     { name: 'Dark Reading', url: 'https://www.darkreading.com/rss_simple.asp', tags: ['Security', 'CVE', 'Enterprise'] },
     { name: 'SecurityWeek', url: 'https://www.securityweek.com/feed/', tags: ['Security', 'CVE', 'News'] },
     { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
-  ],
-  iot: [
-    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT', 'RaspberryPi', 'Tech'] },
-    { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino', 'Tech'] },
-    { name: 'IRO Wireless', url: 'https://irojournals.com/jws/index.php/jws/gateway/plugin/WebFeedGatewayPlugin/rss2', tags: ['Hardware', 'Wireless', 'Research'] },
-    { name: 'Hackster.io', url: 'https://www.hackster.io/news/feed', tags: ['IoT', 'Hardware', 'Projects'] },
-    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
-    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
-    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
-    { name: 'Domotique News', url: 'http://www.domotique-news.com/feed', tags: ['IoT', 'News'] },
-    { name: 'HomeTech', url: 'https://hometech.fm/articles?format=rss', tags: ['IoT', 'SmartHome', 'Tech'] }
   ]
 };
 
@@ -114,18 +119,72 @@ function smartTruncate(text, maxLength = 500) {
 }
 
 // Sanitize and process articles
-function sanitizeArticle(article, sourceName, tags, category) {
+async function processArticle(article, sourceName, tags, category) {
   const rawSummary = sanitizeText(article.contentSnippet) || '';
+  const articleUrl = article.link;
+
+  // Create a unique hash for the article to save it locally
+  const hash = crypto.createHash('md5').update(articleUrl).digest('hex');
+  const localFileName = `${hash}.html`;
+  const localPath = path.join(__dirname, '..', 'data', 'articles', localFileName);
+  const relativeLink = `data/articles/${localFileName}`;
+
+  // Try to fetch and extract content if it doesn't exist
+  if (!fs.existsSync(localPath)) {
+    try {
+      const response = await axios.get(articleUrl, { timeout: 8000, headers: { 'User-Agent': 'AI-Pulse/2.0' } });
+      const dom = new JSDOM(response.data, { url: articleUrl });
+      const reader = new Readability(dom.window.document);
+      const articleContent = reader.parse();
+
+      if (articleContent && articleContent.textContent) {
+        const cleanHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>${sanitizeText(articleContent.title)}</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 40px auto; padding: 0 20px; }
+  h1 { color: #1a1a1a; margin-bottom: 0.5em; }
+  .metadata { color: #666; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid #eee; padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #0066cc; }
+</style>
+</head>
+<body>
+  <h1>${sanitizeText(articleContent.title)}</h1>
+  <div class="metadata">
+    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} | 
+    <a href="${articleUrl}" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    ${sanitizeHtml(articleContent.content, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+          allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'] }
+        })}
+  </div>
+</body>
+</html>`;
+        fs.writeFileSync(localPath, cleanHtml);
+      }
+    } catch (e) {
+      console.error(`    Could not extract content for: ${articleUrl}`);
+    }
+  }
+
+  const finalReaderLink = fs.existsSync(localPath)
+    ? `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(relativeLink)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}&mode=local`
+    : `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(articleUrl)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}`;
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
-    // Link points to our internal reader app instead of external site directly
-    link: `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(article.link)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}`,
+    link: finalReaderLink,
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
     category: article.categories?.[0] || 'General',
-    summary: smartTruncate(rawSummary, 600)  // Increased to 600 with smart truncation for better article previews
+    summary: smartTruncate(rawSummary, 600)
   };
 }
 
@@ -138,9 +197,11 @@ async function aggregateCategory(categoryName, feeds) {
     try {
       console.error(`  Fetch: ${feed.name}`);
       const feedData = await parser.parseURL(feed.url);
-      const items = feedData.items.slice(0, 10).map(item =>
-        sanitizeArticle(item, feed.name, feed.tags, categoryName)
-      );
+      const items = [];
+      for (const item of feedData.items.slice(0, 15)) {
+        const processed = await processArticle(item, feed.name, feed.tags, categoryName);
+        items.push(processed);
+      }
       articles.push(...items);
     } catch (error) {
       console.error(`  Error: Failed to fetch ${feed.name}: ${error.message}`);
@@ -159,9 +220,7 @@ const README_HEADER = `<div align="center">
 
 > Curated content from the best sources - Auto-updated every 3 hours
 
-[![Auto Update](https://img.shields.io/badge/Auto--Update-Every%203h-blueviolet?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Articles](https://img.shields.io/badge/Fresh-Articles-blue?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
 **Last Update:** ${new Date().toUTCString()}
 
@@ -189,7 +248,7 @@ const README_FOOTER = `
 
 ### Connect With Me
 
-[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues) [![Documentation](https://img.shields.io/badge/Documentation-Reader-blue?style=for-the-badge&logo=googledocs)](https://thephoenixagency.github.io/AI-Pulse/app.html)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
 ---
 
@@ -217,7 +276,7 @@ function generateREADME(categorizedArticles) {
       continue;
     }
 
-    articles.slice(0, 15).forEach((article, index) => {
+    articles.slice(0, 30).forEach((article, index) => {
       const tags = article.tags.map(t => `\`${t}\``).join(' ');
       readme += `### ${index + 1}. [${article.title}](${article.link})\n`;
       readme += `**Source:** ${article.source} | **Tags:** ${tags}\n`;

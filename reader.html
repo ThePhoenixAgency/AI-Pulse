@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self' https://ipapi.co; img-src 'self' data: https:">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' *; connect-src 'self' https://ipapi.co; img-src 'self' data: https:">
     <title>AI-Pulse Reader</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -353,8 +353,10 @@
         // Validate URL scheme to prevent XSS
         function isValidHttpUrl(string) {
             if (!string) return false;
+            // Allow internal data paths
+            if (string.startsWith('data/')) return true;
             try {
-                const url = new URL(string);
+                const url = new URL(string, window.location.origin);
                 return url.protocol === 'http:' || url.protocol === 'https:';
             } catch (_) {
                 return false;
@@ -378,7 +380,13 @@
             if (tabArticle) tabArticle.style.display = 'inline-flex';
             if (openExternal) openExternal.style.display = 'inline-flex';
 
-            const safeArticleUrl = new URL(articleUrl).toString();
+            let safeArticleUrl;
+            if (articleUrl.startsWith('http')) {
+                safeArticleUrl = new URL(articleUrl).toString();
+            } else {
+                // Internal path
+                safeArticleUrl = './' + articleUrl;
+            }
 
             // Display article information
             if (articleTitle) {
