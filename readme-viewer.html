@@ -260,12 +260,11 @@
                 let html = marked.parse(markdown);
 
                 // Inject custom cursor structure into iframe content
-                html += `
-                    <div id="cursor" style="position:fixed; top:0; left:0; pointer-events:none; z-index:99999; mix-blend-mode:difference;">
-                        <div id="cursor-arrow" style="width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:24px solid #00d9ff; transform:rotate(-25deg) translate(-50%, -10%); filter:drop-shadow(0 0 4px rgba(0,217,255,0.6)); transition:transform 0.1s;"></div>
-                    </div>
-                    <script src="./js/ui.js"><\/script>
-                `;
+                // Add style.css to bring in the custom CSS cursor
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = './css/style.css';
+                document.head.appendChild(link);
 
                 // Convert links to iframe format with UTM
                 html = convertLinksToIframe(html);

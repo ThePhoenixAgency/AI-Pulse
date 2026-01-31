@@ -12,63 +12,19 @@
 }
 
 /* Reset */
+/* Custom Cursor - Native CSS implementation */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    cursor: none;
-    /* Hide default cursor to replace with custom one */
+    /* Use a custom SVG cursor if available, fallback to auto (default arrow) */
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%2300d9ff" d="M0,0 L0,24 L6,18 L14,28 L18,24 L10,14 L18,14 L0,0 Z" stroke="rgba(0,0,0,0.2)" stroke-width="1" /></svg>') 0 0, auto;
 }
 
-body {
-    background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
-    font-family: var(--font-main);
-    color: var(--text-light);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: 700;
-    line-height: 1.2;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
-}
-
-/* Custom Cursor */
-#cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    pointer-events: none;
-    z-index: 99999;
-    mix-blend-mode: difference;
-    /* Ensures visibility on light and dark backgrounds */
-}
-
+/* Remove old JS cursor elements if they still exist in DOM */
+#cursor,
 #cursor-arrow {
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 24px solid var(--primary);
-    transform: rotate(-25deg) translate(-50%, -10%);
-    filter: drop-shadow(0 0 4px var(--primary-glow));
-    transition: transform 0.1s;
-    /* Creating a sharper, more standard cursor shape using clip-path could be an option, but keeping it css-only shape for now */
-    border-bottom-width: 22px;
+    display: none !important;
 }
 
 /* Header */
