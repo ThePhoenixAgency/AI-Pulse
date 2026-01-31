@@ -4,10 +4,66 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initCursor();
     highlightActiveLink();
 });
 
+function initCursor() {
+    // Mobile detection - disable custom cursor on touch devices
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        document.body.style.cursor = 'auto';
+        return;
+    }
 
+    // Prevent duplicate cursors
+    if (document.getElementById('cursor')) {
+        return;
+    }
+
+    // Create cursor elements
+    const cursorContainer = document.createElement('div');
+    cursorContainer.id = 'cursor';
+    // Ensure high z-index and pointer-events none
+    cursorContainer.style.zIndex = '999999';
+    cursorContainer.style.pointerEvents = 'none';
+
+    const cursorArrow = document.createElement('div');
+    cursorArrow.id = 'cursor-arrow';
+
+    cursorContainer.appendChild(cursorArrow);
+    document.body.appendChild(cursorContainer);
+
+    // Track movement
+    window.addEventListener('mousemove', (e) => {
+        cursorContainer.style.left = e.clientX + 'px';
+        cursorContainer.style.top = e.clientY + 'px';
+        cursorContainer.style.opacity = '1';
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+        cursorContainer.style.opacity = '0';
+    });
+
+    document.addEventListener('mouseenter', () => {
+        cursorContainer.style.opacity = '1';
+    });
+
+    // Hover effects
+    const interactiveElements = document.querySelectorAll('a, button, input, .stat-card, .btn');
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursorArrow.style.transform = 'rotate(-25deg) translate(-50%, -10%) scale(1.5)';
+            cursorArrow.style.borderBottomColor = 'var(--secondary)';
+        });
+
+        el.addEventListener('mouseleave', () => {
+            cursorArrow.style.transform = 'rotate(-25deg) translate(-50%, -10%) scale(1)';
+            cursorArrow.style.borderBottomColor = 'var(--primary)';
+        });
+    });
+}
 
 function highlightActiveLink() {
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';

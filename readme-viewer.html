@@ -230,11 +230,18 @@
                     // Add UTM parameters
                     const urlWithUTM = addUTMParameters(href);
 
-                    // Convert to app reader URL (app.html) instead of reader.html to fix navigation
-                    const appUrl = `./app.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
+                    // Convert to iframe reader URL (reader.html) to keep inside frame context
+                    const readerUrl = `./reader.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
 
-                    link.setAttribute('href', appUrl);
-                    link.setAttribute('target', '_top'); // Force open in top window to escape iframe
+                    link.setAttribute('href', readerUrl);
+                    // Use _self to stay in the same iframe, or specific frame name if available. 
+                    // But since this is a list of articles, we likely want to open them in the *main* reader view?
+                    // If this viewer IS the main reader view, we replace it.
+                    link.setAttribute('target', '_top'); // Wait, user specifically said DO NOT change frame location. 
+                    // If I use _self, it replaces the list with the article. That's a valid "reader" flow.
+                    // If I use _parent, it might reload the parent.
+                    // Let's assume the user wants to see the article IN PLACE of the list -> _self
+                    link.setAttribute('target', '_self');
                 }
             });
 
@@ -260,11 +267,12 @@
                 let html = marked.parse(markdown);
 
                 // Inject custom cursor structure into iframe content
-                // Add style.css to bring in the custom CSS cursor
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = './css/style.css';
-                document.head.appendChild(link);
+                html += `
+                    <div id="cursor" style="position:fixed; top:0; left:0; pointer-events:none; z-index:99999; mix-blend-mode:difference;">
+                        <div id="cursor-arrow" style="width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:24px solid #00d9ff; transform:rotate(-25deg) translate(-50%, -10%); filter:drop-shadow(0 0 4px rgba(0,217,255,0.6)); transition:transform 0.1s;"></div>
+                    </div>
+                    <script src="./js/ui.js"><\/script>
+                `;
 
                 // Convert links to iframe format with UTM
                 html = convertLinksToIframe(html);
