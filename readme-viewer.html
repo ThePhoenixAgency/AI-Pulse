@@ -244,14 +244,24 @@
 
         async function loadReadme() {
             try {
-                // Fetch local README to avoid old cached content and badges
-                const response = await fetch('./README.md');
+                // Fetch README from GitHub API (works everywhere) but clean header manually
+                const response = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
+                    headers: { 'Accept': 'application/vnd.github.v3.raw' }
+                });
 
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP: ${response.status}`);
                 }
 
-                const markdown = await response.text();
+                let markdown = await response.text();
+
+                // Manually clean header items (badges, main title) to ensure clean list
+                // Find first occurrence of "###" (First article usually)
+                const firstArticleIndex = markdown.indexOf('###');
+                if (firstArticleIndex !== -1) {
+                    // Keep only content from first article (cutting off the top header)
+                    markdown = markdown.substring(firstArticleIndex);
+                }
 
                 // Parse markdown to HTML
                 let html = marked.parse(markdown);
