@@ -256,12 +256,14 @@
                 let markdown = await response.text();
 
                 // Manually clean header items (badges, main title) to ensure clean list
-                // Find first occurrence of "###" (First article usually)
+                // DISABLE TRUNCATION: User wants to see the top of the readme (section headers)
+                // We keep the full markdown.
+                /* 
                 const firstArticleIndex = markdown.indexOf('###');
                 if (firstArticleIndex !== -1) {
-                    // Keep only content from first article (cutting off the top header)
                     markdown = markdown.substring(firstArticleIndex);
-                }
+                } 
+                */
 
                 // Parse markdown to HTML
                 let html = marked.parse(markdown);
