@@ -12,9 +12,46 @@
 }
 
 /* Reset */
-/* Custom Cursor removed by user request */
+/* Reset */
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     cursor: auto;
+    /* Default cursor restored */
+}
+
+body {
+    background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
+    font-family: var(--font-main);
+    color: var(--text-light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease;
+}
+
+/* Custom Cursor Hidden */
+#cursor,
+#cursor-arrow {
+    display: none;
 }
 
 #cursor,
