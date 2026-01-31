@@ -230,18 +230,12 @@
                     // Add UTM parameters
                     const urlWithUTM = addUTMParameters(href);
 
-                    // Convert to iframe reader URL (reader.html) to keep inside frame context
+                    // Convert to parent reader URL (reader.html) to load in parent frame
                     const readerUrl = `./reader.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
 
                     link.setAttribute('href', readerUrl);
-                    // Use _self to stay in the same iframe, or specific frame name if available. 
-                    // But since this is a list of articles, we likely want to open them in the *main* reader view?
-                    // If this viewer IS the main reader view, we replace it.
-                    link.setAttribute('target', '_top'); // Wait, user specifically said DO NOT change frame location. 
-                    // If I use _self, it replaces the list with the article. That's a valid "reader" flow.
-                    // If I use _parent, it might reload the parent.
-                    // Let's assume the user wants to see the article IN PLACE of the list -> _self
-                    link.setAttribute('target', '_self');
+                    // Use _parent to navigate the parent reader.html frame, keeping the experience inside the App iframe
+                    link.setAttribute('target', '_parent');
                 }
             });
 
@@ -250,12 +244,8 @@
 
         async function loadReadme() {
             try {
-                // Fetch README from GitHub API
-                const response = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
-                    headers: {
-                        'Accept': 'application/vnd.github.v3.raw'
-                    }
-                });
+                // Fetch local README to avoid old cached content and badges
+                const response = await fetch('./README.md');
 
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP: ${response.status}`);
@@ -266,13 +256,7 @@
                 // Parse markdown to HTML
                 let html = marked.parse(markdown);
 
-                // Inject custom cursor structure into iframe content
-                html += `
-                    <div id="cursor" style="position:fixed; top:0; left:0; pointer-events:none; z-index:99999; mix-blend-mode:difference;">
-                        <div id="cursor-arrow" style="width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:24px solid #00d9ff; transform:rotate(-25deg) translate(-50%, -10%); filter:drop-shadow(0 0 4px rgba(0,217,255,0.6)); transition:transform 0.1s;"></div>
-                    </div>
-                    <script src="./js/ui.js"><\/script>
-                `;
+                // Custom cursor injection removed by user request
 
                 // Convert links to iframe format with UTM
                 html = convertLinksToIframe(html);
