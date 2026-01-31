@@ -8,7 +8,6 @@
 
 <div align="center">
 
-# AI-PULSE
 
 ### Your Real-Time AI & Cybersecurity News Aggregator
 
@@ -19,8 +18,6 @@
 [![Open Source](https://img.shields.io/badge/100%25-Open%20Source-success?style=for-the-badge)](https://github.com/ThePhoenixAgency/AI-Pulse)
 
 **Last Update:** Sat, 31 Jan 2026 02:31:05 GMT
-
----
 
 ---
 
