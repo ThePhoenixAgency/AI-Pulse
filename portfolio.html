@@ -497,7 +497,10 @@
 
             } catch (error) {
                 console.error('Failed to fetch GitHub stats:', error);
-                document.getElementById('loadingProjects').innerHTML = '<p style="color: var(--text-secondary);">Failed to load projects. Check your internet connection.</p>';
+                const errP = document.createElement('p');
+                errP.style.color = 'var(--text-secondary)';
+                errP.textContent = 'Failed to load projects. Check your internet connection.';
+                document.getElementById('loadingProjects').appendChild(errP);
             }
         }
 
@@ -515,7 +518,10 @@
                 .slice(0, 5);
 
             if (featured.length === 0) {
-                loadingElement.innerHTML = '<p style="color: var(--text-secondary);">No additional projects found.</p>';
+                const noProjP = document.createElement('p');
+                noProjP.style.color = 'var(--text-secondary)';
+                noProjP.textContent = 'No additional projects found.';
+                loadingElement.appendChild(noProjP);
                 return;
             }
 
@@ -527,40 +533,76 @@
                 const card = document.createElement('div');
                 card.className = 'project-card';
 
-                // Sanitize strings to prevent XSS using DOMPurify
-                const name = DOMPurify.sanitize(repo.name || 'Untitled');
-                const description = DOMPurify.sanitize(repo.description || 'No description available');
-                const language = DOMPurify.sanitize(repo.language || 'Unknown');
+                // Create Header
+                const header = document.createElement('div');
+                header.className = 'project-header';
 
-                // Validate URL scheme
+                const icon = document.createElement('span');
+                icon.className = 'project-icon';
+                icon.textContent = '📦';
+
+                const title = document.createElement('h3');
+                title.className = 'project-title';
+                title.textContent = repo.name || 'Untitled';
+
+                header.appendChild(icon);
+                header.appendChild(title);
+
+                // Create Description
+                const desc = document.createElement('p');
+                desc.className = 'project-description';
+                desc.textContent = repo.description || 'No description available';
+
+                // Create Tags
+                const tagsCont = document.createElement('div');
+                tagsCont.className = 'project-tags';
+
+                const langTag = document.createElement('span');
+                langTag.className = 'tag';
+                langTag.textContent = repo.language || 'Unknown';
+
+                const starTag = document.createElement('span');
+                starTag.className = 'tag';
+                starTag.textContent = `⭐ ${repo.stargazers_count || 0}`;
+
+                const forkTag = document.createElement('span');
+                forkTag.className = 'tag';
+                forkTag.textContent = `🍴 ${repo.forks_count || 0}`;
+
+                tagsCont.appendChild(langTag);
+                tagsCont.appendChild(starTag);
+                tagsCont.appendChild(forkTag);
+
+                // Create Link
+                const link = document.createElement('a');
+                link.className = 'project-link';
+                link.target = '_blank';
+
+                // Validate URL
                 let url = '#';
                 if (repo.html_url) {
                     try {
                         const urlObj = new URL(repo.html_url);
                         if (urlObj.protocol === 'http:' || urlObj.protocol === 'https:') {
-                            url = DOMPurify.sanitize(repo.html_url);
+                            url = repo.html_url;
                         }
-                    } catch (_) {
-                        url = '#';
-                    }
+                    } catch (_) { }
                 }
+                link.href = url;
 
-                card.innerHTML = `
-                    <div class="project-header">
-                        <span class="project-icon">📦</span>
-                        <h3 class="project-title">${name}</h3>
-                    </div>
-                    <p class="project-description">${description}</p>
-                    <div class="project-tags">
-                        <span class="tag">${language}</span>
-                        <span class="tag">⭐ ${repo.stargazers_count || 0}</span>
-                        <span class="tag">🍴 ${repo.forks_count || 0}</span>
-                    </div>
-                    <a href="${url}" target="_blank" class="project-link">
-                        <span>View Project</span>
-                        <span>→</span>
-                    </a>
-                `;
+                const linkText = document.createElement('span');
+                linkText.textContent = 'View Project';
+                const arrow = document.createElement('span');
+                arrow.textContent = '→';
+
+                link.appendChild(linkText);
+                link.appendChild(arrow);
+
+                // Assemble Card
+                card.appendChild(header);
+                card.appendChild(desc);
+                card.appendChild(tagsCont);
+                card.appendChild(link);
 
                 projectsGrid.appendChild(card);
             });

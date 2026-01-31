@@ -63,7 +63,6 @@ const Tracker = {
                 const locationObj = {
                     city: data.city,
                     country: data.country_name,
-                    ip: data.ip, // Optional: privacy concern, maybe don't store
                     timestamp: Date.now()
                 };
 

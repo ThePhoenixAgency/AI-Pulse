@@ -15,6 +15,7 @@
     <title>AI-Pulse Reader</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
     <script src="./js/ui.js"></script>
     <style>
         * {
@@ -392,19 +393,27 @@
             }
 
             if (articleSource) {
-                const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
                 const sourceEl = document.getElementById('articleSource');
-                if (sourceEl) sourceEl.innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
+                if (sourceEl) {
+                    // Use textContent for safety, prepend emoji
+                    sourceEl.textContent = `📰 ${decodeURIComponent(articleSource)}`;
+                    const barEl = document.getElementById('articleInfoBar');
+                    if (barEl) barEl.classList.add('visible');
+                }
             }
 
             if (articleTags) {
                 const tags = decodeURIComponent(articleTags).split(',');
-                const tagsHtml = tags.map(tag => {
-                    const sanitizedTag = DOMPurify.sanitize(tag.trim());
-                    return `<span class="tag">${sanitizedTag}</span>`;
-                }).join('');
                 const tagsEl = document.getElementById('articleTags');
-                if (tagsEl) tagsEl.innerHTML = tagsHtml;
+                if (tagsEl) {
+                    tagsEl.textContent = ''; // Clear
+                    tags.forEach(tag => {
+                        const span = document.createElement('span');
+                        span.className = 'tag';
+                        span.textContent = tag.trim(); // Safe textContent
+                        tagsEl.appendChild(span);
+                    });
+                }
             }
 
             // Configure external links
