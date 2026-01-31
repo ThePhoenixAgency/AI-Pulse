@@ -173,9 +173,9 @@ async function processArticle(article, sourceName, tags, category) {
     }
   }
 
-  const finalReaderLink = fs.existsSync(localPath)
-    ? `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(relativeLink)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}&mode=local`
-    : `https://thephoenixagency.github.io/AI-Pulse/app.html?url=${encodeURIComponent(articleUrl)}&title=${encodeURIComponent(article.title)}&source=${encodeURIComponent(sourceName)}&tags=${encodeURIComponent(tags.join(','))}`;
+  // Temporary fix: Link directly to source articles
+  // TODO: Implement proper Reader Mode with content extraction
+  const finalReaderLink = articleUrl;
 
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
