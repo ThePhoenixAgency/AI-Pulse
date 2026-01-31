@@ -186,6 +186,41 @@
         #readme-content td {
             background: rgba(255, 255, 255, 0.03);
         }
+
+        /* Elevator Buttons */
+        .elevator {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .elevator-btn {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 50%;
+            color: #00d9ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 1.2rem;
+        }
+
+        .elevator-btn:hover {
+            background: #00d9ff;
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+        }
     </style>
 
     <!-- Marked.js for Markdown parsing -->
@@ -204,6 +239,16 @@
         <div id="error" class="error" style="display: none;"></div>
 
         <div id="readme-content" style="display: none;"></div>
+    </div>
+
+    <div class="elevator">
+        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
+            ▲
+        </button>
+        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'auto'})"
+            title="Scroll to Bottom">
+            ▼
+        </button>
     </div>
 
     <script>
@@ -237,31 +282,44 @@
             div.innerHTML = content;
 
             const links = div.querySelectorAll('a');
+            const currentOrigin = window.location.origin;
+            const allowedInternalPages = ['portfolio.html', 'stats.html', 'about.html', 'reader.html', 'app.html', 'index.html', 'privacy.html'];
+
             links.forEach(link => {
                 const href = link.getAttribute('href');
                 if (!href) return;
 
-                // Handle Article Links (Aggregator generated)
-                if (href.includes('app.html?url=') || href.includes('reader.html?url=')) {
-                    // Extract the actual article URL to avoid double wrapping
-                    const urlParams = new URLSearchParams(href.split('?')[1]);
-                    const actualUrl = urlParams.get('url');
-                    const title = urlParams.get('title') || link.textContent;
-                    const source = urlParams.get('source') || 'README';
-                    const tags = urlParams.get('tags') || '';
+                try {
+                    // Normalize URL for checking
+                    const url = new URL(href, currentOrigin);
 
-                    const readerUrl = `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`;
+                    // 1. Handle Article Links (Aggregator generated)
+                    // Checks if it's our app reader link
+                    if (url.pathname.endsWith('app.html') && url.searchParams.has('url')) {
+                        const actualUrl = url.searchParams.get('url');
+                        const title = url.searchParams.get('title') || link.textContent;
+                        const source = url.searchParams.get('source') || 'README';
+                        const tags = url.searchParams.get('tags') || '';
 
-                    link.setAttribute('href', readerUrl);
-                    link.setAttribute('target', '_parent');
-                }
-                // Handle System Links (Portfolio, Stats, GitHub issues, etc.)
-                else if (isGithubLink(href) || href.includes('portfolio.html') || href.includes('stats.html') || href.includes('about.html')) {
-                    link.setAttribute('target', '_top'); // Break out of all iframes
-                }
-                // Handle other external links
-                else if (href.startsWith('http')) {
-                    link.setAttribute('target', '_blank'); // Open in new tab by default if unknown
+                        const readerUrl = `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`;
+
+                        link.setAttribute('href', readerUrl);
+                        link.setAttribute('target', '_parent');
+                    }
+                    // 2. Handle System Links (Portfolio, Stats, GitHub issues, etc.)
+                    // Strict check: must be either github.com or our domain + authorized page
+                    else if (url.hostname === 'github.com' || (
+                        (url.origin === currentOrigin || url.hostname === 'thephoenixagency.github.io') &&
+                        allowedInternalPages.some(page => url.pathname.endsWith(page))
+                    )) {
+                        link.setAttribute('target', '_top'); // Break out but stay in same tab
+                    }
+                    // 3. Handle other external links
+                    else if (href.startsWith('http')) {
+                        link.setAttribute('target', '_blank'); // Open in new tab
+                    }
+                } catch (e) {
+                    // Silently ignore invalid URLs or malformed strings
                 }
             });
 

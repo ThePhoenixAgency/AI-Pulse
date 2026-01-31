@@ -27,15 +27,19 @@ const FEED_CATEGORIES = {
     { name: 'Dark Reading', url: 'https://www.darkreading.com/rss_simple.asp', tags: ['Security', 'CVE', 'Enterprise'] },
     { name: 'SecurityWeek', url: 'https://www.securityweek.com/feed/', tags: ['Security', 'CVE', 'News'] },
     { name: 'Threatpost', url: 'https://threatpost.com/feed/', tags: ['Security', 'Threats', 'CVE'] },
+  ],
+  iot: [
+    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT', 'RaspberryPi', 'Tech'] },
+    { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino', 'Tech'] },
+    { name: 'IRO Wireless', url: 'https://irojournals.com/jws/index.php/jws/gateway/plugin/WebFeedGatewayPlugin/rss2', tags: ['Hardware', 'Wireless', 'Research'] },
+    { name: 'Hackster.io', url: 'https://www.hackster.io/news/feed', tags: ['IoT', 'Hardware', 'Projects'] },
+    { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
+    { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
+    { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
+    { name: 'Domotique News', url: 'http://www.domotique-news.com/feed', tags: ['IoT', 'News'] },
+    { name: 'HomeTech', url: 'https://hometech.fm/articles?format=rss', tags: ['IoT', 'SmartHome', 'Tech'] }
   ]
 };
-iot: [
-  { name: 'IoT For All', url: 'https://www.iotforall.com/feed', tags: ['IoT', 'News'] },
-  { name: 'IoT Business News', url: 'https://iotbusinessnews.com/feed/', tags: ['IoT', 'News'] },
-  { name: 'IoT World Today', url: 'https://www.iotworldtoday.com/feed', tags: ['IoT', 'News'] },
-  { name: 'Domotique News', url: 'https://www.domotiqueactualite.fr/feed/', tags: ['IoT', 'Domotique', 'News'] },
-  { name: 'HomeTech', url: 'https://hometechmag.com/feed/', tags: ['IoT', 'Domotique', 'News'] }
-]
 
 // UTM parameters for AI-Pulse traffic tracking
 // Tracks clicks sent FROM AI-Pulse TO external sites
@@ -163,8 +167,6 @@ const README_HEADER = `<div align="center">
 
 ---
 
----
-
 ## About The Developer
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
@@ -174,19 +176,7 @@ const README_HEADER = `<div align="center">
 
 ---
 
-## About This Service
-
-AI-Pulse provides real-time monitoring of the AI and Cybersecurity landscape. Content is automatically aggregated from top-tier technical sources to ensure you stay ahead of the curve.
-
-### Main Features:
-- Real-time News Aggregation
-- Privacy-First Anonymous Analytics
-- Iframe-based Secure Reading Experience
-- Automated Updates every 3-6 hours
-
----
-
-## Artificial Intelligence News Roundup
+## Real-Time News Roundup
 
 </div>
 
@@ -199,10 +189,7 @@ const README_FOOTER = `
 
 ### Connect With Me
 
-[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
-[![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)
-[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
-[![Documentation](https://img.shields.io/badge/Documentation-Technical%20Docs-blue?style=for-the-badge&logo=googledocs)](./database/SUPABASE_MIGRATION.md)
+[![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues) [![Documentation](https://img.shields.io/badge/Documentation-Reader-blue?style=for-the-badge&logo=googledocs)](https://thephoenixagency.github.io/AI-Pulse/app.html)
 
 ---
 
@@ -218,7 +205,10 @@ function generateREADME(categorizedArticles) {
   // Generate sections for each category
   for (const [category, articles] of Object.entries(categorizedArticles)) {
     // No emojis
-    const title = category === 'ai' ? 'Artificial Intelligence' : 'Cybersecurity';
+    let title = 'General News';
+    if (category === 'ai') title = 'Artificial Intelligence';
+    else if (category === 'cybersecurity') title = 'Cybersecurity';
+    else if (category === 'iot') title = 'Internet of Things & Hardware';
 
     readme += `## ${title}\n\n`;
 

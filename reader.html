@@ -46,8 +46,6 @@
             flex-direction: column;
         }
 
-        }
-
         /* Article Info Bar */
         .article-info-bar {
             background: var(--bg-primary);
@@ -288,7 +286,6 @@
 
     <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
-    </div>
 
     <div class="view active" id="view-home">
         <div class="iframe-container">
@@ -323,7 +320,6 @@
                 </a>
             </div>
         </div>
-    </div>
     </div>
 
     <script>
@@ -429,19 +425,36 @@
             if (iframe) {
                 iframe.src = safeArticleUrl;
 
+                let loadTimeout = setTimeout(() => {
+                    if (loading && loading.style.display !== 'none') {
+                        loading.style.display = 'none';
+                        errorMessage.style.display = 'block';
+                    }
+                }, 8000);
+
                 iframe.onload = function () {
+                    clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
+
                     try {
+                        // If we can't access contentDocument, it might be blocked or just cross-origin
+                        // But if it's cross-origin and NOT blocked, it should show content.
+                        // We can't really know for sure, but we can check if it's blank.
                         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                        if (iframeDoc.body === null || iframeDoc.body.innerHTML === '') {
-                            throw new Error('Iframe bloquée');
+                        if (!iframeDoc || !iframeDoc.body || iframeDoc.body.innerHTML === '') {
+                            // This might be blocked
+                            errorMessage.style.display = 'block';
                         }
                     } catch (e) {
+                        // Cross-origin access error: This is expected for most external sites.
+                        // We assume it's loading unless the site specifically blocks it via X-Frame-Options.
+                        // Since we can't detect X-Frame-Options reliably, we just hide the loading.
                         console.log('Note: Accès iframe restreint (comportement normal)');
                     }
                 };
 
                 iframe.onerror = function () {
+                    clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
                     if (errorMessage) errorMessage.style.display = 'block';
                 };
@@ -482,12 +495,6 @@
         }
     </script>
 
-    <!-- Footer -->
-    <div class="footer">
-        <a href="privacy.html" target="_top">Privacy</a>
-        <span>•</span>
-        <a href="about.html" target="_top">ThePhoenixAgency</a>
-    </div>
     </body>
 
 </html>
