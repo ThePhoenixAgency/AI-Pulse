@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
@@ -20,18 +21,18 @@
             line-height: 1.6;
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 900px;
             margin: 0 auto;
         }
-        
+
         .loading {
             text-align: center;
             padding: 60px 20px;
             color: #00d9ff;
         }
-        
+
         .spinner {
             width: 48px;
             height: 48px;
@@ -41,12 +42,17 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
-        
+
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
-        
+
         .error {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid #ef4444;
@@ -55,7 +61,7 @@
             border-radius: 8px;
             margin: 20px 0;
         }
-        
+
         #readme-content {
             background: rgba(255, 255, 255, 0.05);
             padding: 30px;
@@ -63,7 +69,7 @@
             border: 1px solid rgba(0, 217, 255, 0.2);
             box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
         }
-        
+
         #readme-content h1 {
             color: #00d9ff;
             margin-bottom: 20px;
@@ -72,47 +78,48 @@
             padding-bottom: 10px;
             text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
-        
+
         #readme-content h2 {
             color: #00d9ff;
             margin-top: 30px;
             margin-bottom: 15px;
             font-size: 1.5rem;
         }
-        
+
         #readme-content h3 {
             color: #64b5f6;
             margin-top: 20px;
             margin-bottom: 10px;
         }
-        
+
         #readme-content p {
             margin-bottom: 15px;
             color: #cbd5e1;
         }
-        
-        #readme-content ul, #readme-content ol {
+
+        #readme-content ul,
+        #readme-content ol {
             margin-left: 25px;
             margin-bottom: 15px;
         }
-        
+
         #readme-content li {
             margin-bottom: 8px;
             color: #cbd5e1;
         }
-        
+
         #readme-content a {
             color: #00d9ff;
             text-decoration: none;
             transition: all 0.3s;
             border-bottom: 1px solid transparent;
         }
-        
+
         #readme-content a:hover {
             border-bottom: 1px solid #00d9ff;
             text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
         }
-        
+
         #readme-content code {
             background: rgba(0, 0, 0, 0.3);
             padding: 2px 6px;
@@ -122,7 +129,7 @@
             color: #ff79c6;
             border: 1px solid rgba(255, 121, 198, 0.2);
         }
-        
+
         #readme-content pre {
             background: rgba(0, 0, 0, 0.4);
             padding: 15px;
@@ -131,14 +138,14 @@
             margin-bottom: 15px;
             border: 1px solid rgba(0, 217, 255, 0.2);
         }
-        
+
         #readme-content pre code {
             background: none;
             padding: 0;
             color: #e2e8f0;
             border: none;
         }
-        
+
         #readme-content blockquote {
             border-left: 4px solid #00d9ff;
             padding-left: 15px;
@@ -148,7 +155,7 @@
             background: rgba(0, 217, 255, 0.05);
             padding: 10px 15px;
         }
-        
+
         #readme-content img {
             max-width: 100%;
             height: auto;
@@ -156,45 +163,47 @@
             border-radius: 8px;
             border: 1px solid rgba(0, 217, 255, 0.2);
         }
-        
+
         #readme-content table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
         }
-        
-        #readme-content th, #readme-content td {
+
+        #readme-content th,
+        #readme-content td {
             border: 1px solid rgba(0, 217, 255, 0.2);
             padding: 10px;
             text-align: left;
         }
-        
+
         #readme-content th {
             background: rgba(0, 217, 255, 0.1);
             color: #00d9ff;
             font-weight: 600;
         }
-        
+
         #readme-content td {
             background: rgba(255, 255, 255, 0.03);
         }
     </style>
-    
+
     <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="loading" id="loading">
             <div class="spinner"></div>
             <p>Chargement du README...</p>
         </div>
-        
+
         <div id="error" class="error" style="display: none;"></div>
-        
+
         <div id="readme-content" style="display: none;"></div>
     </div>
-    
+
     <script>
         // Add UTM parameters to external links
         function addUTMParameters(url) {
@@ -208,31 +217,30 @@
                 return url;
             }
         }
-        
+
         // Convert external links to open in iframe
         function convertLinksToIframe(content) {
             const div = document.createElement('div');
             div.innerHTML = content;
-            
+
             const links = div.querySelectorAll('a');
             links.forEach(link => {
                 const href = link.getAttribute('href');
                 if (href && href.startsWith('http')) {
                     // Add UTM parameters
                     const urlWithUTM = addUTMParameters(href);
-                    
-                    // Convert to iframe reader URL
-                    const readerUrl = `./reader.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
-                    link.setAttribute('href', readerUrl);
-                    
-                    // Keep target for navigation
-                    link.setAttribute('target', '_parent');
+
+                    // Convert to app reader URL (app.html) instead of reader.html to fix navigation
+                    const appUrl = `./app.html?url=${encodeURIComponent(urlWithUTM)}&title=${encodeURIComponent(link.textContent)}&source=README`;
+
+                    link.setAttribute('href', appUrl);
+                    link.setAttribute('target', '_top'); // Force open in top window to escape iframe
                 }
             });
-            
+
             return div.innerHTML;
         }
-        
+
         async function loadReadme() {
             try {
                 // Fetch README from GitHub API
@@ -241,24 +249,32 @@
                         'Accept': 'application/vnd.github.v3.raw'
                     }
                 });
-                
+
                 if (!response.ok) {
                     throw new Error(`Erreur HTTP: ${response.status}`);
                 }
-                
+
                 const markdown = await response.text();
-                
+
                 // Parse markdown to HTML
                 let html = marked.parse(markdown);
-                
+
+                // Inject custom cursor structure into iframe content
+                html += `
+                    <div id="cursor" style="position:fixed; top:0; left:0; pointer-events:none; z-index:99999; mix-blend-mode:difference;">
+                        <div id="cursor-arrow" style="width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:24px solid #00d9ff; transform:rotate(-25deg) translate(-50%, -10%); filter:drop-shadow(0 0 4px rgba(0,217,255,0.6)); transition:transform 0.1s;"></div>
+                    </div>
+                    <script src="./js/ui.js"><\/script>
+                `;
+
                 // Convert links to iframe format with UTM
                 html = convertLinksToIframe(html);
-                
+
                 // Display content
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readme-content').style.display = 'block';
                 document.getElementById('readme-content').innerHTML = html;
-                
+
             } catch (error) {
                 console.error('Erreur lors du chargement du README:', error);
                 document.getElementById('loading').style.display = 'none';
@@ -266,9 +282,10 @@
                 document.getElementById('error').textContent = `Erreur lors du chargement du README: ${error.message}`;
             }
         }
-        
+
         // Load README when page is ready
         loadReadme();
     </script>
 </body>
+
 </html>
