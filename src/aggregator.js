@@ -127,19 +127,19 @@ function sanitizeArticle(article, sourceName, tags, category) {
 
 // Aggregate feeds by category
 async function aggregateCategory(categoryName, feeds) {
-  console.error(`\n📡 Aggregating ${categoryName} feeds...`);
+  console.error(`\nAggregating ${categoryName} feeds...`);
   const articles = [];
 
   for (const feed of feeds) {
     try {
-      console.error(`  ✓ Fetching: ${feed.name}`);
+      console.error(`  Fetch: ${feed.name}`);
       const feedData = await parser.parseURL(feed.url);
       const items = feedData.items.slice(0, 10).map(item =>
         sanitizeArticle(item, feed.name, feed.tags, categoryName)
       );
       articles.push(...items);
     } catch (error) {
-      console.error(`  ✗ Failed to fetch ${feed.name}: ${error.message}`);
+      console.error(`  Error: Failed to fetch ${feed.name}: ${error.message}`);
     }
   }
 
@@ -169,18 +169,24 @@ const README_HEADER = `<div align="center">
 
 **Built by [ThePhoenixAgency](https://github.com/ThePhoenixAgency)** - AI & Cybersecurity Specialist
 
-**[View My Portfolio](https://thephoenixagency.github.io/AI-Pulse/portfolio.html)** |
-**[Live Stats Dashboard](https://thephoenixagency.github.io/AI-Pulse/stats.html)**
-
 > Passionate about building secure, privacy-first applications that make a difference.
 > This project showcases my expertise in full-stack development, security engineering, and data privacy.
 
-### Tech Stack
+---
 
-![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=flat-square&logo=node.js&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![DOMPurify](https://img.shields.io/badge/DOMPurify-3.0+-blue?style=flat-square)
-![Express](https://img.shields.io/badge/Express-4.18+-000000?style=flat-square&logo=express&logoColor=white)
+## About This Service
+
+AI-Pulse provides real-time monitoring of the AI and Cybersecurity landscape. Content is automatically aggregated from top-tier technical sources to ensure you stay ahead of the curve.
+
+### Main Features:
+- Real-time News Aggregation
+- Privacy-First Anonymous Analytics
+- Iframe-based Secure Reading Experience
+- Automated Updates every 3-6 hours
+
+---
+
+## Artificial Intelligence News Roundup
 
 </div>
 
@@ -189,27 +195,18 @@ const README_HEADER = `<div align="center">
 const README_FOOTER = `
 ---
 
-## Navigation
-
 <div align="center">
-
-### Explore AI-Pulse
-
-| 📚 [Repository](https://github.com/ThePhoenixAgency/AI-Pulse) | 👨‍💻 [Organization](https://github.com/ThePhoenixAgency) | 🔐 [Docs](./database/SUPABASE_MIGRATION.md) |
-|:---:|:---:|:---:|
-| Source Code | Team Profile | Technical Docs |
-
----
 
 ### Connect With Me
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency)
 [![Repository](https://img.shields.io/badge/Repository-AI--Pulse-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse)
 [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
+[![Documentation](https://img.shields.io/badge/Documentation-Technical%20Docs-blue?style=for-the-badge&logo=googledocs)](./database/SUPABASE_MIGRATION.md)
 
 ---
 
-<sub>*Powered by [AI-Pulse](https://github.com/ThePhoenixAgency/AI-Pulse) | 100% Free & Open Source | Built with ❤️ by ThePhoenixAgency*</sub>
+<sub>*Powered by AI-Pulse | 100% Free & Open Source | Built with love by ThePhoenixAgency*</sub>
 
 </div>
 `;
@@ -247,7 +244,7 @@ function generateREADME(categorizedArticles) {
 
 // Main aggregation function
 async function main() {
-  console.error('🚀 Starting AI-Pulse aggregation...\n');
+  console.error('Starting AI-Pulse aggregation...\n');
 
   const categorizedArticles = {};
 
@@ -260,7 +257,7 @@ async function main() {
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  console.error('\n✅ Aggregation complete!');
+  console.error('\nAggregation complete!');
 }
 
 main().catch(console.error);
