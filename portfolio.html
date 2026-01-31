@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - ThePhoenixAgency</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -318,20 +320,22 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWN1RSPQMJ"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-LWN1RSPQMJ');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-LWN1RSPQMJ');
     </script>
 
     <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
+
 <body>
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
-            <img src="https://avatars.githubusercontent.com/u/EthanThePhoenix38?v=4" alt="Profile" class="profile-image" onerror="this.src='https://via.placeholder.com/150'">
+            <img src="https://avatars.githubusercontent.com/u/EthanThePhoenix38?v=4" alt="Profile" class="profile-image"
+                onerror="this.src='https://via.placeholder.com/150'">
             <h1>ThePhoenixAgency</h1>
             <p class="tagline">🚀 AI & Cybersecurity Specialist | Full Stack Developer | Open Source Contributor</p>
 
@@ -414,7 +418,8 @@
                 </div>
 
                 <!-- Placeholder for other projects (will be loaded from GitHub API) -->
-                <div class="project-card" id="loadingProjects" style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                <div class="project-card" id="loadingProjects"
+                    style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                     <p style="color: var(--text-secondary);">Loading more projects from GitHub...</p>
                 </div>
             </div>
@@ -428,12 +433,8 @@
             </h2>
             <p class="section-subtitle">Explore ThePhoenixAgency.github.io</p>
 
-            <iframe
-                src="https://ThePhoenixAgency.github.io"
-                class="website-preview"
-                title="ThePhoenixAgency Website"
-                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-            ></iframe>
+            <iframe src="https://ThePhoenixAgency.github.io" class="website-preview" title="ThePhoenixAgency Website"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
         </div>
 
         <!-- Organization Info -->
@@ -446,8 +447,10 @@
 
             <div style="padding: 20px; background: var(--bg-secondary); border-radius: 12px;">
                 <p style="line-height: 1.8; color: var(--text-primary); margin-bottom: 20px;">
-                    <strong>ThePhoenixAgency</strong> is dedicated to creating innovative solutions at the intersection of
-                    artificial intelligence and cybersecurity. Our open-source projects focus on privacy-first approaches,
+                    <strong>ThePhoenixAgency</strong> is dedicated to creating innovative solutions at the intersection
+                    of
+                    artificial intelligence and cybersecurity. Our open-source projects focus on privacy-first
+                    approaches,
                     security by design, and accessible technology for everyone.
                 </p>
                 <a href="https://github.com/ThePhoenixAgency" target="_blank" class="project-link">
@@ -459,9 +462,9 @@
 
         <!-- Back to AI-Pulse -->
         <div class="back-link">
-            <a href="reader.html">
+            <a href="index.html">
                 <span>←</span>
-                <span>Back to AI-Pulse</span>
+                <span>Back to AI-Pulse Home</span>
             </a>
         </div>
     </div>
@@ -577,4 +580,5 @@
         window.addEventListener('load', fetchGitHubStats);
     </script>
 </body>
+
 </html>
