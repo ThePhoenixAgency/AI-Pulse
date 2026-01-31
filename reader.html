@@ -371,44 +371,57 @@
         }
 
         // If article parameters exist and URL is valid, show article view
+        // If article parameters exist and URL is valid, show article view
         if (articleUrl && isValidHttpUrl(articleUrl)) {
+            showView('article');
+
+            // Show article tab and external link button if they existed in DOM (checking safety)
+            const tabArticle = document.getElementById('tab-article');
+            const openExternal = document.getElementById('openExternal');
+            if (tabArticle) tabArticle.style.display = 'inline-flex';
+            if (openExternal) openExternal.style.display = 'inline-flex';
+
             const safeArticleUrl = new URL(articleUrl).toString();
-            // Restrict which URLs are allowed to be used for article loading/navigation
-            function isAllowedArticleUrl(string) {
 
-                // Display article information
-                if (articleTitle) {
-                    document.getElementById('articleTitleText').textContent = decodeURIComponent(articleTitle);
-                    document.getElementById('articleInfoBar').classList.add('visible');
-                }
+            // Display article information
+            if (articleTitle) {
+                const titleEl = document.getElementById('articleTitleText');
+                if (titleEl) titleEl.textContent = decodeURIComponent(articleTitle);
+                const barEl = document.getElementById('articleInfoBar');
+                if (barEl) barEl.classList.add('visible');
+            }
 
-                if (articleSource) {
-                    const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
-                    document.getElementById('articleSource').innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
-                }
+            if (articleSource) {
+                const sanitizedSource = DOMPurify.sanitize(decodeURIComponent(articleSource));
+                const sourceEl = document.getElementById('articleSource');
+                if (sourceEl) sourceEl.innerHTML = `📰 <strong>${sanitizedSource}</strong>`;
+            }
 
-                if (articleTags) {
-                    const tags = decodeURIComponent(articleTags).split(',');
-                    const tagsHtml = tags.map(tag => {
-                        const sanitizedTag = DOMPurify.sanitize(tag.trim());
-                        return `<span class="tag">${sanitizedTag}</span>`;
-                    }).join('');
-                    document.getElementById('articleTags').innerHTML = tagsHtml;
-                }
+            if (articleTags) {
+                const tags = decodeURIComponent(articleTags).split(',');
+                const tagsHtml = tags.map(tag => {
+                    const sanitizedTag = DOMPurify.sanitize(tag.trim());
+                    return `<span class="tag">${sanitizedTag}</span>`;
+                }).join('');
+                const tagsEl = document.getElementById('articleTags');
+                if (tagsEl) tagsEl.innerHTML = tagsHtml;
+            }
 
-                // Configure external links
-                document.getElementById('openExternal').href = safeArticleUrl;
-                document.getElementById('openExternalError').href = safeArticleUrl;
+            // Configure external links
+            if (openExternal) openExternal.href = safeArticleUrl;
+            const openExternalError = document.getElementById('openExternalError');
+            if (openExternalError) openExternalError.href = safeArticleUrl;
 
-                // Load article in iframe
-                const iframe = document.getElementById('articleFrame');
-                const loading = document.getElementById('loading');
-                const errorMessage = document.getElementById('errorMessage');
+            // Load article in iframe
+            const iframe = document.getElementById('articleFrame');
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
 
+            if (iframe) {
                 iframe.src = safeArticleUrl;
 
                 iframe.onload = function () {
-                    loading.style.display = 'none';
+                    if (loading) loading.style.display = 'none';
                     try {
                         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
                         if (iframeDoc.body === null || iframeDoc.body.innerHTML === '') {
@@ -420,41 +433,44 @@
                 };
 
                 iframe.onerror = function () {
-                    loading.style.display = 'none';
-                    errorMessage.style.display = 'block';
+                    if (loading) loading.style.display = 'none';
+                    if (errorMessage) errorMessage.style.display = 'block';
                 };
-
-                setTimeout(function () {
-                    if (loading.style.display !== 'none') {
-                        loading.style.display = 'none';
-                    }
-                }, 10000);
-            } else {
-                // Show home view by default
-                showView('home');
             }
 
-            // Tab click handler for article tab
-            document.getElementById('tab-article').addEventListener('click', function (e) {
+            setTimeout(function () {
+                if (loading && loading.style.display !== 'none') {
+                    loading.style.display = 'none';
+                }
+            }, 10000);
+
+            // Track article click when article view is loaded
+            window.addEventListener('load', async () => {
+                // Wait for tracker to initialize
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                if (window.aiPulseTracker) {
+                    await window.aiPulseTracker.trackArticleClick({
+                        title: articleTitle ? decodeURIComponent(articleTitle) : 'Unknown',
+                        source: articleSource ? decodeURIComponent(articleSource) : 'Unknown',
+                        url: articleUrl
+                    });
+                }
+            });
+
+        } else {
+            // Show home view by default
+            showView('home');
+        }
+
+        // Tab click handler for article tab (if it exists)
+        const tabArticleBtn = document.getElementById('tab-article');
+        if (tabArticleBtn) {
+            tabArticleBtn.addEventListener('click', function (e) {
                 e.preventDefault();
                 showView('article');
             });
-
-            // Track article click when article view is loaded
-            if (articleUrl && articleTitle) {
-                window.addEventListener('load', async () => {
-                    // Wait for tracker to initialize
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-
-                    if (window.aiPulseTracker) {
-                        await window.aiPulseTracker.trackArticleClick({
-                            title: decodeURIComponent(articleTitle),
-                            source: articleSource ? decodeURIComponent(articleSource) : 'Unknown',
-                            url: articleUrl
-                        });
-                    }
-                });
-            }
+        }
     </script>
 
     <!-- Footer -->
