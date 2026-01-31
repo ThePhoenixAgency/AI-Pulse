@@ -1,3 +1,51 @@
+## 🤖 Artificial Intelligence
+
+### 1. [Physical Intelligence, Stripe veteran Lachy Groom’s latest bet, is building Silicon Valley’s buzziest robot brains](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F01%2F30%2Fphysical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains%2F&title=Physical%20Intelligence%2C%20Stripe%20veteran%20Lachy%20Groom%E2%80%99s%20latest%20bet%2C%20is%20building%20Silicon%20Valley%E2%80%99s%20buzziest%20robot%20brains&source=TechCrunch%20AI&tags=AI%2CStartups%2CTech)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who've been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.
+
+### 2. [OpenClaw’s AI assistants are now building their own social network](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F01%2F30%2Fopenclaws-ai-assistants-are-now-building-their-own-social-network%2F&title=OpenClaw%E2%80%99s%20AI%20assistants%20are%20now%20building%20their%20own%20social%20network&source=TechCrunch%20AI&tags=AI%2CStartups%2CTech)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.
+
+### 3. [Anthropic brings agentic plug-ins to Cowork](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F01%2F30%2Fanthropic-brings-agentic-plugins-to-cowork%2F&title=Anthropic%20brings%20agentic%20plug-ins%20to%20Cowork&source=TechCrunch%20AI&tags=AI%2CStartups%2CTech)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The company says you can use plug-ins to "tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose so your team gets more consistent outcomes."
+
+### 4. [Creating an Etch A Sketch App Using Python and Turtle](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftowardsdatascience.com%2Fcreating-an-etch-a-sketch-app-using-python-turtle%2F&title=Creating%20an%20Etch%20A%20Sketch%20App%20Using%20Python%20and%20Turtle&source=Towards%20Data%20Science&tags=AI%2CData%20Science%2CAnalytics)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+A beginner-friendly Python tutorial
+The post Creating an Etch A Sketch App Using Python and Turtle appeared first on Towards Data Science.
+
+### 5. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftowardsdatascience.com%2Fwhy-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents%2F&title=Why%20Your%20Multi-Agent%20System%20is%20Failing%3A%20Escaping%20the%2017x%20Error%20Trap%20of%20the%20%E2%80%9CBag%20of%20Agents%E2%80%9D&source=Towards%20Data%20Science&tags=AI%2CData%20Science%2CAnalytics)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Hard-won lessons on how to scale agentic systems without scaling the chaos, including a taxonomy of core agent types.
+The post Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents” appeared first on Towards Data Science.
+
+### 6. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftechcrunch.com%2F2026%2F01%2F30%2Flast-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026%2F&title=Last%C2%A024%20hours%C2%A0to%20grab%20your%20plus-one%20pass%20at%2050%25%20off%20to%20TechCrunch%20Disrupt%202026&source=TechCrunch%20AI&tags=AI%2CStartups%2CTech)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Today is the last day to lock in a plus-one pass at 50% off to TechCrunch Disrupt 2026, happening on October 13-15 in San Francisco.
+
+### 7. [On the Possibility of Small Networks for Physics-Informed Learning](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftowardsdatascience.com%2Fon-the-possibility-of-small-networks-for-physics-informed-learning%2F&title=On%20the%20Possibility%20of%20Small%20Networks%20for%20Physics-Informed%20Learning&source=Towards%20Data%20Science&tags=AI%2CData%20Science%2CAnalytics)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+A new kind of hyperparameter study
+The post On the Possibility of Small Networks for Physics-Informed Learning appeared first on Towards Data Science.
+
+### 8. [Multi-Attribute Decision Matrices, Done Right](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Ftowardsdatascience.com%2Fmulti-attribute-decision-matrices-done-right%2F&title=Multi-Attribute%20Decision%20Matrices%2C%20Done%20Right&source=Towards%20Data%20Science&tags=AI%2CData%20Science%2CAnalytics)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+How to structure decisions, identify efficient options, and avoid misleading value metrics
+The post Multi-Attribute Decision Matrices, Done Right appeared first on Towards Data Science.
+
+### 9. [AI use surges at Travelers as call centre roles reduce](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Fwww.artificialintelligence-news.com%2Fnews%2Ftravelers-ai-in-contact-centres-two-stage-innovation-strategy%2F&title=AI%20use%20surges%20at%20Travelers%20as%20call%20centre%20roles%20reduce&source=AI%20News&tags=AI%2CNews%2CIndustry)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+Mid-January saw insurance company, Travelers, announce a new deal that empowers 10,000 engineers and data scientists with AI assistants. However, less than two weeks on, Travelers’ leadership explained that the company’s true competitive advantage lies in expertise, not AIs alone, believing this is what will drive longer-term profit growth. According to Travelers’ chief executive officer […]
+The post AI use surges at Travelers as call centre roles reduce appeared first on AI News.
+
+### 10. [PepsiCo is using AI to rethink how factories are designed and updated](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Fwww.artificialintelligence-news.com%2Fnews%2Fpepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated%2F&title=PepsiCo%20is%20using%20AI%20to%20rethink%20how%20factories%20are%20designed%20and%20updated&source=AI%20News&tags=AI%2CNews%2CIndustry)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+For many large companies, the most useful form of AI right now has little to do with writing emails or answering questions. At PepsiCo, AI is being tested in places where mistakes are costly and changes are hard to undo — factory layouts, production lines, and physical operations. That shift is visible in how PepsiCo […]
+The post PepsiCo is using AI to rethink how factories are designed and updated appeared first on AI News.
+
 ### 11. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://thephoenixagency.github.io/AI-Pulse/app.html?url=https%3A%2F%2Fwww.artificialintelligence-news.com%2Fnews%2Fchina-hyperscalers-agentic-ai-commerce-battleground%2F&title=China%E2%80%99s%20hyperscalers%20bet%20billions%20on%20agentic%20AI%20as%20commerce%20becomes%20the%20new%20battleground&source=AI%20News&tags=AI%2CNews%2CIndustry)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The artificial intelligence industry’s pivot toward agentic AI – systems capable of autonomously executing multi-step tasks – has dominated technology discussions in recent months. But while Western firms focus on foundational models and cross-platform interoperability, China’s technology giants are racing to dominate through commerce integration, a divergence that could reshape how enterprises deploy autonomous systems […]
