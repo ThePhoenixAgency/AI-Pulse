@@ -78,6 +78,45 @@ jobs:
           NEW_VERSION=$(echo $LATEST_TAG | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
           echo "new=$NEW_VERSION" >> $GITHUB_OUTPUT
 
+      - name: Update CHANGELOG
+        if: steps.commit.outputs.has_changes == 'true'
+        working-directory: action-repo
+        run: |
+          # Get current date
+          DATE=$(date -u +"%Y-%m-%d")
+          
+          # Create CHANGELOG if it doesn't exist
+          if [ ! -f CHANGELOG.md ]; then
+            cat > CHANGELOG.md << 'EOF'
+          # Changelog
+          
+          All notable changes to this project will be documented in this file.
+          
+          The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+          and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+          
+          ## [Unreleased]
+          
+          ### Added
+          EOF
+          fi
+          
+          # Add new version entry
+          VERSION="${{ steps.version.outputs.new }}"
+          ENTRY="## [$VERSION] - $DATE\n### Changed\n- Automated sync from AI-Pulse repository\n- Updated workflow files and configurations\n"
+          
+          # Insert after "## [Unreleased]" section
+          sed -i "/## \[Unreleased\]/a\\
+          \\
+          $ENTRY" CHANGELOG.md
+          
+          # Commit CHANGELOG update
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md
+          git commit -m "docs: update CHANGELOG for $VERSION" || echo "No CHANGELOG changes"
+          git push origin main
+
       - name: Create Release
         if: steps.commit.outputs.has_changes == 'true'
         working-directory: action-repo

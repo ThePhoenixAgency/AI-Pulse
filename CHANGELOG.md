@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Portfolio Integration**: Added `portfolio.html` to showcase GitHub activity and projects.
 - **About Page**: dedicated page for the agency information.
 
+## [1.2.0] - 2026-02-01
+### Added
+- **Action Sync Workflow**: Automated synchronization of workflow files to `dependabot-secure-flow` action repository
+- **Automatic Releases**: Semantic versioning and automated release creation for action updates
+- **CHANGELOG Automation**: Automatic CHANGELOG updates in action repository on sync
+- **Release Notifications**: Automated issue creation when new action releases are published
+- **PWA Manifest**: Updated manifest for proper GitHub Pages deployment
+
 ### Changed
 - **Site Structure**:
     - Renamed usage of `index.html` (Reader) to `app.html`.
