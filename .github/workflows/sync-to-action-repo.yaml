@@ -78,7 +78,15 @@ jobs:
           
           # Increment patch version (v1.0.0 -> v1.0.1)
           NEW_VERSION=$(echo $LATEST_TAG | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+          
+          # Check if the new version tag already exists and increment until we find an available one
+          while git rev-parse "$NEW_VERSION" >/dev/null 2>&1; do
+            echo "Tag $NEW_VERSION already exists, incrementing..."
+            NEW_VERSION=$(echo $NEW_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
+          done
+          
           echo "new=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "Selected version: $NEW_VERSION"
 
       - name: Update CHANGELOG
         if: steps.commit.outputs.has_changes == 'true'
