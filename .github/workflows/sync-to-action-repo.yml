@@ -1,0 +1,55 @@
+name: Sync Workflow to Action Repository
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/dependabot-secure-flow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync-to-action-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout AI-Pulse repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Checkout dependabot-secure-flow repository
+        uses: actions/checkout@v4
+        with:
+          repository: EthanThePhoenix38/dependabot-secure-flow
+          token: ${{ secrets.SYNC_TOKEN }}
+          path: action-repo
+          fetch-depth: 1
+
+      - name: Copy workflow file to action repository
+        run: |
+          mkdir -p action-repo/.github/workflows
+          cp .github/workflows/dependabot-secure-flow.yml action-repo/.github/workflows/dependabot-secure-flow.yml
+
+      - name: Commit and push changes
+        working-directory: action-repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          git add .github/workflows/dependabot-secure-flow.yml
+          git commit -m "chore: sync workflow from AI-Pulse repository"
+          git push origin main
+
+      - name: Create summary
+        run: |
+          echo "✅ Workflow synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**File synced:** \`.github/workflows/dependabot-secure-flow.yml\`" >> $GITHUB_STEP_SUMMARY
