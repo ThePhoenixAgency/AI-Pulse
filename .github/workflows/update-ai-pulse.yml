@@ -1,0 +1,57 @@
+name: AI-Pulse Auto Aggregator
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'  # Every 3 hours  
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  aggregate-and-post:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Aggregate AI, iOT and Cybersecurity articles
+      # LinkedIn integration temporarily disabled
+      # env:
+      #   LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+      #   LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
+      run: |
+        node src/aggregator.js > NEW-README.md
+
+    - name: Update README with new content
+      run: |
+        mv NEW-README.md README.md
+
+    - name: Commit and push changes
+      env:
+        GIT_AUTHOR_EMAIL: ${{ secrets.GIT_AUTHOR_EMAIL }}
+      run: |
+        git config --global user.name 'PhoenixProject'
+        git config --global user.email "${GIT_AUTHOR_EMAIL:-phoenix.project@example.com}"
+        git add .
+
+        if ! git diff --cached --exit-code; then
+          UTC_DATE=$(date -u +'%a %b %d %H:%M:%S UTC %Y')
+          git commit -m "Updated AI-Pulse: $UTC_DATE"
+          git push
+        else
+          echo "No changes to commit"
+        fi
