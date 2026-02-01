@@ -28,10 +28,37 @@ jobs:
           path: action-repo
           fetch-depth: 1
 
-      - name: Copy workflow file to action repository
+      - name: Copy workflow and action files to action repository
         run: |
           mkdir -p action-repo/.github/workflows
+          
+          # Copy workflow file
           cp .github/workflows/dependabot-secure-flow.yml action-repo/.github/workflows/dependabot-secure-flow.yml
+          
+          # Copy action definition
+          if [ -f action.yml ]; then
+            cp action.yml action-repo/action.yml
+          fi
+          
+          # Copy dependabot config
+          if [ -f .github/dependabot.yml ]; then
+            cp .github/dependabot.yml action-repo/.github/dependabot.yml
+          fi
+          
+          # Copy README (if exists, otherwise create a basic one)
+          if [ -f docs/ACTION_README.md ]; then
+            cp docs/ACTION_README.md action-repo/README.md
+          elif [ -f README.md ]; then
+            cp README.md action-repo/README.md
+          fi
+          
+          # Copy package files
+          if [ -f package.json ]; then
+            cp package.json action-repo/package.json
+          fi
+          if [ -f package-lock.json ]; then
+            cp package-lock.json action-repo/package-lock.json
+          fi
 
       - name: Commit and push changes
         working-directory: action-repo
@@ -44,12 +71,17 @@ jobs:
             exit 0
           fi
           
-          git add .github/workflows/dependabot-secure-flow.yml
-          git commit -m "chore: sync workflow from AI-Pulse repository"
+          git add .
+          git commit -m "chore: sync from AI-Pulse repository"
           git push origin main
 
       - name: Create summary
         run: |
-          echo "✅ Workflow synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Files synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**File synced:** \`.github/workflows/dependabot-secure-flow.yml\`" >> $GITHUB_STEP_SUMMARY
+          echo "**Files synced:**" >> $GITHUB_STEP_SUMMARY
+          echo "- \`.github/workflows/dependabot-secure-flow.yml\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`action.yml\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`README.md\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`package.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`package-lock.json\`" >> $GITHUB_STEP_SUMMARY
