@@ -25,8 +25,52 @@ jobs:
         node-version: '20'
         cache: 'npm'
 
-    - name: Install dependencies
-      run: npm ci
+    # Installation automatique et résiliente des dépendances
+    # Tente d'abord npm ci (rapide et reproductible)
+    # Si échec dû à désynchronisation, bascule sur npm install
+    # Et commit automatiquement le package-lock.json mis à jour
+    - name: Install dependencies with auto-fix
+      run: |
+        # Tentative avec npm ci (installation propre et rapide)
+        if npm ci; then
+          echo "✅ Installation réussie avec npm ci"
+        else
+          echo "⚠️ npm ci a échoué, reconstruction du lock file..."
+          
+          # Suppression du cache npm pour éviter les conflits
+          npm cache clean --force
+          
+          # Installation complète qui met à jour package-lock.json
+          npm install
+          
+          echo "✅ package-lock.json régénéré automatiquement"
+        fi
+
+    # Commit automatique du package-lock.json si modifié
+    # S'exécute avant l'agrégation pour garder le repo propre
+    - name: Auto-commit updated lock file
+      run: |
+        # Configuration Git pour les commits automatiques
+        git config --global user.name 'PhoenixProject-AutoSync'
+        git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
+        
+        # Vérifier si package-lock.json a été modifié
+        if ! git diff --exit-code package-lock.json; then
+          echo "📦 Synchronisation automatique de package-lock.json"
+          
+          git add package-lock.json
+          git commit -m "🔧 Auto-sync: package-lock.json mis à jour automatiquement
+          
+          - Synchronisation automatique des dépendances
+          - Généré par le workflow CI/CD
+          - Date: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          
+          git push
+          
+          echo "✅ package-lock.json synchronisé et committé"
+        else
+          echo "ℹ️ package-lock.json déjà à jour"
+        fi
 
     - name: Aggregate AI, iOT and Cybersecurity articles
       env:
