@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - '.github/workflows/dependabot-secure-flow.yml'
+      - '.github/workflows/release-notification.yml'
       - '.github/dependabot.yml'
       - 'action.yml'
   workflow_dispatch:
@@ -34,8 +35,9 @@ jobs:
         run: |
           mkdir -p action-repo/.github/workflows
           
-          # Copy workflow file
+          # Copy workflow files
           cp .github/workflows/dependabot-secure-flow.yml action-repo/.github/workflows/dependabot-secure-flow.yml
+          cp .github/workflows/release-notification.yml action-repo/.github/workflows/release-notification.yml
           
           # Copy action definition
           if [ -f action.yml ]; then
