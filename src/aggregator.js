@@ -214,9 +214,7 @@ async function aggregateCategory(categoryName, feeds) {
 // Static Header with no emojis
 const README_HEADER = `<div align="center">
 
-# AI-PULSE
-
-### Your Real-Time AI & Cybersecurity News Aggregator
+<img src="assets/banner.png" alt="AI-PULSE Banner" width="100%">
 
 > Curated content from the best sources - Auto-updated every 3 hours
 
