@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update: Sun, 01 Feb 2026 16:45:00 GMT
+**Last Update:** Sun, 01 Feb 2026 15:51:52 GMT
 
 ---
 
@@ -179,125 +179,125 @@ The post Sixfab wins big at CES with Raspberry Pi–powered AI gateway appeared 
 
 ## Artificial Intelligence
 
-### 1. [Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization](https://towardsdatascience.com/distributed-reinforcement-learning-for-scalable-high-performance-policy-optimization/)
+### 1. [Bye-bye corporate conglomerates. Hello personal conglomerates.](https://techcrunch.com/2026/02/01/bye-bye-corporate-conglomerates-hello-personal-conglomerates/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Elon Musk's reported merging of SpaceX, xAI, and Tesla harkens back to the heyday of General Electric — or maybe the robber barons of the Gilded Age.
+
+### 2. [Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization](https://towardsdatascience.com/distributed-reinforcement-learning-for-scalable-high-performance-policy-optimization/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Leveraging massive parallelism, asynchronous updates, and multi-machine training to match and exceed human-level performance
 The post Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization appeared first on Towards Data Science.
 
-### 2. [Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled](https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/)
+### 3. [Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled](https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”
 
-### 3. [How to Apply Agentic Coding to Solve Problems](https://towardsdatascience.com/how-to-apply-agentic-coding-to-solve-problem/)
+### 4. [How to Apply Agentic Coding to Solve Problems](https://towardsdatascience.com/how-to-apply-agentic-coding-to-solve-problem/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to efficiently solve problems with coding agents
 The post How to Apply Agentic Coding to Solve Problems appeared first on Towards Data Science.
 
-### 4. [How to Run Claude Code for Free with Local and Cloud Models from Ollama](https://towardsdatascience.com/run-claude-code-for-free-with-local-and-cloud-models-from-ollama/)
+### 5. [How to Run Claude Code for Free with Local and Cloud Models from Ollama](https://towardsdatascience.com/run-claude-code-for-free-with-local-and-cloud-models-from-ollama/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Ollama now offers Anthropic API compatibility
 The post How to Run Claude Code for Free with Local and Cloud Models from Ollama appeared first on Towards Data Science.
 
-### 5. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
+### 6. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who've been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.
 
-### 6. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
+### 7. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.
 
-### 7. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
+### 8. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company says you can use plug-ins to "tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose so your team gets more consistent outcomes."
 
-### 8. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
+### 9. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A beginner-friendly Python tutorial
 The post Creating an Etch A Sketch App Using Python and Turtle appeared first on Towards Data Science.
 
-### 9. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
+### 10. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Hard-won lessons on how to scale agentic systems without scaling the chaos, including a taxonomy of core agent types.
 The post Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents” appeared first on Towards Data Science.
 
-### 10. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
+### 11. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Today is the last day to lock in a plus-one pass at 50% off to TechCrunch Disrupt 2026, happening on October 13-15 in San Francisco.
 
-### 11. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
+### 12. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A new kind of hyperparameter study
 The post On the Possibility of Small Networks for Physics-Informed Learning appeared first on Towards Data Science.
 
-### 12. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
+### 13. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to structure decisions, identify efficient options, and avoid misleading value metrics
 The post Multi-Attribute Decision Matrices, Done Right appeared first on Towards Data Science.
 
-### 13. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
+### 14. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Mid-January saw insurance company, Travelers, announce a new deal that empowers 10,000 engineers and data scientists with AI assistants. However, less than two weeks on, Travelers’ leadership explained that the company’s true competitive advantage lies in expertise, not AIs alone, believing this is what will drive longer-term profit growth. According to Travelers’ chief executive officer […]
 The post AI use surges at Travelers as call centre roles reduce appeared first on AI News.
 
-### 14. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
+### 15. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For many large companies, the most useful form of AI right now has little to do with writing emails or answering questions. At PepsiCo, AI is being tested in places where mistakes are costly and changes are hard to undo — factory layouts, production lines, and physical operations. That shift is visible in how PepsiCo […]
 The post PepsiCo is using AI to rethink how factories are designed and updated appeared first on AI News.
 
-### 15. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
+### 16. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The artificial intelligence industry’s pivot toward agentic AI – systems capable of autonomously executing multi-step tasks – has dominated technology discussions in recent months. But while Western firms focus on foundational models and cross-platform interoperability, China’s technology giants are racing to dominate through commerce integration, a divergence that could reshape how enterprises deploy autonomous systems […]
 The post China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground appeared first on AI News.
 
-### 16. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
+### 17. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 One intrepid Morgan Stanley analyst dared to ask how Apple will make money on its AI investments. The answer will not shock you.
 
-### 17. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
+### 18. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This merger would bring the Grok chatbot, Starlink satellites, and SpaceX rockets together under one corporation.
 
-### 18. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
+### 19. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If a deal materializes, it would mean Amazon is backing competing startups in the race for AI supremacy.
 
-### 19. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
+### 20. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 With Microsoft spending many billions on data centers, and rumors that no one is using its AI, CEO Satya Nadella shared some usage numbers.
 
-### 20. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
+### 21. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Q.ai is an Israeli startup specializing in imaging and machine learning, particularly technologies that enable devices to interpret whispered speech and enhance audio in noisy environments.
 
-### 21. [TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More](https://towardsdatascience.com/tds-newsletter-january-must-reads-on-data-platforms-infinite-context-and-more/)
+### 22. [TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More](https://towardsdatascience.com/tds-newsletter-january-must-reads-on-data-platforms-infinite-context-and-more/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Don't miss our most-read and -shared stories of the past month
 The post TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More appeared first on Towards Data Science.
 
-### 22. [I built marshmallow castles in Google’s new AI-world generator](https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/)
+### 23. [I built marshmallow castles in Google’s new AI-world generator](https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Starting Thursday, Google AI Ultra subscribers in the U.S. can play around with Project Genie, which is powered by a combination of Google’s latest world model Genie 3, its image generation model Nano Banana Pro, and Gemini.
 
-### 23. [OpenAI’s Sora app is struggling after its stellar launch](https://techcrunch.com/2026/01/29/openais-sora-app-is-struggling-after-its-stellar-launch/)
+### 24. [OpenAI’s Sora app is struggling after its stellar launch](https://techcrunch.com/2026/01/29/openais-sora-app-is-struggling-after-its-stellar-launch/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 New data suggests the app is seeing declines in both app downloads and consumer spending, as the early hype about the AI video social network wears off.
 
-### 24. [Music publishers sue Anthropic for $3B over ‘flagrant piracy’ of 20,000 works](https://techcrunch.com/2026/01/29/music-publishers-sue-anthropic-for-3b-over-flagrant-piracy-of-20000-works/)
+### 25. [Music publishers sue Anthropic for $3B over ‘flagrant piracy’ of 20,000 works](https://techcrunch.com/2026/01/29/music-publishers-sue-anthropic-for-3b-over-flagrant-piracy-of-20000-works/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Originally, these music publishers had filed a lawsuit against Anthropic over its use of about 500 copyrighted works.
 
-### 25. [Optimizing Vector Search: Why You Should Flatten Structured Data ](https://towardsdatascience.com/optimizing-vector-search-why-you-should-flatten-structured-data/)
+### 26. [Optimizing Vector Search: Why You Should Flatten Structured Data ](https://towardsdatascience.com/optimizing-vector-search-why-you-should-flatten-structured-data/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An analysis of how flattening structured data can boost precision and recall by up to 20%
 The post Optimizing Vector Search: Why You Should Flatten Structured Data  appeared first on Towards Data Science.
 
-### 26. [India is teaching Google how AI in education can scale](https://techcrunch.com/2026/01/29/india-is-teaching-google-how-ai-in-education-can-scale/)
+### 27. [India is teaching Google how AI in education can scale](https://techcrunch.com/2026/01/29/india-is-teaching-google-how-ai-in-education-can-scale/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 With the highest global usage of Gemini for learning, India is emerging as a key market shaping Google's approach to AI in education.
-
-### 27. [Flapping Airplanes and the promise of research-driven AI](https://techcrunch.com/2026/01/29/flapping-airplanes-and-the-promise-of-research-driven-ai/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-A new AI lab called Flapping Airplanes launched yesterday, and a Sequoia partner has an interesting take on why they stand out.
 
 ### 28. [Insurers betting big on AI: Accenture](https://www.artificialintelligence-news.com/news/accenture-report-on-ai-in-insurance-sector/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
