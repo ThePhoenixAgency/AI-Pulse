@@ -305,17 +305,34 @@ async function main() {
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  // LinkedIn Posting (New)
+  // LinkedIn Posting (New: 2 articles per category)
   try {
-    const allArticles = [].concat(...Object.values(categorizedArticles));
-    if (allArticles.length > 0) {
-      const topArticle = allArticles[0]; // The most recent one
-      console.error(`\nFound latest article: ${topArticle.title}`);
+    for (const [category, articles] of Object.entries(categorizedArticles)) {
+      console.error(`\nChecking LinkedIn posts for category: ${category}`);
 
-      const postText = await linkedinHelper.generatePost(topArticle);
-      if (postText) {
-        console.error('Generated LinkedIn post. Sending...');
-        await linkedinHelper.postToLinkedIn(postText, topArticle.link);
+      const unpostedArticles = articles
+        .filter(article => !linkedinHelper.isAlreadyPosted(article.link))
+        .slice(0, 2); // Get up to 2 unposted articles
+
+      if (unpostedArticles.length > 0) {
+        console.error(`Found ${unpostedArticles.length} new articles for ${category}`);
+
+        for (const article of unpostedArticles) {
+          console.error(`Processing: ${article.title}`);
+          const postText = await linkedinHelper.generatePost(article);
+
+          if (postText) {
+            console.error('Sending to LinkedIn...');
+            const postId = await linkedinHelper.postToLinkedIn(postText, article.link);
+
+            if (postId) {
+              linkedinHelper.markAsPosted(article.link);
+              console.error(`Successfully posted: ${article.title}`);
+            }
+          }
+        }
+      } else {
+        console.error(`No new articles to post for ${category}.`);
       }
     }
   } catch (error) {
