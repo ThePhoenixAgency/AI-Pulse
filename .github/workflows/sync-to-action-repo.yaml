@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/dependabot-secure-flow.yml'
-      - '.github/workflows/release-notification.yml'
+      - '.github/workflows/dependabot-secure-flow.yaml'
+      - '.github/workflows/release-notification.yaml'
       - '.github/dependabot.yml'
       - 'action.yml'
   workflow_dispatch:
@@ -36,8 +36,8 @@ jobs:
           mkdir -p action-repo/.github/workflows
           
           # Copy workflow files
-          cp .github/workflows/dependabot-secure-flow.yml action-repo/.github/workflows/dependabot-secure-flow.yml
-          cp .github/workflows/release-notification.yml action-repo/.github/workflows/release-notification.yml
+          cp .github/workflows/dependabot-secure-flow.yaml action-repo/.github/workflows/dependabot-secure-flow.yaml
+          cp .github/workflows/release-notification.yaml action-repo/.github/workflows/release-notification.yaml
           
           # Copy action definition
           if [ -f action.yml ]; then
@@ -134,12 +134,10 @@ jobs:
           - Synced dependencies
           
           **Synced files:**
-          - \`.github/workflows/dependabot-secure-flow.yml\`
+          - \`.github/workflows/dependabot-secure-flow.yaml\`
+          - \`.github/workflows/release-notification.yaml\`
           - \`action.yml\`
-          - \`.github/dependabot.yml\`
-          - \`README.md\`
-          - \`package.json\`
-          - \`package-lock.json\`" \
+          - \`.github/dependabot.yml\`" \
             --latest
 
       - name: Create summary
@@ -147,12 +145,10 @@ jobs:
           echo "✅ Files synchronized to EthanThePhoenix38/dependabot-secure-flow" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Files synced:**" >> $GITHUB_STEP_SUMMARY
-          echo "- \`.github/workflows/dependabot-secure-flow.yml\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`.github/workflows/dependabot-secure-flow.yaml\`" >> $GITHUB_STEP_SUMMARY
+          echo "- \`.github/workflows/release-notification.yaml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`action.yml\`" >> $GITHUB_STEP_SUMMARY
           echo "- \`.github/dependabot.yml\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`README.md\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`package.json\`" >> $GITHUB_STEP_SUMMARY
-          echo "- \`package-lock.json\`" >> $GITHUB_STEP_SUMMARY
           
           if [ "${{ steps.commit.outputs.has_changes }}" == "true" ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
