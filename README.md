@@ -8,7 +8,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 31 Jan 2026 06:09:14 GMT
+**Last Update:** Sun, 01 Feb 2026 12:34:29 GMT
 
 ---
 
@@ -181,285 +181,286 @@ The post Sixfab wins big at CES with Raspberry Pi–powered AI gateway appeared 
 
 ## Artificial Intelligence
 
-### 1. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
+### 1. [Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled](https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”
+
+### 2. [How to Apply Agentic Coding to Solve Problems](https://towardsdatascience.com/how-to-apply-agentic-coding-to-solve-problem/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Learn how to efficiently solve problems with coding agents
+The post How to Apply Agentic Coding to Solve Problems appeared first on Towards Data Science.
+
+### 3. [How to Run Claude Code for Free with Local and Cloud Models from Ollama](https://towardsdatascience.com/run-claude-code-for-free-with-local-and-cloud-models-from-ollama/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Ollama now offers Anthropic API compatibility
+The post How to Run Claude Code for Free with Local and Cloud Models from Ollama appeared first on Towards Data Science.
+
+### 4. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who've been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.
 
-### 2. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
+### 5. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.
 
-### 3. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
+### 6. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company says you can use plug-ins to "tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose so your team gets more consistent outcomes."
 
-### 4. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
+### 7. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A beginner-friendly Python tutorial
 The post Creating an Etch A Sketch App Using Python and Turtle appeared first on Towards Data Science.
 
-### 5. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
+### 8. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Hard-won lessons on how to scale agentic systems without scaling the chaos, including a taxonomy of core agent types.
 The post Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents” appeared first on Towards Data Science.
 
-### 6. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
+### 9. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Today is the last day to lock in a plus-one pass at 50% off to TechCrunch Disrupt 2026, happening on October 13-15 in San Francisco.
 
-### 7. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
+### 10. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A new kind of hyperparameter study
 The post On the Possibility of Small Networks for Physics-Informed Learning appeared first on Towards Data Science.
 
-### 8. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
+### 11. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to structure decisions, identify efficient options, and avoid misleading value metrics
 The post Multi-Attribute Decision Matrices, Done Right appeared first on Towards Data Science.
 
-### 9. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
+### 12. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Mid-January saw insurance company, Travelers, announce a new deal that empowers 10,000 engineers and data scientists with AI assistants. However, less than two weeks on, Travelers’ leadership explained that the company’s true competitive advantage lies in expertise, not AIs alone, believing this is what will drive longer-term profit growth. According to Travelers’ chief executive officer […]
 The post AI use surges at Travelers as call centre roles reduce appeared first on AI News.
 
-### 10. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
+### 13. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For many large companies, the most useful form of AI right now has little to do with writing emails or answering questions. At PepsiCo, AI is being tested in places where mistakes are costly and changes are hard to undo — factory layouts, production lines, and physical operations. That shift is visible in how PepsiCo […]
 The post PepsiCo is using AI to rethink how factories are designed and updated appeared first on AI News.
 
-### 11. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
+### 14. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The artificial intelligence industry’s pivot toward agentic AI – systems capable of autonomously executing multi-step tasks – has dominated technology discussions in recent months. But while Western firms focus on foundational models and cross-platform interoperability, China’s technology giants are racing to dominate through commerce integration, a divergence that could reshape how enterprises deploy autonomous systems […]
 The post China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground appeared first on AI News.
 
-### 12. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
+### 15. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 One intrepid Morgan Stanley analyst dared to ask how Apple will make money on its AI investments. The answer will not shock you.
 
-### 13. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
+### 16. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This merger would bring the Grok chatbot, Starlink satellites, and SpaceX rockets together under one corporation.
 
-### 14. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
+### 17. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If a deal materializes, it would mean Amazon is backing competing startups in the race for AI supremacy.
 
-### 15. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
+### 18. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 With Microsoft spending many billions on data centers, and rumors that no one is using its AI, CEO Satya Nadella shared some usage numbers.
 
-### 16. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
+### 19. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Q.ai is an Israeli startup specializing in imaging and machine learning, particularly technologies that enable devices to interpret whispered speech and enhance audio in noisy environments.
 
-### 17. [I built marshmallow castles in Google’s new AI-world generator](https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/)
+### 20. [TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More](https://towardsdatascience.com/tds-newsletter-january-must-reads-on-data-platforms-infinite-context-and-more/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+Don't miss our most-read and -shared stories of the past month
+The post TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More appeared first on Towards Data Science.
+
+### 21. [I built marshmallow castles in Google’s new AI-world generator](https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Starting Thursday, Google AI Ultra subscribers in the U.S. can play around with Project Genie, which is powered by a combination of Google’s latest world model Genie 3, its image generation model Nano Banana Pro, and Gemini.
 
-### 18. [OpenAI’s Sora app is struggling after its stellar launch](https://techcrunch.com/2026/01/29/openais-sora-app-is-struggling-after-its-stellar-launch/)
+### 22. [OpenAI’s Sora app is struggling after its stellar launch](https://techcrunch.com/2026/01/29/openais-sora-app-is-struggling-after-its-stellar-launch/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 New data suggests the app is seeing declines in both app downloads and consumer spending, as the early hype about the AI video social network wears off.
 
-### 19. [Music publishers sue Anthropic for $3B over ‘flagrant piracy’ of 20,000 works](https://techcrunch.com/2026/01/29/music-publishers-sue-anthropic-for-3b-over-flagrant-piracy-of-20000-works/)
+### 23. [Music publishers sue Anthropic for $3B over ‘flagrant piracy’ of 20,000 works](https://techcrunch.com/2026/01/29/music-publishers-sue-anthropic-for-3b-over-flagrant-piracy-of-20000-works/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Originally, these music publishers had filed a lawsuit against Anthropic over its use of about 500 copyrighted works.
 
-### 20. [Optimizing Vector Search: Why You Should Flatten Structured Data ](https://towardsdatascience.com/optimizing-vector-search-why-you-should-flatten-structured-data/)
+### 24. [Optimizing Vector Search: Why You Should Flatten Structured Data ](https://towardsdatascience.com/optimizing-vector-search-why-you-should-flatten-structured-data/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An analysis of how flattening structured data can boost precision and recall by up to 20%
 The post Optimizing Vector Search: Why You Should Flatten Structured Data  appeared first on Towards Data Science.
 
-### 21. [India is teaching Google how AI in education can scale](https://techcrunch.com/2026/01/29/india-is-teaching-google-how-ai-in-education-can-scale/)
+### 25. [India is teaching Google how AI in education can scale](https://techcrunch.com/2026/01/29/india-is-teaching-google-how-ai-in-education-can-scale/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 With the highest global usage of Gemini for learning, India is emerging as a key market shaping Google's approach to AI in education.
 
-### 22. [Flapping Airplanes and the promise of research-driven AI](https://techcrunch.com/2026/01/29/flapping-airplanes-and-the-promise-of-research-driven-ai/)
+### 26. [Flapping Airplanes and the promise of research-driven AI](https://techcrunch.com/2026/01/29/flapping-airplanes-and-the-promise-of-research-driven-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 A new AI lab called Flapping Airplanes launched yesterday, and a Sequoia partner has an interesting take on why they stand out.
 
-### 23. [Insurers betting big on AI: Accenture](https://www.artificialintelligence-news.com/news/accenture-report-on-ai-in-insurance-sector/)
+### 27. [Insurers betting big on AI: Accenture](https://www.artificialintelligence-news.com/news/accenture-report-on-ai-in-insurance-sector/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 New research from Accenture has discovered insurance executives are planning on increased investment into AI during 2026 despite a widening skills gap in insurance organisations. Surveying 3,650 C-suite leaders over 20 industries and 20 countries, the Pulse of Change poll revealed 90% of the 218 senior insurance executives intend to spend more on AI over […]
 The post Insurers betting big on AI: Accenture appeared first on AI News.
 
-### 24. [RoPE, Clearly Explained](https://towardsdatascience.com/rope-clearly-explained/)
+### 28. [RoPE, Clearly Explained](https://towardsdatascience.com/rope-clearly-explained/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Going beyond the math to build intuition
 The post RoPE, Clearly Explained appeared first on Towards Data Science.
 
-### 25. [Google Maps now lets you access Gemini while walking and cycling](https://techcrunch.com/2026/01/29/google-maps-now-lets-you-access-gemini-while-walking-and-cycling/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-When you're walking around and navigating with Maps, you can now ask Gemini questions like "What neighborhood am I in?" or "What are top-rated restaurants nearby?"
-
-### 26. [The Unbearable Lightness of Coding](https://towardsdatascience.com/the-unbearable-lightness-of-coding/)
+### 29. [The Unbearable Lightness of Coding](https://towardsdatascience.com/the-unbearable-lightness-of-coding/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Confessions of a vibe coder
 The post The Unbearable Lightness of Coding appeared first on Towards Data Science.
 
-### 27. [Randomization Works in Experiments, Even Without Balance](https://towardsdatascience.com/randomization-works-in-experiments-even-without-balance/)
+### 30. [Randomization Works in Experiments, Even Without Balance](https://towardsdatascience.com/randomization-works-in-experiments-even-without-balance/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Randomization usually balances confounders in experiments, but what happens when it doesn't?
 The post Randomization Works in Experiments, Even Without Balance appeared first on Towards Data Science.
-
-### 28. [Federated Learning, Part 2: Implementation with the Flower Framework 🌼](https://towardsdatascience.com/federated-learning-part-2-implementation-with-the-flower-framework-%f0%9f%8c%bc/)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Implementing cross-silo federated learning step by step
-The post Federated Learning, Part 2: Implementation with the Flower Framework 🌼 appeared first on Towards Data Science.
-
-### 29. [Deloitte sounds alarm as AI agent deployment outruns safety frameworks](https://www.artificialintelligence-news.com/news/deloitte-agentic-ai-guidelines-published/)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-A new report from Deloitte has warned that businesses are deploying AI agents faster than their safety protocols and safeguards can keep up. Therefore, serious concerns around security, data privacy, and accountability are spreading. According to the survey, agentic systems are moving from pilot to production so quickly that traditional risk controls, which were designed […]
-The post Deloitte sounds alarm as AI agent deployment outruns safety frameworks appeared first on AI News.
-
-### 30. [Franny Hsiao, Salesforce: Scaling enterprise AI](https://www.artificialintelligence-news.com/news/franny-hsiao-salesforce-scaling-enterprise-ai/)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-Scaling enterprise AI requires overcoming architectural oversights that often stall pilots before production, a challenge that goes far beyond model selection. While generative AI prototypes are easy to spin up, turning them into reliable business assets involves solving the difficult problems of data engineering and governance. Ahead of AI &amp; Big Data Global 2026 in […]
-The post Franny Hsiao, Salesforce: Scaling enterprise AI appeared first on AI News.
 
 ---
 
 ## Cybersecurity
 
-### 1. [Crypto wallets received a record $158 billion in illicit funds last year](https://www.bleepingcomputer.com/news/security/crypto-wallets-received-a-record-158-billion-in-illicit-funds-last-year/)
+### 1. [OpenAI says you can trust ChatGPT answers, as it kicks off ads rollout preparation](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-you-can-trust-chatgpt-answers-as-it-kicks-off-ads-rollout-preparation/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+OpenAI previously confirmed that it's testing ads in ChatGPT for free and $8 Go accounts, and now we're seeing early signs of that rollout, at least on Android. [...]
+
+### 2. [OpenAI is retiring famous GPT-4o model, says GPT 5.2 is good enough](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-retiring-famous-gpt-4o-model-says-gpt-52-is-good-enough/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+OpenAI has confirmed that it's retiring ChatGPT's most popular model called GPT-4o and several other models, including GPT-5 Instant, GPT-5 Thinking, GPT-4.1, GPT-4.1 mini, and o4-mini. [...]
+
+### 3. [U.S. convicts ex-Google engineer for sending AI tech data to China](https://www.bleepingcomputer.com/news/security/us-convicts-ex-google-engineer-for-sending-ai-tech-data-to-china/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A U.S. federal jury has convicted Linwei Ding, a former software engineer at Google, for stealing AI supercomputer data from his employer and secretly sharing it with Chinese tech firms. [...]
+
+### 4. [Cloud storage payment scam floods inboxes with fake renewals](https://www.bleepingcomputer.com/news/security/cloud-storage-payment-scam-floods-inboxes-with-fake-renewals/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Over the past few months, a large-scale cloud storage subscription scam campaign has been targeting users worldwide with repeated emails falsely warning recipients that their photos, files, and accounts are about to be blocked or deleted due to an alleged payment failure. [...]
+
+### 5. [Mandiant details how ShinyHunters abuse SSO to steal cloud data](https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Mandiant says a wave of recent ShinyHunters SaaS data-theft attacks is being fueled by targeted voice phishing (vishing) attacks and company-branded phishing sites that steal single sign-on (SSO) credentials and multi-factor authentication (MFA) codes. [...]
+
+### 6. [eScan Antivirus Delivers Malware in Supply Chain Attack](https://www.securityweek.com/escan-antivirus-delivers-malware-in-supply-chain-attack/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Hackers compromised a MicroWorld Technologies update server and fed a malicious file to eScan customers.
+The post eScan Antivirus Delivers Malware in Supply Chain Attack appeared first on SecurityWeek.
+
+### 7. [Researcher reveals evidence of private Instagram profiles leaking photos](https://www.bleepingcomputer.com/news/security/researcher-reveals-evidence-of-private-instagram-profiles-leaking-photos/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A researcher has released detailed evidence showing some Instagram private accounts exposed photo links to unauthenticated visitors. The issue was later fixed, but Meta closed the report as not applicable and did not respond to multiple requests for comment. [...]
+
+### 8. [Iran-Linked RedKitten Cyber Campaign Targets Human Rights NGOs and Activists](https://thehackernews.com/2026/01/iran-linked-redkitten-cyber-campaign.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A Farsi-speaking threat actor aligned with Iranian state interests is suspected to be behind a new campaign targeting non-governmental organizations and individuals involved in documenting recent human rights abuses.
+The activity, observed by HarfangLab in January 2026, has been codenamed RedKitten. It's said to coincide with the nationwide unrest in Iran that began towards the end of 2025,
+
+### 9. [Mandiant Finds ShinyHunters-Style Vishing Attacks Stealing MFA to Breach SaaS Platforms](https://thehackernews.com/2026/01/mandiant-finds-shinyhunters-using.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Google-owned Mandiant on Friday said it identified an "expansion in threat activity" that uses tradecraft consistent with extortion-themed attacks orchestrated by a financially motivated hacking group known as ShinyHunters.
+The attacks leverage advanced voice phishing (aka vishing) and bogus credential harvesting sites mimicking targeted companies to gain unauthorized access to victim
+
+### 10. [CERT Polska Details Coordinated Cyber Attacks on 30+ Wind and Solar Farms](https://thehackernews.com/2026/01/poland-attributes-december-cyber.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+CERT Polska, the Polish computer emergency response team, revealed that coordinated cyber attacks targeted more than 30 wind and photovoltaic farms, a private company from the manufacturing sector, and a large combined heat and power plant (CHP) supplying heat to almost half a million customers in the country.
+The incident took place on December 29, 2025. The agency has attributed the attacks to
+
+### 11. [Crypto wallets received a record $158 billion in illicit funds last year](https://www.bleepingcomputer.com/news/security/crypto-wallets-received-a-record-158-billion-in-illicit-funds-last-year/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Illegal cryptocurrency flows hit a record $158 billion in 2025, reversing a three-year trend of declining amounts from $86B in 2021 to $64B in 2024. [...]
 
-### 2. [In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak](https://www.securityweek.com/in-other-news-paid-for-being-jailed-googles-68m-settlement-cisa-chiefs-chatgpt-leak/)
+### 12. [In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak](https://www.securityweek.com/in-other-news-paid-for-being-jailed-googles-68m-settlement-cisa-chiefs-chatgpt-leak/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: Apple updates platform security guide, LastPass detects new phishing wave, CISA withdraws from RSA Conference.
 The post In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak appeared first on SecurityWeek.
 
-### 3. [Microsoft to disable NTLM by default in future Windows releases](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-disable-ntlm-by-default-in-future-windows-releases/)
+### 13. [Microsoft to disable NTLM by default in future Windows releases](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-disable-ntlm-by-default-in-future-windows-releases/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced that it will disable the 30-year-old NTLM authentication protocol by default in upcoming Windows releases due to security vulnerabilities that expose organizations to cyberattacks. [...]
 
-### 4. [Operation Switch Off dismantles major pirate TV streaming services](https://www.bleepingcomputer.com/news/legal/operation-switch-off-dismantles-major-pirate-tv-streaming-services/)
+### 14. [Operation Switch Off dismantles major pirate TV streaming services](https://www.bleepingcomputer.com/news/legal/operation-switch-off-dismantles-major-pirate-tv-streaming-services/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The latest phase of the global law enforcement action resulted in seizing three industrial-scale illegal IPTV services. [...]
 
-### 5. [Aisy Launches Out of Stealth to Transform Vulnerability Management](https://www.securityweek.com/aisy-launches-out-of-stealth-to-transform-vulnerability-management/)
+### 15. [Aisy Launches Out of Stealth to Transform Vulnerability Management](https://www.securityweek.com/aisy-launches-out-of-stealth-to-transform-vulnerability-management/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Aisy has emerged from stealth mode with $2.3 million in seed funding for its AI-assisted platform.
 The post Aisy Launches Out of Stealth to Transform Vulnerability Management appeared first on SecurityWeek.
 
-### 6. [Microsoft fixes Outlook bug blocking access to encrypted emails](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-outlook-bug-blocking-access-to-encrypted-emails/)
+### 16. [Microsoft fixes Outlook bug blocking access to encrypted emails](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-outlook-bug-blocking-access-to-encrypted-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has fixed a known issue that prevented Microsoft 365 customers from opening encrypted emails in classic Outlook after a recent update. [...]
 
-### 7. [175,000 Exposed Ollama Hosts Could Enable LLM Abuse](https://www.securityweek.com/175000-exposed-ollama-hosts-could-enable-llm-abuse/)
+### 17. [175,000 Exposed Ollama Hosts Could Enable LLM Abuse](https://www.securityweek.com/175000-exposed-ollama-hosts-could-enable-llm-abuse/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Among them, 23,000 hosts were persistently responsible for the majority of activity observed over 293 days of scanning.
 The post 175,000 Exposed Ollama Hosts Could Enable LLM Abuse appeared first on SecurityWeek.
 
-### 8. [Researchers Uncover Chrome Extensions Abusing Affiliate Links and Stealing ChatGPT Access](https://thehackernews.com/2026/01/researchers-uncover-chrome-extensions.html)
+### 18. [Researchers Uncover Chrome Extensions Abusing Affiliate Links and Stealing ChatGPT Access](https://thehackernews.com/2026/01/researchers-uncover-chrome-extensions.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered malicious Google Chrome extensions that come with capabilities to hijack affiliate links, steal data, and collect OpenAI ChatGPT authentication tokens.
 One of the extensions in question is Amazon Ads Blocker (ID: pnpchphmplpdimbllknjoiopmfphellj), which claims to be a tool to browse Amazon without any sponsored content. It was uploaded to the Chrome
 
-### 9. [White House Scraps ‘Burdensome’ Software Security Rules ](https://www.securityweek.com/white-house-scraps-burdensome-software-security-rules/)
+### 19. [White House Scraps ‘Burdensome’ Software Security Rules ](https://www.securityweek.com/white-house-scraps-burdensome-software-security-rules/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Two Biden-era memorandums have been revoked, but some of the resources they provide can still be used by government organizations. 
 The post White House Scraps ‘Burdensome’ Software Security Rules  appeared first on SecurityWeek.
 
-### 10. [China-Linked UAT-8099 Targets IIS Servers in Asia with BadIIS SEO Malware](https://thehackernews.com/2026/01/china-linked-uat-8099-targets-iis.html)
+### 20. [China-Linked UAT-8099 Targets IIS Servers in Asia with BadIIS SEO Malware](https://thehackernews.com/2026/01/china-linked-uat-8099-targets-iis.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new campaign attributed to a China-linked threat actor known as UAT-8099 that took place between late 2025 and early 2026.
 The activity, discovered by Cisco Talos, has targeted vulnerable Internet Information Services (IIS) servers located across Asia, but with a specific focus on targets in Thailand and Vietnam. The scale of the campaign is currently
 
-### 11. [Windows 11 KB5074105 update fixes boot, sign-in, and activation issues](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5074105-update-fixes-boot-sign-in-and-activation-issues/)
+### 21. [Windows 11 KB5074105 update fixes boot, sign-in, and activation issues](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5074105-update-fixes-boot-sign-in-and-activation-issues/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released the KB5074105 preview cumulative update for Windows 11 systems, which includes 32 changes, including fixes for sign-in, boot, and activation issues. [...]
 
-### 12. [Badges, Bytes and Blackmail](https://thehackernews.com/2026/01/badges-bytes-and-blackmail.html)
+### 22. [Badges, Bytes and Blackmail](https://thehackernews.com/2026/01/badges-bytes-and-blackmail.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Behind the scenes of law enforcement in cyber: what do we know about caught cybercriminals? What brought them in, where do they come from and what was their function in the crimescape?
 
 Introduction: One view on the scattered fight against cybercrime
 The growing sophistication and diversification of cybercrime have compelled law enforcement agencies worldwide to respond through increasingly
 
-### 13. [Hugging Face Abused to Deploy Android RAT](https://www.securityweek.com/hugging-face-abused-to-deploy-android-rat/)
+### 23. [Hugging Face Abused to Deploy Android RAT](https://www.securityweek.com/hugging-face-abused-to-deploy-android-rat/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Android users were lured to applications that served a malicious payload hosted in a Hugging Face repository.
 The post Hugging Face Abused to Deploy Android RAT appeared first on SecurityWeek.
 
-### 14. [ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid](https://www.securityweek.com/ics-devices-bricked-in-russia-linked-strike-on-polish-power-grid/)
+### 24. [ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid](https://www.securityweek.com/ics-devices-bricked-in-russia-linked-strike-on-polish-power-grid/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Sandworm/Electrum hackers targeted communication and control systems at 30 sites.
 The post ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid appeared first on SecurityWeek.
 
-### 15. [Ivanti Patches Exploited EPMM Zero-Days](https://www.securityweek.com/ivanti-patches-exploited-epmm-zero-days/)
+### 25. [Ivanti Patches Exploited EPMM Zero-Days](https://www.securityweek.com/ivanti-patches-exploited-epmm-zero-days/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical-severity vulnerabilities could allow unauthenticated attackers to execute arbitrary code remotely.
 The post Ivanti Patches Exploited EPMM Zero-Days appeared first on SecurityWeek.
 
-### 16. [Ex-Google Engineer Convicted for Stealing 2,000 AI Trade Secrets for China Startup](https://thehackernews.com/2026/01/ex-google-engineer-convicted-for.html)
+### 26. [Ex-Google Engineer Convicted for Stealing AI Secrets for China Startup](https://thehackernews.com/2026/01/ex-google-engineer-convicted-for.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A former Google engineer accused of stealing thousands of the company's confidential documents to build a startup in China has been convicted in the U.S., the Department of Justice (DoJ) announced Thursday.
 Linwei Ding (aka Leon Ding), 38, was convicted by a federal jury on seven counts of economic espionage and seven counts of theft of trade secrets for taking over 2,000 documents containing
 
-### 17. [SmarterMail Fixes Critical Unauthenticated RCE Flaw with CVSS 9.3 Score](https://thehackernews.com/2026/01/smartermail-fixes-critical.html)
+### 27. [SmarterMail Fixes Critical Unauthenticated RCE Flaw with CVSS 9.3 Score](https://thehackernews.com/2026/01/smartermail-fixes-critical.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 SmarterTools has addressed two more security flaws in SmarterMail email software, including one critical security flaw that could result in arbitrary code execution.
 The vulnerability, tracked as CVE-2026-24423, carries a CVSS score of 9.3 out of 10.0.
 "SmarterTools SmarterMail versions prior to build 9511 contain an unauthenticated remote code execution vulnerability in the ConnectToHub API
 
-### 18. [Two Ivanti EPMM Zero-Day RCE Flaws Actively Exploited, Security Updates Released](https://thehackernews.com/2026/01/two-ivanti-epmm-zero-day-rce-flaws.html)
+### 28. [Two Ivanti EPMM Zero-Day RCE Flaws Actively Exploited, Security Updates Released](https://thehackernews.com/2026/01/two-ivanti-epmm-zero-day-rce-flaws.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Ivanti has rolled out security updates to address two security flaws impacting Ivanti Endpoint Manager Mobile (EPMM) that have been exploited in zero-day attacks, one of which has been added by the U.S. Cybersecurity and Infrastructure Security Agency (CISA) to its Known Exploited Vulnerabilities (KEV) catalog.
 The critical-severity vulnerabilities are listed below -
 
 CVE-2026-1281 (CVSS score:
 
-### 19. [Microsoft links Windows 11 boot failures to failed December 2025 update](https://www.bleepingcomputer.com/news/microsoft/microsoft-links-windows-11-boot-failures-to-failed-december-2025-update/)
+### 29. [Microsoft links Windows 11 boot failures to failed December 2025 update](https://www.bleepingcomputer.com/news/microsoft/microsoft-links-windows-11-boot-failures-to-failed-december-2025-update/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has linked recent reports of Windows 11 boot failures after installing the January 2026 updates to previously failed attempts to install the December 2025 security update, which left systems in an "improper state." [...]
 
-### 20. [Hugging Face abused to spread thousands of Android malware variants](https://www.bleepingcomputer.com/news/security/hugging-face-abused-to-spread-thousands-of-android-malware-variants/)
+### 30. [Hugging Face abused to spread thousands of Android malware variants](https://www.bleepingcomputer.com/news/security/hugging-face-abused-to-spread-thousands-of-android-malware-variants/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new Android malware campaign is using the Hugging Face platform as a repository for thousands of variations of an APK payload that collects credentials for popular financial and payment services. [...]
-
-### 21. [Ivanti warns of two EPMM flaws exploited in zero-day attacks](https://www.bleepingcomputer.com/news/security/ivanti-warns-of-two-epmm-flaws-exploited-in-zero-day-attacks/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Ivanti has disclosed two critical vulnerabilities in Ivanti Endpoint Manager Mobile (EPMM), tracked as CVE-2026-1281 and CVE-2026-1340, that were exploited in zero-day attacks. [...]
-
-### 22. [Google disrupts IPIDEA residential proxy networks fueled by malware](https://www.bleepingcomputer.com/news/security/google-disrupts-ipidea-residential-proxy-networks-fueled-by-malware/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-IPIDEA, one of the largest residential proxy networks used by threat actors, was disrupted earlier this week by Google Threat Intelligence Group (GTIG) in collaboration with industry partners. [...]
-
-### 23. [Researchers Find 175,000 Publicly Exposed Ollama AI Servers Across 130 Countries](https://thehackernews.com/2026/01/researchers-find-175000-publicly.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-A new joint investigation by SentinelOne SentinelLABS, and Censys has revealed that the open-source artificial intelligence (AI) deployment has created a vast "unmanaged, publicly accessible layer of AI compute infrastructure" that spans 175,000 unique Ollama hosts across 130 countries.
-These systems, which span both cloud and residential networks across the world, operate outside the
-
-### 24. [Match Group breach exposes data from Hinge, Tinder, OkCupid, and Match](https://www.bleepingcomputer.com/news/security/match-group-breach-exposes-data-from-hinge-tinder-okcupid-and-match/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Match Group, the owner of multiple popular online dating services, Tinder, Match.com, Meetic, OkCupid, and Hinge, confirmed a cybersecurity incident that compromised user data. [...]
-
-### 25. [Marquis blames ransomware breach on SonicWall cloud backup hack](https://www.bleepingcomputer.com/news/security/marquis-blames-ransomware-breach-on-sonicwall-cloud-backup-hack/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Marquis Software Solutions, a Texas-based financial services provider, is blaming a ransomware attack that impacted its systems and affected dozens of U.S. banks and credit unions in August 2025 on a security breach reported by SonicWall a month later. [...]
-
-### 26. [Not a Kids Game: From Roblox Mod to Compromising Your Company](https://www.bleepingcomputer.com/news/security/not-a-kids-game-from-roblox-mod-to-compromising-your-company/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Seemingly harmless game mods can hide infostealer malware that quietly steals identities. Flare shows how Roblox mods can turn a home PC infection into corporate compromise. [...]
-
-### 27. [LLMs Hijacked, Monetized in ‘Operation Bizarre Bazaar’](https://www.securityweek.com/llms-hijacked-monetized-in-operation-bizarre-bazaar/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-An LLMjacking operation has been targeting exposed LLMs and MCPs at scale, for commercial monetization.
-The post LLMs Hijacked, Monetized in ‘Operation Bizarre Bazaar’ appeared first on SecurityWeek.
-
-### 28. [Aisuru botnet sets new record with 31.4 Tbps DDoS attack](https://www.bleepingcomputer.com/news/security/aisuru-botnet-sets-new-record-with-314-tbps-ddos-attack/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The Aisuru/Kimwolf botnet launched a new massive distributed denial of service (DDoS) attack in December 2025, peaking at 31.4 Tbps and 200 million requests per second. [...]
-
-### 29. [N8n Vulnerabilities Could Lead to Remote Code Execution](https://www.securityweek.com/n8n-vulnerabilities-could-lead-to-remote-code-execution/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The two bugs impacted n8n’s sandbox mechanism and could be exploited via weaknesses in the AST sanitization logic.
-The post N8n Vulnerabilities Could Lead to Remote Code Execution appeared first on SecurityWeek.
-
-### 30. [New Microsoft Teams feature will let you report suspicious calls](https://www.bleepingcomputer.com/news/microsoft/new-microsoft-teams-feature-will-let-you-report-suspicious-calls/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft plans to introduce a call reporting feature in Teams by mid-March, allowing users to flag suspicious or unwanted calls as potential scams or phishing attempts. [...]
 
 ---
 
