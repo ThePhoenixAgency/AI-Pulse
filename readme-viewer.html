@@ -162,6 +162,37 @@
             margin: 15px 0;
             border-radius: 8px;
             border: 1px solid rgba(0, 217, 255, 0.2);
+            position: relative;
+        }
+
+        /* Animated Banner Effect */
+        #readme-content img[src*="banner.png"] {
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            animation: pulse-glow 3s infinite alternate;
+        }
+
+        #readme-content img[src*="banner.png"]::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 255, 255, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+            }
+
+            100% {
+                box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(130, 94, 228, 0.4);
+            }
         }
 
         #readme-content table {
