@@ -49,21 +49,6 @@ jobs:
           if [ -f .github/dependabot.yml ]; then
             cp .github/dependabot.yml action-repo/.github/dependabot.yml
           fi
-          
-          # Copy README (if exists, otherwise create a basic one)
-          if [ -f docs/ACTION_README.md ]; then
-            cp docs/ACTION_README.md action-repo/README.md
-          elif [ -f README.md ]; then
-            cp README.md action-repo/README.md
-          fi
-          
-          # Copy package files
-          if [ -f package.json ]; then
-            cp package.json action-repo/package.json
-          fi
-          if [ -f package-lock.json ]; then
-            cp package-lock.json action-repo/package-lock.json
-          fi
 
       - name: Commit and push changes
         id: commit
