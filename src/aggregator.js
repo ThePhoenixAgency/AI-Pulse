@@ -9,6 +9,7 @@ const path = require('path');
 const { Readability } = require('@mozilla/readability');
 const { JSDOM } = require('jsdom');
 const crypto = require('crypto');
+const linkedinHelper = require('./linkedin-helper');
 
 const parser = new Parser({
   timeout: 10000,
@@ -303,6 +304,23 @@ async function main() {
   // Generate README
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
+
+  // LinkedIn Posting (New)
+  try {
+    const allArticles = [].concat(...Object.values(categorizedArticles));
+    if (allArticles.length > 0) {
+      const topArticle = allArticles[0]; // The most recent one
+      console.error(`\nFound latest article: ${topArticle.title}`);
+
+      const postText = await linkedinHelper.generatePost(topArticle);
+      if (postText) {
+        console.error('Generated LinkedIn post. Sending...');
+        await linkedinHelper.postToLinkedIn(postText, topArticle.link);
+      }
+    }
+  } catch (error) {
+    console.error('LinkedIn automation failed:', error.message);
+  }
 
   console.error('\nAggregation complete!');
 }

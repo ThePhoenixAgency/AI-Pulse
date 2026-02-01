@@ -29,10 +29,10 @@ jobs:
       run: npm ci
 
     - name: Aggregate AI, iOT and Cybersecurity articles
-      # LinkedIn integration temporarily disabled
-      # env:
-      #   LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-      #   LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
+      env:
+        LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        LINKEDIN_USER_ID: ${{ secrets.LINKEDIN_USER_ID }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
         node src/aggregator.js > NEW-README.md
 
