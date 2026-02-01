@@ -6,6 +6,11 @@ on:
       - main
     paths:
       - '.github/workflows/dependabot-secure-flow.yml'
+      - '.github/dependabot.yml'
+      - 'action.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'docs/ACTION_README.md'
   workflow_dispatch:
 
 permissions:
