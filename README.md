@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sun, 01 Feb 2026 21:30:12 GMT
+**Last Update:** Mon, 02 Feb 2026 02:47:11 GMT
 
 ---
 
@@ -25,274 +25,274 @@
 
 ## Internet of Things & Hardware
 
-### 1. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
+### 1. [This Stream Deck alternative runs on an Arduino UNO Q](https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/)
+**Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
+If you do a lot of creative work, you’ve probably found that your computer’s keyboard and mouse alone just don’t cut it. There are simply too many different shortcuts and macros to cover with memorable key combos. That’s why BlommeJan used an Arduino UNO Q to build the Starkpad. Starkpad is similar to an Elgato […]
+The post This Stream Deck alternative runs on an Arduino UNO Q appeared first on Arduino Blog.
+
+### 2. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 IotaComm introduces its 800 MHz LoRaWAN Reference Design alongside the Environmental Sensor, the first FCC-authorized device on its licensed spectrum platform, enabling advanced IoT deployments for critical infrastructure and smart environments.
 The post IotaComm 800 MHz LoRaWAN Reference Design and Sensor appeared first on IoT Business News.
 
-### 2. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
+### 3. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 Smart home and IoT devices are nice and all, but controlling them always feels a bit clunky. It seems like it always comes down to trying a voice command and then, when that fails, opening an app on a smartphone and pushing a button. That’s why Unnecessary Inventions’ Matty Benedetto came up with this much […]
 The post This Twister-inspired coffee table controls things resting on it appeared first on Arduino Blog.
 
-### 3. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
+### 4. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 One of the things we love most about the Arduino community is the way knowledge flows freely – makers, engineers, and hobbyists sharing what they’ve learned so others can build on it. Case in point, the in-depth technical analyses coming from MyEmbeddedStuff, a blog dedicated to embedded systems written by an engineer with over seven […]
 The post Community spotlight: MyEmbeddedStuff appeared first on Arduino Blog.
 
-### 4. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
+### 5. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 AT&amp;T's Connected Spaces, now available on AWS Marketplace, provides businesses with a scalable, secure IoT solution featuring easy installation and real-time monitoring to optimize operations across various industries.
 The post AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace appeared first on IoT Business News.
 
-### 5. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
+### 6. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Raspberry Pi Zero 2 W helps hobby farmers automate their coops, keeping their chickens safe, fed, and watered.
 The post SmartCoop: Controlling chickens with Java appeared first on Raspberry Pi.
 
-### 6. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
+### 7. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The shift to vertical-specific IoT stacks addresses industry-specific challenges by combining tailored connectivity, data models, workflows, and analytics to deliver faster outcomes suited to manufacturing, energy, logistics, and more.
 The post The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms appeared first on IoT Business News.
 
-### 7. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
+### 8. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Vodafone IoT and Skylo are collaborating to trial a hybrid NTN NB-IoT satellite connectivity service, aiming to extend IoT coverage to remote areas and integrate seamless switching between cellular and satellite networks.
 The post Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers appeared first on IoT Business News.
 
-### 8. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
+### 9. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 ALEC, a Swiss startup, has developed an open source compression codec that cuts IoT data transmission costs by 90%, significantly improving bandwidth usage and battery life for sensor devices across industries.
 The post Swiss Startup ALEC Cuts IoT Transmission Costs by 90% appeared first on IoT Business News.
 
-### 9. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
+### 10. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Meet the Raspberry Pi Smart Display Module: an adapter board for Compute Module 5, set to launch later this year.
 The post Raspberry Pi Smart Display Module: coming soon appeared first on Raspberry Pi.
 
-### 10. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
+### 11. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 In a movie full of cool stuff, the most compelling fantasy in The Matrix is the ability to download and instantly learn skills. When skills take hundreds or even many thousands of hours to develop in the real world, that kind of on-demand skill access would be incredible. Designed by researchers at the University of […]
 The post WireDrum forces your muscles to learn skills appeared first on Arduino Blog.
 
-### 11. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
+### 12. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Key Insights (AI-assisted): Crossing 100 million managed connections indicates that large-scale, cloud-native CMPs are consolidating power in cellular IoT. This scale reduces per-device connectivity and security overhead, making complex, global deployments more economically viable for OEMs and MNOs. It also accelerates the shift toward AI-driven automation in lifecycle management, observability and threat detection, which smaller ...
 The post Aeris Surpasses 100 Million Connected Devices appeared first on IoT Business News.
 
-### 12. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
+### 13. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Semtech launches AirLink RX400 and EX400, power-efficient rugged 5G RedCap routers ideal for industrial IoT, offering reliable connectivity with low power use and suitability for off-grid deployments.
 The post Semtech Launches Power-Efficient Rugged 5G RedCap Routers appeared first on IoT Business News.
 
-### 13. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
+### 14. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Build custom datasets to train, test, verify, and refine your AI models on the Raspberry Pi AI Camera.
 The post Streamline dataset creation for the Raspberry Pi AI Camera appeared first on Raspberry Pi.
 
-### 14. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
+### 15. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Predictive Maintenance 2.0 shifts focus from detecting symptoms like vibration to monitoring environmental causes such as air quality, enabling proactive equipment care and improved operational efficiency.
 The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late appeared first on IoT Business News.
 
-### 15. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
+### 16. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Netmore has acquired Actility, uniting their global LoRaWAN ecosystems to form the largest network with over 14 million IoT devices, expanding deployments across 100+ countries and fostering innovation in Massive IoT solutions.
 The post Netmore Acquires Actility to Lead Global Massive IoT appeared first on IoT Business News.
 
-### 16. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
+### 17. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The electronic offender monitoring market is expanding across Europe, the Americas, and Oceania, reaching 1.6 million participants in 2025 and forecasted to grow steadily by 2030.
 The post Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania appeared first on IoT Business News.
 
-### 17. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
+### 18. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Iridium Communications has begun on-air trials of Iridium NTN Direct, a global NB-IoT satellite service set for beta release in 2026, targeting expanded IoT coverage for mobile operators and device makers.
 The post Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta appeared first on IoT Business News.
 
-### 18. [Hikvision forecasts top 5 AIoT trends for 2026](https://iotbusinessnews.com/2026/01/23/hikvision-forecasts-top-5-aiot-trends-for-2026/)
+### 19. [Hikvision forecasts top 5 AIoT trends for 2026](https://iotbusinessnews.com/2026/01/23/hikvision-forecasts-top-5-aiot-trends-for-2026/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Hikvision forecasts top AIoT trends for 2026, emphasizing the integration of AI and IoT in business, edge computing advancements, ethical AI practices, and expanding applications in social and environmental sectors.
 The post Hikvision forecasts top 5 AIoT trends for 2026 appeared first on IoT Business News.
 
-### 19. [Tageos and Wiliot Partner on Battery-Free BLE Sensing](https://iotbusinessnews.com/2026/01/23/tageos-and-wiliot-partner-on-battery-free-ble-sensing/)
+### 20. [Tageos and Wiliot Partner on Battery-Free BLE Sensing](https://iotbusinessnews.com/2026/01/23/tageos-and-wiliot-partner-on-battery-free-ble-sensing/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Tageos and Wiliot have partnered to launch the battery-free EOS-654 BLE G3 inlay, enabling extended range and reliable Bluetooth Low Energy sensing for supply chain tracking via Wiliot's Gen3 IoT Pixel sensor and Intelligence Platform.
 The post Tageos and Wiliot Partner on Battery-Free BLE Sensing appeared first on IoT Business News.
 
-### 20. [Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory](https://www.raspberrypi.com/news/raspberry-pi-flash-drive-available-now-from-30-a-high-quality-essential-accessory/)
+### 21. [Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory](https://www.raspberrypi.com/news/raspberry-pi-flash-drive-available-now-from-30-a-high-quality-essential-accessory/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 A compact and robust USB 3.0 device with fast data transfer and an all-aluminium enclosure, available in 128GB and 256GB.
 The post Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory appeared first on Raspberry Pi.
 
-### 21. [USB gadget mode in Raspberry Pi OS: SSH over USB](https://www.raspberrypi.com/news/usb-gadget-mode-in-raspberry-pi-os-ssh-over-usb/)
+### 22. [USB gadget mode in Raspberry Pi OS: SSH over USB](https://www.raspberrypi.com/news/usb-gadget-mode-in-raspberry-pi-os-ssh-over-usb/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Enable USB gadget networking on your Raspberry Pi with rpi-usb-gadget, now included by default in Raspberry Pi OS Trixie.
 The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Raspberry Pi.
 
-### 22. [Latin America and the Caribbean poised for smart metering boom](https://iotbusinessnews.com/2026/01/20/latin-america-and-the-caribbean-poised-for-smart-metering-boom/)
+### 23. [Latin America and the Caribbean poised for smart metering boom](https://iotbusinessnews.com/2026/01/20/latin-america-and-the-caribbean-poised-for-smart-metering-boom/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Smart electricity meter installations in Latin America and the Caribbean are expected to grow rapidly by 2030, led by Brazil and Mexico, improving efficiency and reducing losses across the region's utilities.
 The post Latin America and the Caribbean poised for smart metering boom appeared first on IoT Business News.
 
-### 23. [Arduino UNO Q is now available with 4GB RAM and 32GB storage!](https://blog.arduino.cc/2026/01/20/arduino-uno-q-is-now-available-with-4gb-ram-and-32gb-storage/)
+### 24. [Arduino UNO Q is now available with 4GB RAM and 32GB storage!](https://blog.arduino.cc/2026/01/20/arduino-uno-q-is-now-available-with-4gb-ram-and-32gb-storage/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 We’ve already seen lots of amazing projects based on Arduino UNO Q come up since its launch in early October – but we’re doubling down anyway!  Today, we are launching a new Arduino UNO Q variant with 4GB of RAM and 32GB of eMMC storage, allowing all of you to dream bigger and go further, while […]
 The post Arduino UNO Q is now available with 4GB RAM and 32GB storage! appeared first on Arduino Blog.
 
-### 24. [Meet Larry Bank: the performance whisperer making code faster and open source better](https://blog.arduino.cc/2026/01/15/meet-larry-bank-the-performance-whisperer-making-code-faster-and-open-source-better/)
+### 25. [Meet Larry Bank: the performance whisperer making code faster and open source better](https://blog.arduino.cc/2026/01/15/meet-larry-bank-the-performance-whisperer-making-code-faster-and-open-source-better/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 When we met Larry Bank at Maker Faire Rome 2025, we knew immediately that he was someone our community needed to hear from. Bank is what you might call a “perpetual optimist and inventor” – someone who not only sees problems but convinces people he can solve them, then does exactly that. His specialty? Code […]
 The post Meet Larry Bank: the performance whisperer making code faster and open source better appeared first on Arduino Blog.
 
-### 25. [Fibocom Launches Global LTE Cat.1 bis Module LE271-GL](https://iotbusinessnews.com/2026/01/15/fibocom-launches-global-lte-cat-1-bis-module-le271-gl/)
+### 26. [Fibocom Launches Global LTE Cat.1 bis Module LE271-GL](https://iotbusinessnews.com/2026/01/15/fibocom-launches-global-lte-cat-1-bis-module-le271-gl/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Fibocom introduces the LE271-GL, a global LTE Cat.1 bis module delivering compact design, low power consumption, and broad frequency coverage to support diverse IoT applications like asset tracking and consumer electronics.
 The post Fibocom Launches Global LTE Cat.1 bis Module LE271-GL appeared first on IoT Business News.
 
-### 26. [Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5](https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/)
+### 27. [Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5](https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Unlock 40 TOPS of on-device generative AI capability with the Raspberry Pi AI HAT+ 2: available now at $130.
 The post Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5 appeared first on Raspberry Pi.
 
-### 27. [Flokk herd management with Raspberry Pi Zero W](https://www.raspberrypi.com/news/flokk-herd-management-with-raspberry-pi-zero-w/)
+### 28. [Flokk herd management with Raspberry Pi Zero W](https://www.raspberrypi.com/news/flokk-herd-management-with-raspberry-pi-zero-w/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Trade tariffs and traceability are two good spurs to improving Canadian cattle tracking using Raspberry Pi handsets.
 The post Flokk herd management with Raspberry Pi Zero W appeared first on Raspberry Pi.
 
-### 28. [The Matrix-style digital rain clock for your desktop](https://blog.arduino.cc/2026/01/12/the-matrix-style-digital-rain-clock-for-your-desktop/)
+### 29. [The Matrix-style digital rain clock for your desktop](https://blog.arduino.cc/2026/01/12/the-matrix-style-digital-rain-clock-for-your-desktop/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 That “digital rain” falling character animation from The Matrix is absolutely iconic. If you love the way it looks, you should build this desk clock by Bob Hammell that features the visualization. This smallish desk clock shows the time, with a digital rain effect from The Matrix overlaid on top. As the characters fall across […]
 The post The Matrix-style digital rain clock for your desktop appeared first on Arduino Blog.
 
-### 29. [Brilliant beginner builds](https://www.raspberrypi.com/news/brilliant-beginner-builds/)
+### 30. [Brilliant beginner builds](https://www.raspberrypi.com/news/brilliant-beginner-builds/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Make something cool with your brand-new Raspberry Pi.
 The post Brilliant beginner builds appeared first on Raspberry Pi.
-
-### 30. [Sixfab wins big at CES with Raspberry Pi–powered AI gateway](https://www.raspberrypi.com/news/sixfab-wins-big-at-ces-with-raspberry-pi-powered-ai-gateway/)
-**Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
-Sixfab, a long-standing Raspberry Pi Design Partner, wins the CES 2026 Best of Innovation Award – the event's highest honour.
-The post Sixfab wins big at CES with Raspberry Pi–powered AI gateway appeared first on Raspberry Pi.
 
 ---
 
 ## Artificial Intelligence
 
-### 1. [Why Tether’s CEO is everywhere right now](https://techcrunch.com/2026/02/01/why-tethers-ceo-is-everywhere-right-now/)
+### 1. [AI layoffs or ‘AI-washing’?](https://techcrunch.com/2026/02/01/ai-layoffs-or-ai-washing/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+How many of the companies with recent layoffs are just using AI as an excuse?
+
+### 2. [Why Tether’s CEO is everywhere right now](https://techcrunch.com/2026/02/01/why-tethers-ceo-is-everywhere-right-now/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 For years, Tether's CEO avoided the United States, watching from offshore as regulators circled and prosecutors investigated. Those days are over.
 
-### 2. [Indonesia ‘conditionally’ lifts ban on Grok](https://techcrunch.com/2026/02/01/indonesia-conditionally-lifts-ban-on-grok/)
+### 3. [Indonesia ‘conditionally’ lifts ban on Grok](https://techcrunch.com/2026/02/01/indonesia-conditionally-lifts-ban-on-grok/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Indonesia has followed Malaysia and the Philippines in lifting a ban on xAI’s chatbot Grok.
 
-### 3. [India offers zero taxes through 2047 to lure global AI workloads](https://techcrunch.com/2026/02/01/india-offers-zero-taxes-through-2047-to-lure-global-ai-workloads/)
+### 4. [India offers zero taxes through 2047 to lure global AI workloads](https://techcrunch.com/2026/02/01/india-offers-zero-taxes-through-2047-to-lure-global-ai-workloads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 New Delhi's latest move comes as Amazon, Google, and Microsoft expand data center investments in India.
 
-### 4. [Bye-bye corporate conglomerates. Hello personal conglomerates.](https://techcrunch.com/2026/02/01/bye-bye-corporate-conglomerates-hello-personal-conglomerates/)
+### 5. [Bye-bye corporate conglomerates. Hello personal conglomerates.](https://techcrunch.com/2026/02/01/bye-bye-corporate-conglomerates-hello-personal-conglomerates/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk's reported merging of SpaceX, xAI, and Tesla harkens back to the heyday of General Electric — or maybe the robber barons of the Gilded Age.
 
-### 5. [Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization](https://towardsdatascience.com/distributed-reinforcement-learning-for-scalable-high-performance-policy-optimization/)
+### 6. [Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization](https://towardsdatascience.com/distributed-reinforcement-learning-for-scalable-high-performance-policy-optimization/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Leveraging massive parallelism, asynchronous updates, and multi-machine training to match and exceed human-level performance
 The post Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization appeared first on Towards Data Science.
 
-### 6. [Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled](https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/)
+### 7. [Nvidia CEO pushes back against report that his company’s $100B OpenAI investment has stalled](https://techcrunch.com/2026/01/31/nvidia-ceo-pushes-back-against-report-that-his-companys-100b-openai-investment-has-stalled/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Nvidia CEO Jensen Huang said that a recent report of friction between his company and OpenAI was “nonsense.”
 
-### 7. [How to Apply Agentic Coding to Solve Problems](https://towardsdatascience.com/how-to-apply-agentic-coding-to-solve-problem/)
+### 8. [How to Apply Agentic Coding to Solve Problems](https://towardsdatascience.com/how-to-apply-agentic-coding-to-solve-problem/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to efficiently solve problems with coding agents
 The post How to Apply Agentic Coding to Solve Problems appeared first on Towards Data Science.
 
-### 8. [How to Run Claude Code for Free with Local and Cloud Models from Ollama](https://towardsdatascience.com/run-claude-code-for-free-with-local-and-cloud-models-from-ollama/)
+### 9. [How to Run Claude Code for Free with Local and Cloud Models from Ollama](https://towardsdatascience.com/run-claude-code-for-free-with-local-and-cloud-models-from-ollama/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Ollama now offers Anthropic API compatibility
 The post How to Run Claude Code for Free with Local and Cloud Models from Ollama appeared first on Towards Data Science.
 
-### 9. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
+### 10. [A peek inside Physical Intelligence, the startup building Silicon Valley’s buzziest robot brains](https://techcrunch.com/2026/01/30/physical-intelligence-stripe-veteran-lachy-grooms-latest-bet-is-building-silicon-valleys-buzziest-robot-brains/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If co-founder Lachy Groom has any doubts, he doesn’t show it. He’s working with people who've been working on this problem for decades and who believe the timing is finally right, which is all he needs to know.
 
-### 10. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
+### 11. [OpenClaw’s AI assistants are now building their own social network](https://techcrunch.com/2026/01/30/openclaws-ai-assistants-are-now-building-their-own-social-network/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The viral personal AI assistant formerly known as Clawdbot has a new shell — again. After briefly rebranding as Moltbot, it has now picked OpenClaw as its new name.
 
-### 11. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
+### 12. [Anthropic brings agentic plug-ins to Cowork](https://techcrunch.com/2026/01/30/anthropic-brings-agentic-plugins-to-cowork/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company says you can use plug-ins to "tell Claude how you like work done, which tools and data to pull from, how to handle critical workflows, and what slash commands to expose so your team gets more consistent outcomes."
 
-### 12. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
+### 13. [Creating an Etch A Sketch App Using Python and Turtle](https://towardsdatascience.com/creating-an-etch-a-sketch-app-using-python-turtle/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A beginner-friendly Python tutorial
 The post Creating an Etch A Sketch App Using Python and Turtle appeared first on Towards Data Science.
 
-### 13. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
+### 14. [Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents”](https://towardsdatascience.com/why-your-multi-agent-system-is-failing-escaping-the-17x-error-trap-of-the-bag-of-agents/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Hard-won lessons on how to scale agentic systems without scaling the chaos, including a taxonomy of core agent types.
 The post Why Your Multi-Agent System is Failing: Escaping the 17x Error Trap of the “Bag of Agents” appeared first on Towards Data Science.
 
-### 14. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
+### 15. [Last 24 hours to grab your plus-one pass at 50% off to TechCrunch Disrupt 2026](https://techcrunch.com/2026/01/30/last-24-hours-to-grab-your-1-pass-at-50-off-to-techcrunch-disrupt-2026/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Today is the last day to lock in a plus-one pass at 50% off to TechCrunch Disrupt 2026, happening on October 13-15 in San Francisco.
 
-### 15. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
+### 16. [On the Possibility of Small Networks for Physics-Informed Learning](https://towardsdatascience.com/on-the-possibility-of-small-networks-for-physics-informed-learning/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A new kind of hyperparameter study
 The post On the Possibility of Small Networks for Physics-Informed Learning appeared first on Towards Data Science.
 
-### 16. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
+### 17. [Multi-Attribute Decision Matrices, Done Right](https://towardsdatascience.com/multi-attribute-decision-matrices-done-right/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How to structure decisions, identify efficient options, and avoid misleading value metrics
 The post Multi-Attribute Decision Matrices, Done Right appeared first on Towards Data Science.
 
-### 17. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
+### 18. [AI use surges at Travelers as call centre roles reduce](https://www.artificialintelligence-news.com/news/travelers-ai-in-contact-centres-two-stage-innovation-strategy/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Mid-January saw insurance company, Travelers, announce a new deal that empowers 10,000 engineers and data scientists with AI assistants. However, less than two weeks on, Travelers’ leadership explained that the company’s true competitive advantage lies in expertise, not AIs alone, believing this is what will drive longer-term profit growth. According to Travelers’ chief executive officer […]
 The post AI use surges at Travelers as call centre roles reduce appeared first on AI News.
 
-### 18. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
+### 19. [PepsiCo is using AI to rethink how factories are designed and updated](https://www.artificialintelligence-news.com/news/pepsico-is-using-ai-to-rethink-how-factories-are-designed-and-updated/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For many large companies, the most useful form of AI right now has little to do with writing emails or answering questions. At PepsiCo, AI is being tested in places where mistakes are costly and changes are hard to undo — factory layouts, production lines, and physical operations. That shift is visible in how PepsiCo […]
 The post PepsiCo is using AI to rethink how factories are designed and updated appeared first on AI News.
 
-### 19. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
+### 20. [China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground](https://www.artificialintelligence-news.com/news/china-hyperscalers-agentic-ai-commerce-battleground/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The artificial intelligence industry’s pivot toward agentic AI – systems capable of autonomously executing multi-step tasks – has dominated technology discussions in recent months. But while Western firms focus on foundational models and cross-platform interoperability, China’s technology giants are racing to dominate through commerce integration, a divergence that could reshape how enterprises deploy autonomous systems […]
 The post China’s hyperscalers bet billions on agentic AI as commerce becomes the new battleground appeared first on AI News.
 
-### 20. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
+### 21. [Guys, I don’t think Tim Cook knows how to monetize AI](https://techcrunch.com/2026/01/29/guys-i-dont-think-tim-cook-knows-how-to-monetize-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 One intrepid Morgan Stanley analyst dared to ask how Apple will make money on its AI investments. The answer will not shock you.
 
-### 21. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
+### 22. [Elon Musk’s SpaceX, Tesla, and xAI in talks to merge, according to reports](https://techcrunch.com/2026/01/29/elon-musk-spacex-tesla-xai-merger-talks-ipo-reuters/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This merger would bring the Grok chatbot, Starlink satellites, and SpaceX rockets together under one corporation.
 
-### 22. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
+### 23. [Amazon is reportedly in talks to invest $50B in OpenAI](https://techcrunch.com/2026/01/29/amazon-is-reportedly-in-talks-to-invest-50-billion-in-openai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If a deal materializes, it would mean Amazon is backing competing startups in the race for AI supremacy.
 
-### 23. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
+### 24. [Satya Nadella insists people are using Microsoft’s Copilot AI a lot  ](https://techcrunch.com/2026/01/29/satya-nadella-insists-people-are-using-microsofts-copilot-ai-a-lot/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 With Microsoft spending many billions on data centers, and rumors that no one is using its AI, CEO Satya Nadella shared some usage numbers.
 
-### 24. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
+### 25. [Apple buys Israeli startup Q.ai as the AI race heats up](https://techcrunch.com/2026/01/29/apple-buys-israeli-startup-q-ai-as-the-ai-race-heats-up/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Q.ai is an Israeli startup specializing in imaging and machine learning, particularly technologies that enable devices to interpret whispered speech and enhance audio in noisy environments.
 
-### 25. [TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More](https://towardsdatascience.com/tds-newsletter-january-must-reads-on-data-platforms-infinite-context-and-more/)
+### 26. [TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More](https://towardsdatascience.com/tds-newsletter-january-must-reads-on-data-platforms-infinite-context-and-more/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Don't miss our most-read and -shared stories of the past month
 The post TDS Newsletter: January Must-Reads on Data Platforms, Infinite Context, and More appeared first on Towards Data Science.
-
-### 26. [I built marshmallow castles in Google’s new AI-world generator](https://techcrunch.com/2026/01/29/i-built-marshmallow-castles-in-googles-new-ai-world-generator-project-genie/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Starting Thursday, Google AI Ultra subscribers in the U.S. can play around with Project Genie, which is powered by a combination of Google’s latest world model Genie 3, its image generation model Nano Banana Pro, and Gemini.
 
 ### 27. [Optimizing Vector Search: Why You Should Flatten Structured Data ](https://towardsdatascience.com/optimizing-vector-search-why-you-should-flatten-structured-data/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
