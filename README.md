@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Mon, 02 Feb 2026 05:03:37 GMT
+**Last Update:** Mon, 02 Feb 2026 07:11:20 GMT
 
 ---
 
@@ -25,155 +25,155 @@
 
 ## Internet of Things & Hardware
 
-### 1. [This Stream Deck alternative runs on an Arduino UNO Q](https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/)
+### 1. [More memory-driven price rises](https://www.raspberrypi.com/news/more-memory-driven-price-rises/)
+**Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
+Memory-driven price rises for Raspberry Pi 4 and 5 and Compute Module 4 and 5, but 1GB variants are unaffected.
+The post More memory-driven price rises appeared first on Raspberry Pi.
+
+### 2. [This Stream Deck alternative runs on an Arduino UNO Q](https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 If you do a lot of creative work, you’ve probably found that your computer’s keyboard and mouse alone just don’t cut it. There are simply too many different shortcuts and macros to cover with memorable key combos. That’s why BlommeJan used an Arduino UNO Q to build the Starkpad. Starkpad is similar to an Elgato […]
 The post This Stream Deck alternative runs on an Arduino UNO Q appeared first on Arduino Blog.
 
-### 2. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
+### 3. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 IotaComm introduces its 800 MHz LoRaWAN Reference Design alongside the Environmental Sensor, the first FCC-authorized device on its licensed spectrum platform, enabling advanced IoT deployments for critical infrastructure and smart environments.
 The post IotaComm 800 MHz LoRaWAN Reference Design and Sensor appeared first on IoT Business News.
 
-### 3. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
+### 4. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 Smart home and IoT devices are nice and all, but controlling them always feels a bit clunky. It seems like it always comes down to trying a voice command and then, when that fails, opening an app on a smartphone and pushing a button. That’s why Unnecessary Inventions’ Matty Benedetto came up with this much […]
 The post This Twister-inspired coffee table controls things resting on it appeared first on Arduino Blog.
 
-### 4. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
+### 5. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 One of the things we love most about the Arduino community is the way knowledge flows freely – makers, engineers, and hobbyists sharing what they’ve learned so others can build on it. Case in point, the in-depth technical analyses coming from MyEmbeddedStuff, a blog dedicated to embedded systems written by an engineer with over seven […]
 The post Community spotlight: MyEmbeddedStuff appeared first on Arduino Blog.
 
-### 5. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
+### 6. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 AT&amp;T's Connected Spaces, now available on AWS Marketplace, provides businesses with a scalable, secure IoT solution featuring easy installation and real-time monitoring to optimize operations across various industries.
 The post AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace appeared first on IoT Business News.
 
-### 6. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
+### 7. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Raspberry Pi Zero 2 W helps hobby farmers automate their coops, keeping their chickens safe, fed, and watered.
 The post SmartCoop: Controlling chickens with Java appeared first on Raspberry Pi.
 
-### 7. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
+### 8. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The shift to vertical-specific IoT stacks addresses industry-specific challenges by combining tailored connectivity, data models, workflows, and analytics to deliver faster outcomes suited to manufacturing, energy, logistics, and more.
 The post The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms appeared first on IoT Business News.
 
-### 8. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
+### 9. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Vodafone IoT and Skylo are collaborating to trial a hybrid NTN NB-IoT satellite connectivity service, aiming to extend IoT coverage to remote areas and integrate seamless switching between cellular and satellite networks.
 The post Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers appeared first on IoT Business News.
 
-### 9. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
+### 10. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 ALEC, a Swiss startup, has developed an open source compression codec that cuts IoT data transmission costs by 90%, significantly improving bandwidth usage and battery life for sensor devices across industries.
 The post Swiss Startup ALEC Cuts IoT Transmission Costs by 90% appeared first on IoT Business News.
 
-### 10. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
+### 11. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Meet the Raspberry Pi Smart Display Module: an adapter board for Compute Module 5, set to launch later this year.
 The post Raspberry Pi Smart Display Module: coming soon appeared first on Raspberry Pi.
 
-### 11. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
+### 12. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 In a movie full of cool stuff, the most compelling fantasy in The Matrix is the ability to download and instantly learn skills. When skills take hundreds or even many thousands of hours to develop in the real world, that kind of on-demand skill access would be incredible. Designed by researchers at the University of […]
 The post WireDrum forces your muscles to learn skills appeared first on Arduino Blog.
 
-### 12. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
+### 13. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Key Insights (AI-assisted): Crossing 100 million managed connections indicates that large-scale, cloud-native CMPs are consolidating power in cellular IoT. This scale reduces per-device connectivity and security overhead, making complex, global deployments more economically viable for OEMs and MNOs. It also accelerates the shift toward AI-driven automation in lifecycle management, observability and threat detection, which smaller ...
 The post Aeris Surpasses 100 Million Connected Devices appeared first on IoT Business News.
 
-### 13. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
+### 14. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Semtech launches AirLink RX400 and EX400, power-efficient rugged 5G RedCap routers ideal for industrial IoT, offering reliable connectivity with low power use and suitability for off-grid deployments.
 The post Semtech Launches Power-Efficient Rugged 5G RedCap Routers appeared first on IoT Business News.
 
-### 14. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
+### 15. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Build custom datasets to train, test, verify, and refine your AI models on the Raspberry Pi AI Camera.
 The post Streamline dataset creation for the Raspberry Pi AI Camera appeared first on Raspberry Pi.
 
-### 15. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
+### 16. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Predictive Maintenance 2.0 shifts focus from detecting symptoms like vibration to monitoring environmental causes such as air quality, enabling proactive equipment care and improved operational efficiency.
 The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late appeared first on IoT Business News.
 
-### 16. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
+### 17. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Netmore has acquired Actility, uniting their global LoRaWAN ecosystems to form the largest network with over 14 million IoT devices, expanding deployments across 100+ countries and fostering innovation in Massive IoT solutions.
 The post Netmore Acquires Actility to Lead Global Massive IoT appeared first on IoT Business News.
 
-### 17. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
+### 18. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The electronic offender monitoring market is expanding across Europe, the Americas, and Oceania, reaching 1.6 million participants in 2025 and forecasted to grow steadily by 2030.
 The post Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania appeared first on IoT Business News.
 
-### 18. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
+### 19. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Iridium Communications has begun on-air trials of Iridium NTN Direct, a global NB-IoT satellite service set for beta release in 2026, targeting expanded IoT coverage for mobile operators and device makers.
 The post Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta appeared first on IoT Business News.
 
-### 19. [Hikvision forecasts top 5 AIoT trends for 2026](https://iotbusinessnews.com/2026/01/23/hikvision-forecasts-top-5-aiot-trends-for-2026/)
+### 20. [Hikvision forecasts top 5 AIoT trends for 2026](https://iotbusinessnews.com/2026/01/23/hikvision-forecasts-top-5-aiot-trends-for-2026/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Hikvision forecasts top AIoT trends for 2026, emphasizing the integration of AI and IoT in business, edge computing advancements, ethical AI practices, and expanding applications in social and environmental sectors.
 The post Hikvision forecasts top 5 AIoT trends for 2026 appeared first on IoT Business News.
 
-### 20. [Tageos and Wiliot Partner on Battery-Free BLE Sensing](https://iotbusinessnews.com/2026/01/23/tageos-and-wiliot-partner-on-battery-free-ble-sensing/)
+### 21. [Tageos and Wiliot Partner on Battery-Free BLE Sensing](https://iotbusinessnews.com/2026/01/23/tageos-and-wiliot-partner-on-battery-free-ble-sensing/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Tageos and Wiliot have partnered to launch the battery-free EOS-654 BLE G3 inlay, enabling extended range and reliable Bluetooth Low Energy sensing for supply chain tracking via Wiliot's Gen3 IoT Pixel sensor and Intelligence Platform.
 The post Tageos and Wiliot Partner on Battery-Free BLE Sensing appeared first on IoT Business News.
 
-### 21. [Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory](https://www.raspberrypi.com/news/raspberry-pi-flash-drive-available-now-from-30-a-high-quality-essential-accessory/)
+### 22. [Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory](https://www.raspberrypi.com/news/raspberry-pi-flash-drive-available-now-from-30-a-high-quality-essential-accessory/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 A compact and robust USB 3.0 device with fast data transfer and an all-aluminium enclosure, available in 128GB and 256GB.
 The post Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory appeared first on Raspberry Pi.
 
-### 22. [USB gadget mode in Raspberry Pi OS: SSH over USB](https://www.raspberrypi.com/news/usb-gadget-mode-in-raspberry-pi-os-ssh-over-usb/)
+### 23. [USB gadget mode in Raspberry Pi OS: SSH over USB](https://www.raspberrypi.com/news/usb-gadget-mode-in-raspberry-pi-os-ssh-over-usb/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Enable USB gadget networking on your Raspberry Pi with rpi-usb-gadget, now included by default in Raspberry Pi OS Trixie.
 The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Raspberry Pi.
 
-### 23. [Latin America and the Caribbean poised for smart metering boom](https://iotbusinessnews.com/2026/01/20/latin-america-and-the-caribbean-poised-for-smart-metering-boom/)
+### 24. [Latin America and the Caribbean poised for smart metering boom](https://iotbusinessnews.com/2026/01/20/latin-america-and-the-caribbean-poised-for-smart-metering-boom/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Smart electricity meter installations in Latin America and the Caribbean are expected to grow rapidly by 2030, led by Brazil and Mexico, improving efficiency and reducing losses across the region's utilities.
 The post Latin America and the Caribbean poised for smart metering boom appeared first on IoT Business News.
 
-### 24. [Arduino UNO Q is now available with 4GB RAM and 32GB storage!](https://blog.arduino.cc/2026/01/20/arduino-uno-q-is-now-available-with-4gb-ram-and-32gb-storage/)
+### 25. [Arduino UNO Q is now available with 4GB RAM and 32GB storage!](https://blog.arduino.cc/2026/01/20/arduino-uno-q-is-now-available-with-4gb-ram-and-32gb-storage/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 We’ve already seen lots of amazing projects based on Arduino UNO Q come up since its launch in early October – but we’re doubling down anyway!  Today, we are launching a new Arduino UNO Q variant with 4GB of RAM and 32GB of eMMC storage, allowing all of you to dream bigger and go further, while […]
 The post Arduino UNO Q is now available with 4GB RAM and 32GB storage! appeared first on Arduino Blog.
 
-### 25. [Meet Larry Bank: the performance whisperer making code faster and open source better](https://blog.arduino.cc/2026/01/15/meet-larry-bank-the-performance-whisperer-making-code-faster-and-open-source-better/)
+### 26. [Meet Larry Bank: the performance whisperer making code faster and open source better](https://blog.arduino.cc/2026/01/15/meet-larry-bank-the-performance-whisperer-making-code-faster-and-open-source-better/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 When we met Larry Bank at Maker Faire Rome 2025, we knew immediately that he was someone our community needed to hear from. Bank is what you might call a “perpetual optimist and inventor” – someone who not only sees problems but convinces people he can solve them, then does exactly that. His specialty? Code […]
 The post Meet Larry Bank: the performance whisperer making code faster and open source better appeared first on Arduino Blog.
 
-### 26. [Fibocom Launches Global LTE Cat.1 bis Module LE271-GL](https://iotbusinessnews.com/2026/01/15/fibocom-launches-global-lte-cat-1-bis-module-le271-gl/)
+### 27. [Fibocom Launches Global LTE Cat.1 bis Module LE271-GL](https://iotbusinessnews.com/2026/01/15/fibocom-launches-global-lte-cat-1-bis-module-le271-gl/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Fibocom introduces the LE271-GL, a global LTE Cat.1 bis module delivering compact design, low power consumption, and broad frequency coverage to support diverse IoT applications like asset tracking and consumer electronics.
 The post Fibocom Launches Global LTE Cat.1 bis Module LE271-GL appeared first on IoT Business News.
 
-### 27. [Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5](https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/)
+### 28. [Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5](https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Unlock 40 TOPS of on-device generative AI capability with the Raspberry Pi AI HAT+ 2: available now at $130.
 The post Introducing the Raspberry Pi AI HAT+ 2: Generative AI on Raspberry Pi 5 appeared first on Raspberry Pi.
 
-### 28. [Flokk herd management with Raspberry Pi Zero W](https://www.raspberrypi.com/news/flokk-herd-management-with-raspberry-pi-zero-w/)
+### 29. [Flokk herd management with Raspberry Pi Zero W](https://www.raspberrypi.com/news/flokk-herd-management-with-raspberry-pi-zero-w/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Trade tariffs and traceability are two good spurs to improving Canadian cattle tracking using Raspberry Pi handsets.
 The post Flokk herd management with Raspberry Pi Zero W appeared first on Raspberry Pi.
 
-### 29. [The Matrix-style digital rain clock for your desktop](https://blog.arduino.cc/2026/01/12/the-matrix-style-digital-rain-clock-for-your-desktop/)
+### 30. [The Matrix-style digital rain clock for your desktop](https://blog.arduino.cc/2026/01/12/the-matrix-style-digital-rain-clock-for-your-desktop/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 That “digital rain” falling character animation from The Matrix is absolutely iconic. If you love the way it looks, you should build this desk clock by Bob Hammell that features the visualization. This smallish desk clock shows the time, with a digital rain effect from The Matrix overlaid on top. As the characters fall across […]
 The post The Matrix-style digital rain clock for your desktop appeared first on Arduino Blog.
-
-### 30. [Brilliant beginner builds](https://www.raspberrypi.com/news/brilliant-beginner-builds/)
-**Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
-Make something cool with your brand-new Raspberry Pi.
-The post Brilliant beginner builds appeared first on Raspberry Pi.
 
 ---
 
@@ -318,147 +318,144 @@ The post The Unbearable Lightness of Coding appeared first on Towards Data Scien
 
 ## Cybersecurity
 
-### 1. [Exposed MongoDB instances still targeted in data extortion attacks](https://www.bleepingcomputer.com/news/security/exposed-mongodb-instances-still-targeted-in-data-extortion-attacks/)
+### 1. [eScan Antivirus Update Servers Compromised to Deliver Multi-Stage Malware](https://thehackernews.com/2026/02/escan-antivirus-update-servers.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The update infrastructure for eScan antivirus, a security solution developed by Indian cybersecurity company MicroWorld Technologies, has been compromised by unknown attackers to deliver a persistent downloader to enterprise and consumer systems.
+"Malicious updates were distributed through eScan's legitimate update infrastructure, resulting in the deployment of multi-stage malware to enterprise
+
+### 2. [Open VSX Supply Chain Attack Used Compromised Dev Account to Spread GlassWorm](https://thehackernews.com/2026/02/open-vsx-supply-chain-attack-used.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity researchers have disclosed details of a supply chain attack targeting the Open VSX Registry in which unidentified threat actors compromised a legitimate developer's resources to push malicious updates to downstream users.
+"On January 30, 2026, four established Open VSX extensions published by the oorzc author had malicious versions published to Open VSX that embed the GlassWorm
+
+### 3. [Exposed MongoDB instances still targeted in data extortion attacks](https://www.bleepingcomputer.com/news/security/exposed-mongodb-instances-still-targeted-in-data-extortion-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A threat actor is targeting exposed MongoDB instances in automated data extortion attacks demanding low ransoms from owners to restore the data. [...]
 
-### 2. [New Apple privacy feature limits location tracking on iPhones, iPads](https://www.bleepingcomputer.com/news/apple/new-apple-privacy-feature-limits-location-tracking-on-iphones-ipads/)
+### 4. [New Apple privacy feature limits location tracking on iPhones, iPads](https://www.bleepingcomputer.com/news/apple/new-apple-privacy-feature-limits-location-tracking-on-iphones-ipads/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Apple is introducing a new privacy feature that lets users limit the precision of location data shared with cellular networks on some iPhone and iPad models. [...]
 
-### 3. [OpenAI says you can trust ChatGPT answers, as it kicks off ads rollout preparation](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-you-can-trust-chatgpt-answers-as-it-kicks-off-ads-rollout-preparation/)
+### 5. [OpenAI says you can trust ChatGPT answers, as it kicks off ads rollout preparation](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-you-can-trust-chatgpt-answers-as-it-kicks-off-ads-rollout-preparation/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 OpenAI previously confirmed that it's testing ads in ChatGPT for free and $8 Go accounts, and now we're seeing early signs of that rollout, at least on Android. [...]
 
-### 4. [OpenAI is retiring famous GPT-4o model, says GPT 5.2 is good enough](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-retiring-famous-gpt-4o-model-says-gpt-52-is-good-enough/)
+### 6. [OpenAI is retiring famous GPT-4o model, says GPT 5.2 is good enough](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-is-retiring-famous-gpt-4o-model-says-gpt-52-is-good-enough/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 OpenAI has confirmed that it's retiring ChatGPT's most popular model called GPT-4o and several other models, including GPT-5 Instant, GPT-5 Thinking, GPT-4.1, GPT-4.1 mini, and o4-mini. [...]
 
-### 5. [U.S. convicts ex-Google engineer for sending AI tech data to China](https://www.bleepingcomputer.com/news/security/us-convicts-ex-google-engineer-for-sending-ai-tech-data-to-china/)
+### 7. [U.S. convicts ex-Google engineer for sending AI tech data to China](https://www.bleepingcomputer.com/news/security/us-convicts-ex-google-engineer-for-sending-ai-tech-data-to-china/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A U.S. federal jury has convicted Linwei Ding, a former software engineer at Google, for stealing AI supercomputer data from his employer and secretly sharing it with Chinese tech firms. [...]
 
-### 6. [Cloud storage payment scam floods inboxes with fake renewals](https://www.bleepingcomputer.com/news/security/cloud-storage-payment-scam-floods-inboxes-with-fake-renewals/)
+### 8. [Cloud storage payment scam floods inboxes with fake renewals](https://www.bleepingcomputer.com/news/security/cloud-storage-payment-scam-floods-inboxes-with-fake-renewals/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Over the past few months, a large-scale cloud storage subscription scam campaign has been targeting users worldwide with repeated emails falsely warning recipients that their photos, files, and accounts are about to be blocked or deleted due to an alleged payment failure. [...]
 
-### 7. [Mandiant details how ShinyHunters abuse SSO to steal cloud data](https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/)
+### 9. [Mandiant details how ShinyHunters abuse SSO to steal cloud data](https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Mandiant says a wave of recent ShinyHunters SaaS data-theft attacks is being fueled by targeted voice phishing (vishing) attacks and company-branded phishing sites that steal single sign-on (SSO) credentials and multi-factor authentication (MFA) codes. [...]
 
-### 8. [eScan Antivirus Delivers Malware in Supply Chain Attack](https://www.securityweek.com/escan-antivirus-delivers-malware-in-supply-chain-attack/)
+### 10. [eScan Antivirus Delivers Malware in Supply Chain Attack](https://www.securityweek.com/escan-antivirus-delivers-malware-in-supply-chain-attack/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Hackers compromised a MicroWorld Technologies update server and fed a malicious file to eScan customers.
 The post eScan Antivirus Delivers Malware in Supply Chain Attack appeared first on SecurityWeek.
 
-### 9. [Researcher reveals evidence of private Instagram profiles leaking photos](https://www.bleepingcomputer.com/news/security/researcher-reveals-evidence-of-private-instagram-profiles-leaking-photos/)
+### 11. [Researcher reveals evidence of private Instagram profiles leaking photos](https://www.bleepingcomputer.com/news/security/researcher-reveals-evidence-of-private-instagram-profiles-leaking-photos/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A researcher has released detailed evidence showing some Instagram private accounts exposed photo links to unauthenticated visitors. The issue was later fixed, but Meta closed the report as not applicable and did not respond to multiple requests for comment. [...]
 
-### 10. [Iran-Linked RedKitten Cyber Campaign Targets Human Rights NGOs and Activists](https://thehackernews.com/2026/01/iran-linked-redkitten-cyber-campaign.html)
+### 12. [Iran-Linked RedKitten Cyber Campaign Targets Human Rights NGOs and Activists](https://thehackernews.com/2026/01/iran-linked-redkitten-cyber-campaign.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A Farsi-speaking threat actor aligned with Iranian state interests is suspected to be behind a new campaign targeting non-governmental organizations and individuals involved in documenting recent human rights abuses.
 The activity, observed by HarfangLab in January 2026, has been codenamed RedKitten. It's said to coincide with the nationwide unrest in Iran that began towards the end of 2025,
 
-### 11. [Mandiant Finds ShinyHunters-Style Vishing Attacks Stealing MFA to Breach SaaS Platforms](https://thehackernews.com/2026/01/mandiant-finds-shinyhunters-using.html)
+### 13. [Mandiant Finds ShinyHunters-Style Vishing Attacks Stealing MFA to Breach SaaS Platforms](https://thehackernews.com/2026/01/mandiant-finds-shinyhunters-using.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Google-owned Mandiant on Friday said it identified an "expansion in threat activity" that uses tradecraft consistent with extortion-themed attacks orchestrated by a financially motivated hacking group known as ShinyHunters.
 The attacks leverage advanced voice phishing (aka vishing) and bogus credential harvesting sites mimicking targeted companies to gain unauthorized access to victim
 
-### 12. [CERT Polska Details Coordinated Cyber Attacks on 30+ Wind and Solar Farms](https://thehackernews.com/2026/01/poland-attributes-december-cyber.html)
+### 14. [CERT Polska Details Coordinated Cyber Attacks on 30+ Wind and Solar Farms](https://thehackernews.com/2026/01/poland-attributes-december-cyber.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 CERT Polska, the Polish computer emergency response team, revealed that coordinated cyber attacks targeted more than 30 wind and photovoltaic farms, a private company from the manufacturing sector, and a large combined heat and power plant (CHP) supplying heat to almost half a million customers in the country.
 The incident took place on December 29, 2025. The agency has attributed the attacks to
 
-### 13. [Crypto wallets received a record $158 billion in illicit funds last year](https://www.bleepingcomputer.com/news/security/crypto-wallets-received-a-record-158-billion-in-illicit-funds-last-year/)
+### 15. [Crypto wallets received a record $158 billion in illicit funds last year](https://www.bleepingcomputer.com/news/security/crypto-wallets-received-a-record-158-billion-in-illicit-funds-last-year/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Illegal cryptocurrency flows hit a record $158 billion in 2025, reversing a three-year trend of declining amounts from $86B in 2021 to $64B in 2024. [...]
 
-### 14. [In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak](https://www.securityweek.com/in-other-news-paid-for-being-jailed-googles-68m-settlement-cisa-chiefs-chatgpt-leak/)
+### 16. [In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak](https://www.securityweek.com/in-other-news-paid-for-being-jailed-googles-68m-settlement-cisa-chiefs-chatgpt-leak/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: Apple updates platform security guide, LastPass detects new phishing wave, CISA withdraws from RSA Conference.
 The post In Other News: Paid for Being Jailed, Google’s $68M Settlement, CISA Chief’s ChatGPT Leak appeared first on SecurityWeek.
 
-### 15. [Microsoft to disable NTLM by default in future Windows releases](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-disable-ntlm-by-default-in-future-windows-releases/)
+### 17. [Microsoft to disable NTLM by default in future Windows releases](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-disable-ntlm-by-default-in-future-windows-releases/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced that it will disable the 30-year-old NTLM authentication protocol by default in upcoming Windows releases due to security vulnerabilities that expose organizations to cyberattacks. [...]
 
-### 16. [Operation Switch Off dismantles major pirate TV streaming services](https://www.bleepingcomputer.com/news/legal/operation-switch-off-dismantles-major-pirate-tv-streaming-services/)
+### 18. [Operation Switch Off dismantles major pirate TV streaming services](https://www.bleepingcomputer.com/news/legal/operation-switch-off-dismantles-major-pirate-tv-streaming-services/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The latest phase of the global law enforcement action resulted in seizing three industrial-scale illegal IPTV services. [...]
 
-### 17. [Aisy Launches Out of Stealth to Transform Vulnerability Management](https://www.securityweek.com/aisy-launches-out-of-stealth-to-transform-vulnerability-management/)
+### 19. [Aisy Launches Out of Stealth to Transform Vulnerability Management](https://www.securityweek.com/aisy-launches-out-of-stealth-to-transform-vulnerability-management/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Aisy has emerged from stealth mode with $2.3 million in seed funding for its AI-assisted platform.
 The post Aisy Launches Out of Stealth to Transform Vulnerability Management appeared first on SecurityWeek.
 
-### 18. [Microsoft fixes Outlook bug blocking access to encrypted emails](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-outlook-bug-blocking-access-to-encrypted-emails/)
+### 20. [Microsoft fixes Outlook bug blocking access to encrypted emails](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-outlook-bug-blocking-access-to-encrypted-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has fixed a known issue that prevented Microsoft 365 customers from opening encrypted emails in classic Outlook after a recent update. [...]
 
-### 19. [175,000 Exposed Ollama Hosts Could Enable LLM Abuse](https://www.securityweek.com/175000-exposed-ollama-hosts-could-enable-llm-abuse/)
+### 21. [175,000 Exposed Ollama Hosts Could Enable LLM Abuse](https://www.securityweek.com/175000-exposed-ollama-hosts-could-enable-llm-abuse/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Among them, 23,000 hosts were persistently responsible for the majority of activity observed over 293 days of scanning.
 The post 175,000 Exposed Ollama Hosts Could Enable LLM Abuse appeared first on SecurityWeek.
 
-### 20. [Researchers Uncover Chrome Extensions Abusing Affiliate Links and Stealing ChatGPT Access](https://thehackernews.com/2026/01/researchers-uncover-chrome-extensions.html)
+### 22. [Researchers Uncover Chrome Extensions Abusing Affiliate Links and Stealing ChatGPT Access](https://thehackernews.com/2026/01/researchers-uncover-chrome-extensions.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered malicious Google Chrome extensions that come with capabilities to hijack affiliate links, steal data, and collect OpenAI ChatGPT authentication tokens.
 One of the extensions in question is Amazon Ads Blocker (ID: pnpchphmplpdimbllknjoiopmfphellj), which claims to be a tool to browse Amazon without any sponsored content. It was uploaded to the Chrome
 
-### 21. [White House Scraps ‘Burdensome’ Software Security Rules ](https://www.securityweek.com/white-house-scraps-burdensome-software-security-rules/)
+### 23. [White House Scraps ‘Burdensome’ Software Security Rules ](https://www.securityweek.com/white-house-scraps-burdensome-software-security-rules/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Two Biden-era memorandums have been revoked, but some of the resources they provide can still be used by government organizations. 
 The post White House Scraps ‘Burdensome’ Software Security Rules  appeared first on SecurityWeek.
 
-### 22. [China-Linked UAT-8099 Targets IIS Servers in Asia with BadIIS SEO Malware](https://thehackernews.com/2026/01/china-linked-uat-8099-targets-iis.html)
+### 24. [China-Linked UAT-8099 Targets IIS Servers in Asia with BadIIS SEO Malware](https://thehackernews.com/2026/01/china-linked-uat-8099-targets-iis.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new campaign attributed to a China-linked threat actor known as UAT-8099 that took place between late 2025 and early 2026.
 The activity, discovered by Cisco Talos, has targeted vulnerable Internet Information Services (IIS) servers located across Asia, but with a specific focus on targets in Thailand and Vietnam. The scale of the campaign is currently
 
-### 23. [Windows 11 KB5074105 update fixes boot, sign-in, and activation issues](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5074105-update-fixes-boot-sign-in-and-activation-issues/)
+### 25. [Windows 11 KB5074105 update fixes boot, sign-in, and activation issues](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5074105-update-fixes-boot-sign-in-and-activation-issues/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released the KB5074105 preview cumulative update for Windows 11 systems, which includes 32 changes, including fixes for sign-in, boot, and activation issues. [...]
 
-### 24. [Badges, Bytes and Blackmail](https://thehackernews.com/2026/01/badges-bytes-and-blackmail.html)
+### 26. [Badges, Bytes and Blackmail](https://thehackernews.com/2026/01/badges-bytes-and-blackmail.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Behind the scenes of law enforcement in cyber: what do we know about caught cybercriminals? What brought them in, where do they come from and what was their function in the crimescape?
 
 Introduction: One view on the scattered fight against cybercrime
 The growing sophistication and diversification of cybercrime have compelled law enforcement agencies worldwide to respond through increasingly
 
-### 25. [Hugging Face Abused to Deploy Android RAT](https://www.securityweek.com/hugging-face-abused-to-deploy-android-rat/)
+### 27. [Hugging Face Abused to Deploy Android RAT](https://www.securityweek.com/hugging-face-abused-to-deploy-android-rat/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Android users were lured to applications that served a malicious payload hosted in a Hugging Face repository.
 The post Hugging Face Abused to Deploy Android RAT appeared first on SecurityWeek.
 
-### 26. [ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid](https://www.securityweek.com/ics-devices-bricked-in-russia-linked-strike-on-polish-power-grid/)
+### 28. [ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid](https://www.securityweek.com/ics-devices-bricked-in-russia-linked-strike-on-polish-power-grid/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Sandworm/Electrum hackers targeted communication and control systems at 30 sites.
 The post ICS Devices Bricked Following Russia-Linked Intrusion Into Polish Power Grid appeared first on SecurityWeek.
 
-### 27. [Ivanti Patches Exploited EPMM Zero-Days](https://www.securityweek.com/ivanti-patches-exploited-epmm-zero-days/)
+### 29. [Ivanti Patches Exploited EPMM Zero-Days](https://www.securityweek.com/ivanti-patches-exploited-epmm-zero-days/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical-severity vulnerabilities could allow unauthenticated attackers to execute arbitrary code remotely.
 The post Ivanti Patches Exploited EPMM Zero-Days appeared first on SecurityWeek.
 
-### 28. [Ex-Google Engineer Convicted for Stealing AI Secrets for China Startup](https://thehackernews.com/2026/01/ex-google-engineer-convicted-for.html)
+### 30. [Ex-Google Engineer Convicted for Stealing AI Secrets for China Startup](https://thehackernews.com/2026/01/ex-google-engineer-convicted-for.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A former Google engineer accused of stealing thousands of the company's confidential documents to build a startup in China has been convicted in the U.S., the Department of Justice (DoJ) announced Thursday.
 Linwei Ding (aka Leon Ding), 38, was convicted by a federal jury on seven counts of economic espionage and seven counts of theft of trade secrets for taking over 2,000 documents containing
-
-### 29. [SmarterMail Fixes Critical Unauthenticated RCE Flaw with CVSS 9.3 Score](https://thehackernews.com/2026/01/smartermail-fixes-critical.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-SmarterTools has addressed two more security flaws in SmarterMail email software, including one critical security flaw that could result in arbitrary code execution.
-The vulnerability, tracked as CVE-2026-24423, carries a CVSS score of 9.3 out of 10.0.
-"SmarterTools SmarterMail versions prior to build 9511 contain an unauthenticated remote code execution vulnerability in the ConnectToHub API
-
-### 30. [Two Ivanti EPMM Zero-Day RCE Flaws Actively Exploited, Security Updates Released](https://thehackernews.com/2026/01/two-ivanti-epmm-zero-day-rce-flaws.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Ivanti has rolled out security updates to address two security flaws impacting Ivanti Endpoint Manager Mobile (EPMM) that have been exploited in zero-day attacks, one of which has been added by the U.S. Cybersecurity and Infrastructure Security Agency (CISA) to its Known Exploited Vulnerabilities (KEV) catalog.
-The critical-severity vulnerabilities are listed below -
-
-CVE-2026-1281 (CVSS score:
 
 ---
 
