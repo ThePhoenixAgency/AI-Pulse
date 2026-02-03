@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 03 Feb 2026 04:52:29 GMT
+**Last Update:** Tue, 03 Feb 2026 07:00:57 GMT
 
 ---
 
@@ -209,13 +209,13 @@ Ring's Search Party feature for finding lost dogs is now available across the U.
 Klarna aims to address the lack of interoperability between conversational AI agents and backend payment systems by backing Google’s Universal Commerce Protocol (UCP), an open standard designed to unify how AI agents discover products and execute transactions. The partnership, which also sees Klarna supporting Google’s Agent Payments Protocol (AP2), places the Swedish fintech firm among […]
 The post Klarna backs Google UCP to power AI agent payments appeared first on AI News.
 
-### 8. [Coalition demands federal Grok ban over nonconsensual sexual content](https://techcrunch.com/2026/02/02/coalition-demands-federal-grok-ban-over-nonconsensual-sexual-content/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Nonprofits urge the U.S. government to suspend Grok in federal agencies after the xAI chatbot generated thousands of nonconsensual sexual images, raising national security and child safety concerns.
-
-### 9. [Carbon Robotics built an AI model that detects and identifies plants ](https://techcrunch.com/2026/02/02/carbon-robotics-built-an-ai-model-that-detects-and-identifies-plants/)
+### 8. [Carbon Robotics built an AI model that detects and identifies plants ](https://techcrunch.com/2026/02/02/carbon-robotics-built-an-ai-model-that-detects-and-identifies-plants/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Carbon Robotics' Large Plant Model will allow farmers to kill new types of weeds without having to retrain the machines.
+
+### 9. [Coalition demands federal Grok ban over nonconsensual sexual content](https://techcrunch.com/2026/02/02/coalition-demands-federal-grok-ban-over-nonconsensual-sexual-content/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Nonprofits urge the U.S. government to suspend Grok in federal agencies after the xAI chatbot generated thousands of nonconsensual sexual images, raising national security and child safety concerns.
 
 ### 10. [Linq raises $20M to enable AI assistants to live within messaging apps](https://techcrunch.com/2026/02/02/linq-raises-20m-to-enable-ai-assistants-to-live-within-messaging-apps/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
@@ -318,142 +318,145 @@ The post China’s hyperscalers bet billions on agentic AI as commerce becomes t
 
 ## Cybersecurity
 
-### 1. [New GlassWorm attack targets macOS via compromised OpenVSX extensions](https://www.bleepingcomputer.com/news/security/new-glassworm-attack-targets-macos-via-compromised-openvsx-extensions/)
+### 1. [Mozilla Adds One-Click Option to Disable Generative AI Features in Firefox](https://thehackernews.com/2026/02/mozilla-adds-one-click-option-to.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Mozilla on Monday announced a new controls section in its Firefox desktop browser settings that allows users to completely turn off generative artificial intelligence (GenAI) features.
+"It provides a single place to block current and future generative AI features in Firefox," Ajit Varma, head of Firefox, said. "You can also review and manage individual AI features if you choose to use them. This
+
+### 2. [Notepad++ Hosting Breach Attributed to China-Linked Lotus Blossom Hacking Group](https://thehackernews.com/2026/02/notepad-hosting-breach-attributed-to.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A China-linked threat actor known as Lotus Blossom has been attributed with medium confidence to the recently discovered compromise of the infrastructure hosting Notepad++.
+The attack enabled the state-sponsored hacking group to deliver a previously undocumented backdoor codenamed Chrysalis to users of the open-source editor, according to new findings from Rapid7.
+The development comes shortly
+
+### 3. [New GlassWorm attack targets macOS via compromised OpenVSX extensions](https://www.bleepingcomputer.com/news/security/new-glassworm-attack-targets-macos-via-compromised-openvsx-extensions/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new GlassWorm malware attack through compromised OpenVSX extensions focuses on stealing passwords, crypto-wallet data, and developer credentials and configurations from macOS systems. [...]
 
-### 2. [Russian hackers exploit recently patched Microsoft Office bug in attacks](https://www.bleepingcomputer.com/news/security/russian-hackers-exploit-recently-patched-microsoft-office-bug-in-attacks/)
+### 4. [Russian hackers exploit recently patched Microsoft Office bug in attacks](https://www.bleepingcomputer.com/news/security/russian-hackers-exploit-recently-patched-microsoft-office-bug-in-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ukraine's Computer Emergency Response Team (CERT) says that Russian hackers are exploiting CVE-2026-21509, a recently patched vulnerability in multiple versions of Microsoft Office. [...]
 
-### 3. [Malicious MoltBot skills used to push password-stealing malware](https://www.bleepingcomputer.com/news/security/malicious-moltbot-skills-used-to-push-password-stealing-malware/)
+### 5. [Malicious MoltBot skills used to push password-stealing malware](https://www.bleepingcomputer.com/news/security/malicious-moltbot-skills-used-to-push-password-stealing-malware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 More than 230 malicious packages for the personal AI assistant OpenClaw (formerly known as Moltbot and ClawdBot) have been published in less than a week on the tool's official registry and on GitHub. [...]
 
-### 4. [Mozilla announces switch to disable all Firefox AI features](https://www.bleepingcomputer.com/news/software/mozilla-will-let-you-turn-off-all-firefox-ai-features/)
+### 6. [Mozilla announces switch to disable all Firefox AI features](https://www.bleepingcomputer.com/news/software/mozilla-will-let-you-turn-off-all-firefox-ai-features/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 In response to user feedback on AI integration, Mozilla announced today that the next Firefox release will let users disable AI features entirely or manage them individually. [...]
 
-### 5. [Researchers Find 341 Malicious ClawHub Skills Stealing Data from OpenClaw Users](https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html)
+### 7. [Researchers Find 341 Malicious ClawHub Skills Stealing Data from OpenClaw Users](https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A security audit of 2,857 skills on ClawHub has found 341 malicious skills across multiple campaigns, according to new findings from Koi Security, exposing users to new supply chain risks.
 ClawHub is a marketplace designed to make it easy for OpenClaw users to find and install third-party skills. It's an extension to the OpenClaw project, a self-hosted artificial intelligence (AI) assistant
 
-### 6. [Microsoft: January update shutdown bug affects more Windows PCs](https://www.bleepingcomputer.com/news/microsoft/microsoft-january-update-shutdown-bug-affects-more-windows-pcs/)
+### 8. [Microsoft: January update shutdown bug affects more Windows PCs](https://www.bleepingcomputer.com/news/microsoft/microsoft-january-update-shutdown-bug-affects-more-windows-pcs/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has confirmed that a known issue preventing some Windows 11 devices from shutting down also affects Windows 10 systems with Virtual Secure Mode (VSM) enabled. [...]
 
-### 7. [OpenClaw Bug Enables One-Click Remote Code Execution via Malicious Link](https://thehackernews.com/2026/02/openclaw-bug-enables-one-click-remote.html)
+### 9. [OpenClaw Bug Enables One-Click Remote Code Execution via Malicious Link](https://thehackernews.com/2026/02/openclaw-bug-enables-one-click-remote.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A high-severity security flaw has been disclosed in OpenClaw (formerly referred to as Clawdbot and Moltbot) that could allow remote code execution (RCE) through a crafted malicious link.
 The issue, which is tracked as CVE-2026-25253 (CVSS score: 8.8), has been addressed in version 2026.1.29 released on January 30, 2026. It has been described as a token exfiltration vulnerability that leads to
 
-### 8. [Please Don’t Feed the Scattered Lapsus ShinyHunters](https://krebsonsecurity.com/2026/02/please-dont-feed-the-scattered-lapsus-shiny-hunters/)
-**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
-A prolific data ransom gang that calls itself Scattered Lapsus ShinyHunters (SLSH) has a distinctive playbook when it seeks to extort payment from victim firms: Harassing, threatening and even swatting executives and their families, all while notifying journalists and regulators… Read More »
-
-### 9. [Microsoft Begins NTLM Phase-Out With Three-Stage Plan to Move Windows to Kerberos](https://thehackernews.com/2026/02/microsoft-begins-ntlm-phase-out-with.html)
+### 10. [Microsoft Begins NTLM Phase-Out With Three-Stage Plan to Move Windows to Kerberos](https://thehackernews.com/2026/02/microsoft-begins-ntlm-phase-out-with.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has announced a three-phase approach to phase out New Technology LAN Manager (NTLM) as part of its efforts to shift Windows environments toward stronger, Kerberos-based options.
 The development comes more than two years after the tech giant revealed its plans to deprecate the legacy technology, citing its susceptibility to weaknesses that could facilitate relay attacks and allow bad
 
-### 10. [CTM360 Report Warns of Global Surge in Fake High-Yield Investment Scams](https://www.bleepingcomputer.com/news/security/ctm360-report-warns-of-global-surge-in-fake-high-yield-investment-scams/)
+### 11. [CTM360 Report Warns of Global Surge in Fake High-Yield Investment Scams](https://www.bleepingcomputer.com/news/security/ctm360-report-warns-of-global-surge-in-fake-high-yield-investment-scams/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Fake high-yield investment platforms are surging worldwide, promising "guaranteed" returns that mask classic Ponzi schemes.CTM360 explains how HYIP scams scale through social media, recycled templates, and referral abuse. [...]
 
-### 11. [ShinyHunters-Branded Extortion Activity Expands, Escalates](https://www.securityweek.com/shinyhunters-branded-extortion-activity-expands-escalates/)
+### 12. [ShinyHunters-Branded Extortion Activity Expands, Escalates](https://www.securityweek.com/shinyhunters-branded-extortion-activity-expands-escalates/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Hackers rely on evolved vishing and login harvesting to compromise SSO credentials for unauthorized MFA enrollment.
 The post ShinyHunters-Branded Extortion Activity Expands, Escalates appeared first on SecurityWeek.
 
-### 12. [Notepad++ update feature hijacked by Chinese state hackers for months](https://www.bleepingcomputer.com/news/security/notepad-plus-plus-update-feature-hijacked-by-chinese-state-hackers-for-months/)
+### 13. [Notepad++ update feature hijacked by Chinese state hackers for months](https://www.bleepingcomputer.com/news/security/notepad-plus-plus-update-feature-hijacked-by-chinese-state-hackers-for-months/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Chinese state-sponsored threat actors were likely behind the hijacking of Notepad++ update traffic last year that lasted for almost half a year, the developer states in an official announcement today. [...]
 
-### 13. [Open VSX Publisher Account Hijacked in Fresh GlassWorm Attack](https://www.securityweek.com/open-vsx-publisher-account-hijacked-in-fresh-glassworm-attack/)
+### 14. [Open VSX Publisher Account Hijacked in Fresh GlassWorm Attack](https://www.securityweek.com/open-vsx-publisher-account-hijacked-in-fresh-glassworm-attack/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 A hacker published malicious versions of four established VS Code extensions to distribute a GlassWorm malware loader.
 The post Open VSX Publisher Account Hijacked in Fresh GlassWorm Attack appeared first on SecurityWeek.
 
-### 14. [Default ICS Credentials Exploited in Destructive Attack on Polish Energy Facilities](https://www.securityweek.com/default-ics-credentials-exploited-in-destructive-attack-on-polish-energy-facilities/)
+### 15. [Default ICS Credentials Exploited in Destructive Attack on Polish Energy Facilities](https://www.securityweek.com/default-ics-credentials-exploited-in-destructive-attack-on-polish-energy-facilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Poland’s CERT has published a report on the recent attack, providing new details on targeted ICS and attribution.
 The post Default ICS Credentials Exploited in Destructive Attack on Polish Energy Facilities appeared first on SecurityWeek.
 
-### 15. [Panera Bread breach impacts 5.1 million accounts, not 14 million customers ](https://www.bleepingcomputer.com/news/security/panera-bread-data-breach-impacts-51-million-accounts-not-14-million-customers/)
+### 16. [Panera Bread breach impacts 5.1 million accounts, not 14 million customers ](https://www.bleepingcomputer.com/news/security/panera-bread-data-breach-impacts-51-million-accounts-not-14-million-customers/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The data breach notification service Have I Been Pwned says that a data breach at the U.S. food chain Panera Bread affected 5.1 million accounts, not 14 million customers as previously reported. [...]
 
-### 16. [Cyber Insights 2026: Malware and Cyberattacks in the Age of AI](https://www.securityweek.com/cyber-insights-2026-malware-and-cyberattacks-in-the-age-of-ai/)
+### 17. [Cyber Insights 2026: Malware and Cyberattacks in the Age of AI](https://www.securityweek.com/cyber-insights-2026-malware-and-cyberattacks-in-the-age-of-ai/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Security leaders share how artificial intelligence is changing malware, ransomware, and identity-led intrusions, and how defenses must evolve.
 The post Cyber Insights 2026: Malware and Cyberattacks in the Age of AI appeared first on SecurityWeek.
 
-### 17. [⚡ Weekly Recap: Proxy Botnet, Office Zero-Day, MongoDB Ransoms, AI Hijacks &amp; New Threats](https://thehackernews.com/2026/02/weekly-recap-proxy-botnet-office-zero.html)
+### 18. [⚡ Weekly Recap: Proxy Botnet, Office Zero-Day, MongoDB Ransoms, AI Hijacks &amp; New Threats](https://thehackernews.com/2026/02/weekly-recap-proxy-botnet-office-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Every week brings new discoveries, attacks, and defenses that shape the state of cybersecurity. Some threats are stopped quickly, while others go unseen until they cause real damage.
 Sometimes a single update, exploit, or mistake changes how we think about risk and protection. Every incident shows how defenders adapt — and how fast attackers try to stay ahead.
 This week’s recap brings you the
 
-### 18. [Over 1,400 MongoDB Databases Ransacked by Threat Actor](https://www.securityweek.com/over-1400-mongodb-databases-ransacked-by-threat-actor/)
+### 19. [Over 1,400 MongoDB Databases Ransacked by Threat Actor](https://www.securityweek.com/over-1400-mongodb-databases-ransacked-by-threat-actor/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Of 3,100 unprotected MongoDB instances, half remain compromised, most of them by a single threat actor.
 The post Over 1,400 MongoDB Databases Ransacked by Threat Actor appeared first on SecurityWeek.
 
-### 19. [Securing the Mid-Market Across the Complete Threat Lifecycle](https://thehackernews.com/2026/02/securing-mid-market-across-complete.html)
+### 20. [Securing the Mid-Market Across the Complete Threat Lifecycle](https://thehackernews.com/2026/02/securing-mid-market-across-complete.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 For mid-market organizations, cybersecurity is a constant balancing act. Proactive, preventative security measures are essential to protect an expanding attack surface. Combined with effective protection that blocks threats, they play a critical role in stopping cyberattacks before damage is done.
 The challenge is that many security tools add complexity and cost that most mid-market businesses
 
-### 20. [Microsoft fixes bug causing password sign-in option to disappear](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-bug-causing-password-sign-in-option-to-disappear/)
+### 21. [Microsoft fixes bug causing password sign-in option to disappear](https://www.bleepingcomputer.com/news/microsoft/microsoft-fixes-bug-causing-password-sign-in-option-to-disappear/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has fixed a known issue that was causing the password sign-in option to disappear from the lock screen options after installing Windows 11 updates released since August 2025. [...]
 
-### 21. [Microsoft Moves Closer to Disabling NTLM](https://www.securityweek.com/microsoft-moves-closer-to-disabling-ntlm/)
+### 22. [Microsoft Moves Closer to Disabling NTLM](https://www.securityweek.com/microsoft-moves-closer-to-disabling-ntlm/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The next major Windows Server and Windows releases will have the deprecated authentication protocol disabled by default.
 The post Microsoft Moves Closer to Disabling NTLM appeared first on SecurityWeek.
 
-### 22. [Japan, Britain to Boost Cybersecurity and Critical Minerals Cooperation as China’s Influence Grows](https://www.securityweek.com/japan-britain-to-boost-cybersecurity-and-critical-minerals-cooperation-as-chinas-influence-grows/)
+### 23. [Japan, Britain to Boost Cybersecurity and Critical Minerals Cooperation as China’s Influence Grows](https://www.securityweek.com/japan-britain-to-boost-cybersecurity-and-critical-minerals-cooperation-as-chinas-influence-grows/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Japan and Britain agree to accelerate cooperation on cybersecurity and the supply of critical minerals, as China’s influence grows in the region.
 The post Japan, Britain to Boost Cybersecurity and Critical Minerals Cooperation as China’s Influence Grows appeared first on SecurityWeek.
 
-### 23. [NationStates confirms data breach, shuts down game site](https://www.bleepingcomputer.com/news/security/nationstates-confirms-data-breach-shuts-down-game-site/)
+### 24. [NationStates confirms data breach, shuts down game site](https://www.bleepingcomputer.com/news/security/nationstates-confirms-data-breach-shuts-down-game-site/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 NationStates, a multiplayer browser-based game, has confirmed a data breach after taking its website offline earlier this week to investigate a security incident. [...]
 
-### 24. [Notepad++ Supply Chain Hack Conducted by China via Hosting Provider](https://www.securityweek.com/notepad-supply-chain-hack-conducted-by-china-via-hosting-provider/)
+### 25. [Notepad++ Supply Chain Hack Conducted by China via Hosting Provider](https://www.securityweek.com/notepad-supply-chain-hack-conducted-by-china-via-hosting-provider/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The likely state-sponsored threat actor had access to the hosting provider for months and targeted only certain Notepad++ customers.
 The post Notepad++ Supply Chain Hack Conducted by China via Hosting Provider appeared first on SecurityWeek.
 
-### 25. [Notepad++ Official Update Mechanism Hijacked to Deliver Malware to Select Users](https://thehackernews.com/2026/02/notepad-official-update-mechanism.html)
+### 26. [Notepad++ Official Update Mechanism Hijacked to Deliver Malware to Select Users](https://thehackernews.com/2026/02/notepad-official-update-mechanism.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The maintainer of Notepad++ has revealed that state-sponsored attackers hijacked the utility's update mechanism to redirect update traffic to malicious servers instead.
 "The attack involved [an] infrastructure-level compromise that allowed malicious actors to intercept and redirect update traffic destined for notepad-plus-plus.org," developer Don Ho said. "The compromise occurred at the hosting
 
-### 26. [eScan Antivirus Update Servers Compromised to Deliver Multi-Stage Malware](https://thehackernews.com/2026/02/escan-antivirus-update-servers.html)
+### 27. [eScan Antivirus Update Servers Compromised to Deliver Multi-Stage Malware](https://thehackernews.com/2026/02/escan-antivirus-update-servers.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The update infrastructure for eScan antivirus, a security solution developed by Indian cybersecurity company MicroWorld Technologies, has been compromised by unknown attackers to deliver a persistent downloader to enterprise and consumer systems.
 "Malicious updates were distributed through eScan's legitimate update infrastructure, resulting in the deployment of multi-stage malware to enterprise
 
-### 27. [Open VSX Supply Chain Attack Used Compromised Dev Account to Spread GlassWorm](https://thehackernews.com/2026/02/open-vsx-supply-chain-attack-used.html)
+### 28. [Open VSX Supply Chain Attack Used Compromised Dev Account to Spread GlassWorm](https://thehackernews.com/2026/02/open-vsx-supply-chain-attack-used.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a supply chain attack targeting the Open VSX Registry in which unidentified threat actors compromised a legitimate developer's resources to push malicious updates to downstream users.
 "On January 30, 2026, four established Open VSX extensions published by the oorzc author had malicious versions published to Open VSX that embed the GlassWorm
 
-### 28. [Exposed MongoDB instances still targeted in data extortion attacks](https://www.bleepingcomputer.com/news/security/exposed-mongodb-instances-still-targeted-in-data-extortion-attacks/)
+### 29. [Exposed MongoDB instances still targeted in data extortion attacks](https://www.bleepingcomputer.com/news/security/exposed-mongodb-instances-still-targeted-in-data-extortion-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A threat actor is targeting exposed MongoDB instances in automated data extortion attacks demanding low ransoms from owners to restore the data. [...]
 
-### 29. [New Apple privacy feature limits location tracking on iPhones, iPads](https://www.bleepingcomputer.com/news/apple/new-apple-privacy-feature-limits-location-tracking-on-iphones-ipads/)
+### 30. [New Apple privacy feature limits location tracking on iPhones, iPads](https://www.bleepingcomputer.com/news/apple/new-apple-privacy-feature-limits-location-tracking-on-iphones-ipads/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Apple is introducing a new privacy feature that lets users limit the precision of location data shared with cellular networks on some iPhone and iPad models. [...]
-
-### 30. [OpenAI says you can trust ChatGPT answers, as it kicks off ads rollout preparation](https://www.bleepingcomputer.com/news/artificial-intelligence/openai-says-you-can-trust-chatgpt-answers-as-it-kicks-off-ads-rollout-preparation/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-OpenAI previously confirmed that it's testing ads in ChatGPT for free and $8 Go accounts, and now we're seeing early signs of that rollout, at least on Android. [...]
 
 ---
 
