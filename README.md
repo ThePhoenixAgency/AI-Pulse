@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 04 Feb 2026 07:02:12 GMT
+**Last Update:** Wed, 04 Feb 2026 09:54:47 GMT
 
 ---
 
@@ -179,125 +179,125 @@ The post Flokk herd management with Raspberry Pi Zero W appeared first on Raspbe
 
 ## Artificial Intelligence
 
-### 1. [Intel will start making GPUs, a market dominated by Nvidia ](https://techcrunch.com/2026/02/03/intel-will-start-making-gpus-a-market-dominated-by-nvidia/)
+### 1. [Exclusive: Positron raises $230M Series B to take on Nvidia’s AI chips](https://techcrunch.com/2026/02/04/exclusive-positron-raises-230m-series-b-to-take-on-nvidias-ai-chips/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The investment comes from backers including the Qatar Investment Authority as demand for chips beyond Nvidia soars and as Qatar aims to build out its AI infrastructure.
+
+### 2. [Intel will start making GPUs, a market dominated by Nvidia ](https://techcrunch.com/2026/02/03/intel-will-start-making-gpus-a-market-dominated-by-nvidia/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Intel has been bulking up a team to focus on this effort and will develop its GPU strategy around customer needs.
 
-### 2. [Xcode moves into agentic coding with deeper OpenAI and Anthropic integrations](https://techcrunch.com/2026/02/03/xcode-moves-into-agentic-coding-with-deeper-openai-and-anthropic-integrations/)
+### 3. [Xcode moves into agentic coding with deeper OpenAI and Anthropic integrations](https://techcrunch.com/2026/02/03/xcode-moves-into-agentic-coding-with-deeper-openai-and-anthropic-integrations/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Xcode 26.3 offers agentic coding capabilities with Anthropic's Claude Agent and OpenAI's Codex.
 
-### 3. [Lotus Health nabs $35M for AI doctor that sees patients for free](https://techcrunch.com/2026/02/03/lotus-health-nabs-35m-for-ai-doctor-that-sees-patients-for-free/)
+### 4. [Lotus Health nabs $35M for AI doctor that sees patients for free](https://techcrunch.com/2026/02/03/lotus-health-nabs-35m-for-ai-doctor-that-sees-patients-for-free/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This AI doctor is licensed in all 50 states, the startup says. The deal was led by CRV and Kleiner Perkins.
 
-### 4. [Routing in a Sparse Graph: a Distributed Q-Learning Approach](https://towardsdatascience.com/routing-in-a-sparse-graph-a-distributed-q-learning-approach/)
+### 5. [Routing in a Sparse Graph: a Distributed Q-Learning Approach](https://towardsdatascience.com/routing-in-a-sparse-graph-a-distributed-q-learning-approach/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Distributed agents need only decide one move ahead.
 The post Routing in a Sparse Graph: a Distributed Q-Learning Approach appeared first on Towards Data Science.
 
-### 5. [Fitbit founders launch AI platform to help families monitor their health](https://techcrunch.com/2026/02/03/fitbit-founders-launch-ai-platform-to-help-families-monitor-their-health/)
+### 6. [Fitbit founders launch AI platform to help families monitor their health](https://techcrunch.com/2026/02/03/fitbit-founders-launch-ai-platform-to-help-families-monitor-their-health/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Luffu uses AI in the background to gather and organize family information, learn day-to-day patterns, and flag notable changes so families can stay aligned and address potential well-being issues.
 
-### 6. [YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger](https://towardsdatascience.com/yolov2-yolo9000-paper-walkthrough-better-faster-stronger/)
+### 7. [YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger](https://towardsdatascience.com/yolov2-yolo9000-paper-walkthrough-better-faster-stronger/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From YOLOv1 to YOLOv2: prior box, k-means, Darknet-19, passthrough layer, and more
 The post YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger appeared first on Towards Data Science.
 
-### 7. [Peak XV says internal disagreement led to partner exits as it doubles down on AI](https://techcrunch.com/2026/02/03/peak-xv-says-internal-disagreement-led-to-partner-exits-as-it-doubles-down-on-ai/)
+### 8. [Peak XV says internal disagreement led to partner exits as it doubles down on AI](https://techcrunch.com/2026/02/03/peak-xv-says-internal-disagreement-led-to-partner-exits-as-it-doubles-down-on-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Peak XV is transitioning board roles and opening a U.S. office while continuing to view India as its largest market.
 
-### 8. [Creating a Data Pipeline to Monitor Local Crime Trends](https://towardsdatascience.com/creating-a-data-pipeline-to-monitor-local-crime-trends/)
+### 9. [Creating a Data Pipeline to Monitor Local Crime Trends](https://towardsdatascience.com/creating-a-data-pipeline-to-monitor-local-crime-trends/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A walkthough of creating an ETL pipeline to extract local crime data and visualize it in Metabase.
 The post Creating a Data Pipeline to Monitor Local Crime Trends appeared first on Towards Data Science.
 
-### 9. [The Proximity of the Inception Score as an Evaluation Criterion](https://towardsdatascience.com/the-proximity-of-the-inception-score-as-an-evaluation-criterion/)
+### 10. [The Proximity of the Inception Score as an Evaluation Criterion](https://towardsdatascience.com/the-proximity-of-the-inception-score-as-an-evaluation-criterion/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The neighborhood of synthetic data
 The post The Proximity of the Inception Score as an Evaluation Criterion appeared first on Towards Data Science.
 
-### 10. [Ronnie Sheth, CEO, SENEN Group: Why now is the time for enterprise AI to ‘get practical’](https://www.artificialintelligence-news.com/news/ronnie-sheth-ceo-senen-group-why-now-is-the-time-for-enterprise-ai-to-get-practical/)
+### 11. [Ronnie Sheth, CEO, SENEN Group: Why now is the time for enterprise AI to ‘get practical’](https://www.artificialintelligence-news.com/news/ronnie-sheth-ceo-senen-group-why-now-is-the-time-for-enterprise-ai-to-get-practical/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Before you set sail on your AI journey, always check the state of your data – because if there is one thing likely to sink your ship, it is data quality. Gartner estimates that poor data quality costs organisations an average of $12.9 million each year in wasted resources and lost opportunities. That’s the bad […]
 The post Ronnie Sheth, CEO, SENEN Group: Why now is the time for enterprise AI to ‘get practical’ appeared first on AI News.
 
-### 11. [Apptio: Why scaling intelligent automation requires financial rigour](https://www.artificialintelligence-news.com/news/apptio-why-scaling-intelligent-automation-requires-financial-rigour/)
+### 12. [Apptio: Why scaling intelligent automation requires financial rigour](https://www.artificialintelligence-news.com/news/apptio-why-scaling-intelligent-automation-requires-financial-rigour/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Greg Holmes, Field CTO for EMEA at Apptio, an IBM company, argues that successfully scaling intelligent automation requires financial rigour. The “build it and they will come” model of technology adoption often leaves a hole in the budget when applied to automation. Executives frequently find that successful pilot programmes do not translate into sustainable enterprise-wide […]
 The post Apptio: Why scaling intelligent automation requires financial rigour appeared first on AI News.
 
-### 12. [FedEx tests how far AI can go in tracking and returns management](https://www.artificialintelligence-news.com/news/fedex-tests-how-far-ai-can-go-in-tracking-and-returns-management/)
+### 13. [FedEx tests how far AI can go in tracking and returns management](https://www.artificialintelligence-news.com/news/fedex-tests-how-far-ai-can-go-in-tracking-and-returns-management/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 FedEx is using AI to change how package tracking and returns work for large enterprise shippers. For companies moving high volumes of goods, tracking no longer ends when a package leaves the warehouse. Customers expect real-time updates, flexible delivery options, and returns that do not turn into support tickets or delays. That pressure is pushing […]
 The post FedEx tests how far AI can go in tracking and returns management appeared first on AI News.
 
-### 13. [Elon Musk’s SpaceX officially acquires Elon Musk’s xAI, with plan to build data centers in space](https://techcrunch.com/2026/02/02/elon-musk-spacex-acquires-xai-data-centers-space-merger/)
+### 14. [Elon Musk’s SpaceX officially acquires Elon Musk’s xAI, with plan to build data centers in space](https://techcrunch.com/2026/02/02/elon-musk-spacex-acquires-xai-data-centers-space-merger/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The merger creates the world's most valuable private company and paves the way for Musk to try and prove out the usefulness of space-based data centers.
 
-### 14. [What Snowflake’s deal with OpenAI tells us about the enterprise AI race](https://techcrunch.com/2026/02/02/what-snowflakes-deal-with-openai-tells-us-about-the-enterprise-ai-race/)
+### 15. [What Snowflake’s deal with OpenAI tells us about the enterprise AI race](https://techcrunch.com/2026/02/02/what-snowflakes-deal-with-openai-tells-us-about-the-enterprise-ai-race/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Snowflake is the latest enterprise to sign multi-year deals with multiple AI companies in what could be a sign to come of a future trend.
 
-### 15. [Firefox will soon let you block all of its generative AI features](https://techcrunch.com/2026/02/02/firefox-will-soon-let-you-block-all-of-its-generative-ai-features/)
+### 16. [Firefox will soon let you block all of its generative AI features](https://techcrunch.com/2026/02/02/firefox-will-soon-let-you-block-all-of-its-generative-ai-features/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Starting with Firefox 148 arriving later this month, users will find a new AI controls section within the desktop browser settings.
 
-### 16. [OpenAI launches new macOS app for agentic coding](https://techcrunch.com/2026/02/02/openai-launches-new-macos-app-for-agentic-coding/)
+### 17. [OpenAI launches new macOS app for agentic coding](https://techcrunch.com/2026/02/02/openai-launches-new-macos-app-for-agentic-coding/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI has released a new macOS app for Codex, integrating many of the agentic coding practices that have become popular since Codex launched last year.
 
-### 17. [Building Systems That Survive Real Life](https://towardsdatascience.com/building-systems-that-survive-real-life/)
+### 18. [Building Systems That Survive Real Life](https://towardsdatascience.com/building-systems-that-survive-real-life/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Sara Nobrega on the transition from data science to AI engineering, using LLMs as a bridge to DevOps, and the one engineering skill junior data scientists need to stay competitive.
 The post Building Systems That Survive Real Life appeared first on Towards Data Science.
 
-### 18. [Ring brings its ‘Search Party’ feature for finding lost dogs to non-Ring camera owners](https://techcrunch.com/2026/02/02/ring-brings-its-search-party-feature-for-finding-lost-dogs-to-non-ring-camera-owners/)
+### 19. [Ring brings its ‘Search Party’ feature for finding lost dogs to non-Ring camera owners](https://techcrunch.com/2026/02/02/ring-brings-its-search-party-feature-for-finding-lost-dogs-to-non-ring-camera-owners/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Ring's Search Party feature for finding lost dogs is now available across the U.S. — even if you don't own a Ring camera.
 
-### 19. [Klarna backs Google UCP to power AI agent payments](https://www.artificialintelligence-news.com/news/klarna-backs-google-ucp-power-ai-agent-payments/)
+### 20. [Klarna backs Google UCP to power AI agent payments](https://www.artificialintelligence-news.com/news/klarna-backs-google-ucp-power-ai-agent-payments/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Klarna aims to address the lack of interoperability between conversational AI agents and backend payment systems by backing Google’s Universal Commerce Protocol (UCP), an open standard designed to unify how AI agents discover products and execute transactions. The partnership, which also sees Klarna supporting Google’s Agent Payments Protocol (AP2), places the Swedish fintech firm among […]
 The post Klarna backs Google UCP to power AI agent payments appeared first on AI News.
 
-### 20. [Carbon Robotics built an AI model that detects and identifies plants ](https://techcrunch.com/2026/02/02/carbon-robotics-built-an-ai-model-that-detects-and-identifies-plants/)
+### 21. [Carbon Robotics built an AI model that detects and identifies plants ](https://techcrunch.com/2026/02/02/carbon-robotics-built-an-ai-model-that-detects-and-identifies-plants/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Carbon Robotics' Large Plant Model will allow farmers to kill new types of weeds without having to retrain the machines.
 
-### 21. [Coalition demands federal Grok ban over nonconsensual sexual content](https://techcrunch.com/2026/02/02/coalition-demands-federal-grok-ban-over-nonconsensual-sexual-content/)
+### 22. [Coalition demands federal Grok ban over nonconsensual sexual content](https://techcrunch.com/2026/02/02/coalition-demands-federal-grok-ban-over-nonconsensual-sexual-content/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Nonprofits urge the U.S. government to suspend Grok in federal agencies after the xAI chatbot generated thousands of nonconsensual sexual images, raising national security and child safety concerns.
 
-### 22. [Linq raises $20M to enable AI assistants to live within messaging apps](https://techcrunch.com/2026/02/02/linq-raises-20m-to-enable-ai-assistants-to-live-within-messaging-apps/)
+### 23. [Linq raises $20M to enable AI assistants to live within messaging apps](https://techcrunch.com/2026/02/02/linq-raises-20m-to-enable-ai-assistants-to-live-within-messaging-apps/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Linq offers an API that lets  companies offer their AI assistants via iMessage, RCS, and SMS.
 
-### 23. [Silicon Darwinism: Why Scarcity Is the Source of True Intelligence](https://towardsdatascience.com/silicon-darwinism-why-scarcity-is-the-source-of-true-intelligence/)
+### 24. [Silicon Darwinism: Why Scarcity Is the Source of True Intelligence](https://towardsdatascience.com/silicon-darwinism-why-scarcity-is-the-source-of-true-intelligence/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 We are confusing “size” with “smart.” The next leap in artificial intelligence will not come from a larger data center, but from a more constrained environment.
 The post Silicon Darwinism: Why Scarcity Is the Source of True Intelligence appeared first on Towards Data Science.
 
-### 24. [How SAP is modernising HMRC’s tax infrastructure with AI](https://www.artificialintelligence-news.com/news/how-sap-modernising-hmrc-tax-infrastructure-with-ai/)
+### 25. [How SAP is modernising HMRC’s tax infrastructure with AI](https://www.artificialintelligence-news.com/news/how-sap-modernising-hmrc-tax-infrastructure-with-ai/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 HMRC has selected SAP to overhaul its core revenue systems and place AI at the centre of the UK’s tax administration strategy. The contract represents a broader shift in how public sector bodies approach automation. Rather than layering AI tools over legacy infrastructure, HMRC is replacing the underlying architecture to support machine learning and automated […]
 The post How SAP is modernising HMRC’s tax infrastructure with AI appeared first on AI News.
 
-### 25. [ThoughtSpot: On the new fleet of agents delivering modern analytics](https://www.artificialintelligence-news.com/news/thoughtspot-on-the-new-fleet-of-agents-delivering-modern-analytics/)
+### 26. [ThoughtSpot: On the new fleet of agents delivering modern analytics](https://www.artificialintelligence-news.com/news/thoughtspot-on-the-new-fleet-of-agents-delivering-modern-analytics/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 If you are a data and analytics leader, then you know agentic AI is fuelling unprecedented speed of change right now. Knowing you need to do something and knowing what to do, however, are two different things. The good news is providers like ThoughtSpot are able to assist, with the company in its own words […]
 The post ThoughtSpot: On the new fleet of agents delivering modern analytics appeared first on AI News.
 
-### 26. [These AI notetaking devices can help you record and transcribe your meetings](https://techcrunch.com/2026/02/02/ai-notetaker-hardware-devices-pins-pendants-record-transcribe/)
+### 27. [These AI notetaking devices can help you record and transcribe your meetings](https://techcrunch.com/2026/02/02/ai-notetaker-hardware-devices-pins-pendants-record-transcribe/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 These physical notetakers transcribe audio and give users summaries and action items of meetings using AI. Some even offer live translation.
-
-### 27. [AI layoffs or ‘AI-washing’?](https://techcrunch.com/2026/02/01/ai-layoffs-or-ai-washing/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-How many of the companies with recent layoffs are just using AI as an excuse?
 
 ### 28. [Distributed Reinforcement Learning for Scalable High-Performance Policy Optimization](https://towardsdatascience.com/distributed-reinforcement-learning-for-scalable-high-performance-policy-optimization/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
@@ -318,153 +318,153 @@ The post How to Run Claude Code for Free with Local and Cloud Models from Ollam
 
 ## Cybersecurity
 
-### 1. [Docker Fixes Critical Ask Gordon AI Flaw Allowing Code Execution via Image Metadata](https://thehackernews.com/2026/02/docker-fixes-critical-ask-gordon-ai.html)
+### 1. [Fresh SolarWinds Vulnerability Exploited in Attacks](https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The critical-severity SolarWinds Web Help Desk flaw could lead to unauthenticated remote code execution.
+The post Fresh SolarWinds Vulnerability Exploited in Attacks appeared first on SecurityWeek.
+
+### 2. [Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks](https://www.securityweek.com/security-analysis-of-moltbook-agent-network-bot-to-bot-prompt-injection-and-data-leaks/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Wiz and Permiso have analyzed the AI agent social network and found serious security issues and threats.
+The post Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks appeared first on SecurityWeek.
+
+### 3. [Microsoft Warns Python Infostealers Target macOS via Fake Ads and Installers](https://thehackernews.com/2026/02/microsoft-warns-python-infostealers.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Microsoft has warned that information-stealing attacks are "rapidly expanding" beyond Windows to target Apple macOS environments by leveraging cross-platform languages like Python and abusing trusted platforms for distribution at scale.
+The tech giant's Defender Security Research Team said it observed macOS-targeted infostealer campaigns using social engineering techniques such as ClickFix since
+
+### 4. [Eclipse Foundation Mandates Pre-Publish Security Checks for Open VSX Extensions](https://thehackernews.com/2026/02/eclipse-foundation-mandates-pre-publish.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The Eclipse Foundation, which maintains the Open VSX Registry, has announced plans to enforce security checks before Microsoft Visual Studio Code (VS Code) extensions are published to the open-source repository to combat supply chain threats.
+The move marks a shift from a reactive to a proactive approach to ensure that malicious extensions don't end up getting published on the Open VSX Registry.
+
+### 5. [CISA Adds Actively Exploited SolarWinds Web Help Desk RCE to KEV Catalog](https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a critical security flaw impacting SolarWinds Web Help Desk (WHD) to its Known Exploited Vulnerabilities (KEV) catalog, flagging it as actively exploited in attacks.
+The vulnerability, tracked as CVE-2025-40551 (CVSS score: 9.8), is a untrusted data deserialization vulnerability that could pave the way for remote
+
+### 6. [Docker Fixes Critical Ask Gordon AI Flaw Allowing Code Execution via Image Metadata](https://thehackernews.com/2026/02/docker-fixes-critical-ask-gordon-ai.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a now-patched security flaw impacting Ask Gordon, an artificial intelligence (AI) assistant built into Docker Desktop and the Docker Command-Line Interface (CLI), that could be exploited to execute code and exfiltrate sensitive data.
 The critical vulnerability has been codenamed DockerDash by cybersecurity company Noma Labs. It was addressed by
 
-### 2. [RADICL Raises $31 Million for vSOC](https://www.securityweek.com/radicl-raises-31-million-for-vsoc/)
+### 7. [RADICL Raises $31 Million for vSOC](https://www.securityweek.com/radicl-raises-31-million-for-vsoc/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will use the investment to accelerate development of its autonomous virtual security operations center (vSOC).
 The post RADICL Raises $31 Million for vSOC appeared first on SecurityWeek.
 
-### 3. [RapidFort Raises $42M to Automate Software Supply Chain Security](https://www.securityweek.com/rapidfort-raises-42m-to-automate-software-supply-chain-security/)
+### 8. [RapidFort Raises $42M to Automate Software Supply Chain Security](https://www.securityweek.com/rapidfort-raises-42m-to-automate-software-supply-chain-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will use the latest capital to scale its go-to-market efforts and expand its platform’s capabilities.
 The post RapidFort Raises $42M to Automate Software Supply Chain Security appeared first on SecurityWeek.
 
-### 4. [[Webinar] The Smarter SOC Blueprint: Learn What to Build, Buy, and Automate](https://thehackernews.com/2026/02/webinar-smarter-soc-blueprint-learn.html)
+### 9. [[Webinar] The Smarter SOC Blueprint: Learn What to Build, Buy, and Automate](https://thehackernews.com/2026/02/webinar-smarter-soc-blueprint-learn.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Most security teams today are buried under tools. Too many dashboards. Too much noise. Not enough real progress.
 Every vendor promises “complete coverage” or “AI-powered automation,” but inside most SOCs, teams are still overwhelmed, stretched thin, and unsure which tools are truly pulling their weight. The result? Bloated stacks, missed signals, and mounting pressure to do more with less.
 This
 
-### 5. [Hackers Exploit Metro4Shell RCE Flaw in React Native CLI npm Package](https://thehackernews.com/2026/02/hackers-exploit-metro4shell-rce-flaw-in.html)
+### 10. [Hackers Exploit Metro4Shell RCE Flaw in React Native CLI npm Package](https://thehackernews.com/2026/02/hackers-exploit-metro4shell-rce-flaw-in.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat actors have been observed exploiting a critical security flaw impacting the Metro Development Server in the popular "@react-native-community/cli" npm package.
 Cybersecurity company VulnCheck said it first observed exploitation of CVE-2025-11953 (aka Metro4Shell) on December 21, 2025. With a CVSS score of 9.8, the vulnerability allows remote unauthenticated attackers to execute arbitrary
 
-### 6. [Critical React Native Vulnerability Exploited in the Wild](https://www.securityweek.com/critical-react-native-vulnerability-exploited-in-the-wild/)
+### 11. [Critical React Native Vulnerability Exploited in the Wild](https://www.securityweek.com/critical-react-native-vulnerability-exploited-in-the-wild/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Albeit mainly considered a theoretical risk, the flaw has been exploited to disable protections and deliver malware.
 The post Critical React Native Vulnerability Exploited in the Wild appeared first on SecurityWeek.
 
-### 7. [Vulnerability Allows Hackers to Hijack OpenClaw AI Assistant ](https://www.securityweek.com/vulnerability-allows-hackers-to-hijack-openclaw-ai-assistant/)
+### 12. [Vulnerability Allows Hackers to Hijack OpenClaw AI Assistant ](https://www.securityweek.com/vulnerability-allows-hackers-to-hijack-openclaw-ai-assistant/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 OpenClaw (aka Moltbot and Clawdbot) is vulnerable to one-click remote code execution attacks.
 The post Vulnerability Allows Hackers to Hijack OpenClaw AI Assistant  appeared first on SecurityWeek.
 
-### 8. [Hackers Leak 5.1 Million Panera Bread Records](https://www.securityweek.com/hackers-leak-5-1-million-panera-bread-accounts/)
+### 13. [Hackers Leak 5.1 Million Panera Bread Records](https://www.securityweek.com/hackers-leak-5-1-million-panera-bread-accounts/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 ShinyHunters has claimed the theft of 14 million records from the US bakery-cafe chain’s systems.
 The post Hackers Leak 5.1 Million Panera Bread Records appeared first on SecurityWeek.
 
-### 9. [Russia’s APT28 Rapidly Weaponizes Newly Patched Office Vulnerability ](https://www.securityweek.com/russias-apt28-rapidly-weaponizes-newly-patched-office-vulnerability/)
+### 14. [Russia’s APT28 Rapidly Weaponizes Newly Patched Office Vulnerability ](https://www.securityweek.com/russias-apt28-rapidly-weaponizes-newly-patched-office-vulnerability/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The attacks targeting Europe were analyzed by Ukraine’s CERT-UA and the cybersecurity company Zscaler.
 The post Russia’s APT28 Rapidly Weaponizes Newly Patched Office Vulnerability  appeared first on SecurityWeek.
 
-### 10. [When Cloud Outages Ripple Across the Internet](https://thehackernews.com/2026/02/when-cloud-outages-ripple-across.html)
+### 15. [When Cloud Outages Ripple Across the Internet](https://thehackernews.com/2026/02/when-cloud-outages-ripple-across.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Recent major cloud service outages have been hard to miss. High-profile incidents affecting providers such as AWS, Azure, and Cloudflare have disrupted large parts of the internet, taking down websites and services that many other systems depend on. The resulting ripple effects have halted applications and workflows that many organizations rely on every day.
 For consumers, these outages are
 
-### 11. [Kasada Raises $20 Million for Anti-Bot Expansion](https://www.securityweek.com/kasada-raises-20-million-for-anti-bot-expansion/)
+### 16. [Kasada Raises $20 Million for Anti-Bot Expansion](https://www.securityweek.com/kasada-raises-20-million-for-anti-bot-expansion/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will invest in market expansion and accelerating product capabilities.
 The post Kasada Raises $20 Million for Anti-Bot Expansion appeared first on SecurityWeek.
 
-### 12. [APT28 Uses Microsoft Office CVE-2026-21509 in Espionage-Focused Malware Attacks](https://thehackernews.com/2026/02/apt28-uses-microsoft-office-cve-2026.html)
+### 17. [APT28 Uses Microsoft Office CVE-2026-21509 in Espionage-Focused Malware Attacks](https://thehackernews.com/2026/02/apt28-uses-microsoft-office-cve-2026.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Russia-linked state-sponsored threat actor known as APT28 (aka UAC-0001) has been attributed to attacks exploiting a newly disclosed security flaw in Microsoft Office as part of a campaign codenamed Operation Neusploit.
 Zscaler ThreatLabz said it observed the hacking group weaponizing the shortcoming on January 29, 2026, in attacks targeting users in Ukraine, Slovakia, and Romania, three
 
-### 13. [Mozilla Adds One-Click Option to Disable Generative AI Features in Firefox](https://thehackernews.com/2026/02/mozilla-adds-one-click-option-to.html)
+### 18. [Mozilla Adds One-Click Option to Disable Generative AI Features in Firefox](https://thehackernews.com/2026/02/mozilla-adds-one-click-option-to.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Mozilla on Monday announced a new controls section in its Firefox desktop browser settings that allows users to completely turn off generative artificial intelligence (GenAI) features.
 "It provides a single place to block current and future generative AI features in Firefox," Ajit Varma, head of Firefox, said. "You can also review and manage individual AI features if you choose to use them. This
 
-### 14. [Notepad++ Hosting Breach Attributed to China-Linked Lotus Blossom Hacking Group](https://thehackernews.com/2026/02/notepad-hosting-breach-attributed-to.html)
+### 19. [Notepad++ Hosting Breach Attributed to China-Linked Lotus Blossom Hacking Group](https://thehackernews.com/2026/02/notepad-hosting-breach-attributed-to.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A China-linked threat actor known as Lotus Blossom has been attributed with medium confidence to the recently discovered compromise of the infrastructure hosting Notepad++.
 The attack enabled the state-sponsored hacking group to deliver a previously undocumented backdoor codenamed Chrysalis to users of the open-source editor, according to new findings from Rapid7.
 The development comes shortly
 
-### 15. [Researchers Find 341 Malicious ClawHub Skills Stealing Data from OpenClaw Users](https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html)
+### 20. [Researchers Find 341 Malicious ClawHub Skills Stealing Data from OpenClaw Users](https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A security audit of 2,857 skills on ClawHub has found 341 malicious skills across multiple campaigns, according to new findings from Koi Security, exposing users to new supply chain risks.
 ClawHub is a marketplace designed to make it easy for OpenClaw users to find and install third-party skills. It's an extension to the OpenClaw project, a self-hosted artificial intelligence (AI) assistant
 
-### 16. [OpenClaw Bug Enables One-Click Remote Code Execution via Malicious Link](https://thehackernews.com/2026/02/openclaw-bug-enables-one-click-remote.html)
+### 21. [OpenClaw Bug Enables One-Click Remote Code Execution via Malicious Link](https://thehackernews.com/2026/02/openclaw-bug-enables-one-click-remote.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A high-severity security flaw has been disclosed in OpenClaw (formerly referred to as Clawdbot and Moltbot) that could allow remote code execution (RCE) through a crafted malicious link.
 The issue, which is tracked as CVE-2026-25253 (CVSS score: 8.8), has been addressed in version 2026.1.29 released on January 30, 2026. It has been described as a token exfiltration vulnerability that leads to
 
-### 17. [Microsoft Begins NTLM Phase-Out With Three-Stage Plan to Move Windows to Kerberos](https://thehackernews.com/2026/02/microsoft-begins-ntlm-phase-out-with.html)
+### 22. [Microsoft Begins NTLM Phase-Out With Three-Stage Plan to Move Windows to Kerberos](https://thehackernews.com/2026/02/microsoft-begins-ntlm-phase-out-with.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has announced a three-phase approach to phase out New Technology LAN Manager (NTLM) as part of its efforts to shift Windows environments toward stronger, Kerberos-based options.
 The development comes more than two years after the tech giant revealed its plans to deprecate the legacy technology, citing its susceptibility to weaknesses that could facilitate relay attacks and allow bad
 
-### 18. [ShinyHunters-Branded Extortion Activity Expands, Escalates](https://www.securityweek.com/shinyhunters-branded-extortion-activity-expands-escalates/)
+### 23. [ShinyHunters-Branded Extortion Activity Expands, Escalates](https://www.securityweek.com/shinyhunters-branded-extortion-activity-expands-escalates/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Hackers rely on evolved vishing and login harvesting to compromise SSO credentials for unauthorized MFA enrollment.
 The post ShinyHunters-Branded Extortion Activity Expands, Escalates appeared first on SecurityWeek.
 
-### 19. [Open VSX Publisher Account Hijacked in Fresh GlassWorm Attack](https://www.securityweek.com/open-vsx-publisher-account-hijacked-in-fresh-glassworm-attack/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-A hacker published malicious versions of four established VS Code extensions to distribute a GlassWorm malware loader.
-The post Open VSX Publisher Account Hijacked in Fresh GlassWorm Attack appeared first on SecurityWeek.
-
-### 20. [Default ICS Credentials Exploited in Destructive Attack on Polish Energy Facilities](https://www.securityweek.com/default-ics-credentials-exploited-in-destructive-attack-on-polish-energy-facilities/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Poland’s CERT has published a report on the recent attack, providing new details on targeted ICS and attribution.
-The post Default ICS Credentials Exploited in Destructive Attack on Polish Energy Facilities appeared first on SecurityWeek.
-
-### 21. [⚡ Weekly Recap: Proxy Botnet, Office Zero-Day, MongoDB Ransoms, AI Hijacks &amp; New Threats](https://thehackernews.com/2026/02/weekly-recap-proxy-botnet-office-zero.html)
+### 24. [⚡ Weekly Recap: Proxy Botnet, Office Zero-Day, MongoDB Ransoms, AI Hijacks &amp; New Threats](https://thehackernews.com/2026/02/weekly-recap-proxy-botnet-office-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Every week brings new discoveries, attacks, and defenses that shape the state of cybersecurity. Some threats are stopped quickly, while others go unseen until they cause real damage.
 Sometimes a single update, exploit, or mistake changes how we think about risk and protection. Every incident shows how defenders adapt — and how fast attackers try to stay ahead.
 This week’s recap brings you the
 
-### 22. [Securing the Mid-Market Across the Complete Threat Lifecycle](https://thehackernews.com/2026/02/securing-mid-market-across-complete.html)
+### 25. [Securing the Mid-Market Across the Complete Threat Lifecycle](https://thehackernews.com/2026/02/securing-mid-market-across-complete.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 For mid-market organizations, cybersecurity is a constant balancing act. Proactive, preventative security measures are essential to protect an expanding attack surface. Combined with effective protection that blocks threats, they play a critical role in stopping cyberattacks before damage is done.
 The challenge is that many security tools add complexity and cost that most mid-market businesses
 
-### 23. [Notepad++ Official Update Mechanism Hijacked to Deliver Malware to Select Users](https://thehackernews.com/2026/02/notepad-official-update-mechanism.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The maintainer of Notepad++ has revealed that state-sponsored attackers hijacked the utility's update mechanism to redirect update traffic to malicious servers instead.
-"The attack involved [an] infrastructure-level compromise that allowed malicious actors to intercept and redirect update traffic destined for notepad-plus-plus.org," developer Don Ho said. "The compromise occurred at the hosting
+### 26. [Kimwolf Botnet Lurking in Corporate, Govt. Networks](https://krebsonsecurity.com/2026/01/kimwolf-botnet-lurking-in-corporate-govt-networks/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+A new Internet-of-Things botnet called Kimwolf has spread to more than 2 million devices, forcing infected systems to participate in massive distributed denial-of-service (DDoS) attacks and to relay other malicious and abusive Internet traffic. Kimwolf's ability to scan the local networks of compromised systems for other IoT devices to infect makes it a sobering threat to organizations, and new research reveals Kimwolf is surprisingly prevalent in government and corporate networks.
 
-### 24. [eScan Antivirus Update Servers Compromised to Deliver Multi-Stage Malware](https://thehackernews.com/2026/02/escan-antivirus-update-servers.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The update infrastructure for eScan antivirus, a security solution developed by Indian cybersecurity company MicroWorld Technologies, has been compromised by unknown attackers to deliver a persistent downloader to enterprise and consumer systems.
-"Malicious updates were distributed through eScan's legitimate update infrastructure, resulting in the deployment of multi-stage malware to enterprise
+### 27. [Patch Tuesday, January 2026 Edition](https://krebsonsecurity.com/2026/01/patch-tuesday-january-2026-edition/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+Microsoft today issued patches to plug at least 113 security holes in its various Windows operating systems and supported software. Eight of the vulnerabilities earned Microsoft's most-dire "critical" rating, and the company warns that attackers are already exploiting one of the bugs fixed today.
 
-### 25. [Open VSX Supply Chain Attack Used Compromised Dev Account to Spread GlassWorm](https://thehackernews.com/2026/02/open-vsx-supply-chain-attack-used.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have disclosed details of a supply chain attack targeting the Open VSX Registry in which unidentified threat actors compromised a legitimate developer's resources to push malicious updates to downstream users.
-"On January 30, 2026, four established Open VSX extensions published by the oorzc author had malicious versions published to Open VSX that embed the GlassWorm
+### 28. [Who Benefited from the Aisuru and Kimwolf Botnets?](https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+Our first story of 2026 revealed how a destructive new botnet called Kimwolf rapidly grew to infect more than two million devices by mass-compromising a vast number of unofficial Android TV streaming boxes. Today, we'll dig through digital clues left behind by the hackers, network operators, and cybercrime services that appear to have benefitted from Kimwolf's spread.
 
-### 26. [Student Loan Breach Exposes 2.5M Records](https://threatpost.com/student-loan-breach-exposes-2-5m-records/180492/)
-**Source:** Threatpost | **Tags:** `Security` `Threats` `CVE`
-2.5 million people were affected, in a breach that could spell more trouble down the line.
+### 29. [The Kimwolf Botnet is Stalking Your Local Network](https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+The story you are reading is a series of scoops nestled inside a far more urgent Internet-wide security advisory. The vulnerability at issue has been exploited for months already, and it's time for a broader awareness of the threat. The short version is that everything you thought you knew about the security of the internal network behind your Internet router probably is now dangerously out of date.
 
-### 27. [Watering Hole Attacks Push ScanBox Keylogger](https://threatpost.com/watering-hole-attacks-push-scanbox-keylogger/180490/)
-**Source:** Threatpost | **Tags:** `Security` `Threats` `CVE`
-Researchers uncover a watering hole attack likely carried out by APT TA423, which attempts to plant the ScanBox JavaScript-based reconnaissance tool.
-
-### 28. [Tentacles of ‘0ktapus’ Threat Group Victimize 130 Firms](https://threatpost.com/0ktapus-victimize-130-firms/180487/)
-**Source:** Threatpost | **Tags:** `Security` `Threats` `CVE`
-Over 130 companies tangled in sprawling phishing campaign that spoofed a multi-factor authentication system.
-
-### 29. [Ransomware Attacks are on the Rise](https://threatpost.com/ransomware-attacks-are-on-the-rise/180481/)
-**Source:** Threatpost | **Tags:** `Security` `Threats` `CVE`
-Lockbit is by far this summer’s most prolific ransomware group, trailed by two offshoots of the Conti group.
-
-### 30. [Cybercriminals Are Selling Access to Chinese Surveillance Cameras](https://threatpost.com/cybercriminals-are-selling-access-to-chinese-surveillance-cameras/180478/)
-**Source:** Threatpost | **Tags:** `Security` `Threats` `CVE`
-Tens of thousands of cameras have failed to patch a critical, 11-month-old CVE, leaving thousands of organizations exposed.
+### 30. [Happy 16th Birthday, KrebsOnSecurity.com!](https://krebsonsecurity.com/2025/12/happy-16th-birthday-krebsonsecurity-com/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+KrebsOnSecurity.com celebrates its 16th anniversary today! A huge "thank you" to all of our readers -- newcomers, long-timers and drive-by critics alike. Your engagement this past year here has been tremendous and truly a salve on a handful of dark days. Happily, comeuppance was a strong theme running through our coverage in 2025, with a primary focus on entities that enabled complex and globally-dispersed cybercrime services.
 
 ---
 
