@@ -33,24 +33,61 @@ jobs:
             const sourceName = getField('Nom de la source / Source Name');
             const sourceUrl = getField('URL du site / Website URL');
             const rssUrl = getField('URL du flux RSS / RSS Feed URL');
-            const categoryRaw = getField('Categorie / Category');
+            const categoryRaw = getField('Catégorie / Category');
             const languageRaw = getField('Langue / Language');
             const tags = getField('Tags / Mots-cles');
 
+            // Validate required fields
             if (!sourceName || !rssUrl) {
               console.log('Missing required fields');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'Missing required fields (source name or RSS URL). Please provide all required information.'
+              });
+              return;
+            }
+
+            // Sanitize and validate source name (prevent injection)
+            const sanitizedSourceName = sourceName.replace(/[<>'"]/g, '').slice(0, 100);
+            if (sanitizedSourceName !== sourceName) {
+              console.log('Source name contains invalid characters');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'Source name contains invalid characters. Please use only alphanumeric characters, spaces, and basic punctuation.'
+              });
+              return;
+            }
+
+            // Validate RSS URL format
+            try {
+              const urlObj = new URL(rssUrl);
+              if (!['http:', 'https:'].includes(urlObj.protocol)) {
+                throw new Error('Invalid protocol');
+              }
+            } catch (e) {
+              console.log('Invalid RSS URL:', rssUrl);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Invalid RSS URL format: "${rssUrl}". Please provide a valid HTTP or HTTPS URL.`
+              });
               return;
             }
 
             // Map category
             const catMap = {
               'AI / IA': 'ai',
-              'Cybersecurity / Cybersecurite': 'cybersecurity',
+              'Cybersecurity / Cybersécurité': 'cybersecurity',
               'IoT': 'iot',
               'Windows': 'windows',
               'Mac / Apple': 'mac',
               'Linux': 'linux',
-              'Tech Generale': 'tech',
+              'Tech Générale': 'tech',
               'Entrepreneuriat / Entrepreneurship': 'entrepreneurship',
               'Bourse & Finance': 'finance',
               'Crypto & Blockchain': 'crypto',
@@ -60,10 +97,10 @@ jobs:
             const category = catMap[categoryRaw] || 'tech';
 
             // Map language
-            const lang = languageRaw.includes('Francais') ? 'fr' : 'en';
+            const lang = languageRaw.includes('Français') ? 'fr' : 'en';
 
-            // Parse tags
-            const tagList = tags ? tags.split(',').map(t => t.trim()).filter(t => t) : [category];
+            // Parse and sanitize tags
+            const tagList = tags ? tags.split(',').map(t => t.trim().replace(/[<>'"]/g, '').slice(0, 50)).filter(t => t) : [category];
 
             // Read and update config.json
             const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));
@@ -85,9 +122,9 @@ jobs:
               return;
             }
 
-            // Add new feed
+            // Add new feed with sanitized data
             config.categories[category].feeds.push({
-              name: sourceName,
+              name: sanitizedSourceName,
               url: rssUrl,
               tags: tagList,
               lang: lang

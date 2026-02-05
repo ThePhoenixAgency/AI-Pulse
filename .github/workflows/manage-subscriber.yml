@@ -36,15 +36,48 @@ jobs:
               return [...match[1].matchAll(/- \[X\] (.+)/gi)].map(m => m[1].trim());
             }
 
-            const email = getField('Votre email / Your email');
-            if (!email || !email.includes('@')) {
-              console.log('Invalid email');
+            // Validate email address format
+            function isValidEmail(email) {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return (
+                typeof email === 'string' &&
+                email.length > 0 &&
+                email.length <= 254 &&
+                emailRegex.test(email)
+              );
+            }
+
+            // Basic abuse heuristic: ignore issues that appear to contain many email-like strings
+            const atCount = (body.match(/@/g) || []).length;
+            if (atCount > 5) {
+              console.log('Suspicious issue body (too many @ symbols); skipping subscription.');
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: 'This subscription request appears suspicious and has been rejected. If this is an error, please contact the maintainers.'
+              });
               return;
             }
 
-            const selectedCats = getCheckboxes('Categories souhaitees / Desired categories');
-            const langRaw = getField('Langue preferee / Preferred language');
-            const freqRaw = getField('Frequence / Frequency');
+            const rawEmail = getField('Votre email / Your email');
+            // In case multiple emails or extra text are provided, only keep the first token
+            const email = rawEmail.split(/[,\s]+/).filter(Boolean)[0] || '';
+            
+            if (!isValidEmail(email)) {
+              console.log('Invalid email:', rawEmail);
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: `Invalid email address format: "${rawEmail}". Please provide a valid email address.`
+              });
+              return;
+            }
+
+            const selectedCats = getCheckboxes('Catégories souhaitées / Desired categories');
+            const langRaw = getField('Langue préférée / Preferred language');
+            const freqRaw = getField('Fréquence / Frequency');
 
             const catMap = {
               'AI / IA': 'ai',
@@ -53,7 +86,7 @@ jobs:
               'Windows': 'windows',
               'Mac / Apple': 'mac',
               'Linux': 'linux',
-              'Tech Generale': 'tech',
+              'Tech Générale': 'tech',
               'Entrepreneuriat': 'entrepreneurship',
               'Bourse & Finance': 'finance',
               'Crypto & Blockchain': 'crypto',
@@ -62,7 +95,7 @@ jobs:
             };
 
             const categories = selectedCats.map(c => catMap[c]).filter(Boolean);
-            const lang = langRaw.includes('Francais') ? 'fr' : langRaw.includes('English') ? 'en' : 'all';
+            const lang = langRaw.includes('Français') ? 'fr' : langRaw.includes('English') ? 'en' : 'all';
             const frequency = freqRaw.includes('Quotidien') ? 'daily' : 'each_update';
 
             // Read subscribers
