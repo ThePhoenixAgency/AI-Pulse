@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Thu, 05 Feb 2026 04:53:50 GMT
+**Last Update:** Thu, 05 Feb 2026 07:08:32 GMT
 
 ---
 
@@ -318,144 +318,146 @@ The post Building Systems That Survive Real Life appeared first on Towards Data 
 
 ## Cybersecurity
 
-### 1. [Hackers compromise NGINX servers to redirect user traffic](https://www.bleepingcomputer.com/news/security/hackers-compromise-nginx-servers-to-redirect-user-traffic/)
+### 1. [Critical n8n Flaw CVE-2026-25049 Enables System Command Execution via Malicious Workflows](https://thehackernews.com/2026/02/critical-n8n-flaw-cve-2026-25049.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+A new, critical security vulnerability has been disclosed in the n8n workflow automation platform that, if successfully exploited, could result in the execution of arbitrary system commands.
+The flaw, tracked as CVE-2026-25049 (CVSS score: 9.4), is the result of inadequate sanitization that bypasses safeguards put in place to address CVE-2025-68613 (CVSS score: 9.9), another critical defect that
+
+### 2. [Malicious NGINX Configurations Enable Large-Scale Web Traffic Hijacking Campaign](https://thehackernews.com/2026/02/hackers-exploit-react2shell-to-hijack.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity researchers have disclosed details of an active web traffic hijacking campaign that has targeted NGINX installations and management panels like Baota (BT) in an attempt to route it through the attacker's infrastructure.
+Datadog Security Labs said it observed threat actors associated with the recent React2Shell (CVE-2025-55182, CVSS score: 10.0) exploitation using malicious NGINX
+
+### 3. [Hackers compromise NGINX servers to redirect user traffic](https://www.bleepingcomputer.com/news/security/hackers-compromise-nginx-servers-to-redirect-user-traffic/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A threat actor is compromising NGINX servers in a campaign that hijacks user traffic and reroutes it through the attacker's backend infrastructure. [...]
 
-### 2. [Critical n8n flaws disclosed along with public exploits](https://www.bleepingcomputer.com/news/security/critical-n8n-flaws-disclosed-along-with-public-exploits/)
+### 4. [Critical n8n flaws disclosed along with public exploits](https://www.bleepingcomputer.com/news/security/critical-n8n-flaws-disclosed-along-with-public-exploits/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Multiple critical vulnerabilities in the popular n8n open-source workflow automation platform allow escaping the confines of the environment and taking complete control of the host server. [...]
 
-### 3. [Microsoft Develops Scanner to Detect Backdoors in Open-Weight Large Language Models](https://thehackernews.com/2026/02/microsoft-develops-scanner-to-detect.html)
+### 5. [Microsoft Develops Scanner to Detect Backdoors in Open-Weight Large Language Models](https://thehackernews.com/2026/02/microsoft-develops-scanner-to-detect.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft on Wednesday said it built a lightweight scanner that it said can detect backdoors in open-weight large language models (LLMs) and improve the overall trust in artificial intelligence (AI) systems.
 The tech giant's AI Security team said the scanner leverages three observable signals that can be used to reliably flag the presence of backdoors while maintaining a low false positive
 
-### 4. [CISA: VMware ESXi flaw now exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-vmware-esxi-flaw-now-exploited-in-ransomware-attacks/)
+### 6. [CISA: VMware ESXi flaw now exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-vmware-esxi-flaw-now-exploited-in-ransomware-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CISA confirmed on Wednesday that ransomware gangs have begun exploiting a high-severity VMware ESXi sandbox escape vulnerability that was previously used in zero-day attacks. [...]
 
-### 5. [DEAD#VAX Malware Campaign Deploys AsyncRAT via IPFS-Hosted VHD Phishing Files](https://thehackernews.com/2026/02/deadvax-malware-campaign-deploys.html)
+### 7. [DEAD#VAX Malware Campaign Deploys AsyncRAT via IPFS-Hosted VHD Phishing Files](https://thehackernews.com/2026/02/deadvax-malware-campaign-deploys.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat hunters have disclosed details of a new, stealthy malware campaign dubbed DEAD#VAX that employs a mix of "disciplined tradecraft and clever abuse of legitimate system features" to bypass traditional detection mechanisms and deploy a remote access trojan (RAT) known as AsyncRAT.
 "The attack leverages IPFS-hosted VHD files, extreme script obfuscation, runtime decryption, and in-memory
 
-### 6. [CISA warns of five-year-old GitLab flaw exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-five-year-old-gitlab-flaw-exploited-in-attacks/)
+### 8. [CISA warns of five-year-old GitLab flaw exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-five-year-old-gitlab-flaw-exploited-in-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) ordered government agencies to patch their systems against a five-year-old GitLab vulnerability that is actively being exploited in attacks. [...]
 
-### 7. [The Double-Edged Sword of Non-Human Identities](https://www.bleepingcomputer.com/news/security/the-double-edged-sword-of-non-human-identities/)
+### 9. [The Double-Edged Sword of Non-Human Identities](https://www.bleepingcomputer.com/news/security/the-double-edged-sword-of-non-human-identities/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Leaked non-human identities like API keys and tokens are becoming a major breach driver in cloud environments. Flare shows how exposed machine credentials quietly grant attackers long-term access to enterprise systems. [...]
 
-### 8. [Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation](https://www.securityweek.com/blockchain-intelligence-firm-trm-labs-raises-70-million-at-1-billion-valuation/)
+### 10. [Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation](https://www.securityweek.com/blockchain-intelligence-firm-trm-labs-raises-70-million-at-1-billion-valuation/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The Series C funding will enable the company to expand its AI capabilities for disrupting criminal networks.
 The post Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation appeared first on SecurityWeek.
 
-### 9. [EDR killer tool uses signed kernel driver from forensic software](https://www.bleepingcomputer.com/news/security/edr-killer-tool-uses-signed-kernel-driver-from-forensic-software/)
+### 11. [EDR killer tool uses signed kernel driver from forensic software](https://www.bleepingcomputer.com/news/security/edr-killer-tool-uses-signed-kernel-driver-from-forensic-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are abusing a legitimate but long-revoked EnCase kernel driver in an EDR killer that can detect 59 security tools in attempts to deactivate them. [...]
 
-### 10. [China-Linked Amaranth-Dragon Exploits WinRAR Flaw in Espionage Campaigns](https://thehackernews.com/2026/02/china-linked-amaranth-dragon-exploits.html)
+### 12. [China-Linked Amaranth-Dragon Exploits WinRAR Flaw in Espionage Campaigns](https://thehackernews.com/2026/02/china-linked-amaranth-dragon-exploits.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat actors affiliated with China have been attributed to a fresh set of cyber espionage campaigns targeting government and law enforcement agencies across Southeast Asia throughout 2025.
 Check Point Research is tracking the previously undocumented activity cluster under the moniker Amaranth-Dragon, which it said shares links to the APT 41 ecosystem. Targeted countries include Cambodia,
 
-### 11. [New Amaranth Dragon cyberespionage group exploits WinRAR flaw](https://www.bleepingcomputer.com/news/security/new-amaranth-dragon-cyberespionage-group-exploits-winrar-flaw/)
+### 13. [New Amaranth Dragon cyberespionage group exploits WinRAR flaw](https://www.bleepingcomputer.com/news/security/new-amaranth-dragon-cyberespionage-group-exploits-winrar-flaw/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new threat actor called Amaranth Dragon, linked to APT41 state-sponsored Chinese operations, exploited the CVE-2025-8088 vulnerability in WinRAR in espionage attacks on government and law enforcement agencies. [...]
 
-### 12. [Vulnerabilities Allowed Full Compromise of Google Looker Instances](https://www.securityweek.com/vulnerabilities-allowed-full-compromise-of-google-looker-instances/)
+### 14. [Vulnerabilities Allowed Full Compromise of Google Looker Instances](https://www.securityweek.com/vulnerabilities-allowed-full-compromise-of-google-looker-instances/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The flaws dubbed LookOut can be exploited for remote code execution and data exfiltration. 
 The post Vulnerabilities Allowed Full Compromise of Google Looker Instances appeared first on SecurityWeek.
 
-### 13. [Cyber Insights 2026: Cyberwar and Rising Nation State Threats](https://www.securityweek.com/cyber-insights-2026-cyberwar-and-rising-nation-state-threats/)
+### 15. [Cyber Insights 2026: Cyberwar and Rising Nation State Threats](https://www.securityweek.com/cyber-insights-2026-cyberwar-and-rising-nation-state-threats/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 While both cyberwar and cyberwarfare will increase through 2026, cyberwarfare is likely to increase more dramatically. We hope it will never boil over – but we should be aware of the possibility and its consequences.
 The post Cyber Insights 2026: Cyberwar and Rising Nation State Threats appeared first on SecurityWeek.
 
-### 14. [Microsoft rolls out native Sysmon monitoring in Windows 11](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-native-windows-11-sysmon-security-monitoring/)
+### 16. [Microsoft rolls out native Sysmon monitoring in Windows 11](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-native-windows-11-sysmon-security-monitoring/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has started rolling out built-in Sysmon functionality to some Windows 11 systems enrolled in the Windows Insider program. [...]
 
-### 15. [Varonis Acquisition of AllTrue.ai Valued at $150 Million](https://www.securityweek.com/varonis-acquisition-of-alltrue-ai-valued-at-150-million/)
+### 17. [Varonis Acquisition of AllTrue.ai Valued at $150 Million](https://www.securityweek.com/varonis-acquisition-of-alltrue-ai-valued-at-150-million/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The data security firm has acquired the AI trust, risk, and security management company to expand its capabilities. 
 The post Varonis Acquisition of AllTrue.ai Valued at $150 Million appeared first on SecurityWeek.
 
-### 16. [Orion Raises $32 Million for Data Security](https://www.securityweek.com/orion-raises-32-million-for-data-security/)
+### 18. [Orion Raises $32 Million for Data Security](https://www.securityweek.com/orion-raises-32-million-for-data-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup will use the funding to accelerate product development and go-to-market operations.
 The post Orion Raises $32 Million for Data Security appeared first on SecurityWeek.
 
-### 17. [Orchid Security Introduces Continuous Identity Observability for Enterprise Applications](https://thehackernews.com/2026/02/orchid-security-introduces-continuous.html)
+### 19. [Orchid Security Introduces Continuous Identity Observability for Enterprise Applications](https://thehackernews.com/2026/02/orchid-security-introduces-continuous.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 An innovative approach to discovering, analyzing, and governing identity usage beyond traditional IAM controls.
 The Challenge: Identity Lives Outside the Identity Stack
 Identity and access management tools were built to govern users and directories.
 Modern enterprises run on applications. Over time, identity logic has moved into application code, APIs, service accounts, and custom authentication
 
-### 18. [DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft](https://www.securityweek.com/dockerdash-flaw-in-docker-ai-assistant-leads-to-rce-data-theft/)
+### 20. [DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft](https://www.securityweek.com/dockerdash-flaw-in-docker-ai-assistant-leads-to-rce-data-theft/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical vulnerability exists in the contextual trust in MCP Gateway architecture, as instructions are passed without validation.
 The post DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft appeared first on SecurityWeek.
 
-### 19. [Owner of Incognito dark web drugs market gets 30 years in prison](https://www.bleepingcomputer.com/news/security/taiwanese-man-gets-30-years-for-operating-dark-web-drug-market/)
+### 21. [Owner of Incognito dark web drugs market gets 30 years in prison](https://www.bleepingcomputer.com/news/security/taiwanese-man-gets-30-years-for-operating-dark-web-drug-market/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A Taiwanese man was sentenced to 30 years in prison for operating Incognito Market, one of the world's largest online narcotics marketplaces that sold over $105 million worth of illegal drugs to customers worldwide. [...]
 
-### 20. [Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks](https://www.securityweek.com/cryptominers-reverse-shells-dropped-in-recent-react2shell-attacks/)
+### 22. [Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks](https://www.securityweek.com/cryptominers-reverse-shells-dropped-in-recent-react2shell-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Two IP addresses accounted for the majority of the 1.4 million exploitation attempts observed over the past week.
 The post Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks appeared first on SecurityWeek.
 
-### 21. [The First 90 Seconds: How Early Decisions Shape Incident Response Investigations](https://thehackernews.com/2026/02/the-first-90-seconds-how-early.html)
+### 23. [The First 90 Seconds: How Early Decisions Shape Incident Response Investigations](https://thehackernews.com/2026/02/the-first-90-seconds-how-early.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Many incident response failures do not come from a lack of tools, intelligence, or technical skills. They come from what happens immediately after detection, when pressure is high, and information is incomplete.
 I have seen IR teams recover from sophisticated intrusions with limited telemetry. I have also seen teams lose control of investigations they should have been able to handle. The
 
-### 22. [Fresh SolarWinds Vulnerability Exploited in Attacks](https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/)
+### 24. [Fresh SolarWinds Vulnerability Exploited in Attacks](https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical-severity SolarWinds Web Help Desk flaw could lead to unauthenticated remote code execution.
 The post Fresh SolarWinds Vulnerability Exploited in Attacks appeared first on SecurityWeek.
 
-### 23. [Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks](https://www.securityweek.com/security-analysis-of-moltbook-agent-network-bot-to-bot-prompt-injection-and-data-leaks/)
+### 25. [Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks](https://www.securityweek.com/security-analysis-of-moltbook-agent-network-bot-to-bot-prompt-injection-and-data-leaks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Wiz and Permiso have analyzed the AI agent social network and found serious security issues and threats.
 The post Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks appeared first on SecurityWeek.
 
-### 24. [Microsoft Warns Python Infostealers Target macOS via Fake Ads and Installers](https://thehackernews.com/2026/02/microsoft-warns-python-infostealers.html)
+### 26. [Microsoft Warns Python Infostealers Target macOS via Fake Ads and Installers](https://thehackernews.com/2026/02/microsoft-warns-python-infostealers.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has warned that information-stealing attacks are "rapidly expanding" beyond Windows to target Apple macOS environments by leveraging cross-platform languages like Python and abusing trusted platforms for distribution at scale.
 The tech giant's Defender Security Research Team said it observed macOS-targeted infostealer campaigns using social engineering techniques such as ClickFix since
 
-### 25. [Eclipse Foundation Mandates Pre-Publish Security Checks for Open VSX Extensions](https://thehackernews.com/2026/02/eclipse-foundation-mandates-pre-publish.html)
+### 27. [Eclipse Foundation Mandates Pre-Publish Security Checks for Open VSX Extensions](https://thehackernews.com/2026/02/eclipse-foundation-mandates-pre-publish.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Eclipse Foundation, which maintains the Open VSX Registry, has announced plans to enforce security checks before Microsoft Visual Studio Code (VS Code) extensions are published to the open-source repository to combat supply chain threats.
 The move marks a shift from a reactive to a proactive approach to ensure that malicious extensions don't end up getting published on the Open VSX Registry.
 
-### 26. [CISA Adds Actively Exploited SolarWinds Web Help Desk RCE to KEV Catalog](https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html)
+### 28. [CISA Adds Actively Exploited SolarWinds Web Help Desk RCE to KEV Catalog](https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a critical security flaw impacting SolarWinds Web Help Desk (WHD) to its Known Exploited Vulnerabilities (KEV) catalog, flagging it as actively exploited in attacks.
 The vulnerability, tracked as CVE-2025-40551 (CVSS score: 9.8), is a untrusted data deserialization vulnerability that could pave the way for remote
 
-### 27. [Coinbase confirms insider breach linked to leaked support tool screenshots](https://www.bleepingcomputer.com/news/security/coinbase-confirms-insider-breach-linked-to-leaked-support-tool-screenshots/)
+### 29. [Coinbase confirms insider breach linked to leaked support tool screenshots](https://www.bleepingcomputer.com/news/security/coinbase-confirms-insider-breach-linked-to-leaked-support-tool-screenshots/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Coinbase has confirmed an insider breach after a contractor improperly accessed the data of approximately thirty customers, which BleepingComputer has learned is a new incident that occurred in December. [...]
 
-### 28. [Step Finance says compromised execs' devices led to $40M crypto theft](https://www.bleepingcomputer.com/news/security/step-finance-says-compromised-execs-devices-led-to-40m-crypto-theft/)
+### 30. [Step Finance says compromised execs' devices led to $40M crypto theft](https://www.bleepingcomputer.com/news/security/step-finance-says-compromised-execs-devices-led-to-40m-crypto-theft/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Step Finance announced that it lost $40 million worth of digital assets after hackers compromised devices belonging to the company's team of executives. [...]
-
-### 29. [Wave of Citrix NetScaler scans use thousands of residential proxies](https://www.bleepingcomputer.com/news/security/wave-of-citrix-netscaler-scans-use-thousands-of-residential-proxies/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A coordinated reconnaissance campaign targeting Citrix NetScaler infrastructure over the past week used tens of thousands of residential proxies to discover login panels. [...]
-
-### 30. [CISA flags critical SolarWinds RCE flaw as exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-flags-critical-solarwinds-rce-flaw-as-actively-exploited/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-CISA has flagged a critical SolarWinds Web Help Desk vulnerability as actively exploited in attacks and ordered federal agencies to patch their systems within three days. [...]
 
 ---
 
