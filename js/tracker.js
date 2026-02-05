@@ -203,8 +203,8 @@ const ReadHistory = {
             var articles = this.getAll();
             if (!articles.some(function (a) { return a.url === url; })) {
                 articles.push({ url: url, title: title, readAt: Date.now() });
-                // Keep max 500 entries with size-aware cleanup to avoid localStorage bloat
-                // Average article entry is ~200 bytes, 500 * 200 = 100KB, well within limits
+                // Keep max 500 entries to avoid localStorage bloat
+                // Average article entry ~200 bytes, 500 * 200 = 100KB (well within 5-10MB limit)
                 if (articles.length > 500) {
                     articles = articles.slice(-500);
                 }

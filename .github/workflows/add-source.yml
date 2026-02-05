@@ -23,6 +23,10 @@ jobs:
             const issue = context.payload.issue;
             const body = issue.body;
 
+            // Constants
+            const MAX_SOURCE_NAME_LENGTH = 100;
+            const MAX_TAG_LENGTH = 50;
+
             // Parse form fields from issue body
             function getField(label) {
               const regex = new RegExp(`### ${label}\\s*\\n\\s*(.+)`, 'i');
@@ -50,7 +54,7 @@ jobs:
             }
 
             // Sanitize and validate source name (prevent injection)
-            const sanitizedSourceName = sourceName.replace(/[<>'"]/g, '').slice(0, 100);
+            const sanitizedSourceName = sourceName.replace(/[<>'"]/g, '').slice(0, MAX_SOURCE_NAME_LENGTH);
             if (sanitizedSourceName !== sourceName) {
               console.log('Source name contains invalid characters');
               await github.rest.issues.createComment({
@@ -100,7 +104,7 @@ jobs:
             const lang = languageRaw.includes('Français') ? 'fr' : 'en';
 
             // Parse and sanitize tags
-            const tagList = tags ? tags.split(',').map(t => t.trim().replace(/[<>'"]/g, '').slice(0, 50)).filter(t => t) : [category];
+            const tagList = tags ? tags.split(',').map(t => t.trim().replace(/[<>'"]/g, '').slice(0, MAX_TAG_LENGTH)).filter(t => t) : [category];
 
             // Read and update config.json
             const config = JSON.parse(fs.readFileSync('config.json', 'utf-8'));

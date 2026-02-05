@@ -23,6 +23,9 @@ jobs:
             const issue = context.payload.issue;
             const body = issue.body;
 
+            // Constants
+            const MAX_AT_SYMBOLS_THRESHOLD = 5; // Maximum @ symbols allowed to prevent email harvesting
+
             function getField(label) {
               const regex = new RegExp(`### ${label}\\s*\\n\\s*(.+)`, 'i');
               const match = body.match(regex);
@@ -49,7 +52,7 @@ jobs:
 
             // Basic abuse heuristic: ignore issues that appear to contain many email-like strings
             const atCount = (body.match(/@/g) || []).length;
-            if (atCount > 5) {
+            if (atCount > MAX_AT_SYMBOLS_THRESHOLD) {
               console.log('Suspicious issue body (too many @ symbols); skipping subscription.');
               await github.rest.issues.createComment({
                 owner: context.repo.owner,

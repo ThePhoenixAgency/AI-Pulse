@@ -59,6 +59,12 @@ const parser = new Parser({
   headers: { 'User-Agent': 'AI-Pulse/3.0' }
 });
 
+// Valid ISO 639-1 language codes for HTML lang attribute
+const VALID_LANG_CODES = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'zh', 'ja', 'ko', 'ar'];
+
+// Default sender email for notifications
+const DEFAULT_SENDER_EMAIL = 'AI-Pulse <noreply@resend.dev>';
+
 // UTM parameters for AI-Pulse traffic tracking
 function addUTMParams(url, category = 'general') {
   try {
@@ -161,8 +167,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   // Detect language from content or use feed-declared language
   let detectedLang = detectLang(rawSummary || article.title);
   // Validate detected language is a valid 2-letter ISO 639-1 code
-  const validLangCodes = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'zh', 'ja', 'ko', 'ar'];
-  if (detectedLang && !validLangCodes.includes(detectedLang)) {
+  if (detectedLang && !VALID_LANG_CODES.includes(detectedLang)) {
     detectedLang = null; // Fallback to feedLang if invalid
   }
   const lang = detectedLang || feedLang || 'en';
@@ -447,8 +452,8 @@ async function sendEmailDigests(categorizedArticles) {
   const today = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
 
   // Get sender email from environment or use default
-  const senderEmail = process.env.EMAIL_FROM || 'AI-Pulse <noreply@resend.dev>';
-  if (senderEmail === 'AI-Pulse <noreply@resend.dev>') {
+  const senderEmail = process.env.EMAIL_FROM || DEFAULT_SENDER_EMAIL;
+  if (senderEmail === DEFAULT_SENDER_EMAIL) {
     console.error('WARNING: Using default Resend development domain for sender email.');
     console.error('For production, set EMAIL_FROM environment variable with a verified custom domain.');
   }
