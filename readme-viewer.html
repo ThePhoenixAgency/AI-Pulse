@@ -573,18 +573,30 @@
                     const linkEl = document.createElement('a');
                     linkEl.setAttribute('href', '#' + cat);
                     linkEl.setAttribute('data-nav-cat', cat);
-                    linkEl.textContent = heading.textContent;
                     nav.appendChild(linkEl);
+            // Clear existing content
+            container.innerHTML = '';
+
                 }
             });
         }
 
-        // ─── Build Preferences Checkboxes ───────────────────
-        function buildPrefCategories(prefs) {
+                    const label = document.createElement('label');
+                    const input = document.createElement('input');
+
+                    input.type = 'checkbox';
+                    input.setAttribute('data-cat', cat);
+                    if (prefs.categories[cat] !== false) {
+                        input.checked = true;
+                    }
+
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(' '));
+                    label.appendChild(document.createTextNode(heading.textContent));
+
+                    container.appendChild(label);
             const container = document.getElementById('prefCategories');
             const sections = document.querySelectorAll('#readme-content section[data-category]');
-            let html = '';
-
             sections.forEach(section => {
                 const cat = section.getAttribute('data-category');
                 const heading = section.querySelector('h2');
