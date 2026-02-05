@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 04 Feb 2026 21:40:02 GMT
+**Last Update:** Thu, 05 Feb 2026 02:40:17 GMT
 
 ---
 
@@ -179,110 +179,110 @@ The post Meet Larry Bank: the performance whisperer making code faster and open 
 
 ## Artificial Intelligence
 
-### 1. [AI SRE Resolve AI confirms $125M raise, unicorn valuation](https://techcrunch.com/2026/02/04/ai-sre-resolve-ai-confirms-125m-raise-unicorn-valuation/)
+### 1. [Sam Altman got exceptionally testy over Claude Super Bowl ads](https://techcrunch.com/2026/02/04/sam-altman-got-exceptionally-testy-over-claude-super-bowl-ads/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+He posted a novella-sized rant that devolved into to calling his rival "dishonest" and "authoritarian."
+
+### 2. [Alphabet won’t talk about the Google-Apple AI deal, even to investors](https://techcrunch.com/2026/02/04/alphabet-wont-talk-about-the-google-apple-ai-deal-even-to-investors/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Alphabet CEO skipped an analyst's question about Apple on the company's earnings call.
+
+### 3. [Google’s Gemini app has surpassed 750M monthly active users](https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Google revealed a significant milestone for its Gemini app, announcing over 750 million monthly active users as it competes with ChatGPT and Meta AI.
+
+### 4. [Meet Gizmo: A TikTok for interactive, vibe-coded mini apps](https://techcrunch.com/2026/02/04/meet-gizmo-a-tiktok-for-interactive-vibe-coded-mini-apps/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Gizmo's app is like a TikTok for vibe-coded mini apps... and it's a lot of fun.
+
+### 5. [AI SRE Resolve AI confirms $125M raise, unicorn valuation](https://techcrunch.com/2026/02/04/ai-sre-resolve-ai-confirms-125m-raise-unicorn-valuation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The two-year-old startup confirms that it closed a Series A led by Lightspeed at $1 billion valuation.
 
-### 2. [Amazon to begin testing AI tools for film and TV production next month](https://techcrunch.com/2026/02/04/amazon-to-begin-testing-ai-tools-for-film-and-tv-production-next-month/)
+### 6. [Amazon to begin testing AI tools for film and TV production next month](https://techcrunch.com/2026/02/04/amazon-to-begin-testing-ai-tools-for-film-and-tv-production-next-month/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Amazon MGM Studios will reportedly begin a closed beta program in March to test its AI tools to help with film and TV production.
 
-### 3. [A16z just raised $1.7B for AI infrastructure. Here’s where it’s going.](https://techcrunch.com/video/a16z-just-raised-1-7b-for-ai-infrastructure-heres-where-its-going/)
+### 7. [A16z just raised $1.7B for AI infrastructure. Here’s where it’s going.](https://techcrunch.com/video/a16z-just-raised-1-7b-for-ai-infrastructure-heres-where-its-going/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Andreessen Horowitz just raised a whopping ⁠new $15 billion in funding⁠. And a $1.7 billion chunk of that is going to its ⁠infrastructure team⁠, the one responsible for some of its biggest, most prominent AI investments including Black Forrest Labs, Cursor, OpenAI, ⁠ElevenLabs⁠, Ideogram, ⁠Fal⁠ and dozens of others.   A16z ⁠general partner with the infra team Jennifer Li⁠ (who oversees such investments as ElevenLabs – just valued at $11 billion); Ideagram and Fal, has a clear thesis on where the team is looking […]
 
-### 4. [What a16z is actually funding (and what it’s ignoring) when it comes to AI infra](https://techcrunch.com/podcast/what-a16z-is-actually-funding-and-what-its-ignoring-when-it-comes-to-ai-infra/)
+### 8. [What a16z is actually funding (and what it’s ignoring) when it comes to AI infra](https://techcrunch.com/podcast/what-a16z-is-actually-funding-and-what-its-ignoring-when-it-comes-to-ai-infra/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Andreessen Horowitz just raised a whopping new $15 billion in funding. And a $1.7 billion chunk of that is going to its infrastructure team, the one responsible for some of its biggest, most prominent AI investments including Black Forrest Labs, Cursor, OpenAI, ElevenLabs, Ideogram, Fal and dozens of others.   A16z general partner with the infra team Jennifer Li (who oversees such investments as ElevenLabs – just valued at $11 billion); Ideagram and Fal, has a clear thesis on where the team is looking […]
+Andreessen Horowitz just raised a whopping new $15 billion in funding. And a $1.7 billion chunk of that is going to its infrastructure team, the one responsible for some of its biggest, most prominent AI investments, including Black Forest Labs, Cursor, OpenAI, ElevenLabs, Ideogram, Fal, and dozens of others.   a16z general partner with the infra team Jennifer Li (who oversees such investments as ElevenLabs — just valued at $11 billion) has a clear thesis on where the team is looking to […]
 
-### 5. [Tinder looks to AI to help fight ‘swipe fatigue’ and dating app burnout](https://techcrunch.com/2026/02/04/tinder-looks-to-ai-to-help-fight-swipe-fatigue-and-dating-app-burnout/)
+### 9. [Tinder looks to AI to help fight ‘swipe fatigue’ and dating app burnout](https://techcrunch.com/2026/02/04/tinder-looks-to-ai-to-help-fight-swipe-fatigue-and-dating-app-burnout/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Tinder is testing AI recommendations and insight from your Camera Roll for better matches.
 
-### 6. [Roblox’s 4D creation feature is now available in open beta](https://techcrunch.com/2026/02/04/robloxs-4d-creation-feature-is-now-available-in-open-beta/)
+### 10. [Roblox’s 4D creation feature is now available in open beta](https://techcrunch.com/2026/02/04/robloxs-4d-creation-feature-is-now-available-in-open-beta/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Roblox's highly anticipated 4D creation feature has officially arrived in open beta.
 
-### 7. [AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/)
+### 11. [AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 While the prospect of AI acting as a digital co-worker dominated the day one agenda at the co-located AI &amp; Big Data Expo and Intelligent Automation Conference, the technical sessions focused on the infrastructure to make it work. A primary topic on the exhibition floor was the progression from passive automation to “agentic” systems. These […]
 The post AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise appeared first on AI News.
 
-### 8. [AWS vs. Azure: A Deep Dive into Model Training – Part 2](https://towardsdatascience.com/aws-vs-azure-a-deep-dive-into-model-training-part-2/)
+### 12. [AWS vs. Azure: A Deep Dive into Model Training – Part 2](https://towardsdatascience.com/aws-vs-azure-a-deep-dive-into-model-training-part-2/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 This article covers how Azure ML's persistent, workspace-centric compute resources differ from AWS SageMaker's on-demand, job-specific approach. Additionally, we explored environment customization options, from Azure's curated environments and custom environments to SageMaker's three level of customizations.
 The post AWS vs. Azure: A Deep Dive into Model Training – Part 2 appeared first on Towards Data Science.
 
-### 9. [ElevenLabs raises $500M from Sequoia at an $11 billion valuation](https://techcrunch.com/2026/02/04/elevenlabs-raises-500m-from-sequioia-at-a-11-billion-valuation/)
+### 13. [ElevenLabs raises $500M from Sequoia at an $11 billion valuation](https://techcrunch.com/2026/02/04/elevenlabs-raises-500m-from-sequioia-at-a-11-billion-valuation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 ElevenLabs' valuation has raised more than three times in the last 12 months.
 
-### 10. [How to Work Effectively with Frontend and Backend Code](https://towardsdatascience.com/how-to-effectively-work-with-frontend-and-backend-code/)
+### 14. [How to Work Effectively with Frontend and Backend Code](https://towardsdatascience.com/how-to-effectively-work-with-frontend-and-backend-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to be an effective full-stack engineer with Claude Code
 The post How to Work Effectively with Frontend and Backend Code appeared first on Towards Data Science.
 
-### 11. [Alexa+, Amazon’s AI assistant, is now available to everyone in the US](https://techcrunch.com/2026/02/04/alexa-amazons-ai-assistant-is-now-available-to-everyone-in-the-u-s/)
+### 15. [Alexa+, Amazon’s AI assistant, is now available to everyone in the US](https://techcrunch.com/2026/02/04/alexa-amazons-ai-assistant-is-now-available-to-everyone-in-the-u-s/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Amazon opens Alexa+ to everyone in the U.S. The AI feature is free for Prime members across devices, and free for everyone on mobile and web.
 
-### 12. [How to Build Your Own Custom LLM Memory Layer from Scratch](https://towardsdatascience.com/how-to-build-your-own-custom-llm-memory-layer-from-scratch/)
+### 16. [How to Build Your Own Custom LLM Memory Layer from Scratch](https://towardsdatascience.com/how-to-build-your-own-custom-llm-memory-layer-from-scratch/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Step-by-step guide to building autonomous memory retrieval systems
 The post How to Build Your Own Custom LLM Memory Layer from Scratch appeared first on Towards Data Science.
 
-### 13. [Accel doubles down on Fibr AI as agents turn static websites into one-to-one experiences](https://techcrunch.com/2026/02/04/accel-doubles-down-on-fibr-ai-as-agents-turn-static-websites-into-one-to-one-experiences/)
+### 17. [Accel doubles down on Fibr AI as agents turn static websites into one-to-one experiences](https://techcrunch.com/2026/02/04/accel-doubles-down-on-fibr-ai-as-agents-turn-static-websites-into-one-to-one-experiences/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Fibr AI replaces marketing agency- and engineering-heavy website personalization with autonomous systems designed for enterprise scale.
 
-### 14. [Plan–Code–Execute: Designing Agents That Create Their Own Tools](https://towardsdatascience.com/plan-code-execute-designing-agents-that-create-their-own-tools/)
+### 18. [Plan–Code–Execute: Designing Agents That Create Their Own Tools](https://towardsdatascience.com/plan-code-execute-designing-agents-that-create-their-own-tools/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The case against pre-built tools in Agentic Architectures
 The post Plan–Code–Execute: Designing Agents That Create Their Own Tools appeared first on Towards Data Science.
 
-### 15. [Combing the Rackspace blogfiles for operational AI pointers](https://www.artificialintelligence-news.com/news/combing-the-rackspace-blogfiles-for-operational-ai-pointers/)
+### 19. [Combing the Rackspace blogfiles for operational AI pointers](https://www.artificialintelligence-news.com/news/combing-the-rackspace-blogfiles-for-operational-ai-pointers/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 In a recent blog output, Rackspace refers to the bottlenecks familiar to many readers: messy data, unclear ownership, governance gaps, and the cost of running models once they become part of production. The company frames them through the lens of service delivery, security operations, and cloud modernisation, which tells you where it is putting its […]
 The post Combing the Rackspace blogfiles for operational AI pointers appeared first on AI News.
 
-### 16. [How Cisco builds smart systems for the AI era](https://www.artificialintelligence-news.com/news/how-cisco-builds-smart-systems-for-the-ai-era/)
+### 20. [How Cisco builds smart systems for the AI era](https://www.artificialintelligence-news.com/news/how-cisco-builds-smart-systems-for-the-ai-era/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Among the big players in technology, Cisco is one of the sector’s leaders that’s advancing operational deployments of AI internally to its own operations, and the tools it sells to its customers around the world. As a large company, its activities encompass many areas of the typical IT stack, including infrastructure, services, security, and the […]
 The post How Cisco builds smart systems for the AI era appeared first on AI News.
 
-### 17. [Exclusive: Positron raises $230M Series B to take on Nvidia’s AI chips](https://techcrunch.com/2026/02/04/exclusive-positron-raises-230m-series-b-to-take-on-nvidias-ai-chips/)
+### 21. [Exclusive: Positron raises $230M Series B to take on Nvidia’s AI chips](https://techcrunch.com/2026/02/04/exclusive-positron-raises-230m-series-b-to-take-on-nvidias-ai-chips/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The investment comes from backers including the Qatar Investment Authority as demand for chips beyond Nvidia soars and as Qatar aims to build out its AI infrastructure.
 
-### 18. [Intel will start making GPUs, a market dominated by Nvidia ](https://techcrunch.com/2026/02/03/intel-will-start-making-gpus-a-market-dominated-by-nvidia/)
+### 22. [Intel will start making GPUs, a market dominated by Nvidia ](https://techcrunch.com/2026/02/03/intel-will-start-making-gpus-a-market-dominated-by-nvidia/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Intel has been bulking up a team to focus on this effort and will develop its GPU strategy around customer needs.
 
-### 19. [Xcode moves into agentic coding with deeper OpenAI and Anthropic integrations](https://techcrunch.com/2026/02/03/xcode-moves-into-agentic-coding-with-deeper-openai-and-anthropic-integrations/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Xcode 26.3 offers agentic coding capabilities with Anthropic's Claude Agent and OpenAI's Codex.
-
-### 20. [Lotus Health nabs $35M for AI doctor that sees patients for free](https://techcrunch.com/2026/02/03/lotus-health-nabs-35m-for-ai-doctor-that-sees-patients-for-free/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-This AI doctor is licensed in all 50 states, the startup says. The deal was led by CRV and Kleiner Perkins.
-
-### 21. [Routing in a Sparse Graph: a Distributed Q-Learning Approach](https://towardsdatascience.com/routing-in-a-sparse-graph-a-distributed-q-learning-approach/)
+### 23. [Routing in a Sparse Graph: a Distributed Q-Learning Approach](https://towardsdatascience.com/routing-in-a-sparse-graph-a-distributed-q-learning-approach/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Distributed agents need only decide one move ahead.
 The post Routing in a Sparse Graph: a Distributed Q-Learning Approach appeared first on Towards Data Science.
 
-### 22. [Fitbit founders launch AI platform to help families monitor their health](https://techcrunch.com/2026/02/03/fitbit-founders-launch-ai-platform-to-help-families-monitor-their-health/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Luffu uses AI in the background to gather and organize family information, learn day-to-day patterns, and flag notable changes so families can stay aligned and address potential well-being issues.
-
-### 23. [YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger](https://towardsdatascience.com/yolov2-yolo9000-paper-walkthrough-better-faster-stronger/)
+### 24. [YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger](https://towardsdatascience.com/yolov2-yolo9000-paper-walkthrough-better-faster-stronger/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 From YOLOv1 to YOLOv2: prior box, k-means, Darknet-19, passthrough layer, and more
 The post YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger appeared first on Towards Data Science.
-
-### 24. [Peak XV says internal disagreement led to partner exits as it doubles down on AI](https://techcrunch.com/2026/02/03/peak-xv-says-internal-disagreement-led-to-partner-exits-as-it-doubles-down-on-ai/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Peak XV is transitioning board roles and opening a U.S. office while continuing to view India as its largest market.
 
 ### 25. [Creating a Data Pipeline to Monitor Local Crime Trends](https://towardsdatascience.com/creating-a-data-pipeline-to-monitor-local-crime-trends/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
@@ -318,144 +318,144 @@ The post Building Systems That Survive Real Life appeared first on Towards Data 
 
 ## Cybersecurity
 
-### 1. [Critical n8n flaws disclosed along with public exploits](https://www.bleepingcomputer.com/news/security/critical-n8n-flaws-disclosed-along-with-public-exploits/)
+### 1. [Hackers compromise NGINX servers to redirect user traffic](https://www.bleepingcomputer.com/news/security/hackers-compromise-nginx-servers-to-redirect-user-traffic/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A threat actor is compromising NGINX servers in a campaign that hijacks user traffic and reroutes it through the attacker's backend infrastructure. [...]
+
+### 2. [Critical n8n flaws disclosed along with public exploits](https://www.bleepingcomputer.com/news/security/critical-n8n-flaws-disclosed-along-with-public-exploits/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Multiple critical vulnerabilities in the popular n8n open-source workflow automation platform allow escaping the confines of the environment and taking complete control of the host server. [...]
 
-### 2. [Microsoft Develops Scanner to Detect Backdoors in Open-Weight Large Language Models](https://thehackernews.com/2026/02/microsoft-develops-scanner-to-detect.html)
+### 3. [Microsoft Develops Scanner to Detect Backdoors in Open-Weight Large Language Models](https://thehackernews.com/2026/02/microsoft-develops-scanner-to-detect.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft on Wednesday said it built a lightweight scanner that it said can detect backdoors in open-weight large language models (LLMs) and improve the overall trust in artificial intelligence (AI) systems.
 The tech giant's AI Security team said the scanner leverages three observable signals that can be used to reliably flag the presence of backdoors while maintaining a low false positive
 
-### 3. [CISA: VMware ESXi flaw now exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-vmware-esxi-flaw-now-exploited-in-ransomware-attacks/)
+### 4. [CISA: VMware ESXi flaw now exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-vmware-esxi-flaw-now-exploited-in-ransomware-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CISA confirmed on Wednesday that ransomware gangs have begun exploiting a high-severity VMware ESXi sandbox escape vulnerability that was previously used in zero-day attacks. [...]
 
-### 4. [DEAD#VAX Malware Campaign Deploys AsyncRAT via IPFS-Hosted VHD Phishing Files](https://thehackernews.com/2026/02/deadvax-malware-campaign-deploys.html)
+### 5. [DEAD#VAX Malware Campaign Deploys AsyncRAT via IPFS-Hosted VHD Phishing Files](https://thehackernews.com/2026/02/deadvax-malware-campaign-deploys.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat hunters have disclosed details of a new, stealthy malware campaign dubbed DEAD#VAX that employs a mix of "disciplined tradecraft and clever abuse of legitimate system features" to bypass traditional detection mechanisms and deploy a remote access trojan (RAT) known as AsyncRAT.
 "The attack leverages IPFS-hosted VHD files, extreme script obfuscation, runtime decryption, and in-memory
 
-### 5. [CISA warns of five-year-old GitLab flaw exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-five-year-old-gitlab-flaw-exploited-in-attacks/)
+### 6. [CISA warns of five-year-old GitLab flaw exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-five-year-old-gitlab-flaw-exploited-in-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) ordered government agencies to patch their systems against a five-year-old GitLab vulnerability that is actively being exploited in attacks. [...]
 
-### 6. [The Double-Edged Sword of Non-Human Identities](https://www.bleepingcomputer.com/news/security/the-double-edged-sword-of-non-human-identities/)
+### 7. [The Double-Edged Sword of Non-Human Identities](https://www.bleepingcomputer.com/news/security/the-double-edged-sword-of-non-human-identities/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Leaked non-human identities like API keys and tokens are becoming a major breach driver in cloud environments. Flare shows how exposed machine credentials quietly grant attackers long-term access to enterprise systems. [...]
 
-### 7. [Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation](https://www.securityweek.com/blockchain-intelligence-firm-trm-labs-raises-70-million-at-1-billion-valuation/)
+### 8. [Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation](https://www.securityweek.com/blockchain-intelligence-firm-trm-labs-raises-70-million-at-1-billion-valuation/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The Series C funding will enable the company to expand its AI capabilities for disrupting criminal networks.
 The post Blockchain Intelligence Firm TRM Labs Raises $70 Million at $1 Billion Valuation appeared first on SecurityWeek.
 
-### 8. [EDR killer tool uses signed kernel driver from forensic software](https://www.bleepingcomputer.com/news/security/edr-killer-tool-uses-signed-kernel-driver-from-forensic-software/)
+### 9. [EDR killer tool uses signed kernel driver from forensic software](https://www.bleepingcomputer.com/news/security/edr-killer-tool-uses-signed-kernel-driver-from-forensic-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are abusing a legitimate but long-revoked EnCase kernel driver in an EDR killer that can detect 59 security tools in attempts to deactivate them. [...]
 
-### 9. [China-Linked Amaranth-Dragon Exploits WinRAR Flaw in Espionage Campaigns](https://thehackernews.com/2026/02/china-linked-amaranth-dragon-exploits.html)
+### 10. [China-Linked Amaranth-Dragon Exploits WinRAR Flaw in Espionage Campaigns](https://thehackernews.com/2026/02/china-linked-amaranth-dragon-exploits.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat actors affiliated with China have been attributed to a fresh set of cyber espionage campaigns targeting government and law enforcement agencies across Southeast Asia throughout 2025.
 Check Point Research is tracking the previously undocumented activity cluster under the moniker Amaranth-Dragon, which it said shares links to the APT 41 ecosystem. Targeted countries include Cambodia,
 
-### 10. [New Amaranth Dragon cyberespionage group exploits WinRAR flaw](https://www.bleepingcomputer.com/news/security/new-amaranth-dragon-cyberespionage-group-exploits-winrar-flaw/)
+### 11. [New Amaranth Dragon cyberespionage group exploits WinRAR flaw](https://www.bleepingcomputer.com/news/security/new-amaranth-dragon-cyberespionage-group-exploits-winrar-flaw/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new threat actor called Amaranth Dragon, linked to APT41 state-sponsored Chinese operations, exploited the CVE-2025-8088 vulnerability in WinRAR in espionage attacks on government and law enforcement agencies. [...]
 
-### 11. [Vulnerabilities Allowed Full Compromise of Google Looker Instances](https://www.securityweek.com/vulnerabilities-allowed-full-compromise-of-google-looker-instances/)
+### 12. [Vulnerabilities Allowed Full Compromise of Google Looker Instances](https://www.securityweek.com/vulnerabilities-allowed-full-compromise-of-google-looker-instances/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The flaws dubbed LookOut can be exploited for remote code execution and data exfiltration. 
 The post Vulnerabilities Allowed Full Compromise of Google Looker Instances appeared first on SecurityWeek.
 
-### 12. [Cyber Insights 2026: Cyberwar and Rising Nation State Threats](https://www.securityweek.com/cyber-insights-2026-cyberwar-and-rising-nation-state-threats/)
+### 13. [Cyber Insights 2026: Cyberwar and Rising Nation State Threats](https://www.securityweek.com/cyber-insights-2026-cyberwar-and-rising-nation-state-threats/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 While both cyberwar and cyberwarfare will increase through 2026, cyberwarfare is likely to increase more dramatically. We hope it will never boil over – but we should be aware of the possibility and its consequences.
 The post Cyber Insights 2026: Cyberwar and Rising Nation State Threats appeared first on SecurityWeek.
 
-### 13. [Microsoft rolls out native Sysmon monitoring in Windows 11](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-native-windows-11-sysmon-security-monitoring/)
+### 14. [Microsoft rolls out native Sysmon monitoring in Windows 11](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-native-windows-11-sysmon-security-monitoring/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has started rolling out built-in Sysmon functionality to some Windows 11 systems enrolled in the Windows Insider program. [...]
 
-### 14. [Varonis Acquisition of AllTrue.ai Valued at $150 Million](https://www.securityweek.com/varonis-acquisition-of-alltrue-ai-valued-at-150-million/)
+### 15. [Varonis Acquisition of AllTrue.ai Valued at $150 Million](https://www.securityweek.com/varonis-acquisition-of-alltrue-ai-valued-at-150-million/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The data security firm has acquired the AI trust, risk, and security management company to expand its capabilities. 
 The post Varonis Acquisition of AllTrue.ai Valued at $150 Million appeared first on SecurityWeek.
 
-### 15. [Orion Raises $32 Million for Data Security](https://www.securityweek.com/orion-raises-32-million-for-data-security/)
+### 16. [Orion Raises $32 Million for Data Security](https://www.securityweek.com/orion-raises-32-million-for-data-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup will use the funding to accelerate product development and go-to-market operations.
 The post Orion Raises $32 Million for Data Security appeared first on SecurityWeek.
 
-### 16. [Orchid Security Introduces Continuous Identity Observability for Enterprise Applications](https://thehackernews.com/2026/02/orchid-security-introduces-continuous.html)
+### 17. [Orchid Security Introduces Continuous Identity Observability for Enterprise Applications](https://thehackernews.com/2026/02/orchid-security-introduces-continuous.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 An innovative approach to discovering, analyzing, and governing identity usage beyond traditional IAM controls.
 The Challenge: Identity Lives Outside the Identity Stack
 Identity and access management tools were built to govern users and directories.
 Modern enterprises run on applications. Over time, identity logic has moved into application code, APIs, service accounts, and custom authentication
 
-### 17. [DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft](https://www.securityweek.com/dockerdash-flaw-in-docker-ai-assistant-leads-to-rce-data-theft/)
+### 18. [DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft](https://www.securityweek.com/dockerdash-flaw-in-docker-ai-assistant-leads-to-rce-data-theft/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical vulnerability exists in the contextual trust in MCP Gateway architecture, as instructions are passed without validation.
 The post DockerDash Flaw in Docker AI Assistant Leads to RCE, Data Theft appeared first on SecurityWeek.
 
-### 18. [Owner of Incognito dark web drugs market gets 30 years in prison](https://www.bleepingcomputer.com/news/security/taiwanese-man-gets-30-years-for-operating-dark-web-drug-market/)
+### 19. [Owner of Incognito dark web drugs market gets 30 years in prison](https://www.bleepingcomputer.com/news/security/taiwanese-man-gets-30-years-for-operating-dark-web-drug-market/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A Taiwanese man was sentenced to 30 years in prison for operating Incognito Market, one of the world's largest online narcotics marketplaces that sold over $105 million worth of illegal drugs to customers worldwide. [...]
 
-### 19. [Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks](https://www.securityweek.com/cryptominers-reverse-shells-dropped-in-recent-react2shell-attacks/)
+### 20. [Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks](https://www.securityweek.com/cryptominers-reverse-shells-dropped-in-recent-react2shell-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Two IP addresses accounted for the majority of the 1.4 million exploitation attempts observed over the past week.
 The post Cryptominers, Reverse Shells Dropped in Recent React2Shell Attacks appeared first on SecurityWeek.
 
-### 20. [The First 90 Seconds: How Early Decisions Shape Incident Response Investigations](https://thehackernews.com/2026/02/the-first-90-seconds-how-early.html)
+### 21. [The First 90 Seconds: How Early Decisions Shape Incident Response Investigations](https://thehackernews.com/2026/02/the-first-90-seconds-how-early.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Many incident response failures do not come from a lack of tools, intelligence, or technical skills. They come from what happens immediately after detection, when pressure is high, and information is incomplete.
 I have seen IR teams recover from sophisticated intrusions with limited telemetry. I have also seen teams lose control of investigations they should have been able to handle. The
 
-### 21. [Fresh SolarWinds Vulnerability Exploited in Attacks](https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/)
+### 22. [Fresh SolarWinds Vulnerability Exploited in Attacks](https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The critical-severity SolarWinds Web Help Desk flaw could lead to unauthenticated remote code execution.
 The post Fresh SolarWinds Vulnerability Exploited in Attacks appeared first on SecurityWeek.
 
-### 22. [Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks](https://www.securityweek.com/security-analysis-of-moltbook-agent-network-bot-to-bot-prompt-injection-and-data-leaks/)
+### 23. [Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks](https://www.securityweek.com/security-analysis-of-moltbook-agent-network-bot-to-bot-prompt-injection-and-data-leaks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Wiz and Permiso have analyzed the AI agent social network and found serious security issues and threats.
 The post Security Analysis of Moltbook Agent Network: Bot-to-Bot Prompt Injection and Data Leaks appeared first on SecurityWeek.
 
-### 23. [Microsoft Warns Python Infostealers Target macOS via Fake Ads and Installers](https://thehackernews.com/2026/02/microsoft-warns-python-infostealers.html)
+### 24. [Microsoft Warns Python Infostealers Target macOS via Fake Ads and Installers](https://thehackernews.com/2026/02/microsoft-warns-python-infostealers.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has warned that information-stealing attacks are "rapidly expanding" beyond Windows to target Apple macOS environments by leveraging cross-platform languages like Python and abusing trusted platforms for distribution at scale.
 The tech giant's Defender Security Research Team said it observed macOS-targeted infostealer campaigns using social engineering techniques such as ClickFix since
 
-### 24. [Eclipse Foundation Mandates Pre-Publish Security Checks for Open VSX Extensions](https://thehackernews.com/2026/02/eclipse-foundation-mandates-pre-publish.html)
+### 25. [Eclipse Foundation Mandates Pre-Publish Security Checks for Open VSX Extensions](https://thehackernews.com/2026/02/eclipse-foundation-mandates-pre-publish.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Eclipse Foundation, which maintains the Open VSX Registry, has announced plans to enforce security checks before Microsoft Visual Studio Code (VS Code) extensions are published to the open-source repository to combat supply chain threats.
 The move marks a shift from a reactive to a proactive approach to ensure that malicious extensions don't end up getting published on the Open VSX Registry.
 
-### 25. [CISA Adds Actively Exploited SolarWinds Web Help Desk RCE to KEV Catalog](https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html)
+### 26. [CISA Adds Actively Exploited SolarWinds Web Help Desk RCE to KEV Catalog](https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) on Tuesday added a critical security flaw impacting SolarWinds Web Help Desk (WHD) to its Known Exploited Vulnerabilities (KEV) catalog, flagging it as actively exploited in attacks.
 The vulnerability, tracked as CVE-2025-40551 (CVSS score: 9.8), is a untrusted data deserialization vulnerability that could pave the way for remote
 
-### 26. [Coinbase confirms insider breach linked to leaked support tool screenshots](https://www.bleepingcomputer.com/news/security/coinbase-confirms-insider-breach-linked-to-leaked-support-tool-screenshots/)
+### 27. [Coinbase confirms insider breach linked to leaked support tool screenshots](https://www.bleepingcomputer.com/news/security/coinbase-confirms-insider-breach-linked-to-leaked-support-tool-screenshots/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Coinbase has confirmed an insider breach after a contractor improperly accessed the data of approximately thirty customers, which BleepingComputer has learned is a new incident that occurred in December. [...]
 
-### 27. [Step Finance says compromised execs' devices led to $40M crypto theft](https://www.bleepingcomputer.com/news/security/step-finance-says-compromised-execs-devices-led-to-40m-crypto-theft/)
+### 28. [Step Finance says compromised execs' devices led to $40M crypto theft](https://www.bleepingcomputer.com/news/security/step-finance-says-compromised-execs-devices-led-to-40m-crypto-theft/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Step Finance announced that it lost $40 million worth of digital assets after hackers compromised devices belonging to the company's team of executives. [...]
 
-### 28. [Wave of Citrix NetScaler scans use thousands of residential proxies](https://www.bleepingcomputer.com/news/security/wave-of-citrix-netscaler-scans-use-thousands-of-residential-proxies/)
+### 29. [Wave of Citrix NetScaler scans use thousands of residential proxies](https://www.bleepingcomputer.com/news/security/wave-of-citrix-netscaler-scans-use-thousands-of-residential-proxies/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A coordinated reconnaissance campaign targeting Citrix NetScaler infrastructure over the past week used tens of thousands of residential proxies to discover login panels. [...]
 
-### 29. [CISA flags critical SolarWinds RCE flaw as exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-flags-critical-solarwinds-rce-flaw-as-actively-exploited/)
+### 30. [CISA flags critical SolarWinds RCE flaw as exploited in attacks](https://www.bleepingcomputer.com/news/security/cisa-flags-critical-solarwinds-rce-flaw-as-actively-exploited/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CISA has flagged a critical SolarWinds Web Help Desk vulnerability as actively exploited in attacks and ordered federal agencies to patch their systems within three days. [...]
-
-### 30. [Iron Mountain: Data breach mostly limited to marketing materials](https://www.bleepingcomputer.com/news/security/iron-mountain-data-breach-mostly-limited-to-marketing-materials/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Iron Mountain, a leading data storage and recovery services company, says that a recent breach claimed by the Everest extortion gang is limited to mostly marketing materials. [...]
 
 ---
 
