@@ -556,17 +556,27 @@
         function buildSectionNav() {
             const nav = document.getElementById('sectionNav');
             const sections = document.querySelectorAll('#readme-content section[data-category]');
-            let navHtml = '<h3>Sections</h3>';
 
+            // Clear existing content
+            nav.innerHTML = '';
+
+            // Add heading
+            const headingEl = document.createElement('h3');
+            headingEl.textContent = 'Sections';
+            nav.appendChild(headingEl);
+
+            // Add links for each section
             sections.forEach(section => {
                 const cat = section.getAttribute('data-category');
                 const heading = section.querySelector('h2');
                 if (heading && cat) {
-                    navHtml += `<a href="#${cat}" data-nav-cat="${cat}">${heading.textContent}</a>`;
+                    const linkEl = document.createElement('a');
+                    linkEl.setAttribute('href', '#' + cat);
+                    linkEl.setAttribute('data-nav-cat', cat);
+                    linkEl.textContent = heading.textContent;
+                    nav.appendChild(linkEl);
                 }
             });
-
-            nav.innerHTML = navHtml;
         }
 
         // ─── Build Preferences Checkboxes ───────────────────
