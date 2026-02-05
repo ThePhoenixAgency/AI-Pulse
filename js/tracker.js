@@ -4,7 +4,23 @@
  */
 
 const Tracker = {
+    // Check if localStorage is available
+    isLocalStorageAvailable: function() {
+        try {
+            const test = '__localStorage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    },
+
     init: function () {
+        if (!this.isLocalStorageAvailable()) {
+            console.warn('localStorage is not available. Tracking features will be disabled.');
+            return;
+        }
         this.trackVisit();
         this.logDebugInfo();
     },
@@ -17,7 +33,10 @@ const Tracker = {
     },
 
     trackVisit: function () {
-        let stats = JSON.parse(localStorage.getItem('ai_pulse_stats')) || {
+        if (!this.isLocalStorageAvailable()) return;
+        
+        try {
+            let stats = JSON.parse(localStorage.getItem('ai_pulse_stats')) || {
             visitorId: this.generateUUID(),
             sessions: 0,
             pageViews: 0,
@@ -51,6 +70,9 @@ const Tracker = {
         // Expose for other scripts
         window.aiPulseStats = stats;
         window.aiPulseTracker = this;
+        } catch (e) {
+            console.error('Error tracking visit:', e);
+        }
     },
 
     fetchLocation: function (stats) {
@@ -81,16 +103,26 @@ const Tracker = {
     },
 
     trackArticleClick: function (articleData) {
-        let stats = this.getStats();
-        stats.articleClicks = (stats.articleClicks || 0) + 1;
-        localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+        if (!this.isLocalStorageAvailable()) return;
+        
+        try {
+            let stats = this.getStats();
+            stats.articleClicks = (stats.articleClicks || 0) + 1;
+            localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
 
-        // Also add to read history
-        if (articleData.url) {
-            ReadHistory.markRead(articleData.url, articleData.title || 'Unknown');
+            // Also add to read history
+            if (
+                articleData.url &&
+                typeof ReadHistory !== 'undefined' &&
+                typeof ReadHistory.markRead === 'function'
+            ) {
+                ReadHistory.markRead(articleData.url, articleData.title || 'Unknown');
+            }
+
+            console.log("Article tracked:", articleData.title);
+        } catch (e) {
+            console.error('Error tracking article click:', e);
         }
-
-        console.log("Article tracked:", articleData.title);
     },
 
     getStats: function () {
@@ -165,14 +197,29 @@ const ReadHistory = {
     },
 
     markRead: function (url, title) {
-        var articles = this.getAll();
-        if (!articles.some(function (a) { return a.url === url; })) {
-            articles.push({ url: url, title: title, readAt: Date.now() });
-            // Keep max 500 entries to avoid localStorage bloat
-            if (articles.length > 500) {
-                articles = articles.slice(-500);
+        try {
+            if (!Tracker.isLocalStorageAvailable()) return;
+            
+            var articles = this.getAll();
+            if (!articles.some(function (a) { return a.url === url; })) {
+                articles.push({ url: url, title: title, readAt: Date.now() });
+                // Keep max 500 entries with size-aware cleanup to avoid localStorage bloat
+                // Average article entry is ~200 bytes, 500 * 200 = 100KB, well within limits
+                if (articles.length > 500) {
+                    articles = articles.slice(-500);
+                }
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
             }
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+        } catch (e) {
+            console.error('Error marking article as read:', e);
+            // If localStorage is full, remove oldest entries and try again
+            try {
+                var articles = this.getAll();
+                articles = articles.slice(-250); // Keep only recent 250
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+            } catch (e2) {
+                console.error('Failed to recover from localStorage error:', e2);
+            }
         }
     },
 

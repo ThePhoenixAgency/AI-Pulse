@@ -13,9 +13,27 @@ const linkedinHelper = require('./linkedin-helper');
 
 // Load configuration from config.json
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
-const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
-const SETTINGS = config.settings;
-const CATEGORIES = config.categories;
+let config, SETTINGS, CATEGORIES;
+try {
+  if (!fs.existsSync(CONFIG_PATH)) {
+    console.error(`ERROR: Configuration file not found at ${CONFIG_PATH}`);
+    console.error('Please ensure config.json exists in the repository root.');
+    process.exit(1);
+  }
+  const configContent = fs.readFileSync(CONFIG_PATH, 'utf-8');
+  config = JSON.parse(configContent);
+  SETTINGS = config.settings;
+  CATEGORIES = config.categories;
+  
+  if (!SETTINGS || !CATEGORIES) {
+    console.error('ERROR: Invalid config.json structure. Missing required "settings" or "categories" fields.');
+    process.exit(1);
+  }
+} catch (e) {
+  console.error(`ERROR: Failed to load or parse config.json: ${e.message}`);
+  console.error('Please check that config.json is valid JSON and properly formatted.');
+  process.exit(1);
+}
 
 // Language detection
 let detectLang;
@@ -30,7 +48,9 @@ try {
     return langMap[code] || code;
   };
 } catch (e) {
-  console.error('franc-min not available, using feed-declared language only');
+  console.error('franc-min not available for language detection.');
+  console.error('To enable automatic language detection, run: npm install franc-min');
+  console.error('Continuing with feed-declared language only...');
   detectLang = () => null;
 }
 
@@ -99,7 +119,11 @@ function titleSimilarity(wordsA, wordsB) {
 
 function deduplicateArticles(articles) {
   if (!SETTINGS.deduplication || !SETTINGS.deduplication.enabled) return articles;
-  const threshold = SETTINGS.deduplication.similarityThreshold || 0.7;
+  const threshold = (typeof SETTINGS.deduplication.similarityThreshold === 'number' && 
+                     SETTINGS.deduplication.similarityThreshold > 0 && 
+                     SETTINGS.deduplication.similarityThreshold <= 1) 
+                    ? SETTINGS.deduplication.similarityThreshold 
+                    : 0.7;
   const kept = [];
   const normalizedTitles = [];
 
@@ -136,6 +160,11 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Detect language from content or use feed-declared language
   let detectedLang = detectLang(rawSummary || article.title);
+  // Validate detected language is a valid 2-letter ISO 639-1 code
+  const validLangCodes = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'zh', 'ja', 'ko', 'ar'];
+  if (detectedLang && !validLangCodes.includes(detectedLang)) {
+    detectedLang = null; // Fallback to feedLang if invalid
+  }
   const lang = detectedLang || feedLang || 'en';
 
   // Try to fetch and extract content if it doesn't exist
@@ -197,7 +226,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
     link: finalReaderLink,
-    originalLink: articleUrl,
+    originalLink: articleUrl, // Always set to ensure RSS feeds have valid external URLs
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
     tags: tags,
@@ -364,11 +393,30 @@ function writeRSSFeeds(categorizedArticles) {
 }
 
 // ─── Email Digest ───────────────────────────────────────────
+
+// Validate email address format
+function isValidEmail(email) {
+  if (!email || typeof email !== 'string') return false;
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 254;
+}
+
+// Sleep helper for rate limiting
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function sendEmailDigests(categorizedArticles) {
   const apiKey = process.env.API_RESEND;
   if (!apiKey) {
     console.error('No API_RESEND key found, skipping email digests');
     return;
+  }
+
+  // Validate API key format (should start with re_ for Resend)
+  if (!apiKey.startsWith('re_')) {
+    console.error('WARNING: API_RESEND key does not appear to be a valid Resend API key');
   }
 
   const subscribersPath = path.join(__dirname, '..', 'data', 'subscribers.json');
@@ -398,8 +446,27 @@ async function sendEmailDigests(categorizedArticles) {
   const template = fs.readFileSync(templatePath, 'utf-8');
   const today = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  for (const subscriber of subscribers) {
+  // Get sender email from environment or use default
+  const senderEmail = process.env.EMAIL_FROM || 'AI-Pulse <noreply@resend.dev>';
+  if (senderEmail === 'AI-Pulse <noreply@resend.dev>') {
+    console.error('WARNING: Using default Resend development domain for sender email.');
+    console.error('For production, set EMAIL_FROM environment variable with a verified custom domain.');
+  }
+
+  console.error(`Sending email digests to ${subscribers.length} subscriber(s)...`);
+  let sentCount = 0;
+  let failedCount = 0;
+
+  for (let i = 0; i < subscribers.length; i++) {
+    const subscriber = subscribers[i];
     try {
+      // Validate email address
+      if (!isValidEmail(subscriber.email)) {
+        console.error(`  Skipping invalid email address: ${subscriber.email}`);
+        failedCount++;
+        continue;
+      }
+
       // Filter articles based on subscriber preferences
       let filteredSections = [];
       const subCategories = subscriber.categories || Object.keys(CATEGORIES);
@@ -439,7 +506,7 @@ async function sendEmailDigests(categorizedArticles) {
 
       // Send via Resend
       const response = await axios.post('https://api.resend.com/emails', {
-        from: 'AI-Pulse <noreply@resend.dev>',
+        from: senderEmail,
         to: [subscriber.email],
         subject: `AI-Pulse Digest - ${today}`,
         html: emailHtml
@@ -451,10 +518,22 @@ async function sendEmailDigests(categorizedArticles) {
       });
 
       console.error(`  Email sent to ${subscriber.email}: ${response.data.id}`);
+      sentCount++;
+
+      // Rate limiting: wait 100ms between emails to respect API limits
+      // Resend free tier allows 100 emails/day, with burst protection
+      if (i < subscribers.length - 1) {
+        await sleep(100);
+      }
     } catch (error) {
-      console.error(`  Failed to send email to ${subscriber.email}: ${error.message}`);
+      failedCount++;
+      // Sanitize error message to avoid exposing sensitive information
+      const errorMsg = error.response?.data?.message || error.message || 'Unknown error';
+      console.error(`  Failed to send email to ${subscriber.email}: ${errorMsg}`);
     }
   }
+
+  console.error(`\nEmail digest summary: ${sentCount} sent, ${failedCount} failed`);
 }
 
 // ─── Main ───────────────────────────────────────────────────
