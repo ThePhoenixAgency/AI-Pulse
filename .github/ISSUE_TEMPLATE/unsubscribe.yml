@@ -1,0 +1,21 @@
+name: Se desabonner de AI-Pulse / Unsubscribe from AI-Pulse
+description: Retirez votre email de notre liste de diffusion
+title: "[UNSUBSCRIBE] "
+labels: ["unsubscription"]
+body:
+  - type: input
+    id: email
+    attributes:
+      label: Votre email / Your email
+      description: L'adresse email que vous souhaitez desabonner / The email address you want to unsubscribe
+      placeholder: "you@example.com"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Raison (optionnel) / Reason (optional)
+      description: Dites-nous pourquoi vous vous desabonnez (optionnel) / Tell us why you're unsubscribing (optional)
+      placeholder: "Je ne souhaite plus recevoir les digests / I no longer wish to receive digests"
+    validations:
+      required: false
