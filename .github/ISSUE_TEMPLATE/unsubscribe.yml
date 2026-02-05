@@ -7,7 +7,7 @@ body:
     id: email
     attributes:
       label: Votre email / Your email
-      description: L'adresse email que vous souhaitez desabonner / The email address you want to unsubscribe
+      description: L'adresse email que vous souhaitez désabonner / The email address you want to unsubscribe
       placeholder: "you@example.com"
     validations:
       required: true
@@ -15,7 +15,7 @@ body:
     id: reason
     attributes:
       label: Raison (optionnel) / Reason (optional)
-      description: Dites-nous pourquoi vous vous desabonnez (optionnel) / Tell us why you're unsubscribing (optional)
+      description: Dites-nous pourquoi vous vous désabonnez (optionnel) / Tell us why you're unsubscribing (optional)
       placeholder: "Je ne souhaite plus recevoir les digests / I no longer wish to receive digests"
     validations:
       required: false
