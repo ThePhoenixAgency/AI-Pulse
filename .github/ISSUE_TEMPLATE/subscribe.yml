@@ -13,7 +13,7 @@ body:
   - type: checkboxes
     id: categories
     attributes:
-      label: Categories souhaitees / Desired categories
+      label: Catégories souhaitées / Desired categories
       options:
         - label: AI / IA
         - label: Cybersecurity
@@ -30,9 +30,9 @@ body:
   - type: dropdown
     id: language
     attributes:
-      label: Langue preferee / Preferred language
+      label: Langue préférée / Preferred language
       options:
-        - Francais
+        - Français
         - English
         - Les deux / Both
     validations:
@@ -40,7 +40,7 @@ body:
   - type: dropdown
     id: frequency
     attributes:
-      label: Frequence / Frequency
+      label: Fréquence / Frequency
       options:
         - Chaque mise a jour (toutes les 3h) / Every update
         - Quotidien / Daily digest
