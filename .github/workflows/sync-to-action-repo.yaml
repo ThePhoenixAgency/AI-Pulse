@@ -29,8 +29,7 @@ jobs:
           repository: EthanThePhoenix38/dependabot-secure-flow
           token: ${{ secrets.SYNC_TOKEN }}
           path: action-repo
-          fetch-depth:0
-
+            fetch-depth: 0
       - name: Copy workflow and action files to action repository
         run: |
           mkdir -p action-repo/.github/workflows
