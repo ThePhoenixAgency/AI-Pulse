@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Fri, 06 Feb 2026 07:03:35 GMT
+**Last Update:** Fri, 06 Feb 2026 09:53:01 GMT
 
 ---
 
@@ -318,142 +318,144 @@ The post YOLOv2 &amp; YOLO9000 Paper Walkthrough: Better, Faster, Stronger appe
 
 ## Cybersecurity
 
-### 1. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
+### 1. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Photo-sharing platform Flickr is notifying users of a potential data breach after a vulnerability at a third-party email service provider exposed their real names, email addresses, IP addresses, and account activity. [...]
+
+### 2. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The startup aims to unify SOC, GRC, IAM, vulnerability management, IT, and business operations through its Agentic OS platform.
+The post Airrived Emerges From Stealth With $6.1 Million in Funding appeared first on SecurityWeek.
+
+### 3. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Used since at least 2019, DKnife has been targeting the desktop, mobile, and IoT devices of Chinese users.
+The post ‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks appeared first on SecurityWeek.
+
+### 4. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has issued a new binding operational directive requiring federal agencies to identify and remove network edge devices that no longer receive security updates from manufacturers. [...]
+
+### 5. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.
+The compromised versions of the two packages are listed below -
+
+@dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&amp;
+
+### 6. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The news comes after the Department of Energy conducted its annual Liberty Eclipse cybersecurity exercise.
+The post 5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel appeared first on SecurityWeek.
+
+### 7. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The security defect allows unauthenticated attackers to execute arbitrary code remotely via malicious HTTP requests.
+The post Critical SmarterMail Vulnerability Exploited in Ransomware Attacks appeared first on SecurityWeek.
+
+### 8. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.
-Claude Opus 4.6, which was launched on Thursday, comes with improved coding skills, including code review and debugging capabilities, along
+Claude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with
 
-### 2. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
+### 9. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CISA updated 59 KEV entries in 2025 to specify that the vulnerabilities have been exploited in ransomware attacks.
 The post Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog appeared first on SecurityWeek.
 
-### 3. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
+### 10. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Zscaler says the acquisition will allow customers to embed lightweight extensions into any browser, providing increased security and eliminating the need for third-party browsers. 
 The post Zscaler Acquires Browser Security Firm SquareX  appeared first on SecurityWeek.
 
-### 4. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
+### 11. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Spain's Ministry of Science (Ministerio de Ciencia) announced a partial shutdown of its IT systems, affecting several citizen- and company-facing services. [...]
 
-### 5. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
+### 12. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ransomware operators are hosting and delivering malicious payloads at scale by abusing virtual machines (VMs) provisioned by ISPsystem, a legitimate virtual infrastructure management provider. [...]
 
-### 6. [Microsoft to shut down Exchange Online EWS in April 2027](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-shut-down-exchange-web-services-in-cloud-in-2027/)
+### 13. [Microsoft to shut down Exchange Online EWS in April 2027](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-shut-down-exchange-web-services-in-cloud-in-2027/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced today that the Exchange Web Services (EWS) API for Exchange Online will be shut down in April 2027, after nearly 20 years. [...]
 
-### 7. [AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack](https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html)
+### 14. [AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack](https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The distributed denial-of-service (DDoS) botnet known as AISURU/Kimwolf has been attributed to a record-setting attack that peaked at 31.4 Terabits per second (Tbps) and lasted only 35 seconds.
 Cloudflare, which automatically detected and mitigated the activity, said it's part of a growing number of hyper-volumetric HTTP DDoS attacks mounted by the botnet in the fourth quarter of 2025. The
 
-### 8. [Italian university La Sapienza goes offline after cyberattack](https://www.bleepingcomputer.com/news/security/italian-university-la-sapienza-goes-offline-after-cyberattack/)
+### 15. [Italian university La Sapienza goes offline after cyberattack](https://www.bleepingcomputer.com/news/security/italian-university-la-sapienza-goes-offline-after-cyberattack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Rome's "La Sapienza" university has been targeted by a cyberattack that impacted its IT systems and caused widespread operational disruptions at the educational institute. [...]
 
-### 9. [Romanian oil pipeline operator Conpet discloses cyberattack](https://www.bleepingcomputer.com/news/security/romanian-oil-pipeline-operator-conpet-discloses-cyberattack-qilin-ransomware/)
+### 16. [Romanian oil pipeline operator Conpet discloses cyberattack](https://www.bleepingcomputer.com/news/security/romanian-oil-pipeline-operator-conpet-discloses-cyberattack-qilin-ransomware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Conpet, Romania's national oil pipeline operator, has disclosed that a cyberattack disrupted its business systems and took down the company's website on Tuesday. [...]
 
-### 10. [Substack Discloses Security Incident After Hacker Leaks Data](https://www.securityweek.com/substack-discloses-security-incident-after-hacker-leaks-data/)
+### 17. [Substack Discloses Security Incident After Hacker Leaks Data](https://www.securityweek.com/substack-discloses-security-incident-after-hacker-leaks-data/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The hacker claims to have stolen nearly 700,000 Substack user records, including email addresses and phone numbers.
 The post Substack Discloses Security Incident After Hacker Leaks Data appeared first on SecurityWeek.
 
-### 11. [When cloud logs fall short, the network tells the truth ](https://www.bleepingcomputer.com/news/security/when-cloud-logs-fall-short-the-network-tells-the-truth/)
+### 18. [When cloud logs fall short, the network tells the truth ](https://www.bleepingcomputer.com/news/security/when-cloud-logs-fall-short-the-network-tells-the-truth/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cloud logs can be inconsistent or incomplete, creating blind spots as environments scale and change. Corelight shows how network-level telemetry provides reliable visibility when cloud logs fall short. [...]
 
-### 12. [Researchers Expose Network of 150 Cloned Law Firm Websites in AI-Powered Scam Campaign](https://www.securityweek.com/researchers-expose-network-of-150-cloned-law-firm-websites-in-ai-powered-scam-campaign/)
+### 19. [Researchers Expose Network of 150 Cloned Law Firm Websites in AI-Powered Scam Campaign](https://www.securityweek.com/researchers-expose-network-of-150-cloned-law-firm-websites-in-ai-powered-scam-campaign/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Criminals are using AI to clone professional websites at an industrial scale. A new report shows how one AI-powered network grew to 150+ domains by hiding behind Cloudflare and rotating IP ranges.
 The post Researchers Expose Network of 150 Cloned Law Firm Websites in AI-Powered Scam Campaign appeared first on SecurityWeek.
 
-### 13. [VS Code Configs Expose GitHub Codespaces to Attacks](https://www.securityweek.com/vs-code-configs-expose-github-codespaces-to-attacks/)
+### 20. [VS Code Configs Expose GitHub Codespaces to Attacks](https://www.securityweek.com/vs-code-configs-expose-github-codespaces-to-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 VS Code-integrated configuration files are automatically executed in Codespaces when the user opens a repository or pull request.
 The post VS Code Configs Expose GitHub Codespaces to Attacks appeared first on SecurityWeek.
 
-### 14. [Nullify Secures $12.5 Million in Seed Funding for Cybersecurity AI Workforce](https://www.securityweek.com/nullify-secures-12-5-million-in-seed-funding-for-cybersecurity-ai-workforce/)
+### 21. [Nullify Secures $12.5 Million in Seed Funding for Cybersecurity AI Workforce](https://www.securityweek.com/nullify-secures-12-5-million-in-seed-funding-for-cybersecurity-ai-workforce/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 This latest infusion, led by SYN Ventures, brings the company’s total funding to $16.9 million.
 The post Nullify Secures $12.5 Million in Seed Funding for Cybersecurity AI Workforce appeared first on SecurityWeek.
 
-### 15. [ThreatsDay Bulletin: Codespaces RCE, AsyncRAT C2, BYOVD Abuse, AI Cloud Intrusions &amp; 15+ Stories](https://thehackernews.com/2026/02/threatsday-bulletin-codespaces-rce.html)
+### 22. [ThreatsDay Bulletin: Codespaces RCE, AsyncRAT C2, BYOVD Abuse, AI Cloud Intrusions &amp; 15+ Stories](https://thehackernews.com/2026/02/threatsday-bulletin-codespaces-rce.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 This week didn’t produce one big headline. It produced many small signals — the kind that quietly shape what attacks will look like next.
 Researchers tracked intrusions that start in ordinary places: developer workflows, remote tools, cloud access, identity paths, and even routine user actions. Nothing looked dramatic on the surface. That’s the point. Entry is becoming less visible while impact
 
-### 16. [Newsletter platform Substack notifies users of data breach](https://www.bleepingcomputer.com/news/security/newsletter-platform-substack-notifies-users-of-data-breach/)
+### 23. [Newsletter platform Substack notifies users of data breach](https://www.bleepingcomputer.com/news/security/newsletter-platform-substack-notifies-users-of-data-breach/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Newsletter platform Substack is notifying users of a data breach after attackers stole their email addresses and phone numbers in October 2025. [...]
 
-### 17. [Italy Averted Russian-Linked Cyberattacks Targeting Winter Olympics Websites, Foreign Minister Says](https://www.securityweek.com/italy-averted-russian-linked-cyberattacks-targeting-winter-olympics-websites-foreign-minister-says/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Italy has foiled a series of cyberattacks targeting some of its foreign ministry offices, including one in Washington.
-The post Italy Averted Russian-Linked Cyberattacks Targeting Winter Olympics Websites, Foreign Minister Says appeared first on SecurityWeek.
-
-### 18. [SystemBC Infects 10,000 Devices After Defying Law Enforcement Takedown](https://www.securityweek.com/systembc-infects-10000-devices-after-defying-law-enforcement-takedown/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The malware is known for dropping ransomware and other payloads, and for abusing infected machines to proxy traffic.
-The post SystemBC Infects 10,000 Devices After Defying Law Enforcement Takedown appeared first on SecurityWeek.
-
-### 19. [The Buyer’s Guide to AI Usage Control](https://thehackernews.com/2026/02/the-buyers-guide-to-ai-usage-control.html)
+### 24. [The Buyer’s Guide to AI Usage Control](https://thehackernews.com/2026/02/the-buyers-guide-to-ai-usage-control.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Today’s “AI everywhere” reality is woven into everyday workflows across the enterprise, embedded in SaaS platforms, browsers, copilots, extensions, and a rapidly expanding universe of shadow tools that appear faster than security teams can track. Yet most organizations still rely on legacy controls that operate far away from where AI interactions actually occur. The result is a widening
 
-### 20. [Critical N8n Sandbox Escape Could Lead to Server Compromise](https://www.securityweek.com/critical-n8n-sandbox-escape-could-lead-to-server-compromise/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The vulnerability could allow attackers to execute arbitrary commands and steal credentials and other secrets.
-The post Critical N8n Sandbox Escape Could Lead to Server Compromise appeared first on SecurityWeek.
-
-### 21. [Data breach at fintech firm Betterment exposes 1.4 million accounts](https://www.bleepingcomputer.com/news/security/data-breach-at-fintech-firm-betterment-exposes-14-million-accounts/)
+### 25. [Data breach at fintech firm Betterment exposes 1.4 million accounts](https://www.bleepingcomputer.com/news/security/data-breach-at-fintech-firm-betterment-exposes-14-million-accounts/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers stole email addresses and other personal information from 1.4 million accounts after breaching the systems of automated investment platform Betterment in January. [...]
 
-### 22. [Cyberspy Group Hacked Governments and Critical Infrastructure in 37 Countries](https://www.securityweek.com/cyberspy-group-hacked-governments-and-critical-infrastructure-in-37-countries/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Palo Alto Networks has not attributed the APT activity to any specific country, but evidence points to China.
-The post Cyberspy Group Hacked Governments and Critical Infrastructure in 37 Countries appeared first on SecurityWeek.
-
-### 23. [Infy Hackers Resume Operations with New C2 Servers After Iran Internet Blackout Ends](https://thehackernews.com/2026/02/infy-hackers-resume-operations-with-new.html)
+### 26. [Infy Hackers Resume Operations with New C2 Servers After Iran Internet Blackout Ends](https://thehackernews.com/2026/02/infy-hackers-resume-operations-with-new.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The elusive Iranian threat group known as Infy (aka Prince of Persia) has evolved its tactics as part of efforts to hide its tracks, even as it readied new command-and-control (C2) infrastructure coinciding with the end of the widespread internet blackout the regime imposed at the start of January 2026.
 "The threat actor stopped maintaining its C2 servers on January 8 for the first time since we
 
-### 24. [Zendesk spam wave returns, floods users with 'Activate account' emails](https://www.bleepingcomputer.com/news/security/zendesk-spam-wave-returns-floods-users-with-activate-account-emails/)
+### 27. [Zendesk spam wave returns, floods users with 'Activate account' emails](https://www.bleepingcomputer.com/news/security/zendesk-spam-wave-returns-floods-users-with-activate-account-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fresh wave of spam is hitting inboxes worldwide, with users reporting that they are once again being bombarded by automated emails generated through companies' unsecured Zendesk support systems. Some recipients say they are receiving hundreds of messages with strange or alarming subject lines. such as 'Activate account...' [...]
 
-### 25. [Critical n8n Flaw CVE-2026-25049 Enables System Command Execution via Malicious Workflows](https://thehackernews.com/2026/02/critical-n8n-flaw-cve-2026-25049.html)
+### 28. [Critical n8n Flaw CVE-2026-25049 Enables System Command Execution via Malicious Workflows](https://thehackernews.com/2026/02/critical-n8n-flaw-cve-2026-25049.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A new, critical security vulnerability has been disclosed in the n8n workflow automation platform that, if successfully exploited, could result in the execution of arbitrary system commands.
 The flaw, tracked as CVE-2026-25049 (CVSS score: 9.4), is the result of inadequate sanitization that bypasses safeguards put in place to address CVE-2025-68613 (CVSS score: 9.9), another critical defect that
 
-### 26. [Malicious NGINX Configurations Enable Large-Scale Web Traffic Hijacking Campaign](https://thehackernews.com/2026/02/hackers-exploit-react2shell-to-hijack.html)
+### 29. [Malicious NGINX Configurations Enable Large-Scale Web Traffic Hijacking Campaign](https://thehackernews.com/2026/02/hackers-exploit-react2shell-to-hijack.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of an active web traffic hijacking campaign that has targeted NGINX installations and management panels like Baota (BT) in an attempt to route it through the attacker's infrastructure.
 Datadog Security Labs said it observed threat actors associated with the recent React2Shell (CVE-2025-55182, CVSS score: 10.0) exploitation using malicious NGINX
 
-### 27. [Hackers compromise NGINX servers to redirect user traffic](https://www.bleepingcomputer.com/news/security/hackers-compromise-nginx-servers-to-redirect-user-traffic/)
+### 30. [Hackers compromise NGINX servers to redirect user traffic](https://www.bleepingcomputer.com/news/security/hackers-compromise-nginx-servers-to-redirect-user-traffic/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A threat actor is compromising NGINX servers in a campaign that hijacks user traffic and reroutes it through the attacker's backend infrastructure. [...]
-
-### 28. [Critical n8n flaws disclosed along with public exploits](https://www.bleepingcomputer.com/news/security/critical-n8n-flaws-disclosed-along-with-public-exploits/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Multiple critical vulnerabilities in the popular n8n open-source workflow automation platform allow escaping the confines of the environment and taking complete control of the host server. [...]
-
-### 29. [Microsoft Develops Scanner to Detect Backdoors in Open-Weight Large Language Models](https://thehackernews.com/2026/02/microsoft-develops-scanner-to-detect.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Microsoft on Wednesday said it built a lightweight scanner that it said can detect backdoors in open-weight large language models (LLMs) and improve the overall trust in artificial intelligence (AI) systems.
-The tech giant's AI Security team said the scanner leverages three observable signals that can be used to reliably flag the presence of backdoors while maintaining a low false positive
-
-### 30. [CISA: VMware ESXi flaw now exploited in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-vmware-esxi-flaw-now-exploited-in-ransomware-attacks/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-CISA confirmed on Wednesday that ransomware gangs have begun exploiting a high-severity VMware ESXi sandbox escape vulnerability that was used in zero-day attacks since at least February 2024. [...]
 
 ---
 
