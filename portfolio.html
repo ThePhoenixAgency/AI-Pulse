@@ -269,27 +269,10 @@
         <div class="section-card">
             <h2 class="section-title">Featured Projects</h2>
 
-            <div class="projects-grid">
-                <!-- AI-Pulse -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <span class="project-icon">🤖</span>
-                        <h3 class="project-title">AI-Pulse</h3>
-                    </div>
-                    <p class="project-description">
-                        Real-time AI & Cybersecurity news aggregator with privacy-first analytics and automated updates.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">RSS</span>
-                    </div>
-                    <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank" class="project-link">
-                        View Project →
-                    </a>
+            <div class="projects-grid" id="projectsGrid">
+                <div class="project-card" id="loadingProjects">
+                    <p style="color: var(--text-dim); text-align: center; padding: 20px;">Loading projects...</p>
                 </div>
-
-                <!-- Add more projects here as needed -->
             </div>
         </div>
 
@@ -336,37 +319,200 @@
     <script src="./js/tracker.js"></script>
     <script src="./js/ui.js"></script>
     <script>
-        // Fetch GitHub stats safely (read-only, public data)
-        async function fetchGitHubStats() {
+        // ============================================
+        // PORTFOLIO CONFIGURATION - Edit this section
+        // ============================================
+        const PORTFOLIO_CONFIG = {
+            // GitHub organization or username
+            githubOrg: 'ThePhoenixAgency',
+
+            // Projects to feature (in order) - leave empty to auto-fetch
+            featuredProjects: [
+                'AI-Pulse'
+                // Add more: 'project-name'
+            ],
+
+            // Projects to exclude from display
+            excludeProjects: [
+                '.github',
+                'ThePhoenixAgency.github.io'
+            ],
+
+            // Hide forks completely
+            hideForks: true,
+
+            // Max projects to display (0 = unlimited)
+            maxProjects: 10,
+
+            // Sort by: 'stars', 'updated', 'name'
+            sortBy: 'stars'
+        };
+        // ============================================
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text || '';
+            return div.innerHTML;
+        }
+
+        // Create project card safely (no innerHTML with user data)
+        function createProjectCard(repo) {
+            const card = document.createElement('div');
+            card.className = 'project-card';
+
+            const header = document.createElement('div');
+            header.className = 'project-header';
+
+            const icon = document.createElement('span');
+            icon.className = 'project-icon';
+            icon.textContent = '📦';
+
+            const title = document.createElement('h3');
+            title.className = 'project-title';
+            title.textContent = repo.name || 'Untitled';
+
+            header.appendChild(icon);
+            header.appendChild(title);
+
+            const desc = document.createElement('p');
+            desc.className = 'project-description';
+            desc.textContent = repo.description || 'No description available';
+
+            const tags = document.createElement('div');
+            tags.className = 'project-tags';
+
+            if (repo.language) {
+                const langTag = document.createElement('span');
+                langTag.className = 'tag';
+                langTag.textContent = repo.language;
+                tags.appendChild(langTag);
+            }
+
+            const starsTag = document.createElement('span');
+            starsTag.className = 'tag';
+            starsTag.textContent = '⭐ ' + (repo.stargazers_count || 0);
+            tags.appendChild(starsTag);
+
+            const link = document.createElement('a');
+            link.className = 'project-link';
+            link.href = repo.html_url || '#';
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = 'View Project →';
+
+            card.appendChild(header);
+            card.appendChild(desc);
+            card.appendChild(tags);
+            card.appendChild(link);
+
+            return card;
+        }
+
+        // Fetch and display projects
+        async function loadPortfolio() {
+            const grid = document.getElementById('projectsGrid');
+            const loading = document.getElementById('loadingProjects');
+
             try {
-                const response = await fetch('https://api.github.com/orgs/ThePhoenixAgency');
-                if (!response.ok) throw new Error('API error');
-                const data = await response.json();
+                // Fetch org stats
+                const orgResponse = await fetch(`https://api.github.com/orgs/${PORTFOLIO_CONFIG.githubOrg}`);
+                if (orgResponse.ok) {
+                    const orgData = await orgResponse.json();
+                    const reposEl = document.getElementById('totalRepos');
+                    const followersEl = document.getElementById('totalFollowers');
+                    const followingEl = document.getElementById('totalFollowing');
 
-                const reposEl = document.getElementById('totalRepos');
-                const followersEl = document.getElementById('totalFollowers');
-                const followingEl = document.getElementById('totalFollowing');
-                const starsEl = document.getElementById('totalStars');
-
-                if (reposEl) reposEl.textContent = String(data.public_repos || 0);
-                if (followersEl) followersEl.textContent = String(data.followers || 0);
-                if (followingEl) followingEl.textContent = String(data.following || 0);
-
-                // Fetch repos for star count
-                const reposResponse = await fetch('https://api.github.com/orgs/ThePhoenixAgency/repos?per_page=100');
-                if (reposResponse.ok) {
-                    const repos = await reposResponse.json();
-                    if (Array.isArray(repos)) {
-                        const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
-                        if (starsEl) starsEl.textContent = String(totalStars);
-                    }
+                    if (reposEl) reposEl.textContent = String(orgData.public_repos || 0);
+                    if (followersEl) followersEl.textContent = String(orgData.followers || 0);
+                    if (followingEl) followingEl.textContent = String(orgData.following || 0);
                 }
+
+                // Fetch repos
+                const reposResponse = await fetch(`https://api.github.com/orgs/${PORTFOLIO_CONFIG.githubOrg}/repos?per_page=100`);
+                if (!reposResponse.ok) throw new Error('Failed to fetch repos');
+
+                let repos = await reposResponse.json();
+                if (!Array.isArray(repos)) throw new Error('Invalid response');
+
+                // Calculate total stars
+                const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+                const starsEl = document.getElementById('totalStars');
+                if (starsEl) starsEl.textContent = String(totalStars);
+
+                // Filter: hide forks
+                if (PORTFOLIO_CONFIG.hideForks) {
+                    repos = repos.filter(r => !r.fork);
+                }
+
+                // Filter: exclude specific projects
+                repos = repos.filter(r => !PORTFOLIO_CONFIG.excludeProjects.includes(r.name));
+
+                // Sort
+                if (PORTFOLIO_CONFIG.sortBy === 'stars') {
+                    repos.sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0));
+                } else if (PORTFOLIO_CONFIG.sortBy === 'updated') {
+                    repos.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+                } else if (PORTFOLIO_CONFIG.sortBy === 'name') {
+                    repos.sort((a, b) => a.name.localeCompare(b.name));
+                }
+
+                // Prioritize featured projects
+                if (PORTFOLIO_CONFIG.featuredProjects.length > 0) {
+                    const featured = [];
+                    const others = [];
+
+                    for (const repo of repos) {
+                        if (PORTFOLIO_CONFIG.featuredProjects.includes(repo.name)) {
+                            featured.push(repo);
+                        } else {
+                            others.push(repo);
+                        }
+                    }
+
+                    // Sort featured by config order
+                    featured.sort((a, b) => {
+                        return PORTFOLIO_CONFIG.featuredProjects.indexOf(a.name) -
+                               PORTFOLIO_CONFIG.featuredProjects.indexOf(b.name);
+                    });
+
+                    repos = [...featured, ...others];
+                }
+
+                // Limit
+                if (PORTFOLIO_CONFIG.maxProjects > 0) {
+                    repos = repos.slice(0, PORTFOLIO_CONFIG.maxProjects);
+                }
+
+                // Clear loading
+                if (loading) loading.remove();
+
+                // Display projects
+                if (repos.length === 0) {
+                    const msg = document.createElement('p');
+                    msg.style.color = 'var(--text-dim)';
+                    msg.textContent = 'No projects to display.';
+                    grid.appendChild(msg);
+                    return;
+                }
+
+                for (const repo of repos) {
+                    grid.appendChild(createProjectCard(repo));
+                }
+
             } catch (error) {
-                console.error('GitHub API error:', error);
+                console.error('Portfolio error:', error);
+                if (loading) {
+                    loading.innerHTML = '';
+                    const msg = document.createElement('p');
+                    msg.style.color = 'var(--text-dim)';
+                    msg.textContent = 'Failed to load projects.';
+                    loading.appendChild(msg);
+                }
             }
         }
 
-        window.addEventListener('load', fetchGitHubStats);
+        window.addEventListener('load', loadPortfolio);
     </script>
 </body>
 
