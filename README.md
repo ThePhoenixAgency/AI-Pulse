@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Thu, 05 Feb 2026 21:37:00 GMT
+**Last Update:** Fri, 06 Feb 2026 02:40:21 GMT
 
 ---
 
@@ -179,95 +179,95 @@ The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Rasp
 
 ## Artificial Intelligence
 
-### 1. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
+### 1. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The new model is build to accelerate the capabilities of Codex, the agentic coding tool OpenAI launched earlier this week.
+The startup -- with backing from Accel -- is building a financial layer that handles the authentication and micro-payments required for AI agents.
 
-### 2. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
+### 2. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+During the company's fourth-quarter earnings call on Thursday, it offered an update on its plans to merge traditional and AI search together and hinted that although search is not yet monetized, "it's an enormous market and opportunity."
+
+### 3. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+AWS recorded its best quarter, in terms of revenue growth, in 13 quarters in Q4 2025 as AI drives AWS adoption.
+
+### 4. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+In 2026, Amazon plans to spend $200 billion in capex. Google is just behind at $175 billion to $185 billion. It's a lot of money!
+
+### 5. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The new model is built to accelerate the capabilities of Codex, the agentic coding tool OpenAI launched earlier this week.
+
+### 6. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 We’re starting to see the idea of Musk-owned orbital AI data clusters cohere into an actual plan.
 
-### 3. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
+### 7. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI launched Frontier, a new platform designed for enterprises to build and deploy agents while treating them like human employees.
 
-### 4. [Anthropic releases Opus 4.6 with new ‘agent teams’](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/)
+### 8. [Anthropic releases Opus 4.6 with new ‘agent teams’](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The newest version of Anthropic's model is designed to broaden its capabilities and appeal, allowing for a greater variety of uses and customers.
 
-### 5. [Meta tests a stand-alone app for its AI-generated ‘Vibes’ videos](https://techcrunch.com/2026/02/05/meta-tests-a-standalone-app-for-its-ai-generated-vibes-videos/)
+### 9. [Meta tests a stand-alone app for its AI-generated ‘Vibes’ videos](https://techcrunch.com/2026/02/05/meta-tests-a-standalone-app-for-its-ai-generated-vibes-videos/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Launched last September, Vibes lets you create and share short-form AI-generated videos and access a dedicated feed that displays AI videos from others.
 
-### 6. [AI Expo 2026 Day 2: Moving experimental pilots to AI production](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-2-moving-experimental-pilots-ai-production/)
+### 10. [AI Expo 2026 Day 2: Moving experimental pilots to AI production](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-2-moving-experimental-pilots-ai-production/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The second day of the co-located AI &amp; Big Data Expo and Digital Transformation Week in London showed a market in a clear transition. Early excitement over generative models is fading. Enterprise leaders now face the friction of fitting these tools into current stacks. Day two sessions focused less on large language models and more […]
 The post AI Expo 2026 Day 2: Moving experimental pilots to AI production appeared first on AI News.
 
-### 7. [Fundamental raises $255M Series A with a new take on big data analysis](https://techcrunch.com/2026/02/05/fundamental-raises-255-million-series-a-with-a-new-take-on-big-data-analysis/)
+### 11. [Fundamental raises $255M Series A with a new take on big data analysis](https://techcrunch.com/2026/02/05/fundamental-raises-255-million-series-a-with-a-new-take-on-big-data-analysis/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Fundamental has built a new foundation model to solve an old problem: how to draw insights from the huge quantities of structured data produced by enterprises.
 
-### 8. [Mechanistic Interpretability: Peeking Inside an LLM](https://towardsdatascience.com/mechanistic-interpretability-peeking-inside-an-llm/)
+### 12. [Mechanistic Interpretability: Peeking Inside an LLM](https://towardsdatascience.com/mechanistic-interpretability-peeking-inside-an-llm/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Are the human-like cognitive abilities of LLMs real or fake? How does information travel through the neural network? Is there hidden knowledge inside an LLM?
 The post Mechanistic Interpretability: Peeking Inside an LLM appeared first on Towards Data Science.
 
-### 9. [ElevenLabs CEO: Voice is the next interface for AI](https://techcrunch.com/2026/02/05/elevenlabs-ceo-voice-is-the-next-interface-for-ai/)
+### 13. [ElevenLabs CEO: Voice is the next interface for AI](https://techcrunch.com/2026/02/05/elevenlabs-ceo-voice-is-the-next-interface-for-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 ElevenLabs CEO argued at Web Summit Qatar that voice is the next interface for AI, as OpenAI, Google, and Apple push conversational systems into wearables, new hardware, and everyday interactions.
 
-### 10. [Why Is My Code So Slow? A Guide to Py-Spy Python Profiling](https://towardsdatascience.com/why-is-my-code-so-slow-a-guide-to-py-spy-python-profiling/)
+### 14. [Why Is My Code So Slow? A Guide to Py-Spy Python Profiling](https://towardsdatascience.com/why-is-my-code-so-slow-a-guide-to-py-spy-python-profiling/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Stop guessing and start diagnosing performance issues using Py-Spy
 The post Why Is My Code So Slow? A Guide to Py-Spy Python Profiling appeared first on Towards Data Science.
 
-### 11. [The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas](https://towardsdatascience.com/stop-confusing-loc-and-iloc-in-pandas-the-rule-everyone-misses/)
+### 15. [The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas](https://towardsdatascience.com/stop-confusing-loc-and-iloc-in-pandas-the-rule-everyone-misses/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A simple mental model to remember when each one works (with examples that finally click).
 The post The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas appeared first on Towards Data Science.
 
-### 12. [Microsoft unveils method to detect sleeper agent backdoors](https://www.artificialintelligence-news.com/news/microsoft-unveils-method-detect-sleeper-agent-backdoors/)
+### 16. [Microsoft unveils method to detect sleeper agent backdoors](https://www.artificialintelligence-news.com/news/microsoft-unveils-method-detect-sleeper-agent-backdoors/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Researchers from Microsoft have unveiled a scanning method to identify poisoned models without knowing the trigger or intended outcome. Organisations integrating open-weight large language models (LLMs) face a specific supply chain vulnerability where distinct memory leaks and internal attention patterns expose hidden threats known as “sleeper agents”. These poisoned models contain backdoors that lie dormant […]
 The post Microsoft unveils method to detect sleeper agent backdoors appeared first on AI News.
 
-### 13. [OpenAI’s enterprise push: The hidden story behind AI’s sales race](https://www.artificialintelligence-news.com/news/openai-ai-consultants-enterprise-adoption-challenges/)
+### 17. [OpenAI’s enterprise push: The hidden story behind AI’s sales race](https://www.artificialintelligence-news.com/news/openai-ai-consultants-enterprise-adoption-challenges/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 As OpenAI races toward its ambitious US$100 billion revenue target by 2027, the ChatGPT maker is reportedly building an army of AI consultants to bridge the gap between cutting-edge technology and enterprise boardrooms—a move that signals a fundamental shift in how AI companies are approaching the notoriously difficult challenge of enterprise adoption. According to industry […]
 The post OpenAI’s enterprise push: The hidden story behind AI’s sales race appeared first on AI News.
 
-### 14. [Sam Altman got exceptionally testy over Claude Super Bowl ads](https://techcrunch.com/2026/02/04/sam-altman-got-exceptionally-testy-over-claude-super-bowl-ads/)
+### 18. [Sam Altman got exceptionally testy over Claude Super Bowl ads](https://techcrunch.com/2026/02/04/sam-altman-got-exceptionally-testy-over-claude-super-bowl-ads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 He posted a novella-sized rant that devolved into to calling his rival "dishonest" and "authoritarian."
 
-### 15. [Alphabet won’t talk about the Google-Apple AI deal, even to investors](https://techcrunch.com/2026/02/04/alphabet-wont-talk-about-the-google-apple-ai-deal-even-to-investors/)
+### 19. [Alphabet won’t talk about the Google-Apple AI deal, even to investors](https://techcrunch.com/2026/02/04/alphabet-wont-talk-about-the-google-apple-ai-deal-even-to-investors/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Alphabet CEO skipped an analyst's question about Apple on the company's earnings call.
 
-### 16. [Google’s Gemini app has surpassed 750M monthly active users](https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/)
+### 20. [Google’s Gemini app has surpassed 750M monthly active users](https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Google revealed a significant milestone for its Gemini app, announcing over 750 million monthly active users as it competes with ChatGPT and Meta AI.
 
-### 17. [Meet Gizmo: A TikTok for interactive, vibe-coded mini apps](https://techcrunch.com/2026/02/04/meet-gizmo-a-tiktok-for-interactive-vibe-coded-mini-apps/)
+### 21. [Meet Gizmo: A TikTok for interactive, vibe-coded mini apps](https://techcrunch.com/2026/02/04/meet-gizmo-a-tiktok-for-interactive-vibe-coded-mini-apps/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Gizmo's app is like a TikTok for vibe-coded mini apps... and it's a lot of fun.
-
-### 18. [AI SRE Resolve AI confirms $125M raise, unicorn valuation](https://techcrunch.com/2026/02/04/ai-sre-resolve-ai-confirms-125m-raise-unicorn-valuation/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The two-year-old startup confirms that it closed a Series A led by Lightspeed at $1 billion valuation.
-
-### 19. [Amazon to begin testing AI tools for film and TV production next month](https://techcrunch.com/2026/02/04/amazon-to-begin-testing-ai-tools-for-film-and-tv-production-next-month/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Amazon MGM Studios will reportedly begin a closed beta program in March to test its AI tools to help with film and TV production.
-
-### 20. [A16z just raised $1.7B for AI infrastructure. Here’s where it’s going.](https://techcrunch.com/video/a16z-just-raised-1-7b-for-ai-infrastructure-heres-where-its-going/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Andreessen Horowitz just raised a whopping ⁠new $15 billion in funding⁠. And a $1.7 billion chunk of that is going to its ⁠infrastructure team⁠, the one responsible for some of its biggest, most prominent AI investments including Black Forrest Labs, Cursor, OpenAI, ⁠ElevenLabs⁠, Ideogram, ⁠Fal⁠ and dozens of others.   A16z ⁠general partner with the infra team Jennifer Li⁠ (who oversees such investments as ElevenLabs – just valued at $11 billion); Ideagram and Fal, has a clear thesis on where the team is looking […]
-
-### 21. [What a16z is actually funding (and what it’s ignoring) when it comes to AI infra](https://techcrunch.com/podcast/what-a16z-is-actually-funding-and-what-its-ignoring-when-it-comes-to-ai-infra/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Andreessen Horowitz just raised a whopping new $15 billion in funding. And a $1.7 billion chunk of that is going to its infrastructure team, the one responsible for some of its biggest, most prominent AI investments, including Black Forest Labs, Cursor, OpenAI, ElevenLabs, Ideogram, Fal, and dozens of others.   a16z general partner with the infra team Jennifer Li (who oversees such investments as ElevenLabs — just valued at $11 billion) has a clear thesis on where the team is looking to […]
 
 ### 22. [AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
