@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Fri, 06 Feb 2026 11:20:49 GMT
+**Last Update:** Fri, 06 Feb 2026 11:42:46 GMT
 
 ---
 
@@ -408,140 +408,140 @@ The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Rasp
 
 ## Artificial Intelligence
 
-### 1. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
+### 1. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
-The way large companies use artificial intelligence is changing. For years, AI in business meant experimenting with tools that could answer questions or help with small tasks. Now, some big enterprises are moving beyond tools and into AI agents that can actually do work across systems and workflows, not just answer prompts. This week, OpenAI […]
+Separating logic from inference improves AI agent scalability by decoupling core workflows from execution strategies. The transition from generative AI prototypes to production-grade agents introduces a specific engineering hurdle: reliability. LLMs are stochastic by nature. A prompt that works once may fail on the second attempt. To mitigate this, development teams often wrap core business […]
+The post How separating logic and search boosts AI agent scalability appeared first on AI News.
+
+### 2. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+The way large companies use artificial intelligence is changing. For years, AI in business meant experimenting with tools that could answer questions or help with small tasks. Now, some big enterprises are moving beyond tools to AI agents that can actually do practical work in systems and workflows. This week, OpenAI introduced a new platform […]
 The post Intuit, Uber, and State Farm trial AI agents inside enterprise workflows appeared first on AI News.
 
-### 2. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
+### 3. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The startup -- with backing from Accel -- is building a financial layer that handles the authentication and micro-payments required for AI agents.
 
-### 3. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
+### 4. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 During the company's fourth-quarter earnings call on Thursday, it offered an update on its plans to merge traditional and AI search together and hinted that although search is not yet monetized, "it's an enormous market and opportunity."
 
-### 4. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
+### 5. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AWS recorded its best quarter, in terms of revenue growth, in 13 quarters in Q4 2025 as AI drives AWS adoption.
 
-### 5. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
+### 6. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 In 2026, Amazon plans to spend $200 billion in capex. Google is just behind at $175 billion to $185 billion. It's a lot of money!
 
-### 6. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
+### 7. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The new model is built to accelerate the capabilities of Codex, the agentic coding tool OpenAI launched earlier this week.
 
-### 7. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
+### 8. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 We’re starting to see the idea of Musk-owned orbital AI data clusters cohere into an actual plan.
 
-### 8. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
+### 9. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI launched Frontier, a new platform designed for enterprises to build and deploy agents while treating them like human employees.
 
-### 9. [Anthropic releases Opus 4.6 with new ‘agent teams’](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/)
+### 10. [Anthropic releases Opus 4.6 with new ‘agent teams’](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The newest version of Anthropic's model is designed to broaden its capabilities and appeal, allowing for a greater variety of uses and customers.
 
-### 10. [Meta tests a stand-alone app for its AI-generated ‘Vibes’ videos](https://techcrunch.com/2026/02/05/meta-tests-a-standalone-app-for-its-ai-generated-vibes-videos/)
+### 11. [Meta tests a stand-alone app for its AI-generated ‘Vibes’ videos](https://techcrunch.com/2026/02/05/meta-tests-a-standalone-app-for-its-ai-generated-vibes-videos/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Launched last September, Vibes lets you create and share short-form AI-generated videos and access a dedicated feed that displays AI videos from others.
 
-### 11. [AI Expo 2026 Day 2: Moving experimental pilots to AI production](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-2-moving-experimental-pilots-ai-production/)
+### 12. [AI Expo 2026 Day 2: Moving experimental pilots to AI production](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-2-moving-experimental-pilots-ai-production/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The second day of the co-located AI &amp; Big Data Expo and Digital Transformation Week in London showed a market in a clear transition. Early excitement over generative models is fading. Enterprise leaders now face the friction of fitting these tools into current stacks. Day two sessions focused less on large language models and more […]
 The post AI Expo 2026 Day 2: Moving experimental pilots to AI production appeared first on AI News.
 
-### 12. [Fundamental raises $255M Series A with a new take on big data analysis](https://techcrunch.com/2026/02/05/fundamental-raises-255-million-series-a-with-a-new-take-on-big-data-analysis/)
+### 13. [Fundamental raises $255M Series A with a new take on big data analysis](https://techcrunch.com/2026/02/05/fundamental-raises-255-million-series-a-with-a-new-take-on-big-data-analysis/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Fundamental has built a new foundation model to solve an old problem: how to draw insights from the huge quantities of structured data produced by enterprises.
 
-### 13. [Mechanistic Interpretability: Peeking Inside an LLM](https://towardsdatascience.com/mechanistic-interpretability-peeking-inside-an-llm/)
+### 14. [Mechanistic Interpretability: Peeking Inside an LLM](https://towardsdatascience.com/mechanistic-interpretability-peeking-inside-an-llm/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Are the human-like cognitive abilities of LLMs real or fake? How does information travel through the neural network? Is there hidden knowledge inside an LLM?
 The post Mechanistic Interpretability: Peeking Inside an LLM appeared first on Towards Data Science.
 
-### 14. [ElevenLabs CEO: Voice is the next interface for AI](https://techcrunch.com/2026/02/05/elevenlabs-ceo-voice-is-the-next-interface-for-ai/)
+### 15. [ElevenLabs CEO: Voice is the next interface for AI](https://techcrunch.com/2026/02/05/elevenlabs-ceo-voice-is-the-next-interface-for-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 ElevenLabs CEO argued at Web Summit Qatar that voice is the next interface for AI, as OpenAI, Google, and Apple push conversational systems into wearables, new hardware, and everyday interactions.
 
-### 15. [Why Is My Code So Slow? A Guide to Py-Spy Python Profiling](https://towardsdatascience.com/why-is-my-code-so-slow-a-guide-to-py-spy-python-profiling/)
+### 16. [Why Is My Code So Slow? A Guide to Py-Spy Python Profiling](https://towardsdatascience.com/why-is-my-code-so-slow-a-guide-to-py-spy-python-profiling/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Stop guessing and start diagnosing performance issues using Py-Spy
 The post Why Is My Code So Slow? A Guide to Py-Spy Python Profiling appeared first on Towards Data Science.
 
-### 16. [The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas](https://towardsdatascience.com/stop-confusing-loc-and-iloc-in-pandas-the-rule-everyone-misses/)
+### 17. [The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas](https://towardsdatascience.com/stop-confusing-loc-and-iloc-in-pandas-the-rule-everyone-misses/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 A simple mental model to remember when each one works (with examples that finally click).
 The post The Rule Everyone Misses: How to Stop Confusing loc and iloc in Pandas appeared first on Towards Data Science.
 
-### 17. [Microsoft unveils method to detect sleeper agent backdoors](https://www.artificialintelligence-news.com/news/microsoft-unveils-method-detect-sleeper-agent-backdoors/)
+### 18. [Microsoft unveils method to detect sleeper agent backdoors](https://www.artificialintelligence-news.com/news/microsoft-unveils-method-detect-sleeper-agent-backdoors/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Researchers from Microsoft have unveiled a scanning method to identify poisoned models without knowing the trigger or intended outcome. Organisations integrating open-weight large language models (LLMs) face a specific supply chain vulnerability where distinct memory leaks and internal attention patterns expose hidden threats known as “sleeper agents”. These poisoned models contain backdoors that lie dormant […]
 The post Microsoft unveils method to detect sleeper agent backdoors appeared first on AI News.
 
-### 18. [OpenAI’s enterprise push: The hidden story behind AI’s sales race](https://www.artificialintelligence-news.com/news/openai-ai-consultants-enterprise-adoption-challenges/)
+### 19. [OpenAI’s enterprise push: The hidden story behind AI’s sales race](https://www.artificialintelligence-news.com/news/openai-ai-consultants-enterprise-adoption-challenges/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 As OpenAI races toward its ambitious US$100 billion revenue target by 2027, the ChatGPT maker is reportedly building an army of AI consultants to bridge the gap between cutting-edge technology and enterprise boardrooms—a move that signals a fundamental shift in how AI companies are approaching the notoriously difficult challenge of enterprise adoption. According to industry […]
 The post OpenAI’s enterprise push: The hidden story behind AI’s sales race appeared first on AI News.
 
-### 19. [Sam Altman got exceptionally testy over Claude Super Bowl ads](https://techcrunch.com/2026/02/04/sam-altman-got-exceptionally-testy-over-claude-super-bowl-ads/)
+### 20. [Sam Altman got exceptionally testy over Claude Super Bowl ads](https://techcrunch.com/2026/02/04/sam-altman-got-exceptionally-testy-over-claude-super-bowl-ads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 He posted a novella-sized rant that devolved into to calling his rival "dishonest" and "authoritarian."
 
-### 20. [Alphabet won’t talk about the Google-Apple AI deal, even to investors](https://techcrunch.com/2026/02/04/alphabet-wont-talk-about-the-google-apple-ai-deal-even-to-investors/)
+### 21. [Alphabet won’t talk about the Google-Apple AI deal, even to investors](https://techcrunch.com/2026/02/04/alphabet-wont-talk-about-the-google-apple-ai-deal-even-to-investors/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Alphabet CEO skipped an analyst's question about Apple on the company's earnings call.
 
-### 21. [Google’s Gemini app has surpassed 750M monthly active users](https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/)
+### 22. [Google’s Gemini app has surpassed 750M monthly active users](https://techcrunch.com/2026/02/04/googles-gemini-app-has-surpassed-750m-monthly-active-users/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Google revealed a significant milestone for its Gemini app, announcing over 750 million monthly active users as it competes with ChatGPT and Meta AI.
 
-### 22. [Meet Gizmo: A TikTok for interactive, vibe-coded mini apps](https://techcrunch.com/2026/02/04/meet-gizmo-a-tiktok-for-interactive-vibe-coded-mini-apps/)
+### 23. [Meet Gizmo: A TikTok for interactive, vibe-coded mini apps](https://techcrunch.com/2026/02/04/meet-gizmo-a-tiktok-for-interactive-vibe-coded-mini-apps/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Gizmo's app is like a TikTok for vibe-coded mini apps... and it's a lot of fun.
 
-### 23. [AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/)
+### 24. [AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-1-governance-data-readiness-enable-agentic-enterprise/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 While the prospect of AI acting as a digital co-worker dominated the day one agenda at the co-located AI &amp; Big Data Expo and Intelligent Automation Conference, the technical sessions focused on the infrastructure to make it work. A primary topic on the exhibition floor was the progression from passive automation to “agentic” systems. These […]
 The post AI Expo 2026 Day 1: Governance and data readiness enable the agentic enterprise appeared first on AI News.
 
-### 24. [AWS vs. Azure: A Deep Dive into Model Training – Part 2](https://towardsdatascience.com/aws-vs-azure-a-deep-dive-into-model-training-part-2/)
+### 25. [AWS vs. Azure: A Deep Dive into Model Training – Part 2](https://towardsdatascience.com/aws-vs-azure-a-deep-dive-into-model-training-part-2/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 This article covers how Azure ML's persistent, workspace-centric compute resources differ from AWS SageMaker's on-demand, job-specific approach. Additionally, we explored environment customization options, from Azure's curated environments and custom environments to SageMaker's three level of customizations.
 The post AWS vs. Azure: A Deep Dive into Model Training – Part 2 appeared first on Towards Data Science.
 
-### 25. [How to Work Effectively with Frontend and Backend Code](https://towardsdatascience.com/how-to-effectively-work-with-frontend-and-backend-code/)
+### 26. [How to Work Effectively with Frontend and Backend Code](https://towardsdatascience.com/how-to-effectively-work-with-frontend-and-backend-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to be an effective full-stack engineer with Claude Code
 The post How to Work Effectively with Frontend and Backend Code appeared first on Towards Data Science.
 
-### 26. [How to Build Your Own Custom LLM Memory Layer from Scratch](https://towardsdatascience.com/how-to-build-your-own-custom-llm-memory-layer-from-scratch/)
+### 27. [How to Build Your Own Custom LLM Memory Layer from Scratch](https://towardsdatascience.com/how-to-build-your-own-custom-llm-memory-layer-from-scratch/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Step-by-step guide to building autonomous memory retrieval systems
 The post How to Build Your Own Custom LLM Memory Layer from Scratch appeared first on Towards Data Science.
 
-### 27. [Plan–Code–Execute: Designing Agents That Create Their Own Tools](https://towardsdatascience.com/plan-code-execute-designing-agents-that-create-their-own-tools/)
+### 28. [Plan–Code–Execute: Designing Agents That Create Their Own Tools](https://towardsdatascience.com/plan-code-execute-designing-agents-that-create-their-own-tools/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The case against pre-built tools in Agentic Architectures
 The post Plan–Code–Execute: Designing Agents That Create Their Own Tools appeared first on Towards Data Science.
 
-### 28. [From blogosphere to the AI &amp; Big Data Expo: Rackspace and operational AI](https://www.artificialintelligence-news.com/news/combing-the-rackspace-blogfiles-for-operational-ai-pointers/)
+### 29. [From blogosphere to the AI &amp; Big Data Expo: Rackspace and operational AI](https://www.artificialintelligence-news.com/news/combing-the-rackspace-blogfiles-for-operational-ai-pointers/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 In a recent blog output, Rackspace refers to the bottlenecks familiar to many readers: messy data, unclear ownership, governance gaps, and the cost of running models once they become part of production. The company frames them through the lens of service delivery, security operations, and cloud modernisation, which tells you where it is putting its […]
 The post From blogosphere to the AI &amp; Big Data Expo: Rackspace and operational AI appeared first on AI News.
 
-### 29. [How Cisco builds smart systems for the AI era](https://www.artificialintelligence-news.com/news/how-cisco-builds-smart-systems-for-the-ai-era/)
+### 30. [How Cisco builds smart systems for the AI era](https://www.artificialintelligence-news.com/news/how-cisco-builds-smart-systems-for-the-ai-era/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Among the big players in technology, Cisco is one of the sector’s leaders that’s advancing operational deployments of AI internally to its own operations, and the tools it sells to its customers around the world. As a large company, its activities encompass many areas of the typical IT stack, including infrastructure, services, security, and the […]
 The post How Cisco builds smart systems for the AI era appeared first on AI News.
-
-### 30. [Routing in a Sparse Graph: a Distributed Q-Learning Approach](https://towardsdatascience.com/routing-in-a-sparse-graph-a-distributed-q-learning-approach/)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-Distributed agents need only decide one move ahead.
-The post Routing in a Sparse Graph: a Distributed Q-Learning Approach appeared first on Towards Data Science.
 
 <a id="cybersecurity"></a>
 
