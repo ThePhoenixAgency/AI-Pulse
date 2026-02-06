@@ -18,6 +18,14 @@ const parser = new Parser({
 
 // Scalable feed configuration by category
 const FEED_CATEGORIES = {
+  mac: [
+    { name: 'MacRumors', url: 'https://feeds.macrumors.com/MacRumors-All', tags: ['Mac', 'Apple', 'News'] },
+    { name: '9to5Mac', url: 'https://9to5mac.com/feed/', tags: ['Mac', 'Apple', 'iOS'] },
+    { name: 'AppleInsider', url: 'https://appleinsider.com/rss/news/', tags: ['Mac', 'Apple', 'Hardware'] },
+    { name: 'Cult of Mac', url: 'https://www.cultofmac.com/feed/', tags: ['Mac', 'Apple', 'Culture'] },
+    { name: 'MacWorld', url: 'https://www.macworld.com/feed', tags: ['Mac', 'Reviews', 'Guides'] },
+    { name: 'Mac4Ever', url: 'https://www.mac4ever.com/rss', tags: ['Mac', 'Apple', 'FR'] },
+  ],
   iot: [
     { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT', 'RaspberryPi', 'Tech'] },
     { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino', 'Tech'] },
@@ -219,7 +227,7 @@ const README_HEADER = `<div align="center">
 
 > Curated content from the best sources - Auto-updated every 3 hours
 
-[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
 **Last Update:** ${new Date().toUTCString()}
 
@@ -247,7 +255,7 @@ const README_FOOTER = `
 
 ### Connect With Me
 
-[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
+[![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
 ---
 
@@ -260,14 +268,21 @@ const README_FOOTER = `
 function generateREADME(categorizedArticles) {
   let readme = README_HEADER;
 
-  // Generate sections for each category
-  for (const [category, articles] of Object.entries(categorizedArticles)) {
-    // No emojis
-    let title = 'General News';
-    if (category === 'ai') title = 'Artificial Intelligence';
-    else if (category === 'cybersecurity') title = 'Cybersecurity';
-    else if (category === 'iot') title = 'Internet of Things & Hardware';
+  // Category titles mapping
+  const categoryTitles = {
+    mac: 'Mac & Apple',
+    ai: 'Artificial Intelligence',
+    cybersecurity: 'Cybersecurity',
+    iot: 'Internet of Things & Hardware'
+  };
 
+  // Generate sections for each category with anchors and visual separators
+  for (const [category, articles] of Object.entries(categorizedArticles)) {
+    const title = categoryTitles[category] || 'General News';
+
+    // Anchor and visual separator
+    readme += `<a id="${category}"></a>\n\n`;
+    readme += `---\n\n`;
     readme += `## ${title}\n\n`;
 
     if (articles.length === 0) {
@@ -281,8 +296,6 @@ function generateREADME(categorizedArticles) {
       readme += `**Source:** ${article.source} | **Tags:** ${tags}\n`;
       readme += `${article.summary}\n\n`;
     });
-
-    readme += `---\n\n`;
   }
 
   readme += README_FOOTER;
