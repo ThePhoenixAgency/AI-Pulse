@@ -1,6 +1,6 @@
 /**
  * AI-Pulse Statistics Tracker
- * Handles local visitor tracking using localStorage.
+ * Handles local visitor tracking, preferences, read history, and bookmarks via localStorage.
  */
 
 const Tracker = {
@@ -59,7 +59,6 @@ const Tracker = {
             .then(data => {
                 if (data.error) return;
 
-                const locationStr = `${data.city}, ${data.country_name}`;
                 const locationObj = {
                     city: data.city,
                     country: data.country_name,
@@ -85,6 +84,12 @@ const Tracker = {
         let stats = this.getStats();
         stats.articleClicks = (stats.articleClicks || 0) + 1;
         localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+
+        // Also add to read history
+        if (articleData.url) {
+            ReadHistory.markRead(articleData.url, articleData.title || 'Unknown');
+        }
+
         console.log("Article tracked:", articleData.title);
     },
 
@@ -102,5 +107,129 @@ const Tracker = {
         console.log("AI-Pulse Tracker Active. Visitor ID:", this.getStats().visitorId);
     }
 };
+
+/**
+ * Preferences Manager - Shared across all pages
+ * Same localStorage key as readme-viewer.html for consistency
+ */
+const PrefsManager = {
+    STORAGE_KEY: 'ai_pulse_preferences',
+
+    getDefaults: function () {
+        return {
+            lang: 'all',
+            categories: {},
+            keywords: '',
+            maxArticles: 30
+        };
+    },
+
+    load: function () {
+        try {
+            var stored = localStorage.getItem(this.STORAGE_KEY);
+            if (stored) {
+                var parsed = JSON.parse(stored);
+                var defaults = this.getDefaults();
+                for (var key in defaults) {
+                    if (!(key in parsed)) parsed[key] = defaults[key];
+                }
+                return parsed;
+            }
+        } catch (e) { /* ignore */ }
+        return this.getDefaults();
+    },
+
+    save: function (prefs) {
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(prefs));
+    },
+
+    reset: function () {
+        localStorage.removeItem(this.STORAGE_KEY);
+    }
+};
+
+/**
+ * Read History - Track which articles have been read
+ */
+const ReadHistory = {
+    STORAGE_KEY: 'ai_pulse_read_articles',
+
+    getAll: function () {
+        try {
+            return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
+        } catch (e) { return []; }
+    },
+
+    isRead: function (url) {
+        return this.getAll().some(function (a) { return a.url === url; });
+    },
+
+    markRead: function (url, title) {
+        var articles = this.getAll();
+        if (!articles.some(function (a) { return a.url === url; })) {
+            articles.push({ url: url, title: title, readAt: Date.now() });
+            // Keep max 500 entries to avoid localStorage bloat
+            if (articles.length > 500) {
+                articles = articles.slice(-500);
+            }
+            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+        }
+    },
+
+    getCount: function () {
+        return this.getAll().length;
+    },
+
+    clear: function () {
+        localStorage.removeItem(this.STORAGE_KEY);
+    }
+};
+
+/**
+ * Bookmarks Manager - Save and manage bookmarked articles
+ */
+const Bookmarks = {
+    STORAGE_KEY: 'ai_pulse_bookmarks',
+
+    getAll: function () {
+        try {
+            return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
+        } catch (e) { return []; }
+    },
+
+    isBookmarked: function (url) {
+        return this.getAll().some(function (b) { return b.url === url; });
+    },
+
+    toggle: function (url, title, source) {
+        var bookmarks = this.getAll();
+        var index = bookmarks.findIndex(function (b) { return b.url === url; });
+        if (index >= 0) {
+            bookmarks.splice(index, 1);
+        } else {
+            bookmarks.push({ url: url, title: title || '', source: source || '', savedAt: Date.now() });
+        }
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(bookmarks));
+        return index < 0; // returns true if added, false if removed
+    },
+
+    remove: function (url) {
+        var bookmarks = this.getAll().filter(function (b) { return b.url !== url; });
+        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(bookmarks));
+    },
+
+    getCount: function () {
+        return this.getAll().length;
+    },
+
+    clear: function () {
+        localStorage.removeItem(this.STORAGE_KEY);
+    }
+};
+
+// Expose globally
+window.PrefsManager = PrefsManager;
+window.ReadHistory = ReadHistory;
+window.Bookmarks = Bookmarks;
 
 Tracker.init();

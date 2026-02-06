@@ -296,10 +296,15 @@
     <!-- Article View -->
     <div class="view" id="view-article">
         <div class="article-info-bar" id="articleInfoBar">
-            <div class="article-title-text" id="articleTitleText">Chargement...</div>
-            <div class="article-meta">
-                <span class="meta-item" id="articleSource"></span>
-                <span class="meta-item" id="articleTags"></span>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <button id="backBtn" onclick="window.history.back()" style="background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; transition: all 0.2s; font-family: inherit; white-space: nowrap;" title="Retour">&#8592; Retour</button>
+                <div style="flex: 1; min-width: 0;">
+                    <div class="article-title-text" id="articleTitleText">Chargement...</div>
+                    <div class="article-meta">
+                        <span class="meta-item" id="articleSource"></span>
+                        <span class="meta-item" id="articleTags"></span>
+                    </div>
+                </div>
             </div>
         </div>
 
