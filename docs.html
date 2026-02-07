@@ -25,7 +25,38 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             height: fit-content;
             position: sticky;
-            top: 100px;
+            top: 20px;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
+        }
+
+        .section-anchors {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-anchors h4 {
+            color: var(--text-dim);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .section-anchors a {
+            display: block;
+            padding: 6px 10px;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .section-anchors a:hover {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
         }
 
         .docs-sidebar h3 {
@@ -216,6 +247,10 @@
                     <a href="#" data-doc="SUPABASE_MIGRATION.md">Supabase Setup</a>
                     <a href="#" data-doc="ACTION_README.md">GitHub Actions</a>
                 </nav>
+                <div class="section-anchors" id="sectionAnchors">
+                    <h4>On this page</h4>
+                    <!-- Generated dynamically -->
+                </div>
             </aside>
 
             <!-- Content -->
@@ -265,9 +300,17 @@
         const docsNav = document.getElementById('docsNav');
         const docsContent = document.getElementById('docsContent');
 
-        // Simple markdown to HTML parser
+        const sectionAnchors = document.getElementById('sectionAnchors');
+
+        // Generate slug from text
+        function slugify(text) {
+            return text.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-|-$/g, '');
+        }
+
+        // Simple markdown to HTML parser with anchor generation
         function parseMarkdown(md) {
             let html = md;
+            const anchors = [];
 
             // Escape HTML first
             html = html.replace(/&/g, '&amp;')
@@ -282,10 +325,21 @@
             // Inline code
             html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-            // Headers
-            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
-            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            // Headers with IDs for anchoring
+            html = html.replace(/^### (.+)$/gm, (match, title) => {
+                const id = slugify(title);
+                return `<h3 id="${id}">${title}</h3>`;
+            });
+            html = html.replace(/^## (.+)$/gm, (match, title) => {
+                const id = slugify(title);
+                anchors.push({ id, title, level: 2 });
+                return `<h2 id="${id}">${title}</h2>`;
+            });
+            html = html.replace(/^# (.+)$/gm, (match, title) => {
+                const id = slugify(title);
+                anchors.push({ id, title, level: 1 });
+                return `<h1 id="${id}">${title}</h1>`;
+            });
 
             // Bold and italic
             html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
@@ -320,6 +374,15 @@
                 }
                 return block;
             }).join('\n');
+
+            // Update section anchors sidebar
+            if (anchors.length > 0) {
+                sectionAnchors.innerHTML = '<h4>On this page</h4>' +
+                    anchors.map(a => `<a href="#${a.id}">${a.title}</a>`).join('');
+                sectionAnchors.style.display = 'block';
+            } else {
+                sectionAnchors.style.display = 'none';
+            }
 
             return html;
         }
