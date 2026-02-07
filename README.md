@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 07 Feb 2026 08:22:52 GMT
+**Last Update:** Sat, 07 Feb 2026 10:18:39 GMT
 
 ---
 
@@ -549,143 +549,142 @@ The post AWS vs. Azure: A Deep Dive into Model Training – Part 2 appeared firs
 
 ## Cybersecurity
 
-### 1. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
+### 1. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A major U.S. payment gateway and solutions provider says a ransomware attack has knocked key systems offline, triggering a widespread outage affecting multiple services. The incident began on Friday and quickly escalated into a nationwide disruption across BridgePay's platform. [...]
+
+### 2. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Germany's domestic intelligence agency is warning of suspected state-sponsored threat actors targeting high-ranking individuals in phishing attacks via messaging apps like Signal. [...]
 
-### 2. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
+### 3. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly discovered toolkit called DKnife has been used since 2019 to hijack traffic at the edge-device level and deliver malware in espionage campaigns. [...]
 
-### 3. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
+### 4. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Cybersecurity &amp; Infrastructure Security Agency (CISA) in the U.S. has issued a warning about CVE-2026-24423, an unauthenticated remote code execution (RCE) flaw in SmarterMail that is used in ransomware attacks. [...]
 
-### 4. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
+### 5. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Many modern attacks happen entirely inside the browser, leaving little evidence for traditional security tools. Keep Aware shows why EDR, email, and SASE miss browser-only attacks and how visibility changes prevention. [...]
 
-### 5. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
+### 6. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.
 The framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to
 
-### 6. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
+### 7. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The European Commission said today that TikTok is facing a fine because its addictive features, including infinite scroll, autoplay, push notifications, and personalized recommendation systems, are breaching the EU's Digital Services Act (DSA). [...]
 
-### 7. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
+### 8. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has ordered Federal Civilian Executive Branch (FCEB) agencies to strengthen asset lifecycle management for edge network devices and remove those that no longer receive security updates from original equipment manufacturers (OEMs) over the next 12 to 18 months.
 The agency said the move is to drive down technical debt and minimize
 
-### 8. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
+### 9. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An Illinois man pleaded guilty to hacking nearly 600 women's Snapchat accounts to steal nude photos that he kept, sold, or traded online, including accounts he compromised at the request of a former university track coach who was later convicted of sextortion. [...]
 
-### 9. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
+### 10. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A previously undocumented cyber espionage group operating from Asia broke into the networks of at least 70 government and critical infrastructure organizations across 37 countries over the past year, according to new findings from Palo Alto Networks Unit 42.
 In addition, the hacking crew has been observed conducting active reconnaissance against government infrastructure associated with 155
 
-### 10. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
+### 11. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Potential breach at Flickr exposes usernames, email addresses, IP addresses, and activity data.
 The post Flickr Security Incident Tied to Third-Party Email System appeared first on SecurityWeek.
 
-### 11. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
+### 12. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Living off the AI isn’t a hypothetical but a natural continuation of the tradecraft we’ve all been defending against, now mapped onto assistants, agents, and MCP. 
 The post Living off the AI: The Next Evolution of Attacker Tradecraft appeared first on SecurityWeek.
 
-### 12. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
+### 13. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: AT&amp;T and Verizon response to Salt Typhoon, AI agents solve security challenges, man arrested in Poland for DDos Attacks.
 The post In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities appeared first on SecurityWeek.
 
-### 13. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
+### 14. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As you know, enterprise network security has undergone significant evolution over the past decade. Firewalls have become more intelligent, threat detection methods have advanced, and access controls are now more detailed. However (and it’s a big “however”), the increasing use of mobile devices in business operations necessitates network security measures that are specifically
 
-### 14. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
+### 15. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Photo-sharing platform Flickr is notifying users of a potential data breach after a vulnerability at a third-party email service provider exposed their real names, email addresses, IP addresses, and account activity. [...]
 
-### 15. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
+### 16. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup aims to unify SOC, GRC, IAM, vulnerability management, IT, and business operations through its Agentic OS platform.
 The post Airrived Emerges From Stealth With $6.1 Million in Funding appeared first on SecurityWeek.
 
-### 16. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
+### 17. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Used since at least 2019, DKnife has been targeting the desktop, mobile, and IoT devices of Chinese users.
 The post ‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks appeared first on SecurityWeek.
 
-### 17. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
+### 18. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has issued a new binding operational directive requiring federal agencies to identify and remove network edge devices that no longer receive security updates from manufacturers. [...]
 
-### 18. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
+### 19. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.
 The compromised versions of the two packages are listed below -
 
 @dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&amp;
 
-### 19. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
+### 20. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The news comes after the Department of Energy conducted its annual Liberty Eclipse cybersecurity exercise.
 The post 5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel appeared first on SecurityWeek.
 
-### 20. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
+### 21. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The security defect allows unauthenticated attackers to execute arbitrary code remotely via malicious HTTP requests.
 The post Critical SmarterMail Vulnerability Exploited in Ransomware Attacks appeared first on SecurityWeek.
 
-### 21. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
+### 22. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.
 Claude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with
 
-### 22. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
+### 23. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CISA updated 59 KEV entries in 2025 to specify that the vulnerabilities have been exploited in ransomware attacks.
 The post Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog appeared first on SecurityWeek.
 
-### 23. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
+### 24. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Zscaler says the acquisition will allow customers to embed lightweight extensions into any browser, providing increased security and eliminating the need for third-party browsers. 
 The post Zscaler Acquires Browser Security Firm SquareX  appeared first on SecurityWeek.
 
-### 24. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
+### 25. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Spain's Ministry of Science (Ministerio de Ciencia) announced a partial shutdown of its IT systems, affecting several citizen- and company-facing services. [...]
 
-### 25. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
+### 26. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ransomware operators are hosting and delivering malicious payloads at scale by abusing virtual machines (VMs) provisioned by ISPsystem, a legitimate virtual infrastructure management provider. [...]
 
-### 26. [Microsoft to shut down Exchange Online EWS in April 2027](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-shut-down-exchange-web-services-in-cloud-in-2027/)
+### 27. [Microsoft to shut down Exchange Online EWS in April 2027](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-shut-down-exchange-web-services-in-cloud-in-2027/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft announced today that the Exchange Web Services (EWS) API for Exchange Online will be shut down in April 2027, after nearly 20 years. [...]
 
-### 27. [AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack](https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html)
+### 28. [AISURU/Kimwolf Botnet Launches Record-Setting 31.4 Tbps DDoS Attack](https://thehackernews.com/2026/02/aisurukimwolf-botnet-launches-record.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The distributed denial-of-service (DDoS) botnet known as AISURU/Kimwolf has been attributed to a record-setting attack that peaked at 31.4 Terabits per second (Tbps) and lasted only 35 seconds.
 Cloudflare, which automatically detected and mitigated the activity, said it's part of a growing number of hyper-volumetric HTTP DDoS attacks mounted by the botnet in the fourth quarter of 2025. The
 
-### 28. [Italian university La Sapienza goes offline after cyberattack](https://www.bleepingcomputer.com/news/security/italian-university-la-sapienza-goes-offline-after-cyberattack/)
+### 29. [Italian university La Sapienza goes offline after cyberattack](https://www.bleepingcomputer.com/news/security/italian-university-la-sapienza-goes-offline-after-cyberattack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Rome's "La Sapienza" university has been targeted by a cyberattack that impacted its IT systems and caused widespread operational disruptions at the educational institute. [...]
 
-### 29. [Romanian oil pipeline operator Conpet discloses cyberattack](https://www.bleepingcomputer.com/news/security/romanian-oil-pipeline-operator-conpet-discloses-cyberattack-qilin-ransomware/)
+### 30. [Romanian oil pipeline operator Conpet discloses cyberattack](https://www.bleepingcomputer.com/news/security/romanian-oil-pipeline-operator-conpet-discloses-cyberattack-qilin-ransomware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Conpet, Romania's national oil pipeline operator, has disclosed that a cyberattack disrupted its business systems and took down the company's website on Tuesday. [...]
-
-### 30. [Substack Discloses Security Incident After Hacker Leaks Data](https://www.securityweek.com/substack-discloses-security-incident-after-hacker-leaks-data/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The hacker claims to have stolen nearly 700,000 Substack user records, including email addresses and phone numbers.
-The post Substack Discloses Security Incident After Hacker Leaks Data appeared first on SecurityWeek.
 
 
 ---
