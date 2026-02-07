@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 07 Feb 2026 20:18:54 GMT
+**Last Update:** Sat, 07 Feb 2026 22:18:13 GMT
 
 ---
 
@@ -29,7 +29,22 @@
 
 ## Mac & Apple
 
-### 1. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
+### 1. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
+
+
+iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
+The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
+
+### 2. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
+
+
+The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
+
+### 3. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today shared an ad that shows how the upgraded Center Stage front camera on the latest iPhones improves the process of taking a group selfie.
 
@@ -37,7 +52,7 @@ Apple today shared an ad that shows how the upgraded Center Stage front camera o
 
 "Watch how the new front facing camera on iPhone 17 Pro takes group selfies that automatically expand and rotate as more people come into frame," says Apple. While the ad is focused on the iPhone 17 Pro and iPhone 17 Pro Max, the regular iPhone 17 and the iPhone Air have the same Center Stage front camera with this functionality.
 
-### 2. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
+### 4. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Safari now works a lot like other major browsers when it comes to displaying web content on an iPhone or Mac, after a year-long joint effort to make the online experience similar across the industry.
 
@@ -45,13 +60,13 @@ Safari now works a lot like other major browsers when it comes to displaying web
 Safari is Apple's web browser found in iOS, iPadOS, and macOS
 As people who grew up with Internet Explorer and Netscape can attest, there can be a lot of difference between what one browser displays and what another shows. Thanks to an effort between multiple browser makers, including Apple, the web navigation tools now work a lot more predictably.
 
-### 3. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
+### 5. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Last year, Apple confirmed that it’d be supporting end-to-end encryption with RCS in a future software update. At the time, iOS 18 was still the latest version of iOS – thus implying that the upgrade would come as part of the next round of software – iOS 26.
 So far, end-to-end encryption is yet to ship. That’s not the only thing though. The upgrade to end-to-end encryption would’ve also necessitated other major upgrades to the RCS protocol, and as of iOS 26.3 RC, it’s all still missing.
 more…
 
-### 4. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
+### 6. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amazon this weekend has all-time low prices on the Apple Watch Series 11, with $100 discounts across numerous models of the smartwatch. This time around, we're tracking these record low prices on nearly every aluminum model.
 
@@ -59,43 +74,43 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 $299.00, down from $399.00, and the 46mm GPS model for $329.00, down from $429.00.
 
-### 5. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
+### 7. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The Keychron K8 is a customizable, no-nonsense mechanical keyboard with hot-swappable switches, wireless flexibility and a premium build.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 6. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
+### 8. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 7, 1981, Apple co-founder Steve Wozniak was involved in a serious plane crash, resulting in his first lengthy leave of absence.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 7. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
+### 9. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 A bunch of the Apple Music buttons on the playback screen aren’t labeled, and don’t have a very obvious meaning. Here’s a quick guide.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 8. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
+### 10. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 The iOS 26.3 release looks to be right around the corner with a highly anticipated iOS 26.4 update following right behind, so Apple software rumors were big in the news this week.
 
 
 Hardware wasn't left out, however, as we're still awaiting a few early-year launches like the M5 Pro and M5 Max MacBook Pro, while we're also looking further down the road at major new products coming later in the year like the first foldable iPhone, so read on below for all the details on these stories and more!
 
-### 9. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
+### 11. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional grade platform all the solutions necessary to seamlessly and automatically deploy, manage and protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
 For the last fifteen years, Mac admins have been chasing a ghost:
 
-### 10. [Hands-on: This charger makes fast Qi2.2 25W wireless charging more affordable for your iPhone](https://9to5mac.com/2026/02/07/hands-on-this-charger-makes-fast-qi2-2-25w-wireless-charging-more-affordable-for-your-iphone/)
+### 12. [Hands-on: This charger makes fast Qi2.2 25W wireless charging more affordable for your iPhone](https://9to5mac.com/2026/02/07/hands-on-this-charger-makes-fast-qi2-2-25w-wireless-charging-more-affordable-for-your-iphone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 A few months back, I reviewed Kuxiu’s X40 Turbo. It was one of the first chargers to bring us the new Qi2.2 25W charging speeds. It came in an awesome cosmic orange color to match the new iPhone 17 Pro, was super compact, and also charged my Apple Watch and AirPods. That charger became a mainstay in my travel pack. But now Kuxiu has introduced its new X55 Turbo charger, a more budget-focused option that delivers nearly the same core experience at a more competitive price point.
 
-### 11. [This week’s top stories: iPhone Fold specs, MacBook Pro rumors, more](https://9to5mac.com/2026/02/07/this-weeks-top-stories-iphone-fold-specs-macbook-pro-rumors-more/)
+### 13. [This week’s top stories: iPhone Fold specs, MacBook Pro rumors, more](https://9to5mac.com/2026/02/07/this-weeks-top-stories-iphone-fold-specs-macbook-pro-rumors-more/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to 9to5Mac’s top stories of the week, where we recap the biggest news in the Apple world every Saturday. This week, we have new iPhone Fold rumors, CarPlay expectations, and an Apple all-hands meeting. Plus, our usual slate of new podcast episodes, opinion pieces, and much more. Read on for all of this week’s top stories.
 more…
 
-### 12. [The mini smartphone minimalists have been waiting for is $100](https://www.macworld.com/article/3051547/the-mini-smartphone-minimalists-have-been-waiting-for-is-100.html)
+### 14. [The mini smartphone minimalists have been waiting for is $100](https://www.macworld.com/article/3051547/the-mini-smartphone-minimalists-have-been-waiting-for-is-100.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -104,7 +119,7 @@ TL;DR: A tiny but powerful 4G Android smartphone that fits anywhere, works ev
 Smartphones keep getting bigger, heavier, and harder to ignore—until now. The NanoPhone Pro flips the script by packing full smartphone functionality into a device that’s about the size of a credit card. Yes, it’s real. And yes, it actually works (and it’s on sale).
 Despite its ultra-small footprint, NanoPhone Pro covers the essentials:
 
-### 13. [The 10TB lifetime cloud storage deal that pays for itself ends tomorrow](https://www.macworld.com/article/3051564/the-10tb-lifetime-cloud-storage-deal-that-pays-for-itself-ends-tomorrow.html)
+### 15. [The 10TB lifetime cloud storage deal that pays for itself ends tomorrow](https://www.macworld.com/article/3051564/the-10tb-lifetime-cloud-storage-deal-that-pays-for-itself-ends-tomorrow.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -113,13 +128,13 @@ TL;DR: Grab a 10TB lifetime cloud storage plan at $269.97 before the price go
 Most cloud storage plans quietly charge you over and over again for the same space. This one flips that model on its head, offering enough storage for years of photos, projects, and backups with a one-time commitment that’s only available for a little longer.
 The 10TB plan is perfect for most users who never want to run out of space, and it’s 90% off right now.
 
-### 14. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
+### 16. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple releases iOS 26.3 RC, Jeff plays with Moltbot on his Mac mini, Fernando gets his iPhone’s screen fixed, Jeff laments what it’s like to use Apple Pay at drive thrus, why Apple should add native screen sharing from the iPad back to the Mac, and Fernando gets a new MacBook Pro and considers switching to Final Cut Pro.
 9to5Mac Overtime is a weekly video-first podcast exploring fun and interesting observations in the Apple ecosystem, featuring 9to5Mac’s Fernando Silva &amp; Jeff Benjamin. Subscribe to Overtime via Apple Podcasts and our YouTube channel for more.
 more…
 
-### 15. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
+### 17. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
 Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
@@ -129,7 +144,7 @@ Sponsored by Stuff: Stuff helps you get everything out of your head and into a s
 
  more…
 
-### 16. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
+### 18. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 In the iOS 26.4 update that's coming this spring, Apple will introduce a new version of Siri that's going to overhaul how we interact with the personal assistant and what it's able to do.
 
@@ -140,27 +155,27 @@ Upgraded Architecture
 
 The next-generation version of ‌Siri‌ will use advanced large language models, similar to those used by ChatGPT, Claude, and Gemini.
 
-### 17. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
+### 19. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s controversial partnership with Taboola to serve ads on Apple News seems to be going exactly as expected. Here’s why.
 more…
 
-### 18. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
+### 20. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 You can hoard Apple trackers for yourself or make the whole family a bit more organized for less money, thanks to this epic AirTag deal.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 19. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
+### 21. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s WebKit blog published a post today highlighting the results of Interop 2025, an industry-wide effort to improve cross-browser interoperability. Here are the details.
 more…
 
-### 20. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
+### 22. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple overhauled the Phone app in iOS 26 with a new design and added several powerful features, including a new call screening option that I don’t ever want to go without.
 more…
 
-### 21. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
+### 23. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -168,7 +183,7 @@ Macworld
 On March 6, NASA is scheduled to launch the Artemis II mission to the moon. And for the first time, it is allowing its crew members to take its smartphones with them, according to a recent announcement by NASA Administrator Jared Isaacman.
 While the iPhone wasn’t specifically addressed, Apple clarified to MacRumors that “this will mark the first time the iPhone has been fully qualified for extended use in orbit and beyond,” suggesting that at least one astronaut will be carrying an iPhone.
 
-### 22. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
+### 24. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 It's been four months since the iPhone Air came out, and it hasn't exactly been a resounding success. Sales are reportedly so low that Apple is delaying the next-generation model. MacRumors videographer Dan Barbera shares what it's been like using Apple's thinnest and lightest iPhone on a daily basis over the last few months.
 
@@ -176,12 +191,12 @@ Subscribe to the MacRumors YouTube channel for more videos.
 
 With its super thin design, the ‌iPhone Air‌ still impresses even months later. It's much lighter than the other ‌iPhone‌ models, and a pleasure to use because of it.
 
-### 23. [Apple says ‘random or anonymous chat’ apps no longer welcome on the App Store](https://9to5mac.com/2026/02/06/apple-says-random-or-anonymous-chat-apps-no-longer-welcome-on-the-app-store/)
+### 25. [Apple says ‘random or anonymous chat’ apps no longer welcome on the App Store](https://9to5mac.com/2026/02/06/apple-says-random-or-anonymous-chat-apps-no-longer-welcome-on-the-app-store/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has updated its App Review Guidelines to expand the list of user-generated content experiences that can be removed from the App Store without notice. Here are the details.
 more…
 
-### 24. [CarPlay could soon support third-party AI voice assistants like ChatGPT](https://appleinsider.com/articles/26/02/06/carplay-could-soon-support-third-party-ai-voice-assistants-like-chatgpt?utm_source=rss)
+### 26. [CarPlay could soon support third-party AI voice assistants like ChatGPT](https://appleinsider.com/articles/26/02/06/carplay-could-soon-support-third-party-ai-voice-assistants-like-chatgpt?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 CarPlay could soon support more than just Siri, as Apple explores wider access for third-party voice tools.
 
@@ -190,7 +205,7 @@ Apple may open CarPlay to third-party AI assistants
 It looks as though Apple is gearing up to allow third-party chatbots on CarPlay. This would allow users to query voice-enabled chatbots directly through the CarPlay interface.
 Until now, Apple has kept voice assistants off CarPlay, save for its first-party assistant, Siri. However, with the slow rollout of the new, more personal Siri, Apple may feel the pressure to give its users options.
 
-### 25. [Apple’s AI-powered health service is reportedly on life support](https://www.macworld.com/article/3055235/apples-ai-powered-health-service-is-reportedly-on-life-support.html)
+### 27. [Apple’s AI-powered health service is reportedly on life support](https://www.macworld.com/article/3055235/apples-ai-powered-health-service-is-reportedly-on-life-support.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -198,7 +213,7 @@ Macworld
 A new report from Bloomberg says that the long-in-development subscription health service is on the rocks. The centerpiece of the service, which some have been calling “Health+” was to be an AI wellness and fitness coach, code-named Mulberry.
 As part of an executive shake-up, with Eddy Cue now heading up Apple’s health initiatives after the departure of Jeff Williams last year, the Mulberry AI health coach project has been winding down.
 
-### 26. [Apple to Allow ChatGPT, Claude, and Gemini in CarPlay](https://www.macrumors.com/2026/02/06/apple-third-party-chatbots-carplay/)
+### 28. [Apple to Allow ChatGPT, Claude, and Gemini in CarPlay](https://www.macrumors.com/2026/02/06/apple-third-party-chatbots-carplay/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to bring new AI features to CarPlay, reports Bloomberg. Apple will allow third-party chatbot apps to integrate with ‌CarPlay‌, so AI services like Claude, Gemini, and ChatGPT will be accessible in the car for the first time.
 
@@ -207,26 +222,14 @@ Apple is planning to bring new AI features to CarPlay, reports Bloomberg. Apple 
 
 iPhone functions.
 
-### 27. [Apple reportedly bringing third-party AI chatbots to CarPlay](https://9to5mac.com/2026/02/06/apple-reportedly-bringing-third-party-ai-chatbots-to-carplay/)
+### 29. [Apple reportedly bringing third-party AI chatbots to CarPlay](https://9to5mac.com/2026/02/06/apple-reportedly-bringing-third-party-ai-chatbots-to-carplay/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While AI chatbots like ChatGPT and Google Gemini feature conversational voice mode, the apps don’t exactly work well with Apple CarPlay. That will soon change, it appears, with an upcoming iOS software update.
 more…
 
-### 28. [New Spotify experiment tells the backstory of the songs you’re listening to](https://9to5mac.com/2026/02/06/new-spotify-experiment-tells-the-backstory-of-the-songs-youre-listening-to/)
+### 30. [New Spotify experiment tells the backstory of the songs you’re listening to](https://9to5mac.com/2026/02/06/new-spotify-experiment-tells-the-backstory-of-the-songs-youre-listening-to/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The new feature, currently in beta, is rolling out to select Premium users in six countries. Here are the details.
-more…
-
-### 29. [MacRumors Giveaway: Win an iPhone 17 and Fresh Coat Screen Protector From Astropad](https://www.macrumors.com/2026/02/06/macrumors-giveaway-astropad-iphone-17-february/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-For this week's giveaway, we've teamed up with Astropad to offer MacRumors readers a chance to win an iPhone 17 and one of Astropad's anti-reflective Fresh Coat screen protectors to go along with it.
-
-
-Fresh Coat is a new kind of screen protector that Astropad designed with an optical-grade anti-reflective coating to reduce glare and provide a better iPhone viewing experience. The technology that Astropad is using cuts reflections by 75 percent, while improving contrast and keeping colors vibrant.
-
-### 30. [HomeKit Weekly: Check in on the abode alarm system with Apple Home support](https://9to5mac.com/2026/02/06/check-in-on-the-abode-alarm-system-with-apple-home-support/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Since early 2020, I’ve used abode as my primary security system and have done so across two separate homes. It is now 2026, and in the world of smart home tech, six years is usually an eternity. I continue to get emails asking if I am still using it, or if I’ve jumped ship to some thing. I wanted to take an opportunity to update my review for 2026, discuss how the hardware has held up, and frankly, warn you about which hub you should buy for HomeKit.
 more…
 
 <a id="iot"></a>
