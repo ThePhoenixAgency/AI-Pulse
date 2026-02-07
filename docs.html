@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation | AI-Pulse</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./assets/icon.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .docs-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .docs-sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .docs-sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .docs-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .docs-nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .docs-nav a:hover,
+        .docs-nav a.active {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .docs-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .docs-content h1 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            font-size: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 15px;
+        }
+
+        .docs-content h2 {
+            color: var(--text-light);
+            margin: 30px 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .docs-content h3 {
+            color: var(--text-light);
+            margin: 25px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        .docs-content p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .docs-content ul,
+        .docs-content ol {
+            color: var(--text-dim);
+            margin-left: 25px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .docs-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            color: var(--primary);
+        }
+
+        .docs-content pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .docs-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-light);
+        }
+
+        .docs-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .docs-content a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .docs-content a:hover {
+            text-decoration: underline;
+        }
+
+        .docs-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .docs-content th,
+        .docs-content td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-dim);
+        }
+
+        .docs-content th {
+            background: rgba(0, 217, 255, 0.1);
+            color: var(--primary);
+        }
+
+        .loading-docs {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 217, 255, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .docs-container {
+                flex-direction: column;
+            }
+            .docs-sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand-logo">
+            <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="app.html">Reader</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container fade-in">
+        <div class="docs-container">
+            <!-- Sidebar -->
+            <aside class="docs-sidebar">
+                <h3>Documentation</h3>
+                <nav class="docs-nav" id="docsNav">
+                    <a href="#" data-doc="TECHNIQUE.md" class="active">Technical Docs</a>
+                    <a href="#" data-doc="READER_MODE_PLAN.md">Reader Mode</a>
+                    <a href="#" data-doc="SUPABASE_MIGRATION.md">Supabase Setup</a>
+                    <a href="#" data-doc="ACTION_README.md">GitHub Actions</a>
+                </nav>
+            </aside>
+
+            <!-- Content -->
+            <main class="docs-content" id="docsContent">
+                <div class="loading-docs">
+                    <div class="loading-spinner"></div>
+                    <p>Loading documentation...</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="elevator">
+        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
+            ▲
+        </button>
+        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'auto'})"
+            title="Scroll to Bottom">
+            ▼
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy</a>
+            <span>•</span>
+            <a href="stats.html">Statistics</a>
+            <span>•</span>
+            <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>
+            <span>•</span>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+        </div>
+        <p>&copy; 2026 AI-Pulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/tracker.js"></script>
+    <script src="./js/ui.js"></script>
+    <script>
+        const DOCS_CONFIG = {
+            owner: 'ThePhoenixAgency',
+            repo: 'AI-Pulse',
+            branch: 'main',
+            docsPath: 'docs'
+        };
+
+        const docsNav = document.getElementById('docsNav');
+        const docsContent = document.getElementById('docsContent');
+
+        // Simple markdown to HTML parser
+        function parseMarkdown(md) {
+            let html = md;
+
+            // Escape HTML first
+            html = html.replace(/&/g, '&amp;')
+                       .replace(/</g, '&lt;')
+                       .replace(/>/g, '&gt;');
+
+            // Code blocks (before other processing)
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
+                return `<pre><code class="language-${lang}">${code.trim()}</code></pre>`;
+            });
+
+            // Inline code
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+            // Headers
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+
+            // Bold and italic
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+            // Links
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+            // Blockquotes
+            html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+
+            // Unordered lists
+            html = html.replace(/^\- (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+
+            // Ordered lists
+            html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+
+            // Horizontal rules
+            html = html.replace(/^---$/gm, '<hr>');
+
+            // Paragraphs (lines not already wrapped)
+            html = html.split('\n\n').map(block => {
+                if (block.trim() &&
+                    !block.startsWith('<h') &&
+                    !block.startsWith('<ul') &&
+                    !block.startsWith('<ol') &&
+                    !block.startsWith('<pre') &&
+                    !block.startsWith('<blockquote') &&
+                    !block.startsWith('<hr')) {
+                    return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+                }
+                return block;
+            }).join('\n');
+
+            return html;
+        }
+
+        // Fetch and display documentation
+        async function loadDoc(filename) {
+            docsContent.innerHTML = `
+                <div class="loading-docs">
+                    <div class="loading-spinner"></div>
+                    <p>Loading ${filename}...</p>
+                </div>
+            `;
+
+            try {
+                // Try GitHub API first for rendered markdown
+                const apiUrl = `https://api.github.com/repos/${DOCS_CONFIG.owner}/${DOCS_CONFIG.repo}/contents/${DOCS_CONFIG.docsPath}/${filename}`;
+
+                const response = await fetch(apiUrl, {
+                    headers: {
+                        'Accept': 'application/vnd.github.v3.raw'
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch');
+
+                const markdown = await response.text();
+                const html = parseMarkdown(markdown);
+
+                docsContent.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading doc:', error);
+                docsContent.innerHTML = `
+                    <h1>Error Loading Documentation</h1>
+                    <p>Failed to load ${filename}. Please try again later.</p>
+                    <p style="margin-top: 20px;">
+                        <a href="https://github.com/${DOCS_CONFIG.owner}/${DOCS_CONFIG.repo}/blob/${DOCS_CONFIG.branch}/${DOCS_CONFIG.docsPath}/${filename}" target="_blank">
+                            View on GitHub
+                        </a>
+                    </p>
+                `;
+            }
+        }
+
+        // Navigation handling
+        docsNav.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                e.preventDefault();
+                const doc = e.target.dataset.doc;
+
+                // Update active state
+                docsNav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // Load document
+                loadDoc(doc);
+
+                // Update URL hash
+                window.location.hash = doc.replace('.md', '');
+            }
+        });
+
+        // Load initial document
+        function init() {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                const filename = hash + '.md';
+                const link = docsNav.querySelector(`[data-doc="${filename}"]`);
+                if (link) {
+                    docsNav.querySelectorAll('a').forEach(a => a.classList.remove('active'));
+                    link.classList.add('active');
+                    loadDoc(filename);
+                    return;
+                }
+            }
+            // Default to TECHNIQUE.md
+            loadDoc('TECHNIQUE.md');
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
