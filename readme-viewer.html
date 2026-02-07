@@ -21,49 +21,55 @@
 
         .main-layout { display: flex; }
 
-        /* ─── Section Navigation Sidebar ─── */
-        .section-nav {
+        /* ─── Top Navigation Bar ─── */
+        .top-nav {
             position: fixed;
-            left: 0;
             top: 0;
-            width: 220px;
-            height: 100vh;
+            left: 0;
+            right: 0;
+            height: 50px;
             background: rgba(10, 14, 39, 0.95);
-            border-right: 1px solid rgba(0, 217, 255, 0.15);
-            padding: 15px 0;
-            overflow-y: auto;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             z-index: 100;
             backdrop-filter: blur(10px);
+            padding: 0 20px;
         }
 
-        .section-nav h3 {
-            color: #00d9ff;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 0 15px 10px;
-            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
-            margin-bottom: 8px;
-        }
-
-        .section-nav a {
-            display: block;
-            padding: 8px 15px;
+        .top-nav label {
             color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            border-left: 3px solid transparent;
+            font-size: 0.85rem;
+            margin-right: 10px;
         }
 
-        .section-nav a:hover { color: #00d9ff; background: rgba(0, 217, 255, 0.05); }
-
-        .section-nav a.active {
+        .top-nav select {
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.3);
             color: #00d9ff;
-            background: rgba(0, 217, 255, 0.1);
-            border-left-color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            min-width: 200px;
         }
+
+        .top-nav select:hover {
+            border-color: #00d9ff;
+        }
+
+        .top-nav select:focus {
+            outline: none;
+            border-color: #00d9ff;
+        }
+
+        .top-nav select option {
+            background: #0a0e27;
+            color: #e2e8f0;
+        }
+
 
         /* ─── Preferences Button ─── */
         .prefs-toggle {
@@ -200,8 +206,8 @@
 
         /* ─── Content Area ─── */
         .content-area {
-            margin-left: 220px;
-            padding: 20px 30px 60px;
+            margin: 0 auto;
+            padding: 70px 30px 60px;
             max-width: 960px;
         }
 
@@ -393,8 +399,10 @@
 
         /* ─── Responsive ─── */
         @media (max-width: 768px) {
-            .section-nav { display: none; }
-            .content-area { margin-left: 0; padding: 15px; }
+            .top-nav { padding: 0 10px; }
+            .top-nav label { display: none; }
+            .top-nav select { min-width: 150px; font-size: 0.8rem; }
+            .content-area { padding: 60px 15px 60px; }
             .prefs-panel { width: 100%; right: -100%; }
         }
     </style>
@@ -404,10 +412,12 @@
 </head>
 
 <body>
-    <!-- Section Navigation Sidebar -->
-    <nav class="section-nav" id="sectionNav">
-        <h3>Sections</h3>
-        <!-- Populated dynamically -->
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav" id="topNav">
+        <label for="sectionSelect">Aller à :</label>
+        <select id="sectionSelect">
+            <option value="">-- Sections --</option>
+        </select>
     </nav>
 
     <!-- Preferences Toggle Button -->
@@ -559,33 +569,38 @@
             return div.innerHTML;
         }
 
-        // ─── Build Section Nav ──────────────────────────────
+        // ─── Build Section Nav (top dropdown) ──────────────────────────────
         function buildSectionNav() {
-            const nav = document.getElementById('sectionNav');
+            const select = document.getElementById('sectionSelect');
             const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const prefs = PrefsManager.load();
 
-            // Clear existing content
-            nav.innerHTML = '';
+            // Clear existing options except first
+            select.innerHTML = '<option value="">-- Sections --</option>';
 
-            // Add heading
-            const headingEl = document.createElement('h3');
-            headingEl.textContent = 'Sections';
-            nav.appendChild(headingEl);
-
-            // Add links for each section
+            // Add options for each visible section
             sections.forEach(section => {
                 const cat = section.getAttribute('data-category');
                 const heading = section.querySelector('h2');
-                if (heading && cat) {
-                    const linkEl = document.createElement('a');
-                    linkEl.setAttribute('href', '#' + cat);
-                    linkEl.setAttribute('data-nav-cat', cat);
-                    nav.appendChild(linkEl);
-            // Clear existing content
-            container.innerHTML = '';
-
+                // Only show if category is not filtered out
+                if (heading && cat && prefs.categories[cat] !== false) {
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.textContent = heading.textContent;
+                    select.appendChild(option);
                 }
             });
+
+            // Handle selection change
+            select.onchange = function() {
+                if (this.value) {
+                    const target = document.getElementById(this.value);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    this.value = ''; // Reset after navigation
+                }
+            };
         }
 
                     const label = document.createElement('label');
@@ -678,29 +693,8 @@
                 });
             });
 
-            // Update section nav visibility
-            document.querySelectorAll('.section-nav a[data-nav-cat]').forEach(navLink => {
-                const cat = navLink.getAttribute('data-nav-cat');
-                const section = document.querySelector(`section[data-category="${cat}"]`);
-                navLink.style.display = section && !section.classList.contains('hidden') ? 'block' : 'none';
-            });
-        }
-
-        // ─── Intersection Observer for active section ───────
-        function setupScrollSpy() {
-            const sections = document.querySelectorAll('#readme-content section[data-category]');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const cat = entry.target.getAttribute('data-category');
-                        document.querySelectorAll('.section-nav a').forEach(a => a.classList.remove('active'));
-                        const activeLink = document.querySelector(`.section-nav a[data-nav-cat="${cat}"]`);
-                        if (activeLink) activeLink.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-20% 0px -60% 0px' });
-
-            sections.forEach(section => observer.observe(section));
+            // Rebuild section dropdown when filters change
+            buildSectionNav();
         }
 
         // ─── Preferences Panel Events ───────────────────────
@@ -826,7 +820,6 @@
                 buildSectionNav();
                 buildPrefCategories(prefs);
                 applyFilters();
-                setupScrollSpy();
                 setupPrefsPanel();
 
             } catch (error) {
