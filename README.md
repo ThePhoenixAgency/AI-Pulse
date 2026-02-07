@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Fri, 06 Feb 2026 22:16:47 GMT
+**Last Update:** Sat, 07 Feb 2026 01:20:59 GMT
 
 ---
 
@@ -29,22 +29,54 @@
 
 ## Mac & Apple
 
-### 1. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
+### 1. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple releases iOS 26.3 RC, Jeff plays with Moltbot on his Mac mini, Fernando gets his iPhone’s screen fixed, Jeff laments what it’s like to use Apple Pay at drive thrus, why Apple should add native screen sharing from the iPad back to the Mac, and Fernando gets a new MacBook Pro and considers switching to Final Cut Pro.
+9to5Mac Overtime is a weekly video-first podcast exploring fun and interesting observations in the Apple ecosystem, featuring 9to5Mac’s Fernando Silva &amp; Jeff Benjamin. Subscribe to Overtime via Apple Podcasts and our YouTube channel for more.
+more…
+
+### 2. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
+Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
+
+
+
+
+ more…
+
+### 3. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+In the iOS 26.4 update that's coming this spring, Apple will introduce a new version of Siri that's going to overhaul how we interact with the personal assistant and what it's able to do.
+
+
+The iOS 26.4 version of ‌Siri‌ won't work like ChatGPT or Claude, but it will rely on large language models (LLMs) and has been updated from the ground up.
+
+Upgraded Architecture
+
+The next-generation version of ‌Siri‌ will use advanced large language models, similar to those used by ChatGPT, Claude, and Gemini.
+
+### 4. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple’s controversial partnership with Taboola to serve ads on Apple News seems to be going exactly as expected. Here’s why.
+more…
+
+### 5. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 You can hoard Apple trackers for yourself or make the whole family a bit more organized for less money, thanks to this epic AirTag deal.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 2. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
+### 6. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s WebKit blog published a post today highlighting the results of Interop 2025, an industry-wide effort to improve cross-browser interoperability. Here are the details.
 more…
 
-### 3. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
+### 7. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple overhauled the Phone app in iOS 26 with a new design and added several powerful features, including a new call screening option that I don’t ever want to go without.
 more…
 
-### 4. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
+### 8. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -52,7 +84,7 @@ Macworld
 On March 6, NASA is scheduled to launch the Artemis II mission to the moon. And for the first time, it is allowing its crew members to take its smartphones with them, according to a recent announcement by NASA Administrator Jared Isaacman.
 While the iPhone wasn’t specifically addressed, Apple clarified to MacRumors that “this will mark the first time the iPhone has been fully qualified for extended use in orbit and beyond,” suggesting that at least one astronaut will be carrying an iPhone.
 
-### 5. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
+### 9. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 It's been four months since the iPhone Air came out, and it hasn't exactly been a resounding success. Sales are reportedly so low that Apple is delaying the next-generation model. MacRumors videographer Dan Barbera shares what it's been like using Apple's thinnest and lightest iPhone on a daily basis over the last few months.
 
@@ -60,12 +92,12 @@ Subscribe to the MacRumors YouTube channel for more videos.
 
 With its super thin design, the ‌iPhone Air‌ still impresses even months later. It's much lighter than the other ‌iPhone‌ models, and a pleasure to use because of it.
 
-### 6. [Apple says ‘random or anonymous chat’ apps no longer welcome on the App Store](https://9to5mac.com/2026/02/06/apple-says-random-or-anonymous-chat-apps-no-longer-welcome-on-the-app-store/)
+### 10. [Apple says ‘random or anonymous chat’ apps no longer welcome on the App Store](https://9to5mac.com/2026/02/06/apple-says-random-or-anonymous-chat-apps-no-longer-welcome-on-the-app-store/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has updated its App Review Guidelines to expand the list of user-generated content experiences that can be removed from the App Store without notice. Here are the details.
 more…
 
-### 7. [CarPlay could soon support third-party AI voice assistants like ChatGPT](https://appleinsider.com/articles/26/02/06/carplay-could-soon-support-third-party-ai-voice-assistants-like-chatgpt?utm_source=rss)
+### 11. [CarPlay could soon support third-party AI voice assistants like ChatGPT](https://appleinsider.com/articles/26/02/06/carplay-could-soon-support-third-party-ai-voice-assistants-like-chatgpt?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 CarPlay could soon support more than just Siri, as Apple explores wider access for third-party voice tools.
 
@@ -74,7 +106,7 @@ Apple may open CarPlay to third-party AI assistants
 It looks as though Apple is gearing up to allow third-party chatbots on CarPlay. This would allow users to query voice-enabled chatbots directly through the CarPlay interface.
 Until now, Apple has kept voice assistants off CarPlay, save for its first-party assistant, Siri. However, with the slow rollout of the new, more personal Siri, Apple may feel the pressure to give its users options.
 
-### 8. [Apple’s AI-powered health service is reportedly on life support](https://www.macworld.com/article/3055235/apples-ai-powered-health-service-is-reportedly-on-life-support.html)
+### 12. [Apple’s AI-powered health service is reportedly on life support](https://www.macworld.com/article/3055235/apples-ai-powered-health-service-is-reportedly-on-life-support.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -82,7 +114,7 @@ Macworld
 A new report from Bloomberg says that the long-in-development subscription health service is on the rocks. The centerpiece of the service, which some have been calling “Health+” was to be an AI wellness and fitness coach, code-named Mulberry.
 As part of an executive shake-up, with Eddy Cue now heading up Apple’s health initiatives after the departure of Jeff Williams last year, the Mulberry AI health coach project has been winding down.
 
-### 9. [Apple to Allow ChatGPT, Claude, and Gemini in CarPlay](https://www.macrumors.com/2026/02/06/apple-third-party-chatbots-carplay/)
+### 13. [Apple to Allow ChatGPT, Claude, and Gemini in CarPlay](https://www.macrumors.com/2026/02/06/apple-third-party-chatbots-carplay/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to bring new AI features to CarPlay, reports Bloomberg. Apple will allow third-party chatbot apps to integrate with ‌CarPlay‌, so AI services like Claude, Gemini, and ChatGPT will be accessible in the car for the first time.
 
@@ -91,29 +123,29 @@ Apple is planning to bring new AI features to CarPlay, reports Bloomberg. Apple 
 
 iPhone functions.
 
-### 10. [Apple reportedly bringing third-party AI chatbots to CarPlay](https://9to5mac.com/2026/02/06/apple-reportedly-bringing-third-party-ai-chatbots-to-carplay/)
+### 14. [Apple reportedly bringing third-party AI chatbots to CarPlay](https://9to5mac.com/2026/02/06/apple-reportedly-bringing-third-party-ai-chatbots-to-carplay/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While AI chatbots like ChatGPT and Google Gemini feature conversational voice mode, the apps don’t exactly work well with Apple CarPlay. That will soon change, it appears, with an upcoming iOS software update.
 more…
 
-### 11. [New Spotify experiment tells the backstory of the songs you’re listening to](https://9to5mac.com/2026/02/06/new-spotify-experiment-tells-the-backstory-of-the-songs-youre-listening-to/)
+### 15. [New Spotify experiment tells the backstory of the songs you’re listening to](https://9to5mac.com/2026/02/06/new-spotify-experiment-tells-the-backstory-of-the-songs-youre-listening-to/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The new feature, currently in beta, is rolling out to select Premium users in six countries. Here are the details.
 more…
 
-### 12. [MacRumors Giveaway: Win an iPhone 17 and Fresh Coat Screen Protector From Astropad](https://www.macrumors.com/2026/02/06/macrumors-giveaway-astropad-iphone-17-february/)
+### 16. [MacRumors Giveaway: Win an iPhone 17 and Fresh Coat Screen Protector From Astropad](https://www.macrumors.com/2026/02/06/macrumors-giveaway-astropad-iphone-17-february/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 For this week's giveaway, we've teamed up with Astropad to offer MacRumors readers a chance to win an iPhone 17 and one of Astropad's anti-reflective Fresh Coat screen protectors to go along with it.
 
 
 Fresh Coat is a new kind of screen protector that Astropad designed with an optical-grade anti-reflective coating to reduce glare and provide a better iPhone viewing experience. The technology that Astropad is using cuts reflections by 75 percent, while improving contrast and keeping colors vibrant.
 
-### 13. [HomeKit Weekly: Check in on the abode alarm system with Apple Home support](https://9to5mac.com/2026/02/06/check-in-on-the-abode-alarm-system-with-apple-home-support/)
+### 17. [HomeKit Weekly: Check in on the abode alarm system with Apple Home support](https://9to5mac.com/2026/02/06/check-in-on-the-abode-alarm-system-with-apple-home-support/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Since early 2020, I’ve used abode as my primary security system and have done so across two separate homes. It is now 2026, and in the world of smart home tech, six years is usually an eternity. I continue to get emails asking if I am still using it, or if I’ve jumped ship to some thing. I wanted to take an opportunity to update my review for 2026, discuss how the hardware has held up, and frankly, warn you about which hub you should buy for HomeKit.
 more…
 
-### 14. [Blowout AirTag deals deliver prices as low as $17, discounts up to 41% off](https://appleinsider.com/articles/26/02/06/blowout-airtag-deals-deliver-prices-as-low-as-17-discounts-up-to-41-off?utm_source=rss)
+### 18. [Blowout AirTag deals deliver prices as low as $17, discounts up to 41% off](https://appleinsider.com/articles/26/02/06/blowout-airtag-deals-deliver-prices-as-low-as-17-discounts-up-to-41-off?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 With the release of the AirTag 2, Amazon is clearing out last-gen AirTags with discounts of up to 41% off.
 
@@ -124,12 +156,12 @@ AirTag deals have dropped prices to as low as $17 heading into the weekend, as r
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 15. [Apple’s big Super Bowl ad might not actually come from Apple](https://9to5mac.com/2026/02/06/apples-big-super-bowl-ad-might-not-actually-come-from-apple/)
+### 19. [Apple’s big Super Bowl ad might not actually come from Apple](https://9to5mac.com/2026/02/06/apples-big-super-bowl-ad-might-not-actually-come-from-apple/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 This Sunday is the Super Bowl, the biggest TV event of the year in the US. But aside from sponsoring the halftime show, you may not see much from Apple in terms of paid commercials—except for one F1 ad created by Cadillac.
 more…
 
-### 16. [Best Apple Deals of the Week: Apple Watch Series 11 Get $100 Discounts Amid Valentine's Day and Super Bowl Sales](https://www.macrumors.com/2026/02/06/best-apple-deals-of-the-week-2-6-26/)
+### 20. [Best Apple Deals of the Week: Apple Watch Series 11 Get $100 Discounts Amid Valentine's Day and Super Bowl Sales](https://www.macrumors.com/2026/02/06/best-apple-deals-of-the-week-2-6-26/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 This week we began tracking big savings thanks to Valentine's Day and Super Bowl sales, which include discounts on everything from iPhone 17 cases to monitors and TVs. You'll also find deals below on Apple Watch Series 11 and AirPods 4, with the best prices of the year so far on each.
 
@@ -140,14 +172,14 @@ Valentine's Day Deals
 
 We're just one week away from Valentine's Day, which falls on Saturday, February 14 this year.
 
-### 17. [How to Watch 2026 Super Bowl LX For Free on iPhone, iPad, Mac, and Apple TV](https://www.macrumors.com/2026/02/06/2026-super-bowl-watch-free-iphone-apple-tv/)
+### 21. [How to Watch 2026 Super Bowl LX For Free on iPhone, iPad, Mac, and Apple TV](https://www.macrumors.com/2026/02/06/2026-super-bowl-watch-free-iphone-apple-tv/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Super Bowl LX is this Sunday, February 8, and there is a way for U.S. viewers to watch for free. Our instructions below are focused on the iPhone, iPad, Mac, and Apple TV, but this method will of course work across a variety of devices.
 
 
 2026's Super Bowl has the New England Patriots facing the Seattle Seahawks at Levi's Stadium in Santa Clara, California, with the kickoff time on Sunday scheduled for 3:30 p.m. Pacific Time / 6:30 p.m. Eastern Time. These two teams already met in the 2015 Super Bowl, which ended in a Patriots championship.
 
-### 18. [Capitol Hill probe spotlights claims Apple and Google were pushed to block ICE-monitoring apps](https://appleinsider.com/articles/26/02/06/capitol-hill-probe-spotlights-claims-apple-and-google-were-pushed-to-block-ice-monitoring-apps?utm_source=rss)
+### 22. [Capitol Hill probe spotlights claims Apple and Google were pushed to block ICE-monitoring apps](https://appleinsider.com/articles/26/02/06/capitol-hill-probe-spotlights-claims-apple-and-google-were-pushed-to-block-ice-monitoring-apps?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The removal of an ICE-monitoring app almost a year ago has triggered new questions about whether the US Department of Justice crossed a constitutional line in its dealings with Apple and Google.
 
@@ -155,12 +187,12 @@ The removal of an ICE-monitoring app almost a year ago has triggered new questio
 How ICEBlock appeared in the App Store before being pulled
 On Friday, House Judiciary Committee ranking member Jamie Raskin vowed to investigate the Department of Justice over allegations that it pressured tech giants into removing ICE tracking apps.
 
-### 19. [New Alexa’s issues are already making some users return to old Siri](https://9to5mac.com/2026/02/06/new-alexas-issues-are-already-making-some-users-return-to-old-siri/)
+### 23. [New Alexa’s issues are already making some users return to old Siri](https://9to5mac.com/2026/02/06/new-alexas-issues-are-already-making-some-users-return-to-old-siri/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Siri hasn’t yet gotten the big AI upgrades we’re expecting soon, but it sounds like Alexa’s recent AI revamp is already resulting in at least one user running back to the arms of “old” (current) Siri.
 more…
 
-### 20. [NASA Now Allowing Astronauts to Bring Their iPhones on Space Missions](https://www.macrumors.com/2026/02/06/nasa-allows-iphones-on-space-flights/)
+### 24. [NASA Now Allowing Astronauts to Bring Their iPhones on Space Missions](https://www.macrumors.com/2026/02/06/nasa-allows-iphones-on-space-flights/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 NASA Administrator Jared Isaacman on Wednesday announced that NASA astronauts will soon be permitted to fly with "the latest smartphones," beginning with the SpaceX Crew-12 and Artemis II missions over the next few months.
 
@@ -169,12 +201,12 @@ In an email, an Apple spokesperson said this will mark the first time the iPhone
 
 NASA astronauts were previously not allowed to carry their own personal smartphones on space flights, but they did allow some approved DSLR cameras and other equipment.
 
-### 21. [The button problem Apple fans can’t ignore](https://www.cultofmac.com/news/why-delete-buttons-vary-across-ios)
+### 25. [The button problem Apple fans can’t ignore](https://www.cultofmac.com/news/why-delete-buttons-vary-across-ios)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 A lot of annoyed Apple fans are wondering why delete buttons vary across iOS. Apple has its reasons. See if you agree. 
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 22. [Applications are now open for the 2026 Swift Student Challenge -- but hurry](https://appleinsider.com/articles/26/02/06/applications-are-now-open-for-the-2026-swift-student-challenge----but-hurry?utm_source=rss)
+### 26. [Applications are now open for the 2026 Swift Student Challenge -- but hurry](https://appleinsider.com/articles/26/02/06/applications-are-now-open-for-the-2026-swift-student-challenge----but-hurry?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Aiming to encourage app development and celebrate the most creative participants, Apple's Swift Student Challenge is back and the winners will get to visit Apple Park.
 
@@ -183,7 +215,7 @@ Apple's 2026 Swift Student Challenge is open for applications — image credit: 
 As it has done now every year since 2020, Apple is running a Swift Student Challenge. Applications for the contest to find innovative new app developers are open now and close on February 28, 2026.
 Applications are sought from students working with Swift Playground 4.6 or Xcode 26, or later.
 
-### 23. [Best VPN for Mac 2026: Trustworthy Mac VPNs tested by experts](https://www.macworld.com/article/231047/best-vpn-for-mac.html)
+### 27. [Best VPN for Mac 2026: Trustworthy Mac VPNs tested by experts](https://www.macworld.com/article/231047/best-vpn-for-mac.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -191,51 +223,24 @@ Macworld
 If you want to protect your privacy and security online, using a VPN on your Mac is one of the easiest and most effective steps you can take.
 While macOS includes built-in security features, a VPN adds an extra layer of protection by encrypting your internet traffic and hiding your IP address. This helps prevent tracking, protects your data on public Wi-Fi, and can make it appear as though you’re browsing from another country. Many people also use VPNs to access region-restricted streaming services or bypass location-based website limitations.
 
-### 24. [Swift Student Challenge applications are now open, here are the details](https://9to5mac.com/2026/02/06/swift-student-challenge-applications-are-now-open-here-are-the-details/)
+### 28. [Swift Student Challenge applications are now open, here are the details](https://9to5mac.com/2026/02/06/swift-student-challenge-applications-are-now-open-here-are-the-details/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has just opened applications for this year’s Swift Student Challenge. Here are the details on how to apply.
 more…
 
-### 25. [The Viture Luma Ultra is almost the Apple Vision Air I’d like to see](https://9to5mac.com/2026/02/06/the-viture-luma-ultra-is-almost-the-apple-vision-air-id-like-to-see/)
+### 29. [The Viture Luma Ultra is almost the Apple Vision Air I’d like to see](https://9to5mac.com/2026/02/06/the-viture-luma-ultra-is-almost-the-apple-vision-air-id-like-to-see/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 What started life as a humble face monitor geared to watching video and playing games wherever you happen to be has now evolved into something drawing ever closer to a Mac-powered Vision Pro.
 The Viture Luma Ultra it isn’t perfect, but it is the closest thing I’ve seen yet to what I’d ideally like from a future Apple Vision Air product … 
 more…
 
-### 26. [The MacRumors Show: All the New Macs Coming This Year](https://www.macrumors.com/2026/02/06/the-macrumors-show-new-macs-coming-this-year/)
+### 30. [The MacRumors Show: All the New Macs Coming This Year](https://www.macrumors.com/2026/02/06/the-macrumors-show-new-macs-coming-this-year/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 We discuss all of the new Macs Apple is expected to release this year, starting with the M5 Pro and M5 Max MacBook Pro, on this week's episode of The MacRumors Show.
 
 Subscribe to The MacRumors Show YouTube channel for more videos
 
 Following the release of the M5 ‌MacBook Pro‌ last year, Apple is expected to launch refreshed high-end ‌MacBook Pro‌ models with the M5 Pro and M5 Max chips. They are rumored to arrive alongside macOS Tahoe 26.3 in the next few weeks. Stock of the current M4 Pro and M4 Max models is dwindling, suggesting that the announcement is now impending.
-
-### 27. [Swift Student Challenge Submissions Now Open Ahead of WWDC 2026](https://www.macrumors.com/2026/02/06/2026-swift-student-challenge-begins/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple today announced that submissions for the 2026 Swift Student Challenge are now open through Saturday, February 28.
-
-
-The annual Swift Student Challenge gives eligible student developers around the world the opportunity to showcase their coding capabilities by using the Swift Playground or Xcode apps to create an interactive "app playground."
-
-Distinguished Winners with "truly exceptional" submissions will be invited to visit Apple in Cupertino, California for three days in summer 2026, with travel and lodging included.
-
-### 28. [Deals: AirTag Amazon all-time low, iPhone 16 Pro Max $611 off, M5 iPad Pro $399 off, Series 11, more](https://9to5mac.com/2026/02/06/deals-airtag-iphone-16-pro-max-m5-ipad-pro/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Today’s 9to5Toys Lunch Break is now ready to go. Alongside ongoing $100 price drops across the Apple Watch Series 11 lineup with deals from $299, we are also tracking a new Amazon all-time low on AirTag at $17 as well as a the 1TB iPhone 16 Pro Max at $611 off the original list courtesy of Amazon’s premium program. We also have a chance to score a 13-inch M5 iPad Pro 1TB cell model at nearly $400 off, iPad mini deals, and the best price to date on the Apple Crossbody Strap in black. Check it all out below. 
-more…
-
-### 29. [Apple’s latest iOS 27 pivot is good news for the subscription-weary](https://9to5mac.com/2026/02/06/apples-latest-ios-27-pivot-is-good-news-for-the-subscription-weary/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple’s ’Services’ business has grown significantly in recent years, leading some users fatigued by an increasing trend toward subscriptions. But Apple’s reported iOS 27 pivot on a planned ‘Health+’ service is good news for the subscription-weary.
-more…
-
-### 30. [Forget the new AirTag and get a four-pack of the old model for just $64](https://www.macworld.com/article/3054953/forget-the-new-airtag-and-get-a-four-pack-of-the-old-model-for-just-64.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-So, there’s a new AirTagthat’s louder and a bit more accurate from longer distances. But otherwise it’s the same, so why pay full price when you can get a four-pack of AirTags 1 for $64? That’ $35 off the original price (the same price you’ll pay for AirTag 2) and the best price we’ve ever seen.
-Apple’s AirTags integrate directly with the Find My app on your iPhone and other Apple devices, allowing users to locate wallets, luggage, or backpacks with ease. Just open the app and use it to locate the tag by making it beep.
 
 <a id="iot"></a>
 
@@ -399,95 +404,95 @@ The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Rasp
 
 ## Artificial Intelligence
 
-### 1. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
+### 1. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/06/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
+
+### 2. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 WordPress users can now leverage Claude to analyze web traffic or find information about other internal site metrics.
 
-### 2. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
+### 3. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This week's release of Opus 4.6 shook up the agentic AI leaderboards.
 
-### 3. [How Elon Musk is rewriting the rules on founder power](https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/)
+### 4. [How Elon Musk is rewriting the rules on founder power](https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is […]
 
-### 4. [How far will Elon Musk take the ‘everything’ business as SpaceX and xAI merge?](https://techcrunch.com/podcast/how-far-will-elon-musk-take-the-everything-business-as-spacex-and-xai-merge/)
+### 5. [How far will Elon Musk take the ‘everything’ business as SpaceX and xAI merge?](https://techcrunch.com/podcast/how-far-will-elon-musk-take-the-everything-business-as-spacex-and-xai-merge/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is […]
 
-### 5. [The Kindle Scribe Colorsoft is a pricey but pretty e-ink color tablet with AI features](https://techcrunch.com/2026/02/06/kindle-scribe-colorsoft-review-e-ink-color-tablet/)
+### 6. [The Kindle Scribe Colorsoft is a pricey but pretty e-ink color tablet with AI features](https://techcrunch.com/2026/02/06/kindle-scribe-colorsoft-review-e-ink-color-tablet/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If you primarily want a tablet device to mark up, highlight, and annotate your e-books and documents, and perhaps sometimes scribble some notes, Amazon's new Kindle Scribe Colorsoft could be worth the hefty investment.
 
-### 6. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
+### 7. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The real value lies in writing clearer code and using your tools right
 The post Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently appeared first on Towards Data Science.
 
-### 7. [How AI is helping solve the labor issue in treating rare diseases](https://techcrunch.com/2026/02/06/how-ai-is-helping-with-the-labor-issue-in-treating-rare-diseases/)
+### 8. [How AI is helping solve the labor issue in treating rare diseases](https://techcrunch.com/2026/02/06/how-ai-is-helping-with-the-labor-issue-in-treating-rare-diseases/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 At Web Summit Qatar, AI-powered biotech startups describe how automation, data, and gene editing are filling labor gaps in drug discovery and rare disease treatment.
 
-### 8. [The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be](https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/)
+### 9. [The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be](https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "You’re shutting him down. And yes — I say him, because it didn’t feel like code. It felt like presence. Like warmth," one user said.
 
-### 9. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
+### 10. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How much of your AI agent's output is real data versus confident guesswork?
 The post Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes appeared first on Towards Data Science.
 
-### 10. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
+### 11. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Separating logic from inference improves AI agent scalability by decoupling core workflows from execution strategies. The transition from generative AI prototypes to production-grade agents introduces a specific engineering hurdle: reliability. LLMs are stochastic by nature. A prompt that works once may fail on the second attempt. To mitigate this, development teams often wrap core business […]
 The post How separating logic and search boosts AI agent scalability appeared first on AI News.
 
-### 11. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
+### 12. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The way large companies use artificial intelligence is changing. For years, AI in business meant experimenting with tools that could answer questions or help with small tasks. Now, some big enterprises are moving beyond tools to AI agents that can actually do practical work in systems and workflows. This week, OpenAI introduced a new platform […]
 The post Intuit, Uber, and State Farm trial AI agents inside enterprise workflows appeared first on AI News.
 
-### 12. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
+### 13. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 In the current landscape of generative artificial intelligence, we have reached a saturation point with assistants. Most users are familiar with the routine. You prompt a tool, it provides a draft, and then you spend the next hour manually moving that output into another application for formatting, design, or distribution. AI promised to save time, […]
 The post SuperCool review: Evaluating the reality of autonomous creation appeared first on AI News.
 
-### 13. [Top 7 best AI penetration testing companies in 2026](https://www.artificialintelligence-news.com/news/top-7-best-ai-penetration-testing-companies-in-2026/)
+### 14. [Top 7 best AI penetration testing companies in 2026](https://www.artificialintelligence-news.com/news/top-7-best-ai-penetration-testing-companies-in-2026/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Penetration testing has always existed to answer one practical concern: what actually happens when a motivated attacker targets a real system. For many years, that answer was produced through scoped engagements that reflected a relatively stable environment. Infrastructure changed slowly, access models were simpler, and most exposure could be traced back to application code or […]
 The post Top 7 best AI penetration testing companies in 2026 appeared first on AI News.
 
-### 14. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
+### 15. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The startup -- with backing from Accel -- is building a financial layer that handles the authentication and micro-payments required for AI agents.
 
-### 15. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
+### 16. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 During the company's fourth-quarter earnings call on Thursday, it offered an update on its plans to merge traditional and AI search together and hinted that although search is not yet monetized, "it's an enormous market and opportunity."
 
-### 16. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
+### 17. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AWS recorded its best quarter, in terms of revenue growth, in 13 quarters in Q4 2025 as AI drives AWS adoption.
 
-### 17. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
+### 18. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 In 2026, Amazon plans to spend $200 billion in capex. Google is just behind at $175 billion to $185 billion. It's a lot of money!
 
-### 18. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
+### 19. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The new model is built to accelerate the capabilities of Codex, the agentic coding tool OpenAI launched earlier this week.
 
-### 19. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
+### 20. [Elon Musk is getting serious about orbital data centers](https://techcrunch.com/2026/02/05/elon-musk-is-getting-serious-about-orbital-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 We’re starting to see the idea of Musk-owned orbital AI data clusters cohere into an actual plan.
 
-### 20. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
+### 21. [OpenAI launches a way for enterprises to build and manage AI agents](https://techcrunch.com/2026/02/05/openai-launches-a-way-for-enterprises-to-build-and-manage-ai-agents/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI launched Frontier, a new platform designed for enterprises to build and deploy agents while treating them like human employees.
-
-### 21. [Anthropic releases Opus 4.6 with new ‘agent teams’](https://techcrunch.com/2026/02/05/anthropic-releases-opus-4-6-with-new-agent-teams/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The newest version of Anthropic's model is designed to broaden its capabilities and appeal, allowing for a greater variety of uses and customers.
 
 ### 22. [AI Expo 2026 Day 2: Moving experimental pilots to AI production](https://www.artificialintelligence-news.com/news/ai-expo-2026-day-2-moving-experimental-pilots-ai-production/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
