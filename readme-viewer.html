@@ -270,14 +270,37 @@
             border-color: rgba(0, 217, 255, 0.15);
         }
 
-        #readme-content .article-item.read-article {
-            opacity: 0.55;
-            border-left: 3px solid #825ee4;
-        }
-
         #readme-content .article-item.hidden { display: none; }
 
         #readme-content section.hidden { display: none; }
+
+        /* Read articles group */
+        .read-articles-group {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: rgba(130, 94, 228, 0.1);
+            border: 1px solid rgba(130, 94, 228, 0.2);
+            border-radius: 8px;
+        }
+
+        .read-articles-group summary {
+            cursor: pointer;
+            color: #825ee4;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 5px 0;
+        }
+
+        .read-articles-group summary:hover {
+            color: #a78bfa;
+        }
+
+        .read-articles-group .article-item {
+            opacity: 0.7;
+            margin: 8px 0;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
 
         #readme-content h1 {
             color: #00d9ff;
@@ -458,6 +481,10 @@
             <span class="range-value" id="prefMaxArticlesValue">30</span>
         </div>
 
+        <div class="prefs-section">
+            <label><input type="checkbox" id="prefHideRead" checked> Cacher les articles lus</label>
+        </div>
+
         <button class="prefs-reset" id="prefsReset">Réinitialiser les preferences</button>
     </div>
 
@@ -489,7 +516,8 @@
                     lang: 'all',
                     categories: {},
                     keywords: '',
-                    maxArticles: 30
+                    maxArticles: 30,
+                    hideRead: true
                 };
             },
 
@@ -682,15 +710,35 @@
                         article.classList.add('hidden');
                     }
 
-                    // Mark read articles
+                    // Check if article is read
                     const link = article.querySelector('a');
-                    if (link) {
-                        const href = link.getAttribute('href');
-                        if (readArticles.some(a => a.url === href)) {
-                            article.classList.add('read-article');
+                    const title = link ? link.textContent : '';
+                    const href = link ? link.getAttribute('href') : '';
+                    const isRead = readArticles.some(a => a.url === href || a.title === title);
+
+                    if (isRead) {
+                        article.classList.add('read-article');
+                        if (prefs.hideRead) {
+                            article.classList.add('hidden');
+                            visible = false;
                         }
                     }
                 });
+
+                // Create "Already read" collapsible section for read articles
+                let readSection = section.querySelector('.read-articles-group');
+                if (readSection) readSection.remove();
+
+                const readItems = section.querySelectorAll('.article-item.read-article:not(.hidden)');
+                if (readItems.length > 0 && !prefs.hideRead) {
+                    readSection = document.createElement('details');
+                    readSection.className = 'read-articles-group';
+                    readSection.innerHTML = '<summary>Déjà lus / Already read (' + readItems.length + ')</summary>';
+                    readItems.forEach(item => readSection.appendChild(item.cloneNode(true)));
+                    // Hide originals and append group
+                    readItems.forEach(item => item.classList.add('hidden'));
+                    section.appendChild(readSection);
+                }
             });
 
             // Rebuild section dropdown when filters change
@@ -760,6 +808,15 @@
                 applyFilters();
             });
 
+            // Hide read articles checkbox
+            document.getElementById('prefHideRead').checked = prefs.hideRead;
+            document.getElementById('prefHideRead').addEventListener('change', (e) => {
+                const p = PrefsManager.load();
+                p.hideRead = e.target.checked;
+                PrefsManager.save(p);
+                applyFilters();
+            });
+
             // Reset
             document.getElementById('prefsReset').addEventListener('click', () => {
                 PrefsManager.reset();
@@ -768,6 +825,7 @@
                 document.getElementById('prefKeywords').value = '';
                 document.getElementById('prefMaxArticles').value = defaults.maxArticles;
                 document.getElementById('prefMaxArticlesValue').textContent = defaults.maxArticles;
+                document.getElementById('prefHideRead').checked = defaults.hideRead;
                 buildPrefCategories(defaults);
                 applyFilters();
             });

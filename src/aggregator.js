@@ -81,15 +81,16 @@ const STOP_WORDS = new Set([
   'le', 'la', 'les', 'un', 'une', 'des', 'du', 'de', 'et', 'ou', 'mais', 'dans', 'sur', 'pour', 'par', 'avec', 'est', 'sont', 'a', 'ont', 'ce', 'cette', 'ces', 'il', 'elle', 'ils', 'elles', 'nous', 'vous', 'son', 'sa', 'ses', 'leur', 'leurs', 'qui', 'que', 'quoi', 'dont', 'au', 'aux', 'ne', 'pas', 'plus', 'se', 'en', 'y'
 ]);
 
-function normalizeTitle(title) {
-  return title
+function normalizeText(text) {
+  if (!text) return [];
+  return text
     .toLowerCase()
     .replace(/[^\w\s]/g, ' ')
     .split(/\s+/)
     .filter(w => w.length > 2 && !STOP_WORDS.has(w));
 }
 
-function titleSimilarity(wordsA, wordsB) {
+function textSimilarity(wordsA, wordsB) {
   if (wordsA.length === 0 || wordsB.length === 0) return 0;
   const setA = new Set(wordsA);
   const setB = new Set(wordsB);
@@ -99,15 +100,24 @@ function titleSimilarity(wordsA, wordsB) {
 
 function deduplicateArticles(articles) {
   if (!SETTINGS.deduplication || !SETTINGS.deduplication.enabled) return articles;
-  const threshold = SETTINGS.deduplication.similarityThreshold || 0.7;
+  const titleThreshold = SETTINGS.deduplication.similarityThreshold || 0.7;
+  const contentThreshold = SETTINGS.deduplication.contentThreshold || 0.5;
   const kept = [];
-  const normalizedTitles = [];
+  const normalizedData = []; // { title: [], content: [] }
 
   for (const article of articles) {
-    const words = normalizeTitle(article.title);
+    const titleWords = normalizeText(article.title);
+    const contentWords = normalizeText(article.summary || '');
     let isDuplicate = false;
-    for (let i = 0; i < normalizedTitles.length; i++) {
-      if (titleSimilarity(words, normalizedTitles[i]) >= threshold) {
+
+    for (let i = 0; i < normalizedData.length; i++) {
+      const titleSim = textSimilarity(titleWords, normalizedData[i].title);
+      const contentSim = textSimilarity(contentWords, normalizedData[i].content);
+
+      // Duplicate if: title very similar OR content very similar OR both moderately similar
+      if (titleSim >= titleThreshold ||
+          contentSim >= contentThreshold ||
+          (titleSim >= 0.4 && contentSim >= 0.4)) {
         isDuplicate = true;
         // Keep reference to also-published sources
         if (!kept[i].alsoPublishedOn) kept[i].alsoPublishedOn = [];
@@ -117,7 +127,7 @@ function deduplicateArticles(articles) {
     }
     if (!isDuplicate) {
       kept.push(article);
-      normalizedTitles.push(words);
+      normalizedData.push({ title: titleWords, content: contentWords });
     }
   }
   return kept;

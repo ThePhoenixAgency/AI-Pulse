@@ -154,19 +154,55 @@ const PrefsManager = {
 const ReadHistory = {
     STORAGE_KEY: 'ai_pulse_read_articles',
 
+    // Normalize URL for comparison (remove query params and trailing slashes)
+    normalizeUrl: function (url) {
+        if (!url) return '';
+        try {
+            // For local data/articles files, extract the hash
+            if (url.includes('data/articles/')) {
+                var match = url.match(/data\/articles\/([a-f0-9]+)\.html/);
+                if (match) return 'article:' + match[1];
+            }
+            // For external URLs, keep only the path without query params
+            var parsed = new URL(url, window.location.origin);
+            return parsed.origin + parsed.pathname.replace(/\/$/, '');
+        } catch (e) {
+            return url.split('?')[0].replace(/\/$/, '');
+        }
+    },
+
+    // Normalize title for comparison (lowercase, remove special chars)
+    normalizeTitle: function (title) {
+        if (!title) return '';
+        return title.toLowerCase()
+            .replace(/[^\w\s]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    },
+
     getAll: function () {
         try {
             return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
         } catch (e) { return []; }
     },
 
-    isRead: function (url) {
-        return this.getAll().some(function (a) { return a.url === url; });
+    isRead: function (url, title) {
+        var normalizedUrl = this.normalizeUrl(url);
+        var normalizedTitle = this.normalizeTitle(title);
+        var self = this;
+        return this.getAll().some(function (a) {
+            // Match by URL OR by similar title
+            var urlMatch = self.normalizeUrl(a.url) === normalizedUrl;
+            var titleMatch = normalizedTitle && self.normalizeTitle(a.title) === normalizedTitle;
+            return urlMatch || titleMatch;
+        });
     },
 
     markRead: function (url, title) {
         var articles = this.getAll();
-        if (!articles.some(function (a) { return a.url === url; })) {
+        var self = this;
+        // Check if already read by URL or title
+        if (!this.isRead(url, title)) {
             articles.push({ url: url, title: title, readAt: Date.now() });
             // Keep max 500 entries to avoid localStorage bloat
             if (articles.length > 500) {
