@@ -117,8 +117,11 @@ a {
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px 15px;
     align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    padding: 0 10px;
 }
 
 .footer-links a {
