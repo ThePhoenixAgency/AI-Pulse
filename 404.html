@@ -100,7 +100,12 @@
 
             if (countdown <= 0) {
                 clearInterval(timer);
-                window.location.href = './index.html';
+                // Go back if there's history, otherwise go to reader
+                if (document.referrer && document.referrer.includes(window.location.host)) {
+                    window.history.back();
+                } else {
+                    window.location.href = './app.html';
+                }
             }
         }, 1000);
     </script>
