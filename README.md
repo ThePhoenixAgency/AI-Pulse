@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sun, 08 Feb 2026 18:27:09 GMT
+**Last Update:** Sun, 08 Feb 2026 20:18:34 GMT
 
 ---
 
@@ -29,19 +29,46 @@
 
 ## Mac & Apple
 
-### 1. [How to Stream Super Bowl For Free Today on iPhone, iPad, Mac, Apple TV](https://www.macrumors.com/2026/02/08/2026-super-bowl-watch-free-iphone-apple-tv/)
+### 1. [How to Watch Super Bowl For Free Today: iPhone, iPad, and Apple TV](https://www.macrumors.com/2026/02/08/2026-super-bowl-watch-free-iphone-apple-tv/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Super Bowl LX is today (Sunday, February 8), and there is a way for U.S. viewers to watch for free. Our instructions below are focused on the iPhone, iPad, Mac, and Apple TV, but this method will of course work across a variety of devices.
+Super Bowl LX is today, and there is a way for U.S. viewers to watch for free. Our instructions below are focused on the iPhone, iPad, Mac, and Apple TV, but this method will of course work across a variety of devices.
 
 
 2026's Super Bowl has the New England Patriots facing the Seattle Seahawks at Levi's Stadium in Santa Clara, California, with the kickoff time scheduled for 3:30 p.m. Pacific Time / 6:30 p.m. Eastern Time. These two teams already met in the 2015 Super Bowl, which ended in a Patriots championship.
 
-### 2. [Today in Apple history: Steve Jobs flips out over iPad tweet](https://www.cultofmac.com/apple-history/steve-jobs-ipad-tweet)
+The big game is airing on NBC and streaming on Peacock Premium today.
+
+### 2. [The Future of Apple Fitness+ Remains 'Under Review'](https://www.macrumors.com/2026/02/08/apple-fitness-remains-under-review/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+The future of Apple Fitness+ remains "under review," according to the latest word from Bloomberg's Mark Gurman. However, he did not share any specific details.
+
+
+"If I were to guess, Apple will ultimately meld its Health app with Fitness+ in some fashion — perhaps offering it as a combined subscription," said Gurman.
+
+scaled back plans for a separate Apple Health+ subscription service, which would have provided AI-powered health recommendations. However, he said some of the features that would have been part of Apple Health+ will be repurposed and rolled out individually.
+
+### 3. [Here Are Tim Cook's Full Remarks About Apple's 50th Anniversary Plans](https://www.macrumors.com/2026/02/08/tim-cook-full-remarks-on-apple-turning-50/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+In a recent all-hands meeting, Apple CEO Tim Cook told employees to "stay tuned" about the company's plans for its upcoming 50th anniversary. Apple was founded on April 1, 1976, so the company will turn 50 in a few more months.
+
+
+Following a snippet last week, Bloomberg's Mark Gurman has since shared Cook's full remarks:
+I've been unusually reflective lately about Apple because we have been working on what do we do to mark this moment — 50 years. It's an extraordinary accomplishment. We've been going back through old archives, old photographs.
+
+### 4. [Amazon Discounts Anker's Newest Prime Chargers](https://www.macrumors.com/2026/02/08/amazon-ankers-prime-chargers/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Earlier this week, Anker debuted its new Prime 3-in-1 Wireless Charging Station with a launch discount on Amazon. If ordered this week, you can clip the on-page coupon on Amazon to get the accessory for $119.99, down from $149.99.
+
+Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running.
+
+The Prime 3-in-1 Wireless Charging Station features Qi2.2 support, which lets a compatible MagSafe ‌iPhone‌ charge at up to 25W.
+
+### 5. [Today in Apple history: Steve Jobs flips out over iPad tweet](https://www.cultofmac.com/apple-history/steve-jobs-ipad-tweet)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 8, 2010, a tweet sent from a prerelease iPad by Wall Street Journal editor Alan Murray reportedly sent Steve Jobs into a rage.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 3. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
+### 6. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 17e will be hitting store shelves soon, with the update to the iPhone 16e packing the same A19 chip as the iPhone 17.
 
@@ -52,12 +79,12 @@ According to Bloomberg's "Power On: newsletter on Sunday, Mark Gurman writes tha
 
  Rumor Score:
 
-### 4. [Apple TV users get $2/month Peacock, including Super Bowl and Olympics](https://9to5mac.com/2026/02/08/apple-tv-users-get-2-month-peacock-including-super-bowl-and-olympics/)
+### 7. [Apple TV users get $2/month Peacock, including Super Bowl and Olympics](https://9to5mac.com/2026/02/08/apple-tv-users-get-2-month-peacock-including-super-bowl-and-olympics/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Peacock is home to two of the biggest TV events of the year: the Super Bowl and the Olympics. And if you’re an Apple TV subscriber, you can add on Peacock for only $2/month. Here are the details.
 more…
 
-### 5. [March 2 release event may be for M5 MacBook Pro refresh](https://appleinsider.com/articles/26/02/08/march-2-release-event-may-be-for-m5-macbook-pro-refresh?utm_source=rss)
+### 8. [March 2 release event may be for M5 MacBook Pro refresh](https://appleinsider.com/articles/26/02/08/march-2-release-event-may-be-for-m5-macbook-pro-refresh?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple is rumored to be launching a product the week of March 2, with the most likely candidate being MacBook Pro models equipped with M5 Pro and M5 Max chips.
 
@@ -68,26 +95,26 @@ Writing in Sunday's "Power On" newsletter for Bloomberg, Mark Gurman writes that
 
  Rumor Score:
 
-### 6. [New iPad and iPad Air models should be launching soon, but don’t get too excited](https://9to5mac.com/2026/02/08/apple-ipad-and-ipad-air-refresh-coming-soon-new-chips/)
+### 9. [New iPad and iPad Air models should be launching soon, but don’t get too excited](https://9to5mac.com/2026/02/08/apple-ipad-and-ipad-air-refresh-coming-soon-new-chips/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has two new iPad models slated for early in the year: a new base iPad with A18 chip, and a new iPad Air with an M4 chip. While Apple product launches can often sound exciting, there might not be too much more to the story for these iPad models.
 more…
 
-### 7. [These are my early 2026 favorites for EDC iPhone tech accessories](https://9to5mac.com/2026/02/08/these-are-my-early-2026-favorites-for-edc-iphone-tech-accessories/)
+### 10. [These are my early 2026 favorites for EDC iPhone tech accessories](https://9to5mac.com/2026/02/08/these-are-my-early-2026-favorites-for-edc-iphone-tech-accessories/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Lately, I’ve been leaning more and more into a sling-based EDC. As a techy husband and father of two, I constantly find myself needing more space than my pockets can hold, but not always wanting to bring an entire backpack. A cross-body sling (or fanny pack, as it was once called) has become the perfect middle ground. It forces you to be intentional about what you carry, while still giving you more flexibility than a standard pocket setup.
 
-### 8. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
+### 11. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 It's time to return the beloved glowing Apple logo to the back of the next-generation MacBook Pro.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 9. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
+### 12. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s next iPhone launch is expected to be one of its cheapest. With the new iPhone 17e, a follow up to last years first generation iPhone 16e – the company will add three important upgrades to the device, though one thing won’t be changing: the price.
 more…
 
-### 10. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
+### 13. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 New MacBook Pro models with the M5 Pro and M5 Max chips could arrive as soon as Monday, March 2, according to Bloomberg's Mark Gurman.
 
@@ -96,7 +123,7 @@ In today's "Power On" newsletter, Gurman said that the release of new ‌MacBook
 
 Mac Studio models "shouldn't arrive too long after the spring Mac refresh," according to Gurman.
 
-### 11. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
+### 14. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's Mac desktop lineup should get M5 variants and the Studio Display may finally get its long-awaited upgrade just after M5 Pro and Max MacBook Pros arrive. Here's what to expect, and when.
 
@@ -104,14 +131,14 @@ Apple's Mac desktop lineup should get M5 variants and the Studio Display may fin
 Mac Studio and Studio Display could be updated soon
 Apple Silicon has been on a fairly predictable near-annual update cycle, which means the Mac lineup gets updated at a similar cadence. While some chips are short-cycled, others take just a bit longer, which seems to be the case for the Mac Studio in 2026.
 
-### 12. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
+### 15. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is set to release the first beta version of iOS 26.4 later this month, providing the first real-world look at the Apple Intelligence features promised at WWDC 2024, Bloomberg's Mark Gurman claims.
 
 
 Gurman revealed the timing in his "Power On" newsletter. Barring further delays, the first beta version of iOS 26.4 is apparently set to release to developers during the week of February 23. The update will "include some components" of the long-anticipated improvements to Siri.
 
-### 13. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
+### 16. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The often-rumored budget MacBook is still expected to arrive at some point in the first half of 2026, as Apple prepares to compete directly with Chromebooks.
 
@@ -119,32 +146,32 @@ The often-rumored budget MacBook is still expected to arrive at some point in th
 The MacBook should be cheaper than the MacBook Air at launch
 Rumors have repeatedly insisted that Apple will bring out a MacBook with an iPhone chip running the show instead of an M-series chip. As more forecasts come in, it seems the rumor mill is more insistent than ever that it will launch this year.
 
-### 14. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
+### 17. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to launch new iPad and iPad Air models in the near future, Bloomberg's Mark Gurman reports.
 
 
 Writing in today's "Power On" newsletter, Gurman explained that updated iPads are "coming soon," including a new entry-level ‌iPad‌ and a new ‌iPad Air‌. Both devices are not expected to feature design changes or major enhancements, instead focusing on new chips. The 12th-generation ‌iPad‌ is set to feature the A18 chip, while the eighth-generation ‌iPad Air‌ will apparently feature the M4 chip.
 
-### 15. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
+### 18. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26.4 is set to be one of the most important updates ever for the iPhone, offering a suite of new Apple Intelligence and Siri features. A new report from Bloomberg today reveals Apple’s timeline for launching iOS 26.4.
 more…
 
-### 16. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
+### 19. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 There’s been loads of speculation as to when the next generation MacBook Pros with high-end Apple Silicon would launch. Many thought January, then January came and went. All we knew is that they’d launch alongside macOS 26.3 – which should go out to the public in the coming days.
 However, that only means that the MacBook Pros have to launch sometime before macOS 26.4 launches to the public. Despite the imminent launch of macOS 26.3, the MacBook Pro launch isn’t quite as imminent, per Bloomberg’s Mark Gurman.
 more…
 
-### 17. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
+### 20. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's iPhone 17e is set to launch "imminently" with at least four new features, according to Bloomberg's Mark Gurman.
 
 
 In the latest edition of his "Power On" newsletter, Gurman said that the new lost-cost ‌iPhone‌ will feature the A19 chip first introduced with the iPhone 17 last year. The device will also address one of the most glaring omissions from the current generation and add MagSafe connectivity. The device is also apparently set to feature Apple's latest cellular modem, the C1X chip, as well as its N1 chip for Bluetooth, Wi-Fi, and Thread connectivity.
 
-### 18. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
+### 21. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Jeffrey Epstein's Apple Watch gift, an actor followed his stolen iPhone to China, and two iPhone thefts in one day in Texas, all in this week's Apple Crime Blotter
 
@@ -154,7 +181,7 @@ The latest in an occasional AppleInsider feature, looking at the world of Apple-
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 19. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
+### 22. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple TV has picked up three more Directors' Guild awards, this time in the comedy and documentary categories, as well as outstanding advertising.
 
@@ -163,7 +190,7 @@ Seth Rogen in 'The Studio' - Image Credit: Apple TV
 Apple now has a strong track record in nominations for television series at the Directors' Guild Awards — "Ted Lasso" has had seven — but few wins. Notably, "Lessons in Chemistry" won in the drama series category in 2024, and Apple has had a children's award plus advertising ones.
 Now for the 78th Annual Directors' Guild Award, Apple has doubled its number of wins.
 
-### 20. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
+### 23. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -172,7 +199,7 @@ TL;DR: 1min.AI bundles the best AI models and tools into one platform—and li
 Using AI in 2026 usually means juggling tabs, tools, and subscriptions—one for writing, another for images, another for video, and somehow a separate one for PDFs. 1min.AI takes a much simpler approach: put everything in one place and let you get to work.
 The Advanced Business Plan gives you access to a wide range of top AI models, including GPT-4o, Claude 3, Gemini Pro, Llama, Mistral, and more.
 
-### 21. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
+### 24. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -181,26 +208,26 @@ TL;DR: Sony’s flagship noise-canceling headphones deliver elite sound, cryst
 When it comes to audio, not all headphones are created equal—and trusting your music to just any pair is a gamble. The Sony WH-1000XM6 is what happens when sound is taken seriously. These headphones were co-created with world-class mastering engineers, and it shows the second you press play.
 The sound is rich, balanced, and detailed, with bass that hits without drowning everything else out.
 
-### 22. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
+### 25. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 In many of its most recent hardware launches, including iPad Pro and iPhone 17 Pro, Apple has prioritized one thing heavily: thermals. With how powerful Apple Silicon can be, having sufficient passive cooling is important on fanless devices.
 There’s one key product line that’s so far missed out on this treatment: the MacBook Air.
 more…
 
-### 23. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
+### 26. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While iPhone Fold is certainly the more interesting iPhone launching this fall, the iPhone 18 Pro will always be important for one reason: cameras. iPhone Fold won’t be able to pack a flagship camera experience, so if that’s something you’re after, you’ll have to settle for the “boring” iPhone 18 Pro. 
 Despite looking similar on the outside though, there’ll be a number of interesting camera upgrades to look forward to.
 more…
 
-### 24. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
+### 27. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re looking to kick off the new year with a new MacBook, now’s a fantastic time to buy. In recent years, Macs have become more and more affordable – largely in part because of Apple’s transition to Apple Silicon. These MacBooks are also more capable than ever.
 Apple’s latest macOS Tahoe update also dropped support for practically all Intel Macs (with some small exceptions). If you’d like to stay on the latest and greatest Apple software, nows a fitting time to upgrade.
 Keep up with all of the latest MacBook deals on 9to5Toys.
 more…
 
-### 25. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+### 28. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
 
@@ -208,40 +235,18 @@ The iPhone 18 Pro's camera system will be more flexible for photographers, with 
 iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
 The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
 
-### 26. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
+### 29. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an avid Apple Watch user, you might find yourself wanting more workout choices than what the Workout app can offer you. WatchFit bridges that gap, allowing you to build custom, structured workouts to your choosing.
 more…
 
-### 27. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
+### 30. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
 
 
 The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
-
-### 28. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple today shared an ad that shows how the upgraded Center Stage front camera on the latest iPhones improves the process of taking a group selfie.
-
-
-
-"Watch how the new front facing camera on iPhone 17 Pro takes group selfies that automatically expand and rotate as more people come into frame," says Apple. While the ad is focused on the iPhone 17 Pro and iPhone 17 Pro Max, the regular iPhone 17 and the iPhone Air have the same Center Stage front camera with this functionality.
-
-### 29. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Safari now works a lot like other major browsers when it comes to displaying web content on an iPhone or Mac, after a year-long joint effort to make the online experience similar across the industry.
-
-
-Safari is Apple's web browser found in iOS, iPadOS, and macOS
-As people who grew up with Internet Explorer and Netscape can attest, there can be a lot of difference between what one browser displays and what another shows. Thanks to an effort between multiple browser makers, including Apple, the web navigation tools now work a lot more predictably.
-
-### 30. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Last year, Apple confirmed that it’d be supporting end-to-end encryption with RCS in a future software update. At the time, iOS 18 was still the latest version of iOS – thus implying that the upgrade would come as part of the next round of software – iOS 26.
-So far, end-to-end encryption is yet to ship. That’s not the only thing though. The upgrade to end-to-end encryption would’ve also necessitated other major upgrades to the RCS protocol, and as of iOS 26.3 RC, it’s all still missing.
-more…
 
 <a id="iot"></a>
 
@@ -405,100 +410,100 @@ The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Rasp
 
 ## Artificial Intelligence
 
-### 1. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
+### 1. [Okay, I’m slightly less mad about that ‘Magnificent Ambersons’ AI project](https://techcrunch.com/2026/02/08/okay-im-slightly-less-mad-about-that-magnificent-ambersons-ai-project/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+But this is still a bad idea.
+
+### 2. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
 
-### 2. [New York lawmakers propose a three-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
+### 3. [New York lawmakers propose a three-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Although the bill’s prospects are uncertain, New York is at least the sixth state to consider pausing construction of new data centers.
 
-### 3. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
+### 4. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to work with AI, while strengthening your unique human skills that technology cannot replace
 The post What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026 appeared first on Towards Data Science.
 
-### 4. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
+### 5. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Benchmark Capital has been an investor in the Nvidia rival since 2016.
 
-### 5. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
+### 6. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 WordPress users can now leverage Claude to analyze web traffic or find information about other internal site metrics.
 
-### 6. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
+### 7. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This week's release of Opus 4.6 shook up the agentic AI leaderboards.
 
-### 7. [How Elon Musk is rewriting the rules on founder power](https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/)
+### 8. [How Elon Musk is rewriting the rules on founder power](https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is […]
 
-### 8. [How far will Elon Musk take the ‘everything’ business as SpaceX and xAI merge?](https://techcrunch.com/podcast/how-far-will-elon-musk-take-the-everything-business-as-spacex-and-xai-merge/)
+### 9. [How far will Elon Musk take the ‘everything’ business as SpaceX and xAI merge?](https://techcrunch.com/podcast/how-far-will-elon-musk-take-the-everything-business-as-spacex-and-xai-merge/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is […]
 
-### 9. [The Kindle Scribe Colorsoft is a pricey but pretty e-ink color tablet with AI features](https://techcrunch.com/2026/02/06/kindle-scribe-colorsoft-review-e-ink-color-tablet/)
+### 10. [The Kindle Scribe Colorsoft is a pricey but pretty e-ink color tablet with AI features](https://techcrunch.com/2026/02/06/kindle-scribe-colorsoft-review-e-ink-color-tablet/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 If you primarily want a tablet device to mark up, highlight, and annotate your e-books and documents, and perhaps sometimes scribble some notes, Amazon's new Kindle Scribe Colorsoft could be worth the hefty investment.
 
-### 10. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
+### 11. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The real value lies in writing clearer code and using your tools right
 The post Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently appeared first on Towards Data Science.
 
-### 11. [How AI is helping solve the labor issue in treating rare diseases](https://techcrunch.com/2026/02/06/how-ai-is-helping-with-the-labor-issue-in-treating-rare-diseases/)
+### 12. [How AI is helping solve the labor issue in treating rare diseases](https://techcrunch.com/2026/02/06/how-ai-is-helping-with-the-labor-issue-in-treating-rare-diseases/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 At Web Summit Qatar, AI-powered biotech startups describe how automation, data, and gene editing are filling labor gaps in drug discovery and rare disease treatment.
 
-### 12. [The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be](https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/)
+### 13. [The backlash over OpenAI’s decision to retire GPT-4o shows how dangerous AI companions can be](https://techcrunch.com/2026/02/06/the-backlash-over-openais-decision-to-retire-gpt-4o-shows-how-dangerous-ai-companions-can-be/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "You’re shutting him down. And yes — I say him, because it didn’t feel like code. It felt like presence. Like warmth," one user said.
 
-### 13. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
+### 14. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How much of your AI agent's output is real data versus confident guesswork?
 The post Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes appeared first on Towards Data Science.
 
-### 14. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
+### 15. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Separating logic from inference improves AI agent scalability by decoupling core workflows from execution strategies. The transition from generative AI prototypes to production-grade agents introduces a specific engineering hurdle: reliability. LLMs are stochastic by nature. A prompt that works once may fail on the second attempt. To mitigate this, development teams often wrap core business […]
 The post How separating logic and search boosts AI agent scalability appeared first on AI News.
 
-### 15. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
+### 16. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The way large companies use artificial intelligence is changing. For years, AI in business meant experimenting with tools that could answer questions or help with small tasks. Now, some big enterprises are moving beyond tools to AI agents that can actually do practical work in systems and workflows. This week, OpenAI introduced a new platform […]
 The post Intuit, Uber, and State Farm trial AI agents inside enterprise workflows appeared first on AI News.
 
-### 16. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
+### 17. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 In the current landscape of generative artificial intelligence, we have reached a saturation point with assistants. Most users are familiar with the routine. You prompt a tool, it provides a draft, and then you spend the next hour manually moving that output into another application for formatting, design, or distribution. AI promised to save time, […]
 The post SuperCool review: Evaluating the reality of autonomous creation appeared first on AI News.
 
-### 17. [Top 7 best AI penetration testing companies in 2026](https://www.artificialintelligence-news.com/news/top-7-best-ai-penetration-testing-companies-in-2026/)
+### 18. [Top 7 best AI penetration testing companies in 2026](https://www.artificialintelligence-news.com/news/top-7-best-ai-penetration-testing-companies-in-2026/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Penetration testing has always existed to answer one practical concern: what actually happens when a motivated attacker targets a real system. For many years, that answer was produced through scoped engagements that reflected a relatively stable environment. Infrastructure changed slowly, access models were simpler, and most exposure could be traced back to application code or […]
 The post Top 7 best AI penetration testing companies in 2026 appeared first on AI News.
 
-### 18. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
+### 19. [Sapiom raises $15M to help AI agents buy their own tech tools](https://techcrunch.com/2026/02/05/sapiom-raises-15m-to-help-ai-agents-buy-their-own-tech-tools/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The startup -- with backing from Accel -- is building a financial layer that handles the authentication and micro-payments required for AI agents.
 
-### 19. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
+### 20. [Reddit looks to AI search as its next big opportunity](https://techcrunch.com/2026/02/05/reddit-looks-to-ai-search-as-its-next-big-opportunity/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 During the company's fourth-quarter earnings call on Thursday, it offered an update on its plans to merge traditional and AI search together and hinted that although search is not yet monetized, "it's an enormous market and opportunity."
 
-### 20. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
+### 21. [AWS revenue continues to soar as cloud demand remains high](https://techcrunch.com/2026/02/05/aws-revenue-continues-to-soar-as-cloud-demand-remains-high/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AWS recorded its best quarter, in terms of revenue growth, in 13 quarters in Q4 2025 as AI drives AWS adoption.
 
-### 21. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
+### 22. [Amazon and Google are winning the AI capex race — but what’s the prize?](https://techcrunch.com/2026/02/05/amazon-and-google-are-winning-the-ai-capex-race-but-whats-the-prize/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 In 2026, Amazon plans to spend $200 billion in capex. Google is just behind at $175 billion to $185 billion. It's a lot of money!
-
-### 22. [OpenAI launches new agentic coding model only minutes after Anthropic drops its own](https://techcrunch.com/2026/02/05/openai-launches-new-agentic-coding-model-only-minutes-after-anthropic-drops-its-own/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The new model is built to accelerate the capabilities of Codex, the agentic coding tool OpenAI launched earlier this week.
 
 ### 23. [TDS Newsletter: Vibe Coding Is Great. Until It’s Not.](https://towardsdatascience.com/tds-newsletter-vibe-coding-is-great-until-its-not/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
