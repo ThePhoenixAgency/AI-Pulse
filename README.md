@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sun, 08 Feb 2026 12:33:38 GMT
+**Last Update:** Sun, 08 Feb 2026 14:21:27 GMT
 
 ---
 
@@ -29,7 +29,85 @@
 
 ## Mac & Apple
 
-### 1. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
+### 1. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+It's time to return the beloved glowing Apple logo to the back of the next-generation MacBook Pro.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 2. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+The iPhone 17e will be hitting store shelves soon, with the update to the iPhone 16e packing the same A19 chip as the iPhone 17.
+
+
+The iPhone 17e should look like the iPhone 16e.
+Apple is expected to bring out an update to the iPhone 16e in early 2026, replacing it with a new iPhone 17e model. That update could arrive very soon, if one report is correct.
+According to Bloomberg's "Power On: newsletter on Sunday, Mark Gurman writes that the launch is due "imminently." Gurman doesn't specify a specific date, but it could arrive within days or a few weeks.
+
+ Rumor Score:
+
+### 3. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple’s next iPhone launch is expected to be one of its cheapest. With the new iPhone 17e, a follow up to last years first generation iPhone 16e – the company will add three important upgrades to the device, though one thing won’t be changing: the price.
+more…
+
+### 4. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+New MacBook Pro models with the M5 Pro and M5 Max chips could arrive as soon as Monday, March 2, according to Bloomberg's Mark Gurman.
+
+
+In today's "Power On" newsletter, Gurman said that the release of new ‌MacBook Pro‌ models is tied to the release of macOS Tahoe 26.3. The launch is said to be slated for as early as the week of March 2. He added that the M4 Pro and M4 Max models on sale today remain in short supply, indicating that the launch of new models is close. 
+
+Mac Studio models "shouldn't arrive too long after the spring Mac refresh," according to Gurman.
+
+### 5. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple's Mac desktop lineup should get M5 variants and the Studio Display may finally get its long-awaited upgrade just after M5 Pro and Max MacBook Pros arrive. Here's what to expect, and when.
+
+
+Mac Studio and Studio Display could be updated soon
+Apple Silicon has been on a fairly predictable near-annual update cycle, which means the Mac lineup gets updated at a similar cadence. While some chips are short-cycled, others take just a bit longer, which seems to be the case for the Mac Studio in 2026.
+
+### 6. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple is set to release the first beta version of iOS 26.4 later this month, providing the first real-world look at the Apple Intelligence features promised at WWDC 2024, Bloomberg's Mark Gurman claims.
+
+
+Gurman revealed the timing in his "Power On" newsletter. Barring further delays, the first beta version of iOS 26.4 is apparently set to release to developers during the week of February 23. The update will "include some components" of the long-anticipated improvements to Siri.
+
+### 7. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+The often-rumored budget MacBook is still expected to arrive at some point in the first half of 2026, as Apple prepares to compete directly with Chromebooks.
+
+
+The MacBook should be cheaper than the MacBook Air at launch
+Rumors have repeatedly insisted that Apple will bring out a MacBook with an iPhone chip running the show instead of an M-series chip. As more forecasts come in, it seems the rumor mill is more insistent than ever that it will launch this year.
+
+### 8. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple is planning to launch new iPad and iPad Air models in the near future, Bloomberg's Mark Gurman reports.
+
+
+Writing in today's "Power On" newsletter, Gurman explained that updated iPads are "coming soon," including a new entry-level ‌iPad‌ and a new ‌iPad Air‌. Both devices are not expected to feature design changes or major enhancements, instead focusing on new chips. The 12th-generation ‌iPad‌ is set to feature the A18 chip, while the eighth-generation ‌iPad Air‌ will apparently feature the M4 chip.
+
+### 9. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+iOS 26.4 is set to be one of the most important updates ever for the iPhone, offering a suite of new Apple Intelligence and Siri features. A new report from Bloomberg today reveals Apple’s timeline for launching iOS 26.4.
+more…
+
+### 10. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+There’s been loads of speculation as to when the next generation MacBook Pros with high-end Apple Silicon would launch. Many thought January, then January came and went. All we knew is that they’d launch alongside macOS 26.3 – which should go out to the public in the coming days.
+However, that only means that the MacBook Pros have to launch sometime before macOS 26.4 launches to the public. Despite the imminent launch of macOS 26.3, the MacBook Pro launch isn’t quite as imminent, per Bloomberg’s Mark Gurman.
+more…
+
+### 11. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple's iPhone 17e is set to launch "imminently" with at least four new features, according to Bloomberg's Mark Gurman.
+
+
+In the latest edition of his "Power On" newsletter, Gurman said that the new lost-cost ‌iPhone‌ will feature the A19 chip first introduced with the iPhone 17 last year. The device will also address one of the most glaring omissions from the current generation and add MagSafe connectivity. The device is also apparently set to feature Apple's latest cellular modem, the C1X chip, as well as its N1 chip for Bluetooth, Wi-Fi, and Thread connectivity.
+
+### 12. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Jeffrey Epstein's Apple Watch gift, an actor followed his stolen iPhone to China, and two iPhone thefts in one day in Texas, all in this week's Apple Crime Blotter
 
@@ -39,7 +117,7 @@ The latest in an occasional AppleInsider feature, looking at the world of Apple-
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 2. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
+### 13. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple TV has picked up three more Directors' Guild awards, this time in the comedy and documentary categories, as well as outstanding advertising.
 
@@ -48,7 +126,7 @@ Seth Rogen in 'The Studio' - Image Credit: Apple TV
 Apple now has a strong track record in nominations for television series at the Directors' Guild Awards — "Ted Lasso" has had seven — but few wins. Notably, "Lessons in Chemistry" won in the drama series category in 2024, and Apple has had a children's award plus advertising ones.
 Now for the 78th Annual Directors' Guild Award, Apple has doubled its number of wins.
 
-### 3. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
+### 14. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -57,7 +135,7 @@ TL;DR: 1min.AI bundles the best AI models and tools into one platform—and li
 Using AI in 2026 usually means juggling tabs, tools, and subscriptions—one for writing, another for images, another for video, and somehow a separate one for PDFs. 1min.AI takes a much simpler approach: put everything in one place and let you get to work.
 The Advanced Business Plan gives you access to a wide range of top AI models, including GPT-4o, Claude 3, Gemini Pro, Llama, Mistral, and more.
 
-### 4. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
+### 15. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -66,26 +144,26 @@ TL;DR: Sony’s flagship noise-canceling headphones deliver elite sound, cryst
 When it comes to audio, not all headphones are created equal—and trusting your music to just any pair is a gamble. The Sony WH-1000XM6 is what happens when sound is taken seriously. These headphones were co-created with world-class mastering engineers, and it shows the second you press play.
 The sound is rich, balanced, and detailed, with bass that hits without drowning everything else out.
 
-### 5. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
+### 16. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 In many of its most recent hardware launches, including iPad Pro and iPhone 17 Pro, Apple has prioritized one thing heavily: thermals. With how powerful Apple Silicon can be, having sufficient passive cooling is important on fanless devices.
 There’s one key product line that’s so far missed out on this treatment: the MacBook Air.
 more…
 
-### 6. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
+### 17. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While iPhone Fold is certainly the more interesting iPhone launching this fall, the iPhone 18 Pro will always be important for one reason: cameras. iPhone Fold won’t be able to pack a flagship camera experience, so if that’s something you’re after, you’ll have to settle for the “boring” iPhone 18 Pro. 
 Despite looking similar on the outside though, there’ll be a number of interesting camera upgrades to look forward to.
 more…
 
-### 7. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
+### 18. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re looking to kick off the new year with a new MacBook, now’s a fantastic time to buy. In recent years, Macs have become more and more affordable – largely in part because of Apple’s transition to Apple Silicon. These MacBooks are also more capable than ever.
 Apple’s latest macOS Tahoe update also dropped support for practically all Intel Macs (with some small exceptions). If you’d like to stay on the latest and greatest Apple software, nows a fitting time to upgrade.
 Keep up with all of the latest MacBook deals on 9to5Toys.
 more…
 
-### 8. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+### 19. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
 
@@ -93,20 +171,20 @@ The iPhone 18 Pro's camera system will be more flexible for photographers, with 
 iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
 The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
 
-### 9. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
+### 20. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an avid Apple Watch user, you might find yourself wanting more workout choices than what the Workout app can offer you. WatchFit bridges that gap, allowing you to build custom, structured workouts to your choosing.
 more…
 
-### 10. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
+### 21. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
 
 
 The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
 
-### 11. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
+### 22. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today shared an ad that shows how the upgraded Center Stage front camera on the latest iPhones improves the process of taking a group selfie.
 
@@ -114,7 +192,7 @@ Apple today shared an ad that shows how the upgraded Center Stage front camera o
 
 "Watch how the new front facing camera on iPhone 17 Pro takes group selfies that automatically expand and rotate as more people come into frame," says Apple. While the ad is focused on the iPhone 17 Pro and iPhone 17 Pro Max, the regular iPhone 17 and the iPhone Air have the same Center Stage front camera with this functionality.
 
-### 12. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
+### 23. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Safari now works a lot like other major browsers when it comes to displaying web content on an iPhone or Mac, after a year-long joint effort to make the online experience similar across the industry.
 
@@ -122,13 +200,13 @@ Safari now works a lot like other major browsers when it comes to displaying web
 Safari is Apple's web browser found in iOS, iPadOS, and macOS
 As people who grew up with Internet Explorer and Netscape can attest, there can be a lot of difference between what one browser displays and what another shows. Thanks to an effort between multiple browser makers, including Apple, the web navigation tools now work a lot more predictably.
 
-### 13. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
+### 24. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Last year, Apple confirmed that it’d be supporting end-to-end encryption with RCS in a future software update. At the time, iOS 18 was still the latest version of iOS – thus implying that the upgrade would come as part of the next round of software – iOS 26.
 So far, end-to-end encryption is yet to ship. That’s not the only thing though. The upgrade to end-to-end encryption would’ve also necessitated other major upgrades to the RCS protocol, and as of iOS 26.3 RC, it’s all still missing.
 more…
 
-### 14. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
+### 25. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amazon this weekend has all-time low prices on the Apple Watch Series 11, with $100 discounts across numerous models of the smartwatch. This time around, we're tracking these record low prices on nearly every aluminum model.
 
@@ -136,106 +214,32 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 $299.00, down from $399.00, and the 46mm GPS model for $329.00, down from $429.00.
 
-### 15. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
+### 26. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The Keychron K8 is a customizable, no-nonsense mechanical keyboard with hot-swappable switches, wireless flexibility and a premium build.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 16. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
+### 27. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 7, 1981, Apple co-founder Steve Wozniak was involved in a serious plane crash, resulting in his first lengthy leave of absence.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 17. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
+### 28. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 A bunch of the Apple Music buttons on the playback screen aren’t labeled, and don’t have a very obvious meaning. Here’s a quick guide.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 18. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
+### 29. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 The iOS 26.3 release looks to be right around the corner with a highly anticipated iOS 26.4 update following right behind, so Apple software rumors were big in the news this week.
 
 
 Hardware wasn't left out, however, as we're still awaiting a few early-year launches like the M5 Pro and M5 Max MacBook Pro, while we're also looking further down the road at major new products coming later in the year like the first foldable iPhone, so read on below for all the details on these stories and more!
 
-### 19. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
+### 30. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional grade platform all the solutions necessary to seamlessly and automatically deploy, manage and protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
 For the last fifteen years, Mac admins have been chasing a ghost:
-
-### 20. [Hands-on: This charger makes fast Qi2.2 25W wireless charging more affordable for your iPhone](https://9to5mac.com/2026/02/07/hands-on-this-charger-makes-fast-qi2-2-25w-wireless-charging-more-affordable-for-your-iphone/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-A few months back, I reviewed Kuxiu’s X40 Turbo. It was one of the first chargers to bring us the new Qi2.2 25W charging speeds. It came in an awesome cosmic orange color to match the new iPhone 17 Pro, was super compact, and also charged my Apple Watch and AirPods. That charger became a mainstay in my travel pack. But now Kuxiu has introduced its new X55 Turbo charger, a more budget-focused option that delivers nearly the same core experience at a more competitive price point.
-
-### 21. [This week’s top stories: iPhone Fold specs, MacBook Pro rumors, more](https://9to5mac.com/2026/02/07/this-weeks-top-stories-iphone-fold-specs-macbook-pro-rumors-more/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Welcome to 9to5Mac’s top stories of the week, where we recap the biggest news in the Apple world every Saturday. This week, we have new iPhone Fold rumors, CarPlay expectations, and an Apple all-hands meeting. Plus, our usual slate of new podcast episodes, opinion pieces, and much more. Read on for all of this week’s top stories.
-more…
-
-### 22. [The mini smartphone minimalists have been waiting for is $100](https://www.macworld.com/article/3051547/the-mini-smartphone-minimalists-have-been-waiting-for-is-100.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-TL;DR: A tiny but powerful 4G Android smartphone that fits anywhere, works everywhere, and costs way less than you’d expect.
-Smartphones keep getting bigger, heavier, and harder to ignore—until now. The NanoPhone Pro flips the script by packing full smartphone functionality into a device that’s about the size of a credit card. Yes, it’s real. And yes, it actually works (and it’s on sale).
-Despite its ultra-small footprint, NanoPhone Pro covers the essentials:
-
-### 23. [The 10TB lifetime cloud storage deal that pays for itself ends tomorrow](https://www.macworld.com/article/3051564/the-10tb-lifetime-cloud-storage-deal-that-pays-for-itself-ends-tomorrow.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-TL;DR: Grab a 10TB lifetime cloud storage plan at $269.97 before the price goes back up after tomorrow, February 8 (MSRP $2,900).
-Most cloud storage plans quietly charge you over and over again for the same space. This one flips that model on its head, offering enough storage for years of photos, projects, and backups with a one-time commitment that’s only available for a little longer.
-The 10TB plan is perfect for most users who never want to run out of space, and it’s 90% off right now.
-
-### 24. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple releases iOS 26.3 RC, Jeff plays with Moltbot on his Mac mini, Fernando gets his iPhone’s screen fixed, Jeff laments what it’s like to use Apple Pay at drive thrus, why Apple should add native screen sharing from the iPad back to the Mac, and Fernando gets a new MacBook Pro and considers switching to Final Cut Pro.
-9to5Mac Overtime is a weekly video-first podcast exploring fun and interesting observations in the Apple ecosystem, featuring 9to5Mac’s Fernando Silva &amp; Jeff Benjamin. Subscribe to Overtime via Apple Podcasts and our YouTube channel for more.
-more…
-
-### 25. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
-Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
-
-
-
-
- more…
-
-### 26. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-In the iOS 26.4 update that's coming this spring, Apple will introduce a new version of Siri that's going to overhaul how we interact with the personal assistant and what it's able to do.
-
-
-The iOS 26.4 version of ‌Siri‌ won't work like ChatGPT or Claude, but it will rely on large language models (LLMs) and has been updated from the ground up.
-
-Upgraded Architecture
-
-The next-generation version of ‌Siri‌ will use advanced large language models, similar to those used by ChatGPT, Claude, and Gemini.
-
-### 27. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple’s controversial partnership with Taboola to serve ads on Apple News seems to be going exactly as expected. Here’s why.
-more…
-
-### 28. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-You can hoard Apple trackers for yourself or make the whole family a bit more organized for less money, thanks to this epic AirTag deal.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 29. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple’s WebKit blog published a post today highlighting the results of Interop 2025, an industry-wide effort to improve cross-browser interoperability. Here are the details.
-more…
-
-### 30. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple overhauled the Phone app in iOS 26 with a new design and added several powerful features, including a new call screening option that I don’t ever want to go without.
-more…
 
 <a id="iot"></a>
 
@@ -243,145 +247,145 @@ more…
 
 ## Internet of Things & Hardware
 
-### 1. [Texas Instruments to acquire Silicon Labs](https://iotbusinessnews.com/2026/02/05/texas-instruments-to-acquire-silicon-labs/)
+### 1. [Private LTE/5G Market Reached US$2.4B and 6,500 Deployments in 2025](https://iotbusinessnews.com/2026/02/08/private-lte-5g-market-reached-us2-4b-and-6500-deployments-in-2025/)
+**Source:** IoT Business News | **Tags:** `IoT` `News`
+The private LTE/5G network market hit $2.4 billion and 6,500 deployments in 2025, with growth forecasted to $12 billion by 2030 due to enterprise demand, new deployments, and technology upgrades.
+The post Private LTE/5G Market Reached US$2.4B and 6,500 Deployments in 2025 appeared first on IoT Business News.
+
+### 2. [Texas Instruments to acquire Silicon Labs](https://iotbusinessnews.com/2026/02/05/texas-instruments-to-acquire-silicon-labs/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Texas Instruments will acquire Silicon Labs in a $7.5 billion cash deal, merging their embedded wireless and analog capabilities to enhance IoT connectivity and manufacturing efficiency, targeting accelerated growth and customer reach.
 The post Texas Instruments to acquire Silicon Labs appeared first on IoT Business News.
 
-### 2. [Save the date: Arduino Days 2026 is coming!](https://blog.arduino.cc/2026/02/05/save-the-date-arduino-days-2026-is-coming/)
+### 3. [Save the date: Arduino Days 2026 is coming!](https://blog.arduino.cc/2026/02/05/save-the-date-arduino-days-2026-is-coming/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 Mark your calendars for March 27-28, 2026, as we come together for Arduino Days 2026 – our annual online event for everyone, everywhere. As we step into 2026, we embrace an exciting paradigm shift in technology, ready to explore the new world of AI. For the past two decades, Arduino has been a favorite of […]
 The post Save the date: Arduino Days 2026 is coming! appeared first on Arduino Blog.
 
-### 3. [Beige is back: Remembering the BBC Micro with Raspberry Pi 500+](https://www.raspberrypi.com/news/beige-is-back-remembering-the-bbc-micro-with-raspberry-pi-500-plus/)
+### 4. [Beige is back: Remembering the BBC Micro with Raspberry Pi 500+](https://www.raspberrypi.com/news/beige-is-back-remembering-the-bbc-micro-with-raspberry-pi-500-plus/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 In a polite nod to four decades of British computing, we modified a Raspberry Pi 500+ to look like a BBC Micro.
 The post Beige is back: Remembering the BBC Micro with Raspberry Pi 500+ appeared first on Raspberry Pi.
 
-### 4. [3D printing with a 4,000-pound industrial robot](https://blog.arduino.cc/2026/02/04/3d-printing-with-a-4000-pound-industrial-robot/)
+### 5. [3D printing with a 4,000-pound industrial robot](https://blog.arduino.cc/2026/02/04/3d-printing-with-a-4000-pound-industrial-robot/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 There are industrial robots, and there is Brian Brocken’s two-ton behemoth: an ABB IRB6400 capable of moving at least 150kg (330 pounds), thanks to partial hydraulic actuation. It is an absurd robot that a factory might use to put small engines in cars. So, it is an understatement to say it was overkill when Brocken […]
 The post 3D printing with a 4,000-pound industrial robot appeared first on Arduino Blog.
 
-### 5. [IoT Data Collection in ATEX Environments](https://iotbusinessnews.com/2026/02/04/iot-data-collection-in-atex-environments/)
+### 6. [IoT Data Collection in ATEX Environments](https://iotbusinessnews.com/2026/02/04/iot-data-collection-in-atex-environments/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 This article examines IoT data collection in ATEX-certified hazardous zones, detailing sensor requirements, connectivity evolution, and integration challenges for safe, reliable industrial deployments.
 The post IoT Data Collection in ATEX Environments appeared first on IoT Business News.
 
-### 6. [Introducing the latest Arduino App Lab release](https://blog.arduino.cc/2026/02/04/introducing-the-latest-arduino-app-lab-release/)
+### 7. [Introducing the latest Arduino App Lab release](https://blog.arduino.cc/2026/02/04/introducing-the-latest-arduino-app-lab-release/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 We’re excited to introduce a new version of Arduino App Lab, designed to make building, testing, and sharing applications easier and more secure. This update centers around enhancing the flexibility of App Lab, so you can focus on what’s important: building – whether you’re a student, educator, or experienced maker working with the Arduino® UNO™ […]
 The post Introducing the latest Arduino App Lab release appeared first on Arduino Blog.
 
-### 7. [Hyundai Motor Group partners with Vodafone IoT on Middle East connected cars](https://iotbusinessnews.com/2026/02/03/hyundai-motor-group-partners-with-vodafone-iot-on-middle-east-connected-cars/)
+### 8. [Hyundai Motor Group partners with Vodafone IoT on Middle East connected cars](https://iotbusinessnews.com/2026/02/03/hyundai-motor-group-partners-with-vodafone-iot-on-middle-east-connected-cars/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Hyundai Motor Group partners with Vodafone IoT to deploy secure, regulatory-compliant in-car connectivity in the Middle East, enabling enhanced connected car services across multiple countries.
 The post Hyundai Motor Group partners with Vodafone IoT on Middle East connected cars appeared first on IoT Business News.
 
-### 8. [RP2350 Hacking Challenge 2: Less randomisation, more correlation](https://www.raspberrypi.com/news/rp2350-hacking-challenge-2-less-randomisation-more-correlation/)
+### 9. [RP2350 Hacking Challenge 2: Less randomisation, more correlation](https://www.raspberrypi.com/news/rp2350-hacking-challenge-2-less-randomisation-more-correlation/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Our second RP2350 Hacking Challenge has evolved, with prize money still up for grabs.
 The post RP2350 Hacking Challenge 2: Less randomisation, more correlation appeared first on Raspberry Pi.
 
-### 9. [More memory-driven price rises](https://www.raspberrypi.com/news/more-memory-driven-price-rises/)
+### 10. [More memory-driven price rises](https://www.raspberrypi.com/news/more-memory-driven-price-rises/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Memory-driven price rises for Raspberry Pi 4 and 5 and Compute Module 4 and 5, but 1GB variants are unaffected.
 The post More memory-driven price rises appeared first on Raspberry Pi.
 
-### 10. [This Stream Deck alternative runs on an Arduino UNO Q](https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/)
+### 11. [This Stream Deck alternative runs on an Arduino UNO Q](https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 If you do a lot of creative work, you’ve probably found that your computer’s keyboard and mouse alone just don’t cut it. There are simply too many different shortcuts and macros to cover with memorable key combos. That’s why BlommeJan used an Arduino UNO Q to build the Starkpad. Starkpad is similar to an Elgato […]
 The post This Stream Deck alternative runs on an Arduino UNO Q appeared first on Arduino Blog.
 
-### 11. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
+### 12. [IotaComm 800 MHz LoRaWAN Reference Design and Sensor](https://iotbusinessnews.com/2026/02/01/iotacomm-800-mhz-lorawan-reference-design-and-sensor/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 IotaComm introduces its 800 MHz LoRaWAN Reference Design alongside the Environmental Sensor, the first FCC-authorized device on its licensed spectrum platform, enabling advanced IoT deployments for critical infrastructure and smart environments.
 The post IotaComm 800 MHz LoRaWAN Reference Design and Sensor appeared first on IoT Business News.
 
-### 12. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
+### 13. [This Twister-inspired coffee table controls things resting on it](https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 Smart home and IoT devices are nice and all, but controlling them always feels a bit clunky. It seems like it always comes down to trying a voice command and then, when that fails, opening an app on a smartphone and pushing a button. That’s why Unnecessary Inventions’ Matty Benedetto came up with this much […]
 The post This Twister-inspired coffee table controls things resting on it appeared first on Arduino Blog.
 
-### 13. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
+### 14. [Community spotlight: MyEmbeddedStuff](https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 One of the things we love most about the Arduino community is the way knowledge flows freely – makers, engineers, and hobbyists sharing what they’ve learned so others can build on it. Case in point, the in-depth technical analyses coming from MyEmbeddedStuff, a blog dedicated to embedded systems written by an engineer with over seven […]
 The post Community spotlight: MyEmbeddedStuff appeared first on Arduino Blog.
 
-### 14. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
+### 15. [AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace](https://iotbusinessnews.com/2026/01/29/att-launches-end-to-end-iot-solution-on-aws-marketplace/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 AT&amp;T's Connected Spaces, now available on AWS Marketplace, provides businesses with a scalable, secure IoT solution featuring easy installation and real-time monitoring to optimize operations across various industries.
 The post AT&amp;T Launches End-to-End IoT Solution on AWS Marketplace appeared first on IoT Business News.
 
-### 15. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
+### 16. [SmartCoop: Controlling chickens with Java](https://www.raspberrypi.com/news/smartcoop-controlling-chickens-with-java/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Raspberry Pi Zero 2 W helps hobby farmers automate their coops, keeping their chickens safe, fed, and watered.
 The post SmartCoop: Controlling chickens with Java appeared first on Raspberry Pi.
 
-### 16. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
+### 17. [The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms](https://iotbusinessnews.com/2026/01/28/the-rise-of-vertical-specific-iot-stacks-the-end-of-one-size-fits-all-platforms/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The shift to vertical-specific IoT stacks addresses industry-specific challenges by combining tailored connectivity, data models, workflows, and analytics to deliver faster outcomes suited to manufacturing, energy, logistics, and more.
 The post The Rise of Vertical-Specific IoT Stacks: The End of One-Size-Fits-All Platforms appeared first on IoT Business News.
 
-### 17. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
+### 18. [Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers](https://iotbusinessnews.com/2026/01/28/vodafone-iot-partners-with-skylo-to-bring-ntn-nb-iot-satellite-connectivity-to-customers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Vodafone IoT and Skylo are collaborating to trial a hybrid NTN NB-IoT satellite connectivity service, aiming to extend IoT coverage to remote areas and integrate seamless switching between cellular and satellite networks.
 The post Vodafone IoT partners with Skylo to bring NTN NB-IoT satellite connectivity to customers appeared first on IoT Business News.
 
-### 18. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
+### 19. [Swiss Startup ALEC Cuts IoT Transmission Costs by 90%](https://iotbusinessnews.com/2026/01/28/swiss-startup-alec-cuts-iot-transmission-costs-by-90/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 ALEC, a Swiss startup, has developed an open source compression codec that cuts IoT data transmission costs by 90%, significantly improving bandwidth usage and battery life for sensor devices across industries.
 The post Swiss Startup ALEC Cuts IoT Transmission Costs by 90% appeared first on IoT Business News.
 
-### 19. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
+### 20. [Raspberry Pi Smart Display Module: coming soon](https://www.raspberrypi.com/news/raspberry-pi-smart-display-module-coming-soon/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Meet the Raspberry Pi Smart Display Module: an adapter board for Compute Module 5, set to launch later this year.
 The post Raspberry Pi Smart Display Module: coming soon appeared first on Raspberry Pi.
 
-### 20. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
+### 21. [WireDrum forces your muscles to learn skills](https://blog.arduino.cc/2026/01/27/wiredrum-forces-your-muscles-to-learn-skills/)
 **Source:** Arduino Blog | **Tags:** `IoT` `Arduino` `Tech`
 In a movie full of cool stuff, the most compelling fantasy in The Matrix is the ability to download and instantly learn skills. When skills take hundreds or even many thousands of hours to develop in the real world, that kind of on-demand skill access would be incredible. Designed by researchers at the University of […]
 The post WireDrum forces your muscles to learn skills appeared first on Arduino Blog.
 
-### 21. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
+### 22. [Aeris Surpasses 100 Million Connected Devices](https://iotbusinessnews.com/2026/01/27/aeris-surpasses-100-million-connected-devices/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Key Insights (AI-assisted): Crossing 100 million managed connections indicates that large-scale, cloud-native CMPs are consolidating power in cellular IoT. This scale reduces per-device connectivity and security overhead, making complex, global deployments more economically viable for OEMs and MNOs. It also accelerates the shift toward AI-driven automation in lifecycle management, observability and threat detection, which smaller ...
 The post Aeris Surpasses 100 Million Connected Devices appeared first on IoT Business News.
 
-### 22. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
+### 23. [Semtech Launches Power-Efficient Rugged 5G RedCap Routers](https://iotbusinessnews.com/2026/01/27/semtech-launches-power-efficient-rugged-5g-redcap-routers/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Semtech launches AirLink RX400 and EX400, power-efficient rugged 5G RedCap routers ideal for industrial IoT, offering reliable connectivity with low power use and suitability for off-grid deployments.
 The post Semtech Launches Power-Efficient Rugged 5G RedCap Routers appeared first on IoT Business News.
 
-### 23. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
+### 24. [Streamline dataset creation for the Raspberry Pi AI Camera](https://www.raspberrypi.com/news/streamline-dataset-creation-for-the-raspberry-pi-ai-camera/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
 Build custom datasets to train, test, verify, and refine your AI models on the Raspberry Pi AI Camera.
 The post Streamline dataset creation for the Raspberry Pi AI Camera appeared first on Raspberry Pi.
 
-### 24. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
+### 25. [Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late](https://iotbusinessnews.com/2026/01/26/predictive-maintenance-2-0-why-your-vibration-sensors-are-already-too-late/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Predictive Maintenance 2.0 shifts focus from detecting symptoms like vibration to monitoring environmental causes such as air quality, enabling proactive equipment care and improved operational efficiency.
 The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too Late appeared first on IoT Business News.
 
-### 25. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
+### 26. [Netmore Acquires Actility to Lead Global Massive IoT](https://iotbusinessnews.com/2026/01/26/netmore-acquires-actility-to-lead-global-massive-iot/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Netmore has acquired Actility, uniting their global LoRaWAN ecosystems to form the largest network with over 14 million IoT devices, expanding deployments across 100+ countries and fostering innovation in Massive IoT solutions.
 The post Netmore Acquires Actility to Lead Global Massive IoT appeared first on IoT Business News.
 
-### 26. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
+### 27. [Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania](https://iotbusinessnews.com/2026/01/23/electronic-offender-monitoring-reaches-1-6-million-across-europe-the-americas-and-oceania/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 The electronic offender monitoring market is expanding across Europe, the Americas, and Oceania, reaching 1.6 million participants in 2025 and forecasted to grow steadily by 2030.
 The post Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the Americas and Oceania appeared first on IoT Business News.
 
-### 27. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
+### 28. [Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta](https://iotbusinessnews.com/2026/01/23/iridium-ntn-direct-begins-on-air-trials-ahead-of-2026-beta/)
 **Source:** IoT Business News | **Tags:** `IoT` `News`
 Iridium Communications has begun on-air trials of Iridium NTN Direct, a global NB-IoT satellite service set for beta release in 2026, targeting expanded IoT coverage for mobile operators and device makers.
 The post Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta appeared first on IoT Business News.
-
-### 28. [Hikvision forecasts top 5 AIoT trends for 2026](https://iotbusinessnews.com/2026/01/23/hikvision-forecasts-top-5-aiot-trends-for-2026/)
-**Source:** IoT Business News | **Tags:** `IoT` `News`
-Hikvision forecasts top AIoT trends for 2026, emphasizing the integration of AI and IoT in business, edge computing advancements, ethical AI practices, and expanding applications in social and environmental sectors.
-The post Hikvision forecasts top 5 AIoT trends for 2026 appeared first on IoT Business News.
 
 ### 29. [Raspberry Pi Flash Drive available now from $30: a high-quality essential accessory](https://www.raspberrypi.com/news/raspberry-pi-flash-drive-available-now-from-30-a-high-quality-essential-accessory/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Tech`
