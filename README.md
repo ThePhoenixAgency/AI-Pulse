@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sun, 08 Feb 2026 14:21:27 GMT
+**Last Update:** Sun, 08 Feb 2026 16:21:53 GMT
 
 ---
 
@@ -29,12 +29,7 @@
 
 ## Mac & Apple
 
-### 1. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-It's time to return the beloved glowing Apple logo to the back of the next-generation MacBook Pro.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 2. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
+### 1. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 17e will be hitting store shelves soon, with the update to the iPhone 16e packing the same A19 chip as the iPhone 17.
 
@@ -45,12 +40,42 @@ According to Bloomberg's "Power On: newsletter on Sunday, Mark Gurman writes tha
 
  Rumor Score:
 
-### 3. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
+### 2. [Apple TV users get $2/month Peacock, including Super Bowl and Olympics](https://9to5mac.com/2026/02/08/apple-tv-users-get-2-month-peacock-including-super-bowl-and-olympics/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Peacock is home to two of the biggest TV events of the year: the Super Bowl and the Olympics. And if you’re an Apple TV subscriber, you can add on Peacock for only $2/month. Here are the details.
+more…
+
+### 3. [March 2 release event may be for M5 MacBook Pro refresh](https://appleinsider.com/articles/26/02/08/march-2-release-event-may-be-for-m5-macbook-pro-refresh?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple is rumored to be launching a product the week of March 2, with the most likely candidate being MacBook Pro models equipped with M5 Pro and M5 Max chips.
+
+
+The M5 MacBook Pro could finally get some stablemates in March
+Apple often holds events in March as one of its earliest of the year. According to one report, that could be just the case in 2026.
+Writing in Sunday's "Power On" newsletter for Bloomberg, Mark Gurman writes that Apple is planning a product launch that is currently scheduled for as "early as the week of March 2."
+
+ Rumor Score:
+
+### 4. [New iPad and iPad Air models should be launching soon, but don’t get too excited](https://9to5mac.com/2026/02/08/apple-ipad-and-ipad-air-refresh-coming-soon-new-chips/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple has two new iPad models slated for early in the year: a new base iPad with A18 chip, and a new iPad Air with an M4 chip. While Apple product launches can often sound exciting, there might not be too much more to the story for these iPad models.
+more…
+
+### 5. [These are my early 2026 favorites for EDC iPhone tech accessories](https://9to5mac.com/2026/02/08/these-are-my-early-2026-favorites-for-edc-iphone-tech-accessories/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Lately, I’ve been leaning more and more into a sling-based EDC. As a techy husband and father of two, I constantly find myself needing more space than my pockets can hold, but not always wanting to bring an entire backpack. A cross-body sling (or fanny pack, as it was once called) has become the perfect middle ground. It forces you to be intentional about what you carry, while still giving you more flexibility than a standard pocket setup.
+
+### 6. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+It's time to return the beloved glowing Apple logo to the back of the next-generation MacBook Pro.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 7. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s next iPhone launch is expected to be one of its cheapest. With the new iPhone 17e, a follow up to last years first generation iPhone 16e – the company will add three important upgrades to the device, though one thing won’t be changing: the price.
 more…
 
-### 4. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
+### 8. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 New MacBook Pro models with the M5 Pro and M5 Max chips could arrive as soon as Monday, March 2, according to Bloomberg's Mark Gurman.
 
@@ -59,7 +84,7 @@ In today's "Power On" newsletter, Gurman said that the release of new ‌MacBook
 
 Mac Studio models "shouldn't arrive too long after the spring Mac refresh," according to Gurman.
 
-### 5. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
+### 9. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's Mac desktop lineup should get M5 variants and the Studio Display may finally get its long-awaited upgrade just after M5 Pro and Max MacBook Pros arrive. Here's what to expect, and when.
 
@@ -67,14 +92,14 @@ Apple's Mac desktop lineup should get M5 variants and the Studio Display may fin
 Mac Studio and Studio Display could be updated soon
 Apple Silicon has been on a fairly predictable near-annual update cycle, which means the Mac lineup gets updated at a similar cadence. While some chips are short-cycled, others take just a bit longer, which seems to be the case for the Mac Studio in 2026.
 
-### 6. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
+### 10. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is set to release the first beta version of iOS 26.4 later this month, providing the first real-world look at the Apple Intelligence features promised at WWDC 2024, Bloomberg's Mark Gurman claims.
 
 
 Gurman revealed the timing in his "Power On" newsletter. Barring further delays, the first beta version of iOS 26.4 is apparently set to release to developers during the week of February 23. The update will "include some components" of the long-anticipated improvements to Siri.
 
-### 7. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
+### 11. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The often-rumored budget MacBook is still expected to arrive at some point in the first half of 2026, as Apple prepares to compete directly with Chromebooks.
 
@@ -82,32 +107,32 @@ The often-rumored budget MacBook is still expected to arrive at some point in th
 The MacBook should be cheaper than the MacBook Air at launch
 Rumors have repeatedly insisted that Apple will bring out a MacBook with an iPhone chip running the show instead of an M-series chip. As more forecasts come in, it seems the rumor mill is more insistent than ever that it will launch this year.
 
-### 8. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
+### 12. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to launch new iPad and iPad Air models in the near future, Bloomberg's Mark Gurman reports.
 
 
 Writing in today's "Power On" newsletter, Gurman explained that updated iPads are "coming soon," including a new entry-level ‌iPad‌ and a new ‌iPad Air‌. Both devices are not expected to feature design changes or major enhancements, instead focusing on new chips. The 12th-generation ‌iPad‌ is set to feature the A18 chip, while the eighth-generation ‌iPad Air‌ will apparently feature the M4 chip.
 
-### 9. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
+### 13. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26.4 is set to be one of the most important updates ever for the iPhone, offering a suite of new Apple Intelligence and Siri features. A new report from Bloomberg today reveals Apple’s timeline for launching iOS 26.4.
 more…
 
-### 10. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
+### 14. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 There’s been loads of speculation as to when the next generation MacBook Pros with high-end Apple Silicon would launch. Many thought January, then January came and went. All we knew is that they’d launch alongside macOS 26.3 – which should go out to the public in the coming days.
 However, that only means that the MacBook Pros have to launch sometime before macOS 26.4 launches to the public. Despite the imminent launch of macOS 26.3, the MacBook Pro launch isn’t quite as imminent, per Bloomberg’s Mark Gurman.
 more…
 
-### 11. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
+### 15. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's iPhone 17e is set to launch "imminently" with at least four new features, according to Bloomberg's Mark Gurman.
 
 
 In the latest edition of his "Power On" newsletter, Gurman said that the new lost-cost ‌iPhone‌ will feature the A19 chip first introduced with the iPhone 17 last year. The device will also address one of the most glaring omissions from the current generation and add MagSafe connectivity. The device is also apparently set to feature Apple's latest cellular modem, the C1X chip, as well as its N1 chip for Bluetooth, Wi-Fi, and Thread connectivity.
 
-### 12. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
+### 16. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Jeffrey Epstein's Apple Watch gift, an actor followed his stolen iPhone to China, and two iPhone thefts in one day in Texas, all in this week's Apple Crime Blotter
 
@@ -117,7 +142,7 @@ The latest in an occasional AppleInsider feature, looking at the world of Apple-
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 13. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
+### 17. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple TV has picked up three more Directors' Guild awards, this time in the comedy and documentary categories, as well as outstanding advertising.
 
@@ -126,7 +151,7 @@ Seth Rogen in 'The Studio' - Image Credit: Apple TV
 Apple now has a strong track record in nominations for television series at the Directors' Guild Awards — "Ted Lasso" has had seven — but few wins. Notably, "Lessons in Chemistry" won in the drama series category in 2024, and Apple has had a children's award plus advertising ones.
 Now for the 78th Annual Directors' Guild Award, Apple has doubled its number of wins.
 
-### 14. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
+### 18. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -135,7 +160,7 @@ TL;DR: 1min.AI bundles the best AI models and tools into one platform—and li
 Using AI in 2026 usually means juggling tabs, tools, and subscriptions—one for writing, another for images, another for video, and somehow a separate one for PDFs. 1min.AI takes a much simpler approach: put everything in one place and let you get to work.
 The Advanced Business Plan gives you access to a wide range of top AI models, including GPT-4o, Claude 3, Gemini Pro, Llama, Mistral, and more.
 
-### 15. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
+### 19. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -144,26 +169,26 @@ TL;DR: Sony’s flagship noise-canceling headphones deliver elite sound, cryst
 When it comes to audio, not all headphones are created equal—and trusting your music to just any pair is a gamble. The Sony WH-1000XM6 is what happens when sound is taken seriously. These headphones were co-created with world-class mastering engineers, and it shows the second you press play.
 The sound is rich, balanced, and detailed, with bass that hits without drowning everything else out.
 
-### 16. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
+### 20. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 In many of its most recent hardware launches, including iPad Pro and iPhone 17 Pro, Apple has prioritized one thing heavily: thermals. With how powerful Apple Silicon can be, having sufficient passive cooling is important on fanless devices.
 There’s one key product line that’s so far missed out on this treatment: the MacBook Air.
 more…
 
-### 17. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
+### 21. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While iPhone Fold is certainly the more interesting iPhone launching this fall, the iPhone 18 Pro will always be important for one reason: cameras. iPhone Fold won’t be able to pack a flagship camera experience, so if that’s something you’re after, you’ll have to settle for the “boring” iPhone 18 Pro. 
 Despite looking similar on the outside though, there’ll be a number of interesting camera upgrades to look forward to.
 more…
 
-### 18. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
+### 22. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re looking to kick off the new year with a new MacBook, now’s a fantastic time to buy. In recent years, Macs have become more and more affordable – largely in part because of Apple’s transition to Apple Silicon. These MacBooks are also more capable than ever.
 Apple’s latest macOS Tahoe update also dropped support for practically all Intel Macs (with some small exceptions). If you’d like to stay on the latest and greatest Apple software, nows a fitting time to upgrade.
 Keep up with all of the latest MacBook deals on 9to5Toys.
 more…
 
-### 19. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+### 23. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
 
@@ -171,20 +196,20 @@ The iPhone 18 Pro's camera system will be more flexible for photographers, with 
 iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
 The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
 
-### 20. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
+### 24. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an avid Apple Watch user, you might find yourself wanting more workout choices than what the Workout app can offer you. WatchFit bridges that gap, allowing you to build custom, structured workouts to your choosing.
 more…
 
-### 21. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
+### 25. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
 
 
 The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
 
-### 22. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
+### 26. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today shared an ad that shows how the upgraded Center Stage front camera on the latest iPhones improves the process of taking a group selfie.
 
@@ -192,7 +217,7 @@ Apple today shared an ad that shows how the upgraded Center Stage front camera o
 
 "Watch how the new front facing camera on iPhone 17 Pro takes group selfies that automatically expand and rotate as more people come into frame," says Apple. While the ad is focused on the iPhone 17 Pro and iPhone 17 Pro Max, the regular iPhone 17 and the iPhone Air have the same Center Stage front camera with this functionality.
 
-### 23. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
+### 27. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Safari now works a lot like other major browsers when it comes to displaying web content on an iPhone or Mac, after a year-long joint effort to make the online experience similar across the industry.
 
@@ -200,13 +225,13 @@ Safari now works a lot like other major browsers when it comes to displaying web
 Safari is Apple's web browser found in iOS, iPadOS, and macOS
 As people who grew up with Internet Explorer and Netscape can attest, there can be a lot of difference between what one browser displays and what another shows. Thanks to an effort between multiple browser makers, including Apple, the web navigation tools now work a lot more predictably.
 
-### 24. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
+### 28. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Last year, Apple confirmed that it’d be supporting end-to-end encryption with RCS in a future software update. At the time, iOS 18 was still the latest version of iOS – thus implying that the upgrade would come as part of the next round of software – iOS 26.
 So far, end-to-end encryption is yet to ship. That’s not the only thing though. The upgrade to end-to-end encryption would’ve also necessitated other major upgrades to the RCS protocol, and as of iOS 26.3 RC, it’s all still missing.
 more…
 
-### 25. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
+### 29. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amazon this weekend has all-time low prices on the Apple Watch Series 11, with $100 discounts across numerous models of the smartwatch. This time around, we're tracking these record low prices on nearly every aluminum model.
 
@@ -214,32 +239,10 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 $299.00, down from $399.00, and the 46mm GPS model for $329.00, down from $429.00.
 
-### 26. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
+### 30. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The Keychron K8 is a customizable, no-nonsense mechanical keyboard with hot-swappable switches, wireless flexibility and a premium build.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 27. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-On February 7, 1981, Apple co-founder Steve Wozniak was involved in a serious plane crash, resulting in his first lengthy leave of absence.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 28. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-A bunch of the Apple Music buttons on the playback screen aren’t labeled, and don’t have a very obvious meaning. Here’s a quick guide.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 29. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-The iOS 26.3 release looks to be right around the corner with a highly anticipated iOS 26.4 update following right behind, so Apple software rumors were big in the news this week.
-
-
-Hardware wasn't left out, however, as we're still awaiting a few early-year launches like the M5 Pro and M5 Max MacBook Pro, while we're also looking further down the road at major new products coming later in the year like the first foldable iPhone, so read on below for all the details on these stories and more!
-
-### 30. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional grade platform all the solutions necessary to seamlessly and automatically deploy, manage and protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
-For the last fifteen years, Mac admins have been chasing a ghost:
 
 <a id="iot"></a>
 
@@ -403,22 +406,22 @@ The post USB gadget mode in Raspberry Pi OS: SSH over USB appeared first on Rasp
 
 ## Artificial Intelligence
 
-### 1. [New York lawmakers propose a three-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
+### 1. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
+
+### 2. [New York lawmakers propose a three-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Although the bill’s prospects are uncertain, New York is at least the sixth state to consider pausing construction of new data centers.
 
-### 2. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
+### 3. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to work with AI, while strengthening your unique human skills that technology cannot replace
 The post What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026 appeared first on Towards Data Science.
 
-### 3. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
+### 4. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Benchmark Capital has been an investor in the Nvidia rival since 2016.
-
-### 4. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/06/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
 
 ### 5. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
@@ -544,144 +547,144 @@ The post AI Expo 2026 Day 1: Governance and data readiness enable the agentic en
 
 ## Cybersecurity
 
-### 1. [OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills](https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html)
+### 1. [New tool blocks imposter attacks disguised as safe commands](https://www.bleepingcomputer.com/news/security/new-tool-blocks-imposter-attacks-disguised-as-safe-commands/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new open-source and cross-platform tool called Tirith can detect homoglyph attacks over command-line environments by analyzing URLs in typed commands and stopping their execution.  [...]
+
+### 2. [OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills](https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 OpenClaw (formerly Moltbot and Clawdbot) has announced that it's partnering with Google-owned VirusTotal to scan skills that are being uploaded to ClawHub, its skill marketplace, as part of broader efforts to bolster the security of the agentic ecosystem.
 "All skills published to ClawHub are now scanned using VirusTotal's threat intelligence, including their new Code Insight capability,"
 
-### 2. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
+### 3. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new state-aligned cyberespionage threat group tracked as TGR-STA-1030/UNC6619, has conducted a global-scale operation dubbed the "Shadow Campaigns," where it targeted government infrastructure in 155 countries. [...]
 
-### 3. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
+### 4. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Edge devices that are no longer supported have been targeted in attacks by state-sponsored hackers, the US says.
 The post Organizations Urged to Replace Discontinued Edge Devices appeared first on SecurityWeek.
 
-### 4. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
+### 5. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Germany's Federal Office for the Protection of the Constitution (aka Bundesamt für Verfassungsschutz or BfV) and Federal Office for Information Security (BSI) have issued a joint advisory warning of a malicious cyber campaign undertaken by a likely state-sponsored threat actor that involves carrying out phishing attacks over the Signal messaging app.
 "The focus is on high-ranking targets in
 
-### 5. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
+### 6. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A major U.S. payment gateway and solutions provider says a ransomware attack has knocked key systems offline, triggering a widespread outage affecting multiple services. The incident began on Friday and quickly escalated into a nationwide disruption across BridgePay's platform. [...]
 
-### 6. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
+### 7. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Germany's domestic intelligence agency is warning of suspected state-sponsored threat actors targeting high-ranking individuals in phishing attacks via messaging apps like Signal. [...]
 
-### 7. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
+### 8. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly discovered toolkit called DKnife has been used since 2019 to hijack traffic at the edge-device level and deliver malware in espionage campaigns. [...]
 
-### 8. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
+### 9. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Cybersecurity &amp; Infrastructure Security Agency (CISA) in the U.S. has issued a warning about CVE-2026-24423, an unauthenticated remote code execution (RCE) flaw in SmarterMail that is used in ransomware attacks. [...]
 
-### 9. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
+### 10. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Many modern attacks happen entirely inside the browser, leaving little evidence for traditional security tools. Keep Aware shows why EDR, email, and SASE miss browser-only attacks and how visibility changes prevention. [...]
 
-### 10. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
+### 11. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.
 The framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to
 
-### 11. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
+### 12. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The European Commission said today that TikTok is facing a fine because its addictive features, including infinite scroll, autoplay, push notifications, and personalized recommendation systems, are breaching the EU's Digital Services Act (DSA). [...]
 
-### 12. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
+### 13. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has ordered Federal Civilian Executive Branch (FCEB) agencies to strengthen asset lifecycle management for edge network devices and remove those that no longer receive security updates from original equipment manufacturers (OEMs) over the next 12 to 18 months.
 The agency said the move is to drive down technical debt and minimize
 
-### 13. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
+### 14. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An Illinois man pleaded guilty to hacking nearly 600 women's Snapchat accounts to steal nude photos that he kept, sold, or traded online, including accounts he compromised at the request of a former university track coach who was later convicted of sextortion. [...]
 
-### 14. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
+### 15. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A previously undocumented cyber espionage group operating from Asia broke into the networks of at least 70 government and critical infrastructure organizations across 37 countries over the past year, according to new findings from Palo Alto Networks Unit 42.
 In addition, the hacking crew has been observed conducting active reconnaissance against government infrastructure associated with 155
 
-### 15. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
+### 16. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Potential breach at Flickr exposes usernames, email addresses, IP addresses, and activity data.
 The post Flickr Security Incident Tied to Third-Party Email System appeared first on SecurityWeek.
 
-### 16. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
+### 17. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Living off the AI isn’t a hypothetical but a natural continuation of the tradecraft we’ve all been defending against, now mapped onto assistants, agents, and MCP. 
 The post Living off the AI: The Next Evolution of Attacker Tradecraft appeared first on SecurityWeek.
 
-### 17. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
+### 18. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: AT&amp;T and Verizon response to Salt Typhoon, AI agents solve security challenges, man arrested in Poland for DDos Attacks.
 The post In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities appeared first on SecurityWeek.
 
-### 18. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
+### 19. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As you know, enterprise network security has undergone significant evolution over the past decade. Firewalls have become more intelligent, threat detection methods have advanced, and access controls are now more detailed. However (and it’s a big “however”), the increasing use of mobile devices in business operations necessitates network security measures that are specifically
 
-### 19. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
+### 20. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Photo-sharing platform Flickr is notifying users of a potential data breach after a vulnerability at a third-party email service provider exposed their real names, email addresses, IP addresses, and account activity. [...]
 
-### 20. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
+### 21. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup aims to unify SOC, GRC, IAM, vulnerability management, IT, and business operations through its Agentic OS platform.
 The post Airrived Emerges From Stealth With $6.1 Million in Funding appeared first on SecurityWeek.
 
-### 21. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
+### 22. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Used since at least 2019, DKnife has been targeting the desktop, mobile, and IoT devices of Chinese users.
 The post ‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks appeared first on SecurityWeek.
 
-### 22. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
+### 23. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has issued a new binding operational directive requiring federal agencies to identify and remove network edge devices that no longer receive security updates from manufacturers. [...]
 
-### 23. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
+### 24. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.
 The compromised versions of the two packages are listed below -
 
 @dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&amp;
 
-### 24. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
+### 25. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The news comes after the Department of Energy conducted its annual Liberty Eclipse cybersecurity exercise.
 The post 5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel appeared first on SecurityWeek.
 
-### 25. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
+### 26. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The security defect allows unauthenticated attackers to execute arbitrary code remotely via malicious HTTP requests.
 The post Critical SmarterMail Vulnerability Exploited in Ransomware Attacks appeared first on SecurityWeek.
 
-### 26. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
+### 27. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.
 Claude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with
 
-### 27. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
+### 28. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CISA updated 59 KEV entries in 2025 to specify that the vulnerabilities have been exploited in ransomware attacks.
 The post Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog appeared first on SecurityWeek.
 
-### 28. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
+### 29. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Zscaler says the acquisition will allow customers to embed lightweight extensions into any browser, providing increased security and eliminating the need for third-party browsers. 
 The post Zscaler Acquires Browser Security Firm SquareX  appeared first on SecurityWeek.
 
-### 29. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
+### 30. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Spain's Ministry of Science (Ministerio de Ciencia) announced a partial shutdown of its IT systems, affecting several citizen- and company-facing services. [...]
-
-### 30. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Ransomware operators are hosting and delivering malicious payloads at scale by abusing virtual machines (VMs) provisioned by ISPsystem, a legitimate virtual infrastructure management provider. [...]
 
 
 ---
