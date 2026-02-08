@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sun, 08 Feb 2026 06:41:32 GMT
+**Last Update:** Sun, 08 Feb 2026 08:24:29 GMT
 
 ---
 
@@ -29,26 +29,44 @@
 
 ## Mac & Apple
 
-### 1. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
+### 1. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+TL;DR: 1min.AI bundles the best AI models and tools into one platform—and lifetime access is just $99.99 (MSRP $540) through today only.
+Using AI in 2026 usually means juggling tabs, tools, and subscriptions—one for writing, another for images, another for video, and somehow a separate one for PDFs. 1min.AI takes a much simpler approach: put everything in one place and let you get to work.
+The Advanced Business Plan gives you access to a wide range of top AI models, including GPT-4o, Claude 3, Gemini Pro, Llama, Mistral, and more.
+
+### 2. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+TL;DR: Sony’s flagship noise-canceling headphones deliver elite sound, crystal-clear calls, and all-day comfort—now just $299.99 (MSRP $449.99).
+When it comes to audio, not all headphones are created equal—and trusting your music to just any pair is a gamble. The Sony WH-1000XM6 is what happens when sound is taken seriously. These headphones were co-created with world-class mastering engineers, and it shows the second you press play.
+The sound is rich, balanced, and detailed, with bass that hits without drowning everything else out.
+
+### 3. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 In many of its most recent hardware launches, including iPad Pro and iPhone 17 Pro, Apple has prioritized one thing heavily: thermals. With how powerful Apple Silicon can be, having sufficient passive cooling is important on fanless devices.
 There’s one key product line that’s so far missed out on this treatment: the MacBook Air.
 more…
 
-### 2. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
+### 4. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While iPhone Fold is certainly the more interesting iPhone launching this fall, the iPhone 18 Pro will always be important for one reason: cameras. iPhone Fold won’t be able to pack a flagship camera experience, so if that’s something you’re after, you’ll have to settle for the “boring” iPhone 18 Pro. 
 Despite looking similar on the outside though, there’ll be a number of interesting camera upgrades to look forward to.
 more…
 
-### 3. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
+### 5. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re looking to kick off the new year with a new MacBook, now’s a fantastic time to buy. In recent years, Macs have become more and more affordable – largely in part because of Apple’s transition to Apple Silicon. These MacBooks are also more capable than ever.
 Apple’s latest macOS Tahoe update also dropped support for practically all Intel Macs (with some small exceptions). If you’d like to stay on the latest and greatest Apple software, nows a fitting time to upgrade.
 Keep up with all of the latest MacBook deals on 9to5Toys.
 more…
 
-### 4. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+### 6. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
 
@@ -56,20 +74,20 @@ The iPhone 18 Pro's camera system will be more flexible for photographers, with 
 iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
 The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
 
-### 5. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
+### 7. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an avid Apple Watch user, you might find yourself wanting more workout choices than what the Workout app can offer you. WatchFit bridges that gap, allowing you to build custom, structured workouts to your choosing.
 more…
 
-### 6. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
+### 8. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
 
 
 The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
 
-### 7. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
+### 9. [Apple Shows Off a Key Reason to Upgrade to the iPhone 17](https://www.macrumors.com/2026/02/07/apple-shows-off-key-iphone-17-upgrade/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today shared an ad that shows how the upgraded Center Stage front camera on the latest iPhones improves the process of taking a group selfie.
 
@@ -77,7 +95,7 @@ Apple today shared an ad that shows how the upgraded Center Stage front camera o
 
 "Watch how the new front facing camera on iPhone 17 Pro takes group selfies that automatically expand and rotate as more people come into frame," says Apple. While the ad is focused on the iPhone 17 Pro and iPhone 17 Pro Max, the regular iPhone 17 and the iPhone Air have the same Center Stage front camera with this functionality.
 
-### 8. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
+### 10. [Browser interoperability drive made Safari work more like the others](https://appleinsider.com/articles/26/02/07/browser-interoperability-drive-made-safari-work-more-like-the-others?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Safari now works a lot like other major browsers when it comes to displaying web content on an iPhone or Mac, after a year-long joint effort to make the online experience similar across the industry.
 
@@ -85,13 +103,13 @@ Safari now works a lot like other major browsers when it comes to displaying web
 Safari is Apple's web browser found in iOS, iPadOS, and macOS
 As people who grew up with Internet Explorer and Netscape can attest, there can be a lot of difference between what one browser displays and what another shows. Thanks to an effort between multiple browser makers, including Apple, the web navigation tools now work a lot more predictably.
 
-### 9. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
+### 11. [Apple will introduce these key Messages app upgrades very soon, here’s what they are](https://9to5mac.com/2026/02/07/apple-messages-app-upgrades-coming-soon-ios-26-4-rcs-texting/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Last year, Apple confirmed that it’d be supporting end-to-end encryption with RCS in a future software update. At the time, iOS 18 was still the latest version of iOS – thus implying that the upgrade would come as part of the next round of software – iOS 26.
 So far, end-to-end encryption is yet to ship. That’s not the only thing though. The upgrade to end-to-end encryption would’ve also necessitated other major upgrades to the RCS protocol, and as of iOS 26.3 RC, it’s all still missing.
 more…
 
-### 10. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
+### 12. [Get $100 Off Apple Watch Series 11 on Amazon, Available From $299](https://www.macrumors.com/2026/02/07/apple-watch-series-11-100-off-2/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amazon this weekend has all-time low prices on the Apple Watch Series 11, with $100 discounts across numerous models of the smartwatch. This time around, we're tracking these record low prices on nearly every aluminum model.
 
@@ -99,43 +117,43 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 $299.00, down from $399.00, and the 46mm GPS model for $329.00, down from $429.00.
 
-### 11. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
+### 13. [Keychron K8 mechanical keyboard is hot-swappable, customizable and on sale for $80](https://www.cultofmac.com/deals/keychron-k8-keyboard)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The Keychron K8 is a customizable, no-nonsense mechanical keyboard with hot-swappable switches, wireless flexibility and a premium build.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 12. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
+### 14. [Today in Apple history: Steve Wozniak survives a plane crash](https://www.cultofmac.com/apple-history/steve-wozniak-plane-crash)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 7, 1981, Apple co-founder Steve Wozniak was involved in a serious plane crash, resulting in his first lengthy leave of absence.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 13. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
+### 15. [Every Apple Music icon explained: Your complete guide to mastering the app](https://www.cultofmac.com/how-to/apple-music-signs-symbols-icons)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 A bunch of the Apple Music buttons on the playback screen aren’t labeled, and don’t have a very obvious meaning. Here’s a quick guide.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 14. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
+### 16. [Top Stories: iOS 26.3 and 26.4 Features, Foldable iPhone Details, and More](https://www.macrumors.com/2026/02/07/top-stories-ios-26-3-26-4-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 The iOS 26.3 release looks to be right around the corner with a highly anticipated iOS 26.4 update following right behind, so Apple software rumors were big in the news this week.
 
 
 Hardware wasn't left out, however, as we're still awaiting a few early-year launches like the M5 Pro and M5 Max MacBook Pro, while we're also looking further down the road at major new products coming later in the year like the first foldable iPhone, so read on below for all the details on these stories and more!
 
-### 15. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
+### 17. [Apple @ Work: Platform SSO is the single most important technology Apple has introduced for the enterprise](https://9to5mac.com/2026/02/07/platform-sso-is-the-single-most-important-technology-apple-has-introduced-for-the-enterprise/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional grade platform all the solutions necessary to seamlessly and automatically deploy, manage and protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
 For the last fifteen years, Mac admins have been chasing a ghost:
 
-### 16. [Hands-on: This charger makes fast Qi2.2 25W wireless charging more affordable for your iPhone](https://9to5mac.com/2026/02/07/hands-on-this-charger-makes-fast-qi2-2-25w-wireless-charging-more-affordable-for-your-iphone/)
+### 18. [Hands-on: This charger makes fast Qi2.2 25W wireless charging more affordable for your iPhone](https://9to5mac.com/2026/02/07/hands-on-this-charger-makes-fast-qi2-2-25w-wireless-charging-more-affordable-for-your-iphone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 A few months back, I reviewed Kuxiu’s X40 Turbo. It was one of the first chargers to bring us the new Qi2.2 25W charging speeds. It came in an awesome cosmic orange color to match the new iPhone 17 Pro, was super compact, and also charged my Apple Watch and AirPods. That charger became a mainstay in my travel pack. But now Kuxiu has introduced its new X55 Turbo charger, a more budget-focused option that delivers nearly the same core experience at a more competitive price point.
 
-### 17. [This week’s top stories: iPhone Fold specs, MacBook Pro rumors, more](https://9to5mac.com/2026/02/07/this-weeks-top-stories-iphone-fold-specs-macbook-pro-rumors-more/)
+### 19. [This week’s top stories: iPhone Fold specs, MacBook Pro rumors, more](https://9to5mac.com/2026/02/07/this-weeks-top-stories-iphone-fold-specs-macbook-pro-rumors-more/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to 9to5Mac’s top stories of the week, where we recap the biggest news in the Apple world every Saturday. This week, we have new iPhone Fold rumors, CarPlay expectations, and an Apple all-hands meeting. Plus, our usual slate of new podcast episodes, opinion pieces, and much more. Read on for all of this week’s top stories.
 more…
 
-### 18. [The mini smartphone minimalists have been waiting for is $100](https://www.macworld.com/article/3051547/the-mini-smartphone-minimalists-have-been-waiting-for-is-100.html)
+### 20. [The mini smartphone minimalists have been waiting for is $100](https://www.macworld.com/article/3051547/the-mini-smartphone-minimalists-have-been-waiting-for-is-100.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -144,7 +162,7 @@ TL;DR: A tiny but powerful 4G Android smartphone that fits anywhere, works ev
 Smartphones keep getting bigger, heavier, and harder to ignore—until now. The NanoPhone Pro flips the script by packing full smartphone functionality into a device that’s about the size of a credit card. Yes, it’s real. And yes, it actually works (and it’s on sale).
 Despite its ultra-small footprint, NanoPhone Pro covers the essentials:
 
-### 19. [The 10TB lifetime cloud storage deal that pays for itself ends tomorrow](https://www.macworld.com/article/3051564/the-10tb-lifetime-cloud-storage-deal-that-pays-for-itself-ends-tomorrow.html)
+### 21. [The 10TB lifetime cloud storage deal that pays for itself ends tomorrow](https://www.macworld.com/article/3051564/the-10tb-lifetime-cloud-storage-deal-that-pays-for-itself-ends-tomorrow.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -153,13 +171,13 @@ TL;DR: Grab a 10TB lifetime cloud storage plan at $269.97 before the price go
 Most cloud storage plans quietly charge you over and over again for the same space. This one flips that model on its head, offering enough storage for years of photos, projects, and backups with a one-time commitment that’s only available for a little longer.
 The 10TB plan is perfect for most users who never want to run out of space, and it’s 90% off right now.
 
-### 20. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
+### 22. [9to5Mac Overtime 058: Give me your phone](https://9to5mac.com/2026/02/06/9to5mac-overtime-058-give-me-your-phone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple releases iOS 26.3 RC, Jeff plays with Moltbot on his Mac mini, Fernando gets his iPhone’s screen fixed, Jeff laments what it’s like to use Apple Pay at drive thrus, why Apple should add native screen sharing from the iPad back to the Mac, and Fernando gets a new MacBook Pro and considers switching to Final Cut Pro.
 9to5Mac Overtime is a weekly video-first podcast exploring fun and interesting observations in the Apple ecosystem, featuring 9to5Mac’s Fernando Silva &amp; Jeff Benjamin. Subscribe to Overtime via Apple Podcasts and our YouTube channel for more.
 more…
 
-### 21. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
+### 23. [9to5Mac Daily: February 6, 2026 – Tim Cook’s all-hands meeting, more](https://9to5mac.com/2026/02/06/daily-february-6-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
 Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
@@ -169,7 +187,7 @@ Sponsored by Stuff: Stuff helps you get everything out of your head and into a s
 
  more…
 
-### 22. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
+### 24. [Why Apple's iOS 26.4 Siri Upgrade Will Be Bigger Than Originally Promised](https://www.macrumors.com/2026/02/06/siri-ios-26-4-rumors/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 In the iOS 26.4 update that's coming this spring, Apple will introduce a new version of Siri that's going to overhaul how we interact with the personal assistant and what it's able to do.
 
@@ -180,27 +198,27 @@ Upgraded Architecture
 
 The next-generation version of ‌Siri‌ will use advanced large language models, similar to those used by ChatGPT, Claude, and Gemini.
 
-### 23. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
+### 25. [Apple dinged over low-quality, scammy-looking ads on Apple News](https://9to5mac.com/2026/02/06/apple-dinged-over-low-quality-scammy-looking-ads-on-apple-news/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s controversial partnership with Taboola to serve ads on Apple News seems to be going exactly as expected. Here’s why.
 more…
 
-### 24. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
+### 26. [Closeout deal: Get 4 AirTags for just $16 apiece](https://www.cultofmac.com/deals/airtag-deal)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 You can hoard Apple trackers for yourself or make the whole family a bit more organized for less money, thanks to this epic AirTag deal.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 25. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
+### 27. [Apple highlights cross-browser compatibility progress in 2025](https://9to5mac.com/2026/02/06/apple-highlights-cross-browser-compatibility-progress-in-2025/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s WebKit blog published a post today highlighting the results of Interop 2025, an industry-wide effort to improve cross-browser interoperability. Here are the details.
 more…
 
-### 26. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
+### 28. [iOS 26’s new Phone app has a feature I don’t ever want to go without](https://9to5mac.com/2026/02/06/ios-26s-new-phone-app-has-a-feature-i-dont-ever-want-to-go-without/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple overhauled the Phone app in iOS 26 with a new design and added several powerful features, including a new call screening option that I don’t ever want to go without.
 more…
 
-### 27. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
+### 29. [iPhone to boldly go where no smartphone has gone before](https://www.macworld.com/article/3055292/iphone-nasa-space-travel-moon.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -208,27 +226,13 @@ Macworld
 On March 6, NASA is scheduled to launch the Artemis II mission to the moon. And for the first time, it is allowing its crew members to take its smartphones with them, according to a recent announcement by NASA Administrator Jared Isaacman.
 While the iPhone wasn’t specifically addressed, Apple clarified to MacRumors that “this will mark the first time the iPhone has been fully qualified for extended use in orbit and beyond,” suggesting that at least one astronaut will be carrying an iPhone.
 
-### 28. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
+### 30. [iPhone Air Review: Four Months Later, is Apple's Thinnest iPhone Worth $999?](https://www.macrumors.com/2026/02/06/iphone-air-four-month-review/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 It's been four months since the iPhone Air came out, and it hasn't exactly been a resounding success. Sales are reportedly so low that Apple is delaying the next-generation model. MacRumors videographer Dan Barbera shares what it's been like using Apple's thinnest and lightest iPhone on a daily basis over the last few months.
 
 Subscribe to the MacRumors YouTube channel for more videos.
 
 With its super thin design, the ‌iPhone Air‌ still impresses even months later. It's much lighter than the other ‌iPhone‌ models, and a pleasure to use because of it.
-
-### 29. [Apple says ‘random or anonymous chat’ apps no longer welcome on the App Store](https://9to5mac.com/2026/02/06/apple-says-random-or-anonymous-chat-apps-no-longer-welcome-on-the-app-store/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple has updated its App Review Guidelines to expand the list of user-generated content experiences that can be removed from the App Store without notice. Here are the details.
-more…
-
-### 30. [CarPlay could soon support third-party AI voice assistants like ChatGPT](https://appleinsider.com/articles/26/02/06/carplay-could-soon-support-third-party-ai-voice-assistants-like-chatgpt?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-CarPlay could soon support more than just Siri, as Apple explores wider access for third-party voice tools.
-
-
-Apple may open CarPlay to third-party AI assistants
-It looks as though Apple is gearing up to allow third-party chatbots on CarPlay. This would allow users to query voice-enabled chatbots directly through the CarPlay interface.
-Until now, Apple has kept voice assistants off CarPlay, save for its first-party assistant, Siri. However, with the slow rollout of the new, more personal Siri, Apple may feel the pressure to give its users options.
 
 <a id="iot"></a>
 
@@ -533,143 +537,144 @@ The post AI Expo 2026 Day 1: Governance and data readiness enable the agentic en
 
 ## Cybersecurity
 
-### 1. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
+### 1. [OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills](https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+OpenClaw (formerly Moltbot and Clawdbot) has announced that it's partnering with Google-owned VirusTotal to scan skills that are being uploaded to ClawHub, its skill marketplace, as part of broader efforts to bolster the security of the agentic ecosystem.
+"All skills published to ClawHub are now scanned using VirusTotal's threat intelligence, including their new Code Insight capability,"
+
+### 2. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new state-aligned cyberespionage threat group tracked as TGR-STA-1030/UNC6619, has conducted a global-scale operation dubbed the "Shadow Campaigns," where it targeted government infrastructure in 155 countries. [...]
 
-### 2. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
+### 3. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Edge devices that are no longer supported have been targeted in attacks by state-sponsored hackers, the US says.
 The post Organizations Urged to Replace Discontinued Edge Devices appeared first on SecurityWeek.
 
-### 3. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
+### 4. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Germany's Federal Office for the Protection of the Constitution (aka Bundesamt für Verfassungsschutz or BfV) and Federal Office for Information Security (BSI) have issued a joint advisory warning of a malicious cyber campaign undertaken by a likely state-sponsored threat actor that involves carrying out phishing attacks over the Signal messaging app.
 "The focus is on high-ranking targets in
 
-### 4. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
+### 5. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A major U.S. payment gateway and solutions provider says a ransomware attack has knocked key systems offline, triggering a widespread outage affecting multiple services. The incident began on Friday and quickly escalated into a nationwide disruption across BridgePay's platform. [...]
 
-### 5. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
+### 6. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Germany's domestic intelligence agency is warning of suspected state-sponsored threat actors targeting high-ranking individuals in phishing attacks via messaging apps like Signal. [...]
 
-### 6. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
+### 7. [DKnife Linux toolkit hijacks router traffic to spy, deliver malware](https://www.bleepingcomputer.com/news/security/dknife-linux-toolkit-hijacks-router-traffic-to-spy-deliver-malware/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly discovered toolkit called DKnife has been used since 2019 to hijack traffic at the edge-device level and deliver malware in espionage campaigns. [...]
 
-### 7. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
+### 8. [CISA warns of SmarterMail RCE flaw used in ransomware attacks](https://www.bleepingcomputer.com/news/security/cisa-warns-of-smartermail-rce-flaw-used-in-ransomware-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Cybersecurity &amp; Infrastructure Security Agency (CISA) in the U.S. has issued a warning about CVE-2026-24423, an unauthenticated remote code execution (RCE) flaw in SmarterMail that is used in ransomware attacks. [...]
 
-### 8. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
+### 9. [EDR, Email, and SASE Miss This Entire Class of Browser Attacks](https://www.bleepingcomputer.com/news/security/edr-email-and-sase-miss-this-entire-class-of-browser-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Many modern attacks happen entirely inside the browser, leaving little evidence for traditional security tools. Keep Aware shows why EDR, email, and SASE miss browser-only attacks and how visibility changes prevention. [...]
 
-### 9. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
+### 10. [China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery](https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.
 The framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to
 
-### 10. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
+### 11. [EU says TikTok faces large fine over "addictive design"](https://www.bleepingcomputer.com/news/security/european-commission-says-tiktok-facing-fine-over-addictive-design/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The European Commission said today that TikTok is facing a fine because its addictive features, including infinite scroll, autoplay, push notifications, and personalized recommendation systems, are breaching the EU's Digital Services Act (DSA). [...]
 
-### 11. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
+### 12. [CISA Orders Removal of Unsupported Edge Devices to Reduce Federal Network Risk](https://thehackernews.com/2026/02/cisa-orders-removal-of-unsupported-edge.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has ordered Federal Civilian Executive Branch (FCEB) agencies to strengthen asset lifecycle management for edge network devices and remove those that no longer receive security updates from original equipment manufacturers (OEMs) over the next 12 to 18 months.
 The agency said the move is to drive down technical debt and minimize
 
-### 12. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
+### 13. [Man pleads guilty to hacking nearly 600 women’s Snapchat accounts](https://www.bleepingcomputer.com/news/security/man-pleads-guilty-to-hacking-nearly-600-womens-snapchat-accounts/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 An Illinois man pleaded guilty to hacking nearly 600 women's Snapchat accounts to steal nude photos that he kept, sold, or traded online, including accounts he compromised at the request of a former university track coach who was later convicted of sextortion. [...]
 
-### 13. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
+### 14. [Asian State-Backed Group TGR-STA-1030 Breaches 70 Government, Infrastructure Entities](https://thehackernews.com/2026/02/asian-state-backed-group-tgr-sta-1030.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A previously undocumented cyber espionage group operating from Asia broke into the networks of at least 70 government and critical infrastructure organizations across 37 countries over the past year, according to new findings from Palo Alto Networks Unit 42.
 In addition, the hacking crew has been observed conducting active reconnaissance against government infrastructure associated with 155
 
-### 14. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
+### 15. [Flickr Security Incident Tied to Third-Party Email System](https://www.securityweek.com/flickr-security-incident-tied-to-third-party-email-system/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Potential breach at Flickr exposes usernames, email addresses, IP addresses, and activity data.
 The post Flickr Security Incident Tied to Third-Party Email System appeared first on SecurityWeek.
 
-### 15. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
+### 16. [Living off the AI: The Next Evolution of Attacker Tradecraft](https://www.securityweek.com/living-off-the-ai-the-next-evolution-of-attacker-tradecraft/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Living off the AI isn’t a hypothetical but a natural continuation of the tradecraft we’ve all been defending against, now mapped onto assistants, agents, and MCP. 
 The post Living off the AI: The Next Evolution of Attacker Tradecraft appeared first on SecurityWeek.
 
-### 16. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
+### 17. [In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities](https://www.securityweek.com/in-other-news-record-ddos-epsteins-hacker-eset-product-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Other noteworthy stories that might have slipped under the radar: AT&amp;T and Verizon response to Salt Typhoon, AI agents solve security challenges, man arrested in Poland for DDos Attacks.
 The post In Other News: Record DDoS, Epstein’s Hacker, ESET Product Vulnerabilities appeared first on SecurityWeek.
 
-### 17. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
+### 18. [How Samsung Knox Helps Stop Your Network Security Breach](https://thehackernews.com/2026/02/how-samsung-knox-helps-stop-your-network-security-breach.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 As you know, enterprise network security has undergone significant evolution over the past decade. Firewalls have become more intelligent, threat detection methods have advanced, and access controls are now more detailed. However (and it’s a big “however”), the increasing use of mobile devices in business operations necessitates network security measures that are specifically
 
-### 18. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
+### 19. [Flickr discloses potential data breach exposing users' names, emails](https://www.bleepingcomputer.com/news/security/flickr-discloses-potential-data-breach-exposing-users-names-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Photo-sharing platform Flickr is notifying users of a potential data breach after a vulnerability at a third-party email service provider exposed their real names, email addresses, IP addresses, and account activity. [...]
 
-### 19. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
+### 20. [Airrived Emerges From Stealth With $6.1 Million in Funding](https://www.securityweek.com/airrived-emerges-from-stealth-with-6-1-million-in-funding/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup aims to unify SOC, GRC, IAM, vulnerability management, IT, and business operations through its Agentic OS platform.
 The post Airrived Emerges From Stealth With $6.1 Million in Funding appeared first on SecurityWeek.
 
-### 20. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
+### 21. [‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks](https://www.securityweek.com/dknife-implant-used-by-chinese-threat-actor-for-adversary-in-the-middle-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Used since at least 2019, DKnife has been targeting the desktop, mobile, and IoT devices of Chinese users.
 The post ‘DKnife’ Implant Used by Chinese Threat Actor for Adversary-in-the-Middle Attacks appeared first on SecurityWeek.
 
-### 21. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
+### 22. [CISA orders federal agencies to replace end-of-life edge devices](https://www.bleepingcomputer.com/news/security/cisa-orders-federal-agencies-to-replace-end-of-life-edge-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The U.S. Cybersecurity and Infrastructure Security Agency (CISA) has issued a new binding operational directive requiring federal agencies to identify and remove network edge devices that no longer receive security updates from manufacturers. [...]
 
-### 22. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
+### 23. [Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware](https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.
 The compromised versions of the two packages are listed below -
 
 @dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&amp;
 
-### 23. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
+### 24. [5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel](https://www.securityweek.com/5-bills-to-boost-energy-sector-cyber-defenses-clear-house-panel/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The news comes after the Department of Energy conducted its annual Liberty Eclipse cybersecurity exercise.
 The post 5 Bills to Boost Energy Sector Cyber Defenses Clear House Panel appeared first on SecurityWeek.
 
-### 24. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
+### 25. [Critical SmarterMail Vulnerability Exploited in Ransomware Attacks](https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The security defect allows unauthenticated attackers to execute arbitrary code remotely via malicious HTTP requests.
 The post Critical SmarterMail Vulnerability Exploited in Ransomware Attacks appeared first on SecurityWeek.
 
-### 25. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
+### 26. [Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries](https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Artificial intelligence (AI) company Anthropic revealed that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including Ghostscript, OpenSC, and CGIF.
 Claude Opus 4.6, which was launched Thursday, comes with improved coding skills, including code review and debugging capabilities, along with
 
-### 26. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
+### 27. [Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog](https://www.securityweek.com/questions-raised-over-cisas-silent-ransomware-updates-in-kev-catalog/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CISA updated 59 KEV entries in 2025 to specify that the vulnerabilities have been exploited in ransomware attacks.
 The post Concerns Raised Over CISA’s Silent Ransomware Updates in KEV Catalog appeared first on SecurityWeek.
 
-### 27. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
+### 28. [Zscaler Acquires Browser Security Firm SquareX ](https://www.securityweek.com/zscaler-acquires-browser-security-firm-squarex/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Zscaler says the acquisition will allow customers to embed lightweight extensions into any browser, providing increased security and eliminating the need for third-party browsers. 
 The post Zscaler Acquires Browser Security Firm SquareX  appeared first on SecurityWeek.
 
-### 28. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
+### 29. [Spain's Ministry of Science shuts down systems after breach claims](https://www.bleepingcomputer.com/news/security/spains-ministry-of-science-shuts-down-systems-after-breach-claims/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Spain's Ministry of Science (Ministerio de Ciencia) announced a partial shutdown of its IT systems, affecting several citizen- and company-facing services. [...]
 
-### 29. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
+### 30. [Ransomware gang uses ISPsystem VMs for stealthy payload delivery](https://www.bleepingcomputer.com/news/security/ransomware-gang-uses-ispsystem-vms-for-stealthy-payload-delivery/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Ransomware operators are hosting and delivering malicious payloads at scale by abusing virtual machines (VMs) provisioned by ISPsystem, a legitimate virtual infrastructure management provider. [...]
-
-### 30. [Microsoft to shut down Exchange Online EWS in April 2027](https://www.bleepingcomputer.com/news/microsoft/microsoft-to-shut-down-exchange-web-services-in-cloud-in-2027/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft announced today that the Exchange Web Services (EWS) API for Exchange Online will be shut down in April 2027, after nearly 20 years. [...]
 
 
 ---
