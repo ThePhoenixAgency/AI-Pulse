@@ -232,7 +232,7 @@
             <p class="tagline">AI & Cybersecurity Specialist | Full Stack Developer | Open Source</p>
 
             <div class="social-links">
-                <a href="https://github.com/ThePhoenixAgency" target="_blank" class="social-link">
+                <a href="viewer.html?url=https://github.com/ThePhoenixAgency" class="social-link">
                     <span>GitHub</span>
                 </a>
                 <a href="https://ThePhoenixAgency.github.io" target="_blank" class="social-link">
@@ -309,7 +309,7 @@
             <span>•</span>
             <a href="stats.html">Statistics</a>
             <span>•</span>
-            <a href="about.html">ThePhoenixAgency</a>
+            <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>
             <span>•</span>
             <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
         </div>
@@ -396,9 +396,7 @@
 
             const link = document.createElement('a');
             link.className = 'project-link';
-            link.href = repo.html_url || '#';
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
+            link.href = 'viewer.html?url=' + encodeURIComponent(repo.html_url || '');
             link.textContent = 'View Project →';
 
             card.appendChild(header);
@@ -415,35 +413,38 @@
             const loading = document.getElementById('loadingProjects');
 
             try {
-                // Fetch org stats
-                const orgResponse = await fetch(`https://api.github.com/orgs/${PORTFOLIO_CONFIG.githubOrg}`);
-                if (orgResponse.ok) {
-                    const orgData = await orgResponse.json();
-                    const reposEl = document.getElementById('totalRepos');
-                    const followersEl = document.getElementById('totalFollowers');
-                    const followingEl = document.getElementById('totalFollowing');
-
-                    if (reposEl) reposEl.textContent = String(orgData.public_repos || 0);
-                    if (followersEl) followersEl.textContent = String(orgData.followers || 0);
-                    if (followingEl) followingEl.textContent = String(orgData.following || 0);
-                }
-
-                // Fetch repos
+                // Fetch repos first (single API call for all data)
                 const reposResponse = await fetch(`https://api.github.com/orgs/${PORTFOLIO_CONFIG.githubOrg}/repos?per_page=100`);
                 if (!reposResponse.ok) throw new Error('Failed to fetch repos');
 
                 let repos = await reposResponse.json();
                 if (!Array.isArray(repos)) throw new Error('Invalid response');
 
-                // Calculate total stars
+                // Filter: hide forks FIRST before counting
+                if (PORTFOLIO_CONFIG.hideForks) {
+                    repos = repos.filter(r => !r.fork);
+                }
+
+                // Now count repos (only non-forks)
+                const reposEl = document.getElementById('totalRepos');
+                if (reposEl) reposEl.textContent = String(repos.length);
+
+                // Calculate total stars (only from non-fork repos)
                 const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
                 const starsEl = document.getElementById('totalStars');
                 if (starsEl) starsEl.textContent = String(totalStars);
 
-                // Filter: hide forks
-                if (PORTFOLIO_CONFIG.hideForks) {
-                    repos = repos.filter(r => !r.fork);
-                }
+                // Fetch org stats for followers/following only
+                fetch(`https://api.github.com/orgs/${PORTFOLIO_CONFIG.githubOrg}`)
+                    .then(r => r.ok ? r.json() : null)
+                    .then(orgData => {
+                        if (orgData) {
+                            const followersEl = document.getElementById('totalFollowers');
+                            const followingEl = document.getElementById('totalFollowing');
+                            if (followersEl) followersEl.textContent = String(orgData.followers || 0);
+                            if (followingEl) followingEl.textContent = String(orgData.following || 0);
+                        }
+                    });
 
                 // Filter: exclude specific projects
                 repos = repos.filter(r => !PORTFOLIO_CONFIG.excludeProjects.includes(r.name));
