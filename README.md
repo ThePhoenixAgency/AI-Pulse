@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Mon, 09 Feb 2026 01:27:53 GMT
+**Last Update:** Mon, 09 Feb 2026 04:21:19 GMT
 
 ---
 
@@ -29,7 +29,11 @@
 
 ## Mac & Apple
 
-### 1. [How to Watch Super Bowl For Free Today: iPhone, iPad, and Apple TV](https://www.macrumors.com/2026/02/08/2026-super-bowl-watch-free-iphone-apple-tv/)
+### 1. [iOS 27 to Focus on Bug Fixes, Performance, and Design Tweaks](https://www.macrumors.com/2026/02/08/ios-27-to-focus-on-bug-fixes-and-tweaks/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple's new software updates to be previewed at 2026's Worldwide Developers Conference (WWDC) could be relatively modest, Bloomberg's Mark Gurman claims.
+
+### 2. [How to Watch Super Bowl For Free Today: iPhone, iPad, and Apple TV](https://www.macrumors.com/2026/02/08/2026-super-bowl-watch-free-iphone-apple-tv/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Super Bowl LX is today, and there is a way for U.S. viewers to watch for free. Our instructions below are focused on the iPhone, iPad, Mac, and Apple TV, but this method will of course work across a variety of devices.
 
@@ -38,7 +42,7 @@ Super Bowl LX is today, and there is a way for U.S. viewers to watch for free. O
 
 The big game is airing on NBC and streaming on Peacock Premium today.
 
-### 2. [The Future of Apple Fitness+ Remains 'Under Review'](https://www.macrumors.com/2026/02/08/apple-fitness-remains-under-review/)
+### 3. [The Future of Apple Fitness+ Remains 'Under Review'](https://www.macrumors.com/2026/02/08/apple-fitness-remains-under-review/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 The future of Apple Fitness+ remains "under review," according to the latest word from Bloomberg's Mark Gurman. However, he did not share any specific details.
 
@@ -47,7 +51,7 @@ The future of Apple Fitness+ remains "under review," according to the latest wor
 
 scaled back plans for a separate Apple Health+ subscription service, which would have provided AI-powered health recommendations. However, he said some of the features that would have been part of Apple Health+ will be repurposed and rolled out individually.
 
-### 3. [Here Are Tim Cook's Full Remarks About Apple's 50th Anniversary Plans](https://www.macrumors.com/2026/02/08/tim-cook-full-remarks-on-apple-turning-50/)
+### 4. [Here Are Tim Cook's Full Remarks About Apple's 50th Anniversary Plans](https://www.macrumors.com/2026/02/08/tim-cook-full-remarks-on-apple-turning-50/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 In a recent all-hands meeting, Apple CEO Tim Cook told employees to "stay tuned" about the company's plans for its upcoming 50th anniversary. Apple was founded on April 1, 1976, so the company will turn 50 in a few more months.
 
@@ -55,7 +59,7 @@ In a recent all-hands meeting, Apple CEO Tim Cook told employees to "stay tuned"
 Following a snippet last week, Bloomberg's Mark Gurman has since shared Cook's full remarks:
 I've been unusually reflective lately about Apple because we have been working on what do we do to mark this moment — 50 years. It's an extraordinary accomplishment. We've been going back through old archives, old photographs.
 
-### 4. [Amazon Discounts Anker's Newest Prime Chargers](https://www.macrumors.com/2026/02/08/amazon-ankers-prime-chargers/)
+### 5. [Amazon Discounts Anker's Newest Prime Chargers](https://www.macrumors.com/2026/02/08/amazon-ankers-prime-chargers/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Earlier this week, Anker debuted its new Prime 3-in-1 Wireless Charging Station with a launch discount on Amazon. If ordered this week, you can clip the on-page coupon on Amazon to get the accessory for $119.99, down from $149.99.
 
@@ -63,12 +67,12 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 The Prime 3-in-1 Wireless Charging Station features Qi2.2 support, which lets a compatible MagSafe ‌iPhone‌ charge at up to 25W.
 
-### 5. [Today in Apple history: Steve Jobs flips out over iPad tweet](https://www.cultofmac.com/apple-history/steve-jobs-ipad-tweet)
+### 6. [Today in Apple history: Steve Jobs flips out over iPad tweet](https://www.cultofmac.com/apple-history/steve-jobs-ipad-tweet)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 8, 2010, a tweet sent from a prerelease iPad by Wall Street Journal editor Alan Murray reportedly sent Steve Jobs into a rage.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 6. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
+### 7. [iPhone 17e is coming soon with A19 and a $599 price tag](https://appleinsider.com/articles/26/02/08/iphone-17e-is-coming-soon-with-a19-and-a-599-price-tag?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 17e will be hitting store shelves soon, with the update to the iPhone 16e packing the same A19 chip as the iPhone 17.
 
@@ -79,12 +83,12 @@ According to Bloomberg's "Power On: newsletter on Sunday, Mark Gurman writes tha
 
  Rumor Score:
 
-### 7. [Apple TV users get $2/month Peacock, including Super Bowl and Olympics](https://9to5mac.com/2026/02/08/apple-tv-users-get-2-month-peacock-including-super-bowl-and-olympics/)
+### 8. [Apple TV users get $2/month Peacock, including Super Bowl and Olympics](https://9to5mac.com/2026/02/08/apple-tv-users-get-2-month-peacock-including-super-bowl-and-olympics/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Peacock is home to two of the biggest TV events of the year: the Super Bowl and the Olympics. And if you’re an Apple TV subscriber, you can add on Peacock for only $2/month. Here are the details.
 more…
 
-### 8. [March 2 release event may be for M5 MacBook Pro refresh](https://appleinsider.com/articles/26/02/08/march-2-release-event-may-be-for-m5-macbook-pro-refresh?utm_source=rss)
+### 9. [March 2 release event may be for M5 MacBook Pro refresh](https://appleinsider.com/articles/26/02/08/march-2-release-event-may-be-for-m5-macbook-pro-refresh?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple is rumored to be launching a product the week of March 2, with the most likely candidate being MacBook Pro models equipped with M5 Pro and M5 Max chips.
 
@@ -95,26 +99,26 @@ Writing in Sunday's "Power On" newsletter for Bloomberg, Mark Gurman writes that
 
  Rumor Score:
 
-### 9. [New iPad and iPad Air models should be launching soon, but don’t get too excited](https://9to5mac.com/2026/02/08/apple-ipad-and-ipad-air-refresh-coming-soon-new-chips/)
+### 10. [New iPad and iPad Air models should be launching soon, but don’t get too excited](https://9to5mac.com/2026/02/08/apple-ipad-and-ipad-air-refresh-coming-soon-new-chips/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has two new iPad models slated for early in the year: a new base iPad with A18 chip, and a new iPad Air with an M4 chip. While Apple product launches can often sound exciting, there might not be too much more to the story for these iPad models.
 more…
 
-### 10. [These are my early 2026 favorites for EDC iPhone tech accessories](https://9to5mac.com/2026/02/08/these-are-my-early-2026-favorites-for-edc-iphone-tech-accessories/)
+### 11. [These are my early 2026 favorites for EDC iPhone tech accessories](https://9to5mac.com/2026/02/08/these-are-my-early-2026-favorites-for-edc-iphone-tech-accessories/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Lately, I’ve been leaning more and more into a sling-based EDC. As a techy husband and father of two, I constantly find myself needing more space than my pockets can hold, but not always wanting to bring an entire backpack. A cross-body sling (or fanny pack, as it was once called) has become the perfect middle ground. It forces you to be intentional about what you carry, while still giving you more flexibility than a standard pocket setup.
 
-### 11. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
+### 12. [Bring back the glow: MacBooks lost their soul when the Apple logo went dark](https://www.cultofmac.com/news/bring-back-the-glow-macbooks-lost-their-soul-when-the-apple-logo-went-dark)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 It's time to return the beloved glowing Apple logo to the back of the next-generation MacBook Pro.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 12. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
+### 13. [iPhone 17e ‘due imminently’ with three key upgrades, no price change: report](https://9to5mac.com/2026/02/08/iphone-17e-due-imminently-with-three-key-upgrades-no-price-change-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s next iPhone launch is expected to be one of its cheapest. With the new iPhone 17e, a follow up to last years first generation iPhone 16e – the company will add three important upgrades to the device, though one thing won’t be changing: the price.
 more…
 
-### 13. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
+### 14. [New MacBook Pros Could Now Arrive in March](https://www.macrumors.com/2026/02/08/new-macbook-pros-could-now-arrive-in-march/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 New MacBook Pro models with the M5 Pro and M5 Max chips could arrive as soon as Monday, March 2, according to Bloomberg's Mark Gurman.
 
@@ -123,7 +127,7 @@ In today's "Power On" newsletter, Gurman said that the release of new ‌MacBook
 
 Mac Studio models "shouldn't arrive too long after the spring Mac refresh," according to Gurman.
 
-### 14. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
+### 15. [M5 Max Mac Studio &amp; New Studio Display could finally arrive in the spring](https://appleinsider.com/articles/26/02/08/m5-max-mac-studio-new-studio-display-could-finally-arrive-in-the-spring?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's Mac desktop lineup should get M5 variants and the Studio Display may finally get its long-awaited upgrade just after M5 Pro and Max MacBook Pros arrive. Here's what to expect, and when.
 
@@ -131,14 +135,14 @@ Apple's Mac desktop lineup should get M5 variants and the Studio Display may fin
 Mac Studio and Studio Display could be updated soon
 Apple Silicon has been on a fairly predictable near-annual update cycle, which means the Mac lineup gets updated at a similar cadence. While some chips are short-cycled, others take just a bit longer, which seems to be the case for the Mac Studio in 2026.
 
-### 15. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
+### 16. [Report Reveals iOS 26.4 Beta Release Date](https://www.macrumors.com/2026/02/08/ios-26-4-beta-release-date-revealed/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is set to release the first beta version of iOS 26.4 later this month, providing the first real-world look at the Apple Intelligence features promised at WWDC 2024, Bloomberg's Mark Gurman claims.
 
 
 Gurman revealed the timing in his "Power On" newsletter. Barring further delays, the first beta version of iOS 26.4 is apparently set to release to developers during the week of February 23. The update will "include some components" of the long-anticipated improvements to Siri.
 
-### 16. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
+### 17. [Cheaper MacBook with iPhone chip still expected in early 2026](https://appleinsider.com/articles/26/02/08/cheaper-macbook-with-iphone-chip-still-expected-in-early-2026?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The often-rumored budget MacBook is still expected to arrive at some point in the first half of 2026, as Apple prepares to compete directly with Chromebooks.
 
@@ -146,32 +150,32 @@ The often-rumored budget MacBook is still expected to arrive at some point in th
 The MacBook should be cheaper than the MacBook Air at launch
 Rumors have repeatedly insisted that Apple will bring out a MacBook with an iPhone chip running the show instead of an M-series chip. As more forecasts come in, it seems the rumor mill is more insistent than ever that it will launch this year.
 
-### 17. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
+### 18. [iPad 12 and iPad Air 8 Reportedly Coming Soon](https://www.macrumors.com/2026/02/08/ipad-12-and-ipad-air-8-reportedly-coming-soon/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to launch new iPad and iPad Air models in the near future, Bloomberg's Mark Gurman reports.
 
 
 Writing in today's "Power On" newsletter, Gurman explained that updated iPads are "coming soon," including a new entry-level ‌iPad‌ and a new ‌iPad Air‌. Both devices are not expected to feature design changes or major enhancements, instead focusing on new chips. The 12th-generation ‌iPad‌ is set to feature the A18 chip, while the eighth-generation ‌iPad Air‌ will apparently feature the M4 chip.
 
-### 18. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
+### 19. [iOS 26.4: Here’s when Apple will release the first beta](https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26.4 is set to be one of the most important updates ever for the iPhone, offering a suite of new Apple Intelligence and Siri features. A new report from Bloomberg today reveals Apple’s timeline for launching iOS 26.4.
 more…
 
-### 19. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
+### 20. [Report: M5 Pro and M5 Max MacBook Pro could launch ‘as early as’ March 2nd](https://9to5mac.com/2026/02/08/apple-m5-pro-m5-max-macbook-pro-new-launch-date/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 There’s been loads of speculation as to when the next generation MacBook Pros with high-end Apple Silicon would launch. Many thought January, then January came and went. All we knew is that they’d launch alongside macOS 26.3 – which should go out to the public in the coming days.
 However, that only means that the MacBook Pros have to launch sometime before macOS 26.4 launches to the public. Despite the imminent launch of macOS 26.3, the MacBook Pro launch isn’t quite as imminent, per Bloomberg’s Mark Gurman.
 more…
 
-### 20. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
+### 21. [Gurman: iPhone 17e Launch 'Imminent' With Four New Features](https://www.macrumors.com/2026/02/08/iphone-17e-launch-imminent-with-four-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's iPhone 17e is set to launch "imminently" with at least four new features, according to Bloomberg's Mark Gurman.
 
 
 In the latest edition of his "Power On" newsletter, Gurman said that the new lost-cost ‌iPhone‌ will feature the A19 chip first introduced with the iPhone 17 last year. The device will also address one of the most glaring omissions from the current generation and add MagSafe connectivity. The device is also apparently set to feature Apple's latest cellular modem, the C1X chip, as well as its N1 chip for Bluetooth, Wi-Fi, and Thread connectivity.
 
-### 21. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
+### 22. [Crime blotter: Teens arrested for stealing from Cambridge Apple Store](https://appleinsider.com/articles/26/02/08/crime-blotter-teens-arrested-for-stealing-from-cambridge-apple-store?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Jeffrey Epstein's Apple Watch gift, an actor followed his stolen iPhone to China, and two iPhone thefts in one day in Texas, all in this week's Apple Crime Blotter
 
@@ -181,7 +185,7 @@ The latest in an occasional AppleInsider feature, looking at the world of Apple-
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 22. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
+### 23. ['The Studio' and 'Mr. Scorsese' honored at Directors' Guild Awards](https://appleinsider.com/articles/26/02/08/the-studio-and-mr-scorsese-honored-at-directors-guild-awards?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple TV has picked up three more Directors' Guild awards, this time in the comedy and documentary categories, as well as outstanding advertising.
 
@@ -190,7 +194,7 @@ Seth Rogen in 'The Studio' - Image Credit: Apple TV
 Apple now has a strong track record in nominations for television series at the Directors' Guild Awards — "Ted Lasso" has had seven — but few wins. Notably, "Lessons in Chemistry" won in the drama series category in 2024, and Apple has had a children's award plus advertising ones.
 Now for the 78th Annual Directors' Guild Award, Apple has doubled its number of wins.
 
-### 23. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
+### 24. [This multi-model AI platform is yours forever with one $100 payment](https://www.macworld.com/article/3052631/this-multi-model-ai-platform-is-yours-forever-with-one-100-payment.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -199,7 +203,7 @@ TL;DR: 1min.AI bundles the best AI models and tools into one platform—and li
 Using AI in 2026 usually means juggling tabs, tools, and subscriptions—one for writing, another for images, another for video, and somehow a separate one for PDFs. 1min.AI takes a much simpler approach: put everything in one place and let you get to work.
 The Advanced Business Plan gives you access to a wide range of top AI models, including GPT-4o, Claude 3, Gemini Pro, Llama, Mistral, and more.
 
-### 24. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
+### 25. [High-res audio done the Sony way—and 33% off](https://www.macworld.com/article/3052636/high-res-audio-done-the-sony-way-and-33-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -208,26 +212,26 @@ TL;DR: Sony’s flagship noise-canceling headphones deliver elite sound, cryst
 When it comes to audio, not all headphones are created equal—and trusting your music to just any pair is a gamble. The Sony WH-1000XM6 is what happens when sound is taken seriously. These headphones were co-created with world-class mastering engineers, and it shows the second you press play.
 The sound is rich, balanced, and detailed, with bass that hits without drowning everything else out.
 
-### 25. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
+### 26. [M5 MacBook Air will just be a spec bump, but there’s one upgrade I really want to see](https://9to5mac.com/2026/02/07/m5-macbook-air-one-feature-request-better-thermals/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 In many of its most recent hardware launches, including iPad Pro and iPhone 17 Pro, Apple has prioritized one thing heavily: thermals. With how powerful Apple Silicon can be, having sufficient passive cooling is important on fanless devices.
 There’s one key product line that’s so far missed out on this treatment: the MacBook Air.
 more…
 
-### 26. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
+### 27. [iPhone 18 Pro: These rumored camera upgrades could launch later this year](https://9to5mac.com/2026/02/07/iphone-18-pro-rumored-camera-upgrades/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While iPhone Fold is certainly the more interesting iPhone launching this fall, the iPhone 18 Pro will always be important for one reason: cameras. iPhone Fold won’t be able to pack a flagship camera experience, so if that’s something you’re after, you’ll have to settle for the “boring” iPhone 18 Pro. 
 Despite looking similar on the outside though, there’ll be a number of interesting camera upgrades to look forward to.
 more…
 
-### 27. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
+### 28. [These are the best new MacBook Air and MacBook Pro deals in February](https://9to5mac.com/2026/02/07/best-apple-macbook-deals-right-now-february-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re looking to kick off the new year with a new MacBook, now’s a fantastic time to buy. In recent years, Macs have become more and more affordable – largely in part because of Apple’s transition to Apple Silicon. These MacBooks are also more capable than ever.
 Apple’s latest macOS Tahoe update also dropped support for practically all Intel Macs (with some small exceptions). If you’d like to stay on the latest and greatest Apple software, nows a fitting time to upgrade.
 Keep up with all of the latest MacBook deals on 9to5Toys.
 more…
 
-### 28. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
+### 29. [Variable aperture camera will give iPhone 18 Pro users more photo options](https://appleinsider.com/articles/26/02/07/variable-aperture-camera-will-give-iphone-18-pro-users-more-photo-options?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The iPhone 18 Pro's camera system will be more flexible for photographers, with claims of a variable aperture main camera and a larger-aperture telephoto camera undergoing testing and expected to arrive later in 2026.
 
@@ -235,18 +239,11 @@ The iPhone 18 Pro's camera system will be more flexible for photographers, with 
 iPhone 17 Pro has a new wider camera plateau, which could feasibly contain a variable aperture mechanism.
 The camera is one of the key marketable elements of the iPhone, and the rumor mill frequently tries to guess about the next changes to arrive. If current rumors are to be believed, that should include variable apertures.
 
-### 29. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
+### 30. [Indie App Spotlight: ‘WatchFit’ lets you make custom workouts for your Apple Watch](https://9to5mac.com/2026/02/07/indie-app-spotlight-watchfit-lets-you-make-custom-workouts-for-your-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an avid Apple Watch user, you might find yourself wanting more workout choices than what the Workout app can offer you. WatchFit bridges that gap, allowing you to build custom, structured workouts to your choosing.
 more…
-
-### 30. [Apple Testing Two Major iPhone 18 Pro Camera Upgrades](https://www.macrumors.com/2026/02/07/two-major-iphone-18-pro-camera-upgrades/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple is actively testing two major rear camera improvements for the iPhone, according to a reputable leaker.
-
-
-The Weibo user known as "Digital Chat Station" claims that Apple is testing a new main camera for the ‌iPhone‌ with a variable aperture. A variable aperture allows the camera to adjust the amount of light that reaches the sensor. This means that in dark environments, the aperture can be opened to receive more light, while in light environments, it can be closed to prevent over-exposure.
 
 <a id="iot"></a>
 
