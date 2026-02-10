@@ -2,7 +2,7 @@
 
 <img src="assets/banner.png" alt="AI-PULSE Banner" width="100%">
 
-> Curated content from the best sources - Auto-updated every 3 hours
+> Curated content from the best sources
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
@@ -471,7 +471,7 @@ The critical vulnerability has been codenamed DockerDash by cybersecurity compan
 
 ---
 
-<sub>*Powered by AI-Pulse | 100% Free & Open Source | Built with love by ThePhoenixAgency*</sub>
+<sub>*Powered by AI-Pulse | Built with love by ThePhoenixAgency*</sub>
 
 </div>
 
