@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 10 Feb 2026 17:08:22 GMT
+**Last Update:** Tue, 10 Feb 2026 18:57:36 GMT
 
 ---
 
@@ -29,7 +29,65 @@
 
 ## Mac & Apple
 
-### 1. [London's Apple Regent Street to reopen on Valentine's Day](https://appleinsider.com/articles/26/02/10/londons-apple-regent-street-to-reopen-on-valentines-day?utm_source=rss)
+### 1. [iPhone 18 Pro pricing rumors offer surprisingly good news](https://9to5mac.com/2026/02/10/iphone-18-pro-pricing-rumors-offer-surprisingly-good-news/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+We’re still over half a year away from the iPhone 18 line being unveiled, but the latest analyst expectations for pricing are surprisingly good news.
+more…
+
+### 2. [Under-screen Touch ID may not just be for iPhone](https://appleinsider.com/articles/26/02/10/under-screen-touch-id-may-not-just-be-for-iphone?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Instead of a Home or a side-button, Apple is researching how best to implement under-screen fingerprint sensors, not just for mobile devices like iPhone Fold and iPad, but potentially also the Mac.
+
+
+Under-display Touch ID could come to future iPhones — or Macs.
+The expected iPhone Fold has been said to be too thin for Face ID, so it must use Touch ID. Despite some claims of it getting Touch ID sensor under the screen, most reports predict it will be part of the side button, as was introduced with the iPad Air 4 back in 2020.
+
+### 3. [This super-light Logitech mouse is just $50 today](https://www.macworld.com/article/3057674/this-super-light-logitech-mouse-is-just-50-today.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Listen, we appreciate all Apple gear, but the Magic Mouse? Eh. Let’s just say it’s our favorite Apple product. So, if you’re looking for a good alternative, this Logitech G309 Lightspeed wireless gaming mouse is a fantastic option, especially since it’s only $50, a massive 44 percent discount off its $90 MSRP.
+This mouse was built with precision in mind, featuring a 25K HERO sensor that will track movement closely whether you’re browsing or gaming.
+
+### 4. [Flash deal: Save $300 on Apple's 15-inch MacBook Air with 32GB RAM, 1TB SSD](https://appleinsider.com/articles/26/02/10/flash-deal-save-300-on-apples-15-inch-macbook-air-with-32gb-ram-1tb-ssd?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+B&amp;H's Mega Deal Zone event is going on now, with a standout $300 discount on Apple's current 15-inch MacBook Air with 32GB of RAM and 1TB of storage.
+
+
+Save $300 on Apple's M4 MacBook Air with 32GB RAM, 1TB SSD - Image credit: Apple
+The flash Deal Zone at B&amp;H offers savings on monitors, external storage, and Apple products — with a standout deal being this $300 discount on a loaded M4 15-inch MacBook Air in Sky Blue.
+Save $300 on 15" MacBook Air 32GB, 1TB
+
+ Continue Reading on AppleInsider | Discuss on our Forums
+
+### 5. [Apple smart home users might need to upgrade their iPhone app today](https://www.macworld.com/article/3057640/new-apple-home-app.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Attention, Apple Home users: Today (February 10, 2026) is the last day that Apple will support its original HomeKit architecture. Starting on Wednesday, Apple will be rolling out a new version of Home for your smart home devices.
+According to Apple, “Any device connected to an updated home that doesn’t use iOS 16.2, iPadOS 16.2, macOS 13.1, tvOS 16.2, or watchOS 9.2 or later will lose access to the updated home until you update the device.
+
+### 6. [Nomad debuts Stellar Orange ChargeKey with iPhone-inspired color matching](https://9to5mac.com/2026/02/10/nomad-debuts-stellar-orange-chargekey-with-iphone-inspired-color-matching/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Nomad is updating one of my favorite and most clutch tech accessories they make. They are expanding their ChargeKey lineup with a new Stellar Orange color to perfectly match the Cosmic Orange iPhone 17 Pro and Pro Max. ChargeKey has been one of Nomad’s longest-running products and is still one of the simplest solutions for carrying a reliable cable on your keychain that can do it all, from ultra-high speed charging to professional-level data transfer speeds. Here is what you should know.
+more…
+
+### 7. [2026 iPad Air: Everything you need to know](https://www.macworld.com/article/3055278/2026-ipad-air-design-display-specs-release-price.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Apple’s iPad Air was updated in March 2025, but other than a new M3 chip, not much changed about it. A year later, Apple is expected to update its mid-range tablet again with a performance-focused refresh rather than a redesign. Here’s everything you need to know about the new iPad Air for 2026.
+2026 iPad Air: At a glance
+What’s New: M4 chip, N1 wireless chip, possible price increase
+What’s staying the same: Design, display, cameras, RAM
+
+
+2026 iPad Air performance and specs: Will the 2026 iPad Air be faster?
+
+### 8. [London's Apple Regent Street to reopen on Valentine's Day](https://appleinsider.com/articles/26/02/10/londons-apple-regent-street-to-reopen-on-valentines-day?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple has announced that its central London store refurbishment will be completed and Apple Regent Street is to reopen on Valentine's Day.
 
@@ -38,28 +96,36 @@ Apple Regent Street | Image Credit: Apple
 In early January 2025, Apple announced that its Regent Street site was to be closed for unspecified refurbishment. It was part of Apple's plans to remodel or open around 50 stores worldwide by 2027.
 Apple did say that the closure, which began at 6:00 PM GMT on January 11,  was temporary.
 
-### 2. [Deals: iPhone 16 up to $420 off orig. price, 32GB M4 MacBook Air $300 off, M4 Pro $400 off, chargers, more](https://9to5mac.com/2026/02/10/deals-iphone-16-m4-macbook-air-m4-pro-chargers/)
+### 9. [Deals: iPhone 16 up to $420 off orig. price, 32GB M4 MacBook Air $300 off, M4 Pro $400 off, chargers, more](https://9to5mac.com/2026/02/10/deals-iphone-16-m4-macbook-air-m4-pro-chargers/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Today’s 9to5Toys Lunch Break deals are starting with some serious price drops on iPhone 16 and 16 Pro models – these Amazon offers are drastically undercutting the Apple refurb units that recently appeared with iPhone 16 models at up to $420 off and 16 Pro at $630 off the original prices. We also have a particularly notable offer on 32GB M4 MacBook Air models at up to $300 off and M4 Pro MacBook Pro configs at $400 off.
 
-### 3. [The best RPG on Apple Arcade gets a sequel](https://www.cultofmac.com/news/the-best-rpg-on-apple-arcade-gets-a-sequel)
+### 10. [The best RPG on Apple Arcade gets a sequel](https://www.cultofmac.com/news/the-best-rpg-on-apple-arcade-gets-a-sequel)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 "Oceanhorn 3: Legend of the Shadow Sea" invites players into a beautiful open-world RPG full of action. Plus more new Apple Arcade games.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 4. [iPhone 18 Pro and iPhone 18 Pro Max Prices: Here's What Rumors Say](https://www.macrumors.com/2026/02/10/iphone-18-pro-pricing-estimate/)
+### 11. [How to stop an AirTag tracking you: Find &amp; disable unknown AirTags](https://www.macworld.com/article/345863/how-to-find-block-disable-airtag-moving-with-you.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+You may have heard reports of people using AirTags to track others, but what if it’s you who is being tracked? What if you are the one who sees the warning that an AirTag has been detected near you, and what should you do if that’s the case?
+The first thing is not to panic. It probably isn’t anything malicious. You might have found something someone had lost, or a pet with an AirTag in its collar might have taken a shine to you.
+
+### 12. [iPhone 18 Pro and iPhone 18 Pro Max Prices: Here's What Rumors Say](https://www.macrumors.com/2026/02/10/iphone-18-pro-pricing-estimate/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is aiming for the upcoming iPhone 18 Pro and iPhone 18 Pro Max to have the same starting prices as the iPhone 17 Pro and iPhone 17 Pro Max, according to Jeff Pu, an equity analyst with investment firm GF Securities.
 
 
 In a research note today, obtained by MacRumors, Pu said his firm's recent "supply chain research" indicates that Apple is focused on "cost management," in an attempt to keep the starting prices of the iPhone 18 Pro models either "unchanged" or at a "similar level" compared to the iPhone 17 Pro models.
 
-### 5. [Google Photos brings ‘Create with AI’ templates to iPhone](https://9to5google.com/2026/02/10/google-photos-brings-create-with-ai-templates-to-iphone/)
+### 13. [Google Photos brings ‘Create with AI’ templates to iPhone](https://9to5google.com/2026/02/10/google-photos-brings-create-with-ai-templates-to-iphone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Google Photos is bringing its new “Create with AI” templates over to iPhone and iPad, a few months after they arrived on Android.
 more…
 
-### 6. ['Oceanhorn 3' leads March updates coming to Apple Arcade](https://appleinsider.com/articles/26/02/10/oceanhorn-3-leads-march-updates-coming-to-apple-arcade?utm_source=rss)
+### 14. ['Oceanhorn 3' leads March updates coming to Apple Arcade](https://appleinsider.com/articles/26/02/10/oceanhorn-3-leads-march-updates-coming-to-apple-arcade?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple Arcade is adding a major new original in March, alongside several family-friendly releases and themed updates to existing games. Here's what's coming.
 
@@ -68,24 +134,24 @@ Oceanhorn 3: Legend of the Shadow Sea
 Apple confirmed that Oceanhorn 3: Legend of the Shadow Sea will debut on Apple Arcade on March 5, headlining a month that also includes new App Store greats and crossover updates. The additions continue Apple Arcade's push to pad out its catalog with platform-agnostic games that avoid ads and in-app purchases.
 Oceanhorn 3: Legend of the Shadow Sea launches exclusively on Apple Arcade on March 5.
 
-### 7. [Make HomePod Alert You to Smoke Alarms](https://www.macrumors.com/how-to/make-homepod-alert-you-to-smoke-alarms/)
+### 15. [Make HomePod Alert You to Smoke Alarms](https://www.macrumors.com/how-to/make-homepod-alert-you-to-smoke-alarms/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Thanks to Apple's Sound Recognition feature, the HomePod mini and second-generation HomePod can send you notifications when they recognize smoke or carbon monoxide alarm sounds. Keep reading to learn how it works.
 
 
 With Sound Recognition, HomePod can detect the sound of a smoke or carbon monoxide alarm in your home, and alert you by sending a notification to your iPhone, iPad or Apple Watch.
 
-### 8. [Today in Apple history: Mac Color Classic ditches monochrome](https://www.cultofmac.com/apple-history/macintosh-color-classic-launch)
+### 16. [Today in Apple history: Mac Color Classic ditches monochrome](https://www.cultofmac.com/apple-history/macintosh-color-classic-launch)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On February 10, 1993, Apple launched the Macintosh Color Classic, its first color compact Mac. It was the computer the world was waiting for.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 9. [Apple TV Remote comes to the Mac with this new, free app](https://9to5mac.com/2026/02/10/apple-tv-remote-comes-to-the-mac-with-this-new-free-app/)
+### 17. [Apple TV Remote comes to the Mac with this new, free app](https://9to5mac.com/2026/02/10/apple-tv-remote-comes-to-the-mac-with-this-new-free-app/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple offers an Apple TV Remote app on iPhone, iPad, and even Apple Watch—but not the Mac. So one developer created his own solution: Itsytv, a new macOS app for controlling your Apple TV.
 more…
 
-### 10. [Apple Arcade Adding These Four Games in March](https://www.macrumors.com/2026/02/10/apple-arcade-adding-four-games-in-march/)
+### 18. [Apple Arcade Adding These Four Games in March](https://www.macrumors.com/2026/02/10/apple-arcade-adding-four-games-in-march/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today announced four new games coming to Apple Arcade in March, along with three major updates to existing titles on the service. 
 
@@ -100,22 +166,22 @@ Oceanhorn 3: Legend of the Shadow Sea: A new 3D action-adventure RPG set nearly 
 	
 Pocket Love!+: A wholesome life simulator where players decorate a home and build a cozy life with their partner and pet.
 
-### 11. [JumpCloud launches venture arm to fund the next generation of IT and security startups](https://9to5mac.com/2026/02/10/jumpcloud-launches-venture-arm-to-fund-the-next-generation-of-it-and-security-startups/)
+### 19. [JumpCloud launches venture arm to fund the next generation of IT and security startups](https://9to5mac.com/2026/02/10/jumpcloud-launches-venture-arm-to-fund-the-next-generation-of-it-and-security-startups/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 JumpCloud is expanding its footprint in the enterprise security landscape, but this time, it’s not with a new software feature. The company today announced the launch of JumpCloud Ventures, a new investment arm designed to support early-stage companies building solutions in identity, security, AI, and IT productivity. Along with the launch of the fund, JumpCloud has announced its first strategic investment in Tofu, a startup focused on combating identity fraud during the hiring process.
 more…
 
-### 12. [Apple Arcade is adding Oceanhorn 3 and three more new games](https://9to5mac.com/2026/02/10/apple-arcade-is-adding-oceanhorn-3-and-three-more-new-games/)
+### 20. [Apple Arcade is adding Oceanhorn 3 and three more new games](https://9to5mac.com/2026/02/10/apple-arcade-is-adding-oceanhorn-3-and-three-more-new-games/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple Arcade just announced its new titles coming in March, headlined by the latest title in a popular and long-running franchise: Oceanhorn 3.
 more…
 
-### 13. [Here are four Apple Music features I’ve been loving lately](https://9to5mac.com/2026/02/10/here-are-four-apple-music-features-ive-been-loving-lately/)
+### 21. [Here are four Apple Music features I’ve been loving lately](https://9to5mac.com/2026/02/10/here-are-four-apple-music-features-ive-been-loving-lately/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 I’m a firm believer that Apple Music is the best music streaming service out there. Here are four features in Apple Music I’ve been loving lately that you should check out.
 more…
 
-### 14. [9to5Mac Daily: February 10, 2026 – App Store changes, MacBook rumors](https://9to5mac.com/2026/02/10/daily-february-10-2026/)
+### 22. [9to5Mac Daily: February 10, 2026 – App Store changes, MacBook rumors](https://9to5mac.com/2026/02/10/daily-february-10-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
 Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
@@ -125,19 +191,19 @@ Sponsored by Stuff: Stuff helps you get everything out of your head and into a s
 
  more…
 
-### 15. [Charge AirPods to 100% every time with this hidden setting](https://www.cultofmac.com/how-to/charge-airpods-to-100-percent)
+### 23. [Charge AirPods to 100% every time with this hidden setting](https://www.cultofmac.com/how-to/charge-airpods-to-100-percent)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Squeeze more battery life out of your AirPods by charging them to 100% rather than using the default setting, which limits the charge to 80%.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 16. [Rivian Planning to Launch Apple Watch App](https://www.macrumors.com/2026/02/10/rivian-planning-to-launch-apple-watch-app/)
+### 24. [Rivian Planning to Launch Apple Watch App](https://www.macrumors.com/2026/02/10/rivian-planning-to-launch-apple-watch-app/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Electric automaker Rivian is preparing to launch a dedicated Apple Watch app that will allow owners to access and control their vehicles directly from their wrist.
 
 
 Rivian is planning to release a companion Apple Watch app as part of its upcoming 2026.03 software update, according to release notes posted by RivianTrackr. The update is tied to version 3.9 of the Rivian mobile app, which has not yet been released on the App Store.
 
-### 17. [Get an Apple Watch SE 3 for Just $219 on Amazon](https://www.macrumors.com/2026/02/10/apple-watch-se-3-for-219/)
+### 25. [Get an Apple Watch SE 3 for Just $219 on Amazon](https://www.macrumors.com/2026/02/10/apple-watch-se-3-for-219/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amazon this week is taking $30 off the Apple Watch SE 3, starting at $219.00 for the 40mm GPS model. These are second-best prices on the SE 3, but it's been over a month since we last tracked record low prices, so this is a good opportunity for anyone who's been waiting for a deal.
 
@@ -145,12 +211,12 @@ Note: MacRumors is an affiliate partner with Amazon. When you click a link and m
 
 $249.00, down from $279.00. Both the 40mm and 44mm GPS models are available in Midnight and Starlight Aluminum at these prices.
 
-### 18. [MrBeast just bought a popular banking app](https://9to5mac.com/2026/02/10/mrbeast-just-bought-a-popular-banking-app/)
+### 26. [MrBeast just bought a popular banking app](https://9to5mac.com/2026/02/10/mrbeast-just-bought-a-popular-banking-app/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 MrBeast, the king of YouTube, is now the new owner of a banking app called Step. It’s a big move meant to kickstart the popular creator’s new ‘MrBeast Financial’ business arm.
 more…
 
-### 19. [Apple Expected to Launch These 10+ Products Over the Coming Months](https://www.macrumors.com/2026/02/10/new-apple-products-in-coming-months/)
+### 27. [Apple Expected to Launch These 10+ Products Over the Coming Months](https://www.macrumors.com/2026/02/10/new-apple-products-in-coming-months/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 It has been a slow start to 2026 for Apple product launches, with only a new AirTag and a special Apple Watch band released so far. We are still waiting for MacBook Pro models with M5 Pro and M5 Max chips, the iPhone 17e, a lower-cost MacBook with an iPhone chip, long-rumored updates to the Apple TV and HomePod mini, and much more.
 
@@ -158,78 +224,22 @@ It has been a slow start to 2026 for Apple product launches, with only a new Air
 Apple is expected to release/update the following products in the first half of 2026:
 iPhone 17e: A spec-bumped successor to the iPhone 16e, with rumored upgrades including an A19 chip, MagSafe, and Apple's C1X and N1 wireless chips.
 
-### 20. [Jony Ives’ AI hardware is delayed to 2027 and won’t be called io](https://9to5mac.com/2026/02/10/jony-ives-ai-hardware-is-delayed-to-2027-and-wont-be-called-io/)
+### 28. [Jony Ives’ AI hardware is delayed to 2027 and won’t be called io](https://9to5mac.com/2026/02/10/jony-ives-ai-hardware-is-delayed-to-2027-and-wont-be-called-io/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The mysterious AI hardware device designed by Jony Ive for OpenAI has been delayed, according to a new court filing. It had originally been scheduled to launch later this year but now won’t ship any earlier than February 2027.
 The same court paperwork also reveals that the company is no longer planning to use the name io for the upcoming device …
 more…
 
-### 21. [Bought a guitar, learned 3 chords, then stopped? Try this.](https://www.cultofmac.com/deals/fret-zealot-guitar-lessons)
+### 29. [Bought a guitar, learned 3 chords, then stopped? Try this.](https://www.cultofmac.com/deals/fret-zealot-guitar-lessons)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Learn the modern way with structured guitar lessons, visual guidance and hundreds of songs with a one-year Fret Zealot All Access Pass.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 22. [iPhone battery life test shows just how much power 5G drains compared to WiFi](https://9to5mac.com/2026/02/10/iphone-battery-life-wifi-5g-compared/)
+### 30. [iPhone battery life test shows just how much power 5G drains compared to WiFi](https://9to5mac.com/2026/02/10/iphone-battery-life-wifi-5g-compared/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 It is common knowledge that communicating over WiFi is more efficient than using the 5G cellular network, but by how much exactly? That’s exactly what PhoneBuff set out to measure in its latest battery life benchmark test. 
 Using an iPhone 17 Pro Max, the test simulated general phone usage including texting, web browsing, streaming video, Instagram and FaceTime. Once on 5G, once on WiFi. The final timings are perhaps closer than you’d think.
 more…
-
-### 23. [The iPhone is a hit in China, and all it took was a new color](https://www.macworld.com/article/3057262/the-iphone-is-a-hit-in-china-and-all-it-took-was-a-new-color.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-Apple’s been making an awful lot of money lately, and it’s no secret that the iPhone 17 Pro was a key part of that success. (The less said about the iPhone Air, the better.) But only now are we starting to understand why that handset sold so well, at least in one crucial market.
-According to the Financial Times, Apple’s record-breaking recent sales in China are in large part due to what might seem like a small and cosmetic change. It’s all to do with the Cosmic Orange finish.
-
-### 24. [Why your Apple smart home might quit February 10 — and how to stop it [Updated]](https://www.cultofmac.com/news/apple-warns-users-to-update-home-app)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-In a recent email, Apple warns users to update Home app to avoid hassles as support for the older version expires.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 25. [How OpenClaw turns your Mac into an action-based AI agent](https://www.cultofmac.com/how-to/set-up-and-run-openclaw-on-mac)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-OpenClaw lets you run an action-based AI agent directly on your Mac. We walk through installation, setup, and practical ways to use it.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 26. [AirPods cameras could mean support for Vision Pro-style hand gestures](https://9to5mac.com/2026/02/10/airpods-cameras-could-mean-support-for-vision-pro-style-hand-gestures/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-One of the more persistent and long-standing Apple rumors has been the launch of new AirPods models with built-in cameras. Another leaker added their support for this idea just yesterday.
-Exactly what role these cameras would perform has been the subject of much speculation, with some suggesting they will be used to support Apple Intelligence visual features. While that is certainly possible, I can’t help wondering whether the reports point to support for hand gestures similar to those used with Vision Pro … 
-more…
-
-### 27. [Reminder: Update Your Apple Home App Immediately to Avoid Issues](https://www.macrumors.com/2026/02/10/update-apple-home-app-by-tomorrow/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-In 2022, Apple introduced a new Apple Home architecture that is "more reliable and efficient," and the deadline to upgrade and avoid issues is today.
-
-
-In an email last week, Apple gave customers a final reminder to upgrade their Home app by February 10, 2026. Apple says users who do not upgrade may experience issues with accessories and automations, or lose access to their smart home in the app entirely. In addition, users who do not upgrade will miss out on newer features like robot vacuum cleaner support, and they will not receive important security fixes and performance improvements.
-
-### 28. [Cosmic Orange iPhone 17 Pro really helped China sales](https://appleinsider.com/articles/26/02/10/cosmic-orange-iphone-17-pro-really-helped-china-sales?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Apple's resurgence in China after a three-year slump was supposedly helped by a color, with the iPhone 17 Pro's bright orange option compared to the hue of luxury brand Hermes.
-
-
-Cosmic Orange iPhone 17 Pro Max
-During Apple's blockbuster Q1 2026 results, revenue from China reversed a three-year slump in sales, increasing 38% year over year. If analysts are to be believed, it may have had something to do with Apple's color selection.
-Prominently featured in marketing, the Cosmic Orange colorway for the iPhone 17 Pro line certainly catches the eye.
-
-### 29. [UK gets Apple and Google to agree to easy App Store changes](https://appleinsider.com/articles/26/02/10/uk-gets-apple-and-google-to-agree-to-easy-app-store-changes?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-The UK's Competition and Markets Authority has extracted promises from Apple and Google over their App Stores, really just bringing over the same features already in place in Europe.
-
-
-UK Parliament - image credit: Parliament
-While the UK is no longer part of the European Union, its regulators have been slowly copying the EU's initiatives regarding Big Tech.
-
-### 30. [Sorry folks, Liquid Glass isn’t going anywhere](https://www.macworld.com/article/3057181/sorry-folks-liquid-glass-isnt-going-anywhere.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-Reports of Liquid Glass’s death were, it seems, greatly exaggerated. According to a new report, Apple has no plans to move on from the divisive software design for at least another year.
-In the latest edition of his Power On newsletter, Bloomberg’s Mark Gurman discusses Apple’s plans for iOS 27 this year, and concludes that, other than a new chatbot version of Siri, it will focus on fixes rather than features. And later in the newsletter he clarifies that this means we shouldn’t expect a new look.
 
 <a id="iot"></a>
 
@@ -534,145 +544,145 @@ The post Top 7 best AI penetration testing companies in 2026 appeared first on A
 
 ## Cybersecurity
 
-### 1. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
+### 1. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Today is Microsoft's February 2026 Patch Tuesday with security updates for 58 flaws, including 6 actively exploited and three publicly disclosed zero-day vulnerabilities. [...]
+
+### 2. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Microsoft has released Windows 11 KB5077181 and KB5075941 cumulative updates for versions 25H2/24H2 and 23H2 to fix security vulnerabilities, bugs, and add new features. [...]
+
+### 3. [EU Unconditionally Approves Google’s $32B Acquisition of Wiz](https://www.securityweek.com/eu-unconditionally-approves-googles-32b-acquisition-of-wiz/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The European Commission’s ruling is based on extensive feedback from customers and rival cloud security and infrastructure vendors.
+The post EU Unconditionally Approves Google’s $32B Acquisition of Wiz appeared first on SecurityWeek.
+
+### 4. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The information technology (IT) workers associated with the Democratic People's Republic of Korea (DPRK) are now applying to remote positions using real LinkedIn accounts of individuals they're impersonating, marking a new escalation of the fraudulent scheme.
+"These profiles often have verified workplace emails and identity badges, which DPRK operatives hope will make their fraudulent
+
+### 5. [Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps](https://www.securityweek.com/patch-tuesday-adobe-fixes-44-vulnerabilities-in-creative-apps/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The company has fixed several critical vulnerabilities that can be exploited for arbitrary code execution.
+The post Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps appeared first on SecurityWeek.
+
+### 6. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 This investment comes less than 10 months after Reco’s last raise, bringing total funding to $85 million.
 The post Reco Raises $30 Million to Enhance AI SaaS Security appeared first on SecurityWeek.
 
-### 2. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
+### 7. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Led by existing investor Accel, with participation from Cyberstarts, Redpoint, and CRV, the Series B round brings the total amount raised by the company to $185 million.
 The post Vega Raises $120M in Series B Funding to Grow Security Analytics Platform appeared first on SecurityWeek.
 
-### 3. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
+### 8. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Volvo Group North America disclosed that it suffered an indirect data breach stemming from the compromise of IT systems at American business services giant Conduent, of which Volvo is a customer. [...]
 
-### 4. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
+### 9. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has begun rolling out updated Secure Boot certificates through monthly Windows updates to replace the original 2011 certificates that will expire in late June 2026. [...]
 
-### 5. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
+### 10. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Transparent Tribe (APT36) is targeting Indian defense and government sectors with GETA, ARES, and Desk RATs in a new wave of economic cyber espionage.
 The post RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India appeared first on SecurityWeek.
 
-### 6. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
+### 11. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is investigating an outage that blocks some administrators with business or enterprise subscriptions from accessing the Microsoft 365 admin center. [...]
 
-### 7. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
+### 12. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cloud incidents drag on when analysts have to leave cases to hunt through AWS consoles and CLIs. Tines shows how automated agents pull AWS CLI data directly into cases, reducing MTTR and manual investigation work. [...]
 
-### 8. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
+### 13. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 SAP has released 26 new and one updated security notes on February 2026 security patch day.
 The post SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities appeared first on SecurityWeek.
 
-### 9. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
+### 14. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of an emergent ransomware family dubbed Reynolds that comes embedded with a built-in bring your own vulnerable driver (BYOVD) component for defense evasion purposes within the ransomware payload itself.
 BYOVD refers to an adversarial technique that abuses legitimate but flawed driver software to escalate privileges and disable Endpoint Detection
 
-### 10. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
+### 15. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will use the investment to expand its R&amp;D team and operations, deepen platform capabilities, and scale go-to-market presence.
 The post Backslash Raises $19 Million to Secure Vibe Coding appeared first on SecurityWeek.
 
-### 11. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
+### 16. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?
 According to Picus Labs’ new Red Report 2026, which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for
 
-### 12. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
+### 17. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.
 The vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.
 
 "An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may
 
-### 13. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
+### 18. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft wants to introduce smartphone-style app permission prompts in Windows 11 to request user consent before apps can access sensitive resources such as files, cameras, and microphones. [...]
 
-### 14. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
+### 19. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new commercial mobile spyware platform dubbed ZeroDayRAT is being advertised to cybercriminals on Telegram as a tool that provides full remote control over compromised Android and iOS devices. [...]
 
-### 15. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
+### 20. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Available via Telegram, researchers warn ZeroDayRAT is a ‘complete mobile compromise toolkit’ comparable to kits normally requiring nation-state resources to develop.
 The post New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices appeared first on SecurityWeek.
 
-### 16. [New ‘SSHStalker’ Linux Botnet Uses Old Techniques](https://www.securityweek.com/new-sshstalker-linux-botnet-uses-old-techniques/)
+### 21. [New ‘SSHStalker’ Linux Botnet Uses Old Techniques](https://www.securityweek.com/new-sshstalker-linux-botnet-uses-old-techniques/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Estimated to have infected 7,000 systems, the botnet uses a mass-compromise pipeline, deploying various scanners and malware.
 The post New ‘SSHStalker’ Linux Botnet Uses Old Techniques appeared first on SecurityWeek.
 
-### 17. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
+### 22. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 January 5, 2026, Seattle, USA — ZAST.AI announced the completion of a $6 million Pre-A funding round. This investment came from the well-known investment firm Hillhouse Capital, bringing ZAST.AI's total funding close to $10 million. This marks a recognition from leading capital markets of a new solution: ending the era of high false positive rates in security tools and making every alert
 
-### 18. [BeyondTrust Patches Critical RCE Vulnerability](https://www.securityweek.com/beyondtrust-patches-critical-rce-vulnerability/)
+### 23. [BeyondTrust Patches Critical RCE Vulnerability](https://www.securityweek.com/beyondtrust-patches-critical-rce-vulnerability/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Affecting both RS and PRA, the bug can be exploited remotely via crafted requests without authentication.
 The post BeyondTrust Patches Critical RCE Vulnerability appeared first on SecurityWeek.
 
-### 19. [Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server](https://thehackernews.com/2026/02/warlock-ransomware-breaches.html)
+### 24. [Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server](https://thehackernews.com/2026/02/warlock-ransomware-breaches.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 SmarterTools confirmed last week that the Warlock (aka Storm-2603) ransomware gang breached its network by exploiting an unpatched SmarterMail instance.
 The incident took place on January 29, 2026, when a mail server that was not updated to the latest version was compromised, the company's Chief Commercial Officer, Derek Curtis, said.
 "Prior to the breach, we had approximately 30 servers/VMs
 
-### 20. [Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms](https://www.securityweek.com/singapore-rootkits-zero-day-used-in-chinese-attack-on-major-telecom-firms/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-China-linked UNC3886 targeted all four major telecom providers, but did not disrupt services or access customer information.
-The post Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms appeared first on SecurityWeek.
-
-### 21. [Dutch Authorities Confirm Ivanti Zero-Day Exploit Exposed Employee Contact Data](https://thehackernews.com/2026/02/dutch-authorities-confirm-ivanti-zero.html)
+### 25. [Dutch Authorities Confirm Ivanti Zero-Day Exploit Exposed Employee Contact Data](https://thehackernews.com/2026/02/dutch-authorities-confirm-ivanti-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Netherlands' Dutch Data Protection Authority (AP) and the Council for the Judiciary confirmed both agencies (Rvdr) have disclosed that their systems were impacted by cyber attacks that exploited the recently disclosed security flaws in Ivanti Endpoint Manager Mobile (EPMM), according to a notice sent to the country's parliament on Friday.
 "On January 29, the National Cyber Security Center (
 
-### 22. [Fugitive behind $73M 'pig butchering' scheme gets 20 years in prison](https://www.bleepingcomputer.com/news/security/fugitive-behind-73m-pig-butchering-scheme-gets-20-years-in-prison/)
+### 26. [Fugitive behind $73M 'pig butchering' scheme gets 20 years in prison](https://www.bleepingcomputer.com/news/security/fugitive-behind-73m-pig-butchering-scheme-gets-20-years-in-prison/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A dual Chinese and St. Kitts and Nevis national was sentenced to 20 years in prison in absentia for his role in an international cryptocurrency investment scheme (also known as pig butchering or romance baiting) that defrauded victims of more than $73 million. [...]
 
-### 23. [RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool ](https://www.securityweek.com/rsac-releases-quantickle-open-source-threat-intelligence-visualization-tool/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Quantickle is a browser-based tool designed for creating visual representations of threat research.
-The post RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool  appeared first on SecurityWeek.
-
-### 24. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
+### 27. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Chinese threat actor tracked as UNC3886 breached Singapore's four largest telecommunication service providers, Singtel, StarHub, M1, and Simba, at least once last year. [...]
 
-### 25. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
+### 28. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are now exploiting SolarWinds Web Help Desk (WHD) vulnerabilities to gain code execution rights on exposed systems and deploy legitimate tools, including the Velociraptor forensics tools, for persistence and remote control. [...]
 
-### 26. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
+### 29. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 SmarterTools confirmed last week that the Warlock ransomware gang breached its network after compromising an email system, but did not impact business applications or account data. [...]
 
-### 27. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
+### 30. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Cyber Security Agency (CSA) of Singapore on Monday revealed that the China-nexus cyber espionage group known as UNC3886 targeted its telecommunications sector.
 "UNC3886 had launched a deliberate, targeted, and well-planned campaign against Singapore's telecommunications sector," CSA said. "All four of Singapore's major telecommunications operators ('telcos') – M1, SIMBA Telecom, Singtel, and
-
-### 28. [Password guessing without AI: How attackers build targeted wordlists](https://www.bleepingcomputer.com/news/security/password-guessing-without-ai-how-attackers-build-targeted-wordlists/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Attackers don't need AI to crack passwords, they build targeted wordlists from an organization's own public language. This article explains how tools like CeWL turn websites into high-success password guesses and why complexity rules alone fall short. [...]
-
-### 29. [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Microsoft has revealed that it observed a multi‑stage intrusion that involved the threat actors exploiting internet‑exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.
-That said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized recently
-
-### 30. [BeyondTrust warns of critical RCE flaw in remote support software](https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-BeyondTrust warned customers to patch a critical security flaw in its Remote Support (RS) and Privileged Remote Access (PRA) software that could allow unauthenticated attackers to execute arbitrary code remotely. [...]
 
 
 ---
