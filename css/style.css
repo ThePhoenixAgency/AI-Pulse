@@ -212,3 +212,22 @@ a {
 .elevator-btn.bottom {
     bottom: 20px;
 }
+
+/* Mobile Footer Layout */
+@media (max-width: 480px) {
+    .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        text-align: center;
+    }
+
+    .footer-links span {
+        display: none;
+    }
+
+    .footer-links a {
+        display: block;
+        padding: 5px;
+    }
+}
