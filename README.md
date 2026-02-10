@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 10 Feb 2026 04:27:01 GMT
+**Last Update:** Tue, 10 Feb 2026 06:57:24 GMT
 
 ---
 
@@ -381,100 +381,100 @@ The post Iridium NTN Direct Begins On-Air Trials Ahead of 2026 Beta appeared fir
 
 ## Artificial Intelligence
 
-### 1. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
+### 1. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Because employees could do more, work began bleeding into lunch breaks and late evenings. The employees' to-do lists expanded to fill every hour that AI freed up, and then kept going.
+
+### 2. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI isn't going to replace major SaaS apps with vibe-coded versions, Databricks CEO Ali Ghodsi believes. But it could give rise to competitors.
 
-### 2. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
+### 3. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India's Anthropic Software has taken the U.S. AI giant to court over a name dispute.
 
-### 3. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
+### 4. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Delayed January: deadlines, downtimes, and flow times
 The post The Machine Learning Lessons I’ve Learned Last Month appeared first on Towards Data Science.
 
-### 4. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
+### 5. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI faced a backlash late last year when it tested app suggestions that looked like unwanted ads. Still, the AI company needs to generate revenue from its popular chatbot to cover the costs of developing its technology and growing the business.
 
-### 5. [Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO ](https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/)
+### 6. [Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO ](https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Bhusri said in a statement that the company's next chapter would be focused on AI.
 
-### 6. [Anthropic closes in on $20B round](https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/)
+### 7. [Anthropic closes in on $20B round](https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company raised $13 billion in equity funding just five months ago, but intense competition between frontier labs and the ongoing cost of compute have made them eager to raise as quickly as possible.
 
-### 7. [Ex-Googlers are building infrastructure to help companies understand their video data](https://techcrunch.com/2026/02/09/ex-googlers-are-building-infrastructure-to-help-companies-understand-their-video-data/)
+### 8. [Ex-Googlers are building infrastructure to help companies understand their video data](https://techcrunch.com/2026/02/09/ex-googlers-are-building-infrastructure-to-help-companies-understand-their-video-data/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Founded by former Google Japan leaders, InfiniMind is building enterprise AI to turn vast, unused video archives into searchable, actionable business intelligence.
 
-### 8. [Call for speakers: TechCrunch Founder Summit 2026](https://techcrunch.com/2026/02/09/call-for-speakers-techcrunch-founder-summit-2026/)
+### 9. [Call for speakers: TechCrunch Founder Summit 2026](https://techcrunch.com/2026/02/09/call-for-speakers-techcrunch-founder-summit-2026/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Submit to speak at TechCrunch Founder Summit 2026 to lead a roundtable. Share scaling insights with 1,100 founders on June 23 in Boston.
 
-### 9. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
+### 10. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How the new Interactions API enables deep-reasoning, stateful, agentic workflows.
 The post The Death of the “Everything Prompt”: Google’s Move Toward Structured AI appeared first on Towards Data Science.
 
-### 10. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
+### 11. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For a long time, cryptocurrency prices moved quickly. A headline would hit, sentiment would spike, and charts would react almost immediately. That pattern no longer holds. Today’s market is slow, heavier than before, and shaped by forces that do not always announce themselves clearly. Capital allocation, ETF mechanics, and macro positioning now influence price behaviour […]
 The post What AI can (and can’t) tell us about XRP in ETF-driven markets appeared first on AI News.
 
-### 11. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
+### 12. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Because Western AI labs won’t—or can’t—anymore. As OpenAI, Anthropic, and Google face mounting pressure to restrict their most powerful models, Chinese developers have filled the open-source void with AI explicitly built for what operators need: powerful models that run on commodity hardware. A new security study reveals just how thoroughly Chinese AI has captured this space. Research published by SentinelOne […]
 The post Exclusive: Why are Chinese AI models dominating open-source as Western labs step back? appeared first on AI News.
 
-### 12. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
+### 13. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Cryptocurrency markets have become a high-speed playground where developers optimise the next generation of predictive software. Using real-time data flows and decentralised platforms, scientists develop prediction models that can extend the scope of traditional finance. The digital asset landscape offers an unparalleled environment for machine learning. When you track cryptocurrency prices today, you are observing […]
 The post Cryptocurrency markets a testbed for AI forecasting models appeared first on AI News.
 
-### 13. [Goldman Sachs tests autonomous AI agents for process-heavy work](https://www.artificialintelligence-news.com/news/goldman-sachs-tests-autonomous-ai-agents-for-process-heavy-work/)
+### 14. [Goldman Sachs tests autonomous AI agents for process-heavy work](https://www.artificialintelligence-news.com/news/goldman-sachs-tests-autonomous-ai-agents-for-process-heavy-work/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Goldman Sachs is pushing deeper into real use of artificial intelligence inside its operations, moving to systems that can carry out complex tasks on their own. The Wall Street bank is working with AI startup Anthropic to create autonomous AI agents powered by Anthropic’s Claude model that can handle work that used to require large […]
 The post Goldman Sachs tests autonomous AI agents for process-heavy work appeared first on AI News.
 
-### 14. [Crypto.com places $70M bet on AI.com domain ahead of Super Bowl](https://techcrunch.com/2026/02/08/crypto-com-places-70m-bet-on-ai-com-domain-ahead-of-super-bowl/)
+### 15. [Crypto.com places $70M bet on AI.com domain ahead of Super Bowl](https://techcrunch.com/2026/02/08/crypto-com-places-70m-bet-on-ai-com-domain-ahead-of-super-bowl/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The purchase rewrites the domain record books -- not that the crypto industry has ever been accused of restraint when it comes to spending.
 
-### 15. [Okay, I’m slightly less mad about that ‘Magnificent Ambersons’ AI project](https://techcrunch.com/2026/02/08/okay-im-slightly-less-mad-about-that-magnificent-ambersons-ai-project/)
+### 16. [Okay, I’m slightly less mad about that ‘Magnificent Ambersons’ AI project](https://techcrunch.com/2026/02/08/okay-im-slightly-less-mad-about-that-magnificent-ambersons-ai-project/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 But this is still a bad idea.
 
-### 16. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
+### 17. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
 
-### 17. [New York lawmakers propose a 3-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
+### 18. [New York lawmakers propose a 3-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Although the bill’s prospects are uncertain, New York is at least the sixth state to consider pausing construction of new data centers.
 
-### 18. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
+### 19. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to work with AI, while strengthening your unique human skills that technology cannot replace
 The post What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026 appeared first on Towards Data Science.
 
-### 19. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
+### 20. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Benchmark Capital has been an investor in the Nvidia rival since 2016.
 
-### 20. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
+### 21. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 WordPress users can now leverage Claude to analyze web traffic or find information about other internal site metrics.
 
-### 21. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
+### 22. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 This week's release of Opus 4.6 shook up the agentic AI leaderboards.
-
-### 22. [How Elon Musk is rewriting the rules on founder power](https://techcrunch.com/video/how-elon-musk-is-rewriting-the-rules-on-founder-power/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Elon Musk has merged SpaceX and xAI, creating what might be the blueprint for a new Silicon Valley power structure. With his $800 billion net worth already rivaling historic conglomerate GE’s peak market cap, and Musk being vocal about his view that “tech victory is decided by velocity of innovation,” the question isn’t whether a personal conglomerate can be built, but rather how far Musk himself is […]
 
 ### 23. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
@@ -522,142 +522,145 @@ The post AI Expo 2026 Day 2: Moving experimental pilots to AI production appeare
 
 ## Cybersecurity
 
-### 1. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
+### 1. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.
+The vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.
+
+"An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may
+
+### 2. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Chinese threat actor tracked as UNC3886 breached Singapore's four largest telecommunication service providers, Singtel, StarHub, M1, and Simba, at least once last year. [...]
 
-### 2. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
+### 3. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are now exploiting SolarWinds Web Help Desk (WHD) vulnerabilities to gain code execution rights on exposed systems and deploy legitimate tools, including the Velociraptor forensics tools, for persistence and remote control. [...]
 
-### 3. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
+### 4. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 SmarterTools confirmed last week that the Warlock ransomware gang breached its network after compromising an email system, but did not impact business applications or account data. [...]
 
-### 4. [Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk ](https://www.securityweek.com/lema-ai-emerges-from-stealth-with-24-million-to-tackle-third-party-risk/)
+### 5. [Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk ](https://www.securityweek.com/lema-ai-emerges-from-stealth-with-24-million-to-tackle-third-party-risk/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The funding was raised over Series A and seed funding rounds for its supply chain security solution.
 The post Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk  appeared first on SecurityWeek.
 
-### 5. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
+### 6. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Cyber Security Agency (CSA) of Singapore on Monday revealed that the China-nexus cyber espionage group known as UNC3886 targeted its telecommunications sector.
 "UNC3886 had launched a deliberate, targeted, and well-planned campaign against Singapore's telecommunications sector," CSA said. "All four of Singapore's major telecommunications operators ('telcos') – M1, SIMBA Telecom, Singtel, and
 
-### 6. [Password guessing without AI: How attackers build targeted wordlists](https://www.bleepingcomputer.com/news/security/password-guessing-without-ai-how-attackers-build-targeted-wordlists/)
+### 7. [Password guessing without AI: How attackers build targeted wordlists](https://www.bleepingcomputer.com/news/security/password-guessing-without-ai-how-attackers-build-targeted-wordlists/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Attackers don't need AI to crack passwords, they build targeted wordlists from an organization's own public language. This article explains how tools like CeWL turn websites into high-success password guesses and why complexity rules alone fall short. [...]
 
-### 7. [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html)
+### 8. [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has revealed that it observed a multi‑stage intrusion that involved the threat actors exploiting internet‑exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.
 That said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized recently
 
-### 8. [Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter](https://www.securityweek.com/ransomware-groups-may-pivot-back-to-encryption-as-data-theft-tactics-falter/)
+### 9. [Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter](https://www.securityweek.com/ransomware-groups-may-pivot-back-to-encryption-as-data-theft-tactics-falter/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 As only data exfiltration for extortion no longer delivers ROI, ransomware gangs may increasingly encrypting data for additional leverage.
 The post Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter appeared first on SecurityWeek.
 
-### 9. [Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats](https://www.securityweek.com/outtake-raises-40-million-to-bolster-digital-trust-against-ai-driven-threats/)
+### 10. [Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats](https://www.securityweek.com/outtake-raises-40-million-to-bolster-digital-trust-against-ai-driven-threats/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The Series B funding round brings the cybersecurity startup’s total raised to $60 million.
 The post Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats appeared first on SecurityWeek.
 
-### 10. [Cybersecurity M&amp;A Roundup: 34 Deals Announced in January 2026](https://www.securityweek.com/cybersecurity-ma-roundup-34-deals-announced-in-january-2026/)
+### 11. [Cybersecurity M&amp;A Roundup: 34 Deals Announced in January 2026](https://www.securityweek.com/cybersecurity-ma-roundup-34-deals-announced-in-january-2026/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Significant cybersecurity M&amp;A deals announced by CrowdStrike, Infoblox, JumpCloud, LevelBlue, OneSpan, and Radware.
 The post Cybersecurity M&amp;A Roundup: 34 Deals Announced in January 2026 appeared first on SecurityWeek.
 
-### 11. [BeyondTrust warns of critical RCE flaw in remote support software](https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/)
+### 12. [BeyondTrust warns of critical RCE flaw in remote support software](https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 BeyondTrust warned customers to patch a critical security flaw in its Remote Support (RS) and Privileged Remote Access (PRA) software that could allow unauthenticated attackers to execute arbitrary code remotely. [...]
 
-### 12. [⚡ Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More](https://thehackernews.com/2026/02/weekly-recap-ai-skill-malware-31tbps.html)
+### 13. [⚡ Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More](https://thehackernews.com/2026/02/weekly-recap-ai-skill-malware-31tbps.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cyber threats are no longer coming from just malware or exploits. They’re showing up inside the tools, platforms, and ecosystems organizations use every day. As companies connect AI, cloud apps, developer tools, and communication systems, attackers are following those same paths.
 A clear pattern this week: attackers are abusing trust. Trusted updates, trusted marketplaces, trusted apps, even
 
-### 13. [Recent SolarWinds Flaws Potentially Exploited as Zero-Days](https://www.securityweek.com/recent-solarwinds-flaws-potentially-exploited-as-zero-days/)
+### 14. [Recent SolarWinds Flaws Potentially Exploited as Zero-Days](https://www.securityweek.com/recent-solarwinds-flaws-potentially-exploited-as-zero-days/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Vulnerable SolarWinds Web Help Desk instances were exploited in December 2025 for initial access.
 The post Recent SolarWinds Flaws Potentially Exploited as Zero-Days appeared first on SecurityWeek.
 
-### 14. [SmarterTools Hit by Ransomware via Vulnerability in Its Own Product](https://www.securityweek.com/smartertools-hit-by-ransomware-via-vulnerability-in-its-own-product/)
+### 15. [SmarterTools Hit by Ransomware via Vulnerability in Its Own Product](https://www.securityweek.com/smartertools-hit-by-ransomware-via-vulnerability-in-its-own-product/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 SmarterTools says customers were impacted after hackers compromised a data center used for quality control testing.
 The post SmarterTools Hit by Ransomware via Vulnerability in Its Own Product appeared first on SecurityWeek.
 
-### 15. [Men charged in FanDuel scheme fueled by thousands of stolen identities](https://www.bleepingcomputer.com/news/security/men-charged-in-massive-fanduel-fraud-scheme-fueled-by-thousands-of-stolen-identities/)
+### 16. [Men charged in FanDuel scheme fueled by thousands of stolen identities](https://www.bleepingcomputer.com/news/security/men-charged-in-massive-fanduel-fraud-scheme-fueled-by-thousands-of-stolen-identities/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Two Connecticut men face federal charges for allegedly defrauding FanDuel and other online gambling sites of $3 million over several years using the stolen identities of approximately 3,000 victims. [...]
 
-### 16. [How Top CISOs Solve Burnout and Speed up MTTR without Extra Hiring](https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html)
+### 17. [How Top CISOs Solve Burnout and Speed up MTTR without Extra Hiring](https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Why do SOC teams keep burning out and missing SLAs even after spending big on security tools? Routine triage piles up, senior specialists get dragged into basic validation, and MTTR climbs, while stealthy threats still find room to slip through. Top CISOs have realized the solution isn’t hiring more people or stacking yet another tool onto the workflow, but giving their teams faster, clearer
 
-### 17. [Bloody Wolf Targets Uzbekistan, Russia Using NetSupport RAT in Spear-Phishing Campaign](https://thehackernews.com/2026/02/bloody-wolf-targets-uzbekistan-russia.html)
+### 18. [Bloody Wolf Targets Uzbekistan, Russia Using NetSupport RAT in Spear-Phishing Campaign](https://thehackernews.com/2026/02/bloody-wolf-targets-uzbekistan-russia.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The threat actor known as Bloody Wolf has been linked to a campaign targeting Uzbekistan and Russia to infect systems with a remote access trojan known as NetSupport RAT.
 Cybersecurity vendor Kaspersky is tracking the activity under the moniker Stan Ghouls. The threat actor is known to be active since at least 2023, orchestrating spear-phishing attacks against manufacturing, finance, and IT
 
-### 18. [Microsoft: Exchange Online flags legitimate emails as phishing](https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/)
+### 19. [Microsoft: Exchange Online flags legitimate emails as phishing](https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is investigating an ongoing Exchange Online issue that mistakenly flags legitimate emails as phishing and quarantines them. [...]
 
-### 19. [European Commission discloses breach that exposed staff data](https://www.bleepingcomputer.com/news/security/european-commission-discloses-breach-that-exposed-staff-data/)
+### 20. [European Commission discloses breach that exposed staff data](https://www.bleepingcomputer.com/news/security/european-commission-discloses-breach-that-exposed-staff-data/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The European Commission is investigating a breach after finding evidence that its mobile device management platform was hacked. [...]
 
-### 20. [New Paper and Tool Help Security Teams Move Beyond Blind Reliance on CISA’s KEV Catalog](https://www.securityweek.com/new-paper-and-tool-help-security-teams-move-beyond-blind-reliance-on-cisas-kev-catalog/)
+### 21. [New Paper and Tool Help Security Teams Move Beyond Blind Reliance on CISA’s KEV Catalog](https://www.securityweek.com/new-paper-and-tool-help-security-teams-move-beyond-blind-reliance-on-cisas-kev-catalog/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The KEV list is useful but largely misunderstood. KEVology explains what it is, and how best to use it.
 The post New Paper and Tool Help Security Teams Move Beyond Blind Reliance on CISA’s KEV Catalog appeared first on SecurityWeek.
 
-### 21. [TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure](https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html)
+### 22. [TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure](https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have called attention to a "massive campaign" that has systematically targeted cloud native environments to set up malicious infrastructure for follow-on exploitation.
 The activity, observed around December 25, 2025, and described as "worm-driven," leveraged exposed Docker APIs, Kubernetes clusters, Ray dashboards, and Redis servers, along with the recently disclosed
 
-### 22. [European Commission Investigating Cyberattack](https://www.securityweek.com/european-commission-investigating-cyberattack/)
+### 23. [European Commission Investigating Cyberattack](https://www.securityweek.com/european-commission-investigating-cyberattack/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The signs of a cyberattack were identified on systems EU's main executive body uses for mobile device management.
 The post European Commission Investigating Cyberattack appeared first on SecurityWeek.
 
-### 23. [BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA](https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html)
+### 24. [BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA](https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.
 "BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability," the company
 
-### 24. [New tool blocks imposter attacks disguised as safe commands](https://www.bleepingcomputer.com/news/security/new-tool-blocks-imposter-attacks-disguised-as-safe-commands/)
+### 25. [New tool blocks imposter attacks disguised as safe commands](https://www.bleepingcomputer.com/news/security/new-tool-blocks-imposter-attacks-disguised-as-safe-commands/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new open-source and cross-platform tool called Tirith can detect homoglyph attacks over command-line environments by analyzing URLs in typed commands and stopping their execution.  [...]
 
-### 25. [OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills](https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html)
+### 26. [OpenClaw Integrates VirusTotal Scanning to Detect Malicious ClawHub Skills](https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 OpenClaw (formerly Moltbot and Clawdbot) has announced that it's partnering with Google-owned VirusTotal to scan skills that are being uploaded to ClawHub, its skill marketplace, as part of broader efforts to bolster the security of the agentic ecosystem.
 "All skills published to ClawHub are now scanned using VirusTotal's threat intelligence, including their new Code Insight capability,"
 
-### 26. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
+### 27. [State actor targets 155 countries in 'Shadow Campaigns' espionage op](https://www.bleepingcomputer.com/news/security/state-actor-targets-155-countries-in-shadow-campaigns-espionage-op/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new state-aligned cyberespionage threat group tracked as TGR-STA-1030/UNC6619, has conducted a global-scale operation dubbed the "Shadow Campaigns," where it targeted government infrastructure in 155 countries. [...]
 
-### 27. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
+### 28. [Organizations Urged to Replace Discontinued Edge Devices](https://www.securityweek.com/organizations-urged-to-replace-discontinued-edge-devices/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Edge devices that are no longer supported have been targeted in attacks by state-sponsored hackers, the US says.
 The post Organizations Urged to Replace Discontinued Edge Devices appeared first on SecurityWeek.
 
-### 28. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
+### 29. [German Agencies Warn of Signal Phishing Targeting Politicians, Military, Journalists](https://thehackernews.com/2026/02/german-agencies-warn-of-signal-phishing.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Germany's Federal Office for the Protection of the Constitution (aka Bundesamt für Verfassungsschutz or BfV) and Federal Office for Information Security (BSI) have issued a joint advisory warning of a malicious cyber campaign undertaken by a likely state-sponsored threat actor that involves carrying out phishing attacks over the Signal messaging app.
 "The focus is on high-ranking targets in
 
-### 29. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
+### 30. [Payments platform BridgePay confirms ransomware attack behind outage](https://www.bleepingcomputer.com/news/security/payments-platform-bridgepay-confirms-ransomware-attack-behind-outage/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A major U.S. payment gateway and solutions provider says a ransomware attack has knocked key systems offline, triggering a widespread outage affecting multiple services. The incident began on Friday and quickly escalated into a nationwide disruption across BridgePay's platform. [...]
-
-### 30. [Germany warns of Signal account hijacking targeting senior figures](https://www.bleepingcomputer.com/news/security/germany-warns-of-signal-account-hijacking-targeting-senior-figures/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Germany's domestic intelligence agency is warning of suspected state-sponsored threat actors targeting high-ranking individuals in phishing attacks via messaging apps like Signal. [...]
 
 
 ---
