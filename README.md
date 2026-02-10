@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 10 Feb 2026 12:57:18 GMT
+**Last Update:** Tue, 10 Feb 2026 14:55:14 GMT
 
 ---
 
@@ -29,7 +29,93 @@
 
 ## Mac & Apple
 
-### 1. [DuckDuckGo Adds AI Voice Chat to Duck.ai With Privacy Protections](https://www.macrumors.com/2026/02/10/duckduckgo-adds-voice-chat-duck-ai/)
+### 1. [Get an Apple Watch SE 3 for Just $219 on Amazon](https://www.macrumors.com/2026/02/10/apple-watch-se-3-for-219/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Amazon this week is taking $30 off the Apple Watch SE 3, starting at $219.00 for the 40mm GPS model. These are second-best prices on the SE 3, but it's been over a month since we last tracked record low prices, so this is a good opportunity for anyone who's been waiting for a deal.
+
+Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running.
+
+$249.00, down from $279.00. Both the 40mm and 44mm GPS models are available in Midnight and Starlight Aluminum at these prices.
+
+### 2. [MrBeast just bought a popular banking app](https://9to5mac.com/2026/02/10/mrbeast-just-bought-a-popular-banking-app/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+MrBeast, the king of YouTube, is now the new owner of a banking app called Step. It’s a big move meant to kickstart the popular creator’s new ‘MrBeast Financial’ business arm.
+more…
+
+### 3. [Jony Ives’ AI hardware is delayed to 2027 and won’t be called io](https://9to5mac.com/2026/02/10/jony-ives-ai-hardware-is-delayed-to-2027-and-wont-be-called-io/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+The mysterious AI hardware device designed by Jony Ive for OpenAI has been delayed, according to a new court filing. It had originally been scheduled to launch later this year but now won’t ship any earlier than February 2027.
+The same court paperwork also reveals that the company is no longer planning to use the name io for the upcoming device …
+more…
+
+### 4. [Bought a guitar, learned 3 chords, then stopped? Try this.](https://www.cultofmac.com/deals/fret-zealot-guitar-lessons)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+Learn the modern way with structured guitar lessons, visual guidance and hundreds of songs with a one-year Fret Zealot All Access Pass.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 5. [iPhone battery life test shows just how much power 5G drains compared to WiFi](https://9to5mac.com/2026/02/10/iphone-battery-life-wifi-5g-compared/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+It is common knowledge that communicating over WiFi is more efficient than using the 5G cellular network, but by how much exactly? That’s exactly what PhoneBuff set out to measure in its latest battery life benchmark test. 
+Using an iPhone 17 Pro Max, the test simulated general phone usage including texting, web browsing, streaming video, Instagram and FaceTime. Once on 5G, once on WiFi. The final timings are perhaps closer than you’d think.
+more…
+
+### 6. [The iPhone is a hit in China, and all it took was a new color](https://www.macworld.com/article/3057262/the-iphone-is-a-hit-in-china-and-all-it-took-was-a-new-color.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Apple’s been making an awful lot of money lately, and it’s no secret that the iPhone 17 Pro was a key part of that success. (The less said about the iPhone Air, the better.) But only now are we starting to understand why that handset sold so well, at least in one crucial market.
+According to the Financial Times, Apple’s record-breaking recent sales in China are in large part due to what might seem like a small and cosmetic change. It’s all to do with the Cosmic Orange finish.
+
+### 7. [Why your Apple smart home might quit February 10 — and how to stop it [Updated]](https://www.cultofmac.com/news/apple-warns-users-to-update-home-app)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+In a recent email, Apple warns users to update Home app to avoid hassles as support for the older version expires.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 8. [How OpenClaw turns your Mac into an action-based AI agent](https://www.cultofmac.com/how-to/set-up-and-run-openclaw-on-mac)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+OpenClaw lets you run an action-based AI agent directly on your Mac. We walk through installation, setup, and practical ways to use it.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 9. [AirPods cameras could mean support for Vision Pro-style hand gestures](https://9to5mac.com/2026/02/10/airpods-cameras-could-mean-support-for-vision-pro-style-hand-gestures/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+One of the more persistent and long-standing Apple rumors has been the launch of new AirPods models with built-in cameras. Another leaker added their support for this idea just yesterday.
+Exactly what role these cameras would perform has been the subject of much speculation, with some suggesting they will be used to support Apple Intelligence visual features. While that is certainly possible, I can’t help wondering whether the reports point to support for hand gestures similar to those used with Vision Pro … 
+more…
+
+### 10. [Reminder: Update Your Apple Home App Immediately to Avoid Issues](https://www.macrumors.com/2026/02/10/update-apple-home-app-by-tomorrow/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+In 2022, Apple introduced a new Apple Home architecture that is "more reliable and efficient," and the deadline to upgrade and avoid issues is today.
+
+
+In an email last week, Apple gave customers a final reminder to upgrade their Home app by February 10, 2026. Apple says users who do not upgrade may experience issues with accessories and automations, or lose access to their smart home in the app entirely. In addition, users who do not upgrade will miss out on newer features like robot vacuum cleaner support, and they will not receive important security fixes and performance improvements.
+
+### 11. [Cosmic Orange iPhone 17 Pro really helped China sales](https://appleinsider.com/articles/26/02/10/cosmic-orange-iphone-17-pro-really-helped-china-sales?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple's resurgence in China after a three-year slump was supposedly helped by a color, with the iPhone 17 Pro's bright orange option compared to the hue of luxury brand Hermes.
+
+
+Cosmic Orange iPhone 17 Pro Max
+During Apple's blockbuster Q1 2026 results, revenue from China reversed a three-year slump in sales, increasing 38% year over year. If analysts are to be believed, it may have had something to do with Apple's color selection.
+Prominently featured in marketing, the Cosmic Orange colorway for the iPhone 17 Pro line certainly catches the eye.
+
+### 12. [UK gets Apple and Google to agree to easy App Store changes](https://appleinsider.com/articles/26/02/10/uk-gets-apple-and-google-to-agree-to-easy-app-store-changes?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+The UK's Competition and Markets Authority has extracted promises from Apple and Google over their App Stores, really just bringing over the same features already in place in Europe.
+
+
+UK Parliament - image credit: Parliament
+While the UK is no longer part of the European Union, its regulators have been slowly copying the EU's initiatives regarding Big Tech.
+
+### 13. [Sorry folks, Liquid Glass isn’t going anywhere](https://www.macworld.com/article/3057181/sorry-folks-liquid-glass-isnt-going-anywhere.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Reports of Liquid Glass’s death were, it seems, greatly exaggerated. According to a new report, Apple has no plans to move on from the divisive software design for at least another year.
+In the latest edition of his Power On newsletter, Bloomberg’s Mark Gurman discusses Apple’s plans for iOS 27 this year, and concludes that, other than a new chatbot version of Siri, it will focus on fixes rather than features. And later in the newsletter he clarifies that this means we shouldn’t expect a new look.
+
+### 14. [DuckDuckGo Adds AI Voice Chat to Duck.ai With Privacy Protections](https://www.macrumors.com/2026/02/10/duckduckgo-adds-voice-chat-duck-ai/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 DuckDuckGo has announced new voice chat capabilities for Duck.ai, the private AI chatbot platform it launched last March.
 
@@ -38,20 +124,20 @@ The new feature lets users have real-time voice conversations with large languag
 
 describes the service:
 
-### 2. [Apple makes four promises to developers about fairer treatment](https://9to5mac.com/2026/02/10/apple-makes-four-promises-to-developers-about-fairer-treatment/)
+### 15. [Apple makes four promises to developers about fairer treatment](https://9to5mac.com/2026/02/10/apple-makes-four-promises-to-developers-about-fairer-treatment/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has responded to complaints that it abuses its dominant position in the iPhone app market by making four promises to third-party developers about fairer treatment.
 Developers and others are being asked for their comments on the proposals, and the UK’s antitrust regulator says it will be closely measuring the effectiveness of the measures …
 more…
 
-### 3. [Apple, Google Commit to Fairer App Store Practices in UK](https://www.macrumors.com/2026/02/10/apple-google-fairer-app-store-practices-uk/)
+### 16. [Apple, Google Commit to Fairer App Store Practices in UK](https://www.macrumors.com/2026/02/10/apple-google-fairer-app-store-practices-uk/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple and Google have agreed to a series of changes aimed at making their app stores fairer for developers, the UK's Competition and Markets Authority (CMA) announced today.
 
 
 The concrete commitments come after the CMA found the two companies had a duopoly and designated them as having "strategic market status" in mobile platforms last October. The designation is not a finding of wrongdoing, but gives UK regulators new powers to demand specific changes to boost competition in the mobile market.
 
-### 4. [We need this ‘1984’ MacBook case to be real](https://www.macworld.com/article/3056538/spigen-classic-mac-macbook-case.html)
+### 17. [We need this ‘1984’ MacBook case to be real](https://www.macworld.com/article/3056538/spigen-classic-mac-macbook-case.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -59,21 +145,13 @@ Macworld
 One of the reasons why we’re Apple users is the iconic designs the company uses. For example, the current MacBook lineup has a beautiful design with a distinguished look that’s instantly recognizable and often imitated. Apple has a long history of iconic design, many of which are just beloved today as they were decades ago.
 Case maker Spigen is looking towards those past designs for inspiration. In an X post on Monday, the company posted a concept image of a MacBook case that takes its cues from the classic Macintosh from 1984.
 
-### 5. [UK gets Apple and Google to agree to easy App Store changes](https://appleinsider.com/articles/26/02/10/uk-gets-apple-and-google-to-agree-to-easy-app-store-changes?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-The UK's Competition and Markets Authority has extracted promises from Apple and Google over their App Stores, really just bringing over the same features already in place in Europe.
-
-
-UK Parliament - image credit: Parliament
-While the UK is no longer part of the European Union, its regulators have been slowly copying the EU's initiatives regarding Big Tech.
-
-### 6. [Two reasons helped Apple hit record iPhone sales, and they’re both orange](https://9to5mac.com/2026/02/10/two-reasons-helped-apple-hit-record-iphone-sales-and-theyre-both-orange/)
+### 18. [Two reasons helped Apple hit record iPhone sales, and they’re both orange](https://9to5mac.com/2026/02/10/two-reasons-helped-apple-hit-record-iphone-sales-and-theyre-both-orange/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple recently reported the best iPhone sales in the company’s history in the final quarter of last year. While the long-term trend has of course been upward, the company revealed a dramatic boost to the numbers.
 We’ve already seen analysts describe some of the reasons for this, but a new report suggests two additional factors – and both of them are the color orange …
 more…
 
-### 7. [It’s over. The iPad won](https://www.macworld.com/article/3056614/the-ipad-wins.html)
+### 19. [It’s over. The iPad won](https://www.macworld.com/article/3056614/the-ipad-wins.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -82,7 +160,7 @@ Harken, if you will, back to a simpler time. A time when the Macalope’s column
 What happened to those days, Carol? We were so young. So full of life. Did you ever finish making that dating app? It was for people in open relationships in gated communities. What a terrible idea. But such was our pie-eyed optimism! The future was spread out before us like a cruise ship buffet, but without the botulism.
 And we didn’t have to talk about AI all freakin’ day long.
 
-### 8. [OpenAI's Jony Ive-Designed Device Delayed to 2027](https://www.macrumors.com/2026/02/10/openais-jony-ive-designed-device-delayed-to-2027/)
+### 20. [OpenAI's Jony Ive-Designed Device Delayed to 2027](https://www.macrumors.com/2026/02/10/openais-jony-ive-designed-device-delayed-to-2027/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 OpenAI's first Jony Ive-designed hardware device won't ship to customers until next year, new court filings show (via Wired).
 
@@ -91,11 +169,11 @@ The motion stems from a trademark infringement lawsuit filed last year by audio 
 
 OpenAI's original stated goal was to ship the ChatGPT-powered device before the end of 2026. But in the latest filing, the company said its first hardware device won't ship to customers before the end of February 2027.
 
-### 9. [Apple @ Work Podcast: Zero Trust is really a little trust](https://9to5mac.com/2026/02/10/apple-work-podcast-zero-trust-is-really-a-little-trust/)
+### 21. [Apple @ Work Podcast: Zero Trust is really a little trust](https://9to5mac.com/2026/02/10/apple-work-podcast-zero-trust-is-really-a-little-trust/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional-grade platform all the solutions necessary to seamlessly and automatically deploy, manage &amp; protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work-ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
 
-### 10. [iPhone 17 Pro's Cosmic Orange Color Linked to 38% China Sales Jump](https://www.macrumors.com/2026/02/10/china-iphone-17-pro-sales-surge-cosmic-orange/)
+### 22. [iPhone 17 Pro's Cosmic Orange Color Linked to 38% China Sales Jump](https://www.macrumors.com/2026/02/10/china-iphone-17-pro-sales-surge-cosmic-orange/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's iPhone 17 Pro and iPhone 17 Pro Max have been runaway hits in China, but it has nothing to do with new AI or camera features – it's largely down to the color.
 
@@ -104,7 +182,7 @@ The Cosmic Orange finish made available exclusively on Apple's high-end Pro mode
 
 Financial Times reports that videos showcasing the orange iPhones have gone viral on Chinese social media since the devices launched in September.
 
-### 11. [This lifetime deal brings the modern Microsoft Office experience without the monthly bill — now 60% off](https://www.macworld.com/article/3055243/this-lifetime-deal-brings-the-modern-microsoft-office-experience-without-the-monthly-bill-now-60-off.html)
+### 23. [This lifetime deal brings the modern Microsoft Office experience without the monthly bill — now 60% off](https://www.macworld.com/article/3055243/this-lifetime-deal-brings-the-modern-microsoft-office-experience-without-the-monthly-bill-now-60-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -113,12 +191,12 @@ TL;DR: This lifetime Microsoft Office 2024 license works for Mac or PC, and it
 The main reason many people stick with Microsoft 365 is access to newer features, especially AI tools — but that advantage is gone. Microsoft Office 2024 Home and Business delivers the latest versions of Microsoft’s apps with modern AI integrations, without locking you into a subscription. Instead of paying at least $99.99 every year, you can pay $99.97 once for lifetime access (MSRP $249.99).
 What’s included:
 
-### 12. [ChatGPT just crossed a big line by introducing ads](https://www.cultofmac.com/news/chatgpt-just-crossed-big-line-introducing-ads)
+### 24. [ChatGPT just crossed a big line by introducing ads](https://www.cultofmac.com/news/chatgpt-just-crossed-big-line-introducing-ads)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 ChatGPT has begun showing ads to Free and Go users in the US, marking the first time a major AI chatbot has embraced advertising.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 13. [Spotlight got a huge upgrade in macOS Tahoe, here's how to use it](https://appleinsider.com/inside/macos-tahoe/tips/spotlight-got-a-huge-upgrade-in-macos-tahoe-heres-how-to-use-it?utm_source=rss)
+### 25. [Spotlight got a huge upgrade in macOS Tahoe, here's how to use it](https://appleinsider.com/inside/macos-tahoe/tips/spotlight-got-a-huge-upgrade-in-macos-tahoe-heres-how-to-use-it?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's Spotlight feature has been around for a long time, but with macOS Tahoe, it enjoyed its biggest update in years. Here's how to make the most of its powerful new features.
 
@@ -127,12 +205,12 @@ Spotlight has had a revamp with macOS Tahoe
 Spotlight, never further than a keyboard shortcut away, has long been a quick and easy way to open apps and find files. But some Mac users chose to use more capable alternatives like Alfred and Raycast.
 Yet now with macOS Tahoe, Spotlight offers many of the same power user features of those apps, without the need to install anything.
 
-### 14. [DuckDuckGo adds free, encrypted real-time AI voice chat to Duck.ai](https://9to5mac.com/2026/02/09/duckduckgo-adds-free-encrypted-real-time-ai-voice-chat-to-duck-ai/)
+### 26. [DuckDuckGo adds free, encrypted real-time AI voice chat to Duck.ai](https://9to5mac.com/2026/02/09/duckduckgo-adds-free-encrypted-real-time-ai-voice-chat-to-duck-ai/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 For those who choose to use AI as part of their search workflow, the feature is rolling out for free with daily limits, with higher caps for DuckDuckGo subscribers. Here are the details.
 more…
 
-### 15. [A new Apple Watch app for Rivian electric vehicles is in the works](https://appleinsider.com/articles/26/02/10/a-new-apple-watch-app-for-rivian-electric-vehicles-is-in-the-works?utm_source=rss)
+### 27. [A new Apple Watch app for Rivian electric vehicles is in the works](https://appleinsider.com/articles/26/02/10/a-new-apple-watch-app-for-rivian-electric-vehicles-is-in-the-works?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 A dedicated Apple Watch application from automaker Rivian is set to enable vehicle locking, unlocking, window adjustment, and much more, even on cars from 2021.
 
@@ -140,100 +218,22 @@ A dedicated Apple Watch application from automaker Rivian is set to enable vehic
 Rivian is set to launch a dedicated Apple Watch app.
 Apple's Car Key feature has let iPhone and Apple Watch owners  unlock and start their cars using mobile devices since 2020. The capability is built into iOS and is supported by more than 30 car companies, including Cadillac and other GM brands.
 
-### 16. [Last call: Update Apple Home by tomorrow, or your HomeKit setup may stop working](https://9to5mac.com/2026/02/09/last-call-update-apple-home-by-tomorrow-or-your-homekit-setup-may-stop-working/)
+### 28. [Last call: Update Apple Home by tomorrow, or your HomeKit setup may stop working](https://9to5mac.com/2026/02/09/last-call-update-apple-home-by-tomorrow-or-your-homekit-setup-may-stop-working/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re still running Apple Home on the old HomeKit architecture, this is your final reminder: Apple’s migration deadline is tomorrow, February 10. Here’s how to update.
 more…
 
-### 17. [YouTube TV Gets Cheaper Sports, News, and Entertainment Bundles](https://www.macrumors.com/2026/02/09/youtube-tv-cheaper-bundles/)
+### 29. [YouTube TV Gets Cheaper Sports, News, and Entertainment Bundles](https://www.macrumors.com/2026/02/09/youtube-tv-cheaper-bundles/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 YouTube is splitting YouTube TV into a selection of tailored YouTube TV Plans, allowing subscribers to pay less for a smaller selection of channels. "TV should be easy," reads the blog post announcing the change.
 
 
 There are 10+ new plans across Sports, News, Entertainment, and Family, at prices that are $11 to $28 below the $82.99 per month cost for a full YouTube TV subscription. New subscribers will have access to lower prices for the first three months to a year, and a 10-day trial is available. Existing subscribers can downgrade to one of the more affordable plans.
 
-### 18. [Price drop: Get top results from dozens of popular AIs, all for one low price](https://www.cultofmac.com/deals/chatplayground-ai)
+### 30. [Price drop: Get top results from dozens of popular AIs, all for one low price](https://www.cultofmac.com/deals/chatplayground-ai)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Whether creating content or testing how different AIs handle prompts, ChatPlayground AI makes it easy and affordable to get the best results.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 19. [Rivian launching Apple Watch app with remote controls and Gen 1 digital key feature](https://9to5mac.com/2026/02/09/rivian-launching-apple-watch-app-with-remote-controls-and-gen-1-digital-key-feature/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Back in December, Rivian released support for using an Apple Watch as a digital key. Next, the EV maker is launching a dedicated Apple Watch app with remote access and control capabilities. 
-more…
-
-### 20. [Discord's upcoming safety update makes age verification hard to avoid](https://appleinsider.com/articles/26/02/09/discords-upcoming-safety-update-makes-age-verification-hard-to-avoid?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Discord plans to set every user's account to teen-by-default — unless you're willing to undergo an invasive age verification process.
-
-
-Discord will require age verification for adult access
-On Monday, Discord, a popular social app, announced that it will be rolling out "enhanced teen safety features." According to the company, beginning in March.
-
-### 21. [England Rugby team gets a competitive advantage with iPhone, iPad, &amp; Mac in latest ad](https://appleinsider.com/articles/26/02/09/apple-ad-shows-how-england-rugby-makes-use-of-the-ipad-and-macbook-pro?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Apple's latest video ad outlines why the iPad and MacBook Pro are necessary tools for England Rugby's performance analysis team.
-
-
-England Rugby uses Apple hardware for game analysis. Image Credit: Apple.
-Time and time again, the iPhone has proven itself as a useful tool for sporting events, with Major League Soccer already using the device to record matches.
-Even the Maracana Stadium is set to make use of an iPhone-powered offside camera system in 2026. Still, the iPhone isn't the only piece of Apple hardware that continues to see use in sports.
-
-### 22. [WhatsApp Web starts rolling out voice and video calls](https://9to5mac.com/2026/02/09/whatsapp-web-starts-rolling-out-voice-and-video-calls/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-The feature is now starting to reach WhatsApp Web beta users, with a wider rollout expected for the coming weeks. Here’s how it works.
-more…
-
-### 23. [Apple TV is about to bring back two of its best sci-fi series](https://9to5mac.com/2026/02/09/apple-tv-is-about-to-bring-back-two-of-its-best-sci-fi-series/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple TV has a deep bench of acclaimed sci-fi series, and two of its best are coming back soon: the Godzilla-starring Monarch: Legacy of Monsters and space race drama For All Mankind.
-more…
-
-### 24. [Why an M5 MacBook Pro launch in March keeps the M6 OLED dream alive this year](https://9to5mac.com/2026/02/09/why-an-m5-macbook-pro-launch-in-march-keeps-the-m6-oled-dream-alive-this-year/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Per Mark Gurman in his weekend Power On newsletter, Apple is preparing to launch M5 Pro and M5 Max MacBook Pros as early as the week of March 2. For those waiting on the major redesign with OLED displays and touch support, this spec bump revision that we expect first can’t come soon enough.
-Does waiting another month for the M5 Pro update to arrive rule out an M6 Pro release in 2026? There’s a good reason to keep the M6 Pro MacBook Pro dream alive this year.
-more…
-
-### 25. [Apple highlights how England Rugby uses iPads and Macs to analyze live match data](https://9to5mac.com/2026/02/09/apple-highlights-how-england-rugby-uses-ipads-and-macs-to-analyze-live-match-data/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple has kicked off a new campaign, titled Apple at Play, showcasing how England Rugby uses Apple devices for in-game analysis. Watch it below.
-more…
-
-### 26. [Apple’s new ‘MacBook’ is coming: Here’s every rumored feature](https://9to5mac.com/2026/02/09/apples-new-macbook-is-coming-heres-every-rumored-feature/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple is rumored to have a brand new ‘MacBook’ launching soon—a Mac laptop with no Air or Pro suffix. Here’s everything we know right now.
-more…
-
-### 27. [It sounds like Apple will continue a positive CarPlay trend around iOS 27](https://9to5mac.com/2026/02/09/carplay-improvements-coming/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-When Apple previewed “next-generation CarPlay” in 2022, it felt like Apple froze development of the CarPlay version actually used by drivers. Eventually, next-gen CarPlay became CarPlay Ultra, and CarPlay for non-Aston Martin drivers rapidly started to see new improvements again. Now it sounds like that trend will continue either before or as part of iOS 27.
-more…
-
-### 28. [Upgrade your Apple Home architecture before the old one gets killed on Tuesday](https://appleinsider.com/articles/26/02/09/upgrade-your-apple-home-architecture-before-the-old-one-gets-killed-on-tuesday?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Apple will be killing off its original Apple Home architecture on February 10, and it won't matter if you're on old software. Do this to upgrade HomeKit and keep your smart home devices running normally.
-
-
-You really should upgrade your Apple Home, if you haven't already. 
-In May 2025, Apple said it will be cutting support for its original Apple Home architecture as part of what was known as iOS 19, now iOS 26. After postponing it in November, Apple is now preparing to shut off the architecture on February 10, 2026.
-
-### 29. [DOJ faces investigation over removal of ICE-tracking apps from the App Store](https://9to5mac.com/2026/02/09/doj-faces-investigation-over-removal-of-ice-tracking-apps-from-the-app-store/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-POLITICO reports that House Judiciary Committee ranking member Jamie Raskin (D-Md.) has launched an investigation into whether the Department of Justice pressured Apple and Google to remove ICEBlock and similar apps from the App Store and Play Store. Here are the details.
-more…
-
-### 30. [Apple's Regent Street Store Reopening Soon After One-Month Closure](https://www.macrumors.com/2026/02/09/apples-regent-street-reopening-date/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple has announced that its flagship Regent Street store in London, England reopens on Saturday, February 14, at 10 a.m. local time.
-
-
-The store has been temporarily closed for "refurbishment" since Monday, January 12. The extent of the changes remains to be seen.
-
-It is not yet clear if Apple made any changes that will be visible to customers. In some cases, Apple only updates a store's fixtures or back-of-house area, resulting in no visible differences to customers when business resumes.
-
-already remodeled in 2016.
-Tag:
 
 <a id="iot"></a>
 
@@ -397,140 +397,140 @@ The post Electronic Offender Monitoring Reaches 1.6 Million Across Europe, the A
 
 ## Artificial Intelligence
 
-### 1. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
+### 1. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+India’s new rules take effect February 20, tightening deepfake oversight and shrinking takedown windows to as little as two hours.
+
+### 2. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Thomas Dohmke's new startup offers an AI system to allow developers to better manage all the code AI agents produce.
+
+### 3. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Startup Runway has raised a $315 million round at a $5.3 billion valuation, funds it will use to expand beyond AI video generation and into world models.
+
+### 4. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
+**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
+An easy step-by-step guide to building the snake game from scratch
+The post Implementing the Snake Game in Python appeared first on Towards Data Science.
+
+### 5. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to get more out of Claude code by giving it access to more information.
 The post How to Personalize Claude Code appeared first on Towards Data Science.
 
-### 2. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
+### 6. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Major Chinese technology companies Alibaba, Tencent, and Huawei are pursuing agentic AI (systems that can execute multi-step tasks autonomously and interact with software, data, and services without human instruction), and orienting the technology toward discrete industries and workflows. Alibaba’s open-source strategy for agentic AI Alibaba’s strategy centres on its Qwen AI model family, a set […]
 The post Chinese hyperscalers and industry-specific agentic AI appeared first on AI News.
 
-### 3. [Agentic AI in healthcare: How Life Sciences marketing could achieve US$450bn in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
+### 7. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
-Agentic AI in healthcare is graduating from answering prompts to autonomously executing complex marketing tasks – and life sciences companies are betting their commercial strategies on it. According to a recent report cited by Capgemini Invent, AI agents could generate up to US$450 billion in economic value through revenue uplift and cost savings globally by […]
-The post Agentic AI in healthcare: How Life Sciences marketing could achieve US$450bn in value by 2028 appeared first on AI News.
+Agentic AI in healthcare is graduating from answering prompts to autonomously executing complex marketing tasks – and life sciences companies are betting their commercial strategies on it. According to a recent report cited by Capgemini Invent, AI agents could generate up to $450 billion in economic value through revenue uplift and cost savings globally by […]
+The post Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028 appeared first on AI News.
 
-### 4. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
+### 8. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Because employees could do more, work began bleeding into lunch breaks and late evenings. The employees' to-do lists expanded to fill every hour that AI freed up, and then kept going.
 
-### 5. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
+### 9. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI isn't going to replace major SaaS apps with vibe-coded versions, Databricks CEO Ali Ghodsi believes. But it could give rise to competitors.
 
-### 6. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
+### 10. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India's Anthropic Software has taken the U.S. AI giant to court over a name dispute.
 
-### 7. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
+### 11. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Delayed January: deadlines, downtimes, and flow times
 The post The Machine Learning Lessons I’ve Learned Last Month appeared first on Towards Data Science.
 
-### 8. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
+### 12. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI faced a backlash late last year when it tested app suggestions that looked like unwanted ads. Still, the AI company needs to generate revenue from its popular chatbot to cover the costs of developing its technology and growing the business.
 
-### 9. [Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO ](https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/)
+### 13. [Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO ](https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Bhusri said in a statement that the company's next chapter would be focused on AI.
 
-### 10. [Anthropic closes in on $20B round](https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/)
+### 14. [Anthropic closes in on $20B round](https://techcrunch.com/2026/02/09/anthropic-closes-in-on-20b-round/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The company raised $13 billion in equity funding just five months ago, but intense competition between frontier labs and the ongoing cost of compute have made them eager to raise as quickly as possible.
 
-### 11. [Ex-Googlers are building infrastructure to help companies understand their video data](https://techcrunch.com/2026/02/09/ex-googlers-are-building-infrastructure-to-help-companies-understand-their-video-data/)
+### 15. [Ex-Googlers are building infrastructure to help companies understand their video data](https://techcrunch.com/2026/02/09/ex-googlers-are-building-infrastructure-to-help-companies-understand-their-video-data/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Founded by former Google Japan leaders, InfiniMind is building enterprise AI to turn vast, unused video archives into searchable, actionable business intelligence.
 
-### 12. [Call for speakers: TechCrunch Founder Summit 2026](https://techcrunch.com/2026/02/09/call-for-speakers-techcrunch-founder-summit-2026/)
+### 16. [Call for speakers: TechCrunch Founder Summit 2026](https://techcrunch.com/2026/02/09/call-for-speakers-techcrunch-founder-summit-2026/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Submit to speak at TechCrunch Founder Summit 2026 to lead a roundtable. Share scaling insights with 1,100 founders on June 23 in Boston.
 
-### 13. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
+### 17. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How the new Interactions API enables deep-reasoning, stateful, agentic workflows.
 The post The Death of the “Everything Prompt”: Google’s Move Toward Structured AI appeared first on Towards Data Science.
 
-### 14. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
+### 18. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For a long time, cryptocurrency prices moved quickly. A headline would hit, sentiment would spike, and charts would react almost immediately. That pattern no longer holds. Today’s market is slow, heavier than before, and shaped by forces that do not always announce themselves clearly. Capital allocation, ETF mechanics, and macro positioning now influence price behaviour […]
 The post What AI can (and can’t) tell us about XRP in ETF-driven markets appeared first on AI News.
 
-### 15. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
+### 19. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Because Western AI labs won’t—or can’t—anymore. As OpenAI, Anthropic, and Google face mounting pressure to restrict their most powerful models, Chinese developers have filled the open-source void with AI explicitly built for what operators need: powerful models that run on commodity hardware. A new security study reveals just how thoroughly Chinese AI has captured this space. Research published by SentinelOne […]
 The post Exclusive: Why are Chinese AI models dominating open-source as Western labs step back? appeared first on AI News.
 
-### 16. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
+### 20. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Cryptocurrency markets have become a high-speed playground where developers optimise the next generation of predictive software. Using real-time data flows and decentralised platforms, scientists develop prediction models that can extend the scope of traditional finance. The digital asset landscape offers an unparalleled environment for machine learning. When you track cryptocurrency prices today, you are observing […]
 The post Cryptocurrency markets a testbed for AI forecasting models appeared first on AI News.
 
-### 17. [Goldman Sachs tests autonomous AI agents for process-heavy work](https://www.artificialintelligence-news.com/news/goldman-sachs-tests-autonomous-ai-agents-for-process-heavy-work/)
+### 21. [Goldman Sachs tests autonomous AI agents for process-heavy work](https://www.artificialintelligence-news.com/news/goldman-sachs-tests-autonomous-ai-agents-for-process-heavy-work/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Goldman Sachs is pushing deeper into real use of artificial intelligence inside its operations, moving to systems that can carry out complex tasks on their own. The Wall Street bank is working with AI startup Anthropic to create autonomous AI agents powered by Anthropic’s Claude model that can handle work that used to require large […]
 The post Goldman Sachs tests autonomous AI agents for process-heavy work appeared first on AI News.
 
-### 18. [Crypto.com places $70M bet on AI.com domain ahead of Super Bowl](https://techcrunch.com/2026/02/08/crypto-com-places-70m-bet-on-ai-com-domain-ahead-of-super-bowl/)
+### 22. [Crypto.com places $70M bet on AI.com domain ahead of Super Bowl](https://techcrunch.com/2026/02/08/crypto-com-places-70m-bet-on-ai-com-domain-ahead-of-super-bowl/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The purchase rewrites the domain record books -- not that the crypto industry has ever been accused of restraint when it comes to spending.
 
-### 19. [Okay, I’m slightly less mad about that ‘Magnificent Ambersons’ AI project](https://techcrunch.com/2026/02/08/okay-im-slightly-less-mad-about-that-magnificent-ambersons-ai-project/)
+### 23. [Okay, I’m slightly less mad about that ‘Magnificent Ambersons’ AI project](https://techcrunch.com/2026/02/08/okay-im-slightly-less-mad-about-that-magnificent-ambersons-ai-project/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 But this is still a bad idea.
 
-### 20. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
+### 24. [From Svedka to Anthropic, brands make bold plays with AI in Super Bowl ads](https://techcrunch.com/2026/02/08/super-bowl-60-ai-ads-svedka-anthropic-brands-commercials/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 From the first AI-generated Big Game ad courtesy of Svedka to Anthropic's beef with OpenAI, here are the biggest ads from Super Bowl LX.
 
-### 21. [New York lawmakers propose a 3-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
+### 25. [New York lawmakers propose a 3-year pause on new data centers](https://techcrunch.com/2026/02/07/new-york-lawmakers-propose-a-three-year-pause-on-new-data-centers/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Although the bill’s prospects are uncertain, New York is at least the sixth state to consider pausing construction of new data centers.
 
-### 22. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
+### 26. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to work with AI, while strengthening your unique human skills that technology cannot replace
 The post What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026 appeared first on Towards Data Science.
 
-### 23. [Benchmark raises $225M in special funds to double down on Cerebras](https://techcrunch.com/2026/02/06/benchmark-raises-225m-in-special-funds-to-double-down-on-cerebras/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Benchmark Capital has been an investor in the Nvidia rival since 2016.
-
-### 24. [It just got easier for Claude to check in on your WordPress site](https://techcrunch.com/2026/02/06/it-just-got-easier-for-claude-to-check-in-on-your-wordpress-site/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-WordPress users can now leverage Claude to analyze web traffic or find information about other internal site metrics.
-
-### 25. [Maybe AI agents can be lawyers after all](https://techcrunch.com/2026/02/06/maybe-ai-agents-can-be-lawyers-after-all/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-This week's release of Opus 4.6 shook up the agentic AI leaderboards.
-
-### 26. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
+### 27. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The real value lies in writing clearer code and using your tools right
 The post Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently appeared first on Towards Data Science.
 
-### 27. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
+### 28. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How much of your AI agent's output is real data versus confident guesswork?
 The post Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes appeared first on Towards Data Science.
 
-### 28. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
+### 29. [How separating logic and search boosts AI agent scalability](https://www.artificialintelligence-news.com/news/how-separating-logic-and-search-boosts-ai-agent-scalability/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Separating logic from inference improves AI agent scalability by decoupling core workflows from execution strategies. The transition from generative AI prototypes to production-grade agents introduces a specific engineering hurdle: reliability. LLMs are stochastic by nature. A prompt that works once may fail on the second attempt. To mitigate this, development teams often wrap core business […]
 The post How separating logic and search boosts AI agent scalability appeared first on AI News.
 
-### 29. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
+### 30. [Intuit, Uber, and State Farm trial AI agents inside enterprise workflows](https://www.artificialintelligence-news.com/news/intuit-uber-and-state-farm-trial-ai-agents-inside-enterprise-workflows/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 The way large companies use artificial intelligence is changing. For years, AI in business meant experimenting with tools that could answer questions or help with small tasks. Now, some big enterprises are moving beyond tools to AI agents that can actually do practical work in systems and workflows. This week, OpenAI introduced a new platform […]
 The post Intuit, Uber, and State Farm trial AI agents inside enterprise workflows appeared first on AI News.
-
-### 30. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-In the current landscape of generative artificial intelligence, we have reached a saturation point with assistants. Most users are familiar with the routine. You prompt a tool, it provides a draft, and then you spend the next hour manually moving that output into another application for formatting, design, or distribution. AI promised to save time, […]
-The post SuperCool review: Evaluating the reality of autonomous creation appeared first on AI News.
 
 <a id="cybersecurity"></a>
 
@@ -538,147 +538,146 @@ The post SuperCool review: Evaluating the reality of autonomous creation appeare
 
 ## Cybersecurity
 
-### 1. [New ‘SSHStalker’ Linux Botnet Uses Old Techniques](https://www.securityweek.com/new-sshstalker-linux-botnet-uses-old-techniques/)
+### 1. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Estimated to have infected 7,000 systems, the botnet uses a mass-compromise pipeline, deploying various scanners and malware.
-The post New ‘SSHStalker’ Linux Botnet Uses Old Techniques appeared first on SecurityWeek.
+SAP has released 26 new and one updated security notes on February 2026 security patch day.
+The post SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities appeared first on SecurityWeek.
 
-### 2. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
+### 2. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The company will use the investment to expand its R&amp;D team and operations, deepen platform capabilities, and scale go-to-market presence.
+The post Backslash Raises $19 Million to Secure Vibe Coding appeared first on SecurityWeek.
+
+### 3. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-January 5, 2026, Seattle, USA — ZAST.AI announced the completion of a $6 million Pre-A funding round. This investment came from the well-known investment firm Hillhouse Capital, bringing ZAST.AI's total funding close to $10 million. This marks a recognition from leading capital markets of a new solution: ending the era of high false positive rates in security tools and making every alert
+Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?
+According to Picus Labs’ new Red Report 2026, which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for
 
-### 3. [BeyondTrust Patches Critical RCE Vulnerability](https://www.securityweek.com/beyondtrust-patches-critical-rce-vulnerability/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Affecting both RS and PRA, the bug can be exploited remotely via crafted requests without authentication.
-The post BeyondTrust Patches Critical RCE Vulnerability appeared first on SecurityWeek.
-
-### 4. [Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server](https://thehackernews.com/2026/02/warlock-ransomware-breaches.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-SmarterTools confirmed last week that the Warlock (aka Storm-2603) ransomware gang breached its network by exploiting an unpatched SmarterMail instance.
-The incident took place on January 29, 2026, when a mail server that was not updated to the latest version was compromised, the company's Chief Commercial Officer, Derek Curtis, said.
-"Prior to the breach, we had approximately 30 servers/VMs
-
-### 5. [Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms](https://www.securityweek.com/singapore-rootkits-zero-day-used-in-chinese-attack-on-major-telecom-firms/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-China-linked UNC3886 targeted all four major telecom providers, but did not disrupt services or access customer information.
-The post Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms appeared first on SecurityWeek.
-
-### 6. [Dutch Authorities Confirm Ivanti Zero-Day Exploit Exposed Employee Contact Data](https://thehackernews.com/2026/02/dutch-authorities-confirm-ivanti-zero.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-The Netherlands' Dutch Data Protection Authority (AP) and the Council for the Judiciary confirmed both agencies (Rvdr) have disclosed that their systems were impacted by cyber attacks that exploited the recently disclosed security flaws in Ivanti Endpoint Manager Mobile (EPMM), according to a notice sent to the country's parliament on Friday.
-"On January 29, the National Cyber Security Center (
-
-### 7. [Fugitive behind $73M 'pig butchering' scheme gets 20 years in prison](https://www.bleepingcomputer.com/news/security/fugitive-behind-73m-pig-butchering-scheme-gets-20-years-in-prison/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A dual Chinese and St. Kitts and Nevis national was sentenced to 20 years in prison in absentia for his role in an international cryptocurrency investment scheme (also known as pig butchering or romance baiting) that defrauded victims of more than $73 million. [...]
-
-### 8. [RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool ](https://www.securityweek.com/rsac-releases-quantickle-open-source-threat-intelligence-visualization-tool/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Quantickle is a browser-based tool designed for creating visual representations of threat research.
-The post RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool  appeared first on SecurityWeek.
-
-### 9. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
+### 4. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.
 The vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.
 
 "An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may
 
-### 10. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
+### 5. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Microsoft wants to introduce smartphone-style app permission prompts in Windows 11 to request user consent before apps can access sensitive resources such as files, cameras, and microphones. [...]
+
+### 6. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A new commercial mobile spyware platform dubbed ZeroDayRAT is being advertised to cybercriminals on Telegram as a tool that provides full remote control over compromised Android and iOS devices. [...]
+
+### 7. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Available via Telegram, researchers warn ZeroDayRAT is a ‘complete mobile compromise toolkit’ comparable to kits normally requiring nation-state resources to develop.
+The post New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices appeared first on SecurityWeek.
+
+### 8. [New ‘SSHStalker’ Linux Botnet Uses Old Techniques](https://www.securityweek.com/new-sshstalker-linux-botnet-uses-old-techniques/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Estimated to have infected 7,000 systems, the botnet uses a mass-compromise pipeline, deploying various scanners and malware.
+The post New ‘SSHStalker’ Linux Botnet Uses Old Techniques appeared first on SecurityWeek.
+
+### 9. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+January 5, 2026, Seattle, USA — ZAST.AI announced the completion of a $6 million Pre-A funding round. This investment came from the well-known investment firm Hillhouse Capital, bringing ZAST.AI's total funding close to $10 million. This marks a recognition from leading capital markets of a new solution: ending the era of high false positive rates in security tools and making every alert
+
+### 10. [BeyondTrust Patches Critical RCE Vulnerability](https://www.securityweek.com/beyondtrust-patches-critical-rce-vulnerability/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Affecting both RS and PRA, the bug can be exploited remotely via crafted requests without authentication.
+The post BeyondTrust Patches Critical RCE Vulnerability appeared first on SecurityWeek.
+
+### 11. [Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server](https://thehackernews.com/2026/02/warlock-ransomware-breaches.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+SmarterTools confirmed last week that the Warlock (aka Storm-2603) ransomware gang breached its network by exploiting an unpatched SmarterMail instance.
+The incident took place on January 29, 2026, when a mail server that was not updated to the latest version was compromised, the company's Chief Commercial Officer, Derek Curtis, said.
+"Prior to the breach, we had approximately 30 servers/VMs
+
+### 12. [Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms](https://www.securityweek.com/singapore-rootkits-zero-day-used-in-chinese-attack-on-major-telecom-firms/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+China-linked UNC3886 targeted all four major telecom providers, but did not disrupt services or access customer information.
+The post Singapore: Rootkits, Zero-Day Used in Chinese Attack on Major Telecom Firms appeared first on SecurityWeek.
+
+### 13. [Dutch Authorities Confirm Ivanti Zero-Day Exploit Exposed Employee Contact Data](https://thehackernews.com/2026/02/dutch-authorities-confirm-ivanti-zero.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The Netherlands' Dutch Data Protection Authority (AP) and the Council for the Judiciary confirmed both agencies (Rvdr) have disclosed that their systems were impacted by cyber attacks that exploited the recently disclosed security flaws in Ivanti Endpoint Manager Mobile (EPMM), according to a notice sent to the country's parliament on Friday.
+"On January 29, the National Cyber Security Center (
+
+### 14. [Fugitive behind $73M 'pig butchering' scheme gets 20 years in prison](https://www.bleepingcomputer.com/news/security/fugitive-behind-73m-pig-butchering-scheme-gets-20-years-in-prison/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A dual Chinese and St. Kitts and Nevis national was sentenced to 20 years in prison in absentia for his role in an international cryptocurrency investment scheme (also known as pig butchering or romance baiting) that defrauded victims of more than $73 million. [...]
+
+### 15. [RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool ](https://www.securityweek.com/rsac-releases-quantickle-open-source-threat-intelligence-visualization-tool/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Quantickle is a browser-based tool designed for creating visual representations of threat research.
+The post RSAC Releases Quantickle Open Source Threat Intelligence Visualization Tool  appeared first on SecurityWeek.
+
+### 16. [Chinese cyberspies breach Singapore's four largest telcos](https://www.bleepingcomputer.com/news/security/chinese-cyberspies-breach-singapores-four-largest-telcos/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Chinese threat actor tracked as UNC3886 breached Singapore's four largest telecommunication service providers, Singtel, StarHub, M1, and Simba, at least once last year. [...]
 
-### 11. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
+### 17. [Hackers exploit SolarWinds WHD flaws to deploy DFIR tool in attacks](https://www.bleepingcomputer.com/news/security/threat-actors-exploit-solarwinds-wdh-flaws-to-deploy-velociraptor/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Hackers are now exploiting SolarWinds Web Help Desk (WHD) vulnerabilities to gain code execution rights on exposed systems and deploy legitimate tools, including the Velociraptor forensics tools, for persistence and remote control. [...]
 
-### 12. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
+### 18. [Hackers breach SmarterTools network using flaw in its own software](https://www.bleepingcomputer.com/news/security/hackers-breach-smartertools-network-using-flaw-in-its-own-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 SmarterTools confirmed last week that the Warlock ransomware gang breached its network after compromising an email system, but did not impact business applications or account data. [...]
 
-### 13. [Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk ](https://www.securityweek.com/lema-ai-emerges-from-stealth-with-24-million-to-tackle-third-party-risk/)
+### 19. [Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk ](https://www.securityweek.com/lema-ai-emerges-from-stealth-with-24-million-to-tackle-third-party-risk/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The funding was raised over Series A and seed funding rounds for its supply chain security solution.
 The post Lema AI Emerges From Stealth With $24 Million to Tackle Third-Party Risk  appeared first on SecurityWeek.
 
-### 14. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
+### 20. [China-Linked UNC3886 Targets Singapore Telecom Sector in Cyber Espionage Campaign](https://thehackernews.com/2026/02/china-linked-unc3886-targets-singapore.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The Cyber Security Agency (CSA) of Singapore on Monday revealed that the China-nexus cyber espionage group known as UNC3886 targeted its telecommunications sector.
 "UNC3886 had launched a deliberate, targeted, and well-planned campaign against Singapore's telecommunications sector," CSA said. "All four of Singapore's major telecommunications operators ('telcos') – M1, SIMBA Telecom, Singtel, and
 
-### 15. [Password guessing without AI: How attackers build targeted wordlists](https://www.bleepingcomputer.com/news/security/password-guessing-without-ai-how-attackers-build-targeted-wordlists/)
+### 21. [Password guessing without AI: How attackers build targeted wordlists](https://www.bleepingcomputer.com/news/security/password-guessing-without-ai-how-attackers-build-targeted-wordlists/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Attackers don't need AI to crack passwords, they build targeted wordlists from an organization's own public language. This article explains how tools like CeWL turn websites into high-success password guesses and why complexity rules alone fall short. [...]
 
-### 16. [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html)
+### 22. [SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers](https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has revealed that it observed a multi‑stage intrusion that involved the threat actors exploiting internet‑exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.
 That said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized recently
 
-### 17. [Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter](https://www.securityweek.com/ransomware-groups-may-pivot-back-to-encryption-as-data-theft-tactics-falter/)
+### 23. [Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter](https://www.securityweek.com/ransomware-groups-may-pivot-back-to-encryption-as-data-theft-tactics-falter/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 As only data exfiltration for extortion no longer delivers ROI, ransomware gangs may increasingly encrypting data for additional leverage.
 The post Ransomware Groups May Pivot Back to Encryption as Data Theft Tactics Falter appeared first on SecurityWeek.
 
-### 18. [Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats](https://www.securityweek.com/outtake-raises-40-million-to-bolster-digital-trust-against-ai-driven-threats/)
+### 24. [Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats](https://www.securityweek.com/outtake-raises-40-million-to-bolster-digital-trust-against-ai-driven-threats/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The Series B funding round brings the cybersecurity startup’s total raised to $60 million.
 The post Outtake Raises $40 Million to Bolster Digital Trust Against AI-Driven Threats appeared first on SecurityWeek.
 
-### 19. [Cybersecurity M&amp;A Roundup: 34 Deals Announced in January 2026](https://www.securityweek.com/cybersecurity-ma-roundup-34-deals-announced-in-january-2026/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Significant cybersecurity M&amp;A deals announced by CrowdStrike, Infoblox, JumpCloud, LevelBlue, OneSpan, and Radware.
-The post Cybersecurity M&amp;A Roundup: 34 Deals Announced in January 2026 appeared first on SecurityWeek.
-
-### 20. [BeyondTrust warns of critical RCE flaw in remote support software](https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/)
+### 25. [BeyondTrust warns of critical RCE flaw in remote support software](https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 BeyondTrust warned customers to patch a critical security flaw in its Remote Support (RS) and Privileged Remote Access (PRA) software that could allow unauthenticated attackers to execute arbitrary code remotely. [...]
 
-### 21. [⚡ Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More](https://thehackernews.com/2026/02/weekly-recap-ai-skill-malware-31tbps.html)
+### 26. [⚡ Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More](https://thehackernews.com/2026/02/weekly-recap-ai-skill-malware-31tbps.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cyber threats are no longer coming from just malware or exploits. They’re showing up inside the tools, platforms, and ecosystems organizations use every day. As companies connect AI, cloud apps, developer tools, and communication systems, attackers are following those same paths.
 A clear pattern this week: attackers are abusing trust. Trusted updates, trusted marketplaces, trusted apps, even
 
-### 22. [Recent SolarWinds Flaws Potentially Exploited as Zero-Days](https://www.securityweek.com/recent-solarwinds-flaws-potentially-exploited-as-zero-days/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Vulnerable SolarWinds Web Help Desk instances were exploited in December 2025 for initial access.
-The post Recent SolarWinds Flaws Potentially Exploited as Zero-Days appeared first on SecurityWeek.
-
-### 23. [SmarterTools Hit by Ransomware via Vulnerability in Its Own Product](https://www.securityweek.com/smartertools-hit-by-ransomware-via-vulnerability-in-its-own-product/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-SmarterTools says customers were impacted after hackers compromised a data center used for quality control testing.
-The post SmarterTools Hit by Ransomware via Vulnerability in Its Own Product appeared first on SecurityWeek.
-
-### 24. [Men charged in FanDuel scheme fueled by thousands of stolen identities](https://www.bleepingcomputer.com/news/security/men-charged-in-massive-fanduel-fraud-scheme-fueled-by-thousands-of-stolen-identities/)
+### 27. [Men charged in FanDuel scheme fueled by thousands of stolen identities](https://www.bleepingcomputer.com/news/security/men-charged-in-massive-fanduel-fraud-scheme-fueled-by-thousands-of-stolen-identities/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Two Connecticut men face federal charges for allegedly defrauding FanDuel and other online gambling sites of $3 million over several years using the stolen identities of approximately 3,000 victims. [...]
 
-### 25. [How Top CISOs Solve Burnout and Speed up MTTR without Extra Hiring](https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html)
+### 28. [How Top CISOs Solve Burnout and Speed up MTTR without Extra Hiring](https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Why do SOC teams keep burning out and missing SLAs even after spending big on security tools? Routine triage piles up, senior specialists get dragged into basic validation, and MTTR climbs, while stealthy threats still find room to slip through. Top CISOs have realized the solution isn’t hiring more people or stacking yet another tool onto the workflow, but giving their teams faster, clearer
 
-### 26. [Bloody Wolf Targets Uzbekistan, Russia Using NetSupport RAT in Spear-Phishing Campaign](https://thehackernews.com/2026/02/bloody-wolf-targets-uzbekistan-russia.html)
+### 29. [Bloody Wolf Targets Uzbekistan, Russia Using NetSupport RAT in Spear-Phishing Campaign](https://thehackernews.com/2026/02/bloody-wolf-targets-uzbekistan-russia.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The threat actor known as Bloody Wolf has been linked to a campaign targeting Uzbekistan and Russia to infect systems with a remote access trojan known as NetSupport RAT.
 Cybersecurity vendor Kaspersky is tracking the activity under the moniker Stan Ghouls. The threat actor is known to be active since at least 2023, orchestrating spear-phishing attacks against manufacturing, finance, and IT
 
-### 27. [Microsoft: Exchange Online flags legitimate emails as phishing](https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/)
+### 30. [Microsoft: Exchange Online flags legitimate emails as phishing](https://www.bleepingcomputer.com/news/microsoft/microsoft-exchange-online-flags-legitimate-emails-as-phishing/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is investigating an ongoing Exchange Online issue that mistakenly flags legitimate emails as phishing and quarantines them. [...]
-
-### 28. [European Commission discloses breach that exposed staff data](https://www.bleepingcomputer.com/news/security/european-commission-discloses-breach-that-exposed-staff-data/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-The European Commission is investigating a breach after finding evidence that its mobile device management platform was hacked. [...]
-
-### 29. [TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure](https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Cybersecurity researchers have called attention to a "massive campaign" that has systematically targeted cloud native environments to set up malicious infrastructure for follow-on exploitation.
-The activity, observed around December 25, 2025, and described as "worm-driven," leveraged exposed Docker APIs, Kubernetes clusters, Ray dashboards, and Redis servers, along with the recently disclosed
-
-### 30. [BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA](https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.
-"BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability," the company
 
 
 ---
