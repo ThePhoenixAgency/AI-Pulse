@@ -334,7 +334,7 @@
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
-            <img src="https://avatars.githubusercontent.com/ThePhoenixAgency?v=4" alt="Profile" class="profile-image"
+            <img src="https://avatars.githubusercontent.com/u/EthanThePhoenix38?v=4" alt="Profile" class="profile-image"
                 onerror="this.src='https://via.placeholder.com/150'">
             <h1>ThePhoenixAgency</h1>
             <p class="tagline">🚀 AI & Cybersecurity Specialist | Full Stack Developer | Open Source Contributor</p>
@@ -498,7 +498,7 @@
         async function fetchGitHubStats() {
             try {
                 // Fetch user data
-                const userResponse = await fetch('https://api.github.com/users/ThePhoenixAgency');
+                const userResponse = await fetch('https://api.github.com/users/EthanThePhoenix38');
                 const userData = await userResponse.json();
 
                 // Update stats (with fallback values)
@@ -507,7 +507,7 @@
                 document.getElementById('totalFollowing').textContent = userData.following || '-';
 
                 // Fetch repositories for star count
-                const reposResponse = await fetch('https://api.github.com/users/ThePhoenixAgency/repos?per_page=100');
+                const reposResponse = await fetch('https://api.github.com/users/EthanThePhoenix38/repos?per_page=100');
                 const repos = await reposResponse.json();
 
                 const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
