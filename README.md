@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 10 Feb 2026 01:50:44 GMT
+**Last Update:** Tue, 10 Feb 2026 04:27:01 GMT
 
 ---
 
@@ -29,7 +29,21 @@
 
 ## Mac & Apple
 
-### 1. [A new Apple Watch app for Rivian electric vehicles is in the works](https://appleinsider.com/articles/26/02/10/a-new-apple-watch-app-for-rivian-electric-vehicles-is-in-the-works?utm_source=rss)
+### 1. [Spotlight got a huge upgrade in macOS Tahoe, here's how to use it](https://appleinsider.com/inside/macos-tahoe/tips/spotlight-got-a-huge-upgrade-in-macos-tahoe-heres-how-to-use-it?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple's Spotlight feature has been around for a long time, but with macOS Tahoe, it enjoyed its biggest update in years. Here's how to make the most of its powerful new features.
+
+
+Spotlight has had a revamp with macOS Tahoe
+Spotlight, never further than a keyboard shortcut away, has long been a quick and easy way to open apps and find files. But some Mac users chose to use more capable alternatives like Alfred and Raycast.
+Yet now with macOS Tahoe, Spotlight offers many of the same power user features of those apps, without the need to install anything.
+
+### 2. [DuckDuckGo adds free, encrypted real-time AI voice chat to Duck.ai](https://9to5mac.com/2026/02/09/duckduckgo-adds-free-encrypted-real-time-ai-voice-chat-to-duck-ai/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+For those who choose to use AI as part of their search workflow, the feature is rolling out for free with daily limits, with higher caps for DuckDuckGo subscribers. Here are the details.
+more…
+
+### 3. [A new Apple Watch app for Rivian electric vehicles is in the works](https://appleinsider.com/articles/26/02/10/a-new-apple-watch-app-for-rivian-electric-vehicles-is-in-the-works?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 A dedicated Apple Watch application from automaker Rivian is set to enable vehicle locking, unlocking, window adjustment, and much more, even on cars from 2021.
 
@@ -37,29 +51,29 @@ A dedicated Apple Watch application from automaker Rivian is set to enable vehic
 Rivian is set to launch a dedicated Apple Watch app.
 Apple's Car Key feature has let iPhone and Apple Watch owners  unlock and start their cars using mobile devices since 2020. The capability is built into iOS and is supported by more than 30 car companies, including Cadillac and other GM brands.
 
-### 2. [Last call: Update Apple Home by tomorrow, or your HomeKit setup may stop working](https://9to5mac.com/2026/02/09/last-call-update-apple-home-by-tomorrow-or-your-homekit-setup-may-stop-working/)
+### 4. [Last call: Update Apple Home by tomorrow, or your HomeKit setup may stop working](https://9to5mac.com/2026/02/09/last-call-update-apple-home-by-tomorrow-or-your-homekit-setup-may-stop-working/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 If you’re still running Apple Home on the old HomeKit architecture, this is your final reminder: Apple’s migration deadline is tomorrow, February 10. Here’s how to update.
 more…
 
-### 3. [YouTube TV Gets Cheaper Sports, News, and Entertainment Bundles](https://www.macrumors.com/2026/02/09/youtube-tv-cheaper-bundles/)
+### 5. [YouTube TV Gets Cheaper Sports, News, and Entertainment Bundles](https://www.macrumors.com/2026/02/09/youtube-tv-cheaper-bundles/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 YouTube is splitting YouTube TV into a selection of tailored YouTube TV Plans, allowing subscribers to pay less for a smaller selection of channels. "TV should be easy," reads the blog post announcing the change.
 
 
 There are 10+ new plans across Sports, News, Entertainment, and Family, at prices that are $11 to $28 below the $82.99 per month cost for a full YouTube TV subscription. New subscribers will have access to lower prices for the first three months to a year, and a 10-day trial is available. Existing subscribers can downgrade to one of the more affordable plans.
 
-### 4. [Price drop: Get top results from dozens of popular AIs, all for one low price](https://www.cultofmac.com/deals/chatplayground-ai)
+### 6. [Price drop: Get top results from dozens of popular AIs, all for one low price](https://www.cultofmac.com/deals/chatplayground-ai)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Whether creating content or testing how different AIs handle prompts, ChatPlayground AI makes it easy and affordable to get the best results.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 5. [Rivian launching Apple Watch app with remote controls and Gen 1 digital key feature](https://9to5mac.com/2026/02/09/rivian-launching-apple-watch-app-with-remote-controls-and-gen-1-digital-key-feature/)
+### 7. [Rivian launching Apple Watch app with remote controls and Gen 1 digital key feature](https://9to5mac.com/2026/02/09/rivian-launching-apple-watch-app-with-remote-controls-and-gen-1-digital-key-feature/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Back in December, Rivian released support for using an Apple Watch as a digital key. Next, the EV maker is launching a dedicated Apple Watch app with remote access and control capabilities. 
 more…
 
-### 6. [Discord's upcoming safety update makes age verification hard to avoid](https://appleinsider.com/articles/26/02/09/discords-upcoming-safety-update-makes-age-verification-hard-to-avoid?utm_source=rss)
+### 8. [Discord's upcoming safety update makes age verification hard to avoid](https://appleinsider.com/articles/26/02/09/discords-upcoming-safety-update-makes-age-verification-hard-to-avoid?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Discord plans to set every user's account to teen-by-default — unless you're willing to undergo an invasive age verification process.
 
@@ -67,7 +81,7 @@ Discord plans to set every user's account to teen-by-default — unless you're w
 Discord will require age verification for adult access
 On Monday, Discord, a popular social app, announced that it will be rolling out "enhanced teen safety features." According to the company, beginning in March.
 
-### 7. [England Rugby team gets a competitive advantage with iPhone, iPad, &amp; Mac in latest ad](https://appleinsider.com/articles/26/02/09/apple-ad-shows-how-england-rugby-makes-use-of-the-ipad-and-macbook-pro?utm_source=rss)
+### 9. [England Rugby team gets a competitive advantage with iPhone, iPad, &amp; Mac in latest ad](https://appleinsider.com/articles/26/02/09/apple-ad-shows-how-england-rugby-makes-use-of-the-ipad-and-macbook-pro?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's latest video ad outlines why the iPad and MacBook Pro are necessary tools for England Rugby's performance analysis team.
 
@@ -76,38 +90,38 @@ England Rugby uses Apple hardware for game analysis. Image Credit: Apple.
 Time and time again, the iPhone has proven itself as a useful tool for sporting events, with Major League Soccer already using the device to record matches.
 Even the Maracana Stadium is set to make use of an iPhone-powered offside camera system in 2026. Still, the iPhone isn't the only piece of Apple hardware that continues to see use in sports.
 
-### 8. [WhatsApp Web starts rolling out voice and video calls](https://9to5mac.com/2026/02/09/whatsapp-web-starts-rolling-out-voice-and-video-calls/)
+### 10. [WhatsApp Web starts rolling out voice and video calls](https://9to5mac.com/2026/02/09/whatsapp-web-starts-rolling-out-voice-and-video-calls/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The feature is now starting to reach WhatsApp Web beta users, with a wider rollout expected for the coming weeks. Here’s how it works.
 more…
 
-### 9. [Apple TV is about to bring back two of its best sci-fi series](https://9to5mac.com/2026/02/09/apple-tv-is-about-to-bring-back-two-of-its-best-sci-fi-series/)
+### 11. [Apple TV is about to bring back two of its best sci-fi series](https://9to5mac.com/2026/02/09/apple-tv-is-about-to-bring-back-two-of-its-best-sci-fi-series/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple TV has a deep bench of acclaimed sci-fi series, and two of its best are coming back soon: the Godzilla-starring Monarch: Legacy of Monsters and space race drama For All Mankind.
 more…
 
-### 10. [Why an M5 MacBook Pro launch in March keeps the M6 OLED dream alive this year](https://9to5mac.com/2026/02/09/why-an-m5-macbook-pro-launch-in-march-keeps-the-m6-oled-dream-alive-this-year/)
+### 12. [Why an M5 MacBook Pro launch in March keeps the M6 OLED dream alive this year](https://9to5mac.com/2026/02/09/why-an-m5-macbook-pro-launch-in-march-keeps-the-m6-oled-dream-alive-this-year/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Per Mark Gurman in his weekend Power On newsletter, Apple is preparing to launch M5 Pro and M5 Max MacBook Pros as early as the week of March 2. For those waiting on the major redesign with OLED displays and touch support, this spec bump revision that we expect first can’t come soon enough.
 Does waiting another month for the M5 Pro update to arrive rule out an M6 Pro release in 2026? There’s a good reason to keep the M6 Pro MacBook Pro dream alive this year.
 more…
 
-### 11. [Apple highlights how England Rugby uses iPads and Macs to analyze live match data](https://9to5mac.com/2026/02/09/apple-highlights-how-england-rugby-uses-ipads-and-macs-to-analyze-live-match-data/)
+### 13. [Apple highlights how England Rugby uses iPads and Macs to analyze live match data](https://9to5mac.com/2026/02/09/apple-highlights-how-england-rugby-uses-ipads-and-macs-to-analyze-live-match-data/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has kicked off a new campaign, titled Apple at Play, showcasing how England Rugby uses Apple devices for in-game analysis. Watch it below.
 more…
 
-### 12. [Apple’s new ‘MacBook’ is coming: Here’s every rumored feature](https://9to5mac.com/2026/02/09/apples-new-macbook-is-coming-heres-every-rumored-feature/)
+### 14. [Apple’s new ‘MacBook’ is coming: Here’s every rumored feature](https://9to5mac.com/2026/02/09/apples-new-macbook-is-coming-heres-every-rumored-feature/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple is rumored to have a brand new ‘MacBook’ launching soon—a Mac laptop with no Air or Pro suffix. Here’s everything we know right now.
 more…
 
-### 13. [It sounds like Apple will continue a positive CarPlay trend around iOS 27](https://9to5mac.com/2026/02/09/carplay-improvements-coming/)
+### 15. [It sounds like Apple will continue a positive CarPlay trend around iOS 27](https://9to5mac.com/2026/02/09/carplay-improvements-coming/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 When Apple previewed “next-generation CarPlay” in 2022, it felt like Apple froze development of the CarPlay version actually used by drivers. Eventually, next-gen CarPlay became CarPlay Ultra, and CarPlay for non-Aston Martin drivers rapidly started to see new improvements again. Now it sounds like that trend will continue either before or as part of iOS 27.
 more…
 
-### 14. [Upgrade your Apple Home architecture before the old one gets killed on Tuesday](https://appleinsider.com/articles/26/02/09/upgrade-your-apple-home-architecture-before-the-old-one-gets-killed-on-tuesday?utm_source=rss)
+### 16. [Upgrade your Apple Home architecture before the old one gets killed on Tuesday](https://appleinsider.com/articles/26/02/09/upgrade-your-apple-home-architecture-before-the-old-one-gets-killed-on-tuesday?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple will be killing off its original Apple Home architecture on February 10, and it won't matter if you're on old software. Do this to upgrade HomeKit and keep your smart home devices running normally.
 
@@ -115,12 +129,12 @@ Apple will be killing off its original Apple Home architecture on February 10, a
 You really should upgrade your Apple Home, if you haven't already. 
 In May 2025, Apple said it will be cutting support for its original Apple Home architecture as part of what was known as iOS 19, now iOS 26. After postponing it in November, Apple is now preparing to shut off the architecture on February 10, 2026.
 
-### 15. [DOJ faces investigation over removal of ICE-tracking apps from the App Store](https://9to5mac.com/2026/02/09/doj-faces-investigation-over-removal-of-ice-tracking-apps-from-the-app-store/)
+### 17. [DOJ faces investigation over removal of ICE-tracking apps from the App Store](https://9to5mac.com/2026/02/09/doj-faces-investigation-over-removal-of-ice-tracking-apps-from-the-app-store/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 POLITICO reports that House Judiciary Committee ranking member Jamie Raskin (D-Md.) has launched an investigation into whether the Department of Justice pressured Apple and Google to remove ICEBlock and similar apps from the App Store and Play Store. Here are the details.
 more…
 
-### 16. [Apple's Regent Street Store Reopening Soon After One-Month Closure](https://www.macrumors.com/2026/02/09/apples-regent-street-reopening-date/)
+### 18. [Apple's Regent Street Store Reopening Soon After One-Month Closure](https://www.macrumors.com/2026/02/09/apples-regent-street-reopening-date/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple has announced that its flagship Regent Street store in London, England reopens on Saturday, February 14, at 10 a.m. local time.
 
@@ -132,29 +146,29 @@ It is not yet clear if Apple made any changes that will be visible to customers.
 already remodeled in 2016.
 Tag:
 
-### 17. [MagSafe Monday: This battery can power everything from your iPhone to your Macbook Air](https://9to5mac.com/2026/02/09/this-battery-can-power-everything-from-your-iphone-to-your-macbook-air/)
+### 19. [MagSafe Monday: This battery can power everything from your iPhone to your Macbook Air](https://9to5mac.com/2026/02/09/this-battery-can-power-everything-from-your-iphone-to-your-macbook-air/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Battery technology has somewhat finally caught up with our devices and mobility. For a long time, if you wanted enough power to charge a MacBook Air or fast charge an iPhone, you had to carry a really heavy brick. You accepted the bulk because we needed the power. The CUKTECH 15 Air aims to solve that problem. It offers 65-watt charging speeds and a surprisingly slim design, making it a perfect companion for your mobile office.
 more…
 
-### 18. [Studio Display 2 coming soon with at least four big changes](https://9to5mac.com/2026/02/09/studio-display-2-coming-soon-with-at-least-four-big-changes/)
+### 20. [Studio Display 2 coming soon with at least four big changes](https://9to5mac.com/2026/02/09/studio-display-2-coming-soon-with-at-least-four-big-changes/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple first launched the Studio Display in March 2022 and it hasn’t received an update since then. That could be about to change, however, as rumors suggest the Studio Display 2 is imminent with at least four key changes…
 more…
 
-### 19. [ChatGPT Now Has Ads for Free and Go Tier Users](https://www.macrumors.com/2026/02/09/chatgpt-now-has-ads/)
+### 21. [ChatGPT Now Has Ads for Free and Go Tier Users](https://www.macrumors.com/2026/02/09/chatgpt-now-has-ads/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 U.S. ChatGPT users who have a free account or a low-cost Go subscription will start seeing ads starting today, according to OpenAI.
 
 
 Ads will be limited to the Free and Go subscription tiers, and will be shown to logged-in adult users. OpenAI does not plan to show ads to minors, and the company claims that ads will not influence the answers that ChatGPT provides. OpenAI also says it will not provide advertisers with content from ChatGPT conversations.
 
-### 20. [AI in Xcode, folds in iPhones [Cult of Mac podcast No. 6]](https://www.cultofmac.com/news/ai-in-xcode-folds-in-iphones-cult-of-mac-podcast-no-6)
+### 22. [AI in Xcode, folds in iPhones [Cult of Mac podcast No. 6]](https://www.cultofmac.com/news/ai-in-xcode-folds-in-iphones-cult-of-mac-podcast-no-6)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 On the latest episode of the "Cult of Mac" podcast: Apple adds AI coding tools to Xcode and ponders making two different folding iPhones.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 21. [The Apple Car lives through the Ferrari Luce](https://www.macworld.com/article/3056424/the-apple-car-lives-through-the-ferrari-luce.html)
+### 23. [The Apple Car lives through the Ferrari Luce](https://www.macworld.com/article/3056424/the-apple-car-lives-through-the-ferrari-luce.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -162,12 +176,12 @@ Macworld
 If you’ve ever wondered what could’ve been with the Apple Car, you’ll now be able to satisfy your curiosity a bit. Ferrari on Monday announced the Luce, the company’s first electric vehicle. And the main designer behind the car’s cabin and controls is LoveFrom, the company headed by Apple’s former Chief Design Officer Jony Ive.
 Ferrari has posted several images of what the interior looks like, and you can’t help but think that this is a glimpse into how the Apple Car could have looked.
 
-### 22. [iOS 27 will be a critical update — will your iPhone support it?](https://www.cultofmac.com/news/ios-27-will-your-iphone-support-it)
+### 24. [iOS 27 will be a critical update — will your iPhone support it?](https://www.cultofmac.com/news/ios-27-will-your-iphone-support-it)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Numerous iOS 26 bugs make iOS 27 more important than ever. Here's what we know about which iPhone will get an update.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 23. [AirPods 4 dropped under $100 just in time for Valentine’s Day](https://www.macworld.com/article/3056215/airpods-4-dropped-under-100-just-in-time-for-valentines-day.html)
+### 25. [AirPods 4 dropped under $100 just in time for Valentine’s Day](https://www.macworld.com/article/3056215/airpods-4-dropped-under-100-just-in-time-for-valentines-day.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -175,7 +189,7 @@ Macworld
 If you still haven’t gotten a gift for your significant other, today’s deal has you covered. Forget expensive chocolate and flowers and get a pair of AirPods 4 for just $99 at Amazon right now, a $30 discount and the best price we’ve seen this year.
 This is the version of AirPods 4 without ANC, but they’re no less of a winner. From crisp audio quality to a wireless charging case, these earbuds are designed to make your life so much better.
 
-### 24. [iOS 27 will reportedly focus on fixes over features](https://www.macworld.com/article/3056460/ios-27-will-reportedly-focus-on-fixes-over-features.html)
+### 26. [iOS 27 will reportedly focus on fixes over features](https://www.macworld.com/article/3056460/ios-27-will-reportedly-focus-on-fixes-over-features.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -183,43 +197,27 @@ Macworld
 Last year’s batch of “26” OS updates was dominated by the launch of Liquid Glass, Apple’s transparency-themed cross-platform design language. Liquid Glass, sadly, was not universally embraced, with some users finding it confusing or even illegible. And the company eventually had to offer a way to turn off some of its most extreme visual effects.
 Apple fans are now starting to think about the 2027 updates that will be announced at WWDC in June and rolled out to the public in the fall, and a small clue to what we can expect was offered in a new report this weekend.
 
-### 25. [Apple Music lets you get 3 free months and import your music library, here’s how](https://9to5mac.com/2026/02/09/apple-music-lets-you-get-3-free-months-and-import-your-music-library-heres-how/)
+### 27. [Apple Music lets you get 3 free months and import your music library, here’s how](https://9to5mac.com/2026/02/09/apple-music-lets-you-get-3-free-months-and-import-your-music-library-heres-how/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple Music had a big presence at the Super Bowl, promoting two offers for potential switchers: the ability to transfer your music library and playlists, plus get three months free. Here are the details.
 more…
 
-### 26. [Price cut: Get Microsoft Office 2024 for Mac or PC for less than $100](https://www.cultofmac.com/deals/microsoft-office-for-mac-lifetime)
+### 28. [Price cut: Get Microsoft Office 2024 for Mac or PC for less than $100](https://www.cultofmac.com/deals/microsoft-office-for-mac-lifetime)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 This discounted lifetime license to Microsoft Office Home &amp; Business for Mac 2024 is a great alternative to pricey monthly fees.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 27. [10 great Valentine’s Day gift picks from Apple](https://www.cultofmac.com/buying-guides/valentines-day-gifts)
+### 29. [10 great Valentine’s Day gift picks from Apple](https://www.cultofmac.com/buying-guides/valentines-day-gifts)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Apple offers a great list of gift ideas. We chose 10 great Valentine's Day gifts for you to consider for your sweetheart.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 28. [macOS: Share a Link That Jumps to a Specific Line on a Webpage](https://www.macrumors.com/how-to/macos-share-weblink-jumps-to-specific-line/)
+### 30. [macOS: Share a Link That Jumps to a Specific Line on a Webpage](https://www.macrumors.com/how-to/macos-share-weblink-jumps-to-specific-line/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Sometimes when you share a webpage link with someone, you just want to bring their attention to a specific passage or sentence to make your point, rather than have them read through the entire article.
 
 
 In 2020, Google added a function to its Chrome browser called Scroll to Text Fragment (STTF) that helps you achieve this. It allows URLs to link directly to any visible text on a page. You may have seen it work in Google Search, where clicking on a link in your returned results takes you to a highlighted passage of text further down the page.
-
-### 29. [Report: New Macs are coming soon (for real this time)](https://www.macworld.com/article/3056261/report-new-macs-are-coming-soon-for-real-this-time.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-In the latest episode of “New Mac Watch,” Bloomberg’s Mark Gurman reports in his weekly Power On newsletter that the new laptops we’ve all been waiting for–the M5 Pro and M5 Max MacBook Pros and the M5 MacBook Air–are “coming shortly.” 
-As has been previously reported, Gurman reiterated that the laptops’ release is tied to OS 26.3, which is expected to be released early this week.
-
-### 30. [Oura's FDA lobbying benefits Apple Watch, if everyone's smart about the risks](https://appleinsider.com/articles/26/02/09/ouras-fda-lobbying-benefits-apple-watch-if-everyones-smart-about-the-risks?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Smart ring market leader Oura is trying to convince U.S. lawmakers to loosen some health monitoring regulations for wearable devices, which if successful will benefit Apple too. Users will just need to be careful about what they do with the data.
-
-
-An Oura smart ring, a market that Apple is working to enter. 
-Products going on sale must meet regulatory requirements, and it's something that Apple is very familiar with for its product line. However, if work by one wearables company results in changes in the United States, that could directly benefit Apple's own products, too.
 
 <a id="iot"></a>
 
