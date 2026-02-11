@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 11 Feb 2026 08:40:02 GMT
+**Last Update:** Wed, 11 Feb 2026 10:42:11 GMT
 
 ---
 
@@ -402,140 +402,140 @@ The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too 
 
 ## Artificial Intelligence
 
-### 1. [With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon](https://techcrunch.com/2026/02/10/with-co-founders-leaving-and-an-ipo-looming-elon-musk-turns-talk-to-the-moon/)
+### 1. [Barclays bets on AI to cut costs and boost returns](https://www.artificialintelligence-news.com/news/barclays-bets-on-ai-to-cut-costs-and-boost-returns/)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+Barclays recorded a 12 % jump in annual profit for 2025, reporting £9.1 billion in earnings before tax, up from £8.1 billion a year earlier. The bank also raised its performance targets out through 2028, aiming for a return on tangible equity (RoTE) of more than 14 %, up from a previous goal of above […]
+The post Barclays bets on AI to cut costs and boost returns appeared first on AI News.
+
+### 2. [How insurance leaders use agentic AI to cut operational costs](https://www.artificialintelligence-news.com/news/how-insurance-leaders-use-agentic-ai-to-cut-operational-costs/)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+Agentic AI offers insurance leaders a path to scalable efficiency as the sector confronts a tough digital transformation. Insurers hold deep data reserves and employ a workforce skilled in analytic decision-making. Despite these advantages, the industry has largely failed to advance beyond pilot programmes. Research suggests only seven percent of insurers have scaled these initiatives […]
+The post How insurance leaders use agentic AI to cut operational costs appeared first on AI News.
+
+### 3. [Red Hat unifies AI and tactical edge deployment for UK MOD](https://www.artificialintelligence-news.com/news/red-hat-unifies-ai-tactical-edge-deployment-for-uk-mod/)
+**Source:** AI News | **Tags:** `AI` `News` `Industry`
+The UK Ministry of Defence (MOD) has selected Red Hat to architect a unified AI and hybrid cloud backbone across its entire estate. Announced today, the agreement is designed to break down data silos and accelerate the deployment of AI models from the data centre to the tactical edge. For CIOs, it’s part of a […]
+The post Red Hat unifies AI and tactical edge deployment for UK MOD appeared first on AI News.
+
+### 4. [With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon](https://techcrunch.com/2026/02/10/with-co-founders-leaving-and-an-ipo-looming-elon-musk-turns-talk-to-the-moon/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 According to The New York Times, which reports that it heard the meeting, Musk told employees that xAI needs a lunar manufacturing facility, a factory on the moon that will build AI satellites and fling them into space via a giant catapult.
 
-### 2. [OpenAI policy exec who opposed chatbot’s “adult mode” reportedly fired on discrimination claim](https://techcrunch.com/2026/02/10/openai-policy-exec-who-opposed-chatbots-adult-mode-reportedly-fired-on-discrimination-claim/)
+### 5. [OpenAI policy exec who opposed chatbot’s “adult mode” reportedly fired on discrimination claim](https://techcrunch.com/2026/02/10/openai-policy-exec-who-opposed-chatbots-adult-mode-reportedly-fired-on-discrimination-claim/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The executive has denied the allegation that she engaged in discrimination.
 
-### 3. [Okay, now exactly half of xAI’s founding team has left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
+### 6. [Okay, now exactly half of xAI’s founding team has left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Whatever the cause of the departures, the cumulative impact is alarming. There is a lot of work left to do at xAI, and an IPO will bring more scrutiny than the lab has ever faced before.
 
-### 4. [Amazon may launch a marketplace where media sites can sell their content to AI companies](https://techcrunch.com/2026/02/10/amazon-may-launch-a-marketplace-where-media-sites-can-sell-their-content-to-ai-companies/)
+### 7. [Amazon may launch a marketplace where media sites can sell their content to AI companies](https://techcrunch.com/2026/02/10/amazon-may-launch-a-marketplace-where-media-sites-can-sell-their-content-to-ai-companies/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 A new report claims the e-commerce giant is looking to create a pipeline of licensable content between media publishers and AI companies.
 
-### 5. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
+### 8. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Czech ice dancers Katerina Mrazkova and Daniel Mrazek are learning the hard way that LLMs sometimes spit out straight-up plagiarism.
 
-### 6. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
+### 9. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI lab Flapping Airplanes just landed $180 million in seed funding from the likes of Google Ventures, Sequoia, and Index to do something most labs have quietly given up on: making models learn like humans instead of vacuuming up the internet. The founding team, made up of brothers Ben and Asher Spector and co-founder Aidan Smith, is […]
 
-### 7. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
+### 10. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Robert Playter announcd he is leaving Boston Dynamics after 30 years at the company in various roles, including six years as CEO.
 
-### 8. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
+### 11. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Facebook's new AI features let users animate their profile pics, restyle their Stories and Memories, and add  backgrounds to text posts.
 
-### 9. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
+### 12. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Vega Security raised $120 million, bringing its valuation to $700 million, in a round led by Accel. The company aims to rethink how enterprises detect cybersecurity threats.
 
-### 10. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
+### 13. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The approach that takes companies to the next level of data maturity
 The post How to Model The Expected Value of Marketing Campaigns appeared first on Towards Data Science.
 
-### 11. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
+### 14. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Hauler Hero has seen its customer base, revenue, and head count double since the company raised its seed round in 2024.
 
-### 12. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
+### 15. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India’s new rules take effect February 20, tightening deepfake oversight and shrinking takedown windows to as little as two hours.
 
-### 13. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
+### 16. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Thomas Dohmke's new startup offers an AI system to allow developers to better manage all the code AI agents produce.
 
-### 14. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
+### 17. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Startup Runway has raised a $315 million round at a $5.3 billion valuation, funds it will use to expand beyond AI video generation and into world models.
 
-### 15. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
+### 18. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An easy step-by-step guide to building the snake game from scratch
 The post Implementing the Snake Game in Python appeared first on Towards Data Science.
 
-### 16. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
+### 19. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to get more out of Claude code by giving it access to more information.
 The post How to Personalize Claude Code appeared first on Towards Data Science.
 
-### 17. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
+### 20. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Major Chinese technology companies Alibaba, Tencent, and Huawei are pursuing agentic AI (systems that can execute multi-step tasks autonomously and interact with software, data, and services without human instruction), and orienting the technology toward discrete industries and workflows. Alibaba’s open-source strategy for agentic AI Alibaba’s strategy centres on its Qwen AI model family, a set […]
 The post Chinese hyperscalers and industry-specific agentic AI appeared first on AI News.
 
-### 18. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
+### 21. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Agentic AI in healthcare is graduating from answering prompts to autonomously executing complex marketing tasks – and life sciences companies are betting their commercial strategies on it. According to a recent report cited by Capgemini Invent, AI agents could generate up to $450 billion in economic value through revenue uplift and cost savings globally by […]
 The post Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028 appeared first on AI News.
 
-### 19. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
+### 22. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Because employees could do more, work began bleeding into lunch breaks and late evenings. The employees' to-do lists expanded to fill every hour that AI freed up, and then kept going.
 
-### 20. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
+### 23. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI isn't going to replace major SaaS apps with vibe-coded versions, Databricks CEO Ali Ghodsi believes. But it could give rise to competitors.
 
-### 21. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
+### 24. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Delayed January: deadlines, downtimes, and flow times
 The post The Machine Learning Lessons I’ve Learned Last Month appeared first on Towards Data Science.
 
-### 22. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
+### 25. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 How the new Interactions API enables deep-reasoning, stateful, agentic workflows.
 The post The Death of the “Everything Prompt”: Google’s Move Toward Structured AI appeared first on Towards Data Science.
 
-### 23. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
+### 26. [What AI can (and can’t) tell us about XRP in ETF-driven markets](https://www.artificialintelligence-news.com/news/what-ai-can-and-cant-tell-us-about-xrp-in-etf-driven-markets/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For a long time, cryptocurrency prices moved quickly. A headline would hit, sentiment would spike, and charts would react almost immediately. That pattern no longer holds. Today’s market is slow, heavier than before, and shaped by forces that do not always announce themselves clearly. Capital allocation, ETF mechanics, and macro positioning now influence price behaviour […]
 The post What AI can (and can’t) tell us about XRP in ETF-driven markets appeared first on AI News.
 
-### 24. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
+### 27. [Exclusive: Why are Chinese AI models dominating open-source as Western labs step back?](https://www.artificialintelligence-news.com/news/chinese-ai-models-175k-unprotected-systems-western-retreat/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Because Western AI labs won’t—or can’t—anymore. As OpenAI, Anthropic, and Google face mounting pressure to restrict their most powerful models, Chinese developers have filled the open-source void with AI explicitly built for what operators need: powerful models that run on commodity hardware. A new security study reveals just how thoroughly Chinese AI has captured this space. Research published by SentinelOne […]
 The post Exclusive: Why are Chinese AI models dominating open-source as Western labs step back? appeared first on AI News.
 
-### 25. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
+### 28. [Cryptocurrency markets a testbed for AI forecasting models](https://www.artificialintelligence-news.com/news/cryptocurrency-markets-a-testbed-for-ai-forecasting-models/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Cryptocurrency markets have become a high-speed playground where developers optimise the next generation of predictive software. Using real-time data flows and decentralised platforms, scientists develop prediction models that can extend the scope of traditional finance. The digital asset landscape offers an unparalleled environment for machine learning. When you track cryptocurrency prices today, you are observing […]
 The post Cryptocurrency markets a testbed for AI forecasting models appeared first on AI News.
 
-### 26. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
+### 29. [What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026](https://towardsdatascience.com/what-i-am-doing-to-stay-relevant-as-a-senior-analytics-consultant-in-2026/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to work with AI, while strengthening your unique human skills that technology cannot replace
 The post What I Am Doing to Stay Relevant as a Senior Analytics Consultant in 2026 appeared first on Towards Data Science.
 
-### 27. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
+### 30. [Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently](https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The real value lies in writing clearer code and using your tools right
 The post Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently appeared first on Towards Data Science.
-
-### 28. [Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes](https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/)
-**Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
-How much of your AI agent's output is real data versus confident guesswork?
-The post Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes appeared first on Towards Data Science.
-
-### 29. [SuperCool review: Evaluating the reality of autonomous creation](https://www.artificialintelligence-news.com/news/supercool-review-evaluating-the-reality-of-autonomous-creation/)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-In the current landscape of generative artificial intelligence, we have reached a saturation point with assistants. Most users are familiar with the routine. You prompt a tool, it provides a draft, and then you spend the next hour manually moving that output into another application for formatting, design, or distribution. AI promised to save time, […]
-The post SuperCool review: Evaluating the reality of autonomous creation appeared first on AI News.
-
-### 30. [Top 7 best AI penetration testing companies in 2026](https://www.artificialintelligence-news.com/news/top-7-best-ai-penetration-testing-companies-in-2026/)
-**Source:** AI News | **Tags:** `AI` `News` `Industry`
-Penetration testing has always existed to answer one practical concern: what actually happens when a motivated attacker targets a real system. For many years, that answer was produced through scoped engagements that reflected a relatively stable environment. Infrastructure changed slowly, access models were simpler, and most exposure could be traced back to application code or […]
-The post Top 7 best AI penetration testing companies in 2026 appeared first on AI News.
 
 <a id="cybersecurity"></a>
 
@@ -543,138 +543,138 @@ The post Top 7 best AI penetration testing companies in 2026 appeared first on A
 
 ## Cybersecurity
 
-### 1. [ICS Patch Tuesday: Vulnerabilities Addressed by Siemens, Schneider, Aveva, Phoenix Contact](https://www.securityweek.com/ics-patch-tuesday-vulnerabilities-addressed-by-siemens-schneider-aveva-phoenix-contact/)
+### 1. [Fortinet Patches High-Severity Vulnerabilities](https://www.securityweek.com/fortinet-patches-high-severity-vulnerabilities/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+The bugs could be exploited without authentication for command execution and authentication bypass.
+The post Fortinet Patches High-Severity Vulnerabilities appeared first on SecurityWeek.
+
+### 2. [Google-Intel Security Audit Reveals Severe TDX Vulnerability Allowing Full Compromise](https://www.securityweek.com/google-intel-security-audit-reveals-severe-tdx-vulnerability-allowing-full-compromise/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Dozens of vulnerabilities, bugs, and potential improvements have been identified by the tech giants’ security teams.
+The post Google-Intel Security Audit Reveals Severe TDX Vulnerability Allowing Full Compromise appeared first on SecurityWeek.
+
+### 3. [ICS Patch Tuesday: Vulnerabilities Addressed by Siemens, Schneider, Aveva, Phoenix Contact](https://www.securityweek.com/ics-patch-tuesday-vulnerabilities-addressed-by-siemens-schneider-aveva-phoenix-contact/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Several vulnerabilities have been patched and mitigated across the industrial giants’ products.
 The post ICS Patch Tuesday: Vulnerabilities Addressed by Siemens, Schneider, Aveva, Phoenix Contact appeared first on SecurityWeek.
 
-### 2. [North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations](https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html)
+### 4. [North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations](https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The North Korea-linked threat actor known as UNC1069 has been observed targeting the cryptocurrency sector to steal sensitive data from Windows and macOS systems with the ultimate goal of facilitating financial theft.
 "The intrusion relied on a social engineering scheme involving a compromised Telegram account, a fake Zoom meeting, a ClickFix infection vector, and reported usage of AI-generated
 
-### 3. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
+### 5. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has announced Windows 11 26H1, but it's not for existing PCs. Instead, it will ship on devices with Snapdragon X2 processors and possibly other rumored ARM chips.w [...]
 
-### 4. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
+### 6. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly documented Linux botnet named SSHStalker is using the IRC (Internet Relay Chat) communication protocol for command-and-control (C2) operations. [...]
 
-### 5. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
+### 7. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 North Korean hackers are running tailored campaigns using AI-generated video and the ClickFix technique to deliver malware for macOS and Windows to targets in the cryptocurrency sector. [...]
 
-### 6. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
+### 8. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 Microsoft today released updates to fix more than 50 security holes in its Windows operating systems and other software, including patches for a whopping six "zero-day" vulnerabilities that attackers are already exploiting in the wild.
 
-### 7. [6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates](https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/)
+### 9. [6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates](https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Microsoft’s Patch Tuesday updates fix roughly 60 vulnerabilities found in the company’s products.
 The post 6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates appeared first on SecurityWeek.
 
-### 8. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
+### 10. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fake 7-Zip website is distributing a trojanized installer of the popular archiving tool that turns the user's computer into a residential proxy node. [...]
 
-### 9. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
+### 11. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released the Windows 10 KB5075912 extended security update to fix February 2026 Patch Tuesday vulnerabilities, including six zero-days, and continue rolling out replacements for expiring Secure Boot certificates. [...]
 
-### 10. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
+### 12. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Today is Microsoft's February 2026 Patch Tuesday with security updates for 58 flaws, including 6 actively exploited and three publicly disclosed zero-day vulnerabilities. [...]
 
-### 11. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
+### 13. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released Windows 11 KB5077181 and KB5075941 cumulative updates for versions 25H2/24H2 and 23H2 to fix security vulnerabilities, bugs, and add new features. [...]
 
-### 12. [EU Unconditionally Approves Google’s $32B Acquisition of Wiz](https://www.securityweek.com/eu-unconditionally-approves-googles-32b-acquisition-of-wiz/)
+### 14. [EU Unconditionally Approves Google’s $32B Acquisition of Wiz](https://www.securityweek.com/eu-unconditionally-approves-googles-32b-acquisition-of-wiz/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The European Commission’s ruling is based on extensive feedback from customers and rival cloud security and infrastructure vendors.
 The post EU Unconditionally Approves Google’s $32B Acquisition of Wiz appeared first on SecurityWeek.
 
-### 13. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
+### 15. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The information technology (IT) workers associated with the Democratic People's Republic of Korea (DPRK) are now applying to remote positions using real LinkedIn accounts of individuals they're impersonating, marking a new escalation of the fraudulent scheme.
 "These profiles often have verified workplace emails and identity badges, which DPRK operatives hope will make their fraudulent
 
-### 14. [Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps](https://www.securityweek.com/patch-tuesday-adobe-fixes-44-vulnerabilities-in-creative-apps/)
+### 16. [Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps](https://www.securityweek.com/patch-tuesday-adobe-fixes-44-vulnerabilities-in-creative-apps/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company has fixed several critical vulnerabilities that can be exploited for arbitrary code execution.
 The post Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps appeared first on SecurityWeek.
 
-### 15. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
+### 17. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 This investment comes less than 10 months after Reco’s last raise, bringing total funding to $85 million.
 The post Reco Raises $30 Million to Enhance AI SaaS Security appeared first on SecurityWeek.
 
-### 16. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
+### 18. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Led by existing investor Accel, with participation from Cyberstarts, Redpoint, and CRV, the Series B round brings the total amount raised by the company to $185 million.
 The post Vega Raises $120M in Series B Funding to Grow Security Analytics Platform appeared first on SecurityWeek.
 
-### 17. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
+### 19. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Volvo Group North America disclosed that it suffered an indirect data breach stemming from the compromise of IT systems at American business services giant Conduent, of which Volvo is a customer. [...]
 
-### 18. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
+### 20. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has begun rolling out updated Secure Boot certificates through monthly Windows updates to replace the original 2011 certificates that will expire in late June 2026. [...]
 
-### 19. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
+### 21. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Transparent Tribe (APT36) is targeting Indian defense and government sectors with GETA, ARES, and Desk RATs in a new wave of economic cyber espionage.
 The post RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India appeared first on SecurityWeek.
 
-### 20. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
+### 22. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is investigating an outage that blocks some administrators with business or enterprise subscriptions from accessing the Microsoft 365 admin center. [...]
 
-### 21. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
+### 23. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cloud incidents drag on when analysts have to leave cases to hunt through AWS consoles and CLIs. Tines shows how automated agents pull AWS CLI data directly into cases, reducing MTTR and manual investigation work. [...]
 
-### 22. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
+### 24. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 SAP has released 26 new and one updated security notes on February 2026 security patch day.
 The post SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities appeared first on SecurityWeek.
 
-### 23. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
+### 25. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of an emergent ransomware family dubbed Reynolds that comes embedded with a built-in bring your own vulnerable driver (BYOVD) component for defense evasion purposes within the ransomware payload itself.
 BYOVD refers to an adversarial technique that abuses legitimate but flawed driver software to escalate privileges and disable Endpoint Detection
 
-### 24. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The company will use the investment to expand its R&amp;D team and operations, deepen platform capabilities, and scale go-to-market presence.
-The post Backslash Raises $19 Million to Secure Vibe Coding appeared first on SecurityWeek.
-
-### 25. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
+### 26. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?
 According to Picus Labs’ new Red Report 2026, which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for
 
-### 26. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
+### 27. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.
 The vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.
 
 "An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may
 
-### 27. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
+### 28. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft wants to introduce smartphone-style app permission prompts in Windows 11 to request user consent before apps can access sensitive resources such as files, cameras, and microphones. [...]
 
-### 28. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
+### 29. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new commercial mobile spyware platform dubbed ZeroDayRAT is being advertised to cybercriminals on Telegram as a tool that provides full remote control over compromised Android and iOS devices. [...]
-
-### 29. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Available via Telegram, researchers warn ZeroDayRAT is a ‘complete mobile compromise toolkit’ comparable to kits normally requiring nation-state resources to develop.
-The post New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices appeared first on SecurityWeek.
 
 ### 30. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
