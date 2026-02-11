@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 11 Feb 2026 18:54:26 GMT
+**Last Update:** Wed, 11 Feb 2026 20:32:04 GMT
 
 ---
 
@@ -29,12 +29,66 @@
 
 ## Mac & Apple
 
-### 1. [iOS 26.3 has fixes for 35+ security issues on iPhone, details here](https://9to5mac.com/2026/02/11/ios-26-3-has-fixes-for-35-security-issues-on-iphone-details-here/)
+### 1. [Foldable iPhone expected to help drive adoption of book-type devices: report](https://9to5mac.com/2026/02/11/foldable-iphone-expected-to-help-drive-adoption-of-book-type-devices-report/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+According to Counterpoint Research, Apple’s introduction of a book-type foldable iPhone will help accelerate broader adoption of this form factor. Here are the details.
+more…
+
+### 2. [New Siri Runs Into Problems, Features Could Be Pushed to iOS 26.5 and iOS 27](https://www.macrumors.com/2026/02/11/siri-features-delayed-ios-26-4/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple has "run into snags" testing the more personalized, smarter version of Siri that's planned for iOS 26.4, reports Bloomberg. Because of the issues, the upcoming ‌Siri‌ features will be spread across several upcoming iOS releases and won't all come in the spring iOS 26.4 update.
+
+
+Apple could postpone some or all of the new ‌Siri‌ features until iOS 26.5, an update planned for May, and iOS 27, which will launch this September.
+
+Apple Intelligence version of ‌Siri‌ since iOS 18, when Apple debuted the features at the 2024 Worldwide Developers Conference.
+
+### 3. [Apple reportedly pushing back Gemini-powered Siri features beyond iOS 26.4](https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Despite inking a deal with Google to use Gemini AI as the brains behind upgraded Siri, Apple is reportedly facing internal challenges in getting the final product ready for prime time. The reported delays could stretch into iOS 27 this fall. Apple first announced a more capable version of Siri in 2024; that update hasn’t shipped yet.
+more…
+
+### 4. [macOS Tahoe 26.3 fixes two annoying design problems](https://9to5mac.com/2026/02/11/macos-tahoe-26-3-fixes-two-annoying-design-problems/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple released macOS 26.3 to the public today, and the update fixes two design problems introduced by the Liquid Glass revamp in Tahoe: resizing windows and resizing columns in Finder.
+more…
+
+### 5. [10 iPhone Tips and Tricks You Probably Didn't Know About](https://www.macrumors.com/2026/02/11/iphone-tips-and-tricks-2026/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+No matter how well you think you know your iPhone, there are always tons of hidden features and shortcuts that you aren't aware of, or might have forgotten about. We've rounded up 10 useful ‌iPhone‌ features that are worth knowing about to make using your ‌iPhone‌ just a little more pleasant.
+
+Subscribe to the MacRumors YouTube channel for more videos.
+
+Many of these tips require the latest version of iOS, iOS 26, but there are a few that work for older versions of iOS, too.
+
+### 6. [Apple didn't forget macOS Sonoma, macOS Sequoia &amp; iOS 18 on patch day](https://appleinsider.com/articles/26/02/11/apple-didnt-forget-macos-sonoma-macos-sequoia-ios-18-on-patch-day?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Updates to macOS Sonoma 14.8.4, macOS Sequoia 15.7.4, and iOS 18.7.5 are now available, extending security fixes to older Apple devices alongside the company's 26.3 releases.
+
+
+macOS Sequoia
+Apple released updates on February 11 along with macOS Tahoe 26.3, iOS 26.3, iPadOS 26.3, tvOS 26.3, watchOS 26.3, and visionOS 26.3. The security content pages for the older-branch releases show multiple CVE patches in shared system components.
+None of these pages mention that the vulnerabilities were actively exploited.
+
+### 7. [Update your Mac, iPad and more now to squash bugs](https://www.cultofmac.com/news/macos-tahoe-26-3-release-date-ipados-watchos)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+Apple releases macOS Tahoe 26.3, iPadOS 26.3, watchOS 26.3 and tvOS 26.3, delivering a round of bug fixes and under-the-hood improvements.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 8. [Greyhound sequel begins filming, shifting from Atlantic to Pacific](https://appleinsider.com/articles/26/02/11/greyhound-sequel-begins-filming-shifting-from-atlantic-to-pacific?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple TV is moving ahead with its "Greyhound" follow-up, with Tom Hank's naval drama set to broaden its scope from a single Atlantic traverse, to both the D-Day landings and the Pacific theater.
+
+
+Greyhound sequel enters production in Australia
+The film, which doesn't have release date this time, is currently in production in Australia. Tom Hanks is penning the film and will return to reprise his role as United States Navy Commander Ernest Kraus.
+
+### 9. [iOS 26.3 has fixes for 35+ security issues on iPhone, details here](https://9to5mac.com/2026/02/11/ios-26-3-has-fixes-for-35-security-issues-on-iphone-details-here/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s latest wave of software updates is lighter than usual on new features, but heavy on bug fixes and security updates, with 35+ security fixes included in iOS 26.3 and more.
 more…
 
-### 2. [Update Now: iOS 26.3 and macOS Tahoe 26.3 Fix Dozens of Security Vulnerabilities](https://www.macrumors.com/2026/02/11/ios-26-3-security-vulnerabilities/)
+### 10. [Update Now: iOS 26.3 and macOS Tahoe 26.3 Fix Dozens of Security Vulnerabilities](https://www.macrumors.com/2026/02/11/ios-26-3-security-vulnerabilities/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released iOS 26.3, iPadOS 26.3, and macOS Tahoe 26.3, all of which largely focus on bug fixes and security improvements. Apple says that the updates address dozens of vulnerabilities, including one that is known to have been actively exploited.
 
@@ -42,23 +96,31 @@ Apple today released iOS 26.3, iPadOS 26.3, and macOS Tahoe 26.3, all of which l
 That vulnerability in the dyld dynamic link editor could allow for the execution of arbitrary code, and Apple says the bug may have been exploited in an "extremely sophisticated attack" against targeted individuals on versions of iOS before iOS 26.
 An attacker with memory write capability may be able to execute arbitrary code.
 
-### 3. [Hands-on: iOS 26.3 changes and features [Video]](https://9to5mac.com/2026/02/11/hands-on-ios-26-3-changes-and-features-video/)
+### 11. [Hands-on: iOS 26.3 changes and features [Video]](https://9to5mac.com/2026/02/11/hands-on-ios-26-3-changes-and-features-video/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple just released the final version of iOS 26.3 to the public, and while it isn’t packed with new features, there are some notable additions worth exploring. Watch our hands-on video as we walk through everything new in iOS 26.3, and be sure to subscribe to 9to5mac on YouTube for more videos.
 more…
 
-### 4. [Apple just released new updates for old versions of iOS, macOS, and iPadOS](https://9to5mac.com/2026/02/11/apple-just-released-new-updates-for-old-versions-of-ios-macos-and-ipados/)
+### 12. [macOS 26 Tahoe Guide: New features in the latest macOS 26.3 update](https://www.macworld.com/article/2644146/macos-26-features-latest-update-release-date-beta.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+Like its counterparts on the other Apple devices, in September 2026 macOS got a brand new look along with a new name. Because Apple is aligning the names of all the operating systems this year, the new version of macOS is called macOS 26 rather than macOS 16. It also takes the name Tahoe, inspired by the lake, beaches, and the ski resorts of that area of California. 
+Along with a big redesign, macOS 26 brings new Continuity features to bring your iPad, iPhone, and Mac even closer together, a brand new Phone app, and more.
+
+### 13. [Apple just released new updates for old versions of iOS, macOS, and iPadOS](https://9to5mac.com/2026/02/11/apple-just-released-new-updates-for-old-versions-of-ios-macos-and-ipados/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has released a new wave of software updates today, including iOS 26.3 and many more 26.3 updates. But the company also has new updates for older OS versions, like iOS 18.7.5 for iPhone and more.
 more…
 
-### 5. [Apple Music doubles the penalty for fraudulent streaming](https://9to5mac.com/2026/02/11/apple-music-doubles-the-penalty-for-fraudulent-streaming/)
+### 14. [Apple Music doubles the penalty for fraudulent streaming](https://9to5mac.com/2026/02/11/apple-music-doubles-the-penalty-for-fraudulent-streaming/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Fraudulent streaming is a long-running problem in the music business. In a recent interview, Oliver Schusser, who oversees Apple Music, Apple TV, and more, offered some fascinating insight into Apple’s work to crack down on fake streams on Apple Music.
 The report also reveals that Apple recently doubled the penalty for Apple Music fraud …
 more…
 
-### 6. [iOS 26 Guide: New features in the latest iPhone update and what’s coming in iOS 26.4](https://www.macworld.com/article/2575705/ios-26-features-latest-update-release-date-beta.html)
+### 15. [iOS 26 Guide: New features in the latest iPhone update and what’s coming in iOS 26.4](https://www.macworld.com/article/2575705/ios-26-features-latest-update-release-date-beta.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -66,7 +128,7 @@ Macworld
 The latest version of the iPhone operating system is iOS 26.3 and everyone with a compatible iPhone can install it now. Read on to find out what’s new, what is still to come, and everything else you need to know about the latest iPhone update.
 If you are yet to install it, there is a lot to get excited about in iOS 26:
 
-### 7. [iPadOS 26.3 ships with new location privacy-limiting feature](https://appleinsider.com/articles/26/02/11/ipados-263-ships-with-new-location-privacy-limiting-feature?utm_source=rss)
+### 16. [iPadOS 26.3 ships with new location privacy-limiting feature](https://appleinsider.com/articles/26/02/11/ipados-263-ships-with-new-location-privacy-limiting-feature?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's introduction of iPadOS 26.3 adds a new feature to limit how much location data a carrier can collect.
 
@@ -77,7 +139,7 @@ As usual for Apple's post-milestone releases, the number of changes to iPadOS is
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 8. [macOS Tahoe 26.3 has no significant new features, but upgrade anyway](https://appleinsider.com/articles/26/02/11/macos-tahoe-263-has-no-significant-new-features-but-upgrade-anyway?utm_source=rss)
+### 17. [macOS Tahoe 26.3 has no significant new features, but upgrade anyway](https://appleinsider.com/articles/26/02/11/macos-tahoe-263-has-no-significant-new-features-but-upgrade-anyway?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple has publicly released macOS Tahoe 26.3 after weeks of beta testing, but while it will have performance and security updates, there are no user-facing new features.
 
@@ -86,7 +148,7 @@ Apple has released macOS 26.3 as the new official version of macOS Tahoe
 The previous macOS 26.2 came with new features that were visible to users, such as urgent Reminders and the all new Edge Light illumination for video calls. It also gave M5 Mac users a giant machine-learning speed boost.
 This new macOS 26.3 is also optimized for the M5, but reportedly that is specifically for the M5 Pro and M5 Max.
 
-### 9. [iOS 26.3 is here with a focus on switchers and stalking—check out what’s new](https://www.macworld.com/article/3056433/ios-26-3-is-here-with-a-focus-on-switchers-and-stalking-check-out-whats-new.html)
+### 18. [iOS 26.3 is here with a focus on switchers and stalking—check out what’s new](https://www.macworld.com/article/3056433/ios-26-3-is-here-with-a-focus-on-switchers-and-stalking-check-out-whats-new.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -94,7 +156,7 @@ Macworld
 Apple has just released iOS 26.3 to iPhones everywhere, and as expected, it’s a relatively small update. With iOS 26.4 already on the horizon, and rumored to introduce substantial changes, including a Gemini-powered Siri, this release is more about incremental improvements that set the stage for big upcoming changes.
 That said, iOS 26.3 still introduces a few notable additions, especially when it comes to device switching, privacy, and new capabilities for users in the EU. Read on as we break down everything new in iOS 26.3.
 
-### 10. [visionOS 26.3 doesn't offer anything new, but it's here](https://appleinsider.com/articles/26/02/11/visionos-263-doesnt-offer-anything-new-but-its-here?utm_source=rss)
+### 19. [visionOS 26.3 doesn't offer anything new, but it's here](https://appleinsider.com/articles/26/02/11/visionos-263-doesnt-offer-anything-new-but-its-here?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple keeps its operating systems in lock step with its point updates, so even if it might be just bug fixes and minor feature tweaks, visionOS 26.3 is here.
 
@@ -103,7 +165,7 @@ Apple Vision Pro gets visionOS 26.3
 The OS 26.3 release is mostly focused on bug fixes and features found in iOS, so Apple Vision Pro users are getting a light update. It should be the last point update before Apple's big Apple Intelligence upgrade lands in the OS 26.4 release.
 The visionOS 26.3 update is here and it doesn't have any user-facing features.
 
-### 11. [iOS 26.3 arrives with a simpler way to transfer from iPhone to Android](https://appleinsider.com/articles/26/02/11/ios-263-arrives-with-a-simpler-way-to-transfer-from-iphone-to-android?utm_source=rss)
+### 20. [iOS 26.3 arrives with a simpler way to transfer from iPhone to Android](https://appleinsider.com/articles/26/02/11/ios-263-arrives-with-a-simpler-way-to-transfer-from-iphone-to-android?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple has released iOS 26.3 to the public, with the changes including a simplified way to transfer to an Android device.
 
@@ -112,7 +174,7 @@ Transfer to Android is now an option in iOS 26.3
 Following another beta testing cycle, Apple has released its update for iOS 26.3 to the public. The update follows after just one beta build was tested by Apple, with testers using the first build throughout the end-of-year holiday period.
 While iOS 26.2 brought many new features to the operating system, iOS 26.3 brings somewhat fewer.
 
-### 12. [iOS 26.3 is out now, bringing easier Android switching and more](https://www.macworld.com/article/3011656/ios-26-3-beta-arrives-launch-of-new-siri-nears.html)
+### 21. [iOS 26.3 is out now, bringing easier Android switching and more](https://www.macworld.com/article/3011656/ios-26-3-beta-arrives-launch-of-new-siri-nears.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -120,7 +182,7 @@ Macworld
 Following the release of iOS 16.2 on Friday, December 12, the first beta release of iOS 26.3 was made available to developers a few days later, on December 15. We expect a final release to the public sometime in late January or early February. This is reportedly the last minor refresh before iOS 26.4 brings the revamped Siri upgrade we’ve waited over a year to get.
 Update February 11: iOS 26.3 has been released.
 
-### 13. [tvOS 26.3 &amp; homePodOS 26.3 now available to all](https://appleinsider.com/articles/26/02/11/tvos-263-homepodos-263-now-available-to-all?utm_source=rss)
+### 22. [tvOS 26.3 &amp; homePodOS 26.3 now available to all](https://appleinsider.com/articles/26/02/11/tvos-263-homepodos-263-now-available-to-all?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 After a shorter than normal beta testing period, Apple has just rolled out the update for the Apple TV and HomePod.
 
@@ -131,12 +193,12 @@ The tvOS 26.3 and homePod OS 26.3 build numbers are both 23K620.
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 14. [Apple releases macOS 26.3, here’s what’s new](https://9to5mac.com/2026/02/11/apple-releases-macos-26-3-heres-whats-new/)
+### 23. [Apple releases macOS 26.3, here’s what’s new](https://9to5mac.com/2026/02/11/apple-releases-macos-26-3-heres-whats-new/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Following last week’s rollout of the RC version, Apple is now releasing macOS 26.3 for all compatible Macs. Here’s what’s new.
 more…
 
-### 15. [You can now update your Apple Watch to watchOS 26.3](https://appleinsider.com/articles/26/02/11/you-can-now-update-your-apple-watch-to-watchos-263?utm_source=rss)
+### 24. [You can now update your Apple Watch to watchOS 26.3](https://appleinsider.com/articles/26/02/11/you-can-now-update-your-apple-watch-to-watchos-263?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple has just released watchOS 26.3, which means it's now officially time to update your Apple Watch.
 
@@ -147,17 +209,17 @@ The watchOS 26.3 update is build number 23S620.
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 16. [Apple releases watchOS 26.3, tvOS 26.3, and visionOS 26.3](https://9to5mac.com/2026/02/11/apple-releases-watchos-26-3-tvos-26-3-and-visionos-26-3/)
+### 25. [Apple releases watchOS 26.3, tvOS 26.3, and visionOS 26.3](https://9to5mac.com/2026/02/11/apple-releases-watchos-26-3-tvos-26-3-and-visionos-26-3/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has released its latest wave of software updates. New updates are available for the full lineup of Apple devices, including watchOS 26.3 for Apple Watch, tvOS 26.3 for Apple TV, and visionOS 26.3 for Vision Pro.
 more…
 
-### 17. [iOS 26.3 brings these 3 changes to your iPhone](https://www.cultofmac.com/news/ios-26-3-brings-these-3-changes-to-your-iphone)
+### 26. [iOS 26.3 brings these 3 changes to your iPhone](https://www.cultofmac.com/news/ios-26-3-brings-these-3-changes-to-your-iphone)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Apple’s iOS 26.3 update is light on features but brings three important improvements that quietly make your iPhone better.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 18. [Apple Releases iOS 26.3 and iPadOS 26.3](https://www.macrumors.com/2026/02/11/apple-releases-ios-26-3-and-ipados-26-3/)
+### 27. [Apple Releases iOS 26.3 and iPadOS 26.3](https://www.macrumors.com/2026/02/11/apple-releases-ios-26-3-and-ipados-26-3/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released iOS 26.3 and iPadOS 26.3, the latest updates to the iOS 26 and iPadOS 26 operating systems that came out in September. The new software comes almost two months after Apple released iOS 26.2 and iPadOS 26.2.
 
@@ -166,17 +228,17 @@ The new software can be downloaded on eligible iPhones and iPads over-the-air by
 
 According to Apple's release notes, iOS 26.3 and iPadOS 26.3 include unspecified bug fixes and security updates, but there are a couple features that Apple didn't highlight.
 
-### 19. [Apple releases iOS 26.3 for iPhone, here’s what’s new](https://9to5mac.com/2026/02/11/apple-releases-ios-26-3-for-iphone-heres-whats-new/)
+### 28. [Apple releases iOS 26.3 for iPhone, here’s what’s new](https://9to5mac.com/2026/02/11/apple-releases-ios-26-3-for-iphone-heres-whats-new/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 There’s a new software update available for iPhone. Apple has released iOS 26.3, the third big update to Apple’s redesigned operating system and the last before a major improvement to Siri.
 more…
 
-### 20. [iPadOS 26.3 available now for iPad, here’s what’s new](https://9to5mac.com/2026/02/11/ipados-26-3-available-now-for-ipad-heres-whats-new/)
+### 29. [iPadOS 26.3 available now for iPad, here’s what’s new](https://9to5mac.com/2026/02/11/ipados-26-3-available-now-for-ipad-heres-whats-new/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has released its latest iPad software update: iPadOS 26.3 is available now, here’s what’s new for users.
 more…
 
-### 21. [Apple Releases macOS Tahoe 26.3](https://www.macrumors.com/2026/02/11/apple-releases-macos-tahoe-26-3/)
+### 30. [Apple Releases macOS Tahoe 26.3](https://www.macrumors.com/2026/02/11/apple-releases-macos-tahoe-26-3/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released macOS Tahoe 26.3, the third major update to the ‌macOS Tahoe‌ operating system. ‌macOS Tahoe‌ 26.3 comes two months after Apple released macOS Tahoe 26.2.
 
@@ -187,88 +249,6 @@ According to Apple's release notes, ‌macOS Tahoe‌ 26.3 focuses on bug fixes 
 
 Siri functionality and new emoji, among other features.
 Related Roundup:
-
-### 22. [Apple Releases tvOS 26.3](https://www.macrumors.com/2026/02/11/apple-releases-tvos-26-3/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple today released tvOS 26.3, the third update to the tvOS operating system that came out last fall. tvOS 26.3 is available for the Apple TV 4K and the ‌Apple TV‌ HD, and it comes two months after Apple released tvOS 26.2.
-
-
-
- Software Update to get the new software. ‌‌‌Apple TV‌‌‌ owners who have automatic software updates activated will be upgraded to tvOS 26.3 automatically.
-
-tvOS support document.
-Related Roundup: Apple TV
-Buyer's Guide: Apple TV (Don't Buy)
-Related Forum:
-
-### 23. [Apple Releases watchOS 26.3](https://www.macrumors.com/2026/02/11/apple-releases-watchos-26-3/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple today released watchOS 26.3, an update to the watchOS 26 operating system that came out in September. watchOS 26.3 comes two months after Apple released watchOS 26.2.
-
-
-watchOS 26.3 can be downloaded for free on an iPhone running iOS 26.3 by opening up the Apple Watch app and going to General &gt; Software Update, or initiating an update in the Settings app on the watch. To install the new software, the Apple Watch needs to have at least 50 percent battery and it needs to be placed on a charger.
-
-Related Roundup: watchOS 26
-Related Forum:
-
-### 24. [Apple Releases HomePod Software 26.3](https://www.macrumors.com/2026/02/11/apple-releases-homepod-software-26-3/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Alongside iOS 26.3, iPadOS 26.3, and macOS Tahoe 26.3, Apple has released new HomePod 26.3 software for the ‌HomePod‌ and the HomePod mini. The update comes two months after Apple released ‌HomePod‌ Software 26.2. 
-
-
-According to Apple's release notes, ‌HomePod‌ Software 26.3 includes performance and stability improvements.
-
-iPhone, iPad, or Mac by tapping on the More button, choosing Home Settings, and then selecting the Software Update option.
-Related Roundups: HomePod, HomePod mini
-Buyer's Guide: HomePod (Neutral), HomePod Mini (Don't Buy)
-Related Forum:
-
-### 25. [Apple Releases visionOS 26.3](https://www.macrumors.com/2026/02/11/apple-releases-visionos-26-3/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Apple today released visionOS 26.3, the third update to the visionOS 26 operating system that launched in September. visionOS 26.3 comes a month after Apple released visionOS 26.2.
-
-
-‌visionOS 26‌.3 can be downloaded on all Vision Pro headsets by navigating to the Settings app, selecting the General section, and choosing the Software Update option. To install an update, the Vision Pro headset needs to be removed, and there is a software progress bar available on the exterior EyeSight display.
-
-Related Roundup: Apple Vision Pro
-Buyer's Guide: Vision Pro (Buy Now)
-Related Forum:
-
-### 26. [‘Dear Algo’ lets you tweak your Threads feed for trending moments](https://9to5mac.com/2026/02/11/dear-algo-lets-you-tweak-your-threads-feed-for-trending-moments/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-The AI-powered feature is rolling out today as beta, letting users in select countries directly steer their feeds (albeit temporarily). Here’s how it works.
-more…
-
-### 27. [Apple’s new 40W dynamic charger is under $30 for the first time](https://www.macworld.com/article/3058649/apples-new-40w-dynamic-charger-is-under-30-for-the-first-time.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-You might have heard about Apple’s new dynamic charger that can deliver just the right amount of juice to your iPhone or Mac. You also might have heard that it’s pretty pricey at $39. Well, it just got its first discount, so if you’re curious about it, it’s a great time to buy one. The Apple 40W Dynamic Power Adapter with 60W max power is down to a cool $27 at Amazon, the best price we’ve ever seen.
-We tested this power adapter a while back and were pleasantly surprised by its performance.
-
-### 28. [You may not need AppleCare+ in 2026 (unless you own these models)](https://www.cultofmac.com/news/who-needs-applecare)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-The question of who needs AppleCare+ in 2026 comes down to risk tolerance, plus which devices users own and how they use them. 
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 29. [Mega Deal Zone: 1TB M4 Pro MacBook Pro laptops plunge to as low as $1,799](https://appleinsider.com/articles/26/02/11/mega-deal-zone-1tb-m4-pro-macbook-pro-laptops-plunge-to-as-low-as-1799?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-B&amp;H is blowing out M4 Pro MacBook Pro inventory during its Mega Deal Zone event, with savings of up to $400 off multiple models.
-
-
-Save $400 on M4 Pro MacBook Pro laptops during Mega Deal Zone.
-Now through Feb. 12, B&amp;H is hosting a Mega Deal Zone savings event, with MacBook Pro and MacBook Air models up to $400 off.
-Save up to $400 during Mac Deal Zone
-
- Continue Reading on AppleInsider | Discuss on our Forums
-
-### 30. [Never Miss Your Doorbell While Wearing Headphones on iPhone](https://www.macrumors.com/how-to/never-miss-doorbell-wearing-iphone/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Noise-canceling headphones are great for blocking out distractions, but they can also block out sounds you actually need to hear, like a courier at the front door with your all-important package. Well, thanks to an Apple accessibility feature, your iPhone can do the listening for you and alert you when your doorbell rings.
-
-
-Meet Sound Recognition, the feature in question that uses your iPhone's microphone to continuously monitor for specific sounds.
 
 <a id="iot"></a>
 
@@ -573,143 +553,143 @@ The post Cryptocurrency markets a testbed for AI forecasting models appeared fir
 
 ## Cybersecurity
 
-### 1. [Proactive strategies for cyber resilience with Wazuh](https://www.bleepingcomputer.com/news/security/proactive-strategies-for-cyber-resilience-with-wazuh/)
+### 1. [Nevada Unveils New Statewide Data Classification Policy Months After Cyberattack](https://www.securityweek.com/nevada-unveils-new-statewide-data-classification-policy-months-after-cyberattack/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Officials said data will now be classified as one of four categories: “public,” “sensitive,” “confidential” or “restricted.” 
+The post Nevada Unveils New Statewide Data Classification Policy Months After Cyberattack appeared first on SecurityWeek.
+
+### 2. [Crazy ransomware gang abuses employee monitoring tool in attacks](https://www.bleepingcomputer.com/news/security/crazy-ransomware-gang-abuses-employee-monitoring-tool-in-attacks/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A member of the Crazy ransomware gang is abusing legitimate employee monitoring software and the SimpleHelp remote support tool to maintain persistence in corporate networks, evade detection, and prepare for ransomware deployment. [...]
+
+### 3. [Police arrest seller of JokerOTP MFA passcode capturing tool](https://www.bleepingcomputer.com/news/security/police-arrest-seller-of-jokerotp-mfa-passcode-capturing-tool/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+The Netherlands Police have arrested a a 21-year-old man from Dordrecht, suspected of selling access to the JokerOTP phishing automation tool that can intercept one-time passwords (OTP) for hijacking accounts. [...]
+
+### 4. [Proactive strategies for cyber resilience with Wazuh](https://www.bleepingcomputer.com/news/security/proactive-strategies-for-cyber-resilience-with-wazuh/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cyber resilience means anticipating threats, detecting them early, and recovering fast when incidents occur. Wazuh shows how its open source SIEM and XDR unify visibility, detection, and automated response to strengthen proactive defense. [...]
 
-### 2. [LummaStealer infections surge after CastleLoader malware campaigns](https://www.bleepingcomputer.com/news/security/lummastealer-infections-surge-after-castleloader-malware-campaigns/)
+### 5. [LummaStealer infections surge after CastleLoader malware campaigns](https://www.bleepingcomputer.com/news/security/lummastealer-infections-surge-after-castleloader-malware-campaigns/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A surge in LummaStealer infections has been observed, driven by social engineering campaigns leveraging the ClickFix technique to deliver the CastleLoader malware. [...]
 
-### 3. [Kimwolf Botnet Swamps Anonymity Network I2P](https://krebsonsecurity.com/2026/02/kimwolf-botnet-swamps-anonymity-network-i2p/)
+### 6. [Kimwolf Botnet Swamps Anonymity Network I2P](https://krebsonsecurity.com/2026/02/kimwolf-botnet-swamps-anonymity-network-i2p/)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 For the past week, the massive "Internet of Things" (IoT) botnet known as Kimwolf has been disrupting the The Invisible Internet Project (I2P), a decentralized, encrypted communications network designed to anonymize and secure online communications. I2P users started reporting disruptions in the network around the same time the Kimwolf botmasters began relying on it to evade takedown attempts against the botnet's control servers.
 
-### 4. [Webinar Today: Identity Under Attack – Strengthen Your Identity Defenses](https://www.securityweek.com/webinar-today-identity-under-attack-strengthen-your-identity-defenses/)
+### 7. [Webinar Today: Identity Under Attack – Strengthen Your Identity Defenses](https://www.securityweek.com/webinar-today-identity-under-attack-strengthen-your-identity-defenses/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Gain practical insights on balancing security, user experience, and operational efficiency while staying ahead of increasingly sophisticated threats.
 The post Webinar Today: Identity Under Attack – Strengthen Your Identity Defenses appeared first on SecurityWeek.
 
-### 5. [APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities](https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html)
+### 8. [APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities](https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Indian defense sector and government-aligned organizations have been targeted by multiple campaigns that are designed to compromise Windows and Linux environments with remote access trojans capable of stealing sensitive data and ensuring continued access to infected machines.
 The campaigns are characterized by the use of malware families like Geta RAT, Ares RAT, and DeskRAT, which are often
 
-### 6. [GitGuardian Raises $50 Million for Secrets and Non-Human Identity Security](https://www.securityweek.com/gitguardian-raises-50-million-for-secrets-and-non-human-identity-security/)
+### 9. [GitGuardian Raises $50 Million for Secrets and Non-Human Identity Security](https://www.securityweek.com/gitguardian-raises-50-million-for-secrets-and-non-human-identity-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The secrets security company has raised more than $100 million since its creation in 2017.
 The post GitGuardian Raises $50 Million for Secrets and Non-Human Identity Security appeared first on SecurityWeek.
 
-### 7. [Conduent Breach Hits Volvo Group: Nearly 17,000 Employees’ Data Exposed](https://www.securityweek.com/conduent-breach-hits-volvo-group-nearly-17000-employees-data-exposed/)
+### 10. [Conduent Breach Hits Volvo Group: Nearly 17,000 Employees’ Data Exposed](https://www.securityweek.com/conduent-breach-hits-volvo-group-nearly-17000-employees-data-exposed/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The Conduent data breach affects at least 25 million individuals, up from 10 million estimated a few months ago. 
 The post Conduent Breach Hits Volvo Group: Nearly 17,000 Employees’ Data Exposed appeared first on SecurityWeek.
 
-### 8. [Zast.AI Raises $6 Million for AI-Powered Code Security](https://www.securityweek.com/zast-ai-raises-6-million-for-ai-powered-code-security/)
+### 11. [Zast.AI Raises $6 Million for AI-Powered Code Security](https://www.securityweek.com/zast-ai-raises-6-million-for-ai-powered-code-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The startup relies on AI agents to identify software vulnerabilities and validate them before reporting.
 The post Zast.AI Raises $6 Million for AI-Powered Code Security appeared first on SecurityWeek.
 
-### 9. [Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms](https://thehackernews.com/2026/02/over-60-software-vendors-issue-security.html)
+### 12. [Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms](https://thehackernews.com/2026/02/over-60-software-vendors-issue-security.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 It's Patch Tuesday, which means a number of software vendors have released patches for various security vulnerabilities impacting their products and services.
 Microsoft issued fixes for 59 flaws, including six actively exploited zero-days in various Windows components that could be abused to bypass security features, escalate privileges, and trigger a denial-of-service (DoS) condition.
 Elsewhere
 
-### 10. [Security in the Dark: Recognizing the Signs of Hidden Information](https://www.securityweek.com/security-in-the-dark-recognizing-the-signs-of-hidden-information/)
+### 13. [Security in the Dark: Recognizing the Signs of Hidden Information](https://www.securityweek.com/security-in-the-dark-recognizing-the-signs-of-hidden-information/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Security failures don’t always start with attackers, sometimes they start with missing truth.
 The post Security in the Dark: Recognizing the Signs of Hidden Information appeared first on SecurityWeek.
 
-### 11. [Microsoft to Refresh Windows Secure Boot Certificates in June 2026](https://www.securityweek.com/microsoft-to-refresh-windows-secure-boot-certificates-in-june-2026/)
+### 14. [Microsoft to Refresh Windows Secure Boot Certificates in June 2026](https://www.securityweek.com/microsoft-to-refresh-windows-secure-boot-certificates-in-june-2026/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 After a decade and a half of service, the current certificates will expire, and new ones will be rolled out.
 The post Microsoft to Refresh Windows Secure Boot Certificates in June 2026 appeared first on SecurityWeek.
 
-### 12. [Hacker Conversations: Professional Hacker Douglas Day](https://www.securityweek.com/hacker-conversations-professional-hacker-douglas-day/)
+### 15. [Hacker Conversations: Professional Hacker Douglas Day](https://www.securityweek.com/hacker-conversations-professional-hacker-douglas-day/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Day became a professional hacker by choice. But that doesn’t mean he isn’t a natural hacker. 
 The post Hacker Conversations: Professional Hacker Douglas Day appeared first on SecurityWeek.
 
-### 13. [Ivanti Patches Endpoint Manager Vulnerabilities Disclosed in October 2025](https://www.securityweek.com/ivanti-patches-endpoint-manager-vulnerabilities-disclosed-in-october-2025/)
+### 16. [Ivanti Patches Endpoint Manager Vulnerabilities Disclosed in October 2025](https://www.securityweek.com/ivanti-patches-endpoint-manager-vulnerabilities-disclosed-in-october-2025/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 It also fixed a high-severity authentication bypass that could be exploited remotely without authentication to obtain credentials.
 The post Ivanti Patches Endpoint Manager Vulnerabilities Disclosed in October 2025 appeared first on SecurityWeek.
 
-### 14. [Exposed Training Open the Door for Crypto-Mining in Fortune 500 Cloud Environments](https://thehackernews.com/2026/02/exposed-training-open-door-for-crypto.html)
+### 17. [Exposed Training Open the Door for Crypto-Mining in Fortune 500 Cloud Environments](https://thehackernews.com/2026/02/exposed-training-open-door-for-crypto.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Intentionally vulnerable training applications are widely used for security education, internal testing, and product demonstrations. Tools such as OWASP Juice Shop, DVWA, Hackazon, and bWAPP are designed to be insecure by default, making them useful for learning how common attack techniques work in controlled environments.
 The issue is not the applications themselves, but how they are often
 
-### 15. [Chipmaker Patch Tuesday: Over 80 Vulnerabilities Addressed by Intel and AMD](https://www.securityweek.com/chipmaker-patch-tuesday-over-80-vulnerabilities-addressed-by-intel-and-amd/)
+### 18. [Chipmaker Patch Tuesday: Over 80 Vulnerabilities Addressed by Intel and AMD](https://www.securityweek.com/chipmaker-patch-tuesday-over-80-vulnerabilities-addressed-by-intel-and-amd/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 More than two dozen advisories have been published by the chip giants for vulnerabilities found recently in their products.
 The post Chipmaker Patch Tuesday: Over 80 Vulnerabilities Addressed by Intel and AMD appeared first on SecurityWeek.
 
-### 16. [Microsoft Patches 59 Vulnerabilities Including Six Actively Exploited Zero-Days](https://thehackernews.com/2026/02/microsoft-patches-59-vulnerabilities.html)
+### 19. [Microsoft Patches 59 Vulnerabilities Including Six Actively Exploited Zero-Days](https://thehackernews.com/2026/02/microsoft-patches-59-vulnerabilities.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft on Tuesday released security updates to address a set of 59 flaws across its software, including six vulnerabilities that it said have been exploited in the wild.
 Of the 59 flaws, five are rated Critical, 52 are rated Important, and two are rated Moderate in severity. Twenty-five of the patched vulnerabilities have been classified as privilege escalation, followed by remote code
 
-### 17. [SSHStalker Botnet Uses IRC C2 to Control Linux Systems via Legacy Kernel Exploits](https://thehackernews.com/2026/02/sshstalker-botnet-uses-irc-c2-to.html)
+### 20. [SSHStalker Botnet Uses IRC C2 to Control Linux Systems via Legacy Kernel Exploits](https://thehackernews.com/2026/02/sshstalker-botnet-uses-irc-c2-to.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a new botnet operation called SSHStalker that relies on the Internet Relay Chat (IRC) communication protocol for command-and-control (C2) purposes.
 "The toolset blends stealth helpers with legacy-era Linux exploitation: Alongside log cleaners (utmp/wtmp/lastlog tampering) and rootkit-class artifacts, the actor keeps a large back-catalog of
 
-### 18. [Fortinet Patches High-Severity Vulnerabilities](https://www.securityweek.com/fortinet-patches-high-severity-vulnerabilities/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The bugs could be exploited without authentication for command execution and authentication bypass.
-The post Fortinet Patches High-Severity Vulnerabilities appeared first on SecurityWeek.
-
-### 19. [North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations](https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html)
+### 21. [North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations](https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The North Korea-linked threat actor known as UNC1069 has been observed targeting the cryptocurrency sector to steal sensitive data from Windows and macOS systems with the ultimate goal of facilitating financial theft.
 "The intrusion relied on a social engineering scheme involving a compromised Telegram account, a fake Zoom meeting, a ClickFix infection vector, and reported usage of AI-generated
 
-### 20. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
+### 22. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has announced Windows 11 26H1, but it's not for existing PCs. Instead, it will ship on devices with Snapdragon X2 processors and possibly other rumored ARM chips.w [...]
 
-### 21. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
+### 23. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly documented Linux botnet named SSHStalker is using the IRC (Internet Relay Chat) communication protocol for command-and-control (C2) operations. [...]
 
-### 22. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
+### 24. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 North Korean hackers are running tailored campaigns using AI-generated video and the ClickFix technique to deliver malware for macOS and Windows to targets in the cryptocurrency sector. [...]
 
-### 23. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
+### 25. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 Microsoft today released updates to fix more than 50 security holes in its Windows operating systems and other software, including patches for a whopping six "zero-day" vulnerabilities that attackers are already exploiting in the wild.
 
-### 24. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
+### 26. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fake 7-Zip website is distributing a trojanized installer of the popular archiving tool that turns the user's computer into a residential proxy node. [...]
 
-### 25. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
+### 27. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released the Windows 10 KB5075912 extended security update to fix February 2026 Patch Tuesday vulnerabilities, including six zero-days, and continue rolling out replacements for expiring Secure Boot certificates. [...]
 
-### 26. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
+### 28. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Today is Microsoft's February 2026 Patch Tuesday with security updates for 58 flaws, including 6 actively exploited and three publicly disclosed zero-day vulnerabilities. [...]
 
-### 27. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
+### 29. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released Windows 11 KB5077181 and KB5075941 cumulative updates for versions 25H2/24H2 and 23H2 to fix security vulnerabilities, bugs, and add new features. [...]
 
-### 28. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
+### 30. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The information technology (IT) workers associated with the Democratic People's Republic of Korea (DPRK) are now applying to remote positions using real LinkedIn accounts of individuals they're impersonating, marking a new escalation of the fraudulent scheme.
 "These profiles often have verified workplace emails and identity badges, which DPRK operatives hope will make their fraudulent
-
-### 29. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Volvo Group North America disclosed that it suffered an indirect data breach stemming from the compromise of IT systems at American business services giant Conduent, of which Volvo is a customer. [...]
-
-### 30. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-Microsoft has begun rolling out updated Secure Boot certificates through monthly Windows updates to replace the original 2011 certificates that will expire in late June 2026. [...]
 
 
 ---
