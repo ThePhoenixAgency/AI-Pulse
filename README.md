@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 11 Feb 2026 06:54:07 GMT
+**Last Update:** Wed, 11 Feb 2026 08:40:02 GMT
 
 ---
 
@@ -29,7 +29,15 @@
 
 ## Mac & Apple
 
-### 1. [How to bring back macOS Launchpad with this neat command-line tool](https://appleinsider.com/inside/macos-tahoe/tips/how-to-bring-back-macos-launchpad-with-this-neat-command-line-tool?utm_source=rss)
+### 1. [Choose screen time that encourages exploration instead of constant stimulation — this app is a flat $45](https://www.macworld.com/article/3055247/choose-screen-time-that-encourages-exploration-instead-of-constant-stimulation-this-app-is-a-flat-45.html)
+**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
+Macworld
+
+
+TL;DR: Get a lifetime subscription to Pok Pok for $44.97 with code PLAY for up to 10 devices and give kids ages 2–8 a calm, ad-free, Montessori-inspired screen experience focused on creativity and learning.
+Helping kids build a healthy relationship with screens isn’t easy, particularly when so many apps are noisy, overstimulating, or ad-driven. Pok Pok takes a slower, more intentional approach, offering a screen experience designed for young children to explore creatively and independently.
+
+### 2. [How to bring back macOS Launchpad with this neat command-line tool](https://appleinsider.com/inside/macos-tahoe/tips/how-to-bring-back-macos-launchpad-with-this-neat-command-line-tool?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple power users on macOS Tahoe are deliberately undoing parts of Apple's latest interface overhaul in order to remove the Liquid Glass design.
 
@@ -38,7 +46,7 @@ Bring back Launchpad to macOS Tahoe
 There's an unofficial workaround that brings back the classic Launchpad app grid and reduces Liquid Glass's heavy translucency. The tool allows users to enjoy macOS Tahoe's performance and feature updates without fully embracing its new visual style.
 Liquid Glass looks polished in screenshots and marketing videos, with layered blur and reflections giving a sense of depth and motion.
 
-### 2. [600 companies in Japan want the Epic treatment -- a free ride in Apple's ecosystem](https://appleinsider.com/articles/26/02/11/600-companies-in-japan-want-the-epic-treatment----a-free-ride-in-apples-ecosystem?utm_source=rss)
+### 3. [600 companies in Japan want the Epic treatment -- a free ride in Apple's ecosystem](https://appleinsider.com/articles/26/02/11/600-companies-in-japan-want-the-epic-treatment----a-free-ride-in-apples-ecosystem?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple set up alternative app stores and external payments in Japan similar to how it is being handled in the EU, but developers say it has "no economic incentive" and want to pay nothing to Apple.
 
@@ -46,31 +54,31 @@ Apple set up alternative app stores and external payments in Japan similar to ho
 iOS in Japan has been opened up to alternative app stores, but there's a problem
 An ongoing snafu between Apple, Epic, and Judge Yvonne Gonzalez Rogers has led to an injunction forcing Apple to allow external payments without collecting a commission. While that is being appealed in the US, developers in Japan want similar treatment.
 
-### 3. [Tim Cook promises Apple will celebrate its upcoming 50th anniversary](https://9to5mac.com/2026/02/10/tim-cook-promises-apple-will-celebrate-its-upcoming-50th-anniversary/)
+### 4. [Tim Cook promises Apple will celebrate its upcoming 50th anniversary](https://9to5mac.com/2026/02/10/tim-cook-promises-apple-will-celebrate-its-upcoming-50th-anniversary/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple was founded on April 1, 1976, which means this year marks the company’s 50th anniversary. In a recent all-hands meeting with employees, Apple CEO Tim Cook teased that Apple is planning a celebration for this historic milestone.
 more…
 
-### 4. [Why You Shouldn't Buy the Next MacBook Pro](https://www.macrumors.com/2026/02/10/macbook-pro-buying-advice-2026/)
+### 5. [Why You Shouldn't Buy the Next MacBook Pro](https://www.macrumors.com/2026/02/10/macbook-pro-buying-advice-2026/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is planning to launch new MacBook Pro models as soon as early March, but if you can, this is one generation you should skip because there's something much better in the works.
 
 
 We're waiting on 14-inch and 16-inch ‌MacBook Pro‌ models with M5 Pro and M5 Max chips, with few changes other than the processor upgrade. There won't be any tweaks to the design or the display, but later this year, a massive refresh is coming. Rumors suggest that there won't be just one ‌MacBook Pro‌ refresh in 2026, but two.
 
-### 5. [Razer Launches Limited-Edition Boomslang Gaming Mouse for $1,337](https://www.macrumors.com/2026/02/10/razer-boomslang-gaming-mouse/)
+### 6. [Razer Launches Limited-Edition Boomslang Gaming Mouse for $1,337](https://www.macrumors.com/2026/02/10/razer-boomslang-gaming-mouse/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Gaming computer company Razer today started accepting pre-orders for the Razer Boomslang mouse, which is being released to celebrate the 20th anniversary of the original peripheral.
 
 
 The original Razer Boomslang was one of the first gaming mice, providing a wheel that boasted more precise mouse tracking than other mic on the market.
 
-### 6. [1 in 4 smartphones active worldwide is an iPhone](https://www.cultofmac.com/news/iphone-smartphone-active-installed-base-2026)
+### 7. [1 in 4 smartphones active worldwide is an iPhone](https://www.cultofmac.com/news/iphone-smartphone-active-installed-base-2026)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Apple has a much larger global active installed base than any rival, with about one in four active smartphones being an iPhone.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 7. [Discord age verification not a requirement for every user, but still bad](https://appleinsider.com/articles/26/02/10/discord-age-verification-not-a-requirement-for-every-user-but-still-bad?utm_source=rss)
+### 8. [Discord age verification not a requirement for every user, but still bad](https://appleinsider.com/articles/26/02/10/discord-age-verification-not-a-requirement-for-every-user-but-still-bad?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Discord is relying on algorithmic data analysis and third-party vendors to handle age verification, but it has clarified that not everyone will be met with explicit age checks.
 
@@ -78,24 +86,24 @@ Discord is relying on algorithmic data analysis and third-party vendors to handl
 Everyone is treated as a child on Discord until they try to access adult content
 The latest update from Discord's safety team seems to be a big step back from its earlier promise, though not much has actually changed. The controversial move will have everyone's account set to teen by default, and while some will need to do age verification via face or ID scan, not everyone will.
 
-### 8. [Google Brings Fitbit AI Health Coach to iPhone as Apple Pulls Back on iOS 27 Health Plans](https://www.macrumors.com/2026/02/10/google-fitbit-ai-health-coach-ios/)
+### 9. [Google Brings Fitbit AI Health Coach to iPhone as Apple Pulls Back on iOS 27 Health Plans](https://www.macrumors.com/2026/02/10/google-fitbit-ai-health-coach-ios/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Amid rumors that Apple is scaling back its AI health plans, Google today expanded its subscription-based Fitbit AI personal health coach service to more users worldwide, including those who are on iOS. Prior to now, the Fitbit service was limited to Android users.
 
 
 The Gemini-powered Fitbit personal health coach is described as a 24/7 digital advisor that’s meant to work as a virtual fitness trainer, sleep coach, and health and wellness advisor.
 
-### 9. [iPhone full again? This $30 photo backup stick fixes it instantly.](https://www.cultofmac.com/deals/photo-backup-stick-omega-universal)
+### 10. [iPhone full again? This $30 photo backup stick fixes it instantly.](https://www.cultofmac.com/deals/photo-backup-stick-omega-universal)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The Photo Backup Stick Omega Universal packs 64GB of storage and tips for USB-C, Lightning and micro USB.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 10. [Japan tech groups say Apple’s new payment rules are ‘not a viable option’ for developers](https://9to5mac.com/2026/02/10/japan-tech-groups-say-apples-new-payment-rules-are-not-a-viable-option-for-developers/)
+### 11. [Japan tech groups say Apple’s new payment rules are ‘not a viable option’ for developers](https://9to5mac.com/2026/02/10/japan-tech-groups-say-apples-new-payment-rules-are-not-a-viable-option-for-developers/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Following a recent change to multiple App Store rules in Japan, a coalition representing more than 600 local companies is calling for further regulatory action. Here are the details.
 more…
 
-### 11. [Find My outage &amp; iCloud issues hit users once again Tuesday evening](https://appleinsider.com/articles/26/02/10/find-my-outage-icloud-issues-hit-users-once-again?utm_source=rss)
+### 12. [Find My outage &amp; iCloud issues hit users once again Tuesday evening](https://appleinsider.com/articles/26/02/10/find-my-outage-icloud-issues-hit-users-once-again?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Users may be encountered issues with iCloud services, Photos sync, or an outright outage with Find My on Tuesday, now resolved.
 
@@ -104,7 +112,7 @@ Another services outage has affected users
 Everything you do on an iPhone touches some kind of service, which can experience an outage from time to time. If you noticed that a file just won't sync, or you can't see your friend's location, it's usually because of an ongoing issue.
 According to Apple's System Status page, various iCloud services began facing issues around 2:02 p.m. ET and Find My saw a full outage that began at 3:04 p.m. ET.
 
-### 12. [CrossOver 26 update adds compatibility for blockbuster 'Expedition 33' and 'HellDivers 2'](https://appleinsider.com/articles/26/02/10/crossover-26-update-adds-compatibility-for-blockbuster-expedition-33-and-helldivers-2?utm_source=rss)
+### 13. [CrossOver 26 update adds compatibility for blockbuster 'Expedition 33' and 'HellDivers 2'](https://appleinsider.com/articles/26/02/10/crossover-26-update-adds-compatibility-for-blockbuster-expedition-33-and-helldivers-2?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The newly updated CrossOver 26 for macOS Tahoe updates WINE, bringing the award-winning "Clair Obscur: Expedition 33," "HellDivers 2," and many more to Mac gamers.
 
@@ -113,12 +121,12 @@ CrossOver 26 now available for Mac
 CrossOver is a Windows compatibility layer for macOS and Linux, designed to enable Mac users to run both productivity applications and games. According to the devs, this version includes Wine 11, which by itself brings over 6,000 changes for better game and application compatibility.
 It also includes D3DMetal 3.0, DXMT v0.72, Wine Mono 10.4.1, and vkd3d 1.18.
 
-### 13. [Discord backtracks on controversial age verification rollout…kind of](https://9to5mac.com/2026/02/10/discord-backtracks-on-controversial-age-verification-rolloutkind-of/)
+### 14. [Discord backtracks on controversial age verification rollout…kind of](https://9to5mac.com/2026/02/10/discord-backtracks-on-controversial-age-verification-rolloutkind-of/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Yesterday Discord announced that users would soon be required to have their age verified or be restricted to teen-level access on the service. Today, there’s a follow-up post from Discord that backtracks some on the expected impact of its new policy.
 more…
 
-### 14. [Apple is Getting Rid of iTunes Wish Lists, Here's How to Save Yours](https://www.macrumors.com/2026/02/10/apple-itunes-wishlist-removal/)
+### 15. [Apple is Getting Rid of iTunes Wish Lists, Here's How to Save Yours](https://www.macrumors.com/2026/02/10/apple-itunes-wishlist-removal/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple will soon do away with iTunes Wish Lists featuring movie and TV shows, according to emails going out to customers as of today. Apple says that people who still have wish lists should migrate items to their Apple TV watchlist before the feature is removed.
 
@@ -127,7 +135,7 @@ Each email that Apple is sending out includes a PDF with TV shows and movies tha
 
 removed wish lists entirely, without giving customers a heads-up.
 
-### 15. [2025 sales surge means one in four smartphones on Earth is an iPhone](https://appleinsider.com/articles/26/02/10/2025-sales-surge-means-one-in-four-smartphones-on-earth-is-an-iphone?utm_source=rss)
+### 16. [2025 sales surge means one in four smartphones on Earth is an iPhone](https://appleinsider.com/articles/26/02/10/2025-sales-surge-means-one-in-four-smartphones-on-earth-is-an-iphone?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 It was a good year for smartphone sales, but Apple in particular took home all of the accolades with its iPhone 16 and iPhone 17 series performing so well across 2025.
 
@@ -136,23 +144,23 @@ iPhone 17 demand helped drive iPhone sales in 2025
 The charts keep moving in an upward direction with the Q1 2026 earnings showing a record $143.8 billion in revenue. That was primarily driven by iPhone demand, which was high in spite of pundits' arguments about Apple's place in the AI race.
 According to a report from Counterpoint Research, Apple's iPhone makes up one of every four smartphones on Earth.
 
-### 16. [VSCO’s Film 02 preset Pack available for Adobe Lightroom as a limited-time release](https://9to5mac.com/2026/02/10/vscos-film-02-preset-pack-available-for-adobe-lightroom-as-a-limited-time-release/)
+### 17. [VSCO’s Film 02 preset Pack available for Adobe Lightroom as a limited-time release](https://9to5mac.com/2026/02/10/vscos-film-02-preset-pack-available-for-adobe-lightroom-as-a-limited-time-release/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The updated pack emulates classic analog film stocks, including Kodak, Fuji, and Ilford, and now supports modern cameras. Here’s how to install it.
 more…
 
-### 17. [Apple experiencing outages with iCloud, Photos, Find My, more [U: Solved]](https://9to5mac.com/2026/02/10/apple-experiencing-outages-with-icloud-photos-find-my-more/)
+### 18. [Apple experiencing outages with iCloud, Photos, Find My, more [U: Solved]](https://9to5mac.com/2026/02/10/apple-experiencing-outages-with-icloud-photos-find-my-more/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Update, 8:06 p.m. ET: Apple’s online system status page now lists all issues and outages as solved. The original post follows below.
 Apple’s system status page has confirmed ongoing issues with a variety of web services, including iCloud, Photos, Find My, and more.
 more…
 
-### 18. [New MacBook Air coming soon: Here’s what we know](https://9to5mac.com/2026/02/10/new-macbook-air-coming-soon-heres-what-we-know/)
+### 19. [New MacBook Air coming soon: Here’s what we know](https://9to5mac.com/2026/02/10/new-macbook-air-coming-soon-heres-what-we-know/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While the MacBook Pro is stealing headlines, Apple’s most popular laptop is also set to get an upgrade soon. Here’s everything we know about the next-generation MacBook Air.
 more…
 
-### 19. [Find My, Photos and Some iCloud Services Experiencing Issues](https://www.macrumors.com/2026/02/10/find-my-photos-icloud-issues/)
+### 20. [Find My, Photos and Some iCloud Services Experiencing Issues](https://www.macrumors.com/2026/02/10/find-my-photos-icloud-issues/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's Find My feature, photos, and some iCloud services are experiencing service interruptions at the current time, so if you've run into problems, it's because of network issues.
 
@@ -163,12 +171,12 @@ Photos. Apple says that some users may be experiencing issues with these service
 
 ‌Find My‌ has been down since 3:00 p.m. Eastern Time, while the other services have been having problems since 2:00 p.m. Eastern Time.
 
-### 20. [Apple removing ‘iTunes Wish List’ feature, here’s how to migrate selections](https://9to5mac.com/2026/02/10/apple-removing-itunes-wish-list-feature-heres-how-to-migrate-selections/)
+### 21. [Apple removing ‘iTunes Wish List’ feature, here’s how to migrate selections](https://9to5mac.com/2026/02/10/apple-removing-itunes-wish-list-feature-heres-how-to-migrate-selections/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The legacy iTunes Wish List feature for saving movies and TV shows to buy or rent later is “going away soon,” according to Apple. For customers with items still saved to an iTunes Wish List, Apple is providing one last chance to migrate to the modern equivalent.
 more…
 
-### 21. [Facebook Adding AI Profile Picture Animations and Story Editing Tools](https://www.macrumors.com/2026/02/10/facebook-ai-profile-animations/)
+### 22. [Facebook Adding AI Profile Picture Animations and Story Editing Tools](https://www.macrumors.com/2026/02/10/facebook-ai-profile-animations/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Meta today announced several new AI features for popular social network Facebook. The capabilities will be available for profile pictures, photos, posts, stories, and more.
 
@@ -177,12 +185,12 @@ Meta AI's image editing tools can be used to animate a profile picture, adding m
 
 Text-based AI prompts can be used for creating images for Facebook Stories and Memories.
 
-### 22. [iPhone now accounts for nearly one in four active smartphones worldwide: report](https://9to5mac.com/2026/02/10/iphone-now-accounts-for-nearly-one-in-four-active-smartphones-worldwide-report/)
+### 23. [iPhone now accounts for nearly one in four active smartphones worldwide: report](https://9to5mac.com/2026/02/10/iphone-now-accounts-for-nearly-one-in-four-active-smartphones-worldwide-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 A new Counterpoint Research report breaks down the global active smartphone installed base in 2025, with the iPhone leading the way. Here are the details.
 more…
 
-### 23. [Apple Watch Activity badges: Get the Heart Month challenge on Valentine’s Day](https://www.macworld.com/article/231140/how-to-get-all-of-the-apple-watch-activity-challenge-badges.html)
+### 24. [Apple Watch Activity badges: Get the Heart Month challenge on Valentine’s Day](https://www.macworld.com/article/231140/how-to-get-all-of-the-apple-watch-activity-challenge-badges.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -190,7 +198,7 @@ Macworld
 Achievement badges are a funny thing. You know they’re just a simple little bit of visual flair, they don’t even do anything, and yet for some reason you just have to collect them. Gamification can be a great motivator, and the achievement badges for the activity tracking on the Apple Watch have inspired many users to get more exercise. 
 If you want to maximize your badge count, you’re going to want to chase down as many activity achievements as you can. Most are available year-round, but there are also some time-limited special events to grab, too.
 
-### 24. [Bernstein's $340 Apple target bets on Services instead of hardware growth](https://appleinsider.com/articles/26/02/10/bernsteins-340-apple-target-bets-on-services-instead-of-hardware-growth?utm_source=rss)
+### 25. [Bernstein's $340 Apple target bets on Services instead of hardware growth](https://appleinsider.com/articles/26/02/10/bernsteins-340-apple-target-bets-on-services-instead-of-hardware-growth?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Based mostly on Services growth prospects, Bernstein analyst raised his Apple price target to $340 from $325, while maintaining an Outperform rating.
 
@@ -198,17 +206,17 @@ Analysts raise their price target for AAPL
 Toni Sacconaghi mentioned that there's now better insight into Apple's long-term earnings potential. Apple has seen growth in services and ongoing capital returns, as highlighted in a recent research summary.
 Bernstein's revised target reflects confidence in Apple's ability to generate steady cash flow even as hardware demand remains uneven in some regions.
 
-### 25. [iPhone 18 Pro: Three new design updates are coming this year](https://9to5mac.com/2026/02/10/iphone-18-pro-three-new-design-updates-are-coming-this-year/)
+### 26. [iPhone 18 Pro: Three new design updates are coming this year](https://9to5mac.com/2026/02/10/iphone-18-pro-three-new-design-updates-are-coming-this-year/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iPhone 18 Pro and Pro Max will launch this fall, and alongside packing a handful of new features, there are three design changes reportedly coming. Here’s what the latest rumors say.
 more…
 
-### 26. [Apple rolling out 2026 ‘Heart Month Challenge’ for the Apple Watch](https://9to5mac.com/2026/02/10/apple-rolling-out-2026-heart-month-challenge-for-the-apple-watch/)
+### 27. [Apple rolling out 2026 ‘Heart Month Challenge’ for the Apple Watch](https://9to5mac.com/2026/02/10/apple-rolling-out-2026-heart-month-challenge-for-the-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple is inviting Apple Watch users to celebrate Valentine’s Day this Saturday with an aptly heart-themed challenge. Here are the details.
 more…
 
-### 27. [Heart Month Apple Watch Activity Challenge Launching on Valentine's Day](https://www.macrumors.com/2026/02/10/heart-month-activity-challenge-2026/)
+### 28. [Heart Month Apple Watch Activity Challenge Launching on Valentine's Day](https://www.macrumors.com/2026/02/10/heart-month-activity-challenge-2026/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 To recognize Heart Month, Apple is launching a new February Apple Watch activity challenge. Apple Watch owners can earn a special award by completing a workout to fill their Exercise ring on Saturday, February 14, which is Valentine's Day.
 
@@ -217,7 +225,7 @@ Close your exercise ring on Valentine's Day, February 14, to earn this award. Yo
 
 Like all Apple Watch Activity Challenges, the Heart Month challenge will be accompanied by an award that can be viewed in the Fitness app as well as a series of animated stickers that can be used in the Messages app.
 
-### 28. [iPhone 18 Pro prices should stay static as Apple cuts production costs](https://appleinsider.com/articles/26/02/10/iphone-18-pro-prices-should-stay-static-as-apple-cuts-production-costs?utm_source=rss)
+### 29. [iPhone 18 Pro prices should stay static as Apple cuts production costs](https://appleinsider.com/articles/26/02/10/iphone-18-pro-prices-should-stay-static-as-apple-cuts-production-costs?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Another analyst has jumped on the bandwagon believing Apple won't be increasing the cost of the iPhone 18 Pro and Pro Max, with pricing expected to be the same despite intense memory pressures.
 
@@ -225,17 +233,12 @@ Another analyst has jumped on the bandwagon believing Apple won't be increasing 
 iPhone 17 Pro, which the iPhone 18 Pro should look like this fall
 The tech industry's current memory problem of rising prices, caused in part by the increase in AI infrastructure, is creating a problem for manufacturers of consumer devices. However, Apple seems to be insulated from the industry's woes of memory costs for the moment, and it may not be a big problem for the 2026 iPhone releases.
 
-### 29. [Can Macs get viruses or are they really safe from malware?](https://www.macworld.com/article/3057014/can-macs-get-viruses-or-are-they-really-safe-from-malware.html)
+### 30. [Can Macs get viruses or are they really safe from malware?](https://www.macworld.com/article/3057014/can-macs-get-viruses-or-are-they-really-safe-from-malware.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
 
 For years it’s been generally accepted that Macs have been much safer than PCs when it comes to malware and virus attacks. So much so, that it’s commonplace for Apple users to have no cybersecurity protections running on their machines other than what’s already built-in to macOS. But, this vulnerability seems to have caught the attention of hackers, as malware attacks (especially those powered by new AI software) have begun to appear which target Macs and their users. So, how can you make sure you stay safe from the new threats?
-
-### 30. [iPhone 18 Pro pricing rumors offer surprisingly good news](https://9to5mac.com/2026/02/10/iphone-18-pro-pricing-rumors-offer-surprisingly-good-news/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-We’re still over half a year away from the iPhone 18 line being unveiled, but the latest analyst expectations for pricing are surprisingly good news.
-more…
 
 <a id="iot"></a>
 
@@ -540,143 +543,142 @@ The post Top 7 best AI penetration testing companies in 2026 appeared first on A
 
 ## Cybersecurity
 
-### 1. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
+### 1. [ICS Patch Tuesday: Vulnerabilities Addressed by Siemens, Schneider, Aveva, Phoenix Contact](https://www.securityweek.com/ics-patch-tuesday-vulnerabilities-addressed-by-siemens-schneider-aveva-phoenix-contact/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
+Several vulnerabilities have been patched and mitigated across the industrial giants’ products.
+The post ICS Patch Tuesday: Vulnerabilities Addressed by Siemens, Schneider, Aveva, Phoenix Contact appeared first on SecurityWeek.
+
+### 2. [North Korea-Linked UNC1069 Uses AI Lures to Attack Cryptocurrency Organizations](https://thehackernews.com/2026/02/north-korea-linked-unc1069-uses-ai.html)
+**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
+The North Korea-linked threat actor known as UNC1069 has been observed targeting the cryptocurrency sector to steal sensitive data from Windows and macOS systems with the ultimate goal of facilitating financial theft.
+"The intrusion relied on a social engineering scheme involving a compromised Telegram account, a fake Zoom meeting, a ClickFix infection vector, and reported usage of AI-generated
+
+### 3. [Microsoft releases Windows 11 26H1 for select and upcoming CPUs](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-11-26h1-for-select-and-upcoming-cpus/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has announced Windows 11 26H1, but it's not for existing PCs. Instead, it will ship on devices with Snapdragon X2 processors and possibly other rumored ARM chips.w [...]
 
-### 2. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
+### 4. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A newly documented Linux botnet named SSHStalker is using the IRC (Internet Relay Chat) communication protocol for command-and-control (C2) operations. [...]
 
-### 3. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
+### 5. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 North Korean hackers are running tailored campaigns using AI-generated video and the ClickFix technique to deliver malware for macOS and Windows to targets in the cryptocurrency sector. [...]
 
-### 4. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
+### 6. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
 **Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
 Microsoft today released updates to fix more than 50 security holes in its Windows operating systems and other software, including patches for a whopping six "zero-day" vulnerabilities that attackers are already exploiting in the wild.
 
-### 5. [6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates](https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/)
+### 7. [6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates](https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Microsoft’s Patch Tuesday updates fix roughly 60 vulnerabilities found in the company’s products.
 The post 6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates appeared first on SecurityWeek.
 
-### 6. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
+### 8. [Malicious 7-Zip site distributes installer laced with proxy tool](https://www.bleepingcomputer.com/news/security/malicious-7-zip-site-distributes-installer-laced-with-proxy-tool/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A fake 7-Zip website is distributing a trojanized installer of the popular archiving tool that turns the user's computer into a residential proxy node. [...]
 
-### 7. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
+### 9. [Microsoft releases Windows 10 KB5075912 extended security update](https://www.bleepingcomputer.com/news/microsoft/microsoft-releases-windows-10-kb5075912-extended-security-update/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released the Windows 10 KB5075912 extended security update to fix February 2026 Patch Tuesday vulnerabilities, including six zero-days, and continue rolling out replacements for expiring Secure Boot certificates. [...]
 
-### 8. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
+### 10. [Microsoft February 2026 Patch Tuesday fixes 6 zero-days, 58 flaws](https://www.bleepingcomputer.com/news/microsoft/microsoft-february-2026-patch-tuesday-fixes-6-zero-days-58-flaws/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Today is Microsoft's February 2026 Patch Tuesday with security updates for 58 flaws, including 6 actively exploited and three publicly disclosed zero-day vulnerabilities. [...]
 
-### 9. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
+### 11. [Windows 11 KB5077181 &amp; KB5075941 cumulative updates released](https://www.bleepingcomputer.com/news/microsoft/windows-11-kb5077181-and-kb5075941-cumulative-updates-released/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has released Windows 11 KB5077181 and KB5075941 cumulative updates for versions 25H2/24H2 and 23H2 to fix security vulnerabilities, bugs, and add new features. [...]
 
-### 10. [EU Unconditionally Approves Google’s $32B Acquisition of Wiz](https://www.securityweek.com/eu-unconditionally-approves-googles-32b-acquisition-of-wiz/)
+### 12. [EU Unconditionally Approves Google’s $32B Acquisition of Wiz](https://www.securityweek.com/eu-unconditionally-approves-googles-32b-acquisition-of-wiz/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The European Commission’s ruling is based on extensive feedback from customers and rival cloud security and infrastructure vendors.
 The post EU Unconditionally Approves Google’s $32B Acquisition of Wiz appeared first on SecurityWeek.
 
-### 11. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
+### 13. [DPRK Operatives Impersonate Professionals on LinkedIn to Infiltrate Companies](https://thehackernews.com/2026/02/dprk-operatives-impersonate.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 The information technology (IT) workers associated with the Democratic People's Republic of Korea (DPRK) are now applying to remote positions using real LinkedIn accounts of individuals they're impersonating, marking a new escalation of the fraudulent scheme.
 "These profiles often have verified workplace emails and identity badges, which DPRK operatives hope will make their fraudulent
 
-### 12. [Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps](https://www.securityweek.com/patch-tuesday-adobe-fixes-44-vulnerabilities-in-creative-apps/)
+### 14. [Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps](https://www.securityweek.com/patch-tuesday-adobe-fixes-44-vulnerabilities-in-creative-apps/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company has fixed several critical vulnerabilities that can be exploited for arbitrary code execution.
 The post Patch Tuesday: Adobe Fixes 44 Vulnerabilities in Creative Apps appeared first on SecurityWeek.
 
-### 13. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
+### 15. [Reco Raises $30 Million to Enhance AI SaaS Security](https://www.securityweek.com/reco-raises-30-million-to-enhance-ai-saas-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 This investment comes less than 10 months after Reco’s last raise, bringing total funding to $85 million.
 The post Reco Raises $30 Million to Enhance AI SaaS Security appeared first on SecurityWeek.
 
-### 14. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
+### 16. [Vega Raises $120M in Series B Funding to Grow Security Analytics Platform](https://www.securityweek.com/vega-raises-120m-in-series-b-funding-to-grow-security-analytics-platform/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Led by existing investor Accel, with participation from Cyberstarts, Redpoint, and CRV, the Series B round brings the total amount raised by the company to $185 million.
 The post Vega Raises $120M in Series B Funding to Grow Security Analytics Platform appeared first on SecurityWeek.
 
-### 15. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
+### 17. [Volvo Group North America customer data exposed in Conduent hack](https://www.bleepingcomputer.com/news/security/volvo-group-north-america-customer-data-exposed-in-conduent-hack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Volvo Group North America disclosed that it suffered an indirect data breach stemming from the compromise of IT systems at American business services giant Conduent, of which Volvo is a customer. [...]
 
-### 16. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
+### 18. [Microsoft rolls out new Secure Boot certificates before June expiration](https://www.bleepingcomputer.com/news/microsoft/microsoft-rolls-out-new-secure-boot-certificates-before-june-expiration/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has begun rolling out updated Secure Boot certificates through monthly Windows updates to replace the original 2011 certificates that will expire in late June 2026. [...]
 
-### 17. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
+### 19. [RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India](https://www.securityweek.com/rats-in-the-machine-inside-a-pakistan-linked-three-pronged-cyber-assault-on-india/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Transparent Tribe (APT36) is targeting Indian defense and government sectors with GETA, ARES, and Desk RATs in a new wave of economic cyber espionage.
 The post RATs in the Machine: Inside a Pakistan-Linked Three-Pronged Cyber Assault on India appeared first on SecurityWeek.
 
-### 18. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
+### 20. [Microsoft 365 outage takes down admin center in North America](https://www.bleepingcomputer.com/news/microsoft/microsoft-365-outage-takes-down-admin-center-in-north-america/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft is investigating an outage that blocks some administrators with business or enterprise subscriptions from accessing the Microsoft 365 admin center. [...]
 
-### 19. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
+### 21. [How to Automate AWS Incident Investigation with Tines and AI](https://www.bleepingcomputer.com/news/security/how-to-automate-aws-incident-investigation-with-tines-and-ai/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cloud incidents drag on when analysts have to leave cases to hunt through AWS consoles and CLIs. Tines shows how automated agents pull AWS CLI data directly into cases, reducing MTTR and manual investigation work. [...]
 
-### 20. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
+### 22. [SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities](https://www.securityweek.com/sap-patches-critical-crm-s-4hana-netweaver-vulnerabilities/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 SAP has released 26 new and one updated security notes on February 2026 security patch day.
 The post SAP Patches Critical CRM, S/4HANA, NetWeaver Vulnerabilities appeared first on SecurityWeek.
 
-### 21. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
+### 23. [Reynolds Ransomware Embeds BYOVD Driver to Disable EDR Security Tools](https://thehackernews.com/2026/02/reynolds-ransomware-embeds-byovd-driver.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of an emergent ransomware family dubbed Reynolds that comes embedded with a built-in bring your own vulnerable driver (BYOVD) component for defense evasion purposes within the ransomware payload itself.
 BYOVD refers to an adversarial technique that abuses legitimate but flawed driver software to escalate privileges and disable Endpoint Detection
 
-### 22. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
+### 24. [Backslash Raises $19 Million to Secure Vibe Coding](https://www.securityweek.com/backslash-raises-19-million-to-secure-vibe-coding/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will use the investment to expand its R&amp;D team and operations, deepen platform capabilities, and scale go-to-market presence.
 The post Backslash Raises $19 Million to Secure Vibe Coding appeared first on SecurityWeek.
 
-### 23. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
+### 25. [From Ransomware to Residency: Inside the Rise of the Digital Parasite](https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?
 According to Picus Labs’ new Red Report 2026, which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for
 
-### 24. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
+### 26. [Fortinet Patches Critical SQLi Flaw Enabling Unauthenticated Code Execution](https://thehackernews.com/2026/02/fortinet-patches-critical-sqli-flaw.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Fortinet has released security updates to address a critical flaw impacting FortiClientEMS that could lead to the execution of arbitrary code on susceptible systems.
 The vulnerability, tracked as CVE-2026-21643, has a CVSS rating of 9.1 out of a maximum of 10.0.
 
 "An improper neutralization of special elements used in an SQL Command ('SQL Injection') vulnerability [CWE-89] in FortiClientEMS may
 
-### 25. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
+### 27. [Microsoft announces new mobile-style Windows security controls](https://www.bleepingcomputer.com/news/microsoft/microsoft-announces-new-mobile-style-windows-security-controls/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft wants to introduce smartphone-style app permission prompts in Windows 11 to request user consent before apps can access sensitive resources such as files, cameras, and microphones. [...]
 
-### 26. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
+### 28. [ZeroDayRAT malware grants full access to Android, iOS devices](https://www.bleepingcomputer.com/news/security/zerodayrat-malware-grants-full-access-to-android-ios-devices/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A new commercial mobile spyware platform dubbed ZeroDayRAT is being advertised to cybercriminals on Telegram as a tool that provides full remote control over compromised Android and iOS devices. [...]
 
-### 27. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
+### 29. [New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices](https://www.securityweek.com/new-zerodayrat-spyware-kit-enables-total-compromise-of-ios-android-devices/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Available via Telegram, researchers warn ZeroDayRAT is a ‘complete mobile compromise toolkit’ comparable to kits normally requiring nation-state resources to develop.
 The post New ‘ZeroDayRAT’ Spyware Kit Enables Total Compromise of iOS, Android Devices appeared first on SecurityWeek.
 
-### 28. [New ‘SSHStalker’ Linux Botnet Uses Old Techniques](https://www.securityweek.com/new-sshstalker-linux-botnet-uses-old-techniques/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Estimated to have infected 7,000 systems, the botnet uses a mass-compromise pipeline, deploying various scanners and malware.
-The post New ‘SSHStalker’ Linux Botnet Uses Old Techniques appeared first on SecurityWeek.
-
-### 29. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
+### 30. [ZAST.AI Raises $6M Pre-A to Scale "Zero False Positive" AI-Powered Code Security](https://thehackernews.com/2026/02/zastai-raises-6m-pre-to-scale-zero.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 January 5, 2026, Seattle, USA — ZAST.AI announced the completion of a $6 million Pre-A funding round. This investment came from the well-known investment firm Hillhouse Capital, bringing ZAST.AI's total funding close to $10 million. This marks a recognition from leading capital markets of a new solution: ending the era of high false positive rates in security tools and making every alert
-
-### 30. [Warlock Ransomware Breaches SmarterTools Through Unpatched SmarterMail Server](https://thehackernews.com/2026/02/warlock-ransomware-breaches.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-SmarterTools confirmed last week that the Warlock (aka Storm-2603) ransomware gang breached its network by exploiting an unpatched SmarterMail instance.
-The incident took place on January 29, 2026, when a mail server that was not updated to the latest version was compromised, the company's Chief Commercial Officer, Derek Curtis, said.
-"Prior to the breach, we had approximately 30 servers/VMs
 
 
 ---
