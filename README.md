@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Tue, 10 Feb 2026 22:33:00 GMT
+**Last Update:** Wed, 11 Feb 2026 01:47:36 GMT
 
 ---
 
@@ -29,12 +29,56 @@
 
 ## Mac & Apple
 
-### 1. [Japan tech groups say Apple’s new payment rules are ‘not a viable option’ for developers](https://9to5mac.com/2026/02/10/japan-tech-groups-say-apples-new-payment-rules-are-not-a-viable-option-for-developers/)
+### 1. [Tim Cook promises Apple will celebrate its upcoming 50th anniversary](https://9to5mac.com/2026/02/10/tim-cook-promises-apple-will-celebrate-its-upcoming-50th-anniversary/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Apple was founded on April 1, 1976, which means this year marks the company’s 50th anniversary. In a recent all-hands meeting with employees, Apple CEO Tim Cook teased that Apple is planning a celebration for this historic milestone.
+more…
+
+### 2. [Why You Shouldn't Buy the Next MacBook Pro](https://www.macrumors.com/2026/02/10/macbook-pro-buying-advice-2026/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple is planning to launch new MacBook Pro models as soon as early March, but if you can, this is one generation you should skip because there's something much better in the works.
+
+
+We're waiting on 14-inch and 16-inch ‌MacBook Pro‌ models with M5 Pro and M5 Max chips, with few changes other than the processor upgrade. There won't be any tweaks to the design or the display, but later this year, a massive refresh is coming. Rumors suggest that there won't be just one ‌MacBook Pro‌ refresh in 2026, but two.
+
+### 3. [Razer Launches Limited-Edition Boomslang Gaming Mouse for $1,337](https://www.macrumors.com/2026/02/10/razer-boomslang-gaming-mouse/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Gaming computer company Razer today started accepting pre-orders for the Razer Boomslang mouse, which is being released to celebrate the 20th anniversary of the original peripheral.
+
+
+The original Razer Boomslang was one of the first gaming mice, providing a wheel that boasted more precise mouse tracking than other mic on the market.
+
+### 4. [1 in 4 smartphones active worldwide is an iPhone](https://www.cultofmac.com/news/iphone-smartphone-active-installed-base-2026)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+Apple has a much larger global active installed base than any rival, with about one in four active smartphones being an iPhone.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 5. [Discord age verification not a requirement for every user, but still bad](https://appleinsider.com/articles/26/02/10/discord-age-verification-not-a-requirement-for-every-user-but-still-bad?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Discord is relying on algorithmic data analysis and third-party vendors to handle age verification, but it has clarified that not everyone will be met with explicit age checks.
+
+
+Everyone is treated as a child on Discord until they try to access adult content
+The latest update from Discord's safety team seems to be a big step back from its earlier promise, though not much has actually changed. The controversial move will have everyone's account set to teen by default, and while some will need to do age verification via face or ID scan, not everyone will.
+
+### 6. [Google Brings Fitbit AI Health Coach to iPhone as Apple Pulls Back on iOS 27 Health Plans](https://www.macrumors.com/2026/02/10/google-fitbit-ai-health-coach-ios/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Amid rumors that Apple is scaling back its AI health plans, Google today expanded its subscription-based Fitbit AI personal health coach service to more users worldwide, including those who are on iOS. Prior to now, the Fitbit service was limited to Android users.
+
+
+The Gemini-powered Fitbit personal health coach is described as a 24/7 digital advisor that’s meant to work as a virtual fitness trainer, sleep coach, and health and wellness advisor.
+
+### 7. [iPhone full again? This $30 photo backup stick fixes it instantly.](https://www.cultofmac.com/deals/photo-backup-stick-omega-universal)
+**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
+The Photo Backup Stick Omega Universal packs 64GB of storage and tips for USB-C, Lightning and micro USB.
+(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
+
+### 8. [Japan tech groups say Apple’s new payment rules are ‘not a viable option’ for developers](https://9to5mac.com/2026/02/10/japan-tech-groups-say-apples-new-payment-rules-are-not-a-viable-option-for-developers/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Following a recent change to multiple App Store rules in Japan, a coalition representing more than 600 local companies is calling for further regulatory action. Here are the details.
 more…
 
-### 2. [Find My outage &amp; iCloud issues hit users once again](https://appleinsider.com/articles/26/02/10/find-my-outage-icloud-issues-hit-users-once-again?utm_source=rss)
+### 9. [Find My outage &amp; iCloud issues hit users once again](https://appleinsider.com/articles/26/02/10/find-my-outage-icloud-issues-hit-users-once-again?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple has acknowledged that users may be encountering issues with iCloud services, Photos sync, or an outright outage with Find My on Tuesday afternoon.
 
@@ -43,7 +87,7 @@ Another services outage has affected users
 Everything you do on an iPhone touches some kind of service, which can experience an outage from time to time. If you noticed that a file just won't sync, or you can't see your friend's location, it's because of an ongoing issue.
 According to Apple's System Status page, various iCloud services began facing issues around 2:02 p.m. ET and Find My saw a full outage that began at 3:04 p.m. ET.
 
-### 3. [CrossOver 26 update adds compatibility for blockbuster 'Expedition 33' and 'HellDivers 2'](https://appleinsider.com/articles/26/02/10/crossover-26-update-adds-compatibility-for-blockbuster-expedition-33-and-helldivers-2?utm_source=rss)
+### 10. [CrossOver 26 update adds compatibility for blockbuster 'Expedition 33' and 'HellDivers 2'](https://appleinsider.com/articles/26/02/10/crossover-26-update-adds-compatibility-for-blockbuster-expedition-33-and-helldivers-2?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The newly updated CrossOver 26 for macOS Tahoe updates WINE, bringing the award-winning "Clair Obscur: Expedition 33," "HellDivers 2," and many more to Mac gamers.
 
@@ -52,12 +96,12 @@ CrossOver 26 now available for Mac
 CrossOver is a Windows compatibility layer for macOS and Linux, designed to enable Mac users to run both productivity applications and games. According to the devs, this version includes Wine 11, which by itself brings over 6,000 changes for better game and application compatibility.
 It also includes D3DMetal 3.0, DXMT v0.72, Wine Mono 10.4.1, and vkd3d 1.18.
 
-### 4. [Discord backtracks on controversial age verification rollout…kind of](https://9to5mac.com/2026/02/10/discord-backtracks-on-controversial-age-verification-rolloutkind-of/)
+### 11. [Discord backtracks on controversial age verification rollout…kind of](https://9to5mac.com/2026/02/10/discord-backtracks-on-controversial-age-verification-rolloutkind-of/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Yesterday Discord announced that users would soon be required to have their age verified or be restricted to teen-level access on the service. Today, there’s a follow-up post from Discord that backtracks some on the expected impact of its new policy.
 more…
 
-### 5. [Apple is Getting Rid of iTunes Wish Lists, Here's How to Save Yours](https://www.macrumors.com/2026/02/10/apple-itunes-wishlist-removal/)
+### 12. [Apple is Getting Rid of iTunes Wish Lists, Here's How to Save Yours](https://www.macrumors.com/2026/02/10/apple-itunes-wishlist-removal/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple will soon do away with iTunes Wish Lists featuring movie and TV shows, according to emails going out to customers as of today. Apple says that people who still have wish lists should migrate items to their Apple TV watchlist before the feature is removed.
 
@@ -66,7 +110,7 @@ Each email that Apple is sending out includes a PDF with TV shows and movies tha
 
 removed wish lists entirely, without giving customers a heads-up.
 
-### 6. [2025 sales surge means one in four smartphones on Earth is an iPhone](https://appleinsider.com/articles/26/02/10/2025-sales-surge-means-one-in-four-smartphones-on-earth-is-an-iphone?utm_source=rss)
+### 13. [2025 sales surge means one in four smartphones on Earth is an iPhone](https://appleinsider.com/articles/26/02/10/2025-sales-surge-means-one-in-four-smartphones-on-earth-is-an-iphone?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 It was a good year for smartphone sales, but Apple in particular took home all of the accolades with its iPhone 16 and iPhone 17 series performing so well across 2025.
 
@@ -75,22 +119,23 @@ iPhone 17 demand helped drive iPhone sales in 2025
 The charts keep moving in an upward direction with the Q1 2026 earnings showing a record $143.8 billion in revenue. That was primarily driven by iPhone demand, which was high in spite of pundits' arguments about Apple's place in the AI race.
 According to a report from Counterpoint Research, Apple's iPhone makes up one of every four smartphones on Earth.
 
-### 7. [VSCO’s Film 02 preset Pack available for Adobe Lightroom as a limited-time release](https://9to5mac.com/2026/02/10/vscos-film-02-preset-pack-available-for-adobe-lightroom-as-a-limited-time-release/)
+### 14. [VSCO’s Film 02 preset Pack available for Adobe Lightroom as a limited-time release](https://9to5mac.com/2026/02/10/vscos-film-02-preset-pack-available-for-adobe-lightroom-as-a-limited-time-release/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The updated pack emulates classic analog film stocks, including Kodak, Fuji, and Ilford, and now supports modern cameras. Here’s how to install it.
 more…
 
-### 8. [Apple experiencing outages with iCloud, Photos, Find My, more](https://9to5mac.com/2026/02/10/apple-experiencing-outages-with-icloud-photos-find-my-more/)
+### 15. [Apple experiencing outages with iCloud, Photos, Find My, more [U: Solved]](https://9to5mac.com/2026/02/10/apple-experiencing-outages-with-icloud-photos-find-my-more/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Update, 8:06 p.m. ET: Apple’s online system status page now lists all issues and outages as solved. The original post follows below.
 Apple’s system status page has confirmed ongoing issues with a variety of web services, including iCloud, Photos, Find My, and more.
 more…
 
-### 9. [New MacBook Air coming soon: Here’s what we know](https://9to5mac.com/2026/02/10/new-macbook-air-coming-soon-heres-what-we-know/)
+### 16. [New MacBook Air coming soon: Here’s what we know](https://9to5mac.com/2026/02/10/new-macbook-air-coming-soon-heres-what-we-know/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 While the MacBook Pro is stealing headlines, Apple’s most popular laptop is also set to get an upgrade soon. Here’s everything we know about the next-generation MacBook Air.
 more…
 
-### 10. [Find My, Photos and Some iCloud Services Experiencing Issues](https://www.macrumors.com/2026/02/10/find-my-photos-icloud-issues/)
+### 17. [Find My, Photos and Some iCloud Services Experiencing Issues](https://www.macrumors.com/2026/02/10/find-my-photos-icloud-issues/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's Find My feature, photos, and some iCloud services are experiencing service interruptions at the current time, so if you've run into problems, it's because of network issues.
 
@@ -102,12 +147,12 @@ Photos. Apple says that some users may be experiencing issues with these service
 This article, "Find My, Photos and Some iCloud Services Experiencing Issues" first appeared on MacRumors.com
 Discuss this article in our forums
 
-### 11. [Apple removing ‘iTunes Wish List’ feature, here’s how to migrate selections](https://9to5mac.com/2026/02/10/apple-removing-itunes-wish-list-feature-heres-how-to-migrate-selections/)
+### 18. [Apple removing ‘iTunes Wish List’ feature, here’s how to migrate selections](https://9to5mac.com/2026/02/10/apple-removing-itunes-wish-list-feature-heres-how-to-migrate-selections/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 The legacy iTunes Wish List feature for saving movies and TV shows to buy or rent later is “going away soon,” according to Apple. For customers with items still saved to an iTunes Wish List, Apple is providing one last chance to migrate to the modern equivalent.
 more…
 
-### 12. [Facebook Adding AI Profile Picture Animations and Story Editing Tools](https://www.macrumors.com/2026/02/10/facebook-ai-profile-animations/)
+### 19. [Facebook Adding AI Profile Picture Animations and Story Editing Tools](https://www.macrumors.com/2026/02/10/facebook-ai-profile-animations/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Meta today announced several new AI features for popular social network Facebook. The capabilities will be available for profile pictures, photos, posts, stories, and more.
 
@@ -116,12 +161,12 @@ Meta AI's image editing tools can be used to animate a profile picture, adding m
 
 Text-based AI prompts can be used for creating images for Facebook Stories and Memories.
 
-### 13. [iPhone now accounts for nearly one in four active smartphones worldwide: report](https://9to5mac.com/2026/02/10/iphone-now-accounts-for-nearly-one-in-four-active-smartphones-worldwide-report/)
+### 20. [iPhone now accounts for nearly one in four active smartphones worldwide: report](https://9to5mac.com/2026/02/10/iphone-now-accounts-for-nearly-one-in-four-active-smartphones-worldwide-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 A new Counterpoint Research report breaks down the global active smartphone installed base in 2025, with the iPhone leading the way. Here are the details.
 more…
 
-### 14. [Apple Watch Activity badges: Get the Heart Month challenge on Valentine’s Day](https://www.macworld.com/article/231140/how-to-get-all-of-the-apple-watch-activity-challenge-badges.html)
+### 21. [Apple Watch Activity badges: Get the Heart Month challenge on Valentine’s Day](https://www.macworld.com/article/231140/how-to-get-all-of-the-apple-watch-activity-challenge-badges.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -129,7 +174,7 @@ Macworld
 Achievement badges are a funny thing. You know they’re just a simple little bit of visual flair, they don’t even do anything, and yet for some reason you just have to collect them. Gamification can be a great motivator, and the achievement badges for the activity tracking on the Apple Watch have inspired many users to get more exercise. 
 If you want to maximize your badge count, you’re going to want to chase down as many activity achievements as you can. Most are available year-round, but there are also some time-limited special events to grab, too.
 
-### 15. [Bernstein's $340 Apple target bets on Services instead of hardware growth](https://appleinsider.com/articles/26/02/10/bernsteins-340-apple-target-bets-on-services-instead-of-hardware-growth?utm_source=rss)
+### 22. [Bernstein's $340 Apple target bets on Services instead of hardware growth](https://appleinsider.com/articles/26/02/10/bernsteins-340-apple-target-bets-on-services-instead-of-hardware-growth?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Based mostly on Services growth prospects, Bernstein analyst raised his Apple price target to $340 from $325, while maintaining an Outperform rating.
 
@@ -137,17 +182,17 @@ Analysts raise their price target for AAPL
 Toni Sacconaghi mentioned that there's now better insight into Apple's long-term earnings potential. Apple has seen growth in services and ongoing capital returns, as highlighted in a recent research summary.
 Bernstein's revised target reflects confidence in Apple's ability to generate steady cash flow even as hardware demand remains uneven in some regions.
 
-### 16. [iPhone 18 Pro: Three new design updates are coming this year](https://9to5mac.com/2026/02/10/iphone-18-pro-three-new-design-updates-are-coming-this-year/)
+### 23. [iPhone 18 Pro: Three new design updates are coming this year](https://9to5mac.com/2026/02/10/iphone-18-pro-three-new-design-updates-are-coming-this-year/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iPhone 18 Pro and Pro Max will launch this fall, and alongside packing a handful of new features, there are three design changes reportedly coming. Here’s what the latest rumors say.
 more…
 
-### 17. [Apple rolling out 2026 ‘Heart Month Challenge’ for the Apple Watch](https://9to5mac.com/2026/02/10/apple-rolling-out-2026-heart-month-challenge-for-the-apple-watch/)
+### 24. [Apple rolling out 2026 ‘Heart Month Challenge’ for the Apple Watch](https://9to5mac.com/2026/02/10/apple-rolling-out-2026-heart-month-challenge-for-the-apple-watch/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple is inviting Apple Watch users to celebrate Valentine’s Day this Saturday with an aptly heart-themed challenge. Here are the details.
 more…
 
-### 18. [Heart Month Apple Watch Activity Challenge Launching on Valentine's Day](https://www.macrumors.com/2026/02/10/heart-month-activity-challenge-2026/)
+### 25. [Heart Month Apple Watch Activity Challenge Launching on Valentine's Day](https://www.macrumors.com/2026/02/10/heart-month-activity-challenge-2026/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 To recognize Heart Month, Apple is launching a new February Apple Watch activity challenge. Apple Watch owners can earn a special award by completing a workout to fill their Exercise ring on Saturday, February 14, which is Valentine's Day.
 
@@ -156,7 +201,7 @@ Close your exercise ring on Valentine's Day, February 14, to earn this award. Yo
 
 Like all Apple Watch Activity Challenges, the Heart Month challenge will be accompanied by an award that can be viewed in the Fitness app as well as a series of animated stickers that can be used in the Messages app.
 
-### 19. [iPhone 18 Pro prices should stay static as Apple cuts production costs](https://appleinsider.com/articles/26/02/10/iphone-18-pro-prices-should-stay-static-as-apple-cuts-production-costs?utm_source=rss)
+### 26. [iPhone 18 Pro prices should stay static as Apple cuts production costs](https://appleinsider.com/articles/26/02/10/iphone-18-pro-prices-should-stay-static-as-apple-cuts-production-costs?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Another analyst has jumped on the bandwagon believing Apple won't be increasing the cost of the iPhone 18 Pro and Pro Max, with pricing expected to be the same despite intense memory pressures.
 
@@ -164,19 +209,19 @@ Another analyst has jumped on the bandwagon believing Apple won't be increasing 
 iPhone 17 Pro, which the iPhone 18 Pro should look like this fall
 The tech industry's current memory problem of rising prices, caused in part by the increase in AI infrastructure, is creating a problem for manufacturers of consumer devices. However, Apple seems to be insulated from the industry's woes of memory costs for the moment, and it may not be a big problem for the 2026 iPhone releases.
 
-### 20. [Can Macs get viruses or are they really safe from malware?](https://www.macworld.com/article/3057014/can-macs-get-viruses-or-are-they-really-safe-from-malware.html)
+### 27. [Can Macs get viruses or are they really safe from malware?](https://www.macworld.com/article/3057014/can-macs-get-viruses-or-are-they-really-safe-from-malware.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
 
 For years it’s been generally accepted that Macs have been much safer than PCs when it comes to malware and virus attacks. So much so, that it’s commonplace for Apple users to have no cybersecurity protections running on their machines other than what’s already built-in to macOS. But, this vulnerability seems to have caught the attention of hackers, as malware attacks (especially those powered by new AI software) have begun to appear which target Macs and their users. So, how can you make sure you stay safe from the new threats?
 
-### 21. [iPhone 18 Pro pricing rumors offer surprisingly good news](https://9to5mac.com/2026/02/10/iphone-18-pro-pricing-rumors-offer-surprisingly-good-news/)
+### 28. [iPhone 18 Pro pricing rumors offer surprisingly good news](https://9to5mac.com/2026/02/10/iphone-18-pro-pricing-rumors-offer-surprisingly-good-news/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 We’re still over half a year away from the iPhone 18 line being unveiled, but the latest analyst expectations for pricing are surprisingly good news.
 more…
 
-### 22. [Under-screen Touch ID may not just be for iPhone](https://appleinsider.com/articles/26/02/10/under-screen-touch-id-may-not-just-be-for-iphone?utm_source=rss)
+### 29. [Under-screen Touch ID may not just be for iPhone](https://appleinsider.com/articles/26/02/10/under-screen-touch-id-may-not-just-be-for-iphone?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Instead of a Home or a side-button, Apple is researching how best to implement under-screen fingerprint sensors, not just for mobile devices like iPhone Fold and iPad, but potentially also the Mac.
 
@@ -184,68 +229,13 @@ Instead of a Home or a side-button, Apple is researching how best to implement u
 Under-display Touch ID could come to future iPhones — or Macs.
 The expected iPhone Fold has been said to be too thin for Face ID, so it must use Touch ID. Despite some claims of it getting Touch ID sensor under the screen, most reports predict it will be part of the side button, as was introduced with the iPad Air 4 back in 2020.
 
-### 23. [This super-light Logitech mouse is just $50 today](https://www.macworld.com/article/3057674/this-super-light-logitech-mouse-is-just-50-today.html)
+### 30. [This super-light Logitech mouse is just $50 today](https://www.macworld.com/article/3057674/this-super-light-logitech-mouse-is-just-50-today.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
 
 Listen, we appreciate all Apple gear, but the Magic Mouse? Eh. Let’s just say it’s our favorite Apple product. So, if you’re looking for a good alternative, this Logitech G309 Lightspeed wireless gaming mouse is a fantastic option, especially since it’s only $50, a massive 44 percent discount off its $90 MSRP.
 This mouse was built with precision in mind, featuring a 25K HERO sensor that will track movement closely whether you’re browsing or gaming.
-
-### 24. [Flash deal: Save $300 on Apple's 15-inch MacBook Air with 32GB RAM, 1TB SSD](https://appleinsider.com/articles/26/02/10/flash-deal-save-300-on-apples-15-inch-macbook-air-with-32gb-ram-1tb-ssd?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-B&amp;H's Mega Deal Zone event is going on now, with a standout $300 discount on Apple's current 15-inch MacBook Air with 32GB of RAM and 1TB of storage.
-
-
-Save $300 on Apple's M4 MacBook Air with 32GB RAM, 1TB SSD - Image credit: Apple
-The flash Deal Zone at B&amp;H offers savings on monitors, external storage, and Apple products — with a standout deal being this $300 discount on a loaded M4 15-inch MacBook Air in Sky Blue.
-Save $300 on 15" MacBook Air 32GB, 1TB
-
- Continue Reading on AppleInsider | Discuss on our Forums
-
-### 25. [Apple smart home users need to upgrade their iPhone today](https://www.macworld.com/article/3057640/new-apple-home-app.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-Attention, Apple Home users: Today (February 10, 2026) is the last day that Apple will support its original HomeKit architecture. Starting on Wednesday, Apple will be rolling out a new version of Home for your smart home devices.
-According to Apple, “Any device connected to an updated home that doesn’t use iOS 16.2, iPadOS 16.2, macOS 13.1, tvOS 16.2, or watchOS 9.2 or later will lose access to the updated home until you update the device.
-
-### 26. [Nomad debuts Stellar Orange ChargeKey with iPhone-inspired color matching](https://9to5mac.com/2026/02/10/nomad-debuts-stellar-orange-chargekey-with-iphone-inspired-color-matching/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Nomad is updating one of my favorite and most clutch tech accessories they make. They are expanding their ChargeKey lineup with a new Stellar Orange color to perfectly match the Cosmic Orange iPhone 17 Pro and Pro Max. ChargeKey has been one of Nomad’s longest-running products and is still one of the simplest solutions for carrying a reliable cable on your keychain that can do it all, from ultra-high speed charging to professional-level data transfer speeds. Here is what you should know.
-more…
-
-### 27. [2026 iPad Air: Everything you need to know](https://www.macworld.com/article/3055278/2026-ipad-air-design-display-specs-release-price.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-Apple’s iPad Air was updated in March 2025, but other than a new M3 chip, not much changed about it. A year later, Apple is expected to update its mid-range tablet again with a performance-focused refresh rather than a redesign. Here’s everything you need to know about the new iPad Air for 2026.
-2026 iPad Air: At a glance
-What’s New: M4 chip, N1 wireless chip, possible price increase
-What’s staying the same: Design, display, cameras, RAM
-
-
-2026 iPad Air performance and specs: Will the 2026 iPad Air be faster?
-
-### 28. [London's Apple Regent Street to reopen on Valentine's Day](https://appleinsider.com/articles/26/02/10/londons-apple-regent-street-to-reopen-on-valentines-day?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Apple has announced that its central London store refurbishment will be completed and Apple Regent Street is to reopen on Valentine's Day.
-
-
-Apple Regent Street | Image Credit: Apple
-In early January 2025, Apple announced that its Regent Street site was to be closed for unspecified refurbishment. It was part of Apple's plans to remodel or open around 50 stores worldwide by 2027.
-Apple did say that the closure, which began at 6:00 PM GMT on January 11,  was temporary.
-
-### 29. [Deals: iPhone 16 up to $420 off orig. price, 32GB M4 MacBook Air $300 off, M4 Pro $400 off, chargers, more](https://9to5mac.com/2026/02/10/deals-iphone-16-m4-macbook-air-m4-pro-chargers/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Today’s 9to5Toys Lunch Break deals are starting with some serious price drops on iPhone 16 and 16 Pro models – these Amazon offers are drastically undercutting the Apple refurb units that recently appeared with iPhone 16 models at up to $420 off and 16 Pro at $630 off the original prices. We also have a particularly notable offer on 32GB M4 MacBook Air models at up to $300 off and M4 Pro MacBook Pro configs at $400 off.
-
-### 30. [The best RPG on Apple Arcade gets a sequel](https://www.cultofmac.com/news/the-best-rpg-on-apple-arcade-gets-a-sequel)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-"Oceanhorn 3: Legend of the Shadow Sea" invites players into a beautiful open-world RPG full of action. Plus more new Apple Arcade games.
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
 <a id="iot"></a>
 
@@ -409,95 +399,95 @@ The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too 
 
 ## Artificial Intelligence
 
-### 1. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
+### 1. [Amazon may launch a marketplace where media sites can sell their content to AI companies](https://techcrunch.com/2026/02/10/amazon-may-launch-a-marketplace-where-media-sites-can-sell-their-content-to-ai-companies/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+A new report claims the e-commerce giant is looking to create a pipeline of licensable content between media publishers and AI companies.
+
+### 2. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Czech ice dancers Katerina Mrazkova and Daniel Mrazek are learning the hard way that LLMs sometimes spit out straight-up plagiarism.
 
-### 2. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
+### 3. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI lab Flapping Airplanes just landed $180 million in seed funding from the likes of Google Ventures, Sequoia, and Index to do something most labs have quietly given up on: making models learn like humans instead of vacuuming up the internet. The founding team, made up of brothers Ben and Asher Spector and co-founder Aidan Smith, is […]
 
-### 3. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
+### 4. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Robert Playter announcd he is leaving Boston Dynamics after 30 years at the company in various roles, including six years as CEO.
 
-### 4. [Nearly half of xAI’s founding team has now left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
+### 5. [Nearly half of xAI’s founding team has now left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Whatever the cause of the departures, the cumulative impact is alarming. There is a lot of work left to do at xAI, and an IPO will bring more scrutiny than the lab has ever faced before.
 
-### 5. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
+### 6. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Facebook's new AI features let users animate their profile pics, restyle their Stories and Memories, and add  backgrounds to text posts.
 
-### 6. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
+### 7. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Vega Security raised $120 million, bringing its valuation to $700 million, in a round led by Accel. The company aims to rethink how enterprises detect cybersecurity threats.
 
-### 7. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
+### 8. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The approach that takes companies to the next level of data maturity
 The post How to Model The Expected Value of Marketing Campaigns appeared first on Towards Data Science.
 
-### 8. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
+### 9. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Hauler Hero has seen its customer base, revenue, and head count double since the company raised its seed round in 2024.
 
-### 9. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
+### 10. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India’s new rules take effect February 20, tightening deepfake oversight and shrinking takedown windows to as little as two hours.
 
-### 10. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
+### 11. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Thomas Dohmke's new startup offers an AI system to allow developers to better manage all the code AI agents produce.
 
-### 11. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
+### 12. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Startup Runway has raised a $315 million round at a $5.3 billion valuation, funds it will use to expand beyond AI video generation and into world models.
 
-### 12. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
+### 13. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An easy step-by-step guide to building the snake game from scratch
 The post Implementing the Snake Game in Python appeared first on Towards Data Science.
 
-### 13. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
+### 14. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to get more out of Claude code by giving it access to more information.
 The post How to Personalize Claude Code appeared first on Towards Data Science.
 
-### 14. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
+### 15. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Major Chinese technology companies Alibaba, Tencent, and Huawei are pursuing agentic AI (systems that can execute multi-step tasks autonomously and interact with software, data, and services without human instruction), and orienting the technology toward discrete industries and workflows. Alibaba’s open-source strategy for agentic AI Alibaba’s strategy centres on its Qwen AI model family, a set […]
 The post Chinese hyperscalers and industry-specific agentic AI appeared first on AI News.
 
-### 15. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
+### 16. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Agentic AI in healthcare is graduating from answering prompts to autonomously executing complex marketing tasks – and life sciences companies are betting their commercial strategies on it. According to a recent report cited by Capgemini Invent, AI agents could generate up to $450 billion in economic value through revenue uplift and cost savings globally by […]
 The post Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028 appeared first on AI News.
 
-### 16. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
+### 17. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Because employees could do more, work began bleeding into lunch breaks and late evenings. The employees' to-do lists expanded to fill every hour that AI freed up, and then kept going.
 
-### 17. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
+### 18. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI isn't going to replace major SaaS apps with vibe-coded versions, Databricks CEO Ali Ghodsi believes. But it could give rise to competitors.
 
-### 18. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
+### 19. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India's Anthropic Software has taken the U.S. AI giant to court over a name dispute.
 
-### 19. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
+### 20. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Delayed January: deadlines, downtimes, and flow times
 The post The Machine Learning Lessons I’ve Learned Last Month appeared first on Towards Data Science.
 
-### 20. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
+### 21. [ChatGPT rolls out ads](https://techcrunch.com/2026/02/09/chatgpt-rolls-out-ads/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI faced a backlash late last year when it tested app suggestions that looked like unwanted ads. Still, the AI company needs to generate revenue from its popular chatbot to cover the costs of developing its technology and growing the business.
-
-### 21. [Workday CEO Eschenbach departs, with co-founder Aneel Bhusri returning as CEO ](https://techcrunch.com/2026/02/09/workday-ceo-eschenbach-departs-with-co-founder-aneel-bhusri-returning-as-ceo/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Bhusri said in a statement that the company's next chapter would be focused on AI.
 
 ### 22. [The Death of the “Everything Prompt”: Google’s Move Toward Structured AI](https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
@@ -550,13 +540,13 @@ The post Top 7 best AI penetration testing companies in 2026 appeared first on A
 
 ## Cybersecurity
 
-### 1. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
+### 1. [New Linux botnet SSHStalker uses old-school IRC for C2 comms](https://www.bleepingcomputer.com/news/security/new-linux-botnet-sshstalker-uses-old-school-irc-for-c2-comms/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A newly documented Linux botnet named SSHStalker is using the IRC (Internet Relay Chat) communication protocol for command-and-control (C2) operations. [...]
+
+### 2. [North Korean hackers use new macOS malware in crypto-theft attacks](https://www.bleepingcomputer.com/news/security/north-korean-hackers-use-new-macos-malware-in-crypto-theft-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 North Korean hackers are running tailored campaigns using AI-generated video and the ClickFix technique to deliver malware for macOS and Windows to targets in the cryptocurrency sector. [...]
-
-### 2. [Patch Tuesday, February 2026 Edition](https://krebsonsecurity.com/2026/02/patch-tuesday-february-2026-edition/)
-**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
-Microsoft today released updates to fix more than 50 security holes in its Windows operating systems and other software, including patches for a whopping six "zero-day" vulnerabilities that attackers are already exploiting in the wild.
 
 ### 3. [6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates](https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
