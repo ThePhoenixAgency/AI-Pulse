@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Wed, 11 Feb 2026 04:25:12 GMT
+**Last Update:** Wed, 11 Feb 2026 06:54:07 GMT
 
 ---
 
@@ -399,90 +399,90 @@ The post Predictive Maintenance 2.0: Why Your Vibration Sensors Are Already Too 
 
 ## Artificial Intelligence
 
-### 1. [OpenAI policy exec who opposed chatbot’s “adult mode” reportedly fired on discrimination claim](https://techcrunch.com/2026/02/10/openai-policy-exec-who-opposed-chatbots-adult-mode-reportedly-fired-on-discrimination-claim/)
+### 1. [With co-founders leaving and an IPO looming, Elon Musk turns talk to the moon](https://techcrunch.com/2026/02/10/with-co-founders-leaving-and-an-ipo-looming-elon-musk-turns-talk-to-the-moon/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+According to The New York Times, which reports that it heard the meeting, Musk told employees that xAI needs a lunar manufacturing facility, a factory on the moon that will build AI satellites and fling them into space via a giant catapult.
+
+### 2. [OpenAI policy exec who opposed chatbot’s “adult mode” reportedly fired on discrimination claim](https://techcrunch.com/2026/02/10/openai-policy-exec-who-opposed-chatbots-adult-mode-reportedly-fired-on-discrimination-claim/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The executive has denied the allegation that she engaged in discrimination.
 
-### 2. [Okay, now exactly half of xAI’s founding team has left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
+### 3. [Okay, now exactly half of xAI’s founding team has left the company](https://techcrunch.com/2026/02/10/nearly-half-of-xais-founding-team-has-now-left-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Whatever the cause of the departures, the cumulative impact is alarming. There is a lot of work left to do at xAI, and an IPO will bring more scrutiny than the lab has ever faced before.
 
-### 3. [Amazon may launch a marketplace where media sites can sell their content to AI companies](https://techcrunch.com/2026/02/10/amazon-may-launch-a-marketplace-where-media-sites-can-sell-their-content-to-ai-companies/)
+### 4. [Amazon may launch a marketplace where media sites can sell their content to AI companies](https://techcrunch.com/2026/02/10/amazon-may-launch-a-marketplace-where-media-sites-can-sell-their-content-to-ai-companies/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 A new report claims the e-commerce giant is looking to create a pipeline of licensable content between media publishers and AI companies.
 
-### 4. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
+### 5. [An ice dance duo skated to AI music at the Olympics](https://techcrunch.com/2026/02/10/olympics-czech-ice-dancers-duo-ai-music/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Czech ice dancers Katerina Mrazkova and Daniel Mrazek are learning the hard way that LLMs sometimes spit out straight-up plagiarism.
 
-### 5. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
+### 6. [This Sequoia-backed lab thinks the brain is ‘the floor, not the ceiling’ for AI](https://techcrunch.com/podcast/this-sequoia-backed-lab-thinks-the-brain-is-the-floor-not-the-ceiling-for-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI lab Flapping Airplanes just landed $180 million in seed funding from the likes of Google Ventures, Sequoia, and Index to do something most labs have quietly given up on: making models learn like humans instead of vacuuming up the internet. The founding team, made up of brothers Ben and Asher Spector and co-founder Aidan Smith, is […]
 
-### 6. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
+### 7. [Boston Dynamics CEO Robert Playter steps down after 30 years at the company](https://techcrunch.com/2026/02/10/boston-dynamics-ceo-robert-playter-steps-down-after-30-years-at-the-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Robert Playter announcd he is leaving Boston Dynamics after 30 years at the company in various roles, including six years as CEO.
 
-### 7. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
+### 8. [Facebook adds new AI features, animated profile photos, and backgrounds for text posts](https://techcrunch.com/2026/02/10/facebook-adds-new-ai-features-animated-profile-photos-and-backgrounds-for-text-posts/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Facebook's new AI features let users animate their profile pics, restyle their Stories and Memories, and add  backgrounds to text posts.
 
-### 8. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
+### 9. [Vega raises $120M Series B to rethink how enterprises detect cyber threats](https://techcrunch.com/2026/02/10/vega-raises-120m-series-b-to-rethink-how-enterprises-detect-cyber-threats/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Vega Security raised $120 million, bringing its valuation to $700 million, in a round led by Accel. The company aims to rethink how enterprises detect cybersecurity threats.
 
-### 9. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
+### 10. [How to Model The Expected Value of Marketing Campaigns](https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 The approach that takes companies to the next level of data maturity
 The post How to Model The Expected Value of Marketing Campaigns appeared first on Towards Data Science.
 
-### 10. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
+### 11. [Hauler Hero collects $16M for its AI waste management software](https://techcrunch.com/2026/02/10/hauler-hero-collects-16m-for-its-ai-waste-management-software/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Hauler Hero has seen its customer base, revenue, and head count double since the company raised its seed round in 2024.
 
-### 11. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
+### 12. [India orders social media platforms to take down deepfakes faster](https://techcrunch.com/2026/02/10/india-orders-social-media-platforms-to-take-down-deepfakes-faster/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India’s new rules take effect February 20, tightening deepfake oversight and shrinking takedown windows to as little as two hours.
 
-### 12. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
+### 13. [Former GitHub CEO raises record $60M dev tool seed round at $300M valuation](https://techcrunch.com/2026/02/10/former-github-ceo-raises-record-60m-dev-tool-seed-round-at-300m-valuation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Thomas Dohmke's new startup offers an AI system to allow developers to better manage all the code AI agents produce.
 
-### 13. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
+### 14. [AI video startup Runway raises $315M at $5.3B valuation, eyes more capable world models](https://techcrunch.com/2026/02/10/ai-video-startup-runway-raises-315m-at-5-3b-valuation-eyes-more-capable-world-models/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Startup Runway has raised a $315 million round at a $5.3 billion valuation, funds it will use to expand beyond AI video generation and into world models.
 
-### 14. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
+### 15. [Implementing the Snake Game in Python](https://towardsdatascience.com/implementing-the-snake-game-in-python/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 An easy step-by-step guide to building the snake game from scratch
 The post Implementing the Snake Game in Python appeared first on Towards Data Science.
 
-### 15. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
+### 16. [How to Personalize Claude Code](https://towardsdatascience.com/how-to-personalize-claude-code/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how to get more out of Claude code by giving it access to more information.
 The post How to Personalize Claude Code appeared first on Towards Data Science.
 
-### 16. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
+### 17. [Chinese hyperscalers and industry-specific agentic AI](https://www.artificialintelligence-news.com/news/chinese-hyperscalers-and-industry-specific-chinas-agentic-ai/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Major Chinese technology companies Alibaba, Tencent, and Huawei are pursuing agentic AI (systems that can execute multi-step tasks autonomously and interact with software, data, and services without human instruction), and orienting the technology toward discrete industries and workflows. Alibaba’s open-source strategy for agentic AI Alibaba’s strategy centres on its Qwen AI model family, a set […]
 The post Chinese hyperscalers and industry-specific agentic AI appeared first on AI News.
 
-### 17. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
+### 18. [Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028](https://www.artificialintelligence-news.com/news/agentic-ai-healthcare-pharma-marketing-450b-value-2028/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Agentic AI in healthcare is graduating from answering prompts to autonomously executing complex marketing tasks – and life sciences companies are betting their commercial strategies on it. According to a recent report cited by Capgemini Invent, AI agents could generate up to $450 billion in economic value through revenue uplift and cost savings globally by […]
 The post Agentic AI in healthcare: How Life Sciences marketing could achieve $450B in value by 2028 appeared first on AI News.
 
-### 18. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
+### 19. [The first signs of burnout are coming from the people who embrace AI the most](https://techcrunch.com/2026/02/09/the-first-signs-of-burnout-are-coming-from-the-people-who-embrace-ai-the-most/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Because employees could do more, work began bleeding into lunch breaks and late evenings. The employees' to-do lists expanded to fill every hour that AI freed up, and then kept going.
 
-### 19. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
+### 20. [Databricks CEO says SaaS isn’t dead, but AI will soon make it irrelevant](https://techcrunch.com/2026/02/09/databricks-ceo-says-saas-isnt-dead-but-ai-will-soon-make-it-irrelevant/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI isn't going to replace major SaaS apps with vibe-coded versions, Databricks CEO Ali Ghodsi believes. But it could give rise to competitors.
-
-### 20. [Anthropic’s India expansion collides with a local company that already had the name](https://techcrunch.com/2026/02/09/anthropics-india-expansion-collides-with-a-local-company-that-already-had-the-name/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-India's Anthropic Software has taken the U.S. AI giant to court over a name dispute.
 
 ### 21. [The Machine Learning Lessons I’ve Learned Last Month](https://towardsdatascience.com/the-machine-learning-lessons-ive-learned-last-month/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
