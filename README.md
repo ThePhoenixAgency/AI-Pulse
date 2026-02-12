@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Thu, 12 Feb 2026 01:28:02 GMT
+**Last Update:** Thu, 12 Feb 2026 04:18:02 GMT
 
 ---
 
@@ -29,7 +29,37 @@
 
 ## Mac & Apple
 
-### 1. [Will Apple Music Get AI Playlists in iOS 27?](https://www.macrumors.com/2026/02/11/apple-music-ai-playlists-ios-27/)
+### 1. [FTC uses selective Apple News study to ask Apple to stop promoting 'leftist outlets'](https://appleinsider.com/articles/26/02/12/ftc-uses-selective-apple-news-study-to-ask-apple-to-stop-promoting-leftist-outlets?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple News is an aggregation app run by human curators and algorithmic feeds, but a poorly handled study failed to catch the right-wing outlets shared, and now the FTC is involved.
+
+
+Apple News is an aggregator the user can customize
+Whether or not the FTC can claim jurisdiction over what content can be highlighted by an independent editorial team might be up for debate, but the content of the Apple News app is not. Right-leaning outlets are sometimes featured in the curated Top Stories and Spotlight sections, but one study somehow missed that.
+
+### 2. [How to manage your iPhone notifications on iOS 26](https://appleinsider.com/articles/26/02/12/how-to-manage-your-iphone-notifications-on-ios-26?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+If you're feeling overwhelmed with the amount of notifications you're receiving, you're hardly alone — that's why we're here to show you how to manage notifications on your iPhone.
+
+
+How to manage notifications on iOS 26
+For as great as the iPhone is, it can be pretty distracting when you think about it. According to a study done in 2024, the average person receives 146 notifications per day.
+And, the younger you are, the more notifications you receive. Those in Generation Z received about 181 notifications a day — about one every eight minutes.
+
+### 3. [FTC chair questions Tim Cook over claims Apple News sidelines conservative publications](https://9to5mac.com/2026/02/11/ftc-chair-questions-tim-cook-over-claims-apple-news-sidelines-conservative-publications/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+FTC Chairman Andrew Ferguson is asking Tim Cook to review Apple News’ curation policies after claims that the service suppresses conservative publications. Here are the details.
+more…
+
+### 4. [Orico MiniPro Dock Case review: Mini Mac Pro, mini bandwidth](https://appleinsider.com/articles/25/09/26/orico-minipro-dock-case-review-mini-mac-pro-mini-bandwidth?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+The Orico MiniPro Dock Case does turn your Mac mini into a cute mini Mac Pro replica, but it's not just the small size that's limiting.
+
+
+Orico MiniPro Dock Case review: A miniaturized Mac Pro case for a Mac mini
+The current generation of Mac mini has become a favorite among enclosure designers, since it can easily be placed inside a casing and made to look like something else. Sometimes, this can look like other retro computers, and do so with great effect.
+
+### 5. [Will Apple Music Get AI Playlists in iOS 27?](https://www.macrumors.com/2026/02/11/apple-music-ai-playlists-ios-27/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 AI features are expanding to all kinds of apps, and it's getting difficult to find a service that hasn't embraced AI. Lately, AI playlists in music apps have been growing in popularity, and it's plausible that we'll see Apple adopt the trend in the near future.
 
@@ -38,7 +68,7 @@ YouTube
 
 This week, YouTube Music started rolling out a new AI playlist feature. YouTube Premium and YouTube Music Premium subscribers can turn an idea, mood, or genre into a personalized playlist.
 
-### 2. ['Severance' acquired by Apple for $70 million, expect a 4-season run and spinoffs](https://appleinsider.com/articles/26/02/12/severance-acquired-by-apple-for-70-million-expect-a-4-season-run-and-spinoffs?utm_source=rss)
+### 6. ['Severance' acquired by Apple for $70 million, expect a 4-season run and spinoffs](https://appleinsider.com/articles/26/02/12/severance-acquired-by-apple-for-70-million-expect-a-4-season-run-and-spinoffs?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple Studios is now the owner of "Severance," with the original owners, Fifth Season, sticking around as executive producers, and there are plans to expand the IP's universe.
 
@@ -47,7 +77,7 @@ Tim C now owns Severance
 As everyone waits for season 3 of Severance, there's news that may just ensure the series has a long future on Apple TV. It started as a series leased from Fifth Season, but now it will join Apple Studios as an in-house production.
 The news comes from Deadline, which says the series sold to Apple for around $70 million. The original studio is sticking around as executive producers.
 
-### 3. [Anthropic's Claude Gets More Free Features as OpenAI Starts Showing Ads in ChatGPT](https://www.macrumors.com/2026/02/11/anthropic-claude-more-free-features/)
+### 7. [Anthropic's Claude Gets More Free Features as OpenAI Starts Showing Ads in ChatGPT](https://www.macrumors.com/2026/02/11/anthropic-claude-more-free-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Anthropic today said that customers who use Claude without a subscription can create files, use connectors, and access skills, all of which are features that used to require a paid plan.
 
@@ -56,24 +86,24 @@ The announcement comes two days after OpenAI said that it was starting to roll o
 
 keep Claude ad-free, potentially luring ChatGPT users to Claude. The new free options appear to be a continuation of its effort to target people who don't want to see ads when using a chatbot.
 
-### 4. [T-Mobile Launches Beta for Free Real-Time Call Translation on Any Phone](https://www.macrumors.com/2026/02/11/t-mobile-real-time-call-translation/)
+### 8. [T-Mobile Launches Beta for Free Real-Time Call Translation on Any Phone](https://www.macrumors.com/2026/02/11/t-mobile-real-time-call-translation/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 T-Mobile today announced a new live translation feature that allows conversations to be translated in real-time when calling someone from any phone on the T-Mobile network.
 
 
 Live translation does not require any apps, and it is a free service that T-Mobile is offering in a beta capacity. T-Mobile users can sign up to test live translation on the T-Mobile website, with limited spots available.
 
-### 5. [Lifetime Mac license for PDF Expert lets you edit, sign and convert like a pro](https://www.cultofmac.com/deals/pdf-expert-pdf-editor-for-mac)
+### 9. [Lifetime Mac license for PDF Expert lets you edit, sign and convert like a pro](https://www.cultofmac.com/deals/pdf-expert-pdf-editor-for-mac)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 PDF Expert will streamline your PDF editing and management. Get a lifetime subscription to this PDF editor for Mac for just $79.97 (42% off).
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 6. [Apple acquires all rights to Severance; showrunners open to spin-offs, prequel, more](https://9to5mac.com/2026/02/11/apple-acquires-all-rights-to-severance-showrunners-open-to-spin-offs-prequel-more/)
+### 10. [Apple acquires all rights to Severance; showrunners open to spin-offs, prequel, more](https://9to5mac.com/2026/02/11/apple-acquires-all-rights-to-severance-showrunners-open-to-spin-offs-prequel-more/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Deadline reports that Apple now owns “the IP and all rights” to Severance, and that future plans might include more than just four seasons. Here are the details.
 more…
 
-### 7. [U.S. TikTok Introduces 'Local Feed' to Surface Nearby Events and Content](https://www.macrumors.com/2026/02/11/tiktok-us-local-feed/)
+### 11. [U.S. TikTok Introduces 'Local Feed' to Surface Nearby Events and Content](https://www.macrumors.com/2026/02/11/tiktok-us-local-feed/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 The U.S. version of TikTok is being updated with a new community-focused "Local Feed," according to a blog post shared by the TikTok USDS Joint Venture.
 
@@ -82,12 +112,12 @@ The Local Feed is designed to let TikTok users "discover and connect with conten
 
 TikTok U.S. says that posts are selected based on location, the topic of the content, and when the content was posted.
 
-### 8. [Computer History Museum to celebrate Apple’s 50th anniversary with special programming](https://9to5mac.com/2026/02/11/computer-history-museum-to-celebrate-apples-50th-anniversary-with-special-programming/)
+### 12. [Computer History Museum to celebrate Apple’s 50th anniversary with special programming](https://9to5mac.com/2026/02/11/computer-history-museum-to-celebrate-apples-50th-anniversary-with-special-programming/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 With Apple’s 50th anniversary fast approaching, the Computer History Museum is planning a series of programs and a temporary exhibit to celebrate the company’s history. Here are the details.
 more…
 
-### 9. [50 years of Apple history is on display at the Computer History Museum](https://appleinsider.com/articles/26/02/11/50-years-of-apple-history-is-on-display-at-the-computer-history-museum?utm_source=rss)
+### 13. [50 years of Apple history is on display at the Computer History Museum](https://appleinsider.com/articles/26/02/11/50-years-of-apple-history-is-on-display-at-the-computer-history-museum?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple's 50th birthday is coming up on April 1, and to celebrate, the Computer History Museum in Mountain View, California, is holding in-person exhibits and promoting online content about the company's history.
 
@@ -95,7 +125,7 @@ Apple's 50th birthday is coming up on April 1, and to celebrate, the Computer Hi
 Apple's 50th anniversary is being celebrated at the Computer History Museum
 Apple rarely, if ever, looks back on its history — a mentality left behind by Steve Jobs. However, it is difficult to ignore a big number like 50, so even Apple CEO Tim Cook is considering how Apple will celebrate the anniversary.
 
-### 10. [Apple just can’t get Siri working right](https://www.macworld.com/article/3058849/apple-just-cant-get-siri-working-right.html)
+### 14. [Apple just can’t get Siri working right](https://www.macworld.com/article/3058849/apple-just-cant-get-siri-working-right.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -104,12 +134,12 @@ Apple just can’t seem to get its new Siri off the ground. A new report from Ma
 Gurman’s sources tell him that testing has “run into snags in recent weeks” and that some of the features will be delayed to iOS 26.5 (due in May) or iOS 27 (due in September).
 To recap the timeline:
 
-### 11. [iOS 26 gave screenshots a hidden power I’ve started using a lot](https://9to5mac.com/2026/02/11/ios-26-gave-screenshots-a-hidden-power-ive-started-using-a-lot/)
+### 15. [iOS 26 gave screenshots a hidden power I’ve started using a lot](https://9to5mac.com/2026/02/11/ios-26-gave-screenshots-a-hidden-power-ive-started-using-a-lot/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26 brings visual intelligence to screenshots, enabling several new features. But there’s one I only recently discovered that solves the common problem of plain text URLs you can’t easily tap to open.
 more…
 
-### 12. [iOS 26.3 Features: Everything New in iOS 26.3](https://www.macrumors.com/guide/ios-26-3-features/)
+### 16. [iOS 26.3 Features: Everything New in iOS 26.3](https://www.macrumors.com/guide/ios-26-3-features/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple released iOS 26.3 today, and while it doesn't have as many features as iOS 26.1 or iOS 26.2, there are still a couple of new additions worth knowing about.
 
@@ -121,17 +151,17 @@ Apple is making it easier for iPhone users to transition to an Android smartphon
 
 With the two smartphones connected, users can opt to move over photos, messages, notes, apps, passwords, phone number, and more.
 
-### 13. [That Siri upgrade coming in iOS 26.4? Don’t get your hopes up.](https://www.cultofmac.com/news/ios-26-4-ai-siri-delays-problems)
+### 17. [That Siri upgrade coming in iOS 26.4? Don’t get your hopes up.](https://www.cultofmac.com/news/ios-26-4-ai-siri-delays-problems)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 iOS 26.4 may not live up to expectations. Apple is struggling to complete a long-delayed artificial intelligence upgrade for Siri.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 14. [Safari 26.3 includes welcome improvements for users and developers, here’s what’s new](https://9to5mac.com/2026/02/11/safari-26-3-includes-welcome-improvements-for-users-and-developers-heres-whats-new/)
+### 18. [Safari 26.3 includes welcome improvements for users and developers, here’s what’s new](https://9to5mac.com/2026/02/11/safari-26-3-includes-welcome-improvements-for-users-and-developers-heres-whats-new/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Alongside today’s system updates, Apple has released Safari 26.3, with a mix of under-the-hood improvements and at least one major usability upgrade for Vision Pro users. Here are the details.
 more…
 
-### 15. [Siri testing isn't going well, new features probably won't ship in iOS 26.4](https://appleinsider.com/articles/26/02/11/siri-testing-isnt-going-well-new-features-probably-wont-ship-in-ios-264?utm_source=rss)
+### 19. [Siri testing isn't going well, new features probably won't ship in iOS 26.4](https://appleinsider.com/articles/26/02/11/siri-testing-isnt-going-well-new-features-probably-wont-ship-in-ios-264?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 A report suggests that internal testing hasn't been going well with the new Siri and some features, including access to personal data, will likely be pushed back to iOS 26.5 and iOS 27.
 
@@ -139,12 +169,12 @@ A report suggests that internal testing hasn't been going well with the new Siri
 iPhone 17 Pro Max is an AI powerhouse waiting on Apple's updates
 The reporting around artificial intelligence and Apple has been a never-ending treasure trove of doomcasting for the company, but vague details of delays regarding unannounced products are nothing new.
 
-### 16. [Foldable iPhone expected to help drive adoption of book-type devices: report](https://9to5mac.com/2026/02/11/foldable-iphone-expected-to-help-drive-adoption-of-book-type-devices-report/)
+### 20. [Foldable iPhone expected to help drive adoption of book-type devices: report](https://9to5mac.com/2026/02/11/foldable-iphone-expected-to-help-drive-adoption-of-book-type-devices-report/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 According to Counterpoint Research, Apple’s introduction of a book-type foldable iPhone will help accelerate broader adoption of this form factor. Here are the details.
 more…
 
-### 17. [New Siri Runs Into Problems, Features Could Be Pushed to iOS 26.5 and iOS 27](https://www.macrumors.com/2026/02/11/siri-features-delayed-ios-26-4/)
+### 21. [New Siri Runs Into Problems, Features Could Be Pushed to iOS 26.5 and iOS 27](https://www.macrumors.com/2026/02/11/siri-features-delayed-ios-26-4/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple has "run into snags" testing the more personalized, smarter version of Siri that's planned for iOS 26.4, reports Bloomberg. Because of the issues, the upcoming ‌Siri‌ features will be spread across several upcoming iOS releases and won't all come in the spring iOS 26.4 update.
 
@@ -153,17 +183,17 @@ Apple could postpone some or all of the new ‌Siri‌ features until iOS 26.5, 
 
 Apple Intelligence version of ‌Siri‌ since iOS 18, when Apple debuted the features at the 2024 Worldwide Developers Conference.
 
-### 18. [Apple reportedly pushing back Gemini-powered Siri features beyond iOS 26.4](https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/)
+### 22. [Apple reportedly pushing back Gemini-powered Siri features beyond iOS 26.4](https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Despite inking a deal with Google to use Gemini AI as the brains behind upgraded Siri, Apple is reportedly facing internal challenges in getting the final product ready for prime time. The reported delays could stretch into iOS 27 this fall. Apple first announced a more capable version of Siri in 2024; that update hasn’t shipped yet.
 more…
 
-### 19. [macOS Tahoe 26.3 fixes two annoying design problems](https://9to5mac.com/2026/02/11/macos-tahoe-26-3-fixes-two-annoying-design-problems/)
+### 23. [macOS Tahoe 26.3 fixes two annoying design problems](https://9to5mac.com/2026/02/11/macos-tahoe-26-3-fixes-two-annoying-design-problems/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple released macOS 26.3 to the public today, and the update fixes two design problems introduced by the Liquid Glass revamp in Tahoe: resizing windows and resizing columns in Finder.
 more…
 
-### 20. [10 iPhone Tips and Tricks You Probably Didn't Know About](https://www.macrumors.com/2026/02/11/iphone-tips-and-tricks-2026/)
+### 24. [10 iPhone Tips and Tricks You Probably Didn't Know About](https://www.macrumors.com/2026/02/11/iphone-tips-and-tricks-2026/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 No matter how well you think you know your iPhone, there are always tons of hidden features and shortcuts that you aren't aware of, or might have forgotten about. We've rounded up 10 useful ‌iPhone‌ features that are worth knowing about to make using your ‌iPhone‌ just a little more pleasant.
 
@@ -171,7 +201,7 @@ Subscribe to the MacRumors YouTube channel for more videos.
 
 Many of these tips require the latest version of iOS, iOS 26, but there are a few that work for older versions of iOS, too.
 
-### 21. [Apple didn't forget macOS Sonoma, macOS Sequoia &amp; iOS 18 on patch day](https://appleinsider.com/articles/26/02/11/apple-didnt-forget-macos-sonoma-macos-sequoia-ios-18-on-patch-day?utm_source=rss)
+### 25. [Apple didn't forget macOS Sonoma, macOS Sequoia &amp; iOS 18 on patch day](https://appleinsider.com/articles/26/02/11/apple-didnt-forget-macos-sonoma-macos-sequoia-ios-18-on-patch-day?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Updates to macOS Sonoma 14.8.4, macOS Sequoia 15.7.4, and iOS 18.7.5 are now available, extending security fixes to older Apple devices alongside the company's 26.3 releases.
 
@@ -180,12 +210,12 @@ macOS Sequoia
 Apple released updates on February 11 along with macOS Tahoe 26.3, iOS 26.3, iPadOS 26.3, tvOS 26.3, watchOS 26.3, and visionOS 26.3. The security content pages for the older-branch releases show multiple CVE patches in shared system components.
 None of these pages mention that the vulnerabilities were actively exploited.
 
-### 22. [Update your Mac, iPad and more now to squash bugs](https://www.cultofmac.com/news/macos-tahoe-26-3-release-date-ipados-watchos)
+### 26. [Update your Mac, iPad and more now to squash bugs](https://www.cultofmac.com/news/macos-tahoe-26-3-release-date-ipados-watchos)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Apple releases macOS Tahoe 26.3, iPadOS 26.3, watchOS 26.3 and tvOS 26.3, delivering a round of bug fixes and under-the-hood improvements.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 23. [Greyhound sequel begins filming, shifting from Atlantic to Pacific](https://appleinsider.com/articles/26/02/11/greyhound-sequel-begins-filming-shifting-from-atlantic-to-pacific?utm_source=rss)
+### 27. [Greyhound sequel begins filming, shifting from Atlantic to Pacific](https://appleinsider.com/articles/26/02/11/greyhound-sequel-begins-filming-shifting-from-atlantic-to-pacific?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Apple TV is moving ahead with its "Greyhound" follow-up, with Tom Hank's naval drama set to broaden its scope from a single Atlantic traverse, to both the D-Day landings and the Pacific theater.
 
@@ -193,12 +223,12 @@ Apple TV is moving ahead with its "Greyhound" follow-up, with Tom Hank's naval d
 Greyhound sequel enters production in Australia
 The film, which doesn't have release date this time, is currently in production in Australia. Tom Hanks is penning the film and will return to reprise his role as United States Navy Commander Ernest Kraus.
 
-### 24. [iOS 26.3 has fixes for 35+ security issues on iPhone, details here](https://9to5mac.com/2026/02/11/ios-26-3-has-fixes-for-35-security-issues-on-iphone-details-here/)
+### 28. [iOS 26.3 has fixes for 35+ security issues on iPhone, details here](https://9to5mac.com/2026/02/11/ios-26-3-has-fixes-for-35-security-issues-on-iphone-details-here/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple’s latest wave of software updates is lighter than usual on new features, but heavy on bug fixes and security updates, with 35+ security fixes included in iOS 26.3 and more.
 more…
 
-### 25. [Update Now: iOS 26.3 and macOS Tahoe 26.3 Fix Dozens of Security Vulnerabilities](https://www.macrumors.com/2026/02/11/ios-26-3-security-vulnerabilities/)
+### 29. [Update Now: iOS 26.3 and macOS Tahoe 26.3 Fix Dozens of Security Vulnerabilities](https://www.macrumors.com/2026/02/11/ios-26-3-security-vulnerabilities/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released iOS 26.3, iPadOS 26.3, and macOS Tahoe 26.3, all of which largely focus on bug fixes and security improvements. Apple says that the updates address dozens of vulnerabilities, including one that is known to have been actively exploited.
 
@@ -206,37 +236,10 @@ Apple today released iOS 26.3, iPadOS 26.3, and macOS Tahoe 26.3, all of which l
 That vulnerability in the dyld dynamic link editor could allow for the execution of arbitrary code, and Apple says the bug may have been exploited in an "extremely sophisticated attack" against targeted individuals on versions of iOS before iOS 26.
 An attacker with memory write capability may be able to execute arbitrary code.
 
-### 26. [Hands-on: iOS 26.3 changes and features [Video]](https://9to5mac.com/2026/02/11/hands-on-ios-26-3-changes-and-features-video/)
+### 30. [Hands-on: iOS 26.3 changes and features [Video]](https://9to5mac.com/2026/02/11/hands-on-ios-26-3-changes-and-features-video/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple just released the final version of iOS 26.3 to the public, and while it isn’t packed with new features, there are some notable additions worth exploring. Watch our hands-on video as we walk through everything new in iOS 26.3, and be sure to subscribe to 9to5mac on YouTube for more videos.
 more…
-
-### 27. [macOS 26 Tahoe Guide: New features in the latest macOS 26.3 update](https://www.macworld.com/article/2644146/macos-26-features-latest-update-release-date-beta.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-Like its counterparts on the other Apple devices, in September 2026 macOS got a brand new look along with a new name. Because Apple is aligning the names of all the operating systems this year, the new version of macOS is called macOS 26 rather than macOS 16. It also takes the name Tahoe, inspired by the lake, beaches, and the ski resorts of that area of California. 
-Along with a big redesign, macOS 26 brings new Continuity features to bring your iPad, iPhone, and Mac even closer together, a brand new Phone app, and more.
-
-### 28. [Apple just released new updates for old versions of iOS, macOS, and iPadOS](https://9to5mac.com/2026/02/11/apple-just-released-new-updates-for-old-versions-of-ios-macos-and-ipados/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple has released a new wave of software updates today, including iOS 26.3 and many more 26.3 updates. But the company also has new updates for older OS versions, like iOS 18.7.5 for iPhone and more.
-more…
-
-### 29. [Apple Music doubles the penalty for fraudulent streaming](https://9to5mac.com/2026/02/11/apple-music-doubles-the-penalty-for-fraudulent-streaming/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Fraudulent streaming is a long-running problem in the music business. In a recent interview, Oliver Schusser, who oversees Apple Music, Apple TV, and more, offered some fascinating insight into Apple’s work to crack down on fake streams on Apple Music.
-The report also reveals that Apple recently doubled the penalty for Apple Music fraud …
-more…
-
-### 30. [iOS 26 Guide: New features in the latest iPhone update and what’s coming in iOS 26.4](https://www.macworld.com/article/2575705/ios-26-features-latest-update-release-date-beta.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-The latest version of the iPhone operating system is iOS 26.3 and everyone with a compatible iPhone can install it now. Read on to find out what’s new, what is still to come, and everything else you need to know about the latest iPhone update.
-If you are yet to install it, there is a lot to get excited about in iOS 26:
 
 <a id="iot"></a>
 
