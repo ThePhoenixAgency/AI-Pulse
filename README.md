@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Thu, 12 Feb 2026 20:27:43 GMT
+**Last Update:** Thu, 12 Feb 2026 22:25:03 GMT
 
 ---
 
@@ -29,33 +29,77 @@
 
 ## Mac & Apple
 
-### 1. [Live Activities Taking Over Your Apple Watch? Here's the Fix](https://www.macrumors.com/how-to/apple-watch-live-activities-fix/)
+### 1. [Sony Launches $330 WF-1000XM6 Earbuds to Take on AirPods Pro 3](https://www.macrumors.com/2026/02/12/sony-wf-1000xm6-earbuds/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Sony today announced a new set of earbuds that are designed to compete with the AirPods Pro 3. The $330 WF-1000XM6 Truly Wireless Earbuds feature Active Noise Cancellation with a 25 percent reduction in noise compared to the prior-generation XM5 earbuds, with improved performance in the mid-to-high frequency range that's common in everyday environments.
+
+
+The earbuds use Sony's HD Noise Canceling Processor QN3e with an adaptive noise canceling optimizer and four microphones on each earbud to detect sound to cut out.
+
+### 2. [Walmart Saturday Showdown games coming to Apple TV on February 21](https://appleinsider.com/articles/26/02/12/walmart-saturday-showdown-games-coming-to-apple-tv-on-february-21?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Major League Soccer fans will be able to enjoy even more game highlights as part of the Walmart Saturday Showdown, debuting on Apple TV in February 2026.
+
+
+Walmart Saturday Showdown is coming to Apple TV on February 21.
+Apple's push for sports-related programming continues, as the iPhone maker has now promised additional Major League Soccer content. Throughout 2026, Apple TV subscribers in the United States will be able to watch MLS games for free, with select games highlighted as part of Sunday Night Soccer.
+
+### 3. [iPadOS 26 multitasking got better when I changed this one setting](https://9to5mac.com/2026/02/12/ipados-26-multitasking-got-better-when-i-changed-this-one-setting/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+iPadOS 26 makes major changes to how multitasking works via a new app windowing system. And Apple’s new system got a lot better for me after I changed one key setting.
+more…
+
+### 4. [AirPods Pro 2, AirPods Pro 3, AirPods 4 just got another beta firmware update](https://appleinsider.com/articles/26/02/12/airpods-pro-2-airpods-pro-3-airpods-4-just-got-another-beta-firmware-update?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+A new beta firmware for the AirPods Pro 2, AirPods Pro 3, and AirPods 4 has been released, though there are currently no details about its contents.
+
+
+A new beta firmware update is available for select AirPods models.
+Following the public release of iOS 26.3 on Wednesday, Apple has deployed a new beta firmware for select AirPods and AirPods Pro models. Thursday's developer beta increases the build number to 8B5034f, up from previous versions like the 8A5308b update.
+This beta software release is available for AirPods 4, AirPods Pro 2, and AirPods Pro 3.
+
+### 5. [Apple’s WebKit team outlines browser interoperability priorities for 2026](https://9to5mac.com/2026/02/12/apples-webkit-team-outlines-browser-interoperability-priorities-for-2026/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Following last week’s release of the Interop 2025 results, Apple and the other members of the browser interoperability group have now outlined their objectives for the year ahead. Here are the details.
+more…
+
+### 6. [Hands-on: Keychron Q1 Ultra is a fantastic new mechanical keyboard offering for Mac](https://9to5mac.com/2026/02/12/new-keychron-q1-ultra-mechanical-keyboard-for-mac-hands-on/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+At CES 2026, Keychron introduced a new line of keyboards for Mac with its Q Ultra series. They all offer an 8K polling rate and a fantastic all metal build, and they come in three size variants: 75%, 80%, and full size. I’ll be going hands on with the Q1 Ultra.
+more…
+
+### 7. [Apple Card is moving to Chase, here’s everything we know](https://9to5mac.com/2026/02/12/apple-card-is-moving-to-chase-heres-everything-we-know/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+After multiple years of speculation, last month Apple officially announced that Chase is set to become the new issuer of Apple Card. Apple says the transition from Goldman Sachs to Chase will occur in approximately 24 months. Here’s everything we know about what this transition means for Apple Card users …
+more…
+
+### 8. [Live Activities Taking Over Your Apple Watch? Here's the Fix](https://www.macrumors.com/how-to/apple-watch-live-activities-fix/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 In watchOS 26, the Smart Stack for your Apple Watch is pretty clever. The collection of widgets can be pulled up with a scroll of the Digital Crown, and shows you relevant information throughout your day. But sometimes, its eagerness to help can be a bit much, especially when it comes to Live Activities.
 
 
 You're probably familiar with this scenario: You raise your wrist expecting to see your customized watch face, but it's been replaced by media playback controls because someone's watching your Apple TV, or a timer you set earlier for cooking that still has ages left to run.
 
-### 2. [More Siri delays, imminent new hardware, and Apple’s upcoming 50th birthday ](https://9to5mac.com/2026/02/12/happy-hour-577/)
+### 9. [More Siri delays, imminent new hardware, and Apple’s upcoming 50th birthday ](https://9to5mac.com/2026/02/12/happy-hour-577/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Benjamin and Chance react to the disappointing news shared by Bloomberg’s Mark Gurman that the new Siri features are facing even more delays, but in happier news, a bunch of iPhones, iPads and Macs are due for an imminent refresh. Meanwhile, Tim Cook reminisces ahead of Apple’s 50th birthday.  
 And in Happy Hour Plus, thoughts on the design of the Ferrari Luce and Jony Ive’s sniping comments about his former employer.
 Sponsored by Shopify: See less carts go abandoned and more sales. Sign up for a $1 per month trial at shopify.com/happyhour.
 Sponsored by Square:
 
-### 3. [iPhone could get satellite 5G this year, leaker claims](https://www.macworld.com/article/3059938/iphone-could-get-satellite-5g-this-year-leaker-claims.html)
+### 10. [iPhone could get satellite 5G this year, leaker claims](https://www.macworld.com/article/3059938/iphone-could-get-satellite-5g-this-year-leaker-claims.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
 
 The iPhone was one of the first phones to gain satellite connectivity back with the launch of the iPhone 14 in 2022, but this feature was intended mainly as an emergency measure. Break a leg or run out of water when hiking in the wilderness, and emergency SOS could save your life, but it wasn’t much help for browsing social media. But a more accessible general-purpose satellite feature could be coming to the iPhone as soon as this year.
 
-### 4. [Apple just gave AirPods Pro 3 and more new beta firmware](https://9to5mac.com/2026/02/12/apple-just-gave-airpods-pro-3-and-more-new-beta-firmware/)
+### 11. [Apple just gave AirPods Pro 3 and more new beta firmware](https://9to5mac.com/2026/02/12/apple-just-gave-airpods-pro-3-and-more-new-beta-firmware/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has new beta firmware available today for AirPods Pro 3, AirPods Pro 2, and AirPods 4. Here are the details.
 more…
 
-### 5. [Apple Releases New Beta Firmware for AirPods Pro 2, AirPods Pro 3 and AirPods 4](https://www.macrumors.com/2026/02/12/apple-airpods-beta-firmware-8b5034f/)
+### 12. [Apple Releases New Beta Firmware for AirPods Pro 2, AirPods Pro 3 and AirPods 4](https://www.macrumors.com/2026/02/12/apple-airpods-beta-firmware-8b5034f/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released new beta firmware for the AirPods Pro 2, AirPods Pro 3, and AirPods 4. The firmware is limited to developers at the current time, and it has a build number of 8B5034f.
 
@@ -64,12 +108,12 @@ Apple is not testing any iOS updates right now, so it is unclear what's in the A
 
 iOS 26, iPadOS 26, and macOS Tahoe, Apple added a beta firmware update installation option that's available from the AirPods settings interface when the AirPods are connected to an iPhone, iPad, or Mac, which facilitates beta testing.
 
-### 6. [Apple is reviving the ‘MacBook’ soon, without any of its old problems](https://9to5mac.com/2026/02/12/apple-is-reviving-the-macbook-soon-without-any-of-its-old-problems/)
+### 13. [Apple is reviving the ‘MacBook’ soon, without any of its old problems](https://9to5mac.com/2026/02/12/apple-is-reviving-the-macbook-soon-without-any-of-its-old-problems/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has a new ‘MacBook’ coming soon, and based on the latest rumors, it sounds like all of the problems that plagued the previously discontinued model will be addressed.
 more…
 
-### 7. [New Eero Signal promises to keep you connected during internet outages](https://9to5mac.com/2026/02/12/eero-signal-announcement-features/)
+### 14. [New Eero Signal promises to keep you connected during internet outages](https://9to5mac.com/2026/02/12/eero-signal-announcement-features/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Update February 12, 2026: The 4G LTE model of the Eero Signal is now available via Amazon for $99. The 5G version is still to come. 
 Original post below. 
@@ -77,12 +121,12 @@ Eero has announced a new Eero Signal product that it says will let you “say go
 “Eero Signal delivers cellular backup whenever your wired internet connection goes down,” the company explains. It’s available in both 4G LTE and 5G RedCap versions.
 more…
 
-### 8. [Apple’s iPad keyboard case gets compelling new rival](https://www.cultofmac.com/news/brydge-max-11-0-ipad-keyboard-case-price-release-date)
+### 15. [Apple’s iPad keyboard case gets compelling new rival](https://www.cultofmac.com/news/brydge-max-11-0-ipad-keyboard-case-price-release-date)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 The new Brydge Max 11.0 is a premium iPad keyboard case that offers enhanced productivity and stunning design.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 9. [Apple Releases Safari Technology Preview 237 With Bug Fixes and Performance Improvements](https://www.macrumors.com/2026/02/12/apple-releases-safari-technology-preview-237/)
+### 16. [Apple Releases Safari Technology Preview 237 With Bug Fixes and Performance Improvements](https://www.macrumors.com/2026/02/12/apple-releases-safari-technology-preview-237/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple today released a new update for Safari Technology Preview, the experimental browser that was first introduced in March 2016. Apple designed ‌Safari Technology Preview‌ to allow users to test features that are planned for future release versions of the Safari browser.
 
@@ -93,7 +137,7 @@ macOS Tahoe, the newest version of macOS.
 
 downloaded the browser from Apple’s website.
 
-### 10. [9to5Mac Daily: February 12, 2026 – Siri features delayed once again](https://9to5mac.com/2026/02/12/daily-february-12-2026/)
+### 17. [9to5Mac Daily: February 12, 2026 – Siri features delayed once again](https://9to5mac.com/2026/02/12/daily-february-12-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
 Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
@@ -103,12 +147,12 @@ Sponsored by Stuff: Stuff helps you get everything out of your head and into a s
 
  more…
 
-### 11. [Spectrum launches new ‘Invincible WiFi’ home internet plan](https://9to5mac.com/2026/02/12/spectrum-launches-new-invincible-wifi-home-internet-plan/)
+### 18. [Spectrum launches new ‘Invincible WiFi’ home internet plan](https://9to5mac.com/2026/02/12/spectrum-launches-new-invincible-wifi-home-internet-plan/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Spectrum has announced a new ‘Invincible WiFi’ plan launching today that combines WiFi 7, 5G data, and an 8-hour battery backup to provide maximum peace of mind with your home internet coverage.
 more…
 
-### 12. [No, Apple Music didn't fire Jay-Z over Bad Bunny Super Bowl Halftime Show](https://appleinsider.com/articles/26/02/12/no-apple-music-didnt-fire-jay-z-over-bad-bunny-super-bowl-halftime-show?utm_source=rss)
+### 19. [No, Apple Music didn't fire Jay-Z over Bad Bunny Super Bowl Halftime Show](https://appleinsider.com/articles/26/02/12/no-apple-music-didnt-fire-jay-z-over-bad-bunny-super-bowl-halftime-show?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Rumors that Jay-Z lost his Apple Music leadership position in connection with the Super Bowl halftime show are lies, and trace back to a satirical post falsely presented as news.
 
@@ -117,7 +161,7 @@ Hip hop star Jay-Z
 The rumor traces back to a post from "America's Last Line of Defense," a network known for publishing fabricated stories presented as satire. Screenshots of the post circulated on Facebook and other platforms without the page's disclaimer, giving the false impression it was a legitimate report.
 The original post claims Apple Music "fired" Jay-Z after years of producing the halftime show.
 
-### 13. [This futuristic Anker power strip is down to its best price ever ($40 off)](https://www.macworld.com/article/3059904/this-futuristic-anker-power-strip-is-down-to-its-best-price-ever-40-off.html)
+### 20. [This futuristic Anker power strip is down to its best price ever ($40 off)](https://www.macworld.com/article/3059904/this-futuristic-anker-power-strip-is-down-to-its-best-price-ever-40-off.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -125,7 +169,7 @@ Macworld
 When’s the last time you bought a power strip? Well, perhaps it’s time for an upgrade to this Anker Prime 8-in-1 240W power strip for $40 off at Amazon. Not only is it a massive discount from its $130 MSRP, but it also brings a ton of futuristic features, including a super-skinny design, USB-C ports, a built-in display, app support, and a detachable power cable.
 We get it, $90 is a lot of money for a power strip, but there’s a reason for that. First of all, this thing’s remarkably space-efficient, with a low-profile design that’s about the size of a smartphone.
 
-### 14. [A YouTube Apple Vision Pro app is finally here, with 3D video support and more](https://appleinsider.com/articles/26/02/12/a-youtube-apple-vision-pro-app-is-finally-here-with-3d-video-support-and-more?utm_source=rss)
+### 21. [A YouTube Apple Vision Pro app is finally here, with 3D video support and more](https://appleinsider.com/articles/26/02/12/a-youtube-apple-vision-pro-app-is-finally-here-with-3d-video-support-and-more?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 A YouTube app is finally available for the Apple Vision Pro, years after Google confirmed that it was "on the roadmap."
 
@@ -134,12 +178,12 @@ Apple Vision Pro owners just got a new way to watch YouTube.
 Until now, Apple Vision Pro owners have been reduced to watching YouTube via the Safari web browser or using a third-party app. Now, they can download the free, official YouTube app from the headset's App Store.
 Google seemed intent on ensuring that its website would be the only way to watch YouTube initially. The company had Juno, a third-party YouTube player, kicked off the App Store in late 2024.
 
-### 15. [Price cut: This private AI assistant runs offline for life](https://www.cultofmac.com/deals/pansophy-private-ai-assistant)
+### 22. [Price cut: This private AI assistant runs offline for life](https://www.cultofmac.com/deals/pansophy-private-ai-assistant)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Pansophy is a fully local personal AI assistant that runs without accounts, subscriptions or cloud processing. Your data stays on your device.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 16. [YouTube Launches on Apple Vision Pro](https://www.macrumors.com/2026/02/12/youtube-app-apple-vision-pro/)
+### 23. [YouTube Launches on Apple Vision Pro](https://www.macrumors.com/2026/02/12/youtube-app-apple-vision-pro/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Starting today, an official YouTube app is available on the Apple Vision Pro, allowing you to watch videos on a theater-sized screen with immersive visionOS Environments. 
 
@@ -148,27 +192,27 @@ Every video on YouTube is available in the new, standalone visionOS app, includi
 
 Apple Vision Pro users can access their YouTube subscriptions, playlists, watch history, and more.
 
-### 17. [YouTube launches native app for Apple Vision Pro](https://9to5mac.com/2026/02/12/youtube-launches-native-app-for-apple-vision-pro/)
+### 24. [YouTube launches native app for Apple Vision Pro](https://9to5mac.com/2026/02/12/youtube-launches-native-app-for-apple-vision-pro/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 YouTube was one of the biggest apps missing from the Vision Pro platform at launch in February 2024. That changes today, however, with the launch of an official YouTube app for visionOS. 
 more…
 
-### 18. [Deals: M4 MacBook Air $300 off, iPad mini from $399, Series 11 from $299, Apple Pencil Pro 46% off, more](https://9to5mac.com/2026/02/12/deals-m4-macbook-air-ipad-mini-apple-pencil-pro/)
+### 25. [Deals: M4 MacBook Air $300 off, iPad mini from $399, Series 11 from $299, Apple Pencil Pro 46% off, more](https://9to5mac.com/2026/02/12/deals-m4-macbook-air-ipad-mini-apple-pencil-pro/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Today’s 9to5Toys Lunch Break is ready to roll. Alongside the ongoing Amazon 2026 President’s Day sale with $100 off Apple Watch Series 11 and AirPods Pro 3 down at $210, we also have all iPad mini models back down at $100 off starting at $399. Those offers join your last shot to score this 32GB M4 MacBook Air at $300 off and a particularly notable price on Apple Pencil Pro starting from $70 (up to 46% off). On top of that, new all-time low pricing is live on Apple’s black Crossbody Strap and its latest Blue Trail Loop – scope everything out below. 
 more…
 
-### 19. [How smarter Apple Intelligence could empower Apple Home](https://www.cultofmac.com/news/apple-intelligence-could-enpower-apple-home)
+### 26. [How smarter Apple Intelligence could empower Apple Home](https://www.cultofmac.com/news/apple-intelligence-could-enpower-apple-home)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Apple Intelligence could soon live up to its name and further empower Apple Home automations to the point of anticipating your needs.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 20. [iPhone 18 Pro’s new C2 chip will bring three advantages over iPhone 17](https://9to5mac.com/2026/02/12/iphone-18-pros-new-c2-chip-will-bring-three-advantages-over-iphone-17/)
+### 27. [iPhone 18 Pro’s new C2 chip will bring three advantages over iPhone 17](https://9to5mac.com/2026/02/12/iphone-18-pros-new-c2-chip-will-bring-three-advantages-over-iphone-17/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple is rumored to have a next-generation C2 chip coming to iPhone 18 Pro and Pro Max, shifting away from the Qualcomm 5G modem found in iPhone 17 Pro. Here are three new advantages the Apple-designed modem will bring.
 more…
 
-### 21. [Mophie Juice Pack Review: 6ft drop protection and built-in battery for iPhone 17 Pro](https://www.macworld.com/article/3056166/mophie-juice-pack-review.html)
+### 28. [Mophie Juice Pack iPhone 17 Pro Review: 6ft drop protection and built-in battery](https://www.macworld.com/article/3056166/mophie-juice-pack-review.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -189,68 +233,18 @@ U.S. only
 Our Verdict 
 Although a lower capacity than a separate power bank, having the battery pack built into a protective case means you don’t have to remember to carry another device with you, and functions both to protect your phone from drops and knocks and from loss of power.
 
-### 22. [Today in Apple history: Steve Jobs wins posthumous Grammy](https://www.cultofmac.com/apple-history/steve-jobs-grammy-awward)
+### 29. [Today in Apple history: Steve Jobs wins posthumous Grammy](https://www.cultofmac.com/apple-history/steve-jobs-grammy-awward)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-On February 12, 2012, a Special Merit Grammy Award honored Apple co-founder Steve Jobs his contributions to the field of music.
+On February 12, 2012, a Special Merit Grammy Award honored Apple co-founder Steve Jobs for his contributions to the field of music.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 23. [Lawsuit alleges Apple and others were coerced to censor ICE monitoring tools](https://appleinsider.com/articles/26/02/12/lawsuit-alleges-apple-and-others-were-coerced-to-censor-ice-monitoring-tools?utm_source=rss)
+### 30. [Lawsuit alleges Apple and others were coerced to censor ICE monitoring tools](https://appleinsider.com/articles/26/02/12/lawsuit-alleges-apple-and-others-were-coerced-to-censor-ice-monitoring-tools?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 A new lawsuit claims federal officials pressured Apple, Meta, and Google to suppress apps and online groups that document ICE activity, raising fresh First Amendment concerns.
 
 
 Image credit: TheFire.org
 On Wednesday, the Foundation for Individual Rights and Expression (FIRE) announced that it would sue Attorney General Pam Bondi and Secretary of Homeland Security Kristi Noem. The suit centers on First Amendment obstruction.
-
-### 24. [Four Apple products could be discontinued imminently](https://9to5mac.com/2026/02/12/four-apple-products-could-be-discontinued-imminently/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple has four products showing signs of being discontinued imminently, with supply reportedly drying up at the Apple Store ahead of successors launching soon.
-more…
-
-### 25. [Apple's AI summaries include racial &amp; gender biases, if the query is vague enough](https://appleinsider.com/articles/26/02/12/apples-ai-summaries-include-racial-gender-biases-if-the-query-is-vague-enough?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-When specifically tailored queries made to test Apple Intelligence using developer tools are intentionally ambiguous about race and gender, researchers have seen biases pop up.
-
-
-Examples of notification summaries on an iPhone
-AI Forensics, a German nonprofit, analyzed over 10,000 notification summaries created by Apple's AI feature. The report suggests that Apple Intelligence treats White people as the "default" while applying gender stereotypes when no gender has been specified.
-According to the report, Apple Intelligence has a tendency to ignore a person's ethnicity if they are caucasian.
-
-### 26. [Apple's M5 iPad Pro Hits Multiple Record Low Prices on Amazon [Updated]](https://www.macrumors.com/2026/02/12/m5-ipad-pro-record-low-prices/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-Amazon this week is offering discounts across the M5 iPad Pro lineup, including both 11-inch and 13-inch models. Every deal on the 11-inch M5 iPad Pro that we're tracking below is a match of the all-time low price on these tablets.
-
-Note: MacRumors is an affiliate partner with some of these vendors. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running.
-
-$799.91, down from $999.00. Amazon provides an estimated delivery date around February 17 for free delivery, but Prime members should see earlier delivery dates in many cases.
-
-### 27. [iOS 27 Will Add These New Features to Your iPhone](https://www.macrumors.com/2026/02/12/ios-27-features-rumors/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-While the first beta of iOS 27 is still four months away, there are already plenty of rumors about new features that will be included in the update.
-
-
-Below, we recap iOS 27 rumors so far:
-Siri Chatbot: iOS 27 will reportedly include a full-out Siri chatbot that you can have back-and-forth conversations with. This would make Siri more like OpenAI's ChatGPT and Google's Gemini. Due to delays, iOS 27 might also include at least some personalized Siri features that were announced back in 2024.
-
-New Apple Intelligence Features:
-
-### 28. [Claude’s free tier now connects to apps, can create Microsoft Office documents, and more](https://9to5mac.com/2026/02/12/claudes-free-tier-now-connects-to-apps-can-create-microsoft-office-documents-and-more/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Anthropic has just launched significant new features to Claude’s free tier. Connecting to apps was previously a pro feature available only to paid subscribers, but this is now included in the free tier.
-Claude can connect to a wide range of apps, including Canva, Figma, Monday, Notion, Slack, Square, Wix, WordPress, and Google Workspace apps …
-more…
-
-### 29. [Apple nabs full rights to Severance, eyes franchise expansion](https://www.cultofmac.com/news/severance-franchise-expansion)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-A "Severance" franchise expansion with more seasons and new spinoff shows now seems all but certain. Apple bought full rights to the show. 
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 30. [‘Dried out’ iPhone 16e stock points to imminent launch of 17e](https://www.macworld.com/article/3059500/dried-out-iphone-16e-stock-points-to-imminent-launch-of-17e.html)
-**Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
-Macworld
-
-
-It’s an open secret that Apple is on the verge of launching the iPhone 17e. One theory is that it will be released as soon as next week on the first anniversary of its predecessor’s launch. And based on new information about Apple’s stock levels, that sounds about right.
 
 <a id="iot"></a>
 
@@ -414,80 +408,80 @@ The post SmartCoop: Controlling chickens with Java appeared first on Raspberry P
 
 ## Artificial Intelligence
 
-### 1. [Anthropic raises another $30 billion in series G, with a new value of $380 billion](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
+### 1. [Musk needed a new vision for SpaceX and xAI. He landed on Moonbase Alpha.](https://techcrunch.com/2026/02/12/musk-needed-a-new-vision-for-spacex-and-xai-he-landed-on-moonbase-alpha/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The chatbot maker has, once again, ramped up its valuation significantly.
+"I really want to see a mass driver on the moon that is shooting AI satellites into deep space."
 
-### 2. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
+### 2. [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Didero functions as an agentic AI layer that sits on top of a company’s existing ERP, acting as a coordinator that reads incoming communications and automatically executes the necessary updates and tasks.
+
+### 3. [Anthropic raises another $30B in Series G, with a new value of $380B](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The infusion of funding for the AI startup takes place as it is vying for customers and cultural attention with its competitor, OpenAI.
+
+### 4. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Spotify credits Claude Code and its internal AI system Honk with speeding up development.
 
-### 3. [A new version of OpenAI’s Codex is powered by a new dedicated chip](https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/)
+### 5. [A new version of OpenAI’s Codex is powered by a new dedicated chip](https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI calls the new coding tool the "first milestone" in its relationship with the chipmaker.
 
-### 4. [How to Leverage Explainable AI for Better Business Decisions](https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/)
+### 6. [How to Leverage Explainable AI for Better Business Decisions](https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Moving beyond the black box to turn complex model outputs into actionable organizational strategies.
 The post How to Leverage Explainable AI for Better Business Decisions appeared first on Towards Data Science.
 
-### 5. [AI in Multiple GPUs: Understanding the Host and Device Paradigm](https://towardsdatascience.com/understanding-the-host-and-device-paradigm/)
+### 7. [AI in Multiple GPUs: Understanding the Host and Device Paradigm](https://towardsdatascience.com/understanding-the-host-and-device-paradigm/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how CPU and GPUs interact in the host-device paradigm
 The post AI in Multiple GPUs: Understanding the Host and Device Paradigm appeared first on Towards Data Science.
 
-### 6. [Google identifies state-sponsored hackers using AI in attacks](https://www.artificialintelligence-news.com/news/state-sponsored-hackers-ai-cyberattacks-google/)
+### 8. [Google identifies state-sponsored hackers using AI in attacks](https://www.artificialintelligence-news.com/news/state-sponsored-hackers-ai-cyberattacks-google/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 State-sponsored hackers are exploiting highly-advanced tooling to accelerate their particular flavours of cyberattacks, with threat actors from Iran, North Korea, China, and Russia using models like Google’s Gemini to further their campaigns. They are able to craft sophisticated phishing campaigns and develop malware, according to a new report from Google’s Threat Intelligence Group (GTIG). The […]
 The post Google identifies state-sponsored hackers using AI in attacks appeared first on AI News.
 
-### 7. [xAI lays out interplanetary ambitions in public all-hands](https://techcrunch.com/2026/02/11/xai-lays-out-interplanetary-ambitions-in-public-all-hands/)
+### 9. [xAI lays out interplanetary ambitions in public all-hands](https://techcrunch.com/2026/02/11/xai-lays-out-interplanetary-ambitions-in-public-all-hands/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 On Wednesday, xAI took the rare step of publishing its full 45-minute all-hands presentation to the X platform, making it widely available.
 
-### 8. [AI inference startup Modal Labs in talks to raise at $2.5B valuation, sources say](https://techcrunch.com/2026/02/11/ai-inference-startup-modal-labs-in-talks-to-raise-at-2-5b-valuation-sources-say/)
+### 10. [AI inference startup Modal Labs in talks to raise at $2.5B valuation, sources say](https://techcrunch.com/2026/02/11/ai-inference-startup-modal-labs-in-talks-to-raise-at-2-5b-valuation-sources-say/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 General Catalyst is in talks to lead the round for the four-year-old startup, according to our sources.
 
-### 9. [OpenAI disbands mission alignment team](https://techcrunch.com/2026/02/11/openai-disbands-mission-alignment-team-which-focused-on-safe-and-trustworthy-ai-development/)
+### 11. [OpenAI disbands mission alignment team](https://techcrunch.com/2026/02/11/openai-disbands-mission-alignment-team-which-focused-on-safe-and-trustworthy-ai-development/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The team's leader has been given a new role as OpenAI's chief futurist, while the other team members have been reassigned throughout the company.
 
-### 10. [Apple’s Siri revamp reportedly delayed… again](https://techcrunch.com/2026/02/11/apples-siri-revamp-reportedly-delayed-again/)
+### 12. [Apple’s Siri revamp reportedly delayed… again](https://techcrunch.com/2026/02/11/apples-siri-revamp-reportedly-delayed-again/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 While the new Siri was expected to launch with the upcoming iOS 26.4 update in March, now, the changes are expected to roll out more slowly over time, reportedly postponing some features until the May iOS update, or even until the release of iOS 27 in September.
 
-### 11. [Uber Eats launches AI assistant to help with grocery cart creation](https://techcrunch.com/2026/02/11/uber-eats-launches-ai-assistant-to-help-with-grocery-cart-creation/)
+### 13. [Uber Eats launches AI assistant to help with grocery cart creation](https://techcrunch.com/2026/02/11/uber-eats-launches-ai-assistant-to-help-with-grocery-cart-creation/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Uber Eats launched a new AI feature, “Cart Assistant,” that can automatically add items to your cart based on text or image prompts.
 
-### 12. [Glean’s fight to own the AI layer inside every company ](https://techcrunch.com/podcast/glean-arvind-jain-equity-podcast-own-the-ai-layer-inside-every-company/)
+### 14. [Glean’s fight to own the AI layer inside every company ](https://techcrunch.com/podcast/glean-arvind-jain-equity-podcast-own-the-ai-layer-inside-every-company/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Enterprise AI is shifting fast from chatbots that answer questions to systems that actually do the work across an organization. But who will own the AI layer that powers all of it?  Glean, which started as an enterprise search product, has evolved into what it calls an “AI work assistant,” aiming to sit beneath other AI […]
 
-### 13. [Who will own your company’s AI layer? Glean’s CEO explains](https://techcrunch.com/video/who-will-own-your-companys-ai-layer-gleans-ceo-explains/)
+### 15. [Who will own your company’s AI layer? Glean’s CEO explains](https://techcrunch.com/video/who-will-own-your-companys-ai-layer-gleans-ceo-explains/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Enterprise AI is shifting fast from chatbots that answer questions to systems that actually do the work across an organization. But who will own the AI layer that powers all of it?  Glean, which started as an enterprise search product, has evolved into what it calls an “AI work assistant,” aiming to sit underneath other AI […]
 
-### 14. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/11/senior-engineers-including-co-founders-exit-xai-amid-controversy/)
+### 16. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/11/senior-engineers-including-co-founders-exit-xai-amid-controversy/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 At least nine engineers, including two co-founders, have announced their exits from xAI in the past week, fueling online speculation and raising questions about stability at Musk’s AI company amid mounting controversy.
 
-### 15. [Why the economics of orbital AI are so brutal](https://techcrunch.com/2026/02/11/why-the-economics-of-orbital-ai-are-so-brutal/)
+### 17. [Why the economics of orbital AI are so brutal](https://techcrunch.com/2026/02/11/why-the-economics-of-orbital-ai-are-so-brutal/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 A 1 GW orbital data center would cost roughly $42.4 billion — almost three times its ground-bound equivalent.
 
-### 16. [Threads’ new ‘Dear Algo’ AI feature lets you personalize your feed](https://techcrunch.com/2026/02/11/threads-new-dear-algo-ai-feature-lets-you-personalize-your-feed/)
+### 18. [Threads’ new ‘Dear Algo’ AI feature lets you personalize your feed](https://techcrunch.com/2026/02/11/threads-new-dear-algo-ai-feature-lets-you-personalize-your-feed/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The platform's new feature lets users tell Threads what they temporarily want to see more or less of in their feed.
-
-### 17. [How AI changes the math for startups, according to a Microsoft VP](https://techcrunch.com/2026/02/11/how-ai-changes-the-math-for-startups-according-to-a-microsoft-vp/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-Amanda Silver is a corporate vice president at Microsoft’s CoreAI division, where she works on tools for deploying apps and agentic systems within enterprises.
-
-### 18. [Former Founders Fund VC Sam Blond launches AI sales startup to upend Salesforce ](https://techcrunch.com/2026/02/11/former-founders-fund-vc-sam-blond-launches-ai-sales-startup-to-upend-salesforce/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The startup, Monaco, has come out of stealth as an AI-native all-in-one CRM plus more system backed by names like the Collison brothers and Garry Tan.
 
 ### 19. [Building an AI Agent to Detect and Handle Anomalies in Time-Series Data](https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
@@ -555,142 +549,139 @@ The post The Death of the “Everything Prompt”: Google’s Move Toward Struct
 
 ## Cybersecurity
 
-### 1. [Romania's oil pipeline operator Conpet confirms data stolen in attack](https://www.bleepingcomputer.com/news/security/romanias-oil-pipeline-operator-conpet-confirms-data-stolen-in-attack/)
+### 1. [Bitwarden introduces ‘Cupid Vault’ for secure password sharing](https://www.bleepingcomputer.com/news/security/bitwarden-introduces-cupid-vault-for-secure-password-sharing/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Bitwarden has launched a new system called 'Cupid Vault' that allows users to safely share passwords with trusted email addresses. [...]
+
+### 2. [Critical BeyondTrust RCE flaw now exploited in attacks, patch now](https://www.bleepingcomputer.com/news/security/critical-beyondtrust-rce-flaw-now-exploited-in-attacks-patch-now/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+A critical pre-authentication remote code execution vulnerability in BeyondTrust Remote Support and Privileged Remote Access appliances is now being exploited in attacks after a PoC was published online. [...]
+
+### 3. [Microsoft: New Windows LNK spoofing issues aren't vulnerabilities](https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-lnk-spoofing-issues-arent-vulnerabilities/)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Today, at Wild West Hackin' Fest, security researcher Wietze Beukema disclosed multiple vulnerabilities in Windows LK shortcut files that allow attackers to deploy malicious payloads. [...]
+
+### 4. [Romania's oil pipeline operator Conpet confirms data stolen in attack](https://www.bleepingcomputer.com/news/security/romanias-oil-pipeline-operator-conpet-confirms-data-stolen-in-attack/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Romania's national oil pipeline operator, Conpet S.A., confirmed that the Qilin ransomware gang stole company data in an attack last week. [...]
 
-### 2. [Odido data breach exposes personal info of 6.2 million customers](https://www.bleepingcomputer.com/news/security/odido-data-breach-exposes-personal-info-of-62-million-customers/)
+### 5. [Odido data breach exposes personal info of 6.2 million customers](https://www.bleepingcomputer.com/news/security/odido-data-breach-exposes-personal-info-of-62-million-customers/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Dutch telecommunications provider Odido is warning that it suffered a cyberattack that reportedly exposed the personal data of 6.2 million customers. [...]
 
-### 3. [Google Reports State-Backed Hackers Using Gemini AI for Recon and Attack Support](https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html)
+### 6. [Google Reports State-Backed Hackers Using Gemini AI for Recon and Attack Support](https://thehackernews.com/2026/02/google-reports-state-backed-hackers.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Google on Thursday said it observed the North Korea-linked threat actor known as UNC2970 using its generative artificial intelligence (AI) model Gemini to conduct reconnaissance on its targets, as various hacking groups continue to weaponize the tool for accelerating various phases of the cyber attack life cycle, enabling information operations, and even conducting model extraction attacks.
 "The
 
-### 4. [WordPress plugin with 900k installs vulnerable to critical RCE flaw](https://www.bleepingcomputer.com/news/security/wordpress-plugin-with-900k-installs-vulnerable-to-critical-rce-flaw/)
+### 7. [WordPress plugin with 900k installs vulnerable to critical RCE flaw](https://www.bleepingcomputer.com/news/security/wordpress-plugin-with-900k-installs-vulnerable-to-critical-rce-flaw/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A critical vulnerability in the WPvivid Backup &amp; Migration plugin for WordPress, installed on more than 900,000 websites, can be exploited to achieve remote code execution by uploading arbitrary files without authentication. [...]
 
-### 5. [Lazarus Campaign Plants Malicious Packages in npm and PyPI Ecosystems](https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html)
+### 8. [Lazarus Campaign Plants Malicious Packages in npm and PyPI Ecosystems](https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered a fresh set of malicious packages across npm and the Python Package Index (PyPI) repository linked to a fake recruitment-themed campaign orchestrated by the North Korea-linked Lazarus Group.
 The coordinated campaign has been codenamed graphalgo in reference to the first package published in the npm registry. It's assessed to be active since May 2025.
 "
 
-### 6. [How to Eliminate the Technical Debt of Insecure AI-Assisted Software Development](https://www.securityweek.com/how-to-eliminate-the-technical-debt-of-insecure-ai-assisted-software-development/)
+### 9. [How to Eliminate the Technical Debt of Insecure AI-Assisted Software Development](https://www.securityweek.com/how-to-eliminate-the-technical-debt-of-insecure-ai-assisted-software-development/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Developers must view AI as a collaborator to be closely monitored, rather than an autonomous entity to be unleashed. Without such a mindset, crippling tech debt is inevitable.
 The post How to Eliminate the Technical Debt of Insecure AI-Assisted Software Development appeared first on SecurityWeek.
 
-### 7. [AMOS infostealer targets macOS through a popular AI app  ](https://www.bleepingcomputer.com/news/security/amos-infostealer-targets-macos-through-a-popular-ai-app/)
+### 10. [AMOS infostealer targets macOS through a popular AI app  ](https://www.bleepingcomputer.com/news/security/amos-infostealer-targets-macos-through-a-popular-ai-app/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 AMOS infostealer is targeting macOS users by abusing popular AI apps and extension marketplaces to harvest credentials. Flare examines how AMOS operates, spreads through AI-driven lures, and feeds the broader stealer-log cybercrime economy. [...]
 
-### 8. [Fake AI Chrome extensions with 300K users steal credentials, emails](https://www.bleepingcomputer.com/news/security/fake-ai-chrome-extensions-with-300k-users-steal-credentials-emails/)
+### 11. [Fake AI Chrome extensions with 300K users steal credentials, emails](https://www.bleepingcomputer.com/news/security/fake-ai-chrome-extensions-with-300k-users-steal-credentials-emails/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A set of 30 malicious Chrome extensions that have been installed by more than 300,000 users are masquerading as AI assistants to steal credentials, email content, and browsing information. [...]
 
-### 9. [ApolloMD Data Breach Impacts 626,000 Individuals](https://www.securityweek.com/apollomd-data-breach-impacts-626000-individuals/)
+### 12. [ApolloMD Data Breach Impacts 626,000 Individuals](https://www.securityweek.com/apollomd-data-breach-impacts-626000-individuals/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company says hackers stole the personal information of patients of affiliated physicians and practices.
 The post ApolloMD Data Breach Impacts 626,000 Individuals appeared first on SecurityWeek.
 
-### 10. [ThreatsDay Bulletin: AI Prompt RCE, Claude 0-Click, RenEngine Loader, Auto 0-Days &amp; 25+ Stories](https://thehackernews.com/2026/02/threatsday-bulletin-ai-prompt-rce.html)
+### 13. [ThreatsDay Bulletin: AI Prompt RCE, Claude 0-Click, RenEngine Loader, Auto 0-Days &amp; 25+ Stories](https://thehackernews.com/2026/02/threatsday-bulletin-ai-prompt-rce.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Threat activity this week shows one consistent signal — attackers are leaning harder on what already works. Instead of flashy new exploits, many operations are built around quiet misuse of trusted tools, familiar workflows, and overlooked exposures that sit in plain sight.
 Another shift is how access is gained versus how it’s used. Initial entry points are getting simpler, while post-compromise
 
-### 11. [Microsoft to Enable ‘Windows Baseline Security’ With New Runtime Integrity Safeguards](https://www.securityweek.com/microsoft-to-enable-windows-baseline-security-with-new-runtime-integrity-safeguards/)
+### 14. [Microsoft to Enable ‘Windows Baseline Security’ With New Runtime Integrity Safeguards](https://www.securityweek.com/microsoft-to-enable-windows-baseline-security-with-new-runtime-integrity-safeguards/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Windows will have runtime safeguards enabled by default, ensuring that only properly signed software runs.
 The post Microsoft to Enable ‘Windows Baseline Security’ With New Runtime Integrity Safeguards appeared first on SecurityWeek.
 
-### 12. [Hacktivists, State Actors, Cybercriminals Target Global Defense Industry, Google Warns](https://www.securityweek.com/hacktivists-state-actors-cybercriminals-target-global-defense-industry-google-warns/)
+### 15. [Hacktivists, State Actors, Cybercriminals Target Global Defense Industry, Google Warns](https://www.securityweek.com/hacktivists-state-actors-cybercriminals-target-global-defense-industry-google-warns/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Threat actors from Russia, China, North Korea and Iran have been observed launching attacks.
 The post Hacktivists, State Actors, Cybercriminals Target Global Defense Industry, Google Warns appeared first on SecurityWeek.
 
-### 13. [The CTEM Divide: Why 84% of Security Programs Are Falling Behind](https://thehackernews.com/2026/02/the-ctem-divide-why-84-of-security.html)
+### 16. [The CTEM Divide: Why 84% of Security Programs Are Falling Behind](https://thehackernews.com/2026/02/the-ctem-divide-why-84-of-security.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A new 2026 market intelligence study of 128 enterprise security decision-makers (available here) reveals a stark divide forming between organizations – one that has nothing to do with budget size or industry and everything to do with a single framework decision. Organizations implementing Continuous Threat Exposure Management (CTEM) demonstrate 50% better attack surface visibility, 23-point
 
-### 14. [Nucleus Raises $20 Million for Exposure Management](https://www.securityweek.com/nucleus-raises-20-million-for-exposure-management/)
+### 17. [Nucleus Raises $20 Million for Exposure Management](https://www.securityweek.com/nucleus-raises-20-million-for-exposure-management/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The company will use the investment to scale operations and deepen intelligence and automation.
 The post Nucleus Raises $20 Million for Exposure Management appeared first on SecurityWeek.
 
-### 15. [Apple Patches iOS Zero-Day Exploited in ‘Extremely Sophisticated Attack’](https://www.securityweek.com/apple-patches-ios-zero-day-exploited-in-extremely-sophisticated-attack/)
+### 18. [Apple Patches iOS Zero-Day Exploited in ‘Extremely Sophisticated Attack’](https://www.securityweek.com/apple-patches-ios-zero-day-exploited-in-extremely-sophisticated-attack/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Impacting the ‘dyld’ system component, the memory corruption issue can be exploited for arbitrary code execution.
 The post Apple Patches iOS Zero-Day Exploited in ‘Extremely Sophisticated Attack’ appeared first on SecurityWeek.
 
-### 16. [83% of Ivanti EPMM Exploits Linked to Single IP on Bulletproof Hosting Infrastructure](https://thehackernews.com/2026/02/83-of-ivanti-epmm-exploits-linked-to.html)
+### 19. [83% of Ivanti EPMM Exploits Linked to Single IP on Bulletproof Hosting Infrastructure](https://thehackernews.com/2026/02/83-of-ivanti-epmm-exploits-linked-to.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 A significant chunk of the exploitation attempts targeting a newly disclosed security flaw in Ivanti Endpoint Manager Mobile (EPMM) can be traced back to a single IP address on bulletproof hosting infrastructure offered by PROSPERO.
 Threat intelligence firm GreyNoise said it recorded 417 exploitation sessions from 8 unique source IP addresses between February 1 and 9, 2026. An estimated 346
 
-### 17. [Google says hackers are abusing Gemini AI for all attacks stages](https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/)
+### 20. [Google says hackers are abusing Gemini AI for all attacks stages](https://www.bleepingcomputer.com/news/security/google-says-hackers-are-abusing-gemini-ai-for-all-attacks-stages/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Google Threat Intelligence Group (GTIG) has published a new report warning about AI model extraction/distillation attacks, in which private-sector firms and researchers use legitimate API access to systematically probe models and replicate their logic and reasoning. [...]
 
-### 18. [Apple Fixes Exploited Zero-Day Affecting iOS, macOS, and Other Devices](https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html)
+### 21. [Apple Fixes Exploited Zero-Day Affecting iOS, macOS, and Other Devices](https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Apple on Wednesday released iOS, iPadOS, macOS Tahoe, tvOS, watchOS, and visionOS updates to address a zero-day flaw that it said has been exploited in sophisticated cyber attacks.
 The vulnerability, tracked as CVE-2026-20700 (CVSS score: N/A), has been described as a memory corruption issue in dyld, Apple's Dynamic Link Editor. Successful exploitation of the vulnerability could allow an
 
-### 19. [Apple fixes zero-day flaw used in 'extremely sophisticated' attacks](https://www.bleepingcomputer.com/news/security/apple-fixes-zero-day-flaw-used-in-extremely-sophisticated-attacks/)
+### 22. [Apple fixes zero-day flaw used in 'extremely sophisticated' attacks](https://www.bleepingcomputer.com/news/security/apple-fixes-zero-day-flaw-used-in-extremely-sophisticated-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Apple has released security updates to fix a zero-day vulnerability that was exploited in an "extremely sophisticated attack" targeting specific individuals. [...]
 
-### 20. [Windows 11 Notepad flaw let files execute silently via Markdown links](https://www.bleepingcomputer.com/news/microsoft/windows-11-notepad-flaw-let-files-execute-silently-via-markdown-links/)
+### 23. [Windows 11 Notepad flaw let files execute silently via Markdown links](https://www.bleepingcomputer.com/news/microsoft/windows-11-notepad-flaw-let-files-execute-silently-via-markdown-links/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft has fixed a "remote code execution" vulnerability in Windows 11 Notepad that allowed attackers to execute local or remote programs by tricking users into clicking specially crafted Markdown links, without displaying any Windows security warnings. [...]
 
-### 21. [Microsoft Store Outlook add-in hijacked to steal 4,000 Microsoft accounts](https://www.bleepingcomputer.com/news/security/microsoft-store-outlook-add-in-hijacked-to-steal-4-000-microsoft-accounts/)
+### 24. [Microsoft Store Outlook add-in hijacked to steal 4,000 Microsoft accounts](https://www.bleepingcomputer.com/news/security/microsoft-store-outlook-add-in-hijacked-to-steal-4-000-microsoft-accounts/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The AgreeTo add-in for Outlook has been hijacked and turned into a phishing kit that stole more than 4,000 Microsoft account credentials. [...]
 
-### 22. [Nevada Unveils New Statewide Data Classification Policy Months After Cyberattack](https://www.securityweek.com/nevada-unveils-new-statewide-data-classification-policy-months-after-cyberattack/)
+### 25. [Nevada Unveils New Statewide Data Classification Policy Months After Cyberattack](https://www.securityweek.com/nevada-unveils-new-statewide-data-classification-policy-months-after-cyberattack/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Officials said data will now be classified as one of four categories: “public,” “sensitive,” “confidential” or “restricted.” 
 The post Nevada Unveils New Statewide Data Classification Policy Months After Cyberattack appeared first on SecurityWeek.
 
-### 23. [Crazy ransomware gang abuses employee monitoring tool in attacks](https://www.bleepingcomputer.com/news/security/crazy-ransomware-gang-abuses-employee-monitoring-tool-in-attacks/)
+### 26. [Crazy ransomware gang abuses employee monitoring tool in attacks](https://www.bleepingcomputer.com/news/security/crazy-ransomware-gang-abuses-employee-monitoring-tool-in-attacks/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 A member of the Crazy ransomware gang is abusing legitimate employee monitoring software and the SimpleHelp remote support tool to maintain persistence in corporate networks, evade detection, and prepare for ransomware deployment. [...]
 
-### 24. [Police arrest seller of JokerOTP MFA passcode capturing tool](https://www.bleepingcomputer.com/news/security/police-arrest-seller-of-jokerotp-mfa-passcode-capturing-tool/)
+### 27. [Police arrest seller of JokerOTP MFA passcode capturing tool](https://www.bleepingcomputer.com/news/security/police-arrest-seller-of-jokerotp-mfa-passcode-capturing-tool/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 The Netherlands Police have arrested a a 21-year-old man from Dordrecht, suspected of selling access to the JokerOTP phishing automation tool that can intercept one-time passwords (OTP) for hijacking accounts. [...]
 
-### 25. [First Malicious Outlook Add-In Found Stealing 4,000+ Microsoft Credentials](https://thehackernews.com/2026/02/first-malicious-outlook-add-in-found.html)
+### 28. [First Malicious Outlook Add-In Found Stealing 4,000+ Microsoft Credentials](https://thehackernews.com/2026/02/first-malicious-outlook-add-in-found.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have discovered what they said is the first known malicious Microsoft Outlook add-in detected in the wild.
 In this unusual supply chain attack detailed by Koi Security, an unknown attacker claimed the domain associated with a now-abandoned legitimate add-in to serve a fake Microsoft login page, stealing over 4,000 credentials in the process. The activity has been
 
-### 26. [Proactive strategies for cyber resilience with Wazuh](https://www.bleepingcomputer.com/news/security/proactive-strategies-for-cyber-resilience-with-wazuh/)
+### 29. [Proactive strategies for cyber resilience with Wazuh](https://www.bleepingcomputer.com/news/security/proactive-strategies-for-cyber-resilience-with-wazuh/)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Cyber resilience means anticipating threats, detecting them early, and recovering fast when incidents occur. Wazuh shows how its open source SIEM and XDR unify visibility, detection, and automated response to strengthen proactive defense. [...]
 
-### 27. [LummaStealer infections surge after CastleLoader malware campaigns](https://www.bleepingcomputer.com/news/security/lummastealer-infections-surge-after-castleloader-malware-campaigns/)
-**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
-A surge in LummaStealer infections has been observed, driven by social engineering campaigns leveraging the ClickFix technique to deliver the CastleLoader malware. [...]
-
-### 28. [Webinar Today: Identity Under Attack – Strengthen Your Identity Defenses](https://www.securityweek.com/webinar-today-identity-under-attack-strengthen-your-identity-defenses/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-Gain practical insights on balancing security, user experience, and operational efficiency while staying ahead of increasingly sophisticated threats.
-The post Webinar Today: Identity Under Attack – Strengthen Your Identity Defenses appeared first on SecurityWeek.
-
-### 29. [APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities](https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html)
-**Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
-Indian defense sector and government-aligned organizations have been targeted by multiple campaigns that are designed to compromise Windows and Linux environments with remote access trojans capable of stealing sensitive data and ensuring continued access to infected machines.
-The campaigns are characterized by the use of malware families like Geta RAT, Ares RAT, and DeskRAT, which are often
-
-### 30. [GitGuardian Raises $50 Million for Secrets and Non-Human Identity Security](https://www.securityweek.com/gitguardian-raises-50-million-for-secrets-and-non-human-identity-security/)
-**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
-The secrets security company has raised more than $100 million since its creation in 2017.
-The post GitGuardian Raises $50 Million for Secrets and Non-Human Identity Security appeared first on SecurityWeek.
+### 30. [Kimwolf Botnet Swamps Anonymity Network I2P](https://krebsonsecurity.com/2026/02/kimwolf-botnet-swamps-anonymity-network-i2p/)
+**Source:** Krebs on Security | **Tags:** `Security` `Fraud` `Privacy`
+For the past week, the massive "Internet of Things" (IoT) botnet known as Kimwolf has been disrupting the The Invisible Internet Project (I2P), a decentralized, encrypted communications network designed to anonymize and secure online communications. I2P users started reporting disruptions in the network around the same time the Kimwolf botmasters began relying on it to evade takedown attempts against the botnet's control servers.
 
 
 ---
