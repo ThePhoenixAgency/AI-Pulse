@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Fri, 13 Feb 2026 20:29:48 GMT
+**Last Update:** Fri, 13 Feb 2026 22:26:12 GMT
 
 ---
 
@@ -29,17 +29,45 @@
 
 ## Mac & Apple
 
-### 1. [Apple announces iOS 26 usage numbers, here’s how they compare](https://9to5mac.com/2026/02/13/apple-announces-ios-26-usage-numbers-heres-how-they-compare/)
+### 1. [Apple Launching New 'Sales Coach' App](https://www.macrumors.com/2026/02/13/apple-launching-sales-coach-app/)
+**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
+Apple plans to launch a rebranded "Sales Coach" app on the iPhone and iPad later this month, according to a source familiar with the matter.
+
+
+"Sales Coach" will arrive as an update to Apple's existing "SEED" app, and it will continue to provide sales tips and training resources to Apple Store and Apple Authorized Reseller employees around the world. For example, there are articles and videos highlighting everything from reasons to upgrade to a newer iPhone to popular iPad features.
+
+Apple is aiming to release the "Sales Coach" app on Monday, February 23, our source said.
+
+### 2. [iOS 26 adoption rate isn't the crisis some analysts are portraying](https://appleinsider.com/articles/26/02/13/ios-26-adoption-rate-isnt-the-crisis-some-analysts-are-portraying?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
+Apple's February 2026 App Store data shows iOS 26 adoption closely tracking the pace set by iOS 18 in January 2025, and iPadOS 26 is ahead of iPadOS 18, undercutting claims that the upgrade cycle is faltering.
+
+
+Apple publishes OS 26 adoption data
+Apple publishes operating system adoption rates based on devices that transacted on the App Store. The February 12, 2026 data can be measured against Apple's January 24, 2025 published figures for a like-for-like comparison.
+The breakdown separates recently introduced hardware from the full active installed base.
+
+### 3. [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](https://9to5mac.com/2026/02/13/iphone-18-pro-could-get-next-gen-n2-chip-pushing-an-exciting-trend/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+iPhone 18 Pro is rumored to get a next-gen C2 modem, enabling several new advantages for Apple’s flagship. But an analyst report says there’s a new N2 chip coming to iPhone 18 Pro as well, continuing an exciting trend.
+more…
+
+### 4. [Qobuz launches new CarPlay app, Siri integration](https://9to5mac.com/2026/02/13/qobuz-launches-new-carplay-app-siri-integration/)
+**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
+Qobuz, a popular hi-res music streaming service, is out with an all-new CarPlay app this week. The company touts that new CarPlay app offers a “a more robust and streamlined listening experience.”
+more…
+
+### 5. [Are people updating to iOS 26? Here’s Apple’s official data](https://9to5mac.com/2026/02/13/apple-announces-ios-26-usage-numbers-heres-how-they-compare/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple has released the highly-anticipated adoption statistics for iOS 26 for the first time. The company says that 74% of all devices introduced in the last four years are running iOS 26, while 66% of all devices are running iOS 26. 
 more…
 
-### 2. [iOS 26 recently added five new ways to customize your iPhone](https://9to5mac.com/2026/02/13/ios-26-recently-added-five-new-ways-to-customize-your-iphone/)
+### 6. [iOS 26 recently added five new ways to customize your iPhone](https://9to5mac.com/2026/02/13/ios-26-recently-added-five-new-ways-to-customize-your-iphone/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26 introduced a bold new Liquid Glass design, and subsequent updates have added new ways to customize not only how your iPhone looks, but also how it works. Here are five recent new customization settings.
 more…
 
-### 3. [Apple Reveals How Many iPhones Are Running iOS 26](https://www.macrumors.com/2026/02/13/apple-shares-ios-26-adoption-stats/)
+### 7. [Apple Reveals How Many iPhones Are Running iOS 26](https://www.macrumors.com/2026/02/13/apple-shares-ios-26-adoption-stats/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple has shared updated iOS 26 and iPadOS 26 adoption figures, revealing how many iPhones and iPads are running those software versions.
 
@@ -54,7 +82,7 @@ These adoption numbers are based on iPhones and iPads that transacted on the App
 
 57% of all iPads are running iPadOS 26.
 
-### 4. [There’s finally a Vision Pro YouTube app, not that anyone cares](https://www.macworld.com/article/3060012/the-new-vision-pro-youtube-app-is-a-reminder-that-spatial-computing-still-sucks.html)
+### 8. [There’s finally a Vision Pro YouTube app, not that anyone cares](https://www.macworld.com/article/3060012/the-new-vision-pro-youtube-app-is-a-reminder-that-spatial-computing-still-sucks.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -62,12 +90,12 @@ Macworld
 Well it only took two years, but there’s finally an official YouTube app for Vision Pro. You could always just visit YouTube using the Vision Pro web browser, but that’s not the same thing. And the popular third-party app, Juno, was quickly taken down.
 The official YouTube app is not quite an MVP (minimum viable product), but it’s close. It’s just a floating window that can play YouTube videos, including the relatively paltry selection of 3D 360-degree and VR 180-degree videos.
 
-### 5. [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](https://9to5mac.com/2026/02/13/onvis-cs2/)
+### 9. [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](https://9to5mac.com/2026/02/13/onvis-cs2/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 When automating your smart home, much of the attention centers on cameras and lights, but I believe HomeKit door sensors are arguably among the most critical devices to add to your setup. I’ve written about Onvis before, but the Smart Security Alarm Contact Sensor (CS2) takes the concept of a simple door sensor and turns it into a lot more. It supports Thread, but the really cool add-on here is a 120dB siren built right into the sensor. Let’s take a look at the Onvis CS2.
 more…
 
-### 6. [Who is Sabih Khan, Apple's Chief Operating Officer and potential CEO](https://appleinsider.com/articles/26/02/13/who-is-sabih-khan-apples-chief-operating-officer-and-potential-ceo?utm_source=rss)
+### 10. [Who is Sabih Khan, Apple's Chief Operating Officer and potential CEO](https://appleinsider.com/articles/26/02/13/who-is-sabih-khan-apples-chief-operating-officer-and-potential-ceo?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Sabih Khan is the chief operating officer at Apple, but while he has been in the role for less than a year, his tenure at Apple has lasted for decades. Here's all you need to know about the guy in charge of Apple's operations.
 
@@ -75,7 +103,7 @@ Sabih Khan is the chief operating officer at Apple, but while he has been in the
 Apple COO Sabih Khan
 When it comes to Apple executives, Sabih Khan is probably one of the lesser-known personalities. While CEO Tim Cook is famous, as are other managerial members like Craig Federighi and predecessor Jeff Williams, Khan has been less prominent in the company so far.
 
-### 7. [Ugreen NASync DH4300 Plus review: Beginner-friendly, easily expandable](https://appleinsider.com/articles/26/02/13/ugreen-nasync-dh4300-plus-review-beginner-friendly-easily-expandable?utm_source=rss)
+### 11. [Ugreen NASync DH4300 Plus review: Beginner-friendly, easily expandable](https://appleinsider.com/articles/26/02/13/ugreen-nasync-dh4300-plus-review-beginner-friendly-easily-expandable?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 The Ugreen NASync DH4300 is a very easy-to-use NAS for beginners who need more capacity than your typical entry-level network storage appliance.
 
@@ -84,12 +112,12 @@ Ugreen NASync DH4300 Plus
 We're getting to a point with cloud storage that in the long run, having a local cloud is a good idea. And, network attached storage (NAS) isn't just for networking experts anymore.
 But, it's easy to underestimate needs. That local cloud basic user could go for entry-level options with two drives, which is fine for most, but when you start thinking about other stuff to do, simply isn't enough when data storage needs grow.
 
-### 8. [Apple TV has two thriller series premiering soon, here’s what’s coming](https://9to5mac.com/2026/02/13/apple-tv-has-two-thriller-series-premiering-soon-heres-whats-coming/)
+### 12. [Apple TV has two thriller series premiering soon, here’s what’s coming](https://9to5mac.com/2026/02/13/apple-tv-has-two-thriller-series-premiering-soon-heres-whats-coming/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Apple TV has ramped up its lineup of thrillers recently, and the next two series in the genre are coming soon. Here are the details on two upcoming thrillers: The Last Thing He Told Me and Imperfect Women.
 more…
 
-### 9. [Again, don't count on Mac Studio stock levels for release timing](https://appleinsider.com/articles/26/02/13/again-dont-count-on-mac-studio-stock-levels-for-release-timing?utm_source=rss)
+### 13. [Again, don't count on Mac Studio stock levels for release timing](https://appleinsider.com/articles/26/02/13/again-dont-count-on-mac-studio-stock-levels-for-release-timing?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Following reports of dwindling stocks of the iPhone 16e, there are now ones about the Mac Studio. While a new one is coming, in 2026 there are just too many external factors to use it as a reliable indicator of an imminent launch.
 
@@ -97,7 +125,7 @@ Following reports of dwindling stocks of the iPhone 16e, there are now ones abou
 Two Mac Studios, stacked
 It seems such an obvious thing — if Apple is running low on the Mac Studio, it's because a new one is coming. And it seems such an easy thing to spot, since the online Apple Store details how long the delivery time is for any item.
 
-### 10. [Apple TV this week: ‘Eternity’ is now streaming](https://www.macworld.com/article/230863/apple-tv-originals-shows-series-movies-release-dates-news-actors-directors.html)
+### 14. [Apple TV this week: ‘Eternity’ is now streaming](https://www.macworld.com/article/230863/apple-tv-originals-shows-series-movies-release-dates-news-actors-directors.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -107,7 +135,7 @@ What’s new on Apple TV? What are the best shows and movies? How do you sign up
 Updated February 13, 2026: Just in time for Valentine’s Day, Eternity is now streaming.
 Apple TV 4K (2022, 3.
 
-### 11. [The A16 iPad drops to its best price this year](https://www.macworld.com/article/3060686/the-a16-ipad-drops-to-its-best-price-this-year.html)
+### 15. [The A16 iPad drops to its best price this year](https://www.macworld.com/article/3060686/the-a16-ipad-drops-to-its-best-price-this-year.html)
 **Source:** MacWorld | **Tags:** `Mac` `Reviews` `Guides`
 Macworld
 
@@ -115,7 +143,7 @@ Macworld
 We absolutely love a good iPad deal, and it just so happens that Apple’s cheapest tablet has dropped to the best price we’ve yet to see this year. You can get this gorgeous 11-inch iPad for $300 at Amazon, a savings of $50 on its usual MSRP.
 Powered by the superfast A16 chip, this iPad is a fast little thing that’s perfect for multitasking, gaming, editing photos and videos, and whatever else you do on a tablet. We’re sure your kids will enjoy it when you pass it off to them, too.
 
-### 12. [The MacRumors Show: Revamped Siri Delayed Again?](https://www.macrumors.com/2026/02/13/the-macrumors-show-siri-delayed-again/)
+### 16. [The MacRumors Show: Revamped Siri Delayed Again?](https://www.macrumors.com/2026/02/13/the-macrumors-show-siri-delayed-again/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 We discuss the upcoming iPhone 17e and iPad models, as well as Apple's apparent issues finalizing the revamped version of Siri, on this week's episode of The MacRumors Show.
 
@@ -123,7 +151,7 @@ Subscribe to The MacRumors Show YouTube channel for more videos
 
 The announcement of the ‌iPhone‌ 17e is said to be "imminent," with stock of the iPhone 16e now dwindling. The new device is rumored to come with four main new features, including the A19 chip from the iPhone 17, MagSafe connectivity, the C1X cellular modem, and the N1 chip for Bluetooth, Wi-Fi, and Thread connectivity.
 
-### 13. [Why Ferrari turned to Jony Ive to design its new car's controversial interior](https://appleinsider.com/articles/26/02/13/why-ferrari-turned-to-jony-ive-to-design-its-new-cars-controversial-interior?utm_source=rss)
+### 17. [Why Ferrari turned to Jony Ive to design its new car's controversial interior](https://appleinsider.com/articles/26/02/13/why-ferrari-turned-to-jony-ive-to-design-its-new-cars-controversial-interior?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Jony Ive's interior for the forthcoming Ferrari Luce electric vehicle is typically well thought out, but it's divided car fans. Now Ferrari's CEO has spoken out about the decision to not use his own designers.
 
@@ -131,25 +159,25 @@ Jony Ive's interior for the forthcoming Ferrari Luce electric vehicle is typical
 Ferrari's forthcoming Luce electric car, with interior by Jony Ive — image credit: Ferrari
 Ferrari is working to build up interest in its first-ever electric car ahead of the full unveiling which is expected in May. It began with the reveal of Jony Ive and Marc Newsom's interior — and that's got Ferrari the kind of attention it might not be grateful for.
 
-### 14. [Text Shortcuts You Should Be Using on iPhone and Mac](https://www.macrumors.com/how-to/use-text-shortcuts-on-apple-devices/)
+### 18. [Text Shortcuts You Should Be Using on iPhone and Mac](https://www.macrumors.com/how-to/use-text-shortcuts-on-apple-devices/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple's autocorrect on iPhone and iPad always aims to help when you're typing a message, but it's by no means perfect, and some of the replacements it continually spews out can be frustrating. Fortunately, Apple's software includes a feature called Text Replacement that allows you to specify what word or phrase replaces the specific text you type in. 
 
 
 Even if you haven't set up Text Replacement, you can try it out with Apple's pre-set example: In any app that accepts text input, type "Omw" followed by a space, and it will change to "On my way!" automatically.
 
-### 15. [Smart Home Diary: Planning my new smart home, 13 years later](https://9to5mac.com/2026/02/13/smart-home-diary-planning-my-new-smart-home-13-years-later/)
+### 19. [Smart Home Diary: Planning my new smart home, 13 years later](https://9to5mac.com/2026/02/13/smart-home-diary-planning-my-new-smart-home-13-years-later/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 I’m just about starting to believe that I may be heading into the final stages of an extremely lengthy attempt to sell one apartment and buy another, so I’m currently giving some thought to the smart home technology I’ll want in my new home.
 This will be some 13 years after I first adopted smart home tech, so I’m expecting to make a few changes – some small, one potentially much larger …
 more…
 
-### 16. [New Mac Studio orders delayed 1-2 months as refresh looms](https://9to5mac.com/2026/02/13/new-mac-studio-orders-delayed-1-2-months-as-refresh-looms/)
+### 20. [New Mac Studio orders delayed 1-2 months as refresh looms](https://9to5mac.com/2026/02/13/new-mac-studio-orders-delayed-1-2-months-as-refresh-looms/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 New orders of the Mac Studio are currently seeing unusually long delays, with shipping estimates stretching out to April for some models. Here are the details.
 more…
 
-### 17. [Apple Now Testing Flip-Style Foldable iPhone](https://www.macrumors.com/2026/02/13/apple-testing-flip-foldable-iphone/)
+### 21. [Apple Now Testing Flip-Style Foldable iPhone](https://www.macrumors.com/2026/02/13/apple-testing-flip-foldable-iphone/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 Apple is testing a different kind of foldable iPhone with a flip-style design, according to a known leaker based in Asia. 
 
@@ -158,11 +186,11 @@ Citing supposedly verifiable supply chain information, the Weibo user known as "
 
 The rumored flip-device comes in addition to the wide foldable ‌iPhone‌ that is expected to launch later this year.
 
-### 18. [Deals: M5 MacBook Pro $300 off, 13-inch MacBook Air $250 off, AirTag 2 lowest price yet, more](https://9to5mac.com/2026/02/13/deals-m5-macbook-pro-macbook-air-airtag-2/)
+### 22. [Deals: M5 MacBook Pro $300 off, 13-inch MacBook Air $250 off, AirTag 2 lowest price yet, more](https://9to5mac.com/2026/02/13/deals-m5-macbook-pro-macbook-air-airtag-2/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 We are heading into President’s Day weekend with Amazon’s wide-ranging sale in full swing alongside ongoing price drops on AirPods Pro 3 and more. We also adding a chance to score 32GB 13-inch M4 MacBook Air at $250 off (as opposed to the 15-inch we had earlier this week), alongside a look at the best deals on M5 MacBook Pro configs – most affordable 24GB at $250 off and upgraded models at $300 off. Today has ushered in the first chance to save on the brand new AirTag 2, open-box AirPods 4 down at $60, and a giant discount on Mophie’s AirPods Max Dual Magnetic Charging Stand at $55.
 
-### 19. [Five iPhone 18 Pro Features Revealed in New Report](https://www.macrumors.com/2026/02/13/five-iphone-18-pro-features-revealed-in-new-report/)
+### 23. [Five iPhone 18 Pro Features Revealed in New Report](https://www.macrumors.com/2026/02/13/five-iphone-18-pro-features-revealed-in-new-report/)
 **Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
 While the iPhone 18 Pro and iPhone 18 Pro Max are still seven months away, an analyst has revealed five new features the devices will allegedly have.
 
@@ -176,12 +204,12 @@ Smaller Dynamic Island: It has been rumored that Face ID's flood illuminator wil
   
 Variable Aperture:
 
-### 20. [Want to write a book? This specialized AI makes it easy.](https://www.cultofmac.com/deals/youbooks-ai-book-writer-deal)
+### 24. [Want to write a book? This specialized AI makes it easy.](https://www.cultofmac.com/deals/youbooks-ai-book-writer-deal)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Tap into popular AI models like ChatGPT and Claude with Youbooks, a new AI book writer that helps you pull together full nonfiction books.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 21. [Apple testing, but still undecided about clamshell folding iPhone](https://appleinsider.com/articles/26/02/13/apple-is-testing-a-clamshell-foldable-iphone-leaker-claims?utm_source=rss)
+### 25. [Apple testing, but still undecided about clamshell folding iPhone](https://appleinsider.com/articles/26/02/13/apple-is-testing-a-clamshell-foldable-iphone-leaker-claims?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 With Apple's first foldable iPhone expected to open like a book, one leaker has added fuel to previous claims that it's also testing a clamshell-like iPhone to go with it.
 
@@ -189,7 +217,7 @@ With Apple's first foldable iPhone expected to open like a book, one leaker has 
 Renders of a possible clamshell iPhone Fold —  image credit: AppleInsider
 Rumors continue to say that Apple will release the first iPhone Fold in fall 2026, with the book-like design matching popular foldables already on the market. Companies like Samsung and Motorola also offer clamshell designs, similar to the iconic flip phones of the early 2000s.
 
-### 22. [9to5Mac Daily: February 13, 2026 – Apple TV news, YouTube on Vision Pro](https://9to5mac.com/2026/02/13/daily-february-13-2026/)
+### 26. [9to5Mac Daily: February 13, 2026 – Apple TV news, YouTube on Vision Pro](https://9to5mac.com/2026/02/13/daily-february-13-2026/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 Listen to a recap of the top stories of the day from 9to5Mac. 9to5Mac Daily is available on iTunes and Apple’s Podcasts app, Stitcher, TuneIn, Google Play, or through our dedicated RSS feed for Overcast and other podcast players.
 Sponsored by Stuff: Stuff helps you get everything out of your head and into a simple, elegant system—closing open loops and reducing mental stress. Use code 9TO5 at checkout for 50% off your first year.
@@ -199,12 +227,12 @@ Sponsored by Stuff: Stuff helps you get everything out of your head and into a s
 
  more…
 
-### 23. [iOS 26.3 adds unique new privacy feature, and it’s Apple at its best](https://9to5mac.com/2026/02/13/ios-26-3-adds-unique-new-privacy-feature-and-its-apple-at-its-best/)
+### 27. [iOS 26.3 adds unique new privacy feature, and it’s Apple at its best](https://9to5mac.com/2026/02/13/ios-26-3-adds-unique-new-privacy-feature-and-its-apple-at-its-best/)
 **Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
 iOS 26.3 is the latest iPhone software update, and one of its most interesting new features is a privacy setting—‘Limit Precise Location’—that reveals Apple at its best.
 more…
 
-### 24. [Amazon's Presidents' Day Sale slashes Apple Watch, iPad, AirPods, Mac, accessories to as low as $13](https://appleinsider.com/articles/26/02/13/amazons-presidents-day-sale-slashes-apple-watch-ipad-airpods-mac-accessories-to-as-low-as-13?utm_source=rss)
+### 28. [Amazon's Presidents' Day Sale slashes Apple Watch, iPad, AirPods, Mac, accessories to as low as $13](https://appleinsider.com/articles/26/02/13/amazons-presidents-day-sale-slashes-apple-watch-ipad-airpods-mac-accessories-to-as-low-as-13?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
 Amazon's Presidents' Day Apple deals deliver your choice of an iPad or Apple Watch Series 11 for $299. Plus, grab AirPods for $99, and much more.
 
@@ -215,46 +243,15 @@ Grab Apple deals from $13
 
  Continue Reading on AppleInsider | Discuss on our Forums
 
-### 25. [Put the iPhone down: A Valentine’s Day plea against phubbing](https://www.cultofmac.com/news/stop-iphone-phubbing-on-valentines-day)
+### 29. [Put the iPhone down: A Valentine’s Day plea against phubbing](https://www.cultofmac.com/news/stop-iphone-phubbing-on-valentines-day)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 Valentine’s Day is supposed to be about connection. Look away from your iPhone so you don't ruin the moment by phubbing the person you love.
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
 
-### 26. [YouTube finally arrives on Vision Pro (was it worth the wait?)](https://www.cultofmac.com/news/youtube-finally-arrives-on-vision-pro)
+### 30. [YouTube finally arrives on Vision Pro (was it worth the wait?)](https://www.cultofmac.com/news/youtube-finally-arrives-on-vision-pro)
 **Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
 After two long years since the headset's launch, YouTube finally arrives on Vision Pro. Did Google makes its new app worth the wait?
 (via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 27. [Ring killing Flock deal exposes the trust problem in AI-powered home security](https://appleinsider.com/articles/26/02/13/ring-killing-flock-deal-exposes-the-trust-problem-in-ai-powered-home-security?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Mac` `Apple` `Hardware`
-Ring's now-canceled partnership with Flock Safety suggests the company may have finally found the limits of how far consumers will tolerate AI-driven surveillance in their own neighborhoods.
-
-
-Ring backs away from Flock deal —  for now
-Ring has decided not to go ahead with its planned integration with Flock Safety. The decision came after public backlash over privacy and surveillance concerns, even though the partnership never actually launched.
-
-### 28. [Today in Apple history: Mac mania sweeps magazine racks](https://www.cultofmac.com/apple-history/first-mac-mania-macintosh-128k)
-**Source:** Cult of Mac | **Tags:** `Mac` `Apple` `Culture`
-The Macintosh 128K launch fuels enormous excitement among the tech press. On February 13, 1984, "InfoWorld" declared the first Mac a hit!
-(via Cult of Mac - Your source for the latest Apple news, rumors, analysis, reviews, how-tos and deals.)
-
-### 29. [Apple has new ‘iPhone Flip’ model in the works, says leaker](https://9to5mac.com/2026/02/13/apple-has-new-iphone-flip-model-in-the-works-says-leaker/)
-**Source:** 9to5Mac | **Tags:** `Mac` `Apple` `iOS`
-Apple’s first foldable iPhone launches this fall, but we’re increasingly hearing that there’s an entirely different folding design in the works too: an ‘iPhone Flip.’
-more…
-
-### 30. [Best Apple Deals of the Week: AirPods and Apple Watch Low Prices Arrive on Amazon](https://www.macrumors.com/2026/02/13/best-apple-deals-of-the-week-2-13-26/)
-**Source:** MacRumors | **Tags:** `Mac` `Apple` `News`
-We're recapping this week's best Apple-related deals below, and it includes solid discounts on AirPods 4, AirPods Pro 3, Apple Watch Series 11, and a few sales from Samsung and Satechi.
-
-Note: MacRumors is an affiliate partner with some of these vendors. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running.
-
-AirPods
-
-
-What's the deal? Take $30 off AirPods 4 and $39 off AirPods Pro 3
-
-Where can I get it?
 
 <a id="iot"></a>
 
@@ -418,125 +415,125 @@ The post Community spotlight: MyEmbeddedStuff appeared first on Arduino Blog.
 
 ## Artificial Intelligence
 
-### 1. [OpenAI removes access to sycophancy-prone GPT-4o model](https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/)
+### 1. [Airbnb says a third of its customer support is now handled by AI in the U.S. and Canada](https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-The model is known for its overly sycophantic nature and its role in several lawsuits involving users' unhealthy relationships to the chatbot.
+Airbnb has shifted a third of its North American customer service to its AI agent, CEO Brian Chesky said.
 
-### 2. [AI burnout, billion-dollar bets, and Silicon Valley’s Epstein problem](https://techcrunch.com/podcast/ai-burnout-billion-dollar-bets-and-silicon-valleys-epstein-problem/)
+### 2. [Why top talent is walking away from OpenAI and xAI](https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature.  Watch as TechCrunch’s Equity podcast hosts Kirsten Korosec, Anthony […]
+
+### 3. [OpenAI removes access to sycophancy-prone GPT-4o model](https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+The model is known for its overly sycophantic nature and its role in several lawsuits involving users' unhealthy relationships with the chatbot.
+
+### 4. [AI burnout, billion-dollar bets, and Silicon Valley’s Epstein problem](https://techcrunch.com/podcast/ai-burnout-billion-dollar-bets-and-silicon-valleys-epstein-problem/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature.  On this episode of TechCrunch’s Equity podcast, hosts Kirsten […]
 
-### 3. [Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10](https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/)
+### 5. [Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10](https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The numbers suggest that Anthropic's Super Bowl commercials, combined with Anthropic's recent release of its new Opus 4.6 model, worked to drive attention to Claude's app and its key differentiator from ChatGPT.
 
-### 4. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/13/elon-musk-suggests-spate-of-xai-exits-have-been-push-not-pull/)
+### 6. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/13/elon-musk-suggests-spate-of-xai-exits-have-been-push-not-pull/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 At least nine engineers, including two co-founders, have announced their exits from xAI in the past week, fueling online speculation and raising questions about stability at Musk’s AI company amid mounting controversy.
 
-### 5. [AI forecasting model targets healthcare resource efficiency](https://www.artificialintelligence-news.com/news/ai-forecasting-model-targets-healthcare-resource-efficiency/)
+### 7. [AI forecasting model targets healthcare resource efficiency](https://www.artificialintelligence-news.com/news/ai-forecasting-model-targets-healthcare-resource-efficiency/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 An operational AI forecasting model developed by Hertfordshire University researchers aims to improve resource efficiency within healthcare. Public sector organisations often hold large archives of historical data that do not inform forward-looking decisions. A partnership between the University of Hertfordshire and regional NHS health bodies addresses this issue by applying machine learning to operational planning. […]
 The post AI forecasting model targets healthcare resource efficiency appeared first on AI News.
 
-### 6. [What Murder Mystery 2 reveals about emergent behaviour in online games](https://www.artificialintelligence-news.com/news/what-murder-mystery-2-reveals-about-emergent-behaviour-in-online-games/)
+### 8. [What Murder Mystery 2 reveals about emergent behaviour in online games](https://www.artificialintelligence-news.com/news/what-murder-mystery-2-reveals-about-emergent-behaviour-in-online-games/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Murder Mystery 2, commonly known as MM2, is often categorised as a simple social deduction game in the Roblox ecosystem. At first glance, its structure appears straightforward. One player becomes the murderer, another the sheriff, and the remaining participants attempt to survive. However, beneath the surface lies a dynamic behavioural laboratory that offers valuable insight […]
 The post What Murder Mystery 2 reveals about emergent behaviour in online games appeared first on AI News.
 
-### 7. [Cohere’s $240M year sets stage for IPO](https://techcrunch.com/2026/02/13/coheres-240m-year-sets-stage-for-ipo/)
+### 9. [Cohere’s $240M year sets stage for IPO](https://techcrunch.com/2026/02/13/coheres-240m-year-sets-stage-for-ipo/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Cohere surpassed $240 million in annual recurring revenue in 2025, highlighting strong enterprise AI demand as the Canadian startup positions itself for a potential IPO amid intensifying competition from OpenAI and Anthropic.
 
-### 8. [The Evolving Role of the ML Engineer](https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/)
+### 10. [The Evolving Role of the ML Engineer](https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Stephanie Kirmer on the $200 billion investment bubble, how AI companies can rebuild trust, and how her day-to-day work changed with the rise of LLMs.
 The post The Evolving Role of the ML Engineer appeared first on Towards Data Science.
 
-### 9. [Meta plans to add facial recognition to its smart glasses, report claims](https://techcrunch.com/2026/02/13/meta-plans-to-add-facial-recognition-to-its-smart-glasses-report-claims/)
+### 11. [Meta plans to add facial recognition to its smart glasses, report claims](https://techcrunch.com/2026/02/13/meta-plans-to-add-facial-recognition-to-its-smart-glasses-report-claims/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The feature, internally known as “Name Tag,” would allow smart glasses wearers to identify people and get information about them via Meta's AI assistant.
 
-### 10. [AI in Multiple GPUs: Point-to-Point and Collective Operations](https://towardsdatascience.com/point-to-point-and-collective-operations/)
+### 12. [AI in Multiple GPUs: Point-to-Point and Collective Operations](https://towardsdatascience.com/point-to-point-and-collective-operations/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn PyTorch distributed operations for multi GPU AI workloads
 The post AI in Multiple GPUs: Point-to-Point and Collective Operations appeared first on Towards Data Science.
 
-### 11. [Agentic AI drives finance ROI in accounts payable automation](https://www.artificialintelligence-news.com/news/agentic-ai-drives-finance-roi-in-accounts-payable-automation/)
+### 13. [Agentic AI drives finance ROI in accounts payable automation](https://www.artificialintelligence-news.com/news/agentic-ai-drives-finance-roi-in-accounts-payable-automation/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Finance leaders are driving ROI using agentic AI for accounts payable automation, turning manual tasks into autonomous workflows. While general AI projects saw return on investment rise to 67 percent last year, autonomous agents delivered an average ROI of 80 percent by handling complex processes without human intervention. This performance gap demands a change in […]
 The post Agentic AI drives finance ROI in accounts payable automation appeared first on AI News.
 
-### 12. [Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway](https://www.artificialintelligence-news.com/news/newsweek-ceo-dev-pragad-warns-publishers-adapt-as-ai-becomes-news-gateway/)
+### 14. [Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway](https://www.artificialintelligence-news.com/news/newsweek-ceo-dev-pragad-warns-publishers-adapt-as-ai-becomes-news-gateway/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Author: Dev Pragad, CEO, Newsweek As artificial intelligence platforms increasingly mediate how people encounter news, media leaders are confronting an important change in the relationship between journalism and the public. AI-driven search and conversational interfaces now influence how audiences discover and trust information, often before visiting a publisher’s website. According to Dev Pragad, the implications […]
 The post Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway appeared first on AI News.
 
-### 13. [How e&amp; is using HR to bring AI into enterprise operations](https://www.artificialintelligence-news.com/news/how-e-is-using-hr-to-bring-ai-into-enterprise-operations/)
+### 15. [How e&amp; is using HR to bring AI into enterprise operations](https://www.artificialintelligence-news.com/news/how-e-is-using-hr-to-bring-ai-into-enterprise-operations/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For many enterprises, the first real test of AI is not customer-facing products or flashy automation demos. It is the quiet machinery that runs the organisation itself. Human resources, with its mix of routine workflows, compliance needs, and large volumes of structured data, is emerging as one of the earliest areas where companies are pushing […]
 The post How e&amp; is using HR to bring AI into enterprise operations appeared first on AI News.
 
-### 14. [Alibaba enters physical AI race with open-source robot model RynnBrain](https://www.artificialintelligence-news.com/news/alibaba-rynnbrain-physical-ai-robots-china/)
+### 16. [Alibaba enters physical AI race with open-source robot model RynnBrain](https://www.artificialintelligence-news.com/news/alibaba-rynnbrain-physical-ai-robots-china/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Alibaba has entered the race to build AI that powers robots, not just chatbots. The Chinese tech giant this week unveiled RynnBrain, an open-source model designed to help robots perceive their environment and execute physical tasks.  The move signals China’s accelerating push into physical AI as ageing populations and labour shortages drive demand for machines […]
 The post Alibaba enters physical AI race with open-source robot model RynnBrain appeared first on AI News.
 
-### 15. [AI deployment in financial services hits an inflection point as Singapore leads the shift to production](https://www.artificialintelligence-news.com/news/financial-services-ai-deployment-singapore/)
+### 17. [AI deployment in financial services hits an inflection point as Singapore leads the shift to production](https://www.artificialintelligence-news.com/news/financial-services-ai-deployment-singapore/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 AI deployment in financial services has crossed a critical threshold, with only 2% of institutions globally reporting no AI use whatsoever—a dramatic indicator that the technology has moved decisively from boardroom discussion to operational reality. New research from Finastra surveying 1,509 senior leaders across 11 markets reveals that Singapore financial institutions are leading this transition, […]
 The post AI deployment in financial services hits an inflection point as Singapore leads the shift to production appeared first on AI News.
 
-### 16. [Amid disappointing earnings, Pinterest claims it sees more searches than ChatGPT](https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/)
+### 18. [Amid disappointing earnings, Pinterest claims it sees more searches than ChatGPT](https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Pinterest's stock tumbles after an earnings miss, with higher-than-expected usage its only bright spot.
 
-### 17. [IBM will hire your entry-level talent in the age of AI](https://techcrunch.com/2026/02/12/ibm-will-hire-your-entry-level-talent-in-the-age-of-ai/)
+### 19. [IBM will hire your entry-level talent in the age of AI](https://techcrunch.com/2026/02/12/ibm-will-hire-your-entry-level-talent-in-the-age-of-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 IBM plans to triple its entry-level hiring in the U.S. in 2026, but these jobs will have different tasks than in previous years.
 
-### 18. [Musk needed a new vision for SpaceX and xAI. He landed on Moonbase Alpha.](https://techcrunch.com/2026/02/12/musk-needed-a-new-vision-for-spacex-and-xai-he-landed-on-moonbase-alpha/)
+### 20. [Musk needed a new vision for SpaceX and xAI. He landed on Moonbase Alpha.](https://techcrunch.com/2026/02/12/musk-needed-a-new-vision-for-spacex-and-xai-he-landed-on-moonbase-alpha/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "I really want to see a mass driver on the moon that is shooting AI satellites into deep space."
 
-### 19. [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/)
+### 21. [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Didero functions as an agentic AI layer that sits on top of a company’s existing ERP, acting as a coordinator that reads incoming communications and automatically executes the necessary updates and tasks.
 
-### 20. [Anthropic raises another $30B in Series G, with a new value of $380B](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
+### 22. [Anthropic raises another $30B in Series G, with a new value of $380B](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The infusion of funding for the AI startup takes place as it is vying for customers and cultural attention with its competitor, OpenAI.
 
-### 21. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
+### 23. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Spotify credits Claude Code and its internal AI system Honk with speeding up development.
 
-### 22. [A new version of OpenAI’s Codex is powered by a new dedicated chip](https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/)
+### 24. [A new version of OpenAI’s Codex is powered by a new dedicated chip](https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 OpenAI calls the new coding tool the "first milestone" in its relationship with the chipmaker.
 
-### 23. [How to Leverage Explainable AI for Better Business Decisions](https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/)
+### 25. [How to Leverage Explainable AI for Better Business Decisions](https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Moving beyond the black box to turn complex model outputs into actionable organizational strategies.
 The post How to Leverage Explainable AI for Better Business Decisions appeared first on Towards Data Science.
 
-### 24. [AI in Multiple GPUs: Understanding the Host and Device Paradigm](https://towardsdatascience.com/understanding-the-host-and-device-paradigm/)
+### 26. [AI in Multiple GPUs: Understanding the Host and Device Paradigm](https://towardsdatascience.com/understanding-the-host-and-device-paradigm/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn how CPU and GPUs interact in the host-device paradigm
 The post AI in Multiple GPUs: Understanding the Host and Device Paradigm appeared first on Towards Data Science.
 
-### 25. [Google identifies state-sponsored hackers using AI in attacks](https://www.artificialintelligence-news.com/news/state-sponsored-hackers-ai-cyberattacks-google/)
+### 27. [Google identifies state-sponsored hackers using AI in attacks](https://www.artificialintelligence-news.com/news/state-sponsored-hackers-ai-cyberattacks-google/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 State-sponsored hackers are exploiting highly-advanced tooling to accelerate their particular flavours of cyberattacks, with threat actors from Iran, North Korea, China, and Russia using models like Google’s Gemini to further their campaigns. They are able to craft sophisticated phishing campaigns and develop malware, according to a new report from Google’s Threat Intelligence Group (GTIG). The […]
 The post Google identifies state-sponsored hackers using AI in attacks appeared first on AI News.
-
-### 26. [xAI lays out interplanetary ambitions in public all-hands](https://techcrunch.com/2026/02/11/xai-lays-out-interplanetary-ambitions-in-public-all-hands/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-On Wednesday, xAI took the rare step of publishing its full 45-minute all-hands presentation to the X platform, making it widely available.
-
-### 27. [AI inference startup Modal Labs in talks to raise at $2.5B valuation, sources say](https://techcrunch.com/2026/02/11/ai-inference-startup-modal-labs-in-talks-to-raise-at-2-5b-valuation-sources-say/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-General Catalyst is in talks to lead the round for the four-year-old startup, according to our sources.
 
 ### 28. [Building an AI Agent to Detect and Handle Anomalies in Time-Series Data](https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
