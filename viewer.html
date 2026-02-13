@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewer | AI-Pulse</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link rel="apple-touch-icon" href="./assets/icon.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .viewer-container {
+            margin-top: 40px;
+            min-height: calc(100vh - 200px);
+        }
+
+        .viewer-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .viewer-header a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .viewer-header a:hover {
+            text-decoration: underline;
+        }
+
+        .viewer-title {
+            flex: 1;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .viewer-content {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            min-height: 500px;
+        }
+
+        .viewer-content h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .viewer-content h2 {
+            color: var(--text-light);
+            margin: 25px 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .viewer-content h3 {
+            color: var(--text-light);
+            margin: 20px 0 12px;
+            font-size: 1.2rem;
+        }
+
+        .viewer-content p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .viewer-content a {
+            color: var(--primary);
+        }
+
+        .viewer-content code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--primary);
+        }
+
+        .viewer-content pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .viewer-content pre code {
+            background: none;
+            padding: 0;
+            color: var(--text-light);
+        }
+
+        .viewer-content ul,
+        .viewer-content ol {
+            color: var(--text-dim);
+            margin-left: 25px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .viewer-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+        }
+
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(0, 217, 255, 0.2);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .repo-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .repo-stat {
+            background: rgba(0, 217, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="brand-logo">
+            <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="app.html">Reader</a>
+            <a href="about.html">About</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container fade-in">
+        <div class="viewer-container">
+            <div class="viewer-header">
+                <a href="javascript:history.back()">Back</a>
+                <span class="viewer-title" id="viewerTitle">Loading...</span>
+                <a href="#" id="externalLink" target="_blank">Open in GitHub</a>
+            </div>
+
+            <div class="viewer-content" id="viewerContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading content...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="elevator">
+        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
+            ▲
+        </button>
+        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'auto'})"
+            title="Scroll to Bottom">
+            ▼
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy</a>
+            <span>•</span>
+            <a href="stats.html">Statistics</a>
+            <span>•</span>
+            <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>
+            <span>•</span>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+        </div>
+        <p>&copy; 2026 AI-Pulse. All rights reserved.</p>
+    </footer>
+
+    <script src="./js/tracker.js"></script>
+    <script src="./js/ui.js"></script>
+    <script>
+        const viewerTitle = document.getElementById('viewerTitle');
+        const viewerContent = document.getElementById('viewerContent');
+        const externalLink = document.getElementById('externalLink');
+
+        // Parse markdown to HTML
+        function parseMarkdown(md) {
+            let html = md;
+            html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+            html = html.replace(/```(\w*)\n([\s\S]*?)```/g, '<pre><code>$2</code></pre>');
+            html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+            html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+            html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank">$1</a>');
+            html = html.replace(/^&gt; (.+)$/gm, '<blockquote>$1</blockquote>');
+            html = html.replace(/^\- (.+)$/gm, '<li>$1</li>');
+            html = html.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>');
+            html = html.split('\n\n').map(block => {
+                if (block.trim() && !block.match(/^<(h|ul|ol|pre|blockquote)/)) {
+                    return `<p>${block.replace(/\n/g, '<br>')}</p>`;
+                }
+                return block;
+            }).join('\n');
+            return html;
+        }
+
+        // Load GitHub repo
+        async function loadGitHubRepo(owner, repo) {
+            try {
+                // Fetch repo info
+                const repoRes = await fetch(`https://api.github.com/repos/${owner}/${repo}`);
+                if (!repoRes.ok) throw new Error('Repo not found');
+                const repoData = await repoRes.json();
+
+                viewerTitle.textContent = repoData.full_name;
+                externalLink.href = repoData.html_url;
+
+                // Fetch README
+                const readmeRes = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, {
+                    headers: { 'Accept': 'application/vnd.github.v3.raw' }
+                });
+
+                let readmeHtml = '';
+                if (readmeRes.ok) {
+                    const readme = await readmeRes.text();
+                    readmeHtml = parseMarkdown(readme);
+                }
+
+                viewerContent.innerHTML = `
+                    <h1>${repoData.name}</h1>
+                    <p>${repoData.description || 'No description'}</p>
+                    <div class="repo-stats">
+                        <span class="repo-stat">Stars: ${repoData.stargazers_count}</span>
+                        <span class="repo-stat">Forks: ${repoData.forks_count}</span>
+                        <span class="repo-stat">Language: ${repoData.language || 'N/A'}</span>
+                        <span class="repo-stat">Updated: ${new Date(repoData.updated_at).toLocaleDateString()}</span>
+                    </div>
+                    <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
+                    ${readmeHtml || '<p>No README available.</p>'}
+                `;
+            } catch (error) {
+                viewerContent.innerHTML = `
+                    <h1>Error</h1>
+                    <p>Failed to load repository. <a href="javascript:history.back()">Go back</a></p>
+                `;
+            }
+        }
+
+        // Parse URL parameters
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            const url = params.get('url');
+            const type = params.get('type') || 'repo';
+
+            if (!url) {
+                viewerContent.innerHTML = '<h1>No URL provided</h1><p><a href="portfolio.html">Return to Portfolio</a></p>';
+                return;
+            }
+
+            // Parse GitHub URL
+            const githubMatch = url.match(/github\.com\/([^\/]+)\/([^\/]+)/);
+            if (githubMatch) {
+                const [, owner, repo] = githubMatch;
+                loadGitHubRepo(owner, repo.replace(/\.git$/, ''));
+            } else {
+                viewerContent.innerHTML = '<h1>Unsupported URL</h1><p>Only GitHub repositories are supported.</p>';
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>
