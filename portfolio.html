@@ -1,53 +1,179 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+AI-PULSE - PAGE PORTFOLIO (portfolio.html)
+================================================================================
+
+DESCRIPTION:
+    Cette page présente le portfolio du développeur ThePhoenixAgency.
+    Elle affiche les statistiques GitHub en temps réel et les projets phares.
+
+RÔLE:
+    - Afficher le profil du développeur
+    - Montrer les statistiques GitHub (repos, followers, stars)
+    - Lister les projets les plus populaires
+    - Présenter l'organisation ThePhoenixAgency
+
+SECTIONS DE LA PAGE:
+    1. Section héros : Photo de profil et liens sociaux
+    2. Statistiques GitHub : Compteurs en temps réel
+    3. Projets phares : Grille de projets depuis l'API GitHub
+    4. Site web officiel : Lien vers ThePhoenixAgency.github.io
+    5. Organisation : Présentation de ThePhoenixAgency
+    6. Pied de page : Liens et copyright
+
+API UTILISÉES:
+    - GitHub API : https://api.github.com/users/{username}
+    - GitHub API : https://api.github.com/users/{username}/repos
+
+SÉCURITÉ:
+    - Validation des URLs avant affichage
+    - Échappement HTML pour éviter les XSS
+    - DOMPurify pour nettoyer le contenu
+
+FICHIERS LIÉS:
+    - css/style.css : Styles généraux (footer uniquement)
+    - Aucun JS externe (tout est inline pour performance)
+
+VERSION: 1.0.0
+DERNIÈRE MISE À JOUR: Février 2026
+================================================================================
+-->
 <html lang="fr">
 
 <head>
+    <!--
+    ============================================================================
+    EN-TÊTE HTML (HEAD)
+    ============================================================================
+
+    Cette section contient les métadonnées et ressources de la page.
+    ============================================================================
+    -->
+
+    <!-- Encodage UTF-8 pour les caractères spéciaux -->
     <meta charset="UTF-8">
+
+    <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de l'onglet du navigateur -->
     <title>Portfolio - ThePhoenixAgency</title>
+
+    <!-- Police Google Fonts "Inter" - Police moderne et lisible -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!--
+    ============================================================================
+    STYLES SPÉCIFIQUES AU PORTFOLIO
+    ============================================================================
+
+    Ces styles définissent l'apparence du portfolio :
+    - Section héros avec dégradé
+    - Cartes de statistiques
+    - Grille de projets
+    - Responsive design
+
+    VARIABLES CSS:
+    - --primary-color : Bleu principal (#5e72e4)
+    - --secondary-color : Violet secondaire (#825ee4)
+    - --gradient : Dégradé bleu-violet pour les en-têtes
+    ============================================================================
+    -->
     <style>
+        /* ====================================================================
+           RESET CSS
+           ====================================================================
+           Réinitialise les styles par défaut du navigateur pour avoir
+           une base cohérente sur tous les navigateurs.
+        ==================================================================== */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0;                  /* Supprime toutes les marges */
+            padding: 0;                 /* Supprime tous les paddings */
+            box-sizing: border-box;     /* Inclut padding dans la largeur */
         }
 
+        /* ====================================================================
+           VARIABLES CSS (ROOT)
+           ====================================================================
+
+           Définit les couleurs et styles réutilisables dans toute la page.
+           Utilisation : var(--nom-variable)
+
+           PALETTE DE COULEURS:
+           - primary-color : Bleu principal pour les accents
+           - secondary-color : Violet pour les dégradés
+           - accent-color : Rouge pour les alertes (non utilisé)
+           - success-color : Vert pour les succès (non utilisé)
+
+           FONDS:
+           - bg-primary : Blanc pour les cartes
+           - bg-secondary : Gris clair pour le fond de page
+           - bg-dark : Bleu foncé (non utilisé)
+
+           TEXTES:
+           - text-primary : Gris foncé pour les titres
+           - text-secondary : Gris pour les descriptions
+           - text-light : Blanc pour le texte sur fond sombre
+
+           EFFETS:
+           - shadow : Ombre légère pour les éléments
+           - shadow-lg : Ombre prononcée pour les cartes importantes
+           - gradient : Dégradé bleu-violet pour le héros
+        ==================================================================== */
         :root {
-            --primary-color: #5e72e4;
-            --secondary-color: #825ee4;
-            --accent-color: #f5365c;
-            --success-color: #2dce89;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --bg-dark: #1a1d2e;
-            --text-primary: #2d3748;
-            --text-secondary: #64748b;
-            --text-light: #ffffff;
-            --border-color: #e2e8f0;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+            --primary-color: #5e72e4;       /* Bleu principal */
+            --secondary-color: #825ee4;     /* Violet secondaire */
+            --accent-color: #f5365c;        /* Rouge accent */
+            --success-color: #2dce89;       /* Vert succès */
+            --bg-primary: #ffffff;          /* Fond blanc */
+            --bg-secondary: #f8f9fa;        /* Fond gris clair */
+            --bg-dark: #1a1d2e;             /* Fond sombre */
+            --text-primary: #2d3748;        /* Texte principal */
+            --text-secondary: #64748b;      /* Texte secondaire */
+            --text-light: #ffffff;          /* Texte clair */
+            --border-color: #e2e8f0;        /* Couleur bordures */
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);         /* Ombre légère */
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);    /* Ombre forte */
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
+        /* ====================================================================
+           CORPS DE LA PAGE (BODY)
+           ====================================================================
+        ==================================================================== */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            min-height: 100vh;
+            background: var(--bg-secondary);    /* Fond gris clair */
+            color: var(--text-primary);         /* Texte gris foncé */
+            min-height: 100vh;                  /* Minimum 100% de la fenêtre */
         }
 
-        /* Hero Section */
+        /* ====================================================================
+           SECTION HÉROS (HERO)
+           ====================================================================
+
+           Grande bannière en haut avec :
+           - Dégradé de fond bleu-violet
+           - Photo de profil circulaire
+           - Nom et tagline
+           - Liens sociaux (GitHub, Website)
+
+           EFFET DÉCORATIF:
+           - ::before crée une vague en bas via SVG inline
+           - opacity: 0.3 pour un effet subtil
+        ==================================================================== */
         .hero {
-            background: var(--gradient);
+            background: var(--gradient);        /* Dégradé bleu-violet */
             color: white;
             padding: 80px 20px 60px;
             text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow: hidden;                   /* Cache les éléments qui dépassent */
         }
 
+        /* Vague décorative en bas du héros */
         .hero::before {
             content: '';
             position: absolute;
@@ -55,35 +181,44 @@
             left: 0;
             right: 0;
             bottom: 0;
+            /* SVG inline pour créer une forme de vague */
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="rgba(255,255,255,0.1)"></path></svg>') no-repeat bottom;
             background-size: cover;
-            opacity: 0.3;
+            opacity: 0.3;                       /* Semi-transparent */
         }
 
+        /* Contenu du héros (au-dessus de la vague) */
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 1;                         /* Au-dessus de ::before */
             max-width: 900px;
             margin: 0 auto;
         }
 
+        /* ====================================================================
+           PHOTO DE PROFIL
+           ====================================================================
+           Image circulaire avec bordure blanche et ombre.
+        ==================================================================== */
         .profile-image {
             width: 150px;
             height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border-radius: 50%;                 /* Cercle parfait */
+            border: 5px solid white;            /* Bordure blanche */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);  /* Ombre prononcée */
             margin-bottom: 30px;
-            object-fit: cover;
+            object-fit: cover;                  /* L'image remplit le cercle */
         }
 
+        /* Titre principal (nom) */
         .hero h1 {
             font-size: 48px;
             font-weight: 800;
             margin-bottom: 15px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);  /* Ombre sur texte */
         }
 
+        /* Tagline (sous-titre) */
         .hero .tagline {
             font-size: 20px;
             opacity: 0.95;
@@ -91,44 +226,61 @@
             font-weight: 400;
         }
 
+        /* ====================================================================
+           LIENS SOCIAUX
+           ====================================================================
+           Boutons pour GitHub et le site web personnel.
+           Effet glassmorphism (fond flou semi-transparent).
+        ==================================================================== */
         .social-links {
             display: flex;
-            gap: 20px;
+            gap: 20px;                          /* Espace entre les liens */
             justify-content: center;
-            flex-wrap: wrap;
+            flex-wrap: wrap;                    /* Passe à la ligne sur mobile */
         }
 
+        /* Style d'un lien social */
         .social-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 12px 24px;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.2);       /* Fond semi-transparent */
+            backdrop-filter: blur(10px);                 /* Effet de flou */
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
+            border-radius: 50px;                         /* Forme pilule */
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.3s;                        /* Animation fluide */
         }
 
+        /* Effet au survol */
         .social-link:hover {
             background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
+            transform: translateY(-3px);                /* Monte de 3px */
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
-        /* Container */
+        /* ====================================================================
+           CONTENEUR PRINCIPAL
+           ====================================================================
+           Centre le contenu et crée un décalage vers le haut
+           pour que les cartes chevauchent le héros.
+        ==================================================================== */
         .container {
             max-width: 1200px;
-            margin: -40px auto 60px;
+            margin: -40px auto 60px;            /* Marge négative en haut */
             padding: 0 20px;
             position: relative;
-            z-index: 2;
+            z-index: 2;                         /* Au-dessus du héros */
         }
 
-        /* Section Card */
+        /* ====================================================================
+           CARTE DE SECTION
+           ====================================================================
+           Style commun pour toutes les grandes cartes de contenu.
+        ==================================================================== */
         .section-card {
             background: white;
             border-radius: 16px;
@@ -137,6 +289,7 @@
             margin-bottom: 30px;
         }
 
+        /* Titre de section (ex: "GitHub Statistics") */
         .section-title {
             font-size: 28px;
             font-weight: 700;
@@ -144,42 +297,52 @@
             color: var(--text-primary);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 12px;                          /* Espace entre emoji et texte */
         }
 
+        /* Sous-titre de section */
         .section-subtitle {
             color: var(--text-secondary);
             margin-bottom: 30px;
             font-size: 16px;
         }
 
-        /* Stats Grid */
+        /* ====================================================================
+           GRILLE DE STATISTIQUES
+           ====================================================================
+           4 boîtes affichant les stats GitHub (repos, followers, etc.)
+        ==================================================================== */
         .stats-grid {
             display: grid;
+            /* Colonnes automatiques de minimum 200px */
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 40px;
         }
 
+        /* Boîte de statistique individuelle */
         .stat-box {
             text-align: center;
             padding: 25px;
-            background: var(--bg-secondary);
+            background: var(--bg-secondary);    /* Fond gris clair */
             border-radius: 12px;
-            transition: transform 0.2s;
+            transition: transform 0.2s;         /* Animation au survol */
         }
 
+        /* Effet au survol */
         .stat-box:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px);        /* Monte de 5px */
         }
 
+        /* Grand nombre (valeur de la stat) */
         .stat-number {
             font-size: 32px;
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary-color);        /* Bleu */
             margin-bottom: 5px;
         }
 
+        /* Label de la stat */
         .stat-label {
             font-size: 14px;
             color: var(--text-secondary);
@@ -187,27 +350,35 @@
             letter-spacing: 0.5px;
         }
 
-        /* Project Grid */
+        /* ====================================================================
+           GRILLE DE PROJETS
+           ====================================================================
+           Affiche les projets GitHub sous forme de cartes.
+        ==================================================================== */
         .projects-grid {
             display: grid;
+            /* Colonnes de minimum 300px, maximum 1 fraction */
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 24px;
         }
 
+        /* Carte de projet individuelle */
         .project-card {
             background: var(--bg-secondary);
             border-radius: 12px;
             padding: 24px;
-            border: 2px solid transparent;
+            border: 2px solid transparent;      /* Bordure invisible par défaut */
             transition: all 0.3s;
         }
 
+        /* Effet au survol */
         .project-card:hover {
-            border-color: var(--primary-color);
-            transform: translateY(-5px);
+            border-color: var(--primary-color); /* Bordure bleue */
+            transform: translateY(-5px);        /* Monte */
             box-shadow: var(--shadow-lg);
         }
 
+        /* En-tête du projet (icône + titre) */
         .project-header {
             display: flex;
             align-items: center;
@@ -215,16 +386,19 @@
             margin-bottom: 12px;
         }
 
+        /* Icône du projet (emoji) */
         .project-icon {
             font-size: 32px;
         }
 
+        /* Titre du projet */
         .project-title {
             font-size: 18px;
             font-weight: 600;
             color: var(--text-primary);
         }
 
+        /* Description du projet */
         .project-description {
             color: var(--text-secondary);
             margin-bottom: 16px;
@@ -232,22 +406,25 @@
             font-size: 14px;
         }
 
+        /* Conteneur des tags */
         .project-tags {
             display: flex;
             gap: 8px;
-            flex-wrap: wrap;
+            flex-wrap: wrap;                    /* Tags sur plusieurs lignes */
             margin-bottom: 16px;
         }
 
+        /* Tag individuel (ex: "JavaScript", "⭐ 42") */
         .tag {
-            background: var(--bg-primary);
+            background: var(--bg-primary);      /* Fond blanc */
             color: var(--text-secondary);
             padding: 4px 12px;
-            border-radius: 20px;
+            border-radius: 20px;                /* Forme pilule */
             font-size: 12px;
             font-weight: 500;
         }
 
+        /* Lien vers le projet */
         .project-link {
             display: inline-flex;
             align-items: center;
@@ -259,11 +436,17 @@
             transition: opacity 0.2s;
         }
 
+        /* Effet au survol */
         .project-link:hover {
             opacity: 0.7;
         }
 
-        /* Website Preview */
+        /* ====================================================================
+           PRÉVISUALISATION DU SITE WEB
+           ====================================================================
+           iframe pour afficher le site ThePhoenixAgency.github.io
+           (Non utilisé actuellement, remplacé par un lien)
+        ==================================================================== */
         .website-preview {
             width: 100%;
             height: 600px;
@@ -272,7 +455,11 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* Back Link */
+        /* ====================================================================
+           LIEN RETOUR
+           ====================================================================
+           Bouton pour retourner à l'accueil d'AI-Pulse.
+        ==================================================================== */
         .back-link {
             text-align: center;
             margin-top: 40px;
@@ -283,10 +470,10 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--gradient);
+            background: var(--gradient);        /* Dégradé bleu-violet */
             color: white;
             padding: 14px 32px;
-            border-radius: 50px;
+            border-radius: 50px;                /* Forme pilule */
             text-decoration: none;
             font-weight: 600;
             box-shadow: var(--shadow-lg);
@@ -294,30 +481,45 @@
         }
 
         .back-link a:hover {
-            transform: translateY(-3px);
+            transform: translateY(-3px);        /* Monte au survol */
         }
 
-        /* Responsive */
+        /* ====================================================================
+           RESPONSIVE (MOBILE)
+           ====================================================================
+           Ajustements pour les petits écrans (< 768px).
+        ==================================================================== */
         @media (max-width: 768px) {
+            /* Titre plus petit sur mobile */
             .hero h1 {
                 font-size: 32px;
             }
 
+            /* Tagline plus petite */
             .hero .tagline {
                 font-size: 16px;
             }
 
+            /* Padding réduit dans les cartes */
             .section-card {
                 padding: 24px;
             }
 
+            /* Projets sur une seule colonne */
             .projects-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 
-    <!-- Google tag (gtag.js) -->
+    <!--
+    ============================================================================
+    GOOGLE ANALYTICS
+    ============================================================================
+    Suivi des visites avec Google Analytics.
+    ID de mesure : G-LWN1RSPQMJ
+    ============================================================================
+    -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWN1RSPQMJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -326,19 +528,47 @@
         gtag('config', 'G-LWN1RSPQMJ');
     </script>
 
-    <!-- DOMPurify for XSS protection -->
+    <!--
+    ============================================================================
+    DOMPURIFY - PROTECTION XSS
+    ============================================================================
+    DOMPurify nettoie le HTML pour éviter les attaques XSS.
+    Utilisé pour sécuriser les données provenant de l'API GitHub.
+    ============================================================================
+    -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 
 <body>
-    <!-- Hero Section -->
+    <!--
+    ============================================================================
+    SECTION HÉROS
+    ============================================================================
+
+    Grande bannière avec :
+    - Photo de profil GitHub
+    - Nom du développeur
+    - Tagline descriptive
+    - Liens sociaux
+
+    GESTION D'ERREUR IMAGE:
+    - onerror="this.src='...'" : Si l'image GitHub ne charge pas,
+      affiche une image de remplacement via placeholder.com
+    ============================================================================
+    -->
     <div class="hero">
         <div class="hero-content">
+            <!-- Photo de profil avec fallback si erreur de chargement -->
             <img src="https://avatars.githubusercontent.com/u/EthanThePhoenix38?v=4" alt="Profile" class="profile-image"
                 onerror="this.src='https://via.placeholder.com/150'">
+
+            <!-- Nom du développeur/organisation -->
             <h1>ThePhoenixAgency</h1>
+
+            <!-- Description courte avec emojis -->
             <p class="tagline">🚀 AI & Cybersecurity Specialist | Full Stack Developer | Open Source Contributor</p>
 
+            <!-- Liens vers GitHub et le site web -->
             <div class="social-links">
                 <a href="https://github.com/ThePhoenixAgency" target="_blank" class="social-link">
                     <span>🏢</span>
@@ -352,9 +582,34 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+    <!--
+    ============================================================================
+    CONTENU PRINCIPAL
+    ============================================================================
+
+    Zone principale contenant :
+    - Statistiques GitHub
+    - Projets phares
+    - Lien vers le site web
+    - Informations sur l'organisation
+    ============================================================================
+    -->
     <div class="container">
-        <!-- GitHub Stats -->
+
+        <!--
+        ====================================================================
+        SECTION : STATISTIQUES GITHUB
+        ====================================================================
+
+        Affiche 4 compteurs en temps réel :
+        - Public Repositories : Nombre de dépôts publics
+        - Followers : Nombre d'abonnés
+        - Following : Nombre de personnes suivies
+        - Total Stars : Somme des étoiles sur tous les projets
+
+        Les valeurs sont mises à jour par JavaScript via l'API GitHub.
+        ====================================================================
+        -->
         <div class="section-card">
             <h2 class="section-title">
                 <span>📊</span>
@@ -363,18 +618,25 @@
             <p class="section-subtitle">Real-time metrics from my GitHub profile</p>
 
             <div class="stats-grid">
+                <!-- Compteur : Dépôts publics -->
                 <div class="stat-box">
                     <div class="stat-number" id="totalRepos">-</div>
                     <div class="stat-label">Public Repositories</div>
                 </div>
+
+                <!-- Compteur : Followers -->
                 <div class="stat-box">
                     <div class="stat-number" id="totalFollowers">-</div>
                     <div class="stat-label">Followers</div>
                 </div>
+
+                <!-- Compteur : Following -->
                 <div class="stat-box">
                     <div class="stat-number" id="totalFollowing">-</div>
                     <div class="stat-label">Following</div>
                 </div>
+
+                <!-- Compteur : Étoiles totales -->
                 <div class="stat-box">
                     <div class="stat-number" id="totalStars">-</div>
                     <div class="stat-label">Total Stars</div>
@@ -382,7 +644,17 @@
             </div>
         </div>
 
-        <!-- Featured Projects -->
+        <!--
+        ====================================================================
+        SECTION : PROJETS PHARES
+        ====================================================================
+
+        Affiche les projets les plus populaires.
+        - AI-Pulse est affiché en premier (en dur)
+        - Les autres projets sont chargés depuis l'API GitHub
+        - Triés par nombre d'étoiles (décroissant)
+        ====================================================================
+        -->
         <div class="section-card">
             <h2 class="section-title">
                 <span>🌟</span>
@@ -391,7 +663,15 @@
             <p class="section-subtitle">My most impactful open-source contributions</p>
 
             <div class="projects-grid" id="projectsGrid">
-                <!-- AI-Pulse - Featured -->
+
+                <!--
+                ============================================================
+                PROJET PHARE : AI-PULSE (Affiché en dur)
+                ============================================================
+                Ce projet est toujours affiché car c'est le projet principal.
+                Les autres projets sont chargés dynamiquement depuis GitHub.
+                ============================================================
+                -->
                 <div class="project-card">
                     <div class="project-header">
                         <span class="project-icon">🤖</span>
@@ -413,7 +693,14 @@
                     </a>
                 </div>
 
-                <!-- Placeholder for other projects (will be loaded from GitHub API) -->
+                <!--
+                ============================================================
+                MESSAGE DE CHARGEMENT
+                ============================================================
+                Affiché pendant le chargement des projets depuis GitHub.
+                Sera remplacé par les vraies cartes de projet.
+                ============================================================
+                -->
                 <div class="project-card" id="loadingProjects"
                     style="grid-column: 1 / -1; text-align: center; padding: 40px;">
                     <p style="color: var(--text-secondary);">Loading more projects from GitHub...</p>
@@ -421,7 +708,14 @@
             </div>
         </div>
 
-        <!-- Website Preview -->
+        <!--
+        ====================================================================
+        SECTION : SITE WEB OFFICIEL
+        ====================================================================
+        Lien vers le site ThePhoenixAgency.github.io
+        (Remplace l'iframe qui posait des problèmes de chargement)
+        ====================================================================
+        -->
         <div class="section-card">
             <h2 class="section-title">
                 <span>🌐</span>
@@ -434,7 +728,13 @@
             </a>
         </div>
 
-        <!-- Organization Info -->
+        <!--
+        ====================================================================
+        SECTION : ORGANISATION
+        ====================================================================
+        Présentation de ThePhoenixAgency et ses valeurs.
+        ====================================================================
+        -->
         <div class="section-card">
             <h2 class="section-title">
                 <span>🏢</span>
@@ -457,7 +757,13 @@
             </div>
         </div>
 
-        <!-- Back to AI-Pulse -->
+        <!--
+        ====================================================================
+        BOUTON RETOUR À L'ACCUEIL
+        ====================================================================
+        Lien pour retourner à la page d'accueil d'AI-Pulse.
+        ====================================================================
+        -->
         <div class="back-link">
             <a href="index.html">
                 <span>←</span>
@@ -466,6 +772,16 @@
         </div>
     </div>
 
+    <!--
+    ============================================================================
+    BOUTONS DE NAVIGATION RAPIDE (ELEVATOR)
+    ============================================================================
+
+    Deux boutons flottants pour naviguer rapidement :
+    - ▲ : Remonter en haut de la page
+    - ▼ : Descendre en bas de la page
+    ============================================================================
+    -->
     <div class="elevator">
         <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
             ▲
@@ -476,7 +792,13 @@
         </button>
     </div>
 
-    <!-- Footer -->
+    <!--
+    ============================================================================
+    PIED DE PAGE (FOOTER)
+    ============================================================================
+    Zone en bas de la page avec liens et copyright.
+    ============================================================================
+    -->
     <footer class="site-footer">
         <div class="footer-links">
             <a href="privacy.html">Privacy</a>
@@ -490,34 +812,81 @@
         <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>. All rights reserved.</p>
     </footer>
 
+    <!--
+    ============================================================================
+    SCRIPT PRINCIPAL - CHARGEMENT DES STATISTIQUES GITHUB
+    ============================================================================
+
+    Ce script :
+    1. Récupère les données utilisateur depuis l'API GitHub
+    2. Met à jour les compteurs de statistiques
+    3. Charge et affiche les projets les plus populaires
+
+    SÉCURITÉ:
+    - Les données sont récupérées en lecture seule (pas d'authentification)
+    - Les URLs sont validées avant d'être utilisées
+    - Le contenu est échappé pour éviter les attaques XSS
+    ============================================================================
+    -->
     <script>
         /**
-         * Fetch GitHub statistics
-         * Security: Only fetches public data, no authentication needed
+         * =====================================================================
+         * RÉCUPÉRATION DES STATISTIQUES GITHUB
+         * =====================================================================
+         *
+         * Cette fonction asynchrone récupère les données depuis l'API GitHub
+         * et met à jour l'interface utilisateur.
+         *
+         * ÉTAPES:
+         * 1. Récupérer les infos de l'utilisateur (repos, followers, etc.)
+         * 2. Mettre à jour les compteurs dans le DOM
+         * 3. Récupérer la liste des dépôts pour calculer les étoiles
+         * 4. Charger les projets phares
+         *
+         * @async
+         * @returns {Promise<void>}
          */
         async function fetchGitHubStats() {
             try {
-                // Fetch user data
+                // ─────────────────────────────────────────────────────────────
+                // ÉTAPE 1 : Récupérer les données utilisateur
+                // ─────────────────────────────────────────────────────────────
+                // L'API GitHub est publique et ne nécessite pas d'authentification
+                // pour les données publiques.
                 const userResponse = await fetch('https://api.github.com/users/EthanThePhoenix38');
                 const userData = await userResponse.json();
 
-                // Update stats (with fallback values)
+                // ─────────────────────────────────────────────────────────────
+                // ÉTAPE 2 : Mettre à jour les compteurs
+                // ─────────────────────────────────────────────────────────────
+                // Utilise des valeurs par défaut ('-') si les données sont absentes
                 document.getElementById('totalRepos').textContent = userData.public_repos || '-';
                 document.getElementById('totalFollowers').textContent = userData.followers || '-';
                 document.getElementById('totalFollowing').textContent = userData.following || '-';
 
-                // Fetch repositories for star count
+                // ─────────────────────────────────────────────────────────────
+                // ÉTAPE 3 : Récupérer les dépôts pour compter les étoiles
+                // ─────────────────────────────────────────────────────────────
+                // per_page=100 : Récupère jusqu'à 100 dépôts (limite API)
                 const reposResponse = await fetch('https://api.github.com/users/EthanThePhoenix38/repos?per_page=100');
                 const repos = await reposResponse.json();
 
+                // Calcule la somme des étoiles de tous les dépôts
+                // reduce() parcourt le tableau et accumule les valeurs
                 const totalStars = repos.reduce((sum, repo) => sum + (repo.stargazers_count || 0), 0);
                 document.getElementById('totalStars').textContent = totalStars;
 
-                // Load featured projects (excluding AI-Pulse which is already featured)
+                // ─────────────────────────────────────────────────────────────
+                // ÉTAPE 4 : Charger les projets phares
+                // ─────────────────────────────────────────────────────────────
+                // Exclut AI-Pulse qui est déjà affiché en dur
                 loadFeaturedProjects(repos.filter(repo => repo.name !== 'AI-Pulse'));
 
             } catch (error) {
+                // En cas d'erreur (réseau, API, etc.)
                 console.error('Failed to fetch GitHub stats:', error);
+
+                // Affiche un message d'erreur à l'utilisateur
                 const errP = document.createElement('p');
                 errP.style.color = 'var(--text-secondary)';
                 errP.textContent = 'Failed to load projects. Check your internet connection.';
@@ -526,18 +895,33 @@
         }
 
         /**
-         * Load featured projects from GitHub
-         * Security: All data is sanitized before display
+         * =====================================================================
+         * CHARGEMENT DES PROJETS PHARES
+         * =====================================================================
+         *
+         * Cette fonction affiche les 5 projets les plus populaires
+         * (triés par nombre d'étoiles).
+         *
+         * SÉCURITÉ:
+         * - Les données sont injectées via textContent (pas innerHTML)
+         * - Les URLs sont validées avant d'être utilisées
+         *
+         * @param {Array} repos - Tableau des dépôts GitHub
          */
         function loadFeaturedProjects(repos) {
+            // Références aux éléments du DOM
             const projectsGrid = document.getElementById('projectsGrid');
             const loadingElement = document.getElementById('loadingProjects');
 
-            // Sort by stars and get top 5
+            // ─────────────────────────────────────────────────────────────────
+            // TRIER ET FILTRER LES PROJETS
+            // ─────────────────────────────────────────────────────────────────
+            // Sort par nombre d'étoiles (décroissant) et prend les 5 premiers
             const featured = repos
                 .sort((a, b) => (b.stargazers_count || 0) - (a.stargazers_count || 0))
                 .slice(0, 5);
 
+            // Si aucun projet trouvé
             if (featured.length === 0) {
                 const noProjP = document.createElement('p');
                 noProjP.style.color = 'var(--text-secondary)';
@@ -546,35 +930,39 @@
                 return;
             }
 
-            // Remove loading message
+            // Supprime le message de chargement
             loadingElement.remove();
 
-            // Add project cards
+            // ─────────────────────────────────────────────────────────────────
+            // CRÉER LES CARTES DE PROJET
+            // ─────────────────────────────────────────────────────────────────
+            // Pour chaque projet, crée une carte avec les infos
             featured.forEach(repo => {
+                // Créer la carte
                 const card = document.createElement('div');
                 card.className = 'project-card';
 
-                // Create Header
+                // Créer l'en-tête (icône + titre)
                 const header = document.createElement('div');
                 header.className = 'project-header';
 
                 const icon = document.createElement('span');
                 icon.className = 'project-icon';
-                icon.textContent = '📦';
+                icon.textContent = '📦';  // Emoji par défaut
 
                 const title = document.createElement('h3');
                 title.className = 'project-title';
-                title.textContent = repo.name || 'Untitled';
+                title.textContent = repo.name || 'Untitled';  // textContent = sécurisé
 
                 header.appendChild(icon);
                 header.appendChild(title);
 
-                // Create Description
+                // Créer la description
                 const desc = document.createElement('p');
                 desc.className = 'project-description';
                 desc.textContent = repo.description || 'No description available';
 
-                // Create Tags
+                // Créer les tags (langage, étoiles, forks)
                 const tagsCont = document.createElement('div');
                 tagsCont.className = 'project-tags';
 
@@ -594,12 +982,15 @@
                 tagsCont.appendChild(starTag);
                 tagsCont.appendChild(forkTag);
 
-                // Create Link
+                // Créer le lien vers le projet
                 const link = document.createElement('a');
                 link.className = 'project-link';
                 link.target = '_blank';
 
-                // Validate URL
+                // ─────────────────────────────────────────────────────────────
+                // VALIDATION DE L'URL (SÉCURITÉ)
+                // ─────────────────────────────────────────────────────────────
+                // Vérifie que l'URL est bien HTTP(S) avant de l'utiliser
                 let url = '#';
                 if (repo.html_url) {
                     try {
@@ -607,7 +998,9 @@
                         if (urlObj.protocol === 'http:' || urlObj.protocol === 'https:') {
                             url = repo.html_url;
                         }
-                    } catch (_) { }
+                    } catch (_) {
+                        // URL invalide, garde '#' comme valeur par défaut
+                    }
                 }
                 link.href = url;
 
@@ -619,19 +1012,30 @@
                 link.appendChild(linkText);
                 link.appendChild(arrow);
 
-                // Assemble Card
+                // Assembler la carte
                 card.appendChild(header);
                 card.appendChild(desc);
                 card.appendChild(tagsCont);
                 card.appendChild(link);
 
+                // Ajouter à la grille
                 projectsGrid.appendChild(card);
             });
         }
 
         /**
-         * Escape HTML to prevent XSS attacks
-         * Security: Essential for displaying user-generated content
+         * =====================================================================
+         * ÉCHAPPEMENT HTML (PROTECTION XSS)
+         * =====================================================================
+         *
+         * Convertit les caractères spéciaux HTML en entités.
+         * Exemple : "<script>" devient "&lt;script&gt;"
+         *
+         * NOTE: Cette fonction n'est plus utilisée car on utilise textContent
+         * au lieu de innerHTML, ce qui échappe automatiquement le HTML.
+         *
+         * @param {string} text - Texte à échapper
+         * @returns {string} Texte échappé
          */
         function escapeHtml(text) {
             const div = document.createElement('div');
@@ -639,7 +1043,10 @@
             return div.innerHTML;
         }
 
-        // Load stats when page loads
+        // ─────────────────────────────────────────────────────────────────
+        // DÉMARRAGE
+        // ─────────────────────────────────────────────────────────────────
+        // Charge les statistiques quand la page est prête
         window.addEventListener('load', fetchGitHubStats);
     </script>
 </body>
