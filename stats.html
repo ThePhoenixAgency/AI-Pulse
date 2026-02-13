@@ -1,60 +1,196 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+AI-PULSE - PAGE STATISTIQUES (stats.html)
+================================================================================
+
+DESCRIPTION:
+    Cette page affiche les statistiques locales de l'utilisateur.
+    Toutes les données sont stockées dans le navigateur (localStorage)
+    et ne sont jamais envoyées à un serveur.
+
+RÔLE:
+    - Afficher les statistiques de visite de l'utilisateur
+    - Montrer l'historique des sessions
+    - Afficher les localisations détectées
+    - Compter les articles lus
+
+DONNÉES AFFICHÉES:
+    - Your Visits : Nombre de sessions uniques
+    - Page Views : Nombre total de pages vues
+    - Your ID : Identifiant local du visiteur
+    - Last Visit : Date de la dernière visite
+    - Your Locations : Villes/pays détectés via IP
+    - Articles Read : Nombre d'articles cliqués
+
+FICHIERS LIÉS:
+    - css/style.css : Styles généraux du site
+    - js/tracker.js : Gestion des statistiques (objet Tracker)
+    - js/ui.js : Logique de l'interface
+
+STOCKAGE:
+    Toutes les données sont stockées dans localStorage :
+    - ai_pulse_stats : Statistiques de visite
+    - ai_pulse_preferences : Préférences utilisateur
+    - ai_pulse_read_articles : Articles lus
+
+VERSION: 1.0.0
+DERNIÈRE MISE À JOUR: Février 2026
+================================================================================
+-->
 <html lang="en">
 
 <head>
+    <!--
+    ============================================================================
+    EN-TÊTE HTML (HEAD)
+    ============================================================================
+
+    Cette section contient les métadonnées de la page :
+    - Encodage des caractères
+    - Configuration mobile
+    - Titre de l'onglet
+    - Liens vers les ressources externes
+    ============================================================================
+    -->
+
+    <!-- Encodage UTF-8 pour les caractères spéciaux -->
     <meta charset="UTF-8">
+
+    <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de l'onglet du navigateur -->
     <title>AI-Pulse - Statistics</title>
+
+    <!-- Lien vers l'application iOS GitHub (optionnel) -->
     <meta name="apple-itunes-app"
         content="app-id=1477376905, app-argument=https://github.com/ThePhoenixAgency/AI-Pulse">
+
+    <!-- Favicon : icône de l'onglet -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- Icône pour appareils Apple (iPhone, iPad) -->
     <link rel="apple-touch-icon" href="./assets/icon.png">
+
+    <!-- Manifest pour PWA (Progressive Web App) -->
     <link rel="manifest" href="./manifest.json">
+
+    <!-- Feuille de styles principale -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!--
+    ============================================================================
+    STYLES SPÉCIFIQUES À LA PAGE STATISTIQUES
+    ============================================================================
+
+    Ces styles sont propres à cette page et ne sont pas dans style.css.
+    Ils définissent l'apparence des cartes de statistiques.
+
+    CLASSES DÉFINIES:
+    - .stats-grid : Grille responsive pour les cartes
+    - .stat-card : Carte individuelle de statistique
+    - .stat-value : Grande valeur numérique
+    - .stat-label : Label descriptif
+    ============================================================================
+    -->
     <style>
+        /* ====================================================================
+           GRILLE DES STATISTIQUES
+           ====================================================================
+
+           Disposition en grille des cartes de statistiques.
+           - grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+             Crée des colonnes de minimum 280px, maximum 1 fraction
+             Le nombre de colonnes s'adapte automatiquement à l'écran
+           - gap: 2rem : Espace de 2rem entre les cartes
+        ==================================================================== */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 2rem;                  /* Espace entre les cartes */
+            margin-bottom: 4rem;        /* Espace après la grille */
         }
 
+        /* ====================================================================
+           CARTE DE STATISTIQUE
+           ====================================================================
+
+           Style individuel pour chaque carte de stat.
+           - background: rgba() : Fond semi-transparent
+           - backdrop-filter: blur() : Effet de flou derrière
+           - transition: all 0.3s : Animation fluide au hover
+        ==================================================================== */
         .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);  /* Fond blanc 5% opacité */
+            backdrop-filter: blur(10px);             /* Effet de flou */
+            border-radius: 20px;                     /* Coins arrondis */
+            padding: 2rem;                           /* Espace intérieur */
+            border: 1px solid rgba(255, 255, 255, 0.1);  /* Bordure subtile */
+            transition: all 0.3s ease;               /* Animation fluide */
         }
 
+        /* ====================================================================
+           EFFET AU SURVOL (HOVER)
+           ====================================================================
+
+           Quand on survole une carte :
+           - Elle monte de 10px (translateY)
+           - La bordure devient cyan
+           - Une ombre cyan apparaît
+        ==================================================================== */
         .stat-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+            transform: translateY(-10px);           /* Monte de 10px */
+            border-color: var(--primary);           /* Bordure cyan */
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);  /* Ombre cyan */
         }
 
+        /* ====================================================================
+           VALEUR DE LA STATISTIQUE
+           ====================================================================
+
+           Grande valeur numérique affichée dans la carte.
+           Exemple : "42" pour le nombre de visites
+        ==================================================================== */
         .stat-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin: 1rem 0;
+            font-size: 3rem;            /* Très grande taille */
+            font-weight: bold;          /* Texte en gras */
+            color: var(--primary);      /* Couleur cyan */
+            margin: 1rem 0;             /* Marge verticale */
         }
 
+        /* ====================================================================
+           LABEL DE LA STATISTIQUE
+           ====================================================================
+
+           Texte descriptif sous la valeur.
+           Exemple : "Your Visits" ou "Page Views"
+        ==================================================================== */
         .stat-label {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            color: var(--text-dim);
+            font-size: 1.2rem;          /* Taille moyenne */
+            opacity: 0.8;               /* Légèrement transparent */
+            color: var(--text-dim);     /* Couleur grise */
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+    <!--
+    ============================================================================
+    EN-TÊTE DU SITE (HEADER)
+    ============================================================================
+
+    Barre de navigation identique à toutes les pages.
+    Aucun lien n'est marqué comme actif car Statistics n'est pas dans le menu principal.
+    ============================================================================
+    -->
     <header class="site-header">
+        <!-- Logo du site avec effet de transparence -->
         <div class="brand-logo">
             <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
         </div>
+
+        <!-- Navigation principale -->
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="app.html">Reader</a>
@@ -62,41 +198,117 @@
         </nav>
     </header>
 
-    <!-- Main Content -->
+    <!--
+    ============================================================================
+    CONTENU PRINCIPAL
+    ============================================================================
+
+    Zone principale contenant le tableau de bord des statistiques.
+    - margin-top: 40px : Espace sous le header
+    - flex: 1 : Prend tout l'espace vertical disponible
+    ============================================================================
+    -->
     <div class="container fade-in" style="margin-top: 40px; flex: 1;">
+
+        <!-- Titre de la page -->
         <h1 style="text-align: center; margin-bottom: 3rem;">Statistics Dashboard (Local)</h1>
 
+        <!--
+        ====================================================================
+        GRILLE DES STATISTIQUES
+        ====================================================================
+
+        6 cartes affichant différentes statistiques :
+        1. Your Visits : Nombre de sessions
+        2. Page Views : Pages vues
+        3. Your ID : Identifiant local
+        4. Last Visit : Dernière visite
+        5. Your Locations : Localisations
+        6. Articles Read : Articles lus
+        ====================================================================
+        -->
         <div class="stats-grid">
+
+            <!--
+            ================================================================
+            CARTE 1 : NOMBRE DE VISITES
+            ================================================================
+            Affiche le nombre de sessions uniques enregistrées.
+            La valeur est mise à jour par JavaScript (tracker.js)
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Your Visits</div>
+                <!-- id="total-visitors" : mis à jour par le script en bas de page -->
                 <div class="stat-value" id="total-visitors">0</div>
                 <p style="font-size: 0.8rem; color: #64748b;">Logged unique ID sessions</p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 2 : PAGES VUES
+            ================================================================
+            Affiche le nombre total de pages visitées.
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Page Views</div>
+                <!-- id="page-views" : mis à jour par le script -->
                 <div class="stat-value" id="page-views">0</div>
                 <p style="font-size: 0.8rem; color: #64748b;">Total pages browsed</p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 3 : IDENTIFIANT LOCAL
+            ================================================================
+            Affiche l'identifiant unique généré pour ce navigateur.
+            C'est un UUID stocké dans localStorage.
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Your ID</div>
+                <!-- Style spécial : texte plus petit car l'ID est long -->
+                <!-- word-break: break-all : permet de couper l'ID sur plusieurs lignes -->
                 <div class="stat-value" id="visitor-id" style="font-size: 1rem; word-break: break-all;">...</div>
                 <p style="font-size: 0.8rem; color: #64748b;">Local Tracking ID</p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 4 : DERNIÈRE VISITE
+            ================================================================
+            Affiche la date et l'heure de la dernière visite.
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Last Visit</div>
                 <div class="stat-value" id="last-visit" style="font-size: 1.2rem; margin: 1.5rem 0;">...</div>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 5 : LOCALISATIONS
+            ================================================================
+            Affiche les villes/pays détectés via l'adresse IP.
+            La localisation est approximative (ville/pays, pas GPS).
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Your Locations</div>
+                <!-- white-space: pre-wrap : préserve les retours à la ligne -->
                 <div class="stat-value" id="user-locations"
                     style="font-size: 1rem; margin: 1.5rem 0; white-space: pre-wrap;">Locating...</div>
                 <p style="font-size: 0.8rem; color: #64748b;">Based on IP</p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 6 : ARTICLES LUS
+            ================================================================
+            Affiche le nombre d'articles sur lesquels l'utilisateur a cliqué.
+            ================================================================
+            -->
             <div class="stat-card">
                 <div class="stat-label">Articles Read</div>
                 <div class="stat-value" id="articles-read">0</div>
@@ -104,6 +316,14 @@
             </div>
         </div>
 
+        <!--
+        ====================================================================
+        NOTE EXPLICATIVE
+        ====================================================================
+        Explique que les statistiques sont locales et que le site
+        ne peut pas voir les données des autres visiteurs.
+        ====================================================================
+        -->
         <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; margin-bottom: 40px;">
             <p><strong>Note:</strong> Since this site runs without a backend database, statistics are tracking your
                 personal local session data stored in your browser. We cannot display data from other visitors globally.
@@ -111,6 +331,16 @@
         </div>
     </div>
 
+    <!--
+    ============================================================================
+    BOUTONS DE NAVIGATION RAPIDE (ELEVATOR)
+    ============================================================================
+
+    Deux boutons flottants pour naviguer rapidement :
+    - ▲ : Remonter en haut de la page
+    - ▼ : Descendre en bas de la page
+    ============================================================================
+    -->
     <div class="elevator">
         <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
             ▲
@@ -121,7 +351,12 @@
         </button>
     </div>
 
-    <!-- Footer -->
+    <!--
+    ============================================================================
+    PIED DE PAGE (FOOTER)
+    ============================================================================
+    ============================================================================
+    -->
     <footer class="site-footer">
         <div class="footer-links">
             <a href="privacy.html">Privacy</a>
@@ -137,33 +372,112 @@
         <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>. All rights reserved.</p>
     </footer>
 
+    <!--
+    ============================================================================
+    SCRIPTS JAVASCRIPT
+    ============================================================================
+
+    FICHIERS:
+    - tracker.js : Contient l'objet Tracker avec la méthode getStats()
+    - ui.js : Logique de l'interface
+    ============================================================================
+    -->
     <script src="./js/tracker.js"></script>
     <script src="./js/ui.js"></script>
+
+    <!--
+    ============================================================================
+    SCRIPT DE MISE À JOUR DES STATISTIQUES
+    ============================================================================
+
+    Ce script récupère les statistiques depuis Tracker.getStats()
+    et met à jour les éléments HTML de la page.
+
+    DONNÉES RÉCUPÉRÉES:
+    - stats.sessions : Nombre de sessions
+    - stats.pageViews : Nombre de pages vues
+    - stats.visitorId : Identifiant unique du visiteur
+    - stats.articleClicks : Nombre d'articles cliqués
+    - stats.lastVisit : Timestamp de la dernière visite
+    - stats.locations : Tableau des localisations détectées
+
+    FONCTIONNEMENT:
+    1. Attendre le chargement complet de la page (load)
+    2. Appeler Tracker.getStats() pour récupérer les données
+    3. Mettre à jour chaque élément HTML avec les valeurs
+    4. Formater les dates et localisations pour l'affichage
+    ============================================================================
+    -->
     <script>
-        // Update Stats UI
+        /**
+         * =====================================================================
+         * MISE À JOUR DE L'INTERFACE UTILISATEUR
+         * =====================================================================
+         *
+         * Cette fonction est exécutée quand la page est complètement chargée.
+         * Elle récupère les statistiques depuis localStorage et met à jour
+         * les éléments HTML de la page.
+         *
+         * @listens window:load - Déclenché quand la page est prête
+         */
         window.addEventListener('load', () => {
+
+            // ─────────────────────────────────────────────────────────────────
+            // ÉTAPE 1 : Récupérer les statistiques
+            // ─────────────────────────────────────────────────────────────────
+            // Tracker.getStats() est défini dans js/tracker.js
+            // Il retourne un objet avec toutes les statistiques
             const stats = Tracker.getStats();
 
+            // ─────────────────────────────────────────────────────────────────
+            // ÉTAPE 2 : Mettre à jour les valeurs simples
+            // ─────────────────────────────────────────────────────────────────
+
+            // Nombre de sessions (visites uniques)
             document.getElementById('total-visitors').textContent = stats.sessions;
+
+            // Nombre de pages vues
             document.getElementById('page-views').textContent = stats.pageViews;
+
+            // Identifiant unique du visiteur (UUID)
             document.getElementById('visitor-id').textContent = stats.visitorId;
+
+            // Nombre d'articles cliqués (avec valeur par défaut 0)
             document.getElementById('articles-read').textContent = stats.articleClicks || 0;
 
+            // ─────────────────────────────────────────────────────────────────
+            // ÉTAPE 3 : Formater et afficher la dernière visite
+            // ─────────────────────────────────────────────────────────────────
             if (stats.lastVisit) {
+                // Convertir le timestamp en objet Date
                 const date = new Date(stats.lastVisit);
-                document.getElementById('last-visit').textContent = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+
+                // Formater : "12/02/2026 14:30:00" (format local)
+                document.getElementById('last-visit').textContent =
+                    date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
             } else {
+                // Si pas de dernière visite, c'est la première fois
                 document.getElementById('last-visit').textContent = "First Visit";
             }
 
-            // Format locations
+            // ─────────────────────────────────────────────────────────────────
+            // ÉTAPE 4 : Formater et afficher les localisations
+            // ─────────────────────────────────────────────────────────────────
             if (stats.locations && stats.locations.length > 0) {
+                // Transformer le tableau de localisations en texte
+                // Chaque localisation peut être une string ou un objet {city, country}
                 const locs = stats.locations.map(l => {
+                    // Si c'est déjà une string, la retourner telle quelle
                     if (typeof l === 'string') return l;
+
+                    // Sinon, formater "Ville, Pays"
                     return `${l.city}, ${l.country}`;
-                }).join('\n');
+
+                }).join('\n');  // Joindre avec des retours à la ligne
+
                 document.getElementById('user-locations').textContent = locs;
             } else {
+                // Si aucune localisation détectée
                 document.getElementById('user-locations').textContent = "Unknown";
             }
         });
