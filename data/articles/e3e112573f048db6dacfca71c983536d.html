@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SMS Phishers Pivot to Points, Taxes, Fake Retailers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>SMS Phishers Pivot to Points, Taxes, Fake Retailers</h1>
+  <div class="metadata">
+    Source: Krebs on Security | Date: 12/4/2025 | Lang: EN |
+    <a href="https://krebsonsecurity.com/2025/12/sms-phishers-pivot-to-points-taxes-fake-retailers/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+												<p>China-based phishing groups blamed for non-stop scam SMS messages about a supposed wayward package or unpaid toll fee are promoting a new offering, just in time for the holiday shopping season: Phishing kits for mass-creating fake but convincing e-commerce websites that convert customer payment card data into mobile wallets from Apple and Google. Experts say these same phishing groups also are now using SMS lures that promise unclaimed tax refunds and mobile rewards points.</p>
+<p>Over the past week, thousands of domain names were registered for scam websites that purport to offer <strong>T-Mobile</strong> customers the opportunity to claim a large number of rewards points. The phishing domains are being promoted by scam messages sent via Apple’s iMessage service or the functionally equivalent RCS messaging service built into Google phones.</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/tmobpoints-smish.png" alt="" /></p><p>An instant message spoofing T-Mobile says the recipient is eligible to claim thousands of rewards points.</p></div>
+<p>The website scanning service <strong>urlscan.io</strong> <a href="http://urlscan.io/result/019a609e-8dda-7612-a4b1-a6fe2c0bff6d" target="_blank">shows</a> thousands of these phishing domains have been deployed in just the past few days alone. The phishing websites will only load if the recipient visits with a mobile device, and they ask for the visitor’s name, address, phone number and payment card data to claim the points.</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/tmob-points-site.png" alt="" /></p><p>A phishing website registered this week that spoofs T-Mobile.</p></div>
+<p>If card data is submitted, the site will then prompt the user to share a one-time code sent via SMS by their financial institution. In reality, the bank is sending the code because the fraudsters have just attempted to enroll the victim’s phished card details in a mobile wallet from Apple or Google. If the victim also provides that one-time code, the phishers can then <a href="https://krebsonsecurity.com/2025/02/how-phished-data-turns-into-apple-google-wallets/" target="_blank">link the victim’s card to a mobile device that they physically control</a>.<span></span></p>
+<p>Pivoting off these T-Mobile phishing domains in urlscan.io reveals a similar scam targeting <strong>AT&amp;T</strong> customers:</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/att-smish.png" alt="" /></p><p>An SMS phishing or “smishing” website targeting AT&amp;T users.</p></div>
+<p><strong>Ford Merrill</strong> works in security research at <a href="https://www.secalliance.com/" target="_blank">SecAlliance</a>, a <a href="https://www.csis.com/" target="_blank">CSIS Security Group</a> company. Merrill said multiple China-based cybercriminal groups that sell phishing-as-a-service platforms have been using the mobile points lure for some time, but the scam has only recently been pointed at consumers in the United States.</p>
+<p>“These points redemption schemes have not been very popular in the U.S., but have been in other geographies like EU and Asia for a while now,” Merrill said.</p>
+<p>A review of other domains flagged by urlscan.io as tied to this Chinese SMS phishing syndicate shows they are also spoofing U.S. state tax authorities, telling recipients they have an unclaimed tax refund. Again, the goal is to phish the user’s payment card information and one-time code.</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/dctaxphish.png" alt="" /></p><p>A text message that spoofs the District of Columbia’s Office of Tax and Revenue.</p></div>
+<h2>CAVEAT EMPTOR</h2>
+<p>Many SMS phishing or “smishing” domains are quickly flagged by browser makers as malicious. But Merrill said one burgeoning area of growth for these phishing kits — fake e-commerce shops — can be far harder to spot because they do not call attention to themselves by spamming the entire world.</p>
+<p>Merrill said the same Chinese phishing kits used to blast out package redelivery message scams are equipped with modules that make it simple to quickly deploy a fleet of fake but convincing e-commerce storefronts. Those phony stores are typically advertised on <strong>Google</strong> and <strong>Facebook</strong>, and consumers usually end up at them by searching online for deals on specific products.</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/fake-ecom.png" alt="" /></p><p>A machine-translated screenshot of an ad from a China-based phishing group promoting their fake e-commerce shop templates.</p></div>
+<p>With these fake e-commerce stores, the customer is supplying their payment card and personal information as part of the normal check-out process, which is then punctuated by a request for a one-time code sent by your financial institution. The fake shopping site claims the code is required by the user’s bank to verify the transaction, but it is sent to the user because the scammers immediately attempt to enroll the supplied card data in a mobile wallet.</p>
+<p>According to Merrill, it is only during the check-out process that these fake shops will fetch the malicious code that gives them away as fraudulent, which tends to make it difficult to locate these stores simply by mass-scanning the web. Also, most customers who pay for products through these sites don’t realize they’ve been snookered until weeks later when the purchased item fails to arrive.</p>
+<p>“The fake e-commerce sites are tough because a lot of them can fly under the radar,” Merrill said. “They can go months without being shut down, they’re hard to discover, and they generally don’t get flagged by safe browsing tools.”</p>
+<p>Happily, reporting these SMS phishing lures and websites is one of the fastest ways to get them properly identified and shut down. <strong>Raymond Dijkxhoorn</strong> is the CEO and a founding member of <a href="https://www.surbl.org/" target="_blank">SURBL</a>, a widely-used blocklist that flags domains and IP addresses known to be used in unsolicited messages, phishing and malware distribution. SURBL has created a website called <a href="https://smishreport.com/" target="_blank">smishreport.com</a> that asks users to forward a screenshot of any smishing message(s) received.</p>
+<p>“If [a domain is] unlisted, we can find and add the new pattern and kill the rest” of the matching domains, <strong>Dijkxhoorn </strong>said. “Just make a screenshot and upload. The tool does the rest.”</p>
+<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2025/12/smishreport.png" alt="" /></p><p>The SMS phishing reporting site smishreport.com.</p></div>
+<p>Merrill said the last few weeks of the calendar year typically see a big uptick in smishing — particularly package redelivery schemes that spoof the <strong>U.S. Postal Service</strong> or commercial shipping companies.</p>
+<p>“Every holiday season there is an explosion in smishing activity,” he said. “Everyone is in a bigger hurry, frantically shopping online, paying less attention than they should, and they’re just in a better mindset to get phished.”</p>
+<h2>SHOP ONLINE LIKE A SECURITY PRO</h2>
+<p>As we can see, adopting a shopping strategy of simply buying from the online merchant with the lowest advertised prices can be a bit like playing Russian Roulette with your wallet. Even people who shop mainly at big-name online stores <a href="https://krebsonsecurity.com/2017/04/how-cybercrooks-put-the-beatdown-on-my-beats/" target="_blank">can get scammed</a> if they’re not wary of too-good-to-be-true offers (think third-party sellers on these platforms).</p>
+<p>If you don’t know much about the online merchant that has the item you wish to buy, take a few minutes to investigate its reputation. If you’re buying from an online store that is brand new, the risk that you will get scammed increases significantly. How do you know the lifespan of a site selling that must-have gadget at the lowest price? One easy way to get a quick idea is to run <a href="http://whois.domaintools.com/krebsonsecurity.com">a basic WHOIS search</a> on the site’s domain name. The more recent the site’s “created” date, the more likely it is a phantom store.</p>
+<p>If you receive a message warning about a problem with an order or shipment, visit the e-commerce or shipping site directly, and avoid clicking on links or attachments — particularly missives that warn of some dire consequences unless you act quickly. Phishers and malware purveyors typically seize upon some kind of emergency to create a false alarm that often causes recipients to temporarily let their guard down.</p>
+<p>But it’s not just outright scammers who can trip up your holiday shopping: Often times, items that are advertised at steeper discounts than other online stores make up for it by charging way more than normal for shipping and handling.</p>
+<p>So be careful what you agree to: Check to make sure you know how long the item will take to be shipped, and that you understand the store’s return policies. Also, keep an eye out for hidden surcharges, and be wary of blithely clicking “ok” during the checkout process.</p>
+<p>Most importantly, keep a close eye on your monthly statements. If I were a fraudster, I’d most definitely wait until the holidays to cram through a bunch of unauthorized charges on stolen cards, so that the bogus purchases would get buried amid a flurry of other legitimate transactions. That’s why it’s key to closely review your credit card bill and to quickly dispute any charges you didn’t authorize.</p>
+											</div></div>
+  </div>
+</body>
+</html>

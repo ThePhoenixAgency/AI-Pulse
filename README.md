@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 14 Feb 2026 12:06:19 GMT
+**Last Update:** Sat, 14 Feb 2026 12:32:14 GMT
 
 ---
 
@@ -308,20 +308,7 @@ SECCON CTF
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="CTFtime">
 
-### 3. `EN` [BearcatCTF 2026 - Setting Sail](data/articles/6e3a1c589cf7870eb194b0d74b8b3b73.html)
-**Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition`
-Name: BearcatCTF 2026 - Setting Sail (an Bearcat CTF event.)
-[add to calendar]
-On-line
-2900 Reading Rd, Cincinnati, OH 45206
-https://bearcatctf.io/
-Cyber@UC
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="CTFtime">
-
-### 4. `EN` [UniVsThreats 26 Quals CTF](data/articles/ebfee73c02787c9bacd1ca62793cff26.html)
+### 3. `EN` [UniVsThreats 26 Quals CTF](data/articles/ebfee73c02787c9bacd1ca62793cff26.html)
 **Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition`
 Name: UniVsThreats 26 Quals CTF (an UniVsThreats CTF  event.)
 [add to calendar]
@@ -329,6 +316,19 @@ On-line
 Online
 https://cybersec.uvt.ro/events/UniVsThreats26Quals/
 UVT-CTF
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="CTFtime">
+
+### 4. `EN` [BearcatCTF 2026 - Setting Sail](data/articles/6e3a1c589cf7870eb194b0d74b8b3b73.html)
+**Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition`
+Name: BearcatCTF 2026 - Setting Sail (an Bearcat CTF event.)
+[add to calendar]
+On-line
+2900 Reading Rd, Cincinnati, OH 45206
+https://bearcatctf.io/
+Cyber@UC
 
 </div>
 
@@ -827,7 +827,15 @@ The post Smart city technologies gain global momentum across core urban services
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 1. `FR` [Une nouvelle pilule anti-cholestérol change la donne face aux statines](data/articles/1f1b1d55d0a5c4bfe6062b478bbb0acc.html)
+### 1. `FR` [Les bonobos peuvent-ils vraiment faire semblant ? La réponse de Kanzi](data/articles/342eec31e63011a78c22b710ae0b7379.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Une étude publiée dans la revue Science révèle que Kanzi, un bonobo, a démontré une capacité à comprendre le jeu de simulation en suivant des objets imaginaires. Ces expériences, semblables à des "tea parties", suggèrent que l'imagination n'est pas une faculté exclusivement humaine et pourrait remonter à notre ancêtre commun.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 2. `FR` [Une nouvelle pilule anti-cholestérol change la donne face aux statines](data/articles/1f1b1d55d0a5c4bfe6062b478bbb0acc.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Un nouveau médicament oral, l'enlicitide, développé par Merck, a démontré une réduction spectaculaire du "mauvais" cholestérol (LDL) de près de 60% lors d'un essai clinique majeur. Publiés dans le New England Journal of Medicine, ces résultats pourraient offrir une alternative simple et efficace aux injections actuelles pour les millions de patients à haut risque cardiovasculaire qui peinent à atteindre leurs objectifs thérapeutiques.
 
@@ -835,7 +843,7 @@ Un nouveau médicament oral, l'enlicitide, développé par Merck, a démontré u
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 2. `FR` [Stellantis admet son erreur : la chasse aux coûts de Carlos Tavares a coûté 22 milliards](data/articles/c7e222dea277b2b99d96856065a76c3d.html)
+### 3. `FR` [Stellantis admet son erreur : la chasse aux coûts de Carlos Tavares a coûté 22 milliards](data/articles/c7e222dea277b2b99d96856065a76c3d.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Stellantis fait face à une charge de 22 milliards de dollars et opère un virage stratégique majeur. Le nouveau patron, Antonio Filosa, désavoue publiquement la politique de réduction des coûts de son prédécesseur, Carlos Tavares, la qualifiant d'erreur. Entre réembauches d'ingénieurs et critiques des objectifs européens sur l'électrique, le groupe tente de corriger le tir.
 
@@ -843,7 +851,7 @@ Stellantis fait face à une charge de 22 milliards de dollars et opère un virag
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 3. `FR` [Bombe nucléaire contre astéroïde : la science valide enfin le scénario d'Armageddon](data/articles/eb953f17a9c62e6e98c2c574414b853f.html)
+### 4. `FR` [Bombe nucléaire contre astéroïde : la science valide enfin le scénario d'Armageddon](data/articles/eb953f17a9c62e6e98c2c574414b853f.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Une étude menée au CERN révèle une surprise de taille : les astéroïdes métalliques, loin de se briser sous un impact extrême, deviennent en réalité plus résistants. Cette découverte majeure valide la "déflexion nucléaire" comme une option crédible pour protéger la Terre, changeant radicalement la donne pour la défense planétaire face à une menace imminente.
 
@@ -851,7 +859,7 @@ Une étude menée au CERN révèle une surprise de taille : les astéroïdes mé
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 4. `EN` [Former Microsoft executive claims he "fought hard" to keep this Windows 11 feature, but lost](https://www.neowin.net/news/former-microsoft-executive-claims-he-fought-hard-to-keep-this-windows-11-feature-but-lost/)
+### 5. `EN` [Former Microsoft executive claims he "fought hard" to keep this Windows 11 feature, but lost](https://www.neowin.net/news/former-microsoft-executive-claims-he-fought-hard-to-keep-this-windows-11-feature-but-lost/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Ex-Microsoft executive reveals the drama behind what really happened to a fan-favorite feature in Windows 11. Read more...
 
@@ -859,7 +867,7 @@ Ex-Microsoft executive reveals the drama behind what really happened to a fan-fa
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 5. `EN` [Weekend PC Game Deals: Battlefield, God of War, Sonic, and more go on sale](https://www.neowin.net/news/weekend-pc-game-deals-battlefield-god-of-war-sonic-and-more-go-on-sale/)
+### 6. `EN` [Weekend PC Game Deals: Battlefield, God of War, Sonic, and more go on sale](https://www.neowin.net/news/weekend-pc-game-deals-battlefield-god-of-war-sonic-and-more-go-on-sale/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 This weekend's PC game deals include a massive number of multiplayer games on sale, a bundle full of horror titles, double freebies, and more. Read more...
 
@@ -867,7 +875,7 @@ This weekend's PC game deals include a massive number of multiplayer games on sa
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 6. `FR` [Bon plan Orange Pack Open : forfait 120 Go 5G + Livebox Lite Fibre à 46,98€/mois](data/articles/1341d3a9a4bba4210086f0bd4086aa4b.html)
+### 7. `FR` [Bon plan Orange Pack Open : forfait 120 Go 5G + Livebox Lite Fibre à 46,98€/mois](data/articles/1341d3a9a4bba4210086f0bd4086aa4b.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Pourquoi payer plein pot quand on peut combiner ? Orange propose en ce moment un pack "tout-en-un" box fibre + forfait mobile qui simplifie votre budget sans compromis sur la performance.
 
@@ -875,7 +883,7 @@ Pourquoi payer plein pot quand on peut combiner ? Orange propose en ce moment un
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 7. `FR` [L'activité tectonique est le véritable moteur caché du climat terrestre](data/articles/c6c6d9f3fb0647f8b4ceeccd8ca7875f.html)
+### 8. `FR` [L'activité tectonique est le véritable moteur caché du climat terrestre](data/articles/c6c6d9f3fb0647f8b4ceeccd8ca7875f.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Une étude révèle que les mouvements tectoniques ont un impact bien plus grand sur le climat que prévu. Le cycle du carbone profond, dicté par l'écartement des plaques et la subduction des sédiments, est un moteur clé des ères glaciaires et chaudes. Une découverte qui oblige à repenser nos modèles climatiques.
 
@@ -883,7 +891,7 @@ Une étude révèle que les mouvements tectoniques ont un impact bien plus grand
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 8. `EN` [Android 17 beta now available with lots of UX improvements](https://www.neowin.net/news/android-17-beta-now-available-with-lots-of-ux-improvements/)
+### 9. `EN` [Android 17 beta now available with lots of UX improvements](https://www.neowin.net/news/android-17-beta-now-available-with-lots-of-ux-improvements/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Android 17 Beta arrives with quiet but meaningful changes, hinting at a smarter release cycle and subtle polish ahead. Read more...
 
@@ -891,7 +899,7 @@ Android 17 Beta arrives with quiet but meaningful changes, hinting at a smarter 
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 9. `FR` [Dépistage du cancer du sein : l'IA change la donne et sauve des vies !](data/articles/e3b0f5ac638b5324c0aeff5e44fc6683.html)
+### 10. `FR` [Dépistage du cancer du sein : l'IA change la donne et sauve des vies !](data/articles/e3b0f5ac638b5324c0aeff5e44fc6683.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 L'intelligence artificielle s'impose comme un outil décisif dans la lutte contre le cancer du sein. De vastes essais cliniques, comme l'étude suédoise MASAI, démontrent que les systèmes d'IA améliorent la précision des diagnostics par mammographie et IRM. Résultat : une détection accrue des cancers, une baisse des faux positifs et une charge de travail allégée pour les radiologues.
 
@@ -899,7 +907,7 @@ L'intelligence artificielle s'impose comme un outil décisif dans la lutte contr
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 10. `EN` [Rufus blames Microsoft for allegedly blocking latest Windows 11 ISO downloads](https://www.neowin.net/news/rufus-blames-microsoft-for-allegedly-blocking-latest-windows-11-iso-downloads/)
+### 11. `EN` [Rufus blames Microsoft for allegedly blocking latest Windows 11 ISO downloads](https://www.neowin.net/news/rufus-blames-microsoft-for-allegedly-blocking-latest-windows-11-iso-downloads/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Microsoft has seemingly blocked Windows 11 ISO downloads for certain users as it may be trying to get them to only use the official way. Read more...
 
@@ -907,7 +915,7 @@ Microsoft has seemingly blocked Windows 11 ISO downloads for certain users as it
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 11. `EN` [Windows 11 may finally let you move and resize the taskbar in 2026 as Microsoft responds to user feedback](data/articles/f9d462ea30a18bd99646f9d067f08a2d.html)
+### 12. `EN` [Windows 11 may finally let you move and resize the taskbar in 2026 as Microsoft responds to user feedback](data/articles/f9d462ea30a18bd99646f9d067f08a2d.html)
 **Source:** Windows Latest | **Tags:** `Windows` `Updates` `Microsoft`
 Microsoft is reportedly preparing to restore one of the most requested features in Windows 11 the ability to move the taskbar to the top or sides of the screen. Alongside this change, the company is also working on taskbar resizing. The update is expected as part of Microsoft’s broader 2026 improvements.
 The post Windows 11 may finally let you move and resize the taskbar in 2026 as Microsoft responds to user feedback appeared first on Windows Latest
@@ -916,7 +924,7 @@ The post Windows 11 may finally let you move and resize the taskbar in 2026 as M
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 12. `EN` [KDE team adds finishing touches to Plasma 6.6 as stable release date nears](https://www.neowin.net/news/kde-team-adds-finishing-touches-to-plasma-66-as-stable-release-date-nears/)
+### 13. `EN` [KDE team adds finishing touches to Plasma 6.6 as stable release date nears](https://www.neowin.net/news/kde-team-adds-finishing-touches-to-plasma-66-as-stable-release-date-nears/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 The KDE team has published a new "This Week in Plasma" update, highlighting various changes coming to Plasma 6.6, along with a look ahead at Plasma 6.7. Read more...
 
@@ -924,7 +932,7 @@ The KDE team has published a new "This Week in Plasma" update, highlighting vari
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 13. `FR` [Microsoft lance le compte à rebours pour Exchange Web Services](data/articles/eb78be86466944eb5a40a031a4fd20ff.html)
+### 14. `FR` [Microsoft lance le compte à rebours pour Exchange Web Services](data/articles/eb78be86466944eb5a40a031a4fd20ff.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Après près de deux décennies de service, une page se tourne pour Exchange Web Services qui tire sa révérence dans le cloud de Microsoft.
 
@@ -932,7 +940,7 @@ Après près de deux décennies de service, une page se tourne pour Exchange Web
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 14. `EN` [Microsoft begins pushing Microsoft 365 Copilot on macOS if you use fresh installs of Microsoft 365 suite enterprise](data/articles/5f72637be4aab30824cd9f1b2b2a7687.html)
+### 15. `EN` [Microsoft begins pushing Microsoft 365 Copilot on macOS if you use fresh installs of Microsoft 365 suite enterprise](data/articles/5f72637be4aab30824cd9f1b2b2a7687.html)
 **Source:** Windows Latest | **Tags:** `Windows` `Updates` `Microsoft`
 Microsoft is moving ahead with its plans to push Microsoft 365 Copilot to more customers on macOS, mostly enterprises.
 The post Microsoft begins pushing Microsoft 365 Copilot on macOS if you use fresh installs of Microsoft 365 suite enterprise appeared first on Windows Latest
@@ -941,7 +949,7 @@ The post Microsoft begins pushing Microsoft 365 Copilot on macOS if you use fres
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Windows Latest">
 
-### 15. `EN` [Former Bing boss says Windows 11 killed the vertical taskbar for symmetric UX, says it was the best productivity feature](data/articles/b2ea5ee8ca7e62084cb7e1db44073655.html)
+### 16. `EN` [Former Bing boss says Windows 11 killed the vertical taskbar for symmetric UX, says it was the best productivity feature](data/articles/b2ea5ee8ca7e62084cb7e1db44073655.html)
 **Source:** Windows Latest | **Tags:** `Windows` `Updates` `Microsoft`
 Former Bing boss says Microsoft cut Windows 11’s vertical taskbar for its “symmetric panes” design, calling it the best productivity feature.
 The post Former Bing boss says Windows 11 killed the vertical taskbar for symmetric UX, says it was the best productivity feature appeared first on Windows Latest
@@ -950,7 +958,7 @@ The post Former Bing boss says Windows 11 killed the vertical taskbar for symmet
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 16. `EN` [Fake job recruiters hide malware in developer coding challenges](data/articles/ee380b316e96b5eddd565778c45dc956.html)
+### 17. `EN` [Fake job recruiters hide malware in developer coding challenges](data/articles/ee380b316e96b5eddd565778c45dc956.html)
 **Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
 A new variation of the fake recruiter campaign from North Korean threat actors is targeting JavaScript and Python developers with cryptocurrency-related tasks. [...]
 
@@ -958,7 +966,7 @@ A new variation of the fake recruiter campaign from North Korean threat actors i
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 17. `EN` [Microsoft released KB5077180, KB5077374, KB5076124 Windows 11 setup &amp; recovery updates](https://www.neowin.net/news/microsoft-released-kb5077180-kb5077374-kb5076124-windows-11-setup--recovery-updates/)
+### 18. `EN` [Microsoft released KB5077180, KB5077374, KB5076124 Windows 11 setup &amp; recovery updates](https://www.neowin.net/news/microsoft-released-kb5077180-kb5077374-kb5076124-windows-11-setup--recovery-updates/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Microsoft this week released new dynamic updates for Windows 11 26H1, 25H2 and 24H2 under KB5077178, KB5077180, KB5077374, and KB5076124 for setup and recovery. Read more...
 
@@ -966,7 +974,7 @@ Microsoft this week released new dynamic updates for Windows 11 26H1, 25H2 and 2
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 18. `EN` [Claude LLM artifacts abused to push Mac infostealers in ClickFix attack](data/articles/3f25f3b8855ada23d5d4050340941260.html)
+### 19. `EN` [Claude LLM artifacts abused to push Mac infostealers in ClickFix attack](data/articles/3f25f3b8855ada23d5d4050340941260.html)
 **Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
 Threat actors are abusing Claude artifacts and Google Ads in ClickFix campaigns that deliver infostealer malware to macOS users searching for specific queries. [...]
 
@@ -974,7 +982,7 @@ Threat actors are abusing Claude artifacts and Google Ads in ClickFix campaigns
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 19. `FR` [Meta relance son projet de reconnaissance faciale pour les Ray-Ban](data/articles/be6efd7019bd69e86bedabf256381db4.html)
+### 20. `FR` [Meta relance son projet de reconnaissance faciale pour les Ray-Ban](data/articles/be6efd7019bd69e86bedabf256381db4.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Meta envisage de réactiver son projet de reconnaissance faciale, baptisé « Name Tag », pour ses lunettes connectées Ray-Ban. Des documents internes révèlent une stratégie visant à profiter du contexte politique américain pour lancer cette fonctionnalité controversée, qui soulève d'importantes questions de vie privée et de sécurité pour les utilisateurs et les personnes croisées dans la rue.
 
@@ -982,7 +990,7 @@ Meta envisage de réactiver son projet de reconnaissance faciale, baptisé « Na
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 20. `FR` [Anna's Archive défie Spotify et diffuse des millions de titres volés](data/articles/630821023922cfbfe053c80d5c2669d8.html)
+### 21. `FR` [Anna's Archive défie Spotify et diffuse des millions de titres volés](data/articles/630821023922cfbfe053c80d5c2669d8.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Malgré une injonction judiciaire initiée par Spotify et les grandes maisons de disques, le collectif Anna’s Archive a commencé à diffuser une partie des 300 To de musique dérobés. Environ 2,8 millions de titres, soit 6 To de données, sont désormais accessibles via des torrents, marquant une escalade majeure dans ce conflit.
 
@@ -990,7 +998,7 @@ Malgré une injonction judiciaire initiée par Spotify et les grandes maisons de
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 21. `FR` [Une trentaine d'extensions Chrome malveillantes déguisées en assistants IA](data/articles/d54996efa0402062949a6aa2e1b96d4f.html)
+### 22. `FR` [Une trentaine d'extensions Chrome malveillantes déguisées en assistants IA](data/articles/d54996efa0402062949a6aa2e1b96d4f.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Profitant de l'engouement pour l'IA et ses assistants, une campagne malveillante utilise de fausses extensions Chrome pour espionner des centaines de milliers d'utilisateurs.
 
@@ -998,7 +1006,7 @@ Profitant de l'engouement pour l'IA et ses assistants, une campagne malveillante
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 22. `FR` [La fin des installations surprises : Windows 11 va demander votre consentement pour tout !](data/articles/0336cff4a9f26a42c8863973cb232171.html)
+### 23. `FR` [La fin des installations surprises : Windows 11 va demander votre consentement pour tout !](data/articles/0336cff4a9f26a42c8863973cb232171.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Microsoft s'apprête à transformer en profondeur Windows 11 en s'inspirant des smartphones. Deux nouvelles mesures, le "Windows Baseline Security Mode" et "User Transparency and Consent", vont imposer des demandes d'autorisation explicites pour l'accès aux données et l'exécution d'applications non signées. L'objectif : restaurer la confiance et sécuriser par défaut un écosystème devenu trop vulnérable.
 
@@ -1006,7 +1014,7 @@ Microsoft s'apprête à transformer en profondeur Windows 11 en s'inspirant des 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 23. `EN` [[Price Drop] Save 90% on a lifetime AdGuard Family Plan](https://www.neowin.net/deals/price-drop-save-90-on-a-lifetime-adguard-family-plan/)
+### 24. `EN` [[Price Drop] Save 90% on a lifetime AdGuard Family Plan](https://www.neowin.net/deals/price-drop-save-90-on-a-lifetime-adguard-family-plan/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Get rid of annoying and intrusive ads and protect your device from malware. Read more...
 
@@ -1014,7 +1022,7 @@ Get rid of annoying and intrusive ads and protect your device from malware. Read
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 24. `FR` [Fatigué de lire ? Laissez Gemini vous résumer vos documents Google Docs](data/articles/b522d02b8055e34f0662d40208ef4e8a.html)
+### 25. `FR` [Fatigué de lire ? Laissez Gemini vous résumer vos documents Google Docs](data/articles/b522d02b8055e34f0662d40208ef4e8a.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Face à un document interminable, Google Docs propose une solution radicale : laisser son intelligence artificielle vous en faire un résumé oral pour en saisir l'essentiel en quelques minutes seulement.
 
@@ -1022,7 +1030,7 @@ Face à un document interminable, Google Docs propose une solution radicale : la
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 25. `EN` [Microsoft under fire for allegedly pushing OEMs to exclusively bundle Edge in Windows PCs](https://www.neowin.net/news/microsoft-under-fire-for-allegedly-pushing-oems-to-exclusively-bundle-edge-in-windows-pcs/)
+### 26. `EN` [Microsoft under fire for allegedly pushing OEMs to exclusively bundle Edge in Windows PCs](https://www.neowin.net/news/microsoft-under-fire-for-allegedly-pushing-oems-to-exclusively-bundle-edge-in-windows-pcs/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Microsoft is in hot water again as regulators check if its Jumpstart program nudges PC makers to favor Edge over other browsers. Read more...
 
@@ -1030,7 +1038,7 @@ Microsoft is in hot water again as regulators check if its Jumpstart program nud
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 26. `EN` [Louis Vuitton, Dior, and Tiffany fined $25 million over data breaches](data/articles/f2707960f1808d49042d701ad20bda07.html)
+### 27. `EN` [Louis Vuitton, Dior, and Tiffany fined $25 million over data breaches](data/articles/f2707960f1808d49042d701ad20bda07.html)
 **Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
 South Korea has fined luxury fashion brands Louis Vuitton, Christian Dior Couture, and Tiffany $25 million for failing to implement adequate security measures, which facilitated unauthorized access and the exposure of data belonging to more than 5.5 million customers. [...]
 
@@ -1038,7 +1046,7 @@ South Korea has fined luxury fashion brands Louis Vuitton, Christian Dior Coutur
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 27. `FR` [Un système planétaire monté à l'envers a été découvert](data/articles/c1e30f45291bf0b06cc069f695c0d8d0.html)
+### 28. `FR` [Un système planétaire monté à l'envers a été découvert](data/articles/c1e30f45291bf0b06cc069f695c0d8d0.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Le satellite CHEOPS de l'ESA met au jour un système planétaire inhabituel autour d'une étoile lointaine. Ses planètes se suivent dans un ordre jugé jusqu'alors impossible.
 
@@ -1046,17 +1054,9 @@ Le satellite CHEOPS de l'ESA met au jour un système planétaire inhabituel auto
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 28. `FR` [Le retour des abonnements chez BMW : une stratégie qui va encore faire débat !](data/articles/993a6352be82bc7cceb5d315335fe72f.html)
+### 29. `FR` [Le retour des abonnements chez BMW : une stratégie qui va encore faire débat !](data/articles/993a6352be82bc7cceb5d315335fe72f.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Trois ans après le fiasco des sièges chauffants payants, BMW relance son modèle d'options par souscription avec le nouvel iX3. Désormais, des fonctions comme la caméra 360° ou la conduite semi-autonome, bien que matériellement installées d'office, nécessitent un paiement récurrent pour être activées. Une stratégie visant les revenus logiciels qui ne manquera pas de diviser les consommateurs.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 29. `FR` [Meilleures promos du jour : projecteur ETOE Seal Pro à 259€, paire d'enceintes actives Edifier à 246€...](data/articles/d9126428ffa9a4f0ceb4e1b830327787.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-À la recherche d'une carte graphique, d'un routeur WiFi 7 ou encore d'écouteurs à oreille ouverte ? Voici notre sélection des meilleures promos de cette fin de semaine !
 
 </div>
 
@@ -1085,19 +1085,45 @@ more…
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 2. `EN` [Apple Music pokes fun at latest Spotify price increase](data/articles/c7b0eeea66b9fe0fec44e3b10f91116b.html)
-**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
-Last month, Spotify announced a new round of price increases for subscribers in the United States and other countries. As the price increases start to go into effect starting with February renewals, Apple Music is poking fun at Spotify’s drama on social media.
-Apple Music is also offering a free three-month trial right now. 
-more…
+### 2. `EN` [Apple Music Trolls Spotify Over Price Hike, Promotes 3 Month Free Trial](data/articles/18438e37ea07883209c4f09e9ee37e04.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews` | *Also on: 9to5Mac*
+Spotify has started rolling out another round of price increases in the United States, and the timing has opened the door for a public jab from Apple Music. As February renewals begin at higher rates, Apple Music has taken to social media to remind subscribers that its pricing has not changed. At the same time, […]
+The post Apple Music Trolls Spotify Over Price Hike, Promotes 3 Month Free Trial appeared first on The Mac Observer.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
+
+### 3. `EN` [New Movies on Apple TV This Month: What’s Streaming in February 2026](data/articles/934e725e5ee3eac20825407774f453eb.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+Apple TV keeps February 2026 fairly focused. On the movie side, there is one new Apple Original Film landing this month, and it leans into romance with a fantasy twist. If you came here looking for a longer movie slate, you will want to scan the new series arrivals too, because Apple TV has two […]
+The post New Movies on Apple TV This Month: What’s Streaming in February 2026 appeared first on The Mac Observer.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
+
+### 4. `EN` [Partial Prerendering iOS: Performance, SEO, and WebKit Explained](data/articles/ce44ec2aa7997fd3086a0739abc222c6.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+Partial prerendering has become a significant topic in modern web development. It describes a way to generate parts of a web page ahead of time while leaving other areas to render later. This technique can improve user experience by speeding up how quickly content appears on screens. It also affects how web pages work on […]
+The post Partial Prerendering iOS: Performance, SEO, and WebKit Explained appeared first on The Mac Observer.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
+
+### 5. `EN` [Apple Books and Apple TV Celebrate “The Last Thing He Told Me” Season 2 Premiere](data/articles/15156b6dfe9443c332670e1c3e8994be.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+Apple TV and Apple Books marked the return of The Last Thing He Told Me with a live event in Los Angeles as season two prepares to launch globally. The new season premieres Friday, February 20, with fresh episodes arriving every Friday through April 10. The series builds on the suspense and family drama that […]
+The post Apple Books and Apple TV Celebrate “The Last Thing He Told Me” Season 2 Premiere appeared first on The Mac Observer.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 3. `EN` [Three New Apple Home Products Rumored for 2026](data/articles/fa8cfa2381fef7cd10065a574b31b2fa.html)
+### 6. `EN` [Three New Apple Home Products Rumored for 2026](data/articles/fa8cfa2381fef7cd10065a574b31b2fa.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple has a long list of new products rumored for 2026, including a series of home products that will see the company establishing more of a presence in the smart home space. Robots are on the horizon for 2027, but the 2026 releases will be a little tamer.
 
@@ -1110,7 +1136,7 @@ We're expecting a new HomePod mini 2 to launch at any time. Apple isn't going to
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 4. `EN` [Who is Sabih Khan, Apple's Chief Operating Officer and potential CEO](https://appleinsider.com/articles/26/02/13/who-is-sabih-khan-apples-chief-operating-officer-and-potential-ceo?utm_source=rss)
+### 7. `EN` [Who is Sabih Khan, Apple's Chief Operating Officer and potential CEO](https://appleinsider.com/articles/26/02/13/who-is-sabih-khan-apples-chief-operating-officer-and-potential-ceo?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Sabih Khan is the chief operating officer at Apple, but while he has been in the role for less than a year, his tenure at Apple has lasted for decades. Here's all you need to know about the guy in charge of Apple's operations.
 
@@ -1122,7 +1148,7 @@ When it comes to Apple executives, Sabih Khan is probably one of the lesser-know
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 5. `EN` [Apple to Launch Rebranded ‘Sales Coach’ App for Retail Employees](data/articles/5ce5583d53646ea1b00af746c1b87826.html)
+### 8. `EN` [Apple to Launch Rebranded ‘Sales Coach’ App for Retail Employees](data/articles/5ce5583d53646ea1b00af746c1b87826.html)
 **Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews` | *Also on: MacRumors*
 Apple plans to launch a rebranded Sales Coach app for iPhone and iPad later this month. The new app will replace the existing SEED app and continue to support Apple Store and Apple Authorized Reseller employees with sales training and product knowledge. With this move, Apple aims to refresh how its retail teams access internal […]
 The post Apple to Launch Rebranded ‘Sales Coach’ App for Retail Employees appeared first on The Mac Observer.
@@ -1131,7 +1157,7 @@ The post Apple to Launch Rebranded ‘Sales Coach’ App for Retail Employees ap
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 6. `EN` [Is Apple Phasing Out the iWork Brand?](data/articles/7ebe33b5b974e64cc9236612d5849307.html)
+### 9. `EN` [Is Apple Phasing Out the iWork Brand?](data/articles/7ebe33b5b974e64cc9236612d5849307.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 With the launch of the Creator Studio subscription app offering, Apple may be phasing out the iWork branding that it has used since 2005 for Pages, Keynote, and Numbers.
 
@@ -1144,7 +1170,7 @@ The iWork page that Apple removed was dedicated solely to Pages, Numbers, and Ke
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 7. `EN` [Apple Stock Today: AAPL Drops Below $260 After Recent High](data/articles/3813c63a981cab8ca7a97558f29492d9.html)
+### 10. `EN` [Apple Stock Today: AAPL Drops Below $260 After Recent High](data/articles/3813c63a981cab8ca7a97558f29492d9.html)
 **Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
 Apple Inc. (NASDAQ: AAPL) shares opened the week under pressure and closed lower on Friday trading. The stock hit a low near $255.45 and was last quoted at $255.78, down about 2.3% on the session. This move came after a previous close at $261.73 and reflected heavier trading, with around 55 million shares changing hands, […]
 The post Apple Stock Today: AAPL Drops Below $260 After Recent High appeared first on The Mac Observer.
@@ -1153,7 +1179,7 @@ The post Apple Stock Today: AAPL Drops Below $260 After Recent High appeared fir
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 8. `EN` [Someone Put a 12,000mAh Battery Inside an iPhone 11 Pro, Exposing Capacity Debate](data/articles/2d1e08271486b77911538f69bd5a42ab.html)
+### 11. `EN` [Someone Put a 12,000mAh Battery Inside an iPhone 11 Pro, Exposing Capacity Debate](data/articles/2d1e08271486b77911538f69bd5a42ab.html)
 **Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
 Apple has slowly increased battery sizes in recent iPhones. The eSIM version of the iPhone 17 Pro Max now packs a 5,088mAh cell, and reports suggest the iPhone 18 Pro Max will go even higher. For years, many believed Apple faced internal space limits that prevented larger batteries. A recent battery swap on the iPhone […]
 The post Someone Put a 12,000mAh Battery Inside an iPhone 11 Pro, Exposing Capacity Debate appeared first on The Mac Observer.
@@ -1162,7 +1188,7 @@ The post Someone Put a 12,000mAh Battery Inside an iPhone 11 Pro, Exposing Capac
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 9. `EN` [macOS Tahoe Finder Column View Still Broken After Latest Update](data/articles/4c764c20e577da654922fc5b925ef11a.html)
+### 12. `EN` [macOS Tahoe Finder Column View Still Broken After Latest Update](data/articles/4c764c20e577da654922fc5b925ef11a.html)
 **Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
 Apple released macOS Tahoe last September with a bold Liquid Glass redesign. Since then, the company has shipped two point updates. Yet Finder’s column view still shows a visible interface flaw that affects everyday use. Even after macOS 26.3, the layout problem remains only partially fixed. If you use Finder in column view and keep […]
 The post macOS Tahoe Finder Column View Still Broken After Latest Update appeared first on The Mac Observer.
@@ -1171,7 +1197,7 @@ The post macOS Tahoe Finder Column View Still Broken After Latest Update appeare
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 10. `EN` [Apple Confirms Two-Thirds of iPhones Now Use iOS 26](data/articles/5455c689035511772100579a1bcd867b.html)
+### 13. `EN` [Apple Confirms Two-Thirds of iPhones Now Use iOS 26](data/articles/5455c689035511772100579a1bcd867b.html)
 **Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
 Apple has published the first official adoption figures for iOS 26. The data shows strong early uptake across both iPhone and iPad models. According to the company, 74 percent of iPhones introduced in the last four years now run iOS 26. When you look at all active iPhones, 66 percent have already updated. The numbers […]
 The post Apple Confirms Two-Thirds of iPhones Now Use iOS 26 appeared first on The Mac Observer.
@@ -1180,7 +1206,7 @@ The post Apple Confirms Two-Thirds of iPhones Now Use iOS 26 appeared first on T
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 11. `EN` [iOS 26 adoption rate isn't the crisis some analysts are portraying](https://appleinsider.com/articles/26/02/13/ios-26-adoption-rate-isnt-the-crisis-some-analysts-are-portraying?utm_source=rss)
+### 14. `EN` [iOS 26 adoption rate isn't the crisis some analysts are portraying](https://appleinsider.com/articles/26/02/13/ios-26-adoption-rate-isnt-the-crisis-some-analysts-are-portraying?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Apple's February 2026 App Store data shows iOS 26 adoption closely tracking the pace set by iOS 18 in January 2025, and iPadOS 26 is ahead of iPadOS 18, undercutting claims that the upgrade cycle is faltering.
 
@@ -1193,7 +1219,7 @@ The breakdown separates recently introduced hardware from the full active instal
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 12. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
+### 15. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 iPhone 18 Pro is rumored to get a next-gen C2 modem, enabling several new advantages for Apple’s flagship. But an analyst report says there’s a new N2 chip coming to iPhone 18 Pro as well, continuing an exciting trend.
 more…
@@ -1202,7 +1228,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 13. `EN` [Qobuz launches new CarPlay app, Siri integration](data/articles/43ed4318afa7b8da368f4706d6a6d6ea.html)
+### 16. `EN` [Qobuz launches new CarPlay app, Siri integration](data/articles/43ed4318afa7b8da368f4706d6a6d6ea.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 Qobuz, a popular hi-res music streaming service, is out with an all-new CarPlay app this week. The company touts that new CarPlay app offers a “a more robust and streamlined listening experience.”
 more…
@@ -1211,7 +1237,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 14. `EN` [Are people updating to iOS 26? Here’s Apple’s official data](data/articles/577546155bc6a1850a43b506dbb67a4f.html)
+### 17. `EN` [Are people updating to iOS 26? Here’s Apple’s official data](data/articles/577546155bc6a1850a43b506dbb67a4f.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 Apple has released the highly-anticipated adoption statistics for iOS 26 for the first time. The company says that 74% of all devices introduced in the last four years are running iOS 26, while 66% of all devices are running iOS 26. 
 more…
@@ -1220,7 +1246,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 15. `EN` [iOS 26 recently added five new ways to customize your iPhone](data/articles/32f0747d22b36fc150f873113c05ae89.html)
+### 18. `EN` [iOS 26 recently added five new ways to customize your iPhone](data/articles/32f0747d22b36fc150f873113c05ae89.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 iOS 26 introduced a bold new Liquid Glass design, and subsequent updates have added new ways to customize not only how your iPhone looks, but also how it works. Here are five recent new customization settings.
 more…
@@ -1229,7 +1255,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 16. `EN` [Apple Reveals How Many iPhones Are Running iOS 26](data/articles/dc9efcb1be0d3d231a8be39bb2286c0b.html)
+### 19. `EN` [Apple Reveals How Many iPhones Are Running iOS 26](data/articles/dc9efcb1be0d3d231a8be39bb2286c0b.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple has shared updated iOS 26 and iPadOS 26 adoption figures, revealing how many iPhones and iPads are running those software versions.
 
@@ -1248,7 +1274,7 @@ These adoption numbers are based on iPhones and iPads that transacted on the App
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 17. `EN` [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](data/articles/088726accbb47749af813c322f805a13.html)
+### 20. `EN` [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](data/articles/088726accbb47749af813c322f805a13.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 When automating your smart home, much of the attention centers on cameras and lights, but I believe HomeKit door sensors are arguably among the most critical devices to add to your setup. I’ve written about Onvis before, but the Smart Security Alarm Contact Sensor (CS2) takes the concept of a simple door sensor and turns it into a lot more. It supports Thread, but the really cool add-on here is a 120dB siren built right into the sensor. Let’s take a look at the Onvis CS2.
 more…
@@ -1257,7 +1283,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 18. `EN` [Ugreen NASync DH4300 Plus review: Beginner-friendly, easily expandable](https://appleinsider.com/articles/26/02/13/ugreen-nasync-dh4300-plus-review-beginner-friendly-easily-expandable?utm_source=rss)
+### 21. `EN` [Ugreen NASync DH4300 Plus review: Beginner-friendly, easily expandable](https://appleinsider.com/articles/26/02/13/ugreen-nasync-dh4300-plus-review-beginner-friendly-easily-expandable?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 The Ugreen NASync DH4300 is a very easy-to-use NAS for beginners who need more capacity than your typical entry-level network storage appliance.
 
@@ -1270,7 +1296,7 @@ But, it's easy to underestimate needs. That local cloud basic user could go for 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 19. `EN` [Apple TV has two thriller series premiering soon, here’s what’s coming](data/articles/8066f93e3034de3e8e1f1d5308ea2c2d.html)
+### 22. `EN` [Apple TV has two thriller series premiering soon, here’s what’s coming](data/articles/8066f93e3034de3e8e1f1d5308ea2c2d.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 Apple TV has ramped up its lineup of thrillers recently, and the next two series in the genre are coming soon. Here are the details on two upcoming thrillers: The Last Thing He Told Me and Imperfect Women.
 more…
@@ -1279,7 +1305,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 20. `EN` [Again, don't count on Mac Studio stock levels for release timing](https://appleinsider.com/articles/26/02/13/again-dont-count-on-mac-studio-stock-levels-for-release-timing?utm_source=rss)
+### 23. `EN` [Again, don't count on Mac Studio stock levels for release timing](https://appleinsider.com/articles/26/02/13/again-dont-count-on-mac-studio-stock-levels-for-release-timing?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Following reports of dwindling stocks of the iPhone 16e, there are now ones about the Mac Studio. While a new one is coming, in 2026 there are just too many external factors to use it as a reliable indicator of an imminent launch.
 
@@ -1291,7 +1317,7 @@ It seems such an obvious thing — if Apple is running low on the Mac Studio, it
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 21. `EN` [The MacRumors Show: Revamped Siri Delayed Again?](data/articles/e97374451b0e0d1564745e3712e39353.html)
+### 24. `EN` [The MacRumors Show: Revamped Siri Delayed Again?](data/articles/e97374451b0e0d1564745e3712e39353.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 We discuss the upcoming iPhone 17e and iPad models, as well as Apple's apparent issues finalizing the revamped version of Siri, on this week's episode of The MacRumors Show.
 
@@ -1303,7 +1329,7 @@ The announcement of the ‌iPhone‌ 17e is said to be "imminent," with stock of
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 22. `EN` [Why Ferrari turned to Jony Ive to design its new car's controversial interior](https://appleinsider.com/articles/26/02/13/why-ferrari-turned-to-jony-ive-to-design-its-new-cars-controversial-interior?utm_source=rss)
+### 25. `EN` [Why Ferrari turned to Jony Ive to design its new car's controversial interior](https://appleinsider.com/articles/26/02/13/why-ferrari-turned-to-jony-ive-to-design-its-new-cars-controversial-interior?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Jony Ive's interior for the forthcoming Ferrari Luce electric vehicle is typically well thought out, but it's divided car fans. Now Ferrari's CEO has spoken out about the decision to not use his own designers.
 
@@ -1315,7 +1341,7 @@ Ferrari is working to build up interest in its first-ever electric car ahead of 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 23. `EN` [Text Shortcuts You Should Be Using on iPhone and Mac](data/articles/43c32741bce52c90fc58a37cb5bb6136.html)
+### 26. `EN` [Text Shortcuts You Should Be Using on iPhone and Mac](data/articles/43c32741bce52c90fc58a37cb5bb6136.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple's autocorrect on iPhone and iPad always aims to help when you're typing a message, but it's by no means perfect, and some of the replacements it continually spews out can be frustrating. Fortunately, Apple's software includes a feature called Text Replacement that allows you to specify what word or phrase replaces the specific text you type in. 
 
@@ -1326,7 +1352,7 @@ Even if you haven't set up Text Replacement, you can try it out with Apple's pre
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 24. `EN` [Smart Home Diary: Planning my new smart home, 13 years later](data/articles/7c76f9635ceb4ac313949e15d80e3a0c.html)
+### 27. `EN` [Smart Home Diary: Planning my new smart home, 13 years later](data/articles/7c76f9635ceb4ac313949e15d80e3a0c.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 I’m just about starting to believe that I may be heading into the final stages of an extremely lengthy attempt to sell one apartment and buy another, so I’m currently giving some thought to the smart home technology I’ll want in my new home.
 This will be some 13 years after I first adopted smart home tech, so I’m expecting to make a few changes – some small, one potentially much larger …
@@ -1336,7 +1362,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 25. `EN` [New Mac Studio orders delayed 1-2 months as refresh looms](data/articles/cc411b6824e5f4c427a8f50246156d99.html)
+### 28. `EN` [New Mac Studio orders delayed 1-2 months as refresh looms](data/articles/cc411b6824e5f4c427a8f50246156d99.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 New orders of the Mac Studio are currently seeing unusually long delays, with shipping estimates stretching out to April for some models. Here are the details.
 more…
@@ -1345,7 +1371,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 26. `EN` [Apple Now Testing Flip-Style Foldable iPhone](data/articles/28b3a7c4d4944aac818c1a3f614ed999.html)
+### 29. `EN` [Apple Now Testing Flip-Style Foldable iPhone](data/articles/28b3a7c4d4944aac818c1a3f614ed999.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple is testing a different kind of foldable iPhone with a flip-style design, according to a known leaker based in Asia. 
 
@@ -1358,48 +1384,9 @@ The rumored flip-device comes in addition to the wide foldable ‌iPhone‌ that
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 27. `EN` [Deals: M5 MacBook Pro $300 off, 13-inch MacBook Air $250 off, AirTag 2 lowest price yet, more](data/articles/fba111291063f8faf5fe2a9038344589.html)
+### 30. `EN` [Deals: M5 MacBook Pro $300 off, 13-inch MacBook Air $250 off, AirTag 2 lowest price yet, more](data/articles/fba111291063f8faf5fe2a9038344589.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 We are heading into President’s Day weekend with Amazon’s wide-ranging sale in full swing alongside ongoing price drops on AirPods Pro 3 and more. We also adding a chance to score 32GB 13-inch M4 MacBook Air at $250 off (as opposed to the 15-inch we had earlier this week), alongside a look at the best deals on M5 MacBook Pro configs – most affordable 24GB at $250 off and upgraded models at $300 off. Today has ushered in the first chance to save on the brand new AirTag 2, open-box AirPods 4 down at $60, and a giant discount on Mophie’s AirPods Max Dual Magnetic Charging Stand at $55.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
-
-### 28. `EN` [Five iPhone 18 Pro Features Revealed in New Report](data/articles/0b16e8190710cfb378bd30a2af4fccf7.html)
-**Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
-While the iPhone 18 Pro and iPhone 18 Pro Max are still seven months away, an analyst has revealed five new features the devices will allegedly have.
-
-Rumored color options for the iPhone 18 Pro models
-
-In a research note with investment firm GF Securities on Thursday, analyst Jeff Pu outlined the following upgrades for the iPhone 18 Pro models:
-
-  
-Smaller Dynamic Island: It has been rumored that Face ID's flood illuminator will be moved under the screen on the iPhone 18 Pro models, paving the way for a smaller Dynamic Island on the devices.
-
-  
-Variable Aperture:
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 29. `EN` [Apple’s iPhone ‘Flip’ Prototype Tested, Supply Chain Leak Says](data/articles/33163ef5ce648793b38418ab883d55ed.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-Apple is preparing to enter the foldable phone market, and a new leak claims the company is testing a second design beyond its first foldable model. While the book-style foldable iPhone is widely expected to launch first, reports now suggest that Apple has also tested a clamshell version often referred to as the iPhone Flip. […]
-The post Apple’s iPhone ‘Flip’ Prototype Tested, Supply Chain Leak Says appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
-
-### 30. `EN` [Apple testing, but still undecided about clamshell folding iPhone](https://appleinsider.com/articles/26/02/13/apple-is-testing-a-clamshell-foldable-iphone-leaker-claims?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
-With Apple's first foldable iPhone expected to open like a book, one leaker has added fuel to previous claims that it's also testing a clamshell-like iPhone to go with it.
-
-
-Renders of a possible clamshell iPhone Fold —  image credit: AppleInsider
-Rumors continue to say that Apple will release the first iPhone Fold in fall 2026, with the book-like design matching popular foldables already on the market. Companies like Samsung and Motorola also offer clamshell designs, similar to the iconic flip phones of the early 2000s.
 
 </div>
 
@@ -1705,9 +1692,25 @@ Read the full article on GamingOnLinux.
 
 ## General Tech / Tech Generale
 
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 1. `FR` [Pas besoin de dépenser des fortunes avec cet écran PC gaming LG Full HD 144 Hz compatible FreeSync/G-Sync à moins de 100 €](data/articles/507f1388f3929924af69118df3392294.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+L'écran PC gaming LG UltraGear G4 est un moniteur avec une proposition honnête à prix premium, puisqu'il est disponible pour 98,18 euros au lieu de 119,99 euros.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 2. `EN` [ How to watch Man City vs Salford: Live Streams, TV Channels for FA Cup 4th Round Tie ](data/articles/bd809c356e82fe4a0f0f3dcb88a2828a.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+How to watch Man City vs Salford in the fourth round of the FA Cup as Pep Guardiola's side return to action.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 1. `EN` [How to Choose the Right Gaming Laptop (2026): What You Need to Know](https://www.wired.com/story/how-to-buy-a-gaming-laptop/)
+### 3. `EN` [How to Choose the Right Gaming Laptop (2026): What You Need to Know](https://www.wired.com/story/how-to-buy-a-gaming-laptop/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 With over a decade of experience in reviewing gaming laptops, here’s my rundown of what to consider before pulling the trigger.
 
@@ -1715,7 +1718,7 @@ With over a decade of experience in reviewing gaming laptops, here’s my rundow
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 2. `EN` [ China is hell-bent on dominating EVs, but it really needs to stop being such a Range Rover copycat ](data/articles/87ef98c97ebe282e186eaec372c10be6.html)
+### 4. `EN` [ China is hell-bent on dominating EVs, but it really needs to stop being such a Range Rover copycat ](data/articles/87ef98c97ebe282e186eaec372c10be6.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 With yet another Range Rover look-a-like unveiled it looks like there is no end to China's obsession with imitation
 
@@ -1723,7 +1726,7 @@ With yet another Range Rover look-a-like unveiled it looks like there is no end 
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 3. `FR` [AirDrop sur Android : Google étend la compatibilité à de nouveaux smartphones](data/articles/7e6a4c031f4d4fdb2dd9ec84cfb1ba51.html)
+### 5. `FR` [AirDrop sur Android : Google étend la compatibilité à de nouveaux smartphones](data/articles/7e6a4c031f4d4fdb2dd9ec84cfb1ba51.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
 Après les Pixel 10, au tour des Pixel 9 de recevoir une compatibilité avec la technologie AirDrop d'Apple. D'autres appareils devraient être servis en 2026.
 
@@ -1731,7 +1734,7 @@ Après les Pixel 10, au tour des Pixel 9 de recevoir une compatibilité avec la 
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 4. `EN` [Ring Kills Flock Safety Deal After Super Bowl Ad Uproar](https://www.wired.com/story/security-news-this-week-ring-kills-flock-safety-deal-after-super-bowl-ad-uproar/)
+### 6. `EN` [Ring Kills Flock Safety Deal After Super Bowl Ad Uproar](https://www.wired.com/story/security-news-this-week-ring-kills-flock-safety-deal-after-super-bowl-ad-uproar/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 Plus: Meta plans to add face recognition to its smart glasses, Jared Kushner named as part of whistleblower’s mysterious national security complaint, and more.
 
@@ -1739,7 +1742,7 @@ Plus: Meta plans to add face recognition to its smart glasses, Jared Kushner nam
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 5. `EN` [Best Alternatives to Google’s Android Operating System (2026), Tested and Reviewed](https://www.wired.com/story/best-android-alternatives/)
+### 7. `EN` [Best Alternatives to Google’s Android Operating System (2026), Tested and Reviewed](https://www.wired.com/story/best-android-alternatives/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 Whether you have privacy concerns or you just want to freely tinker, these are our favorite alternatives to stock Android.
 
@@ -1747,7 +1750,7 @@ Whether you have privacy concerns or you just want to freely tinker, these are o
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 6. `EN` [ From new battery tech to portless phones, here are 5 innovations I want from Android devices ](data/articles/197f83798d19f9a253bb0163946ed648.html)
+### 8. `EN` [ From new battery tech to portless phones, here are 5 innovations I want from Android devices ](data/articles/197f83798d19f9a253bb0163946ed648.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 Some Android phones are already packed full of innovation, but there are five things that I still want to see.
 
@@ -1755,7 +1758,7 @@ Some Android phones are already packed full of innovation, but there are five th
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 7. `EN` [ Hollywood studios now have another weapon to take down pirate websites in India: domain name registrar takedowns that can kill sites instantly ](data/articles/19063c78fafeac4d05d7843fb3546132.html)
+### 9. `EN` [ Hollywood studios now have another weapon to take down pirate websites in India: domain name registrar takedowns that can kill sites instantly ](data/articles/19063c78fafeac4d05d7843fb3546132.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 Delhi High Court orders now allow domain registrar suspensions, expanding India’s anti-piracy enforcement beyond ISP blocking measures.
 
@@ -1763,7 +1766,7 @@ Delhi High Court orders now allow domain registrar suspensions, expanding India�
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 8. `FR` [Disney attaque le modèle Seedance 2.0 qui génère des répliques parfaites de ses films grâce à l’IA](data/articles/f1b4937f9891b40c52266e65aa32a917.html)
+### 10. `FR` [Disney attaque le modèle Seedance 2.0 qui génère des répliques parfaites de ses films grâce à l’IA](data/articles/f1b4937f9891b40c52266e65aa32a917.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
 Quelques jours après le lancement tonitruant de Seedance 2.0, le modèle IA capable de générer des vidéos, Disney envoie une mise en demeure à Bytedance. L'entreprise n'apprécie pas les vidéos virales qui mettent en scène Dark Vador ou Mickey avec un réalisme effrayant. L'entreprise, pourtant associée à OpenAI, parle d'un « pillage massif » de sa propriété intellectuelle.
 
@@ -1771,7 +1774,7 @@ Quelques jours après le lancement tonitruant de Seedance 2.0, le modèle IA cap
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 9. `EN` [Here’s What It’s Like to Use H&amp;R Block’s DIY Tax Service (2026)](https://www.wired.com/story/handr-block-diy-service/)
+### 11. `EN` [Here’s What It’s Like to Use H&amp;R Block’s DIY Tax Service (2026)](https://www.wired.com/story/handr-block-diy-service/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 Filing taxes is a pain. Here’s how H&amp;R Block DIY performed against other services I tested.
 
@@ -1779,7 +1782,7 @@ Filing taxes is a pain. Here’s how H&amp;R Block DIY performed against other s
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 10. `EN` [Gear News of the Week: Samsung Sets a Date for Galaxy Unpacked, and Fitbit’s AI Coach Comes to iOS](https://www.wired.com/story/gear-news-of-the-week-samsung-sets-a-date-for-galaxy-unpacked-and-fitbits-ai-coach-comes-to-ios/)
+### 12. `EN` [Gear News of the Week: Samsung Sets a Date for Galaxy Unpacked, and Fitbit’s AI Coach Comes to iOS](https://www.wired.com/story/gear-news-of-the-week-samsung-sets-a-date-for-galaxy-unpacked-and-fitbits-ai-coach-comes-to-ios/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 Plus: iOS 26.3 makes it easy to switch to Android, Google cancels the Android 17 beta, and YouTube debuts on the Apple Vision Pro.
 
@@ -1787,7 +1790,7 @@ Plus: iOS 26.3 makes it easy to switch to Android, Google cancels the Android 17
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 11. `FR` [Test du Xiaomi Redmi Note 15 Pro+ : un smartphone convaincant, bousculé par les anciennes gloires de Xiaomi](data/articles/666cbfea078c90b3976170b427532c9f.html)
+### 13. `FR` [Test du Xiaomi Redmi Note 15 Pro+ : un smartphone convaincant, bousculé par les anciennes gloires de Xiaomi](data/articles/666cbfea078c90b3976170b427532c9f.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 Avec son processeur Snapdragon 7s Gen 4 et une batterie de 6500 mAh, le Redmi Note 15 Pro+ promet de bonnes performances et une grande autonomie. Est-ce suffisant pour s'imposer ?
 
@@ -1795,7 +1798,7 @@ Avec son processeur Snapdragon 7s Gen 4 et une batterie de 6500 mAh, le Redmi No
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 12. `EN` [ Ireland vs Italy Free Streams: How to watch Six Nations 2026 game, TV Channels, Preview ](data/articles/23ccf2c1c07fcc331c52534e185b5a58.html)
+### 14. `EN` [ Ireland vs Italy Free Streams: How to watch Six Nations 2026 game, TV Channels, Preview ](data/articles/23ccf2c1c07fcc331c52534e185b5a58.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 All the ways to watch Ireland vs Italy live streams online – including for FREE – as the buoyant Azzurri look to cause an upset in Dublin in the 2026 Six Nations.
 
@@ -1803,7 +1806,7 @@ All the ways to watch Ireland vs Italy live streams online – including for FRE
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 13. `FR` [Les chiffres d’adoption d’iOS 26 sont impressionnants](data/articles/f81a7d776a9f7227d0dd9f398d03ddc2.html)
+### 15. `FR` [Les chiffres d’adoption d’iOS 26 sont impressionnants](data/articles/f81a7d776a9f7227d0dd9f398d03ddc2.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
 66 % des iPhone en circulation tournent sous iOS 26 cinq mois après la sortie de la mise à jour. Le chiffre est encore plus impressionnant sur les modèles récents : 74 % des appareils sortis ces quatre dernières années sont sous iOS 26.
 
@@ -1811,7 +1814,7 @@ All the ways to watch Ireland vs Italy live streams online – including for FRE
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 14. `FR` [Quelques mois après son lancement, la Samsung Galaxy S10 Lite s’allège déjà de 100 euros](data/articles/84c2ab33a197065905eb0eb5fba8ef64.html)
+### 16. `FR` [Quelques mois après son lancement, la Samsung Galaxy S10 Lite s’allège déjà de 100 euros](data/articles/84c2ab33a197065905eb0eb5fba8ef64.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 La Samsung Galaxy Tab S10 Lite est une tablette tactile familiale idéale pour les tâches peu gourmandes du quotidien. Actuellement, Amazon l'affiche à 299 euros au lieu de 399,95 euros.
 
@@ -1819,7 +1822,7 @@ La Samsung Galaxy Tab S10 Lite est une tablette tactile familiale idéale pour l
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 15. `EN` [Lola Blankets Are 45 Percent Off This Presidents’ Day Weekend](https://www.wired.com/story/the-viral-lola-blankets-are-45-percent-off-right-now/)
+### 17. `EN` [Lola Blankets Are 45 Percent Off This Presidents’ Day Weekend](https://www.wired.com/story/the-viral-lola-blankets-are-45-percent-off-right-now/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 From February 14 to 16, these ultra-plush blankets and throws are nearly half off. No exclusions.
 
@@ -1827,7 +1830,7 @@ From February 14 to 16, these ultra-plush blankets and throws are nearly half of
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 16. `EN` [ How to watch New Zealand vs South Africa: Free Streams, TV Channels &amp; Preview for T20 World Cup 2026 match ](data/articles/34682ae76337178b80aa5d4476bbf9dd.html)
+### 18. `EN` [ How to watch New Zealand vs South Africa: Free Streams, TV Channels &amp; Preview for T20 World Cup 2026 match ](data/articles/34682ae76337178b80aa5d4476bbf9dd.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets` | *Also on: TechRadar*
 Here's how to watch New Zealand vs South Africa T20 World Cup streams as two unbeaten teams battle for supremacy.
 
@@ -1835,7 +1838,7 @@ Here's how to watch New Zealand vs South Africa T20 World Cup streams as two unb
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 17. `EN` [Best Presidents’ Day Mattress Sales of 2026](https://www.wired.com/story/best-presidents-day-mattress-sales-2026/)
+### 19. `EN` [Best Presidents’ Day Mattress Sales of 2026](https://www.wired.com/story/best-presidents-day-mattress-sales-2026/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science` | *Also on: Wired*
 Some of the best sales of the year are happening right now—we’ll help you save on our all-time favorite mattresses and bedding.
 
@@ -1843,7 +1846,7 @@ Some of the best sales of the year are happening right now—we’ll help you sa
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
 
-### 18. `EN` [Robot Dogs Are on Going on Patrol at the 2026 World Cup in Mexico](https://www.wired.com/story/robot-dogs-are-on-going-on-patrol-at-the-2026-world-cup-in-mexico/)
+### 20. `EN` [Robot Dogs Are on Going on Patrol at the 2026 World Cup in Mexico](https://www.wired.com/story/robot-dogs-are-on-going-on-patrol-at-the-2026-world-cup-in-mexico/)
 **Source:** Wired | **Tags:** `Tech` `Culture` `Science`
 The Mexican city of Guadalupe, which will host portions of the 2026 World Cup, recently showed off four new robot dogs that will help provide security during matches at BBVA Stadium.
 
@@ -1851,7 +1854,7 @@ The Mexican city of Guadalupe, which will host portions of the 2026 World Cup, r
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 19. `EN` [ Marshals: A Yellowstone Story —  release date, cast and everything we know about the new Taylor Sheridan spinoff  ](data/articles/7f759e09b6036af650f72c1efc1dd7e6.html)
+### 21. `EN` [ Marshals: A Yellowstone Story —  release date, cast and everything we know about the new Taylor Sheridan spinoff  ](data/articles/7f759e09b6036af650f72c1efc1dd7e6.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 The Yellowstone universe never truly ends, and new spinoff Marshals is only a few weeks away — here's what you need to know.
 
@@ -1859,7 +1862,7 @@ The Yellowstone universe never truly ends, and new spinoff Marshals is only a fe
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 20. `EN` [ ICYMI: the week's 7 biggest tech news stories from Claude showing up ChatGPT to Samsung teasing its Galaxy S26 smartphones  ](data/articles/ef57ad103756dadfe8bf06c1f95a7e2c.html)
+### 22. `EN` [ ICYMI: the week's 7 biggest tech news stories from Claude showing up ChatGPT to Samsung teasing its Galaxy S26 smartphones  ](data/articles/ef57ad103756dadfe8bf06c1f95a7e2c.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 The week's biggest tech news stories from Anthropic, Sony, Apple, and more for February 14, 2026.
 
@@ -1867,7 +1870,7 @@ The week's biggest tech news stories from Anthropic, Sony, Apple, and more for F
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 21. `FR` [Le futur rival de l’iPhone Fold se dévoile : Samsung mise sur un nouveau smartphone pliant XXL](data/articles/87e373e8ef5652ca0472df83217241f4.html)
+### 23. `FR` [Le futur rival de l’iPhone Fold se dévoile : Samsung mise sur un nouveau smartphone pliant XXL](data/articles/87e373e8ef5652ca0472df83217241f4.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 Le site Android Authority a mis la main sur des animations au sein de l'interface One UI 9. De quoi découvrir un nouveau format de smartphone pliant en développement chez Samsung.
 
@@ -1875,7 +1878,7 @@ Le site Android Authority a mis la main sur des animations au sein de l'interfac
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 22. `FR` [Une Tesla équipée du FSD passe l’examen du permis de conduire à Lyon](data/articles/dd61ec6331b7f76c8b75e52a6b1e7d1c.html)
+### 24. `FR` [Une Tesla équipée du FSD passe l’examen du permis de conduire à Lyon](data/articles/dd61ec6331b7f76c8b75e52a6b1e7d1c.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 Une Tesla équipée du FSD a passé un examen blanc du permis de conduire à Lyon avec un moniteur d'auto-école.
 
@@ -1883,7 +1886,7 @@ Une Tesla équipée du FSD a passé un examen blanc du permis de conduire à Lyo
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 23. `FR` [Pourquoi ce pays européen vient de bannir les PC Acer et Asus](data/articles/0b76dd1c37a9032822cb085bd829493e.html)
+### 25. `FR` [Pourquoi ce pays européen vient de bannir les PC Acer et Asus](data/articles/0b76dd1c37a9032822cb085bd829493e.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 L'Allemagne vient de fermer la porte à Acer et Asus. Suite à une décision du tribunal de Munich, les deux géants taïwanais ne peuvent plus vendre leurs PC outre-Rhin.
 
@@ -1891,7 +1894,7 @@ L'Allemagne vient de fermer la porte à Acer et Asus. Suite à une décision du 
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Korben">
 
-### 24. `FR` [TypeToRace - Le jeu qui transforme vos cours de dactylo en Fast &amp; Furious](data/articles/75ed6f8c5b59e28f2d866201a05219d4.html)
+### 26. `FR` [TypeToRace - Le jeu qui transforme vos cours de dactylo en Fast &amp; Furious](data/articles/75ed6f8c5b59e28f2d866201a05219d4.html)
 **Source:** Korben | **Tags:** `Tech` `Outils` `Astuces`
 J'sais pas si parmi vous, y'en a qui ont déjà pris des cours de dactylographie genre à l'école où vous deviez taper "asdf jkl;" durant des heures en regardant un écran tristounet mais j'imagine que c'était chiant à mourir ! Hé bien quelqu'un a eu l'idée de transformer ça en jeu de course arcade façon Outrun sous stéroïdes !
 TypeToRace, c'est un jeu de course 3D gratuit qui tourne directement dans votre navigateur et où votre vitesse dépend de votre capacité à taper des mots rapidement.
@@ -1900,7 +1903,7 @@ TypeToRace, c'est un jeu de course 3D gratuit qui tourne directement dans votre 
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 25. `FR` [AirDrop débarque sur les Pixel 9, et c’est une excellente nouvelle](data/articles/7ff67b75fbdba22875980e23f9e7cd6e.html)
+### 27. `FR` [AirDrop débarque sur les Pixel 9, et c’est une excellente nouvelle](data/articles/7ff67b75fbdba22875980e23f9e7cd6e.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 Le mur entre Android et iOS continue de s'effondrer. Après les Pixel 10, c'est au tour des Pixel 9 de goûter à la compatibilité AirDrop via Quick Share.
 
@@ -1908,7 +1911,7 @@ Le mur entre Android et iOS continue de s'effondrer. Après les Pixel 10, c'est 
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 26. `FR` [« C’est du délire » : une faille permet d’accéder à tous les aspirateurs robots DJI Romo](data/articles/8b1348d596deb7856cf30e05352a376b.html)
+### 28. `FR` [« C’est du délire » : une faille permet d’accéder à tous les aspirateurs robots DJI Romo](data/articles/8b1348d596deb7856cf30e05352a376b.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
 On savait que les robots aspirateurs n'étaient pas des modèles de discrétion, mais là, DJI fait fort. Une faille monumentale a permis à un utilisateur d'accéder aux caméras, aux micros et aux plans de milliers de logements à travers le monde.
 
@@ -1916,7 +1919,7 @@ On savait que les robots aspirateurs n'étaient pas des modèles de discrétion,
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 27. `FR` [God of War Trilogy : quand sortira le remake des jeux cultes sur PS5 ?](data/articles/f704e668e1715bd9e2cd31a4bca02560.html)
+### 29. `FR` [God of War Trilogy : quand sortira le remake des jeux cultes sur PS5 ?](data/articles/f704e668e1715bd9e2cd31a4bca02560.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
 La grande surprise de la conférence PlayStation State of Play du 12 février est le retour des trois premiers jeux God of War, légendes absolues de la PS2, sous la forme d'un remake développé par Santa Monica Studio. Très peu d'informations sont pour l'instant connues sur le projet.
 
@@ -1924,25 +1927,9 @@ La grande surprise de la conférence PlayStation State of Play du 12 février es
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 28. `EN` [ VR's golden age is over, and there wasn't much gold there ](data/articles/37ed949e978dcee95dcdd0212d742d6d.html)
+### 30. `EN` [ VR's golden age is over, and there wasn't much gold there ](data/articles/37ed949e978dcee95dcdd0212d742d6d.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
 Meta's shift from immersive virtual reality to smart glasses leaves no clear home for business-grade VR/AR headsets.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 29. `EN` [ AI can be a catalyst for sustainability: here’s why that’s not a contradiction ](data/articles/10d8b4e7a04b528a30a9959f2d789ab1.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-AI’s energy demands don’t tell the whole story. Used strategically, it can accelerate sustainability progress.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
-
-### 30. `FR` [Quelles sont les meilleures caméras à 360 degrés en 2026 ? Notre comparatif](data/articles/b3d0e566db454578d8174d09f5e65c43.html)
-**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Sur le marché des caméras d'action, les modèles à 360 degrés sont de vrais challenges techniques pour les constructeurs. C'est un secteur assez restreint dans lequel trouver le bon modèle peut être difficile. C'est pourquoi nous avons sélectionné les meilleures caméras à 360 degrés du marché.
 
 </div>
 
@@ -1956,7 +1943,15 @@ Sur le marché des caméras d'action, les modèles à 360 degrés sont de vrais 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 1. `EN` [Clandestine Romances Run Rampant in Today’s Workplace](https://www.inc.com/kaylawebster/forbidden-romance-runs-rampant-in-todays-workplace/91303025)
+### 1. `EN` [5 Costly Mistakes to Avoid When Launching a Consulting Business](https://www.inc.com/chris-morris/5-costly-mistakes-to-avoid-when-launching-a-consulting-business/91302872)
+**Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
+Starting a new consulting business? These are some of the biggest traps founders should avoid.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
+
+### 2. `EN` [Clandestine Romances Run Rampant in Today’s Workplace](https://www.inc.com/kaylawebster/forbidden-romance-runs-rampant-in-todays-workplace/91303025)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 It’s happening more than you think. These policies can help your company handle relationships between co-workers.
 
@@ -1964,7 +1959,7 @@ It’s happening more than you think. These policies can help your company handl
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 2. `EN` [Apple Pushes Emergency iPhone Update After ‘Extremely Sophisticated’ Spyware Attack. Experts Say to Install Immediately](https://www.inc.com/ava-levinson/apple-pushes-emergency-iphone-update-after-extremely-sophisticated-spyware-attack-experts-say-to-install-immediately/91303075)
+### 3. `EN` [Apple Pushes Emergency iPhone Update After ‘Extremely Sophisticated’ Spyware Attack. Experts Say to Install Immediately](https://www.inc.com/ava-levinson/apple-pushes-emergency-iphone-update-after-extremely-sophisticated-spyware-attack-experts-say-to-install-immediately/91303075)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Apple’s latest update comes with an urgent ‘update now’ message.
 
@@ -1972,7 +1967,7 @@ Apple’s latest update comes with an urgent ‘update now’ message.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 3. `EN` [I Went to an AI Dating Cafe. Things Got Weird Fast](https://www.inc.com/ben-sherry/i-went-to-an-ai-dating-cafe-things-got-weird-fast/91302611)
+### 4. `EN` [I Went to an AI Dating Cafe. Things Got Weird Fast](https://www.inc.com/ben-sherry/i-went-to-an-ai-dating-cafe-things-got-weird-fast/91302611)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Going on dates with an AI is every bit as bizarre as you might expect. But boy do I feel good about my hair.
 
@@ -1980,7 +1975,7 @@ Going on dates with an AI is every bit as bizarre as you might expect. But boy d
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 4. `EN` [How Mass Layoffs Transformed LinkedIn Into the Internet’s New Thought Leadership Hub](https://www.inc.com/nicole-ramirez/how-mass-layoffs-transformed-linkedin-into-the-internets-new-thought-leadership-hub/91302401)
+### 5. `EN` [How Mass Layoffs Transformed LinkedIn Into the Internet’s New Thought Leadership Hub](https://www.inc.com/nicole-ramirez/how-mass-layoffs-transformed-linkedin-into-the-internets-new-thought-leadership-hub/91302401)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 For success on the platform, don’t just demonstrate your career progression—share your authentic expertise.
 
@@ -1988,7 +1983,7 @@ For success on the platform, don’t just demonstrate your career progression—
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 5. `FR` [Un salarié offre des fleurs à sa collègue pour la Saint-Valentin, son employeur le licencie mais la justice juge la rupture injustifiée](https://www.journaldunet.com/management/ressources-humaines/1547995-rv1-licenciement-saint-valentin/)
+### 6. `FR` [Un salarié offre des fleurs à sa collègue pour la Saint-Valentin, son employeur le licencie mais la justice juge la rupture injustifiée](https://www.journaldunet.com/management/ressources-humaines/1547995-rv1-licenciement-saint-valentin/)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Licenciement sans cause réelle d'un salarié pour harcèlement non prouvé : la Cour d'appel de Metz sanctionne une enquête insuffisante et vexatoire.
 
@@ -1996,7 +1991,7 @@ Licenciement sans cause réelle d'un salarié pour harcèlement non prouvé : l
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 6. `FR` [Un prélèvement inédit menace le compte de millions d'épargnants : toutes les banques doivent l'appliquer](data/articles/d315727b5c1947c886096b68c965697f.html)
+### 7. `FR` [Un prélèvement inédit menace le compte de millions d'épargnants : toutes les banques doivent l'appliquer](data/articles/d315727b5c1947c886096b68c965697f.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Le taux de CSG appliqué sur plusieurs comptes et livrets d'épargne a augmenté en 2026. Les bénéfices de millions d'épargnants vont baisser à cause de cette taxe.
 
@@ -2004,7 +1999,7 @@ Le taux de CSG appliqué sur plusieurs comptes et livrets d'épargne a augmenté
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 7. `EN` [The NHL Can’t Show Its Players on Twitter. So, They Found a Brilliant Solution](https://www.inc.com/bill-murphy-jr/the-nhl-cant-show-its-players-on-twitter-so-they-found-a-brilliant-solution/91303238)
+### 8. `EN` [The NHL Can’t Show Its Players on Twitter. So, They Found a Brilliant Solution](https://www.inc.com/bill-murphy-jr/the-nhl-cant-show-its-players-on-twitter-so-they-found-a-brilliant-solution/91303238)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 It’s a perfect example of legal constraints forcing creativity.
 
@@ -2012,7 +2007,7 @@ It’s a perfect example of legal constraints forcing creativity.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 8. `EN` [How to Decide Whether Internal Growth or Outside Talent Fits your Scaling Strategy](https://www.inc.com/kit-eaton/how-to-decide-whether-internal-growth-or-outside-talent-fits-your-scaling-strategy/91302626)
+### 9. `EN` [How to Decide Whether Internal Growth or Outside Talent Fits your Scaling Strategy](https://www.inc.com/kit-eaton/how-to-decide-whether-internal-growth-or-outside-talent-fits-your-scaling-strategy/91302626)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Data show you can shape your company’s future depending on how you train and promote current workers or recruit from outside.
 
@@ -2020,7 +2015,7 @@ Data show you can shape your company’s future depending on how you train and p
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 9. `EN` [A Surge of Strange Bot Traffic From China Has Website Owners Alarmed.  Here’s What It Means for Your Data](https://www.inc.com/ava-levinson/a-surge-of-strange-bot-traffic-from-china-has-website-owners-alarmed-heres-what-it-means-for-your-data/91302787)
+### 10. `EN` [A Surge of Strange Bot Traffic From China Has Website Owners Alarmed.  Here’s What It Means for Your Data](https://www.inc.com/ava-levinson/a-surge-of-strange-bot-traffic-from-china-has-website-owners-alarmed-heres-what-it-means-for-your-data/91302787)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 They’re reporting a surge in automated clicks from China and Singapore.
 
@@ -2028,7 +2023,7 @@ They’re reporting a surge in automated clicks from China and Singapore.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 10. `EN` [Why top talent is walking away from OpenAI and xAI](data/articles/51e6b7a7c78fd79f0edd6a470a5d91ce.html)
+### 11. `EN` [Why top talent is walking away from OpenAI and xAI](data/articles/51e6b7a7c78fd79f0edd6a470a5d91ce.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech` | *Also on: TechCrunch Startups*
 AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature.  Watch as TechCrunch’s Equity podcast hosts Kirsten Korosec, Anthony […]
 
@@ -2036,7 +2031,7 @@ AI companies have been hemorrhaging talent the past few weeks. Half of xAI’
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 11. `EN` [This Startup’s Creation Is Hotter than the Sun—and It Just Set a Nuclear Fusion Record](https://www.inc.com/chloe-aiello/this-startups-creation-is-hotter-than-the-sun-and-it-just-set-a-nuclear-fusion-record/91302942)
+### 12. `EN` [This Startup’s Creation Is Hotter than the Sun—and It Just Set a Nuclear Fusion Record](https://www.inc.com/chloe-aiello/this-startups-creation-is-hotter-than-the-sun-and-it-just-set-a-nuclear-fusion-record/91302942)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Helion Energy achieved temperatures of about 270 million degrees Fahrenheit as it works towards developing fusion power.
 
@@ -2044,7 +2039,7 @@ Helion Energy achieved temperatures of about 270 million degrees Fahrenheit as i
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 12. `EN` [How to Avoid Making the Same Fatal Mistake That Led to the Demise of Sears](https://www.inc.com/jeff-degraff/how-to-avoid-making-the-same-fatal-mistake-that-led-to-sears-demise/91301810)
+### 13. `EN` [How to Avoid Making the Same Fatal Mistake That Led to the Demise of Sears](https://www.inc.com/jeff-degraff/how-to-avoid-making-the-same-fatal-mistake-that-led-to-sears-demise/91301810)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 When faced with disruption, Sears made a common but fatal error. Many leaders today are repeating the past.
 
@@ -2052,7 +2047,7 @@ When faced with disruption, Sears made a common but fatal error. Many leaders to
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 13. `EN` [Gen Z Men Are Flocking to This 87‑Year‑Old Self‑Help Book for Success Hacks](https://www.inc.com/ben-mercer/why-gen-z-men-napoleon-hill-think-and-grow-rich/91299783)
+### 14. `EN` [Gen Z Men Are Flocking to This 87‑Year‑Old Self‑Help Book for Success Hacks](https://www.inc.com/ben-mercer/why-gen-z-men-napoleon-hill-think-and-grow-rich/91299783)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Fans of Strava and crypto continue to love Napoleon Hill’s Think and Grow Rich. Book influencer Ben Mercer consider why it remains so popular among startup founders
 
@@ -2060,7 +2055,7 @@ Fans of Strava and crypto continue to love Napoleon Hill’s Think and Grow Rich
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 14. `EN` [Elon Musk’s X Is Accused of Selling Blue Checkmarks to Sanctioned Iranian Government Accounts](https://www.inc.com/annabel-burba/elon-musks-x-accused-of-selling-blue-checkmarks-to-sanctioned-iranian-government-accounts/91302643)
+### 15. `EN` [Elon Musk’s X Is Accused of Selling Blue Checkmarks to Sanctioned Iranian Government Accounts](https://www.inc.com/annabel-burba/elon-musks-x-accused-of-selling-blue-checkmarks-to-sanctioned-iranian-government-accounts/91302643)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 A report finds that more than 24 X accounts used by Iranian officials and news outlets have blue checkmarks.
 
@@ -2068,7 +2063,7 @@ A report finds that more than 24 X accounts used by Iranian officials and news o
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 15. `EN` [OpenAI Accuses China’s DeepSeek of Stealing Its Tech to Build Cut‑Rate Rival AI Models](https://www.inc.com/ava-levinson/openai-accuses-chinas-deepseek-of-stealing-its-tech-to-build-cut-rate-rival-ai-models/91302658)
+### 16. `EN` [OpenAI Accuses China’s DeepSeek of Stealing Its Tech to Build Cut‑Rate Rival AI Models](https://www.inc.com/ava-levinson/openai-accuses-chinas-deepseek-of-stealing-its-tech-to-build-cut-rate-rival-ai-models/91302658)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Rumors are swirling that the Chinese AI company will launch its new model next week.
 
@@ -2076,7 +2071,7 @@ Rumors are swirling that the Chinese AI company will launch its new model next w
 
 <div class="article-item" data-lang="hun" data-category="entrepreneurship" data-source="Inc.com">
 
-### 16. `EN` [OpenAI’s Fast New Model Aims to Push Vibe Coding Toward Warp Speed](https://www.inc.com/ben-sherry/openais-fast-new-model-aims-to-push-vibe-coding-toward-warp-speed/91302320)
+### 17. `EN` [OpenAI’s Fast New Model Aims to Push Vibe Coding Toward Warp Speed](https://www.inc.com/ben-sherry/openais-fast-new-model-aims-to-push-vibe-coding-toward-warp-speed/91302320)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Check out Codex-Spark, a new AI model that Sam Altman said ‘sparks joy for me.’
 
@@ -2084,17 +2079,9 @@ Check out Codex-Spark, a new AI model that Sam Altman said ‘sparks joy for me.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 17. `EN` [Want to Maximize Your AI ROI? Try Sharing the Wealth of Productivity Boosts With Your Staff](https://www.inc.com/bruce-crumley/want-to-maximize-your-ai-roi-try-sharing-the-wealth-of-productivity-boosts-with-your-staff/91302596)
+### 18. `EN` [Want to Maximize Your AI ROI? Try Sharing the Wealth of Productivity Boosts With Your Staff](https://www.inc.com/bruce-crumley/want-to-maximize-your-ai-roi-try-sharing-the-wealth-of-productivity-boosts-with-your-staff/91302596)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Former Labor Secretary Robert Reich remains skeptical of AI boosters’ grandiose promises, but says employees should benefit from all productivity gains.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
-
-### 18. `EN` [Dell Overhauls Its Compensation, Cutting Pay for Salespeople Who Don’t Pass This Magic Number](https://www.inc.com/brian-contreras/dell-overhauls-compensation-cutting-pay-sales-team-staff-commission/91302607)
-**Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
-Higher performers, meanwhile, will enjoy increased commissions under the new policy.
 
 </div>
 
@@ -2206,39 +2193,15 @@ Pour embaucher un RSSI ou un analyste cyber, les PME sans expertise doivent se f
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 1. `EN` [U.S. economy suddenly seems on track for fabled soft landing: 2% inflation without a recession](https://www.marketwatch.com/story/u-s-economy-suddenly-seems-on-track-for-fabled-soft-landing-2-inflation-without-a-recession-a48a0008?mod=mw_rss_topstories)
+### 1. `EN` [How the riptide around AI and stocks could seep into Fed decisions and the housing market](https://www.marketwatch.com/story/how-the-riptide-around-ai-and-stocks-could-seep-into-fed-decisions-and-the-housing-market-fa6509ec?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-Who needs interest-rate cuts when the labor market is looking healthy and inflation is cooling?
+AI is suddenly driving big swings in stocks. It also could seep into central-bank policy decisions and the U.S. housing market.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 2. `EN` [‘We get the living daylights taxed out of us’: How billionaires like Elon Musk avoid taxes on their massive wealth](data/articles/e84f8ac896d029a8d69ff748faf6c71f.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 3. `EN` [Will the Stock Market Crash in Year 2 of Donald Trump's Second Term? Several Historically Correlated Events Offer a Clear Answer.](data/articles/8e691d4760166f6f7400f1aea3ad0a56.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 4. `EN` [Surprise Expenses Eat 10% of Retirees’ Yearly Income — How To Make Sure You Have Enough Cash](data/articles/2747f3c956ebb5d40464e50d74a2b617.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 5. `EN` [2027 Social Security COLA Forecast Reveals Tinier Increases — How To Prepare](data/articles/f90b6a206c9912aa3cf02a5d91e83748.html)
+### 2. `EN` [Here’s the Minimum Net Worth You Need To Be in the Top 1% in Your 50s](data/articles/625ae1c81d197851b0419e6b7d249f84.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2246,15 +2209,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 6. `EN` [Rubio strikes constructive tone but persists in US criticism of European allies](https://www.investing.com/news/world-news/rubio-strikes-constructive-tone-but-persists-in-us-criticism-of-european-allies-4507238)
-**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
-
-### 7. `EN` [CIA, Pentagon reviewed secret ’Havana syndrome’ device in Norway, Washington Post reports](https://www.investing.com/news/world-news/cia-pentagon-reviewed-secret-havana-syndrome-device-in-norway-washington-post-reports-4507246)
+### 3. `EN` [Zelenskiy says US too often asks Ukraine, not Russia, for concessions](https://www.investing.com/news/world-news/zelenskiy-says-us-too-often-asks-ukraine-not-russia-for-concessions-4507247)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2262,7 +2217,31 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 8. `EN` [‘We’ve been dating for 5 years’: My boyfriend’s parents say he doesn’t earn enough to marry. Should I speak to his father?](https://www.marketwatch.com/story/weve-been-dating-for-5-years-my-boyfriends-parents-say-he-doesnt-earn-enough-to-marry-should-i-speak-to-his-father-44b48700?mod=mw_rss_topstories)
+### 4. `EN` [U.S. economy suddenly seems on track for fabled soft landing: 2% inflation without a recession](https://www.marketwatch.com/story/u-s-economy-suddenly-seems-on-track-for-fabled-soft-landing-2-inflation-without-a-recession-a48a0008?mod=mw_rss_topstories)
+**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
+Who needs interest-rate cuts when the labor market is looking healthy and inflation is cooling?
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
+
+### 5. `EN` [Rubio strikes constructive tone but persists in US criticism of European allies](https://www.investing.com/news/world-news/rubio-strikes-constructive-tone-but-persists-in-us-criticism-of-european-allies-4507238)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
+
+### 6. `EN` [CIA, Pentagon reviewed secret ’Havana syndrome’ device in Norway, Washington Post reports](https://www.investing.com/news/world-news/cia-pentagon-reviewed-secret-havana-syndrome-device-in-norway-washington-post-reports-4507246)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+
+### 7. `EN` [‘We’ve been dating for 5 years’: My boyfriend’s parents say he doesn’t earn enough to marry. Should I speak to his father?](https://www.marketwatch.com/story/weve-been-dating-for-5-years-my-boyfriends-parents-say-he-doesnt-earn-enough-to-marry-should-i-speak-to-his-father-44b48700?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 “Every year his very wealthy parents say that he needs to ‘earn more’ before he can marry me.”
 
@@ -2270,7 +2249,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="lin" data-category="finance" data-source="Investing.com">
 
-### 9. `EN` [Los Angeles museum unveils immersive ’Ponyo’ exhibit by Hayao Miyazaki](https://www.investing.com/news/world-news/los-angeles-museum-unveils-immersive-ponyo-exhibit-by-hayao-miyazaki-4507245)
+### 8. `EN` [Los Angeles museum unveils immersive ’Ponyo’ exhibit by Hayao Miyazaki](https://www.investing.com/news/world-news/los-angeles-museum-unveils-immersive-ponyo-exhibit-by-hayao-miyazaki-4507245)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2278,7 +2257,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="pt" data-category="finance" data-source="Investing.com">
 
-### 10. `EN` [Astronomers puzzle over ’inside out’ planetary system](https://www.investing.com/news/world-news/astronomers-puzzle-over-inside-out-planetary-system-4507244)
+### 9. `EN` [Astronomers puzzle over ’inside out’ planetary system](https://www.investing.com/news/world-news/astronomers-puzzle-over-inside-out-planetary-system-4507244)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2286,7 +2265,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 11. `EN` [Ethiopia revokes accreditation of Reuters journalists](https://www.investing.com/news/world-news/ethiopia-revokes-accreditation-of-reuters-journalists-4507243)
+### 10. `EN` [Ethiopia revokes accreditation of Reuters journalists](https://www.investing.com/news/world-news/ethiopia-revokes-accreditation-of-reuters-journalists-4507243)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2294,7 +2273,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 12. `EN` [Trump vs Bad Bunny: A Super Bowl feud with possible midterm consequences](https://www.investing.com/news/politics-news/trump-vs-bad-bunny-a-super-bowl-feud-with-possible-midterm-consequences-4507242)
+### 11. `EN` [Trump vs Bad Bunny: A Super Bowl feud with possible midterm consequences](https://www.investing.com/news/politics-news/trump-vs-bad-bunny-a-super-bowl-feud-with-possible-midterm-consequences-4507242)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2302,7 +2281,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 13. `EN` [How the US Supreme Court set the stage for partisan gerrymandering arms race](https://www.investing.com/news/politics-news/how-the-us-supreme-court-set-the-stage-for-partisan-gerrymandering-arms-race-4507241)
+### 12. `EN` [How the US Supreme Court set the stage for partisan gerrymandering arms race](https://www.investing.com/news/politics-news/how-the-us-supreme-court-set-the-stage-for-partisan-gerrymandering-arms-race-4507241)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2310,7 +2289,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="it" data-category="finance" data-source="Investing.com">
 
-### 14. `EN` [Nvidia CEO Huang won’t attend India AI summit next week, company saus](https://www.investing.com/news/stock-market-news/nvidia-ceo-huang-wont-attend-india-ai-summit-next-week-company-saus-4507240)
+### 13. `EN` [Nvidia CEO Huang won’t attend India AI summit next week, company saus](https://www.investing.com/news/stock-market-news/nvidia-ceo-huang-wont-attend-india-ai-summit-next-week-company-saus-4507240)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2318,15 +2297,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="fr" data-category="finance" data-source="Investing.com">
 
-### 15. `FR` [AI film school trains next generation of Hollywood moviemakers](https://www.investing.com/news/stock-market-news/ai-film-school-trains-next-generation-of-hollywood-moviemakers-4507239)
-**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
-
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="finance" data-source="Investing.com">
-
-### 16. `FR` [Ukraine, IMF ease conditions on new $8.2 billion loan program](https://www.investing.com/news/economy-news/ukraine-imf-ease-conditions-on-new-82-billion-loan-program-4507237)
+### 14. `FR` [AI film school trains next generation of Hollywood moviemakers](https://www.investing.com/news/stock-market-news/ai-film-school-trains-next-generation-of-hollywood-moviemakers-4507239)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2334,7 +2305,7 @@ Who needs interest-rate cuts when the labor market is looking healthy and inflat
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 17. `EN` [Three things to consider to make your money last the rest of your life](https://www.marketwatch.com/story/good-news-were-living-longer-too-bad-most-of-us-cant-afford-it-66a86498?mod=mw_rss_topstories)
+### 15. `EN` [Three things to consider to make your money last the rest of your life](https://www.marketwatch.com/story/good-news-were-living-longer-too-bad-most-of-us-cant-afford-it-66a86498?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 Good news: We’re living longer. Too bad most of us can’t afford it.
 
@@ -2342,7 +2313,7 @@ Good news: We’re living longer. Too bad most of us can’t afford it.
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 18. `EN` [‘I’m part of a blended family that didn’t blend well’: My stepsister added her mailing address to our mother’s bank account. Can she be trusted?](https://www.marketwatch.com/story/my-mom-was-very-upset-my-stepsister-changed-the-address-on-our-mothers-bank-account-can-she-be-trusted-as-executor-dab23670?mod=mw_rss_topstories)
+### 16. `EN` [‘I’m part of a blended family that didn’t blend well’: My stepsister added her mailing address to our mother’s bank account. Can she be trusted?](https://www.marketwatch.com/story/my-mom-was-very-upset-my-stepsister-changed-the-address-on-our-mothers-bank-account-can-she-be-trusted-as-executor-dab23670?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 “It’s things like this that make me wonder what else she might be doing.”
 
@@ -2350,7 +2321,7 @@ Good news: We’re living longer. Too bad most of us can’t afford it.
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 19. `EN` [‘I’m close to retiring’: I’m behind on my property tax. Is this a really bad time to sell my house?](https://www.marketwatch.com/story/im-close-to-retiring-im-behind-on-my-property-taxes-is-this-a-bad-time-to-sell-my-house-40954efd?mod=mw_rss_topstories)
+### 17. `EN` [‘I’m close to retiring’: I’m behind on my property tax. Is this a really bad time to sell my house?](https://www.marketwatch.com/story/im-close-to-retiring-im-behind-on-my-property-taxes-is-this-a-bad-time-to-sell-my-house-40954efd?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 “I’ve never been late on a mortgage, so this makes me nervous.”
 
@@ -2358,7 +2329,7 @@ Good news: We’re living longer. Too bad most of us can’t afford it.
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 20. `EN` [Tax refunds are up this year to an average of $2,290, early IRS numbers show. How does yours compare?](https://www.marketwatch.com/story/tax-refunds-are-up-this-year-to-an-average-of-2-290-early-irs-numbers-show-how-does-yours-compare-3c4e2267?mod=mw_rss_topstories)
+### 18. `EN` [Tax refunds are up this year to an average of $2,290, early IRS numbers show. How does yours compare?](https://www.marketwatch.com/story/tax-refunds-are-up-this-year-to-an-average-of-2-290-early-irs-numbers-show-how-does-yours-compare-3c4e2267?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 “Average refund amounts are strong,” the IRS said in an explanation of the data.
 
@@ -2366,7 +2337,7 @@ Good news: We’re living longer. Too bad most of us can’t afford it.
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 21. `EN` [Amazon’s stock just clinched its worst losing streak in nearly 20 years. It’s giving investors AWS déjà vu.](https://www.marketwatch.com/story/amazons-stock-just-clinched-its-worst-losing-streak-in-nearly-two-decades-its-giving-investors-aws-deja-vu-2f239fe3?mod=mw_rss_topstories)
+### 19. `EN` [Amazon’s stock just clinched its worst losing streak in nearly 20 years. It’s giving investors AWS déjà vu.](https://www.marketwatch.com/story/amazons-stock-just-clinched-its-worst-losing-streak-in-nearly-two-decades-its-giving-investors-aws-deja-vu-2f239fe3?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 As shares of Amazon deepen into a bear market, investors are once again weighing if the company’s spending plans will pay off.
 
@@ -2374,7 +2345,7 @@ As shares of Amazon deepen into a bear market, investors are once again weighing
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 22. `EN` [‘You’re a line item on a spreadsheet.’ The case for why you don’t need to love your job.](https://www.marketwatch.com/story/hate-your-job-good-loving-your-job-costs-people-real-money-d2f1e5d5?mod=mw_rss_topstories)
+### 20. `EN` [‘You’re a line item on a spreadsheet.’ The case for why you don’t need to love your job.](https://www.marketwatch.com/story/hate-your-job-good-loving-your-job-costs-people-real-money-d2f1e5d5?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 Complacent high earners may be making tens of thousands of dollars less each year than they could be making elsewhere.
 
@@ -2382,23 +2353,23 @@ Complacent high earners may be making tens of thousands of dollars less each yea
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 23. `EN` [These 32 favorite stocks signal the bull market is running on fumes](https://www.marketwatch.com/story/these-32-favorite-stocks-signal-the-bull-market-is-running-on-fumes-60b18b69?mod=mw_rss_topstories)
+### 21. `EN` [These 32 favorite stocks signal the bull market is running on fumes](https://www.marketwatch.com/story/these-32-favorite-stocks-signal-the-bull-market-is-running-on-fumes-60b18b69?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
 The S&amp;P 500 sectors that top investment newsletters currently like most are strongest at market peaks.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 24. `EN` [The Dow transports’ steep takeoff isn’t the green light you’re told it is](https://www.marketwatch.com/story/what-wall-street-bulls-are-getting-wrong-about-the-dow-transports-steep-takeoff-549c6694?mod=mw_rss_topstories)
-**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-The S&amp;P 500 does better when the Dow industrials outperform the Dow transports.
+### 22. `EN` [Apollo, Blackstone execs offer reassurance as software sell-off hits their stocks too](data/articles/ca5fe4b9b60611f20d035844dccaae6a.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+<div class="article-item" data-lang="jav" data-category="finance" data-source="Yahoo Finance">
 
-### 25. `EN` [H.C. Wainwright Bullish on ​Genmab A/S (GMAB) on Robust Sales for DARZALEX](data/articles/025c7f70013c9bfe82e15b831129dd6c.html)
+### 23. `EN` [Walmart, economic data await investors confronting AI 'whack-a-mole'](data/articles/b17d57d9e55246f87a11119caf6322cd.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2406,7 +2377,7 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 26. `EN` [Bernstein Remains a Buy on BeOne Medicines AG (ONC)](data/articles/300cb5f33ccbcdf8df0cb3a8786a1c49.html)
+### 24. `EN` [Mortgage and refinance interest rates today, February 13, 2026: Low rates and new home discounts entice buyers](data/articles/3d5085cbd9b5a9233f114c05125bbd29.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2414,7 +2385,15 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 27. `EN` [Wall Street Bullish on ​Kinross Gold Corporation (KGC) Ahead of its Fiscal Q4 2025 Earnings](data/articles/7744f484481ff3a4102523041bcfd26f.html)
+### 25. `EN` [Best CD rates today, February 13, 2026 (up to 4% APY return)](data/articles/fddaac29936a00e0ed2055cd0175c9af.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy` | *Also on: Yahoo Finance, Yahoo Finance*
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 26. `EN` [HELOC and home equity loan rates today, February 6, 2026: Intro rates as low as 1.99%](data/articles/635b8720ddc2beb00cd55d4be058e79a.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2422,7 +2401,7 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 28. `EN` [​Trip.com Group (TCOM) Set to Release Q4 2025 Results, Here’s What You Should Know](data/articles/c0257fcae770bbc56e2f07d8f23bb853.html)
+### 27. `EN` [Elizabeth Warren sounds alarm over 1 asset in your 401(k) — and she’s still waiting for the SEC. How you could lose big](data/articles/a576c2245ec1f9afb4f2dc9afa62477e.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2430,7 +2409,7 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 29. `EN` [​HDFC Bank (HDB) Up More than 4.7% Since Q3 2026 Results](data/articles/8b8413dbecc9d1e3e48d1105b9c6e7be.html)
+### 28. `EN` [Should You Forget Tesla and Buy These 2 Millionaire-Maker Stocks Instead?](data/articles/ffb371102773d6ad3b3fba00c1f2478f.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2438,7 +2417,15 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 30. `EN` [Needham Remains a Buy on Credo Technology (CRDO)](data/articles/54b8016d89bed78d19a1938a2734bad5.html)
+### 29. `EN` [Is the Stock Market Open for Presidents' Day? Here's the Trading Holiday Schedule](data/articles/b2546ede6fd6577c18ad7e6bf81cf97c.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 30. `EN` [H.C. Wainwright Bullish on ​Genmab A/S (GMAB) on Robust Sales for DARZALEX](data/articles/025c7f70013c9bfe82e15b831129dd6c.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2452,9 +2439,18 @@ The S&amp;P 500 does better when the Dow industrials outperform the Dow transpor
 
 ## Crypto & Blockchain / Crypto & Blockchain
 
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
+
+### 1. `FR` [Bitcoin franchit 69 000 dollars après un CPI américain plus faible](data/articles/a2d8a159ac09e81ae596f7779f056d8e.html)
+**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
+Vendredi 13, jour de chance ? Le bitcoin flirte avec son record porté par l'inflation. La Fed ne bouge pas. Truflation savait déjà. Ambiance.
+L’article Bitcoin franchit 69 000 dollars après un CPI américain plus faible est apparu en premier sur Cointribune.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
 
-### 1. `EN` [Bitcoin claws back to $70,000 on cooling inflation after $8.7 billion wipeout](data/articles/4568be96cf46aed03732d6082bb0ed72.html)
+### 2. `EN` [Bitcoin claws back to $70,000 on cooling inflation after $8.7 billion wipeout](data/articles/4568be96cf46aed03732d6082bb0ed72.html)
 **Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
 Despite the price recovery, the Crypto Fear &amp; Greed Index remains in “extreme fear,” indicating underlying market anxiety.
 
@@ -2462,7 +2458,7 @@ Despite the price recovery, the Crypto Fear &amp; Greed Index remains in “extr
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
 
-### 2. `FR` [Bundles Crypto : décryptage et top 3 des meilleures plateformes](data/articles/4874f5d4f5b2ca85c5a4d6e7570eb653.html)
+### 3. `FR` [Bundles Crypto : décryptage et top 3 des meilleures plateformes](data/articles/4874f5d4f5b2ca85c5a4d6e7570eb653.html)
 **Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
 On vous dit tout sur les bundles cryptos et on vous propose une selection des meilleurs plateformes qui les offrent.
 L’article Bundles Crypto : décryptage et top 3 des meilleures plateformes est apparu en premier sur Journal du Coin.
@@ -2471,7 +2467,7 @@ L’article Bundles Crypto : décryptage et top 3 des meilleures plateformes est
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
 
-### 3. `FR` [Une nouvelle monnaie s’impose dans les casinos Web3](data/articles/74f5dc69128b90f4b2aaa4621ecaa5fa.html)
+### 4. `FR` [Une nouvelle monnaie s’impose dans les casinos Web3](data/articles/74f5dc69128b90f4b2aaa4621ecaa5fa.html)
 **Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
 Alors que Bitcoin et Ethereum perdaient du terrain dans les casinos Web3, les stablecoins se sont imposés comme la nouvelle monnaie. Portés par leur stabilité, leur rapidité et une adoption massive, ils redéfinissent les usages des joueurs et la structure économique des plateformes de jeu en ligne.
 L’article Une nouvelle monnaie s’impose dans les casinos Web3 est apparu en premier sur Cointribune.
@@ -2480,7 +2476,7 @@ L’article Une nouvelle monnaie s’impose dans les casinos Web3 est apparu en 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 4. `EN` [ARK turns bullish on Coinbase again with $15M purchase after selling spree](data/articles/99a324736b8ed4280f34c097b12a995c.html)
+### 5. `EN` [ARK turns bullish on Coinbase again with $15M purchase after selling spree](data/articles/99a324736b8ed4280f34c097b12a995c.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Cathie Wood’s ARK Invest added nearly $15.2 million in Coinbase stock across three ETFs, reversing course days after offloading more than $39 million in shares.
 
@@ -2488,7 +2484,7 @@ Cathie Wood’s ARK Invest added nearly $15.2 million in Coinbase stock across t
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
 
-### 5. `FR` [Crypto : Trois personnes arrêtées après une attaque visant un cadre de Binance France](data/articles/aaf1eac9a39471ecbfe03173f211b974.html)
+### 6. `FR` [Crypto : Trois personnes arrêtées après une attaque visant un cadre de Binance France](data/articles/aaf1eac9a39471ecbfe03173f211b974.html)
 **Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
 La filiale française de la plateforme d'échange de cryptomonnaies Binance a confirmé jeudi qu'un de ses employés a été victime d'un cambriolage à son domicile. Les forces de l'ordre ont interpellé trois suspects. Cette affaire s'inscrit dans une vague d'agressions sans précédent visant le secteur crypto en France.
 L’article Crypto : Trois personnes arrêtées après une attaque visant un cadre de Binance France est apparu en premier sur Cointribune.
@@ -2497,7 +2493,7 @@ L’article Crypto : Trois personnes arrêtées après une attaque visant un cad
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 6. `FR` [Le fonds souverain norvégien : quand un État investit comme les meilleurs et change son destin économique](data/articles/fcf76a8ee3de37d5aed86e8929314a9c.html)
+### 7. `FR` [Le fonds souverain norvégien : quand un État investit comme les meilleurs et change son destin économique](data/articles/fcf76a8ee3de37d5aed86e8929314a9c.html)
 **Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
 Le fonds souverain norvégien est un cas unique : détenteur de 1,5 % des entreprises cotées mondiales, il a généré plus de 200 milliards d'euros de gains en 2025 (environ 15 % de rendement). Là où d'autres ont consommé leur rente pétrolière, la Norvège l'a transformée en un levier de souveraineté finançant durablement son modèle social et les générations futures. Cette réussite pose une question dérangeante pour la France : comment un pays aussi riche a-t-il pu passer à côté d'un tel outil de puissance financière ?
 L’article Le fonds souverain norvégien :
@@ -2506,7 +2502,7 @@ L’article Le fonds souverain norvégien :
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 7. `FR` [En 2026, le bullrun est fini.](data/articles/31b0a061ed0ccf98f2b6cbd3a8b34a9f.html)
+### 8. `FR` [En 2026, le bullrun est fini.](data/articles/31b0a061ed0ccf98f2b6cbd3a8b34a9f.html)
 **Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
 Coinbase, Strategy et Robinhood : les entreprises crypto cotées en bourse publient des résultats en dessous des prévisions pour le 4e trimestre 2025. Ces mauvais chiffres reflètent-ils une crise profonde ou simplement le début du bear market ?
 L’article En 2026, le bullrun est fini. est apparu en premier sur Cryptoast.
@@ -2515,7 +2511,7 @@ L’article En 2026, le bullrun est fini. est apparu en premier sur Cryptoast.
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
 
-### 8. `FR` [Crypto en France : La souveraineté et la sécurité des personnes érigées en impératifs d’État](data/articles/2377af49541f9e387f53fcb5b05a71d1.html)
+### 9. `FR` [Crypto en France : La souveraineté et la sécurité des personnes érigées en impératifs d’État](data/articles/2377af49541f9e387f53fcb5b05a71d1.html)
 **Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
 Laurent Nuñez a annoncé un plan d'urgence face à une recrudescence alarmante de crimes violents ciblant le secteur crypto.
 L’article Crypto en France : La souveraineté et la sécurité des personnes érigées en impératifs d’État est apparu en premier sur Journal du Coin.
@@ -2524,7 +2520,7 @@ L’article Crypto en France : La souveraineté et la sécurité des personnes �
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
 
-### 9. `FR` [Bessent mise sur le CLARITY Act pour rassurer les investisseurs crypto](data/articles/8aac2b79073facea468d699ece6a9eb5.html)
+### 10. `FR` [Bessent mise sur le CLARITY Act pour rassurer les investisseurs crypto](data/articles/8aac2b79073facea468d699ece6a9eb5.html)
 **Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
 À Washington, l’avenir réglementaire des cryptos se joue peut-être dans les prochains mois. En pleine volatilité des marchés, le CLARITY Act s’impose comme un texte charnière pour l’industrie américaine des cryptos. Le secrétaire au Trésor Scott Bessent plaide pour son adoption rapide, estimant qu’une clarification législative pourrait apaiser le sentiment des investisseurs. Derrière ce calendrier serré se profile un enjeu politique majeur : sécuriser le cadre crypto avant que les équilibres électoraux de 2026 ne rebattent les cartes.
 
@@ -2532,7 +2528,7 @@ L’article Crypto en France : La souveraineté et la sécurité des personnes �
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 10. `EN` [Trump Media files for two new crypto ETFs tied to Bitcoin, Ether, Cronos](data/articles/00cf678a448dfb8578525b821be60478.html)
+### 11. `EN` [Trump Media files for two new crypto ETFs tied to Bitcoin, Ether, Cronos](data/articles/00cf678a448dfb8578525b821be60478.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 US spot Bitcoin ETFs recorded four straight weeks of net outflows, with about $360 million withdrawn in the latest week.
 
@@ -2540,7 +2536,7 @@ US spot Bitcoin ETFs recorded four straight weeks of net outflows, with about $3
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
 
-### 11. `FR` [Cet indicateur aux portes d’un signal historique pour BTC – Bitcoin 14 février](data/articles/2dd95ee672addf08c858f67bb9f2309c.html)
+### 12. `FR` [Cet indicateur aux portes d’un signal historique pour BTC – Bitcoin 14 février](data/articles/2dd95ee672addf08c858f67bb9f2309c.html)
 **Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
 Le cours du Bitcoin a chuté de 50 % depuis le top, et le MVRV Z-Score se rapproche d'une zone historiquement très intéressante. 
 L’article Cet indicateur aux portes d’un signal historique pour BTC – Bitcoin 14 février est apparu en premier sur Journal du Coin.
@@ -2549,7 +2545,7 @@ L’article Cet indicateur aux portes d’un signal historique pour BTC – Bitc
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 12. `EN` [Memecoin market showing 'classic capitulation signal': Santiment](data/articles/ccf888cc6d16f770ac6414e74e88c29b.html)
+### 13. `EN` [Memecoin market showing 'classic capitulation signal': Santiment](data/articles/ccf888cc6d16f770ac6414e74e88c29b.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 The total memecoin market capitalization has dropped roughly 34% over the past month as the broader market sold off, but Santiment suggests the slump may not last long.
 
@@ -2557,7 +2553,7 @@ The total memecoin market capitalization has dropped roughly 34% over the past m
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 13. `EN` [Bitcoin holders are being tested as inflation eases: Pompliano](data/articles/a4e23e23a4e62f57f53bdd5ef4ac8d4f.html)
+### 14. `EN` [Bitcoin holders are being tested as inflation eases: Pompliano](data/articles/a4e23e23a4e62f57f53bdd5ef4ac8d4f.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Bitcoin will become “more valuable than ever” after deflation stops covering “up the impact" on the US dollar, according to Bitcoin entrepreneur Anthony Pompliano.
 
@@ -2565,7 +2561,7 @@ Bitcoin will become “more valuable than ever” after deflation stops covering
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 14. `EN` [Publicly Traded Blockchain Lender Figure Confirms Customer Data Breach](data/articles/50054c7cfe3aad32e320ba13360f8319.html)
+### 15. `EN` [Publicly Traded Blockchain Lender Figure Confirms Customer Data Breach](data/articles/50054c7cfe3aad32e320ba13360f8319.html)
 **Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
 Blockchain lender Figure said hackers accessed customer data after an employee was targeted in a social engineering attack.
 
@@ -2573,7 +2569,7 @@ Blockchain lender Figure said hackers accessed customer data after an employee w
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 15. `EN` [Ether holds $2K, but will $242M spot ETH ETF outflow reignite price downside?](data/articles/9267b92dd8d9295304dbf3e026f2509e.html)
+### 16. `EN` [Ether holds $2K, but will $242M spot ETH ETF outflow reignite price downside?](data/articles/9267b92dd8d9295304dbf3e026f2509e.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Ether holds $2,000, but may remain under pressure as traders watch corporate earnings, US government debt and growing global tensions.
 
@@ -2581,7 +2577,7 @@ Ether holds $2,000, but may remain under pressure as traders watch corporate ear
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 16. `EN` [Grayscale files to convert AAVE token trust into ETF to list on NYSE Arca](https://www.theblock.co/post/389943/grayscale-files-convert-aave-token-trust-etf-list-nyse-arca?utm_source=rss&utm_medium=rss)
+### 17. `EN` [Grayscale files to convert AAVE token trust into ETF to list on NYSE Arca](https://www.theblock.co/post/389943/grayscale-files-convert-aave-token-trust-etf-list-nyse-arca?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 Crypto asset manager Grayscale is looking to convert its closed-ended AAVE trust into an exchange-traded fund.
 
@@ -2589,7 +2585,7 @@ Crypto asset manager Grayscale is looking to convert its closed-ended AAVE trust
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
 
-### 17. `FR` [Le Bitcoin enregistre 2,3 milliards $ de pertes en 7 jours !](data/articles/c8ce3deacc807c5f940d355de83c593f.html)
+### 18. `FR` [Le Bitcoin enregistre 2,3 milliards $ de pertes en 7 jours !](data/articles/c8ce3deacc807c5f940d355de83c593f.html)
 **Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
 En l’espace de quelques séances, le bitcoin a replongé dans une zone de turbulences rarement observée depuis les grands krachs précédents. Les données on-chain révèlent 2,3 milliards de dollars de pertes réalisées en sept jours, un choc qui classe cet épisode parmi les plus violents de son histoire récente. Cette vague de capitulation survient après une correction brutale du BTC, retombé lourdement après son sommet au-dessus de 126 000 dollars. 
 L’article Le Bitcoin enregistre 2,3 milliards $ de pertes en 7 jours ! est apparu en premier sur Cointribune.
@@ -2598,7 +2594,7 @@ L’article Le Bitcoin enregistre 2,3 milliards $ de pertes en 7 jours ! es
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 18. `EN` [White House crypto adviser says banks shouldn't fear stablecoin yield](data/articles/b79637b9915570f3222854fb014e157e.html)
+### 19. `EN` [White House crypto adviser says banks shouldn't fear stablecoin yield](data/articles/b79637b9915570f3222854fb014e157e.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Crypto companies and platforms that provide stablecoin rewards have become a major point of contention in the CLARITY crypto market structure bill.
 
@@ -2606,7 +2602,7 @@ Crypto companies and platforms that provide stablecoin rewards have become a maj
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 19. `EN` [ETH open interest falls to 3-year low: What does it mean for Ether price?](data/articles/bf93aa969eb0d644c6c834004dd6d57d.html)
+### 20. `EN` [ETH open interest falls to 3-year low: What does it mean for Ether price?](data/articles/bf93aa969eb0d644c6c834004dd6d57d.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Traders say Ether’s declining open interest and futures funding rates could set the groundwork for a significant short squeeze on bearish leveraged positions and a rally to $2,500.
 
@@ -2614,7 +2610,7 @@ Traders say Ether’s declining open interest and futures funding rates could se
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 20. `EN` [Solana Company shares jump 17% as firm rolls out borrowing against staked SOL](https://www.theblock.co/post/389924/solana-company-shares-17-borrowing-against-staked-sol?utm_source=rss&utm_medium=rss)
+### 21. `EN` [Solana Company shares jump 17% as firm rolls out borrowing against staked SOL](https://www.theblock.co/post/389924/solana-company-shares-17-borrowing-against-staked-sol?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 Solana treasury companies are starting to turn to staking income and on-chain financing tools as lower SOL prices pressure balance sheets and share prices.
 
@@ -2622,7 +2618,7 @@ Solana treasury companies are starting to turn to staking income and on-chain fi
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 21. `EN` [Trump Media Files to Launch Truth Social-Branded Bitcoin, Ethereum, Cronos ETFs](data/articles/0dafdd3bd9e4fd80575d08ad96f5e4fa.html)
+### 22. `EN` [Trump Media Files to Launch Truth Social-Branded Bitcoin, Ethereum, Cronos ETFs](data/articles/0dafdd3bd9e4fd80575d08ad96f5e4fa.html)
 **Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
 Truth Social Funds applied for ETFs that would give investors exposure to crypto—one focused on Bitcoin and Ethereum, the other on Cronos.
 
@@ -2630,7 +2626,7 @@ Truth Social Funds applied for ETFs that would give investors exposure to crypto
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 22. `EN` [CryptoQuant says bitcoin’s ‘ultimate’ bear market bottom is around $55,000](https://www.theblock.co/post/389919/cryptoquant-bitcoin-ultimate-bear-market-bottom-55000?utm_source=rss&utm_medium=rss)
+### 23. `EN` [CryptoQuant says bitcoin’s ‘ultimate’ bear market bottom is around $55,000](https://www.theblock.co/post/389919/cryptoquant-bitcoin-ultimate-bear-market-bottom-55000?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 CQ said bitcoin has not reached full capitulation yet, as key onchain indicators remain in a Bear Phase rather than the Extreme Bear Phase.
 
@@ -2638,7 +2634,7 @@ CQ said bitcoin has not reached full capitulation yet, as key onchain indicators
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 23. `EN` [Tether invests in Hyperliquid frontend Dreamcash, offering perps markets for TSLA, gold and more using USDT0 collateral](https://www.theblock.co/post/389916/tether-invests-in-hyperliquid-frontend-dreamcash-offering-perps-markets-for-tsla-gold-and-more-using-usdt0-collateral?utm_source=rss&utm_medium=rss)
+### 24. `EN` [Tether invests in Hyperliquid frontend Dreamcash, offering perps markets for TSLA, gold and more using USDT0 collateral](https://www.theblock.co/post/389916/tether-invests-in-hyperliquid-frontend-dreamcash-offering-perps-markets-for-tsla-gold-and-more-using-usdt0-collateral?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 Dreamcash said Tether made a strategic investment in the project in the wake of its 10 RWA perps deployments.
 
@@ -2646,7 +2642,7 @@ Dreamcash said Tether made a strategic investment in the project in the wake of 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
 
-### 24. `EN` [Trump-linked Truth Social seeks SEC approval for two crypto ETFs ](data/articles/eeddbf95978faf9b1c01ffff4ec7d8f3.html)
+### 25. `EN` [Trump-linked Truth Social seeks SEC approval for two crypto ETFs ](data/articles/eeddbf95978faf9b1c01ffff4ec7d8f3.html)
 **Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
 The filings include a bitcoin and ether ETF and a staking-focused Cronos fund, deepening the Truth Social brand’s ambitions in digital asset investing.
 
@@ -2654,7 +2650,7 @@ The filings include a bitcoin and ether ETF and a staking-focused Cronos fund, d
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 25. `EN` [Price predictions 2/13: BTC, ETH, BNB, XRP, SOL, DOGE, BCH, HYPE, ADA, XMR](data/articles/2007f5b853b6893cd51aeb15772401c2.html)
+### 26. `EN` [Price predictions 2/13: BTC, ETH, BNB, XRP, SOL, DOGE, BCH, HYPE, ADA, XMR](data/articles/2007f5b853b6893cd51aeb15772401c2.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Bitcoin and several major altcoins are attempting a relief rally, signaling that the bulls are trying to form a higher low.
 
@@ -2662,7 +2658,7 @@ Bitcoin and several major altcoins are attempting a relief rally, signaling that
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
 
-### 26. `EN` [Clarity Act Passage Would 'Comfort' Markets Amid Bitcoin Volatility: Treasury Secretary Bessent](data/articles/fe8e99efc46b08ac73accf30e50524ad.html)
+### 27. `EN` [Clarity Act Passage Would 'Comfort' Markets Amid Bitcoin Volatility: Treasury Secretary Bessent](data/articles/fe8e99efc46b08ac73accf30e50524ad.html)
 **Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
 U.S. Treasury Secretary Scott Bessent suggested that the crypto market would be calmed by the passage of the Clarity Act.
 
@@ -2670,7 +2666,7 @@ U.S. Treasury Secretary Scott Bessent suggested that the crypto market would be 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 27. `EN` [Here’s what happened in crypto today](data/articles/78f7a83e386d3f9bd80908be49f28870.html)
+### 28. `EN` [Here’s what happened in crypto today](data/articles/78f7a83e386d3f9bd80908be49f28870.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, NFTs, Web3 and crypto regulation.
 
@@ -2678,7 +2674,7 @@ Need to know what happened in crypto today? Here is the latest news on daily tre
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 28. `EN` [Dutch House of Representatives advances controversial 36% tax law](data/articles/f41d975e969e41341f5d865a9dd144f2.html)
+### 29. `EN` [Dutch House of Representatives advances controversial 36% tax law](data/articles/f41d975e969e41341f5d865a9dd144f2.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Certain assets, like equity in a qualifying start-up company and physical property used for non-investment, were exempt from the 36% tax.
 
@@ -2686,18 +2682,9 @@ Certain assets, like equity in a qualifying start-up company and physical proper
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 29. `EN` [Digital gold or tech stock? Bitcoin’s identity crisis deepens](data/articles/433c0abc297a2ee9b831664928e12cf6.html)
+### 30. `EN` [Digital gold or tech stock? Bitcoin’s identity crisis deepens](data/articles/433c0abc297a2ee9b831664928e12cf6.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Bitcoin’s growing correlation with tech stocks challenges its digital gold narrative, as Ether treasuries, BlackRock and Polymarket make bold moves.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
-
-### 30. `FR` [Les positions short atteignent un niveau extrême sur Bitcoin](data/articles/a292329f586e8ff6de3344337d250411.html)
-**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
-Le Bitcoin frôle les 66 500 $, et les positions short atteignent des sommets inédits depuis 2024. Ce pessimisme extrême, souvent synonyme de retournement, pourrait-il déclencher un rebond fulgurant ?
-L’article Les positions short atteignent un niveau extrême sur Bitcoin est apparu en premier sur Cointribune.
 
 </div>
 
@@ -3400,7 +3387,44 @@ Premissa Arquitetural:
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 24. `EN` [Stop Rebuilding Multi-Step Form Logic — Use rhf-stepper Instead](data/articles/20ff8e2b8ca4442c6629d97c20931ec5.html)
+### 24. `EN` [Converting Large JSON, NDJSON, CSV and XML Files without Blowing Up Memory](data/articles/4772ab6f052b79623f44cef965442f09.html)
+**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
+Most of us have written something like this at some point:
+const data = JSON.parse(hugeString);
+
+It works.
+Until it doesn't.
+At some point the file grows.\
+And suddenly:
+  The tab freezes (in the browser)
+  Memory spikes
+  The process crashes
+  Or worse --- everything technically "works" but becomes unusable
+This isn't a JavaScript problem.
+It's a buffering problem.
+Most parsing libraries operate in buffer mode:
+  Read the entire file into memory
+  Parse it completely
+  Return the result
+That means memory usage scales with file size.
+Streaming flips the model:
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
+
+### 25. `EN` [LUXARG: PURE PYTHON SOLUTION FOR WINDOWS 10](data/articles/c379303e1bb62134d54fe5571bda6224.html)
+**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
+GitHub
+Hey there,
+LuxarG is a simple and versile text-editor for a humble guy!
+Who doesn't care about the glory and just fu*king running EXE away and say HUH!
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
+
+### 26. `EN` [Stop Rebuilding Multi-Step Form Logic — Use rhf-stepper Instead](data/articles/20ff8e2b8ca4442c6629d97c20931ec5.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
 A headless, lightweight wrapper for react-hook-form that handles step state and per-step validation with zero UI opinions.
 If you've ever built a multi-step form in React, you know the drill:
@@ -3415,7 +3439,7 @@ You write this logic once. Then you write it again on the next project. And agai
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 25. `EN` [Opik: Your Agent's Black Box Flight Recorder](data/articles/a855b17addb548ce086ce859835e51f4.html)
+### 27. `EN` [Opik: Your Agent's Black Box Flight Recorder](data/articles/a855b17addb548ce086ce859835e51f4.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
 Building LLM agents that actually work reliably is hard. Really hard.
 You've probably experienced this cycle: your agent works perfectly in three test cases, fails spectacularly in production, you tweak a prompt, it fixes one problem but creates two others. Rinse and repeat.
@@ -3426,7 +3450,7 @@ Before diving into Opik, let's understand why agent testing is uniquely challeng
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 26. `EN` [Become an early adopter of an Agentic economy](data/articles/3000dbf72030975bb2f3a21e925a1435.html)
+### 28. `EN` [Become an early adopter of an Agentic economy](data/articles/3000dbf72030975bb2f3a21e925a1435.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
 I am currently building an open-core discovery and communication layer for agents.
 (current deployment is in base sepolia. but no payments feature for now anyway. wallet connect only for registration)
@@ -3442,7 +3466,7 @@ Solution:
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 27. `EN` [Stop Installing Software Just to Merge PDFs — Use This Instead](data/articles/5ecb8e6c76e29b15a1624cfe0bf861b0.html)
+### 29. `EN` [Stop Installing Software Just to Merge PDFs — Use This Instead](data/articles/5ecb8e6c76e29b15a1624cfe0bf861b0.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
 As developers, we try to avoid installing heavy software unless it’s absolutely necessary.
 Yet many people still install bulky desktop apps just to perform a simple task: merging PDF files.
@@ -3456,7 +3480,7 @@ Typical workflow:
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 28. `EN` [[Boost]](data/articles/8ed894388142ef0282acbf55cefa47a0.html)
+### 30. `EN` [[Boost]](data/articles/8ed894388142ef0282acbf55cefa47a0.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev` | *Also on: Dev.to Open Source*
 Making AI Workflows Predictable with MCP and Bifrost🔥
 Anthony Max ・ Feb 13
@@ -3464,26 +3488,6 @@ Anthony Max ・ Feb 13
         #ai
         #programming
         #opensource
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
-
-### 29. `EN` [A Simple Way to Catch Technical SEO Issues Early with Webpulls](data/articles/515d682898f816e782ce13ea289bcaa0.html)
-**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-Technical SEO is often overlooked during development because it is not as visible as design or features, yet it strongly influences how search engines crawl, index, and rank a website.
-A site can look perfect to users while still suffering from broken links, duplicate metadata, redirect chains, or crawlability issues that quietly reduce its search visibility. 
-For developers who already value clean architecture and performance, paying attention to technical SEO is simply an extension of good development practice. Using a crawler such as Webpulls provides a practical way to monitor this.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
-
-### 30. `EN` [Contributing to Lightning Network: Building a Secure Preimage RPC for LND](data/articles/10fbe395920e7ed4ed9266686ceda8b5.html)
-**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-Contributing to core infrastructure like lnd (Lightning Network Daemon) is a great way to understand the protocol deeply. Recently, I implemented a new RPC method called GeneratePreimage to solve a common developer friction point.
-The Problem: To create secure Hold Invoices, developers need a 32-byte preimage and its SHA-256 hash. LND didn't have a native way to generate these, forcing developers to roll their own crypto logic on the client side—which can lead to security risks if weak entropy is used.
-The Solution:
 
 </div>
 
@@ -3495,9 +3499,25 @@ The Solution:
 
 ## Products & Innovation / Produits & Innovation
 
+<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
+
+### 1. `FR` [Actualité : Bon plan – L'aspirateur robot Dreame L40 Ultra "5 étoiles" à 476,03 €](data/articles/16a0c13e4e23a748ee904ee8a58cf5cd.html)
+**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
+Le L40 Ultra est l'un des aspirateurs-robots les plus sophistiqués de Dreame. À mi-chemin entre le L20 Ultra et le X40 Ultra Complete, ce modèle embarque toutes les technologies chères à son fabricant.Points fortsExcellentes performances d’aspiration.Fonction de lavage efficace.Installation et retrait automatiques des serpillières.Traitement des c...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 2. `FR` [Resident Evil Requiem : tout ce que l’on sait à ce jour (infos, annonces, date de sortie, personnages…)](data/articles/5632e936a3932ddbd566447acaf3e6b6.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech` | *Also on: Journal du Geek*
+Découvrez dès maintenant notre gros dossier pour tout savoir autour de Resident Evil Requiem, le neuvième jeu de la saga.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 1. `EN` [Show HN: Open-source trading journal in Ruby on Rails](data/articles/bf12a0ac7ccfda4c31d4516ae76df251.html)
+### 3. `EN` [Show HN: Open-source trading journal in Ruby on Rails](data/articles/bf12a0ac7ccfda4c31d4516ae76df251.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews` | *Also on: Hacker News Show, Hacker News Show, Hacker News Show*
 Article URL: https://github.com/roberthopman/trade-tracking-and-journaling
 Comments URL: https://news.ycombinator.com/item?id=47013798
@@ -3508,7 +3528,7 @@ Points: 1
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 2. `FR` [Actualité : Proton VPN : 1 an ou 2 ans — quel plan est le plus malin ?](data/articles/a7d0125cfbfb9ea75a6914c33d427786.html)
+### 4. `FR` [Actualité : Proton VPN : 1 an ou 2 ans — quel plan est le plus malin ?](data/articles/a7d0125cfbfb9ea75a6914c33d427786.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Proton VPN est un choix intéressant pour ceux qui placent la confidentialité et l’éthique au sommet de leurs priorités. Grâce à la rigueur des lois suisses sur la protection des données, Proton VPN garantit un niveau de confidentialité que beaucoup de concurrents ne peuvent égaler. Concrètement, l’entreprise n’est pas contrainte de conserver les donn...
 
@@ -3516,7 +3536,7 @@ Proton VPN est un choix intéressant pour ceux qui placent la confidentialité e
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 3. `FR` [Actualité : Pour 1337 €, Razer ressuscite une souris gaming venue de 1999, retour sur l'histoire d'une pionnière](data/articles/1fe1414b7cd37cded2a2c5cc604a0702.html)
+### 5. `FR` [Actualité : Pour 1337 €, Razer ressuscite une souris gaming venue de 1999, retour sur l'histoire d'une pionnière](data/articles/1fe1414b7cd37cded2a2c5cc604a0702.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Quel meilleur cadeau pour son vingtième anniversaire que la souris gaming la plus chère du monde ? L'idée paraît folle, mais c'est bien le caprice que s'est offert Razer avec la Razer Boomslang 20th Anniversary Edition, un tirage très très limité de la souris Boomslang. Si le périphérique est né en 1999, cette édition spéciale célèbre plutôt l'annive...
 
@@ -3524,7 +3544,7 @@ Quel meilleur cadeau pour son vingtième anniversaire que la souris gaming la pl
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 4. `EN` [Show HN: Built Vokab: a vocabulary learning app built with SwiftUI](data/articles/cddc26eaf5ec48a02c815804595a60a4.html)
+### 6. `EN` [Show HN: Built Vokab: a vocabulary learning app built with SwiftUI](data/articles/cddc26eaf5ec48a02c815804595a60a4.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 I just shipped my first iOS app. Vokab helps you build your English vocabulary with real examples, native audio, and smart review — synced across all your Apple devices including Watch. Built fully native with SwiftUI, no data collected. Would love feedback from fellow devs.
 https://apps.apple.com/app/vokab-build-your-vocabulary/id675...
@@ -3536,7 +3556,7 @@ Points: 1
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 5. `FR` [Actualité : Ce téléviseur présente le meilleur rapport qualité / prix de notre comparatif](data/articles/3e05a7b89c3baa746c9b1781580fba80.html)
+### 7. `FR` [Actualité : Ce téléviseur présente le meilleur rapport qualité / prix de notre comparatif](data/articles/3e05a7b89c3baa746c9b1781580fba80.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Le Hisense 55U8Q succède au très réussi U8NQ de 2024. Ce téléviseur Mini-Led 144 Hz, décliné dans plusieurs diagonales allant de 55 à 85 pouces, vise encore une fois le bon rapport qualité-prix.Points fortsPic lumineux énorme de 3200-3500 cd/m².Colorimétrie précise en HDR.Très bon contraste.Très bonne gestion du blooming.Compatibilité HDR complèt...
 
@@ -3544,7 +3564,7 @@ Le Hisense 55U8Q succède au très réussi U8NQ de 2024. Ce téléviseur Mini-Le
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 6. `FR` [Moya, le nouveau robot chinois légèrement dérangeant](data/articles/26686a3c730114a5af416799bb73c4ef.html)
+### 8. `FR` [Moya, le nouveau robot chinois légèrement dérangeant](data/articles/26686a3c730114a5af416799bb73c4ef.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Entre des robots qui laissent tomber des assiettes et des androïdes incapables d’ouvrir un frigo sans réfléchir pendant dix minutes, la robotique humanoïde n’a pas toujours brillé par son naturel. La start-up DroidUp pense avoir trouvé une autre voie avec Moya, un robot à l’apparence résolument humaine, conçu moins pour impressionner par sa force que pour instaurer un vrai face-à-face avec les humains. Quitte à mettre légèrement mal à l’aise.
 
@@ -3552,7 +3572,7 @@ Entre des robots qui laissent tomber des assiettes et des androïdes incapables 
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 7. `FR` [Actualité : Bon plan – L'ordinateur Portable Asus Vivobook S14 16 Go / 512 Go "4 étoiles" à 849,99 €](data/articles/1276697a6b6ce511530f0c805dac99b6.html)
+### 9. `FR` [Actualité : Bon plan – L'ordinateur Portable Asus Vivobook S14 16 Go / 512 Go "4 étoiles" à 849,99 €](data/articles/1276697a6b6ce511530f0c805dac99b6.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Le PC portable Vivobook S14 d’Asus embarque une dalle Oled et un processeur performant pour un usage bureautique et plus si affinités. Son châssis simple et efficace lui permet de conserver un tarif attractif moyennant quelques petites concessions.Points fortsProcesseur vaillant.Dalle Oled bien calibrée.Ventilation discrète.Possibilité d'évol...
 
@@ -3560,7 +3580,7 @@ Le PC portable Vivobook S14 d’Asus embarque une dalle Oled et un processeur pe
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 8. `FR` [Duel : Honor Magic 8 Pro vs Oppo Find X9 Pro : le face-à-face des monstres de la photo](data/articles/066dd295ffb3f4fea11a972f0ec1b38a.html)
+### 10. `FR` [Duel : Honor Magic 8 Pro vs Oppo Find X9 Pro : le face-à-face des monstres de la photo](data/articles/066dd295ffb3f4fea11a972f0ec1b38a.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Deux flagships, deux philosophies. D’un côté, la puissance brute et la durabilité ; de l’autre, une approche plus équilibrée et un volet photo taillé pour convaincre. Round après round, cet affrontement réserve plusieurs écarts minuscules et quelques vraies surprises. ## Ergonomies et designLe Find X9 Pro affiche un style plus sobre et moderne que le...
 
@@ -3568,7 +3588,7 @@ Deux flagships, deux philosophies. D’un côté, la puissance brute et la durab
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 9. `EN` [Show HN: Klimly – multi-model weather with uncertainty and activity insights](data/articles/098f345f1e5bedf8266caeb9f4e3c1cd.html)
+### 11. `EN` [Show HN: Klimly – multi-model weather with uncertainty and activity insights](data/articles/098f345f1e5bedf8266caeb9f4e3c1cd.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 We built Klimly to fix the “one-provider” weather problem. It pulls forecasts from 7–8 sources (OpenWeatherMap, WeatherAPI, Tomorrow.io, Pirate Weather, Open-Meteo, Meteostat, plus new MET Norway and Bright Sky/DWD for Europe), reconciles them, and shows where models disagree so you know how confident the forecast is.
 
@@ -3576,7 +3596,7 @@ We built Klimly to fix the “one-provider” weather problem. It pulls forecast
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 10. `FR` [Actualité : Lebara frappe fort : 250 Go à 8,99€ sans engagement, le forfait data XXL à petit prix](data/articles/7a28d8ce6dd5907edbf66966f3f9e89f.html)
+### 12. `FR` [Actualité : Lebara frappe fort : 250 Go à 8,99€ sans engagement, le forfait data XXL à petit prix](data/articles/7a28d8ce6dd5907edbf66966f3f9e89f.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Streaming vidéo en haute définition, réseaux sociaux toujours plus gourmands, télétravail nomade, jeux en ligne, cloud, GPS, musique en continu… Aujourd’hui, le smartphone est devenu un véritable hub numérique, et cela a un coût : une consommation de données mobiles qui explose. Un forfait data classique peut ainsi vite montrer ses limites, avec des...
 
@@ -3584,7 +3604,7 @@ Streaming vidéo en haute définition, réseaux sociaux toujours plus gourmands,
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 11. `FR` [Cette extension Chrome enregistre vos conversations IA, et vous n’êtes pas au courant](data/articles/e4a725710f9728110f24bdafd322827a.html)
+### 13. `FR` [Cette extension Chrome enregistre vos conversations IA, et vous n’êtes pas au courant](data/articles/e4a725710f9728110f24bdafd322827a.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Le Chrome Web Store regorge de nombreuses applications vérolées ou malintentionnées. Voici l'exemple d'un pseudo-VPN qui collecte les données de ses utilisateurs dans leurs conversations avec les intelligences artificielles.
 
@@ -3592,7 +3612,7 @@ Le Chrome Web Store regorge de nombreuses applications vérolées ou malintentio
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 12. `FR` [Actualité : TrackCarbon veut mesurer l’empreinte environnementale de vos discussions avec l’IA](data/articles/313cd968a5a1a67f35cd6a54453bf066.html)
+### 14. `FR` [Actualité : TrackCarbon veut mesurer l’empreinte environnementale de vos discussions avec l’IA](data/articles/313cd968a5a1a67f35cd6a54453bf066.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Combien d’énergie a consommée cette innocente discussion avec ChatGPT ? La question obsède pas mal de monde depuis l’essor de l’IA générative et son développement dans tous les aspects de nos vies ou presque. TrackCarbon pense avoir la réponse.Ce petit logiciel développé par la fondation française Sahar promet d’estimer le coût électrique de vos écha...
 
@@ -3600,7 +3620,7 @@ Combien d’énergie a consommée cette innocente discussion avec ChatGPT ? La q
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 13. `EN` [Show HN: Letter Flow a Word Game with Liquid Glass Design](data/articles/a3c03309e6370bfc4f5cb501475153f0.html)
+### 15. `EN` [Show HN: Letter Flow a Word Game with Liquid Glass Design](data/articles/a3c03309e6370bfc4f5cb501475153f0.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Letter Flow is a relaxing and satisfying word game with a cool liquid effect. Move letter droplets and watch them flow smoothly into place as you find the correct word. Just drag, drop, and solve.
 Comments URL: https://news.ycombinator.com/item?id=47013296
@@ -3611,7 +3631,7 @@ Points: 1
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 14. `EN` [Show HN: Drink Now: Water Reminder App](data/articles/9aa7f64c4e2f39868f6b1b795f7b4aab.html)
+### 16. `EN` [Show HN: Drink Now: Water Reminder App](data/articles/9aa7f64c4e2f39868f6b1b795f7b4aab.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Drink Now – Water Reminder &amp; Hydration Tracker
 Staying hydrated should be simple. Drink Now helps you build healthy hydration habits with smart reminders, effortless tracking, and a clean interface designed for macOS.
@@ -3624,7 +3644,7 @@ Points: 1
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 15. `EN` [Show HN: AI Station Navigator – LLM=CPU, Agents=Processes, Skills=Apps](data/articles/5b56b758d888e5edb2067464ad8ba83f.html)
+### 17. `EN` [Show HN: AI Station Navigator – LLM=CPU, Agents=Processes, Skills=Apps](data/articles/5b56b758d888e5edb2067464ad8ba83f.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Subject: My attempt at an "OS-inspired" AI architecture
 Hi HN,
@@ -3638,7 +3658,7 @@ Here is the mapping I used to design the system:
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 16. `EN` [Show HN: Mool (Loom clone). Free, offline-only, no signup](https://mool.fly.dev/)
+### 18. `EN` [Show HN: Mool (Loom clone). Free, offline-only, no signup](https://mool.fly.dev/)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Long-time HN lurker, first time poster.
 This is something I put together over a few days, it's a simple offline-only screen recorder with webcam compositing that works on any modern desktop browser.
@@ -3652,7 +3672,7 @@ Points: 3
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 17. `FR` [La plateforme de données santé des Français lâche Microsoft](data/articles/4c18f644ac9e75ac5597c8fc82db3611.html)
+### 19. `FR` [La plateforme de données santé des Français lâche Microsoft](data/articles/4c18f644ac9e75ac5597c8fc82db3611.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Après des années de polémiques, l’État lance la procédure pour confier l’hébergement du Health Data Hub à un opérateur européen certifié SecNumCloud. Une décision attendue de longue date, qui doit lever les blocages juridiques et politiques autour de cette plateforme stratégique de données de santé.
 
@@ -3660,7 +3680,7 @@ Après des années de polémiques, l’État lance la procédure pour confier l�
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 18. `FR` [Dossier : Quels services sont réellement inclus dans une offre d’hébergement web ?](data/articles/34a0c931280b0302728d7dbf07d95a34.html)
+### 20. `FR` [Dossier : Quels services sont réellement inclus dans une offre d’hébergement web ?](data/articles/34a0c931280b0302728d7dbf07d95a34.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Notre sélection des meilleurs hébergeurs :Quels types d’hébergement existent et que couvrent-ils vraiment ?L’hébergement mutualisé, c’est le choix “easy” : plusieurs sites sur le même serveur, pratique pour un blog WordPress ou un site vitrine.En général, on a l’espace disque, le stockage, quelques comptes mail et deux ou trois options de base, histo...
 
@@ -3668,7 +3688,7 @@ Notre sélection des meilleurs hébergeurs :Quels types d’hébergement existen
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 19. `EN` [Show HN: ChexHQ – Financial decision intelligence for finance teams](data/articles/6d2e1ffe58ba1a9c7bfa3f1eca6e03ce.html)
+### 21. `EN` [Show HN: ChexHQ – Financial decision intelligence for finance teams](data/articles/6d2e1ffe58ba1a9c7bfa3f1eca6e03ce.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Hi HN — I’m the founder of ChexHQ.
 We’re building a financial decision intelligence platform for finance teams that are tired of spreadsheet-heavy forecasting and manual consolidation.
@@ -3683,7 +3703,7 @@ Points: 2
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 20. `FR` [Actualité : Le cuiseur à riz est-il le nouveau airfryer ? Panasonic tente le coup pour le Nouvel An chinois](data/articles/2e4f8a1148e0e8f3ed624cf96cc4dd10.html)
+### 22. `FR` [Actualité : Le cuiseur à riz est-il le nouveau airfryer ? Panasonic tente le coup pour le Nouvel An chinois](data/articles/2e4f8a1148e0e8f3ed624cf96cc4dd10.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 On a l'habitude de vous parler régulièrement des capacités des airfryer sur Les Numériques, mais saviez-vous qu'il existe aussi des cuiseurs à riz capables de préparer des repas complets (et pas que du riz donc) ? À l'occasion du Nouvel An chinois Panasonic a décidé de communiquer sur ces appareils et partage à cette occasion un exemple de recette.Un...
 
@@ -3691,7 +3711,7 @@ On a l'habitude de vous parler régulièrement des capacités des airfryer sur L
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 21. `EN` [Show HN: A personal, open-source web runtime](data/articles/b3b7eb3c506f6fa07de967bc919e4e04.html)
+### 23. `EN` [Show HN: A personal, open-source web runtime](data/articles/b3b7eb3c506f6fa07de967bc919e4e04.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Hi! I built Cute Magick because I wanted the simplicity &amp; power of early web dev, but not the fragility.
 It's an open source, self-hostable web host where your sites are plain folders of real code — HTML, PHP, Python, Node, Lua, SQL — and every file save creates a snapshot you can preview and rewind in one click.
@@ -3705,7 +3725,7 @@ Comments URL:
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 22. `FR` [Actualité : Baisse de prix : le processeur gaming AMD Ryzen 7 9800X3D "5 étoiles" est à son meilleur prix](data/articles/902a9f3a50b11b6aaa684760cb53faf7.html)
+### 24. `FR` [Actualité : Baisse de prix : le processeur gaming AMD Ryzen 7 9800X3D "5 étoiles" est à son meilleur prix](data/articles/902a9f3a50b11b6aaa684760cb53faf7.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 
 
@@ -3713,7 +3733,7 @@ Comments URL:
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 23. `EN` [Show HN: Parrot– AI Transcription &amp; Translation - 11+ Indian languages + codemix](https://parrotapp.in/)
+### 25. `EN` [Show HN: Parrot– AI Transcription &amp; Translation - 11+ Indian languages + codemix](https://parrotapp.in/)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 My father thinks in Bengali, but typing in native script is painful. Virtual keyboards are slow, punctuation is a maze, and switching between languages breaks flow. For formal writing — emails, letters, posts — it was exhausting.
 So I built him a tool where he could just speak.
@@ -3725,7 +3745,7 @@ Parrot transcribes and translates speech in 11+ Indian languages. The difference
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 24. `FR` [Stranger Things : cette légende urbaine est à la base de toute la série](data/articles/4b9eb7650e0d318092b4ebb669995c6d.html)
+### 26. `FR` [Stranger Things : cette légende urbaine est à la base de toute la série](data/articles/4b9eb7650e0d318092b4ebb669995c6d.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Après cinq saisons de bons et loyaux services, Stranger Things tirait sa révérence au début du mois de janvier dernier. Si l'Upside Down n'a plus de secret pour les spectateurs, la Dimension X continue d'être un mystère dans la mythologie des frères Duffer. Saviez-vous que la Dimension X tient ses origines d'une légende urbaine célèbre ?
 
@@ -3733,7 +3753,7 @@ Après cinq saisons de bons et loyaux services, Stranger Things tirait sa révé
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 25. `EN` [Show HN: cgrep – local, code-aware search for AI coding agents](data/articles/002f644c4d34298ce8ccefe49e00de2f.html)
+### 27. `EN` [Show HN: cgrep – local, code-aware search for AI coding agents](data/articles/002f644c4d34298ce8ccefe49e00de2f.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Hi HN — I built cgrep, a local-first, code-aware search tool for AI coding agents (and humans).
 The goal is to reduce noisy retrieval loops and token waste in real repositories.  
@@ -3748,7 +3768,7 @@ What it does:
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 26. `EN` [Show HN: Neohabit – custom github heatmaps for X times per Y days activities](data/articles/ba7c5c7dcf3ed008cfa227d72bc32ae1.html)
+### 28. `EN` [Show HN: Neohabit – custom github heatmaps for X times per Y days activities](data/articles/ba7c5c7dcf3ed008cfa227d72bc32ae1.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
 Hey HN! I recently open-sourced a project that I came up with in the late 2022 and have been working on and off since. It's taken around a year or so of active development in total.
 My problem with habit-trackers is that they're all the same. All of them basically allow to track only one thing - X times per 1 day. That's very rigid and goes against my instinct to ease into new things.
@@ -3759,33 +3779,17 @@ After a bit of tinkering I came up with something novel - adjustable habit frequ
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 27. `FR` [Actualité : Les codes promo les plus utilisés de la semaine](data/articles/9ea5ba226677fcd26024363f7e546be0.html)
+### 29. `FR` [Actualité : Les codes promo les plus utilisés de la semaine](data/articles/9ea5ba226677fcd26024363f7e546be0.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Les codes promo les plus populaires de la semaineQuelles offres ont fait craquer les internautes cette semaine ? Entre réductions immédiates, bons de réduction exclusifs et codes cumulables sur une large sélection de produits, certains coupons ont particulièrement retenu l’attention. Vous trouverez ici les codes les plus cliqués et utilisés par nos l...
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
-
-### 28. `FR` [Pragmata : tout ce que l’on sait à ce jour (infos, annonces, date de sortie, personnages…)](data/articles/afba14422e015115c7a8fe655356af1a.html)
-**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-Découvrez dès maintenant notre gros dossier pour tout savoir autour de Pragmata, la nouvelle licence de Capcom.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 29. `FR` [Actualité : Sexe, tech et doudous : pourquoi le plaisir devrait-il ressembler à un Happy Meal ?](data/articles/57d5f176e6a501c110d785cc038d5332.html)
+### 30. `FR` [Actualité : Sexe, tech et doudous : pourquoi le plaisir devrait-il ressembler à un Happy Meal ?](data/articles/57d5f176e6a501c110d785cc038d5332.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Sur Les Numériques, nous avons pour mission de vous livrer les bonnes informations, les bons conseils, les bonnes thématiques qui éveilleront votre intérêt. Alors, nous testons, nous interviewons, nous rédigeons selon le sacro-saint principe de rigueur. Oui, mais nous sommes aussi des êtres humains avec nos biais, passions et rejets. Et c’est dans no...
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
-
-### 30. `FR` [Actualité : Quelques jours après une grippe, vous pensez être remis ? Ce n'est pas tout à fait ce que dit votre montre connectée](data/articles/2d24c41566c78cc92b5416d4427962b6.html)
-**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-Vous vous êtes senti au ralenti quelques jours ou semaines après un test Covid positif, une grippe ou une infection de type angine ou pharyngite ? Ce n'est pas qu'une impression, du moins si l'on en croit les données relevées par les montres connectées portées par les participants à l'étude publiée par le très sérieux Lancet. Il est en effet possible...
 
 </div>
 
