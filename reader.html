@@ -286,7 +286,9 @@
 
     <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+</head>
 
+<body>
     <div class="view active" id="view-home">
         <div class="iframe-container">
             <iframe src="./readme-viewer.html?v=fixed" id="readmeFrame"></iframe>
@@ -296,15 +298,10 @@
     <!-- Article View -->
     <div class="view" id="view-article">
         <div class="article-info-bar" id="articleInfoBar">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <button id="backBtn" onclick="window.history.back()" style="background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; transition: all 0.2s; font-family: inherit; white-space: nowrap;" title="Retour">&#8592; Retour</button>
-                <div style="flex: 1; min-width: 0;">
-                    <div class="article-title-text" id="articleTitleText">Chargement...</div>
-                    <div class="article-meta">
-                        <span class="meta-item" id="articleSource"></span>
-                        <span class="meta-item" id="articleTags"></span>
-                    </div>
-                </div>
+            <div class="article-title-text" id="articleTitleText">Chargement...</div>
+            <div class="article-meta">
+                <span class="meta-item" id="articleSource"></span>
+                <span class="meta-item" id="articleTags"></span>
             </div>
         </div>
 

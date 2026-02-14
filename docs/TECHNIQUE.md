@@ -1,28 +1,203 @@
-# Documentation Technique - AI-Pulse
+# AI-Pulse Technical Documentation
 
-## 📋 Vue d'ensemble
+<div align="center">
 
-AI-Pulse est un **agrégateur de flux RSS** spécialisé dans l'actualité **IA, Cybersécurité et IoT**. Le site collecte automatiquement des articles depuis des sources RSS, les nettoie, les enrichit et les publie sur une interface web moderne.
+**Language / Langue:**
+[🇬🇧 English](#english) | [🇫🇷 Français](#francais)
+
+</div>
 
 ---
 
-## 🏗️ Architecture du Projet
+<a id="english"></a>
+
+# 🇬🇧 English
+
+## Overview
+
+AI-Pulse is an **RSS feed aggregator** specialized in **AI, Cybersecurity, IoT, and Mac/Apple** news. The site automatically collects articles from RSS sources, cleans them, enriches them, and publishes them on a modern web interface.
+
+---
+
+## Project Architecture
+
+### File Structure
+
+```
+AI-Pulse/
+├── index.html              # Home page
+├── app.html                # Article reader
+├── about.html              # About page
+├── stats.html              # Statistics
+├── privacy.html            # Privacy policy
+├── 404.html                # Error page
+├── manifest.json           # PWA configuration
+├── css/
+│   └── style.css           # Global styles (cyberpunk theme)
+├── js/
+│   ├── ui.js               # UI interactions
+│   └── tracker.js          # Visit tracking
+├── assets/
+│   ├── banner.png          # Main banner
+│   ├── icon.png            # App icon
+│   └── logo_final.png      # Site logo
+├── src/
+│   └── aggregator.js       # Node.js RSS collection script
+├── data/
+│   └── articles/           # Extracted articles (auto-generated)
+└── .github/workflows/
+    ├── update-ai-pulse.yml # Auto-update workflow
+    └── deploy-pages.yml    # GitHub Pages deployment
+```
+
+---
+
+## How It Works
+
+### 1. Article Collection (Backend)
+
+**File:** `src/aggregator.js`
+
+#### Configured RSS Sources
+
+Sources are organized by category in `FEED_CATEGORIES`:
+
+```javascript
+const FEED_CATEGORIES = {
+  mac: [
+    { name: 'MacRumors', url: 'https://feeds.macrumors.com/MacRumors-All', tags: ['Mac', 'Apple'] },
+    { name: '9to5Mac', url: 'https://9to5mac.com/feed/', tags: ['Mac', 'Apple', 'iOS'] },
+    { name: 'Mac4Ever', url: 'https://www.mac4ever.com/rss', tags: ['Mac', 'Apple', 'FR'] },
+  ],
+  iot: [
+    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT'] },
+    { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino'] },
+  ],
+  ai: [
+    { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['AI', 'ML'] },
+    { name: 'Google AI Blog', url: 'https://ai.googleblog.com/feeds/posts/default', tags: ['AI'] },
+  ],
+  cybersecurity: [
+    { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tags: ['Security'] },
+    { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/feed/', tags: ['Security'] },
+  ]
+};
+```
+
+#### Collection Process
+
+1. **RSS Parsing**: Uses `rss-parser` to read each feed
+2. **HTML Cleaning**: `sanitize-html` removes scripts and dangerous tags
+3. **Content Extraction**: `@mozilla/readability` + `jsdom` for main text extraction
+4. **Deduplication**: MD5 hash of title to avoid duplicates
+5. **Enrichment**: Adding tags, categories, timestamps
+6. **Anchors**: Each category has an anchor link (`#mac`, `#ai`, `#cybersecurity`, `#iot`)
+
+#### Commands
+
+```bash
+npm install          # Install dependencies
+npm start            # Run collection manually
+```
+
+---
+
+### 2. Automatic Update (GitHub Actions)
+
+**File:** `.github/workflows/update-ai-pulse.yml`
+
+#### Triggers
+
+- **Manual**: Triggered manually via workflow_dispatch
+- **Cron**: Every 3 hours (`0 */3 * * *`)
+
+#### Workflow Steps
+
+1. Code checkout
+2. Node.js installation
+3. npm dependencies installation
+4. Execute `src/aggregator.js`
+5. Commit new README.md
+6. Auto push to `main`
+
+---
+
+### 3. User Interface (Frontend)
+
+#### Article Reader (`app.html`)
+
+**Features:**
+- Category filtering (Mac, AI, IoT, Cybersecurity)
+- Real-time search
+- Tag display
+- Links to original sources
+- Anchor navigation to each section
+
+#### Design (CSS)
+
+**Cyberpunk theme:**
+- Primary colors: Cyan (`#00d9ff`) and Violet (`#825ee4`)
+- Dark background: `#0a0e27`
+- Glow effects and gradients
+- Hover animations
+- Responsive (mobile-friendly)
+
+---
+
+## Deployment
+
+### GitHub Pages
+
+**File:** `.github/workflows/deploy-pages.yml`
+
+1. Enable in Settings → Pages → Source: GitHub Actions
+2. Workflow triggers on each push to `main`
+3. Site published at `https://thephoenixagency.github.io/AI-Pulse/`
+
+---
+
+## Technologies Used
+
+| Technology | Usage |
+|------------|-------|
+| **Node.js** | RSS collection backend |
+| **rss-parser** | RSS feed parsing |
+| **sanitize-html** | HTML cleaning |
+| **@mozilla/readability** | Content extraction |
+| **GitHub Actions** | Automation and CI/CD |
+| **GitHub Pages** | Free hosting |
+| **Vanilla JS** | Frontend (no framework) |
+| **CSS Grid/Flexbox** | Responsive layout |
+
+---
+
+<a id="francais"></a>
+
+# 🇫🇷 Français
+
+## Vue d'ensemble
+
+AI-Pulse est un **agrégateur de flux RSS** spécialisé dans l'actualité **IA, Cybersécurité, IoT et Mac/Apple**. Le site collecte automatiquement des articles depuis des sources RSS, les nettoie, les enrichit et les publie sur une interface web moderne.
+
+---
+
+## Architecture du Projet
 
 ### Structure des fichiers
 
 ```
 AI-Pulse/
 ├── index.html              # Page d'accueil
-├── app.html                # Lecteur d'articles (reader)
+├── app.html                # Lecteur d'articles
 ├── about.html              # Page À propos
 ├── stats.html              # Statistiques
 ├── privacy.html            # Politique de confidentialité
 ├── 404.html                # Page d'erreur
-├── manifest.json           # Configuration PWA (icônes, couleurs)
+├── manifest.json           # Configuration PWA
 ├── css/
-│   └── style.css           # Styles globaux (cyberpunk theme)
+│   └── style.css           # Styles globaux (thème cyberpunk)
 ├── js/
-│   ├── ui.js               # Interactions UI (scroll, animations)
+│   ├── ui.js               # Interactions UI
 │   └── tracker.js          # Tracking des visites
 ├── assets/
 │   ├── banner.png          # Bannière principale
@@ -31,7 +206,7 @@ AI-Pulse/
 ├── src/
 │   └── aggregator.js       # Script Node.js de collecte RSS
 ├── data/
-│   └── articles.json       # Articles collectés (généré automatiquement)
+│   └── articles/           # Articles extraits (généré automatiquement)
 └── .github/workflows/
     ├── update-ai-pulse.yml # Workflow de mise à jour automatique
     └── deploy-pages.yml    # Déploiement GitHub Pages
@@ -39,7 +214,7 @@ AI-Pulse/
 
 ---
 
-## 🔧 Fonctionnement Technique
+## Fonctionnement Technique
 
 ### 1. Collecte des Articles (Backend)
 
@@ -51,20 +226,22 @@ Les sources sont organisées par catégorie dans `FEED_CATEGORIES`:
 
 ```javascript
 const FEED_CATEGORIES = {
+  mac: [
+    { name: 'MacRumors', url: 'https://feeds.macrumors.com/MacRumors-All', tags: ['Mac', 'Apple'] },
+    { name: '9to5Mac', url: 'https://9to5mac.com/feed/', tags: ['Mac', 'Apple', 'iOS'] },
+    { name: 'Mac4Ever', url: 'https://www.mac4ever.com/rss', tags: ['Mac', 'Apple', 'FR'] },
+  ],
   iot: [
-    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT', 'RaspberryPi'] },
+    { name: 'Raspberry Pi', url: 'https://www.raspberrypi.com/news/feed/', tags: ['IoT'] },
     { name: 'Arduino Blog', url: 'https://blog.arduino.cc/feed/', tags: ['IoT', 'Arduino'] },
-    // ... autres sources IoT
   ],
   ai: [
     { name: 'Medium AI', url: 'https://medium.com/tag/artificial-intelligence/feed', tags: ['AI', 'ML'] },
-    { name: 'Google AI Blog', url: 'https://ai.googleblog.com/feeds/posts/default', tags: ['AI', 'Research'] },
-    // ... autres sources IA
+    { name: 'Google AI Blog', url: 'https://ai.googleblog.com/feeds/posts/default', tags: ['AI'] },
   ],
   cybersecurity: [
     { name: 'The Hacker News', url: 'https://feeds.feedburner.com/TheHackersNews', tags: ['Security'] },
-    { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/feed/', tags: ['Security', 'Malware'] },
-    // ... autres sources Cybersécurité
+    { name: 'Bleeping Computer', url: 'https://www.bleepingcomputer.com/feed/', tags: ['Security'] },
   ]
 };
 ```
@@ -76,7 +253,7 @@ const FEED_CATEGORIES = {
 3. **Extraction de contenu** : `@mozilla/readability` + `jsdom` pour extraire le texte principal
 4. **Déduplication** : Hash MD5 du titre pour éviter les doublons
 5. **Enrichissement** : Ajout de tags, catégories, timestamps
-6. **Sauvegarde** : Écriture dans `data/articles.json`
+6. **Ancres** : Chaque catégorie a un lien ancre (`#mac`, `#ai`, `#cybersecurity`, `#iot`)
 
 #### Commandes
 
@@ -93,8 +270,8 @@ npm start            # Lancer la collecte manuellement
 
 #### Déclencheurs
 
-- **Webhook** : Déclenché manuellement ou par un service externe
-- **Cron** : Toutes les 6 heures (`0 */6 * * *`)
+- **Manuel** : Déclenché manuellement via workflow_dispatch
+- **Cron** : Toutes les 3 heures (`0 */3 * * *`)
 
 #### Étapes du workflow
 
@@ -102,44 +279,21 @@ npm start            # Lancer la collecte manuellement
 2. Installation de Node.js
 3. Installation des dépendances npm
 4. Exécution de `src/aggregator.js`
-5. Commit des nouveaux articles dans `data/articles.json`
+5. Commit du nouveau README.md
 6. Push automatique vers `main`
 
 ---
 
 ### 3. Interface Utilisateur (Frontend)
 
-#### Page d'accueil (`index.html`)
-
-- Bannière principale
-- Présentation des fonctionnalités
-- Bouton d'accès au lecteur
-- Lien vers l'application GitHub
-
 #### Lecteur d'articles (`app.html`)
 
-**Chargement dynamique :**
-
-```javascript
-fetch('./data/articles.json')
-  .then(response => response.json())
-  .then(articles => {
-    // Tri par date (plus récent en premier)
-    articles.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
-    
-    // Affichage des cartes d'articles
-    articles.forEach(article => {
-      const card = createArticleCard(article);
-      container.appendChild(card);
-    });
-  });
-```
-
 **Fonctionnalités :**
-- Filtrage par catégorie (AI, IoT, Cybersecurity)
+- Filtrage par catégorie (Mac, AI, IoT, Cybersecurity)
 - Recherche en temps réel
 - Affichage des tags
 - Liens vers les sources originales
+- Navigation par ancres vers chaque section
 
 #### Design (CSS)
 
@@ -152,7 +306,7 @@ fetch('./data/articles.json')
 
 ---
 
-## 🚀 Déploiement
+## Déploiement
 
 ### GitHub Pages
 
@@ -162,145 +316,9 @@ fetch('./data/articles.json')
 2. Le workflow se déclenche à chaque push sur `main`
 3. Le site est publié sur `https://thephoenixagency.github.io/AI-Pulse/`
 
-### Configuration PWA (Progressive Web App)
-
-**Fichier:** `manifest.json`
-
-```json
-{
-  "name": "AI-Pulse",
-  "short_name": "AI-Pulse",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#0a0e27",
-  "theme_color": "#00d9ff",
-  "icons": [
-    {
-      "src": "./assets/icon.png",
-      "sizes": "1024x1024",
-      "type": "image/png"
-    }
-  ]
-}
-```
-
-**Permet :**
-- Installation sur l'écran d'accueil (mobile)
-- Fonctionnement en mode "app" (sans barre d'adresse)
-- Icône personnalisée
-
 ---
 
-## 🔄 Recréer un Projet Similaire
-
-### Étape 1 : Structure de base
-
-```bash
-mkdir mon-agregateur
-cd mon-agregateur
-npm init -y
-npm install rss-parser axios @octokit/rest sanitize-html @mozilla/readability jsdom
-```
-
-### Étape 2 : Configurer vos sources RSS
-
-Créez `src/aggregator.js` et définissez vos flux :
-
-```javascript
-const FEED_CATEGORIES = {
-  tech: [
-    { name: 'TechCrunch', url: 'https://techcrunch.com/feed/', tags: ['Tech', 'Startups'] },
-    { name: 'The Verge', url: 'https://www.theverge.com/rss/index.xml', tags: ['Tech', 'Reviews'] }
-  ],
-  // Ajoutez vos catégories ici
-};
-```
-
-### Étape 3 : Script de collecte
-
-Copiez la logique de `src/aggregator.js` :
-- Parser les flux RSS
-- Nettoyer le HTML
-- Sauvegarder dans `data/articles.json`
-
-### Étape 4 : Interface web
-
-Créez `index.html` et `app.html` :
-- Chargez `articles.json` avec `fetch()`
-- Affichez les articles dans des cartes
-- Ajoutez filtres et recherche
-
-### Étape 5 : Automatisation GitHub Actions
-
-Créez `.github/workflows/update.yml` :
-
-```yaml
-name: Update Articles
-on:
-  schedule:
-    - cron: '0 */6 * * *'  # Toutes les 6 heures
-  workflow_dispatch:
-
-jobs:
-  update:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - run: npm install
-      - run: node src/aggregator.js
-      - run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add data/articles.json
-          git commit -m "Update articles" || exit 0
-          git push
-```
-
-### Étape 6 : Déploiement
-
-1. Activez GitHub Pages dans Settings
-2. Créez `.github/workflows/deploy-pages.yml` (voir fichier existant)
-3. Poussez votre code → le site se déploie automatiquement
-
----
-
-## 📝 Personnalisation
-
-### Changer les sources RSS
-
-Modifiez `FEED_CATEGORIES` dans `src/aggregator.js` :
-
-```javascript
-const FEED_CATEGORIES = {
-  ma_categorie: [
-    { 
-      name: 'Mon Site Préféré', 
-      url: 'https://example.com/feed.xml', 
-      tags: ['Tag1', 'Tag2'] 
-    }
-  ]
-};
-```
-
-### Modifier le design
-
-Éditez `css/style.css` :
-- Variables CSS en haut du fichier (`--primary`, `--bg-dark`, etc.)
-- Changez les couleurs, polices, espacements
-
-### Ajouter des fonctionnalités
-
-- **Favoris** : Stockage dans `localStorage`
-- **Mode sombre/clair** : Toggle avec classe CSS
-- **Notifications** : API Notification du navigateur
-- **Partage** : API Web Share
-
----
-
-## 🛠️ Technologies Utilisées
+## Technologies Utilisées
 
 | Technologie | Usage |
 |------------|-------|
@@ -315,32 +333,4 @@ const FEED_CATEGORIES = {
 
 ---
 
-## 📊 Limites et Améliorations Possibles
-
-### Limites actuelles
-
-- Pas de base de données (tout en JSON)
-- Pas d'authentification utilisateur
-- Pas de backend temps réel
-- Dépend de GitHub Actions (quotas gratuits)
-
-### Améliorations futures
-
-1. **Backend API** : Express.js + MongoDB
-2. **Authentification** : Firebase Auth ou Supabase
-3. **Temps réel** : WebSockets pour les nouveaux articles
-4. **Recommandations** : Algorithme ML basé sur les lectures
-5. **Multilingue** : Support i18n (français, anglais, etc.)
-
----
-
-## 🔗 Ressources Utiles
-
-- [RSS Parser Documentation](https://www.npmjs.com/package/rss-parser)
-- [GitHub Actions Docs](https://docs.github.com/en/actions)
-- [PWA Guide](https://web.dev/progressive-web-apps/)
-- [Readability.js](https://github.com/mozilla/readability)
-
----
-
-**Créé par ThePhoenixAgency** | [GitHub](https://github.com/ThePhoenixAgency/AI-Pulse)
+**Created by ThePhoenixAgency** | [GitHub](https://github.com/ThePhoenixAgency/AI-Pulse)
