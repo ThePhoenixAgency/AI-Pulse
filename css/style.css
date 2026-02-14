@@ -1,211 +1,522 @@
-/* Global Vars */
+/**
+ * ================================================================================
+ * AI-PULSE - FEUILLE DE STYLES PRINCIPALE (style.css)
+ * ================================================================================
+ *
+ * DESCRIPTION:
+ *     Ce fichier contient tous les styles visuels du site AI-Pulse.
+ *     Il définit les couleurs, les polices, les mises en page et les animations.
+ *
+ * STRUCTURE DU FICHIER:
+ *     1. Variables CSS (couleurs, polices)
+ *     2. Reset (remise à zéro des styles par défaut)
+ *     3. Typographie (titres, liens)
+ *     4. En-tête (header)
+ *     5. Pied de page (footer)
+ *     6. Classes utilitaires
+ *     7. Animations
+ *     8. Boutons de navigation rapide (elevator)
+ *     9. Styles responsive (mobile)
+ *
+ * PALETTE DE COULEURS:
+ *     - Cyan (#00d9ff) : Couleur principale, liens, accents
+ *     - Violet (#825ee4) : Couleur secondaire, dégradés
+ *     - Bleu foncé (#0a0e27) : Fond principal
+ *     - Blanc (#ffffff) : Texte principal
+ *     - Gris (#94a3b8) : Texte secondaire
+ *
+ * VERSION: 1.0.0
+ * DERNIÈRE MISE À JOUR: Février 2026
+ * ================================================================================
+ */
+
+
+/* =============================================================================
+   1. VARIABLES CSS (Custom Properties)
+   =============================================================================
+
+   Les variables CSS permettent de définir des valeurs réutilisables.
+   Elles sont définies dans :root (la racine du document) pour être
+   accessibles partout dans le fichier.
+
+   UTILISATION:
+   Pour utiliser une variable : var(--nom-de-la-variable)
+   Exemple : color: var(--primary);
+
+   AVANTAGES:
+   - Changer une couleur à un seul endroit la change partout
+   - Code plus lisible et maintenable
+   - Possibilité de créer des thèmes (mode sombre/clair)
+============================================================================= */
+
 :root {
+    /* -------------------------------------------------------------------------
+       COULEURS PRINCIPALES
+       ------------------------------------------------------------------------- */
+
+    /* Cyan - Couleur d'accent principale
+       Utilisée pour : liens, boutons, titres, effets de brillance */
     --primary: #00d9ff;
+
+    /* Cyan avec transparence - Pour les effets de lueur (glow) */
     --primary-glow: rgba(0, 217, 255, 0.6);
+
+    /* Violet - Couleur secondaire
+       Utilisée pour : dégradés, accents secondaires */
     --secondary: #825ee4;
+
+    /* -------------------------------------------------------------------------
+       COULEURS DE FOND
+       ------------------------------------------------------------------------- */
+
+    /* Bleu très foncé - Fond principal du site */
     --bg-dark: #0a0e27;
+
+    /* Blanc très transparent - Fond des cartes et éléments */
     --bg-card: rgba(255, 255, 255, 0.05);
+
+    /* -------------------------------------------------------------------------
+       COULEURS DE TEXTE
+       ------------------------------------------------------------------------- */
+
+    /* Blanc - Texte principal (titres, contenu important) */
     --text-light: #ffffff;
+
+    /* Gris - Texte secondaire (descriptions, métadonnées) */
     --text-dim: #94a3b8;
+
+    /* -------------------------------------------------------------------------
+       TYPOGRAPHIE
+       ------------------------------------------------------------------------- */
+
+    /* Police principale avec fallbacks
+       1. Inter : Police Google Fonts moderne
+       2. -apple-system : Police système Apple
+       3. BlinkMacSystemFont : Chrome sur Mac
+       4. Segoe UI : Windows
+       5. Roboto : Android
+       6. sans-serif : Fallback générique */
     --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+    /* -------------------------------------------------------------------------
+       AUTRES
+       ------------------------------------------------------------------------- */
+
+    /* Fond de l'en-tête avec transparence pour l'effet de flou */
     --header-bg: rgba(10, 14, 39, 0.95);
 }
 
-/* Reset */
-/* Reset */
+
+/* =============================================================================
+   2. RESET CSS
+   =============================================================================
+
+   Le reset supprime les styles par défaut des navigateurs pour avoir
+   une base cohérente. Chaque navigateur a ses propres marges et espacements
+   par défaut, ce qui peut causer des différences d'affichage.
+============================================================================= */
+
+/* Appliquer à tous les éléments (*) */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    cursor: auto;
-    /* Default cursor restored */
+    margin: 0;              /* Supprime les marges par défaut */
+    padding: 0;             /* Supprime les espacements internes par défaut */
+    box-sizing: border-box; /* La largeur inclut le padding et la bordure */
+    cursor: auto;           /* Curseur par défaut (flèche normale) */
 }
 
+/* -------------------------------------------------------------------------
+   CORPS DE LA PAGE (body)
+   ------------------------------------------------------------------------- */
 body {
+    /* Fond dégradé : du bleu foncé vers le bleu-violet
+       135deg = direction diagonale (haut-gauche vers bas-droite) */
     background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
+
+    /* Police définie dans les variables */
     font-family: var(--font-main);
+
+    /* Couleur du texte par défaut */
     color: var(--text-light);
+
+    /* Hauteur minimum = toute la fenêtre */
     min-height: 100vh;
+
+    /* Flexbox pour coller le footer en bas */
     display: flex;
     flex-direction: column;
+
+    /* Pas de défilement horizontal */
     overflow-x: hidden;
 }
 
-/* Typography */
+
+/* =============================================================================
+   3. TYPOGRAPHIE
+   =============================================================================
+
+   Styles pour les titres et les liens.
+============================================================================= */
+
+/* Tous les niveaux de titres (h1 à h6) */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
-    line-height: 1.2;
+    font-weight: 700;   /* Gras */
+    line-height: 1.2;   /* Hauteur de ligne serrée pour les titres */
 }
 
+/* Tous les liens */
 a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
+    text-decoration: none;      /* Pas de soulignement */
+    color: inherit;             /* Hérite la couleur du parent */
+    transition: color 0.3s ease; /* Animation douce au survol */
 }
 
-/* Custom Cursor Hidden */
+
+/* =============================================================================
+   4. CURSEUR PERSONNALISÉ (désactivé)
+   =============================================================================
+
+   Ces éléments étaient utilisés pour un curseur personnalisé.
+   Ils sont maintenant cachés car le curseur par défaut est utilisé.
+============================================================================= */
+
 #cursor,
 #cursor-arrow {
-    display: none;
+    display: none; /* Caché */
 }
 
-#cursor,
-#cursor-arrow {
-    display: none;
-}
 
-/* Header */
+/* =============================================================================
+   5. EN-TÊTE DU SITE (Header)
+   =============================================================================
+
+   Barre de navigation en haut de chaque page.
+
+   CARACTÉRISTIQUES:
+   - Position sticky : reste visible lors du défilement
+   - Fond semi-transparent avec effet de flou
+   - Flexbox pour aligner le logo et la navigation
+============================================================================= */
+
 .site-header {
+    /* Fond défini dans les variables (semi-transparent) */
     background: var(--header-bg);
+
+    /* Espacement interne */
     padding: 1rem 2rem;
+
+    /* Bordure fine en bas */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    /* Flexbox pour disposer les éléments */
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Logo à gauche, nav à droite */
+    align-items: center;            /* Centré verticalement */
+
+    /* Position sticky : reste en haut lors du défilement */
     position: sticky;
     top: 0;
+
+    /* Au-dessus des autres éléments */
     z-index: 1000;
+
+    /* Effet de flou sur le fond (effet de verre) */
     backdrop-filter: blur(10px);
 }
 
+/* -------------------------------------------------------------------------
+   LOGO
+   ------------------------------------------------------------------------- */
 .brand-logo {
     font-size: 1.5rem;
     font-weight: 700;
+
+    /* Dégradé de texte (cyan vers violet) */
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    /* Flexbox pour aligner le logo et le texte */
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
+/* -------------------------------------------------------------------------
+   NAVIGATION
+   ------------------------------------------------------------------------- */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Espacement entre les liens */
 }
 
 .nav-links a {
-    color: var(--text-dim);
+    color: var(--text-dim);   /* Gris par défaut */
     font-weight: 500;
     font-size: 0.95rem;
 }
 
+/* Lien au survol ou lien actif */
 .nav-links a:hover,
 .nav-links a.active {
-    color: var(--primary);
+    color: var(--primary);    /* Cyan */
+
+    /* Effet de lueur autour du texte */
     text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
 }
 
-/* Footer */
+
+/* =============================================================================
+   6. PIED DE PAGE (Footer)
+   =============================================================================
+
+   Zone en bas de chaque page avec les liens et le copyright.
+============================================================================= */
+
 .site-footer {
     padding: 20px;
     text-align: center;
     color: var(--text-dim);
     font-size: 0.85rem;
+
+    /* Bordure fine en haut */
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    /* Fond légèrement transparent */
     background: rgba(10, 14, 39, 0.3);
+
+    /* Pousse le footer en bas (avec flex sur body) */
     margin-top: auto;
 }
 
+/* -------------------------------------------------------------------------
+   LIENS DU FOOTER
+   ------------------------------------------------------------------------- */
 .footer-links {
     margin-bottom: 10px;
+
+    /* Flexbox pour aligner les liens horizontalement */
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 10px 15px;         /* Espacement vertical et horizontal */
     align-items: center;
+    flex-wrap: wrap;        /* Retour à la ligne si nécessaire */
+
+    /* Limites de largeur */
+    max-width: 100%;
+    padding: 0 10px;
 }
 
 .footer-links a {
-    color: var(--primary);
+    color: var(--primary);  /* Liens en cyan */
     font-weight: 500;
 }
 
+/* Séparateurs entre les liens (•) */
 .footer-links span {
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.2); /* Très transparent */
 }
 
-/* Utility Classes */
+
+/* =============================================================================
+   7. CLASSES UTILITAIRES
+   =============================================================================
+
+   Classes réutilisables pour la mise en page.
+============================================================================= */
+
+/* -------------------------------------------------------------------------
+   CONTAINER
+   Limite la largeur du contenu et le centre
+   ------------------------------------------------------------------------- */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-    width: 100%;
+    max-width: 1200px;      /* Largeur maximale */
+    margin: 0 auto;         /* Centré horizontalement */
+    padding: 2rem;          /* Espacement interne */
+    width: 100%;            /* Prend toute la largeur disponible */
 }
 
+/* -------------------------------------------------------------------------
+   BOUTON PRINCIPAL
+   ------------------------------------------------------------------------- */
 .btn {
     display: inline-block;
     padding: 12px 30px;
+
+    /* Dégradé cyan vers violet */
     background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+
     color: white;
-    border-radius: 8px;
+    border-radius: 8px;     /* Coins arrondis */
     font-weight: 600;
+
+    /* Ombre portée cyan */
     box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+
     border: none;
+
+    /* Animation au survol */
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn:hover {
+    /* Légère élévation au survol */
     transform: translateY(-2px);
+
+    /* Ombre plus prononcée */
     box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5);
 }
 
-/* Animations */
+
+/* =============================================================================
+   8. ANIMATIONS
+   =============================================================================
+
+   Définitions des animations CSS.
+============================================================================= */
+
+/* -------------------------------------------------------------------------
+   ANIMATION: fadeIn (apparition progressive)
+
+   Fait apparaître un élément en le faisant :
+   1. Passer de transparent à opaque
+   2. Glisser de bas en haut
+   ------------------------------------------------------------------------- */
 @keyframes fadeIn {
+    /* État initial */
     from {
-        opacity: 0;
-        transform: translateY(20px);
+        opacity: 0;                 /* Invisible */
+        transform: translateY(20px); /* Décalé vers le bas */
     }
 
+    /* État final */
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;                 /* Visible */
+        transform: translateY(0);   /* Position normale */
     }
 }
 
+/* Classe pour appliquer l'animation */
 .fade-in {
     animation: fadeIn 0.8s ease-out forwards;
+    /* fadeIn : nom de l'animation
+       0.8s : durée
+       ease-out : ralentit vers la fin
+       forwards : garde l'état final */
 }
 
-/* Elevator Buttons */
+
+/* =============================================================================
+   9. BOUTONS DE NAVIGATION RAPIDE (Elevator)
+   =============================================================================
+
+   Deux boutons flottants en bas à droite :
+   - ▲ : Remonter en haut de la page
+   - ▼ : Descendre en bas de la page
+
+   Ces boutons sont visibles sur toutes les pages et permettent
+   de naviguer rapidement dans les pages longues.
+============================================================================= */
+
+/* Conteneur des boutons */
 .elevator {
-    position: fixed;
-    right: 20px;
-    bottom: 40px;
+    position: fixed;        /* Position fixe (ne bouge pas au défilement) */
+    right: 20px;            /* 20px du bord droit */
+    bottom: 40px;           /* 40px du bas */
+
+    /* Colonne verticale */
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    z-index: 1000;
+    gap: 10px;              /* Espacement entre les boutons */
+
+    z-index: 1000;          /* Au-dessus des autres éléments */
 }
 
+/* Style d'un bouton */
 .elevator-btn {
     width: 40px;
     height: 40px;
+
+    /* Fond semi-transparent */
     background: var(--bg-card);
+
+    /* Bordure cyan transparente */
     border: 1px solid rgba(0, 217, 255, 0.2);
-    border-radius: 50%;
-    color: var(--primary);
+
+    border-radius: 50%;     /* Rond */
+    color: var(--primary);  /* Icône en cyan */
+
+    /* Centrer l'icône */
     display: flex;
     align-items: center;
     justify-content: center;
+
     cursor: pointer;
+
+    /* Effet de flou sur le fond */
     backdrop-filter: blur(5px);
+
+    /* Animation au survol */
     transition: all 0.3s ease;
+
+    /* Ombre portée */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Bouton au survol */
 .elevator-btn:hover {
-    background: var(--primary);
-    color: white;
+    background: var(--primary);  /* Fond cyan */
+    color: white;                /* Icône blanche */
+
+    /* Légère augmentation de taille */
     transform: scale(1.1);
+
+    /* Lueur cyan */
     box-shadow: 0 0 15px var(--primary-glow);
 }
 
-.elevator-btn.bottom {
-    bottom: 20px;
+
+/* =============================================================================
+   10. STYLES RESPONSIVE (Mobile)
+   =============================================================================
+
+   Ces styles s'appliquent uniquement sur les petits écrans.
+
+   @media (max-width: 480px) signifie :
+   "Appliquer ces styles si la largeur de l'écran est de 480px ou moins"
+
+   480px est une taille typique pour les smartphones en mode portrait.
+============================================================================= */
+
+@media (max-width: 480px) {
+    /* -------------------------------------------------------------------------
+       FOOTER MOBILE
+       Sur mobile, les liens du footer sont organisés en grille 3x2
+       au lieu d'être en ligne
+       ------------------------------------------------------------------------- */
+    .footer-links {
+        display: grid;
+
+        /* 3 colonnes de taille égale */
+        grid-template-columns: repeat(3, 1fr);
+
+        gap: 10px;
+        text-align: center;
+    }
+
+    /* Cacher les séparateurs (•) sur mobile */
+    .footer-links span {
+        display: none;
+    }
+
+    /* Les liens prennent toute la largeur de leur cellule */
+    .footer-links a {
+        display: block;
+        padding: 5px;
+    }
 }

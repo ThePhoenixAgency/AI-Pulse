@@ -1,102 +1,295 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+AI-PULSE - PAGE À PROPOS (about.html)
+================================================================================
+
+DESCRIPTION:
+    Cette page présente le projet AI-Pulse et ses objectifs.
+    Elle explique la mission, les technologies utilisées et la politique
+    de confidentialité du projet.
+
+RÔLE:
+    - Présenter la mission d'AI-Pulse
+    - Lister les technologies utilisées (stack technique)
+    - Expliquer l'engagement envers la vie privée
+    - Rediriger vers le portfolio du développeur
+
+SECTIONS DE LA PAGE:
+    1. En-tête (header) : Navigation du site
+    2. Contenu principal : 4 cartes d'information
+       - Notre mission
+       - Stack technique
+       - Vie privée
+       - Bouton portfolio
+    3. Boutons elevator : Navigation rapide
+    4. Pied de page (footer) : Liens utiles
+
+FICHIERS LIÉS:
+    - css/style.css : Styles généraux du site
+    - js/tracker.js : Suivi des statistiques (local)
+    - js/ui.js : Logique de l'interface
+
+VERSION: 1.0.0
+DERNIÈRE MISE À JOUR: Février 2026
+================================================================================
+-->
 <html lang="en">
 
 <head>
+    <!--
+    ============================================================================
+    EN-TÊTE HTML (HEAD)
+    ============================================================================
+
+    Cette section contient les métadonnées de la page :
+    - Encodage des caractères
+    - Configuration mobile
+    - Titre de l'onglet
+    - Liens vers les ressources externes
+    ============================================================================
+    -->
+
+    <!-- Encodage UTF-8 pour les caractères spéciaux -->
     <meta charset="UTF-8">
+
+    <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de l'onglet du navigateur -->
     <title>About | AI-Pulse</title>
+
+    <!-- Lien vers l'application iOS GitHub (optionnel) -->
     <meta name="apple-itunes-app"
         content="app-id=1477376905, app-argument=https://github.com/ThePhoenixAgency/AI-Pulse">
+
+    <!-- Favicon : icône de l'onglet -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- Icône pour appareils Apple (iPhone, iPad) -->
     <link rel="apple-touch-icon" href="./assets/icon.png">
+
+    <!-- Manifest pour PWA (Progressive Web App) -->
     <link rel="manifest" href="./manifest.json">
+
+    <!-- Feuille de styles principale -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!--
+    ============================================================================
+    STYLES SPÉCIFIQUES À LA PAGE À PROPOS
+    ============================================================================
+
+    Ces styles sont propres à cette page et ne sont pas dans style.css.
+    Ils définissent l'apparence des cartes d'information.
+
+    CLASSES DÉFINIES:
+    - .about-content : Conteneur principal avec grille
+    - .about-card : Carte d'information avec fond semi-transparent
+    - .about-header : En-tête centré avec titre dégradé
+    - .tech-stack : Grille de badges technologiques
+    - .tech-badge : Badge individuel pour chaque technologie
+    ============================================================================
+    -->
     <style>
+        /* ====================================================================
+           CONTENEUR PRINCIPAL DE LA PAGE À PROPOS
+           ====================================================================
+
+           Définit la mise en page de la grille de cartes.
+           - margin: 4rem auto : Espace en haut/bas, centré horizontalement
+           - max-width: 900px : Largeur maximale pour la lisibilité
+           - gap: 3rem : Espace entre chaque carte
+        ==================================================================== */
         .about-content {
-            margin: 4rem auto;
-            max-width: 900px;
-            display: grid;
-            gap: 3rem;
+            margin: 4rem auto;          /* Marge verticale de 4rem, centré */
+            max-width: 900px;           /* Largeur max de 900 pixels */
+            display: grid;              /* Utilise CSS Grid */
+            gap: 3rem;                  /* Espace de 3rem entre les cartes */
         }
 
+        /* ====================================================================
+           CARTE D'INFORMATION
+           ====================================================================
+
+           Style commun à toutes les cartes de la page.
+           - background: rgba() : Fond blanc semi-transparent (5% opacité)
+           - backdrop-filter: blur() : Effet de flou derrière la carte
+           - border-radius: 20px : Coins très arrondis
+           - border: 1px solid : Bordure subtile blanche
+        ==================================================================== */
         .about-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);  /* Blanc à 5% d'opacité */
+            backdrop-filter: blur(10px);             /* Flou de 10px */
+            border-radius: 20px;                     /* Coins arrondis */
+            padding: 2.5rem;                         /* Espace intérieur */
+            border: 1px solid rgba(255, 255, 255, 0.1);  /* Bordure subtile */
         }
 
+        /* ====================================================================
+           EN-TÊTE DE LA PAGE À PROPOS
+           ====================================================================
+
+           Contient le titre principal avec effet de dégradé.
+           Le texte utilise un dégradé cyan vers violet.
+        ==================================================================== */
         .about-header {
-            text-align: center;
-            margin-bottom: 2rem;
+            text-align: center;         /* Texte centré */
+            margin-bottom: 2rem;        /* Espace en bas */
         }
 
+        /* Titre principal avec effet de dégradé */
         .about-header h1 {
-            font-size: 3rem;
+            font-size: 3rem;            /* Grande taille */
             margin-bottom: 1rem;
+
+            /* Dégradé de couleur sur le texte */
             background: linear-gradient(135deg, #00d9ff 0%, #825ee4 100%);
-            -webkit-background-clip: text;
+            -webkit-background-clip: text;          /* Clip le fond au texte */
             background-clip: text;
-            -webkit-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;   /* Rend le texte transparent */
         }
 
+        /* ====================================================================
+           SECTION STACK TECHNIQUE
+           ====================================================================
+
+           Affiche les badges des technologies utilisées.
+           Utilise Flexbox pour une disposition fluide.
+        ==================================================================== */
         .tech-stack {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
+            display: flex;              /* Disposition en ligne */
+            gap: 1rem;                  /* Espace entre les badges */
+            flex-wrap: wrap;            /* Les badges passent à la ligne si besoin */
             margin-top: 1rem;
         }
 
+        /* ====================================================================
+           BADGE TECHNOLOGIQUE
+           ====================================================================
+
+           Style individuel pour chaque badge (Vanilla JS, CSS Variables, etc.)
+           - Fond semi-transparent
+           - Coins très arrondis (pilule)
+           - Couleur primaire (cyan)
+        ==================================================================== */
         .tech-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--primary);
-            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);   /* Fond blanc 10% */
+            padding: 0.5rem 1rem;                    /* Padding horizontal */
+            border-radius: 50px;                     /* Forme de pilule */
+            font-size: 0.9rem;                       /* Texte légèrement plus petit */
+            color: var(--primary);                   /* Couleur cyan */
+            border: 1px solid rgba(0, 217, 255, 0.2);  /* Bordure cyan subtile */
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+    <!--
+    ============================================================================
+    EN-TÊTE DU SITE (HEADER)
+    ============================================================================
+
+    Barre de navigation identique à toutes les pages.
+    Le lien "About" est marqué comme actif avec la classe .active
+    ============================================================================
+    -->
     <header class="site-header">
+        <!-- Logo du site avec effet de transparence -->
         <div class="brand-logo">
+            <!--
+            mix-blend-mode: screen :
+            Les parties sombres du logo deviennent transparentes.
+            Crée un effet de fusion avec le fond.
+            -->
             <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
         </div>
+
+        <!-- Navigation principale -->
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="app.html">Reader</a>
+            <!-- Cette page est active (classe .active) -->
             <a href="about.html" class="active">About</a>
         </nav>
     </header>
 
-    <!-- Main Content -->
+    <!--
+    ============================================================================
+    CONTENU PRINCIPAL
+    ============================================================================
+
+    Zone principale contenant les cartes d'information.
+    La classe "fade-in" ajoute une animation d'apparition progressive.
+    ============================================================================
+    -->
     <div class="container fade-in">
         <div class="about-content">
+
+            <!--
+            ================================================================
+            EN-TÊTE : TITRE ET SOUS-TITRE
+            ================================================================
+            Grand titre avec effet de dégradé et description courte.
+            ================================================================
+            -->
             <div class="about-header">
                 <h1>About AI-Pulse</h1>
-                <p style="color: var(--text-dim); font-size: 1.2rem;">The future of AI news aggregation, monitored in
-                    real-time.</p>
+                <p style="color: var(--text-dim); font-size: 1.2rem;">
+                    The future of AI news aggregation, monitored in real-time.
+                </p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 1 : NOTRE MISSION
+            ================================================================
+
+            Explique l'objectif d'AI-Pulse :
+            - Filtrer le bruit de l'information
+            - Se concentrer sur l'IA et la cybersécurité
+            - Développé par ThePhoenixAgency
+            ================================================================
+            -->
             <div class="about-card">
+                <!-- Titre de la carte en couleur primaire (cyan) -->
                 <h2 style="color: var(--primary); margin-bottom: 1.5rem;">Our Mission</h2>
+
+                <!-- Premier paragraphe : description de l'agrégateur -->
                 <p style="line-height: 1.8; color: var(--text-light); margin-bottom: 1rem;">
                     AI-Pulse is a specialized aggregator designed to filter the noise and deliver high-signal
                     intelligence on <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>.
                 </p>
+
+                <!-- Second paragraphe : qui a développé le projet -->
                 <p style="line-height: 1.8; color: var(--text-light);">
                     Developed by <strong>ThePhoenixAgency</strong>, this project prioritizes privacy, speed, and cleaner
                     reading experiences without the tracking clutter of modern web media.
                 </p>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 2 : STACK TECHNIQUE
+            ================================================================
+
+            Liste les technologies utilisées :
+            - Vanilla JS : JavaScript pur (pas de framework)
+            - CSS Variables : Variables CSS pour les couleurs
+            - Local Storage Analytics : Statistiques stockées localement
+            - RSS Parsing : Lecture des flux RSS
+            - GitHub Pages : Hébergement gratuit
+            ================================================================
+            -->
             <div class="about-card">
+                <!-- Titre en couleur secondaire (violet) -->
                 <h2 style="color: var(--secondary); margin-bottom: 1.5rem;">Technology Stack</h2>
-                <p style="color: var(--text-dim); margin-bottom: 1rem;">Built with modern, lightweight web technologies:
+
+                <p style="color: var(--text-dim); margin-bottom: 1rem;">
+                    Built with modern, lightweight web technologies:
                 </p>
+
+                <!-- Badges des technologies -->
                 <div class="tech-stack">
                     <span class="tech-badge">Vanilla JS</span>
                     <span class="tech-badge">CSS Variables</span>
@@ -106,36 +299,85 @@
                 </div>
             </div>
 
+            <!--
+            ================================================================
+            CARTE 3 : VIE PRIVÉE
+            ================================================================
+
+            Explique l'engagement envers la vie privée :
+            - Pas de cookies tiers
+            - Pas de pixels de tracking externes
+            - Statistiques locales uniquement
+            - Code source ouvert
+            ================================================================
+            -->
             <div class="about-card">
+                <!-- Titre en blanc pour contraste -->
                 <h2 style="color: #fff; margin-bottom: 1.5rem;">Privacy First</h2>
+
                 <p style="line-height: 1.8; color: var(--text-dim);">
                     We believe in transparency. AI-Pulse operates with:
                 </p>
+
+                <!-- Liste des points de confidentialité -->
                 <ul style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light); line-height: 1.8;">
-                    <li>No Third-Party Cookies</li>
-                    <li>No External Tracking Pixels</li>
-                    <li>Local-Only Session Statistics</li>
-                    <li>Open Source Codebase</li>
+                    <li>No Third-Party Cookies</li>           <!-- Pas de cookies tiers -->
+                    <li>No External Tracking Pixels</li>      <!-- Pas de pixels de tracking -->
+                    <li>Local-Only Session Statistics</li>    <!-- Stats locales uniquement -->
+                    <li>Open Source Codebase</li>             <!-- Code source ouvert -->
                 </ul>
             </div>
 
+            <!--
+            ================================================================
+            BOUTON VERS LE PORTFOLIO
+            ================================================================
+            Lien vers la page portfolio du développeur.
+            ================================================================
+            -->
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="portfolio.html" class="btn">View Developer Portfolio</a>
             </div>
         </div>
     </div>
 
+    <!--
+    ============================================================================
+    BOUTONS DE NAVIGATION RAPIDE (ELEVATOR)
+    ============================================================================
+
+    Deux boutons flottants pour naviguer rapidement :
+    - ▲ : Remonter en haut de la page
+    - ▼ : Descendre en bas de la page
+
+    COMPORTEMENT:
+    - window.scrollTo() : Fait défiler la page
+    - behavior: 'auto' : Défilement instantané
+    ============================================================================
+    -->
     <div class="elevator">
+        <!-- Bouton pour remonter en haut -->
         <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
             ▲
         </button>
+
+        <!-- Bouton pour descendre en bas -->
         <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'auto'})"
             title="Scroll to Bottom">
             ▼
         </button>
     </div>
 
-    <!-- Footer -->
+    <!--
+    ============================================================================
+    PIED DE PAGE (FOOTER)
+    ============================================================================
+
+    Zone en bas de la page avec :
+    - Liens utiles (Privacy, Statistics, Portfolio, GitHub, S'abonner)
+    - Copyright et crédits
+    ============================================================================
+    -->
     <footer class="site-footer">
         <div class="footer-links">
             <a href="privacy.html">Privacy</a>
@@ -144,13 +386,25 @@
             <span>•</span>
             <a href="portfolio.html">Portfolio</a>
             <span>•</span>
-            <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>
-            <span>•</span>
             <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
+            <span>•</span>
+            <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank">S'abonner</a>
         </div>
-        <p>&copy; 2026 AI-Pulse. All rights reserved.</p>
+        <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank">ThePhoenixAgency</a>. All rights reserved.</p>
     </footer>
 
+    <!--
+    ============================================================================
+    SCRIPTS JAVASCRIPT
+    ============================================================================
+
+    Fichiers JavaScript chargés à la fin pour de meilleures performances.
+
+    FICHIERS:
+    - tracker.js : Suivi des statistiques de visite (local uniquement)
+    - ui.js : Logique de l'interface (navigation, animations)
+    ============================================================================
+    -->
     <script src="./js/tracker.js"></script>
     <script src="./js/ui.js"></script>
 </body>
