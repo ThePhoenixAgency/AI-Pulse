@@ -199,8 +199,8 @@ try {
     return langMap[code] || code;
   };
 } catch (e) {
-  // Si franc-min n'est pas installé, on utilise une fonction vide
-  console.error('franc-min not available, using feed-declared language only');
+  console.error('WARNING: franc-min package not found. Language detection will be limited to feed-declared languages only.');
+  console.error('To enable automatic language detection, please run: npm install');
   detectLang = () => null;
 }
 
