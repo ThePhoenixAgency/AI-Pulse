@@ -156,7 +156,7 @@
     <!-- Header -->
     <header class="site-header">
         <div class="brand-logo">
-            <img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
+            <a href="index.html"><img src="./assets/logo_final.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;"></a>
         </div>
         <nav class="nav-links">
             <a href="index.html">Home</a>
@@ -214,6 +214,14 @@
         const viewerContent = document.getElementById('viewerContent');
         const externalLink = document.getElementById('externalLink');
 
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            if (!text) return '';
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Parse markdown to HTML
         function parseMarkdown(md) {
             let html = md;
@@ -261,12 +269,12 @@
                 }
 
                 viewerContent.innerHTML = `
-                    <h1>${repoData.name}</h1>
-                    <p>${repoData.description || 'No description'}</p>
+                    <h1>${escapeHtml(repoData.name)}</h1>
+                    <p>${escapeHtml(repoData.description || 'No description')}</p>
                     <div class="repo-stats">
                         <span class="repo-stat">Stars: ${repoData.stargazers_count}</span>
                         <span class="repo-stat">Forks: ${repoData.forks_count}</span>
-                        <span class="repo-stat">Language: ${repoData.language || 'N/A'}</span>
+                        <span class="repo-stat">Language: ${escapeHtml(repoData.language || 'N/A')}</span>
                         <span class="repo-stat">Updated: ${new Date(repoData.updated_at).toLocaleDateString()}</span>
                     </div>
                     <hr style="border-color: rgba(255,255,255,0.1); margin: 30px 0;">
