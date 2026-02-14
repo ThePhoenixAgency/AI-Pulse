@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Xikipedia - Le TikTok de Wikipedia sans tracking ni IA</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Xikipedia - Le TikTok de Wikipedia sans tracking ni IA</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/11/2026 | Lang: FR |
+    <a href="https://korben.info/xikipedia-wikipedia-feed-algorithmique.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/xikipedia-wikipedia-feed-algorithmique/xikipedia-wikipedia-feed-algorithmique-1.png" alt="Image illustrant l'article : Xikipedia - Le TikTok de Wikipedia sans tracking ni IA" /></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Xikipedia propose un feed TikTok-like avec 270 000 articles de Simple Wikipedia, alimenté par un algorithme JavaScript local sans IA ni tracking, juste du scoring par catégorie stocké dans votre navigateur</li><li>L'algo fonctionne en trois parts : 40% contenu pondéré par vos préférences, 42% meilleur noté, 18% aléatoire pour casser les bulles de filtre, avec bonus anti-binge si vous n'avez pas liké depuis longtemps</li><li>C'est une PWA installable offline (~34 Mo en IndexedDB), code open source AGPLv3, mais attention aux limites mémoire d'iPhone et au premier chargement qui nécessite du Wi-Fi stable</li></ol><p>Résumé généré par IA</p></div><div><p>Les algorithmes de recommandation, vous connaissez bien je pense... YouTube, TikTok, Instagram... ces trucs qui vous gardent scotché à l'écran durant des heures en aspirant toutes vos données au passage. Hé bien un dev de bon goût a décidé de prouver qu'on pouvait faire la même chose sans machine learning et sans collecter la moindre info perso.</p><p>Son arme secrète ? <strong>Les 270 000 articles de Simple Wikipedia.</strong></p><p><a href="https://xikipedia.org/">Xikipedia</a>
+, c'est un pseudo réseau social qui vous balance des articles de Simple Wikipedia sous forme de feed, exactement comme votre fil TikTok préféré. Sauf que derrière, y'a pas de ferme de serveurs qui analyse votre comportement mais juste un petit algorithme local en JS qui tourne dans votre navigateur.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/xikipedia-wikipedia-feed-algorithmique/xikipedia-wikipedia-feed-algorithmique-2.png" alt="" /></p><p>En gros, le système fonctionne avec un scoring par catégorie côté client, stocké en localStorage. Vous scrollez un article sans le lire ? Moins 5 points pour cette catégorie. Vous likez ? Plus 50 points, avec un bonus qui augmente si vous n'avez pas liké depuis longtemps (genre un mécanisme anti-binge plutôt malin). Vous cliquez sur l'article complet ? 75 points. Sur une image ? 100 points !!</p><p>Et c'est comme ça qu'au bout de quelques minutes de scroll, le feed commence à comprendre vos centres d'intérêt et vous propose des trucs de plus en plus pertinents. J'ai testé en likant 3-4 articles sur l'astronomie... au début je pensais que ça serait du random total, mais au bout de 5 minutes j'avais quasiment que des trucs sur l'espace et la physique. Plutôt efficace pour un algo sans IA.</p><p>D'ailleurs, le truc qui est assez cool c'est la répartition des contenus. 40% de sélection pondérée par vos scores, 42% du contenu le mieux noté, et 18% complètement aléatoire. Ce dernier bout de hasard, c'est ce qui évite de s'enfermer dans une bulle de filtre (prends-en de la graine, YouTube !!).</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/xikipedia-wikipedia-feed-algorithmique/xikipedia-wikipedia-feed-algorithmique-3.png" alt="" /></p><p><em>La page d'accueil avec ses catégories - sobre mais efficace</em></p></div><p>Le tout tourne en PWA, c'est-à-dire que ça s'installe comme une app sur votre téléphone ou votre ordi et ça fonctionne même hors ligne après le premier chargement. Les ~34 Mo de données compressées de
+<a href="https://simple.wikipedia.org/">Simple Wikipedia</a>
+sont stockées localement via IndexedDB dans votre navigateur. Vous pouvez créer plusieurs profils (pratique si vous partagez un appareil), consulter vos stats d'engagement perso, et même basculer entre thème clair et sombre.</p><p>Et le code est sous licence AGPLv3,
+<a href="https://github.com/rebane2001/xikipedia">dispo sur GitHub</a>
+.</p><p>Petit bémol quand même si vous êtes sur iPhone, y'a des restrictions mémoire imposées par Apple sur Safari qui peuvent poser problème avec les ~34 Mo de données. Attention aussi, le premier chargement prend un moment vu qu'il faut tout télécharger d'un coup... sauf si vous êtes en 4G pourrie, là ça peut carrément planter en plein milieu. Et pas moyen de reprendre, faut tout relancer. Prévoyez donc du Wi-Fi.</p><p>Pour ceux qui se demandent à quoi ça sert concrètement... c'est juste un moyen sympa de tomber sur des sujets que vous n'auriez jamais cherchés, le tout sans que personne ne sache que vous avez passé 45 minutes à lire des articles sur les pieuvres géantes du Pacifique.</p><p>Voilà, j'aurais pas parié dessus au départ... mais après avoir scrollé une bonne demi-heure, je dois avouer que c'est plutôt malin comme approche.</p><p>Amusez-vous bien !</p></div>Références<section><ul><li><a href="https://xikipedia.org/" target="_blank">https://xikipedia.org/</a></li><li><a href="https://simple.wikipedia.org/" target="_blank">https://simple.wikipedia.org</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+</body>
+</html>

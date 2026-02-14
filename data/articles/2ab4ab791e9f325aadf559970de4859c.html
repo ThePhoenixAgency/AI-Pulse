@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Prompt Fidelity: Measuring How Much of Your Intent an AI Agent Actually Executes</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/6/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/prompt-fidelity-measuring-how-much-of-your-intent-an-ai-agent-actually-executes/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<h2></h2>
+
+
+
+<p>Spotify just shipped “Prompted Playlists” in beta. I built a few playlists and discovered that the LLM behind the agent tries to fulfill your request, but fails because it doesn’t know enough but won’t admit it. Here’s what I mean: one of my first playlist prompts was “songs in a minor key within rock”. The playlist was swiftly created. I then added the caveat “and no song should have more than 10 million plays”. The AI agent bubbled up an error explaining that it didn’t have access to total play counts. It also surprisingly explained that it didn’t have access to a few other things like musical keys, even though it had claimed to use that in the playlist’s construction. The agent was using its LLM’s knowledge of what key a certain song was in and adding songs accordingly to its memory. A close inspection of the playlist showed a few songs that were not in a minor key at all. The LLM had, of course, hallucinated this information and proudly displayed it as a valid match to a playlist’s prompt.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-10-1024x655.png" alt="" /><figcaption>All images, unless otherwise noted, are by the author.</figcaption></figure>
+
+
+
+<p>Obviously, a playlist creator is a fairly low-stakes AI agent capability. The playlist it made was great! The trouble is it only really used about 25% of my constraints as validated input. The remaining 75% of my constraints were just guessed by the LLM and the system never told me until I dug in deeper. This is not a Spotify problem; it’s an every-agent problem. </p>
+
+
+
+<h2>Three Propositions</h2>
+
+
+
+<p>To demonstrate this concept of prompt fidelity more broadly, I must make these three propositions:</p>
+
+
+
+<ol>
+<li>Any AI agent’s verified data layer has a <em>limited</em> or <em>finite capacity</em>. An agent can only query the tools it’s been given, and those tools expose a fixed set of fields with finite resolution. You can enumerate every field in the schema and measure how much each one narrows the search. A popularity score eliminates some fraction of candidates. A release date eliminates another. A genre tag eliminates more. Add up how much narrowing all the fields can do together and you get a hard number: the maximum amount of filtering the agent can prove it did. I’ll call that number <em>I_max</em>.</li>
+
+
+
+<li>User intent expressed in natural language is effectively <em>unbounded</em>. A person can write a prompt of arbitrary specificity. “Create a playlist with songs that are bass-led in minor key, post-punk from Manchester, recorded in studios with analog equipment between 1979 and 1983 that influenced the gothic rock movement but never charted.” Every clause narrows the search. Every adjective adds precision. There is no ceiling on how specific a user’s request can be, because natural language wasn’t designed around database schemas.</li>
+
+
+
+<li>Following directly from the first two: for any AI agent, there exists a point where the user’s prompt asks for more than the data layer can verify. Once a prompt demands more narrowing than the verified fields can provide, <em>the remaining work has to come from somewhere</em>. That somewhere is the LLM’s general knowledge, pattern matching, and inference. The agent will still deliver a confident result. It just can’t prove all of it. Not because the model is poorly built, but because the math doesn’t allow anything else.</li>
+</ol>
+
+
+
+<p>This isn’t a quality problem, but a structural one. A better model doesn’t raise the ceiling. Better models do get better at inferring and filling in the rest of the user’s needs. However, only adding more verified data fields raises this ceiling, and even then, each new field offers diminishing returns because fields are correlated (genre and energy aren’t independent, release date and tempo trends aren’t independent). The gap between what language can express and what data can verify is permanent.</p>
+
+
+
+<h2>The Problem: Agents Don’t Report Their Compression Ratio</h2>
+
+
+
+<p>Every AI agent with access to tools and skills does the same thing: it takes your request, decomposes that request into a set of actions, executes those actions, infers about the output of those actions, and then presents a unified response. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-15-472x1024.png" alt="" /><figcaption>The Minor Bass Melodies Prompted Playlist</figcaption></figure>
+
+
+
+<p>This decomposition from request to action actually erodes the meaning between what it is you’re asking for and what the AI agent responds with. The narration layer of the AI agent flattens what it is you requested and what was inferred into a single response. </p>
+
+
+
+<p>The problem is that as a user of an AI agent, you have no way to know what fraction of your input was used to trigger an action, what fraction of the response was grounded in real data, and what fraction was inferred from the actions that the agent took. This is a problem for playlists because there were songs that were in a major key, when I had explicitly asked it to only contain songs in a minor key. This is even more of a problem when your AI agent is classifying financial receipts and transactions. </p>
+
+
+
+<p>We need a metric for measuring this. I’m calling it Prompt Fidelity. </p>
+
+
+
+<h2>The Metric: Prompt Fidelity</h2>
+
+
+
+<p>Prompt Fidelity for AI agents is defined by the constraints you give to the agent when asking it to perform some action. Each constraint within a prompt narrows the possible paths that the agent can take by some measurable amount. A naïve approach to calculating fidelity would be to count each constraint, add up the ones that are verifiable, and the ones that are inferred. The problem with that approach is that each constraint is weighted the same. However, data is often skewed heavily within real life datasets. A constraint that eliminates 95% of the catalog is doing vastly more work than one that eliminates 20%. Counting each constraint the same is wrong.</p>
+
+
+
+<p>Therefore, we need to properly weight each constraint according to the work it does filtering the dataset. Logarithms achieve that weighting. The bits of information in a prompt can be defined as “-log2(p)” bits where p is the surviving fraction of information from the constraints or fillers you’ve applied. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor.png" alt="" /></figure>
+
+
+
+<p>In each agent action, each constraint can only be a) verified by tool calls or b) inferred by the LLM. Prompt fidelity measures the ratio of constraints between those two options. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-1.png" alt="" /></figure>
+
+
+
+<p>Prompt Fidelity has a range of 0 to 1. A perfect 1.0 means that every part of your request was backed by real data. A fidelity of 0.0 means that the entire output of the AI agent was driven by its internal reasoning or vibes. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-12-1024x476.png" alt="" /><figcaption>While updating a Prompted Playlist, the agent shows its thoughts. Here its “Defining mood and key”</figcaption></figure>
+
+
+
+<p>Spotify’s system above always reports a perfect 1.0 in this situation. In reality, the prompt fidelity of the playlist creation was around 25% – two constraints (under 4 minutes and recorded before 2005) were fulfilled by the agent, the rest were inferred from the agent’s existing (and potentially faulty) knowledge and recall. At scale and applied to more impactful problems, falsely reporting a high prompt fidelity becomes a big problem.</p>
+
+
+
+<h3>What Fidelity Actually Means (and Doesn’t Mean)</h3>
+
+
+
+<p>In audio systems, “fidelity” is a measure of how faithfully the system reproduces the original signal. High fidelity does not guarantee that the music itself is good. High fidelity only guarantees that the music sounds how it did when it was recorded. Prompt fidelity is the same idea: how much of your original intent (signal) was faithfully fulfilled by the agentic system.</p>
+
+
+
+<p>High prompt fidelity means that the system did what you asked and you can PROVE it. A low prompt fidelity means the system probably did something <em>close</em> to what you wanted, but you’ll have to review it (listening to the whole playlist) to ensure that it’s true. </p>
+
+
+
+<p>Prompt Fidelity is NOT an accuracy score. It cannot tell you that “75% of the songs in a playlist match your prompt”. A playlist with a 0.25 fidelity could be 100% perfect. The LLM might have nailed every single inference about each song it added. Or, half the songs could be wrong. You don’t know. You can’t know until you listen to all the songs. That’s the point of a measurable prompt fidelity. </p>
+
+
+
+<p>Instead prompt fidelity measures how much of the result you can TRUST WITHOUT CHECKING. In a financial audit, if 25% of the line items have receipts and 75% of the line items are estimates, the total bill might still be 100% accurate, but your CONFIDENCE in that total is fundamentally different than an audit with every single line item supported by a receipt. The distinction matters because there are domains where ‘just trust the vibes’ is fine (music) and domains where it isn’t (medical advice, financial guidance, legal compliance).</p>
+
+
+
+<p>Prompt fidelity is more like a measurement of the documentation rate given a number of constraints, not the error rate of the response itself. </p>
+
+
+
+<p>Practically in our Spotify example: as you add more constraints to your playlist prompt, the prompt fidelity drops, the playlist becomes less of a precise report and more of a recommendation. That’s totally fine, but the user should be informed about which they’re getting. Is this playlist exactly what I asked for? Or did you make something work to fulfill the goal that I gave you? Surfacing that metric to the user is essential for building trust in these agentic systems.</p>
+
+
+
+<h2>The Case Study: Reverse-Engineering Spotify’s AI Playlist Agent</h2>
+
+
+
+<p>Spotify’s Prompted Playlists feature is what started this exploration into prompt fidelity. Let’s dive deeper into how these work and what I did to explore this capability just from the standard prompt input field.</p>
+
+
+
+<p>Prompted Playlists let you describe what you want in natural language. For example, <a href="https://open.spotify.com/playlist/37i9dQZF1FwLZ7rZ4fp8Zk?si=8ca2dfef3eae4c00">in this playlist</a>, the prompt is simply “rock songs in minor keys, under 4 minutes, recorded before 2005, featuring bass lines as a lead melodic element”. </p>
+
+
+
+<p>Normally, to make a playlist, you’d need to comb through hours of music to land on exactly what you wanted to make. This playlist is 52 minutes long and took only a minute to generate. The appeal here is obvious and I really enjoy this feature. Without having to know all the key rock artists, I can be introduced to the music and explore it more quickly and more easily. </p>
+
+
+
+<p>Unfortunately, the official documentation from Spotify is very light. There are almost no details about what the system can or can’t do, what metadata it keys off of, nor is there any data mapping available. </p>
+
+
+
+<p>Using a simple technique, however, I was able to map what I believe is the full data contract available to the agent over the course of one evening (all from my couch watching the Sopranos, naturally).</p>
+
+
+
+<h3>The Technique: Impossible Constraints as a Forcing Function</h3>
+
+
+
+<p>As a result of how Spotify architected this playlist-building agent, when the agent cannot satisfy a request, the error messages can be influenced to reveal architectural details that are otherwise not available. When you find a constraint that the agent can’t build off of, it will error and you can leverage that to understand what it CAN do. I’ll use this as the constant to probe the system. </p>
+
+
+
+<p>In our example playlist above, Minor Keys &amp; Bass Lines, adding the unlock phrase “with less than 10 million streams” acts as a circuit breaker for the agent, signalling that it cannot fulfill the users’ request. With this phrase, you can explore the possibilities by changing other aspects of the prompt over and over again until you can see what the agent has access to. Collecting the responses, asking overlapping questions, and reviewing the responses allows you to build a foundational understanding of what is available for the agent. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-11.png" alt="" /><figcaption>A prompt with 10 million Spotify streams triggers an error from the agent</figcaption></figure>
+
+
+
+<h3>What I Found: The Three-Tier Architecture</h3>
+
+
+
+<p>Spotify Prompted Playlist agent has a wealth of data available to it. I’ve separated it into three tiers: musical metadata, user-based data, and LLM inference. Beyond that, it appears that Spotify has excluded various data sources from its agent either as a product choice or as a “get this out the door” choice. </p>
+
+
+
+<ul>
+<li>Tier 1
+<ul>
+<li>Verified track metadata: duration, release date, popularity, tempo, energy, explicit, genre, language</li>
+</ul>
+</li>
+
+
+
+<li>Tier 2
+<ul>
+<li>Verified user behavioral data: play counts, skip counts, timestamps, recency flags, ms played, source, period analytics (40+ fields total)</li>
+</ul>
+</li>
+
+
+
+<li>Tier 3
+<ul>
+<li>LLM inference: key/mode, danceability, valence, acousticness, mood, instrumentation — all inferred from general knowledge, narrated as if verified</li>
+</ul>
+</li>
+
+
+
+<li>Deliberate exclusion:
+<ul>
+<li>Spotify’s public API has audio features (danceability, valence, etc.) but the agent doesn’t have access. Perhaps a product choice, not technical limitation.</li>
+</ul>
+</li>
+</ul>
+
+
+
+<p>A full list of available fields is included at the bottom of this post. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-13.png" alt="" /><figcaption>Another error, this time with more details about what is available to use</figcaption></figure>
+
+
+
+<h3>The Behavioral Findings</h3>
+
+
+
+<p>The agent demonstrated surprisingly resilient behavior to ambiguous requests and conflicting instructions. It commonly reported that it was doublechecking various constraints and fulfilling the users’ request. However, whether those constraints were actually checked against a validated dataset or not was not exposed. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-8.png" alt="" /><figcaption>Making interesting playlists that would otherwise be difficult to make</figcaption></figure>
+
+
+
+<p>When the playlist agent can get a close, but not exact, match to the constraints listed in the prompt, it runs a “related” query and silently substitutes the results from that query as valid results for the original request. This dilutes the trust in the system since a prompt requesting ONLY bass-driven rock music in a playlist might gather non-bass-driven rock music in a playlist, likely dissatisfying the user.</p>
+
+
+
+<p>There does appear to be a “certainty threshold” that the agent is not comfortable crossing. For example, this entire exploration was based on the “less than 10 million plays” unlock phrase. When this happens, the agent would divulge just a handful of fields it had access to every time. This list of fields would change from prompt to prompt, even if the prompt was the same between runs of the prompt. This is classic LLM non-determinism. In order to boost trust in the system, exposing what the agent DOES have access to in a straightforward way tells the human exactly what they can and cannot ask about. </p>
+
+
+
+<p>Finally, when these two types of data are mixed, the agent is not clear about which songs it has used verified data for and which it has used inferred data for. Both verified and inferred decisions are mixed and presented with identical authority in the music notes. For example, if you craft a prompted playlist about your own user information (“songs I’ve skipped more than 30 times with a punchy bass-driven melody”), the agent will add real data (“you skipped this song 83 times last year!”) right next to inferred knowledge (“John Deacon’s bass line commands attention throughout this song”). To be clear, I’ve not skipped any Queen songs 83 times to my knowledge. But the AI agent doesn’t have a “bass_player” field anywhere in its available data to query against. The AI knows that Queen commonly has a strong bass line in their songs and the knowledge of John Deacon as Queen’s bass guitarist allows its LLM to infer that it’s his bass line that caused the song to be added to the playlist.</p>
+
+
+
+<h2>Applying the Math: Two Playlists, Two Fidelity Scores</h2>
+
+
+
+<p>Let’s apply this prompt fidelity concept to example playlists. I don’t have full access to the Spotify music catalog so I’ll be using example survivorship numbers from our criteria filters in our fidelity bit computations. The formula is the same at every step: <strong>bits = −log₂(p)</strong> where p is the estimated fraction of the catalog that survives the filter being applied.</p>
+
+
+
+<h3>“Minor Bass Melodies” — The Confident Illusion</h3>
+
+
+
+<p>This playlist is the one with Queen. “A playlist of rock music, all in minor key, under 4 minutes of playtime, released pre-2005, and bass-led”. I’ll apply our formula and use the bits of information I have from each step to help compute the prompt fidelity.</p>
+
+
+
+<p><strong>Duration &lt; 4 minutes</strong></p>
+
+
+
+<ul>
+<li>Estimate: ~80% of tracks are under 4 minutes → p = 0.80</li>
+</ul>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-2.png" alt="" /></figure>
+
+
+
+<ul>
+<li>This barely narrows anything, which is why it contributes so little</li>
+</ul>
+
+
+
+<p><strong>Release date before 2005</strong></p>
+
+
+
+<ul>
+<li>Estimate: ~30% of Spotify’s catalog is pre-2005 (the catalog skews heavily toward recent releases) → p = 0.30</li>
+</ul>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-6.png" alt="" /></figure>
+
+
+
+<ul>
+<li>More selective — eliminates 70% of the catalog</li>
+</ul>
+
+
+
+<p><strong>Minor key</strong></p>
+
+
+
+<ul>
+<li>Estimate: ~40% of popular music is in a minor key → p = 0.40</li>
+</ul>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-5.png" alt="" /></figure>
+
+
+
+<ul>
+<li>Moderate selectivity, but this is entirely inferred — the agent confirmed key/mode is not a verified field</li>
+</ul>
+
+
+
+<p><strong>Bass-led melodic element</strong></p>
+
+
+
+<ul>
+<li>Estimate: ~5% of tracks feature bass as the lead melodic element → p = 0.05</li>
+</ul>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-4.png" alt="" /></figure>
+
+
+
+<ul>
+<li>By far the most selective constraint. This single filter does more work than the other three combined. And it’s 100% inferred.</li>
+</ul>
+
+
+
+<p><strong>Totals:</strong></p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-7.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-8.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-9.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-10.png" alt="" /></figure>
+
+
+
+<p>These survival fractions are estimates. However, the structural point holds regardless of exact numbers: the most selective constraint is the least verifiable, and that’s not a coincidence. The things that make a prompt interesting are almost always the things an agent has to guess at.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-14.png" alt="" /><figcaption>The agent thinks it has access to song download status, but only some songs are downloaded (the green arrow icon pointing down indicates offline availability)</figcaption></figure>
+
+
+
+<h3>“Skipped Songs” — The Honest Playlist</h3>
+
+
+
+<p>This prompt is very straight forward: “A playlist of songs I’ve skipped more than 5 times”. This is very easy to verify and the agent will lean into the data it has access to.</p>
+
+
+
+<p><strong>Skip count &gt; 5</strong></p>
+
+
+
+<ul>
+<li>Estimate: ~10% of tracks in your library have been skipped more than 5 times → p = 0.10</li>
+</ul>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-11.png" alt="" /></figure>
+
+
+
+<ul>
+<li>This is the only constraint, and it’s a verified field (user_skip_count)</li>
+</ul>
+
+
+
+<p><strong>Totals:</strong></p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-12.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-13.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-14.png" alt="" /></figure>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-15.png" alt="" /></figure>
+
+
+
+<h3>The Structural Insight</h3>
+
+
+
+<p>The interesting part about prompt fidelity is apparent in each playlist: the “most interesting” prompt is the least verifiable. A playlist with all my skipped songs is trivially easy to implement but Spotify doesn’t want to show it. After all, these are all songs I generally don’t prefer to listen to, hence the skips. Similarly, publish date being before 2005 is very easy to verify, but the resultant playlist is unlikely to be interesting to the average user.</p>
+
+
+
+<p>The bass-line constraint though is very interesting for a user. Constraints like these are where the Prompted Playlist concept will shine. Already today I’ve created and listened to two such playlists generated from just a concept of a song that I wanted to hear more of. </p>
+
+
+
+<p>However, the concept of a “bass-driven” song is hard to quantify, especially at Spotify’s scale. Even if they did quantify it, I’d ask for “clarinet jazz” the next day and they’d all have to get back to work finding and labeling those songs. And this is of course the magic of the Prompted Playlist feature.</p>
+
+
+
+<h2>Validation: A Controlled Agent</h2>
+
+
+
+<p>The Spotify examples are compelling, but I don’t have direct access to the schema, the tools, and the agentic harness itself. So I built a movie recommendation agent in order to test this theory within a more controlled environment. </p>
+
+
+
+<blockquote>
+<p><a href="https://github.com/Barneyjm/prompt-fidelity">https://github.com/Barneyjm/prompt-fidelity</a> </p>
+</blockquote>
+
+
+
+<p>The movie recommendation agent is built with the <a href="http://themoviedb.org/">TMDB</a> API that provides the verified layer. Fields in the schema are genre, year, rating, runtime, language, cast, and director. All the other constraints like mood, tone, and pacing are not verified data and are instead sourced from the LLM’s own knowledge of movies. As the agent fulfills a user’s request, the agent records its data sources as either verified or inferred and scores its own response. </p>
+
+
+
+<figure><img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="" /><figcaption>The author used the TMDB API in this example but this example is not endorsed or certified by TMDB.</figcaption></figure>
+
+
+
+<h3>The Boring Prompt (F = 1.0)</h3>
+
+
+
+<p>We’ll start with a “boring” prompt: “Action movies from the 1980s rated above 7.0”. This offers the agent three constraints to work with: genre, date range, and rating. All these constraints correspond to verified data values within the database. </p>
+
+
+
+<p>If I run this through the test agent, I see the high fidelity pops out naturally because each constraint is tied to verified data. </p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-17.png" alt="" /><figcaption>Prompting the movie agent with a high fidelity prompt</figcaption></figure>
+
+
+
+<p>Every result here is verifiably correct. The LLM made zero judgement calls because it had data it could base its response on for each constraint.</p>
+
+
+
+<h3>The Vibes Prompt (F = 0.0)</h3>
+
+
+
+<p>In this case, I’ll look for “movies that feel like a rainy Sunday afternoon”. No constraints in this prompt align to any verified data in our dataset. The work required of the agent falls entirely on its LLM reasoning off its existing knowledge of movies.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-18.png" alt="" /><figcaption>Prompting the agent with a low fidelity prompt</figcaption></figure>
+
+
+
+<p>The recommendations are defensible and are certainly good movies but they are not verifiable according to the data we have access to. With no verified constraints to anchor the search, the candidate pool was the entire TMDb catalog, and the LLM had to do all the work. Some picks are great; others are the model reaching for obscure films it isn’t confident about.</p>
+
+
+
+<h3>The Takeaway</h3>
+
+
+
+<p>This test movie recommendation agent verifies the prompt fidelity framework as a powerful way to expose how an agent’s interpretation of a users’ intent pushes its response into a precision tool or a recommendation engine. Where the response lands between those two options is critical for informing users and building trust in agentic systems. </p>
+
+
+
+<h2>The Fidelity Frontier</h2>
+
+
+
+<p>To make this concrete: Spotify’s catalog contains roughly 100 million tracks. How much total information your prompt needs to carry to narrow the catalog down to your playlist I’ll call <em>I_required</em>.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-18.png" alt="" /></figure>
+
+
+
+<p>To select a 20-song playlist from that catalog, you need approximately 22 bits of selectivity (log₂ of 100 million divided by 20).</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-19.png" alt="" /></figure>
+
+
+
+<p>The verified fields (duration, release date, popularity, tempo, energy, genre, explicit flag, language, and the full suite of user behavioral data) have a combined capacity that tops out at roughly 10 to 12 bits, depending on how you estimate the selectivity of each field. After that, the verified layer is exhausted. Every additional bit of specificity your prompt demands has to come from LLM inference. I’ll call this maximum, <em>I_max</em></p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-20.png" alt="" /></figure>
+
+
+
+<p>That gives you a fidelity ceiling for any prompt:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-16.png" alt="" /></figure>
+
+
+
+<p>And the fidelity ceiling for any playlist:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/lagrida_latex_editor-17.png" alt="" /></figure>
+
+
+
+<p>For the Spotify agent, a maximally specific prompt that fully defines a playlist cannot exceed roughly 55% fidelity. The other 45% is structurally guaranteed to be inference. For simpler prompts that don’t push past the verified layer’s capacity, fidelity can reach 1.0. But as prompts get more specific, fidelity drops, not gradually but by necessity.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-19.png" alt="" /><figcaption>An screenshot of <a href="https://claude.ai/public/artifacts/9c63baea-4afe-4b6e-a7d3-b1920222257f">an interactive chart</a> to explore the fidelity frontier</figcaption></figure>
+
+
+
+<p>This defines what I’m calling the fidelity frontier: the curve of maximum achievable fidelity as a function of prompt specificity. Every agent has one. It’s computable in advance from the tool schema. Simple prompts sit on the left of the curve where fidelity is high. Creative, specific, interesting prompts sit on the right where fidelity is structurally bounded below 1.0.</p>
+
+
+
+<p>The uncomfortable implication is that the prompts users care about most (the ones that feel personal, specific, and tailored) are exactly the ones that push past the verified layer’s capacity. The most interesting outputs come from the least faithful execution. And the most boring prompts are the most trustworthy. That tradeoff is baked into the math. It doesn’t go away with scale, better models, or bigger databases. It only shifts.</p>
+
+
+
+<p>For anyone building agents, the practical takeaway is this: you can compute your own <em>I_max </em>by auditing your tool schema. You can estimate the typical specificity of your users’ prompts. The ratio tells you how much of your agent’s output is structurally guaranteed to be inference. That’s a number you can put in front of a product team or a risk committee. And for agents handling policy questions, medical information, or financial advice, it means there is a provable lower bound on how much of any response cannot be grounded in retrieved data. You can shrink it. You cannot eliminate it.</p>
+
+
+
+<h2>The Broader Application: Every Agent Has This Problem</h2>
+
+
+
+<p>This is not a Spotify problem. This is a problem for any system where an LLM orchestrates tool calls to answer a user’s question.</p>
+
+
+
+<p>Consider Retrieval Augmented Generation (RAG) systems, which power most enterprise AI knowledge-base deployments today. When an employee asks an internal assistant a policy question, part of the answer comes from retrieved documents and part comes from the LLM synthesizing across them, filling gaps, and smoothing the language into something readable. The retrieval is verified. The synthesis is inferred. And the response reads as one seamless paragraph with no indication of where the seams are. A compliance officer reading that answer has no way to know which sentence came from the enterprise policy document and which sentence the model invented to connect two paragraphs that didn’t quite fit together. The fidelity question is identical to the playlist question, just with higher stakes.</p>
+
+
+
+<p>Coding agents face the same decomposition. When an AI generates a function, some of it may reference established patterns from its training data or documentation lookups, and some of it is novel generation. As more production code is written by AI, surfacing that ratio becomes a real engineering concern. A function that’s 90% grounded in well-tested patterns carries different risks than one that’s 90% novel generation, even if both pass the same test suite today.</p>
+
+
+
+<p>Customer service bots may be the highest-stakes example. When a bot tells a customer what their refund policy is, that answer should be drawn directly from policy documents, full stop. Any inferred or synthesized content in that response is a liability. The silent substitution behavior observed in Spotify (where the agent ran a nearby query and narrated it as if it fulfilled the original request) would be genuinely dangerous in a customer service context. Imagine a bot confidently stating a return window or coverage term that it inferred rather than retrieved.</p>
+
+
+
+<p>The general form of prompt fidelity applies to all of these:</p>
+
+
+
+<p><strong>Fidelity = bits of response grounded in tool calls / total bits of response</strong></p>
+
+
+
+<p>The hard part, and increasingly the core challenge of AI engineering work, is defining what “bits” means in each context. For a playlist with discrete constraints, it’s clean. For free-text generation, you’d need to decompose a response into individual claims and assess each one, which is closer to what factuality benchmarks already try to do, just reframed as an information-theoretic measure. That’s a hard measurement problem, and I don’t claim to have solved it here.</p>
+
+
+
+<p>But I think the framework has value even when exact measurement is impractical. If the people building these systems are thinking about fidelity as a design constraint (what fraction of this response can I ground in tool calls, and how do I communicate that to the user?) the outputs will be more trustworthy whether or not anyone computes a precise score. The goal isn’t a number on a dashboard. The goal is a mental model that shapes how we build. </p>
+
+
+
+<h2>The Complexity Ceiling</h2>
+
+
+
+<p>Every agent has a complexity ceiling. Simple lookups (what’s the play count for this track?) are essentially free. Filtering the catalog against a set of field-level predicates (show me everything under 4 minutes, pre-2005, popularity below 40) scales linearly and runs fast. But the moment a prompt requires cross-referencing entities against each other (does this track appear in more than three of my playlists? was there a year-long gap somewhere in my listening history?) the cost jumps quadratically, and the agent either refuses outright or silently approximates.</p>
+
+
+
+<p>That silent approximation is the interesting failure mode. The agent follows a kind of principle of least computational action: when the exact query is too expensive, it relaxes your constraints until it finds a version it can afford to run. You asked for a specific valley in the search space; it rolled downhill to the nearest one instead. The result is a local minimum, close enough to look right, cheap enough to serve, but it’s not what you asked for, and it doesn’t tell you the difference.</p>
+
+
+
+<p>This ceiling isn’t unique to Spotify. Any agent built on indexed database lookups will hit the same wall. The boundary sits right where queries stop being decomposable into independent WHERE clauses and start requiring joins, full scans, or aggregations across your entire history. Below that line, the agent is a precision tool. Above it, it’s a recommendation engine wearing a precision tool’s clothes. The question for anyone building these systems isn’t whether the ceiling exists (it always does) but whether your users know where it is.</p>
+
+
+
+<h2>What to Do About It: Design Recommendations</h2>
+
+
+
+<p>If prompt fidelity is a real and measurable property of agentic systems, the natural question is what to do about it. Here are five recommendations for anyone building or deploying AI agents with tool access.</p>
+
+
+
+<ul>
+<li><strong>Report fidelity, even approximately.</strong> Spotify already shows audio quality as a simple indicator (low, normal, high, very high) when you’re streaming music. The same pattern works for prompt fidelity. You don’t need to show the user a decimal score. A simple label (“this playlist closely matches your prompt” versus “this playlist is inspired by your prompt”) would be enough to set expectations correctly. The difference between a precision tool and a recommendation engine is fine, as long as the user knows which one they’re holding.</li>
+
+
+
+<li><strong>Distinguish grounded claims from inferred ones in the UX.</strong> This can be subtle. A small icon, a slight color shift, a footnote. When Spotify’s playlist notes say “86 skips” that’s a fact from a database. When they say “John Deacon’s bass line drives the whole track” that’s the LLM’s general knowledge. Both are presented identically today. Even a minimal visual distinction would let users calibrate their trust per claim rather than trusting or distrusting the entire output as a block.</li>
+
+
+
+<li><strong>Disclose substitutions explicitly.</strong> When an agent can’t fulfill a request exactly but can get close, it should say so. “I couldn’t filter on download status, so I found songs from albums you’ve saved but haven’t liked” preserves trust far more than silently serving a nearby result and narrating it as if the original request was fulfilled. Users are forgiving of limitations. They are much less forgiving of being misled.</li>
+
+
+
+<li><strong>Provide deterministic capability discovery.</strong> When I asked the Spotify agent to list every field it could filter on, it produced a different answer each time depending on the context of the prompt. The LLM was reconstructing the field list from memory rather than reading from a fixed reference. Any agent that exposes filtering or querying capabilities to users should have a stable, deterministic way to discover those capabilities. A “show me what you can do” command that returns the same answer every time is table stakes for user trust.</li>
+
+
+
+<li><strong>Audit your own agent with this technique before your users do.</strong> The methodology in this piece (pairing impossible constraints with target fields to force informative refusals) is a general-purpose audit technique that works on any agent with tool access. It took one evening and about a dozen prompts to map Spotify’s full data contract. Your users will do the same thing, whether you invite them to or not. The question is whether you understand your own system’s boundaries before they do.</li>
+</ul>
+
+
+
+<h2>Closing</h2>
+
+
+
+<p>Every AI agent has a fidelity score. Most are lower than you’d expect. None of them report it.</p>
+
+
+
+<p>The methodology here (using impossible constraints to force informative refusals) isn’t specific to music or playlists. It works on any agent that calls tools. If the system can refuse, it can leak. If it can leak, you can map it. A dozen well-crafted prompts and an evening of curiosity is all it takes to understand what a production agent can actually do versus what it claims to do.</p>
+
+
+
+<p>The math generalizes too. Weighting constraints by their selectivity rather than just counting them reveals something that a naïve audit misses: the constraints that make a prompt feel personal and specific are almost always the ones the system can’t verify. The most interesting outputs come from the least faithful execution. That tension doesn’t go away with better models or bigger databases. It’s structural.</p>
+
+
+
+<p>As AI agents become the primary way people interact with data systems (their music libraries today, their financial accounts and medical records tomorrow) users will probe boundaries. They’ll find the gaps between what was promised and what was delivered. They’ll discover that the confident, well-narrated response was partially grounded and partially invented, with no way to tell which parts were which.</p>
+
+
+
+<p>The question isn’t whether your agent’s fidelity will be measured. It’s whether you measured it first.</p>
+
+
+
+<h2>Bonus: Prompts Worth Trying (If You Have Spotify Premium)</h2>
+
+
+
+<p>Once you know the schema, you can write prompts that surface genuinely surprising things about your listening history. These all worked for me with varying degrees of tweaking:</p>
+
+
+
+<h3>The Relationship Autopsy</h3>
+
+
+
+<ul>
+<li>“Songs where my skip count is higher than my play count”</li>
+
+
+
+<li>Fair warning: this one may cause existential discomfort (you skip these songs for a reason!)</li>
+</ul>
+
+
+
+<h3>Love at First Listen</h3>
+
+
+
+<ul>
+<li>“Songs where I saved them within 24 hours of my first play, sorted by oldest first”</li>
+
+
+
+<li>A chronological timeline of tracks that grabbed you immediately</li>
+</ul>
+
+
+
+<h3>The Lifecycle</h3>
+
+
+
+<ul>
+<li>“Songs I first ever played, sorted by most plays”</li>
+
+
+
+<li>Your origin story on the platform</li>
+</ul>
+
+
+
+<h3>The Marathon</h3>
+
+
+
+<ul>
+<li>“Songs where my total ms_played is highest, convert to hours”</li>
+
+
+
+<li>Not most plays — most total time. A different and often surprising list</li>
+</ul>
+
+
+
+<h3>The Longest Relationship</h3>
+
+
+
+<ul>
+<li>“Songs with the smallest gap between first play and most recent play, with at least 50 plays, ordered by earliest first listen”</li>
+</ul>
+
+
+
+<h3>The One-Week Obsessions</h3>
+
+
+
+<ul>
+<li>“Songs I played more than 10 times in a single week and then never touched again”</li>
+
+
+
+<li>Your former obsessions, fossilized. This was like a time machine for me.</li>
+</ul>
+
+
+
+<h3>The Time Capsule</h3>
+
+
+
+<ul>
+<li>“One song from each year I’ve been on Spotify — the song with the most plays from that year”</li>
+</ul>
+
+
+
+<h3>The Before and After</h3>
+
+
+
+<ul>
+<li>“Two sets: my 10 most-played songs in the 6 months before [milestone date] and my 10 most-played in the 6 months after”</li>
+
+
+
+<li>Plug in any date that mattered — a move, a new job, a breakup, or even Covid-19 lockdown</li>
+</ul>
+
+
+
+<h3>The Soundtrack to a Year</h3>
+
+
+
+<ul>
+<li>“Pick the year where my total ms_played was highest. Build a playlist of my top songs from that year”</li>
+</ul>
+
+
+
+<h3>What Didn’t Work (and Why)</h3>
+
+
+
+<ul>
+<li>Comeback Story (year-long gap detection): “Songs I rediscovered after a year-long gap in listening”
+<ul>
+<li>agent can’t scan full play history for gaps. Snapshot queries work, timeline scans don’t.</li>
+</ul>
+</li>
+
+
+
+<li>Seasonal patterns (only played in December): “Songs I only played in December but never any other month”
+<ul>
+<li>proving universal negation requires full scan. Same fundamental limitation.</li>
+</ul>
+</li>
+
+
+
+<li>Derived math (ms_played / play_count): “Songs where my average listen time is under 30 seconds per play”
+<ul>
+<li>agent struggles with computed fields. Stick to raw comparisons.</li>
+</ul>
+</li>
+
+
+
+<li>These failures map directly to the complexity ceiling — they require O(n²) or full-scan operations the agent can’t or isn’t allowed to perform.</li>
+</ul>
+
+
+
+<h3>Tips</h3>
+
+
+
+<ul>
+<li>Reference field names directly when the agent misinterprets natural language</li>
+
+
+
+<li>Start broad and tighten. Loose constraints succeed more often</li>
+
+
+
+<li>“If you can’t do X, tell me what you CAN do” is the universal audit prompt</li>
+</ul>
+
+
+
+<h2>Track Metadata</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>album</td><td>✅ Verified</td><td>Album name</td></tr><tr><td>album_uri</td><td>✅ Verified</td><td>Spotify URI for the album</td></tr><tr><td>artist</td><td>✅ Verified</td><td>Artist name</td></tr><tr><td>artist_uri</td><td>✅ Verified</td><td>Spotify URI for the artist</td></tr><tr><td>duration_ms</td><td>✅ Verified</td><td>Track length in milliseconds</td></tr><tr><td>release_date</td><td>✅ Verified</td><td>Release date, supports arbitrary cutoffs</td></tr><tr><td>popularity</td><td>✅ Verified</td><td>0–100 index. Proxy for streams, not a precise count</td></tr><tr><td>explicit</td><td>✅ Verified</td><td>Boolean flag for explicit content</td></tr><tr><td>genre</td><td>✅ Verified</td><td>Genre tags for track/artist</td></tr><tr><td>language_of_performance</td><td>✅ Verified</td><td>Language code. “zxx” (no linguistic content) used as instrumentalness proxy</td></tr></tbody></table></figure>
+
+
+
+<h2>Audio Features (Partial)</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>energy</td><td>✅ Verified</td><td>Available as filterable field</td></tr><tr><td>tempo</td><td>✅ Verified</td><td>BPM, available as filterable field</td></tr><tr><td>key / mode</td><td>❌ Unavailable</td><td>“Would have to infer from knowledge; no verified field”</td></tr><tr><td>danceability</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>valence</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>acousticness</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>speechiness</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>instrumentalness</td><td>❌ Unavailable</td><td>Replaced by language_of_performance == “zxx” workaround</td></tr></tbody></table></figure>
+
+
+
+<h2>User Behavioral Data</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>user_play_count</td><td>✅ Verified</td><td>Total plays per track. Observed: 122, 210, 276</td></tr><tr><td>user_ms_played</td><td>✅ Verified</td><td>Total milliseconds streamed per track, album, artist</td></tr><tr><td>user_skip_count</td><td>✅ Verified</td><td>Total skips per track. Observed: 64, 86</td></tr><tr><td>user_saved</td><td>✅ Verified</td><td>Whether track is in Liked Songs</td></tr><tr><td>user_saved_album</td><td>✅ Verified</td><td>Whether the album is saved to library</td></tr><tr><td>user_saved_date</td><td>✅ Verified</td><td>Timestamp of when the track/album was saved</td></tr><tr><td>user_first_played</td><td>✅ Verified</td><td>Timestamp of first play</td></tr><tr><td>user_last_played</td><td>✅ Verified</td><td>Timestamp of most recent play</td></tr><tr><td>user_days_since_played</td><td>✅ Verified</td><td>Pre-computed convenience field for recency filtering</td></tr><tr><td>user_streamed_track</td><td>✅ Verified</td><td>Boolean: ever streamed this track</td></tr><tr><td>user_streamed_track_recently</td><td>✅ Verified</td><td>Boolean: streamed in approx. last 6 months</td></tr><tr><td>user_streamed_artist</td><td>✅ Verified</td><td>Boolean: ever streamed this artist</td></tr><tr><td>user_streamed_artist_recently</td><td>✅ Verified</td><td>Boolean: streamed this artist recently</td></tr><tr><td>user_added_at</td><td>✅ Verified</td><td>When a track was added to a playlist</td></tr></tbody></table></figure>
+
+
+
+<h2>Source &amp; Context</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>source</td><td>✅ Verified</td><td>Play source: playlist, album, radio, autoplay, etc.</td></tr><tr><td>source_index</td><td>✅ Verified</td><td>Position within the source</td></tr><tr><td>matched_playlist_name</td><td>✅ Verified</td><td>Which playlist a track belongs to. No cross-playlist aggregation.</td></tr></tbody></table></figure>
+
+
+
+<h2>Period Analytics (Time-Windowed)</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>period_ms_played</td><td>✅ Verified</td><td>Milliseconds played within a rolling time window</td></tr><tr><td>period_plays</td><td>✅ Verified</td><td>Play count within a rolling time window</td></tr><tr><td>period_skips</td><td>✅ Verified</td><td>Skip count within a rolling time window</td></tr><tr><td>period_total</td><td>✅ Verified</td><td>Total engagement metric within a rolling time window</td></tr></tbody></table></figure>
+
+
+
+<h2>Query / Search Fields</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>title_query</td><td>✅ Verified</td><td>Fuzzy text matching on track titles</td></tr><tr><td>artist_query</td><td>✅ Verified</td><td>Fuzzy text matching on artist names</td></tr></tbody></table></figure>
+
+
+
+<h2>Confirmed Unavailable</h2>
+
+
+
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Notes</strong></td></tr><tr><td>Global stream counts</td><td>❌ Unavailable</td><td>Cannot filter by exact play count (e.g., “under 10M streams”)</td></tr><tr><td>Cross-playlist count</td><td>❌ Unavailable</td><td>Cannot count how many playlists a track appears in</td></tr><tr><td>Family/household data</td><td>❌ Unavailable</td><td>Cannot access other users’ listening data</td></tr><tr><td>Download status</td><td>⚠️ Unreliable</td><td>Agent served results but most tracks lacked download indicators. Likely device-local.</td></tr></tbody></table></figure>
+</div></div>
+  </div>
+</body>
+</html>

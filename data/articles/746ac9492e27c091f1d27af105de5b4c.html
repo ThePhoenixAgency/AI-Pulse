@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>7 learnings from Anders Hejlsberg: The architect behind C# and TypeScript</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>7 learnings from Anders Hejlsberg: The architect behind C# and TypeScript</h1>
+  <div class="metadata">
+    Source: GitHub Blog | Date: 1/27/2026 | Lang: EN |
+    <a href="https://github.blog/developer-skills/programming-languages-and-frameworks/7-learnings-from-anders-hejlsberg-the-architect-behind-c-and-typescript/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><section>
+	
+<p>Anders Hejlsberg’s work has shaped how millions of developers code. Whether or not you recognize his name, you likely have touched his work: He’s the creator of Turbo Pascal and Delphi, the lead architect of C#, and the designer of TypeScript. </p>
+
+
+
+<p>We sat down with Hejlsberg to discuss his illustrious career and what it’s felt like to watch his innovations stand up to real world pressure. In a long-form conversation, Hejlsberg reflects on what language design looks like once the initial excitement fades, when performance limits appear, when open source becomes unavoidable, and how AI can impact a tool’s original function.</p>
+
+
+
+<p>What emerges is a set of patterns for building systems that survive contact with scale. Here’s what we learned.</p>
+
+
+
+<p><em>Watch the full interview above.</em></p>
+
+
+
+<h2>Fast feedback matters more than almost anything else</h2>
+
+
+
+<p>Hejlberg’s early instincts were shaped by extreme constraints. In the era of 64KB machines, there was no room for abstraction that did not pull its weight.</p>
+
+
+
+<p>“You could keep it all in your head,” he recalls.</p>
+
+
+
+<blockquote>
+<p>When you typed your code, you wanted to run it immediately.</p>
+<cite>Anders Hejlsberg</cite></blockquote>
+
+
+
+<p>Turbo Pascal’s impact did not come from the Pascal language itself. It came from shortening the feedback loop. Edit, compile, run, fail, repeat, without touching disk or waiting for tooling to catch up. That tight loop respected developers’ time and attention.</p>
+
+
+
+<p>The same idea shows up decades later in TypeScript, although in a different form. The language itself is only part of the story. Much of TypeScript’s value comes from its tooling: incremental checking, fast partial results, and language services that respond quickly even on large codebases.</p>
+
+
+
+<p>The lesson here is not abstract. Developers can apply this directly to how they evaluate and choose tools. Fast feedback changes behavior. When errors surface quickly, developers experiment more, refactor more confidently, and catch problems closer to the moment they are introduced. When feedback is slow or delayed, teams compensate with conventions, workarounds, and process overhead. </p>
+
+
+
+<p>Whether you’re choosing a language, framework, or internal tooling, responsiveness matters. Tools that shorten the distance between writing code and understanding its consequences tend to earn trust. Tools that introduce latency, even if they’re powerful, often get sidelined. </p>
+
+
+
+<h2>Scaling software means letting go of personal preferences </h2>
+
+
+
+<p>As Hejlsberg moved from largely working alone to leading teams, particularly during the Delphi years, the hardest adjustment wasn’t technical.</p>
+
+
+
+<p>It was learning to let go of personal preferences.</p>
+
+
+
+<blockquote>
+<p>You have to accept that things get done differently than you would have preferred. Fixing it would not really change the behavior anyway.</p>
+<cite>Anders Hejlsberg</cite></blockquote>
+
+
+
+<p>That mindset applies well beyond language design. Any system that needs to scale across teams requires a shift from personal taste to shared outcomes. The goal stops being code that looks the way you would write it, and starts being code that many people can understand, maintain, and evolve together. C# did not emerge from a clean-slate ideal. It emerged from conflicting demands. Visual Basic developers wanted approachability, C++ developers wanted power, and Windows demanded pragmatism.</p>
+
+
+
+<p>The result was not theoretical purity. It was a language that enough people could use effectively.</p>
+
+
+
+<p>Languages do not succeed because they are perfectly designed. They succeed because they accommodate the way teams actually work.</p>
+
+
+
+<h2>Why TypeScript extended JavaScript instead of replacing it</h2>
+
+
+
+<p>TypeScript exists because JavaScript succeeded at a scale few languages ever reach. As browsers became the real cross-platform runtime, teams started building applications far larger than dynamic typing comfortably supports.</p>
+
+
+
+<p>Early attempts to cope were often extreme. Some teams compiled other languages into JavaScript just to get access to static analysis and refactoring tools.</p>
+
+
+
+<p>That approach never sat well with Hejlsberg.</p>
+
+
+
+<p>Telling developers to abandon the ecosystem they were already in was not realistic. Creating a brand-new language in 2012 would have required not just a compiler, but years of investment in editors, debuggers, refactoring tools, and community adoption.</p>
+
+
+
+<p>Instead, TypeScript took a different path. It extended JavaScript in place, inheriting its flaws while making large-scale development more tractable.</p>
+
+
+
+<p>This decision was not ideological, but practical. TypeScript succeeded because it worked with the constraints developers already had, rather than asking them to abandon existing tools, libraries, and mental models. </p>
+
+
+
+<p>The broader lesson is about compromise. Improvements that respect existing workflows tend to spread while improvements that require a wholesale replacement rarely do. In practice, meaningful progress often comes from making the systems you already depend on more capable instead of trying to start over.</p>
+
+
+
+<h2>Visibility is a part of what makes open source work</h2>
+
+
+
+<p>TypeScript did not take off immediately. Early releases were nominally open source, but development still happened largely behind closed doors.</p>
+
+
+
+<p>That changed in 2014 when the project moved to GitHub and adopted a fully public development process. Features were proposed through pull requests, tradeoffs were discussed in the open, and issues were prioritized based on community feedback.</p>
+
+
+
+<p>This shift made decision-making visible. Developers could see not just what shipped, but why certain choices were made and others were not. For the team, it also changed how work was prioritized. Instead of guessing what mattered most, they could look directly at the issues developers cared about.</p>
+
+
+
+<p>The most effective open source projects do more than share code. They make decision-making visible so contributors and users can understand how priorities are set, and why tradeoffs are made.</p>
+
+
+
+<h2>Leaving JavaScript as an implementation language was a necessary break</h2>
+
+
+
+<p>For many years, TypeScript was self-hosted. The compiler was written in TypeScript and ran as JavaScript. This enabled powerful browser-based tooling and made experimentation easy.</p>
+
+
+
+<p>Over time, however, the limitations became clear. JavaScript is single-threaded, has no shared-memory concurrency, and its object model is flexible (but expensive). As TypeScript projects grew, the compiler was leaving a large amount of available compute unused.</p>
+
+
+
+<p>The team reached a point where further optimization would not be enough. They needed a different execution model.</p>
+
+
+
+<p>The controversial decision was to port the compiler to Go.</p>
+
+
+
+<p>This was not a rewrite. The goal was semantic fidelity. The new compiler needed to behave exactly like the old one, including quirks and edge cases. Rust, despite its popularity, would have required significant redesign due to ownership constraints and pervasive cyclic data structures. Go’s garbage collection and structural similarity made it possible to preserve behavior while unlocking performance and concurrency.</p>
+
+
+
+<p>The result was substantial performance gains, split between native execution and parallelism. More importantly, the community did not have to relearn the compiler’s behavior.</p>
+
+
+
+<p>Sometimes the most responsible choice isn’t the most ambitious one, but instead preserves behavior, minimizes disruption, and removes a hard limit that no amount of incremental optimization can overcome.</p>
+
+
+
+<h2>In an AI-driven workflow, grounding matters more than generation</h2>
+
+
+
+<p>Hejlberg is skeptical of the idea of AI-first programming languages. Models are best at languages they have already seen extensively, which naturally favors mainstream ecosystems like JavaScript, Python, and TypeScript.</p>
+
+
+
+<p>But AI does change things when it comes to tooling.</p>
+
+
+
+<p>The traditional IDE model assumed a developer writing code and using tools for assistance along the way. Increasingly, that relationship is reversing. AI systems generate code. Developers supervise and correct. Deterministic tools like type checkers and refactoring engines provide guardrails that prevent subtle errors.</p>
+
+
+
+<p>In that world, the value of tooling is not creativity. It is accuracy and constraint. Tools need to expose precise semantic information so that AI systems can ask meaningful questions and receive reliable answers.</p>
+
+
+
+<p>The risk is not that AI systems will generate bad code. Instead, it’s that they will generate plausible, confident code that lacks enough grounding in the realities of a codebase. </p>
+
+
+
+<p>For developers, this shifts where attention should go. The most valuable tools in an AI-assisted workflow aren’t the ones that generate the most code, but the ones that constrain it correctly. Strong type systems, reliable refactoring tools, and accurate semantic models become essential guardrails. They provide the structure that allows AI output to be reviewed, validated, and corrected efficiently instead of trusted blindly. </p>
+
+
+
+<h2>Why open collaboration is critical</h2>
+
+
+
+<p>Despite the challenges of funding and maintenance, Hejlberg remains optimistic about open collaboration. One reason is institutional memory. Years of discussion, decisions, and tradeoffs remain searchable and visible.</p>
+
+
+
+<p>That history does not disappear into private email threads or internal systems. It remains available to anyone who wants to understand how and why a system evolved.</p>
+
+
+
+<p>Despite the challenges of funding and maintenance, Hejlsberg remains optimistic about open collaboration. And a big reason is institutional memory.</p>
+
+
+
+<p>“We have 12 years of history captured in our project,” he explains. “If someone remembers that a discussion happened, we can usually find it. The context doesn’t disappear into email or private systems.”</p>
+
+
+
+<p>That visibility changes how systems evolve. Design debates, rejected ideas, and tradeoffs remain accessible long after individual decisions are made. For developers joining a project later, that shared context often matters as much as the code itself.</p>
+
+
+
+<h2>A pattern that repeats across decades</h2>
+
+
+
+<p>Across four decades of language design, the same themes recur:</p>
+
+
+
+<ul>
+<li>Fast feedback loops matter more than elegance</li>
+
+
+
+<li>Systems need to accommodate imperfect code written by many people</li>
+
+
+
+<li>Behavioral compatibility often matters more than architectural purity</li>
+
+
+
+<li>Visible tradeoffs build trust</li>
+</ul>
+
+
+
+<p>These aren’t secondary concerns. They’re fundamental decisions that determine whether a tool can adapt as its audience grows. Moreover, they ground innovation by ensuring new ideas can take root without breaking what already works.</p>
+
+
+
+<p>For anyone building tools they want to see endure, those fundamentals matter as much as any breakthrough feature. And that may be the most important lesson of all.</p>
+
+
+
+<div>
+<p><strong>Did you know TypeScript was the top language used in 2025?</strong> <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/?utm_source=octoverse-homepage&amp;utm_medium=blog&amp;utm_campaign=universe25">Read more in the Octoverse report &gt;</a></p>
+</div>
+
+	
+
+	<div>
+	<h2>
+		Written by	</h2>
+	
+			<article>
+	<div>
+					<div>
+				
+					
+					<img src="https://avatars.githubusercontent.com/u/87450290?v=4&amp;s=200" alt="Aaron Winston" />
+				
+			</div>
+				
+					<p>Aaron helps lead content strategy at GitHub with a focus on everything developers need to know to stay ahead of what's next. Also, he still likes the em dash despite its newfound bad rap.</p>
+			</div>
+</article>
+	</div>
+</section></div>
+  </div>
+</body>
+</html>

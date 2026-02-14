@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>H Company's new Holo2 model takes the lead in UI Localization</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>H Company's new Holo2 model takes the lead in UI Localization</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/3/2026 | Lang: EN |
+    <a href="https://huggingface.co/blog/Hcompany/introducing-holo2-235b-a22b" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+					<p><a href="https://huggingface.co/blog">
+							Back to Articles</a></p>
+
+					
+					
+					
+					<div><div>
+
+<p><span><span><a href="https://huggingface.co/ramzidecoster"><img alt="Ramzi De Coster's avatar" src="https://huggingface.co/avatars/468240b9f7a45864cf1fa90aa4c445d7.svg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/hamza-hcompany"><img alt="Hamza Benchekroun's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6808a8cf6b8c599b583d0fe9/QPgERtP3Nl2n0BCBlp89D.jpeg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/h-aurelien-lac"><img alt="Aurélien Lac's avatar" src="https://huggingface.co/avatars/8994291dbb5053aff8ef39d7e7800084.svg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/h-tonywu"><img alt="Tony Wu's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6821b385525882a5706eed20/R8BdCB6qwmlaHgYtwu_hB.jpeg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/plcedoz38"><img alt="Pierre-Louis Cedoz's avatar" src="https://huggingface.co/avatars/c3988435f58abccd0950f50f6ef4a2e4.svg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/h-kaiy"><img alt="Kai Yuan's avatar" src="https://huggingface.co/avatars/cc4bccf85a03fd4b01fff4a6be7349cc.svg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/mbakler-h"><img alt="Mart Bakler's avatar" src="https://huggingface.co/avatars/5acc583f1c15c82b6f8f66139ce56572.svg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/ABonnetH"><img alt="Antoine Bonnet's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/68c435c869d3aa0e590b0361/RZcEZherMz2CeJo5kuWHh.png" /></a>
+				</span>
+	</span></p>
+			</div></div>
+					
+
+					
+<p>
+
+Two months since releasing our first batch of Holo2 models, H Company is back with our largest UI localization model yet: <strong>Holo2-235B-A22B Preview</strong>. This model achieves a new State-of-the-Art (SOTA) record of 78.5% on <a href="https://gui-agent.github.io/grounding-leaderboard/">Screenspot-Pro</a> and 79.0% on OSWorld G.</p>
+<p>Available on <a href="https://huggingface.co/Hcompany/Holo2-235B-A22B">Hugging Face</a>, Holo2-235B-A22B Preview is a research release focused on UI element localization.</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/698224a939bac08a1b6e0488/5dezFBy4-KimAIQR5_1j1.png"><img alt="benchmark_table_light (3)" src="https://cdn-uploads.huggingface.co/production/uploads/698224a939bac08a1b6e0488/5dezFBy4-KimAIQR5_1j1.png" /></a></p>
+<p><strong>Agentic Localization</strong></p>
+<p>High-resolution 4K interfaces are challenging for localization models. Small UI elements can be difficult to pinpoint on a large display. With agentic localization, however, Holo2 can iteratively refine its predictions, improving accuracy with each step and unlocking 10-20% relative gains across all Holo2 model sizes.</p>
+<p><strong>Holo2-235B-A22B's Performance on ScreenSpot-Pro</strong></p>
+<p>Holo2-235B-A22B Preview reaches 70.6% accuracy on ScreenSpot-Pro in a single step. In agent mode, it achieves 78.5% within 3 steps, setting a new state-of-the-art on the most challenging GUI grounding benchmark.</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/698224a939bac08a1b6e0488/nht6cib9ua4mfPcM2C1I1.png"><img alt="cost_perf_screenspot_pro_light (2)" src="https://cdn-uploads.huggingface.co/production/uploads/698224a939bac08a1b6e0488/nht6cib9ua4mfPcM2C1I1.png" /></a></p>
+<p><strong>Trained with SkyPilot</strong></p>
+<p>Training Holo2 models at scale requires coordinating workloads across multiple cloud providers. H Company uses <a href="https://skypilot.readthedocs.io/">SkyPilot</a> as a unified interface for launching training jobs on our clusters with Kubernetes (k8s). By abstracting away infrastructure complexity, SkyPilot lets researchers focus on model development instead of managing k8s manifests or maintaining separate deployment scripts.</p>
+</div></div>
+  </div>
+</body>
+</html>

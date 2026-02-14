@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>This Tool Brings macOS-Style Installer for AppImages on Linux</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>This Tool Brings macOS-Style Installer for AppImages on Linux</h1>
+  <div class="metadata">
+    Source: Its FOSS | Date: 2/10/2026 | Lang: FR |
+    <a href="https://itsfoss.com/appmanager/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+          
+
+              <a href="https://www.warp.dev/?utm_source=its_foss&amp;utm_medium=display&amp;utm_campaign=linux_launch" target="_blank"><img src="https://itsfoss.com/assets/images/warp.webp" alt="Warp Terminal" /></a>
+          <p><a href="https://itsfoss.com/use-appimage-linux/">AppImages</a> are portable Linux applications packaged in a single file that you can download and run without installation. Unlike <a href="https://itsfoss.com/install-deb-files-ubuntu/">DEB</a> or <a href="https://itsfoss.com/install-rpm-files-fedora/">RPM</a> packages, <strong>they don't require root access or system-level changes</strong>. You just make the file executable and double-click to run.</p><p>But here's the catch. AppImages don't actually install on your system in the traditional sense. They exist as standalone executables that you have to manage manually. There's no automatic desktop integration, no system menu entries, and no built-in update mechanism.</p><p>This way, you are stuck manually making files executable, going through folders to launch apps, and checking for updates yourself.</p><p>That is where <a href="https://github.com/kem-a/AppManager?ref=itsfoss.com">AppManager</a> comes in. This is a tool that handles all that tedious legwork for you.</p><h2>AppManager: Something For Your AppImages</h2><figure></figure><p>Written in <a href="https://vala.dev/?ref=itsfoss.com">Vala</a> and built on <a href="https://www.gtk.org/?ref=itsfoss.com">GTK 4</a> with <a href="https://gnome.pages.gitlab.gnome.org/libadwaita/?ref=itsfoss.com">Libadwaita</a>, AppManager is a tool that brings reliable management for AppImage files on Linux. It supports both <em>DwarFS</em> and <em>SquashFS </em>AppImage formats, giving you flexibility regardless of how your apps are packaged.</p><p>The app also offers a macOS-style drag-and-drop installer, maintains an install registry that lists all your AppImages in one place, and lets you search through installed applications from the main view.</p><h3>⭐ Key Features</h3><ul><li>Optional Automatic Updates</li><li>Smart Install Modes</li><li>Desktop Integration</li></ul><h3>💻 User Experience</h3><p>On an <a href="https://itsfoss.com/news/ubuntu-25-10-release/">Ubuntu 25.10</a> system, I first had to install AppManager. To do that, I had to make its AppImage file executable by right-clicking on it, going into <em>Properties</em>, and choosing "<em>Executable as Program</em>."</p><p>Then, I drag/dropped the AppManager logo into the <em>Applications</em> folder, agreed to a disclaimer, installed it, and then launched it.</p><figure><div><div><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-installation-flow-1.png" alt="" /></p><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-installation-flow-2.png" alt="" /></p></div><div><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-installation-flow-3.png" alt="" /></p><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-installation-flow-4.png" alt="" /></p></div></div><figcaption><p><i><em>The installation flow for AppManager.</em></i></p></figcaption></figure><p>I downloaded a few AppImage files for popular applications like <a href="https://bitwarden.com/download/?ref=itsfoss.com">Bitwarden</a>, <a href="https://krita.org/en/download/?ref=itsfoss.com">Krita</a>, and <a href="https://musescore.org/en/download?ref=itsfoss.com">MuseScore Studio</a> to see how AppManager handled them. These were easy to add; I just had to drag-and-drop these into the interface. The video linked above shows it in action.</p><p><strong>Any added AppImages are laid out nicely in a list</strong>, though a grid view would also be a welcome addition here, and there are two AppImage source options: <a href="https://pkgforge-dev.github.io/Anylinux-AppImages/?ref=itsfoss.com">AnyLinux AppImages</a> and <a href="https://portable-linux-apps.github.io//apps.html?ref=itsfoss.com">Portable Linux Apps</a>. These can be used to source new AppImages.</p><figure><div><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-appimage-list-sources-1.png" alt="" /></p><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-appimage-options.png" alt="" /></p><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-preferences.png" alt="" /></p></div><figcaption><p><i><em>The list view, AppImage options, and preferences menu on AppManager.</em></i></p></figcaption></figure><p><strong>Managing each entry is intuitive too</strong>, with options to tweak command line arguments, set environment variables, configure update servers, manually trigger update checks, extract AppImages for faster launches, and remove apps when needed.</p><p>I could also remove an installed app by right-clicking on its app launcher entry and moving it to the trash folder.</p><p>The <em>Preferences</em> menu offers several useful configuration options for customizing how AppManager behaves. You can set a custom installation directory for new AppImages instead of the default <code>/home/user/Applications</code> location, configure the automatic update interval to suit your needs, and configure thumbnail generation.</p><h2>⚙️ Installing AppManager</h2><p>You can get the latest release of AppManager from <a href="https://github.com/kem-a/AppManager/releases?ref=itsfoss.com">GitHub</a>, where there are 64-bit packages for x86_64 and ARM systems. There are also packages available for those who prefer building from source.</p><p>If AppManager <strong>shows you an error</strong> saying that "<em>FUSE is not installed. Some AppImages may fail to run</em>." Then <a href="https://github.com/AppImage/AppImageKit/wiki/FUSE?ref=itsfoss.com">you can fix that</a> by running the following commands:</p><pre><code>sudo add-apt-repository universe
+sudo apt install libfuse2t64</code></pre><figure><div><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-libfuse-dependency-error.png" alt="" /></p><p><img src="https://itsfoss.com/content/images/2026/02/appmanager-libfuse-dependency-installation.png" alt="" /></p></div></figure><p>And then reboot your computer:</p><pre><code>sudo reboot</code></pre><p>If this tool doesn't pique your interest, then there's also <a href="https://itsfoss.com/news/gear-lever/">Gear Lever</a>, which does a good job managing AppImage files on Linux.</p><figure><a href="https://itsfoss.com/news/gear-lever/"><div><p>Gear Lever: An Open Source Tool To Manage AppImage Apps on Linux</p><p>A nifty tool to help manage AppImage files.</p><p><img src="https://itsfoss.com/content/images/icon/android-chrome-512x512-273.png" alt="" /><span>It's FOSS</span><span>Sourav Rudra</span></p></div><p><img src="https://itsfoss.com/content/images/thumbnail/gearlever-aotw-1.png" alt="" /></p></a></figure>
+          
+        </article><div>
+              <p><span>About the author</span></p><div>
+  
+    <a href="https://itsfoss.com/author/sourav/">
+      <figure>
+        
+  
+  <img src="https://itsfoss.com/content/images/size/w100/2026/01/2025-pfp-1-1.jpg" alt="Sourav Rudra" />
+      </figure>
+    </a>
+
+  <div>
+    <h2><a href="https://itsfoss.com/author/sourav/">Sourav Rudra</a></h2>
+    
+    <p>A nerd with a passion for open source software, custom PC builds, motorsports, and exploring the endless possibilities of this world.</p>
+    
+    
+  </div>
+</div>            </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - pinkhairs/cutemagick: Self-host websites with infinite undo</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - pinkhairs/cutemagick: Self-host websites with infinite undo</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/14/2026 | Lang: EN |
+    <a href="https://github.com/pinkhairs/cutemagick" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>Cute Magick</h2><a href="#cute-magick"></a><p></p>
+<p>Cute Magick is a self-hosted, Git-backed website environment with <strong>built-in infinite undo</strong>.</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png"><img src="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png" alt="Cute Magick screenshot" /></a></p>
+<p>It's for people who want to build real websites—but don't want to fight platforms, config, and SaaS billing just to experiment, learn, or keep infinite projects alive.</p>
+<p>You get a real server, real files, real URLs, and the ability to rewind your site's entire history at any time.</p>
+<p>📚 <strong>Full documentation:</strong>
+<a href="https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90">https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90</a></p>
+<hr />
+<p></p><h2>Get Started</h2><a href="#get-started"></a><p></p>
+<p></p><h3>Hosted — up and running in a minute</h3><a href="#hosted--up-and-running-in-a-minute"></a><p></p>
+<p>The fastest way to try Cute Magick is the hosted version. Sign up, get your admin link, and you're in.</p>
+<p>👉 <strong><a href="https://cutemagick.com/#pricing">cutemagick.com/#pricing</a></strong></p>
+<p>No Docker, no terminal, no setup.</p>
+<p></p><h3>Self-hosted</h3><a href="#self-hosted"></a><p></p>
+<p>Cute Magick is open source. You can run it anywhere Docker runs. It does not phone home and does not require any external service to function.</p>
+<p>You need:</p>
+<ul>
+<li>Docker</li>
+<li>a terminal</li>
+<li>~5 minutes</li>
+</ul>
+<div><pre>docker run -p 3000:3000 -v <span><span>$(</span>pwd<span>)</span></span>/cutemagick:/app/data ghcr.io/pinkhairs/cutemagick:main</pre></div>
+<p>Then open <code>localhost:3000/admin</code> to set up your account.</p>
+<p>Basic requirements:</p>
+<ul>
+<li>512 MB RAM (1 GB recommended)</li>
+<li>~1 GB disk space</li>
+<li>any CPU from the last decade</li>
+</ul>
+<p>A Raspberry Pi 4 can run it.
+The cheapest VPS is usually overkill.
+Your laptop won't notice it's running.</p>
+<p>📖 <strong>Full installation and setup:</strong>
+See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
+<hr />
+<p></p><h2>What is Cute Magick?</h2><a href="#what-is-cute-magick"></a><p></p>
+<p>Cute Magick starts from a simple idea:</p>
+<blockquote>
+<p>Your computer is already a server, and the web is already accessible.</p>
+</blockquote>
+<p>Cute Magick makes that feel true again.</p>
+<p>It gives you a place to:</p>
+<ul>
+<li>create and run websites immediately</li>
+<li>use HTML, CSS, JavaScript, PHP, Python, Node, Lua, Bash</li>
+<li>experiment without fear of breaking things</li>
+<li>time-travel through every change you make</li>
+</ul>
+<p>Every site has:</p>
+<ul>
+<li>files</li>
+<li>a URL</li>
+<li>a complete history</li>
+<li>a private draft state and a live state</li>
+<li>optional Git remotes for backup</li>
+</ul>
+<p>Your sites are just folders and files. Your history is just Git.</p>
+<hr />
+<p></p><h2>Why Cute Magick?</h2><a href="#why-cute-magick"></a><p></p>
+<p>If you:</p>
+<ul>
+<li>learned HTML/CSS once and drifted away</li>
+<li>know how to code but hate deployment rituals</li>
+<li>want server power without server culture</li>
+<li>miss personal websites and creative freedom</li>
+</ul>
+<p>Cute Magick is designed for you.</p>
+<p>It's a <strong>workspace</strong> where websites are allowed to be unfinished, experimental, and reversible.</p>
+<hr />
+<p></p><h2>Core Concepts (Short Version)</h2><a href="#core-concepts-short-version"></a><p></p>
+<p></p><h3>Sites</h3><a href="#sites"></a><p></p>
+<p>A site is just a folder.</p>
+<p>Inside:</p>
+<ul>
+<li>HTML, CSS, JS, images</li>
+<li>server-side code (PHP, Python, Node, Lua, Bash)</li>
+<li>SQLite databases</li>
+<li>secrets via environment variables</li>
+</ul>
+<p>Each site has infinite versions across a few clear states:</p>
+<ul>
+<li><strong>working</strong> (private working files)</li>
+<li><strong>preview#123</strong> (on-demand, disposable private version render)</li>
+<li><strong>live</strong> (what the world sees)</li>
+</ul>
+<hr />
+<p></p><h3>Versions (Time Machine)</h3><a href="#versions-time-machine"></a><p></p>
+<p>Every file save, upload, delete, rename creates a snapshot automatically.</p>
+<p>You can:</p>
+<ul>
+<li>preview any past version</li>
+<li>restore old versions without deleting newer ones</li>
+<li>recover deleted files</li>
+<li>undo mistakes from months ago</li>
+</ul>
+<p>Under the hood, this is Git—but you don't need to know Git to use it.</p>
+<hr />
+<p></p><h3>Secrets</h3><a href="#secrets"></a><p></p>
+<p>Secrets are stored as environment variables in a hidden <code>.env</code> file:</p>
+<ul>
+<li>API keys</li>
+<li>passwords</li>
+<li>tokens</li>
+</ul>
+<p>They are:</p>
+<ul>
+<li>not committed to Git</li>
+<li>not included in exports</li>
+<li>injected at runtime only</li>
+</ul>
+<hr />
+<p></p><h3>Databases</h3><a href="#databases"></a><p></p>
+<p>Each site can use SQLite databases.</p>
+<p>SQLite is:</p>
+<ul>
+<li>zero-config</li>
+<li>portable</li>
+<li>stored as files</li>
+</ul>
+<p>Databases persist across previews and versions.
+Your site history rewinds; your data does not—by design.</p>
+<hr />
+<p></p><h3>Remotes (Optional)</h3><a href="#remotes-optional"></a><p></p>
+<p>You can connect a Git remote (GitHub, GitLab, your own server) to:</p>
+<ul>
+<li>back up your site history</li>
+<li>collaborate</li>
+<li>work locally and sync back</li>
+</ul>
+<p>Secrets and database contents are never pushed.</p>
+<hr />
+<p></p><h2>Under the Hood</h2><a href="#under-the-hood"></a><p></p>
+<p>Cute Magick stores all persistent state in <code>/data</code>.</p>
+<p>Key directories:</p>
+<ul>
+<li><code>/data/sites</code> — your sites and their Git history</li>
+<li><code>/data/databases</code> — live SQLite data</li>
+<li><code>/data/renders</code> — ephemeral preview output</li>
+<li><code>/data/secrets</code> — per-site environment variables</li>
+<li><code>/data/keys</code> — generated SSH keys</li>
+</ul>
+<p>Everything is transparent. If you understand <code>/data</code>, you understand Cute Magick.</p>
+<hr />
+<p></p><h2>Runtime</h2><a href="#runtime"></a><p></p>
+<p>Cute Magick executes server-side code per request.</p>
+<p>File extensions determine runtime automatically:</p>
+<ul>
+<li><code>.php</code> → PHP</li>
+<li><code>.py</code> → Python</li>
+<li><code>.js</code> (with shebang) → Node</li>
+<li><code>.lua</code> → Lua</li>
+<li><code>.sh</code> → Bash</li>
+<li><code>.html</code>, <code>.css</code> → served as-is</li>
+</ul>
+<p>No configuration. No build step. Just save a file.</p>
+<hr />
+<p></p><h2>Philosophy</h2><a href="#philosophy"></a><p></p>
+<p>Cute Magick favors:</p>
+<ul>
+<li>stacking reversible actions over destructive ones</li>
+<li>explicit version control over auto-deploy</li>
+<li>transparency over abstraction</li>
+<li>ownership over lock-in</li>
+</ul>
+<p>You can't permanently break your site. And if you ever want to leave, you can.</p>
+<hr />
+<p></p><h2>Feedback</h2><a href="#feedback"></a><p></p>
+<p>If you're using it and have thoughts—especially confusion or friction—that feedback is actively shaping the project, particularly around:</p>
+<ul>
+<li>UX</li>
+<li>docs clarity</li>
+<li>edge cases</li>
+<li>things that felt confusing or "too magical" (read: implicit)</li>
+</ul>
+<p>Contact:
+<strong>Diana Lopez</strong> — <a href="mailto:me@diana.nu">me@diana.nu</a></p>
+</article></div></div>
+  </div>
+</body>
+</html>

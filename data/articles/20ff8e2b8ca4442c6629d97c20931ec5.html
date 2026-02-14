@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stop Rebuilding Multi-Step Form Logic — Use rhf-stepper Instead</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Stop Rebuilding Multi-Step Form Logic — Use rhf-stepper Instead</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
+    <a href="https://dev.to/omerrkosar/stop-rebuilding-multi-step-form-logic-use-rhf-stepper-instead-f86" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/omerrkosar"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3772563%2Fc5174db0-d3d5-4b66-b2d2-eb2fb9dce79b.png" alt="ömer koşar" /></a>
+                  </p>
+                  
+                </div><div>
+                <blockquote>
+<p>A headless, lightweight wrapper for react-hook-form that handles step state and per-step validation with zero UI opinions.</p>
+</blockquote>
+
+
+<hr />
+
+<p>If you've ever built a multi-step form in React, you know the drill:</p>
+
+<ul>
+<li>Track which step the user is on</li>
+<li>Validate only the current step's fields before moving forward</li>
+<li>Register/unregister fields as steps change</li>
+<li>Wire up Back/Next/Submit navigation</li>
+<li>Keep it all in sync with react-hook-form</li>
+</ul>
+
+<p>You write this logic once. Then you write it again on the next project. And again. Each time it's slightly different, slightly buggy, and tightly coupled to whatever UI library you're using.</p>
+
+<p>I got tired of it, so I built <strong>rhf-stepper</strong>.</p>
+
+<h2>
+  <a name="what-is-rhfstepper" href="#what-is-rhfstepper">
+  </a>
+  What is rhf-stepper?
+</h2>
+
+<p>It's a headless logic layer on top of react-hook-form. It manages step state, field registration, and per-step validation — but it renders <strong>zero UI</strong>. No buttons, no step indicators, no CSS. You bring your own.</p>
+
+<p>That means it works with MUI, Ant Design, Chakra UI, Tailwind, plain HTML — anything.</p>
+
+<h2>
+  <a name="a-quick-look" href="#a-quick-look">
+  </a>
+  A Quick Look
+</h2>
+
+
+
+<div>
+<pre><code><span>import</span> <span>{</span> <span>useForm</span> <span>}</span> <span>from</span> <span>'</span><span>react-hook-form</span><span>'</span>
+<span>import</span> <span>{</span> <span>Form</span><span>,</span> <span>Step</span><span>,</span> <span>Controller</span><span>,</span> <span>useFormContext</span> <span>}</span> <span>from</span> <span>'</span><span>rhf-stepper</span><span>'</span>
+
+<span>function</span> <span>CheckoutForm</span><span>()</span> <span>{</span>
+  <span>const</span> <span>form</span> <span>=</span> <span>useForm</span><span>()</span>
+
+  <span>return </span><span>(</span>
+    <span>&lt;</span><span>Form</span> <span>form</span><span>=</span><span>{</span><span>form</span><span>}</span> <span>onSubmit</span><span>=</span><span>{</span><span>(</span><span>data</span><span>)</span> <span>=&gt;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>data</span><span>)</span><span>}</span><span>&gt;</span>
+      <span>{</span><span>({</span> <span>currentStep</span> <span>})</span> <span>=&gt;</span> <span>(</span>
+        <span>&lt;&gt;</span>
+          <span>&lt;</span><span>Step</span><span>&gt;</span>
+            <span>{</span><span>currentStep</span> <span>===</span> <span>0</span> <span>&amp;&amp;</span> <span>(</span>
+              <span>&lt;</span><span>Controller</span>
+                <span>name</span><span>=</span><span>"email"</span>
+                <span>rules</span><span>=</span><span>{</span><span>{</span> <span>required</span><span>:</span> <span>'</span><span>Email is required</span><span>'</span> <span>}</span><span>}</span>
+                <span>render</span><span>=</span><span>{</span><span>({</span> <span>field</span><span>,</span> <span>fieldState</span> <span>})</span> <span>=&gt;</span> <span>(</span>
+                  <span>&lt;</span><span>div</span><span>&gt;</span>
+                    <span>&lt;</span><span>input</span> <span>{</span><span>...</span><span>field</span><span>}</span> <span>placeholder</span><span>=</span><span>"Email"</span> <span>/&gt;</span>
+                    <span>{</span><span>fieldState</span><span>.</span><span>error</span> <span>&amp;&amp;</span> <span>&lt;</span><span>span</span><span>&gt;</span><span>{</span><span>fieldState</span><span>.</span><span>error</span><span>.</span><span>message</span><span>}</span><span>&lt;/</span><span>span</span><span>&gt;</span><span>}</span>
+                  <span>&lt;/</span><span>div</span><span>&gt;</span>
+                <span>)</span><span>}</span>
+              <span>/&gt;</span>
+            <span>)</span><span>}</span>
+          <span>&lt;/</span><span>Step</span><span>&gt;</span>
+
+          <span>&lt;</span><span>Step</span><span>&gt;</span>
+            <span>{</span><span>currentStep</span> <span>===</span> <span>1</span> <span>&amp;&amp;</span> <span>(</span>
+              <span>&lt;</span><span>Controller</span>
+                <span>name</span><span>=</span><span>"address"</span>
+                <span>rules</span><span>=</span><span>{</span><span>{</span> <span>required</span><span>:</span> <span>'</span><span>Address is required</span><span>'</span> <span>}</span><span>}</span>
+                <span>render</span><span>=</span><span>{</span><span>({</span> <span>field</span> <span>})</span> <span>=&gt;</span> <span>&lt;</span><span>input</span> <span>{</span><span>...</span><span>field</span><span>}</span> <span>placeholder</span><span>=</span><span>"Address"</span> <span>/&gt;</span><span>}</span>
+              <span>/&gt;</span>
+            <span>)</span><span>}</span>
+          <span>&lt;/</span><span>Step</span><span>&gt;</span>
+
+          <span>&lt;</span><span>Navigation</span> <span>/&gt;</span>
+        <span>&lt;/&gt;</span>
+      <span>)</span><span>}</span>
+    <span>&lt;/</span><span>Form</span><span>&gt;</span>
+  <span>)</span>
+<span>}</span>
+
+<span>function</span> <span>Navigation</span><span>()</span> <span>{</span>
+  <span>const</span> <span>{</span> <span>next</span><span>,</span> <span>prev</span><span>,</span> <span>isFirstStep</span><span>,</span> <span>isLastStep</span> <span>}</span> <span>=</span> <span>useFormContext</span><span>()</span>
+
+  <span>return </span><span>(</span>
+    <span>&lt;</span><span>div</span><span>&gt;</span>
+      <span>{</span><span>!</span><span>isFirstStep</span> <span>&amp;&amp;</span> <span>&lt;</span><span>button</span> <span>onClick</span><span>=</span><span>{</span><span>prev</span><span>}</span><span>&gt;</span>Back<span>&lt;/</span><span>button</span><span>&gt;</span><span>}</span>
+      <span>{</span><span>isLastStep</span>
+        <span>?</span> <span>&lt;</span><span>button</span> <span>type</span><span>=</span><span>"submit"</span><span>&gt;</span>Submit<span>&lt;/</span><span>button</span><span>&gt;</span>
+        <span>:</span> <span>&lt;</span><span>button</span> <span>onClick</span><span>=</span><span>{</span><span>next</span><span>}</span><span>&gt;</span>Next<span>&lt;/</span><span>button</span><span>&gt;</span>
+      <span>}</span>
+    <span>&lt;/</span><span>div</span><span>&gt;</span>
+  <span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>That's a fully working multi-step form with per-step validation. When you call <code>next()</code>, it only validates the fields registered in the current step. Users don't see errors for steps they haven't reached yet.</p>
+
+<h2>
+  <a name="why-headless" href="#why-headless">
+  </a>
+  Why Headless?
+</h2>
+
+<p>Most multi-step form libraries ship with their own UI — step indicators, buttons, animations. That sounds nice until you need to match your app's design system. Then you're fighting CSS overrides or wrapping everything in custom components to hide the defaults.</p>
+
+<p>rhf-stepper avoids this entirely. It gives you the logic primitives:</p>
+
+<ul>
+<li>
+<strong><code>currentStep</code></strong> — which step the user is on</li>
+<li>
+<strong><code>setCurrentStep</code></strong> — jump to any step</li>
+<li>
+<strong><code>next()</code> / <code>prev()</code></strong> — navigate with validation</li>
+<li>
+<strong><code>isFirstStep</code> / <code>isLastStep</code></strong> — for conditional UI</li>
+<li>
+<strong><code>Controller</code></strong> — drop-in replacement that auto-registers fields to their step</li>
+</ul>
+
+<p>You compose these into whatever UI you want. A MUI Stepper header? An Ant Design Anchor sidebar? A custom step indicator with plain divs? All work the same way.</p>
+
+<h2>
+  <a name="realworld-examples" href="#realworld-examples">
+  </a>
+  Real-World Examples
+</h2>
+
+<p>I built three live demos to show this flexibility:</p>
+
+<p><strong>MUI Stepper</strong> — A checkout form using Material UI's Stepper component as the step indicator, with TextField for inputs.</p>
+
+<p><strong>Ant Design Anchor</strong> — A survey form using Ant Design's Anchor component as a sidebar navigator, where clicking an anchor item jumps to that step.</p>
+
+<p><strong>Custom (Zero Dependencies)</strong> — A contact form with a fully custom step indicator, inputs, and select — all built with plain HTML and inline styles. No UI library at all.</p>
+
+<p>All three use the exact same rhf-stepper API. The only difference is the UI layer.</p>
+
+<h2>
+  <a name="installation" href="#installation">
+  </a>
+  Installation
+</h2>
+
+
+
+<div>
+<pre><code>npm <span>install </span>rhf-stepper react-hook-form
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>That's it. No additional dependencies required.</p>
+
+<h2>
+  <a name="links" href="#links">
+  </a>
+  Links
+</h2>
+
+<ul>
+<li>Docs (with live demos): <a href="https://rhf-stepper-docs-git-master-omerrkosars-projects.vercel.app/" target="_blank">https://rhf-stepper-docs-git-master-omerrkosars-projects.vercel.app</a>
+</li>
+<li>GitHub: <a href="https://github.com/omerrkosar/rhf-stepper" target="_blank">https://github.com/omerrkosar/rhf-stepper</a>
+</li>
+<li>NPM: <a href="https://www.npmjs.com/package/rhf-stepper" target="_blank">https://www.npmjs.com/package/rhf-stepper</a>
+</li>
+</ul>
+
+
+<hr />
+
+<p>If you're building multi-step forms with react-hook-form and want to stop reinventing the step logic, give rhf-stepper a try. Feedback and contributions are welcome.</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

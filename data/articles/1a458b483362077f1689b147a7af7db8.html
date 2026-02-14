@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Security updates for Wednesday [LWN.net]</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Security updates for Wednesday [LWN.net]</h1>
+  <div class="metadata">
+    Source: LWN.net | Date: 2/11/2026 | Lang: EN |
+    <a href="https://lwn.net/Articles/1058265/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<table>
+               <tbody><tr><th>Dist.</th>
+                   <th>ID</th>
+                   <th>Release</th>
+                   <th>Package</th>
+                   <th>Date</th></tr>
+<tr><td>Debian</td>
+                       <td><a href="https://lwn.net/Articles/1058121/">DLA-4475-1</a></td>
+                       <td>LTS</td>
+                       <td>kernel</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Debian</td>
+                       <td><a href="https://lwn.net/Articles/1058122/">DLA-4476-1</a></td>
+                       <td>LTS</td>
+                       <td>linux-6.1</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Debian</td>
+                       <td><a href="https://lwn.net/Articles/1058124/">DLA-4477-1</a></td>
+                       <td>LTS</td>
+                       <td>munge</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>Debian</td>
+                       <td><a href="https://lwn.net/Articles/1058123/">DSA-6129-1</a></td>
+                       <td>stable</td>
+                       <td>munge</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>Debian</td>
+                       <td><a href="https://lwn.net/Articles/1058125/">DLA-4478-1</a></td>
+                       <td>LTS</td>
+                       <td>tcpflow</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058126/">FEDORA-2026-b2c7b71136</a></td>
+                       <td>F42</td>
+                       <td>accel-ppp</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058127/">FEDORA-2026-93a70b14d8</a></td>
+                       <td>F43</td>
+                       <td>accel-ppp</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058128/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>atuin</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058129/">FEDORA-2026-3d05d1fbaa</a></td>
+                       <td>F42</td>
+                       <td>babl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058130/">FEDORA-2026-f5de9aeaf1</a></td>
+                       <td>F43</td>
+                       <td>babl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058131/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>bustle</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058132/">FEDORA-2026-4dbf1cfc0a</a></td>
+                       <td>F43</td>
+                       <td>endless-sky</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058133/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>envision</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058134/">FEDORA-2026-ba7953a484</a></td>
+                       <td>F43</td>
+                       <td>ettercap</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058135/">FEDORA-2026-fa48aae22d</a></td>
+                       <td>F43</td>
+                       <td>fapolicy-analyzer</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058136/">FEDORA-2026-8c36bd3dcf</a></td>
+                       <td>F42</td>
+                       <td>firefox</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058137/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>glycin</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058138/">FEDORA-2026-cbe470dac7</a></td>
+                       <td>F43</td>
+                       <td>gnome-settings-daemon</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058139/">FEDORA-2026-8cde291fa0</a></td>
+                       <td>F43</td>
+                       <td>go-fdo-client</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058140/">FEDORA-2026-08f0f3952e</a></td>
+                       <td>F43</td>
+                       <td>greenboot-rs</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058141/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>greetd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058142/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>helix</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058143/">FEDORA-2026-62e39bdc10</a></td>
+                       <td>F43</td>
+                       <td>hwdata</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058144/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>keylime-agent-rust</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058145/">FEDORA-2026-7039520d8a</a></td>
+                       <td>F42</td>
+                       <td>kiwi</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058146/">FEDORA-2026-17be999f99</a></td>
+                       <td>F43</td>
+                       <td>kiwi</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058147/">FEDORA-2026-964c89fec4</a></td>
+                       <td>F42</td>
+                       <td>libdrm</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058148/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>maturin</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058149/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>mirrorlist-server</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058150/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>ntpd-rs</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058151/">FEDORA-2026-92d2ec5e9b</a></td>
+                       <td>F43</td>
+                       <td>ogr2osm</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058152/">FEDORA-2026-33c6aa1881</a></td>
+                       <td>F42</td>
+                       <td>open-vm-tools</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058153/">FEDORA-2026-7eae275162</a></td>
+                       <td>F43</td>
+                       <td>perl-App-Cme</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058154/">FEDORA-2026-1005690ea1</a></td>
+                       <td>F43</td>
+                       <td>perl-Net-RDAP</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058155/">FEDORA-2026-1005690ea1</a></td>
+                       <td>F43</td>
+                       <td>perl-rdapper</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058156/">FEDORA-2026-b1cf13226b</a></td>
+                       <td>F42</td>
+                       <td>polymake</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058157/">FEDORA-2026-8194bb5c8c</a></td>
+                       <td>F43</td>
+                       <td>polymake</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058158/">FEDORA-2026-c1832f0a55</a></td>
+                       <td>F43</td>
+                       <td>python-requests-ratelimiter</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058159/">FEDORA-2026-eb55353491</a></td>
+                       <td>F42</td>
+                       <td>python-tqdm</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058160/">FEDORA-2026-274eb5a4b6</a></td>
+                       <td>F43</td>
+                       <td>python-tqdm</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058161/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-add-determinism</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058162/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-afterburn</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058163/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-ambient-id</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058164/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-app-store-connect</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058165/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-bat</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058166/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-below</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058167/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-btrd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058168/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-busd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058169/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-bytes</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058170/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-cargo-c</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058171/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-cargo-deny</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058172/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-coreos-installer</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058173/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-crypto-auditing-agent</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058174/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-crypto-auditing-client</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058175/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-crypto-auditing-event-broker</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058176/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-crypto-auditing-log-parser</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058177/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-dua-cli</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058178/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-eif_build</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058179/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-git-delta</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058180/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-git-interactive-rebase-tool</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058181/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-git2</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058182/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-gst-plugin-dav1d</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058183/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-gst-plugin-reqwest</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058184/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-heatseeker</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058185/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-ingredients</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058186/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-jsonwebtoken</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058187/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-lsd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058188/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-monitord</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058189/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-monitord-exporter</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058190/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-muvm</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058191/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-nu</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058192/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-num-conv</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058193/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-onefetch</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058194/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-oo7-cli</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058195/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-pleaser</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058196/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-pore</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058197/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-pretty-git-prompt</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058198/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-procs</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058199/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-rbspy</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058200/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-rbw</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058201/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-rd-agent</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058202/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-rd-hashd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058203/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-redlib</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058204/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-resctl-bench</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058205/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-resctl-demo</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058206/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-routinator</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058207/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sccache</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058208/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-scx_layered</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058209/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-scx_rustland</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058210/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-scx_rusty</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058211/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sequoia-chameleon-gnupg</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058212/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sequoia-keystore-server</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058213/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sequoia-octopus-librnp</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058214/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sequoia-sq</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058215/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sevctl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058216/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-shadow-rs</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058217/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-sigul-pesign-bridge</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058218/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-speakersafetyd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058219/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-tealdeer</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058220/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-time</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058221/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-time-core</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058222/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-time-macros</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058223/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-tokei</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058224/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-weezl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058225/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-wiremix</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058226/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rust-ybaas</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058227/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>rustup</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058228/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>sad</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058229/">FEDORA-2026-8f6a77c7d9</a></td>
+                       <td>F42</td>
+                       <td>strawberry</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058230/">FEDORA-2026-069be90e7d</a></td>
+                       <td>F43</td>
+                       <td>strawberry</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058231/">FEDORA-2026-326d72dbcf</a></td>
+                       <td>F43</td>
+                       <td>systemd</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058232/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>tbtools</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058233/">FEDORA-2026-535d92a4a5</a></td>
+                       <td>F43</td>
+                       <td>transmission</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058234/">FEDORA-2026-cb46a401b0</a></td>
+                       <td>F42</td>
+                       <td>trustedqsl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058235/">FEDORA-2026-25456a0023</a></td>
+                       <td>F43</td>
+                       <td>trustedqsl</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058236/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>tuigreet</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058237/">FEDORA-2026-6388b28850</a></td>
+                       <td>F42</td>
+                       <td>uv</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058238/">FEDORA-2026-24091e6ead</a></td>
+                       <td>F42</td>
+                       <td>vdr-extrecmenung</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Fedora</td>
+                       <td><a href="https://lwn.net/Articles/1058239/">FEDORA-2026-b9d1bc0a13</a></td>
+                       <td>F43</td>
+                       <td>vdr-extrecmenung</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058240/">ELSA-2026-2389</a></td>
+                       <td>OL8</td>
+                       <td>brotli</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058241/">ELSA-2026-2323</a></td>
+                       <td>OL8</td>
+                       <td>git-lfs</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058242/">ELSA-2026-0931</a></td>
+                       <td>OL7</td>
+                       <td>java-1.8.0-openjdk</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058245/">ELSA-2026-2282</a></td>
+                       <td>OL10</td>
+                       <td>kernel</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058243/">ELSA-2026-2264</a></td>
+                       <td>OL8</td>
+                       <td>kernel</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058244/">ELSA-2026-2212</a></td>
+                       <td>OL9</td>
+                       <td>kernel</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058246/">ELSA-2026-2215</a></td>
+                       <td>OL8</td>
+                       <td>libsoup</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058247/">ELSA-2026-2410</a></td>
+                       <td>OL10</td>
+                       <td>libsoup3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058248/">ELSA-2026-2420</a></td>
+                       <td>OL8</td>
+                       <td>nodejs:24</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058249/">ELSA-2026-2419</a></td>
+                       <td>OL8</td>
+                       <td>python3.12</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Oracle</td>
+                       <td><a href="https://lwn.net/Articles/1058250/">ELSA-2026-2220</a></td>
+                       <td>OL8</td>
+                       <td>thunderbird</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058114/">RHSA-2026:1240-01</a></td>
+                       <td>EL8</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058089/">RHSA-2026:2279-01</a></td>
+                       <td>EL8.4</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058091/">RHSA-2026:1803-01</a></td>
+                       <td>EL8.4</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058093/">RHSA-2026:1792-01</a></td>
+                       <td>EL8.6</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058097/">RHSA-2026:1791-01</a></td>
+                       <td>EL8.8</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058116/">RHSA-2026:1239-01</a></td>
+                       <td>EL9</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058098/">RHSA-2026:1734-01</a></td>
+                       <td>EL9.0</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058096/">RHSA-2026:1735-01</a></td>
+                       <td>EL9.2</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058101/">RHSA-2026:1717-01</a></td>
+                       <td>EL9.4</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058103/">RHSA-2026:1706-01</a></td>
+                       <td>EL9.6</td>
+                       <td>fence-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058120/">RHSA-2026:1086-01</a></td>
+                       <td>EL10</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058100/">RHSA-2026:1726-01</a></td>
+                       <td>EL10.0</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058111/">RHSA-2026:1254-01</a></td>
+                       <td>EL8</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058119/">RHSA-2026:1087-01</a></td>
+                       <td>EL9</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058109/">RHSA-2026:1618-01</a></td>
+                       <td>EL9.0</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058104/">RHSA-2026:1693-01</a></td>
+                       <td>EL9.2</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058107/">RHSA-2026:1674-01</a></td>
+                       <td>EL9.4</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058099/">RHSA-2026:1729-01</a></td>
+                       <td>EL9.6</td>
+                       <td>python-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058113/">RHSA-2026:1224-01</a></td>
+                       <td>EL8</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058106/">RHSA-2026:1676-01</a></td>
+                       <td>EL8.8</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058117/">RHSA-2026:1089-01</a></td>
+                       <td>EL9</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058110/">RHSA-2026:1546-01</a></td>
+                       <td>EL9.2</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058102/">RHSA-2026:1712-01</a></td>
+                       <td>EL9.4</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058105/">RHSA-2026:1704-01</a></td>
+                       <td>EL9.6</td>
+                       <td>python3.11-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058115/">RHSA-2026:1226-01</a></td>
+                       <td>EL8</td>
+                       <td>python3.12-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058118/">RHSA-2026:1088-01</a></td>
+                       <td>EL9</td>
+                       <td>python3.12-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058090/">RHSA-2026:1957-01</a></td>
+                       <td>EL9.4</td>
+                       <td>python3.12-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058108/">RHSA-2026:1619-01</a></td>
+                       <td>EL9.6</td>
+                       <td>python3.12-urllib3</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058112/">RHSA-2026:1241-01</a></td>
+                       <td>EL8</td>
+                       <td>resource-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058092/">RHSA-2026:1805-01</a></td>
+                       <td>EL8.4</td>
+                       <td>resource-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058095/">RHSA-2026:1793-01</a></td>
+                       <td>EL8.6</td>
+                       <td>resource-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Red Hat</td>
+                       <td><a href="https://lwn.net/Articles/1058094/">RHSA-2026:1794-01</a></td>
+                       <td>EL8.8</td>
+                       <td>resource-agents</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058251/">SUSE-SU-2026:0422-1</a></td>
+                       <td>SLE12</td>
+                       <td>avahi</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058252/">SUSE-SU-2026:20231-1</a></td>
+                       <td>SLE16</td>
+                       <td>cups</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058253/">SUSE-SU-2026:0421-1</a></td>
+                       <td>SLE15 oS15.4</td>
+                       <td>freerdp</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058254/">SUSE-SU-2026:0417-1</a></td>
+                       <td>SLE15 oS15.6</td>
+                       <td>freerdp</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058255/">SUSE-SU-2026:20232-1</a></td>
+                       <td>SLE16</td>
+                       <td>golang-github-prometheus-prometheus</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058256/">SUSE-SU-2026:0414-1</a></td>
+                       <td>SLE15 oS15.6</td>
+                       <td>java-11-openjdk</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058257/">SUSE-SU-2026:0415-1</a></td>
+                       <td>SLE15 oS15.4 oS15.6</td>
+                       <td>java-17-openjdk</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058259/">SUSE-SU-2026:0418-1</a></td>
+                       <td>SLE-m5.2</td>
+                       <td>libsoup2</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058258/">SUSE-SU-2026:0419-1</a></td>
+                       <td>SLE12</td>
+                       <td>libsoup2</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058260/">SUSE-SU-2026:20233-1</a></td>
+                       <td>SLE16</td>
+                       <td>libxml2</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>SUSE</td>
+                       <td><a href="https://lwn.net/Articles/1058261/">SUSE-SU-2026:0420-1</a></td>
+                       <td>SLE12</td>
+                       <td>python-pip</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>Ubuntu</td>
+                       <td><a href="https://lwn.net/Articles/1058262/">USN-8022-1</a></td>
+                       <td>14.04 16.04 18.04 20.04 22.04 25.10</td>
+                       <td>expat</td>
+                       <td>2026-02-11</td>
+                       </tr><tr><td>Ubuntu</td>
+                       <td><a href="https://lwn.net/Articles/1058263/">USN-7942-2</a></td>
+                       <td>14.04 16.04 18.04 20.04</td>
+                       <td>glib2.0</td>
+                       <td>2026-02-10</td>
+                       </tr><tr><td>Ubuntu</td>
+                       <td><a href="https://lwn.net/Articles/1058264/">USN-8021-1</a></td>
+                       <td>14.04 16.04 18.04 20.04 22.04 24.04</td>
+                       <td>imagemagick</td>
+                       <td>2026-02-10</td>
+                       </tr></tbody></table>
+<hr />
+            </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - THUDM/slime: slime is an LLM post-training framework for RL Scaling.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - THUDM/slime: slime is an LLM post-training framework for RL Scaling.</h1>
+  <div class="metadata">
+    Source: GitHub Trending | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/THUDM/slime" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>slime</h2><a href="#slime"></a><p></p>
+<p><a href="https://github.com/THUDM/slime/blob/main/README_zh.md">中文版</a></p>
+<p><a href="https://thudm.github.io/slime/"><img src="https://camo.githubusercontent.com/c64b0e8a7cb82bf9ca9c14c7dbb18e66b0d3ef718977c7e35afdc0674820689a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63732d6c61746573742d627269676874677265656e2e7376673f7374796c653d666c6174" alt="Documentation" /></a>
+<a href="https://deepwiki.com/THUDM/slime"><img src="https://camo.githubusercontent.com/0f5ae213ac378635adeb5d7f13cef055ad2f7d9a47b36de7b1c67dbe09f609ca/68747470733a2f2f6465657077696b692e636f6d2f62616467652e737667" alt="Ask DeepWiki" /></a></p>
+<p><strong>slime</strong> is an LLM post-training framework for RL scaling, providing two core capabilities:</p>
+<ol>
+<li><strong>High-Performance Training</strong>: Supports efficient training in various modes by connecting Megatron with SGLang;</li>
+<li><strong>Flexible Data Generation</strong>: Enables arbitrary training data generation workflows through custom data generation interfaces and server-based engines.</li>
+</ol>
+<p>slime is the RL-framework behind <a href="https://z.ai/blog/glm-4.7">GLM-4.7</a>, <a href="https://z.ai/blog/glm-4.6">GLM-4.6</a>, <a href="https://z.ai/blog/glm-4.5">GLM-4.5</a> and apart from models from Z.ai, we also supports the following models:</p>
+<ul>
+<li>Qwen3 series (Qwen3Next, Qwen3MoE, Qwen3), Qwen2.5 series;</li>
+<li>DeepSeek V3 series (DeepSeek V3, V3.1, DeepSeek R1);</li>
+<li>Llama 3.</li>
+</ul>
+<p></p><h2>Blogs</h2><a href="#blogs"></a><p></p>
+<ul>
+<li>Our vision: <a href="https://lmsys.org/blog/2025-07-09-slime/">slime: An SGLang-Native Post-Training Framework for RL Scaling</a>.</li>
+<li>Our ideas on agentic training: <a href="https://www.notion.so/Agent-Oriented-Design-An-Asynchronous-and-Decoupled-Framework-for-Agentic-RL-2278e692d081802cbdd5d37cef76a547">Agent-Oriented Design: An Asynchronous and Decoupled Framework for Agentic RL</a></li>
+<li>v0.1.0 release note: <a href="https://thudm.github.io/slime/blogs/release_v0.1.0.html">v0.1.0: Redefining High-Performance RL Training Frameworks</a></li>
+</ul>
+<p></p><h2>Table of Contents</h2><a href="#table-of-contents"></a><p></p>
+<ul>
+<li><a href="#architecture-overview">Architecture Overview</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#projects-built-with-slime">Projects Built with slime</a></li>
+<li><a href="#arguments-walkthrough">Arguments Walkthrough</a></li>
+<li><a href="#developer-guide">Developer Guide</a></li>
+<li><a href="#faq--acknowledgements">FAQ &amp; Acknowledgements</a></li>
+</ul>
+<p></p><h2>Architecture Overview</h2><a href="#architecture-overview"></a><p></p>
+<p><a target="_blank" href="https://github.com/THUDM/slime/blob/main/imgs/arch.png"><img src="https://github.com/THUDM/slime/raw/main/imgs/arch.png" alt="arch" /></a></p>
+<p><strong>Module Descriptions</strong>:</p>
+<ul>
+<li><strong>training (Megatron)</strong>: Responsible for the main training process, reads data from the Data Buffer, and synchronizes parameters to the rollout module after training.</li>
+<li><strong>rollout (SGLang + router)</strong>: Generates new data (including rewards/verifier outputs) and stores it in the Data Buffer.</li>
+<li><strong>data buffer</strong>: A bridge module that manages prompt initialization, custom data, and rollout generation methods.</li>
+</ul>
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<p>For a comprehensive quick start guide covering environment setup, data preparation, training startup, and key code analysis, please refer to:</p>
+<ul>
+<li><a href="https://github.com/THUDM/slime/blob/main/docs/en/get_started/quick_start.md">Quick Start Guide</a></li>
+</ul>
+<p>We also provide examples for some use cases not covered in the quick start guide; please check <a href="https://github.com/THUDM/slime/blob/main/examples">examples</a>.</p>
+<p></p><h2>Projects Built upon slime</h2><a href="#projects-built-upon-slime"></a><p></p>
+<p>slime has powered several novel research projects and production systems. Here are some notable examples:</p>
+<p></p><h3>⚛️ P1: Mastering Physics Olympiads with Reinforcement Learning</h3><a href="#️-p1-mastering-physics-olympiads-with-reinforcement-learning"></a><p></p>
+<p><a href="https://prime-rl.github.io/P1/"><strong>P1</strong></a> is a family of open-source physics reasoning models trained entirely through reinforcement learning. P1 leverages slime as the RL post training framework, and introduces a multi-stage RL training algorithm that progressively enhances reasoning ability through adaptive learnability adjustment and stabilization mechanisms. Enpowered by this training paradigm, P1 delivers breakthrough performance in open-source physics reasoning.</p>
+<p></p><h3>📈RLVE: Scaling LM RL with Adaptive Verifiable Environments</h3><a href="#rlve-scaling-lm-rl-with-adaptive-verifiable-environments"></a><p></p>
+<p><a href="https://github.com/Zhiyuan-Zeng/RLVE"><strong>RLVE</strong></a> introduces an approach using verifiable environments that procedurally generate problems and provide algorithmically verifiable rewards, to scale up RL for language models (LMs). With joint training across 400 verifiable environments, RLVE enables each environment to dynamically adapt its problem difficulty distribution to the policy model's capabilities as training progresses.</p>
+<p></p><h3>⚡ TritonForge: Agentic RL Training Framework for Kernel Generation</h3><a href="#-tritonforge-agentic-rl-training-framework-for-kernel-generation"></a><p></p>
+<p><a href="https://github.com/RLsys-Foundation/TritonForge"><strong>TritonForge</strong></a> leverages slime's SFT &amp; RL capabilities to train LLMs that automatically generate optimized GPU kernels. By using a two-stage training approach—supervised fine-tuning followed by reinforcement learning with multi-turn compilation feedback—TritonForge achieves remarkable results in converting PyTorch operations into high-performance Triton kernels.</p>
+<p></p><h3>🚀 APRIL: Accelerating RL Training with Active Partial Rollouts</h3><a href="#-april-accelerating-rl-training-with-active-partial-rollouts"></a><p></p>
+<p><a href="https://github.com/RLsys-Foundation/APRIL"><strong>APRIL</strong></a> introduces a system-level optimization that seamlessly integrates with slime to accelerate the rollout generation phase in RL training. By intelligently over-provisioning requests and actively managing partial completions, APRIL addresses the long-tail generation bottleneck that typically consumes over 90% of RL training time.</p>
+<p></p><h3>🏟️ qqr: Scaling Open-Ended Agents with ArenaRL &amp; MCP</h3><a href="#️-qqr-scaling-open-ended-agents-with-arenarl--mcp"></a><p></p>
+<p><a href="https://github.com/Alibaba-NLP/qqr"><strong>qqr</strong></a> (a.k.a. hilichurl) is a lightweight extension for slime designed to evolve open-ended agents. It implements the <strong>ArenaRL</strong> algorithm to tackle discriminative collapse through tournament-based relative ranking (<strong>e.g., Seeded Single-Elimination, Round-Robin</strong>) and seamlessly integrates the <strong>Model Context Protocol (MCP)</strong>. qqr leverages slime's high-throughput training capabilities to enable scalable, distributed evolution of agents in standardized, decoupled tool environments.</p>
+<p>These projects showcase slime's versatility—from training code-generation models to optimizing RL training systems—making it a powerful foundation for both research and production deployments.</p>
+<p></p><h2>Arguments Walkthrough</h2><a href="#arguments-walkthrough"></a><p></p>
+<p>Arguments in slime are divided into three categories:</p>
+<ol>
+<li><strong>Megatron arguments</strong>: slime reads all arguments in Megatron. You can configure Megatron by passing arguments like <code>--tensor-model-parallel-size 2</code>.</li>
+<li><strong>SGLang arguments</strong>: All arguments for the installed SGLang are supported. These arguments must be prefixed with <code>--sglang-</code>. For example, <code>--mem-fraction-static</code> should be passed as <code>--sglang-mem-fraction-static</code>.</li>
+<li><strong>slime-specific arguments</strong>: Please refer to: <a href="https://github.com/THUDM/slime/blob/main/slime/utils/arguments.py">slime/utils/arguments.py</a></li>
+</ol>
+<p>For complete usage instructions, please refer to the <a href="https://github.com/THUDM/slime/blob/main/docs/en/get_started/usage.md">Usage Documentation</a>.</p>
+<p></p><h2>Developer Guide</h2><a href="#developer-guide"></a><p></p>
+<ul>
+<li>
+<p><strong>Contributions are welcome!</strong> If you have suggestions for new features, performance tuning, or feedback on user experience, feel free to submit an Issue or PR 😊</p>
+</li>
+<li>
+<p>Use <a href="https://pre-commit.com/">pre-commit</a> to ensure code style consistency for your commits:</p>
+</li>
+</ul>
+<div><pre>apt install pre-commit -y
+pre-commit install
+
+<span><span>#</span> run pre-commit to ensure code style consistency</span>
+pre-commit run --all-files --show-diff-on-failure --color=always</pre></div>
+<ul>
+<li>For debugging tips, please refer to the <a href="https://github.com/THUDM/slime/blob/main/docs/en/developer_guide/debug.md">Debugging Guide</a></li>
+</ul>
+<p></p><h2>FAQ &amp; Acknowledgements</h2><a href="#faq--acknowledgements"></a><p></p>
+<ul>
+<li>For frequently asked questions, please see the <a href="https://github.com/THUDM/slime/blob/main/docs/en/get_started/qa.md">Q&amp;A</a></li>
+<li>Special thanks to the following projects &amp; communities: SGLang, Megatron‑LM, mbridge, OpenRLHF, veRL, Pai-Megatron-Patch and others.</li>
+<li>To quote slime, please use:</li>
+</ul>
+<div><pre><span>@misc</span>{<span>slime_github</span>,
+  <span>author</span>       = <span><span>{</span>Zilin Zhu and Chengxing Xie and Xin Lv and slime Contributors<span>}</span></span>,
+  <span>title</span>        = <span><span>{</span>slime: An LLM post-training framework for RL Scaling<span>}</span></span>,
+  <span>year</span>         = <span><span>{</span>2025<span>}</span></span>,
+  <span>howpublished</span> = <span><span>{</span>\url{https://github.com/THUDM/slime}<span>}</span></span>,
+  <span>note</span>         = <span><span>{</span>GitHub repository. Corresponding author: Xin Lv<span>}</span></span>,
+  <span>urldate</span>      = <span><span>{</span>2025-06-19<span>}</span></span>
+}</pre></div>
+</article></div></div>
+  </div>
+</body>
+</html>

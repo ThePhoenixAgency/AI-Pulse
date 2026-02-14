@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - element-hq/synapse: Synapse: Matrix homeserver written in Python/Twisted + Rust</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - element-hq/synapse: Synapse: Matrix homeserver written in Python/Twisted + Rust</h1>
+  <div class="metadata">
+    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/element-hq/synapse" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><a target="_blank" href="https://github.com/element-hq/synapse/raw/develop/docs/element_logo_white_bg.svg"><img src="https://github.com/element-hq/synapse/raw/develop/docs/element_logo_white_bg.svg" /></a></p>
+<p><strong>Element Synapse - Matrix homeserver implementation</strong></p>
+<p><a href="https://matrix.to/#/#synapse:matrix.org"><img alt="(get community support in #synapse:matrix.org)" src="https://camo.githubusercontent.com/1a0895995c339337834d6216c441ed7b9bf1783ad9825c8363d5949188431f7f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6d61747269782d636f6d6d756e697479253230737570706f72742d73756363657373" /></a> <a href="https://matrix.to/#/#synapse-dev:matrix.org"><img alt="(discuss development on #synapse-dev:matrix.org)" src="https://camo.githubusercontent.com/d8c19f9be0e7890ff9f90f4cc80212cae14221d8f1ed144e150cbd699f823f14/68747470733a2f2f696d672e736869656c64732e696f2f6d61747269782f73796e617073652d6465763a6d61747269782e6f72673f6c6162656c3d646576656c6f706d656e74266c6f676f3d6d6174726978" /></a> <a href="https://element-hq.github.io/synapse/latest/"><img alt="(Rendered documentation on GitHub Pages)" src="https://camo.githubusercontent.com/e1af4ba5691e9462a62eda3e1d42149dd034bf1f7e0ec3fca70e0106697d0047/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f63756d656e746174696f6e2d2545322539432539332d73756363657373" /></a> <a href="https://github.com/element-hq/synapse/blob/develop/LICENSE"><img alt="(check license in LICENSE file)" src="https://camo.githubusercontent.com/a982a71d1cb49dd04224a9c2f06b577f961bed6bccdf4e805a4103d35a88886f/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f656c656d656e742d68712f73796e61707365" /></a> <a href="https://pypi.org/project/matrix-synapse"><img alt="(latest version released on PyPi)" src="https://camo.githubusercontent.com/ba045ad34a9bc06b386d860e8e40e914cb55e0379fc2ea615729a6f8fa1d83f8/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6d61747269782d73796e61707365" /></a> <a href="https://pypi.org/project/matrix-synapse"><img alt="(supported python versions)" src="https://camo.githubusercontent.com/1e69cdb2391d381b349061808eca5ec0563559419f2790025e0939b6d9e048f0/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f6d61747269782d73796e61707365" /></a></p>
+<p>Synapse is an open source <a href="https://matrix.org/">Matrix</a> homeserver
+implementation, written and maintained by <a href="https://element.io/">Element</a>.
+<a href="https://github.com/matrix-org">Matrix</a> is the open standard for secure and
+interoperable real-time communications. You can directly run and manage the
+source code in this repository, available under an AGPL license (or
+alternatively under a commercial license from Element).</p>
+<p>There is no support provided by Element unless you have a subscription from
+Element.</p>
+<a name="user-content-getting-started"></a>
+<p></p><h2>🚀 Getting started</h2><a href="#-getting-started"></a><p></p>
+<p>This component is developed and maintained by <a href="https://element.io/">Element</a>.
+It gets shipped as part of the <strong>Element Server Suite (ESS)</strong> which provides the
+official means of deployment.</p>
+<p>ESS is a Matrix distribution from Element with focus on quality and ease of use.
+It ships a full Matrix stack tailored to the respective use case.</p>
+<p>There are three editions of ESS:</p>
+<ul>
+<li><a href="https://github.com/element-hq/ess-helm">ESS Community</a> - the free Matrix
+distribution from Element tailored to small-/mid-scale, non-commercial
+community use cases</li>
+<li><a href="https://element.io/server-suite">ESS Pro</a> - the commercial Matrix
+distribution from Element for professional use</li>
+<li><a href="https://element.io/server-suite/ti-messenger">ESS TI-M</a> - a special version
+of ESS Pro focused on the requirements of TI-Messenger Pro and ePA as
+specified by the German National Digital Health Agency Gematik</li>
+</ul>
+<a name="user-content-standalone-installation-and-configuration"></a>
+<p></p><h2>🛠️ Standalone installation and configuration</h2><a href="#️-standalone-installation-and-configuration"></a><p></p>
+<p>The Synapse documentation describes <a href="https://element-hq.github.io/synapse/latest/setup/installation.html">options for installing Synapse standalone</a>. See
+below for more useful documentation links.</p>
+<ul>
+<li><a href="https://element-hq.github.io/synapse/latest/usage/configuration/config_documentation.html">Synapse configuration options</a></li>
+<li><a href="https://element-hq.github.io/synapse/latest/federate.html">Synapse configuration for federation</a></li>
+<li><a href="https://element-hq.github.io/synapse/latest/reverse_proxy.html">Using a reverse proxy with Synapse</a></li>
+<li><a href="https://element-hq.github.io/synapse/develop/upgrade.html">Upgrading Synapse</a></li>
+</ul>
+<a name="user-content-troubleshooting-and-support"></a>
+<p></p><h2>🎯 Troubleshooting and support</h2><a href="#-troubleshooting-and-support"></a><p></p>
+<a name="user-content-professional-support"></a>
+<p></p><h3>🚀 Professional support</h3><a href="#-professional-support"></a><p></p>
+<p>Enterprise quality support for Synapse including SLAs is available as part of an
+<a href="https://element.io/pricing">Element Server Suite (ESS)</a> subscription.</p>
+<p>If you are an existing ESS subscriber then you can raise a <a href="https://ems.element.io/support">support request</a>
+and access the <a href="https://docs.element.io/">Element product documentation</a>.</p>
+<a name="user-content-community-support"></a>
+<p></p><h3>🤝 Community support</h3><a href="#-community-support"></a><p></p>
+<p>The <a href="https://element-hq.github.io/synapse/latest/usage/administration/admin_faq.html">Admin FAQ</a>
+includes tips on dealing with some common problems. For more details, see
+<a href="https://element-hq.github.io/synapse/latest/">Synapse's wider documentation</a>.</p>
+<p>For additional support installing or managing Synapse, please ask in the community
+support room <a href="https://matrix.to/#/#synapse:matrix.org"><code>#synapse:matrix.org</code></a> (from a matrix.org account if necessary). We do not use GitHub
+issues for support requests, only for bug reports and feature requests.</p>
+<a name="user-content-development"></a>
+<p></p><h2>🛠️ Development</h2><a href="#️-development"></a><p></p>
+<p>We welcome contributions to Synapse from the community!
+The best place to get started is our
+<a href="https://element-hq.github.io/synapse/latest/development/contributing_guide.html">guide for contributors</a>.
+This is part of our broader <a href="https://element-hq.github.io/synapse/latest">documentation</a>, which includes
+information for Synapse developers as well as Synapse administrators.</p>
+<p>Developers might be particularly interested in:</p>
+<ul>
+<li><a href="https://element-hq.github.io/synapse/latest/development/database_schema.html">Synapse's database schema</a>,</li>
+<li><a href="https://element-hq.github.io/synapse/latest/development/internal_documentation/index.html">notes on Synapse's implementation details</a>, and</li>
+<li><a href="https://element-hq.github.io/synapse/latest/development/git.html">how we use git</a>.</li>
+</ul>
+<p>Alongside all that, join our developer community on Matrix:
+<a href="https://matrix.to/#/#synapse-dev:matrix.org">#synapse-dev:matrix.org</a>, featuring real humans!</p>
+<a name="user-content-copyright-and-licensing"></a>
+<p></p><h2>Copyright and Licensing</h2><a href="#copyright-and-licensing"></a><p></p>
+<blockquote>
+<div>
+<p>Copyright 2014–2017 OpenMarket Ltd</p>
+<p>Copyright 2017 Vector Creations Ltd</p>
+<p>Copyright 2017–2025 New Vector Ltd</p>
+<p>Copyright 2025 Element Creations Ltd</p>
+</div>
+</blockquote>
+<p>This software is dual-licensed by Element Creations Ltd (Element). It can be
+used either:</p>
+<ol>
+<li>for free under the terms of the GNU Affero General Public License (as
+published by the Free Software Foundation, either version 3 of the License,
+or (at your option) any later version); OR</li>
+<li>under the terms of a paid-for Element Commercial License agreement between
+you and Element (the terms of which may vary depending on what you and
+Element have agreed to).</li>
+</ol>
+<p>Unless required by applicable law or agreed to in writing, software distributed
+under the Licenses is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the Licenses for the
+specific language governing permissions and limitations under the Licenses.</p>
+<p>Please contact <a href="mailto:licensing@element.io">licensing@element.io</a> to purchase
+an Element commercial license for this software.</p>
+
+</article></div></div>
+  </div>
+</body>
+</html>

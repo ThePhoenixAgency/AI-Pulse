@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>LibreOffice 26.2 released with Excel boosts &amp; Markdown support</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>LibreOffice 26.2 released with Excel boosts &amp; Markdown support</h1>
+  <div class="metadata">
+    Source: OMG! Ubuntu | Date: 2/4/2026 | Lang: EN |
+    <a href="https://www.omgubuntu.co.uk/2026/02/libreoffice-26-2-new-features" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                        
+<p><strong>LibreOffice 26.2 has been released with multi-user’ database support, improved Excel clipboard compatibility and a new x86-64-v2 hardware baseline for Linux users.</strong></p>
+
+
+
+<p>The Document Foundation’s first major release of 2026 focuses on performance, interoperability and file formats, i.e., fixing the things that actually get in your way, rather than tacking on flashy features or, more pointedly, chasing AI hype <a href="https://www.omgubuntu.co.uk/2025/12/onlyoffice-9-2-release-ai-agent">like other office suites</a>.</p>
+
+
+
+<h2>LibreOffice 26.2: New Features</h2>
+
+
+
+<p>LibreOffice 26.2 can import and export Markdown (<code>.md</code>), including import via the clipboard. You can also use ODT/DOCX templates during Markdown import to format content to a specific look or house style right away.</p>
+
+
+
+<p><em>Base</em>, the LibreOffice database component, is now “truly multi-user”. You can work on databases at the same time as others, without encountering annoying file-locking quirks that force you to “take turns” on edits. </p>
+
+
+
+<p><em>Calc</em> lets you <strong>paste massive datasets from <em>Excel</em> </strong>free of size limits, thanks to BIFF12 clipboard support. The “Excel 2010–365 Spreadsheet” is now the default XLSX save target, so you don’t have to manually select it each time you want to share a file.</p>
+
+
+
+<p>The sort dialogue gains<strong> natural sort options</strong> so that things like version numbers and IP addresses sort in a <em>logical</em> <em>order</em>, rather than a numeric one. For example, <em>1.2.10 </em>correctly sorts after<em> 1.2.9</em> instead of before <em>1.2.2</em>. Your sort preference is saved as part of your file, too.</p>
+
+
+
+<p>In <em>Writer</em>, change tracking handles “interdependent edit” conflicts smarter, letting you decide which changes to accept rather than guessing for you and causing document meltdowns with missing paragraphs and convoluted revision history. </p>
+
+
+
+<p>Writer also gains news <em>Start</em> and <em>End</em> paragraph alignment options which adapt to text direction. This makes it easier to reuse styles across documents in different languages. Plus, an optional auto-detection feature that switches text direction as you type.</p>
+
+
+
+<p>Rounding out Writer’s notable changes when you paste a single image into Writer, it can now insert a caption for you automatically – only if AutoCaption settings are turned on, mind.</p>
+
+
+  <div>
+    
+    <p><span>The Document Foundation accepts <a href="https://www.libreoffice.org/donate/">donations</a> to support continued development.</span>
+  </p></div>
+
+
+<h3>Linux x86-64-v2 requirement</h3>
+
+
+
+<p>Linux builds from The Document Foundation now use an AlmaLinux 9 baseline, though packages from other sources (e.g., your distro’s repo) may vary.</p>
+
+
+
+<p>What’s the impact of this? Minor.</p>
+
+
+
+<p>It basically means you now need an <a href="https://en.wikipedia.org/wiki/X86-64#Microarchitecture_levels" target="_blank">x86-64-v2 capable CPU</a> to run LibreOffice 26.2 using the official binary. </p>
+
+
+
+<p>If your processor was made after 2009(ish), you’re all good. But if your processor was made before 2009 – <em>hello, Core 2 Duo users</em> – opt for a distro package or use an older build.</p>
+
+
+
+<h3>Performance improvements in 26.2</h3>
+
+
+
+<p>Every LibreOffice release brings performance improvements – <a href="https://www.omgubuntu.co.uk/2025/08/libreoffice-25-8-released-pdf-2-performance-boost">LibreOffice 25.8 was up to 30% faster</a> in certain operations. This release tackles previously laggy interactions, like scrolling through sheets with lots of hidden columns or moving 3D charts in Calc.</p>
+
+
+
+<p>LibreOffice 26.2 exports ePubs faster, and now displays a progress bar so you can actually tell if it’s working, and Linux users benefit from faster rendering of SVG pattern fills.</p>
+
+
+
+<p>On Windows, <em>Impress</em> uses Microsoft Media Foundation for video and audio playback instead of relying on GStreamer. This gives user native support for H.264 and AAC codecs sans the need for any extra packages or workarounds.</p>
+
+
+
+<p>Finally, something that is performance-related in the sense it helps get things done faster: the BASIC IDE offers experimental code completion. If you work with legacy BASIC macros (many still do), you can use autocomplete for object methods and properties.</p>
+
+
+
+<p>Other notable improvements in LibreOffice 26.2 include:</p>
+
+
+
+<ul>
+<li><strong>Dialogs can now use horizontal tabs</strong> instead of vertical ones</li>
+
+
+
+<li><strong>Copy screenshots of dialogs directly to your clipboard</strong></li>
+
+
+
+<li><strong>Insert URLs from the right-click menu </strong>whenever text is selected</li>
+
+
+
+<li><strong>Improved DOCX floating table export</strong> in Writer</li>
+
+
+
+<li><strong>Connector shapes in Calc </strong>available under <em>Insert &gt; Shape &gt; Connectors</em></li>
+
+
+
+<li><strong>Skia rendering is mandatory</strong> on Windows and macOS, but optional on Linux</li>
+
+
+
+<li><strong>Python 3.12 and extra modules:</strong> sqlite3, venv, lzma, and dbm</li>
+
+
+
+<li><strong>Google Drive authentication flow improved</strong>, but not on Linux (yet)</li>
+
+
+
+<li><strong>Font-relative indentation units (e.g., em) in Writer </strong>(experimental)</li>
+
+
+
+<li><strong>Experimental “ODF Wholesome Encryption”</strong> using Argon2id and AES-GCM<sup><a href="#17961eb3-7157-4d83-a06a-fb4cd53ecd9d">1</a></sup></li>
+</ul>
+
+
+
+<p>Read the LibreOffice 26.2 release notes for more detail on everything I have mentioned, and some smaller fixes and fine-tuning that I haven’t.</p>
+
+
+
+<h2>Install LibreOffice 26.2</h2>
+
+
+
+<p>LibreOffice 26.2 is available to download from the official website for Windows, macOS and Linux (with a DEB package for use on Ubuntu).</p>
+
+
+
+<p>Prefer automated updates? The <a href="https://snapcraft.io/libreoffice" target="_blank">LibreOffice Snap</a> and the <a href="https://flathub.org/apps/org.libreoffice.LibreOffice" target="_blank">Flathub listing</a> are usually within 24 hours of release, and those using the <a href="https://launchpad.net/~libreoffice/+archive/ubuntu/ppa" target="_blank">LibreOffice Fresh PPA</a> should keep an eye out (it typically lags behind other avenues).</p>
+
+
+
+<p>Remember that Ubuntu doesn’t “backport” new LibreOffice versions to older LTS releases once they’re out. If you are on 24.04 or 22.04 and you want the newest features right now, make use of the Snap, Flatpak, or PPA methods mentioned above.</p>
+
+
+
+<p>Finally, LibreOffice 26.2 will be included in Ubuntu 26.04 LTS, which is out in April.</p>
+
+
+
+<h3>LibreOffice matters (even if it isn’t flashy)</h3>
+
+
+
+<p>LibreOffice 26.2 is a solid, if unglamorous, release. </p>
+
+
+
+<p>No, the UI isn’t ‘modern’, and the UX remains (comparatively) dated. Those criticisms get thrown around with every release, and have done for as long I’ve been writing about. But increasingly it is just noise that distracts from what actually matters.</p>
+
+
+
+<p>Reliable isn’t exciting, and it never will be.</p>
+
+
+
+<p>The hype-industrial complex feeds on perpetual change. They can’t ‘thumbnail’ multi-user database access or BIFF12 clipboard limits. Yet those are the sort of changes that have a major impact on people who use LibreOffice for <em>actual</em> work – not just looking pretty in screenshots.</p>
+
+
+
+<p>LibreOffice’s focus on dependability and interoperability paired with TDF’s unflinching advocacy for the important of open source and open standards is, to me, more important than chasing UI trends or having AI agents hallucinating in the margins.</p>
+
+
+
+<p>Which is to say this: even if you don’t use it, you shouldn’t lose sight of the wood for the trees, else said wood may end up pulped for printing documents on…</p>
+
+
+<ol><li>This is actually quite interesting since it allows the suite to check if an encrypted file has been tampered with before you open it. <a href="#17961eb3-7157-4d83-a06a-fb4cd53ecd9d-link">↩︎</a></li></ol>                                            </div></div>
+  </div>
+</body>
+</html>

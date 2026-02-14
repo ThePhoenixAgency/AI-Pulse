@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Shannon - L'IA qui pentest votre code toute seule</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Shannon - L'IA qui pentest votre code toute seule</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/11/2026 | Lang: FR |
+    <a href="https://korben.info/shannon-pentester-ia-autonome.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p>Vous connaissez tous
+<a href="https://korben.info/histoire-fascinante-kali-linux-underground-hacker.html">Kali Linux</a>
+,
+<a href="https://korben.info/metasploit-framework-histoire-moore-outil-democratise.html">Metasploit</a>
+et compagnie… Mais est-ce que vous avez déjà vu une IA faire un pentest toute seule ? Genre, VRAIMENT toute seule.
+<a href="https://github.com/KeygraphHQ/shannon">Shannon</a>
+, c'est un framework open source qui lâche un agent IA sur votre code, et qui enchaîne recon, analyse de vulns, et exploitation, tout ça sans intervention humaine.</p><p>En gros, vous lui filez une URL cible et l'accès à votre code source (faut que le repo soit accessible, c'est la base), et l'agent se débrouille. Il commence alors par analyser le code en statique… puis lance des attaques dynamiques sur l'app en live. Pour cela, il déploie plusieurs sous-agents spécialisés qui bossent en parallèle via Temporal, un moteur de workflow.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/shannon-pentester-ia-autonome/shannon-pentester-ia-autonome-2.png" alt="" /></p><p>Un agent pour la reconnaissance, un pour chercher les injections SQL, un autre pour les XSS, un pour les SSRF, un pour les problèmes d'authentification… Bref, chacun fait son taf et tout remonte dans un rapport final au format JSON.</p><p>Le truc, c'est que Shannon ne se contente pas de scanner bêtement comme un Nessus ou un Burp. L'agent COMPREND votre code. Il lit les routes, les middlewares, les requêtes SQL, et il construit ses attaques en fonction. Du coup, il trouve des trucs que les scanners classiques loupent complètement, genre une injection NoSQL planquée dans un endpoint obscur ou un bypass d'auth via un cookie mal valide. Attention par contre, si votre app utilise un framework un peu exotique ou du code obfusqué, y'a des chances que l'agent passe à côté… comme tout scanner, hein.</p><p>Pour ceux qui se demandent combien coute un
+<a href="https://korben.info/n-test-intrusion.html">test d'intrusion</a>
+classique, ça va de 3 000 € à plusieurs dizaines de milliers d'euros. Shannon, c'est open source et ça tourne sur Docker, par contre, faudra compter environ 50 dollars en tokens API Anthropic par run… c'est pas gratuit mais c'est quand même 60 fois moins cher qu'un audit humain.</p><p>Cote installation, c'est Docker + Docker Compose, un fichier .env avec votre cle API Anthropic (la variable <code>ANTHROPIC_API_KEY</code>, classique), et hop, un <code>docker compose up</code> pour lancer le tout. Le workflow complet prend entre 1 h et 1 h 30 selon la taille de votre base de code. Vous pouvez suivre la progression en temps réel via l'interface web Temporal sur localhost:8233. (perso, j'aime bien voir les agents bosser en parallèle, ça a un côté satisfaisant).</p><p>Et attention, Shannon exécute de VRAIES attaques. C'est mutatif. Ça veut dire que si l'agent trouve une injection SQL, il va l'exploiter pour de vrai pour prouver que ça marche. Du coup, on le lance sur du code à soi, en local ou sur un environnement de test. Mais jamais en prod. JAMAIS !!!</p><p>Bon, sauf si vous aimez vivre dangereusement et que votre boss est en vacances… ^^</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/shannon-pentester-ia-autonome/shannon-pentester-ia-autonome-3.png" alt="" /></p><p><em>Les agents d'exploitation (Auth, SSRF, XSS, AuthZ) en parallèle sur la timeline Temporal</em></p></div><p>Pour en avoir le cœur net, je l'ai lancé sur une app Node.js/Express maison avec 27 endpoints d'API. 2 heures de scan, 287 transitions d'état, 7 agents qui ont bossé en parallèle… et une facture Anthropic qui pique un peu. Parce que oui, chaque agent consomme des tokens Claude à chaque étape d'analyse et d'exploitation, et ça s'additionne vite. Comptez une cinquantaine de dollars pour un run complet. Bref, c'est pas gratuit de se faire hacker par une IA.</p><p>Cote résultats par contre, plutôt parlant. Zero injection SQL exploitable, les 23 paramètres utilisateur ont été tracés jusqu'aux requêtes et Shannon a confirmé que tout était paramétré correctement. Bien joué. Par contre, il a détecté 6 failles SSRF liées à des contournements IPv6, des XSS stockées via innerHTML sans aucun échappement dans le frontend, et surtout… ZERO authentification sur les 27 endpoints. Genre, n'importe qui peut purger ma base ou cramer vos crédits API Claude sans se connecter. Bon après, c'est un outil que je me suis dev, qui est un proto local, donc c'est pas exposé sur internet.</p><p>Le rapport final est plutôt bien foutu, je trouve. Pour chaque vuln trouvée, vous avez la sévérité CVSS (critique, haute, moyenne), le vecteur d'attaque utilisé, une preuve d'exploitation avec les payloads, et surtout des recommandations de correction. Shannon va jusqu'à vous montrer la ligne de code fautive, expliquer pourquoi le bypass fonctionne, et proposer le fix. Si vous utilisez déjà des outils comme
+<a href="https://korben.info/sploitus-google-exploits-outils-hacking.html">Sploitus</a>
+pour votre veille secu, Shannon c'est le complément parfait pour passer de la théorie à la pratique sur votre propre code.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/shannon-pentester-ia-autonome/shannon-pentester-ia-autonome-4.png" alt="" /></p><p>Le projet est encore jeune, c'est vrai, mais l'approche est intéressante. Plutôt que d'automatiser bêtement des scans, on a donc un agent qui raisonne sur le code et adapte sa stratégie. Ça change des outils qui balancent des milliers de requêtes à l'aveugle et qui vous noient sous les faux positifs.</p><p>Alors après, je vous vois venir, vous allez me dire : est-ce que ça vaut un vrai pentester qui connait votre infra par cœur et qui sait où chercher les trucs tordus ?</p><p>Pas vraiment, mais pour un premier audit à moindre coût, ça fait le taf.</p><p><a href="https://github.com/KeygraphHQ/shannon">Source</a></p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+  </div>
+</body>
+</html>

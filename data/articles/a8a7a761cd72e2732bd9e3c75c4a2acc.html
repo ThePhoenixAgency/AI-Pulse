@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google Patches Chrome’s Fifth Zero-Day of the Year</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Google Patches Chrome’s Fifth Zero-Day of the Year</h1>
+  <div class="metadata">
+    Source: Threatpost | Date: 8/18/2022 | Lang: EN |
+    <a href="https://threatpost.com/google-patches-chromes-fifth-zero-day-of-the-year/180432/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><p>An insufficient validation input flaw, one of 11 patched in an update this week, could allow for arbitrary code execution and is under active attack.</p><div>
+											<p>Google has patched the fifth actively exploited zero-day vulnerability discovered in Chrome this year as one in a series of fixes included in a stable channel update released Wednesday.</p>
+<p>The bug, tracked as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2856" target="_blank">CVE-2022-2856</a> and rated as high on the Common Vulnerability Scoring System (CVSS), is associated with “insufficient validation of untrusted input in Intents,” according to <a href="https://chromereleases.googleblog.com/2022/08/stable-channel-update-for-desktop_16.html" target="_blank">the advisory</a> posted by Google.</p>
+<p>Google credits Ashley Shen and Christian Resell of its Google Threat Analysis Group (TAG) for reporting the zero-day bug, which could allow for arbitrary code execution, on July 19. The advisory also unveiled 10 other patches for various other Chrome issues.</p>
+<p>Intents are a deep linking feature on the Android device within the Chrome browser that replaced URI schemes, which previously handled this process, <a href="https://branch.io/glossary/chrome-intents/" target="_blank">according to Branch</a>, a company that offers various linking options for mobile applications.</p>
+<p>“Instead of assigning window.location or an iframe.src to the URI scheme, in Chrome, developers need to use their intent string as defined in this document,” the company explained on its website. Intent “adds complexity” but “automatically handles the case of the mobile app not being installed” within links, according to the post.</p>
+<p>Insufficient validation is associated with input validation, a frequently-used technique for checking potentially dangerous inputs to ensure that they are safe for processing within the code, or when communicating with other components, <a href="https://cwe.mitre.org/data/definitions/20.html" target="_blank">according to MITRE’s Common Weakness Enumeration site</a>.</p>
+<p>“When software does not validate input properly, an attacker is able to craft the input in a form that is not expected by the rest of the application,” according to a post on the site. “This will lead to parts of the system receiving unintended input, which may result in altered control flow, arbitrary control of a resource, or arbitrary code execution.”</p>
+<p><strong>Fending Off Exploits</strong></p>
+<p>As is typical, Google did not disclose specific details of the bug until it is widely patched to avoid threat actors taking further advantage of it, a strategy that one security professional noted is a wise one.</p>
+<p>“Publicizing details on an actively exploited zero-day vulnerability just as a patch becomes available could have dire consequences, because it takes time to roll out security updates to vulnerable systems and attackers are champing at the bit to exploit these types of flaws,” observed Satnam Narang, senior staff research engineer at cybersecurity firm <a href="https://www.tenable.com/" target="_blank">Tenable,</a> in an email to Threatpost.</p>
+<p><strong> </strong>Holding back info is also sound given that other Linux distributions and browsers, such as Microsoft Edge, also include code based on Google’s Chromium Project. These all could be affected if an exploit for a vulnerability is released, he said.</p>
+<p>“It is extremely valuable for defenders to have that buffer,” Narang added.</p>
+<p>While the majority of the fixes in the update are for vulnerabilities rated as high or medium risk, Google did patch a critical bug tracked as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2852" target="_blank">CVE-2022-2852</a>, a use-after-free issue in FedCM reported by Sergei Glazunov of Google Project Zero on Aug. 8. FedCM—short for the Federated Credential Management API–provides a use-case-specific abstraction for federated identity flows on the web, <a href="https://developer.chrome.com/docs/privacy-sandbox/fedcm/" target="_blank">according to Google</a>.</p>
+<p><strong>Fifth Chrome 0Day Patch So Far</strong></p>
+<p>The zero-day patch is the fifth Chrome bug under active attack that Google has patched so far this year.</p>
+<p>In July, the company fixed an <a href="https://threatpost.com/actively-exploited-chrome-bug/180118/" target="_blank">actively exploited heap buffer overflow flaw</a> tracked as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2294" target="_blank">CVE-2022-2294</a> in WebRTC, the engine that gives Chrome its real-time communications capability, while in May it was a separate buffer overflow flaw tracked as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-2294" target="_blank">CVE-2022-2294</a> and under active attack that got slapped with a patch.</p>
+<p>In April, Google patched <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2022-1364" target="_blank">CVE-2022-1364</a>, a type confusion flaw affecting Chrome’s use of the V8 JavaScript engine on which attackers already had pounced. The previous month a separate type-confusion issue in V8 tracked as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=2022-1096" target="_blank">CVE-2022-1096</a> and under active attack also <a href="https://threatpost.com/google-chrome-bug-actively-exploited-zero-day/179161/" target="_blank">spurred a hasty patch</a>.</p>
+<p>February saw a fix for the first of this year’s Chrome zero-days, a use-after-free flaw in Chrome’s Animation component tracked as <a href="https://nvd.nist.gov/vuln/detail/CVE-2022-0609" target="_blank">CVE-2022-0609</a> that already <a href="https://threatpost.com/google-chrome-zero-day-under-attack/178428/" target="_blank">was under attack</a>. Later <a href="https://threatpost.com/google-chrome-zero-day-bugs-exploited-weeks-ahead-of-patch/179103/" target="_blank">it was revealed</a> that North Korean hackers were exploiting the flaw weeks before it was discovered and patched.</p>
+
+
+
+											
+										</div></div>
+  </div>
+</body>
+</html>

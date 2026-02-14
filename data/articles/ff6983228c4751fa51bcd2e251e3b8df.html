@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sheaves Ready To Play A Bigger Role In Linux 7.0</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Sheaves Ready To Play A Bigger Role In Linux 7.0</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Linux-7.0-Slab-Sheaves" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp" /></p><p>
+The slab memory allocator feature updates have been merged for the <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> kernel. Most notable this cycle is expanded use of the recently-introduced Sheaves functionality.
+</p><p>
+<a href="https://www.phoronix.com/news/Linux-6.18-Slab-Sheaves">Merged back in Linux 6.19 was Sheaves</a> as what began as <a href="https://www.phoronix.com/news/Linux-6.18-Likely-Sheaves">an opt-in, per-CPU array-based caching layer</a> with <a href="https://www.phoronix.com/news/Linux-Sheaves-AMD-Performance">the potential of further helping Linux performance</a>. Now with Linux 7.0 the Sheaves functionality is taking on a much bigger role.
+</p><p>
+Beginning with Linux 7.0, <a href="https://www.phoronix.com/news/Linux-7.0-Replace-Slabs-Sheaves">Sheaves is replacing more of the Linux kernel's caching code</a> with hopes of this new implementation further enhancing performance. So far I haven't seen any benchmarks to quantify the impact of this change but the code commits mention "hope" for improving performance.
+</p><p>
+The <a href="https://lore.kernel.org/lkml/34ac32fe-e082-485b-bead-4e6b9ae6a153@suse.cz/">slab pull request</a> that is now merged for Linux 7.0 explains of the expanded Sheaves use:
+</p><blockquote>"The percpu sheaves caching layer was introduced as opt-in in 6.18 and now we enable it for all caches and remove the previous cpu (partial) slab caching mechanism. Besides the lower locking overhead and much more likely fastpath when freeing, this removes the rather complicated code related to the cpu slab lockless fastpaths (using this_cpu_try_cmpxchg128/64) and all its complications for PREEMPT_RT or kmalloc_nolock().
+<p>    
+  The lockless slab freelist+counters update operation using try_cmpxchg128/64 remains and is crucial for freeing remote NUMA objects, and to allow flushing objects from sheaves to slabs mostly without the node list_lock."</p></blockquote>
+<p>The merged slab code for Linux 7.0 also elimates slabobj_ext metadata overhead where possible as an efficiency improvement by reusing leftover space in a slab or per-object padding.</p></div></div>
+  </div>
+</body>
+</html>

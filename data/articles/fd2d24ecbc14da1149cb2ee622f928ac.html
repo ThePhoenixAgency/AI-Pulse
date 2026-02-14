@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Patch Tuesday, January 2026 Edition</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Patch Tuesday, January 2026 Edition</h1>
+  <div class="metadata">
+    Source: Krebs on Security | Date: 1/14/2026 | Lang: EN |
+    <a href="https://krebsonsecurity.com/2026/01/patch-tuesday-january-2026-edition/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+												<p><strong>Microsoft</strong> today issued patches to plug at least 113 security holes in its various <strong>Windows</strong> operating systems and supported software. Eight of the vulnerabilities earned Microsoft’s most-dire “critical” rating, and the company warns that attackers are already exploiting one of the bugs fixed today.</p>
+<p><img src="https://krebsonsecurity.com/wp-content/uploads/2021/07/windupate.png" alt="" /></p>
+<p>January’s Microsoft zero-day flaw — <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-20805" target="_blank">CVE-2026-20805</a> — is brought to us by a flaw in the <strong>Desktop Window Manager</strong> (DWM), a key component of Windows that organizes windows on a user’s screen. <strong>Kev Breen</strong>, senior director of cyber threat research at <strong>Immersive</strong>, said despite awarding CVE-2026-20805 a middling CVSS score of 5.5, Microsoft has confirmed its active exploitation in the wild, indicating that threat actors are already leveraging this flaw against organizations.</p>
+<p>Breen said vulnerabilities of this kind are commonly used to undermine <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank">Address Space Layout Randomization</a> (ASLR), a core operating system security control designed to protect against buffer overflows and other memory-manipulation exploits.</p>
+<p>“By revealing where code resides in memory, this vulnerability can be chained with a separate code execution flaw, transforming a complex and unreliable exploit into a practical and repeatable attack,” Breen said. “Microsoft has not disclosed which additional components may be involved in such an exploit chain, significantly limiting defenders’ ability to proactively threat hunt for related activity. As a result, rapid patching currently remains the only effective mitigation.”</p>
+<p><strong>Chris Goettl</strong>, vice president of product management at <strong>Ivanti</strong>, observed that CVE-2026-20805 affects all currently supported and extended security update supported versions of the Windows OS. Goettl said it would be a mistake to dismiss the severity of this flaw based on its “Important” rating and relatively low CVSS score.</p>
+<p>“A risk-based prioritization methodology warrants treating this vulnerability as a higher severity than the vendor rating or CVSS score assigned,” he said.</p>
+<p>Among the critical flaws patched this month are two <strong>Microsoft Office</strong> remote code execution bugs (<a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-20952" target="_blank">CVE-2026-20952</a> and <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-20953" target="_blank">CVE-2026-20953</a>) that can be triggered just by viewing a booby-trapped message in the Preview Pane.</p>
+<p>Our October 2025 Patch Tuesday <a href="https://krebsonsecurity.com/2025/10/patch-tuesday-october-2025-end-of-10-edition/" target="_blank">“End of 10” roundup</a> noted that Microsoft had removed a modem driver from all versions after it was discovered that hackers were abusing a vulnerability in it to hack into systems. <strong>Adam Barnett</strong> at <strong>Rapid7</strong> said Microsoft today removed another couple of modem drivers from Windows for a broadly similar reason: Microsoft is aware of functional exploit code for an elevation of privilege vulnerability in a very similar modem driver, tracked as <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2023-31096" target="_blank">CVE-2023-31096</a>.<span></span></p>
+<p>“That’s not a typo; this vulnerability was originally published via MITRE over two years ago, along with a credible public writeup by the original researcher,” Barnett said. “Today’s Windows patches remove agrsm64.sys and agrsm.sys. All three modem drivers were originally developed by the same now-defunct third party, and have been included in Windows for decades. These driver removals will pass unnoticed for most people, but you might find active modems still in a few contexts, including some industrial control systems.”</p>
+<p>According to Barnett, two questions remain: How many more legacy modem drivers are still present on a fully-patched Windows asset; and how many more elevation-to-SYSTEM vulnerabilities will emerge from them before Microsoft cuts off attackers who have been enjoying “living off the land[line] by exploiting an entire class of dusty old device drivers?”</p>
+<p>“Although Microsoft doesn’t claim evidence of exploitation for CVE-2023-31096, the relevant 2023 write-up and the 2025 removal of the other Agere modem driver have provided two strong signals for anyone looking for Windows exploits in the meantime,” Barnett said. “In case you were wondering, there is no need to have a modem connected; the mere presence of the driver is enough to render an asset vulnerable.”</p>
+<p>Immersive, Ivanti and Rapid7 all called attention to <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-21265" target="_blank">CVE-2026-21265</a>, which is a critical Security Feature Bypass vulnerability affecting Windows Secure Boot. This security feature is designed to protect against threats like rootkits and bootkits, and it relies on a set of certificates that are set to expire in June 2026 and October 2026. Once these 2011 certificates expire, Windows devices that do not have the new 2023 certificates can no longer receive Secure Boot security fixes.</p>
+<p>Barnett cautioned that when updating the bootloader and BIOS, it is essential to prepare fully ahead of time for the specific OS and BIOS combination you’re working with, since incorrect remediation steps can lead to an unbootable system.</p>
+<p>“Fifteen years is a very long time indeed in information security, but the clock is running out on the Microsoft root certificates which have been signing essentially everything in the Secure Boot ecosystem since the days of Stuxnet,” Barnett said. “Microsoft issued replacement certificates back in 2023, alongside CVE-2023-24932 which covered relevant Windows patches as well as subsequent steps to remediate the Secure Boot bypass exploited by the BlackLotus bootkit.”</p>
+<p>Goettl noted that <strong>Mozilla</strong> has released updates for <strong>Firefox</strong> and <strong>Firefox ESR</strong> resolving a total of 34 vulnerabilities, two of which are suspected to be exploited (CVE-2026-0891 and CVE-2026-0892). Both are resolved in Firefox 147 (MFSA2026-01) and CVE-2026-0891 is resolved in Firefox ESR 140.7 (MFSA2026-03).</p>
+<p>“Expect <strong>Google Chrome</strong> and <strong>Microsoft Edge</strong> updates this week in addition to a high severity vulnerability in Chrome WebView that was resolved in the January 6 Chrome update (CVE-2026-0628),” Goettl said.</p>
+<p>As ever, the <a href="https://isc.sans.edu/forums/diary/January%202026%20Microsoft%20Patch%20Tuesday%20Summary/32624/" target="_blank">SANS Internet Storm Center</a> has a per-patch breakdown by severity and urgency. Windows admins should keep an eye on <a href="https://www.askwoody.com/2026/january-2026-updates/" target="_blank">askwoody.com</a> for any news about patches that don’t quite play nice with everything. If you experience any issues related installing January’s patches, please drop a line in the comments below.</p>
+											</div></div>
+  </div>
+</body>
+</html>

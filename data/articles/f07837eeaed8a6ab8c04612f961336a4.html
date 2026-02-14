@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cine is a sleek, MPV-powered video player for GNOME</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Cine is a sleek, MPV-powered video player for GNOME</h1>
+  <div class="metadata">
+    Source: OMG! Ubuntu | Date: 2/9/2026 | Lang: EN |
+    <a href="https://www.omgubuntu.co.uk/2026/02/cine-linux-video-player-mpv" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                        <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-mpv-video-player-linux-gtk4.webp?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-mpv-video-player-linux-gtk4.webp?resize=750%2C394&amp;ssl=1" alt="The Cine Linux video player interface, built with GTK4 and libadwaita, showing audio track and video adjustment options." /></a></figure>
+</div>
+
+
+<p><strong>Cine is a new(ish) MPV-based Linux video player built with GTK4/libadwatia and Python, designed specifically for the GNOME desktop environment.</strong></p>
+
+
+
+<p>Rather like blockbuster superhero sequels in the cinema, there’s no shortage of video players for Linux. Is there enough mileage in the genre for an audience who’ll appreciate <em><a href="https://github.com/diegopvlk/Cine">Cine</a>?</em> </p>
+
+
+
+<p>I think so.</p>
+
+
+
+<p><em>Cine</em> offers a clean, uncomplicated UI that makes use of the entire window canvas to display your video – no frames, all content. It overlays player controls on top. These fade out view when you mouse away to give a distraction-free look automatically.</p>
+
+
+<div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-minimal-video-player.webp?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-minimal-video-player.webp?resize=750%2C394&amp;ssl=1" alt="Cine video player with hidden controls and window decorations for distraction-free playback." /></a><figcaption>Controls and window buttons fade out of view</figcaption></figure>
+</div>
+
+
+<p>Inside, you’ll find all of the expected features present and correct. There’s audio and subtitle track selection, playback controls (including chapter markers), and a playlist. An advanced options menu lets you set a subtitle or audio delay or adjust video brightness, rotation, zoom, etc.</p>
+
+
+
+<p>I watch a lot of local videos with subtitles, some of which are standalone .srt files. So I was pleased to see you can <strong>change the font, colour and size of subtitles</strong> in <em>Cine</em> for the latter type. It’s a feature I like in other video players I use, so I’m glad to see it here.</p>
+
+
+<div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-mpv-video-player-preferences.webp?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-mpv-video-player-preferences.webp?resize=750%2C394&amp;ssl=1" alt="Cine Linux video player showing preferences panel with subtitle font and hardware decoding options." /></a><figcaption>Direct your own Cine-matic experience</figcaption></figure>
+</div>
+
+
+<p>Most of the player’s various adjustment sliders, steppers and options come with a one-click reset buttons to undo your changes and revert back to how things were originally. This is especially useful since some settings persist between videos. </p>
+
+
+
+<p>The <em>Preferences</em> panel allows you, among other things, enable hardware accelerated video decoding and enable a ‘normalise volume’ option – handy if your playlist will be jumping between a quiet indie film and a loud YouTube rip.</p>
+
+
+
+<h3>Performance in Cine vs. Showtime and Totem</h3>
+
+
+<div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-video-player-performance.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/cine-video-player-performance.jpg?resize=750%2C394&amp;ssl=1" alt="Cine video player in full-screen mode with hidden controls and window decorations for distraction-free 4K playback on GNOME." /></a><figcaption>Hardware decoding works great, even on my low-power laptop</figcaption></figure>
+</div>
+
+
+<p>Cine outperforms GStreamer-based players like Totem on older hardware by using the <a href="https://mpv.io/" target="_blank">MPV</a> backend for efficient H.265 hardware acceleration</p>
+
+
+
+<p>Cine is not trying to be a Swiss Army knife like <em>VLC</em> (you won’t find stream capture or video conversion here), but cater to those who want to play local video files and manage them without fuss – or need to master MPV configuration foo. </p>
+
+
+
+<p><a href="https://www.omgubuntu.co.uk/2025/11/ubuntu-26-04-lts-showtime-resources-default-apps">Ubuntu switches to GNOME’s <em>Showtime</em> in 26.04</a>, dropping the <em>Totem</em> video player. Showtime is as modern and minimal as Cine, but as it still uses the GStreamer media engine, which historically has has more issues with file formats and media codecs than MPV.</p>
+
+
+
+<p>In my testing, I tried a 4K MKV with H.265 (HEVC) and subtitles on my “low-end” Chuwi laptop with an (older) Intel integrated graphics (iGPU) that supports QuickSync hardware decoding. </p>
+
+
+
+<p>I toggled Power Saving mode on in Ubuntu’s Quick Settings and found that <em>Cine</em> could play the video perfectly, but Ubuntu’s GStreamer-based <em>Totem</em> became a slideshow. <em>Showtime</em> performed almost as well as Cine, save for horrible green artefacts on screen changing chapters.</p>
+
+
+
+<p>You milage will vary, but if you hit issues with <em>Showtime</em> or similar, and don’t want to use <em>Clapper</em> or <em>Celluloid</em> (two popular MPV-based video players that are solid choices), then <em>Cine</em> is worth the price of its admission ticket. </p>
+
+
+
+<h3>Do We Need Another Video Player?</h3>
+
+
+
+<p>I know that some will ask <em>“does Linux really need another…”</em>. One could also ask <em>“does Linux really need any more users”</em> because the answer for both questions is the same: yes. </p>
+
+
+
+<p>Yes, because VLC didn’t emerge fully-formed in 2001, and almost every piece of software we use today was once somebody else’s ‘yet another’ attempt. MPV began life as an MPlayer fork. Now it’s the media backend many people prefer.</p>
+
+
+
+<p>Besides which, it’s choice. Choice isn’t hollow; it’s the choice to not use something as much as it is the choice to use something. That’s what separates us from the walled gardens, right? The moment we stop experimenting is the moment we begin to stagnate.</p>
+
+
+
+<p>Unlike in a market-driven ecosystems, FOSS doesn’t consider profit or monopoly as the ‘purpose’ in doing something. Often, building something, learning from the process and sharing it with others to use, if they want it, is purpose enough.</p>
+
+
+
+<h2>How to Install Cine on Linux</h2>
+
+
+
+<p>Cine is free, open-source software available from Flathub. That makes installing it easy on most modern distributions – assuming you like Flatpaks, of course. <a href="https://github.com/diegopvlk/Cine" target="_blank">Source code is available from GitHub</a>, and compilation is made easy via GNOME Builder.</p>
+
+
+
+<p>If you’re running GNOME and find yourself wanting for a video player that blends in rather than stands out, whilst also offering solid MPV performance, Cine deserves a look. It won’t replace <em>VLC</em> or <em>Clapper</em> for everyone, but it might suit your tastes to a tee.</p>
+
+
+
+<p><a href="https://flathub.org/en/apps/io.github.diegopvlk.Cine" target="_blank"><strong>Download <em>Cine</em> on Flathub</strong></a></p>
+                                            </div></div>
+  </div>
+</body>
+</html>

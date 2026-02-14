@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - danielmiessler/Personal_AI_Infrastructure: Agentic AI Infrastructure for magnifying HUMAN capabilities.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - danielmiessler/Personal_AI_Infrastructure: Agentic AI Infrastructure for magnifying HUMAN capabilities.</h1>
+  <div class="metadata">
+    Source: GitHub Trending | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/danielmiessler/Personal_AI_Infrastructure" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article>
+<div><p>Important</p><p><strong>PAI v2.5.0 Released</strong> — Think Deeper, Execute Faster: Two-Pass Capability Selection, Thinking Tools with Justify-Exclusion, and Parallel-by-Default Execution.</p>
+<p><strong><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Releases/v2.5/README.md">Release notes →</a></strong> | <strong><a href="https://github.com/danielmiessler/PAI/releases/tag/v2.5.0">GitHub Release →</a></strong></p>
+</div>
+<div>
+<p></p><h2>AI should magnify everyone—not just the top 1%.</h2><a href="#ai-should-magnify-everyonenot-just-the-top-1"></a><p></p>
+</div>
+<p></p><h2>The Purpose of This Project</h2><a href="#the-purpose-of-this-project"></a><p></p>
+<p><strong>PAI exists to solve what I believe is the <a href="https://danielmiessler.com/telos">P0 problem</a> in the world:</strong></p>
+<p></p><h3>Only a tiny fraction of humanity's creative potential is activated on Earth.</h3><a href="#only-a-tiny-fraction-of-humanitys-creative-potential-is-activated-on-earth"></a><p></p>
+<p>Most people don't believe they have valuable contributions to make. They think there are "special" people—and they aren't one of them. They've never asked who they are, what they're about, and have never articulated or written it down. This makes them catastrophically vulnerable to AI displacement. Without activation, there is no high-agency.</p>
+<p>So our goal with PAI is to activate people.</p>
+<p><strong>PAI's mission is twofold:</strong></p>
+<ol>
+<li><strong>Activate as many people as possible</strong> — Help people identify, articulate, and pursue their own purpose in life through AI-augmented self-discovery</li>
+<li><strong>Make the best AI available in the world accessible to everyone</strong> — Ensure this quality of AI infrastructure isn't reserved for just the rich or technical elite.</li>
+</ol>
+<p>That's why this is an open-source project instead of private.</p>
+<hr />
+<p></p><h2>New to This? Start Here</h2><a href="#new-to-this-start-here"></a><p></p>
+<p>You've probably used ChatGPT or Claude. Type a question, get an answer. Simple.</p>
+<p>You can think of AI systems as <strong>three levels</strong>:</p>
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-eli5-diagram.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-eli5-diagram.png" alt="The AI Evolution - From chatbots to your personal AI system" /></a>
+</p>
+<p></p><h3>Chatbots</h3><a href="#chatbots"></a><p></p>
+<p>ChatGPT, Claude, Gemini—you ask something, it answers, and then it forgets everything. Next conversation starts fresh. No memory of you, your preferences, or what you talked about yesterday.</p>
+<p><strong>The pattern:</strong> Ask → Answer → Forget</p>
+<p></p><h3>Agentic Platforms</h3><a href="#agentic-platforms"></a><p></p>
+<p>Tools like Claude Code, Cursor, and Windsurf. The AI can actually <em>do</em> things—write code, browse the web, edit files, run commands.</p>
+<p><strong>The pattern:</strong> Ask → Use tools → Get result</p>
+<p>More capable, but it still doesn't know <em>you</em>—your goals, your preferences, your history.</p>
+<p></p><h3>PAI (Personal AI Infrastructure)</h3><a href="#pai-personal-ai-infrastructure"></a><p></p>
+<p>Now your DA <strong>learns and improves</strong>:</p>
+<ul>
+<li><strong>Captures every signal</strong> — Ratings, sentiment, verification outcomes</li>
+<li><strong>Learns from mistakes</strong> — Failures get analyzed and fixed</li>
+<li><strong>Gets better over time</strong> — Success patterns get reinforced</li>
+<li><strong>Upgrades itself</strong> — Skills, workflows, even the core behavior evolves</li>
+</ul>
+<p>Plus it knows:</p>
+<ul>
+<li><strong>Your goals</strong> — What you're working toward</li>
+<li><strong>Your preferences</strong> — How you like things done</li>
+<li><strong>Your history</strong> — Past decisions and learnings</li>
+</ul>
+<p><strong>The pattern:</strong> Observe → Think → Plan → Execute → Verify → <strong>Learn</strong> → Improve</p>
+<p>The key difference: <strong>PAI learns from feedback</strong>. Every interaction makes it better at helping <em>you</em> specifically.</p>
+<hr />
+<p></p><h2>What is PAI?</h2><a href="#what-is-pai"></a><p></p>
+<p>PAI is a Personalized AI Platform designed to magnify your capabilities.</p>
+<p>It's designed for humans most of all, but can be used by teams, companies, or Federations of Planets desiring to be better versions of themselves.</p>
+<p>The scale of the entity doesn't matter: It's a system for understanding, articulating, and realizing its principal's goals using a full-featured Agentic AI Platform.</p>
+<p></p><h3>Who is PAI for?</h3><a href="#who-is-pai-for"></a><p></p>
+<p><strong>Everyone, full stop.</strong> It's the anti-gatekeeping AI project.</p>
+<ul>
+<li><strong>Small business owners</strong> who aren't technical but want AI to handle invoicing, scheduling, customer follow-ups, and marketing</li>
+<li><strong>Companies</strong> who want to understand their data, optimize operations, and make better decisions</li>
+<li><strong>Managers</strong> who want to run their teams more effectively—tracking projects, preparing for reviews, and communicating clearly</li>
+<li><strong>Artists and creatives</strong> who want to find local events, galleries, and opportunities to showcase their work</li>
+<li><strong>Everyday people</strong> who want to improve their lives—better fitness routines, stronger social connections, personal finance, or just getting organized</li>
+<li><strong>Developers</strong> using AI coding assistants who want persistent memory and custom workflows</li>
+<li><strong>Power users</strong> who want their AI to know their goals, preferences, and context</li>
+<li><strong>Teams</strong> building shared AI infrastructure with consistent capabilities</li>
+<li><strong>Experimenters</strong> interested in AI system design and personal AI patterns</li>
+</ul>
+<p></p><h3>What makes PAI different?</h3><a href="#what-makes-pai-different"></a><p></p>
+<p>The first thing people ask is:</p>
+<blockquote>
+<p>How is this different from Claude Code, or any of the other agentic systems?</p>
+</blockquote>
+<p>Most agentic systems are built around tools with the user being an afterthought. They are also mostly task-based instead of being goal-based using all the context available to them. PAI is the opposite.</p>
+<p><strong>Three core differentiators:</strong></p>
+<ol>
+<li>
+<p><strong>Goal Orientation</strong> — PAI's primary focus is on the human running it and what they're trying to do in the world, not the tech. This is built into how the system executes all tasks.</p>
+</li>
+<li>
+<p><strong>Pursuit of Optimal Output</strong> — The system's outer loop and everything it does is trying to produce the exact right output given the current situation and all the contexts around it.</p>
+</li>
+<li>
+<p><strong>Continuous Learning</strong> — The system constantly captures signals about what was done, what changes were made, what outputs were produced for each request, and then how you liked or disliked the results.</p>
+</li>
+</ol>
+<hr />
+<p></p><h2>The PAI Principles</h2><a href="#the-pai-principles"></a><p></p>
+<p>These principles guide how PAI systems are designed and built. <strong><a href="https://danielmiessler.com/blog/personal-ai-infrastructure">Full breakdown →</a></strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Principle</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>User Centricity</strong></td>
+<td>PAI is built around you, not tooling. Your goals, preferences, and context come first—the infrastructure exists to serve them.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>The Foundational Algorithm</strong></td>
+<td>The scientific method as a universal problem-solving loop: Observe → Think → Plan → Build → Execute → Verify → Learn. Define the ideal state, iterate until you reach it.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Clear Thinking First</strong></td>
+<td>Good prompts come from clear thinking. Clarify the problem before writing the prompt.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Scaffolding &gt; Model</strong></td>
+<td>System architecture matters more than which model you use.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Deterministic Infrastructure</strong></td>
+<td>AI is probabilistic; your infrastructure shouldn't be. Use templates and patterns.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Code Before Prompts</strong></td>
+<td>If you can solve it with a bash script, don't use AI.</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Spec / Test / Evals First</strong></td>
+<td>Write specifications and tests before building. Measure if the system works.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>UNIX Philosophy</strong></td>
+<td>Do one thing well. Make tools composable. Use text interfaces.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>ENG / SRE Principles</strong></td>
+<td>Treat AI infrastructure like production software: version control, automation, monitoring.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>CLI as Interface</strong></td>
+<td>Command-line interfaces are faster, more scriptable, and more reliable than GUIs.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Goal → Code → CLI → Prompts → Agents</strong></td>
+<td>The decision hierarchy: clarify goal, then code, then CLI, then prompts, then agents.</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Skill Management</strong></td>
+<td>Modular capabilities that route intelligently based on context.</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>Memory System</strong></td>
+<td>Everything worth knowing gets captured. History feeds future context.</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>Agent Personalities</strong></td>
+<td>Different work needs different approaches. Specialized agents with unique voices.</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>Science as Meta-Loop</strong></td>
+<td>Hypothesis → Experiment → Measure → Iterate.</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>Permission to Fail</strong></td>
+<td>Explicit permission to say "I don't know" prevents hallucinations.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>PAI Primitives</h2><a href="#pai-primitives"></a><p></p>
+<p>While the Principles describe the <em>philosophy</em> of PAI, the Primitives are the <em>architecture</em>—the core systems that make everything work.</p>
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-unique-components-diagram.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-unique-components-diagram.png" alt="PAI Primitives - A system that knows you, not a tool harness" /></a>
+</p>
+<p>These primitives work together to create the experience of working with a system that understands and knows you—as opposed to a tool harness that just executes commands.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-1-assistant-vs-agent.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-1-assistant-vs-agent.png" alt="Assistant vs Agent-Based Interaction" /></a>
+</p>
+<p></p><h3>Assistant vs. Agent-Based AI Interaction</h3><a href="#assistant-vs-agent-based-ai-interaction"></a><p></p>
+<p>PAI treats AI as a <a href="https://danielmiessler.com/blog/personal-ai-maturity-model">persistent assistant, friend, coach, and mentor</a> rather than a stateless agent that runs tasks. An assistant knows your goals, remembers your preferences, and improves over time. An agent executes commands and forgets.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-primitive-telos.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-primitive-telos.png" alt="TELOS - Deep Goal Understanding" /></a>
+</p>
+<p></p><h3>TELOS (Deep Goal Understanding)</h3><a href="#telos-deep-goal-understanding"></a><p></p>
+<p>10 files that capture who you are: MISSION.md, GOALS.md, PROJECTS.md, BELIEFS.md, MODELS.md, STRATEGIES.md, NARRATIVES.md, LEARNED.md, CHALLENGES.md, IDEAS.md. Your DA knows what you're working toward because it's all documented.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-primitive-user-system-separation.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-primitive-user-system-separation.png" alt="User/System Separation" /></a>
+</p>
+<p></p><h3>User/System Separation</h3><a href="#usersystem-separation"></a><p></p>
+<p>Your customizations live in USER/. PAI infrastructure lives in SYSTEM/. When PAI upgrades, your files are untouched. Portable identity, upgrade-safe.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-primitive-customization.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-primitive-customization.png" alt="Granular Customization" /></a>
+</p>
+<p></p><h3>Granular Customization</h3><a href="#granular-customization"></a><p></p>
+<p>Six layers of customization: Identity (name, voice, personality), Preferences (tech stack, tools), Workflows (how skills execute), Skills (what capabilities exist), Hooks (how events are handled), and Memory (what gets captured). Start with defaults, customize when needed.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-2-skill-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-2-skill-system.png" alt="Skill System" /></a>
+</p>
+<p></p><h3>Skill System</h3><a href="#skill-system"></a><p></p>
+<p>Highly focused on consistent results. It has a structure that puts <em>deterministic outcomes first</em> by going from CODE -&gt; CLI-BASED-TOOL -&gt; PROMPT -&gt; SKILL instead of a haphazard structure.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-3-memory-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-3-memory-system.png" alt="Memory System" /></a>
+</p>
+<p></p><h3>Memory System</h3><a href="#memory-system"></a><p></p>
+<p>Focused on continuous learning. Every interaction generates signals—ratings, sentiment, successes, failures—that feed back into improving the system. Three-tier architecture (hot/warm/cold) with phase-based learning directories.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-6-hook-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-6-hook-system.png" alt="Hook System" /></a>
+</p>
+<p></p><h3>Hook System</h3><a href="#hook-system"></a><p></p>
+<p>Responds to lifecycle events—session start, tool use, task completion, and more. 8 event types enable voice notifications, automatic context loading, session capture, security validation, and observability.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-5-security-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-5-security-system.png" alt="Security System" /></a>
+</p>
+<p></p><h3>Security System</h3><a href="#security-system"></a><p></p>
+<p>Defines system and user-level security policies by default. You don't have to run with <code>--dangerously-skip-permissions</code> to have an uninterrupted experience. PAI's security hooks validate commands before execution, blocking dangerous operations while allowing normal workflows to proceed smoothly.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-4-ai-installation.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-4-ai-installation.png" alt="AI-Based Installation" /></a>
+</p>
+<p></p><h3>AI-Based Installation</h3><a href="#ai-based-installation"></a><p></p>
+<p>Your AI assistant reads the packs, understands your system, and installs everything for you. No manual configuration, no guessing—the AI handles it.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-8-notification-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-8-notification-system.png" alt="Notification System" /></a>
+</p>
+<p></p><h3>Notification System</h3><a href="#notification-system"></a><p></p>
+<p>Keeps you informed without being intrusive. Push notifications via ntfy for mobile alerts, Discord integration for team updates, and duration-aware routing that escalates for long-running tasks. Fire-and-forget design means notifications never block your workflow.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-9-voice-system.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-9-voice-system.png" alt="Voice System" /></a>
+</p>
+<p></p><h3>Voice System</h3><a href="#voice-system"></a><p></p>
+<p>Powered by ElevenLabs TTS. Hear task completions, session summaries, and important updates spoken aloud. Prosody enhancement makes speech sound natural. Your AI has a voice.</p>
+<hr />
+<p>
+  <a target="_blank" href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/images/pai-component-7-terminal-ui.png"><img src="https://github.com/danielmiessler/Personal_AI_Infrastructure/raw/main/images/pai-component-7-terminal-ui.png" alt="Terminal-Based UI" /></a>
+</p>
+<p></p><h3>Terminal-Based UI</h3><a href="#terminal-based-ui"></a><p></p>
+<p>Rich tab titles and pane management. Dynamic status lines show learning signals, context usage, and current task state. Your terminal is a command center.</p>
+<hr />
+<p></p><h2>🚀 Installation</h2><a href="#-installation"></a><p></p>
+<div><p>Caution</p><p><strong>Project in Active Development</strong> — PAI is evolving rapidly. Expect breaking changes, restructuring, and frequent updates. We are working on stable and development branches, but currently it's all combined.</p>
+</div>
+<p></p><h3>Which Install Path Should I Use?</h3><a href="#which-install-path-should-i-use"></a><p></p>
+<div><pre><code>┌─────────────────────────────────────────────────────────────────┐
+│  Do you want a complete, working PAI system right now?          │
+│                                                                 │
+│     YES ──────────► Option 1: Full Release Install              │
+│                     (Complete .claude/ directory, ~5 min)       │
+│                                                                 │
+│     NO, I want to customize or learn the system                 │
+│         │                                                       │
+│         ├──► Option 2: Bundle + Packs (Build it yourself)       │
+│         │    (Skeleton structure, then install packs manually)  │
+│         │                                                       │
+│         └──► Option 3: Individual Packs (Cherry-pick)           │
+│              (Install only specific capabilities you need)      │
+└─────────────────────────────────────────────────────────────────┘
+</code></pre></div>
+<hr />
+<p></p><h3>Option 1: Full Release Install (Recommended)</h3><a href="#option-1-full-release-install-recommended"></a><p></p>
+<blockquote>
+<p><strong>This is the fastest path to a working PAI system.</strong> You get a complete, pre-configured <code>.claude/</code> directory with all infrastructure packs already installed.</p>
+</blockquote>
+<div><pre><span><span>#</span> Clone the repo</span>
+git clone https://github.com/danielmiessler/PAI.git
+<span>cd</span> PAI/Releases/v2.5
+
+<span><span>#</span> Back up your existing Claude Code configuration (if any)</span>
+[ <span>-d</span> <span>~</span>/.claude ] <span>&amp;&amp;</span> mv <span>~</span>/.claude <span>~</span>/.claude-backup-<span><span>$(</span>date +%Y%m%d<span>)</span></span>
+
+<span><span>#</span> Copy the complete PAI installation</span>
+cp -r .claude <span>~</span>/
+
+<span><span>#</span> Run the configuration wizard</span>
+<span>cd</span> <span>~</span>/.claude <span>&amp;&amp;</span> bun run INSTALL.ts</pre></div>
+<p><strong>The wizard will:</strong></p>
+<ul>
+<li>Ask for your name, DA name, and timezone</li>
+<li>Configure environment variables (works with both bash and zsh)</li>
+<li>Set up voice preferences (optional)</li>
+<li>Verify the installation</li>
+</ul>
+<p><strong>After installation:</strong> Restart Claude Code to activate hooks.</p>
+<p><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Releases/v2.5/README.md"><strong>Full Release documentation →</strong></a></p>
+<hr />
+<p></p><h3>Option 2: Bundle + Manual Pack Installation</h3><a href="#option-2-bundle--manual-pack-installation"></a><p></p>
+<blockquote>
+<p><strong>For users who want to understand the system</strong> as they build it, or need a customized setup.</p>
+</blockquote>
+<div><p>Warning</p><p>The Bundle wizard creates a <strong>skeleton directory structure only</strong>. You must then install each pack manually in the correct order for a working system.</p>
+</div>
+<div><pre><span><span>#</span> Clone the repo</span>
+git clone https://github.com/danielmiessler/PAI.git
+<span>cd</span> PAI/Bundles/Official
+
+<span><span>#</span> Run the interactive wizard (creates skeleton structure)</span>
+bun run install.ts</pre></div>
+<p><strong>After the wizard completes, you MUST install packs in this order:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Order</th>
+<th>Pack</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>pai-hook-system</td>
+<td>"Install the pack at PAI/Packs/pai-hook-system/"</td>
+</tr>
+<tr>
+<td>2</td>
+<td>pai-core-install</td>
+<td>"Install the pack at PAI/Packs/pai-core-install/"</td>
+</tr>
+<tr>
+<td>3</td>
+<td>pai-statusline</td>
+<td>"Install the pack at PAI/Packs/pai-statusline/"</td>
+</tr>
+<tr>
+<td>4+</td>
+<td>Any skill packs</td>
+<td>Install as needed</td>
+</tr>
+</tbody>
+</table>
+<p><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Bundles/Official/README.md"><strong>Bundle documentation →</strong></a></p>
+<hr />
+<p></p><h3>Option 3: Individual Pack Installation</h3><a href="#option-3-individual-pack-installation"></a><p></p>
+<p>Install individual packs by giving them to your DA:</p>
+<ol>
+<li><strong>Browse packs</strong> - Find a pack you want in <a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs">Packs/</a></li>
+<li><strong>Give it to your DA</strong> - Provide the pack directory path</li>
+<li><strong>Ask your DA to install it:</strong></li>
+</ol>
+<div><pre><code>Install this pack into my system. Use PAI_DIR="~/.claude"
+and DA="MyAI". Set up the hooks, save the code, and verify it works.
+</code></pre></div>
+<p></p><h3>Option 4: Browse and Cherry-Pick</h3><a href="#option-4-browse-and-cherry-pick"></a><p></p>
+<p>Packs are self-contained. You can:</p>
+<ul>
+<li>Read the code directly in the pack</li>
+<li>Copy specific functions or workflows</li>
+<li>Adapt the approach to your own system</li>
+<li>Use it as reference documentation</li>
+</ul>
+<p><strong>No forced structure. No mandatory setup. Take what's useful, leave the rest.</strong></p>
+<hr />
+<p></p><h2>📦 Packs</h2><a href="#-packs"></a><p></p>
+<p>PAI capabilities are distributed as <strong>Packs</strong>—self-contained, AI-installable modules that add specific capabilities to your system.</p>
+<p>Each pack includes everything needed: code, workflows, installation instructions, and verification tests. Your DA reads the pack and installs it into your system—no manual copying required.</p>
+<p></p><h3>Infrastructure Packs</h3><a href="#infrastructure-packs"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Pack</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-core-install"><strong>pai-core-install</strong></a></td>
+<td>Core skills, identity, MEMORY system, and response format</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-hook-system"><strong>pai-hook-system</strong></a></td>
+<td>Event-driven automation and security validation</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-voice-system"><strong>pai-voice-system</strong></a></td>
+<td>Voice notifications with ElevenLabs TTS</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-observability-server"><strong>pai-observability-server</strong></a></td>
+<td>Real-time agent monitoring dashboard</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-statusline"><strong>pai-statusline</strong></a></td>
+<td>4-mode responsive status line with learning signals</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Skill Packs</h3><a href="#skill-packs"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Pack</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-agents-skill"><strong>pai-agents-skill</strong></a></td>
+<td>Dynamic agent composition with personality mapping</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-algorithm-skill"><strong>pai-algorithm-skill</strong></a></td>
+<td>ISC management, effort classification</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-annualreports-skill"><strong>pai-annualreports-skill</strong></a></td>
+<td>Annual security report aggregation</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-art-skill"><strong>pai-art-skill</strong></a></td>
+<td>Visual content generation</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-brightdata-skill"><strong>pai-brightdata-skill</strong></a></td>
+<td>Progressive URL scraping</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-browser-skill"><strong>pai-browser-skill</strong></a></td>
+<td>Browser automation with Playwright</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-council-skill"><strong>pai-council-skill</strong></a></td>
+<td>Multi-agent debate system</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-createcli-skill"><strong>pai-createcli-skill</strong></a></td>
+<td>Generate TypeScript CLI tools</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-createskill-skill"><strong>pai-createskill-skill</strong></a></td>
+<td>Create and validate PAI skills</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-firstprinciples-skill"><strong>pai-firstprinciples-skill</strong></a></td>
+<td>First principles analysis</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-osint-skill"><strong>pai-osint-skill</strong></a></td>
+<td>Open source intelligence gathering</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-privateinvestigator-skill"><strong>pai-privateinvestigator-skill</strong></a></td>
+<td>Ethical people-finding</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-prompting-skill"><strong>pai-prompting-skill</strong></a></td>
+<td>Meta-prompting system</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-recon-skill"><strong>pai-recon-skill</strong></a></td>
+<td>Security reconnaissance</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-redteam-skill"><strong>pai-redteam-skill</strong></a></td>
+<td>Adversarial analysis with 32 agents</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-research-skill"><strong>pai-research-skill</strong></a></td>
+<td>Multi-source research</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-system-skill"><strong>pai-system-skill</strong></a></td>
+<td>System maintenance and integrity checks</td>
+</tr>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Packs/pai-telos-skill"><strong>pai-telos-skill</strong></a></td>
+<td>Life OS and deep goal capture</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>23 packs total</strong> — 5 infrastructure + 18 skills. All extracted from production PAI systems.</p>
+</blockquote>
+<hr />
+<p></p><h2>📦 Bundles</h2><a href="#-bundles"></a><p></p>
+<p><strong>Bundles</strong> are curated collections of packs designed to work together.</p>
+<table>
+<thead>
+<tr>
+<th>Bundle</th>
+<th>Description</th>
+<th>Packs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Bundles/Official"><strong>PAI Bundle</strong></a></td>
+<td>The official PAI bundle - complete personal AI infrastructure</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quick install:</strong></p>
+<div><pre>git clone https://github.com/danielmiessler/PAI.git
+<span>cd</span> PAI/Bundles/Official <span>&amp;&amp;</span> bun run install.ts</pre></div>
+<p><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Bundles"><strong>Learn more about bundles →</strong></a></p>
+<hr />
+<p></p><h2>❓ FAQ</h2><a href="#-faq"></a><p></p>
+<p></p><h3>How is PAI different from just using Claude Code?</h3><a href="#how-is-pai-different-from-just-using-claude-code"></a><p></p>
+<p>PAI isn't a replacement for Claude Code—it's what you build <em>on top of it</em>. Claude Code gives you an AI that can read files, write code, and execute commands. But it's generic. It doesn't know your goals, your preferred workflows, your history, or your specific context.</p>
+<p>PAI provides the scaffolding to make that generic AI <em>yours</em>:</p>
+<ul>
+<li><strong>Persistent memory</strong> — Your DA remembers past sessions, decisions, and learnings</li>
+<li><strong>Custom skills</strong> — Specialized capabilities for the things you do most</li>
+<li><strong>Your context</strong> — Goals, contacts, preferences—all available without re-explaining</li>
+<li><strong>Intelligent routing</strong> — Say "research this" and the right workflow triggers automatically</li>
+<li><strong>Self-improvement</strong> — The system modifies itself based on what it learns</li>
+</ul>
+<p>Think of it this way: Claude Code is the engine. PAI is everything else that makes it <em>your</em> car.</p>
+<p></p><h3>Do I need to install everything?</h3><a href="#do-i-need-to-install-everything"></a><p></p>
+<p>No. PAI v2 is modular by design:</p>
+<ul>
+<li><strong>Packs are independent</strong> — Install one, install ten, install none</li>
+<li><strong>Start small</strong> — Begin with the Hook System, add more when you need it</li>
+<li><strong>No dependencies on the whole</strong> — Each pack declares its dependencies explicitly</li>
+<li><strong>Incremental adoption</strong> — Use PAI alongside your existing setup</li>
+</ul>
+<p>The best way to start: pick ONE pack that solves a problem you have today.</p>
+<p></p><h3>What's the difference between PAI and Anthropic's plugin system?</h3><a href="#whats-the-difference-between-pai-and-anthropics-plugin-system"></a><p></p>
+<p>Anthropic's plugin system (Skills, slash commands, MCP servers) provides discrete functionality—individual tools your DA can use.</p>
+<p><strong>Anthropic's plugins</strong> = Individual pieces of functionality that don't understand overall context</p>
+<p><strong>PAI</strong> = A complete system where everything understands the context—your goals, your workflows, how pieces work together</p>
+<p>The plugin system offers building blocks. PAI offers a complete system.</p>
+<p></p><h3>Is PAI only for Claude Code?</h3><a href="#is-pai-only-for-claude-code"></a><p></p>
+<p>No. PAI packs are designed to be platform-agnostic. While the examples use Claude Code, the packs work with OpenCode, Cursor, Windsurf, and custom systems. The code is TypeScript, Python, and Bash—the concepts are universal.</p>
+<p></p><h3>How is this different from fabric?</h3><a href="#how-is-this-different-from-fabric"></a><p></p>
+<p><a href="https://github.com/danielmiessler/fabric">Fabric</a> is a collection of AI prompts (patterns) for specific tasks. It's focused on <em>what to ask AI</em>.</p>
+<p>PAI is infrastructure for <em>how your DA operates</em>—memory, skills, routing, context, self-improvement. They're complementary. Many PAI users integrate Fabric patterns into their skills.</p>
+<p></p><h3>What if I break something?</h3><a href="#what-if-i-break-something"></a><p></p>
+<p>The modular design makes recovery easy:</p>
+<ul>
+<li><strong>Packs are isolated</strong> — Breaking one doesn't affect others</li>
+<li><strong>History is preserved</strong> — Your DA's memory survives mistakes</li>
+<li><strong>Git-backed</strong> — Version control everything, roll back when needed</li>
+<li><strong>DA can fix it</strong> — Your DA helped build it, it can help repair it</li>
+</ul>
+<hr />
+<p></p><h2>🎯 Roadmap</h2><a href="#-roadmap"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Local Model Support</strong></td>
+<td>Run PAI with local models (Ollama, llama.cpp) for privacy and cost control</td>
+</tr>
+<tr>
+<td><strong>Granular Model Routing</strong></td>
+<td>Route different tasks to different models based on complexity</td>
+</tr>
+<tr>
+<td><strong>Remote Access</strong></td>
+<td>Access your PAI from anywhere—mobile, web, other devices</td>
+</tr>
+<tr>
+<td><strong>Outbound Phone Calling</strong></td>
+<td>Voice capabilities for outbound calls</td>
+</tr>
+<tr>
+<td><strong>External Notifications</strong></td>
+<td>Robust notification system for Email, Discord, Telegram, Slack</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>🌐 Community</h2><a href="#-community"></a><p></p>
+<p><strong>GitHub Discussions:</strong> <a href="https://github.com/danielmiessler/PAI/discussions">Join the conversation</a></p>
+<p><strong>UL Community Discord:</strong> PAI is discussed in the <a href="https://danielmiessler.com/upgrade">Unsupervised Learning community</a> along with other AI projects</p>
+<p><strong>Twitter/X:</strong> <a href="https://twitter.com/danielmiessler">@danielmiessler</a></p>
+<p><strong>Blog:</strong> <a href="https://danielmiessler.com/">danielmiessler.com</a></p>
+<p></p><h3>Star History</h3><a href="#star-history"></a><p></p>
+<a href="https://star-history.com/#danielmiessler/PAI&amp;Date">
+ 
+   
+   
+   <img alt="Star History Chart" src="https://camo.githubusercontent.com/62aeb15afba4aedd3d9425414e3d294afb0d67cd1b0ec5ec1ea2695d6bbecae6/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d64616e69656c6d696573736c65722f50414926747970653d44617465" />
+ 
+</a>
+<hr />
+<p></p><h2>🤝 Contributing</h2><a href="#-contributing"></a><p></p>
+<p></p><h3>Submit a Pack</h3><a href="#submit-a-pack"></a><p></p>
+<ol>
+<li><strong>Fork the repository</strong></li>
+<li><strong>Create your pack</strong> using <a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Tools/PAIPackTemplate.md">PAIPackTemplate.md</a></li>
+<li><strong>Test it</strong> — Install in a fresh system with AI assistance</li>
+<li><strong>Submit a PR</strong> with examples and testing evidence</li>
+</ol>
+<p>Packs are reviewed for completeness, code quality, security, and usefulness. Most packs reviewed within 7 days.</p>
+<p><strong>Pack authors maintain their packs</strong> — respond to issues, fix bugs, consider feature requests.</p>
+<hr />
+<p></p><h2>📜 License</h2><a href="#-license"></a><p></p>
+<p>MIT License - see <a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr />
+<p></p><h2>🙏 Credits</h2><a href="#-credits"></a><p></p>
+<p><strong>Anthropic and the Claude Code team</strong> — First and foremost. You are moving AI further and faster than anyone right now. Claude Code is the foundation that makes all of this possible.</p>
+<p><strong><a href="https://www.youtube.com/@indydevdan">IndyDevDan</a></strong> — For great videos on meta-prompting and custom agents that have inspired parts of PAI.</p>
+<p></p><h3>Contributors</h3><a href="#contributors"></a><p></p>
+<p><strong><a href="https://github.com/fayerman-source">fayerman-source</a></strong> — Google Cloud TTS provider integration and Linux audio support for the voice system.</p>
+<p><strong>Matt Espinoza</strong> — Extensive testing, ideas, and feedback for the PAI 2.3 release, plus roadmap contributions.</p>
+<hr />
+<p></p><h2>💜 Support This Project</h2><a href="#-support-this-project"></a><p></p>
+
+<hr />
+<p></p><h2>📚 Related Reading</h2><a href="#-related-reading"></a><p></p>
+<ul>
+<li><a href="https://danielmiessler.com/blog/real-internet-of-things">The Real Internet of Things</a> — The vision behind PAI</li>
+<li><a href="https://danielmiessler.com/blog/ai-predictable-path-7-components-2024">AI's Predictable Path: 7 Components</a> — Visual walkthrough of where AI is heading</li>
+<li><a href="https://danielmiessler.com/blog/personal-ai-infrastructure">Building a Personal AI Infrastructure</a> — Full PAI walkthrough with examples</li>
+</ul>
+<hr />
+
+<strong>📜 Update History</strong>
+
+<p><strong>v2.5.0 (2026-01-30) — Think Deeper, Execute Faster</strong></p>
+<ul>
+<li>Two-Pass Capability Selection: Hook hints validated against ISC in THINK phase</li>
+<li>Thinking Tools with Justify-Exclusion: Opt-OUT, not opt-IN for Council, RedTeam, FirstPrinciples, etc.</li>
+<li>Parallel-by-Default Execution: Independent tasks run concurrently via parallel agent spawning</li>
+<li>28 skills, 17 hooks, 356 workflows</li>
+<li><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Releases/v2.5/README.md">Release Notes</a></li>
+</ul>
+<p><strong>v2.4.0 (2026-01-23) — The Algorithm</strong></p>
+<ul>
+<li>Universal problem-solving system with ISC (Ideal State Criteria) tracking</li>
+<li>29 skills, 15 hooks, 331 workflows</li>
+<li>Euphoric Surprise as the outcome metric</li>
+<li>Enhanced security with AllowList enforcement</li>
+<li><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Releases/v2.4/README.md">Release Notes</a></li>
+</ul>
+<p><strong>v2.3.0 (2026-01-15) — Full Releases Return</strong></p>
+<ul>
+<li>Complete <code>.claude/</code> directory releases with continuous learning</li>
+<li>Explicit and implicit rating capture</li>
+<li>Enhanced hook system with 14 production hooks</li>
+<li>Status line with learning signal display</li>
+<li><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Releases/v2.3/README.md">Release Notes</a></li>
+</ul>
+<p><strong>v2.1.1 (2026-01-09) — MEMORY System Migration</strong></p>
+<ul>
+<li>History system merged into pai-core-install as MEMORY System</li>
+</ul>
+<p><strong>v2.1.0 (2025-12-31) — Directory-Based Pack Structure</strong></p>
+<ul>
+<li>All packs migrated from single files to directory structure</li>
+<li>Source code now in real files instead of embedded markdown</li>
+</ul>
+<p><strong>v2.0.1 (2025-12-30) — Pack Expansion</strong></p>
+<ul>
+<li>Added Prompting and Agents skills</li>
+<li>Standardized authentication to single <code>.env</code> location</li>
+</ul>
+<p><strong>v2.0.0 (2025-12-28) — PAI Packs System Launch</strong></p>
+<ul>
+<li>Transitioned from monolithic to modular pack architecture</li>
+<li>Platform-agnostic design</li>
+</ul>
+
+<hr />
+<p></p><h2>⭐ Star History</h2><a href="#-star-history"></a><p></p>
+<p><a href="https://star-history.com/#danielmiessler/Personal_AI_Infrastructure&amp;Date"><img src="https://camo.githubusercontent.com/faeced632b621b99283dd9e30293301a6736fd55e3318c05c1f7507f452a7f9f/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d64616e69656c6d696573736c65722f506572736f6e616c5f41495f496e66726173747275637475726526747970653d44617465" alt="Star History Chart" /></a></p>
+<hr />
+
+</article></div></div>
+  </div>
+</body>
+</html>

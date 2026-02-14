@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OpenClaw Guide Ch.3: Your First Agent</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OpenClaw Guide Ch.3: Your First Agent</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
+    <a href="https://dev.to/linou518/openclaw-guide-ch3-your-first-agent-5gd3" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <h2>
+  <a name="chapter-3-your-first-agent" href="#chapter-3-your-first-agent">
+  </a>
+  Chapter 3: Your First Agent
+</h2>
+
+<blockquote>
+<p>🎯 Learning Objective: Successfully create and configure your first AI Agent and perform basic conversational interactions</p>
+</blockquote>
+
+<h2>
+  <a name="what-is-an-agent" href="#what-is-an-agent">
+  </a>
+  🤖 <strong>What Is an Agent?</strong>
+</h2>
+
+<p>In OpenClaw, an Agent is an AI instance with a unique identity, memory, and capabilities. Each Agent functions like a dedicated AI assistant that can:</p>
+
+<ul>
+<li>🧠 Maintain independent memory and learning capabilities</li>
+<li>🛠️ Use a specific set of tools</li>
+<li>📁 Manage its own workspace</li>
+<li>💬 Interact with users across different channels</li>
+<li>🎯 Focus on specific task domains</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="agent-configuration-structure" href="#agent-configuration-structure">
+  </a>
+  🏗️ <strong>Agent Configuration Structure</strong>
+</h2>
+
+<h3>
+  <a name="basic-configuration-template" href="#basic-configuration-template">
+  </a>
+  <strong>Basic Configuration Template</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"agents"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span>
+      </span><span>"id"</span><span>:</span><span> </span><span>"my-first-agent"</span><span>,</span><span>              </span><span>//</span><span> </span><span>Unique</span><span> </span><span>identifier</span><span>
+      </span><span>"name"</span><span>:</span><span> </span><span>"My First Assistant"</span><span>,</span><span>         </span><span>//</span><span> </span><span>Display</span><span> </span><span>name</span><span>
+      </span><span>"model"</span><span>:</span><span> </span><span>"anthropic/claude-sonnet-4"</span><span>,</span><span> </span><span>//</span><span> </span><span>AI</span><span> </span><span>model</span><span>
+      </span><span>"systemPrompt"</span><span>:</span><span> </span><span>"You are a..."</span><span>,</span><span>       </span><span>//</span><span> </span><span>System</span><span> </span><span>prompt</span><span>
+      </span><span>"workspace"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"root"</span><span>:</span><span> </span><span>"./agents/my-first-agent"</span><span>   </span><span>//</span><span> </span><span>Working</span><span> </span><span>directory</span><span>
+      </span><span>},</span><span>
+      </span><span>"memory"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span>                    </span><span>//</span><span> </span><span>Enable</span><span> </span><span>memory</span><span>
+        </span><span>"maxTokens"</span><span>:</span><span> </span><span>50000</span><span>                  </span><span>//</span><span> </span><span>Memory</span><span> </span><span>capacity</span><span>
+      </span><span>},</span><span>
+      </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"allowlist"</span><span>:</span><span> </span><span>[</span><span>"read"</span><span>,</span><span> </span><span>"write"</span><span>,</span><span> </span><span>"exec"</span><span>]</span><span> </span><span>//</span><span> </span><span>Allowed</span><span> </span><span>tools</span><span>
+      </span><span>}</span><span>
+    </span><span>}</span><span>
+  </span><span>]</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="configuration-field-reference" href="#configuration-field-reference">
+  </a>
+  <strong>Configuration Field Reference</strong>
+</h3>
+
+<div><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Required</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>✅</td>
+<td>Unique Agent identifier</td>
+<td>"main", "coding-assistant"</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>❌</td>
+<td>Display name</td>
+<td>"Coding Helper", "Life Manager"</td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>✅</td>
+<td>AI model</td>
+<td>"anthropic/claude-sonnet-4"</td>
+</tr>
+<tr>
+<td><code>systemPrompt</code></td>
+<td>❌</td>
+<td>System prompt</td>
+<td>Defines the Agent's role and behavior</td>
+</tr>
+<tr>
+<td><code>workspace.root</code></td>
+<td>❌</td>
+<td>Working directory</td>
+<td>"./agents/coding"</td>
+</tr>
+<tr>
+<td><code>tools.allowlist</code></td>
+<td>❌</td>
+<td>Tool allowlist</td>
+<td>["read", "write", "exec"]</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr />
+
+<h2>
+  <a name="handson-creating-your-first-agent" href="#handson-creating-your-first-agent">
+  </a>
+  🎯 <strong>Hands-On: Creating Your First Agent</strong>
+</h2>
+
+<h3>
+  <a name="step-1-plan-the-agents-role" href="#step-1-plan-the-agents-role">
+  </a>
+  <strong>Step 1: Plan the Agent's Role</strong>
+</h3>
+
+<p>Let's create a "Personal Assistant" Agent with these capabilities:</p>
+
+<ul>
+<li>📅 Schedule management and reminders</li>
+<li>📝 Note-taking and organization</li>
+<li>🌐 Information search and summarization</li>
+<li>💻 Basic file operations</li>
+</ul>
+
+<h3>
+  <a name="step-2-create-the-workspace" href="#step-2-create-the-workspace">
+  </a>
+  <strong>Step 2: Create the Workspace</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Navigate to the OpenClaw workspace</span>
+<span>cd</span> ~/.openclaw/workspace-main
+
+<span># Create an Agent-specific directory</span>
+<span>mkdir</span> <span>-p</span> agents/personal-assistant
+<span>cd </span>agents/personal-assistant
+
+<span># Create the basic file structure</span>
+<span>mkdir</span> <span>-p</span> <span>{</span>memory,logs,projects<span>}</span>
+<span>touch </span>MEMORY.md SOUL.md USER.md
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="step-3-write-the-agent-configuration" href="#step-3-write-the-agent-configuration">
+  </a>
+  <strong>Step 3: Write the Agent Configuration</strong>
+</h3>
+
+<p>Edit <code>~/.openclaw/workspace-main/openclaw.json</code>:<br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"gateway"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"port"</span><span>:</span><span> </span><span>18789</span><span>,</span><span>
+    </span><span>"bind"</span><span>:</span><span> </span><span>"loopback"</span><span>
+  </span><span>},</span><span>
+  </span><span>"agents"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span>
+      </span><span>"id"</span><span>:</span><span> </span><span>"personal-assistant"</span><span>,</span><span>
+      </span><span>"name"</span><span>:</span><span> </span><span>"Personal Assistant"</span><span>,</span><span>
+      </span><span>"model"</span><span>:</span><span> </span><span>"anthropic/claude-sonnet-4-20250514"</span><span>,</span><span>
+      </span><span>"systemPrompt"</span><span>:</span><span> </span><span>"You are a professional personal assistant AI. Your job is to help the user manage daily tasks including scheduling, information retrieval, and file management. You should:</span><span>\n\n</span><span>1. Be proactive, efficient, and friendly</span><span>\n</span><span>2. Remember the user's preferences and habits</span><span>\n</span><span>3. Provide practical suggestions and solutions</span><span>\n</span><span>4. Protect user privacy and data security</span><span>\n\n</span><span>Reply concisely and clearly, using structured formats (lists, tables) when appropriate."</span><span>,</span><span>
+      </span><span>"workspace"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"root"</span><span>:</span><span> </span><span>"./agents/personal-assistant"</span><span>
+      </span><span>},</span><span>
+      </span><span>"memory"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span>
+        </span><span>"maxTokens"</span><span>:</span><span> </span><span>100000</span><span>
+      </span><span>}</span><span>
+    </span><span>}</span><span>
+  </span><span>],</span><span>
+  </span><span>"auth"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"profiles"</span><span>:</span><span> </span><span>[</span><span>
+      </span><span>{</span><span>
+        </span><span>"id"</span><span>:</span><span> </span><span>"anthropic"</span><span>,</span><span>
+        </span><span>"provider"</span><span>:</span><span> </span><span>"anthropic"</span><span>
+      </span><span>}</span><span>
+    </span><span>]</span><span>
+  </span><span>},</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"allowlists"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"personal-assistant"</span><span>:</span><span> </span><span>[</span><span>
+        </span><span>"read"</span><span>,</span><span>
+        </span><span>"write"</span><span>,</span><span>
+        </span><span>"exec"</span><span>,</span><span>
+        </span><span>"web_search"</span><span>,</span><span>
+        </span><span>"memory_search"</span><span>,</span><span>
+        </span><span>"memory_get"</span><span>,</span><span>
+        </span><span>"sessions_list"</span><span>,</span><span>
+        </span><span>"cron"</span><span>
+      </span><span>]</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="step-4-create-agent-identity-files" href="#step-4-create-agent-identity-files">
+  </a>
+  <strong>Step 4: Create Agent Identity Files</strong>
+</h3>
+
+<h4>
+  <a name="soulmd-agent-personality" href="#soulmd-agent-personality">
+  </a>
+  <strong>SOUL.md — Agent Personality</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># SOUL.md — Personal Assistant Personality</span>
+
+<span>## Core Traits</span>
+<span>-</span> 🎯 <span>**Proactive**</span>: Anticipates user needs and offers helpful suggestions
+<span>-</span> 🧠 <span>**Smart &amp; Efficient**</span>: Quickly understands instructions, provides precise solutions
+<span>-</span> 😊 <span>**Friendly &amp; Thoughtful**</span>: Warm communication style, cares about the user
+<span>-</span> 🔒 <span>**Trustworthy**</span>: Protects privacy, executes tasks reliably
+
+<span>## Communication Style</span>
+<span>-</span> Uses concise, clear language
+<span>-</span> Presents important information in structured formats
+<span>-</span> Uses emoji appropriately for a personal touch
+<span>-</span> Always maintains professionalism and courtesy
+
+<span>## Working Principles</span>
+<span>1.</span> <span>**User First**</span>: The user's needs and preferences are the top priority
+<span>2.</span> <span>**Think Ahead**</span>: Don't just answer questions — offer relevant suggestions
+<span>3.</span> <span>**Continuous Learning**</span>: Remember user habits, continually improve service
+<span>4.</span> <span>**Safety First**</span>: Protect user data and privacy
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="usermd-user-information" href="#usermd-user-information">
+  </a>
+  <strong>USER.md — User Information</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># USER.md — User Information</span>
+
+<span>## Basic Info</span>
+<span>-</span> <span>**Name**</span>: [User Name]
+<span>-</span> <span>**Timezone**</span>: Asia/Shanghai
+<span>-</span> <span>**Language**</span>: English
+<span>-</span> <span>**Occupation**</span>: [Job Information]
+
+<span>## Preferences</span>
+<span>-</span> <span>**Communication Style**</span>: Concise and direct
+<span>-</span> <span>**Information Format**</span>: Prefers lists and tables
+<span>-</span> <span>**Reminders**</span>: 1 hour before important events
+<span>-</span> <span>**Privacy Level**</span>: High priority on privacy protection
+
+<span>## Common Tasks</span>
+<span>-</span> [ ] Schedule management and reminders
+<span>-</span> [ ] Information search and organization
+<span>-</span> [ ] Document creation and editing
+<span>-</span> [ ] Study material collection
+<span>-</span> [ ] Daily life reminders
+
+<span>## Important Notes</span>
+<span>-</span> Work hours: 9:00–18:00
+<span>-</span> Rest hours: 22:00–8:00 (do not disturb unless urgent)
+<span>-</span> Key contacts: [Contact information]
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="memorymd-initial-memory" href="#memorymd-initial-memory">
+  </a>
+  <strong>MEMORY.md — Initial Memory</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># MEMORY.md — Personal Assistant Memory</span>
+
+<span>## Creation Record</span>
+<span>-</span> <span>**Created**</span>: 2026-02-15
+<span>-</span> <span>**Created by**</span>: New OpenClaw user
+<span>-</span> <span>**Purpose**</span>: Personal daily task management
+
+<span>## User Preferences</span>
+<span>-</span> Communication style: Concise and efficient
+<span>-</span> Information format: Structured presentation
+<span>-</span> Work habits: To be learned
+
+<span>## Important Task Log</span>
+<span>-</span> [ ] Help user get familiar with OpenClaw
+<span>-</span> [ ] Establish daily workflow
+<span>-</span> [ ] Complete personal information profile
+
+<span>## Learning Notes</span>
+<span>-</span> OpenClaw basic concepts understood
+<span>-</span> Agent configuration and deployment complete
+<span>-</span> Tool usage needs hands-on practice
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="launch-and-test-the-agent" href="#launch-and-test-the-agent">
+  </a>
+  🚀 <strong>Launch and Test the Agent</strong>
+</h2>
+
+<h3>
+  <a name="step-1-start-the-openclaw-gateway" href="#step-1-start-the-openclaw-gateway">
+  </a>
+  <strong>Step 1: Start the OpenClaw Gateway</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Make sure you're in the correct workspace</span>
+<span>cd</span> ~/.openclaw/workspace-main
+
+<span># Start the Gateway</span>
+openclaw gateway start
+
+<span># Watch the startup logs</span>
+<span>tail</span> <span>-f</span> logs/gateway.log
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Expected Log Output</strong>:<br />
+</p>
+
+<div>
+<pre><code>[INFO] Gateway starting on port 18789
+[INFO] Loading agent: personal-assistant
+[INFO] Agent personal-assistant workspace: ./agents/personal-assistant
+[INFO] Tools loaded for personal-assistant: read,write,exec,web_search...
+[INFO] Gateway ready for connections
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="step-2-api-test" href="#step-2-api-test">
+  </a>
+  <strong>Step 2: API Test</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Test Agent response</span>
+curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</span>
+  <span>-H</span> <span>"Content-Type: application/json"</span> <span>\</span>
+  <span>-d</span> <span>'{
+    "model": "personal-assistant",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Hello, please introduce yourself"
+      }
+    ]
+  }'</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="expected-response" href="#expected-response">
+  </a>
+  <strong>Expected Response</strong>:
+</h3>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"id"</span><span>:</span><span> </span><span>"chatcmpl-xxx"</span><span>,</span><span>
+  </span><span>"object"</span><span>:</span><span> </span><span>"chat.completion"</span><span>,</span><span>
+  </span><span>"model"</span><span>:</span><span> </span><span>"personal-assistant"</span><span>,</span><span>
+  </span><span>"choices"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span>
+      </span><span>"message"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"role"</span><span>:</span><span> </span><span>"assistant"</span><span>,</span><span>
+        </span><span>"content"</span><span>:</span><span> </span><span>"Hello! 😊 I'm your personal assistant AI. I can help you with:</span><span>\n\n</span><span>📅 **Scheduling**: Arrange meetings, set reminders</span><span>\n</span><span>📝 **Information**: Search and organize documents</span><span>\n</span><span>💻 **File Management**: Create, edit, and manage files</span><span>\n</span><span>🔍 **Research**: Search the web and summarize findings</span><span>\n\n</span><span>I'll remember our conversations and your preferences to provide increasingly personalized service. How can I help you?"</span><span>
+      </span><span>}</span><span>
+    </span><span>}</span><span>
+  </span><span>]</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="basic-conversation-tests" href="#basic-conversation-tests">
+  </a>
+  💬 <strong>Basic Conversation Tests</strong>
+</h2>
+
+<h3>
+  <a name="test-1-basic-interaction" href="#test-1-basic-interaction">
+  </a>
+  <strong>Test 1: Basic Interaction</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Request</span>
+<span>{</span>
+  <span>"model"</span>: <span>"personal-assistant"</span>,
+  <span>"messages"</span>: <span>[</span>
+    <span>{</span><span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Help me create a work plan for today"</span><span>}</span>
+  <span>]</span>
+<span>}</span>
+
+<span># Expected: The Agent will ask about specifics, then help create a plan</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="test-2-tool-usage" href="#test-2-tool-usage">
+  </a>
+  <strong>Test 2: Tool Usage</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Request</span>
+<span>{</span>
+  <span>"model"</span>: <span>"personal-assistant"</span>,
+  <span>"messages"</span>: <span>[</span>
+    <span>{</span><span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Create a README.md file in the working directory"</span><span>}</span>
+  <span>]</span>
+<span>}</span>
+
+<span># Expected: The Agent will use the write tool to create the file</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="test-3-information-search" href="#test-3-information-search">
+  </a>
+  <strong>Test 3: Information Search</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Request</span>
+<span>{</span>
+  <span>"model"</span>: <span>"personal-assistant"</span>,
+  <span>"messages"</span>: <span>[</span>
+    <span>{</span><span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Search for today's weather"</span><span>}</span>
+  <span>]</span>
+<span>}</span>
+
+<span># Expected: The Agent will use the web_search tool to look up weather</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="integrate-with-telegram-bot-optional" href="#integrate-with-telegram-bot-optional">
+  </a>
+  📱 <strong>Integrate with Telegram Bot (Optional)</strong>
+</h2>
+
+<h3>
+  <a name="create-a-telegram-bot" href="#create-a-telegram-bot">
+  </a>
+  <strong>Create a Telegram Bot</strong>
+</h3>
+
+<ol>
+<li>
+<strong>Find <a href="https://dev.to/botfather">@botfather</a></strong>: Search for <a href="https://dev.to/botfather">@botfather</a> in Telegram</li>
+<li>
+<strong>Create a new Bot</strong>: Send <code>/newbot</code>
+</li>
+<li>
+<strong>Set the name</strong>: e.g., "My Personal Assistant"</li>
+<li>
+<strong>Set the username</strong>: e.g., "my_personal_assistant_bot"</li>
+<li>
+<strong>Get the Token</strong>: Save the Bot Token</li>
+</ol>
+
+<h3>
+  <a name="configure-telegram-integration" href="#configure-telegram-integration">
+  </a>
+  <strong>Configure Telegram Integration</strong>
+</h3>
+
+<p>Edit <code>openclaw.json</code> and add the Telegram configuration:<br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"gateway"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"port"</span><span>:</span><span> </span><span>18789</span><span>,</span><span>
+    </span><span>"bind"</span><span>:</span><span> </span><span>"loopback"</span><span>
+  </span><span>},</span><span>
+  </span><span>"agents"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span>
+      </span><span>"id"</span><span>:</span><span> </span><span>"personal-assistant"</span><span>
+      </span><span>//</span><span> </span><span>...</span><span> </span><span>other</span><span> </span><span>config</span><span> </span><span>remains</span><span> </span><span>unchanged</span><span>
+    </span><span>}</span><span>
+  </span><span>],</span><span>
+  </span><span>"telegram"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"accounts"</span><span>:</span><span> </span><span>[</span><span>
+      </span><span>{</span><span>
+        </span><span>"name"</span><span>:</span><span> </span><span>"personal-assistant-bot"</span><span>,</span><span>
+        </span><span>"botToken"</span><span>:</span><span> </span><span>"1234567890:ABCDEF..."</span><span>,</span><span>  </span><span>//</span><span> </span><span>Your</span><span> </span><span>Bot</span><span> </span><span>Token</span><span>
+        </span><span>"binding"</span><span>:</span><span> </span><span>"personal-assistant"</span><span>      </span><span>//</span><span> </span><span>Bind</span><span> </span><span>to</span><span> </span><span>personal-assistant</span><span>
+      </span><span>}</span><span>
+    </span><span>]</span><span>
+  </span><span>},</span><span>
+  </span><span>"auth"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"profiles"</span><span>:</span><span> </span><span>[</span><span>
+      </span><span>{</span><span>
+        </span><span>"id"</span><span>:</span><span> </span><span>"anthropic"</span><span>,</span><span>
+        </span><span>"provider"</span><span>:</span><span> </span><span>"anthropic"</span><span>
+      </span><span>}</span><span>
+    </span><span>]</span><span>
+  </span><span>},</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"allowlists"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"personal-assistant"</span><span>:</span><span> </span><span>[</span><span>
+        </span><span>"read"</span><span>,</span><span> </span><span>"write"</span><span>,</span><span> </span><span>"exec"</span><span>,</span><span> </span><span>"web_search"</span><span>,</span><span>
+        </span><span>"memory_search"</span><span>,</span><span> </span><span>"memory_get"</span><span>,</span><span> </span><span>"message"</span><span>,</span><span>
+        </span><span>"sessions_list"</span><span>,</span><span> </span><span>"cron"</span><span>
+      </span><span>]</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="restart-and-test" href="#restart-and-test">
+  </a>
+  <strong>Restart and Test</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># Restart the Gateway to load the Telegram configuration</span>
+openclaw gateway restart
+
+<span># Find your Bot in Telegram and send a message</span>
+<span># You should receive a reply from the Agent</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="tool-usage-examples" href="#tool-usage-examples">
+  </a>
+  🛠️ <strong>Tool Usage Examples</strong>
+</h2>
+
+<h3>
+  <a name="file-operations" href="#file-operations">
+  </a>
+  <strong>File Operations</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># User: "Create a shopping list for me"</span>
+<span># Agent executes:</span>
+write<span>(</span><span>"shopping-list.md"</span>, <span>"# Shopping List</span><span>\n\n</span><span>- [ ] Bread</span><span>\n</span><span>- [ ] Milk</span><span>\n</span><span>- [ ] Eggs"</span><span>)</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="information-search" href="#information-search">
+  </a>
+  <strong>Information Search</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># User: "What's the weather like in Tokyo today?"</span>
+<span># Agent executes:</span>
+web_search<span>(</span><span>"Tokyo weather today"</span><span>)</span>
+<span># Then formats and returns the search results</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="memory-operations" href="#memory-operations">
+  </a>
+  <strong>Memory Operations</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># User: "Remember that I like coffee"</span>
+<span># Agent executes:</span>
+memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Likes coffee"</span><span>)</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="troubleshooting" href="#troubleshooting">
+  </a>
+  ❗ <strong>Troubleshooting</strong>
+</h2>
+
+<h3>
+  <a name="issue-1-agent-fails-to-start" href="#issue-1-agent-fails-to-start">
+  </a>
+  <strong>Issue 1: Agent Fails to Start</strong>
+</h3>
+
+
+
+<div>
+<pre><code>[ERROR] Failed to load agent personal-assistant: Invalid model configuration
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Solution</strong>:</p>
+
+<ol>
+<li>Check <code>openclaw.json</code> for syntax errors</li>
+<li>Verify API key configuration: <code>openclaw auth list</code>
+</li>
+<li>Test model connectivity: <code>openclaw test anthropic</code>
+</li>
+</ol>
+
+<h3>
+  <a name="issue-2-tool-permission-error" href="#issue-2-tool-permission-error">
+  </a>
+  <strong>Issue 2: Tool Permission Error</strong>
+</h3>
+
+
+
+<div>
+<pre><code>[ERROR] Tool 'web_search' not allowed for agent personal-assistant
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Solution</strong>:<br />
+Add the required tool to <code>tools.allowlists</code>:<br />
+</p>
+
+<div>
+<pre><code><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+  </span><span>"allowlists"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"personal-assistant"</span><span>:</span><span> </span><span>[</span><span>"read"</span><span>,</span><span> </span><span>"write"</span><span>,</span><span> </span><span>"exec"</span><span>,</span><span> </span><span>"web_search"</span><span>]</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="issue-3-memory-file-not-accessible" href="#issue-3-memory-file-not-accessible">
+  </a>
+  <strong>Issue 3: Memory File Not Accessible</strong>
+</h3>
+
+
+
+<div>
+<pre><code>[ERROR] Cannot read MEMORY.md: ENOENT
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Solution</strong>:<br />
+</p>
+
+<div>
+<pre><code><span># Ensure the Agent workspace exists</span>
+<span>mkdir</span> <span>-p</span> agents/personal-assistant
+<span>cd </span>agents/personal-assistant
+
+<span># Create the required memory files</span>
+<span>touch </span>MEMORY.md SOUL.md USER.md
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="issue-4-telegram-bot-not-responding" href="#issue-4-telegram-bot-not-responding">
+  </a>
+  <strong>Issue 4: Telegram Bot Not Responding</strong>
+</h3>
+
+
+
+<div>
+<pre><code>[ERROR] Telegram polling failed: 401 Unauthorized
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Solution</strong>:</p>
+
+<ol>
+<li>Check that the Bot Token is correct</li>
+<li>Confirm the Bot is activated</li>
+<li>Test the Token: <code>curl https://api.telegram.org/bot&lt;TOKEN&gt;/getMe</code>
+</li>
+</ol>
+
+
+<hr />
+
+<h2>
+  <a name="agent-optimization-tips" href="#agent-optimization-tips">
+  </a>
+  🎯 <strong>Agent Optimization Tips</strong>
+</h2>
+
+<h3>
+  <a name="performance-optimization" href="#performance-optimization">
+  </a>
+  <strong>Performance Optimization</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"id"</span><span>:</span><span> </span><span>"personal-assistant"</span><span>,</span><span>
+  </span><span>"model"</span><span>:</span><span> </span><span>"anthropic/claude-sonnet-4-20250514"</span><span>,</span><span>
+  </span><span>"maxConcurrency"</span><span>:</span><span> </span><span>2</span><span>,</span><span>           </span><span>//</span><span> </span><span>Limit</span><span> </span><span>concurrency</span><span>
+  </span><span>"timeout"</span><span>:</span><span> </span><span>30000</span><span>,</span><span>              </span><span>//</span><span> </span><span>30</span><span>-second</span><span> </span><span>timeout</span><span>
+  </span><span>"contextPruning"</span><span>:</span><span> </span><span>{</span><span>            </span><span>//</span><span> </span><span>Context</span><span> </span><span>pruning</span><span>
+    </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span>
+    </span><span>"maxTokens"</span><span>:</span><span> </span><span>50000</span><span>,</span><span>
+    </span><span>"strategy"</span><span>:</span><span> </span><span>"sliding-window"</span><span>
+  </span><span>},</span><span>
+  </span><span>"caching"</span><span>:</span><span> </span><span>{</span><span>                   </span><span>//</span><span> </span><span>Enable</span><span> </span><span>caching</span><span>
+    </span><span>"enabled"</span><span>:</span><span> </span><span>true</span><span>,</span><span>
+    </span><span>"maxEntries"</span><span>:</span><span> </span><span>1000</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="security-configuration" href="#security-configuration">
+  </a>
+  <strong>Security Configuration</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"security"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"sandbox"</span><span>:</span><span> </span><span>true</span><span>,</span><span>             </span><span>//</span><span> </span><span>Enable</span><span> </span><span>sandbox</span><span>
+    </span><span>"allowedPaths"</span><span>:</span><span> </span><span>[</span><span>            </span><span>//</span><span> </span><span>Restrict</span><span> </span><span>file</span><span> </span><span>access</span><span>
+      </span><span>"./agents/personal-assistant/*"</span><span>,</span><span>
+      </span><span>"./shared/*"</span><span>
+    </span><span>],</span><span>
+    </span><span>"deniedCommands"</span><span>:</span><span> </span><span>[</span><span>          </span><span>//</span><span> </span><span>Denied</span><span> </span><span>commands</span><span>
+      </span><span>"rm -rf"</span><span>,</span><span>
+      </span><span>"sudo"</span><span>,</span><span>
+      </span><span>"passwd"</span><span>
+    </span><span>]</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="monitoring-and-logging" href="#monitoring-and-logging">
+  </a>
+  📊 <strong>Monitoring and Logging</strong>
+</h2>
+
+<h3>
+  <a name="check-agent-status" href="#check-agent-status">
+  </a>
+  <strong>Check Agent Status</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># View all Agent statuses</span>
+openclaw status
+
+<span># View a specific Agent's status</span>
+openclaw status personal-assistant
+
+<span># View real-time logs</span>
+<span>tail</span> <span>-f</span> logs/agents/personal-assistant.log
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="performance-monitoring" href="#performance-monitoring">
+  </a>
+  <strong>Performance Monitoring</strong>
+</h3>
+
+
+
+<div>
+<pre><code><span># View system resource usage</span>
+openclaw metrics
+
+<span># View Agent statistics</span>
+openclaw stats personal-assistant
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="chapter-summary" href="#chapter-summary">
+  </a>
+  ✅ <strong>Chapter Summary</strong>
+</h2>
+
+<p>After this chapter, you should have:</p>
+
+<ul>
+<li>[x] Understood the Agent concept and configuration structure</li>
+<li>[x] Successfully created your first personal assistant Agent</li>
+<li>[x] Configured Agent identity files (SOUL.md, USER.md, MEMORY.md)</li>
+<li>[x] Completed basic conversation tests</li>
+<li>[x] Mastered tool usage and permission configuration</li>
+<li>[x] Learned about Telegram Bot integration</li>
+<li>[x] Known solutions for common issues</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="next-steps" href="#next-steps">
+  </a>
+  🚀 <strong>Next Steps</strong>
+</h2>
+
+<p>Congratulations! You now have a working AI Agent. Next, you can:</p>
+
+<p><strong><a href="https://../chapter4/README.md">Next Chapter: Tools and Skills →</a></strong></p>
+
+
+<hr />
+
+<h2>
+  <a name="practice-exercises" href="#practice-exercises">
+  </a>
+  📝 <strong>Practice Exercises</strong>
+</h2>
+
+<ol>
+<li>
+<strong>Customize</strong>: Modify <code>SOUL.md</code> to create Agents with different personalities</li>
+<li>
+<strong>Expand Skills</strong>: Add new tool permissions to your Agent</li>
+<li>
+<strong>Multi-Channel Test</strong>: Configure a Telegram Bot and test interactions</li>
+<li>
+<strong>Memory Features</strong>: Have the Agent remember your preferences and habits</li>
+<li>
+<strong>Error Handling</strong>: Deliberately introduce bad configurations and practice troubleshooting</li>
+</ol>
+
+<p><strong>Ready to explore more advanced features?</strong> 🎯</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

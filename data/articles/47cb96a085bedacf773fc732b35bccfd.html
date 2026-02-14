@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>3D printing with a 4,000-pound industrial robot</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>3D printing with a 4,000-pound industrial robot</h1>
+  <div class="metadata">
+    Source: Arduino Blog | Date: 2/4/2026 | Lang: EN |
+    <a href="https://blog.arduino.cc/2026/02/04/3d-printing-with-a-4000-pound-industrial-robot/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            <h3>3D printing with a 4,000-pound industrial robot</h3>
+            <p><span>Arduino Team</span> — <span>February 4th, 2026</span>
+            </p>
+
+
+            <div>
+				
+<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/02/e5b528fa-404c-4aca-90ca-e3c17926a485-1024x576.png" alt="" /></p></figure>
+
+
+
+<p>There are industrial robots, and there is Brian Brocken’s two-ton behemoth: an ABB IRB6400 capable of moving at least 150kg (330 pounds), thanks to partial hydraulic actuation. It is an absurd robot that a factory might use to put small engines in cars. So, it is an understatement to say it was overkill when <a href="https://projecthub.arduino.cc/bribro12/turning-a-2-ton-robot-into-a-3d-printer-86a446">Brocken turned the robot into a 3D printer</a>.</p>
+
+
+
+<p>Rigidity is important for 3D printing and this robot has that in spades. But Brocken’s unit is very old and difficult to control, so 3D printing with it was much more difficult than simply strapping an extruder to the end and loading up a g-code file.</p>
+
+
+
+<p>However, Brocken <em>did </em>strap an extruder to the end. That is a Creality Sprite Pro, which is small and light at 228g — wouldn’t want to strain the robot. That operates under the control of a RAMPS 1.4 board on an <a href="https://store.arduino.cc/products/arduino-mega-2560-rev3">Arduino Mega 2560</a>, which is classic combo for DIY 3D printer builds.</p>
+
+
+
+<p>But the Arduino and RAMPS board only control the extruder. They don’t interface with the robot at all, which runs a special ABB RAPID language meant to read programs from floppy disks. To coordinate the movement of the robot with the extrusion, Brocken had to create custom software that drip-feeds G-code to the Arduino and ABB RAPID code (converted from G-code) to the robot at the same time. That required special care to sync the timing of the commands, in addition to ensuring that speed and acceleration match.</p>
+
+
+
+<figure><p>
+
+</p></figure>
+
+
+
+<p>But it did work and the results are acceptable. Or at least better than you would expect from this giant of a robot.</p>
+
+                
+            </div>
+        </div></div>
+  </div>
+</body>
+</html>

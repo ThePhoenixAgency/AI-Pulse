@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Google Ties Suspected Russian Actor to CANFAIL Malware Attacks on Ukrainian Orgs</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/13/2026 | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/google-ties-suspected-russian-actor-to.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 13, 2026</span></span><span>Threat Intelligence / Malware</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiesoKhsaUAZZj0bK1IJ7xmSmGHegLjyAfbLfxf6rngoAh3HKgRNVk_XxSGjwDPM-6nz_7bueRxN_icdflQ6bdwUptCiekeAMN67s-Ygdp6Ryk0S60X-gDQF_ZKADRxgLl7slbZKvHPSElrANxp23lKUwtselRObvGhmo_CMOqDXnF1B31y61LXkX6AB_fS/s1600/russian-hackers.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiesoKhsaUAZZj0bK1IJ7xmSmGHegLjyAfbLfxf6rngoAh3HKgRNVk_XxSGjwDPM-6nz_7bueRxN_icdflQ6bdwUptCiekeAMN67s-Ygdp6Ryk0S60X-gDQF_ZKADRxgLl7slbZKvHPSElrANxp23lKUwtselRObvGhmo_CMOqDXnF1B31y61LXkX6AB_fS/s1600/russian-hackers.jpg" /></a></p>
+<p>A previously undocumented threat actor has been attributed to attacks targeting Ukrainian organizations with malware known as <strong>CANFAIL</strong>.</p>
+<p>Google Threat Intelligence Group (GTIG) described the hacking group as possibly affiliated with Russian intelligence services. The threat actor is assessed to have targeted defense, military, government, and energy organizations within the Ukrainian regional and national governments.</p>
+<p>However, the group has also exhibited growing interest in aerospace organizations, manufacturing companies with military and drone ties, nuclear and chemical research organizations, and international organizations involved in conflict monitoring and humanitarian aid in Ukraine, GTIG added.</p>
+
+<p>"Despite being less sophisticated and resourced than other Russian threat groups, this actor recently began to overcome some technical limitations using LLMs [large language models]," GTIG <a href="https://cloud.google.com/blog/topics/threat-intelligence/threats-to-defense-industrial-base" target="_blank">said</a>.</p>
+
+<p>"Through prompting, they conduct reconnaissance, create lures for social engineering, and seek answers to basic technical questions for post-compromise activity and C2 infrastructure setup."</p>
+<p>Recent phishing campaigns have involved the threat actor impersonating legitimate national and local Ukrainian energy organizations to obtain unauthorized access to organizational and personal email accounts.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSu4ewPNyJbetUzzRhzpPIUIhGjleq3lSMJj69ZV-AI9Gp7TQZRBAj5nGzI_1nVIDqU_T70rcvP6r-bDOSQVZh87l8el-aU6BZtLJzaNtS7tku3fYouiGQ6TpODIOe_W-aBDsC3C0-ZOtVlASTCpJ0NlG8rPA5BP_26R0L20YQtpe0XDzacUWXdIGldklr/s1600/unc.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSu4ewPNyJbetUzzRhzpPIUIhGjleq3lSMJj69ZV-AI9Gp7TQZRBAj5nGzI_1nVIDqU_T70rcvP6r-bDOSQVZh87l8el-aU6BZtLJzaNtS7tku3fYouiGQ6TpODIOe_W-aBDsC3C0-ZOtVlASTCpJ0NlG8rPA5BP_26R0L20YQtpe0XDzacUWXdIGldklr/s1600/unc.png" /></a></p>
+<p>The group is also said to have masqueraded as a Romanian energy company that works with customers in Ukraine, in addition to targeting a Romanian firm and conducting reconnaissance on Moldovan organizations.</p>
+<p>To enable its operations, the threat actor generates email address lists tailored to specific regions and industries based on their research. The attack chains seemingly contain LLM-generated lures and embed Google Drive links pointing to a RAR archive containing CANFAIL malware.</p>
+
+<p>Typically disguised with a double extension to pass off as a PDF document (*.pdf.js), CANFAIL is an obfuscated JavaScript malware that's designed to execute a PowerShell script that, in turn, downloads and executes a memory-only PowerShell dropper. In parallel, it displays a fake "error" message to the victim.</p>
+<p>Google said the threat actor is also linked to a campaign called <a href="https://thehackernews.com/2025/10/ukraine-aid-groups-targeted-through.html" target="_blank">PhantomCaptcha</a> that was disclosed by SentinelOne SentinelLABS in October 2025 as targeting organizations associated with Ukraine's war relief efforts through phishing emails that direct recipients to fake pages hosting <a href="https://thehackernews.com/2026/01/clickfix-attacks-expand-using-fake.html" target="_blank">ClickFix-style instructions</a> to activate the infection sequence and deliver a WebSocket-based trojan.</p>
+
+<p>Found this article interesting?  Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+</body>
+</html>

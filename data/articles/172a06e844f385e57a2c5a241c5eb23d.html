@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Top 10 web hacking techniques of 2025</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Top 10 web hacking techniques of 2025</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 2/5/2026 | Lang: EN |
+    <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2025" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    
+    
+    
+<div>
+    <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png" /></p>
+</div>
+    <ul>
+        <li>
+            <p><span></span><strong>Published: </strong>05 February 2026 at 15:28 UTC</p>
+        </li>
+        <li>
+            <p><strong>Updated: </strong>06 February 2026 at 08:07 UTC</p>
+        </li>
+        <li>
+        </li>
+    </ul>
+    <p><img src="https://portswigger.net/cms/images/49/43/3592-article-top_10_wht_2025_results_article_header.png" /></p><p>Welcome to the Top 10 Web Hacking Techniques of 2025, the <a href="https://portswigger.net/research/top-10-web-hacking-techniques">19th edition</a> of our annual community-powered effort to identify the most innovative must-read web security research published in the last year.</p>
+<p>This post is the culmination of a three-step collaboration with the security community. Over the last month:</p>
+<ul><li>The community <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2025-nominations-open">submitted nominations</a> for the top research from 2025</li><li>The community voted on those nominations to build a shortlist of the top 15</li><li>An expert panel voted on the shortlist to select and order the 10 finalists</li></ul>
+<p>We're hoping to wrap up with an in-person award ceremony with physical prizes at a DEF CON village - stay tuned for further details on this.</p>
+<p>This year, the community nominated 63 pieces of research as contenders. This is significantly fewer than the crazy 121 submissions last time, possibly because we collectively got distracted by AI. That said, it's back in line with historical nomination numbers from 2022 and 2023.</p>
+<p>I was honoured to see the fifteen finalists from the community vote included my own talk HTTP/1.1 Must Die: the desync endgame, but as usual I've excluded it from the final top ten.</p>
+<p>An expert panel consisting of <a href="https://bsky.app/profile/agarri.fr">Nicolas Grégoire</a>, <a href="https://x.com/irsdl">Soroush Dalili</a>, <a href="https://www.stokfredrik.com/">STÖK</a>, <a href="https://twitter.com/LiveOverflow">Fabian (LiveOverflow)</a>, and <a href="https://jameskettle.com/">myself</a> has reviewed the finalists and we're thrilled to bring you the top ten web hacking techniques of 2025!</p>
+<h3>10 - Parser Differentials: When Interpretation Becomes a Vulnerability</h3>
+<p>In tenth place, we've got <a href="https://www.youtube.com/watch?v=Dq_KVLXzxH8">Parser Differentials: When Interpretation Becomes a Vulnerability</a> by <a href="https://x.com/joernchen">@joernchen</a>, featuring case-studies affecting a broad range of languages, frameworks and technologies. There's sadly no accompanying whitepaper but this presentation is an excellent starting point for someone looking for ideas to get started with their own research.</p>
+<h3>9 - Playing with HTTP/2 CONNECT</h3>
+<p>HTTP/2 has been around for a while now but still rewards researchers who aren't scared of RFC-diving and custom tool development. Whenever a new protocol emerges you'll find old flaws resurfacing in fresh code, and <a href="https://blog.flomb.net/posts/http2connect/">Playing with HTTP/2 CONNECT</a> illustrates this succinctly, with internal port-scan tooling. As support for HTTP/2 CONNECT spreads, this research from <a href="https://blog.flomb.net/about/">@flomb</a> is another great candidate to build on.</p>
+<h3>8 - XSS-Leak: Leaking Cross-Origin Redirects</h3>
+<p>Don't be fooled by the name - <a href="https://blog.babelo.xyz/posts/cross-site-subdomain-leak/">XSS-Leak: Leaking Cross-Origin Redirects</a> by <a href="https://blog.babelo.xyz/whoami/">Salvatore Abello</a> has nothing to do with <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a>. This beautiful attack uses Chrome's connection-pool prioritisation algorithm as an oracle to leak redirect hostnames cross-domain. Even if Chrome patches their algorithm, this post will remain valuable as an inspiration for future xs-leaks.</p>
+<h3>7 - Next.js, cache, and chains: the stale elixir</h3>
+<p>While standalone <a href="https://portswigger.net/web-security/web-cache-poisoning">web cache poisoning</a> is well-understood, internal cache poisoning remains an overlooked and distinctly scary variant. The moment I saw <a href="https://zhero-web-sec.github.io/research-and-things/nextjs-cache-and-chains-the-stale-elixir">Next.js, cache, and chains: the stale elixir</a> back in January last year, I knew it was destined for the top ten. In this writeup of a critical vulnerability in the heart of next.js, <a href="https://zhero-web-sec.github.io/zhero/">Rachid Allam</a> shows how to use source-code analysis to piece together masterful attacks and naturally leaves us wondering what surprises are lurking in other popular frameworks.</p>
+<h3>6 - Cross-Site ETag Length Leak</h3>
+<p>The second XS-Leak to land in this year's top ten, <a href="https://blog.arkark.dev/2025/12/26/etag-length-leak">Cross-Site ETag Length Leak</a> was first discovered as an unintended solution to a CTF. <a href="https://arkark.dev/">Takeshi Kaneko</a> crafts an elegant chain of multiple edge-cases to leak the response-size cross-domain. It takes the edge over the origin-leak technique due to being slightly more versatile - and harder to patch.</p>
+<h3>5 - SOAPwn: Pwning .NET Framework Apps Through HTTP Client Proxies And WSDL</h3>
+<p><a href="https://watchtowr.com/wp-content/uploads/SOAPwnwatchtowr_soappwn-research-whitepaper_10-12-2025.pdf">SOAPwn</a> starts with a single flaw in HttpWebClientProtocol that Microsoft refused to fix. <a href="https://x.com/chudyPB">Piotr Bazydło</a> then gradually develops this into a powerful exploitation sink enabling RCE on a bunch of products. Don't be put off by the 93-page whitepaper - it's surprisingly easy to read.</p>
+<h3>4 - Lost in Translation: Exploiting Unicode Normalization</h3>
+<p>Unicode normalization attacks have lurked on the edge of testing methodologies for years, periodically grabbing the limelight before fading into the background. In <a href="https://www.youtube.com/watch?v=ETB2w-f3pM4">Lost in Translation</a>, <a href="https://x.com/ryancbarnett">Ryan</a> &amp; <a href="https://x.com/4ng3lhacker">Isabella</a> Barnett tackle this vast research topic, combining diverse exploit samples with updates to third-party tools including <a href="https://github.com/portswigger/active-scan-plus-plus">ActiveScan++</a>. Ryan's unique vantage point at a major WAF vendor, seeing what attacks actually get used in the wild, makes this the highly practical talk that Unicode deserves.</p>
+<h3>3 - Novel SSRF Technique Involving HTTP Redirect Loops</h3>
+<p>"But why did it work?" This <a href="https://slcyber.io/research-center/novel-ssrf-technique-involving-http-redirect-loops/">technique for making blind SSRF visible</a> from <a href="https://x.com/infosec_au">@shubs</a> is beautiful, simple and powerful. The detailed writeup of the discovery story provides a rare glimpse into the messy truth behind great research findings. There's some powerful takeaways here but I don't want to spoil them - read it closely, and contemplate. In the words of panelist Soroush, "that's magic".</p>
+<h3>2 - ORM Leaking More Than You Joined For</h3>
+<p>Like XS-leaks? ORM leaks are their chunky server-side cousin. <a href="https://www.elttam.com/blog/leaking-more-than-you-joined-for/">ORM Leaking More Than You Joined For</a> evolves ORM leaks from a niche, framework-specific vulnerability into a generic methodology for exploiting search and filtering capabilities. As <a href="https://portswigger.net/web-security/sql-injection">SQL injection</a> fades into the background, creative ways to dump the database are always welcome. A well earned #2 for this research from <a href="https://www.linkedin.com/in/alex-brown-581075172/">Alex Brown</a>.</p>
+<h3>1 - Successful Errors: New Code Injection and SSTI Techniques</h3>
+<p>Successful Errors: New Code Injection and SSTI Techniques introduces new error-based techniques for exploiting blind <a href="https://portswigger.net/web-security/server-side-template-injection">server-side template injection</a>. This superb analysis also includes novel polyglot-based detection techniques to comprehensively expose this attack class. By adapting old-school techniques associated with SQL injection, and integrating these into a powerful open-source toolkit, <a href="https://github.com/vladko312">Vladislav Korchagin</a> might just have ushered in a new era of server-side template injection. Congrats on a hard-earned win!</p>
+<h3><a>Conclusion</a></h3><a>
+<p>2025 saw the rise of side-channels as a core exploitation primitive. It'll be interesting to see if this trend continues for 2026 - or vibe-coding going mainstream takes us back to the bad old days.</p>
+</a><p><a>As always, with 63 nominations many great writeups didn't make the final fifteen, let alone the top ten! Here's a tiny sample of some of the delights awaiting you in the </a><a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2025-nominations-open">full nomination list</a>.</p>
+<ul><li>Novel desync techniques involving malformed chunks</li><li>Multiple techniques to stall browser redirects, enabling further exploit chains</li><li>New SAML exploitation techniques enabling complete authentication bypass</li></ul>
+
+<p>Also, if you spotted some exceptional research from 2025 that never got nominated, chuck me an email and I'll add it to the list.</p>
+<p>Part of what lands an entry in the top 10 is its expected longevity, so it's well worth getting caught up with <a href="https://portswigger.net/research/top-10-web-hacking-techniques">the top ten archive</a> too. If you're interested in getting a preview of what might win from 2026, you can <a href="https://portswigger.net/research/rss">subscribe to our RSS</a>, join <a href="https://www.reddit.com/r/websecurityresearch/">r/websecurityresearch</a>, hop on <a href="https://discord.gg/tDtgSMjqsc">our Discord</a>, or follow us on social. If you're interested in doing this kind of research yourself, I've shared a few lessons I've learned over the years in <a href="https://portswigger.net/research/hunting-evasive-vulnerabilities">Hunting Evasive Vulnerabilities</a>, <a href="https://portswigger.net/research/how-i-choose-a-security-research-topic">How to choose a security research topic</a>, and <a href="https://portswigger.net/research/so-you-want-to-be-a-web-security-researcher">So you want to be a web security researcher?</a></p>
+<p>Massive thanks to the panel for contributing their time and expertise to curating the final result, and thanks also to everyone who took part! Without your nominations, votes, and most-importantly research, this wouldn't be possible.</p>
+<p>Till next time!</p>
+    
+    <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
+  </div>
+</body>
+</html>

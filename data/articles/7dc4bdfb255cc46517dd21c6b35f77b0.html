@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux Gets Rid Of Intel 440BX EDAC Driver For Old Pentium CPUs After Being Broken For 19+ Years</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Linux Gets Rid Of Intel 440BX EDAC Driver For Old Pentium CPUs After Being Broken For 19+ Years</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Linux-Drops-Old-440BX-EDAC" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp" /></p><p>
+As some long overdue housekeeping, the Linux 7.0 kernel has removed an Error Detection And Correction "EDAC" driver for the Intel 440BX and 440GX chipset. The driver is being removed not only because that chipset was just used by old Celerons and Pentium II / Pentium III CPUs but that it's been in the kernel all this time while being known to be broken for 19+ years.
+</p><p>
+The Intel 440BX chipset and the higher-end 440GX chipset were used for Slot 1 and Socket 370 P6-based CPUs from the late 90's. Long obsolete and incredibly unlikely anyone still having an old Pentium II / Pentium III are running modern Linux software stacks on them with the newest upstream kernel...
+</p><p>
+Back in 2007, the i82443bxgx EDAC driver for memory error detection/correction on the 440BX / 440GX systems was <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=28f96eeafc89">marked as broken</a> with the basis:
+</p><blockquote>"drivers/edac-new-i82443bxgz-mc-driver: mark as broken
+<p>
+It will claim the PCI devices from under intel_agp.ko's feet.  Greg is brewing some fix for that."</p></blockquote>
+<p>Nineteen years later after being being marked as broken, no fix for that Intel AGP interaction ever materialized.
+</p><p>
+Now finally with Linux 7.0 that kernel is outright removed. Nearly 500 codes dropped from the Linux kernel tree for that broken driver that's long been obsolete.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=intel_p3_sml" alt="Intel Pentium III CPU" /></p>
+<p>The EDAC pull for Linux 7.0 also drops the obsolete r82600 driver used for the Radisys 82600 embedded chipset used with Pentium III era processors. This driver wasn't "broken" but long obsolete and likely used by anyone running upstream kernels.
+</p><p>
+The <a href="https://lore.kernel.org/lkml/20260209135708.GAaYnntIzX5fP95e9T@fat_crate.local/">EDAC pull request</a> in addition to dropping those obsolete drivers does add support for Intel Amston Lake and Intel Panther Lake H to the igen6_edac driver. These EDAC changes have all been merged for Linux 7.0.</p></div></div>
+  </div>
+</body>
+</html>

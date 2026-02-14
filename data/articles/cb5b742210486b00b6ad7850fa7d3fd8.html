@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Intel Nova Lake Sound Support In Linux 7.0</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Intel Nova Lake Sound Support In Linux 7.0</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Linux-7.0-Sound" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="INTEL" src="https://www.phoronix.com/assets/categories/intel.webp" /></p><p>
+Merged for the Linux 6.19 kernel was <a href="https://www.phoronix.com/news/Linux-6.19-Sound">initial Nova Lake S audio support</a>. Now merged this week for the Linux 7.0 kernel is enabling sound support for additional <a href="https://www.phoronix.com/search/Nova+Lake">Nova Lake</a> platforms.
+</p><p>
+Among the sound subsystem changes for Linux 7.0 are merging support for Intel Nova Lake (non-S) models. The commit adding the Nova Lake SOF driver integration simply reads:
+</p><blockquote>"Add support for Nova Lake (NVL).
+<br />The core count for NVL is different compared to NVL-S (4 vs 2)"</blockquote>
+<p>The Linux SOF driver is now ready for the Nova Lake platform along with intel-dsp-config support and related bits. On the Sound Open Firmware side, <a href="https://www.phoronix.com/news/Sound-Open-Firmware-2.14">SOF 2.14</a> brought initial Nova Lake platform support for that upstream open-source firmware both for NVL and NVL-S.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=linux_7_nvl" alt="Nova Lake audio in Linux 7.0" /></p>
+<p>The Linux 7.0 sound updates also add <a href="https://www.phoronix.com/news/Focusrite-Forte-Linux-7.0">support for the Focusrite Forte</a> USB audio mixer, AMD ACP 7.0 match entires for Cirrus Logic parts, a Realtek HDA driver quirk for the Minisforum V3 SE, Realtek RT1320 and RT5575 support, Sophgo CV1800B support, and other audio hardware quirks and fixes. The full list of sound patches can be found via <a href="https://lore.kernel.org/lkml/87tsvohaxx.wl-tiwai@suse.de/">this pull</a> that is already merged for Linux 7.0 Git.</p></div></div>
+  </div>
+</body>
+</html>

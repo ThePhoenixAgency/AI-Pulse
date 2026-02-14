@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L’UE et les Pays-Bas touchés via des failles Ivanti</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>L’UE et les Pays-Bas touchés via des failles Ivanti</h1>
+  <div class="metadata">
+    Source: Zataz | Date: 2/11/2026 | Lang: FR |
+    <a href="https://www.zataz.com/lue-et-les-pays-bas-touches-via-des-failles-ivanti/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><h2><strong>Deux zero-day dans Ivanti EPMM, notées 9,8, déclenchent une chaîne d’alertes nationales. Aux Pays-Bas et à la Commission européenne, des intrusions sont confirmées, avec des données professionnelles consultées et exfiltrées.</strong></h2>
+<p>Une vague de cyberattaques exploite deux vulnérabilités critiques zero-day d’Ivanti Endpoint Manager Mobile (EPMM), CVE-2026-1281 et CVE-2026-1340, corrigées fin janvier 2026. Ces failles, des injections de code notées 9,8 au CVSS, peuvent permettre une prise de contrôle sans identifiant ni mot de passe. Aux Pays-Bas, l’Autorité de protection des données et le Conseil judiciaire confirment des piratages, avec accès à des données professionnelles comme noms, mails et numéros. La Commission européenne signale une attaque sur son infrastructure de gestion mobile, contenue en neuf heures. CISA, Canada et Singapour alertent sur une exploitation active.</p>
+<h3>Des zero-day à 9,8, et la diplomatie des correctifs</h3>
+<p>Le signal est parti d’un produit discret, mais placé au centre des architectures modernes : Ivanti Endpoint Manager Mobile. EPMM sert à administrer les téléphones et tablettes d’une organisation, imposer des règles de sécurité, gérer les applications, et, en pratique, tenir la main sur un parc mobile entier. Quand ce type d’outil est percé, c’est la porte d’entrée idéale, car l’administration mobile doit souvent rester accessible depuis Internet.</p>
+<p>Ivanti a publié fin janvier un avis et des correctifs sur deux vulnérabilités critiques d’injection de code, référencées <a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/" target="_blank"><strong>CVE-2026-1281 et CVE-2026-1340</strong></a>. Le fournisseur a demandé aux clients de considérer tout système exposé comme potentiellement compromis, et d’examiner les journaux afin d’identifier des traces d’exploitation. Les deux failles ont été classées “critiques” avec un score CVSS de base de 9,8, un niveau qui les place parmi les scénarios les plus dangereux. Ivanti indique avoir connaissance d’un nombre “très limité” de clients touchés avant l’application des correctifs, formulation prudente qui ne dit rien du volume réel d’exploitations en circulation.</p>
+
+<div>
+<p><a href="https://www.zataz.com/svz-emote-2/"><img src="https://www.zataz.com/wp-content/uploads/SVZ-Emote-2.png" alt="" /></a>SERVICE DE VEILLE ZATAZ</p>
+<p><strong>Alerte</strong> : savoir si vos données personnelles ont fuité.</p>
+
+<p>À partir de <strong>0,06 €</strong> / jour</p>
+<p><strong>Activation rapide • Alertes prioritaires • Veille web, dark web</strong></p>
+<p>Sans prestataire extérieur • 100 % souverain</p>
+</div>
+
+<p>Le caractère zero-day change la dynamique : il ne s’agit pas seulement de patcher, mais de patcher en supposant que l’adversaire a déjà ouvert une brèche. Dans les environnements publics, ce glissement impose une logique de réponse à incident complète, collecte de journaux, chasse aux indicateurs, restauration contrôlée, plutôt qu’une simple maintenance.</p>
+<p>La chaîne d’alerte internationale confirme que le sujet dépasse Ivanti. L’agence américaine CISA a ajouté l’une de ces failles à son catalogue des vulnérabilités exploitées connues, acte administratif qui, dans la pratique, sert de tampon officiel : exploitation confirmée, urgence renforcée. Les agences nationales de cybersécurité du Canada et de Singapour ont aussi publié des alertes en expliquant que des attaquants visaient des environnements non corrigés. Au Royaume-Uni, le CSOC de NHS Digital signale une activité liée aux mêmes vulnérabilités dans des réseaux de santé, déclenchant des atténuations urgentes, tout en s’abstenant de confirmer une violation.</p>
+<p>Le NHS résume, sans détour, la logique structurelle qui fait de ces plateformes des proies. « <em><strong>Les dispositifs de périphérie comme EPMM sont conçus pour être exposés à Internet et constituent des cibles de choix pour les attaquants. Chaque année, un nombre croissant de vulnérabilités affectant ces dispositifs sont divulguées et rapidement exploitées</strong> </em>», écrit le CSOC, ajoutant qu’il juge « <em><strong>fort probable</strong></em> » que ces failles continuent d’être exploitées, en zero-day ou juste après divulgation. Le propos, au fond, décrit un rythme industriel : la publication du correctif n’est plus la fin de l’histoire, mais le début de la vague d’exploitation opportuniste.</p>
+<h3>Pays-Bas et Commission européenne, la même surface d’attaque</h3>
+<p><a href="https://www.rijksoverheid.nl/documenten/kamerstukken/2026/02/06/tk-brief-incident-bij-de-autoriteit-persoonsgegevens-en-de-raad-voor-de-rechtspraak" target="_blank">Aux Pays-Bas</a>, la cyberattaque n’est plus une hypothèse. Dans une déclaration faite vendredi au Parlement, l’Autorité néerlandaise de protection des données et le Conseil judiciaire ont confirmé avoir été victimes d’un piratage, sans préciser la date des faits. Le secrétaire d’État à l’Intérieur et le secrétaire d’État à la Justice et à la Sécurité indiquent que des personnes non autorisées ont consulté des données professionnelles, « telles que le nom, l’adresse électronique professionnelle et le numéro de téléphone », tandis que l’étendue complète reste en cours d’enquête.</p>
+<p>Ce détail sur la nature des données est révélateur : même “professionnelles”, ces informations suffisent à alimenter des campagnes de ciblage, du phishing sur mesure, des tentatives d’usurpation, ou des approches d’ingénierie sociale sur des personnels à forte valeur. Dans un appareil d’État, un annuaire exfiltré n’est jamais neutre, il peut devenir un carnet d’adresses opérationnel.</p>
+<p>En parallèle, la Commission européenne confirme qu’une cyberattaque a été détectée sur son «<em><strong> infrastructure centrale de gestion des appareils mobiles</strong></em> ». Elle ne nomme pas explicitement Ivanti EPMM, mais décrit un incident similaire à celui observé aux Pays-Bas. Selon la Commission, l’attaque « <em><strong>a pu permettre d’accéder aux noms et numéros de téléphone portable de certains de ses employés</strong> </em>». Elle affirme qu’« <em><strong>une intervention rapide a permis de contenir l’incident et de nettoyer le système en neuf heures. Aucun appareil mobile n’a été compromis.</strong> </em>» Le choix des mots compte : a pu permettre indique une évaluation de risque, pas nécessairement une exfiltration démontrée, tout en reconnaissant qu’un accès non autorisé était plausible.</p>
+<p>À ce stade, <a href="https://www.cisa.gov/news-events/alerts/2026/01/29/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank">aucune attribution publique</a> n’a été faite. On ignore aussi si l’exploitation relève d’un acteur unique ou de plusieurs groupes opportunistes. Cette absence de signature renforce un constat opérationnel : sur les failles à très forte sévérité, l’adversaire n’a pas besoin d’être sophistiqué pour produire des effets, il lui suffit d’être rapide.</p>
+<p>Le précédent norvégien rappelle enfin que la répétition est un facteur de risque en soi. En 2023, des vulnérabilités différentes dans la même gamme EPMM avaient été exploitées, et la Norvège avait annoncé le piratage de 12 agences. Le parallèle n’est pas un détail historique : il montre que la gestion mobile, parce qu’elle concentre l’accès, devient une cible récurrente, et que chaque nouvelle faille transforme la défense en course de vitesse mondiale.</p>
+
+<div>
+<p><a href="https://www.zataz.com/?attachment_id=44142"><img src="https://www.zataz.com/wp-content/uploads/news-letter-zataz-emote-1.png" alt="" /></a>News &amp; Réseaux Sociaux ZATAZ</p>
+
+
+
+<p>Chaque vendredi midi, recevez gratuitement les actualités de la semaine.</p>
+
+
+</div>
+</div></div>
+  </div>
+</body>
+</html>

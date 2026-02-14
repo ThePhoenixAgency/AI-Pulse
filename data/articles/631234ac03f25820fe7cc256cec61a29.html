@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI</h1>
+  <div class="metadata">
+    Source: Framboise 314 | Date: 12/13/2025 | Lang: FR |
+    <a href="https://www.framboise314.fr/raspberry-pi-5-ws2812b-spi/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+			<p>La question du pilotage des LEDs <strong>WS2812B</strong> sur <strong>Raspberry Pi 5</strong> a récemment été soulevée par Victor lors d’un échange sur un réseau social. Le Raspberry Pi 5 introduit une nouvelle architecture matérielle qui complique le pilotage des LEDs WS2812B avec les bibliothèques historiques. Les solutions basées sur le PWM ou le DMA montrent rapidement leurs limites en termes de fiabilité. Cet article présente une méthode robuste utilisant le bus SPI du Raspberry Pi 5 pour piloter des LEDs adressables WS2812B, avec un fonctionnement stable, reproductible et adapté aux projets makers et applications pédagogiques.</p>
+
+<div><p>Au sommaire :</p><ul><li><a href="#Raspberry_Pi_5_piloter_des_LEDs_WS2812B_de_maniere_fiable_avec_le_bus_SPI"><span>1</span> Raspberry Pi 5 : piloter des LEDs WS2812B de manière fiable avec le bus SPI</a><ul><li><a href="#Introduction"><span>1.1</span> Introduction</a></li><li><a href="#Pourquoi_les_WS2812B_posent_probleme_sur_Raspberry_Pi_5"><span>1.2</span> Pourquoi les WS2812B posent problème sur Raspberry Pi 5</a><ul><li><a href="#Rappel_rapide_sur_le_fonctionnement_des_WS2812B"><span>1.2.1</span> Rappel rapide sur le fonctionnement des WS2812B</a></li><li><a href="#Ce_qui_change_avec_le_Raspberry_Pi_5"><span>1.2.2</span> Ce qui change avec le Raspberry Pi 5</a></li><li><a href="#Limites_des_bibliotheques_historiques_PWM_DMA_rpi_ws281x"><span>1.2.3</span> Limites des bibliothèques historiques (PWM, DMA, rpi_ws281x)</a></li></ul></li><li><a href="#Pourquoi_utiliser_le_bus_SPI_pour_piloter_des_WS2812B_sur_Raspberry_Pi_5"><span>1.3</span> Pourquoi utiliser le bus SPI pour piloter des WS2812B sur Raspberry Pi 5</a></li><li><a href="#La_bibliotheque_retenue_rpi5-ws2812_niklasr22"><span>1.4</span> La bibliothèque retenue : rpi5-ws2812 (niklasr22)</a><ul><li><a href="#Comment_ca_fonctionne_tres_rapidement"><span>1.4.1</span> Comment ça fonctionne (très rapidement)</a></li><li><a href="#Installation_sans_environnement_virtuel_Bookworm_et_pourquoi"><span>1.4.2</span> Installation sans environnement virtuel (Bookworm) et pourquoi</a></li><li><a href="#Alternative_propre_pour_eviter_lutilisation_de_root"><span>1.4.3</span> Alternative « propre » pour éviter l’utilisation de root</a></li></ul></li><li><a href="#Verifier_la_disponibilite_du_SPI_sur_Raspberry_Pi_5"><span>1.5</span> Vérifier la disponibilité du SPI sur Raspberry Pi 5</a></li><li><a href="#Connexion_du_ruban_WS2812B_au_Raspberry_Pi_5"><span>1.6</span> Connexion du ruban WS2812B au Raspberry Pi 5</a><ul><li><a href="#A_propos_des_niveaux_logiques"><span>1.6.1</span> À propos des niveaux logiques</a></li></ul></li><li><a href="#Exemple_1_test_simple_rouge_vert_bleu"><span>1.7</span> Exemple 1 : test simple (rouge / vert / bleu)</a></li><li><a href="#Exemple_2_chenillard_une_LED_allumee_a_la_fois"><span>1.8</span> Exemple 2 : chenillard (une LED allumée à la fois)</a></li><li><a href="#Video"><span>1.9</span> Vidéo</a></li><li><a href="#Conclusion"><span>1.10</span> Conclusion</a></li><li><a href="#Sources"><span>1.11</span> Sources</a></li></ul></li></ul></div>
+
+<h2><span>Introduction</span></h2>
+<p>Le pilotage des LEDs adressables WS2812B fait partie des grands classiques des projets makers, et le Raspberry Pi a longtemps été une plateforme appréciée pour ce type d’expérimentations. Avec l’arrivée du Raspberry Pi 5, les choses se compliquent : la nouvelle architecture matérielle et logicielle rend les bibliothèques historiques basées sur le PWM ou le DMA peu fiables, voire inutilisables dans certains cas.</p>
+<p>C’est suite à une question posée par Victor lors d’un échange sur un réseau social que ce sujet a été approfondi. L’objectif était double : l’aider à faire fonctionner correctement des WS2812B avec un Raspberry Pi 5, et en profiter pour tester de manière rigoureuse une solution réellement exploitable sur cette nouvelle plateforme.</p>
+<p>Cet article présente donc un retour d’expérience complet : identification des limites des solutions existantes, choix d’une approche basée sur le bus SPI, mise en œuvre concrète, pièges rencontrés et correctifs appliqués. L’ensemble des tests a été réalisé sur un Raspberry Pi 5 sous Raspberry Pi OS Bookworm, avec un anneau de WS2812B, afin de proposer une méthode fiable, reproductible et adaptée aux projets makers comme aux usages pédagogiques.</p>
+<h2><span><strong>Pourquoi les WS2812B posent problème sur Raspberry Pi 5</strong></span></h2>
+<h3><span><strong>Rappel rapide sur le fonctionnement des WS2812B</strong></span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Pi5_ws2812b_02.jpg" alt="" /></p>
+<p>Les WS2812B sont des LEDs adressables qui intègrent leur propre contrôleur. Chaque LED reçoit un flux de données série à un timing très strict (environ 800 kHz) et relaie automatiquement les informations destinées aux LEDs suivantes. Ce fonctionnement impose un respect précis des durées des impulsions logiques, sous peine de provoquer des erreurs d’affichage ou des comportements aléatoires.</p>
+<h3><span><strong>Ce qui change avec le Raspberry Pi 5</strong></span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Pi5_ws2812b_03.png" alt="" /></p>
+<p>Avec le Raspberry Pi 5, l’architecture matérielle et la gestion des GPIO ont profondément évolué. Le nouveau SoC et la pile logicielle associée modifient la manière dont les signaux sont générés et planifiés, rendant plus difficile la production de timings précis en sortie GPIO. Des méthodes qui fonctionnaient correctement sur les générations précédentes deviennent alors instables ou imprévisibles sur le Pi 5.</p>
+<h3><span><strong>Limites des bibliothèques historiques (PWM, DMA, rpi_ws281x)</strong></span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Pi5_ws2812b_04.jpg" alt="" /></p>
+<p>Les bibliothèques historiques utilisées pour piloter les WS2812B sur Raspberry Pi reposent généralement sur le PWM ou le DMA pour générer les signaux nécessaires. Sur le Raspberry Pi 5, ces approches montrent rapidement leurs limites : scintillements, LEDs fantômes, pertes de synchronisation ou fonctionnement erratique. La bibliothèque rpi_ws281x, largement utilisée jusque-là, n’est notamment plus adaptée sans modifications profondes, ce qui impose de repenser la méthode de pilotage des WS2812B sur cette nouvelle plateforme.</p>
+<h2><span><strong>Pourquoi utiliser le bus SPI pour piloter des WS2812B sur Raspberry Pi 5</strong></span></h2>
+<p>Le bus SPI du Raspberry Pi 5 constitue une alternative fiable pour piloter des LEDs <strong>WS2812B</strong>, car il repose sur un <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/spi-bus-on-raspberry-pi.adoc?utm_source=chatgpt.com" target="_blank"><strong>contrôleur matériel dédié</strong></a>, indépendant du système multitâche et du scheduler Linux. Contrairement aux sorties GPIO pilotées par PWM ou DMA, le SPI garantit une horloge stable et un flux de données continu, deux éléments essentiels pour respecter le timing strict imposé par les WS2812B.</p>
+<p>En utilisant le SPI, les données destinées aux LEDs sont encodées sous forme de motifs binaires compatibles avec le protocole des WS2812B, puis envoyées de manière déterministe via le matériel. Cette approche devrait éviter les interruptions et les variations de timing responsables des scintillements ou des LEDs fantômes observés avec les bibliothèques historiques sur Raspberry Pi 5. (j’ai quand même noté quelques « <em>pétouilles</em>« )</p>
+<p>Enfin, le SPI étant pleinement supporté par la nouvelle architecture du Pi 5, cette solution s’avère stable, reproductible et parfaitement adaptée aux projets makers et pédagogiques nécessitant un pilotage fiable des LEDs adressables.</p>
+<div>
+<p>✔ Lorsque vous voyez <code>/dev/spidev0.0</code> ou <code>/dev/spidev0.1</code>, il ne s’agit pas d’une émulation logicielle, mais bien de l’accès à un <strong>contrôleur SPI matériel intégré directement dans la puce</strong> du Raspberry Pi.</p>
+<p>✔ Linux s’appuie sur un <strong>driver SPI du noyau</strong>, basé sur ce contrôleur matériel, qui génère le signal SPI de manière déterministe, indépendamment du scheduler Linux ou de la charge CPU (au moins pour l’émission et la réception des octets).</p>
+<p>📎 Référence : documentation officielle Raspberry Pi – SPI bus<br />
+<a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/spi-bus-on-raspberry-pi.adoc" target="_blank"><br />
+GitHub – raspberrypi/documentation<br />
+</a></p>
+</div>
+<h2><span>La bibliothèque retenue : rpi5-ws2812 (niklasr22)</span></h2>
+<p>La bibliothèque <strong>rpi5-ws2812</strong> a été écrite spécifiquement pour le <strong>Raspberry Pi 5</strong>, car la référence historique <code>rpi_ws281x</code> n’est pas encore compatible avec cette nouvelle plateforme. Un point important : cette bibliothèque ne pilote les WS2812B <strong>qu’en utilisant le bus SPI</strong>.</p>
+<p>📎 Dépôt GitHub : <a href="https://github.com/niklasr22/rpi5-ws2812" target="_blank">https://github.com/niklasr22/rpi5-ws2812<br />
+</a></p>
+<h3></h3>
+<p>Les LEDs WS2812B imposent un signal extrêmement sensible au timing, ce qui rend leur pilotage délicat sur un système multitâche comme Linux. Avec <strong>rpi5-ws2812</strong>, les couleurs (au format <strong>GRB</strong>) sont encodées en une trame binaire compatible WS2812, puis envoyées via le<br />
+<strong>contrôleur SPI matériel</strong> du Raspberry Pi.<br />
+Côté câblage, la ligne <strong>DIN</strong> des WS2812B est reliée à la broche <strong>MOSI</strong> du Raspberry Pi (GPIO10, broche 19), ce qui correspond au périphérique <code>/dev/spidev0.0</code> lorsque l’on utilise SPI0 avec le<br />
+chip-select CE0.</p>
+<p>L’API est volontairement simple :</p>
+<ul>
+<li><code>WS2812SpiDriver(...).get_strip()</code></li>
+<li><code>set_all_pixels()</code></li>
+<li><code>set_pixel_color()</code></li>
+<li><code>show()</code></li>
+</ul>
+<h3><span>Installation sans environnement virtuel (Bookworm) et pourquoi</span></h3>
+<p>Sous Raspberry Pi OS Bookworm (basé sur Debian), <code>pip</code> est bridé par le mécanisme <strong>PEP 668</strong> (<em>externally managed environment</em>). L’objectif est d’inciter à utiliser des environnements virtuels (<code>venv</code>) afin d’éviter toute interférence avec les paquets Python du système.</p>
+<p>Cependant, lorsqu’on souhaite piloter le SPI en lançant le script en tant que <strong>root</strong> (<code>sudo python3 ...</code>), un problème classique apparaît : si la bibliothèque est installée uniquement pour l’utilisateur (dans<code>~/.local</code>), <strong>root ne la voit pas</strong>, ce qui provoque une erreur <code> ModuleNotFoundError</code>.</p>
+<p>Sans utiliser de <code>venv</code>, la méthode la plus directe consiste donc à installer la bibliothèque également pour root, en contournant explicitement la protection PEP 668 :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>pip3 </span><span>install</span><span> </span><span>--</span><span>break</span><span>-</span><span>system</span><span>-</span><span>packages </span><span>rpi5</span><span>-</span><span>ws2812</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Ce contournement est prévu par la PEP 668 : on force l’installation dans le Python système en acceptant un risque théorique de conflit, ce qui reste acceptable dans le cadre d’un projet maker dédié. 📎 Référence PEP 668 : <a href="https://peps.python.org/pep-0668/" target="_blank">https://peps.python.org/pep-0668/<br />
+</a></p>
+<h3><span>Alternative « propre » pour éviter l’utilisation de root</span></h3>
+<p>La documentation de <strong>rpi5-ws2812</strong> indique qu’il est possible d’éviter <code>sudo</code> en autorisant l’utilisateur à accéder au bus SPI.</p>
+<p>En pratique, cela consiste à :</p>
+<ul>
+<li>activer le SPI via <code>raspi-config</code>,</li>
+<li>vérifier que l’utilisateur a accès à <code>/dev/spidev0.0</code>,</li>
+<li>et lancer le script Python sans privilèges root.</li>
+</ul>
+<h2><span>Vérifier la disponibilité du SPI sur Raspberry Pi 5</span></h2>
+<p>Avant toute chose, il est indispensable de vérifier que le bus SPI est bien activé et accessible sur le Raspberry Pi 5.</p>
+<p>Le SPI peut être activé de deux manières :</p>
+<ul>
+<li>en ligne de commande avec <code>sudo raspi-config</code> → Interface Options → SPI → Enable</li>
+<li>ou en mode graphique via <strong>Préférences → Configuration → Interfaces → SPI</strong></li>
+</ul>
+<p>Une fois le SPI activé, la commande suivante permet de vérifier les périphériques disponibles :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>ls</span><span> </span><span>/</span><span>dev</span><span>/</span><span>spidev*</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Sur un Raspberry Pi 5 fonctionnel, on obtient typiquement :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>/</span><span>dev</span><span>/</span><span>spidev0</span><span>.</span><span>0</span></p><p><span>/</span><span>dev</span><span>/</span><span>spidev0</span><span>.</span><span>1</span></p><p><span>/</span><span>dev</span><span>/</span><span>spidev10</span><span>.</span><span>0</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Le pilotage des WS2812B s’effectue via <strong>SPI0 / CE0</strong>, soit <code>/dev/spidev0.0</code>. Le périphérique <code>spidev10.0</code> peut apparaître sur le Pi 5, mais il n’est pas utilisable dans ce contexte.</p>
+<h2><span>Connexion du ruban WS2812B au Raspberry Pi 5</span></h2>
+<div><p><a href="https://www.framboise314.fr/wp-content/uploads/2025/12/Pi5_ws2812b_06-scaled.jpg" target="_blank"><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Pi5_ws2812b_06-scaled.jpg" alt="" /></a></p><p>Cliquez pour agrandir</p></div>
+<p>Le pilotage des LEDs WS2812B via le bus SPI nécessite un câblage simple mais rigoureux. Une attention particulière doit être portée à l’alimentation et au respect des niveaux logiques.</p>
+<ul>
+<li><strong>DIN (Data In) du ruban WS2812B</strong> → <strong>MOSI du Raspberry Pi 5 </strong>(GPIO10, broche 19)</li>
+<li><strong>GND du ruban WS2812B</strong> → <strong>GND du Raspberry Pi </strong>(par exemple broche 6)</li>
+<li><strong>+5 V du ruban WS2812B</strong> → <strong>alimentation 5 V stable </strong>(broche 2 du Raspberry Pi ou alimentation externe dédiée)</li>
+</ul>
+<p>⚠️ Les WS2812B fonctionnent exclusivement en <strong>5 V</strong>. Il ne faut en aucun cas les alimenter en 3,3 V. La masse (<strong>GND</strong>) du ruban doit impérativement être commune avec elle du Raspberry Pi.<br />
+Dans cette configuration, le bus utilisé est <strong>SPI0 / CE0</strong>, ce qui correspond au périphérique <code>/dev/spidev0.0</code>.</p>
+<h3><span>À propos des niveaux logiques</span></h3>
+<p>Le Raspberry Pi 5 délivre un signal logique en <strong>3,3 V</strong> sur sa broche MOSI, alors que les WS2812B attendent idéalement un signal proche de <strong>5 V</strong>.<br />
+Dans de nombreux cas, notamment avec des rubans courts ou des anneaux, le signal 3,3 V fonctionne correctement. Pour une fiabilité maximale, en particulier avec des longueurs importantes, l’utilisation d’un <strong>convertisseur de niveau logique 3,3 V → 5 V </strong>(74AHCT125, 74HCT245, etc.) est recommandée.</p>
+<p>Une fois le câblage réalisé et le SPI activé, le ruban WS2812B est prêt à être piloté via la  bibliothèque <strong>rpi5-ws2812</strong>.</p>
+<h2><span>Exemple 1 : test simple (rouge / vert / bleu)</span></h2>
+<p>Ce premier programme permet de valider rapidement l’ensemble de la chaîne : SPI, câblage et bibliothèque. Avec un anneau de 16 LEDs, les couleurs rouge, verte et bleue doivent s’afficher successivement.</p>
+
+
+
+
+		<div>
+		
+			<div><p><span>Python</span></p></div>
+			
+			
+			<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p><p>28</p><p>29</p><p>30</p><p>31</p><p>32</p><p>33</p><p>34</p><p>35</p><p>36</p><p>37</p></div>
+				</td>
+						<td><div><p><span>#!/usr/bin/env python3</span></p><p><span>from</span><span> </span><span>rpi5_ws2812</span><span>.</span><span>ws2812 </span><span>import</span><span> </span><span>Color</span><span>,</span><span> </span><span>WS2812SpiDriver</span></p><p><span>import</span><span> </span><span>time</span></p><p><span># Nombre de LEDs de l’anneau</span></p><p><span>NB_LEDS</span><span> </span><span>=</span><span> </span><span>16</span></p><p><span>def</span><span> </span><span>main</span><span>(</span><span>)</span><span>:</span></p><p><span>    </span><span># Driver SPI -&gt; MOSI (GPIO10, pin 19)</span></p><p><span>    </span><span>driver</span><span> </span><span>=</span><span> </span><span>WS2812SpiDriver</span><span>(</span></p><p><span>        </span><span>spi_bus</span><span>=</span><span>0</span><span>,</span></p><p><span>        </span><span>spi_device</span><span>=</span><span>0</span><span>,</span></p><p><span>        </span><span>led_count</span><span>=</span><span>NB</span><span>_</span>LEDS</p><p><span>    </span><span>)</span></p><p><span>    </span><span># Récupération du strip + luminosité</span></p><p><span>    </span><span>strip</span><span> </span><span>=</span><span> </span><span>driver</span><span>.</span><span>get_strip</span><span>(</span><span>)</span></p><p><span>    </span><span>strip</span><span>.</span><span>brightness</span><span> </span><span>=</span><span> </span><span>0.2</span></p><p><span>    </span><span>while</span><span> </span><span>True</span><span>:</span></p><p><span>        </span><span># Rouge</span></p><p><span>        </span><span>strip</span><span>.</span><span>set_all_pixels</span><span>(</span><span>Color</span><span>(</span><span>255</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span><span>)</span></p><p><span>        </span><span>strip</span><span>.</span><span>show</span><span>(</span><span>)</span></p><p><span>        </span><span>time</span><span>.</span><span>sleep</span><span>(</span><span>0.5</span><span>)</span></p><p><span>        </span><span># Vert</span></p><p><span>        </span><span>strip</span><span>.</span><span>set_all_pixels</span><span>(</span><span>Color</span><span>(</span><span>0</span><span>,</span><span> </span><span>255</span><span>,</span><span> </span><span>0</span><span>)</span><span>)</span></p><p><span>        </span><span>strip</span><span>.</span><span>show</span><span>(</span><span>)</span></p><p><span>        </span><span>time</span><span>.</span><span>sleep</span><span>(</span><span>0.5</span><span>)</span></p><p><span>        </span><span># Bleu</span></p><p><span>        </span><span>strip</span><span>.</span><span>set_all_pixels</span><span>(</span><span>Color</span><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>255</span><span>)</span><span>)</span></p><p><span>        </span><span>strip</span><span>.</span><span>show</span><span>(</span><span>)</span></p><p><span>        </span><span>time</span><span>.</span><span>sleep</span><span>(</span><span>0.5</span><span>)</span></p><p><span>if</span><span> </span><span>__name__</span><span> </span><span>==</span><span> </span><span>"__main__"</span><span>:</span></p><p><span>    </span><span>main</span><span>(</span><span>)</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+
+
+<p>Si les trois couleurs s’enchaînent correctement, le SPI, le câblage et la bibliothèque sont opérationnels.</p>
+<h2><span>Exemple 2 : chenillard (une LED allumée à la fois)</span></h2>
+<p>Ce second exemple montre l’utilisation de l’API officielle de <strong>rpi5-ws2812</strong> pour piloter individuellement les LEDs, sans accéder aux structures internes de la bibliothèque.<br />
+Une courte trame noire est envoyée avant chaque mise à jour afin de limiter les effets parasites observés sur certains anneaux WS2812B.</p>
+
+
+
+
+		<div>
+		
+			<div><p><span>Python</span></p></div>
+			
+			
+			<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p><p>28</p><p>29</p><p>30</p><p>31</p><p>32</p><p>33</p><p>34</p><p>35</p><p>36</p><p>37</p><p>38</p><p>39</p><p>40</p><p>41</p></div>
+				</td>
+						<td><div><p><span>#!/usr/bin/env python3</span></p><p><span>from</span><span> </span><span>rpi5_ws2812</span><span>.</span><span>ws2812 </span><span>import</span><span> </span><span>Color</span><span>,</span><span> </span><span>WS2812SpiDriver</span></p><p><span>import</span><span> </span><span>time</span></p><p><span>NB_LEDS</span><span> </span><span>=</span><span> </span><span>16</span></p><p><span>def</span><span> </span><span>send_frame</span><span>(</span><span>strip</span><span>,</span><span> </span><span>colors</span><span>)</span><span>:</span></p><p><span>    </span><span># Frame noire pour reset interne</span></p><p><span>    </span><span>strip</span><span>.</span><span>set_all_pixels</span><span>(</span><span>Color</span><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span><span>)</span></p><p><span>    </span><span>strip</span><span>.</span><span>show</span><span>(</span><span>)</span></p><p><span>    </span><span>time</span><span>.</span><span>sleep</span><span>(</span><span>0.0001</span><span>)</span><span>  </span><span># 100 µs</span></p><p><span>    </span><span># Frame réelle</span></p><p><span>    </span><span>for</span><span> </span><span>i</span><span> </span><span>in</span><span> </span><span>range</span><span>(</span><span>NB_LEDS</span><span>)</span><span>:</span></p><p><span>        </span><span>strip</span><span>.</span><span>set_pixel_color</span><span>(</span><span>i</span><span>,</span><span> </span><span>colors</span><span>[</span><span>i</span><span>]</span><span>)</span></p><p><span>    </span><span>strip</span><span>.</span><span>show</span><span>(</span><span>)</span></p><p><span>def</span><span> </span><span>main</span><span>(</span><span>)</span><span>:</span></p><p><span>    </span><span>driver</span><span> </span><span>=</span><span> </span><span>WS2812SpiDriver</span><span>(</span></p><p><span>        </span><span>spi_bus</span><span>=</span><span>0</span><span>,</span></p><p><span>        </span><span>spi_device</span><span>=</span><span>0</span><span>,</span></p><p><span>        </span><span>led_count</span><span>=</span><span>NB</span><span>_</span>LEDS</p><p><span>    </span><span>)</span></p><p><span>    </span><span>strip</span><span> </span><span>=</span><span> </span><span>driver</span><span>.</span><span>get_strip</span><span>(</span><span>)</span></p><p><span>    </span><span>strip</span><span>.</span><span>set_brightness</span><span>(</span><span>0.2</span><span>)</span></p><p><span>    </span><span>position</span><span> </span><span>=</span><span> </span><span>0</span></p><p><span>    </span><span>while</span><span> </span><span>True</span><span>:</span></p><p><span>        </span><span>colors</span><span> </span><span>=</span><span> </span><span>[</span><span>Color</span><span>(</span><span>0</span><span>,</span><span> </span><span>0</span><span>,</span><span> </span><span>0</span><span>)</span><span>]</span><span> </span><span>*</span><span> </span><span>NB_LEDS</span></p><p><span>        </span><span>colors</span><span>[</span><span>position</span><span>]</span><span> </span><span>=</span><span> </span><span>Color</span><span>(</span><span>0</span><span>,</span><span> </span><span>255</span><span>,</span><span> </span><span>0</span><span>)</span></p><p><span>        </span><span>send_frame</span><span>(</span><span>strip</span><span>,</span><span> </span><span>colors</span><span>)</span></p><p><span>        </span><span>time</span><span>.</span><span>sleep</span><span>(</span><span>0.05</span><span>)</span></p><p><span>        </span><span># Calcul de position modulo pour un anneau de LEDs </span></p><p><span>        </span><span>position</span><span> </span><span>=</span><span> </span><span>(</span><span>position</span><span> </span><span>+</span><span> </span><span>1</span><span>)</span><span> </span><span>%</span><span> </span><span>NB_LEDS</span></p><p><span>if</span><span> </span><span>__name__</span><span> </span><span>==</span><span> </span><span>"__main__"</span><span>:</span></p><p><span>    </span><span>main</span><span>(</span><span>)</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+		</div>
+
+
+<p>Ce chenillard valide le pilotage individuel des LEDs et permet d’observer la stabilité du signal SPI dans le temps.</p>
+<h2><span>Vidéo</span></h2>
+<p>
+<a href="https://www.framboise314.fr/wp-content/uploads/2025/12/ws2812.mp4">https://www.framboise314.fr/wp-content/uploads/2025/12/ws2812.mp4</a></p>
+
+<h2><span>Conclusion</span></h2>
+<p>Le pilotage des LEDs <strong>WS2812B</strong> sur <strong>Raspberry Pi 5</strong> nécessite d’adapter les méthodes utilisées jusqu’à présent, les bibliothèques historiques n’étant plus adaptées à la nouvelle architecture. L’utilisation du <strong>bus SPI</strong>, combinée à une bibliothèque spécifiquement conçue pour le Pi 5 comme <em><strong>rpi5-ws2812</strong></em>, permet d’obtenir une solution fiable et reproductible. Les tests présentés dans cet article montrent qu’il est possible de piloter des LEDs adressables sans artifices ni contournements hasardeux, à condition de respecter le câblage, la configuration du SPI et les bonnes pratiques logicielles. Merci à Victor pour avoir soulevé cette question, qui a permis d’explorer et de valider une approche efficace sur Raspberry Pi 5.</p>
+<h2><span>Sources</span></h2>
+<p><a href="https://github.com/niklasr22/rpi5-ws2812" target="_blank">https://github.com/niklasr22/rpi5-ws2812</a></p>
+<p><a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/spi-bus-on-raspberry-pi.adoc" target="_blank">https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/spi-bus-on-raspberry-pi.adoc</a></p>
+					</div></div>
+  </div>
+</body>
+</html>

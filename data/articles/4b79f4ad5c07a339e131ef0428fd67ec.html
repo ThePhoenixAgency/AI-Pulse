@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Death of the “Everything Prompt”: Google’s Move Toward Structured AI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>The Death of the “Everything Prompt”: Google’s Move Toward Structured AI</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/9/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/the-death-of-the-everything-prompt-googles-move-toward-structured-ai/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p> been laying the groundwork for a more structured way to build interactive, stateful AI-driven applications. One of the more interesting outcomes of this effort was the release of their new <strong>Interactions API </strong>a few weeks ago.</p>
+
+
+
+<p>As large language models (LLMs) come and go, it’s often the case that an API developed by an LLM provider can get a bit out of date. After all, it can be difficult for an API designer to anticipate all the various changes and tweaks that might be applied to whichever system the API is designed to serve. This is doubly true in AI, where the pace of change is unlike anything seen in the IT world before.</p>
+
+
+
+<p>We’ve seen this before with OpenAI, for instance. Their initial API for their models was called the <strong>Completions</strong> API. As their models advanced, they had to upgrade and release a new API called <strong>Responses.</strong></p>
+
+
+
+<p>Google is taking a slightly different tack with the Interactions API. It’s not a complete replacement for their older <strong>generateContent</strong> API, but rather an extension of it.</p>
+
+
+
+<p>As Google says in its own documentation…</p>
+
+
+
+<blockquote>
+<p>“The Interactions API (<a href="https://ai.google.dev/gemini-api/docs/api-versions" target="_blank">Beta</a>) is a unified interface for interacting with Gemini models and agents. It simplifies state management, tool orchestration, and long-running tasks.”</p>
+</blockquote>
+
+
+
+<p>The rest of this article explores the architectural necessity of the Interactions API. We’ll start simple by showing how the Interactions API can do everything its predecessor could, then end with how it enables stateful operations, the explicit integration of Google’s high-latency Deep Research agentic capabilities, and the handling of long-running tasks. We will move beyond a “Hello World” example to build systems that require deep thought and the orchestration of asynchronous research.</p>
+
+
+
+<h2>The Architectural Gap: Why “Chat” is Insufficient</h2>
+
+
+
+<p>To understand why the Interactions API exists, we must analyse why the standard LLM chat loop is insufficient.</p>
+
+
+
+<p>In a standard chat application, “state” is implicit. It exists only as a sliding window of token history. If a user is in step 3 of an onboarding wizard and asks an off-topic question, the model might hallucinate a new path, effectively breaking the wizard. The developer has no programmatic guarantee that the user is where they are supposed to be. </p>
+
+
+
+<p>For more modern AI systems development, this is insufficient. To counter that, Google’s new API offers ways to refer to previous context in subsequent LLM interactions. We’ll see an example of that later.</p>
+
+
+
+<h2>The Deep Research Problem</h2>
+
+
+
+<p>Google’s Deep Research capability (powered by Gemini) is agentic. It doesn’t just retrieve information; it formulates a plan, executes dozens of searches, reads hundreds of pages, and synthesises an answer. This process is asynchronous and high-latency.</p>
+
+
+
+<p>You cannot simply prompt a standard chat model to “do deep research” inside a synchronous loop without risking timeouts or context window overflows. The Interactions API allows you to encapsulate this volatile agentic process into a stable, managed <strong>Step</strong>, pausing the interaction state. At the same time, the heavy lifting occurs and resumes only when structured data is returned. However, if a deep research agent is taking a long time to do its research, the last thing you want to do is sit there twiddling your thumbs waiting for it to finish. The Interactions API allows you to perform background research and poll for its results periodically, so you are notified as soon as the agent returns its results.</p>
+
+
+
+<h2>Setting Up a Development Environment</h2>
+
+
+
+<p>Let’s see the Interactions API up close by looking at a few coding examples of its use. As with any development project, it’s best to isolate your environment, so let’s do that now. I’m using Windows and the <strong>UV </strong>package manager for this, but use whichever tool you’re most comfortable with. My code was run in a Jupyter notebook.</p>
+
+
+
+<pre><code>uv init interactions_demo --python 3.12
+cd interactions_demo
+uv add google-genai jupyter
+
+# To run the notebook, type this in
+
+uv run jupyter notebook</code></pre>
+
+
+
+<p>To run my example code, you’ll also need a Google API key. <span>If you don’t have one, go to <a href="https://aistudio.google.com/" target="_blank">Google’s AI Studio</a> website and log in.</span> Near the bottom left of the screen, you’ll see a <strong>Get API key</strong> link. Click on that and follow the instructions to get your key. Once you have a key, create an environment variable named <code>GOOGLE_API_KEY</code> on your system and set its value to your API key.</p>
+
+
+
+<h3>Example 1: A Hello World equivalent</h3>
+
+
+
+<pre><code>from google import genai
+
+client = genai.Client()
+
+interaction =  client.interactions.create(
+    model="gemini-2.5-flash",
+    input="What is the capital of France"
+)
+
+print(interaction.outputs[-1].text)
+
+#
+# Output
+#
+The capital of France is **Paris**.</code></pre>
+
+
+
+<h3>Example 2: Using Nano Banana to generate an image</h3>
+
+
+
+<p>Before we examine the specific capabilities of state management and deep research that the new Interactions API offers, I want to show that it is <strong><em>also</em></strong> a general-purpose, multi-modal tool. For this, we’ll use the API to create an image for us using Nano Banana, which is officially known as Gemini 3 Pro Image Preview.</p>
+
+
+
+<pre><code>import base64
+import os
+from google import genai
+
+# 1. Ensure the directory exists
+output_dir = r"c:\temp"
+if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
+    print(f"Created directory: {output_dir}")
+
+client = genai.Client()
+
+print("Sending request...")
+
+try:
+    # 2. Correct Syntax: Pass 'response_modalities' directly (not inside config)
+    interaction = client.interactions.create(
+        model="gemini-3-pro-image-preview", # Ensure you have access to this model
+        input="Generate an image of a hippo wearing a top-hat riding a uni-cycle.",
+        response_modalities=["IMAGE"] 
+    )
+
+    found_image = False
+
+    # 3. Iterate through outputs and PRINT everything
+    for i, output in enumerate(interaction.outputs):
+        
+        # Debug: Print the type so we know what we got
+        print(f"\n--- Output {i+1} Type: {output.type} ---")
+
+        if output.type == "text":
+            # If the model refused or chatted back, this will print why
+            print(f"📝 Text Response: {output.text}")
+
+        elif output.type == "image":
+            print(f"Image Response: Mime: {output.mime_type}")
+            
+            # Construct filename
+            file_path = os.path.join(output_dir, f"hippo_{i}.png")
+            
+            # Save the image
+            with open(file_path, "wb") as f:
+                # The SDK usually returns base64 bytes or string
+                if isinstance(output.data, bytes):
+                    f.write(output.data)
+                else:
+                    f.write(base64.b64decode(output.data))
+            
+            print(f"Saved to: {file_path}")
+            found_image = True
+    
+    if not found_image:
+        print("\nNo image was returned. Check the 'Text Response' above for the reason.")
+
+except Exception as e:
+    print(f"\nError: {e}")</code></pre>
+
+
+
+<p>This was my output.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/01/image-63.png" alt="" /></figure>
+
+
+
+<h3>Example 3: State Management</h3>
+
+
+
+<p>Stateful management in the Interactions API is built around the <strong>“Interaction” </strong>resource, which serves as a session record that contains the whole history of a task, from user inputs to tool results.</p>
+
+
+
+<p>To continue a conversation that remembers the previous context, you pass an ID of an earlier interaction into the <code>previous_interaction_id</code> parameter of a new request.</p>
+
+
+
+<p>The server uses this ID to automatically retrieve the full context of the particular session it’s associated with, eliminating the need for the developer to resend the entire chat history. A side-effect is that, this way, caching can be used more effectively, leading to improved performance and reduced token costs.</p>
+
+
+
+<p>Stateful interactions require that the data be stored on Google’s servers. By default, the store parameter is set to true, which enables this feature. If a developer sets store=false, they cannot use stateful features like previous_interaction_id.</p>
+
+
+
+<p>Stateful mode also allows mixing different models and agents in a single thread. For example, you could use a Deep Research agent for data collection and then reference that interaction’s ID to have a standard (cheaper) Gemini model summarise the findings.</p>
+
+
+
+<p>Here’s a quick example where we kick off a simple task by telling the model our name and asking it some simple questions. We record the Interaction ID that the session produces, then, at some later time, we ask the model what our name was and what the second question we asked was. </p>
+
+
+
+<pre><code>from google import genai
+
+client = genai.Client()
+
+# 1. First turn
+interaction1 = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input="""
+Hi,It's Tom here, can you tell me the chemical name for water. 
+Also, which is the smallest recognised country in the world? 
+And how tall in feet is Mt Everest
+"""
+)
+print(f"Response: {interaction1.outputs[-1].text}")
+print(f"ID: {interaction1.id}")
+#
+# Output
+#
+
+Response: Hi Tom! Here are the answers to your questions:
+
+*   **Chemical name for water:** The most common chemical name is **dihydrogen monoxide** ($H_2O$), though in formal chemistry circles, its systematic name is **oxidane**.
+*   **Smallest recognized country:** **Vatican City**. It covers only about 0.17 square miles (0.44 square kilometers) and is an independent city-state enclaved within Rome, Italy.
+*   **Height of Mt. Everest:** According to the most recent official measurement (confirmed in 2020), Mt. Everest is **29,031.7 feet** (8,848.86 meters) tall.
+ID: v1_ChdqamxlYVlQZ01jdmF4czBQbTlmSHlBOBIXampsZWFZUGdNY3ZheHMwUG05Zkh5QTg</code></pre>
+
+
+
+<p>A few hours later …</p>
+
+
+
+<pre><code>from google import genai
+
+client = genai.Client()
+
+# 2. Second turn (passing previous_interaction_id)
+interaction2 = client.interactions.create(
+    model="gemini-3-flash-preview",
+    input="Can you tell me my name and what was the second question I asked you",
+    previous_interaction_id='v1_ChdqamxlYVlQZ01jdmF4czBQbTlmSHlBOBIXampsZWFZUGdNY3ZheHMwUG05Zkh5QTg'
+)
+print(f"Model: {interaction2.outputs[-1].text}")
+
+#
+# Output
+#
+Model: Hi Tom! 
+
+Your name is **Tom**, and the second question you asked was: 
+**"Which is the smallest recognised country in the world?"** 
+(to which the answer is Vatican City).</code></pre>
+
+
+
+<h3>Example 4: The Asynchronous Deep Research Orchestrator</h3>
+
+
+
+<p>Now, on to something that Google’s old API cannot do. <span>One of the key benefits of the Interactions API is that you can use it to call specialised agents, such as <strong>deep-research-pro-preview-12-2025,</strong> for complex tasks.</span> </p>
+
+
+
+<p>In this example, we’ll build a competitive intelligence engine. The user specifies a business competitor, and the system triggers a Deep Research agent to scour the web, read annual reports, and create a Strengths, Weaknesses, Opportunites and Threats (SWOT) analysis. We split this into two parts. First, we can fire off our research request using code like this.</p>
+
+
+
+<pre><code>import time
+import sys
+from google import genai
+
+def competitive_intelligence_engine():
+    client = genai.Client()
+
+    print("--- Deep Research Competitive Intelligence Engine ---")
+    competitor_name = input("Enter the name of the competitor to analyze (e.g., Nvidia, Coca-Cola): ")
+    
+    # We craft a specific prompt to force the agent to look for specific document types
+    prompt = f"""
+    Conduct a deep research investigation into '{competitor_name}'.
+    
+    Your specific tasks are:
+    1. Scour the web for the most recent Annual Report (10-K) and latest Quarterly Earnings transcripts.
+    2. Search for recent news regarding product launches, strategic partnerships, and legal challenges in the last 12 months.
+    3. Synthesize all findings into a detailed SWOT Analysis (Strengths, Weaknesses, Opportunities, Threats).
+    
+    Format the output as a professional executive summary with the SWOT section clearly defined in Markdown.
+    """
+
+    print(f"\n Deploying Deep Research Agent for: {competitor_name}...")
+    
+    # 1. Start the Deep Research Agent
+    # We use the specific agent ID provided in your sample
+    try:
+        initial_interaction = client.interactions.create(
+            input=prompt,
+            agent="deep-research-pro-preview-12-2025",
+            background=True
+        )
+    except Exception as e:
+        print(f"Error starting agent: {e}")
+        return
+
+    print(f" Research started. Interaction ID: {initial_interaction.id}")
+    print("⏳ The agent is now browsing the web and reading reports. This may take several minutes.")</code></pre>
+
+
+
+<p>This will produce the following output.</p>
+
+
+
+<pre><code>--- Deep Research Competitive Intelligence Engine ---
+Enter the name of the competitor to analyze (e.g., Nvidia, Coca-Cola):  Nvidia
+
+Deploying Deep Research Agent for: Nvidia...
+Research started. Interaction ID: v1_ChdDdXhiYWN1NEJLdjd2ZElQb3ZHdTBRdxIXQ3V4YmFjdTRCS3Y3dmRJUG92R3UwUXc
+The agent is now browsing the web and reading reports. This may take several minutes.</code></pre>
+
+
+
+<p>Next, since we know the research job will take some time to complete, we can use the Interaction ID printed above to monitor it and check periodically to see if it’s finished. </p>
+
+
+
+<p>Usually, this would be done in a separate process that would email or text you when the research job was completed so that you can get on with other tasks in the meantime.</p>
+
+
+
+<pre><code>try:
+    while True:
+        # Refresh the interaction status
+        interaction = client.interactions.get(initial_interaction.id)
+            
+        # Calculate elapsed time
+        elapsed = int(time.time() - start_time)
+            
+        # Print a dynamic status line so we know it's working
+        sys.stdout.write(f"\r Status: {interaction.status.upper()} | Time Elapsed: {elapsed}s")
+        sys.stdout.flush()
+
+        if interaction.status == "completed":
+            print("\n\n" + "="*50)
+            print(f" INTELLIGENCE REPORT: {competitor_name.upper()}")
+            print("="*50 + "\n")
+                
+            # Print the content
+            print(interaction.outputs[-1].text)
+            break
+            
+        elif interaction.status in ["failed", "cancelled"]:
+            print(f"\n\nJob ended with status: {interaction.status}")
+            # Sometimes error details are in the output text even on failure
+            if interaction.outputs:
+               print(f"Error details: {interaction.outputs[-1].text}")
+            break
+
+        # Wait before polling again to respect rate limits
+        time.sleep(10)
+
+except KeyboardInterrupt:
+    print("\nUser interrupted. Research may continue in background.")</code></pre>
+
+
+
+<p>I won’t show the full research output, as it was pretty lengthy, but here is just part of it.</p>
+
+
+
+<pre><code>==================================================
+📝 INTELLIGENCE REPORT: NVIDIA
+==================================================
+
+# Strategic Analysis &amp; Executive Review: Nvidia Corporation (NVDA)
+
+### Key Findings
+*   **Financial Dominance:** Nvidia reported record Q3 FY2026 revenue of **$57.0 billion** (+62% YoY), driven by a staggering **$51.2 billion** in Data Center revenue. The company has effectively transitioned from a hardware manufacturer to the foundational infrastructure provider for the "AI Industrial Revolution."
+*   **Strategic Expansion:** Major moves in late 2025 included a **$100 billion investment roadmap with OpenAI** to deploy 10 gigawatts of compute and a **$20 billion acquisition of Groq's assets**, pivoting Nvidia aggressively into the AI inference market.
+*   **Regulatory Peril:** The company faces intensifying geopolitical headwinds. In September 2025, China's SAMR found Nvidia in violation of antitrust laws regarding its Mellanox acquisition. Simultaneously, the U.S. Supreme Court allowed a class-action lawsuit regarding crypto-revenue disclosures to proceed.
+*   **Product Roadmap:** The launch of the **GeForce RTX 50-series** (Blackwell architecture) and **Project DIGITS** (personal AI supercomputer) at CES 2025 signals a push to democratize AI compute beyond the data center to the desktop.
+
+---
+
+## 1. Executive Summary
+
+Nvidia Corporation (NASDAQ: NVDA) stands at the apex of the artificial intelligence transformation, having successfully evolved from a graphics processing unit (GPU) vendor into a full-stack computing platform company. As of early 2026, Nvidia is not merely selling chips; it is building "AI Factories"-entire data centers integrated with its proprietary networking, software (CUDA), and hardware.
+The fiscal year 2025 and the first three quarters of fiscal 2026 have demonstrated unprecedented financial acceleration. The company's "Blackwell" architecture has seen demand outstrip supply, creating a backlog that extends well into 2026. However, this dominance has invited intense scrutiny. The geopolitical rift between the U.S. and China poses the single greatest threat to Nvidia's long-term growth, evidenced by recent antitrust findings by Chinese regulators and continued smuggling controversies involving restricted chips like the Blackwell B200.
+Strategically, Nvidia is hedging against the commoditization of AI training by aggressively entering the **inference** market-the phase where AI models are used rather than built. The acquisition of Groq's technology in December 2025 is a defensive and offensive maneuver to secure low-latency processing capabilities.
+
+---
+
+## 2. Financial Performance Analysis
+**Sources:** [cite: 1, 2, 3, 4, 5]
+
+### 2.1. Fiscal Year 2025 Annual Report (10-K) Highlights
+Nvidia's Fiscal Year 2025 (ending January 2025) marked a historic inflection point in the technology sector.
+*   **Total Revenue:** $130.5 billion, a **114% increase** year-over-year.
+*   **Net Income:** $72.9 billion, soaring **145%**.
+*   **Data Center Revenue:** $115.2 billion (+142%), confirming the complete shift of the company's gravity away from gaming and toward enterprise AI.
+*   **Gross Margin:** Expanded to **75.0%** (up from 72.7%), reflecting pricing power and the high value of the Hopper architecture.
+...
+...
+...
+## 5. SWOT Analysis
+
+### **Strengths**
+*   **Technological Monopoly:** Nvidia possesses an estimated 80-90% market share in AI training chips. The **Blackwell** and upcoming **Vera Rubin** architectures maintain a multi-year lead over competitors.
+*   **Ecosystem Lock-in (CUDA):** The CUDA software platform remains the industry standard. The recent expansion into "AI Factories" and full-stack solutions (networking + hardware + software) makes switching costs prohibitively high for enterprise customers.
+*   **Financial Fortress:** With gross margins exceeding **73%** and free cash flow in the tens of billions, Nvidia has immense capital to reinvest in R&amp;D ($100B OpenAI commitment) and acquire emerging tech (Groq).
+*   **Supply Chain Command:** By pre-booking massive capacity at TSMC (CoWoS packaging), Nvidia effectively controls the faucet of global AI compute supply.
+
+### **Weaknesses**
+*   **Revenue Concentration:** A significant portion of revenue is derived from a handful of "Hyperscalers" (Microsoft, Meta, Google, Amazon). If these clients successfully pivot to their own custom silicon (TPUs, Trainium, Maia), Nvidia's revenue could face a cliff.
+*   **Pricing Alienation:** The high cost of Nvidia hardware (e.g., $1,999 for consumer GPUs, $30k+ for enterprise chips) is pushing smaller developers and startups toward cheaper alternatives or cloud-based inference solutions.
+*   **Supply Chain Single Point of Failure:** Total reliance on **TSMC** in Taiwan exposes Nvidia to catastrophic risk in the event of a cross-strait conflict or natural disaster.
+
+### **Opportunities**
+*   **The Inference Market:** The $20B Groq deal positions Nvidia to dominate the *inference* phase (running models), which is expected to be a larger market than training in the long run.
+*   **Sovereign AI:** Nations (Japan, France, Middle Eastern states) are building their own "sovereign clouds" to protect data privacy. This creates a new, massive customer base outside of US Big Tech.
+*   **Physical AI &amp; Robotics:** With **Project GR00T** and the **Jetson** platform, Nvidia is positioning itself as the brain for humanoid robots and autonomous industrial systems, a market still in its infancy.
+*   **Software &amp; Services (NIMs):** Nvidia is transitioning to a software-as-a-service model with Nvidia Inference Microservices (NIMs), creating recurring revenue streams that are less cyclical than hardware sales.
+
+### **Threats**
+*   **Geopolitical Trade War:** The US-China tech war is the existential threat. Further tightening of export controls (e.g., banning H20 chips) or aggressive retaliation from China (SAMR antitrust penalties) could permanently sever access to one of the world's largest semiconductor markets.
+*   **Regulatory Antitrust Action:** Beyond China, Nvidia faces scrutiny in the EU and US (DOJ) regarding its bundling practices and market dominance. A forced breakup or behavioral remedies could hamper its "full-stack" strategy.
+*   **Smuggling &amp; IP Theft:** As seen with the DeepSeek controversy, export bans may inadvertently fuel a black market and accelerate Chinese domestic innovation (e.g., Huawei Ascend), creating a competitor that operates outside Western IP laws.
+*   **"Good Enough" Competition:** For many inference workloads, cheaper chips from AMD or specialized ASICs may eventually become "good enough," eroding Nvidia's pricing power at the lower end of the market.
+...
+...
+...</code></pre>
+
+
+
+<p>There is a bunch more you can do with the Interactions API than I’ve shown, including tool and function calling, MCP integration, structured output and streaming. </p>
+
+
+
+<p>But please be aware that, as of the time of writing, the Interactions API is still in <strong>Beta,</strong> and Google’s deep research agent is in <strong>preview</strong>. This will undoubtedly change in the coming weeks, but it’s best to check before using this tool in a production system. </p>
+
+
+
+<p>For more information, see the link below for Google’s official documentation page for the interactions API.</p>
+
+
+
+<p><a href="https://ai.google.dev/gemini-api/docs/interactions?ua=chat">https://ai.google.dev/gemini-api/docs/interactions?ua=chat</a></p>
+
+
+
+<h2>Summary</h2>
+
+
+
+<p>The Google Interactions API signals a maturity in the AI engineering ecosystem. It acknowledges that the “Everything Prompt”, a single, massive block of text trying to handle personality, logic, tools, and safety, is an anti-pattern.</p>
+
+
+
+<p>By using this API, developers using Google AI can effectively decouple Reasoning (the LLM’s job) from Architecture (the Developer’s job).</p>
+
+
+
+<p>Unlike usual chat loops, where state is implicit and prone to hallucinations, this API uses a structured <strong>“Interaction” </strong>resource to serve as a permanent session record of all inputs, outputs, and tool results. With stateful management, developers can reference an Interaction ID from a previous chat and retrieve full context automatically. This can optimise caching, improve performance, and lower costs by eliminating the need to resend entire histories.</p>
+
+
+
+<p>Furthermore, the Interactions API is uniquely capable of orchestrating asynchronous, high-latency agentic processes, such as Google’s Deep Research, which can scour the web and synthesise massive amounts of data into complex reports. This research can be done asynchronously, which means you can fire off long-running tasks and write simple code to be notified when the job finishes, allowing you to work on other tasks in the interim.</p>
+
+
+
+<p>If you are building a creative writing assistant, a simple chat loop is fine. But if you are building a financial analyst, a medical screener, or a deep research engine, the Interactions API provides the scaffolding necessary to turn a probabilistic model into a more reliable product.</p>
+</div></div>
+  </div>
+</body>
+</html>

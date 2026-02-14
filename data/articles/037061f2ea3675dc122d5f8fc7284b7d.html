@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Ubuntu 24.04.4 LTS released with Linux 6.17 + Mesa 25.2</h1>
+  <div class="metadata">
+    Source: OMG! Ubuntu | Date: 2/12/2026 | Lang: EN |
+    <a href="https://www.omgubuntu.co.uk/2026/02/ubuntu-24-04-4-lts-released" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                        
+<p><strong>Ubuntu 24.04.4 LTS is now available to download.</strong></p>
+
+
+
+<p>This is the fourth point release in the Ubuntu 24.04 LTS ‘Noble Numbat’ series since it launched in April 2024. The new installer image (ISO) contains all of the security, bug and software updates released since the <a href="https://www.omgubuntu.co.uk/2025/08/ubuntu-24-04-3-lts-released" target="_blank">Ubuntu 24.04.3 release</a> last August.</p>
+
+
+
+<p>More notably, Ubuntu 24.04.4 LTS ships with a new hardware enablement stack (HWE) offering <strong>Linux kernel 6.17</strong> and <strong>Mesa 25.2.8</strong>, both back-ported from <a href="https://www.omgubuntu.co.uk/2025/10/ubuntu-25-10-new-features">Ubuntu 25.10</a> and available to install on existing Ubuntu 24.04 systems – no fresh install required.</p>
+
+
+
+<p>Updated Wayland Protocols are also included in the Ubuntu 24.04.4 HWE update. This has no huge impact on most users, but helps provide features that some recent software releases can use with the Wayland display server.</p>
+
+
+
+<p>The ‘point’ of point releases is to make sure that long-term support releases are able to boot and work on hardware that wouldn’t have been released at the time the original ISO was made (April 2024). It also cuts down on the amount of updates that need to installed.</p>
+
+
+
+<p>If you already run Ubuntu 24.04 LTS you don’t need to download the new ISO and do a clean install. In fact, there’s nothing here you won’t already have – assuming you’ve been installing updates, that is!</p>
+
+
+
+<h3>Updated packages in Ubuntu 24.04.4 LTS</h3>
+
+
+<div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/ubuntu-24.04.4-lts-release.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/ubuntu-24.04.4-lts-release.jpg?resize=750%2C394&amp;ssl=1" alt="" /></a><figcaption>Look for the new kernel and version string to see if you have it</figcaption></figure>
+</div>
+
+
+<p>Ubuntu 24.04.4 LTS doesn’t introduce any major new user-facing features, but <a href="https://www.omgubuntu.co.uk/2025/09/linux-kernel-6-17-new-features">Linux kernel 6.17</a> and the Mesa graphics driver update offer scores of low-level enablements and fixes that improve performance, albeit subtly – unless you’re a gamer. </p>
+
+
+
+<p>Updated packages on the new ISO include: </p>
+
+
+
+<ul>
+<li><strong>Linux kernel 6.17</strong></li>
+
+
+
+<li><strong>Mesa 25.2.8</strong></li>
+
+
+
+<li><strong>Snapd 2.73</strong></li>
+
+
+
+<li><strong>LibreOffice 25.8.4</strong></li>
+
+
+
+<li><strong>Mozilla Firefox 147</strong> (snap; auto-updates to newer)</li>
+</ul>
+
+
+
+<p>The ISO also packs in scores of bug fixes, security patches and other in-series updates to noble’s underlying package set. Far too many (and minor) to list individually. There’s also a set of mirror updates to provide a pathway for upgrading to Ubuntu 26.04 LTS later this year.</p>
+
+
+
+<p>Again, the change delta between Ubuntu 24.04.3 and Ubuntu 24.04.4 only affects the installation media. All of these updates were released to existing users over the past five months, there’s no big “upgrade” button to hit for existing users. </p>
+
+
+
+<h3>How to ‘Upgrade’ to Ubuntu 24.04.4 </h3>
+
+
+
+<p>If you currently run Ubuntu 24.04 LTS you should have everything here, but if you don’t see “24.04.4 LTS” when looking at the in <em>Settings &gt; System &gt; About</em> dialog (or on the GRUB boot loader during startup), you can fix that easily:</p>
+
+
+
+<ul>
+<li><strong>Open <em>Software Updater</em></strong></li>
+
+
+
+<li><strong>Install the</strong> <code>base-files</code> <strong>update</strong></li>
+</ul>
+
+
+
+<p>The base-files package is what modifies the version number shown throughout the system.</p>
+
+
+
+<h2>Download Ubuntu 24.04.4 LTS</h2>
+
+
+
+<p>Download Ubuntu 24.04.4 LTS for desktop, Raspberry Pi, server, and other devices direct <a href="https://releases.ubuntu.com/noble/" target="_blank">from the Ubuntu website</a> releases page, the main <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu website download page</a> (points to the same ISO), or your preferred official flavour website.</p>
+
+
+
+<p>Ubuntu 24.04 LTS receives support until April 2029. After that, you can choose to receive security coverage for a further 5 years by signing up for a free Ubuntu Pro account. </p>
+
+
+
+<p>For businesses who really don’t want to upgrade, Canonical now offers the option to pay for an additional 5 years on top of the standard 5 years and 5 years with Ubuntu Pro, giving <a href="https://www.omgubuntu.co.uk/2025/11/ubuntu-lts-releases-15-years-of-support">15 years Ubuntu LTS support</a> in total – which is crazy. </p>
+
+
+
+<p>The next point release will be Ubuntu 24.04.5 LTS. This will deliver the final HWE update to noble users, backporting the kernel and graphics driver stack from Ubuntu 26.04 LTS. </p>
+
+
+
+<p>Long-term support (LTS) versions of Ubuntu are supported for a minimum of 5 years. During the first 3 years, periodical ‘point releases’ are put out. These refresh the install image (ISO) so new users don’t have to download up to 3 years worth of updates after installing.</p>
+                                            </div></div>
+  </div>
+</body>
+</html>

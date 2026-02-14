@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bypassing Administrator Protection by Abusing UI Access</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Bypassing Administrator Protection by Abusing UI Access</h1>
+  <div class="metadata">
+    Source: Google Project Zero | Date: 2/12/2026 | Lang: EN |
+    <a href="https://projectzero.google/2026/02/windows-administrator-protection.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+      <article>
+        
+        <section>
+          <p>In my last blog post I introduced the new Windows feature, Administrator Protection and how it aimed to create a secure boundary for UAC where one didn’t exist. I described one of the ways I was able to bypass the feature before it was released. In total I found 9 bypasses during my research that have now all been fixed.</p>
+
+<p>In this blog post I wanted to describe the root cause of 5 of those 9 issues, specifically the implementation of UI Access, how this has been a long standing problem with UAC that’s been under-appreciated, and how it’s being fixed now.</p>
+
+<h2>A Question of Accessibility</h2>
+
+<p>Prior to Windows Vista any process running on a user’s desktop could control any window created by another, such as by sending <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/window-messages">window messages</a>. This behavior could be abused if a privileged user, such as SYSTEM, displayed a user interface on the desktop. A limited user could control the UI and potentially elevate privileges. This was referred to as a <a href="https://en.wikipedia.org/wiki/Shatter_attack">Shatter Attack</a>, and was usually fixed by removing user interface components from privileged code.</p>
+
+
+<p>As UAC encouraged running processes at different privilege levels on the same desktop, Microsoft introduced an additional feature, User Interface Privacy Isolation (UIPI). This used the Mandatory Integrity Control feature in UAC to limit what windows a process could interact with. If the integrity level of a process was lower than the process which created a window then it would be blocked from operations such as sending messages to that window. As an additional protection, Vista no longer ran user processes on the “service” desktop so that even if UIPI was inadequate a user interface exposed by a service process was not accessible to limited processes.</p>
+
+<p>To take an example, a limited user process has an assigned integrity level of “Medium” while a UAC administrator process is “High”. In this case UIPI would block the limited user process sending messages to any window created by the administrator process, excluding a small set of explicitly permitted messages. It would also block other UI functionality such as <a href="https://learn.microsoft.com/en-us/windows/win32/winmsg/hooks">windows hooks</a>.</p>
+
+<p>This introduced a problem for any user who relied on accessibility technology, such as screen readers. If the accessibility process was running as the limited user it could no longer interact with administrator processes created on the desktop. It would be blocked from both reading the contents of windows as well as performing operations such as clicking a button. This was not an acceptable compromise, so Vista needed a way to allow these applications to continue to work.</p>
+
+<p>The solution Microsoft chose was to allocate a flag for the access token of a process called UI Access. If the process’ access token had this flag set when it initialized its connection to the Win32 subsystem, the process would be granted special permissions to bypass many of the restrictions imposed by UIPI. Enabling this flag through a call to <code>NtSetInformationToken</code> with the <code>TokenUIAccess</code> information class was gated behind a check for <a href="https://learn.microsoft.com/en-us/windows/win32/secauthz/privilege-constants">SE_TCB_NAME privilege</a>, and so it couldn’t be performed by a limited user. Therefore in order to create a UI Access capable process a system service was necessary to enable the flag and create the new process.</p>
+
+<p>UAC already needed a system service, so creating a UI Access process was made part of the same flow that was used for launching an administrator process through the <code>RAiLaunchAdminProcess</code> RPC call. When a UI Access process is created through this RPC call it does not show the consent prompt unlike administrator elevation. This is important as otherwise there was a risk that a user couldn’t create the accessibility application needed by them to click the consent prompt for elevation.</p>
+
+<p>In order to prevent malware just claiming to be an accessibility application the service imposed <a href="https://learn.microsoft.com/en-us/windows/win32/winauto/uiauto-securityoverview">some additional checks</a> on the executable file which must be met to enable the UI access flag on the new process:</p>
+
+<ul>
+  <li>It must have an embedded manifest with the <code>uiAccess</code> attribute set to <code>true</code>.</li>
+  <li>It must be signed by a code signing certificate that’s trusted by the local machine root certificate store. There was no special requirement for the certificate outside of this, for example it doesn’t need to have a special EKU or cross signing by Microsoft.</li>
+  <li>It must be stored in an administrator only location on the system drive, such as:
+    <ul>
+      <li>The <code>Program Files</code> directory</li>
+      <li>The <code>Windows</code> directory (excluding some known writable locations)</li>
+      <li>The <code>System32</code> directory (excluding some known writable locations)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>If all the criteria are met then when the process is launched via <code>RAiLaunchAdminProcess</code> the service will take a copy of the caller’s access token, enable the UI Access flag and increase the integrity level as follows based on the caller:</p>
+
+<ul>
+  <li>If the caller is a limited user of an UAC administrator it will set the integrity level to High.</li>
+  <li>If the caller is an administrator then it will set the integrity level to High (normally a no-op).</li>
+  <li>If the caller is a normal user, the integrity level is set to the caller’s integrity plus 16 up to a maximum of High.</li>
+</ul>
+
+<p>A High integrity level is the absolute maximum allowed to be set, although there exists a higher level, “System” that’s reserved for service processes. Also note that the integrity level of the token is not changed if the caller already has the UI Access flag enabled, this is only important for normal users who don’t automatically get set to High integrity. One benefit of setting an elevated integrity level is the created process cannot be opened for read or write access by a lower integrity process, preventing a limited user from injecting code into the new process and by extension getting access to the UI Access flag.</p>
+
+<p><em>As an aside, you can disable the UI Access flag on the token without TCB privilege. A valid UI Access process running as a normal user can “ratchet” itself up to High integrity by clearing the flag on its own token then respawning another copy of itself via the UAC service. As there’s 4096 levels between Medium and High that would require calling the UAC service 255 times which is a little on the noisy side but it does work.</em></p>
+
+<p>Importantly, the UI Access flag only permits bypassing a limited set of operations such as sending window messages to other higher integrity processes. It doesn’t permit using things like windows hooks which allow for code injection into a process. Therefore for a UI Access process running as a normal user with integrity level less than High it can interact with a spawned administrator process through messages, but it couldn’t do something more invasive like hooking the window message queue.</p>
+
+<p>However, if a limited user creates a UI access process, it would run with a High integrity level and could take over any administrator process that contains a window. A service process with a System integrity level could only be interacted with using windows messages. But there’s no security boundary between an administrator and a system service so this is meaningless in practice.</p>
+
+<p>The end result is having the UI Access flag without having a High integrity level isn’t sufficient to trivially compromise an administrator process, you would need the process to expose a user interface that could be automated to get privileged code to run. For example, an administrator command prompt can be sent key strokes to run an arbitrary command.</p>
+
+<p>However, if you have the same integrity level as the target process, the UI Access flag becomes irrelevant and you can directly compromise the process with at least one window by using windows hooks to inject a DLL. This window doesn’t need to present a user interface, in fact technologies such as COM use message-only windows under the hood that can be used to compromise the process without ever showing anything to the user.</p>
+
+<p>Of course this is how things worked in UAC, but what about the new and improved Administrator Protection? Exactly the same as for the existing admin-approval UAC. The UI Access process will run under the caller’s token, which in this case will be the limited user, not the shadow administrator. The process will have the UI Access flag enabled as well as the integrity level set to High.</p>
+
+<p>This is a problem, having a process running at High integrity level allows you to compromise any other process running at that level on the same desktop even if that process runs as a different user. As the UI Access process is running as the limited user there’s no profile separation which is one of the key improvements in Administrator Protection.</p>
+
+<p>The elevation to High integrity is also silent, so at a minimum it’d be possible to break the security boundary without prompting the user, assuming there was a suitable administrator process to exploit. All we now need is a way of getting arbitrary code execution in a High integrity UI Access process. Fortunately, there are plenty of ways of doing this.</p>
+
+<h2>Achieving Arbitrary UI Access Execution</h2>
+
+<p>Over the years there’s been a number of ways to get arbitrary code executing as a High integrity level UI Access process. While Microsoft had made it clear that they were not a priority to be fixed, they sometimes were. Let’s break it down in a series of categories with some historical detail as well as my more recent research.</p>
+
+<h3>Bypassing the Secure Application Directory Check</h3>
+
+<p>One approach to getting arbitrary code to run is by bypassing the secure directory location check in the UAC service. If you could bypass this check, you could place either your own signed executable, or an existing executable that can be hijacked, say through DLL planting.</p>
+
+<p>One approach is to find a bug in the <code>AiCheckSecureApplicationDirectory</code> method in <code>appinfo.dll</code> which implements the check. This method first opens the file path provided via <code>RAiLaunchAdminProcess</code>, then calls <code>GetFinalPathNameByHandle</code> on the handle to ensure the path isn’t redirected to an insecure location. It then does a simple string check on the path looking for included and excluded directories. I found <a href="https://project-zero.issues.chromium.org/issues/42451318">a bypass</a> for the check back in 2017 and reported it to MSRC. The check didn’t take into account that it’s possible to write an NTFS named stream to a directory if the limited user has write access to that directory.</p>
+
+<p>For example the directory <code>C:\Windows\tracing</code> is writable by a limited user but the <code>tracing</code> subdirectory is explicitly excluded in the check so that <code>C:\Windows\tracing\file.exe</code> would not be considered secure. However, with the same access you could write a named stream on the directory so that <code>C:\Windows\tracing:file.exe</code> would be considered inside the <code>C:\Windows</code> directory and thus secure. This bug wasn’t fixed as a security bulletin but it did eventually get resolved in a later version of Windows and is not applicable to Windows 11.</p>
+
+<p>Another approach is to find a writable file or directory in a secure location that is not explicitly excluded in the check. If you find a writable file then you could overwrite it with the executable file as the <code>CreateProcessAsUser</code> API used by the UAC service doesn’t need a specific file extension for the executable file to be used. If you find a directory then you can just copy the executable file into that location.</p>
+
+<p>On a default installation there doesn’t seem to be any location that’s not covered. One location I did find during the research is that sometimes on major Windows updates the <code>Tasks</code> directory is copied to the <code>Tasks_Migrated</code> directory as a backup. This backup directory is writable like the original <code>Tasks</code> and was not included in the list of excluded directories. However, you have no known way of forcing it to be created, and since I pointed it out Microsoft have added it to the list of directories to exclude.</p>
+
+<p><em>Note: Microsoft did forget to add a check for named streams on <code>Tasks_Migrated</code>, however due to the access control on the directory it’s not possible to exploit as a normal user.</em></p>
+
+<p>You can use my PowerShell tools to find potential candidates using the following command. For best results run it as an administrator and replace <code>&lt;PID&gt;</code> with a process ID of a limited user process. It doesn’t filter out excluded directories, so you’d have to check yourself.</p>
+
+<div><pre><code><span>PS</span><span>&gt;</span><span> </span><span>$paths</span><span> </span><span>=</span><span> </span><span>"C:\Windows"</span><span>,</span><span>"C:\Program Files"</span><span>,</span><span>"C:\Program Files (x86)"</span><span>
+</span><span>PS</span><span>&gt;</span><span> </span><span>Get-AccessibleFile</span><span> </span><span>-Win32Path</span><span> </span><span>$paths</span><span> </span><span>-Access</span><span> </span><span>Execute</span><span>,</span><span>WriteData</span><span> </span><span>`
+</span><span>       </span><span>-DirectoryAccess</span><span> </span><span>AddFile</span><span> </span><span>-Recurse</span><span> </span><span>-ProcessId</span><span> </span><span>&lt;</span><span>PID</span><span>&gt;</span><span>
+</span></code></pre></div>
+
+<p>A final approach is finding a way to write a file to an existing secure location though a separate mechanism that doesn’t require bypassing the access control of that directory. I found just such <a href="https://project-zero.issues.chromium.org/issues/437884633">an issue</a> in my recent research. The Windows installer will install MSIX files into the <code>C:\Program Files\WindowsApps</code> directory, which is not excluded by the check. Windows 11 is configured by default to permit installing signed MSIX files without needing administrator privileges.</p>
+
+<p>Therefore you can package up a UI Access executable into an MSIX installer, sign the installer with an arbitrary certificate then when installed the executable will be in a secure location. Of course to do this you’d need a code signing certificate but that isn’t as big of a challenge as it seems. You might even be able to slip the signed UI Access executable file into a store application if you were so inclined. But this is now fixed as the <code>WindowsApps</code> directory is also excluded.</p>
+
+<p>Interestingly there is a <code>uiAccess</code> <a href="https://learn.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#:~:text=in%20the%20background.-,UI,-Access">restricted capability</a> you can add to the manifest when building the MSIX which will elevate the packaged executable to High integrity UI Access. However, when you do that, installing the package requires administrator privileges as shown below and so it’s not a bypass.</p>
+
+<p><img alt="Windows dialog showing the installation of a PoC application which has the uiAccess capability set. It's requiring running the installer as an administrator." /></p>
+
+<h3>Repurposing an Existing Secure UI Access Executable</h3>
+
+<p>A second category is finding functionality inside an UI Access capable executable file that’s already in a secure location that can be abused. You have full control over the UI Access process’ command line, perhaps there’s an option to load an arbitrary DLL?</p>
+
+<p>Before you can find exploitable behavior you need to find candidate executables that you can reverse engineer. You can use my PowerShell tools to find executable files which have the <code>uiAccess</code> manifest option set to true.</p>
+
+<div><pre><code><span>PS</span><span>&gt;</span><span> </span><span>$paths</span><span> </span><span>=</span><span> </span><span>"C:\Windows"</span><span>,</span><span>"C:\Program Files"</span><span>,</span><span>"C:\Program Files (x86)"</span><span>
+</span><span>PS</span><span>&gt;</span><span> </span><span>Get-ChildItem</span><span> </span><span>-Path</span><span> </span><span>$paths</span><span> </span><span>-Include</span><span> </span><span>*.</span><span>exe</span><span> </span><span>-Recurse</span><span> </span><span>|</span><span> 
+  </span><span>%</span><span> </span><span>{</span><span> 
+       </span><span>Get-Win32ModuleManifest</span><span> </span><span>$_</span><span>.</span><span>FullName</span><span> 
+  </span><span>}</span><span> </span><span>|</span><span> </span><span>Where-Object</span><span> </span><span>UiAccess</span><span> </span><span>|</span><span> </span><span>Select-Object</span><span> </span><span>-ExpandProperty</span><span> </span><span>FullPath</span><span>
+</span></code></pre></div>
+
+<p>With the list of candidates you’ll need to do some reverse engineering. I’ll leave that up to you.</p>
+
+<h3>Shared Profile and Environment</h3>
+
+<p>One of the big changes in Administrator Protection was the separation of the shared profile between the limited user and the administrator. The goal was to prevent privilege escalation by modifying the user’s profile on disk or the registry. Unfortunately as UI Access processes are created based on the limited user, the same as it was with UAC, this separation doesn’t apply and you can find ways of exploiting this behavior.</p>
+
+<p>A simple way of inspecting for potential exploitable behavior is to run Process Monitor and capture events accessing the limited user’s registry hive or profile directory. It’s also possible to hijack things like the user’s <code>C:</code> drive mapping as the logon session is the same between the limited user and its UI Access processes.</p>
+
+<p><img alt="Screenshot of process monitor showing osk.exe accessing registry keys in the current user's registry hive." /></p>
+
+<p>This is a well known issue with UI Access and UAC so when I found it in Administrator Protection I didn’t really need to <a href="https://project-zero.issues.chromium.org/issues/437868751">report it,</a> but felt I should. To ensure it got handled appropriately I found a specific exploitable condition and sent an accompanying proof-of-concept. In this case I found that the On-Screen Keyboard loaded a DLL from a path based on the <code>CommonProgramFiles</code> environment variable. By overriding this variable in the user’s registry hive I could redirect the DLL load and get arbitrary code execution in the UI Access process.</p>
+
+<p>During my research I stumbled upon a <a href="https://github.com/R41N3RZUF477/QuickAssist_UAC_Bypass">public bypass</a>, originally for UAC but it still worked with Administrator Protection. This bypass was in the <a href="https://www.microsoft.com/en-gb/windows/tips/quick-assist">Quick Assist application</a>, which seems to be an optional component but is installed by default on Windows 11. It abused the fact that the Quick Assist application would load the <a href="https://learn.microsoft.com/en-us/microsoft-edge/webview2/">WebView2</a> APIs to display HTML content. WebView2 would look in the user’s hive for an overridable installation location to load its library, by overriding this to a location under the user’s control it’s possible to force a DLL to be loaded into the UI Access process.</p>
+
+<p>One of the most interesting aspects of this bypass is it uses an API I didn’t know existed, <a href="https://learn.microsoft.com/en-us/windows/win32/winauto/getprocesshandlefromhwnd">GetProcessHandleFromHwnd</a>, to get a kernel handle to the process which created a window to get arbitrary code execution in the UI Access process.</p>
+
+<h3>Exploit RAiLaunchAdminProcess</h3>
+
+<p>To launch a UI Access process, the shell calls the <code>RAiLaunchAdminProcess</code> RPC method in the UAC service. As is all too common with APIs that are not directly exposed or documented they can hide functionality that can result in exploitable behavior.</p>
+
+<p>I reported two issues that allowed me to get arbitrary code execution in a UI Access process, one was a publicly known bypass while the other was a TOCTOU in the handling of the path to the executable file. The public bypass was described by myself in a <a href="https://googleprojectzero.blogspot.com/2019/12/calling-local-windows-rpc-servers-from.html">blog post</a> about using my PowerShell tooling to call local RPC methods. The example I gave was of calling <code>RAiLaunchAdminProcess</code> and abusing the fact the service doesn’t sanitize the process creation flags.</p>
+
+<p>You could pass the <code>DEBUG_PROCESS</code> flag, and from that get full control over the created process. The blog post described this in the context of a UAC bypass, but of course it applied equally well to UI Access processes as I detailed in the <a href="https://project-zero.issues.chromium.org/issues/437087426">report</a> I sent to MSRC. This was one of those bugs that I was concerned hadn’t been remediated during the development of Administrator Protection, but as it was <em>just</em> a UAC bypass it’d clearly slipped through the cracks.</p>
+
+<p>The <a href="https://project-zero.issues.chromium.org/issues/437291456">second issue is</a> in the handling of the path to the executable file, which allows us to compromise a UI Access process. The <code>RAiLaunchAdminProcess</code> RPC method has a very similar set of parameters to the <code>CreateProcessAsUser</code> API that’s ultimately called to create the new process. This includes having a separate string representing the path to the executable to create and the command line to pass to the new process.</p>
+
+<p>As I already described in the section on the secure application directory check, the validation is not done using the untrusted path string provided by the user but instead the file is opened and the final resolved path extracted to do the comparison. However, this resolved path is only used during the check, when it comes to create the process the original untrusted path is passed to <code>CreateProcessAsUser</code>’s <code>lpApplicationName</code> parameter.</p>
+
+<p>For example, if you passed the path <code>Z:\osk.exe</code> as the executable file the service would try to open that path then resolve the final name. If the <code>Z:</code> drive was mapped to the <code>C:\Windows\system32</code> directory it would find the executable located at <code>C:\Windows\system32\osk.exe</code> which would be a permitted secure directory. However, <code>Z:\osk.exe</code> would then be passed as <code>lpApplicationName</code> to <code>CreateProcessAsUser</code>.</p>
+
+<p>What use is this? The new process needs a base directory from where it’ll check for local DLL loads, and the <code>CreateProcessAsUser</code> API uses the <code>lpApplicationName</code> parameter, with the executable filename removed, for this base directory. This means that you can start a UI Access process using the <code>Z:\osk.exe</code> path; it will try to load unknown DLLs first from the <code>Z:\</code> directory. If you remap the <code>Z:</code> drive to an untrusted location between the process being created and when it tries to load DLLs you can force an untrusted DLL to be loaded into the process and get arbitrary code execution. This is easy to do, as the UI Access process can be created suspended by passing the <code>CREATE_SUSPENDED</code> when calling <code>RAiLaunchAdminProcess</code>, remapping the drive, then resuming the process.</p>
+
+<h3>Access Token Stealing</h3>
+
+<p>The final category I’ll mention is access token stealing. This is somewhat different from the others as you commonly can’t get High integrity level from it, instead you get a process with the UI Access flag enabled which can be used to control higher integrity UI, just not abuse things like windows hooks.</p>
+
+<p>As I described in an <a href="https://www.tiraniddo.dev/2019/02/accessing-access-tokens-for-uiaccess.html">old blog post</a>, if you create a UI Access process, you can open the process’ access token, duplicate it, reduce the integrity level to Medium and finally create a new process using that token. No step in that process disabled the UI Access flag on the token.</p>
+
+<p>Subsequent to the blog post Microsoft made a change. Now if the integrity level of a token is reduced via the <code>NtSetInformationToken</code> system call, it will also disable the UI Access flag. If you can’t reduce the integrity level to Medium it’s not possible to impersonate the token or use it for a new process, thereby mitigating the issue.</p>
+
+<p>However, I noticed that there are some places in the kernel that lower the integrity level of the token which do not go through <code>NtSetInformationToken</code> and thus do not end up disabling the UI Access flag. One option was the creation of an <a href="https://project-zero.issues.chromium.org/issues/437308710">App Container token</a> via the <code>NtCreateLowBoxToken</code> system call. This will set the integrity level to Low which will allow the new token to be used to create a process. Even though the process would then run in an App Container sandbox it was still sufficient to send arbitrary window messages to more privileged processes.</p>
+
+<h2>Silently Bypass Windows Administrator Protection</h2>
+
+<p>Let’s assume we now have code execution in a High integrity level UI Access process. How do we exploit that to bypass Administrator Protection? We need a process to be created silently as the shadow administrator that creates a window during its execution. From that we can use the <a href="https://learn.microsoft.com/en-us/windows/win32/api/winuser/nf-winuser-setwindowshookexw">SetWindowsHookEx</a>, to force an arbitrary DLL to be loaded into the new process.</p>
+
+<p>The best vector I found was using the fact that scheduled tasks can be configured to run with administrator privileges when executed. This still works when Administrator Protection is enabled, just the task process runs as the shadow administrator. We need a task that is enabled, can be started by the limited user and runs with administrator privileges. We can use my PowerShell tools <code>Get-AccessibleScheduledTask</code> command to find one:</p>
+
+<div><pre><code><span>PS</span><span>&gt;</span><span> </span><span>Get-AccessibleScheduledTask</span><span> </span><span>-Access</span><span> </span><span>Execute</span><span> </span><span>|</span><span> 
+   </span><span>?</span><span> </span><span>{</span><span> </span><span>$_</span><span>.</span><span>AllowDemandStart</span><span> </span><span>-and</span><span> </span><span>$_</span><span>.</span><span>Enabled</span><span> </span><span>-and</span><span> </span><span>(</span><span>$_</span><span>.</span><span>RunLevel</span><span> </span><span>-eq</span><span> </span><span>"Highest"</span><span>)</span><span> </span><span>}</span><span> </span><span>|</span><span>
+   </span><span>Select-Object</span><span> </span><span>Name</span><span>
+
+</span><span>Name</span><span>
+</span><span>----</span><span>
+</span><span>\Microsoft\Windows\DiskCleanup\SilentCleanup</span><span>
+</span><span>\Microsoft\Windows\Input\LocalUserSyncDataAvailable</span><span>
+</span><span>\Microsoft\Windows\Input\MouseSyncDataAvailable</span><span>
+</span><span>...</span><span>
+</span></code></pre></div>
+
+<p>The first task in the list <code>SilentCleanup</code> is well known to me. It’s been used multiple times to bypass UAC, such as by abusing the fact it uses <a href="https://www.tiraniddo.dev/2017/05/exploiting-environment-variables-in.html">environment variables</a> to find the executable file which a limited user can override. Unexpectedly the issue with environment variables wasn’t fixed in the version of Administrator Protection I tested, so I reported that as a <a href="https://project-zero.issues.chromium.org/issues/438672763">separate issue</a>.</p>
+
+<p>If we ignore the issue in handling environment variables, we can abuse this task as it’ll create a window when the process runs, so we just setup a hook, start the task, wait for your hook DLL to be loaded by the <code>cleanmgr.exe</code> process and you’ve bypassed administrator protection. You can find a full PoC using this approach <a href="https://project-zero.issues.chromium.org/action/issues/437087426/attachments/68269489?download=true">here</a>.</p>
+
+<p><em>Note: If you want to use the <code>GetProcessHandleFromHwnd</code> API, like the QuickAssist public bypass does, you’ll probably need to win a race between the process creating a window and it terminating. For example, QuickAssist uses a file oplock to cause the task process to hang when it opens a specific file. If you use the windows hooks approach you don’t need to worry about this.</em></p>
+
+<h2>Conclusions</h2>
+
+<p>All of the issues I reported were fixed, but that doesn’t mean there’s nothing left to find. Hopefully it’s a little bit harder than before. However, it’s still the case that if you can get code execution in a High integrity level process, with UI Access enabled or not, then you can leverage that to bypass Administrator Protection. Hopefully anything which is now found allowing code execution in a UI Access process is a serviceable security vulnerability and will be fixed.</p>
+
+<p>One big change to UI Access processes over the original design of Administrator Protection is they now no longer run as the limited user. This change was introduced to fix <a href="https://project-zero.issues.chromium.org/issues/437868751">issue 437868751</a>. Instead they are created with a filtered copy of the shadow administrator token. This eliminates the shared profile issues, introducing much clearer separation between the administrator processes and the limited user.</p>
+
+<p>Time will tell whether Administrator Protection is successful as a security boundary or not. Microsoft is taking it seriously, but more rigorous testing during development would have prevented many pre existing UAC bypasses from being missed. I’d recommend anyone interested in this feature to take a look now it’s released and the previously known bugs have been fixed.</p>
+
+
+        </section>
+      </article>
+      
+      
+    </div></div>
+  </div>
+</body>
+</html>

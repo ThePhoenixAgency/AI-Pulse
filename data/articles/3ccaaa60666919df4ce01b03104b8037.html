@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Breaking the Sound Barrier, Part II: Exploiting CVE-2024-54529</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Breaking the Sound Barrier, Part II: Exploiting CVE-2024-54529</h1>
+  <div class="metadata">
+    Source: Google Project Zero | Date: 1/30/2026 | Lang: EN |
+    <a href="https://projectzero.google/2026/01/sound-barrier-2.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+      <article>
+        
+        <section>
+          <p>In the <a href="https://projectzero.google/2025/05/breaking-sound-barrier-part-i-fuzzing.html">first part of this series</a>, I detailed my journey into macOS security research, which led to the discovery of a type confusion vulnerability (<a href="https://project-zero.issues.chromium.org/issues/372511888">CVE-2024-54529</a>) and a double-free vulnerability (<a href="https://project-zero.issues.chromium.org/issues/406271181">CVE-2025-31235</a>)  in the <code>coreaudiod</code> system daemon through a process I call <a href="https://projectzero.google/2025/05/breaking-sound-barrier-part-i-fuzzing.html#:~:text=The%20Approach%3A%20Knowledge%2DDriven%20Fuzzing">knowledge-driven fuzzing</a>. While the first post focused on the process of finding the vulnerabilities, this post dives into the intricate process of exploiting the type confusion vulnerability.</p>
+
+<p>I’ll explain the technical details of turning a potentially exploitable crash into a working exploit: a journey filled with dead ends, creative problem solving, and ultimately, success.</p>
+<h2>The Vulnerability: A Quick Recap</h2>
+
+<p>If you haven’t already, I highly recommend reading my <a href="https://googleprojectzero.blogspot.com/2025/05/breaking-sound-barrier-part-i-fuzzing.html">detailed writeup</a> on this vulnerability before proceeding.</p>
+
+<p>As a refresher, <a href="https://project-zero.issues.chromium.org/issues/372511888">CVE-2024-54529</a> is a type confusion vulnerability within the <code>com.apple.audio.audiohald</code> Mach service in the <code>CoreAudio</code> framework used by the <code>coreaudiod</code> process. Several Mach message handlers, such as <code>_XIOContext_Fetch_Workgroup_Port</code>, would fetch a <code>HALS_Object</code> from the Object Map based on an ID from the Mach message, and then perform operations on it, assuming it was of a specific type (<code>ioct</code>) without proper validation.
+
+This incorrect assumption led to a crash when the code attempted to make a virtual call on an object whose pointer was stored inside the <code>HALS_Object</code>, as shown in the stack trace below:</p>
+
+<div><pre><code><span>Process 82516 stopped
+</span><span>* thread #</span>8, queue <span>=</span> <span>'com.apple.audio.system-event'</span>, stop reason <span>=</span> EXC_BAD_ACCESS <span>(</span><span>code</span><span>=</span>1, <span>address</span><span>=</span>0xffff805cdc7f7daf<span>)</span>
+<span>    frame #</span>0: 0x00007ff81224879a CoreAudio<span>`</span>_XIOContext_Fetch_Workgroup_Port + 294
+<span>CoreAudio`_XIOContext_Fetch_Workgroup_Port:
+</span><span>    0x7ff81224879a &lt;+291&gt;</span>: mov    rax, qword ptr <span>[</span>rdi]
+<span>-&gt;</span><span>  </span>0x7ff81224879d &lt;+294&gt;: call   qword ptr <span>[</span>rax + 0x168]
+<span>    0x7ff8122487a3 &lt;+300&gt;</span>: mov    dword ptr <span>[</span>rbx + 0x1c], eax
+<span>    0x7ff8122487a6 &lt;+303&gt;</span>: mov    rdi, r13
+<span>(lldb) bt
+</span><span>* thread #</span>8, queue <span>=</span> <span>'com.apple.audio.system-event'</span>, stop reason <span>=</span> EXC_BAD_ACCESS <span>(</span><span>code</span><span>=</span>1, <span>address</span><span>=</span>0xffff805cdc7f7daf<span>)</span>
+<span>  * frame #</span>0: 0x00007ff81224879a CoreAudio<span>`</span>_XIOContext_Fetch_Workgroup_Port + 294    
+<span>    frame #</span>1: 0x00007ff812249c81 CoreAudio<span>`</span>HALB_MIGServer_server + 84
+<span>    frame #</span>2: 0x00007ff80f359032 libdispatch.dylib<span>`</span>dispatch_mig_server + 362
+<span>    frame #</span>3: 0x00007ff811f202ed CoreAudio<span>`</span>invocation <span>function for </span>block <span>in </span>AMCP::Utility::Dispatch_Queue::install_mig_server<span>(</span>unsigned int, unsigned int, unsigned int <span>(</span><span>*</span><span>)(</span>mach_msg_header_t<span>*</span>, mach_msg_header_t<span>*</span><span>)</span>, bool, bool<span>)</span> + 42
+<span>    frame #</span>4: 0x00007ff80f33e7e2 libdispatch.dylib<span>`</span>_dispatch_client_callout + 8
+<span>    frame #</span>5: 0x00007ff80f34136d libdispatch.dylib<span>`</span>_dispatch_continuation_pop + 511
+<span>    frame #</span>6: 0x00007ff80f351c83 libdispatch.dylib<span>`</span>_dispatch_source_invoke + 2077
+<span>    frame #</span>7: 0x00007ff80f3447ba libdispatch.dylib<span>`</span>_dispatch_lane_serial_drain + 322
+<span>    frame #</span>8: 0x00007ff80f3453e2 libdispatch.dylib<span>`</span>_dispatch_lane_invoke + 377
+<span>    frame #</span>9: 0x00007ff80f346393 libdispatch.dylib<span>`</span>_dispatch_workloop_invoke + 782
+<span>    frame #</span>10: 0x00007ff80f34f0db libdispatch.dylib<span>`</span>_dispatch_root_queue_drain_deferred_wlh + 271
+<span>    frame #</span>11: 0x00007ff80f34e9dc libdispatch.dylib<span>`</span>_dispatch_workloop_worker_thread + 659
+<span>    frame #</span>12: 0x00007ff80f4e2c7f libsystem_pthread.dylib<span>`</span>_pthread_wqthread + 326
+<span>    frame #</span>13: 0x00007ff80f4e1bdb libsystem_pthread.dylib<span>`</span>start_wqthread + 15
+</code></pre></div>
+
+<h2>Understanding the Objective</h2>
+
+<p>Exploiting such a vulnerability seemed simple enough: if we could control the address being dereferenced at offset <code>0x168</code> of the <code>rax</code> register, we could hijack control flow. But it wasn’t quite that simple. The <code>HALS_Object</code> fetched from the heap was dereferenced several times before the <code>call</code> instruction happened:</p>
+
+<p>Thus, the exploit required establishing a pointer chain. First, we needed to set a value at offset <code>0x68</code> of a <code>HALS_Object</code> to point to a region we controlled in memory. This region, in turn, needed to contain a pointer at its own offset <code>0x0</code> that pointed to a fake vtable, also under our control. With this chain in place, we could write our target address at offset <code>0x168</code> of the fake vtable to hijack control flow. The approach would look like this:
+ </p>
+
+<p><img alt="" />
+ </p>
+
+<h2>Initial Exploitation Attempts and the <code>CFString</code> Hurdle</h2>
+
+<p>The most direct path to exploitation seemed to be to find an API to write arbitrary data to the vulnerable offset (<code>0x68</code>) of a <code>HALS_Object</code>. My initial thought was to create a <code>CFString</code> object and find a way to place a pointer to it at the vulnerable offset of a <code>HALS_Object</code>.</p>
+
+<p>I found a nice looking API in <code>coreaudiod</code> I could call that would set offset <code>0x68</code> to an attacker-controlled <code>CFString</code>:</p>
+
+<p><img alt="" /></p>
+
+<p>However, this approach quickly hit a wall. The <code>CFString</code> type has an <a href="https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFString.c#L166">uncontrollable header</a>, which meant that even though I could control the <em>content</em> of the <code>CFString</code>, I couldn’t control the object’s header. For this exploit to work, I needed the data at offset <code>0x0</code> of the <code>CFString</code> to be a pointer to data I controlled. The <code>CFString</code>’s header made this impossible.</p>
+
+<p>This meant I needed a new approach. I had to find a different way to control the memory at the vulnerable offset.</p>
+
+<h2>Tools of the Trade</h2>
+
+<p>With my initial attempts at finding a suitable object primitive proving fruitless, it became clear I needed a better way to visualize the <code>coreaudiod</code> heap and understand the objects living on it. To do this, I built several custom tools.</p>
+
+<p>The most useful of these was a custom object dumper I wrote using Ivan Fratric’s <a href="https://github.com/googleprojectzero/TinyInst/blob/master/hook.md">TinyInst Hook API</a>. This tool hooked into the process and iterated through the <code>HALS_ObjectMap</code> linked list, dumping the raw contents, size, type, and subtype of every <code>HALS_Object</code> currently on the heap. This gave me a powerful method to inspect the composition of each object, search for controllable data, and see if any interesting pointers already existed at the critical <code>0x68</code> offset.</p>
+
+<p><img alt="" /></p>
+
+<p>Alongside this dynamic analysis tool, I used an IDAPython script to perform targeted static analysis, hunting for any code paths that wrote to offsets of interest after an object was fetched via <code>CopyObjectByObjectID</code>. This combination of dynamic and static analysis was essential for systematically mapping out the exploitation surface.</p>
+
+<h2>Forcing Out-of-Bounds Reads on the Heap</h2>
+
+<p>Armed with my object dumper, I decided to investigate another potential exploitation path. If I couldn’t find a way to write a pointer directly to offset <code>0x68</code>, perhaps I could trigger an out-of-bounds read to achieve a similar effect.</p>
+
+<p>The idea was to find a <code>HALS_Object</code> smaller than <code>0x68</code> bytes, create it on the heap, and then carefully place a second, attacker-controlled object immediately after it in memory. If I then triggered the type confusion on the <em>first</em> (smaller) object, the code’s attempt to read from offset <code>0x68</code> would read past the object’s boundary and into the controlled data of the second object.</p>
+
+<p>Unfortunately, my object dumper and static analysis quickly proved this to be a dead end. After cataloging all the object types, it was clear that no object smaller than <code>0x68</code> bytes existed. In the latest macOS version available during my research (macOS Sequoia 15.0.1), the smallest object type, <code>stap</code>, was <code>0x70</code> bytes.</p>
+
+<p>Interestingly, previous versions of macOS I looked at (including macOS Ventura 13.1) <em>did</em> contain smaller <code>HALS_Object</code>s, demonstrating that differences in software versions can sometimes introduce new primitives for exploitation.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>clnt</code></td>
+      <td>0x158</td>
+    </tr>
+    <tr>
+      <td><code>ioct</code></td>
+      <td>0xF0</td>
+    </tr>
+    <tr>
+      <td><code>sive</code></td>
+      <td>0x78</td>
+    </tr>
+    <tr>
+      <td><code>astr</code></td>
+      <td>0xD0/0xD8/0xB8/0x98</td>
+    </tr>
+    <tr>
+      <td><code>stap</code></td>
+      <td>0x70</td>
+    </tr>
+    <tr>
+      <td><code>asub</code></td>
+      <td>0x80</td>
+    </tr>
+    <tr>
+      <td><code>aplg</code></td>
+      <td>0x258/0x248/0x1B0/0xB0/0x88</td>
+    </tr>
+    <tr>
+      <td><code>adev</code></td>
+      <td>0x740/0x6E0/0x7A0/0x840</td>
+    </tr>
+    <tr>
+      <td><code>abox</code></td>
+      <td>0x198</td>
+    </tr>
+    <tr>
+      <td><code>engn</code></td>
+      <td>0x308/0x480</td>
+    </tr>
+    <tr>
+      <td><code>crsd</code></td>
+      <td>0xB8</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With the out-of-bounds read possibility eliminated, my focus shifted back to heap manipulation and finding a way to control the contents of an object’s allocation directly.</p>
+
+<h2>A Glimmer of Hope: Uninitialized Memory in the <code>ngne</code> Object</h2>
+
+<p>To hunt for other exploitation primitives, I turned to a powerful debugging tool on macOS: Guard Malloc with the <code>PreScribble</code> option enabled. This feature initializes freshly allocated memory blocks with a specific byte pattern (<code>0xAA</code>), making it easy to spot when objects are not properly zeroed out and could lead to the use of uninitialized memory.</p>
+
+<p>Running <code>coreaudiod</code> with these settings, I discovered an object type, <code>ngne</code>, that had a peculiar property: a portion of the object’s memory was uninitialized. Specifically, 6 high bytes of a pointer-sized field at the correct offset were not being cleared upon allocation, leaving them with the <code>0xAA</code> pattern from <code>PreScribble</code>.</p>
+
+<p><em><img alt="" /></em></p>
+
+<p>This was a game-changer. An uninitialized memory vulnerability could provide the primitive I needed to gain control of the pointer at the vulnerable offset.</p>
+
+<h3>The Tricky Constraint</h3>
+
+<p>Why only 6 uninitialized bytes you ask? The developer likely did something like this at offset <code>0x68</code> when defining the <code>ngne</code> object:</p>
+
+<div><pre><code><span>class</span> <span>NGNE</span> <span>{</span>
+<span>...</span>
+  <span>size_t</span> <span>previous_var</span><span>;</span> <span>// offset 0x60</span>
+  <span>short</span> <span>var</span><span>=</span><span>0</span><span>;</span> <span>// offset 0x68 </span>
+  <span>size_t</span>  <span>next_var</span><span>;</span> <span>// offset 0x70</span>
+<span>...</span>
+<span>}</span>
+</code></pre></div>
+
+<p>This happens because the compiler aligns 8-byte variables, like <code>size_t</code> on x64, to 8-byte boundaries for optimization. Consequently, the <code>short</code> variable causes  <code>next_var</code> to be placed at offset <code>0x70</code> instead of immediately after <code>var</code> at <code>0x6A</code>, leaving an uninitialized 6-byte gap.</p>
+
+<p>This constraint would make things a bit tricky. Even if we could get controlled memory to show up within the object, the last 2 bytes would be zero’d out.</p>
+
+<h2>A New Exploitation Strategy</h2>
+
+<p>Armed with this new knowledge, I formulated a new, more complex exploitation strategy:</p>
+
+<ol>
+  <li><strong>Allocate Controlled Data</strong>: Find a way to allocate large amounts of data that I control in the <code>coreaudiod</code> process.</li>
+  <li><strong>Create Indirect Pointers</strong>: Create indirect pointers that point to my controlled data.</li>
+  <li><strong>Free data containing pointers.</strong></li>
+  <li><strong>Reuse Pointers</strong>: Trick the program into reusing memory containing pointers when the <code>ngne</code> object is allocated.</li>
+</ol>
+
+<h2>Heap Feng Shui with Property Lists</h2>
+
+<p>To control large portions of memory, I turned to a common feature in Apple’s APIs: <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/PropertyList.html">Property Lists</a>. Many APIs accept user data as serialized <code>plist</code> files, which are then deserialized, allocating memory for <code>CoreFoundation</code> objects. <code>CoreAudio</code> exposed an API, <code>HALS_Object_SetPropertyData_DPList</code>, which did just that, storing it on the heap:
+ </p>
+
+<p><img alt="" />
+ </p>
+
+<p>A <code>plist</code> allows you to specify nested values of several types:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Core Foundation type</th>
+      <th>XML element</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CFArrayRef</code></td>
+      <td><code>&lt;array&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFDictionaryRef</code></td>
+      <td><code>&lt;dict&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFStringRef</code></td>
+      <td><code>&lt;string&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFDataRef</code></td>
+      <td><code>&lt;data&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFDateRef</code></td>
+      <td><code>&lt;date&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFNumberRef</code> (<code>Int</code>)</td>
+      <td><code>&lt;integer&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFNumberRef</code> (<code>Float</code>)</td>
+      <td><code>&lt;real&gt;</code></td>
+    </tr>
+    <tr>
+      <td><code>CFBooleanRef</code></td>
+      <td><code>&lt;true/&gt;</code> or <code>&lt;false/&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This meant I could create <code>plist</code> files with large arrays of <code>CFString</code> or <code>CFData</code> objects, giving me a powerful primitive for mass-allocating data and controlling the heap layout. Furthermore, I could add <code>CFArray</code> or <code>CFDictionary</code> objects to achieve the indirection needed for the exploit as those data types contain pointers to other user-controlled objects.</p>
+
+<p>The overall structure would look like this:</p>
+
+<p><img alt="" /></p>
+
+<p>But you might be wondering: doesn’t this present a similar problem as when we tried to allocate a pointer to a <code>CFString</code>? (The pointer chain would try to dereference the <code>CFRuntimeBase</code> header and fail). Yes! But ironically, the clearing of the last 2 bytes at offset <code>0x68</code> opened up a new possibility: we might allocate an object over a <code>CFString</code> pointer in the middle of the array that, after the last 2 bytes were cleared, pointed to raw data. It seemed like a bit of a long shot, but I was up for the challenge!</p>
+
+<p><img alt="" /></p>
+
+<h2>Freeing the Data</h2>
+
+<p>Next, I needed to free the memory structure that had been allocated with my data. This was easy enough - I just had to call the API again with a much smaller <code>plist</code>. Then, my large, allocated <code>plist</code> structure was freed.</p>
+
+<h2>Reusing the Freed Data in an <code>ngne</code> Object</h2>
+
+<p>After some painful reverse engineering, I found a way to create <code>ngne</code> objects on demand by sending a crafted Mach message to the <code>audiohald</code> service. I thought I was on the home stretch. My plan was to spray the heap, free the memory, and then immediately allocate my <code>ngne</code> object to reclaim it.</p>
+
+<p><img alt="" /></p>
+
+<p>But I quickly ran into a fundamental and frustrating roadblock: <code>malloc</code> zones.</p>
+
+<p>The <code>ngne</code> objects I could create were 776 bytes in size, which placed them squarely in the <code>malloc_tiny</code> memory region. This was a critical problem because, as a security mitigation, macOS’s memory allocator securely zeroes out any memory in the <code>malloc_tiny</code> zone upon allocation. My carefully crafted heap spray would be wiped clean moments before the <code>ngne</code> object was placed on top of it.</p>
+
+<p>My exploit was dead in the water.</p>
+
+<h3>A New Hope: Startup <code>ngne</code> Objects</h3>
+
+<p>This forced a pivot. If I wanted to use uninitialized memory, I needed to land an allocation in a malloc zone that didn’t get zeroed out. My analysis showed that larger <code>ngne</code> objects—over 1100 bytes—could get created and would be placed in the <code>malloc_small</code> region, which is not zeroed on allocation. The catch? I couldn’t find any user-accessible API to trigger their creation. They only seemed to be instantiated when <code>coreaudiod</code> registered an audio plugin during startup.</p>
+
+<p><img alt="" /></p>
+
+<p>So, I had found some <code>ngne</code> objects suitable for exploitation, but they were only instantiated at startup, before we could deliver our heap spray. This sparked an idea: what if I performed the heap spray and then crashed the process on purpose? When it restarted, (all system daemons automatically restart on macOS) could it allocate an object over our sprayed data?</p>
+
+<h2>Loading Into Memory on Startup</h2>
+
+<p>One difficulty I had to overcome was that after crashing, the newly spawned <code>coreaudiod</code> would be allocated within a new process space. That meant that the previously allocated heap spray would no longer be in play.</p>
+
+<p>However, I discovered a nice feature that helped with this: when performing our <code>plist</code> heap spray, <code>CoreAudio</code> serialized the data to a file on disk, <code>/Library/Preferences/Audio/com.apple.audio.DeviceSettings.plist</code>.</p>
+
+<p>Then, on startup, the <code>plist</code> was fetched from disk, updated with current runtime information, and saved back to disk, as shown below.</p>
+
+<div><pre><code><span>__int64</span> <span>__fastcall</span> <span>CASettingsStorage</span><span>::</span><span>SetCFTypeValue</span><span>(</span>
+        <span>CFMutableDictionaryRef</span> <span>*</span><span>this</span><span>,</span>
+        <span>const</span> <span>__CFString</span> <span>*</span><span>key</span><span>,</span>
+        <span>const</span> <span>void</span> <span>*</span><span>value</span><span>)</span>
+<span>{</span>
+  <span>CASettingsStorage</span><span>::</span><span>RefreshSettings</span><span>((</span><span>CASettingsStorage</span> <span>*</span><span>)</span><span>this</span><span>);</span>
+  <span>CFDictionarySetValue</span><span>(</span><span>this</span><span>[</span><span>2</span><span>],</span> <span>key</span><span>,</span> <span>value</span><span>);</span>
+  <span>return</span> <span>CASettingsStorage</span><span>::</span><span>SaveSettings</span><span>((</span><span>CASettingsStorage</span> <span>*</span><span>)</span><span>this</span><span>);</span>
+<span>}</span>
+</code></pre></div>
+
+<p>Lucky for me, the <code>CASettingsStorage::SaveSettings</code> function created a copy of the in-memory <code>plist</code>, wrote it to disk, and then <em>freed the copy.</em> Thankfully, this process occurred before the creation of the <code>ngne</code> objects by the system.</p>
+
+<div><pre><code><span>void</span> <span>__fastcall</span> <span>CASettingsStorage</span><span>::</span><span>SaveSettings</span><span>(</span><span>CASettingsStorage</span> <span>*</span><span>this</span><span>)</span>
+<span>{</span>
+  <span>if</span> <span>(</span> <span>!*</span><span>((</span><span>_BYTE</span> <span>*</span><span>)</span><span>this</span> <span>+</span> <span>50</span><span>)</span> <span>)</span>
+  <span>{</span>
+    <span>v1</span> <span>=</span> <span>(</span><span>const</span> <span>void</span> <span>*</span><span>)</span><span>*</span><span>((</span><span>_QWORD</span> <span>*</span><span>)</span><span>this</span> <span>+</span> <span>2</span><span>);</span>
+    <span>if</span> <span>(</span> <span>v1</span> <span>)</span>
+    <span>{</span>
+      <span>Data</span> <span>=</span> <span>CFPropertyListCreateData</span><span>(</span><span>0LL</span><span>,</span> <span>v1</span><span>,</span> <span>*</span><span>((</span><span>CFPropertyListFormat</span> <span>*</span><span>)</span><span>this</span> <span>+</span> <span>3</span><span>),</span> <span>0LL</span><span>,</span> <span>0LL</span><span>);</span>
+      <span>v3</span> <span>=</span> <span>fopen</span><span>(</span><span>*</span><span>(</span><span>const</span> <span>char</span> <span>**</span><span>)</span><span>this</span><span>,</span> <span>"w+"</span><span>);</span>
+
+      <span>----</span><span>TRUNCATED</span> <span>FILE</span> <span>WRITE</span> <span>OPERATIONS</span><span>----</span>
+
+      <span>CACFData</span><span>::~</span><span>CACFData</span><span>(</span><span>Data</span><span>);</span>
+    <span>}</span>
+  <span>}</span>
+<span>}</span>
+</code></pre></div>
+
+<p>This meant that each time the process restarted, our entire <code>plist</code> structure was reallocated and then freed, giving us a chance for our data to end up within the vulnerable offset of the <code>ngne</code> object.</p>
+
+<h2>Updated Exploitation Strategy</h2>
+
+<p>The new attack strategy would look like this:</p>
+
+<ol>
+  <li><strong>Allocate Controlled Data</strong>: Send a mach message to <code>coreaudiod</code> to invoke the <code>HALS_Object_SetPropertyData_DPList</code> message handler. Include a large <code>plist</code> with controlled data. The <code>plist</code> will be stored to disk.</li>
+  <li><strong>Trigger the Type Confusion</strong>: Trigger the type confusion vulnerability, simply to crash the process.</li>
+  <li><strong>Let the Magic Happen</strong>: Wait for <code>coreaudiod</code> to:
+    <ul>
+      <li>Restart.</li>
+      <li>Load the crafted <code>plist</code> from disk.</li>
+      <li>Create a <code>plist</code> in memory.</li>
+      <li>Free the <code>plist.</code></li>
+      <li>Allocate an <code>ngne</code> object over the freed <code>plist</code> object (hopefully).</li>
+    </ul>
+  </li>
+  <li><strong>Trigger the Type Confusion Again</strong>: Trigger it on a random <code>ngne</code> object and hope it reused our sprayed data.</li>
+  <li><strong>Repeat</strong>: Repeat steps 3-4 until it works!</li>
+</ol>
+
+<h2>Validating the Approach</h2>
+
+<p>In order for the exploit to work, a lot of things needed to go right. Before proceeding, I wanted to make sure that my attack chain wasn’t purely theoretical - that the pointer chain I sought could actually show up within an object.</p>
+
+<p>To do this, I leveraged the <code>XSystem_Get_Object_Info</code> message handler provided by <code>coreaudiod</code>. This API allowed me to enumerate all HALS Objects on the system, and determine which ones were of type <code>ngne</code>.</p>
+
+<p>Then, I modified my Object Dumper to dump only <code>ngne</code> objects, and to continually run until it found a pointer chain to the sprayed data. After much experimentation with crafting the perfect <code>plist</code>, I finally caused the stars to perfectly align!</p>
+
+<p><img alt="" /></p>
+
+<h2>Building the ROP Chain</h2>
+
+<p>Once I could redirect execution to my controlled data, the final step was to build a Return-Oriented Programming (ROP) chain to achieve arbitrary code execution. Since the target was the <code>CoreAudio</code> library, (which is stored in the dyld shared cache and has a constant address until system reboot) defeating ASLR was not necessary in the context of privilege escalation. I crafted a ROP chain to open and write a file at a location normally accessible only to coreaudiod. As the ROP chain is encoded in one of the <code>CFString</code> objects, to avoid issues with invalid UTF-8 bytes, UTF-16 string encoding was used.</p>
+
+<div><pre><code><span># Beginning of stack after pivot
+</span><span>rop</span>   <span>=</span> <span>bytearray</span><span>(</span><span>p64</span><span>(</span><span>LOAD_RSP_PLUS_EIGHT</span><span>))</span> <span># lea rax, [rsp + 8] ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>ADD_HEX30_RSP</span><span>)</span>       <span># add rsp, 0x30 ; pop rbp ; ret
+</span><span>rop</span>  <span>+=</span> <span>INLINE_STRING</span>            <span># Inline "/Library/Preferences/Audio/malicious.txt"
+</span><span>rop</span>  <span>+=</span> <span>b</span><span>'</span><span>\x42</span><span>'</span> <span>*</span> <span>15</span>             <span># pop rbp filler and will be moved past
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>MOV_RAX_TO_RSI</span><span>)</span>      <span># mov rsi, rax ; mov rax, rsi ; pop rbp ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>0x4242424242424242</span><span>)</span>  <span># pop rbp filler
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>MOV_RSI_TO_RDI</span><span>)</span>      <span># mov rdi, rsi ; mov rax, rdi ; mov rdx, rdi ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>POP_RSI_GADGET</span><span>)</span>      <span># pop rsi ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>0x201</span><span>)</span>               <span># O_CREAT | O_WRONLY
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>POP_RDX_GADGET</span><span>)</span>      <span># pop rdx ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>0x1A4</span><span>)</span>               <span># 0644
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>POP_RAX_GADGET</span><span>)</span>      <span># pop rax ; ret
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>0x2000005</span><span>)</span>           <span># syscall number for open()
+</span><span>rop</span>  <span>+=</span> <span>p64</span><span>(</span><span>SYSCALL</span><span>)</span>             <span># syscall
+</span><span>rop</span> <span>+=</span> <span>b</span><span>'</span><span>\x42</span><span>'</span> <span>*</span> <span>(</span><span>1152</span> <span>-</span> <span>len</span><span>(</span><span>rop</span><span>))</span>
+
+<span># [rax + 0x168] → pointer to pivot gadget (entrypoint)
+</span><span>rop</span><span>[</span><span>0x168</span><span>:</span><span>0x170</span><span>]</span> <span>=</span> <span>p64</span><span>(</span><span>STACK_PIVOT_GADGET</span><span>)</span>  <span># xchg rsp, rax ; xor edx, edx ; ret
+</span></code></pre></div>
+
+<p>With everything in place, the exploit successfully executes the ROP chain, giving me control of the <code>coreaudiod</code> process. The following shows the ROP chain sprayed in memory:</p>
+
+<p><img alt="" /></p>
+
+<p>It should be noted that this exploit was written for macOS running on Intel CPUs. On a system with Apple Silicon, exploitation using the same technique would require the ability to correctly sign pointers that make up the pointer chain and ROP gadgets.</p>
+
+<h2>Demo</h2>
+
+<p>The following video demo shows the PoC exploit in action on macOS Sequoia 15.0.1:</p>
+
+
+  
+
+
+<h2>Conclusion</h2>
+
+<p>Exploiting CVE-2024-54529 was a journey that went from a simple-looking type confusion to a multi-stage exploit involving heap spraying, uninitialized memory, and a carefully orchestrated series of crashes and restarts. This research highlights the power and importance of sandbox escape vectors and demonstrates how a “knowledge-driven fuzzing” approach can lead to the discovery and exploitation of high-impact vulnerabilities.</p>
+
+<p>All the tools used in this research, including the <a href="https://github.com/googleprojectzero/p0tools/tree/master/CoreAudioFuzz">fuzzing harness, custom instrumentation,</a> and a <a href="https://github.com/googleprojectzero/p0tools/tree/master/CoreAudioFuzz/exploit">proof-of-concept</a> for CVE-2024-54529, are open-sourced and available.</p>
+
+
+        </section>
+      </article>
+      
+      
+    </div></div>
+  </div>
+</body>
+</html>

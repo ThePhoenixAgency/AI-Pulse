@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - nalgeon/redka at console.dev</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - nalgeon/redka at console.dev</h1>
+  <div class="metadata">
+    Source: Console.dev | Date: 2/12/2026 | Lang: EN |
+    <a href="https://github.com/nalgeon/redka?ref=console.dev" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><a target="_blank" href="https://github.com/nalgeon/redka/blob/main/logo.svg"><img alt="Redka" src="https://github.com/nalgeon/redka/raw/main/logo.svg" /></a></p>
+<p>Redka reimplements the core parts of Redis with SQL, while remaining compatible with Redis API.</p>
+<p>Highlights:</p>
+<ul>
+<li>Data doesn't have to fit in RAM.</li>
+<li>Supports ACID transactions.</li>
+<li>SQL views for easier analysis and reporting.</li>
+<li>Uses SQLite or PostgreSQL as a backend.</li>
+<li>Runs in-process (Go API) or as a standalone server.</li>
+<li>Implements Redis commands and wire protocol (RESP).</li>
+</ul>
+<p>Redka is stable and ready to use for testing and non-critical production scenarios. It's currently in maintenance mode, and no new features are planned.</p>
+<p></p><h2>Use cases</h2><a href="#use-cases"></a><p></p>
+<p>Here are some situations where Redka might be helpful:</p>
+<p><em>Embedded cache for Go applications</em>. If your Go app already uses SQLite or just needs a built-in key-value store, Redka is a natural fit. It gives you Redis-like features without the hassle of running a separate server. You're not limited to just get/set with expiration, of course — more advanced structures like lists, maps, and sets are also available.</p>
+<p><em>Lightweight testing environment</em>. Your app uses Redis in production, but setting up a Redis server for local development or integration tests can be a hassle. Redka with an in-memory database offers a fast alternative to test containers, providing full isolation for each test run.</p>
+<p><em>Postgres-first data structures</em>. If you prefer to use PostgreSQL for everything but need Redis-like data structures, Redka can use your existing database as the backend. This way, you can manage both relational data and specialized data structures with the same tools and transactional guarantees.</p>
+<p></p><h2>Commands</h2><a href="#commands"></a><p></p>
+<p>Redka supports five core Redis data types:</p>
+<ul>
+<li><a href="https://github.com/nalgeon/redka/blob/main/docs/commands/strings.md">Strings</a> are the most basic Redis type, representing a sequence of bytes.</li>
+<li><a href="https://github.com/nalgeon/redka/blob/main/docs/commands/lists.md">Lists</a> are sequences of strings sorted by insertion order.</li>
+<li><a href="https://github.com/nalgeon/redka/blob/main/docs/commands/sets.md">Sets</a> are unordered collections of unique strings.</li>
+<li><a href="https://github.com/nalgeon/redka/blob/main/docs/commands/hashes.md">Hashes</a> are field-value (hash)maps.</li>
+<li><a href="https://github.com/nalgeon/redka/blob/main/docs/commands/sorted-sets.md">Sorted sets</a> (zsets) are collections of unique strings ordered by each string's associated score.</li>
+</ul>
+<p>Redka also provides commands for <a href="https://github.com/nalgeon/redka/blob/main/docs/commands/keys.md">key management</a>, <a href="https://github.com/nalgeon/redka/blob/main/docs/commands/server.md">server/connection management</a>, and <a href="https://github.com/nalgeon/redka/blob/main/docs/commands/transactions.md">transactions</a>.</p>
+<p></p><h2>Installation and usage</h2><a href="#installation-and-usage"></a><p></p>
+<p>Redka comes in two flavors:</p>
+<ul>
+<li>Standalone Redis-compatible server: <a href="https://github.com/nalgeon/redka/blob/main/docs/install-standalone.md">installation</a>, <a href="https://github.com/nalgeon/redka/blob/main/docs/usage-standalone.md">usage</a>.</li>
+<li>Go module for in-process use: <a href="https://github.com/nalgeon/redka/blob/main/docs/install-module.md">installation</a>, <a href="https://github.com/nalgeon/redka/blob/main/docs/usage-module.md">usage</a>.</li>
+</ul>
+<p>You can also run an <a href="https://github.com/nalgeon/redka/blob/main/example/server/main.go">in-process Redka server</a> as a lightweight alternative to Redis test containers, or as a small-scale production instance.</p>
+<p></p><h2>Storage</h2><a href="#storage"></a><p></p>
+<p>Redka can use either SQLite or PostgreSQL as its backend. It stores data in a <a href="https://github.com/nalgeon/redka/blob/main/docs/persistence.md">relational database</a> with a simple schema and provides views for better introspection.</p>
+<p></p><h2>Performance</h2><a href="#performance"></a><p></p>
+<p>Redka is not about raw performance. You can't beat a specialized data store like Redis with a general-purpose relational backend like SQLite. However, Redka can still handle tens of thousands of operations per second, which should be more than enough for many apps.</p>
+<p>See the <a href="https://github.com/nalgeon/redka/blob/main/docs/performance.md">benchmarks</a> for more details.</p>
+<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
+<p>Contributions are welcome. For anything other than bugfixes, please first open an issue to discuss what you want to change.</p>
+<p>Make sure to add or update tests as needed.</p>
+<p></p><h2>Acknowledgements</h2><a href="#acknowledgements"></a><p></p>
+<p>Redka would not be possible without these great projects and their creators:</p>
+<ul>
+<li><a href="https://redis.io/">Redis</a> (<a href="https://github.com/antirez">Salvatore Sanfilippo</a>). It's such an amazing idea to go beyond the get-set paradigm and provide a convenient API for more complex data structures.</li>
+<li><a href="https://sqlite.org/">SQLite</a> (<a href="https://www.sqlite.org/crew.html">D. Richard Hipp</a>). The in-process database powering the world.</li>
+<li><a href="https://github.com/tidwall/redcon">Redcon</a> (<a href="https://github.com/tidwall">Josh Baker</a>). A very clean and convenient implementation of a RESP server.</li>
+</ul>
+<p>Logo font by <a href="https://ektype.in/">Ek Type</a>.</p>
+<p></p><h2>Support</h2><a href="#support"></a><p></p>
+<p>Redka is mostly a <a href="https://antonz.org/">one-man</a> project. It's currently in maintenance mode, and no new features are planned.</p>
+</article></div></div>
+  </div>
+</body>
+</html>

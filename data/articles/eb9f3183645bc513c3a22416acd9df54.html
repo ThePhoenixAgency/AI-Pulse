@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>[MàJ] Multiples vulnérabilités dans Ivanti Endpoint Manager Mobile</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>[MàJ] Multiples vulnérabilités dans Ivanti Endpoint Manager Mobile</h1>
+  <div class="metadata">
+    Source: CERT-FR | Date: 1/30/2026 | Lang: FR |
+    <a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+  <article>
+    
+      <section>
+  
+    <div>
+      
+      
+        <p><a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/json/">
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+  </a>
+</p>
+      
+    </div>
+
+    
+
+
+
+
+    <div>
+      <p>
+        </p><h2>Bulletin d'alerte du CERT-FR</h2>
+        <hr />
+      <p></p>
+    </div>
+    
+    
+    <div>
+  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+</div>
+  
+</section>
+      <div>
+      
+
+        
+          <h2>Risque</h2>
+        
+
+        <ul>
+          
+            <li>Exécution de code arbitraire à distance</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>Endpoint Manager Mobile versions 12.5.0.x sans le script correctif RPM_12.x.0.x</li>
+          
+            <li>Endpoint Manager Mobile versions 12.5.1.x sans le script correctif RPM_12.x.1.x</li>
+          
+            <li>Endpoint Manager Mobile versions 12.6.0.x sans le script correctif RPM_12.x.0.x</li>
+          
+            <li>Endpoint Manager Mobile versions 12.6.1.x sans le script correctif RPM_12.x.1.x</li>
+          
+            <li>Endpoint Manager Mobile versions 12.7.0.x sans le script correctif RPM_12.x.0.x</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p><span><b>[Mise à jour du 09 février 2026]</b></span><br />
+Le 6 février 2026, Ivanti a mis à disposition des scripts RPM de détection d'indicateurs de compromission, à utiliser en fonction de la version d'EPMM installée.<br />
+L'éditeur a également mis son guide d'analyse à jour (cf. section Documentation).</p>
+<p><b>[Mise à jour du 02 février 2026]</b><br />
+Une preuve de concept est disponible publiquement.</p>
+<p><b>[Publication initiale]</b><br />
+Le 29 janvier 2026, Ivanti a publié un avis de sécurité concernant les vulnérabilités critiques CVE-2026-1281 et CVE-2026-1340 affectant Ivanti Endpoint Manager Mobile (EPMM). L'éditeur indique qu'elles permettent à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance.</p>
+<p>Ivanti indique que les vulnérabilités CVE-2026-1281 et CVE-2026-1340 sont activement exploitées dans le cadre d'attaques ciblées.</p>
+<h2>Recherche de compromission</h2>
+<p>En cas de suspicion de compromission, l'éditeur recommande  :</p>
+<ul>
+<li>d'isoler totalement les équipements EPMM et Sentry concernée du réseau, vis-à-vis d'Internet comme du réseau interne ; <br /><em>Note : Sentry est conçu pour acheminer certains types de trafic depuis les terminaux mobiles vers le réseau interne. Si vous pensez que votre équipement EPMM est compromis, Ivanti recommande d'examiner les systèmes auxquels Sentry peut accéder afin de détecter d'éventuelles traces de reconnaissances ou de mouvements latéraux.</em></li>
+<li>de réaliser un instantané ou effectuer une sauvegarde du disque ;</li>
+<li>de rechercher les tentatives d'exploitations dans les journaux d'accès Apache <code>/var/log/httpd/https-access_log</code>.</li>
+</ul>
+<p>Les caractéristiques des requêtes HTTP malveillantes sont décrites ci-dessous :</p>
+<table>
+    <thead>
+        <tr>
+            <th>Caractéristiques HTTP</th>
+            <th>Valeur(s) à rechercher</th>
+        </tr>
+    </thead>
+    <tbody><tr>
+            <td>Méthode HTTP</td>
+            <td>GET</td>
+        </tr><tr>
+            <td>Chemin d'accès</td>
+            <td>/mifs/c/aftstore/fob/<br />/mifs/c/appstore/fob/<br /></td>
+        </tr><tr>
+            <td>Code HTTP</td>
+            <td>404</td>
+        </tr><tr>
+            <td>Paramètres</td>
+            <td>contenant des commandes bash</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+Les instances d'ivanti EPMM avec le correctif de sécurité appliqué produiront des faux positifs suivants lors de la recherche de requêtes HTTP malveillantes qui ressemblent à l'exemple ci-dessous :
+</p><pre>127.0.0.1:33354 - - 2026-01-28--12-00-01 "GET /mifs/c/aftstore/fob/3/0/sha256:kid=0 HTTP/1.1" 404 
+</pre>
+<p><span><b>[Mise à jour du 09 février 2026]</b><br />
+Précision : La présence du motif de requête, cité ci-dessus, en provenance de l'adresse de l'hôte local <i>(localhost)</i>, dans les journaux Apache, permet de confirmer que le correctif a bien été appliqué.
+</span></p><p>Deux moyens de persistance sont connus à ce jour par l'éditeur :</p>
+<ol>
+<li>le déploiement de différentes consoles web malveillantes <em>(webshells)</em>, en modifiant des pages d'erreur HTTP tel que <code>401.jsp</code> ou en introduisant des fichiers WAR ou JAR ;</li>
+<li>le déploiement d'invite de commande inverse <em>(reverse shell)</em>.</li>
+</ol>
+<p>Toute requête vers des pages d'erreur HTTP utilisant la méthode POST ou des paramètres doit être considérée comme une suspicion de communication avec une porte dérobée.
+Toute connexion de longue durée initiée par un Ivanti EPMM doit être considérée comme une suspicion de communication par un invite de commande inverse.</p>
+
+<p>En cas de compromission, l'éditeur préconise de :</p>
+<ul>
+<li>restaurer une sauvegarde saine d'un Ivanti EPMM [1] ;</li>
+<li>s'il n'est pas possible de récupérer l'EPMM à partir d'une sauvegarde, Ivanti recommande de créer un EPMM de remplacement, puis de migrer les données vers celui-ci ;</li>
+<li>réinitialiser les mots de passe de tous les comptes EPMM locaux ;</li>
+<li>réinitialiser les mots de passe de tous les comptes de service LDAP et KDC [2] ;</li>
+<li>révoquer et remplacer les certificats publics utilisés par l'EPMM [3] ;</li>
+<li>réinitialiser les mots de passe de tous les comptes de service interne ou externe configuré avec EPMM.</li>
+</ul>
+
+        </div>
+
+      <div>
+        <h2>Solutions</h2>
+<p>L'obtention des scripts RPM correctifs 12.x.0.x et 12.x.1.x s'effectuent via le portail de téléchargement d'Ivanti. L'éditeur précise que les correctifs apportés par ses scripts RPM sont temporaires et qu'il est nécessaire de les réinstaller à chaque montée de version jusqu'à l'obtention d'Ivanti Endpoint Manager Mobile version 12.8.0.0.</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité Ivanti du 29 janvier 2026</li>
+              <a href="https://www.ivanti.com/blog/january-2026-epmm-security-update">https://www.ivanti.com/blog/january-2026-epmm-security-update</a>
+          
+              <li>Bulletin de sécurité Ivanti du 29 janvier 2026</li>
+              <a href="https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340">https://forums.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340</a>
+          
+              <li>Guide d'analyse Ivanti Endpoint Manager Mobile du 29 janvier 2026</li>
+              <a href="https://forums.ivanti.com/s/article/Analysis-Guidance-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340">https://forums.ivanti.com/s/article/Analysis-Guidance-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340</a>
+          
+
+          
+          
+              <li>[1] Ivanti EPMM 12.0.0.0 - 12.7.0.0 Guide du administrateur système, système de sauvegarde</li>
+              <a href="https://help.ivanti.com/mi/help/en_us/core/12.x/sys/CoreSystemManager/System_backup.htm">https://help.ivanti.com/mi/help/en_us/core/12.x/sys/CoreSystemManager/System_backup.htm</a>
+          
+              <li>[2] Prise en main d'Ivanti EPMM 12.0.0.0 - 12.7.0.0, Configuration des serveurs LDAP</li>
+              <a href="https://help.ivanti.com/mi/help/en_us/core/12.x/gsg/CoreGettingStarted/Configuring_LDAP_servers.htm">https://help.ivanti.com/mi/help/en_us/core/12.x/gsg/CoreGettingStarted/Configuring_LDAP_servers.htm</a>
+          
+              <li>[3] Ivanti EPMM 12.0.0.0 - 12.7.0.0 Guide de gestion des terminaux, Comment révoquer un certificat</li>
+              <a href="https://help.ivanti.com/mi/help/en_us/CORE/12.x/dmga/DMGfiles/About_logs_CertMgmt.htm#troubleshooting_3631632413_1032053">https://help.ivanti.com/mi/help/en_us/CORE/12.x/dmga/DMGfiles/About_logs_CertMgmt.htm#troubleshooting_3631632413_1032053</a>
+          
+              <li>Avis CERT-FR CERTFR-2026-AVI-0110 du 30 janvier 2026</li>
+              <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0110/">https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0110/</a>
+          
+              <li>Compromission d'un équipement de bordure réseau - Endiguement</li>
+              <a href="https://www.cert.ssi.gouv.fr/fiche/CERTFR-2025-RFX-002/">https://www.cert.ssi.gouv.fr/fiche/CERTFR-2025-RFX-002/</a>
+          
+              <li>Compromission d'un équipement de bordure réseau - Qualification</li>
+              <a href="https://www.cert.ssi.gouv.fr/fiche/CERTFR-2025-RFX-001/">https://www.cert.ssi.gouv.fr/fiche/CERTFR-2025-RFX-001/</a>
+          
+              <li>Ivanti EPMM 12.0.0.0 - 12.7.0.0 Guide de gestion des terminaux, Configuration du protocole SCEP</li>
+              <a href="https://help.ivanti.com/mi/help/en_us/CORE/12.x/dmga/DMGfiles/Cert_Enroll_s_1_ConfigSCEP.htm">https://help.ivanti.com/mi/help/en_us/CORE/12.x/dmga/DMGfiles/Cert_Enroll_s_1_ConfigSCEP.htm</a>
+          
+              <li>Ivanti EPMM 12.0.0.0 - 12.7.0.0 Guide du administrateur système, exportation des données : SysLog</li>
+              <a href="https://help.ivanti.com/mi/help/en_us/core/12.x/sys/CoreSystemManager/Data_Export__SysLog.htm">https://help.ivanti.com/mi/help/en_us/core/12.x/sys/CoreSystemManager/Data_Export__SysLog.htm</a>
+          
+
+          
+            <li>Référence CVE CVE-2026-1281</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-1281">https://www.cve.org/CVERecord?id=CVE-2026-1281</a>
+          
+            <li>Référence CVE CVE-2026-1340</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-1340">https://www.cve.org/CVERecord?id=CVE-2026-1340</a>
+          
+        </ul>
+      
+    </div>
+      <div>
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 30 janvier 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+          <dt><strong>le 02 février 2026</strong></dt>
+          <dd>Une preuve de concept est disponible publiquement</dd>
+          
+          <dt><strong>le 03 février 2026</strong></dt>
+          <dd>Correction de  la date de publication de l'avis éditeur</dd>
+          
+          <dt><strong>le 09 février 2026</strong></dt>
+          <dd>Mises à jour de l'éditeur et précision concernant l'analyse des journaux.</dd>
+          
+        </dl>
+      </ol>
+    </div>
+    
+  </article>
+
+  <section>
+  <p><a>
+      <img src="https://www.cert.ssi.gouv.fr/static/images/icon_toppage.png" alt="" />
+    </a>
+  </p>
+</section>
+</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>This Twister-inspired coffee table controls things resting on it</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>This Twister-inspired coffee table controls things resting on it</h1>
+  <div class="metadata">
+    Source: Arduino Blog | Date: 1/29/2026 | Lang: EN |
+    <a href="https://blog.arduino.cc/2026/01/29/this-twister-inspired-coffee-table-controls-things-resting-on-it/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            <h3>This Twister-inspired coffee table controls things resting on it</h3>
+            <p><span>Arduino Team</span> — <span>January 29th, 2026</span>
+            </p>
+
+
+            <div>
+				
+<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/Coffee-Table-1024x594.jpg" alt="" /></p></figure>
+
+
+
+<p>Smart home and IoT devices are nice and all, but controlling them always feels a bit clunky. It seems like it always comes down to trying a voice command and then, when that fails, opening an app on a smartphone and pushing a button. That’s why Unnecessary Inventions’ Matty Benedetto came up with this much more natural coffee table-based control system.</p>
+
+
+
+<p>This is a coffee table with several large colorful dots on its surface, inspired by a Twister game mat. Put something, like an LED lamp, on one of those dots and it will react accordingly — matching the color of the dot, in the case of the lamp. </p>
+
+
+
+<p>As many of you have already guessed, the secret here is near-field communication (NFC). The dots have NFC tags on their bottom sides and the devices places on the dots read those, then perform set actions. The LED lamp changes color, a coffee-warming coaster gets hot, and a music player starts up a song.</p>
+
+
+
+<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/UNO-R4-1024x602.jpg" alt="" /></p></figure>
+
+
+
+<p>The LED lamp and the music player use Benedetto’s own Matty32 custom development board for control, but the warming coaster is a special case. It has an <a href="https://store.arduino.cc/products/uno-r4-wifi">Arduino UNO R4 WiFi</a>, which detects each dot’s tag through an RFID reader module. When it senses an appropriate tag, it switches power to a tiny 3D printer heated build plate via a MOSFET module. That power comes directly from a battery pack, since microcontroller pins can’t supply enough current for resistive heating.</p>
+
+
+
+<p>Those three devices are just the beginning, since this coffee table could control just about anything you can put on it once you add an RFID reader. And it sure beats voice commands.</p>
+
+
+
+<figure><p>
+
+</p></figure>
+
+                
+            </div>
+        </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - agiresearch/AIOS: AIOS: AI Agent Operating System</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - agiresearch/AIOS: AIOS: AI Agent Operating System</h1>
+  <div class="metadata">
+    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/agiresearch/AIOS" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>AIOS: AI Agent Operating System</h2><a href="#aios-ai-agent-operating-system"></a><p></p>
+<p><a href="https://arxiv.org/abs/2403.16971"><img src="https://camo.githubusercontent.com/97fea2e07a1f2ff31e19d5f8dabd4cc09e650363f2979538cc94b18e7e709137/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617065722d5044462d726564" /></a>
+<a href="https://arxiv.org/abs/2312.03815"><img src="https://camo.githubusercontent.com/28511e10bc50bd63d1a2fa09a7e29bd06b4684a726eae85f52f8eafe283ebe46/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50617065722d5044462d626c7565" /></a>
+<a href="https://docs.aios.foundation/"><img src="https://camo.githubusercontent.com/2287cdba5b400417b8a24e409aea2b52fe62b72cd5b5254ac057d6d3237e7d07/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446f63756d656e746174696f6e2d41494f532d677265656e" /></a>
+<a href="https://discord.gg/B2HFxEgTJX"><img src="https://camo.githubusercontent.com/7d61c026472d86f581c409bbfd214d9447a3b668b7b82da7d00f790ecb1efddc/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f6d6d756e6974792d446973636f72642d384132424532" /></a>
+<a href="https://gurubase.io/g/aios"><img src="https://camo.githubusercontent.com/53c30967e134daf69b309af1df16f5c4b0b500c3a8ee369089403ff26036b41c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f47757275626173652d41736b25323041494f53253230477572752d303036424646" alt="Gurubase" /></a></p>
+<p><a href="https://trendshift.io/repositories/8908"><img src="https://camo.githubusercontent.com/c96828e4ffacfbc225ce7ab349063aa37290597046b2186b8916e3350b4d5e6d/68747470733a2f2f7472656e6473686966742e696f2f6170692f62616467652f7265706f7369746f726965732f38393038" alt="agiresearch%2FAIOS | Trendshift" /></a>
+<a href="https://give.rutgersfoundation.org/aios-project/23717.html"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/sponsor.png" alt="Sponsor" /></a></p>
+<p>AIOS is the AI Agent Operating System, which embeds large language model (LLM) into the operating system and facilitates the development and deployment of LLM-based AI Agents. AIOS is designed to address problems (e.g., scheduling, context switch, memory management, storage management, tool management, Agent SDK management, etc.) during the development and deployment of LLM-based agents, towards a better AIOS-Agent ecosystem for agent developers and agent users. AIOS includes the AIOS Kernel (this <a href="https://github.com/agiresearch/AIOS">AIOS</a> repository) and the AIOS SDK (the <a href="https://github.com/agiresearch/Cerebrum">Cerebrum</a> repository). AIOS supports both Web UI and Terminal UI.</p>
+<p></p><h2>🏠 Architecture of AIOS</h2><a href="#-architecture-of-aios"></a><p></p>
+<p></p><h3>Overview</h3><a href="#overview"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/architecture.jpg"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/architecture.jpg" /></a>
+</p>
+<p>The AIOS system is comprised of two key components: the AIOS kernel and the AIOS SDK.
+The AIOS kernel acts as an abstraction layer over the operating system kernel, managing various resources that agents require, such as LLM, memory, storage and tool.
+The AIOS SDK is designed for agent users and developers, enabling them to build and run agent applications by interacting with the AIOS kernel.
+AIOS kernel is the current repository and AIOS SDK can be found at <a href="https://github.com/agiresearch/Cerebrum">here</a></p>
+<p></p><h3>Modules and Connections</h3><a href="#modules-and-connections"></a><p></p>
+<p>Below shows how agents utilize AIOS SDK to interact with AIOS kernel and how AIOS kernel receives agent queries and leverage the chain of syscalls that are scheduled and dispatched to run in different modules.</p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/details.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/details.png" /></a>
+</p>
+<p></p><h3>Computer-use Specialized Architecture</h3><a href="#computer-use-specialized-architecture"></a><p></p>
+<p>For computer-use agent, the architecture extends the AIOS Kernel with significant enhancements focused on computer contextualization. While preserving essential components like LLM Core(s), Context Manager, and Memory Manager, the Tool Manager module has been fundamentally redesigned to incorporate a VM (Virtual Machine) Controller and MCP Server.
+This redesign creates a sandboxed environment that allows agents to safely interact with computer systems while
+maintaining a consistent semantic mapping between agent intentions and computer operations.</p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/litecua-figs/architecture.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/litecua-figs/architecture.png" /></a>
+</p>
+<p></p><h2>📰 News</h2><a href="#-news"></a><p></p>
+<ul>
+<li><strong>[2025-07-08]</strong> 🎉 The foundational paper <a href="https://arxiv.org/abs/2403.16971">AIOS: LLM Agent Operating System</a> has been accepted by the Conference on Language Modeling (COLM 2025). Congratulations to the team!</li>
+<li><strong>[2025-07-02]</strong> 🎉 AIOS has been selected as the finalist for AgentX – LLM Agents MOOC Competition, hosted by Berkeley RDI in conjunction with the Advanced LLM Agents MOOC. Congratulations to the team!</li>
+<li><strong>[2025-05-24]</strong> 📋 Check out our paper on computer-use agent: <a href="https://arxiv.org/pdf/2505.18829">LiteCUA: Computer as MCP Server for Computer-Use Agent on AIOS</a> and the corresponding <a href="https://github.com/agiresearch/LiteCUA">codebase</a>.</li>
+<li><strong>[2025-03-13]</strong> 📋 Paper <a href="https://arxiv.org/abs/2503.11444">Cerebrum (AIOS SDK): A Platform for Agent Development, Deployment, Distribution, and Discovery</a> has been accepted by NAACL 2025! Features has been integrated into <a href="https://github.com/agiresearch/Cerebrum">Cerebrum</a>.</li>
+<li><strong>[2025-03-12]</strong> 🔥 A major refactor of the codebase packed with powerful new features have been integrated into the main repo. Please check out the AIOS v0.2.2 release.</li>
+<li><strong>[2025-03-10]</strong> 📋 Check out our paper on agentic memory <a href="https://arxiv.org/abs/2502.12110">A-MEM: Agentic Memory for LLM Agents</a> and the corresponding <a href="https://github.com/agiresearch/A-mem">codebase</a>.</li>
+<li><strong>[2025-02-07]</strong> 📋 Our paper <a href="https://arxiv.org/abs/2410.11843">From Commands to Prompts: LLM-based Semantic File System for AIOS</a> has been accepted by ICLR2025! The features of this paper has been integrated into AIOS as the <strong>Terminal UI</strong>.</li>
+<li><strong>[2025-01-27]</strong> 🔥 Deepseek-r1 (1.5b, 7b, 8b, 14b, 32b, 70b, 671b) has already been supported in AIOS, both open-sourced versions and deepseek apis (deepseek-chat and deepseek-reasoner) are available.</li>
+<li><strong>[2024-11-30]</strong> 🔥 AIOS v0.2: Disentangled AIOS Kernel (this <a href="https://github.com/agiresearch/AIOS">AIOS</a> repository) and AIOS SDK (The <a href="https://github.com/agiresearch/Cerebrum">Cerebrum</a> repository), Remote Kernel for agent users.</li>
+<li><strong>[2024-09-01]</strong> 🔥 AIOS supports multiple agent creation frameworks (e.g., ReAct, Reflexion, OpenAGI, AutoGen, Open Interpreter, MetaGPT). Agents created by these frameworks can onboard AIOS. Onboarding guidelines can be found at the <a href="https://docs.aios.foundation/aios-docs/aios-agent/how-to-develop-agents">Doc</a>.</li>
+<li><strong>[2024-07-10]</strong> 📖 AIOS documentation is up, which can be found at <a href="https://docs.aios.foundation/">Website</a>.</li>
+<li><strong>[2024-06-20]</strong> 🔥 Function calling for open-sourced LLMs (native huggingface, vLLM, ollama) is supported.</li>
+<li><strong>[2024-05-20]</strong> 🚀 More agents with ChatGPT-based tool calling are added (i.e., MathAgent, RecAgent, TravelAgent, AcademicAgent and CreationAgent), their profiles and workflows can be found in <a href="https://github.com/agiresearch/OpenAGI">OpenAGI</a>.</li>
+<li><strong>[2024-05-13]</strong> 🛠️ Local models (diffusion models) as tools from HuggingFace are integrated.</li>
+<li><strong>[2024-05-01]</strong> 🛠️ The agent creation in AIOS is refactored, which can be found in our <a href="https://github.com/agiresearch/OpenAGI">OpenAGI</a> package.</li>
+<li><strong>[2024-04-05]</strong> 🛠️ AIOS currently supports external tool callings (google search, wolframalpha, rapid API, etc).</li>
+<li><strong>[2024-04-02]</strong> 🤝 AIOS <a href="https://discord.gg/B2HFxEgTJX">Discord Community</a> is up. Welcome to join the community for discussions, brainstorming, development, or just random chats! For how to contribute to AIOS, please see <a href="https://github.com/agiresearch/AIOS/blob/main/docs/CONTRIBUTE.md">CONTRIBUTE</a>.</li>
+<li><strong>[2024-03-25]</strong> ✈️ Our paper <a href="https://arxiv.org/abs/2403.16971">AIOS: LLM Agent Operating System</a> is released!</li>
+<li><strong>[2023-12-06]</strong> 📋 After several months of working, our perspective paper <a href="https://arxiv.org/abs/2312.03815">LLM as OS, Agents as Apps: Envisioning AIOS, Agents and the AIOS-Agent Ecosystem</a> is officially released.</li>
+</ul>
+<p></p><h2>Different deployment modes of AIOS</h2><a href="#different-deployment-modes-of-aios"></a><p></p>
+<p>Here are some key notations that are required to know before introducing the different modes of AIOS.</p>
+<ul>
+<li><strong>AHM (Agent Hub Machine)</strong>: Central server that hosts the agent marketplace/repository where users can publish, download, and share agents. Acts as the distribution center for all agent-related resources.</li>
+<li><strong>AUM (Agent UI Machine)</strong>: Client machine that provides user interface for interacting with agents. Can be any device from mobile phones to desktops that supports agent visualization and control.</li>
+<li><strong>ADM (Agent Development Machine)</strong>: Development environment where agent developers write, debug and test their agents. Requires proper development tools and libraries.</li>
+<li><strong>ARM (Agent Running Machine)</strong>: Execution environment where agents actually run and perform tasks. Needs adequate computational resources for agent operations.</li>
+</ul>
+<p>The following parts introduce different modes of deploying AIOS. <strong>Currently, AIOS already supports Mode 1 and Mode 2, other modes with new features are still ongoing.</strong></p>
+<p></p><h3>Mode 1 (Local Kernel Mode)</h3><a href="#mode-1-local-kernel-mode"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/stage1.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/stage1.png" /></a>
+</p>
+<ul>
+<li>Features:
+<ul>
+<li>For agent users: They can download agents from agent hub from Machine B and run agents on Machine A.</li>
+<li>For agent developers: They can develop and test agents in Machine A and can upload agents to agent hub on Machine B.</li>
+</ul>
+</li>
+</ul>
+<p></p><h3>Mode 2 (Remote Kernel Mode)</h3><a href="#mode-2-remote-kernel-mode"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/stage2.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/stage2.png" /></a>
+</p>
+<ul>
+<li>Features:
+<ul>
+<li>Remote use of agents: Agent users / developers can use agents on Machine B, which is different from the development and running machine (Machine A).</li>
+<li>Benefit users who would like to use agents on resource-restricted machine (e.g., mobile device or edge device)</li>
+</ul>
+</li>
+</ul>
+<p></p><h3>Mode 2.5 (Remote Kernel Dev Mode)</h3><a href="#mode-25-remote-kernel-dev-mode"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/stage2.5.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/stage2.5.png" /></a>
+</p>
+<ul>
+<li>Features:
+<ul>
+<li>Remote development of agents: Agent developers can develop their agents on Machine B while running and testing their agents in Machine A. Benefit developers who would like to develop agents on resource-restricted machine (e.g., mobile device or edge device)</li>
+</ul>
+</li>
+<li>Critical technique:
+<ul>
+<li>Packaging and agent transmission on different machines for distributed agent development and testing</li>
+</ul>
+</li>
+</ul>
+<p></p><h3>Mode 3 (Personal Remote Kernel Mode)</h3><a href="#mode-3-personal-remote-kernel-mode"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/stage3.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/stage3.png" /></a>
+</p>
+<ul>
+<li>
+<p>Ongoing Features:</p>
+<ul>
+<li>Each user/developer can have their personal AIOS with long-term persistent data as long as they have registered account in the AIOS ecosystem</li>
+<li>Their personal data can be synced to different machines with the same account</li>
+</ul>
+</li>
+<li>
+<p>Critical techniques:</p>
+<ul>
+<li>User account registration and verification mechanism</li>
+<li>Persistent personal data storage for each user's AIOS</li>
+<li>Synchronization for different AIOS instances on different devices within the same account</li>
+<li>Data privacy mechanism</li>
+</ul>
+</li>
+</ul>
+<p></p><h3>Mode 4 (Personal Remote Virtual Kernel Mode)</h3><a href="#mode-4-personal-remote-virtual-kernel-mode"></a><p></p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/aios-figs/stage4.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/aios-figs/stage4.png" /></a>
+</p>
+<ul>
+<li>Ongoing Features:
+<ul>
+<li>Different user/developer's personal AIOS kernels can co-exist in the same physical machine through virtualization</li>
+</ul>
+</li>
+<li>Critical techniques:
+<ul>
+<li>Virtualization of different AIOS kernel instances in the same machine</li>
+<li>Scheduling and resource allocation mechanism for different virtual machines located in the same machine</li>
+</ul>
+</li>
+</ul>
+<p></p><h2>✈️ Getting Started</h2><a href="#️-getting-started"></a><p></p>
+<p>Please see our ongoing <a href="https://docs.aios.foundation/">documentation</a> for more information.</p>
+<ul>
+<li><a href="https://docs.aios.foundation/aios-docs/getting-started/installation">Installation</a></li>
+<li><a href="https://docs.aios.foundation/aios-docs/getting-started/quickstart">Quickstart</a></li>
+<li><a href="https://docs.aios.foundation/aios-docs/getting-started/webui-quickstart">WebUI Quickstart</a></li>
+</ul>
+<p></p><h3>Installation</h3><a href="#installation"></a><p></p>
+<p></p><h4>Requirements</h4><a href="#requirements"></a><p></p>
+<p></p><h5>Python</h5><a href="#python"></a><p></p>
+<ul>
+<li>Supported versions: <strong>Python 3.10 - 3.11</strong></li>
+</ul>
+<p></p><h4>Installation from source</h4><a href="#installation-from-source"></a><p></p>
+<p></p><h5>Step 1: Install AIOS Kernel</h5><a href="#step-1-install-aios-kernel"></a><p></p>
+<p>Git clone AIOS kernel</p>
+<div><pre>git clone https://github.com/agiresearch/AIOS.git</pre></div>
+<p>Create venv environment</p>
+<div><pre>python3.x -m venv venv <span><span>#</span> Only support for Python 3.10 and 3.11</span>
+<span>source</span> venv/bin/activate</pre></div>
+<p>or create conda environment</p>
+<div><pre>conda create -n venv python=3.x  <span><span>#</span> Only support for Python 3.10 and 3.11</span>
+conda activate venv</pre></div>
+<div><p>Tip</p><p>We strongly recommend using <a href="https://github.com/astral-sh/uv">uv</a> for faster and more reliable package installation.
+To install uv:
+<code>bash pip install uv</code></p>
+</div>
+<p><strong>For GPU environments:</strong></p>
+<div><pre>uv pip install -r requirements-cuda.txt</pre></div>
+<p><strong>For CPU-only environments:</strong></p>
+<div><pre>uv pip install -r requirements.txt</pre></div>
+<p>Alternatively, if you prefer using pip:</p>
+<p><strong>For GPU environments:</strong></p>
+<div><pre>pip install -r requirements-cuda.txt</pre></div>
+<p><strong>For CPU-only environments:</strong></p>
+<div><pre>pip install -r requirements.txt</pre></div>
+<p></p><h5>Step 2: Install AIOS SDK (Cerebrum)</h5><a href="#step-2-install-aios-sdk-cerebrum"></a><p></p>
+<ol>
+<li>
+<p>Clone the Cerebrum repository:</p>
+<div><pre>git clone https://github.com/agiresearch/Cerebrum.git</pre></div>
+</li>
+<li>
+<p>Install using uv (recommended):</p>
+<div><pre><span>cd</span> Cerebrum <span>&amp;&amp;</span> uv pip install -e <span>.</span></pre></div>
+<p>Or using pip:</p>
+<div><pre><span>cd</span> Cerebrum <span>&amp;&amp;</span> pip install -e <span>.</span></pre></div>
+</li>
+</ol>
+<p></p><h5>Step 3: Install Virtualized Environment (Optional)</h5><a href="#step-3-install-virtualized-environment-optional"></a><p></p>
+<p>To use the mcp for computer-use agent, we strongly recommend you install a virtualized environment equipped with GUI. Instructions can be found in <a href="https://github.com/xlang-ai/OSWorld">here</a>.</p>
+<p><strong>Note</strong>: The machine where the AIOS kernel (AIOS) is installed must also have the AIOS SDK (Cerebrum) installed. Installing AIOS kernel will install the AIOS SDK automatically by default. If you are using the Local Kernel mode, i.e., you are running AIOS and agents on the same machine, then simply install both AIOS and Cerebrum on that machine. If you are using Remote Kernel mode, i.e., running AIOS on Machine 1 and running agents on Machine 2 and the agents remotely interact with the kernel, then you need to install both AIOS kernel and AIOS SDK on Machine 1, and install the AIOS SDK alone on Machine 2. Please follow the guidelines at <a href="https://github.com/agiresearch/Cerebrum">Cerebrum</a> regarding how to install the SDK.</p>
+<p></p><h3>Quickstart</h3><a href="#quickstart"></a><p></p>
+<p>Before launching AIOS, it is required to set up configurations. AIOS provides two ways of setting up configurations, one is to set up by directly modifying the configuration file, another is to set up interactively.</p>
+<p></p><h4>Set up configuration file directly (Recommended)</h4><a href="#set-up-configuration-file-directly-recommended"></a><p></p>
+<p>You need API keys for services like OpenAI, Anthropic, Groq and HuggingFace. The simplest way to configure them is to edit the <code>aios/config/config.yaml</code>.</p>
+<div><p>Tip</p><p>It is important to mention that, we strongly recommend using the <code>aios/config/config.yaml</code> file to set up your API keys. This method is straightforward and helps avoid potential sychronization issues with environment variables.</p>
+</div>
+<p>A simple example to set up your API keys in <code>aios/config/config.yaml</code> is shown below:</p>
+<div><pre><span>api_keys</span>:
+  <span>openai</span>: <span><span>"</span>your-openai-key<span>"</span></span>    
+  <span>gemini</span>: <span><span>"</span>your-gemini-key<span>"</span></span>    
+  <span>groq</span>: <span><span>"</span>your-groq-key<span>"</span></span>      
+  <span>anthropic</span>: <span><span>"</span>your-anthropic-key<span>"</span></span> 
+  <span>huggingface</span>:
+    <span>auth_token</span>: <span><span>"</span>your-huggingface-token-for-authorized-models<span>"</span></span>  
+    <span>cache_dir</span>: <span><span>"</span>your-cache-dir-for-saving-models<span>"</span></span>
+  <span>novita</span>: <span><span>"</span>your-novita-api-key<span>"</span></span></pre></div>
+<p>To obtain these API keys:</p>
+<ol>
+<li>Deepseek API: Visit <a href="https://api-docs.deepseek.com/">https://api-docs.deepseek.com/</a></li>
+<li>OpenAI API: Visit <a href="https://platform.openai.com/api-keys">https://platform.openai.com/api-keys</a></li>
+<li>Google Gemini API: Visit <a href="https://makersuite.google.com/app/apikey">https://makersuite.google.com/app/apikey</a></li>
+<li>Groq API: Visit <a href="https://console.groq.com/keys">https://console.groq.com/keys</a></li>
+<li>HuggingFace Token: Visit <a href="https://huggingface.co/settings/tokens">https://huggingface.co/settings/tokens</a></li>
+<li>Anthropic API: Visit <a href="https://console.anthropic.com/keys">https://console.anthropic.com/keys</a></li>
+<li>Novita AI API: Visit <a href="https://novita.ai/api-keys">https://novita.ai/api-keys</a></li>
+</ol>
+<p></p><h4>Configure LLM Models</h4><a href="#configure-llm-models"></a><p></p>
+<p>You can configure which LLM models to use in the same <code>aios/config/config.yaml</code> file. Here's an example configuration:</p>
+<div><pre><span>llms</span>:
+  <span>models</span>:
+    <span><span>#</span> Ollama Models</span>
+    - <span>name</span>: <span><span>"</span>qwen2.5:7b<span>"</span></span>
+      <span>backend</span>: <span><span>"</span>ollama<span>"</span></span>
+      <span>hostname</span>: <span><span>"</span>http://localhost:11434<span>"</span></span>  <span><span>#</span> Make sure to run ollama server</span>
+
+    <span><span>#</span> vLLM Models</span>
+    - <span>name</span>: <span><span>"</span>meta-llama/Llama-3.1-8B-Instruct<span>"</span></span>
+      <span>backend</span>: <span><span>"</span>vllm<span>"</span></span>
+      <span>hostname</span>: <span><span>"</span>http://localhost:8091/v1<span>"</span></span>  <span><span>#</span> Make sure to run vllm server</span></pre></div>
+<p><strong>Using Ollama Models:</strong></p>
+<ol>
+<li>First, download ollama from <a href="https://ollama.com/">https://ollama.com/</a></li>
+<li>Start the ollama server in a separate terminal:</li>
+</ol>
+<div><pre>ollama serve</pre></div>
+<ol>
+<li>Pull your desired models from <a href="https://ollama.com/library">https://ollama.com/library</a>:</li>
+</ol>
+<div><pre>ollama pull qwen2.5:7b  <span><span>#</span> example model</span></pre></div>
+<div><p>Tip</p><p>Ollama supports both CPU-only and GPU environments. For more details about ollama usage, visit <a href="https://github.com/ollama/ollama">ollama documentation</a></p>
+</div>
+<p><strong>Using vLLM Models:</strong></p>
+<ol>
+<li>Install vLLM following their <a href="https://docs.vllm.ai/en/latest/getting_started/installation.html">installation guide</a></li>
+<li>Start the vLLM server in a separate terminal:</li>
+</ol>
+<div><pre>vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8091</pre></div>
+
+<p><strong>Using HuggingFace Models:</strong>
+You can configure HuggingFace models with specific GPU memory allocation:</p>
+<div><pre>- <span>name</span>: <span><span>"</span>meta-llama/Llama-3.1-8B-Instruct<span>"</span></span>
+  <span>backend</span>: <span><span>"</span>huggingface<span>"</span></span>
+  <span>max_gpu_memory</span>: <span>{0: "24GB", 1: "24GB"}  </span><span><span>#</span> GPU memory allocation</span>
+  <span>eval_device</span>: <span><span>"</span>cuda:0<span>"</span></span>  <span><span>#</span> Device for model evaluation</span></pre></div>
+<p></p><h4>Set up interactively</h4><a href="#set-up-interactively"></a><p></p>
+<p>Alternatively, you can set up aios configurations interactively by using the following command.</p>
+<ul>
+<li><code>aios env list</code>: Show current environment variables, or show available API keys if no variables are set</li>
+<li><code>aios env set</code>: Show current environment variables, or show available API keys if no variables are set</li>
+<li><code>aios refresh</code>: Refresh AIOS configuration.
+Reloads the configuration from aios/config/config.yaml.
+Reinitializes all components without restarting the server.
+The server must be running.</li>
+</ul>
+<p>When no environment variables are set, the following API keys will be shown:</p>
+<ul>
+<li><code>DEEPSEEK_API_KEY</code>: Deepseek API key for accessing Deepseek services</li>
+<li><code>OPENAI_API_KEY</code>: OpenAI API key for accessing OpenAI services</li>
+<li><code>GEMINI_API_KEY</code>: Google Gemini API key for accessing Google's Gemini services</li>
+<li><code>GROQ_API_KEY</code>: Groq API key for accessing Groq services</li>
+<li><code>HF_AUTH_TOKEN</code>: HuggingFace authentication token for accessing models</li>
+<li><code>HF_HOME</code>: Optional path to store HuggingFace models</li>
+<li><code>NOVITA_API_KEY</code>: Novita AI API key for accessing Novita AI services</li>
+</ul>
+<p></p><h4>Launch AIOS</h4><a href="#launch-aios"></a><p></p>
+<p>After you setup your keys or environment parameters, then you can follow the instructions below to start.</p>
+<p>Run:</p>
+<div><pre><code>bash runtime/launch_kernel.sh
+</code></pre></div>
+<p>Or if you need to explicity set the Python version by running <code>python3.10</code>, <code>python3.11</code>, <code>python3</code>, etc. run the command below:</p>
+<div><pre><code>python3.x -m uvicorn runtime.launch:app --host 0.0.0.0 --port 8000 # replace the port with your own port
+</code></pre></div>
+<p>You also need to set up the host and port in the configuration of Cerebrum (AIOS SDK) to make sure it is consistent with the configurations of AIOS.</p>
+<p>You can also force the kernel to run in the background with:</p>
+<div><pre><code>python3.x -m uvicorn runtime.launch:app --host 0.0.0.0 &gt; uvicorn.log 2&gt;&amp;1 &amp;
+</code></pre></div>
+<p>And you can run it even after the shell closes by typing <code>nohup</code> before the entire command.</p>
+<p>Command to launch the kernel in the background so it continues running even after the active shell is closed, while also logging information to the specified log file (recommended):</p>
+<div><pre><code>nohup python3 -m uvicorn runtime.launch:app --host 0.0.0.0 --port 8000 &gt; uvicorn.log 2&gt;&amp;1 &amp;
+</code></pre></div>
+<p></p><h4>Interact with AIOS terminal</h4><a href="#interact-with-aios-terminal"></a><p></p>
+<p>To interact with the AIOS terminal (LLM-based semantic file system), you can run the following command to start the AIOS terminal.</p>
+<div><pre><code>python scripts/run_terminal.py
+</code></pre></div>
+<p>Then you can start interacting with the AIOS terminal by typing natural language commands.</p>
+<p>If you successfully start the AIOS terminal, it will be shown as below:</p>
+<p>
+<a target="_blank" href="https://github.com/agiresearch/AIOS/blob/main/docs/assets/terminal-figs/example.png"><img src="https://github.com/agiresearch/AIOS/raw/main/docs/assets/terminal-figs/example.png" /></a>
+</p>
+<p>Detailed instructions of how to use the AIOS terminal can be found at <a href="https://github.com/agiresearch/AIOS-LSFS">here</a></p>
+<div><p>Warning</p><p>The rollback feature of the AIOS terminal requires the connection to the redis server. Make sure you have the redis server running if you would like to use the rollback feature.</p>
+</div>
+<p></p><h4>Run computer-use Agent</h4><a href="#run-computer-use-agent"></a><p></p>
+<p>Make sure you have installed a virtualized environment with GUI, then you can refer to <a href="https://github.com/agiresearch/Cerebrum">Cerebrum</a> for how to run the computer-use agent.</p>
+<p></p><h3>Supported Agent Frameworks</h3><a href="#supported-agent-frameworks"></a><p></p>
+<ul>
+<li><a href="https://github.com/agiresearch/openagi">OpenAGI</a></li>
+<li><a href="https://github.com/microsoft/autogen">AutoGen</a></li>
+<li><a href="https://github.com/OpenInterpreter/open-interpreter">Open-Interpreter</a></li>
+<li><a href="https://github.com/geekan/MetaGPT?tab=readme-ov-file">MetaGPT</a></li>
+</ul>
+<p></p><h3>Supported LLM Cores</h3><a href="#supported-llm-cores"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Provider 🏢</th>
+<th>Model Name 🤖</th>
+<th>Open Source 🔓</th>
+<th>Model String ⌨️</th>
+<th>Backend ⚙️</th>
+<th>Required API Key</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Anthropic</td>
+<td><a href="https://makersuite.google.com/app/apikey">All Models</a></td>
+<td>❌</td>
+<td>model-name</td>
+<td>anthropic</td>
+<td>ANTHROPIC_API_KEY</td>
+</tr>
+<tr>
+<td>OpenAI</td>
+<td><a href="https://platform.openai.com/docs/models">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>openai</td>
+<td>OPENAI_API_KEY</td>
+</tr>
+<tr>
+<td>Deepseek</td>
+<td><a href="https://api-docs.deepseek.com/">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>deepseek</td>
+<td>DEEPSEEK_API_KEY</td>
+</tr>
+<tr>
+<td>Google</td>
+<td><a href="https://makersuite.google.com/app/apikey">All Models</a></td>
+<td>❌</td>
+<td>model-name</td>
+<td>gemini</td>
+<td>GEMINI_API_KEY</td>
+</tr>
+<tr>
+<td>Groq</td>
+<td><a href="https://console.groq.com/keys">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>groq</td>
+<td>GROQ_API_KEY</td>
+</tr>
+<tr>
+<td>HuggingFace</td>
+<td><a href="https://huggingface.co/models/">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>huggingface</td>
+<td>HF_HOME</td>
+</tr>
+<tr>
+<td>ollama</td>
+<td><a href="https://ollama.com/search">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>ollama</td>
+<td>-</td>
+</tr>
+<tr>
+<td>vLLM</td>
+<td><a href="https://docs.vllm.ai/en/latest/">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>vllm</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Novita</td>
+<td><a href="https://novita.ai/models/llm">All Models</a></td>
+<td>✅</td>
+<td>model-name</td>
+<td>novita</td>
+<td>NOVITA_API_KEY</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>🔧 Experimental Rust Rewrite (aios-rs)</h2><a href="#-experimental-rust-rewrite-aios-rs"></a><p></p>
+<p>An early experimental Rust scaffold lives in <code>aios-rs/</code> providing trait definitions and minimal placeholder implementations (context, memory, storage, tool, scheduler, llm). This is NOT feature-parity yet; it's a foundation for incremental porting and performance-focused components.</p>
+<p></p><h3>Try It</h3><a href="#try-it"></a><p></p>
+<div><pre><span>cd</span> aios-rs
+cargo build
+cargo <span>test</span></pre></div>
+<p></p><h3>Example (Echo LLM + Noop Scheduler)</h3><a href="#example-echo-llm--noop-scheduler"></a><p></p>
+<div><pre><span>use</span> aios_rs<span>::</span>prelude<span>::</span><span>*</span><span>;</span>
+
+<span>fn</span> <span>main</span><span>(</span><span>)</span> -&gt; anyhow<span>::</span><span>Result</span><span>&lt;</span><span>(</span><span>)</span><span>&gt;</span> <span>{</span>
+  <span>let</span> llm = std<span>::</span>sync<span>::</span><span>Arc</span><span>::</span><span>new</span><span>(</span><span>EchoLLM</span><span>)</span><span>;</span>
+  <span>let</span> memory = std<span>::</span>sync<span>::</span><span>Arc</span><span>::</span><span>new</span><span>(</span>std<span>::</span>sync<span>::</span><span>Mutex</span><span>::</span><span>new</span><span>(</span><span>InMemoryMemoryManager</span><span>::</span><span>new</span><span>(</span><span>)</span><span>)</span><span>)</span><span>;</span>
+  <span>let</span> storage = std<span>::</span>sync<span>::</span><span>Arc</span><span>::</span><span>new</span><span>(</span><span>FsStorageManager</span><span>::</span><span>new</span><span>(</span><span>"/tmp/aios_store"</span><span>)</span><span>)</span><span>;</span>
+  <span>let</span> tool = std<span>::</span>sync<span>::</span><span>Arc</span><span>::</span><span>new</span><span>(</span><span>NoopToolManager</span><span>)</span><span>;</span>
+  <span>let</span> <span>mut</span> scheduler = <span>NoopScheduler</span><span>::</span><span>new</span><span>(</span>llm<span>,</span> memory<span>,</span> storage<span>,</span> tool<span>)</span><span>;</span>
+  scheduler<span>.</span><span>start</span><span>(</span><span>)</span>?<span>;</span>
+  scheduler<span>.</span><span>stop</span><span>(</span><span>)</span>?<span>;</span>
+  <span>Ok</span><span>(</span><span>(</span><span>)</span><span>)</span>
+<span>}</span></pre></div>
+<p></p><h3>Roadmap Snapshot</h3><a href="#roadmap-snapshot"></a><p></p>
+<div><pre><code>- [x] Core trait scaffolding
+- [ ] Async runtime + channels
+- [ ] Vector store abstraction
+- [ ] Python bridge (pyo3 / IPC)
+- [ ] Port FIFO / RR schedulers
+- [ ] Benchmarks &amp; feature flags
+
+Contributions welcome via focused PRs extending this scaffold. See `aios-rs/README.md` for details.
+</code></pre></div>
+<p></p><h2>Reference</h2><a href="#reference"></a><p></p>
+<div><pre><code>@article{mei2025aios,
+  title={AIOS: LLM Agent Operating System},
+  author={Mei, Kai and Zhu, Xi and Xu, Wujiang and Hua, Wenyue and Jin, Mingyu and Li, Zelong and Xu, Shuyuan and Ye, Ruosong and Ge, Yingqiang and Zhang, Yongfeng}
+  journal={In Proceedings of the 2nd Conference on Language Modeling (COLM 2025)},
+  year={2025}
+}
+@article{mei2025litecua,
+  title={LiteCUA: Computer as MCP Server for Computer-Use Agent on AIOS},
+  author={Mei, Kai and Zhu, Xi and Gao, Hang and Lin, Shuhang and Zhang, Yongfeng},
+  journal={arXiv preprint arXiv:2505.18829},
+  year={2025}
+}
+@article{xu2025mem,
+  title={A-Mem: Agentic Memory for LLM Agents},
+  author={Xu, Wujiang and Liang, Zujie and Mei, Kai and Gao, Hang and Tan, Juntao and Zhang, Yongfeng},
+  journal={arXiv:2502.12110},
+  year={2025}
+}
+@inproceedings{rama2025cerebrum,
+  title={Cerebrum (AIOS SDK): A Platform for Agent Development, Deployment, Distribution, and Discovery}, 
+  author={Balaji Rama and Kai Mei and Yongfeng Zhang},
+  booktitle={2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics},
+  year={2025}
+}
+@inproceedings{shi2025from,
+  title={From Commands to Prompts: {LLM}-based Semantic File System for AIOS},
+  author={Zeru Shi and Kai Mei and Mingyu Jin and Yongye Su and Chaoji Zuo and Wenyue Hua and Wujiang Xu and Yujie Ren and Zirui Liu and Mengnan Du and Dong Deng and Yongfeng Zhang},
+  booktitle={The Thirteenth International Conference on Learning Representations},
+  year={2025},
+  url={https://openreview.net/forum?id=2G021ZqUEZ}
+}
+@article{ge2023llm,
+  title={LLM as OS, Agents as Apps: Envisioning AIOS, Agents and the AIOS-Agent Ecosystem},
+  author={Ge, Yingqiang and Ren, Yujie and Hua, Wenyue and Xu, Shuyuan and Tan, Juntao and Zhang, Yongfeng},
+  journal={arXiv:2312.03815},
+  year={2023}
+}
+</code></pre></div>
+<p></p><h2>🚀 Contributions</h2><a href="#-contributions"></a><p></p>
+<p>For how to contribute, see <a href="https://github.com/agiresearch/AIOS/blob/main/docs/CONTRIBUTE.md">CONTRIBUTE</a>. If you would like to contribute to the codebase, <a href="https://github.com/agiresearch/AIOS/issues">issues</a> or <a href="https://github.com/agiresearch/AIOS/pulls">pull requests</a> are always welcome!</p>
+<p></p><h2>🌍 AIOS Contributors</h2><a href="#-aios-contributors"></a><p></p>
+<p><a href="https://github.com/agiresearch/AIOS/graphs/contributors"><img src="https://camo.githubusercontent.com/5a0351b787cb884e25eb76f25300581e0141740b81f43103f2495192cc0d2640/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d61676972657365617263682f41494f53266d61783d333030" alt="AIOS contributors" /></a></p>
+<p></p><h2>Acknowledgement</h2><a href="#acknowledgement"></a><p></p>
+<p>We learned the design and reused code from the following projects: <a href="https://docs.litellm.ai/docs/">LiteLLM</a>, <a href="https://os-world.github.io/">OSWorld</a>.</p>
+<p></p><h2>🤝 Discord Channel</h2><a href="#-discord-channel"></a><p></p>
+<p>If you would like to join the community, ask questions, chat with fellows, learn about or propose new features, and participate in future developments, join our <a href="https://discord.gg/B2HFxEgTJX">Discord Community</a>!</p>
+</article></div></div>
+  </div>
+</body>
+</html>

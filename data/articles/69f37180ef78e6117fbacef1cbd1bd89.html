@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Not All RecSys Problems Are Created Equal</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Not All RecSys Problems Are Created Equal</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/11/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/not-all-recsys-problems-are-created-equal/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p>The industry’s outliers have distorted our definition of Recommender Systems. <strong>TikTok, Spotify, and Netflix</strong> employ hybrid deep learning models combining collaborative- and content-based filtering to deliver personalized recommendations you didn’t even know you’d like. If you’re considering a RecSys role, you might expect to dive into these right away. But not all RecSys problems operate — or need to operate — at this level. Most practitioners work with relatively simple, tabular models, often gradient-boosted trees. Until attending RecSys ’25 in Prague, I thought my experience was an outlier. Now I believe this is the norm, hidden behind the huge outliers that drive the industry’s state of the art. So what sets these giants apart from most other companies? In this article, I use the framework mapped in the image above to reason about these differences and help place your own recommendation work on the spectrum.</p>
+
+
+
+<p>Most recommendation systems begin with a <strong>candidate generation</strong> phase, reducing millions of possible items to a manageable set that can be ranked by higher-latency solutions. But candidate generation <strong>isn’t always the uphill battle it’s made out to be</strong>, nor does it necessarily require machine learning. Contexts with well-defined scopes and hard filters often don’t require complex querying logic or vector search. Consider <strong>Booking.com</strong>: when a user searches for “4-star hotels in Barcelona, October 1-4,” the geography and availability constraints have already narrowed millions of properties down to a few hundred. The real challenge for machine learning practitioners is then ranking these hotels with precision. This is vastly different from <strong>Amazon’s product search</strong> or the <strong>YouTube homepage</strong>, where hard filters are absent. In these environments, scalable machine learning is required to reduce an immense catalog to a smaller, semantic- and intent-sensitive candidate set — all before ranking even takes place.</p>
+
+
+
+<p>Beyond candidate generation, the complexity of <strong>ranking</strong> is best understood through the two dimensions mapped in the image below. First, <em>observable outcomes and catalog stability</em>, which determine how strong a baseline you can have. Second, the <em>subjectivity of preferences</em> and their learnability, which determine how complex your personalization solution has to be.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/Not-All-RecSys-Gigs-Are-Created-Equal-11-1.png" alt="" /></figure>
+
+
+
+<h2>Observable Outcomes and Catalog Stability</h2>
+
+
+
+<p>At the left end of the x-axis are businesses that directly observe their most important outcomes. Large merchants like <strong>IKEA</strong> are a good example of this: when a customer buys an ESKILSTUNA sofa instead of a KIVIK, the signal is unambiguous. Aggregate enough of these, and the company knows exactly which product has the higher purchase rate. <strong>When you can directly observe users voting with their wallets, you have a strong baseline that’s hard to beat</strong>.</p>
+
+
+
+<p>At the other extreme are platforms that can’t observe whether their recommendations actually succeeded. <strong>Tinder</strong> and <strong>Bumble</strong> might see users match, but they often won’t know whether the pair hit it off (especially as users move off to other platforms). <strong>Yelp</strong> can recommend restaurants, but for the vast majority, they can’t observe whether you actually visited, just which listings you clicked. Relying on such upper-funnel signals means <strong>position bias</strong> dominates: items in top positions accumulate interactions regardless of true quality, making it nearly impossible to tell whether engagement reflects genuine preference or mere visibility. Contrast this with the IKEA example: <strong>a user might click a restaurant on Yelp simply because it appeared first, but they are far less likely to buy a sofa for that same reason</strong>. In the absence of a hard conversion, you lose the anchor of a reliable leaderboard. This forces you to work much harder to extract signal from the noise. Reviews can offer some grounding, but they are rarely dense enough to work as a primary signal. Instead, you are left to <strong>run endless experiments on your ranking heuristics, constantly tuning logic to squeeze a proxy for quality out of a stream of weak signals.</strong></p>
+
+
+
+<h3>High-Churn Catalog</h3>
+
+
+
+<p>Even with observable outcomes, however, a strong baseline is not guaranteed. <strong>If your catalog is constantly changing, you may not accumulate enough data to build a proper leaderboard</strong>. Real estate platforms like <strong>Zillow</strong> and secondhand sites like <strong>Vinted</strong> face the most extreme version: each item has an inventory of one, disappearing the moment it’s purchased. This forces you to rely on simplistic and rigid sorts like “newest first” or “lowest price per square meter.” These are far weaker than conversion leaderboards based on real, dense user signal. To do better, you must leverage machine learning to predict conversion probability immediately, combining intrinsic attributes with debiased short-term performance to surface the best inventory before it disappears.</p>
+
+
+
+<h2>The Ubiquity of Feature-Based Models</h2>
+
+
+
+<p>Regardless of your catalog’s stability or signal strength, the core challenge remains the same: you are trying to improve upon whatever baseline is available. This is typically achieved by training a machine learning (ML) model to predict the probability of engagement or conversion given a specific context. <strong>Gradient-boosted trees (GBDTs) are the pragmatic choice, much faster to train and tune than deep learning</strong>.</p>
+
+
+
+<p>GBDTs predict these outcomes based on engineered item features: categorical and numerical attributes that quantify and describe a product. Even before individual preferences are known, GBDTs can also adapt recommendations leveraging basic user features like country and device type. With these item and user features alone, an ML model can already improve upon the baseline — whether that means debiasing a popularity leaderboard or ranking a high-churn feed. For instance, in fashion e-commerce, models commonly use location and time of year to surface items tied to the season, while simultaneously using country and device to calibrate the price point.</p>
+
+
+
+<p>These features allow the model to combat the aforementioned <strong>position bias</strong> by separating true quality from mere visibility. By learning which intrinsic attributes drive conversion, the model can correct for the position bias inherent in your popularity baseline. It learns to identify items that perform on merit, rather than simply because they were ranked at the top. This is harder than it looks: you risk demoting proven winners more than you should, potentially degrading the experience.</p>
+
+
+
+<p><strong>Contrary to popular belief, feature-based models can also drive personalization</strong>. Items can be encoded into embeddings from two sources: semantic content (descriptions, photos, and reviews on platforms like <strong>Booking.com</strong> and <strong>Yelp</strong>) or interaction data (methods like StarSpace that learn from which items are clicked or viewed together). By leveraging a user’s recent interactions, we can calculate similarity scores against candidate items and feed these to the gradient-boosted model as features.</p>
+
+
+
+<p>This approach has its limits, however. A GBDT might learn to promote restaurants similar to a user’s recent Italian searches on <strong>Yelp</strong>, but the similarity itself is drawn from semantic content or from which restaurants are frequently clicked together, not from which ones users actually book. Deep learning models learn item representations end-to-end: the embeddings are optimized to maximize performance on the final task. <strong>Whether this limitation matters depends on something more fundamental: how much users actually disagree.</strong></p>
+
+
+
+<h2>Subjectivity</h2>
+
+
+
+<p>Not all domains are equally personal or controversial. In some, users largely agree on what makes a good product once basic constraints are satisfied. We call these convergent preferences, and they occupy the bottom half of the chart. Take <strong>Booking.com</strong>: travelers may have different budgets and location preferences, but once those are revealed through filters and map interactions, ranking criteria converge — higher prices are bad, amenities are good, good reviews are better. Or consider <strong>Staples</strong>: once a user needs printer paper or AA batteries, brand and price dominate, making user preferences remarkably consistent.</p>
+
+
+
+<p>At the other extreme — the top half — are subjective domains defined by highly fragmented taste. <strong>Spotify</strong> exemplifies this: one user’s favorite track is another’s immediate skip. Yet, taste rarely exists in a vacuum. Somewhere in the data is a user on your exact wavelength, and machine learning bridges the gap, <strong>turning their discoveries from yesterday into your recommendations for today</strong>. Here, the value of personalization is enormous, and so is the technical investment required.</p>
+
+
+
+<h3>The Right Data</h3>
+
+
+
+<p><strong>Subjective taste is only actionable if you have enough data to observe it</strong>. Many domains involve distinct preferences but lack the feedback loop to capture them. A niche content platform, new marketplace, or B2B product may face wildly divergent tastes yet lack the clear signal to learn them. <strong>Yelp</strong> restaurant recommendations illustrate this challenge: dining preferences are subjective, but the platform can’t observe actual restaurant visits, only clicks. This means they can’t optimize personalization for the true target (conversions). They can only optimize for proxy metrics like clicks, but more clicks might actually signal failure, indicating users are browsing multiple listings without finding what they want.</p>
+
+
+
+<p>But in subjective domains with dense behavioral data, failing to personalize leaves money on the table. <strong>YouTube</strong> exemplifies this: with billions of daily interactions, the platform learns nuanced viewer preferences and surfaces videos you didn’t know you wanted. Here, deep learning becomes unavoidable. This is the point where you’ll see large teams coordinating over Jira and cloud bills that require VP approval. Whether that complexity is justified comes down entirely to the data you have.</p>
+
+
+
+<h2>Know Where You Stand</h2>
+
+
+
+<p><strong>Understanding where your problem sits on this spectrum is far more valuable than blindly chasing the latest architecture</strong>. The industry’s “state-of-the-art” is largely defined by the outliers — the tech giants dealing with massive, subjective inventories and dense user data. Their solutions are famous because their problems are extreme, not because they are universally correct.</p>
+
+
+
+<p>However, <strong>you’ll likely face different constraints in your own work</strong>. If your domain is defined by a stable catalog and observable outcomes, you land in the bottom-left quadrant alongside companies like <strong>IKEA </strong>and <strong>Booking.com</strong>. Here, popularity baselines are so strong that the challenge is simply building upon them with machine learning models that can drive measurable A/B test wins. If, instead, you face high churn (like <strong>Vinted)</strong> or weak signals (like <strong>Yelp</strong>), machine learning becomes a necessity just to keep up.</p>
+
+
+
+<p>But that doesn’t mean you’ll need <strong>deep learning</strong>. That added complexity only truly pays off in territories where preferences are deeply subjective and there’s enough data to model them. We often treat systems like <strong>Netflix</strong> or <strong>Spotify</strong> as the gold standard, but they are specialized solutions to rare conditions. For the rest of us, excellence isn’t about deploying the most complex architecture available; it’s about recognizing the constraints of the terrain and having the confidence to choose the solution that solves your problems.</p>
+
+
+
+<p><em>Images by the author</em>.</p>
+</div></div>
+  </div>
+</body>
+</html>

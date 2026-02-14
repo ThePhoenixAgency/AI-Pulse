@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Automate repository tasks with GitHub Agentic Workflows</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Automate repository tasks with GitHub Agentic Workflows</h1>
+  <div class="metadata">
+    Source: GitHub Blog | Date: 2/13/2026 | Lang: EN |
+    <a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><section>
+	
+<p>Imagine visiting your repository in the morning and feeling calm because you see:</p>
+
+
+
+<ul>
+<li>Issues triaged and labelled</li>
+
+
+
+<li>CI failures investigated with proposed fixes</li>
+
+
+
+<li>Documentation has been updated to reflect recent code changes.</li>
+
+
+
+<li>Two new pull requests that improve testing await your review.</li>
+</ul>
+
+
+
+<p>All of it visible, inspectable, and operating within the boundaries you’ve defined.</p>
+
+
+
+<p>That’s the future powered by <a href="https://github.github.com/gh-aw/?utm_source=blog-agentic-workflows-cta&amp;utm_medium=blog&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026" target="_blank">GitHub Agentic Workflows</a>: automated, intent-driven repository workflows that run in GitHub Actions, authored in plain Markdown and executed with coding agents. They’re designed for people working in GitHub, from individuals automating a single repo to teams operating at enterprise or open-source scale.</p>
+
+
+
+<p>At GitHub Next, we began GitHub Agentic Workflows as an investigation into a simple question: what does repository automation with strong guardrails look like in the era of AI coding agents? A natural place to start was GitHub Actions, the heart of scalable repository automation on GitHub. By bringing automated coding agents into actions, we can enable their use across millions of repositories, while keeping decisions about when and where to use them in your hands.</p>
+
+
+
+<p>GitHub Agentic Workflows are now available in <a href="https://github.github.com/gh-aw/?utm_source=blog-agentic-workflows-cta&amp;utm_medium=blog&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026" target="_blank">technical preview</a>. In this post, we’ll explain what they are and how they work. We invite you to put them to the test, to explore where repository-level AI automation delivers the most value.</p>
+
+
+
+
+  
+  
+  <img src="https://github.blog/wp-content/uploads/2026/02/Quotes_Option1.jpg" alt="Graphic showing quotes from customers. 'Home Assistant has thousands of open issues. No human can track what's trending or which problems affect the most users. I've built GitHub Agentic Workflows that analyze issues and surface what matters: that's the kind of judgment amplification that actually helps maintainers.'- Franck Nijhof, lead of the Home Assistant project, one of the top projects on GitHubby contributor countAgentic workflows also allow maintainers and community to experiment with repository automation together. 'Adopting GitHub’s Agentic Workflows has lowered the barrier for experimentation with AI tooling, making it significantly easier for staff, maintainers and newcomers alike. Inside of CNCF, we are benefiting from improved documentation automation along with improving team reporting across the organization. This isn't just a technical upgrade for our community, it’s part of a cultural shift that empowers our ecosystem to innovate faster with AI and agentic tooling.'- Chris Aniszczyk, CTO of the Cloud Native Computing Foundation (CNCF), whose mission is to make cloud native computing ubiquitous across the worldEnterprises are seeing similar benefits at scale. 'With GitHub Agentic Workflows, we’re able to expand how we apply agents to real engineering work at scale, including changes that span multiple repositories. The flexibility and built-in controls give us confidence to leverage Agentic Workflows across complex systems at Carvana.'- Alex Devkar, Senior Vice President, Engineering and Analytics, at Carvana" />
+
+
+
+
+<h2>AI repository automation: A revolution through simplicity </h2>
+
+
+
+<p>The concept behind GitHub Agentic Workflows is straightforward: you describe the outcomes you want in plain Markdown, add this as an automated workflow to your repository, and it executes using a coding agent in GitHub Actions.</p>
+
+
+
+<p>This brings the power of coding agents into the heart of repository automation. Agentic workflows run as standard GitHub Actions workflows, with added guardrails for sandboxing, permissions, control, and review. When they execute, they can use different coding agent engines—such as Copilot CLI, Claude Code, or OpenAI Codex—depending on your configuration.</p>
+
+
+
+<p>The use of GitHub Agentic Workflows makes entirely new categories of repository automation and software engineering possible, in a way that fits naturally with how developer teams already work on GitHub. All of them would be difficult or impossible to accomplish traditional YAML workflows alone:</p>
+
+
+
+<ol>
+<li><strong>Continuous triage</strong>: automatically <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows/" target="_blank">summarize, label, and route new issues</a>.</li>
+
+
+
+<li><strong>Continuous documentation</strong>: keep <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-documentation/" target="_blank">READMEs and documentation aligned with code changes</a>.</li>
+
+
+
+<li><strong>Continuous code simplification</strong>: <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-continuous-simplicity/" target="_blank">repeatedly identify code improvements</a> and open pull requests for them.</li>
+
+
+
+<li><strong>Continuous test improvement</strong>: <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-testing-validation/" target="_blank">assess test coverage and add high-value tests</a>.</li>
+
+
+
+<li><strong>Continuous quality hygiene</strong>: proactively <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-quality-hygiene/" target="_blank">investigate CI failures and propose targeted fixes</a>.</li>
+
+
+
+<li><strong>Continuous reporting</strong>: <a href="https://github.github.com/gh-aw/blog/2026-01-13-meet-the-workflows-metrics-analytics/" target="_blank">create regular reports on repository health, activity, and trends</a>.</li>
+</ol>
+
+
+
+<p>These are just a few examples of repository automations that showcase the power of GitHub Agentic Workflows. We call this <a href="https://githubnext.com/projects/continuous-ai/">Continuous AI</a>: the integration of AI into the SDLC, enhancing automation and collaboration similar to continuous integration and continuous deployment (CI/CD) practices.</p>
+
+
+
+<p>GitHub Agentic Workflows and Continuous AI are designed to augment existing CI/CD rather than replace it. They do not replace build, test, or release pipelines, and their use cases largely do not overlap with deterministic CI/CD workflows. Agentic workflows run on GitHub Actions because that is where GitHub provides the necessary infrastructure for permissions, logging, auditing, sandboxed execution, and rich repository context.</p>
+
+
+
+<p>In our own usage at GitHub Next, we’re finding new uses for agentic workflows nearly every day. Throughout GitHub, teams have been using agentic workflows to create custom tools for themselves in minutes, replacing chores with intelligence or paving the way for humans to get work done by assembling the right information, in the right place, at the right time. A new world of possibilities is opening for teams and enterprises to keep their repositories healthy, navigable, and high-quality.</p>
+
+
+
+<h2>Let’s talk guardrails and control </h2>
+
+
+
+<p>Designing for safety and control is non-negotiable. GitHub Agentic Workflows implements a defense-in-depth security architecture that protects against unintended behaviors and prompt-injection attacks.</p>
+
+
+
+<p>Workflows run with read-only permissions by default. Write operations require explicit approval through <a href="https://github.github.com/gh-aw/introduction/architecture/">safe outputs</a>, which map to pre-approved, reviewable GitHub operations such as creating a pull request or adding a comment to an issue. Sandboxed execution, tool allowlisting, and network isolation help ensure that coding agents operate within controlled boundaries.</p>
+
+
+
+<p>Guardrails like these make it practical to run agents continuously, not just as one-off experiments. See our <a href="https://github.github.com/gh-aw/introduction/architecture/">security architecture</a> for more details.</p>
+
+
+
+<p>One alternative approach to agentic repository automation is to run coding agent CLIs, such as Copilot or Claude, directly inside a standard GitHub Actions YAML workflow. This approach often grants these agents more permission than is required for a specific task. In contrast, GitHub Agentic Workflows run coding agents with read-only access by default and rely on safe outputs for GitHub operations, providing tighter constraints, clearer review points, and stronger overall control.</p>
+
+
+
+<h2>A simple example: A daily repo report  </h2>
+
+
+
+<p>Let’s look at an agentic workflow which creates a daily status report for repository maintainers.</p>
+
+
+
+<p>In practice, you will usually use AI assistance to <a href="https://github.github.io/gh-aw/setup/creating-workflows/">create your workflows</a>. The easiest way to do this is with an interactive coding agent. For example, with your favorite coding agent, you can enter this prompt:</p>
+
+
+
+<pre><code>Generate a workflow that creates a daily repo status report for a maintainer. Use the instructions at https://github.com/github/gh-aw/blob/main/create.md</code></pre>
+
+
+
+<p>The coding agent will interact with you to confirm your specific needs and intent, write the Markdown file, and check its validity. You can then review, refine, and validate the workflow before adding it to your repository.</p>
+
+
+
+<p>This will create two files in <code>.github/workflows</code>: </p>
+
+
+
+<ul>
+<li><code>daily-repo-status.md</code> (the agentic workflow)  </li>
+
+
+
+<li><code>daily-repo-status.lock.yml</code> (the corresponding agentic workflow lock file, which is executed by GitHub Actions) </li>
+</ul>
+
+
+
+<p>The file <code>daily-repo-status.md</code> will look like this: </p>
+
+
+
+<pre><code>--- 
+on: 
+  schedule: daily 
+ 
+permissions: 
+  contents: read 
+  issues: read 
+  pull-requests: read 
+ 
+safe-outputs: 
+  create-issue: 
+    title-prefix: "[repo status] " 
+    labels: [report] 
+ 
+tools: 
+  github: 
+---  
+ 
+# Daily Repo Status Report 
+ 
+Create a daily status report for maintainers. 
+ 
+Include 
+- Recent repository activity (issues, PRs, discussions, releases, code changes) 
+- Progress tracking, goal reminders and highlights 
+- Project status and recommendations 
+- Actionable next steps for maintainers 
+ 
+Keep it concise and link to the relevant issues/PRs.</code></pre>
+
+
+
+<p>This file has two parts: </p>
+
+
+
+<ol>
+<li><strong>Frontmatter</strong> (YAML between <code>---</code> markers) for configuration </li>
+
+
+
+<li><strong>Markdown instructions</strong> that describe the job in natural language in natural language</li>
+</ol>
+
+
+
+<p>The Markdown is the intent, but the trigger, permissions, tools, and allowed outputs are spelled out up front.</p>
+
+
+
+<p>If you prefer, you can add the workflow to your repository manually: </p>
+
+
+
+<ol>
+<li><strong>Create the workflow</strong>: Add  <code>daily-repo-status.md</code> with the frontmatter and instructions.</li>
+
+
+
+<li><strong>Create the lock file</strong>:  
+<ul>
+<li><code>gh extension install github/gh-aw</code>  </li>
+
+
+
+<li><code>gh aw compile</code></li>
+</ul>
+</li>
+
+
+
+<li><strong>Commit and push</strong>: Commit and push files to your repository.</li>
+
+
+
+<li><strong>Add any required secrets</strong>: For example, <a href="https://github.github.com/gh-aw/reference/engines/" target="_blank">add a token or API key for your coding agent</a>.</li>
+</ol>
+
+
+
+<p>Once you add this workflow to your repository, it will run automatically or you can trigger it manually using GitHub Actions. When the workflow runs, it creates a status report issue like this:</p>
+
+
+
+<figure><img src="https://github.blog/wp-content/uploads/2026/02/Screenshot-2.png?resize=1024%2C566" alt="Screenshot of a GitHub issue titled &quot;Daily Repo Report - February 9, 2026&quot; showing key highlights, including 2 new releases, 1,737 commits from 16 contributors, 100 issues closed with 190 new issues opened, 50 pull requests merged from 93 opened pull requests, and 5 code quality issues opened." /></figure>
+
+
+
+<h2>What you can build with GitHub Agentic Workflows </h2>
+
+
+
+<p>If you’re looking for further inspiration <a href="https://github.github.com/gh-aw/blog/2026-01-12-welcome-to-pelis-agent-factory/">Peli’s Agent Factory</a> is a guided tour through a wide range of workflows, with practical patterns you can adapt, remix, and standardize across repos.</p>
+
+
+
+<p>A useful mental model: if repetitive work in a repository can be described in words, it might be a good fit for an agentic workflow.</p>
+
+
+
+<p>If you’re looking for design patterns, check out <a href="https://github.github.com/gh-aw/patterns/chatops/" target="_blank">ChatOps</a>, <a href="https://github.github.com/gh-aw/patterns/dailyops/" target="_blank">DailyOps</a>, <a href="https://github.github.com/gh-aw/patterns/dataops/" target="_blank">DataOps</a>, <a href="https://github.github.com/gh-aw/patterns/issueops/" target="_blank">IssueOps</a>, <a href="https://github.github.com/gh-aw/patterns/projectops/" target="_blank">ProjectOps</a>, <a href="https://github.github.com/gh-aw/patterns/multirepoops/" target="_blank">MultiRepoOps,</a> and <a href="https://github.github.com/gh-aw/patterns/orchestration/" target="_blank">Orchestration</a>.</p>
+
+
+
+<p>Uses for agent-assisted repository automation often depend on particular repos and development priorities. Your team’s approach to software development will differ from those of other teams. It pays to be imaginative about how you can use agentic automation to augment <em>your</em> team for <em>your</em> repositories for <em>your</em> goals.</p>
+
+
+
+<h2>Practical guidance for teams </h2>
+
+
+
+<p>Agentic workflows bring a shift in thinking. They work best when you focus on goals and desired outputs rather than perfect prompts. You provide clarity on what success looks like, and allow the workflow to explore how to achieve it. Some boundaries are built into agentic workflows by default, and others are ones you explicitly define. This means the agent can explore and reason, but its conclusions always stay within safe, intentional limits.</p>
+
+
+
+<p>You will find that your workflows can range from very general (“Improve the software”) to very specific (“Check that all technical documentation and error messages for this educational software are written in a style suitable for an audience of age 10 or above”). You can choose the level of specificity that’s appropriate for your team.</p>
+
+
+
+<p>GitHub Agentic Workflows use coding agents at runtime, which incur billing costs. When using Copilot with default settings, each workflow run typically incurs two <a href="https://docs.github.com/en/billing/concepts/product-billing/github-copilot-premium-requests">premium requests</a>: one for the agentic work and one for a guardrail check through safe outputs. The models used can be configured to help manage these costs. Today, automated uses of Copilot are associated with a user account. For other coding agents, refer to our <a href="https://github.github.com/gh-aw/reference/engines/">documentation</a> for details. Here are a few more tips to help teams get value quickly:</p>
+
+
+
+<ul>
+<li>Start with <strong>low-risk outputs</strong> such as comments, drafts, or reports before enabling pull request creation.</li>
+
+
+
+<li>For coding, start with <strong>goal-oriented improvements</strong> such as routine refactoring, test coverage, or code simplification rather than feature work.</li>
+
+
+
+<li>For reports, use instructions that are <strong>specific about what “good” looks like</strong>, including format, tone, links, and when to stop.</li>
+
+
+
+<li>Agentic workflows create an agent-only, sub-loop that’s able to be autonomous because agents are acting under defined terms. But it’s important that <strong>humans stay in the broader loop</strong> of forward progress in the repository, through reports, issues, and pull requests. With GitHub Agentic Workflows, <strong>pull requests are never merged automatically</strong>, and humans must always review and approve.</li>
+
+
+
+<li>Treat the workflow Markdown as code. Review changes, keep it small, and evolve it intentionally.</li>
+</ul>
+
+
+
+<p>Continuous AI works best if you use it in conjunction with CI/CD. Don’t use agentic workflows as a replacement for GitHub Actions YAML workflows for CI/CD. This approach extends continuous automation to more subjective, repetitive tasks that traditional CI/CD struggle to express.</p>
+
+
+
+<h2>Build the future of automation with us   </h2>
+
+
+
+<p>GitHub Agentic Workflows are available now in technical preview and are a collaboration between GitHub, Microsoft Research, and Azure Core Upstream. We invite you to try them out and help us shape the future of repository automation.</p>
+
+
+
+<ul>
+<li><a href="https://github.github.com/gh-aw/?utm_source=blog-agentic-workflows-cta&amp;utm_medium=blog&amp;utm_campaign=agentic-workflows-tech-preview-feb-2026" target="_blank">Documentation</a> </li>
+
+
+
+<li><a href="https://github.github.io/gh-aw/introduction/how-they-work/" target="_blank">How they work</a> </li>
+
+
+
+<li><a href="https://github.github.io/gh-aw/setup/quick-start/" target="_blank">Quick start guide</a> </li>
+
+
+
+<li><a href="https://github.github.io/gh-aw/blog/2026-01-12-welcome-to-pelis-agent-factory/" target="_blank">Workflow gallery</a> </li>
+</ul>
+
+
+
+<p>We’d love for you to be involved! <a href="https://gh.io/aw-tp-community-feedback">Share your thoughts in the Community discussion</a>, or join us (and tons of other awesome makers) in the #agentic-workflows channel of the <a href="https://gh.io/next-discord">GitHub Next Discord</a>. We look forward to seeing what you build with GitHub Agentic Workflows. Happy automating!</p>
+
+
+
+<div>
+<p><strong>Try GitHub Agentic Workflows in a repo today</strong>! Install <code>gh-aw</code>, add a starter workflow or create one using AI, and run it. Then, <a href="https://gh.io/aw-tp-community-feedback">share what you build (and what you want next)</a>. </p>
+</div>
+
+	
+<section>
+	<hr />
+	<div>
+		<h2>Tags:</h2>
+		<ul>
+							<li>
+					<a href="https://github.blog/tag/agentic-workflows/">
+						agentic workflows					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/ai-agents/">
+						AI agents					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/automation/">
+						automation					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/continuous-integration/">
+						continuous integration					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/developer-productivity/">
+						developer productivity					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/devops/">
+						DevOps					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/github-actions/">
+						GitHub Actions					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/github-copilot/">
+						GitHub Copilot					</a>
+				</li>
+							<li>
+					<a href="https://github.blog/tag/github-next/">
+						GitHub Next					</a>
+				</li>
+					</ul>
+	</div>
+</section>
+	<div>
+	<h2>
+		Written by	</h2>
+	
+			<article>
+	<div>
+					<div>
+				
+					
+					<img src="https://avatars.githubusercontent.com/u/7204669?v=4&amp;s=200" alt="Don Syme" />
+				
+			</div>
+				
+					<p>Principal Researcher, GitHub Next. Agentic software engineering, Copilot, C#, F#, async/await and more.</p>
+			</div>
+</article>
+			<article>
+	<div>
+					<div>
+				
+					
+					<img src="https://avatars.githubusercontent.com/u/4175913?v=4&amp;s=200" alt="Peli de Halleux" />
+				
+			</div>
+				
+					<p>Principal Research Software Design Engineer at Microsoft Research. Creator of MakeCode, GenAIScript and more.</p>
+			</div>
+</article>
+	</div>
+</section></div>
+  </div>
+</body>
+</html>
