@@ -458,7 +458,7 @@
             <h4>Langue / Language</h4>
             <select id="prefLang">
                 <option value="all">Toutes / All</option>
-                <option value="fr">Francais</option>
+                <option value="fr">Français</option>
                 <option value="en">English</option>
             </select>
         </div>
@@ -481,11 +481,7 @@
             <span class="range-value" id="prefMaxArticlesValue">30</span>
         </div>
 
-        <div class="prefs-section">
-            <label><input type="checkbox" id="prefHideRead" checked> Cacher les articles lus</label>
-        </div>
-
-        <button class="prefs-reset" id="prefsReset">Réinitialiser les preferences</button>
+        <button class="prefs-reset" id="prefsReset">Réinitialiser les préférences</button>
     </div>
 
     <!-- Main Content -->
@@ -511,6 +507,17 @@
         const PrefsManager = {
             STORAGE_KEY: 'ai_pulse_preferences',
 
+            isLocalStorageAvailable() {
+                try {
+                    const test = '__localStorage_test__';
+                    localStorage.setItem(test, test);
+                    localStorage.removeItem(test);
+                    return true;
+                } catch (e) {
+                    return false;
+                }
+            },
+
             getDefaults() {
                 return {
                     lang: 'all',
@@ -522,19 +529,38 @@
             },
 
             load() {
+                if (!this.isLocalStorageAvailable()) {
+                    console.warn('localStorage not available. Using default preferences.');
+                    return this.getDefaults();
+                }
                 try {
                     const stored = localStorage.getItem(this.STORAGE_KEY);
                     if (stored) return { ...this.getDefaults(), ...JSON.parse(stored) };
-                } catch (e) { /* ignore */ }
+                } catch (e) {
+                    console.error('Error loading preferences:', e);
+                }
                 return this.getDefaults();
             },
 
             save(prefs) {
-                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(prefs));
+                if (!this.isLocalStorageAvailable()) {
+                    console.warn('localStorage not available. Preferences will not be saved.');
+                    return;
+                }
+                try {
+                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(prefs));
+                } catch (e) {
+                    console.error('Error saving preferences:', e);
+                }
             },
 
             reset() {
-                localStorage.removeItem(this.STORAGE_KEY);
+                if (!this.isLocalStorageAvailable()) return;
+                try {
+                    localStorage.removeItem(this.STORAGE_KEY);
+                } catch (e) {
+                    console.error('Error resetting preferences:', e);
+                }
             }
         };
 
@@ -542,10 +568,18 @@
         const ReadHistory = {
             STORAGE_KEY: 'ai_pulse_read_articles',
 
+            isLocalStorageAvailable() {
+                return PrefsManager.isLocalStorageAvailable();
+            },
+
             getAll() {
+                if (!this.isLocalStorageAvailable()) return [];
                 try {
                     return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
-                } catch (e) { return []; }
+                } catch (e) {
+                    console.error('Error loading read history:', e);
+                    return [];
+                }
             },
 
             isRead(url) {
@@ -553,10 +587,17 @@
             },
 
             markRead(url, title) {
-                const articles = this.getAll();
-                if (!articles.some(a => a.url === url)) {
-                    articles.push({ url, title, readAt: Date.now() });
-                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+                if (!this.isLocalStorageAvailable()) return;
+                try {
+                    const articles = this.getAll();
+                    if (!articles.some(a => a.url === url)) {
+                        articles.push({ url, title, readAt: Date.now() });
+                        // Keep max 500 entries to avoid localStorage bloat
+                        const limited = articles.length > 500 ? articles.slice(-500) : articles;
+                        localStorage.setItem(this.STORAGE_KEY, JSON.stringify(limited));
+                    }
+                } catch (e) {
+                    console.error('Error marking article as read:', e);
                 }
             }
         };
@@ -741,8 +782,27 @@
                 }
             });
 
-            // Rebuild section dropdown when filters change
-            buildSectionNav();
+        // ─── Intersection Observer for active section ───────
+        function setupScrollSpy() {
+            // Check if IntersectionObserver is supported
+            if (!('IntersectionObserver' in window)) {
+                console.warn('IntersectionObserver not supported. Scroll spy disabled.');
+                return;
+            }
+
+            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cat = entry.target.getAttribute('data-category');
+                        document.querySelectorAll('.section-nav a').forEach(a => a.classList.remove('active'));
+                        const activeLink = document.querySelector(`.section-nav a[data-nav-cat="${cat}"]`);
+                        if (activeLink) activeLink.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-20% 0px -60% 0px' });
+
+            sections.forEach(section => observer.observe(section));
         }
 
         // ─── Preferences Panel Events ───────────────────────

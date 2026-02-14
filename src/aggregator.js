@@ -123,20 +123,27 @@ const linkedinHelper = require('./linkedin-helper');
  * Résultat : /chemin/vers/AI-Pulse/config.json
  */
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
-
-/**
- * Lecture et parsing du fichier JSON
- * fs.readFileSync lit le fichier de manière synchrone (bloquante)
- * JSON.parse transforme le texte JSON en objet JavaScript
- */
-const config = JSON.parse(fs.readFileSync(CONFIG_PATH, 'utf-8'));
-
-/**
- * SETTINGS : Paramètres généraux (articlesPerFeed, deduplication, etc.)
- * CATEGORIES : Liste des catégories avec leurs sources RSS
- */
-const SETTINGS = config.settings;
-const CATEGORIES = config.categories;
+let config, SETTINGS, CATEGORIES;
+try {
+  if (!fs.existsSync(CONFIG_PATH)) {
+    console.error(`ERROR: Configuration file not found at ${CONFIG_PATH}`);
+    console.error('Please ensure config.json exists in the repository root.');
+    process.exit(1);
+  }
+  const configContent = fs.readFileSync(CONFIG_PATH, 'utf-8');
+  config = JSON.parse(configContent);
+  SETTINGS = config.settings;
+  CATEGORIES = config.categories;
+  
+  if (!SETTINGS || !CATEGORIES) {
+    console.error('ERROR: Invalid config.json structure. Missing required "settings" or "categories" fields.');
+    process.exit(1);
+  }
+} catch (e) {
+  console.error(`ERROR: Failed to load or parse config.json: ${e.message}`);
+  console.error('Please check that config.json is valid JSON and properly formatted.');
+  process.exit(1);
+}
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -199,8 +206,9 @@ try {
     return langMap[code] || code;
   };
 } catch (e) {
-  console.error('WARNING: franc-min package not found. Language detection will be limited to feed-declared languages only.');
-  console.error('To enable automatic language detection, please run: npm install');
+  console.error('franc-min not available for language detection.');
+  console.error('To enable automatic language detection, run: npm install franc-min');
+  console.error('Continuing with feed-declared language only...');
   detectLang = () => null;
 }
 
@@ -221,28 +229,13 @@ const parser = new Parser({
   headers: { 'User-Agent': 'AI-Pulse/3.0' } // Identification de l'application
 });
 
+// Valid ISO 639-1 language codes for HTML lang attribute
+const VALID_LANG_CODES = ['en', 'fr', 'es', 'de', 'pt', 'it', 'nl', 'ru', 'zh', 'ja', 'ko', 'ar'];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// FONCTION: AJOUT DES PARAMÈTRES UTM
-// ─────────────────────────────────────────────────────────────────────────────
+// Default sender email for notifications
+const DEFAULT_SENDER_EMAIL = 'AI-Pulse <noreply@resend.dev>';
 
-/**
- * Ajoute des paramètres UTM aux URLs pour le suivi du trafic
- *
- * UTM = Urchin Tracking Module (paramètres de tracking Google Analytics)
- * Permet de savoir d'où viennent les visiteurs d'un site
- *
- * @param {string} url - L'URL originale de l'article
- * @param {string} category - La catégorie de l'article (ai, cybersecurity, etc.)
- * @returns {string} - L'URL avec les paramètres UTM ajoutés
- *
- * EXEMPLE:
- * Entrée: https://example.com/article
- * Sortie: https://example.com/article?utm_source=ai-pulse&utm_medium=reader&...
- *
- * CAS SPÉCIAL MEDIUM:
- * Les articles Medium sont redirigés vers Freedium pour éviter le paywall
- */
+// UTM parameters for AI-Pulse traffic tracking
 function addUTMParams(url, category = 'general') {
   try {
     // Analyse l'URL pour vérifier si c'est un article Medium
@@ -456,13 +449,13 @@ function textSimilarity(wordsA, wordsB) {
 function deduplicateArticles(articles) {
   // Vérifier si la déduplication est activée dans la config
   if (!SETTINGS.deduplication || !SETTINGS.deduplication.enabled) return articles;
-
-  // Récupérer les seuils depuis la config
-  const titleThreshold = SETTINGS.deduplication.similarityThreshold || 0.7;   // 70% pour les titres
-  const contentThreshold = SETTINGS.deduplication.contentThreshold || 0.5;    // 50% pour le contenu
-
-  const kept = [];           // Articles gardés
-  const normalizedData = []; // Données normalisées pour comparaison rapide
+  const threshold = (typeof SETTINGS.deduplication.similarityThreshold === 'number' && 
+                     SETTINGS.deduplication.similarityThreshold > 0 && 
+                     SETTINGS.deduplication.similarityThreshold <= 1) 
+                    ? SETTINGS.deduplication.similarityThreshold 
+                    : 0.7;
+  const kept = [];
+  const normalizedTitles = [];
 
   for (const article of articles) {
     // Normaliser le titre et le résumé de l'article courant
@@ -539,6 +532,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Détecter la langue du contenu
   let detectedLang = detectLang(rawSummary || article.title);
+  // Validate detected language is a valid 2-letter ISO 639-1 code
+  if (detectedLang && !VALID_LANG_CODES.includes(detectedLang)) {
+    detectedLang = null; // Fallback to feedLang if invalid
+  }
   const lang = detectedLang || feedLang || 'en';
 
   // Essayer de récupérer et sauvegarder le contenu complet
@@ -613,16 +610,16 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Retourner l'objet article traité
   return {
-    title: (sanitizeText(article.title) || 'Untitled').slice(0, 200), // Titre limité à 200 caractères
-    link: finalReaderLink,                    // Lien vers la version locale ou originale
-    originalLink: articleUrl,                 // Lien original (toujours gardé)
-    pubDate: new Date(article.pubDate || Date.now()), // Date de publication
-    source: sourceName,                       // Nom de la source
-    tags: tags,                               // Tags de la source
-    category: category,                       // Catégorie
-    lang: detectedLang || feedLang || 'en',   // Langue détectée ou déclarée
-    summary: smartTruncate(rawSummary),       // Résumé tronqué intelligemment
-    hasLocalContent: hasLocalContent          // Indique si on a une copie locale
+    title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
+    link: finalReaderLink,
+    originalLink: articleUrl, // Always set to ensure RSS feeds have valid external URLs
+    pubDate: new Date(article.pubDate || Date.now()),
+    source: sourceName,
+    tags: tags,
+    category: category,
+    lang: detectedLang || feedLang || 'en',
+    summary: smartTruncate(rawSummary),
+    hasLocalContent: hasLocalContent
   };
 }
 
@@ -865,27 +862,21 @@ function writeRSSFeeds(categorizedArticles) {
   console.error('RSS feeds generated successfully');
 }
 
+// ─── Email Digest ───────────────────────────────────────────
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ENVOI DES EMAILS
-// ─────────────────────────────────────────────────────────────────────────────
+// Validate email address format
+function isValidEmail(email) {
+  if (!email || typeof email !== 'string') return false;
+  // Basic email validation regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 254;
+}
 
-/**
- * Envoie les emails de digest aux abonnés
- *
- * @param {Object} categorizedArticles - Articles groupés par catégorie
- *
- * PRÉREQUIS:
- * - Variable d'environnement API_RESEND contenant la clé API Resend
- * - Fichier data/subscribers.json avec la liste des abonnés
- * - Fichier templates/email-digest.html avec le template d'email
- *
- * FONCTIONNEMENT:
- * 1. Vérifier que la clé API existe
- * 2. Lire la liste des abonnés
- * 3. Pour chaque abonné, générer un email personnalisé
- * 4. Envoyer via l'API Resend
- */
+// Sleep helper for rate limiting
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 async function sendEmailDigests(categorizedArticles) {
   // Vérifier que la clé API existe
   const apiKey = process.env.API_RESEND;
@@ -894,7 +885,11 @@ async function sendEmailDigests(categorizedArticles) {
     return;
   }
 
-  // Vérifier que le fichier d'abonnés existe
+  // Validate API key format (should start with re_ for Resend)
+  if (!apiKey.startsWith('re_')) {
+    console.error('WARNING: API_RESEND key does not appear to be a valid Resend API key');
+  }
+
   const subscribersPath = path.join(__dirname, '..', 'data', 'subscribers.json');
   if (!fs.existsSync(subscribersPath)) {
     console.error('No subscribers.json found, skipping email digests');
@@ -924,10 +919,28 @@ async function sendEmailDigests(categorizedArticles) {
   const template = fs.readFileSync(templatePath, 'utf-8');
   const today = new Date().toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' });
 
-  // Envoyer un email à chaque abonné
-  for (const subscriber of subscribers) {
+  // Get sender email from environment or use default
+  const senderEmail = process.env.EMAIL_FROM || DEFAULT_SENDER_EMAIL;
+  if (senderEmail === DEFAULT_SENDER_EMAIL) {
+    console.error('WARNING: Using default Resend development domain for sender email.');
+    console.error('For production, set EMAIL_FROM environment variable with a verified custom domain.');
+  }
+
+  console.error(`Sending email digests to ${subscribers.length} subscriber(s)...`);
+  let sentCount = 0;
+  let failedCount = 0;
+
+  for (let i = 0; i < subscribers.length; i++) {
+    const subscriber = subscribers[i];
     try {
-      // Filtrer les articles selon les préférences de l'abonné
+      // Validate email address
+      if (!isValidEmail(subscriber.email)) {
+        console.error(`  Skipping invalid email address: ${subscriber.email}`);
+        failedCount++;
+        continue;
+      }
+
+      // Filter articles based on subscriber preferences
       let filteredSections = [];
       const subCategories = subscriber.categories || Object.keys(CATEGORIES);
       const subLang = subscriber.lang || 'all';
@@ -972,7 +985,7 @@ async function sendEmailDigests(categorizedArticles) {
 
       // Envoyer l'email via l'API Resend
       const response = await axios.post('https://api.resend.com/emails', {
-        from: 'AI-Pulse <noreply@resend.dev>',
+        from: senderEmail,
         to: [subscriber.email],
         subject: `AI-Pulse Digest - ${today}`,
         html: emailHtml
@@ -984,10 +997,22 @@ async function sendEmailDigests(categorizedArticles) {
       });
 
       console.error(`  Email sent to ${subscriber.email}: ${response.data.id}`);
+      sentCount++;
+
+      // Rate limiting: wait 100ms between emails to respect API limits
+      // Resend free tier allows 100 emails/day, with burst protection
+      if (i < subscribers.length - 1) {
+        await sleep(100);
+      }
     } catch (error) {
-      console.error(`  Failed to send email to ${subscriber.email}: ${error.message}`);
+      failedCount++;
+      // Sanitize error message to avoid exposing sensitive information
+      const errorMsg = error.response?.data?.message || error.message || 'Unknown error';
+      console.error(`  Failed to send email to ${subscriber.email}: ${errorMsg}`);
     }
   }
+
+  console.error(`\nEmail digest summary: ${sentCount} sent, ${failedCount} failed`);
 }
 
 
