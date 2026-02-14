@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Converting Large JSON, NDJSON, CSV and XML Files without Blowing Up Memory</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Converting Large JSON, NDJSON, CSV and XML Files without Blowing Up Memory</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
+    <a href="https://dev.to/bruno_hanss_6b82bb52cd0fa/converting-large-json-ndjson-csv-and-xml-files-without-blowing-up-memory-20ao" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <p>Most of us have written something like this at some point:<br />
+</p>
+
+<div>
+<pre><code><span>const</span> <span>data</span> <span>=</span> <span>JSON</span><span>.</span><span>parse</span><span>(</span><span>hugeString</span><span>);</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>It works.</p>
+
+<p>Until it doesn't.</p>
+
+<p>At some point the file grows.\<br />
+50MB. 200MB. 1GB. 5GB.</p>
+
+<p>And suddenly:</p>
+
+<ul>
+<li>  The tab freezes (in the browser)</li>
+<li>  Memory spikes</li>
+<li>  The process crashes</li>
+<li>  Or worse --- everything technically "works" but becomes unusable</li>
+</ul>
+
+<p>This isn't a JavaScript problem.</p>
+
+<p>It's a buffering problem.</p>
+
+<hr />
+<h2>
+  <a name="the-real-issue-buffering-vs-streaming" href="#the-real-issue-buffering-vs-streaming">
+  </a>
+  The Real Issue: Buffering vs Streaming
+</h2>
+
+<p>Most parsing libraries operate in <strong>buffer mode</strong>:</p>
+
+<ul>
+<li>  Read the entire file into memory</li>
+<li>  Parse it completely</li>
+<li>  Return the result</li>
+</ul>
+
+<p>That means memory usage scales with file size.</p>
+
+<p>Streaming flips the model:</p>
+
+<ul>
+<li>  Read chunks</li>
+<li>  Process incrementally</li>
+<li>  Emit records progressively</li>
+<li>  Keep memory nearly constant</li>
+</ul>
+
+<p>That architectural difference matters far more than micro-optimizations.</p>
+
+<hr />
+<h2>
+  <a name="why-i-built-a-streaming-converter" href="#why-i-built-a-streaming-converter">
+  </a>
+  Why I Built a Streaming Converter
+</h2>
+
+<p>I've been working on a project called <strong>convert-buddy-js</strong>, a Rust-based<br />
+streaming conversion engine compiled to WebAssembly and exposed as a<br />
+JavaScript library.</p>
+
+<p>It supports:</p>
+
+<ul>
+<li>  XML</li>
+<li>  CSV</li>
+<li>  JSON</li>
+<li>  NDJSON</li>
+</ul>
+
+<p>The core goal was simple:</p>
+
+<blockquote>
+<p>Keep memory usage flat, even as file size grows.</p>
+</blockquote>
+
+<p>Not "be the fastest library ever."\<br />
+Just predictable. Stable. Bounded.</p>
+
+<hr />
+<h2>
+  <a name="what-does-low-memory-actually-mean" href="#what-does-low-memory-actually-mean">
+  </a>
+  What Does "Low Memory" Actually Mean?
+</h2>
+
+<p>Here's an example from benchmarks converting XML → JSON.</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Tool</th>
+<th>File Size</th>
+<th>Memory Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>xml-large</td>
+<td>convert-buddy</td>
+<td>38.41 MB</td>
+<td>~0 MB change</td>
+</tr>
+<tr>
+<td>xml-large</td>
+<td>fast-xml-parser</td>
+<td>38.41 MB</td>
+<td>377 MB</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>The difference is architectural.</p>
+
+<p>The streaming engine processes elements incrementally instead of<br />
+constructing large intermediate structures.</p>
+
+<hr />
+<h2>
+  <a name="csv-%E2%86%92-json-benchmarks" href="#csv-%E2%86%92-json-benchmarks">
+  </a>
+  CSV → JSON Benchmarks
+</h2>
+
+<p>I benchmarked against:</p>
+
+<ul>
+<li>  PapaParse\</li>
+<li>  csv-parse\</li>
+<li>  fast-csv</li>
+</ul>
+
+<p>Here's a representative neutral case (1.26 MB CSV):</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>convert-buddy</td>
+<td><strong>75.96 MB/s</strong></td>
+</tr>
+<tr>
+<td>csv-parse</td>
+<td>22.13 MB/s</td>
+</tr>
+<tr>
+<td>PapaParse</td>
+<td>19.57 MB/s</td>
+</tr>
+<tr>
+<td>fast-csv</td>
+<td>15.65 MB/s</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>In favorable large cases (13.52 MB CSV):</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>convert-buddy</td>
+<td><strong>91.88 MB/s</strong></td>
+</tr>
+<tr>
+<td>csv-parse</td>
+<td>30.68 MB/s</td>
+</tr>
+<tr>
+<td>PapaParse</td>
+<td>24.69 MB/s</td>
+</tr>
+<tr>
+<td>fast-csv</td>
+<td>19.68 MB/s</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>In most CSV scenarios tested, the streaming approach resulted in roughly<br />
+3x--4x throughput improvements, with dramatically lower memory overhead.</p>
+
+<hr />
+<h2>
+  <a name="where-streaming-isnt-always-faster" href="#where-streaming-isnt-always-faster">
+  </a>
+  Where Streaming Isn't Always Faster
+</h2>
+
+<p>For tiny NDJSON files, native JSON parsing can be faster.</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Tool</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NDJSON tiny</td>
+<td>Native JSON</td>
+<td>27.10 MB/s</td>
+</tr>
+<tr>
+<td>NDJSON tiny</td>
+<td>convert-buddy</td>
+<td>10.81 MB/s</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>That's expected.</p>
+
+<p>When files are extremely small, the overhead of streaming infrastructure<br />
+can outweigh benefits.\<br />
+Native <code>JSON.parse</code> is heavily optimized in engines and extremely<br />
+efficient for small payloads.</p>
+
+<p>The goal here isn't to replace native JSON for everything.</p>
+
+<p>It's to handle realistic and large workloads predictably.</p>
+
+<hr />
+<h2>
+  <a name="ndjson-%E2%86%92-json-performance" href="#ndjson-%E2%86%92-json-performance">
+  </a>
+  NDJSON → JSON Performance
+</h2>
+
+<p>For medium nested NDJSON datasets:</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Throughput</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>convert-buddy</td>
+<td><strong>221.79 MB/s</strong></td>
+</tr>
+<tr>
+<td>Native JSON</td>
+<td>136.84 MB/s</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>That's where streaming and incremental transformation shine ---<br />
+especially when the workload involves structured transformation rather<br />
+than just parsing.</p>
+
+<hr />
+<h2>
+  <a name="what-the-library-looks-like" href="#what-the-library-looks-like">
+  </a>
+  What the Library Looks Like
+</h2>
+
+<p>Install:<br />
+</p>
+
+<div>
+<pre><code>npm <span>install </span>convert-buddy-js
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Then:<br />
+</p>
+
+<div>
+<pre><code><span>import</span> <span>{</span> <span>convert</span> <span>}</span> <span>from</span> <span>"</span><span>convert-buddy-js</span><span>"</span><span>;</span>
+
+<span>const</span> <span>csv</span> <span>=</span> <span>'</span><span>name,age,city</span><span>\n</span><span>Alice,30,NYC</span><span>\n</span><span>Bob,25,LA</span><span>\n</span><span>Carol,35,SF</span><span>'</span><span>;</span>
+
+<span>// Configure only what you need. Here we output NDJSON.</span>
+<span>const</span> <span>buddy</span> <span>=</span> <span>new</span> <span>ConvertBuddy</span><span>({</span> <span>outputFormat</span><span>:</span> <span>'</span><span>ndjson</span><span>'</span> <span>});</span>
+
+<span>// Stream conversion: records are emitted in batches.</span>
+<span>const</span> <span>controller</span> <span>=</span> <span>buddy</span><span>.</span><span>stream</span><span>(</span><span>csv</span><span>,</span> <span>{</span>
+  <span>recordBatchSize</span><span>:</span> <span>2</span><span>,</span>
+
+  <span>// onRecords can be async: await inside it if you need (I/O, UI updates, writes...)</span>
+  <span>onRecords</span><span>:</span> <span>async </span><span>(</span><span>ctrl</span><span>,</span> <span>records</span><span>,</span> <span>stats</span><span>,</span> <span>total</span><span>)</span> <span>=&gt;</span> <span>{</span>
+    <span>console</span><span>.</span><span>log</span><span>(</span><span>'</span><span>Batch received:</span><span>'</span><span>,</span> <span>records</span><span>);</span>
+
+    <span>// Simulate slow async work (writing, rendering, uploading, etc.)</span>
+    <span>await</span> <span>new</span> <span>Promise</span><span>(</span><span>r</span> <span>=&gt;</span> <span>setTimeout</span><span>(</span><span>r</span><span>,</span> <span>50</span><span>));</span>
+
+    <span>// Report progress (ctrl.* is the most reliable live state)</span>
+    <span>console</span><span>.</span><span>log</span><span>(</span>
+      <span>`Progress: </span><span>${</span><span>ctrl</span><span>.</span><span>recordCount</span><span>}</span><span> records, </span><span>${</span><span>stats</span><span>.</span><span>throughputMbPerSec</span><span>.</span><span>toFixed</span><span>(</span><span>2</span><span>)}</span><span> MB/s`</span>
+    <span>);</span>
+  <span>},</span>
+
+  <span>onDone</span><span>:</span> <span>(</span><span>final</span><span>)</span> <span>=&gt;</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>'</span><span>Done:</span><span>'</span><span>,</span> <span>final</span><span>),</span>
+
+  <span>// Enable profiling stats (throughput, latency, memory estimates, etc.)</span>
+  <span>profile</span><span>:</span> <span>true</span>
+<span>});</span>
+
+<span>// Optional: await final stats / completion</span>
+<span>const</span> <span>final</span> <span>=</span> <span>await</span> <span>controller</span><span>.</span><span>done</span><span>;</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>'</span><span>Final stats:</span><span>'</span><span>,</span> <span>final</span><span>);</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>It works in:</p>
+
+<ul>
+<li>  Node</li>
+<li>  Browser</li>
+<li>  Web Workers</li>
+</ul>
+
+<p>Because the core engine is written in Rust and compiled to WebAssembly.</p>
+
+
+<hr />
+
+<h2>
+  <a name="why-rust-webassembly" href="#why-rust-webassembly">
+  </a>
+  Why Rust + WebAssembly?
+</h2>
+
+<p>Not because it's trendy.</p>
+
+<p>Because:</p>
+
+<ul>
+<li>  Predictable memory behavior</li>
+<li>  Strong streaming primitives</li>
+<li>  Deterministic performance</li>
+<li>  Easier control over allocations</li>
+</ul>
+
+<p>WebAssembly allows that engine to run safely in the browser without<br />
+server uploads.</p>
+
+
+<hr />
+
+<h2>
+  <a name="when-this-tool-makes-sense" href="#when-this-tool-makes-sense">
+  </a>
+  When This Tool Makes Sense
+</h2>
+
+<p>You probably don't need it if:</p>
+
+<ul>
+<li>  Files are always &lt; 1MB</li>
+<li>  You're already happy with JSON.parse</li>
+<li>  You don't care about memory spikes</li>
+</ul>
+
+<p>It makes sense if:</p>
+
+<ul>
+<li>  You process large CSV exports</li>
+<li>  You handle XML feeds</li>
+<li>  You work with NDJSON streams</li>
+<li>  You need conversion in the browser without uploads</li>
+<li>  You want predictable memory footprint</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="what-i-learned-building-it" href="#what-i-learned-building-it">
+  </a>
+  What I Learned Building It
+</h2>
+
+<ul>
+<li>  Streaming is not just about speed --- it's about stability.</li>
+<li>  Benchmarks should include losses.</li>
+<li>  Native JSON.parse is hard to beat for tiny payloads.</li>
+<li>  Memory predictability matters more than peak throughput.</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="closing-thoughts" href="#closing-thoughts">
+  </a>
+  Closing Thoughts
+</h2>
+
+<p>There are many good parsing libraries in the JavaScript ecosystem.</p>
+
+<p>PapaParse is mature.\<br />
+csv-parse is robust.\<br />
+Native JSON.parse is extremely optimized.</p>
+
+<p>convert-buddy-js is simply an option focused on:</p>
+
+<ul>
+<li>  Streaming</li>
+<li>  Low memory usage</li>
+<li>  Format transformation</li>
+<li>  Large file handling</li>
+</ul>
+
+<p>If that matches your constraints, it may be useful.</p>
+
+<p>If not, the ecosystem already has excellent tools.</p>
+
+<p>If you're curious, the full benchmarks and scenarios are available in<br />
+the repository.<br />
+<a href="https://www.npmjs.com/package/convert-buddy-js" target="_blank">convert-buddy-js — npm</a><br />
+<a href="https://github.com/brunohanss/convert-buddy" target="_blank">brunohanss/convert-buddy</a></p>
+
+<p>And if you have workloads where streaming would make a difference, I’d be interested in feedback.</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

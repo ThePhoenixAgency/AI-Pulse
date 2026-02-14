@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi AI HAT+ 2 : installer Hailo-10H et lancer un LLM local (Partie 1)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi AI HAT+ 2 : installer Hailo-10H et lancer un LLM local (Partie 1)</h1>
+  <div class="metadata">
+    Source: Framboise 314 | Date: 1/15/2026 | Lang: FR |
+    <a href="https://www.framboise314.fr/installer-raspberry-pi-ai-hat-plus-2-pi5-hailort-hailo-ollama/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+			<p>Avec la <strong>Raspberry Pi AI HAT+ 2</strong>, Raspberry Pi propose une carte intégrant directement un accélérateur <strong>Hailo-10H et 8 Go de mémoire dédiée</strong>, conçue pour le Raspberry Pi 5. Cette carte permet d’exécuter localement des modèles d’IA générative, des LLM et des Vision-Language Models, sans recours au cloud. L’AI HAT+ 2 délivre jusqu’à <strong>40 TOPS</strong> en INT4, tout en libérant la mémoire du Pi pour le reste de l’application. Connectée via le PCIe Gen 3 et parfaitement intégrée à Raspberry Pi OS, elle vise des usages concrets en vision, vocal, robotique et automatisation embarquée.<br />
+Dans cette partie 1, je valide l’installation et le premier modèle LLM en local. La <strong>partie 2</strong> couvrira les usages et performances.</p>
+
+<div><p>Au sommaire :</p><ul><li><a href="#Raspberry_Pi_AI_HAT_2_Hailo-10H_et_40_TOPS_pour_lIA_embarquee_sur_Pi_5_Partie_1"><span>1</span> Raspberry Pi AI HAT+ 2 : Hailo-10H et 40 TOPS pour l’IA embarquée sur Pi 5 (Partie 1)</a><ul><li><a href="#Architecture_et_repartition_des_roles_Pi_5_AI_HAT_2"><span>1.1</span> Architecture et répartition des rôles Pi 5 / AI HAT+ 2</a></li><li><a href="#Materiel_de_depart_Raspberry_Pi_5_8_Go_microSD_64_Go"><span>1.2</span> Matériel de départ : Raspberry Pi 5 (8 Go) + microSD 64 Go</a><ul><li><a href="#Verification_rapide_cote_stockage"><span>1.2.1</span> Vérification rapide côté stockage</a></li><li><a href="#Verification_rapide_cote_memoire"><span>1.2.2</span> Vérification rapide côté mémoire</a></li></ul></li><li><a href="#Installation_de_Raspberry_Pi_OS_Trixie_avec_Raspberry_Pi_Imager_v2"><span>1.3</span> Installation de Raspberry Pi OS (Trixie) avec Raspberry Pi Imager v2</a><ul><li><a href="#Etape_1_Preparer_lecriture"><span>1.3.1</span> Étape 1 : Préparer l’écriture</a></li><li><a href="#Etape_2_Options_utiles_recommande"><span>1.3.2</span> Étape 2 : Options utiles (recommandé)</a></li><li><a href="#Etape_3_Ecriture_de_la_carte"><span>1.3.3</span> Étape 3 : Écriture de la carte</a></li><li><a href="#Etape_4_Mise_a_jour_du_systeme"><span>1.3.4</span> Étape 4 : Mise à jour du système</a></li></ul></li><li><a href="#Installer_les_dependances_de_base"><span>1.4</span> Installer  les dépendances de base</a></li><li><a href="#Installer_HailoRT_depuis_les_sources"><span>1.5</span> Installer HailoRT depuis les sources</a><ul><li><a href="#Cloner_HailoRT"><span>1.5.1</span> Cloner HailoRT</a></li><li><a href="#Configuration_du_build_de_HailoRT"><span>1.5.2</span> Configuration du build de HailoRT</a></li><li><a href="#Compilation_de_HailoRT"><span>1.5.3</span> Compilation de HailoRT</a></li><li><a href="#Installation_de_HailoRT_sur_le_systeme"><span>1.5.4</span> Installation de HailoRT sur le système</a></li></ul></li><li><a href="#Installation_de_Docker"><span>1.6</span> Installation de Docker</a><ul><li><a href="#Preparer_linstallation_de_Docker"><span>1.6.1</span> Préparer l’installation de Docker</a></li><li><a href="#Preparer_lajout_du_depot_Docker"><span>1.6.2</span> Préparer l’ajout du dépôt Docker</a></li><li><a href="#Ajouter_la_cle_de_signature_du_depot_Docker"><span>1.6.3</span> Ajouter la clé de signature du dépôt Docker</a></li><li><a href="#Rendre_la_cle_Docker_lisible_par_APT"><span>1.6.4</span> Rendre la clé Docker lisible par APT</a></li><li><a href="#Declarer_le_depot_Docker_dans_APT"><span>1.6.5</span> Déclarer le dépôt Docker dans APT</a></li><li><a href="#Mettre_a_jour_la_liste_des_paquets_APT"><span>1.6.6</span> Mettre à jour la liste des paquets APT</a></li><li><a href="#Installer_le_moteur_Docker"><span>1.6.7</span> Installer le moteur Docker</a></li><li><a href="#Verifier_que_Docker_fonctionne_correctement"><span>1.6.8</span> Vérifier que Docker fonctionne correctement</a></li><li><a href="#Demarrer_Docker_automatiquement_au_demarrage"><span>1.6.9</span> Démarrer Docker automatiquement au démarrage</a></li><li><a href="#Autoriser_lutilisateur_a_utiliser_Docker_sans_sudo"><span>1.6.10</span> Autoriser l’utilisateur à utiliser Docker sans sudo</a></li><li><a href="#Verifier_lacces_a_Docker_sans_privileges_administrateur"><span>1.6.11</span> Vérifier l’accès à Docker sans privilèges administrateur</a></li></ul></li><li><a href="#Preparer_le_support_noyau_DKMS"><span>1.7</span> Préparer le support noyau (DKMS)</a></li><li><a href="#Installer_la_pile_Gen-AI_Hailo_model_zoo_backend_Ollama"><span>1.8</span> Installer la pile Gen-AI Hailo (model zoo + backend Ollama)</a><ul><li><a href="#Cloner_le_depot_Gen-AI_Hailo"><span>1.8.1</span> Cloner le dépôt Gen-AI Hailo</a></li><li><a href="#Verifier_lacces_au_materiel_Hailo"><span>1.8.2</span> Vérifier l’accès au matériel Hailo</a></li><li><a href="#Ajouter_le_depot_APT_Hailo_repo_de_test"><span>1.8.3</span> Ajouter le dépôt APT Hailo (repo de test)</a></li><li><a href="#Actualiser_la_liste_des_paquets"><span>1.8.4</span> Actualiser la liste des paquets</a></li><li><a href="#Installer_le_driver_noyau_Hailo-10H_via_DKMS"><span>1.8.5</span> Installer le driver noyau Hailo-10H (via DKMS)</a></li><li><a href="#Valider_lacces_materiel_avant_drsquoinstaller_la_pile_GenAI"><span>1.8.6</span> Valider l’accès matériel avant d’installer la pile GenAI</a></li></ul></li><li><a href="#Construire_Hailo-Ollama_depuis_les_sources"><span>1.9</span> Construire Hailo-Ollama depuis les sources</a><ul><li><a href="#Compiler_Hailo-Ollama"><span>1.9.1</span> Compiler Hailo-Ollama</a></li><li><a href="#Installer_le_serveur_hailo-ollama_binaire_config"><span>1.9.2</span> Installer le serveur hailo-ollama (binaire + config)</a></li><li><a href="#Ajouter_localbin_au_PATH"><span>1.9.3</span> Ajouter ~/.local/bin au PATH</a></li><li><a href="#Demarrer_le_serveur_Hailo-Ollama"><span>1.9.4</span> Démarrer le serveur Hailo-Ollama</a></li><li><a href="#Verifier_lAPI_Hailo-Ollama"><span>1.9.5</span> Vérifier l’API Hailo-Ollama</a></li><li><a href="#Tester_le_chargement_dun_modele"><span>1.9.6</span> Tester le chargement d’un modèle</a></li></ul></li><li><a href="#Premier_test_dinference_API_apichat"><span>1.10</span> Premier test d’inférence (API /api/chat)</a></li><li><a href="#Conclusion"><span>1.11</span> Conclusion</a></li><li><a href="#Sources"><span>1.12</span> Sources</a></li></ul></li></ul></div>
+<h2><span>Raspberry Pi AI HAT+ 2 : Hailo-10H et 40 TOPS pour l’IA embarquée sur Pi 5 (Partie 1)</span></h2>
+<h2><span>Architecture et répartition des rôles Pi 5 / AI HAT+ 2</span></h2>
+<p>Sur un Raspberry Pi 5, l’AI HAT+ 2 n’est pas un “coprocesseur magique” qui remplace le CPU : c’est un accélérateur IA (Hailo-10H) relié au Pi via l’interface <strong>PCIe Gen 3</strong>. Le Pi 5 conserve donc tous les rôles “système” : démarrage, réseau, stockage, gestion des capteurs, orchestration logicielle, et préparation des données (images caméra, audio, texte, etc.). L’AI HAT+ 2, lui, prend en charge la partie la plus coûteuse : <strong>l’inférence IA</strong> (exécution des modèles), avec une latence plus stable et une consommation contenue. En pratique, ton application tourne sur le Pi 5, et elle “délègue” au HAT les calculs IA compatibles (vision, LLM/VLM quantifiés, post-traitements), pendant que le Pi s’occupe du reste : affichage, API, enregistrement, logique métier et automatisation.</p>
+<div>
+<p>À quoi servent vraiment les 8 Go de RAM embarqués ?</p>
+<p>Ces <strong>8 Go de RAM</strong> ne sont pas là pour “booster” la RAM du Raspberry Pi 5 : ils servent à <strong>héberger et alimenter le Hailo-10H</strong> en données de travail (poids de modèles quantifiés, buffers, activations, lots d’images, contextes, etc.). Résultat : les modèles “gourmands” peuvent tourner plus sereinement <em>sans</em> monopoliser la mémoire du Pi, qui reste disponible pour Linux, le cache disque, l’UI, Docker, la capture caméra, les logs, la base de données, etc. Dit autrement : le Pi 5 pilote et assemble le pipeline, et la carte garde une <strong>mémoire dédiée</strong> pour que l’inférence reste fluide et prévisible, surtout quand on empile caméra + traitement + interface + réseau en même temps.</p>
+</div>
+<h2><span>Matériel de départ : Raspberry Pi 5 (8 Go) + microSD 64 Go</span></h2>
+<p>Pour cette installation, je pars sur une base simple et propre : un <strong>Raspberry Pi 5 avec 8 Go de RAM</strong>, démarré sur une <strong>microSD de 64 Go</strong>. L’objectif est d’obtenir un système <em>Trixie</em> fraîchement installé, stable, et prêt à recevoir la suite (pilotes, outils, et la carte IA ensuite).</p>
+<h3><span>Vérification rapide côté stockage</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_03.jpg" alt="" /></p>
+<p>Voici ce que retourne <code>lsblk</code> sur la carte microSD :</p>
+<ul>
+<li><strong>mmcblk0</strong> : la microSD (~58,2 Go utiles)</li>
+<li><strong>mmcblk0p1</strong> : partition <strong>/boot/firmware</strong> (512 Mo)</li>
+<li><strong>mmcblk0p2</strong> : partition <strong>/</strong> (le système, ~57,7 Go)</li>
+</ul>
+<h3><span>Vérification rapide côté mémoire</span></h3>
+<p>Le <code>free</code> confirme bien un Pi 5 <strong>8 Go</strong> (environ 8,2 Go visibles), avec un swap en <strong>zram</strong> (2 Go) activé :</p>
+<ul>
+<li><strong>RAM</strong> : ~8 Go</li>
+<li><strong>Swap</strong> : ~2 Go via <strong>zram</strong> (compression en RAM)</li>
+</ul>
+<hr />
+<h2><span>Installation de Raspberry Pi OS (Trixie) avec Raspberry Pi Imager v2</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_01.jpg" alt="" /></p>
+<p>L’outil le plus simple pour préparer une microSD propre est <strong>Raspberry Pi Imager v2</strong>. Il s’occupe de tout : téléchargement de l’image, écriture, vérification, et options de pré-configuration.</p>
+<h3><span>Étape 1 : Préparer l’écriture</span></h3>
+<ol>
+<li>Insérez la microSD (64 Go) dans le lecteur SD du PC/MAC/Raspberry Pi.</li>
+<li>Lancez <strong>Raspberry Pi Imager v2</strong>.</li>
+<li>Cliquez sur D<strong>evice</strong> et sélectionnez <strong>Raspberry Pi 5</strong>.</li>
+<li>Cliquez sur <strong>OS</strong> et choisissez une image <strong>Raspberry Pi OS (Trixie) </strong>ici Desktop.</li>
+<li>Cliquez sur <strong>Stockage</strong> et sélectionnez la microSD</li>
+</ol>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_02.jpg" alt="" /></p>
+<h3><span>Étape 2 : Options utiles (recommandé)</span></h3>
+<p>Avant d’écrire, Imager propose généralement des options (roue dentée / “Edit settings”). Pour éviter les manipulations après coup, il est pratique de régler dès maintenant :</p>
+<ul>
+<li><strong>Nom d’hôte</strong> (hostname) : par exemple <code>raspiIA</code></li>
+<li><strong>Utilisateur</strong> : création du compte (ou réglage du mot de passe)</li>
+<li><strong>Wi-Fi</strong> : SSID + mot de passe (si démarrage en Wi-Fi)</li>
+<li><strong>SSH</strong> : activation (utile si pilotage à distance)</li>
+<li><strong>Locale</strong> : langue, clavier, fuseau horaire</li>
+</ul>
+<h3><span>Étape 3 : Écriture de la carte</span></h3>
+<ol>
+<li>Cliquez sur <strong>Write</strong>.</li>
+<li>Laissez Imager terminer <strong>l’écriture</strong> puis la <strong>vérification</strong>.</li>
+<li>Éjectez proprement la microSD.</li>
+<li>Insérez la microSD dans le Raspberry Pi 5 et démarrez.</li>
+</ol>
+<p><strong>Point important :</strong> à ce stade, l’objectif est juste d’avoir un <em>Trixie</em> “propre” qui boote, avec réseau/SSH si souhaité. La partie carte IA (AI HAT+ 2) arrive ensuite, étape par étape. C’est la configuration recommandée par Raspberry Pi pour la mise en route de la carte AI HAT+ 2.</p>
+<h3><span>Étape 4 : Mise à jour du système</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_04.jpg" alt="" /></p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>update</span></p><p><span>sudo </span><span>apt </span><span>full</span><span>-</span><span>upgrade</span><span> </span><span>-</span><span>y</span></p><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_05.jpg" alt="" /></p>
+<p>On a une bonne base de départ : <strong>Debian 13 trixie</strong>, kernel 6.12 rpi, aarch64. On peut continuer…</p>
+<h2><span>Installer  les dépendances de base</span></h2>
+<p>Avant de compiler <strong>HailoRT</strong> depuis les sources, il est nécessaire d’installer les outils de développement indispensables (compilateur, CMake, bibliothèques système et environnement Python). Ces dépendances permettent de construire correctement les composants natifs et de vérifier que la chaîne de compilation du système est cohérente</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install</span><span> </span><span>-</span><span>y</span><span> </span><span>build</span><span>-</span><span>essential </span><span>cmake </span><span>pkg</span><span>-</span><span>config </span><span>git </span><span>python3 </span><span>python3</span><span>-</span><span>venv </span><span>python3</span><span>-</span><span>dev </span><span>python3</span><span>-</span><span>pip </span><span>libudev</span><span>-</span><span>dev </span><span>libpci</span><span>-</span><span>dev </span><span>libusb</span><span>-</span><span>1.0</span><span>-</span><span>0</span><span>-</span><span>dev</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Le test avec cmake, gcc et python3 confirme que l’environnement est prêt pour une compilation sans erreur.</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>cmake</span><span> </span><span>--</span><span>version</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>gcc</span><span> </span><span>--</span><span>version</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>python3</span><span> </span><span>--</span><span>version</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_06.jpg" alt="" /></p>
+<h2><span>Installer HailoRT depuis les sources</span></h2>
+<h3><span>Cloner HailoRT</span></h3>
+<p><strong>HailoRT</strong> (Hailo Runtime) est la couche logicielle qui permet au système d’exploitation de dialoguer avec l’accélérateur IA Hailo présent sur l’AI HAT+ 2. Elle fournit les bibliothèques, les services et les outils nécessaires pour charger des modèles, gérer les échanges de données et piloter l’exécution des inférences sur le NPU. Sans HailoRT, la carte Hailo n’est pas exploitable par les applications. L’installer et le compiler depuis les sources permet de garantir une compatibilité optimale avec la version du noyau et de Debian utilisée, tout en évitant les problèmes parfois rencontrés avec des paquets précompilés.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>~</span><span>/</span><span>hailo</span><span>/</span><span>src</span></p><p><span>cd</span><span> </span><span>~</span><span>/</span><span>hailo</span><span>/</span><span>src</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>git </span><span>clone</span><span> </span><span>https</span><span>:</span><span>//github.com/hailo-ai/hailort.git</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_07.jpg" alt="" /></p>
+<p>La commande git status permet de vérifier que le dépôt <strong>HailoRT</strong> a été correctement cloné, que l’on se trouve bien sur la branche attendue et qu’aucune modification locale n’est présente avant de commencer la compilation.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span><span>hailo</span><span>/</span><span>src</span><span>/</span><span>hailort</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>git </span><span>status</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Le passage sur un tag précis avec <em><strong>git checkout</strong></em> permet de figer le code source de <strong>HailoRT</strong> sur une version identifiée et stable. Cela garantit que la compilation et les tests seront reproductibles, indépendamment des évolutions ultérieures du dépôt principal.</p>
+<p>👉 Pour <strong>Debian 13 (Trixie)</strong> + <strong>Hailo-10H</strong> / <strong>AI HAT+ 2</strong>, on part sur la version stable la plus récente : <strong>v5.1.1</strong> (API stabilisée, support GenAI à jour). (tapez git tag pour avoir la liste des versions)</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>git </span><span>checkout </span><span>v5</span><span>.</span><span>1.1</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>On peut créer le répertoire de build</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>build</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>cd </span><span>build</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h3><span>Configuration du build de HailoRT</span></h3>
+<p>Puis générer la configuration de build. Lors de cette étape de configuration avec <strong>CMake</strong>, HailoRT ne se contente pas de générer les fichiers de compilation. Le système peut également récupérer et préparer automatiquement certaines dépendances externes, comme protobuf, nécessaires au fonctionnement du runtime. Cette phase s’effectue en arrière-plan et peut prendre plusieurs minutes, en fonction de la connexion réseau et des performances de la machine. Laissez la commande aller au bout avant de continuer.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>cmake</span><span> </span><span>.</span><span>.</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_08.jpg" alt="" /></p>
+<p>Après 7 minutes <strong>cmake</strong> rend la main.</p>
+<h3><span>Compilation de HailoRT</span></h3>
+<p>La commande make lance la compilation effective de <strong>HailoRT</strong> à partir des fichiers générés par CMake. L’option <em><strong>-j$(nproc)</strong></em> indique à l’outil de compilation d’utiliser tous les cœurs processeur disponibles sur la machine. La commande <em><strong>nproc</strong> </em>retourne automatiquement le nombre de cœurs du système disponibles, ce qui permet d’accélérer significativement la compilation sans avoir à le renseigner manuellement. Sur un Raspberry Pi 5, cette parallélisation réduit sensiblement le temps de compilation, au prix d’une charge CPU élevée temporaire et d’une élévation de la température CPU, ce qui est un comportement normal.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>make</span><span> </span><span>-</span><span>j</span><span>$</span><span>(</span><span>nproc</span><span>)</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_09.jpg" alt="" /></p>
+<h3><span>Installation de HailoRT sur le système</span></h3>
+<p>Cette étape copie les bibliothèques, outils et en-têtes compilés vers les emplacements système.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>make </span><span>install</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_10.jpg" alt="" /></p>
+<p>On vérifie que HailoRT fonctionne bien :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>hailortcli</span><span> </span><span>--</span><span>version</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_11.jpg" alt="" /></p>
+<p><em><strong>Note sur les versions</strong></em><br />
+<span>À la date d’écriture de cet article (décembre 2025), la documentation officielle annonce HailoRT 4.23 comme version de référence pour Raspberry Pi OS Trixie via l’installateur unifié hailo-all. </span><span>Dans cet article, certaines briques (HailoRT, Hailo-Ollama) ont été compilées depuis les sources GitHub afin de documenter finement la chaîne logicielle et valider le  fonctionnement bas niveau de la carte. Les deux approches sont compatibles, la méthode unifiée simplifiant désormais l’installation pour la majorité des utilisateurs.</span></p>
+<h2><span>Installation de Docker</span></h2>
+<h3><span>Préparer l’installation de Docker</span></h3>
+<p>Pour exécuter les composants <strong>LLM</strong> et l’interface Web associés à la carte <strong>Hailo-10H</strong>, la documentation recommande l’utilisation de <em><strong>Docker</strong></em>. Cette approche permet d’isoler les dépendances logicielles (notamment Python) et d’éviter les problèmes de compatibilité avec <strong>Debian 13 (Trixie)</strong>, en particulier avec Python 3.13. Avant d’installer Docker lui-même, il est nécessaire de disposer des outils permettant de gérer les certificats et de télécharger les clés de signature des dépôts officiels.</p>
+<p>Avant d’ajouter le dépôt <strong>Docker</strong>, nous installons deux outils de base : <strong>ca-certificates</strong> et <strong>curl</strong>. Les certificats permettent au système de vérifier l’identité des serveurs HTTPS (éviter un dépôt “faux” ou intercepté), et <strong>curl</strong> sert à récupérer la clé <strong>GPG</strong> et tester rapidement des URLs. C’est une étape simple, mais indispensable pour réaliser une installation propre et sécurisée.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install</span><span> </span><span>-</span><span>y</span><span> </span><span>ca</span><span>-</span><span>certificates </span><span>curl</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_12.jpg" alt="" /></p>
+<p>Sur une Trixie « fraîche », les certificats sont souvent déjà présents. Mais on confirme surtout que l’environnement est OK, et ça évite des surprises plus loin.</p>
+<h3><span>Préparer l’ajout du dépôt Docker</span></h3>
+<p>Avant d’ajouter le dépôt officiel de <strong>Docker</strong>, il est nécessaire de créer un emplacement dédié pour stocker les clés de signature (GPG) des dépôts APT. Ce mécanisme permet à Debian de vérifier l’authenticité des paquets téléchargés et d’éviter l’installation de logiciels provenant de sources non fiables. Cette étape ne modifie pas encore le système, elle prépare simplement un environnement sécurisé pour la suite de l’installation.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>install</span><span> </span><span>-</span><span>m</span><span> </span><span>0755</span><span> </span><span>-</span><span>d</span><span> </span><span>/</span><span>etc</span><span>/</span><span>apt</span><span>/</span><span>keyrings</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>La commande <span>install -m 0755 -d /etc/apt/keyrings</span> crée le répertoire <em><strong>/etc/apt/keyrings</strong></em> s’il n’existe pas déjà, avec des permissions adaptées au système. L’option <span>-d</span> indique qu’il s’agit de créer un dossier, et <span>-m 0755</span> définit les droits d’accès : lecture et exécution pour tous les utilisateurs, écriture réservée à l’administrateur.</p>
+<h3><span>Ajouter la clé de signature du dépôt Docker</span></h3>
+<p>Pour que Debian puisse faire confiance au dépôt <strong>Docker</strong>, il faut d’abord importer sa clé de signature (GPG). Cette clé permet à APT de vérifier que les paquets Docker téléchargés sont bien authentiques et n’ont pas été modifiés. Sans cette étape, le dépôt serait refusé par le système.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>curl</span><span> </span><span>-</span><span>fsSL </span><span>https</span><span>:</span><span>//download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h3><span>Rendre la clé Docker lisible par APT</span></h3>
+<p>Après avoir téléchargé la clé GPG du dépôt Docker, il faut s’assurer qu’elle est lisible par le système de gestion des paquets. APT doit pouvoir accéder à cette clé pour vérifier la signature des paquets lors des mises à jour et des installations.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>chmod</span><span> </span><span>a</span><span>+</span><span>r</span><span> </span><span>/</span><span>etc</span><span>/</span><span>apt</span><span>/</span><span>keyrings</span><span>/</span><span>docker</span><span>.</span><span>asc</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h3><span>Déclarer le dépôt Docker dans APT</span></h3>
+<p>Maintenant que la clé de signature est en place, il faut déclarer officiellement le dépôt Docker auprès du gestionnaire de paquets APT. On écrit le fichier <em><strong>docker.sources</strong></em> avec un <span>echo … | tee</span>. Cette étape sert à dire à APT où trouver Docker (le dépôt officiel) et avec quelle clé il doit vérifier les paquets. Sans ça, <span>apt install docker</span>… ne trouvera rien (ou pire : pas la bonne source).</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p></div>
+				</td>
+						<td><div><p><span>echo</span><span> </span><span>"Types: deb</span></p><p><span>URIs: https://download.docker.com/linux/debian</span></p><p><span>Suites: trixie</span></p><p><span>Components: stable</span></p><p><span>Signed-By: /etc/apt/keyrings/docker.asc"</span><span> </span><span>|</span><span> </span><span>sudo </span><span>tee</span><span> </span><span>/</span><span>etc</span><span>/</span><span>apt</span><span>/</span><span>sources</span><span>.</span><span>list</span><span>.</span><span>d</span><span>/</span><span>docker</span><span>.</span><span>sources</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>La suite <em><strong>trixie</strong> </em>est indiquée explicitement afin d’éviter les problèmes d’affichage ou de copie liés aux substitutions de variables dans certains éditeurs.</p>
+<h3><span>Mettre à jour la liste des paquets APT</span></h3>
+<p>Après avoir ajouté un nouveau dépôt, le gestionnaire de paquets APT doit recharger la liste des logiciels disponibles. Cette mise à jour permet au système de prendre en compte le dépôt Docker que nous venons de déclarer et de vérifier que les paquets associés sont bien accessibles et correctement signés.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>update</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_13.jpg" alt="" /></p>
+<p>Ici on voit que le dépôt Docker a bien été pris en compte. On peut continuer avec l’installation de Docker.</p>
+<h3><span>Installer le moteur Docker</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_14.jpg" alt="" /></p>
+
+<p>Docker est surtout utile pour lancer une interface type WebUI sans se battre avec les dépendances Python.</p>
+
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install </span><span>docker</span><span>-</span><span>ce </span><span>docker</span><span>-</span><span>ce</span><span>-</span><span>cli </span><span>containerd</span><span>.</span><span>io </span><span>docker</span><span>-</span><span>buildx</span><span>-</span><span>plugin </span><span>docker</span><span>-</span><span>compose</span><span>-</span><span>plugin</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<div>
+<p>🐳 Docker, c’est quoi au juste ?</p>
+<p><strong>Docker</strong> est une plateforme de <strong>conteneurisation</strong> : elle vous permet d’exécuter une application dans un <strong>conteneur</strong>, c’est-à-dire un environnement d’exécution <strong>isolé</strong> et <strong>léger</strong>.<br />
+L’idée clé : vos applications peuvent cohabiter sur la même machine sans “se marcher dessus”.</p>
+<p>Un <strong>conteneur</strong> embarque <strong>tout ce dont l’application a besoin</strong> (dépendances, bibliothèques, config…), mais <strong>sans</strong> embarquer un système d’exploitation complet comme une machine virtuelle. Il <strong>partage le noyau</strong> (kernel) du système hôte, ce qui le rend généralement <strong>plus léger</strong> et <strong>plus rapide à démarrer/arrêter</strong> qu’une VM.</p>
+<div>
+<p>Comment imaginer un conteneur ?</p>
+<p>Pensez “<strong>boîte hermétique</strong>” : l’application vit dans sa boîte avec ses outils, et votre machine peut héberger plusieurs boîtes sans conflits.</p>
+</div>
+<p>En pratique, Docker s’appuie notamment sur des <strong>images</strong> (modèles en lecture seule) pour créer des <strong>conteneurs </strong>(instances en cours d’exécution), et vous manipulez tout ça via le <strong>Docker Engine</strong> (le “moteur”).</p>
+
+</div>
+<h3><span>Vérifier que Docker fonctionne correctement</span></h3>
+<p>Après l’installation, il est important de vérifier que le moteur Docker est opérationnel et que le service démarre correctement. Cette vérification permet de s’assurer que <strong>Docker</strong> peut lancer des conteneurs avant d’aller plus loin avec les services <strong>Hailo</strong> et les <strong>LLM</strong>.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>docker </span><span>run </span><span>hello</span><span>-</span><span>world</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_15.jpg" alt="" /></p>
+<p>Et voilà : Docker fonctionne correctement.</p>
+<h3><span>Démarrer Docker automatiquement au démarrage</span></h3>
+<p>Maintenant que Docker est installé et fonctionnel, il est préférable de l’activer au démarrage du système. Cela évite d’avoir à lancer le service manuellement après chaque reboot et garantit que les conteneurs nécessaires (LLM, WebUI) pourront démarrer automatiquement.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>systemctl </span><span>enable </span><span>docker</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_16.jpg" alt="" /></p>
+<p>C’est bon, Docker est maintenant activé automatiquement au démarrage.</p>
+<h3><span>Autoriser l’utilisateur à utiliser Docker sans sudo</span></h3>
+<p>Par défaut, <strong>Docker</strong> nécessite les privilèges <strong>administrateur</strong>. Pour un usage courant (tests, scripts, services LLM), il est plus pratique d’autoriser l’utilisateur courant à exécuter les commandes Docker sans préfixer systématiquement par <em><strong>sudo</strong></em>. Cette étape ajoute simplement l’utilisateur au groupe système docker.<br />
+<em><strong>Note :</strong> le groupe docker équivaut quasiment à des droits root sur la machine.</em></p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>usermod</span><span> </span><span>-</span><span>aG </span><span>docker</span><span> </span><span>$</span><span>USER</span></p><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>⚠️ <strong>Important</strong> : ce changement prend effet après la prochaine déconnexion / reconnexion (ou reboot). D’où la seconde ligne qui redémarre l’OS.</p>
+<h3><span>Vérifier l’accès à Docker sans privilèges administrateur</span></h3>
+<p>Après le redémarrage, il est important de vérifier que l’utilisateur courant peut désormais utiliser Docker sans <em><strong>sudo</strong></em>. Cette vérification confirme que l’appartenance au groupe docker est bien prise en compte et que l’environnement est prêt pour lancer les services LLM.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>docker </span><span>run </span><span>hello</span><span>-</span><span>world</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>et vous devez obtenir le message <span>Hello from Docker !</span> comme précédemment.</p>
+<h2><span>Préparer le support noyau (DKMS)</span></h2>
+<p>Pour que les composants <strong>Hailo</strong> puissent s’intégrer correctement au noyau Linux (gestion du matériel, mises à jour du kernel), la documentation prévoit l’utilisation de <strong>DKMS</strong> (Dynamic Kernel Module Support). DKMS permet de reconstruire automatiquement les modules nécessaires lorsqu’un noyau est mis à jour.<br />
+👉 Même si nous avons compilé HailoRT depuis les sources, DKMS reste un prérequis propre et standard pour la suite de la pile Hailo.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install</span><span> </span><span>-</span><span>y</span><span> </span><span>dkms</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h2><span>Installer la pile Gen-AI Hailo (model zoo + backend Ollama)</span></h2>
+<p>Le binaire hailo-ollama n’est pas fourni par HailoRT. Il fait partie de la <strong>pile Gen-AI Hailo</strong>, souvent appelée <strong>Gen-AI Model Zoo</strong>, qui fournit :</p>
+<ul>
+<li>le backend compatible Ollama,</li>
+<li>les scripts et services nécessaires pour charger et exécuter des LLM optimisés Hailo-10H.</li>
+</ul>
+<p>Avant de pouvoir lancer hailo-ollama, cette couche logicielle doit donc être installée explicitement.</p>
+<h3><span>Cloner le dépôt Gen-AI Hailo</span></h3>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>git </span><span>clone</span><span> </span><span>https</span><span>:</span><span>//github.com/hailo-ai/hailo_model_zoo_genai.git</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_17.jpg" alt="" /></p>
+<p>Le dépôt <strong>GenAI Hailo</strong> que nous venons de cloner correspond à la couche applicative de la pile logicielle Hailo : il contient les modèles, le backend compatible Ollama et les éléments nécessaires à l’interface Web.<br />
+Cependant, cette couche ne peut fonctionner que si le système d’exploitation dispose déjà d’un accès opérationnel à l’accélérateur Hailo-10H. Autrement dit, avant de lancer un serveur LLM ou une interface utilisateur, il est indispensable que le noyau Linux sache dialoguer avec le matériel.</p>
+<h3><span>Vérifier l’accès au matériel Hailo</span></h3>
+<p>Avant d’activer la pile <strong>GenAI</strong>, il est nécessaire de vérifier que le système d’exploitation reconnaît bien l’accélérateur <strong>Hailo-10H</strong>. Cette vérification permet de confirmer que le matériel est présent et accessible au niveau du bus PCIe, avant d’installer les composants logiciels qui s’appuient dessus.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>lspci</span><span> </span><span>|</span><span> </span><span>grep</span><span> </span><span>-</span><span>i</span><span> </span><span>hailo</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_18.jpg" alt="" /></p>
+<p>Une ligne mentionnant Hailo apparaît, cela confirme que la carte est bien détectée par le système. Cette commande ne dépend d’aucun driver spécifique, c est une commande standard Linux.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_19.jpg" alt="" /></p>
+<p><strong>Si rien ne s’affiche, le problème est matériel</strong> (carte, alimentation, montage). Dans ce cas il faut résoudre le problème avant de continuer.</p>
+<h3><span>Ajouter le dépôt APT Hailo (repo de test)</span></h3>
+<p>Avant de pouvoir installer le driver noyau Hailo-10H (<em><strong>hailo-h10-all</strong></em>), il est nécessaire d’ajouter le <strong>dépôt APT de test Hailo fourni par Raspberry Pi</strong>. Ce dépôt contient les paquets spécifiques au Hailo-10H et n’est pas inclus dans les dépôts Debian standards.<br />
+<strong>À la date d’écriture de cet article (décembre 2025)</strong>, cette procédure est indispensable pour accéder aux composants Hailo, mais il est probable que ce dépôt soit intégré automatiquement à Raspberry Pi OS lors de la sortie officielle de la carte, rendant cette étape inutile à terme. Dans un terminal, saisissez :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p></div>
+				</td>
+						<td><div><p><span>printf</span><span> </span><span>'%s\n'</span><span> </span><span>\</span></p><p><span>'Types: deb'</span><span> </span><span>\</span></p><p><span>'URIs: https://hailo:chahy5Zo@extranet.raspberrypi.org/hailo'</span><span> </span><span>\</span></p><p><span>'Suites: trixie'</span><span> </span><span>\</span></p><p><span>'Components: main'</span><span> </span><span>\</span></p><p><span>'Signed-By: /usr/share/keyrings/raspberrypi-archive-keyring.pgp'</span><span> </span><span>\</span></p><p><span>|</span><span> </span><span>sudo </span><span>tee</span><span> </span><span>/</span><span>etc</span><span>/</span><span>apt</span><span>/</span><span>sources</span><span>.</span><span>list</span><span>.</span><span>d</span><span>/</span><span>hailo</span><span>.</span><span>sources</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h3><span>Actualiser la liste des paquets</span></h3>
+<p>Après l’ajout du dépôt Hailo, le gestionnaire de paquets doit recharger la liste des paquets disponibles afin de rendre accessibles les composants spécifiques au Hailo-10H.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>update</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_20.jpg" alt="" /></p>
+<p><span><strong>À propos de l’avertissement APT affiché :</strong> Lors de la mise à jour des paquets, APT peut afficher un avertissement indiquant que les informations d’identification sont intégrées directement dans le fichier de dépôt (<strong><em>sources.list.d/hailo.sources</em></strong>). Ce message recommande l’utilisation de <em><strong>apt_auth.conf</strong></em>, un mécanisme plus récent permettant de stocker séparément les identifiants.<br />
+À la date d’écriture de cet article, cette configuration est celle recommandée par la documentation officielle. Il est probable que cette étape évolue ou disparaisse lors de l’intégration définitive du dépôt Hailo dans Raspberry Pi OS, auquel cas cet avertissement ne sera plus affiché.<br />
+</span></p>
+<p>On voit ici qu’il y a des fichiers à mettre à jour et <span>apt list –upgradable</span> montre que les noyaux et les headers en font partie ! Avant d’installer le driver noyau Hailo-10H via DKMS, il est recommandé de mettre à jour le système, en particulier le noyau Linux et ses en-têtes. Cela permet à DKMS de compiler le module directement pour la version finale du noyau, évitant ainsi une recompilation inutile ou des incohérences après mise à jour.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>upgrade</span></p><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_21.jpg" alt="" /></p>
+<h3><span>Installer le driver noyau Hailo-10H (via DKMS)</span></h3>
+<div>
+<p>DKMS : à quoi ça sert, et pourquoi on l’utilise ici ?</p>
+<p><strong>DKMS</strong> (Dynamic Kernel Module Support) est un système qui permet d’installer des <strong>modules noyau</strong> (drivers bas niveau) de façon “propre” sur Linux.</p>
+<p>Le point important : quand le noyau Linux est mis à jour (nouvelle version de <code>linux-image</code>), certains drivers doivent être <strong>recompilés</strong> pour rester compatibles. Sans DKMS, on se retrouve parfois avec un driver qui “casse” après une mise à jour… et un matériel qui n’est plus reconnu.</p>
+<p>Dans notre cas, le Hailo-10H a besoin d’un <strong>driver noyau</strong>. En passant par DKMS, ce driver est <strong>reconstruit automatiquement</strong> lors des mises à jour du noyau du Raspberry Pi 5, ce qui évite les mauvaises surprises et garantit que l’accélérateur reste utilisable dans la durée.</p>
+</div>
+
+<p>Maintenant que le système est à jour, en particulier le noyau Linux et ses en-têtes, nous pouvons installer le driver noyau Hailo-10H. Celui-ci est fourni sous forme de paquet s’appuyant sur DKMS, ce qui garantit que le module sera automatiquement recompilé en cas de future mise à jour du noyau. Cette étape est indispensable pour rendre l’accélérateur Hailo accessible au système et aux couches logicielles supérieures.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install </span><span>hailo</span><span>-</span><span>h10</span><span>-</span><span>all</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Il y a plus de 450 Mo à télécharger et à installer… Soyez patient(e). Après l’installation du driver noyau Hailo-10H, un redémarrage est nécessaire afin de charger le module kernel et de rendre l’accélérateur accessible au système. Sans ce redémarrage, le périphérique Hailo n’est pas encore utilisable par le runtime.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<h3><span>Valider l’accès matériel avant d’installer la pile GenAI</span></h3>
+<p>Après le redémarrage, il est nécessaire de vérifier que le <strong>driver noyau Hailo-10H</strong> est correctement chargé et que l’accélérateur est bien accessible depuis le système. La commande suivante permet de confirmer que le <strong>runtime Hailo</strong> détecte le matériel avant de poursuivre avec les couches logicielles supérieures.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>hailortcli </span><span>scan</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_22.jpg" alt="" /></p>
+<p>La détection du périphérique par <strong>hailortcli</strong> confirme que le driver noyau Hailo-10H est opérationnel et que le runtime peut dialoguer avec l’accélérateur. Cette validation est indispensable avant d’installer et de lancer la pile GenAI (serveur LLM et interface Web), qui s’appuie sur cet accès matériel.</p>
+<h2><span>Construire Hailo-Ollama depuis les sources</span></h2>
+<div>
+<p>Pourquoi s’embêter à compiler plutôt qu’installer un paquet <code>.deb</code> ?</p>
+<p>Installer un paquet <code>.deb</code> est souvent la solution la plus simple, mais dans le cas du <strong>Hailo Model Zoo GenAI</strong>, compiler depuis les sources présente plusieurs avantages, en particulier sur une plateforme récente comme le Raspberry Pi 5.</p>
+<p>En compilant soi-même, on s’assure que le serveur <strong>hailo-ollama</strong> est construit <strong>exactement pour la version du système, du noyau et des bibliothèques présentes </strong>(OpenSSL, C++  runtime, etc.). Cela évite les incompatibilités parfois rencontrées avec des paquets pré- compilés.</p>
+<p>Cette approche permet aussi de <strong>voir clairement quelles dépendances sont utilisées </strong>et de mieux comprendre l’architecture logicielle (HailoRT, serveur d’inférence, API Ollama). C’est particulièrement utile dans un contexte d’expérimentation ou de rédaction d’un article technique.</p>
+<p>Enfin, compiler depuis les sources offre plus de souplesse : on peut appliquer des correctifs, suivre l’évolution du dépôt officiel, ou adapter facilement la procédure à de futures mises à jour.<br />
+Bref, c’est un peu plus long… mais clairement <em>plus mieux</em> pour comprendre ce que l’on fait.</p>
+</div>
+<h3><span>Compiler Hailo-Ollama</span></h3>
+<p>À ce stade, HailoRT est installé et la carte est visible via hailortcli scan. On va maintenant compiler le serveur <em><strong>hailo-ollama</strong></em> (API compatible Ollama) directement depuis le dépôt <em><strong>hailo_model_zoo_genai</strong></em>, afin d’éviter tout souci Python sur Debian 13/Trixie.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>install</span><span> </span><span>-</span><span>y</span><span> </span><span>libssl</span><span>-</span><span>dev</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>On commence par installer la dépendance <em><strong>libssl-dev</strong></em></p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span><span>hailo_model_zoo_genai</span></p><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>build</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>cd </span><span>build</span></p><p><span>cmake</span><span> </span><span>-</span><span>DCMAKE_BUILD_TYPE</span><span>=</span><span>Release</span><span> </span><span>.</span><span>.</span></p><p><span>cmake</span><span> </span><span>--</span><span>build</span><span> </span><span>.</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_23.jpg" alt="" /></p>
+<h3><span>Installer le serveur hailo-ollama (binaire + config)</span></h3>
+<p>La compilation ayant abouti, le serveur hailo-ollama est maintenant disponible dans l’arborescence de build. Il faut à présent l’installer dans le répertoire utilisateur afin de pouvoir le lancer facilement depuis un terminal, sans modifier le système.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p></div>
+				</td>
+						<td><div><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>~</span><span>/</span><span>.</span><span>local</span><span>/</span><span>bin</span></p><p><span>cp</span><span> </span><span>.</span><span>/</span><span>src</span><span>/</span><span>apps</span><span>/</span><span>server</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span><span> </span><span>~</span><span>/</span><span>.</span><span>local</span><span>/</span><span>bin</span><span>/</span></p><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>~</span><span>/</span><span>.</span><span>config</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span><span>/</span></p><p><span>cp</span><span> </span><span>.</span><span>.</span><span>/</span><span>config</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span><span>.</span><span>json</span><span> </span><span>~</span><span>/</span><span>.</span><span>config</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span><span>/</span></p><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>~</span><span>/</span><span>.</span><span>local</span><span>/</span><span>share</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span></p><p><span>cp</span><span> </span><span>-</span><span>r</span><span> </span><span>.</span><span>.</span><span>/</span><span>models</span><span>/</span><span> </span><span>~</span><span>/</span><span>.</span><span>local</span><span>/</span><span>share</span><span>/</span><span>hailo</span><span>-</span><span>ollama</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_24.jpg" alt="" /></p>
+<h3><span>Ajouter ~/.local/bin au PATH</span></h3>
+<p>Le binaire hailo-ollama a été installé dans le répertoire utilisateur <em><strong>~/.local/bin</strong></em>. Pour pouvoir l’exécuter directement depuis un terminal, ce chemin doit être présent dans la variable d’environnement PATH. Si la commande hailo-ollama du paragraphe suivant ne répond pas, c’est généralement que ~/.local/bin n’est pas encore dans le PATH.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>echo</span><span> </span><span>'export PATH="$HOME/.local/bin:$PATH"'</span><span> </span><span>&amp;</span><span>gt</span><span>;</span><span>&amp;</span><span>gt</span><span>;</span><span> </span><span>~</span><span>/</span><span>.</span><span>bashrc</span></p><p><span>source</span><span> </span><span>~</span><span>/</span><span>.</span><span>bashrc</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<div>
+<p>Pourquoi installer Hailo-Ollama dans <code>~/.local/bin</code> ?</p>
+<p>Sur un système Linux, il existe deux grandes façons d’installer un programme :</p>
+<p><strong>Installation système</strong> (<code>/usr/bin</code>, <code>/usr/local/bin</code>)</p>
+<ul>
+<li>nécessite les droits administrateur</li>
+<li>impacte tous les utilisateurs</li>
+<li>engage la responsabilité du gestionnaire de paquets</li>
+</ul>
+<p><strong>Installation utilisateur</strong> (<code>~/.local/bin</code>)</p>
+<ul>
+<li>ne nécessite pas de privilèges root</li>
+<li>n’impacte que l’utilisateur courant</li>
+<li>facile à modifier ou supprimer</li>
+</ul>
+<p>Dans le cas de <strong>Hailo-Ollama</strong>, l’installation est faite volontairement dans le répertoire utilisateur pour plusieurs raisons :</p>
+<ul>
+<li><strong>Le logiciel est encore en phase active d’évolution</strong><br />
+Compiler depuis les sources implique des ajustements fréquents. Installer dans <code>/usr</code> figerait davantage l’environnement.</li>
+<li><strong>Aucun paquet Debian officiel n’est utilisé ici</strong><br />
+Le binaire est compilé manuellement : l’installer dans <code>/usr</code> sans gestionnaire de  paquets irait à l’encontre des bonnes pratiques Debian.</li>
+<li><strong>Sécurité et réversibilité</strong><br />
+Supprimer <code>~/.local/bin/hailo-ollama</code> suffit à désinstaller le serveur, sans laisser de trace système.</li>
+<li><strong>Cohérence avec la documentation officielle</strong><br />
+La méthode <a href="https://github.com/hailo-ai/hailo_model_zoo_genai" target="_blank"><em>Build from source</em></a> fournie par Hailo recommande explicitement une installation côté utilisateur.</li>
+</ul>
+</div>
+<h3><span>Démarrer le serveur Hailo-Ollama</span></h3>
+<p>La pile LLM fournie par Hailo s’appuie sur un service appelé hailo-ollama. Ce service joue le rôle de serveur d’inférence local : il expose une API compatible Ollama, capable de charger des modèles LLM optimisés pour le Hailo-10H et de traiter les requêtes entièrement en local, sans passer par le cloud.<br />
+Le lancer à ce stade permet de vérifier que le driver noyau, HailoRT et le serveur d’inférence fonctionnent correctement ensemble, avant toute intégration avec une interface web ou des outils externes.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>hailo</span><span>-</span><span>ollama</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_25.jpg" alt="" /></p>
+<p>Le serveur <em><strong>hailo-ollama</strong></em> est désormais opérationnel et écoute sur le port 8000. Cela confirme que l’ensemble de la chaîne (driver noyau Hailo-10H, HailoRT et serveur d’inférence) fonctionne correctement. L’environnement est prêt pour interroger l’API locale et charger des modèles GenAI optimisés pour le Hailo-10H.</p>
+<h3><span>Vérifier l’API Hailo-Ollama</span></h3>
+<p>Objectif : s’assurer que le serveur répond bien aux requêtes HTTP. Ouvrez un second terminal, exécutez :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>curl</span><span> </span><span>--</span><span>silent </span><span>http</span><span>:</span><span>//localhost:8000/hailo/v1/list</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_26.jpg" alt="" /></p>
+<p>Résultat  : le serveur répond dans le terminal en bas de l’image et il voit les modèles disponibles.</p>
+<h3><span>Tester le chargement d’un modèle</span></h3>
+<p>Avant de lancer une première requête de discussion, on vérifie que le serveur peut charger réellement un modèle en mémoire. Cette étape valide le chemin complet : serveur → runtime → Hailo-10H → modèle. On choisit volontairement un <em><strong>petit modèle</strong></em> pour un premier test.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>curl</span><span> </span><span>--</span><span>silent </span><span>http</span><span>:</span><span>//localhost:8000/api/pull -H 'Content-Type: application/json' -d '{ "model": "qwen2:1.5b", "stream": true }'</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_27.jpg" alt="" /></p>
+<p>Ce qu’on obtient (<span>{« status »: »pulling », …}</span>) est normal : le serveur télécharge le modèle en morceaux et renvoie une progression. Ici j’ai interrompu le chargement par CTRL + C ! Laissez le chargement se poursuivre jusqu’à la fin. On voit que le modèle pèse 1,68 Go environ ! Le serveur est en train de télécharger le modèle sur Internet depuis le dépôt Hailo. Il sera stocké localement. L’empreinte cryptographique (hash) du modèle sert à vérifier l’intégrité des données (vérifier que le modèle n’est pas corrompu) … Patientez jusqu’à …</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_28.jpg" alt="" /></p>
+<p>À ce stade : le serveur fonctionne, le modèle est présent localement, tout est prêt pour une première requête d’inférence</p>
+<h2><span>Premier test d’inférence (API /api/chat)</span></h2>
+<p>Avant toute intégration plus avancée, on valide le fonctionnement complet de la chaîne en envoyant une requête simple au modèle fraîchement chargé. On va lui faire traduire une phrase : <strong>The cat is on the table</strong></p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>curl</span><span> </span><span>--</span><span>silent </span><span>http</span><span>:</span><span>//localhost:8000/api/chat -H 'Content-Type: application/json' -d '{"model":"qwen2:1.5b","messages":[{"role":"user","content":"Translate to French: The cat is on the table."}]}'</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/pi5_HAT2_29.jpg" alt="" /></p>
+<p>Ce que confirment ces lignes c est que la chaine fonctionne : API → serveur → runtime → accélérateur → modèle → réponse</p>
+<ul>
+<li>le serveur hailo-ollama est actif</li>
+<li>le modèle est bien chargé en local</li>
+<li>l’inférence s’exécute sur le Hailo-10H</li>
+<li>l’API /api/chat répond correctement</li>
+<li>le streaming de tokens fonctionne</li>
+</ul>
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_17.jpg" alt="" /></p><p>Déroulement du test</p></div>
+<h2><span>Conclusion</span></h2>
+<p><strong>La première étape est validée</strong> : la réponse progressive confirme que l’inférence s’exécute bien en local via le <strong>Hailo-10H</strong>. Le serveur <strong>hailo-ollama</strong> fonctionne conformément à l’API compatible Ollama, en streaming, sans recours au cloud.<br />
+La suite (mesures de performances, essais de modèles plus gros, cas d’usage concrets, et ajout d’une interface type WebUI) fera l’objet d’un <strong>deuxième article</strong> dédié.<br />
+Dans la partie 2, on mesurera latence, débit de tokens, et on testera des modèles plus gros + une WebUI.</p>
+<div>
+<p>📌 Contexte et évolution rapide de la pile logicielle Hailo</p>
+<p>La pile logicielle <strong>Hailo</strong> (driver noyau, runtime, outils et applications) évolue rapidement, en particulier autour du support du <strong>Raspberry Pi 5</strong> et de <strong>Debian 13 (Trixie)</strong>.</p>
+<p>La procédure décrite dans cet article est <strong>documentée et validée à la date d’écriture</strong> (décembre 2025). Elle a été suivie pas à pas afin de comprendre finement les différentes couches de la pile (noyau, runtime, serveur d’inférence) et de valider le bon fonctionnement de la carte <strong>AI HAT+ 2 / Hailo-10H</strong>.</p>
+<p>Depuis, <strong>Hailo propose une installation unifiée via le paquet <code>hailo-all</code></strong>, qui simplifie considérablement la mise en place pour la majorité des utilisateurs. Cette méthode regroupe driver, runtime et outils dans un flux d’installation plus direct. L’approche détaillée ici reste néanmoins pertinente pour la compréhension, le diagnostic et les usages avancés, notamment dans un contexte d’expérimentation ou d’analyse technique.</p>
+</div>
+<h2><span>Sources</span></h2>
+<p><a href="https://www.raspberrypi.com/products/ai-hat-plus-2/" target="_blank">https://www.raspberrypi.com/products/ai-hat-plus-2/</a></p>
+<p><a href="https://pip-assets.raspberrypi.com/categories/1319-raspberry-pi-ai-hat-2/documents/RP-009655-MM-3-raspberry-pi-ai-hat-plus-2-product-brief.pdf" target="_blank">https://pip-assets.raspberrypi.com/categories/1319-raspberry-pi-ai-hat-2/documents/RP-009655-MM-3-raspberry-pi-ai-hat-plus-2-product-brief.pdf</a></p>
+<p><a href="https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html" target="_blank">https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html</a></p>
+<p><a href="https://hailo.ai/products/hailo-software/model-explorer/generative-ai/devices/hailo-10h/" target="_blank">https://hailo.ai/products/hailo-software/model-explorer/generative-ai/devices/hailo-10h/</a><br />
+<a href="https://hailo.ai/products/ai-accelerators/hailo-10h-m-2-ai-acceleration-module" target="_blank">https://hailo.ai/products/ai-accelerators/hailo-10h-m-2-ai-acceleration-module</a></p>
+<blockquote><p><a href="https://datascientest.com/docker-guide-complet">Docker : qu’est-ce que c’est et comment l’utiliser ?</a></p></blockquote>
+
+
+<p><strong>Les articles sur Framboise314 :</strong></p>
+<blockquote><p><a href="https://www.framboise314.fr/raspberry-pi-ai-hat-plus-2-installation-pi5/">Raspberry Pi AI HAT+ 2 : présentation matérielle et installation sur Raspberry Pi 5</a></p></blockquote>
+
+<blockquote><p><a href="https://www.framboise314.fr/installer-raspberry-pi-ai-hat-plus-2-pi5-hailort-hailo-ollama/">Raspberry Pi AI HAT+ 2 : installer Hailo-10H et lancer un LLM local (Partie 1)</a></p></blockquote>
+
+<blockquote><p><a href="https://www.framboise314.fr/raspberry-pi-ai-hat-2-hailo-10h-video-partie-2/">Raspberry Pi AI HAT+ 2 : vision par ordinateur en vidéo avec Hailo-10H (Partie 2)</a></p></blockquote>
+
+					</div></div>
+  </div>
+</body>
+</html>

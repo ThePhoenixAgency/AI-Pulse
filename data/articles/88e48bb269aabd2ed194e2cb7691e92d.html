@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft Publisher: You won’t be able to access Publisher or open files (.pub) in October 2026</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Microsoft Publisher: You won’t be able to access Publisher or open files (.pub) in October 2026</h1>
+  <div class="metadata">
+    Source: Windows Latest | Date: 2/11/2026 | Lang: EN |
+    <a href="https://www.windowslatest.com/2026/02/11/microsoft-publisher-is-retiring-october-2026-export-files-now/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            <p><a href="https://www.windowslatest.com/wp-content/uploads/2026/02/Microsoft-Publisher-October-2026-retirement.jpg"><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Microsoft-Publisher-October-2026-retirement-696x392.jpg" alt="Microsoft Publisher October 2026 retirement" /></a></p>
+            <p>If you use Microsoft Publisher via Microsoft 365, you’ll now see an alert titled “Publisher is retiring.” The alert warns that “<strong>beginning October 2026, Microsoft Publisher will no longer be supported, and you won’t be able to access Publisher or open Publisher files</strong>.” There’s a ‘Got it’ button to dismiss the alert.</p>
+<p><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Microsoft-Publisher-October-2026.jpg" alt="Microsoft Publisher October 2026" /></p>
+<p>Windows Latest spotted Microsoft Publisher end-of-life alerts when we tried opening existing .pub files, and <a href="https://www.windowslatest.com/2025/03/06/after-skype-microsoft-publisher-pub-is-being-discontinued-microsoft-says-convert-pub-to-pdf/">it aligns with the original plans shared by the company</a>.</p>
+<p>Microsoft previously <a href="https://support.microsoft.com/en-us/office/microsoft-publisher-will-no-longer-be-supported-after-october-2026-ee6302a2-4bc7-4841-babf-8e9be3acbfd7#bkmk_ex-conv-script" target="_blank">confirmed</a> the retirement of Publisher (.pub) for October 2026, but turns out it’s more than just a simple end-of-life date. In October 2026, your Microsoft Publisher will become useless unless you use a perpetual license, not a Microsoft 365 subscription.</p>
+<h2>What does Microsoft Publisher’s October 2026 end-of-support mean for you?</h2>
+<p>It means you won’t be able to open Microsoft Publisher (.pub) files, and you should export or save your work before the October 2026 deadline. You’ll get locked out of the app, and it’s not exactly simple to migrate all .pub files to a new format without access to the Publisher app.</p>
+<h3>How to convert .pub files to another format in Microsoft Publisher?</h3>
+<ol>
+<li>In Microsoft Publisher, open the file you want to convert.<br />
+<img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Convert-Microsoft-Publisher-.pub-files-to-.pdf-in-Windows-11-2.jpg" alt="Convert Microsoft Publisher .pub files to .pdf in Windows 11" /></li>
+<li>Now, open <strong>File</strong> and click ‘<strong>Save as</strong>.’<br />
+<img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Convert-.pub-files-to-.pft-in-Windows-11.jpg" alt="Convert .pub files to .pft in Windows 11" /></li>
+<li>This time, select ‘<strong>PDF</strong>‘ as your file type, and save it.</li>
+</ol>
+<p>I tested it on my PC, and it converts all Microsoft Publisher (.pub) files, but the catch is, how can you automate the process?</p>
+<h3>PowerShell script to convert Microsoft Publisher (.pub) files</h3>
+<p>You can’t manually open each .pub file and save it as a PDF in the next few months (until October 2026). However, you can automate the process using a PowerShell script, which can be downloaded from <a href="https://download.microsoft.com/download/3e67cd40-2334-4c46-a0c9-30bd43eebb3c/Convert-PubFileToPDF.ps1" target="_blank">Microsoft’s website</a>.</p>
+<p>You need to edit the PowerShell script before you use it. More importantly, before you run the .pub to .pdf script, you should understand how it works. Windows Latest found that Microsoft’s official PowerShell script converts Microsoft Publisher (.pub) files into PDFs using the Publisher desktop app through its COM/Interop interface.</p>
+<p>In the PowerShell script, you’re giving it a -Filter (like *.pub or C:\Docs\file.pub) and optionally -Recurse, and then it searches for Publisher files using Get-ChildItem.</p>
+<p>Once it finds files, it loads the Publisher assemblies and tries to start Publisher.Application, and it begins to convert by replacing .pub with .pdf.</p>
+<p>I asked Microsoft for more details, and it told me that customers are advised to convert existing files to another format before October 2026.</p>
+<h3>But can you edit .pub files in Publisher after October 2026?</h3>
+<p>No, you won’t be able to edit .pub files because it’ll no longer be possible to even access Microsoft Publisher. However, you can convert .pub files to .pdf, and then convert .pdf to MS Word, and edit it.</p>
+<p>You can open MS Word, then <strong>File</strong> &gt; <strong>Open</strong>, and open the converted .pdf file.</p>
+<p><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/MS-Word.jpg" alt="MS Word" /></p>
+<p>This will allow you to edit your converted PDF, but the catch is that MS Word PDF conversion is far from perfect, and it could corrupt text, which means you’ll probably need to spend hours or days editing all PDF-converted .pub files.</p>
+<h2>Is there any way to keep using Microsoft Publisher after October 2026?</h2>
+<p>Microsoft Publisher 2021 in Office LTSC 2021 will still work after October 13, 2026. Unlike Microsoft 365, which is a subscription, Office LTSC 2021 is a perpetual (one-time purchase) license.</p>
+<p>Microsoft is not killing off Publisher out of nowhere. It made the plans official in 2025 and is giving more than a year to its customers for migration. After October 2026, Microsoft 365 plans won’t include the old tool as they always did. You have close to nine months to make the migration, plan your escape, and salvage your files from the app.</p>
+<p><img src="https://www.windowslatest.com/wp-content/uploads/2025/03/publisher-free-version-in-microsoft-365.jpg" alt="publisher free version in microsoft 365" /></p>
+<p>Microsoft has also recommended searching for Publisher alternatives. While Microsoft doesn’t have a single app that offers everything from Publisher, you can try using Microsoft Designer, Word, or PowerPoint. I made a table with a list of the best alternatives for you to try.</p>
+<table>
+<caption>Microsoft Publisher (.pub) alternatives recommended by Microsoft</caption>
+<thead>
+<tr>
+<th>To create</th>
+<th>Best Alternative</th>
+<th>Category</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ads &amp; Flyers</td>
+<td>Word, PowerPoint, Designer</td>
+<td>Marketing Materials</td>
+</tr>
+<tr>
+<td>Brochures</td>
+<td>Word, PowerPoint</td>
+<td>Marketing Materials</td>
+</tr>
+<tr>
+<td>Banners, Posters &amp; Signs</td>
+<td>PowerPoint, Designer</td>
+<td>Large Format Prints</td>
+</tr>
+<tr>
+<td>Newsletters</td>
+<td>Word</td>
+<td>Publications</td>
+</tr>
+<tr>
+<td>Programs &amp; Folded Projects</td>
+<td>Word</td>
+<td>Publications</td>
+</tr>
+<tr>
+<td>Business Cards</td>
+<td>Word, PowerPoint</td>
+<td>Business Documents</td>
+</tr>
+<tr>
+<td>Certificates</td>
+<td>Word, PowerPoint</td>
+<td>Business Documents</td>
+</tr>
+<tr>
+<td>Invoices, Forms &amp; Applications</td>
+<td>Word</td>
+<td>Business Documents</td>
+</tr>
+<tr>
+<td>Letterheads</td>
+<td>Word</td>
+<td>Business Documents</td>
+</tr>
+<tr>
+<td>Envelopes</td>
+<td>Word</td>
+<td>Stationery</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>Word</td>
+<td>Stationery</td>
+</tr>
+<tr>
+<td>Calendars</td>
+<td>Word, PowerPoint</td>
+<td>Planning &amp; Events</td>
+</tr>
+<tr>
+<td>Greeting &amp; Complement Cards</td>
+<td>Word, PowerPoint, and Designer</td>
+<td>Personal &amp; Events</td>
+</tr>
+</tbody>
+</table>
+<h2>I am going to miss Microsoft Publisher</h2>
+<p>Microsoft Publisher was introduced in 1991 and quickly became one of the most popular tools for creating marketing materials, especially at a time when alternatives were very expensive.</p>
+<p>Fast forward to now, Microsoft has other tools offering similar functionality, such as Designer, which lets you make templates for social media. As a result, Microsoft no longer wants to develop Publisher.</p>
+<p>What about you? How do you plan to replace Publisher? Let me know in the comments below.</p>
+
+        
+
+        
+                </div></div>
+  </div>
+</body>
+</html>

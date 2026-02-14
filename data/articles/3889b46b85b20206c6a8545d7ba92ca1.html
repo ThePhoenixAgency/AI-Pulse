@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Pydantic Performance: 4 Tips on How to Validate Large Amounts of Data Efficiently</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/6/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/pydantic-performance-4-tips-on-how-to-validate-large-amounts-of-data-efficiently/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p> are so easy to use that it’s also easy to use them the wrong way, like holding a hammer by the head. The same is true for Pydantic, a high-performance data validation library for Python.</p>
+
+
+
+<p>In Pydantic v2, the core validation engine is implemented in <strong>Rust</strong>, making it one of the fastest data validation solutions in the Python ecosystem. However, that performance advantage is only realized if you use Pydantic in a way that actually leverages this highly optimized core.</p>
+
+
+
+<p>This article focuses on using Pydantic efficiently, especially when validating large volumes of data. We highlight four common gotchas that can lead to order-of-magnitude performance differences if left unchecked.</p>
+
+
+
+<hr />
+
+
+
+<h2>1) Prefer <code>Annotated</code> constraints over field validators</h2>
+
+
+
+<p>A core feature of Pydantic is that data validation is defined declaratively in a model class. When a model is instantiated, Pydantic parses and validates the input data according to the field types and validators defined on that class.</p>
+
+
+
+<h3>The naïve approach: field validators</h3>
+
+
+
+<p>We use a <code>@field_validator</code> to validate data, like checking whether an <code>id</code> column is actually an integer or greater than zero. This style is readable and flexible but comes with a performance cost.</p>
+
+
+
+<pre><code>class UserFieldValidators(BaseModel):
+    id: int
+    email: EmailStr
+    tags: list[str]
+
+    @field_validator("id")
+    def _validate_id(cls, v: int) -&gt; int:
+        if not isinstance(v, int):
+            raise TypeError("id must be an integer")
+        if v &lt; 1:
+            raise ValueError("id must be &gt;= 1")
+        return v
+
+    @field_validator("email")
+    def _validate_email(cls, v: str) -&gt; str:
+        if not isinstance(v, str):
+            v = str(v)
+        if not _email_re.match(v):
+            raise ValueError("invalid email format")
+        return v
+
+    @field_validator("tags")
+    def _validate_tags(cls, v: list[str]) -&gt; list[str]:
+        if not isinstance(v, list):
+            raise TypeError("tags must be a list")
+        if not (1 &lt;= len(v) &lt;= 10):
+            raise ValueError("tags length must be between 1 and 10")
+        for i, tag in enumerate(v):
+            if not isinstance(tag, str):
+                raise TypeError(f"tag[{i}] must be a string")
+            if tag == "":
+                raise ValueError(f"tag[{i}] must not be empty")
+</code></pre>
+
+
+
+<p>The reason is that field validators execute in <strong><strong>Python, </strong></strong>after core type coercion and constraint validation. This prevents them from being optimized or fused into the core validation pipeline.</p>
+
+
+
+<h3>The optimized approach: <code>Annotated</code></h3>
+
+
+
+<p>We can use <code>Annotated</code> from Python’s <code>typing</code> library.</p>
+
+
+
+<pre><code>class UserAnnotated(BaseModel):
+    id: Annotated[int, Field(ge=1)]
+    email: Annotated[str, Field(pattern=RE_EMAIL_PATTERN)]
+    tags: Annotated[list[str], Field(min_length=1, max_length=10)]</code></pre>
+
+
+
+<p>This version is shorter, clearer, and shows faster execution at scale.</p>
+
+
+
+
+
+
+
+<h3>Why <code>Annotated</code> is faster</h3>
+
+
+
+<p><code>Annotated</code> (PEP 593) is a standard Python feature, from the <code>typing</code> library. The constraints placed inside <code>Annotated</code> are compiled into Pydantic’s internal scheme and executed inside pydantic-core (Rust).</p>
+
+
+
+<p>This means that there are no user-defined Python validation calls required during validation. Also no intermediate Python objects or custom control flow are introduced.</p>
+
+
+
+<p>By contrast, <code>@field_validator</code> functions <em>always</em> run in Python, introduce function call overhead and often duplicate checks that could have been handled in core validation.</p>
+
+
+
+Important nuance
+<p>An important nuance is that <code>Annotated</code> itself is not “Rust”. The speedup comes from using constrains that pydantic-core understands and can use, not from <code>Annotated</code> existing on its own.</p>
+
+
+
+
+<h3>Benchmark</h3>
+
+
+
+<p>The difference between <strong>no validation</strong> and <strong><code>&lt;strong&gt;Annotated&lt;/strong&gt;</code></strong><strong> validation</strong> is negligible in these benchmarks, while Python validators can become an order-of-magnitude difference.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/1_annotated.png" alt="" /><figcaption>Validation performance graph (Image by author)</figcaption></figure>
+
+
+
+<pre><code>                    Benchmark (time in seconds)                     
+┏━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
+┃ Method         ┃     n=100 ┃     n=1k ┃     n=10k ┃     n=50k ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━┩
+│ FieldValidators│     0.004 │    0.020 │     0.194 │     0.971 │
+│ No Validation  │     0.000 │    0.001 │     0.007 │     0.032 │
+│ Annotated      │     0.000 │    0.001 │     0.007 │     0.036 │
+└────────────────┴───────────┴──────────┴───────────┴───────────┘</code></pre>
+
+
+
+<p>In absolute terms we go from nearly a second of validation time to 36 milliseconds. A performance increase of almost 30x.</p>
+
+
+
+<h3>Verdict</h3>
+
+
+
+<p>Use <code>Annotated</code> whenever possible. You get <strong>better performance</strong> and <strong>clearer models</strong>. Custom validators are powerful, but you pay for that flexibility in runtime cost so reserve <code>@field_validator</code> for logic that cannot be expressed as constraints.</p>
+
+
+
+<figure></figure>
+
+
+
+<hr />
+
+
+
+<h2>2). Validate JSON with <code>model_validate_json()</code></h2>
+
+
+
+<p>We have data in the form of a JSON-string. What is the most efficient way to validate this data?</p>
+
+
+
+<h3>The naïve approach</h3>
+
+
+
+<p>Just parse the JSON and validate the dictionary:</p>
+
+
+
+<pre><code>py_dict = json.loads(j)
+UserAnnotated.model_validate(py_dict)</code></pre>
+
+
+
+<h3>The optimized approach</h3>
+
+
+
+<p>Use a Pydantic function:</p>
+
+
+
+<pre><code>UserAnnotated.model_validate_json(j)</code></pre>
+
+
+
+<h3>Why this is faster</h3>
+
+
+
+<ul>
+<li><code>model_validate_json()</code> parses JSON and validates it in one pipeline</li>
+
+
+
+<li>It uses Pydantic interal and faster JSON parser</li>
+
+
+
+<li>It avoids building large intermediate Python dictionaries and traversing those dictionaries a second time during validation</li>
+</ul>
+
+
+
+<p>With <code>json.loads()</code> you pay twice: first when parsing JSON into Python objects, then for validating and coercing those objects.</p>
+
+
+
+<p><code>model_validate_json()</code> reduces memory allocations and redundant traversal.</p>
+
+
+
+<h3>Benchmarked</h3>
+
+
+
+<p>The Pydantic version is almost twice as fast.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/2_load_json.png" alt="" /><figcaption>Performance graph (image by author)</figcaption></figure>
+
+
+
+<pre><code>                  Benchmark (time in seconds)                   
+┏━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━┓
+┃ Method              ┃ n=100 ┃  n=1K ┃ n=10K ┃ n=50K ┃ n=250K ┃
+┡━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━━┩
+│ Load json           │ 0.000 │ 0.002 │ 0.016 │ 0.074 │  0.368 │
+│ model validate json │ 0.001 │ 0.001 │ 0.009 │ 0.042 │  0.209 │
+└─────────────────────┴───────┴───────┴───────┴───────┴────────┘</code></pre>
+
+
+
+<p>In absolute terms the change saves us 0.1 seconds validating a quarter million objects.</p>
+
+
+
+<h3>Verdict</h3>
+
+
+
+<p>If your input is JSON, let Pydantic handle parsing and validation in one step. Performance-wise it isn’t absolutely necessary to use <code>model_validate_json()</code> but do so anyway to avoid building intermediate Python objects and condense your code.</p>
+
+
+
+<figure></figure>
+
+
+
+<hr />
+
+
+
+<h2>3) Use <code>TypeAdapter</code> for bulk validation</h2>
+
+
+
+<p>We have a <code>User</code> model and now we want to validate a <code>list</code> of <code>User</code>s.</p>
+
+
+
+<h3>The naïve approach</h3>
+
+
+
+<p>We can loop through the list and validate each entry or create a wrapper model. Assume <code>batch</code> is a <code>list[dict]</code>:</p>
+
+
+
+<pre><code># 1. Per-item validation
+models = [User.model_validate(item) for item in batch]
+
+# 2. Wrapper model
+
+
+# 2.1 Define a wrapper model:
+class UserList(BaseModel):
+  users: list[User]
+
+
+# 2.2 Validate with the wrapper model
+models = UserList.model_validate({"users": batch}).users</code></pre>
+
+
+
+<h3>Optimized approach</h3>
+
+
+
+<p>Type adapters are faster for validating lists of objects.</p>
+
+
+
+<pre><code>ta_annotated = TypeAdapter(list[UserAnnotated])
+models = ta_annotated.validate_python(batch)</code></pre>
+
+
+
+<h3>Why this is faster</h3>
+
+
+
+<p>Leave the heavy lifting to Rust. Using a TypeAdapter doesn’t required an extra Wrapper to be constructed and validation runs using a <strong>single compiled schema</strong>. There are fewer Python-to-Rust-and-back boundry crossings and there is a lower object allocation overhead.</p>
+
+
+
+<p>Wrapper models are slower because they do more than validate the list:</p>
+
+
+
+<ul>
+<li>Constructs an extra model instance</li>
+
+
+
+<li>Tracks field sets and internal state</li>
+
+
+
+<li>Handles configuration, defaults, extras</li>
+</ul>
+
+
+
+<p>That extra layer is small per call, but becomes measurable at scale.</p>
+
+
+
+<h3>Benchmarked</h3>
+
+
+
+<p>When using large sets we see that the type-adapter is significantly faster, especially compared to the wrapper model.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/3_typeadapter.png" alt="" /><figcaption>Performance graph (image by author)</figcaption></figure>
+
+
+
+<pre><code>                   Benchmark (time in seconds)                    
+┏━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃ Method       ┃ n=100 ┃  n=1K ┃ n=10K ┃ n=50K ┃ n=100K ┃ n=250K ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│ Per-item     │ 0.000 │ 0.001 │ 0.021 │ 0.091 │  0.236 │  0.502 │
+│ Wrapper model│ 0.000 │ 0.001 │ 0.008 │ 0.108 │  0.208 │  0.602 │
+│ TypeAdapter  │ 0.000 │ 0.001 │ 0.021 │ 0.083 │  0.152 │  0.381 │
+└──────────────┴───────┴───────┴───────┴───────┴────────┴────────┘</code></pre>
+
+
+
+<p>In absolute terms, however, the speedup saves us around 120 to 220 milliseconds for 250k objects.</p>
+
+
+
+<h3>Verdict</h3>
+
+
+
+<p>When you just want to validate a type, not define a domain object, <code>TypeAdapter</code> is the fastest and cleanest option. Although it is not absolutely required for time saved, it skips unnecessary model instantiation and avoids Python-side validation loops, making your code cleaner and more readable.</p>
+
+
+
+<figure></figure>
+
+
+
+<hr />
+
+
+
+<h2>4) Avoid <code>from_attributes</code> unless you need it</h2>
+
+
+
+<p>With <code>from_attributes</code> you configure your model class. When you set it to <code>True</code> you tell Pydantic to read values from object attributes instead of dictionary keys. This matters when your input is anything but a dictionary, like a SQLAlchemy ORM instance, dataclass or any plain Python object with attributes.</p>
+
+
+
+<p>By default <code>from_attributes</code> is <code>False</code>. Sometimes developers set this attribute to <code>True</code> to keep the model flexible:</p>
+
+
+
+<pre><code>class Product(BaseModel):
+    id: int
+    name: str
+
+    model_config = ConfigDict(from_attributes=True)
+</code></pre>
+
+
+
+<p>If you just pass dictionaries to your model, however, it’s best to avoid <code>from_attributes</code> because it requires Python to do a lot more work. The resulting overhead provides no benefit when the input is already in plain mapping.</p>
+
+
+
+<h3>Why <code>from_attributes=True</code> is slower</h3>
+
+
+
+<p>This method uses <code>getattr()</code> instead of dictionary lookup, which is slower. Also it can trigger functionalities on the object we’re reading from like descriptors, properties, or ORM lazy loading.</p>
+
+
+
+<h3>Benchmark</h3>
+
+
+
+<p>As batch sizes get larger, using attributes gets more and more expensive.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/4_no_attribs.png" alt="" /><figcaption>Performance graph (image by author)</figcaption></figure>
+
+
+
+<pre><code>                       Benchmark (time in seconds)                        
+┏━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━┳━━━━━━━━┳━━━━━━━━┓
+┃ Method       ┃ n=100 ┃  n=1K ┃ n=10K ┃ n=50K ┃ n=100K ┃ n=250K ┃
+┡━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━╇━━━━━━━━╇━━━━━━━━┩
+│ with attribs │ 0.000 │ 0.001 │ 0.011 │ 0.110 │  0.243 │  0.593 │
+│ no attribs   │ 0.000 │ 0.001 │ 0.012 │ 0.103 │  0.196 │  0.459 │
+└──────────────┴───────┴───────┴───────┴───────┴────────┴────────┘</code></pre>
+
+
+
+<p>In absolute terms a little under 0.1 seconds is saved on validating 250k objects.</p>
+
+
+
+<h3>Verdict</h3>
+
+
+
+<p>Only use <code>from_attributes</code> when your input is <strong>not a dict</strong>. It exists to support attribute-based objects (ORMs, dataclasses, domain objects). In those cases, it can be faster than first dumping the object to a dict and then validating it. For plain mappings, it adds overhead with no benefit.</p>
+
+
+
+<figure></figure>
+
+
+
+<hr />
+
+
+
+<h2>Conclusion</h2>
+
+
+
+<p>The point of these optimizations is not to shave off a few milliseconds for their own sake. In absolute terms, even a 100ms difference is rarely the bottleneck in a real system.</p>
+
+
+
+<p>The real value lies in writing clearer code and using your tools right.</p>
+
+
+
+<p>Using the tips specified in this article leads to <strong>clearer models</strong>, more <strong>explicit intent</strong>, and a <strong>better alignment</strong> with how Pydantic is designed to work. These patterns move validation logic out of ad-hoc Python code and into declarative schemas that are <strong>easier to read, reason about, and maintain</strong>.</p>
+
+
+
+<p>The performance improvements are a side effect of doing things <em>the right way</em>. When validation rules are expressed declaratively, Pydantic can apply them consistently, optimize them internally, and scale them naturally as your data grows.</p>
+
+
+
+<p>In short: </p>
+
+
+
+<blockquote>
+<p>Don’t adopt these patterns just because they’re faster. Adopt them because they make your code simpler, more explicit, and better suited to the tools you’re using. </p>
+</blockquote>
+
+
+
+<p>The speedup is just a nice bonus.</p>
+
+
+
+<hr />
+
+
+
+<p>I hope this article was as clear as I intended it to be but if this is not the case please let me know what I can do to clarify further. In the meantime, check out my <a href="https://mikehuls.com/"><strong>other articles</strong></a> on all kinds of programming-related topics.</p>
+
+
+
+<p>Happy coding!</p>
+
+
+
+<p>— Mike</p>
+
+
+
+<p>P.s: like what I’m doing? Follow me!</p>
+</div></div>
+  </div>
+</body>
+</html>

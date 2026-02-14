@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Notepad - L'IA amène le Markdown, le Markdown amène une faille</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Notepad - L'IA amène le Markdown, le Markdown amène une faille</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/11/2026 | Lang: FR |
+    <a href="https://korben.info/notepad-ia-faille-securite-windows.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/notepad-ia-faille-securite-windows/notepad-ia-faille-securite-windows-1.png" alt="Image illustrant l'article : Notepad - L'IA amène le Markdown, le Markdown amène une faille" /></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Microsoft a introduit le Markdown dans Notepad Windows 11 24H2 pour supporter l'IA, créant la faille CVE-2026-20841 qui exécute du code à distance via des liens malveillants non filtrés (file://, ms-msdt://)</li><li>La vulnérabilité ne demande qu'un clic sur un lien piégé dans un fichier .md, classée "Important" car elle nécessite l'interaction de l'utilisateur, corrigée au Patch Tuesday février 2026</li><li>Windows 10 reste protégé car son Notepad reste offline sans Markdown, tandis que Microsoft poursuit l'injection d'IA dans tous les outils Windows (Paint, Photos, Capture) élargissant les surfaces d'attaque</li></ol><p>Résumé généré par IA</p></div><div><p><strong>Notepad</strong>, c'est je crois LE truc le plus basique de Windows depuis 40 ans (avec winver.exe... lol). C'est un éditeur de texte tellement simple qu'il n'avait même pas de correcteur orthographique jusqu'en 2024. Sauf que Microsoft a décidé d'y coller de l'IA, et avec l'IA est arrivé le support du Markdown... et c'est ce parser Markdown tout neuf qui a ouvert une faille permettant d'exécuter du code à distance.</p><p>Mais lol.</p><p>Car oui mes amis, dans la foulée des fonctions IA (AI Rewrite, tout ça), le bloc-notes de Windows 11 sait maintenant interpréter le Markdown. Il gère désormais les fichiers .md, affiche les liens cliquables, le formatage...etc... et c'est là que ça coince !</p><p>En effet, la faille CVE-2026-20841 exploite une injection de commande via des liens malveillants dans un fichier Markdown. Vous ouvrez le fichier, vous cliquez sur le lien, et hop, exécution de code à distance sur votre bécane. Personne chez M$ n'avait pensé à filtrer les protocoles des URL. Résultat, un lien du type file:///C:/Windows/System32/cmd.exe ou ms-msdt:// s'exécute comme si de rien n'était.</p><p>C'est con, c'était si simple de limiter ça à http+s ... Bref, tout ça parce que maintenant ce machin a besoin d'aller sur Internet... Roooh</p><p>Cette faille fait partie du Patch Tuesday de février 2026, qui corrige au passage 58 vulnérabilités dont 6 zero-days déjà activement exploités. Microsoft classe celle de Notepad comme "Important" (pas "Critical"), parce qu'il faut quand même que vous cliquiez sur le lien piégé. Tu m'étonne John !</p><p>À noter que seul Windows 11 version 24H2 est concerné car sur Windows 10, le Notepad reste cette bonne vieille version offline qu'on connait sans Markdown ni IA... et du coup, pas de faille. Comme quoi, des fois être has been, ça a du bon ^^.</p><p>Rassurez-vous, ça n'empêchera pas Microsoft de continuer à injecter de l'IA dans TOUS ses outils Windows. Paint génère des images, Photos supprime les objets, l'Outil Capture retranscrit du texte... Bref, chaque app basique se transforme en usine à gaz connectée, avec la surface d'attaque qui va avec. (Je me demande quand la calculatrice aura besoin d'être connectée au net...)</p><p>Pour vous protéger, lancez donc Windows Update et installez le correctif de février. Si vous faites partie de ceux qui
+<a href="https://korben.info/un-outil-pour-bloquer-les-mises-a-jour-forcees-de-windows-10.html">bloquent les mises à jour</a>
+, c'est le moment de faire une exception et si vous êtes plutôt
+<a href="https://korben.info/notepad-votre-editeur-de-texte-prefere-a-ete-pirate.html">team Notepad++</a>
+... bah désolé pour vous aussi ^^.</p><p><a href="https://www.techspot.com/news/111287-unwanted-ai-upgrade-windows-notepad-created-serious-security.html">Source</a></p></div>Références<section><ul><li><a href="https://www.techspot.com/news/111287-unwanted-ai-upgrade-windows-notepad-created-serious-security.html" target="_blank">https://www.techspot.com/news/111287-unwanted-ai-upgrade-windows-notepad-created-serious-security.html</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+</body>
+</html>

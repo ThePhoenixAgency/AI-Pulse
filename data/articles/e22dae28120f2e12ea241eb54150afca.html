@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building an AI Agent to Detect and Handle Anomalies in Time-Series Data</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Building an AI Agent to Detect and Handle Anomalies in Time-Series Data</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/11/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/building-an-ai-agent-to-detect-and-handle-anomalies-in-time-series-data/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<h2></h2>
+
+
+
+<p>As a data scientist working on time-series forecasting, I have run into anomalies and outliers more than I can count. Across demand forecasting, finance, traffic, and sales data, I keep running into spikes and dips that are hard to interpret.</p>
+
+
+
+<p>Anomaly handling is usually a gray area, rarely black or white, but indicators of deeper issues. Some anomalies are real signals like holidays, weather events, promotions, or viral moments; others are just data glitches, but both look the same at first glance. The faster we detect anomalies in data, the faster action can be taken to prevent poor performance and damage.</p>
+
+
+
+<p>We are dealing with critical time-series data, and detecting anomalies is crucial. If you remove a true event, a valuable signal data point is removed, and if you keep a false alarm signal, the training data contains noise.</p>
+
+
+
+<p>Most ML-based detectors flag spikes based on Z-scores, IQR thresholds, or other static methods without any context. With recent advancements in AI, we have a better option to design an anomaly-handling agent that reasons about each case. An agent that detects unusual behavior, checks context, and decides whether to fix the data, keep it as a real signal, or flag it for review.</p>
+
+
+
+<p>In this article, we build such an agent step by step that combines simple statistical detection with an AI agent that acts as a first line of defense for time-series data, reducing manual intervention while preserving the signals that matter most. We will detect and handle anomalies in COVID-19 data by autonomous decision-making based on the severity of the anomaly, using:</p>
+
+
+
+<ol>
+<li>Live epidemiological data from the disease.sh API.</li>
+
+
+
+<li>Statistical anomaly detection.</li>
+
+
+
+<li>Severity classification.</li>
+
+
+
+<li>A GroqCloud-powered AI agent that takes autonomous decisions whether to:
+<ul>
+<li>Fix the anomaly</li>
+
+
+
+<li>Keep the anomaly</li>
+
+
+
+<li>Flag anomaly for human review</li>
+</ul>
+</li>
+</ol>
+
+
+
+<p>This is agentic decision intelligence, not merely anomaly detection.<br /></p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-41.png" alt="Figure 1: AI Agent Implementation for Anomaly Detection — Image by author." /><figcaption>Figure 1: AI Agent Implementation for Anomaly Detection <br />Image by author.</figcaption></figure>
+
+
+
+<h2>Why is traditional anomaly detection alone not enough?</h2>
+
+
+
+<p>There are traditional ML methods like isolation forests designed for anomaly detection, but they lack end-to-end decision orchestration. They are unable to act on them quickly enough in production environments. We are implementing an AI agent to fill this gap by turning raw anomaly scores into autonomous, end-to-end decisions dynamically on live data.<br /></p>
+
+
+
+<h3>Traditional Anomaly Detection</h3>
+
+
+
+<p>The traditional anomaly detection follows the pipeline approach as drawn below:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/Screenshot-2026-02-10-at-5.25.32-PM-1024x90.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<h4>Limitations of Traditional Anomaly Detection</h4>
+
+
+
+<ul>
+<li>Works on static rules and manually sets thresholds.</li>
+
+
+
+<li>It is single-dimensional and handles simple data.</li>
+
+
+
+<li>No contextual reasoning.</li>
+
+
+
+<li>Human-driven decision making.</li>
+
+
+
+<li>Manual-driven action.</li>
+</ul>
+
+
+
+<h3>Anomaly Detection and Handling with an AI Agent </h3>
+
+
+
+<p>The AI Agent anomaly detection follows the pipeline approach as drawn below:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/Screenshot-2026-02-10-at-5.31.12-PM-1024x89.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<h4>Why does this work better in practice?</h4>
+
+
+
+<ul>
+<li>Works on real-time data.</li>
+
+
+
+<li>It’s multidimensional and can handle complex data.</li>
+
+
+
+<li>Works on contextual reasoning.</li>
+
+
+
+<li>Adaptive &amp; self-learning decision making.</li>
+
+
+
+<li>Take autonomous action.</li>
+</ul>
+
+
+
+<h2>Choosing a realistic dataset for our example</h2>
+
+
+
+<p>We are using real-world COVID-19 data to detect anomalies, as it is noisy, shows spikes, and the results help in the improvement of public health.</p>
+
+
+
+<h3>What do we want the AI Agent to decide?</h3>
+
+
+
+<p>The goal is to continuously monitor COVID-19 data, find anomalies, define their severity, and take autonomous decisions and decide action to be taken:</p>
+
+
+
+<ul>
+<li>Flag anomaly for human review</li>
+
+
+
+<li>Fix the anomaly</li>
+
+
+
+<li>Keep the anomaly</li>
+</ul>
+
+
+
+<h3>Data Source</h3>
+
+
+
+<p>For the data, we are using free, live <a href="http://disease.sh/">disease.sh</a> data via API. This API provides data on daily confirmed cases, deaths and recoveries. For the AI Agent implementation, we are focusing on daily case counts, which are ideal for anomaly detection.</p>
+
+
+
+<p><em>Data license: This tutorial uses COVID-19 historical case counts retrieved via the disease.sh API. The underlying dataset (JHU CSSE COVID-19 Data Repository) is licensed under CC BY 4.0, which permits commercial use with attribution. (Accessed on January 22, 2026)</em><br /></p>
+
+
+
+<h3>How do the pieces fit together?</h3>
+
+
+
+<p>High-Level system architecture of the anomaly detection on COVID-19 data using an AI Agent is as follows:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-1-792x1024.jpeg" alt="" /><figcaption>Figure 2: AI agent sits between anomaly detection and downstream action, deciding whether to fix, keep, or escalate anomalies<br />Image by author<br /></figcaption></figure>
+
+
+
+<h3>Building the AI Agent Step-by-Step </h3>
+
+
+
+<p>Let’s go step by step to understand how to load data using <a href="http://disease.sh/">disease.sh</a>, detect anomalies, classify them, and implement an AI agent that reasons and takes appropriate action as per the severity of the anomalies.</p>
+
+
+
+<h4>Step 1: Install Required Libraries</h4>
+
+
+
+<p>The first step is to install required libraries like phidata, groq, python-dotenv, tabulate, and streamlit.</p>
+
+
+
+<pre><code>pip install phidata
+pip install groq
+pip install python-dotenv #library to load .env file
+pip install tabulate
+pip install streamlit</code></pre>
+
+
+
+<h4>Step 2: Environment File Set-up</h4>
+
+
+
+<p>Open your IDE and create a project folder, and under that folder, create an environmental file “.env” to store GROQ_API_KEY.</p>
+
+
+
+<pre><code>GROQ_API_KEY="your_groq_api_key_here"</code></pre>
+
+
+
+<h4>Step 3: Data Ingestion</h4>
+
+
+
+<p>Before building any agent, we need a data source that is noisy enough to surface real anomalies, but structured enough to reason about. COVID-19 daily case counts are a good fit as they contain reporting delays, sudden spikes, and regime changes. For simplicity, we deliberately restrict ourselves to a single univariate time series.</p>
+
+
+
+<p>Load data from the <a href="http://disease.sh/">disease.sh</a> using request URL and extract the date and daily case count based on the selected country and the number of days for which you want to extract data. The data is converted into a structured dataframe by parsing json, formatting date and sorting chronologically.</p>
+
+
+
+<pre><code># ---------------------------------------
+# DATA INGESTION (disease.sh)
+# ---------------------------------------
+
+def load_live_covid_data(country: str , days:int):
+    url = f"https://disease.sh/v3/covid-19/historical/{country}?lastdays={days}"
+    response = requests.get(url)
+    data = response.json()["timeline"]["cases"]
+
+    df = (
+        pd.DataFrame(list(data.items()), columns=["Date", "Cases"])
+        .assign(Date=lambda d: pd.to_datetime(d["Date"], format="%m/%d/%y"))
+        .sort_values("Date")
+        .reset_index(drop=True)
+    )
+    return df</code></pre>
+
+
+
+<h4>Step 4: Anomalies Detection</h4>
+
+
+
+<p>We will now detect abnormal behavior in COVID-19 time-series data by detecting sudden spikes and rapid growth trends. Case counts are generally stable, and large deviations or sharp increases indicate meaningful anomalies. We will now detect anomalies using statistical methods and binary labeling for deterministic and reproducible anomaly detection. Two parameters are calculated to detect anomalies.</p>
+
+
+
+<ol>
+<li>Spike Detection
+<ul>
+<li>A sudden spike in data is detected using the Z-score; if any data point falls outside the Z-score range, it must be an anomaly.</li>
+</ul>
+</li>
+
+
+
+<li>Growth Rate Detection
+<ul>
+<li>The day-over-day growth rate is calculated; if it exceeds 40%, it is flagged.</li>
+</ul>
+</li>
+</ol>
+
+
+
+<pre><code># ---------------------------------------
+# ANOMALY DETECTION
+# ---------------------------------------
+def detect_anomalies(df):
+   values = df["Cases"].values
+   mean, std = values.mean(), values.std()
+
+   spike_idx = [
+       i for i, v in enumerate(values)
+       if abs(v - mean) &gt; 3 * std
+   ]
+
+   growth = np.diff(values) / np.maximum(values[:-1], 1)
+   growth_idx = [i + 1 for i, g in enumerate(growth) if g &gt; 0.4]
+
+   anomalies = set(spike_idx + growth_idx)
+   df["Anomaly"] = ["YES" if i in anomalies else "NO" for i in range(len(df))]
+
+   return df</code></pre>
+
+
+
+<p>If there is an anomaly according to either spike or growth or with both parameters, the “Anomaly” is set to “YES”; otherwise set to “NO”.</p>
+
+
+
+<h4>Step 5: Severity Classification</h4>
+
+
+
+<p>All anomalies are not equal; we will classify them as ‘<strong>CRITICAL</strong>’, ‘<strong>WARNING</strong>’, or ‘<strong>MINOR</strong>’ to guide AI Agent decisions. Fixed rolling windows and rule-based thresholds are used to classify severity. Severity is classified only when an anomaly exists; otherwise, Severity, Agent Decision, and Action parameters in the dataframe are set to ‘blank’.</p>
+
+
+
+<pre><code># ---------------------------------------
+# CONFIG
+# ---------------------------------------
+ROLLING_WINDOW = 7
+MIN_ABS_INCREASE = 500
+
+# ---------------------------------------
+# SEVERITY CLASSIFICATION
+# ---------------------------------------
+def compute_severity(df):
+    df = df.sort_values("Date").reset_index(drop=True)
+    df["Severity"] = ""
+    df["Agent Decision"] = ""
+    df["Action"] = ""
+    for i in range(len(df)):
+        if df.loc[i, "Anomaly"] == "YES":
+            if i &lt; ROLLING_WINDOW:
+                df.loc[i, "Severity"] = ""
+
+            curr = df.loc[i, "Cases"]
+            baseline = df.loc[i - ROLLING_WINDOW:i- 1, "Cases"].mean()
+
+            abs_inc = curr - baseline
+            growth = abs_inc / max(baseline, 1)
+
+            if abs_inc &lt; MIN_ABS_INCREASE:
+                df.loc[i, "Severity"] = ""
+            if growth &gt;= 1.0:
+                df.loc[i, "Severity"] = "CRITICAL"
+            elif growth &gt;= 0.4:
+                df.loc[i, "Severity"] = "WARNING"
+            else:
+                df.loc[i, "Severity"] = "MINOR"
+    return df</code></pre>
+
+
+
+<p>In the above code, to classify the anomaly severity, each anomaly is compared with 7-day historical data (<strong>ROLLING_WINDOW</strong> = 7), and absolute and relative growth are calculated.</p>
+
+
+
+<ol>
+<li>Absolute Growth</li>
+</ol>
+
+
+
+<p>A <strong>MIN_ABS_INCREASE </strong>= 500 is defined as a config parameter where changes below this value are considered very small, a negligible change. If the absolute growth is less than MIN_ABS_INCREASE, then ignore it and keep the severity blank. Absolute growth detects meaningful real-world impact, does not react to noise or minor fluctuations, and prevents false alarms when growth percentage is high.</p>
+
+
+
+<ol>
+<li>Relative Growth:</li>
+</ol>
+
+
+
+<p>Relative growth helps in detecting explosive trends. If growth is greater than or equal to 100% increase over baseline, it means a sudden outbreak, and it is assigned as ‘<strong>CRITICAL</strong>’; if growth is greater than 40%, it means sustained acceleration and needs monitoring, and it is assigned as ‘<strong>WARNING</strong>’; otherwise assigned as ‘<strong>MINOR</strong>’. </p>
+
+
+
+<p>After severity classification, it is ready for the AI Agent to make an autonomous decision and action.</p>
+
+
+
+<h4>Step 6: Build Prompt for AI Agent</h4>
+
+
+
+<p>Below is the prompt that defines how the AI agent reasons and makes decisions based on structured context and predefined severity when an anomaly is detected.  The agent is restricted to three explicit actions and must return a single, deterministic response for safe automation.</p>
+
+
+
+<pre><code>def build_agent_prompt(obs):
+    return f"""
+You are an AI monitoring agent for COVID-19 data.
+
+Observed anomaly:
+Date: {obs['date']}
+Cases: {obs['cases']}
+Severity: {obs['severity']}
+
+Decision rules:
+- FIX_ANOMALY: noise, reporting fluctuation
+- KEEP_ANOMALY: real outbreak signal
+- FLAG_FOR_REVIEW: severe or ambiguous anomaly
+
+Respond with ONLY one of:
+FIX_ANOMALY
+KEEP_ANOMALY
+FLAG_FOR_REVIEW
+"""</code></pre>
+
+
+
+<p>Three data points, i.e., date, number of cases reported, and severity, are provided to the prompt explicitly, which helps the AI Agent to make a decision autonomously.</p>
+
+
+
+<h4>Step 7: Create your Agent with GroqCloud</h4>
+
+
+
+<p>We are now creating an autonomous AI agent using GroqCloud that makes intelligent contextual decisions on detected anomalies and their severities and takes appropriate actions. Three predefined actions for the AI Agent enforce validated outputs only.</p>
+
+
+
+<pre><code># ---------------------------------------
+# BUILDING AI AGENT
+# ---------------------------------------
+agent = Agent(
+    name="CovidAnomalyAgent",
+    model=Groq(id="openai/gpt-oss-120b"),
+    instructions="""
+You are an AI agent monitoring live COVID-19 time-series data.
+Detect anomalies, decide according to the anomaly:
+"FIX_ANOMALY", "KEEP_ANOMALY", "FLAG_FOR_REVIEW"."""
+)
+for i in range(len(df)):
+    if df.loc[i, "Anomaly"] == "YES":
+        obs = build_observation(df, i)
+        prompt = build_agent_prompt(obs)
+        response = agent.run(prompt)
+
+        decision = response.messages[-1].content.strip()
+        decision = decision if decision in VALID_ACTIONS else "FLAG_FOR_REVIEW"
+        df = agent_action(df, i, decision)</code></pre>
+
+
+
+<p>An AI agent named “<strong>CovidAnomalyAgent</strong>” is created, which uses an LLM model hosted by GroqCloud for fast and low-latency reasoning. AI Agent runs a well-defined prompt, observes data, contextual reasoning, makes an autonomous decision, and takes actions within safe constraints.</p>
+
+
+
+<p>An AI Agent is not handling anomalies but making intelligent decisions for each detected anomaly. The agent’s decision accurately reflects anomaly severity and required action.</p>
+
+
+
+<pre><code># ---------------------------------------
+# Agent ACTION DECIDER
+# ---------------------------------------
+def agent_action(df, idx,action):
+    df.loc[idx, "Agent Decision"] = action
+
+    if action == "FIX_ANOMALY":
+        fix_anomaly(df, idx)
+
+    elif action == "KEEP_ANOMALY":
+        df.loc[idx, "Action"] = "Accepted as a real outbreak signal"
+
+    elif action == "FLAG_FOR_REVIEW":
+        df.loc[idx, "Action"] = "Flagged for human review"
+    return df</code></pre>
+
+
+
+<p>AI Agent ignores normal data points with no anomaly and considers only data points with “<strong>ANOMALY= YES</strong>”. The AI agent is constrained to return only three valid decisions: “<strong>FIX_ANOMALY</strong>“, “<strong>KEEP_ANOMALY</strong>“, and “<strong>FLAG_FOR_REVIEW</strong>“, and accordingly, action is taken as defined in the table below:</p>
+
+
+
+<figure><table><tbody><tr><td><strong>Agent Decision</strong></td><td><strong>Action</strong></td></tr><tr><td>FIX_ANOMALY</td><td>Auto-corrected by an AI agent</td></tr><tr><td>KEEP_ANOMALY</td><td>Accepted as a real outbreak signal</td></tr><tr><td>FLAG_FOR_REVIEW</td><td>Flagged for human review</td></tr></tbody></table></figure>
+
+
+
+<p>For minor anomalies, the AI agent automatically fixes the data, preserves valid anomalies as-is, and flags critical cases for human review.</p>
+
+
+
+<h4>Step 8: Fix Anomaly</h4>
+
+
+
+<p>Minor anomalies are caused by reporting noise and are corrected using local rolling mean smoothing over recent historical values.</p>
+
+
+
+<pre><code># ---------------------------------------
+# FIX ANOMALY
+# ---------------------------------------
+
+def fix_anomaly(df, idx):
+    window = df.loc[max(0, idx - 3):idx - 1, "Cases"]
+    if len(window) &gt; 0:
+        df.loc[idx, "Cases"] = int(window.mean())
+
+    df.loc[idx, "Severity"] = ""
+    df.loc[idx, "Action"] = "Auto-corrected by an AI agent"</code></pre>
+
+
+
+<p>It takes the immediate 3 days of past data, calculates its mean, and smooths the anomaly by replacing its value with this average. By the local rolling mean smoothing approach, temporary spikes and data glitches can be handled. </p>
+
+
+
+<p>Once an anomaly is fixed, the data point is no longer considered risky, and severity is intentionally removed to avoid confusion. “Action” is updated to “Auto-corrected by an AI agent”.</p>
+
+
+
+<h3>Complete Code</h3>
+
+
+
+<p>Kindly go through the complete code for the statistical anomaly detection and AI Agent implementation for anomaly handling.</p>
+
+
+
+<p><a href="https://github.com/rautmadhura4/anomaly_detection_agent/tree/main">https://github.com/rautmadhura4/anomaly_detection_agent/tree/main</a></p>
+
+
+
+<h3>Results</h3>
+
+
+
+<p>Let’s compare the results for the country, “India,” with different types of severity detected and how the AI Agent handles them.</p>
+
+
+
+<h4>Scenario 1: A Native Implementation</h4>
+
+
+
+<p>The first attempt is a native implementation where we detect minor anomalies and the AI Agent fixes them automatically. Below is the snapshot of the COVID data table of India with severity.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-42-1024x617.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>We have also implemented a Streamlit dashboard to review the AI Agent’s decisions and actions. In the below result snapshot, you can see that various minor anomalies are fixed by the AI Agent.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-43-1024x617.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>This works best when anomalies are localized noise rather than regime changes.</p>
+
+
+
+<h4>Scenario 2: A Boundary Condition</h4>
+
+
+
+<p>Here, critical anomalies are detected, and the AI Agent raises a flag for review as shown in the snapshot of the COVID data table of India with severity.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-44-1024x375.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>On the Streamlit dashboard AI Agent’s decisions and actions are shown in the result snapshot. You can see that all the critical anomalies were flagged for human review by the AI Agent.<br /></p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-45-1024x376.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>Severity gating prevents destructive auto-corrections in high-impact anomalies.</p>
+
+
+
+<h4>Scenario 3: A Limitation </h4>
+
+
+
+<p>For the limitation scenario, warning and critical anomalies are detected as shown in the snapshot of the COVID data table of India with severity.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-46-1024x293.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>On the Streamlit dashboard AI Agent’s decisions and actions are shown below in the result snapshot. You can see that the critical anomaly is flagged for human review by AI Agent, but the WARNING anomaly is automatically fixed. In many real settings, a WARNING-level anomaly should be preserved and monitored rather than corrected.</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-47-1024x347.png" alt="" /><figcaption>Image by author</figcaption></figure>
+
+
+
+<p>This failure highlights why WARNING thresholds should be tuned and why human review remains essential.</p>
+
+
+
+<p>Use the complete code and try anomaly detection for the COVID-19 dataset, with different parameters.</p>
+
+
+
+<h2>Future Scope and Enhancements</h2>
+
+
+
+<p>We have used a very limited dataset and implemented rule-based anomaly detection, but in the future, some enhancements can be done in the AI Agent implementation:</p>
+
+
+
+<ol>
+<li>In our implementation, an anomaly is detected, and a decision is made based on case count only. In the future, data can be more elaborate with features like hospitalization records, vaccination data, and others.</li>
+</ol>
+
+
+
+<ol>
+<li>Anomaly detection is done here using statistical methods, which can also be ML-driven in the future to identify more complex patterns.</li>
+</ol>
+
+
+
+<ol>
+<li>Now, we have implemented a single-agent architecture; in the future multi-agent architecture can be implemented to improve scalability, clarity, and resilience.</li>
+
+
+
+<li>In the future human feedback loop should also take care to make improved decisions.</li>
+</ol>
+
+
+
+<h2>Final Takeaways</h2>
+
+
+
+<p>Smarter AI agents enable operational AI that makes decisions using contextual reasoning, takes action to fix anomalies, and escalates to humans when needed. There are some practical takeaways to keep in mind while building an AI Agent for anomaly detection:</p>
+
+
+
+<ul>
+<li>To detect anomalies, use statistical methods and implement AI agents for contextual decision-making.</li>
+</ul>
+
+
+
+<ul>
+<li>Minor anomalies are safe to be autocorrected as they are generally reported as noise. Critical should never be autocorrected and flagged for review by domain experts so that real-world signals do not get suppressed.</li>
+</ul>
+
+
+
+<ul>
+<li>This AI agent must not be used in situations where anomalies directly trigger irreversible actions.</li>
+</ul>
+
+
+
+<p>When statistical methods and an AI agent approach are combined properly, they transform anomaly detection from just an alerting system into a controlled, decision-driven system without compromising safety.</p>
+
+
+
+
+</div></div>
+  </div>
+</body>
+</html>

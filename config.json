@@ -1,0 +1,263 @@
+{
+  "settings": {
+    "articlesPerFeed": 15,
+    "maxArticlesPerCategory": 30,
+    "summaryMaxLength": 600,
+    "deduplication": {
+      "enabled": true,
+      "similarityThreshold": 0.7,
+      "contentThreshold": 0.5
+    }
+  },
+  "categories": {
+    "ai": {
+      "labels": { "en": "AI - Artificial Intelligence", "fr": "IA - Intelligence Artificielle" },
+      "icon": "brain",
+      "priority": 1,
+      "feeds": [
+        { "name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "tags": ["AI", "Startups", "Tech"], "lang": "en" },
+        { "name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/", "tags": ["AI", "Enterprise", "Business"], "lang": "en" },
+        { "name": "AI News", "url": "https://www.artificialintelligence-news.com/feed/", "tags": ["AI", "News", "Industry"], "lang": "en" },
+        { "name": "Google AI Blog", "url": "https://ai.googleblog.com/feeds/posts/default", "tags": ["AI", "Research", "Google"], "lang": "en" },
+        { "name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/", "tags": ["AI", "Research", "Innovation"], "lang": "en" },
+        { "name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "tags": ["AI", "LLM", "GPT"], "lang": "en" },
+        { "name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "tags": ["AI", "ML", "Open Source"], "lang": "en" },
+        { "name": "Medium AI", "url": "https://medium.com/tag/artificial-intelligence/feed", "tags": ["AI", "ML", "Deep Learning"], "lang": "en" },
+        { "name": "Towards Data Science", "url": "https://towardsdatascience.com/feed", "tags": ["AI", "Data Science", "Analytics"], "lang": "en" },
+        { "name": "ActuIA", "url": "https://actuia.com/feed/", "tags": ["IA", "Actualites", "France"], "lang": "fr" },
+        { "name": "LeMagIT - IA", "url": "https://www.lemagit.fr/rss/IA.xml", "tags": ["IA", "Entreprise", "Tech"], "lang": "fr" },
+        { "name": "Siecle Digital", "url": "https://siecledigital.fr/feed/", "tags": ["IA", "Digital", "Tech"], "lang": "fr" },
+        { "name": "Numerama Tech", "url": "https://www.numerama.com/feed/", "tags": ["IA", "Tech", "Science"], "lang": "fr" }
+      ]
+    },
+    "cybersecurity": {
+      "labels": { "en": "Cybersecurity", "fr": "Cybersecurite" },
+      "icon": "shield",
+      "priority": 2,
+      "feeds": [
+        { "name": "The Hacker News", "url": "https://feeds.feedburner.com/TheHackersNews", "tags": ["Security", "Vulnerabilities", "Threats"], "lang": "en" },
+        { "name": "Bleeping Computer", "url": "https://www.bleepingcomputer.com/feed/", "tags": ["Security", "Malware", "CVE"], "lang": "en" },
+        { "name": "Krebs on Security", "url": "https://krebsonsecurity.com/feed/", "tags": ["Security", "Fraud", "Privacy"], "lang": "en" },
+        { "name": "Dark Reading", "url": "https://www.darkreading.com/rss_simple.asp", "tags": ["Security", "CVE", "Enterprise"], "lang": "en" },
+        { "name": "SecurityWeek", "url": "https://www.securityweek.com/feed/", "tags": ["Security", "CVE", "News"], "lang": "en" },
+        { "name": "Threatpost", "url": "https://threatpost.com/feed/", "tags": ["Security", "Threats", "CVE"], "lang": "en" },
+        { "name": "Penta Security", "url": "https://www.pentasecurity.com/blog/feed/", "tags": ["Security", "WAF", "Encryption"], "lang": "en" },
+        { "name": "Google Project Zero", "url": "https://googleprojectzero.blogspot.com/feeds/posts/default", "tags": ["Security", "0day", "Research"], "lang": "en" },
+        { "name": "PortSwigger Research", "url": "https://portswigger.net/research/rss", "tags": ["Security", "WebSec", "Research"], "lang": "en" },
+        { "name": "HackerOne Blog", "url": "https://www.hackerone.com/blog.rss", "tags": ["Bug Bounty", "Security", "Hacking"], "lang": "en" },
+        { "name": "Bugcrowd Blog", "url": "https://www.bugcrowd.com/blog/feed", "tags": ["Bug Bounty", "Security", "Pentesting"], "lang": "en" },
+        { "name": "Packet Storm Security", "url": "https://packetstormsecurity.com/feeds/", "tags": ["Exploits", "Advisories", "Security"], "lang": "en" },
+        { "name": "Exploit-DB", "url": "https://www.exploit-db.com/rss.xml", "tags": ["Exploits", "CVE", "Security"], "lang": "en" },
+        { "name": "CTFtime", "url": "https://ctftime.org/event/list/upcoming/rss/", "tags": ["CTF", "Hacking", "Competition"], "lang": "en" },
+        { "name": "CERT-FR", "url": "https://www.cert.ssi.gouv.fr/feed/", "tags": ["Securite", "Alertes", "France"], "lang": "fr" },
+        { "name": "Zataz", "url": "https://www.zataz.com/feed/", "tags": ["Securite", "Cybercrime", "France"], "lang": "fr" },
+        { "name": "UnderNews", "url": "https://www.undernews.fr/feed", "tags": ["Securite", "Malware", "France"], "lang": "fr" },
+        { "name": "NoLimitSecu", "url": "https://www.nolimitsecu.fr/feed/", "tags": ["Securite", "Podcast", "France"], "lang": "fr" },
+        { "name": "LeMagIT - Securite", "url": "https://www.lemagit.fr/rss/Securite.xml", "tags": ["Securite", "Entreprise", "France"], "lang": "fr" }
+      ]
+    },
+    "iot": {
+      "labels": { "en": "IoT - Internet of Things", "fr": "IdO - Internet des Objets" },
+      "icon": "cpu",
+      "priority": 3,
+      "feeds": [
+        { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/news/feed/", "tags": ["IoT", "RaspberryPi", "Hardware"], "lang": "en" },
+        { "name": "Arduino Blog", "url": "https://blog.arduino.cc/feed/", "tags": ["IoT", "Arduino", "Hardware"], "lang": "en" },
+        { "name": "Hackster.io", "url": "https://www.hackster.io/news/feed", "tags": ["IoT", "Hardware", "Projects"], "lang": "en" },
+        { "name": "IoT For All", "url": "https://www.iotforall.com/feed", "tags": ["IoT", "News"], "lang": "en" },
+        { "name": "IoT Business News", "url": "https://iotbusinessnews.com/feed/", "tags": ["IoT", "Business", "News"], "lang": "en" },
+        { "name": "IoT World Today", "url": "https://www.iotworldtoday.com/feed", "tags": ["IoT", "News"], "lang": "en" },
+        { "name": "Adafruit Blog", "url": "https://blog.adafruit.com/feed/", "tags": ["IoT", "Maker", "Hardware"], "lang": "en" },
+        { "name": "SparkFun Blog", "url": "https://www.sparkfun.com/news/feed", "tags": ["IoT", "Electronics", "Hardware"], "lang": "en" },
+        { "name": "Embedded.com", "url": "https://www.embedded.com/feed", "tags": ["Embedded", "IoT", "Hardware"], "lang": "en" },
+        { "name": "Domotique News", "url": "http://www.domotique-news.com/feed", "tags": ["Domotique", "IoT", "Maison"], "lang": "fr" },
+        { "name": "Framboise 314", "url": "https://www.framboise314.fr/feed/", "tags": ["RaspberryPi", "IoT", "DIY"], "lang": "fr" },
+        { "name": "Maison et Domotique", "url": "https://www.maison-et-domotique.com/feed/", "tags": ["Domotique", "SmartHome", "IoT"], "lang": "fr" }
+      ]
+    },
+    "windows": {
+      "labels": { "en": "Windows", "fr": "Windows" },
+      "icon": "monitor",
+      "priority": 4,
+      "feeds": [
+        { "name": "Windows Central", "url": "https://www.windowscentral.com/feed", "tags": ["Windows", "Microsoft", "PC"], "lang": "en" },
+        { "name": "Neowin", "url": "https://www.neowin.net/news/rss/", "tags": ["Windows", "Microsoft", "Tech"], "lang": "en" },
+        { "name": "Windows Latest", "url": "https://www.windowslatest.com/feed/", "tags": ["Windows", "Updates", "Microsoft"], "lang": "en" },
+        { "name": "BleepingComputer Windows", "url": "https://www.bleepingcomputer.com/feed/", "tags": ["Windows", "Security", "Updates"], "lang": "en" },
+        { "name": "Next INpact", "url": "https://next.ink/feed/", "tags": ["Windows", "Tech", "Numerique"], "lang": "fr" },
+        { "name": "GNT", "url": "https://www.generation-nt.com/export/rss.xml", "tags": ["Windows", "Tech", "Logiciels"], "lang": "fr" }
+      ]
+    },
+    "mac": {
+      "labels": { "en": "Mac / Apple", "fr": "Mac / Apple" },
+      "icon": "apple",
+      "priority": 5,
+      "feeds": [
+        { "name": "9to5Mac", "url": "https://9to5mac.com/feed/", "tags": ["Apple", "Mac", "iOS"], "lang": "en" },
+        { "name": "MacRumors", "url": "https://feeds.macrumors.com/MacRumors-All", "tags": ["Apple", "Mac", "Rumors"], "lang": "en" },
+        { "name": "AppleInsider", "url": "https://appleinsider.com/rss/news/", "tags": ["Apple", "Mac", "News"], "lang": "en" },
+        { "name": "The Mac Observer", "url": "https://www.macobserver.com/feed/", "tags": ["Apple", "Mac", "Reviews"], "lang": "en" },
+        { "name": "MacGeneration", "url": "https://www.macgeneration.com/rss", "tags": ["Apple", "Mac", "France"], "lang": "fr" },
+        { "name": "iGeneration", "url": "https://www.igen.fr/rss", "tags": ["Apple", "iOS", "France"], "lang": "fr" }
+      ]
+    },
+    "linux": {
+      "labels": { "en": "Linux", "fr": "Linux" },
+      "icon": "terminal",
+      "priority": 6,
+      "feeds": [
+        { "name": "OMG! Ubuntu", "url": "https://www.omgubuntu.co.uk/feed", "tags": ["Linux", "Ubuntu", "Open Source"], "lang": "en" },
+        { "name": "Its FOSS", "url": "https://itsfoss.com/feed/", "tags": ["Linux", "Open Source", "Tutorials"], "lang": "en" },
+        { "name": "Phoronix", "url": "https://www.phoronix.com/rss.php", "tags": ["Linux", "Benchmarks", "Hardware"], "lang": "en" },
+        { "name": "LWN.net", "url": "https://lwn.net/headlines/rss", "tags": ["Linux", "Kernel", "Development"], "lang": "en" },
+        { "name": "GamingOnLinux", "url": "https://www.gamingonlinux.com/article_rss.php", "tags": ["Linux", "Gaming", "Proton"], "lang": "en" },
+        { "name": "LinuxFr", "url": "https://linuxfr.org/news.atom", "tags": ["Linux", "Logiciel Libre", "France"], "lang": "fr" },
+        { "name": "Journal du Hacker", "url": "https://www.journalduhacker.net/rss", "tags": ["Linux", "Hacking", "Open Source"], "lang": "fr" },
+        { "name": "Toolinux", "url": "https://www.toolinux.com/feed", "tags": ["Linux", "Logiciel Libre", "France"], "lang": "fr" }
+      ]
+    },
+    "tech": {
+      "labels": { "en": "General Tech", "fr": "Tech Generale" },
+      "icon": "zap",
+      "priority": 7,
+      "feeds": [
+        { "name": "The Verge", "url": "https://www.theverge.com/rss/index.xml", "tags": ["Tech", "News", "Reviews"], "lang": "en" },
+        { "name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index", "tags": ["Tech", "Science", "Analysis"], "lang": "en" },
+        { "name": "Wired", "url": "https://www.wired.com/feed/rss", "tags": ["Tech", "Culture", "Science"], "lang": "en" },
+        { "name": "TechRadar", "url": "https://www.techradar.com/rss", "tags": ["Tech", "Reviews", "Gadgets"], "lang": "en" },
+        { "name": "Korben", "url": "https://korben.info/feed", "tags": ["Tech", "Outils", "Astuces"], "lang": "fr" },
+        { "name": "Frandroid", "url": "https://www.frandroid.com/feed", "tags": ["Tech", "Mobile", "Android"], "lang": "fr" },
+        { "name": "Numerama", "url": "https://www.numerama.com/feed/", "tags": ["Tech", "Numerique", "Societe"], "lang": "fr" },
+        { "name": "Le Monde Informatique", "url": "https://www.lemondeinformatique.fr/flux-rss/thematique/toutes-les-actualites/rss/", "tags": ["Tech", "Entreprise", "IT"], "lang": "fr" }
+      ]
+    },
+    "entrepreneurship": {
+      "labels": { "en": "Entrepreneurship", "fr": "Entrepreneuriat" },
+      "icon": "rocket",
+      "priority": 8,
+      "feeds": [
+        { "name": "TechCrunch Startups", "url": "https://techcrunch.com/category/startups/feed/", "tags": ["Startups", "Fundraising", "Tech"], "lang": "en" },
+        { "name": "Entrepreneur.com", "url": "https://www.entrepreneur.com/latest/feed", "tags": ["Entrepreneurship", "Business", "Startups"], "lang": "en" },
+        { "name": "Inc.com", "url": "https://www.inc.com/rss", "tags": ["Business", "Startups", "Leadership"], "lang": "en" },
+        { "name": "Maddyness", "url": "https://www.maddyness.com/feed/", "tags": ["Startups", "Entrepreneuriat", "France"], "lang": "fr" },
+        { "name": "FrenchWeb", "url": "https://www.frenchweb.fr/feed", "tags": ["Startups", "Tech", "France"], "lang": "fr" },
+        { "name": "BPI France Le Hub", "url": "https://lehub.bpifrance.fr/feed/", "tags": ["Entrepreneuriat", "Innovation", "France"], "lang": "fr" },
+        { "name": "Les Echos Entrepreneurs", "url": "https://business.lesechos.fr/feed/", "tags": ["Business", "Entrepreneurs", "France"], "lang": "fr" },
+        { "name": "Journal du Net", "url": "https://www.journaldunet.com/rss/", "tags": ["Business", "Tech", "Economie"], "lang": "fr" },
+        { "name": "Capital", "url": "https://www.capital.fr/feed", "tags": ["Business", "Economie", "France"], "lang": "fr" }
+      ]
+    },
+    "finance": {
+      "labels": { "en": "Stock Market & Finance", "fr": "Bourse & Finance" },
+      "icon": "trending-up",
+      "priority": 9,
+      "feeds": [
+        { "name": "MarketWatch", "url": "https://feeds.marketwatch.com/marketwatch/topstories/", "tags": ["Finance", "Markets", "Stocks"], "lang": "en" },
+        { "name": "Yahoo Finance", "url": "https://finance.yahoo.com/rss/", "tags": ["Finance", "Markets", "Economy"], "lang": "en" },
+        { "name": "Reuters Business", "url": "https://www.reuters.com/business/finance/rss", "tags": ["Finance", "Business", "Global"], "lang": "en" },
+        { "name": "Investing.com", "url": "https://www.investing.com/rss/news.rss", "tags": ["Finance", "Trading", "Markets"], "lang": "en" },
+        { "name": "Zonebourse", "url": "https://www.zonebourse.com/rss/", "tags": ["Bourse", "Actions", "Finance"], "lang": "fr" },
+        { "name": "Boursorama", "url": "https://www.boursorama.com/rss/actualites", "tags": ["Bourse", "Marches", "Finance"], "lang": "fr" },
+        { "name": "ABC Bourse", "url": "https://www.abcbourse.com/rss/", "tags": ["Bourse", "Analyse", "Finance"], "lang": "fr" },
+        { "name": "Investir Les Echos", "url": "https://investir.lesechos.fr/feed/", "tags": ["Investissement", "Bourse", "Finance"], "lang": "fr" }
+      ]
+    },
+    "crypto": {
+      "labels": { "en": "Crypto & Blockchain", "fr": "Crypto & Blockchain" },
+      "icon": "link",
+      "priority": 10,
+      "feeds": [
+        { "name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "tags": ["Crypto", "Bitcoin", "Blockchain"], "lang": "en" },
+        { "name": "CoinTelegraph", "url": "https://cointelegraph.com/rss", "tags": ["Crypto", "Blockchain", "DeFi"], "lang": "en" },
+        { "name": "The Block", "url": "https://www.theblock.co/rss.xml", "tags": ["Crypto", "Blockchain", "Analysis"], "lang": "en" },
+        { "name": "Decrypt", "url": "https://decrypt.co/feed", "tags": ["Crypto", "Web3", "NFT"], "lang": "en" },
+        { "name": "Journal du Coin", "url": "https://journalducoin.com/feed/", "tags": ["Crypto", "Bitcoin", "France"], "lang": "fr" },
+        { "name": "Cryptoast", "url": "https://cryptoast.fr/feed/", "tags": ["Crypto", "Blockchain", "France"], "lang": "fr" },
+        { "name": "CoinTribune", "url": "https://www.cointribune.com/feed/", "tags": ["Crypto", "Blockchain", "France"], "lang": "fr" }
+      ]
+    },
+    "opensource": {
+      "labels": { "en": "Open Source & GitHub", "fr": "Open Source & GitHub" },
+      "icon": "git-branch",
+      "priority": 11,
+      "feeds": [
+        { "name": "GitHub Blog", "url": "https://github.blog/feed/", "tags": ["GitHub", "Open Source", "DevTools"], "lang": "en" },
+        { "name": "GitHub Changelog", "url": "https://github.blog/changelog/feed/", "tags": ["GitHub", "Updates", "Features"], "lang": "en" },
+        { "name": "GitHub Trending", "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml", "tags": ["GitHub", "Trending", "Repos"], "lang": "en" },
+        { "name": "GitHub Trending Python", "url": "https://mshibanami.github.io/GitHubTrendingRSS/daily/python.xml", "tags": ["GitHub", "Python", "Trending"], "lang": "en" },
+        { "name": "The Changelog", "url": "https://changelog.com/feed", "tags": ["Open Source", "Podcast", "DevTools"], "lang": "en" },
+        { "name": "Console.dev", "url": "https://console.dev/rss.xml", "tags": ["DevTools", "Open Source", "Weekly"], "lang": "en" },
+        { "name": "Dev.to Open Source", "url": "https://dev.to/feed/tag/opensource", "tags": ["Open Source", "Community", "Dev"], "lang": "en" },
+        { "name": "LibHunt Selfhosted", "url": "https://selfhosted.libhunt.com/feed", "tags": ["Self-hosted", "Open Source", "Tools"], "lang": "en" }
+      ]
+    },
+    "products": {
+      "labels": { "en": "Products & Innovation", "fr": "Produits & Innovation" },
+      "icon": "package",
+      "priority": 12,
+      "feeds": [
+        { "name": "Product Hunt", "url": "https://www.producthunt.com/feed", "tags": ["Products", "Launch", "Startups"], "lang": "en" },
+        { "name": "Hacker News Show", "url": "https://hnrss.org/show", "tags": ["Products", "Launch", "HackerNews"], "lang": "en" },
+        { "name": "BetaList", "url": "https://betalist.com/feed", "tags": ["Beta", "Startups", "Products"], "lang": "en" },
+        { "name": "Indie Hackers", "url": "https://www.indiehackers.com/feed", "tags": ["Indie", "Products", "SaaS"], "lang": "en" },
+        { "name": "Les Numeriques", "url": "https://www.lesnumeriques.com/rss.xml", "tags": ["Produits", "Tests", "Tech"], "lang": "fr" },
+        { "name": "Journal du Geek", "url": "https://www.journaldugeek.com/feed/", "tags": ["Produits", "Gadgets", "Tech"], "lang": "fr" },
+        { "name": "Futura Tech", "url": "https://www.futura-sciences.com/tech/rss", "tags": ["Innovation", "Science", "Tech"], "lang": "fr" },
+        { "name": "01net", "url": "https://www.01net.com/rss/info/flux-rss.xml", "tags": ["Produits", "Tests", "Tech"], "lang": "fr" }
+      ]
+    }
+  },
+  "keywords": {
+    "universal": [
+      "LLM", "GPT", "ChatGPT", "Copilot", "Gemini", "Claude", "Mistral", "Llama",
+      "Stable Diffusion", "Midjourney", "Docker", "Kubernetes", "DevOps",
+      "GitHub", "GitLab", "Python", "Rust", "JavaScript", "TypeScript",
+      "Raspberry Pi", "Arduino", "ESP32", "Ubuntu", "Debian", "Fedora", "Arch",
+      "macOS", "iOS", "Android", "Windows 11",
+      "API", "Open Source", "Cloud", "AWS", "Azure", "GCP",
+      "Ransomware", "Phishing", "Zero-day", "CVE", "CERT",
+      "5G", "Wi-Fi", "Bluetooth", "Zigbee", "Matter",
+      "Tesla", "NVIDIA", "AMD", "Intel", "ARM", "RISC-V",
+      "OpenClaw", "ClowdBot", "MoltBot",
+      "Blockchain", "Bitcoin", "Ethereum", "DeFi", "NFT", "Web3",
+      "Startup", "Fintech", "SaaS", "Scaleup",
+      "CAC 40", "S&P 500", "NASDAQ", "Dow Jones",
+      "IPO", "Trading",
+      "Product Hunt", "Kickstarter", "Gadget", "Wearable",
+      "Self-hosted", "CLI", "Framework", "SDK"
+    ],
+    "localized": {
+      "artificial_intelligence": { "en": "Artificial Intelligence", "fr": "Intelligence Artificielle" },
+      "machine_learning": { "en": "Machine Learning", "fr": "Apprentissage Automatique" },
+      "deep_learning": { "en": "Deep Learning", "fr": "Apprentissage Profond" },
+      "cybersecurity": { "en": "Cybersecurity", "fr": "Cybersecurite" },
+      "data_breach": { "en": "Data Breach", "fr": "Fuite de Donnees" },
+      "privacy": { "en": "Privacy", "fr": "Vie Privee" },
+      "home_automation": { "en": "Home Automation", "fr": "Domotique" },
+      "connected_objects": { "en": "Connected Objects", "fr": "Objets Connectes" },
+      "open_source": { "en": "Open Source", "fr": "Logiciel Libre" },
+      "update": { "en": "Update", "fr": "Mise a jour" },
+      "vulnerability": { "en": "Vulnerability", "fr": "Vulnerabilite" },
+      "neural_network": { "en": "Neural Network", "fr": "Reseau de Neurones" },
+      "computer_vision": { "en": "Computer Vision", "fr": "Vision par Ordinateur" },
+      "robotics": { "en": "Robotics", "fr": "Robotique" },
+      "quantum_computing": { "en": "Quantum Computing", "fr": "Informatique Quantique" },
+      "stock_market": { "en": "Stock Market", "fr": "Bourse" },
+      "cryptocurrency": { "en": "Cryptocurrency", "fr": "Cryptomonnaie" },
+      "fundraising": { "en": "Fundraising", "fr": "Levee de Fonds" },
+      "entrepreneurship": { "en": "Entrepreneurship", "fr": "Entrepreneuriat" },
+      "startup": { "en": "Startup", "fr": "Startup" },
+      "investment": { "en": "Investment", "fr": "Investissement" },
+      "bug_bounty": { "en": "Bug Bounty", "fr": "Bug Bounty" },
+      "exploit": { "en": "Exploit", "fr": "Exploit" },
+      "regulation": { "en": "Regulation", "fr": "Regulation" },
+      "new_product": { "en": "New Product", "fr": "Nouveau Produit" },
+      "launch": { "en": "Launch", "fr": "Lancement" },
+      "crowdfunding": { "en": "Crowdfunding", "fr": "Financement Participatif" },
+      "repository": { "en": "Repository", "fr": "Depot" },
+      "self_hosted": { "en": "Self-hosted", "fr": "Auto-heberge" },
+      "library": { "en": "Library", "fr": "Bibliotheque" },
+      "tool": { "en": "Tool", "fr": "Outil" }
+    }
+  }
+}

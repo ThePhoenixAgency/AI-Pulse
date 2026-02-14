@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - TelegramMessenger/MTProxy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - TelegramMessenger/MTProxy</h1>
+  <div class="metadata">
+    Source: GitHub Trending | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/TelegramMessenger/MTProxy" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>MTProxy</h2><a href="#mtproxy"></a><p></p>
+<p>Simple MT-Proto proxy</p>
+<p></p><h2>Building</h2><a href="#building"></a><p></p>
+<p>Install dependencies, you would need common set of tools for building from source, and development packages for <code>openssl</code> and <code>zlib</code>.</p>
+<p>On Debian/Ubuntu:</p>
+<div><pre>apt install git curl build-essential libssl-dev zlib1g-dev</pre></div>
+<p>On CentOS/RHEL:</p>
+<div><pre>yum install openssl-devel zlib-devel
+yum groupinstall <span><span>"</span>Development Tools<span>"</span></span></pre></div>
+<p>Clone the repo:</p>
+<div><pre>git clone https://github.com/TelegramMessenger/MTProxy
+<span>cd</span> MTProxy</pre></div>
+<p>To build, simply run <code>make</code>, the binary will be in <code>objs/bin/mtproto-proxy</code>:</p>
+<div><pre>make <span>&amp;&amp;</span> <span>cd</span> objs/bin</pre></div>
+<p>If the build has failed, you should run <code>make clean</code> before building it again.</p>
+<p></p><h2>Running</h2><a href="#running"></a><p></p>
+<ol>
+<li>Obtain a secret, used to connect to telegram servers.</li>
+</ol>
+<div><pre>curl -s https://core.telegram.org/getProxySecret -o proxy-secret</pre></div>
+<ol>
+<li>Obtain current telegram configuration. It can change (occasionally), so we encourage you to update it once per day.</li>
+</ol>
+<div><pre>curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf</pre></div>
+<ol>
+<li>Generate a secret to be used by users to connect to your proxy.</li>
+</ol>
+<div><pre>head -c 16 /dev/urandom <span>|</span> xxd -ps</pre></div>
+<ol>
+<li>Run <code>mtproto-proxy</code>:</li>
+</ol>
+<div><pre>./mtproto-proxy -u nobody -p 8888 -H 443 -S <span>&lt;</span>secret<span>&gt;</span> --aes-pwd proxy-secret proxy-multi.conf -M 1</pre></div>
+<p>... where:</p>
+<ul>
+<li><code>nobody</code> is the username. <code>mtproto-proxy</code> calls <code>setuid()</code> to drop privileges.</li>
+<li><code>443</code> is the port, used by clients to connect to the proxy.</li>
+<li><code>8888</code> is the local port. You can use it to get statistics from <code>mtproto-proxy</code>. Like <code>wget localhost:8888/stats</code>. You can only get this stat via loopback.</li>
+<li><code>&lt;secret&gt;</code> is the secret generated at step 3. Also you can set multiple secrets: <code>-S &lt;secret1&gt; -S &lt;secret2&gt;</code>.</li>
+<li><code>proxy-secret</code> and <code>proxy-multi.conf</code> are obtained at steps 1 and 2.</li>
+<li><code>1</code> is the number of workers. You can increase the number of workers, if you have a powerful server.</li>
+</ul>
+<p>Also feel free to check out other options using <code>mtproto-proxy --help</code>.</p>
+<ol>
+<li>Generate the link with following schema: <code>tg://proxy?server=SERVER_NAME&amp;port=PORT&amp;secret=SECRET</code> (or let the official bot generate it for you).</li>
+<li>Register your proxy with <a href="https://t.me/MTProxybot">@MTProxybot</a> on Telegram.</li>
+<li>Set received tag with arguments: <code>-P &lt;proxy tag&gt;</code></li>
+<li>Enjoy.</li>
+</ol>
+<p></p><h2>Random padding</h2><a href="#random-padding"></a><p></p>
+<p>Due to some ISPs detecting MTProxy by packet sizes, random padding is
+added to packets if such mode is enabled.</p>
+<p>It's only enabled for clients which request it.</p>
+<p>Add <code>dd</code> prefix to secret (<code>cafe...babe</code> =&gt; <code>ddcafe...babe</code>) to enable
+this mode on client side.</p>
+<p></p><h2>Systemd example configuration</h2><a href="#systemd-example-configuration"></a><p></p>
+<ol>
+<li>Create systemd service file (it's standard path for the most Linux distros, but you should check it before):</li>
+</ol>
+<div><pre>nano /etc/systemd/system/MTProxy.service</pre></div>
+<ol>
+<li>Edit this basic service (especially paths and params):</li>
+</ol>
+<div><pre>[Unit]
+Description=MTProxy
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/MTProxy
+ExecStart=/opt/MTProxy/mtproto-proxy -u nobody -p 8888 -H 443 -S <span>&lt;</span>secret<span>&gt;</span> -P <span>&lt;</span>proxy tag<span>&gt;</span> <span>&lt;</span>other params<span>&gt;</span>
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target</pre></div>
+<ol>
+<li>Reload daemons:</li>
+</ol>
+<div><pre>systemctl daemon-reload</pre></div>
+<ol>
+<li>Test fresh MTProxy service:</li>
+</ol>
+<div><pre>systemctl restart MTProxy.service
+<span><span>#</span> Check status, it should be active</span>
+systemctl status MTProxy.service</pre></div>
+<ol>
+<li>Enable it, to autostart service after reboot:</li>
+</ol>
+<div><pre>systemctl <span>enable</span> MTProxy.service</pre></div>
+<p></p><h2>Docker image</h2><a href="#docker-image"></a><p></p>
+<p>Telegram is also providing <a href="https://hub.docker.com/r/telegrammessenger/proxy/">official Docker image</a>.
+Note: the image is outdated.</p>
+</article></div></div>
+  </div>
+</body>
+</html>

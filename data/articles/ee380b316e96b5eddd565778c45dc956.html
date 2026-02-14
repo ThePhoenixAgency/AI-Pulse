@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fake job recruiters hide malware in developer coding challenges</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Fake job recruiters hide malware in developer coding challenges</h1>
+  <div class="metadata">
+    Source: Bleeping Computer | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/fake-job-recruiters-hide-malware-in-developer-coding-challenges/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="Fake job recruiters hide malware in developer coding challenges" src="https://www.bleepstatic.com/content/hl-images/2024/08/12/north-korean-hackers.jpg" /></p>
+
+
+<p>A new variation of the fake recruiter campaign from North Korean threat actors is targeting JavaScript and Python developers with cryptocurrency-related tasks.</p>
+
+
+<p>The activity has been ongoing since at least May 2025 and is characterized by modularity, which allows the threat actor to quickly resume it in case of partial compromise.</p>
+
+
+<p>The bad actor relies on packages published on the npm and PyPi registries that act as downloaders for a remote access trojan (RAT). In total, researchers found 192 malicious packages related to this campaign, which they dubbed 'Graphalgo'.</p>
+
+<p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz" /></a>
+</p>
+
+
+<p>Researchers at software supply-chain security company ReversingLabs say that the threat actor creates fake companies in the blockchain and crypto-trading sectors and publishes job offerings on various platforms, like LinkedIn, Facebook, and Reddit.</p>
+
+
+<div>
+<figure><img alt="Fake job posting on Reddit" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/reddit.jpg" /><figcaption><strong>Fake job posting on Reddit</strong><br /><em>Source: ReversingLabs</em></figcaption></figure></div>
+
+<p>Developers applying for the job are required to show their skills by running, debugging, and improving a given project. However, the attacker's purpose is to make the applicant run the code.</p>
+
+
+<p>This action would cause a malicious dependency from a legitimate repository to be installed and executed.</p>
+
+
+<p>"It is easy to create such job task repositories. Threat actors simply need to take a legitimate bare-bone project and fix it up with a malicious dependency and it is ready to be served to targets," the <a href="http://reversinglabs.com/blog/fake-recruiter-campaign-crypto-devs" target="_blank">researchers say</a>.</p>
+
+
+<p>To hide the malicious nature of the dependencies, the hackers host the dependencies on legitimate platforms, like npm and PyPi.</p>
+
+
+<div>
+<figure><img alt="" src="https://www.bleepstatic.com/images/news/u/1100723/GraphalgoFake-recruiter-campaign.jpg" /><figcaption><strong>Stage of the Graphalgo fake recruiter campaign</strong><br /><em>source: ReversingLabs</em></figcaption></figure></div>
+
+<p>In one case highlighted in the ReversingLabs report, a package named ‘bigmathutils,’ with 10,000 downloads, was benign until it reached version 1.1.0, which introduced malicious payloads. Shortly after, the threat actor removed the package, marking it as deprecated, likely to conceal the activity.</p>
+
+
+<p>The Graphalgo name of the campaign is derived from packages that have “graph” in their name. They typically impersonate legitimate, popular libraries like <em>graphlib</em>, the researchers say.</p>
+
+
+<p>However, from December 2025 onward, the North Korean actor shifted to packages with “big” in their name. However, ReversingLabs has not discovered the recruiting part, or the campaign frontend, related to them.</p>
+
+
+<div>
+<figure><img alt="Package submission timeline" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/timeline.jpg" /><figcaption><strong>Package submission timeline</strong><br /><em>Source: ReversingLabs</em></figcaption></figure></div>
+
+<p>According to the researchers, the actor uses Github Organizations, which are shared accounts for collaboration across multiple projects. They say that the GitHub repositories are clean, and malicious code is introduced indirectly via dependencies hosted on npm and PyPI, which are the Graphalgo packages.</p>
+
+
+<p>Victims running the project as instructed in the interview infect their systems with these packages, which install a RAT payload on their machines.</p>
+
+
+<p>It is worth noting that ReversingLabs researchers identified several developers that fell for the trick and contacted them for more details about the recruiting process.</p>
+
+
+<p>The RAT can list the running processes on the host, execute arbitrary commands per instructions from the command-and-control (C2) server, and exfiltrate files or drop additional payloads.</p>
+
+
+<div>
+<figure><img alt="Commands supported by the RAT" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/commands.jpg" /><figcaption><strong>Commands supported by the RAT</strong><br /><em>Source: ReversingLabs</em></figcaption></figure></div>
+
+<p>The RAT checks whether the MetaMask cryptocurrency extension is installed on the victim’s browser, a clear indication of its money-stealing goals.</p>
+
+
+<p>Its C2 communication is token-protected to lock out unauthorized observers, a common tactic for North Korean hackers.</p>
+
+
+<p>ReversingLabs has found multiple variants written in JavaScript, Python, and VBS, showing an intention to cover all possible targets.</p>
+
+
+<p>The researchers’ attribute the Graphalgo fake recruiter campaign to the Lazarus group with medium-to-high confidence. The conclusion is based on the approach, the use of coding tests as an infection vector, and the cryptocurrency-focused targeting, all of which aligning with previous activity associated with the North Korean threat actor.</p>
+
+
+<p>Also, the researchers note the delayed activation of malicious code in the packages, consistent with Lazarus' patience displayed in other attacks. Finally, the Git commits show the GMT +9 time zone, matching North Korea time.</p>
+
+
+<p>The complete indicators of compromise (IoCs) are <a href="https://www.reversinglabs.com/blog/fake-recruiter-campaign-crypto-devs" target="_blank">available in the original report</a>. Developers who installed the malicious packages at any point should rotate all tokens and account passwords and reinstall their OS.</p>
+
+
+
+	   
+<div>
+    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
+            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
+    </p>
+    <div>
+        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
+
+        </div>
+</div>
+
+           
+          
+ 
+	  </div></div>
+  </div>
+</body>
+</html>

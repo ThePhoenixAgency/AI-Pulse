@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/13/2026 | Lang: FR |
+    <a href="https://www.cachem.fr/synology-10-docker-2026/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+																										<p>Les NAS Synology sont bien plus que de simple unité de stockage en réseau… ce sont de mini-serveur polyvalent capable d’héberger toute une gamme de services Docker. Grâce à <strong>Container Manager</strong> (le gestionnaire Docker intégré à DSM), il est possible d’ajouter rapidement des applications auto-hébergées et d’exploiter pleinement la puissance de votre NAS.</p>
+<p>Dans cet article, je vous présente ma sélection des <strong>10 conteneurs Docker incontournables en 2026</strong> pour étendre les fonctionnalités de votre Synology.</p>
+<p><img src="https://static.cachem.fr/uploads/2026/02/top-10-docker-2026.webp" alt="Top 10 docker 2026" /></p>
+<h2>Pourquoi Docker sur NAS Synology (ou autre) ?</h2>
+<p>Docker apporte l’isolation, la portabilité et la flexibilité nécessaires pour exécuter des applications sans alourdir le système principal de votre NAS. Contrairement à la virtualisation traditionnelle, Docker ne nécessite pas de système d’exploitation complet par application : chaque service tourne dans un conteneur léger et indépendant, ce qui simplifie la gestion et réduit l’utilisation des ressources.</p>
+<p><a href="https://www.cachem.fr/docker-revolution-conteneur/"><img src="https://static.cachem.fr/uploads/2026/02/docker-nuls-2026-100x100.webp" alt="Docker pour les nuls – la révolution du conteneur" /> Docker pour les nuls – la révolution du conteneur</a></p>
+<p>Attention, tous les NAS ne supportent pas Docker nativement. Les modèles avec processeurs Intel ou ARM récents et suffisamment de mémoire RAM (2 Go minimum) restent recommandés pour une expérience fluide.</p>
+<h2>Mes 10 conteneurs Docker préférés</h2>
+<p>Il y a un an, je vous partageai mes 10 conteneurs Docker préféré en 2025… voici un rafraichissement avec quelques changements.</p>
+<h3>1. AdGuard Home – Filtrage réseau global</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/adguard-home-2026.webp" alt="adguard home 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Un <a href="https://www.cachem.fr/tag/adguard/"><strong>bloqueur de publicités et traqueurs</strong></a> à l’échelle de votre réseau. Installé en tant que DNS local, il protège tous vos appareils sans configuration individuelle. (alternative : PiHole)</p>
+<h3>2. Vaultwarden – Gestionnaire de mots de passe auto-hébergé</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/bitwarden-2026.webp" alt="bitwarden 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Version légère et performante de <strong><a href="https://www.cachem.fr/tag/bitwarden/">Bitwarden</a></strong> écrite en Rust. Compatible avec les applications natives et les extensions navigateurs.</p>
+<h3>3. Immich – Gestion de photos privées</h3>
+<p><img src="https://static.cachem.fr/uploads/2024/09/immich-screenshots.webp" alt="Immich 2026" /></p>
+<p>Un <a href="https://www.cachem.fr/tag/immich/"><strong>gestionnaire de bibliothèque photo local</strong></a> avec reconnaissance faciale et organisation intelligente des albums… une solution vraiment respectueuse de votre vie privée.</p>
+<h3>4. Odoo – ERP/CRM modulaire</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/Odoo-applications-2026.webp" alt="Odoo applications 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Odoo est une s<a href="https://www.cachem.fr/tag/odoo/"><strong>uite d’applications professionnelles</strong></a> complète (CRM, gestion de projet, facturation, etc.). Flexible, interopérable et capable de remplacer plusieurs outils en silo.</p>
+<h3>5. Jellyfin – Media server open source</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/jellyfin-2026.webp" alt="jellyfin 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Alternative gratuite et open source à Plex ou Emby, <a href="https://www.cachem.fr/tag/jellyfin/"><strong>Jellyfin</strong></a> permet d’organiser, streamer et partager une bibliothèque multimédia sans abonnement. Fonctionne sur la plupart des lecteurs et appareils modernes. Utile depuis la suppression des fonctions de transcodage côté Synology.</p>
+<h3>6. Scrutiny – Surveillance SMART et disque</h3>
+<figure><img src="https://static.cachem.fr/uploads/2023/11/scrutiny-sur-un-DS923.png" alt="scrutiny sur un DS923 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /><figcaption>Scrutiny sur un Synology DS923+</figcaption></figure>
+<p>Un outil complet de <a href="https://www.cachem.fr/tag/scrutiny/"><strong>surveillance de l’état des disques</strong></a> (S.M.A.R.T.), idéal pour anticiper les défaillances et préserver l’intégrité de vos données. Je l’utilise depuis la désactivation du suivi S.M.A.R.T. natif dans DSM</p>
+<h3>7. Uptime Kuma – Monitoring de services</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/Uptime-Kuma-2026.webp" alt="Uptime Kuma 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+
+<p>Surveille la <a href="https://www.cachem.fr/tag/uptime/"><strong>disponibilité de vos sites et services personnels</strong></a> ou professionnels et vous alerte en cas d’indisponibilité.</p>
+<h3>8. OmniTools – Boîte à outils web auto‑hébergée</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/OmniTools-2026.webp" alt="OmniTools 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+
+<p><a href="https://www.cachem.fr/omnitools-synology/"><strong>OmniTools</strong></a> regroupe une collection d’outils web auto‑hébergés pour accomplir des tâches courantes (images, PDF, texte, données, etc.) directement depuis le navigateur, sans publicité ni suivi, avec une image Docker légère pour un déploiement facile.</p>
+<h3>9. Komga – Gestion de bandes dessinées et mangas</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/komga-2026.webp" alt="komga 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Application web qui vous permet d’organiser, de lire et de gérer vos bandes dessinées, mangas, BD, magazines et livres électroniques. Vous pouvez utiliser le lecteur web intégré, l’extension Mihon, n’importe quel lecteur OPDS…</p>
+<h3>10. Homepage – Dashboard de services</h3>
+<p><img src="https://static.cachem.fr/uploads/2026/02/homepage-2026.webp" alt="homepage 2026 - Top 10 des conteneurs Docker indispensables sur NAS Synology en 2026" /></p>
+<p>Un <a href="https://www.cachem.fr/homepage-nas-synology-qnap/"><strong>tableau de bord personnalisable</strong></a> qui centralise l’accès à tous les services auto-hébergés ici. Parfait pour organiser vos conteneurs, URLs et statuts d’applications.</p>
+<h3>Et ensuite ?</h3>
+<p>Cette liste reflète mes services Docker préférés en 2026… Tous ne sont pas listés, car certains ne sont encore en phase de test ou leur utilité est très spécifique (Authentik, Cloudflared…). Je pense qu’en 2026, il va y avoir de nombreux changements sur mon NAS et cette liste n’est pas figée.</p>
+<h2>En synthèse</h2>
+<p>Que vous soyez un utilisateur avancé ou un passionné d’auto-hébergement, Docker transforme votre NAS Synology en une plateforme polyvalente et personnalisable. Les conteneurs présentés ici couvrent des usages pratiques, du réseau à la gestion multimédia en passant par la productivité.</p>
+<p>N’hésitez pas à partager vos propres découvertes en commentaires si vous utilisez d’autres conteneurs Docker intéressants en 2026 !</p>
+									</div></div>
+  </div>
+</body>
+</html>

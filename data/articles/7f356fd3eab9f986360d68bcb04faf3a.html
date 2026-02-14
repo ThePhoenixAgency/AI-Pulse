@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building the machine that builds the machine with Paul Dix, co-founder &amp; CTO at InfluxDB (Changelog Interviews #676)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Building the machine that builds the machine with Paul Dix, co-founder &amp; CTO at InfluxDB (Changelog Interviews #676)</h1>
+  <div class="metadata">
+    Source: The Changelog | Date: 2/11/2026 | Lang: EN |
+    <a href="https://changelog.com/podcast/676" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+
+
+        
+
+      <p>Paul Dix joins us to discuss the InfluxDB co-founder’s journey adapting to an agentic world. Paul sent his AI coding agents on various real-world side quests and shares all his findings: what’s going to prod, what’s not, and why he’s (at least for a bit) back to coding by hand.</p>
+
+      
+
+      <ul>
+        <li>97 minutes</li>
+
+          <li>Recorded <time>Feb 4, 2026</time></li>
+
+        <li>Published <time>Feb 11, 2026</time></li>
+        <li><a href="https://op3.dev/e/https://cdn.changelog.com/uploads/podcast/676/the-changelog-676.mp3">Download (93MB)</a></li>
+        <li><a href="#transcript">Transcript</a></li>
+        <li></li>
+      </ul>
+
+    </div><div>
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Featuring</h3>
+        </header>
+        
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Sponsors</h3>
+        </header>
+        <div>
+
+            <p>
+              <strong><a href="https://namespace.so/">Namespace</a></strong> – Speed up your development and testing workflows using your existing tools. (Much) faster GitHub actions, Docker builds, and more. At an unbeatable price.
+            </p>
+
+            <p>
+              <strong><a href="https://www.tigerdata.com/">Tiger Data</a></strong> – Postgres for Developers, devices, and agents The data platform trusted by hundreds of thousands from IoT to Web3 to AI and more.
+            </p>
+
+            <p>
+              <strong><a href="https://fly.io/">Fly.io</a></strong> – <strong>The home of Changelog.com</strong> — Deploy your apps close to your users — global Anycast load-balancing, zero-configuration private networking, hardware isolation, and instant WireGuard VPN connections. Push-button deployments that scale to thousands of instances. <a href="https://fly.io/speedrun/">Check out the speedrun</a> to get started in minutes.
+            </p>
+
+        </div>
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Notes &amp; Links</h3>
+          <p><a href="https://github.com/thechangelog/show-notes/blob/master/podcast/the-changelog-676.md">📝 Edit Notes</a></p>
+        </header>
+        
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Chapters</h3>
+        </header>
+        <div>
+          <table>
+            
+            <tbody>
+
+                <tr>
+                <td>1</td>
+                <td>
+                  <a href="#t=0">00:00</a>
+                </td>
+                <td>
+
+Welcome to The Changelog
+
+
+                </td>
+                <td>00:56</td>
+              </tr>
+
+                <tr>
+                <td>2</td>
+                <td>
+                  <a href="#t=56">00:56</a>
+                </td>
+                <td>
+
+<a href="https://namespace.so/">Sponsor: Namespace</a>
+
+
+                </td>
+                <td>01:41</td>
+              </tr>
+
+                <tr>
+                <td>3</td>
+                <td>
+                  <a href="#t=157">02:37</a>
+                </td>
+                <td>
+
+Start the show!
+
+
+                </td>
+                <td>01:00</td>
+              </tr>
+
+                <tr>
+                <td>4</td>
+                <td>
+                  <a href="#t=217">03:37</a>
+                </td>
+                <td>
+
+Over your agentic skis
+
+
+                </td>
+                <td>00:56</td>
+              </tr>
+
+                <tr>
+                <td>5</td>
+                <td>
+                  <a href="#t=273">04:33</a>
+                </td>
+                <td>
+
+Paul's agentic journey
+
+
+                </td>
+                <td>22:59</td>
+              </tr>
+
+                <tr>
+                <td>6</td>
+                <td>
+                  <a href="#t=1652">27:32</a>
+                </td>
+                <td>
+
+Clarity in blind spots
+
+
+                </td>
+                <td>00:50</td>
+              </tr>
+
+                <tr>
+                <td>7</td>
+                <td>
+                  <a href="#t=1702">28:22</a>
+                </td>
+                <td>
+
+A real-world example
+
+
+                </td>
+                <td>07:36</td>
+              </tr>
+
+                <tr>
+                <td>8</td>
+                <td>
+                  <a href="#t=2158">35:58</a>
+                </td>
+                <td>
+
+<a href="https://www.tigerdata.com/">Sponsor: Tiger Data</a>
+
+
+                </td>
+                <td>02:29</td>
+              </tr>
+
+                <tr>
+                <td>9</td>
+                <td>
+                  <a href="#t=2307">38:27</a>
+                </td>
+                <td>
+
+Bespoke tooling
+
+
+                </td>
+                <td>02:01</td>
+              </tr>
+
+                <tr>
+                <td>10</td>
+                <td>
+                  <a href="#t=2429">40:29</a>
+                </td>
+                <td>
+
+Engineers as QA
+
+
+                </td>
+                <td>03:22</td>
+              </tr>
+
+                <tr>
+                <td>11</td>
+                <td>
+                  <a href="#t=2630">43:50</a>
+                </td>
+                <td>
+
+Code review feelings
+
+
+                </td>
+                <td>01:04</td>
+              </tr>
+
+                <tr>
+                <td>12</td>
+                <td>
+                  <a href="#t=2694">44:54</a>
+                </td>
+                <td>
+
+Two kinds of devs
+
+
+                </td>
+                <td>02:35</td>
+              </tr>
+
+                <tr>
+                <td>13</td>
+                <td>
+                  <a href="#t=2849">47:29</a>
+                </td>
+                <td>
+
+Having taste
+
+
+                </td>
+                <td>02:17</td>
+              </tr>
+
+                <tr>
+                <td>14</td>
+                <td>
+                  <a href="#t=2986">49:46</a>
+                </td>
+                <td>
+
+Who reinvents the tools
+
+
+                </td>
+                <td>03:49</td>
+              </tr>
+
+                <tr>
+                <td>15</td>
+                <td>
+                  <a href="#t=3215">53:35</a>
+                </td>
+                <td>
+
+Influx and Wasm
+
+
+                </td>
+                <td>03:52</td>
+              </tr>
+
+                <tr>
+                <td>16</td>
+                <td>
+                  <a href="#t=3447">57:27</a>
+                </td>
+                <td>
+
+New CLI, who dis?
+
+
+                </td>
+                <td>04:48</td>
+              </tr>
+
+                <tr>
+                <td>17</td>
+                <td>
+                  <a href="#t=3736">1:02:16</a>
+                </td>
+                <td>
+
+Adapting Influx
+
+
+                </td>
+                <td>03:56</td>
+              </tr>
+
+                <tr>
+                <td>18</td>
+                <td>
+                  <a href="#t=3972">1:06:12</a>
+                </td>
+                <td>
+
+Adapting culture
+
+
+                </td>
+                <td>02:49</td>
+              </tr>
+
+                <tr>
+                <td>19</td>
+                <td>
+                  <a href="#t=4140">1:09:00</a>
+                </td>
+                <td>
+
+Adapting demos
+
+
+                </td>
+                <td>03:26</td>
+              </tr>
+
+                <tr>
+                <td>20</td>
+                <td>
+                  <a href="#t=4346">1:12:26</a>
+                </td>
+                <td>
+
+Adapting team size
+
+
+                </td>
+                <td>03:11</td>
+              </tr>
+
+                <tr>
+                <td>21</td>
+                <td>
+                  <a href="#t=4537">1:15:37</a>
+                </td>
+                <td>
+
+Bespoke machines
+
+
+                </td>
+                <td>04:45</td>
+              </tr>
+
+                <tr>
+                <td>22</td>
+                <td>
+                  <a href="#t=4822">1:20:22</a>
+                </td>
+                <td>
+
+Adapting OSS
+
+
+                </td>
+                <td>06:33</td>
+              </tr>
+
+                <tr>
+                <td>23</td>
+                <td>
+                  <a href="#t=5215">1:26:55</a>
+                </td>
+                <td>
+
+Closed contributions
+
+
+                </td>
+                <td>03:12</td>
+              </tr>
+
+                <tr>
+                <td>24</td>
+                <td>
+                  <a href="#t=5407">1:30:07</a>
+                </td>
+                <td>
+
+What's next
+
+
+                </td>
+                <td>02:12</td>
+              </tr>
+
+                <tr>
+                <td>25</td>
+                <td>
+                  <a href="#t=5539">1:32:19</a>
+                </td>
+                <td>
+
+Moving to Rust
+
+
+                </td>
+                <td>01:14</td>
+              </tr>
+
+                <tr>
+                <td>26</td>
+                <td>
+                  <a href="#t=5613">1:33:33</a>
+                </td>
+                <td>
+
+Wrapping up
+
+
+                </td>
+                <td>01:32</td>
+              </tr>
+
+                <tr>
+                <td>27</td>
+                <td>
+                  <a href="#t=5705">1:35:05</a>
+                </td>
+                <td>
+
+Closing thoughts
+
+
+                </td>
+                <td>01:25</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Transcript</h3>
+          <p>
+
+
+<a href="https://github.com/thechangelog/transcripts">⏰ Coming Soon</a>
+
+
+          </p>
+        </header>
+
+        <div>
+            <div>
+<a href="https://changelog.com/about">
+                
+</a>
+              <p>Changelog</p>
+            </div>
+            <p>We're hard at work on the transcript for this episode!
+
+<a href="https://changelog.com/in">Sign in</a> / <a href="https://changelog.com/join">up</a> to access transcript notifications. 💪
+
+              </p>
+          </div>
+      </section>
+
+      
+    </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Over 60 Software Vendors Issue Security Fixes Across OS, Cloud, and Network Platforms</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/11/2026 | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/over-60-software-vendors-issue-security.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 11, 2026</span></span><span>Patch Tuesday / Vulnerability</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn9BjSz22uW2NPDNZhkDs7Ygjb5lTP5jFhXbGlk3oBRgpncWsp6pu42-c0T7TXDPviwihS5GuwedI6ULAmI6Zp8NKWOMzS-wJlSjVkd02cB6rM0uLbi-ZU1oxKsSQIpesNLkaA13EDcht62GZgjQbG2nffYeQPhXOWJHUBKhRwKm4s_-_ukeKZuno8I7Iv/s1600/patches.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjn9BjSz22uW2NPDNZhkDs7Ygjb5lTP5jFhXbGlk3oBRgpncWsp6pu42-c0T7TXDPviwihS5GuwedI6ULAmI6Zp8NKWOMzS-wJlSjVkd02cB6rM0uLbi-ZU1oxKsSQIpesNLkaA13EDcht62GZgjQbG2nffYeQPhXOWJHUBKhRwKm4s_-_ukeKZuno8I7Iv/s1600/patches.jpg" /></a></p>
+<p>It's Patch Tuesday, which means a number of software vendors have released patches for various security vulnerabilities impacting their products and services.</p>
+<p>Microsoft <a href="https://thehackernews.com/2026/02/microsoft-patches-59-vulnerabilities.html" target="_blank">issued</a> fixes for 59 flaws, including six actively exploited zero-days in various Windows components that could be abused to bypass security features, escalate privileges, and trigger a denial-of-service (DoS) condition.</p>
+<p>Elsewhere, Adobe <a href="https://helpx.adobe.com/security/security-bulletin.html" target="_blank">released</a> updates for Audition, After Effects, InDesign Desktop, Substance 3D, Bridge, Lightroom Classic, and DNG SDK. The company said it's not aware of in-the-wild exploitation of any of the shortcomings.</p>
+<p>SAP <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/february-2026.html" target="_blank">shipped</a> fixes for two critical-severity vulnerabilities, including a code injection bug in SAP CRM and SAP S/4HANA (CVE-2026-0488, CVSS score: 9.9) that an authenticated attacker could use to run an arbitrary SQL statement and lead to a full database compromise.</p>
+<p>The second critical vulnerability is a case of a missing authorization check in SAP NetWeaver Application Server ABAP and ABAP Platform (CVE-2026-0509, CVSS score: 9.6) that could permit an authenticated, low-privileged user to perform certain background Remote Function Calls without the required S_RFC authorization.</p>
+
+<p>"To patch the vulnerability, customers must implement a kernel update and set a profile parameter," Onapsis <a href="https://onapsis.com/blog/sap-security-notes-february-2026-patch-day/" target="_blank">said</a>. "Adjustments in user roles and UCON settings might be required to not interrupt business processes."</p>
+
+<p>Rounding off the list, <a href="https://www.intel.com/content/www/us/en/security/security-practices/blogs/google-collaboration-strengthen-intel-tdx.html" target="_blank">Intel</a> and <a href="https://bughunters.google.com/blog/a-joint-security-review-of-intel-tdx-15" target="_blank">Google</a> said they teamed up to examine the security of Intel <a href="https://thehackernews.com/2025/10/new-teefail-side-channel-attack.html" target="_blank">Trust Domain Extensions</a> (<a href="https://www.intel.com/content/www/us/en/developer/tools/trust-domain-extensions/overview.html" target="_blank">TDX</a>) 1.5, uncovering five vulnerabilities in the module (<a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01397.html" target="_blank">CVE-2025-32007, CVE-2025-27940, CVE-2025-30513, CVE-2025-27572, and CVE-2025-32467</a>), and nearly three dozen weaknesses, bugs, and improvement suggestions.</p>
+<p>"Intel TDX 1.5 introduces new features and functionality that bring confidential computing significantly closer to feature parity with traditional virtualization solutions," Google said. "At the same time, these features have increased the complexity of a highly privileged software component in the TCB [Trusted Computing Base]."</p>
+
+
+<h3>Software Patches from Other Vendors</h3>
+<p>Security updates have also been released by other vendors in recent weeks to rectify several vulnerabilities, including —</p>
+<ul>
+<li><a href="https://www.abb.com/global/en/company/about/cybersecurity/alerts-and-notifications" target="_blank">ABB</a></li>
+<li><a href="https://aws.amazon.com/security/security-bulletins/" target="_blank">Amazon Web Services</a></li>
+<li><a href="https://www.amd.com/en/resources/product-security.html#security" target="_blank">AMD</a></li>
+<li><a href="https://www.ami.com/security-advisories/" target="_blank">AMI</a></li>
+<li><a href="https://support.apple.com/en-us/HT201222" target="_blank">Apple</a></li>
+<li><a href="https://www.asus.com/security-advisory/" target="_blank">ASUS</a></li>
+<li><a href="https://community.automationdirect.com/s/internal-database-security-advisory/Internal_Database_Security_Advisory__c/Default" target="_blank">AutomationDirect</a></li>
+<li><a href="https://www.aveva.com/en/support-and-success/cyber-security-updates/" target="_blank">AVEVA</a></li>
+<li><a href="https://support.broadcom.com/web/ecx/search?searchString=cve&amp;activeType=all&amp;from=0&amp;sortby=post_time&amp;orderBy=desc&amp;pageNo=1&amp;aggregations=%5B%7B%22type%22%3A%22_type%22%2C%22filter%22%3A%5B%22notification_docs%22%5D%7D%5D&amp;uid=d042dbba-f8c4-11ea-beba-0242ac12000b&amp;resultsPerPage=50&amp;exactPhrase=&amp;withOneOrMore=&amp;withoutTheWords=&amp;pageSize=50&amp;language=en&amp;state=34&amp;suCaseCreate=false" target="_blank">Broadcom</a> (including VMware)</li>
+<li><a href="https://psirt.canon/advisory-information/#id_2229656" target="_blank">Canon</a></li>
+<li><a href="https://support.checkpoint.com/security-advisories" target="_blank">Check Point</a></li>
+<li><a href="https://tools.cisco.com/security/center/publicationListing.x" target="_blank">Cisco</a></li>
+<li><a href="https://support.citrix.com/s/topic/0TO4z0000001GYdGAM/security-bulletin" target="_blank">Citrix</a></li>
+<li><a href="https://documentation.commvault.com/securityadvisories/" target="_blank">Commvault</a></li>
+<li><a href="https://www.connectwise.com/company/trust/security-bulletins" target="_blank">ConnectWise</a></li>
+<li><a href="https://supportannouncement.us.dlink.com/" target="_blank">D-Link</a></li>
+<li><a href="https://www.3ds.com/trust-center/security/security-advisories" target="_blank">Dassault Systèmes</a></li>
+<li><a href="https://www.dell.com/support/security/" target="_blank">Dell</a></li>
+<li><a href="https://devolutions.net/security/advisories/" target="_blank">Devolutions</a></li>
+<li><a href="https://www.dormakabagroup.com/en/security-advisories" target="_blank">dormakaba</a></li>
+<li><a href="https://www.drupal.org/security" target="_blank">Drupal</a></li>
+<li><a href="https://my.f5.com/manage/s/new-updated-articles#f-f5_document_type=Security%20Advisory&amp;aq=%40f5_original_published_date%20%3E%3D%20now-7d" target="_blank">F5</a></li>
+<li><a href="https://www.fortiguard.com/psirt" target="_blank">Fortinet</a></li>
+<li><a href="https://www.foxit.com/support/security-bulletins.html" target="_blank">Foxit Software</a></li>
+<li><a href="https://www.fujifilm.com/fbglobal/eng/company/news/notice" target="_blank">FUJIFILM</a></li>
+<li><a href="https://security.ts.fujitsu.com/IndexProdSecurity.asp" target="_blank">Fujitsu</a></li>
+<li><a href="https://www.gigabyte.com/us/Support/Security" target="_blank">Gigabyte</a></li>
+<li><a href="https://about.gitlab.com/releases/2026/02/10/patch-release-gitlab-18-8-4-released/" target="_blank">GitLab</a></li>
+<li>Google <a href="https://source.android.com/docs/security/bulletin/2026/2026-02-01" target="_blank">Android</a> and <a href="https://source.android.com/docs/security/bulletin/pixel/2026/2026-02-01" target="_blank">Pixel</a></li>
+<li><a href="https://chromereleases.googleblog.com/" target="_blank">Google Chrome</a></li>
+<li><a href="https://cloud.google.com/support/bulletins" target="_blank">Google Cloud</a></li>
+<li><a href="https://grafana.com/security/security-advisories/" target="_blank">Grafana</a></li>
+<li><a href="https://www.hikvision.com/en/support/cybersecurity/security-advisory/" target="_blank">Hikvision</a></li>
+<li><a href="https://www.hitachienergy.com/in/en/products-and-solutions/cybersecurity/alerts-and-notifications" target="_blank">Hitachi Energy</a></li>
+<li><a href="https://support.hp.com/us-en/security-bulletins" target="_blank">HP</a></li>
+<li><a href="https://support.hpe.com/connect/s/securitybulletinlibrary?language=en_US#sort=%40hpescuniversaldate%20descending&amp;layout=table&amp;numberOfResults=25&amp;f:@kmdoclanguagecode=[cv1871440]&amp;hpe=1" target="_blank">HP Enterprise</a> (including Aruba Networking and <a href="https://supportportal.juniper.net/s/global-search/%40uri?language=en_US#sort=date%20descending&amp;f:ctype=[Security%20Advisories]" target="_blank">Juniper Networks</a>)</li>
+<li><a href="https://www.ibm.com/support/pages/bulletin/" target="_blank">IBM</a></li>
+<li><a href="https://www.intel.com/content/www/us/en/security-center/default.html" target="_blank">Intel</a></li>
+<li><a href="https://hub.ivanti.com/s/searchallcontent?language=en_US#q=CVE&amp;sortCriteria=date%20descending&amp;f-sfkbknowledgearticletypec=Security%20Advisory" target="_blank">Ivanti</a></li>
+<li><a href="https://support.lenovo.com/us/en/product_security/ps500001-lenovo-product-security-advisories" target="_blank">Lenovo</a></li>
+<li>Linux distributions <a href="https://errata.almalinux.org/" target="_blank">AlmaLinux</a>, <a href="https://security.alpinelinux.org/" target="_blank">Alpine Linux</a>, <a href="https://alas.aws.amazon.com/" target="_blank">Amazon Linux</a>, <a href="https://security.archlinux.org/advisory" target="_blank">Arch Linux</a>, <a href="https://www.debian.org/security/#DSAS" target="_blank">Debian</a>, <a href="https://security.gentoo.org/glsa" target="_blank">Gentoo</a>, <a href="https://linux.oracle.com/ords/f?p=105:21::::RP::" target="_blank">Oracle Linux</a>, <a href="https://advisories.mageia.org/" target="_blank">Mageia</a>, <a href="https://access.redhat.com/security/security-updates/security-advisories" target="_blank">Red Hat</a>, <a href="https://errata.rockylinux.org/" target="_blank">Rocky Linux</a>, <a href="https://www.suse.com/support/update/" target="_blank">SUSE</a>, and <a href="https://ubuntu.com/security/notices" target="_blank">Ubuntu</a></li>
+<li><a href="https://corp.mediatek.com/product-security-bulletin/February-2026" target="_blank">MediaTek</a></li>
+<li><a href="https://www.mitsubishielectric.com/en/psirt/vulnerability/index.html" target="_blank">Mitsubishi Electric</a></li>
+<li><a href="https://www.mongodb.com/resources/products/alerts#security" target="_blank">MongoDB</a></li>
+<li><a href="https://www.moxa.com/en/support/product-support/security-advisory" target="_blank">Moxa</a></li>
+<li>Mozilla <a href="https://www.mozilla.org/en-US/security/advisories/" target="_blank">Firefox and Thunderbird</a></li>
+<li><a href="https://thehackernews.com/2026/02/critical-n8n-flaw-cve-2026-25049.html" target="_blank">n8n</a></li>
+<li><a href="https://www.nvidia.com/en-us/security/" target="_blank">NVIDIA</a></li>
+<li><a href="https://www.phoenixcontact.com/en-pc/service-and-support/psirt" target="_blank">Phoenix Contact</a></li>
+<li><a href="https://www.qnap.com/en/security-advisories" target="_blank">QNAP</a></li>
+<li><a href="https://docs.qualcomm.com/product/publicresources/securitybulletin/" target="_blank">Qualcomm</a></li>
+<li><a href="https://www.ricoh.com/products/security/vulnerabilities" target="_blank">Ricoh</a></li>
+<li><a href="https://www.rockwellautomation.com/en-us/company/about-us/sustainability/trust-security/security-advisories.html?sort=pubAsc" target="_blank">Rockwell Automation</a></li>
+<li><a href="https://security.samsungmobile.com/securityUpdate.smsb" target="_blank">Samsung</a></li>
+<li><a href="https://www.se.com/ww/en/work/support/cybersecurity/security-notifications.jsp" target="_blank">Schneider Electric</a></li>
+<li><a href="https://support.servicenow.com/kb?id=kb_browse&amp;kb_knowledge_base=7c8751eadbd95d9055b5e14c13961967&amp;category=e6e9d566db1d5d9055b5e14c139619ee" target="_blank">ServiceNow</a></li>
+<li><a href="https://new.siemens.com/global/en/products/services/cert.html#SecurityPublications" target="_blank">Siemens</a></li>
+<li><a href="https://www.solarwinds.com/trust-center/security-advisories" target="_blank">SolarWinds</a></li>
+<li><a href="https://advisory.splunk.com/" target="_blank">Splunk</a></li>
+<li><a href="https://spring.io/security" target="_blank">Spring Framework</a></li>
+<li><a href="https://www.supermicro.com/en/support/security_center#!advisories" target="_blank">Supermicro</a></li>
+<li><a href="https://www.synology.com/en-in/security/advisory" target="_blank">Synology</a></li>
+<li><a href="https://www.tp-link.com/us/press/security-advisory/" target="_blank">TP-Link</a></li>
+<li><a href="https://www.watchguard.com/wgrd-psirt/advisories" target="_blank">WatchGuard</a></li>
+<li><a href="https://www.manageengine.com/search-results.html?query=security%20advisory" target="_blank">Zoho ManageEngine</a></li>
+<li><a href="https://explore.zoom.us/en/trust/security/security-bulletin/" target="_blank">Zoom</a>, and</li>
+<li><a href="https://www.zyxel.com/global/en/support/security-advisories" target="_blank">Zyxel</a></li>
+</ul>
+
+<p>Found this article interesting?  Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+</body>
+</html>

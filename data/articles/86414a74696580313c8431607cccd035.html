@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux 7.0 Lands ML-DSA Quantum-Resistant Signature Support</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Linux 7.0 Lands ML-DSA Quantum-Resistant Signature Support</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Linux-7.0-Crypto-ML-DSA" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX SECURITY" src="https://www.phoronix.com/assets/categories/linuxsecurity.webp" /></p><p>
+Adding to the exciting features for the big <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> kernel release is support for the Module-Lattice-Based Digital Signature Algorithm "ML-DSA" quantum-resistant signature algorithm.
+</p><p>
+The ML-DSA/Dilithium signature algorithm support is initially going to be used for module signing while eventually other ML-DSA uses are expected throughout the kernel. This ML-DSA introduction for signing within the kernel comes in the same release of <a href="https://www.phoronix.com/news/Linux-7.0-Modules-No-SHA1-Sign">Linux finally removing SHA-1 module signing support</a>.
+</p><p>
+The <a href="https://lore.kernel.org/lkml/20260209034257.GA2604@sol/">crypto library pull request</a> that landed the support for verifying ML-DSA signatures explained:
+</p><blockquote>"ML-DSA (Module-Lattice-Based Digital Signature Algorithm) is a recently-standardized post-quantum (quantum-resistant) signature algorithm. It was known as Dilithium pre-standardization.
+<p>
+  The first use case in the kernel will be module signing. But there are also other users of RSA and ECDSA signatures in the kernel that might want to upgrade to ML-DSA eventually."</p></blockquote>
+<p>While this cryptography standard is designed for quantum resilience, it's engineered for fast signing and verification today. ML-DSA can serve as a replacement to RSA and ECC for authentication and data integrity purposes.
+</p><p>
+In addition to that initial ML-DSA support is also AES library updates in the now-merged crypto library pull.</p></div></div>
+  </div>
+</body>
+</html>

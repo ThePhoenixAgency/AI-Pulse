@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="swe">
+<head>
+<meta charset="UTF-8">
+<title>Introducing SyGra Studio</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Introducing SyGra Studio</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 2/5/2026 | Lang: SWE |
+    <a href="https://huggingface.co/blog/ServiceNow-AI/sygra-studio" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+					<p><a href="https://huggingface.co/blog">
+							Back to Articles</a></p>
+
+					
+					
+					
+					<div><div>
+
+<p><span><span><a href="https://huggingface.co/surajit"><img alt="Surajit Dasgupta's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/603c6bf03249b99991dbcbd0/IZDS9PIg-9b8QleK08Zan.png" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/bidyapati"><img alt="Bidyapati Pradhan's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/648bec975e0614c7eaa4d938/0ZUxti9xnSTIVcF5zs5Yd.png" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/amitsaha"><img alt="Amit Kumar Saha's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64a3bbc378edd17f9652bf3b/XJM8hvtNUxRSMrWvznLHT.jpeg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/vipulmitt"><img alt="Vipul Mittal's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64b77aec90b38df833830b5a/1oeuFQGwm_mepB-d_Mqsu.jpeg" /></a>
+				</span>
+	</span></p>
+			</div><div>
+
+<p><span><span><a href="https://huggingface.co/as-sriram"><img alt="Sriram Puttagunta's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/659cf672615d5e661247ed4b/rdP2iRo0_MTLnjfbMTGp3.jpeg" /></a>
+				</span>
+	</span></p>
+			</div></div>
+					
+
+					
+<div><nav><ul><li><a href="#step-1-configure-the-data-source">Step 1: Configure the data source</a>
+									<ul></ul>
+								</li><li><a href="#step-2-build-the-flow-visually">Step 2: Build the flow visually</a>
+									<ul></ul>
+								</li><li><a href="#step-3-review-and-run">Step 3: Review and run</a>
+									<ul></ul>
+								</li><li><a href="#see-it-in-action">See it in action!</a>
+									<ul></ul>
+								</li><li><a href="#running-existing-workflows">Running Existing Workflows</a>
+									<ul><li><a href="#run-the-glaive-code-assistant-workflow">Run the Glaive Code Assistant workflow</a>
+												<ul></ul>
+											</li></ul>
+								</li><li><a href="#get-started">Get started</a>
+									<ul></ul>
+								</li></ul></nav></div><p><a href="https://huggingface.co/blog/ServiceNow-AI/sygra-v2">SyGra 2.0.0</a> introduces <strong>Studio</strong>, an interactive environment that turns synthetic data generation into a transparent, visual craft. Instead of juggling YAML files and terminals, you compose flows directly on the canvas, preview datasets before committing, tune prompts with inline variable hints, and watch executions stream live—all from a single pane. Under the hood it’s the same platform, so everything you do visually generates the corresponding SyGra compatible graph config and task executor scripts.</p>
+<h3>
+	<a href="#what-studio-lets-you-do">
+		<span></span>
+	</a>
+	<span>
+		What Studio lets you do
+	</span>
+</h3>
+<ol>
+<li>Configure and validate models with guided forms (OpenAI, Azure OpenAI, Ollama, Vertex, Bedrock, vLLM, custom endpoints).</li>
+<li>Connect Hugging Face, file-system, or ServiceNow data sources and preview rows before execution.</li>
+<li>Configure nodes by selecting models, writing prompts (with auto-suggested variables), and defining outputs or structured schemas.</li>
+<li>Design downstream outputs using shared state variables and Pydantic-powered mappings.</li>
+<li>Execute flows end-to-end and review generated results instantly with node-level progress.</li>
+<li>Debug with inline logs, breakpoints, Monaco-backed code editors, and auto-saved drafts.</li>
+<li>Monitor per-run token cost, latency, and guardrail outcomes with execution history stored in <code>.executions/</code>.</li>
+</ol>
+<p>Let’s walk through this experience step by step.</p>
+<hr />
+<h2>
+	<a href="#step-1-configure-the-data-source">
+		<span></span>
+	</a>
+	<span>
+		Step 1: Configure the data source
+	</span>
+</h2>
+<p>Open Studio, click <strong>Create Flow</strong>, and Start/End nodes appear automatically. Before adding anything else:</p>
+<ul>
+<li>Choose a connector (Hugging Face, disk, or ServiceNow).</li>
+<li>Enter parameters like <code>repo_id</code>, split, or file path, then click <strong>Preview</strong> to fetch sample rows.</li>
+<li>Column names immediately become state variables (e.g., <code>{prompt}</code>, <code>{genre}</code>), so you know exactly what can be referenced inside prompts and processors.</li>
+</ul>
+<p>Once validated, Studio keeps the configuration in sync and pipes those variables throughout the flow—no manual wiring or guesswork.</p>
+<hr />
+<h2>
+	<a href="#step-2-build-the-flow-visually">
+		<span></span>
+	</a>
+	<span>
+		Step 2: Build the flow visually
+	</span>
+</h2>
+<p>Drag the blocks you need from the palette. For a story-generation pipeline:</p>
+<ol>
+<li>Drop an <strong>LLM node</strong> named “Story Generator,” select a configured model (say, <code>gpt-4o-mini</code>), write the prompt, and store the result in <code>story_body</code>.</li>
+<li>Add a second <strong>LLM node</strong> named “Story Summarizer,” reference <code>{story_body}</code> inside the prompt, and output to <code>story_summary</code>.</li>
+<li>Toggle structured outputs, attach tools, or add Lambda/Subgraph nodes if you need reusable logic or branching behavior.</li>
+</ol>
+<p>Studio’s detail panel keeps everything in context—model parameters, prompt editor, tool configuration, pre/post-process code, and even multi-LLM settings if you want parallel generations. Typing <code>{</code> inside a prompt surfaces every available state variable instantly.</p>
+<hr />
+<h2>
+	<a href="#step-3-review-and-run">
+		<span></span>
+	</a>
+	<span>
+		Step 3: Review and run
+	</span>
+</h2>
+<p>Open the <strong>Code Panel</strong> to inspect the exact YAML/JSON Studio is generating. This is the same artifact written to <code>tasks/examples/</code>, so what you see is what gets committed.</p>
+<p>When you’re ready to execute:</p>
+<ul>
+<li>Click <strong>Run Workflow</strong>.</li>
+<li>Choose record counts, batch sizes, retry behavior etc.</li>
+<li>Hit <strong>Run</strong> and watch the Execution panel stream node status, token usage, latency, and cost in real time. Detailed logs provide observability and make debugging effortless. All executions are written to <code>.executions/runs/*.json</code>.</li>
+</ul>
+<p>After the run, download outputs, compare against prior executions, get metadata of latency and usage details.</p>
+<h2>
+	<a href="#see-it-in-action">
+		<span></span>
+	</a>
+	<span>
+		See it in action!
+	</span>
+</h2>
+
+
+<hr />
+<h2>
+	<a href="#running-existing-workflows">
+		<span></span>
+	</a>
+	<span>
+		Running Existing Workflows
+	</span>
+</h2>
+<h3>
+	<a href="#run-the-glaive-code-assistant-workflow">
+		<span></span>
+	</a>
+	<span>
+		Run the Glaive Code Assistant workflow
+	</span>
+</h3>
+<p>SyGra Studio can also execute existing workflow in the <code>tasks</code>. For example, in the <code>tasks/examples/glaive_code_assistant/</code> <a href="https://github.com/ServiceNow/SyGra/tree/v2.0.0/tasks/examples/glaive_code_assistant">workflow</a> — it ingests the <code>glaiveai/glaive-code-assistant-v2</code> <a href="https://huggingface.co/datasets/glaiveai/glaive-code-assistant-v2">dataset</a>, drafts answers, critiques them, and loops until the critique returns “NO MORE FEEDBACK.”</p>
+<p>Inside Studio you’ll notice:</p>
+<ol>
+<li><strong>Canvas layout</strong> – two LLM nodes (<code>generate_answer</code> and <code>critique_answer</code>) linked by a conditional edge that either routes back for more revisions or exits to <strong>END</strong> when the critique is satisfied.</li>
+<li><strong>Tunable inputs</strong> – the Run modal lets you switch dataset splits, adjust batch sizes, cap records, or tweak temperatures without touching YAML.</li>
+<li><strong>Observable execution</strong> – watch both nodes light up in sequence, inspect intermediate critiques, and monitor status in real time.</li>
+<li><strong>Generated outputs</strong> – synthetic data is generated, ready for model training, evaluation pipelines or annotation tools.</li>
+</ol>
+<hr />
+<h2>
+	<a href="#get-started">
+		<span></span>
+	</a>
+	<span>
+		Get started
+	</span>
+</h2>
+<pre><code>git <span>clone</span> https://github.com/ServiceNow/SyGra.git
+<span>cd</span> SyGra &amp;&amp; make studio
+</code></pre>
+<ul>
+<li><strong>Docs</strong>: <a href="https://servicenow.github.io/SyGra/">https://servicenow.github.io/SyGra/</a></li>
+<li><strong>Studio Docs</strong>: <a href="https://servicenow.github.io/SyGra/getting_started/create_task_ui/">https://servicenow.github.io/SyGra/getting_started/create_task_ui/</a> </li>
+<li><strong>Example config</strong>: <a href="https://github.com/ServiceNow/SyGra/blob/v2.0.0/tasks/examples/glaive_code_assistant/graph_config.yaml"><code>tasks/examples/glaive_code_assistant/graph_config.yaml</code></a></li>
+</ul>
+<p>SyGra Studio turns synthetic data workflows into a visual, user friendly experience. Configure once, build with confidence, run with full observability, generate the data without ever leaving the canvas.</p>
+</div></div>
+  </div>
+</body>
+</html>

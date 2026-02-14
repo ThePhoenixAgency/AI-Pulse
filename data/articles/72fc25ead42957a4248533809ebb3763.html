@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Multiples vulnérabilités dans les produits SAP</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Multiples vulnérabilités dans les produits SAP</h1>
+  <div class="metadata">
+    Source: CERT-FR | Date: 2/10/2026 | Lang: FR |
+    <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0141/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+    
+      <section>
+  
+    <div>
+      
+      
+        <p><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0141/json/">
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+  </a>
+</p>
+      
+    </div>
+
+    
+
+
+
+
+    <div>
+      <p>
+        </p><h2>Avis du CERT-FR</h2>
+        <hr />
+      <p></p>
+    </div>
+    
+    
+    <div>
+  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+</div>
+  
+</section>
+      <div>
+      
+
+        
+          <h2>Risques</h2>
+        
+
+        <ul>
+          
+            <li>Atteinte à la confidentialité des données</li>
+          
+            <li>Contournement de la politique de sécurité</li>
+          
+            <li>Déni de service à distance</li>
+          
+            <li>Exécution de code arbitraire à distance</li>
+          
+            <li>Injection de code indirecte à distance (XSS)</li>
+          
+            <li>Non spécifié par l'éditeur</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>ABAP based systems versions ST-PI 2005_1_700, 2008_1_710, 740 et 758 sans le dernier correctif de sécurité</li>
+          
+            <li>Business One (B1 Client Memory Dump Files) versions B1_ON_HANA 10.0 et SAP-M-BO 10.0 sans le dernier correctif de sécurité</li>
+          
+            <li>Business Server Pages Application (TAF_APPLAUNCHER) versions ST-PI 2008_1_700, 2008_1_710, 740 et 758 sans le dernier correctif de sécurité</li>
+          
+            <li>Business Workflow versions SAP_BASIS 752, SAP_BASIS 753, SAP_BASIS 754, SAP_BASIS 755, SAP_BASIS 756, SAP_BASIS 757, SAP_BASIS 758 et SAP_BASIS 816 sans le dernier correctif de sécurité</li>
+          
+            <li>BusinessObjects BI Platform versions ENTERPRISE 430, 2025 et 2027 sans le dernier correctif de sécurité</li>
+          
+            <li>BusinessObjects Business Intelligence Platform (AdminTools) versions ENTERPRISE 430, 2025 et 2027 sans le dernier correctif de sécurité</li>
+          
+            <li>BusinessObjects Business Intelligence Platform versions ENTERPRISE 430, 2025 et 2027 sans le dernier correctif de sécurité</li>
+          
+            <li>BusinessObjects Enterprise (Central Management Console) versions ENTERPRISE 430, 2025 et 2027 sans le dernier correctif de sécurité</li>
+          
+            <li>Commerce Cloud versions HY_COM 2205, COM_CLOUD 2211 et 2211-JDK21 sans le dernier correctif de sécurité</li>
+          
+            <li>Commerce Cloud versions HY_COM 2205, COM_CLOUD 2211 et COM_CLOUD 2211-JDK21 sans le dernier correctif de sécurité</li>
+          
+            <li>CRM et S/4HANA (Scripting Editor) versions S4FND 102, 103, 104, 105, 106, 107, 108, 109, SAP_ABA 700, WEBCUIF 700, 701, 730, 731, 746, 747, 748, 800 et 801 sans le dernier correctif de sécurité</li>
+          
+            <li>Document Management System versions SAP_APPL 618, S4CORE 102, 103, 104, 105, 106, 107, 108, 109, EA-APPL 600, 602, 603, 604, 605, 606 et 617 sans le dernier correctif de sécurité</li>
+          
+            <li>Fiori App (Manage Service Entry Sheets - Lean Services) versions S4CORE 102, 103, 104, 105, 106 et 107 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver (JMS service) version J2EE-FRMW 7.50 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver and ABAP Platform (Application Server ABAP) versions [KRNL64NUC 7.22, 7.22EXT, KRNL64UC 7.22, 7.22EXT, 7.53, 8.04, KERNEL 7.22, 7.53, 7.54, 7.77, 7.89, 7.93, 8.04, 9.16, 9.17 et 9.18] sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver Application Server ABAP (applications based on GUI for HTML) versions KRNL64UC 7.53, KERNEL 7.53, 7.54, 7.77, 7.89, 7.93, 9.12 et 9.14 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver Application Server ABAP and ABAP Platform versions KRNL64NUC 7.22, 7.22EXT, KRNL64UC 7.22, 7.22EXT, 7.53, KERNEL 7.22, 7.53, 7.54, 7.77, 7.89, 7.93, 9.16, 9.18 et 9.19 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver Application Server ABAP and S/4HANA versions SAP_BASIS 700, SAP_BASIS 701, SAP_BASIS 702, SAP_BASIS 731, SAP_BASIS 740, SAP_BASIS 750, SAP_BASIS 751, SAP_BASIS 752, SAP_BASIS 753, SAP_BASIS 754, SAP_BASIS 755, SAP_BASIS 756, SAP_BASIS 757, SAP_BASIS 758 et SAP_BASIS 816 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver Application Server Java version LMNWABASICAPPS 7.50 sans le dernier correctif de sécurité</li>
+          
+            <li>NetWeaver AS ABAP and ABAP Platform versions SAP_BASIS 700, SAP_BASIS 701, SAP_BASIS 702, SAP_BASIS 731, SAP_BASIS 740, SAP_BASIS 750, SAP_BASIS 751, SAP_BASIS 752, SAP_BASIS 753, SAP_BASIS 754, SAP_BASIS 755, SAP_BASIS 756, SAP_BASIS 757, SAP_BASIS 758, SAP_BASIS 804, SAP_BASIS 916, SAP_BASIS 917 et SAP_BASIS 918 sans le dernier correctif de sécurité</li>
+          
+            <li>S/4HANA Defense &amp; Security (Disconnected Operations) versions EA-DFPS 600, 603, 604, 605, 606, 616, 617, 618, 619, 800, 801, 802, 803, 804, 805, 806, 807, 808 et 809 sans le dernier correctif de sécurité</li>
+          
+            <li>Solution Tools Plug-In (ST-PI) versions ST-PI 2008_1_700, 2008_1_710, 740 et 758 sans le dernier correctif de sécurité</li>
+          
+            <li>Strategic Enterprise Management (Balanced Scorecard in BSP Application) versions SEM-BW 600, 700, 602, 603, 604, 605, 634, 736, 746, 747, 748 et 800 sans le dernier correctif de sécurité</li>
+          
+            <li>Supply Chain Management versions SCMAPO 713, 714, SCM 700, 701, 702 et 712 sans le dernier correctif de sécurité</li>
+          
+            <li>Support Tools Plug-In versions ST-PI 2008_1_700, 2008_1_710, 740 et 758 sans le dernier correctif de sécurité</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p>De multiples vulnérabilités ont été découvertes dans les produits SAP. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et une atteinte à la confidentialité des données.</p>
+
+        </div>
+
+      <div>
+        <h2>Solutions</h2>
+<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité SAP february-2026 du 10 février 2026</li>
+              <a href="https://support.sap.com/en/my-support/knowledge-base/security-notes-news/february-2026.html">https://support.sap.com/en/my-support/knowledge-base/security-notes-news/february-2026.html</a>
+          
+
+          
+          
+
+          
+            <li>Référence CVE CVE-2025-0059</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-0059">https://www.cve.org/CVERecord?id=CVE-2025-0059</a>
+          
+            <li>Référence CVE CVE-2025-12383</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-12383">https://www.cve.org/CVERecord?id=CVE-2025-12383</a>
+          
+            <li>Référence CVE CVE-2026-0484</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0484">https://www.cve.org/CVERecord?id=CVE-2026-0484</a>
+          
+            <li>Référence CVE CVE-2026-0485</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0485">https://www.cve.org/CVERecord?id=CVE-2026-0485</a>
+          
+            <li>Référence CVE CVE-2026-0486</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0486">https://www.cve.org/CVERecord?id=CVE-2026-0486</a>
+          
+            <li>Référence CVE CVE-2026-0488</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0488">https://www.cve.org/CVERecord?id=CVE-2026-0488</a>
+          
+            <li>Référence CVE CVE-2026-0490</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0490">https://www.cve.org/CVERecord?id=CVE-2026-0490</a>
+          
+            <li>Référence CVE CVE-2026-0505</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0505">https://www.cve.org/CVERecord?id=CVE-2026-0505</a>
+          
+            <li>Référence CVE CVE-2026-0508</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0508">https://www.cve.org/CVERecord?id=CVE-2026-0508</a>
+          
+            <li>Référence CVE CVE-2026-0509</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-0509">https://www.cve.org/CVERecord?id=CVE-2026-0509</a>
+          
+            <li>Référence CVE CVE-2026-23681</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23681">https://www.cve.org/CVERecord?id=CVE-2026-23681</a>
+          
+            <li>Référence CVE CVE-2026-23684</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23684">https://www.cve.org/CVERecord?id=CVE-2026-23684</a>
+          
+            <li>Référence CVE CVE-2026-23685</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23685">https://www.cve.org/CVERecord?id=CVE-2026-23685</a>
+          
+            <li>Référence CVE CVE-2026-23686</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23686">https://www.cve.org/CVERecord?id=CVE-2026-23686</a>
+          
+            <li>Référence CVE CVE-2026-23687</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23687">https://www.cve.org/CVERecord?id=CVE-2026-23687</a>
+          
+            <li>Référence CVE CVE-2026-23688</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23688">https://www.cve.org/CVERecord?id=CVE-2026-23688</a>
+          
+            <li>Référence CVE CVE-2026-23689</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-23689">https://www.cve.org/CVERecord?id=CVE-2026-23689</a>
+          
+            <li>Référence CVE CVE-2026-24312</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24312">https://www.cve.org/CVERecord?id=CVE-2026-24312</a>
+          
+            <li>Référence CVE CVE-2026-24319</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24319">https://www.cve.org/CVERecord?id=CVE-2026-24319</a>
+          
+            <li>Référence CVE CVE-2026-24320</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24320">https://www.cve.org/CVERecord?id=CVE-2026-24320</a>
+          
+            <li>Référence CVE CVE-2026-24321</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24321">https://www.cve.org/CVERecord?id=CVE-2026-24321</a>
+          
+            <li>Référence CVE CVE-2026-24322</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24322">https://www.cve.org/CVERecord?id=CVE-2026-24322</a>
+          
+            <li>Référence CVE CVE-2026-24323</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24323">https://www.cve.org/CVERecord?id=CVE-2026-24323</a>
+          
+            <li>Référence CVE CVE-2026-24324</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24324">https://www.cve.org/CVERecord?id=CVE-2026-24324</a>
+          
+            <li>Référence CVE CVE-2026-24325</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24325">https://www.cve.org/CVERecord?id=CVE-2026-24325</a>
+          
+            <li>Référence CVE CVE-2026-24326</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24326">https://www.cve.org/CVERecord?id=CVE-2026-24326</a>
+          
+            <li>Référence CVE CVE-2026-24327</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24327">https://www.cve.org/CVERecord?id=CVE-2026-24327</a>
+          
+            <li>Référence CVE CVE-2026-24328</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-24328">https://www.cve.org/CVERecord?id=CVE-2026-24328</a>
+          
+        </ul>
+      
+    </div>
+      <div>
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 10 février 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+        </dl>
+      </ol>
+    </div>
+    
+  </article></div>
+  </div>
+</body>
+</html>

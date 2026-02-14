@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - meghendra6/cgrep</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - meghendra6/cgrep</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/14/2026 | Lang: EN |
+    <a href="https://github.com/meghendra6/cgrep" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>cgrep</h2><a href="#cgrep"></a><p></p>
+<p><code>grep</code> finds text. <code>cgrep</code> finds code intent.</p>
+<p>Built for humans and AI agents working in real repositories.
+Current release: <strong>v1.4.1</strong>.</p>
+<p><code>cgrep</code> combines:</p>
+<ul>
+<li>BM25 full-text search (Tantivy)</li>
+<li>AST symbol extraction (tree-sitter)</li>
+<li>optional semantic/hybrid search with embeddings</li>
+<li>deterministic JSON output for tool/agent workflows</li>
+</ul>
+<p>Everything runs locally.</p>
+<p></p><h2>Why Teams Choose cgrep</h2><a href="#why-teams-choose-cgrep"></a><p></p>
+<ul>
+<li>Proven on large codebases: in PyTorch scenario-completion workflows, cgrep cut tokens-to-complete by <strong>95.2%</strong> (<strong>20.75x</strong>) and reduced retrieval loop latency by about <strong>58.2x</strong> after indexing.</li>
+<li>Get answers, not just matching lines: <code>definition</code>, <code>references</code>, <code>callers</code>, <code>dependents</code>, <code>map</code>, <code>read</code>.</li>
+<li>Keep AI-agent loops small with <code>agent locate</code> + <code>agent expand</code> and compact <code>json2</code> output.</li>
+<li>Ergonomic CLI shortcuts: <code>s</code>, <code>d</code>, <code>r</code>, <code>c</code>, <code>dep</code>, <code>i</code>, <code>a l</code>, plus short flags like <code>-u</code>, <code>-M</code>, <code>-B</code>, <code>-P</code>.</li>
+<li>Stay local-first for speed and privacy (no cloud index required).</li>
+<li>Scale safely on large repos with indexing, watch/daemon, and MCP server mode.</li>
+</ul>
+<p></p><h2>grep vs cgrep (Practical)</h2><a href="#grep-vs-cgrep-practical"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>You need to...</th>
+<th>Plain grep workflow</th>
+<th>cgrep workflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Find where logic is implemented</td>
+<td>Iterate patterns + open many files manually</td>
+<td><code>cgrep definition/references/callers</code> directly</td>
+</tr>
+<tr>
+<td>Feed context to AI coding agents</td>
+<td>Large, noisy payloads</td>
+<td>Budgeted, structured payloads (<code>agent</code>, <code>json2</code>)</td>
+</tr>
+<tr>
+<td>Keep retrieval stable over time</td>
+<td>Ad-hoc scripts per repo</td>
+<td>Built-in index/watch/daemon + MCP integration</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Benchmark Snapshot (PyTorch)</h2><a href="#benchmark-snapshot-pytorch"></a><p></p>
+<ul>
+<li>Measured on February 14, 2026 across 6 AI-coding scenarios (implementation/structure tracing on PyTorch).</li>
+<li>Completion model: iterative retrieval loops run until each scenario’s completion criteria is satisfied.</li>
+<li>One-time index build: <strong>5.31s</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Baseline (<code>grep</code>)</th>
+<th>cgrep (<code>agent locate/expand</code>)</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total tokens-to-complete</td>
+<td>127,665</td>
+<td>6,153</td>
+<td><strong>95.2% less</strong></td>
+</tr>
+<tr>
+<td>Avg tokens-to-complete per task</td>
+<td>21,278</td>
+<td>1,026</td>
+<td><strong>20.75x smaller</strong></td>
+</tr>
+<tr>
+<td>Avg retrieval latency to completion</td>
+<td>1,321.3 ms</td>
+<td>22.7 ms</td>
+<td><strong>~58.2x faster</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Practical meaning: for the same completed scenarios, cgrep used only <strong>4.8%</strong> of the token volume of a plain <code>grep</code> workflow.</li>
+<li>Full methodology and raw data: <code>docs/benchmarks/pytorch-agent-token-efficiency.md</code>.</li>
+</ul>
+<p></p><h2>Install</h2><a href="#install"></a><p></p>
+<div><pre>cargo install --path <span>.</span>
+
+<span><span>#</span> or build manually</span>
+cargo build --release
+cp target/release/cgrep <span>~</span>/.local/bin/</pre></div>
+<p>Detailed setup: <code>docs/installation.md</code></p>
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<div><pre><span><span>#</span> Build index once (recommended)</span>
+cgrep index
+
+<span><span>#</span> Keyword search</span>
+cgrep search <span><span>"</span>authentication flow<span>"</span></span> -t rust -p src/
+
+<span><span>#</span> Symbol navigation</span>
+cgrep definition handle_auth
+cgrep references UserService --mode auto
+
+<span><span>#</span> Smart read/map</span>
+cgrep <span>read</span> src/auth.rs
+cgrep map --depth 2</pre></div>
+<p>Shortcut-first equivalents:</p>
+<div><pre>cgrep i                       <span><span>#</span> index</span>
+cgrep s <span><span>"</span>authentication flow<span>"</span></span> <span><span>#</span> search</span>
+cgrep d handle_auth           <span><span>#</span> definition</span>
+cgrep r UserService           <span><span>#</span> references</span>
+cgrep c validate_token        <span><span>#</span> callers</span>
+cgrep dep src/auth.rs         <span><span>#</span> dependents</span></pre></div>
+<p>Agent workflow example:</p>
+<div><pre>ID=<span><span>$(</span>cgrep agent locate <span><span>"</span>where token validation happens<span>"</span></span> --compact <span>|</span> jq -r <span><span>'</span>.results[0].id<span>'</span></span><span>)</span></span>
+cgrep agent expand --id <span><span>"</span><span>$ID</span><span>"</span></span> -C 8 --compact</pre></div>
+<p></p><h2>Documentation</h2><a href="#documentation"></a><p></p>
+<ul>
+<li>Docs hub (GitHub): <code>docs/index.md</code></li>
+<li>Docs site: <a href="https://meghendra6.github.io/cgrep/">https://meghendra6.github.io/cgrep/</a></li>
+<li>Korean docs: <code>docs/ko/index.md</code></li>
+<li>Getting started: <code>docs/installation.md</code></li>
+<li>CLI usage and search options: <code>docs/usage.md</code></li>
+<li>Agent workflow and integration install: <code>docs/agent.md</code></li>
+<li>MCP server and harness guidance: <code>docs/mcp.md</code></li>
+<li>Indexing, watch, and daemon: <code>docs/indexing-watch.md</code></li>
+<li>Configuration: <code>docs/configuration.md</code></li>
+<li>Embeddings mode: <code>docs/embeddings.md</code></li>
+<li>Agent token benchmark: <code>docs/benchmarks/pytorch-agent-token-efficiency.md</code></li>
+<li>Troubleshooting: <code>docs/troubleshooting.md</code></li>
+<li>Development and validation: <code>docs/development.md</code></li>
+</ul>
+<p></p><h2>Notes</h2><a href="#notes"></a><p></p>
+<ul>
+<li>Changelog: <code>CHANGELOG.md</code></li>
+<li>Comparison material: <code>COMPARISON.md</code></li>
+<li>Harness rationale: <a href="https://blog.can.ac/2026/02/12/the-harness-problem/">https://blog.can.ac/2026/02/12/the-harness-problem/</a></li>
+</ul>
+</article></div></div>
+  </div>
+</body>
+</html>

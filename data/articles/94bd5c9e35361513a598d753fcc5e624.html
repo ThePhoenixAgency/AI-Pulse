@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to check if Windows 11 has applied the new Secure Boot 2023 certificates (replaces Secure Boot 2011)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>How to check if Windows 11 has applied the new Secure Boot 2023 certificates (replaces Secure Boot 2011)</h1>
+  <div class="metadata">
+    Source: Windows Latest | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.windowslatest.com/2026/02/13/how-to-check-if-windows-11-has-applied-the-new-secure-boot-2023-certificates-replaces-secure-boot-2011/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            <p><a href="https://www.windowslatest.com/wp-content/uploads/2026/02/how-to-verify-if-secure-certificate-has-been-updated.jpg"><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/how-to-verify-if-secure-certificate-has-been-updated-696x392.jpg" alt="how to verify if secure certificate has been updated" /></a></p>
+            <p>If you’ve checked Event Viewer recently, some new TPM-WMI errors about Secure Boot certificates might have popped up. Don’t worry, you’re <a href="https://www.reddit.com/r/Windows11/comments/1r1pktp/check_these_logs_in_event_viewer_for_important/" target="_blank">not alone</a>. Many Windows 11 users are seeing these logs appear out of nowhere, especially after installing the February 2026 Patch Tuesday update.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-Event-Viewer-showing-Event-ID-1801-errors.png" alt="Windows Event Viewer showing Event ID 1801 errors" /><figcaption>Windows Event Viewer showing Event ID 1801 errors. Source: Reddit</figcaption></figure>
+<p>Fortunately, this isn’t a bug. <a href="https://blogs.windows.com/windowsexperience/2026/02/10/refreshing-the-root-of-trust-industry-collaboration-on-secure-boot-certificate-updates/">Microsoft is in the middle of refreshing Secure Boot certificates</a> that date all the way back to 2011. Those older keys are reaching the end of their usable life, and Windows is now transitioning devices to a newer certificate authority called Windows UEFI CA 2023.</p>
+<p>Secure Boot is the feature that protects your PC during startup by allowing only trusted firmware, bootloaders, and system components to run before Windows loads. Naturally, if those certificates expire or fall out of trust, it would leave Secure Boot ineffective.</p>
+<p>Microsoft bundled the certificate refresh with the February 2026 Windows 11 update (<a href="https://www.windowslatest.com/2026/02/10/windows-11-kb5077181-25h2-out-with-new-features-direct-download-links-for-offline-installers-msu/">KB5077181</a>), and in typical fashion, this is a phased, device-specific rollout, and would likely use telemetry and confidence checks before pushing the new keys to your PC’s firmware.</p>
+<p>As a consequence, many users are seeing Event Viewer logs mentioning things like “updated certificates available” or “under observation,” even though nothing has changed yet on their system.</p>
+<p>Note that these logs <em>don’t mean something is wrong</em>. In most cases, Windows is likely preparing your device and checking compatibility for the right moment to apply the new Secure Boot keys safely.</p>
+<h2>Why you might be seeing TPM-WMI errors in Event Viewer</h2>
+<p>A lot of Windows 11 users have noticed Event ID 1801, along with messages like:</p>
+<p><em>“BucketConfidenceLevel: Under Observation – More Data Needed”</em></p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-Event-Viewer-showing-Event-ID-1801-errors-where-the-BucketConfidenceLevel-is-listed-as-Under-Observation-More-Data-Needed.png" alt="Windows Event Viewer showing Event ID 1801 errors where the BucketConfidenceLevel is listed as 'Under Observation - More Data Needed'" /><figcaption>Windows Event Viewer showing Event ID 1801 errors where the BucketConfidenceLevel is listed as ‘Under Observation – More Data Needed’. Source: Reddit</figcaption></figure>
+<p>Rest assured, your PC is safe and nothing is broken. What Windows is logging here is a status check, and not an error or failure.</p>
+<p>Secure Boot keys are present at the firmware level and are shared across the entire PC ecosystem, including OEM firmware, motherboard vendors, and Windows. Because of that, the change has to be coordinated carefully to avoid devices becoming unbootable if something goes wrong.</p>
+<p>There are two separate steps involved in this process:</p>
+<ol>
+<li>The new Secure Boot certificate becomes available to Windows</li>
+<li>That certificate is later applied to the system firmware</li>
+</ol>
+<p>Most systems sit in between these two steps for a while.</p>
+<p>When Event Viewer says updated Secure Boot certificates are available but not yet applied, it means your device has been detected, evaluated, and queued for the next stage. The “Under Observation” confidence level indicates Microsoft is still collecting update reliability signals from your device before pushing the firmware-level change. These are things where telemetry makes sense.</p>
+<p>Also, Windows can download and stage the new certificates inside the OS long before firmware adopts them. Until firmware accepts and records the new keys, Event Viewer may continue to log status messages indicating the transition is pending.</p>
+<p>This is why the logs appear as errors, even though they are informational staging logs, and it doesn’t mean broken TPM, failed Secure Boot, or a corrupted BIOS. Note that many systems will remain in this state temporarily, especially during a phased rollout like this one.</p>
+<h2>How to check if the new Secure Boot certificate has already applied on your PC</h2>
+<p>Windows has a simple way to check whether the Windows UEFI CA 2023 certificate is already present on your system. This method does not modify anything and is completely safe.</p>
+<p><strong>Step 1: Open PowerShell as administrator</strong></p>
+<p>Right-click the Start button and choose Windows PowerShell (Admin) or Terminal (Admin).</p>
+<p><strong>Step 2: Run this command exactly as shown</strong></p>
+<p><em>([System.Text.Encoding]::ASCII.GetString((Get-SecureBootUEFI db).bytes) -match ‘Windows UEFI CA 2023’)</em></p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/How-to-check-if-the-new-Secure-Boot-certificate-has-already-applied-to-your-PC.jpg" alt="How to check if the new Secure Boot certificate has already applied to your PC" /><figcaption>PowerShell output confirming the Windows UEFI CA 2023 update</figcaption></figure>
+<p><strong>Step 3: Check the result</strong></p>
+<ul>
+<li><strong>True</strong>: This means the Windows UEFI CA 2023 certificate is already present in your Secure Boot database. Your system is ready, even if Event Viewer still shows staging or observation messages.</li>
+<li><strong>False</strong>: This means your device has not received the certificate yet. This is not an error and does not require any action. Your PC is simply waiting for its turn in the rollout.</li>
+</ul>
+<h3><strong>How to verify the update in Event Viewer</strong></h3>
+<p>If the PowerShell command returns True and you want to see the official logs for peace of mind, you can find them in the System log. Here is the easiest way to track them down without scrolling through thousands of events:</p>
+<ol>
+<li>Open Event Viewer (search for it in the Start menu).</li>
+<li>Navigate to Windows Logs &gt; System.</li>
+<li>On the right-hand pane, click Filter Current Log….</li>
+<li>In the Event sources dropdown, scroll down and check the box for TPM-WMI (it might be listed as Microsoft-Windows-TPM-WMI).</li>
+<li>Click OK.</li>
+</ol>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/How-to-verify-the-update-in-Event-Viewer.jpg" alt="How to verify the update in Event Viewer" /><figcaption>How to verify the update in Event Viewer</figcaption></figure>
+<p>Once filtered, look for Event ID 1808. If you see it, it means the new Secure Boot certificate was successfully applied. You might also see Event ID 1034, which confirms the DBX (revocation list) update was also processed.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-11-Event-Viewer-Secure-Boot-Key-Update-Success-Event-1808.jpg" alt="Windows Event Viewer window showing Event ID 1808 selected." /><figcaption>If your update is fully complete, you will see Event ID 1808 in Event Viewer, confirming that the new Secure Boot keys are active.</figcaption></figure>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Secure-Boot-Dbx-Revocation-List-Update-Event-1034.jpg" alt="Windows Event Viewer displaying Event ID 1034 with the message &quot;Secure Boot Dbx update applied successfully,&quot;" /><figcaption>You may also see Event ID 1034, which confirms that the Secure Boot revocation list (Dbx) was updated successfully alongside the keys.</figcaption></figure>
+<p>Note that these two checks can appear out of sync. Some users will see True in PowerShell while Event Viewer still logs warnings about certificates not being applied to firmware. That’s normal.</p>
+<p>The OS-level update can come first, while the firmware application happens later, sometimes after restarts or updates.</p>
+<p>If PowerShell returns True, your system already has what it needs. At that point, the Event Viewer entries can safely be ignored.</p>
+<h2>Do you need to update your BIOS right now?</h2>
+<p>No, you do not need to rush into a BIOS update.</p>
+<p>One of the biggest misunderstandings around this rollout is assuming that Microsoft is pushing firmware changes directly. It isn’t. BIOS and UEFI firmware are controlled by your device manufacturer, not by Windows Update. That means Microsoft cannot blindly update Secure Boot keys at the firmware level across every PC without coordination from OEMs like Dell, Lenovo, HP, ASUS, Acer, and others.</p>
+<figure><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/SUR25-COMMR-Laptop-13inch-Snapdragon-Platinum-Desk-02-1600x1067-1.jpg" alt="Male sitting at desk working on two Surface Laptops with external monitor repairing devices" /><figcaption>Source: Microsoft</figcaption></figure>
+<p>Firmware changes are far more delicate than OS updates. You can roll back a failed Windows update but a failed firmware update can make your PC unable to boot. So, OEMs have to validate Secure Boot key transitions carefully and release them only when they are confident the update will not interfere with platform-specific configurations.</p>
+<p>You should only consider updating your BIOS if:</p>
+<ul>
+<li>Your device manufacturer explicitly instructs you to do so</li>
+<li>The update documentation mentions Secure Boot certificate changes</li>
+<li>You are comfortable performing firmware updates and understand the risks</li>
+</ul>
+<p>We also recommend that you avoid workarounds like clearing Secure Boot keys, enabling Setup Mode, or manually modifying firmware settings. These are intended for enterprise and can reduce security if done incorrectly.</p>
+<p>If this all feels like Microsoft is doing more work behind the scenes lately, that’s because they are. Although, the Secure Boot certificate update was inevitable, since the previous one is 15 years old, the company is on a mission to make <a href="https://www.windowslatest.com/2026/02/12/microsoft-wants-windows-11-secure-by-default-could-allow-only-properly-signed-apps-and-drivers-by-default/">Windows secure by default</a>.</p>
+
+        
+
+        
+                </div></div>
+  </div>
+</body>
+</html>

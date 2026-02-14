@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi 5 + SSD : installer YunoHost, HTTPS Let’s Encrypt et WordPress (pas à pas)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi 5 + SSD : installer YunoHost, HTTPS Let’s Encrypt et WordPress (pas à pas)</h1>
+  <div class="metadata">
+    Source: Framboise 314 | Date: 1/1/2026 | Lang: FR |
+    <a href="https://www.framboise314.fr/raspberry-pi-5-yunohost-ssd-https-wordpress/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+			<p>Installer un serveur perso chez soi, sur un <strong>Raspberry Pi 5</strong> ou un <strong>Pi 500+</strong>, c’est à la portée de tout maker… à condition de suivre la bonne méthode. Dans cet article, on va poser <strong>YunoHost</strong> sur un <strong>SSD NVMe</strong>, faire la post-installation, installer une première appli (WordPress), puis rendre le serveur <strong>accessible depuis l’extérieur</strong> avec une configuration propre sur la box. Objectif : un serveur opérationnel, administrable en HTTPS, avec des comptes bien rangés et une base saine pour héberger tes services (site, cloud, wiki, etc.). Pas de blabla : des commandes, des captures, et les pièges à éviter. Allez, on sort le tournevis et on monte un petit “cloud maison” qui tient la route.</p>
+
+<div><p>Au sommaire :</p><ul><li><a href="#Raspberry_Pi_5_Pi_500_installer_YunoHost_sur_SSD_activer_le_HTTPS_et_deployer_WordPress"><span>1</span> Raspberry Pi 5 / Pi 500+ : installer YunoHost sur SSD, activer le HTTPS et déployer WordPress</a><ul><li><a href="#Demarrer_le_Raspberry_Pi_500"><span>1.1</span> Démarrer le Raspberry Pi 500+</a></li><li><a href="#Phase_1_Verification_de_la_detection_du_SSD"><span>1.2</span> Phase 1 – Vérification de la détection du SSD</a><ul><li><a href="#Verification_de_letat_du_SSD"><span>1.2.1</span> Vérification de l’état du SSD</a></li></ul></li><li><a href="#Installer_yunoHost_sur_le_SSD"><span>1.3</span> Installer yunoHost sur le SSD</a><ul><li><a href="#Etape_1_8211_Telecharger_limage_officielle_YunoHost_RPi_345"><span>1.3.1</span> Étape 1 – Télécharger l’image officielle YunoHost (RPi 3/4/5)</a></li><li><a href="#SHA-256_a_quoi_ca_sert"><span>1.3.2</span> SHA-256 : à quoi ça sert ?</a></li><li><a href="#Etape_2_8211_Verifier_lintegrite_du_fichier_telecharge_SHA-256"><span>1.3.3</span> Étape 2 – Vérifier l’intégrité du fichier téléchargé (SHA-256)</a></li><li><a href="#Etape_3_8211_Ecrire_limage_YunoHost_sur_le_SSD_avec_Raspberry_Pi_Imager_sur_le_Pi_500"><span>1.3.4</span> Étape 3 – Écrire l’image YunoHost sur le SSD (avec Raspberry Pi Imager, sur le Pi 500+)</a></li></ul></li><li><a href="#Revenir_au_boot_sur_SD"><span>1.4</span> Revenir au boot sur SD</a><ul><li><a href="#_Menu_de_boot_Pi_5_Pi_500_demarrer_sur_la_carte_SD"><span>1.4.1</span> 🧭 Menu de boot (Pi 5 / Pi 500+) : démarrer sur la carte SD</a></li></ul></li><li><a href="#Post-installation_de_yunoHost"><span>1.5</span> Post-installation de yunoHost</a><ul><li><a href="#1_Methode_recommandee_via_le_navigateur"><span>1.5.1</span> 1) Méthode recommandée : via le navigateur</a></li><li><a href="#2_Methode_alternative_en_ligne_de_commande_SSH"><span>1.5.2</span> 2) Méthode alternative : en ligne de commande (SSH)</a></li></ul></li><li><a href="#Se_connecter_a_yunoHost_et_gerer_les_comptes"><span>1.6</span> Se connecter à yunoHost et gérer les comptes</a><ul><li><a href="#Connexion_a_yunoHost"><span>1.6.1</span> Connexion à yunoHost</a></li><li><a href="#_Comptes_YunoHost_admin_principal_admin_de_secours_compte_utilisateur"><span>1.6.2</span> 👥 Comptes YunoHost :
+admin principal, admin de secours &amp; compte utilisateur</a><ul><li><a href="#_Administrateur_principal"><span>1.6.2.1</span> 🔑 Administrateur principal</a></li><li><a href="#_Administrateur_de_secours"><span>1.6.2.2</span> 🛟 Administrateur de secours</a></li><li><a href="#_Compte_utilisateur_sans_droits_admin"><span>1.6.2.3</span> 👤 Compte utilisateur (sans droits admin)</a></li><li><a href="#_Bonnes_pratiques"><span>1.6.2.4</span> ✅ Bonnes pratiques</a></li></ul></li><li><a href="#Creer_un_compte_admin_de_secours"><span>1.6.3</span> Créer un compte admin de secours</a></li><li><a href="#Creer_un_compte_invite"><span>1.6.4</span> Créer un compte invité</a></li><li><a href="#_Pourquoi_faut-il_passer_par_la_ligne_de_commande_pour_creer_un_administrateur_de_secours"><span>1.6.5</span> 🔒 Pourquoi faut-il passer par la ligne de commande pour créer un administrateur de secours ?</a></li></ul></li><li><a href="#Installer_WordPress"><span>1.7</span> Installer WordPress</a></li><li><a href="#Apres_lrsquoinstallation_drsquoune_application_WordPress"><span>1.8</span> Après l’installation d’une application (WordPress)</a></li></ul></li><li><a href="#Ouvrir_les_ports_sur_la_Livebox_Play_pour_YunoHost"><span>2</span> Ouvrir les ports sur la Livebox Play pour YunoHost</a><ul><li><a href="#Pourquoi_ouvrir_des_ports"><span>2.1</span> Pourquoi ouvrir des ports ?</a></li><li><a href="#Pre-requis"><span>2.2</span> Pré-requis</a></li><li><a href="#Etapes_sur_la_Livebox_Play_NATPAT"><span>2.3</span> Étapes sur la Livebox Play (NAT/PAT)</a><ul><li><a href="#1_Se_connecter_a_la_Livebox"><span>2.3.1</span> 1) Se connecter à la Livebox</a></li><li><a href="#2_Creer_les_redirections_de_ports"><span>2.3.2</span> 2) Créer les redirections de ports</a></li><li><a href="#3_Sauvegarder_et_redemarrer_si_necessaire"><span>2.3.3</span> 3) Sauvegarder et redémarrer (si nécessaire)</a></li></ul></li><li><a href="#Verifications_cote_YunoHost"><span>2.4</span> Vérifications côté YunoHost</a></li><li><a href="#Conseils_pieges_frequents"><span>2.5</span> Conseils &amp; pièges fréquents</a></li><li><a href="#Tester_lacces_depuis_Internet_puis_installer_Lets_Encrypt"><span>2.6</span> Tester l’accès depuis Internet, puis installer Let’s Encrypt</a><ul><li><a href="#1_Premier_test_dacces_depuis_un_smartphone_4G5G"><span>2.6.1</span> 1) Premier test d’accès depuis un smartphone (4G/5G)</a></li><li><a href="#2_Installer_le_certificat_Lets_Encrypt_le_cadenas_propre"><span>2.6.2</span> 2) Installer le certificat Let’s Encrypt (le cadenas “propre”)</a></li><li><a href="#3_Re-test_en_HTTPS_sans_alerte_acces_a_ladmin"><span>2.6.3</span> 3) Re-test en HTTPS (sans alerte) + accès à l’admin</a></li><li><a href="#4_Optionnel_Verifier_WordPress_depuis_lexterieur"><span>2.6.4</span> 4) (Optionnel) Vérifier WordPress depuis l’extérieur</a></li></ul></li><li><a href="#Conclusion"><span>2.7</span> Conclusion</a></li><li><a href="#Sources"><span>2.8</span> Sources</a></li></ul></li></ul></div>
+<h2><span>Raspberry Pi 5 / Pi 500+ : installer YunoHost sur SSD, activer le HTTPS et déployer WordPress</span></h2>
+<p>Pour ce tuto, j’ai monté le serveur en parallèle sur deux machines : un Raspberry Pi 5 dans un boîtier Pironman (avec NVMe de 2To) et un Pi 500+ (lui aussi avec SSD mais de 1To). L’idée, c’était de vérifier que la procédure reste valable dans les deux cas, sans dépendre d’un modèle précis. Du coup, selon les étapes, vous verrez parfois des captures et des exemples faits sur l’une ou l’autre machine : c’est normal. Les commandes, elles, restent les mêmes (à deux détails près : le matériel autour et parfois le nom d’hôte ou l’adresse IP). Bref : si vous constatez que “cette capture ne ressemble pas à chez moi”, pas de panique,                                                                                                                                                                                                                                      c’est juste l’autre Pi qui a pris la pose.</p>
+<h2><span>Démarrer le Raspberry Pi 500+</span></h2>
+<h2><span>Phase 1 – Vérification de la détection du SSD</span></h2>
+<p>Pour cette première étape, la carte <strong>SD</strong> contient déjà un <strong>Raspberry Pi OS fonctionnel</strong>, préparé et testé auparavant sur un Raspberry Pi 5. Le <strong>SSD NVMe 1 To</strong> est installé dans le logement prévu du Pi 500+, mais le démarrage se fait encore sur la carte SD.<br />
+L’objectif est simple : <strong>s’assurer que le SSD est bien détecté</strong> par le système.<br />
+Après ouverture d’un terminal, la commande :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>lsblk</span><span> </span><span>-</span><span>o</span><span> </span><span>NAME</span><span>,</span><span>SIZE</span><span>,</span><span>MODEL</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>permet de lister les supports de stockage.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_01.jpg" alt="" /></p>
+<p>On y retrouve la carte SD (<code>mmcblk0</code>) et le SSD Crucial (<code>nvme0n1</code>) d’une capacité de 931,5 Go, preuve qu’il est correctement reconnu par le Pi 500+ (voir capture ci-dessus).</p>
+<hr />
+<h3><span>Vérification de l’état du SSD</span></h3>
+<p>Une fois la détection confirmée, il est intéressant de contrôler la <strong>santé du SSD</strong>. Pour cela, on installe l’outil <code>nvme-cli</code> (s’il n’est pas déjà installé) puis on interroge le journal SMART du disque :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>nvme </span><span>smart</span><span>-</span><span>log</span><span> </span><span>/</span><span>dev</span><span>/</span><span>nvme0n1</span><span> </span><span>|</span><span> </span><span>egrep</span><span> </span><span>"temperature|percentage_used|critical_warning"</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_02.jpg" alt="" /></p>
+<p>Le résultat indique ici une <strong>température de 25 °C</strong>, <strong>0 % d’usure</strong>, et <strong>aucune alerte critique</strong>. Tout est donc normal, le SSD est prêt pour les prochaines étapes (captures ci-dessous).</p>
+
+<h3><span>Étape 1 – Télécharger l’image officielle YunoHost (RPi 3/4/5)</span></h3>
+<p>Sur le <strong>Pi 500+</strong> (démarré sur votre carte <strong>SD</strong>), téléchargez l’image YunoHost et son fichier de somme SHA256 :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p></div>
+				</td>
+						<td><div><p><span>mkdir</span><span> </span><span>-</span><span>p</span><span> </span><span>~</span><span>/</span><span>yunohost</span><span> </span><span>&amp;</span><span>amp</span><span>;</span><span>&amp;</span><span>amp</span><span>;</span><span> </span><span>cd</span><span> </span><span>~</span><span>/</span><span>yunohost</span></p><p><span>wget </span><span>https</span><span>:</span><span>//repo.yunohost.org/images/yunohost-bookworm-12.0.16-rpi-stable.img.gz</span></p><p><span>wget </span><span>https</span><span>:</span><span>//repo.yunohost.org/images/yunohost-bookworm-12.0.16-rpi-stable.img.gz.sha256sum</span></p><p><span>ls</span><span> </span><span>-</span><span>lh</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Vous devriez obtenir deux fichiers :</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_03.jpg" alt="" /></p>
+<ul>
+<li><code>yunohost-bookworm-12.0.16-rpi-stable.img.gz</code> — image Raspberry Pi (Bookworm 12, canal stable)</li>
+<li><code>yunohost-bookworm-12.0.16-rpi-stable.img.gz.sha256sum</code> — somme SHA256 pour vérification</li>
+</ul>
+<div>
+<h3><span>SHA-256 : à quoi ça sert ?</span></h3>
+<p><strong>SHA-256</strong> est une fonction de hachage cryptographique qui calcule une <em>empreinte</em> de 64 caractères (hexadécimaux) à partir d’un fichier.<br />
+Cette empreinte change si un seul bit du fichier change.</p>
+<ul>
+<li><strong>Intégrité :</strong> vérifier que le fichier téléchargé n’a pas été altéré (corruption, coupure réseau, etc.).</li>
+<li><strong>Authenticité :</strong> comparer l’empreinte avec celle publiée par la source officielle pour s’assurer que le fichier est le bon.</li>
+<li><strong>Traçabilité :</strong> chaque empreinte est quasi unique : deux fichiers différents n’auront pas la même valeur.</li>
+</ul>
+<p><strong>En pratique</strong> :<br />
+1) Calculez l’empreinte locale :<br />
+<code>sha256sum nom-du-fichier.img.gz</code><br />
+2) Comparez-la à la valeur fournie (fichier <code>.sha256sum</code>) ou laissez l’outil vérifier automatiquement :<br />
+<code>sha256sum -c nom-du-fichier.img.gz.sha256sum</code><br />
+Si tout est correct, vous verrez <em>OK</em>.</p>
+<p><em>Note :</em> le SHA-256 ne révèle pas le contenu du fichier et ne sert pas de mot de passe — c’est uniquement une signature d’intégrité.</p>
+</div>
+<h3><span>Étape 2 – Vérifier l’intégrité du fichier téléchargé (SHA-256)</span></h3>
+<p>Depuis le dossier où vous avez téléchargé l’image :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span><span>yunohost</span></p><p><span>sha256sum</span><span> </span><span>-</span><span>c</span><span> </span><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span><span>.</span><span>sha256sum</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><strong>Résultat attendu</strong> :</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_04.jpg" alt="" /></p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span><span>:</span><span> </span><span>R</span>é<span>ussi</span></p><p><span>ou</span></p><p><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span><span>:</span><span> </span><span>OK</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Si la vérification échoue, vous verrez un message de type :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span><span>:</span><span> </span><span>FAILED</span></p><p><span>sha256sum</span><span>:</span><span> </span><span>WARNING</span><span>:</span><span> </span><span>1</span><span> </span><span>computed </span><span>checksum </span><span>did </span><span>NOT</span><span> </span><span>match</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Dans ce cas, supprimez le fichier et retéléchargez-le avant de poursuivre.</p>
+<hr />
+<p><em>Vérification manuelle (optionnel)</em> : pour afficher l’empreinte locale et la comparer visuellement à celle publiée :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>sha256sum </span><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span></p><p><span>cat </span><span>yunohost</span><span>-</span><span>bookworm</span><span>-</span><span>12.0.16</span><span>-</span><span>rpi</span><span>-</span><span>stable</span><span>.</span><span>img</span><span>.</span><span>gz</span><span>.</span><span>sha256sum</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_05.jpg" alt="" /></p>
+<p>Avouez que c’est plus simple avec la vérification automatique 😀</p>
+<h3><span>Étape 3 – Écrire l’image YunoHost sur le SSD (avec Raspberry Pi Imager, sur le Pi 500+)</span></h3>
+<p>Nous allons utiliser l’outil <strong>Raspberry Pi Imager</strong> présent sur le bureau du Pi (vous avez démarré sur la carte SD). L’image de yunohost a été téléchargée dans <code>/home/pi/yunohost/</code>.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_06.jpg" alt="" /></p>
+<ol>
+<li>Ouvrez <strong>Raspberry Pi Imager</strong> depuis le menu. Choisissez le modèle de Raspberry Pi (ici c’est un Pi 5 obligatoire avec un SSD !)</li>
+<li>Cliquez sur <strong>Choisir l’OS</strong> → <strong>Utiliser une image personnalisée</strong>, puis sélectionnez le fichier :<br />
+<code>/home/pi/yunohost/yunohost-bookworm-12.0.16-rpi-stable.img.gz</code><br />
+<em>Astuce :</em> inutile de décompresser, Imager sait écrire directement depuis le <code>.img.gz</code>.</li>
+<li>Imager 2.0.x ne permet pas la customisation sur image custom, ce n’est pas bloquant : YunoHost se configure à la post-install.</li>
+<li>Lancez l’écriture, confirmez l’effacement du disque, puis laissez l’écriture et la vérification se terminer.</li>
+</ol>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_39.jpg" alt="" /></p>
+<p>Au bout d’un moment (c’est rapide) l’installation se termine. Vous pouvez maintenant éteindre le Raspberry Pi puis enlever le carte SD et redémarrer. yunoHost se lance et redimensionne la partition à la taille du SSD (pour 1To ou 2To ça peut durer un certain temps). Ensuite le système démarre et vous devez avoir cet écran :</p>
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_08-scaled.jpg" alt="" /></p><p>Écran de démarrage du Raspberry Pi 500 +</p></div>
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_40-scaled.jpg" alt="" /></p><p>Ecran de démarrage du Raspberry Pi 5</p></div>
+<p>Vous pouvez vous connecter depuis le clavier du Raspberry Pi ou comme je l’ai fait, en SSH  depuis un PC. Quel intérêt me direz vous ? Dans mon cas ça  permet de faire des copies d’écran pour illustrer cet article…</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p></div>
+				</td>
+						<td><div><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>C</span><span>:</span><span>\</span><span>Users</span><span>\</span><span>conta</span><span>&amp;</span><span>gt</span><span>;</span><span>ssh </span><span>yunohost</span><span>@</span><span>192.168.1.26</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>The </span><span>authenticity </span><span>of </span><span>host</span><span> </span><span>'192.168.1.26 (192.168.1.26)'</span><span> </span><span>can</span><span>'t be established.&lt;/span&gt;</span></p><p><span>&lt;span style="font-family: courier new, courier, monospace; font-size: 8pt;"&gt;ED25519 key fingerprint is SHA256:qUD0BTE4l5nI3WglcG1EVTcXOXAoSu4eeBcC3RPwVq4.&lt;/span&gt;</span></p><p><span>&lt;span style="font-family: courier new, courier, monospace; font-size: 8pt;"&gt;This key is not known by any other names.&lt;/span&gt;</span></p><p><span>&lt;span style="font-family: courier new, courier, monospace; font-size: 8pt;"&gt;Are you sure you want to continue connecting (yes/no/[fingerprint])? yes&lt;/span&gt;</span></p><p><span>&lt;span style="font-family: courier new, courier, monospace; font-size: 8pt;"&gt;Warning: Permanently added '</span><span>192.168.1.26</span><span>' (ED25519) to the list of known hosts.&lt;/span&gt;</span></p><p><span>&lt;span style="font-family: courier new, courier, monospace; font-size: 8pt;"&gt;yunohost@192.168.1.26'</span><span>s</span><span> </span><span>password</span><span>:</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>Linux </span><span>rpi</span><span> </span><span>6.6.51</span><span>+</span><span>rpt</span><span>-</span><span>rpi</span><span>-</span><span>2712</span><span> </span><span>#1 SMP PREEMPT Debian 1:6.6.51-1+rpt3 (2024-10-08) aarch64&lt;/span&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>The </span><span>programs </span><span>included </span><span>with </span><span>the </span><span>Debian </span><span>GNU</span><span>/</span><span>Linux </span><span>system </span><span>are </span><span>free </span><span>software</span><span>;</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>the </span><span>exact </span><span>distribution </span><span>terms </span><span>for</span><span> </span><span>each</span><span> </span><span>program </span><span>are </span><span>described </span><span>in</span><span> </span><span>the</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>individual </span><span>files </span><span>in</span><span> </span><span>/</span><span>usr</span><span>/</span><span>share</span><span>/</span><span>doc</span><span>/</span><span>*</span><span>/</span><span>copyright</span><span>.</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>Debian </span><span>GNU</span><span>/</span><span>Linux </span><span>comes </span><span>with </span><span>ABSOLUTELY </span><span>NO </span><span>WARRANTY</span><span>,</span><span> </span><span>to</span><span> </span><span>the </span><span>extent</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>permitted </span><span>by </span><span>applicable </span><span>law</span><span>.</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;=</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>Congratulations </span><span>on </span><span>setting </span><span>up </span><span>your </span><span>YunoHost </span><span>server</span><span> </span><span>!</span></p><p><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>To</span><span> </span><span>finish </span><span>the </span><span>installation</span><span>,</span><span> </span><span>you </span><span>should </span><span>run </span><span>the </span><span>postinstallation</span><span>.</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>You </span><span>can </span><span>find </span><span>documentation </span><span>about </span><span>it </span><span>on</span><span> </span><span>:</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>https</span><span>:</span><span>//yunohost.org/postinstall</span></p><p><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>You </span><span>can </span><span>run </span><span>it </span><span>from </span><span>the </span><span>command </span><span>line </span><span>interface</span><span> </span><span>with</span><span> </span><span>:</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>$</span><span> </span><span>yunohost </span><span>tools </span><span>postinstall</span></p><p><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>Or</span><span> </span><span>from</span><span> </span><span>a</span><span> </span><span>browser </span><span>by </span><span>accessing </span><span>one </span><span>of </span><span>your </span><span>local </span><span>IP</span><span> </span><span>:</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>192.168.1.26</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>2a01</span><span>:</span><span>cb10</span><span>:</span><span>92a8</span><span>:</span><span>ef00</span><span>:</span><span>2ecf</span><span>:</span><span>67ff</span><span>:</span><span>fefd</span><span>:</span><span>8a56</span></p><p><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;=</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>===</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p><p><span>&lt;</span><span>span </span><span>style</span><span>=</span><span>"font-family: courier new, courier, monospace; font-size: 8pt;"</span><span>&gt;</span><span>yunohost</span><span>@</span><span>rpi</span><span>:</span><span>~</span><span> </span><span>$</span><span>&lt;</span><span>/</span><span>span</span><span>&gt;</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>À ce stade, YunoHost est installé et vous voyez le message qui invite à lancer la post-installation. Deux méthodes sont possibles : via le navigateur (recommandé) ou en ligne de commande.</p>
+<section>
+<h2><span>Revenir au boot sur SD</span></h2>
+<p>Contexte : vous êtes sous <strong>YunoHost (Debian)</strong> sur un <strong>Raspberry Pi 5 / Pi 500(+)</strong> et la machine démarre actuellement sur le <strong>NVMe</strong>. Vous voulez revenir au boot sur la SD card : On va installer l’outil EEPROM côté Debian, puis corriger l’ordre de boot pour prioriser la <strong>carte SD</strong>.</p>
+<p><strong>⚠️ Important :</strong> votre carte SD doit contenir un <em>Raspberry Pi OS 64-bit récent</em> et être saine. Si la SD n’est pas bootable, le firmware passera au périphérique suivant.</p>
+<ol>
+<li><strong>Installer l’outil EEPROM (sous YunoHost/Debian)</strong><br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>update</span></p><p><span>sudo </span><span>apt </span><span>install </span><span>rpi</span><span>-</span><span>eeprom</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Éditer la configuration du bootloader</strong><br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo</span><span> </span><span>-</span><span>E</span><span> </span><span>rpi</span><span>-</span><span>eeprom</span><span>-</span><span>config</span><span> </span><span>--</span><span>edit</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<br />
+Remplacer (ou ajouter) la ligne <code>BOOT_ORDER=…</code> par :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>BOOT_ORDER</span><span>=</span><span>0xf461</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<br />
+(pour les détails voir <em>https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#raspberry-pi-bootloader-configuration</em>). Enregistrer puis quitte l’éditeur.</li>
+<li><strong>Redémarrer</strong><br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Vérifier que le boot se fait bien sur la SD</strong><br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>rpi</span><span>-</span><span>eeprom</span><span>-</span><span>config</span><span> </span><span>|</span><span> </span><span>grep </span><span>BOOT_ORDER</span><span>    </span><span># doit afficher BOOT_ORDER=0xf461</span></p><p><span>mount</span><span> </span><span>|</span><span> </span><span>grep</span><span> </span><span>' / '</span><span>                      </span><span># /dev/mmcblk0p2 on /  =&amp;gt; boot sur la SD</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+</ol>
+
+<strong>Comment fonctionne l’ordre de boot (Pi 5 / Pi 500)</strong>
+<p>La valeur <code>BOOT_ORDER</code> est une suite d’<em>hex nibbles</em> (4 bits) <u>lus de droite vers la gauche</u>. Chaque nibble désigne une cible :</p>
+<ul>
+<li><code>0x1</code> = SD</li>
+<li><code>0x4</code> = USB</li>
+<li><code>0x6</code> = NVMe (PCIe)</li>
+<li><code>0xf</code> = boucle / recommencer la séquence</li>
+</ul>
+<p>Exemples :</p>
+<ul>
+<li><code>0x61</code> = <em>SD → puis NVMe</em> (on lit de droite à gauche)</li>
+<li><code>0xf461</code> = <em>SD → NVMe → USB → boucle</em> (recommandé pour démos : SD prioritaire, fallback sur NVMe/USB)</li>
+</ul>
+<p>Si un périphérique n’est pas bootable, le firmware essaie le nibble suivant.</p>
+
+
+<strong>Astuce de dépannage (optionnelle)</strong>
+<p>Pour forcer un test <em>SD uniquement</em>, vous pouvez désactiver temporairement le PCIe (NVMe) dans l’EEPROM :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>sudo</span><span> </span><span>-</span><span>E</span><span> </span><span>rpi</span><span>-</span><span>eeprom</span><span>-</span><span>config</span><span> </span><span>--</span><span>edit</span></p><p><span># ajouter ou modifier :</span></p><p><span>PCIE_PROBE</span><span>=</span><span>0</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Redémarrer, tester le boot SD, puis remettre <code>PCIE_PROBE=1</code> ensuite.</p>
+
+<p>Avec <code>BOOT_ORDER=0xf461</code>, la SD (Raspberry Pi OS) sera prioritaire pour vos démos ; en l’absence de SD, le Pi retombera proprement sur le NVMe (YunoHost).</p>
+</section>
+<div>
+<h3></h3>
+<p>Si votre Raspberry Pi démarre systématiquement sur le SSD (NVMe) mais que vous souhaitez momentanément <strong>rebooter sur la carte SD</strong>, vous pouvez afficher le <strong>menu de boot</strong> au démarrage.</p>
+<ol>
+<li>Redémarrez le Pi (HDMI + clavier branchés), puis <strong>tapotez la barre d’espace</strong> dès les toutes premières secondes du boot (inutile de maintenir : quelques pressions rapides suffisent).</li>
+<li>Le <strong>Boot Menu</strong> apparaît : vous pouvez choisir le périphérique de démarrage.</li>
+<li>Appuyez sur la touche <strong>1</strong> pour <strong>booter sur la carte SD</strong>.</li>
+</ol>
+<p><strong>Astuce :</strong> si le menu n’apparaît pas, vérifiez que le clavier est bien reconnu dès le boot<br />
+(clavier USB direct, pas via hub capricieux) et que l’écran est allumé.</p>
+</div>
+<h2><span>Post-installation de yunoHost</span></h2>
+<h3><span>1) Méthode recommandée : via le navigateur</span></h3>
+<ol>
+<li>Depuis votre PC, ouvrez votre navigateur (pour moi c’est Firefox) et allez sur l’adresse locale du serveur :<br />
+<code>https://192.168.1.26</code> (remplacez par votre IP si besoin).<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_09.jpg" alt="" /></li>
+<li>Le certificat étant auto-signé, acceptez l’exception de sécurité pour continuer (<strong>Avancé</strong> =&gt; <strong>Accepter le risque et poursuivre</strong>).<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_10.jpg" alt="" />Vous obtenez :<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_11.jpg" alt="" />Glissez le bouton sur « <strong>Je suis d’accord</strong> » puis cliquez sur <strong>C’est parti !<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_12.jpg" alt="" /></strong></li>
+<li>Remplissez l’assistant :<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_13.jpg" alt="" />
+
+</li>
+</ol>
+<p>Pendant que vous poireautez, en principe yunoHost</p>
+<ol>
+<li>
+<p><strong>Configure du domaine principal</strong><br />=&gt; votre serveur est associé à <code>framboise314.ynh.fr</code> (ou le domaine choisi).</p>
+</li>
+<li>
+<p><strong>Installe et configure des services de base</strong></p>
+<ul>
+<li>
+<p>Nginx (serveur web)</p>
+</li>
+<li>
+<p>Postfix / Dovecot (mail)</p>
+</li>
+<li>
+<p>Metronome (XMPP)</p>
+</li>
+<li>
+<p>SSOwat (portail utilisateur)</p>
+</li>
+<li>
+<p>fail2ban, firewall, etc.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Crée le compte admin YunoHost</strong><br />=&gt; avec le mot de passe que vous venez de définir.</p>
+</li>
+</ol>
+<p>Au bout d’un moment la post installation se termine. (yess !)</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_18.jpg" alt="" /></p>
+<p>Vous devez vous connecter avec le compte utilisateur tout fraichement créé.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_19.jpg" alt="" /></p>
+<p>Et vous avez accès au panneau d’administration yunoHost</p>
+<ul>
+<li>
+<ul>
+<li>gestion des domaines</li>
+<li>ajout d’utilisateurs</li>
+<li>installation d’applications</li>
+<li>diagnostics système</li>
+</ul>
+</li>
+</ul>
+<p><em>Après la post-installation pour accéder à yunoHost :</em></p>
+<ul>
+<li>Interface d’administration : <code>https://votre-domaine/yunohost/admin</code></li>
+<li>Portail utilisateur (SSO) : <code>https://votre-domaine/</code></li>
+</ul>
+<hr />
+<h3><span>2) Méthode alternative : en ligne de commande (SSH)</span></h3>
+<ol>
+<li>Dans votre terminal SSH déjà ouvert, lancez :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>yunohost </span><span>tools </span><span>postinstall</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li>Saisissez les mêmes informations quand elles sont demandées :
+<ul>
+<li><strong>Domaine principal</strong> (ex. <code>framboise314.ynh.fr</code>)</li>
+<li><strong>Mot de passe administrateur</strong></li>
+<li><strong>E-mail de récupération</strong></li>
+</ul>
+</li>
+<li>Attendez la fin de la configuration. Un message de succès s’affiche.</li>
+</ol>
+<hr />
+<h2><span>Se connecter à yunoHost et gérer les comptes</span></h2>
+<h3><span>Connexion à yunoHost</span></h3>
+<p>Par la suite pour vous connecter à YNH (yunoHost) il suffira d’ouvrir un navigateur sur l’adresse de YNH et de saisir les infos du compte admin que vous avez créé ci-dessus.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_20.jpg" alt="" /></p>
+<div>
+<h3><span>👥 Comptes YunoHost :<br />
+admin principal, admin de secours &amp; compte utilisateur</span></h3>
+<div>
+<h4><span>🔑 Administrateur principal</span></h4>
+<ul>
+<li>Compte créé lors de la post-installation : il sert à administrer votre serveur.</li>
+<li>Utilisez-le uniquement pour la configuration (mises à jour, installation d’apps, sauvegardes).</li>
+<li>Choisissez un mot de passe robuste et unique.</li>
+</ul>
+<h4><span>🛟 Administrateur de secours</span></h4>
+<ul>
+<li>Deuxième compte <strong>avec droits d’admin</strong> pour parer à tout blocage du compte principal.</li>
+<li>Mot de passe <strong>différent</strong>, stocké en lieu sûr (gestionnaire de mots de passe, copie papier sécurisée).</li>
+<li>N’utilisez ce compte qu’en cas de besoin ; testez-le une fois puis gardez-le “au coffre”.</li>
+</ul>
+<h4><span>👤 Compte utilisateur (sans droits admin)</span></h4>
+<ul>
+<li>Pour l’usage quotidien des applications (Wiki, Nextcloud, album photo, etc.).</li>
+<li>Idéal pour vos démonstrations et ateliers (ex. identifiant <code>invite</code>).</li>
+<li>Permet de tester l’expérience “lecteur/participant” sans exposer vos identifiants d’admin.</li>
+</ul>
+<h4><span>✅ Bonnes pratiques</span></h4>
+<ul>
+<li>Ne partagez jamais les comptes administrateur.</li>
+<li>Conservez des mots de passe distincts pour chaque compte.</li>
+<li>Testez au moins une fois la connexion avec le compte de secours et le compte utilisateur.</li>
+<li>Pour les ateliers, affichez uniquement l’URL du serveur et les identifiants du <em>compte utilisateur</em>.</li>
+</ul>
+</div>
+</div>
+<h3><span>Créer un compte admin de secours</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_21.jpg" alt="" /></p>
+<p>Cliquez sur le signe <strong>&gt;</strong>   de la ligne <strong>Comptes</strong></p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_22.jpg" alt="" /></p>
+<p>Cliquez sur <strong>+ Ajouter un compte</strong></p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_23.jpg" alt="" /></p>
+<p>Remplissez les champs, choisissez un mot de passe « DUR »  puis cliquez sur <strong>Sauvegarde</strong></p>
+<h3><span>Créer un compte invité</span></h3>
+<p>Refaites la même opération et créez un compte invité qui servira pour les démos.  Vous devriez maintenant avoir ceci :</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_24.jpg" alt="" /></p>
+<div>
+<h3><span>🔒 Pourquoi faut-il passer par la ligne de commande pour créer un administrateur de secours ?</span></h3>
+<p>Dans YunoHost, la création d’utilisateurs via l’interface web concerne uniquement les <strong>utilisateurs finaux</strong>, c’est-à-dire ceux qui utilisent les applications (Nextcloud, Wiki, etc.). Ces comptes appartiennent automatiquement au groupe <code>all_users</code>.</p>
+<p>Pour qu’un compte dispose des <strong>droits d’administration complets </strong>(accès à la configuration du serveur, installation d’applications, sauvegardes), il doit être ajouté au groupe spécial <code>admins</code>.</p>
+<p>Par mesure de sécurité, cette opération ne peut pas être réalisée depuis l’interface graphique : il faut utiliser la <strong>ligne de commande</strong>.</p>
+<p>Exemple en pratique :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span># Création de l’utilisateur (par l’interface web ou la CLI)</span></p><p><span># puis ajout au groupe des administrateurs :</span></p><p><span>sudo </span><span>yunohost </span><span>user </span><span>group </span><span>add </span><span>admins </span><span>admin2</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Vous pouvez ainsi disposer d’un <strong>compte administrateur de secours</strong>, distinct du compte principal, à conserver pour les situations imprévues.</p>
+</div>
+<p>Un tour par SSH permet de vérifier comment les utilisateurs créés sont rangés dans les groupes :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>yunohost </span><span>user </span><span>group </span><span>list</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_25.jpg" alt="" /></p>
+<p>On voit que <strong>admin2</strong> est uniquement dans le groupe <span>all_users</span>. On va l’ajouter au groupe  <span>admins</span> :</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>yunohost </span><span>user </span><span>group </span><span>add </span><span>admins </span><span>admin2</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_26.jpg" alt="" /></p>
+<p>Tout s’est bien passé et <strong>admin2</strong> a bien rejoint le groupe <span>admins</span>.</p>
+<p>Testez impérativement votre admin de secours ! ne passez pas à la suite sans un accès secondaire opérationnel.<br />
+Pour le compte invite il faut installer des applis, on va le tester un peu plus tard.</p>
+<h2><span>Installer WordPress</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_28.jpg" alt="" /></p>
+<p>Depuis le tableau de bord d’administration, cliquez sur <strong>Applications</strong> pour accéder à la gestion des logiciels.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_29.jpg" alt="" /></p>
+
+<p>Aucune application n’est encore installée. Cliquez sur <strong>Installer une app</strong> pour ouvrir le catalogue.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_30.jpg" alt="" /></p>
+<p>Le catalogue est organisé en catégories. Sélectionnez <strong>Publication</strong> pour trouver WordPress.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_31.jpg" alt="" /></p>
+<p>Dans la catégorie Publication, choisissez <strong>WordPress</strong>, un logiciel libre de création de sites web et de blogs.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_32.jpg" alt="" /></p>
+<p>Renseignez les paramètres : domaine d’installation, chemin (par exemple <code>/blog</code>), accès (Visiteurs), langue (<code>fr_FR</code>) et compte administrateur WordPress. Cliquez ensuite sur <strong>Installer</strong>.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_33.jpg" alt="" /></p>
+<p>L’installation est en cours : YunoHost télécharge et configure automatiquement WordPress. Patientez jusqu’à la fin du processus.</p>
+<h2><span>Après l’installation d’une application (WordPress)</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_34.jpg" alt="" /></p>
+<p>Une fois l’installation terminée, WordPress apparaît dans la liste des applications installées sur votre serveur YunoHost.</p>
+<p><strong>IMPORTANT :</strong> Lors de l’installation de WordPress avec YunoHost, vous n’avez pas choisi de mot de passe pour WordPress :</p>
+<p>Le premier compte administrateur WordPress est créé automatiquement à partir du compte que vous avez indiqué dans le champ <em>Administrateur WordPress</em>.<br />
+Ce compte est lié au système d’authentification de YunoHost.</p>
+<p><u>Pour vous connecter au tableau de bord WordPress</u> :</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_35.jpg" alt="" /></p>
+<ul>
+<li>Rendez-vous sur l’adresse de votre site WordPress et ajoutez <code>/wp-admin</code> à l’URL (exemple : <code>https://framboise314.ynh.fr/blog/wp-admin</code>).</li>
+<li>Saisissez comme identifiant celui indiqué lors de l’installation (pour moi <code>framboise314</code>).</li>
+<li>Utilisez le mot de passe de votre compte YunoHost (le même que pour accéder à l’interface d’administration YunoHost).</li>
+</ul>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_36.jpg" alt="" /></p>
+<p>Vous arrivez alors dans le <em>Tableau de bord WordPress</em>, depuis lequel vous pourrez gérer vos articles, vos pages, vos extensions et l’apparence de votre site.</p>
+<article>
+<header>
+<h2><span>Ouvrir les ports sur la Livebox Play pour YunoHost</span></h2>
+<p>Objectif : rendre le serveur accessible de l’extérieur (HTTP/HTTPS, e-mail, etc.) et activer le cadenas HTTPS.</p>
+</header>
+<section>
+<h2><span>Pourquoi ouvrir des ports ?</span></h2>
+<p>Par défaut, votre box Internet bloque les connexions entrantes. Pour que vos services<br />
+<strong>YunoHost</strong> (WordPress, certificats HTTPS, e-mail, etc.) soient accessibles depuis Internet,<br />
+vous devez créer des règles <em>NAT/PAT</em> (ou « redirections de ports ») sur la Livebox Play.</p>
+
+</section>
+<section>
+<h2><span>Pré-requis</span></h2>
+<ul>
+<li>L’IP <strong>locale</strong> (LAN) de votre serveur YunoHost (ex. <code>192.168.1.26</code>).</li>
+<li>Accès à l’interface de la <strong>Livebox Play</strong> (identifiants admin).</li>
+<li>Un <strong>domaine</strong> déjà configuré dans YunoHost (ex. <code>framboise314.ynh.fr</code>).</li>
+</ul>
+<p>Pour l’adresse IP utilisez  ip a sous SSH  et pour les ports cliques sur Diagnostic dans l interface Web de YNH.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/09/yunohost_pi500plus_37.jpg" alt="" /></p>
+<section>
+<h2><span>Étapes sur la Livebox Play (NAT/PAT)</span></h2>
+<h3><span>1) Se connecter à la Livebox</span></h3>
+<ol>
+<li>Ouvrez <code>http://192.168.1.1</code> dans votre navigateur.</li>
+<li>Connectez-vous avec votre compte administrateur.</li>
+</ol>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_44.jpg" alt="" /></p>
+<h3><span>2) Créer les redirections de ports</span></h3>
+<p>Dans le menu (souvent <em>Paramètres avancés &gt; NAT/PAT</em> ou <em>Réseau &gt; NAT/PAT</em>), ajoutez une règle par port. Pour chaque règle : <strong>Port externe = Port interne</strong> et <strong>IP de destination = IP du serveur YunoHost</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Port</th>
+<th>Protocole</th>
+<th>Obligatoire</th>
+<th>Remarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HTTP</td>
+<td>80 → 80</td>
+<td>TCP</td>
+<td><strong>Oui</strong></td>
+<td>Nécessaire pour Let’s Encrypt / redirection vers HTTPS</td>
+</tr>
+<tr>
+<td>HTTPS</td>
+<td>443 → 443</td>
+<td>TCP</td>
+<td><strong>Oui</strong></td>
+<td>Accès sécurisé au site</td>
+</tr>
+</tbody>
+</table>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_45.jpg" alt="" /></p>
+<h3><span>3) Sauvegarder et redémarrer (si nécessaire)</span></h3>
+<ul>
+<li>Enregistrez chaque règle.</li>
+<li>Vérifiez qu’elles sont <strong>actives</strong> et pointent bien vers la bonne IP locale.</li>
+<li>Redémarrez la Livebox si l’interface vous le demande.</li>
+</ul>
+</section>
+<section>
+<h2><span>Vérifications côté YunoHost</span></h2>
+<ol>
+<li>Dans <strong>Web Admin &gt; Outils &gt; Diagnostic</strong>, relancez un diagnostic : les ports <strong>80</strong> et <strong>443</strong> doivent passer au vert.</li>
+<li>Installez/renouvelez les certificats HTTPS (<strong>Domaines &gt; votre-domaine &gt; Certificat</strong>).</li>
+<li>Testez l’accès à votre site depuis un réseau mobile (4G/5G) pour valider l’ouverture depuis Internet.</li>
+</ol>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_46.jpg" alt="" />La connectivité Internet est OK. Les ports ne sont pas accessible de l’extérieur en IPv6… On fera sans !</p>
+<h2><span>Conseils &amp; pièges fréquents</span></h2>
+</section>
+<section>
+<ul>
+<li><strong>Adresse IP locale fixe :</strong> réservez l’IP du serveur dans le DHCP de la Livebox (bail statique) pour éviter que les règles NAT ne pointent plus au bon endroit.</li>
+<li><strong>Double NAT / CGNAT :</strong> si vous n’avez pas d’IP publique dédiée, l’ouverture de ports peut être impossible. Vérifiez que votre IP WAN n’est pas de type 100.64.0.0/10 (CGNAT).</li>
+<li><strong>Port 25 :</strong> souvent bloqué chez les FAI grand public. Si vous voulez héberger le mail sortant, rapprochez-vous du FAI ou utilisez un relais SMTP.</li>
+<li><strong>SSH exposé :</strong> évitez d’ouvrir le port 22 si inutile. Sinon, utilisez des <em>clés SSH</em>, désactivez le mot de passe, et mettez en place un bannisseur (fail2ban est intégré à YunoHost).</li>
+<li><strong>IPv6 :</strong> si votre ligne a de l’IPv6, pensez à autoriser aussi les flux IPv6 (et le firewall du serveur).</li>
+</ul>
+</section>
+<p>Une fois les ports ouverts et les certificats installés, votre site WordPress sera joignable en <strong>HTTPS </strong>avec le cadenas de sécurité.</p>
+<h2><span>Tester l’accès depuis Internet, puis installer Let’s Encrypt</span></h2>
+<p>Les redirections de ports <strong>80</strong> et <strong>443</strong> étant en place sur la Livebox, il est temps de vérifier que le serveur est réellement joignable<br />
+<strong>depuis l’extérieur</strong>. Ensuite, nous installerons un certificat <strong>Let’s Encrypt</strong> pour obtenir un accès HTTPS avec un cadenas sans avertissement.</p>
+<p><strong>Test “depuis Internet” :</strong> désactivez le <strong>Wi-Fi</strong> du smartphone et passez en <strong>4G/5G</strong>.<br />
+Sinon, vous testerez votre réseau local… et pas l’accès depuis l’extérieur.</p>
+<h3><span>1) Premier test d’accès depuis un smartphone (4G/5G)</span></h3>
+<p>Avant l’installation de Let’s Encrypt, le serveur utilise un certificat provisoire : le navigateur peut afficher une alerte “rouge” si vous allez directement en HTTPS. Pour éviter toute confusion, commencez par tester en <strong>HTTP</strong> (port 80).</p>
+<ol>
+<li>Sur votre smartphone, coupez le <strong>Wi-Fi</strong> et activez la <strong>4G/5G</strong>.</li>
+<li>Ouvrez cette adresse en <strong>HTTP</strong> : (enfin pas celle-ci, la votre !)<br />
+<code>http://framboise314.ynh.fr/</code></li>
+<li>Vérifiez que vous arrivez bien sur une page servie par votre YunoHost (page d’accueil / portail / ou application déjà installée).</li>
+</ol>
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_47.jpg" alt="" /></p><p>Avant la mise en place du certificat Let’s Encrypt, le navigateur signale le site comme “non sécurisé”. (la croix rouge)</p></div>
+<h3><span>2) Installer le certificat Let’s Encrypt (le cadenas “propre”)</span></h3>
+<p>Nous allons maintenant installer un certificat <strong>Let’s Encrypt</strong> sur le domaine. Une fois fait, l’accès en HTTPS ne déclenchera plus d’alerte, et vous aurez un cadenas reconnu par tous les navigateurs.</p>
+<p>Dans l’interface d’administration YunoHost :</p>
+<ul>
+<li><strong>Domaines</strong> → sélectionnez votre domaine (ex. <code>framboise314.ynh.fr</code>)</li>
+<li>Onglet <strong>Certificat</strong></li>
+<li>Cliquez sur <strong>Installer / Renouveler un certificat Let’s Encrypt</strong></li>
+</ul>
+<p><strong>Note IPv6 :</strong> il est possible que les tests de ports “en IPv6” restent au rouge selon votre box Internet. Ce n’est pas bloquant tant que l’accès <strong>IPv4</strong> (le plus courant) fonctionne correctement pour <strong>80</strong> et <strong>443</strong>.</p>
+<h3><span>3) Re-test en HTTPS (sans alerte) + accès à l’admin</span></h3>
+<p>Une fois Let’s Encrypt installé, refaites le test depuis le smartphone en <strong>4G/5G</strong>, cette fois en <strong>HTTPS</strong> :</p>
+<ul>
+<li><code>https://framboise314.ynh.fr/</code> (page d’accueil / portail)</li>
+<li><code>https://framboise314.ynh.fr/yunohost/admin</code> (administration YunoHost)</li>
+</ul>
+<p>Vous devez obtenir le cadenas HTTPS, et l’écran de connexion à l’administration sans avertissement de sécurité.</p>
+
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_48.jpg" alt="" /></p><p>Accès au site YNH depuis une tablette</p></div>
+<h3><span>4) (Optionnel) Vérifier WordPress depuis l’extérieur</span></h3>
+<p>Si WordPress est déjà installé, vérifiez également :</p>
+<ul>
+<li>Le site : <code>https://framboise314.ynh.fr/blog</code></li>
+<li>L’administration WordPress : <code>https://framboise314.ynh.fr/blog/wp-admin</code></li>
+</ul>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/yunohost_pi500plus_51.jpg" alt="" /></p>
+<p>Si tout s’affiche en <strong>HTTPS</strong> avec le cadenas ou le bouclier avec coche sur certains navigateurs, votre serveur est maintenant <strong>opérationnel</strong> et accessible depuis l’extérieur.</p>
+<h2><span>Conclusion</span></h2>
+<p>L’objectif de cet article était simple : héberger votre blog vous-même, sur un Raspberry Pi 5 / Pi 500(+), avec un SSD pour les perfs et la fiabilité, plutôt que dépendre d’un service externe.<br />
+On a donc déroulé une chaîne complète et cohérente : préparer le SSD, installer YunoHost, faire la post-installation, puis mettre le serveur accessible depuis Internet.<br />
+Ensuite, on a sécurisé tout ça avec un certificat Let’s Encrypt (le fameux cadenas HTTPS, et la fin des navigateurs qui râlent).<br />
+Une fois le socle réseau + sécurité en place, on a installé WordPress proprement sur le domaine et le chemin choisis. Le point clé à retenir : YunoHost pense “domaine”, pas “IP”, et beaucoup de soucis viennent juste de ça (et du DNS).<br />
+Autre point clé : l’ouverture des ports sur la box et la résolution DNS sont souvent l’étape la plus piégeuse, et c’est normal.<br />
+Ce tutoriel n’est pas “niveau débutant total” : il faut être prêt à lire des messages d’erreur, vérifier, chercher, corriger, et parfois revenir en arrière. Si vous aimez quand ça marche du premier coup sans toucher un réglage, passez votre chemin… ou prenez un hébergeur 😄 Mais si vous voulez maîtriser votre infra, apprendre, et avoir un WordPress chez vous, c’est une base solide.<br />
+À la fin, vous repartez avec un serveur Pi + SSD fonctionnel, accessible, sécurisé, et un WordPress prêt à publier. S’agissant d’une machine ouverte sur l’Internet, il est vital que l’OS et yunohost soient tenus à jour avec les dernières versions.</p>
+<p>Pendant les essais, le serveur est accessible ici : <a href="https://framboise314.ynh.fr/blog" target="_blank">https://framboise314.ynh.fr/blog</a></p>
+
+<div>
+<div>
+<p>Attention à la sécurité</p>
+<p>par Philippe H.</p>
+</div>
+<div>
+<p>L’article de François permet de mettre en œuvre un <strong>Pi 5</strong> avec un <strong>SSD</strong>, avec <strong>YunoHost</strong> et <strong>WordPress</strong>, accessible depuis Internet.</p>
+<p>Il est évident que l’installation effectuée est au dernier niveau de version  disponible concernant YunoHost et WordPress.</p>
+<p>En revanche, si l’on souhaite garder cette plateforme <strong>opérationnelle</strong> pour héberger sur du long terme un blog accessible de l’extérieur de son réseau, donc accessible de n’importe où via Internet, il est important, pour ne pas dire impératif, de garder la plateforme et tous les éléments qui la composent au dernier niveau disponible.</p>
+<p>Les deux liens ci-dessous indiquent les CVE pour YunoHost et pour WordPress. <strong>CVE</strong> signifie « <strong>Vulnérabilités et expositions communes »</strong> : quand une vulnérabilité (donc une faille de sécurité) est découverte et confirmée, elle est répertoriée avec un identifiant, un numéro de CVE.</p>
+<p>Ce qui compte, c’est le score du CVE et leur nombre pour un produit donné. Le sigle utilisé pour le score d’un CVE, donc le niveau de criticité de la vulnérabilité, est : <strong>CVSS</strong> (<strong>Common Vulnerability Scoring System</strong>).</p>
+<p>Le nombre de CVE pour WordPress est important. Ne pas maintenir l’application à jour, c’est la porte ouverte à un piratage du blog. Dès qu’une vulnérabilité est identifiée, on peut être certain qu’elle sera <strong>testée</strong> sur toutes les adresses IP accessibles depuis Internet.</p>
+<p><span><strong>Si un environnement laisse la porte ouverte, un cyberpirate entrera.</strong></span></p>
+<p>WordPress : <a href="https://www.cvedetails.com/product/4096/Wordpress-Wordpress.html?vendor_id=2337" target="_blank">https://www.cvedetails.com/product/4096/Wordpress-Wordpress.html?vendor_id=2337</a><br />
+Yuno : <a href="https://www.cvedetails.com/vendor/21726/" target="_blank">https://www.cvedetails.com/vendor/21726/</a></p>
+<p>Pour information, avec <a href="https://www.framboise314.fr/gestion-de-photos-avec-le-logiciel-piwigo/" target="_blank">la plateforme Piwigo</a> (cf. l’article de Philippe en date de février 2022) en production, plus de 100 000 adresses IP ont déjà été bloquées.<br />
+La plateforme est évidemment <strong>maintenue</strong> à jour.</p>
+</div>
+</div>
+<h2><span>Sources</span></h2>
+</section>
+</article>
+<article>
+<section><a href="https://doc.yunohost.org/admin/get_started/install_on/raspberry_pi" target="_blank">https://doc.yunohost.org/admin/get_started/install_on/raspberry_pi</a></section>
+<section><a href="https://doc.yunohost.org/fr/admin/get_started/install_on/raspberry_pi" target="_blank">https://doc.yunohost.org/fr/admin/get_started/install_on/raspberry_pi</a></section>
+<section><a href="https://repo.yunohost.org/images/" target="_blank">https://repo.yunohost.org/images/</a><a href="https://doc.yunohost.org/fr/admin" target="_blank">https://doc.yunohost.org/fr/admin</a></section>
+</article>
+					</div></div>
+  </div>
+</body>
+</html>

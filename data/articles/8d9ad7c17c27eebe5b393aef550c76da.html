@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OpenClaw Guide Ch.4: Tools and Skills</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OpenClaw Guide Ch.4: Tools and Skills</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
+    <a href="https://dev.to/linou518/openclaw-guide-ch4-tools-and-skills-hlo" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <h2>
+  <a name="chapter-4-tools-and-skills" href="#chapter-4-tools-and-skills">
+  </a>
+  Chapter 4: Tools and Skills
+</h2>
+
+<blockquote>
+<p>🎯 Learning Objective: Master OpenClaw's built-in tools, learn to install and use Skill packages, and create custom tools</p>
+</blockquote>
+
+<h2>
+  <a name="tool-system-overview" href="#tool-system-overview">
+  </a>
+  📚 <strong>Tool System Overview</strong>
+</h2>
+
+<p>OpenClaw's power lies in its rich tool ecosystem. Agents interact with the external world through tools to perform a wide variety of tasks.</p>
+
+<h3>
+  <a name="tool-categories" href="#tool-categories">
+  </a>
+  <strong>Tool Categories</strong>
+</h3>
+
+<ul>
+<li>🔧 <strong>Built-in Tools</strong>: Core tools provided by OpenClaw</li>
+<li>🎨 <strong>Skills</strong>: Installable extension packages</li>
+<li>🛠️ <strong>Custom Tools</strong>: User-developed specialized tools</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="builtin-tool-reference" href="#builtin-tool-reference">
+  </a>
+  🔧 <strong>Built-in Tool Reference</strong>
+</h2>
+
+<h3>
+  <a name="41-file-operation-tools" href="#41-file-operation-tools">
+  </a>
+  <strong>4.1 File Operation Tools</strong>
+</h3>
+
+<h4>
+  <a name="read-read-file-contents" href="#read-read-file-contents">
+  </a>
+  <strong>read — Read File Contents</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Basic usage</span>
+<span>read </span><span>file_path</span><span>=</span><span>"example.txt"</span>
+
+<span># Paginated reading of large files</span>
+<span>read </span><span>file_path</span><span>=</span><span>"large_log.txt"</span> <span>offset</span><span>=</span>100 <span>limit</span><span>=</span>50
+
+<span># Read image files</span>
+<span>read </span><span>file_path</span><span>=</span><span>"screenshot.png"</span>  <span># Auto-detects format</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="write-create-or-overwrite-files" href="#write-create-or-overwrite-files">
+  </a>
+  <strong>write — Create or Overwrite Files</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Create a new file</span>
+write <span>file_path</span><span>=</span><span>"output.txt"</span> <span>content</span><span>=</span><span>"Hello OpenClaw"</span>
+
+<span># Overwrite an existing file</span>
+write <span>path</span><span>=</span><span>"config.json"</span> <span>content</span><span>=</span><span>'{"debug": true}'</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Safety Notes:</strong></p>
+
+<ul>
+<li>
+<code>write</code> completely overwrites existing files</li>
+<li>Use <code>read</code> first to check if a file exists</li>
+<li>Back up important files before modifying them</li>
+</ul>
+
+<h4>
+  <a name="edit-precise-file-editing" href="#edit-precise-file-editing">
+  </a>
+  <strong>edit — Precise File Editing</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Replace specific content</span>
+edit <span>file_path</span><span>=</span><span>"config.txt"</span>
+     <span>old_string</span><span>=</span><span>"debug=false"</span>
+     <span>new_string</span><span>=</span><span>"debug=true"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Best Practice:</strong><br />
+</p>
+
+<div>
+<pre><code><span># 1. Read to confirm content</span>
+<span>read </span><span>file_path</span><span>=</span><span>"config.conf"</span>
+
+<span># 2. Replace precisely (match the full string including whitespace)</span>
+edit <span>file_path</span><span>=</span><span>"config.conf"</span>
+     <span>old_string</span><span>=</span><span>"# production mode
+server.debug = false"</span>
+     <span>new_string</span><span>=</span><span>"# production mode
+server.debug = true"</span>
+
+<span># 3. Verify the changes</span>
+<span>read </span><span>file_path</span><span>=</span><span>"config.conf"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="42-command-execution-tools" href="#42-command-execution-tools">
+  </a>
+  <strong>4.2 Command Execution Tools</strong>
+</h3>
+
+<h4>
+  <a name="exec-execute-shell-commands" href="#exec-execute-shell-commands">
+  </a>
+  <strong>exec — Execute Shell Commands</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Basic command execution</span>
+<span>exec command</span><span>=</span><span>"ls -la"</span>
+
+<span># With working directory</span>
+<span>exec command</span><span>=</span><span>"git status"</span> <span>workdir</span><span>=</span><span>"/project/path"</span>
+
+<span># Background execution</span>
+<span>exec command</span><span>=</span><span>"long_running_task"</span> <span>background</span><span>=</span><span>true</span>
+
+<span># Set environment variables</span>
+<span>exec command</span><span>=</span><span>"npm start"</span> <span>env</span><span>={</span><span>"NODE_ENV"</span>: <span>"production"</span><span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Security Configuration:</strong><br />
+</p>
+
+<div>
+<pre><code><span>//</span><span> </span><span>Security</span><span> </span><span>settings</span><span> </span><span>in</span><span> </span><span>openclaw.json</span><span>
+</span><span>{</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"exec"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"security"</span><span>:</span><span> </span><span>"allowlist"</span><span>,</span><span>  </span><span>//</span><span> </span><span>deny</span><span> </span><span>|</span><span> </span><span>allowlist</span><span> </span><span>|</span><span> </span><span>full</span><span>
+      </span><span>"allowCommands"</span><span>:</span><span> </span><span>[</span><span>"git"</span><span>,</span><span> </span><span>"npm"</span><span>,</span><span> </span><span>"docker"</span><span>,</span><span> </span><span>"ls"</span><span>,</span><span> </span><span>"cat"</span><span>],</span><span>
+      </span><span>"denyPaths"</span><span>:</span><span> </span><span>[</span><span>"/etc"</span><span>,</span><span> </span><span>"/root"</span><span>,</span><span> </span><span>"/usr/bin/rm"</span><span>]</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="process-manage-background-processes" href="#process-manage-background-processes">
+  </a>
+  <strong>process — Manage Background Processes</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># List active processes</span>
+process <span>action</span><span>=</span><span>"list"</span>
+
+<span># View process output</span>
+process <span>action</span><span>=</span><span>"log"</span> <span>sessionId</span><span>=</span><span>"abc123"</span>
+
+<span># Send input to a process</span>
+process <span>action</span><span>=</span><span>"write"</span> <span>sessionId</span><span>=</span><span>"abc123"</span> <span>data</span><span>=</span><span>"exit</span><span>\n</span><span>"</span>
+
+<span># Kill a process</span>
+process <span>action</span><span>=</span><span>"kill"</span> <span>sessionId</span><span>=</span><span>"abc123"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="43-network-tools" href="#43-network-tools">
+  </a>
+  <strong>4.3 Network Tools</strong>
+</h3>
+
+<h4>
+  <a name="websearch-web-search" href="#websearch-web-search">
+  </a>
+  <strong>web_search — Web Search</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Basic search</span>
+web_search <span>query</span><span>=</span><span>"OpenClaw documentation"</span>
+
+<span># Limit result count</span>
+web_search <span>query</span><span>=</span><span>"AI assistant deployment"</span> <span>count</span><span>=</span>5
+
+<span># Region-specific search</span>
+web_search <span>query</span><span>=</span><span>"artificial intelligence"</span> <span>country</span><span>=</span><span>"US"</span> <span>search_lang</span><span>=</span><span>"en"</span>
+
+<span># Filter by time range</span>
+web_search <span>query</span><span>=</span><span>"OpenClaw news"</span> <span>freshness</span><span>=</span><span>"pw"</span>  <span># Past week</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="webfetch-fetch-web-content" href="#webfetch-fetch-web-content">
+  </a>
+  <strong>web_fetch — Fetch Web Content</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Fetch web page content</span>
+web_fetch <span>url</span><span>=</span><span>"https://docs.openclaw.ai/quickstart"</span>
+
+<span># Extract text only</span>
+web_fetch <span>url</span><span>=</span><span>"https://example.com"</span> <span>extractMode</span><span>=</span><span>"text"</span>
+
+<span># Limit content length</span>
+web_fetch <span>url</span><span>=</span><span>"https://long-article.com"</span> <span>maxChars</span><span>=</span>5000
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="browser-browser-automation" href="#browser-browser-automation">
+  </a>
+  <strong>browser — Browser Automation</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Open a web page</span>
+browser <span>action</span><span>=</span><span>"open"</span> <span>targetUrl</span><span>=</span><span>"https://github.com"</span>
+
+<span># Take a screenshot</span>
+browser <span>action</span><span>=</span><span>"screenshot"</span>
+
+<span># Click an element</span>
+browser <span>action</span><span>=</span><span>"act"</span> <span>request</span><span>={</span><span>"kind"</span>: <span>"click"</span>, <span>"ref"</span>: <span>"login-button"</span><span>}</span>
+
+<span># Fill a form field</span>
+browser <span>action</span><span>=</span><span>"act"</span> <span>request</span><span>={</span>
+  <span>"kind"</span>: <span>"fill"</span>,
+  <span>"ref"</span>: <span>"username-field"</span>,
+  <span>"text"</span>: <span>"myusername"</span>
+<span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="44-messaging-tools" href="#44-messaging-tools">
+  </a>
+  <strong>4.4 Messaging Tools</strong>
+</h3>
+
+<h4>
+  <a name="message-send-messages" href="#message-send-messages">
+  </a>
+  <strong>message — Send Messages</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Send a simple message</span>
+message <span>action</span><span>=</span><span>"send"</span> <span>target</span><span>=</span><span>"user123"</span> <span>message</span><span>=</span><span>"Hello!"</span>
+
+<span># Specify channel</span>
+message <span>action</span><span>=</span><span>"send"</span> <span>channel</span><span>=</span><span>"telegram"</span> <span>target</span><span>=</span><span>"@mychat"</span> <span>message</span><span>=</span><span>"Status update"</span>
+
+<span># Send a file</span>
+message <span>action</span><span>=</span><span>"send"</span> <span>target</span><span>=</span><span>"user123"</span> <span>media</span><span>=</span><span>"/path/to/file.pdf"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="tts-texttospeech" href="#tts-texttospeech">
+  </a>
+  <strong>tts — Text-to-Speech</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Generate a voice file</span>
+tts <span>text</span><span>=</span><span>"Welcome to the OpenClaw assistant"</span> <span>channel</span><span>=</span><span>"telegram"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="skills-system" href="#skills-system">
+  </a>
+  🎨 <strong>Skills System</strong>
+</h2>
+
+<h3>
+  <a name="45-what-are-skills" href="#45-what-are-skills">
+  </a>
+  <strong>4.5 What Are Skills?</strong>
+</h3>
+
+<p>Skills are extension packages for OpenClaw that give Agents specialized domain capabilities.</p>
+
+<p><strong>Core Concepts:</strong></p>
+
+<ul>
+<li>
+<strong>Skill Package</strong>: Contains a SKILL.md configuration and related scripts/resources</li>
+<li>
+<strong>Skill Description</strong>: A functional description understood by the AI model</li>
+<li>
+<strong>Tool Integration</strong>: Skills can invoke tools to accomplish complex tasks</li>
+</ul>
+
+<h3>
+  <a name="46-installing-and-using-skills" href="#46-installing-and-using-skills">
+  </a>
+  <strong>4.6 Installing and Using Skills</strong>
+</h3>
+
+<h4>
+  <a name="install-from-clawhub" href="#install-from-clawhub">
+  </a>
+  <strong>Install from ClawHub</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># List available skills</span>
+openclaw skills list
+
+<span># Install the weather skill</span>
+openclaw skills <span>install </span>weather
+
+<span># Update an installed skill</span>
+openclaw skills update weather
+
+<span># Uninstall a skill</span>
+openclaw skills uninstall weather
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="local-skill-development" href="#local-skill-development">
+  </a>
+  <strong>Local Skill Development</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Create a skill directory</span>
+<span>mkdir</span> <span>-p</span> ~/.openclaw/workspace-main/skills/my-custom-skill
+
+<span># Create the skill configuration</span>
+<span>cat</span> <span>&gt;</span> ~/.openclaw/workspace-main/skills/my-custom-skill/SKILL.md <span>&lt;&lt;</span> <span>'</span><span>EOF</span><span>'
+---
+name: my-custom-skill
+description: Custom automation for specific tasks
+version: 1.0.0
+---
+
+# My Custom Skill
+
+This skill provides automation for...
+
+## Usage
+When user asks for X, do Y using the following tools:
+1. tool1 with parameters...
+2. tool2 with results from step 1...
+</span><span>EOF
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="47-recommended-skills" href="#47-recommended-skills">
+  </a>
+  <strong>4.7 Recommended Skills</strong>
+</h3>
+
+<div><table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>Function</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>weather</td>
+<td>Weather queries</td>
+<td>Daily assistant, travel planning</td>
+</tr>
+<tr>
+<td>healthcheck</td>
+<td>System monitoring</td>
+<td>Server ops, security checks</td>
+</tr>
+<tr>
+<td>slack</td>
+<td>Slack integration</td>
+<td>Enterprise collaboration, notifications</td>
+</tr>
+<tr>
+<td>continuous-learning-v2</td>
+<td>Learning records</td>
+<td>Knowledge management, experience tracking</td>
+</tr>
+</tbody>
+</table></div>
+
+
+<hr />
+
+<h2>
+  <a name="tool-security-and-configuration" href="#tool-security-and-configuration">
+  </a>
+  🛠️ <strong>Tool Security and Configuration</strong>
+</h2>
+
+<h3>
+  <a name="48-security-best-practices" href="#48-security-best-practices">
+  </a>
+  <strong>4.8 Security Best Practices</strong>
+</h3>
+
+<h4>
+  <a name="tool-permission-control" href="#tool-permission-control">
+  </a>
+  <strong>Tool Permission Control</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"exec"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"security"</span><span>:</span><span> </span><span>"allowlist"</span><span>,</span><span>
+      </span><span>"allowCommands"</span><span>:</span><span> </span><span>[</span><span>
+        </span><span>"git"</span><span>,</span><span> </span><span>"npm"</span><span>,</span><span> </span><span>"yarn"</span><span>,</span><span> </span><span>"docker"</span><span>,</span><span> </span><span>"kubectl"</span><span>,</span><span>
+        </span><span>"ls"</span><span>,</span><span> </span><span>"cat"</span><span>,</span><span> </span><span>"grep"</span><span>,</span><span> </span><span>"find"</span><span>,</span><span> </span><span>"ps"</span><span>
+      </span><span>],</span><span>
+      </span><span>"denyCommands"</span><span>:</span><span> </span><span>[</span><span>"rm"</span><span>,</span><span> </span><span>"sudo"</span><span>,</span><span> </span><span>"chmod"</span><span>,</span><span> </span><span>"chown"</span><span>],</span><span>
+      </span><span>"denyPaths"</span><span>:</span><span> </span><span>[</span><span>"/etc"</span><span>,</span><span> </span><span>"/root"</span><span>,</span><span> </span><span>"/bin"</span><span>,</span><span> </span><span>"/sbin"</span><span>]</span><span>
+    </span><span>},</span><span>
+    </span><span>"read"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"denyPaths"</span><span>:</span><span> </span><span>[</span><span>"/etc/passwd"</span><span>,</span><span> </span><span>"/etc/shadow"</span><span>,</span><span> </span><span>"~/.ssh"</span><span>]</span><span>
+    </span><span>},</span><span>
+    </span><span>"write"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"denyPaths"</span><span>:</span><span> </span><span>[</span><span>"/etc"</span><span>,</span><span> </span><span>"/root"</span><span>,</span><span> </span><span>"/sys"</span><span>,</span><span> </span><span>"/proc"</span><span>]</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="network-access-control" href="#network-access-control">
+  </a>
+  <strong>Network Access Control</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"web_fetch"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"allowDomains"</span><span>:</span><span> </span><span>[</span><span>"docs.openclaw.ai"</span><span>,</span><span> </span><span>"api.github.com"</span><span>],</span><span>
+      </span><span>"denyDomains"</span><span>:</span><span> </span><span>[</span><span>"internal.company.com"</span><span>],</span><span>
+      </span><span>"maxContentSize"</span><span>:</span><span> </span><span>"10MB"</span><span>
+    </span><span>},</span><span>
+    </span><span>"browser"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"headless"</span><span>:</span><span> </span><span>true</span><span>,</span><span>
+      </span><span>"allowedDomains"</span><span>:</span><span> </span><span>[</span><span>"trusted-site.com"</span><span>],</span><span>
+      </span><span>"timeout"</span><span>:</span><span> </span><span>30000</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="49-tool-usage-best-practices" href="#49-tool-usage-best-practices">
+  </a>
+  <strong>4.9 Tool Usage Best Practices</strong>
+</h3>
+
+<h4>
+  <a name="error-handling" href="#error-handling">
+  </a>
+  <strong>Error Handling</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Good practice: Check if file exists first</span>
+<span>read </span><span>file_path</span><span>=</span><span>"config.json"</span>
+<span>if</span> <span>[[</span> <span>$?</span> <span>-eq</span> 0 <span>]]</span><span>;</span> <span>then
+  </span>edit <span>file_path</span><span>=</span><span>"config.json"</span> <span>old_string</span><span>=</span><span>"..."</span> <span>new_string</span><span>=</span><span>"..."</span>
+<span>else
+  </span>write <span>file_path</span><span>=</span><span>"config.json"</span> <span>content</span><span>=</span><span>'{"default": true}'</span>
+<span>fi</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h4>
+  <a name="logging" href="#logging">
+  </a>
+  <strong>Logging</strong>
+</h4>
+
+
+
+<div>
+<pre><code><span># Log important operations</span>
+<span>echo</span> <span>"</span><span>$(</span><span>date</span><span>)</span><span>: Starting backup process"</span> <span>&gt;&gt;</span> backup.log
+<span>exec command</span><span>=</span><span>"rsync -av /data/ /backup/"</span> <span>workdir</span><span>=</span><span>"/scripts"</span>
+<span>echo</span> <span>"</span><span>$(</span><span>date</span><span>)</span><span>: Backup completed"</span> <span>&gt;&gt;</span> backup.log
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="handson-exercise" href="#handson-exercise">
+  </a>
+  🎯 <strong>Hands-On Exercise</strong>
+</h2>
+
+<h3>
+  <a name="410-comprehensive-case-automated-report-generation" href="#410-comprehensive-case-automated-report-generation">
+  </a>
+  <strong>4.10 Comprehensive Case: Automated Report Generation</strong>
+</h3>
+
+<p><strong>Requirement</strong>: Generate a daily system status report automatically<br />
+</p>
+
+<div>
+<pre><code><span>#!/bin/bash</span>
+<span># Automated report generation workflow</span>
+
+<span># 1. Collect system information</span>
+<span>exec command</span><span>=</span><span>"uptime"</span> <span>&gt;</span> system_uptime
+<span>exec command</span><span>=</span><span>"df -h"</span> <span>&gt;</span> disk_usage
+<span>exec command</span><span>=</span><span>"free -h"</span> <span>&gt;</span> memory_usage
+
+<span># 2. Check service status</span>
+<span>exec command</span><span>=</span><span>"systemctl status openclaw-gateway"</span> <span>&gt;</span> gateway_status
+<span>exec command</span><span>=</span><span>"docker ps"</span> <span>&gt;</span> container_status
+
+<span># 3. Get recent logs</span>
+<span>read </span><span>file_path</span><span>=</span><span>"/var/log/openclaw.log"</span> <span>offset</span><span>=</span>1000 <span>limit</span><span>=</span>100 <span>&gt;</span> recent_logs
+
+<span># 4. Compile the report</span>
+write <span>file_path</span><span>=</span><span>"daily_report_</span><span>$(</span><span>date</span> +%Y%m%d<span>)</span><span>.md"</span> <span>content</span><span>=</span><span>"
+# System Status Report — </span><span>$(</span><span>date</span><span>)</span><span>
+
+## System Overview
+</span><span>$(</span><span>cat </span>system_uptime<span>)</span><span>
+
+## Disk Usage
+</span><span>\`\`\`</span><span>
+</span><span>$(</span><span>cat </span>disk_usage<span>)</span><span>
+</span><span>\`\`\`</span><span>
+
+## Memory Usage
+</span><span>\`\`\`</span><span>
+</span><span>$(</span><span>cat </span>memory_usage<span>)</span><span>
+</span><span>\`\`\`</span><span>
+
+## Service Status
+</span><span>$(</span><span>cat </span>gateway_status<span>)</span><span>
+
+## Recent Logs
+</span><span>\`\`\`</span><span>
+</span><span>$(</span><span>cat </span>recent_logs<span>)</span><span>
+</span><span>\`\`\`</span><span>
+"</span>
+
+<span># 5. Send notification</span>
+message <span>action</span><span>=</span><span>"send"</span> <span>target</span><span>=</span><span>"admin@company.com"</span>
+        <span>message</span><span>=</span><span>"Daily report generated"</span>
+        <span>media</span><span>=</span><span>"daily_report_</span><span>$(</span><span>date</span> +%Y%m%d<span>)</span><span>.md"</span>
+
+<span># 6. Clean up temp files</span>
+<span>exec command</span><span>=</span><span>"rm -f system_* disk_* memory_* gateway_* container_* recent_logs"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Schedule Execution:</strong><br />
+</p>
+
+<div>
+<pre><code><span># Using OpenClaw's cron feature</span>
+openclaw cron add <span>--name</span> <span>"daily-report"</span>
+                  <span>--schedule</span> <span>"0 8 * * *"</span>
+                  <span>--command</span> <span>"bash report_generator.sh"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="411-troubleshooting-guide" href="#411-troubleshooting-guide">
+  </a>
+  <strong>4.11 Troubleshooting Guide</strong>
+</h3>
+
+<p><strong>Error 1: exec tool denied</strong><br />
+</p>
+
+<div>
+<pre><code>Error: Command 'sudo apt update' denied by security policy
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Fix:</strong><br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"exec"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"security"</span><span>:</span><span> </span><span>"allowlist"</span><span>,</span><span>
+      </span><span>"allowCommands"</span><span>:</span><span> </span><span>[</span><span>"sudo"</span><span>]</span><span>  </span><span>//</span><span> </span><span>Add</span><span> </span><span>sudo</span><span> </span><span>to</span><span> </span><span>the</span><span> </span><span>allowlist</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Error 2: File permission denied</strong><br />
+</p>
+
+<div>
+<pre><code>Error: EACCES: permission denied, open '/etc/hosts'
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Fix:</strong><br />
+</p>
+
+<div>
+<pre><code><span># Option 1: Change file permissions</span>
+<span>sudo chmod </span>644 /etc/hosts
+
+<span># Option 2: Use sudo</span>
+<span>exec command</span><span>=</span><span>"sudo cat /etc/hosts"</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Error 3: Network request timeout</strong><br />
+</p>
+
+<div>
+<pre><code>Error: Request timeout after 30000ms
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p><strong>Fix:</strong><br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"tools"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"web_fetch"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"timeout"</span><span>:</span><span> </span><span>60000</span><span>,</span><span>  </span><span>//</span><span> </span><span>Increase</span><span> </span><span>timeout</span><span>
+      </span><span>"retry"</span><span>:</span><span> </span><span>3</span><span>         </span><span>//</span><span> </span><span>Retry</span><span> </span><span>count</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+
+<hr />
+
+<h2>
+  <a name="chapter-summary" href="#chapter-summary">
+  </a>
+  📋 <strong>Chapter Summary</strong>
+</h2>
+
+<h3>
+  <a name="key-takeaways" href="#key-takeaways">
+  </a>
+  <strong>Key Takeaways</strong>
+</h3>
+
+<ol>
+<li>
+<strong>Tool Categories</strong>: Built-in tools + Skills + Custom development</li>
+<li>
+<strong>Security First</strong>: Strictly configure tool permissions; use allowlist mode</li>
+<li>
+<strong>Error Handling</strong>: Check return values, log operations, degrade gracefully</li>
+<li>
+<strong>Best Practices</strong>: Test and verify, clean up resources, secure configurations</li>
+</ol>
+
+<h3>
+  <a name="next-steps" href="#next-steps">
+  </a>
+  <strong>Next Steps</strong>
+</h3>
+
+<ul>
+<li>Chapter 5: Learn how to connect different messaging channels</li>
+<li>Chapter 6: Master multi-Agent collaboration architecture</li>
+<li>Chapter 7: Dive deep into memory management</li>
+</ul>
+
+<h3>
+  <a name="practice-suggestions" href="#practice-suggestions">
+  </a>
+  <strong>Practice Suggestions</strong>
+</h3>
+
+<ol>
+<li>Try the basic usage of each built-in tool</li>
+<li>Install and use 2–3 common Skills</li>
+<li>Create a custom automation script</li>
+<li>Configure security policies suitable for your environment</li>
+</ol>
+
+
+<hr />
+
+<p><strong>📚 Further Reading:</strong></p>
+
+<ul>
+<li><a href="https://docs.openclaw.ai/tools" target="_blank">OpenClaw Official Tool Docs</a></li>
+<li><a href="https://clawhub.com/" target="_blank">ClawHub Skill Marketplace</a></li>
+<li><a href="https://docs.openclaw.ai/security" target="_blank">Security Configuration Best Practices</a></li>
+</ul>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

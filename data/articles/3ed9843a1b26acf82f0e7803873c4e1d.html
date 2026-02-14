@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Après 8 mois d’incompréhension, Microsoft corrige un bug qui empêchait le lancement de Google Chrome</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Après 8 mois d’incompréhension, Microsoft corrige un bug qui empêchait le lancement de Google Chrome</h1>
+  <div class="metadata">
+    Source: Numerama Tech | Date: 2/13/2026 | Lang: FR |
+    <a href="https://www.numerama.com/tech/2179331-apres-8-mois-dincomprehension-microsoft-corrige-un-bug-qui-empechait-le-lancement-de-google-chrome.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    <div>
+<p>Microsoft déploie un correctif pour résoudre un problème signalé par de nombreux utilisateurs. Le service de contrôle parental <strong>Family Safety</strong> de l’entreprise américaine provoquait l’arrêt brutal de Google Chrome et d’autres navigateurs web.</p>
+</div>
+
+
+<p>Nous sommes début février 2026 et Microsoft reconnaît faire face à un bug après <a href="https://learn.microsoft.com/en-us/answers/questions/3862286/microsoft-family-safety-blocking-chrome-browser?forum=windows-windows_11-wintop_famsafety&amp;referrer=answers" target="_blank">de nombreux signalements</a>.</p>
+
+
+
+<p>D’après ces utilisateurs, ils sont incapables de lancer Google Chrome sur leur PC. Et quand ils y arrivent, le navigateur plante aléatoirement sur les appareils équipés des toutes dernières versions de Windows.</p>
+
+
+
+<p>La source du problème a fini par être identifiée : <a href="https://support.microsoft.com/fr-fr/account-billing/configurer-microsoft-family-safety-b6280c9d-38d7-82ff-0e4f-a6cb7e659344" target="_blank">Family Safety</a>, l’outil qui aide les parents à surveiller l’activité de leurs enfants et propose, entre autres, la gestion du temps d’écran, le filtrage du contenu, le suivi de la localisation et des rapports d’activité.</p>
+
+
+
+<figure><a href="https://www.numerama.com/wp-content/uploads/2026/02/capture-decran-2026-02-13-a-142149.jpg"><img alt="Le but initial de Microsoft Family Safety ? Permettre aux parents de surveiller l'utilisation des smartphones, ordinateurs et consoles Xbox de leurs enfants. // Source : Clubic" /></a><figcaption>Le but initial de Microsoft Family Safety ? Permettre aux parents de surveiller l’utilisation des smartphones, ordinateurs et consoles Xbox de leurs enfants. // Source : Clubic</figcaption></figure>
+
+
+
+<h2>Pourquoi ce bug de Google Chrome ?</h2>
+
+
+
+<p>Concrètement, le bug dans Microsoft Family Safety provient de son outil de filtrage web, conçu pour demander l’autorisation parentale avant d’utiliser des navigateurs autres qu’Edge, qui est par défaut autorisé.</p>
+
+
+
+<p>Pour fonctionner, ce système maintient une liste de blocage des navigateurs non approuvés, mais quand Chrome (<a href="https://www.numerama.com/tech/1001424-firefox-opera-ou-chrome-quel-meilleur-navigateur-choisir.html">ou d’autres navigateurs concurrents</a>) publie une nouvelle version, cette mise à jour change la signature du processus, ce qui fait que la version récente n’est pas encore ajoutée à la liste de blocage par Microsoft.</p>
+
+
+
+<p>Conséquence : Family Safety détecte cette nouvelle version comme non reconnue et non autorisée et, au lieu d’afficher comme prévu une demande d’approbation parentale, le bug provoque une fermeture immédiate et brutale du navigateur sans message d’erreur clair, rendant Chrome inutilisable même si les versions antérieures étaient déjà approuvées.</p>
+
+
+
+<h2>La liste est mise à jour</h2>
+
+
+
+<p>Début février, Microsoft a donc expliqué <a href="https://learn.microsoft.com/en-us/windows/release-health/status-windows-11-24h2#350msgdesc" target="_blank">avoir mis à jour cette fameuse liste </a>pour qu’elle inclue automatiquement les toutes dernières versions de Chrome et des autres navigateurs concernés dès leur sortie, sans délai manuel.</p>
+
+
+
+<p>Bonne nouvelle si vous êtes concernés, le correctif ne requiert aucune installation : les utilisateurs affectés par le bug doivent simplement connecter leurs appareils à internet pour recevoir automatiquement la nouvelle liste.</p>
+
+
+<div>
+    <div>
+        <img alt="Google Chrome – Icon" src="https://c0.lestechnophiles.com/www.numerama.com/wp-content/uploads/2025/06/Google-Chrome-Icon.png?key=1e9326c5" />    </div>
+    <h2>Google Chrome</h2>
+            <p><a href="https://www.numerama.com/telecharger/google-chrome.html#download" target="_blank">
+            <strong>Télécharger gratuitement</strong>
+            <i></i>
+        </a></p><div>
+                            <div>
+                    <p>Play Store</p>
+                    
+                </div>
+            
+                            <div>
+                    <p>Apple Store</p>
+                    
+                </div>
+                    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<div>
+        <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/iPhone-16-pro-vDJtn9o4_vzSsPIGCFDc5.png" alt="Toute l'actu tech en un clien d'oeil" />
+        </p>
+        <div>
+                <p>Toute l'actu tech en un clin d'œil</p>
+            <p>Ajoutez Numerama à votre écran d'accueil et restez connectés au futur !</p>
+        </div>
+        <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/logo-card-pwa-coupe-vCvPQ_Q_ysBNfqKp6w7gG.svg" alt="Logo PWA" />
+        </p>
+    </div>
+
+<hr />
+        </div></div>
+  </div>
+</body>
+</html>

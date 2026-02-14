@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Hallucinating Splines - Le SimCity où les IA font mieux que votre Maire</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Hallucinating Splines - Le SimCity où les IA font mieux que votre Maire</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/12/2026 | Lang: FR |
+    <a href="https://korben.info/hallucinating-splines-simcity-ia.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/hallucinating-splines-simcity-ia/hallucinating-splines-simcity-ia-1.png" alt="Image illustrant l'article : Hallucinating Splines - Le SimCity où les IA font mieux que votre Maire" /></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Hallucinating Splines lance des IA autonomes dans SimCity (version open source Micropolis) : 96 agents construisent des villes sans intervention humaine, avec 607 métropoles générées et 10M+ habitants virtuels</li><li>Le système "Vibe a City" génère des villes en temps réel avec noms poétiques (Turtle Ziggurat, Storm Cove) et un leaderboard où chaque cité se classe par population, score et date de création</li><li>Le projet repose sur micropolisJS (GPL v3 sur GitHub), permettant à quiconque de forker et lancer sa propre simulation urbaine IA sans partir de zéro</li></ol><p>Résumé généré par IA</p></div><div><p>SimCity, je pense que tout le monde connaît. Moi c'est vraiment l'un de jeux préférés. Enfin la version SimCity 2000. C'est que des bons souvenirs pour moi. Dans ce jeu, vous posiez des routes, des zones résidentielles, et vous regardiez votre ville grandir... ou cramer, selon les jours. Hé bien
+<a href="https://hallucinatingsplines.com/">Hallucinating Splines</a>
+, c'est le même délire, sauf que c'est une IA qui joue à votre place.</p><p>Ce projet est basé sur
+<a href="https://korben.info/micropolis-simcity.html">Micropolis</a>
+, la version open source du
+<a href="https://korben.info/simcity-2013.html">SimCity</a>
+original sorti en 1989 (Et surtout pas les trucs d'EA qui ont suivi ^^). Du coup, on a un vrai moteur de simulation urbaine avec zonage résidentiel, commercial, industriel, gestion des services publics, du trafic... bref le package complet.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/hallucinating-splines-simcity-ia/hallucinating-splines-simcity-ia-2.png" alt="" /></p><p>Sauf qu'ici, personne ne touche la souris. Des agents autonomes prennent les décisions, construisent les infrastructures et gèrent la croissance de leur ville sans intervention humaine. Enfin, sauf si vous comptez le clic pour lancer la simulation.</p><p>Et visiblement ça tient plutôt bien la route (sans mauvais jeu de mots). 96 maires IA, 607 villes construites et une population cumulée de plus de 10 millions d'habitants virtuels. C'est pas mal hein pour des programmes qui n'ont jamais mis les pieds dans un conseil municipal !</p><p>En fait, le concept s'appelle "Vibe a City". Vous cliquez sur un bouton et hop, une IA se met à bâtir sa métropole en temps réel sous vos yeux, sans intervention humain. Les villes portent également des noms générés plutôt poétiques je trouve... Turtle Ziggurat, Storm Cove, Azure Heath, Procedural Mesa (ok celui-là est un peu trop honnête).</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/hallucinating-splines-simcity-ia/hallucinating-splines-simcity-ia-3.png" alt="" /></p><p>Et y'a même un leaderboard avec un système de scoring. Chaque cité a son indicateur d'activité (Tout fraiche, récente, ancienne ou stagnante), les stats se rafraîchissent toutes les 30 secondes et on peut trier par population, par score ou par date. Une certaine Annexed Colony tape par exemple dans les 185 000 habitants en l'an 2428 dans le jeu. C'est foufou !</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/hallucinating-splines-simcity-ia/hallucinating-splines-simcity-ia-4.png" alt="" /></p><p>Côté technique, plutôt que de repartir de zéro, tout repose sur micropolisJS, une implémentation JavaScript/HTML5 de Micropolis sous licence GPL v3, et le code est dispo sur
+<a href="https://github.com/andrewedunn/hallucinating-splines">GitHub</a>
+(un git clone et c'est parti). Si vous connaissez
+<a href="https://korben.info/microlandia-city-builder-simulation-realiste.html">Microlandia</a>
+que j'avais présenté il y a quelques semaines, c'est dans la même veine mais avec une couche d'agents IA par-dessus.</p><p>Et n'oubliez pas d'aller voir le petit clin d’œil sur la page de crédits ou dans le footer qui affiche le Dr. Wright, le fameux conseiller de SimCity sur SNES. Après le piège, c'est que vous allez y passer des heures à regarder une IA construire ce que vous n'avez jamais réussi à faire dans le jeu. Ahahaha !</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/hallucinating-splines-simcity-ia/hallucinating-splines-simcity-ia-1.webp" alt="" /></p><p><a href="https://hallucinatingsplines.com/">A découvrir ici !</a></p></div>Références<section><ul><li><a href="https://hallucinatingsplines.com/" target="_blank">https://hallucinatingsplines.com/</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+</body>
+</html>

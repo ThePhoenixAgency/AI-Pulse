@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Network configuration changes for Copilot coding agent</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Network configuration changes for Copilot coding agent</h1>
+  <div class="metadata">
+    Source: GitHub Changelog | Date: 2/13/2026 | Lang: EN |
+    <a href="https://github.blog/changelog/2026-02-13-network-configuration-changes-for-copilot-coding-agent" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+				
+<p><a href="https://docs.github.com/copilot/concepts/agents/coding-agent/about-coding-agent">Copilot coding agent</a> is our asynchronous, autonomous background agent. Delegate a task to Copilot, and Copilot works in the background in its own development environment, powered by GitHub Actions. Once Copilot finishes work, it opens a pull request and requests your review.</p>
+<p>We’re making some changes to the network configuration for Copilot coding agent which will take effect at 00:00 UTC on February 27, 2026. <strong>These changes affect teams who have configured the agent to run on <a href="https://docs.github.com/actions/concepts/runners/self-hosted-runners">self-hosted runners</a> or <a href="https://docs.github.com/enterprise-cloud@latest/admin/configuring-settings/configuring-private-networking-for-hosted-compute-products/configuring-private-networking-for-github-hosted-runners-in-your-enterprise">larger runners with Azure private networking</a></strong>.</p>
+<p>If you have run at least one Copilot coding agent session on a self-hosted runner or larger runner with Azure private networking in the past 60 days, you will receive an email notification today with a list of potentially-affected repositories to review.</p>
+<h2><a href="#whats-changing">What’s changing</a></h2>
+<p>Today, Copilot coding agent connects to <code>api.githubcopilot.com</code> to access AI inference and stream logs to GitHub.</p>
+<p>From February 27, 2026 at 00:00 UTC, Copilot will apply <a href="https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-access/manage-network-access">subscription-based network routing</a>, connecting to a different host depending on the Copilot plan of the user who initiated the agent task:</p>
+<ul>
+<li>Copilot Business: <code>api.business.githubcopilot.com</code></li>
+<li>Copilot Enterprise: <code>api.enterprise.githubcopilot.com</code></li>
+<li>Copilot Pro and Pro+: <code>api.individual.githubcopilot.com</code></li>
+</ul>
+<h2><a href="#next-steps">Next steps</a></h2>
+<p>If you’ve received an email notification or you believe you may be affected, identify repositories that are using Copilot coding agent with affected runner types.</p>
+<p>You can identify the runners used for Copilot coding agent in a repository by checking the <code>runs-on</code> value in the <code>.github/workflows/copilot-setup-steps.yml</code> file. If there is no <code>copilot-setup-steps.yml</code> file, the repository is not affected.</p>
+<p>Next, review the network configuration for those runners and ensure that Copilot is able to connect to the new host(s) above by February 27, 2026. You may need to allow multiple hosts if users are subscribed to different Copilot plans.</p>
+<p>If you don’t make this change by February 27, 2026, Copilot coding agent tasks may fail because the agent runtime will be unable to communicate with GitHub systems.</p>
+
+			</div></div>
+  </div>
+</body>
+</html>

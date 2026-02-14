@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fake Reservation Links Prey on Weary Travelers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Fake Reservation Links Prey on Weary Travelers</h1>
+  <div class="metadata">
+    Source: Threatpost | Date: 8/22/2022 | Lang: EN |
+    <a href="https://threatpost.com/reservation-links-prey-on-travelers/180462/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><p>Fake travel reservations are exacting more pain from the travel weary, already dealing with the misery of canceled flights and overbooked hotels. </p><div>
+											<p>A longtime threat group identified as TA558 has ramped up efforts to target the travel and hospitality industries. After a lull in activity, believed tied to COVID-related travel restrictions, the threat group has ramped up campaigns to exploit an uptick in travel and related airline and hotel bookings.</p>
+<p>Warnings come from security researchers who say TA558 cybercriminals have revamped their 2018 campaigns with fake reservation emails that contain links – that if clicked – deliver a malicious malware payload containing a potpourri of malware variants.</p>
+<p>What makes this most recent campaign unique, according to a report by <a href="https://www.proofpoint.com/us/blog/threat-insight/reservations-requested-ta558-targets-hospitality-and-travel">Proofpoint</a>, is the use of RAR and ISO file attachments linked to messages. ISO and RAR are single compressed files, that if executed, decompress the file and folder data inside of them.</p>
+<p>“TA558 began using URLs more frequently in 2022. TA558 conducted 27 campaigns with URLs in 2022, compared to just five campaigns total from 2018 through 2021. Typically, URLs led to container files such as ISOs or zip [RAR] files containing executables,” Proofpoint wrote.</p>
+<p>To become infected, the targeted victim would have to be tricked into decompressing the file archive. “The reservation link… led to an ISO file and an embedded batch file. The execution of the BAT file led to a PowerShell helper script that downloaded a follow-on payload, AsyncRAT,” researchers wrote.</p>
+<h2>Upgrade Your Itinerary To Malware Infection Status</h2>
+<p>Past TA558 campaigns, tracked by Palo Alto Networks (<a href="https://unit42.paloaltonetworks.com/operation-comando-or-how-to-run-a-cheap-and-effective-credit-card-business/">in 2018</a>), Cisco Talos (<a href="https://blog.talosintelligence.com/2020/02/loda-rat-grows-up.html">in 2020</a> and <a href="https://blog.talosintelligence.com/2021/08/rat-campaign-targets-latin-america.html">2021</a>) and Uptycs (<a href="https://www.uptycs.com/blog/revenge-rat-targeting-users-in-south-america">in 2020</a>), have leveraged malicious Microsoft Word document attachments (CVE-2017-11882) or remote template URLs to download and install malware, according to Proofpoint.</p>
+<p>The shift to ISO and RAR files “is likely due to Microsoft’s announcements in late 2021 and early 2022 about disabling macros [VBA and XL4] by default in Office products,” researchers said.</p>
+<p>“In 2022, campaign tempo increased significantly. Campaigns delivered a mixture of malware such as, Loda, Revenge RAT, and AsyncRAT. This actor used a variety of delivery mechanisms including URLs, RAR attachments, ISO attachments, and Office documents,” researchers wrote.</p>
+<p>Malware payloads of recent campaigns typically include remote access trojans (RATs), that can enable reconnaissance, data theft and distribution of follow-on payloads, Proofpoint said.</p>
+<p>Through all their evolutions, though, the goal of the group has always remained the same. The analysts concluded “with medium to high confidence” that TA558 is financially motivated, using stolen data to scale up and steal money. “Its possible compromises could impact both organizations in the travel industry as well as potentially customers who have used them for vacations,” Sherrod DeGrippo, vice president of threat research and detection organizations at Proofpoint, wrote in a statement. “Organizations in these and related industries should be aware of this actor’s activities and take precautions to protect themselves.”</p>
+<h2>TA558’s History</h2>
+<p>Since at least 2018, TA558 has primarily targeted organizations in the fields of travel, hospitality, and related industries. Those organizations tend to be located in Latin America, and sometimes in North America or Western Europe.</p>
+<p>Throughout their history, TA558 has used socially engineered emails to lure victims into clicking on malicious links or documents. Those emails – most often written in Portuguese or Spanish – usually purported to concern hotel reservations. The subject line, or the name of the attached document, was often, simply, “reserva.”</p>
+<p>In their early exploits, the group would leverage vulnerabilities in Microsoft Word’s Equation Editor – for example, <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2017-11882">CVE-2017-11882</a>, a remote code execution bug. The goal was to download a RAT – most commonly <a href="https://threatpost.com/android-devices-lodarat-windows/163769/">Loda</a> or <a href="https://threatpost.com/malware-dropper-dual-rats/150271/">Revenge RAT</a> – to the target machine.</p>
+<p>In 2019 the group expanded its arsenal, with malicious macro-laced Powerpoint attachments and template injections against Office documents. They also expanded to new demographics, utilizing English-language phishing lures for the first time.</p>
+<p>Early 2020 was TA558’s most prolific period, as they churned out 25 malicious campaigns in January alone. They predominantly used macro-laden Office documents, or targeted known Office vulnerabilities during this period.</p>
+<p>“Organizations, especially those operating in targeted sectors in Latin America, North America, and Western Europe should be aware of this actor’s tactics, techniques, and procedures,” researchers advise.</p>
+											
+										</div></div>
+  </div>
+</body>
+</html>

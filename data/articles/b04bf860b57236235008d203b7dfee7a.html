@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Thinking Outside The Box [dusted off draft from 2017]</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Thinking Outside The Box [dusted off draft from 2017]</h1>
+  <div class="metadata">
+    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN |
+    <a href="https://projectzero.google/2025/12/thinking-outside-the-box.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+      <article>
+        
+        <section>
+          <h2>Preface</h2>
+
+<p>Hello from the future!</p>
+
+<p>This is a blogpost I originally drafted in early 2017. I wrote what I intended to be the first half of this post (about escaping from the VM to the VirtualBox host userspace process with <a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1086">CVE-2017-3558</a>), but I never got around to writing the second half (<a href="https://bugs.chromium.org/p/project-zero/issues/detail?id=1091">going from the VirtualBox host userspace process to the host kernel</a>), and eventually sorta forgot about this old post draft… But it seems a bit sad to just leave this old draft rotting around forever, so I decided to put it in our blogpost queue now, 8 years after I originally drafted it. I’ve very lightly edited it now (added some links, fixed some grammar), but it’s still almost as I drafted it back then.</p>
+
+<p>When you read this post, keep in mind that unless otherwise noted, it is describing the situation as of 2017. Though a lot of the described code seems to not have changed much since then…
+</p>
+<h2>Introduction</h2>
+
+<p>VM software typically offers multiple networking modes, including a NAT mode that causes traffic from the VM to appear as normal traffic from the host system. Both QEMU and VirtualBox use forks of <a href="http://slirp.sourceforge.net/">Slirp</a> for this. Slirp is described as follows on its homepage:</p>
+
+<p><em>Slirp emulates a PPP or SLIP connection over a normal terminal. This is an actual PPP or SLIP link, firewalled for people’s protection. It makes a quick way to connect your Palm Pilot over the Internet via your Unix or Linux box!!! You don’t need to mess around with your /etc/inetd.conf or your /etc/ppp/options on your system.</em></p>
+
+<p>Slirp is a useful basis for VM networking because it can parse raw IP packets (coming from the emulated network adapter) and forward their contents to the network using the host operating system’s normal, unprivileged networking APIs. Therefore, Slirp can run in the host’s userspace and doesn’t need any special kernel support.</p>
+
+<p>Both QEMU and VirtualBox don’t directly use the upstream Slirp code, but instead use patched versions where, for example, the feature for setting up port forwards by talking to a magic IP address is removed. Especially in VirtualBox, the Slirp code has been altered a lot.</p>
+
+<p>This post describes an issue in VirtualBox and how it can be exploited. Some parts are specific to the host operating system; in those cases, this post focuses on the situation on Linux.</p>
+
+<h2>The packet heap in VirtualBox</h2>
+
+<p>The VirtualBox version of Slirp uses a custom zone allocator for storing packet data, in particular, incoming ethernet frames. Each NAT network interface has its own zone (<code>zone_clust</code>) with <code>nmbclusters=1024+32*64=3072</code> chunks of size <code>MCLBYTES=2048</code>. The initial freelist of each zone starts at the high-address end of the zone and linearly progresses towards the low-address end.</p>
+
+<p>The heap uses inline metadata; each chunk is prefixed with the following structure:</p>
+
+<div><pre><code><span>struct</span> <span>item</span> <span>{</span>
+    <span>uint32_t</span> <span>magic</span><span>;</span> <span>// (always 0xdead0001)</span>
+    <span>uma_zone_t</span> <span>zone</span><span>;</span> <span>// (pointer to the zone; uma_zone_t is struct uma_zone *)</span>
+    <span>uint32_t</span> <span>ref_count</span><span>;</span>
+    <span>struct</span> <span>{</span>
+        <span>struct</span> <span>type</span> <span>*</span><span>le_next</span><span>;</span> <span>// (next element)</span>
+        <span>struct</span> <span>type</span> <span>**</span><span>le_prev</span><span>;</span> <span>// (address of previous le_next)</span>
+    <span>}</span> <span>list</span><span>;</span> <span>// (entry in the freelist or in used_items, the list of used heap chunks)</span>
+<span>};</span>
+</code></pre></div>
+
+<p><img alt="" /></p>
+
+<p>Chunks are freed through the methods <code>m_freem -&gt; m_free -&gt; mb_free_ext -&gt; uma_zfree -&gt; uma_zfree_arg -&gt; slirp_uma_free</code>. The <code>uma_zfree_arg()</code> function takes pointers to the real zone structure and to the chunk data as arguments and checks some assertions before calling <code>slirp_uma_free()</code> as <code>zone-&gt;pfFree()</code>:</p>
+
+<div><pre><code><span>void</span> <span>uma_zfree_arg</span><span>(</span><span>uma_zone_t</span> <span>zone</span><span>,</span> <span>void</span> <span>*</span><span>mem</span><span>,</span> <span>void</span> <span>*</span><span>flags</span><span>)</span> <span>{</span>
+    <span>struct</span> <span>item</span> <span>*</span><span>it</span><span>;</span>
+    <span>[...]</span>
+    <span>it</span> <span>=</span> <span>&amp;</span><span>((</span><span>struct</span> <span>item</span> <span>*</span><span>)</span><span>mem</span><span>)[</span><span>-</span><span>1</span><span>];</span>
+    <span>Assert</span><span>((</span><span>it</span><span>-&gt;</span><span>magic</span> <span>==</span> <span>ITEM_MAGIC</span><span>));</span>
+    <span>Assert</span><span>((</span><span>zone</span><span>-&gt;</span><span>magic</span> <span>==</span> <span>ZONE_MAGIC</span> <span>&amp;&amp;</span> <span>zone</span> <span>==</span> <span>it</span><span>-&gt;</span><span>zone</span><span>));</span>
+
+    <span>zone</span><span>-&gt;</span><span>pfFree</span><span>(</span><span>mem</span><span>,</span>  <span>0</span><span>,</span> <span>0</span><span>);</span> <span>// (zone-&gt;pfFree is slirp_uma_free)</span>
+    <span>[...]</span>
+<span>}</span>
+</code></pre></div>
+
+<p>Unfortunately, <code>Assert()</code> <a href="https://www.virtualbox.org/browser/vbox/trunk/include/iprt/assert.h">is <code>#define</code>‘d to do nothing in release builds</a> - only “strict” builds check for the condition. The builds that are offered on the VirtualBox download page are normal, non-strict release builds.</p>
+
+<p>Next, <code>slirp_uma_free()</code> is executed:</p>
+
+<div><pre><code><span>static</span> <span>void</span> <span>slirp_uma_free</span><span>(</span><span>void</span> <span>*</span><span>item</span><span>,</span> <span>int</span> <span>size</span><span>,</span> <span>uint8_t</span> <span>flags</span><span>)</span> <span>{</span>
+    <span>struct</span> <span>item</span> <span>*</span><span>it</span><span>;</span>
+    <span>uma_zone_t</span> <span>zone</span><span>;</span>
+    <span>[...]</span>
+    <span>it</span> <span>=</span> <span>&amp;</span><span>((</span><span>struct</span> <span>item</span> <span>*</span><span>)</span><span>item</span><span>)[</span><span>-</span><span>1</span><span>];</span>
+    <span>[...]</span>
+    <span>zone</span> <span>=</span> <span>it</span><span>-&gt;</span><span>zone</span><span>;</span>
+    <span>[...]</span>
+    <span>LIST_REMOVE</span><span>(</span><span>it</span><span>,</span> <span>list</span><span>);</span>
+    <span>if</span> <span>(</span><span>zone</span><span>-&gt;</span><span>pfFini</span><span>)</span>
+    <span>{</span>
+        <span>zone</span><span>-&gt;</span><span>pfFini</span><span>(</span><span>zone</span><span>-&gt;</span><span>pData</span><span>,</span> <span>item</span><span>,</span> <span>(</span><span>int</span> <span>/*sigh*/</span><span>)</span><span>zone</span><span>-&gt;</span><span>size</span><span>);</span>
+    <span>}</span>
+    <span>if</span> <span>(</span><span>zone</span><span>-&gt;</span><span>pfDtor</span><span>)</span>
+    <span>{</span>
+        <span>zone</span><span>-&gt;</span><span>pfDtor</span><span>(</span><span>zone</span><span>-&gt;</span><span>pData</span><span>,</span> <span>item</span><span>,</span> <span>(</span><span>int</span> <span>/*sigh*/</span><span>)</span><span>zone</span><span>-&gt;</span><span>size</span><span>,</span> <span>NULL</span><span>);</span>
+    <span>}</span>
+    <span>LIST_INSERT_HEAD</span><span>(</span><span>&amp;</span><span>zone</span><span>-&gt;</span><span>free_items</span><span>,</span> <span>it</span><span>,</span> <span>list</span><span>);</span>
+<span>}</span>
+</code></pre></div>
+
+<p><code>slirp_uma_free()</code> grabs the zone pointer from the chunk header. Because <code>Assert()</code> is compiled out, there is no validation to ensure that this zone pointer points to the actual zone - an attacker who can overwrite the chunk header could cause this method to use an arbitrary zone pointer. Then, the member <code>pfFini</code> of the zone is executed, which, for an attacker who can point <code>it-&gt;zone</code> to controlled data, means that an arbitrary method call like this can be executed:</p>
+
+<p><em><code>{controlled pointer}</code></em><code>({controlled pointer}, {pointer to packet data}, {controlled u32});</code></p>
+
+<p>Because the VirtualBox binary, at least for Linux, is not relocatable and has `memcpy()` in its PLT section, this can be used as a write primitive by using the static address of the PLT entry for <code>memcpy()</code> as function address:</p>
+
+<p><code>memcpy(dest={controlled pointer}, src={packet data}, n={controlled u32})</code></p>
+
+<p>This means that, even though the packet heap doesn’t contain much interesting data, a heap memory corruption that affects chunk headers could still be used to compromise the VirtualBox process rather easily.</p>
+
+<h2>The Vulnerability</h2>
+
+<p>In <a href="https://github.com/VirtualBox/virtualbox/commit/cd68926f500fe93c6fe4a33992201039eac526e9">changeset 23155</a>, the following code was added at the top of <code>ip_input()</code>, the method that handles incoming IP packets coming from the VM, before any validation has been performed on the IP headers. <code>m</code> points to the buffer structure containing the packet data pointer and the actual length of the packet data, <code>ip</code> points to the IP header inside the untrusted packet data. <code>RT_N2H_U16()</code> performs an endianness conversion.</p>
+
+<div><pre><code><span>if</span> <span>(</span><span>m</span><span>-&gt;</span><span>m_len</span> <span>!=</span> <span>RT_N2H_U16</span><span>(</span><span>ip</span><span>-&gt;</span><span>ip_len</span><span>))</span>
+    <span>m</span><span>-&gt;</span><span>m_len</span> <span>=</span> <span>RT_N2H_U16</span><span>(</span><span>ip</span><span>-&gt;</span><span>ip_len</span><span>);</span>
+</code></pre></div>
+
+<p>This overwrites the trusted buffer length with the contents of the untrusted length field from the IP packet. This is particularly bad because all safety checks assume that m-&gt;m_len is correct - these two added lines basically make all following length checks useless.</p>
+
+<p>Later, in <a href="https://github.com/VirtualBox/virtualbox/commit/b25d7cade21993266954de30b015310f23b9774d">changeset 59063</a>, the following comment was added on top of those lines:</p>
+
+<div><pre><code><span>/*
+* XXX: TODO: this is most likely a leftover spooky action at
+* a distance from alias_dns.c host resolver code and can be
+* g/c'ed.
+*/</span>
+<span>if</span> <span>(</span><span>m</span><span>-&gt;</span><span>m_len</span> <span>!=</span> <span>RT_N2H_U16</span><span>(</span><span>ip</span><span>-&gt;</span><span>ip_len</span><span>))</span>
+    <span>m</span><span>-&gt;</span><span>m_len</span> <span>=</span> <span>RT_N2H_U16</span><span>(</span><span>ip</span><span>-&gt;</span><span>ip_len</span><span>);</span>
+
+</code></pre></div>
+
+<p>One straightforward way to abuse this issue is to send a small <code>ICMP_ECHO</code> packet with a large <code>ip_len</code> to the address 10.0.2.3, causing Slirp to send back a larger <code>ICMP_ECHOREPLY</code> with out-of-bounds heap data. However, Slirp validates the correctness of the ICMP checksum, meaning that the attacker has to guess the 16-bit checksum of the out-of-bounds heap data that the attacker is trying to leak. While it is possible to bruteforce this checksum, it is inelegant.<br />
+An easier way to leak heap data is to use UDP with the help of a helper machine on the other side of the NAT, e.g. on the internet. UDP has a 16-bit checksum over packet data as well, but unlike ICMP, UDP treats the checksum value 0 as “don’t check the checksum”. Therefore, by sending a UDP packet with checksum 0 and a bogus length in the IP header, it is possible to reliably leak out-of-bounds heap data. Since <code>ip_len</code> can be bigger than the chunk size, this also permits leaking the headers (and contents) of following chunks, disclosing information about the heap state, the heap location and the location of the <code>struct uma_zone</code>.</p>
+
+<p>The next step is to somehow use the bug to corrupt chunk headers. Most of the code only reads from incoming packets; however, when a packet with IP options arrives in <code>udp_input()</code> or <code>tcp_input()</code>, the IP payload (meaning the TCP or UDP packet header and everything following it) is moved over the IP options using <code>ip_stripoptions()</code>:</p>
+
+<div><pre><code><span>void</span> <span>ip_stripoptions</span><span>(</span><span>struct</span> <span>mbuf</span> <span>*</span><span>m</span><span>,</span> <span>[...])</span>
+<span>{</span>
+    <span>register</span> <span>int</span> <span>i</span><span>;</span>
+    <span>struct</span> <span>ip</span> <span>*</span><span>ip</span> <span>=</span> <span>mtod</span><span>(</span><span>m</span><span>,</span> <span>struct</span> <span>ip</span> <span>*</span><span>);</span>
+    <span>register</span> <span>caddr_t</span> <span>opts</span><span>;</span>
+    <span>int</span> <span>olen</span><span>;</span>
+    <span>NOREF</span><span>(</span><span>mopt</span><span>);</span> <span>/** @todo do we really will need this options buffer? */</span>
+
+    <span>olen</span> <span>=</span> <span>(</span><span>ip</span><span>-&gt;</span><span>ip_hl</span><span>&lt;&lt;</span><span>2</span><span>)</span> <span>-</span> <span>sizeof</span><span>(</span><span>struct</span> <span>ip</span><span>);</span>
+    <span>opts</span> <span>=</span> <span>(</span><span>caddr_t</span><span>)(</span><span>ip</span> <span>+</span> <span>1</span><span>);</span>
+    <span>i</span> <span>=</span> <span>m</span><span>-&gt;</span><span>m_len</span> <span>-</span> <span>(</span><span>sizeof</span><span>(</span><span>struct</span> <span>ip</span><span>)</span> <span>+</span> <span>olen</span><span>);</span>
+    <span>memcpy</span><span>(</span><span>opts</span><span>,</span> <span>opts</span>  <span>+</span> <span>olen</span><span>,</span> <span>(</span><span>unsigned</span><span>)</span><span>i</span><span>);</span>
+    <span>m</span><span>-&gt;</span><span>m_len</span> <span>-=</span> <span>olen</span><span>;</span>
+
+    <span>ip</span><span>-&gt;</span><span>ip_hl</span> <span>=</span> <span>sizeof</span><span>(</span><span>struct</span> <span>ip</span><span>)</span> <span>&gt;&gt;</span> <span>2</span><span>;</span>
+<span>}</span>
+</code></pre></div>
+
+<p>This means that, by sending a TCP or UDP packet with IP options and a bogus length that is bigger than a heap chunk, it is possible to move the packet payload of the following heap chunk over the corresponding heap chunk header.</p>
+
+<h2>Exploitation: Going up to host userspace</h2>
+
+<p>In this part of the post, I’m going to show how it’s possible to break out of the VM and run arbitrary shell commands on the host system using <code>system()</code>.</p>
+
+<p>Assuming that a sufficiently big portion of the packet heap is unused, the behavior of the allocator can be simplified by allocating all fragmented heap memory, leaving only a pristine freelist that linearly allocates downwards (as shown at the top of the post). Heap chunks can be allocated by sending IP packets with the “more fragments” bit set; such IP packets have to be stored in memory until either the remaining fragments have been received or the maximum number of pending fragments is reached. An attack that is optimized for maximum reliability would probably go a more complex route and use an approach that still works with an arbitrarily fragmented heap.</p>
+
+<p>The first step is to place the command that should be given to <code>system()</code> in memory and determine at which address it was placed. To do this, assuming that the freelist grows downwards linearly, the attacker can first send an IP fragment containing the shell command (causing the IP fragment to be stored), then send a crafted UDP packet to leak data:</p>
+
+<p><img alt="" /></p>
+
+<p>(Note: <code>le_prev</code> and <code>le_next</code> are now pointers on the list of used heap chunks (<code>free_items</code>), not the freelist, and therefore the <code>le_next</code> pointer points upwards.)</p>
+
+<p>While the leaked data does not contain a pointer to the chunk containing the shell command, it contains pointers to the adjacent chunk headers, which can be used to calculate the address of the shell command.</p>
+
+<p>The next big step is to figure out the address of <code>system()</code>. Because there is no PLT entry for <code>system()</code>, there is no fixed address the attacker can jump to to invoke the function. However, using the contents of the global offset table, an attacker can first compute the offsets between libc symbols and use them to identify the libc version, then use a GOT entry and the known offset of <code>system()</code> relative to the address the GOT entry points to in that libc version to compute the address of <code>system()</code>. Unfortunately, there seems to be no nice way to directly read from the GOT using the bug, so this has to be done in a somewhat ugly way.</p>
+
+<p>It is possible to use the bug as a write primitive by calling <code>memcpy()</code> as described in the section “The packet heap in VirtualBox”. In general, functions can be called using the bug as follows:</p>
+
+<div><p>First, the attacker places a fake <code>struct uma_zone</code> (zone header) in memory and determines the address of the fake <code>struct uma_zone</code>, just like the shell command was placed in memory. Next, the attacker sends a packet containing a fake <code>struct vmox_heap_item</code> (chunk header) and moves it over the real chunk header using an adjacent UDP packet with a bogus length field and with IP options:</p><p>
+
+<img alt="" /><br />
+The result is a chunk with an attacker-controlled header that points to the fake <code>struct uma_zone</code>:</p></div>
+
+<p><img alt="" />
+<br />
+Next, this chunk can be freed by sending a corresponding second IP fragment, causing the member <code>pfFini</code> of the fake <code>uma_zone</code> to be called with arguments <code>zone-&gt;pData</code> (attacker-controlled), <code>item</code> (the data directly behind the fake chunk header) and <code>zone-&gt;size</code> (again attacker-controlled).</p>
+
+<p>In the case of <code>memcpy()</code>, one issue here is that the fake IP header must be valid; otherwise, the packet might not be recognized during fragment reassembly. Therefore, only the space that would normally be occupied by the ethernet header (14 bytes long) can be used to store the payload; to write larger payloads, multiple function calls must be made.</p>
+
+<p>At this point, using the write primitive, it is possible to leak the GOT contents by overwriting memory as follows (red parts are modified):</p>
+
+<p><img alt="" /></p>
+
+<p>First, a fake heap chunk header is placed at the start of the GOT, which is writable and at a fixed address. Because after the VirtualBox process has started, only library code is executed, the corruption of the start of the GOT is not a problem. The <code>le_next</code> pointer of the fake chunk header points to a legitimate chunk that is currently in a pristine area of the original freelist. Now, the attacker can overwrite the freelist head pointer <code>free_items.lh_first</code> in the zone header, causing the fake chunk in the GOT to be returned by a legitimate future allocation.</p>
+
+<p>At this point, the attacker can send another UDP packet with a bogus length field in the IP header. This UDP packet will be placed at the start of the GOT, and out-of-bounds data behind the packet will leak - in other words, the remaining normal GOT entries.</p>
+
+<p>At this point, the attacker can determine the location of <code>system()</code> and call <code>system()</code> with a fully controlled argument.</p>
+
+<h2>Conclusion [from the future]</h2>
+
+<p>As I noted in the introduction, none of the relevant code seems to have changed much since I found this bug in 2017 - I think if you found a similar bug in the VirtualBox networking code today, it would likely still be exploitable in a similar way.</p>
+
+<p>VirtualBox uses a separate memory region for packet memory allocations - that’s probably intended as a performance optimization. This implementation choice should also make it harder to exploit packet memory UAF bugs as a side effect, since no packets contain pointers, kind of like PartitionAlloc or kalloc_type. However, it might still be possible to exploit a packet memory UAF as TOCTOU by making use of an already-validated length value or such.<br />
+This could have also made it harder to exploit packet memory linear OOB write bugs - but the choice of using inline metadata, and not protecting against corruption of this metadata at all, makes OOB write bugs in this allocator region highly exploitable.</p>
+
+
+        </section>
+      </article>
+      
+      
+    </div></div>
+  </div>
+</body>
+</html>

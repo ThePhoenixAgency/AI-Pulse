@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Windows Exploitation Techniques: Winning Race Conditions with Path Lookups</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Windows Exploitation Techniques: Winning Race Conditions with Path Lookups</h1>
+  <div class="metadata">
+    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN |
+    <a href="https://projectzero.google/2025/12/windows-exploitation-techniques.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+      <article>
+        
+        <section>
+          <p><em>This post was originally written in 2016 for the Project Zero blog. However, in the end it was published separately in the journal PoC||GTFO <a href="https://github.com/angea/pocorgtfo/blob/master/contents/articles/13-03.pdf">issue #13</a> as well as in the second volume of the printed version. In honor of our new blog we’re republishing it on this blog and included an updated analysis to see if it still works on a modern Windows 11 system.</em></p>
+
+<p>During my Windows research I tend to find quite a few race condition vulnerabilities. A fairly typical exploitable form look something like this:</p>
+
+<ol>
+  <li>Do some security check</li>
+  <li>Access some resource</li>
+  <li>Perform secure action  </li>
+</ol>
+
+<p>If you can change the state of the system between steps 1 and 3 you might be able to bypass a security check or cause other security issues. The big problem is the race window is generally extremely short. In some cases it might be exploitable by running an exploit enough times and hope you hit it at least once. In other cases you might have one shot at success, if you can’t guarantee you’ll win the race every time it might be effectively unexploitable (however, that’s not to say you shouldn’t report it to the vendor anyway).</p>
+
+<p>Over the years I’ve come up with various techniques to expand the race window, including file Opportunistic Locks and <a href="https://googleprojectzero.blogspot.com/2021/01/windows-exploitation-tricks-trapping.html">trapping virtual memory access</a>. However, those techniques are not always appropriate, so I wanted to find a way of increasing the time window to win the race in cases where the code accesses a resource we control. Specifically, we’re going to attack the lookup process for a named resource. The following is an overview of my thought process to come up with a working solution.</p>
+
+<h2>Investigating Object Manager Lookup Performance</h2>
+
+<p>Hidden under the hood of Windows NT is the Object Manager Namespace (OMNS). You wouldn’t typically interact with it directly, the Win32 API for the most part hides it away. The NT kernel defines a set of objects, such as Files, Events, Registry Keys, which can all have a name associated with the object. The OMNS provides the means to lookup these named objects. It acts like a file system, so for example you can specify a path to an NT system call such as <strong><em>\BaseNamedObjects\MyEvent</em></strong> and an event object can be looked up and opened.</p>
+
+<p>There are two special object types which are for use in the OMNS, Object Directories and Symbolic Links. Object Directories act as named containers for other objects, whereas Symbolic Links allow a name to be redirected to another OMNS path. Symbolic Links are used quite a lot, for example the Windows drive letters are really a symbolic link to the real volume device object. When we call an NT system call the kernel must lookup the entire path, following any symbolic links until it reaches the named object, or fails to find a match.</p>
+
+<p>To create a useful exploitation technique, we want to make the process of looking up a resource we control as slow as possible. For example, if we could make it take 1 or 2 seconds, then we’ve got a massive window of opportunity to win the race condition. Therefore, I want to find a way of manipulating the Object Manager lookup process in such a way that we achieve this goal.</p>
+
+<p>A note about the testing setup: all tests will open a named event object, which is simulating step 2 in the previous list of exploitable operations. The system used is a new Surface Pro 11th Edition CoPilot+ PC with a Snapdragon X Elite running at 3.40GHz. This system has Windows 11 24H2 installed, however from what I can tell, no AI feature was harmed in the making of these results.</p>
+
+<p>First, let’s just measure the time it takes to do a normal lookup. To try and minimize overhead, we’ll write the test in C++ as follows. It creates a named event, then opens the event with a specified number of iterations. Finally it’ll return the time in μs that a single iteration took based on the measurement from the <a href="https://learn.microsoft.com/en-us/windows/win32/api/profileapi/nf-profileapi-queryperformancecounter">QueryPerformanceCounter</a> API. I’ve not included the support classes in the listing, that’ll be available in the project I’ll link to later.</p>
+
+<div><pre><code><span>static</span> <span>double</span> <span>RunTest</span><span>(</span><span>const</span> <span>wstring</span> <span>name</span><span>,</span> <span>int</span> <span>iterations</span><span>,</span> 
+        <span>wstring</span> <span>create_name</span> <span>=</span> <span>L""</span><span>,</span> <span>HANDLE</span> <span>root</span> <span>=</span> <span>nullptr</span><span>)</span> <span>{</span>
+    <span>if</span> <span>(</span><span>create_name</span><span>.</span><span>empty</span><span>())</span> <span>{</span>
+        <span>create_name</span> <span>=</span> <span>name</span><span>;</span>
+    <span>}</span>
+    <span>ScopedHandle</span> <span>event_handle</span> <span>=</span> <span>CreateEvent</span><span>(</span><span>create_name</span><span>,</span> <span>root</span><span>);</span>
+    <span>ObjectAttributes</span> <span>obja</span><span>(</span><span>name</span><span>);</span>
+    <span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>handles</span><span>;</span>
+    <span>Timer</span> <span>timer</span><span>;</span>
+    <span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>iterations</span><span>;</span> <span>++</span><span>i</span><span>)</span> <span>{</span>
+        <span>HANDLE</span> <span>open_handle</span><span>;</span>
+        <span>Check</span><span>(</span><span>NtOpenEvent</span><span>(</span><span>&amp;</span><span>open_handle</span><span>,</span> <span>MAXIMUM_ALLOWED</span><span>,</span> <span>&amp;</span><span>obja</span><span>));</span>
+        <span>handles</span><span>.</span><span>emplace_back</span><span>(</span><span>open_handle</span><span>);</span>
+    <span>}</span>
+    <span>return</span> <span>timer</span><span>.</span><span>GetTime</span><span>(</span><span>iterations</span><span>);</span>
+<span>}</span>
+
+</code></pre></div>
+
+<p>For the test I’ll pick a simple unique name, such as <em><strong>\BaseNamedObjects\MyEvent</strong>.</em> With an iteration count of 1000 the results on my test system are probably what we’d expect, the lookup process for a simple named event is approximately 2μs. That includes the system call transition, lookup process and the access check on the event object.</p>
+
+<p>While, in theory, you could win a race with this amount of time, it seems pretty unlikely, even on a multicore processor. So let’s think about a way of improving the lookup time (and when I say “improve” I mean making the lookup time slower). We can immediately consider two similar approaches:</p>
+
+<ol>
+  <li>Make a path which contains one very long name. The lookup process would have to compare the entire name using a string comparison operation to verify it’s accessing the correct object. This should take linear time relative to the length of the string, even if the comparison operation is heavily optimized.</li>
+  <li>Make multiple small named directories and recurse. E.g. <strong>\A\A\A\A\…\EventName</strong>. The assumption here is that each lookup takes a fixed amount of time to complete. The operation should again be linear time relative to the depth of recursion of the directories.</li>
+</ol>
+
+<p>At this point we’ve not had to look at any actual kernel code, and we’ll not start quite yet, so instead more empirical testing seems the way to go. Let’s start with the first approach, making a long string and performing a lookup on it.</p>
+
+<p>How long can the path string be? An object manager path is limited to the maximum string size afforded by the <em>UNICODE_STRING</em> structure.</p>
+
+<div><pre><code><span>struct</span> <span>UNICODE_STRING</span> <span>{</span>
+  <span>USHORT</span> <span>Length</span><span>;</span>
+  <span>USHORT</span> <span>MaximumLength</span><span>;</span>
+  <span>PWSTR</span>  <span>Buffer</span><span>;</span>
+<span>}</span>
+</code></pre></div>
+
+<p>We can see that the <em>Length</em> member is a <em>USHORT</em> which is an unsigned 16 bit integer, this limits the maximum length to 2<sup>16</sup> - 1. This, however, is a byte count so in fact this limits us to 2<sup>15</sup> - 1 or 32767 wide characters. We’ll need to be able to make the object in a writable directory such as <em>\BaseNamedObject</em> which reduces the length slightly, but not enough to make a significant impact. Therefore we’ll open the event object through names between 1 character and 32000 characters in length using the following code:</p>
+
+<div><pre><code><span>std</span><span>::</span><span>wstring</span> <span>path</span><span>;</span>
+<span>while</span> <span>(</span><span>path</span><span>.</span><span>size</span><span>()</span> <span>&lt;=</span> <span>32000</span><span>)</span> <span>{</span>
+    <span>auto</span> <span>result</span> <span>=</span> <span>RunTest</span><span>(</span><span>L"</span><span>\\</span><span>BaseNamedObjects</span><span>\\</span><span>A"</span> <span>+</span> <span>path</span><span>,</span> <span>nullptr</span><span>,</span> <span>1000</span><span>);</span>
+    <span>printf</span><span>(</span><span>"%zu,%f</span><span>\n</span><span>"</span><span>,</span> <span>path</span><span>.</span><span>size</span><span>(),</span> <span>result</span><span>);</span>
+    <span>path</span> <span>+=</span> <span>std</span><span>::</span><span>wstring</span><span>(</span><span>500</span><span>,</span> <span>'A'</span><span>);</span>
+<span>}</span>
+</code></pre></div>
+
+<p>The results are shown below:<br />
+<img alt="" /><br />
+While it’s a little noisy it seems like the assumption of a linear lookup time is correct. The longer the string, the longer it takes to look it up. For a 32000 character long string this seems to top out at approximately 35μs. Still not enough in my opinion for a useful primitive, but it’s certainly a start.</p>
+
+<p>Now let’s look at the recursive directory approach. In this case, the upper bound is around 16000 directories. This is because each path component must contain at least two characters, a backslash and a single character name (e.g. <strong>\A\A\A…</strong>). Therefore our maximum path limit is halved. Of course we’d make the assumption that the time to go through the lookup process is going to be greater than the time it takes to compare 4 unicode characters, but let’s test to make sure.</p>
+
+<div><pre><code><span>ScopedHandle</span> <span>base_dir</span> <span>=</span> <span>OpenDirectory</span><span>(</span><span>L"</span><span>\\</span><span>BaseNamedObjects"</span><span>);</span>
+<span>HANDLE</span> <span>last_dir</span> <span>=</span> <span>base_dir</span><span>.</span><span>get</span><span>();</span>
+<span>std</span><span>::</span><span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>dirs</span><span>;</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>16000</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span>
+    <span>dirs</span><span>.</span><span>emplace_back</span><span>(</span><span>CreateDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>last_dir</span><span>));</span>
+    <span>last_dir</span> <span>=</span> <span>dirs</span><span>.</span><span>back</span><span>().</span><span>get</span><span>();</span>
+    <span>if</span> <span>((</span><span>i</span> <span>%</span> <span>500</span><span>)</span> <span>==</span> <span>0</span><span>)</span>
+    <span>{</span>
+        <span>auto</span> <span>result</span> <span>=</span> <span>RunTest</span><span>(</span><span>GetName</span><span>(</span><span>last_dir</span><span>)</span> <span>+</span> <span>L"</span><span>\\</span><span>X"</span><span>,</span> <span>iterations</span><span>);</span>
+        <span>printf</span><span>(</span><span>"%d,%f</span><span>\n</span><span>"</span><span>,</span> <span>i</span> <span>+</span> <span>1</span><span>,</span> <span>result</span><span>);</span>
+    <span>}</span>
+<span>}</span>
+</code></pre></div>
+
+<p>The results are shown below:</p>
+
+<p><img alt="" /><br />
+The results are what we might expect, it seems linear, at least until around 13000 recursive directories where there is a disjoint transition. I ran the test multiple times on the same machine and always got the same issue, however running it on an x64 machine didn’t show the same artifact so I don’t think it’s a problem with the code.</p>
+
+<p>Still, it’s unequivocal that the time to lookup an object is linear based on the number of recursive directories. For a 16000 recursive depth the average lookup time is around 1300μs or approximately 40 times larger than the long path name lookup result. Now of course this comes with downsides. For a start you need to create 16000 or so directory objects in the kernel, each directory takes up some amount of kernel pool memory. On a 64 bit platform this is unlikely to be a problem.</p>
+
+<p>We also have the setup time to consider, too long and we might still miss the race condition. We can speed up the process of creating the directories by using the ability of Windows system calls to create an object relative to an existing directory. This allows us to avoid parsing the full path for every new directory, which is after all what we’re trying to make slow.</p>
+
+<p>Also the process must maintain a handle to each of those directories otherwise they’d be deleted as a normal user can’t make kernel objects permanent. Fortunately our handle limit for a single process is of the order of 16 million so we’re a couple of orders of magnitude below the limit of that.</p>
+
+<p>Now is 1300μs going to be enough for us? Maybe, it’s certainly orders of magnitude greater than 2μs for a normal lookup. But can we do better? We’ve run out of path space now, we’ve filled the absolute maximum allowed string length with recursive directory names. What we need is a method of multiplying that effect without requiring a longer path.</p>
+
+<p>Here we can use object manager symbolic links. By placing the symbolic link as the last component of the long path we can force the kernel to reparse, and start the lookup all over again. On the final lookup we’ll just point the symbolic link to the target.</p>
+
+<p>Through testing we can only redirect using the symbolic link 64 times before receiving an error, why can’t we do this indefinitely? Well for a fairly obvious reason, each time a symbolic link is encountered the kernel restarts the parsing processes, if you pointed a symbolic link at itself you’d end up in an infinite loop. The 64 reparse limit prevents that from becoming a problem. The following code will do this test for us:</p>
+
+<div><pre><code><span>ScopedHandle</span> <span>base_dir</span> <span>=</span> <span>OpenDirectory</span><span>(</span><span>L"</span><span>\\</span><span>BaseNamedObjects"</span><span>);</span>
+<span>HANDLE</span> <span>last_dir</span> <span>=</span> <span>base_dir</span><span>.</span><span>get</span><span>();</span>
+<span>std</span><span>::</span><span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>dirs</span><span>;</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>16000</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span>
+    <span>dirs</span><span>.</span><span>emplace_back</span><span>(</span><span>CreateDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>last_dir</span><span>));</span>
+    <span>last_dir</span> <span>=</span> <span>dirs</span><span>.</span><span>back</span><span>().</span><span>get</span><span>();</span>
+<span>}</span>
+<span>std</span><span>::</span><span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>links</span><span>;</span>
+<span>std</span><span>::</span><span>wstring</span> <span>last_dir_name</span> <span>=</span> <span>GetName</span><span>(</span><span>last_dir</span><span>);</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>63</span><span>;</span> <span>++</span><span>i</span><span>)</span> <span>{</span>
+    <span>links</span><span>.</span><span>emplace_back</span><span>(</span><span>CreateLink</span><span>(</span><span>IntToString</span><span>(</span><span>i</span><span>),</span> <span>last_dir</span><span>,</span> 
+                       <span>last_dir_name</span> <span>+</span> <span>L"</span><span>\\</span><span>"</span> <span>+</span> <span>IntToString</span><span>(</span><span>i</span> <span>+</span> <span>1</span><span>)));</span>
+<span>}</span>
+<span>printf</span><span>(</span><span>"%f</span><span>\n</span><span>"</span><span>,</span> <span>RunTest</span><span>(</span><span>links</span><span>.</span><span>front</span><span>().</span><span>name</span><span>(),</span> <span>10</span><span>,</span> <span>L"63"</span><span>,</span> <span>last_dir</span><span>));</span>
+</code></pre></div>
+
+<p>We only do 10 test iterations to minimize the time we need to run. The results are as we expected, time taken to look up our event is proportional to both the number of symbolic links and the number of recursive directories. For 64 symbolic links and 16000 directories it takes approximately 4.5ms to lookup the event (note I’ve had to change the scale of the result now to milliseconds). That should be enough, right? Maybe, but I’m greedy, I want more. How can we make the lookup time even worse?</p>
+
+<p>At this point, it’s time to break out the disassembler and see how the lookup process works under the kernel. First off, let’s see what an object directory structure looks like. We can dump it from a kernel debugging session using WinDBG with the command <em>dt nt!_OBJECT_DIRECTORY</em>. Converted back to a C style structure it looks something like the following:</p>
+
+<div><pre><code><span>struct</span> <span>OBJECT_DIRECTORY</span> <span>{</span>
+     <span>POBJECT_DIRECTORY_ENTRY</span> <span>HashBuckets</span><span>[</span><span>37</span><span>];</span>
+     <span>EX_PUSH_LOCK</span> <span>Lock</span><span>;</span>
+     <span>PDEVICE_MAP</span> <span>DeviceMap</span><span>;</span>
+     <span>ULONG</span> <span>SessionId</span><span>;</span>
+     <span>PVOID</span> <span>NamespaceEntry</span><span>;</span>
+     <span>ULONG</span> <span>Flags</span><span>;</span>
+     <span>PPOBJECT_DIRECTORY</span> <span>ShadowDirectory</span><span>.</span>
+<span>}</span>
+</code></pre></div>
+
+<p>Based on the presence of the <em>HashBucket</em> field, it’s safe to assume that the kernel is using a hash table to store directory entries. This makes some sense, if the kernel just maintained a list of directory entries it’d be pretty poor for performance, however with a hash table the lookup time is reduced as long as the hashing algorithm does a good job of reducing collisions. This is only the case though if the algorithm isn’t being actively exploited. As we’re trying to increase the cost of lookups we can intentionally add entries with collisions to make the lookup process take the worst case time, which is linear relative to the number of entries in a directory. This again provides us with another scaling factory, and in this case the number of entries is only going to be limited by available memory as we’re never going to need to put the name into the path.</p>
+
+<p>So what’s the algorithm for the hash? The main function of interest is <em>ObpLookupObjectName</em> which is referenced by functions such as <em>ObReferenceObjectByName</em>. The directory entry logic is buried somewhere in this large function, however fortunately there’s a helper function <em>ObpLookupDirectoryEntry</em> which has the same logic (it isn’t actually called by <em>ObpLookupObjectName</em> but it doesn’t matter) which is smaller and easier to reverse engineer, the following is a simplified version of that.</p>
+
+<div><pre><code><span>POBJECT_DIRECTORY</span> <span>ObpLookupDirectoryEntry</span><span>(</span><span>POBJECT_DIRECTORY</span> <span>Directory</span><span>,</span>
+                                          <span>PUNICODE_STRING</span> <span>Name</span><span>,</span>
+                                          <span>ULONG</span> <span>AttributeFlags</span><span>)</span> <span>{</span>
+  <span>BOOLEAN</span> <span>CaseInSensitive</span> <span>=</span> <span>(</span><span>AttributeFlags</span> <span>&amp;</span> <span>OBJ_CASE_INSENSITIVE</span><span>)</span> <span>!=</span> <span>0</span><span>;</span>
+  <span>SIZE_T</span> <span>CharCount</span> <span>=</span> <span>Name</span><span>-&gt;</span><span>Length</span> <span>/</span> <span>sizeof</span><span>(</span><span>WCHAR</span><span>);</span>
+  <span>WCHAR</span><span>*</span> <span>Buffer</span> <span>=</span> <span>Name</span><span>-&gt;</span><span>Buffer</span><span>;</span>
+  <span>ULONG</span> <span>Hash</span> <span>=</span> <span>0</span><span>;</span>  
+  <span>while</span> <span>(</span><span>CharCount</span><span>)</span> <span>{</span>
+    <span>Hash</span> <span>=</span> <span>(</span><span>Hash</span> <span>/</span> <span>2</span><span>)</span> <span>+</span> <span>3</span> <span>*</span> <span>Hash</span><span>;</span>
+    <span>Hash</span> <span>+=</span> <span>RtlUpcaseUnicodeChar</span><span>(</span><span>*</span><span>Buffer</span><span>);</span>
+    <span>Buffer</span><span>++</span><span>;</span>
+    <span>CharCount</span><span>--</span><span>;</span>
+  <span>}</span>
+
+  <span>OBJECT_DIRECTORY_ENTRY</span><span>*</span> <span>Entry</span> <span>=</span> <span>Directory</span><span>-&gt;</span><span>HashBuckets</span><span>[</span><span>Hash</span> <span>%</span> <span>37</span><span>];</span>
+  <span>while</span><span>(</span><span>Entry</span><span>)</span> <span>{</span>
+    <span>if</span> <span>(</span><span>Entry</span><span>-&gt;</span><span>HashValue</span> <span>==</span> <span>Hash</span><span>)</span> <span>{</span>
+      <span>if</span> <span>(</span><span>RtlEqualUnicodeString</span><span>(</span><span>Name</span><span>,</span> 
+            <span>ObpGetObjectName</span><span>(</span><span>Entry</span><span>-&gt;</span><span>Object</span><span>),</span> <span>CaseInSensitive</span><span>))</span> <span>{</span>
+        <span>ObReferenceObject</span><span>(</span><span>Entry</span><span>-&gt;</span><span>Object</span><span>);</span>
+        <span>return</span> <span>Entry</span><span>-&gt;</span><span>Object</span><span>;</span>
+      <span>}</span>
+    <span>}</span>
+    <span>Entry</span> <span>=</span> <span>Entry</span><span>-&gt;</span><span>ChainLink</span><span>;</span>
+  <span>}</span>
+  
+  <span>return</span> <span>NULL</span><span>;</span>
+<span>}</span>
+</code></pre></div>
+
+<p>So the hashing algorithm is pretty simple, it repeatedly mixes the bits of the current hash value then adds the uppercase unicode character to the hash. We could work out a clever way of getting hash collisions from this but actually it’s pretty simple, the object manager allows us to specify names containing NUL characters, therefore if we take our target name, say ‘A’ and prefix it with increasing length strings containing only NUL we get both hash and bucket collisions. Due to the path character limit we can only create 32000 or so colliding entries, but as we’ll see that’s not a problem. The following code will test this behavior:</p>
+
+<div><pre><code><span>int</span> <span>collision_count</span> <span>=</span> <span>32000</span><span>;</span>
+<span>ScopedHandle</span> <span>base_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>L"</span><span>\\</span><span>BaseNamedObjects</span><span>\\</span><span>A"</span><span>);</span>
+<span>ScopedHandle</span> <span>test_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>base_dir</span><span>.</span><span>get</span><span>());</span>
+<span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>dirs</span><span>;</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>collision_count</span> <span>-</span> <span>1</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span>
+    <span>wstring</span> <span>name</span> <span>=</span> <span>MakeCollisionName</span><span>(</span><span>collision_count</span> <span>-</span> <span>i</span><span>);</span>
+    <span>dirs</span><span>.</span><span>emplace_back</span><span>(</span><span>CreateDirectory</span><span>(</span><span>name</span><span>,</span> <span>base_dir</span><span>.</span><span>get</span><span>()));</span>
+    <span>if</span> <span>((</span><span>i</span> <span>%</span> <span>500</span><span>)</span> <span>==</span> <span>0</span><span>)</span> <span>{</span>
+        <span>Timer</span> <span>timer</span><span>;</span>
+        <span>for</span> <span>(</span><span>int</span> <span>j</span> <span>=</span> <span>0</span><span>;</span> <span>j</span> <span>&lt;</span> <span>iterations</span><span>;</span> <span>++</span><span>j</span><span>)</span> <span>{</span>
+            <span>OpenDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>base_dir</span><span>.</span><span>get</span><span>());</span>
+        <span>}</span>
+        <span>printf</span><span>(</span><span>"%d,%f</span><span>\n</span><span>"</span><span>,</span> <span>i</span><span>,</span> <span>timer</span><span>.</span><span>GetTime</span><span>(</span><span>iterations</span><span>));</span>
+    <span>}</span>
+<span>}</span>
+</code></pre></div>
+
+<p>Let’s look at the results of doing this for a single directory:<br />
+<img alt="" /></p>
+
+<p>The chart shows a more or less linear graph. For a given collision count it’s nowhere near as good as the recursive directory approach, around 100μs versus 1300μs but it is a multiplicative factor in the lookup time which we can abuse.</p>
+
+<p>We can apply this additional factor to all our 16000 recursive directories, add in symbolic links and we’ll probably get an insane lookup time. However there’s a problem, insertion time. Every time we add a new entry to a directory the kernel must do a lookup to check that the entry doesn’t already exist. This means that for every new directory entry we add we must do (n-1)<sup>2</sup> checks in the hash table just to find that we don’t have the entry before we insert it. This means that the time to add a new entry is approximately proportional to the square of the number of entries, sure it’s not a cubic or exponential increase, but that’s hardly a consolation. On the test machine it takes approximately 2.5s (yes seconds) to create a single collision directory with 32000 entries. If we wanted to do that for all 16000 recursive directory entries it would take around 12 hours!</p>
+
+<p>Okay I think we’re going a bit over the top here, by fiddling with the values we can get something which doesn’t take too long to set up and gives us a long lookup time. But I’m still greedy. I want to see how far I can push the lookup time, is there any way we can get the best of all worlds?</p>
+
+<p>The final piece of the puzzle is to bring in Shadow Directories, which allow the Object Manager a fallback path if it can’t find an entry in a directory. You can use almost any other Object Manager directory as a shadow, which will allow us to control the lookup behavior. A Shadow Directory has a crucial difference from symbolic links, they don’t cause a reparse to occur in the lookup process. This means they’re not restricted to the 64 reparse limit. This doesn’t result in an infinite loop as each lookup consumes a path component, eventually there’ll be no more path to lookup. If we put together two directories in the following arrangement we can pass a similar path to our recursive directory lookup, without actually creating all the directories.</p>
+
+<p><img alt="Shadow Directories (1).png" /><br />
+So how does this actually work? If we open a path of the form <strong>\A\A\A\A\A…</strong> the kernel will first lookup the initial A directory. This is the directory on the left of the diagram. It will then try to open the next A directory, which is on the right which again it will find. Next the kernel again looks up A, but in this case it doesn’t exist so as the directory has a shadow link to its parent it looks there instead, finds the same <strong>A</strong> directory and repeats the process. This will continue until we run out of path elements to look up.</p>
+
+<p>So let’s determine the performance of this approach. We’d perhaps expect it to be less performant relative to actually creating all those directories but hopefully it won’t be too far behind. We can use the following code to do the test:</p>
+
+<div><pre><code><span>wstring</span> <span>dir_name</span> <span>=</span> <span>L"</span><span>\\</span><span>BaseNamedObjects</span><span>\\</span><span>A"</span><span>;</span>
+<span>ScopedHandle</span> <span>shadow_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>dir_name</span><span>);</span>
+<span>ScopedHandle</span> <span>target_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>shadow_dir</span><span>.</span><span>get</span><span>(),</span> <span>shadow_dir</span><span>.</span><span>get</span><span>());</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>16000</span><span>;</span> <span>i</span> <span>+=</span> <span>500</span><span>)</span> <span>{</span>
+    <span>wstring</span> <span>open_name</span> <span>=</span> <span>dir_name</span><span>;</span>
+    <span>for</span> <span>(</span><span>int</span> <span>j</span> <span>=</span> <span>0</span><span>;</span> <span>j</span> <span>&lt;</span> <span>i</span><span>;</span> <span>j</span><span>++</span><span>)</span> <span>{</span>
+        <span>open_name</span> <span>+=</span> <span>L"</span><span>\\</span><span>A"</span><span>;</span>
+    <span>}</span>
+    <span>open_name</span> <span>+=</span> <span>L"</span><span>\\</span><span>X"</span><span>;</span>
+    <span>printf</span><span>(</span><span>"%d,%f</span><span>\n</span><span>"</span><span>,</span> <span>i</span><span>,</span> <span>RunTest</span><span>(</span><span>open_name</span><span>,</span> <span>iterations</span><span>,</span> <span>L"X"</span><span>,</span> 
+                                 <span>shadow_dir</span><span>.</span><span>get</span><span>()));</span>
+<span>}</span>
+</code></pre></div>
+
+<p>And the results are as follows, the chart includes the original test for the normal recursive lookup as well for comparison.<br />
+<img alt="" /></p>
+
+<p>Looks good, interestingly based on this test the lookup time is longer for shadow directories than for recursive directories. We still get a weird disjoint region, but in this case it starts earlier, perhaps it’s a cache effect based on the length of the string or something like that?</p>
+
+<p>So the final result is that instead of creating 16000 directories with 16000 collisions we can do it with just 2 directories which is far more manageable and only takes around 5 seconds on my workstation. So to sign off let’s combine everything together with the following code which has the following parameters:</p>
+
+<ul>
+  <li>16000 path components using 2 object directories in a shadow configuration</li>
+  <li>16000 collisions per directory</li>
+  <li>64 symbolic link reparses</li>
+</ul>
+
+<div><pre><code><span>wstring</span> <span>dir_name</span> <span>=</span> <span>L"</span><span>\\</span><span>BaseNamedObjects</span><span>\\</span><span>A"</span><span>;</span>
+<span>ScopedHandle</span> <span>shadow_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>dir_name</span><span>);</span>
+<span>ScopedHandle</span> <span>target_dir</span> <span>=</span> <span>CreateDirectory</span><span>(</span><span>L"A"</span><span>,</span> <span>shadow_dir</span><span>.</span><span>get</span><span>(),</span> <span>shadow_dir</span><span>.</span><span>get</span><span>());</span>
+<span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>dirs</span><span>;</span>
+<span>CreateCollidingEntries</span><span>(</span><span>shadow_dir</span><span>,</span> <span>16000</span><span>,</span> <span>dirs</span><span>);</span>
+<span>CreateCollidingEntries</span><span>(</span><span>target_dir</span><span>,</span> <span>16000</span><span>,</span> <span>dirs</span><span>);</span>
+
+<span>wstring</span> <span>last_dir_name</span> <span>=</span> <span>dir_name</span><span>;</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>16000</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span>
+    <span>last_dir_name</span> <span>+=</span> <span>L"</span><span>\\</span><span>A"</span><span>;</span>
+<span>}</span>
+<span>vector</span><span>&lt;</span><span>ScopedHandle</span><span>&gt;</span> <span>links</span><span>;</span>
+<span>for</span> <span>(</span><span>int</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>63</span><span>;</span> <span>++</span><span>i</span><span>)</span> <span>{</span>
+    <span>links</span><span>.</span><span>emplace_back</span><span>(</span><span>CreateLink</span><span>(</span><span>IntToString</span><span>(</span><span>i</span><span>),</span> <span>shadow_dir</span><span>.</span><span>get</span><span>(),</span>
+                       <span>last_dir_name</span> <span>+</span> <span>L"</span><span>\\</span><span>"</span> <span>+</span> <span>IntToString</span><span>(</span><span>i</span> <span>+</span> <span>1</span><span>)));</span>
+<span>}</span>
+<span>printf</span><span>(</span><span>"%f</span><span>\n</span><span>"</span><span>,</span> <span>RunTest</span><span>(</span><span>last_dir_name</span> <span>+</span> <span>L"</span><span>\\</span><span>0"</span><span>,</span> <span>1</span><span>,</span> 
+                       <span>IntToString</span><span>(</span><span>symlink_count</span><span>),</span> <span>shadow_dir</span><span>.</span><span>get</span><span>()));</span>
+</code></pre></div>
+
+<p>And the resulting time for a single lookup on the test system is *drum roll please* 3 minutes. I think we might just be able to win the race condition with that.</p>
+
+<h2>Conclusion</h2>
+
+<p>So after all that effort we can make the kernel take around 3 minutes to look up a single controlled resource path. That’s pretty impressive. We have many options to get the kernel to start the lookup process. Both file system and registry end up interacting with the object manager namespace, so for example you could plant an NTFS mount point with the initiating path to cause any process which opens that file to lock up for 3 minutes.</p>
+
+<p>After 8 years it’s probably not surprising Microsoft haven’t tried to do anything about this exploit technique. It’s a typical tale of unexpected behavior when facing pathological input, it’s probably not worth the impact on the object manager code to improve performance meaningfully.</p>
+
+<p>Just a final point to note on performance. The timings presented here are going to vary wildly based on the performance of the machine so they should only be taken as guidelines. If you look back at the original publication of this post in PoC||GTFO you’ll find the timings are substantially longer. For example, the final test took 19 minutes on the Xeon workstation I used for testing rather than 3 minutes. I don’t know if this is an indication that the ARM64 CPU used in the Surface Pro was substantially faster than the Xeon, or if it was just the amount of cruft which runs on a typical workstation versus a freshly installed Windows 11 Microsoft PC. Regardless, if you can’t exploit the race condition in 3 or 19 minutes then your bug might truly be unexploitable.</p>
+
+<p>You can find the full test code on <a href="https://github.com/tyranid/poc-gtfo-13-poc">Github</a>.</p>
+
+
+        </section>
+      </article>
+      
+      
+    </div></div>
+  </div>
+</body>
+</html>

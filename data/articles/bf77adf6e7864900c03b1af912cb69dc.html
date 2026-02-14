@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drag and Pwnd: Leverage ASCII characters to exploit VS Code</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Drag and Pwnd: Leverage ASCII characters to exploit VS Code</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 4/30/2025 | Lang: EN |
+    <a href="https://portswigger.net/research/drag-and-pwnd-leverage-ascii-characters-to-exploit-vs-code" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    
+    
+    
+<div>
+    <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png" /></p>
+</div>
+    <ul>
+        <li>
+            <p><span></span><strong>Published: </strong>30 April 2025 at 12:37 UTC</p>
+        </li>
+        <li>
+            <p><strong>Updated: </strong>01 May 2025 at 12:27 UTC</p>
+        </li>
+        <li>
+        </li>
+    </ul>
+    <p><img src="https://portswigger.net/cms/images/43/f2/529f-article-ascii-control-characters_blog_header_(1).png" />Control characters like <code>SOH</code>, <code>STX</code>, <code>EOT</code> and <code>ETX</code> were never meant to run your code - but in the world of modern terminal emulators, they sometimes do. In this post, I'll dive into the forgotten mechanics of ASCII’s transport control characters, how they shaped early computing, and how they're now being abused in real-world vulnerabilities affecting modern applications.</p><h2>When terminals spoke in Control Codes</h2><p>Before GUI-based IDEs and fancy fonts, computers talked over serial lines - character by character. To keep those conversations structured, ASCII introduced a set of <a href="https://datatracker.ietf.org/doc/html/rfc20" target="_blank">Communication Control Characters</a>: invisible byte codes used to delimit and manage message flows between systems.</p><p>A typical message followed a strict structure:</p><p><code>SOH → Header → STX → Body → ETX</code></p><ul><li><b>[ <span>\x01</span> ]</b> <b>SOH:</b> Start of Header</li><li><b>[ <span>\x02</span> ]</b> <b>STX:</b> Start of Text</li><li><b>[ <span>\x03</span> ]</b> <b>ETX:</b> End of Text</li><li><b>[ <span>\x04</span> ]</b> <b>EOT:</b> End of Transmission</li></ul><h2>From transmission framing to interactive editing</h2><p>Though their original purpose was communication control, many of these characters persist today - repurposed by modern software.<br /></p>
+<p>The Readline library (used by Bash and other interactive shells) reuses several control characters values for line editing:</p><ul><li><b>[ <span>\x01</span> ]</b> <b>Ctr + a:</b> Move to the beginning of the line<br /></li><li><b>[ <span>\x02</span> ]</b> <b>Ctr + b:</b> Move backward a character
+</li><li><b>[ <span>\x03</span> ]</b> <b>Ctr + c:</b> Interrupt the current process or command
+</li><li><b>[ <span>\x04</span> ]</b> <b>Ctr + d:</b> Delete the character at the cursor
+</li></ul>
+<p>There are many other Readline shortcuts (<b>Ctr + e</b>, <b>Ctr + k</b>, <b>Ctr + l</b>, etc.) - see the Readline <a href="https://linux.die.net/man/1/bash#:~:text=the%20region.-,Commands%20for%20Moving,-beginning%2Dof%2Dline" target="_blank">man page</a> for more. Remember that on MacOS, you need to press the Control key, not the Command key.</p><h2>When the past bites back: Exploiting node-pty</h2><p>Fast forward to today. Applications like Visual Studio Code use <a href="https://github.com/microsoft/node-pty" target="_blank">node-pty</a> to simulate pseudo-terminals inside JavaScript environments. That forwards raw bytes directly to a shell, trusting that everything downstream will "do the right thing".</p><p>That trust breaks when control characters come into play.</p><h3>Case 1: Visual Studio Code: Configuration files</h3><p>In Visual Studio Code, you can define custom run configurations under <code>Run → Add Configuration</code>. These configurations often include an args array. During my previous research, I found an interesting variant of the <a href="https://portswigger.net/web-security/os-command-injection" target="_blank">OS command injection</a> vulnerability: inserting a <b>[ <span>\x01</span> ]</b> <b>SOH</b> character into arguments causes the shell to split and misinterpret them. Let's examine the following test configuration file:</p><p><code>{"args": ["hello","<span>\u0001</span>\t--args<span>\u0001</span>\tCalculator<span>\u0001</span>\t-a<span>\u0001</span>open\t"]}
+</code></p><p>Instead of running a Python script, Visual Studio Code opens the Calculator application on MacOS:</p><p><code><span>open -a Calculator --args</span> cd /tmp/; /usr/bin/env /opt/homebrew/bin/python3 script.py hello</code></p><p>It works on Ubuntu too; use  gnome-calculator instead.</p><p><b>Why this works</b></p><p>Take a look at the VT100 User Guide, 1979 by Digital Equipment Corporation that shows how control character can be encoded using keyboard shortcuts:</p><p><img src="https://portswigger.net/cms/images/62/b0/a9a9-article-screenshot_2025-03-25_at_10.38.04.png" /></p>
+<p>As you already know, <a href="https://github.com/microsoft/node-pty" target="_blank">node-pty</a> reads and sends raw bytes directly to a shell. Whenever Visual Studio Code sees byte <b>[ <span>\x01</span> ]</b> <b>SOH</b>, it moves the cursor to the beginning of the line (<b>Ctr + a</b>).This action is repeated four times in the given example to build the payload in reverse and launch the Calculator app.</p><h3>Case 2: Visual Studio Code: File Drag-and-Drop</h3><p>While adding malicious arguments to the run configuration is an unusual use case, the issue can occur with other user-controlled inputs, such as filenames - anywhere <a href="https://github.com/microsoft/node-pty" target="_blank">node-pty</a> blindly passes data to the shell. This is especially concerning in cases like file drag-and-drop. By default, terminal applications print the full path to the file if it was drag-and-dropped into the window. Imagine, a file with malicious payload hidden inside the name:</p><p><code>very very very long name <span>\x03</span> open -a Calculator <span>\x0d</span>.txt
+</code></p><p>What the Visual Studio Code terminal sees:
+</p>
+<p><code>'very very very long name [ <span>Ctr + c: ignore line </span>]<br />open -a Calculator [<span> Enter </span>]<br />.txt'
+</code></p><p>Be aware that when a file is dragged and dropped, the carriage return character <b>[<span>\x0d</span>]</b> automatically executes a command. This prevents the user from examining the potentially harmful input in the terminal window.</p><p><img src="https://portswigger.net/cms/images/c6/d4/8c33-article-e329ee28-31f7-486e-9a3f-d821a0cd72e2.gif" /></p><h2>Collateral damage</h2><p>This vulnerability affects any operating system that permits control characters in filenames. I successfully reproduced the issue on both macOS and Ubuntu. On Windows, the risk is mitigated by two factors: the filesystem disallows control characters in filenames, and Visual Studio Code defaults to PowerShell, which does not interpret control characters as cursor movements or command breaks. Interestingly, the default macOS Terminal shows a warning when dragging files with special characters, and Ubuntu’s built-in terminal escapes control characters automatically during drag-and-drop.</p>
+<p>Here's an escaping function that looks safe - but this technique bypasses it effortlessly.</p><p><code>const shellEscape = (arg: string): string =&gt; {
+ if (/[^A-Za-z0-9_\/:=-]/.test(arg))
+  return arg.replace(/([$!'"();`*?{}[\]&lt;&gt;&amp;%#~@\\ ])/g, '\\$1')
+ return arg
+}
+</code></p><p>While I have demonstrated this vulnerability in Node.js applications using <a href="https://github.com/microsoft/node-pty" target="_blank">node-pty</a>, the underlying issue lies in how applications communicate with the terminal. Any web application that blindly passes raw bytes into a terminal without proper control characters sanitization is potentially vulnerable - regardless of the underlying language, framework, or runtime environment.</p><h2>Disclosure</h2><p>I submitted this vulnerability to the Microsoft Security Response Center; however, they do not consider it a security issue. According to their assessment, existing mitigations - such as workspace trust warnings and the requirement for significant user interaction - lower the severity.<br /></p><p>So, be careful next time you drag and drop a file from untrusted sources into your terminal app.</p><h2>Final Thoughts</h2><p>We've integrated the most effective of these techniques into the Active Scan++ extension for Burp Suite. To explore or test them yourself, simply install or update the extension directly from the <a href="https://github.com/albinowax/ActiveScanPlusPlus" target="_blank">Github</a>. </p><p>If you're interested in <a href="https://portswigger.net/web-security/os-command-injection">command injection</a> research, don’t miss:</p><ul><li>Orange Tsai - <a href="https://blog.orange.tw/posts/2025-01-worstfit-unveiling-hidden-transformers-in-windows-ansi/" target="_blank">WorstFit: Unveiling Hidden Transformers in Windows ANSI</a>
+</li><li>David Leadbeater - <a href="https://www.gresearch.com/news/g-research-the-terminal-escapes/" target="_blank">The Terminal Escapes: Engineering unexpected execution from command line interfaces</a></li></ul><h2>Small challenge</h2><p>If you'd like to test your new knowledge, I’ve prepared a tiny <a href="https://github.com/PortSwigger/research-labs" target="_blank">Proof of Concept project</a> for you. Your mission: read the contents of the <code>flag.txt</code> file located in the <code>/app</code> directory.
+Have fun!</p>
+    
+    <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pick your agent: Use Claude and Codex on Agent HQ</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Pick your agent: Use Claude and Codex on Agent HQ</h1>
+  <div class="metadata">
+    Source: GitHub Blog | Date: 2/4/2026 | Lang: EN |
+    <a href="https://github.blog/news-insights/company-news/pick-your-agent-use-claude-and-codex-on-agent-hq/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><section>
+	
+<p>Context switching equals friction in software development. Today, we’re removing some of that friction with the latest updates to Agent HQ which lets you run coding agents from multiple providers directly inside GitHub and your editor, keeping context, history, and review attached to your work.</p>
+
+
+
+<p>Copilot Pro+ and Copilot Enterprise users can now <a href="https://github.com/copilot/agents?utm_source=blog-agents-tab-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">run multiple coding agents</a> directly inside GitHub, GitHub Mobile, and Visual Studio Code (with Copilot CLI support coming soon). That means you can use agents like GitHub Copilot, Claude by Anthropic, and OpenAI Codex (both in public preview) today.</p>
+
+
+
+<p>With Codex, Claude, and Copilot in Agent HQ, you can move from idea to implementation using different agents for different steps <em>without </em>switching tools or losing context. </p>
+
+
+
+<blockquote>
+<p>We’re bringing Claude into GitHub to meet developers where they are. With Agent HQ, Claude can commit code and comment on pull requests, enabling teams to iterate and ship faster and with more confidence. Our goal is to give developers the reasoning power they need, right where they need it.</p>
+<cite>Katelyn Lesse, Head of Platform, Anthropic</cite></blockquote>
+
+
+
+<figure></figure>
+
+
+
+
+
+
+
+<h2>From faster code to better decisions </h2>
+
+
+
+<p>Agent HQ also lets you compare how different agents approach the same problem, too. You can assign multiple agents to a task, and see how Copilot, Claude, and Codex reason about tradeoffs and arrive at different solutions.  </p>
+
+
+
+<p>In practice, this helps you surface issues earlier by using agents for different kinds of review:  </p>
+
+
+
+<ul>
+<li><strong>Architectural guardrails:</strong> Ask one or more agents to evaluate modularity and coupling, helping identify changes that could introduce unintended side effects. </li>
+
+
+
+<li><strong>Logical pressure testing:</strong> Use another agent to hunt for edge cases, async pitfalls, or scale assumptions that could cause problems in production. </li>
+
+
+
+<li><strong>Pragmatic implementation:</strong> Have a separate agent propose the smallest, backward-compatible change to keep the blast radius of a refactor low.</li>
+</ul>
+
+
+
+<p>This method of working moves your reviews and thinking to strategy over syntax. </p>
+
+
+
+<blockquote>
+<p>Our collaboration with GitHub has always pushed the frontier of how developers build software. The first Codex model helped power Copilot and inspired a new generation of AI-assisted coding. We share GitHub’s vision of meeting developers wherever they work, and we’re excited to bring Codex to GitHub and VS Code. Codex helps engineers work faster and with greater confidence—and with this integration, millions more developers can now use it directly in their primary workspace, extending the power of Codex everywhere code gets written.</p>
+<cite>Alexander Embiricos, OpenAI </cite></blockquote>
+
+
+
+<h2>Why running agents on GitHub matters </h2>
+
+
+
+<p>GitHub is already where code lives, collaboration happens, and decisions are reviewed, governed, and shipped. </p>
+
+
+
+<p>Making coding agents native to that workflow, rather than external tools, makes them even more useful at scale. Instead of copying and pasting context between tools, documents, and threads, all discussion and proposed changes stay attached to the repository itself. </p>
+
+
+
+<p>With Copilot, Claude, and Codex working directly in GitHub and VS Code, you can: </p>
+
+
+
+<ul>
+<li><strong>Explore tradeoffs early:</strong> Run agents in parallel to surface competing approaches and edge cases before code hardens. </li>
+
+
+
+<li><strong>Keep context attached to the work:</strong> Agents operate inside your repository, issues, and pull requests instead of starting from stateless prompts. </li>
+
+
+
+<li><strong>Avoid new review processes:</strong> Agent-generated changes show up as draft pull requests and comments, reviewed the same way you’d review a teammate’s work. </li>
+</ul>
+
+
+
+<p>There are no new dashboards to learn, and no separate AI workflows to manage. Everything runs inside the environments you already use. </p>
+
+
+
+<h2>Built for teams, not just individuals </h2>
+
+
+
+<p>These workflows don’t just benefit individual developers. Agent HQ gives you org-wide visibility and systematic control over how AI interacts with your codebase: </p>
+
+
+
+<ul>
+<li><strong>Agent controls:</strong> Manage <a href="https://docs.github.com/en/copilot/concepts/policies?utm_source=blog-policy-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">access and security policies</a> in one place, allowing enterprise admins to define which agents and models are permitted across the organization. </li>
+
+
+
+<li><strong>Code quality checks:</strong> <a href="https://docs.github.com/en/code-security/concepts/about-code-quality?utm_source=blog-code-quality-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">GitHub Code Quality</a> (in public preview) extends Copilot’s security checks to evaluate the maintainability and reliability impact of changed code, helping ensure “LGTM” reflects long-term code health. </li>
+
+
+
+<li><strong>Automated first-pass review:</strong> We have integrated a <a href="https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review?utm_source=blog-code-review-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">code review</a> step directly into the Copilot’s workflow, allowing Copilot to address initial problems before a developer ever sees the code. </li>
+
+
+
+<li><strong>Impact metrics:</strong> Use the <a href="https://docs.github.com/en/copilot/concepts/copilot-metrics?utm_source=blog-metrics-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">Copilot metrics dashboard</a> (in public preview) to track usage and impact across your entire organization, providing clear traceability for agent-generated work. </li>
+
+
+
+<li><strong>Security and auditability:</strong> Maintain full control with <a href="https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-for-organization/review-activity/review-audit-logs?utm_source=blog-audit-logs-cta&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026">audit logging and enterprise-grade access management</a>, ensuring agents work with your security posture instead of against it. </li>
+</ul>
+
+
+
+<p>This allows teams to adopt agent-based workflows without sacrificing code quality, accountability, or trust. </p>
+
+
+
+<h2>More agents coming soon </h2>
+
+
+
+<p>Access to Claude and Codex will soon expand to more Copilot subscription types. In the meantime, we’re actively working with partners, including Google, Cognition, and xAI to bring more specialized agents into GitHub, VS Code, and Copilot CLI workflows. </p>
+
+
+
+
+
+	
+
+	<div>
+	<h2>
+		Written by	</h2>
+	
+			<article>
+	<div>
+					<div>
+				
+					
+					<img src="https://avatars.githubusercontent.com/u/884366?v=4&amp;s=200" alt="Mario Rodriguez" />
+				
+			</div>
+				
+					<p>Mario Rodriguez leads the GitHub Product team as Chief Product Officer. His core identity is being a learner and his passion is creating developer tools—so much so that he has spent the last 20 years living that mission in leadership roles across Microsoft and GitHub. Mario most recently oversaw GitHub’s AI strategy and the GitHub Copilot product line, launching and growing Copilot across thousands of organizations and millions of users. Mario spends time outside of GitHub with his wife and two daughters. He also co-chairs and founded a charter school in an effort to progress education in rural regions of the United States.</p>
+			</div>
+</article>
+	</div>
+</section><div>
+	<h2>
+		Explore more from GitHub	</h2>
+	<div>
+		<div>
+		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg" alt="Docs" /></p><h3>
+			Docs		</h3>
+		<p>Everything you need to master GitHub, all in one place.</p>
+					<p>
+				<a href="https://docs.github.com/" target="_blank">
+					Go to Docs											
+									</a>
+			</p>
+			</div>
+<div>
+		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_95220f.svg" alt="GitHub" /></p><h3>
+			GitHub		</h3>
+		<p>Build what’s next on GitHub, the place for anyone from anywhere to build anything.</p>
+					<p>
+				<a href="https://github.com/" target="_blank">
+					Start building											
+									</a>
+			</p>
+			</div>
+<div>
+		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_da43dc.svg" alt="Customer stories" /></p><h3>
+			Customer stories		</h3>
+		<p>Meet the companies and engineering teams that build with GitHub.</p>
+					<p>
+				<a href="https://github.com/customer-stories" target="_blank">
+					Learn more											
+									</a>
+			</p>
+			</div>
+<div>
+		<p><img src="https://github.blog/wp-content/uploads/2023/02/galaxy23-icon.svg" alt="The GitHub Podcast" /></p><h3>
+			The GitHub Podcast		</h3>
+		<p>Catch up on the GitHub podcast, a show dedicated to the topics, trends, stories and culture in and around the open source developer community on GitHub.</p>
+					<p>
+				<a href="https://the-github-podcast.simplecast.com/" target="_blank">
+					Listen now											
+									</a>
+			</p>
+			</div>
+	</div>
+</div></div>
+  </div>
+</body>
+</html>

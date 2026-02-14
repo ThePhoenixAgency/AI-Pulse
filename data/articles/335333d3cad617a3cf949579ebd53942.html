@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WordPress plugin with 900k installs vulnerable to critical RCE flaw</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>WordPress plugin with 900k installs vulnerable to critical RCE flaw</h1>
+  <div class="metadata">
+    Source: BleepingComputer Windows | Date: 2/12/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/wordpress-plugin-with-900k-installs-vulnerable-to-critical-rce-flaw/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="WordPress plugin with 900k installs vulnerable to critical RCE flaw" src="https://www.bleepstatic.com/content/hl-images/2023/12/07/back.jpg" /></p>
+
+
+<p>A critical vulnerability in the WPvivid Backup &amp; Migration plugin for WordPress, installed on more than 900,000 websites, can be exploited to achieve remote code execution by uploading arbitrary files without authentication.</p>
+
+
+<p>The security issue is tracked as CVE-2026-1357 and received a severity score of 9.8. It impacts all versions of the plugin up to 0.9.123 and could lead to a complete website takeover.</p>
+
+
+<p>Despite the severity of the issue, researchers at WordPress security company Defiant say that only sites with the non-default “receive backup from another site” option  enabled are critically impacted.</p>
+
+<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
+</p>
+
+
+<p>Furthermore, attackers have a 24-hour exploitation window, which is the validity of the generated key required by other sites to send backup files.</p>
+
+
+<p>This requirement limits realistic exposure; however, the plugin is <a href="https://wordpress.org/plugins/wpvivid-backuprestore/#description" target="_blank">commonly used</a> for site migrations and backup transfers between hosts, so website administrators are very likely to enable this feature at some point, at least temporarily.</p>
+
+
+<p>Researcher Lucas Montes (NiRoX) reported the vulnerability to Defiant on January 12. The root cause is the improper error handling in RSA decryption, combined with a lack of path sanitization.</p>
+
+
+<p>Specifically, when the ‘<em>openssl_private_decrypt()</em>’ function fails, the plugin does not halt execution and instead passes the failed result (false) to the AES (Rijndael) routine.</p>
+
+
+<p>The cryptographic library treats this as a string of null bytes, creating a predictable encryption key that an attacker can use to craft malicious payloads that the plugin would accept.</p>
+
+
+<p>Additionally, the plugin failed to properly sanitize uploaded file names, allowing directory traversal. This allows writing files outside the intended backup directory and uploading malicious PHP files for remote code execution.</p>
+
+
+<p>Defiant notified the vendor, WPVividPlugins, on January 22, following validation of the provided proof-of-concept exploit. A security update addressing <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1357" target="_blank">CVE-2026-1357</a> was released in version 0.9.124 on January 28.</p>
+
+
+<p>The fix includes adding a check to stop execution if RSA decryption fails, adding filename sanitization, and restricting uploads to allowed backup file types only, such as ZIP, GZ, TAR, and SQL.</p>
+
+
+<p>Users of the WPvivid Backup &amp; Migration WordPress plugin should be aware of the risks associated with the vulnerability and upgrade to version 0.9.124 as soon as possible.</p>
+
+
+
+	   
+
+
+<div>
+    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
+            <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines" />
+        </a>
+    </p>
+    <div>
+        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
+
+        </div>
+</div>
+
+           
+          
+ 
+	  </div></div>
+  </div>
+</body>
+</html>

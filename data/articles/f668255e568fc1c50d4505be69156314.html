@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>SunFounder Fusion HAT+ : alimentation 2×18650, moteurs et contrôle “IA-ready” pour Raspberry Pi</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>SunFounder Fusion HAT+ : alimentation 2×18650, moteurs et contrôle “IA-ready” pour Raspberry Pi</h1>
+  <div class="metadata">
+    Source: Framboise 314 | Date: 2/2/2026 | Lang: FR |
+    <a href="https://www.framboise314.fr/test-sunfounder-fusion-hat-plus-raspberry-pi-5/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+			<p>La SunFounder Fusion HAT+ ressemble à un simple HAT pour Raspberry Pi… jusqu’au moment où vous réalisez que c’est plutôt un <strong>couteau suisse pour robot “assisté par IA”</strong>. Elle ne “fait” pas l’IA toute seule : les neurones restent sur le <strong>Raspberry Pi</strong> (un Pi 5 dans mon cas), mais la carte apporte le muscle et l’intendance. Gestion d’alimentation avec pack <strong>2×18650</strong>, microcontrôleur embarqué, <strong>drivers pour 4 moteurs CC</strong> et sorties PWM pour servos : de quoi piloter un engin qui bouge vraiment. Bonus sympa : <strong>micro + haut-parleur</strong> pour imaginer des commandes vocales, des retours audio, et des interactions plus naturelles.<br />Dans cet article, je vous propose de la décortiquer, de la tester sur le terrain, et de voir ce qu’elle vaut quand on lui confie un vrai projet.</p>
+
+<div><p>Au sommaire :</p><ul><li><a href="#Test_de_la_SunFounder_Fusion_HAT_sur_Raspberry_Pi_5_une_carte_IA-ready_qui_pilote_moteurs_servos_et_alimentation"><span>1</span> Test de la SunFounder Fusion HAT+ sur Raspberry Pi 5 : une carte “IA-ready” qui pilote moteurs, servos et alimentation</a><ul><li><a href="#Deballage_une_boite_simple_mais_serieuse"><span>1.1</span> Déballage – une boîte simple, mais sérieuse</a></li><li><a href="#La_carte_vue_de_dessus"><span>1.2</span> La carte – vue de dessus</a></li><li><a href="#La_carte_vue_de_dessous"><span>1.3</span> La carte – vue de dessous</a></li><li><a href="#Alimentation_prise_de_charge_USB-C_et_pack_batterie_218650"><span>1.4</span> Alimentation – prise de charge USB-C et pack batterie 2×18650</a><ul><li><a href="#La_prise_USB-C_CHARGE"><span>1.4.1</span> La prise USB-C « CHARGE »</a></li><li><a href="#Le_pack_batterie_fourni_Li-ion_74V_2000mAh"><span>1.4.2</span> Le pack batterie fourni : Li-ion 7,4 V – 2000 mAh</a></li><li><a href="#Equilibrage_3_fils_ce_nest_pas_un_simple"><span>1.4.3</span> Équilibrage (3 fils) : ce n’est pas un simple +/−</a></li><li><a href="#Connecteur_batterie_BATTERY"><span>1.4.4</span> Connecteur batterie « BATTERY »</a></li></ul></li><li><a href="#Circuit_de_charge_reperage_et_role_des_composants"><span>1.5</span> Circuit de charge – repérage et rôle des composants</a></li><li><a href="#Le_microcontroleur_MCU_le_chef_dorchestre_de_la_Fusion_HAT"><span>1.6</span> Le microcontrôleur (MCU) – le “chef d’orchestre” de la Fusion HAT+</a><ul><li><a href="#Zone_GPIO_bus_de_communication_IC_SPI_UART"><span>1.6.1</span> Zone GPIO + bus de communication (I²C / SPI / UART)</a></li></ul></li><li><a href="#Sorties_moteurs_CC_4_canaux_M1_a_M4"><span>1.7</span> Sorties moteurs CC : 4 canaux M1 à M4</a></li><li><a href="#Visuels_SunFounder_reperes_promesses_et_exemple_dusage"><span>1.8</span> Visuels SunFounder : repères, promesses et exemple d’usage</a><ul><li><a href="#Schema_annote_tous_les_connecteurs_dun_coup_doeil"><span>1.8.1</span> Schéma annoté : tous les connecteurs d’un coup d’œil</a></li><li><a href="#Montage_sur_Raspberry_Pi_batterie_entree_5V3A_sortie_5V5A_et_arret_propre"><span>1.8.2</span> Montage sur Raspberry Pi : batterie, entrée 5V/3A, sortie 5V/5A et arrêt propre</a></li><li><a href="#Exemple_dapplication_irrigation_assistee_par_IA"><span>1.8.3</span> Exemple d’application : irrigation assistée par IA</a></li></ul></li><li><a href="#Premiers_tests_concrets_de_la_Fusion_HAT_sur_Raspberry_Pi_5"><span>1.9</span> Premiers tests “concrets” de la Fusion HAT+ sur Raspberry Pi 5</a><ul><li><a href="#Check_rapide_avant_de_coder"><span>1.9.1</span> Check rapide avant de coder</a></li><li><a href="#1_Verif_EEPROM_HAT_la_carte_sannonce_au_Pi"><span>1.9.2</span> 1) Vérif EEPROM HAT (la carte “s’annonce” au Pi)</a></li><li><a href="#Installer_les_dependances_bibliotheque_Fusion_HAT_support_audio"><span>1.9.3</span> Installer les dépendances (bibliothèque Fusion HAT+ + support audio)</a></li><li><a href="#Activer_et_tester_laudio_haut-parleur_micro"><span>1.9.4</span> Activer et tester l’audio (haut-parleur + micro)</a></li><li><a href="#Test_du_servo_exemple_SunFounder"><span>1.9.5</span> Test du servo (exemple SunFounder)</a></li><li><a href="#Commande_vocale_allumereteindre_la_LED_USER_STT_Vosk"><span>1.9.6</span> Commande vocale : allumer/éteindre la LED USER (STT Vosk)</a></li></ul></li><li><a href="#Conclusion"><span>1.10</span> Conclusion</a></li><li><a href="#Sources"><span>1.11</span> Sources</a></li></ul></li></ul></div>
+<h2><span>Test de la SunFounder Fusion HAT+ sur Raspberry Pi 5 : une carte “IA-ready” qui pilote moteurs, servos et alimentation</span></h2>
+<section>
+<h2><span>Déballage – une boîte simple, mais sérieuse</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_027.jpg" alt="" /></p>
+<p>La Fusion HAT+ arrive dans une <strong>boîte en carton rigide</strong> qui inspire confiance (les cartes sont protégées par des sachets antistatiques dans la boîte). Sur le dessus, SunFounder résume clairement les fonctions :<br />
+<strong>batterie rechargeable</strong>, <strong>arrêt propre (safe shutdown)</strong>, <strong>12 sorties PWM</strong>,<br />
+<strong>4 drivers moteurs CC</strong>, <strong>haut-parleur + micro</strong>, <strong>I2C/SPI/UART</strong>,<br />
+<strong>4 entrées ADC 12 bits</strong>, et la compatibilité<br />
+<strong>Raspberry Pi 5 / 4 / 3B+ / Zero 2 W</strong>.<br />
+<em>Légende photo : « Boîte de la SunFounder Fusion HAT+ : les fonctions principales sont annoncées noir sur blanc. »</em></p>
+</section>
+<section>
+<h2><span>La carte – vue de dessus</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_001.jpg" alt="" /></p>
+<p>Une fois sortie de sa boîte, la carte annonce la couleur : c’est un HAT orienté “robotique” avec de l’audio intégré. On retrouve le <strong>connecteur GPIO 40 broches</strong> en haut, et surtout, à droite, les rangées de connecteurs dédiés aux <strong>servos (PWM)</strong> : c’est très lisible, avec le repérage des canaux, et les colonnes <strong>SIG / 5V / GND</strong> (pratique pour éviter les erreurs de branchement).<br />
+À droite également, le <strong>haut-parleur</strong> est déjà monté, et on voit les connecteurs moteurs<br />
+<strong>M1 à M4</strong> (JST) pour piloter des <strong>moteurs CC</strong>. En bas à gauche, un <strong>port USB-C “CHARGE”</strong> sert à la charge de la batterie.</p>
+</section>
+<section>
+<h2><span>La carte – vue de dessous</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_001a.jpg" alt="" /></p>
+<p>Dessous, SunFounder a eu la bonne idée d’imprimer un <strong>pense-bête</strong> directement sur le PCB : “SPECIFICATION” avec la <strong>batterie 7,4 V Li-ion</strong>, la <strong>charge</strong>, et les rails d’alimentation (dont le <strong>5 V</strong> et le <strong>3,3 V</strong>). On trouve aussi un tableau qui rappelle le <strong>mapping</strong> des canaux moteurs vers des broches (Pxx), et plusieurs <strong>pastilles / points de test</strong> utiles pour le debug. Bref : ce n’est pas juste “le côté moche avec les soudures” : c’est aussi une mini fiche technique intégrée.N’oubliez pas que ces infos seront « sous » la carte une fois qu’elle sera fixée sur le Raspberry Pi 😀<br />
+Le petit bloc métallique au dessus de l’inscription « FUSION »‘ est le microphone, je vais y revenir.</p>
+<section>
+<h2><span>Alimentation – prise de charge USB-C et pack batterie 2×18650</span></h2>
+<h3><span>La prise USB-C « CHARGE »</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_006.jpg" alt="" /></p>
+<p>Sur le bord de la carte, SunFounder a prévu un connecteur <strong>USB-C dédié à la charge</strong>, clairement sérigraphié <strong>CHARGE</strong>. C’est un point pratique : on recharge directement le pack sans devoir passer par une alim externe ou un chargeur « au hasard ». La présence de cette prise confirme que la Fusion HAT+ n’est pas qu’une carte d’E/S : elle intègre une vraie gestion d’énergie pour un usage nomade/robotique.</p>
+<h3><span>Le pack batterie fourni : Li-ion 7,4 V – 2000 mAh</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_003-scaled.jpg" alt="" /></p>
+
+
+<p>La carte est livrée avec un pack <strong>Li-ion 7,4 V – 2000 mAh</strong>, basé sur <strong>2 accus 18650 </strong>montés en série (2S). Le marquage sur la gaine est explicite : <strong>« Li-ion Battery 7.4V 2000mAh »</strong>.</p>
+<h3><span>Équilibrage (3 fils) : ce n’est pas un simple +/−</span></h3>
+<p>Détail important : le pack utilise un faisceau <strong>à 3 fils</strong>. Ce troisième fil correspond au point milieu entre les deux cellules, ce qui permet <strong>l’équilibrage</strong> lors de la charge (chaque élément peut être surveillé/ajusté). On est donc sur une approche « propre » pour un pack 2S, ce qui est rassurant côté sécurité et longévité.</p>
+<section>
+<h3><span>Connecteur batterie « BATTERY »</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_005.jpg" alt="" /></p>
+<p>Le pack se branche sur un connecteur dédié, sérigraphié <strong>BATTERY</strong>, placé sur le bord de la carte.<br />
+Là encore, c’est du pratique : le branchement est <strong>détrompé </strong>(impossible de l’enficher à l’envers), et le connecteur est dimensionné pour un pack <strong>2S</strong> avec <strong>3 conducteurs </strong>(plus, moins et point milieu pour l’équilibrage). Juste à côté, SunFounder positionne aussi les LEDs Power et utilisateur (LED).</p>
+<section>
+<h2><span>Circuit de charge – repérage et rôle des composants</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_007.jpg" alt="" /></p>
+<p>Sur cette zone de la carte (photo ci-dessus), le circuit de charge est identifiable assez facilement : c’est le composant marqué <strong>IP2326</strong> (en bas à gauche). Il gère la charge du pack <strong>Li-ion 2S (7,4 V nominal)</strong>selon un profil de charge adapté (courant constant puis tension constante). Juste à proximité, la grosse self marquée <strong>2R2</strong> indique que la charge se fait via une <strong>alimentation à découpage</strong> (conversion DC/DC), ce qui est logique pour charger un pack 2S à partir du 5 V USB :<br />
+il faut élever la tension pour atteindre la tension de fin de charge du pack.<br />
+Les composants <strong>RT6206AH</strong> et <strong>AMS1117-3.3</strong> visibles sur l’image sont des régulateurs d’alimentation (distribution des rails de la carte, notamment le 3,3 V pour la logique). Le « cerveau » de la charge reste bien l’<strong>IP2326</strong>, associé à la self <strong>2R2</strong>.</p>
+<section>
+<h2><span>Le microcontrôleur (MCU) – le “chef d’orchestre” de la Fusion HAT+</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_010.jpg" alt="" /></p>
+<p>Au centre de cette zone, on distingue clairement le microcontrôleur marqué <strong>GigaDevice</strong>,<br />
+avec la référence de la famille <strong>GD32E230</strong> (architecture <strong>ARM</strong>). C’est lui qui sert de <strong>cerveau embarqué</strong> à la carte : il assure la coordination des fonctions “temps réel” (gestion d’alimentation/états, pilotage des sorties, lecture des entrées, etc.) pendant que le Raspberry Pi s’occupe de la partie “couche haute” (Python, IA, vision, logique applicative).<br />
+Dit autrement : l’IA et les programmes tournent sur le Pi, mais tout ce qui doit rester fiable, réactif et autonome (même quand Linux tousse) est typiquement délégué à ce MCU.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_008.jpg" alt="" /><br />
+À côté du MCU, en haut à droite de cette photo, le composant marqué <a href="https://en.chipsourcetek.com/Audio-Chip/2033.html" target="_blank"><strong>NS4168</strong> n’est pas un simple ampli “analogique”</a> : c’est un <strong>amplificateur audio mono Class D 2,5 W</strong> à <strong>entrée numérique</strong>, avec <strong>anti-aliasing</strong> et une interface <strong>I2S</strong>.<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_014.jpg" alt="" />Détail intéressant sur cette image : l’entrée acoustique du microphone se fait via un <strong>trou traversant dans le PCB</strong>, sérigraphié <strong>« MIC »</strong>. Concrètement, le son entre par ce “port” (bottom-port) et arrive directement sur le micro situé de l’autre côté de la carte, <strong>juste dessous</strong>.<br />
+Sur le composant microphone, le marquage relevé est <strong>« 484 XLKTS »</strong> (probablement un code lot/production plutôt qu’une référence commerciale exploitable telle quelle). Ce type d’implantation est typique d’un <strong>micro MEMS bottom-port</strong> et permet d’intégrer proprement le micro sur un HAT sans exposer directement la capsule sur la face composants.</p>
+<section>
+<h3><span>Zone GPIO + bus de communication (I²C / SPI / UART)</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_015.jpg" alt="" /></p>
+<p>Sur cette partie de la carte, on est au plus près du connecteur <strong>GPIO 40 broches</strong> du Raspberry Pi (en haut de l’image). SunFounder a sérigraphié des repères très explicites pour retrouver rapidement les bus principaux : <strong>I²C</strong> (SDA/SCL), <strong>SPI</strong> (MOSI/MISO/SCLK/CS) et <strong>UART</strong> (TX/RX), avec un rappel du niveau logique <strong>3V3</strong>.<br />
+Le petit connecteur blanc au centre (juste au-dessus du logo <strong>Fusion HAT+</strong>) est prévu pour relier un ruban de LEDs RGB 5 volts.</p>
+<section>
+<h2><span>Sorties moteurs CC : 4 canaux M1 à M4</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_018.jpg" alt="" /></p>
+<p>La Fusion HAT+ intègre <strong>quatre sorties dédiées aux moteurs à courant continu</strong>, repérées <strong>M1</strong>, <strong>M2</strong>, <strong>M3</strong> et <strong>M4</strong>. Chaque moteur se branche sur un <strong>connecteur 2 broches</strong> (type JST), placé sur le pourtour de la carte pour garder un câblage propre, sans venir encombrer la zone GPIO ou les connecteurs servos.<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_017.jpg" alt="" />Sur cette zone, on identifie clairement les circuits de pilotage : chaque sortie moteur est associée à <a href="https://en.chipsourcetek.com/Driver-Chip/2371.html" target="_blank">un circuit intégré  <strong>TC618CS</strong></a>, placé à proximité du connecteur. Ce sont eux qui assurent la partie “puissance” de la commande des moteurs courant continu.</p>
+
+<p>Le <strong>TC618CS</strong> (ChipSourceTek) est un <strong>driver moteur mono-canal</strong> avec <strong>pont en H intégré</strong> (MOSFETs N + P) destiné aux applis sur batterie : jouets, petits systèmes de mouvement, etc.<br />
+Il accepte une alim large <strong>2 à 9,6 V</strong> et annonce <strong>2,1 A</strong> en continu (jusqu’à <strong>3,5 A</strong> en pointe), avec fonctions <strong>avant / arrière / stop / freinage</strong>. Le fabricant met en avant une faible résistance “on” (<strong>~0,26 Ω</strong>) et une <strong>protection thermique</strong> : coupure vers <strong>150 °C</strong> typ. avec hystérésis pour éviter la surchauffe.</p>
+<p>Le placement autour du haut-parleur est plutôt bien pensé : les connecteurs restent  accessibles, la sérigraphie <strong>M1…M4</strong> est lisible, et le câblage des moteurs ne vient pas gêner les autres connecteurs.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_028.jpg" alt="" /></p>
+</section>
+<p>Pour aller plus loin (et éviter les erreurs de câblage), SunFounder met à disposition <a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/_shared/component/cpn_fusion_hat.html" target="_blank">une page de documentation très claire</a> qui regroupe le <strong>pinout complet</strong> de la Fusion HAT+ ainsi que les <strong>informations de connexion </strong>(GPIO, I²C/SPI/UART, audio I²S, etc.). Elle sert de référence officielle pour vérifier rapidement quelles broches sont utilisées et comment raccorder proprement les différents modules.</p>
+<section>
+<h2><span>Visuels SunFounder : repères, promesses et exemple d’usage</span></h2>
+<h3><span>Schéma annoté : tous les connecteurs d’un coup d’œil</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_021.jpg" alt="" /></p>
+<p>Ce visuel est très pratique pour se repérer rapidement : SunFounder y indique clairement les principaux ports (moteurs, servos PWM, ADC, GPIO, I²C/SPI/UART, WS2812…), mais aussi les éléments “système” liés à l’alimentation (port batterie, indicateurs, bouton utilisateur, charge USB-C, etc.). C’est le genre d’image que l’on garde sous la main pendant le câblage, surtout lors des premiers essais. Vous trouverez plus d’informations <a href="https://docs.sunfounder.com/projects/fusion-hat/en/latest/hardware/hardware.html" target="_blank">sur la page « HARDWARE » de la documentation en ligne</a>.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_033.jpg" alt="" /></p>
+<p>Et le détail des <a href="https://docs.sunfounder.com/projects/fusion-hat/en/latest/hardware/interfaces.html#pin-mapping" target="_blank">connexions sur cette page</a>.</p>
+<h3><span>Montage sur Raspberry Pi : batterie, entrée 5V/3A, sortie 5V/5A et arrêt propre</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_022.jpg" alt="" /></p>
+<p>Ici, le constructeur met en avant la vocation “nomade” de la Fusion HAT+ : un pack batterie rechargeable (2000 mAh), une charge via USB, et surtout la promesse d’une alimentation pensée pour les projets mobiles. Les encadrés rappellent les points clés côté énergie (entrée, sortie et gestion d’extinction propre), ce qui résume bien le positionnement de la carte : une base d’alimentation + pilotage pour monter un robot sans empiler les modules.</p>
+<h3><span>Exemple d’application : irrigation assistée par IA</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_026.jpg" alt="" /></p>
+<p>Ce troisième visuel illustre une idée de projet typique “Fusion HAT+” : capteurs (humidité, température, lumière…), commande d’actionneurs (pompe/électrovanne via moteur/driver), et interaction vocale grâce au micro et au haut-parleur. L’angle “IA” est clairement mis en scène : la carte ne fait pas l’IA elle-même, mais elle fournit l’interface matérielle (alimentation, E/S, audio) pour que le Raspberry Pi serve de cerveau et prenne des décisions plus “intelligentes”.</p>
+</section>
+<h2><span>Premiers tests “concrets” de la Fusion HAT+ sur Raspberry Pi 5</span></h2>
+<p>La documentation SunFounder est assez généreuse : elle propose une partie “prise en main”, une série d’exemples Python (électronique / moteurs / servos / audio), et même une section dédiée à des projets “GPT/voix” (chat vocal, speech-to-text, etc.). L’idée ici est de dérouler une check-list simple, reproductible, et surtout de valider le matériel étape par étape avant d’empiler de l’IA par-dessus.</p>
+<h3><span>Check rapide avant de coder</span></h3>
+<ul>
+<li><strong>Batterie insérée</strong> : la carte s’appuie sur sa gestion d’alimentation, donc on évite de “tester sans batterie”.</li>
+<li><strong>Audio I2S</strong> : le micro + l’ampli (HP) utilisent des broches I2S du Raspberry Pi. Tant que l’audio est actif, évitez de réutiliser ces GPIO.</li>
+<li><strong>RGB (WS2812)</strong> : la prise “RGB” est faite pour un ruban WS2812 (type NeoPixel). Pensez à activer SPI si nécessaire.</li>
+</ul>
+<section>
+<h3><span>1) Vérif EEPROM HAT (la carte “s’annonce” au Pi)</span></h3>
+<p>La documentation précise que la Fusion HAT+ utilise les broches <strong>ID_SD / ID_SC </strong>(<strong>GPIO0 / GPIO1</strong>) pour son <strong>EEPROM HAT</strong>. Si tout va bien, le Raspberry Pi doit donc exposer les informations  d’identification de la carte dans<br />
+<code>/proc/device-tree/hat/</code>.</p>
+<p>Lancez ces commandes sur le Raspberry Pi :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p></div>
+				</td>
+						<td><div><p><span>ls</span><span> </span><span>-</span><span>l</span><span> </span><span>/</span><span>proc</span><span>/</span><span>device</span><span>-</span><span>tree</span><span>/</span><span>hat</span><span> </span><span>||</span><span> </span><span>echo</span><span> </span><span>"Pas de dossier /proc/device-tree/hat"</span></p><p><span>for</span><span> </span><span>f</span><span> </span><span>in</span><span> </span><span>product </span><span>vendor </span><span>product_id </span><span>product_ver</span><span>;</span><span> </span><span>do</span></p><p><span>  </span><span>if</span><span> </span><span>[</span><span> </span><span>-</span><span>f</span><span> </span><span>"/proc/device-tree/hat/$f"</span><span> </span><span>]</span><span>;</span><span> </span><span>then</span></p><p><span>    </span><span>echo</span><span> </span><span>-</span><span>n</span><span> </span><span>"$f: "</span></p><p><span>    </span><span>tr</span><span> </span><span>-</span><span>d</span><span> </span><span>'\0'</span><span> </span><span>&amp;</span><span>lt</span><span>;</span><span> </span><span>"/proc/device-tree/hat/$f"</span></p><p><span>    </span><span>echo</span></p><p><span>  </span><span>fi</span></p><p><span>done</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+</section>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_029.jpg" alt="" /></p>
+</section>
+</section>
+</section>
+</section>
+<p> L<strong>a carte est vue et correctement identifiée</strong> par l’EEPROM HAT.</p>
+<section>
+<h3><span>Installer les dépendances (bibliothèque Fusion HAT+ + support audio)</span></h3>
+<p>Avant de lancer les exemples (servo, moteurs, WS2812, micro/HP…), il faut installer <a href="https://github.com/sunfounder/fusion-hat" target="_blank">la couche logicielle SunFounder</a> qui ajoute la bibliothèque Python <code>fusion_hat</code> et les scripts système associés (notamment pour l’audio I²S). L’installation se fait via un script officiel qui configure automatiquement ce qu’il faut. Suivez scrupuleusement <a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/quick_start/run_installer.html" target="_blank">les instructions de la page de démarrage</a>. L’installation est également <a href="https://docs.sunfounder.com/projects/fusion-hat/en/latest/quick_user_guide.html#install-the-fusion-hat-module" target="_blank">décrite ici</a>.</p>
+<ol>
+<li><strong>Mettre le système à jour</strong> (recommandé) :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>apt </span><span>update</span></p><p><span>sudo </span><span>apt</span><span> </span><span>-</span><span>y</span><span> </span><span>full</span><span>-</span><span>upgrade</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Charger les exemples et lancer l’installateur Fusion HAT+</strong> :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span></p><p><span>git </span><span>clone</span><span> </span><span>https</span><span>:</span><span>//github.com/sunfounder/ai-lab-kit.git --depth 1</span></p><p><span>curl</span><span> </span><span>-</span><span>sSL </span><span>https</span><span>:</span><span>//raw.githubusercontent.com/sunfounder/sunfounder-installer-scripts/main/install-fusion-hat.sh | sudo bash</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Pendant l’installation, le script télécharge les composants nécessaires, installe la bibliothèque et pose les fichiers de configuration/scripts au bon endroit.<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_031.jpg" alt="" /></p>
+</li>
+<li><strong>Redémarrer le Raspberry Pi</strong> (important pour prendre en compte les réglages) :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Vérifier que tout est en place</strong> :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p></div>
+				</td>
+						<td><div><p><span># Le script audio doit exister après installation</span></p><p><span>ls</span><span> </span><span>-</span><span>l</span><span> </span><span>/</span><span>opt</span><span>/</span><span>setup_fusion_hat_audio</span><span>.</span><span>sh</span><span> </span><span>||</span><span> </span><span>echo</span><span> </span><span>"Script audio absent"</span></p><p><span># La bibliothèque Python doit s'importer</span></p><p><span>python3</span><span> </span><span>-</span><span>c</span><span> </span><span>"import fusion_hat; print('fusion_hat OK')"</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+</ol>
+</section>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_032.jpg" alt="" /></p>
+<p>Allez c’est tout bon, on peut continuer.</p>
+<section>
+<h3><span>Activer et tester l’audio (haut-parleur + micro)</span></h3>
+<ol>
+<li><strong>Activer l’audio Fusion HAT+</strong> (après le reboot) :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>sudo</span><span> </span><span>/</span><span>opt</span><span>/</span><span>setup_fusion_hat_audio</span><span>.</span><span>sh</span></p><p><span>sudo </span><span>reboot</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Vérifier les périphériques audio détectés</strong> (sortie + entrée) :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>aplay</span><span> </span><span>-</span><span>l</span></p><p><span>arecord</span><span> </span><span>-</span><span>l</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+</li>
+<li><strong>Tester la sortie (haut-parleur)</strong> : générer un son de test :<br />
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>speaker</span><span>-</span><span>test</span><span> </span><span>-</span><span>D</span><span> </span><span>plughw</span><span>:</span><span>2</span><span>,</span><span>0</span><span> </span><span>-</span><span>t</span><span> </span><span>sine</span><span> </span><span>-</span><span>c</span><span> </span><span>2</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<br />
+<em>Arrêter avec <strong>Ctrl+C</strong>.<br />
+</em>
+<p>
+<a href="https://www.framboise314.fr/wp-content/uploads/2026/01/test_sinus.mp4">https://www.framboise314.fr/wp-content/uploads/2026/01/test_sinus.mp4</a></p>
+</li>
+<li><strong>Enregistrer 5 secondes avec le micro</strong> (format WAV 16 kHz, mono) :
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>arecord</span><span> </span><span>-</span><span>D</span><span> </span><span>plughw</span><span>:</span><span>2</span><span>,</span><span>0</span><span> </span><span>-</span><span>d</span><span> </span><span>5</span><span> </span><span>-</span><span>f</span><span> </span><span>S16_LE</span><span> </span><span>-</span><span>r</span><span> </span><span>16000</span><span> </span><span>-</span><span>c</span><span> </span><span>1</span><span> </span><span>mic_test</span><span>.</span><span>wav</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><a href="https://www.framboise314.fr/wp-content/uploads/2026/01/test_record.mp4">https://www.framboise314.fr/wp-content/uploads/2026/01/test_record.mp4</a></p></li>
+<li><strong>Réécouter l’enregistrement</strong> :
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>aplay</span><span> </span><span>-</span><span>D</span><span> </span><span>plughw</span><span>:</span><span>2</span><span>,</span><span>0</span><span> </span><span>mic_test</span><span>.</span><span>wav</span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>code</span><span>&amp;</span><span>gt</span><span>;</span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>pre</span><span>&amp;</span><span>gt</span><span>;</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+</li>
+</ol>
+<p><a href="https://www.framboise314.fr/wp-content/uploads/2026/01/test_replay.mp4">https://www.framboise314.fr/wp-content/uploads/2026/01/test_replay.mp4</a></p>
+<p>Si tout est correctement configuré, vous devez entendre le son de test sur le haut-parleur, puis retrouver votre voix (ou au minimum un signal) lors de la réécoute du fichier WAV.</p>
+</section>
+<section>
+<h3><span>Test du servo (exemple SunFounder)</span></h3>
+<p>Pour valider rapidement la partie <strong>PWM/servos</strong> de la Fusion HAT+, la documentation SunFounder propose un script prêt à l’emploi. Branchez votre servo sur le connecteur <strong>Servo/PWM canal 0</strong> (servo déclaré en <strong>0</strong> dans l’exemple), puis exécutez le script depuis le dossier des exemples Python du dépôt <code>ai-lab-kit</code>. Le servo doit alors se déplacer selon la séquence prévue par le programme, ce qui confirme que la génération PWM et l’alimentation servo fonctionnent correctement.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span><span>ai</span><span>-</span><span>lab</span><span>-</span><span>kit</span><span>/</span><span>python</span><span>/</span></p><p><span>sudo </span><span>python3</span><span> </span><span>1.7_Servo.py</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+</section>
+<section>
+<section>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p></div>
+				</td>
+						<td><div><p><span># Exemple : lancer un script servo (après installation des dépendances de la carte)</span></p><p><span>python3 </span><span>demo_servo_fusion_hat</span><span>.</span><span>py</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p></div>
+				</td>
+						<td><div><p><span>from </span><span>fusion_hat</span><span>.</span><span>servo </span><span>import </span><span>Servo</span><span>   </span><span># Import the Servo class for controlling servos</span></p><p><span>from </span><span>time </span><span>import </span><span>sleep</span><span>               </span><span># Import sleep for timing delays</span></p><p><span>servo</span><span> </span><span>=</span><span> </span><span>Servo</span><span>(</span><span>0</span><span>)</span><span>                     </span><span># Create a Servo object on channel 0</span></p><p><span>while</span><span> </span><span>True</span><span>:</span><span>                          </span><span># Loop forever</span></p><p><span>   </span><span># Sweep from -90° to +90° in steps of 10°</span></p><p><span>   </span><span>for</span><span> </span><span>i</span><span> </span><span>in</span><span> </span><span>range</span><span>(</span><span>-</span><span>90</span><span>,</span><span> </span><span>91</span><span>,</span><span> </span><span>10</span><span>)</span><span>:</span></p><p><span>      </span><span>servo</span><span>.</span><span>angle</span><span>(</span><span>i</span><span>)</span><span>               </span><span># Set servo to angle i</span></p><p><span>      </span><span>sleep</span><span>(</span><span>0.1</span><span>)</span><span>                   </span><span># Small delay for smooth movement</span></p><p><span>   </span><span># Sweep back from +90° to -90° in steps of -10°</span></p><p><span>   </span><span>for</span><span> </span><span>i</span><span> </span><span>in</span><span> </span><span>range</span><span>(</span><span>90</span><span>,</span><span> </span><span>-</span><span>91</span><span>,</span><span> </span><span>-</span><span>10</span><span>)</span><span>:</span></p><p><span>      </span><span>servo</span><span>.</span><span>angle</span><span>(</span><span>i</span><span>)</span><span>               </span><span># Set servo to angle i</span></p><p><span>      </span><span>sleep</span><span>(</span><span>0.1</span><span>)</span><span>                   </span><span># Small delay for smooth movement</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<section>
+<h3><span>Commande vocale : allumer/éteindre la LED USER (STT Vosk)</span></h3>
+<p>La Fusion HAT+ possède une <strong>LED USER</strong> (et un bouton) pilotés via la puce <strong>I²C</strong> de la carte.<br />
+Une fois l’audio (micro + haut-parleur) validé, j’ai mis en place un petit test de commande vocale en local : le micro capture la voix, <strong>Vosk</strong> transcrit la phrase (STT), puis un script Python déclenche l’action en appelant <code>device.set_led(1)</code> (ON) ou <code>device.set_led(0)</code> (OFF).<br />
+En pratique, les commandes <em>“light on”</em> et <em>“light off”</em> fonctionnent immédiatement ; j’ai simplement ajouté la variante <em>“light of”</em> (reconnaissance parfois tronquée) pour fiabiliser l’extinction.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p></div>
+				</td>
+						<td><div><p><span>cd</span><span> </span><span>~</span><span>/</span><span>ai</span><span>-</span><span>lab</span><span>-</span><span>kit</span><span>/</span><span>llm</span></p><p><span>sudo</span><span> </span><span>.</span><span>/</span><span>voice_userled_stt</span><span>.</span><span>py</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><em>Le programme de test  voice_userled_stt.py :</em></p>
+</section>
+</section>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p><p>9</p><p>10</p><p>11</p><p>12</p><p>13</p><p>14</p><p>15</p><p>16</p><p>17</p><p>18</p><p>19</p><p>20</p><p>21</p><p>22</p><p>23</p><p>24</p><p>25</p><p>26</p><p>27</p><p>28</p><p>29</p><p>30</p><p>31</p><p>32</p><p>33</p><p>34</p><p>35</p><p>36</p><p>37</p><p>38</p><p>39</p><p>40</p><p>41</p><p>42</p><p>43</p><p>44</p></div>
+				</td>
+						<td><div><p><span>#!/usr/bin/env python3</span></p><p><span>import </span><span>json</span></p><p><span>import </span><span>sounddevice </span><span>as</span><span> </span><span>sd</span></p><p><span>from </span><span>vosk </span><span>import </span><span>Model</span><span>,</span><span> </span><span>KaldiRecognizer</span></p><p><span>from </span><span>fusion_hat </span><span>import </span><span>device</span></p><p><span>def </span><span>traiter_commande</span><span>(</span><span>texte</span><span>:</span><span> </span><span>str</span><span>)</span><span> </span><span>-</span><span>&amp;</span><span>gt</span><span>;</span><span> </span><span>None</span><span>:</span></p><p><span>    </span><span>t</span><span> </span><span>=</span><span> </span><span>texte</span><span>.</span><span>strip</span><span>(</span><span>)</span><span>.</span><span>lower</span><span>(</span><span>)</span></p><p><span>    </span><span>if</span><span> </span><span>"light on"</span><span> </span><span>in</span><span> </span><span>t</span><span>:</span></p><p><span>        </span><span>device</span><span>.</span><span>set_led</span><span>(</span><span>1</span><span>)</span></p><p><span>        </span><span>print</span><span>(</span><span>"ACTION: USER LED ON"</span><span>)</span></p><p><span>    </span><span>elif</span><span> </span><span>(</span><span>"light off"</span><span> </span><span>in</span><span> </span><span>t</span><span>)</span><span> </span><span>or</span><span> </span><span>(</span><span>"light of"</span><span> </span><span>in</span><span> </span><span>t</span><span>)</span><span>:</span></p><p><span>        </span><span>device</span><span>.</span><span>set_led</span><span>(</span><span>0</span><span>)</span></p><p><span>        </span><span>print</span><span>(</span><span>"ACTION: USER LED OFF"</span><span>)</span></p><p><span>    </span><span>else</span><span>:</span></p><p><span>        </span><span>print</span><span>(</span><span>"ACTION: (aucune)"</span><span>)</span></p><p><span>def </span><span>main</span><span>(</span><span>)</span><span>:</span></p><p><span>    </span><span>device</span><span>.</span><span>set_led</span><span>(</span><span>0</span><span>)</span></p><p><span>    </span><span>model</span><span> </span><span>=</span><span> </span><span>Model</span><span>(</span><span>lang</span><span>=</span><span>"en-us"</span><span>)</span></p><p><span>    </span><span>rec</span><span> </span><span>=</span><span> </span><span>KaldiRecognizer</span><span>(</span><span>model</span><span>,</span><span> </span><span>16000</span><span>)</span></p><p><span>    </span><span>print</span><span>(</span><span>"Say: 'light on' / 'light off' (Ctrl+C to stop)"</span><span>)</span></p><p><span>    </span><span>def </span><span>callback</span><span>(</span><span>indata</span><span>,</span><span> </span><span>frames</span><span>,</span><span> </span><span>time_info</span><span>,</span><span> </span><span>status</span><span>)</span><span>:</span></p><p><span>        </span><span>if</span><span> </span><span>status</span><span>:</span></p><p><span>            </span><span>print</span><span>(</span><span>status</span><span>)</span></p><p><span>        </span><span>if</span><span> </span><span>rec</span><span>.</span><span>AcceptWaveform</span><span>(</span><span>bytes</span><span>(</span><span>indata</span><span>)</span><span>)</span><span>:</span></p><p><span>            </span><span>res</span><span> </span><span>=</span><span> </span><span>json</span><span>.</span><span>loads</span><span>(</span><span>rec</span><span>.</span><span>Result</span><span>(</span><span>)</span><span>)</span></p><p><span>            </span><span>texte</span><span> </span><span>=</span><span> </span><span>res</span><span>.</span><span>get</span><span>(</span><span>"text"</span><span>,</span><span> </span><span>""</span><span>)</span></p><p><span>            </span><span>if</span><span> </span><span>texte</span><span>:</span></p><p><span>                </span><span>print</span><span>(</span><span>f</span><span>"final: {texte}"</span><span>)</span></p><p><span>                </span><span>traiter_commande</span><span>(</span><span>texte</span><span>)</span></p><p><span>    </span><span>with </span><span>sd</span><span>.</span><span>RawInputStream</span><span>(</span><span>samplerate</span><span>=</span><span>16000</span><span>,</span><span> </span><span>blocksize</span><span>=</span><span>8000</span><span>,</span><span> </span><span>dtype</span><span>=</span><span>"int16"</span><span>,</span></p><p><span>                           </span><span>channels</span><span>=</span><span>1</span><span>,</span><span> </span><span>callback</span><span>=</span><span>callback</span><span>)</span><span>:</span></p><p><span>        </span><span>while</span><span> </span><span>True</span><span>:</span></p><p><span>            </span><span>sd</span><span>.</span><span>sleep</span><span>(</span><span>200</span><span>)</span></p><p><span>if</span><span> </span><span>__name__</span><span> </span><span>==</span><span> </span><span>"__main__"</span><span>:</span></p><p><span>    </span><span>try</span><span>:</span></p><p><span>        </span><span>main</span><span>(</span><span>)</span></p><p><span>    </span><span>except </span><span>KeyboardInterrupt</span><span>:</span></p><p><span>        </span><span>pass</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p><a href="https://www.framboise314.fr/wp-content/uploads/2026/01/test_LightOnOff.mp4">https://www.framboise314.fr/wp-content/uploads/2026/01/test_LightOnOff.mp4</a></p>
+<p>Une fois <strong>Vosk</strong> basculé sur un modèle <strong>français</strong>, la démo devient tout de suite plus naturelle : il suffit de dire <em>« allume »</em> ou <em>« éteint »</em> et la <strong>LED USER</strong> de la Fusion HAT+ réagit instantanément. On garde le même principe (STT → action), mais cette fois avec des commandes vocales en français, ce qui rend l’exemple bien plus parlant en conditions réelles.</p>
+<p><a href="https://www.framboise314.fr/wp-content/uploads/2026/01/test_AllumeEteint_720p.mp4">https://www.framboise314.fr/wp-content/uploads/2026/01/test_AllumeEteint_720p.mp4</a></p>
+
+<h2><span>Conclusion</span></h2>
+<p>Au final, la <strong>Fusion HAT+</strong> tient exactement la promesse que laisse entendre son nom : elle “fusionne” sur une seule carte tout ce qu’on empile d’habitude en couches (alimentation sur batterie, drivers moteurs, PWM servos, entrées analogiques, audio, petite logique temps réel). Et c’est là sa vraie valeur : <strong>vous gardez le Raspberry Pi comme cerveau</strong> (Python, vision, IA, logique), pendant que la carte s’occupe du <strong>terrain</strong> : bouger des trucs, alimenter proprement, et rester stable même quand Linux décide de prendre son temps.</p>
+<p>Les premiers tests sont franchement rassurants : <strong>EEPROM HAT bien reconnue</strong>, installation logicielle plutôt fluide, <strong>audio I²S opérationnel</strong> (HP + micro), <strong>servo OK</strong>, et la petite démo <strong>commande vocale =&gt; action</strong> (Vosk) montre que l’intégration “interaction” n’est pas un gadget marketing. Ce n’est pas une carte “IA” au sens où elle exécuterait un modèle, mais c’est clairement une carte <strong>IA-ready</strong> : tout ce qu’il faut pour que l’IA serve à quelque chose dans le monde réel.</p>
+<ul>
+<li><strong>Points forts</strong> : gestion d’alimentation pensée robot (batterie + charge + arrêt propre), <strong>4 moteurs CC</strong>, <strong>12 PWM servos</strong>, audio intégré (et exploitable), sérigraphies lisibles et doc plutôt généreuse.</li>
+<li><strong>À garder en tête</strong> : l’audio mobilise l’I²S du Pi (donc ces GPIO ne sont plus “libres”), le pack 2×18650 fourni (2000 mAh) donne une autonomie correcte pour des démos mais pourra être un peu juste sur un robot gourmand, et les drivers moteurs restent dimensionnés pour de la “petite” motorisation (ce n’est pas un contrôleur pour moteurs de trottinette, hein).</li>
+</ul>
+<p>Bref : si vous cherchez une base propre pour monter un robot Raspberry Pi qui ne ressemble pas à un millefeuille de modules (et que vous voulez ajouter de la voix, des capteurs, un peu d’“intelligence”) la Fusion HAT+ est une très bonne candidate. Dans la suite, l’intérêt sera de la mettre face à un <strong>vrai projet</strong> (robot mobile, mécanisme, pompe/irrigation, assistant vocal “atelier”…), histoire de voir comment elle se comporte sur la durée, avec de la charge sur les moteurs, des servos qui bougent pour de bon, et un Pi qui fait tourner autre chose qu’un simple script de démo.</p>
+<p><em>Et puis soyons honnêtes : une carte qui gère l’alim, fait bouger des moteurs et répond à “allume / éteint”… c’est déjà un début d’obéissance. Reste à lui apprendre à ranger l’atelier.</em> 😄</p>
+<h2><span>Sources</span></h2>
+<p><a href="https://www.sunfounder.com/products/sunfounder-fusion-hat-expansion-board">SunFounder Fusion HAT+ Expansion Board for Raspberry Pi 5/4/3B+/Zero 2W, Rechargeable Battery, 4 DC Motor Drivers, 12 PWM Servo, ADC, Speaker &amp; Mic, Works with AI LLMs（ChatGPT-4o/Gemini）</a></p>
+<p><a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/_shared/component/cpn_fusion_hat.html" target="_blank">https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/_shared/component/cpn_fusion_hat.html</a></p>
+<p><a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/quick_start/run_installer.html" target="_blank">https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/quick_start/run_installer.html</a></p>
+<p><a href="https://docs.sunfounder.com/projects/fusion-hat/en/latest/hardware/hardware.html" target="_blank">https://docs.sunfounder.com/projects/fusion-hat/en/latest/hardware/hardware.html</a></p>
+<p><a href="https://github.com/sunfounder/fusion-hat" target="_blank">https://github.com/sunfounder/fusion-hat</a></p>
+<p><a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/index.html" target="_blank">https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/index.html</a></p>
+<p><a href="https://www.programmez.com/actualites/fusion-hat-sunfounder-propose-une-carte-dextension-ultra-complete-38801" target="_blank">https://www.programmez.com/actualites/fusion-hat-sunfounder-propose-une-carte-dextension-ultra-complete-38801</a></p>
+<p><a href="https://www.raspberryme.com/sunfounder-fusion-hat-carte-de-controle-moteur-avancee-pour-raspberry-pi-et-llm/" target="_blank">https://www.raspberryme.com/sunfounder-fusion-hat-carte-de-controle-moteur-avancee-pour-raspberry-pi-et-llm/</a></p>
+</section>
+</section>
+</section>
+					</div></div>
+  </div>
+</body>
+</html>

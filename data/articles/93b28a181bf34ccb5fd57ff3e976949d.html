@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Multiples vulnérabilités dans les produits Siemens</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Multiples vulnérabilités dans les produits Siemens</h1>
+  <div class="metadata">
+    Source: CERT-FR | Date: 2/10/2026 | Lang: FR |
+    <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0139/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+    
+      <section>
+  
+    <div>
+      
+      
+        <p><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0139/json/">
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+  </a>
+</p>
+      
+    </div>
+
+    
+
+
+
+
+    <div>
+      <p>
+        </p><h2>Avis du CERT-FR</h2>
+        <hr />
+      <p></p>
+    </div>
+    
+    
+    <div>
+  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+</div>
+  
+</section>
+      <div>
+      
+
+        
+          <h2>Risques</h2>
+        
+
+        <ul>
+          
+            <li>Contournement de la politique de sécurité</li>
+          
+            <li>Déni de service à distance</li>
+          
+            <li>Exécution de code arbitraire à distance</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>Desigo CC toutes versions</li>
+          
+            <li>Desigo CC versions antérieures à V8.0 QU2</li>
+          
+            <li>SIMATIC ET 200AL IM 157-1 PN (6ES7157-1AB00-0AB0) toutes versions. L'éditeur indique que le produit ne bénéficiera pas de correctif de sécurité pour la vulnérabilité CVE-2025-40944.</li>
+          
+            <li>SIMATIC ET 200MP IM 155-5 PN HF (6ES7155-5AA00-0AC0) versions supérieures ou égales à 4.2.0. L'éditeur indique que le produit ne bénéficiera pas de correctif de sécurité pour la vulnérabilité CVE-2025-40944.</li>
+          
+            <li>SIMATIC ET 200SP IM 155-6 MF HF (6ES7155-6MU00-0CN0) toutes versions. L'éditeur indique que le produit ne bénéficiera pas de correctif de sécurité pour la vulnérabilité CVE-2025-40944.</li>
+          
+            <li>SIMATIC ET 200SP IM 155-6 PN HA (incl. SIPLUS variants) versions antérieures à 1.3</li>
+          
+            <li>SIMATIC ET 200SP IM 155-6 PN R1 (6ES7155-6AU00-0HM0) versions antérieures à 6.0.1</li>
+          
+            <li>SIMATIC ET 200SP IM 155-6 PN/2 HF (6ES7155-6AU01-0CN0) versions supérieures ou égales à 4.2.0. L'éditeur indique que le produit ne bénéficiera pas de correctif de sécurité pour la vulnérabilité CVE-2025-40944.</li>
+          
+            <li>SIMATIC ET 200SP IM 155-6 PN/3 HF (6ES7155-6AU30-0CN0) versions antérieures à 4.2.2</li>
+          
+            <li>SIMATIC PN/MF Coupler (6ES7158-3MU10-0XA0) toutes versions. L'éditeur indique que le produit ne bénéficiera pas de correctif de sécurité pour la vulnérabilité CVE-2025-40944.</li>
+          
+            <li>SIMATIC PN/PN Coupler (6ES7158-3AD10-0XA0) versions antérieures à 6.0.0</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p>De multiples vulnérabilités ont été découvertes dans les produits Siemens. Elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, un déni de service à distance et un contournement de la politique de sécurité.</p>
+
+        </div>
+
+      <div>
+        <h2>Solutions</h2>
+<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité Siemens SSA-507364 du 10 février 2026</li>
+              <a href="https://cert-portal.siemens.com/productcert/html/ssa-507364.html">https://cert-portal.siemens.com/productcert/html/ssa-507364.html</a>
+          
+              <li>Bulletin de sécurité Siemens SSA-674753 du 10 février 2026</li>
+              <a href="https://cert-portal.siemens.com/productcert/html/ssa-674753.html">https://cert-portal.siemens.com/productcert/html/ssa-674753.html</a>
+          
+              <li>Bulletin de sécurité Siemens ssb-491780 du 10 février 2026</li>
+              <a href="https://cert-portal.siemens.com/productcert/html/ssb-491780.html">https://cert-portal.siemens.com/productcert/html/ssb-491780.html</a>
+          
+
+          
+          
+
+          
+            <li>Référence CVE CVE-2023-38545</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2023-38545">https://www.cve.org/CVERecord?id=CVE-2023-38545</a>
+          
+            <li>Référence CVE CVE-2025-40944</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-40944">https://www.cve.org/CVERecord?id=CVE-2025-40944</a>
+          
+        </ul>
+      
+    </div>
+      <div>
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 10 février 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+        </dl>
+      </ol>
+    </div>
+    
+  </article></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Offpunk - Le navigateur terminal qui déchire passe en version 3.0</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Offpunk - Le navigateur terminal qui déchire passe en version 3.0</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/10/2026 | Lang: FR |
+    <a href="https://korben.info/offpunk-3-0-navigateur-small-web.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/offpunk-3-0-navigateur-small-web/offpunk-3-0-navigateur-small-web-1.png" alt="Image illustrant l'article : Offpunk - Le navigateur terminal qui déchire passe en version 3.0" /></p><div><span>Ce qu’il faut retenir</span><div><ol><li>Le truc que les géants du web font tout pour vous cacher</li><li>Pourquoi j'ai viré Chrome de mon laptop il y a 3 mois</li><li>Lire Internet sans Internet : c'est possible et ça change tout</li></ol><p>Résumé généré par IA</p></div><div><p>Un navigateur internet, vous voyez ce que c'est ? En général, ça pèse un âne mort, ça bouffe toute votre RAM et les sites que vous visitez vous bombardent de trackers et de pubs avant même que vous ayez pu lire la première ligne d'un article. Mais imaginez maintenant un outil qui se fout royalement du JavaScript, qui limite drastiquement le tracking et qui vous permet de lire vos contenus préférés en restant tranquillement hors-ligne ? Ce serait bien non ?</p><p>C'est là que
+<a href="https://offpunk.net/">Offpunk</a>
+entre en scène. Développé par l'ami Ploum, ce navigateur en ligne de commande vient de passer en version 3.0, et c'est du bon boulot.</p><p>Car Offpunk n'est pas juste un navigateur classique... En réalité c'est un outil de lecture "offline-first" qui contrairement à
+<a href="https://korben.info/carbonyl-navigateur-terminal.html">Carbonyl</a>
+ou
+<a href="https://korben.info/browsh-navigateur-terminal.html">Browsh</a>
+embarquent des moteurs complets pour le web moderne. Offpunk mise en fait sur l'extraction de contenu, du coup, vous synchronisez vos pages quand vous avez du réseau, et vous les lisez plus tard, sans distractions ni scripts qui ralentissent tout.</p><p>Perso, j'adore cette approche qui remet le contenu au centre. Par exemple, même sans 4G dans le train, vous pouvez continuer à lire korben.info tranquillement.</p><p>Et cette version 3.0 apporte pas mal de nouveautés qui facilitent la vie. Déjà, l'outil est devenu multilingue et surtout, il intègre maintenant « unmerdify ». Comme son nom "françisé" l'indique, c'est une bibliothèque qui permet de nettoyer le HTML souvent bien crado des sites modernes pour n'en garder que l'essentiel.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/offpunk-3-0-navigateur-small-web/offpunk-3-0-navigateur-small-web-2.png" alt="" /></p><p>Selon les sites, on se débarrasse alors d'une bonne partie des menus flottants et des overlays inutiles pour ne garder que le texte propre. Attention quand même, si vous tombez sur une page codée avec les pieds avec des scripts de 50 Mo partout, l'extraction peut parfois ramer une ou deux secondes... mais c'est le prix à payer pour la tranquillité.</p><p>Pour ceux qui se posent la question, Offpunk gère aussi les protocoles Gemini et Gopher, qui sont un peu les paradis perdus du web sans fioritures. Et si vous avez besoin de vous connecter à certains comptes abonnés demandant des cookies, y'a maintenant une commande pour importer vos fichiers cookies.txt directement. Il suffit de rajouter le chemin dans votre fichier de config <code>~/.offpunkrc</code> et le tour est joué.</p><p>Un accès illimité au savoir dispo en ligne sans quitter la console, c'est beau non ! Sauf évidemment si votre terminal ne gère pas les couleurs... là, ça risque d'être un peu tristoune visuellement.</p><p>Le petit truc en plus qui tue c'est l'intégration qu'a fait Ploum de <code>xkcdpunk</code> pour lire vos BD XKCD préférées directement dans le terminal. Pas mal du tout pour s'occuper pendant les longs trajets en train sans Wi-Fi.</p><p>Vous pouvez l'installer via <code>apt install offpunk</code> ou <code>pacman -S offpunk</code> sur la plupart des distros, ou simplement cloner
+<a href="https://git.sr.ht/~lioploum/offpunk/">le dépôt Git</a>
+et lancer le script avec <code>python offpunk.py</code>.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/offpunk-3-0-navigateur-small-web/offpunk-3-0-navigateur-small-web-3.png" alt="" /></p><p>Pas besoin de compiler quoi que ce soit, on est entre gens civilisés ! J'ai galéré au début avec une vieille version de BeautifulSoup, mais en fait, une fois les dépendances à jour, c'est hyper stable.Bref, si vous saturez du web moderne et que vous voulez retrouver le plaisir de la lecture pure sans vous faire traquer par la moitié de la planète, allez tester ça. C'est léger, c'est intelligent et ça redonne un peu d'espoir dans l'avenir du terminal.</p><p><a href="https://ploum.net/2026-02-09-offpunk3.html">Source</a></p></div>Références<section><ul><li><a href="https://offpunk.net/" target="_blank">https://offpunk.net/</a></li><li><a href="https://git.sr.ht/~lioploum/offpunk/" target="_blank">https://git.sr.ht/~lioploum/offpunk/</a></li><li><a href="https://ploum.net/2026-02-09-offpunk3.html" target="_blank">https://ploum.net/2026-02-09-offpunk3.html</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
+  </div>
+</body>
+</html>

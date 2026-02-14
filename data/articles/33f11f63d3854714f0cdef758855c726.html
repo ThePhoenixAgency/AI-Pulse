@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Notepad++ visé via sa chaîne de mise à jour</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Notepad++ visé via sa chaîne de mise à jour</h1>
+  <div class="metadata">
+    Source: Zataz | Date: 2/11/2026 | Lang: FR |
+    <a href="https://www.zataz.com/notepad-vise-via-sa-chaine-de-mise-a-jour/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><h2>Des attaquants soupçonnés d’être liés à Pékin ont détourné, de façon sélective, le trafic de mises à jour de Notepad++. Pas de faille dans le code, mais une compromission d’infrastructure, plus discrète et redoutable.</h2>
+<p>Les développeurs de Notepad++ ont annoncé qu’un mécanisme de mise à jour avait été détourné, permettant à des pirates soupçonnés d’être soutenus par l’État chinois de rediriger certains utilisateurs vers des serveurs malveillants. Selon un avis de sécurité publié lundi, l’attaque n’a pas exploité de vulnérabilité dans le code source : la compromission a touché l’infrastructure de distribution des mises à jour.</p>
+<h3>Une attaque “en cours de route”, invisible pour l’utilisateur</h3>
+<p>Notepad++ est un outil banal en apparence, un éditeur de texte libre et gratuit, mais omniprésent chez les professionnels de la tech. C’est précisément ce qui en fait une cible idéale : toucher un logiciel utilitaire, c’est frôler des millions d’environnements, sans avoir à franchir les mêmes défenses qu’une intrusion directe dans une entreprise. L’incident révélé par l’équipe du projet illustre un scénario de chaîne d’approvisionnement où l’attaque ne passe pas par le code, mais par le chemin.</p>
+<p>Dans une mise à jour de sécurité publiée lundi sur le site du projet, les développeurs expliquent que les pirates n’ont pas introduit de modification dans le dépôt source. La compromission s’est jouée « <em><strong>au niveau de l’infrastructure</strong></em>« , sur les systèmes utilisés pour distribuer les mises à jour. Les attaquants ont réussi à « <em><strong>intercepter et à rediriger le trafic de mise à jour destiné à notepad-plus-plus.org</strong></em>« , précise l’équipe, tout en reconnaissant que « <em><strong>le mécanisme technique exact reste à l’étude</strong></em>« .</p>
+<p>Le détail clé est la localisation de l’action : après que le trafic a quitté l’ordinateur de l’utilisateur, mais avant qu’il n’atteigne le serveur légitime. Cette zone grise, entre machine cliente et infrastructure officielle, ouvre la voie à des attaques dites “en cours de route”. Elles sont difficiles à détecter, parce que l’utilisateur croit interagir avec un processus normal, et qu’elles laissent parfois peu de traces, surtout si le ciblage reste limité.</p>
+<p><a href="https://notepad-plus-plus.org/news/hijacked-incident-info-update/" target="_blank">Les développeurs</a> insistent sur ce point : la redirection a été sélective. Autrement dit, pas de diffusion massive, pas d’infection à grande échelle revendiquée, mais des déviations ciblées visant certains utilisateurs. Le projet ne précise pas combien de systèmes ont été visés ni combien ont effectivement contacté des serveurs malveillants. Cette opacité n’est pas surprenante : dans ce type d’opération, la mesure d’impact dépend d’indices réseau et de journaux parfois incomplets, et l’attaquant a intérêt à minimiser le bruit.</p>
+
+<div>
+<p><a href="https://www.zataz.com/svz-emote-2/"><img src="https://www.zataz.com/wp-content/uploads/SVZ-Emote-2.png" alt="" /></a>SERVICE DE VEILLE ZATAZ</p>
+<p><strong>Alerte</strong> : savoir si vos données personnelles ont fuité.</p>
+
+<p>À partir de <strong>0,06 €</strong> / jour</p>
+<p><strong>Activation rapide • Alertes prioritaires • Veille web, dark web</strong></p>
+<p>Sans prestataire extérieur • 100 % souverain</p>
+</div>
+
+<h3>Chronologie, attribution prudente, et le précédent ShadowHammer</h3>
+<p>Selon l’équipe, le détournement a commencé en juin 2025 et s’est poursuivi jusqu’en décembre. Les développeurs citent les analyses de plusieurs chercheurs indépendants concluant que l’activité est probablement liée à un acteur parrainé par l’État chinois. Ni les chercheurs ni les méthodes ne sont identifiés publiquement, et le texte rappelle une réalité utile : ces attributions reposent souvent sur des faisceaux d’indices, réutilisation d’infrastructures, styles opératoires, profils de ciblage, plutôt que sur une preuve directe montrable. Cela rend la conclusion difficile à vérifier de façon définitive, même lorsque le soupçon est cohérent.</p>
+<p>Pour contextualiser, le projet évoque des tactiques déjà observées. En 2018, la campagne ShadowHammer avait compromis l’infrastructure de distribution des mises à jour d’ASUS. Comme l’a relevé SentinelOne, des mises à jour malveillantes auraient été diffusées potentiellement à des centaines de milliers de systèmes, mais l’intérêt réel des attaquants semblait se limiter à quelques centaines de cibles. La comparaison éclaire la stratégie : utiliser la capacité de distribution d’un éditeur comme levier, tout en ne déclenchant l’étape “utile” que sur une poignée d’objectifs, afin de rester sous les radars.</p>
+<p>Notepad++ dit suivre un schéma similaire. La redirection n’a pas été généralisée et n’a pas touché tous les utilisateurs. Pour les défenseurs, c’est presque le pire cas : une attaque qui ne fait pas d’épidémie est plus dure à repérer, car les signaux faibles ne deviennent jamais des signaux bruyants. Du point de vue renseignement, ce type de campagne ressemble moins à une opération criminelle opportuniste qu’à une collecte ciblée, où la furtivité compte plus que le volume.</p>
+<p>L’équipe indique avoir migré l’infrastructure de mise à jour vers un nouvel hébergeur et ajouté des contrôles de sécurité supplémentaires dans la version 8.9.1 afin de renforcer le mécanisme. Les utilisateurs sont invités à mettre à jour par précaution. Un élément humain conclut l’avis : « <em><strong>Je présente mes plus sincères excuses à tous les utilisateurs touchés par ce détournement</strong></em>« , écrit l’auteur.</p>
+<p>Ce dossier rappelle une leçon simple : quand la confiance est encapsulée dans une mise à jour, l’attaque la plus efficace n’est pas forcément d’écrire du code malveillant, mais de détourner le chemin qui l’achemine.</p>
+
+<div>
+<p><a href="https://www.zataz.com/?attachment_id=44142"><img src="https://www.zataz.com/wp-content/uploads/news-letter-zataz-emote-1.png" alt="" /></a>News &amp; Réseaux Sociaux ZATAZ</p>
+
+
+
+<p>Chaque vendredi midi, recevez gratuitement les actualités de la semaine.</p>
+
+
+</div>
+</div></div>
+  </div>
+</body>
+</html>

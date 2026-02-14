@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctionne</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Utiliser Google Earth sur Raspberry Pi : la solution Web qui fonctionne</h1>
+  <div class="metadata">
+    Source: Framboise 314 | Date: 12/17/2025 | Lang: FR |
+    <a href="https://www.framboise314.fr/google-earth-raspberry-pi-web/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+			<p>L’application <strong>Google Earth</strong> n’est plus réellement maintenue sous Linux, et elle n’existe plus du tout en version native pour les architectures <strong>ARM</strong>, comme celles des <strong>Raspberry Pi</strong>. La dernière version officielle pour Linux date de <strong>2020</strong>, et son installation sur un Pi (ARM) est aujourd’hui vouée à l’échec. En pratique, pour utiliser Google Earth sous forme d’application, il faut désormais passer par un <strong>PC sous Windows</strong>. Heureusement, Google propose une alternative via <strong>Google Earth Web</strong>, utilisable directement depuis un navigateur. C’est la solution qu’a testée <strong>Alain, lecteur du blog</strong>, avec Firefox. Raspberry Pi OS <em>Bookworm</em> proposant <strong>Chromium par défaut</strong>, j’ai donc repris cette approche et testé le fonctionnement de Google Earth Web sur <strong>Raspberry Pi 5</strong>.</p>
+
+<div><p>Au sommaire :</p><ul><li><a href="#Utiliser_Google_Earth_sur_Raspberry_Pi_avec_la_version_Web"><span>1</span> Utiliser Google Earth sur Raspberry Pi avec la version Web</a><ul><li><a href="#Introduction"><span>1.1</span> Introduction</a></li><li><a href="#Pourquoi_Google_Earth_desktop_nest_plus_adapte_au_Raspberry_Pi"><span>1.2</span> Pourquoi Google Earth « desktop » n’est plus adapté au Raspberry Pi</a></li><li><a href="#Test_de_Google_Earth_Web_sur_Raspberry_Pi_5_avec_Chromium"><span>1.3</span> Test de Google Earth Web sur Raspberry Pi 5 avec Chromium</a><ul><li><a href="#Configuration_du_Raspberry_Pi_utilise_pour_le_test"><span>1.3.1</span> Configuration du Raspberry Pi utilisé pour le test</a></li></ul></li><li><a href="#Creer_des_reperes_et_exporter_des_fichiers_KML_avec_Google_Earth_Web"><span>1.4</span> Créer des repères et exporter des fichiers KML avec Google Earth Web</a><ul><li><a href="#Creer_un_repere_dans_Google_Earth_Web"><span>1.4.1</span> Créer un repère dans Google Earth Web</a></li><li><a href="#Enregistrer_et_exporter_un_projet_au_format_KML"><span>1.4.2</span> Enregistrer et exporter un projet au format KML</a></li><li><a href="#Que_contient_reellement_le_fichier_KML_exporte"><span>1.4.3</span> Que contient réellement le fichier KML exporté ?</a><ul><li><a href="#_Un_fichier_KML_cest_aussi_du_XML"><span>1.4.3.1</span> 📄 Un fichier KML, c’est aussi du XML</a></li></ul></li></ul></li><li><a href="#Importer_un_parcours_KML_pour_afficher_une_traceitineraire"><span>1.5</span> Importer un parcours (KML) pour afficher une trace/itinéraire</a></li><li><a href="#Afficher_un_parcours_bien_visible_important_en_cas_de_daltonisme"><span>1.6</span> Afficher un parcours bien visible (important en cas de daltonisme)</a></li><li><a href="#Conclusion"><span>1.7</span> Conclusion</a></li><li><a href="#Sources"><span>1.8</span> Sources</a></li></ul></li></ul></div>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_01.jpg" alt="" /></p>
+<h2><span>Introduction</span></h2>
+<p>Google Earth a longtemps été un outil incontournable pour explorer la planète, préparer des cours de géographie ou illustrer des projets pédagogiques. Sur PC, l’application Google Earth (et Google Earth Pro) a rendu de fiers services à des générations d’enseignants, de curieux et de makers.</p>
+<p>Sur Raspberry Pi, en revanche, l’utilisation de Google Earth sous forme d’application native n’est plus une option réaliste. La version Linux n’est plus maintenue depuis plusieurs années et, surtout, aucune version officielle n’existe pour l’architecture ARM (ARM32/ARM64) des Raspberry Pi. Les tentatives d’installation via les gestionnaires de paquets ou via Wine se soldent le plus souvent par des échecs ou des solutions instables.</p>
+<p>Heureusement, Google propose une alternative simple et efficace : <strong>Google Earth Web</strong>, accessible directement depuis un navigateur, sans installation. C’est cette solution qu’a utilisée <strong>Alain</strong>, lecteur du blog, qui m’a contacté pour partager sa méthode, testée avec Firefox.</p>
+<p>Raspberry Pi OS <strong>Bookworm</strong> proposant <strong>Chromium</strong> par défaut, j’ai repris l’approche d’Alain et testé Google Earth Web sur <strong>Raspberry Pi 5</strong>, afin de vérifier si cette solution constitue aujourd’hui le meilleur compromis pour utiliser Google Earth sur un Pi, simplement et sans prise de tête.</p>
+<h2><span>Pourquoi Google Earth « desktop » n’est plus adapté au Raspberry Pi</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_02.jpg" alt="" /></p>
+<p>Google Earth Pro a bien existé sous Linux, mais sa dernière mise à jour officielle remonte à <strong>2020</strong>. Depuis, l’application n’a plus évolué pour suivre les distributions modernes, et elle n’a jamais été portée sur l’architecture ARM.</p>
+<p>Google Earth desktop est en effet conçu pour des systèmes x86/x64 (PC classiques). Sur Raspberry Pi, qui repose sur une architecture ARM, il n’existe donc aucun paquet officiel compatible. Les installations via Synaptic ou APT se heurtent rapidement à des dépendances obsolètes, et l’utilisation de Wine ajoute une couche de complexité et d’instabilité, avec des performances souvent décevantes.</p>
+<p>Finalement pour utiliser Google Earth sous forme d’application native, un PC sous Windows ou macOS reste aujourd’hui la seule solution viable. Sur Raspberry Pi, la version Web s’impose comme l’approche la plus raisonnable et la plus efficace.</p>
+<h2><span>Test de Google Earth Web sur Raspberry Pi 5 avec Chromium</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_03.jpg" alt="" /></p>
+<p>Pour ce test, j’ai utilisé un <strong>Raspberry Pi 5</strong> sous Raspberry Pi OS <strong>Bookworm</strong>, avec le navigateur <strong>Chromium</strong> installé par défaut. Aucun plugin particulier n’a été ajouté, et aucune configuration spécifique n’a été nécessaire côté système.</p>
+<h3><span>Configuration du Raspberry Pi utilisé pour le test</span></h3>
+<ul>
+<li><strong>Modèle :</strong> Raspberry Pi 5</li>
+<li><strong>Processeur :</strong> Broadcom BCM2712, quad-core Arm Cortex-A76</li>
+<li><strong>Mémoire :</strong> 8 Go de RAM</li>
+<li><strong>Stockage :</strong> SSD NVMe (système installé sur NVMe)</li>
+<li><strong>Système :</strong> Raspberry Pi OS Bookworm (64 bits)</li>
+<li><strong>Environnement graphique :</strong> Wayland (labwc)</li>
+<li><strong>Navigateur :</strong> Chromium (version fournie avec Bookworm)</li>
+<li><strong>Accélération graphique :</strong> WebGL via GPU Broadcom V3D</li>
+</ul>
+<p>L’accès à Google Earth Web se fait simplement via l’adresse  <a href="https://earth.google.com/web" target="_blank">https://earth.google.com/web</a></p>
+<p>Après la fermeture des fenêtres d’introduction, l’interface se charge correctement et la navigation est immédiatement opérationnelle.</p>
+<p>Dans ce contexte, les fonctions essentielles sont parfaitement utilisables : recherche de lieux (pays, villes, adresses), affichage satellite, zoom avant et arrière, déplacement sur la carte et création de repères. L’affichage reste fluide dans une utilisation classique, tant que l’on se limite à des vues globales ou modérément inclinées.</p>
+<p>Sur Raspberry Pi 5, Google Earth Web s’appuie sur l’accélération graphique via WebGL. Le rendu passe par Chromium et le GPU du Pi, ce qui permet une expérience confortable pour un usage pédagogique ou exploratoire. Les ralentissements apparaissent surtout lors des vues très rapprochées du sol ou des rotations 3D complexes, ce qui reste cohérent avec les limites actuelles du WebGL sur architecture ARM.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_00.png" alt="" /></p>
+<p>Dans l’ensemble, ce test confirme que Google Earth Web constitue une solution parfaitement exploitable sur Raspberry Pi 5. Sans égaler l’ancienne application desktop sur PC, elle permet néanmoins de retrouver l’essentiel des usages courants de Google Earth, sans installation et sans bricolage.</p>
+<h2><span>Créer des repères et exporter des fichiers KML avec Google Earth Web</span></h2>
+<p>Au-delà de la simple exploration visuelle, Google Earth Web permet de créer facilement des <strong>repères géographiques</strong> et de les exporter sous forme de fichiers <strong>KML</strong>. Cette fonctionnalité est particulièrement intéressante dans un cadre pédagogique, pour préparer un cours, illustrer un parcours ou conserver des points d’intérêt.</p>
+<p>Dans Google Earth Web, l’ensemble des repères et parcours créés est regroupé dans un Projet. C’est ce Projet qui peut être exporté au format KML.</p>
+<h3><span>Créer un repère dans Google Earth Web</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_04.jpg" alt="" /></p>
+<p>Après avoir ouvert Google Earth Web dans le navigateur, il suffit de rechercher une ville, un pays ou une zone précise à l’aide du champ de recherche. Une fois la zone affichée à l’écran, faites un clic droit à l endroit où vous voulez poser un repère et sélectionnez « Ajouter un repère ici » dans le menu qui s’ouvre. (Ici j’ai sélectionné la mairie de Le Creusot)</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_05.jpg" alt="" /></p>
+<p>Vous pouvez choisir de stocker le repère dans une nouvelle carte que vous pourrez partager, ou de l enregistrer dans un <strong>fichier KML</strong> local. c’est cette option que je choisis.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_06.jpg" alt="" /></p>
+<p>Donnez un nom à votre repère et réglez les paramètres dans la fenêtre qui s’ouvre.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_07.jpg" alt="" /></p>
+<p>La fenêtre résume les informations.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_08.jpg" alt="" /></p>
+<p>Le repère positionné apparait sur la carte.</p>
+<p>J’ai refait la même chose pour le FabLab UtoPi de Le Creusot.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_09.jpg" alt="" /></p>
+<p>Le repère apparaît alors sous forme d’une épingle. Il est possible de lui donner un nom explicite et, si besoin, d’ajouter une description.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_10.jpg" alt="" /></p>
+<p>Ces repères se retrouvent dans la partie gauche de la fenêtre.</p>
+<h3><span>Enregistrer et exporter un projet au format KML</span></h3>
+<p>Une fois un ou plusieurs repères créés, Google Earth Web permet d’enregistrer l’ensemble dans un projet. Ce projet peut ensuite être exporté très simplement au format <strong>.KML</strong>, via le menu des projets.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_11.jpg" alt="" /></p>
+<p>La carte ne porte pas de nom pour le moment. Cliquez sur « <strong>Carte sans titre</strong> » et … donnez un titre !</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_12.jpg" alt="" /></p>
+
+<p>Faisant preuve d’une grande originalité, j’ai appelé la carte « <strong>FabLabUtoPi</strong>« … et on voit que la carte est enregistrée en local (<em>Enregistré sur cet appareil</em>).</p>
+
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_13.jpg" alt="" /></p>
+<p>En haut à gauche de la carte cliquez sur <strong>Fichier</strong>, et sélectionnez <em><strong>Exporter en tant que fichier KML</strong></em></p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_14.jpg" alt="" /></p>
+<p>Le fichier KML ainsi généré peut être stocké localement, archivé ou réutilisé ultérieurement. Il est compatible avec de nombreux outils de cartographie, dont Google Earth sur PC, Google My Maps ou encore des logiciels SIG comme QGIS.</p>
+<p>Lors de l’export via <strong>Fichier &gt; Exporter en tant que fichier KML</strong>, Google Earth Web génère directement un fichier <code>.kml</code> qui est enregistré dans le dossier <em>Téléchargements</em> du Raspberry Pi. Le navigateur n’affiche pas toujours de fenêtre de confirmation, mais le fichier est bien présent sur la machine utilisée.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_15.jpg" alt="" /></p>
+<p>Cette possibilité d’export rend Google Earth Web particulièrement adapté à un usage sur Raspberry Pi : les données créées lors d’une séance peuvent être conservées, partagées ou réutilisées sur d’autres machines, indépendamment du navigateur ou du système utilisé.</p>
+<h3><span>Que contient réellement le fichier KML exporté ?</span></h3>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_16.jpg" alt="" /></p>
+<p>Le fichier <code>.kml</code> généré par Google Earth Web est un simple fichier texte structuré, lisible et standardisé. On y retrouve d’abord le nom du projet (ici <strong>FabLabUtoPi</strong>), puis l’ensemble des repères (<em>Placemark</em>) créés sur la carte, chacun avec son nom, ses coordonnées géographiques précises (latitude, longitude et altitude) et les paramètres de vue associés.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_17.jpg" alt="" /></p>
+<p>Chaque repère contient notamment un bloc <code>&lt;Point&gt;</code> avec les coordonnées GPS exactes, ce qui permet de réutiliser le fichier sans perte de précision dans d’autres outils comme Google Earth sur PC, Google My Maps ou des logiciels SIG tels que QGIS.</p>
+<p>Le fichier inclut également des informations de style (icône, couleur, taille du repère, étiquette), générées automatiquement par Google Earth Web. Ces styles permettent de conserver l’apparence visuelle des repères lors de l’import du fichier, sans aucune intervention manuelle.</p>
+<p>Enfin, on note la présence de paramètres de caméra (<code>&lt;LookAt&gt;</code>) associés à chaque repère, qui définissent le point de vue (zoom, orientation, inclinaison). Cela permet, lors de la réouverture du fichier, de retrouver immédiatement une vue cohérente et exploitable autour de chaque point d’intérêt.</p>
+<div>
+<h4><span>📄 Un fichier KML, c’est aussi du XML</span></h4>
+<p>Un fichier <code>.kml</code> est en réalité un fichier <strong>XML</strong>, c’est-à-dire un format texte structuré, lisible par un humain et interprétable par de nombreux logiciels de cartographie.<br />
+Chaque repère est décrit par des balises XML explicites, avec son nom, ses coordonnées GPS et éventuellement des informations de style ou de point de vue.<br />
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_19.jpg" alt="" />Cette structure XML explique pourquoi un fichier KML peut être facilement  modifié, analysé ou réutilisé dans d’autres outils comme QGIS, Google Earth sur PC ou même des scripts automatisés.</p>
+</div>
+<h2><span>Importer un parcours (KML) pour afficher une trace/itinéraire</span></h2>
+<p>Un fichier KML ne sert pas qu’à poser des repères : il peut aussi contenir un <strong>parcours</strong> (une “trace” ou un “itinéraire”) sous forme de ligne, via un objet <code>&lt;LineString&gt;</code>. C’est très pratique pour illustrer un trajet (randonnée, balade, circuit touristique, parcours pédagogique…), ou pour visualiser un chemin entre plusieurs points.</p>
+<p>Pour avoir un exemple immédiatement visible, vous pouvez importer un KML “démo” qui contient justement une section <em>LineString Tests</em> avec un tracé (nommé <em>Habour Wall</em>). Dans Google Earth Web, ouvrez <strong>Fichier</strong> → <strong>Ouvrir</strong> <strong>un fichier KML local</strong>, puis sélectionnez le fichier téléchargé. Une fois importé, cliquez sur le nom du tracé : Google Earth zoome dessus et affiche la ligne sur la carte.</p>
+<p><strong>Fichier KML d’exemple (à télécharger)</strong> :</p>
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p></div>
+				</td>
+						<td><div><p><span>https</span><span>:</span><span>//raw.githubusercontent.com/eisoldt/simplekml/master/samples/examples/E01%20Basics.kml</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+<p>Techniquement, un parcours KML ressemble à ceci (version simplifiée) : une balise <code>&lt;Placemark&gt;</code> contient un <code>&lt;LineString&gt;</code>, lui-même composé d’une liste de coordonnées <code>longitude,latitude,altitude</code> :</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_21.jpg" alt="" /></p>
+<p>À retenir : <code>&lt;tessellate&gt;1&lt;/tessellate&gt;</code> force la ligne à “coller” au relief (sinon elle peut apparaître comme une corde tendue). Et si vous voulez un parcours plus long, ajoutez simplement plus de points dans <code>&lt;coordinates&gt;</code>.</p>
+<h2><span>Afficher un parcours bien visible (important en cas de daltonisme)</span></h2>
+<p><strong>Nota :</strong> Un repère correspond à un point unique (un lieu), tandis qu’un parcours est une ligne reliant plusieurs points dans un ordre donné.</p>
+<p>Par défaut, les parcours KML sont souvent tracés avec des lignes fines et colorées, peu visibles sur une vue satellite, et parfois difficiles à distinguer pour les personnes daltoniennes (et je sais de quoi je parle). Heureusement, le format KML permet de forcer à la fois <strong>la couleur</strong> et <strong>l’épaisseur</strong> du tracé.</p>
+<p>Pour les démonstrations et l’usage pédagogique, il est fortement conseillé d’utiliser une ligne <strong>très épaisse</strong> et <strong>à fort contraste</strong> (blanc ou noir), qui reste visible quelle que soit la carte affichée. ici on a du blanc en 18px de large.</p>
+
+
+
+
+		<div>
+				<table>
+					<tbody><tr>
+				<td>
+					<div><p>1</p><p>2</p><p>3</p><p>4</p><p>5</p><p>6</p><p>7</p><p>8</p></div>
+				</td>
+						<td><div><p><span>&amp;</span><span>lt</span><span>;</span><span>Style</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>    </span><span>&amp;</span><span>lt</span><span>;</span><span>LineStyle </span><span>id</span><span>=</span><span>"substyle_3"</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>        </span><span>&amp;</span><span>lt</span><span>;</span><span>color</span><span>&amp;</span><span>gt</span><span>;</span><span>ffffffff</span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>color</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>        </span><span>&amp;</span><span>lt</span><span>;</span><span>colorMode</span><span>&amp;</span><span>gt</span><span>;</span><span>normal</span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>colorMode</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>        </span><span>&amp;</span><span>lt</span><span>;</span><span>width</span><span>&amp;</span><span>gt</span><span>;</span><span>18</span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>width</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>    </span><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>LineStyle</span><span>&amp;</span><span>gt</span><span>;</span></p><p><span>&amp;</span><span>lt</span><span>;</span><span>/</span><span>Style</span><span>&amp;</span><span>gt</span><span>;</span></p></div></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+<p>Décodage de la couleur ffffffff:</p>
+<p>AA = ff → 100 % opaque<br />
+BB = ff → bleu à fond<br />
+GG = ff → vert à fond<br />
+RR = ff → rouge à fond<br />
+👉 Résultat : blanc opaque, parfait pour la lisibilité.</p>
+<p><strong>À noter :</strong> la valeur <code>&lt;width&gt;</code> d’un tracé KML n’est pas exprimée en pixels au sens CSS du terme, mais correspond à une épaisseur d’affichage à l’écran. En pratique, Google Earth l’interprète visuellement comme des pixels. Des valeurs élevées (10 à 18) sont recommandées pour garantir une bonne lisibilité, notamment en contexte pédagogique ou en cas de daltonisme.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/Google_Earth_Pi5_18.jpg" alt="" /></p>
+<p>Voici un exemple de fichier KML contenant un parcours volontairement très lisible (ligne blanche épaisse).</p>
+<div>
+<p><strong>Objectifs pédagogiques possibles :</strong></p>
+<ul>
+<li>Comprendre le principe de coordonnées géographiques (longitude / latitude)</li>
+<li>Créer et structurer des données géographiques (repères, parcours)</li>
+<li>Découvrir un format de données ouvert (KML / XML)</li>
+<li>Exporter et réutiliser un fichier sur différents outils</li>
+</ul>
+</div>
+<div>
+<p>🎓 Activité en classe : “Notre ville en repères + parcours” (KML)</p>
+<p>Objectif : apprendre à <strong>créer des repères</strong>, <strong>tracer un parcours</strong> et <strong>exporter/importer</strong> un fichier <strong>KML</strong> (format standard basé sur XML).</p>
+<ol>
+<li><strong>Ouvrir</strong> Google Earth Web dans Chromium (ou Firefox).</li>
+<li><strong>Créer 3 repères</strong> : l’école, un lieu public (mairie/bibliothèque), un lieu “science/tech” (fablab, musée…).</li>
+<li><strong>Ajouter un parcours</strong> : relier les repères en créant une ligne (ou importer un KML fourni par l’enseignant).</li>
+<li><strong>Exporter</strong> le projet en <code>.kml</code> (dossier <em>Téléchargements</em>).</li>
+<li><strong>Échange</strong> : un binôme importe le KML d’un autre groupe, vérifie les repères, et ajoute un repère “bonus”.</li>
+</ol>
+<p>✅ Évaluation rapide : le fichier KML final doit contenir <strong>au moins 3 &lt;Placemark&gt;</strong> et <strong>un &lt;LineString&gt;</strong> (parcours).<br />
+💡 Astuce lisibilité : pour un tracé très visible (daltonisme), utiliser une ligne <strong>blanche ou noire</strong> et <strong>épaisse</strong> (ex. <code>&lt;width&gt;14&lt;/width&gt;</code> à <code>18</code>).</p>
+</div>
+<h2><span>Conclusion</span></h2>
+<p>Même si l’application Google Earth « desktop » n’est plus adaptée aux Raspberry Pi, la version Web permet aujourd’hui de conserver l’essentiel des usages, sans installation et sans configuration particulière. Sur Raspberry Pi 5, Google Earth Web offre une expérience suffisamment fluide pour l’exploration, la création de repères et la manipulation de parcours, tout en restant accessible depuis un simple navigateur.</p>
+<p>L’export des projets au format <strong>KML</strong> constitue un atout majeur : les données produites ne sont pas enfermées dans l’outil, mais réutilisables, archivables et exploitables dans d’autres environnements comme Google Earth sur PC ou des logiciels SIG tels que QGIS. Le format KML, basé sur XML, permet ainsi de passer d’une approche visuelle à une véritable manipulation de données géographiques structurées.</p>
+<p>Dans un contexte pédagogique, et en particulier en <strong>SVT</strong>, Google Earth Web sur Raspberry Pi permet de travailler sur des situations concrètes : localisation de sites, lecture de coordonnées GPS, représentation de parcours, mise en relation d’observations de terrain avec des données spatialisées. Les élèves ne se contentent pas de consulter une carte : ils produisent un fichier, le structurent et peuvent le réutiliser ou l’enrichir ultérieurement.</p>
+<p>Cette approche s’inscrit pleinement dans une démarche scientifique : observer, localiser, représenter, structurer et partager des données. À ce titre, Google Earth Web constitue une solution simple, moderne et parfaitement adaptée à un usage pédagogique sur Raspberry Pi, que ce soit en classe, en travaux pratiques ou dans le cadre de projets pluridisciplinaires.</p>
+<p><strong>Google Earth Web s’impose aujourd’hui comme la solution la plus simple<br />
+</strong><strong>et la plus efficace pour utiliser Google Earth sur Raspberry Pi,<br />
+y compris dans un cadre pédagogique.</strong></p>
+<h2><span>Sources</span></h2>
+<p><a href="https://earth.google.com/web/" target="_blank">https://earth.google.com/web/</a></p>
+<p><a href="https://www.openstreetmap.org/#map=6/46.45/2.21" target="_blank">https://www.openstreetmap.org/#map=6/46.45/2.21</a></p>
+<blockquote><p><a href="https://www.geo-soft.fr/logiciels-sig/qgis/">QGIS</a></p></blockquote>
+
+					</div></div>
+  </div>
+</body>
+</html>

@@ -7,35 +7,214 @@
     <title>AI-Pulse README</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
             color: #e2e8f0;
-            padding: 40px 20px;
+            padding: 0;
             line-height: 1.6;
             min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .main-layout { display: flex; }
+
+        /* ─── Top Navigation Bar ─── */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            padding: 0 20px;
         }
 
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
+        .top-nav label {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-right: 10px;
+        }
+
+        .top-nav select {
+            padding: 8px 14px;
+            background: rgba(0, 0, 0, 0.3);
             color: #00d9ff;
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: inherit;
+            cursor: pointer;
+            min-width: 200px;
         }
+
+        .top-nav select:hover {
+            border-color: #00d9ff;
+        }
+
+        .top-nav select:focus {
+            outline: none;
+            border-color: #00d9ff;
+        }
+
+        .top-nav select option {
+            background: #0a0e27;
+            color: #e2e8f0;
+        }
+
+
+        /* ─── Preferences Button ─── */
+        .prefs-toggle {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 200;
+            background: linear-gradient(135deg, #00d9ff, #825ee4);
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+            transition: all 0.2s;
+        }
+
+        .prefs-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5); }
+
+        /* ─── Preferences Panel ─── */
+        .prefs-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 300;
+        }
+
+        .prefs-overlay.open { display: block; }
+
+        .prefs-panel {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 400px;
+            height: 100vh;
+            background: rgba(10, 14, 39, 0.98);
+            border-left: 1px solid rgba(0, 217, 255, 0.2);
+            z-index: 301;
+            padding: 25px;
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            backdrop-filter: blur(15px);
+        }
+
+        .prefs-panel.open { right: 0; }
+
+        .prefs-panel h2 {
+            color: #00d9ff;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+        }
+
+        .prefs-section { margin-bottom: 22px; }
+
+        .prefs-section h4 {
+            color: #cbd5e1;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .prefs-section label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 5px 0;
+            color: #94a3b8;
+            font-size: 0.88rem;
+            cursor: pointer;
+        }
+
+        .prefs-section label:hover { color: #e2e8f0; }
+
+        .prefs-section input[type="checkbox"] {
+            accent-color: #00d9ff;
+            width: 16px;
+            height: 16px;
+        }
+
+        .prefs-section select,
+        .prefs-section input[type="text"] {
+            width: 100%;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 217, 255, 0.2);
+            border-radius: 6px;
+            color: #e2e8f0;
+            font-size: 0.88rem;
+            font-family: inherit;
+        }
+
+        .prefs-section select:focus,
+        .prefs-section input[type="text"]:focus {
+            outline: none;
+            border-color: #00d9ff;
+            box-shadow: 0 0 8px rgba(0, 217, 255, 0.2);
+        }
+
+        .prefs-section input[type="range"] { width: 100%; accent-color: #00d9ff; }
+        .range-value { color: #00d9ff; font-weight: 600; font-size: 0.9rem; }
+
+        .prefs-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .prefs-close:hover { color: #00d9ff; }
+
+        .prefs-reset {
+            width: 100%;
+            padding: 10px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            color: #fca5a5;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .prefs-reset:hover { background: rgba(239, 68, 68, 0.2); }
+
+        /* ─── Content Area ─── */
+        .content-area {
+            margin: 0 auto;
+            padding: 70px 30px 60px;
+            max-width: 960px;
+        }
+
+        .loading { text-align: center; padding: 60px 20px; color: #00d9ff; }
 
         .spinner {
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border: 4px solid rgba(0, 217, 255, 0.1);
             border-top: 4px solid #00d9ff;
             border-radius: 50%;
@@ -43,15 +222,7 @@
             margin: 0 auto 20px;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .error {
             background: rgba(239, 68, 68, 0.1);
@@ -63,11 +234,72 @@
         }
 
         #readme-content {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.03);
             padding: 30px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 217, 255, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 217, 255, 0.1);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+        }
+
+        /* ─── Section Separators ─── */
+        #readme-content section[data-category] {
+            padding: 30px 25px;
+            margin: 30px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 217, 255, 0.1);
+            border-radius: 12px;
+            border-left: 4px solid #00d9ff;
+            scroll-margin-top: 80px;
+        }
+
+        #readme-content section[data-category]:first-of-type { margin-top: 0; }
+
+        #readme-content section[data-category]:last-of-type { margin-bottom: 0; }
+
+        /* ─── Article Items ─── */
+        #readme-content .article-item {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.2s;
+        }
+
+        #readme-content .article-item:hover {
+            background: rgba(0, 217, 255, 0.03);
+            border-color: rgba(0, 217, 255, 0.15);
+        }
+
+        #readme-content .article-item.hidden { display: none; }
+
+        #readme-content section.hidden { display: none; }
+
+        /* Read articles group */
+        .read-articles-group {
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: rgba(130, 94, 228, 0.1);
+            border: 1px solid rgba(130, 94, 228, 0.2);
+            border-radius: 8px;
+        }
+
+        .read-articles-group summary {
+            cursor: pointer;
+            color: #825ee4;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 5px 0;
+        }
+
+        .read-articles-group summary:hover {
+            color: #a78bfa;
+        }
+
+        .read-articles-group .article-item {
+            opacity: 0.7;
+            margin: 8px 0;
+            padding: 10px;
+            font-size: 0.9rem;
         }
 
         #readme-content h1 {
@@ -81,32 +313,16 @@
 
         #readme-content h2 {
             color: #00d9ff;
-            margin-top: 30px;
+            margin-top: 10px;
             margin-bottom: 15px;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
+            scroll-margin-top: 20px;
         }
 
-        #readme-content h3 {
-            color: #64b5f6;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        #readme-content p {
-            margin-bottom: 15px;
-            color: #cbd5e1;
-        }
-
-        #readme-content ul,
-        #readme-content ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        #readme-content li {
-            margin-bottom: 8px;
-            color: #cbd5e1;
-        }
+        #readme-content h3 { color: #64b5f6; margin-top: 10px; margin-bottom: 8px; }
+        #readme-content p { margin-bottom: 10px; color: #cbd5e1; }
+        #readme-content ul, #readme-content ol { margin-left: 25px; margin-bottom: 15px; }
+        #readme-content li { margin-bottom: 8px; color: #cbd5e1; }
 
         #readme-content a {
             color: #00d9ff;
@@ -115,10 +331,7 @@
             border-bottom: 1px solid transparent;
         }
 
-        #readme-content a:hover {
-            border-bottom: 1px solid #00d9ff;
-            text-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
-        }
+        #readme-content a:hover { border-bottom: 1px solid #00d9ff; text-shadow: 0 0 10px rgba(0, 217, 255, 0.5); }
 
         #readme-content code {
             background: rgba(0, 0, 0, 0.3);
@@ -139,21 +352,15 @@
             border: 1px solid rgba(0, 217, 255, 0.2);
         }
 
-        #readme-content pre code {
-            background: none;
-            padding: 0;
-            color: #e2e8f0;
-            border: none;
-        }
+        #readme-content pre code { background: none; padding: 0; color: #e2e8f0; border: none; }
 
         #readme-content blockquote {
             border-left: 4px solid #00d9ff;
-            padding-left: 15px;
+            padding: 10px 15px;
             margin: 15px 0;
             color: #94a3b8;
             font-style: italic;
             background: rgba(0, 217, 255, 0.05);
-            padding: 10px 15px;
         }
 
         #readme-content img {
@@ -162,63 +369,31 @@
             margin: 15px 0;
             border-radius: 8px;
             border: 1px solid rgba(0, 217, 255, 0.2);
-            position: relative;
         }
 
-        /* Animated Banner Effect */
         #readme-content img[src*="banner.png"] {
-            position: relative;
             box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
             animation: pulse-glow 3s infinite alternate;
         }
 
-        #readme-content img[src*="banner.png"]::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 255, 255, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 2px, 3px 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-
         @keyframes pulse-glow {
-            0% {
-                box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
-            }
-
-            100% {
-                box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(130, 94, 228, 0.4);
-            }
+            0% { box-shadow: 0 0 15px rgba(0, 217, 255, 0.3); }
+            100% { box-shadow: 0 0 30px rgba(0, 217, 255, 0.6), 0 0 60px rgba(130, 94, 228, 0.4); }
         }
 
-        #readme-content table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
+        #readme-content table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        #readme-content th, #readme-content td { border: 1px solid rgba(0, 217, 255, 0.2); padding: 10px; text-align: left; }
+        #readme-content th { background: rgba(0, 217, 255, 0.1); color: #00d9ff; font-weight: 600; }
+        #readme-content td { background: rgba(255, 255, 255, 0.03); }
+
+        #readme-content hr {
+            border: none;
+            height: 1px;
+            background: rgba(0, 217, 255, 0.15);
+            margin: 10px 0;
         }
 
-        #readme-content th,
-        #readme-content td {
-            border: 1px solid rgba(0, 217, 255, 0.2);
-            padding: 10px;
-            text-align: left;
-        }
-
-        #readme-content th {
-            background: rgba(0, 217, 255, 0.1);
-            color: #00d9ff;
-            font-weight: 600;
-        }
-
-        #readme-content td {
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        /* Elevator Buttons */
+        /* ─── Elevator Buttons ─── */
         .elevator {
             position: fixed;
             right: 20px;
@@ -226,19 +401,16 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
-            z-index: 1000;
+            z-index: 100;
         }
 
         .elevator-btn {
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 217, 255, 0.2);
             border-radius: 50%;
             color: #00d9ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             cursor: pointer;
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
@@ -246,72 +418,153 @@
             font-size: 1.2rem;
         }
 
-        .elevator-btn:hover {
-            background: #00d9ff;
-            color: white;
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(0, 217, 255, 0.5);
+        .elevator-btn:hover { background: #00d9ff; color: white; transform: scale(1.1); box-shadow: 0 0 15px rgba(0, 217, 255, 0.5); }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .top-nav { padding: 0 10px; }
+            .top-nav label { display: none; }
+            .top-nav select { min-width: 150px; font-size: 0.8rem; }
+            .content-area { padding: 60px 15px 60px; }
+            .prefs-panel { width: 100%; right: -100%; }
         }
     </style>
 
-    <!-- Marked.js for Markdown parsing -->
     <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
-    <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="loading" id="loading">
-            <div class="spinner"></div>
-            <p>Chargement du README...</p>
+    <!-- Top Navigation Bar -->
+    <nav class="top-nav" id="topNav">
+        <label for="sectionSelect">Aller à :</label>
+        <select id="sectionSelect">
+            <option value="">-- Sections --</option>
+        </select>
+    </nav>
+
+    <!-- Preferences Toggle Button -->
+    <button class="prefs-toggle" id="prefsToggle">Personnaliser</button>
+
+    <!-- Preferences Overlay -->
+    <div class="prefs-overlay" id="prefsOverlay"></div>
+
+    <!-- Preferences Panel -->
+    <div class="prefs-panel" id="prefsPanel">
+        <button class="prefs-close" id="prefsClose">&times;</button>
+        <h2>Personnaliser votre journal</h2>
+
+        <div class="prefs-section">
+            <h4>Langue / Language</h4>
+            <select id="prefLang">
+                <option value="all">Toutes / All</option>
+                <option value="fr">Francais</option>
+                <option value="en">English</option>
+            </select>
         </div>
 
-        <div id="error" class="error" style="display: none;"></div>
+        <div class="prefs-section">
+            <h4>Categories</h4>
+            <div id="prefCategories">
+                <!-- Populated dynamically from sections -->
+            </div>
+        </div>
 
-        <div id="readme-content" style="display: none;"></div>
+        <div class="prefs-section">
+            <h4>Mots-cles / Keywords</h4>
+            <input type="text" id="prefKeywords" placeholder="Ex: LLM, ransomware, Ubuntu...">
+        </div>
+
+        <div class="prefs-section">
+            <h4>Articles par section</h4>
+            <input type="range" id="prefMaxArticles" min="3" max="50" value="30">
+            <span class="range-value" id="prefMaxArticlesValue">30</span>
+        </div>
+
+        <div class="prefs-section">
+            <label><input type="checkbox" id="prefHideRead" checked> Cacher les articles lus</label>
+        </div>
+
+        <button class="prefs-reset" id="prefsReset">Réinitialiser les preferences</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-layout">
+        <div class="content-area">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Chargement du README...</p>
+            </div>
+            <div id="error" class="error" style="display: none;"></div>
+            <nav class="quick-nav" id="quickNav" style="display: none;"></nav>
+            <div id="readme-content" style="display: none;"></div>
+        </div>
     </div>
 
     <div class="elevator">
-        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'auto'})" title="Scroll to Top">
-            ▲
-        </button>
-        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'auto'})"
-            title="Scroll to Bottom">
-            ▼
-        </button>
+        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">&#9650;</button>
+        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Scroll to Bottom">&#9660;</button>
     </div>
 
     <script>
-        // Add UTM parameters to external links
-        function addUTMParameters(url) {
-            try {
-                const urlObj = new URL(url);
-                urlObj.searchParams.set('utm_source', 'ai-pulse');
-                urlObj.searchParams.set('utm_medium', 'referral');
-                urlObj.searchParams.set('utm_campaign', 'readme');
-                return urlObj.toString();
-            } catch (e) {
-                return url;
-            }
-        }
+        // ─── Preferences Manager ────────────────────────────
+        const PrefsManager = {
+            STORAGE_KEY: 'ai_pulse_preferences',
 
-        // Safely detect GitHub links by hostname
-        function isGithubLink(href) {
-            try {
-                const urlObj = new URL(href, window.location.href);
-                const hostname = urlObj.hostname.toLowerCase();
-                return hostname === 'github.com' || hostname.endsWith('.github.com');
-            } catch (e) {
-                return false;
-            }
-        }
+            getDefaults() {
+                return {
+                    lang: 'all',
+                    categories: {},
+                    keywords: '',
+                    maxArticles: 30,
+                    hideRead: true
+                };
+            },
 
-        // Convert external links to open in iframe
+            load() {
+                try {
+                    const stored = localStorage.getItem(this.STORAGE_KEY);
+                    if (stored) return { ...this.getDefaults(), ...JSON.parse(stored) };
+                } catch (e) { /* ignore */ }
+                return this.getDefaults();
+            },
+
+            save(prefs) {
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(prefs));
+            },
+
+            reset() {
+                localStorage.removeItem(this.STORAGE_KEY);
+            }
+        };
+
+        // ─── Read History ───────────────────────────────────
+        const ReadHistory = {
+            STORAGE_KEY: 'ai_pulse_read_articles',
+
+            getAll() {
+                try {
+                    return JSON.parse(localStorage.getItem(this.STORAGE_KEY)) || [];
+                } catch (e) { return []; }
+            },
+
+            isRead(url) {
+                return this.getAll().some(a => a.url === url);
+            },
+
+            markRead(url, title) {
+                const articles = this.getAll();
+                if (!articles.some(a => a.url === url)) {
+                    articles.push({ url, title, readAt: Date.now() });
+                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+                }
+            }
+        };
+
+        // ─── Link Conversion ────────────────────────────────
         function convertLinksToIframe(content) {
             const div = document.createElement('div');
             div.innerHTML = content;
-
             const links = div.querySelectorAll('a');
             const currentOrigin = window.location.origin;
             const allowedInternalPages = ['portfolio.html', 'stats.html', 'about.html', 'reader.html', 'app.html', 'index.html', 'privacy.html'];
@@ -319,52 +572,270 @@
             links.forEach(link => {
                 const href = link.getAttribute('href');
                 if (!href) return;
-
                 try {
-                    // Normalize URL for checking
                     const url = new URL(href, currentOrigin);
-
-                    // 1. Handle Article Links (Aggregator generated)
-                    // Checks if it's our app reader link
                     if (url.pathname.endsWith('app.html') && url.searchParams.has('url')) {
                         const actualUrl = url.searchParams.get('url');
                         const title = url.searchParams.get('title') || link.textContent;
                         const source = url.searchParams.get('source') || 'README';
                         const tags = url.searchParams.get('tags') || '';
-
-                        const readerUrl = `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`;
-
-                        link.setAttribute('href', readerUrl);
+                        link.setAttribute('href', `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`);
+                        link.setAttribute('target', '_parent');
+                    } else if (url.hostname === 'github.com' || ((url.origin === currentOrigin || url.hostname === 'thephoenixagency.github.io') && allowedInternalPages.some(page => url.pathname.endsWith(page)))) {
+                        link.setAttribute('target', '_top');
+                    } else if (href.startsWith('http')) {
+                        link.setAttribute('target', '_blank');
+                    }
+                    // For local data/articles links
+                    if (href.startsWith('data/articles/')) {
+                        link.setAttribute('href', `./reader.html?url=${encodeURIComponent(href)}&title=${encodeURIComponent(link.textContent)}&source=&tags=`);
                         link.setAttribute('target', '_parent');
                     }
-                    // 2. Handle System Links (Portfolio, Stats, GitHub issues, etc.)
-                    // Strict check: must be either github.com or our domain + authorized page
-                    else if (url.hostname === 'github.com' || (
-                        (url.origin === currentOrigin || url.hostname === 'thephoenixagency.github.io') &&
-                        allowedInternalPages.some(page => url.pathname.endsWith(page))
-                    )) {
-                        link.setAttribute('target', '_top'); // Break out but stay in same tab
-                    }
-                    // 3. Handle other external links
-                    else if (href.startsWith('http')) {
-                        link.setAttribute('target', '_blank'); // Open in new tab
-                    }
-                } catch (e) {
-                    // Silently ignore invalid URLs or malformed strings
-                }
+                } catch (e) { /* ignore */ }
             });
 
             return div.innerHTML;
         }
 
+        // ─── Build Section Nav (top dropdown) ──────────────────────────────
+        function buildSectionNav() {
+            const select = document.getElementById('sectionSelect');
+            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const prefs = PrefsManager.load();
+
+            // Clear existing options except first
+            select.innerHTML = '<option value="">-- Sections --</option>';
+
+            // Add options for each visible section
+            sections.forEach(section => {
+                const cat = section.getAttribute('data-category');
+                const heading = section.querySelector('h2');
+                // Only show if category is not filtered out
+                if (heading && cat && prefs.categories[cat] !== false) {
+                    const option = document.createElement('option');
+                    option.value = cat;
+                    option.textContent = heading.textContent;
+                    select.appendChild(option);
+                }
+            });
+
+            // Handle selection change
+            select.onchange = function() {
+                if (this.value) {
+                    const target = document.getElementById(this.value);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    this.value = ''; // Reset after navigation
+                }
+            };
+        }
+
+                    const label = document.createElement('label');
+                    const input = document.createElement('input');
+
+                    input.type = 'checkbox';
+                    input.setAttribute('data-cat', cat);
+                    if (prefs.categories[cat] !== false) {
+                        input.checked = true;
+                    }
+
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(' '));
+                    label.appendChild(document.createTextNode(heading.textContent));
+
+                    container.appendChild(label);
+            const container = document.getElementById('prefCategories');
+            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            sections.forEach(section => {
+                const cat = section.getAttribute('data-category');
+                const heading = section.querySelector('h2');
+                if (heading && cat) {
+                    const checked = prefs.categories[cat] !== false ? 'checked' : '';
+                    html += `<label><input type="checkbox" data-cat="${cat}" ${checked}> ${heading.textContent}</label>`;
+                }
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ─── Apply Filters ──────────────────────────────────
+        function applyFilters() {
+            const prefs = PrefsManager.load();
+            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const readArticles = ReadHistory.getAll();
+
+            sections.forEach(section => {
+                const cat = section.getAttribute('data-category');
+
+                // Category filter
+                if (prefs.categories[cat] === false) {
+                    section.classList.add('hidden');
+                    return;
+                }
+                section.classList.remove('hidden');
+
+                const articles = section.querySelectorAll('.article-item');
+                let visibleCount = 0;
+
+                articles.forEach(article => {
+                    let visible = true;
+
+                    // Language filter
+                    if (prefs.lang !== 'all') {
+                        const articleLang = article.getAttribute('data-lang');
+                        if (articleLang && articleLang !== prefs.lang) {
+                            visible = false;
+                        }
+                    }
+
+                    // Keyword filter
+                    if (visible && prefs.keywords && prefs.keywords.trim()) {
+                        const keywords = prefs.keywords.toLowerCase().split(',').map(k => k.trim()).filter(k => k);
+                        const text = article.textContent.toLowerCase();
+                        if (keywords.length > 0 && !keywords.some(k => text.includes(k))) {
+                            visible = false;
+                        }
+                    }
+
+                    // Max articles per section
+                    if (visible && visibleCount >= prefs.maxArticles) {
+                        visible = false;
+                    }
+
+                    if (visible) {
+                        article.classList.remove('hidden');
+                        visibleCount++;
+                    } else {
+                        article.classList.add('hidden');
+                    }
+
+                    // Check if article is read
+                    const link = article.querySelector('a');
+                    const title = link ? link.textContent : '';
+                    const href = link ? link.getAttribute('href') : '';
+                    const isRead = readArticles.some(a => a.url === href || a.title === title);
+
+                    if (isRead) {
+                        article.classList.add('read-article');
+                        if (prefs.hideRead) {
+                            article.classList.add('hidden');
+                            visible = false;
+                        }
+                    }
+                });
+
+                // Create "Already read" collapsible section for read articles
+                let readSection = section.querySelector('.read-articles-group');
+                if (readSection) readSection.remove();
+
+                const readItems = section.querySelectorAll('.article-item.read-article:not(.hidden)');
+                if (readItems.length > 0 && !prefs.hideRead) {
+                    readSection = document.createElement('details');
+                    readSection.className = 'read-articles-group';
+                    readSection.innerHTML = '<summary>Déjà lus / Already read (' + readItems.length + ')</summary>';
+                    readItems.forEach(item => readSection.appendChild(item.cloneNode(true)));
+                    // Hide originals and append group
+                    readItems.forEach(item => item.classList.add('hidden'));
+                    section.appendChild(readSection);
+                }
+            });
+
+            // Rebuild section dropdown when filters change
+            buildSectionNav();
+        }
+
+        // ─── Preferences Panel Events ───────────────────────
+        function setupPrefsPanel() {
+            const prefs = PrefsManager.load();
+
+            // Set initial values
+            document.getElementById('prefLang').value = prefs.lang;
+            document.getElementById('prefKeywords').value = prefs.keywords || '';
+            document.getElementById('prefMaxArticles').value = prefs.maxArticles;
+            document.getElementById('prefMaxArticlesValue').textContent = prefs.maxArticles;
+
+            // Toggle panel
+            document.getElementById('prefsToggle').addEventListener('click', () => {
+                document.getElementById('prefsPanel').classList.add('open');
+                document.getElementById('prefsOverlay').classList.add('open');
+            });
+
+            function closePanel() {
+                document.getElementById('prefsPanel').classList.remove('open');
+                document.getElementById('prefsOverlay').classList.remove('open');
+            }
+
+            document.getElementById('prefsClose').addEventListener('click', closePanel);
+            document.getElementById('prefsOverlay').addEventListener('click', closePanel);
+
+            // Language change
+            document.getElementById('prefLang').addEventListener('change', (e) => {
+                const p = PrefsManager.load();
+                p.lang = e.target.value;
+                PrefsManager.save(p);
+                applyFilters();
+            });
+
+            // Category checkboxes
+            document.getElementById('prefCategories').addEventListener('change', (e) => {
+                if (e.target.type === 'checkbox') {
+                    const p = PrefsManager.load();
+                    p.categories[e.target.getAttribute('data-cat')] = e.target.checked;
+                    PrefsManager.save(p);
+                    applyFilters();
+                }
+            });
+
+            // Keyword filter (debounced)
+            let keywordTimeout;
+            document.getElementById('prefKeywords').addEventListener('input', (e) => {
+                clearTimeout(keywordTimeout);
+                keywordTimeout = setTimeout(() => {
+                    const p = PrefsManager.load();
+                    p.keywords = e.target.value;
+                    PrefsManager.save(p);
+                    applyFilters();
+                }, 300);
+            });
+
+            // Max articles slider
+            document.getElementById('prefMaxArticles').addEventListener('input', (e) => {
+                document.getElementById('prefMaxArticlesValue').textContent = e.target.value;
+                const p = PrefsManager.load();
+                p.maxArticles = parseInt(e.target.value);
+                PrefsManager.save(p);
+                applyFilters();
+            });
+
+            // Hide read articles checkbox
+            document.getElementById('prefHideRead').checked = prefs.hideRead;
+            document.getElementById('prefHideRead').addEventListener('change', (e) => {
+                const p = PrefsManager.load();
+                p.hideRead = e.target.checked;
+                PrefsManager.save(p);
+                applyFilters();
+            });
+
+            // Reset
+            document.getElementById('prefsReset').addEventListener('click', () => {
+                PrefsManager.reset();
+                const defaults = PrefsManager.getDefaults();
+                document.getElementById('prefLang').value = defaults.lang;
+                document.getElementById('prefKeywords').value = '';
+                document.getElementById('prefMaxArticles').value = defaults.maxArticles;
+                document.getElementById('prefMaxArticlesValue').textContent = defaults.maxArticles;
+                document.getElementById('prefHideRead').checked = defaults.hideRead;
+                buildPrefCategories(defaults);
+                applyFilters();
+            });
+        }
+
+        // ─── Load README ────────────────────────────────────
         async function loadReadme() {
             try {
-                // STRATEGY: Try local README first (Fastest & Best for Production/GitHub Pages)
-                // Fallback to API if local fails (Best for Localhost/File protocol)
-
                 let markdown = '';
 
-                // Helper to fetch with timeout
                 const fetchWithTimeout = async (resource, options = {}) => {
                     const { timeout = 2000 } = options;
                     const controller = new AbortController();
@@ -382,7 +853,7 @@
                         throw new Error('Local fetch failed');
                     }
                 } catch (e) {
-                    console.log('Local README fetch failed or timed out, falling back to GitHub API...');
+                    console.log('Local README fetch failed, falling back to GitHub API...');
                     const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
                         headers: { 'Accept': 'application/vnd.github.v3.raw' }
                     });
@@ -390,41 +861,33 @@
                     markdown = await apiResponse.text();
                 }
 
-                // Removed manual cleaning of markdown here because source is now clean (aggregator fixed)
-
-                // Manually clean header items (badges, main title) to ensure clean list
-                // DISABLE TRUNCATION: User wants to see the top of the readme (section headers)
-                // We keep the full markdown.
-                /* 
-                const firstArticleIndex = markdown.indexOf('###');
-                if (firstArticleIndex !== -1) {
-                    markdown = markdown.substring(firstArticleIndex);
-                } 
-                */
-
-                // Parse markdown to HTML and sanitize IMMEDIATELY
                 let rawHtml = marked.parse(markdown);
                 let html = DOMPurify.sanitize(rawHtml, {
-                    ADD_ATTR: ['target'] // Allow target attribute for links
+                    ADD_ATTR: ['target', 'data-category', 'data-lang', 'data-source'],
+                    ADD_TAGS: ['section']
                 });
 
-                // Convert links to iframe format with UTM (functions on sanitized HTML)
                 html = convertLinksToIframe(html);
 
-                // Display content
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readme-content').style.display = 'block';
                 document.getElementById('readme-content').innerHTML = html;
 
+                // Post-render setup
+                const prefs = PrefsManager.load();
+                buildSectionNav();
+                buildPrefCategories(prefs);
+                applyFilters();
+                setupPrefsPanel();
+
             } catch (error) {
-                console.error('Erreur lors du chargement du README:', error);
+                console.error('Erreur:', error);
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('error').style.display = 'block';
-                document.getElementById('error').textContent = `Erreur lors du chargement du README: ${error.message}`;
+                document.getElementById('error').textContent = `Erreur: ${error.message}`;
             }
         }
 
-        // Load README when page is ready
         loadReadme();
     </script>
 </body>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Critical BeyondTrust RCE flaw now exploited in attacks, patch now</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Critical BeyondTrust RCE flaw now exploited in attacks, patch now</h1>
+  <div class="metadata">
+    Source: Bleeping Computer | Date: 2/12/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/critical-beyondtrust-rce-flaw-now-exploited-in-attacks-patch-now/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="BeyondTrust" src="https://www.bleepstatic.com/content/hl-images/2026/02/09/BeyondTrust.jpg" /></p>
+
+
+<p>A critical pre-authentication remote code execution vulnerability in BeyondTrust Remote Support and Privileged Remote Access appliances is now being exploited in attacks after a PoC was published online.</p>
+
+
+<p>Tracked as CVE-2026-1731 and assigned a near-maximum CVSS score of 9.9, the flaw affects BeyondTrust Remote Support versions 25.3.1 and earlier and Privileged Remote Access versions 24.3.4 and earlier.</p>
+
+
+<p>BeyondTrust <a href="https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/" target="_blank">disclosed the vulnerability</a> on February 6, warning that unauthenticated attackers could exploit it by sending specially crafted client requests.</p>
+
+<p><a href="https://www.wiz.io/lp/securing-ai-agents-101?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_Securing-AI-Agents-101&amp;sfcid=701Py00000RTEWMIA5&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Agents-101" target="_blank"><img src="https://www.bleepstatic.com/c/w/Securing-AI-Agents-970x250.png" alt="Wiz" /></a>
+</p>
+
+
+<p>"BeyondTrust Remote Support and older versions of Privileged Remote Access contain a critical pre-authentication remote code execution vulnerability that may be triggered through specially crafted client requests," <a href="http://www.beyondtrust.com/trust-center/security-advisories/bt26-02" target="_blank">explained BeyondTrust</a>.</p>
+
+
+<p>"Successful exploitation could allow an unauthenticated remote attacker to execute operating system commands in the context of the site user. Successful exploitation requires no authentication or user interaction and may lead to system compromise, including unauthorized access, data exfiltration, and service disruption."</p>
+
+
+<p>BeyondTrust automatically patched all Remote Support and Privileged Remote Access SaaS instances on February 2, 2026, but on-premise customers must install patches manually.</p>
+
+
+<h2>CVE-2026-1731 is now exploited in the wild</h2>
+
+<p>Hacktron <a href="https://www.hacktron.ai/blog/cve-2026-1731-beyondtrust-remote-support-rce" target="_blank">discovered the vulnerability</a> and responsibly disclosed it to BeyondTrust on January 31.</p>
+
+
+<p>Hacktron says approximately 11,000 BeyondTrust Remote Support instances were exposed online, with around 8,500 on-premises deployments.</p>
+
+
+<p>Ryan Dewhurst, head of threat intelligence at watchTowr, now reports that attackers have begun actively exploiting the vulnerability, warning that if devices are not patched, they should be assumed to be compromised.</p>
+
+
+<p>"Overnight we observed first in-the-wild exploitation of BeyondTrust across our global sensors," <a href="https://x.com/ethicalhack3r/status/2021870311377879136" target="_blank">Dewhurst posted on X</a>.</p>
+
+
+<p>"Attackers are abusing get_portal_info to extract the x-ns-company value before establishing a WebSocket channel."</p>
+
+
+<p>This exploitation comes a day after a proof-of-concept exploit was published on GitHub targeting the same <code>/get_portal_info</code> endpoint.</p>
+
+
+<p>The attacks target exposed BeyondTrust portals to retrieve the '<code>X-Ns-Company</code>' identifier, which is then used to create a websocket to the targeted device. This allows the attackers to execute commands on vulnerable systems.</p>
+
+
+<p>Organizations using self-hosted BeyondTrust Remote Support or Privileged Remote Access appliances should immediately apply available patches or upgrade to the latest versions.</p>
+
+
+<p>BleepingComputer contacted BeyondTrust and Dewhurst to ask if they had any details on post-exploitation activity and will update this story if we receive a response.</p>
+
+
+
+	   
+
+
+<div>
+    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
+            <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines" />
+        </a>
+    </p>
+    <div>
+        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
+
+        </div>
+</div>
+
+           
+          
+ 
+	  </div></div>
+  </div>
+</body>
+</html>

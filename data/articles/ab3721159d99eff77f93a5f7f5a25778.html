@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - gitroomhq/postiz-agent: Use Postiz CLI with AI Agents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - gitroomhq/postiz-agent: Use Postiz CLI with AI Agents</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/14/2026 | Lang: FR |
+    <a href="https://github.com/gitroomhq/postiz-agent" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>Postiz CLI</h2><a href="#postiz-cli"></a><p></p>
+<p><strong>Social media automation CLI for AI agents</strong> - Schedule posts across 28+ platforms programmatically.</p>
+<p>The Postiz CLI provides a command-line interface to the Postiz API, enabling developers and AI agents to automate social media posting, manage content, and handle media uploads across platforms like Twitter/X, LinkedIn, Reddit, YouTube, TikTok, Instagram, Facebook, and more.</p>
+<hr />
+<p></p><h2>Installation</h2><a href="#installation"></a><p></p>
+<p></p><h3>From npm (Recommended)</h3><a href="#from-npm-recommended"></a><p></p>
+<div><pre>npm install -g postiz
+<span><span>#</span> or</span>
+pnpm install -g postiz</pre></div>
+<p></p><h3>From Source</h3><a href="#from-source"></a><p></p>
+<div><pre>git clone https://github.com/gitroomhq/postiz-app.git
+<span>cd</span> postiz-app/apps/cli
+pnpm install
+pnpm run build
+pnpm link --global</pre></div>
+<p></p><h3>For Development</h3><a href="#for-development"></a><p></p>
+<div><pre>pnpm install
+pnpm run build
+pnpm link --global
+
+<span><span>#</span> Or run directly without linking</span>
+pnpm run start -- posts:list</pre></div>
+<hr />
+<p></p><h2>Setup</h2><a href="#setup"></a><p></p>
+<p><strong>Required:</strong> Set your Postiz API key</p>
+<div><pre><span>export</span> POSTIZ_API_KEY=your_api_key_here</pre></div>
+<p><strong>Optional:</strong> Custom API endpoint</p>
+<div><pre><span>export</span> POSTIZ_API_URL=https://your-custom-api.com</pre></div>
+<hr />
+<p></p><h2>Commands</h2><a href="#commands"></a><p></p>
+<p></p><h3>Discovery &amp; Settings</h3><a href="#discovery--settings"></a><p></p>
+<p><strong>List all connected integrations</strong></p>
+<div><pre>postiz integrations:list</pre></div>
+<p>Returns integration IDs, provider names, and metadata.</p>
+<p><strong>Get integration settings schema</strong></p>
+<div><pre>postiz integrations:settings <span>&lt;</span>integration-id<span>&gt;</span></pre></div>
+<p>Returns character limits, required settings, and available tools for fetching dynamic data.</p>
+<p><strong>Trigger integration tools</strong></p>
+<div><pre>postiz integrations:trigger <span>&lt;</span>integration-id<span>&gt;</span> <span>&lt;</span>method-name<span>&gt;</span>
+postiz integrations:trigger <span>&lt;</span>integration-id<span>&gt;</span> <span>&lt;</span>method-name<span>&gt;</span> -d <span><span>'</span>{"key":"value"}<span>'</span></span></pre></div>
+<p>Fetch dynamic data like Reddit flairs, YouTube playlists, LinkedIn companies, etc.</p>
+<p><strong>Examples:</strong></p>
+<div><pre><span><span>#</span> Get Reddit flairs</span>
+postiz integrations:trigger reddit-123 getFlairs -d <span><span>'</span>{"subreddit":"programming"}<span>'</span></span>
+
+<span><span>#</span> Get YouTube playlists</span>
+postiz integrations:trigger youtube-456 getPlaylists
+
+<span><span>#</span> Get LinkedIn companies</span>
+postiz integrations:trigger linkedin-789 getCompanies</pre></div>
+<hr />
+<p></p><h3>Creating Posts</h3><a href="#creating-posts"></a><p></p>
+<p><strong>Simple scheduled post</strong></p>
+<div><pre>postiz posts:create -c <span><span>"</span>Content<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
+<p><strong>Draft post</strong></p>
+<div><pre>postiz posts:create -c <span><span>"</span>Content<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -t draft -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
+<p><strong>Post with media</strong></p>
+<div><pre>postiz posts:create -c <span><span>"</span>Content<span>"</span></span> -m <span><span>"</span>img1.jpg,img2.jpg<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
+<p><strong>Post with comments</strong> (each comment can have its own media)</p>
+<div><pre>postiz posts:create \
+  -c <span><span>"</span>Main post<span>"</span></span> -m <span><span>"</span>main.jpg<span>"</span></span> \
+  -c <span><span>"</span>First comment<span>"</span></span> -m <span><span>"</span>comment1.jpg<span>"</span></span> \
+  -c <span><span>"</span>Second comment<span>"</span></span> -m <span><span>"</span>comment2.jpg,comment3.jpg<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
+<p><strong>Multi-platform post</strong></p>
+<div><pre>postiz posts:create -c <span><span>"</span>Content<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>twitter-id,linkedin-id,facebook-id<span>"</span></span></pre></div>
+<p><strong>Platform-specific settings</strong></p>
+<div><pre>postiz posts:create \
+  -c <span><span>"</span>Content<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"subreddit":[{"value":{"subreddit":"programming","title":"Post Title","type":"text"}}]}<span>'</span></span> \
+  -i <span><span>"</span>reddit-id<span>"</span></span></pre></div>
+<p><strong>Complex post from JSON file</strong></p>
+<div><pre>postiz posts:create --json post.json</pre></div>
+<p><strong>Options:</strong></p>
+<ul>
+<li><code>-c, --content</code> - Post/comment content (use multiple times for posts with comments)</li>
+<li><code>-s, --date</code> - Schedule date in ISO 8601 format (REQUIRED)</li>
+<li><code>-t, --type</code> - Post type: "schedule" or "draft" (default: "schedule")</li>
+<li><code>-m, --media</code> - Comma-separated media URLs for corresponding <code>-c</code></li>
+<li><code>-i, --integrations</code> - Comma-separated integration IDs (required)</li>
+<li><code>-d, --delay</code> - Delay between comments in milliseconds (default: 5000)</li>
+<li><code>--settings</code> - Platform-specific settings as JSON string</li>
+<li><code>-j, --json</code> - Path to JSON file with full post structure</li>
+<li><code>--shortLink</code> - Use short links (default: true)</li>
+</ul>
+<hr />
+<p></p><h3>Managing Posts</h3><a href="#managing-posts"></a><p></p>
+<p><strong>List posts</strong></p>
+<div><pre>postiz posts:list
+postiz posts:list --startDate <span><span>"</span>2024-01-01T00:00:00Z<span>"</span></span> --endDate <span><span>"</span>2024-12-31T23:59:59Z<span>"</span></span>
+postiz posts:list --customer <span><span>"</span>customer-id<span>"</span></span></pre></div>
+<p>Defaults to last 30 days to next 30 days if dates not specified.</p>
+<p><strong>Delete post</strong></p>
+<div><pre>postiz posts:delete <span>&lt;</span>post-id<span>&gt;</span></pre></div>
+<hr />
+<p></p><h3>Media Upload</h3><a href="#media-upload"></a><p></p>
+<p><strong>Upload file and get URL</strong></p>
+<div><pre>postiz upload <span>&lt;</span>file-path<span>&gt;</span></pre></div>
+<p><strong>⚠️ IMPORTANT: Upload Files Before Posting</strong></p>
+<p>You <strong>must</strong> upload media files to Postiz before using them in posts. Many platforms (especially TikTok, Instagram, and YouTube) require verified/trusted URLs and will reject external links.</p>
+<p><strong>Workflow:</strong></p>
+<ol>
+<li>Upload your file using <code>postiz upload</code></li>
+<li>Extract the returned URL</li>
+<li>Use that URL in your post's <code>-m</code> parameter</li>
+</ol>
+<p><strong>Supported formats:</strong></p>
+<ul>
+<li><strong>Images:</strong> PNG, JPG, JPEG, GIF</li>
+<li><strong>Videos:</strong> MP4</li>
+</ul>
+<p><strong>Example:</strong></p>
+<div><pre><span><span>#</span> 1. Upload the file first</span>
+RESULT=<span><span>$(</span>postiz upload video.mp4<span>)</span></span>
+PATH=<span><span>$(</span>echo <span><span>"</span><span>$RESULT</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+<span><span>#</span> 2. Use the Postiz URL in your post</span>
+postiz posts:create -c <span><span>"</span>Check out my video!<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -m <span><span>"</span><span>$PATH</span><span>"</span></span> -i <span><span>"</span>tiktok-id<span>"</span></span></pre></div>
+<p><strong>Why this is required:</strong></p>
+<ul>
+<li><strong>TikTok, Instagram, YouTube</strong> only accept URLs from trusted domains</li>
+<li><strong>Security:</strong> Platforms verify media sources to prevent abuse</li>
+<li><strong>Reliability:</strong> Postiz ensures your media is always accessible</li>
+</ul>
+<hr />
+<p></p><h2>Platform-Specific Features</h2><a href="#platform-specific-features"></a><p></p>
+<p></p><h3>Reddit</h3><a href="#reddit"></a><p></p>
+<div><pre><span><span>#</span> Get available flairs</span>
+postiz integrations:trigger reddit-id getFlairs -d <span><span>'</span>{"subreddit":"programming"}<span>'</span></span>
+
+<span><span>#</span> Post with subreddit and flair</span>
+postiz posts:create \
+  -c <span><span>"</span>Content<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"subreddit":[{"value":{"subreddit":"programming","title":"My Post","type":"text","is_flair_required":true,"flair":{"id":"flair-123","name":"Discussion"}}}]}<span>'</span></span> \
+  -i <span><span>"</span>reddit-id<span>"</span></span></pre></div>
+<p></p><h3>YouTube</h3><a href="#youtube"></a><p></p>
+<div><pre><span><span>#</span> Get playlists</span>
+postiz integrations:trigger youtube-id getPlaylists
+
+<span><span>#</span> Upload video FIRST (required!)</span>
+VIDEO=<span><span>$(</span>postiz upload video.mp4<span>)</span></span>
+VIDEO_URL=<span><span>$(</span>echo <span><span>"</span><span>$VIDEO</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+<span><span>#</span> Post with uploaded video URL</span>
+postiz posts:create \
+  -c <span><span>"</span>Video description<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"title":"Video Title","type":"public","tags":[{"value":"tech","label":"Tech"}],"playlistId":"playlist-id"}<span>'</span></span> \
+  -m <span><span>"</span><span>$VIDEO_URL</span><span>"</span></span> \
+  -i <span><span>"</span>youtube-id<span>"</span></span></pre></div>
+<p></p><h3>TikTok</h3><a href="#tiktok"></a><p></p>
+<div><pre><span><span>#</span> Upload video FIRST (TikTok only accepts verified URLs!)</span>
+VIDEO=<span><span>$(</span>postiz upload video.mp4<span>)</span></span>
+VIDEO_URL=<span><span>$(</span>echo <span><span>"</span><span>$VIDEO</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+<span><span>#</span> Post with uploaded video URL</span>
+postiz posts:create \
+  -c <span><span>"</span>Video caption #fyp<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"privacy":"PUBLIC_TO_EVERYONE","duet":true,"stitch":true}<span>'</span></span> \
+  -m <span><span>"</span><span>$VIDEO_URL</span><span>"</span></span> \
+  -i <span><span>"</span>tiktok-id<span>"</span></span></pre></div>
+<p></p><h3>LinkedIn</h3><a href="#linkedin"></a><p></p>
+<div><pre><span><span>#</span> Get companies you can post to</span>
+postiz integrations:trigger linkedin-id getCompanies
+
+<span><span>#</span> Post as company</span>
+postiz posts:create \
+  -c <span><span>"</span>Company announcement<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"companyId":"company-123"}<span>'</span></span> \
+  -i <span><span>"</span>linkedin-id<span>"</span></span></pre></div>
+<p></p><h3>X (Twitter)</h3><a href="#x-twitter"></a><p></p>
+<div><pre><span><span>#</span> Create thread</span>
+postiz posts:create \
+  -c <span><span>"</span>Thread 1/3 🧵<span>"</span></span> \
+  -c <span><span>"</span>Thread 2/3<span>"</span></span> \
+  -c <span><span>"</span>Thread 3/3<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  -d 2000 \
+  -i <span><span>"</span>twitter-id<span>"</span></span>
+
+<span><span>#</span> With reply settings</span>
+postiz posts:create \
+  -c <span><span>"</span>Tweet content<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"who_can_reply_post":"everyone"}<span>'</span></span> \
+  -i <span><span>"</span>twitter-id<span>"</span></span></pre></div>
+<p></p><h3>Instagram</h3><a href="#instagram"></a><p></p>
+<div><pre><span><span>#</span> Upload image FIRST (Instagram requires verified URLs!)</span>
+IMAGE=<span><span>$(</span>postiz upload image.jpg<span>)</span></span>
+IMAGE_URL=<span><span>$(</span>echo <span><span>"</span><span>$IMAGE</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+<span><span>#</span> Regular post</span>
+postiz posts:create \
+  -c <span><span>"</span>Caption #hashtag<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"post_type":"post"}<span>'</span></span> \
+  -m <span><span>"</span><span>$IMAGE_URL</span><span>"</span></span> \
+  -i <span><span>"</span>instagram-id<span>"</span></span>
+
+<span><span>#</span> Story (upload first)</span>
+STORY=<span><span>$(</span>postiz upload story.jpg<span>)</span></span>
+STORY_URL=<span><span>$(</span>echo <span><span>"</span><span>$STORY</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+postiz posts:create \
+  -c <span><span>"</span><span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"post_type":"story"}<span>'</span></span> \
+  -m <span><span>"</span><span>$STORY_URL</span><span>"</span></span> \
+  -i <span><span>"</span>instagram-id<span>"</span></span></pre></div>
+<p><strong>See <a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROVIDER_SETTINGS.md">PROVIDER_SETTINGS.md</a> for all 28+ platforms.</strong></p>
+<hr />
+<p></p><h2>Features for AI Agents</h2><a href="#features-for-ai-agents"></a><p></p>
+<p></p><h3>Discovery Workflow</h3><a href="#discovery-workflow"></a><p></p>
+<p>The CLI enables dynamic discovery of integration capabilities:</p>
+<ol>
+<li><strong>List integrations</strong> - Get available social media accounts</li>
+<li><strong>Get settings</strong> - Retrieve character limits, required fields, and available tools</li>
+<li><strong>Trigger tools</strong> - Fetch dynamic data (flairs, playlists, boards, etc.)</li>
+<li><strong>Create posts</strong> - Use discovered data in posts</li>
+</ol>
+<p>This allows AI agents to adapt to different platforms without hardcoded knowledge.</p>
+<p></p><h3>JSON Mode</h3><a href="#json-mode"></a><p></p>
+<p>For complex posts with multiple platforms and settings:</p>
+<div><pre>postiz posts:create --json complex-post.json</pre></div>
+<p>JSON structure:</p>
+<div><pre>{
+  <span>"integrations"</span>: [<span><span>"</span>twitter-123<span>"</span></span>, <span><span>"</span>linkedin-456<span>"</span></span>],
+  <span>"posts"</span>: [
+    {
+      <span>"provider"</span>: <span><span>"</span>twitter<span>"</span></span>,
+      <span>"post"</span>: [
+        {
+          <span>"content"</span>: <span><span>"</span>Tweet version<span>"</span></span>,
+          <span>"image"</span>: [<span><span>"</span>twitter-image.jpg<span>"</span></span>]
+        }
+      ]
+    },
+    {
+      <span>"provider"</span>: <span><span>"</span>linkedin<span>"</span></span>,
+      <span>"post"</span>: [
+        {
+          <span>"content"</span>: <span><span>"</span>LinkedIn version with more context...<span>"</span></span>,
+          <span>"image"</span>: [<span><span>"</span>linkedin-image.jpg<span>"</span></span>]
+        }
+      ],
+      <span>"settings"</span>: {
+        <span>"__type"</span>: <span><span>"</span>linkedin<span>"</span></span>,
+        <span>"companyId"</span>: <span><span>"</span>company-123<span>"</span></span>
+      }
+    }
+  ]
+}</pre></div>
+<p></p><h3>All Output is JSON</h3><a href="#all-output-is-json"></a><p></p>
+<p>Every command outputs JSON for easy parsing:</p>
+<div><pre>INTEGRATIONS=<span><span>$(</span>postiz integrations:list <span>|</span> jq -r <span><span>'</span>.<span>'</span></span><span>)</span></span>
+REDDIT_ID=<span><span>$(</span>echo <span><span>"</span><span>$INTEGRATIONS</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.[] | select(.identifier=="reddit") | .id<span>'</span></span><span>)</span></span></pre></div>
+<p></p><h3>Threading Support</h3><a href="#threading-support"></a><p></p>
+<p>Comments are automatically converted to threads/replies based on platform:</p>
+<ul>
+<li><strong>Twitter/X</strong>: Thread of tweets</li>
+<li><strong>Reddit</strong>: Comment replies</li>
+<li><strong>LinkedIn</strong>: Comment on post</li>
+<li><strong>Instagram</strong>: First comment</li>
+</ul>
+<div><pre>postiz posts:create \
+  -c <span><span>"</span>Main post<span>"</span></span> \
+  -c <span><span>"</span>Comment 1<span>"</span></span> \
+  -c <span><span>"</span>Comment 2<span>"</span></span> \
+  -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
+<hr />
+<p></p><h2>Common Workflows</h2><a href="#common-workflows"></a><p></p>
+<p></p><h3>Reddit Post with Flair</h3><a href="#reddit-post-with-flair"></a><p></p>
+<div><pre><span><span>#!</span>/bin/bash</span>
+REDDIT_ID=<span><span>$(</span>postiz integrations:list <span>|</span> jq -r <span><span>'</span>.[] | select(.identifier=="reddit") | .id<span>'</span></span><span>)</span></span>
+FLAIRS=<span><span>$(</span>postiz integrations:trigger <span><span>"</span><span>$REDDIT_ID</span><span>"</span></span> getFlairs -d <span><span>'</span>{"subreddit":"programming"}<span>'</span></span><span>)</span></span>
+FLAIR_ID=<span><span>$(</span>echo <span><span>"</span><span>$FLAIRS</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.output[0].id<span>'</span></span><span>)</span></span>
+
+postiz posts:create \
+  -c <span><span>"</span>My post content<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>"</span>{<span>\"</span>subreddit<span>\"</span>:[{<span>\"</span>value<span>\"</span>:{<span>\"</span>subreddit<span>\"</span>:<span>\"</span>programming<span>\"</span>,<span>\"</span>title<span>\"</span>:<span>\"</span>Post Title<span>\"</span>,<span>\"</span>type<span>\"</span>:<span>\"</span>text<span>\"</span>,<span>\"</span>is_flair_required<span>\"</span>:true,<span>\"</span>flair<span>\"</span>:{<span>\"</span>id<span>\"</span>:<span>\"</span><span>$FLAIR_ID</span><span>\"</span>,<span>\"</span>name<span>\"</span>:<span>\"</span>Discussion<span>\"</span>}}}]}<span>"</span></span> \
+  -i <span><span>"</span><span>$REDDIT_ID</span><span>"</span></span></pre></div>
+<p></p><h3>YouTube Video Upload</h3><a href="#youtube-video-upload"></a><p></p>
+<div><pre><span><span>#!</span>/bin/bash</span>
+VIDEO=<span><span>$(</span>postiz upload video.mp4<span>)</span></span>
+VIDEO_PATH=<span><span>$(</span>echo <span><span>"</span><span>$VIDEO</span><span>"</span></span> <span>|</span> jq -r <span><span>'</span>.path<span>'</span></span><span>)</span></span>
+
+postiz posts:create \
+  -c <span><span>"</span>Video description...<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  --settings <span><span>'</span>{"title":"My Video","type":"public","tags":[{"value":"tech","label":"Tech"}]}<span>'</span></span> \
+  -m <span><span>"</span><span>$VIDEO_PATH</span><span>"</span></span> \
+  -i <span><span>"</span>youtube-id<span>"</span></span></pre></div>
+<p></p><h3>Multi-Platform Campaign</h3><a href="#multi-platform-campaign"></a><p></p>
+<div><pre><span><span>#!</span>/bin/bash</span>
+postiz posts:create \
+  -c <span><span>"</span>Same content everywhere<span>"</span></span> \
+  -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
+  -m <span><span>"</span>image.jpg<span>"</span></span> \
+  -i <span><span>"</span>twitter-id,linkedin-id,facebook-id<span>"</span></span></pre></div>
+<p></p><h3>Batch Scheduling</h3><a href="#batch-scheduling"></a><p></p>
+<div><pre><span><span>#!</span>/bin/bash</span>
+DATES=(<span><span>"</span>2024-02-14T09:00:00Z<span>"</span></span> <span><span>"</span>2024-02-15T09:00:00Z<span>"</span></span> <span><span>"</span>2024-02-16T09:00:00Z<span>"</span></span>)
+CONTENT=(<span><span>"</span>Monday motivation 💪<span>"</span></span> <span><span>"</span>Tuesday tips 💡<span>"</span></span> <span><span>"</span>Wednesday wisdom 🧠<span>"</span></span>)
+
+<span>for</span> <span>i</span> <span>in</span> <span><span>"</span><span>${<span>!</span>DATES[@]}</span><span>"</span></span><span>;</span> <span>do</span>
+  postiz posts:create \
+    -c <span><span>"</span><span>${CONTENT[$i]}</span><span>"</span></span> \
+    -s <span><span>"</span><span>${DATES[$i]}</span><span>"</span></span> \
+    -i <span><span>"</span>twitter-id<span>"</span></span>
+<span>done</span></pre></div>
+<hr />
+<p></p><h2>Documentation</h2><a href="#documentation"></a><p></p>
+<p><strong>For AI Agents:</strong></p>
+<ul>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/SKILL.md">SKILL.md</a></strong> - Complete skill reference with patterns and examples</li>
+</ul>
+<p><strong>Deep-Dive Guides:</strong></p>
+<ul>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/HOW_TO_RUN.md">HOW_TO_RUN.md</a></strong> - Installation and setup methods</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/COMMAND_LINE_GUIDE.md">COMMAND_LINE_GUIDE.md</a></strong> - Complete command syntax reference</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROVIDER_SETTINGS.md">PROVIDER_SETTINGS.md</a></strong> - All platform settings schemas</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/INTEGRATION_TOOLS_WORKFLOW.md">INTEGRATION_TOOLS_WORKFLOW.md</a></strong> - Tools workflow guide</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/INTEGRATION_SETTINGS_DISCOVERY.md">INTEGRATION_SETTINGS_DISCOVERY.md</a></strong> - Settings discovery</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/SUPPORTED_FILE_TYPES.md">SUPPORTED_FILE_TYPES.md</a></strong> - Media format reference</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROJECT_STRUCTURE.md">PROJECT_STRUCTURE.md</a></strong> - Code architecture</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/PUBLISHING.md">PUBLISHING.md</a></strong> - npm publishing guide</li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/examples/EXAMPLES.md">examples/EXAMPLES.md</a></strong> - Comprehensive examples</li>
+<li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/examples">examples/</a></strong> - Ready-to-use scripts and JSON files</li>
+</ul>
+<hr />
+<p></p><h2>API Endpoints</h2><a href="#api-endpoints"></a><p></p>
+<p>The CLI interacts with these Postiz API endpoints:</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/public/v1/posts</code></td>
+<td>POST</td>
+<td>Create a post</td>
+</tr>
+<tr>
+<td><code>/public/v1/posts</code></td>
+<td>GET</td>
+<td>List posts</td>
+</tr>
+<tr>
+<td><code>/public/v1/posts/:id</code></td>
+<td>DELETE</td>
+<td>Delete a post</td>
+</tr>
+<tr>
+<td><code>/public/v1/integrations</code></td>
+<td>GET</td>
+<td>List integrations</td>
+</tr>
+<tr>
+<td><code>/public/v1/integration-settings/:id</code></td>
+<td>GET</td>
+<td>Get integration settings</td>
+</tr>
+<tr>
+<td><code>/public/v1/integration-trigger/:id</code></td>
+<td>POST</td>
+<td>Trigger integration tool</td>
+</tr>
+<tr>
+<td><code>/public/v1/upload</code></td>
+<td>POST</td>
+<td>Upload media</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>Environment Variables</h2><a href="#environment-variables"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POSTIZ_API_KEY</code></td>
+<td>✅ Yes</td>
+<td>-</td>
+<td>Your Postiz API key</td>
+</tr>
+<tr>
+<td><code>POSTIZ_API_URL</code></td>
+<td>No</td>
+<td><code>https://api.postiz.com</code></td>
+<td>Custom API endpoint</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>Error Handling</h2><a href="#error-handling"></a><p></p>
+<p>The CLI provides clear error messages with exit codes:</p>
+<ul>
+<li><strong>Exit code 0</strong>: Success</li>
+<li><strong>Exit code 1</strong>: Error occurred</li>
+</ul>
+<p><strong>Common errors:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Error</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POSTIZ_API_KEY is not set</code></td>
+<td>Set environment variable: <code>export POSTIZ_API_KEY=key</code></td>
+</tr>
+<tr>
+<td><code>Integration not found</code></td>
+<td>Run <code>integrations:list</code> to get valid IDs</td>
+</tr>
+<tr>
+<td><code>startDate/endDate required</code></td>
+<td>Use ISO 8601 format: <code>"2024-12-31T12:00:00Z"</code></td>
+</tr>
+<tr>
+<td><code>Invalid settings</code></td>
+<td>Check <code>integrations:settings</code> for required fields</td>
+</tr>
+<tr>
+<td><code>Tool not found</code></td>
+<td>Check available tools in <code>integrations:settings</code> output</td>
+</tr>
+<tr>
+<td><code>Upload failed</code></td>
+<td>Verify file exists and format is supported</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>Development</h2><a href="#development"></a><p></p>
+<p></p><h3>Project Structure</h3><a href="#project-structure"></a><p></p>
+<div><pre><code>src/
+├── index.ts              # CLI entry point with yargs
+├── api.ts                # PostizAPI client class
+├── config.ts             # Environment configuration
+└── commands/
+    ├── posts.ts          # Post management commands
+    ├── integrations.ts   # Integration commands
+    └── upload.ts         # Media upload command
+examples/                 # Example scripts and JSON files
+package.json
+tsconfig.json
+tsup.config.ts            # Build configuration
+README.md                 # This file
+SKILL.md                  # AI agent reference
+</code></pre></div>
+<p></p><h3>Scripts</h3><a href="#scripts"></a><p></p>
+<div><pre>pnpm run dev       <span><span>#</span> Watch mode for development</span>
+pnpm run build     <span><span>#</span> Build the CLI</span>
+pnpm run start     <span><span>#</span> Run the built CLI</span></pre></div>
+<p></p><h3>Building</h3><a href="#building"></a><p></p>
+<p>The CLI uses <code>tsup</code> for bundling:</p>
+<div><pre>pnpm run build</pre></div>
+<p>Output in <code>dist/</code>:</p>
+<ul>
+<li><code>index.js</code> - Bundled executable with shebang</li>
+<li><code>index.js.map</code> - Source map</li>
+</ul>
+<hr />
+<p></p><h2>Quick Reference</h2><a href="#quick-reference"></a><p></p>
+<div><pre><span><span>#</span> Environment setup</span>
+<span>export</span> POSTIZ_API_KEY=your_key
+
+<span><span>#</span> Discovery</span>
+postiz integrations:list                           <span><span>#</span> List integrations</span>
+postiz integrations:settings <span>&lt;</span>id<span>&gt;</span>                  <span><span>#</span> Get settings</span>
+postiz integrations:trigger <span>&lt;</span>id<span>&gt;</span> <span>&lt;</span>method<span>&gt;</span> -d <span><span>'</span>{}<span>'</span></span>  <span><span>#</span> Fetch data</span>
+
+<span><span>#</span> Posting (date is required)</span>
+postiz posts:create -c <span><span>"</span>text<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>id<span>"</span></span>                    <span><span>#</span> Simple</span>
+postiz posts:create -c <span><span>"</span>text<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -t draft -i <span><span>"</span>id<span>"</span></span>          <span><span>#</span> Draft</span>
+postiz posts:create -c <span><span>"</span>text<span>"</span></span> -m <span><span>"</span>img.jpg<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>id<span>"</span></span>      <span><span>#</span> With media</span>
+postiz posts:create -c <span><span>"</span>main<span>"</span></span> -c <span><span>"</span>comment<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>id<span>"</span></span>      <span><span>#</span> With comment</span>
+postiz posts:create -c <span><span>"</span>text<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> --settings <span><span>'</span>{}<span>'</span></span> -i <span><span>"</span>id<span>"</span></span>   <span><span>#</span> Platform-specific</span>
+postiz posts:create --json file.json                                               <span><span>#</span> Complex</span>
+
+<span><span>#</span> Management</span>
+postiz posts:list                                  <span><span>#</span> List posts</span>
+postiz posts:delete <span>&lt;</span>id<span>&gt;</span>                          <span><span>#</span> Delete post</span>
+postiz upload <span>&lt;</span>file<span>&gt;</span>                              <span><span>#</span> Upload media</span>
+
+<span><span>#</span> Help</span>
+postiz --help                                     <span><span>#</span> Show help</span>
+postiz posts:create --help                        <span><span>#</span> Command help</span></pre></div>
+<hr />
+<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
+<p>This CLI is part of the <a href="https://github.com/gitroomhq/postiz-app">Postiz monorepo</a>.</p>
+<p>To contribute:</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Make your changes in <code>apps/cli/</code></li>
+<li>Run tests: <code>pnpm run build</code></li>
+<li>Submit a pull request</li>
+</ol>
+<hr />
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>AGPL-3.0</p>
+<hr />
+<p></p><h2>Links</h2><a href="#links"></a><p></p>
+<ul>
+<li><strong>Website:</strong> <a href="https://postiz.com/">postiz.com</a></li>
+<li><strong>API Docs:</strong> <a href="https://docs.postiz.com/">docs.postiz.com</a></li>
+<li><strong>GitHub:</strong> <a href="https://github.com/gitroomhq/postiz-app">gitroomhq/postiz-app</a></li>
+<li><strong>Issues:</strong> <a href="https://github.com/gitroomhq/postiz-app/issues">Report bugs</a></li>
+</ul>
+<hr />
+<p></p><h2>Supported Platforms</h2><a href="#supported-platforms"></a><p></p>
+<p>28+ platforms including:</p>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Integration Tools</th>
+<th>Settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Twitter/X</td>
+<td>getLists, getCommunities</td>
+<td>who_can_reply_post</td>
+</tr>
+<tr>
+<td>LinkedIn</td>
+<td>getCompanies</td>
+<td>companyId, carousel</td>
+</tr>
+<tr>
+<td>Reddit</td>
+<td>getFlairs, searchSubreddits</td>
+<td>subreddit, title, flair</td>
+</tr>
+<tr>
+<td>YouTube</td>
+<td>getPlaylists, getCategories</td>
+<td>title, type, tags, playlistId</td>
+</tr>
+<tr>
+<td>TikTok</td>
+<td>-</td>
+<td>privacy, duet, stitch</td>
+</tr>
+<tr>
+<td>Instagram</td>
+<td>-</td>
+<td>post_type (post/story)</td>
+</tr>
+<tr>
+<td>Facebook</td>
+<td>getPages</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Pinterest</td>
+<td>getBoards, getBoardSections</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Discord</td>
+<td>getChannels</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Slack</td>
+<td>getChannels</td>
+<td>-</td>
+</tr>
+<tr>
+<td>And 18+ more...</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>See <a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROVIDER_SETTINGS.md">PROVIDER_SETTINGS.md</a> for complete documentation.</strong></p>
+</article></div></div>
+  </div>
+</body>
+</html>

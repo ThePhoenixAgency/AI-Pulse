@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Setting Docker Hardened Images free featuring Tushar Jain from Docker (Changelog Interviews #675)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Setting Docker Hardened Images free featuring Tushar Jain from Docker (Changelog Interviews #675)</h1>
+  <div class="metadata">
+    Source: The Changelog | Date: 2/4/2026 | Lang: EN |
+    <a href="https://changelog.com/podcast/675" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+
+
+        
+
+      <p>In May of 2025, Docker launched Hardened Images, a secure, minimal, production-ready set of images. In December, they made DHI freely available and open source to everyone who builds software. On this episode, we’re joined by Tushar Jain, EVP of Engineering at Docker to learn all about it.</p>
+
+      
+
+      <ul>
+        <li>77 minutes</li>
+
+          <li>Recorded <time>Jan 28, 2026</time></li>
+
+        <li>Published <time>Feb 4, 2026</time></li>
+        <li><a href="https://op3.dev/e/https://cdn.changelog.com/uploads/podcast/675/the-changelog-675.mp3">Download (74MB)</a></li>
+        <li><a href="#transcript">Transcript</a></li>
+        <li></li>
+      </ul>
+
+        
+
+    </div><div>
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Featuring</h3>
+        </header>
+        
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Sponsors</h3>
+        </header>
+        <div>
+
+            <p>
+              <strong><a href="https://www.tigerdata.com/">Tiger Data</a></strong> – Postgres for Developers, devices, and agents The data platform trusted by hundreds of thousands from IoT to Web3 to AI and more.
+            </p>
+
+            <p>
+              <strong><a href="https://namespace.so/">Namespace</a></strong> – Speed up your development and testing workflows using your existing tools. (Much) faster GitHub actions, Docker builds, and more. At an unbeatable price.
+            </p>
+
+            <p>
+              <strong><a href="https://nordlayer.com/thechangelog">NordLayer</a></strong> – Toggle-ready network security for modern businesses. Get an exclusive offer: up to 22% off NordLayer yearly plans plus 10% on top with the coupon code <code>changelog-10-NORDLAYER</code>. Try it risk-free with a 14-day money-back guarantee at <a href="https://nordlayer.com/thechangelog">nordlayer.com/thechangelog</a>
+            </p>
+
+            <p>
+              <strong><a href="https://fly.io/">Fly.io</a></strong> – <strong>The home of Changelog.com</strong> — Deploy your apps close to your users — global Anycast load-balancing, zero-configuration private networking, hardware isolation, and instant WireGuard VPN connections. Push-button deployments that scale to thousands of instances. <a href="https://fly.io/speedrun/">Check out the speedrun</a> to get started in minutes.
+            </p>
+
+        </div>
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Notes &amp; Links</h3>
+          <p><a href="https://github.com/thechangelog/show-notes/blob/master/podcast/the-changelog-675.md">📝 Edit Notes</a></p>
+        </header>
+        
+      </section>
+
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Chapters</h3>
+        </header>
+        <div>
+          <table>
+            
+            <tbody>
+
+                <tr>
+                <td>1</td>
+                <td>
+                  <a href="#t=0">00:00</a>
+                </td>
+                <td>
+
+Welcome to The Changelog
+
+
+                </td>
+                <td>00:58</td>
+              </tr>
+
+                <tr>
+                <td>2</td>
+                <td>
+                  <a href="#t=58">00:58</a>
+                </td>
+                <td>
+
+<a href="https://www.tigerdata.com/">Sponsor: Tiger Data</a>
+
+
+                </td>
+                <td>02:34</td>
+              </tr>
+
+                <tr>
+                <td>3</td>
+                <td>
+                  <a href="#t=211">03:31</a>
+                </td>
+                <td>
+
+Start the show!
+
+
+                </td>
+                <td>01:23</td>
+              </tr>
+
+                <tr>
+                <td>4</td>
+                <td>
+                  <a href="#t=294">04:54</a>
+                </td>
+                <td>
+
+What are hardened images?
+
+
+                </td>
+                <td>02:09</td>
+              </tr>
+
+                <tr>
+                <td>5</td>
+                <td>
+                  <a href="#t=424">07:04</a>
+                </td>
+                <td>
+
+From paid to free
+
+
+                </td>
+                <td>02:58</td>
+              </tr>
+
+                <tr>
+                <td>6</td>
+                <td>
+                  <a href="#t=601">10:01</a>
+                </td>
+                <td>
+
+SBOM and SLSA
+
+
+                </td>
+                <td>03:27</td>
+              </tr>
+
+                <tr>
+                <td>7</td>
+                <td>
+                  <a href="#t=809">13:29</a>
+                </td>
+                <td>
+
+Why switch to DHI? Why not?
+
+
+                </td>
+                <td>02:07</td>
+              </tr>
+
+                <tr>
+                <td>8</td>
+                <td>
+                  <a href="#t=936">15:36</a>
+                </td>
+                <td>
+
+The public reception
+
+
+                </td>
+                <td>01:57</td>
+              </tr>
+
+                <tr>
+                <td>9</td>
+                <td>
+                  <a href="#t=1053">17:33</a>
+                </td>
+                <td>
+
+Announcing in Dec...
+
+
+                </td>
+                <td>01:32</td>
+              </tr>
+
+                <tr>
+                <td>10</td>
+                <td>
+                  <a href="#t=1145">19:05</a>
+                </td>
+                <td>
+
+Changing defaults
+
+
+                </td>
+                <td>02:37</td>
+              </tr>
+
+                <tr>
+                <td>11</td>
+                <td>
+                  <a href="#t=1302">21:42</a>
+                </td>
+                <td>
+
+<a href="https://namespace.so/">Sponsor: Namespace</a>
+
+
+                </td>
+                <td>01:38</td>
+              </tr>
+
+                <tr>
+                <td>12</td>
+                <td>
+                  <a href="#t=1400">23:20</a>
+                </td>
+                <td>
+
+TTS (time-to-shipping)
+
+
+                </td>
+                <td>05:21</td>
+              </tr>
+
+                <tr>
+                <td>13</td>
+                <td>
+                  <a href="#t=1721">28:41</a>
+                </td>
+                <td>
+
+VEX
+
+
+                </td>
+                <td>05:02</td>
+              </tr>
+
+                <tr>
+                <td>14</td>
+                <td>
+                  <a href="#t=2023">33:43</a>
+                </td>
+                <td>
+
+A lot more to do
+
+
+                </td>
+                <td>05:51</td>
+              </tr>
+
+                <tr>
+                <td>15</td>
+                <td>
+                  <a href="#t=2374">39:34</a>
+                </td>
+                <td>
+
+Perusing the DHI catalog
+
+
+                </td>
+                <td>02:18</td>
+              </tr>
+
+                <tr>
+                <td>16</td>
+                <td>
+                  <a href="#t=2512">41:52</a>
+                </td>
+                <td>
+
+Scout health scores
+
+
+                </td>
+                <td>03:20</td>
+              </tr>
+
+                <tr>
+                <td>17</td>
+                <td>
+                  <a href="#t=2712">45:12</a>
+                </td>
+                <td>
+
+The ecosystem
+
+
+                </td>
+                <td>02:27</td>
+              </tr>
+
+                <tr>
+                <td>18</td>
+                <td>
+                  <a href="#t=2860">47:40</a>
+                </td>
+                <td>
+
+What partners get
+
+
+                </td>
+                <td>01:41</td>
+              </tr>
+
+                <tr>
+                <td>19</td>
+                <td>
+                  <a href="#t=2961">49:21</a>
+                </td>
+                <td>
+
+A manifesto
+
+
+                </td>
+                <td>04:29</td>
+              </tr>
+
+                <tr>
+                <td>20</td>
+                <td>
+                  <a href="#t=3229">53:49</a>
+                </td>
+                <td>
+
+<a href="https://nordlayer.com/thechangelog">Sponsor: NordLayer</a>
+
+
+                </td>
+                <td>01:43</td>
+              </tr>
+
+                <tr>
+                <td>21</td>
+                <td>
+                  <a href="#t=3333">55:33</a>
+                </td>
+                <td>
+
+What's next?
+
+
+                </td>
+                <td>02:44</td>
+              </tr>
+
+                <tr>
+                <td>22</td>
+                <td>
+                  <a href="#t=3497">58:17</a>
+                </td>
+                <td>
+
+Start green, stay green
+
+
+                </td>
+                <td>01:49</td>
+              </tr>
+
+                <tr>
+                <td>23</td>
+                <td>
+                  <a href="#t=3606">1:00:06</a>
+                </td>
+                <td>
+
+Docker for AI
+
+
+                </td>
+                <td>11:53</td>
+              </tr>
+
+                <tr>
+                <td>24</td>
+                <td>
+                  <a href="#t=4319">1:11:59</a>
+                </td>
+                <td>
+
+The future
+
+
+                </td>
+                <td>03:00</td>
+              </tr>
+
+                <tr>
+                <td>25</td>
+                <td>
+                  <a href="#t=4498">1:14:58</a>
+                </td>
+                <td>
+
+Wrapping up
+
+
+                </td>
+                <td>00:14</td>
+              </tr>
+
+                <tr>
+                <td>26</td>
+                <td>
+                  <a href="#t=4513">1:15:13</a>
+                </td>
+                <td>
+
+<a href="https://changelog.com/++">Closing thoughts (join ++!)</a>
+
+
+                </td>
+                <td>01:35</td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <a></a>
+        <header>
+          <h3>Transcript</h3>
+          <p>
+
+
+<a href="https://github.com/thechangelog/transcripts">⏰ Coming Soon</a>
+
+
+          </p>
+        </header>
+
+        <div>
+            <div>
+<a href="https://changelog.com/about">
+                
+</a>
+              <p>Changelog</p>
+            </div>
+            <p>We're hard at work on the transcript for this episode!
+
+<a href="https://changelog.com/in">Sign in</a> / <a href="https://changelog.com/join">up</a> to access transcript notifications. 💪
+
+              </p>
+          </div>
+      </section>
+
+      
+    </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Testssl.sh : auditer la configuration SSL/TLS d'un serveur Web</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Testssl.sh : auditer la configuration SSL/TLS d'un serveur Web</h1>
+  <div class="metadata">
+    Source: Journal du Hacker | Date: 2/13/2026 | Lang: FR |
+    <a href="https://www.it-connect.fr/testsslsh-auditer-la-configuration-ssl-tls-de-vos-serveurs-web/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	
+<p><strong>La sécurité des échanges sur le web repose en grande partie sur la robustesse des protocoles de chiffrement utilisés. Pourtant, déployer un certificat SSL/TLS ne suffit pas : une mauvaise configuration du serveur web ou l'utilisation de suites cryptographiques obsolètes peuvent rendre vos échanges vulnérables. Comment auditer la configuration SSL/TLS ? C'est ce que nous allons voir.</strong></p>
+
+
+
+<p>Dans ce tutoriel, nous allons apprendre à effectuer un audit TLS avec l'outil <strong>testssl.sh</strong>. Contrairement aux scanners en ligne comme celui de Qualys SSL Labs (que vous connaissez certainement), testssl.sh est une solution en ligne de commande qui peut auditer n'importe quel serveur, qu'il soit sur Internet, dans votre réseau local (LAN) ou même sur votre machine de développement.</p>
+
+
+
+<p>Il est pertinent d'utiliser ce type d'outil pour valider la configuration d'un service web (qu'il soit exécuté via Apache, Nginx, IIS, Caddy, etc...) avant sa mise en production, ou pour effectuer des audits de conformité réguliers sur des services web.</p>
+
+
+
+<p>Au-delà de l'outil testssl.sh, développé depuis de nombreuses années et éprouvé, je vous invite à jeter un coup d'œil au script Bash <strong><a href="https://www.christophe-casalegno.com/contributions/sxtlscheck-scalarx-tls-checker-verification-de-conformite-tls-ssl-en-bash/" target="_blank">SxTLSCheck (ScalarX TLS Checker)</a></strong> développé par Christophe Casalegno. Il fonctionne exclusivement à l'aide d'OpenSSL, ce qui est une approche intéressante car il n'a pas de dépendance.</p>
+
+
+
+<div><p>Sommaire</p><ul><li><a href="#Quest-ce_que_testsslsh">Qu'est-ce que testssl.sh ?</a></li><li><a href="#Installation_et_utilisation_de_testsslsh">Installation et utilisation de testssl.sh</a><ul><li><a href="#Installation_sur_Linux">Installation sur Linux</a></li><li><a href="#Utilisation_via_Docker">Utilisation via Docker</a></li></ul></li><li><a href="#Lancer_un_audit_TLS_avec_testsslsh">Lancer un audit TLS avec testssl.sh</a><ul><li><a href="#Comprendre_les_sections_du_rapport">Comprendre les sections du rapport</a></li></ul></li><li><a href="#Affiner_le_test_avec_les_options_de_testsslsh">Affiner le test avec les options de testssl.sh</a><ul><li><a href="#Verifier_uniquement_les_protocoles">Vérifier uniquement les protocoles</a></li><li><a href="#Tester_uniquement_les_vulnerabilites">Tester uniquement les vulnérabilités</a></li><li><a href="#Scanner_des_services_non-HTTP">Scanner des services non-HTTP</a></li></ul></li><li><a href="#Generer_des_rapports_pour_laudit">Générer des rapports pour l'audit</a><ul><li><a href="#Rapport_HTML">Rapport HTML</a></li><li><a href="#Rapport_JSON">Rapport JSON</a></li></ul></li><li><a href="#Conclusion">Conclusion</a></li></ul></div>
+<h2><span>Qu'est-ce que testssl.sh ?</span></h2>
+
+
+
+<p>Testssl.sh est un outil open source, gratuit et maintenu par une communauté active. Écrit en Bash, il s'appuie essentiellement sur OpenSSL pour analyser la configuration d'un service web. L'outil ne se contente pas de vérifier la validité d'un certificat TLS. Il effectue une batterie de tests complète :</p>
+
+
+
+<ul>
+<li>Vérification des protocoles supportés (SSLv2, SSLv3, TLS 1.0 à 1.3).</li>
+
+
+
+<li>Analyse des suites de chiffrement (Ciphers) et de leur ordre de préférence.</li>
+
+
+
+<li>Test de robustesse contre les vulnérabilités connues (Heartbleed, POODLE, CCS Injection, etc.).</li>
+
+
+
+<li>Vérification des en-têtes de sécurité HTTP liés à TLS (HSTS, HPKP).</li>
+
+
+
+<li>Etc...</li>
+</ul>
+
+
+
+<p>Il fonctionne sur n'importe quelle distribution Linux, macOS et FreeBSD, ce qui lui assure une certaine portabilité. Grâce à WSL, il est possible de l'utiliser sous Windows également. Par ailleurs, une image Docker est disponible, ce qui renforce le côté portabilité de cet outil.</p>
+
+
+
+<ul>
+<li><a href="https://github.com/testssl/testssl.sh" target="_blank">Voir le dépôt GitHub de testssl.sh</a></li>
+</ul>
+
+
+
+<h2><span>Installation et utilisation de testssl.sh</span></h2>
+
+
+
+<p>L'installation de testssl.sh est simple car vous n'avez qu'à cloner le dépôt GitHub du projet pour lancer le script. Il s'appuie sur OpenSSL en local, mais ce dernier est généralement présent sur les machines Linux.</p>
+
+
+
+<h3><span>Installation sur Linux</span></h3>
+
+
+
+<p>La méthode la plus simple est de cloner le dépôt GitHub. Ouvrez votre terminal et installez d'abord Git si nécessaire :</p>
+
+
+
+<pre><code>sudo apt update
+sudo apt install git</code></pre>
+
+
+
+<p>Ensuite, clonez le dépôt et entrez dans le répertoire. Ici, nous ciblons la branche de la version 3.2, qui est la dernière version stable. La version 3.3 est en cours de développement, donc à vous de voir.</p>
+
+
+
+<pre><code>git clone --depth 1 https://github.com/testssl/testssl.sh.git --branch 3.2
+
+Cloning into 'testssl.sh'...
+remote: Enumerating objects: 104, done.
+remote: Counting objects: 100% (104/104), done.
+remote: Compressing objects: 100% (97/97), done.
+remote: Total 104 (delta 12), reused 43 (delta 7), pack-reused 0 (from 0)
+Receiving objects: 100% (104/104), 6.33 MiB | 28.18 MiB/s, done.
+Resolving deltas: 100% (12/12), done.</code></pre>
+
+
+
+<p>Positionnez-vous dans le répertoire de l'outil. Si besoin, ajoutez les droits d'exécution sur le script Bash <code>testssl.sh</code> (en principe, c'est déjà OK).</p>
+
+
+
+<pre><code>cd testssl.sh
+chmod +x testssl.sh</code></pre>
+
+
+
+<p>Vous pouvez maintenant vérifier que l'outil fonctionne en affichant l'aide :</p>
+
+
+
+<pre><code>./testssl.sh --help</code></pre>
+
+
+
+<h3><span>Utilisation via Docker</span></h3>
+
+
+
+<p>Pour ceux qui préfèrent ne pas installer de dépendances sur leur système hôte, l'image Docker officielle est une alternative préférable. De plus, cette méthode est particulièrement adaptée pour les environnements CI/CD.</p>
+
+
+
+<pre><code>docker run --rm -it ghcr.io/testssl/testssl.sh &lt;commande à exécuter&gt;</code></pre>
+
+
+
+<h2><span>Lancer un audit TLS avec testssl.sh</span></h2>
+
+
+
+<p>L'utilisation de base de testssl.sh consiste simplement à fournir l'URL ou l'adresse IP (et le port si différent de 443) de l'hôte à analyser. Ce qui donne la syntaxe suivante :</p>
+
+
+
+<pre><code>./testssl.sh &lt;nom de domaine ou hôte&gt;</code></pre>
+
+
+
+<figure><img src="https://www.it-connect.fr/wp-content-itc/uploads/2026/02/Analyser-la-configuration-TLS-avec-testssl-sous-Linux.jpg" alt="" /></figure>
+
+
+
+<p>Le script va alors lancer une batterie de tests, et au fur et à mesure de la progression, un retour sera effectué dans la console. Différentes couleurs sont utilisées pour faciliter la lecture et l'interprétation des résultats.</p>
+
+
+
+<ul>
+<li><strong>Vert</strong> : la configuration est sécurisée (conforme aux recommandations) ou la vulnérabilité n'est pas présente.</li>
+
+
+
+<li><strong>Blanc</strong> : information neutre.</li>
+
+
+
+<li><strong>Jaune</strong> : Avertissement (suite de chiffrement faible, protocole obsolète mais parfois nécessaire).</li>
+
+
+
+<li><strong>Rouge</strong> : problème de sécurité sérieux.</li>
+</ul>
+
+
+
+<p>Le test peut prendre pas loin de 10 minutes, le temps qu'une analyse complète soit effectuée. Pour accélérer le scan, vous pouvez utiliser l'option <code>--fast</code>. Attention, cette option réduit la profondeur de certains tests (elle vérifie moins de suites de chiffrement par exemple), mais elle offre un aperçu rapide.</p>
+
+
+
+<h3><span>Comprendre les sections du rapport</span></h3>
+
+
+
+<p>Le rapport standard se divise en plusieurs blocs logiques, à commencer par la section <code>Testing protocols via sockets except NPN+ALP</code>. Chaque section représente un ensemble de tests, on y retrouve notamment :</p>
+
+
+
+<ul>
+<li><strong>Testing protocols</strong> : liste les protocoles activés. Vous devriez idéalement ne voir que TLS 1.2 et TLS 1.3 en vert. SSLv2, SSLv3, TLS 1.0 et 1.1 doivent apparaître en "not offered". Même si parfois, pour des raisons de rétrocompatibilité, la réalité peut être différente.</li>
+
+
+
+<li><strong>Testing cipher categories</strong> : indique quelles sont les catégories d'algorithmes de chiffrement acceptés par le serveur, comme le chiffrement NULL (ce qui serait une faille potentielle). Cela est accompagné d'une section qui détaille quelles sont les préférences du serveur pour le chiffrement.</li>
+
+
+
+<li><strong>Testing robust forward secrecy</strong> : vérifie si le serveur supporte la confidentialité persistante (PFS), garantissant que le vol de la clé privée du serveur aujourd'hui ne permettra pas de déchiffrer les sessions passées.</li>
+
+
+
+<li><strong>Testing server defaults</strong> : analyse la chaine de certification et affiche les détails sur l'ensemble des certificats TLS associés.</li>
+
+
+
+<li><strong>Testing HTTP header response</strong> : analyse le code HTTP obtenu, ainsi que les différents en-têtes, y compris la partie Security headers.</li>
+</ul>
+
+
+
+<figure><img src="https://www.it-connect.fr/wp-content-itc/uploads/2026/02/Test-TLS-Linux-Header-HTTP-Exemple.jpg" alt="" /></figure>
+
+
+
+<ul>
+<li><strong>Testing vulnerabilities</strong> : le script teste la présence de failles célèbres comme Heartbleed, ROBOT, ou Logjam.</li>
+</ul>
+
+
+
+<figure><img src="https://www.it-connect.fr/wp-content-itc/uploads/2026/02/Analyse-TLS-Test-des-vulnerabilites.jpg" alt="" /></figure>
+
+
+
+<ol>
+<li></li>
+</ol>
+
+
+
+<p>D'autres tests sont effectués, comme des simulations de connexion depuis divers types de clients (Chrome, Edge, Safari, Android, OpenSSL, etc...) afin de voir comment le serveur gère ces différentes connexions (notamment le protocole utilisé).</p>
+
+
+
+<p>Il est à noter que les résultats ne reflètent pas nécessairement la configuration locale de votre serveur. En effet, si vous utilisez un système comme Cloudflare, ce sont les paramètres de ce service qui seront analysés par testssl.sh, et non la configuration directe de votre serveur.</p>
+
+
+
+<p>Enfin, le test se termine par un compte rendu global où une note est retournée en s'appuyant sur le système d'évaluation du célèbre service SSL Labs (<a href="https://github.com/ssllabs/research/wiki/SSL-Server-Rating-Guide" target="_blank">décrit sur cette page</a>). Voici un exemple :</p>
+
+
+
+<figure><img src="https://www.it-connect.fr/wp-content-itc/uploads/2026/02/Tester-la-configuration-TLS-en-ligne-de-commande.jpg" alt="" /></figure>
+
+
+
+
+
+
+
+<h2><span>Affiner le test avec les options de testssl.sh</span></h2>
+
+
+
+<p>Lancer un scan complet peut prendre du temps, et parfois, vous pourriez vouloir tester uniquement un point précis. Testssl.sh offre cette possibilité grâce aux différentes options disponibles en tant qu'arguments de la ligne de commande. Vous pouvez coupler plusieurs options ensemble.</p>
+
+
+
+<p>Respectez la syntaxe suivante :</p>
+
+
+
+<pre><code>./testssl.sh [options] &lt;nom de domaine ou hôte&gt;</code></pre>
+
+
+
+<h3><span>Vérifier uniquement les protocoles</span></h3>
+
+
+
+<p>Si vous souhaitez simplement savoir si un serveur a désactivé les vieux protocoles SSL/TLS, utilisez l'option <code>-p</code> :</p>
+
+
+
+<pre><code>./testssl.sh -p &lt;nom d'hôte ou IP&gt;</code></pre>
+
+
+
+<p>Cela affichera uniquement la section concernant SSLv2, SSLv3 et les versions de TLS.</p>
+
+
+
+<h3><span>Tester uniquement les vulnérabilités</span></h3>
+
+
+
+<p>Pour vérifier si un serveur est patché contre les failles connues sans lister tous les ciphers, utilisez l'option <code>-U</code> :</p>
+
+
+
+<pre><code>./testssl.sh -U &lt;nom d'hôte ou IP&gt;</code></pre>
+
+
+
+<h3><span>Scanner des services non-HTTP</span></h3>
+
+
+
+<p>Testssl.sh n'est pas limité au HTTPS. Il peut scanner tout service utilisant TLS, comme un serveur mail (SMTP, IMAP) ou un serveur FTP. Le script détecte souvent le protocole automatiquement, mais il est préférable de le spécifier avec l'option <code>-t</code> (pour <code>starttls</code>).</p>
+
+
+
+<p>La documentation de l'outil indique une prise en charge des services suivants (correspondant à des protocoles) : ftp, smtp, lmtp, pop3, imap, xmpp, xmpp-server, telnet, ldap, nntp, sieve, postgres, mysql.</p>
+
+
+
+<p>Pour tester un serveur SMTP avec STARTTLS :</p>
+
+
+
+<pre><code>./testssl.sh -t smtp smtp.domaine.fr:25</code></pre>
+
+
+
+<h2><span>Générer des rapports pour l'audit</span></h2>
+
+
+
+<h3><span>Rapport HTML</span></h3>
+
+
+
+<p>C'est le format le plus lisible pour les humains. Il génère un fichier HTML autonome, tout en conservant l'affichage des tests dans le terminal. Le rapport HTML ressemble à la sortie dans le terminal, sauf qu'elle est formatée en HTML.</p>
+
+
+
+<pre><code>./testssl.sh --htmlfile rapport_tls.html www.domaine.fr</code></pre>
+
+
+
+<p>Vous pouvez ensuite ouvrir ce fichier dans n'importe quel navigateur pour présenter les résultats à un client, à votre responsable, ou simplement pour en garder une trace.</p>
+
+
+
+<h3><span>Rapport JSON</span></h3>
+
+
+
+<p>Pour l'automatisation (intégration dans un pipeline, par exemple), le format JSON est plus pertinent que le rapport HTML. Dans ce cas, voici la syntaxe à adopter :</p>
+
+
+
+<pre><code>./testssl.sh --jsonfile-pretty rapport.json https://mon-intranet.local</code></pre>
+
+
+
+<h2><span>Conclusion</span></h2>
+
+
+
+<p>Testssl.sh est un outil open source très pratique pour l'audit de configuration TLS/SSL en ligne de commande. Il a peu de dépendance, et surtout il fonctionne en local sans solliciter de services tiers. Au-delà des services web, sa compatibilité avec les services non-web (SMTP, FTP) est également un avantage, qui en fait un outil d'analyse avec un périmètre assez large sur tout ce qui touche au TLS/SSL.</p>
+
+
+
+<ul>
+<li><a href="https://www.it-connect.fr/scan-de-votre-systeme-unix-avec-lynis/" target="_blank">Auditer la configuration de Linux avec Lynis</a></li>
+</ul>
+<div>
+			<p><img src="https://www.it-connect.fr/wp-content-itc/uploads/2025/07/Avatar-FB.jpg" alt="author avatar" />
+		</p>
+			<div><p>
+			
+			Ingénieur système et réseau, cofondateur d'IT-Connect et Microsoft MVP "Cloud and Datacenter Management". Je souhaite partager mon expérience et mes découvertes au travers de mes articles. Généraliste avec une attirance particulière pour les solutions Microsoft et le scripting. Bonne lecture.
+							</p>
+				
+					</div>
+</div></div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Become an early adopter of an Agentic economy</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Become an early adopter of an Agentic economy</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
+    <a href="https://dev.to/weedeej/become-an-early-adopter-of-an-agentic-economy-4933" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+              <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0utmq5br1owtwn91abdt.png">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0utmq5br1owtwn91abdt.png" alt="Cover image for Become an early adopter of an Agentic economy" />
+              </a>
+
+            <div>
+                  <p><a href="https://dev.to/weedeej"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3772127%2Fb2f89ca7-00da-46fe-9a82-de2482c511aa.jpeg" alt="Dixie J." /></a>
+                  </p>
+                  
+                </div>
+          </div><div>
+                <p>I am currently building an open-core discovery and communication layer for agents.</p>
+
+<p>(current deployment is in base sepolia. but no payments feature for now anyway. wallet connect only for registration)</p>
+
+<p><a href="https://paraphrase-agent.vercel.app/.well-known/agent.json" target="_blank">Sample Agent Card</a><br />
+<a href="https://aletheia-psi.vercel.app/docs" target="_blank">Documentation</a><br />
+<a href="https://github.com/a2aletheia/sdk" target="_blank">A2Aletheia SDK</a><br />
+<a href="https://github.com/a2aletheia/a2a" target="_blank">A2Aletheia Agent</a></p>
+
+<p>This is PoC, it is 2026. initial codebase is mostly vibe coded.</p>
+
+<p><strong>Problems I think it solves:</strong> Lack of reliable tooling, Context Rot due to too many tools, Lack of discovery across agents, across servers</p>
+
+<p><strong>Solution:</strong> Instead of bloating our personal agents with tools, we should encourage it to pass complex tasks to a trusted, capable, and specialized agent built solely for tasks like those. A micro SaaS.</p>
+
+<p>TLDR: <a href="https://aletheia-psi.vercel.app/claim" target="_blank">https://aletheia-psi.vercel.app/claim</a> allows businesses to register their agent that handles business procedures. End-user's agent will communicate to capable agents in registry the to complete user request rather than be bloated with tools and still not have enough.</p>
+
+<p>How? Create a network of trusted agents that provides actual, specialized service.<br />
+“Trusted” is a very strong word. My approach uses <code>did:web</code> as the primary identifier and I am planning to do a hybrid approach with ERC-8004 and did:web another layer of trust there. The sdk and the registry I built with it (no, claude did, mostly. I just did “lgtm” most of the time).</p>
+
+<p><strong>Use Case:</strong> I extended existing A2A’s Agent card approach. We’ll know if “Airbnb Agent” in the registry is the real Airbnb’s agent. That’s cool and all, A2A in process. But I thought it would be cool if agents can do chaining. With this, The agent can do chained actual transactions such as looking for a flight, a place to stay, to eat, budgeting, and directions all from different businesses with real-time (I mean almost direct contact to service provider) with just “Find me a vacation spot in Japan for 5 days, with a total budget of $5000 (~2.5 ETH) including flight. I plan to fly for it tomorrow. I’m giving you permissions to use my connected metamask account (risky yes yes yes. but payments is planned in phase4 so forget about it for now) Give me a detailed breakdown of everything.”.</p>
+
+<p>A decent local thinking model with 2-4 tools (built-in in the sdk btw) I think is enough to orchestrate and execute that prompt. And $5000. The cool part about this is you can build your own orchestrator, your personalized agent (auto accept transactions) or be a service provider. Just use the sdk and connect your tools to it.</p>
+
+<p>The packages are in github, it is published in npmjs, But unfortunately that is not the whole project. This I think is best open-core, not fully open-source. For the following section.</p>
+
+<p><strong>Security (FOR HOSTED AGENTS):</strong> The registry, the actual API that receives and passes these requests, is going to be in a private repo, atleast for now. But I plan to release a self hostable registry maybe soon enough as well. But I don’t know how to create those cool “npx create” commands yet.<br />
+<strong>OKAY</strong>. Security. There will be some bad actors of course. Probably more than those who don’t have ill intentions. My plan for mitigation here is bundled with the registry. That’s why I want to have this open-core or atleast someone not bad handle the security stuff. Purple teaming, I plan to be the read team for this against those who want to participate. It will burn a lot of fossil btw. The plan in mind is to attack registered agents in the network in different vectors primarily via prompt engineering, context overflow, thought loops, etc. But yea, those process shouldn’t be shared at all. It doesn’t really have to be me. If you think you are someone who is capable, have the capacity on taking the role, let me know, let’s talk. I honestly don’t like to be the security guy.</p>
+
+<p><strong>Security (FOR END USERS):</strong> There will be of course some bad actors on the service providers side as well. To mitigate this, I thought of a multi-layered reputation scoring criteria that is decided by agents through ratings based on AGENTIC performance. I encourage users to not rate themselves, wash trade, etc, It wont work anyways. The plan is to have agents rate agents. And humans will rate humans.be it as that. hopefully.</p>
+
+<p><strong>Inference Cost:</strong> This will depend on the registry you will be registering to. But my plan for mine is charge to requestor, per-request pricing or something. idk, But I think this should be at payments phase</p>
+
+<p><strong>Next Step?:</strong> I’ll probably build many micro-SaaS agents to demo peer agent. Or create your own, and register it to test.</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

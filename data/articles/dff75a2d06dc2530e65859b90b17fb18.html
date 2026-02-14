@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to Model The Expected Value of Marketing Campaigns</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>How to Model The Expected Value of Marketing Campaigns</h1>
+  <div class="metadata">
+    Source: Towards Data Science | Date: 2/10/2026 | Lang: EN |
+    <a href="https://towardsdatascience.com/how-to-model-the-expected-value-of-marketing-campaigns/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p> for marketing campaigns is extremely hard. Much of it comes down to trial and error, even though we know that more targeted strategies would work better. We just don’t know how to get there. The process often includes launching a campaign, observing it, learning, making adjustments, and then trying again. This trial-and-error approach has real strengths. It encourages movement over paralysis. It allows teams to learn quickly, especially in fast-changing markets. For early-stage growth or limited data environments, it is often the only practical option.</p>
+
+
+
+<p>I want to introduce a different approach. One that is, without a doubt, more difficult, advanced, and complex, but also revolutionary and remarkable. This is the approach that takes companies to the next level of data maturity. Let me introduce you to expected value modeling.</p>
+
+
+
+<p>Before we begin, I want to preface by saying this approach takes up full chapters in some data science textbooks. However, I intend to be as non-technical as possible. I will keep the ideas conceptual, while still providing a clear framework on how this can be achieved. If you are interested in learning more, I will cite useful sources at the end.</p>
+
+
+
+<p>Let’s begin.</p>
+
+
+
+<h2>What is Expected Value Modeling?</h2>
+
+
+
+<p>Expected value is a key analytical framework that allows decision-makers to consider tradeoffs when there are unequal costs and benefits. Think of a scenario where a a machine learning model helps diagnose a patient with cancer. Frameworks and models that only include simple accuracy (either the prediction was right or wrong) do not account for the tradeoffs in the predictions.</p>
+
+
+
+<p>In this case, not every “wrong prediction” is the same. Not diagnosing a patient with cancer when they have it is infinitely more costly than diagnosing someone with cancer when they actually have it. Both predictions were technically wrong, but one cost a life, the other did not.</p>
+
+
+
+<p>Thankfully, our marketing strategies are not life-or-death situations. But this principle applies the same. The decision on who to target in a marketing campaign, and who not to, may result in largely different costs for the business.</p>
+
+
+
+<p>Expected Value Modeling expands this horizon to account for more possible outcomes, and allows us to measure the cost or benefit of each. This framework is deeply dependent on business knowledge of subject matter experts to determine the consequences of each outcome. Our goal here is to understand how to design a strategy that statistically optimizes for our goal. For the remainder of this article, we will be focused on learning who to target in a marketing strategy so we maximize profit.</p>
+
+
+
+<h2>Start with a Purchase Likelihood Model</h2>
+
+
+
+<p>A Purchase Likelihood Model is a machine learning model that predicts the probability that a customer will purchase a product. Let’s consider we are running an ad campaign for an e-commerce business. Each person that clicks on the ad creates a row of data. They see the campaign, browse your store, and ultimately makes a decision to purchase or not to purchase a product. During this process, a multitude of data points needs to be collected. The machine learning model analyses all historical data to recognize patterns. It learns what are the factors that influence the probability of a customer to purchase. Then, it applies those patterns to new customers to predict if they will purchase a product.</p>
+
+
+
+<p>This model by itself is of extreme value. It tells the business who are the customers most likely to buy a product and what aspects of the campaign influence purchase likelihood. We can use these insights to tailor our next ad campaign. This is what data-driven decision making looks like.</p>
+
+
+
+<h2>Implementing Expected Value Modeling</h2>
+
+
+
+<p>To move forward, it is important to understand the concept of a  confusion matrix. A confusion matrix is a <em>n </em>x <em>n </em>table where <em>n </em>represents all possible outcomes. For simplicity, I will stick with a 2 x 2 confusion matrix.</p>
+
+
+
+<p>This matrix contains the predicted outcomes in one axis and the actual outcomes in the other. It provides us with four cells, one for each possible outcome in a binary classification problem, as is our purchase likelihood model (either a customer purchases a product or does not). This results in the following possibilities:</p>
+
+
+
+<ul>
+<li><strong>True Positive:</strong> we predicted the customer would purchase, and they actually did.</li>
+
+
+
+<li><strong>False Positive:</strong> we predicted the customer would purchase, but they did not.</li>
+
+
+
+<li><strong>False Negative:</strong> we predicted the customer would NOT purchase, but they did.</li>
+
+
+
+<li><strong>True Negative:</strong> we predicted the customer would NOT purchase, and they in fact did not.</li>
+</ul>
+
+
+
+<p>Here’s an illustration:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/1tZRo3s9GKp1BpsdR2AE2CA.png" alt="" /></figure>
+
+
+
+<p>To implement expected values to each outcome we need to have a deep understanding of the business. We need to know the following information:</p>
+
+
+
+<ul>
+<li>Profit per product sold.</li>
+
+
+
+<li>Cost per click.</li>
+
+
+
+<li>Purchase probability per customer.</li>
+</ul>
+
+
+
+<p>In the same example for our e-commerce store, let’s consider the following values:</p>
+
+
+
+<ul>
+<li>Profit per product sold = <strong>$50</strong></li>
+
+
+
+<li>Cost per click = <strong>$1</strong></li>
+
+
+
+<li>Purchase probability per customer = <strong>from our Purchase Likelihood Model</strong></li>
+</ul>
+
+
+
+<p>Knowing this information we can determine that the benefit of a customer clicking on our ad campaign and purchasing a product (True Positive) would be the profit per product (<strong>$50) </strong>minus the cost per click (<strong>$1</strong>), which equals <strong>$49</strong>. The cost of a customer clicking on our campaign but not purchasing (False Positive) is just the cost incurred for the click, so <strong>-$1</strong>. The result of not targeting a customer that would not purchase is <strong>$0</strong>, since no cost was incurred and no revenue was earned. The result of not targeting someone that would purchase is also <strong>$0</strong> for the same reasons.</p>
+
+
+
+<p>I do want to acknowledge the opportunity costs of not targeting someone that would purchase or the possibility of someone purchasing without being targeted. These are more abstract and subjective, although not impossible to measure. For simplicity, I will not consider them in this scenario.</p>
+
+
+
+<p>This leaves us with the following confusion matrix:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/1T95dFQ28S0yxT38moPaocw.png" alt="" /></figure>
+
+
+
+<p>Cool, we now know the concrete cost or benefit of each outcome of our ad campaign. This allows us to understand the expected value of a targeting a customer by using the following equation (sorry for throwing math at you):</p>
+
+
+
+<blockquote>
+<p><strong><em>Expected Profit = P(buy) × Profit if buy + (1 — P(buy)) × Loss if no buy</em></strong></p>
+</blockquote>
+
+
+
+<p>Where the expected value is equal the <strong>probability of response</strong> <strong>(P(buy))</strong> times the <strong>value of a response (Profit if buy)</strong> plus the <strong>probability of a non-response (1 — P(buy))</strong> times the <strong>cost of a non-response (Loss if no buy).</strong></p>
+
+
+
+<p>If we want the expected value of targeting a customer to be positive, meaning we have a profit, then we can rearrange the equation to the following:</p>
+
+
+
+<blockquote>
+<p><strong><em>P(buy) × $49 + (1 — P(buy)) × (–$1) &gt; 0</em></strong></p>
+
+
+
+<p><strong><em>P(buy) &gt; 0.02 (or 2%)</em></strong></p>
+</blockquote>
+
+
+
+<p>This means that, based on our purchase likelihood model, we should target every customer with a purchase likelihood exceeding 2%.</p>
+
+
+
+<p>You don’t need to have a degree in math or statistics to implement this, but I wanted to show how we got there.</p>
+
+
+
+<p>We have our answer: we need to target all customers whose purchase probability is above 2%. We can now go back to our purchase likelihood model an identify which customer segments fit the criteria.</p>
+
+
+
+<p>We have discovered exactly who to target, we tailored our campaign to their needs, and deployed a marketing campaign that works. We designed our strategy with all the right foundations by making true data-driven decisions.</p>
+
+
+
+<h2>Taking it one step further with Profit Curves</h2>
+
+
+
+<p>We have built our framework and designed our marketing campaign in a way that optimizes our ROI. However, there are often additional constraints that limits our ability to deploy a campaign, often related to how much budget is allocated and how many people can be targeted. In these scenarios, it is useful to know not only the optimal decision, but also the expected value across a wide range of possibilities. In those situations, we can embed expected value calculation into our purchase likelihood model training process.</p>
+
+
+
+<p>Instead of choosing models purely based on technical performance, we can evaluate them based on expected profit. Or use a combined approach that balances predictive strength and economic impact.</p>
+
+
+
+<p>While we are building our model, we can calculate the expected profit across the entire range of people that we can target, from targeting nobody to absolutely everyone we can. As a result, we get a profit curve plot:</p>
+
+
+
+<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/1MXndPmwyKkDR17Q581gKAw.png" alt="" /></figure>
+
+
+
+<p>In the y-axis we have the expected profit for the marketing campaign based on how many people we target. In the x-axis we have purchase likelihood threshold. We get more and more narrow with our campaign as we increase the threshold. If we increase it all the way to 100%, we won’t target anyone. If we drop all the way to 0%, we can target everyone.</p>
+
+
+
+<p>As in our example before, we see that the maximum expected profit lies when we target every population with above a 2% purchase likelihood score. However, maybe we have a more strict budget, or we want to develop a separate campaign only for the really high likelihood customers. In this case, we can compare our budget to the curve and identify that targeting customers above a 12% likelihood score is still expected to provide a strong profit on a fraction of the cost. Then, we can go to the same process we did before to design this campaign. We identify who are these customers, what impacts their purchase likelihood, and proceed to tailor our marketing campaign to their needs.</p>
+
+
+
+<h2>It starts and ends with business knowledge</h2>
+
+
+
+<p>We have seen the possibilities and value that expected value modeling can provide, but I must reiterate how important it is to have knowledge of the business to ensure everything works smoothly. It is crucial to have a solid understanding of the costs and benefits associated with each possible outcome. It is paramount to properly interpret the model results to fully understand what levers can be pulled to impact purchase likelihood.</p>
+
+
+
+<p>Although it is a complex approach, it is not my intent to sound discouraging to the reader who is learning about these techniques for the first time. Quite the opposite. I am writing about this to highlight that such methods are no longer reserved to large corporations. Small and medium size businesses have access to the same data collection and modeling tools, opening the door for anyone that wants to take their business to the next level.</p>
+
+
+
+<hr />
+
+
+
+<h2>References</h2>
+
+
+
+<p>Provost, F., and Fawcett, T. <em>Data Science for Business: What You Need to Know about Data Mining and Data-Analytic Thinking</em>. O’Reilly Media.</p>
+
+
+
+<hr />
+
+
+
+<p><em>All images, unless otherwise noted, are by the author</em>.</p>
+</div></div>
+  </div>
+</body>
+</html>
