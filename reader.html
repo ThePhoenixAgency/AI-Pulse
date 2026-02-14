@@ -1,331 +1,159 @@
 <!DOCTYPE html>
-<!--
-================================================================================
-AI-PULSE - LECTEUR D'ARTICLES (reader.html)
-================================================================================
-
-DESCRIPTION:
-    Cette page est le lecteur d'articles intégré. Elle affiche les articles
-    externes dans une iframe avec une barre d'information.
-
-RÔLE:
-    - Afficher les articles dans une iframe
-    - Montrer les métadonnées (titre, source, tags)
-    - Gérer les erreurs de chargement (X-Frame-Options)
-    - Suivre les articles lus (analytics)
-
-MODES D'AFFICHAGE:
-    1. Vue "home" : Affiche le README via readme-viewer.html
-    2. Vue "article" : Affiche un article externe dans une iframe
-
-PARAMÈTRES URL:
-    - url : URL de l'article à afficher
-    - title : Titre de l'article
-    - source : Source de l'article (nom du site)
-    - tags : Tags séparés par des virgules
-
-EXEMPLE D'URL:
-    reader.html?url=https://example.com/article&title=Mon%20Article&source=Example&tags=AI,News
-
-SÉCURITÉ:
-    - Validation des URLs (http/https uniquement)
-    - Protection XSS avec DOMPurify
-    - Sandbox sur l'iframe pour limiter les permissions
-    - Content Security Policy (CSP) configurée
-
-FICHIERS LIÉS:
-    - css/style.css : Styles généraux
-    - js/ui.js : Logique de l'interface
-    - readme-viewer.html : Vue par défaut (liste des articles)
-
-VERSION: 1.0.0
-DERNIÈRE MISE À JOUR: Février 2026
-================================================================================
--->
 <html lang="fr">
 
 <head>
-    <!--
-    ============================================================================
-    SCRIPT DE REDIRECTION
-    ============================================================================
-
-    Ce script s'exécute IMMÉDIATEMENT au chargement de la page.
-    Il vérifie si la page est ouverte directement (pas dans une iframe).
-    Si c'est le cas, il redirige vers index.html.
-
-    POURQUOI ?
-    Cette page est conçue pour être affichée dans l'iframe de app.html.
-    Si quelqu'un l'ouvre directement, on le redirige vers l'accueil.
-
-    TECHNIQUE:
-    - window.self : Référence à la fenêtre courante
-    - window.top : Référence à la fenêtre parente (la plus haute)
-    - Si self === top, la page n'est pas dans une iframe
-    ============================================================================
-    -->
+    <!-- Redirect to index.html if opened directly (not in iframe) -->
     <script>
-        // Vérifie si la page est dans une iframe
-        // Si window.self === window.top, on n'est PAS dans une iframe
         if (window.self === window.top) {
-            // Redirige vers la page d'accueil
             window.location.replace('./index.html');
         }
     </script>
-
-    <!-- Encodage UTF-8 pour les caractères spéciaux -->
     <meta charset="UTF-8">
-
-    <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!--
-    ============================================================================
-    CONTENT SECURITY POLICY (CSP)
-    ============================================================================
-
-    Règles de sécurité définissant quelles ressources peuvent être chargées.
-
-    DIRECTIVES:
-    - default-src 'self' : Par défaut, n'autorise que les ressources du même domaine
-    - script-src : Scripts autorisés (self, inline, et CDN jsdelivr)
-    - style-src : Styles autorisés (self, inline, et Google Fonts)
-    - font-src : Polices autorisées (self et Google Fonts)
-    - frame-src : Iframes autorisées (self et tout domaine *)
-    - connect-src : Connexions autorisées (self et API ipapi.co pour géolocalisation)
-    - img-src : Images autorisées (self, data:, et HTTPS)
-    ============================================================================
-    -->
     <meta http-equiv="Content-Security-Policy"
         content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-src 'self' *; connect-src 'self' https://ipapi.co; img-src 'self' data: https:">
-
-    <!-- Titre de l'onglet du navigateur -->
     <title>AI-Pulse Reader</title>
-
-    <!-- Police Google Fonts "Inter" - Police moderne et lisible -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Feuille de styles principale -->
     <link rel="stylesheet" href="./css/style.css">
-
-    <!--
-    ============================================================================
-    DOMPURIFY - PROTECTION XSS
-    ============================================================================
-
-    DOMPurify est une bibliothèque qui nettoie le HTML pour éviter les
-    attaques XSS (Cross-Site Scripting).
-
-    Elle supprime tout code JavaScript malicieux qui pourrait être
-    injecté via les paramètres URL ou le contenu des articles.
-    ============================================================================
-    -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
-
-    <!-- Script UI (chargé tôt car peut être utilisé par le contenu) -->
     <script src="./js/ui.js"></script>
-
-    <!--
-    ============================================================================
-    STYLES SPÉCIFIQUES AU LECTEUR
-    ============================================================================
-
-    Ces styles définissent l'apparence du lecteur d'articles :
-    - Barre d'information de l'article
-    - Zone de contenu (iframe)
-    - États de chargement et d'erreur
-    - Footer fixe
-    ============================================================================
-    -->
     <style>
-        /* ====================================================================
-           RESET CSS
-           ====================================================================
-           Réinitialise les styles par défaut du navigateur.
-        ==================================================================== */
         * {
-            margin: 0;                  /* Pas de marge */
-            padding: 0;                 /* Pas de padding */
-            box-sizing: border-box;     /* Inclut padding dans la largeur */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* ====================================================================
-           VARIABLES CSS (ROOT)
-           ====================================================================
-           Variables locales pour cette page (en plus de celles de style.css)
-        ==================================================================== */
         :root {
-            --primary-color: #5e72e4;       /* Bleu primaire */
-            --secondary-color: #825ee4;     /* Violet secondaire */
-            --bg-primary: #ffffff;          /* Fond blanc */
-            --bg-secondary: #f8f9fa;        /* Fond gris clair */
-            --text-primary: #2d3748;        /* Texte principal */
-            --text-secondary: #64748b;      /* Texte secondaire */
-            --border-color: #e2e8f0;        /* Couleur des bordures */
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);         /* Ombre légère */
-            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);    /* Ombre forte */
+            --primary-color: #5e72e4;
+            --secondary-color: #825ee4;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --text-primary: #2d3748;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* ====================================================================
-           CORPS DE LA PAGE
-           ====================================================================
-           Configuration du body pour occuper toute la hauteur.
-        ==================================================================== */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-secondary);    /* Fond gris clair */
-            color: var(--text-primary);         /* Texte sombre */
-            height: 100vh;                      /* 100% de la hauteur de la fenêtre */
-            overflow: hidden;                   /* Pas de défilement sur le body */
-            display: flex;                      /* Utilise Flexbox */
-            flex-direction: column;             /* Empile verticalement */
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* ====================================================================
-           BARRE D'INFORMATION DE L'ARTICLE
-           ====================================================================
-           Affiche le titre, la source et les tags de l'article.
-           Cachée par défaut (display: none), visible quand un article est chargé.
-        ==================================================================== */
+        /* Article Info Bar */
         .article-info-bar {
-            background: var(--bg-primary);          /* Fond blanc */
-            border-bottom: 1px solid var(--border-color);  /* Bordure en bas */
-            padding: 16px 24px;                     /* Espacement intérieur */
-            display: none;                          /* Caché par défaut */
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 16px 24px;
+            display: none;
         }
 
-        /* Classe .visible pour afficher la barre */
         .article-info-bar.visible {
             display: block;
         }
 
-        /* ====================================================================
-           TITRE DE L'ARTICLE
-           ====================================================================
-           Texte du titre avec limitation à 2 lignes (line-clamp).
-        ==================================================================== */
         .article-title-text {
             font-size: 16px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 8px;
-
-            /* Limite le texte à 2 lignes avec "..." */
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
-        /* ====================================================================
-           MÉTADONNÉES DE L'ARTICLE
-           ====================================================================
-           Affiche la source et les tags en ligne.
-        ==================================================================== */
         .article-meta {
-            display: flex;              /* En ligne */
-            gap: 16px;                  /* Espace entre les éléments */
+            display: flex;
+            gap: 16px;
             color: var(--text-secondary);
             font-size: 13px;
-            flex-wrap: wrap;            /* Passe à la ligne si nécessaire */
+            flex-wrap: wrap;
         }
 
-        /* Item de métadonnée (source ou groupe de tags) */
         .meta-item {
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* ====================================================================
-           TAG
-           ====================================================================
-           Badge pour les tags de l'article (ex: "AI", "News", "Security")
-        ==================================================================== */
         .tag {
             display: inline-block;
-            background: var(--bg-secondary);    /* Fond gris */
-            color: var(--text-secondary);       /* Texte gris */
-            padding: 4px 10px;                  /* Padding */
-            border-radius: 4px;                 /* Coins arrondis */
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 4px;
             font-size: 12px;
             margin-right: 4px;
             font-weight: 500;
         }
 
-        /* ====================================================================
-           ZONE DE CONTENU
-           ====================================================================
-           Conteneur principal pour l'iframe et les messages.
-        ==================================================================== */
+        /* Content Area */
         .content-wrapper {
-            flex: 1;                    /* Prend tout l'espace disponible */
+            flex: 1;
             display: flex;
             flex-direction: column;
             background: white;
             overflow: hidden;
         }
 
-        /* Conteneur de l'iframe */
         .iframe-container {
             flex: 1;
-            position: relative;         /* Pour positionner loading/error */
+            position: relative;
             background: white;
         }
 
-        /* L'iframe elle-même */
         iframe {
             width: 100%;
             height: 100%;
-            border: none;               /* Pas de bordure */
+            border: none;
         }
 
-        /* ====================================================================
-           ÉTAT DE CHARGEMENT
-           ====================================================================
-           Affiché pendant le chargement de l'article.
-        ==================================================================== */
+        /* Loading State */
         .loading {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);   /* Centre parfaitement */
+            transform: translate(-50%, -50%);
             text-align: center;
             color: var(--primary-color);
         }
 
-        /* Animation de spinner (cercle tournant) */
         .spinner {
             width: 48px;
             height: 48px;
-            border: 4px solid var(--bg-secondary);      /* Fond gris */
-            border-top: 4px solid var(--primary-color); /* Haut bleu */
-            border-radius: 50%;                          /* Cercle */
-            animation: spin 1s linear infinite;          /* Tourne */
+            border: 4px solid var(--bg-secondary);
+            border-top: 4px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
             margin: 0 auto 16px;
         }
 
-        /* Animation keyframes pour le spinner */
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        /* Texte sous le spinner */
         .loading-text {
             font-size: 14px;
             color: var(--text-secondary);
             font-weight: 500;
         }
 
-        /* ====================================================================
-           MESSAGE D'ERREUR
-           ====================================================================
-           Affiché quand l'article ne peut pas être chargé dans l'iframe.
-           Certains sites bloquent l'affichage dans les iframes (X-Frame-Options).
-        ==================================================================== */
+        /* Error Message */
         .error-message {
-            display: none;              /* Caché par défaut */
+            display: none;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -339,21 +167,18 @@ DERNIÈRE MISE À JOUR: Février 2026
             border: 1px solid var(--border-color);
         }
 
-        /* Icône d'erreur (émoji ⚠️) */
         .error-icon {
             font-size: 64px;
             margin-bottom: 16px;
         }
 
-        /* Titre de l'erreur */
         .error-message h2 {
-            color: #ef4444;             /* Rouge */
+            color: #ef4444;
             margin-bottom: 16px;
             font-size: 20px;
             font-weight: 600;
         }
 
-        /* Texte explicatif */
         .error-message p {
             color: var(--text-secondary);
             margin-bottom: 24px;
@@ -361,11 +186,6 @@ DERNIÈRE MISE À JOUR: Février 2026
             font-size: 14px;
         }
 
-        /* ====================================================================
-           BOUTON
-           ====================================================================
-           Style commun pour les boutons de la page.
-        ==================================================================== */
         .btn {
             padding: 10px 20px;
             border: none;
@@ -380,53 +200,48 @@ DERNIÈRE MISE À JOUR: Février 2026
             gap: 8px;
         }
 
-        /* Bouton primaire (dégradé bleu-violet) */
         .btn-primary {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
         }
 
-        /* Effet au survol */
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(94, 114, 228, 0.4);
         }
 
-        /* ====================================================================
-           RESPONSIVE (MOBILE)
-           ====================================================================
-           Ajustements pour les petits écrans.
-        ==================================================================== */
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-content { padding: 0 16px; }
-            .logo-text { display: none; }
-            .nav-tab-text { display: none; }
-            .article-info-bar { padding: 12px 16px; }
+            .header-content {
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                display: none;
+            }
+
+            .nav-tab-text {
+                display: none;
+            }
+
+            .article-info-bar {
+                padding: 12px 16px;
+            }
         }
 
-        /* ====================================================================
-           VUES (VIEW STATES)
-           ====================================================================
-           Gestion des différentes vues (home et article).
-           Une seule vue est visible à la fois.
-        ==================================================================== */
+        /* View States */
         .view {
-            display: none;              /* Caché par défaut */
+            display: none;
             width: 100%;
             height: 100%;
         }
 
-        /* Vue active */
         .view.active {
             display: flex;
             flex-direction: column;
         }
 
-        /* ====================================================================
-           FOOTER FIXE
-           ====================================================================
-           Pied de page fixé en bas de l'écran.
-        ==================================================================== */
+        /* Footer */
         .footer {
             background: var(--bg-primary);
             border-top: 1px solid var(--border-color);
@@ -451,20 +266,16 @@ DERNIÈRE MISE À JOUR: Février 2026
             transition: opacity 0.2s;
         }
 
-        .footer a:hover { opacity: 0.7; }
+        .footer a:hover {
+            opacity: 0.7;
+        }
 
-        /* Compense la hauteur du footer */
-        .main-container { padding-bottom: 50px; }
+        .main-container {
+            padding-bottom: 50px;
+        }
     </style>
 
-    <!--
-    ============================================================================
-    GOOGLE ANALYTICS
-    ============================================================================
-    Suivi des visites avec Google Analytics.
-    ID de mesure : G-LWN1RSPQMJ
-    ============================================================================
-    -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LWN1RSPQMJ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -473,102 +284,38 @@ DERNIÈRE MISE À JOUR: Février 2026
         gtag('config', 'G-LWN1RSPQMJ');
     </script>
 
-    <!-- DOMPurify pour la protection XSS (chargé une deuxième fois pour compatibilité) -->
+    <!-- DOMPurify for XSS protection -->
     <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.8/dist/purify.min.js"></script>
+</head>
 
-    <!--
-    ============================================================================
-    VUE HOME (PAR DÉFAUT)
-    ============================================================================
-
-    Affiche le README via readme-viewer.html dans une iframe.
-    Cette vue est active par défaut quand aucun article n'est sélectionné.
-    ============================================================================
-    -->
+<body>
     <div class="view active" id="view-home">
         <div class="iframe-container">
-            <!-- Charge le visualiseur de README -->
             <iframe src="./readme-viewer.html?v=fixed" id="readmeFrame"></iframe>
         </div>
     </div>
 
-    <!--
-    ============================================================================
-    VUE ARTICLE
-    ============================================================================
-
-    Affiche un article externe dans une iframe.
-    Cette vue s'active quand l'URL contient des paramètres d'article.
-    ============================================================================
-    -->
+    <!-- Article View -->
     <div class="view" id="view-article">
-
-        <!--
-        ================================================================
-        BARRE D'INFORMATION DE L'ARTICLE
-        ================================================================
-        Affiche le titre, la source et les tags de l'article.
-        Contient aussi un bouton "Retour" pour revenir à la liste.
-        ================================================================
-        -->
         <div class="article-info-bar" id="articleInfoBar">
-            <div style="display: flex; align-items: center; gap: 12px;">
-
-                <!-- Bouton Retour -->
-                <button id="backBtn" onclick="window.history.back()"
-                    style="background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 6px 14px; cursor: pointer; font-size: 14px; color: var(--text-secondary); display: flex; align-items: center; gap: 6px; transition: all 0.2s; font-family: inherit; white-space: nowrap;"
-                    title="Retour">&#8592; Retour</button>
-
-                <!-- Informations de l'article -->
-                <div style="flex: 1; min-width: 0;">
-                    <!-- Titre de l'article (mis à jour par JS) -->
-                    <div class="article-title-text" id="articleTitleText">Chargement...</div>
-
-                    <!-- Métadonnées (source et tags) -->
-                    <div class="article-meta">
-                        <span class="meta-item" id="articleSource"></span>
-                        <span class="meta-item" id="articleTags"></span>
-                    </div>
-                </div>
+            <div class="article-title-text" id="articleTitleText">Chargement...</div>
+            <div class="article-meta">
+                <span class="meta-item" id="articleSource"></span>
+                <span class="meta-item" id="articleTags"></span>
             </div>
         </div>
 
-        <!--
-        ================================================================
-        CONTENEUR DE L'IFRAME
-        ================================================================
-        Contient l'iframe de l'article, le spinner de chargement
-        et le message d'erreur.
-        ================================================================
-        -->
         <div class="iframe-container">
-
-            <!-- Spinner de chargement -->
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <p class="loading-text">Chargement de l'article...</p>
             </div>
-
-            <!--
-            L'IFRAME DE L'ARTICLE
-            =====================
-            sandbox : Limite les permissions de l'iframe pour la sécurité
-            - allow-same-origin : Permet l'accès au même domaine
-            - allow-scripts : Permet l'exécution de scripts
-            - allow-popups : Permet l'ouverture de popups
-            - allow-forms : Permet la soumission de formulaires
-            - allow-top-navigation : Permet de changer l'URL parente
-            -->
             <iframe id="articleFrame"
                 sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-top-navigation"></iframe>
-
-            <!-- Message d'erreur (affiché si l'article ne charge pas) -->
             <div class="error-message" id="errorMessage">
                 <div class="error-icon">⚠️</div>
                 <h2>Impossible de charger l'article</h2>
                 <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
-
-                <!-- Bouton pour ouvrir l'article dans un nouvel onglet -->
                 <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
                     <span>🔗</span>
                     <span>Ouvrir sur le site source</span>
@@ -577,190 +324,117 @@ DERNIÈRE MISE À JOUR: Février 2026
         </div>
     </div>
 
-    <!--
-    ============================================================================
-    SCRIPT PRINCIPAL
-    ============================================================================
-
-    Ce script gère :
-    1. La navigation entre les vues (home et article)
-    2. La validation et le chargement des URLs d'article
-    3. L'affichage des métadonnées (titre, source, tags)
-    4. La gestion des erreurs de chargement
-    5. Le suivi des articles lus (analytics)
-    ============================================================================
-    -->
     <script>
-        // ─────────────────────────────────────────────────────────────────
-        // GESTION DES VUES
-        // ─────────────────────────────────────────────────────────────────
-
-        /**
-         * Vue actuellement affichée ('home' ou 'article')
-         * @type {string}
-         */
+        // View Management
         let currentView = 'home';
 
-        /**
-         * Affiche une vue spécifique et cache les autres.
-         *
-         * @param {string} viewName - Nom de la vue à afficher ('home' ou 'article')
-         */
         function showView(viewName) {
-            // Cache toutes les vues
             document.querySelectorAll('.view').forEach(view => {
                 view.classList.remove('active');
             });
-
-            // Désactive tous les onglets de navigation
             document.querySelectorAll('.nav-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
 
-            // Affiche la vue demandée
             const view = document.getElementById(`view-${viewName}`);
             const tab = document.getElementById(`tab-${viewName}`);
 
             if (view) view.classList.add('active');
             if (tab) tab.classList.add('active');
 
-            // Met à jour la vue courante
             currentView = viewName;
         }
 
-        // ─────────────────────────────────────────────────────────────────
-        // LECTURE DES PARAMÈTRES URL
-        // ─────────────────────────────────────────────────────────────────
-
-        // Récupère les paramètres de l'URL (ex: ?url=...&title=...)
+        // Parse URL Parameters
         const params = new URLSearchParams(window.location.search);
+        const rawArticleUrl = params.get('url');
+        const articleTitle = params.get('title');
+        const articleSource = params.get('source');
+        const articleTags = params.get('tags');
 
-        // Extrait chaque paramètre
-        const rawArticleUrl = params.get('url');      // URL de l'article
-        const articleTitle = params.get('title');      // Titre de l'article
-        const articleSource = params.get('source');    // Source (nom du site)
-        const articleTags = params.get('tags');        // Tags séparés par virgules
-
-        // ─────────────────────────────────────────────────────────────────
-        // VALIDATION DE L'URL
-        // ─────────────────────────────────────────────────────────────────
-
-        /**
-         * Vérifie si une chaîne est une URL HTTP(S) valide.
-         * Autorise aussi les chemins internes (data/...)
-         *
-         * @param {string} string - La chaîne à valider
-         * @returns {boolean} true si l'URL est valide
-         */
+        // Validate URL scheme to prevent XSS
         function isValidHttpUrl(string) {
             if (!string) return false;
-
-            // Autorise les chemins internes (ex: data/articles/...)
+            // Allow internal data paths
             if (string.startsWith('data/')) return true;
-
             try {
-                // Tente de parser l'URL
                 const url = new URL(string, window.location.origin);
-
-                // Accepte uniquement HTTP et HTTPS
                 return url.protocol === 'http:' || url.protocol === 'https:';
             } catch (_) {
                 return false;
             }
         }
 
-        // Valide l'URL de l'article
+        // Validate and sanitize URL - only proceed if URL is safe
         let articleUrl = null;
         if (rawArticleUrl && isValidHttpUrl(rawArticleUrl)) {
-            articleUrl = rawArticleUrl;  // URL validée
+            articleUrl = rawArticleUrl; // Now articleUrl is guaranteed to be a valid http(s) URL
         }
 
-        // ─────────────────────────────────────────────────────────────────
-        // AFFICHAGE DE L'ARTICLE (si URL valide)
-        // ─────────────────────────────────────────────────────────────────
-
+        // If article parameters exist and URL is valid, show article view
+        // If article parameters exist and URL is valid, show article view
         if (articleUrl && isValidHttpUrl(articleUrl)) {
-            // Affiche la vue article
             showView('article');
 
-            // Affiche les éléments d'interface (onglet article, bouton externe)
+            // Show article tab and external link button if they existed in DOM (checking safety)
             const tabArticle = document.getElementById('tab-article');
             const openExternal = document.getElementById('openExternal');
             if (tabArticle) tabArticle.style.display = 'inline-flex';
             if (openExternal) openExternal.style.display = 'inline-flex';
 
-            // Construit l'URL sécurisée
             let safeArticleUrl;
             if (articleUrl.startsWith('http')) {
-                // URL externe : utilise l'URL telle quelle
                 safeArticleUrl = new URL(articleUrl).toString();
             } else {
-                // Chemin interne : ajoute le préfixe ./
+                // Internal path
                 safeArticleUrl = './' + articleUrl;
             }
 
-            // ─────────────────────────────────────────────────────────────
-            // AFFICHAGE DES MÉTADONNÉES
-            // ─────────────────────────────────────────────────────────────
-
-            // Affiche le titre de l'article
+            // Display article information
             if (articleTitle) {
                 const titleEl = document.getElementById('articleTitleText');
                 if (titleEl) titleEl.textContent = decodeURIComponent(articleTitle);
-
                 const barEl = document.getElementById('articleInfoBar');
                 if (barEl) barEl.classList.add('visible');
             }
 
-            // Affiche la source de l'article
             if (articleSource) {
                 const sourceEl = document.getElementById('articleSource');
                 if (sourceEl) {
-                    // Utilise textContent (pas innerHTML) pour éviter XSS
+                    // Use textContent for safety, prepend emoji
                     sourceEl.textContent = `📰 ${decodeURIComponent(articleSource)}`;
-
                     const barEl = document.getElementById('articleInfoBar');
                     if (barEl) barEl.classList.add('visible');
                 }
             }
 
-            // Affiche les tags de l'article
             if (articleTags) {
-                // Sépare les tags par virgule
                 const tags = decodeURIComponent(articleTags).split(',');
-
                 const tagsEl = document.getElementById('articleTags');
                 if (tagsEl) {
-                    tagsEl.textContent = '';  // Vide le conteneur
-
-                    // Crée un badge pour chaque tag
+                    tagsEl.textContent = ''; // Clear
                     tags.forEach(tag => {
                         const span = document.createElement('span');
                         span.className = 'tag';
-                        span.textContent = tag.trim();  // textContent = sécurisé
+                        span.textContent = tag.trim(); // Safe textContent
                         tagsEl.appendChild(span);
                     });
                 }
             }
 
-            // Configure les liens externes
+            // Configure external links
             if (openExternal) openExternal.href = safeArticleUrl;
             const openExternalError = document.getElementById('openExternalError');
             if (openExternalError) openExternalError.href = safeArticleUrl;
 
-            // ─────────────────────────────────────────────────────────────
-            // CHARGEMENT DE L'ARTICLE DANS L'IFRAME
-            // ─────────────────────────────────────────────────────────────
-
+            // Load article in iframe
             const iframe = document.getElementById('articleFrame');
             const loading = document.getElementById('loading');
             const errorMessage = document.getElementById('errorMessage');
 
             if (iframe) {
-                // Définit l'URL de l'iframe
                 iframe.src = safeArticleUrl;
 
-                // Timeout : si pas chargé après 8 secondes, affiche l'erreur
                 let loadTimeout = setTimeout(() => {
                     if (loading && loading.style.display !== 'none') {
                         loading.style.display = 'none';
@@ -768,27 +442,27 @@ DERNIÈRE MISE À JOUR: Février 2026
                     }
                 }, 8000);
 
-                // Événement : iframe chargée
                 iframe.onload = function () {
                     clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
 
                     try {
-                        // Tente d'accéder au contenu de l'iframe
-                        // Cela échoue si le site bloque l'affichage (X-Frame-Options)
+                        // If we can't access contentDocument, it might be blocked or just cross-origin
+                        // But if it's cross-origin and NOT blocked, it should show content.
+                        // We can't really know for sure, but we can check if it's blank.
                         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
                         if (!iframeDoc || !iframeDoc.body || iframeDoc.body.innerHTML === '') {
-                            // Contenu vide = probablement bloqué
+                            // This might be blocked
                             errorMessage.style.display = 'block';
                         }
                     } catch (e) {
-                        // Erreur d'accès cross-origin : comportement normal
+                        // Cross-origin access error: This is expected for most external sites.
+                        // We assume it's loading unless the site specifically blocks it via X-Frame-Options.
+                        // Since we can't detect X-Frame-Options reliably, we just hide the loading.
                         console.log('Note: Accès iframe restreint (comportement normal)');
                     }
                 };
 
-                // Événement : erreur de chargement
                 iframe.onerror = function () {
                     clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
@@ -796,22 +470,17 @@ DERNIÈRE MISE À JOUR: Février 2026
                 };
             }
 
-            // Timeout de sécurité : cache le spinner après 10 secondes max
             setTimeout(function () {
                 if (loading && loading.style.display !== 'none') {
                     loading.style.display = 'none';
                 }
             }, 10000);
 
-            // ─────────────────────────────────────────────────────────────
-            // SUIVI DES ARTICLES LUS (ANALYTICS)
-            // ─────────────────────────────────────────────────────────────
-
+            // Track article click when article view is loaded
             window.addEventListener('load', async () => {
-                // Attend que le tracker soit initialisé
+                // Wait for tracker to initialize
                 await new Promise(resolve => setTimeout(resolve, 1000));
 
-                // Enregistre le clic sur l'article
                 if (window.aiPulseTracker) {
                     await window.aiPulseTracker.trackArticleClick({
                         title: articleTitle ? decodeURIComponent(articleTitle) : 'Unknown',
@@ -822,14 +491,11 @@ DERNIÈRE MISE À JOUR: Février 2026
             });
 
         } else {
-            // Pas d'URL valide : affiche la vue home (liste des articles)
+            // Show home view by default
             showView('home');
         }
 
-        // ─────────────────────────────────────────────────────────────────
-        // GESTIONNAIRE D'ÉVÉNEMENT POUR L'ONGLET ARTICLE
-        // ─────────────────────────────────────────────────────────────────
-
+        // Tab click handler for article tab (if it exists)
         const tabArticleBtn = document.getElementById('tab-article');
         if (tabArticleBtn) {
             tabArticleBtn.addEventListener('click', function (e) {
