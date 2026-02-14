@@ -1,108 +1,354 @@
 <!DOCTYPE html>
+<!--
+================================================================================
+AI-PULSE - PAGE D'ERREUR 404 (404.html)
+================================================================================
+
+DESCRIPTION:
+    Cette page s'affiche quand l'utilisateur accède à une URL qui n'existe pas.
+    Elle informe que la page n'a pas été trouvée et propose une redirection.
+
+RÔLE:
+    - Informer l'utilisateur que la page demandée n'existe pas
+    - Afficher une animation visuelle (code 404 pulsant)
+    - Proposer un lien vers la page d'accueil
+    - Rediriger automatiquement après un compte à rebours
+
+COMPORTEMENT:
+    1. Affiche le code d'erreur 404 avec animation
+    2. Affiche un message explicatif
+    3. Propose un bouton pour retourner à l'accueil
+    4. Démarre un compte à rebours de 5 secondes
+    5. À la fin du compte à rebours :
+       - Si l'utilisateur vient du site : retour en arrière
+       - Sinon : redirection vers app.html
+
+FICHIERS LIÉS:
+    - css/style.css : Styles généraux du site
+    - js/tracker.js : Suivi des statistiques (même pour les erreurs)
+    - js/ui.js : Logique de l'interface
+
+VERSION: 1.0.0
+DERNIÈRE MISE À JOUR: Février 2026
+================================================================================
+-->
 <html lang="en">
 
 <head>
+    <!--
+    ============================================================================
+    EN-TÊTE HTML (HEAD)
+    ============================================================================
+
+    Cette section contient les métadonnées de la page :
+    - Encodage des caractères
+    - Configuration mobile
+    - Titre de l'onglet
+    - Liens vers les ressources externes
+    ============================================================================
+    -->
+
+    <!-- Encodage UTF-8 pour les caractères spéciaux -->
     <meta charset="UTF-8">
+
+    <!-- Configuration mobile : la page s'adapte à l'écran -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Titre de l'onglet du navigateur -->
     <title>404 - Page Not Found | AI-Pulse</title>
+
+    <!-- Lien vers l'application iOS GitHub (optionnel) -->
     <meta name="apple-itunes-app"
         content="app-id=1477376905, app-argument=https://github.com/ThePhoenixAgency/AI-Pulse">
+
+    <!-- Favicon : icône de l'onglet -->
     <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+    <!-- Icône pour appareils Apple (iPhone, iPad) -->
     <link rel="apple-touch-icon" href="./assets/icon.png">
+
+    <!-- Manifest pour PWA (Progressive Web App) -->
     <link rel="manifest" href="./manifest.json">
+
+    <!-- Feuille de styles principale -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!--
+    ============================================================================
+    STYLES SPÉCIFIQUES À LA PAGE 404
+    ============================================================================
+
+    Ces styles sont propres à cette page et ne sont pas dans style.css.
+    Ils définissent l'apparence de la page d'erreur et l'animation du code 404.
+
+    CLASSES DÉFINIES:
+    - .error-container : Conteneur centré pour le contenu d'erreur
+    - .error-code : Grand texte "404" avec animation pulsante
+    ============================================================================
+    -->
     <style>
+        /* ====================================================================
+           CONTENEUR DE L'ERREUR
+           ====================================================================
+
+           Centre le contenu de l'erreur au milieu de la page.
+           Utilise Flexbox pour centrer verticalement et horizontalement.
+        ==================================================================== */
         .error-container {
-            text-align: center;
-            padding: 4rem 1rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            text-align: center;             /* Texte centré */
+            padding: 4rem 1rem;             /* Espacement intérieur */
+            flex: 1;                        /* Prend tout l'espace disponible */
+            display: flex;                  /* Utilise Flexbox */
+            flex-direction: column;         /* Empile les éléments verticalement */
+            justify-content: center;        /* Centre verticalement */
+            align-items: center;            /* Centre horizontalement */
         }
 
+        /* ====================================================================
+           CODE D'ERREUR 404
+           ====================================================================
+
+           Grand texte "404" avec :
+           - Dégradé de couleur (cyan vers violet)
+           - Animation de pulsation (scale + opacité)
+
+           TECHNIQUE:
+           - background: linear-gradient() : Crée un dégradé
+           - background-clip: text : Applique le dégradé au texte
+           - -webkit-text-fill-color: transparent : Rend le texte transparent
+             pour que le dégradé soit visible
+        ==================================================================== */
         .error-code {
-            font-size: 8rem;
-            font-weight: 700;
+            font-size: 8rem;                /* Très grande taille (8x normal) */
+            font-weight: 700;               /* Texte en gras */
+
+            /* Dégradé de couleur cyan vers violet */
             background: linear-gradient(45deg, var(--primary), var(--secondary));
+
+            /* Applique le dégradé au texte (webkit pour compatibilité) */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 1rem;
+
+            margin-bottom: 1rem;            /* Espace sous le code */
+
+            /* Animation de pulsation qui dure 2 secondes et se répète */
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
+        /* ====================================================================
+           ANIMATION PULSATION
+           ====================================================================
 
+           Animation CSS qui fait "pulser" le code 404 :
+           - À 0% et 100% : taille normale, opacité 100%
+           - À 50% : légèrement plus grand (1.05x), opacité 80%
+
+           Crée un effet de "respiration" visuel.
+        ==================================================================== */
+        @keyframes pulse {
+            /* Début et fin de l'animation */
             0%,
             100% {
-                opacity: 1;
-                transform: scale(1);
+                opacity: 1;                 /* Complètement visible */
+                transform: scale(1);        /* Taille normale */
             }
 
+            /* Milieu de l'animation */
             50% {
-                opacity: 0.8;
-                transform: scale(1.05);
+                opacity: 0.8;               /* Légèrement transparent */
+                transform: scale(1.05);     /* Légèrement plus grand */
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
+    <!--
+    ============================================================================
+    EN-TÊTE DU SITE (HEADER)
+    ============================================================================
+
+    Barre de navigation identique à toutes les pages.
+    Permet à l'utilisateur de naviguer facilement même après une erreur.
+    ============================================================================
+    -->
     <header class="site-header">
+        <!-- Logo du site avec effet de transparence -->
         <div class="brand-logo">
             <img src="./assets/logo_text.png" alt="AI-PULSE" style="height: 55px; mix-blend-mode: screen;">
         </div>
+
+        <!-- Navigation principale -->
         <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="app.html">Reader</a>
-
             <a href="about.html">About</a>
         </nav>
     </header>
 
-    <!-- Error Content -->
+    <!--
+    ============================================================================
+    CONTENU DE L'ERREUR
+    ============================================================================
+
+    Zone principale affichant :
+    - Le code d'erreur 404 (avec animation)
+    - Le titre "Page Not Found"
+    - Un message explicatif
+    - Un bouton pour retourner à l'accueil
+    - Un compte à rebours de redirection automatique
+
+    La classe "fade-in" ajoute une animation d'apparition progressive.
+    ============================================================================
+    -->
     <div class="error-container fade-in">
+
+        <!-- Grand code "404" avec animation pulsante -->
         <div class="error-code">404</div>
+
+        <!-- Titre de l'erreur -->
         <h1>Page Not Found</h1>
-        <p style="color: var(--text-dim); margin-bottom: 2rem;">The page you're looking for doesn't exist or has been
-            moved.</p>
+
+        <!-- Message explicatif -->
+        <p style="color: var(--text-dim); margin-bottom: 2rem;">
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <!-- Bouton pour retourner à l'accueil -->
         <a href="index.html" class="btn">Go to Homepage</a>
-        <div style="margin-top: 1rem; color: var(--text-dim);">Redirecting automatically in <span
-                id="countdown">5</span> seconds...</div>
+
+        <!--
+        ================================================================
+        COMPTE À REBOURS DE REDIRECTION
+        ================================================================
+        Affiche le temps restant avant la redirection automatique.
+        Le <span id="countdown"> est mis à jour par JavaScript.
+        ================================================================
+        -->
+        <div style="margin-top: 1rem; color: var(--text-dim);">
+            Redirecting automatically in <span id="countdown">5</span> seconds...
+        </div>
     </div>
 
-    <!-- Footer -->
+    <!--
+    ============================================================================
+    PIED DE PAGE (FOOTER)
+    ============================================================================
+
+    Footer avec style inline pour la mise en page spécifique.
+    Utilise Flexbox pour centrer les liens.
+    ============================================================================
+    -->
     <footer class="site-footer">
         <div class="footer-links" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
             <a href="privacy.html">Privacy</a>
             <span style="color: #334155;">•</span>
             <a href="stats.html">Statistics</a>
             <span style="color: #334155;">•</span>
-            <a href="about.html">ThePhoenixAgency</a>
+            <a href="portfolio.html">Portfolio</a>
             <span style="color: #334155;">•</span>
             <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank">GitHub</a>
         </div>
-        <p style="color: #475569; font-size: 0.8rem;">&copy; 2026 AI-Pulse. All rights reserved.</p>
+        <p style="color: #475569; font-size: 0.8rem;">
+            &copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank" style="color: var(--primary);">ThePhoenixAgency</a>. All rights reserved.
+        </p>
     </footer>
 
+    <!--
+    ============================================================================
+    SCRIPTS JAVASCRIPT
+    ============================================================================
+
+    FICHIERS:
+    - tracker.js : Suivi des statistiques (enregistre la visite de la page 404)
+    - ui.js : Logique de l'interface
+    ============================================================================
+    -->
     <script src="./js/tracker.js"></script>
     <script src="./js/ui.js"></script>
+
+    <!--
+    ============================================================================
+    SCRIPT DE COMPTE À REBOURS ET REDIRECTION
+    ============================================================================
+
+    Ce script gère le compte à rebours et la redirection automatique.
+
+    FONCTIONNEMENT:
+    1. Initialise countdown à 5 secondes
+    2. Toutes les secondes (setInterval 1000ms) :
+       - Décrémente countdown
+       - Met à jour l'affichage
+    3. Quand countdown atteint 0 :
+       - Arrête le timer
+       - Vérifie si l'utilisateur vient du même site
+       - Si oui : retour en arrière (history.back())
+       - Si non : redirection vers app.html
+
+    SÉCURITÉ:
+    - document.referrer : URL de la page précédente
+    - window.location.host : Domaine actuel
+    - On vérifie que le referrer contient le même domaine avant de faire back()
+    ============================================================================
+    -->
     <script>
+        /**
+         * =====================================================================
+         * GESTION DU COMPTE À REBOURS
+         * =====================================================================
+         *
+         * Ce script affiche un compte à rebours de 5 secondes puis redirige
+         * l'utilisateur vers une page appropriée.
+         */
+
+        // ─────────────────────────────────────────────────────────────────
+        // INITIALISATION
+        // ─────────────────────────────────────────────────────────────────
+
+        // Compteur initialisé à 5 secondes
         let countdown = 5;
+
+        // Référence vers l'élément HTML qui affiche le compteur
         const countdownElement = document.getElementById('countdown');
 
+        // ─────────────────────────────────────────────────────────────────
+        // TIMER (INTERVALLE)
+        // ─────────────────────────────────────────────────────────────────
+        // setInterval() exécute une fonction toutes les X millisecondes
+        // Ici : toutes les 1000ms = 1 seconde
         const timer = setInterval(() => {
+
+            // Décrémenter le compteur
             countdown--;
+
+            // Mettre à jour l'affichage (ex: "4", "3", "2", "1")
             countdownElement.textContent = countdown;
 
+            // ─────────────────────────────────────────────────────────────
+            // QUAND LE COMPTE À REBOURS ATTEINT 0
+            // ─────────────────────────────────────────────────────────────
             if (countdown <= 0) {
+
+                // Arrêter le timer (ne plus exécuter la fonction)
                 clearInterval(timer);
-                window.location.href = './index.html';
+
+                // ─────────────────────────────────────────────────────────
+                // DÉCISION DE REDIRECTION
+                // ─────────────────────────────────────────────────────────
+                // document.referrer : URL de la page d'où vient l'utilisateur
+                // window.location.host : Domaine actuel (ex: "thephoenixagency.github.io")
+
+                // Si l'utilisateur vient d'une autre page de CE site...
+                if (document.referrer && document.referrer.includes(window.location.host)) {
+                    // ...retourner à la page précédente
+                    window.history.back();
+                } else {
+                    // Sinon, rediriger vers le lecteur d'articles
+                    window.location.href = './app.html';
+                }
             }
-        }, 1000);
+        }, 1000);  // 1000ms = 1 seconde
     </script>
 </body>
 

@@ -1,0 +1,65 @@
+name: Proposer une nouvelle source / Suggest a new source
+description: Proposez une source RSS a ajouter a AI-Pulse
+title: "[SOURCE] "
+labels: ["new-source"]
+body:
+  - type: input
+    id: source_name
+    attributes:
+      label: Nom de la source / Source Name
+      placeholder: "Ex: Korben, TechCrunch..."
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: URL du site / Website URL
+      placeholder: "https://example.com"
+    validations:
+      required: true
+  - type: input
+    id: rss_url
+    attributes:
+      label: URL du flux RSS / RSS Feed URL
+      placeholder: "https://example.com/feed/"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Categorie / Category
+      options:
+        - AI / IA
+        - Cybersecurity / Cybersecurite
+        - IoT
+        - Windows
+        - Mac / Apple
+        - Linux
+        - Tech Generale
+        - Entrepreneuriat / Entrepreneurship
+        - Bourse & Finance
+        - Crypto & Blockchain
+        - Open Source & GitHub
+        - Produits & Innovation
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Langue / Language
+      options:
+        - Francais / French
+        - Anglais / English
+        - Autre / Other
+    validations:
+      required: true
+  - type: input
+    id: tags
+    attributes:
+      label: Tags / Mots-cles
+      placeholder: "Ex: tech, security, AI..."
+  - type: textarea
+    id: reason
+    attributes:
+      label: Pourquoi cette source? / Why this source?
+      placeholder: "Contenu original, source fiable..."

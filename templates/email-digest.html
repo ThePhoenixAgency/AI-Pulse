@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#0a0e27;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#0a0e27;">
+<tr><td align="center" style="padding:20px;">
+<table role="presentation" width="600" cellspacing="0" cellpadding="0" style="max-width:600px;width:100%;">
+
+<!-- Header -->
+<tr><td style="padding:30px 20px;text-align:center;border-bottom:1px solid rgba(0,217,255,0.2);">
+  <h1 style="margin:0;color:#00d9ff;font-size:24px;font-weight:700;">AI-Pulse</h1>
+  <p style="margin:8px 0 0;color:#94a3b8;font-size:14px;">Votre digest personnalise - {{DATE}}</p>
+</td></tr>
+
+<!-- Articles -->
+<tr><td style="padding:20px;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+{{SECTIONS}}
+</table>
+</td></tr>
+
+<!-- Footer -->
+<tr><td style="padding:20px;text-align:center;border-top:1px solid rgba(0,217,255,0.2);">
+  <p style="color:#94a3b8;font-size:12px;margin:0 0 10px;">
+    Vous recevez ce mail car vous etes abonne a AI-Pulse ({{EMAIL}}).
+  </p>
+  <p style="margin:0;">
+    <a href="{{UNSUB_URL}}" style="color:#ef4444;font-size:12px;text-decoration:none;">Se desabonner</a>
+    <span style="color:#94a3b8;margin:0 8px;">|</span>
+    <a href="https://thephoenixagency.github.io/AI-Pulse/app.html" style="color:#00d9ff;font-size:12px;text-decoration:none;">Ouvrir AI-Pulse</a>
+  </p>
+</td></tr>
+
+</table>
+</td></tr>
+</table>
+</body>
+</html>
