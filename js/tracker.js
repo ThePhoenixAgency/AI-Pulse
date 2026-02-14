@@ -53,16 +53,23 @@
  *     Le visitorId est généré localement et ne permet pas d'identifier la personne.
  */
 const Tracker = {
+    // Check if localStorage is available
+    isLocalStorageAvailable: function() {
+        try {
+            const test = '__localStorage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    },
 
-    /**
-     * -------------------------------------------------------------------------
-     * MÉTHODE : init()
-     * -------------------------------------------------------------------------
-     * Initialise le tracker au chargement de la page.
-     * Appelée automatiquement à la fin de ce fichier.
-     */
     init: function () {
-        // Enregistrer cette visite
+        if (!this.isLocalStorageAvailable()) {
+            console.warn('localStorage is not available. Tracking features will be disabled.');
+            return;
+        }
         this.trackVisit();
 
         // Afficher des infos de débogage dans la console
@@ -119,15 +126,17 @@ const Tracker = {
      * 5. Sauvegarde dans localStorage
      */
     trackVisit: function () {
-        // Récupérer les stats existantes ou créer un nouvel objet
-        let stats = JSON.parse(localStorage.getItem('ai_pulse_stats')) || {
-            visitorId: this.generateUUID(),  // ID unique pour ce navigateur
-            sessions: 0,                      // Nombre de sessions/visites
-            pageViews: 0,                     // Nombre de pages vues
-            lastVisit: 0,                     // Timestamp de la dernière visite
-            firstVisit: Date.now(),           // Timestamp de la première visite
-            locations: [],                    // Liste des localisations
-            articleClicks: 0                  // Nombre d'articles cliqués
+        if (!this.isLocalStorageAvailable()) return;
+        
+        try {
+            let stats = JSON.parse(localStorage.getItem('ai_pulse_stats')) || {
+            visitorId: this.generateUUID(),
+            sessions: 0,
+            pageViews: 0,
+            lastVisit: 0,
+            firstVisit: Date.now(),
+            locations: [],
+            articleClicks: 0
         };
 
         const now = Date.now();
@@ -161,6 +170,9 @@ const Tracker = {
         // Rendre les stats accessibles depuis d'autres scripts
         window.aiPulseStats = stats;
         window.aiPulseTracker = this;
+        } catch (e) {
+            console.error('Error tracking visit:', e);
+        }
     },
 
 
@@ -237,18 +249,26 @@ const Tracker = {
      * 2. Ajoute l'article à l'historique de lecture
      */
     trackArticleClick: function (articleData) {
-        let stats = this.getStats();
+        if (!this.isLocalStorageAvailable()) return;
+        
+        try {
+            let stats = this.getStats();
+            stats.articleClicks = (stats.articleClicks || 0) + 1;
+            localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
 
-        // Incrémenter le compteur de clics
-        stats.articleClicks = (stats.articleClicks || 0) + 1;
-        localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+            // Also add to read history
+            if (
+                articleData.url &&
+                typeof ReadHistory !== 'undefined' &&
+                typeof ReadHistory.markRead === 'function'
+            ) {
+                ReadHistory.markRead(articleData.url, articleData.title || 'Unknown');
+            }
 
-        // Ajouter à l'historique de lecture
-        if (articleData.url) {
-            ReadHistory.markRead(articleData.url, articleData.title || 'Unknown');
+            console.log("Article tracked:", articleData.title);
+        } catch (e) {
+            console.error('Error tracking article click:', e);
         }
-
-        console.log("Article tracked:", articleData.title);
     },
 
 
@@ -510,23 +530,29 @@ const ReadHistory = {
      * @param {string} title - Titre de l'article
      */
     markRead: function (url, title) {
-        var articles = this.getAll();
-
-        // Vérifier si pas déjà lu
-        if (!this.isRead(url, title)) {
-            // Ajouter l'article
-            articles.push({
-                url: url,
-                title: title,
-                readAt: Date.now()
-            });
-
-            // Garder maximum 500 entrées (supprimer les plus anciennes)
-            if (articles.length > 500) {
-                articles = articles.slice(-500);
+        try {
+            if (!Tracker.isLocalStorageAvailable()) return;
+            
+            var articles = this.getAll();
+            if (!articles.some(function (a) { return a.url === url; })) {
+                articles.push({ url: url, title: title, readAt: Date.now() });
+                // Keep max 500 entries to avoid localStorage bloat
+                // Average article entry ~200 bytes, 500 * 200 = 100KB (well within 5-10MB limit)
+                if (articles.length > 500) {
+                    articles = articles.slice(-500);
+                }
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
             }
-
-            localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+        } catch (e) {
+            console.error('Error marking article as read:', e);
+            // If localStorage is full, remove oldest entries and try again
+            try {
+                var articles = this.getAll();
+                articles = articles.slice(-250); // Keep only recent 250
+                localStorage.setItem(this.STORAGE_KEY, JSON.stringify(articles));
+            } catch (e2) {
+                console.error('Failed to recover from localStorage error:', e2);
+            }
         }
     },
 
