@@ -307,6 +307,17 @@
             return text.toLowerCase().replace(/[^\w]+/g, '-').replace(/^-|-$/g, '');
         }
 
+        // Basic HTML escaping to prevent XSS when inserting untrusted values
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/\//g, '&#x2F;');
+        }
+
         // Simple markdown to HTML parser with anchor generation
         function parseMarkdown(md) {
             let html = md;
@@ -389,10 +400,11 @@
 
         // Fetch and display documentation
         async function loadDoc(filename) {
+            const safeFilename = escapeHtml(filename);
             docsContent.innerHTML = `
                 <div class="loading-docs">
                     <div class="loading-spinner"></div>
-                    <p>Loading ${filename}...</p>
+                    <p>Loading ${safeFilename}...</p>
                 </div>
             `;
 
@@ -417,9 +429,9 @@
                 console.error('Error loading doc:', error);
                 docsContent.innerHTML = `
                     <h1>Error Loading Documentation</h1>
-                    <p>Failed to load ${filename}. Please try again later.</p>
+                    <p>Failed to load ${safeFilename}. Please try again later.</p>
                     <p style="margin-top: 20px;">
-                        <a href="https://github.com/${DOCS_CONFIG.owner}/${DOCS_CONFIG.repo}/blob/${DOCS_CONFIG.branch}/${DOCS_CONFIG.docsPath}/${filename}" target="_blank">
+                        <a href="https://github.com/${DOCS_CONFIG.owner}/${DOCS_CONFIG.repo}/blob/${DOCS_CONFIG.branch}/${DOCS_CONFIG.docsPath}/${safeFilename}" target="_blank">
                             View on GitHub
                         </a>
                     </p>
