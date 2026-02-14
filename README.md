@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/docs/TECHNIQUE.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Sat, 14 Feb 2026 01:22:05 GMT
+**Last Update:** Sat, 14 Feb 2026 04:04:18 GMT
 
 ---
 
@@ -418,110 +418,110 @@ The post Community spotlight: MyEmbeddedStuff appeared first on Arduino Blog.
 
 ## Artificial Intelligence
 
-### 1. [Airbnb says a third of its customer support is now handled by AI in the US and Canada](https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/)
+### 1. [Airbnb plans to bake in AI features for search, discovery and support](https://techcrunch.com/2026/02/13/airbnb-plans-to-bake-in-ai-features-for-search-discovery-and-support/)
+**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
+Airbnb CEO Brian Chesky said the company wants to increase its use of large language models for customer discovery, support and engineering.
+
+### 2. [Airbnb says a third of its customer support is now handled by AI in the US and Canada](https://techcrunch.com/2026/02/13/airbnb-says-a-third-of-its-customer-support-is-now-handled-by-ai-in-the-u-s-and-canada/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Airbnb was poised to introduce an app that doesn't just search for you, but one that "knows you." CEO Brian Chesky said, "It will help guests plan their entire trip, help hosts better run their businesses, and help the company operate more efficiently at scale."
 
-### 2. [Why top talent is walking away from OpenAI and xAI](https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/)
+### 3. [Why top talent is walking away from OpenAI and xAI](https://techcrunch.com/video/why-top-talent-is-walking-away-from-openai-and-xai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature.  Watch as TechCrunch’s Equity podcast hosts Kirsten Korosec, Anthony […]
 
-### 3. [OpenAI removes access to sycophancy-prone GPT-4o model](https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/)
+### 4. [OpenAI removes access to sycophancy-prone GPT-4o model](https://techcrunch.com/2026/02/13/openai-removes-access-to-sycophancy-prone-gpt-4o-model/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The model is known for its overly sycophantic nature and its role in several lawsuits involving users' unhealthy relationships with the chatbot.
 
-### 4. [AI burnout, billion-dollar bets, and Silicon Valley’s Epstein problem](https://techcrunch.com/podcast/ai-burnout-billion-dollar-bets-and-silicon-valleys-epstein-problem/)
+### 5. [AI burnout, billion-dollar bets, and Silicon Valley’s Epstein problem](https://techcrunch.com/podcast/ai-burnout-billion-dollar-bets-and-silicon-valleys-epstein-problem/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 AI companies have been hemorrhaging talent the past few weeks. Half of xAI’s founding team has left the company — some on their own, others through “restructuring” — while OpenAI is facing its own shakeups, from the disbanding of its mission alignment team to the firing of a policy exec who opposed its “adult mode” feature.  On this episode of TechCrunch’s Equity podcast, hosts Kirsten […]
 
-### 5. [Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10](https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/)
+### 6. [Anthropic’s Super Bowl ads mocking AI with ads helped push Claude’s app into the top 10](https://techcrunch.com/2026/02/13/anthropics-super-bowl-ads-mocking-ai-with-ads-helped-push-claudes-app-into-the-top-10/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The numbers suggest that Anthropic's Super Bowl commercials, combined with Anthropic's recent release of its new Opus 4.6 model, worked to drive attention to Claude's app and its key differentiator from ChatGPT.
 
-### 6. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/13/elon-musk-suggests-spate-of-xai-exits-have-been-push-not-pull/)
+### 7. [Elon Musk suggests spate of xAI exits have been push, not pull](https://techcrunch.com/2026/02/13/elon-musk-suggests-spate-of-xai-exits-have-been-push-not-pull/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 At least nine engineers, including two co-founders, have announced their exits from xAI in the past week, fueling online speculation and raising questions about stability at Musk’s AI company amid mounting controversy.
 
-### 7. [AI forecasting model targets healthcare resource efficiency](https://www.artificialintelligence-news.com/news/ai-forecasting-model-targets-healthcare-resource-efficiency/)
+### 8. [AI forecasting model targets healthcare resource efficiency](https://www.artificialintelligence-news.com/news/ai-forecasting-model-targets-healthcare-resource-efficiency/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 An operational AI forecasting model developed by Hertfordshire University researchers aims to improve resource efficiency within healthcare. Public sector organisations often hold large archives of historical data that do not inform forward-looking decisions. A partnership between the University of Hertfordshire and regional NHS health bodies addresses this issue by applying machine learning to operational planning. […]
 The post AI forecasting model targets healthcare resource efficiency appeared first on AI News.
 
-### 8. [What Murder Mystery 2 reveals about emergent behaviour in online games](https://www.artificialintelligence-news.com/news/what-murder-mystery-2-reveals-about-emergent-behaviour-in-online-games/)
+### 9. [What Murder Mystery 2 reveals about emergent behaviour in online games](https://www.artificialintelligence-news.com/news/what-murder-mystery-2-reveals-about-emergent-behaviour-in-online-games/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Murder Mystery 2, commonly known as MM2, is often categorised as a simple social deduction game in the Roblox ecosystem. At first glance, its structure appears straightforward. One player becomes the murderer, another the sheriff, and the remaining participants attempt to survive. However, beneath the surface lies a dynamic behavioural laboratory that offers valuable insight […]
 The post What Murder Mystery 2 reveals about emergent behaviour in online games appeared first on AI News.
 
-### 9. [Cohere’s $240M year sets stage for IPO](https://techcrunch.com/2026/02/13/coheres-240m-year-sets-stage-for-ipo/)
+### 10. [Cohere’s $240M year sets stage for IPO](https://techcrunch.com/2026/02/13/coheres-240m-year-sets-stage-for-ipo/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Cohere surpassed $240 million in annual recurring revenue in 2025, highlighting strong enterprise AI demand as the Canadian startup positions itself for a potential IPO amid intensifying competition from OpenAI and Anthropic.
 
-### 10. [The Evolving Role of the ML Engineer](https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/)
+### 11. [The Evolving Role of the ML Engineer](https://towardsdatascience.com/the-evolving-role-of-the-ml-engineer/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Stephanie Kirmer on the $200 billion investment bubble, how AI companies can rebuild trust, and how her day-to-day work changed with the rise of LLMs.
 The post The Evolving Role of the ML Engineer appeared first on Towards Data Science.
 
-### 11. [Meta plans to add facial recognition to its smart glasses, report claims](https://techcrunch.com/2026/02/13/meta-plans-to-add-facial-recognition-to-its-smart-glasses-report-claims/)
+### 12. [Meta plans to add facial recognition to its smart glasses, report claims](https://techcrunch.com/2026/02/13/meta-plans-to-add-facial-recognition-to-its-smart-glasses-report-claims/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The feature, internally known as “Name Tag,” would allow smart glasses wearers to identify people and get information about them via Meta's AI assistant.
 
-### 12. [AI in Multiple GPUs: Point-to-Point and Collective Operations](https://towardsdatascience.com/point-to-point-and-collective-operations/)
+### 13. [AI in Multiple GPUs: Point-to-Point and Collective Operations](https://towardsdatascience.com/point-to-point-and-collective-operations/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Learn PyTorch distributed operations for multi GPU AI workloads
 The post AI in Multiple GPUs: Point-to-Point and Collective Operations appeared first on Towards Data Science.
 
-### 13. [Agentic AI drives finance ROI in accounts payable automation](https://www.artificialintelligence-news.com/news/agentic-ai-drives-finance-roi-in-accounts-payable-automation/)
+### 14. [Agentic AI drives finance ROI in accounts payable automation](https://www.artificialintelligence-news.com/news/agentic-ai-drives-finance-roi-in-accounts-payable-automation/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Finance leaders are driving ROI using agentic AI for accounts payable automation, turning manual tasks into autonomous workflows. While general AI projects saw return on investment rise to 67 percent last year, autonomous agents delivered an average ROI of 80 percent by handling complex processes without human intervention. This performance gap demands a change in […]
 The post Agentic AI drives finance ROI in accounts payable automation appeared first on AI News.
 
-### 14. [Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway](https://www.artificialintelligence-news.com/news/newsweek-ceo-dev-pragad-warns-publishers-adapt-as-ai-becomes-news-gateway/)
+### 15. [Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway](https://www.artificialintelligence-news.com/news/newsweek-ceo-dev-pragad-warns-publishers-adapt-as-ai-becomes-news-gateway/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Author: Dev Pragad, CEO, Newsweek As artificial intelligence platforms increasingly mediate how people encounter news, media leaders are confronting an important change in the relationship between journalism and the public. AI-driven search and conversational interfaces now influence how audiences discover and trust information, often before visiting a publisher’s website. According to Dev Pragad, the implications […]
 The post Newsweek CEO Dev Pragad warns publishers: adapt as AI becomes news gateway appeared first on AI News.
 
-### 15. [How e&amp; is using HR to bring AI into enterprise operations](https://www.artificialintelligence-news.com/news/how-e-is-using-hr-to-bring-ai-into-enterprise-operations/)
+### 16. [How e&amp; is using HR to bring AI into enterprise operations](https://www.artificialintelligence-news.com/news/how-e-is-using-hr-to-bring-ai-into-enterprise-operations/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 For many enterprises, the first real test of AI is not customer-facing products or flashy automation demos. It is the quiet machinery that runs the organisation itself. Human resources, with its mix of routine workflows, compliance needs, and large volumes of structured data, is emerging as one of the earliest areas where companies are pushing […]
 The post How e&amp; is using HR to bring AI into enterprise operations appeared first on AI News.
 
-### 16. [Alibaba enters physical AI race with open-source robot model RynnBrain](https://www.artificialintelligence-news.com/news/alibaba-rynnbrain-physical-ai-robots-china/)
+### 17. [Alibaba enters physical AI race with open-source robot model RynnBrain](https://www.artificialintelligence-news.com/news/alibaba-rynnbrain-physical-ai-robots-china/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Alibaba has entered the race to build AI that powers robots, not just chatbots. The Chinese tech giant this week unveiled RynnBrain, an open-source model designed to help robots perceive their environment and execute physical tasks.  The move signals China’s accelerating push into physical AI as ageing populations and labour shortages drive demand for machines […]
 The post Alibaba enters physical AI race with open-source robot model RynnBrain appeared first on AI News.
 
-### 17. [AI deployment in financial services hits an inflection point as Singapore leads the shift to production](https://www.artificialintelligence-news.com/news/financial-services-ai-deployment-singapore/)
+### 18. [AI deployment in financial services hits an inflection point as Singapore leads the shift to production](https://www.artificialintelligence-news.com/news/financial-services-ai-deployment-singapore/)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 AI deployment in financial services has crossed a critical threshold, with only 2% of institutions globally reporting no AI use whatsoever—a dramatic indicator that the technology has moved decisively from boardroom discussion to operational reality. New research from Finastra surveying 1,509 senior leaders across 11 markets reveals that Singapore financial institutions are leading this transition, […]
 The post AI deployment in financial services hits an inflection point as Singapore leads the shift to production appeared first on AI News.
 
-### 18. [Amid disappointing earnings, Pinterest claims it sees more searches than ChatGPT](https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/)
+### 19. [Amid disappointing earnings, Pinterest claims it sees more searches than ChatGPT](https://techcrunch.com/2026/02/12/amid-disappointing-earnings-pinterest-claims-it-sees-more-searches-than-chatgpt/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Pinterest's stock tumbles after an earnings miss, with higher-than-expected usage its only bright spot.
 
-### 19. [IBM will hire your entry-level talent in the age of AI](https://techcrunch.com/2026/02/12/ibm-will-hire-your-entry-level-talent-in-the-age-of-ai/)
+### 20. [IBM will hire your entry-level talent in the age of AI](https://techcrunch.com/2026/02/12/ibm-will-hire-your-entry-level-talent-in-the-age-of-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 IBM plans to triple its entry-level hiring in the U.S. in 2026, but these jobs will have different tasks than in previous years.
 
-### 20. [Musk needed a new vision for SpaceX and xAI. He landed on Moonbase Alpha.](https://techcrunch.com/2026/02/12/musk-needed-a-new-vision-for-spacex-and-xai-he-landed-on-moonbase-alpha/)
+### 21. [Musk needed a new vision for SpaceX and xAI. He landed on Moonbase Alpha.](https://techcrunch.com/2026/02/12/musk-needed-a-new-vision-for-spacex-and-xai-he-landed-on-moonbase-alpha/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "I really want to see a mass driver on the moon that is shooting AI satellites into deep space."
 
-### 21. [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/)
+### 22. [Didero lands $30M to put manufacturing procurement on ‘agentic’ autopilot](https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Didero functions as an agentic AI layer that sits on top of a company’s existing ERP, acting as a coordinator that reads incoming communications and automatically executes the necessary updates and tasks.
 
-### 22. [Anthropic raises another $30B in Series G, with a new value of $380B](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
+### 23. [Anthropic raises another $30B in Series G, with a new value of $380B](https://techcrunch.com/2026/02/12/anthropic-raises-another-30-billion-in-series-g-with-a-new-value-of-380-billion/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 The infusion of funding for the AI startup takes place as it is vying for customers and cultural attention with its competitor, OpenAI.
 
-### 23. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
+### 24. [Spotify says its best developers haven’t written a line of code since December, thanks to AI](https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 Spotify credits Claude Code and its internal AI system Honk with speeding up development.
-
-### 24. [A new version of OpenAI’s Codex is powered by a new dedicated chip](https://techcrunch.com/2026/02/12/a-new-version-of-openais-codex-is-powered-by-a-new-dedicated-chip/)
-**Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
-OpenAI calls the new coding tool the "first milestone" in its relationship with the chipmaker.
 
 ### 25. [How to Leverage Explainable AI for Better Business Decisions](https://towardsdatascience.com/how-to-leverage-explainable-ai-for-better-business-decisions/)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
