@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+### Added
+- Tests: `node --test` [OK]
+- Reader: tests for prefs toggle placement (mobile-first)
+- Theme: test to assert `css/style.css` exists
+- Stats: tests for session counting and GeoIP throttle
+- Portfolio: test to enforce GitHub link points to repositories tab
+- Privacy: test to enforce header logo uses `./assets/logo_final.png`
+
+### Changed
+- Reader: move prefs toggle into the top navigation
+- Stats: privacy-first tracker (localStorage + first-party session cookie)
+- Portfolio: GitHub links point to the repositories tab (no viewer indirection)
+- Privacy: fix header logo reference (`logo_text.png` -> `logo_final.png`)
+
 ## [1.1.0] - 2026-01-31
 ### Added
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
