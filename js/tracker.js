@@ -52,6 +52,12 @@
  *     Les données restent sur l'ordinateur de l'utilisateur.
  *     Le visitorId est généré localement et ne permet pas d'identifier la personne.
  */
+
+// Cookie de session first-party (expiration glissante) pour ne pas recompter
+// plusieurs fois une session pendant que l'utilisateur navigue.
+const AI_PULSE_SESSION_COOKIE = 'ai_pulse_session';
+const AI_PULSE_SESSION_MAX_AGE_SEC = 30 * 60; // 30 minutes
+
 const Tracker = {
     // Check if localStorage is available
     isLocalStorageAvailable: function() {
@@ -104,11 +110,40 @@ const Tracker = {
 
             // Pour 'x': utiliser le nombre aléatoire directement
             // Pour 'y': appliquer un masque pour obtenir 8, 9, a, ou b
-            var v = c == 'x' ? r : (r & 0x3 | 0x8);
+            var v = c === 'x' ? r : (r & 0x3 | 0x8);
 
             // Convertir en hexadécimal (base 16)
             return v.toString(16);
         });
+    },
+
+    getCookie: function (name) {
+        if (typeof document === 'undefined' || !document.cookie) return null;
+        const prefix = name + '=';
+        const parts = document.cookie.split(';');
+        for (let i = 0; i < parts.length; i++) {
+            const part = parts[i].trim();
+            if (part.startsWith(prefix)) {
+                return decodeURIComponent(part.slice(prefix.length));
+            }
+        }
+        return null;
+    },
+
+    // Cree ou rafraichit le cookie de session. Retourne true si nouvelle session.
+    ensureSession: function () {
+        const existing = this.getCookie(AI_PULSE_SESSION_COOKIE);
+        const isNewSession = !existing;
+        const sessionId = existing || this.generateUUID();
+
+        if (typeof document !== 'undefined') {
+            document.cookie =
+                AI_PULSE_SESSION_COOKIE + '=' + encodeURIComponent(sessionId) +
+                '; Max-Age=' + AI_PULSE_SESSION_MAX_AGE_SEC +
+                '; Path=/; SameSite=Lax';
+        }
+
+        return isNewSession;
     },
 
 
@@ -141,12 +176,8 @@ const Tracker = {
 
         const now = Date.now();
 
-        // Durée d'inactivité pour considérer une nouvelle session
-        // 30 minutes = 30 * 60 * 1000 millisecondes
-        const SESSION_TIMEOUT = 30 * 60 * 1000;
-
-        // Si plus de 30 minutes depuis la dernière visite = nouvelle session
-        if (now - stats.lastVisit > SESSION_TIMEOUT) {
+        // Nouvelle session si cookie absent. Le cookie a une expiration glissante.
+        if (this.ensureSession()) {
             stats.sessions++;
         }
 
@@ -195,11 +226,12 @@ const Tracker = {
      */
     fetchLocation: function (stats) {
         // Appel à l'API de géolocalisation par IP
-        fetch('https://ipapi.co/json/')
+        // Important: ne jamais envoyer de cookies a un tiers.
+        fetch('https://ipapi.co/json/', { credentials: 'omit', cache: 'no-store' })
             .then(res => res.json())
             .then(data => {
                 // Si erreur dans la réponse, ne rien faire
-                if (data.error) return;
+                if (!data || data.error) return;
 
                 // Créer un objet avec les infos de localisation
                 const locationObj = {
@@ -227,10 +259,10 @@ const Tracker = {
 
                 // Sauvegarder
                 localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
-
-                console.log("Location updated:", locationObj);
             })
-            .catch(err => console.error("Location fetch failed:", err));
+            .catch(() => {
+                // Ne jamais casser l'experience si GeoIP est indisponible.
+            });
     },
 
 
