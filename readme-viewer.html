@@ -32,7 +32,7 @@
             border-bottom: 1px solid rgba(0, 217, 255, 0.15);
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             z-index: 100;
             backdrop-filter: blur(10px);
             padding: 0 20px;
@@ -73,10 +73,7 @@
 
         /* ─── Preferences Button ─── */
         .prefs-toggle {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            z-index: 200;
+            margin-left: auto;
             background: linear-gradient(135deg, #00d9ff, #825ee4);
             color: white;
             border: none;
@@ -441,12 +438,8 @@
         <select id="sectionSelect">
             <option value="">-- Sections --</option>
         </select>
+        <button class="prefs-toggle" id="prefsToggle" type="button">Personnaliser</button>
     </nav>
-
-    <!-- Preferences Toggle Button -->
-    <button class="prefs-toggle" id="prefsToggle">Personnaliser</button>
-
-    <!-- Preferences Overlay -->
     <div class="prefs-overlay" id="prefsOverlay"></div>
 
     <!-- Preferences Panel -->
