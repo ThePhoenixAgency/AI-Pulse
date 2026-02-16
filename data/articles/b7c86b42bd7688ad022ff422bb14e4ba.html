@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apple Begins Testing Encrypted RCS Messaging in iOS 26.4</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Apple Begins Testing Encrypted RCS Messaging in iOS 26.4</h1>
+  <div class="metadata">
+    Source: The Mac Observer | Date: 2/16/2026 7:20:22 PM | Lang: EN |
+    <a href="https://www.macobserver.com/news/apple-begins-testing-encrypted-rcs-messaging-in-ios-26-4/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Apple has started testing secure messaging across platforms with its latest software betas. The company added end-to-end encryption for RCS conversations inside <a target="_blank" href="https://www.macobserver.com/news/apple-seeds-first-ios-26-4-developer-beta-after-ios-26-3-release/">iOS 26.4</a>, iPadOS 26.4, and macOS Tahoe 26.4, bringing iPhone and Android messaging closer to the privacy level long reserved for iMessage chats.</p> <p>Until now, encryption worked fully only inside iMessage and partially inside Android-to-Android RCS chats. Messages between iPhone and Android devices lacked full protection. With this update, Apple moves toward closing that gap, so cross-platform texting reaches the same security standard.</p> <p>According to Apple <a target="_blank" href="https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-26_4-release-notes">developer release notes</a>, “RCS end-to-end encryption is now available for testing in this beta,” while also clarifying the feature “is not shipping in this release and will be available to customers in a future software update.”</p> <h2>Changes in Messages</h2> <p>The Messages app now shows a lock icon when encryption is active, matching the visual indicator already used for iMessage conversations. A new toggle also appears in Settings and it stays enabled by default, although access rolls out gradually during testing.</p> <p>Right now the encrypted RCS feature works only between Apple devices using RCS instead of iMessage, such as when iMessage is turned off. Cross-platform encryption with Android will arrive later once carriers and partners complete support.</p> <p>Apple also prepares support for RCS Universal Profile 3.0 created with help from the GSM Association. The update enables message editing, deletion, and inline replies across platforms once fully deployed.</p> <h2>Availability and rollout</h2> <p>The beta only offers limited testing and not every user can try it immediately. Apple explained that encrypted conversations “can’t be read while they’re sent between devices,” confirming the goal of true end to end protection.</p> <p>Public availability will come in a future iOS 26 update after testing finishes and carriers enable compatibility. The company released the developer beta first, with a public beta expected later.</p> <p>RCS first arrived on iPhone with iOS 18.1, bringing typing indicators, read receipts, and high quality media sharing. Encryption now becomes the final piece required to make standard messaging secure regardless of device brand.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

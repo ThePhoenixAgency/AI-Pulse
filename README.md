@@ -1565,7 +1565,15 @@ Pour la première fois de leur histoire, le FCG et le VRDR se croisaient sur un 
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
 
-### 4. `FR` [Isère. « Le médecin était venu à dos de mulet pour accoucher ma mère » : l’histoire de l’un des plus anciens hôtels des Alpes, le chalet Mounier](data/articles/5cc5af340d232c95749f194600f6e13a.html)
+### 4. `FR` [Municipales 2026. Grenoble : une ancienne élue de la majorité Piolle rejoint la liste LFI d'Allan Brunon](data/articles/017c3647d3393e765ea24a5ff822d8ef.html)
+**Source:** Le Dauphiné Isère | **Keyword:** `Local`
+Élue sur la liste d’Éric Piolle en 2020, Khadija Ezzarouali a quitté la majorité en décembre dernier.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
+
+### 5. `FR` [Isère. « Le médecin était venu à dos de mulet pour accoucher ma mère » : l’histoire de l’un des plus anciens hôtels des Alpes, le chalet Mounier](data/articles/5cc5af340d232c95749f194600f6e13a.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
 C’est l’un des plus anciens hôtels des Alpes et il n’a pas changé de famille depuis près de 150 ans. D’une modeste ferme-auberge, le Chalet Mounier est devenu un établissement haut de gamme. Une histoire qui a grandi en même temps que celle de la station des Deux-Alpes.
 
@@ -1627,7 +1635,7 @@ Deux skieurs sont bloqués depuis dimanche soir dans la gare aval de la téléca
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère">
+<div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Une">
 
 ### 12. `FR` [Municipales 2026. Échirolles : départ d’Amel Zenati, alliance prétendue avec la droite… Laëtitia Rabih met les choses au point](data/articles/8748d7116529b2b0d19fcb8e7b15d3c8.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
@@ -1711,7 +1719,7 @@ Météo-France a prolongé ses vigilances pour crues jusqu’à mardi. La Garonn
 
 ### 22. `FR` [Isère. Entre mémoire et modernité, le comité La Tour-du-Pin – Morestel du Souvenir français cherche à s’adapter](data/articles/f8b81ec6e7b43906b83389327fe28701.html)
 **Source:** Le Dauphiné Isère | **Keyword:** `Local`
-À la tête du comité La Tour-du-Pin – Morestel du Souvenir français depuis l’an dernier pour un mandat de trois ans, Gérard Vitte veut relancer la dynamique sur une trentaine de communes. Entretien des tombes, recrutement d’adhérents et mobilisation des jeunes figurent parmi ses priorités actées lors de l’assemblée générale de l’association ce samedi 14 février.
+L'étudiant et militant nationaliste de 23 ans a été déclaré mort samedi, deux jours après avoir été agressé en marge d'une conférence de l'eurodéputée LFI Rima Hassan à Sciences Po Lyon. Le procureur de la République Thierry Dran a tenu une conférence de presse ce lundi.
 
 </div>
 
@@ -1781,7 +1789,7 @@ La célèbre émission de M6, Mariés au premier regard , revient le lundi 23 f
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="France 24 France (FR)">
 
-### 31. `FR` [Intempéries : les vigilances crues maintenues dans le sud-ouest de la France](data/articles/351fa2423fbc170434ab6523e271afdc.html)
+### 32. `FR` [Intempéries : les vigilances crues maintenues dans le sud-ouest de la France](data/articles/351fa2423fbc170434ab6523e271afdc.html)
 **Source:** France 24 France (FR) | **Keyword:** `Local`
 Météo-France a prolongé ses vigilances crues jusqu'à mardi. Les départements de la Gironde et du Lot-et-Garonne sont maintenus en rouge, l'institut redoutant une reprise du phénomène sous l'effet de nouvelles pluies attendues lundi.
 
@@ -1789,7 +1797,7 @@ Météo-France a prolongé ses vigilances crues jusqu'à mardi. Les département
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 32. `FR` [Long format. La canicule… c’était pas mieux avant !](data/articles/febceb6e22f0591ebca16538a326925c.html)
+### 33. `FR` [Long format. La canicule… c’était pas mieux avant !](data/articles/febceb6e22f0591ebca16538a326925c.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Alors que la chaleur sévit sur tout le territoire, le Dauphiné Libéré plonge dans ses archives et vous fait revivre juin 1957. Un moment où le mot "canicule" était déjà sur toutes les lèvres.
 
@@ -1797,7 +1805,7 @@ Alors que la chaleur sévit sur tout le territoire, le Dauphiné Libéré plonge
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 33. `FR` [Interview. Bernard Pivot : « Vieillir c’est pénible, terrible, mortel ! »](data/articles/e5cf8bf340e623b178832c253438c085.html)
+### 34. `FR` [Interview. Bernard Pivot : « Vieillir c’est pénible, terrible, mortel ! »](data/articles/e5cf8bf340e623b178832c253438c085.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Bernard Pivot est mort à l'âge de 89 ans. Nous republions, à cette occasion, l'entretien qu'il nous a accordé en 2014, alors qu'il nous parlait de son spectacle, seul sur scène, “Souvenirs d’un gratteur de têtes”
 
@@ -1805,7 +1813,7 @@ Bernard Pivot est mort à l'âge de 89 ans. Nous republions, à cette occasion, 
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 34. `FR` [Loto - EuroMillions. La loterie nationale fête ses 90 ans : quels sont les plus gros gains remportés près de chez vous ?](data/articles/6343d9c79dd4e4d0b153e28c04bf94eb.html)
+### 35. `FR` [Loto - EuroMillions. La loterie nationale fête ses 90 ans : quels sont les plus gros gains remportés près de chez vous ?](data/articles/6343d9c79dd4e4d0b153e28c04bf94eb.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Le Loto, géré par la Française des Jeux, l'exprime très bien à travers son slogan : « 100% des gagnants ont tenté leur chance ».
 
@@ -1813,7 +1821,7 @@ Le Loto, géré par la Française des Jeux, l'exprime très bien à travers son 
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 35. `FR` [Carte interactive. Où sont les passages à niveau recensés "à risque" dans nos départements?](data/articles/d0d682c9bf5177310ba000a7d7ff5c68.html)
+### 36. `FR` [Carte interactive. Où sont les passages à niveau recensés "à risque" dans nos départements?](data/articles/d0d682c9bf5177310ba000a7d7ff5c68.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Le spectaculaire accident entre un bus et un train de Cevins (Savoie) vient remettre en lumière la dangerosité des passages à niveau. Le « programme de sécurisation national » recense quelque 146 passages à niveau à risque, dont 19 dans nos départements.
 
@@ -1821,7 +1829,7 @@ Le spectaculaire accident entre un bus et un train de Cevins (Savoie) vient reme
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 36. `FR` [Carte interactive. Loto/Euromillions : quels sont les plus gros gains remportés dans nos départements ?](data/articles/82ad6a439461b1ac3f080196f21cf5fd.html)
+### 37. `FR` [Carte interactive. Loto/Euromillions : quels sont les plus gros gains remportés dans nos départements ?](data/articles/82ad6a439461b1ac3f080196f21cf5fd.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Un Isérois a remporté le samedi 30 juillet près de 4 millions au Loto, la plus grosse somme remportée à ce jour dans le département en 2022. Mais on est bien loin des sommes mirobolantes empochées dans nos régions. Voici le top 10 des plus gros gains remportés dans nos départements.
 
@@ -1829,7 +1837,7 @@ Un Isérois a remporté le samedi 30 juillet près de 4 millions au Loto, la plu
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 37. `FR` [En images. L'ancien pilote Philippe Streiff est mort : retour sur sa carrière](data/articles/429dc26707494a008a662b77e6df36ca.html)
+### 38. `FR` [En images. L'ancien pilote Philippe Streiff est mort : retour sur sa carrière](data/articles/429dc26707494a008a662b77e6df36ca.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Touché de plein fouet voilà 33 ans lors d’un accident au volant de son AGS de Formule 1, l’Isérois Philippe Streiff décédé le 23 décembre à l'âge de 67 ans, était devenu tétraplégique depuis cette terrible journée brésilienne du 15 mars 1989. Il avait dû travailler dur pour remonter la pente, durant trois ans. Avant de se reconvertir avec brio, en région parisienne, notamment au sein de différents ministères, en charge de la sécurité routière et de l’aide aux personnes en situation de handicap.
 
@@ -1837,7 +1845,7 @@ Touché de plein fouet voilà 33 ans lors d’un accident au volant de son AGS d
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 38. `FR` [Le web remonte le temps. Quiz: c'est quoi l'histoire de ce sapin de Noël?](data/articles/69982698fd4d3d82c36d97b8aec371a8.html)
+### 39. `FR` [Le web remonte le temps. Quiz: c'est quoi l'histoire de ce sapin de Noël?](data/articles/69982698fd4d3d82c36d97b8aec371a8.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Le Dauphiné Libéré dépoussière ses archives. Chaque jour, découvrez un cliché pris par l'un de nos photographes et tentez de deviner à quelle occasion cette image a été capturée.
 
@@ -1845,7 +1853,7 @@ Le Dauphiné Libéré dépoussière ses archives. Chaque jour, découvrez un cli
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 39. `FR` [Carte interactive. Explosion à Jarrie: où sont les sites Seveso près de chez vous ?](data/articles/2048c19260f07a77cde6595619ce1b2d.html)
+### 40. `FR` [Carte interactive. Explosion à Jarrie: où sont les sites Seveso près de chez vous ?](data/articles/2048c19260f07a77cde6595619ce1b2d.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Une explosion s’est produite ce jeudi 10 novembre peu avant 9 heures sur le site d’Arkema Jarrie. Découvrez notre carte interactive des sites industriels à risque dans nos départements.
 
@@ -1853,7 +1861,7 @@ Une explosion s’est produite ce jeudi 10 novembre peu avant 9 heures sur le si
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 40. `FR` [Tennis - Masters . « Elle est capable de gagner un Grand Chelem et d’être numéro 1 » : le jour où Caroline Garcia était en exhibition à Annecy-le-Vieux](data/articles/0a97d5a1e3ffccc0a4ae7ef4d3feec00.html)
+### 41. `FR` [Tennis - Masters . « Elle est capable de gagner un Grand Chelem et d’être numéro 1 » : le jour où Caroline Garcia était en exhibition à Annecy-le-Vieux](data/articles/0a97d5a1e3ffccc0a4ae7ef4d3feec00.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 En 2018, Caroline Garcia était en visite à Annecy-le-Vieux pour une exhibition. Alors future numéro 4 mondiale, rang qu'elle va de nouveau occuper après sa victoire au Masters dans la nuit de lundi à mardi, on prédisait déjà à la Lyonnaise de 29 ans un avenir brillant.
 
@@ -1861,7 +1869,7 @@ En 2018, Caroline Garcia était en visite à Annecy-le-Vieux pour une exhibition
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 41. `FR` [En images . Des vaches, des tracteurs et même Jacques Chirac en stagiaire... Voilà à quoi ressemblait la Foire de Beaucroissant dans les années 50, 60 et 70](data/articles/dd27a95daf83fe783b3de6a7fd25154e.html)
+### 42. `FR` [En images . Des vaches, des tracteurs et même Jacques Chirac en stagiaire... Voilà à quoi ressemblait la Foire de Beaucroissant dans les années 50, 60 et 70](data/articles/dd27a95daf83fe783b3de6a7fd25154e.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Alors que la 801e édition de la Foire de Beaucroissant se poursuit jusqu'à dimanche 11 septembre, découvrez à quoi ressemblait cette grande manifestation il y a 50, 60, 70 ans...
 
@@ -1869,7 +1877,7 @@ Alors que la 801e édition de la Foire de Beaucroissant se poursuit jusqu'à dim
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 42. `FR` [Football/Data. Rumilly en demi-finale de Coupe de France : retour sur les plus beaux parcours de nos équipes](data/articles/702f5f91420a9c1f0b872cb3f9f2de10.html)
+### 43. `FR` [Football/Data. Rumilly en demi-finale de Coupe de France : retour sur les plus beaux parcours de nos équipes](data/articles/702f5f91420a9c1f0b872cb3f9f2de10.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Jeudi 13 mai Rumilly Vallières va affronter l'AS Monaco en demi-finale de la Coupe de France de football. Le petit club de National 2 a réussi à se hisser parmi les plus grands clubs. Et ce n'est pas le premier à briller dans la compétition. Souvenez-vous des heures de gloire du Pont-de-Chéruy ? De Faucigny ? De la victoire de Valence face au champion de France Monaco ? Ou quand l'ETG vous a fait vibrer jusqu'en finale ? Retour exhaustif sur nos plus belles épopées. En bonus :
 
@@ -1877,7 +1885,7 @@ Jeudi 13 mai Rumilly Vallières va affronter l'AS Monaco en demi-finale de la Co
 
 <div class="article-item" data-lang="fr" data-category="local" data-source="Le Dauphiné Isère Sud">
 
-### 43. `FR` [Football / Quiz. GF38 : vous souvenez-vous des joueurs ayant disputé la demi-finale de Coupe de France 2009 ?](data/articles/4432bd2c497994d03bcb08916770b3f4.html)
+### 44. `FR` [Football / Quiz. GF38 : vous souvenez-vous des joueurs ayant disputé la demi-finale de Coupe de France 2009 ?](data/articles/4432bd2c497994d03bcb08916770b3f4.html)
 **Source:** Le Dauphiné Isère Sud | **Keyword:** `Local`
 Ce mercredi (14h45), le GF38 (Ligue 2) reçoit Monaco en Coupe de France.
 
@@ -1907,7 +1915,7 @@ Ce lundi 16 février, l’Assemblée a adopté une proposition de loi autorisan
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
+<div class="article-item" data-lang="fr" data-category="france" data-source="Franceinfo">
 
 ### 3. `FR` [JO 2026 : malgré un « bilan très positif », les Bleus toujours en quête de records](data/articles/7b2d62b91ebe13368725b5dc689d659a.html)
 **Source:** Le Figaro | **Keyword:** `France`
@@ -1971,7 +1979,7 @@ Les débats les plus houleux devraient se concentrer sur le volet "droit à l'ai
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="france" data-source="Le Figaro">
+<div class="article-item" data-lang="fr" data-category="france" data-source="Le Monde">
 
 ### 11. `FR` [Violente, «antifasciste», «antisioniste», alliée des Insoumis : qu’est-ce que la Jeune Garde, accusée d’avoir participé à l’agression de Quentin tué à Lyon ?](data/articles/96271a1812689c82ecebfc1189211cd7.html)
 **Source:** Le Figaro | **Keyword:** `France`
@@ -1997,9 +2005,9 @@ L’entreprise de démolition des politiques climatiques américaines lancée pa
 
 <div class="article-item" data-lang="fr" data-category="weather" data-source="Météo-Paris">
 
-### 1. `FR` [Février 1991 : 15 cm de neige en Bretagne, 10 cm à Cannes, -12°C à Paris...](data/articles/ba19f42e6f0de11f429e62852b596921.html)
+### 1. `FR` [Encore une tempête pour mercredi et jeudi !](data/articles/ee486785b0f65bd0ea3aa1c8e7f133fe.html)
 **Source:** Météo-Paris | **Keyword:** `Local`
-Des pointes à -20°C en plaine C'était il y a tout juste 35 ans. Un puissant anticyclone était installé sur la Scandinavie avec des pressions proches des 1050 hPa ! Ce dernier forçait les dépressions à circuler plus au sud. Début février 1991, une dépression italienne accélère le flux d'est et entraîne avec elle une goutte froide venue d'Europe de l'est. Sous celle-ci, la masse d'air atteint la barre symbolique des -20°C à 850 hPa (vers 1500m) sur le nord de la France et le Benelux, un niveau particulièrement bas !
+Une dépression très creuse va apporter des vents forts et de nouvelles pluies abondantes sur la France en milieu de semaine Vents forts et nouvelles pluies intenses sont attendues au passage d'une dépression bien creuse sur la France entre mercredi 18 et jeudi 19 février 2026. Le niveau de certains cours d'eau étant déjà très élevé, cette nouvelle tempête laisse craindre le pire. Un temps restant agité dans les prochains jours L'influence océanique perturbée ne veut définitivement pas nous quitter en cette mi-février.
 
 </div>
 
@@ -2892,7 +2900,7 @@ The post From Connected Devices to Autonomous Operations: What Enterprise IoT Is
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 4. `FR` [Ikea fracasse la domotique au CES 2026 avec sa gamme connectée à prix cassé !](data/articles/6a27f10840d80624114a10147c8919d6.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -2909,7 +2917,7 @@ The post L’IA va booster l’internet des objets appeared first on Domotique N
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="en" data-category="iot" data-source="Embedded.com">
 
 ### 6. `FR` [Changer de fournisseur énergie en 2026 : 10 questions avant de choisir un nouveau fournisseur d’électricité et gaz](data/articles/acd97f4bd91882a2670564ec58d869a5.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -2950,7 +2958,7 @@ Avec SolarFlow, HEMS 2.0 et ZENKI, Zendure transforme les batteries solaires en 
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
 ### 11. `FR` [5 façons dont les appareils domotiques améliorent votre système de divertissement](data/articles/04142ac0fa0712faf2568bbc234e466d.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -2975,7 +2983,7 @@ The post Everyday Productivity Challenges in IoT Projects and How Teams Solve Th
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="en" data-category="iot" data-source="Embedded.com">
 
 ### 14. `FR` [Pourquoi mon chauffage consomme-t-il plus que prévu et comment la domotique peut-elle le prouver (et le corriger) ?](data/articles/926435ad34e0305df850699f0ac173ea.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3025,7 +3033,7 @@ The post Texas Instruments to acquire Silicon Labs appeared first on IoT Busines
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="en" data-category="iot" data-source="Arduino Blog">
 
 ### 20. `FR` [Intégrer votre robot tondeuse Mammotion à Home Assistant : contrôle, capteurs, automatisations](data/articles/6fc8a0159ee85afc02e85ce4bbe6693f.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3050,7 +3058,7 @@ Découvrez la nouvelle gamme Segway Navimow 2026 : i2 AWD, i2 LiDAR, i2 LiDAR Pr
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 23. `FR` [Lymow One Plus arrive en France : tonte cyclonique, chenilles de tank et IA embarquée pour ton jardin !](data/articles/fabb2b113f037a154c271af6aab64cad.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3058,7 +3066,7 @@ Marre de ton robot tondeuse qui galère à chaque brin d’herbe un peu humide ?
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 24. `FR` [Solaire, batterie, générateur : Anker sort l’artillerie lourde avec la SOLIX E10](data/articles/101b16dc1ae354e5ff2586e2bce29f88.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3066,7 +3074,7 @@ Anker SOLIX E10, annoncé au CES : système hybride solaire + batterie + génér
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 25. `FR` [Test RingConn Gen 2 : la fin des montres connectées ?](data/articles/4e94c377639a637a3ff21b90e2ed9b64.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3074,7 +3082,7 @@ Ringconn Gen 2 : Légère, confortable, précise. Tu dors avec, tu vis avec. Et 
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 26. `FR` [Comment l’infrastructure cloud transforme-t-elle les plateformes de casino en ligne ? [Sponsorisé]](data/articles/706fc5ee3710453ada0cf0c8f6ba08cd.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3099,7 +3107,7 @@ Découvrez notre test complet du Speediance Gym Monster 2 : une machine de muscu
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="iot" data-source="Maison et Domotique">
+<div class="article-item" data-lang="fr" data-category="iot" data-source="Domotique News">
 
 ### 29. `FR` [Comment la surveillance renforce-t-elle la sécurité des plateformes de jeux au Canada ? [Sponsorisé]](data/articles/cb2d9f4fcda5c797e97acb32a2c83013.html)
 **Source:** Maison et Domotique | **Keyword:** `Domotique`
@@ -3773,7 +3781,7 @@ We discuss the upcoming iPhone 17e and iPad models, as well as Apple's apparent 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 26. `EN` [Apple testing, but still undecided about clamshell folding iPhone](data/articles/d14d99eefd3963ab531e8db1f3667f85.html)
+### 27. `EN` [Apple testing, but still undecided about clamshell folding iPhone](data/articles/d14d99eefd3963ab531e8db1f3667f85.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 With Apple's first foldable iPhone expected to open like a book, one leaker has added fuel to previous claims that it's also testing a clamshell-like iPhone to go with it. Renders of a possible clamshell iPhone Fold — image credit: AppleInsider
 Rumors continue to say that Apple will release the first iPhone Fold in fall 2026, with the book-like design matching popular foldables already on the market. Companies like Samsung and Motorola also offer clamshell designs, similar to the iconic flip phones of the early 2000s.
@@ -3782,7 +3790,7 @@ Rumors continue to say that Apple will release the first iPhone Fold in fall 202
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 27. `EN` [Siri &amp; Apple Intelligence upgrades still coming in 2026 in spite of rumors](data/articles/8ebc928610d1eb7ca8a0cf27f8748409.html)
+### 28. `EN` [Siri &amp; Apple Intelligence upgrades still coming in 2026 in spite of rumors](data/articles/8ebc928610d1eb7ca8a0cf27f8748409.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A story suggesting Apple was having internal struggles and may delay anticipated new Siri features has been mildly countered with a statement from Apple — "on track to launch in 2026." Apple is still aiming for a 2026 release of its revamped AI
 A story based on anonymous tipsters claiming internal testing of the refreshed Siri wasn't going well surfaced Wednesday, sparking dramatic reactions from analysts and the stock market. It didn't help that at the same moment, Apple was being targeted by the FTC Chair over alleged Apple News bias.
@@ -3791,7 +3799,7 @@ A story based on anonymous tipsters claiming internal testing of the refreshed S
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 28. `EN` [Apple Card is moving to Chase, here’s everything we know](data/articles/ccd95f8b926482720c1c73c715633763.html)
+### 29. `EN` [Apple Card is moving to Chase, here’s everything we know](data/articles/ccd95f8b926482720c1c73c715633763.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 After multiple years of speculation, last month Apple officially announced that Chase is set to become the new issuer of Apple Card. Apple says the transition from Goldman Sachs to Chase will occur in approximately 24 months. Here’s everything we know about what this transition means for Apple Card users …
 more…
@@ -3800,7 +3808,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 29. `EN` [Apple is reviving the ‘MacBook’ soon, without any of its old problems](data/articles/381e75f4a972aceec7f36842d6164258.html)
+### 30. `EN` [Apple is reviving the ‘MacBook’ soon, without any of its old problems](data/articles/381e75f4a972aceec7f36842d6164258.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has a new ‘MacBook’ coming soon, and based on the latest rumors, it sounds like all of the problems that plagued the previously discontinued model will be addressed.
 more…
@@ -3809,7 +3817,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 30. `EN` [No, Apple Music didn't fire Jay-Z over Bad Bunny Super Bowl Halftime Show](data/articles/382bfc41c7cf4442f97e15a0610613c4.html)
+### 31. `EN` [No, Apple Music didn't fire Jay-Z over Bad Bunny Super Bowl Halftime Show](data/articles/382bfc41c7cf4442f97e15a0610613c4.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Rumors that Jay-Z lost his Apple Music leadership position in connection with the Super Bowl halftime show are lies, and trace back to a satirical post falsely presented as news. Hip hop star Jay-Z
 The rumor traces back to a post from "America's Last Line of Defense," a network known for publishing fabricated stories presented as satire. Screenshots of the post circulated on Facebook and other platforms without the page's disclaimer, giving the false impression it was a legitimate report.
@@ -3819,7 +3827,7 @@ The original post claims Apple Music "fired" Jay-Z after years of producing the 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 31. `EN` [A YouTube Apple Vision Pro app is finally here, with 3D video support and more](data/articles/ac803bd7fdc002df413f70b9a1a5e699.html)
+### 32. `EN` [A YouTube Apple Vision Pro app is finally here, with 3D video support and more](data/articles/ac803bd7fdc002df413f70b9a1a5e699.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A YouTube app is finally available for the Apple Vision Pro, years after Google confirmed that it was "on the roadmap." Apple Vision Pro owners just got a new way to watch YouTube. Until now, Apple Vision Pro owners have been reduced to watching YouTube via the Safari web browser or using a third-party app. Now, they can download the free, official YouTube app from the headset's App Store.
 Google seemed intent on ensuring that its website would be the only way to watch YouTube initially. The company had Juno, a third-party YouTube player, kicked off the App Store in late 2024.
@@ -3828,7 +3836,7 @@ Google seemed intent on ensuring that its website would be the only way to watch
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 32. `EN` [YouTube launches native app for Apple Vision Pro](data/articles/92660fee13538277a37bc9548aa2b579.html)
+### 33. `EN` [YouTube launches native app for Apple Vision Pro](data/articles/92660fee13538277a37bc9548aa2b579.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 YouTube was one of the biggest apps missing from the Vision Pro platform at launch in February 2024. That changes today, however, with the launch of an official YouTube app for visionOS. more…
 
@@ -3836,7 +3844,7 @@ YouTube was one of the biggest apps missing from the Vision Pro platform at laun
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 33. `EN` [Lawsuit alleges Apple and others were coerced to censor ICE monitoring tools](data/articles/fe6263f233ae9d399ad744f4f0ef56a5.html)
+### 34. `EN` [Lawsuit alleges Apple and others were coerced to censor ICE monitoring tools](data/articles/fe6263f233ae9d399ad744f4f0ef56a5.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 A new lawsuit claims federal officials pressured Apple, Meta, and Google to suppress apps and online groups that document ICE activity, raising fresh First Amendment concerns. Image credit: TheFire.org
 On Wednesday, the Foundation for Individual Rights and Expression (FIRE) announced that it would sue Attorney General Pam Bondi and Secretary of Homeland Security Kristi Noem. The suit centers on First Amendment obstruction.
@@ -3845,7 +3853,7 @@ On Wednesday, the Foundation for Individual Rights and Expression (FIRE) announc
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 34. `EN` [macOS Tahoe 26.3 has no significant new features, but upgrade anyway](data/articles/d1f1667074c9ff068c21bc655ffc7d98.html)
+### 35. `EN` [macOS Tahoe 26.3 has no significant new features, but upgrade anyway](data/articles/d1f1667074c9ff068c21bc655ffc7d98.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple has publicly released macOS Tahoe 26.3 after weeks of beta testing, but while it will have performance and security updates, there are no user-facing new features. Apple has released macOS 26.3 as the new official version of macOS Tahoe
 The previous macOS 26.2 came with new features that were visible to users, such as urgent Reminders and the all new Edge Light illumination for video calls. It also gave M5 Mac users a giant machine-learning speed boost.
@@ -3865,7 +3873,7 @@ Kicking off today’s 9to5Toys Lunch Break deals, Amazon now officially launched
 
 ### 36. `EN` [Apple is officially working on a sequel to F1: The Movie](data/articles/6f0c1b7d92a15230cd70e79c15dcaaed.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
-Apple has previously teased that it wants to make a sequel to F1: The Movie, but today the film’s producer officially confirmed that one is in the works.
+Apple released the first beta of iOS 26.4 for developers today, and it includes a new Apple Intelligence feature for Apple Music. Dubbed “Playlist Playground,” this feature lets you create playlists based on text descriptions.
 more…
 
 </div>
@@ -4204,7 +4212,7 @@ It’s time for Apple to let go of 60Hz displays
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 74. `EN` [Ugreen NASync DH4300 Plus review: Affordable Time Capsule backup replacement](data/articles/0fa3447caeb1c4bf385f967a004758d4.html)
+### 77. `EN` [Ugreen NASync DH4300 Plus review: Affordable Time Capsule backup replacement](data/articles/0fa3447caeb1c4bf385f967a004758d4.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 The Ugreen NASync DH4300 is a very easy-to-use and affordable network attached storage appliance for beginners who need more capacity than your typical entry-level network storage appliance, or for folks who are still relying on a Time Capsule for backup. Ugreen NASync DH4300 Plus
 We're getting to a point with cloud storage that in the long run, having a local cloud is a good idea. And, network attached storage (NAS) isn't just for networking experts anymore.
@@ -4214,7 +4222,7 @@ But, it's easy to underestimate needs.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 75. `EN` [Thanks AI: Hard drives aren't going to get cheaper anytime soon](data/articles/f27a54c8826f266af73c7782c0d08be3.html)
+### 78. `EN` [Thanks AI: Hard drives aren't going to get cheaper anytime soon](data/articles/f27a54c8826f266af73c7782c0d08be3.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Hard drive prices will continue to be high for quite some time, as the needs of AI data centers continue to consume storage and raise prices for everyone. WD has run out of 2026 drive production capacity. Expect hard drives to stay expensive for a while. One of the major talking points about artificial intelligence has been its impact on memory prices. The demand has caused components to become more expensive to manufacturers like Apple, as well as to consumers, thanks to the build-out of infrastructure needed for AI.
 
@@ -4222,7 +4230,7 @@ Hard drive prices will continue to be high for quite some time, as the needs of 
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 76. `EN` [iOS 26 adoption rate isn't the crisis some analysts are portraying](data/articles/a11c7c965d582ec3323250b14f15cb8e.html)
+### 79. `EN` [iOS 26 adoption rate isn't the crisis some analysts are portraying](data/articles/a11c7c965d582ec3323250b14f15cb8e.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple's February 2026 App Store data shows iOS 26 adoption closely tracking the pace set by iOS 18 in January 2025, and iPadOS 26 is ahead of iPadOS 18, undercutting claims that the upgrade cycle is faltering. Apple publishes OS 26 adoption data
 Apple publishes operating system adoption rates based on devices that transacted on the App Store. The February 12, 2026 data can be measured against Apple's January 24, 2025 published figures for a like-for-like comparison.
@@ -4232,7 +4240,7 @@ The breakdown separates recently introduced hardware from the full active instal
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 77. `EN` [Report: Apple’s upcoming low-cost MacBook will come in ‘fun colors,’ launch next month](data/articles/f26f86c8316759891920e9524f83e71b.html)
+### 80. `EN` [Report: Apple’s upcoming low-cost MacBook will come in ‘fun colors,’ launch next month](data/articles/f26f86c8316759891920e9524f83e71b.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple has long been rumored to be working on a new A18 Pro-powered MacBook, at an effort to gain marketshare with a cheaper product offering. Today, Bloomberg’s Mark Gurman is reporting that the company will announce the device at an ‘event’ in March, and that it should come in a number of unique color choices.
 more…
@@ -4241,7 +4249,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 78. `EN` [Apple isn't compromising build quality with new, colorful, inexpensive MacBook](data/articles/29e1210fd42c942e2bc44bdd4265e25d.html)
+### 81. `EN` [Apple isn't compromising build quality with new, colorful, inexpensive MacBook](data/articles/29e1210fd42c942e2bc44bdd4265e25d.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple's budget MacBook is reportedly not plastic, and is rumored to get vibrant colors echoing the the 24-inch iMac for its aluminum enclosure. Apple's MacBook could be green
 The MacBook Air and MacBook Pro lines are relatively limited when it comes to appearance, with the Air sold in four muted shades and the Pro in just two. When it comes to the much-rumored MacBook with an iPhone chip, it could expand the external color palette a lot more.
@@ -4250,7 +4258,7 @@ The MacBook Air and MacBook Pro lines are relatively limited when it comes to ap
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 79. `EN` [iOS 27 expected to deliver better battery life even if you have an older iPhone](data/articles/95753d34f60fefa310276a728311f263.html)
+### 82. `EN` [iOS 27 expected to deliver better battery life even if you have an older iPhone](data/articles/95753d34f60fefa310276a728311f263.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Apple is reportedly devoting iOS 27 development time to revamp older parts of the iPhone operating system, aiming to increase battery life by improving performance. iOS 27 is now expected to feature performance and battery life improvements
 It's already been claimed that iOS 27 will concentrate on Apple Intelligence, but also that Apple's internal code names for the work have recently changed. Now Bloomberg says that a major focus for the operating system update will be about reworking existing elements.
@@ -4260,7 +4268,7 @@ Specifically, Apple is said to be rewriting parts of iOS for the new update.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 80. `EN` [Tesla is still working on CarPlay support, but here’s why it hasn’t launched yet](data/articles/b7336e415acd3f54bfd256b8ab4899f7.html)
+### 83. `EN` [Tesla is still working on CarPlay support, but here’s why it hasn’t launched yet](data/articles/b7336e415acd3f54bfd256b8ab4899f7.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 According to a new report from Bloomberg, Tesla is still working on adding CarPlay integration to its cars. The automaker, however, reportedly hit “a few hurdles” that it had to ask Apple to fix.
 more…
@@ -4269,7 +4277,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 81. `EN` [Apple reportedly releasing new ‘Sales Coach’ app soon](data/articles/8beb4bf8390b7af3d1dffa69a3fc8bdb.html)
+### 84. `EN` [Apple reportedly releasing new ‘Sales Coach’ app soon](data/articles/8beb4bf8390b7af3d1dffa69a3fc8bdb.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple is reportedly planning to launch a new “Sales Coach” app later this month. The app will allegedly serve as a place for Apple to provide “sales tips and training resources” to employees, plus integrate with an AI chatbot.
 more…
@@ -4278,7 +4286,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 82. `EN` [Indie App Spotlight: ‘Peaks’ uses Apple Health data to help you manage your energy](data/articles/b49c824e3a35d87baea44aad64471511.html)
+### 85. `EN` [Indie App Spotlight: ‘Peaks’ uses Apple Health data to help you manage your energy](data/articles/b49c824e3a35d87baea44aad64471511.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Welcome to Indie App Spotlight. This is a weekly 9to5Mac series where we showcase the latest apps in the indie app world. If you’re a developer and would like your app featured, get in contact.
 If you’re an Apple Watch user, the Apple Health app has loads of useful data based on what it can collect from the watch. However, it’s not always easy to analyze that data and turn it into actionable health advice. Peaks solves one part of the problem, by utilizing your sleep data to help you plan your circadian rhythm.
@@ -4288,7 +4296,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 83. `EN` [These rumored iPhone 18 Pro features might tempt you to upgrade later this year](data/articles/5eb6ea3cc943514194e13f1805410b24.html)
+### 86. `EN` [These rumored iPhone 18 Pro features might tempt you to upgrade later this year](data/articles/5eb6ea3cc943514194e13f1805410b24.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Later this year, Apple will once again unveil a full set of flagship iPhones. It may feel like iPhone 17 Pro is still pretty recent, but actually – it’s already been five months. Out of everything in the rumor mill, iPhone Fold certainly sounds the most interesting – but there’s still a few interesting upgrades coming to the iPhone 18 Pro.
 more…
@@ -4297,7 +4305,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 84. `EN` [Anker's Weekend Sale Includes Big Savings on Newest Prime Chargers](data/articles/715143a84e60f46021736ec8402f28c9.html)
+### 87. `EN` [Anker's Weekend Sale Includes Big Savings on Newest Prime Chargers](data/articles/715143a84e60f46021736ec8402f28c9.html)
 **Source:** MacRumors | **Keyword:** `Apple`
 Earlier this month, Anker debuted its new Prime 3-in-1 Wireless Charging Station with a launch discount on Amazon. If ordered this week, you can clip the on-page coupon on Amazon to get the accessory for $119.99, down from $149.99. Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running. The Prime 3-in-1 Wireless Charging Station features Qi2.2 support, which lets a compatible MagSafe ‌iPhone‌ charge at up to 25W.
 
@@ -4305,7 +4313,7 @@ Earlier this month, Anker debuted its new Prime 3-in-1 Wireless Charging Station
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 85. `EN` [Game over, losers. The iPad won](data/articles/e85937f28ee079cadb42259d5fa52b73.html)
+### 88. `EN` [Game over, losers. The iPad won](data/articles/e85937f28ee079cadb42259d5fa52b73.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld Harken, if you will, back to a simpler time. A time when the Macalope’s columns were mostly concerned with dunking on people who said ridiculous things about Apple or Apple products.
 What happened to those days, Carol? We were so young. So full of life. Did you ever finish making that dating app? It was for people in open relationships in gated communities. What a terrible idea. But such was our pie-eyed optimism! The future was spread out before us like a cruise ship buffet, but without the botulism.
@@ -4315,7 +4323,7 @@ And we didn’t have to talk about AI all freakin’ day long.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 86. `EN` [How to disable privacy indicators on external displays connected to your Mac [Video]](data/articles/a534b2f596a0dbdd1928c74566d610f9.html)
+### 89. `EN` [How to disable privacy indicators on external displays connected to your Mac [Video]](data/articles/a534b2f596a0dbdd1928c74566d610f9.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple includes privacy indicators in the upper-right corner of your Mac’s display to indicate when critical hardware is in use. An orange indicator means your microphone is in use, while a green indicator suggests the camera is in use. These indicators help users stay diligent about apps that may be using the camera or microphone legitimately or, in the worst case, unscrupulously.
 While I appreciate having these indicators, they can become a distraction when taking screenshots or recording my Mac’s external display.
@@ -4324,7 +4332,7 @@ While I appreciate having these indicators, they can become a distraction when t
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 87. `EN` [Apple promotes upcoming Formula 1 season with Shot on iPhone campaign](data/articles/e9098add3cd87c7ba13ec1fc286c2ca0.html)
+### 90. `EN` [Apple promotes upcoming Formula 1 season with Shot on iPhone campaign](data/articles/e9098add3cd87c7ba13ec1fc286c2ca0.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Ahead of the streaming of Formula 1 on Apple TV, Apple has been working with various teams to promote their new cars in Shot on iPhone campaigns. As pictured above, this includes a partnership with F1 newcomer Cadillac …
 more…
@@ -4333,7 +4341,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 88. `EN` [Apple @ Work: DDM OS Reminder 2.0 fixes the biggest flaw in Declarative Device Management software updates](data/articles/4381856d138efbf903a88379a8e41245.html)
+### 91. `EN` [Apple @ Work: DDM OS Reminder 2.0 fixes the biggest flaw in Declarative Device Management software updates](data/articles/4381856d138efbf903a88379a8e41245.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional-grade platform all the solutions necessary to seamlessly and automatically deploy, manage &amp; protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work-ready with no effort and at an affordable cost. Request your EXTENDED TRIAL today and understand why Mosyle is everything you need to work with Apple.
 
@@ -4341,7 +4349,7 @@ Apple @ Work is exclusively brought to you by Mosyle, the only Apple Unified Pla
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 89. `EN` [These two new Find My accessories solve some of AirTag’s biggest gaps [Hands-on]](data/articles/2065c30c70689c055d8253afcf542abf.html)
+### 92. `EN` [These two new Find My accessories solve some of AirTag’s biggest gaps [Hands-on]](data/articles/2065c30c70689c055d8253afcf542abf.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 At CES 2026, Rolling Square introduced new versions of two unique Find My accessories they offer: AirCard Pro and AirNotch Pro. Both of these now support both Apple’s Find My and Android’s Find Hub networks, and they’re better than ever – while coming in at lower price points.
 more…
@@ -4350,7 +4358,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 90. `EN` [This week’s top stories: iOS 26.3 now available, Siri roadblocks, and more](data/articles/052447df09bbab8205fec60100558eea.html)
+### 93. `EN` [This week’s top stories: iOS 26.3 now available, Siri roadblocks, and more](data/articles/052447df09bbab8205fec60100558eea.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Welcome to 9to5Mac’s top stories of the week, where we recap the biggest news in the Apple world every Saturday. This week, we have more potential Siri delays, iOS 26.3 is now available, and more Apple news. Plus, our usual slate of new podcast episodes, opinion pieces, and much more. Read on for all of this week’s top stories.
 more…
@@ -4359,7 +4367,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 91. `EN` [This MacBook Pro should not be only $470](data/articles/5d3df077035ce0a6fe1312c1d031cccc.html)
+### 94. `EN` [This MacBook Pro should not be only $470](data/articles/5d3df077035ce0a6fe1312c1d031cccc.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld TL;DR: Get a near-mint 2020 MacBook Pro with pro-level specs for $469.97 — a massive drop from $1,999 while inventory lasts.
 There are good laptop deals, and then there are “wait, that used to cost how much?” deals.
@@ -4370,7 +4378,7 @@ Inside, you’re getting a 10th-gen Intel Core i7 processor clocked at 2.3GHz (w
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 92. `EN` [Apple Music pokes fun at latest Spotify price increase](data/articles/c7b0eeea66b9fe0fec44e3b10f91116b.html)
+### 95. `EN` [Apple Music pokes fun at latest Spotify price increase](data/articles/c7b0eeea66b9fe0fec44e3b10f91116b.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Last month, Spotify announced a new round of price increases for subscribers in the United States and other countries. As the price increases start to go into effect starting with February renewals, Apple Music is poking fun at Spotify’s drama on social media.
 Apple Music is also offering a free three-month trial right now. more…
@@ -4379,7 +4387,7 @@ Apple Music is also offering a free three-month trial right now. more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 93. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
+### 96. `EN` [iPhone 18 Pro could get next-gen N2 chip, pushing an exciting trend](data/articles/07206e9ca7e86da7abd79072b7e42479.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 iPhone 18 Pro is rumored to get a next-gen C2 modem, enabling several new advantages for Apple’s flagship. But an analyst report says there’s a new N2 chip coming to iPhone 18 Pro as well, continuing an exciting trend.
 more…
@@ -4388,7 +4396,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 94. `EN` [There’s finally a Vision Pro YouTube app, not that anyone cares](data/articles/cc1dcd7fe98f519493d994b5b20467ef.html)
+### 97. `EN` [There’s finally a Vision Pro YouTube app, not that anyone cares](data/articles/cc1dcd7fe98f519493d994b5b20467ef.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld Well it only took two years, but there’s finally an official YouTube app for Vision Pro. You could always just visit YouTube using the Vision Pro web browser, but that’s not the same thing. And the popular third-party app, Juno, was quickly taken down.
 The official YouTube app is not quite an MVP (minimum viable product), but it’s close. It’s just a floating window that can play YouTube videos, including the relatively paltry selection of 3D 360-degree and VR 180-degree videos.
@@ -4397,7 +4405,7 @@ The official YouTube app is not quite an MVP (minimum viable product), but it’
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 95. `EN` [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](data/articles/088726accbb47749af813c322f805a13.html)
+### 98. `EN` [HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home](data/articles/088726accbb47749af813c322f805a13.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 When automating your smart home, much of the attention centers on cameras and lights, but I believe HomeKit door sensors are arguably among the most critical devices to add to your setup. I’ve written about Onvis before, but the Smart Security Alarm Contact Sensor (CS2) takes the concept of a simple door sensor and turns it into a lot more. It supports Thread, but the really cool add-on here is a 120dB siren built right into the sensor. Let’s take a look at the Onvis CS2.
 more…
@@ -4406,7 +4414,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 96. `EN` [Apple TV has two thriller series premiering soon, here’s what’s coming](data/articles/8066f93e3034de3e8e1f1d5308ea2c2d.html)
+### 99. `EN` [Apple TV has two thriller series premiering soon, here’s what’s coming](data/articles/8066f93e3034de3e8e1f1d5308ea2c2d.html)
 **Source:** 9to5Mac | **Keyword:** `Apple`
 Apple TV has ramped up its lineup of thrillers recently, and the next two series in the genre are coming soon. Here are the details on two upcoming thrillers: The Last Thing He Told Me and Imperfect Women.
 more…
@@ -4415,7 +4423,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 97. `EN` [Again, don't count on Mac Studio stock levels for release timing](data/articles/501fe6e112e9fc3ab206c7f62b92d751.html)
+### 100. `EN` [Again, don't count on Mac Studio stock levels for release timing](data/articles/501fe6e112e9fc3ab206c7f62b92d751.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Following reports of dwindling stocks of the iPhone 16e, there are now ones about the Mac Studio. While a new one is coming, in 2026 there are just too many external factors to use it as a reliable indicator of an imminent launch. Two Mac Studios, stacked
 It seems such an obvious thing — if Apple is running low on the Mac Studio, it's because a new one is coming. And it seems such an easy thing to spot, since the online Apple Store details how long the delivery time is for any item.
@@ -4424,18 +4432,17 @@ It seems such an obvious thing — if Apple is running low on the Mac Studio, it
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 98. `EN` [Apple TV this week: ‘Eternity’ is now streaming](data/articles/fa4fc4c2be80ccd2c5d2713786b8a79b.html)
+### 101. `EN` [Apple TV this week: ‘Eternity’ is now streaming](data/articles/fa4fc4c2be80ccd2c5d2713786b8a79b.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld What’s new on Apple TV? What are the best shows and movies? How do you sign up and what does it cost? This article will answer all of that, and you’ll also get a list of all the currently-available Apple TV content. There’s also a ton of new content in the works for Apple’s service, too. f you want to know what’s on the way, check out our list of upcoming Apple TV shows and movies.
 Updated February 13, 2026: Just in time for Valentine’s Day, Eternity is now streaming.
-Apple TV 4K (2022, 3. Gen.) 128GB WiFi + Ethernet Read our review Latest Apple TV releases Eternity
-Released:
+Apple TV 4K (2022, 3.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="Macworld">
 
-### 99. `EN` [The A16 iPad drops to its best price this year](data/articles/b0010deecdd45b01db56969a9f376df3.html)
+### 102. `EN` [The A16 iPad drops to its best price this year](data/articles/b0010deecdd45b01db56969a9f376df3.html)
 **Source:** Macworld | **Keyword:** `Apple`
 Macworld We absolutely love a good iPad deal, and it just so happens that Apple’s cheapest tablet has dropped to the best price we’ve yet to see this year. You can get this gorgeous 11-inch iPad for $300 at Amazon, a savings of $50 on its usual MSRP.
 Powered by the superfast A16 chip, this iPad is a fast little thing that’s perfect for multitasking, gaming, editing photos and videos, and whatever else you do on a tablet. We’re sure your kids will enjoy it when you pass it off to them, too.
@@ -4444,7 +4451,7 @@ Powered by the superfast A16 chip, this iPad is a fast little thing that’s per
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 100. `EN` [Why Ferrari turned to Jony Ive to design its new car's controversial interior](data/articles/f7d250d16f22b4e7e63048b7301d8dc0.html)
+### 103. `EN` [Why Ferrari turned to Jony Ive to design its new car's controversial interior](data/articles/f7d250d16f22b4e7e63048b7301d8dc0.html)
 **Source:** AppleInsider | **Keyword:** `Apple`
 Jony Ive's interior for the forthcoming Ferrari Luce electric vehicle is typically well thought out, but it's divided car fans. Now Ferrari's CEO has spoken out about the decision to not use his own designers. Ferrari's forthcoming Luce electric car, with interior by Jony Ive — image credit: Ferrari
 Ferrari is working to build up interest in its first-ever electric car ahead of the full unveiling which is expected in May. It began with the reveal of Jony Ive and Marc Newsom's interior — and that's got Ferrari the kind of attention it might not be grateful for.
@@ -7070,7 +7077,7 @@ A lightweight, lightning-fast, in-process vector database Quickstart | Home | Do
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
 
-### 5. `EN` [ChromeDevTools/chrome-devtools-mcp](data/articles/b4212d4b4d442e7efacb45d4bce01466.html)
+### 6. `EN` [ChromeDevTools/chrome-devtools-mcp](data/articles/b4212d4b4d442e7efacb45d4bce01466.html)
 **Source:** GitHub Trending | **Keyword:** `GitHub`
 Chrome DevTools for coding agents Chrome DevTools MCP chrome-devtools-mcp lets your coding agent (such as Gemini, Claude, Cursor or Copilot) control and inspect a live Chrome browser. It acts as a Model-Context-Protocol (MCP) server, giving your AI coding assistant access to the full power of Chrome DevTools for reliable automation, in-depth debugging, and performance analysis. Tool reference | Changelog | Contributing | Troubleshooting | Design Principles Key features Get performance insights: Uses Chrome DevTools to record traces and extract actionable performance insights.
 
@@ -7136,7 +7143,23 @@ A list of free LLM inference resources accessible via API. Free LLM API resource
 
 ### 13. `EN` [ruvnet/wifi-densepose](data/articles/1345eb0c41fa55e61c1833a198faa5d9.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
-Production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimation system that enables real-time full-body tracking through walls using commodity mesh routers WiFi DensePose A cutting-edge WiFi-based human pose estimation system that leverages Channel State Information (CSI) data and advanced machine learning to provide real-time, privacy-preserving pose detection without cameras. Key Features Privacy-First: No cameras required - uses WiFi signals for pose detection Real-Time Processing: Sub-50ms latency with 30 FPS pose estimation Multi-Person Tracking:
+Data Apps &amp; Dashboards for Python. No JavaScript Required. Dash Dash is the most downloaded, trusted Python framework for building ML &amp; data science web apps. Built on top of Plotly.js, React and Flask, Dash ties modern UI elements like dropdowns, sliders, and graphs directly to your analytical Python code. Read our tutorial (proudly crafted with Dash itself). Docs: Create your first Dash app in under 5 minutes dash.gallery: Dash app gallery with Python &amp; R code Dash App Examples Dash App Description Here’s a simple example of a Dash App that ties a Dropdown to a Plotly Graph.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending Python">
+
+### 15. `EN` [open-webui/open-webui](data/articles/5c33f43b602ec1d660d2e350f2929d80.html)
+**Source:** GitHub Trending Python | **Keyword:** `GitHub`
+open-webui/open-webui
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="opensource" data-source="GitHub Trending">
+
+### 16. `EN` [nautechsystems/nautilus_trader](data/articles/77c460c436551b669deafd7d6f099b31.html)
+**Source:** GitHub Trending | **Keyword:** `GitHub`
+A high-performance algorithmic trading platform and event-driven backtester Branch Version Status master nightly develop Platform Rust Python Linux (x86_64) 1.93.0 3.12-3.14 Linux (ARM64) 1.93.0 3.12-3.14 macOS (ARM64) 1.93.0 3.12-3.14 Windows (x86_64) 1.93.0 3.12-3.14 Docs: https://nautilustrader.io/docs/ Website: https://nautilustrader.io Support:
 
 </div>
 
@@ -7277,7 +7300,7 @@ A feature-rich command-line audio/video downloader yt-dlp is a feature-rich comm
 
 ### 27. `EN` [Comfy-Org/ComfyUI-Manager](data/articles/8cab7613af6eff36ab4afb1af9317899.html)
 **Source:** GitHub Trending Python | **Keyword:** `GitHub`
-ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI. ComfyUI Manager ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI.
+A feature-rich command-line audio/video downloader yt-dlp is a feature-rich command-line audio/video downloader with support for thousands of sites. The project is a fork of youtube-dl based on the now inactive youtube-dlc.
 
 </div>
 
@@ -7416,7 +7439,7 @@ Google Suite CLI: Gmail, GCal, GDrive, GContacts. gogcli — Google in your term
 
 ### 42. `EN` [github/gh-aw](data/articles/91dd5eeca6a0d950a6bbb56539052567.html)
 **Source:** GitHub Trending | **Keyword:** `GitHub`
-github/gh-aw
+Google Suite CLI: Gmail, GCal, GDrive, GContacts. gogcli — Google in your terminal. Fast, script-friendly CLI for Gmail, Calendar, Chat, Classroom, Drive, Docs, Slides, Sheets, Forms, Apps Script, Contacts, Tasks, People, Groups (Workspace), and Keep (Workspace-only). JSON-first output, multiple accounts, and least-privilege auth built in.
 
 </div>
 
@@ -7476,7 +7499,7 @@ In the initial version, if a user wanted a header, they dragged a "Header Block"
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
+<div class="article-item" data-lang="fr" data-category="opensource" data-source="Programmez">
 
 ### 49. `EN` [Letta Code, memory-first coding agent that lives in your terminal.](data/articles/7916357b6631b9c415fe55db8cd49f04.html)
 **Source:** Dev.to Open Source | **Keyword:** `Open`
