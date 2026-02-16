@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Letta Code, memory-first coding agent that lives in your terminal.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Letta Code, memory-first coding agent that lives in your terminal.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/ramunarasinga-11/letta-code-memory-first-coding-agent-that-lives-in-your-terminal-59fm" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/ramunarasinga-11"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F392818%2Fcc9dbd66-5cc2-4591-8c1c-6c650a374161.jpeg" alt="Ramu Narasinga" /></a>
+                  </p>
+                  
+                </div><div>
+                <p>In this article, we review Letta Code, a memory-first coding agent that lives in your terminal. We will look at:</p>
+
+<ol>
+<li><p>What is Letta Code?</p></li>
+<li><p>What can Letta Code do?</p></li>
+</ol>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7stsfhpdmu1gc7oeavaj.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F7stsfhpdmu1gc7oeavaj.png" /></a></p>
+
+<h3>
+  <a name="what-is-letta%C2%A0code" href="#what-is-letta%C2%A0code">
+  </a>
+  What is Letta Code?
+</h3>
+
+<p>Letta Code is a deeply personalized stateful agent that lives on your local computer and can learn from experience and improve with use.</p>
+
+<p>Unlike Claude Code, Letta Code is <a href="https://github.com/letta-ai/letta-code" target="_blank">open source</a>, model agnostic (use Claude, GPT, Gemini, or any model you want), and most importantly, is <strong>stateful</strong>, meaning that you can use the same agent across many coding sessions, and have it learn and improve over time.</p>
+
+<h4>
+  <a name="quick-start%C2%A0guide" href="#quick-start%C2%A0guide">
+  </a>
+  Quick Start Guide
+</h4>
+
+<p>Install the Letta Code<br />
+</p>
+
+<div>
+<pre><code><span>npm</span> <span>install</span> <span>-</span><span>g</span> <span>@</span><span>letta</span><span>-</span><span>ai</span><span>/</span><span>letta</span><span>-</span><span>code</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Then navigate to your project and run <code>letta</code> to launch Letta Code:<br />
+</p>
+
+<div>
+<pre><code><span>cd</span> <span>your</span><span>-</span><span>project</span>
+<span>letta</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>On first use, you’ll be prompted to log in. Follow the instructions to authenticate Letta Code with your Letta account, then return to the terminal. 👾 <strong>Beep boop</strong> — you’re ready to chat!</p>
+
+<p>To learn how to initialize your agent’s memory and configure different LLM providers, <a href="https://docs.letta.com/letta-code/quickstart" target="_blank"><strong>continue the quickstart guide →</strong></a></p>
+
+<h3>
+  <a name="what-can-letta-code%C2%A0do" href="#what-can-letta-code%C2%A0do">
+  </a>
+  What can Letta Code do?
+</h3>
+
+<p><strong>Work in your local computer</strong>: Letta Code lives in your terminal, and can do anything you can do on your computer! Ask Letta Code to write code, edit and organize files, run programs, and more. The more Letta Code does, the more it learns.</p>
+
+<p><strong>Remember all prior interactions</strong>: Your agent persists across sessions. It remembers your codebase, preferences, and past interactions. Memories and messages are persisted and searchable via tools, skills, and subagents.</p>
+
+<p><strong>Self-improve and evolve over time</strong>: You can deeply customize your agent’s personality and memory system, either by directly editing its memory blocks, or by asking the agent to modify itself. Run <code>/init</code> to bootstrap project knowledge, and <code>/remember</code> to save important context.</p>
+
+<blockquote>
+<p>I copied the above info from the <a href="https://docs.letta.com/letta-code" target="_blank">documentation</a>. Learn more about <a href="https://docs.letta.com/letta-code" target="_blank">Letta Code</a>.</p>
+</blockquote>
+
+<h3>
+  <a name="about-me" href="#about-me">
+  </a>
+  About me:
+</h3>
+
+<p>Hey, my name is <a href="https://ramunarasinga.com/" target="_blank">Ramu Narasinga</a>. I study codebase architecture in large open-source projects.</p>
+
+<p>Email: <a href="mailto:ramu.narasinga@gmail.com">ramu.narasinga@gmail.com</a></p>
+
+<blockquote>
+<p><em>I spent 200+ hours analyzing Supabase, shadcn/ui, LobeChat. Found the patterns that separate AI slop from production code. Stop refactoring AI slop. Start with proven patterns. Check out production-grade projects at</em> <a href="http://thinkthroo.com/" target="_blank"><em>thinkthroo.com</em></a></p>
+</blockquote>
+
+<h3>
+  <a name="references" href="#references">
+  </a>
+  References:
+</h3>
+
+<ol>
+<li><p><a href="https://docs.letta.com/letta-code" target="_blank">https://docs.letta.com/letta-code</a></p></li>
+<li><p><a href="https://docs.letta.com/letta-code/quickstart" target="_blank">https://docs.letta.com/letta-code/quickstart</a></p></li>
+</ol>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

@@ -6,7 +6,7 @@
 
 [![GitHub Profile](https://img.shields.io/badge/GitHub-ThePhoenixAgency-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency) [![Repository](https://img.shields.io/badge/Source-Repo-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse) [![Reader](https://img.shields.io/badge/Live-Reader-blueviolet?style=for-the-badge&logo=readthedocs)](https://thephoenixagency.github.io/AI-Pulse/app.html) [![Documentation](https://img.shields.io/badge/Documentation-Technical-blue?style=for-the-badge&logo=googledocs)](https://github.com/ThePhoenixAgency/AI-Pulse/blob/main/database/SUPABASE_MIGRATION.md) [![Support](https://img.shields.io/badge/Support-Issues-181717?style=for-the-badge&logo=github)](https://github.com/ThePhoenixAgency/AI-Pulse/issues)
 
-**Last Update:** Mon, 16 Feb 2026 14:37:15 GMT
+**Last Update:** Mon, 16 Feb 2026 16:35:17 GMT
 
 ---
 
@@ -29,7 +29,71 @@
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 1. `FR` [Guerre des IA chinoises : Alibaba devance DeepSeek-V4 et lance son modèle Qwen 3.5](data/articles/edf86d3335decd1f0515c1557457dfa9.html)
+### 1. `FR` [« C’est vraiment bizarre d’avoir un micro sur un aspirateur », il bidouille son aspirateur robot et découvre une faille géante](data/articles/b7af376e98569989c52a6df6cef08732.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Dans un article publié le 14 février 2026, le média américain The Verge revient sur la découverte involontaire d'une faille de sécurité affectant les appareils de la marque chinoise DJI. En bidouillant son aspirateur connecté pour le piloter avec une manette PlayStation, un utilisateur a pu accéder à des données de milliers d'appareils à travers le monde.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 2. `FR` [J’ai relancé Overwatch après des années d’absence et je ne regrette pas](data/articles/cb9639b47c46141e501ea7c856e4bfa6.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Overwatch 2 a récemment opéré un revirement inattendu en faisant marche arrière pour redevenir, tout simplement : Overwatch. Grand nostalgique de la licence, j’ai finalement décidé de relancer le jeu pour voir si la magie fonctionnait toujours.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 3. `FR` [Duncan, Baelor, Aerion… Qui affronte qui au Jugement des Sept dans A Knight of the Seven Kingdoms ?](data/articles/4a6cf4f83cd1d7eeaa9d391a20f082a6.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Le dénouement du conflit entre Duncan et Aerion Targaryen arrive lors de l'épisode 5 de A Knight of the Seven Kingdoms, sur HBO Max. Mais dans la mêlée générale, on peut rapidement oublier qui appartient à chaque camp de ce Jugement des Sept.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 4. `FR` [Un développeur de Fallout explique pourquoi « le réalisme n’est pas toujours amusant »](data/articles/294a63cfb2723d12ee3317d18c3b26d3.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Lorsque Bethesda Game Studios s’attelle à sa vision du monde post-apocalyptique de Fallout, le studio se rend vite compte qu’il est très dur de concilier réalisme et divertissement au sein d'un même jeu vidéo.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 5. `FR` [Mauvaise nouvelle pour la PS6 : le lancement repoussé de plusieurs années](data/articles/8a9acc0c4bd0045249f2cae7e5eeb32a.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+La PS6 de Sony, attendue autour de 2027, pourrait finalement sortir en 2028 voire 2029, ont indiqué des sources proches du dossier à Bloomberg. En cause : la pénurie mondiale de RAM.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 6. `FR` [Quand sort le revival de la série Scrubs ?](data/articles/daeca70c90dc382efa76cdc2215c6e0b.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Scrubs, la fameuse sitcom des années 2000, qui nous plongeait dans le quotidien d'un hôpital, va connaître un revival dans les prochains mois. Casting, date de sortie, bande-annonce, histoire... Voici tout ce que l'on sait déjà sur le retour de la série culte, pour une saison 10.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="ai" data-source="MIT Technology Review">
+
+### 7. `EN` [Tuning into the future of collaboration ](data/articles/75ce379157416fe35c0295544ca00720.html)
+**Source:** MIT Technology Review | **Tags:** `AI` `Research` `Innovation`
+When work went remote, the sound of business changed. What began as a scramble to make home offices functional has evolved into a revolution in how people hear and are heard. From education to enterprises, companies across industries have reimagined what clear, reliable communication can mean in a hybrid world. For major audio and communications…
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 8. `FR` [Le spin-off de Stranger Things va ressembler aux Dents de la Mer](data/articles/032674895884d49c5bebfe0410e22ad7.html)
+**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
+Plus d'un mois après la fin controversée de Stranger Things, sortie le 1er janvier 2026 sur Netflix, l'univers du Monde à l'Envers continue de s'étendre avec un tout premier spin-off : Tales from '85. Une nouvelle série animée, qui possède visiblement de curieuses inspirations.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
+
+### 9. `FR` [Guerre des IA chinoises : Alibaba devance DeepSeek-V4 et lance son modèle Qwen 3.5](data/articles/edf86d3335decd1f0515c1557457dfa9.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Le 15 février 2026, Alibaba a présenté Qwen 3.5, une nouvelle version de son grand modèle d’IA pensée pour « l’ère des agents ». Une annonce stratégique dans la course chinoise à l’IA.
 
@@ -37,15 +101,15 @@ Le 15 février 2026, Alibaba a présenté Qwen 3.5, une nouvelle version de son 
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 2. `FR` [C’est officiel : la première keynote Apple de 2026 aura lieu le 4 mars](data/articles/a84d9d41bb702594d1882769927c4ed4.html)
+### 10. `FR` [Apple officialise une conférence le 4 mars : iPhone 17e et MacBook au programme ?](data/articles/a84d9d41bb702594d1882769927c4ed4.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-Apple invite la presse à un « événement spécial » le 4 mars. L'iPhone 17e et de nouveaux Mac pourraient être les stars de l'événement.
+Apple invite la presse à une « expérience spéciale » le 4 mars. L'iPhone 17e et de nouveaux Mac pourraient être les stars de l'événement.
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 3. `FR` [Un nouveau constructeur soutient l’idée de la voiture européenne pas chère](data/articles/488b08c0b5b8e2f44ab2d8610a9a60ac.html)
+### 11. `FR` [Un nouveau constructeur soutient l’idée de la voiture européenne pas chère](data/articles/488b08c0b5b8e2f44ab2d8610a9a60ac.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Hyundai soutient l'idée de l'Europe de vouloir proposer une voiture très abordable grâce à la création d'une nouvelle catégorie. Mais pour l'heure, le flou autour de la potentielle réglementation n'aide pas à se projeter.
 
@@ -53,7 +117,7 @@ Hyundai soutient l'idée de l'Europe de vouloir proposer une voiture très abord
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="TechCrunch AI">
 
-### 4. `EN` [Flapping Airplanes on the future of AI: ‘We want to try really radically different things’](data/articles/443656579a99c2d54466e1dd0f002f6c.html)
+### 12. `EN` [Flapping Airplanes on the future of AI: ‘We want to try really radically different things’](data/articles/443656579a99c2d54466e1dd0f002f6c.html)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "We're exploring a different set of tradeoffs."
 
@@ -61,7 +125,7 @@ Hyundai soutient l'idée de l'Europe de vouloir proposer une voiture très abord
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 5. `FR` [Au Pérou, cet empire pré-inca a bâti sa fortune sur des excréments d’oiseaux](data/articles/8f91d39223adfc6fc14d204686b1efa0.html)
+### 13. `FR` [Au Pérou, cet empire pré-inca a bâti sa fortune sur des excréments d’oiseaux](data/articles/8f91d39223adfc6fc14d204686b1efa0.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Le guano, excrément d'oiseaux marins, est un super fertilisateur pour la culture du maïs. C'est lui qui aurait permis au royaume Chincha de prospérer au Pérou, il y a au moins 800 ans. Ce lien profond entre terre et mer était célébré et protégé, comme en attestent des preuves biochimiques mais aussi matérielles.
 
@@ -69,15 +133,15 @@ Le guano, excrément d'oiseaux marins, est un super fertilisateur pour la cultur
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 6. `FR` [Vous n’arrivez pas à ouvrir X (anciennement Twitter) ? C’est normal, il y a une panne mondiale](data/articles/ad942bb5d1535864cb28d55baeda9797.html)
+### 14. `FR` [Une heure de panne dans le monde entier : X (anciennement Twitter) passe un mauvais lundi](data/articles/ad942bb5d1535864cb28d55baeda9797.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-Le réseau social d'Elon Musk est tombé en panne lundi 16 février vers 14h20, avec une impossibilité de charger la page d'accueil. Il avait déjà subi plusieurs instabilités dans la matinée.
+Le réseau social d'Elon Musk est tombé en panne lundi 16 février vers 14h20, avec une impossibilité de charger la page d'accueil. Le réseau social revient progressivement en vie vers 15h30, mais il demeure plusieurs problèmes.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="TechCrunch AI">
 
-### 7. `EN` [After all the hype, some AI experts don’t think OpenClaw is all that exciting](data/articles/52600766b3098b97b0d1b82f1fe9d516.html)
+### 15. `EN` [After all the hype, some AI experts don’t think OpenClaw is all that exciting](data/articles/52600766b3098b97b0d1b82f1fe9d516.html)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 "From an AI research perspective, this is nothing novel," one expert told TechCrunch.
 
@@ -85,7 +149,7 @@ Le réseau social d'Elon Musk est tombé en panne lundi 16 février vers 14h20, 
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 8. `FR` [Jailbreaker un F-35 comme un iPhone : le plan audacieux des Pays-Bas pour échapper au « kill switch » des USA](data/articles/4dfbad8058bc53364a74e8efb090742a.html)
+### 16. `FR` [Jailbreaker un F-35 comme un iPhone : le plan audacieux des Pays-Bas pour échapper au « kill switch » des USA](data/articles/4dfbad8058bc53364a74e8efb090742a.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Peut-on « jailbreaker » un avion de chasse comme un simple iPhone pour s'affranchir de la tutelle américaine, et du « kill switch » du F-35 ? Lancée par le secrétaire d’État néerlandais à la Défense, cette piste relance le débat sur la souveraineté des flottes de F-35 en Europe face au risque de blocage à distance
 
@@ -93,7 +157,7 @@ Peut-on « jailbreaker » un avion de chasse comme un simple iPhone pour s'affra
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="MIT Technology Review">
 
-### 9. `EN` [The Download: unraveling a death threat mystery, and AI voice recreation for musicians](data/articles/728ac99c648d328c6884c83c89d12d1f.html)
+### 17. `EN` [The Download: unraveling a death threat mystery, and AI voice recreation for musicians](data/articles/728ac99c648d328c6884c83c89d12d1f.html)
 **Source:** MIT Technology Review | **Tags:** `AI` `Research` `Innovation` | *Also on: MIT Technology Review*
 This is today’s edition of The Download, our weekday newsletter that provides a daily dose of what’s going on in the world of technology. Hackers made death threats against this security researcher. Big mistake. In April 2024, a mysterious someone using the online handles “Waifu” and “Judische” began posting death threats on Telegram and Discord channels aimed…
 
@@ -101,7 +165,7 @@ This is today’s edition of The Download, our weekday newsletter that provide
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="AI News">
 
-### 10. `EN` [Banking AI in multiple business functions at NatWest](data/articles/409462e9246646c5de3c4eaca285136a.html)
+### 18. `EN` [Banking AI in multiple business functions at NatWest](data/articles/409462e9246646c5de3c4eaca285136a.html)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 NatWest Group has expanded the use of artificial intelligence in several areas of its operations, citing customer service, document management in its wealth management division, and software development. According to a blog post by its chief information officer, Scott Marcar, 2025 was the first year in which these systems were deployed at scale. The aim […]
 The post Banking AI in multiple business functions at NatWest appeared first on AI News.
@@ -110,7 +174,7 @@ The post Banking AI in multiple business functions at NatWest appeared first on 
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 11. `FR` [Les Français verront-ils l’éclipse annulaire de Soleil du 17 février 2026 ?](data/articles/4d2d2af36ecd331e761707b9dc7ac678.html)
+### 19. `FR` [Les Français verront-ils l’éclipse annulaire de Soleil du 17 février 2026 ?](data/articles/4d2d2af36ecd331e761707b9dc7ac678.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Le mardi 17 février 2026, la première éclipse de l'année 2026 se produit. Il s'agit d'une éclipse de Soleil, qui sera annulaire lors de son maximum. Mais peut-on espérer assister au phénomène depuis la France ?
 
@@ -118,7 +182,7 @@ Le mardi 17 février 2026, la première éclipse de l'année 2026 se produit. Il
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="AI News">
 
-### 12. `EN` [Debenhams pilots agentic AI commerce via PayPal integration](data/articles/05a3aa0c2831e0d993db0d9bc0ab2217.html)
+### 20. `EN` [Debenhams pilots agentic AI commerce via PayPal integration](data/articles/05a3aa0c2831e0d993db0d9bc0ab2217.html)
 **Source:** AI News | **Tags:** `AI` `News` `Industry`
 Debenhams is piloting agentic AI commerce via PayPal integration to reduce mobile friction and help solve a familiar problem for retailers. Mobile checkout abandonment remains a persistent revenue leak for digital retailers. Debenhams Group is attempting to close this gap by deploying an agentic AI interface within the PayPal app. The pilot makes Debenhams the […]
 The post Debenhams pilots agentic AI commerce via PayPal integration appeared first on AI News.
@@ -127,7 +191,7 @@ The post Debenhams pilots agentic AI commerce via PayPal integration appeared fi
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
 
-### 13. `FR` [Pourquoi la course au « tout-tactile » de nos voitures vit ses dernières heures](data/articles/e9d15e6e6524107edaa5e597a1e0bfa1.html)
+### 21. `FR` [Pourquoi la course au « tout-tactile » de nos voitures vit ses dernières heures](data/articles/e9d15e6e6524107edaa5e597a1e0bfa1.html)
 **Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
 Après des années à voir l’écran central remplacer progressivement tous les boutons, la Chine impose le retour de commandes physiques dans les voitures. Et l’Europe, via Euro NCAP, a déjà commencé à serrer la vis.
 
@@ -135,80 +199,40 @@ Après des années à voir l’écran central remplacer progressivement tous les
 
 <div class="article-item" data-lang="en" data-category="ai" data-source="TechCrunch AI">
 
-### 14. `EN` [Fractal Analytics’ muted IPO debut signals persistent AI fears in India](data/articles/9ce78c899c01495aee505426ce0bdd98.html)
+### 22. `EN` [Fractal Analytics’ muted IPO debut signals persistent AI fears in India](data/articles/9ce78c899c01495aee505426ce0bdd98.html)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 As India's first AI company to IPO, Fractal Analytics didn't have a stellar first day on the public markets, as enthusiasm for the technology collided with jittery investors in the wake of a sell-off in Indian software stocks.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
-
-### 15. `FR` [Non, Barack Obama n’a pas dit que les extraterrestres étaient parmi nous](data/articles/d542608ffd98359e944ebb0cdfb5ad11.html)
-**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-Lors d'une interview, Barack Obama a brièvement déclaré que les extraterrestres existaient. Une petite phrase lâchée à la manière d'une plaisanterie, mais qui a beaucoup fait réagir. À tel point que l'ancien président américain a dû préciser sa pensée de façon beaucoup plus sérieuse, tant sa remarque a été prise au premier degré.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="ai" data-source="TechCrunch AI">
 
-### 16. `EN` [All the important news from the ongoing India AI Impact Summit](data/articles/e9152958c003c063ba072d0259b66a2d.html)
+### 23. `EN` [All the important news from the ongoing India AI Impact Summit](data/articles/e9152958c003c063ba072d0259b66a2d.html)
 **Source:** TechCrunch AI | **Tags:** `AI` `Startups` `Tech`
 India is hosting a four-day AI Summit this week that will be attended by executives from major AI labs and Big Tech, including OpenAI, Anthropic, Nvidia, Microsoft, Google, and Cloudflare, as well as heads of state.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
-
-### 17. `FR` [32 Go de RAM pour un jeu Lego ? Le studio fait marche arrière face aux critiques](data/articles/b6a2c40eb87df853c06dfee18fd46257.html)
-**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-Dans un communiqué publié sur Steam, TT Games a annoncé des changements concernant les configurations PC nécessaires pour jouer à Lego Batman : Legacy of the Dark Knight. Il ne faudra plus 32 mais 16 Go de RAM pour en profiter. Un changement loin d'être anodin dans le contexte actuel.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="ai" data-source="Towards Data Science">
 
-### 18. `EN` [The Strangest Bottleneck in Modern LLMs](data/articles/e80259a86029cf40f965a3b716e78025.html)
+### 24. `EN` [The Strangest Bottleneck in Modern LLMs](data/articles/e80259a86029cf40f965a3b716e78025.html)
 **Source:** Towards Data Science | **Tags:** `AI` `Data Science` `Analytics`
 Why insanely fast GPUs still can’t make LLMs feel instant
 The post The Strangest Bottleneck in Modern LLMs appeared first on Towards Data Science.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
-
-### 19. `FR` [L’enceinte compacte et étanche Bose SoundLink Flex 2 passe à moins de 100 €](data/articles/b1c17d13ce05244a149a2242c411c590.html)
-**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-[Deal du jour] La Bose SoundLink Flex de deuxième génération est une enceinte compacte et élégante, idéale pour diffuser des musiques avec une excellente qualité audio. Elle devient bien plus intéressante en dessous des 100 €.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
-
-### 20. `FR` [Un MacBook coloré à moins de 1 000 euros ? Le nouvel ordinateur d’Apple va faire un carton](data/articles/3a1c4b786c7e557b14ed5d929a3b53a0.html)
-**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-En mars 2026, Apple pourrait accompagner les nouveaux MacBook Pro avec des puces M5 Pro et M5 Max d'un nouvel ordinateur : le « MacBook e » destiné aux étudiants et aux entreprises qui n'ont pas d'usages extrêmes. Un produit destiné à tuer les PC low-cost et les Chromebook.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="ai" data-source="MIT Technology Review">
 
-### 21. `EN` [The scientist using AI to hunt for antibiotics just about everywhere](data/articles/6a4e3b2c33bddd6baba39b6386791b7e.html)
+### 25. `EN` [The scientist using AI to hunt for antibiotics just about everywhere](data/articles/6a4e3b2c33bddd6baba39b6386791b7e.html)
 **Source:** MIT Technology Review | **Tags:** `AI` `Research` `Innovation`
 When he was just a teenager trying to decide what to do with his life, César de la Fuente compiled a list of the world’s biggest problems. He ranked them inversely by how much money governments were spending to solve them. Antimicrobial resistance topped the list.  Twenty years on, the problem has not gone away.…
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Numerama Tech">
-
-### 22. `FR` [Vous en avez marre des arnaques et du démarchage téléphonique ? Installez ces applications](data/articles/ffb743e4bc7ddd6c01171869c1fbc00c.html)
-**Source:** Numerama Tech | **Tags:** `IA` `Tech` `Science`
-Alors que le démarchage téléphonique s'intensifie et que l'intelligence artificielle générative permet à des bots de simuler des appels, les solutions traditionnelles comme s'inscrire sur Bloctel ou bloquer les numéros un par un ne suffisent plus. Voici une sélection de logiciels recommandés par nos lecteurs pour limiter les appels indésirables.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 23. `FR` [L’Europe soupçonne Google d’avoir fait payer trop cher la publicité aux entreprises](data/articles/336f2df66092fc4e8f44ea76a91f06f1.html)
+### 26. `FR` [L’Europe soupçonne Google d’avoir fait payer trop cher la publicité aux entreprises](data/articles/336f2df66092fc4e8f44ea76a91f06f1.html)
 **Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
 Alors que les géants américains multiplient les contentieux des deux côtés de l’Atlantique, une nouvelle procédure européenne vient placer la régie publicitaire de Google sous les projecteurs. Cette fois-ci, c’est le mécanisme même des enchères publicitaires qui est questionné. Selon des documents consultés par Bloomberg, la Commission européenne soupçonne Google d’avoir artificiellement gonflé les prix […]
 
@@ -216,7 +240,7 @@ Alors que les géants américains multiplient les contentieux des deux côtés d
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 24. `FR` [Anthropic lève 30 milliards de dollars et talonne désormais OpenAI](data/articles/5c6142d802f3c02e3762d7873454c28a.html)
+### 27. `FR` [Anthropic lève 30 milliards de dollars et talonne désormais OpenAI](data/articles/5c6142d802f3c02e3762d7873454c28a.html)
 **Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
 La bataille des valorisations dans l’intelligence artificielle franchit un nouveau cap. En effet, dans un communiqué de presse, l’américain Anthropic annonce une valorisation de 380 milliards de dollars à l’issue d’une levée de fonds massive de 30 milliards de dollars. Une opération qui confirme l’emballement des marchés pour les acteurs capables de monétiser l’IA à […]
 
@@ -224,7 +248,7 @@ La bataille des valorisations dans l’intelligence artificielle franchit un nou
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 25. `FR` [L’Europe veut reprendre la main sur le numérique…Google critique et met en garde](data/articles/effce86200a87272c08b651eba708ea2.html)
+### 28. `FR` [L’Europe veut reprendre la main sur le numérique…Google critique et met en garde](data/articles/effce86200a87272c08b651eba708ea2.html)
 **Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
 Alors que l’Union européenne prépare un nouveau train de mesures pour renforcer son autonomie technologique, Google hausse le ton. Entre les tensions et les enquêtes réglementaires, l’entreprise estime que la quête de souveraineté numérique engagée par Bruxelles pourrait se retourner contre ses propres ambitions économiques. Une prise de parole qui intervient exactement au moment où […]
 
@@ -232,7 +256,7 @@ Alors que l’Union européenne prépare un nouveau train de mesures pour renfor
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 26. `FR` [Face aux accusations, Meta rejette l’idée d’une addiction à Instagram et Facebook](data/articles/f80edf260c60d289c5c47b5ade155ad0.html)
+### 29. `FR` [Face aux accusations, Meta rejette l’idée d’une addiction à Instagram et Facebook](data/articles/f80edf260c60d289c5c47b5ade155ad0.html)
 **Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
 Alors que la pression judiciaire s’intensifie autour des plateformes numériques, Meta se retrouve au coeur de deux procès majeurs aux États-Unis. En toile de fond, on retrouve la question de l’addiction aux réseaux sociaux et de leurs effets sur la santé mentale, notamment chez les plus jeunes. Mais face aux accusations, le groupe de Meta […]
 
@@ -240,33 +264,9 @@ Alors que la pression judiciaire s’intensifie autour des plateformes numériqu
 
 <div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
 
-### 27. `FR` [Faut-il vraiment laisser une IA agir à notre place ? Apple a posé la question aux utilisateurs](data/articles/074c29e6db7f882e041a760ecd155016.html)
+### 30. `FR` [Faut-il vraiment laisser une IA agir à notre place ? Apple a posé la question aux utilisateurs](data/articles/074c29e6db7f882e041a760ecd155016.html)
 **Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
 Alors que les géants de la tech rivalisent d’annonces autour des agents IA capables d’agir à notre place, Apple adopte une approche plus méthodique. Plutôt que de promettre des assistants autonomes toujours plus performants, l’entreprise s’interroge sur un point plus fondamental : comment les utilisateurs souhaitent-ils réellement interagir avec ces agents ? Dans une récente […]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
-
-### 28. `FR` [LinkedIn lance Premium All in One pour séduire les fondateurs et petites entreprises](data/articles/4cf2c710571fba377a3cd454b61f4fe3.html)
-**Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
-LinkedIn poursuit sa stratégie de diversification de ses revenus avec une nouvelle formule pensée pour les petites structures. Baptisée Premium All-in-One, cette offre vise clairement les entrepreneurs, les start-up et les PME qui utilisent déjà la plateforme pour prospecter, recruter ou développer leur visibilité. Avec cette nouvelle offre, la filiale de Microsoft cherche à séduire […]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
-
-### 29. `FR` [Cette nouvelle IA ultra réaliste inquiète Hollywood et déclenche une offensive de Disney](data/articles/5bda62ff465679af1d262ccfd2b17405.html)
-**Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
-À peine lancé, le modèle vidéo Seedance 2.0 de ByteDance déclenche déjà une tempête juridique. Alors que les internautes s’enthousiasment pour ses performances spectaculaires, The Walt Disney Company a décidé de contre-attaquer. Le studio accuse la maison mère de TikTok d’avoir entraîné son intelligence artificielle sur son catalogue, sans autorisation. Une mise en demeure pour […]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="ai" data-source="Siecle Digital">
-
-### 30. `FR` [600 millions d’utilisateurs actifs, 1 milliard d’installations : les vrais chiffres dévoilés par X](data/articles/3ca68447562080fb75bd7ef6992a2f93.html)
-**Source:** Siecle Digital | **Tags:** `IA` `Digital` `Tech`
-Depuis son rachat par Elon Musk, X multiplie les annonces pour démontrer la solidité de son modèle. Lors d’une conférence réunissant les équipes de X, xAI et SpaceX, le dirigeant a détaillé les performances actuelles du réseau social et ses ambitions pour 2026. Et entre les abonnements en forte progression, l’objectif du milliard d’utilisateurs actifs […]
 
 </div>
 
@@ -280,32 +280,36 @@ Depuis son rachat par Elon Musk, X multiplie les annonces pour démontrer la sol
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="CTFtime">
 
-### 1. `EN` [CyberGame 2026](data/articles/e586fd94428d981fed4a0215eae7d19a.html)
-**Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition` | *Also on: CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime*
-Name: CyberGame 2026 (an CyberGame event.)
+### 1. `EN` [Srdnlen CTF 2026 Quals](data/articles/56291969a02c3f2e78a1ae30884bac3b.html)
+**Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition` | *Also on: CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime, CTFtime*
+Name: Srdnlen CTF 2026 Quals (an Srdnlen CTF event.)
 [add to calendar]
 On-line
-https://cybergame.sk/
-SK-CERT
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="CTFtime">
-
-### 2. `EN` [SECCON CTF 14 International Finals](data/articles/d0dcc21e2f49f208fff8047d554d7f63.html)
-**Source:** CTFtime | **Tags:** `CTF` `Hacking` `Competition` | *Also on: CTFtime, CTFtime, CTFtime*
-Name: SECCON CTF 14 International Finals (an SECCON CTF event.)
-[add to calendar]
-On-site
-Tokyo, Japan
-https://ctf.seccon.jp/
-SECCON CTF
+https://ctf.srdnlen.it/
+Srdnlen
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 3. `EN` [Android 17 Beta Strengthens Secure-by-Default Design for Privacy and App Security](https://www.securityweek.com/android-17-beta-strengthens-secure-by-default-design-for-privacy-and-app-security/)
+### 2. `EN` [Dior, Louis Vuitton, Tiffany Fined $25 Million in South Korea After Data Breaches](https://www.securityweek.com/dior-louis-vuitton-tiffany-fined-25-million-in-south-korea-after-data-breaches/)
+**Source:** SecurityWeek | **Tags:** `Security` `CVE` `News` | *Also on: Bleeping Computer*
+Luxury brands were among the dozens of major companies whose Salesforce instances were targeted by Scattered LAPSUS$ Hunters.
+The post Dior, Louis Vuitton, Tiffany Fined $25 Million in South Korea After Data Breaches appeared first on SecurityWeek.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
+
+### 3. `EN` [Passwords to passkeys: Staying ISO 27001 compliant in a passwordless era ](data/articles/cd761e756ba5465095b7e27c89bb4e8d.html)
+**Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
+Password-based authentication is increasingly risky as organizations adopt passkeys to strengthen security and meet ISO/IEC 27001 requirements. Passwork explains how to align passwordless adoption with Annex A controls, risk assessments, and secure implementation practices. [...]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
+
+### 4. `EN` [Android 17 Beta Strengthens Secure-by-Default Design for Privacy and App Security](https://www.securityweek.com/android-17-beta-strengthens-secure-by-default-design-for-privacy-and-app-security/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 The latest Android version continues to improve security and privacy, according to its developers.
 The post Android 17 Beta Strengthens Secure-by-Default Design for Privacy and App Security appeared first on SecurityWeek.
@@ -314,7 +318,7 @@ The post Android 17 Beta Strengthens Secure-by-Default Design for Privacy and Ap
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 4. `EN` [CISA Navigates DHS Shutdown With Reduced Staff](https://www.securityweek.com/cisa-navigates-dhs-shutdown-with-reduced-staff/)
+### 5. `EN` [CISA Navigates DHS Shutdown With Reduced Staff](https://www.securityweek.com/cisa-navigates-dhs-shutdown-with-reduced-staff/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 CISA is currently operating at roughly 38% capacity (888 out of 2,341 staff) due to the DHS shutdown that began February 14, 2026.
 The post CISA Navigates DHS Shutdown With Reduced Staff appeared first on SecurityWeek.
@@ -323,7 +327,7 @@ The post CISA Navigates DHS Shutdown With Reduced Staff appeared first on Securi
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 5. `EN` [Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet &amp; AI Malware](data/articles/d232a74b28a692b037cdcaefedc252af.html)
+### 6. `EN` [Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet &amp; AI Malware](data/articles/d232a74b28a692b037cdcaefedc252af.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 This week’s recap shows how small gaps are turning into big entry points. Not always through new exploits, often through tools, add-ons, cloud setups, or workflows that people already trust and rarely question.
 Another signal: attackers are mixing old and new methods. Legacy botnet tactics, modern cloud abuse, AI assistance, and supply-chain exposure are being used side by side, whichever path
@@ -332,7 +336,7 @@ Another signal: attackers are mixing old and new methods. Legacy botnet tactics,
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 6. `EN` [CISA gives feds 3 days to patch actively exploited BeyondTrust flaw](data/articles/8909e005828384cfb045271d3045bb15.html)
+### 7. `EN` [CISA gives feds 3 days to patch actively exploited BeyondTrust flaw](data/articles/8909e005828384cfb045271d3045bb15.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CISA ordered U.S. government agencies on Friday to secure their BeyondTrust Remote Support instances against an actively exploited vulnerability within three days. [...]
 
@@ -340,7 +344,7 @@ CISA ordered U.S. government agencies on Friday to secure their BeyondTrust Rem
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 7. `FR` [Voyage Privé confirme un accès non autorisé via un partenaire](data/articles/d8c30df644b0216a78b3829f98fd5136.html)
+### 8. `FR` [Voyage Privé confirme un accès non autorisé via un partenaire](data/articles/d8c30df644b0216a78b3829f98fd5136.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Voyage Privé réagit à l’alerte ZATAZ et évoque un accès non autorisé via un partenaire du 3 au 5 février....
 
@@ -348,7 +352,7 @@ Voyage Privé réagit à l’alerte ZATAZ et évoque un accès non autorisé via
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 8. `EN` [Microsoft Warns of ClickFix Attack Abusing DNS Lookups](https://www.securityweek.com/microsoft-warns-of-clickfix-attack-abusing-dns-lookups/)
+### 9. `EN` [Microsoft Warns of ClickFix Attack Abusing DNS Lookups](https://www.securityweek.com/microsoft-warns-of-clickfix-attack-abusing-dns-lookups/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Attackers are using DNS requests to deliver a RAT named ModeloRAT to targeted users.
 The post Microsoft Warns of ClickFix Attack Abusing DNS Lookups appeared first on SecurityWeek.
@@ -357,7 +361,7 @@ The post Microsoft Warns of ClickFix Attack Abusing DNS Lookups appeared first o
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 9. `EN` [Safe and Inclusive E‑Society: How Lithuania Is Bracing for AI‑Driven Cyber Fraud](data/articles/ff0edd22901956c97e1977378988e2ca.html)
+### 10. `EN` [Safe and Inclusive E‑Society: How Lithuania Is Bracing for AI‑Driven Cyber Fraud](data/articles/ff0edd22901956c97e1977378988e2ca.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Presentation of the KTU Consortium Mission ‘A Safe and Inclusive Digital Society’ at the Innovation Agency event ‘Innovation Breakfast: How Mission-Oriented Science and Innovation Programmes Will Address Societal Challenges’.
 
@@ -367,7 +371,7 @@ Technologies are evolving fast, reshaping economies, governance, and daily life.
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="SecurityWeek">
 
-### 10. `EN` [Amazon Scraps Partnership With Surveillance Company After Super Bowl Ad Backlash](https://www.securityweek.com/amazon-scraps-partnership-with-surveillance-company-after-super-bowl-ad-backlash/)
+### 11. `EN` [Amazon Scraps Partnership With Surveillance Company After Super Bowl Ad Backlash](https://www.securityweek.com/amazon-scraps-partnership-with-surveillance-company-after-super-bowl-ad-backlash/)
 **Source:** SecurityWeek | **Tags:** `Security` `CVE` `News`
 Amazon’s smart doorbell maker Ring has terminated a partnership with police surveillance tech company Flock Safety.
 The post Amazon Scraps Partnership With Surveillance Company After Super Bowl Ad Backlash appeared first on SecurityWeek.
@@ -376,7 +380,7 @@ The post Amazon Scraps Partnership With Surveillance Company After Super Bowl Ad
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 11. `EN` [New ZeroDayRAT Mobile Spyware Enables Real-Time Surveillance and Data Theft](data/articles/ac6f7589ba6df6d76f2b9613aa05f6a3.html)
+### 12. `EN` [New ZeroDayRAT Mobile Spyware Enables Real-Time Surveillance and Data Theft](data/articles/ac6f7589ba6df6d76f2b9613aa05f6a3.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Cybersecurity researchers have disclosed details of a new mobile spyware platform dubbed ZeroDayRAT that's being advertised on Telegram as a way to grab sensitive data and facilitate real-time surveillance on Android and iOS devices.
 "The developer runs dedicated channels for sales, customer support, and regular updates, giving buyers a single point of access to a fully operational spyware
@@ -385,7 +389,7 @@ Cybersecurity researchers have disclosed details of a new mobile spyware platfor
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="UnderNews">
 
-### 12. `FR` [« Réunion urgente » via Zoom, Teams, or Meets : la nouvelle méthode de phishing](data/articles/fa1f51ca53f556b181dc7595b0a9a14a.html)
+### 13. `FR` [« Réunion urgente » via Zoom, Teams, or Meets : la nouvelle méthode de phishing](data/articles/fa1f51ca53f556b181dc7595b0a9a14a.html)
 **Source:** UnderNews | **Tags:** `Securite` `Malware` `France`
 Les chercheurs du Threat Labs de Netskope ont publié une nouvelle analyse sur plusieurs campagnes de phishing qui utilisent de fausses invitations à des réunions pour diverses applications de visioconférence, notamment Zoom, Microsoft Teams et Google Meet. Les pirates incitent les utilisateurs professionnels à exécuter la charge utile en prétendant qu’une mise à jour logicielle […]
 « Réunion urgente » via Zoom, Teams, or Meets : la nouvelle méthode de phishing first appeared on UnderNews.
@@ -394,7 +398,7 @@ Les chercheurs du Threat Labs de Netskope ont publié une nouvelle analyse sur p
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 13. `EN` [Google patches first Chrome zero-day exploited in attacks this year](data/articles/2719a44cbcb5f6c8490c0461c8cf1e7d.html)
+### 14. `EN` [Google patches first Chrome zero-day exploited in attacks this year](data/articles/2719a44cbcb5f6c8490c0461c8cf1e7d.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE` | *Also on: SecurityWeek, Threatpost*
 Google has released emergency updates to fix a high-severity Chrome vulnerability exploited in zero-day attacks, marking the first such security flaw patched since the start of the year. [...]
 
@@ -402,7 +406,7 @@ Google has released emergency updates to fix a high-severity Chrome vulnerabilit
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 14. `EN` [New Chrome Zero-Day (CVE-2026-2441) Under Active Attack — Patch Released](data/articles/9be2c3418f4d95c100812b5911ea584a.html)
+### 15. `EN` [New Chrome Zero-Day (CVE-2026-2441) Under Active Attack — Patch Released](data/articles/9be2c3418f4d95c100812b5911ea584a.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Google on Friday released security updates for its Chrome browser to address a security flaw that it said has been exploited in the wild.
 The high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has been described as a use-after-free bug in CSS. Security researcher Shaheen Fazim has been credited with discovering and reporting the shortcoming on February 11, 2026.
@@ -412,7 +416,7 @@ The high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 15. `EN` [Canada Goose investigating as hackers leak 600K customer records](data/articles/bc5bf758682d613258404e166b204069.html)
+### 16. `EN` [Canada Goose investigating as hackers leak 600K customer records](data/articles/bc5bf758682d613258404e166b204069.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 ShinyHunters, a well-known data extortion group, claims to have stolen more than 600,000 Canada Goose customer records containing personal and payment-related data. Canada Goose told BleepingComputer the dataset appears to relate to past customer transactions and that it has not found evidence of a breach of its own systems. [...]
 
@@ -420,7 +424,7 @@ ShinyHunters, a well-known data extortion group, claims to have stolen more than
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 16. `EN` [New ClickFix attack abuses nslookup to retrieve PowerShell payload via DNS](data/articles/b3dfb9af76c18628d1a58e3807266801.html)
+### 17. `EN` [New ClickFix attack abuses nslookup to retrieve PowerShell payload via DNS](data/articles/b3dfb9af76c18628d1a58e3807266801.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Threat actors are now abusing DNS queries as part of ClickFix social engineering attacks to deliver malware, making this the first known use of DNS as a channel in these campaigns. [...]
 
@@ -428,7 +432,7 @@ Threat actors are now abusing DNS queries as part of ClickFix social engineering
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 17. `EN` [Windows 11 KB5077181 fixes boot failures linked to failed updates](data/articles/c8e7136273aa1f174cdacae90cad023a.html)
+### 18. `EN` [Windows 11 KB5077181 fixes boot failures linked to failed updates](data/articles/c8e7136273aa1f174cdacae90cad023a.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Microsoft says it has resolved a Windows 11 bug that caused some commercial systems to fail to boot with an "UNMOUNTABLE_BOOT_VOLUME" error after installing recent security updates, with the fix delivered in the February 2026 Patch Tuesday update. [...]
 
@@ -436,7 +440,7 @@ Microsoft says it has resolved a Windows 11 bug that caused some commercial syst
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="NoLimitSecu">
 
-### 18. `FR` [Le marché noir des « credentials »](data/articles/64062f4625d3f6f5e53bab6faad7ef36.html)
+### 19. `FR` [Le marché noir des « credentials »](data/articles/64062f4625d3f6f5e53bab6faad7ef36.html)
 **Source:** NoLimitSecu | **Tags:** `Securite` `Podcast` `France`
 Episode #531 consacré au marché noir des « credentials » Avec Arnaud Garrigues de la société BreacHunt
 The post Le marché noir des « credentials » appeared first on NoLimitSecu.
@@ -445,7 +449,7 @@ The post Le marché noir des « credentials » appeared first on NoLimitSecu.
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 19. `EN` [CTM360: Lumma Stealer and Ninja Browser malware campaign abusing Google Groups](data/articles/578cb268849bce77120e8224d317d26c.html)
+### 20. `EN` [CTM360: Lumma Stealer and Ninja Browser malware campaign abusing Google Groups](data/articles/578cb268849bce77120e8224d317d26c.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 CTM360 reports 4,000+ malicious Google Groups and 3,500+ Google-hosted URLs used to spread the Lumma Stealer infostealing malware and a trojanized "Ninja Browser." The report details how attackers abuse trusted Google services to steal credentials and maintain persistence across Windows and Linux systems. [...]
 
@@ -453,7 +457,7 @@ CTM360 reports 4,000+ malicious Google Groups and 3,500+ Google-hosted URLs used
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="Bleeping Computer">
 
-### 20. `EN` [Pastebin comments push ClickFix JavaScript attack to hijack crypto swaps](data/articles/602572794c30a736f5a469b414260efd.html)
+### 21. `EN` [Pastebin comments push ClickFix JavaScript attack to hijack crypto swaps](data/articles/602572794c30a736f5a469b414260efd.html)
 **Source:** Bleeping Computer | **Tags:** `Security` `Malware` `CVE`
 Threat actors are abusing Pastebin comments to distribute a new ClickFix-style attack that tricks cryptocurrency users into executing malicious JavaScript in their browser, allowing attackers to hijack Bitcoin swap transactions and redirect funds to attacker-controlled wallets. [...]
 
@@ -461,7 +465,7 @@ Threat actors are abusing Pastebin comments to distribute a new ClickFix-style a
 
 <div class="article-item" data-lang="en" data-category="cybersecurity" data-source="The Hacker News">
 
-### 21. `EN` [Microsoft Discloses DNS-Based ClickFix Attack Using Nslookup for Malware Staging](data/articles/2534583f061ba41fb033a22f682fb717.html)
+### 22. `EN` [Microsoft Discloses DNS-Based ClickFix Attack Using Nslookup for Malware Staging](data/articles/2534583f061ba41fb033a22f682fb717.html)
 **Source:** The Hacker News | **Tags:** `Security` `Vulnerabilities` `Threats`
 Microsoft has disclosed details of a new version of the ClickFix social engineering tactic in which the attackers trick unsuspecting users into running commands that carry out a Domain Name System (DNS) lookup to retrieve the next-stage payload.
 Specifically, the attack relies on using the "nslookup" (short for nameserver lookup) command to execute a custom DNS lookup triggered via the Windows
@@ -470,7 +474,7 @@ Specifically, the attack relies on using the "nslookup" (short for nameserver lo
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 22. `FR` [Prédiction d’âge sur ChatGPT, la sécurité passe au crible](data/articles/487bc7f932783e57ce23807464afee45.html)
+### 23. `FR` [Prédiction d’âge sur ChatGPT, la sécurité passe au crible](data/articles/487bc7f932783e57ce23807464afee45.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 ChatGPT prédit l’âge, active un mode mineur, et propose une vérification 18+ via l'outil Persona....
 
@@ -478,7 +482,7 @@ ChatGPT prédit l’âge, active un mode mineur, et propose une vérification 18
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 23. `FR` [WormGPT.AI piraté, 19 000 utilisateurs exposés en février](data/articles/3b20882989169af740dd8fb84909da94.html)
+### 24. `FR` [WormGPT.AI piraté, 19 000 utilisateurs exposés en février](data/articles/3b20882989169af740dd8fb84909da94.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 WormGPT.AI compromis : fuite revendiquée de 19 000 utilisateurs, e-mails, paiements, abonnements et métadonnées....
 
@@ -486,7 +490,7 @@ WormGPT.AI compromis : fuite revendiquée de 19 000 utilisateurs, e-mails, paiem
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 24. `FR` [La Chine exécute 11 chefs d’un réseau d’arnaques et de piratage informatique.](data/articles/7991dfdcd8f71c3f67bf49234d579f69.html)
+### 25. `FR` [La Chine exécute 11 chefs d’un réseau d’arnaques et de piratage informatique.](data/articles/7991dfdcd8f71c3f67bf49234d579f69.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Chine : 11 exécutions liées à des centres d’arnaques au Myanmar, "boucherie de porcs", traite humaine et riposte judiciaire extraterritoriale....
 
@@ -494,7 +498,7 @@ Chine : 11 exécutions liées à des centres d’arnaques au Myanmar, "boucherie
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 25. `FR` [Pékin veut retenir les cybercondamnés jusqu’à trois ans](data/articles/fe96daf36526d8bbb10c71b21f5979d6.html)
+### 26. `FR` [Pékin veut retenir les cybercondamnés jusqu’à trois ans](data/articles/fe96daf36526d8bbb10c71b21f5979d6.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Chine : projet de loi cyber avec interdiction de sortie pour les pirates, ciblage des facilitateurs, et portée extraterritoriale contre la fraude transfrontalière....
 
@@ -502,7 +506,7 @@ Chine : projet de loi cyber avec interdiction de sortie pour les pirates, ciblag
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 26. `FR` [Arrestation au Minnesota après menaces contre l’ICE](data/articles/5cb8714fa5d1b18900723f218f804cc7.html)
+### 27. `FR` [Arrestation au Minnesota après menaces contre l’ICE](data/articles/5cb8714fa5d1b18900723f218f804cc7.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Arrestation au Minnesota : menaces en ligne contre l’ICE, accusations fédérales, doxxing et climat de tensions à Minneapolis....
 
@@ -510,7 +514,7 @@ Arrestation au Minnesota : menaces en ligne contre l’ICE, accusations fédéra
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 27. `FR` [ZATAZ lance 92829 V 2.0, album contre la cyberfraude](data/articles/27d1c71782010e947856c599af70f069.html)
+### 28. `FR` [ZATAZ lance 92829 V 2.0, album contre la cyberfraude](data/articles/27d1c71782010e947856c599af70f069.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 92829 V 2.0 : 16 titres signés ZATAZ sur la cyberfraude, le gaming et la prévention numérique....
 
@@ -518,7 +522,7 @@ Arrestation au Minnesota : menaces en ligne contre l’ICE, accusations fédéra
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 28. `FR` [Bithumb crédite 620 000 bitcoins par erreur](data/articles/6b822e617bc0243e9c51e384dd7f9122.html)
+### 29. `FR` [Bithumb crédite 620 000 bitcoins par erreur](data/articles/6b822e617bc0243e9c51e384dd7f9122.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Bithumb a crédité par erreur 620 000 bitcoins lors d’une promo, provoquant chute de 17 %, arrêt de la plateforme et enquête des régulateurs sud-coréens....
 
@@ -526,17 +530,9 @@ Bithumb a crédité par erreur 620 000 bitcoins lors d’une promo, provoquant c
 
 <div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
 
-### 29. `FR` [Un lycée d’Anvers piraté, les parents pris pour cibles](data/articles/9d6a094a5dea54ecb790d9c8df45d9e9.html)
+### 30. `FR` [Un lycée d’Anvers piraté, les parents pris pour cibles](data/articles/9d6a094a5dea54ecb790d9c8df45d9e9.html)
 **Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
 Après le piratage d’un lycée d’Anvers, des hackers ciblent les parents : 50 euros par enfant, sous menace de fuite de données, dans une opération qui imite LockBit....
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="cybersecurity" data-source="Zataz">
-
-### 30. `FR` [Un Taïwanais prend 30 ans pour Incognito Market](data/articles/769a51a00bdf6f52a3328a6148e5f3bd.html)
-**Source:** Zataz | **Tags:** `Securite` `Cybercrime` `France`
-Rui-Siang Lin, alias « Pharaon », écope de 30 ans pour Incognito Market, marché darknet, après une enquête du FBI et une erreur de traçabilité crypto....
 
 </div>
 
@@ -550,7 +546,55 @@ Rui-Siang Lin, alias « Pharaon », écope de 30 ans pour Incognito Market, marc
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 1. `EN` [Month-Long Sale Event Starts Next Week!](https://blog.adafruit.com/2026/02/16/month-long-sale-event-starts-next-week/)
+### 1. `EN` [I gave Claude access to my pen plotter](https://blog.adafruit.com/2026/02/16/i-gave-claude-access-to-my-pen-plotter/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+Marc in Space at Harmonique.one gave Claude Code access to a pen plotter. Not directly. I was the interface between the two machines. Claude Code produced SVG files that I plotted with my pen plotter. With my smartphone I captured photos that I pasted into the Claude Code session, asking Claude what it thought about […]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 2. `EN` [A program to monitor serial ports in Windows](https://blog.adafruit.com/2026/02/16/a-program-to-monitor-serial-ports-in-windows/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+lucadentella states “I don’t know if it happens to you: every time I need to connect to a USB device that opens a virtual serial port (e.g., an Arduino board, a USB-to-serial adapter, etc.), I waste a lot of time trying to figure out which COMx port the device corresponds to in Windows.” So they […]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 3. `EN` [CircuitPython 10.1.0 Released!](https://blog.adafruit.com/2026/02/16/circuitpython-10-1-0-released/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+From the GitHub release page: This is CircuitPython 10.1.0, the latest minor revision of CircuitPython, and is a new stable release. This release is identical to 10.1.0-rc.0 except for its version number. Notable changes in 10.1.0 from 10.0.x Add mipidsi module to support MIPI DSI displays. Currently enabled for ESP32-P4. Fix problems with presenting user-mounted […]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 4. `EN` [Reverse engineering the Dash learning robot](https://blog.adafruit.com/2026/02/16/reverse-engineering-the-dash-learning-robot/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+Jonathan Diamond brushed up on Ghidra to add to the open source interface for a Dash robot found at a thrift shop. Much to their credit, the MakeWonder company released an official Python library: https://github.com/playi/WonderPy It breaks out all the controls and sensors in a reasonable way. Here’s the documentation of the features it covers. This would […]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 5. `EN` [New York City in Minecraft](https://blog.adafruit.com/2026/02/16/new-york-city-in-minecraft/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+MineFact shared a tour their New York City in Minecraft project on YouTube, follow along to see what BTE NYC and MF have built at a 1:1 scale over the last 5 years. Circuit Playground Minecraft Gesture Controller Minecraft Turbopad
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 6. `EN` [Romantic Reads for V-Day](https://blog.adafruit.com/2026/02/16/romantic-reads-for-v-day/)
+**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
+The New York Public Library shares new romance books to get your heart burning this Valentine’s Day.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
+
+### 7. `EN` [Month-Long Sale Event Starts Next Week!](https://blog.adafruit.com/2026/02/16/month-long-sale-event-starts-next-week/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 Y’all ready for this? We’re starting our first ever month-long sale event next week! Each week we’ll be putting items on sale from a different product category. Items available while supplies last. We’ll list the sale price directly on the product page for ya – no discount code needed. Stay tuned for updates!
 
@@ -558,7 +602,7 @@ Y’all ready for this? We’re starting our first ever month-long sale event ne
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 2. `EN` [Daisy Gatson Bates Day Black History Month 2026 #BlackHistoryMonth #DaisyGatsonBatesDay](https://blog.adafruit.com/2026/02/16/daisy-gatson-bates-day-black-history-month-2026-blackhistorymonth-daisygatsonbatesday/)
+### 8. `EN` [Daisy Gatson Bates Day Black History Month 2026 #BlackHistoryMonth #DaisyGatsonBatesDay](https://blog.adafruit.com/2026/02/16/daisy-gatson-bates-day-black-history-month-2026-blackhistorymonth-daisygatsonbatesday/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 Daisy Lee Gatson Bates was a civil rights activist who played an integral role in the integration of Arkansas schools. She was a mentor to the Little Rock Nine, she and her husband also published the Arkansas State Press a revolutionary newspaper that dealt with civil rights and other issues in the black community. From Arkansas PBS: Daisy […]
 
@@ -566,7 +610,7 @@ Daisy Lee Gatson Bates was a civil rights activist who played an integral role i
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Raspberry Pi">
 
-### 3. `EN` [Object detection with Ultralytics YOLO26 on Raspberry Pi](https://www.raspberrypi.com/news/object-detection-with-ultralytics-yolo26-on-raspberry-pi/)
+### 9. `EN` [Object detection with Ultralytics YOLO26 on Raspberry Pi](https://www.raspberrypi.com/news/object-detection-with-ultralytics-yolo26-on-raspberry-pi/)
 **Source:** Raspberry Pi | **Tags:** `IoT` `RaspberryPi` `Hardware`
 Use Docker and Ultralytics YOLO26 to perform object detection on images and video files with Raspberry Pi.
 The post Object detection with Ultralytics YOLO26 on Raspberry Pi appeared first on Raspberry Pi.
@@ -575,7 +619,7 @@ The post Object detection with Ultralytics YOLO26 on Raspberry Pi appeared first
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 4. `EN` [Building a Desk Sized Kodak Photo Kiosk](https://blog.adafruit.com/2026/02/15/building-a-desk-sized-kodak-photo-kiosk/)
+### 10. `EN` [Building a Desk Sized Kodak Photo Kiosk](https://blog.adafruit.com/2026/02/15/building-a-desk-sized-kodak-photo-kiosk/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 snappiness built a mini Kodak Picture Maker for their desk that is able to print photos and shared the project build on YouTube Grab a MEMENTO when they’re back in stock so you can have even more photos to print!
 
@@ -583,7 +627,7 @@ snappiness built a mini Kodak Picture Maker for their desk that is able to print
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 5. `EN` [Susan B. Anthony Day 20216 #SusanBAnthony #SusanBAnthonyDay](https://blog.adafruit.com/2026/02/15/susan-b-anthony-day-20216-susanbanthony-susanbanthonyday/)
+### 11. `EN` [Susan B. Anthony Day 20216 #SusanBAnthony #SusanBAnthonyDay](https://blog.adafruit.com/2026/02/15/susan-b-anthony-day-20216-susanbanthony-susanbanthonyday/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 Today is Susan B. Anthony Day. We celebrate on February 15th, what would be her 206th birthday! Anthony was an American social reformer, women’s rights activist, and brilliant orator who played a pivotal role in the women’s suffrage movement. In her last speech ended with the words “Failure is impossible!” Honor her legacy and vote! […]
 
@@ -591,7 +635,7 @@ Today is Susan B. Anthony Day. We celebrate on February 15th, what would be her 
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 6. `EN` [Here’s Our First Gemini Deep Think LLM-Assisted Hardware Design](https://blog.adafruit.com/2026/02/14/heres-our-first-gemini-deep-think-llm-assisted-hardware-design/)
+### 12. `EN` [Here’s Our First Gemini Deep Think LLM-Assisted Hardware Design](https://blog.adafruit.com/2026/02/14/heres-our-first-gemini-deep-think-llm-assisted-hardware-design/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 We’ve been using LLMs for years to do software and firmware assistance. Now we’re starting to look at it for hardware help too. Ladyada’s still in the driver’s seat… but now with a robotic co-pilot! For this basic STEMMA QT breakout we’re going to feature the MAX44009 wide-range lux sensor, aaaand we really wanted to […]
 
@@ -599,7 +643,7 @@ We’ve been using LLMs for years to do software and firmware assistance. Now we
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 7. `EN` [Twisted Heart Vase #3DPrinting](https://blog.adafruit.com/2026/02/14/twisted-heart-vase-3dprinting/)
+### 13. `EN` [Twisted Heart Vase #3DPrinting](https://blog.adafruit.com/2026/02/14/twisted-heart-vase-3dprinting/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 Gyrobot‘s 2013 twisted heart vase print may be the perfect gift for your Valentine! Check out the instructions on Thingiverse. Another heart, another vase, but with a twist. Give something presented in this “thing” and offer your heart forever(ish). Watch my twisted heart change colour : http://youtu.be/vf1HOLNgc1w Good for Valentines.
 
@@ -607,7 +651,7 @@ Gyrobot‘s 2013 twisted heart vase print may be the perfect gift for your Valen
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 8. `EN` [Adafruit Weekly Editorial Round-Up: Full-circle Test-driven Firmware Development with OpenClaw, Hacking Yoto Music Players, &amp; More](https://blog.adafruit.com/2026/02/14/adafruit-weekly-editorial-round-up-full-circle-test-driven-firmware-development-with-openclaw-hacking-yoto-music-players-more/)
+### 14. `EN` [Adafruit Weekly Editorial Round-Up: Full-circle Test-driven Firmware Development with OpenClaw, Hacking Yoto Music Players, &amp; More](https://blog.adafruit.com/2026/02/14/adafruit-weekly-editorial-round-up-full-circle-test-driven-firmware-development-with-openclaw-hacking-yoto-music-players-more/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 ADAFRUIT WEEKLY EDITORIAL ROUND-UP We’ve got so much happening here at Adafruit that it’s not always easy to keep up! Don’t fret, we’ve got you covered. Each week we’ll be posting a handy round-up of what we’ve been up to, ranging from learn guides to blog articles, videos, and more. “Any User Who Has a […]
 
@@ -615,7 +659,7 @@ ADAFRUIT WEEKLY EDITORIAL ROUND-UP We’ve got so much happening here at Adafrui
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 9. `EN` [MakeCode Arcade 2026 Update](https://blog.adafruit.com/2026/02/14/makecode-arcade-2026-update/)
+### 15. `EN` [MakeCode Arcade 2026 Update](https://blog.adafruit.com/2026/02/14/makecode-arcade-2026-update/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 It’s update time for MakeCode Arcade! Microsoft just posted the latest news on the latest features added to the excellent drag-and-drop (or text code-able if you like) game creation engine. Here are some highlights: Reliability &amp; Stability Code Evaluation Error Explainer Tutorial Sharing Keyboard Controls Game Description Asset Packs Tilemap Gallery YouTube Education video player […]
 
@@ -623,66 +667,18 @@ It’s update time for MakeCode Arcade! Microsoft just posted the latest news on
 
 <div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
 
-### 10. `EN` [Meta Wants to Scan Every Face You Walk Past](https://blog.adafruit.com/2026/02/14/meta-wants-to-scan-every-face-you-walk-past/)
+### 16. `EN` [Meta Wants to Scan Every Face You Walk Past](https://blog.adafruit.com/2026/02/14/meta-wants-to-scan-every-face-you-walk-past/)
 **Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
 The New York Times reported yesterday that Meta plans to add facial recognition to its Ray-Ban smart glasses, possibly this year. The feature, internally called “Name Tag,” (face rape is for another product) would let wearers identify people through Meta’s AI assistant. Seven million pairs sold last year. An internal Meta document from May, obtained […]
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 11. `EN` [Making Lamps with Bamboo and Paper](https://blog.adafruit.com/2026/02/14/making-lamps-with-bamboo-and-paper/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-Anyone in need of a super chill and aesthetic DIY build video is going to adore PearFleur’s bamboo and paper lamp build on YouTube. We have a selection of lamp builds in the Adafruit Learning System. Check out the two builds below that give us similar vibes to PearFleur’s creations. Hacking Ikea Lamps with Circuit […]
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 12. `EN` [From PDF to .LBR: Using Deep Think to Write Custom CAD Parts](https://blog.adafruit.com/2026/02/14/from-pdf-to-lbr-using-deep-think-to-write-custom-cad-parts/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-This is the image that Deep Think generated to demonstrate its output, the QFN corner pads don’t have as bad of an intersection in the actual footprint created but we did need to push the four rows out about half a mm. The overall dimensions, pad sizes and order were otherwise correct! It happened over […]
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="iot" data-source="Embedded.com">
 
-### 13. `EN` [Agentic AI Chip Design, Networking Chip, Edge AI: Embedded Week Insights](https://www.embedded.com/agentic-ai-chip-design-networking-chip-edge-ai-embedded-week-insights/)
+### 17. `EN` [Agentic AI Chip Design, Networking Chip, Edge AI: Embedded Week Insights](https://www.embedded.com/agentic-ai-chip-design-networking-chip-edge-ai-embedded-week-insights/)
 **Source:** Embedded.com | **Tags:** `Embedded` `IoT` `Hardware`
 Here's a roundup of this week's must-read articles. We look into the latest developments on Cadence Agentic AI, Cisco's Silicon One G300 Switch, Microchip's full-stack edge AI solutions, and more. Also, check News Archives - Embedded and Technical Articles Archives - Embedded for the complete list of news and articles from our website. NEWS Cisco Unveils Silicon One G300 [...]
 The post Agentic AI Chip Design, Networking Chip, Edge AI: Embedded Week Insights appeared first on Embedded.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 14. `EN` [LEGO Toaster](https://blog.adafruit.com/2026/02/13/lego-toaster/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-BricksOnSet shared this really cool LEGO toaster they debuted at Atlanta BrickCon on Reddit. Check it out! I debuted it this past weekend at Atlanta BrickCon and it won the Master Brick award. There’s a round gear on the toast that engages a straight gear on the front carriage as it goes down. It locks […]
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 15. `EN` [Subscribe to the Adafruit Youtube channel! #Youtube #AdafruitLearnSystem](https://blog.adafruit.com/2026/02/13/subscribe-to-the-adafruit-youtube-channel-youtube-adafruitlearnsystem-225-8-4-5-5-4/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-Are you subscribed to the Adafruit Youtube channel? If you’re not already subscribed, click here! http://adafru.it/subscribe . It’s a free and easy way to keep up with our newest episodes. Here’s some of what we’re up to. Electronics Show and Tell Wednesdays 7:30pm Electronics show and tell every Wednesday at 7:30pm ET. Adafruit Ask […]
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 16. `EN` [John Park’s CircuitPython Parsec: Trellis Line Fill](https://blog.adafruit.com/2026/02/13/john-parks-circuitpython-parsec-trellis-line-fill/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-#circuitpythonparsec Fill a line of NeoPixels between two end points on NeoTrellis driver boards (or MechaTrellis as shown here — currently sold out, but open source). code example To learn about CircuitPython: https://circuitpython.org
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="iot" data-source="Adafruit Blog">
-
-### 17. `EN` [Custom Modded Friday the 13th Arcade 1up Cabinet #piday #raspberrypi](https://blog.adafruit.com/2026/02/13/custom-modded-friday-the-13th-arcade-1up-cabinet-piday-raspberrypi/)
-**Source:** Adafruit Blog | **Tags:** `IoT` `Maker` `Hardware`
-Happy Friday the 13th! A couple years back Reddit user u/valentino_42 took a Mortal Kombat II 1up Arcade and upgraded it to a RetroPie Friday the 13th cabinet: The guts of the machine are a Raspberry Pi 5 that interfaces with usb encoders going to the buttons. I’d never worked with a pi before, but I followed […]
 
 </div>
 
@@ -811,9 +807,121 @@ The post Empower Unveils High-Density Silicon Capacitors appeared first on Embed
 
 ## Windows / Windows
 
+<div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
+
+### 1. `FR` [Palantir attaque le média Republik qui a dévoilé un rapport de l’armée suisse sur elle](data/articles/01dfe7657eef07a6dadae72fcd59a4cb.html)
+**Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
+Objet d’une enquête du média suisse Republik, Palantir attaque ce site en justice pour obtenir un droit de réponse. Alors que la DGSI renouvelait encore, en fin d’année dernière, son contrat avec Palantir, l’entreprise fondée par Peter Thiel était l’objet d’une enquête du magazine suisse Republik et du collectif d’investigation WAV. L’entreprise attaque maintenant nos […]
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
+
+### 2. `EN` [Firefox 147.0.4 fixes blank new tab page and one security issue](https://www.neowin.net/news/firefox-14704-fixes-blank-new-tab-page-and-one-security-issue/)
+**Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
+Firefox 147 has received yet another bug-fixing update to address bugs with the new tab page and a single security issue. Read more...
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 1. `FR` [Vente d'armes numériques à la Russie : la trahison d'un dirigeant de la cybersécurité américaine !](data/articles/c7c45b8f64c3e5b8df147f2a34116224.html)
+### 3. `FR` [L'IA Claude est utilisée pour piéger les utilisateurs Mac avec un infostealer](data/articles/31c3183bb3199a90061cf8c0c89284bb.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Une campagne d'attaque de type ClickFix utilise des publicités Google et une fonctionnalité de l'IA Claude d'Anthropic pour diffuser un malware.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 4. `FR` [Le coup de poker de Logan Paul : sa carte Pokémon vendue pour une somme astronomique !](data/articles/d9ac987714a64b2d08d02a940073428b.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Un simple bout de carton transformé en actif financier multimillionnaire. C'est l'histoire de la carte Pikachu Illustrator, qui vient de redéfinir les limites du marché des objets de collection en pulvérisant tous les records existants.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
+
+### 5. `EN` [Meta announces Manus Agents, a new way to access Manus inside messaging apps](https://www.neowin.net/news/meta-announces-manus-agents-a-new-way-to-access-manus-inside-messaging-apps/)
+**Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
+Manus, a Meta-acquired AI startup, has launched "Manus Agents" to bring full-scale AI reasoning and task execution directly into messaging apps like Telegram. Read more...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 6. `FR` [Ces extensions Chrome vous espionnent en silence](data/articles/e3212d3952811c5ac83faf86aa5c061b.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Des enquêtes récentes révèlent une surveillance de masse via des extensions de navigateur sur Chrome. Des dizaines de millions d'utilisateurs sont concernés par le vol de leurs conversations avec des IA, de leur historique de navigation et de leurs données personnelles, souvent par des outils se faisant passer pour des services de sécurité ou de productivité.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
+
+### 7. `FR` [Western Digital affirme avoir déjà vendu toute sa production de 2026](data/articles/187cb4ac3129df346955b2ab47800098.html)
+**Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
+Les tensions sur l’approvisionnement en composants informatiques touchent aussi le secteur des disques durs. Une bonne nouvelle pour les leaders du secteur, à l’image de Western Digital, qui a récemment affirmé avoir vendu la quasi totalité de sa production pour 2026 et pronostique plusieurs années de croissance soutenue grâce à l’IA. Déjà bien sensibles sur […]
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 8. `FR` [Apple confirme un événement spécial le 4 mars pour une vague de nouveaux produits](data/articles/5f96e30c9a3ba03639516b74076c216a.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Après un début d'année particulièrement calme, Apple s'apprête à passer à la vitesse supérieure en conviant la presse à une « expérience spéciale » le 4 mars prochain, ravivant les attentes autour d'un renouvellement majeur de ses gammes.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 9. `FR` [Fnac : -20% sur une sélection de packs tablettes Samsung](data/articles/dec9a91e650eff0ad27abe3b6b37971a.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Besoin d'un équipement complet sans multiplier les achats ? La Fnac frappe fort en ce moment avec une remise immédiate de -20% sur une sélection exclusive de packs tablettes Samsung Galaxy Tab.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 10. `FR` [Lazarus piège les développeurs avec de fausses offres d'emploi crypto](data/articles/36aff8612caf51a108545dbd051b067d.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Le groupe nord-coréen Lazarus cible les développeurs JavaScript et Python avec une campagne malveillante s'appuyant sur de fausses offres d'emploi dans le secteur de la cryptomonnaie. Pour installer un RAT.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 11. `FR` [Le retour de Leon à Raccoon City : la nouvelle bande-annonce de Resident Evil Requiem glace le sang !](data/articles/e6cec1887d4534719548a6e9f9bd01c9.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Le dernier trailer de Resident Evil Requiem, dévoilé lors du State of Play, confirme les pires craintes des fans : Leon S. Kennedy est de nouveau infecté. Son retour dans une Raccoon City en ruines s'annonce comme un cauchemar psychologique, mêlant survie, nouveaux personnages et fantômes du passé. Capcom semble signer le chapitre le plus sombre de sa saga culte.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
+
+### 12. `EN` [Passwords to passkeys: Staying ISO 27001 compliant in a passwordless era ](data/articles/cd761e756ba5465095b7e27c89bb4e8d.html)
+**Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
+Password-based authentication is increasingly risky as organizations adopt passkeys to strengthen security and meet ISO/IEC 27001 requirements. Passwork explains how to align passwordless adoption with Annex A controls, risk assessments, and secure implementation practices. [...]
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 13. `FR` [Les AI Overviews de Google sont une nouvelle porte d'entrée pour les arnaques](data/articles/0d99838d92232269eae550b490127eaa.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Les résumés générés par l'IA de Google, censés simplifier la recherche, sont devenus un outil pour les fraudeurs. En affichant des numéros de téléphone frauduleux pour des banques ou des entreprises, AI Overviews met directement en contact des utilisateurs avec des escrocs, créant un risque majeur de vol de données bancaires. Google affirme lutter contre ce fléau, mais la vigilance reste de mise.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 14. `FR` [ChatGPT : OpenAI introduit un mode Lockdown et un système d'alerte](data/articles/6ca6fbea4a502aef1871350bd8231e25.html)
+**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
+Face à la menace grandissante des attaques par injection de prompt, OpenAI dégaine une nouvelle parade de sécurité pour protéger les données les plus sensibles d'utilisateurs de ChatGPT.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
+
+### 15. `FR` [Vente d'armes numériques à la Russie : la trahison d'un dirigeant de la cybersécurité américaine !](data/articles/c7c45b8f64c3e5b8df147f2a34116224.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Dans une affaire qui mêle haute technologie, espionnage et trahison, un ancien cadre d'une entreprise de cybersécurité américaine se retrouve au cœur d'un scandale aux répercussions internationales.
 
@@ -821,7 +929,7 @@ Dans une affaire qui mêle haute technologie, espionnage et trahison, un ancien 
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 2. `FR` [Steam ajoute les configurations PC aux avis pour plus de clarté](data/articles/e93d024f8e7a54d8f992672440f9a02e.html)
+### 16. `FR` [Steam ajoute les configurations PC aux avis pour plus de clarté](data/articles/e93d024f8e7a54d8f992672440f9a02e.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Valve déploie une nouvelle fonctionnalité majeure dans la version bêta de Steam. Désormais, les utilisateurs peuvent choisir d'associer leur configuration matérielle à leurs avis sur les jeux. L'objectif : apporter un contexte crucial aux retours sur les performances et aider les joueurs à faire des achats plus éclairés, en évitant les titres mal optimisés pour leur machine.
 
@@ -829,7 +937,7 @@ Valve déploie une nouvelle fonctionnalité majeure dans la version bêta de Ste
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 3. `FR` [Une étoile a disparu pour devenir un trou noir sous les yeux des astronomes](data/articles/9e0ba23506858b8c8e350ab989955d2b.html)
+### 17. `FR` [Une étoile a disparu pour devenir un trou noir sous les yeux des astronomes](data/articles/9e0ba23506858b8c8e350ab989955d2b.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Parfois, les plus grandes découvertes se cachent à la vue de tous. C'est en fouillant des données archivées et presque oubliées qu'une équipe de chercheurs a assisté, avec une décennie de retard, à la naissance discrète d'un trou noir.
 
@@ -837,7 +945,7 @@ Parfois, les plus grandes découvertes se cachent à la vue de tous. C'est en fo
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 4. `FR` [Lego Batman Legacy of the Dark Knight revoit ses exigences PC à la baisse](data/articles/9d67613eccc696fec9d54a5894261ffa.html)
+### 18. `FR` [Lego Batman Legacy of the Dark Knight revoit ses exigences PC à la baisse](data/articles/9d67613eccc696fec9d54a5894261ffa.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 TT Games a divisé par deux l'exigence de RAM pour son prochain jeu, Lego Batman: Legacy of the Dark Knight, la faisant passer de 32 Go à 16 Go. Cette décision, annoncée sur Steam, soulage les joueurs PC inquiets face à des spécifications initiales jugées excessives et à la flambée des prix de la mémoire vive.
 
@@ -845,7 +953,7 @@ TT Games a divisé par deux l'exigence de RAM pour son prochain jeu, Lego Batman
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 5. `FR` [CarPlay et Tesla : le déploiement serait freiné par iOS 26](data/articles/6e23a918ac0a2474bfc673c722b47a44.html)
+### 19. `FR` [CarPlay et Tesla : le déploiement serait freiné par iOS 26](data/articles/6e23a918ac0a2474bfc673c722b47a44.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 L'arrivée de CarPlay dans les véhicules Tesla se fait attendre. Un contretemps qui aurait pour origine une incompatibilité technique avec Apple Plans et l'adoption d'iOS 26.
 
@@ -853,7 +961,7 @@ L'arrivée de CarPlay dans les véhicules Tesla se fait attendre. Un contretemps
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 6. `FR` [☕️ Le CNRS a subi une fuite de données](data/articles/f7cd6c92302d64e07792ccdca5c286f2.html)
+### 20. `FR` [☕️ Le CNRS a subi une fuite de données](data/articles/f7cd6c92302d64e07792ccdca5c286f2.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 Ce lundi 16 février, la DSI du CNRS a informé certains agents de l’institution de recherche d’un « incident de cybersécurité au CNRS », leur expliquant que des données de ressources humaines les concernant ont fuité. « Ce courrier s’adresse à vous parce que, à notre connaissance, vous faites partie de ce groupe », explique la […]
 
@@ -861,71 +969,31 @@ Ce lundi 16 février, la DSI du CNRS a informé certains agents de l’instituti
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
 
-### 7. `FR` [Remplacés par l'IA en 18 mois : la prédiction choc du patron de Microsoft AI !](data/articles/cd96bc1c1707956b62832edfe092e90c.html)
+### 21. `FR` [Remplacés par l'IA en 18 mois : la prédiction choc du patron de Microsoft AI !](data/articles/cd96bc1c1707956b62832edfe092e90c.html)
 **Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
 Mustafa Suleyman, le PDG de Microsoft AI, a lancé une prédiction audacieuse : la plupart des tâches des "cols blancs" pourraient être entièrement automatisées par l'intelligence artificielle d'ici 12 à 18 mois. En parallèle, il confirme la nouvelle stratégie de Microsoft : développer ses propres modèles d'IA pour réduire sa dépendance historique à son partenaire OpenAI et viser la "superintelligence".
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 8. `FR` [LEGO chez E.Leclerc : 25% de remise en Ticket E.Leclerc jusqu'au 22 février !](data/articles/ca6ccf06230ad25efd452ae2e8c864ef.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Envie de craquer pour de nouvelles briques ? C’est le moment idéal pour anticiper un cadeau ou s'offrir un set tout en cagnottant sur votre carte de fidélité Leclerc.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 9. `FR` [Un journaliste spécialisé dans l’IA dépublie un article à cause de citations générées par IA](data/articles/4bd4f26bb5ca5bed24bbc4f0214125dc.html)
+### 22. `FR` [Un journaliste spécialisé dans l’IA dépublie un article à cause de citations générées par IA](data/articles/4bd4f26bb5ca5bed24bbc4f0214125dc.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 Couvrant les démêlés d’un programmeur avec un agent d’IA au ton vindicatif, un journaliste du média spécialisé Ars Technica s’est retrouvé à publier des citations inexistantes, générées par ses outils d’IA. C’est un média spécialisé dans la couverture de la tech et de l’intelligence artificielle (IA), qui publie un article sur les enjeux de la […]
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 10. `FR` [Faille de sécurité massive chez DJI : des milliers d'aspirateurs robots exposés !](data/articles/ada4941cfe921adc7da8dde081b3f437.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Une faille de sécurité critique a été découverte dans les aspirateurs robots DJI Romo. Un chercheur, en tentant de piloter son appareil avec une manette de jeu, a obtenu un accès non autorisé à des milliers d'unités dans le monde, lui permettant de voir et d'entendre à travers leurs caméras et micros. DJI affirme avoir corrigé le problème mais l'incident laisse des traces.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 11. `FR` [Le Xiaomi 18 s'inspire déjà de l'iPhone pour son design et ses composants](data/articles/bbe723768ee5db109cd0a7bf2a4875cd.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Alors que la série Xiaomi 17 n'a pas encore conquis le marché mondial, les regards se tournent déjà vers son successeur, dont les premières indiscrétions esquissent un avenir pour le moins familier.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
 
-### 12. `EN` [CISA gives feds 3 days to patch actively exploited BeyondTrust flaw](data/articles/8909e005828384cfb045271d3045bb15.html)
+### 23. `EN` [CISA gives feds 3 days to patch actively exploited BeyondTrust flaw](data/articles/8909e005828384cfb045271d3045bb15.html)
 **Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
 CISA ordered U.S. government agencies on Friday to secure their BeyondTrust Remote Support instances against an actively exploited vulnerability within three days. [...]
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 13. `FR` [Capcom ressuscite la licence Dino Crisis sur PC via Steam](data/articles/e1d5c2e2ceb986eea94eb46ca9d144ac.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Capcom surprend tous les fans en lançant les cultissimes Dino Crisis et Dino Crisis 2 sur Steam. Longtemps réclamés, les deux monuments du survival horror jurassique sont désormais accessibles sur PC modernes, avec des améliorations techniques bienvenues et une promotion de lancement agressive de 50%. Une résurrection inattendue qui ravive une licence culte.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 14. `FR` [Turquie : vaste coup de filet contre des créateurs OnlyFans, 6,9 millions de dollars saisis](data/articles/78c17efd5025a95eb58fde4cbe3c8e75.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Les autorités turques ont arrêté 16 personnes dans le cadre d'une opération massive visant des créateurs de contenu sur la plateforme OnlyFans. Accusés de blanchiment d'argent et de diffusion de contenu obscène, ils ont vu leurs actifs, d'une valeur de 6,9 millions de dollars, saisis. L'enquête se poursuit dans un pays où la plateforme est pourtant officiellement bannie.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 15. `EN` [Microsoft Edge is getting a new feature that will be loved by IT admins](https://www.neowin.net/news/microsoft-edge-is-getting-a-new-feature-that-will-be-loved-by-it-admins/)
+### 24. `EN` [Microsoft Edge is getting a new feature that will be loved by IT admins](https://www.neowin.net/news/microsoft-edge-is-getting-a-new-feature-that-will-be-loved-by-it-admins/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Microsoft is testing a new Edge trick for enterprises that could change how browser updates reach your workplace PC. Read more...
 
@@ -933,55 +1001,23 @@ Microsoft is testing a new Edge trick for enterprises that could change how brow
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 16. `FR` [Un problème sur une baie met à l’arrêt les opérations comptables des collectivités locales](data/articles/2db2c5a8fa6c968703b152b029a7cc26.html)
+### 25. `FR` [Un problème sur une baie met à l’arrêt les opérations comptables des collectivités locales](data/articles/2db2c5a8fa6c968703b152b029a7cc26.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 L’application de gestion comptable des collectivités locales Helios a subi une panne complète pendant plus d’une semaine. Ce logiciel de Bercy gère l’intégralité de la comptabilité des collectivités locales françaises. Selon la DGFiP, l’incident est lié à une défaillance d’une baie de stockage. Le syndicat Solidaires Finances affirme que la direction « n’a jamais voulu, […]
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 17. `FR` [Ring annule son partenariat avec Flock Safety après la polémique du Super Bowl](data/articles/c74ce13917a5556f2e7e23a0f4ada82a.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Ring, filiale d'Amazon, met fin à son partenariat avec Flock Safety. La décision fait suite à une vive polémique née d'une publicité diffusée au Super Bowl, qui a ravivé les craintes du public sur la surveillance de masse et l'utilisation des données par les forces de l'ordre. L'intégration technologique, jamais lancée, est donc annulée.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 18. `EN` [Google patches a critical Chrome vulnerability already being exploited in the wild](https://www.neowin.net/news/google-patches-a-critical-chrome-vulnerability-already-being-exploited-in-the-wild/)
+### 26. `EN` [Google patches a critical Chrome vulnerability already being exploited in the wild](https://www.neowin.net/news/google-patches-a-critical-chrome-vulnerability-already-being-exploited-in-the-wild/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 Google patches a critical Chrome vulnerability already under attack by hackers. Users should update their browsers immediately. Read more...
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 19. `FR` [Le volant yoke est-il déjà condamné par les nouvelles normes chinoises ?](data/articles/1ffb174a7e4cd678d7b89acb29ac2bd9.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Une innovation de design autrefois futuriste pourrait bientôt appartenir au passé. Après les poignées de portière affleurantes, le volant yoke est dans le collimateur des régulateurs chinois.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 20. `FR` [Google Chrome est à mettre à jour en urgence](data/articles/565eee741772f782747bf9f11f4c451b.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Une vulnérabilité zero-day est activement exploitée dans des attaques et force Google à procéder au déploiement en urgence d'un correctif.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="GNT">
-
-### 21. `FR` [Ubisoft coupe dans le vif : la liste des 6 jeux sacrifiés dévoilée](data/articles/8aa16e6efda92ff32043a9ca70761b37.html)
-**Source:** GNT | **Tags:** `Windows` `Tech` `Logiciels`
-Ubisoft a stoppé le développement de six jeux, dont le très attendu remake de Prince of Persia. Une fuite révèle l'identité de ces projets, confirmant une réorientation stratégique majeure de l'éditeur français qui sacrifie des titres mobiles et expérimentaux pour se concentrer sur ses licences phares et consolider son avenir.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 22. `FR` [[Test] VPS pas cher (5 euros) : Ionos fait la différence avec des vCore AMD EPYC](data/articles/113be9815ad712116085965a99329d3c.html)
+### 27. `FR` [[Test] VPS pas cher (5 euros) : Ionos fait la différence avec des vCore AMD EPYC](data/articles/113be9815ad712116085965a99329d3c.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 Sur des VPS, Ionos propose des cœurs AMD EPYC récents, permettant ainsi d’avoir de très bonnes performances sur la partie CPU lors de nos tests. Le réseau, le stockage et la mémoire tiennent aussi la route. Si vous cherchez un VPS pas cher, faut-il craquer pour Ionos ? Réponse dans notre test avec mesures de […]
 
@@ -989,7 +1025,7 @@ Sur des VPS, Ionos propose des cœurs AMD EPYC récents, permettant ainsi d’av
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 23. `FR` [☕️ La bêta 1 d’Android 17 est finalement disponible](data/articles/b292c88ea3acaf6c3a15e9389aa60157.html)
+### 28. `FR` [☕️ La bêta 1 d’Android 17 est finalement disponible](data/articles/b292c88ea3acaf6c3a15e9389aa60157.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 Initialement attendue le 11 février dernier, la première bêta d’Android 17 est finalement parue vendredi 13 février. Son installation est désormais possible sur tous les téléphones Google compris entre le Pixel 6 (sorti en 2021) et les derniers modèles en date, à savoir les différentes déclinaisons du Pixel 10. « Cette version prolonge nos efforts pour […]
 
@@ -997,7 +1033,7 @@ Initialement attendue le 11 février dernier, la première bêta d’Android 17 
 
 <div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
 
-### 24. `EN` [NPR host David Greene sues Google over NotebookLM voice](https://www.neowin.net/news/npr-host-david-greene-sues-google-over-notebooklm-voice/)
+### 29. `EN` [NPR host David Greene sues Google over NotebookLM voice](https://www.neowin.net/news/npr-host-david-greene-sues-google-over-notebooklm-voice/)
 **Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
 David Greene is the latest public figure to claim an AI system copied his voice. He is suing Google over the alleged use of his voice in NotebookLM. Read more...
 
@@ -1005,49 +1041,9 @@ David Greene is the latest public figure to claim an AI system copied his voice.
 
 <div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
 
-### 25. `FR` [☕️ Peter Steinberger rejoint OpenAI et promet qu’OpenClaw restera open source](data/articles/0391e17ce0209376945be7490eaafa37.html)
+### 30. `FR` [☕️ Peter Steinberger rejoint OpenAI et promet qu’OpenClaw restera open source](data/articles/0391e17ce0209376945be7490eaafa37.html)
 **Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
 Sam Altman a annoncé dimanche le recrutement de Peter Steinberger, le créateur du phénomène OpenClaw. Peter Steinberger « rejoint OpenAI pour piloter la prochaine génération d’agents personnels ». « C’est un génie qui regorge d’idées fascinantes sur l’avenir des agents intelligents interagissant entre eux pour accomplir des tâches très utiles. Nous prévoyons que cela deviendra rapidement un élément […]
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
-
-### 26. `EN` [OpenClaw's founder, Peter Steinberger is joining OpenAI](https://www.neowin.net/news/openclaws-founder-peter-steinberger-is-joining-openai/)
-**Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
-OpenClaw exploded in popularity last month, quickly becoming one of the fastest-growing GitHub repos of the year, and now its founder, Peter Steinberger, is joining OpenAI. Read more...
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="windows" data-source="BleepingComputer Windows">
-
-### 27. `EN` [Google patches first Chrome zero-day exploited in attacks this year](data/articles/2719a44cbcb5f6c8490c0461c8cf1e7d.html)
-**Source:** BleepingComputer Windows | **Tags:** `Windows` `Security` `Updates`
-Google has released emergency updates to fix a high-severity Chrome vulnerability exploited in zero-day attacks, marking the first such security flaw patched since the start of the year. [...]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
-
-### 28. `FR` [Spam, usurpation de numéro : 23 % de signalements de plus à l’Arcep en 2025](data/articles/5584d4c4d4639861913690248f86131c.html)
-**Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
-Dans le bilan annuel de sa plateforme J’alerte l’Arcep, l’autorité constate une augmentation très importante des signalements par rapport à l’année d’avant. Celle-ci est notamment due aux appels et messages non sollicités pour lesquels elle a récemment lancé une enquête auprès de tous les opérateurs. L’année dernière nous parlions déjà d’une explosion des appels et […]
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="windows" data-source="Next INpact">
-
-### 29. `FR` [☕️ Vim passe en 9.2 avec Wayland, complétion améliorée et onglets verticaux](data/articles/22a30875509eee3f5e4d92e0c23124f4.html)
-**Source:** Next INpact | **Tags:** `Windows` `Tech` `Numerique`
-Lentement, mais sûrement : l’équipe en charge du développement de Vim, éditeur de texte de référence de la scène GNU/Linux, a livré samedi la version 9.2 du logiciel, deux ans après la sortie de la 9.1, et quatre ans après la publication de la 9.0. Outre des améliorations « significatives » apportées à son langage de script […]
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="windows" data-source="Neowin">
-
-### 30. `EN` [Download the official Apple Wallpapers for Year Of the Horse in 2026](https://www.neowin.net/news/download-the-official-apple-wallpapers-for-year-of-the-horse-in-2026/)
-**Source:** Neowin | **Tags:** `Windows` `Microsoft` `Tech`
-Apple is marking Lunar Year 2026, also known as the Year of the Horse, with custom wallpapers for iPhone, iPad, Mac, and Apple Watch. Read more...
 
 </div>
 
@@ -1061,29 +1057,82 @@ Apple is marking Lunar Year 2026, also known as the Year of the Horse, with cust
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 1. `EN` [Security Bite: Russia completes block of Western social media and VPNs to push state-backed ‘Max’ super-app](data/articles/ea768dc32f1a531d3dbb473a8c6eec58.html)
+### 1. `EN` [Apple Music and TikTok team up on new ‘Listening Party’ feature, more](data/articles/5a03f232503b4307710014fb38f8dace.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
-9to5Mac Security Bite is exclusively brought to you by Mosyle, the only Apple Unified Platform. Making Apple devices work-ready and enterprise-safe is all we do. Our unique integrated approach to management and security combines state-of-the-art Apple-specific security solutions for fully automated Hardening &amp; Compliance, Next Generation EDR, AI-powered Zero Trust, and exclusive Privilege Management with the most powerful and modern Apple MDM on the market.
+Apple Music and TikTok are teaming up two new features for the short-form video app. First, the companies are beta testing the ability to play a full song in the TikTok app using Apple Music. The two are also working on a Listening Party feature, allowing fans to listen to their favorite music together. 
+more…
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 2. `EN` [Apple is having an event on March 4, maybe for iPhone 17e &amp; M5 MacBook Pro](https://appleinsider.com/articles/26/02/16/apple-is-having-an-event-on-march-4-in-new-york?utm_source=rss)
+### 2. `EN` [Reboot: Apple TV, Ive style, and quantified cat poop](https://appleinsider.com/articles/26/02/16/reboot-apple-tv-ive-style-and-quantified-cat-poop?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
-It's not clear yet what this is for, but Apple is having an invite-only event not at Apple Park, but instead in New York City, on March 4. It might be time for all those M5 MacBook Pro, iPad, and iPhone 17e rumors to come true.
+Kicking off the weekly "Reboot" column here on AppleInsider, Apple TV got a bunch of high-profile show updates, Jony Ive's Ferrari design was previewed and landed with a mixed reception, and Malcolm deals with the weirdness of app-controlled cat toilets.
 
 
-Apple invite to New York City
-We're curious what this is about. Apple doesn't typically have big product releases in New York City. They want to show something off, that's for sure.
-As usual for an Apple Event announcement of any kind, the name and logo provide minimal clues for what Apple will actually unveil, and it's not clear what this is for.
+Tom Hanks, a Jony Ive Ferrari design, and a robot cat toilet
+Reboot is a new weekly column (editor's note, that will run on Sundays going forward) covering some of the lighter stories within the Apple reality distortion field from the past seven days.
+Let's get your week off to a good start, shall we?
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
+
+### 3. `EN` [AirTag 1 Gets Major Amazon Discount With 4-Pack at $64](data/articles/ab560aa1eb313d619836f2967a3cc04b.html)
+**Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
+Apple's first-generation AirTag 4-Pack has dropped to $64.00 this week on Amazon, down from the original price of $99.00. Free shipping options have a delivery estimate around February 21, while Prime members should be able to get it delivered a few days sooner.
+
+Note: MacRumors is an affiliate partner with Amazon. When you click a link and make a purchase, we may receive a small payment, which helps us keep the site running.
+
+Overall, this is a solid second-best price on the AirTag 4-pack that's within $1 of the Amazon all-time low price.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 3. `EN` [Apple announces special event for March 4](data/articles/a9e8dab56dd982b5d224f2b07fef5228.html)
-**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS` | *Also on: MacRumors*
+### 4. `EN` [Seven new Macs will launch this year, here’s everything coming](data/articles/7da42ce8a91e635bd8c1f0f10d18970a.html)
+**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
+Apple has a packed lineup of 20+ new products launching this year, including a larger-than-usual batch of new Mac laptops and desktops. Here’s every new Mac rumored to be coming.
+more…
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
+
+### 5. `EN` [After Ring privacy backlash, company abandons plans for police partnership](data/articles/1124cf0ec509148bbdd11712ddd54678.html)
+**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
+Amazon’s plan to turn Ring doorbells into a neighborhood-wide surveillance system was roundly denounced as dystopian even when it was just searching for lost dogs.
+The company does at least seem to have learned from the privacy backlash, announcing that it has now abandoned plans for a partnership with police … 
+more…
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
+
+### 6. `EN` [Apple is having an event on March 4, maybe for iPhone 17e &amp; M5 MacBook Pro](https://appleinsider.com/articles/26/02/16/apple-is-having-an-event-on-march-4-in-new-york?utm_source=rss)
+**Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
+It's not clear yet what this is for, but Apple is having an invite-only event not at Apple Park, but instead a joint event in New York City, London, and Shanghai on March 4. It might be time for all those M5 MacBook Pro, iPad, and iPhone 17e rumors to come true.
+
+
+Apple invite to New York City
+We're curious what this is about. Apple doesn't typically have big product releases in New York City, let alone also in London and Shanghai simultaneously. They want to show something off, that's for sure.
+That said, it may not necessarily be a major announcement.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
+
+### 7. `EN` [Security Bite: Russia completes block of Western social media and VPNs to push state-backed ‘Max’ super-app](data/articles/ea768dc32f1a531d3dbb473a8c6eec58.html)
+**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
+9to5Mac Security Bite is exclusively brought to you by Mosyle, the only Apple Unified Platform. Making Apple devices work-ready and enterprise-safe is all we do. Our unique integrated approach to management and security combines state-of-the-art Apple-specific security solutions for fully automated Hardening &amp; Compliance, Next Generation EDR, AI-powered Zero Trust, and exclusive Privilege Management with the most powerful and modern Apple MDM on the market.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
+
+### 8. `EN` [Apple special event announced for March 4](data/articles/a9e8dab56dd982b5d224f2b07fef5228.html)
+**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 Apple has announced a special event for next month, inviting members of the press on March 4, 2026 at 9 a.m. ET. Apple is branding this as a “special Apple Experience” rather than your typical Apple event. 
 more…
 
@@ -1091,7 +1140,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 4. `EN` ['Tehran' producer Dana Eden dies during filming](https://appleinsider.com/articles/26/02/16/tehran-producer-dana-eden-dies-during-filming?utm_source=rss)
+### 9. `EN` ['Tehran' producer Dana Eden dies during filming](https://appleinsider.com/articles/26/02/16/tehran-producer-dana-eden-dies-during-filming?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Dana Eden, a producer working on the Apple TV espionage drama "Tehran," has been found dead while filming for the show in Greece.
 
@@ -1103,7 +1152,7 @@ Filming of the fourth season of spy thriller Tehran was underway when Eden was d
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 5. `EN` [Could the low-cost MacBook be the new iBook?](data/articles/bf43d23924736954f7ca87d059ceb4f7.html)
+### 10. `EN` [Could the low-cost MacBook be the new iBook?](data/articles/bf43d23924736954f7ca87d059ceb4f7.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 The long-awaited low-cost MacBook powered by an A18 Pro chip is now expected to launch on March 4. It will reportedly be priced somewhere around $700, making it significantly cheaper than an entry-level MacBook Air.
 Given that the upcoming machine is likely to meet the needs of a great many of those who currently opt for the MacBook Air, it could cannibalize a lot of sales. One possible solution to this is to use the strategy Apple once adopted with the iBook and Powerbook lineups … 
@@ -1111,9 +1160,22 @@ more…
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
+
+### 11. `EN` [Apple Announces Special Event in New York, London, and Shanghai on March 4](data/articles/b3c340cb5c8fc5046ea9fb6dff7bd50b.html)
+**Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
+Apple today announced a "special Apple Experience" in New York, London, and Shanghai, taking place on March 4, 2026 at 9:00am ET.
+
+
+Apple invited select members of the media to the event in three major cities around the world. It is simply described as a "special Apple Experience," and there is no further information about what it may entail. The invitation features a 3D Apple logo design composed of yellow, green, and blue discs.
+
+Apple Park, the March 4 event in other cities is likely to be smaller in scale.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 6. `EN` [Government overreach must be fought said Apple, ten years ago today](https://appleinsider.com/articles/26/02/16/government-overreach-must-be-fought-said-apple-ten-years-ago-today?utm_source=rss)
+### 12. `EN` [Government overreach must be fought said Apple, ten years ago today](https://appleinsider.com/articles/26/02/16/government-overreach-must-be-fought-said-apple-ten-years-ago-today?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 On February 16, 2016, Apple published a statement it knew would be criticized, and laid out the reasons it would not bow to unfair government pressure. We're apparently in a very different world today.
 
@@ -1126,7 +1188,7 @@ Fourteen people had been murdered in a terrorist attack in California's San Bern
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 7. `EN` [Future MacBooks may borrow a Samsung feature to solve an ironic privacy problem](data/articles/821705a8dd8832f7c086cbcee0fe7330.html)
+### 13. `EN` [Future MacBooks may borrow a Samsung feature to solve an ironic privacy problem](data/articles/821705a8dd8832f7c086cbcee0fe7330.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 Samsung has introduced a new privacy feature to its Galaxy S26 Ultra smartphone, and a new report suggests that future MacBooks may adopt the same technology.
 If so, it will be rather ironic as MacBooks were among the earliest laptops to benefit from a feature which can now sometimes be considered a bug …
@@ -1136,7 +1198,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 8. `EN` [iOS 27 'Rave' Update to Clean Up Code, Could Boost Battery Life](data/articles/c144e136d851acfab1e40bbf843af09f.html)
+### 14. `EN` [iOS 27 'Rave' Update to Clean Up Code, Could Boost Battery Life](data/articles/c144e136d851acfab1e40bbf843af09f.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple's iOS 27 update will prioritize cleaning up the operating system's internals, with engineers making changes that could result in better battery life, according to Bloomberg's Mark Gurman.
 
@@ -1149,7 +1211,7 @@ comfort some users.
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 9. `EN` [Gurman: iPhone 18 Pro Could Be Underwhelming](data/articles/386e84e80e83bbdfda5f8d5d6e9bb732.html)
+### 15. `EN` [Gurman: iPhone 18 Pro Could Be Underwhelming](data/articles/386e84e80e83bbdfda5f8d5d6e9bb732.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple's upcoming iPhone 18 Pro and ‌iPhone 18‌ Pro Max models "won't be a big update," according to Bloomberg's Mark Gurman.
 
@@ -1168,7 +1230,7 @@ This article, "Gurman:
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 10. `EN` [Which is more appealing to you – an iPhone Fold or an iPhone Flip? [Poll]](data/articles/669404e8d3e9d633e8cda07998f09abc.html)
+### 16. `EN` [Which is more appealing to you – an iPhone Fold or an iPhone Flip? [Poll]](data/articles/669404e8d3e9d633e8cda07998f09abc.html)
 **Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
 When the first rumors of a folding iPhone emerged, we didn’t know which of the two possible formats Apple was planning: an iPhone Fold or an iPhone Flip. 
 It later became clear that what we’re expecting to be launched first is a book-style iPhone Fold. However, there are signs that we may get both …
@@ -1178,7 +1240,7 @@ more…
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 11. `EN` [Tesla's CarPlay Plans Delayed by Apple Maps Compatibility Issue](data/articles/15ad086d7ac73bf4bf041621e266d9d2.html)
+### 17. `EN` [Tesla's CarPlay Plans Delayed by Apple Maps Compatibility Issue](data/articles/15ad086d7ac73bf4bf041621e266d9d2.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Tesla is still planning to bring Apple's CarPlay to its vehicles, but a compatibility issue between Apple Maps and Tesla's own navigation software has held things up, according to Bloomberg's Mark Gurman.
 
@@ -1189,7 +1251,7 @@ Writing in his latest Power On newsletter, Gurman says that Tesla found during t
 
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 12. `EN` [Upcoming Low-Cost MacBook May Come in Yellow, Green, Blue, and Pink](data/articles/b45d8fbbb11d12887a23b2d4713fd006.html)
+### 18. `EN` [Upcoming Low-Cost MacBook May Come in Yellow, Green, Blue, and Pink](data/articles/b45d8fbbb11d12887a23b2d4713fd006.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple has tested a range of playful color options for its upcoming low-cost MacBook, going well beyond the muted tones available on its current laptop lineup, according to Bloomberg's Mark Gurman.
 
@@ -1198,18 +1260,9 @@ Writing in his latest Power On newsletter, Gurman says the colors tested so far 
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 13. `EN` [Apple to Bring eSIM-Only iPhone 18 to Europe in Hopes of Improving Battery Capacity](data/articles/e3af2018fe3b2c530e1c89cfa464c331.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-Apple plans a major change for the iPhone 18 series in Europe, and it directly affects how you use your mobile number. The company is preparing to remove the physical SIM card slot and rely entirely on eSIM, which means you will activate your carrier digitally instead of inserting a card. Apple already did this […]
-The post Apple to Bring eSIM-Only iPhone 18 to Europe in Hopes of Improving Battery Capacity appeared first on The Mac Observer.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="mac" data-source="MacRumors">
 
-### 14. `EN` [Future MacBooks May Hide Your Screen From Strangers](data/articles/3425a28d52fc695f6615fd12f35e536c.html)
+### 19. `EN` [Future MacBooks May Hide Your Screen From Strangers](data/articles/3425a28d52fc695f6615fd12f35e536c.html)
 **Source:** MacRumors | **Tags:** `Apple` `Mac` `Rumors`
 Apple is set to bring built-in privacy screen technology to future MacBooks within the next three years, according to a report from market research firm Omdia (via Ice Universe).
 
@@ -1218,57 +1271,12 @@ The technology Apple is planning to adopt restricts off-axis viewing angles so o
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
+<div class="article-item" data-lang="en" data-category="mac" data-source="9to5Mac">
 
-### 15. `EN` [Apple May Bring Galaxy S26 Ultra Privacy Display  Tech to MacBook in Three Years](data/articles/142c3b21f79257e5360b2b1bd3e52087.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-A new display feature designed to stop people from peeking at your screen could eventually reach MacBooks. Reports say Apple is studying Samsung’s upcoming privacy display technology and plans to introduce a similar system in future laptops, which would give users stronger protection while reading messages, banking, or handling personal work in public spaces. The […]
-The post Apple May Bring Galaxy S26 Ultra Privacy Display  Tech to MacBook in Three Years appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 16. `EN` [iPhone 17 Pro Max Frame Uses Aluminum and Users Report Dents Even With Cases](data/articles/88a1dadccfeee7bccfd5204da425804a.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-Users have started reporting visible dents on the iPhone 17 Pro Max even when the phone sits inside a protective case, which undermines the whole purpose of buying a case and shifts attention toward the material Apple selected for the frame rather than accidental handling. Apple equipped the iPhone 17 Pro Max with a 5080-series […]
-The post iPhone 17 Pro Max Frame Uses Aluminum and Users Report Dents Even With Cases appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 17. `EN` [Apple is Preparing These New Products for Launch in the “Next Several Weeks”](data/articles/15a0dc44eff612427efa8d8ec6ad3212.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews` | *Also on: 9to5Mac*
-Apple’s upcoming product launches in the next several weeks are set to shift the company out of its slow start to the year and into a busy hardware cycle that focuses heavily on the Mac lineup, while also bringing updates to the iPhone and iPad families. Multiple new Macs, refreshed notebooks, and at least one […]
-The post Apple is Preparing These New Products for Launch in the “Next Several Weeks” appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 18. `EN` [iOS 26.4 First Beta Release Date, Siri Revamp, and New Features](data/articles/1b8aa69141e809c6d589c8359c43cf10.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-Apple has not shared an official date for the first iOS 26.4 beta. Still, the broader release cycle offers a strong clue. iOS 26.3 is nearing the end of its beta phase, with release candidate builds already in testing. That usually signals the next beta branch is close. Developers could see the first public build […]
-The post iOS 26.4 First Beta Release Date, Siri Revamp, and New Features appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 19. `EN` [Safari Can’t Connect to iCloud Private Relay? Here’s How to Fix It](https://www.macobserver.com/tips/how-to/safari-cant-connect-to-icloud-private-relay-heres/)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-The “Safari can’t connect to iCloud Private Relay” error can appear in Safari or iCloud settings when your iPhone or iPad is unable to route traffic through Apple’s privacy servers. This usually happens because of network restrictions, unsupported carriers, active VPNs, or temporary issues with Apple’s servers. The good news is that most of these […]
-The post Safari Can’t Connect to iCloud Private Relay? Here’s How to Fix It appeared first on The Mac Observer.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
-
-### 20. `EN` [Is Apple About to Fix the Long-Running iPhone Battery Drain Issues With iOS 27?](data/articles/95e047f1fa328e79cbdddcf683b83cee.html)
-**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
-Battery life complaints have become almost a yearly ritual for iPhone users, and that’s exactly why the latest iOS 27 rumours are getting attention. Reports suggest Apple is rebuilding large swaths of its operating system in pursuit of better performance and longer battery life, and that focus might finally address the persistent battery drain issues […]
-The post Is Apple About to Fix the Long-Running iPhone Battery Drain Issues With iOS 27? appeared first on The Mac Observer.
+### 20. `EN` [Apple launching 5+ new products over the next several weeks](data/articles/228275252bd2dfd9204237362d5b255f.html)
+**Source:** 9to5Mac | **Tags:** `Apple` `Mac` `iOS`
+After a relatively quiet start to the year, things are about to pick up in the world of Apple. According to the latest reporting from Bloomberg, Apple has a range of new products set to debut in the coming weeks. Here’s what to expect.
+more…
 
 </div>
 
@@ -1330,9 +1338,18 @@ The post How to connect PS5 controller to iPad appeared first on The Mac Observe
 
 </div>
 
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
+
+### 27. `EN` [Apple releases Year of the Horse wallpapers for Lunar New Year 2026](data/articles/c3a8dada484ddd75698922c103bb1a2d.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+Apple is marking the Lunar New Year with official Year of the Horse wallpapers that you can download for your devices. Apple describes the design as a symbol of “strength and ambition,” and it positions the wallpaper as part of its seasonal Chinese New Year campaign on the Apple Store. You get device-ready downloads for […]
+The post Apple releases Year of the Horse wallpapers for Lunar New Year 2026 appeared first on The Mac Observer.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
 
-### 27. `EN` [Thanks AI: Hard drives aren't going to get cheaper anytime soon](https://appleinsider.com/articles/26/02/15/thanks-ai-hard-drives-arent-going-to-get-cheaper-anytime-soon?utm_source=rss)
+### 28. `EN` [Thanks AI: Hard drives aren't going to get cheaper anytime soon](https://appleinsider.com/articles/26/02/15/thanks-ai-hard-drives-arent-going-to-get-cheaper-anytime-soon?utm_source=rss)
 **Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
 Hard drive prices will continue to be high for quite some time, as the needs of AI data centers continue to consume storage and raise prices for everyone.
 
@@ -1342,42 +1359,21 @@ One of the major talking points about artificial intelligence has been its impac
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 28. `EN` [Tesla CarPlay delay caused by fears of slow iOS 26 adoption rates](https://appleinsider.com/articles/26/02/15/tesla-carplay-delay-caused-by-fears-of-slow-ios-26-adoption-rates?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
-Tesla's lack of CarPlay support is allegedly down to the slow adoption of iOS 26, with a Maps compatibility fix supposedly one of the last hurdles in CarPlay's way.
-
-
-A Tesla, without CarPlay
-Tesla has long been one of the holdouts when it comes to CarPlay support. While there have been many rumors about CarPlay finally making its way to Tesla's impressive in-car infotainment system, it has still yet to appear.
-In Sunday's "Power On" newsletter for Bloomberg, Mark Gurman says that CarPlay is still expected to arrive.
+### 29. `EN` [iOS 26.3 update warning highlights urgent iPhone security risk](data/articles/0a265e35676c8cd4b985f21bd733a9d4.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+Apple has released iOS 26.3, and the update carries a clear warning. You should install it as soon as possible because the release fixes 39 security vulnerabilities, and one of them is already used in real-world attacks targeting iPhone users. The company kept most technical details limited for a reason. When vendors publish full exploit […]
+The post iOS 26.3 update warning highlights urgent iPhone security risk appeared first on The Mac Observer.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
+<div class="article-item" data-lang="en" data-category="mac" data-source="The Mac Observer">
 
-### 29. `EN` [iOS 26 adoption rate isn't the crisis some analysts are portraying](https://appleinsider.com/articles/26/02/13/ios-26-adoption-rate-isnt-the-crisis-some-analysts-are-portraying?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
-Apple's February 2026 App Store data shows iOS 26 adoption closely tracking the pace set by iOS 18 in January 2025, and iPadOS 26 is ahead of iPadOS 18, undercutting claims that the upgrade cycle is faltering.
-
-
-Apple publishes OS 26 adoption data
-Apple publishes operating system adoption rates based on devices that transacted on the App Store. The February 12, 2026 data can be measured against Apple's January 24, 2025 published figures for a like-for-like comparison.
-The breakdown separates recently introduced hardware from the full active installed base.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="mac" data-source="AppleInsider">
-
-### 30. `EN` [Colorful MacBook &amp; iPhone 17e launching as soon as March](https://appleinsider.com/articles/26/02/15/colorful-macbook-iphone-17e-launching-as-soon-as-march?utm_source=rss)
-**Source:** AppleInsider | **Tags:** `Apple` `Mac` `News`
-An iPhone 17e with A19 and MagSafe is expected to launch imminently, and the rumored budget-friendly MacBook could arrive soon after. Here's what Apple's 2026 product lineup looks like.
-
-
-A new budget-friendly MacBook is on the way
-Ever since Apple launched Apple Silicon, rumors have suggested Apple could use the highly efficient chipsets to revive the MacBook. That product, along with the iPhone 17e, could broaden Apple's reach in the budget-friendly market.
-The latest hints at Apple's development pipeline comes from the Power On newsletter.
+### 30. `EN` [Can you claim the Apple iCloud settlement? Facts you need first](data/articles/d6136ffdd3234fcd352075f84d55344d.html)
+**Source:** The Mac Observer | **Tags:** `Apple` `Mac` `Reviews`
+You have probably seen TikToks claiming Apple owes you money for iCloud storage. The posts often point to “overcharging,” “competition,” or a fast claim form. Here’s what you can verify right now: a widely shared iCloud-related case is still a lawsuit, not a confirmed payout settlement, and some viral links route you through third-party “claim” […]
+The post Can you claim the Apple iCloud settlement? Facts you need first appeared first on The Mac Observer.
 
 </div>
 
@@ -1391,7 +1387,34 @@ The latest hints at Apple's development pipeline comes from the Power On newslet
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 1. `EN` [[$] Compact formats for debugging—and more](https://lwn.net/Articles/1057295/)
+### 1. `EN` [Four stable kernels to fix problematic commit](data/articles/0047b950fe25dc620a5bf359ec93018e.html)
+**Source:** LWN.net | **Tags:** `Linux` `Kernel` `Development`
+Greg-Kroah Hartman has released the 6.19.2, 6.18.12, 6.12.73, and 6.6.126 stable kernels. These kernels
+each contain a single change; Kroah-Hartman has reverted one
+problematic commit that prevents some systems from booting. "If the
+last stable release worked just fine, no need to upgrade."
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
+
+### 2. `EN` [Linux 6.19.2 &amp; Other LTS Kernels Released To Fix Systems Not Booting](data/articles/3bcbc9bb7115e712b1b2efa654e729c0.html)
+**Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
+Linux 6.19.1 was released earlier today while it's since been replaced by Linux 6.19.2 to address fallout from that first point release with some systems not booting. This also resulted in new LTS kernel releases too due to the problematic code being picked up there too...
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
+
+### 3. `EN` [Arc B390 Graphics With Panther Lake Performing Great On Open-Source Intel Compute Runtime](data/articles/caf632f98dda41004a210c309670efc5.html)
+**Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
+This month I have been doing a lot of Panther Lake benchmarking under Linux with the Core Ultra X7 358H. One of the areas of much interest has been the Arc B390 Xe3 graphics that have been working nicely out-of-the-box with the Intel open-source driver stack on Linux although there still are some gaps to fill against Windows. Those Intel Arc B390 Linux benchmarks so far have been focused on OpenGL and Vulkan graphics, but what about OpenCL and GPU compute with the open-source Intel Compute Runtime?
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
+
+### 4. `EN` [[$] Compact formats for debugging—and more](https://lwn.net/Articles/1057295/)
 **Source:** LWN.net | **Tags:** `Linux` `Kernel` `Development`
 At the 2025 Linux Plumbers Conference in Tokyo, Stephen Brennan gave a
 presentation on the debuginfo
@@ -1406,7 +1429,7 @@ that we are already using or build new interesting tools".
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="LWN.net">
 
-### 2. `EN` [Four stable kernels for Monday](data/articles/fa4c3384bc58834cb2133e0a6027c65b.html)
+### 5. `EN` [Four stable kernels for Monday](data/articles/fa4c3384bc58834cb2133e0a6027c65b.html)
 **Source:** LWN.net | **Tags:** `Linux` `Kernel` `Development`
 Greg Kroah-Hartman has announced the release of the 6.19.1, 6.18.11, 6.12.72, and 6.6.125 stable kernels. As always, each
 contains important fixes throughout the tree; users of these kernels
@@ -1416,7 +1439,7 @@ are advised to upgrade.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 3. `EN` [Linux 7.0 Better Segregates Legacy CardBus Code To Avoid On Modern PCs](data/articles/8ab49715815f10c4f03bd5803ddcbbc8.html)
+### 6. `EN` [Linux 7.0 Better Segregates Legacy CardBus Code To Avoid On Modern PCs](data/articles/8ab49715815f10c4f03bd5803ddcbbc8.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 The PCI subsystem updates for Linux 7.0 are aplenty as usual and contain a wide assortment of different fixes and code improvements...
 
@@ -1424,7 +1447,7 @@ The PCI subsystem updates for Linux 7.0 are aplenty as usual and contain a wide 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 4. `EN` [Reverse Engineering Linux Distro REMnux Marks 15 Years With Major v8 Release Featuring AI Agent Support](data/articles/8e3c2734715491ed75ac11fcd406577d.html)
+### 7. `EN` [Reverse Engineering Linux Distro REMnux Marks 15 Years With Major v8 Release Featuring AI Agent Support](data/articles/8e3c2734715491ed75ac11fcd406577d.html)
 **Source:** Its FOSS | **Tags:** `Linux` `Open Source` `Tutorials`
 Malware analysis Linux distro gets Ubuntu 24.04 base, a new installer, and many new tools.
 
@@ -1432,7 +1455,7 @@ Malware analysis Linux distro gets Ubuntu 24.04 base, a new installer, and many 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 5. `EN` [ABIDE is an extreme stop-motion horror game from the devs of Judero and Mashina](data/articles/dbb2395b1fe173091ee4a8f39b2508bb.html)
+### 8. `EN` [ABIDE is an extreme stop-motion horror game from the devs of Judero and Mashina](data/articles/dbb2395b1fe173091ee4a8f39b2508bb.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 Set in a secluded community retreat that uses various therapeutic techniques to try and rehabilitate its residents, ABIDE certainly looks to be different.
 
@@ -1442,7 +1465,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="LWN.net">
 
-### 6. `FR` [Security updates for Monday](data/articles/e8c08539f65db380a1d098e9088b2457.html)
+### 9. `FR` [Security updates for Monday](data/articles/e8c08539f65db380a1d098e9088b2457.html)
 **Source:** LWN.net | **Tags:** `Linux` `Kernel` `Development`
 Security updates have been issued by Debian (chromium, pdns-recursor, python-django, and wireshark), Fedora (gnutls, linux-sgx, mingw-expat, nginx, nginx-mod-brotli, nginx-mod-fancyindex, nginx-mod-headers-more, nginx-mod-modsecurity, nginx-mod-naxsi, nginx-mod-vts, p11-kit, python-aiohttp, vim, and xen), Red Hat (kernel, kernel-rt, python-s3transfer, python-urllib3, and resource-agents), SUSE (aaa_base, abseil-cpp, build-20260202, cargo-auditable, cargo-c, chromedriver, cockpit, cockpit-packages, cockpit-subscriptions, curl, elemental-toolkit, elemental-operator, gnome-remote-desktop,...
 
@@ -1450,7 +1473,7 @@ Security updates have been issued by Debian (chromium, pdns-recursor, python-dja
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 7. `EN` [Comedy co-op physics platformer Log Riders adds Linux support and looks hilarious](data/articles/df51ed2c318f93880bfa89b05486a213.html)
+### 10. `EN` [Comedy co-op physics platformer Log Riders adds Linux support and looks hilarious](data/articles/df51ed2c318f93880bfa89b05486a213.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 Log Riders is a co-op platformer around running on top of wooden logs, it looks hilarious and now there's full Native Linux support too.
 
@@ -1460,7 +1483,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 8. `EN` [Get some quality horror in the Love You to Death Humble Bundle](data/articles/641a7ab0c5b8d03839b4c0a358516442.html)
+### 11. `EN` [Get some quality horror in the Love You to Death Humble Bundle](data/articles/641a7ab0c5b8d03839b4c0a358516442.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 The Love You to Death Humble Bundle has some highly rated scarier experiences for cheaps, here's your usual run over what games you can get in it.
 
@@ -1470,7 +1493,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 9. `EN` [Clean the infected family PC in the new Antivirus Survivors 2003 Professional demo](data/articles/08d8b8b8f96ba3c2144920dee5107153.html)
+### 12. `EN` [Clean the infected family PC in the new Antivirus Survivors 2003 Professional demo](data/articles/08d8b8b8f96ba3c2144920dee5107153.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 Antivirus Survivors 2003 Professional takes the idea of Vampire Survivors and everything similar, and turns you into a mouse cursor inside an infected PC.
 
@@ -1480,7 +1503,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 10. `EN` [X4: Foundations is getting cross-platform cloud saves - possible breakage coming for Linux](data/articles/2545b3a6db64dfd0f9b88711f76ebd64.html)
+### 13. `EN` [X4: Foundations is getting cross-platform cloud saves - possible breakage coming for Linux](data/articles/2545b3a6db64dfd0f9b88711f76ebd64.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 Egosoft have announced that X4: Foundations is finally getting cross-platform Steam Cloud saves, but desktop Linux users may need to make some backups.
 
@@ -1490,7 +1513,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 11. `EN` [Firmware Upstreamed For Supporting The Qualcomm Snapdragon X2's Adreno GPU](data/articles/7a9dfadd3f14fe64477b912da02ad2bf.html)
+### 14. `EN` [Firmware Upstreamed For Supporting The Qualcomm Snapdragon X2's Adreno GPU](data/articles/7a9dfadd3f14fe64477b912da02ad2bf.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 Upstreamed last week to the linux-firmware.git repository by Qualcomm was the GPU firmware files needed for enabling the Adreno GPU on the new Snapdragon X2 Elite laptop SoC...
 
@@ -1498,7 +1521,7 @@ Upstreamed last week to the linux-firmware.git repository by Qualcomm was the GP
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 12. `EN` [Blue Archive devs confirm Steam Deck and controller support is on the way](data/articles/72959db1712f6c112f6d35e0505821e2.html)
+### 15. `EN` [Blue Archive devs confirm Steam Deck and controller support is on the way](data/articles/72959db1712f6c112f6d35e0505821e2.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 The free to play Blue Archive from NEXON arrived on Steam last year, and they've confirmed upgrades are coming for Steam Deck and controller players.
 
@@ -1508,7 +1531,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 13. `EN` [Thoroughly strange dungeon crawler Pluto is all about constructing spells and using your fingers](data/articles/8331d5328b638ed5a6073ab0655c11a9.html)
+### 16. `EN` [Thoroughly strange dungeon crawler Pluto is all about constructing spells and using your fingers](data/articles/8331d5328b638ed5a6073ab0655c11a9.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 With a pretty creepy looking style, the dungeon crawler Pluto is all about experimentation as you construct spells and wiggle your fingers.
 
@@ -1518,7 +1541,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 14. `EN` [The clever ASCII animated Stone Story RPG is getting a full standalone sequel](data/articles/df22249a951b63974d7547addb97d33a.html)
+### 17. `EN` [The clever ASCII animated Stone Story RPG is getting a full standalone sequel](data/articles/df22249a951b63974d7547addb97d33a.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 Stone Story Ascension was recently revealed as the full standalone follow-up to the impressive Stone Story RPG.
 
@@ -1528,7 +1551,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="GamingOnLinux">
 
-### 15. `EN` [GE-Proton 10-31 brings fixes for Arknights: Endfield, Duet Night Abyss and more](data/articles/73e1c4a1fdde13a9eafd686ffadb96f6.html)
+### 18. `EN` [GE-Proton 10-31 brings fixes for Arknights: Endfield, Duet Night Abyss and more](data/articles/73e1c4a1fdde13a9eafd686ffadb96f6.html)
 **Source:** GamingOnLinux | **Tags:** `Linux` `Gaming` `Proton`
 GE-Proton 10-31 is another fresh released of the compatibility layer to run more games on Linux / SteamOS, with more game fixes available.
 
@@ -1538,7 +1561,7 @@ Read the full article on GamingOnLinux.
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 16. `EN` [OpenRISC With Linux 7.0 Improves Out-Of-The-Box Support For More FPGA Dev Boards](data/articles/3655aa8b8971cb5124e4e63a741af13c.html)
+### 19. `EN` [OpenRISC With Linux 7.0 Improves Out-Of-The-Box Support For More FPGA Dev Boards](data/articles/3655aa8b8971cb5124e4e63a741af13c.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 While the OpenRISC project began ten years before RISC-V was started, it hasn't enjoyed the hardware ecosystem successes of the latter but still the upstream Linux kernel support continues moving forward and the ability to run OpenRISC on FPGA developer boards...
 
@@ -1546,7 +1569,7 @@ While the OpenRISC project began ten years before RISC-V was started, it hasn't 
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 17. `EN` [InputPlumber 0.74 Released With Hardware Support Improvements](data/articles/63d7e297667f514641ff6c2780bf2f06.html)
+### 20. `EN` [InputPlumber 0.74 Released With Hardware Support Improvements](data/articles/63d7e297667f514641ff6c2780bf2f06.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 InputPlumber 0.74 is now available for this open-source input routing and control daemon for Linux systems. InputPlumber enables combining of multiple input devices, emulating different inputs, and a variety of other features particularly of benefit for Linux gaming...
 
@@ -1554,7 +1577,7 @@ InputPlumber 0.74 is now available for this open-source input routing and contro
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
 
-### 18. `EN` [Murena Teams Up With German Manufacturer to Offer a €698 de-Googled Android Tablet](data/articles/313bb1f46449bfcdde255d801de707eb.html)
+### 21. `EN` [Murena Teams Up With German Manufacturer to Offer a €698 de-Googled Android Tablet](data/articles/313bb1f46449bfcdde255d801de707eb.html)
 **Source:** Its FOSS | **Tags:** `Linux` `Open Source` `Tutorials`
 Featuring 12GB of RAM and a 10,000 mAh battery, this collaboration with Volla brings some decent specs to the privacy-first mobile market.
 
@@ -1562,7 +1585,7 @@ Featuring 12GB of RAM and a 10,000 mAh battery, this collaboration with Volla br
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 19. `EN` [Linux 6.19.1 Released To Ship Some Early Fixes &amp; Device Quirks](data/articles/43caabb8d4e95d0f74cd5e0e0f092db6.html)
+### 22. `EN` [Linux 6.19.1 Released To Ship Some Early Fixes &amp; Device Quirks](data/articles/43caabb8d4e95d0f74cd5e0e0f092db6.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 For those preferring to wait for the first point release of a new Linux kernel version before upgrading, Linux 6.19.1 is out today to address some early bugs that made it into the Linux 6.19 kernel stable release one week ago...
 
@@ -1570,7 +1593,7 @@ For those preferring to wait for the first point release of a new Linux kernel v
 
 <div class="article-item" data-lang="fr" data-category="linux" data-source="Journal du Hacker">
 
-### 20. `FR` [Liens Tech - Février 2026](data/articles/fd06ec04ae61ac4e431398b7c29fdc59.html)
+### 23. `FR` [Liens Tech - Février 2026](data/articles/fd06ec04ae61ac4e431398b7c29fdc59.html)
 **Source:** Journal du Hacker | **Tags:** `Linux` `Hacking` `Open Source` | *Also on: Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker, Journal du Hacker*
 Comments
 
@@ -1578,7 +1601,7 @@ Comments
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 21. `EN` [Linux 7.0 Merges The Code To Replace The Tux Boot Logo At Build Time](data/articles/7abea540f86ceaeea9963c03d64b2d13.html)
+### 24. `EN` [Linux 7.0 Merges The Code To Replace The Tux Boot Logo At Build Time](data/articles/7abea540f86ceaeea9963c03d64b2d13.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 Linus Torvalds merged the code this weekend that allows easily replacing the Tux penguin boot logo used during the boot process. This new code optionally allows specifying an alternative boot logo at compile/build time...
 
@@ -1586,7 +1609,7 @@ Linus Torvalds merged the code this weekend that allows easily replacing the Tux
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 22. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
+### 25. `EN` [Ubuntu 26.04 splits firmware package to reduce update sizes](data/articles/8959a5abaa831ce8c6e6c38984147e7d.html)
 **Source:** OMG! Ubuntu | **Tags:** `Linux` `Ubuntu` `Open Source` | *Also on: OMG! Ubuntu*
 Ubuntu 26.04 LTS will split its 600MB linux-firmware package into 17 vendor-specific packages to reduce bandwidth and  download sizes of firmware updates.
 You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -1595,7 +1618,7 @@ You're reading Ubuntu 26.04 splits firmware package to reduce update sizes, a bl
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 23. `EN` [exFAT Achieves Better Sequential Read Performance With Linux 7.0](data/articles/678a75a96cc917f226f1395fdbc2eec7.html)
+### 26. `EN` [exFAT Achieves Better Sequential Read Performance With Linux 7.0](data/articles/678a75a96cc917f226f1395fdbc2eec7.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 The open-source Linux file-system driver for supporting Microsoft's exFAT now can deliver better sequential read performance with Linux 7.0 thanks to multi-cluster support...
 
@@ -1603,7 +1626,7 @@ The open-source Linux file-system driver for supporting Microsoft's exFAT now ca
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="OMG! Ubuntu">
 
-### 24. `EN` [Official Ubuntu 26.04 ‘Resolute Raccoon’ mascot revealed](data/articles/9bec6f5db5d0cda10382678d282541cd.html)
+### 27. `EN` [Official Ubuntu 26.04 ‘Resolute Raccoon’ mascot revealed](data/articles/9bec6f5db5d0cda10382678d282541cd.html)
 **Source:** OMG! Ubuntu | **Tags:** `Linux` `Ubuntu` `Open Source`
 Download the official Ubuntu 26.04 LTS 'Resolute Raccoon' mascot as an SVG vector file to use in your custom wallpapers and personalised Ubuntu artwork.
 You're reading Official Ubuntu 26.04 ‘Resolute Raccoon’ mascot revealed, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.
@@ -1612,7 +1635,7 @@ You're reading Official Ubuntu 26.04 ‘Resolute Raccoon’ mascot revealed, a b
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 25. `EN` [wlroots 0.20 Nears Release With New Protocols, Enhanced Vulkan Renderer](data/articles/84e15c48ab3b9e0aa0efd7abf3b59da3.html)
+### 28. `EN` [wlroots 0.20 Nears Release With New Protocols, Enhanced Vulkan Renderer](data/articles/84e15c48ab3b9e0aa0efd7abf3b59da3.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 Version 0.20 of the popular wlroots Wayland support library is nearing its official release. Over the past week were two release candidates for wlroots 0.20 were published for this library used by Sway, Wayfire, Cage, Gamescope, and numerous other Wayland compositors...
 
@@ -1620,7 +1643,7 @@ Version 0.20 of the popular wlroots Wayland support library is nearing its offic
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 26. `EN` [Linux Kernel Improvement Can Make Hibernation Several Times Faster With Slow SSDs](data/articles/c8a952e32e05130c6a8a4a293f4f0cb6.html)
+### 29. `EN` [Linux Kernel Improvement Can Make Hibernation Several Times Faster With Slow SSDs](data/articles/c8a952e32e05130c6a8a4a293f4f0cb6.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 A patch series sent out for review this weekend can significantly improve the system hibernation performance under Linux. Particularly for those with slower SSDs, the patches can make Linux hibernate up to several times faster...
 
@@ -1628,33 +1651,9 @@ A patch series sent out for review this weekend can significantly improve the sy
 
 <div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
 
-### 27. `EN` [Mesa's KosmicKrisp Vulkan-On-Metal Achieves MoltenVK Feature Parity](data/articles/07929c67469568453d514ccd2b17e927.html)
+### 30. `EN` [Mesa's KosmicKrisp Vulkan-On-Metal Achieves MoltenVK Feature Parity](data/articles/07929c67469568453d514ccd2b17e927.html)
 **Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
 Announced last year by consulting firm LunarG was KosmicKrisp as a Vulkan-on-Metal driver for efficiently leveraging the Vulkan API on Apple macOS systems as an alternative to the MoltenVK project. KosmicKrisp was upstreamed for Mesa 26.0 and continues making great progress for opening up more Vulkan possibilities in Apple's world...
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
-
-### 28. `EN` [NFS Server Adds Dynamic Thread Pool Sizing In Linux 7.0](data/articles/a07d0756b92198e30f5b4f9ca713c44c.html)
-**Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
-The NFS server changes for Linux 7.0 happen to include some nice improvements for this big kernel version number release...
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="linux" data-source="Phoronix">
-
-### 29. `EN` [Power Sequencing Driver For PCIe M.2 Connectors Makes It Into Linux 7.0](data/articles/1c581686428f38509cc2cd57005cfde7.html)
-**Source:** Phoronix | **Tags:** `Linux` `Benchmarks` `Hardware`
-The power sequencing subsystem updates have been merged for the Linux 7.0 cycle. Typically not an area of the kernel too exciting but one new driver addition is the "pwrseq-pcie-m2" to provide power sequencing for PCIe M.2 connectors...
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="linux" data-source="Its FOSS">
-
-### 30. `EN` [Why and How I am Using Emacs for Writing My Next Novel](data/articles/dca63ff60abc53d48eeb3263cd3ea29c.html)
-**Source:** Its FOSS | **Tags:** `Linux` `Open Source` `Tutorials`
-In part II of his Emacs series, novelist Theena Kumaragurunathan, demonstrates how Emacs is becoming an extension of his writing brain.
 
 </div>
 
@@ -1666,245 +1665,244 @@ In part II of his Emacs series, novelist Theena Kumaragurunathan, demonstrates h
 
 ## General Tech / Tech Générale
 
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 1. `EN` [ Testing the new Dyson wet floor cleaner made me love my WashG1 even more — and it just crashed to an absurdly cheap price for Presidents' Day ](data/articles/7a08effb382f3192bd7a4e904ce6748a.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+With this discount, the nimble WashG1 wet floor cleaner is a no-brainer.
+
+</div>
+
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 1. `FR` [Guerre des IA chinoises : Alibaba devance DeepSeek-V4 et lance son modèle Qwen 3.5](data/articles/edf86d3335decd1f0515c1557457dfa9.html)
+### 2. `FR` [« C’est vraiment bizarre d’avoir un micro sur un aspirateur », il bidouille son aspirateur robot et découvre une faille géante](data/articles/b7af376e98569989c52a6df6cef08732.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Le 15 février 2026, Alibaba a présenté Qwen 3.5, une nouvelle version de son grand modèle d’IA pensée pour « l’ère des agents ». Une annonce stratégique dans la course chinoise à l’IA.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
-
-### 2. `FR` [Apple annonce une grande keynote : quelles nouveautés attendre ?](data/articles/6a9f75559a5353c111bb2c8a7669320b.html)
-**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android` | *Also on: Numerama*
-Après plusieurs semaines de rumeurs, Apple sort du silence et invite la presse à un événement le 4 mars 2026. On attend un nouvel iPhone, et de nouveaux Mac.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
-
-### 3. `FR` [La sécurité n’a pas de prix : ce feu arrière avec radar intégré pour vélo  est déstocké à -32%](data/articles/2edeb2b1d2892c52f911e292b8b88cb7.html)
-**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Si le vélo est votre mode de déplacement principal, AliExpress propose un feu arrière avec radar intelligent à 67,68 euros au lieu de 99,99 euros : il s'agit du Coospo TR70.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
-
-### 4. `FR` [Microsoft bloque cette option pratique de Windows, mais c’est pour votre bien](data/articles/2d58ef7932a1acba4deae21a6fa054b9.html)
-**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Sur Windows 10 et Windows 11, une mise à jour bloque une fonctionnalité fréquemment utilisée dans certaines conditions. Ce n'est pas un bug.
+Dans un article publié le 14 février 2026, le média américain The Verge revient sur la découverte involontaire d'une faille de sécurité affectant les appareils de la marque chinoise DJI. En bidouillant son aspirateur connecté pour le piloter avec une manette PlayStation, un utilisateur a pu accéder à des données de milliers d'appareils à travers le monde.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 5. `EN` [ 4 of the best Herman Miller office chairs we've ever tested are cut-price in the Presidents' Day sales right now - and for stylish office furniture, nothing else comes close ](data/articles/c4b81b9347f590f32b8133b497f6fb09.html)
+### 3. `EN` [ ExpressVPN's lowest-ever price ends today — here are the quickest (and best) ways to save ](data/articles/4ef47b1175a5b0d8c0a5a05774c79c12.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-The Aeron, Embody, Vantum, and Sayl all get a big price cut in in the Presidents' Day sales
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 6. `EN` [ So many Discord users are flocking to this alternative platform, it's making Stoat crash ](data/articles/80dd3cb02f3bf9423a5019f53c950feb.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Discord users are so keen to escape age verification plans that they're in danger of suffocating alternative platforms.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
-
-### 7. `FR` [Un nouveau constructeur soutient l’idée de la voiture européenne pas chère](data/articles/488b08c0b5b8e2f44ab2d8610a9a60ac.html)
-**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Hyundai soutient l'idée de l'Europe de vouloir proposer une voiture très abordable grâce à la création d'une nouvelle catégorie. Mais pour l'heure, le flou autour de la potentielle réglementation n'aide pas à se projeter.
-
-</div>
-
-<div class="article-item" data-lang="es" data-category="tech" data-source="TechRadar">
-
-### 8. `EN` [ Canada Goose confirms data leak - around 600,000 customers thought to be affected ](data/articles/d36f491c7894852d07aa8bb9d899447d.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Luxury retailer Canada Goose confirms data was leaked, but argues it wasn't breached, as hackers claim a third-party was hit instead.
+Plans are cheaper than the likes of Proton and NordVPN, but not for much longer
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 9. `FR` [X (Twitter) est en panne dans le monde entier](data/articles/766f928c484989568550d30e62d94d06.html)
+### 4. `FR` [Après la RAM, alerte sur les disques dur : ce constructeur majeur est en rupture pour le reste de 2026](data/articles/718f01351842ae88b5e9235540619223.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Depuis 14h00, ce lundi 16 février 2026, les serveurs de X semblent inaccessibles. Des milliers d'internautes font état d'une panne.
-
-</div>
-
-<div class="article-item" data-lang="nl" data-category="tech" data-source="TechRadar">
-
-### 10. `EN` [ Upgrade to an OLED TV for less than you’d think in the Presidents’ Day sales — LG and Samsung sets are back to Black Friday prices ](data/articles/6ca1e8d9ed3539a523c050c408952cf7.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-We've tested LG and Samsung's budget OLED TVs, and you can't go wrong
+La crise de la RAM devient une crise de la mémoire au sens large. Western Digital annonce avoir déjà écoulé l'intégralité de sa production de 2026.
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 11. `FR` [Au Pérou, cet empire pré-inca a bâti sa fortune sur des excréments d’oiseaux](data/articles/8f91d39223adfc6fc14d204686b1efa0.html)
+### 5. `FR` [J’ai relancé Overwatch après des années d’absence et je ne regrette pas](data/articles/cb9639b47c46141e501ea7c856e4bfa6.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Le guano, excrément d'oiseaux marins, est un super fertilisateur pour la culture du maïs. C'est lui qui aurait permis au royaume Chincha de prospérer au Pérou, il y a au moins 800 ans. Ce lien profond entre terre et mer était célébré et protégé, comme en attestent des preuves biochimiques mais aussi matérielles.
+Overwatch 2 a récemment opéré un revirement inattendu en faisant marche arrière pour redevenir, tout simplement : Overwatch. Grand nostalgique de la licence, j’ai finalement décidé de relancer le jeu pour voir si la magie fonctionnait toujours.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 6. `EN` [ LG's impressive UltraWide 34-inch monitor is one of the best deals I've seen in Best Buy's Presidents' Day sale ](data/articles/cc4a70ca92feb466189a5e30169b9197.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+LG’s UltraWide 34-inch monitor is down to $210 at Best Buy, making it one of the cheapest ways to grab a big-screen IPS display from a well-known brand.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 7. `EN` [ 'The gaming laptop deal to end all gaming laptop deals' - get a Lenovo with an RTX 5070 and OLED display for $1,194 ](data/articles/b9870bd42857d0a4a994caf53587d04c.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+Here's how to get a gaming laptop with an RTX 5070 and OLED display for a record-low price today.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="The Verge">
 
-### 12. `EN` [Switch 2 pricing and next PlayStation release could be impacted by memory shortage](data/articles/84ef874b44c5a80bde98106bc7ebef11.html)
+### 8. `EN` [Here 50 Presidents Day deals actually worth shopping for](data/articles/e9ce2205c1de9dc6683bff6e7343d4bd.html)
 **Source:** The Verge | **Tags:** `Tech` `News` `Reviews`
-It may take Sony another three years to give the PS5 (pictured) a successor. | Photo by Vjeran Pavic / The Verge	
+Deals have been admittedly pretty dry since the holidays, but now that February is in full swing, we’re starting to see strong discounts return across a range of categories. In fact, thanks to Valentine’s Day, the Super Bowl, and — as of this week — Presidents Day, retailers are once again offering a slew of notable tech deals, making now a great time to shop if you’ve been holding off on making a larger purchase.
+Although the Super Bowl and V-Day have technically come and gone, plenty of discounts remain.
 
-Sony and Nintendo are reportedly feeling squeezed by RAM shortages as demand from AI data centers takes up an increasing share of memory chip production. In response to rising costs and dwindling chip supplies, Sony is considering pushing back the release of its next PlayStation console "to 2028 or even 2029," according to industry sources cited by Bloomberg, while Nintendo may increase the $450 price of its Switch 2 console this year.
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 9. `EN` [ Presidents’ Day is an excellent time to save money on the latest iPads — I've found today's 11 best deals from $299 ](data/articles/680c2cf5d1270639687154f66aebda39.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+I've rounded up what I reckon are the best Presidents' Day iPad deals to snap up before they sell out.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 10. `EN` [ Google patches first Chrome zero-day of the year - so update now or face attack ](data/articles/204e3506229de522fea7fbd7edec82c3.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+An 8.3/10 use after free in CSS Google Chrome bug was patched after being abused by unnamed threat actors.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 11. `EN` [ Pairs Figure Skating Finale Free Streams: Running Order, Preview for Gold Medal Decider at 2026 Winter Olympics ](data/articles/fe9dbcec59198c4d7de25eacbc7e8901.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+All the ways to watch Pairs Figure Skating finale 2026 live streams for FREE, with Miura Riku and Kihara Ryuichi facing an uphill battle in the Free Skate.
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 13. `FR` [Ce nouveau smartphone TCL qui se mue en liseuse est déjà en promo sur Amazon](data/articles/83f16fab91a405a8398a9f1eac01dba3.html)
+### 12. `FR` [Mettez vite Chrome à jour, Google corrige une faille permettant de contrôler le navigateur](data/articles/d13963f346eb1dd4229c8c16df2b7b75.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Le TCL NXTPAPER 70 Pro 5G, présenté au CES 2026, est un modèle atypique, qui permet de basculer facilement entre un smartphone Android et une liseuse. En ce moment, il se négocie à un tarif plus attractif en passant de 339 euros à 299 euros.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 14. `EN` [ X is down –here's what we know about the major outage ](data/articles/ee592975b43e9ca9469e8ed11eb03537.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-A bad start to the week for X
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 15. `EN` [ I'm a certified barista, and my favorite Breville coffee maker is down to a record-low price at Amazon for Presidents' Day ](data/articles/48797068d9fd8b4ef21e3c300eb8105c.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Enjoy authentic hot or cold-brewed coffee, with a thermal carafe that keeps it at the perfect temperature for over five hours.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
-
-### 16. `FR` [Vous n’arrivez pas à ouvrir X (anciennement Twitter) ? C’est normal, il y a une panne mondiale](data/articles/ad942bb5d1535864cb28d55baeda9797.html)
-**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Le réseau social d'Elon Musk est tombé en panne lundi 16 février vers 14h20, avec une impossibilité de charger la page d'accueil. Il avait déjà subi plusieurs instabilités dans la matinée.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 17. `EN` [ What drone ban? Several of our favorite 'beginner-friendly' DJI drones are currently on sale for record-low prices today ](data/articles/3a31a9f9ef7bb265bca312e4c8329e75.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-It's a good time to consider picking up these DJI models
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 18. `EN` [ Walmart's Presidents' Day is filled with best-selling TVs, appliances and Apple devices — here's what's in my shopping cart ](data/articles/964bdd725877715fe6140a4c1088e34a.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Walmart's Presidents' Day sale is live, and I've found the 21 best deals on best-selling appliances, TVs, Apple devices, and more.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
-
-### 19. `FR` [Jailbreaker un F-35 comme un iPhone : le plan audacieux des Pays-Bas pour échapper au « kill switch » des USA](data/articles/4dfbad8058bc53364a74e8efb090742a.html)
-**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Peut-on « jailbreaker » un avion de chasse comme un simple iPhone pour s'affranchir de la tutelle américaine, et du « kill switch » du F-35 ? Lancée par le secrétaire d’État néerlandais à la Défense, cette piste relance le débat sur la souveraineté des flottes de F-35 en Europe face au risque de blocage à distance
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 20. `EN` [ Blockchain fintech giant Figure hit by data breach, says 'limited number of files' impacted ](data/articles/55fd4994af9b61994455d6f1a4afde26.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-ShinyHunters claims responsibility, says Figure is part of the Okta single sign-on attacks.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 21. `EN` [ Still struggling with iOS 26 battery life? iOS 27 could fix it soon – but here are 7 ways to boost it now ](data/articles/429889aaeea0c3cd7780df95b29dbddc.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-iOS 27 will bring battery life improvements, according to a new report. But while you wait, here are 7 tips to try on iOS 26.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 22. `EN` [ This mini PC with 8GB RAM is small enough to fit in the palm of your hand and at under $100 I can definitely recommend it ](data/articles/90030311ffdd350d87a908e7540e5bf6.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-The NUC Box mini PC delivers practical everyday performance in a compact, space saving design for under $100.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
-
-### 23. `EN` [ This YouTuber just tripled his old iPhone 11 Pro’s battery capacity with a $10 Amazon kit – but it's a risky repair ](data/articles/80a46aeaf3fa0854060449c2bc69af19.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Apple doesn't recommend carrying out a battery upgrade like this – but someone tried it anyway.
+Première faille « zero day » de 2026 pour Chrome. Un correctif d'urgence est disponible
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 24. `FR` [Le Roborock Saros Z70, avec son surprenant bras articulé, aspire presque la moitié de son prix](data/articles/40dad87fdeb43aaf46331d8cf8ea1131.html)
+### 13. `FR` [Galaxy Buds 4 et Buds 4 Pro : les images officielles avant la présentation](data/articles/ac760634958717e4d41a0f6c64173298.html)
 **Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
-Ce Roborock Saros Z70 se démarque avec ce surprenant bras articulé, mais c'est loin d'être la seule qualité de ce robot aspirateur puisqu'il possède une puissance d'aspiration colossale de 22 000 Pa. Retrouvez-le chez Boulanger pour 969 euros au lieu de 1 799 euros.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="tech" data-source="Wired">
-
-### 25. `EN` [Saatva Memory Foam Hybrid Mattress Review: Going for Gold and Good Sleep](data/articles/3093b4e99e9bda9bb1ed42fc73c4a00c.html)
-**Source:** Wired | **Tags:** `Tech` `Culture` `Science`
-The Saatva Memory Foam Hybrid has been chosen for Olympians. Could it be the one for you, too?
+Samsung s’apprête à lancer ses Galaxy Buds 4 et Galaxy Buds 4 Pro aux côtés des Galaxy S26, avec un design revu, une réduction de bruit renforcée et des fonctions connectées plus poussées. Des images officielles vient d’apparaitre sur la toile à la faveur d’un revendeur.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 26. `EN` [ A turquoise turntable designed for Bluetooth? If anyone can do it, TEAC can ](data/articles/036e1ea2f407e041fcef89a557aa5472.html)
+### 14. `EN` [ Don't buy AirPods Pro 3 in the Presidents' Day Sales! Buy any of these 4 earbuds deals instead –all recommended by me, an audio expert ](data/articles/03a17e2775ba8d5b3bede4bfab456f39.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-Don't want to bother with turntable cables? TEAC's TN 400BT X/TB wants you to listen to your vinyl wirelessly
+AirPods Pro 3 are still a little pricey, no? These excellent options are a better bet for your hard-earned cash
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 27. `EN` [ 'He is a genius with a lot of amazing ideas about the future': Sam Altman says OpenClaw founder Peter Steinberger is joining OpenAI ](data/articles/bb57bc6a64acad0bfabdad2e0d061b02.html)
+### 15. `EN` [ ‘It’s bonkers’: Newegg sells a $229 16-core Xeon mini PC with a true Nvidia video card, 8GB RAM, 256GB SSD and is barely slower than Apple M3  ](data/articles/38c9065b97b76d45371f348b5849aaa7.html)
 **Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-OpenAI snaps up OpenClaw founder Peter Steinberger – OpenClaw will now go on to be an "open and independent" platform.
+With an odd name (and Windows 10 in tow) but some cracking hardware, this is a deal that will split opinions.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
 
-### 28. `EN` [ I'm a loyal Apple Watch user, but this Garmin Vivoactive 6 Presidents' Day deal could lure me to the other side ](data/articles/4defda4f1d9a7db756074b767c11b61b.html)
-**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
-The Garmin Vivoactive 6 is back to its Black Friday price, and it's a great Apple Watch SE 3 alternative.
+### 16. `FR` [Ce TV Samsung Neo QLED 55″ 144 Hz taillée pour le gaming bénéficie d’une triple remise pour 41 % de réduction au total](data/articles/af32d3bd3cf00d5439cccd90a49ea0cf.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+Chez Ubaldi il y a de sacrées offres sur le TV Samsung TQ55QN70F, un modèle Neo QLED de 55" fluide et boosté à l'IA qu'il est possible de récupérer pour 530 euros au lieu de 899 euros.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 17. `FR` [« Nous avons décidé de maintenir les moteurs diesel » : pourquoi Stellantis fait marche arrière sur les voitures électriques](data/articles/47060843fd3c696183629185be5864ef.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+Alors que l'industrie automobile européenne jurait ses grands dieux n'avoir d'yeux que pour l'électrique, Stellantis fait marche arrière. Discrètement, le groupe a réintroduit au moins 7 modèles diesel sur le Vieux Continent.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 18. `FR` [Les 10 smartphones les plus populaires de la semaine sur Frandroid : Samsung et Xiaomi dominent, OnePlus 15 crée la surprise](data/articles/8e7ea0aa82d6d55e0277c753edd46953.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+Pour notre top 10 des smartphones les plus populaires de la semaine sur Frandroid, Xiaomi et Samsung continuent de rivaliser, tandis que OnePlus tente de se faire une place.
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
 
-### 29. `FR` [Les Français verront-ils l’éclipse annulaire de Soleil du 17 février 2026 ?](data/articles/4d2d2af36ecd331e761707b9dc7ac678.html)
+### 19. `FR` [Duncan, Baelor, Aerion… Qui affronte qui au Jugement des Sept dans A Knight of the Seven Kingdoms ?](data/articles/4a6cf4f83cd1d7eeaa9d391a20f082a6.html)
 **Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
-Le mardi 17 février 2026, la première éclipse de l'année 2026 se produit. Il s'agit d'une éclipse de Soleil, qui sera annulaire lors de son maximum. Mais peut-on espérer assister au phénomène depuis la France ?
+Le dénouement du conflit entre Duncan et Aerion Targaryen arrive lors de l'épisode 5 de A Knight of the Seven Kingdoms, sur HBO Max. Mais dans la mêlée générale, on peut rapidement oublier qui appartient à chaque camp de ce Jugement des Sept.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="tech" data-source="Ars Technica">
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
 
-### 30. `EN` [Sideways on the ice, in a supercar: Stability control is getting very good](data/articles/63c8a2823d679b70bd16fc0a01e4e124.html)
-**Source:** Ars Technica | **Tags:** `Tech` `Science` `Analysis`
-To test stability control, it helps to have a wide-open space with very low grip.
+### 20. `EN` [ Fresh Spider-Man: Brand New Day leak reveals first official look at its villains — and Marvel fans aren't happy about the design of one of them ](data/articles/468fea1701e9711551fc69fb7331fdfe.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+A Spider-Man 4 merchandise leak has seemingly revealed its villains ahead of the MCU movie's long-awaited trailer debut.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 21. `FR` [L’iPhone 17e arrive bientôt : date de sortie, encoche, A19, MagSafe, voici tout ce que l’on sait](data/articles/8fc9222a2c12228f7a69043fcb860e00.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+L'iPhone 17e ne se contenterait pas de corriger les errances ergonomiques de son aîné. Il devrait enfin adopter la Dynamic Island ainsi qu'une charge MagSafe.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 22. `EN` [ Tyra Banks takes no accountability for America’s Next Top Model’s endless mistakes and danger — but we didn’t need a new Netflix documentary for that ](data/articles/a60f88840acc05555e9873280507addd.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+Any young girl in the 2000s could tell the truth about America's Next Top Model better than anybody, and it feels like the new Netflix documentary gets the airbrush treatment.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="TechRadar">
+
+### 23. `FR` [ I've found 3 high-performance video editing laptops with massive price-cuts in Lenovo Presidents' Day sales - unmissable deals for content creators ](data/articles/24d66b1ae2348b66833922a1c3348e64.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+Lenovo's Doorbuster deals are a Presidents' Day sales must-buy for creators who want to save big.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
+
+### 24. `FR` [Un développeur de Fallout explique pourquoi « le réalisme n’est pas toujours amusant »](data/articles/294a63cfb2723d12ee3317d18c3b26d3.html)
+**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
+Lorsque Bethesda Game Studios s’attelle à sa vision du monde post-apocalyptique de Fallout, le studio se rend vite compte qu’il est très dur de concilier réalisme et divertissement au sein d'un même jeu vidéo.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 25. `EN` [ Skip Amazon and Walmart — Best Buy's Presidents' Day sale has the best prices on TVs, appliances, AirPods, laptops, and more ](data/articles/a90cd9859bd6eec0ce5fd566d0022c35.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+Look no further: Best Buy's Presidents' Day sale has the best prices that I'd found on TVs, Apple devices, appliances, laptops, smartwatches, and more.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
+
+### 26. `FR` [Mauvaise nouvelle pour la PS6 : le lancement repoussé de plusieurs années](data/articles/8a9acc0c4bd0045249f2cae7e5eeb32a.html)
+**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
+La PS6 de Sony, attendue autour de 2027, pourrait finalement sortir en 2028 voire 2029, ont indiqué des sources proches du dossier à Bloomberg. En cause : la pénurie mondiale de RAM.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 27. `EN` [ Beat the RAM crisis with these laptop Presidents Day Sales for less than $400 ](data/articles/c300abd6102186e9459ff58efcdd8a1c.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+I’m a laptop expert, and these Presidents Day Sales deals are the only ones I’d spend my money on.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Numerama">
+
+### 28. `FR` [Quand sort le revival de la série Scrubs ?](data/articles/daeca70c90dc382efa76cdc2215c6e0b.html)
+**Source:** Numerama | **Tags:** `Tech` `Numerique` `Societe`
+Scrubs, la fameuse sitcom des années 2000, qui nous plongeait dans le quotidien d'un hôpital, va connaître un revival dans les prochains mois. Casting, date de sortie, bande-annonce, histoire... Voici tout ce que l'on sait déjà sur le retour de la série culte, pour une saison 10.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="tech" data-source="TechRadar">
+
+### 29. `EN` [ North Korean job scammers target JavaScript and Python developers with fake interview tasks spreading malware ](data/articles/e50a01d4486b68a3fc1aed91a9450d41.html)
+**Source:** TechRadar | **Tags:** `Tech` `Reviews` `Gadgets`
+Operation Dream Job is evolving once again, and now comes through malicious dependencies on bare-bones projects.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="tech" data-source="Frandroid">
+
+### 30. `FR` [Voici l’opérateur mobile préféré des Français en 2026 selon l’Arcep](data/articles/8e21c19848f7ce93ce129fbb0cffb25b.html)
+**Source:** Frandroid | **Tags:** `Tech` `Mobile` `Android`
+L'Arcep vient de publier son grand bilan de santé annuel des télécoms en France. Si notre connexion internet globale s'améliore doucement et que les pannes se font plus rares, un véritable fléau explose et parasite notre quotidien : le démarchage abusif et l'usurpation de numéros de téléphone.
 
 </div>
 
@@ -1964,17 +1962,9 @@ Best of all, Seinfeld’s mindset applies to any pursuit.
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Maddyness">
-
-### 7. `FR` [Doctrine poursuit sa conquête européenne avec une acquisition en Espagne](data/articles/1b174227c09a32b044068fe834607a50.html)
-**Source:** Maddyness | **Tags:** `Startups` `Entrepreneuriat` `France` | *Also on: Maddyness, Maddyness, Maddyness, Maddyness, Maddyness, Maddyness*
-L’article Doctrine poursuit sa conquête européenne avec une acquisition en Espagne est apparu en premier sur Maddyness - Le média pour comprendre l'économie de demain.
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 8. `EN` [Job Hugging Is Slowing Your Team Down. Here’s How Smart Companies Fix It](https://www.inc.com/will-swarts/job-hugging-is-a-hidden-threat-slowing-your-team-down-heres-how-smart-companies-fix-it/91300922)
+### 7. `EN` [Job Hugging Is Slowing Your Team Down. Here’s How Smart Companies Fix It](https://www.inc.com/will-swarts/job-hugging-is-a-hidden-threat-slowing-your-team-down-heres-how-smart-companies-fix-it/91300922)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 The longer leaders mistake stability for commitment, the more momentum, growth, and performance quietly slip away.
 
@@ -1982,7 +1972,7 @@ The longer leaders mistake stability for commitment, the more momentum, growth, 
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 9. `FR` [Chantage aux avis Google : comment les cybercriminels profitent de la lenteur de la plateforme](data/articles/3ee30b0e970bf0730529d34e764bfb14.html)
+### 8. `FR` [Chantage aux avis Google : comment les cybercriminels profitent de la lenteur de la plateforme](data/articles/3ee30b0e970bf0730529d34e764bfb14.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 De plus en plus de professionnels français sont victimes de cybercriminels qui publient de faux avis négatifs sur leur fiche Google et leur réclament de l'argent pour les supprimer.
 
@@ -1990,7 +1980,7 @@ De plus en plus de professionnels français sont victimes de cybercriminels qui 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 10. `EN` [Workday, PayPal, and The Washington Post Just Ditched Their CEOs. Is More Turnover Coming?](https://www.inc.com/stephanie-mehta/workday-paypal-and-the-washington-post-just-ditched-their-ceos-is-more-turnover-coming/91299657)
+### 9. `EN` [Workday, PayPal, and The Washington Post Just Ditched Their CEOs. Is More Turnover Coming?](https://www.inc.com/stephanie-mehta/workday-paypal-and-the-washington-post-just-ditched-their-ceos-is-more-turnover-coming/91299657)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Volatility, activist investors, and transformation pressures will continue to put pressure on CEOs.
 
@@ -1998,7 +1988,7 @@ Volatility, activist investors, and transformation pressures will continue to pu
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 11. `FR` [Que pensent les investisseurs de la French tech de Qui veut être mon associé ?](data/articles/78bafea8c0785423de258162bfe268b9.html)
+### 10. `FR` [Que pensent les investisseurs de la French tech de Qui veut être mon associé ?](data/articles/78bafea8c0785423de258162bfe268b9.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Trois membres de fonds de capital-risque donnent leur analyse sur le programme diffusé sur M6, qui, malgré plusieurs défauts, a le mérite de démocratiser l'investissement et l'entrepreneuriat.
 
@@ -2006,7 +1996,7 @@ Trois membres de fonds de capital-risque donnent leur analyse sur le programme d
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 12. `FR` [Comment apparaître sur les "meilleures listes" de ChatGPT, Perplexity, Google AI Mode et AI Overviews ?](data/articles/d63e7aab64f5580dd07846d78ca82bad.html)
+### 11. `FR` [Comment apparaître sur les "meilleures listes" de ChatGPT, Perplexity, Google AI Mode et AI Overviews ?](data/articles/d63e7aab64f5580dd07846d78ca82bad.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Se placer sur une page existante ou en créer une, chacun sa stratégie.
 
@@ -2014,7 +2004,7 @@ Se placer sur une page existante ou en créer une, chacun sa stratégie.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 13. `EN` [Inside Author Mark Manson’s Quest to Create an AI Life Coach That Doesn’t Suck](https://www.inc.com/jessica-stillman/inside-author-mark-mansons-quest-to-create-an-ai-life-coach-that-doesnt-suck/91299532)
+### 12. `EN` [Inside Author Mark Manson’s Quest to Create an AI Life Coach That Doesn’t Suck](https://www.inc.com/jessica-stillman/inside-author-mark-mansons-quest-to-create-an-ai-life-coach-that-doesnt-suck/91299532)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 The self-help guru is among the first to launch an AI coaching app. He won’t be the last.
 
@@ -2022,7 +2012,7 @@ The self-help guru is among the first to launch an AI coaching app. He won’t b
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 14. `EN` [Struggling With Budgets? These Fast-Growth CEOs Share Their Capital-Saving Strategies That Actually Work](https://www.inc.com/brian-contreras/budgets-fast-growth-ceos-share-budgeting-capital-saving-strategies-that-work/91293604)
+### 13. `EN` [Struggling With Budgets? These Fast-Growth CEOs Share Their Capital-Saving Strategies That Actually Work](https://www.inc.com/brian-contreras/budgets-fast-growth-ceos-share-budgeting-capital-saving-strategies-that-work/91293604)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Saving money is key to growing your business. Here’s how successful founders have pulled it off.
 
@@ -2030,7 +2020,7 @@ Saving money is key to growing your business. Here’s how successful founders h
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 15. `EN` [More Than a Century Ago, Thomas Edison Imagined a Better Battery. Now Scientists Are Making It Real](https://www.inc.com/chris-morris/more-than-a-century-ago-thomas-edison-imagined-a-better-battery-now-scientists-are-making-it-real/91302807)
+### 14. `EN` [More Than a Century Ago, Thomas Edison Imagined a Better Battery. Now Scientists Are Making It Real](https://www.inc.com/chris-morris/more-than-a-century-ago-thomas-edison-imagined-a-better-battery-now-scientists-are-making-it-real/91302807)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Demand for power is surging, thanks to AI. Can an idea from Thomas Edison help solve the problem?
 
@@ -2038,7 +2028,7 @@ Demand for power is surging, thanks to AI. Can an idea from Thomas Edison help s
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 16. `EN` [A Cheaper, Cold‑Proof EV Battery Is Coming to Cars This Year—and It Doesn’t Use Lithium](https://www.inc.com/leila-sheridan/a-cheaper-cold-proof-ev-battery-is-coming-to-cars-this-year-and-it-doesnt-use-lithium/91301340)
+### 15. `EN` [A Cheaper, Cold‑Proof EV Battery Is Coming to Cars This Year—and It Doesn’t Use Lithium](https://www.inc.com/leila-sheridan/a-cheaper-cold-proof-ev-battery-is-coming-to-cars-this-year-and-it-doesnt-use-lithium/91301340)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 The technology promises better cold-weather performance, lower costs, and fewer global trade problems.
 
@@ -2046,7 +2036,7 @@ The technology promises better cold-weather performance, lower costs, and fewer 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 17. `EN` [African defensetech Terra Industries, founded by two Gen Zers, raises additional $22M in a month](data/articles/c415155d21ca2a0c95b44c8baecfba1c.html)
+### 16. `EN` [African defensetech Terra Industries, founded by two Gen Zers, raises additional $22M in a month](data/articles/c415155d21ca2a0c95b44c8baecfba1c.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
 Terra Industries, the African defense company, announced Monday that it had secured an additional $22 million in funding to further expand the business.
 
@@ -2054,7 +2044,7 @@ Terra Industries, the African defense company, announced Monday that it had secu
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 18. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
+### 17. `FR` [De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ?](data/articles/641a0f67a5b4033f66c694e475ed99c5.html)
 **Source:** FrenchWeb | **Tags:** `Startups` `Tech` `France`
 L’industrie se reconfigure sous l’effet conjugué de l’électronique de puissance, du logiciel et de l’interconnexion des systèmes. Ses produits deviennent des architectures complexes, ses usines des environnements numériques, et ses cycles d’innovation des trajectoires longues. Invité de Perspective, Bruno Bouygues, dirigeant de GYS, entreprise basée à Laval et présente dans cent trente pays, décrit cette …
 L’article De l’électronique de puissance à l’OS industriel : la trajectoire de GYS ? est apparu en premier sur FW.MEDIA.
@@ -2063,7 +2053,7 @@ L’article De l’électronique de puissance à l’OS industriel : la trajecto
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 19. `FR` [Mi-robot, mi-animal, capable de se reproduire, de déplacer des objets, de se soigner... Voici le xénobot](data/articles/c0f048c1cff9fb649dc57d0068e7be8c.html)
+### 18. `FR` [Mi-robot, mi-animal, capable de se reproduire, de déplacer des objets, de se soigner... Voici le xénobot](data/articles/c0f048c1cff9fb649dc57d0068e7be8c.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Un étrange robot naturel a vu le jour grâce à des cellules vivantes d'une grenouille.
 
@@ -2071,7 +2061,7 @@ Un étrange robot naturel a vu le jour grâce à des cellules vivantes d'une gre
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="Journal du Net">
 
-### 20. `FR` [Bonne nouvelle pour des milliers de Français : ils peuvent désormais bénéficier de trimestres de retraite supplémentaires](data/articles/90f06f489bb8c74c7c8c2e7b447bea78.html)
+### 19. `FR` [Bonne nouvelle pour des milliers de Français : ils peuvent désormais bénéficier de trimestres de retraite supplémentaires](data/articles/90f06f489bb8c74c7c8c2e7b447bea78.html)
 **Source:** Journal du Net | **Tags:** `Business` `Tech` `Economie`
 Alors que l'incertitude est toujours présente à propos de l'âge de départ à la retraite, un décret vient d'officialiser des mesures pour accorder des trimestres supplémentaires.
 
@@ -2079,7 +2069,7 @@ Alors que l'incertitude est toujours présente à propos de l'âge de départ à
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 21. `EN` [Neuroscience Says This Is What Really Happens to Your Brain When You Don’t Get Enough Sleep](https://www.inc.com/bill-murphy-jr/neuroscience-says-this-is-what-really-happens-to-your-brain-when-you-dont-get-enough-sleep/91303255)
+### 20. `EN` [Neuroscience Says This Is What Really Happens to Your Brain When You Don’t Get Enough Sleep](https://www.inc.com/bill-murphy-jr/neuroscience-says-this-is-what-really-happens-to-your-brain-when-you-dont-get-enough-sleep/91303255)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Don’t sleep on sleep. It’s part of what makes everything else possible.
 
@@ -2087,7 +2077,7 @@ Don’t sleep on sleep. It’s part of what makes everything else possible.
 
 <div class="article-item" data-lang="fr" data-category="entrepreneurship" data-source="FrenchWeb">
 
-### 22. `FR` [Les actifs latents, le portefeuille invisible du venture](data/articles/a3a703ad8fe3445962cd4c07960db459.html)
+### 21. `FR` [Les actifs latents, le portefeuille invisible du venture](data/articles/a3a703ad8fe3445962cd4c07960db459.html)
 **Source:** FrenchWeb | **Tags:** `Startups` `Tech` `France`
 Il y a, dans le venture, une querelle permanente qui ressemble à une mauvaise mise en scène. D’un côté, le récit de la victoire : licornes, tours sursouscrits,  photos de family offices ravis et de fondateurs pressés (n’est ce pas Arthur). De l’autre, le récit du déclassement : valorisations irréelles, levées qui n’ont rien réglé, …
 L’article Les actifs latents, le portefeuille invisible du venture est apparu en premier sur FW.MEDIA.
@@ -2096,7 +2086,7 @@ L’article Les actifs latents, le portefeuille invisible du venture est apparu 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 23. `EN` [Big Tech Confirms DHS Subpoenas: Meta and Google Users Targeted Over Anti-ICE Posts](https://www.inc.com/kevin-haynes/big-tech-confirms-dhs-subpoenas-meta-and-google-users-targeted-over-anti-ice-posts/91303363)
+### 22. `EN` [Big Tech Confirms DHS Subpoenas: Meta and Google Users Targeted Over Anti-ICE Posts](https://www.inc.com/kevin-haynes/big-tech-confirms-dhs-subpoenas-meta-and-google-users-targeted-over-anti-ice-posts/91303363)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Major tech firms acknowledged they have complied with DHS subpoenas aiming to ID anti-ICE protestors
 
@@ -2104,7 +2094,7 @@ Major tech firms acknowledged they have complied with DHS subpoenas aiming to ID
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 24. `EN` [As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck](data/articles/f7275eb2393110d25fd44d8f60f5a2c4.html)
+### 23. `EN` [As AI data centers hit power limits, Peak XV backs Indian startup C2i to fix the bottleneck](data/articles/f7275eb2393110d25fd44d8f60f5a2c4.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
 C2i has raised $15 million as it tests a grid-to-GPU approach to reducing power losses in AI data centers.
 
@@ -2112,7 +2102,7 @@ C2i has raised $15 million as it tests a grid-to-GPU approach to reducing power 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 25. `EN` [Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure](data/articles/2bd2cc215ebda8ba09b16dcc32f3ef07.html)
+### 24. `EN` [Blackstone backs Neysa in up to $1.2B financing as India pushes to build domestic AI infrastructure](data/articles/2bd2cc215ebda8ba09b16dcc32f3ef07.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
 Neysa is targeting deployments of more than 20,000 GPUs over time as demand for local AI compute accelerates.
 
@@ -2120,7 +2110,7 @@ Neysa is targeting deployments of more than 20,000 GPUs over time as demand for 
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 26. `EN` [OpenClaw creator Peter Steinberger joins OpenAI](data/articles/0aae42736e23fff8c217ddfe1214d055.html)
+### 25. `EN` [OpenClaw creator Peter Steinberger joins OpenAI](data/articles/0aae42736e23fff8c217ddfe1214d055.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
 OpenAI said OpenClaw will live on as an open source project.
 
@@ -2128,7 +2118,7 @@ OpenAI said OpenClaw will live on as an open source project.
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 27. `EN` [Nike’s New Salary Data Reveals Tech Jobs Paying Up to $425,000](https://www.inc.com/kevin-haynes/nikes-new-salary-data-reveals-tech-jobs-paying-up-to-425000/91303327)
+### 26. `EN` [Nike’s New Salary Data Reveals Tech Jobs Paying Up to $425,000](https://www.inc.com/kevin-haynes/nikes-new-salary-data-reveals-tech-jobs-paying-up-to-425000/91303327)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 As part of a realignment focused on technology and automation, the Iconic sportswear brand is looking to hire software engineers, designers and a marketing VP
 
@@ -2136,7 +2126,7 @@ As part of a realignment focused on technology and automation, the Iconic sports
 
 <div class="article-item" data-lang="es" data-category="entrepreneurship" data-source="Inc.com">
 
-### 28. `EN` [Anthropic Blasts Pentagon’s Use of Its AI Tool in Venezuela Raid—May Void $200M Contract](https://www.inc.com/kevin-haynes/anthropic-blasts-pentagons-use-of-its-ai-tool-in-venezuela-raid-may-void-200m-contract/91303320)
+### 27. `EN` [Anthropic Blasts Pentagon’s Use of Its AI Tool in Venezuela Raid—May Void $200M Contract](https://www.inc.com/kevin-haynes/anthropic-blasts-pentagons-use-of-its-ai-tool-in-venezuela-raid-may-void-200m-contract/91303320)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 CEO Dario Amodei says Defense Department violated contract by deploying its AI technology to kidnap Venezuela President Maduro
 
@@ -2144,7 +2134,7 @@ CEO Dario Amodei says Defense Department violated contract by deploying its AI t
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="Inc.com">
 
-### 29. `EN` [Emotional Restraint Is Holding You Back. Here’s How Leaders Can Utilize Presence to Drive Results](https://www.inc.com/moshe-engelberg/emotional-restraint-is-holding-you-back-heres-how-leaders-can-utilize-presence-to-drive-results/91301200)
+### 28. `EN` [Emotional Restraint Is Holding You Back. Here’s How Leaders Can Utilize Presence to Drive Results](https://www.inc.com/moshe-engelberg/emotional-restraint-is-holding-you-back-heres-how-leaders-can-utilize-presence-to-drive-results/91301200)
 **Source:** Inc.com | **Tags:** `Business` `Startups` `Leadership`
 Emotional presence is not a distraction from performance. It’s actually a prerequisite for sustained performance.
 
@@ -2152,9 +2142,17 @@ Emotional presence is not a distraction from performance. It’s actually a prer
 
 <div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
 
-### 30. `EN` [What the Epstein files reveal about EV startups and Silicon Valley](data/articles/a23a4cd8fe81115df2c6a092f90296ca.html)
+### 29. `EN` [What the Epstein files reveal about EV startups and Silicon Valley](data/articles/a23a4cd8fe81115df2c6a092f90296ca.html)
 **Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
 Will the Epstein revelations lead to broader fallout in Silicon Valley?
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="entrepreneurship" data-source="TechCrunch Startups">
+
+### 30. `EN` [How to get into a16z’s super-competitive Speedrun startup accelerator program](data/articles/161c20c0e2786554a57c0e0b22386842.html)
+**Source:** TechCrunch Startups | **Tags:** `Startups` `Fundraising` `Tech`
+TechCrunch spoke to a16z partner Joshua Lu for some tips on standing out for the Speedrun program.
 
 </div>
 
@@ -2166,105 +2164,17 @@ Will the Epstein revelations lead to broader fallout in Silicon Valley?
 
 ## Stock Market & Finance / Bourse & Finance
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 1. `EN` [Crypto Billionaire Changpeng Zhao Calls Prison A 'Bad Experience,' Reveals What A Prison Guard Told Him When He Was Processed](data/articles/bb8a65fe28b73512dadc25d41b580939.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 2. `EN` [Is Sandisk the Next Nvidia?](data/articles/be444e4e9cab5f58a2ffe9696c1ee516.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 3. `EN` [Aristotle Small Cap Equity Fund Sold eHealth (EHTH) Due to Deteriorated Fundamental Performance](data/articles/5659f98751de52da3f6bec41453a330d.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
-
-### 4. `EN` [These might be the winners from the latest round of Chinese new year AI launches](https://www.marketwatch.com/story/these-might-be-the-winners-from-the-latest-round-of-chinese-new-year-ai-launches-06779445?mod=mw_rss_topstories)
-**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-The holiday period is crucial for the launch of new products and Chinese AI plays are trying to prove they are as good as, or close enough to, global frontier models from OpenAI and Google.
-
-</div>
-
-<div class="article-item" data-lang="es" data-category="finance" data-source="Yahoo Finance">
-
-### 5. `EN` [Westgold completes Mt Henry sale to Alicanto Minerals](data/articles/311da87b914f9628b9eac439c1b521c7.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 6. `EN` [Will Perella Weinberg Partners (PWP) be able to Create Shareholder Value Over the Coming Years?](data/articles/289c9dc4f2b3dcceb41c0abc3a1c26e2.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 7. `EN` [Should You Sell Your Stake in Nu Skin Enterprises (NUS)?](data/articles/dbea1e229689af40adb8d84cab67efca.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 8. `EN` [What Makes WesBanco (WSBC) an Investment Choice?](data/articles/0dec4c0ba8db7ca970d22eb81ea4f2cd.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 9. `EN` [Multiple Catalysts Prompted Aristotle Small Cap Equity Fund’s Primo Brands Corporation (PRMB) Addition](data/articles/d67e7ebf759d66bf3baa4ddcd9b5f0d4.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 10. `EN` [Slower-Than-Anticipated Regulatory Approvals Hurt Itron (ITRI) in Q4](data/articles/4b074a60d22a45d3e620b30c943e26c6.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="de" data-category="finance" data-source="Investing.com">
-
-### 11. `EN` [DUBAI - OMNIYAT Group reports record $5.4 billion in sales for 2025](https://www.investing.com/news/company-news/dubai--omniyat-group-reports-record-54-billion-in-sales-for-2025-93CH-4507668)
+### 1. `EN` [Amcomri Group shifts to electronic shareholder communications](https://www.investing.com/news/company-news/amcomri-group-shifts-to-electronic-shareholder-communications-93CH-4507698)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
 </div>
 
-<div class="article-item" data-lang="nl" data-category="finance" data-source="Investing.com">
+<div class="article-item" data-lang="fr" data-category="finance" data-source="Yahoo Finance">
 
-### 12. `EN` [Otter Tail earnings on deck: Can diversified model deliver growth?](https://www.investing.com/news/earnings/otter-tail-earnings-on-deck-can-diversified-model-deliver-growth-93CH-4507667)
-**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 13. `EN` [Strong Competitive Position Drove Haemonetics Corporation’s (HAE) Earnings Growth](data/articles/12c3e27ee8d149be64e99ca2cd6c5c17.html)
+### 2. `FR` [Medlog opens new Saudi logistics park](data/articles/74feb42c5eda4f4f89ee93d2d29f8b90.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2272,23 +2182,7 @@ The holiday period is crucial for the launch of new products and Chinese AI play
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 14. `EN` [Should You Invest in LKQ Corporation (LKQ)?](data/articles/e51f15e5fc8f852c892d112138ce1f5e.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 15. `EN` [Do You Believe in the Growth Potential of IDACORP (IDA)?](data/articles/60005e9c79b22e12229fde261fe219d9.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="de" data-category="finance" data-source="Yahoo Finance">
-
-### 16. `EN` [Here’s What Supporting Cohen &amp; Steers (CNS)](data/articles/3965f4cf19d3944ed7177638a50af1fa.html)
+### 3. `EN` [Is the Vanguard Dividend Appreciation ETF a Buy Now?](data/articles/bf9b4661f3a18b46ecbc6ce7c3714e36.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2296,31 +2190,15 @@ The holiday period is crucial for the launch of new products and Chinese AI play
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 17. `EN` [GreenPower Motor regains compliance with Nasdaq listing requirements](https://www.investing.com/news/company-news/greenpower-motor-regains-compliance-with-nasdaq-listing-requirements-93CH-4507666)
+### 4. `EN` [Labcorp earnings ahead: Can diagnostics giant match rivals?](https://www.investing.com/news/earnings/labcorp-earnings-ahead-can-diagnostics-giant-match-rivals-93CH-4507697)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
-
-### 18. `EN` [PJM approves major transmission project for central Ohio](https://www.investing.com/news/company-news/pjm-approves-major-transmission-project-for-central-ohio-93CH-4507665)
-**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets` | *Also on: Investing.com*
-
-
-</div>
-
 <div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 19. `EN` [What Makes Atlantic Union Bankshares Corporation (AUB) a High-Quality Bank Stock?](data/articles/ca91e5954e422e7e13729dc1695d1788.html)
-**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
-
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
-
-### 20. `EN` [Here’s What Makes AptarGroup (ATR) a Long-Term Holding](data/articles/daaa17074d45386296ca807f37773a30.html)
+### 5. `EN` [Britons say they need nearly £9,000 in cash before opening Stocks and Shares ISA, research finds](data/articles/1ee857817a19b197d8fa9a476952ac82.html)
 **Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
@@ -2328,7 +2206,79 @@ The holiday period is crucial for the launch of new products and Chinese AI play
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 21. `EN` [VertiGIS acquisition of 1Spatial sees reduction in supporting shares](https://www.investing.com/news/company-news/vertigis-acquisition-of-1spatial-sees-reduction-in-supporting-shares-93CH-4507663)
+### 6. `EN` [Morocco stocks higher at close of trade; Moroccan All Shares up 1.37%](https://www.investing.com/news/stock-market-news/morocco-stocks-higher-at-close-of-trade-moroccan-all-shares-up-137-4507695)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="finance" data-source="Yahoo Finance">
+
+### 7. `FR` [Liquidia Corporation (LQDA) Gains Momentum Following Overturning of District Court Patent Ruling](data/articles/38f2ef876d0bdc9294cbb10a73d2aa19.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+
+### 8. `EN` [‘I feel the clock ticking’: My wife and I are in our 60s — and employ 48 people in a small town. Can we ever retire?](https://www.marketwatch.com/story/i-feel-the-clock-ticking-my-wife-and-i-are-in-our-60s-and-employ-48-people-in-a-small-town-can-we-ever-retire-2399ba41?mod=mw_rss_topstories)
+**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
+“We could survive financially, but my people would not.”
+
+</div>
+
+<div class="article-item" data-lang="nl" data-category="finance" data-source="Yahoo Finance">
+
+### 9. `EN` [Legendary skeptic delivers 6-word verdict on Palantir’s hot streak](data/articles/1707e12e0a7abab77fb3f97b9eb7f356.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
+
+### 10. `EN` [German regulator grants reimbursement status to Morphic Medical’s obesity device](https://www.investing.com/news/company-news/german-regulator-grants-reimbursement-status-to-morphic-medicals-obesity-device-93CH-4507694)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="es" data-category="finance" data-source="Investing.com">
+
+### 11. `EN` [Rubio visits central Europe to bolster ties with pro-Trump leaders](https://www.investing.com/news/world-news/rubio-to-visit-eastern-europe-bolster-ties-with-protrump-leaders-4507272)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="es" data-category="finance" data-source="Investing.com">
+
+### 12. `EN` [DTE Energy earnings on deck: Can data center deal power 2026?](https://www.investing.com/news/earnings/dte-energy-earnings-on-deck-can-data-center-deal-power-2026-93CH-4507693)
+**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 13. `EN` [Fabrinet (FN) Advances as Optical Hardware Demand Strengthens](data/articles/c95f9e084b0890409d64f8297e90e4c6.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+
+### 14. `EN` [‘It’s a life-changing sum’: Can I stop my kids from using their inheritance to support political causes I vehemently oppose?](https://www.marketwatch.com/story/its-a-life-changing-sum-can-i-stop-my-kids-from-using-their-inheritance-to-support-political-causes-i-vehemently-oppose-90809fd7?mod=mw_rss_topstories)
+**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
+”I would hate for our money to end up in the hands of organizations that oppose everything we have supported throughout our lives.”
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
+
+### 15. `EN` [Norway stocks higher at close of trade; Oslo OBX up 0.09%](https://www.investing.com/news/stock-market-news/norway-stocks-higher-at-close-of-trade-oslo-obx-up-009-4507692)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
@@ -2336,73 +2286,121 @@ The holiday period is crucial for the launch of new products and Chinese AI play
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 22. `EN` [Sonoco faces earnings test as metal packaging pivot continues](https://www.investing.com/news/earnings/sonoco-faces-earnings-test-as-metal-packaging-pivot-continues-93CH-4507662)
+### 16. `EN` [Israel stocks higher at close of trade; TA 35 up 0.37%](https://www.investing.com/news/stock-market-news/israel-stocks-higher-at-close-of-trade-ta-35-up-037-4507691)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 23. `EN` [Hegseth reportedly considering severe penalty on Anthropic as negotiations stall](https://www.marketwatch.com/story/hegseth-reportedly-considering-severe-penalty-on-anthropic-as-negotiations-stall-16dae92f?mod=mw_rss_topstories)
-**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-Defense Sec. Pete Hegseth reportedly is close to putting Claude maker Anthropic on a “supply chain risk” list that would be a devastating blow to its finances.
+### 17. `EN` [JFrog (FROG) Gains Momentum Following 26% Revenue Growth Beat](data/articles/3ffdfd845f2228d17ff2f1f8d82945c5.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 24. `EN` [Sector rotation into defensives not great sign for market, says Citi’s Willer](https://www.investing.com/news/stock-market-news/sector-rotation-into-defensives-not-great-sign-for-market-says-citis-willer-4507658)
+### 18. `EN` [Greece stocks lower at close of trade; Athens General Composite down 0.43%](https://www.investing.com/news/stock-market-news/greece-stocks-lower-at-close-of-trade-athens-general-composite-down-043-4507690)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
+<div class="article-item" data-lang="en" data-category="finance" data-source="Investing.com">
 
-### 25. `EN` [Buying stocks everyone admires is a recipe for underperformance — but Apple breaks the rule](https://www.marketwatch.com/story/buying-stocks-everyone-admires-is-a-recipe-for-underperformance-but-apple-breaks-the-rule-26de6e2f?mod=mw_rss_topstories)
-**Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-Unloved companies with rock-bottom expectations are the real engines of your portfolio.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="finance" data-source="Investing.com">
-
-### 26. `FR` [UBS upgrades Melco Resorts stock rating to Buy despite price target cut](https://www.investing.com/news/analyst-ratings/ubs-upgrades-melco-resorts-stock-rating-to-buy-despite-price-target-cut-93CH-4507657)
+### 19. `EN` [Shares edge up in thinly-traded holiday markets, Japan data disappoint](https://www.investing.com/news/economy-news/asia-shares-becalmed-by-holidays-dire-japan-data-4507325)
 **Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
 
 
 </div>
 
-<div class="article-item" data-lang="fr" data-category="finance" data-source="Investing.com">
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
 
-### 27. `FR` [iShares Physical Gold ETC issues 173,000 new securities](https://www.investing.com/news/company-news/ishares-physical-gold-etc-issues-173000-new-securities-93CH-4507656)
-**Source:** Investing.com | **Tags:** `Finance` `Trading` `Markets`
+### 20. `EN` [Trex Company (TREX) Under Pressure as Housing Weakness Impacts Outdoor Living Demand](data/articles/ec209de632e8d0ff434252fb86b1298c.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 21. `EN` [US manufacturing pipeline grows, firms plan $1B in new factories](data/articles/0681ad6a496889fd027afe934643526e.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 22. `EN` [Shift4 Payments (FOUR) Remains in Focus Amid Volatility in Payment Technology Stocks](data/articles/dd430d30ae3ba903719af86e9047b37a.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 23. `EN` [Vital Farms (VITL) Faces Short-Term Pressure Despite Continued Demand for Ethical Food Products](data/articles/7cdc02fe54f2db8d99816edabb95d501.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 24. `EN` [RBC Bearings (RBC) Remains a Core Holding Amid Expectations for 2026 Growth](data/articles/7c307100c02bbbefc321ca4832404811.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 25. `EN` [Germany’s Hapag-Lloyd buying Zim of Israel for $4.2 billion](data/articles/afb462a58581165b8e7cc67ad21ba45f.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
 
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 28. `EN` [The shale boom that made the U.S. the world’s top oil producer is nearing a crucial turning point](https://www.marketwatch.com/story/the-shale-boom-that-made-the-u-s-the-worlds-top-oil-producer-is-nearing-a-crucial-turning-point-a7bf72f8?mod=mw_rss_topstories)
+### 26. `EN` [‘I’m close to retiring’: I’m behind on my property tax. Is this a really bad time to sell my house?](https://www.marketwatch.com/story/im-close-to-retiring-im-behind-on-my-property-taxes-is-this-a-bad-time-to-sell-my-house-40954efd?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-The shale-oil revolution that transformed the U.S. into the world’s top oil producer is entering a new phase — one that could see America’s hard-fought lead in energy erode in fewer than five years as oil production growth peters out.
+“I’ve never been late on a mortgage, so this makes me nervous.”
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 29. `EN` [These markets have been ‘bangers’ this year. Here’s why they have further to rally, says Goldman Sachs.](https://www.marketwatch.com/story/these-asian-markets-have-been-bangers-this-year-heres-why-they-have-further-to-rally-says-goldman-sachs-3467c694?mod=mw_rss_topstories)
+### 27. `EN` [‘Am I crazy?’ My boyfriend’s parents say he doesn’t earn enough to marry me. Who is to blame here?](https://www.marketwatch.com/story/weve-been-dating-for-5-years-my-boyfriends-parents-say-he-doesnt-earn-enough-to-marry-should-i-speak-to-his-father-44b48700?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-South Korea and Japan have left Wall Street in the dust in 2026
+The Moneyist: “I have a Valentine’s message for you, but you won’t read it in a Hallmark card.”
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 28. `EN` [Ares Management Corp (ARES) Deepening Exposure to the AI Space](data/articles/274962118c3e1d85b62c581fdadab936.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="finance" data-source="Yahoo Finance">
+
+### 29. `EN` [Snap Inc (SNAP) Pivoting to Profitable Growth](data/articles/e30125e786df0f5b7c56ca339af2b2fb.html)
+**Source:** Yahoo Finance | **Tags:** `Finance` `Markets` `Economy`
+
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="finance" data-source="MarketWatch">
 
-### 30. `EN` [The seeds of the dramatic selloff in AI losers were planted as far back as 2022, says Deutsche Bank](https://www.marketwatch.com/story/the-seeds-of-the-dramatic-sell-off-in-ai-losers-were-planted-as-far-back-as-2022-says-deutsche-bank-f144f47b?mod=mw_rss_topstories)
+### 30. `EN` [Shipping industry set to consolidate as Hapag-Lloyd to buy Israeli firm for 58% premium](https://www.marketwatch.com/story/shipping-industry-set-to-consolidate-as-hapag-lloyd-to-buy-israeli-firm-for-58-premium-35839cf0?mod=mw_rss_topstories)
 **Source:** MarketWatch | **Tags:** `Finance` `Markets` `Stocks`
-Deutsche Bank says angst behind the selloff of over stocks vulnerable to AI disruption has been simmering awhile.
+Shipping giant Hapag-Lloyd agreed to buy Israel’s ZIM Integrated Shipping Services for $4.2 billion.
 
 </div>
 
@@ -2414,9 +2412,143 @@ Deutsche Bank says angst behind the selloff of over stocks vulnerable to AI disr
 
 ## Crypto & Blockchain / Crypto & Blockchain
 
+<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
+
+### 1. `EN` [Harvard Cuts Bitcoin ETF Stake, Adds Ethereum Exposure in Q4 Filing](data/articles/f43c078669fa029e4f85abfeb071f163.html)
+**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT` | *Also on: The Block*
+Harvard Management Company trimmed its Bitcoin ETF position while starting a new stake in a spot Ethereum fund.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
+
+### 2. `FR` [Crypto : Pi Coin chute de 24 % en 24 heures et relance les doutes sur Pi Network](data/articles/bcbe9e27a95fcf8418edc58b6b6adfa7.html)
+**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
+La crypto Pi Network traverse une zone critique. Son token Pi Coin perd 24 % en une journée. Décryptage d’un signal qui interroge.
+L’article Crypto : Pi Coin chute de 24 % en 24 heures et relance les doutes sur Pi Network est apparu en premier sur Cointribune.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
+
+### 3. `EN` [How South Korea is using AI to detect crypto market manipulation](data/articles/312c61da572f3f209cfc835e80edcc7c.html)
+**Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
+South Korea’s regulators are deploying AI systems to monitor crypto trading, flag manipulation and strengthen digital asset enforcement.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
+
+### 4. `EN` [EU Moves to Ban All Crypto Transactions with Russian Entities: Report](data/articles/290aa740880cf29cd9ef37b46b8d6ef8.html)
+**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
+Lawmakers want to make it illegal for any party in the EU to transact with Russian counterparties using crypto, to help enforce sanctions.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
+
+### 5. `FR` [Je gagne du Bitcoin en chauffant ma maison](data/articles/92c36232c09a9056c12561c21205f16d.html)
+**Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
+Dans cette vidéo, je montre comment une machine de minage de Bitcoin peut remplacer un radiateur classique : même chaleur, mais produite en effectuant un travail. Ce n’est pas du trading de Bitcoin, c’est une manière plus rationnelle de se chauffer en gagnant un « cashback » en sats sur sa facture.
+L’article Je gagne du Bitcoin en chauffant ma maison est apparu en premier sur Cryptoast.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
+
+### 6. `FR` [Bitcoin : les sorties ralentissent sur les ETF et produits d’investissement cryptos (CoinShares)](data/articles/62e0749ab9d8ac4f604015243c40b068.html)
+**Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
+Les sorties sur les ETF Bitcoin et produits crypto ont légèrement continué la semaine dernière, mais la situation semble se stabiliser.
+L’article Bitcoin : les sorties ralentissent sur les ETF et produits d’investissement cryptos (CoinShares) est apparu en premier sur Journal du Coin.
+
+</div>
+
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
 
-### 1. `EN` [Harvard cuts bitcoin exposure by 20%, adds new ether position](data/articles/2ae89e230545ad2b01d87a68c670de5e.html)
+### 7. `EN` [Crypto mining can help energy volatility, Paradigm responds to policy onslaught](data/articles/2f20d52efd750374de3076029a814343.html)
+**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
+As U.S. lawmakers consider limits on data and mining facilities because of energy usage, the industry wants to explain that their crypto worries are unfounded.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
+
+### 8. `EN` [U.S. Crypto Funds Shed $403M Amid Price Weakness: CoinShares](data/articles/fc77d4f4189cced16ffcf3383507bd68.html)
+**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
+While the U.S. exited crypto funds, Europe and Canada posted inflows as international investors bought the dip.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
+
+### 9. `FR` [Bitcoin, un rebond technique possible à court terme ?](data/articles/1e9b1fc12a802c08fc2a1a3555e5bebb.html)
+**Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
+Cela fait maintenant 133 jours que le cours du bitcoin est entré dans sa séquence cyclique de marché baissier, l’étape corrective du fameux cycle de 4 ans. Le drawdown a atteint 52 % sur la séance du vendredi 26 février et le marché essaie de se stabiliser dans la zone des 65 000 / 70 000 dollars US. Peut-on envisager un dead cat bounce au stade actuel du bear market ?
+L’article Bitcoin, un rebond technique possible à court terme ? est apparu en premier sur Cryptoast.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
+
+### 10. `FR` [Ledger offre du Bitcoin : Profitez de la promo flash pour le Nouvel An chinois](data/articles/8b6957661d17778396b79f610eb7d73b.html)
+**Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
+Ledger lance aujourd'hui une offre limitée de 96 h pour le Nouvel An chinois et vous offre du bitcoin pour tout achat d'un appareil. 
+L’article Ledger offre du Bitcoin : Profitez de la promo flash pour le Nouvel An chinois est apparu en premier sur Journal du Coin.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
+
+### 11. `FR` [Les traders misent 84 millions de dollars sur le Bitcoin pour 2026](data/articles/558a7e109863cbe61fa76abbe697fe86.html)
+**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
+Les traders placent d'importants paris sur la trajectoire du Bitcoin jusqu'en 2026 sur les principales plateformes de prédiction. L'activité sur Polymarket, Kalshi et Myriad suggère un marché qui attend un progrès progressif plutôt qu'une envolée rapide. Plus de 84 millions de dollars de volume combiné sur sept marchés reflètent un optimisme prudent, équilibré par une couverture constante contre le risque à la baisse. Alors que la confiance semble se renforcer plus tard dans l'année, les attentes à court terme restent mesurées.
+
+</div>
+
+<div class="article-item" data-lang="de" data-category="crypto" data-source="Decrypt">
+
+### 12. `EN` [Nexo Taps Bakkt For US Return Three Years After SEC Settlement Over Lending Product](data/articles/223fd339a2b6f6cc635347474aeede75.html)
+**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
+Its lending product faced scrutiny under former SEC Chair Gary Gensler
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
+
+### 13. `FR` [Du trading de crypto et d'actions sur X ? Ce cadre en dit plus sur les « Smart Cashtags »](data/articles/ec5e8b4ea75ca72d1c4ed36206aad359.html)
+**Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
+Prochainement, les Smart Cashtags devraient débarquer sur X pour faciliter le trading d'actions et de cryptomonnaies. Toutefois, ceux-ci ne devraient pas non plus transformer le réseau social en courtier. Que savons-nous ?
+L’article Du trading de crypto et d'actions sur X ? Ce cadre en dit plus sur les « Smart Cashtags » est apparu en premier sur Cryptoast.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
+
+### 14. `EN` [From Wall Street to Web3: This is crypto’s year of integration, Silicon Valley Bank says](data/articles/339eefcee42b2eb12ae1c758f0582313.html)
+**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
+From bank-led stablecoins to tokenized T-bills and AI-powered wallets, digital assets will move from pilot projects to financial plumbing this year.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
+
+### 15. `EN` [Binance Founder CZ: Privacy 'Missing Link' for Crypto Payments Adoption](data/articles/01e8594434666b9c2649de575ef9d5c7.html)
+**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
+Changpeng Zhao called on the industry to prioritise crypto privacy features, arguing that the gap is holding back mainstream adoption.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
+
+### 16. `EN` [Crypto services platform Nexo relaunches in the United States](data/articles/cb00419497d9246bcfdfb71acc74a62e.html)
+**Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
+Nexo exited the US in 2022, citing regulatory hostility toward the crypto industry from federal and state financial regulators.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
+
+### 17. `EN` [Harvard cuts bitcoin exposure by 20%, adds new ether position](data/articles/2ae89e230545ad2b01d87a68c670de5e.html)
 **Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
 The shift may be due to complex market dynamics, potentially reflecting the unwinding of a trade that capitalized on bitcoin treasury companies trading at premiums to their mNAV.
 
@@ -2424,7 +2556,7 @@ The shift may be due to complex market dynamics, potentially reflecting the unwi
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
 
-### 2. `EN` [Nexo re-enters the U.S. market three years after its ‘dead end’ exit](data/articles/94751a6744785c98a296db1fc6c36479.html)
+### 18. `EN` [Nexo re-enters the U.S. market three years after exiting due to regulatory issues](data/articles/94751a6744785c98a296db1fc6c36479.html)
 **Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
 The digital assets wealth platform’s rollout includes regulated yield accounts, credit lines and exchange access backed by Bakkt.
 
@@ -2432,15 +2564,15 @@ The digital assets wealth platform’s rollout includes regulated yield accounts
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 3. `EN` [Ray Dalio’s world order warning revives case for Bitcoin as neutral money](data/articles/a82ba58b8f71df5aca4183b6e8e59043.html)
+### 19. `EN` [Ray Dalio’s world order warning revives case for Bitcoin as neutral money](data/articles/a82ba58b8f71df5aca4183b6e8e59043.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
-Ray Dalio warns that the rules‑based order is now over, putting monetary debasement, dollar risk, and neutral, permissionless financial rails back at the center of the macro conversation.
+Ray Dalio warns that the rules‑based order is now over, putting monetary debasement, dollar risk and neutral, permissionless financial rails back at the center of the macro conversation.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
 
-### 4. `EN` [Bitcoin could fall to $10,000 as U.S. recession risk builds, Mike McGlone says](data/articles/f97bd66ccea427de83cb56427e4d42a3.html)
+### 20. `EN` [Bitcoin could fall to $10,000 as U.S. recession risk builds, Mike McGlone says](data/articles/f97bd66ccea427de83cb56427e4d42a3.html)
 **Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
 McGlone links bitcoin’s downturn to record U.S. market cap-to-GDP levels, low equity volatility and rising gold prices, warning of potential contagion into stocks.
 
@@ -2448,7 +2580,7 @@ McGlone links bitcoin’s downturn to record U.S. market cap-to-GDP levels, low 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 5. `EN` [Here’s what happened in crypto today](data/articles/78f7a83e386d3f9bd80908be49f28870.html)
+### 21. `EN` [Here’s what happened in crypto today](data/articles/78f7a83e386d3f9bd80908be49f28870.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Need to know what happened in crypto today? Here is the latest news on daily trends and events impacting Bitcoin price, blockchain, DeFi, NFTs, Web3 and crypto regulation.
 
@@ -2456,7 +2588,7 @@ Need to know what happened in crypto today? Here is the latest news on daily tre
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
 
-### 6. `FR` [Les Pays-Bas vont-ils tuer l'investissement avec leur cadre fiscal appliqué aux plus-values latentes ?](data/articles/42a8b58b95ef31d9442c359b3d9ae04f.html)
+### 22. `FR` [Les Pays-Bas vont-ils tuer l'investissement avec leur cadre fiscal appliqué aux plus-values latentes ?](data/articles/42a8b58b95ef31d9442c359b3d9ae04f.html)
 **Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
 L’imposition reste un sujet délicat et hautement polémique, en particulier lorsqu’il tente de s’appliquer aux marchés spéculatifs, comme les actions, l’immobilier ou encore les cryptomonnaies. Une réalité qui pourrait bien franchir une frontière symbolique aux Pays-Bas, avec un projet de loi qui souhaite taxer les plus-values latentes à hauteur de 36 %. 
 L’article Les Pays-Bas vont-ils tuer l'investissement avec leur cadre fiscal appliqué aux plus-values latentes ? est apparu en premier sur Cryptoast.
@@ -2465,7 +2597,7 @@ L’article Les Pays-Bas vont-ils tuer l'investissement avec leur cadre fiscal a
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
 
-### 7. `FR` [Bitcoin et cryptos : le calme avant la tempête ? Steady Lads](data/articles/31ba2b8618ef939835af4bfb4f4772f9.html)
+### 23. `FR` [Bitcoin et cryptos : le calme avant la tempête ? Steady Lads](data/articles/31ba2b8618ef939835af4bfb4f4772f9.html)
 **Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
 Le Bitcoin et les altcoins sont en train de consolider et de digérer la récente baisse. Le calme avant la tempête pour les cryptomonnaies ? 
 L’article Bitcoin et cryptos : le calme avant la tempête ? Steady Lads est apparu en premier sur Journal du Coin.
@@ -2474,7 +2606,7 @@ L’article Bitcoin et cryptos : le calme avant la tempête ? Steady Lads est ap
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 8. `EN` [Metaplanet posts $619 million net loss on bitcoin valuation as holdings climb to 35,102 BTC](https://www.theblock.co/post/390048/metaplanet-posts-619-million-net-loss-on-bitcoin-valuation-as-holdings-climb-to-35102-btc?utm_source=rss&utm_medium=rss)
+### 24. `EN` [Metaplanet posts $619 million net loss on bitcoin valuation as holdings climb to 35,102 BTC](https://www.theblock.co/post/390048/metaplanet-posts-619-million-net-loss-on-bitcoin-valuation-as-holdings-climb-to-35102-btc?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 Metaplanet posted a $619 million FY2025 loss on its bitcoin valuation, while its total holdings jumped to 35,102 BTC and revenue surged.
 
@@ -2482,7 +2614,7 @@ Metaplanet posted a $619 million FY2025 loss on its bitcoin valuation, while its
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
 
-### 9. `FR` [Les actions s’envolent, le Bitcoin manque encore de soutien institutionnel](data/articles/8958e351979fa79ba226e0bbdcfe2bdb.html)
+### 25. `FR` [Les actions s’envolent, le Bitcoin manque encore de soutien institutionnel](data/articles/8958e351979fa79ba226e0bbdcfe2bdb.html)
 **Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
 Les actions américaines voient un appétit croissant pour le risque, tandis que le Bitcoin accuse un retard avec une demande institutionnelle faible et une accumulation lente.
 L’article Les actions s’envolent, le Bitcoin manque encore de soutien institutionnel est apparu en premier sur Cointribune.
@@ -2491,7 +2623,7 @@ L’article Les actions s’envolent, le Bitcoin manque encore de soutien instit
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 10. `EN` [When will crypto’s CLARITY Act framework pass in the US Senate?](data/articles/0522221b4c20e2bb0c3107b287b612c7.html)
+### 26. `EN` [When will crypto’s CLARITY Act framework pass in the US Senate?](data/articles/0522221b4c20e2bb0c3107b287b612c7.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 The CLARITY Act moved quickly through the House of Representatives since it was introduced in June 2025 but has been plagued with delays in the Senate.
 
@@ -2499,7 +2631,7 @@ The CLARITY Act moved quickly through the House of Representatives since it was 
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 11. `EN` [deBridge launches MCP, enabling AI agents to execute non-custodial cross-chain transactions](https://www.theblock.co/post/390021/debridge-launches-mcp-enabling-ai-agents-to-execute-non-custodial-cross-chain-transactions?utm_source=rss&utm_medium=rss)
+### 27. `EN` [deBridge launches MCP, enabling AI agents to execute non-custodial cross-chain transactions](https://www.theblock.co/post/390021/debridge-launches-mcp-enabling-ai-agents-to-execute-non-custodial-cross-chain-transactions?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 deBridge has launched MCP, enabling AI agents to carry out non-custodial cross-chain swaps, bridging, and multi-step transactions.
 
@@ -2507,7 +2639,7 @@ deBridge has launched MCP, enabling AI agents to carry out non-custodial cross-c
 
 <div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
 
-### 12. `FR` [« N’attendez pas le plus bas » : Le conseil de Tom Lee pour accumuler de l’Ethereum maintenant](data/articles/156fe688653cf027e87175a21bd90e8f.html)
+### 28. `FR` [« N’attendez pas le plus bas » : Le conseil de Tom Lee pour accumuler de l’Ethereum maintenant](data/articles/156fe688653cf027e87175a21bd90e8f.html)
 **Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
 Tom Lee, cofondateur de Fundstrat, s'est montré très optimiste sur l'avenir immédiat d'Ethereum et des cryptos et voit une reprise en avril. 
 L’article « N’attendez pas le plus bas » : Le conseil de Tom Lee pour accumuler de l’Ethereum maintenant est apparu en premier sur Journal du Coin.
@@ -2516,7 +2648,7 @@ L’article « N’attendez pas le plus bas » : Le conseil de Tom Lee pour accu
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
 
-### 13. `EN` [Metaplanet revenue jumps 738% as Bitcoin generates 95% of sales](data/articles/043d0845d2aa41dd3b3eabedcff9929f.html)
+### 29. `EN` [Metaplanet revenue jumps 738% as Bitcoin generates 95% of sales](data/articles/043d0845d2aa41dd3b3eabedcff9929f.html)
 **Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
 Metaplanet reported about $40 million in operating profit but still recorded a $619 million net loss amid the Bitcoin price drop.
 
@@ -2524,144 +2656,9 @@ Metaplanet reported about $40 million in operating profit but still recorded a $
 
 <div class="article-item" data-lang="en" data-category="crypto" data-source="The Block">
 
-### 14. `EN` [Bitcoin ETF outflows and crowded shorts leave market primed for volatility, analysts say](https://www.theblock.co/post/390032/bitcoin-etf-outflows-and-crowded-shorts-leave-market-primed-for-volatility-analysts-say?utm_source=rss&utm_medium=rss)
+### 30. `EN` [Bitcoin ETF outflows and crowded shorts leave market primed for volatility, analysts say](https://www.theblock.co/post/390032/bitcoin-etf-outflows-and-crowded-shorts-leave-market-primed-for-volatility-analysts-say?utm_source=rss&utm_medium=rss)
 **Source:** The Block | **Tags:** `Crypto` `Blockchain` `Analysis`
 Bitcoin trades near $69,000 despite growing whale accumulation as crypto searches for a catalyst amid outflows and fragile market structure.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
-
-### 15. `EN` [Hive, Riot earnings reports, Fed rate-decision minutes: Crypto Week Ahead](data/articles/bcacadee5fe20c78f3d45a7c241be49f.html)
-**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
-Your look at what's coming in the week starting Feb. 16.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
-
-### 16. `FR` [Cette baleine Ethereum transfère 543 millions de $ vers Binance, et cela inquiète forcément](data/articles/cf91a8be4e48a9f71c51f4810d5ff83d.html)
-**Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
-Un détenteur d'Ethereum historique a transféré 261 024 ETH vers Binance, réveillant une adresse dormante depuis 2010-2011.
-L’article Cette baleine Ethereum transfère 543 millions de $ vers Binance, et cela inquiète forcément est apparu en premier sur Journal du Coin.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
-
-### 17. `FR` [Les fonds crypto enregistrent des sorties de capitaux pour la quatrième semaine consécutive](data/articles/65ebe7961bdc51557c3c0465d62d8b5d.html)
-**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
-Les marchés crypto traversent une zone de turbulence. Pour la quatrième semaine consécutive, les fonds spécialisés enregistrent des retraits massifs. Le bitcoin flanche et passe sous la barre symbolique des 70 000 dollars.
-L’article Les fonds crypto enregistrent des sorties de capitaux pour la quatrième semaine consécutive est apparu en premier sur Cointribune.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
-
-### 18. `EN` [Metaplanet operating profit to rise 81% in 2026 after soaring 17-fold last year on options writing](data/articles/77bb744b233e9a82faef9edc19850b27.html)
-**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
-The company recorded a non-cash bitcoin valuation loss of 102.2 billion yen ($650 million) due to the cryptocurrency’s price drop.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
-
-### 19. `EN` [Animoca Brands clears major regulatory hurdle with new Dubai license](data/articles/3f31a5dc40638c7074f7613cde237176.html)
-**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
-Animoca said the license allows it to commence operations in Dubai, offering broker-dealer services and digital asset management and investments.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
-
-### 20. `FR` [X va lancer des Cashtags intelligents avec des données crypto et boursières en temps réel](data/articles/ddc3b3e0c9eb29e0217cdfb8b143e089.html)
-**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
-X se prépare à introduire les Smart Cashtags, une nouvelle fonctionnalité qui permettra aux utilisateurs de voir les données boursières et cryptographiques directement depuis leurs timelines. Le déploiement est attendu dans les semaines à venir, selon Nikita Bier, responsable produit de X. Parallèlement au lancement de cette fonctionnalité, l'entreprise durcit les règles concernant le spam et l'activité automatisée liée aux promotions crypto.
-L’article X va lancer des Cashtags intelligents avec des données crypto et boursières en temps réel est apparu en premier sur Cointribune.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
-
-### 21. `EN` [Binance denies report on Iran-linked sanctions breaches and investigator firings](data/articles/01218c2d51ae418d548a6e85bf8c18a3.html)
-**Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
-Binance said an internal review with external counsel found no sanctions violations and that it continues to meet its regulatory obligations under monitoring and oversight.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
-
-### 22. `FR` [Bitcoin repasse sous 70 000 $ : les cryptos peinent à redémarrer malgré une inflation (CPI) en baisse aux USA](data/articles/727f62b630b155b328b4a0c1a233e254.html)
-**Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
-Les cours de Bitcoin et des cryptos restent moroses malgré une baisse de l'inflation CPI aux USA, qui favorise une baisse des taux de la Fed.
-L’article Bitcoin repasse sous 70 000 $ : les cryptos peinent à redémarrer malgré une inflation (CPI) en baisse aux USA est apparu en premier sur Journal du Coin.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
-
-### 23. `EN` [Animoca Granted Dubai License Amid Stricter Crypto Oversight](data/articles/d62556db9978da25bd5b84a40a9c2ce8.html)
-**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
-Animoca Brands calls Dubai a strategic hub for institutional clients as the emirate builds compliance-driven crypto markets.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinDesk">
-
-### 24. `EN` [Ether steadies after $540 million sell wave to outperform wider crypto market](data/articles/f4ffcd39a084f117bb250d4b5265e781.html)
-**Source:** CoinDesk | **Tags:** `Crypto` `Bitcoin` `Blockchain`
-Crypto markets remain under pressure despite firmer U.S. equity futures, with ether rebounding toward $2,000 as heavy weekend selling eases as gold leads.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="CoinTelegraph">
-
-### 25. `EN` [$75K or bearish ‘regime shift?’ Five things to know in Bitcoin this week](data/articles/cee07cb8b7d46ea607437f89de473284.html)
-**Source:** CoinTelegraph | **Tags:** `Crypto` `Blockchain` `DeFi`
-Bitcoin market analysis focused on liquidations and the wick to $59,000 for signs of the next significant BTC price move on lower time frames.
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="crypto" data-source="Decrypt">
-
-### 26. `EN` [Crypto Traders Rotate Into Select Altcoins as Bitcoin Stalls](data/articles/f0b17355e60f1423528af76f0092b412.html)
-**Source:** Decrypt | **Tags:** `Crypto` `Web3` `NFT`
-Altcoins notch double-digit weekly gains as Bitcoin remains rangebound, but most remain well below all-time highs with macro data looming.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
-
-### 27. `FR` [Bitget et Gemini quittent la France](data/articles/552d7b64c7152b17213cf32c4f865db3.html)
-**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
-Alors que deux exchanges majeurs annoncent leur retrait du marché français et européen en 2026. Décryptage d'un séisme réglementaire qui redistribue les cartes du trading crypto en France.
-L’article Bitget et Gemini quittent la France est apparu en premier sur Cointribune.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="CoinTribune">
-
-### 28. `FR` [Les dirigeants européens restent méfiants face aux politiques de l’ère Trump](data/articles/d0c69a508f533fbb81618e14143ae9cb.html)
-**Source:** CoinTribune | **Tags:** `Crypto` `Blockchain` `France`
-À Munich, les applaudissements n’ont pas dissipé le malaise. Un an après les attaques verbales de 2025, la relation transatlantique reste marquée par la défiance. Face à des dirigeants européens encore échaudés, Marco Rubio a tenté de réaffirmer la solidité du partenariat entre les États-Unis et l’Europe. Mais derrière les formules diplomatiques et les références historiques, une question persiste : les paroles suffisent-elles à compenser des décisions politiques qui ont durablement fragilisé la confiance ?
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="Journal du Coin">
-
-### 29. `FR` [Bitcoin et crypto en Russie : Un marché de 50 milliards de roubles par jour sort de l’ombre](data/articles/c9bd12517a4f3a33997f9267d4f99df7.html)
-**Source:** Journal du Coin | **Tags:** `Crypto` `Bitcoin` `France`
-La Russie a révélé que l'économie crypto génère désormais 50 milliards de roubles par jour, sur fond d'essor des stablecoins. 
-L’article Bitcoin et crypto en Russie : Un marché de 50 milliards de roubles par jour sort de l’ombre est apparu en premier sur Journal du Coin.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="crypto" data-source="Cryptoast">
-
-### 30. `FR` [Tomasz Stańczak quitte son poste de co-directeur exécutif de la Fondation Ethereum - Qu'est-ce que cela implique ?](data/articles/1553792814cf3291c97a6b4207b9478c.html)
-**Source:** Cryptoast | **Tags:** `Crypto` `Blockchain` `France`
-En poste depuis tout juste 9 mois, le co-directeur exécutif de la Fondation Ethereum, Tomasz Stańczak, annonce sa démission effective dès la fin du mois de février. Doit-on y voir un échec dans la volonté d’apaisement interne imposée par Vitalik Buterin en janvier de l’année dernière ? 
-L’article Tomasz Stańczak quitte son poste de co-directeur exécutif de la Fondation Ethereum - Qu'est-ce que cela implique ? est apparu en premier sur Cryptoast.
 
 </div>
 
@@ -3466,57 +3463,86 @@ Website:
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 26. `EN` [I Built a Portfolio Tracker for EU Investors Because Everything is USD-Only](data/articles/9df11b5d3be3986a64c160d80fc94955.html)
+### 26. `EN` [Your AI Agent Knows Your Passwords — Here's How I Fixed It](data/articles/3e469cae01bd288449dbc428b9b3d31a.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-Every portfolio tracker I've tried assumes I'm American.
-Yahoo Finance? USD. Google Finance? USD. Every shiny fintech app with a waitlist and a $12/month subscription? You guessed it — USD.
-I'm a European investor. I buy stocks in EUR. I hold ETFs priced in GBP. My savings account is in CHF. And every single time I wanted to check how my portfolio was actually doing, I had to mentally convert currencies, open XE.com in another tab, and do napkin math.
-So I built FolioTrack.
-If you're investing from Europe, you're a second-class citizen in fintech.
+When AI agents automate your browser, they need your login credentials in their context window. That means your passwords are sent to cloud LLM providers, stored in conversation logs, and potentially exposed via prompt injection attacks.
+I built Cerberus KeyRouter to fix this.
+AI agents like OpenClaw, Claude Desktop, and Cursor can automate browsers — filling forms, clicking buttons, navigating pages. But when they hit a login page, the typical flow looks like this:
+User: "Log into GitHub for me"
+User: "Email: jacob@example.com"
+User: "Password: MyS3cretP@ss"
+Agent:
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 27. `EN` [How I built an audio-based Social Media App in days using agentic coding and Open Source Cloud](data/articles/32e19c8ec46b021478d2e4e8bcd03952.html)
+### 27. `EN` [Why I Rewrote My Email Editor from Scratch: From Blocks to Atoms Rewrite](data/articles/6fa80553f1725a089f313134d6c47ddf.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-The Challenge That Shouldn't Have Been Possible
-
-
-Let me be upfront: VoiceCircle would have honestly been impossible for me to build in a handful of days using the traditional programming methods and tools I learned in college. I don't have the resources or know-how to spin up a cloud service with all the parts I need to run a social media app, yet here I am, having shipped a fully functional voice-based social platform in less time than it would have taken me to set up a local development environment the old way.
+Hi there!
+Six years ago, I launched MySigMail Card as a commercial product.
+To be honest, it didn't take off as I hoped. I struggled to attract enough users to make it sustainable. Eventually, I lost motivation and abandoned it to focus on my other open-source project, massCode.
+For years, the project gathered dust. But besides the marketing struggles, it also had a "ticking time bomb" in its core architecture.
+It was built entirely on Presets.
+In the initial version, if a user wanted a header, they dragged a "Header Block". If they wanted a testimonial, they dragged a "Testimonial Block".
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 28. `EN` [Building a Unified AI Gateway: "Ollama First" Architecture](data/articles/c1cccc678faa591bce46607102e1d905.html)
+### 28. `EN` [Multi Programming Languages Projects Made Easy - I Built Mangle.dev](data/articles/fd824f762fb43e3d280d4a006df058e9.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-In the rapidly evolving world of Large Language Models (LLMs), developers often face a dilemma: lock into a single provider like OpenAI, or juggle multiple different APIs (Anthropic, Mistral, Local LLMs).
-Today, I built a Minimal Unified Model Gateway in Python that solves this by providing a single, OpenAI-compatible endpoint that intelligently routes traffic to the best model for the job—whether it's running in the cloud or locally on your machine via Ollama.
-The system is built on FastAPI for high performance and uses Rediz (optional) for caching.
+Mangle.dev is a lightweight, cross-language inter-process communication (IPC) framework that enables seamless data exchange between programs written in different programming languages.
+
+No more server for simple tasks, easier, faster.
+It currently supports 9 languages:
+Python
+JavaScript
+Ruby
+Java
+C
+C++
+C#
+Go
+Rust
+Examples:
+Ruby to Java - Square a number
+C# to Rust - Processing
+Website
+Blog
+Releases
+Documentation
+Repository
+Note that Mangle.dev is currently in Early Access, which means there might be some bugs and errors in either the package or the documentation.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 29. `EN` [🛠️ Stop Tab Hopping: The All-in-One Utility Hub for Developers](data/articles/e5e45e367f63f04b8b63dd1a9d28fc72.html)
+### 29. `EN` [Letta Code, memory-first coding agent that lives in your terminal.](data/articles/7916357b6631b9c415fe55db8cd49f04.html)
 **Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-Every developer has a "Utilities" bookmark folder filled with random sites: one for JSON formatting, another for Base64 encoding, a third for SQL linting, and maybe a fourth for generating robots.txt files.
-It’s time to declutter your browser tabs.
-I recently came across BosConvertPro, and it’s essentially the Swiss Army Knife that every dev needs in their toolkit.
-Most utility sites are bloated with ads, require accounts, or have UI from 2005. BosConvertPro is built with a modern, clean interface that focuses on speed.
+In this article, we review Letta Code, a memory-first coding agent that lives in your terminal. We will look at:
+What is Letta Code?
+
+
+What can Letta Code do?
+
+
+
+
+Letta Code is a deeply personalized stateful agent that lives on your local computer and can learn from experience and improve with use.
+Unlike Claude Code, Letta Code is open source, model agnostic (use Claude, GPT, Gemini, or any model you want), and most importantly, is stateful, meaning that you can use the same agent across many coding sessions, and have it learn and improve over time.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="opensource" data-source="Dev.to Open Source">
 
-### 30. `EN` [I Built a Free Invoice Generator for EU Freelancers (Because Every Tool Ignores VAT Reverse Charge)](data/articles/567d2d4050a1e0a1eeb25d35e02db4d2.html)
-**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev`
-The Rant
-
-
-I'm a freelancer based in France. I invoice clients across the EU. This should be simple. It is not.
-Every invoicing tool I've tried — and I've tried a lot — treats Europe as an afterthought. They'll handle USD beautifully, give you a clean American-style invoice, and then completely fall apart when you need:
+### 30. `EN` [I Built a Grail Finder That Searches Vinted, eBay, Depop and More at Once](data/articles/9085e89a583abbd6e4c9f025d8028e0a.html)
+**Source:** Dev.to Open Source | **Tags:** `Open Source` `Community` `Dev` | *Also on: Dev.to Open Source*
+If you've ever obsessively hunted for a specific item on resale apps, you know the pain.
+You want a pair of Nike Dunk Low "Ceramic" in size 10. Or a vintage Carhartt Detroit jacket in navy. Or that one discontinued Arc'teryx shell that everyone pretends they don't want.
+So what do you do? You open Vinted. Search. Nothing good. Open eBay. Search. Too expensive. Open Depop. Search. Wrong size. Open Grailed. Vestiaire Collective. Poshmark. Rinse and repeat. Every. Single. Day.
+My co-founder Thomas finally snapped. He was tired of checking six apps every morning for the same three items.
 
 </div>
 
@@ -3530,51 +3556,105 @@ Every invoicing tool I've tried — and I've tried a lot — treats Europe as an
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 1. `EN` [Show HN: Fuelcheck CLI – Monitor token usage across the modern AI providers](data/articles/9e43fada9d9329a1bb8b378c55008f63.html)
-**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews` | *Also on: Hacker News Show*
-Lightweight command-line utility designed to monitor and manage token consumption across the modern AI ecosystem.
-Comments URL: https://news.ycombinator.com/item?id=47035466
-Points: 1
+### 1. `EN` [Show HN: Simple org-mode web adapter](data/articles/2e1813e2d3e279b0a5c0c684528dd3b8.html)
+**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
+I like to use org files a lot, but I wanted some way to browse and edit them on my phone when I'm out. Yesterday I used Codex to make this simple one-file web server that just displays all my org files with backlinks. It doesn't have any authentication because I only run it on my wireguard VPN. I've been having fun with it, hopefully it's useful to someone else!
+Comments URL: https://news.ycombinator.com/item?id=47036891
+Points: 2
 # Comments: 0
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 2. `EN` [Show HN: Queryline – One app for SQL and Firestore with a command palette](data/articles/3bb7bc7b188e77aafdf6f5c2895f8b6f.html)
+### 2. `EN` [Show HN: Sentinel Core – Open-source AI video search with real-time dashboard](data/articles/307f1d9556e98e43247733e82a53ee12.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-I got tired of switching between one tool for PostgreSQL, another for MySQL, and the Firebase console for Firestore. So I built Queryline — a single, keyboard-driven database client that handles both SQL and NoSQL in one interface.
-The features I'm most proud of:
-CMD+K everywhere - Jump between connections, tables, recent queries, or export formats without touching the mouse. It's the workflow I always wanted: hit a shortcut, type, done.
-SQL + Firestore, unified - Query your PostgreSQL database and browse Firestore collections in the same app.
+We just released a major update to Sentinel Core, our open-source AI-powered video intelligence engine.
+The new release includes a real-time multi-camera dashboard, semantic video search, and an upgraded detection pipeline.
+Sentinel Core is built around an AI-native architecture:
+- YOLOv8 for real-time object detection
+- CLIP for semantic search (text-to-video queries)
+- FAISS for vector indexing
+- FastAPI backend with WebSocket streaming
+- Fully air-gapped deployment capable
+You can now:
+- Stream multiple RTSP/IP camera feeds in a live grid view
+- Search footage using natural language (e.g.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
+
+### 3. `EN` [Show HN: I built a way for my family to access my accounts in an emergency](data/articles/5649d10fcc30895df734269e7183baca.html)
+**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
+I realized something uncomfortable about my life.
+We’ve moved most of our lives online, like for banking, investments, subscriptions, crypto, cloud storage, etc. But what if someone needed to step in and manage any of it during a crisis? Not just access but clear instructions.
+So I built a tool for myself.
+A secure way to document digital accounts so the people I trust know exactly what to do if they ever need to. It only gives them access when it's actually needed. Until then, everything stays encrypted and invisible.
+Turns out I'm not the only one with this thought.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
+
+### 4. `EN` [Show HN: PolyClaw – An Autonomous Docker-First MCP Agent for PolyMCP](data/articles/f2208173a8509e77f94ce17bbaf15aee.html)
+**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
+I built PolyClaw, an OpenClaw-inspired autonomous agent for the PolyMCP ecosystem.
+PolyClaw doesn’t just call tools.
+It plans, executes, adapts — and creates MCP servers when needed.
+It’s designed for real multi-step, production workflows where agents must orchestrate tools, spin up infrastructure, recover from errors, and deliver complete results end-to-end.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Hacker News Show">
+
+### 5. `FR` [Show HN: YOPJ – Local AI coding agent with 8-layer security sandbox (no cloud)](data/articles/0e98ccf2aadb69a97a7f8e556b59a0b5.html)
+**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews` | *Also on: Hacker News Show, Hacker News Show, Hacker News Show, Hacker News Show, Hacker News Show*
+Article URL: https://github.com/WayneCider/YourOwnPersonalJean-Luc
+Comments URL: https://news.ycombinator.com/item?id=47036723
+Points: 1
+# Comments: 0
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 3. `FR` [Actualité : Android 17 : Google travaille sur "Handoff", le transfert d'activité d'un appareil à un autre](data/articles/ce2137b39b510df1cf491f71779552d7.html)
+### 6. `FR` [Actualité : Bon plan – Le clavier Logitech MX Keys S Graphite "4 étoiles" à 77,99 €](data/articles/fbd0434c76da390de2eaee0d0851b70d.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-On peut préférer iOS à Android pour de multiples raisons. L'une d'elles est sans aucun doute la riche et simple interopérabilité entre les OS (iOS, iPadOS et macOS) et les appareils (iPhone, iPad et Mac) de la firme à la pomme. Google l'a bien compris et tente de rattraper son retard sur le sujet depuis quelque temps. Après son équivalent de Airdrop,...
+Après quelques années de bons et loyaux services, l'excellent clavier MX Keys de Logitech est mis à jour dans une version S qui s'améliore par petites touches.Points fortsQualité de fabrication.Rétroéclairage automatique.Frappe agréable et silencieuse.Bonne autonomie pour un clavier sans fil rétroéclairé.Connexion à trois appareils possible.
+Poin...
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 4. `EN` [Show HN: FounderCounsel – AI-generated startup legal docs in 2 minutes](data/articles/92812c276dd079c4d78857d7b5ad56af.html)
-**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews` | *Also on: Hacker News Show, Hacker News Show, Hacker News Show, Hacker News Show*
-Article URL: https://foundercounsel.vercel.app
-Comments URL: https://news.ycombinator.com/item?id=47035402
-Points: 1
-# Comments: 0
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
-
-### 5. `EN` [Show HN: 3sessions – A menu bar timer that counts down your free/work time](data/articles/ae62152e7e016943fb44dfab45b80182.html)
+### 7. `EN` [Show HN: Multi-provider iOS usage alerts for AI subscription caps](data/articles/47e397f647e00d237d94423d19fed8fb.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-Hi HN, I made a macOS menu bar timer that counts down your morning time, work time, and after-work time. Using SwiftBar
-Comments URL: https://news.ycombinator.com/item?id=47035322
+I built AI Usage Tracker, an iOS app that warns you before AI subscription limits cut you off mid-session (e.g. 5-hour windows, weekly caps).
+I hit this daily while coding: I’d be deep in a session and suddenly hit the cap. Dashboards exist, but they’re not glanceable and there are no practical alerts/widgets.
+Supports multiple providers in a single screen - Anthropic, OpenAI, MiniMax, Z.ai, Kimi, Codex
+Features:
+- 5-hour window + weekly status (simple gauges).
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 8. `FR` [La série Lucky Luke de Disney+ va-t-elle flop plus vite que son ombre ?](data/articles/5c2b6500165b5ad3adc8714f6bf9c53a.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
+L'adaptation live-action de la bande dessinée culte arrive enfin sur la plateforme de streaming aux grandes oreilles mais le trailer n'a rien de rassurant.
+
+</div>
+
+<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
+
+### 9. `EN` [Show HN: Idea validation using real problem discussions](data/articles/acdee0d2b552b8d8ff83fda3b741c8ba.html)
+**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
+While working on new startup ideas, I realized I was often assuming problems existed without actually seeing how people described them in the wild.
+So I built a small tool that lets you describe a startup idea and then surfaces real conversations where people discuss that problem.
+It’s meant to help with early problem discovery before building an MVP.
+Faster access to real signals. Feedback is highly welcome, as brutal as it can be.
+Comments URL: https://news.ycombinator.com/item?id=47036558
 Points: 1
 # Comments: 0
 
@@ -3582,46 +3662,117 @@ Points: 1
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 6. `FR` [Cambriolages : l’astuce du verre d’eau que les voleurs redoutent (et que 90% des Français ignorent)](data/articles/913404676f4f5c54d29d0e7a5b8c9a61.html)
+### 10. `FR` [Qista One XS : la meilleure solution pour lutter contre les moustiques ?](data/articles/72583c880fc7bea13f1622ad9ae96549.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-Alors que les cambriolages sont en forte augmentation depuis la fin de la pandémie, il existe des techniques pour éviter au maximum ce type d'infractions. Parmi elles, l'astuce du verre d'eau permet de détecter un comportement douteux.
+La société française Qista a dévoilé une version allégée de son piège anti-moustiques, désormais pensée pour un usage domestique. Avec ce modèle plus compact et présenté comme plus accessible, l’entreprise cherche à dépasser le cadre des collectivités pour s’adresser directement aux foyers.
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 7. `EN` [Show HN: Claude Battery – usage at a glance. A minimalist macOS menu bar widget](data/articles/d32171f491c15690c3670c98ed1d2512.html)
+### 11. `EN` [Show HN: Woven-ECS – Multithreaded ECS framework for the web](data/articles/1aafab51bc819481457fa7e3dba8e509.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-Hi HN, this is nothing fancy, but a tool I built for myself as a minimalist way to track usage. Also (and probably more importantly), colleagues who are marketers, writers, designers, and other non-engineering backgrounds who are/becoming power users of Claude Cowork or Claude Code and needed to keep better watch of usage.
-Once Opus 4.6 landed, I was quickly aware I needed to keep an eye on usage as I capped out session limits faster than ever. I got frustrated checking usage manually and then explored the other apps and widgets out there.
+I built this to make it easier to create collaborative design tools like infinite canvases. It also works for games.
+It's an ECS framework that runs in the browser with built-in multithreading via Web Workers, reactive change-tracking queries, and a companion package called “canvas-store” that handles multiplayer sync, local-first persistence, undo/redo, and schema migrations out of the box.
+GitHub: https://github.com/WillH0lt/woven-ecs
+Comments URL: https://news.ycombinator.com/item?id=47036363
+Points: 1
+# Comments: 0
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 8. `EN` [Show HN: J-RAY – A privacy-first JSON visualizer with two-way binding](https://j-ray.vercel.app/app)
+### 12. `EN` [Show HN: Nexus AI – DevOps terminal bridge to Telegram (local-first, BYOK)](data/articles/af26d62187f4ccf8ad49a5ae421e2872.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-Hi HN,
-I shared a very early prototype of this a couple of days ago, but I spent the weekend completely rewriting the core to make it 100% client-side, privacy-first, and open-source.
-Like many of you, I deal with large, deeply nested JSON payloads from APIs daily. I’ve always felt uneasy pasting sensitive production data or API keys into random online JSON formatters that probably log everything.
-So I built J-RAY to solve this for myself. It parses JSON and turns it into an interactive node graph using React Flow.
-Some technical details:
-Zero Server Processing: It’s fully client-side.
+I built this because I was tired of SSH'ing from mobile or carrying laptop to cafes 
+just to check logs. Nexus runs as a daemon on localhost, creates a private Telegram 
+bot that only responds to your OWNER_ID, and executes commands locally.
+Key tech decisions:
+- BYOK (Bring Your Own Key): You provide Gemini API key + create your own bot. 
+  My operational cost per user = $0
+- 3-tier security: Blocked patterns (rm -rf /), dangerous patterns (require 
+  confirmation), safe patterns (execute immediately)
+- Rate limiting: 100 cmd/hour + 2s cooldown + 60s confirmation expiry
+- Local-first:
 
 </div>
 
 <div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
 
-### 9. `EN` [Show HN: Palettepoint.com – AI color palettes from text descriptions or images](https://palettepoint.com)
+### 13. `EN` [Show HN:AIP Protocol–Solving the agent revocation problem in distributed systems](data/articles/0a5d375ff80b993c65f7d9c47de2358f.html)
 **Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-I built this because choosing colors is one of those tasks that seems simple but ends up taking hours. You keep randomizing and nothing feels right, or you browse inspiration boards hoping something works. So I made a tool where you describe what you need.
-Type "warm Japanese autumn" or "90s rave flyer" and pick a style (analogous, triadic, monochromatic, etc.) and how many colors (3-7). It returns a named palette with descriptions. It works with images too: upload a photo and it extracts a palette. You can combine both, so uploading a photo and adding "make it cooler" works. It runs on GPT-5.
+I realized something uncomfortable while running agents in production:
+APIs authenticate the process making a request.
+But with LLM agents, the process no longer decides the request — the model does.
+So when an agent is prompt-injected or misaligned, authentication still succeeds.
+The system verifies who executed the call, not who chose it.
+Rotating keys or adding revocation checks doesn’t fix this.
+You’re still trusting the wrapper while the decision lives inside the model.
+The missing primitive isn’t stronger identity — it’s verifying the action itself.
+In a typical backend system:
 
 </div>
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 10. `FR` [Actualité : Pour un bon thermomètre à prix abordable, privilégiez...](data/articles/efd6345f0182ed62c84001f004416223.html)
+### 14. `FR` [Actualité : Apple confirme son événement du 4 mars : vers un MacBook à prix inédit et un nouvel iPhone](data/articles/5ba065d65e39d00ac85692646adfe6fb.html)
+**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
+Les rumeurs vous ont embrouillés, tant elles tablent sur des lancements de produits à des dates variées ? Cette fois, c'est du concret, puisque c'est Apple qui l'annonce. Il y aura bien un événement de présentation de produits organisé par la Pomme, et ce sera pour le 4 mars. Le rendez-vous est pris non pas dans son fief californien, mais à New York,...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 15. `FR` [iPhone 17e : avec ces 4 nouveautés, c’est lui l’achat malin de ce début d’année ?](data/articles/63f3582207edf62cb65ed7a06ebd15a6.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
+Apple prépare le lancement de l'iPhone 17e, un nouveau smartphone, plus performant et endurant, mais toujours aussi accessible ?
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
+
+### 16. `FR` [Actualité : Tesla déploie Grok en Europe : le chatbot controversé d’Elon Musk s'invite dans l’habitacle](data/articles/7a8434b542e2339de0afbdfc5039d676.html)
+**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
+Sept mois après son lancement aux États-Unis, Grok franchit l'Atlantique. Tesla Europe a confirmé le 15 février au soir le déploiement de l'IA d'xAI dans neuf pays : Royaume-Uni, Irlande, Allemagne, Suisse, Autriche, Italie, France, Portugal et Espagne.La mise à jour logicielle 2026.2.6 permet aux conducteurs d'activer le chatbot depuis l'écran tacti...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 17. `FR` [La péninsule Ibérique pivote sans que vous le sachiez et ce n’est pas forcément une bonne nouvelle](data/articles/3c16c9d1d233578d6a0ce950fcaf42da.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
+Longtemps cru figé, le sous-sol de l'Europe du Sud pivote en réalité dans une direction inattendue. Des mesures récentes confirment que la rotation de la péninsule ibérique s'opère désormais dans le sens horaire, inversant sa trajectoire historique. Ce mouvement imperceptible mais constant redéfinit l'évaluation des risques tectoniques régionaux.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 18. `FR` [Le film Dead By Daylight avance enfin dans une vraie direction](data/articles/8e4e20c0228f4ead009fe5446b821072.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
+Des scénaristes ont été trouvés pour le film Dead By Daylight, qui n'a toujours pas de réalisateur.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
+
+### 19. `FR` [Actualité : Android 17 : Google travaille sur "Handoff", le transfert d'activité d'un appareil à un autre](data/articles/ce2137b39b510df1cf491f71779552d7.html)
+**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
+On peut préférer iOS à Android pour de multiples raisons. L'une d'elles est sans aucun doute la riche et simple interopérabilité entre les OS (iOS, iPadOS et macOS) et les appareils (iPhone, iPad et Mac) de la firme à la pomme. Google l'a bien compris et tente de rattraper son retard sur le sujet depuis quelque temps. Après son équivalent de Airdrop,...
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
+
+### 20. `FR` [Cambriolages : l’astuce du verre d’eau que les voleurs redoutent (et que 90% des Français ignorent)](data/articles/913404676f4f5c54d29d0e7a5b8c9a61.html)
+**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
+Alors que les cambriolages sont en forte augmentation depuis la fin de la pandémie, il existe des techniques pour éviter au maximum ce type d'infractions. Parmi elles, l'astuce du verre d'eau permet de détecter un comportement douteux.
+
+</div>
+
+<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
+
+### 21. `FR` [Actualité : Pour un bon thermomètre à prix abordable, privilégiez...](data/articles/efd6345f0182ed62c84001f004416223.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Avec sa fonction Age Precision et son embout souple, le thermomètre électronique Braun PRT 2000 se destine à la prise de température de toute la famille, bébés compris. À condition de l'utiliser correctement.Points fortsMesures rapides.Embout souple.Code couleur indiquant la fièvre selon l'âge (Age Precision).
 Points faiblesTechnologie Age Pre...
@@ -3630,73 +3781,23 @@ Points faiblesTechnologie Age Pre...
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 11. `FR` [Actualité : Rachat de Warner Bros. Discovery : Paramount finalement de retour dans les négociations ?](data/articles/208c7ee6bfba3a24fafb29de2a7186b9.html)
+### 22. `FR` [Actualité : Rachat de Warner Bros. Discovery : Paramount finalement de retour dans les négociations ?](data/articles/208c7ee6bfba3a24fafb29de2a7186b9.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Nouveau rebondissement dans le feuilleton autour du rachat de Warner Bros. Discovery : alors que le studio était entré en discussion exclusive avec Netflix et avait retiré le groupe Paramount Skydance de toutes les négociations officielles, le vent aurait tourné du côté d'Hollywood.Warner devrait ainsi annoncer ce mardi 17 février qu'il réouvre les é...
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
-
-### 12. `EN` [Show HN: EU-based and simpler Kagi alternative – Uruky](data/articles/6c541a711869c7cf26393306d69b1d97.html)
-**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-For the last couple of months I've been working with my wife on Uruky [1]. It's a EU-based and simpler Kagi [2] alternative (privacy-focused and ad-free search with domain boosting/exclusion rules).
-We've been using it with friends and family with much success (and hashbangs like "!g", "!d", or "!e" work for any edge cases we haven't fixed/improved yet).
-It's already using EU-based search providers with EU-based indexes like Mojeek and Marginalia. We're currently waiting for EUSP (the new Ecosia/Qwant-effort-related index) to provide us with an API key.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 13. `FR` [Nintendo s’attaque encore à l’émulation de la Switch en compliquant l’accès aux logiciels](data/articles/bf1999c07469eae88fc1dde9fcffcfb0.html)
+### 23. `FR` [Nintendo s’attaque encore à l’émulation de la Switch en compliquant l’accès aux logiciels](data/articles/bf1999c07469eae88fc1dde9fcffcfb0.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Nintendo a intensifié sa croisade contre l’émulation avec offensive juridique, plus large que jamais compliquant considérablement l’accès à ces logiciels pour les utilisateurs.
 
 </div>
 
-<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
-
-### 14. `EN` [Show HN: Codex HUD – Claude-HUD Style Status Line for Codex CLI](data/articles/e2b1a5e7fd421bc158781a9ae996e040.html)
-**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-I built Codex HUD to make Codex CLI sessions easier to monitor without leaving the terminal.
-  It adds a real-time status line with:
-  - active model
-  - project + git branch/dirty state
-  - 5h and 7d usage bars
-  - automatic Spark vs default limit selection
-
-  Quick install:
-
-  git clone https://github.com/anhannin/codex-hud.git
-  cd codex-hud/Codex-HUD
-  ./install.sh
-
-  Feedback I’m looking for:
-
-  - portability across Linux distros/shell setups
-  - readability on narrow terminal widths
-  - edge cases in usage/rate parsing
-
-  Repo issues are welcome if you hit bugs.
-
-
-Comments URL:
-
-</div>
-
-<div class="article-item" data-lang="en" data-category="products" data-source="Hacker News Show">
-
-### 15. `EN` [Show HN: Kai – A Telegram bot that turns Claude Code into a personal dev asst](data/articles/f60b7187f33ad7fdeb93832f95f564b7.html)
-**Source:** Hacker News Show | **Tags:** `Products` `Launch` `HackerNews`
-I built Kai because I wanted Claude Code's full capabilities - shell access, file editing, git, web search - available from my phone, without being tied to a terminal.
-Kai is a Telegram bot that wraps a persistent Claude Code process. You send messages in Telegram, and Claude responds with full tool access: it can read and edit files, run commands, manage git branches, search the web, and work across multiple projects. Responses stream back in real time. Everything runs on your own machine.
-*How I actually use it:* I point Kai at a project workspace and use it as a dev assistant.
-
-</div>
-
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 16. `FR` [X (Twitter) est en panne, pas de panique si vous n’arrivez pas à y accéder](data/articles/ddc53f5817980faf7873c3e3f2cb1edd.html)
+### 24. `FR` [X (Twitter) est en panne, pas de panique si vous n’arrivez pas à y accéder](data/articles/ddc53f5817980faf7873c3e3f2cb1edd.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Le réseau social X, anciennement Twitter, connaît une panne ce lundi. De nombreux utilisateurs signalent des dysfonctionnements empêchant l’accès à la plateforme ou l’affichage des contenus.
 
@@ -3704,7 +3805,7 @@ Le réseau social X, anciennement Twitter, connaît une panne ce lundi. De nombr
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 17. `FR` [Actualité : Netflix annule en douce sa série d'animation Terminator, dévoile son créateur](data/articles/06647bf14620519afe3d172dcffeb2d4.html)
+### 25. `FR` [Actualité : Netflix annule en douce sa série d'animation Terminator, dévoile son créateur](data/articles/06647bf14620519afe3d172dcffeb2d4.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Mise à jour
          | 16/02/2026 à 14:34    
@@ -3718,7 +3819,7 @@ Mauvaise nouvelle pour les fans de l'anime Terminator Zero car ce dernier a ét�
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 18. `FR` [Ca se complique pour les utilisateurs du Fire Stick TV d’Amazon](data/articles/8cc3c51048efd3cc62baebc158aa847c.html)
+### 26. `FR` [Ca se complique pour les utilisateurs du Fire Stick TV d’Amazon](data/articles/8cc3c51048efd3cc62baebc158aa847c.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Amazon durcit la politique de sécurité de ses anciens Fire TV sous Android et Fire OS en bloquant plus strictement le sideloading et l’installation d’applications IPTV ou de streaming non officielles.
 
@@ -3726,7 +3827,7 @@ Amazon durcit la politique de sécurité de ses anciens Fire TV sous Android et 
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 19. `FR` [Google corrige Android 16 avant de lancer Android 17](data/articles/99741e057c449f525a696ce62547579b.html)
+### 27. `FR` [Google corrige Android 16 avant de lancer Android 17](data/articles/99741e057c449f525a696ce62547579b.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 Google s’apprête à lancer la première bêta d’Android 17, huit mois après le déploiement d’Android 16, tandis qu’Android 16 QPR3 viendra stabiliser une dernière fois les appareils compatibles.
 
@@ -3734,7 +3835,7 @@ Google s’apprête à lancer la première bêta d’Android 17, huit mois aprè
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
 
-### 20. `FR` [Actualité : Lucky Luke : Disney+ dégaine la bande-annonce de la série avec Alban Lenoir](data/articles/b2b5d14067664a5e97e29916d39e1ad1.html)
+### 28. `FR` [Actualité : Lucky Luke : Disney+ dégaine la bande-annonce de la série avec Alban Lenoir](data/articles/b2b5d14067664a5e97e29916d39e1ad1.html)
 **Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
 Vous aimez le cowboy Lucky Luke ? Alors vous serez sans doute curieux de découvrir la série Lucky Luke, nouvelle création originale française de Disney+ en hommage à Morris et Goscinny. Elle arrive sur le service de SVOD en intégralité le 23 mars et sa bande-annonce laisse entrevoir une relecture moderne de la bande-dessinée culte.Un nouveau Lucky Lu...
 
@@ -3742,7 +3843,7 @@ Vous aimez le cowboy Lucky Luke ? Alors vous serez sans doute curieux de découv
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 21. `FR` [La carte Pokémon la plus chère de l’histoire a été vendue ce weekend en pulvérisant le précédent record](data/articles/3d0ea0a2cd45e27038ffe3444f442ff6.html)
+### 29. `FR` [La carte Pokémon la plus chère de l’histoire a été vendue ce weekend en pulvérisant le précédent record](data/articles/3d0ea0a2cd45e27038ffe3444f442ff6.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 La carte vendue ce weekend vient d’établir un nouveau record mondial pour une carte à collectionner en confirmant le statut particulier des cartes Pokémon vintage.
 
@@ -3750,73 +3851,9 @@ La carte vendue ce weekend vient d’établir un nouveau record mondial pour une
 
 <div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
 
-### 22. `FR` [Stargate SG-1 sur Netflix : les 7 meilleurs épisodes de la série de science-fiction !](data/articles/b87ff9cf048a1f7e35abf3f37f8f71b1.html)
+### 30. `FR` [Stargate SG-1 sur Netflix : les 7 meilleurs épisodes de la série de science-fiction !](data/articles/b87ff9cf048a1f7e35abf3f37f8f71b1.html)
 **Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
 10 saisons et plus de 200 épisodes d'un show considéré par beaucoup comme culte arrivent sur Netflix. Et s'il fallait une raison de (re)visionner Stargate SG-1, voici notre top des 7 meilleurs épisodes de la série de science-fiction.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
-
-### 23. `FR` [Une avancée majeure : cette montre Huawei détecte le risque de diabète](data/articles/f717b2be4ac6284987273d0782e93ef4.html)
-**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-L'accessoire connecté du fabricant chinois utilise la lumière pour mesurer la glycémie de l'utilisateur.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
-
-### 24. `FR` [Actualité : Xiaomi 17 et 17 Ultra : les prix en Europe ont fuité, et c'est une excellente surprise](data/articles/47fc99e52414cc092d664c0e5af6073f.html)
-**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-Toujours bien informé, ce site de bons plans. Expert en matière de fuites de prix avant la sortie de nouveaux produits - il semble que ses sources soient très proches d’au moins un revendeur français -, Dealabs dévoile le prix de vente des futurs smartphones premium de Xiaomi. En l’absence de mention de ses sources et en attendant l’officialisation d...
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
-
-### 25. `FR` [Actualité : Box-office : Hurlevent réveille enfin les salles américaines, mais sans briller](data/articles/840c462024537a3b55c42e0054fd9f36.html)
-**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-Après avoir été pendant plusieurs semaines engourdi par le froid de l'hiver, le box-office semble être enfin sorti de sa torpeur ce week-end grâce à l'arrivée de plusieurs nouveautés. Et sans surprise, c'est la romance Hurlevent, avec Margot Robbie et Jacob Elordi, qui a terminé en tête du classement, en récoltant plus de 82 millions de dollars dans...
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
-
-### 26. `FR` [Malheureusement, cette série Terminator n’aura pas de nouvelle saison](data/articles/5e68b6a4c7f6a2380e66fe4c3593ee0b.html)
-**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-Netflix annule la série Terminator Zero ce qui signifie que vous ne connaitrez jamais la suite.
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
-
-### 27. `FR` [Test Sony Alpha A7V : le meilleur capteur et le meilleur AF, tout simplement](data/articles/8f393de9dcc3fc1b4a4a3a80117d330d.html)
-**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-Héritier de l’A7IV, le nouvel A7V mérite son titre de fleuron photographique milieu de gamme en combinant un AF (et un suivi !) de pointe, une belle profondeur de rafale et une qualité d’image un cran au-dessus de la compétition - sa plage dynamique est impressionnante ! Un boîtier réussi, mais qui fait face à une concurrence féroce. ## PrésentationL...
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
-
-### 28. `FR` [C’est officiel : votre permis de conduire rose ne sera plus valide après cette date, êtes-vous prêt ?](data/articles/dd22525ba855aa52d94f96d370186996.html)
-**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-Le fameux permis de conduire en carton rose (3 volets) va bientôt tirer sa révérence. Pensez à le changer, c'est gratuit !
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Les Numeriques">
-
-### 29. `FR` [Actualité : Disney et Paramount s'attaquent à Seedance, l'outil de création vidéo IA de ByteDance](data/articles/2112bfe535a7f7c7608350efaf8fd4a1.html)
-**Source:** Les Numeriques | **Tags:** `Produits` `Tests` `Tech`
-Où s'arrêtera la puissance "créative" de l'IA et sa capacité à voler le contenu des vrais artistes ? Difficile de répondre à cette question pour le moment tant les choses dans ce secteur évoluent rapidement. D'autant que plusieurs rebondissements majeurs viennent d'avoir lieu autour du tout juste lancé modèle Seedance 2.0.“Le vibe coding tue l'o...
-
-</div>
-
-<div class="article-item" data-lang="fr" data-category="products" data-source="Journal du Geek">
-
-### 30. `FR` [Apple Pay : attention à ce changement qui impacte les clients de ces banques françaises](data/articles/c77d6cfab18defd0bc13ee6532f14c44.html)
-**Source:** Journal du Geek | **Tags:** `Produits` `Gadgets` `Tech`
-Apple Pay change de camp : les cartes Banque Populaire et Caisse d’Épargne vont bientôt faire transiter leurs paiements par le réseau français CB, au détriment des géants américains.
 
 </div>
 

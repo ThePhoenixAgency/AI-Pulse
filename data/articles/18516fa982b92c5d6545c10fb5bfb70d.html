@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - amol21p/mcp-interactive-terminal: MCP server that gives AI agents (Claude Code, Cursor, Windsurf) real interactive terminal sessions — REPLs, SSH, databases, Docker, and any interactive CLI with clean output and smart completion detection</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - amol21p/mcp-interactive-terminal: MCP server that gives AI agents (Claude Code, Cursor, Windsurf) real interactive terminal sessions — REPLs, SSH, databases, Docker, and any interactive CLI with clean output and smart completion detection</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/amol21p/mcp-interactive-terminal" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>mcp-interactive-terminal</h2><a href="#mcp-interactive-terminal"></a><p></p>
+<p><a href="https://www.npmjs.com/package/mcp-interactive-terminal"><img src="https://camo.githubusercontent.com/6fb44968151b663e42a38217854fdd5a49860ed6b13838ad67ab3ed364a17d90/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f6d63702d696e7465726163746976652d7465726d696e616c2e737667" alt="npm version" /></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/08cef40a9105b6526ca22088bc514fbfdbc9aac1ddbf8d4e6c750e3a88a44dca/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d626c75652e737667" alt="License: MIT" /></a>
+<a href="https://nodejs.org/"><img src="https://camo.githubusercontent.com/8f0aa01709dafbe9f00aba61e321d4549bf3de348f23e14f1df46fd6edc2c69b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d25334525334431382d627269676874677265656e2e737667" alt="Node.js &gt;= 18" /></a></p>
+<p>MCP server that gives AI agents (Claude Code, Cursor, Windsurf, etc.) real interactive terminal sessions. Run REPLs, SSH, database clients, and any interactive CLI — with clean text output, smart completion detection, and 7-layer security.</p>
+<p></p><h2>Why This Exists</h2><a href="#why-this-exists"></a><p></p>
+<p>AI coding agents can't handle interactive commands. There's no PTY, no stdin streaming. You can't run <code>rails console</code>, <code>python</code>, <code>psql</code>, <code>ssh</code>, or any REPL through them. This MCP server fixes that.</p>
+<div><pre><code>AI Agent (Claude Code, Cursor, etc.)
+    ↕  MCP (JSON-RPC over stdio)
+mcp-interactive-terminal
+    ↕  node-pty + xterm-headless
+Interactive Process (rails console, python, psql, ssh, bash...)
+    ↕
+Clean text output (exactly what a human would see)
+</code></pre></div>
+<p></p><h2>Install</h2><a href="#install"></a><p></p>
+<p></p><h3>Claude Code</h3><a href="#claude-code"></a><p></p>
+<div><pre>claude mcp add terminal -- npx -y mcp-interactive-terminal</pre></div>
+<p>That's it. The server is now available. Ask Claude to "open a python REPL and calculate 2**100".</p>
+<p></p><h3>Cursor</h3><a href="#cursor"></a><p></p>
+<p>Go to <strong>Settings &gt; MCP Servers</strong>, click <strong>Add Server</strong>, and enter:</p>
+<div><pre>{
+  <span>"mcpServers"</span>: {
+    <span>"terminal"</span>: {
+      <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>,
+      <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>mcp-interactive-terminal<span>"</span></span>]
+    }
+  }
+}</pre></div>
+<p></p><h3>Windsurf</h3><a href="#windsurf"></a><p></p>
+<p>Add to your MCP configuration:</p>
+<div><pre>{
+  <span>"mcpServers"</span>: {
+    <span>"terminal"</span>: {
+      <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>,
+      <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>mcp-interactive-terminal<span>"</span></span>]
+    }
+  }
+}</pre></div>
+<p></p><h3>VS Code (GitHub Copilot)</h3><a href="#vs-code-github-copilot"></a><p></p>
+<p>Add to your <code>.vscode/mcp.json</code>:</p>
+<div><pre>{
+  <span>"servers"</span>: {
+    <span>"terminal"</span>: {
+      <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>,
+      <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>mcp-interactive-terminal<span>"</span></span>]
+    }
+  }
+}</pre></div>
+<p></p><h3>Any MCP Client</h3><a href="#any-mcp-client"></a><p></p>
+<p>The server communicates over stdio using the <a href="https://modelcontextprotocol.io/">Model Context Protocol</a>. Any MCP-compatible client can use it with the same <code>npx -y mcp-interactive-terminal</code> command.</p>
+<p></p><h2>Real-World Examples</h2><a href="#real-world-examples"></a><p></p>
+<p></p><h3>Rails Console</h3><a href="#rails-console"></a><p></p>
+<div><pre><code>You: "Open rails console for staging and check the user count"
+
+Agent creates session → bash
+Agent sends: cd /path/to/app &amp;&amp; rails console -e staging
+Agent sends: User.count
+Agent returns: 1,847,293
+</code></pre></div>
+<p></p><h3>Python REPL</h3><a href="#python-repl"></a><p></p>
+<div><pre><code>You: "Open python and test my sorting algorithm"
+
+Agent creates session → python3
+Agent sends: def quicksort(arr): ...
+Agent sends: quicksort([3, 1, 4, 1, 5, 9])
+Agent returns: [1, 1, 3, 4, 5, 9]
+</code></pre></div>
+<p></p><h3>Database Client</h3><a href="#database-client"></a><p></p>
+<div><pre><code>You: "Connect to postgres and show me the largest tables"
+
+Agent creates session → psql -U myuser mydb
+Agent sends: SELECT tablename, pg_size_pretty(pg_total_relation_size(tablename::text)) ...
+Agent returns: formatted table of results
+</code></pre></div>
+<p></p><h3>SSH</h3><a href="#ssh"></a><p></p>
+<div><pre><code>You: "SSH into the staging server and check disk usage"
+
+Agent creates session → ssh user@staging.example.com
+Agent sends: df -h
+Agent returns: disk usage table
+</code></pre></div>
+<p></p><h3>Docker</h3><a href="#docker"></a><p></p>
+<div><pre><code>You: "Open a shell in my running container and check the logs"
+
+Agent creates session → docker exec -it my-container bash
+Agent sends: tail -100 /var/log/app.log
+Agent returns: last 100 log lines
+</code></pre></div>
+<p></p><h3>Node.js REPL</h3><a href="#nodejs-repl"></a><p></p>
+<div><pre><code>You: "Open node and test the date parsing logic"
+
+Agent creates session → node
+Agent sends: new Date('2024-02-29').toISOString()
+Agent returns: 2024-02-29T00:00:00.000Z
+</code></pre></div>
+<p></p><h2>Tools</h2><a href="#tools"></a><p></p>
+<p>The server exposes 7 MCP tools:</p>
+<p></p><h3><code>create_session</code> — Spawn an interactive process</h3><a href="#create_session--spawn-an-interactive-process"></a><p></p>
+<div><pre>{ <span>"command"</span>: <span><span>"</span>python3<span>"</span></span>, <span>"name"</span>: <span><span>"</span>my-python<span>"</span></span>, <span>"cwd"</span>: <span><span>"</span>/project<span>"</span></span> }
+<span>→ { "session_id": "a1b2c3d4", "name": "my-python", "pid": 12345 }</span></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>command</code></td>
+<td>Yes</td>
+<td>—</td>
+<td>Command to run (bash, python3, psql, ssh, etc.)</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td>No</td>
+<td><code>[]</code></td>
+<td>Command arguments</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td>No</td>
+<td>auto</td>
+<td>Human-readable session name</td>
+</tr>
+<tr>
+<td><code>cwd</code></td>
+<td>No</td>
+<td>server cwd</td>
+<td>Working directory</td>
+</tr>
+<tr>
+<td><code>env</code></td>
+<td>No</td>
+<td><code>{}</code></td>
+<td>Additional environment variables</td>
+</tr>
+<tr>
+<td><code>cols</code></td>
+<td>No</td>
+<td><code>120</code></td>
+<td>Terminal columns</td>
+</tr>
+<tr>
+<td><code>rows</code></td>
+<td>No</td>
+<td><code>40</code></td>
+<td>Terminal rows</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3><code>send_command</code> — Send input and get output</h3><a href="#send_command--send-input-and-get-output"></a><p></p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>a1b2c3d4<span>"</span></span>, <span>"input"</span>: <span><span>"</span>1 + 1<span>"</span></span> }
+<span>→ { "output": "2", "is_complete": true, "is_alive": true }</span></pre></div>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_id</code></td>
+<td>Yes</td>
+<td>—</td>
+<td>Target session</td>
+</tr>
+<tr>
+<td><code>input</code></td>
+<td>Yes</td>
+<td>—</td>
+<td>Command/input to send (newline appended automatically)</td>
+</tr>
+<tr>
+<td><code>timeout_ms</code></td>
+<td>No</td>
+<td><code>5000</code></td>
+<td>Max wait time for output</td>
+</tr>
+<tr>
+<td><code>max_output_chars</code></td>
+<td>No</td>
+<td><code>20000</code></td>
+<td>Truncate output beyond this</td>
+</tr>
+</tbody>
+</table>
+<p>Dangerous commands (<code>rm -rf</code>, <code>DROP TABLE</code>, <code>curl|bash</code>, etc.) are blocked — the agent must use <code>confirm_dangerous_command</code> first.</p>
+<p></p><h3><code>read_output</code> — Read terminal screen (read-only)</h3><a href="#read_output--read-terminal-screen-read-only"></a><p></p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>a1b2c3d4<span>"</span></span> }
+<span>→ { "output": "&gt;&gt;&gt; ", "is_alive": true }</span></pre></div>
+<p>Safe to auto-approve — this only reads, never sends input.</p>
+<p></p><h3><code>list_sessions</code> — List active sessions (read-only)</h3><a href="#list_sessions--list-active-sessions-read-only"></a><p></p>
+<div><pre><span>→ [{ "session_id": "a1b2c3d4", "name": "my-python", "command": "python3", "pid": 12345, "is_alive": true }]</span></pre></div>
+<p>Safe to auto-approve.</p>
+<p></p><h3><code>close_session</code> — Kill a session</h3><a href="#close_session--kill-a-session"></a><p></p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>a1b2c3d4<span>"</span></span> }
+<span>→ { "success": true }</span></pre></div>
+<p></p><h3><code>send_control</code> — Send control characters</h3><a href="#send_control--send-control-characters"></a><p></p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>a1b2c3d4<span>"</span></span>, <span>"control"</span>: <span><span>"</span>ctrl+c<span>"</span></span> }
+<span>→ { "output": "^C\n&gt;&gt;&gt;" }</span></pre></div>
+<p>Supported: <code>ctrl+c</code>, <code>ctrl+d</code>, <code>ctrl+z</code>, <code>ctrl+l</code>, <code>ctrl+r</code>, <code>tab</code>, <code>escape</code>, <code>up</code>, <code>down</code>, <code>left</code>, <code>right</code>, <code>enter</code>, <code>backspace</code>, <code>delete</code>, <code>home</code>, <code>end</code>, and more.</p>
+<p></p><h3><code>confirm_dangerous_command</code> — Two-step safety confirmation</h3><a href="#confirm_dangerous_command--two-step-safety-confirmation"></a><p></p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>a1b2c3d4<span>"</span></span>, <span>"input"</span>: <span><span>"</span>rm -rf /tmp/old<span>"</span></span>, <span>"justification"</span>: <span><span>"</span>Cleaning up stale temp files from failed build<span>"</span></span> }
+<span>→ { "output": "...", "is_complete": true, "is_alive": true }</span></pre></div>
+<p>Required when <code>send_command</code> detects a dangerous pattern. The agent must explain why the command is necessary. This is a <strong>separate tool</strong> — even if <code>send_command</code> is auto-approved, this requires its own permission.</p>
+<p></p><h2>How It Works</h2><a href="#how-it-works"></a><p></p>
+<p></p><h3>Two Terminal Modes</h3><a href="#two-terminal-modes"></a><p></p>
+<p><strong>PTY mode</strong> (default) — uses <code>node-pty</code> + <code>@xterm/headless</code> (the same terminal emulator as VS Code):</p>
+<ul>
+<li>Clean output — the AI sees exactly what a human would see on screen</li>
+<li>Cursor positioning, progress bars, <code>\r</code> overwrites all render correctly</li>
+<li>Full keyboard: arrow keys, tab completion, ctrl+c/d/z, home/end</li>
+<li>Terminal resize, TUI apps (vim, htop, top), 256-color, 1000-line scrollback</li>
+</ul>
+<p><strong>Pipe mode</strong> (automatic fallback) — activates when node-pty can't load (e.g., in sandboxed environments):</p>
+<ul>
+<li>Interactive sessions still work via <code>child_process.spawn</code> with auto-injected flags (<code>python -u -i</code>, <code>bash -i</code>, etc.)</li>
+<li>ANSI codes stripped, control keys still work</li>
+<li>No terminal emulation, but covers the basics</li>
+</ul>
+<p>The mode is selected automatically — PTY is tried first, pipe mode kicks in if it fails.</p>
+<p></p><h3>What the AI sees: PTY vs Pipe</h3><a href="#what-the-ai-sees-pty-vs-pipe"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>PTY mode</th>
+<th>Pipe mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>printf "\rProgress: 3/3"</code></td>
+<td><code>Progress: 3/3</code></td>
+<td><code>Progress: 1/3Progress: 2/3Progress: 3/3</code></td>
+</tr>
+<tr>
+<td>ANSI colors</td>
+<td>Stripped cleanly</td>
+<td>Stripped via regex</td>
+</tr>
+<tr>
+<td>vim, htop, top</td>
+<td>Readable screen</td>
+<td>Garbled</td>
+</tr>
+<tr>
+<td>Arrow keys, tab completion</td>
+<td>Works</td>
+<td>Works</td>
+</tr>
+<tr>
+<td>Terminal resize</td>
+<td>Works</td>
+<td>No-op</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Smart "Command Done" Detection</h3><a href="#smart-command-done-detection"></a><p></p>
+<p>Instead of blindly waiting a fixed time, the server uses a layered strategy:</p>
+<ol>
+<li><strong>Process exit</strong> — if the process died, command is done</li>
+<li><strong>Prompt detection</strong> — auto-detects the session's prompt at startup (bash <code>$</code>, python <code>&gt;&gt;&gt;</code>, psql <code>#</code>, etc.), watches for it to reappear</li>
+<li><strong>Output settling</strong> — no new output for 300ms = probably done</li>
+<li><strong>Timeout</strong> — always returns after <code>timeout_ms</code> with <code>is_complete: false</code></li>
+</ol>
+<p></p><h2>Security</h2><a href="#security"></a><p></p>
+<p>Seven-layer defense-in-depth:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>What It Does</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP Tool Annotations</td>
+<td><code>readOnlyHint</code>/<code>destructiveHint</code> on each tool</td>
+<td>Always on</td>
+</tr>
+<tr>
+<td>Confirmation Flow</td>
+<td>Dangerous patterns require <code>confirm_dangerous_command</code></td>
+<td>Always on</td>
+</tr>
+<tr>
+<td>Input Pattern Detection</td>
+<td>Detect rm -rf, DROP TABLE, curl|bash, etc.</td>
+<td>Always on</td>
+</tr>
+<tr>
+<td>Command Blocklist/Allowlist</td>
+<td>Block/allow specific commands</td>
+<td>Configurable</td>
+</tr>
+<tr>
+<td>OS-Level Sandbox</td>
+<td>Kernel-level process sandboxing via <code>@anthropic-ai/sandbox-runtime</code></td>
+<td>Off (opt-in)</td>
+</tr>
+<tr>
+<td>Secret Redaction</td>
+<td>Redact AWS keys, tokens, private keys in output</td>
+<td>Off (opt-in)</td>
+</tr>
+<tr>
+<td>Resource Limits</td>
+<td>Max sessions, output cap, idle timeout, audit logging</td>
+<td>Always on</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Recommended Permissions</h3><a href="#recommended-permissions"></a><p></p>
+<p>Only auto-approve the read-only tools:</p>
+<div><pre>{
+  <span>"permissions"</span>: {
+    <span>"allow"</span>: [
+      <span><span>"</span>mcp__terminal__list_sessions<span>"</span></span>,
+      <span><span>"</span>mcp__terminal__read_output<span>"</span></span>
+    ]
+  }
+}</pre></div>
+<p>This way <code>send_command</code>, <code>create_session</code>, and especially <code>confirm_dangerous_command</code> always require human approval.</p>
+<p></p><h2>Configuration</h2><a href="#configuration"></a><p></p>
+<p>All settings via environment variables. Pass them in your MCP config:</p>
+<div><pre>{
+  <span>"mcpServers"</span>: {
+    <span>"terminal"</span>: {
+      <span>"command"</span>: <span><span>"</span>npx<span>"</span></span>,
+      <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>mcp-interactive-terminal<span>"</span></span>],
+      <span>"env"</span>: {
+        <span>"MCP_TERMINAL_ALLOWED_COMMANDS"</span>: <span><span>"</span>bash,python3,node,psql<span>"</span></span>,
+        <span>"MCP_TERMINAL_REDACT_SECRETS"</span>: <span><span>"</span>true<span>"</span></span>,
+        <span>"MCP_TERMINAL_IDLE_TIMEOUT"</span>: <span><span>"</span>300000<span>"</span></span>
+      }
+    }
+  }
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MCP_TERMINAL_MAX_SESSIONS</code></td>
+<td><code>10</code></td>
+<td>Max concurrent sessions</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_MAX_OUTPUT</code></td>
+<td><code>20000</code></td>
+<td>Max output chars per read</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_DEFAULT_TIMEOUT</code></td>
+<td><code>5000</code></td>
+<td>Default wait timeout (ms)</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_BLOCKED_COMMANDS</code></td>
+<td>—</td>
+<td>Comma-separated blocklist</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_ALLOWED_COMMANDS</code></td>
+<td>—</td>
+<td>Comma-separated allowlist (if set, only these are allowed)</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_ALLOWED_PATHS</code></td>
+<td>—</td>
+<td>Comma-separated paths sessions can access</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_REDACT_SECRETS</code></td>
+<td><code>false</code></td>
+<td>Redact AWS keys, tokens, private keys in output</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_LOG_INPUTS</code></td>
+<td><code>false</code></td>
+<td>Log all inputs to stderr (for debugging)</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_IDLE_TIMEOUT</code></td>
+<td><code>1800000</code></td>
+<td>Auto-close idle sessions (ms, default 30min, 0 = disabled)</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_DANGER_DETECTION</code></td>
+<td><code>true</code></td>
+<td>Enable dangerous command confirmation flow</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_AUDIT_LOG</code></td>
+<td>—</td>
+<td>Path to JSON audit log file</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_SANDBOX</code></td>
+<td><code>false</code></td>
+<td>Enable OS-level kernel sandboxing</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_SANDBOX_ALLOW_WRITE</code></td>
+<td><code>/tmp</code></td>
+<td>Writable paths in sandbox mode</td>
+</tr>
+<tr>
+<td><code>MCP_TERMINAL_SANDBOX_ALLOW_NETWORK</code></td>
+<td><code>*</code></td>
+<td>Allowed network domains in sandbox</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Troubleshooting</h2><a href="#troubleshooting"></a><p></p>
+<p></p><h3>"Tools not showing up" / Server fails silently</h3><a href="#tools-not-showing-up--server-fails-silently"></a><p></p>
+<p>MCP servers that fail to start often show no error in the client. Check:</p>
+<div><pre><span><span>#</span> Test the server directly:</span>
+npx -y mcp-interactive-terminal
+
+<span><span>#</span> You should see "[mcp-terminal] Starting MCP Interactive Terminal Server" on stderr.</span>
+<span><span>#</span> If you see an error, that's what's failing.</span></pre></div>
+<p></p><h3>Node.js version too old</h3><a href="#nodejs-version-too-old"></a><p></p>
+<p>The server requires Node.js &gt;= 18. If you see errors about unsupported syntax or missing APIs:</p>
+<div><pre>node --version  <span><span>#</span> Must be &gt;= 18</span>
+
+<span><span>#</span> If using nvm:</span>
+nvm install 18 <span>&amp;&amp;</span> nvm use 18
+
+<span><span>#</span> If using volta:</span>
+volta install node@18</pre></div>
+<p><strong>For nvm/volta/fnm users</strong>: <code>npx</code> may use a different Node version than your shell. Use an absolute path:</p>
+<div><pre>{
+  <span>"mcpServers"</span>: {
+    <span>"terminal"</span>: {
+      <span>"command"</span>: <span><span>"</span>/Users/you/.nvm/versions/node/v22.0.0/bin/npx<span>"</span></span>,
+      <span>"args"</span>: [<span><span>"</span>-y<span>"</span></span>, <span><span>"</span>mcp-interactive-terminal<span>"</span></span>]
+    }
+  }
+}</pre></div>
+<p>Find your path with: <code>which npx</code></p>
+<p></p><h3>node-pty compilation errors</h3><a href="#node-pty-compilation-errors"></a><p></p>
+<p><code>node-pty</code> is a native module that requires build tools. If it fails to compile, the server automatically falls back to <strong>pipe mode</strong> — interactive sessions still work, just without terminal emulation.</p>
+<p>If you want full PTY support:</p>
+<div><pre><span><span>#</span> macOS:</span>
+xcode-select --install
+
+<span><span>#</span> Ubuntu/Debian:</span>
+sudo apt-get install -y make python3 build-essential
+
+<span><span>#</span> RHEL/Fedora:</span>
+sudo yum install -y make python3 gcc gcc-c++</pre></div>
+<p></p><h3>Session dies immediately</h3><a href="#session-dies-immediately"></a><p></p>
+<p>Some commands need to be run inside a shell rather than directly:</p>
+<div><pre><code># Instead of:  create_session({ command: "rails console -e staging" })
+# Do this:     create_session({ command: "bash" })
+#              send_command({ input: "rails console -e staging" })
+</code></pre></div>
+<p>This is because <code>create_session</code> runs the command directly (like <code>exec</code>), not through a shell. Spawning <code>bash</code> first gives you a full shell environment.</p>
+<p></p><h3>Output looks garbled</h3><a href="#output-looks-garbled"></a><p></p>
+<p>If output contains escape codes or looks wrong, you're likely in <strong>pipe mode</strong> (node-pty failed to load). Check the server logs for <code>"falling back to pipe mode"</code>. Install build tools (see above) to enable PTY mode.</p>
+<p></p><h3>Timeout too short for long-running commands</h3><a href="#timeout-too-short-for-long-running-commands"></a><p></p>
+<p>Increase the timeout per-command:</p>
+<div><pre>{ <span>"session_id"</span>: <span><span>"</span>...<span>"</span></span>, <span>"input"</span>: <span><span>"</span>bundle install<span>"</span></span>, <span>"timeout_ms"</span>: <span>60000</span> }</pre></div>
+<p>Or globally via environment variable:</p>
+<div><pre>{ <span>"env"</span>: { <span>"MCP_TERMINAL_DEFAULT_TIMEOUT"</span>: <span><span>"</span>30000<span>"</span></span> } }</pre></div>
+<p></p><h2>Comparison with Alternatives</h2><a href="#comparison-with-alternatives"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>mcp-interactive-terminal</th>
+<th>App-specific terminal servers</th>
+<th>Generic shell MCP servers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cross-platform</td>
+<td>Yes</td>
+<td>Often single-app only</td>
+<td>Varies</td>
+</tr>
+<tr>
+<td>Clean output (xterm-headless)</td>
+<td>Yes</td>
+<td>No (screen scrape)</td>
+<td>No (raw PTY dump)</td>
+</tr>
+<tr>
+<td>Smart completion detection</td>
+<td>4-layer algorithm</td>
+<td>No</td>
+<td>Basic timeout</td>
+</tr>
+<tr>
+<td>Security layers</td>
+<td>7 (confirmation flow, sandbox, redaction, etc.)</td>
+<td>None</td>
+<td>Basic</td>
+</tr>
+<tr>
+<td>Dangerous command confirmation</td>
+<td>Yes (separate tool)</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>MCP tool annotations</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Background sessions</td>
+<td>Yes</td>
+<td>No (uses active tab)</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Focused API</td>
+<td>7 tools</td>
+<td>2-3 tools</td>
+<td>15-20+ tools (scope creep)</td>
+</tr>
+<tr>
+<td>Install</td>
+<td><code>npx -y</code> (zero-config)</td>
+<td>Requires specific app</td>
+<td>Varies</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Development</h2><a href="#development"></a><p></p>
+<div><pre>git clone https://github.com/amol21p/mcp-interactive-terminal.git
+<span>cd</span> mcp-interactive-terminal
+npm install
+npm run build
+npm <span>test</span></pre></div>
+<p>Test with MCP Inspector:</p>
+<div><pre>npx @modelcontextprotocol/inspector dist/index.js</pre></div>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>MIT</p>
+</article></div></div>
+  </div>
+</body>
+</html>

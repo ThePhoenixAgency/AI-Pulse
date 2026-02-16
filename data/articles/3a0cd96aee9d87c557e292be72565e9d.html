@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - rebelytics/one-skill-to-rule-them-all: The meta-skill that builds and improves all your skills, including itself. A Claude skill that watches your work sessions, captures corrections and judgment calls, and turns them into skill improvements automatically. Open-source, domain-agnostic, CC BY 4.0.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - rebelytics/one-skill-to-rule-them-all: The meta-skill that builds and improves all your skills, including itself. A Claude skill that watches your work sessions, captures corrections and judgment calls, and turns them into skill improvements automatically. Open-source, domain-agnostic, CC BY 4.0.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/rebelytics/one-skill-to-rule-them-all" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>One Skill to Rule Them All</h2><a href="#one-skill-to-rule-them-all"></a><p></p>
+<p><strong>The meta-skill that builds and improves all your skills, including itself.</strong></p>
+<p>Creating Claude skills is powerful but time-consuming. And the skills that do get built stay frozen — they never learn from how you actually use them.</p>
+<p>Task Observer fixes both problems. It's a Claude skill that runs alongside your work, watches what you do, and does two things:</p>
+<ol>
+<li><strong>Creates new skills for you</strong> — it spots repeating patterns in your work and drafts skill candidates automatically, so you get skills without the upfront effort of writing them from scratch</li>
+<li><strong>Improves your existing skills</strong> — it notices corrections you make, preferences you express, and gaps in your current skills, then suggests specific updates</li>
+</ol>
+<p>You work normally. It watches. Your skill library grows and gets better over time.</p>
+<p></p><h2>What it does</h2><a href="#what-it-does"></a><p></p>
+<p>Task Observer monitors your work sessions and looks for three things:</p>
+<ol>
+<li><strong>Corrections and adjustments</strong> — if you adjust Claude's output or steer it in a different direction, that's a signal that a skill could be clearer or more complete</li>
+<li><strong>Gaps no skill covers yet</strong> — if you're doing something manually that could be systematised, the observer flags it as a candidate for a new skill</li>
+<li><strong>Its own blind spots</strong> — the observer watches itself too, capturing improvements to its own methodology as you use it</li>
+</ol>
+<p>At the end of each session, it produces a structured observation log: what it noticed, which skills are affected, and specific suggested improvements. You review, approve, and your skills evolve.</p>
+<p></p><h2>Who it's for</h2><a href="#who-its-for"></a><p></p>
+<p>You don't need to be a developer. If you use Claude skills in any capacity — for writing, research, client work, analysis, content creation, anything — and you want those skills to get better over time instead of staying frozen, this is for you.</p>
+<p>It's particularly valuable if you've built multiple skills and want a systematic way to maintain and improve them without manually auditing each one. But it's equally useful if you have zero skills — the observer will start identifying and drafting them for you.</p>
+<p></p><h2>How it works</h2><a href="#how-it-works"></a><p></p>
+<p>No configuration required to get started. Drop the SKILL.md into your skills directory and it activates automatically during task-oriented sessions. It reads the available skills in your environment, watches how they perform during your work, and logs observations using a structured format.</p>
+<p>The observer doesn't modify your skills directly. It produces recommendations that you review. You stay in control of what changes and when.</p>
+<p><strong>In Cowork:</strong> Full experience. The observer writes observation logs to your filesystem, so improvements persist between sessions and can be actioned immediately.</p>
+<p><strong>In Claude.ai web/mobile:</strong> Handoff doc mode. Since there's no filesystem access, the observer produces a structured handoff document at the end of your session that you can use to update your skills manually.</p>
+<p></p><h2>Compatibility</h2><a href="#compatibility"></a><p></p>
+<p><strong>Tested and designed for:</strong></p>
+<ul>
+<li>Claude Cowork (full experience with filesystem access)</li>
+<li>Claude.ai web interface (handoff doc mode)</li>
+</ul>
+<p><strong>Expected to work but untested:</strong></p>
+<ul>
+<li>Claude Code — the methodology and format should translate directly, but I haven't verified it in practice</li>
+</ul>
+<p><strong>Potentially compatible with caveats:</strong></p>
+<ul>
+<li>Other Agent Skills-compatible platforms (Codex CLI, Gemini CLI, Cursor, etc.) — the skill uses Claude-centric concepts like <code>&lt;available_skills&gt;</code> and skill-creator references that other systems would need to interpret or adapt. The SKILL.md format is cross-platform, but the content assumes Claude's architecture</li>
+</ul>
+<p>If you try it on another platform, please open an issue and tell me.</p>
+<p></p><h2>Quick start</h2><a href="#quick-start"></a><p></p>
+<ol>
+<li>Download <code>SKILL.md</code> from this repository</li>
+<li>Add it to your skills:
+<ul>
+<li><strong>Cowork / Claude.ai:</strong> Upload as a custom skill via Settings → Capabilities → Skills</li>
+<li><strong>Claude Code:</strong> Place in your skills directory (e.g., <code>~/.claude/skills/task-observer/SKILL.md</code>)</li>
+</ul>
+</li>
+<li>Work normally. The observer activates automatically during task-oriented sessions</li>
+<li>Review the observation log at the end of your session</li>
+<li>Apply the improvements you agree with to your other skills</li>
+</ol>
+<p></p><h2>The self-improving part</h2><a href="#the-self-improving-part"></a><p></p>
+<p>This is the detail that makes the task observer different from a linter or a review checklist. Because it runs during every session and observes all active skills — including itself — it captures improvements to its own methodology over time.</p>
+<p>If it misses something, or if its observation format could be clearer, or if it's triggering in contexts where it shouldn't — it notices, and it logs that too. The skill that improves all your skills also improves itself.</p>
+<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
+<p>This is an early release. If you use it, I want to hear from you:</p>
+<ul>
+<li><strong>Bug reports and feature requests:</strong> Open an issue</li>
+<li><strong>Observations about the observer:</strong> If the skill captures something interesting about its own behaviour, I'd love to see it</li>
+<li><strong>Platform compatibility reports:</strong> Tried it somewhere other than Cowork or Claude.ai? Tell me what happened</li>
+</ul>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>This work is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International (CC BY 4.0)</a>.</p>
+<p>You're free to use, adapt, and redistribute — even commercially — as long as you give appropriate credit.</p>
+<hr />
+<p><strong>Created by <a href="https://rebelytics.com/">Eoghan Henn</a></strong></p>
+</article></div></div>
+  </div>
+</body>
+</html>

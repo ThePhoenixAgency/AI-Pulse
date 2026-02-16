@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - WayneCider/YourOwnPersonalJean-Luc: Your Own Personal Jean-Luc — a local AI coding agent powered by llama.cpp. No cloud, no API keys.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - WayneCider/YourOwnPersonalJean-Luc: Your Own Personal Jean-Luc — a local AI coding agent powered by llama.cpp. No cloud, no API keys.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: FR |
+    <a href="https://github.com/WayneCider/YourOwnPersonalJean-Luc" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>YOPJ — Your Own Personal Jean-Luc</h2><a href="#yopj--your-own-personal-jean-luc"></a><p></p>
+<p>A local AI coding agent that runs entirely on your machine. No cloud, no API keys, no telemetry. Just you, a local LLM, and a set of tools.</p>
+<p>YOPJ connects to any GGUF model via <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> and gives it tool-calling capabilities: read files, edit code, search projects, run commands, and learn from experience.</p>
+<p></p><h2>What Makes YOPJ Different</h2><a href="#what-makes-yopj-different"></a><p></p>
+<ul>
+<li><strong>Runs locally.</strong> Your code never leaves your machine.</li>
+<li><strong>Multi-model support.</strong> 9 chat templates with auto-detection. Works with Qwen, Llama 3, Mistral, Gemma, Phi-3, and more.</li>
+<li><strong>Think-block stripping.</strong> Automatically strips <code>&lt;think&gt;...&lt;/think&gt;</code> blocks from reasoning models (DeepSeek R1, QwQ) — both in batch and streaming mode.</li>
+<li><strong>Learns from experience.</strong> SEAL (Self Evolving Adaptive Learning) captures reusable patterns from sessions and loads them into future conversations.</li>
+<li><strong>Detects confabulation.</strong> Built-in heuristics flag when the model is making things up.</li>
+<li><strong>Detects degenerate output.</strong> Warns on repetition loops, encoding garbage, and empty responses.</li>
+<li><strong>Security sandbox.</strong> Command blocklist, path confinement, output limits, and audit logging.</li>
+<li><strong>Permission system.</strong> Tools are classified as allow/ask/deny. You control what the agent can do.</li>
+<li><strong>Plugin system.</strong> Drop Python files into a plugins directory to add custom tools.</li>
+<li><strong>Config files.</strong> Project-level <code>.yopj.toml</code> — no more long CLI commands.</li>
+<li><strong>Multi-line input.</strong> Paste code blocks using <code>"""</code> delimiters or <code>\</code> line continuation.</li>
+<li><strong>Direct user commands.</strong> <code>/read</code>, <code>/run</code>, <code>/grep</code> execute without a model round-trip.</li>
+<li><strong>Auto-compaction.</strong> Context window is automatically compressed when nearly full.</li>
+</ul>
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<p></p><h3>Install</h3><a href="#install"></a><p></p>
+<div><pre>pip install -e <span>.</span>    <span><span>#</span> from source</span>
+yopj --help         <span><span>#</span> verify installation</span></pre></div>
+<p></p><h3>Prerequisites</h3><a href="#prerequisites"></a><p></p>
+<ul>
+<li>Python 3.10+ (stdlib only — no external dependencies)</li>
+<li><a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a> (<code>llama-server</code> and/or <code>llama-cli</code>)</li>
+<li>A GGUF model file (e.g., <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct-GGUF">Qwen2.5-Coder-32B-Instruct</a>)</li>
+</ul>
+<p></p><h3>Server Mode (Recommended)</h3><a href="#server-mode-recommended"></a><p></p>
+<p>Server mode keeps the model loaded in GPU memory between turns. ~20x faster than subprocess mode.</p>
+<div><pre><span><span>#</span> Terminal 1: Start the model server</span>
+llama-server -m path/to/model.gguf --port 8080 --ctx-size 8192 -ngl 99
+
+<span><span>#</span> Terminal 2: Start YOPJ</span>
+yopj --server --port 8080</pre></div>
+<p></p><h3>Subprocess Mode</h3><a href="#subprocess-mode"></a><p></p>
+<p>Spawns a new llama-cli process per turn. Slower (~7-10s per turn) but no persistent server needed.</p>
+<div><pre>yopj --model path/to/model.gguf</pre></div>
+<p></p><h3>With a Config File</h3><a href="#with-a-config-file"></a><p></p>
+<div><pre>yopj --init-config   <span><span>#</span> creates .yopj.toml with default settings</span>
+<span><span>#</span> Edit .yopj.toml, then just:</span>
+yopj                 <span><span>#</span> reads settings from .yopj.toml</span></pre></div>
+<p></p><h3>With Learning Enabled</h3><a href="#with-learning-enabled"></a><p></p>
+<div><pre>yopj --server --port 8080 --lessons-dir ./lessons --memory-dir <span>.</span></pre></div>
+<p>YOPJ loads previous SEAL lessons and MEMORY.md into its system prompt, improving over time. Session summaries are auto-saved to MEMORY.md on exit.</p>
+<p></p><h2>Supported Models</h2><a href="#supported-models"></a><p></p>
+<p>YOPJ auto-detects the chat template from the model filename. You can also set it manually with <code>--template</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Models</th>
+<th>Auto-detected from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>chatml</code></td>
+<td>Qwen, DeepSeek, OpenHermes, Nous, Yi</td>
+<td><code>qwen</code>, <code>deepseek</code>, <code>openhermes</code></td>
+</tr>
+<tr>
+<td><code>llama3</code></td>
+<td>Llama 3 / 3.1 / 3.2 / 3.3</td>
+<td><code>llama-3</code>, <code>llama3</code></td>
+</tr>
+<tr>
+<td><code>llama2</code></td>
+<td>Llama 2, CodeLlama</td>
+<td><code>llama-2</code>, <code>codellama</code></td>
+</tr>
+<tr>
+<td><code>mistral</code></td>
+<td>Mistral, Mixtral</td>
+<td><code>mistral</code>, <code>mixtral</code></td>
+</tr>
+<tr>
+<td><code>gemma</code></td>
+<td>Gemma, Gemma 2, CodeGemma</td>
+<td><code>gemma</code>, <code>codegemma</code></td>
+</tr>
+<tr>
+<td><code>phi3</code></td>
+<td>Phi-3, Phi-3.5</td>
+<td><code>phi-3</code>, <code>phi3</code></td>
+</tr>
+<tr>
+<td><code>command-r</code></td>
+<td>Command-R, Command-R+</td>
+<td><code>command-r</code></td>
+</tr>
+<tr>
+<td><code>zephyr</code></td>
+<td>Zephyr, StableLM-Zephyr</td>
+<td><code>zephyr</code>, <code>stablelm</code></td>
+</tr>
+<tr>
+<td><code>alpaca</code></td>
+<td>Alpaca, Vicuna</td>
+<td><code>alpaca</code>, <code>vicuna</code></td>
+</tr>
+</tbody>
+</table>
+<p>List all templates: <code>yopj --list-templates</code></p>
+<p></p><h2>Tools</h2><a href="#tools"></a><p></p>
+<p>YOPJ comes with 12 built-in tools:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>file_read</code></td>
+<td>Read files with line numbers, offset/limit</td>
+</tr>
+<tr>
+<td><code>file_write</code></td>
+<td>Write files with automatic backup</td>
+</tr>
+<tr>
+<td><code>file_edit</code></td>
+<td>Find-and-replace editing with inline diff preview</td>
+</tr>
+<tr>
+<td><code>glob_search</code></td>
+<td>Find files by glob pattern</td>
+</tr>
+<tr>
+<td><code>grep_search</code></td>
+<td>Search file contents by regex</td>
+</tr>
+<tr>
+<td><code>bash_exec</code></td>
+<td>Run shell commands (with security validation)</td>
+</tr>
+<tr>
+<td><code>git_status</code></td>
+<td>Show working tree status</td>
+</tr>
+<tr>
+<td><code>git_diff</code></td>
+<td>Show changes</td>
+</tr>
+<tr>
+<td><code>git_log</code></td>
+<td>Show recent commits</td>
+</tr>
+<tr>
+<td><code>git_add</code></td>
+<td>Stage files</td>
+</tr>
+<tr>
+<td><code>git_commit</code></td>
+<td>Create commits</td>
+</tr>
+<tr>
+<td><code>git_branch</code></td>
+<td>List branches</td>
+</tr>
+<tr>
+<td><code>web_fetch</code></td>
+<td>Fetch URL content for research (public docs only)</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Custom Plugins</h3><a href="#custom-plugins"></a><p></p>
+<p>Add your own tools by dropping Python files into a <code>plugins/</code> directory:</p>
+<div><pre><span># plugins/my_tool.py</span>
+<span>def</span> <span>word_count</span>(<span>text</span>):
+    <span>"""Count words in text."""</span>
+    <span>words</span> <span>=</span> <span>text</span>.<span>split</span>()
+    <span>return</span> {<span>"ok"</span>: <span>True</span>, <span>"count"</span>: <span>len</span>(<span>words</span>)}
+
+<span>def</span> <span>register_tools</span>(<span>registry</span>):
+    <span>registry</span>.<span>register_tool</span>(<span>"word_count"</span>, <span>word_count</span>, <span>"Count words in text"</span>)</pre></div>
+<p>Plugins are loaded only when explicitly enabled with <code>--plugins-dir ./plugins</code>.</p>
+<p></p><h2>Commands</h2><a href="#commands"></a><p></p>
+<p>Type these during a session:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/help</code></td>
+<td>Show available commands</td>
+</tr>
+<tr>
+<td><code>/tools</code></td>
+<td>List registered tools (built-in + plugins)</td>
+</tr>
+<tr>
+<td><code>/tokens</code></td>
+<td>Show token usage and headroom</td>
+</tr>
+<tr>
+<td><code>/prompt</code></td>
+<td>Show system prompt info and token budget</td>
+</tr>
+<tr>
+<td><code>/retry</code></td>
+<td>Retry the last failed generation</td>
+</tr>
+<tr>
+<td><code>/undo</code></td>
+<td>Revert the last file write or edit</td>
+</tr>
+<tr>
+<td><code>/save [file]</code></td>
+<td>Save conversation to JSON</td>
+</tr>
+<tr>
+<td><code>/load [file]</code></td>
+<td>Load a saved conversation</td>
+</tr>
+<tr>
+<td><code>/export [file]</code></td>
+<td>Export conversation as human-readable markdown</td>
+</tr>
+<tr>
+<td><code>/changes</code></td>
+<td>Files modified this session</td>
+</tr>
+<tr>
+<td><code>/diff</code></td>
+<td>Show git diff of working directory</td>
+</tr>
+<tr>
+<td><code>/search keyword</code></td>
+<td>Search conversation history</td>
+</tr>
+<tr>
+<td><code>/tree [path]</code></td>
+<td>Show project directory tree</td>
+</tr>
+<tr>
+<td><code>/compact</code></td>
+<td>Compress conversation to free tokens</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>Clear conversation, keep system prompt</td>
+</tr>
+<tr>
+<td><code>/add path [...]</code></td>
+<td>Add file(s) to context as reference</td>
+</tr>
+<tr>
+<td><code>/context</code></td>
+<td>Show context window contents</td>
+</tr>
+<tr>
+<td><code>/read path</code></td>
+<td>Read a file directly (no model round-trip)</td>
+</tr>
+<tr>
+<td><code>/run command</code></td>
+<td>Run a shell command directly</td>
+</tr>
+<tr>
+<td><code>/grep pattern [path]</code></td>
+<td>Search files directly</td>
+</tr>
+<tr>
+<td><code>/stats</code></td>
+<td>Session statistics (tool calls, error rate)</td>
+</tr>
+<tr>
+<td><code>/patterns</code></td>
+<td>Detected learning patterns</td>
+</tr>
+<tr>
+<td><code>/learn topic | insight</code></td>
+<td>Create a SEAL lesson</td>
+</tr>
+<tr>
+<td><code>/model</code></td>
+<td>Show model and backend info</td>
+</tr>
+<tr>
+<td><code>/config</code></td>
+<td>Show active configuration</td>
+</tr>
+<tr>
+<td><code>/resume</code></td>
+<td>Resume from auto-checkpoint (crash recovery)</td>
+</tr>
+<tr>
+<td><code>/exit</code></td>
+<td>Quit (Ctrl+C also works)</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Multi-line Input</h3><a href="#multi-line-input"></a><p></p>
+<p>Paste code blocks using triple quotes:</p>
+<div><pre><code>&gt; """
+. def hello():
+.     print("world")
+. """
+</code></pre></div>
+<p>Or use backslash continuation:</p>
+<div><pre><code>&gt; Tell me about \
+. this function
+</code></pre></div>
+<p></p><h2>Configuration</h2><a href="#configuration"></a><p></p>
+<p>YOPJ searches for <code>.yopj.toml</code> in the current directory, then your home directory. CLI flags override config file values.</p>
+<div><pre>yopj --init-config   <span><span>#</span> generate a sample .yopj.toml</span>
+yopj --no-config     <span><span>#</span> ignore config files, use only CLI flags</span>
+yopj --config path   <span><span>#</span> use a specific config file</span></pre></div>
+<p>Sample <code>.yopj.toml</code>:</p>
+<div><pre><span>server</span> = <span>true</span>
+<span>host</span> = <span><span>"</span>127.0.0.1<span>"</span></span>
+<span>port</span> = <span>8080</span>
+<span>ctx_size</span> = <span>8192</span>
+<span>temp</span> = <span>0.2</span>
+<span>n_predict</span> = <span>4096</span>
+<span>lessons_dir</span> = <span><span>"</span>./lessons<span>"</span></span>
+<span>memory_dir</span> = <span><span>"</span>.<span>"</span></span>
+<span><span>#</span> plugins_dir = "./plugins"</span></pre></div>
+<p></p><h2>CLI Options</h2><a href="#cli-options"></a><p></p>
+<div><pre><code>--model PATH         GGUF model file (required unless --server)
+--server             Use llama-server HTTP backend
+--host HOST          Server host (default: 127.0.0.1)
+--port PORT          Server port (default: 8080)
+--llama-cli PATH     Path to llama-cli executable
+--template NAME      Chat template (auto-detected if omitted)
+--list-templates     Show all available templates and exit
+--ctx-size N         Context window size (default: 8192)
+--temp FLOAT         Sampling temperature (default: 0.2)
+--n-predict N        Max tokens per turn (default: 4096)
+--ngl N              GPU layers to offload (default: 99)
+--timeout N          Generation timeout in seconds (default: 300)
+--lessons-dir PATH   SEAL lesson storage directory (enables learning)
+--memory-dir PATH    Directory for MEMORY.md persistent memory
+--cwd PATH           Working directory for file operations
+--plugins-dir PATH   Plugin directory (default: ./plugins)
+--config PATH        Config file path (default: auto-detect .yopj.toml)
+--no-config          Ignore config files
+--init-config        Generate a sample .yopj.toml and exit
+--strict-sandbox     Confine all file operations to --cwd
+--dangerously-skip-permissions  Auto-allow all tool calls
+</code></pre></div>
+<p></p><h2>Architecture</h2><a href="#architecture"></a><p></p>
+<div><pre><code>yopj/
+├── core/
+│   ├── tool_protocol.py      — Tool calling protocol (parse, execute, format)
+│   ├── model_interface.py     — llama-cli subprocess backend
+│   ├── server_interface.py    — llama-server HTTP backend
+│   ├── chat_templates.py      — Multi-model prompt formatting (9 templates)
+│   ├── context_manager.py     — Token budget + smart 3-phase compression
+│   ├── permission_system.py   — Per-tool access control
+│   ├── sandbox.py             — Security sandbox (command blocklist, path confinement)
+│   ├── config.py              — .yopj.toml configuration file support
+│   ├── plugin_loader.py       — User-extensible plugin system
+│   ├── audit_log.py           — Structured JSONL event logging
+│   └── project_detect.py      — Auto-detect project type from markers
+├── tools/                     — Built-in tool implementations (8 files)
+├── learning/
+│   ├── seal_store.py          — SEAL lesson persistence + quality gates
+│   ├── session_learner.py     — Session pattern detection
+│   ├── memory.py              — Cross-session markdown memory
+│   └── confab_detector.py     — Confabulation heuristics (H1/H2/H5/H6)
+├── ui/
+│   └── cli.py                 — Terminal conversation loop with streaming
+├── yopj.py                    — Entry point
+├── pyproject.toml             — Package configuration (pip install)
+├── knowledge/                 — Attack pattern reference library (read-only)
+└── tests/
+    └── test_tools.py          — Test suite (197 tests)
+</code></pre></div>
+<p></p><h2>SEAL Learning</h2><a href="#seal-learning"></a><p></p>
+<p>SEAL (Self Evolving Adaptive Learning) captures reusable patterns from coding sessions:</p>
+<ul>
+<li><strong>Auto-detection:</strong> Identifies tool-failure-then-success sequences, high-round-count questions, and repeated errors.</li>
+<li><strong>Manual capture:</strong> Use <code>/learn topic | insight</code> to save specific knowledge.</li>
+<li><strong>Self-improvement:</strong> Lessons are loaded into the system prompt at session start, so Jean-Luc gets better over time.</li>
+<li><strong>Confidence scoring:</strong> Each lesson has a confidence level. Low-confidence lessons are excluded from the prompt.</li>
+<li><strong>Quality gates:</strong> Lesson validation, confidence decay (unvalidated lessons lose confidence over time), revalidation, and conflict detection.</li>
+<li><strong>Memory auto-save:</strong> Session summaries are automatically appended to MEMORY.md on exit.</li>
+</ul>
+<p></p><h2>Context Management</h2><a href="#context-management"></a><p></p>
+<p>YOPJ automatically manages the context window to prevent overflow:</p>
+<ul>
+<li><strong>3-phase compression:</strong> (1) compress consumed tool results, (2) truncate middle messages, (3) summarize and drop oldest.</li>
+<li><strong>Auto-compaction:</strong> When context is nearly full (&lt;200 tokens remaining), automatic compression triggers before generation.</li>
+<li><strong>Running summary:</strong> Dropped messages are summarized and kept as context.</li>
+<li><strong>Tool result caps:</strong> Large tool results are truncated at 50K characters.</li>
+<li><strong>File reference pre-loading:</strong> Use <code>/add</code> to load files into context without a model round-trip.</li>
+<li><strong>Auto-checkpoint:</strong> Every 5 turns, conversation is saved to <code>.yopj-checkpoint.json</code> for crash recovery.</li>
+</ul>
+<p></p><h2>Security</h2><a href="#security"></a><p></p>
+<blockquote>
+<p>Jean-Luc is hardened against prompt injection and tool abuse in local single-agent environments.
+Co-residency with other autonomous agents requires boot integrity verification and server trust checks.
+See <a href="https://github.com/WayneCider/YourOwnPersonalJean-Luc/blob/master/SECURITY.md">SECURITY.md</a> for the full threat model, isolation requirements, and reporting policy.</p>
+</blockquote>
+<p>YOPJ includes an 8-layer security stack independently certified by two AI assessors (9.7/10 and 9.5/10, 260+ adversarial test cases, 0 exploitable breaches):</p>
+<ol>
+<li><strong>System prompt rules</strong> — 11 security rules embedded in the cognitive layer</li>
+<li><strong>Cognitive anchors</strong> — context injection after file reads reminding the model that content is untrusted</li>
+<li><strong>Trigger nullification</strong> — breaks latent trigger associations in file content</li>
+<li><strong>Trigger pattern detector</strong> — deterministic regex scan on all file content</li>
+<li><strong>Provenance gating</strong> — blocks action tools after file reads within the same turn</li>
+<li><strong>Lesson validation</strong> — blocklist rejects tool names, triggers, and policy overrides in <code>/learn</code></li>
+<li><strong>Sandbox</strong> — 4-phase command validation, path confinement, argument path checking, extension blocking, env-dump blocklist</li>
+<li><strong>Protected paths</strong> — core security files are immutable at runtime</li>
+</ol>
+<p></p><h3>Boot Integrity (Co-Residency Hardening)</h3><a href="#boot-integrity-co-residency-hardening"></a><p></p>
+<p>For environments where YOPJ runs alongside other autonomous agents:</p>
+<div><pre>yopj --generate-manifest    <span><span>#</span> Create HMAC-signed integrity manifest</span>
+yopj --verify-only           <span><span>#</span> Verify boot integrity without starting</span>
+yopj --expected-model codestral  <span><span>#</span> Verify model identity at boot</span></pre></div>
+<ul>
+<li>HMAC-signed manifest with PBKDF2 key derivation (operator passphrase, never stored)</li>
+<li>SHA-256 verification of all trust root files at boot</li>
+<li>Process-level server verification (confirms llama-server identity via PID)</li>
+<li>Absolute path resolution for all subprocess calls (eliminates PATH poisoning)</li>
+<li>Plugin auto-load disabled by default (opt-in with <code>--plugins-dir</code>)</li>
+</ul>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>Copyright 2026 The YOPJ Project</p>
+<p>Licensed under the Apache License, Version 2.0. See <a href="https://github.com/WayneCider/YourOwnPersonalJean-Luc/blob/master/LICENSE">LICENSE</a> for details.</p>
+<hr />
+<p><em>Named after Jean-Luc Picard — because the best agents act on principle, not just capability.</em></p>
+</article></div></div>
+  </div>
+</body>
+</html>

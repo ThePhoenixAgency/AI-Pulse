@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Woven-ECS</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Woven-ECS</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://woven-ecs.dev/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>  
+
+<div><article> <p>       <span>Easy to Use</span> </p> <p>Straightforward API for defining components, creating entities, and writing systems. Full type-safety with TypeScript.</p> </article><article> <p>       <span>Reactive Queries</span> </p> <p>Track all changes to entities and components automatically. Query for entities that were <strong>added</strong>, <strong>removed</strong>, or <strong>changed</strong> since the last frame.</p> </article><article> <p>       <span>Built-in Multithreading</span> </p> <p>Run heavy workloads in parallel without any jank. Effortlessly distribute work across multiple CPU cores, no manual thread management required.</p> </article><article> <p>       <span>Open Source</span> </p> <p>Read the source code, create issues, and contribute on GitHub. We welcome contributions and feedback as the project grows.</p> </article></div> 
+<div><h2>What it Looks Like</h2><p><a href="#what-it-looks-like"><span>Section titled “What it Looks Like”</span></a></p></div>
+<div><pre><code><div><p><span>import</span><span> {</span></p></div><div><p><span><span>  </span></span><span>addComponent,</span></p></div><div><p><span><span>  </span></span><span>createEntity,</span></p></div><div><p><span><span>  </span></span><span>defineComponent,</span></p></div><div><p><span><span>  </span></span><span>defineQuery,</span></p></div><div><p><span><span>  </span></span><span>defineSystem,</span></p></div><div><p><span><span>  </span></span><span>field,</span></p></div><div><p><span><span>  </span></span><span>World,</span></p></div><div><p><span>} </span><span>from</span><span> </span><span>'@woven-ecs/core'</span><span>;</span></p></div><div><p><span>// Define components with typed fields</span></p></div><div><p><span>const</span><span> </span><span>Position</span><span> </span><span>=</span><span> </span><span>defineComponent</span><span>({</span></p></div><div><p><span><span>  </span></span><span>x: field.</span><span>float32</span><span>(),</span></p></div><div><p><span><span>  </span></span><span>y: field.</span><span>float32</span><span>(),</span></p></div><div><p><span>});</span></p></div><div><p><span>const</span><span> </span><span>Velocity</span><span> </span><span>=</span><span> </span><span>defineComponent</span><span>({</span></p></div><div><p><span><span>  </span></span><span>x: field.</span><span>float32</span><span>(),</span></p></div><div><p><span><span>  </span></span><span>y: field.</span><span>float32</span><span>(),</span></p></div><div><p><span>});</span></p></div><div><p><span>// Define a query to find entities with both components</span></p></div><div><p><span>const</span><span> </span><span>movingEntities</span><span> </span><span>=</span><span> </span><span>defineQuery</span><span>((</span><span>q</span><span>) </span><span>=&gt;</span></p></div><div><p><span><span>  </span></span><span>q.</span><span>with</span><span>(Position, Velocity)</span></p></div><div><p><span>);</span></p></div><div><p><span>// Define a system to process matching entities</span></p></div><div><p><span>const</span><span> </span><span>movementSystem</span><span> </span><span>=</span><span> </span><span>defineSystem</span><span>((</span><span>ctx</span><span>) </span><span>=&gt;</span><span> {</span></p></div><div><p><span>  </span><span>for</span><span> (</span><span>const</span><span> </span><span>eid</span><span> </span><span>of</span><span> movingEntities.</span><span>current</span><span>(ctx)) {</span></p></div><div><p><span>    </span><span>const</span><span> </span><span>pos</span><span> </span><span>=</span><span> Position.</span><span>write</span><span>(ctx, eid);</span></p></div><div><p><span>    </span><span>const</span><span> </span><span>vel</span><span> </span><span>=</span><span> Velocity.</span><span>read</span><span>(ctx, eid);</span></p></div><div><p><span><span>    </span></span><span>pos.x </span><span>+=</span><span> vel.x;</span></p></div><div><p><span><span>    </span></span><span>pos.y </span><span>+=</span><span> vel.y;</span></p></div><div><p><span><span>  </span></span><span>}</span></p></div><div><p><span>});</span></p></div><div><p><span>// Create the world</span></p></div><div><p><span>const</span><span> </span><span>world</span><span> </span><span>=</span><span> </span><span>new</span><span> </span><span>World</span><span>([Position, Velocity]);</span></p></div><div><p><span>// Initialize with an entity</span></p></div><div><p><span>world.</span><span>execute</span><span>((</span><span>ctx</span><span>) </span><span>=&gt;</span><span> {</span></p></div><div><p><span>  </span><span>const</span><span> </span><span>eid</span><span> </span><span>=</span><span> </span><span>createEntity</span><span>(ctx);</span></p></div><div><p><span>  </span><span>addComponent</span><span>(ctx, eid, Position, { x: </span><span>0</span><span>, y: </span><span>0</span><span> });</span></p></div><div><p><span>  </span><span>addComponent</span><span>(ctx, eid, Velocity, { x: </span><span>1</span><span>, y: </span><span>1</span><span> });</span></p></div><div><p><span>});</span></p></div><div><p><span>// Game loop</span></p></div><div><p><span>function</span><span> </span><span>loop</span><span>() {</span></p></div><div><p><span><span>  </span></span><span>world.</span><span>execute</span><span>(movementSystem);</span></p></div><div><p><span>  </span><span>requestAnimationFrame</span><span>(loop);</span></p></div><div><p><span>}</span></p></div><div><p><span>loop</span><span>();</span></p></div></code></pre></div>
+
+<ul>
+<li><strong>Powerful Queries</strong>: Filter entities by component presence with <code>with</code>, <code>without</code>, and <code>any</code> operators</li>
+<li><strong>Change Tracking</strong>: Query for entities that were added, removed, or changed since last frame</li>
+<li><strong>Rich Field Types</strong>: Numbers, strings, booleans, arrays, tuples, enums, binary, and entity references</li>
+<li><strong>Singletons</strong>: First-class support for global state like time, input, and configuration</li>
+<li><strong>Multithreading</strong>: Execute systems in parallel across worker threads with automatic entity partitioning</li>
+<li><strong>Entity References</strong>: Reference other entities with automatic validation</li>
+</ul>
+<div><h2>Build Collaborative Applications</h2><p><a href="#build-collaborative-applications"><span>Section titled “Build Collaborative Applications”</span></a></p></div>
+<p>The <a href="https://woven-ecs.dev/canvas-store/introduction/"><code>@woven-ecs/canvas-store</code></a> and <a href="https://woven-ecs.dev/canvas-store/server-setup/"><code>@woven-ecs/canvas-store-server</code></a> packages extend Woven-ECS with everything you need to build multiplayer editor applications like infinite canvases or other creative design tools.</p>
+<div><article> <p>       <span>Real-time Sync</span> </p> <p>WebSocket-based multiplayer with conflict resolution. Multiple users can edit the same document simultaneously.</p> </article><article> <p>       <span>Local-First</span> </p> <p>Your app works offline by default. Data lives on the client and syncs to the server when connected.</p> </article><article> <p>       <span>Undo/Redo</span> </p> <p>Full history tracking with configurable depth. Users can undo and redo changes across sessions.</p> </article><article> <p>       <span>Persistence</span> </p> <p>Automatic IndexedDB storage for offline support. Changes are saved locally and synced when back online.</p> </article><article> <p>       <span>Migrations</span> </p> <p>Version your component schemas with automatic migrations. Evolve your data model without breaking existing documents.</p> </article><article> <p>       <span>Configurable</span> </p> <p>Configure sync behavior per component: persist to server, sync ephemerally, store locally, or skip entirely.</p> </article></div> 
+<p><a href="https://woven-ecs.dev/canvas-store/introduction/">Learn more about canvas-store →</a></p>
+
+<ul>
+<li><a href="https://woven-ecs.dev/quick-start/">Quick Start</a> - Install Woven-ECS and create your first project</li>
+<li><a href="https://woven-ecs.dev/docs/components-singletons/">Components</a> - Learn about defining and using components</li>
+<li><a href="https://woven-ecs.dev/docs/queries/">Queries</a> - Master the query system for finding entities</li>
+<li><a href="https://woven-ecs.dev/docs/multithreading/">Multithreading</a> - Understand how to set up multithreaded systems</li>
+</ul> </div></div>
+  </div>
+</body>
+</html>

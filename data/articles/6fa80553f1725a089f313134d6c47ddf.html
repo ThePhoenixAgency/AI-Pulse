@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why I Rewrote My Email Editor from Scratch: From Blocks to Atoms Rewrite</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Why I Rewrote My Email Editor from Scratch: From Blocks to Atoms Rewrite</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/antonreshetov/why-i-rewrote-my-email-editor-from-scratch-from-blocks-to-atoms-rewrite-11n8" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+              <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzhql1xg7syq1gk52nlpb.jpg">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzhql1xg7syq1gk52nlpb.jpg" alt="Cover image for Why I Rewrote My Email Editor from Scratch: From Blocks to Atoms Rewrite" />
+              </a>
+
+            <div>
+                  <p><a href="https://dev.to/antonreshetov"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F117155%2F859cde61-f2b5-4b39-ae3c-90dc99f7a629.jpeg" alt="Anton Reshetov" /></a>
+                  </p>
+                  
+                </div>
+          </div><div>
+                <p>Hi there!</p>
+
+<p>Six years ago, I launched <a href="https://card.mysigmail.com/" target="_blank">MySigMail Card</a> as a commercial product.</p>
+
+<p>To be honest, it didn't take off as I hoped. I struggled to attract enough users to make it sustainable. Eventually, I lost motivation and abandoned it to focus on my other open-source project, <a href="https://masscode.io/" target="_blank">massCode</a>.</p>
+
+<p>For years, the project gathered dust. But besides the marketing struggles, it also had a "ticking time bomb" in its core architecture.</p>
+
+<p>It was built entirely on <strong>Presets</strong>.</p>
+
+<h2>
+  <a name="the-problem-the-preset-trap" href="#the-problem-the-preset-trap">
+  </a>
+  The Problem: The "Preset Trap"
+</h2>
+
+<p>In the initial version, if a user wanted a header, they dragged a "Header Block". If they wanted a testimonial, they dragged a "Testimonial Block". Under the hood, these were rigid, hard-coded HTML chunks.</p>
+
+<p>This led to several "dev nightmares":</p>
+
+<ul>
+<li>
+<strong>The Variation Explosion:</strong> Want the image on the right? I had to code a new block. Want 3 columns instead of 2? Another block.</li>
+<li>
+<strong>The Maintenance Ceiling:</strong> I became the bottleneck. Every "small change" requested by users required me to push a code update.</li>
+<li>
+<strong>Rigid Data Structure:</strong> The JSON was tied to the visual representation, making migrations a headache.</li>
+</ul>
+
+<h2>
+  <a name="the-solution-embracing-atomic-design" href="#the-solution-embracing-atomic-design">
+  </a>
+  The Solution: Embracing Atomic Design
+</h2>
+
+<p>I realized that to make the editor truly powerful, I had to decouple <strong>Layout</strong> from <strong>Content</strong>. I scrapped the old engine and rebuilt it using a recursive, hierarchical system:</p>
+
+<ol>
+<li>
+<strong>Block (The Root):</strong> The top-level section wrapper that handles full-width backgrounds and vertical spacing.</li>
+<li>
+<strong>Row (The Grid):</strong> Defines the horizontal structure and manages column gaps and mobile collapsing logic.</li>
+<li>
+<strong>Cell (The Flexible Container):</strong> The powerhouse of the layout. It controls alignment, dimensions, and—crucially—<strong>can contain nested Rows</strong>, allowing for complex, multi-level grid structures.</li>
+<li>
+<strong>Atom (The Content):</strong> The actual elements: <strong>Text</strong>, <strong>Image</strong>, <strong>Button</strong>, <strong>Menu</strong>, and <strong>Divider</strong>.</li>
+</ol>
+
+<p>This recursive structure (<code>Block -&gt; Row -&gt; Cell -&gt; Row...</code>) means you aren't limited to simple columns. You can build advanced layouts like "Sidebar + Main Content" or complex product grids without writing a single line of code.</p>
+
+<h2>
+  <a name="the-tech-stack" href="#the-tech-stack">
+  </a>
+  The Tech Stack
+</h2>
+
+<p>I wanted this version to be modern, fast, and developer-friendly:</p>
+
+<ul>
+<li>
+<strong>Vue 3 (Composition API):</strong> For a reactive and modular UI.</li>
+<li>
+<strong>TypeScript:</strong> For a robust data schema (vital for complex email structures).</li>
+<li>
+<strong>Tailwind CSS:</strong> Using the latest v4 for blazing fast styling.</li>
+<li>
+<strong>Shadcn Vue:</strong> For accessible UI components.</li>
+<li>
+<strong>Clean Email Output:</strong> It generates production-ready, table-based HTML that actually works in Outlook.</li>
+</ul>
+
+<h2>
+  <a name="why-open-source" href="#why-open-source">
+  </a>
+  Why Open Source?
+</h2>
+
+<p>I’m building this in public as an Open Source project (<strong>AGPL-3.0</strong>).</p>
+
+<p>Why? First, because I believe the world needs a powerful, embeddable email builder that isn't locked behind a <strong>$500/month SaaS subscription</strong>.</p>
+
+<p>But there is a deeper reason.</p>
+
+<p>We live in an era of increasing vendor lock-in and centralized control. We have seen instances where entire regions are cut off from services due to geopolitical reasons, leaving developers and users stranded. Software should be accessible and reliable, regardless of borders.</p>
+
+<p>Driven by a passion for open source, I want to provide a truly independent alternative to ensure that everyone has access to a powerful, self-hosted email builder.</p>
+
+<p>If you’ve ever struggled with rigid email templates or want to see how we handle complex Drag-and-Drop in Vue 3, I’d love for you to check out the repo.</p>
+
+<p>👉 <strong>Check it out here:</strong> <a href="https://github.com/mysigmail/card" target="_blank">github.com/mysigmail/card</a></p>
+
+<p>I’m actively looking for feedback on the architecture and, of course, contributors are more than welcome!</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Usage Tracker — on-device usage alerts for AI caps</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>AI Usage Tracker — on-device usage alerts for AI caps</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://0raculo.github.io/aiusagetracker-site/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    
+    <div>
+        <h2>Never get cut off by AI usage caps.</h2>
+        <p>Track 5-hour windows and weekly limits. Widgets + threshold alerts. On-device.</p>
+
+        <p><span>Before-the-cap alerts (75%, 90%, ...)</span>
+          <span>Reset countdown timers</span>
+          <span>Home + Lock Screen widgets</span>
+          <span>No backend</span>
+          <span>Keychain storage</span>
+        </p>
+
+        
+
+        <p><strong>No email. No signup.</strong> Not a bypass — status + alerts only.</p>
+      </div>
+
+    
+    <div>
+          <p><img src="https://0raculo.github.io/aiusagetracker-site/assets/aiusagetracker.gif" alt="AI Usage Tracker demo showing dashboard gauges, widgets, and alerts" /></p><p>
+            A quick demo: gauges → widgets → alert thresholds.
+          </p>
+        </div>
+
+    
+    <div>
+        <h2>What it does</h2>
+        <div>
+          <div>
+            <p>📊</p>
+            <h3>Multi-provider, one glance</h3>
+            <p>Track multiple subscriptions in one place. Current: Claude, ChatGPT/Codex, OpenAI API, Z.ai, Kimi Code, MiniMax.</p>
+          </div>
+
+          <div>
+            <p>🔔</p>
+            <h3>Smart Alerts</h3>
+            <p>Get notified <strong>before</strong> you hit the cap (e.g. 75%, 90%) and when windows reset.</p>
+          </div>
+
+          <div>
+            <p>📱</p>
+            <h3>Native Widgets</h3>
+            <p>Home Screen and Lock Screen widgets. Check your status without opening an app.</p>
+          </div>
+
+          <div>
+            <p>🔒</p>
+            <h3>On-device by design</h3>
+            <p>No servers. No analytics. Credentials/tokens stored in iOS Keychain. Revoke anytime.</p>
+          </div>
+        </div>
+      </div>
+
+    
+    <div>
+        <h2>How it works</h2>
+
+        <div>
+          <p>
+            Providers don’t expose usage data the same way. AI Usage Tracker supports two integration types:
+          </p>
+
+          <div>
+            <div>
+              <h3>API key providers</h3>
+              <p>
+                For providers that support it (e.g. Z.ai, MiniMax), you paste an API key and the app fetches usage directly from the provider.
+                Keys are stored in iOS Keychain.
+              </p>
+            </div>
+
+            <div>
+              <h3>Dashboard-only providers</h3>
+              <p>
+                For providers that only expose usage via their web dashboards (e.g. Claude, ChatGPT/Codex, Kimi),
+                you can sign in via an embedded web view <em>or</em> paste an existing session token.
+                The app reads the same usage information shown in the provider dashboard.
+              </p>
+            </div>
+
+            <div>
+              <h3>Security model (short)</h3>
+              <p>
+                No MITM. No proxying traffic through our servers. No accounts. No analytics.
+                Everything runs on-device.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    
+    <div>
+        <h2>FAQ</h2>
+
+        <div>
+          <div>
+            <h3>Does it bypass provider limits?</h3>
+            <p>No. It only shows usage status, reset timers, and alerts so you can plan your sessions.</p>
+          </div>
+
+          <div>
+            <h3>Does any data go to a server?</h3>
+            <p>No. There are no servers, no third-party analytics, and no tracking. Data stays on your device.</p>
+          </div>
+
+          <div>
+            <h3>How are credentials stored?</h3>
+            <p>Credentials/tokens are stored in iOS Keychain. You can revoke access anytime by logging out and/or rotating keys/tokens on the provider side.</p>
+          </div>
+
+          <div>
+            <h3>What if a provider changes their dashboard/endpoints?</h3>
+            <p>If a provider changes their dashboard/endpoints, that connector may break until an update is released. Your local data stays on-device.</p>
+          </div>
+
+          <div>
+            <h3>Does it support multiple accounts?</h3>
+            <p>Not yet — it’s on the roadmap.</p>
+          </div>
+        </div>
+      </div>
+
+    
+    
+  </div></div>
+  </div>
+</body>
+</html>

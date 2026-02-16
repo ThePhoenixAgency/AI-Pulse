@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - theaniketgiri/aip: AIP-1 is a trustless, cross-platform protocol for verifying the identity, intent, and authorization boundaries of autonomous AI agents before they act.  Think of it as OAuth + TLS, purpose-built for the agentic web.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - theaniketgiri/aip: AIP-1 is a trustless, cross-platform protocol for verifying the identity, intent, and authorization boundaries of autonomous AI agents before they act.  Think of it as OAuth + TLS, purpose-built for the agentic web.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/theaniketgiri/aip" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p>
+  <a target="_blank" href="https://camo.githubusercontent.com/92b522e27c38195494c147653333fc7866f25854481a2250cf0b204ee733e85e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f746f636f6c2d4149502d2d312d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d414244424533"><img src="https://camo.githubusercontent.com/92b522e27c38195494c147653333fc7866f25854481a2250cf0b204ee733e85e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f50726f746f636f6c2d4149502d2d312d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d414244424533" alt="AIP-1" /></a>
+  <a target="_blank" href="https://camo.githubusercontent.com/f4dd480eb150332477b8885e2945a7d171a5d49a148b4b116b5b3fbb0a9b9e3f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f43727970746f2d456432353531392d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d333444333939"><img src="https://camo.githubusercontent.com/f4dd480eb150332477b8885e2945a7d171a5d49a148b4b116b5b3fbb0a9b9e3f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f43727970746f2d456432353531392d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d333444333939" alt="Ed25519" /></a>
+  <a target="_blank" href="https://camo.githubusercontent.com/16a701188565310d9328bc058ef2b05f4bd66a26e27273dd2d174df12857f417/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6169702d70726f746f636f6c3f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d413738424641266c6162656c3d50795049"><img src="https://camo.githubusercontent.com/16a701188565310d9328bc058ef2b05f4bd66a26e27273dd2d174df12857f417/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6169702d70726f746f636f6c3f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d413738424641266c6162656c3d50795049" alt="PyPI" /></a>
+  <a target="_blank" href="https://camo.githubusercontent.com/96fd86e9b864b669912c75f6ed767da6d5185ae1c331734cfea6cd9c0960d24a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f54657374732d363325323070617373696e672d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d333444333939"><img src="https://camo.githubusercontent.com/96fd86e9b864b669912c75f6ed767da6d5185ae1c331734cfea6cd9c0960d24a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f54657374732d363325323070617373696e672d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d333444333939" alt="Tests" /></a>
+  <a target="_blank" href="https://camo.githubusercontent.com/d99d0983f20a6bae4ecb45d09d5bd764b7c49437d30414339e09cd20284fab54/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d393441334238"><img src="https://camo.githubusercontent.com/d99d0983f20a6bae4ecb45d09d5bd764b7c49437d30414339e09cd20284fab54/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d3042304431303f7374796c653d666f722d7468652d6261646765266c6162656c436f6c6f723d30423044313026636f6c6f723d393441334238" alt="License" /></a>
+</p>
+<p></p><h2>AIP — Agent Intent Protocol</h2><a href="#aip--agent-intent-protocol"></a><p></p>
+<p>
+  <strong>The HTTPS for AI Agents.</strong><br />
+  Cryptographic identity, intent verification, and boundary enforcement for autonomous agents.
+</p>
+<p>
+  <a href="https://aip.synthexai.tech/docs">Documentation</a> ·
+  <a href="https://aip.synthexai.tech/">Live Dashboard</a> ·
+  <a href="https://pypi.org/project/aip-protocol/">PyPI</a>
+</p>
+<hr />
+<p></p><h2>The Problem</h2><a href="#the-problem"></a><p></p>
+<p>Every AI framework lets agents <strong>do things</strong>. None of them verify <strong>what agents are allowed to do</strong>.</p>
+<p>A LangChain agent can drain a bank account. An AutoGPT agent can email your customers. A CrewAI agent can delete production data. There is no standard way to verify an agent's identity, enforce its boundaries, or revoke it in real-time.</p>
+<p><strong>AIP fixes this.</strong></p>
+<p></p><h2>What is AIP?</h2><a href="#what-is-aip"></a><p></p>
+<p>AIP-1 is a trustless, cross-platform protocol for verifying the <strong>identity</strong>, <strong>intent</strong>, and <strong>authorization boundaries</strong> of autonomous AI agents before they act.</p>
+<p>Think of it as <strong>OAuth + TLS, purpose-built for the agentic web</strong>.</p>
+<div><pre><code>Agent wants to act → Creates signed Intent Envelope → Verifier checks 8-step pipeline → Allow or Deny
+</code></pre></div>
+<p></p><h3>Core Capabilities</h3><a href="#core-capabilities"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cryptographic Identity</strong></td>
+<td>Ed25519 keypair per agent, DID-based addressing (<code>did:web:</code>)</td>
+</tr>
+<tr>
+<td><strong>Boundary Enforcement</strong></td>
+<td>Action allowlists, deny lists, monetary limits, geo restrictions</td>
+</tr>
+<tr>
+<td><strong>Tiered Verification</strong></td>
+<td>Sub-millisecond for low-risk, full crypto for high-value intents</td>
+</tr>
+<tr>
+<td><strong>Kill Switch</strong></td>
+<td>Revoke or suspend any agent globally with zero propagation delay</td>
+</tr>
+<tr>
+<td><strong>Trust Scores</strong></td>
+<td>Bayesian reputation model — trust is earned over successful verifications</td>
+</tr>
+<tr>
+<td><strong>Intent Drift Detection</strong></td>
+<td>Semantic classifier flags actions outside an agent's declared scope</td>
+</tr>
+<tr>
+<td><strong>Structured Error Codes</strong></td>
+<td>22 machine-readable <code>AIP-Exxx</code> codes across 5 categories for audit trails</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Install</h2><a href="#install"></a><p></p>
+<div><pre>pip install aip-protocol</pre></div>
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<div><pre><span>from</span> <span>aip_protocol</span> <span>import</span> <span>AgentPassport</span>, <span>create_envelope</span>, <span>sign_envelope</span>, <span>verify_intent</span>
+<span>from</span> <span>aip_protocol</span>.<span>revocation</span> <span>import</span> <span>RevocationStore</span>
+
+<span># 1 — Create an agent passport (identity + keys + boundaries)</span>
+<span>passport</span> <span>=</span> <span>AgentPassport</span>.<span>create</span>(
+    <span>domain</span><span>=</span><span>"yourco.com"</span>,
+    <span>agent_name</span><span>=</span><span>"procurement-bot"</span>,
+    <span>allowed_actions</span><span>=</span>[<span>"read_invoice"</span>, <span>"transfer_funds"</span>],
+    <span>monetary_limit_per_txn</span><span>=</span><span>50.0</span>,
+)
+
+<span>print</span>(<span>passport</span>.<span>agent_id</span>)
+<span># → "did:web:yourco.com:agents:procurement-bot"</span>
+
+<span># 2 — Agent wants to act: create and sign an intent envelope</span>
+<span>envelope</span> <span>=</span> <span>create_envelope</span>(
+    <span>passport</span>,
+    <span>action</span><span>=</span><span>"transfer_funds"</span>,
+    <span>target</span><span>=</span><span>"did:web:vendor.com"</span>,
+    <span>parameters</span><span>=</span>{<span>"amount"</span>: <span>45.00</span>, <span>"currency"</span>: <span>"USD"</span>},
+)
+<span>signed</span> <span>=</span> <span>sign_envelope</span>(<span>envelope</span>, <span>passport</span>.<span>private_key</span>)
+
+<span># 3 — Verifier checks the intent through the 8-step pipeline</span>
+<span>store</span> <span>=</span> <span>RevocationStore</span>()
+<span>result</span> <span>=</span> <span>verify_intent</span>(<span>signed</span>, <span>passport</span>.<span>public_key</span>, <span>revocation_store</span><span>=</span><span>store</span>)
+
+<span>if</span> <span>result</span>.<span>passed</span>:
+    <span>print</span>(<span>f"✓ Verified — tier: <span><span>{</span><span>result</span>.<span>tier_used</span>.<span>value</span><span>}</span></span>, trust: <span><span>{</span><span>result</span>.<span>trust_score</span><span>}</span></span>"</span>)
+<span>else</span>:
+    <span>for</span> <span>error</span> <span>in</span> <span>result</span>.<span>errors</span>:
+        <span>print</span>(<span>f"✗ <span><span>{</span><span>error</span>.<span>value</span><span>}</span></span>: <span><span>{</span><span>error</span>.<span>name</span><span>}</span></span>"</span>)
+    <span># e.g. "✗ AIP-E202: MONETARY_LIMIT"</span></pre></div>
+<p></p><h2>Verification Pipeline</h2><a href="#verification-pipeline"></a><p></p>
+<p>Every intent passes through an 8-step verification pipeline. The protocol auto-selects the verification tier based on risk:</p>
+<div><pre><code>┌────────────────────────────────────────────────────────┐
+│                   Intent Envelope                      │
+│  ┌───────────┐  ┌───────────┐  ┌────────────────────┐ │
+│  │  Agent ID  │  │  Intent   │  │  Boundaries        │ │
+│  │  (DID)     │  │  (Action) │  │  (The Cage)        │ │
+│  └─────┬──────┘  └─────┬─────┘  └──────────┬─────────┘ │
+│        └───────────────┼────────────────────┘           │
+│                  ┌─────▼─────┐                          │
+│                  │   Proof   │ ← Ed25519 signature      │
+│                  └───────────┘                          │
+└────────────────────────────────────────────────────────┘
+                        │
+                        ▼
+┌────────────────────────────────────────────────────────┐
+│               Verification Pipeline                    │
+│                                                        │
+│  ① Version Check       ⑤ Attestation Verify           │
+│  ② Schema Validation   ⑥ Revocation Check             │
+│  ③ Expiry Check        ⑦ Trust Score Evaluation        │
+│  ④ Boundary Check      ⑧ Final Verdict                │
+│     └─ Actions                                         │
+│     └─ Monetary limits                                 │
+│     └─ Geo restrictions                                │
+│     └─ Intent drift                                    │
+└────────────────────────────────────────────────────────┘
+</code></pre></div>
+<p></p><h3>Tiered Verification</h3><a href="#tiered-verification"></a><p></p>
+<p>Not every intent needs full cryptographic verification. AIP auto-selects the tier:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Use Case</th>
+<th>Latency</th>
+<th>What Runs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tier 0</strong></td>
+<td>Low-risk, cached, in-session repeats</td>
+<td><strong>&lt;1ms</strong></td>
+<td>HMAC + boundary proof</td>
+</tr>
+<tr>
+<td><strong>Tier 1</strong></td>
+<td>Normal operations</td>
+<td><strong>~5ms</strong></td>
+<td>Ed25519 + boundary + revocation</td>
+</tr>
+<tr>
+<td><strong>Tier 2</strong></td>
+<td>High-value, cross-org, first contact</td>
+<td><strong>~50–100ms</strong></td>
+<td>Full 8-step pipeline</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Error Taxonomy</h2><a href="#error-taxonomy"></a><p></p>
+<p>Every failure returns a machine-readable <code>AIP-Exxx</code> code — not a generic 400. Your logs, dashboards, and audit trails show <em>exactly</em> what went wrong.</p>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIP-E1xx</code></td>
+<td><strong>Envelope Errors</strong></td>
+<td><code>E100</code> Invalid Signature · <code>E101</code> Expired · <code>E102</code> Replay Detected</td>
+</tr>
+<tr>
+<td><code>AIP-E2xx</code></td>
+<td><strong>Boundary Violations</strong></td>
+<td><code>E200</code> Action Not Allowed · <code>E202</code> Monetary Limit · <code>E204</code> Geo Restricted</td>
+</tr>
+<tr>
+<td><code>AIP-E3xx</code></td>
+<td><strong>Attestation Failures</strong></td>
+<td><code>E300</code> Model Hash Mismatch · <code>E303</code> Intent Drift</td>
+</tr>
+<tr>
+<td><code>AIP-E4xx</code></td>
+<td><strong>Trust Failures</strong></td>
+<td><code>E400</code> Agent Revoked · <code>E403</code> Delegation Invalid · <code>E404</code> Trust Too Low</td>
+</tr>
+<tr>
+<td><code>AIP-E5xx</code></td>
+<td><strong>Protocol Errors</strong></td>
+<td><code>E500</code> Mesh Unavailable · <code>E502</code> Handshake Timeout</td>
+</tr>
+</tbody>
+</table>
+<p>Full reference → <a href="https://aip.synthexai.tech/docs#errors">aip.synthexai.tech/docs#errors</a></p>
+<p></p><h2>CLI</h2><a href="#cli"></a><p></p>
+<div><pre><span><span>#</span> Create a passport</span>
+aip create-passport --domain yourco.com --name my-agent \
+  -a read_data -a transfer_funds -m 100
+
+<span><span>#</span> Sign an intent</span>
+aip sign-intent --passport ./agent_passport \
+  --action transfer_funds --amount 45 -o intent.json
+
+<span><span>#</span> Verify an intent</span>
+aip verify --envelope intent.json \
+  --public-key ./agent_passport/public.pem
+
+<span><span>#</span> Revoke an agent instantly</span>
+aip revoke <span><span>"</span>did:web:yourco.com:agents:my-agent<span>"</span></span> --reason <span><span>"</span>compromised<span>"</span></span></pre></div>
+<p></p><h2>Shield — One-Liner Protection</h2><a href="#shield--one-liner-protection"></a><p></p>
+<p>Shield is the <strong>helmet.js for AI agents</strong>. Wrap any function, class, or object with AIP verification in a single line:</p>
+<div><pre><span>from</span> <span>aip_protocol</span> <span>import</span> <span>shield</span>, <span>shield_class</span>, <span>shield_object</span>
+
+<span># Wrap a function — every call is verified before execution</span>
+<span>@<span>shield</span>(<span>passport</span>, <span>allowed_actions</span><span>=</span>[<span>"transfer_funds"</span>], <span>monetary_limit</span><span>=</span><span>100.0</span>)</span>
+<span>def</span> <span>send_payment</span>(<span>to</span>: <span>str</span>, <span>amount</span>: <span>float</span>):
+    <span>bank</span>.<span>transfer</span>(<span>to</span>, <span>amount</span>)
+
+<span>send_payment</span>(<span>"vendor@acme.com"</span>, <span>45.00</span>)  <span># ✓ Verified and executed</span>
+<span>send_payment</span>(<span>"vendor@acme.com"</span>, <span>500.00</span>) <span># ✗ AIP-E202: MONETARY_LIMIT</span>
+
+<span># Wrap an entire class — all public methods get AIP protection</span>
+<span>@<span>shield_class</span>(<span>passport</span>)</span>
+<span>class</span> <span>TradingAgent</span>:
+    <span>def</span> <span>buy_stock</span>(<span>self</span>, <span>ticker</span>, <span>qty</span>): ...
+    <span>def</span> <span>sell_stock</span>(<span>self</span>, <span>ticker</span>, <span>qty</span>): ...
+
+<span># Or patch an existing object at runtime</span>
+<span>agent</span> <span>=</span> <span>CrewAIAgent</span>(...)
+<span>shield_object</span>(<span>agent</span>, <span>passport</span>)  <span># All methods now AIP-verified</span></pre></div>
+<p></p><h2>AIP Cloud</h2><a href="#aip-cloud"></a><p></p>
+<p>The open-source SDK handles local verification. For production multi-agent systems, <a href="https://aip.synthexai.tech/">AIP Cloud</a> adds:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>Why It Can't Be Local</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Revocation Mesh</strong></td>
+<td>Can't kill an agent across 50 deployments without a central service</td>
+</tr>
+<tr>
+<td><strong>Persistent Trust Scores</strong></td>
+<td>Trust history dies on restart, needs shared store</td>
+</tr>
+<tr>
+<td><strong>Cross-Org Replay Detection</strong></td>
+<td>Nonce cache is per-process — two companies can't share locally</td>
+</tr>
+<tr>
+<td><strong>Compliance Audit Log</strong></td>
+<td>SOC2/HIPAA needs immutable logs, local SQLite doesn't count</td>
+</tr>
+<tr>
+<td><strong>Agent Identity Registry</strong></td>
+<td>DNS for agents — <code>did:web:acme.com:agents:bot</code> needs a registry</td>
+</tr>
+<tr>
+<td><strong>Framework Adapters</strong></td>
+<td>Production CrewAI, LangChain, AutoGen with managed infrastructure</td>
+</tr>
+<tr>
+<td><strong>Dashboard</strong></td>
+<td>Real-time monitoring, kill switch, debugger</td>
+</tr>
+</tbody>
+</table>
+<p>→ <strong><a href="https://aip.synthexai.tech/">Free tier available — aip.synthexai.tech</a></strong></p>
+<p></p><h2>Development</h2><a href="#development"></a><p></p>
+<div><pre>git clone https://github.com/theaniketgiri/aip.git
+<span>cd</span> aip
+pip install -e <span><span>"</span>.[dev]<span>"</span></span>
+pytest tests/ -v
+<span><span>#</span> 63 tests, all passing</span></pre></div>
+<p></p><h3>Project Structure</h3><a href="#project-structure"></a><p></p>
+<div><pre><code>aip_protocol/
+├── passport.py       # Agent identity + Ed25519 key management
+├── envelope.py       # Intent envelope creation + signing
+├── verification.py   # 8-step verification pipeline + intent classifier
+├── shield.py         # One-liner AIP protection (helmet.js for AI)
+├── crypto.py         # Ed25519 + HMAC cryptographic layer
+├── errors.py         # AIP-Exxx error taxonomy (22 structured codes)
+├── revocation.py     # Real-time revocation store with rehydration
+├── trust.py          # Bayesian trust score engine
+├── models.py         # Protocol data models (Pydantic)
+└── cli.py            # Command-line interface
+</code></pre></div>
+<p></p><h2>Design Partners</h2><a href="#design-partners"></a><p></p>
+<p>We're onboarding <strong>early design partners</strong> building multi-agent systems in production. Partners get:</p>
+<ul>
+<li>Enterprise-tier API access (free during beta)</li>
+<li>Direct engineering support from the core team</li>
+<li>Protocol roadmap influence</li>
+<li>Priority access to framework adapters</li>
+</ul>
+<p>→ <strong><a href="https://aip.synthexai.tech/">Apply at aip.synthexai.tech</a></strong></p>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>MIT — see <a href="https://github.com/theaniketgiri/aip/blob/master/LICENSE">LICENSE</a> for details.</p>
+<hr />
+<p>
+  <sub><strong>KYA Labs</strong> — Know Your Agent before it acts.</sub><br />
+  <sub><a href="https://aip.synthexai.tech/">Website</a> · <a href="https://aip.synthexai.tech/docs">API Docs</a> · <a href="https://pypi.org/project/aip-protocol/">PyPI</a></sub>
+</p>
+</article></div></div>
+  </div>
+</body>
+</html>

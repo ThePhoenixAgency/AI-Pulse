@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your AI Agent Knows Your Passwords — Here's How I Fixed It</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Your AI Agent Knows Your Passwords — Here's How I Fixed It</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/demojacob/your-ai-agent-knows-your-passwords-heres-how-i-fixed-it-4kcd" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <p>When AI agents automate your browser, they need your login credentials in their context window. That means your passwords are sent to cloud LLM providers, stored in conversation logs, and potentially exposed via prompt injection attacks.</p>
+
+<p>I built <a href="https://github.com/DemoJacob/cerberus-keyrouter" target="_blank">Cerberus KeyRouter</a> to fix this.</p>
+
+<h2>
+  <a name="the-problem" href="#the-problem">
+  </a>
+  The Problem
+</h2>
+
+<p>AI agents like OpenClaw, Claude Desktop, and Cursor can automate browsers — filling forms, clicking buttons, navigating pages. But when they hit a login page, the typical flow looks like this:<br />
+</p>
+
+<div>
+<pre><code>User: "Log into GitHub for me"
+User: "Email: jacob@example.com"
+User: "Password: MyS3cretP@ss"
+Agent: "Logging in..."
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>That password just traveled through:</p>
+
+<ol>
+<li>
+<strong>The LLM provider's servers</strong> (Anthropic, OpenAI, etc.) — logged, stored, potentially used for training</li>
+<li>
+<strong>API proxy services</strong> — if you're using a third-party API relay (common in many regions), your password passes through yet another unknown middleman</li>
+<li>
+<strong>Conversation history</strong> — sitting in plain text in your chat logs</li>
+</ol>
+
+<p>And it gets worse. <strong>Prompt injection</strong> is a real attack vector: a malicious webpage can embed hidden instructions that trick the AI into leaking credentials it learned earlier in the conversation.</p>
+
+<h2>
+  <a name="the-solution-placeholder-pattern" href="#the-solution-placeholder-pattern">
+  </a>
+  The Solution: Placeholder Pattern
+</h2>
+
+<p>The core idea is simple:</p>
+
+<blockquote>
+<p>The AI writes the logic using placeholders. Real credentials are substituted locally and injected directly into the browser. The LLM never sees your actual password.</p>
+</blockquote>
+
+<p>Instead of passing real credentials, the AI agent sends instructions like this:<br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"vaultItem"</span><span>:</span><span> </span><span>"GitHub"</span><span>,</span><span>
+  </span><span>"steps"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"fill"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#login_field"</span><span>,</span><span> </span><span>"value"</span><span>:</span><span> </span><span>"{{email}}"</span><span> </span><span>},</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"fill"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#password"</span><span>,</span><span> </span><span>"value"</span><span>:</span><span> </span><span>"{{password}}"</span><span> </span><span>},</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"click"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"[type=submit]"</span><span> </span><span>}</span><span>
+  </span><span>]</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Cerberus KeyRouter — an MCP (Model Context Protocol) server running on your machine — intercepts this call, fetches the real credentials from your local Vaultwarden instance, replaces the <code>{{placeholders}}</code>, and executes the actions via Chrome DevTools Protocol (CDP).</p>
+
+<p>The AI sees <code>{{password}}</code>. Your browser gets the real password. The LLM never knows the difference.</p>
+
+<h2>
+  <a name="architecture" href="#architecture">
+  </a>
+  Architecture
+</h2>
+
+
+
+<div>
+<pre><code>AI Agent (OpenClaw, Claude Desktop, etc.)
+  │
+  │  MCP call: secure_login("GitHub", steps with {{placeholders}})
+  │
+  ▼
+Login Router (localhost:8899)
+  ├─ Authenticate via bearer token
+  ├─ Fetch credentials from Vaultwarden
+  ├─ Replace {{placeholders}} with real values
+  ├─ Execute via Chrome CDP (localhost only)
+  ├─ Clear credentials from memory
+  └─ Return { status: "ok" } — no passwords in response
+
+Vaultwarden (Docker, localhost:8443)
+  └─ E2E encrypted password storage
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Everything runs locally. Passwords never leave your machine.</p>
+
+<h2>
+  <a name="security-model-six-layers-of-defense" href="#security-model-six-layers-of-defense">
+  </a>
+  Security Model: Six Layers of Defense
+</h2>
+
+<p><strong>1. Implicit allowlist</strong> — Vaultwarden only stores credentials for sites you've explicitly added. The AI can't log into arbitrary sites.</p>
+
+<p><strong>2. URL verification</strong> — Before injecting credentials, the router reads the browser's actual URL via CDP and matches it against the vault entry's URI. Phishing sites get rejected.</p>
+
+<p><strong>3. Bearer token auth</strong> — Each Vaultwarden account gets a unique token. No token, no access.</p>
+
+<p><strong>4. Rate limiting</strong> — 3 attempts per minute, 20 per hour per vault item. Consecutive failures trigger a cooldown.</p>
+
+<p><strong>5. Audit logging</strong> — Every login attempt is recorded (success, failure, rate-limited). Passwords are never logged. View at <code>/audit</code>.</p>
+
+<p><strong>6. Human-in-the-loop</strong> — High-risk accounts can require manual approval before each login. 50-second timeout, auto-reject if not approved.</p>
+
+<h2>
+  <a name="quick-start" href="#quick-start">
+  </a>
+  Quick Start
+</h2>
+
+
+
+<div>
+<pre><code>git clone https://github.com/DemoJacob/cerberus-keyrouter.git
+<span>cd </span>cerberus-keyrouter
+<span>cp</span> .env.example .env
+<span># Set VW_ADMIN_TOKEN in .env</span>
+docker compose up <span>--build</span> <span>-d</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>This gives you:</p>
+
+<ul>
+<li>
+<strong>Vaultwarden</strong> at <code>https://localhost:8443</code> — add your passwords here</li>
+<li>
+<strong>Login Router</strong> at <code>http://localhost:8899</code> — MCP server + admin panel</li>
+</ul>
+
+<p>Open the admin panel at <code>http://localhost:8899/admin</code>, add your Vaultwarden account, and copy the generated bearer token.</p>
+
+<p>Connect your AI agent via MCP:<br />
+</p>
+
+<div>
+<pre><code><span>{</span><span>
+  </span><span>"mcpServers"</span><span>:</span><span> </span><span>{</span><span>
+    </span><span>"cerberus"</span><span>:</span><span> </span><span>{</span><span>
+      </span><span>"baseUrl"</span><span>:</span><span> </span><span>"http://localhost:8899/mcp"</span><span>,</span><span>
+      </span><span>"headers"</span><span>:</span><span> </span><span>{</span><span>
+        </span><span>"Authorization"</span><span>:</span><span> </span><span>"Bearer &lt;your-token&gt;"</span><span>
+      </span><span>}</span><span>
+    </span><span>}</span><span>
+  </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Done. Your agent can now log into any site in your vault — without knowing a single password.</p>
+
+<h2>
+  <a name="fill-vs-type" href="#fill-vs-type">
+  </a>
+  fill vs type
+</h2>
+
+<p>Most sites work with <code>fill</code> (sets value + dispatches events). React/SPA sites with controlled components may need <code>type</code> (key-by-key input with 50ms delay). Try <code>fill</code> first, switch to <code>type</code> if the form doesn't submit properly.</p>
+
+<h2>
+  <a name="multistep-login" href="#multistep-login">
+  </a>
+  Multi-Step Login
+</h2>
+
+<p>Banks and other sites often split login across multiple pages. Handle this with separate calls:<br />
+</p>
+
+<div>
+<pre><code><span>//</span><span> </span><span>Step</span><span> </span><span>1</span><span>:</span><span> </span><span>username</span><span> </span><span>+</span><span> </span><span>next</span><span>
+</span><span>{</span><span> </span><span>"vaultItem"</span><span>:</span><span> </span><span>"MyBank"</span><span>,</span><span> </span><span>"steps"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"type"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#username"</span><span>,</span><span> </span><span>"value"</span><span>:</span><span> </span><span>"{{username}}"</span><span> </span><span>},</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"click"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#next"</span><span> </span><span>},</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"wait"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"input[type=password]"</span><span> </span><span>}</span><span>
+</span><span>]}</span><span>
+
+</span><span>//</span><span> </span><span>Step</span><span> </span><span>2</span><span>:</span><span> </span><span>password</span><span> </span><span>+</span><span> </span><span>submit</span><span>
+</span><span>{</span><span> </span><span>"vaultItem"</span><span>:</span><span> </span><span>"MyBank"</span><span>,</span><span> </span><span>"steps"</span><span>:</span><span> </span><span>[</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"type"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#password"</span><span>,</span><span> </span><span>"value"</span><span>:</span><span> </span><span>"{{password}}"</span><span> </span><span>},</span><span>
+    </span><span>{</span><span> </span><span>"action"</span><span>:</span><span> </span><span>"click"</span><span>,</span><span> </span><span>"selector"</span><span>:</span><span> </span><span>"#login"</span><span> </span><span>}</span><span>
+</span><span>]}</span><span>
+</span></code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h2>
+  <a name="realworld-usage" href="#realworld-usage">
+  </a>
+  Real-World Usage
+</h2>
+
+<p>I've been running this with OpenClaw for daily tasks. Here's an actual example — my AI agent querying order history on zooplus.de, logged in via Cerberus:</p>
+
+<p>The agent reports: <em>"I didn't touch any plaintext passwords. I only passed the placeholders {{email}} and {{password}}. Cerberus fetched the credentials from your local Vaultwarden vault and filled them directly into the browser."</em></p>
+
+<p>No password in the LLM context. No password in the logs. No password leaving my machine.<br />
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png" alt=" " /></a></p>
+
+<h2>
+  <a name="technical-stack" href="#technical-stack">
+  </a>
+  Technical Stack
+</h2>
+
+<ul>
+<li>
+<strong>TypeScript / Node.js</strong> — login router</li>
+<li>
+<strong>Playwright-core</strong> — CDP browser automation</li>
+<li>
+<strong>Vaultwarden</strong> — self-hosted Bitwarden (password storage)</li>
+<li>
+<strong>MCP Protocol</strong> — Streamable HTTP transport</li>
+<li>
+<strong>SQLite</strong> — config + audit log storage</li>
+<li>
+<strong>AES-256-GCM</strong> — stored master password encryption</li>
+<li>
+<strong>Docker Compose</strong> — one-command deployment</li>
+</ul>
+
+<h2>
+  <a name="whats-next" href="#whats-next">
+  </a>
+  What's Next
+</h2>
+
+<ul>
+<li>Cookie caching (login once, reuse sessions)</li>
+<li>Support for OpenClaw snapshot ref IDs (alongside CSS selectors)</li>
+<li>Multi-agent framework support</li>
+<li>SaaS version with zero-knowledge E2E encrypted backend</li>
+</ul>
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try It
+</h2>
+
+<p>The project is open source under AGPL-3.0:</p>
+
+<p><strong>GitHub: <a href="https://github.com/DemoJacob/cerberus-keyrouter" target="_blank">github.com/DemoJacob/cerberus-keyrouter</a></strong></p>
+
+<p>Works on macOS and Linux. Docker + Chrome + any MCP-compatible AI agent.</p>
+
+<p>Feedback, issues, and stars are all welcome. If you're building AI agents that need to handle authentication, I'd love to hear about your use case.</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

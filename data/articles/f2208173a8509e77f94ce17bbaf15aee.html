@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: PolyClaw – An Autonomous Docker-First MCP Agent for PolyMCP</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Show HN: PolyClaw – An Autonomous Docker-First MCP Agent for PolyMCP</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://news.ycombinator.com/item?id=47036828" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p>I built PolyClaw, an OpenClaw-inspired autonomous agent for the PolyMCP ecosystem.</p><p>PolyClaw doesn’t just call tools.
+It plans, executes, adapts — and creates MCP servers when needed.</p><p>It’s designed for real multi-step, production workflows where agents must orchestrate tools, spin up infrastructure, recover from errors, and deliver complete results end-to-end.</p><p>⸻</p><p>What PolyClaw Does
+ • Plans complex multi-step tasks
+ • Executes and orchestrates MCP tools dynamically
+ • Adapts when steps fail or context changes
+ • Creates and connects MCP servers on the fly
+ • Runs Docker-first for safety and isolation
+ • Built with Python and TypeScript</p><p>PolyClaw is not just a tool caller — it’s an infrastructure-aware agent.</p><p>⸻</p><p>Run PolyClaw with Ollama</p><p>You can launch PolyClaw directly from the PolyMCP CLI:</p><p>polymcp agent run \
+  --type polyclaw \
+  --query "Build a sales reporting pipeline and test it end-to-end" \
+  --model minimax-m2.5:cloud \
+  --verbose</p><p>What happens behind the scenes:
+ 1. The agent decomposes the task.
+ 2. It determines which MCP tools are required.
+ 3. It spins up or connects to MCP servers.
+ 4. It executes steps in sequence (or parallel when needed).
+ 5. It validates outputs.
+ 6. It adapts if something fails.
+ 7. It returns a complete result.</p><p>All containerized. All isolated.</p><p>⸻</p><p>Why This Matters</p><p>Most AI agents:
+ • Call tools statically
+ • Assume infrastructure already exists
+ • Break on multi-step failure</p><p>PolyClaw:
+ • Builds the infrastructure it needs
+ • Orchestrates across multiple MCP servers
+ • Handles retries and adaptive planning
+ • Is safe to run in Dockerized environments</p><p>This makes it viable for:
+ • Enterprise workflows
+ • DevOps automation
+ • Data pipelines
+ • Internal tooling orchestration
+ • Complex multi-tool reasoning tasks</p><p>PolyClaw turns PolyMCP from simple tool exposure only with Polyagent e unifiendpolyagent or codeagent but turn into full autonomous orchestration agent too.</p><p>Repo:
+<a href="https://github.com/poly-mcp/PolyMCP">https://github.com/poly-mcp/PolyMCP</a></p><p>Happy to answer questions,</p></div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>L'IA Claude est utilisée pour piéger les utilisateurs Mac avec un infostealer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>L'IA Claude est utilisée pour piéger les utilisateurs Mac avec un infostealer</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/16/2026 | Lang: FR |
+    <a href="https://www.generation-nt.com/actualites/claude-ia-macos-malware-clickfix-infostealer-2070836" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+			<p>
+				Publié le
+				<time>
+					16 février 2026 à 17:30</time>
+									par <a href="https://www.generation-nt.com/informations/a-propos/jerome.g"><span>Jérôme G.</span></a>
+											</p>
+
+			
+			
+			
+			<section>
+				<div>
+											
+										<p><span>Une campagne d'attaque de type ClickFix utilise des publicités Google et une fonctionnalité de l'IA Claude d'Anthropic pour diffuser un malware.</span></p>
+				</div>
+
+																	
+					
+											<a href="https://img.generation-nt.com/panneaux-alerte_050002D001704205.webp">
+							<div>
+								
+	
+		        
+                    
+        		<img src="https://img.generation-nt.com/panneaux-alerte_0298000001704205.jpg" alt="panneaux-alerte" />
+	
+							</div>
+						</a>
+									
+								
+			</section>
+
+			
+			<div><p>Des chercheurs en sécurité de Moonlock Lab et AdGuard ont découvert une <strong>campagne d'attaque ClickFix</strong> qui s'appuie sur des publicités Google et l'IA Claude afin de diffuser le malware MacSync. Les victimes sont incitées à exécuter une commande malveillante qui compromet leur ordinateur Mac.</p>
+<h2>Comment fonctionne le mode opératoire ?</h2>
+<p>Selon <a href="https://www.bleepingcomputer.com/news/security/claude-llm-artifacts-abused-to-push-mac-infostealers-in-clickfix-attack/" target="_blank">BleepingComputer</a>, l'attaque débute par des requêtes de recherche sur Google, telles que " online DNS resolver ", " macOS CLI disk space analyzer " ou " HomeBrew ".</p>
+<p>Des résultats sponsorisés malveillants redirigent alors vers des contenus hébergés sur des plateformes de confiance, un contenu généré avec Claude et rendu public sur <em>claude.ai</em> ou un faux article de support Apple sur Medium. Dans les deux cas, l'objectif est de convaincre l'utilisateur de <strong>copier-coller une ligne de commande</strong> dans la Terminal.</p>
+<p>Deux variantes de la commande ont été observées. La première utilise une chaîne de caractères encodée en base64, tandis que la seconde emploie la commande <em>curl</em> pour télécharger directement le script malveillant depuis un serveur distant.</p>
+<p>D'après Moonlock Lab, plus de 15 000 vues ont été enregistrées sur un guide frauduleux de Claude.</p>
+<div>
+<blockquote>
+<p>? 1/ ? What if a Google Sponsored result for a common macOS query led to malware? That's happening right now and 15K+ people have already seen it.<br />We at @MoonlockLab observed 2 variants today abusing legitimate platforms for ClickFix delivery: a <a href="https://twitter.com/AnthropicAI?ref_src=twsrc%5Etfw" target="_blank">@AnthropicAI</a> public artifact on… <a href="https://t.co/e1ocnQPmV4" target="_blank">pic.twitter.com/e1ocnQPmV4</a></p>
+— Moonlock Lab (@moonlock_lab) <a href="https://twitter.com/moonlock_lab/status/2021695650367226108?ref_src=twsrc%5Etfw" target="_blank">February 11, 2026</a></blockquote>
+
+</div>
+<h2>Quel est le but du malware MacSync ?</h2>
+<p>Une fois la commande exécutée, un loader pour l'<strong>infostealer MacSync</strong><a href="https://www.generation-nt.com/"></a> est installé sur le système. Ce dernier est conçu pour exfiltrer une vaste gamme d'informations sensibles. Il communique avec son infrastructure de commande et de contrôle en utilisant un token et une clé d'API codés en dur, et maquille son activité pour ne pas éveiller les soupçons.</p>
+<p>Le malware cible spécifiquement le Trousseau d'accès sur Mac, les données des navigateurs et les portefeuilles de cryptomonnaies. Les données volées sont compressées dans une archive, puis envoyées au serveur de l'attaquant.</p>
+<p>En cas d'échec de l'envoi, le programme tente à huit reprises de transférer l'archive en plus petits morceaux, avant d'effacer toutes ses traces pour compliquer la détection.</p>
+<h2>Pas tout à fait une nouveauté</h2>
+<p>Ce n'est pas la première fois que des plateformes d'IA générative sont détournées. Une campagne similaire avait déjà exploité les fonctionnalités de <a href="https://www.generation-nt.com/actualites/malware-chatgpt-macos-terminal-amos-2067782">partage de conversation de ChatGPT</a> et Grok pour diffuser l'infostealer AMOS. Les attaquants adaptent leurs méthodes et étendent leur champ d'action à d'autres modèles de langage.</p>
+
+
+
+</div>
+
+    <div>
+            
+            <p>Journaliste GNT spécialisé en nouvelles technologies</p>
+        </div>
+    
+
+    
+    
+
+    <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p>
+
+    
+    </article></div>
+  </div>
+</body>
+</html>

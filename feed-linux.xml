@@ -5,8 +5,38 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Linux news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Feb 2026 14:38:13 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Feb 2026 16:36:17 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-linux.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Four stable kernels to fix problematic commit]]></title>
+      <link>https://lwn.net/Articles/1059031/</link>
+      <description><![CDATA[Greg-Kroah Hartman has released the 6.19.2, 6.18.12, 6.12.73, and 6.6.126 stable kernels. These kernels
+each contain a single change; Kroah-Hartman has reverted one
+problematic commit that prevents some systems from booting. "If the
+last stable release worked just fine, no need to upgrade."]]></description>
+      <pubDate>Mon, 16 Feb 2026 16:32:42 GMT</pubDate>
+      <source>LWN.net</source>
+      <category>linux</category>
+      <guid>https://lwn.net/Articles/1059031/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Linux 6.19.2 &amp; Other LTS Kernels Released To Fix Systems Not Booting]]></title>
+      <link>https://www.phoronix.com/news/Linux-6.19.2-Released</link>
+      <description><![CDATA[Linux 6.19.1 was released earlier today while it's since been replaced by Linux 6.19.2 to address fallout from that first point release with some systems not booting. This also resulted in new LTS kernel releases too due to the problematic code being picked up there too...]]></description>
+      <pubDate>Mon, 16 Feb 2026 16:29:08 GMT</pubDate>
+      <source>Phoronix</source>
+      <category>linux</category>
+      <guid>https://www.phoronix.com/news/Linux-6.19.2-Released</guid>
+    </item>
+    <item>
+      <title><![CDATA[Arc B390 Graphics With Panther Lake Performing Great On Open-Source Intel Compute Runtime]]></title>
+      <link>https://www.phoronix.com/review/intel-arc-b390-compute</link>
+      <description><![CDATA[This month I have been doing a lot of Panther Lake benchmarking under Linux with the Core Ultra X7 358H. One of the areas of much interest has been the Arc B390 Xe3 graphics that have been working nicely out-of-the-box with the Intel open-source driver stack on Linux although there still are some gaps to fill against Windows. Those Intel Arc B390 Linux benchmarks so far have been focused on OpenGL and Vulkan graphics, but what about OpenCL and GPU compute with the open-source Intel Compute Runtime?]]></description>
+      <pubDate>Mon, 16 Feb 2026 15:36:58 GMT</pubDate>
+      <source>Phoronix</source>
+      <category>linux</category>
+      <guid>https://www.phoronix.com/review/intel-arc-b390-compute</guid>
+    </item>
     <item>
       <title><![CDATA[[$] Compact formats for debugging—and more]]></title>
       <link>https://lwn.net/Articles/1057295/</link>
@@ -326,22 +356,18 @@ You're reading Linux Mint is adding post-install home encryption option, a blog 
       <guid>https://www.phoronix.com/news/Linux-7.0-F2FS</guid>
     </item>
     <item>
-      <title><![CDATA[X.Org Server's "Master" Branch Now Closed With Cleaned Up State On "Main"]]></title>
-      <link>https://www.phoronix.com/news/X.Org-Server-On-Main</link>
-      <description><![CDATA[This Valentine's Day there is a lot of red on the screen for the X.Org Server with the code delta as a result of renaming of their main Git development branch and in the process selectively dropping questionable patches to the prior "master" codebase...]]></description>
-      <pubDate>Sat, 14 Feb 2026 22:47:55 GMT</pubDate>
-      <source>Phoronix</source>
+      <title><![CDATA[Vim 9.2 released]]></title>
+      <link>https://lwn.net/Articles/1058744/</link>
+      <description><![CDATA[Version 9.2 of the
+Vim text editor has been released.  "Vim 9.2 brings significant
+enhancements to the Vim9 scripting language, improved diff mode,
+comprehensive completion features, and platform-specific improvements
+including experimental Wayland support."  Also included is a new
+interactive tutor mode.]]></description>
+      <pubDate>Sat, 14 Feb 2026 16:29:50 GMT</pubDate>
+      <source>LWN.net</source>
       <category>linux</category>
-      <guid>https://www.phoronix.com/news/X.Org-Server-On-Main</guid>
-    </item>
-    <item>
-      <title><![CDATA[Vim 9.2 Released With Experimental Wayland Support, Better HiDPI Display Support]]></title>
-      <link>https://www.phoronix.com/news/Vim-9.2-Released</link>
-      <description><![CDATA[Vim 9.2 is out today as the newest feature release for this robust and comprehensive text editor.  This Valentine's Day release for Vim lovers brings experimental Wayland support, XDG Base Directory specification support, modernized defaults for HiDPI displays, new completion features, and an improved diff mode...]]></description>
-      <pubDate>Sat, 14 Feb 2026 20:28:56 GMT</pubDate>
-      <source>Phoronix</source>
-      <category>linux</category>
-      <guid>https://www.phoronix.com/news/Vim-9.2-Released</guid>
+      <guid>https://lwn.net/Articles/1058744/</guid>
     </item>
     <item>
       <title><![CDATA[Concours - Gagnez une Raspberry Pi 5 avec Macé Robotics]]></title>
@@ -517,31 +543,6 @@ to make scraped text less useful by poisoning it with fake data.]]></description
       <source>LWN.net</source>
       <category>linux</category>
       <guid>https://lwn.net/Articles/1056953/</guid>
-    </item>
-    <item>
-      <title><![CDATA[Mitchell Hashimoto Launches 'Vouch' to Fight AI Slop in Open Source Ecosystem]]></title>
-      <link>https://itsfoss.com/news/mitchell-hashimoto-vouch/</link>
-      <description><![CDATA[New tool helps open source projects manage the scourge of AI slop.]]></description>
-      <pubDate>Thu, 12 Feb 2026 15:54:54 GMT</pubDate>
-      <source>Its FOSS</source>
-      <category>linux</category>
-      <guid>https://itsfoss.com/news/mitchell-hashimoto-vouch/</guid>
-    </item>
-    <item>
-      <title><![CDATA[[$] The reverting of revocable]]></title>
-      <link>https://lwn.net/Articles/1058041/</link>
-      <description><![CDATA[Transient devices pose a special challenge for an operating-system kernel.
-They can disappear at any time, leaving behind kernel data structures that
-no longer refer to an existing device, but which may still be in use by
-unknown kernel code.  Managing the resulting lifecycle issues has
-frustrated kernel developers for years.  In September 2025, the revocable resource-management patch series
-from Tzung-Bi Shih appeared to offer a partial solution to this problem.
-Since then, though, other problems have arisen, and the planned merging of
-this series into the 7.0 release has been called off.]]></description>
-      <pubDate>Thu, 12 Feb 2026 15:35:25 GMT</pubDate>
-      <source>LWN.net</source>
-      <category>linux</category>
-      <guid>https://lwn.net/Articles/1058041/</guid>
     </item>
   </channel>
 </rss>
