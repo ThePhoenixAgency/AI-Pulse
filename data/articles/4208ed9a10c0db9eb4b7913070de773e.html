@@ -24,7 +24,7 @@
 <body>
   <h1>Easily Build and Share ROCm Kernels with Hugging Face</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 11/17/2025 1:00:00 AM | <a href="https://huggingface.co/blog/build-rocm-kernels" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hugging Face Blog | Date: 11/17/2025 12:00:00 AM | <a href="https://huggingface.co/blog/build-rocm-kernels" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <p>Back to Articles Intoduction Build Steps About the kernel Step 1: Project Structure Step 2: Configuration Files Setup Step 3: Building the Kernel Step 4: Uploading the kernel to the Hub Step 5: Let's use it :) Conclusion Related Libraries &amp; Hub Intoduction Custom kernels are the backbone of high-performance deep learning, enabling GPU operations tailored precisely to your workload; whether that’s image processing, tensor transformations, or other compute-heavy tasks. But compiling these kernels for the right architectures, wiring all the build flags, and integrating them cleanly into PyTorch extensions can quickly become a mess of CMake/Nix, compiler errors, and ABI issues, which is not fun. Hugging Face’s kernels library makes it easy to build (with kernel-builder) and share these kernels with the kernels-community, with support for multiple GPU and accelerator backends, including CUDA, ROCm, Metal, and XPU. This ensures your kernels are fast, portable, and seamlessly integrated with PyTorch.

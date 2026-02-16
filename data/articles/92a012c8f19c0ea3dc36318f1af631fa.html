@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>F2FS Delivers "Several Key Performance Optimizations" With Linux 7.0</title>
 <style>
@@ -22,12 +24,24 @@
 <body>
   <h1>F2FS Delivers "Several Key Performance Optimizations" With Linux 7.0</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/15/2026 2:26:31 AM | <a href="https://www.phoronix.com/news/Linux-7.0-F2FS" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Phoronix | Date: 2/15/2026 1:26:31 AM | <a href="https://www.phoronix.com/news/Linux-7.0-F2FS" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>The Flash Friendly File-System (F2FS) has multiple performance improvements to provide its users with on the in-development Linux 7.0 kernel. As a lovely Valentine's Day for users of this flash-optimized file-system are some nice performance improvements merged. The merge notes:
-"In this development cycle, we focused on several key performance optimizations: - introducing large folio support to enhance read speeds for immutable files - reducing checkpoint=enable latency by flushing only committed dirty pages - implementing tracepoints to diagnose and resolve lock priority inversion. Additionally, we introduced the packed_ssa feature to optimize the SSA footprint when utilizing large block sizes."
-The per-file, read-only large folio support is expected to provide "significant performance gains" though not quantified in the commit. With the optimization to checkpoint writes, flush times dropped from 158 ms to 11 ms with the now-merged patch. All around the F2FS updates for Linux 7.0 are looking quite nice in addition to several fixes.</code></pre>
+    <div><div>
+<p><img alt="LINUX STORAGE" src="https://www.phoronix.com/assets/categories/linuxstorage.webp"></p><p>
+The Flash Friendly File-System (<a href="https://www.phoronix.com/search/F2FS">F2FS</a>) has multiple performance improvements to provide its users with on the in-development <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> kernel.
+</p><p>
+As a lovely Valentine's Day for users of this flash-optimized file-system are some nice performance improvements merged. <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3e48a11675c50698374d4ac596fb506736eb1c53">The merge</a> notes:
+</p><blockquote>"In this development cycle, we focused on several key performance optimizations:
+<p> - introducing large folio support to enhance read speeds for immutable files
+</p><p> - reducing checkpoint=enable latency by flushing only committed dirty pages
+</p><p> - implementing tracepoints to diagnose and resolve lock priority inversion.
+</p><p> Additionally, we introduced the packed_ssa feature to optimize the SSA footprint when utilizing large block sizes."</p></blockquote>
+<p>The per-file, read-only large folio support is expected to provide "significant performance gains" though not quantified in the commit.
+</p><p>
+With the optimization to checkpoint writes, flush times dropped from 158 ms to 11 ms with the now-merged patch.
+</p><p>
+All around the F2FS updates for Linux 7.0 are looking quite nice in addition to several fixes.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -47,5 +61,5 @@ The per-file, read-only large folio support is expected to provide "significant 
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

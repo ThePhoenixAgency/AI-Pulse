@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="fr"><head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
 <meta charset="UTF-8">
 <title>101 façons de déployer Kubernetes : une nouvelle UI pour explorer les 118+ solutions</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -22,10 +18,10 @@
 <body>
   <h1>101 façons de déployer Kubernetes : une nouvelle UI pour explorer les 118+ solutions</h1>
   <div class="metadata">
-    Source: Journal du Hacker | Date: 2/9/2026 9:06:49 PM | <a href="https://blog.zwindler.fr/2026/02/09/101-facons-de-deployer-kubernetes-nouvelle-ui/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: Journal du Hacker | Date: 2/9/2026 8:06:49 PM | <a href="https://blog.zwindler.fr/2026/02/09/101-facons-de-deployer-kubernetes-nouvelle-ui/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><section><h2>De Google Sheet à une vraie application web</h2><p>Vous vous souvenez peut-être de mes précédents articles sur ce projet : d’abord un <a href="https://blog.zwindler.fr/2025/11/02/93-facons-de-deployer-kubernetes/">simple Google Sheet avec 93 méthodes</a>, puis un <a href="https://blog.zwindler.fr/2026/01/04/101-facons-de-deployer-kubernetes-v2/">dépôt GitHub avec plus de 100 entrées</a>.</p><p>Aujourd’hui, je peux présenter la dernière itération de ce projet : <strong>une vraie interface web</strong> pour explorer toutes ces solutions !</p><p> <a href="https://zwindler.github.io/101-ways-to-deploy-kubernetes/" target="_blank">101-ways-to-deploy-kubernetes</a></p><p><img src="https://blog.zwindler.fr/2026/02/101-kubernetes-ui-screenshot.avif" alt="Interface web du projet 101 ways to deploy Kubernetes"></p><h2>Pourquoi une UI ?</h2><pre><code>Le tableau Markdown sur GitHub, c’était déjà mieux que le Google Sheet pour la collaboration, mais à peine. Difficile à parser, difficile de rajouter des colonnes sans que ça devienne trop le bazar (c’était déjà le cas, ahah), et surtout, ultra MOCHE.</code></pre><p><img src="https://blog.zwindler.fr/2026/01/101-kubernetes-v2-screenshot.avif" alt="Ancien tableau Markdown sur GitHub, difficile à lire"></p><p>J’ai donc décidé de transformer tout ça en une interface moderne et intuitive, avec l’aide d’un LLM.</p><h2>Stack technique : Astro + Tailwind</h2><p>Pour ce projet, j’ai choisi une stack simple mais efficace :</p><ul><li><strong><a href="https://astro.build/" target="_blank">Astro</a></strong> : un framework moderne qui génère des sites statiques ultra-rapides</li><li><strong><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a></strong> : pour un design responsive sans prise de tête</li></ul><pre><code>Le résultat ? Un site léger, plutôt rapide, et qui fonctionne aussi bien sur desktop que sur mobile (même si l’expérience desktop reste plus confortable vu la quantité de données).</code></pre><h2>Les fonctionnalités</h2><p><strong>Des cartes pour chaque solution</strong></p><pre><code>Fini le tableau digne d’un dev back (non, pire, un ingé kube…) ! Chaque outil dispose maintenant de sa propre “carte” animée avec :</code></pre><ul><li>Le logo du projet</li><li>Le type de licence (OSS ou propriétaire)</li><li>Le nombre d’étoiles GitHub</li><li>Des liens directs vers le projet et des ressources tierces (blogs indépendants, REX, tutos…)</li></ul><p><img src="https://blog.zwindler.fr/2026/02/101-kubernetes-zoom.avif" alt="Vue détaillée d’une carte de solution Kubernetes avec logo, licence et étoiles GitHub"></p><p><strong>Des filtres puissants</strong></p><p>Vous cherchez uniquement des solutions open source ? Des outils pour le développement local ? Des plateformes de management ?</p><p>Les filtres par <strong>catégories</strong> permettent de naviguer facilement :</p><ul><li>Desktop (développement local)</li><li>Managed (offres cloud)</li><li>Self-hosted (automatisation on-premise)</li><li>Infra As Code</li><li>Kubernetes OS (systèmes spécialisés)</li><li>Management Platform</li><li>Kubernetes in Kubernetes</li></ul><pre><code>Et vous pouvez aussi filtrer par statut (actif, abandonné) ou afficher uniquement les solutions open source ou production ready.</code></pre><p><strong>Une barre de recherche</strong></p><p>Vous savez ce que vous cherchez ? Tapez directement le nom dans la barre de recherche pour trouver la solution en un instant.</p><p><strong>Des tags pour affiner</strong></p><p>Au-delà des catégories, les tags permettent d’identifier rapidement les technologies sous-jacentes (kubeadm, k3s, k0s…).</p><h2>Le saviez-vous ? Au moins 18 outils utilisent kubeadm !</h2><p>En compilant toutes ces données, j’ai découvert quelque chose de fascinant : <strong>au moins 18 outils</strong> utilisent </p><pre><code>kubeadm</code></pre> comme backend pour déployer Kubernetes ! <p></p><p>Et ce n’est même pas en comptant les offres managées des cloud providers !</p><p>C’est typiquement le genre d’information qu’on peut maintenant visualiser instantanément grâce à cette nouvelle interface.</p><h2>Un projet collaboratif</h2><pre><code>Le projet reste 100% open source et collaboratif. Les données sont toujours stockées dans le dépôt GitHub, et l’UI est générée automatiquement à partir de ces données (j’ai même rajouté des previews pour les PRs).</code></pre><p><strong>Il manque un outil ou un provider ?</strong> Vous avez repéré un bug ? N’hésitez pas à <a href="https://github.com/zwindler/101-ways-to-deploy-kubernetes/issues" target="_blank">ouvrir une issue</a> ou à soumettre une Pull Request !</p><p>Le projet compte maintenant <strong>118 solutions</strong> (et je sais qu’il en manque certainement), avec pour chacune :</p><ul><li>Des liens à jour</li><li>Le statut du projet</li><li>Des références externes (tutoriels, retours d’expérience…)</li></ul><p>Rendez-vous sur <a href="https://zwindler.github.io/101-ways-to-deploy-kubernetes/" target="_blank">zwindler.github.io/101-ways-to-deploy-kubernetes</a> pour explorer toutes ces solutions !</p><p>OK, c’est un infâme “call to action” comme on en voit sur tous les réseaux sociaux. Soit.</p><pre><code>Cependant, je ne peux pas savoir si c’est utile (ou non) si vous ne le faites pas. Je peux le laisser en l’état (ça n’est pas génant en soit, j’ai plein d’autres side projects qui n’attendent que mon temps libre) ou le faire vivre, si ça vous plait / sert.</code></pre><p>Et si vous trouvez ce projet utile, n’hésitez pas à :</p><ul><li><strong>Star</strong> le projet sur <a href="https://github.com/zwindler/101-ways-to-deploy-kubernetes" target="_blank">GitHub</a></li><li><strong>Partager</strong> avec vos collègues de la communauté Cloud Native</li><li><strong>Contribuer</strong> en ajoutant des outils manquants ou en corrigeant des erreurs</li></ul><p>Merci d’avance ! </p></section></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -45,5 +41,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

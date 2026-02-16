@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Raspberry Pi Pico fightstick randomly mashes buttons for fighting game combos</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -22,9 +18,11 @@
 <body>
   <h1>Raspberry Pi Pico fightstick randomly mashes buttons for fighting game combos</h1>
   <div class="metadata">
-    Source: Toms Hardware Raspberry Pi | Date: 3/27/2025 2:29:30 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-fightstick-randomly-mashes-buttons-for-fighting-game-combos" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Toms Hardware Raspberry Pi | Date: 3/27/2025 1:29:30 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-fightstick-randomly-mashes-buttons-for-fighting-game-combos" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>We're no strangers to Raspberry Pi-powered fightsticks and have covered our fair share of unique creations over the years, like this gorgeous wooden fightstick. However, this Pico fightstick creation, put together by maker and developer Goblinhan Yıkan adds a new dynamic to the classic fightstick by adding a few extra buttons. Turnuvalarda dayak yemekten BIKTIM. Kendi kendine oynayan kol yapma vakti. - YouTube Watch On What we like about this project isn't the overall design. It's fairly barebones but it's the functionality that excites us the most. The rig works like a normal fightstick, plugging in via USB—which is likely why the Pico was chosen as the main controller. The setup is built on a protoboard and isn't housed in a case at all. But it's got a handy layout of buttons that can be used for playing fighting games like Street Fighter or Mortal Kombat. (Image credit: Goblinhan Yıkan)Like we mentioned before, the main board powering this operation is a Raspberry Pi Pico. This provides an array of GPIO support for all of the buttons as well as the ability to serve as a Human Interface Device (HID) — necessary for a USB controller like this. It's soldered to a protoboard PCB which also features the various buttons used in its design.Goblinhan Yıkan was kind enough to make the code open source so you can build your own fight stick using his idea. It looks like the code was written in CircuitPython which is also useful for programming HID hardware. If you want to check out the source code and see how it works, you can find it over at Goblinhan Yıkan's GitHub page.To get a closer look at this Raspberry Pi project in action, you can check out the demo video shared to YouTube by Goblinhan Yıkan.Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></div>
+  <div class="content">
+    <p>Goblinhan Yıkan has created a Raspberry Pi Pico-powered fight stick that has extra buttons for throwing random combos while playing fighting games.</p>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +41,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

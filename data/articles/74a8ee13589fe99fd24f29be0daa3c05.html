@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Linux 7.0 Driver Core Changes Bring More Enhancements For Rust Kernel Drivers</title>
 <style>
@@ -22,9 +24,27 @@
 <body>
   <h1>Linux 7.0 Driver Core Changes Bring More Enhancements For Rust Kernel Drivers</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/16/2026 6:39:40 PM | <a href="https://www.phoronix.com/news/Linux-7.0-Driver-Core" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Phoronix | Date: 2/16/2026 5:39:40 PM | <a href="https://www.phoronix.com/news/Linux-7.0-Driver-Core" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>Merged a few days ago for the Linux 7.0 kernel were all of the driver core enhancements. As has been the common theme in recent kernel releases, a lot of the driver core code churn revolves around additions for allowing more Rust kernel driver usage. The driver core pull was slated to include the new revocable synchronization primitive for Linux 7.0, but they ended up being reverted. More time is needed to refine the revocable synchronization primitive so as such it will end up landing in a future Linux kernel cycle. With the driver core changes each cycle there continues to be a lot of churn around Rust kernel driver support. The Rust code in driver core now supports dev_printk on all device types, allowing Rust drivers to tune the maximum DMA segment size via dma_set_max_seg_size(), and introducing the concept of generic I/O back-ends. These Rust generic I/O back-ends are for handling different kinds of device shared memory through a common interface. This generic I/O back-end support makes it easier to build concepts like I/O slices and register abstractions for Rust drivers. The driver code also adds the __rust_helper annotations to C helpers to aide in inlining more Rust code and ultimately helping Rust + LTO kernel builds. There is also using more "kernel vertical" style code for Rust imports -- addressing an earlier critique by Linus Torvalds over how Rust imports were structured. Also included is a sample Rust SoC driver for soc::Device demonstration purposes that go with new Rust SoC device structures. More details on the many driver core changes merged for Linux 7.0 via this pull.</p></div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp"></p><p>
+Merged a few days ago for the <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> kernel were all of the driver core enhancements. As has been the common theme in recent kernel releases, a lot of the driver core code churn revolves around additions for allowing more Rust kernel driver usage.
+</p><p>
+The driver core pull was slated to include the new revocable synchronization primitive for Linux 7.0, but they ended up being reverted. More time is needed to refine the revocable synchronization primitive so as such it will end up landing in a future Linux kernel cycle.
+</p><p>
+With the driver core changes each cycle there continues to be a lot of churn around Rust kernel driver support. The Rust code in driver core now supports dev_printk on all device types, allowing Rust drivers to tune the maximum DMA segment size via dma_set_max_seg_size(), and introducing the concept of generic I/O back-ends.
+</p><p><img src="https://www.phoronix.net/image.php?id=2024&amp;image=rust_for_linux_sml" alt="Rust for Linux logo"></p>
+<p>These Rust generic I/O back-ends are for handling different kinds of device shared memory through a common interface. This generic I/O back-end support makes it easier to build concepts like I/O slices and register abstractions for Rust drivers.
+</p><p>
+The driver code also adds the __rust_helper annotations to C helpers to aide in inlining more Rust code and <a href="https://www.phoronix.com/news/Linux-Rust-LTO-Inline-Coming">ultimately helping Rust + LTO kernel builds</a>.
+</p><p>
+There is also using more "kernel vertical" style code for Rust imports -- addressing <a href="https://www.phoronix.com/news/Linux-6.18-rc2-Rust">an earlier critique by Linus Torvalds</a> over how Rust imports were structured.
+</p><p>
+Also included is a sample Rust SoC driver for soc::Device demonstration purposes that go with new Rust SoC device structures.
+</p><p>
+More details on the many driver core changes merged for Linux 7.0 via <a href="https://lore.kernel.org/rust-for-linux/DGCIBIK52SF8.3FVF3GR1R2302@kernel.org/">this pull</a>.</p></div></div>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +63,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="fr"><head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
 <meta charset="UTF-8">
 <title>TypeScript 6.0 : bêta disponible !</title>
 <style>
@@ -22,10 +24,10 @@
 <body>
   <h1>TypeScript 6.0 : bêta disponible !</h1>
   <div class="metadata">
-    Source: Programmez | Date: 2/13/2026 8:56:38 AM | <a href="https://www.programmez.com/actualites/typescript-60-beta-disponible-39012" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: Programmez | Date: 2/13/2026 7:56:38 AM | <a href="https://www.programmez.com/actualites/typescript-60-beta-disponible-39012" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <pre><code>TypeScript 6 est une version charnière pour le langage. Il s'agit de la dernière version basée sur JavaScript. Au-delà de cette version, Go remplacera JS dans le langage et le compilateur. Deux avantages justifient cette migration :- performance- le partage mémoire en contexte multi-threadéCette 6.0 est un lien entre la 5.9 et la future 7.0. Certains changements de cette version prépare la v7.Quelques nouveautés à retenir :- nouveau flag --stableTypeOrdering : va aider à migration à venir.- es2025 pour target et lib : le langage supporte l'option es2025. Même si toutes les nouveautés JavaScript ne sont pas intégrés, es2025 ajoute de nouveaux types pour les API (ex. RegExp).- nouveaux types pour Temporal : proposer des objets et des fonctions standards pour manipuler les dates et les heures. Fonctionnalité attendue.let yesterday = Temporal.Now.instant().subtract({&nbsp; &nbsp; hours: 24,});let tomorrow = Temporal.Now.instant().add({&nbsp; &nbsp; hours: 24,});console.log(`Yesterday: ${yesterday}`);console.log(`Tomorrow: ${tomorrow}`);- sur les méthodes upsert : ajout des nouvelles méthodes Map et WeakMap- lib.dom.iterable.d.ts et lib.dom.asynciterable.d.ts sont pleinement inclus dans lib.dom.d.ts.&nbsp;Précisons que TS 6 est pleinement compatible avec les API et les codes de TS 5.9.&nbsp;Notre avis : TypeScript 6.0 est une version majeure du langage par les nouveautés annoncées et aussi pour la transition vers TypeScript propulsé par Go. Il faudra migrer sur cette version pour espérer une migration la plus fluide possible vers TypeScript 7.Note de version :&nbsp;https://devblogs.microsoft.com/typescript/announcing-typescript-6-0-beta/</code></pre>
+    <div><div><p>TypeScript 6 est une version charnière pour le langage. Il s'agit de la dernière version basée sur JavaScript. Au-delà de cette version, Go remplacera JS dans le langage et le compilateur. Deux avantages justifient cette migration :</p><p>- performance</p><p>- le partage mémoire en contexte multi-threadé</p><p>Cette 6.0 est un lien entre la 5.9 et la future 7.0. Certains changements de cette version prépare la v7.</p><p>Quelques nouveautés à retenir :</p><p>- nouveau flag --stableTypeOrdering : va aider à migration à venir.</p><p>- es2025 pour target et lib : le langage supporte l'option es2025. Même si toutes les nouveautés JavaScript ne sont pas intégrés, es2025 ajoute de nouveaux types pour les API (ex. RegExp).</p><p>- nouveaux types pour Temporal : proposer des objets et des fonctions standards pour manipuler les dates et les heures. Fonctionnalité attendue.</p><p>let yesterday = Temporal.Now.instant().subtract({</p><p>&nbsp; &nbsp; hours: 24,</p><p>});</p><p>let tomorrow = Temporal.Now.instant().add({</p><p>&nbsp; &nbsp; hours: 24,</p><p>});</p><p>console.log(`Yesterday: ${yesterday}`);</p><p>console.log(`Tomorrow: ${tomorrow}`);</p><p>- sur les méthodes upsert : ajout des nouvelles méthodes Map et WeakMap</p><p>- lib.dom.iterable.d.ts et lib.dom.asynciterable.d.ts sont pleinement inclus dans lib.dom.d.ts.&nbsp;</p><p>Précisons que TS 6 est pleinement compatible avec les API et les codes de TS 5.9.&nbsp;</p><p>Note de version :&nbsp;<a href="https://devblogs.microsoft.com/typescript/announcing-typescript-6-0-beta/">https://devblogs.microsoft.com/typescript/announcing-typescript-6-0-beta/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -45,5 +47,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

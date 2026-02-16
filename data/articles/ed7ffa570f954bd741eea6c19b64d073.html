@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Microsoft blocks a way for user sign-in on Windows 11 25H2 24H2, and for good reason</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -22,10 +18,10 @@
 <body>
   <h1>Microsoft blocks a way for user sign-in on Windows 11 25H2 24H2, and for good reason</h1>
   <div class="metadata">
-    Source: Neowin | Date: 2/13/2026 3:54:01 PM | <a href="https://www.neowin.net/news/microsoft-blocks-a-way-for-user-sign-in-on-windows-11-25h2-24h2-and-for-good-reason/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Neowin | Date: 2/13/2026 2:54:01 PM | <a href="https://www.neowin.net/news/microsoft-blocks-a-way-for-user-sign-in-on-windows-11-25h2-24h2-and-for-good-reason/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>When you purchase through links on our site, we may earn an affiliate commission. Here’s how it works. Microsoft has recently blocked a convenient way to sign-in or authenticate on all Windows 11 versions as well as on 10. The company has explained why. Sayan Sen Neowin @ssc_combater007 · Feb 13, 2026 09:54 EST · Hot! A few days ago, Microsoft released the latest Patch Tuesday updates for Windows 11 and 10. If you are a user, you may have noticed a new change after installing it. Windows probably no longer allows apps to autofill credential data during certain scenarios. If you are thinking it's a bug, the tech giant has confirmed that it is not the case and that this is expected "new behaviour." So for those of you wondering what happened, Microsoft says that this is a new security hardening change put in place to safeguard against a Windows Hello tampering vulnerability. The company had recently confirmed this input injection flaw on its MSRC website under a new ID CVE-2026-20804. Neowin noticed this change today while browsing. If you recall, we had already reported on this issue back in August of 2025 when security researchers had flagged it for the first time. As such, Microsoft no longer allows remote autofill and automated auth on certain apps and instances, which can be vulnerable. On January 2026 Patch Tuesday Windows 11 updates (KB5074109, KB5073455), Microsoft added the following change to the release notes earlier today. It writes: [Credentials autofill] This update introduces a security hardening behavior restricting certain applications to autofill credentials during remote support sessions or automated authentication workflows. With this change, credential dialogs do not respond to virtual keyboard input from remote desktop or screen sharing tools or apps. Microsoft has added further details on the change in a separate support article. It explains: "This intentional change of behavior is designed to protect users against untrusted input injection. Windows authentication dialogs will only accept input from trusted local sources, such as physical keyboard input, trusted accessibility applications with UIAccess privilege, or applications running with elevated (administrator) integrity." The company has said that users and IT admins will notice the following changes post this update: "Applications attempting to autofill credentials into the Windows authentication dialog and sign-in interfaces might fail to do so. Credential dialogs might not respond to virtual keyboard input from remote desktop or screen sharing tools or apps, such as Microsoft Teams or similar third-party apps. Automatic or scripted authentication workflows might not proceed because the credentials interface no longer accepts input." Thus going forward, admins and users alike have been encouraged to update such apps to avoid keyboard entry into credential interfaces and authenticate through supported Windows authentication UIs. In case you need the previous autofill behavior to still function, Microsoft says that it is possible. It writes: "Do so by enabling applications performing remote credential submission to run with elevated (administrator) privileges. This should allow the previous behavior until applications can be updated to account for the hardening changes driven by CVE-2026-20824", though it has cautioned you do so only in a tightly controlled environment that is safe and secure.</code></pre>
+    <p>Microsoft has recently blocked a convenient way to sign-in or authenticate on all Windows 11 versions as well as on 10. The company has explained why. ...</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -45,5 +41,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

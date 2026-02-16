@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Raspberry Pi and ChatGPT bring AI conversations to your retro rotary phone</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -22,9 +18,11 @@
 <body>
   <h1>Raspberry Pi and ChatGPT bring AI conversations to your retro rotary phone</h1>
   <div class="metadata">
-    Source: Toms Hardware Raspberry Pi | Date: 3/17/2025 3:52:07 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-and-chatgpt-bring-ai-conversations-to-your-retro-rotary-phone" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Toms Hardware Raspberry Pi | Date: 3/17/2025 2:52:07 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-and-chatgpt-bring-ai-conversations-to-your-retro-rotary-phone" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>(Image credit: Pollux Labs) Who needs friends when you can make your own using AI? That seems to be what maker and developer Pollux Labs has pulled off with their latest Raspberry Pi project. Using our favorite SBC and a little help from ChatGPT, Pollux Labs upgraded a rotary phone to interact with those who call using speech recognition and text to speech for responses.According to Pollux Labs, the project merges both vintage technology and the thrill of modern AI. To use the system, all you have to do is dial a specific number which then enables the speech to text function. You can talk with the ChatGPT AI in a full conversation that will be remembered so you can call again later and pick up where you left off.Image 1 of 2(Image credit: Pollux Labs)The project is driven by a Raspberry Pi 4B but you could get better performance using the latest Raspberry Pi 5. The Pi is housed inside of the old rotary phone along with a few components that bring the project together including a microphone that listens for audio which can then be parsed through the AI channel.The software was put together by Pollux Labs just for this project and is primarily driven by a Python script that interacts with other services like the Whisper API from OpenAI to handle the ChatGPT interactions. It also maintains the conversation history and converts responses from ChatGPT into speech for the rotary phone to output.If you want to get a closer look at this Raspberry Pi project in action, you can check it out in greater detail over at the project page shared to Hackster.Get Tom's Hardware's best news and in-depth reviews, straight to your inbox. Ash Hill is a contributing writer for Tom's Hardware with a wealth of experience in the hobby electronics, 3D printing and PCs. She manages the Pi projects of the month and much of our daily Raspberry Pi reporting while also finding the best coupons and deals on all tech.</p></div>
+  <div class="content">
+    <p>Pollux Labs is using a Raspberry Pi to power this rotary phone project that integrates Chat GPT and remembers previous conversations.</p>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +41,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

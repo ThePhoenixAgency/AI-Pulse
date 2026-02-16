@@ -1,13 +1,21 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>The GitHub Copilot SDK: Agents for Every App</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -16,13 +24,166 @@
 <body>
   <h1>The GitHub Copilot SDK: Agents for Every App</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 9:44:48 PM | <a href="https://dev.to/htekdev/the-github-copilot-sdk-agents-for-every-app-481n" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Dev.to Open Source | Date: 2/16/2026 8:44:48 PM | <a href="https://dev.to/htekdev/the-github-copilot-sdk-agents-for-every-app-481n" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Copilot Just Became a Library GitHub shipped something big on January 22, 2026, and it wasn't another chat feature. The GitHub Copilot SDK takes the exact same agentic engine powering Copilot CLI — the agent loop that plans, invokes tools, edits files, and manages context — and packages it as a programmable SDK for TypeScript, Python, Go, and .NET.
-That's 7,100+ stars in under a month. The repo is seeing multiple commits per day from GitHub engineers and community contributors. This isn't a research prototype — it's the production agent runtime, extracted and made embeddable.
-In this article, I'll walk through what the SDK actually does, show you code in multiple languages, highlight real apps people are already building, and cover the rapid development pace that makes this worth watching right now.
-The Copilot SDK communicates with the Copilot CLI running in server mode via JSON-RPC. Your application talks to the SDK, the SDK talks to the CLI, and the CLI handles all the complex orchestration — model selection, tool invocation, context management, file operations, and more.</p>
+    <div><div> <h2> <a name="copilot-just-became-a-library" href="#copilot-just-became-a-library"> </a> Copilot Just Became a Library
+</h2> <p>GitHub shipped something big on January 22, 2026, and it wasn't another chat feature. The <a href="https://github.com/github/copilot-sdk" target="_blank">GitHub Copilot SDK</a> takes the exact same agentic engine powering <a href="https://htek.dev/articles/copilot-cli-biggest-week-yet/" target="_blank">Copilot CLI</a> — the agent loop that plans, invokes tools, edits files, and manages context — and packages it as a programmable SDK for TypeScript, Python, Go, and .NET.</p> <p>That's 7,100+ stars in under a month. The repo is seeing multiple commits <em>per day</em> from GitHub engineers and community contributors. This isn't a research prototype — it's the production agent runtime, extracted and made embeddable.</p> <p>In this article, I'll walk through what the SDK actually does, show you code in multiple languages, highlight real apps people are already building, and cover the rapid development pace that makes this worth watching right now.</p> <h2> <a name="what-the-sdk-actually-does" href="#what-the-sdk-actually-does"> </a> What the SDK Actually Does
+</h2> <p>The Copilot SDK communicates with the Copilot CLI running in server mode via JSON-RPC. Your application talks to the SDK, the SDK talks to the CLI, and the CLI handles all the complex orchestration — model selection, tool invocation, context management, file operations, and more.<br>
+</p> <div>
+<pre><code>Your Application ↓ SDK Client ↓ JSON-RPC Copilot CLI (server mode)
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This architecture means you don't build your own agent loop. You don't manage context windows. You don't wire up tool execution pipelines. You just define what your agent should do, and Copilot handles the rest. If you've read <a href="https://htek.dev/articles/choosing-the-right-ai-sdk/" target="_blank">my breakdown of AI SDKs</a>, this is what makes the Copilot SDK distinct — it's not a thin wrapper around an LLM API. It's a full agent runtime with battle-tested orchestration.</p> <blockquote>
+<p>The SDK exposes the same engine behind Copilot CLI: a production-tested agent runtime you can invoke programmatically.</p>
+</blockquote> <h2> <a name="getting-started-in-30-seconds" href="#getting-started-in-30-seconds"> </a> Getting Started in 30 Seconds
+</h2> <p>Installation is one command in any ecosystem:<br>
+</p> <div>
+<pre><code>npm <span>install</span> @github/copilot-sdk <span># Node.js / TypeScript</span>
+pip <span>install </span>github-copilot-sdk <span># Python</span>
+go get github.com/github/copilot-sdk/go <span># Go</span>
+dotnet add package GitHub.Copilot.SDK <span># .NET</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You need the <a href="https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli" target="_blank">Copilot CLI</a> installed and a GitHub Copilot subscription — though the SDK also supports <strong>BYOK (Bring Your Own Key)</strong> if you want to point it at OpenAI, Azure OpenAI, Anthropic, or even local models like Ollama.</p> <h2> <a name="code-walkthrough-typescript" href="#code-walkthrough-typescript"> </a> Code Walkthrough: TypeScript
+</h2> <p>Here's a complete working example that creates an agent session, sends a message, and streams the response:<br>
+</p> <div>
+<pre><code>
+<span>const</span> <span>client</span> <span>=</span> <span>new</span> <span>CopilotClient</span><span>();</span>
+<span>await</span> <span>client</span><span>.</span><span>start</span><span>();</span> <span>const</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>createSession</span><span>({</span> <span>model</span><span>:</span> <span>"</span><span>gpt-5</span><span>"</span><span>,</span> <span>streaming</span><span>:</span> <span>true</span><span>,</span>
+<span>});</span> <span>session</span><span>.</span><span>on</span><span>(</span><span>"</span><span>assistant.message_delta</span><span>"</span><span>,</span> <span>(</span><span>event</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>process</span><span>.</span><span>stdout</span><span>.</span><span>write</span><span>(</span><span>event</span><span>.</span><span>data</span><span>.</span><span>deltaContent</span><span>);</span>
+<span>});</span> <span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>session</span><span>.</span><span>sendAndWait</span><span>({</span> <span>prompt</span><span>:</span> <span>"</span><span>Explain the builder pattern in TypeScript</span><span>"</span><span>,</span>
+<span>});</span> <span>await</span> <span>session</span><span>.</span><span>destroy</span><span>();</span>
+<span>await</span> <span>client</span><span>.</span><span>stop</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. No prompt templates. No tool orchestration boilerplate. No context window management. The SDK handles session lifecycle, streaming, and cleanup.</p> <h3> <a name="custom-tools" href="#custom-tools"> </a> Custom Tools
+</h3> <p>Where it gets powerful is custom tools. You define what capabilities your agent has, and the SDK handles the invocation loop automatically:<br>
+</p> <div>
+<pre><code>
+<span>const</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>createSession</span><span>({</span> <span>model</span><span>:</span> <span>"</span><span>gpt-5</span><span>"</span><span>,</span> <span>tools</span><span>:</span> <span>[</span> <span>defineTool</span><span>(</span><span>"</span><span>lookup_issue</span><span>"</span><span>,</span> <span>{</span> <span>description</span><span>:</span> <span>"</span><span>Fetch issue details from our tracker</span><span>"</span><span>,</span> <span>parameters</span><span>:</span> <span>z</span><span>.</span><span>object</span><span>({</span> <span>id</span><span>:</span> <span>z</span><span>.</span><span>string</span><span>().</span><span>describe</span><span>(</span><span>"</span><span>Issue identifier</span><span>"</span><span>),</span> <span>}),</span> <span>handler</span><span>:</span> <span>async </span><span>({</span> <span>id</span> <span>})</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>issue</span> <span>=</span> <span>await</span> <span>fetchIssue</span><span>(</span><span>id</span><span>);</span> <span>return</span> <span>issue</span><span>;</span> <span>},</span> <span>}),</span> <span>],</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>When the model decides it needs issue data, it calls your handler, gets the result, and continues reasoning. You wrote a function. Copilot made it agentic.</p> <h2> <a name="code-walkthrough-python" href="#code-walkthrough-python"> </a> Code Walkthrough: Python
+</h2> <p>The Python SDK uses async/await natively and supports Pydantic for type-safe tool definitions:<br>
+</p> <div>
+<pre><code><span>import</span> <span>asyncio</span>
+<span>from</span> <span>pydantic</span> <span>import</span> <span>BaseModel</span><span>,</span> <span>Field</span>
+<span>from</span> <span>copilot</span> <span>import</span> <span>CopilotClient</span><span>,</span> <span>define_tool</span> <span>class</span> <span>LookupParams</span><span>(</span><span>BaseModel</span><span>):</span> <span>id</span><span>:</span> <span>str</span> <span>=</span> <span>Field</span><span>(</span><span>description</span><span>=</span><span>"</span><span>Issue identifier</span><span>"</span><span>)</span> <span>@define_tool</span><span>(</span><span>description</span><span>=</span><span>"</span><span>Fetch issue details</span><span>"</span><span>)</span>
+<span>async</span> <span>def</span> <span>lookup_issue</span><span>(</span><span>params</span><span>:</span> <span>LookupParams</span><span>)</span> <span>-&gt;</span> <span>str</span><span>:</span> <span>issue</span> <span>=</span> <span>await</span> <span>fetch_issue</span><span>(</span><span>params</span><span>.</span><span>id</span><span>)</span> <span>return</span> <span>issue</span><span>.</span><span>summary</span> <span>async</span> <span>def</span> <span>main</span><span>():</span> <span>client</span> <span>=</span> <span>CopilotClient</span><span>()</span> <span>await</span> <span>client</span><span>.</span><span>start</span><span>()</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>create_session</span><span>({</span> <span>"</span><span>model</span><span>"</span><span>:</span> <span>"</span><span>gpt-5</span><span>"</span><span>,</span> <span>"</span><span>tools</span><span>"</span><span>:</span> <span>[</span><span>lookup_issue</span><span>],</span> <span>})</span> <span>result</span> <span>=</span> <span>await</span> <span>session</span><span>.</span><span>send_and_wait</span><span>({</span> <span>"</span><span>prompt</span><span>"</span><span>:</span> <span>"</span><span>Triage the latest open issues</span><span>"</span> <span>})</span> <span>await</span> <span>session</span><span>.</span><span>destroy</span><span>()</span> <span>await</span> <span>client</span><span>.</span><span>stop</span><span>()</span> <span>asyncio</span><span>.</span><span>run</span><span>(</span><span>main</span><span>())</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>@define_tool</code> decorator with Pydantic models generates JSON schemas automatically — no manual schema writing required.</p> <h2> <a name="code-walkthrough-net" href="#code-walkthrough-net"> </a> Code Walkthrough: .NET
+</h2> <p>The .NET SDK integrates with <code>Microsoft.Extensions.AI</code> for tool definitions and follows idiomatic C# patterns:<br>
+</p> <div>
+<pre><code><span>using</span> <span>GitHub.Copilot.SDK</span><span>;</span>
+<span>using</span> <span>Microsoft.Extensions.AI</span><span>;</span>
+<span>using</span> <span>System.ComponentModel</span><span>;</span> <span>await</span> <span>using</span> <span>var</span> <span>client</span> <span>=</span> <span>new</span> <span>CopilotClient</span><span>();</span>
+<span>await</span> <span>client</span><span>.</span><span>StartAsync</span><span>();</span> <span>await</span> <span>using</span> <span>var</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>CreateSessionAsync</span><span>(</span><span>new</span> <span>SessionConfig</span>
+<span>{</span> <span>Model</span> <span>=</span> <span>"gpt-5"</span><span>,</span> <span>Tools</span> <span>=</span> <span>[</span> <span>AIFunctionFactory</span><span>.</span><span>Create</span><span>(</span> <span>async</span> <span>([</span><span>Description</span><span>(</span><span>"Issue ID"</span><span>)]</span> <span>string</span> <span>id</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>return</span> <span>await</span> <span>FetchIssueAsync</span><span>(</span><span>id</span><span>);</span> <span>},</span> <span>"lookup_issue"</span><span>,</span> <span>"Fetch issue details from our tracker"</span><span>),</span> <span>]</span>
+<span>});</span> <span>var</span> <span>done</span> <span>=</span> <span>new</span> <span>TaskCompletionSource</span><span>();</span>
+<span>session</span><span>.</span><span>On</span><span>(</span><span>evt</span> <span>=&gt;</span>
+<span>{</span> <span>if</span> <span>(</span><span>evt</span> <span>is</span> <span>AssistantMessageEvent</span> <span>msg</span><span>)</span> <span>Console</span><span>.</span><span>WriteLine</span><span>(</span><span>msg</span><span>.</span><span>Data</span><span>.</span><span>Content</span><span>);</span> <span>else</span> <span>if</span> <span>(</span><span>evt</span> <span>is</span> <span>SessionIdleEvent</span><span>)</span> <span>done</span><span>.</span><span>SetResult</span><span>();</span>
+<span>});</span> <span>await</span> <span>session</span><span>.</span><span>SendAsync</span><span>(</span><span>new</span> <span>MessageOptions</span>
+<span>{</span> <span>Prompt</span> <span>=</span> <span>"Summarize the latest security alerts"</span>
+<span>});</span>
+<span>await</span> <span>done</span><span>.</span><span>Task</span><span>;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="real-apps-people-are-already-building" href="#real-apps-people-are-already-building"> </a> Real Apps People Are Already Building
+</h2> <p>The community hasn't waited. Within weeks of the SDK's technical preview launch, real applications started appearing across official samples and community projects.</p> <h3> <a name="official-samples-and-cookbooks" href="#official-samples-and-cookbooks"> </a> Official Samples and Cookbooks
+</h3> <ul>
+<li>
+<strong><a href="https://github.com/microsoft/copilot-sdk-samples" target="_blank">microsoft/copilot-sdk-samples</a></strong> — Official sample gallery including issue triage agents, security alert prioritization, PagerDuty incident management, Datadog monitoring integration, and PCB design analysis. All samples work in mock mode without credentials.</li>
+<li>
+<strong><a href="https://github.com/github/awesome-copilot/tree/main/cookbook/copilot-sdk" target="_blank">awesome-copilot Cookbook</a></strong> — GitHub's official recipe collection with practical examples across all four SDK languages.</li>
+<li>
+<strong><a href="https://github.com/hoodini/copilot-sdk-terminal-agent" target="_blank">Terminal Agent</a></strong> — A webhook-based AI terminal that executes commands through natural language prompts, built with the TypeScript SDK.</li>
+</ul> <h3> <a name="the-devto-github-copilot-cli-challenge" href="#the-devto-github-copilot-cli-challenge"> </a> The DEV.to GitHub Copilot CLI Challenge
+</h3> <p>The timing of the SDK launch coincided with the <a href="https://dev.to/challenges/github-2026-01-21">GitHub Copilot CLI Challenge</a> on DEV.to — a community challenge running January 22 through February 15, 2026, with $1,000 prizes and GitHub Universe tickets on the line. The submissions are a goldmine of creative SDK and CLI usage. Here are the standouts:</p> <p><strong><a href="https://dev.to/jamesrhurtado/i-built-clasez-an-ai-study-copilot-that-changes-how-students-use-lecture-recordings-with-the-43id">Clasez</a></strong> — A student built an AI study copilot that transforms lecture transcripts into structured summaries, key concepts, and timestamped Q&amp;A — all powered by the Copilot SDK. Ask "when did the professor explain tries?" and it returns the exact minute mark. Built by a student using their GitHub Student Developer Pack access to Copilot Pro models.</p> <p><strong><a href="https://dev.to/tsadhoq/from-terminal-to-desktop-how-a-desktop-app-uses-copilot-cli-as-its-entire-ai-layer-bl9">HN Reader</a></strong> — A WinUI 3 desktop app that uses the Copilot SDK as its <em>entire</em> AI layer — no separate LLM API keys needed. It fetches Hacker News stories, runs them through a Copilot agent for personalized digests grouped by your interests, and generates structured story insights. This is the SDK's promise in action: any app can embed Copilot as a library.</p> <p><strong><a href="https://dev.to/depapp/i-built-a-game-where-github-copilot-cli-is-the-game-master-9b">Copilot Quest</a></strong> — A text-based adventure game where Copilot CLI <em>is</em> the game master. No pre-written stories — every playthrough is dynamically generated. Run <code>npx copilot-quest</code> and Copilot picks a random genre, generates ASCII art, tracks HP and inventory, and maintains narrative continuity across turns. The developer reported that an NPC introduced in turn 2 betrayed them in turn 14 — emergent storytelling from the agent runtime.</p> <p><strong><a href="https://dev.to/mdsaalim/building-a-production-cli-tool-to-gamify-and-enforce-code-documentation-with-github-copilot-cli-1j4m">Cognitive Guard</a></strong> — A Python CLI tool that analyzes cognitive complexity via AST parsing and blocks git commits when complex functions lack documentation. It adds gamification — achievements, progress tracking, XP — to make documentation less painful. The developer went from zero to published PyPI package in 9 days.</p> <p><strong><a href="https://dev.to/lasse/dustoff-make-your-legacy-projects-llm-ready-3g9l">DustOff</a></strong> — A tool that migrates legacy side projects into a modern Next.js + TypeScript stack, preparing them for AI-assisted development. The idea: your abandoned side projects deserve a second chance, and Copilot CLI handles the heavy lifting of analyzing and transforming the codebase.</p> <p>What's striking about these challenge submissions isn't just the creativity — it's the speed. Multiple developers reported going from idea to published tool in under two weeks, with the SDK and CLI handling the agentic complexity they would have spent weeks building from scratch.</p> <h2> <a name="hooks-controlling-the-agent-loop" href="#hooks-controlling-the-agent-loop"> </a> Hooks: Controlling the Agent Loop
+</h2> <p>One of the SDK's most powerful features is <strong>session hooks</strong> — lifecycle callbacks that let you intercept and modify agent behavior without forking anything:<br>
+</p> <div>
+<pre><code><span>const</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>createSession</span><span>({</span> <span>model</span><span>:</span> <span>"</span><span>gpt-5</span><span>"</span><span>,</span> <span>hooks</span><span>:</span> <span>{</span> <span>onPreToolUse</span><span>:</span> <span>async </span><span>(</span><span>input</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>console</span><span>.</span><span>log</span><span>(</span><span>`Tool: </span><span>${</span><span>input</span><span>.</span><span>toolName</span><span>}</span><span>`</span><span>);</span> <span>// Gate dangerous operations</span> <span>if </span><span>(</span><span>input</span><span>.</span><span>toolName</span> <span>===</span> <span>"</span><span>bash</span><span>"</span> <span>&amp;&amp;</span> <span>input</span><span>.</span><span>toolArgs</span><span>.</span><span>includes</span><span>(</span><span>"</span><span>rm</span><span>"</span><span>))</span> <span>{</span> <span>return</span> <span>{</span> <span>permissionDecision</span><span>:</span> <span>"</span><span>deny</span><span>"</span> <span>};</span> <span>}</span> <span>return</span> <span>{</span> <span>permissionDecision</span><span>:</span> <span>"</span><span>allow</span><span>"</span> <span>};</span> <span>},</span> <span>onPostToolUse</span><span>:</span> <span>async </span><span>(</span><span>input</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// Log every tool execution for audit</span> <span>await</span> <span>auditLog</span><span>(</span><span>input</span><span>.</span><span>toolName</span><span>,</span> <span>input</span><span>.</span><span>result</span><span>);</span> <span>return</span> <span>{};</span> <span>},</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Available hooks include <code>onPreToolUse</code>, <code>onPostToolUse</code>, <code>onUserPromptSubmitted</code>, <code>onSessionStart</code>, <code>onSessionEnd</code>, and <code>onErrorOccurred</code>. This gives you production-grade control over what the agent can do — critical for enterprise deployments.</p> <h2> <a name="development-velocity-is-remarkable" href="#development-velocity-is-remarkable"> </a> Development Velocity Is Remarkable
+</h2> <p>The <a href="https://github.com/github/copilot-sdk" target="_blank">github/copilot-sdk</a> repo was created on January 14, 2026. In the month since, the commit log tells a story of rapid, purposeful iteration. Here's a snapshot of changes just from the last two weeks:</p> <div><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Feb 16</td>
+<td>Hide CLI console window on Windows across all SDKs</td>
+</tr>
+<tr>
+<td>Feb 16</td>
+<td>Add copy constructors and Clone methods for .NET config options</td>
+</tr>
+<tr>
+<td>Feb 16</td>
+<td>Fix portable RID detection for Linux distro compatibility</td>
+</tr>
+<tr>
+<td>Feb 13</td>
+<td>Expose session context, add filtering, and <code>context_changed</code> event</td>
+</tr>
+<tr>
+<td>Feb 12</td>
+<td>Go SDK: Support bundling and auto-installing the Copilot CLI</td>
+</tr>
+<tr>
+<td>Feb 10</td>
+<td>Fix executable permissions on CLI binary in Python wheels</td>
+</tr>
+<tr>
+<td>Feb 9</td>
+<td>Add setup guides for GitHub OAuth and local CLI usage</td>
+</tr>
+<tr>
+<td>Feb 7</td>
+<td>Clarify BYOK token usage and limitations</td>
+</tr>
+<tr>
+<td>Feb 6</td>
+<td>Rename <code>tool.execution_end</code> to <code>tool.execution_complete</code>
+</td>
+</tr>
+<tr>
+<td>Feb 6</td>
+<td>Go SDK: Use types to encode and decode JSON-RPC queries</td>
+</tr>
+</tbody>
+</table></div> <p>Notable contributors include Steve Sanderson (of Blazor fame), Stephen Toub (a .NET runtime legend), and engineers from across GitHub and the community. The SDK is also <a href="https://developer.microsoft.com/blog/bringing-work-context-to-your-code-in-github-copilot" target="_blank">dogfooding itself</a> — several commits were authored by Copilot itself, including the Windows console window fix.</p> <p>The pace here is significant. Community SDKs for Java, Rust, C++, and Clojure have already emerged, and the repo has 116 open issues — a healthy sign of active engagement rather than abandonment.</p> <h2> <a name="byok-bring-your-own-model" href="#byok-bring-your-own-model"> </a> BYOK: Bring Your Own Model
+</h2> <p>You don't have to use GitHub's models. The SDK supports pointing at any OpenAI-compatible endpoint, including local inference:<br>
+</p> <div>
+<pre><code><span>const</span> <span>session</span> <span>=</span> <span>await</span> <span>client</span><span>.</span><span>createSession</span><span>({</span> <span>model</span><span>:</span> <span>"</span><span>deepseek-coder-v2:16b</span><span>"</span><span>,</span> <span>provider</span><span>:</span> <span>{</span> <span>type</span><span>:</span> <span>"</span><span>openai</span><span>"</span><span>,</span> <span>baseUrl</span><span>:</span> <span>"</span><span>http://localhost:11434/v1</span><span>"</span><span>,</span> <span>// Ollama</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Azure OpenAI, Anthropic, and custom endpoints are all supported. This means you get Copilot's agent orchestration with whatever model backend fits your compliance and cost requirements.</p> <h2> <a name="the-bigger-picture" href="#the-bigger-picture"> </a> The Bigger Picture
+</h2> <p>The Copilot SDK sits at an interesting intersection. GitHub deprecated <a href="https://github.blog/changelog/2025-09-24-deprecate-github-copilot-extensions-github-apps/" target="_blank">App-based Copilot Extensions</a> in favor of MCP servers, and the SDK itself uses MCP under the hood. Meanwhile, as I explored in <a href="https://htek.dev/articles/choosing-the-right-ai-sdk/" target="_blank">my comparison of AI SDKs</a>, the Copilot SDK differentiates itself by being an <em>agent runtime</em>, not just an API client.</p> <p>The concept of <a href="https://htek.dev/articles/context-engineering-key-to-ai-development/" target="_blank">context engineering</a> is central to why this matters. The SDK manages context windows automatically through "infinite sessions" — background compaction that lets conversations run indefinitely without hitting token limits. That's a hard problem solved at the infrastructure level.</p> <p>With 7,100+ stars, four official language SDKs, community ports in four more languages, and daily commits from some of the most respected engineers in the ecosystem, the Copilot SDK is positioned to become the default way to embed AI agents into applications. It's in technical preview, so expect breaking changes — but the velocity and quality of what's shipping suggest this will stabilize fast.</p> <p>If you're building anything that needs agentic AI capabilities, stop wiring up your own orchestration. Install the SDK, define your tools, and let Copilot handle the rest.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -42,5 +203,5 @@ The Copilot SDK communicates with the Copilot CLI running in server mode via JSO
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Mesa 25.3.5 arrives with bug fixes for open source Linux graphics drivers</title>
 <style>
@@ -22,20 +24,127 @@
 <body>
   <h1>Mesa 25.3.5 arrives with bug fixes for open source Linux graphics drivers</h1>
   <div class="metadata">
-    Source: GamingOnLinux | Date: 2/9/2026 12:21:35 PM | <a href="https://www.gamingonlinux.com/2026/02/mesa-25-3-5-arrives-with-bug-fixes-for-open-source-linux-graphics-drivers/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GamingOnLinux | Date: 2/9/2026 11:21:35 AM | <a href="https://www.gamingonlinux.com/2026/02/mesa-25-3-5-arrives-with-bug-fixes-for-open-source-linux-graphics-drivers/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Over the weekend we saw the release of Mesa 25.3.5, as we near the end of updates to Mesa 25.3 with developers moving onto the upcoming Mesa 26.
-Developer Dylan Baker said in the release announcement: We're a bit late with this one, we had to sort out some CI issues.
-Anyway, I'm pleased to announce that 25.3.5 is now available. This release has seen little slowdown on the set of bug fixes, with Intel and AMD leading the pack in fixes, but with a good number of releases across the board.
-We have one more planned release in two weeks, and I will see you all then. The bug fixes noted from the changelog: Transcoding mpeg2video with ffmpeg h264_vulkan on Intel cause Conversion failed!.
-static linking regression since !37495 - spirv-tools shared library required at runtime if exists at build time.
-tu: GPU faults during LRZ clears on unallocated transient attachments in gmem mode.
-Shader inputs/outputs for vertex/pixel shaders that have the integer (int) type are broken on RDNA 3 and 4 graphics cards.
-ACO: assertion in insert_exec_mask().
-[radv] Regression causes glitches in Strange Brigade (Vulkan renderer).
-radv, regression : Crysis 2 Remastered raytracing blocky reflections. Pictured - Strange Brigade
-For the current plans on the next set of releases here's the release schedule: Branch Expected date Release Notes 25.3 2026-02-18 25.3.6 Last planned 25.3 release 26.0 2026-02-11 26.0.0-rc4 or 26.0.0 final 26.1 2026-04-15 26.1.0-rc1 26.1 branchpoint 2026-04-22 26.1.0-rc2 2026-04-29 26.1.0-rc3 2026-05-06 26.1.0-rc4 or 26.1.0 final What are you most looking forward to for new features in Mesa 26 and Mesa 26.1? Should be some nice Ray Tracing upgrades we've covered previously. Article taken from GamingOnLinux.com.</code></pre>
+    <div><div> <p>Over the weekend we saw the release of Mesa 25.3.5, as we near the end of updates to Mesa 25.3 with developers moving onto the upcoming Mesa 26.</p>
+<p>Developer Dylan Baker said in the release announcement:</p>
+<blockquote>
+<p>We're a bit late with this one, we had to sort out some CI issues.</p>
+<p>Anyway, I'm pleased to announce that 25.3.5 is now available. This release has seen little slowdown on the set of bug fixes, with Intel and AMD leading the pack in fixes, but with a good number of releases across the board.</p>
+<p>We have one more planned release in two weeks, and I will see you all then.</p>
+</blockquote>
+<p>The bug fixes noted from the <a href="https://docs.mesa3d.org/relnotes/25.3.5.html" target="_blank">changelog</a>:</p>
+<blockquote>
+<ul>
+<li>Transcoding mpeg2video with ffmpeg h264_vulkan on Intel cause Conversion failed!.</li>
+<li>static linking regression since !37495 - spirv-tools shared library required at runtime if exists at build time.</li>
+<li>tu: GPU faults during LRZ clears on unallocated transient attachments in gmem mode.</li>
+<li>Shader inputs/outputs for vertex/pixel shaders that have the integer (int) type are broken on RDNA 3 and 4 graphics cards.</li>
+<li>ACO: assertion in insert_exec_mask().</li>
+<li>[radv] Regression causes glitches in Strange Brigade (Vulkan renderer).</li>
+<li>radv, regression : Crysis 2 Remastered raytracing blocky reflections.</li>
+</ul>
+</blockquote>
+<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/2027118371770636018gol2.jpg"><br><em>Pictured - Strange Brigade</em></p>
+<p>For the current plans on the next set of releases here's the release schedule:</p>
+<div>
+<table>
+<thead>
+<tr>
+<td>
+<p>Branch</p>
+</td>
+<td>
+<p>Expected date</p>
+</td>
+<td>
+<p>Release</p>
+</td>
+<td>
+<p>Notes</p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>25.3</p>
+</td>
+<td>
+<p>2026-02-18</p>
+</td>
+<td>
+<p>25.3.6</p>
+</td>
+<td>
+<p>Last planned 25.3 release</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>26.0</p>
+</td>
+<td>
+<p>2026-02-11</p>
+</td>
+<td>
+<p>26.0.0-rc4</p>
+</td>
+<td>
+<p>or 26.0.0 final</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>26.1</p>
+</td>
+<td>
+<p>2026-04-15</p>
+</td>
+<td>
+<p>26.1.0-rc1</p>
+</td>
+<td>
+<p>26.1 branchpoint</p>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-22</p>
+</td>
+<td>
+<p>26.1.0-rc2</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-29</p>
+</td>
+<td>
+<p>26.1.0-rc3</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-05-06</p>
+</td>
+<td>
+<p>26.1.0-rc4</p>
+</td>
+<td>
+<p>or 26.1.0 final</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>What are you most looking forward to for new features in Mesa 26 and Mesa 26.1? Should be some nice Ray Tracing upgrades we've covered previously.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -55,5 +164,5 @@ For the current plans on the next set of releases here's the release schedule: B
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

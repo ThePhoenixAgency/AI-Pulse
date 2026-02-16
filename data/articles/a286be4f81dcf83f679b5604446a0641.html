@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,23 +18,10 @@
 <body>
   <h1>Qwen-3 Omni : Alibaba accélère dans la course à l’IA multimodale</h1>
   <div class="metadata">
-    Source: ActuIA | Date: 9/26/2025 10:24:32 AM | <a href="https://www.actuia.com/actualite/qwen-3-omni-alibaba-accelere-dans-la-course-a-lia-multimodale/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: ActuIA | Date: 9/26/2025 8:24:32 AM | <a href="https://www.actuia.com/actualite/qwen-3-omni-alibaba-accelere-dans-la-course-a-lia-multimodale/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p><strong>Qwen-3 Omni ne constitue pas la première incursion d’Alibaba dans l'omnimodal : en mars dernier, l’équipe avait déjà présenté Qwen-2.5 Omni, capable lui aussi de traiter du texte, des images, de l’audio et de la vidéo et de produire des réponses textuelles et audio. Avec ce modèle de fondation open source multilingue de bout en bout, elle affirme toutefois franchir un cap décisif : Qwen-3 Omni serait le premier modèle unifié à maintenir des performances de pointe sur toutes ces modalités, sans perte de précision par rapport à ses équivalents monomodaux spécialisés de même taille.</strong></p>
-<h2>Une approche nativement multimodale</h2>
-<p>Contrairement aux architectures qui ajoutent progressivement des capacités autour d’un noyau textuel, Qwen-3 Omni a été pensé comme un modèle nativement multimodal : il a été entraîné dès le départ sur des données textuelles, visuelles et audio-visuelles, ce qui a permis d'éviter la dégradation de performance observée lorsque l’on combine a posteriori des modèles spécialisés.</p>
-<h2>Une architecture optimisée pour le streaming</h2>
-<p>Qwen-3 Omni s’appuie sur l’architecture Thinker–Talker, introduite avec Qwen-2.5 Omni, mais profondément revue pour réduire la latence et renforcer la qualité des interactions multimodales. Le module <em>Thinker</em> est chargé du traitement et de la génération textuelle, tandis que <em>Talker</em> convertit ces représentations en parole naturelle.</p>
-<p>Cinq évolutions techniques marquent cette nouvelle génération. D’abord, les deux modules passent à une conception Mixture-of-Experts (MoE), capable de gérer des volumes de requêtes plus élevés tout en maintenant une efficacité de calcul. Ensuite, l’encodeur audio Whisper est remplacé par AuT (Audio Transformer), entraîné sur 20 millions d’heures d’audio supervisé. Ce dernier offre une représentation plus robuste des signaux sonores et introduit une attention par blocs qui facilite la mise en cache temps réel.</p>
-<p>Du côté de la synthèse vocale, Qwen-3 Omni adopte une représentation multi-codebook qui augmente la capacité du modèle à restituer des voix diversifiées, des indices paralinguistiques et des phénomènes acoustiques complexes. Talker passe ainsi du mono-piste au multi-piste, chaque couche de codebook étant prédite grâce aux modules de prédiction multi-tokens (MTP). Le rendu sonore, confié au CNN Code2Wav, abandonne une architecture de type DiT pour un réseau convolutionnel allégé, mieux adapté au streaming et à une faible latence. Enfin, la réduction des taux de codage audio en entrée et en sortie à 12,5 Hz permet une synthèse immédiate <em>frame par frame</em>, contribuant à une réactivité de l’ordre de quelques centaines de millisecondes seulement (environ 211 pour l’audio seul et 507 pour les scénarios audio–vidéo).</p>
-<p><img src="https://www.actuia.com/storage/uploads/2025/09/posts/10320/5ynOrTfLuV2cw7cCVyncIYiZGXmnOvnBy2M2vf0Y.webp" alt=""></p> <article>
-<p>Qwen-3 Omni prend en charge l’interaction textuelle dans 119 langues, la compréhension vocale dans 19, et la génération de parole dans 10. Grâce à une séparation claire entre les modules Thinker et Talker, le modèle peut être personnalisé via des prompts système distincts, permettant d’ajuster le style de réponse textuelle autant que le ton et le rythme de la voix générée.</p>
-<p>Cette architecture facilite aussi l’intégration avec des outils externes, notamment via des appels de fonctions (Function Calls). Ces appels permettent à des modules tiers comme des bases de données, des agents logiciels ou des filtres de sécurité, d’intervenir directement dans le flux de génération, sans perturber la cohérence de la réponse. Une approche qui renforce la cohérence des réponses tout en ouvrant la voie à des cas d’usage orientés production...</p>
-<h2>Performances</h2>
-<p>Sur 36 benchmarks audio et audio-visuels, Qwen-3 Omni atteint l’état de l’art open source dans 32 cas, et se classe en tête sur 22 d’entre eux, tous modèles confondus. Ces résultats sont d’autant plus remarquables qu’ils surpassent, dans plusieurs scénarios, des modèles propriétaires de référence tels que Gemini-2.5 Pro, Seed-ASR ou GPT-4o-Transcribe.</p>
-<p>Plusieurs axes d’amélioration sont déjà identifiés pour les prochaines versions du modèle :la reconnaissance vocale multi-intervenants (ASR), la reconnaissance optique de caractères dans la vidéo (OCR), l’apprentissage proactif audio–vidéo, ainsi qu’un renforcement du support pour les workflows basés sur des agents et les appels de fonctions.</p>
-</article> </div></div>
+    <p>Qwen-3 Omni ne constitue pas la première incursion d’Alibaba dans l'omnimodal : en mars dernier, l’équipe avait déjà présenté Qwen-2.5 Omni, capab...</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

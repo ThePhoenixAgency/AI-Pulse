@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Show HN: Provisioner per-board sidecar for serial access, flashing, and bring-up</title>
 <style>
@@ -22,27 +24,27 @@
 <body>
   <h1>Show HN: Provisioner per-board sidecar for serial access, flashing, and bring-up</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 9:52:11 PM | <a href="https://news.ycombinator.com/item?id=47040176" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hacker News Show | Date: 2/16/2026 8:52:11 PM | <a href="https://news.ycombinator.com/item?id=47040176" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Hi HN,I’ve been building a small infrastructure tool called Provisioner: a per-board provisioning sidecar for SBC bring-up and lab automation.
-https://github.com/alessandrocarminati/provisionerThe model is simple: one instance per board. It sits next to the hardware, owns the serial console, exposes access over SSH, and serves boot artifacts (kernel, initramfs, rootfs) via TFTP/HTTP. It’s designed for the phase where networking is unreliable, storage is half-flashed, and UART is the only thing still telling the truth.What it does- Serial console ownership + SSH multiplexing
+    <div><div><p>Hi HN,</p><p>I’ve been building a small infrastructure tool called Provisioner: a per-board provisioning sidecar for SBC bring-up and lab automation.
+<a href="https://github.com/alessandrocarminati/provisioner">https://github.com/alessandrocarminati/provisioner</a></p><p>The model is simple: one instance per board. It sits next to the hardware, owns the serial console, exposes access over SSH, and serves boot artifacts (kernel, initramfs, rootfs) via TFTP/HTTP. It’s designed for the phase where networking is unreliable, storage is half-flashed, and UART is the only thing still telling the truth.</p><p>What it does</p><p>- Serial console ownership + SSH multiplexing
 - Monitor shell + serial tunnels
 - Scriptable boot interaction
 - Artifact provisioning (TFTP + HTTP)
 - In-band file transfer over serial
 - gzip/base64 hacks + XMODEM
-- Derived from my earlier send_console-ng utility https://github.com/alessandrocarminati/send_file-ng
+- Derived from my earlier send_console-ng utility <a href="https://github.com/alessandrocarminati/send_file-ng">https://github.com/alessandrocarminati/send_file-ng</a>
 - Pluggable power control
 - SNMP PDUs, among others cheap ESP8266/Tasmota devices
 - Serial logging
-- Lightweight access controlProvisioner also embeds a minimal init runtime (goinit) inside the kernel initramfs, acting as its on-board provisioning agent, handling flashing, artifact retrieval, and reporting management state back over serial.Routing &amp; stream handlingInternally, Provisioner routes serial traffic through a pluggable router:- Producers/consumers attach as components
+- Lightweight access control</p><p>Provisioner also embeds a minimal init runtime (goinit) inside the kernel initramfs, acting as its on-board provisioning agent, handling flashing, artifact retrieval, and reporting management state back over serial.</p><p>Routing &amp; stream handling</p><p>Internally, Provisioner routes serial traffic through a pluggable router:</p><p>- Producers/consumers attach as components
 - Human vs machine clients handled differently
 - Unicast control sessions
-- Broadcast multiplexing to multiple observersThis allows several users or services to watch the same console without interfering.FiltersA filter subsystem can intercept and modify serial streams on the fly.Originally added to mitigate ANSI Device Status Reports (e.g. Cursor Position Report issues) when tunneling serial consoles, but it doubles as a general stream rewriting mechanism for automation and normalization.PositioningNot trying to replace large systems like LAVA.This is aimed at:- Homelabs
+- Broadcast multiplexing to multiple observers</p><p>This allows several users or services to watch the same console without interfering.</p><p>Filters</p><p>A filter subsystem can intercept and modify serial streams on the fly.</p><p>Originally added to mitigate ANSI Device Status Reports (e.g. Cursor Position Report issues) when tunneling serial consoles, but it doubles as a general stream rewriting mechanism for automation and normalization.</p><p>Positioning</p><p>Not trying to replace large systems like LAVA.</p><p>This is aimed at:</p><p>- Homelabs
 - Bring-up benches
 - Kernel/BSP work
-- Small shared labsThink lab automation you can deploy in an afternoon, not fleet orchestration.Project is still evolving but already in daily use. Feedback and abuse welcome.</code></pre>
+- Small shared labs</p><p>Think lab automation you can deploy in an afternoon, not fleet orchestration.</p><p>Project is still evolving but already in daily use. Feedback and abuse welcome.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -62,5 +64,5 @@ https://github.com/alessandrocarminati/provisionerThe model is simple: one insta
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

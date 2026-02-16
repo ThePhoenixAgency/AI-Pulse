@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Steam game People Playground hit by malware via the Steam Workshop</title>
 <style>
@@ -22,23 +24,31 @@
 <body>
   <h1>Steam game People Playground hit by malware via the Steam Workshop</h1>
   <div class="metadata">
-    Source: GamingOnLinux | Date: 2/9/2026 11:58:12 AM | <a href="https://www.gamingonlinux.com/2026/02/steam-game-people-playground-hit-by-malware-via-the-steam-workshop/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GamingOnLinux | Date: 2/9/2026 10:58:12 AM | <a href="https://www.gamingonlinux.com/2026/02/steam-game-people-playground-hit-by-malware-via-the-steam-workshop/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Oh dear. People Playground from mestiez / Studio Minus recently had a major problem with malware pretending to be a mod in the Steam Workshop.
-I would say this is a reminder to be careful on what you're downloading - but these types of things are quite difficult for normal users to spot until it's too late. For many it was too late, since this wiped away various things. On Windows at least, it's not clear if it affected Linux (with the game run via Proton).
-In PSA posted on Steam the developer said on February 1st they disabled the Steam Workshop, and a few days later released a security update to prevent the issue in future and as of February 6th they have enabled the Steam Workshop once again.
-The developer has a forum post on Steam that goes over various details of what the malware did, here's an excerpt from it: to put it simply: a mod was uploaded "FPS++" which turned out to be a worm malware.here is a list of EVERYTHING the mod does (since people were asking to read the code themselves, which i will not share myself as its a security risk.) once the game is launched with the mod enabled: silently votes and favorites the mod (FPS++)
-scans every workshop item you published, edits all of them silently, reuploads content, changes descriptions (1 in 2 chance to add "optimized" to the new mod's description), adds tags, upvotes and favorites all of those items.
-creates and uploads a brand-new public workshop item under your account. copies the mod’s files, title, thumbnail, and description into it. upvotes and favorites that new item too.
-resets your steam stats for the game, such as achievements. your playtime is untouched. also deletes configs, control schemes, stats, caches, maps, contraptions, and prefs.
-wipes mod json files and empty mod folders.
-disables every other mod except itself and one hardcoded name.
-makes fps cap 10000, disables shady code protection.
-makes it look like the mod is working by multiplying the fps counter, lmao. everything—except achievements—are completely gone and unrecoverable after youve been infected. if you want your achievements back, you can use 3rd party tools that i will not link in order to spoof the game into thinking you had the achievements you previously had. although this is technically cheating, so is your achievements being deleted after a decides to delete them all. The Steam Workshop is a place where you can find some really amazing work from the community, but such a system is clearly open to abuse of different forms. Like back in 2022 the city-builder Cities: Skylines had an issue with multiple mods noted in a Reddit post, but a later announcement from the Cities: Skylines team clarified there were other issues that led to their removal. Then in 2024 a mod for Cities Skylines 2 as confirmed by Paradox Interactive was subject to a DLL hijacking attack.
-Steam as a whole has been hit by malware directly in games multiple times too, with Valve announcing changes in November 2023 to hopefully prevent some of the issues.
-In December 2023 we also had the developers of the standalone Slay the Spire mod Downfall announce a security breach where a malicious upload was able to overtake the game completely due to their Steam and Discord accounts being hijacked.
-There's probably more cases but it really shows you can never be too careful. Article taken from GamingOnLinux.com.</code></pre>
+    <div><div> <p>Oh dear. People Playground from mestiez / Studio Minus recently had a major problem with malware pretending to be a mod in the Steam Workshop.</p>
+<p>I would say this is a reminder to be careful on what you're downloading - but these types of things are quite difficult for normal users to spot until it's too late. For many it was too late, since this wiped away various things. On Windows at least, it's not clear if it affected Linux (with the game run via Proton).</p>
+<p>In <a href="https://store.steampowered.com/news/app/1118200/view/534373847137256681" target="_blank">PSA</a> posted on Steam the developer said on February 1st they disabled the Steam Workshop, and a few days later <a href="https://store.steampowered.com/news/app/1118200/view/534373847137257251" target="_blank">released</a> a security update to prevent the issue in future and as of February 6th they have <a href="https://store.steampowered.com/news/app/1118200/view/536626281230369457" target="_blank">enabled</a> the Steam Workshop once again.</p>
+<p>The developer has a <a href="https://steamcommunity.com/app/1118200/discussions/0/732532498321528488/" target="_blank">forum post</a> on Steam that goes over various details of what the malware did, here's an excerpt from it:</p>
+<blockquote>
+<div><p>to put it simply: a mod was uploaded "FPS++" which turned out to be a worm malware.</p><p>here is a list of EVERYTHING the mod does (since people were asking to read the code themselves, which i will not share myself as its a security risk.) once the game is launched with the mod enabled:</p></div>
+<ol>
+<li>silently votes and favorites the mod (FPS++)</li>
+<li>scans every workshop item you published, edits all of them silently, reuploads content, changes descriptions (1 in 2 chance to add "optimized" to the new mod's description), adds tags, upvotes and favorites all of those items.</li>
+<li>creates and uploads a brand-new public workshop item under your account. copies the mod’s files, title, thumbnail, and description into it. upvotes and favorites that new item too.</li>
+<li>resets your steam stats for the game, such as achievements. your playtime is untouched. also deletes configs, control schemes, stats, caches, maps, contraptions, and prefs.</li>
+<li>wipes mod json files and empty mod folders.</li>
+<li>disables every other mod except itself and one hardcoded name.</li>
+<li>makes fps cap 10000, disables shady code protection.</li>
+<li>makes it look like the mod is working by multiplying the fps counter, lmao.</li>
+</ol>
+<p><br>everything—except achievements—are completely gone and unrecoverable after youve been infected. if you want your achievements back, you can use 3rd party tools that i will not link in order to spoof the game into thinking you had the achievements you previously had. although this is technically cheating, so is your achievements being deleted after a decides to delete them all.</p>
+</blockquote>
+<p>The Steam Workshop is a place where you can find some really amazing work from the community, but such a system is clearly open to abuse of different forms. Like back in 2022 the city-builder Cities: Skylines had an issue with multiple mods noted in a <a href="https://www.reddit.com/r/CitiesSkylines/comments/sq5k4v/important_information_about_network_extensions_3/" target="_blank">Reddit</a> post, but a later <a href="https://store.steampowered.com/news/app/255710/view/6047774523920146831" target="_blank">announcement</a> from the Cities: Skylines team clarified there were other issues that led to their removal. Then in 2024 a mod for Cities Skylines 2 as <a href="https://www.paradoxinteractive.com/games/cities-skylines-ii/news/traffic-breach-statement" target="_blank">confirmed</a> by Paradox Interactive was subject to a DLL hijacking attack.</p>
+<p>Steam as a whole has been hit by malware directly in games multiple times too, with Valve announcing changes in <a href="https://www.gamingonlinux.com/2023/10/valve-locking-down-publishing-steam-builds-with-sms-codes-due-to-malware/" target="_blank">November 2023</a> to hopefully prevent some of the issues.</p>
+<p>In December 2023 we also had the developers of the standalone Slay the Spire mod Downfall <a href="https://steamcommunity.com/games/1865780/announcements/detail/3865841912968681604" target="_blank">announce</a> a security breach where a malicious upload was able to overtake the game completely due to their Steam and Discord accounts being hijacked.</p>
+<p>There's probably more cases but it really shows you can never be too careful.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -58,5 +68,5 @@ There's probably more cases but it really shows you can never be too careful. Ar
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

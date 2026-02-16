@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Mesa 26.0 is out bringing ray tracing performance improvements for AMD RADV</title>
 <style>
@@ -22,36 +24,38 @@
 <body>
   <h1>Mesa 26.0 is out bringing ray tracing performance improvements for AMD RADV</h1>
   <div class="metadata">
-    Source: GamingOnLinux | Date: 2/11/2026 7:35:27 PM | <a href="https://www.gamingonlinux.com/2026/02/mesa-26-0-is-out-bringing-ray-tracing-performance-improvements-for-amd-radv/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GamingOnLinux | Date: 2/11/2026 6:35:27 PM | <a href="https://www.gamingonlinux.com/2026/02/mesa-26-0-is-out-bringing-ray-tracing-performance-improvements-for-amd-radv/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Mesa 26.0 has arrived as the latest new-feature release of open source graphics drivers, and there's a whole lot to be excited about in this one. For AMD GPU owners especially, as the RADV driver had a number of ray tracing performance improvements.
-In the release announcement from developer Eric Engestrom they mentioned: I'm happy to announce a new feature release, Mesa 26.0.0!Mesa is the open source 3D graphics library, which includes implementations of Vulkan 1.4, OpenGL 4.6, OpenGL ES 3.2, OpenCL 3.0, and more APIs.Since Mesa 25.3, RADV has seen significant raytracing performance improvements.Its `RADV_DEBUG` environment variable has removed the following deprecated options: invariantgeom, nodynamicbounds, nongg_gs and splitfma. Use the driconf variables radv_invariant_geom, radv_no_dynamic_bounds, radv_disable_ngg_gs, and radv_split_fma instead.RadeonSI switched to ACO by default for better and faster ISA code generation and better GPU performance and better compile times.This release also introduces KosmicKrisp, a Vulkan to Metal layered driver for macOS.Users can expect the usual flurry of improvements across all drivers and components, including these new extensions &amp; features highlighted by their developers (in no particular order): VK_KHR_relaxed_block_layout on pvr
-VK_KHR_storage_buffer_storage_class on pvr
-VK_EXT_external_memory_acquire_unmodified on panvk
-VK_EXT_discard_rectangles on NVK
-VK_KHR_present_id, VK_KHR_present_id2 on HoneyKrisp
-VK_KHR_present_wait, VK_KHR_present_wait2 on HoneyKrisp
-VK_KHR_maintenance10 on ANV, NVK, RADV
-VK_EXT_shader_uniform_buffer_unsized_array on ANV, HK, NVK, RADV
-VK_EXT_device_memory_report on panvk
-VK_VALVE_video_encode_rgb_conversion on radv
-VK_EXT_custom_resolve on RADV
-GL_EXT_shader_pixel_local_storage on Panfrost v6+
-VK_EXT_image_drm_format_modifier on panvk/v7
-VK_KHR_sampler_ycbcr_conversion on panvk/v7
-sparseResidencyImage2D on panvk v10+
-sparseResidencyStandard2DBlockShape on panvk v10+
-VK_KHR_surface_maintenance1 promotion everywhere EXT is exposed (anv, hk, lvp, nvk, radv, tu, v3dv, vn)
-VK_KHR_swapchain_maintenance1 promotion everywhere EXT is exposed (anv, hk, lvp, nvk, radv, tu, v3dv, vn)
-VK_KHR_dynamic_rendering on PowerVR
-VK_EXT_multisampled_render_to_single_sampled on panvk
-VK_KHR_pipeline_binary on HoneyKrisp
-VK_KHR_incremental_present on pvr
-VK_KHR_xcb_surface on pvr
-VK_KHR_xlib_surface on pvr
-VK_KHR_robustness2 promotion everywhere EXT is exposed (panvk v10+, HoneyKrisp, hasvk, NVK, Turnip, lavapipe, venus) If you want some background on the ray tracing improvements, developer Natalie Vock put up a blog post at the end of January with a load of technical info.
-Going by their usual schedule, we should see the first bug-fix point release of Mesa 26.0.1 in around two weeks time, which you may want to wait for just in case any major problems snuck into this release. According to the current release calendar, the next new-feature release should be Mesa 26.1 due around May 6th. And the last bug-fix for the previous release Mesa 25.3.6 should be out on February 18th. Article taken from GamingOnLinux.com.</code></pre>
+    <div><div> <p>Mesa 26.0 has arrived as the latest new-feature release of open source graphics drivers, and there's a whole lot to be excited about in this one. For AMD GPU owners especially, as the RADV driver had a number of ray tracing performance improvements.</p>
+<p>In the release announcement from developer Eric Engestrom they mentioned:</p>
+<blockquote>
+<div><p>I'm happy to announce a new feature release, Mesa 26.0.0!</p><p>Mesa is the open source 3D graphics library, which includes implementations of Vulkan 1.4, OpenGL 4.6, OpenGL ES 3.2, OpenCL 3.0, and more APIs.</p><p>Since Mesa 25.3, RADV has seen significant raytracing performance improvements.</p><p>Its `RADV_DEBUG` environment variable has removed the following deprecated options: invariantgeom, nodynamicbounds, nongg_gs and splitfma. Use the driconf variables radv_invariant_geom, radv_no_dynamic_bounds, radv_disable_ngg_gs, and radv_split_fma instead.</p><p>RadeonSI switched to ACO by default for better and faster ISA code generation and better GPU performance and better compile times.</p><p>This release also introduces KosmicKrisp, a Vulkan to Metal layered driver for macOS.</p><p>Users can expect the usual flurry of improvements across all drivers and components, including these new extensions &amp; features highlighted by their developers (in no particular order):</p></div>
+<ul>
+<li>VK_KHR_relaxed_block_layout on pvr</li>
+<li>VK_KHR_storage_buffer_storage_class on pvr</li>
+<li>VK_EXT_external_memory_acquire_unmodified on panvk</li>
+<li>VK_EXT_discard_rectangles on NVK</li>
+<li>VK_KHR_present_id, VK_KHR_present_id2 on HoneyKrisp</li>
+<li>VK_KHR_present_wait, VK_KHR_present_wait2 on HoneyKrisp</li>
+<li>VK_KHR_maintenance10 on ANV, NVK, RADV</li>
+<li>VK_EXT_shader_uniform_buffer_unsized_array on ANV, HK, NVK, RADV</li>
+<li>VK_EXT_device_memory_report on panvk</li>
+<li>VK_VALVE_video_encode_rgb_conversion on radv</li>
+<li>VK_EXT_custom_resolve on RADV</li>
+<li>GL_EXT_shader_pixel_local_storage on Panfrost v6+</li>
+<li>VK_EXT_image_drm_format_modifier on panvk/v7</li>
+<li>VK_KHR_sampler_ycbcr_conversion on panvk/v7</li>
+<li>sparseResidencyImage2D on panvk v10+</li>
+<li>sparseResidencyStandard2DBlockShape on panvk v10+</li> <li>VK_KHR_dynamic_rendering on PowerVR</li>
+<li>VK_EXT_multisampled_render_to_single_sampled on panvk</li>
+<li>VK_KHR_pipeline_binary on HoneyKrisp</li>
+<li>VK_KHR_incremental_present on pvr</li>
+<li>VK_KHR_xcb_surface on pvr</li>
+<li>VK_KHR_xlib_surface on pvr</li> </ul>
+</blockquote>
+<p>If you want some background on the ray tracing improvements, developer Natalie Vock put up a <a href="https://pixelcluster.github.io/Mesa-26/" target="_blank">blog post</a> at the end of January with a load of technical info.</p>
+<p>Going by their usual schedule, we should see the first bug-fix point release of Mesa 26.0.1 in around two weeks time, which you may want to wait for just in case any major problems snuck into this release. According to the current release calendar, the next new-feature release should be Mesa 26.1 due around May 6th. And the last bug-fix for the previous release Mesa 25.3.6 should be out on February 18th.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -71,5 +75,5 @@ Going by their usual schedule, we should see the first bug-fix point release of 
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>
