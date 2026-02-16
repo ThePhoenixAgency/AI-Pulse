@@ -31,21 +31,21 @@
     <div><div><div><p>This is the 8th launch from Z.ai. </p><a href="https://www.producthunt.com/products/z-ai/launches"><span>View more</span> </a></div><section><img src="https://ph-files.imgix.net/d6738658-5106-4562-9e00-019fe5ba7cac.avif?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=56&amp;h=56&amp;fit=crop&amp;frame=1" alt="GLM-5"><div><div><h2>GLM-5</h2><p>Launched this week</p></div><p><span>Open-weights model for long-horizon agentic engineering</span></p></div></section><p>A 744B MoE model (40B active) built for complex systems &amp; agentic tasks. #1 open-source on Vending Bench 2, narrowing the gap with Claude Opus 4.5. Features DeepSeek Sparse Attention and "slime" RL infra.</p><div><section><div><p><img src="https://ph-files.imgix.net/328608b0-449f-402f-8c42-f95fc5c33f29.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=187&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/6c5b324c-1af2-4591-992c-b13d2589df4e.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=323&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/d04e8a9e-ee2d-4e3a-889d-1bc0718db06b.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=374&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/f6ba3eec-35bf-42dc-bbb1-d229d2d759bd.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=187&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/56990756-757b-45c4-93d0-f989a02fe2c2.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=187&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/5372e397-8beb-4944-a24b-3dec7cf9dbcf.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=187&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/f9b6d5bd-210d-4fb4-915c-189f4824fa3c.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=370&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/3ef43f86-8e1a-4a11-880f-3fc2b1194460.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=322&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/db4bc0cb-09f6-4e77-ac10-dbdecefee1e2.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=304&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/793682a9-8486-4cec-ad3c-3baefa3ebd22.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="GLM-5 gallery image"></p></div></section></div><section><p>Free</p><div><p><span>Launch tags:</span></p><p><a target="_blank" href="https://www.producthunt.com/topics/open-source">Open Source</a><span>•</span><a target="_blank" href="https://www.producthunt.com/topics/artificial-intelligence">Artificial Intelligence</a><span>•</span><a target="_blank" href="https://www.producthunt.com/topics/development">Development</a></p></div></section><div><p>Launch Team </p><div><a target="_blank" href="https://www.producthunt.com/@zaczuo"></a><a target="_blank" href="https://www.producthunt.com/@zixuan_lii"></a></div></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

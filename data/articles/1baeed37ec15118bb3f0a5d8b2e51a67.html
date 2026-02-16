@@ -33,21 +33,21 @@
 </ul> <p>Mais nous avions aussi rapidement relevé de nombreux soucis avec des protections qui <a href="https://next.ink/194697/la-vaste-blague-de-la-verification-dage-sur-certains-sites-pornos/">ressemblent parfois davantage à des écrans de fumée</a> qu’à de véritables barrières. Sans compter sur les systèmes de vérification qui <a href="https://next.ink/196980/sites-porno-les-systemes-de-verification-dage-valident-parfois-nimporte-quoi/">valident parfois n’importe quoi</a>, comme une fausse carte d’identité avec Dora l’Exploratrice. </p> <p>Six mois plus tard, où en est-on&nbsp;? Nous profitons de cette <a href="https://next.ink/brief_article/cest-la-journee-internationale-pour-un-internet-plus-sur/">Journée internationale pour un Internet plus sûr</a> (<a href="https://www.saferinternet.fr/" target="_blank">Safer Internet Day</a>), créée par la Commission européenne il y a plus de 20 ans, pour faire le point sur la situation. Le constat est sans appel, rien n’a changé sur les problèmes que nous avions soulevés. Certaines protections sont de telles passoires qu'on pourrait se demander si ce n’est pas fait exprès.</p> <h3>Déflouter d’un clic, télécharger photos et vidéos sans aucune vérification</h3> <div> <p><img src="https://next.ink/wp-content/themes/next-theme/asset/media/webp/next-overclock-your-spirit.webp" alt="Cadenas en colère - Contenu premium"> </p> <div> <h3> Soutenez un journalisme indépendant, <br> libre de ton, sans pub et sans reproche. </h3> <p> Accédez en illimité aux articles </p> <p> Profitez d'un média expert et unique </p> <p> Intégrez la communauté et prenez part aux débats </p> <p> Partagez des articles premium à vos contacts </p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

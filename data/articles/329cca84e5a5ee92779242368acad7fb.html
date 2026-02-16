@@ -31,21 +31,21 @@
     <div><div> <p>En Cours</p> <div> <p><span></span> Europe </p> </div> <div> <p><span>Publié le : <time>16/02/2026 - 15:52</time></span><span>Modifié le : <time>16/02/2026 - 18:03</time></span></p> <div> <p><span> Par : </span></p> </div> </div> <div> <figure> <img src="https://s.france24.com/media/display/1f006ae2-0b40-11f1-a8b3-005056bf30b7/w:1024/p:16x9/000-34M33CG.jpg" alt="Le ministre ukrainien de l'Énergie, German Galushchenko, s'exprime lors d'une conférence de presse dans un abri anti-bombes à Kiev, le 25 mars 2024"> <figcaption> <span>Le ministre ukrainien de l'Énergie, German Galushchenko, s'exprime lors d'une conférence de presse dans un abri anti-bombes à Kiev, le 25 mars 2024.</span> <span> Anatolii Stapanov, AFP</span> </figcaption> </figure> </div> </div><div> <p> Soupçonné de blanchiment d'argent et de participation à une organisation criminelle, l'ancien ministre&nbsp;ukrainien de l'Énergie&nbsp;Guerman Galouchtchenko a été arrêté dimanche alors qu'il tentait de quitter le pays, a annoncé lundi l'agence anticorruption ukrainienne NABU. La Russie affirme lundi avoir pris le contrôle de deux localités dans l'est de l'Ukraine, alors qu'un nouveau cycle de négociations entre Moscou, Kiev et Washington est prévu cette semaine à Genève. Suivez la situation en direct. </p> <div> <p><em>Avec AFP et Reuters</em></p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

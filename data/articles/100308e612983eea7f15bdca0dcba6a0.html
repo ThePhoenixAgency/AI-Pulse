@@ -31,21 +31,21 @@
     <div><div><p>US military forces boarded another sanctioned tanker in the Indian Ocean after tracking the vessel from the Caribbean Sea in an effort to target illicit oil connected to Venezuela, the Pentagon said on Sunday.</p><p>Venezuela had faced US sanctions on its oil for several years, relying on a shadow fleet of falsely flagged tankers to smuggle crude into global supply chains. Donald Trump ordered a quarantine of sanctioned tankers in December to pressure the president, Nicolás Maduro, before Maduro was apprehended in January during a US military operation.</p><figure></figure><p>Several tankers fled the Venezuelan coast after the raid, including the ship that was boarded in the Indian Ocean overnight. The defense department said in a post on X that US forces boarded the Veronica III, conducting “a right-of-visit, maritime interdiction and boarding”.</p><p>The Pentagon said: “The vessel tried to defy President Trump’s quarantine – hoping to slip away,. We tracked it from the Caribbean to the Indian Ocean, closed the distance, and shut it down.”</p><figure><div><figcaption><span></span><span> Dense, sticky and heavy: why Venezuela’s oil is valuable to Trump –&nbsp;video explainer</span></figcaption></div></figure><p>Video posted by the Pentagon showed US troops boarding the tanker.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

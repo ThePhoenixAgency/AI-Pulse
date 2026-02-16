@@ -34,21 +34,21 @@
 La vague de froid se termine <strong>entre le mercredi 28 février au matin et le jeudi 1er mars dans l’après-midi</strong> par un épisode neigeux plus généralisé, progressant du Sud-Ouest vers le Nord et le Nord-Ouest.</p> <p><img alt="" src="https://www.meteo-paris.com/_next/image?url=https%3A%2F%2Fs.meteo-villes.com%2Fuploads%2Factu%2Fneige%2520Ajaccio%2520fevrier%25202018.png&amp;w=1920&amp;q=75"></p> <p><em><strong>Le Mardi 27 février 2018 au matin, Ajaccio, s'est réveillée sous 15 cm, la plus importante épaisseur de neige dans la ville depuis les 25 cm du 10 février 1986 - source twitter et meteo-paris.com</strong></em></p> <p>A lire également :</p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/la-neige-a-paris-et-en-ile-de-france-toute-une-histoire-06-fevrier-2018" target="_blank">La neige à Paris et en Ile de France : toute une histoire</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/vraie-vague-de-froid-venue-de-siberie-a-partir-de-lundi-25-fevrier-2018" target="_blank">Vraie vague de froid venue de Sibérie à partir de lundi</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/retour-de-la-neige-annoncant-la-fin-de-la-vague-de-froid-27-fevrier-2018" target="_blank">Retour de la neige annonçant la fin de la vague de froid</a></p> <p>&gt;&gt;&gt; <a href="https://www.meteo-villes.com/chronique/annee/2018_1" target="_blank">Chronique météo du début de l'année 2018</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/la-neige-clot-la-vague-de-froid-et-precede-le-redoux-01-mars-2018" target="_blank">La neige clôt la vague de froid et précède le redoux</a></p> <p>Auteur : Guillaume Séchet</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

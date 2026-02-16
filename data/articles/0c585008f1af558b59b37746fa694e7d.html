@@ -40,21 +40,21 @@ L'Alliance estime que la construction de barri�res technologiques est dangereu
 - Respect de l'�tat de droit et de la protection des donn�es</p><p>Ces engagements exigent des entreprises qu'elles aient une gouvernance d'entreprise solide et une conduite �thique, qu'elles d�veloppent des technologies de mani�re s�curis�e et les g�rent de mani�re responsable tout au long de leur cycle de vie, et qu'elles utilisent des garanties de s�curit� et de qualit� contractuellement contraignantes avec leurs fournisseurs. Elles imposeront � leurs fournisseurs des normes de s�curit� mondiales strictes et soutiendront un environnement num�rique ouvert, coop�ratif et propice � l'innovation.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

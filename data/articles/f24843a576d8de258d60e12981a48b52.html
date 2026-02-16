@@ -31,21 +31,21 @@
     <div><div> <p>Aujourd’hui, partager une photo depuis <a href="https://www.journaldugeek.com/telecharger/multimedia/dessin_image/google-photos.html" target="_blank">Google Photos</a> vers une application de messagerie n’est pas aussi simple et efficace qu’on pourrait l’espérer. Deux options s’offrent aux utilisateurs&nbsp;: télécharger l’image sur leur smartphone, puis l’ajouter manuellement dans une conversation, ou passer par la feuille de partage Android.</p> <h2>Copier-coller au lieu de télécharger</h2> <p>Problème&nbsp;: via cette seconde méthode, l’image est insérée comme un nouveau message dans les applications de chat. Impossible, par exemple, de l’ajouter en réponse à un message existant. Résultat, beaucoup préfèrent télécharger la photo pour l’attacher ensuite dans la discussion souhaitée. Une manipulation lente, peu pratique, qui laisse en prime une copie inutile dans le dossier des téléchargements.</p> <p>Google semble avoir entendu les critiques. Dans la version 7.63.0.867680147 de l’application, du code examiné par <em>Android Authority</em> permet désormais de copier une image directement depuis la feuille de partage. Un bouton «&nbsp;Copier&nbsp;» — encore caché à ce stade — permettrait de placer l’image dans le presse-papiers, avant de la coller dans n’importe quelle application compatible via l’option système «&nbsp;Coller&nbsp;».</p> <p>Concrètement, l’image copiée serait partagée en pleine résolution, mais avec une légère compression afin d’économiser de l’espace de stockage. La limite&nbsp;? Comme souvent avec le copier-coller sur Android, une seule image peut être copiée à la fois. Pas de sélection multiple pour le moment. La manipulation reste dépendante de la feuille de partage, mais elle évite au moins l’étape du téléchargement et la multiplication des fichiers en double. C’est donc une amélioration discrète mais qui va faire gagner un temps fou à tous ceux qui utilisent Google Photos comme bibliothèque principale.</p> <p>Au-delà de cette fonction pratique, Google poursuit le lifting visuel de son application. Plusieurs sections liées aux paramètres de sauvegarde vont adopter les codes de Material 3 Expressive, la déclinaison la plus récente du langage de design maison. Parmi les nouveautés visibles, un bouton de sauvegarde des images via le réseau cellulaire fait son apparition. Il permettra de gérer plus explicitement la sauvegarde des photos via les données mobiles, un réglage important pour ceux qui surveillent leur consommation et leur facture.</p> <p>À ce stade, aucune de ces modifications n’est activée pour le grand public. Elles restent enfouies dans le code de l’application. Mais leur présence laisse peu de doute&nbsp;: Google Photos continue d’évoluer, à la fois sur le plan fonctionnel et esthétique. Et cette fois, c’est le partage qui pourrait enfin devenir aussi simple que la sauvegarde.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

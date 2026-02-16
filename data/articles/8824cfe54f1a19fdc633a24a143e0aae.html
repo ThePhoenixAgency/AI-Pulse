@@ -24,28 +24,32 @@
 <body>
   <h1>Sydney kidnapping: Police appeal for return of man, 85, snatched by mistake</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: BBC World | Date: 2/16/2026 6:34:34 AM | Lang: EN |
+=======
+    Source: BBC World | Date: 2/16/2026 5:34:34 AM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.bbc.com/news/articles/c0ljzye1zgno?at_medium=RSS&at_campaign=rss" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <div><div><article><div><div><p><time>12 hours ago</time></p></div><p><span></span></p><div><p><span>Helen Livingstone</span></p></div><p></p></div><div><figure><div><p><img src="https://static.files.bbci.co.uk/bbcdotcom/web/20260205-130046-240c8e457e-web-2.39.1-1/grey-placeholder.png"><img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/9db6/live/4a163370-0aea-11f1-b38f-dfbde52a66fe.jpg.webp" alt="Supplied An elderly man with grey hair and wearing a dark blue jumper smiles at the camera."><span>Supplied</span></p></div><p></p><figcaption>Police say Chris Baghsarian, 85, was kidnapped from his home in the Sydney suburb of North Ryde by mistake.</figcaption><p></p></figure></div><div><p>Sydney police have appealed for the return of an 85-year-old whom they believe was kidnapped by mistake.</p></div><div><p>Chris Baghsarian, who lived alone, was taken from his house in the suburb of North Ryde by at least three attackers early on Friday morning, and bundled into a dark-coloured SUV. </p></div><div><p>"They were intending to take somebody, but have taken the wrong person," Det Acting Supt Andrew Marks told reporters on Monday, adding that no ransom note had been received.</p></div><div><p>"The family are in distress. All they want is their father to be returned, their grandfather to be returned," he said, appealing for people to report any unusual activity seen around properties known to be empty.</p></div><div><p>The appeal came as the Sydney Morning Herald (SMH) reported that videos and images of a severely injured Baghsarian in an unknown location were circulating in Sydney's underworld.</p></div><div><p>"It's not ideal that those images are out there," Marks said, noting that Baghsarian needed daily medication and that "every hour is very important".</p></div><div><p>"I have seen the videos," he add. "They are distressing to see an 85-year-old man in that condition."</p></div><div><p>He said that in a "normal" kidnapping case, "we would be aware of a ransom". </p></div><div><p>"But because the family are not involved in this type of crime, and they're not involved in that world, they haven't received a ransom." </p></div><div><p>Cases of mistaken identity have become increasingly common in Sydney's underworld, the SMH reported, as large organised crime networks increasingly subcontract crimes.</p></div><div><p>Last year a 23-year-old plumber was shot dead in his driveway in Condell Park in what police believe was also a case of mistaken identity.</p></div><div><p>He was "a million per cent confident they have the wrong person," Marks said but would not elaborate on who police thought the intended target was.</p></div><div><p>"The fact that these offenders – these kidnappers – have got it so wrong is concerning."</p></div><div><p>CCTV footage published by local media showed an SUV driving up outside Baghsarian's home on Friday. Two hooded figures then approach the house before reappearing with someone who is struggling in their arms and then loaded into the SUV.</p></div><div><p>A burnt out vehicle matching the description of the getaway car was found in the nearby suburb of South Turramurra shortly afterwards.</p></div><div><p>Police said Baghsarian was wearing grey pajamas and a red and blue flannelette shirt when he was kidnapped.</p></div><div><p>New South Wales Premier Chris Minns has also pleaded for Baghsarian's safe return.</p></div><div><p>"Let police know where he's currently located or alternatively drop Mr Baghsarian off at a shopping centre or an emergency department or even a nursing home," he appealed to the kidnappers. "We urge them to do that as soon as possible."</p></div></article></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -35,21 +35,21 @@
 </blockquote> <p>The report also says that “voice-based control of in-app actions” is running behind. Both features should still arrive as part of an update to iOS 26.</p> <p>Earlier today, Apple released iOS 26.3 with a number of bug fixes and security improvements. Apple was expected to include the first signs of Gemini-powered Siri in iOS 26.4, likely <a href="https://9to5mac.com/2026/02/08/ios-26-4-heres-when-apple-will-release-the-first-beta/">coming in beta later this month</a>, but it sounds like we’ll need to wait another cycle for those features.</p> <p>Apple only officially <a href="https://9to5mac.com/2026/01/12/apple-confirms-googles-gemini-will-power-new-siri-features/">reached its deal</a> to work with Google’s Gemini AI models in January. Prior to reaching that agreement, Apple was considering its own models as well as options from Anthropic before settling on Google as a technology provider.</p> <p>The company originally announced the more capable Siri in June 2024 as a feature coming to iOS 18 before <a href="https://9to5mac.com/2025/03/07/apple-intelligence-personal-siri-delayed/">delaying</a> the introduction to sometime this year.</p> <p>Beyond the initial Siri upgrades that will be powered by Gemini, Gurman has also reported that <a href="https://9to5mac.com/2026/01/21/apple-reportedly-replacing-siri-interface-with-actual-chatbot-experience-for-ios-27/">Apple will treat Siri more like a chatbot </a>in iOS 27.</p> <p>You can read the story in full at <a href="https://www.bloomberg.com/news/articles/2026-02-11/apple-s-ios-26-4-siri-update-runs-into-snags-in-internal-testing-ios-26-5-27?srnd=phx-technology">Bloomberg</a>.</p> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div><p>Le ParisJUG annonce sa prochaine soirée : le 19 février à partir de 19h sur LangChain4j. Deux sessions sont prévues :</p><p><strong>19h30 : Créer un Chatbot Intelligent avec LangChain4j</strong></p><p>Vous êtes-vous déjà demandé comment ajouter des capacités de chat intelligentes à vos applications Java sans vous noyer dans la complexité de l’IA ? Cette présentation pratique vous guide dans la construction d’un chatbot intelligent, illustrant l’approche conviviale de LangChain4j pour l’intégration d’IA en entreprise.</p><p><strong>21h00 : LangChain4j-CDI : L’IA Générative Nativement Injectable dans Jakarta EE</strong></p><p>Antonio vous a montré comment construire un chatbot intelligent avec LangChain4j et Quarkus. Maintenant, comment intégrer cette puissance IA dans n’importe quel serveur Jakarta EE ou MicroProfile ? C’est là qu’entre en jeu LangChain4j-CDI.</p><p>La soirée se déroulera dans les locaux de Microsoft France.</p><p>Inscription :&nbsp;<a href="https://www.parisjug.org/">https://www.parisjug.org/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

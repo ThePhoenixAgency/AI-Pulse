@@ -35,21 +35,21 @@
 </div> <p>Introduit dans le Code de la route en 1998, le sas vélo permet aux cyclistes de se positionner devant les autres véhicules à un feu rouge, afin de gagner en sécurité et en visibilité. Le sas vélo évite aux cyclistes de se retrouver cachés dans l’angle mort des véhicules et les éloigne des pots d’échappement.</p> <p>Pour construire un sas, l'autorité locale recule la ligne d’effet de feux de 3 à 5 mètres. Aux yeux de la loi, arrêter sa voiture sur un sas vélo revient à franchir la ligne d’effet de feux et donc griller un feu rouge. Ne pas laisser le sas vélo libre, même s’il n’y a pas de vélo, c'est risquer l’amende.</p> <p>“L’infraction de franchissement du sas vélo est équivalente à celle de griller un feu rouge. Ainsi, les conducteurs en tort encourent une contravention de quatrième classe, avec une amende forfaitaire de 135 euros, et un retrait de 4 points sur le permis de conduire”, précise l’avocat Franck Cohen, sur son site.</p> <p>Mais le centre d'études sur la mobilité (Cerema) va plus loin : ne pas respecter cette règle, c’est aussi commettre une seconde infraction, l’immobilisation en pleine voie sur le sas. L’automobiliste ne doit pas s’engager sur un sas vélo lorsque son véhicule risque d’y être immobilisé, prévoit l’article R415-2 du Code de la route. Ceci constitue une contravention de deuxième classe.</p> <p>Mais près de trente ans après son introduction, le sas vélo semble toujours largement ignoré. Sur les réseaux sociaux, les témoignages se multiplient et décrivent un dispositif peu respecté par les automobilistes. Des constats étayés par des études.</p> <p>En 2014, le Cerema a évalué le respect des sas vélo à Nantes. Résultats : seul un automobiliste sur deux respecte le sas. Fait intéressant : en présence des forces de l'ordre, le taux de respect par les automobilistes grimpe à 65%.</p> <p>Comment faire respecter ce marquage ? D'abord, le Cerema rappelle que le sas n’est pas nécessaire partout : “Le sas cycliste est plutôt adapté aux carrefours de taille moyenne, non propices à l’aménagement d’îlots en amande, et caractérisés par des trafics cyclistes et motorisés faibles à modérés.”</p> <p>A Nantes, un test a été lancé pour faire respecter le sas vélo : un petit panneau lumineux, installé au feu, s’allume lorsqu’un véhicule motorisé empiète sur le sas. Résultat : le dispositif améliore sensiblement le respect du sas, avec une évolution positive observée entre 2018 et 2019. Possible solution pour les communes qui n’arrivent toujours pas à faire respecter ce marquage.</p> <p>Preuve aussi que l’aspect pédagogique du Code de la route fonctionne encore, grâce aux témoignages de Jean : “Je passais tous les jours par-là vers 8 heures et je n'avais jamais eu de problème. Depuis la contravention, je respecte les sas cyclistes au feu”.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

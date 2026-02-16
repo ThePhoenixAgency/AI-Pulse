@@ -37,21 +37,21 @@
 <p>It's worth noting that the NSecKrnl driver is susceptible to a known security flaw (<a href="https://nvd.nist.gov/vuln/detail/CVE-2025-68947" target="_blank">CVE-2025-68947</a>, CVSS score: 5.7) that could be exploited to terminate arbitrary processes. Notably, the driver has been <a href="https://hexastrike.com/resources/blog/threat-intelligence/valleyrat-exploiting-byovd-to-kill-endpoint-security/" target="_blank">put to use</a> by a threat actor known as Silver Fox in attacks designed to kill endpoint security tools prior to delivering <a href="https://www.cybereason.com/blog/fake-installer-valleyrat" target="_blank">ValleyRAT</a>.&nbsp;</p> <p>Over the past year, the hacking group has previously wielded multiple legitimate but flawed drivers – including <a href="https://thehackernews.com/2025/02/2500-truesightsys-driver-variants.html" target="_blank">truesight.sys</a> and <a href="https://thehackernews.com/2025/09/silver-fox-exploits-microsoft-signed.html" target="_blank">amsdk.sys</a> – as part of BYOVD attacks to disarm security programs.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

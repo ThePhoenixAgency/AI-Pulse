@@ -33,21 +33,21 @@
 <time>10:45</time> </p> </figure> </div> <div> <p><span>Publié le : <time>14/02/2026 - 00:33</time></span></p> <div> <p> 10:45 min </p></div> </div> <a href="https://www.france24.com/fr/%C3%A9missions/la-question-qui-f%C3%A2che/"> <p>A retrouver dans l’émission</p> <img src="https://s.france24.com/media/display/56627010-0e82-11ee-9ddb-005056bf30b7/FR-la-question-qui-fache.svg" alt="La question qui fâche"> </a> <div> <p><span>Temps de lecture</span> 1 min</p></div> <p> 1,56, c’est le nombre d’enfant par femme en France en 2025. Il n'a jamais été aussi bas depuis la fin de la Première Guerre mondiale, si bien que les autorités sont en état d’alerte. Un rapport parlementaire est sorti cette semaine sur le sujet. Il propose une “révolution” de la politique familiale afin d’inciter les Français à faire des bébés…On en parle avec le professeur&nbsp;Samir Hamamah, il est gynécologue et auteur du premier plan national de la fertilité.&nbsp; </p> <div> <p><span> Par : </span></p><div> <img src="https://s.france24.com/media/display/f70c575a-e056-11ee-8923-005056a90284/w:388/p:1x1/avatar-Marion_Gaudin.jpg" alt="Marion Gaudin"> </div> </div> </div> <div> <p>Mots-clés associés</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

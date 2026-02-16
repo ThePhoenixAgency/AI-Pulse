@@ -31,21 +31,21 @@
     <div><p> As France's April&nbsp;presidential election&nbsp;approaches, the campaign is getting under way in earnest. In this edition of our new show, we focus on the French Communist Party attempting a political comeback and discuss at&nbsp;length the battle&nbsp;raging between Eric Zemmour and Marine Le Pen for leadership of the French far right.&nbsp; </p><div> <p>Who can unseat <a href="https://www.france24.com/en/tag/emmanuel-macron/" target="_self">Emmanuel Macron</a>? The current president, who has not yet&nbsp;officially declared&nbsp;his candidacy for a second term, is still leading in the polls. Leading the pack behind him is conservative candidate Valérie Pécresse, closely followed by two far-right contenders: <a href="https://www.france24.com/en/tag/marine-le-pen/" target="_self">Marine Le Pen</a> and <a href="https://www.france24.com/en/tag/eric-zemmour/" target="_self">Eric Zemmour</a>.</p><p>They are trying to steal each other's thunder in an unprecedented rivalry, with the latest IPSOS-Sopra Steria poll suggesting they could both score 14 percent in the first round.&nbsp;Our reporter Clovis Casali went to the Champagne region to get a taste of Marine Le Pen's first rally, as she promises she can "bounce back" after a series of defections in her own party.</p><p>The sensation of the week, however, came from the other end of the political spectrum: Fabien Roussel, the first stand-alone Communist candidate since 2007, may well have earned his momentum thanks to his kick-off rally in Marseille. Although only polling at 3-4 percent, Roussel is hoping for a "spectacular breakthrough" and could steal some votes from mainstream candidates, such as the struggling Socialist nominee, Anne Hidalgo.</p><p>We also&nbsp;cross the border and travel to Brussels, the beating heart of the European Union. Our correspondent Dave Keating reports on how the debate on the rule of law raging in several European countries is impacting the French presidential race.</p><p>Finally, can you answer "yes" to the question "Ты говори́шь по-ру́сски?"*! We see how Valérie Pécresse has been showing off her language skills on television... even as other French politicians struggle with theirs.</p><p>(*<em>Do you speak Russian?)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

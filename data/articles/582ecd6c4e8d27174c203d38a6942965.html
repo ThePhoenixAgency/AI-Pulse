@@ -37,21 +37,21 @@
 </div> <p>A noter la percée du mode d’achat programmatique sur les formats vidéo (+20%). En excluant les plateformes, les recettes programmatiques sont en croissance de 30% et représentent 45% des recettes en 2025, reflétant le dynamisme là encore des chaînes TV.</p> <p>Enfin, l’audio quant à lui poursuit sa croissance explosive (+23%), pesant désormais 7% du display.</p> <h2><strong>En 2026, tous les regards tournés vers les agents conversationnels</strong></h2> <p>Si le marché du digital avance tel un navire amiral, affichant une croissance après tout solide contre vents et marées, toutes les cartes sont loin d’être jouées. L’essor des robots conversationnels pourra les battre dans trois directions, d’après l’analyse de l’experte du cabinet Oliver Wyman. D'abord, en cassant frontalement l’économie déjà très fragile des éditeurs en ligne, ces derniers ayant essuyé une baisse de 8% de leurs recettes display en 2025&nbsp;; 2) en propulsant le modèle de l’affiliation, dont les recettes se sont bien portées en 2025 (+6%), mais à terme davantage au profit des entreprises d’IA, et de moins en moins des éditeurs affiliés&nbsp;; 3) en menaçant le search à date encore très majoritairement capté par Google. "On peut déjà s’interroger sur l’impact que la montée en puissance des offres publicitaires d’agents conversationnels rivaux exercera sur les dépenses aujourd’hui fléchées chez Google", lance l’experte.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

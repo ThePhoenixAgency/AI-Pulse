@@ -36,21 +36,21 @@
 </p><p>"Greyhound," based on the 1955 C.S. Forester novel "The Good Shepherd," was initially slated for theater release in June 2020. However, after the COVID-19 pandemic forced theater closures, Sony, the original distribution company, <a href="https://appleinsider.com/articles/20/05/19/tom-hanks-film-greyhound-to-premiere-on-apple-tv-in-70m-deal">sold the rights</a> to <a href="https://appleinsider.com/inside/apple-tv">Apple TV</a>. </p><p>Beyond just appreciation from the two US Navy vets on the <em>AppleInsider</em> staff, the film would go on to set viewership records for Apple's then-nascent streaming service. <a href="https://appleinsider.com/articles/20/07/24/following-greyhound-success-apple-eyes-more-blockbuster-style-films">The success</a> would see Apple invest in more blockbuster-style films.</p> </div> </article> </main> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -24,28 +24,32 @@
 <body>
   <h1>Tribes grant the Colorado River legal personhood - can this help save it?</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: BBC World | Date: 2/14/2026 2:13:13 PM | Lang: EN |
+=======
+    Source: BBC World | Date: 2/14/2026 1:13:13 PM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.bbc.com/news/videos/crmlgpnnzyxo?at_medium=RSS&at_campaign=rss" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <div><div><p>Indigenous tribes in the southwestern US, led by the Colorado River Indian Tribes (CRIT), have granted the Colorado River legal personhood to help protect it for future generations. In November 2025, the CRIT, made up of the Mojave, Hopi, Navajo and Chemehuevi tribes, passed the resolution recognising the river as a living, life-giving entity with rights like a person. </p><p>The Colorado River is currently facing the worst drought in 1,200 years. </p><p>The seven US states that share the river have until 14 February to reach a new water sharing agreement before current ones expires at the end of 2026, or the federal government will step in with their own plan. CRIT believe that personhood status will be a start to help protect the river.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

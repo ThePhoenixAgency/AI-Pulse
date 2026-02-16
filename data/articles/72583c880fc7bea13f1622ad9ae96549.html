@@ -31,21 +31,21 @@
     <div><div> <p>Installée à Eureka Park lors du CES, Qista figure dans la délégation soutenue par ZEBOX, l’accélérateur lancé par le groupe CMA CGM. Pour l’édition 2026, la PME des Bouches-du-Rhône met en avant une évolution qui marque un tournant dans son positionnement.</p> <p>Fondée en 2014 à Sénas, Qista s’est d’abord développée auprès des municipalités et des professionnels en installant des bornes destinées à limiter les populations de moustiques dans l’espace public. L’entreprise revendique aujourd’hui des milliers d’installations et une présence dans plusieurs pays européens. Parmi ses actionnaires figure la holding de Thierry Dassault, entrée au capital il y a quelques années et devenue un soutien important dans sa phase de croissance. Jusqu’à présent, son activité reposait principalement sur des déploiements à l’échelle de quartiers ou de communes.</p> <p>Avec le <strong>Qista One XS</strong>, la société tente d’adapter cette technologie au jardin des particuliers. Le principe reste le même, diffuser du dioxyde de carbone recyclé pour reproduire la respiration humaine, y associer un attractif olfactif censé imiter l’odeur corporelle, puis capturer les moustiques grâce à un système d’aspiration propriétaire. L’ensemble fonctionne sans insecticide, un choix qui s’inscrit dans un contexte de défiance croissante envers les traitements chimiques traditionnels.</p> <figure><img src="https://www.journaldugeek.com/app/uploads/2026/02/Qista-One-XS-1-1-1-compressed-compressed-scaled.jpg" alt="Qista One Xs (1) (1) (1) Compressed Compressed"><figcaption> Qista&nbsp;</figcaption></figure> <p><strong>Les chiffres avancés évoquent une réduction pouvant atteindre 90&nbsp;% de la nuisance</strong>, sur la base de tests menés par un centre de recherche indépendant. Le rayon d’action annoncé atteint 60 mètres, ce qui positionnerait l’appareil parmi les solutions les plus étendues du segment résidentiel. L’autonomie aurait également été significativement renforcée par rapport aux versions précédentes, afin de limiter les interventions et les recharges.</p> <p>Plus compact et plus léger, doté d’un cylindre de CO₂ allégé, ce nouveau modèle est présenté comme plus simple à installer et à entretenir. L’enjeu est de rendre l’appareil suffisamment intuitif pour des utilisateurs peu technophiles, tout en facilitant le transport et la distribution à l’échelle européenne. La commercialisation est annoncée pour le printemps 2026 en France, avant un déploiement progressif en Espagne, au Portugal, en Belgique, en Allemagne et en Italie.</p> <p>Reste la question du prix, qui n’est pas encore précisé et qui sera déterminant face aux nombreuses alternatives déjà disponibles, des lampes UV aux pièges à CO₂ concurrents. Si l’argument environnemental peut séduire, l’efficacité réelle dans des contextes variés et la contrainte logistique liée au CO₂ devront être évaluées dans la durée par les premiers utilisateurs.</p> <p>Avec une soixantaine de salariés et une implantation déjà étendue dans plusieurs dizaines de territoires, Qista cherche ainsi à transformer un savoir-faire développé pour les collectivités en produit grand public. Sa présence lors du CES illustre cette volonté d’accélérer son expansion internationale, mais l’adoption par les particuliers dépendra autant des performances constatées sur le terrain que de sa capacité à s’imposer dans un marché déjà concurrentiel.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

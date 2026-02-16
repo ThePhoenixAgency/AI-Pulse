@@ -50,21 +50,21 @@
 <p>Parmi les <strong>intervenants clés</strong> attendus à New Delhi figurent plusieurs figures centrales de l’écosystème mondial de l’IA et des infrastructures numériques. <strong>Alexandr Wang</strong>, Chief AI Officer de Meta, viendra porter la vision d’un acteur dominant des modèles à grande échelle et des plateformes sociales. <strong>Dario Amodei</strong>, CEO d’Anthropic, incarne une approche centrée sur la sûreté et la gouvernance des modèles de fondation. <strong>Jensen Huang</strong>, fondateur et CEO de NVIDIA, représente le cœur industriel du compute mondial, au croisement des enjeux de performance, d’énergie et de souveraineté technologique. <strong>Julie Sweet</strong>, Chair et CEO d’Accenture, apportera une lecture orientée transformation des organisations et déploiement opérationnel de l’IA à grande échelle. À leurs côtés, <strong>Matthew Prince</strong>, cofondateur et CEO de Cloudflare, interviendra sur les questions d’infrastructures distribuées et de résilience du réseau, tandis que <strong>Olivier Blum</strong>, CEO de Schneider Electric, fera le lien entre IA, industrie et transition énergétique. Enfin, <strong>Sundar Pichai</strong>, CEO de Google et d’Alphabet, complètera ce panorama en tant que dirigeant d’un groupe au cœur des modèles, des plateformes cloud et des usages grand public de l’intelligence artificielle.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p></div> </section><section><p><a href="https://www.fw.media/" target="_blank"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

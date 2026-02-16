@@ -31,21 +31,21 @@
     <div><div><p>Ministers have dropped plans to delay <a href="https://www.theguardian.com/politics/2026/jan/15/more-than-20-england-council-elections-likely-to-be-delayed-until-2027">30 local elections</a> this May after receiving legal advice that doing so might be unlawful.</p><p>The government had planned to delay elections in <a href="https://www.theguardian.com/uk-news/england">England</a> while local authorities are reorganised, which is likely to lead to some authorities merging or being subsumed into others. Ministers argued against holding elections for councils that could cease to exist in a year or two.</p><p>The plans created a backlash from opposition parties, however, and a legal challenge from Reform UK, which argued they were anti-democratic. With Reform’s case due to be heard this month, the government confirmed on Monday it was dropping the idea.</p><p>A spokesperson for the local government department said: “Following legal advice, the government has withdrawn its original decision to postpone 30 local elections in May. Providing certainty to councils about their local elections is now the most crucial thing, and all local elections will now go ahead in May 2026.”</p><p>In a letter to Nigel Farage, the Reform leader, a government lawyer said Steve Reed, the local government secretary, had asked Matthew Pennycook, the housing minister, to review the legality of the delay and that Pennycook had decided the elections should go ahead this year.</p><p>The letter said that the government would pay Reform’s legal costs associated with the case, which Reform sources say are likely to be more than £100,000.</p><p>The government announced on Monday it would give affected councils an extra £63m to help them with the reorganisation, and would consider further support to help put on local elections at relatively short notice.</p><p>In a letter to council leaders, Reed said: “I recognise that many of the local councils undergoing reorganisation voiced genuine concerns about the pressure they are under as we seek to deliver the most ambitious reforms of local government in a generation.</p><p>“I am therefore announcing today that we will provide up to £63m in additional capacity funding to the 21 local areas undergoing reorganisation across the whole programme, building on the £7.6m provided for developing proposals last year. I will shortly set out further detail about how that funding will be allocated.”</p><p>Farage <a href="https://x.com/Nigel_Farage/status/2023404670669205866">posted on X</a>: “We took this Labour government to court and won. In collusion with the Tories, Keir Starmer tried to stop 4.6 million people voting on May 7th. Only Reform UK fights for democracy.”</p><p>Kemi Badenoch, the Conservative leader, called the move “predictable chaos from a useless government that cannot make basic decisions”.</p><p>She added <a href="https://x.com/KemiBadenoch/status/2023414978435276954?s=20">in an X post</a>: “The legal mess is no surprise and one of the reasons why Conservatives (with a couple of exceptions who now look really silly) opposed the move to delay council elections for a second year in a row.”</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

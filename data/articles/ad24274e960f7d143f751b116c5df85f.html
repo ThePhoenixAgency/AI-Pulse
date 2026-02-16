@@ -38,21 +38,21 @@
 <p>Série noire pour les LR de Saint-Martin-d’Hères&nbsp;? Le suc­ces­seur de Mohamed Gafsi au sein du conseil muni­ci­pal a lui aussi eu <a href="https://www.placegrenet.fr/2026/01/12/lelu-dopposition-lr-de-saint-martin-dheres-david-saura-condamne-a-un-an-de-prison-avec-sursis/668958" target="_blank">maille à par­tir avec la jus­tice</a>. David Saura a, en effet, été condamné à un an de pri­son avec sur­sis le jeudi 8 jan­vier 2026 par le tri­bu­nal cor­rec­tion­nel de Grenoble, après avoir été jugé res­pon­sable d’un acci­dent de la route et d’un délit de fuite deux ans plus tôt… et avoir tenté par la suite de se dédoua­ner auprès des gen­darmes en expli­quant que son véhi­cule avait été&nbsp;volé.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

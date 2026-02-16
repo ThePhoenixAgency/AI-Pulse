@@ -31,21 +31,21 @@
     <div><div><p>A Hong Kong university student who had called for accountability over a <a href="https://www.theguardian.com/news/2025/nov/27/how-hong-kong-fire-unfolded-apartment-block-blaze-wang-court">deadly fire at an apartment complex in the city</a> has been expelled by the school for disciplinary offences.</p><p>Miles Kwan, a politics student, was <a href="https://www.theguardian.com/news/2025/nov/30/anger-mounts-in-hong-kong-over-apartment-fires-as-beijing-warns-against-anti-china-disruptors">detained for two nights</a> by the city’s national security police last year for “seditious intent” after handing out flyers calling for an independent investigation into a fire that killed 168 people in November.</p><p>After he was released on bail, his school, the Chinese University of <a href="https://www.theguardian.com/world/hong-kong">Hong Kong</a> (CUHK), conducted a disciplinary review and referred the case to a student discipline committee.</p><p>The committee decided to terminate him from studies on Thursday due to “multiple acts of misconduct”, according to a letter from the university.</p><p>CUHK said in a statement on Friday that it would not comment on individual cases, adding that a student who is given three demerits due to disciplinary actions may be terminated from studies.</p><figure><div><img alt="Woman holds flower by memorial with line of people waiting behind" src="https://i.guim.co.uk/img/media/fa6d750f9fe0302337bac41cad1720dfef457e0a/0_0_4242_2828/master/4242.jpg?width=445&amp;dpr=1&amp;s=none&amp;crop=none"></div><figcaption><span></span><span>People line up to offer flowers outside Wang Fuk Court in the aftermath of the deadly fire in Hong Kong’s Tai Po district on 29 November.</span> Photograph: Philip Fong/AFP/Getty Images</figcaption></figure><p>Kwan, 24, said the university did not penalise him for the arrest in November 2025.</p><p>According to Kwan, he received demerits for calling the committee a “kangaroo panel” and a “disgrace”, and for being charged for “criminal damage” in 2023 after he placed stickers on lamp-posts in 2022 to mark the anniversary of the Tiananmen Square crackdown.</p><p>Kwan said he had completed his studies and was to graduate in March.</p><p>“It is shameful of CUHK to use graduation certificates to suppress its former students,” he said in a statement. “You can take away qualifications, but you can’t take away dignity.”</p><p>He was among several people behind a petition issued after <a href="https://www.theguardian.com/world/2025/nov/30/hong-kong-mourns-as-apartment-blaze-death-toll-rises">the fire that broke out</a> in high-rise towers of Wang Fuk Court housing estate in November, the world’s deadliest residential building fire since 1980.</p><p>The petition called for government officials to be held accountable, an independent investigation into possible corruption, proper resettlement for residents, and a review of construction oversight.</p><p>The Chinese city’s authorities have formed a judge-led “independent committee” to investigate the fatal blaze.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

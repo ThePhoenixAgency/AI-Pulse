@@ -34,21 +34,21 @@ Pour les systèmes d’IA, le rôle du WAF est assuré par les garde-fous, tandi
 </ul> <p>L’abus de workflows automatisés (agents IA qui prennent des décisions).</p> <p>Comme les systèmes d’IA évoluent en permanence, ce test doit être continu. Les mises à jour de modèles, l’intégration à d’autres systèmes, ou de nouveaux usages peuvent altérer leur comportement. Des outils de red teaming automatisés permettent une boucle de sécurité continue, affinant et renforçant les garde-fous à mesure que de nouvelles failles apparaissent.</p> <h2>Une réalité opérationnelle</h2> <p>Les Jeux Olympiques ne sont qu’un exemple à grande échelle de ce qui se passe déjà dans toutes les entreprises. La leçon n’est pas que l’IA est dangereuse, mais que l’IA non encadrée crée des zones d’ombre majeures.</p> <p>La sécurité de l’IA n’est plus un problème hypothétique ou futuriste. C’est une réalité opérationnelle. Si l’on confie des actions à une IA, la vraie question n’est pas “Est-ce que ça marche ?” mais : “Comment réagit-elle quand quelqu’un essaie de la faire échouer ?”</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

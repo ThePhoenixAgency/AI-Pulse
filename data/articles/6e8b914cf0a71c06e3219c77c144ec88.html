@@ -32,21 +32,21 @@
 <p>ZeroDays is Ireland's largest CTF. Running since 2015, it has grown to be the largest on-site, one-day CTF in the world. In 2025 over 130 teams of four competed with over 500 competitors in total. The event has three categories for Irish colleges, International teams and an Open section for any team to enter.</p> <p>International competitors welcome. Expect a wide range of challenges suitable for all skill levels; plenty of easy challenges for newer players and some very advanced challenges for experienced players.</p> <p>International teams can purchase a ticket here: <a href="https://www.eventbrite.ie/e/zerodays-ctf-2025-10th-anniversary-tickets-1130688773559">https://www.eventbrite.ie/e/zerodays-ctf-2025-10th-anniversary-tickets-1130688773559</a></p> <p>The CTF will take place in Croke Park on the 21st of March. This is an on-site event and will not be accessible to remote teams; any questions you can reach our team via discord: <a href="https://discord.gg/kasG4Fm8uk">https://discord.gg/kasG4Fm8uk</a></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

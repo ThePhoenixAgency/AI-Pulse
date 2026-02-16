@@ -31,21 +31,21 @@
     <div><div> <p><a href="https://www.france24.com/en/tag/france/" target="_self">France</a>'s former president <a href="https://www.france24.com/en/tag/nicolas-sarkozy/" target="_self">Nicolas Sarkozy</a> will go on trial on appeal over Libyan campaign-funding allegations starting March 16, a <a href="https://www.france24.com/en/tag/paris/" target="_self">Paris</a> court said Thursday.</p> <p>A lower court in September found the right-wing politician&nbsp;– who was head of state from 2007 to 2012&nbsp;– guilty of seeking to acquire funding from Muammar Gaddafi's <a href="https://www.france24.com/en/tag/libya/" target="_self">Libya</a> for the campaign that saw him elected.</p> <p>Sarkozy was sentenced to five years behind bars but left La Sante prison in Paris on Monday after <a href="https://www.france24.com/en/france/20251110-paris-court-hear-sarkozy-request-be-freed-jail-pending-appeal" target="_self">serving just 20 days</a>, following a judge's order for his release.</p> <p><span>Read more</span><a href="https://www.france24.com/en/france/20251110-paris-court-hear-sarkozy-request-be-freed-jail-pending-appeal" target="_self">France’s ex-president Nicolas Sarkozy granted conditional release after 20 days in jail</a></p> <p>The 70-year-old had immediately appealed, but the lower court ordered him jailed, citing the "exceptional gravity" of the conviction.</p> <p>The appeal means Sarkozy&nbsp;– who has denied any wrongdoing&nbsp;– is again presumed innocent, with proceedings scheduled to run until June 3, the Paris appeals court said in a statement on Thursday.</p> <p>Sarkozy entered jail on October 21, becoming the first former head of a <a href="https://www.france24.com/en/tag/european-union/" target="_self">European Union</a> state to be incarcerated.</p> <p>In the so-called "Libyan case", prosecutors said his aides, acting in Sarkozy's name, struck a deal with Gaddafi in 2005 to illegally fund his victorious presidential election bid.</p> <p><span>Read more</span><a href="https://www.france24.com/en/france/20250109-explainer-sarkozy-trial-campaign-funding-gaddafi-50-million-suitcases-cash" target="_self">Sarkozy on trial: Campaigns, Gaddafi and suitcases full of cash</a></p> <p>Investigators believe that in return, Gaddafi was promised help to restore his international image after <a href="https://www.france24.com/en/tag/tripoli/" target="_self">Tripoli</a> was blamed for the 1988 bombing of a plane over Lockerbie, Scotland, and another over Niger in 1989, killing hundreds of passengers.</p> <p>The court convicted Sarkozy of criminal conspiracy over the plan. But it did not conclude that he received or used the funds for his campaign.</p> <p>Sarkozy has faced a flurry of legal woes since losing his re-election bid in 2012, and has already been convicted in two other cases.</p> <p><em>(FRANCE 24 with AFP)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

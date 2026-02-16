@@ -31,21 +31,21 @@
     <div><div> <p>La <a href="https://www.france24.com/fr/france/20260213-temp%C3%AAte-nils-deuxi%C3%A8me-mort-france-importantes-crues-sud-ouest-inondations-avalanches-alpes-ski" target="_self">tempête Nils</a> ne balaie plus la France, mais ses effets secondaires se font sentir. La Garonne a été maintenue en <a href="https://www.france24.com/fr/vid%C3%A9o/20260214-crues-la-garonne-reste-en-vigilance-rouge-possibles-nouvelles-%C3%A9vacuations" target="_self">vigilance rouge aux crues</a>, dimanche 15 février et lundi 16 février, en Gironde et dans le Lot-et-Garonne sur fond de "crue généralisée" en France, a annoncé Vigicrues.</p> <p>Le service public d'information sur le risque des crues prévoit de nouvelles pluies pouvant faire remonter les cours d'eau les plus réactifs.</p> <p><span>À lire aussi</span><a href="https://www.france24.com/fr/france/20260214-temp%C3%AAte-nils-le-risque-se-prolonge-en-gironde-et-dans-le-lot-et-garonne-en-alerte-rouge-pour-crues-inondations-evacuations-pluies" target="_self">Tempête Nils : le phénomène de "crue généralisée" en France dépasse "tous nos records"</a></p> <p>"Une nouvelle perturbation va aborder le pays par la Bretagne dès aujourd'hui, arrosant une grande partie du pays", écrit Vigicrues dans son bulletin de&nbsp; 6 h 00. "Pour les cours d'eau en vigilance orange ou rouge, des débordements importants et majeurs sont en cours ou attendus dans les prochaines 24 heures."</p> <h2>Neuf départements restent en alerte orange</h2> <p>Dimanche et lundi, neuf départements restent placés en alerte orange pour des crues : l'Eure-et-Loire, l'Ille-et-Vilaine, la Loire-Atlantique, le Maine-et-Loire, l'Indre-et-Loire, la Charente-Maritime, la Charente, la Dordogne et le Tarn-et-Garonne.</p> <p>La Haute-Garonne, l'Ariège et le Morbihan sont quant à eux repassés en jaune dimanche matin.</p> <p>Samedi, les autorités ont fait état d'environ 80 personnes évacuées en Gironde.</p> <p><span>À lire aussi</span><a href="https://www.france24.com/fr/%C3%A9missions/%C3%A9l%C3%A9ment-terre-la-quotidienne/20260212-nils-une-temp%C3%AAte-amplifi%C3%A9e-par-le-d%C3%A9r%C3%A8glement-climatique" target="_self">Nils, une tempête amplifiée par le dérèglement climatique</a></p> <p>En amont de la Garonne, dans le Lot-et-Garonne, des évacuations "préventives" ont concerné samedi 590 personnes, selon la préfecture, portant le total des évacués à 1 500 dans le département.</p> <p>Plus au nord, dans le Maine-et-Loire, environ 850 à 900 personnes sont concernées, selon le maire de Saint-Jean-de-la Croix.</p> <h2>Chutes de neige à prévoir</h2> <p>À cela s'ajoutent deux autres alertes météorologiques : une vigilance orange neige-verglas jusqu'à dimanche soir pour une quinzaine de départements de la moitié nord du pays, notamment en région parisienne et dans les Hauts-de-France ; et une vigilance orange aux avalanches dans les Pyrénées jusqu'à lundi.</p> <div> <figure> <img src="https://s.france24.com/media/display/de1d9fe0-0a59-11f1-8add-005056bf30b7/w:980/Capture-d-%C3%A9cran-2026-02-15-113144.png" alt=""> <figcaption> <span> Capture écran X</span> </figcaption> </figure> </div> <p>L'arrivée d'un épisode neigeux sur l'Île-de-France a par ailleurs conduit les compagnies aériennes à réduire leur programme de vols pour la journée sur les aéroports parisiens de Paris-Charles de Gaulle et Orly, tandis que la circulation des bus pourrait connaître des perturbations ponctuelles selon l'état du sol.</p> <p>Côté routes, la préfecture de police a publié samedi un arrêté neige-verglas, abaissant la vitesse de circulation pour dimanche de 20 km/h sur les axes routiers d'Île-de-France, de 8 h 00 à 14 h 00, pour tous les véhicules.</p> <p>Météo-France prévoit des chutes de neige d'un à trois centimètres sur la région parisienne, et de trois à six centimètres sur les Hauts-de-France.</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

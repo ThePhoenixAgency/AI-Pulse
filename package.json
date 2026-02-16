@@ -7,7 +7,8 @@
     "start": "node src/aggregator.js",
     "dev": "node src/aggregator.js",
     "build": "echo 'No build step required for this project'",
-    "test": "node --test"
+    "test": "node --test",
+    "precommit:check": "node scripts/pre-commit-checks.js"
   },
   "keywords": [
     "AI",

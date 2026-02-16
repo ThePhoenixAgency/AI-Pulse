@@ -33,21 +33,21 @@
 </ul> <p>Thus going forward, admins and users alike have been encouraged to update such apps to avoid keyboard entry into credential interfaces and authenticate through supported Windows authentication UIs.</p> <p>In case you need the previous autofill behavior to still function, Microsoft says that it is possible. It writes: "Do so by enabling applications performing remote credential submission to run with elevated (administrator) privileges. This should allow the previous behavior until applications can be updated to account for the hardening changes driven by CVE-2026-20824", though it has <a href="https://support.microsoft.com/en-us/topic/new-behavior-restricting-certain-applications-to-autofill-credentials-introduced-by-the-windows-january-2026-security-update-29c0bc94-2588-41f9-8534-f058aa5214d5">cautioned</a> you do so only in a tightly controlled environment that is safe and secure.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

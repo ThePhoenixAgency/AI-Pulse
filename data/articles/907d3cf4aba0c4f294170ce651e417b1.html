@@ -24,7 +24,11 @@
 <body>
   <h1>Deals: AirPods Pro 3, Apple Sport Bands up to 41% off, Anker 25W MagSafe Charging Stand $100 off, iPad, more</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: 9to5Mac | Date: 2/11/2026 5:38:06 PM | Lang: EN |
+=======
+    Source: 9to5Mac | Date: 2/11/2026 4:38:06 PM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://9to5mac.com/2026/02/11/deals-airpods-pro-3-sport-band-anker-charging-stand/" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -48,21 +52,21 @@
 <p>Browse through <a href="https://9to5toys.com/2026/02/10/apple-32gb-m4-macbook-air-best-prices/">the rest of the B&amp;H Mega Deal Zone sale right here</a>.</p> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Magic-Mouse.jpeg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Rare deal drops <a href="https://9to5toys.com/2026/02/09/rare-deal-apple-usbc-magic-mouse/">Apple’s latest USB-C Magic Mouse down to $68 today</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/AirTag-AirTag-2-deals.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>AirTag just hit the <a href="https://9to5toys.com/2026/02/06/airtag-amazon-best-price/">Amazon all-time low at $17 – 41% less than AirTag 2</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2025/01/iPad-mini-A17-Pro.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Latest iPad mini now <a href="https://9to5toys.com/2026/02/05/ipad-mini-all-colors-most-affordable-deal/">$100 off, all colors on most affordable model drop to $399</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Nomad-Cosmic-Orange-ChargeKey-keychain-tool-charger.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Nomad debuts new 240W <a href="https://9to5toys.com/2026/02/10/nomad-new-240w-usb-c-chargekey-cosmic-orange-iphone-17-pro/">USB-C ChargeKey tool to match your Cosmic Orange iPhone 17 Pro (Hands-on)</a></h2> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

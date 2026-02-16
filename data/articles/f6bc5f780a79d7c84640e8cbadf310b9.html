@@ -33,21 +33,21 @@
 </div> <p>L'avocat de la famille a affirmé que Quentin "n'était ni agent de sécurité, ni membre d'un quelconque service d'ordre". "Étudiant en mathématiques, pratiquant le tennis et la philosophie", il était "investi dans la vie pastorale, en particulier au sein de la chorale de sa paroisse", a indiqué Me&nbsp;Rajon.</p> <p>Il "défendait ses convictions sans violence, prônant un militantisme pacifique" et "n'avait jamais été mis en cause dans la moindre affaire par le passé", a-t-il conclu.</p> <p>Un rassemblement en hommage à Quentin s'est déroulé samedi à Angers et d'autres appels à rassemblement ont été lancés pour dimanche, notamment à Montpellier et Paris.</p> <p>Le ministre de l'Intérieur Laurent Nuñez a appelé les préfets à "renforcer la vigilance autour des rassemblements de nature politique, ainsi qu'autour des permanences de campagne".</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -24,7 +24,11 @@
 <body>
   <h1>Éboulement sur la ligne Grenoble-Valence : la circulation des trains interrompue "au minimum" jusque début mar</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 3 Alpes | Date: 2/7/2026 11:09:23 AM | Lang: FR |
+=======
+    Source: France 3 Alpes | Date: 2/7/2026 10:09:23 AM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/eboulement-sur-la-ligne-grenoble-valence-la-circulation-des-trains-interrompue-au-minimum-jusque-debut-mars-3295443.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -34,21 +38,21 @@
 <p>Repoussée à début mars, la reprise du trafic des trains sera <em>"très limitée"</em> dans un premier temps, <em>"avec un passage à vitesse réduite sur la zone"</em> de l'éboulement. Des perturbations qui compliquent encore un peu plus la circulation dans le sud Grésivaudan, déjà impacté depuis un an et demi par <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/temoignages-eboulement-en-isere-c-etait-apocalyptique-on-a-vu-la-montagne-degringoler-racontent-des-habitants-3010298.html" target="_blank">l’éboulement sur la route départementale 1532 à La Rivière, le 25 juillet 2024.</a></p><p>Pour pallier l'absence de trains, la SNCF a mis en place des cars de substitution dont les horaires sont mis en ligne la veille à 17 heures <a href="https://www.ter.sncf.com/auvergne-rhone-alpes/se-deplacer/info-trafic/perturbations" target="_blank">sur son site</a>. <em>"L'offre de substitution routière étant réduite, nous vous conseillons, dans la mesure du possible, de différer votre déplacement"</em>, recommande encore l'entreprise ferroviaire.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

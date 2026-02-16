@@ -24,7 +24,11 @@
 <body>
   <h1>Perspective - Russia using Africans as 'cannon fodder' in Ukraine: INPACT/All Eyes on Wagner</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 24 | Date: 2/16/2026 3:43:39 PM | Lang: EN |
+=======
+    Source: France 24 | Date: 2/16/2026 2:43:39 PM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.france24.com/en/tv-shows/perspective/20260216-russia-using-africans-as-cannon-fodder-in-ukraine-war-inpact-all-eyes-on-wagner" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -33,21 +37,21 @@
 <time>11:11</time> </p> </figure> </div> <div> <p><span>Issued on: <time>16/02/2026 - 15:43</time></span><span>Modified: <time>16/02/2026 - 15:46</time></span></p> <div> <p> 11:11 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/perspective/"> <p>From the show</p> <img src="https://s.france24.com/media/display/98361ec6-0f34-11ee-a2c5-005056a90284/EN-perspective.svg" alt="Perspective"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> Russia is accused of "aggressively recruiting" people from across the African continent to fight on the front lines in Ukraine. The investigation unit INPACT/All Eyes on Wagner says it has evidence of nearly 1,500 soldiers from 35 countries who have been recruited by Russia, over 300 of whom who have been killed in battle. The organisation says the real numbers are probably far higher as Russia has set up a fraud travel agency to con people into travelling there with the promise of high salaries, only to find themselves serving in the Russian army. We spoke to Lou Osborn in Perspective. </p> <div> <p><span> By: </span></p><div> <img src="https://s.france24.com/media/display/129967d4-e088-11ee-835e-005056a97e36/w:388/p:1x1/avatar-Stuart_Norval.jpg" alt="Stuart Norval"> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

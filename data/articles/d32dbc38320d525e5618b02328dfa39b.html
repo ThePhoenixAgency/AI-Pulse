@@ -133,21 +133,21 @@
 <p>[<a href="#t=01:26:16.07">01:26:16.07</a>] He’s really into the community, he’s doing a lot of cool stuff. And he’s a software developer, still in the daily. I think he kind of does a little bit of both, where he’s not a full-time content creator… He’s got a side job, or a day job, and then also his platform he’s built out, Techno Tim. I think he’s more in that than he is in his day job though, but I like his perspective on things. And so I miss him, I had fun talking to him earlier this year, and maybe we’ll do that sometime in January. Get that beginning of the year. Like, “What’s going to happen to home lab this year?” That’d be cool.</p> </div> <div> <p>There you go. Alright, do we do best titles? Do we wrap with best titles?</p> </div> <div> <p>Yeah, let’s wrap. Best titles.</p> </div> <div> <p>Alright. So we already mentioned “Adventures in babysitting coding agents.”</p> </div> <div> <p>Yeah.</p> </div> <div> <p>We both love that one.</p> </div> <div> <p>Yeah.</p> </div> <div> <p>We both liked wsl.exe – cat hello.cs…</p> </div> <div> <p>Yes…</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

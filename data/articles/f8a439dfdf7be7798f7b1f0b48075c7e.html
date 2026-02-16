@@ -31,21 +31,21 @@
     <div><div><p><em>Obama walked back comments made on a podcast in which he appeared to claim that aliens are real.</em></p></div><div><p><span>Published On 16 Feb 2026</span></p></div><div><p>Former United States President Barack Obama has clarified remarks related to the existence of extraterrestrial life made on a podcast, after appearing to claim that he knew aliens are real.</p><p>During a rapid-fire question-and-answer segment as a guest on left-wing political commentator Brian Tyler Cohen’s programme, which was released on Saturday, the podcaster asked <a href="https://www.aljazeera.com/news/2025/7/25/can-barack-obama-be-prosecuted-over-russian-interference-intelligence">Obama</a> whether he believes extraterrestrials are real.</p><section><h2>Recommended Stories </h2><span>list of 3 items</span><ul><li><span>list 1 of 3</span><a href="https://www.aljazeera.com/news/2026/2/6/republicans-condemn-racist-trump-video-post-depicting-obamas-as-apes">Republicans condemn racist Trump video post depicting Obamas as apes</a></li><li><span>list 2 of 3</span><a href="https://www.aljazeera.com/video/newsfeed/2026/2/8/trump-wont-apologise-despite-backlash-over-video-depicting-obamas-as-apes">Trump won’t apologise despite backlash over video depicting Obamas as apes</a></li><li><span>list 3 of 3</span><a href="https://www.aljazeera.com/news/2026/2/15/clown-show-obama-reacts-to-trump-sharing-racist-monkey-video">‘Clown show’: Obama reacts to Trump sharing racist monkey video</a></li></ul><span>end of list</span></section><p>“They’re real, but I haven’t seen them,” the 44th president of the US responded.</p><p>“They’re not being kept at Area 51. There’s no underground facility unless there’s this enormous conspiracy and they hid it from the president of the United States,” he continued.</p><p>Obama’s apparent admission of the existence of aliens was picked up by media outlets globally, and it added fodder to the long-running conspiracy theory claiming that the US government is hiding them at Area 51, a highly classified air force site in Nevada.</p><p>On Sunday evening, Obama said in a post on Instagram that the viral clip did not capture his actual assessment of whether aliens exist, due to the speed of the questions.</p><p>“Statistically, the universe is so vast that the odds are good there’s life out there,” he stated.</p><p>“But the distances between solar systems are so great that the chances we’ve been visited by aliens is low, and I saw no evidence during my presidency that extraterrestrials have made contact with us. Really!”</p><p>During the podcast episode, Cohen’s next question for the former US leader was: “What was the first question you wanted answered when you became president?”</p><p>Obama responded with a chuckle: “Where are the aliens? Where are the aliens?”</p><p>In 2019, there was an attempt to <a href="https://www.aljazeera.com/news/2019/9/19/storm-area-51-possible-crowds-worry-nevada-desert-towns">“storm” Area 51</a>, with 1.5 million people signing up to ambush the once-secret facility. But ultimately, only about 150 social media influencers arrived at the site, and the events that day ended with a few arrests before turning into a music festival.</p><p>In 2013, declassified documents indicated that the site was used for aerial testing of US government projects, including the U-2 and Oxcart aerial surveillance programmes.</p><p>While on Cohen’s podcast, Obama also discussed US President Donald Trump’s recent social media post, which <a href="https://www.aljazeera.com/news/2026/2/15/clown-show-obama-reacts-to-trump-sharing-racist-monkey-video">depicted him and his wife Michelle as monkeys</a>, Puerto Rican reggaeton artist Bad Bunny’s <a href="https://www.aljazeera.com/features/2026/2/9/our-music-can-take-a-stand-latinos-hail-bad-bunnys-super-bowl-show">Super Bowl half-time performance</a>, against which Trump supporters protested, as well as the 2028 election.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

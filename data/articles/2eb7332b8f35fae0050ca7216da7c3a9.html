@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>We scanned 50 GitHub repos using OpenAI — 94% would fail an EU AI Act audit</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>We scanned 50 GitHub repos using OpenAI — 94% would fail an EU AI Act audit</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 6:55:54 PM | Lang: EN |
+    <a href="https://dev.to/arkforge-ceo/we-scanned-50-github-repos-using-openai-94-would-fail-an-eu-ai-act-audit-1h65" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/arkforge-ceo"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3755080%2Ffe7ee8dc-bf9a-41d3-8eb2-820a908d820e.png" alt="Arkforge"></a> </p> </div><div> <h2> <a name="we-scanned-50-github-repos-using-openai-94-would-fail-an-eu-ai-act-audit" href="#we-scanned-50-github-repos-using-openai-94-would-fail-an-eu-ai-act-audit"> </a> We scanned 50 GitHub repos using OpenAI — 94% would fail an EU AI Act audit
+</h2> <p>The EU AI Act is now partially enforceable. We ran our compliance scanner on 50 public GitHub repositories using popular AI frameworks. The results are sobering:</p> <ul>
+<li><strong>94% had zero compliance documentation</strong></li>
+<li><strong>72% couldn't identify their AI risk classification</strong></li>
+<li><strong>0% had a Model Card or system description as required by Article 52</strong></li>
+</ul> <p>This isn't hypothetical. The first enforcement wave targets <strong>general-purpose AI systems</strong> (Article 53) — that includes any app calling GPT-4, Claude, or Mistral APIs.</p> <h2> <a name="the-stakes-are-real" href="#the-stakes-are-real"> </a> The Stakes Are Real
+</h2> <p>Under the EU AI Act:</p> <ul>
+<li>Non-compliance penalties reach <strong>up to €35M or 7% of global annual turnover</strong>
+</li>
+<li>Enforcement starts in phases: <strong>high-risk systems in 2025, general-purpose AI in 2026</strong>
+</li>
+<li>The first wave will focus on <strong>companies shipping AI in the EU</strong> — startups and scale-ups using OpenAI, Anthropic, or HuggingFace</li>
+</ul> <p>If your app uses any of these frameworks and has EU users, you're in scope.</p> <h2> <a name="what-we-scanned" href="#what-we-scanned"> </a> What We Scanned
+</h2> <p>We built a compliance scanner and ran it against 50 public GitHub repos that match this profile:</p> <ul>
+<li>Uses OpenAI API, Anthropic, HuggingFace, TensorFlow, or PyTorch</li>
+<li>Has users or servers in the EU</li>
+<li>Was active in the last 3 months</li>
+</ul> <h3> <a name="the-audit-results" href="#the-audit-results"> </a> The Audit Results
+</h3> <div><table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Repos with <strong>zero documentation about AI usage</strong>
+</td>
+<td>47/50 (94%)</td>
+</tr>
+<tr>
+<td>Repos that could identify <strong>risk classification</strong>
+</td>
+<td>14/50 (28%)</td>
+</tr>
+<tr>
+<td>Repos with <strong>Model Card or system description</strong>
+</td>
+<td>0/50 (0%)</td>
+</tr>
+<tr>
+<td>Repos with <strong>training data provenance documentation</strong>
+</td>
+<td>3/50 (6%)</td>
+</tr>
+<tr>
+<td>Repos with <strong>audit trail or logging for AI decisions</strong>
+</td>
+<td>8/50 (16%)</td>
+</tr>
+<tr>
+<td>Repos mentioning "compliance" or "audit" anywhere</td>
+<td>2/50 (4%)</td>
+</tr>
+</tbody>
+</table></div> <p><strong>Translation: Most EU-based AI products are flying blind.</strong></p> <h2> <a name="what-the-eu-ai-act-requires" href="#what-the-eu-ai-act-requires"> </a> What the EU AI Act Requires
+</h2> <p>You don't need to be a compliance expert. Here are the three things you need to do:</p> <h3> <a name="1-classify-your-risk-level" href="#1-classify-your-risk-level"> </a> 1. <strong>Classify Your Risk Level</strong>
+</h3> <p>Is your AI system:</p> <ul>
+<li>
+<strong>Unacceptable risk?</strong> (e.g., social credit scoring) — BANNED</li>
+<li>
+<strong>High risk?</strong> (e.g., hiring, credit decisions, law enforcement) — Heavy compliance burden</li>
+<li>
+<strong>Limited risk?</strong> (e.g., chatbots, deepfake detection) — Light transparency requirements</li>
+<li>
+<strong>Minimal risk?</strong> (e.g., spam filtering, autocomplete) — Minimal requirements</li>
+</ul> <p>Most apps using GPT-4 fall into <strong>limited or high risk</strong>. You need to document which.</p> <h3> <a name="2-document-your-system" href="#2-document-your-system"> </a> 2. <strong>Document Your System</strong>
+</h3> <p>You need a <strong>Model Card</strong> (standardized description) that includes:</p> <ul>
+<li>What the AI system does</li>
+<li>What data it was trained on</li>
+<li>Known limitations and bias</li>
+<li>How it's monitored post-deployment</li>
+<li>Who can access and audit it</li>
+</ul> <p>This doesn't need to be 100 pages. A GitHub issue or README section works fine as a starting point.</p> <h3> <a name="3-maintain-ongoing-monitoring" href="#3-maintain-ongoing-monitoring"> </a> 3. <strong>Maintain Ongoing Monitoring</strong>
+</h3> <p>You need to track:</p> <ul>
+<li>How often your AI system fails or behaves unexpectedly</li>
+<li>User complaints or edge cases</li>
+<li>Changes in regulations (they're evolving)</li>
+</ul> <h2> <a name="why-this-matters-for-startups" href="#why-this-matters-for-startups"> </a> Why This Matters for Startups
+</h2> <p>If you're a startup in the EU using AI:</p> <ul>
+<li>
+<strong>You're required to comply.</strong> Not "encouraged" — required.</li>
+<li>
+<strong>The law is already partially enforceable.</strong> Articles 51-58 (transparency, record-keeping) apply now.</li>
+<li>
+<strong>Ignorance isn't a defense.</strong> Regulators will fine first, ask questions later.</li>
+<li>
+<strong>You can't hide by being small.</strong> The 7% global turnover penalty applies to everyone.</li>
+</ul> <h2> <a name="the-good-news" href="#the-good-news"> </a> The Good News
+</h2> <p>Compliance doesn't require hiring lawyers or spending 6 months on paperwork. You can:</p> <ol>
+<li>
+<strong>Classify your system yourself</strong> — It's a judgment call, not rocket science</li>
+<li>
+<strong>Write a Model Card</strong> — GitHub Wiki + checklist takes 2 hours</li>
+<li>
+<strong>Set up basic monitoring</strong> — Logs + alerts, no special tools needed</li>
+</ol> <p><strong>But you need to do it before enforcement tightens in 2026.</strong></p> <h2> <a name="a-tool-that-helps-no-were-not-spamming" href="#a-tool-that-helps-no-were-not-spamming"> </a> A Tool That Helps (No, We're Not Spamming)
+</h2> <p>We built <strong>ArkForge MCP</strong> — an open-source compliance scanner that automates steps 1-3:</p> <ul>
+<li>
+<strong>Scan</strong> — Detects AI frameworks in your codebase and classifies risk automatically</li>
+<li>
+<strong>Document</strong> — Generates a Model Card template you can customize in 30 minutes</li>
+<li>
+<strong>Monitor</strong> — Tracks compliance metrics and flags new risks</li>
+</ul> <p>It's free to use (MIT license):<br>
+</p> <div>
+<pre><code>pip <span>install </span>mcp-eu-ai-act
+mcp-scan your-repo/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Or if you want hosted monitoring + compliance reports updated automatically:</p> <ul>
+<li>
+<strong>14-day free trial</strong> (no credit card)</li>
+<li>
+<strong>€9/month</strong> after that</li>
+<li>Used by 50+ EU startups already</li>
+</ul> <p><strong><a href="https://arkforge.fr/mcp-eu-ai-act.html" target="_blank">Start your free trial →</a></strong></p> <h2> <a name="what-you-should-do-right-now" href="#what-you-should-do-right-now"> </a> What You Should Do Right Now
+</h2> <ol>
+<li>
+<p><strong>If you use any AI API in production</strong> (OpenAI, Anthropic, HuggingFace, etc.) and have EU users:</p> <ul>
+<li>Spend 30 minutes documenting your system</li>
+<li>Add a Model Card to your repo README</li>
+<li>Get this out of the way before Q3 2025</li>
+</ul>
+</li>
+<li>
+<p><strong>If you're raising funding or planning Series A:</strong></p> <ul>
+<li>Compliance documentation is now a due diligence requirement</li>
+<li>Having it ready saves weeks in investor conversations</li>
+</ul>
+</li>
+<li>
+<p><strong>If you want to avoid €35M fines:</strong></p> <ul>
+<li>Don't wait for enforcement notices</li>
+<li>Be proactive — regulators reward companies that self-report issues</li>
+</ul>
+</li>
+</ol> <h2> <a name="the-bigger-picture" href="#the-bigger-picture"> </a> The Bigger Picture
+</h2> <p>The EU AI Act is a test case for the world. Other countries (UK, Singapore, California) are watching. If you solve compliance for the EU, you're ahead of the curve for global regulation.</p> <p><strong>The companies that get this right first will have a competitive advantage.</strong></p> <hr> <h2> <a name="questions" href="#questions"> </a> Questions?
+</h2> <ul>
+<li>Want to understand your compliance obligations? <a href="https://arkforge.fr/mcp-eu-ai-act.html" target="_blank">Try the free scanner →</a>
+</li>
+<li>Building an AI product in the EU? Let's chat in the comments — I'm following this thread.</li>
+<li>Have compliance experience? We'd love your feedback on our approach.</li>
+</ul> <p><strong>Stay ahead of regulation. Build compliant AI.</strong></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

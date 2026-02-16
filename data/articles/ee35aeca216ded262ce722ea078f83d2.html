@@ -6,6 +6,7 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+<<<<<<< HEAD
   h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
@@ -16,6 +17,12 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+=======
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,6 +31,7 @@
 <body>
   <h1>Raspberry Pi Pico brings a 'WOPR' of a feature to a server rack</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Toms Hardware Raspberry Pi | Date: 2/20/2025 5:23:40 PM | Lang: EN |
     <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-brings-a-wopr-of-a-feature-to-a-server-rack" target="_blank">Original Article</a>
   </div>
@@ -31,23 +39,31 @@
     <div><div> <p>Every now and then, you'll find a maker with an itch to spruce up their hardware with a <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> and we're all for it. Today we're showing off a cool server rack upgrade put together by maker and developer Aforsberg, as they're known as over at <a href="https://www.printables.com/model/1167457-1u-rack-mount-wopr-leds-enclosure" target="_blank"><u>Printables</u></a>, that uses a <a href="https://www.tomshardware.com/reviews/raspberry-pi-pico-review">Raspberry Pi Pico</a> to power a cool LED matrix setup that looks like the WOPR (War Operation Plan Response) computer from the 1983 movie <a href="https://en.wikipedia.org/wiki/WarGames" target="_blank">War Games</a>.</p><p>The movie, the WOPR computer has a really specific aesthetic with a key feature being a matrix panel of LEDs that appear to randomly change. Aforsberg decided it would be fun to implement a panel like this on their server rack and opted to create it from scratch using our favorite microcontroller, the Raspberry Pi Pico.</p><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/USVYXuENbMCPVEB4DexVDb.png" alt="Raspberry Pi">
 </p></div><figcaption><span>(Image credit: Aforsberg)</span></figcaption></figure><p>The Raspberry Pi Pico is connected to a set of daisy chained 8x8 LED matrix panels that use MAX7219 modules to drive them. These are off the shelf components, often found for a few dollars. To get them to fit into the server 1U slot, Aforsberg created a custom mounting bracket that can be 3D printed and used to attach them. This bracket is available for anyone to download and print at home who might be interested in recreating the project.</p><p>According to Aforsberg, the Raspberry Pi Pico was programmed using MicroPython. It uses a random "coin flip" to control 96 individual columns, determining whether or not the LEDs in that section will change. When the column is set to be changed, it takes eight coin flips to determine which LEDs will be illuminated and which will stay off.</p><p>Whether you're a fan of the movie War Games or not, this is a really cool <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a> and we definitely think it's worthy of attention. If you want to get a closer look at it, you can check out the project page over at <a href="https://www.printables.com/model/1167457-1u-rack-mount-wopr-leds-enclosure" target="_blank"><u>PrIntables</u></a> for more details and the 3D printable files if you want to recreate it for yourself.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
 </div></div>
+=======
+    Source: Toms Hardware Raspberry Pi | Date: 2/20/2025 4:23:40 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-brings-a-wopr-of-a-feature-to-a-server-rack" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p>Aforsberg has created a cool LED matrix display for their 1U server rack that's decked out like the WOPR computer from the 1983 movie War Games.</p>
+    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

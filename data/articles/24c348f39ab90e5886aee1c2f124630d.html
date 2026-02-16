@@ -34,21 +34,21 @@ Le constat est le même dans la préfecture d'Hokkaidō avec par exemple une ép
 <img alt="" src="https://www.meteo-paris.com/_next/image?url=https%3A%2F%2Fs.meteo-villes.com%2Fuploads%2Factu%2FHAs6IsnbYAAPtUC.jpg&amp;w=1920&amp;q=75"></p> <p><em><strong>Températures minimales et records de froid sur le Japon ce 9 février 2026 </strong></em>- Via Twitter @sayakasofiamori</p> <p>A lire également :</p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/les-tempetes-memorables-de-fevrier-1990" target="_blank">Les tempêtes mémorables de février 1990</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-paris.com/actualites/menace-de-tempete-sur-la-moitie-sud-pour-jeudi" target="_blank">Menace de tempête sur la moitié sud pour jeudi</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-paris.com/actualites/l-episode-de-pluies-verglacantes-de-la-mi-fevrier-1978" target="_blank">L'épisode de pluies verglaçantes de la mi-février 1978</a></p> <p>&gt;&gt;&gt; <a href="https://www.meteo-villes.com/france/previsions" target="_blank">Notre bulletin météo réactualisé quotidiennement</a></p> <p>&gt;&gt;&gt; <a href="https://x.com/Meteovilles" target="_blank">Notre compte Twitter très suivi et référence dans tous les médias !</a></p> <p>Auteur : <a href="https://x.com/BergenTristan" target="_blank">Tristan Bergen</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

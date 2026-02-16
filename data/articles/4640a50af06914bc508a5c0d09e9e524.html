@@ -37,21 +37,21 @@
 <p><strong><a href="https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html" target="_blank">OpenClaw announces VirusTotal Partnership</a> </strong>— OpenClaw has announced a partnership with Google's VirusTotal malware scanning platform to scan skills that are being uploaded to ClawHub as part of a defense-in-depth approach to improve the security of the agentic ecosystem. The development comes as the cybersecurity community has raised concerns that autonomous artificial intelligence (AI) tools' persistent memory, broad permissions, and user‑controlled configuration could amplify existing risks, leading to prompt injections, data exfiltration, and exposure to unvetted components. This has also been complemented by the discovery of <a href="https://www.gendigital.com/blog/insights/research/openclaw-autonomy-risks" target="_blank">malicious skills on ClawHub</a>, a public skills registry to augment the capabilities of AI agents, once again demonstrating that marketplaces are a gold mine for criminals who populate the store with malware to prey on developers. To make matters worse, Trend Micro disclosed that it observed malicious actors on the Exploit.in forum actively discussing the deployment of OpenClaw skills to support activities such as botnet operations. Another report from Veracode <a href="https://www.veracode.com/blog/clawing-for-scraps-openclaw-clawdbot/" target="_blank">revealed</a> that the number of packages on npm and PyPI with the name "claw" has increased exponentially from nearly zero at the start of the year to over 1,000 as of early February 2026, providing new avenues for threat actors to smuggle malicious typosquats. "Unsupervised deployment, broad permissions, and high autonomy can turn theoretical risks into tangible threats, not just for individual users but also across entire organizations," Trend Micro <a href="https://www.trendmicro.com/en_us/research/26/b/what-openclaw-reveals-about-agentic-assistants.html" target="_blank">said</a>. "Open-source agentic tools like OpenClaw require a higher baseline of user security competence than managed platforms."&nbsp;</p> <h2><strong> Top News</strong></h2> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div><p>Mirae Asset Consulting, an affiliate of South Korean multinational financial services company Mirae Asset Group, has agreed to acquire a controlling stake in local crypto exchange Korbit.</p><p>The company plans to purchase 26.9 million shares of Korbit for 133.48 billion won (about $93 million), a transaction that would give it a 92.06% ownership interest in the exchange, <a href="https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260213002679" target="_blank">according</a> to a Friday regulatory filing. The payment will be made entirely in cash</p><p>Mirae Asset said the purpose of the acquisition is “to secure future growth drivers through digital-asset (virtual-asset) businesses,” per the filing. The company’s board approved the decision on Feb. 5, while reports on the <a href="https://cointelegraph.com/news/mirae-asset-in-talks-to-buy-korean-crypto-exchange-korbit-in-100m-deal-report">planned deal initially surfaced</a> last year. </p><p>The transaction has not yet closed. The settlement will occur once contractual closing conditions are satisfied, with completion expected within seven business days after those requirements are met. </p><p><em><strong>Related: </strong></em><a href="https://cointelegraph.com/news/how-a-bitcoin-promotion-error-triggered-a-regulatory-reckoning-in-south-korea"><em><strong>How a Bitcoin promotion error triggered a regulatory reckoning in South Korea</strong></em></a></p><h2>Korbit returns to profit after sale talks</h2><p>Korbit reported 8.7 billion won in revenue and 9.8 billion won in net profit in its most recent fiscal year, reversing losses recorded in prior years.</p><p>Korbit is primarily owned by NXC and its subsidiary Simple Capital Futures, which together hold about 60.5% of the exchange. SK Square owns an additional 31.5% stake.</p><p>Korbit holds a full operating license and compliance infrastructure, potentially positioning it as a regulated entry point for a major financial group seeking exposure to digital assets.</p><p>As Cointelegraph reported, local exchange Coinone also is <a href="https://cointelegraph.com/news/coinone-south-korea-sale-coinbase-investment-speculation" target="_self">exploring a potential sale</a>, as chairman Cha Myung-hoon seeks to divest his 53.4% controlling stake.</p></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

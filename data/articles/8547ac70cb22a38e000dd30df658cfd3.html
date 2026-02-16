@@ -24,7 +24,11 @@
 <body>
   <h1>Affaire Jeffrey Epstein : des perquisitions en cours dans l'enquête visant Jack Lang et sa fille, notamment à</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Franceinfo | Date: 2/16/2026 2:00:52 PM | Lang: FR |
+=======
+    Source: Franceinfo | Date: 2/16/2026 1:00:52 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.franceinfo.fr/monde/usa/affaire-jeffrey-epstein/affaire-jeffrey-epstein-des-perquisitions-en-cours-dans-l-enquete-visant-jack-lang-et-sa-fille-notamment-a-l-institut-du-monde-arabe_7809266.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 12:04</time> </span> <span></span> <span> Mis à jour <time>le 16/02/2026 14:00</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="L'ancien ministre de la Culture, Jack Lang, à Paris, le 5 octobre 2018. (LUCAS BARIOULET / AFP)" src="https://www.franceinfo.fr/pictures/qgWARNL5ZMJGDzZDQvot1OLxGiU/0x53:1024x629/432x243/filters:format(jpg)/2026/02/16/000-96ja8cq-6992f9fceb020001880493.jpg"> <figcaption>L'ancien ministre de la Culture, Jack Lang, à Paris, le 5 octobre 2018. <span>(LUCAS BARIOULET / AFP)</span></figcaption> </figure> </div> </div><div><p>Des perquisitions sont menées à l'Institut du monde arabe et dans <em>"divers lieux" </em>dans le cadre de <a href="https://www.franceinfo.fr/monde/usa/affaire-jeffrey-epstein/affaire-epstein-jack-lang-et-sa-fille-caroline-vises-par-une-enquete-du-parquet-national-financier-pour-blanchiment-de-fraude-fiscale-aggravee_7789148.html" target="_blank">l'enquête ouverte pour blanchiment de fraude fiscale aggravée</a> visant Jack Lang et sa fille Caroline, a annoncé le Parquet national financier (PNF) lundi 16 février. <em>"Elles s'inscrivent dans le cadre d'une enquête préliminaire ouverte par le parquet national financier le 6&nbsp;février"</em>, écrit le PNF dans son communiqué.</p><p>Cette enquête avait été ouverte après la publication par <a href="https://www.mediapart.fr/journal/france/020226/les-intenses-liens-financiers-de-jeffrey-epstein-avec-la-famille-lang" target="_blank">Mediapart</a> d'une enquête sur les liens financiers supposés de l'ancien ministre de la Culture de François Mitterrand et de sa fille avec le financier américain Jeffrey Epstein. <em>"Je suis totalement serein, confiant",</em> a confié Jack Lang à l'AFP. <em>"Je me réjouis que la justice financière se mette en branle"</em>, a également l'ancien président de l'Institut du monde arabe lors d'un discours d'adieux lundi matin, sans faire référence explicitement aux perquisitions, selon un journaliste de l'AFP présent.</p><p>Si aucune charge ne pèse à ce stade contre Jack Lang, qui a quitté la tête de l'Institut du monde arabe sous la pression, les millions de documents rendus publics par la justice américaine mentionnent son nom à 673 reprises dans des échanges avec le criminel sexuel Jeffrey Epstein et révèlent des liens d'intérêt avec le financier américain, mort en détention en 2019. Selon l'enquête de Mediapart, sa fille Caroline Lang a notamment fondé en 2016 une société offshore domiciliée aux Iles vierges américaines avec le sulfureux financier.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

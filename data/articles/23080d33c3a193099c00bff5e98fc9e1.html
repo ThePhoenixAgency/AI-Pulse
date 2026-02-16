@@ -33,21 +33,21 @@
 </div> <p>1 820 euros. Etre payé sous ce seuil, c’est faire partie des 30% des salariés les moins bien payés du pays. Mais le seuil diffère d’un travailleur à l’autre. Pour un homme, il passe à 1 880 euros par mois et pour une femme, il tombe à 1 760 euros.</p> <p>Appartenir aux 10% des salariés les moins bien payés implique de toucher un salaire mensuel inférieur à 1&nbsp;490&nbsp;euros. Cela signifie donc que 90% des travailleurs perçoivent une rémunération supérieure à ce niveau.</p> <p>De l'autre côté de l'échelle sociale, les 10% des salariés les mieux payés gagnent 4&nbsp;330&nbsp;nets par mois et le 1% le plus élevé, 10&nbsp;260&nbsp;euros. En clair, là où un salarié très riche doit attendre moins de dix mois pour toucher la coquette somme de 100&nbsp;000&nbsp;euros, il faudra plus de cinq ans pour un salarié très pauvre.</p> <p>Précisons que ces chiffres sont exprimés en équivalent temps plein et ne s'appliquent qu’aux salariés du privé, y compris alternants, stagiaires et bénéficiaires de contrats aidés, hors salariés de l’agriculture et des particuliers employeurs. Dans la fonction publique, la donne change.</p> <p>Pour appartenir aux 10% des fonctionnaires de l'Etat les moins bien payés, le salaire mensuel doit être inférieur à 1&nbsp;707&nbsp;euros nets. Le seuil est plus élevé dans la fonction publique hospitalière&nbsp;: 1&nbsp;859&nbsp;euros nets par mois. Il est en revanche bien plus bas dans la fonction publique territoriale, avec un plafond fixé à 1&nbsp;597&nbsp;euros nets. Dans ces catégories, on retrouve les surveillants en milieu scolaire, les accompagnants éducatifs et sociaux ou les agents administratifs des collectivités locales.</p> <p>Mais le salaire seul ne permet pas de connaître totalement les réalités économiques d'un travailleur. Par exemple, les salariés les plus modestes perçoivent naturellement une part importante de prestations sociales non contributives, ce qui fait grimper leur revenu total&nbsp;: aide au logement, chèque énergie ou prime d'activité représentent près d'un tiers du revenu des ménages vivant sous le seuil de pauvreté. Et à l'inverse, les revenus patrimoniaux fonciers et financiers représentent près d'un cinquième des revenus des classes très aisées, 10% de la population.</p> <p>Bonne nouvelle cependant, le statut des travailleurs n'est pas figé en France. Dans une étude portant sur l'ascension sociale, l'Insee montre qu'environ 40&nbsp;% des actifs occupent une meilleure situation professionnelle que leurs parents. Plus généralement, cette mobilité ascendante est plus fréquente que le déclassement ou l'immobilité. Au cœur de ces parcours, un facteur&nbsp;: le niveau de diplôme, véritable levier de progression sociale, selon l'Insee.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

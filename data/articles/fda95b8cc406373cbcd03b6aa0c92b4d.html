@@ -24,7 +24,11 @@
 <body>
   <h1>REPORTAGE. « Dès qu’on passe 5 m, c’est inhabituel » : cette commune de Maine-et-Loire se prépare à une crue historique</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Ouest-France | Date: 2/16/2026 6:11:02 PM | Lang: FR |
+=======
+    Source: Ouest-France | Date: 2/16/2026 5:11:02 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.ouest-france.fr/meteo/inondation/reportage-des-quon-passe-5-m-cest-inhabituel-cette-commune-de-maine-et-loire-se-prepare-a-une-crue-historique-2d340bd6-0b2d-11f1-8f27-f38523081a88?utm_source=fluxpublicactu&utm_medium=fluxrss&utm_campaign=banquedecontenu" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 <li><figure><img alt="Pour endiguer la progression de la Loire, quai Dupetit-Thouars, les agents de la commune des Ponts-de-Cé ont installé des batardeaux et des passerelles, avec des parpaings et des planches"><figcaption><span>Pour endiguer la progression de la Loire, quai Dupetit-Thouars, les agents de la commune des Ponts-de-Cé ont installé des batardeaux et des passerelles, avec des parpaings et des planches | </span>OUEST-FRANCE.</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h11</span></time></span> <span>Publié le <time>16/02/2026 <span> à 18h02</span></time></span> </span> </header> </div> <div> <p>Aux Ponts-de-Cé, près d’Angers&nbsp;(Maine-et-Loire), la Loire, l’Authion et le Louet se sont mis à trois pour redessiner la commune. Sous l’effet des inondations, les paysages sont chamboulés&nbsp;; l’ordinaire ne ressemble plus à rien – de connu – et l’eau s’invite presque partout. Jusque dans les conversations.</p> <p>Devant le restaurant l’Instant, qu’elle gère depuis septembre&nbsp;2025 sur l’esplanade Jean-Sauvage, Erika Lecoublet choisit l’humour face à la montée des eaux, ce lundi matin 16&nbsp;février 2026. <q>On se croirait au bord du Louet, c’est une dinguerie</q>, lâche-t-elle en regardant le parking, en grande partie submergé. Au...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

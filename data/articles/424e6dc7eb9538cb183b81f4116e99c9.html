@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mieubrisse/agenc: An agentic work factory focused on self-upgrading</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - mieubrisse/agenc: An agentic work factory focused on self-upgrading</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:16:39 PM | Lang: EN |
+    <a href="https://github.com/mieubrisse/agenc" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p><a target="_blank" href="/mieubrisse/agenc/blob/main/readme-images/cover.png"><img src="/mieubrisse/agenc/raw/main/readme-images/cover.png" alt="AgenC — AI work factory"></a></p>
+<div> <div><h1>AgenC</h1><a href="#agenc"></a></div>
+</div> <p> AgenC is an agentic work factory focused on self-upgrading.<br> <br> <b>The idea:</b> Launch tons of parallel Claudes. They stumble. Turn friction → upgrades for the factory. Repeat.<br> <br> You spend your time building the factory; the Claudes do the rest.<br> <br> <a href="#why-agenc">Why AgenC</a> | <a href="#quickstart">Quickstart</a> | <a href="#how-it-works">How It Works</a> | <a href="#vs-gastown">Vs Gastown</a> | <a href="https://discord.gg/x9Y8Se4XF3">Discord</a> </p>
+<p></p> <span>2026-02-16_agenc-demo.mov</span> <span></span> <div><h2>Why AgenC</h2><a href="#why-agenc"></a></div>
+<p>If you're like most people, you use Claude like this:</p>
+<p><a target="_blank" href="/mieubrisse/agenc/blob/main/readme-images/common-ai-workflow.png"><img src="/mieubrisse/agenc/raw/main/readme-images/common-ai-workflow.png" alt=""></a></p>
+<p>Much better is John Rush's philosophy of <a href="https://www.john-rush.com/posts/ai-20250701.html">Inputs, Not Outputs</a>:</p>
+<p><a target="_blank" href="/mieubrisse/agenc/blob/main/readme-images/inputs-not-outputs.png"><img src="/mieubrisse/agenc/raw/main/readme-images/inputs-not-outputs.png" alt=""></a></p>
+<p>Each iteration makes all future outputs better.</p>
+<p>But it doesn't scale.</p>
+<p>The Claudes step on each other, each friction requires spawning a new Claude window, juggling the windows becomes a circus, and you spend a bunch of time <code>cd</code>ing around getting in and out of Claude.</p>
+<p>AgenC tames this chaos. It provides:</p>
+<ul>
+<li> Claude session isolation in fully independent sandboxes (no Git worktrees, no merge queue - each agent is completely independent!)</li>
+<li> Session management and command palette + hotkeys so launching new sessions, switching windows, stopping/resuming sessions, and rolling lessons back into your Claude config is a thought away</li>
+<li> Palette customization so your top-used operations are easy</li>
+</ul> <ul>
+<li> 1Password secrets injection</li>
+<li> An AI assistant that knows how to configure &amp; drive AgenC so you never have to use CLI commands</li>
+</ul>
+<p><a target="_blank" href="/mieubrisse/agenc/blob/main/readme-images/agenc-scale-up.png"><img src="/mieubrisse/agenc/raw/main/readme-images/agenc-scale-up.png" alt=""></a></p>
+<p>And of course, AgenC is built with AgenC.</p>
+<blockquote>
+<div><h3> <strong>ADDICTION WARNING</strong> </h3><a href="#-addiction-warning-"></a></div>
+<p>AgenC feels great to use, like <a href="https://mieubrisse.substack.com/p/be-rembrandt">painting with your mind</a>. But you should know it has a videogame-like addictive quality.</p>
+<p>Because it's so easy launch work, you get a "just one more mission" feeling.</p>
+<p>I noticed while building AgenC that it's hard to switch off and go to sleep. My brain would always be buzzing with ideas, and I'd wake up in the middle of the night wanting to launch new work.</p>
+<p>Please remember to take breaks and leave sufficient wind-down time before sleep!</p>
+</blockquote>
+<div><h2>Quickstart</h2><a href="#quickstart"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><strong>MacOS</strong> (for now)</li>
+<li><strong>Claude Code</strong> installed and in your PATH</li>
+</ul>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre>brew tap mieubrisse/agenc
+brew install agenc</pre></div>
+<p>This automatically installs required dependencies (<code>gh</code>, <code>fzf</code>, <code>tmux</code>).</p>
+<p>If you're not logged in to <code>gh</code>, use:</p>
+<div><pre><code>gh auth login
+</code></pre></div>
+<div><h3>1. Initialize</h3><a href="#1--initialize"></a></div>
+<p>The AgenC directory defaults to <code>~/.agenc</code>. Override with <code>AGENC_DIRPATH</code> if needed.</p>
+<p>Run the following and answer the prompts:</p>
+<div><pre>agenc config init</pre></div>
+<p>I recommend "yes" to creating a config repo; AgenC will sync it to GitHub automatically.</p>
+<p>The AgenC interface is tmux. Run this so you get the AgenC keybindings:</p>
+<div><pre>agenc tmux inject</pre></div>
+<p>If you haven't used tmux before, here's a starter <code>~/.tmux.conf</code>:</p>
+<div><pre><span>set</span> -g extended-keys on <span><span>#</span> Ctrl-h goes to previous window</span>
+<span>bind</span> -n C-h previous-window <span><span>#</span> Ctrl-l goes to next window</span>
+<span>bind</span> -n C-l next-window <span><span>#</span> Ctrl-; toggles between panes inside a window</span>
+<span>bind</span> -n <span><span>'</span>C-;<span>'</span></span> select-pane -t :.+ <span><span>#</span> Ctrl-shift-h moves a window to the left</span>
+<span>bind</span> -n C-S-h swap-window -t -1<span>\;</span> select-window -t -1 <span><span>#</span> Ctrl-shift-l moves a window to the right</span>
+<span>bind</span> -n C-S-l swap-window -t +1<span>\;</span> select-window -t +1</pre></div>
+<div><h3>2. Launch</h3><a href="#2--launch"></a></div>
+<p>Attach to the AgenC tmux interface:</p>
+<div><pre>agenc attach</pre></div>
+<p>You'll be dropped into the repo selection screen. Select "Github Repo" and enter a repo you're working on.</p>
+<p>AgenC will clone it, launch a new <strong>mission</strong>, and drop you into Claude to start your work.</p>
+<p>Missions are the main primitive of AgenC: disposable self-contained workspaces with a fully independent copy of the Git repo (no merge queue needed - the agents figure it out, just like humans).</p>
+<div><h3>3. Command Palette</h3><a href="#3--command-palette"></a></div>
+<p>Inevitably you'll want to do work on the side while Claude is grinding away.</p>
+<p>Press <code>ctrl-y</code> to open the command palette and...</p>
+<ul>
+<li> Open a side shell in your current mission's workspace ("Side Shell" or <code>ctrl-p</code>)
+<blockquote>
+<p> <a href="https://github.com/mieubrisse/cmdk">cmdk</a> is amazing in the side shell</p>
+</blockquote>
+</li>
+<li> Launch a side mission ("New Mission" or <code>ctrl-n</code>, or "Side Claude" or "Quick Claude")</li>
+<li> Switch between your running missions ("Switch Mission" or <code>ctrl-m</code>)</li>
+<li> Send me feedback about AgenC!</li>
+</ul>
+<p>These commands are cheap; use them liberally. AgenC is designed to help you manage having 10+ threads going at once.</p>
+<p>The command palette can be configured with custom hotkeys and custom commands.</p>
+<p>The hard way to do this is through the <a href="/mieubrisse/agenc/blob/main/docs/cli/agenc.md">CLI helpdocs</a> the <code>agenc config paletteCommand</code>. For example, this is to quickly set up a new Github repo:</p>
+<div><pre><code>agenc config paletteCommand add newRepo \ --title " New Repo" \ --command "agenc tmux window new -a -- agenc mission new \ --blank \ --prompt 'I want to create a new GitHub repository. Please: 1) Ask me what the repository name should be and whether I want it public or private 2) Create it on GitHub using the gh CLI 3) Initialize this blank mission directory as a git repo and set it up to track the newly created GitHub repository.'"
+</code></pre></div>
+<p>The easier way is through the Adjutant.</p>
+<div><h3>5. Adjutant</h3><a href="#5--adjutant"></a></div>
+<p>AgenC has an AI assistant called Adjutant ("Adjutant" on the palette or <code>ctrl-t</code> for Side Adjutant) that knows how to configure AgenC, as well as launch and manage missions.</p>
+<p>You <em>can</em> use the <code>agenc config</code> commands to configure stuff like palette commands... but now I just talk to the Adjutant for my AgenC configuration needs.</p>
+<div><h3>6. Mission Management</h3><a href="#6-mission-management"></a></div>
+<p>You can see all missions with <code>agenc mission ls</code>, and switch between missions with "Switch Mission" (<code>ctrl-m</code>) on the command palette.</p>
+<p>Missions can also be stopped with "Mission Stop" (<code>ctrl-s</code>) or "Mission Resume" on the palette. Since each mission is an isolated workspace, no work is lost.</p>
+<p>Full CLI docs: <a href="/mieubrisse/agenc/blob/main/docs/cli">docs/cli/</a></p>
+<div><h3>6. Secrets</h3><a href="#6--secrets"></a></div>
+<p>If you create a <code>.claude/secrets.env</code> with <a href="https://developer.1password.com/docs/cli/secret-references/">1Password CLI secret references</a> in it, AgenC will resolve them on mission launch and inject them into Claude. This is useful for MCP server credentials.</p>
+<p>For example:</p>
+<p>.claude/secrets.env:</p>
+<div><pre>SUBSTACK_SESSION_TOKEN=<span><span>"</span>op://Private/Substack Session Token/credential<span>"</span></span>
+SUBSTACK_USER_ID=<span><span>"</span>op://Private/Substack Session Token/username<span>"</span></span></pre></div>
+<p>.mcp.json:</p>
+<div><pre><code>{ "mcpServers": { "substack-api": { "command": "npx", "args": ["-y", "substack-mcp@latest"], "env": { "SUBSTACK_PUBLICATION_URL": "https://mieubrisse.substack.com/", "SUBSTACK_SESSION_TOKEN": "$SUBSTACK_SESSION_TOKEN", "SUBSTACK_USER_ID": "$SUBSTACK_USER_ID" } } }
+}
+</code></pre></div> <div><h3>7. Send feedback</h3><a href="#7-send-feedback"></a></div>
+<p>I'd love to hear from you! To send me feedback you can...</p>
+<ul>
+<li>Use "Send Feedback" in the command palette</li>
+<li>Ask the Adjutant to send feedback</li>
+<li>Join the Discord using "Join Discord" on the command palette or <a href="https://discord.gg/x9Y8Se4XF3">use this link</a></li>
+</ul>
+<div><h2>Tips</h2><a href="#tips"></a></div>
+<ul>
+<li>
+<p><strong>When things go wrong, upgrade!</strong> Pop off a new mission and fix the problem: patch the <code>settings.json</code>, upgrade the prompt, debug the issue. Missions are cheap; use them liberally. I'm often juggling 6-8 missions at any given time.</p>
+</li>
+<li>
+<p><strong>Run Claude in sandbox mode.</strong> This cuts a lot of permission request fatigue. Run <code>/sandbox</code> once from vanilla Claude (not inside AgenC) to enable sandboxed command execution. This allows Claude to run commands without manual approval prompts on every action. The setting automatically carries into every new AgenC mission (or if you want to upgrade an existing Mission, do "Reconfig Mission" → "Reload Mission"). This is the recommended alternative to <code>--dangerously-skip-permissions</code>.</p>
+</li>
+<li>
+<p><strong>Rename missions when you stop them.</strong> Use <code>/rename</code> inside Claude to give a mission a descriptive name before exiting. This makes finding and resuming the right mission much easier later when you run "Resume Mission".</p>
+</li>
+<li>
+<p><strong>Have your agents always commit and push.</strong> Unpushed work sits stranded in the mission's workspace. You can add instructions that get injected for AgenC Claudes only in your <code>$AGENC_DIRPATH/config/claude-modifications/CLAUDE.md</code>. Tell your agents here that they should always commit (and, optionally, push if you're working solo on the repo). This lets you fire-and-forget instructions to your agents, confident the work will persist even if the mission ends.</p>
+</li>
+</ul>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p><a target="_blank" href="/mieubrisse/agenc/blob/main/readme-images/architecture.png"><img src="/mieubrisse/agenc/raw/main/readme-images/architecture.png" alt=""></a></p>
+<p>AgenC runs several cooperating components that work together to give you a factory of Claudes:</p>
+<div><h3>Missions</h3><a href="#missions"></a></div>
+<p>A <strong>mission</strong> is AgenC's core primitive — a fully isolated workspace where one Claude works on one task.</p>
+<p>When you create a mission, AgenC:</p>
+<ol>
+<li>
+<p><strong>Clones a full copy of your Git repo</strong> into <code>$AGENC_DIRPATH/missions/&lt;uuid&gt;/agent/</code>. This is NOT a Git worktree — it's a complete independent clone. This means no merge queue, no conflicts with other missions, and no shared state. Each Claude has its own sandbox.</p>
+</li>
+<li>
+<p><strong>Builds a custom Claude config</strong> by copying your global <code>~/.claude</code> config and injecting AgenC-specific niceties (e.g. skip the "Trust this project?" prompt).</p>
+</li>
+<li>
+<p><strong>Spawns a wrapper process</strong> that supervises the Claude session. The wrapper handles authentication, tracks mission health, and can restart Claude if needed.</p>
+</li>
+</ol>
+<p>Missions are disposable. You can stop them, resume them, or archive them. Work persists because each mission is a real Git repo — commit and push like normal.</p>
+<div><h3>Wrapper</h3><a href="#wrapper"></a></div>
+<p>The <strong>wrapper</strong> is a supervisor process — one per active mission — that tends the Claude child process.</p>
+<p>The wrapper:</p>
+<ul>
+<li><strong>Passes authentication</strong> to Claude via the <code>CLAUDE_CODE_OAUTH_TOKEN</code> environment variable (more below)</li>
+<li><strong>Tracks idle state</strong> by listening to hooks that fire when Claude starts and stops responding</li>
+<li><strong>Writes heartbeats</strong> to the database every 30 seconds so the daemon knows which missions are alive</li>
+<li><strong>Restarts Claude</strong> on command (via unix socket) — useful after upgrading Claude config or when something breaks</li>
+<li><strong>Updates the repo library</strong> immediately when you push, so new missions get your changes without waiting</li>
+</ul>
+<p>When Claude exits (naturally or via <code>/exit</code>), the wrapper cleans up and stops. The mission directory stays intact, so you can resume later.</p>
+<div><h3>Daemon</h3><a href="#daemon"></a></div>
+<p>The <strong>daemon</strong> is a background process that keeps the factory running smoothly. It runs six concurrent loops:</p>
+<ol>
+<li><strong>Repo sync</strong> (every 60 seconds) — Fetches and fast-forwards repos in the shared library so new missions clone from fresh code without needing to run a slow <code>git clone</code></li>
+<li><strong>Config auto-commit</strong> (every 10 minutes) — If your <code>$AGENC_DIRPATH/config/</code> is a Git repo, the daemon auto-commits and pushes changes to Github so your config stays version-controlled</li>
+</ol> <ol>
+<li><strong>Config watcher</strong> (on file change) — Watches <code>~/.claude</code> and mirrors changes to a shadow repo so missions can inherit your latest config</li>
+<li><strong>Keybindings writer</strong> (every 5 minutes) — Regenerates tmux keybindings to pick up any palette command changes</li>
+</ol>
+<p>The daemon starts automatically when you run most <code>agenc</code> commands. If it crashes, just restart it with <code>agenc daemon restart</code> - running missions are unaffected.</p>
+<div><h3>Repo Library</h3><a href="#repo-library"></a></div>
+<p>AgenC maintains a <strong>repo library</strong> of Git repos at <code>$AGENC_DIRPATH/repos/</code>. When you create a mission, AgenC copies from this library instead of cloning from GitHub every time so that new don't require cloning from Github.</p>
+<p>The daemon keeps the library fresh by fetching every 60 seconds. The wrapper contributes by watching for pushes: when you <code>git push</code> from a mission, the wrapper immediately updates the library copy so new missions get your changes. Existing missions will notice when they try to merge, same as a human.</p>
+<p>Missions cannot read or modify the repo library directly (enforced via permissions). They only see their own workspace.</p>
+<div><h3>Authentication</h3><a href="#authentication"></a></div>
+<p>Standard Claude Code authentication doesn't work well with multiple concurrent sessions because the tokens refresh and invalidate each other in a loop (<a href="https://github.com/anthropics/claude-code/issues/24317">GitHub issue</a>).</p>
+<p>AgenC solves this by using a <strong>long-lived OAuth token</strong> that you provide once during setup. The token is stored at <code>$AGENC_DIRPATH/cache/oauth-token</code> (mode 600, never committed to Git). When the wrapper spawns Claude, it reads this file and passes the token via the <code>CLAUDE_CODE_OAUTH_TOKEN</code> environment variable.</p>
+<p>All missions share the same token, so there's no refresh thrashing. When the token expires, update it once with <code>agenc config set claudeCodeOAuthToken &lt;new-token&gt;</code>, and all new missions (plus running missions after restart) pick it up automatically.</p>
+<p>The only downside I haven't yet figured out is these Claude tokens can't query usage, so the <code>/usage</code> command won't work in AgenC Claudes. You'll need to drop down to vanilla Claude to check your usage.</p>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>AgenC stores its state in <code>$AGENC_DIRPATH</code> (defaults to <code>~/.agenc</code>). The central configuration file is <code>$AGENC_DIRPATH/config/config.yml</code>.</p>
+<p>Key features:</p>
+<ul>
+<li><strong>Synced repos</strong> — keep repositories continuously up-to-date in a shared library</li>
+</ul> <ul>
+<li><strong>Palette commands</strong> — customize the tmux command palette and keybindings</li>
+<li><strong>Config auto-sync</strong> — optionally back the config directory with Git for automatic versioning</li>
+</ul>
+<p>See <a href="/mieubrisse/agenc/blob/main/docs/configuration.md">docs/configuration.md</a> for the full reference.</p>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p>Run <code>agenc doctor</code> to check for common configuration issues.</p>
+<div><h3>"Command Line Tools are too outdated"</h3><a href="#command-line-tools-are-too-outdated"></a></div>
+<p>If you see this error during installation:</p>
+<div><pre><code>Error: Your Command Line Tools are too outdated.
+</code></pre></div>
+<p>This is a <a href="https://docs.brew.sh/Common-Issues#homebrew-is-slow">Homebrew requirement</a>, not an AgenC issue. Homebrew requires up-to-date Xcode Command Line Tools to function, even when installing pre-built binaries.</p>
+<p>To fix, update your Command Line Tools:</p>
+<div><pre><code>xcode-select --install
+</code></pre></div>
+<p>If that doesn't work, remove and reinstall:</p>
+<div><pre><code>sudo rm -rf /Library/Developer/CommandLineTools
+xcode-select --install
+</code></pre></div>
+<p>Then retry <code>brew install agenc</code>.</p>
+<div><h2>Uninstall</h2><a href="#uninstall"></a></div>
+<div><pre><code>agenc tmux uninject
+agenc mission nuke -f
+agenc daemon stop
+brew uninstall agenc
+</code></pre></div>
+<p>This stops the agenc daemon and removes all mission assets. To remove the AgenC data directory itself:</p>
+<div><pre><code>rm -rf ~/.agenc
+</code></pre></div>
+<p>If you customized <code>AGENC_DIRPATH</code>, remove that directory instead.</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>Clone the repo and run <code>make build</code>.</p>
+<div><h2>CLI Reference</h2><a href="#cli-reference"></a></div>
+<p>Run <code>agenc --help</code> for available commands, or see <a href="/mieubrisse/agenc/blob/main/docs/cli">docs/cli/</a> for complete documentation.</p> <div><h2>Vs Gastown</h2><a href="#vs-gastown"></a></div>
+<p>Gastown is a fascinating idea that gave me the push to finally build AgenC, and Steve Yegge sees far beyond the horizon of what we mere mortals see.</p>
+<p>Particular things I liked:</p>
+<ul>
+<li>The Polecat handoff feature, and the idea that "if the session compacts, that's an error"</li>
+<li>Tmux as the interface</li>
+<li>Inter-agent mail</li>
+<li>Persistent tracking of work + dependencies with Beads aligns closely with <a href="https://github.com/mieubrisse/orgbrain/blob/master/fractal-outcomes.md">Fractal Outcomes</a>, a work organization framework I've been developing over the past years and which I think will be a good fit for agents</li>
+</ul>
+<p>However, I ultimately decided not to use Gastown and build AgenC because...</p>
+<ul>
+<li><strong>I want less complexity.</strong> Gastown has tons of concepts and moving pieces. I want to spend minimal time debugging the system itself; I just want a HUD with great affordances for managing my work and Claude swarm.</li>
+<li><strong>I think learning capture is the future.</strong> I'm <a href="https://mieubrisse.substack.com/p/the-leverage-series">a firm believer in knowledge leverage</a>. Meaning, I want identification of factory friction &amp; lesson capture to be first-class concepts. Gastown's fixed personas seem less focused on learning and more "brute-force the PRs until they work". I don't want to burn a Claude Max subscription in a couple days, and I want my factory to get smarter exponentially.</li>
+<li><strong>I think a fully-controlled sandbox is a better architecture for learning.</strong> AgenC works hard to fully control the environment the Claude - snapshotting global Claude config and using full repo clones - so we can enable automatic lesson identification and capture. Gastown uses worktrees, which tie the agents to the central repo and require the Refinery.</li>
+<li><strong>I want a work-agnostic factory.</strong> Gastown seems to orient towards doing a bunch of coding on a single repo. But I needed a factory where coding and writing and assistant work are treated the same. Doing this work involves popping across many repos - dotfiles, code repos, writing repos, etc. - which is how AgenC got its "juggle lots of things" focus.</li>
+<li><strong>I want Claude sessions as cattle, not pets.</strong> Gastown seems to orient around a smaller number of named agents, particularly Polecats and Crew. I prefer tons of missions that are easy to launch, manage, and kill.</li>
+</ul>
+<p>If Gastown is Kubernetes, I think AgenC is Docker. It's not as magic, but there's more control and less chaos.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

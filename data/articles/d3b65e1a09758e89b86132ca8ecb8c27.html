@@ -31,21 +31,21 @@
     <div><div><p>Two US senators are pressing the Treasury Department to investigate a reported foreign investment in a crypto venture tied to the Trump family, raising concerns about national security, foreign influence and access to sensitive financial data.</p><p>In a Friday <a href="https://www.banking.senate.gov/imo/media/doc/letter_to_bessent_re_cfius_wlf.pdf" target="_blank">letter</a> to Treasury Secretary Scott Bessent, Massachusetts Senator Elizabeth Warren and New Jersey Senator Andy Kim asked the government to determine whether the Committee on Foreign Investment in the United States (CFIUS) should investigate a deal in which a UAE–backed investment vehicle agreed to purchase a 49% stake in World Liberty Financial (WLFI) for roughly $500 million.</p><p>The lawmakers wrote that the transaction reportedly occurred days before Donald Trump’s inauguration and would make the foreign fund the firm’s largest shareholder and its only publicly known outside investor. They asked Bessent, who chairs CFIUS, to confirm whether the committee was notified and, if necessary, conduct a “comprehensive, thorough, and unbiased investigation.”</p><p>The <a href="https://cointelegraph.com/news/uae-backed-firm-buys-49-percent-trump-linked-world-liberty-wsj">investment was reportedly backed</a> by Sheikh Tahnoon bin Zayed Al Nahyan, the UAE’s national security adviser. The agreement allegedly directed about $187 million to entities linked to the Trump family and granted two board seats to executives connected to G42, a technology company previously scrutinized by US intelligence agencies over concerns about ties to China, per the letter. </p><p><em><strong>Related: </strong></em><a href="https://cointelegraph.com/news/trump-media-files-crypto-etfs-bitcoin-ether-cronos-sec"><em><strong>Trump Media files for two new crypto ETFs tied to Bitcoin, Ether, Cronos</strong></em></a></p><h2>UAE stake could expose Americans’ financial and personal data</h2><p>Warren and Kim argued that the structure of the deal could allow a foreign government to gain influence over a US company handling financial and personal information. They noted that the firm’s privacy disclosures indicate it collects data including wallet addresses, IP addresses, device identifiers and approximate location data, along with certain identity records through service providers.</p><p>CFIUS is tasked with reviewing foreign investments that could provide access to sensitive technologies or personal data belonging to US citizens. The lawmakers requested answers by March 5.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c6024-109e-7a70-ae76-ae82128b5bc1.PNG"><figcaption><em>Senators ask Bessent to answer questions. Source: Senate</em></figcaption></figure><p>Last year, Senators Warren and Jack Reed also <a href="https://cointelegraph.com/news/senators-trump-linked-wlfi-national-security-threat">called on US authorities to investigate</a> alleged links between World Liberty Financial’s token sales and sanctioned foreign actors. In a Nov. letter to the Justice Department and Treasury, they cited claims that WLFI governance tokens were bought by blockchain addresses tied to North Korea’s Lazarus Group, as well as Russian- and Iranian-linked entities.</p></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

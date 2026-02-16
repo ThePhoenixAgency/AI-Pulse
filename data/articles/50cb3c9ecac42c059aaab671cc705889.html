@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How a Small OSINT Team Turned the Epstein Files Dump Into Actionable Intelligence</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>How a Small OSINT Team Turned the Epstein Files Dump Into Actionable Intelligence</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 5:11:31 PM | Lang: EN |
+    <a href="https://dev.to/sampseiol1/how-a-small-osint-team-turned-the-epstein-files-dump-into-actionable-intelligence-3c9m" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>In February 2026, I took part in a collective investigation based exclusively on open-source intelligence (OSINT) to contextualize vague references contained in public court records released by the United States Department of Justice (DOJ) in connection with the Epstein case.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fusxfw1e7ga7rijbypjs5.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fusxfw1e7ga7rijbypjs5.png" alt=" "></a></p> <p>This release — one of the largest ever related to the convicted financier Jeffrey Epstein — made millions of pages publicly available starting in January 2026, under the so-called Epstein Files Transparency Act.</p> <p>What began as collaborative analysis within online communities evolved, within a few days, into technical contributions that supported formal institutional actions. The key differentiator was the work of a small investigation team combining modern tools with rigorous human curation and highly efficient communication — in practice, operating more agilely than much larger structures.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxjjk96hs8jtqs4sdy7t.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqxjjk96hs8jtqs4sdy7t.jpeg" alt=" "></a></p> <p>This setup enabled direct collaboration with investigative journalism, which expanded the reach and contextualization of the public data through in-depth reporting, and with Brazil’s Federal Prosecution Service (Ministério Público Federal – MPF). These interactions proved essential for accelerating official procedures, including the opening of an administrative inquiry and its subsequent escalation to a national unit specialized in transnational crimes.</p> <p>Below is a chronological description of the technical workflow adopted.</p> <h2> <a name="technical-methodology-stepbystep" href="#technical-methodology-stepbystep"> </a> Technical methodology (step-by-step)
+</h2> <h4> <a name="1-initial-entity-extraction-and-human-curation" href="#1-initial-entity-extraction-and-human-curation"> </a> 1. Initial entity extraction and human curation
+</h4> <p>(Days 1–3 of February 2026)</p> <p>Public documents — mainly emails and excerpts from 2011 court records released in DOJ datasets — were reviewed manually and with basic supporting tools.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fld0gmrhenr1735wtjkty.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fld0gmrhenr1735wtjkty.jpeg" alt=" "></a></p> <p>Most of the early analytical value came from human curation: careful reading of socio-economic descriptions, vague geographic references and implicit logistical elements. This stage established the foundation for all subsequent cross-referencing.</p> <h3> <a name="2-entity-resolution-and-osint-mapping-with-specialized-tools" href="#2-entity-resolution-and-osint-mapping-with-specialized-tools"> </a> 2. Entity resolution and OSINT mapping with specialized tools
+</h3> <p>(Around February 4)</p> <p>Using exclusively public sources, we performed multi-source correlation involving business registries, corporate structures and open archival datasets.</p> <p>Maltego was used to map digital networks and associated online connections. Entity-resolution techniques prioritized contextual matches, such as:</p> <ul>
+<li>approximate geographic linkage,</li>
+<li>migration or relocation history,</li>
+<li>recurring logistical and temporal patterns,</li>
+<li>indirect but persistent relationships.</li>
+<li>Open Social Network and Results</li>
+<li>As a result, a key intermediary entity was resolved within a matter of hours.</li>
+</ul> <h4> <a name="3-graph-construction-and-visualization-with-neo4j-and-mermaidjs" href="#3-graph-construction-and-visualization-with-neo4j-and-mermaidjs"> </a> 3. Graph construction and visualization with Neo4j and Mermaid.js
+</h4> <p>Resolved entities and relationships were imported into Neo4j, enabling the modeling of complex investigative networks and the execution of graph queries focused on:</p> <ul>
+<li>centrality,</li>
+<li>paths and intermediaries,</li>
+<li>logistical and institutional hubs.</li>
+</ul> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzx1ieyywtuzei79ufto6.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fzx1ieyywtuzei79ufto6.jpeg" alt=" "></a></p> <p>This graph-based representation revealed temporal and geographic patterns that were not apparent through linear document analysis.</p> <p>The entire workflow was visually documented using Mermaid.js, adopting a diagrams-as-code approach integrated into Markdown. We produced:</p> <ul>
+<li>process flowcharts,</li>
+<li>timelines,</li>
+<li>entity-relationship graphs.</li>
+<li>This greatly facilitated collaborative review, traceability and methodological transparency.</li>
+</ul> <h4> <a name="4-ai-support-grok-for-chronology-and-partial-analysis" href="#4-ai-support-grok-for-chronology-and-partial-analysis"> </a> 4. AI support (Grok) for chronology and partial analysis
+</h4> <p>Grok was used as an auxiliary tool to:</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkc2mkgl6cq126rgtjg6z.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkc2mkgl6cq126rgtjg6z.jpeg" alt=" "></a></p> <ul>
+<li>consolidate event timelines,</li>
+<li>identify dates of mentions and document releases,</li>
+<li>summarize selected text snippets,</li>
+<li>suggest optimized queries and candidate links between entities.</li>
+<li>AI was used strictly as an operational accelerator. All validation and critical decisions remained under human responsibility and manual source verification.</li>
+</ul> <h4> <a name="5-responsible-disclosure-collaboration-and-immediate-impact" href="#5-responsible-disclosure-collaboration-and-immediate-impact"> </a> 5. Responsible disclosure, collaboration and immediate impact
+</h4> <p>(February 4–9)</p> <p>~Day 4: controlled public disclosure of the resolved entities within specialized online communities, along with reference to a formal communication submitted to the competent prosecutorial authority (MPF).</p> <p>Days 4–6: amplification by independent investigative journalists, who relied on the same public data to publish in-depth reports, expanding visibility and institutional pressure.</p> <p>Days 7–8: extension of the mapping to additional references in the released files, including potential international hubs and publicly listed entities.</p> <p>Days 8–9: observed escalation of the administrative procedure to a national unit specialized in transnational crimes, in line with the rapid consolidation and documentation of the OSINT findings.</p> <h2> <a name="guiding-principles" href="#guiding-principles"> </a> Guiding principles
+</h2> <ul>
+<li>strict reliance on open and publicly available sources only;</li>
+<li>no collection or disclosure of sensitive information beyond what was already public;</li>
+<li>explicit recognition of the collective and collaborative nature of the work (online communities, investigative journalism and MPF);</li>
+<li>continuous emphasis on human curation to ensure accuracy, ethical standards and accountability.</li>
+<li>Lessons learned and impact</li>
+<li>This case demonstrates how a small, well-coordinated team — using Neo4j for graph modeling, Maltego for network mapping, Mermaid.js for visual documentation and Grok for analytical and chronological support — can produce disproportionate results in open-source investigations.</li>
+</ul> <p>The central factor was not automation, but rigorous cross-referencing of public data combined with structured and auditable documentation. Direct collaboration with investigative journalism and with the Brazilian Federal Prosecution Service enabled the technical analysis to be converted into practical institutional input.</p> <p>It provides a concrete example of ethical and responsible use of OSINT and AI in a high-impact social context such as the Epstein case.</p> <p>For professionals working with OSINT, graph databases, investigative process visualization or AI-assisted analysis, this workflow can be adapted to scenarios such as compliance, due diligence, corporate investigations and independent research.</p> <h2> <a name="team-workflow-data-curation-and-lightweight-frameworks" href="#team-workflow-data-curation-and-lightweight-frameworks"> </a> Team workflow, data curation and lightweight frameworks
+</h2> <p>The investigation was organized using a lightweight, Kanban-inspired workflow to coordinate tasks, control data quality and ensure traceability throughout the OSINT process.</p> <p>All findings passed through a structured human data-curation pipeline, in which raw extractions were reviewed, normalized and validated before being promoted to the shared graph and documentation layers. Each card in the workflow represented a single investigative hypothesis or entity cluster and followed a clear lifecycle: discovery, preliminary validation, multi-source corroboration, graph integration and publication-ready documentation.</p> <p>Curation played a central role in preventing entity conflation, managing ambiguous references and avoiding premature attribution. Particular attention was given to name disambiguation, geographic uncertainty, temporal consistency and source provenance. Only entities supported by independent public sources and contextual coherence were incorporated into Neo4j and the Mermaid.js documentation.</p> <p>This combination of a simple team framework (Kanban-style coordination) with a strict human curation layer ensured operational speed without sacrificing methodological rigor, ethical standards and auditability of the investigative process.</p> <h2> <a name="positive-operational-and-institutional-impacts" href="#positive-operational-and-institutional-impacts"> </a> Positive operational and institutional impacts
+</h2> <p>The adoption of a lightweight, Kanban-inspired team workflow combined with a strict human data-curation layer produced measurable operational and institutional benefits. Task visibility and well-defined curation stages reduced duplication of effort, minimized contradictory hypotheses and accelerated convergence toward high-confidence entities.</p> <p>From an external perspective, the consistency of curated datasets, the clear provenance of sources and the traceable decision flow enabled faster reuse of the material by investigative journalists and by the Brazilian Federal Prosecution Service (MPF). This significantly lowered the cost of verification, increased trust in the OSINT outputs and facilitated their direct incorporation into formal analytical and administrative procedures.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

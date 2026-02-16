@@ -366,6 +366,8 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.2s;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         #readme-content .article-item:hover {
@@ -451,8 +453,8 @@
             scroll-margin-top: 20px;
         }
 
-        #readme-content h3 { color: #64b5f6; margin-top: 10px; margin-bottom: 8px; }
-        #readme-content p { margin-bottom: 10px; color: #cbd5e1; }
+        #readme-content h3 { color: #64b5f6; margin-top: 10px; margin-bottom: 8px; overflow-wrap: anywhere; word-break: break-word; }
+        #readme-content p { margin-bottom: 10px; color: #cbd5e1; overflow-wrap: anywhere; word-break: break-word; }
         #readme-content ul, #readme-content ol { margin-left: 25px; margin-bottom: 15px; }
         #readme-content li { margin-bottom: 8px; color: #cbd5e1; }
 
@@ -683,14 +685,20 @@
     </div>
 
     <div class="elevator">
-        <button class="elevator-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Scroll to Top">&#9650;</button>
-        <button class="elevator-btn" onclick="window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'})" title="Scroll to Bottom">&#9660;</button>
+        <button class="elevator-btn" onclick="scrollPageStep(-1)" title="Scroll up">&#9650;</button>
+        <button class="elevator-btn" onclick="scrollPageStep(1)" title="Scroll down">&#9660;</button>
     </div>
 
     <script>
+        function scrollPageStep(direction) {
+            const step = Math.max(240, Math.round(window.innerHeight * 0.72));
+            window.scrollBy({ top: direction * step, behavior: 'smooth' });
+        }
+
         // ─── Preferences Manager ────────────────────────────
         const PrefsManager = {
             STORAGE_KEY: 'ai_pulse_preferences',
+            VERSION: 3,
 
             isLocalStorageAvailable() {
                 try {
@@ -705,11 +713,12 @@
 
             getDefaults() {
                 return {
-                    lang: 'auto',
+                    version: this.VERSION,
+                    lang: 'all',
                     categories: {},
                     keywords: '',
-                    maxArticles: 50,
-                    hideRead: true
+                    maxArticles: 120,
+                    hideRead: false
                 };
             },
 
@@ -720,7 +729,13 @@
                 }
                 try {
                     const stored = localStorage.getItem(this.STORAGE_KEY);
-                    if (stored) return { ...this.getDefaults(), ...JSON.parse(stored) };
+                    if (stored) {
+                        const parsed = JSON.parse(stored);
+                        if (!parsed || Number(parsed.version || 0) !== this.VERSION) {
+                            return this.getDefaults();
+                        }
+                        return { ...this.getDefaults(), ...parsed };
+                    }
                 } catch (e) {
                     console.error('Error loading preferences:', e);
                 }
@@ -733,7 +748,8 @@
                     return;
                 }
                 try {
-                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(prefs));
+                    const normalized = { ...this.getDefaults(), ...(prefs || {}), version: this.VERSION };
+                    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(normalized));
                 } catch (e) {
                     console.error('Error saving preferences:', e);
                 }
@@ -1064,6 +1080,24 @@
             }
         }
 
+        function detectGeoFromStats() {
+            try {
+                const raw = localStorage.getItem('ai_pulse_stats');
+                if (!raw) return { city: '', country: '', countryCode: '' };
+                const stats = JSON.parse(raw);
+                const locations = Array.isArray(stats && stats.locations) ? stats.locations : [];
+                if (locations.length === 0) return { city: '', country: '', countryCode: '' };
+                const latest = locations[locations.length - 1] || {};
+                return {
+                    city: String(latest.city || '').toLowerCase(),
+                    country: String(latest.country || '').toLowerCase(),
+                    countryCode: String(latest.countryCode || '').toUpperCase()
+                };
+            } catch (_) {
+                return { city: '', country: '', countryCode: '' };
+            }
+        }
+
         function detectLanguageFromNavigator() {
             const lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
             return lang.startsWith('fr') ? 'fr' : 'en';
@@ -1094,9 +1128,6 @@
             const effectiveLang = resolveEffectiveLanguage(prefs);
             const t = (key) => translate(key, effectiveLang === 'all' ? FALLBACK_LANG : effectiveLang);
             const sections = localizeSectionHeadings(effectiveLang);
-            const maxQuickTags = window.matchMedia('(max-width: 768px)').matches ? 6 : 12;
-            let quickTagsCount = 0;
-            let quickTagsHidden = 0;
 
             // Clear existing options except first
             select.innerHTML = `<option value="">${t('sectionPlaceholder')}</option>`;
@@ -1114,38 +1145,18 @@
                     select.appendChild(option);
 
                     if (quickNav) {
-                        if (quickTagsCount < maxQuickTags) {
-                            const chip = document.createElement('button');
-                            chip.type = 'button';
-                            chip.className = 'quick-tag';
-                            chip.textContent = heading.textContent;
-                            chip.addEventListener('click', () => {
-                                const target = document.getElementById(cat);
-                                if (target) target.scrollIntoView({ behavior: 'smooth' });
-                            });
-                            quickNav.appendChild(chip);
-                            quickTagsCount++;
-                        } else {
-                            quickTagsHidden++;
-                        }
+                        const chip = document.createElement('button');
+                        chip.type = 'button';
+                        chip.className = 'quick-tag';
+                        chip.textContent = heading.textContent;
+                        chip.addEventListener('click', () => {
+                            const target = document.getElementById(cat);
+                            if (target) target.scrollIntoView({ behavior: 'smooth' });
+                        });
+                        quickNav.appendChild(chip);
                     }
                 }
             });
-
-            if (quickNav && quickTagsHidden > 0) {
-                const moreChip = document.createElement('button');
-                moreChip.type = 'button';
-                moreChip.className = 'quick-tag';
-                moreChip.textContent = `+${quickTagsHidden}`;
-                moreChip.title = 'Show all sections in filters';
-                moreChip.addEventListener('click', () => {
-                    const prefsPanel = document.getElementById('prefsPanel');
-                    const prefsOverlay = document.getElementById('prefsOverlay');
-                    if (prefsPanel) prefsPanel.classList.add('open');
-                    if (prefsOverlay) prefsOverlay.classList.add('open');
-                });
-                quickNav.appendChild(moreChip);
-            }
 
             select.disabled = select.options.length <= 1;
             if (select.disabled) {
@@ -1196,7 +1207,11 @@
         function applyFilters() {
             const prefs = PrefsManager.load();
             const effectiveLang = resolveEffectiveLanguage(prefs);
+            const forceShowAllCategories = effectiveLang === 'all';
             const sections = localizeSectionHeadings(effectiveLang);
+            const geo = detectGeoFromStats();
+            const isGrenobleArea = geo.city.includes('grenoble') || geo.city.includes('isere');
+            const isFrance = geo.countryCode === 'FR' || geo.country.includes('france');
             const readArticles = ReadHistory.getAll();
             const filterNotice = document.getElementById('filterNotice');
             const rawKeywords = (prefs.keywords || '')
@@ -1215,7 +1230,7 @@
                     const cat = section.getAttribute('data-category');
 
                     // Category filter
-                    if (prefs.categories[cat] === false) {
+                    if (!forceShowAllCategories && prefs.categories[cat] === false) {
                         section.classList.add('hidden');
                         return;
                     }
@@ -1232,6 +1247,25 @@
                             const articleLang = article.getAttribute('data-lang');
                             if (articleLang && articleLang !== effectiveLang) {
                                 visible = false;
+                            }
+                        }
+
+                        // Local news by IP: Grenoble-specific sources only for Grenoble/Isere visitors.
+                        if (visible && cat === 'local') {
+                            const source = (article.getAttribute('data-source') || '').toLowerCase();
+                            const text = (article.textContent || '').toLowerCase();
+                            const isGrenobleScoped = /grenoble|isere|dauphin/.test(source) || /grenoble|isere/.test(text);
+                            const isFrenchScoped = /dauphin|france 24 france|ouest-france|le monde/.test(source);
+
+                            if (isGrenobleArea) {
+                                // Grenoble/Isere visitors keep both hyper-local and broader local fallback sources.
+                                visible = true;
+                            } else if (isFrance) {
+                                // In France but outside Grenoble: hide Grenoble-specific local news.
+                                if (isGrenobleScoped) visible = false;
+                            } else {
+                                // Outside France: keep only non-FR fallbacks in local section.
+                                if (isFrenchScoped || isGrenobleScoped) visible = false;
                             }
                         }
 
@@ -1548,6 +1582,9 @@
                         markdown = await apiResponse.text();
                     }
                 }
+
+                // Normalize legacy README lines to keep a single keyword metadata on local render.
+                markdown = markdown.replace(/ \| \*Also on:[^\n]*\*/g, '');
 
                 let rawHtml = marked.parse(markdown);
                 let html = DOMPurify.sanitize(rawHtml, {

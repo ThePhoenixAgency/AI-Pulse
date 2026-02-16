@@ -31,21 +31,21 @@
     <div><div> <p> <a href="https://img-0.journaldunet.com/Wn2uGAZS6U5stiKLeXnrA5-AqOc=/1500x/smart/7405fad9f8d24bb09be41d33908f7086/ccmcms-jdn/39533412.png"> <img src="https://img-0.journaldunet.com/Wn2uGAZS6U5stiKLeXnrA5-AqOc=/1500x/smart/7405fad9f8d24bb09be41d33908f7086/ccmcms-jdn/39533412.png" alt="Getinside, plateforme qui monétise les colis des e-commerçants, lève 2&nbsp;millions d'euros et fait évoluer son offre"> </a> Dans un marché du retail media saturé sur le digital, Getinside veut servir de levier de croissance pour les e-marchands.</p> <p>Getinside, plateforme de retail media qui monétise les colis des e-commerçants, annonce un nouveau tour de table, cette fois-ci en amorçage, de 2 millions d'euros ( plus 1,2 million en dette) auprès de La Poste Ventures (fonds initié par la Poste et géré par XAnge), Swiss Post Ventures, 50 Partners et Clover, qui font leur entrée au capital. Founders Future, qui avait mené le tour de pré-amorçage en 2022, réinvestit dans la société.</p> <p>Depuis son lancement en mai 2022, la start-up toulousaine a grandi et fait évoluer sa plateforme de mise en relation d’annonceurs et e-commerçants pour des campagnes publicitaires d’asilage. Le principe&nbsp;est de permettre à des marques non concurrentes de collaborer dans un environnement à part&nbsp;– le colis – via l'insertion d'expériences publicitaires (prospectus, catalogue...) mais avec le suivi et les métriques dignes du digital. L’offre d’ailleurs évolue et inclut désormais l’emailing et bientôt les réseaux sociaux.</p> <p>"Il est devenu très compliqué pour un e-marchand d’aller chercher de la croissance en retail media&nbsp;face à la pénurie d’inventaires onsite et aux limites de l’extension d’audience (baisse de l’adressabilité, coûts élevés de la data des retailers, mauvais ROI pour les marques). L’avenir du retail media se trouve dans des offres qui permettent d’aller chercher de la croissance en toute simplicité, sans plafond de verre et sans cannibaliser les inventaires onsite et la data des marchands. C’est bien ce que propose getinside", analyse Mathieu Azorin (Storetail, Criteo), serial investisseur et membre du board de l’entreprise. "Un autre point différenciant de getinside est son modèle presque coopératif&nbsp;: l’e-commerçant peut, s’il le souhaite, transformer l’argent qu’il gagne grâce au retail media en levier d’acquisition, en devenant lui-même annonceur dans les colis d’autres marchands inscrits dans la plateforme. Ce potentiel de double bénéfice, c’est unique et très malin", ajoute-t-il.</p> <p>Il y a aussi la profondeur de marché de la solution. Alors que sur le digital, la monétisation en retail media n’est viable <a href="https://www.journaldunet.com/adtech/1540337-retail-media-que-reste-t-il-pour-les-petits-et-moyens-retailers/">que chez les plus puissants retailers</a>, ici la promesse est de servir tout le monde, aussi bien de petits e-commerçants que de grandes enseignes, comme Kiabi, Nocibé ou But, classés dans une douzaine de verticales. "Getinside est la technologie de retail media pour tous les e-commerçants, nous n’imposons pas de frein à l’entrée", résume Maxime Garrigues, fondateur et CEO de getisinde.</p> <p>Disponible en libre-service, la plateforme permet aux marques et agences de sélectionner le ou les e-commerçants qui, parmi les plus de 250 inscrits dans la plateforme, matchent le plus avec l’audience ciblée, le tout avec une estimation des coûts dans les détails (CPM, frais de production et de routage, frais de plateforme). Des algorithmes permettent également de prévoir les performances de la campagne (coût par action), en se basant sur l’historique cumulé obtenu sur des activations similaires chez le même e-commerçant.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

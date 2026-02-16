@@ -32,21 +32,21 @@
 </h4> <div> <div> <p> le 16 février 2026 à 16:00. </p> </div> <div> <p>2 minutes de lecture </p> </div> </div> <p><img alt="Du trading de crypto et d'actions sur X ? Ce cadre en dit plus sur les « Smart Cashtags »" src="https://cryptoast.fr/wp-content/uploads/2026/02/trading-crypto-actions-x-cadre-dit-plus-smart-cashtags.jpg"></p><div> <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcryptoast.fr%2Ftrading-crypto-actions-x-cadre-dit-plus-smart-cashtags%2F"> </a> <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fcryptoast.fr%2Ftrading-crypto-actions-x-cadre-dit-plus-smart-cashtags%2F"> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fcryptoast.fr%2Ftrading-crypto-actions-x-cadre-dit-plus-smart-cashtags%2F"> </a> <a href="https://api.whatsapp.com/send?phone=&amp;text=https%3A%2F%2Fcryptoast.fr%2Ftrading-crypto-actions-x-cadre-dit-plus-smart-cashtags%2F"> </a> <a href="https://telegram.me/share/url?url=https%3A%2F%2Fcryptoast.fr%2Ftrading-crypto-actions-x-cadre-dit-plus-smart-cashtags%2F"> </a> <div> <div> <p>Copié</p> </div> <p>https://cryptoast.fr/feed/</p> <a href="#"> </a> </div> <div> <div> <p>CopiÃ</p> </div> <p>https://cryptoast.fr/trading-crypto-actions-x-cadre-dit-plus-smart-cashtags/</p> <a href="#"> </a> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

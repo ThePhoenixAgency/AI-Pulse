@@ -38,21 +38,21 @@ en mati�re d'infrastructures, de services cloud et d'intelligence artificielle
 Les menaces de Trump concernant le Groenland ont d�t�rior� les relations commerciales entre les �tats-Unis et l'UE. Cela a �galement raviv� les appels en Europe � prendre des mesures de r�torsion contre la Silicon Valley si le pr�sident am�ricain allait jusqu'au bout, d'autant plus que l'Europe accuse un d�ficit important avec les �tats-Unis dans le domaine des services. L'UE ne doit pas se laisser bercer par un faux sentiment de s�curit� en pensant que les tensions avec les �tats-Unis au sujet du Groenland, de la technologie et du commerce sont termin�es, a averti le pr�sident fran�ais Emmanuel Macron, qui a appel� le bloc � se lancer dans une � r�volution �conomique � et � devenir enfin une v�ritable puissance mondiale.</p><p>Le pr�sident fran�ais Emmanuel Macron est depuis longtemps partisan d'une plus grande souverainet� num�rique. Il a d�clar� que de nouveaux affrontements entre l'UE et les �tats-Unis au sujet de la r�glementation technologique �taient probables dans le courant de l'ann�e. En 2026, les pays s'inqui�tent de plus en plus de leur d�pendance vis-�-vis des entreprises technologiques am�ricaines car elles peuvent servir de moyens de sanctions comme <a href="https://www.developpez.com/actu/379838/Le-monde-travaille-a-s-affranchir-des-geants-technologiques-americains-qui-peuvent-servir-de-moyens-de-sanctions-comme-l-illustre-le-cas-du-juge-francais-de-la-CPI-Nicolas-Guillou/" target="_blank">l�illustre le cas du juge fran�ais de la CPI Nicolas Guillou.</a></p><p>Ce dernier a toute sa vie num�rique et financi�re qui est d�sormais s�v�rement restreinte en raison des sanctions globales ordonn�es � son encontre par Donald Trump. Ces sanctions font suite � sa participation � la d�cision de la Cour p�nale internationale (CPI) de d�livrer des mandats d'arr�t contre le Premier ministre isra�lien Benjamin Netanyahu et le ministre de la D�fense Yoav Gallant pour crimes de guerre. Les initiatives d�affranchissement des technologies am�ricaines vont donc en se multipliant.</p><p><b>Source</b> : Aiman Ezzat </p><p><b>Et vous ?</b></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div><div><p>This is the 48th launch from beehiiv. </p><a href="https://www.producthunt.com/products/beehiiv/launches"><span>View more</span> </a></div><section><img src="https://ph-files.imgix.net/a1df36a8-2340-46ba-b33e-fac638d41ec9.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=56&amp;h=56&amp;fit=crop&amp;frame=1" alt="Media Library by beehiiv"><div><div><h2>Media Library by beehiiv</h2><p>Launched this week</p></div><p><span>One place to create, edit, and manage all your creative</span></p></div></section><p>Welcome to a new command center for all of your creative. Our new Media Library centralizes your assets across publications and makes discovery effortless with powerful filters and improved search. Bulk manage files. Edit on the fly. Or, generate totally new visuals with the latest AI models. From idea to published product, all in one intuitive workflow.</p><div><div><p><img src="https://ph-files.imgix.net/dc156f5c-44c2-4377-826c-ddcb31365b1b.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Media Library by beehiiv gallery image"></p></div></div><section><p>Free Options</p></section><div><p>Launch Team </p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

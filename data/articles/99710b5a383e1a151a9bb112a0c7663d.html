@@ -24,7 +24,11 @@
 <body>
   <h1>L'Ukraine mène une contre-offensive inédite depuis 2023, aidée par des coupures de Starlink côté russe</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Franceinfo | Date: 2/16/2026 5:44:18 PM | Lang: FR |
+=======
+    Source: Franceinfo | Date: 2/16/2026 4:44:18 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/l-ukraine-mene-une-contre-offensive-inedite-depuis-2023-aidee-par-des-coupures-de-starlink-cote-russe_7809716.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 17:44</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="Des soldats ukrainiens préparent des munitions dans la région de Donetsk (Ukraine), le 23 janvier 2026. (DMYTRO SMOLIENKO / NURPHOTO / AFP)" src="https://www.franceinfo.fr/pictures/Puuf2jSQQaoATES_-qCwHRSRi8E/0x363:6048x3765/432x243/filters:format(jpg)/2026/02/16/075-ukrinform-ukrainia260123-npesl-6993495130678696458481.jpg"> <figcaption>Des soldats ukrainiens préparent des munitions dans la région de Donetsk (Ukraine), le 23 janvier 2026. <span>(DMYTRO SMOLIENKO / NURPHOTO / AFP)</span></figcaption> </figure> </div> </div><div><p>L'armée ukrainienne a repris 201 km2 à l'armée russe entre mercredi et dimanche dernier, d'après une analyse AFP des données de <a href="https://understandingwar.org/analysis/russia-ukraine/" target="_blank">l'Institut pour l'étude de la guerre</a> (ISW) lundi 16 février. Les forces de Kiev n'avaient pas repris autant de territoires en si peu de temps depuis une contre-offensive de juin 2023. La surface conquise est presque équivalente aux conquêtes russes de l'ensemble du mois de décembre (244 km2). <em>"Ces contre-attaques ukrainiennes tirent probablement parti du blocage de l'accès des forces russes à Starlink, qui selon les blogueurs militaires russes, perturbent les communications et le commandement",</em> juge l'ISW, qui collabore avec le Critical Threats Project, un autre centre de réflexion américain.</p><p>Le 5 février, des observateurs militaires russes avaient déjà constaté cette interruption après des annonces par Elon Musk de <em>"mesures" </em><a href="https://www.franceinfo.fr/monde/europe/manifestations-en-ukraine/guerre-en-ukraine-moscou-suspecte-d-utiliser-starlink-pour-ses-drones-d-attaque-kiev-en-discussion-avec-space-x_7772489.html" target="_self">pour mettre fin à l'usage de cette technologie par le Kremlin</a>. Kiev affirmait que les drones russes s'en servaient notamment pour contourner les systèmes de brouillage électronique et frapper leurs cibles avec précision. Sans le recours à Starlink, sur la semaine écoulée, seule la journée du 9 février <a href="https://www.franceinfo.fr/monde/russie/la-russie-affirme-avoir-pris-une-douzaine-de-villages-dans-l-est-de-l-ukraine-en-fevrier_7807496.html" target="_self">a vu des progressions russes sur le front</a>. Les autres jours, Kiev a gagné du terrain.</p><p>Les reprises ukrainiennes se concentrent surtout à environ 80 kilomètres à l'est de la ville de Zaporijia, dans une zone où les troupes russes ont beaucoup progressé depuis l'été 2025. Mi-février, Moscou contrôlait totalement ou partiellement 19,5% du territoire ukrainien, contre 18,6% un an plus tôt. Environ 7% - la Crimée et une partie du Donbass - étaient déjà sous contrôle russe avant l'invasion massive lancée en février 2022.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

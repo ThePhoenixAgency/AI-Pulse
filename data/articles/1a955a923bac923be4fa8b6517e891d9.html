@@ -32,21 +32,21 @@
 </p> </div> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/a6652fb1-89b7-49b9-a1af-3b41e1af7df0/NW_raw/photo-sipa-chang-martin-1771257767.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/a6652fb1-89b7-49b9-a1af-3b41e1af7df0/NW_detail/photo-sipa-chang-martin-1771257767.jpg" alt="Photo Sipa / Chang Martin"> </a> <figcaption>Photo Sipa / Chang Martin</figcaption></figure> </div> </div><div> <p>La reine de la pop <a href="https://www.ledauphine.com/p/angele" target="_blank">Angèle</a> a démenti ce lundi avoir dissimulé des revenus au fisc français, en affirmant qu'elle payait ses impôts et ceux de sa société en Belgique, son pays d'origine.&nbsp;La chanteuse a fait cette mise au point près des informations sur l'ouverture d'une enquête par l'administration fiscale, qui a notamment mené à une visite domiciliaire de son appartement à Paris.</p> <p>« A aucun moment, il ne peut être soutenu » qu'Angèle Van Laeken et sa société Saïmiri SRL « auraient dissimulé des revenus ou éludé l'impôt », indique son entourage. Elles « sont établies en Belgique » et « respectent leurs obligations légales en déclarant l'ensemble de leurs revenus mondiaux » dans ce pays. « Chaque année, la société verse à l'État belge des contributions importantes », selon le texte communiqué.</p> <div> <p><img src="https://cdn-files.prsmedia.fr/files/REDAC/images/svg/placeholders/youtube.svg" alt="Youtube PlaceHolder"></p><div> <p>Ce contenu est bloqué car vous n'avez pas accepté les cookies et autres traceurs.</p> <p>En cliquant sur <span>« J’accepte »</span>, les cookies et autres traceurs seront déposés et vous pourrez visualiser les contenus <span></span> (<a target="_blank">plus d'informations</a>).</p> <p>En cliquant sur <span>« J’accepte tous les cookies »</span>, vous autorisez des dépôts de cookies et autres traceurs pour le stockage de vos données sur nos sites et applications à des fins de personnalisation et de ciblage publicitaire.</p> <p>Vous gardez la possibilité de retirer votre consentement à tout moment en consultant notre <a href="https://www.ledauphine.com/protection-des-donnees" target="_blank">politique de protection des données</a>. <br> Gérer mes choix </p> </div> </div> <div> <h2>Balance ton fisc</h2><p>Saïmiri « a fait l'objet de mesures d'investigation de l'administration fiscale française, lesquelles ont notamment conduit à une visite domiciliaire à son pied-à-terre privé à Paris », des démarches qui « concernent un ciblage plus large des artistes belges reconnus sur le marché français », indique le communiqué.</p></div> <p>Ce dernier a été publié après des informations du site&nbsp;<a href="https://www.linforme.com/medias-culture/article/angele-balance-ton-fisc_3702.html" target="_blank">L'Informé</a> indiquant que les agents du fisc avaient visité son appartement le 19 mars 2025 et qu'Angèle avait tenté en vain de faire annuler par la justice les saisies réalisées. Interrogée, la Direction générale des finances publiques n'a pas souhaité réagir « en raison du secret fiscal »</p> <p>Née dans l'agglomération bruxelloise, Angèle Van Laeken, 30 ans, a connu un énorme succès avec son album <i>Brol</i> en 2018 et son morceau <i>Balance ton quoi</i>, suivi de l'album <i>Nonante-Cinq</i> en 2021.&nbsp;Elle a annoncé la sortie d'un morceau en collaboration avec le groupe de musique électronique Justice le 27 février.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

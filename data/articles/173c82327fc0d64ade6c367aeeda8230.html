@@ -33,21 +33,21 @@
 <time>05:21</time> </p> </figure> </div> <div> <p><span>Issued on: <time>06/01/2026 - 15:11</time></span><span>Modified: <time>06/01/2026 - 15:15</time></span></p> <div> <p> 05:21 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/entre-nous/"> <p>From the show</p> <img src="https://s.france24.com/media/display/c220fdc2-7681-11ef-98da-005056a90284/EN-header-entre-nous.svg" alt="Entre Nous"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> After all the sweet treats of the holidays, France has one more in store: <em>la galette des rois </em>or King Cake. Throughout the month of January, but especially on January 6 for Epiphany or Three Kings' Day, people head to the bakery to buy one. Eugénie&nbsp;Pont from the magazine Fou de Pâtisserie&nbsp;tells us everything you need to know about this delicious French tradition.&nbsp; </p> <div> <p>Eugénie&nbsp;also introduces us to the following <em>créations</em>: Classic by Lenôtre, Chocolate by Angelina, Pain Suisse by Christophe Adam, Paris-Brest by Hugues Pouget and Lemon by Jeffrey Cagnes.</p> <p><em>A programme produced by Amanda Alexander, Marina Pajovic and Georgina Robertson&nbsp;</em></p> </div> <div> <p><span> By: </span></p><div> <img src="https://s.france24.com/media/display/7bcbf32e-0edd-11ef-9848-005056bf30b7/w:388/p:1x1/Genie%20Godula%20-%20La%20vie%20en%20vert.jpeg" alt="FRANCE 24's Paris Direct"> </div> <div> <p><span> Amanda ALEXANDER </span> </p> </div> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

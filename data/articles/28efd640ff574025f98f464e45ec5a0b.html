@@ -32,21 +32,21 @@
 <li><figure><img alt="José Mourinho à la veille du match contre le Real Madrid en Ligue des champions."><figcaption><span>José Mourinho à la veille du match contre le Real Madrid en Ligue des champions. | </span>PATRICIA DE MELO MOREIRA / AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 17h46</span></time></span> </span> </header> </div> <div> <p>« <strong>Je ne veux pas encourager des histoires qui n’ont pas lieu d’être…</strong>&nbsp;», l’entraîneur de Benfica José Mourino a balayé les rumeurs d’un retour au Real Madrid, à la veille de retrouver mardi son ancien club en barrage aller de Ligue des champions. Les deux formations se recroisent à Lisbonne quelques semaines après la victoire 4-2 sur le fil des Portugais lors de la dernière journée de la phase de ligue de la C1.</p> <p>En conférence de presse d’avant-match, José Mourinho, coach du Real entre 2010-2013, a été interrogé sur un possible retour à Madrid, alors qu’il dispose d’une clause dans son contrat avec Benfica qui lui permettrait de quitter le club lisboète.</p> <h2>«&nbsp;J’ai tout donné au Real Madrid&nbsp;»</h2> <p>Alors qu’on lui demandait s’il pourrait «<strong>&nbsp;dire non</strong>&nbsp;» à une proposition du président madrilène Florentino Perez, José Mourinho a répondu&nbsp;: «&nbsp;Oui. <strong>Oui, on peut</strong>&nbsp;(répondre non)&nbsp;», malgré une «<strong>&nbsp;grande amitié</strong>&nbsp;» pour le dirigeant madrilène et un lien indéfectible avec le club merengue.</p> <p><strong>Lire aussi&nbsp;: </strong> <a href="https://www.ouest-france.fr/sport/coupe-du-monde/carlo-ancelotti-devrait-deja-prolonger-avec-le-bresil-a-quelques-mois-de-la-coupe-du-monde-bfd9db3c-0989-11f1-8f27-f38523081a88" target="_blank">Carlo Ancelotti devrait déjà prolonger avec le Brésil à quelques mois de la Coupe du monde</a></p> <p>« <strong>J’ai tout donné au Real Madrid, tout ce que j’avais, j’ai fait de bonnes choses, j’ai fait de mauvaises choses, mais j’ai tout donné et c’est tout […] Les supporters m’estiment beaucoup, et c’est fantastique, mais je ne veux pas encourager des histoires qui n’ont pas lieu d’être</strong>&nbsp;», a déclaré l’entraîneur de 63&nbsp;ans.</p> <h2>Une confrontation sous haute tension entre Benfica et le Real Madrid</h2> <p>« <strong>La seule chose qui existe, c’est que j’ai encore un an de contrat avec Benfica et il n’y a rien avec le Real Madrid. C’est un contrat spécial, car il a été signé pendant une période électorale</strong>&nbsp;(pour la présidence de Benfica, en novembre&nbsp;2025, ndlr)&nbsp;».</p> <p>Concernant la confrontation de mardi, Mourinho aimerait « <strong>éliminer</strong>&nbsp;» le Real, mais s’attend à un match différent de ce celui de janvier. «<strong>&nbsp;Le Real Madrid que j’attends demain est le Real Madrid qui est le favori numéro un pour remporter la Ligue des champions.</strong>&nbsp;»</p> <p><strong>Lire aussi&nbsp;:</strong> <a href="https://www.ouest-france.fr/sport/football/olympique-lyonnais/ol-plus-il-joue-moins-on-paye-les-contours-du-pret-dendrick-devoiles-par-matthieu-louis-jean-directeur-technique-63dab4ce-0712-11f1-9c0a-f496d01f0cae" target="_blank">OL. «&nbsp;Plus il joue, moins on paye&nbsp;», les contours du prêt d’Endrick révélés par Matthieu Louis-Jean, directeur technique</a></p> <p>«<strong>&nbsp;J’aimerais beaucoup éliminer le Real Madrid, mais je voudrais qu’Alvaro&nbsp;(Arbeloa) remporte la Liga et qu’il reste à Madrid pendant de nombreuses années. Je pense que c’est un entraîneur très compétent, un garçon qui a Madrid dans le sang et qui a la personnalité nécessaire pour entraîner Madrid, ce qui n’est pas donné à tout le monde</strong>&nbsp;», a souligné le Portugais.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

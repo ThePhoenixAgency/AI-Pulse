@@ -35,21 +35,21 @@
 </ul></div><p>U.S. investors continued to exit crypto funds, while the rest of the world is buying the dip.</p><p>Digital asset investment products saw their fourth consecutive week of outflows, totaling $173 million, according to CoinShares' latest <a href="https://researchblog.coinshares.com/volume-273-digital-asset-fund-flows-weekly-report-619cd0f21653" target="_blank">report</a>. The stretch has now erased a staggering $3.74 billion from crypto funds over the past four weeks.</p><p>But the headline number masks a sharp regional divide.</p><p>The United States accounted for $403 million in outflows, while Europe and Canada recorded $230 million in inflows—suggesting that international investors are using the opportunity to buy the dips where U.S. counterparts see risk.</p><p>​​This divergence signals that institutional sentiment in the U.S. has turned decisively cautious, even as global allocators step in to catch a falling knife.</p><p><a href="https://decrypt.co/?post_type=post&amp;p=5736" target="_blank"><span>Bitcoin</span></a> products led this exodus among American investors. Though the flagship crypto bore the brunt of the selling with $133.3 million in outflows last week, CoinShares Head of Research James Butterfill noted that short Bitcoin investment products also saw outflows totaling $15.4 million over the past two weeks—a pattern he argued is "often seen near market lows."</p><p>Ethereum funds suffered $85.1 million in outflows, while Hyperliquid shed $1 million.</p><p>The price action tells a similar story. Bitcoin is down 2% over the past 24 hours and trading at $69,000, according to <a href="https://decrypt.co/price/bitcoin" target="_blank">CoinGecko data</a>. Major altcoins, including <a href="https://decrypt.co/price/ethereum" target="_blank">Ethereum</a>, <a href="https://decrypt.co/price/solana" target="_blank">Solana</a>, and <a href="https://decrypt.co/price/xrp" target="_blank">XRP</a>, are down slightly or flat over 24 hours—showcasing a market drained of volatility and direction.</p><p>XRP and Solana funds continued their recent streak of resilience, attracting $33.4 million and $31 million in inflows, respectively. Chainlink rounded out the winners with $1.1 million in new capital.</p><p>The resilience of Solana is evident in prediction market <a href="https://myriad.markets/markets" target="_blank">Myriad</a>, owned by <i>Decrypt’s</i> parent company, Dastan, where users assign a <a href="https://myriad.markets/markets/sol-vs-silver-which-hits-150-first" target="_blank">52% chance</a> that Solana would hit $150 before silver.</p><p>However, not every altcoin bled from a price action standpoint. Select tokens posted double-digit gains over the past week, according to a previous <i>Decrypt</i> <a href="https://decrypt.co/358144/crypto-traders-rotate-into-select-altcoins-as-bitcoin-stalls" target="_blank">report</a>.</p><p>It reflects renewed retail risk appetite rather than structural conviction, Nick Ruck, director of LVRG Research, told <i>Decrypt</i>. He argued that the recent altcoin surge "stems mainly from renewed retail risk appetite after softer U.S. inflation data."</p><p>The ongoing rally in altcoins is a classic sign of capital rotation away from Bitcoin, the LVRG Research analyst said. Capital and attention flow to altcoins, especially when Bitcoin is less volatile and consolidating.</p><p>"Short-term momentum may continue, but sustainability will require new fundamental drivers or macro stabilization to avoid fading into pure speculation," he added.</p><div><h3>Daily Debrief Newsletter</h3><p>Start every day with the top news stories right now, plus original features, a podcast, videos and more.</p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>asdPrompt — Select, copy, and act on any AI response without touching the mouse.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>asdPrompt — Select, copy, and act on any AI response without touching the mouse.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 6:28:32 PM | Lang: EN |
+    <a href="https://asdprompt.com/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p>You</p> <p>Explain how attention mechanisms work in transformers</p> </div> <div> <p>Claude</p> <div> <p><span><span>The</span> <span>core</span> <span>idea</span> <span>behind</span> <span><strong>self-attention</strong></span> <span>is</span> <span>that</span> <span>every</span> <span>token</span> <span>in</span> <span>a</span> <span>sequence</span> <span>gets</span> <span>to</span> <span>"look&nbsp;at"</span> <span>every</span> <span>other</span> <span>token</span> <span>and</span> <span>decide</span> <span>how</span> <span>much</span> <span>to</span> <span>attend</span> <span>to it.</span></span> <span><span>Each</span> <span>token</span> <span>is</span> <span>projected</span> <span>into</span> <span>three</span> <span>vectors:</span> <span>a</span> <span><strong>query</strong>,</span> <span>a</span> <span><strong>key</strong>,</span> <span>and</span> <span>a</span> <span><strong>value</strong>.</span></span> <span><span>The</span> <span><strong>attention&nbsp;mechanism</strong></span> <span>then</span> <span>computes</span> <span>a</span> <span>weighted</span> <span>sum</span> <span>of</span> <span>all</span> <span>values,</span> <span>where</span> <span>the</span> <span>weights</span> <span>come</span> <span>from</span> <span>the</span> <span>dot</span> <span>product</span> <span>of</span> <span>queries</span> <span>and</span> <span>keys.</span></span></p> <pre><code><span># Scaled dot-product attention</span>
+<span>import</span> torch
+<span>import</span> torch.nn.functional <span>as</span> F <span>def</span> <span>attention</span>(Q, K, V, d_k): scores = torch.matmul(Q, K.transpose(<span>-2</span>, <span>-1</span>)) / d_k ** <span>0.5</span> weights = F.softmax(scores, dim=<span>-1</span>) <span>return</span> torch.matmul(weights, V)</code></pre> <div> <p><span><span>This</span> <span>mechanism</span> <span>has</span> <span>several</span> <span>key</span> <span>advantages:</span></span></p> <ul> <li><span><span><strong>Parallelism</strong></span> <span>—</span> <span>unlike</span> <span>RNNs,</span> <span>all</span> <span>positions</span> <span>are</span> <span>processed</span> <span>simultaneously</span></span></li> <li><span><span><strong>Long-range&nbsp;dependencies</strong></span> <span>—</span> <span>any</span> <span>token</span> <span>can</span> <span>directly</span> <span>attend</span> <span>to</span> <span>any</span> <span>other</span></span></li> <li><span><span><strong>Interpretability</strong></span> <span>—</span> <span>attention</span> <span>weights</span> <span>show</span> <span>what</span> <span>the</span> <span>model</span> <span>focuses</span> <span>on</span></span></li> </ul> </div> <p><span><span>In</span> <span>practice,</span> <span>transformers</span> <span>use</span> <span><strong>multi-head&nbsp;attention</strong>,</span> <span>which</span> <span>runs</span> <span>several</span> <span>attention</span> <span>operations</span> <span>in</span> <span>parallel</span> <span>so</span> <span>the</span> <span>model</span> <span>can</span> <span>capture</span> <span>different</span> <span>types</span> <span>of</span> <span>relationships</span> <span>simultaneously.</span></span></p> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

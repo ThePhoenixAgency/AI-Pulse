@@ -32,21 +32,21 @@
 </p> </div> <div> <div> <p>Tout le monde a un souvenir de Vincent Desagnat. Les adolescents du début des années 2000 n’ont pas pu rater ses folies dans le <i>Morning live</i>, sur M6, qu’il portait avec ses amis Michaël Youn et Benjamin Morgaine. Au fil des années, les trois compères n’ont cessé de divertir les Français. Le projet Fatal Bazooka, qui aura même eu le <a href="https://www.ledauphine.com/culture-loisirs/2025/05/23/le-rappeur-le-plus-celebre-de-savoie-va-faire-son-grand-retour-au-cinema-en-2026" target="_blank">droit à son film</a>, les Bratisla boys, <i>Les </i><i>Onze commandements</i>… Autant de créations déjantées qui auront...</p> </div> <div> <p>...pour lire la suite, rejoignez notre communauté d'abonnés</p> <p>et accédez à l'intégralité de nos articles sur le site et l'application mobile</p> <p> à partir de 1 € le 1er mois, sans engagement de durée </p> <p>Google : 1€ le 1er mois puis 12,99€</p> </div> </div> <div> <h2><span>Articles les plus lus</span><span>Société</span> </h2> </div> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

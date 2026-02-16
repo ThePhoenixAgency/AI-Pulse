@@ -75,21 +75,21 @@
 <p>Now, I’d like to give the option of “Hey, if you don’t want YouTube, that’s okay. You can also download it from the CDN” that I pay for, that I set up, and in this case I haven’t built, but that’s coming. Or Jellyfin. Now, I don’t know how many users would set up a Jellyfin, to be honest, for Changelog… But I like the idea of basically – having that one-to-one relationship between the creator, and the watcher/the listener/the viewer. There’s nothing in between. So YouTube can’t push its ads, YouTube can’t ban certain content in certain places if it happens, however it happens… Again, it’s very difficult to know that, because you need to be in those places to know how that works. And I also like the idea of people being able to download the content. And again, the podcast players makes it easy. For YouTube, you have to pay that premium. You have to go YouTube Premium, which I do, and I have for many years, and I think it works great… But again, my experience, my YouTube experience is very different to most people, because I don’t think many people pay for YouTube. It’s just like an extra expense. So that’s my take. Yeah.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

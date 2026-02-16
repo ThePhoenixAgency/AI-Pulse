@@ -92,21 +92,21 @@
 <p>[<a href="#t=01:25:09.13">01:25:09.13</a>] And with the announcement with Claude Sonnet 4.5 today/yesterday, they actually recognized that. They renamed the Claude Code SDK to Claude Agents SDK. They moved a couple of things around for it to be a better SDK for people to build on top. Because I think that there is a lot to gain for leveraging everything. They are tightening the models, those tools, and we want to be able to leverage that.</p> </div> <div> <p>Right. That makes sense. They’re putting a lot of work in to take that model and make it an agent… And there’s no reason why everybody else needs to do that work as well.</p> </div> <div> <p>Well, how would you go about building on that right now? Where would you go? What’s the starting point to building that right now?</p> </div> <div> <p>I don’t know. What’s the website?</p> </div> <div> <p>Oh, I don’t know.</p> </div> <div> <p>Zen.dev/acp, or something?</p> </div> <div> <p>No, I would just search for “agent client protocol” on Google and see where that –</p> </div> <div> <p>Agentclientprotocol.com.</p> </div> <div> <p>Alright. All together, right?</p> </div> <div> <p>All spelled out, yup. Alright. Of course, when you google that, it will be your first hit.</p> </div> <div> <p>And I believe there is an SDK type script. I don’t know other languages right now, but the protocol is –</p> </div> <div> <p>That’s the only language that you know? [laughter] There’s a hot take. You heard it here first… Jose only knows TypeScript. That’s when you know it’s getting late. I just autocompleted you. [laughter]</p> </div> <div> <p>Yeah… But I can see it becoming more and more important, and we are going to see more SDKs. But the protocol is also relatively straightforward as well… So yeah, I’m hoping that – I can really see a lot of value in there, and I hope it’s going to catch up to the point where – because I think Gemini’s CLI is supported, built-in in the CLI… But when Zed released support for Claude Code, for example, it’s because they have a wrapper. So I hope it grows to the point where the CLIs, they are coming with built-in support for it. And then I hope it grows to the point that – which of the big providers have their CLI’s version right now? It’s Gemini, it’s OpenAI, and it’s Anthropic. Grok, they don’t have theirs, I think.</p> </div> <div> <p>No.</p> </div> <div> <p>ZAI, they don’t have theirs… So I actually hope those other companies, they start providing those CLIs as well, with all those things we have been talking about in the sense like “Look, here are the optimized diffs. Those are the things we improved for”, so we can move to the point where we are all building on top, and not particularly inventing that wheel. So I really hope it grows.</p> </div> <div> <p>More CLIs. Give them to me.</p> </div> <div> <p>There you go. Thanks for hanging with us, Jose. It’s always a pleasure, man.</p> </div> <div> <p>My pleasure. Yeah.</p> </div> <div> <p>Alright, bye –</p> </div> <div> <p>Bye, friends.</p> </div> <div> <p>Ooh. Synchronized.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div><p><em>Leader Kim Jong Un unveils housing for families of soldiers killed overseas amid North Korea’s support for Russia’s war in Ukraine.</em></p></div><div><p><span>Published On 16 Feb 2026</span></p></div><div><p>North Korean leader Kim Jong Un has opened a new housing district in Pyongyang for families of soldiers killed while fighting overseas amid the East Asian country’s support for Russia’s war against Ukraine.</p><p>Kim said Saeppyol Street was “a source of honour for our generation and a pride of Pyongyang and our state”, North Korean newspaper Rodong Sinmun reported on Monday.</p><section><h2>Recommended Stories </h2><span>list of 4 items</span><ul><li><span>list 1 of 4</span><a href="https://www.aljazeera.com/news/2026/2/12/north-koreas-kim-jong-un-sets-stage-for-daughter-as-his-successor-seoul">North Korea’s Kim Jong Un sets stage for daughter as his successor: Seoul</a></li><li><span>list 2 of 4</span><a href="https://www.aljazeera.com/news/2025/12/27/n-korea-russia-bound-in-blood-of-war-kim-tells-putin-in-new-year-note">N Korea, Russia bound in ‘blood’ of war, Kim tells Putin in New Year note</a></li><li><span>list 3 of 4</span><a href="https://www.aljazeera.com/news/2026/1/28/north-koreas-kim-to-outline-plans-to-boost-nuclear-arsenal">North Korea’s Kim to outline plans to boost nuclear arsenal</a></li><li><span>list 4 of 4</span><a href="https://www.aljazeera.com/news/2025/12/25/north-koreas-kim-slams-us-seoul-nuclear-submarine-deal-as-offensive-act">North Korea’s Kim slams US-Seoul nuclear submarine deal as ‘offensive act’</a></li></ul><span>end of list</span></section><p>“He prayed for the immortality of the martyrs along with its inauguration which will etch the martyrs’ names and images in history,” it added.</p><p>While the report did not mention Russia, Kim last week pledged to “unconditionally support” all of Russian President Vladimir Putin’s policies and decisions.</p><p>Under a mutual defence pact with Moscow, Pyongyang dispatched thousands of soldiers to Ukraine in 2024, according to South Korean, Ukrainian and Western officials.</p><figure><img src="https://www.aljazeera.com/wp-content/uploads/2026/02/2026-02-15T222136Z_242844356_RC2LMJAL3IOQ_RTRMADP_3_NORTHKOREA-MILITARY-1771227352.jpg?w=770&amp;resize=770%2C510&amp;quality=80" alt="Kim Jong Un unveils homes for families of fallen soldiers"><figcaption>North Korean leader Kim Jong Un, centre, and his daughter Kim Ju Ae, standing behind, react on the day of the completion ceremony of a new housing district in Pyongyang for families of soldiers who died in overseas military operations [KCNA via Reuters]</figcaption></figure><p>Kim said he had pushed to finish the project “even one day earlier” in the hope it might bring “some small comfort” to the soldiers’ families, state-run Korean Central News Agency reported.</p><p>Photographs released by KCNA showed Kim, accompanied by his daughter Ju Ae, consoling family members of the fallen soldiers and visiting their newly completed homes.</p><p>South Korea’s National Intelligence Service told legislators last week it estimated 6,000 North Korean soldiers have been killed or wounded during their deployment in the <a href="https://www.aljazeera.com/news/2025/12/27/n-korea-russia-bound-in-blood-of-war-kim-tells-putin-in-new-year-note">war against Ukraine</a>, but did not provide a breakdown of deaths.</p><figure><img src="https://www.aljazeera.com/wp-content/uploads/2026/02/2026-02-15T222136Z_130311753_RC2LMJAXTWB5_RTRMADP_3_NORTHKOREA-MILITARY-1771227349.jpg?w=770&amp;resize=770%2C510&amp;quality=80" alt="Kim Jong Un unveils homes for families of fallen soldiers"><figcaption>Kim Jong Un with attendees on the day of the inauguration of the housing district [KCNA via Reuters]</figcaption></figure><p>South Korea’s spy agency has also warned that North Korean forces are gaining modern combat experience and benefitting from Russian technical assistance that could enhance Pyongyang’s weapons systems.</p><p>In addition to deploying troops, Pyongyang is thought to have shipped artillery shells, missiles and long-range rocket systems to Moscow, while receiving cash, military know-how, and food and energy shipments from Russia in return.</p><p>North Korea has staged multiple public ceremonies in recent months to honour its war dead, including the unveiling of a ‌new memorial complex in Pyongyang adorned with soldiers’ sculptures.</p><p>The rollout comes in advance of Pyongyang’s biggest political event on the calendar – the party congress – later this month, although the exact date has not been announced.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -43,21 +43,21 @@ Sat, 28 March 2026, 09:00 UTC — Sat, 28 March 2026, 19:00 UTC&nbsp;<a href="ht
 <p></p> <p><a href="#loginModal">Sign in</a> to comment. </p><div> <div> <h3>Sign in with</h3> </div> <div> <p><a href="https://ctftime.org/login/google-oauth2/?next=/event/3084"><img src="https://ctftime.org/static/images/google.svg" alt="Enter using Google"></a> <a href="https://ctftime.org/login/twitter/?next=/event/3084"><img src="https://ctftime.org/static/images/twitter.svg" alt="Enter using Twitter"></a> <a href="https://ctftime.org/login/facebook/?next=/event/3084"><img src="https://ctftime.org/static/images/facebook.svg" alt="Enter using Facebook"></a> <a href="https://ctftime.org/login/github/?next=/event/3084"><img src="https://ctftime.org/static/images/github.svg" alt="Enter using Github"></a></p><p><a href="https://ctftime.org/amnesia">I don't remember</a></p> </div> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

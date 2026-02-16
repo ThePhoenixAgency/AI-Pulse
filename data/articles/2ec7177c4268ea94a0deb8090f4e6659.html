@@ -24,28 +24,32 @@
 <body>
   <h1>Giant robot tribute to Brazil's Lula leads start of Rio Carnival</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: BBC World | Date: 2/16/2026 12:09:42 PM | Lang: EN |
+=======
+    Source: BBC World | Date: 2/16/2026 11:09:42 AM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.bbc.com/news/videos/cgjz234pj3lo?at_medium=RSS&at_campaign=rss" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <div><div><p>A tribute to Brazil's president Luiz Inácio Lula da Silva has marked the first day of the iconic carnival parades in Rio de Janeiro.</p><p>The samba school Acadêmicos de Niterói traced Lula's life as a boy growing up in poverty in the Brazilian northeast, to a metalworker, union leader and then president, showcasing giant figures to honour the president.</p><p>The parade drawn criticism from the opposition because Brazil's next general election, which will also elect the country's president, will take place in October. Critics argue the tribute can be seen as early electioneering and a possible violation of campaign rules ahead of the election.</p><p>Rio's carnival parades take place over three days, featuring four top samba schools each day.</p><p><i>Video edited by Marina Costa</i></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

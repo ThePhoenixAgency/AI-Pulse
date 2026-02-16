@@ -31,21 +31,21 @@
     <div><div> <p> <a href="https://img-0.journaldunet.com/ikS4YnLuIG8AfEBP7t1e6-Z5U6U=/1500x/smart/12ba68dffa78401092150f80fe115df9/ccmcms-jdn/39533341.jpg"> <img src="https://img-0.journaldunet.com/ikS4YnLuIG8AfEBP7t1e6-Z5U6U=/1500x/smart/12ba68dffa78401092150f80fe115df9/ccmcms-jdn/39533341.jpg" alt="Naboo lève 70&nbsp;millions de dollars pour sa plateforme d'événementiel en entreprise"> </a> La start-up avait déjà levé 20&nbsp;millions d'euros en janvier 2025. Ce nouveau financement lui permet notamment d'ouvrir un bureau à New York.</p> <p>Joli tour de table pour Naboo. La <a href="https://www.journaldunet.com/start-up/">start-up</a> française, qui a développé une plateforme dédiée aux achats événementiels, annonce ce 10&nbsp;février avoir conclu une série B à hauteur de 70&nbsp;millions de dollars menée par le fonds américain Lightspeed Venture Partners. Déjà présents au capital, Notion Capital, ISAI et Ternel ont également pris part au tour de table.</p> <p>A ses débuts en 2022, Naboo se présentait comme une plateforme destinée à aider les entreprises à organiser le télétravail. Le projet ne décollant pas, la start-up opère un premier pivot en 2023&nbsp;vers l’organisation de séminaires sur mesure. Le positionnement trouve alors son marché, au point que Naboo décide d'élargir son logiciel à l’ensemble des achats liés à l’événementiel.</p> <p>"On est devenu une centrale d'achats pour tout l'événementiel des entreprises&nbsp;: les séminaires, les team building, les repas d'affaires, les conférences etc.", explique <a href="http://linkedin.com/in/maxime-eduardo-3a063477">Maxime Eduardo</a>, CEO et cofondateur. "Nos clients ont une seule facture et un seul point de contact. On négocie pour eux les tarifs auprès des prestataires. Comme on gère des gros volumes d'achats, on peut leur obtenir des réductions allant de 10&nbsp;à 15%".</p> <p>Naboo affirme collaborer, dans le cadre de contrats d’exclusivité, avec près d’un quart des entreprises du CAC 40, dont Capgemini, Danone et la Société Générale. L'entreprise compte aussi des clients américains comme Google, Meta ou Microsoft. "Depuis trois ans, on parvient à tripler notre chiffre d'affaires chaque année", assure Maxime Eduardo. A noter que Naboo ne pratique aucune majoration sur les prestations facturées par ses partenaires. Son modèle économique repose sur deux autres sources de revenus&nbsp;: un abonnement <a href="https://www.journaldunet.com/solutions/intranet-extranet/saas/">SaaS</a> et une commission prélevée auprès des prestataires "en tant qu’apporteur d’affaires".</p> <h2>Près de 100&nbsp;recrues attendues</h2> <p>La start-up, qui a racheté en 2024&nbsp;la plateforme d'événementiel BizMeeting, avait bouclé une Série&nbsp;A de 20&nbsp;millions d'euros en janvier 2025. Pourquoi conclure un nouveau tour de table seulement un an plus tard&nbsp;? "On a eu une croissance beaucoup plus forte que prévu. Il faut savoir saisir le momentum quand il est là. Pour devenir un leader mondial, il faut du cash et investir de manière régulière", répond le dirigeant.</p> <p>Le financement, dont une "petite partie" a été effectuée sur le marché secondaire par la vente de BSPCE de quelques salariés, doit permettre à Naboo de réaliser plusieurs objectifs. L'entreprise ouvre un bureau à New York, après s'être implantée à Montréal, Hambourg et Barcelone en 2025. "Plus de la moitié de notre chiffre d'affaires est réalisée à l'étranger", précise Maxime Eduardo.</p> <p>Naboo compte également renforcer ses équipes pour passer de 200&nbsp;à 300&nbsp;collaborateurs d'ici fin 2026, multiplier ses investissements dans l'IA et prévoit même d'étendre sa solution à d'autres verticales. "On ne veut pas se limiter qu'à l'événementiel. D'ici 2027&nbsp;ou 2028, on pourrait se lancer sur d'autres secteurs comme les goodies et le merchandising". L'époque de la plateforme de télétravail parait bien lointaine.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

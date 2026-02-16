@@ -31,21 +31,21 @@
     <div><div><p>Waku est un framework React minimal. Il se veut le plus léger possible et supporte toutes les dernières nouveautés de React 19. Il se présente comme une alternative aux gros frameworks tels que Next.js. L'idée est que pour un projet léger, il faut un framework léger et vous utilisez directement les composants serveur sans les couches intermédiaires ou les fonctions. Il se construit sur Vite et Hono.&nbsp;</p><p>Il est possible de déployer sur node, SSG, Vercel, Netlify, Cloudfare Workers, Deno Deploy, Bun, AWS Lambda.</p><p>Mais la documentation est déconcertante. Peu ou pas d'explications sur la nature du framework et les fonctionnalités.&nbsp;</p><p>Il est taillé pour les sites statiques avec quelques éléments dynamiques.</p><p>Site :&nbsp;<a href="https://waku.gg/">https://waku.gg/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

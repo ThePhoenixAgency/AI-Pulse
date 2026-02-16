@@ -40,21 +40,21 @@
 <p>Autre can­di­dat déclaré aux muni­ci­pales de Grenoble, Hervé Gerbi (Horizons), a, lui aussi, réagi par com­mu­ni­qué. Il estime que les affron­te­ments «&nbsp;<em>n’ont pas leur place dans notre ville&nbsp;»</em>, rap­pe­lant que «&nbsp;<em>la démo­cra­tie repose sur le débat, pas sur la vio­lence</em>&nbsp;». Il affirme son sou­tien aux forces de l’ordre «<em>&nbsp;dont la mis­sion est de garan­tir l’exercice des liber­tés dans un cadre légal&nbsp;</em>» et appelle à refu­ser «&nbsp;<em>toutes les radi­ca­li­tés, celles des mots comme celles des actes</em>&nbsp;».</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

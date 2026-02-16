@@ -32,21 +32,21 @@
 </p> </div> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/529fb66c-303c-4a52-8919-f22579d062a7/NW_raw/le-lac-de-la-taillat-d-ordinaire-tres-frequente-etait-sans-doute-relativement-desert-ce-samedi-14-fevrier-en-raison-du-mauvais-temps-photo-archives-le-dl-1771251025.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/529fb66c-303c-4a52-8919-f22579d062a7/NW_detail/le-lac-de-la-taillat-d-ordinaire-tres-frequente-etait-sans-doute-relativement-desert-ce-samedi-14-fevrier-en-raison-du-mauvais-temps-photo-archives-le-dl-1771251025.jpg" alt="Le lac de la Taillat, d’ordinaire très fréquenté, était sans doute relativement désert, ce samedi 14 février, en raison du mauvais temps. Photo /archives/ Le DL."> </a> <figcaption>Le lac de la Taillat, d’ordinaire très fréquenté, était sans doute relativement désert, ce samedi 14 février, en raison du mauvais temps. Photo /archives/ Le DL.</figcaption></figure> </div> </div><div> <p>Une enquête a été ouverte et confiée par le procureur de la République de Grenoble aux gendarmes de la brigade des recherches de Meylan après la découverte d’une jeune femme qui semble avoir été abusée sexuellement, samedi, sur les bords du lac de la Taillat à Meylan.</p> <p>Selon les informations du <i>Dauphiné Libéré</i> , la victime – une étudiante âgée de 20 ans – aurait été retrouvée en pleurs, les mains attachées avec une écharpe, à proximité de ce plan d’eau particulièrement prisé des pêcheurs et des joggeurs et accessible à vélo ou à pied depuis l’agglomération par les pistes cyclables du bord de l’Isère, mais qui devait être relativement désert ce samedi en raison du mauvais temps qui sévissait sur le département.</p> <p>Alertés, les sapeurs-pompiers lui ont prodigué les premiers soins tandis que les gendarmes de la compagnie de Meylan recueillaient ses premières déclarations. La jeune femme leur aurait ainsi expliqué avoir été violée par un inconnu qui avait ensuite pris la fuite.</p> <p>On ignore les circonstances précises dans lesquelles elle aurait été agressée mais des recherches ont immédiatement été lancées qui n’ont, à ce jour, pas abouti à l’interpellation d’un suspect.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

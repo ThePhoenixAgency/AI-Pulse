@@ -33,21 +33,21 @@
 </div> <p>"As Manhattan grows more twisted, traversal across the different zones becomes as much a gameplay challenge as it is a spectacle. Dylan’s supernatural abilities, such as Reach, allow him to navigate spaces that no longer obey regular rules of physics," says Sergey Mohov, Lead Gameplay Designer on <em>Control Resonant</em>. "You’ll also encounter areas where gravity and orientation shift entirely, called Gravity Anomalies. By activating his Shift ability, Dylan can adapt on the fly, redirecting momentum and movement to traverse these spaces."</p> <p>Dylan is said to be wielding the Aberrant as his choice of weapon. This can shapeshift into multiple forms depending on how players build and use it, including hammers, scythes, fists, and more. As the new hero grows more powerful, players will be unlocking new Aberrant forms, supernatural abilities, and combos, which can take on enemies both on the ground and in the air.</p> <p>The trailer teases a Resonant at the end, showing off why this sequel is called that. These are described as "remnants of people who once held great power, now corrupted and twisted by the same mysterious force threatening reality itself." Defeating them is how Dylan can upgrade his arsenal of supernatural abilities.</p> <p><em>Control Resonant</em> did not get a release date today, but it is set to hit PC, Xbox Series X|S, and PlayStation 5 sometime in 2026.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

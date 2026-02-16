@@ -34,21 +34,21 @@
 </div> <p>Très intéressant également, le mapping nous apprend que l'écosystème français de l'IA franchit un cap de maturité, tant du côté des investisseurs que des start-up elles-mêmes. Toutes confondues, les 1&nbsp;114&nbsp;start-up ont levé près de 16&nbsp;milliards d'euros depuis leur création. "40% des investissements en IA en 2025&nbsp;ont été réalisés par des corporates ou des CVC, dont 25% directement dans des start-up", révèle Socheat Chhay. "L'enjeu n'est plus technologique, il est stratégique", insiste encore le directeur général de Sopra Steria Ventures. Les grands groupes ne font plus de R&amp;D spéculative mais investissent massivement en série A et B pour industrialiser des solutions déjà éprouvées, particulièrement dans la santé, la fintech et l'industrie.</p> <p>Côté start-up, une entreprise sur deux est déjà rentable ou prévoit de l'être dans les trois prochaines années. Un signe de maturité, mais aussi d'une divergence avec le modèle américain. Là où les start-up américaines peuvent brûler du cash pendant des années avant de penser rentabilité, l'écosystème européen impose une discipline financière plus précoce, pour le meilleur comme pour le pire.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -37,21 +37,21 @@
 </ul> <h3>Pack ado protégé avec un smartphone sans réseau social ni navigateur</h3> <p>L’entreprise annonce aussi son <em>«&nbsp;pack ado protégé&nbsp;»</em> composé d’un smartphone Neow Safe Plus «&nbsp;<em>pensé pour accompagner les adolescents</em>&nbsp;» et d’un forfait mobile sans engagement. Le terminal mobile est fabriqué «&nbsp;<em>par une marque française</em>&nbsp;» et le pack a été initialement lancé à la Réunion.</p> <p>Ce smartphone est vendu <a href="https://www.sfr.fr/neow-safeplus#Decouvrezlenouveauneowsafeplusenvideo" target="_blank">149,90 euros par le fabricant</a> sur son site Internet, tandis que SFR le propose à <a href="https://www.sfr.fr/neow-safeplus#Decouvrezlenouveauneowsafeplusenvideo" target="_blank">129 euros avec un forfait sans engagement</a> (6 euros par mois pour 2&nbsp;h et 1 Go, 16 euros pour 60 Go, 20 euros pour 200 Go ou 27 euros pour 250 Go).</p> <figure><img src="https://next.ink/wp-content/uploads/2026/02/image-63-1024x635.png" alt=""></figure> <p>Il est pensé pour les jeunes à partir de 14 ans, avec un SoC huit cœurs Unisoc Tiger T606, 4 Go de mémoire, 128 Go de stockage, des capteurs de 13 et 8 Mpixel, de la 4G, une batterie de 5&nbsp;150 mAh… La fiche technique est <a href="https://cdn.shopify.com/s/files/1/0871/2303/4460/files/Fiche-technique-NEOWSafeplus1.pdf?v=1761215126" target="_blank">disponible par ici</a>. Rien d’exceptionnel pour un smartphone dans cette gamme de prix. </p> <p>Côté logiciel, le fabricant explique que vous pouvez gérer les applications dans le Store, géolocaliser le smartphone, «&nbsp;<em>bloquer l’accès à Internet et aux moteurs de recherche</em>&nbsp;», qu’il n’y a «&nbsp;<em>aucun accès aux réseaux sociaux </em>», voir les applications installées, gérer le temps d’écran, couper à distance des fonctionnalités (appels, Wi-Fi, etc.), passer par une validation obligatoire pour installer une nouvelle application, etc. </p> <figure><img src="https://next.ink/wp-content/uploads/2026/02/image-64.png" alt=""></figure> <p>L’offre de SFR est un pack smartphone avec forfait, mais rien ne vous empêche évidemment de prendre le smartphone dans une autre boutique en ligne et d’y ajouter le forfait de n’importe quel opérateur. Selon les propres mots de SFR, ce pack a pour but de renforcer «<em> les services de SFR relancés l'année dernière</em>&nbsp;».</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

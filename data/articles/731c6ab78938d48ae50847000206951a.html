@@ -33,21 +33,21 @@
 Quelques centimètres, notamment sur les plateaux</h2> <p>Ainsi, les cumul de neige ont été revus à la baisse de la Normandie à l'Île-de-France, mais pas forcément ailleurs. Paris n'a par exemple pas du tout été blanchie. Dimanche en fin de journée, les épaisseurs de neige pourraient dépasser 5 cm entre le nord du département de l'Aisne, ainsi que les Ardennes et le nord de la Lorraine.</p> <p><img alt="" src="https://www.meteo-paris.com/_next/image?url=https%3A%2F%2Fs.meteo-villes.com%2Fuploads%2Factu%2Fcumuls%2520neige%2520dimanche%2520V2.png&amp;w=1920&amp;q=75"></p> <p><strong><em>Épaisseurs de neige maximales prévue pour le dimanche 15 février 2026 </em></strong><em>(réactualisation de dimanche 6h) – Météo-Villes</em></p> <h2>Une semaine à risque sur les régions du Nord et du nord-est&nbsp;</h2> <p>Après le redoux de dimanche après-midi, l’air froid reprendra rapidement le dessus sur la moitié nord dès le début de la semaine.&nbsp; Une dépression, déviée vers le sud par l’air froid persistant au nord, devrait s’échouer sur la France entre mercredi soir et jeudi.&nbsp; Les précipitations, sous cet air froid, pourraient se transformer en neige.&nbsp; Il est cependant encore trop tôt pour déterminer précisément les régions concernées.&nbsp; Des chutes de neige significatives sont possibles, avec un risque accru entre la Normandie, l’Île-de-France et toutes les régions situées au nord de la Seine.</p> <p><img alt="" src="https://www.meteo-paris.com/_next/image?url=https%3A%2F%2Fs.meteo-villes.com%2Fuploads%2Factu%2Fnouvelle%2520offensive%2520hivernale%2520possible.png&amp;w=1200&amp;q=75"></p> <p><strong><em>Explication du risque de neige pour le milieu de la semaine </em></strong>– Météo-Villes</p> <p><strong>À lire également :</strong></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/1-mort-et-de-gros-degats-la-tempete-nils-a-frappe-fort" target="_blank">1 mort et de gros dégâts : la tempête Nils a frappé fort !</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/retour-de-la-neige-en-plaine-ce-week-end-quelles-regions-concernees" target="_blank">La neige revient jusqu'en Ile-de-France, ce week-end !</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/en-pleine-guerre-l-ukraine-souffre-d-un-hiver-tres-froid" target="_blank">En pleine guerre, l'Ukraine souffre d'un hiver très froid</a></p> <p>&gt;&gt;&gt; <a href="https://www.meteo-villes.com/actualites/le-retour-de-la-neige-en-plaine-en-fin-de-semaine" target="_blank">Le retour de la neige en plaine en fin de semaine ?</a></p> <p>&gt;&gt;&gt; <a href="https://www.meteo-villes.com/france/previsions" target="_blank">Notre bulletin météo réactualisé quotidiennement</a></p> <p>&gt;&gt;&gt; <a href="https://x.com/Meteovilles" target="_blank">Notre compte Twitter très suivi et référence dans tous les médias !</a></p> <p>Auteur : Guillaume Séchet</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

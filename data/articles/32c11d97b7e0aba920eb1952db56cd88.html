@@ -31,21 +31,21 @@
     <div><div> <p>Un chagrin d’amour peut-il être une raison légitime pour poser un congé maladie&nbsp;? Il a en tout cas été un motif d’absence, arrêt maladie ou congé, pour 1 salarié sur 3, selon le <a href="https://zety.fr/blog/conge-chagrin-amour" target="_blank"><i>Heartbreak leave report</i></a> réalisé par Zety (concepteur de CV en ligne) et publié début février.</p> <p>Menée auprès de 1 020 salariés américains, l’étude souligne une baisse de la performance au travail après une rupture amoureuse. 43 % des personnes interrogées constatent une perte de productivité, tandis que 38 % d’entre eux évoquent une baisse de motivation et d’engagement.</p> <p>Un salarié sur trois estime qu’un congé pour chagrin d’amour devrait exister et 43 % qu’ils y auraient recours si cela existait. Alors que 40 % d’entre eux jugent qu’au moins 3 jours de congé après une rupture sont nécessaires, 23 % aimeraient bénéficier d’un ajustement des délais ou de la charge de travail.</p> <p>Ils sont près de 17 % à constater un impact négatif sur leurs relations avec leurs collègues ou leur hiérarchie quand 23 % d’entre eux estiment que la rupture à un impact sur leur prise de décision ou leur capacité à résoudre des problèmes.</p> <div> <h2><strong>Les hommes plus absents que les femmes </strong></h2><p>Les jeunes sont davantage concernés que leurs aînés. Ainsi, <i>«&nbsp;les salariés de la génération Z sont les plus concernés (47&nbsp;%), devant les millennials (45&nbsp;%), la génération X (31&nbsp;%) et les baby-boomers (11&nbsp;%)&nbsp;»,</i> note l’étude. Et les hommes (36 %) sont plus nombreux que les femmes (28 %) à poser des jours après une rupture.</p></div> <p>L’idée d’un congé pour chagrin d’amour n’est pas à l’ordre du jour en France. Toutefois, celui-ci pourrait être davantage pris en compte, par les managers, afin notamment de ne pas laisser les difficultés s’installer.</p> <p>Outre ce sondage, il existe plusieurs études qui éclairent sur les conséquences, pour la santé mentale, des ruptures amoureuses.</p> <p>Ainsi, les auteurs d’une étude publiée en 2011 expliquent&nbsp;que le fait de vivre une rupture était associé à une augmentation de la détresse psychologique et à une baisse de la satisfaction de vie (entre l’avant et l’après-rupture).</p> <div> <h2><strong>Le syndrome du cœur brisé </strong></h2><p>Dans une autre étude, <i>«&nbsp;des corrélations hautement significatives&nbsp;»</i> ont été observées entre la rupture amoureuse et la dépression. A tel point que, selon les auteurs de l’étude, l’expérience d’une rupture amoureuse constitue un modèle pertinent pour examiner les symptômes dépressifs chez les personnes sans trouble psychiatrique.</p></div> <p>Dans un travail de 2025, il a été montré que ceux qui avaient vécu une rupture dans les six mois précédents étaient plus à risque d’idées suicidaires, d’anxiété, de dépression et de dépendance à l’alcool.</p> <p>Les ruptures amoureuses peuvent nuire à la santé mentale mais aussi physique. En 2016, la Fédération française de cardiologie alertait sur les effets néfastes d’un chagrin d’amour pour le cœur. Le Tako-Tsubo, ou syndrome du cœur brisé, résulte en effet d’un stress émotionnel aigu et provoque des symptômes proches de l’infarctus.</p> <p>Sous l’effet d’une libération massive des hormones du stress, une partie du cœur peut ne plus se contracter. «&nbsp;<i>Parmi les symptômes, beaucoup peuvent évoquer une crise cardiaque : essoufflement brutal, douleur brutale dans la poitrine, arythmie, perte de connaissance, malaise vagal&nbsp;</i>», rappelait la professeure Claire Mounier-Vehier, alors présidente de la Fédération Française de Cardiologie.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

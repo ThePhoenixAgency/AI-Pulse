@@ -32,21 +32,21 @@
 Pris isolément, l’écran d’accueil montre déjà des effets tangibles sur l’image et l’intention.&nbsp;</p> <p>Les marques sont mieux perçues lorsqu’elles s’inscrivent dans une expérience TV fluide, cohérente, pensée comme un tout plutôt que comme une succession de formats.</p> <h2>Là où l’attention et la performance se rencontrent</h2> <p>Les usages évoluent, les plateformes se multiplient, les parcours se fragmentent. Mais un rituel demeure, immuable : tout commence par l’allumage de la télévision.</p> <p>En cette période de début d’année, lorsque les foyers continuent de se rassembler, renouvellent leurs équipements et prolongent leurs soirées devant l’écran, l’écran d’accueil apparaît comme l’un des derniers lieux communs de la télévision moderne. Un espace familier, presque intime, où l’attention n’est pas encore dispersée.&nbsp;</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

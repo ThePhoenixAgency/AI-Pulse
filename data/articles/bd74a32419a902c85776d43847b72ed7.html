@@ -31,21 +31,21 @@
     <div><div><p>Fifty-three people are dead or missing after a boat capsized in the Mediterranean Sea off the Libyan coast, the UN migration agency said on Monday. Only two survivors were rescued.</p><p>The International Organization for <a href="https://www.theguardian.com/world/migration">Migration</a> said the boat overturned north of Zuwara on Friday, in the latest disaster involving people attempting the perilous Mediterranean crossing in the hope of reaching Europe.</p><p>In a statement, the IOM said: “Only two Nigerian women were rescued during a search and rescue operation by Libyan authorities.” It added that one of the survivors said she lost her husband and the other said she lost her two babies in the tragedy.</p><p>The agency said its teams provided the survivors with emergency medical care upon disembarkation. “According to survivor accounts, the boat – carrying migrants and refugees of African nationalities departed from Al-Zawiya, Libya, at around 11pm on February 5. Approximately six hours later, it capsized after taking on water,. IOM mourns the loss of life in yet another deadly incident along the Central Mediterranean route.”</p><p>The Geneva-based agency said trafficking and smuggling networks were exploiting migrants along the route from north Africa to southern Europe, profiting from dangerous crossings in unseaworthy boats while exposing people to “severe abuse”.</p><p>It called for stronger international cooperation to tackle the networks alongside safe and regular migration pathways to reduce risks and save lives. The IOM fears that hundreds of people have died since the start of the year attempting to cross the Mediterranean amid harsh weather conditions on the dangerous crossing.</p><p>A spokesperson for the European Commission said Brussels was trying to address the root causes of irregular migration and promote legal, safe and orderly pathways to the European Union. “These tragic events once again underline the need to intensify joint efforts with our partners, including Libya, to prevent such dangerous journeys and to combat the criminal networks of migrant smugglers that put lives at risk,” they told Agence France-Presse.</p><p>Between the start of 2014 and the end of 2025, more than 33,000 migrants died or went missing in the Mediterranean, according to the IOM’s Missing Migrants Project.</p><p>Last year, it recorded 1,873 missing or dead in the Mediterranean, including 1,342 on the central route.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

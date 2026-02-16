@@ -24,7 +24,11 @@
 <body>
   <h1>"A la manière de l'ICE" : 70 ONG s'indignent contre un projet de réforme migratoire européenne qui veut mettre</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Franceinfo | Date: 2/16/2026 5:26:41 PM | Lang: FR |
+=======
+    Source: Franceinfo | Date: 2/16/2026 4:26:41 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.franceinfo.fr/monde/europe/union-europeenne/a-la-maniere-de-l-ice-70-ong-s-indignent-contre-un-projet-de-reforme-migratoire-europeenne-qui-veut-mettre-en-place-des-hubs-de-retour-hors-ue_7809641.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 17:26</time> </span> </p> <p><span> Temps de lecture : 2min </span> </p></div> <div> <figure> <img alt="Des migrants se rassemblent sur un quai en attendant leur transfert au port d'Agia Galini après avoir été secourus par les garde-côtes grecs au large de la Crète (Grèce) le 19 décembre 2025. (COSTAS METAXAKIS / AFP)" src="https://www.franceinfo.fr/pictures/SHYmCKd5pIj1ixgx9PVYzBPDduw/0x271:5212x3203/432x243/filters:format(jpg)/2026/02/16/000-88nf6wf-6993446647af6111085308.jpg"> <figcaption>Des migrants se rassemblent sur un quai en attendant leur transfert au port d'Agia Galini après avoir été secourus par les garde-côtes grecs au large de la Crète (Grèce) le 19 décembre 2025. <span>(COSTAS METAXAKIS / AFP)</span></figcaption> </figure> </div> </div><div><p>Près de 70 ONG ont alerté lundi 16 février contre <a href="https://www.franceinfo.fr/societe/immigration/immigration-les-27-pays-de-l-union-europeenne-se-declarent-favorables-a-une-nouvelle-loi-pour-accelerer-les-expulsions_6845384.html" target="_self">un projet de réforme migratoire</a> examiné au Parlement européen, le comparant à la politique <a href="https://www.franceinfo.fr/replay-radio/bientot-chez-vous/reconnaissance-faciale-scan-des-reseaux-sociaux-l-arsenal-technologique-d-ice-pour-traquer-migrants-et-manifestants_7767254.html" target="_self">menée par la police de l'immigration, l'ICE, aux Etats-Unis</a>. <em>"La menace est réelle et immédiate",</em> écrivent ces associations dans une déclaration commune, appelant les responsables européens à renoncer à ce texte.</p><p>Dans leur viseur : une réforme migratoire poussée par la Commission européenne, qui prévoit notamment la création de centres en dehors des frontières de l'UE pour les déboutés d'asile, les fameux<em> "hubs de retour"</em>. Le texte entend également sanctionner plus durement ceux qui refusent de quitter le territoire européen, via des périodes de détention plus longues et la confiscation de documents d'identité. Ces mesures ont déjà été approuvées par l'immense majorité des Etats membres de l'UE, mais sont vivement critiquées par la gauche au Parlement européen et les associations de protection de migrants.</p><p>Dans leur missive, ces ONG s'inquiètent des <em>"raids de police"</em> et des mesures de "profilage racial", "à la manière de l'ICE" qui pourraient découler de cette réforme. <em>"Nous ne pouvons pas être indignés par ce que fait l'ICE aux Etats-Unis tout en soutenant ces pratiques en Europe"</em>, a dénoncé Michele LeVoy de PICUM, une ONG de protection des sans-papiers. Cette déclaration est également signée par Médecins du Monde et Sea-Watch.</p><p>L'exécutif européen réfute régulièrement les critiques des ONG, soulignant que ces mesures devront toutes respecter les droits fondamentaux des migrants. Et assure que ces mesures sont plébiscitées par une majorité de citoyens en Europe, où le centre de gravité politique a basculé à droite.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -67,21 +67,21 @@
 </h2> <p>If you've ever spent 20 minutes checking six apps for the same pair of sneakers, <a href="https://grailsearch-app.fly.dev/" target="_blank">give GrailSearch a try</a>. It's free to search, free to save 3 searches, and if you're a heavy hunter, Pro is $8/mo.</p> <p>And if you're a dev who's into resale, fashion, or just wants to see how a Rails app talks to six different marketplace APIs — <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">check out the repo</a>.</p> <p>I built this because I was tired of the grind. Hope it saves you some too.</p> <hr> <p><em>What items are you hunting for? Drop a comment — I'm curious what people's grails are.</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

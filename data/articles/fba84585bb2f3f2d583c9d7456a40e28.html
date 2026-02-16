@@ -18,7 +18,11 @@
 <body>
   <h1>Crues exceptionnelles : dans mon village de Couthures-sur-Garonne, vivre en zone inondable, «c’est un état d’esprit»</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Liberation | Date: 2/16/2026 5:08:13 PM | Lang: FR |
+=======
+    Source: Liberation | Date: 2/16/2026 4:08:13 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.liberation.fr/societe/crues-exceptionnelles-dans-mon-village-de-couthures-sur-garonne-vivre-en-zone-inondable-cest-un-etat-desprit-20260216_3VU6D6XSVZDBDGDUBLBL4QGDMI/" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -26,21 +30,21 @@
     <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

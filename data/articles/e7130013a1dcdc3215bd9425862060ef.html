@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Drop in: Add the Missing Features to Any Web App. No Code.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Drop in: Add the Missing Features to Any Web App. No Code.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:12:04 PM | Lang: EN |
+    <a href="https://usedropin.com/blog/launch" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p>Every SaaS tool you use is 80% there. The other 20% is the stuff you actually need: a button that saves this lead to your CRM, a panel that pulls context from another tool, a shortcut that turns a five-click workflow into one.</p>
+<p>You have been there. You are deep in LinkedIn, HubSpot, or some internal dashboard, and you think: "There should just be a button for this." But there is not. So you copy-paste between tabs, duct-tape a Zapier flow together, or just live with it.</p>
+<p>Drop in is a Chrome extension that lets you describe what is missing and adds it directly into the page. Real buttons, real panels, real integrations. Not a separate dashboard. Not a workflow builder. Right there, inside the app you are already using. We are launching today on Product Hunt.</p>
+<p><a href="https://www.producthunt.com/products/drop-in-4?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-drop-in-4" target="_blank"><img alt="Drop in - Add real features inside the apps you already use | Product Hunt" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1079769&amp;theme=light"></a></p>
+<h2>What you can build with it</h2>
+<p>These are not hypothetical. They are real examples people are using today.</p>
+<p><strong>Save leads from LinkedIn to HubSpot.</strong> You are browsing a prospect's profile. Instead of switching tabs and manually creating a contact, you click a button that appeared right next to their name. It creates the HubSpot contact, fills in the details, and logs where you found them. The button stays there every time you visit any LinkedIn profile.</p>
+<p><strong>Look up Airtable data inside HubSpot.</strong> You are reviewing a deal and need context from your ops table. A panel slides into the sidebar showing live Airtable data matched by email or domain. You can edit fields right there and it syncs back.</p>
+<p><strong>Capture businesses from Google Maps to Airtable.</strong> You are scouting locations or researching vendors. One click grabs the business name, address, website, Maps link, and customer rating, then drops it into your Airtable as a new row.</p>
+<p><strong>Surface context on internal tools.</strong> You want pipeline stage and churn risk visible next to each user row in Retool or Posthog. A custom panel assembles data from HubSpot, Postgres, or whatever sources you need. Color-coded, stays pinned.</p>
+<h2>How it works</h2>
+<p>You open the Drop in side panel on any page and describe what you want in plain English.</p>
+<p>The extension reads the current page, understands its structure, and generates a working feature: buttons, forms, lookup panels, or data displays. These features are injected directly into the page DOM, styled to match the site, and they persist across visits using Chrome storage and URL pattern matching.</p>
+<p>When your feature needs to talk to external services, it uses the integration keys you have saved in Drop in. That means real API calls to real tools, creating and updating actual records, not screenshots or simulated clicks.</p>
+<p>You can refine what you built with follow-up instructions like "move it to the right", "make the button full width", or "add a confirmation step". Each feature is saved per-site, and you can toggle, edit, or remove any of them from your library.</p>
+<h2>Integrations live now</h2>
+<div><a href="https://usedropin.com/integrations/airtable"><div><p><img alt="Airtable logo" src="https://usedropin.com/_next/image?url=%2Flogos%2Flogo-73.png&amp;w=3840&amp;q=75"></p><h3>Airtable</h3><p>Create, read, update, and delete records in your Airtable bases.</p></div></a><a href="https://usedropin.com/integrations/hubspot"><div><p><img alt="HubSpot logo" src="https://usedropin.com/_next/image?url=%2Flogos%2Flogo-01.png&amp;w=3840&amp;q=75"></p><h3>HubSpot</h3><p>Create, read, update, and search HubSpot contacts, companies, deals, tasks, and notes.</p></div></a><a href="https://usedropin.com/integrations/notion"><div><p><img alt="Notion logo" src="https://usedropin.com/_next/image?url=%2Flogos%2Flogo-02.png&amp;w=3840&amp;q=75"></p><h3>Notion</h3><p>Search pages, manage databases, create and update content, and read blocks in your Notion workspace.</p></div></a><a href="https://usedropin.com/integrations/openai"><div><p><img alt="OpenAI logo" src="https://usedropin.com/_next/image?url=%2Flogos%2Flogo-44.png&amp;w=3840&amp;q=75"></p><h3>OpenAI</h3><p>Send text, image, and audio prompts to OpenAI models and get AI-generated responses.</p></div></a></div>
+<p>Every integration uses your own API keys or access tokens. Drop in does not proxy your data through any third-party servers. Your credentials stay in your browser, and API calls go directly from the extension to the service.</p>
+<h2>What makes this different</h2>
+<p>This is not browser automation and not a workflow builder.</p>
+<ul>
+<li><strong>Persistent.</strong> Your features stay exactly where you put them. Visit the page tomorrow, next week, next month, and they are still there, working.</li>
+<li><strong>Real data.</strong> Drop in creates, reads, and updates actual records in your tools. It is not taking screenshots or scraping text into a spreadsheet.</li>
+<li><strong>Organized.</strong> Every feature you build lives in a per-site library. Toggle them on or off, edit the prompt, or share them with your team.</li>
+<li><strong>Plain English.</strong> No code, no selectors, no config files. Describe what you want and refine it with follow-ups.</li>
+<li><strong>No external dependencies.</strong> Everything runs in your browser. There is no separate app to check, no workflow to maintain, no monthly sync to debug.</li>
+</ul>
+<h2>Try it</h2>
+<p>I built Drop in because I was tired of gluing tabs together in RevOps. Switching between LinkedIn, HubSpot, Airtable, and Notion dozens of times a day to do things that should take one click. It works well enough to be my daily driver now, and I think it can be yours too.</p>
+<ul>
+<li><a href="https://chromewebstore.google.com/detail/eblmgjbdajiakodknfpkclhbjjappkpm">Install from Chrome Web Store</a></li>
+<li><a href="https://usedropin.com/examples">See examples of what people have built</a></li>
+</ul>
+<p>What is your "missing button"? I would love to hear what you would build first.</p></article></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

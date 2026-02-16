@@ -31,21 +31,21 @@
     <div><div><div><p>This is the 3rd launch from PixelDance &amp; Seaweed. </p><a href="https://www.producthunt.com/products/pixeldance-seaweed/launches"><span>View more</span> </a></div><div><div><h2>Seedance 2.0</h2><p>Launched this week</p></div><p><span>Advanced AI video creation with precise narrative control</span></p></div><p>Seedance 2.0 by ByteDance is an advanced AI video generation model built for cinematic, multi-shot storytelling. It creates consistent characters, smooth transitions, and dynamic camera movements from simple prompts. Designed for creators, marketers, and filmmakers, it gives you greater control over motion, scene composition, and narrative flow—making AI video feel more like directing a real film.</p><div><section><div><p><img src="https://ph-files.imgix.net/9d33a602-fcde-431b-9685-a2c44ca862c8.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/23a43d15-274b-4b6c-b0e9-fc12fd193dd1.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/d0577cf0-1fcc-44a4-a735-412b9ae5a217.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/c83508aa-9425-441b-884a-19dee460cbdc.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/88dd34d1-7ee2-4f2b-b956-b48c4a9c6a7b.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=442&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/84d220f0-4934-467f-9ba1-86cac1907665.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=454&amp;h=220&amp;fit=max&amp;frame=1" alt="Seedance 2.0 gallery image"></p></div></section></div><section><p>Free Options</p></section><div><p>Launch Team </p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

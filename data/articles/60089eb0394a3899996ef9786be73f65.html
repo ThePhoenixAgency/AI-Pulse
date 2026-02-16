@@ -31,21 +31,21 @@
     <div><div><p>The lack of privacy for onchain transactions is one of the biggest hurdles to the mass adoption of cryptocurrencies for payments and a medium of exchange, according to Changpeng Zhao, co-founder of the Binance cryptocurrency exchange.</p><p>The executive commonly known as “CZ” said the lack of privacy prevents businesses and institutions from paying expenses in crypto. He gave this example:&nbsp;</p><blockquote>“Lack of Privacy may be the missing link for crypto payments adoption. Imagine a company pays employees in crypto onchain. With the current state of crypto, you can pretty much see how much everyone in the company is paid by clicking the ‘from’ address.”</blockquote><figure> <img alt="Privacy, Changpeng Zhao" src="https://s3.cointelegraph.com/uploads/2026-02/019c62d3-8255-72c5-83e3-bf1307250bab.png"><figcaption><em>Source: </em><a href="https://x.com/cz_binance/status/2023016538677371079" target="_blank"><em>CZ</em></a></figcaption></figure><p>In a previous conversation with investor and host of the All-In Podcast Chamath Palihapitiya, CZ also cited physical security concerns as a reason why onchain transparency is a risk to users. The comments follow a revival of privacy and the <a href="https://cointelegraph.com/news/cypherpunk-values-dying-but-not-dead-yet-show">cypherpunk ethos in crypto</a>. </p><p>Cypherpunk ideology is central to the birth of cryptocurrencies, peer-to-peer digital money that can be transferred without centralized intermediaries, and the encryption of online communication to shield messages from surveillance.</p><figure> <img alt="Privacy, Changpeng Zhao" src="https://s3.cointelegraph.com/uploads/2026-02/019c630a-06f8-7005-bd98-51d375ba8dcb.png"><figcaption><em>CZ discusses the state of the crypto industry with</em> <em>Chamath Palihapitiya</em>. <em>Source: </em><a href="https://x.com/theallinpod/status/2021196827240857990" target="_blank"><em>All-In Podcast</em></a></figcaption></figure></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

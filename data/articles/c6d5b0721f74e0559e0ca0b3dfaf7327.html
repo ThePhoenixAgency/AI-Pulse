@@ -31,21 +31,21 @@
     <div><div> <p>À Toulouse, la «&nbsp;clinique spatiale&nbsp;» de l’Institut de médecine et de physiologie spatiales (MEDES) recrute dix hommes en parfaite santé pour participer au mois de juin à une étude baptisée BRAHMS («&nbsp;Bed Rest And HypoMetabolism Study&nbsp;»), menée à la demande du CNES. Le principe&nbsp;: simuler l’impesanteur en restant allongé en permanence, avec la tête inclinée vers le bas à -6°, tout en réduisant drastiquement l’apport alimentaire. Le tout est payé 5&nbsp;000&nbsp;€.</p> <h2>Dix jours sans se lever, pas même pour manger</h2> <p>L’objectif est de comprendre comment le corps humain réagit lorsque l’absence de gravité et une forte restriction calorique se combinent. Une situation qui pourrait survenir lors de missions spatiales longues, en cas de problème de ravitaillement ou de défaillance technique.</p> <p>Concrètement, le job de rêve n’en est pas un. Les volontaires seront hospitalisés pendant vingt jours (plus une journée de suivi trois mois plus tard). Mais le cœur de l’étude tient en dix jours d’alitement strict. Allongés 24 heures sur 24, les participants devront tout faire dans cette position&nbsp;: manger, se laver, passer des examens médicaux… Impossible de se redresser ou de poser un pied au sol.</p> <p>L’inclinaison du lit — tête en bas à -6° — n’a rien d’anecdotique. Ce modèle, appelé «&nbsp;alitement anti-orthostatique&nbsp;», est utilisé depuis des décennies pour reproduire au sol certains effets de la microgravité. En l’absence de pesanteur, les fluides corporels se déplacent vers le haut du corps, les muscles fondent, les os perdent de la densité et le système cardiovasculaire se modifie. Cette position permet de mimer ces transformations sans quitter la Terre.</p> <p>Comme si cela ne suffisait pas, les cobayes — car il faut bien les appeler ainsi — devront se contenter de 250 kilocalories par jour pendant toute la phase d’alitement. À titre de comparaison, un adulte consomme en moyenne entre 2.000 et 2.500 kilocalories chaque jour. La transition sera progressive&nbsp;: 600 kcal la veille du début, puis une réalimentation étalée sur plusieurs jours après l’expérience.</p> <p>Derrière ce protocole spartiate, l’enjeu est sérieux. La nutrition est identifiée comme un sujet central pour les missions spatiales de longue durée. Isolement, confinement, perte d’appétit ou imprévus techniques peuvent entraîner des déséquilibres alimentaires. BRAHMS doit permettre de mieux comprendre les effets physiologiques d’une telle situation chez l’homme sain.</p> <p>Douze équipes scientifiques françaises sont mobilisées. Les volontaires passeront une batterie d’examens&nbsp;: analyses sanguines et urinaires, évaluations musculaires et osseuses, tests cardiovasculaires, mesures métaboliques, examens neurologiques et cognitifs, sans oublier un suivi psychologique. L’étude servira aussi à constituer une base de données de référence pour comparer ces résultats à ceux d’expériences antérieures.</p> <p>Les critères de sélection sont stricts&nbsp;: hommes de 20 à 40 ans, non-fumeurs, en parfaite santé, avec un indice de masse corporelle compris entre 20 et 26, mesurant entre 1,65 m et 1,85 m, au poids stable et pratiquant une activité sportive régulière. Pas d’allergies ni de restrictions alimentaires.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

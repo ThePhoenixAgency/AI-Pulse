@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>droidclaw - ai agent for android</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>droidclaw - ai agent for android</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:05:20 PM | Lang: EN |
+    <a href="https://droidclaw.ai" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div> <nav> </nav> <div> <div><p> experimental</p></div> <h2>turn old phones into<br><span>ai agents</span></h2> <p> give it a goal in plain english. it reads the screen, thinks about what to do, taps and types via adb, and repeats until the job is done. </p> <p> <a href="#getting-started"> get started </a> <a href="https://github.com/unitedbyai/droidclaw"> view source </a> </p> <div> <p><span></span> <span></span> <span></span> <span>droidclaw</span> </p>
+<pre><span>$</span> bun run src/kernel.ts
+<span>enter your goal:</span> <span>open youtube and search for "lofi hip hop"</span> <span>--- step 1/30 ---</span>
+<span>think:</span> i'm on the home screen. launching youtube.
+<span>action:</span> launch <span>(842ms)</span> <span>--- step 2/30 ---</span>
+<span>think:</span> youtube is open. tapping search icon.
+<span>action:</span> tap <span>(623ms)</span> <span>--- step 3/30 ---</span>
+<span>think:</span> search field focused.
+<span>action:</span> type "lofi hip hop" <span>(501ms)</span> <span>--- step 4/30 ---</span>
+<span>action:</span> enter <span>(389ms)</span> <span>--- step 5/30 ---</span>
+<span>think:</span> search results showing. done.
+<span>action:</span> done <span>(412ms)</span></pre> </div> </div> <div> <div><p> how it works</p></div> <h2>perceive, reason, act, adapt</h2> <p>every step is a loop. dump the accessibility tree, filter interactive elements, send to an llm, execute the action, repeat.</p> <div> <div> <h3>1. perceive</h3> <p>captures the screen via <code>uiautomator dump</code> and parses the accessibility xml into tappable elements with coordinates and state.</p> </div> <div> <h3>2. reason</h3> <p>sends screen state + goal to an llm. the model returns think, plan, action - it explains its reasoning before acting.</p> </div> <div> <h3>3. act</h3> <p>executes the chosen action via adb - tap, type, swipe, launch, press back. 22 actions available.</p> </div> <div> <h3>4. adapt</h3> <p>if screen doesn't change for 3 steps, stuck recovery kicks in. empty accessibility tree falls back to screenshots.</p> </div> </div> </div> <div> <div><p> three modes</p></div> <h2>interactive, workflows, or flows</h2> <p>type a goal, chain goals across apps with ai, or run deterministic steps with no llm calls.</p> <div> <div> <p><span>just type</span></p><p>run it and describe what you want. the agent figures out the rest.</p>
+<pre>$ bun run src/kernel.ts
+enter your goal: send "running
+late, 10 mins" to Mom on whatsapp</pre> </div> <div> <p><span>ai-powered · json</span></p><p>chain goals across multiple apps. natural language steps, the llm navigates.</p>
+<pre>{ "name": "weather to whatsapp", "steps": [ { "app": "com.google...", "goal": "search chennai weather" }, { "goal": "share to Sanju" } ]
+}</pre> </div> <div> <p><span>instant · yaml</span></p><p>fixed taps and types. no llm, instant execution. for repeatable tasks.</p>
+<pre>appId: com.whatsapp
+name: Send WhatsApp Message
+---
+- launchApp
+- tap: "Contact Name"
+- type: "hello from droidclaw"
+- tap: "Send"</pre> </div> </div> <div> <div> <h3> workflows</h3> <ul> <li>json format, uses ai</li> <li>handles ui changes and popups</li> <li>slower (llm calls each step)</li> <li>best for complex multi-app tasks</li> </ul> </div> <div> <h3> flows</h3> <ul> <li>yaml format, no ai needed</li> <li>breaks if ui changes</li> <li>instant execution</li> <li>best for simple repeatable tasks</li> </ul> </div> </div> </div> <div> <div><p> possibilities</p></div> <h2>what you can build with this</h2> <p>delegate to on-device ai apps, control phones remotely, turn old devices into always-on agents.</p> <div> <div> <h3>delegate to ai apps on-device</h3> <p>open <strong>google's ai mode</strong>, ask a question, grab the answer, forward it to <strong>whatsapp</strong>. or ask <strong>chatgpt</strong> something and share the response to <strong>slack</strong>. the agent uses apps on your phone as tools - <strong>no api keys</strong> for those services needed.</p> </div> <div> <h3>remote control with tailscale</h3> <p>install <strong>tailscale</strong> on phone + laptop. connect <strong>adb over the tailnet</strong>. your phone is now a <strong>remote agent</strong> - control it from anywhere. run workflows from a <strong>cron job</strong> at 8am every morning.</p>
+<pre># from anywhere:
+adb connect &lt;phone-tailscale-ip&gt;:5555
+bun run src/kernel.ts --workflow morning.json</pre> </div> <div> <h3>old phones, always on</h3> <p>that android in a drawer can now send <strong>standups to slack</strong>, check <strong>flight prices</strong>, digest <strong>telegram channels</strong>, forward <strong>weather to whatsapp</strong>. it runs apps that <strong>don't have apis</strong>.</p> </div> <div> <h3>automation with ai intelligence</h3> <p>unlike predefined button flows, the agent <strong>actually thinks</strong>. if a button moves, a popup appears, or the layout changes - <strong>it adapts</strong>. it reads the screen, <strong>understands context</strong>, and <strong>makes decisions</strong>.</p> </div> </div> </div> <div> <div><p> use cases</p></div> <h2>things it can do right now</h2> <p>across any app installed on the device.</p> <div> <div> <ul> <li>send <strong>whatsapp</strong> to saved or unsaved numbers</li> <li>reply to latest <strong>sms</strong></li> <li>compose emails via <strong>gmail</strong></li> <li><strong>telegram</strong> messages to groups</li> <li>post standups to <strong>slack</strong></li> <li>broadcast to <strong>multiple contacts</strong></li> </ul> </div> <div> <ul> <li>search <strong>google</strong>, collect results</li> <li>ask <strong>chatgpt / gemini</strong>, grab answer</li> <li>check <strong>weather, stocks, flights</strong></li> <li>compare <strong>prices</strong> across apps</li> <li>translate via <strong>google translate</strong></li> <li>compile <strong>multi-source digests</strong></li> </ul> </div> <div> <ul> <li>post to <strong>instagram, twitter/x</strong></li> <li><strong>like and comment</strong> on posts</li> <li>check <strong>engagement metrics</strong></li> <li>save <strong>youtube</strong> to watch later</li> <li>follow / unfollow accounts</li> <li>check <strong>linkedin</strong> notifications</li> </ul> </div> <div> <ul> <li><strong>morning briefing</strong> across apps</li> <li>create <strong>calendar events</strong></li> <li>capture notes in <strong>google keep</strong></li> <li>check <strong>github</strong> pull requests</li> <li>set <strong>alarms and reminders</strong></li> <li>triage <strong>notifications</strong></li> </ul> </div> <div> <ul> <li>order food from <strong>delivery apps</strong></li> <li>book an <strong>uber</strong> ride</li> <li>play songs on <strong>spotify</strong></li> <li>check commute on <strong>maps</strong></li> <li>log <strong>workouts</strong>, track expenses</li> <li>toggle <strong>do not disturb</strong></li> </ul> </div> <div> <ul> <li>toggle <strong>wifi, bluetooth, airplane</strong></li> <li>adjust <strong>brightness, volume</strong></li> <li><strong>force stop</strong> or clear cache</li> <li>grant/revoke <strong>permissions</strong></li> <li><strong>install/uninstall</strong> apps</li> <li>run any <strong>adb shell</strong> command</li> </ul> </div> </div> </div> <div> <div><p> honest take</p></div> <h2>what works and what doesn't</h2> <p>22 actions + 6 multi-step skills. here's the reality.</p> <div> <div> <h3> works well</h3> <ul> <li><strong>native android apps</strong> with standard ui</li> <li><strong>multi-app workflows</strong> that chain goals</li> <li>device settings via <strong>shell commands</strong></li> <li><strong>text input</strong>, navigation, taps</li> <li><strong>stuck detection</strong> + recovery</li> <li><strong>vision fallback</strong> for empty trees</li> </ul> </div> <div> <h3> unreliable</h3> <ul> <li><strong>flutter, react native</strong>, games</li> <li><strong>webviews</strong> (incomplete tree)</li> <li><strong>drag &amp; drop</strong>, multi-finger</li> <li><strong>notification</strong> interaction</li> <li><strong>clipboard</strong> on android 12+</li> <li><strong>captchas</strong> and bot detection</li> </ul> </div> <div> <h3> can't do</h3> <ul> <li><strong>banking apps</strong> (FLAG_SECURE)</li> <li><strong>biometrics</strong> (fingerprint, face)</li> <li>bypass <strong>encrypted lock screen</strong></li> <li>access other apps' <strong>private data</strong></li> <li><strong>audio or camera</strong> streams</li> <li><strong>pinch-to-zoom</strong> gestures</li> </ul> </div> </div> </div> <div> <div><p> setup</p></div> <h2>getting started</h2> <div> <div> <p><span>1</span></p><h3>install</h3> <p>one command. installs bun and adb if missing, clones the repo, sets up .env.</p> <div>
+<pre>curl -fsSL https://droidclaw.ai/install.sh | sh</pre> </div> <p>or do it manually:</p>
+<pre><span># install adb</span>
+brew install android-platform-tools <span># install bun (required — npm/node won't work)</span>
+curl -fsSL https://bun.sh/install | bash <span># clone and setup</span>
+git clone https://github.com/unitedbyai/droidclaw.git
+cd droidclaw &amp;&amp; bun install
+cp .env.example .env</pre> </div> <div> <p><span>2</span></p><h3>configure an llm provider</h3> <p>edit <code>.env</code> - fastest way to start is groq (free tier):</p>
+<pre>LLM_PROVIDER=groq
+GROQ_API_KEY=gsk_your_key_here # or run fully local with ollama (no api key)
+# ollama pull llama3.2
+# LLM_PROVIDER=ollama</pre> <table> <thead><tr><th>provider</th><th>cost</th><th>vision</th><th>notes</th></tr></thead> <tbody> <tr><td>groq</td><td>free</td><td>no</td><td>fastest to start</td></tr> <tr><td>ollama</td><td>free (local)</td><td>yes*</td><td>no api key, runs on your machine</td></tr> <tr><td>openrouter</td><td>per token</td><td>yes</td><td>200+ models</td></tr> <tr><td>openai</td><td>per token</td><td>yes</td><td>gpt-4o</td></tr> <tr><td>bedrock</td><td>per token</td><td>yes</td><td>claude on aws</td></tr> </tbody> </table> </div> <div> <p><span>3</span></p><h3>connect your phone</h3> <p>enable usb debugging in developer options, plug in via usb.</p>
+<pre>adb devices # should show your device
+cd droidclaw &amp;&amp; bun run src/kernel.ts</pre> </div> <div> <p><span>4</span></p><h3>tune (optional)</h3> <table> <thead><tr><th>key</th><th>default</th><th>what</th></tr></thead> <tbody> <tr><td>MAX_STEPS</td><td>30</td><td>steps before giving up</td></tr> <tr><td>STEP_DELAY</td><td>2</td><td>seconds between actions</td></tr> <tr><td>STUCK_THRESHOLD</td><td>3</td><td>steps before stuck recovery</td></tr> <tr><td>VISION_MODE</td><td>fallback</td><td>off / fallback / always</td></tr> <tr><td>MAX_ELEMENTS</td><td>40</td><td>ui elements sent to llm</td></tr> </tbody> </table> </div> </div> </div> <div> <div> <div><p> source</p></div> <h2>10 files in src/</h2> </div>
+<pre>kernel.ts main loop
+actions.ts 22 actions + adb retry
+skills.ts 6 multi-step skills
+workflow.ts workflow orchestration
+flow.ts yaml flow runner
+llm-providers.ts 5 providers + system prompt
+sanitizer.ts accessibility xml parser
+config.ts env config
+constants.ts keycodes, coordinates
+logger.ts session logging</pre> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

@@ -31,21 +31,21 @@
     <div><div> <p>Apple devrait présenter d’ici quelques semaines un nouvel iPhone. Si l’iPhone 18 attendra encore, c’est le 17e qui devrait être à l’honneur du côté de Cupertino. Tim Cook et ses équipes seraient en ce moment même en train de peaufiner les derniers détails sur ce modèle.</p> <p>Après le succès commercial de <a href="https://www.journaldugeek.com/dossier/google-pixel-9a-vs-apple-iphone-16e-lequel-choisir-en-2025/">l’iPhone 16e</a>, Apple veut corriger le tir d’un point de vue critique. La presse professionnelle avait été particulièrement critique vis-à-vis de cet iPhone décrit comme «accessible», mais vendu 719€. En corrigeant ces 4 points, Apple espère réconcilier son public avec le moins cher de ses smartphones.</p> <h2>Dynamic Island&nbsp;: oui mais …</h2> <p>Si le prix sera évidement une caractéristique déterminante pour cet iPhone 17e, ce ne sera surement pas l’argument de vente numéro 1 utilisé par Apple. La firme de Cupertino compte en effet séduire le grand public avec un tout nouveau design, beaucoup plus moderne.</p> <p>L’iPhone 16e avait eu le droit au châssis de l’iPhone 14 (et son encoche), l’iPhone 17e devrait de son côté profiter de <a href="https://www.journaldugeek.com/2022/10/03/les-dirigeants-dapple-sont-tres-contents-de-dynamic-island/">Dynamic Island</a> et du châssis de l’iPhone 15. En dehors de ce changement (de taille), la face avant devrait rester la même. Nous aurons toujours le droit à une dalle Super Retina XDR de 6,1 pouces. Elle sera toujours limitée à 60 Hz.</p> <h2>MagSafe&nbsp;: enfin&nbsp;!</h2> <p>Absent surprise sur l’iPhone 16e, MagSafe devrait faire son arrivée sur l’iPhone 17e. Le système de fixation aimantée au dos du téléphone équipe tous les iPhone depuis le 12 (sorti en octobre 2020). Son absence avait surpris la presse spécialisée sur le 16e. L’aimant sera bien de retour sur l’iPhone 17e.</p> <p>Vous pourrez donc utiliser <a href="https://www.journaldugeek.com/2023/06/03/le-chargeur-magsafe-dapple-pourrait-bien-prendre-des-couleurs/">des équipements tiers</a> (batteries externes, porte cartes, porte smartphone dans votre voiture) compatible avec MagSafe. La recharge sans fil devrait être plus efficace avec ce système.</p> <h2>Nouveau prix&nbsp;?</h2> <p>C’est la question à un million. Le prix de l’iPhone 17e sera-t-il le même que l’iPhone 16e. D’un côté, beaucoup avaient critiqué le prix du 16e l’an dernier, le jugeant trop cher. Dans le même temps, les évolutions massives attendues cette année sur le 17e plaident pour une hausse du prix.</p> <p>Finalement Apple devrait jouer la carte de la continuité. Dans son dernier message sur les réseaux sociaux, l’analyste Jon Prosser prédit un prix de vente de 599$, comme pour l’iPhone 16e. En France cela devrait se traduire par un prix de vente de 719€.</p> <h2>Stockage et puissance&nbsp;: tout en hausse&nbsp;?</h2> <p>Mais il serait incorrect de comparer l’iPhone 16e et l’iPhone 17e sans prendre un dernier critère en considération&nbsp;: le stockage. Aujourd’hui, Apple commercialise l’iPhone 16e au prix de 719€ pour 128 Go.<strong> Demain l’iPhone 17e devrait arriver pour le même prix, mais avec deux fois plus de stockage</strong> (256 Go). À titre de comparaison, l’iPhone 16e est aujourd’hui vendu avec 256 Go de stockage au prix de 849€.</p> <p>Dernier point que nous voulions aborder dans cet article&nbsp;: la puissance. L’iPhone 17e devrait récupérer la puce A19 de <a href="https://www.journaldugeek.com/test/test-de-liphone-17-un-excellent-cru-2025/">l’iPhone 17</a>. Légèrement plus puissante que le processeur A18 de l’iPhone 16e, il offrira de meilleures performances. L’arrivée de la puce N1 (pour la gestion des réseaux sans fil) devrait avoir un impact sur l’autonomie du téléphone.</p> <p>L’iPhone 16e affiche jusqu’à 26 heures de lecture vidéo. Avec ces deux nouvelles puces, l’iPhone 17e devrait dépasser cette donnée, dépassant l’iPhone Air et ses 27 heures et se rapprochant des 30 heures de l’iPhone 17. Les plus optimistes pensent même que l’iPhone 17e devrait être plus endurant que l’iPhone 17. Après tout l’iPhone 16e était en son temps plus efficient que l’iPhone 16 (26 heures contre 22).</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

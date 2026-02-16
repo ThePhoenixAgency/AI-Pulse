@@ -7,6 +7,15 @@
       "enabled": true,
       "similarityThreshold": 0.7,
       "contentThreshold": 0.5
+    },
+    "categoryTemperature": {
+      "default": 0.08,
+      "openclaw": 0.22,
+      "raspberrypi": 0.18,
+      "finance": 0.12,
+      "crypto": 0.12,
+      "local": 0.1,
+      "weather": 0.1
     }
   },
   "categories": {
@@ -332,8 +341,8 @@
     },
     "local": {
       "labels": {
-        "en": "Local News",
-        "fr": "Informations locales"
+        "en": "Local News (IP-based)",
+        "fr": "Informations locales (basées IP)"
       },
       "icon": "map-pin",
       "priority": 3,
@@ -363,13 +372,13 @@
           "url": "https://www.ledauphine.com/rss",
           "tags": [
             "Local",
-            "Isere",
-            "Alpes"
+            "Alpes",
+            "France"
           ],
           "lang": "fr"
         },
         {
-          "name": "France 24 France",
+          "name": "France 24 France (FR)",
           "url": "https://www.france24.com/fr/france/rss",
           "tags": [
             "Local",
@@ -385,6 +394,46 @@
             "Local",
             "France",
             "News"
+          ],
+          "lang": "en"
+        },
+        {
+          "name": "BBC World",
+          "url": "https://feeds.bbci.co.uk/news/world/rss.xml",
+          "tags": [
+            "Local",
+            "Fallback",
+            "World"
+          ],
+          "lang": "en"
+        },
+        {
+          "name": "Ouest-France",
+          "url": "https://www.ouest-france.fr/rss/une.xml",
+          "tags": [
+            "Local",
+            "France",
+            "Actualites"
+          ],
+          "lang": "fr"
+        },
+        {
+          "name": "Le Monde",
+          "url": "https://www.lemonde.fr/rss/une.xml",
+          "tags": [
+            "Local",
+            "France",
+            "Actualites"
+          ],
+          "lang": "fr"
+        },
+        {
+          "name": "Reuters World",
+          "url": "https://feeds.reuters.com/reuters/worldNews",
+          "tags": [
+            "Local",
+            "Fallback",
+            "World"
           ],
           "lang": "en"
         }

@@ -24,7 +24,11 @@
 <body>
   <h1>L'Union européenne participera à la réunion du "Conseil de paix" de Donald Trump, sans en devenir membre</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Franceinfo | Date: 2/16/2026 1:45:09 PM | Lang: FR |
+=======
+    Source: Franceinfo | Date: 2/16/2026 12:45:09 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.franceinfo.fr/monde/europe/union-europeenne/l-union-europeenne-participera-a-la-reunion-du-conseil-de-paix-de-donald-trump-sans-en-devenir-membre_7809380.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -34,21 +38,21 @@ Dubravka Suica, lors d'une conférence de presse à Bruxelles (Belgique), le 16 
 Dubravka Suica, lors d'une conférence de presse à Bruxelles (Belgique), le 16 février 2026. <span>(DURSUN AYDEMIR / ANADOLU / AFP)</span></figcaption> </figure> </div> </div><div><p>Une commissaire européenne participera cette semaine <a href="https://www.franceinfo.fr/replay-radio/d-un-monde-a-l-autre/le-conseil-de-la-paix-lance-par-donald-trump-une-onu-du-plus-fort_7732345.html" target="_self">à la réunion inaugurale du "Conseil de paix" de Donald Trump</a>, sans que l'UE n'adhère pour autant à cette instance, a annoncé la Commission européenne lundi 16 février. Dubravka Suica, commissaire à la Méditerranée, ira à Washington pour cette réunion, <a href="https://www.franceinfo.fr/monde/usa/presidentielle/donald-trump/conseil-de-paix-pour-gaza-le-president-roumain-annonce-avoir-recu-une-invitation-pour-le-19-fevrier_7792370.html" target="_self">prévue jeudi</a>, afin de faire entendre la position européenne sur la situation dans la bande de Gaza. <em>"Je tiens à souligner que la Commission européenne ne devient pas membre du Conseil de paix"</em>, a déclaré un porte-parole de l'UE.</p><p>L'organe dirigé par Donald Trump a été imaginé pour mettre fin à la guerre dans la bande de Gaza, mais sa charte lui assigne un objectif beaucoup plus large, celui de la résolution des conflits armés dans le monde. Les membres permanents du "Conseil de la paix" doivent verser un milliard de dollars pour y adhérer, ce qui suscite des critiques selon lesquelles le conseil pourrait devenir une version<em> "payante"</em> du Conseil de sécurité de l'ONU.</p><p>Lors d'un point-presse, l'exécutif européen a souligné avoir toujours <em>"un certain nombre de questions"</em> vis-à-vis de cet organe créé par Donald Trump. Et notamment liées à <em>"son champ d'application"</em>, sa <em>"gouvernance" </em>et <em>"sa compatibilité avec la Charte des Nations unies"</em>.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

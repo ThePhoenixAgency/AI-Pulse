@@ -24,7 +24,11 @@
 <body>
   <h1>Militant identitaire mort à Lyon : l'université de Tours porte plainte après des tags racistes</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Franceinfo | Date: 2/16/2026 4:09:55 PM | Lang: FR |
+=======
+    Source: Franceinfo | Date: 2/16/2026 3:09:55 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.franceinfo.fr/france/centre-val-de-loire/indre-et-loire/militant-identitaire-mort-a-lyon-l-universite-de-tours-porte-plainte-apres-des-tags-racistes_7809569.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 16:09</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="Des tags racistes ont été inscrits sur l'université de Tours, le 16 février 2026. (UNIVERSITE DE TOURS)" src="https://www.franceinfo.fr/pictures/xp62VQMSmv_NcczJMDWurXij6Eo/0x1:1478x833/432x243/filters:format(jpg)/2026/02/16/capture-69933272be5ef473054797.jpg"> <figcaption>Des tags racistes ont été inscrits sur l'université de Tours, le 16 février 2026. <span>(UNIVERSITE DE TOURS)</span></figcaption> </figure> </div> </div><div><p>L'université de Tours a porté plainte lundi 16 février après la découverte de tags racistes, rapporte <a href="https://www.francebleu.fr/centre-val-de-loire/indre-et-loire-37/tours/l-universite-de-tours-porte-plainte-apres-la-decouverte-de-tags-racistes-sur-son-campus-6782096" target="_blank">ICI Touraine</a>. Dans un communiqué, l'université indique qu'il s'agit de croix celtiques, symbole utilisé par des mouvements nationalistes.</p> <p>Sur les photos transmises par l'établissement, ICI Touraine observe que le prénom Quentin a été inscrit sur les murs du campus des Tanneurs, après <a href="https://www.franceinfo.fr/faits-divers/mort-de-quentin-militant-identitaire-agresse-a-lyon/" target="_self">l'agression mortelle du militant nationaliste, Quentin Deranque</a>, lors d'une rixe à Lyon en marge d'une conférence de l'eurodéputée insoumise Rima Hassan, à Sciences Po.</p><p>Les tags racistes ont été effacés. Dans ce communiqué, Philippe Roingeard, le président de l'université, condamne <em>"avec la plus grande fermeté"</em> ces actes <em>"en totale contradiction avec les valeurs républicaines et universitaires"</em>. Le président de l'université rappelle <em>"son attachement indéfectible au respect des personnes et au vivre-ensemble"</em>.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

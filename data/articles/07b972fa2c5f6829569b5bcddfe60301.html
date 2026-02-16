@@ -31,21 +31,21 @@
     <div><div> <p>L'ancien ministre de la Culture Jack Lang, <a target="_self" href="https://www.france24.com/fr/france/20260207-affaire-epstein-jack-lang-propose-sa-d%C3%A9mission-de-la-pr%C3%A9sidence-de-l-institut-du-monde-arabe">contraint à la démission de l'Institut du monde arabe (IMA)</a> après l'ouverture d'une enquête sur ses liens avec Jeffrey Epstein, a réaffirmé qu'il était "blanc comme neige". Dans un entretien publié dimanche 15 avril dans <a target="_blank" href="https://www.latribune.fr/article/la-tribune-dimanche/societe/3997178729323914/jack-lang-sur-sa-demission-j-ai-pris-conscience-que-les-polemiques-liees-a-l-affaire-epstein-risquaient-d-atteindre-l-institut-du-monde-arabe">La Tribune Dimanche</a>, il&nbsp;a dénoncé "un tsunami de mensonges".</p> <p>"Que la justice, la vraie justice et non pas la justice médiatique ou numérique, se saisisse de ce sujet", affirme l'ex-ministre socialiste, qui se dit "soulagé" lorsqu'on lui demande sa réaction à l'ouverture d'une enquête le visant avec sa fille Caroline pour "blanchiment de fraude fiscale aggravée".</p> <p>Jack Lang a démissionné de la présidence de l'IMA après l'ouverture d'une enquête du parquet national financier pour "blanchiment de fraude fiscale" provoquée par les révélations sur <a target="_self" href="https://www.france24.com/fr/france/20260206-affaire-epstein-le-parquet-national-financier-en-france-ouvre-une-enqu%C3%AAte-visant-jack-lang">une société "offshore" que sa fille Caroline Lang</a> a fondée en 2016 avec l'homme d'affaires américain.</p> <p>"<a target="_self" href="https://www.france24.com/fr/tag/jeffrey-epstein/">Jeffrey Epstein</a> a proposé de créer un fonds pour acheter les œuvres de jeunes artistes. J'ai trouvé que c'était une bonne idée. Pour le reste, je ne m'en suis pas occupé", répond <a target="_self" href="https://www.france24.com/fr/tag/jack-lang/">Jack Lang</a>, dont le nom figurait dans les statuts de la société.</p> <h2>"Tout est légal", dit Jack Lang</h2> <p>"Tout est légal", réaffirme-t-il, assurant une nouvelle fois n'avoir "jamais reçu un centime" de l'homme d'affaires mort en prison en 2019, alors qu'il était accusé d'avoir été à la tête d'un réseau pédocriminel.</p> <p><span>À voir aussi</span><a target="_self" href="https://www.france24.com/fr/vid%C3%A9o/20260215-dossier-epstein-enqu%C3%AAte-sur-d-%C3%A9ventuelles-infractions-li%C3%A9es-%C3%A0-des-fran%C3%A7ais">Dossier Epstein : enquête sur d'éventuelles infractions liées à des Français</a></p> <p>"S'agissant de M. Jeffrey Epstein, je suis blanc comme neige", assure Jack Lang, selon qui "un tsunami de mensonges, de ragots et de colportages s'est déversé à travers les médias, une sorte de tempête de boue".</p> <p>Quant à la sollicitation de fonds pour financer deux films, l'un sur sa fille Valérie, décédée en 2013, l'autre sur les années "Lang-Mitterrand", "tout cela est parfaitement légal et banal", selon lui.</p> <p>À cette époque, Jeffrey Epstein avait déjà été condamné (en 2009) pour sollicitation de prostituée mineure.</p> <p>"Je n'en savais rien ! Et toutes ces belles âmes, qui aujourd'hui nous parlent de cette condamnation, l'ignoraient aussi", se défend-il.</p> <p>Il concède avoir dîné "une fois", "à Paris", chez le financier.</p> <h2>"Jamais dans ma vie l'argent n'a été un moteur"</h2> <p>"Jamais dans ma vie l'argent n'a été un moteur", affirme aussi l'ancien ministre de la Culture emblématique de François Mitterrand (1981-1986 et 1988-1993), alors que plusieurs articles l'ont décrit cette semaine comme un mondain laissant des ardoises.</p> <p><span>À voir aussi</span><a target="_self" href="https://www.france24.com/fr/france/20260213-affaire-epstein-confusion-intox-audrey-azoulay">Affaire Epstein : confusion et intox autour de la présence d'Audrey Azoulay dans les documents</a></p> <p>"J'ai toujours l'habitude de payer mes factures", assure-t-il, concédant que le créateur "Thierry Mugler m'a proposé deux ou trois fois de m'habiller. Quoi d'extraordinaire".</p> <p>Par ailleurs, interrogé sur sa succession à l'IMA, Jack Lang trouve que "ça serait bien que ce soit une femme, ça a toujours été des hommes".</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

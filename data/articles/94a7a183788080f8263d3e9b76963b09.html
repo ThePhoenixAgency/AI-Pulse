@@ -24,7 +24,11 @@
 <body>
   <h1>Éleveur, moniteur de ski et conseiller municipal... Le quotidien chargé des agriculteurs élus</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 3 Alpes | Date: 2/9/2026 4:51:32 PM | Lang: FR |
+=======
+    Source: France 3 Alpes | Date: 2/9/2026 3:51:32 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/eleveur-moniteur-de-ski-et-conseiller-municipal-le-quotidien-charge-des-agriculteurs-elus-3296280.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -35,21 +39,21 @@
 </a><p>Comme Sylvain, il est élu au conseil municipal d'Autrans-Méaudre et comme lui, il ne se représentera pas en mars prochain. Pour lui, la politique est une expérience enrichissante mais bien trop chronophage.</p><blockquote><p>Pendant ce mandat, j’étais moniteur de ski la journée donc une journée type, je commençais à 5h du matin. Jusqu’à 8h, j’étais à la ferme puis de 9h à 17h, j’étais à l’ESF. De 17h à 20h de nouveau à la ferme et après : à 21 h, c’étaient les réunions jusqu’à 22h30.</p><div><p><cite>Francis Buisson, agriculteur, moniteur de ski et conseiller municipal</cite></p></div></blockquote><p><em>"J’espère que l’on aura des successeurs. On n’a pas dit qu’on arrêterait la politique. Peut-être que dans le prochain mandat, on reviendra, mais aujourd’hui, on laisse un peu la main. Je pense que c’est intéressant aussi de faire tourner d’autres agriculteurs sur le territoire, d’autres personnes qui vont amener la pierre à l’édifice," </em>explique Francis Buisson.</p> <div> <p> <span>durée de la vidéo : 00h05mn17s</span> </p> <figure> <img src="https://france3-regions.franceinfo.fr/assets/img/logos/fallbackFr3_16_9.webp" alt=""> </figure> <p><span>Agriculteur et élu municipal</span> <span> • </span> <span>France Télévisions</span> </p> </div> <p>Avec une vingtaine d'exploitations, Autrans-Méaudre est l'une des communes les plus agricoles de l'Isère. Pour Hubert Arnaud, le maire (divers) d'Autrans-Méaudre, il est donc inconcevable de ne pas associer les agriculteurs aux décisions de la commune : <em>"Malheureusement, nos élus nationaux sont souvent hors-sol. Ils ne connaissent pas nos problèmes. Il y a le problème des agricultures, le problème des stations, le problème du commerce, du PLU et on se demande, en tant qu’élus de terrain, comment c’est possible d’avoir voté des choses comme ça qui sont complètement hors-sol", </em>déplore Hubert Arnaud.</p><p>La charge de travail, toujours plus grande, et la défiance, parfois forte, envers les élus sont les raisons qui poussent aujourd'hui les agriculteurs à abandonner, avec regret, le champ politique.</p><p>Si les agriculteurs désertent la politique locale, il en va de même au niveau national à l’Assemblée : ils ne sont que 15 parmi les 577 députés, soit à peine 3 % des élus. Les raisons de ce retrait posent aujourd’hui la question du gouffre grandissant entre le monde agricole et le reste de la société.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

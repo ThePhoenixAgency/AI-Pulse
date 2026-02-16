@@ -35,21 +35,21 @@ const stream = await client.chat.completions.create({ model: "neo-mode/balanced"
 }</code></pre><p><span>●</span><span>Tip: use neo-mode/frugal for max savings, neo-mode/premium for best quality</span></p></div></div></div><div><div><h2>Drop-in <span>OpenAI Replacement</span></h2><p>Install our SDK or use the OpenAI library you already have. Change one line, access 400+ models.</p></div><div><p>Works with any OpenAI-compatible SDK, CLI, or tool — Cline, Cursor, LangChain, and more.</p></div></div><div><div><h2>Live System Status</h2><p>Real numbers. No fake testimonials.</p></div><div><div><p><span>komilion — system status</span></p></div><p>SYSTEM STATUS</p><div><p><span>●</span><span><span>0</span></span><span>API calls routed</span></p><p><span>●</span><span><span>0</span></span><span>models available</span></p><p><span>●</span><span><span>0</span></span><span>routing modes active</span></p><p><span>●</span><span><span>0%</span></span><span>uptime (30d)</span></p><p><span>●</span><span><span>0s</span></span><span>avg response</span></p></div><p>last updated: just now • all systems operational</p></div><p>Stats from production API. Every number is real.</p></div><div><div><h2>Unified Access to<br><span>400+ Models</span></h2><p>Connect to all major LLM providers through a single, intelligent API that routes to the best model for your needs</p><div><div><p></p><p>250+</p><p>Text Generation</p></div><div><p></p><p>50+</p><p>Vision &amp; Image</p></div><div><p></p><p>75+</p><p>Code &amp; Logic</p></div><div><p></p><p>30+</p><p>Reasoning &amp; Agents</p></div></div></div><div><div><p><span>OpenAI</span></p></div><div><p><span>Anthropic</span></p></div><div><p><span>Google</span></p></div><div><p><span>Meta</span></p></div><div><p><span>xAI</span></p></div><div><p><span>DeepSeek</span></p></div><div><p><span>Mistral AI</span></p></div><div><p><span>Qwen</span></p></div><div><p><span>Nvidia</span></p></div><div><p><span>Cohere</span></p></div><div><p><span>Perplexity</span></p></div><div><p><span>Amazon</span></p></div></div><div><p><span><strong>Smart Routing:</strong> We automatically select the best model based on your task, budget, and performance requirements</span></p></div></div><div><h2>Ready to Cut Your AI Costs by <span>60-80%</span>?</h2><p>Join smart teams saving thousands on AI infrastructure while maintaining premium quality. Start with intelligent routing that pays for itself immediately.</p><p><span>●</span>No credit card required • Instant savings • 95%+ quality maintained</p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

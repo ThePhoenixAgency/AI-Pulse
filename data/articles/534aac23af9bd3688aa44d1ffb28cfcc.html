@@ -37,21 +37,21 @@ Amazon est la deuxi�me grande entreprise apr�s SpaceX, la soci�t� d'Elon
 Le pr�sident fran�ais Emmanuel Macron a c�l�br� l'�v�nement sur les r�seaux sociaux, d�clarant que le � colis a �t� livr� �, tout en saluant le lancement comme un � succ�s europ�en �.</p><p>� Amazon, votre colis a �t� livr�. Ariane 6 a d�coll� pour la premi�re fois avec quatre propulseurs, ce qui en fait notre lanceur europ�en le plus puissant ! �, a d�clar� Emmanuel Macron. � � bord : 32 satellites pour la constellation d'Amazon. Amazon a choisi l'Europe pour ce lancement majeur. Une prouesse fran�aise, un succ�s europ�en : nous atteignons de nouveaux sommets. F�licitations aux �quipes �, a ajout� le pr�sident.</p><p>Dans ce contexte de concurrence accrue dans l'orbite terrestre basse, d�autres acteurs de l'�cosyst�me du fondateur d'Amazon avancent �galement leurs ambitions. En janvier dernier, la soci�t� spatiale Blue Origin, fond�e par Jeff Bezos, a annonc� le <a href="https://reseau.developpez.com/actu/379471/La-societe-Blue-Origin-fondee-par-Jeff-Bezos-fondateur-d-Amazon-s-attaque-a-Starlink-d-Elon-Musk-en-annoncant-le-lancement-de-son-service-Internet-par-satellite-TeraWave-avec-des-debits-jusqu-a-6-Tbps/" target="_blank">lancement de TeraWave</a>, son propre service Internet par satellite. Le projet pr�voit le d�ploiement de 5 408 satellites en orbite basse et moyenne, entre 160 km et 34 000 km d'altitude, � partir du quatri�me trimestre 2027. Gr�ce � une architecture multi-orbite, ce r�seau ambitionne d'offrir des d�bits pouvant atteindre 6 t�rabits par seconde, en se positionnant sur les infrastructures critiques et les zones �loign�es o� le d�ploiement de la fibre optique est co�teux ou difficile.</p><p><b>Et vous ?</b></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

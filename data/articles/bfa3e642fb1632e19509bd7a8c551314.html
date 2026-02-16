@@ -31,21 +31,21 @@
     <div><div> <span>When you purchase through links on our site, we may earn an affiliate commission. <a href="https://www.neowin.net/terms">Here’s how it works</a>.</span> <h5> OpenAI has launched a research preview of GPT-5.3-Codex-Spark, a specialized low-latency model optimized for real-time coding via Cerebras. </h5> <p> <span> <a href="https://www.neowin.net/profile/351472-pradeep-viswanathan/">Pradeep Viswanathan</a> <span></span> <span>Neowin</span> <a href="https://www.twitter.com/pradeepviswav">@pradeepviswav</a> · </span> <time> Feb 12, 2026 23:26 EST </time> </p> </div><div> <p><img alt="Codex Spark" src="https://cdn.neowin.com/news/images/uploaded/2026/02/1770950882_codex_spark.webp"></p> <p>Last month, OpenAI <a href="https://openai.com/index/cerebras-partnership/">announced </a>a partnership with Cerebras, an AI startup building purpose-built systems to accelerate long outputs from AI models. At the time, OpenAI said it would integrate Cerebras’ low-latency technology into its inference stack in phases to support different workloads, including generating code and creating images.</p> <p>Today, OpenAI <a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">announced </a>a research preview of GPT-5.3-Codex-Spark, a smaller version of <a href="https://www.neowin.net/news/openai-debuts-gpt-53-codex-25-faster-and-setting-new-coding-benchmark-records/">GPT-5.3-Codex</a> designed for real-time coding scenarios and powered by Cerebras’ Wafer Scale Engine 3. OpenAI claims Codex-Spark can deliver more than 1,000 tokens per second while maintaining strong capability. However, since it is a smaller model, GPT-5.3-Codex-Spark is not expected to perform as well as the full GPT-5.3-Codex; OpenAI says its performance falls between GPT-5.3-Codex and GPT-5.1-Codex-Mini.</p> <figure><a href="https://cdn.neowin.com/news/images/uploaded/2026/02/1770955355_codex_spark_swe_bench_pro.webp"><img alt="Codex Spark SWE Bench Pro" src="https://cdn.neowin.com/news/images/uploaded/2026/02/1770955355_codex_spark_swe_bench_pro_story.webp"></a></figure> <p>For now, Codex-Spark supports a 128K context window and text-only input. OpenAI plans to add support for larger models, longer context lengths, and multimodal input in the future. As this is a limited rollout for ChatGPT Pro users, the model will have its own rate limits, though usage won’t count toward standard limits. If demand spikes, OpenAI may further limit access or temporarily queue users to maintain reliability.</p> <p><a href="https://www.neowin.net/news/openai-announces-chatgpt-pro-plan-for-a-hefty-200-per-month/">ChatGPT Pro subscribers</a> can try the ultra-low-latency model by updating to the latest versions of the Codex app, CLI, and VS Code extension. OpenAI is also making Codex-Spark available via the API to a small set of design partners to learn how developers want to integrate it into other products and services.</p> <p>OpenAI also reiterated that GPUs remain the primary compute platform across its training and inference pipelines for broad usage. However, it positioned Cerebras’ technology as a better fit for extremely low-latency Codex workloads. The company added that GPUs and Cerebras systems can also be combined within a single workload to achieve the best overall performance.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

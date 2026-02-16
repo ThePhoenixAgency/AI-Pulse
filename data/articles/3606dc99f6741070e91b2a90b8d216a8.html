@@ -34,21 +34,21 @@ La tragédie frappe à 30 km de Paris, au camp de Pomponne, où plusieurs bébé
 Les 5 et 6 février 1954, une tempête de neige exceptionnelle frappe le Languedoc-Roussillon et la Basse vallée du Rhône. Perpignan est ensevelie sous 85 cm de neige, bloquant la circulation.&nbsp; Des tranchées sont creusées pour les piétons.&nbsp; L’effondrement de 28 maisons cause des dommages matériels importants, estimés à des centaines de millions de francs.&nbsp; Le garage des trams est le premier touché, endommageant gravement les véhicules. Trois autres garages perpignanais et le bâtiment des halles centrales subissent le même sort.&nbsp; Des chutes de neige importantes sont aussi enregistrées à Carcassonne, aux Saintes-Maries-de-la-Mer et à Montpellier.&nbsp; La région est isolée, et le mistral et la tramontane forment de grandes congères. Des bulldozers dégagent les routes principales.&nbsp; Dans le Sud, où la neige est rare, cet événement est accueilli avec enthousiasme par les enfants et souvent par les adultes.</p><p> Dans l’Est, le froid intense pousse les sangliers à quitter leur habitat naturel pour chercher de la nourriture, les rapprochant des zones urbaines.</p></div> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/200c-en-plaine-retour-sur-la-vague-de-froid-de-fevrier-2012" target="_blank">-20°C en plaine : retour sur la vague de froid de février 2012</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/hiver-1941-40-cm-de-neige-a-marseille-19-degres-a-lyon-tous-les-fleuves-de-france-gelent" target="_blank">Hiver 1941 : les fleuves gèlent, 40 cm de neige à Marseille, -19°C à Lyon...</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/les-pires-inondations-depuis-des-siecles-dans-les-flandres-et-les-pays-bas" target="_blank">Les pires inondations depuis des siècles dans les Flandres et les Pays-Bas</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/le-dernier-hiver-de-la-guerre-fut-terriblement-froid-en-france" target="_blank">Le dernier hiver de la guerre fut terriblement froid en France...</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/l-hiver-qui-preceda-la-1ere-guerre-mondiale-fut-terrible" target="_blank">Froid polaire pour fin janvier et jusqu'à 1 m de neige à Carcassonne !</a></p> <p>Auteur : Guillaume Séchet</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

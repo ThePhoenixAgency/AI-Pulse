@@ -33,21 +33,21 @@
 </ul> <figure><table><tbody><tr><th><p>Enceinte</p></th><th><p>Format</p></th><th><p>Spécificité</p></th><th><p>Prix public</p></th></tr><tr><td><p>Kulglass</p></td><td><p>Lampe-enceinte</p></td><td><p>Design éclatant, couplage lumière-son</p></td><td><p>25-35 €</p></td></tr><tr><td><p>Solskydd</p></td><td><p>Enceinte rétro</p></td><td><p>Motifs artistiques, trois tailles</p></td><td><p>20-45 €</p></td></tr><tr><td><p>Kallsup mini</p></td><td><p>Cubique ultra-compact</p></td><td><p>Synchronisation massive, prix mini</p></td><td><p>9 €</p></td></tr></tbody></table></figure> <p>Dans cette perspective, l’offre <strong>Ikea</strong> dépasse la simple intégration technique&nbsp;: c’est une réinvention de la maison où chaque objet connecté devient motif de personnalisation et manifeste de goûts. Cette approche fait écho à la demande d’un public avide d’innovation mais aussi soucieux de la beauté du quotidien. À l’image de grandes enseignes qui investissent le domaine, <strong>Ikea</strong> tire parti d’une notoriété unique et d’un savoir-faire de designer pour installer ses références au cœur de nos intérieurs.</p> <p>Ce mouvement se veut évolutif : le déploiement massif de la domotique <strong>Ikea</strong> annonce de futures innovations, chaque mise à jour enrichissant la maison de fonctionnalités inédites et d’une esthétique renouvelée. En investissant avec force ce marché, le leader du mobilier renforce son ambition de devenir également un acteur central de la maison intelligente accessible.</p> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

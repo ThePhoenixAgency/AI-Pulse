@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Un mystère spatial vieux de 60 ans résolu par une IA</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Un mystère spatial vieux de 60 ans résolu par une IA</h1>
+  <div class="metadata">
+    Source: Journal du Geek | Date: 2/16/2026 6:33:51 PM | Lang: FR |
+    <a href="https://www.journaldugeek.com/2026/02/16/un-mystere-spatial-vieux-de-60-ans-resolu-par-une-ia/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Si l’imaginaire collectif associe la conquête lunaire aux États-Unis avec, entre autres, la célèbre mission Apollo 11 de 1969, l’URSS avait pourtant réussi le tout premier alunissage grâce à sa sonde Luna 9.</p> <p>Plus de trois ans avant “le petit pas” de Neil Armstrong, Luna 9 s’est posé sur la Lune le 3 février 1966, permettant ainsi au monde entier d’obtenir les toutes premières photos depuis la surface de notre satellite naturel. Le problème, c’est que durant près de 60 ans, le site exact de l’alunissage de Luna 9, et donc sa trace, avaient disparu à cause de coordonnées trop approximatives et, surtout, de la petitesse de l’engin.</p> <p>Mais les progrès de la technologie et, surtout l’émergence de l’IA, pourraient permettre de résoudre ce mystère. Des chercheurs du SETI Institute, parmi lesquels Lewis Pinault, ont développé l’algorithme YOLO – ETA (You Only Look Once – Extraterrestrial Artefact) et l’ont entraîné, des mois durant, à étudier des sites d’alunissage connus sur base de milliers d’archives.</p> <p>Sur la base de ces sources vidéos, l’IA a appris à reconnaître toutes les traces de signatures humaines sur le sol lunaire, comme des formes géométriques bien particulières, des ombres atypiques ou encore des régolithes perturbés (couche de poussière résultant de l’impact d’une météorite à la surface, NDLR.). L’IA a alors travaillé sur des sites connus, comme ceux résultant des missions Apollo.</p> <h2>Un site sérieux émerge</h2> <p>Après des mois d’étude, YOLO – ETA a été lâchée sur une zone approximative de 5 x 5 km autour de la zone supposée de l’alunissage de Luna 9, et aurait été capable de repérer un groupe d’objets récurrents depuis les nombreux panoramas historiques fournis par Luna 9 aux coordonnées ~7,03° N, –64,33° E. Si l’emplacement exact de Luna 9 n’est pas confirmé à 100%, cet emplacement constitue un candidat crédible.</p> <p>Les chercheurs ont en effet analysé les résultats fournis par l’algorithme et en sont arrivés à la conclusion que la géométrie de l’horizon, à savoir très plate, était compatible avec le relief du site candidat. Si la fiabilité de YOLO – ETA n’est pas encore prouvée, le fait qu’elle soit parvenue à localiser de manière extrêmement précise l’emplacement de Luna 16 est, en soi, un très bon signe.</p> <p>La prochaine étape, pour les chercheurs, est la confirmation du site identifié. S’ils parviennent, grâce à des images de plus haute résolution, à prouver que le site identifié par leur IA est le bon, alors cela pourrait ouvrir de nouvelles voies dans la conquête spatiale.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

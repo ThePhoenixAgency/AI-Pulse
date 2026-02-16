@@ -31,21 +31,21 @@
     <div><div> <p>The <a target="_self" href="https://www.france24.com/en/tag/france/">French </a>government said on Sunday it was tightening checks on several <a target="_self" href="https://www.france24.com/en/tag/food/">food</a> ⁠imports in a bid to ease concerns of farmers who have been protesting at what they say is unfair competition from countries with looser regulations.</p> <p><a target="_self" href="https://www.france24.com/en/europe/20251219-french-government-warns-farmers-against-christmas-blockades-over-cattle-cull">French farmers have been protesting</a> over a ​planned European trade deal with the South American <a target="_self" href="https://www.france24.com/en/tag/mercosur/">Mercosur</a> bloc, and other issues including measures to contain a livestock disease.</p> <p>Agriculture Minister Annie Genevard said the tighter checks would make sure food coming from ​outside the EU did not include substances banned in food produced in ​the bloc.</p> <p>A decree would be issued soon announcing the suspension of imports of some food products already known to contain those substances, she added.</p> <p>"Imports, regardless of from where they come in the world, must comply with our standards. France is setting an example in Europe by issuing this unprecedented decree that concerns more than a dozen food products," wrote Genevard on X.</p> <p><span>Watch more</span><a target="_self" href="https://www.france24.com/en/tv-shows/talking-europe/20251219-we-cannot-accept-an-enormous-gap-in-standards-between-eu-and-mercosur-copa-cogeca-s-tsiforou">'We cannot accept an enormous gap in standards between EU and Mercosur': COPA-COGECA's Tsiforou</a></p> <p>"Melons, apples, apricots, cherries, strawberries, grapes, potatoes: they will only be on sale in France if they show no residue of these substances banned in our ​country. Other products from <a target="_self" href="https://www.france24.com/en/tag/south-america/">South America</a> such as avocados, mangos, guavas, or certain citrus fruits from elsewhere will only be allowed in if they comply with our standards," she added.</p> <p>Prime ‌Minister <a target="_self" href="https://www.france24.com/en/tag/s%C3%A9bastien-lecornu/">Sébastien Lecornu</a> said earlier that any imported product showing traces of these weed and fungus killers –&nbsp;namely mancozeb, glufosinate, thiophanate-methyl, and carbendazim which are banned in Europe – will not be allowed in France.</p> <p><span>Watch more</span><a target="_self" href="https://www.france24.com/en/tv-shows/people-profit/20251219-sacrificing-agriculture-for-trade-mercosur-deal-divides-european-union">Sacrificing agriculture for trade? Mercosur deal divides European Union</a></p> <p><a target="_self" href="https://www.france24.com/en/tag/germany/">Germany</a> and <a target="_self" href="https://www.france24.com/en/tag/spain/">Spain</a> back the Mercosur deal, but opponents in France say the trade arrangement would lead to cheap imports of South American commodities, notably beef, that do not meet the <a target="_self" href="https://www.france24.com/en/tag/european-union/">European Union</a>'s environmental and food safety standards.</p> <p>"Protecting our farmers, guaranteeing the health of French people and standing up to any form of unfair competition while making sure our rules are respected – this is non-negotiable. It is up to the European Commission to make ‌sure this is generalised ​across the board. If necessary, we will do it again," added Genevard.</p> <p><em>(FRANCE 24 with Reuters)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

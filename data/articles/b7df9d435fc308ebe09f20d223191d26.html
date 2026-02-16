@@ -24,7 +24,11 @@
 <body>
   <h1>EN DIRECT - Mort de Quentin Deranque à Lyon : une enquête pour homicide volontaire et violence aggravée ouverte, aucune interpellation à ce stade</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Le Figaro | Date: 2/16/2026 5:56:02 PM | Lang: FR |
+=======
+    Source: Le Figaro | Date: 2/16/2026 4:56:02 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.lefigaro.fr/lyon/en-direct-mort-quentin-lyon-ultragauche-militant-nationaliste-agression-lynchage-la-france-insoumise-20260216" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -41,21 +45,21 @@
 </p> </div> </div> <div> <p><time>06:46</time> </p> <p>Bonjour et bienvenue</p> <p>Bonjour et bienvenue dans ce direct consacré à l’agression mortelle par des militants d’ultragauche du jeune nationaliste Quentin Deranque jeudi dernier. Le parquet de Lyon fera ce lundi à 15 heures un point sur l’enquête en cours après que les services de police ont <em>«recueilli plusieurs témoignages significatifs»</em>..</p> </div> <div> <p><span>Les publications apparaîtront ici</span> </p></div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

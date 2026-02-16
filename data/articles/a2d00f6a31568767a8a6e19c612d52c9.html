@@ -6,10 +6,23 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+<<<<<<< HEAD
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+=======
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -18,29 +31,38 @@
 <body>
   <h1>This Raspberry Pi map of Manhattan shows real-time subway train status</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Toms Hardware Raspberry Pi | Date: 2/19/2025 4:00:00 PM | Lang: EN |
     <a href="https://www.tomshardware.com/raspberry-pi/this-raspberry-pi-map-of-manhattan-shows-real-time-subway-train-status" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <p>Bicapitate has created a custom Raspberry Pi-powered 3D-printed map of Manhattan that displays the location of subway trains in real time using LEDs and optical fiber.</p>
     <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+=======
+    Source: Toms Hardware Raspberry Pi | Date: 2/19/2025 3:00:00 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/this-raspberry-pi-map-of-manhattan-shows-real-time-subway-train-status" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Over the years, we've covered a few <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> plane tracking projects and even one project to track the London Underground but this is the first Manhattan subway train tracker we've come across. Maker and developer Bicapitate, as they're known as over at Reddit, has put together a cool 3D printed <a href="https://www.reddit.com/r/nycrail/comments/1ir8hfh/i_made_this_map_of_manhattan_that_displays_the" target="_blank"><u>map of Manhattan</u></a> that shows the actual location of the subway trains using optical fiber and LEDs.</p><p>The map was designed from scratch by Bicapitate and 3D printed just for this project. It has colored lines that represent each of the transit lines and they are fitted with optical fiber lines along them. These lines are illuminated by RGB LEDs to indicate when a particular train is passing that location. The color of the track does not determine the color but rather the train does so you can tell when a particular train is running on a different track.</p><div><div><p>Image </p><p>1</p><p> of </p><p>2</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/bvEAJBNvUpHpqBKt3Gpws9.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: Bicapitate)</span></figcaption></figure></div></div><p>The main board running the system is a Raspberry Pi but we're not sure of the exact model. It looks like a Raspberry Pi 3B+ or 4 era machine (the white DSI connector near the micro SD card slot is a good indicator) and this type of project doesn't need a great deal of computational power. The Pi is connected to a couple of matrices that set the color of the optical fiber installed along the tracks. Bicapitate explained that the design process involved creating a vector-based 2D image of the Manhattan transit map which was then used to create a 3D model in OpenSCAD.</p><p>The train data is retrieved open from an <a href="https://www.mta.info/developers" target="_blank"><u>open server</u></a> that the city provides. Locations are updated once every 30 seconds so the map is limited by that frequency. The matrix panels are controlled using a library created by Jon-Bright over at <a href="https://github.com/Jon-Bright/ledctl" target="_blank"><u>GitHub</u></a>. Beyond that, the software has not been made open source for the project so we're not sure exactly how everything comes together on the Pi.</p><p>If you want to check out this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a> in action, head over to the official thread shared to <a href="https://www.reddit.com/r/nycrail/comments/1ir8hfh/i_made_this_map_of_manhattan_that_displays_the" target="_blank"><u>Reddit</u></a> where you can see a demo video and close up look at the hardware making it all possible.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div></div>
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

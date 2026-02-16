@@ -32,21 +32,21 @@
 </div> <div> <h2>Que dit l'enquête &nbsp;?</h2><p>Le procureur a évoqué « l'audition de plus d'une quinzaine de témoins&nbsp;», tandis que des analyses vidéo sont en cours pour identifier les agresseurs.&nbsp;«&nbsp;Au moment où je vous parle, il n'y a pas eu d'interpellation. Une information judiciaire devra être ouverte&nbsp;».&nbsp;«&nbsp;Puis des interpellations seront effectuées&nbsp;», a-t-il dit.</p></div> <p>L'enquête, qui avait été ouverte pour « coups mortels aggravés et violences aggravées » a été requalifiée en « homicide volontaire et violences aggravées ».</p> <div> <h2>Quelles sont les réactions ?</h2><p>Le ministre de l'Intérieur Laurent Nuñez a pointé du doigt la possible implication du groupe antifasciste « La Jeune Garde », fondée à Lyon en 2018 et dissoute en juin. Ce collectif d'extrême gauche a été créé par <a href="https://www.ledauphine.com/faits-divers-justice/2026/02/16/militant-antifasciste-cofondateur-de-la-jeune-garde-depute-lfi-du-vaucluse-qui-est-raphael-arnault" target="_blank">Raphaël Arnault</a>, aujourd'hui député de La France insoumise, qui a exprimé samedi sur X « horreur et dégoût » après la mort de l'étudiant.</p></div> <p>Dans un communiqué dimanche, la Jeune Garde a contesté toute responsabilité dans les « tragiques événements » survenus à Lyon, « ayant suspendu toutes ses activités » depuis sa dissolution.</p> <p>Le collectif identitaire Némésis avait pour sa part affirmé que Quentin Deranque était chargé d'assurer la sécurité de plusieurs de ses militantes et qu'il avait été agressé par des militants antifascistes dont certains issus de la Jeune Garde.</p> <p>Alice Cordier, présidente de Némésis, avait même désigné parmi les agresseurs <a href="https://www.ledauphine.com/politique/2026/02/16/mort-de-quentin-glucksmann-juge-impensable-toute-alliance-de-la-gauche-avec-lfi-pour-2027" target="_blank">Jacques-Elie Favrot</a>, assistant parlementaire du député Raphaël Arnault.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

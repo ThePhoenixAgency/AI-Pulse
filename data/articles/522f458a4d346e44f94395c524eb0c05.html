@@ -31,21 +31,21 @@
     <div><div> <p>Des pseudo-scientifiques racistes ont eu accès à deux bases de données scientifiques comportant des informations sensibles sur des milliers d’adolescents vivant aux États-Unis, et s’en sont servis pour justifier leur idéologie. Le National Institutes of Health (NIH), qui en a la responsabilité, n’a pas réussi à les protéger d’une mauvaise utilisation, expliquait le New York Times dans une enquête <a href="https://www.nytimes.com/2026/01/24/us/children-genetics-race-science.html?unlocked_article_code=1.G1A.vSHF.v4SsNX4DxDbb&amp;smid=url-share" target="_blank">publiée</a> fin janvier.</p> <p>Les deux bases de données stockent les informations recueillies sur des cohortes d’adolescents états-uniens. L’une d’entre elles, la Philadelphia&nbsp;Neurodevelopmental Cohort, <a href="https://www.med.upenn.edu/bbl/philadelphianeurodevelopmentalcohort.html" target="_blank">rassemble</a> des informations sur 9&nbsp;500 patients de 8 à 21 ans pour «&nbsp;<em>caractériser l'interaction entre le cerveau, le comportement et la génétique</em>&nbsp;».</p> <p>L’autre, l’étude Adolescent Brain Cognitive Development (ABCD), se <a href="https://abcdstudy.org/about/" target="_blank">présente</a> comme «&nbsp;<em>la plus grande étude à long terme sur le développement cérébral et la santé infantile menée aux États-Unis </em>» avec des données sur 11&nbsp;880 enfants qui avaient entre 9 et 10 ans quand ils ont rejoint l’étude. Elle a été lancée en 2015 et cumule des données sur le développement cérébral, le développement social, émotionnel et cognitif, la santé mentale, la consommation de substances et les attitudes, l'identité de genre et la santé sexuelle, les échantillons biologiques, ainsi que divers facteurs liés à la santé physique et à l'environnement. Et elle est la source de beaucoup d’études. Ainsi, des chercheurs l’ont, par exemple, <a href="https://publications.aap.org/pediatricsopenscience/article/2/1/1/205729/Digital-Media-Genetics-and-Risk-for-ADHD-Symptoms?autologincheck=redirected" target="_blank">utilisée</a> récemment, pour regarder les conséquences des réseaux sociaux, des jeux vidéo et des écrans sur les adolescents.</p> <p>Mais, comme nous le <a href="https://www.youtube.com/watch?v=asHBtQ9jjus" target="_blank">montre</a> l’histoire des sciences, la légitimation des thèses racialistes et suprémacistes par des chercheurs date du XVIIIᵉ siècle et elle est toujours en cours, via certains chercheurs mais aussi des personnes qui se réclament de la science sur X, Substack ou autres.</p> <h3>Dangereux sur les réseaux sociaux, mais pas pris au sérieux par la communauté scientifique</h3> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

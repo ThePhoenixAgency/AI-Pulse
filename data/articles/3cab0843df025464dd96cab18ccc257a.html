@@ -31,21 +31,21 @@
     <div><div> <p>Le principe est simple sur le papier&nbsp;: <a href="https://meshtastic.org/">Meshtastic</a> utilise la technologie LoRa (Long Range), un protocole radio basse consommation capable de transmettre de petites quantités de données sur plusieurs kilomètres via des fréquences libres. Chaque appareil devient un maillon d’un réseau maillé : il reçoit un message, le relaie, et ainsi de suite. Résultat&nbsp;: un filet de communication qui peut s’étendre sur des kilomètres, même loin de toute antenne.</p> <h2>Un réseau radio qui se débrouille tout seul</h2> <p>«&nbsp;<em>C’est comme une infrastructure radio… sans infrastructure. C’est ad hoc</em>&nbsp;», résume à <em>Wired</em> Eric Kristoff, bénévole à la Mars Society de Chicago. L’association teste Meshtastic lors de missions analogues à des expéditions martiennes, menées dans des zones reculées. Les participants portent des radios T-Echo, grosses comme un jeu de cartes, pour rester en contact et partager leur position. «&nbsp;<em>Nous sommes à deux heures du premier hôpital. Si personne ne sait où vous êtes, le risque augmente immédiatement</em>&nbsp;», explique-t-il.</p> <p><img src="https://www.journaldugeek.com/app/uploads/2026/02/meshtastic-2.jpg" alt="Meshtastic 2"></p> <p>Les appareils compatibles démarrent autour de 30&nbsp;$, même si les modèles plus sophistiqués peuvent coûter deux à quatre fois plus cher. Pas d’abonnement, pas de carte SIM&nbsp;: le réseau est créé par les utilisateurs eux-mêmes. Les messages sont chiffrés de bout en bout, et il est possible d’activer un suivi de position pour surveiller un groupe en randonnée ou vérifier que tout le monde est bien rentré au camp.</p> <p>La plupart des modules doivent être reliés à un smartphone en Bluetooth. Le petit boîtier s’occupe des échanges radio, l’application mobile permettant de lire et de rédiger les messages. Des fabricants comme LilyGo proposent aussi des versions plus autonomes&nbsp;: mini-terminaux avec clavier, appareil façon BlackBerry, écran e-paper, et même des montres connectées compatibles.</p> <p>Meshtastic a vu le jour début 2020 sous l’impulsion de Kevin Hester, avec une idée simple&nbsp;: communiquer pendant des activités où internet est peu fiable. Depuis, le projet a grandi grâce à une communauté internationale très active. Le logiciel est open source et maintenu par des bénévoles. Tout n’est pas parfait pour autant. Le système demande un minimum de curiosité technique&nbsp;: installer un firmware, configurer l’appareil, suivre les mises à jour régulières. Et non, cela ne remplacera pas internet.</p> <p>Autre limite&nbsp;: la ligne de vue. Collines, immeubles ou forêts peuvent bloquer le signal. Le réseau fonctionne d’autant mieux que plusieurs nœuds sont présents dans la zone. Et puis la bande passante est réduite. Meshtastic ne fera donc pas disparaître les forfaits 5G, mais comme solution de secours, outil pour les zones isolées ou terrain de jeu pour passionnés, il attire de plus en plus d’adeptes.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

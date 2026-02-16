@@ -38,21 +38,21 @@
 </div> <div> <h2>2021 - Victorieux contre Toulouse, Rumilly (N2) gagne sa place en demi-finale</h2><p>Rumilly rejoindra-t-il la liste de ces "petits poucets"&nbsp;qui surprennent en&nbsp;se faisant une place parmi l'élite en Coupe de France ? En tout cas, le club haut-savoyard de Nationale 2 semble bien parti. Mercredi 21 avril, après sa victoire contre le FC Annecy, le GFA Rumilly Vallières en quart de finale doit&nbsp;battre Toulouse alors troisième de Ligue 2. Et il le fait avec le beau score de 2 à 0. Voilà comment le club amateur se retrouve dans le dernier carré de la Coupe de France.</p></div> <p>L'exploit pourrait ne pas s'arrêter. Même si le défi qui attend les joueurs est de taille. Le 13 mai, ils devront gagner face&nbsp;à&nbsp;l'AS Monaco qui n'a&nbsp;connu qu'une défaite en 2021. Le duel ne fait pas peur à l'équipe haut-savoyarde, au contraire, elle se dit ravie de rencontrer un grand club. Qui sait, peut-être que comme Valence, Chambéry ou Grenoble, la victoire sera du côté de Rumilly !&nbsp;</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

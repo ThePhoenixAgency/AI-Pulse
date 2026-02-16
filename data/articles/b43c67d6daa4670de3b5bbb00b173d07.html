@@ -31,21 +31,21 @@
     <div><div> <p>Le service de contre-espionnage allemand BfV et le BSI (équivalent à l'ANSSI) ont <a href="https://www.verfassungsschutz.de/SharedDocs/kurzmeldungen/DE/2026/2026-02-06-gemeinsamer-sicherheitshinweis-phishing.html" target="_blank">communiqué</a> conjointement pour signaler une vague de phishing sur Signal. Selon eux, un «&nbsp;<em>cyberacteur probablement contrôlé par un État</em>&nbsp;» utilise la messagerie chiffrée pour viser notamment «&nbsp;<em>des personnalités de haut rang issues du monde politique, militaire et diplomatique, ainsi que des journalistes d'investigation en Allemagne et en Europe </em>».</p> <h3>Des fonctions de sécurité légitimes exploitées par les pirates</h3> <p>«&nbsp;<em>Les pirates exploitent les fonctions de sécurité légitimes des applications et les combinent avec des techniques d'ingénierie sociale. L'objectif est d'accéder discrètement aux discussions individuelles et de groupe ainsi qu'aux listes de contacts des personnes concernées</em>&nbsp;», expliquent les deux agences allemandes dans un document [<a href="https://www.verfassungsschutz.de/SharedDocs/publikationen/DE/praevention_wirtschafts-und_wissenschaftsschutz/2026-02-06-gemeinsame-warnmitteilung-phishing.pdf?__blob=publicationFile&amp;v=3" target="_blank">PDF</a>].</p> <p>Il y a tout juste un an, Google avait déjà <a href="https://next.ink/171637/des-pirates-russes-ont-reussi-a-espionner-des-comptes-signal-de-militaires-ukrainiens/">détecté</a> une campagne de phishing sur l'application de messagerie chiffrée menée par des pirates proches de la Russie contre des troupes militaires ukrainiennes.</p> <p>Les services allemands évoquent l'utilisation de la même fonction de liaison vers un nouvel appareil via un QR-code&nbsp;: «&nbsp;<em>Les pirates contactent leur cible sous un prétexte crédible et la persuadent de scanner un QR-Code. Ce code connecte effectivement un nouvel appareil au compte de la cible. Cependant, cet appareil est contrôlé par les pirates</em>&nbsp;», expliquent-ils. </p> <p>Comme Google, ils précisent que WhatsApp a le même genre de <a href="https://faq.whatsapp.com/1317564962315842/?cms_platform=android" target="_blank">fonctionnalité</a> qui pourrait donc tout aussi bien être utilisée de façon maligne. En décembre dernier, Gen Digital <a href="https://www.gendigital.com/blog/insights/research/ghostpairing-whatsapp-attack" target="_blank">signalait</a> justement une attaque sur la messagerie de Meta via la récupération de codes de vérification via QR code avec un lien supposé renvoyer l'utilisateur vers une photo à consulter.</p> <h3>Se faire passer pour l'assistance de Signal</h3> <p>Mais les services allemands ajoutent avoir détecté une autre manière de faire s'appuyant moins sur une fonctionnalité particulière de la messagerie que sur de l'ingénierie sociale. Ainsi, «&nbsp;<em>les pirates se font passer pour l'équipe d'assistance officielle ou le chatbot d'assistance du service de messagerie («&nbsp;Signal Support&nbsp;» ou «&nbsp;Signal Security ChatBot&nbsp;»). Ils contactent directement leur cible par message instantané. La conversation commence généralement par une prétendue alerte de sécurité. Les pirates créent également une pression immédiate en affirmant que sans action immédiate, la perte de données privées est imminente</em>&nbsp;», expliquent-ils.</p> <p>Et les pirates d'ajouter encore de la pression en affirmant que «&nbsp;<em>seule la transmission du code PIN de sécurité privé de la personne ciblée ou d'un code de vérification reçu par SMS peut empêcher cette perte</em>&nbsp;». En récupérant le code PIN de l'utilisateur, les pirates peuvent alors s'enregistrer sur un autre appareil et contrôler la messagerie. </p> <p>Encore une fois, WhatsApp n'est pas non plus à l'abri de ce genre d'attaque puisque la messagerie de Meta a, elle aussi, <a href="https://faq.whatsapp.com/1278661612895630/?cms_platform=android" target="_blank">implémenté</a> un système de code PIN pour sa vérification en deux étapes. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

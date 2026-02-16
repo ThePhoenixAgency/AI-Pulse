@@ -6,6 +6,7 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+<<<<<<< HEAD
   h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
@@ -16,6 +17,12 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+=======
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,6 +31,7 @@
 <body>
   <h1>Arduino Uno Q Review: The board with two brains</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Toms Hardware Raspberry Pi | Date: 12/9/2025 6:12:01 PM | Lang: EN |
     <a href="https://www.tomshardware.com/raspberry-pi/arduino-uno-q-review" target="_blank">Original Article</a>
   </div>
@@ -73,23 +81,31 @@ Cons
 </p></div><figcaption><span>(Image credit: Tom's hardware)</span></figcaption></figure><p>Those already invested in the Arduino ecosystem will love the Arduino Uno Q, and I can see many AI / LLM-based projects being created with it. Robotics, sensor monitoring, smart homes, and more can be achieved with the Arduino Uno Q. Merging the AI-centric Qualcomm SoC with the STM32 for the GPIO is a smart move. The electronics for your project run on a real-time microcontroller, while the Arm CPU handles all of the AI, Linux, and Python aspects of the project.</p><h2>Bottom Line</h2><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/9zz8GSr7XuBW7fbnPL2acS.jpg" alt="Arduino Uno Q">
 </p></div><figcaption><span>(Image credit: Tom's hardware)</span></figcaption></figure><p>I love the Arduino. It is the board where I cut my teeth with electronics and microcontrollers. The Arduino Uno Q is an interesting board, but ultimately the spec is a little too old and reproducible with kit that many electronics enthusiasts will already have to hand.</p><p>That said, if you are a fan of the Arduino and its form factor, you will love the Arduino Uno Q and the ecosystem it brings. The hardware is good, and the Arduino App Lab is a great starting place to learn how to merge the two sides of the Arduino Uno Q into one project.</p><p>My worry with the Arduino Uno Q is that it becomes just like the Intel Edison, Galileo, and Arduino Yun. The Intel projects were born of collaboration, whereas the Arduino Uno Q is the result of Qualcomm’s purchase of Arduino. Could that give the Arduino Uno Q more support than previous attempts? Time and popularity will ultimately be the means by which this is measured.</p>
 </div> <div><p>Les Pounder is an associate editor at Tom's Hardware. He is a creative technologist and for seven years has created projects to educate and inspire minds both young and old. He has worked with the Raspberry Pi Foundation to write and deliver their teacher training program "Picademy".</p></div> </section></div>
+=======
+    Source: Toms Hardware Raspberry Pi | Date: 12/9/2025 5:12:01 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/arduino-uno-q-review" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p>Qualcomm’s recent acquisition of Arduino has introduced the Arduino Uno Q, a board that combines a Linux SBC powered by Qualcomm’s Dragonwing with an STM32 microcontroller. But are two brains better than one?</p>
+    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

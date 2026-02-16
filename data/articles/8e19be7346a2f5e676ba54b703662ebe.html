@@ -31,21 +31,21 @@
     <div><div> <p>The younger brother of French <a href="https://www.france24.com/en/tag/green-party/" target="_self">Green Party</a> activist Amine Kessaci was shot dead in broad daylight in France’s second city of <a href="https://www.france24.com/en/tag/marseille/" target="_self">Marseille</a> Thursday, multiple sources told AFP. The city’s prosecutors have not yet publicly identified the victim.</p> <p>The shooting took place around 2:30pm outside the city’s largest concert venue in the working-class neighbourhood of Saint-Just.</p> <p>Police are still searching for the two suspects, who fled the scene on a motorbike.&nbsp;</p> <p>Kessaci, who stood as a local candidate for the left-wing <a href="https://www.france24.com/en/tag/new-popular-front/" target="_self">New Popular Front</a> alliance in last year’s legislative elections, is known locally for his activism on behalf of people who have lost family members to the city’s widespread drug-related violence.&nbsp;</p> <p>The Green Party member founded the NGO Conscience, which provides legal and counselling support to those who have lost loved ones to drug-related violence, after his older brother Brahim was killed in a drug-related shooting in 2020.&nbsp;</p> <p><em>(FRANCE 24 with AFP)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

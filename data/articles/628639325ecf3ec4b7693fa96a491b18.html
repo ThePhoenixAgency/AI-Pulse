@@ -31,21 +31,21 @@
     <div><div><p>Nodepod est un des outils les plus rudimentaires de Windows. Mais Microsoft cherche à le moderniser pour le transformer en éditeur moderne avec fonctions d'édition plus complets, formatage des textes, gérer les liens et l'apparition du Markdown. Et là, c'est un peu la catastrophe. Une vulnérabilité, la CVE-2026-20841, affiche une sévérité haute. L'attaque potentielle est une injection de commande en autorisant une exécution d'applications non autorisée.&nbsp;</p><p>La faille est aussi simpliste que gênante.</p><p>1 / on crée un fichier .md</p><p>2 / ce document contient des liens vers des applications, des codes</p><p>3 / si l'utilisateur clique sur un lien embarqué, il arrive que le lien réussit à bypasser la vérification et la validation de Windows pour autoriser ou non l'installation ou l'exécution d'une app distance</p><p>Si l'utilisateur possède des droits élevés, le lien compromis les possède aussi... Les mécanismes laissent passer des protocoles et des liens sans en avertir l'utilisateur.&nbsp;</p><p>Cette faille concerne les versions 11.2510 et antérieures. Elle a été patchée dans Patch Tuesday de février. A voir si la solution apportée suffira</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -569,17 +569,86 @@ function matchesSpecialCategory(article, categoryName) {
   if (!article) return false;
   const haystack = [
     article.title || '',
-    article.summary || '',
-    Array.isArray(article.tags) ? article.tags.join(' ') : ''
+    article.summary || ''
   ].join(' ').toLowerCase();
 
   if (categoryName === 'openclaw') {
-    return /\bopenclaw\b|\bclowdbot\b|\bmoltbot\b/.test(haystack);
+    return /\bopen\s*claw\b|\bopenclaw\b|\bclowdbot\b|\bmoltbot\b|\bclawhub\b|\bpeter\s+steinberger\b/.test(haystack);
   }
   if (categoryName === 'raspberrypi') {
     return /raspberry\s*pi|\bframboise\s*314\b|\brpi\b/.test(haystack);
   }
   return true;
+}
+
+const CATEGORY_SIGNAL_CACHE = new Map();
+
+function normalizeMatchText(value) {
+  return String(value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function buildCategorySignals(categoryName) {
+  if (CATEGORY_SIGNAL_CACHE.has(categoryName)) return CATEGORY_SIGNAL_CACHE.get(categoryName);
+
+  const category = CATEGORIES[categoryName] || {};
+  const labels = category.labels || {};
+  const feeds = Array.isArray(category.feeds) ? category.feeds : [];
+  const rawSignals = [];
+
+  rawSignals.push(categoryName);
+  rawSignals.push(labels.en || '', labels.fr || '');
+
+  for (const feed of feeds) {
+    if (Array.isArray(feed.tags)) rawSignals.push(...feed.tags);
+  }
+
+  const mapping = KEYWORD_MAPPING && KEYWORD_MAPPING[categoryName];
+  if (mapping) {
+    rawSignals.push(mapping.en || '', mapping.fr || '');
+    if (Array.isArray(mapping.aliases)) rawSignals.push(...mapping.aliases);
+  }
+
+  const signals = Array.from(new Set(
+    rawSignals
+      .map(normalizeMatchText)
+      .flatMap((s) => s.split(/[^a-z0-9]+/g))
+      .map((s) => s.trim())
+      .filter((s) => s.length >= 4)
+      .filter((s) => !['news', 'world', 'local', 'france', 'tech'].includes(s))
+  ));
+
+  CATEGORY_SIGNAL_CACHE.set(categoryName, signals);
+  return signals;
+}
+
+function getCategoryTemperature(categoryName) {
+  const byCategory = SETTINGS && SETTINGS.categoryTemperature ? SETTINGS.categoryTemperature : {};
+  if (Object.prototype.hasOwnProperty.call(byCategory, categoryName)) {
+    return Number(byCategory[categoryName]) || 0;
+  }
+  return Number(byCategory.default) || 0;
+}
+
+function computeCategoryRelevance(article, categoryName) {
+  if (!article) return 0;
+  const signals = buildCategorySignals(categoryName);
+  if (signals.length === 0) return 0;
+
+  const text = normalizeMatchText([
+    article.title || '',
+    article.summary || '',
+    article.source || ''
+  ].join(' '));
+
+  let score = 0;
+  for (const signal of signals) {
+    if (text.includes(signal)) score += 1;
+  }
+
+  return score / signals.length;
 }
 
 
@@ -907,21 +976,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>
@@ -1009,21 +1078,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${sanitizedMainContent}
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>
@@ -1125,22 +1194,34 @@ async function aggregateCategory(categoryName, feeds) {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
     if (specialOnly.length > 0) {
       articles = specialOnly;
-    } else if (categoryName === 'openclaw') {
-      // Fallback de résilience: on garde la catégorie visible avec les meilleures
-      // sources configurées même si le mot-clé exact n'apparaît pas dans le titre/résumé.
-      articles = articles.map((article) => {
-        const tags = Array.isArray(article.tags) ? article.tags.slice() : [];
-        if (!tags.includes('OpenClaw')) tags.unshift('OpenClaw');
-        return { ...article, tags };
-      });
     } else {
       articles = specialOnly;
     }
   }
 
+  // Filtrage de pertinence (temperature) pour toutes les categories.
+  const temperature = getCategoryTemperature(categoryName);
+  const scoredArticles = articles.map((article) => ({
+    ...article,
+    _categoryScore: computeCategoryRelevance(article, categoryName)
+  }));
+  if (temperature > 0) {
+    const filtered = scoredArticles.filter((article) => article._categoryScore >= temperature);
+    if (filtered.length > 0) {
+      articles = filtered;
+    } else {
+      articles = scoredArticles;
+    }
+  } else {
+    articles = scoredArticles;
+  }
+
   // Trier par priorité métier puis date.
   // Pour AI/Cybersécurité, OpenClaw doit remonter en haut de catégorie.
   const sorted = articles.sort((a, b) => {
+    const scoreDiff = (b._categoryScore || 0) - (a._categoryScore || 0);
+    if (scoreDiff !== 0) return scoreDiff;
+
     if (categoryName === 'ai' || categoryName === 'cybersecurity') {
       const aBoost = Array.isArray(a.tags) && a.tags.includes('OpenClaw') ? 1 : 0;
       const bBoost = Array.isArray(b.tags) && b.tags.includes('OpenClaw') ? 1 : 0;
@@ -1294,7 +1375,6 @@ function generateREADME(categorizedArticles) {
     articles.slice(0, maxArticles).forEach((article, index) => {
       const keyword = resolveDisplayKeyword(article.tags, article.lang, category);
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
-      const alsoOn = article.alsoPublishedOn ? ` | *Also on: ${article.alsoPublishedOn.join(', ')}*` : '';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
         ? article.summary
         : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'));
@@ -1302,7 +1382,7 @@ function generateREADME(categorizedArticles) {
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
       readme += `### ${index + 1}. ${langBadge} [${article.title}](${localLink})\n`;
-      readme += `**Source:** ${article.source} | **Keyword:** \`${keyword}\`${alsoOn}\n`;
+      readme += `**Source:** ${article.source} | **Keyword:** \`${keyword}\`\n`;
       readme += `${summaryText}\n\n`;
       readme += `</div>\n\n`;
     });
@@ -1678,6 +1758,8 @@ module.exports = {
   parseGitHubRepoPath,
   buildGitHubIndexCandidates,
   matchesSpecialCategory,
+  computeCategoryRelevance,
+  getCategoryTemperature,
   resolveDisplayKeyword,
   writeArticleMap
 };

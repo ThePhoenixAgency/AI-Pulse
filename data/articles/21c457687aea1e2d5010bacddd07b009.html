@@ -31,21 +31,21 @@
     <div><div> <p>Saisie par l’Association Pour Un RGPD Respecté (<a href="https://asso-purr.eu.org/" target="_blank">PURR</a>), la CNIL semble maintenant prête à mettre en demeure plus massivement les entreprises qui ne respectent pas certaines obligations concernant les bandeaux d'informations sur les cookies déposés lors de la visite de leur site.</p> <p>L'association, présidée par le militant des droits à la vie privée <a href="https://imirhil.fr/" target="_blank">Aeris</a>, a <a href="https://bsky.app/profile/asso-purr.eu.org/post/3megulat2t22j" target="_blank">diffusé</a> sur les réseaux sociaux un «&nbsp;<em>déluge</em>&nbsp;» d'extraits de décisions de l'autorité concernant Developpez.com, la Banque Postale, Ouest-France, AliExpress, Darty, OVHcloud ou encore Red by SFR.</p> <figure><img src="https://next.ink/wp-content/uploads/2024/01/Cookiescnil-1024x496.webp" alt="main prise la main dans le sac de cookies par la cnil"></figure> <p>Octave Klaba, PDG d'OVHcloud a <a href="https://x.com/olesovhcom/status/2021288064580989336" target="_blank">confirmé</a> avoir reçu la mise en demeure et explique que son équipe est en train de corriger le problème&nbsp;: «&nbsp;<em>On utilise un outil / service externe et visiblement il bug. On va voir pour fixer ce bug en qq jours puis on va l'internaliser pour faire tout ca en propre au lieu de sous-traiter </em>».</p> <p>Dans sa plainte, l'association a soulevé l' «&nbsp;<em>ineffectivité du retrait de consentement</em>&nbsp;» qui a été prise en compte par l'autorité. «&nbsp;<em>L’impossibilité technique de tenir compte du retrait de consentement </em>», <a href="https://bsky.app/profile/asso-purr.eu.org/post/3megurzamyc2j" target="_blank">affirme</a>-t-elle, «<em> rend illégal l'intégralité des bannières cookies existantes</em>&nbsp;».</p> <p>PURR <a href="https://bsky.app/profile/asso-purr.eu.org/post/3megupmkql22j" target="_blank">explique</a> continuer à auditer «&nbsp;<em>l'ensemble des sites Internet français</em>&nbsp;» sur cette question et invite à la rejoindre.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

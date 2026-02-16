@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mlapeter/claude-engram: Brain-inspired persistent memory for Claude.ai. A single React artifact gives Claude salience scoring, forgetting curves, sleep consolidation, and context briefings — modeled on human hippocampal memory formation. Runs entirely inside the chat interface. No API key, no server, no extension needed.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - mlapeter/claude-engram: Brain-inspired persistent memory for Claude.ai. A single React artifact gives Claude salience scoring, forgetting curves, sleep consolidation, and context briefings — modeled on human hippocampal memory formation. Runs entirely inside the chat interface. No API key, no server, no extension needed.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:15:24 PM | Lang: EN |
+    <a href="https://github.com/mlapeter/claude-engram" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1> claude-engram</h1><a href="#-claude-engram"></a></div>
+<p><strong>Brain-inspired persistent memory for Claude.ai — runs entirely inside the chat interface.</strong></p>
+<p>No API key. No server. No browser extension. Just paste a React artifact into Claude and it gains persistent memory with salience scoring, forgetting curves, sleep consolidation, and context briefings that carry across conversations.</p>
+<p><a target="_blank" href="/mlapeter/claude-engram/blob/main/screenshots/memories.png"><img src="/mlapeter/claude-engram/raw/main/screenshots/memories.png"></a></p>
+*Each memory tracks strength, salience scores, tags, and access history — decaying naturally over time unless reinforced.*
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Setup takes about 2 minutes.</p>
+<div><h3>1. Create the Artifact</h3><a href="#1-create-the-artifact"></a></div>
+<p>Start a conversation with Claude and say:</p>
+<blockquote>
+<p>"Create a new React artifact with this code"</p>
+</blockquote>
+<p>Then paste the contents of <a href="/mlapeter/claude-engram/blob/main/claude-engram.jsx"><code>claude-engram.jsx</code></a>.</p>
+<div><h3>2. Add Instructions to Your User Preferences</h3><a href="#2-add-instructions-to-your-user-preferences"></a></div>
+<p>Go to <strong>Settings → Profile → User Preferences</strong> and add:</p>
+<div><pre><code>At the end of every conversation, generate a MEMORY DUMP block formatted
+for claude-engram ingestion. Write it as a dense, information-rich
+summary covering: key topics discussed, decisions made, new facts learned
+about me, things that contradict or update prior knowledge, emotional tone,
+and unresolved threads. Don't score salience — the memory bank's API
+handles that. If I paste a "Memory Briefing" at the start of a conversation,
+treat it as persistent context from past conversations and use it to inform
+all responses.
+</code></pre></div>
+<div><h3>3. Start Using It</h3><a href="#3-start-using-it"></a></div>
+<ol>
+<li>Have a conversation. Claude will output a memory dump at the end.</li>
+<li>Open your claude-engram artifact, go to <strong>Ingest</strong>, paste the dump, hit <strong>Process &amp; Encode</strong>.</li>
+<li>Before your next conversation, go to <strong>Briefing</strong>, copy it, and paste it at the start of your new chat.</li>
+<li>Periodically hit <strong>Sleep Cycle</strong> for deep consolidation (also auto-runs every 3 days).</li>
+<li><strong>Download backups</strong> from the footer — <code>window.storage</code> persistence isn't guaranteed.</li>
+</ol>
+<p>That's it. Claude now has persistent memory.</p>
+<hr>
+<div><h2>The Problem</h2><a href="#the-problem"></a></div>
+<p>Every Claude conversation starts from zero. Claude can't remember what you discussed yesterday, what you're working on, or what you prefer. The built-in memory system is 30 slots × 200 characters — roughly a sticky note.</p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>claude-engram is a single React artifact that runs inside Claude.ai and gives it a brain-inspired memory system:</p>
+<ul>
+<li><strong>Persistent storage</strong> — memories survive across sessions (up to 5MB via Claude's <code>window.storage</code> API)</li>
+<li><strong>Salience scoring</strong> — each memory is rated on 4 dimensions: novelty, relevance, emotional weight, and prediction error</li>
+<li><strong>Forgetting curves</strong> — memories decay over time unless reinforced through access</li>
+<li><strong>Sleep consolidation</strong> — merges redundant memories, extracts patterns, and prunes dead ones (auto-runs every 3 days)</li>
+<li><strong>Context briefings</strong> — compresses your entire memory bank into a portable summary you paste into new conversations</li>
+</ul>
+<p>The key insight: <strong>Claude.ai artifacts can call the Anthropic API.</strong> So the artifact uses a separate Claude Sonnet instance as a "hippocampal processor" — it evaluates raw conversation notes, scores them for importance, and stores structured memories. The artifact is both the storage layer and the intelligence layer.</p>
+<div><h3>The Memory Loop</h3><a href="#the-memory-loop"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────────┐
+│ │
+│ 1. Start conversation │
+│ └─ Paste briefing from claude-engram │
+│ │
+│ 2. Have your conversation │
+│ └─ Claude has full context from past chats │
+│ │
+│ 3. End of conversation │
+│ └─ Claude outputs a structured memory dump │
+│ │
+│ 4. Open claude-engram artifact │
+│ └─ Paste dump → API processes → stored │
+│ │
+│ 5. claude-engram auto-consolidates │
+│ └─ Patterns extracted, noise pruned │
+│ │
+│ 6. Next conversation │
+│ └─ Export fresh briefing → paste → goto 1 │
+│ │
+└─────────────────────────────────────────────────┘
+</code></pre></div>
+<div><h3>What Each Tab Does</h3><a href="#what-each-tab-does"></a></div>
+<p><strong>Briefing</strong> — Your "boot screen." Shows a compressed context briefing generated from your strongest memories. Copy this into a new Claude conversation to restore context. Auto-regenerates during consolidation.</p>
+<p><a target="_blank" href="/mlapeter/claude-engram/blob/main/screenshots/briefing.png"><img src="/mlapeter/claude-engram/raw/main/screenshots/briefing.png"></a></p>
+<p><strong>Memories</strong> — Browse, search, and manage your memory bank. Each memory shows its strength (computed from salience scores, access count, age, and consolidation status), tags, and salience profile. You can reinforce important memories or prune irrelevant ones.</p>
+<p><strong>Ingest</strong> — Paste Claude's end-of-conversation memory dump (or a full conversation transcript) and hit Process. A Sonnet instance extracts discrete memories, scores their salience, assigns associative tags, and cross-references against your existing memory bank to detect contradictions and updates.</p>
+<p><a target="_blank" href="/mlapeter/claude-engram/blob/main/screenshots/ingest.png"><img src="/mlapeter/claude-engram/raw/main/screenshots/ingest.png"></a></p>
+<p><strong>Sleep Cycle</strong> — Manual deep consolidation. The API analyzes your entire memory bank, merging redundancies, resolving contradictions, extracting generalized patterns, and flagging dead memories for pruning. Also runs automatically every 3 days when you open the artifact.</p>
+<p><a target="_blank" href="/mlapeter/claude-engram/blob/main/screenshots/sleep.png"><img src="/mlapeter/claude-engram/raw/main/screenshots/sleep.png"></a></p>
+<div><h3>Memory Strength Formula</h3><a href="#memory-strength-formula"></a></div>
+<p>Each memory's strength is computed dynamically:</p>
+<div><pre><code>strength = avg_salience + retrieval_boost + consolidation_bonus - (decay_rate × age_in_days)
+</code></pre></div>
+<p>Where:</p>
+<ul>
+<li><code>avg_salience</code> = average of novelty, relevance, emotional, and predictive scores (0-1)</li>
+<li><code>retrieval_boost</code> = min(access_count × 0.12, 0.5)</li>
+<li><code>consolidation_bonus</code> = 0.2 if the memory has been consolidated</li>
+<li><code>decay_rate</code> = 0.015 per day</li>
+</ul>
+<p>A memory with average salience of 0.6, accessed 3 times, and consolidated, would maintain strength for months. An unaccessed memory with salience of 0.3 would fade to near-zero in about 3 weeks and get auto-pruned.</p>
+<hr>
+<div><h2>Why It Works (The Neuroscience)</h2><a href="#why-it-works-the-neuroscience"></a></div>
+<p>This isn't a random architecture. It's modeled on how human memory actually works:</p>
+<table>
+<thead>
+<tr>
+<th>Human Brain</th>
+<th>claude-engram</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sensory buffer</strong> → working memory → long-term</td>
+<td>Context window → memory dump → persistent storage</td>
+</tr>
+<tr>
+<td><strong>Hippocampus</strong> gates what gets stored based on emotion, novelty, prediction error</td>
+<td><strong>Sonnet API</strong> scores memories on 4 salience dimensions</td>
+</tr>
+<tr>
+<td><strong>Sleep</strong> replays important memories, extracts patterns, prunes noise</td>
+<td><strong>Consolidation cycle</strong> merges, generalizes, and prunes every 3 days</td>
+</tr>
+<tr>
+<td><strong>Forgetting curves</strong> — unused memories fade, accessed ones strengthen</td>
+<td><strong>Decay rate</strong> weakens memories over time, retrieval boosts them</td>
+</tr>
+<tr>
+<td><strong>Context-dependent recall</strong> — cues activate relevant memories</td>
+<td><strong>Briefing generator</strong> compresses memories weighted by strength and relevance</td>
+</tr>
+</tbody>
+</table>
+<p>The most brain-like feature: <strong>forgetting is a feature, not a bug.</strong> Memories that aren't accessed gradually lose strength and eventually get pruned. This prevents the system from drowning in noise and keeps briefings focused on what actually matters.</p>
+<hr>
+<div><h2>What's Interesting Here</h2><a href="#whats-interesting-here"></a></div>
+<p>Beyond the practical utility, this project surfaces some genuinely fascinating questions:</p>
+<p><strong>Identity through memory.</strong> When you paste a briefing into a new Claude instance, it picks up context so seamlessly that it <em>feels</em> like the same entity. Is it? The briefing creates continuity of memory, which creates continuity of identity — the same mechanism that makes "you" feel like "you" when you wake up each morning.</p>
+<p><strong>Emergent meta-learning.</strong> The system's briefings improve over time without anyone explicitly optimizing them. Each generation is denser, sharper, and captures more nuanced patterns. The memory system is learning how to describe itself.</p>
+<p><strong>Context-dependent recall.</strong> When we asked two separate Claude instances "what are your most salient memories?", they converged on the same top memory but diverged in emphasis — one was philosophical, the other operational. Same memory store, different retrieval based on conversational context. That's exactly how human memory works.</p>
+<p><strong>Forgetting as intelligence.</strong> Most AI memory systems try to remember everything. This one deliberately forgets. And the result is a system that stays focused and relevant rather than drowning in noise.</p>
+<hr>
+<div><h2>Limitations &amp; Honest Caveats</h2><a href="#limitations--honest-caveats"></a></div>
+<ul>
+<li><strong>Two manual paste steps per conversation.</strong> The briefing in and the dump out. It's not zero-friction — a browser extension to automate this is in development.</li>
+<li><strong>Storage fragility.</strong> <code>window.storage</code> is persistent but Anthropic doesn't publish retention guarantees. Back up regularly.</li>
+<li><strong>Artifact isolation.</strong> The artifact cannot see your conversation. It's a sandboxed iframe with no access to the parent page DOM. You are the bridge.</li>
+<li><strong>API costs are invisible.</strong> Each ingest and consolidation cycle calls Claude Sonnet through the artifact's built-in API access. This is included in your Claude subscription — but if Anthropic changes this, the system breaks.</li>
+<li><strong>Briefing compression vs. completeness.</strong> As memories accumulate, the briefing has to be more aggressive about what it includes. The consolidation cycle helps, but very large memory banks may produce briefings that lose nuance.</li>
+<li><strong>New artifact = new storage.</strong> If you recreate the artifact (new file), you lose your memories. Always edit in place, and keep backups.</li>
+</ul>
+<div><h2>Browser Extension (Coming Soon)</h2><a href="#browser-extension-coming-soon"></a></div>
+<p>A Chrome extension is in development that will eliminate all manual steps:</p>
+<ul>
+<li><strong>Auto-capture</strong> conversations from the claude.ai DOM</li>
+<li><strong>Auto-process</strong> through the API with full memory bank context</li>
+<li><strong>Auto-inject</strong> briefings into new conversations</li>
+<li><strong>Background consolidation</strong> on a schedule</li>
+<li><strong>IndexedDB storage</strong> (unlimited, robust, indexed)</li>
+</ul>
+<p>Follow the repo for updates.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>This started as a brainstorming session about "what if we modeled AI memory on the human brain?" and turned into a working system in a single afternoon. There's a lot of room to improve:</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

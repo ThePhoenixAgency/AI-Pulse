@@ -31,21 +31,21 @@
     <div><div> <p>Après une année difficile, 2026 démarre sous de bons auspices pour STMicroelectronics&nbsp;: le fabricant franco-italien de semiconducteurs vient en effet d'annoncer l'expansion des relations qui le lient déjà à l'américain AWS, dans le cadre d'un accord pluriannuel, portant sur plusieurs milliards de dollars de commandes. </p> <p>«&nbsp;<em>Cette collaboration positionne ST comme un fournisseur stratégique des technologies et produits semiconducteurs avancés qu’AWS intègre dans son infrastructure de calcul, permettant à AWS d’offrir à ses clients de nouvelles instances de calcul à haute performance, des coûts opérationnels réduits et une capacité à faire évoluer les charges de travail intensives en calcul plus efficacement</em>&nbsp;», clame l'entreprise dans un <a href="https://investors.st.com/news-releases/news-release-details/stmicroelectronics-expands-strategic-engagement-amazon-web">communiqué</a>. </p> <p>STMicroelectronics ne détaille pas la nature exacte des commandes passées par AWS, mais évoque la fourniture de «&nbsp;<em>fonctionnalités spécialisées pour la connectivité à haut débit, incluant le traitement du signal mixte à haute performance, des microcontrôleurs avancés pour la gestion intelligente de l’infrastructure, ainsi que des circuits intégrés analogiques et de puissance qui offrent l’efficacité énergétique requise pour les opérations des data centers à grande échelle</em>&nbsp;».</p> <figure><img src="https://next.ink/wp-content/uploads/2026/02/logo-stmicro.jpg" alt=""><figcaption>Logo STMicroelectronics</figcaption></figure> <p>L'accord prévoit également un volet capitalistique&nbsp;: STMicroelectronics indique en effet avoir émis des warrants (un instrument boursier octroyant le droit d'acheter ou de vendre des titres à un prix et jusqu'à une date d'échéance déterminés à l'avance) permettant à AWS d'acquérir jusqu'à 24,8 millions d'actions du groupe franco-italien, soit une prise de participation pouvant atteindre 715 millions de dollars. </p> <p>En bourse, l'action STMicroelectronics a réagi favorablement lundi, gagnant environ 7 % à la mi-journée. Fin janvier, le fondeur européen avait dévoilé un bilan en demi-teinte pour son exercice 2025 (marqué par un <a href="https://next.ink/brief_article/un-plan-de-departs-volontaires-de-2-800-salaries-chez-stmicroelectronics/">plan de départ volontaire</a>), qui se concluait sur un chiffre d'affaires annuel de 11,8 milliards de dollars, en baisse de 11 % sur un an, avec un bénéfice net limité à 166 millions de dollars, en recul de 90 % par rapport à 2024.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

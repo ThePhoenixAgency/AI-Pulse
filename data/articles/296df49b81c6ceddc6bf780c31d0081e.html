@@ -31,21 +31,21 @@
     <div><div><p>The family of a self-identified “Trump Republican” running for office in Texas bought <a href="https://www.theguardian.com/us-news/2026/feb/08/epstein-files-new-mexico-ranch">Jeffrey Epstein’s New Mexico ranch</a> where the sex trafficker abused teenage girls and young women, according to new documents.</p><p>A spokesperson for Donald Huffines, a Texas businessman and former GOP state senator now running for comptroller, confirmed the purchase to the <a href="https://www.santafenewmexican.com/news/local_news/texas-businessman-running-for-office-owns-epsteins-zorro-ranch-in-santa-fe-county/article_14a05944-1e00-47c8-a4c3-071895abfb57.html">Santa Fe New Mexican</a>, a local media outlet.</p><div><p>“Four years after Mr Epstein’s death, the Huffines family purchased property in New Mexico listed at public auction whose proceeds benefited his victims,” a spokesperson for the family, Allen Blakemore, wrote to the outlet. “Prior to the auction listing, they had never visited the property.”</p><p> In 2023, San Rafael Ranch LLC, created by the Huffines, bought the nearly <a href="https://www.nytimes.com/2019/10/14/business/jeffrey-epstein-estate.html">10,000-acre</a> (4,000-hectare) property – then known as Zorro ranch – for an undisclosed price. Previously the buyers had been private, as New Mexico allows anonymous ownership of private property through LLCs.</p></div><figure></figure><p>The ranch was initially valued at $21.1m for the 2023 tax year, a figure the Huffines argued was overstated in part due to its “notoriety”; Santa Fe county then reassessed the value of the property to just $13.4m. Court records obtained by the New Mexican connected the LLC to Mary Catherine Huffines, who is listed as the “client/property owner”.</p><div><p>Huffines is currently the frontrunner for the GOP comptroller primary race in Texas, according to recent polling reported by <a href="https://www.texastribune.org/2026/02/11/texas-march-primary-poll-sid-miller-chip-roy-don-huffines/">the Texas Tribune</a>. He is campaigning to “DOGE Texas government”, a reference to the controversial so-called department of government efficiency, once run by Elon Musk, which conducted chaotic mass federal workforce layoffs and cancelled billions in federal contracts and grants. </p><p> Huffines’ <a href="https://donhuffines.com/">campaign website</a> describes him as “a successful businessman, 5th-generation Texan, and Trump Republican who will bring a private-sector mindset to the Comptroller’s office and put Texas first”. He touts endorsements from “top MAGA leaders”, including Ted Cruz, the late Charlie Kirk, former college swimmer turned anti-trans activist Riley Gaines, Ron Paul and Vivek Ramaswamy.</p></div><p>Huffines’ spokesperson did not answer questions about the purpose of the property purchase from the Santa Fe New Mexican.</p><p>The revelation comes as the Trump administration attempts to turn the page on the Epstein files, in which the president is referenced thousands of times. After making the release of the files a feature of his 2024 presidential campaign, he then retreated, only releasing more files following intense bipartisan pressure. The files detail the friendship between the two men, including an alleged sexually suggestive <a href="https://www.theguardian.com/us-news/2025/sep/08/trump-epstein-birthday-letter">birthday note</a> from Trump to Epstein on his 50th birthday.</p><p>Recent <a href="https://www.theguardian.com/us-news/2026/feb/08/epstein-files-new-mexico-ranch">Guardian reporting</a> shed further light on the role of Epstein’s ranch in his years of sex trafficking and abuse of underage girls. The Zorro ranch was a place where powerful men allegedly visited, including a former governor of the state. It was also the alleged setting for Epstein’s <a href="https://www.nytimes.com/2019/07/31/business/jeffrey-epstein-eugenics.html">previously reported</a> plans to spread his DNA across the human race by impregnating as many women as possible. Newly released photos showed that at various times the late French modeling agent <a href="https://www.theguardian.com/world/2020/dec/17/france-detains-modelling-agent-jean-luc-brunel-in-jeffrey-epstein-inquiry">Jean-Luc Brunel</a>, linguist Noam Chomsky and film-maker Woody Allen were guests.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

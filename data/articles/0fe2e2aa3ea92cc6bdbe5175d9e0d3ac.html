@@ -41,21 +41,21 @@
 </figure> <h3>Conseil cybersécu&nbsp;: vérifez les autorisations&nbsp;!</h3> <p>Dernier conseil et pas des moindres, valable pour Emmanuel Macron et ses équipes, mais aussi pour tous les utilisateurs des réseaux sociaux, qu’ils essayent ou non différentes solutions de crosspublication&nbsp;: vérifiez régulièrement les applications connectées à vos différents comptes.</p> <p>Sur X, <a href="https://x.com/settings/connected_apps" target="_blank">c’est par ici</a> tandis que la page se trouve <a href="https://bsky.app/settings/app-passwords" target="_blank">par là</a> sur Bluesky. Pensez à révoquer les accès inutiles et à ne garder actifs que ceux réellement utilisés. Autrement, laisser un tiers accéder à vos publications, voire à vos messages privés, pourrait être lourd de conséquences&nbsp;!</p> <figure><img src="https://next.ink/wp-content/uploads/2026/02/image-14-1024x351.png" alt=""></figure> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

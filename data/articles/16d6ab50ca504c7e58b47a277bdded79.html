@@ -6,6 +6,7 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+<<<<<<< HEAD
   h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
@@ -16,6 +17,12 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+=======
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,6 +31,7 @@
 <body>
   <h1>Maker builds Raspberry Pi Pico smart clock with lots of cool features</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Toms Hardware Raspberry Pi | Date: 3/19/2025 4:12:13 PM | Lang: EN |
     <a href="https://www.tomshardware.com/raspberry-pi/maker-builds-raspberry-pi-pico-smart-clock-with-lots-of-cool-features" target="_blank">Original Article</a>
   </div>
@@ -37,23 +45,31 @@
 </div><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/nNq9vgjegZ3jMHFGuTJ7PD.png" alt="Raspberry Pi">
 </p></div><figcaption><span>(Image credit: NeverCode)</span></figcaption></figure><p>NeverCode was kind enough to make the project open source, which means you can easily follow along with the instructions and recreate it for yourself at home. The Pico W is connected to two LCD displays, an RTC module, a temperature sensor, a buzzer for the alarm feature, as well as a 4x4 keypad. All of this hardware is housed inside of a cardboard box and connected using a breadboard.</p><p>The open-source code was written using MicroPython and programmed onto the Pico using Thonny. It relies on a couple of libraries to use all of the hardware including, one for the LCD screens, one for the I2C LCD Driver as well as one for the DS3231 RTC module. Links to all of them are provided in the project details over at Blogspot.</p><p>If you want to get a closer look at this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a>, check it out over at <a href="https://nevercode.blogspot.com/2025/03/build-ultimate-diy-smart-clock-with.html" target="_blank"><u>Blogspot</u></a> and see it in action for yourself in the demo video shared on <a href="https://www.youtube.com/watch?v=bRO0z1XkEDo" target="_blank"><u>YouTube</u></a> by NeverCode.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
 </div></div>
+=======
+    Source: Toms Hardware Raspberry Pi | Date: 3/19/2025 3:12:13 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/maker-builds-raspberry-pi-pico-smart-clock-with-lots-of-cool-features" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p>NeverCode has created a Raspberry Pi Pico smart clock and shared lots of details on how you can recreate it for yourself at home.</p>
+    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

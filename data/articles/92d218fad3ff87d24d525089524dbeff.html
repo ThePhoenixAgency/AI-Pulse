@@ -24,7 +24,11 @@
 <body>
   <h1>EN IMAGES. Éboulement sur la ligne SNCF Grenoble-Valence : "Plus de 200 m3 de déblais à évacuer et 100 m de vo</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 3 Alpes | Date: 2/13/2026 6:05:01 AM | Lang: FR |
+=======
+    Source: France 3 Alpes | Date: 2/13/2026 5:05:01 AM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/en-images-eboulement-sur-la-ligne-sncf-grenoble-valence-plus-de-200-m3-de-deblais-a-evacuer-et-100-m-de-voies-a-remettre-en-etat-3297879.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -33,21 +37,21 @@
 </a><p><em>"Le but c’est de faire au plus vite, on en a encore pour plusieurs semaines, on voit l’étendue des travaux à réaliser et les différents corps de métiers qui doivent intervenir. On espère pouvoir mettre en place la circulation sur une voie pour début mars"</em>, précise Ingrid Simon.</p><p>Pour pallier l'absence de trains, la SNCF a mis en place des cars de substitution dont les horaires sont mis en ligne la veille à 17 heures <a href="https://www.ter.sncf.com/auvergne-rhone-alpes/se-deplacer/info-trafic/perturbations" target="_blank">sur son site</a>. <em>"L'offre de substitution routière étant réduite, nous vous conseillons, dans la mesure du possible, de différer votre déplacement"</em>, recommande encore l'entreprise ferroviaire.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>iPads, MacBook Air, and Apple TV — everything Apple has ever launched in March</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
@@ -16,12 +17,23 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+=======
+<title>iPads, MacBook Air, and Apple TV -- everything Apple has ever launched in March</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
+<<<<<<< HEAD
   <h1>iPads, MacBook Air, and Apple TV — everything Apple has ever launched in March</h1>
   <div class="metadata">
     Source: AppleInsider | Date: 2/16/2026 6:17:09 PM | Lang: EN |
@@ -62,23 +74,35 @@
 </p><p>And, there's the M5 Max and M5 Pro <a href="https://appleinsider.com/inside/macbook-pro">MacBook Pros</a>, which have <a href="https://appleinsider.com/articles/26/02/04/questionable-leak-macbook-pro-with-m5-pro-and-m5-max-coming-in-march-not-february">been expected</a> soon since October 2025.
 </p><p>As for the idea of a live event versus a press release, this time Apple may be going somewhere in the middle. Assuming that it does launch updated devices, it's launching them to an invited audience only.
 </p><p>Perhaps as some number of people in New York, London, and Shanghai get shown new iPads or the new iPhone, the rest of us will have wait a little while for the first reports.</p> </div></div>
+=======
+  <h1>iPads, MacBook Air, and Apple TV -- everything Apple has ever launched in March</h1>
+  <div class="metadata">
+    Source: AppleInsider | Date: 2/16/2026 5:17:09 PM | Lang: EN |
+    <a href="https://appleinsider.com/articles/26/02/16/ipads-macbook-air-and-apple-tv----everything-apple-has-ever-launched-in-march?utm_source=rss" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p>Historically, Apple's March has been oddly busy in recent years, but as the company teases its newest "special Apple experience" happening on March 4, 2026, here's a look back at what we've seen before, and what we might see this time. Apple used to deck out conference halls for its launches —- this time for the iPad 3
+That March 4, 2026 event is invitation-only one in New York, London, and Shanghai, and won't be streamed. It's being called an Apple Experience, too, which is the term the company used for the January 2026 event around the Apple Creator Studio .
+If this a product announcement, though, then there is a precedent for it. And while there weren't even any Apple March events at all until 2008, since then they have been wide-ranging. Continue Reading on AppleInsider | Discuss on our Forums</p>
+    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

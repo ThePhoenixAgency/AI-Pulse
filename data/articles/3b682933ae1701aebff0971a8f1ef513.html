@@ -31,21 +31,21 @@
     <div><div> <p>Le retour d'une <a href="https://www.france24.com/fr/am%C3%A9riques/20260213-en-direct-decollage-sophie-adenot-iss-station-spatiale-internationale-crew-12" target="_self">Française dans l'espace</a> après 25 ans. L'astronaute Sophie Adenot a rejoint, samedi 14 février, avec deux Américains et un Russe, la Station spatiale internationale (ISS) pour une mission d'environ huit mois.</p> <p>Au terme de quelque 34 heures de voyage, le <a href="https://www.france24.com/fr/france/20260213-un-d%C3%A9collage-r%C3%A9ussi-vers-l-iss-pour-sophie-adenot-une-premi%C3%A8re-pour-une-fran%C3%A7aise-depuis-25-ans" target="_self">vaisseau lancé vendredi par une fusée SpaceX depuis Cap Canaveral</a>, en Floride, s'est amarré à l'ISS, située à 400 kilomètres de la Terre, à 20&nbsp;h&nbsp;15 GMT, selon la retransmission en direct de la Nasa.</p> <p>"Je suis fière d'embarquer la France et l'Europe dans cette incroyable aventure qui dépasse les frontières. Comptez sur moi pour en partager toutes les étapes avec vous et faire briller les étoiles dans les yeux des Français", a lancé <a href="https://www.france24.com/fr/tag/sophie-adenot/" target="_self">Sophie Adenot</a> peu après.</p> <p><span>À voir aussi</span><a href="https://www.france24.com/fr/%C3%A9missions/c-est-en-france/20260211-sophie-adenot-l-astronaute-fran%C3%A7aise-%C3%A0-la-conqu%C3%AAte-de-l-espace" target="_self">Sophie Adenot, l’astronaute française à la conquête de l’espace</a></p> <p>Deuxième française à être devenue astronaute et 84<sup>e</sup> femme dans l'espace toutes nationalités confondues, elle a réalisé, à 43 ans, son premier vol spatial. À ses côtés se trouvaient les astronautes de l'agence spatiale américaine Jessica Meir, 48 ans, et Jack Hathaway, 43 ans, et le cosmonaute russe de Roscosmos, Andreï Fediaïev, 44 ans.</p> <p>Une fois l'amarrage réalisé, il faut compter environ deux heures avant que les trappes permettant d'entrer dans l'ISS puissent être ouvertes, selon la Nasa. Une cérémonie de bienvenue suivra avec l'Américain Christopher Williams et les Russes Sergueï Koud-Svertchkov et Sergueï Mikaïev, déjà présents dans la Station spatiale internationale, avant un briefing de sécurité.</p> <p>"Prenons soin les uns des autres, osons rêver grand ensemble et continuons à viser toujours plus haut. C'est ainsi que l'humanité progresse", avait lancé Sophie Adenot, en anglais, lors d'une retransmission vidéo du décollage, reporté de deux jours en raison de mauvaises conditions météorologiques.</p> <h2>"On est là pour Sophie"</h2> <p>À la cité des sciences de Paris, quelques centaines de personnes ont applaudi le franchissement par l'équipage baptisé Crew-12 des 100 km d'altitude, qui marquent le début de l'espace selon la convention internationale.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

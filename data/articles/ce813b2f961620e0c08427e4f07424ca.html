@@ -24,7 +24,11 @@
 <body>
   <h1>Souveraineté industrielle : sans souveraineté des données, pas de souveraineté tout court</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: FrenchWeb | Date: 1/21/2026 7:04:03 AM | Lang: FR |
+=======
+    Source: FrenchWeb | Date: 1/21/2026 6:04:03 AM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.frenchweb.fr/souverainete-industrielle-sans-souverainete-des-donnees-pas-de-souverainete-tout-court/459765" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -55,21 +59,21 @@
 <p>Tulip vient de lever <strong>cent vingt millions de dollars</strong> en série D, valorisant la société à <strong>1,3 milliard de dollars</strong>, dans un tour mené par Mitsubishi Electric, assorti d’un partenariat stratégique. L’entreprise a également renforcé son pôle R&amp;D en Israël après l’acquisition de la startup Akooda, spécialisée dans l’analyse des flux de travail et des données organisationnelles. Présente sur plus de <strong>1 000 sites industriels dans 45 pays</strong>, Tulip équipe désormais des dizaines de milliers d’opérateurs de terrain.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p><p>Vous pouvez me joindre directement à RICHARD@DECODE.MEDIA</p></div> </section><section><p><a href="https://www.fw.media/" target="_blank"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

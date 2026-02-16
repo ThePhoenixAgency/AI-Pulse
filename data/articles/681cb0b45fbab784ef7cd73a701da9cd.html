@@ -31,21 +31,21 @@
     <div><p> Every year, the Cité Internationale Universitaire de Paris welcomes around 12,000 residents from all backgrounds and nationalities. Students, researchers and artists live there side by side across its 47 campus houses, tucked away in a lush park in the south of Paris. The "Cité U", as locals call it, is celebrating a century of history,&nbsp;with its founding principles more relevant than ever. </p><div> <p>Born out of the devastation of <a target="_self" href="https://www.france24.com/en/tag/world-war-i/">World War I</a>, <a target="_self" href="https://www.france24.com/en/tag/paris/">Paris</a>'s Cité Universitaire was founded on a powerful ideal: <a target="_self" href="https://www.france24.com/en/tag/peace/">peace</a>. Its founders believed that human, intellectual and cultural exchanges could transcend <a target="_self" href="https://www.france24.com/en/tag/borders/">borders</a> and help secure lasting peace. The Cité U fosters dialogue and mutual understanding between cultures through conferences, artistic performances and personal initiatives.&nbsp;</p> <p>For the past 100 years, the Cité Universitaire de Paris has shown that a humanist vision cannot only stand the test of time, but also inspire new generations.&nbsp;</p> <p>From its creation, the Cité has been deeply engaged with pressing issues: geopolitical tensions, multilateral cooperation, challenges to the <a target="_self" href="https://www.france24.com/en/tag/rule-of-law/">rule of law</a> and the <a target="_self" href="https://www.france24.com/en/tag/climate/">climate</a> crisis. Through debates and collective projects, residents, guests and visitors come together with one aim in mind: to develop lasting solutions for a shared future.</p> <h2><strong>An outstanding&nbsp;setting for imagining&nbsp;the world of tomorrow</strong></h2> <p>The site is also home to an outstanding architectural and natural <a target="_self" href="https://www.france24.com/en/tag/heritage/">heritage</a>. Long a source of inspiration for artists from around the world, its 47 houses each reflect the identity of a different country, blending tradition with modern <a target="_self" href="https://www.france24.com/en/tag/design/">design</a>.</p> <p>Like an open-air museum, the Cité U has even become <a target="_self" href="https://www.france24.com/en/tag/france/">France</a>'s leading multi-set filming location. Scenes from the film "The Count of Monte Cristo" were filmed there.</p> <p>A century on, the Cité Internationale Universitaire de Paris continues to inspire dreams and imagine a better world for tomorrow.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

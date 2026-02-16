@@ -24,7 +24,11 @@
 <body>
   <h1>"Comment vont faire les enfants s’ils ferment ?" : des lieux de santé à vocation sociale menacés, un choc pour</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 3 Alpes | Date: 2/6/2026 11:39:03 AM | Lang: FR |
+=======
+    Source: France 3 Alpes | Date: 2/6/2026 10:39:03 AM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/comment-vont-faire-les-enfants-s-ils-ferment-des-lieux-de-sante-a-vocation-sociale-menaces-un-choc-pour-soignants-et-habitants-3294168.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -35,21 +39,21 @@
 </a><p>Lui aussi dit que ce centre a changé sa vie. "<em>On est restés trois ans sans médecin traitant... Quand on a eu notre premier enfant, on devait aller à SOS médecins ou aux urgences</em>, se souvient-il. <em>Ici, on est tous suivis, comment vont faire les enfants s’ils ferment ? Tous les médecins qu’on appelle sur Grenoble, Echirolles, ils n’ont plus de place, ils ne prennent plus de nouveaux patients.</em>" Le but de l'expérimentation était aussi de désengorger un système de santé saturé.</p><p>"<em>Le Village 2 santé c’est notre soleil, notre espoir</em>" conclut Chafia Bouaziz. Tous sont déterminés à lutter avec les soignants et travailleurs sociaux pour que la structure survive.</p><p>"<em>On a besoin du soutien de tout le monde, on espère avoir une influence pour que le gouvernement revienne sur cette décision</em>" indique le Dr. Guibert. <a href="https://www.change.org/p/non-%C3%A0-la-suppression-des-structures-d-exercice-coordonn%C3%A9-participatives-sec-pa" target="_blank">Une pétition a été lancée</a> pour demander le maintien de ces structures de santé à vocation social. Ce vendredi 6 février, elle avait recueilli plus de 8 500 signatures.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

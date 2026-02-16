@@ -33,21 +33,21 @@
 <time>10:57</time> </p> </figure> </div> <div> <p><span>Issued on: <time>14/10/2024 - 14:51</time></span><span>Modified: <time>14/10/2024 - 14:57</time></span></p> <div> <p> 10:57 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/france-focus/"> <p>From the show</p> <img src="https://s.france24.com/media/display/24fad022-0f30-11ee-bd85-005056a90284/EN-france-in-focus.svg" alt="France in focus"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> Paris’s slate-grey zinc rooftops are a key part of the French capital’s visual identity. They have long inspired painters and filmmakers and only exist thanks to the expertise of the roofers who install and maintain the galvanised metal covering many of Paris’s buildings. Their expertise could soon be included in UNESCO's intangible heritage list, as the profession adapts to the challenges of global warming.&nbsp; </p> <div> <p>FRANCE 24’s Natacha Vesnitch, Yohan Bodin and Melina Huet have been scaling those heights to speak to the roofers whose lofty terrain gives them a birds-eye view of the French capital.</p><p>We also meet photographer Gilles Mermet, who is pushing for the tradesmen to get this all-important recognition from the UN body.</p><p>As the sector adapts to the challenges of climate change, we hear about the initiatives piloted by Roofscape’s Eytan Levi, who hope to create liveable spaces and bring down temperatures at the top by greening the Parisian skyline.</p> </div> <div> <p><span> By: </span></p><div> <img src="https://s.france24.com/media/display/fbe6d270-08fa-11e9-bb10-005056bff430/w:388/p:1x1/olivia-255.gif" alt="The rooftops of Paris with the zinc craftsmen of the sky"> </div> <div> <p><span> Johan BODIN </span> </p> </div> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

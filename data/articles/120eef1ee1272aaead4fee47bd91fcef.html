@@ -24,7 +24,11 @@
 <body>
   <h1>Enlèvement d'une magistrate et de sa mère en Isère : six personnes interpellées, dont un mineur</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 3 Alpes | Date: 2/8/2026 4:18:29 PM | Lang: FR |
+=======
+    Source: France 3 Alpes | Date: 2/8/2026 3:18:29 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/enlevement-d-une-magistrate-et-de-sa-mere-en-isere-cinq-personnes-placees-en-garde-a-vue-3295836.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -32,21 +36,21 @@
 <p>La trentenaire présentait de violentes traces de coups au visage, avec des hématomes et des plaies sur le cuir chevelu. Elle a reçu une ITT (interruption totale de travail) provisoire de 15 jours. Sa mère, malmenée également, a reçu une ITT de deux jours.</p><p>Le compagnon de la magistrate, associé dans <em>"une start-up qui a des activités de cryptomonnaie"</em>, n’était pas présent à leur domicile au moment des faits. Il a reçu le lendemain matin "<em>un message et une photo de sa compagne émanant des ravisseurs et demandant le versement d’une rançon en cryptomonnaie</em>", indiquait alors le parquet. Ces derniers menaçaient de mutiler les victimes si la rançon n’était pas payée assez rapidement. "<em>Aucune rançon n’a été versée</em>", selon le procureur de Lyon.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

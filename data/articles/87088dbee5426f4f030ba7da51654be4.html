@@ -24,7 +24,11 @@
 <body>
   <h1>East Asia celebrates Year of the Horse with parades and festivities</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: France 24 | Date: 2/16/2026 1:57:49 PM | Lang: EN |
+=======
+    Source: France 24 | Date: 2/16/2026 12:57:49 PM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.france24.com/en/east-asia-celebrates-year-of-the-horse-with-parades-and-festivities" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -33,21 +37,21 @@
 <time>01:50</time> </p> </figure> </div> <div> <div> <p><span></span> Asia / Pacific </p> </div> <div> <p><span>Issued on: <time>16/02/2026 - 13:57</time></span></p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

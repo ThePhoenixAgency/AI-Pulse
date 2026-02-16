@@ -31,21 +31,21 @@
     <div><div><p>Ai Security Fabric est la nouvelle solution de l'éditeur Snyk. Cette plateforme s'insère dans le cycle de vie du développement logiciel, SDLC. Elle&nbsp;permet aux entreprises de commercialiser des logiciels basés sur l'IA en toute sécurité et à la vitesse de l'IA.&nbsp;</p><p>"Aujourd'hui, les développeurs et les concepteurs utilisent non seulement l'IA pour écrire du code et alimenter des applications, mais ils sont également confrontés à une augmentation rapide des cybermenaces liées à l'IA. Ce système aide les entreprises à réduire les risques cumulés sans ralentir l'innovation. L'augmentation de la dette de sécurité, les nouveaux vecteurs d'attaque et le manque de gouvernance dans le développement basé sur l'IA aggravent les risques sur une surface d'attaque en constante expansion. Alors que l'infrastructure IA devient la trame de l'informatique moderne, les entreprises ont besoin d'une trame de sécurité qui assure une protection continue, et non ponctuelle." explique l'éditeur.</p><p>L'outil est donc là pour sécuriser tous les développements IA, les agents, etc.&nbsp;</p><p>Snyk a identifié trois défis que l’AI Security adresse :</p><ul><li><strong>Les vulnérabilités apparaissent à un rythme plus rapide :</strong>&nbsp;le volume de code explose en raison de l'adoption rapide des pratiques de codage assistées par l'IA. La sécurité doit aller au-delà de l'analyse réactive pour être « sécurisée dès le départ », en stoppant le flux de nouvelles vulnérabilités qui contribuent à l'augmentation des retards en matière de sécurité.</li><li><strong>Le temps nécessaire à l'exploitation des vulnérabilités diminue :</strong>&nbsp;selon Gartner, l'IA devrait accélérer l'exploitation des vulnérabilités de 50 % d'ici 20271. Les attaques automatisées ciblant toutes les expositions disponibles, les organisations doivent systématiquement réduire leur dette de sécurité afin de diminuer leur profil de risque.</li><li><strong>L'IA a un effet cumulatif sur les risques :</strong>&nbsp;le passage au développement natif de l'IA a déclenché une explosion de modèles non gérés et d'agents autonomes dans les workflows de livraison et dans les logiciels eux-mêmes. Cette « Shadow AI » crée une surface d'attaque fragmentée où le danger ne réside plus seulement dans le code, mais aussi dans l'action de l'IA elle-même. Un agent compromis peut enchaîner de manière autonome de nouvelles menaces avec des vulnérabilités précédemment « mises en veille », ce qui aggrave les risques plus rapidement que les équipes humaines ne peuvent y remédier.</li></ul><p>Pour la partie sécurité proprement dite, Snyk cible :</p><p>nyk continue d'ajouter de nouvelles fonctionnalités et améliorations qui concrétisent cette vision de l'AI Security Fabric à travers les trois vecteurs unifiés de la plateforme Snyk AI Security :</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

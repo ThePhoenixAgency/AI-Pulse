@@ -31,21 +31,21 @@
     <div><div><p>Redis annonce que la version open source de la 8.6.0 est disponible en version finale. Cette version apporte une hausse des performances, une consommation mémoire réduire. Les performances concernent plusieurs fonctions dont la vérification des permissions ACL, optimisations diverses sur les vector set. La progresssion des performances est constante avec la lignée 8.x. La latence est un autre des enjeux, par exemple sur la commande Get, les hashs.&nbsp;</p><p>Une des nouveautés est l'introduction de l'idempotent en production sur les Streams.</p><p>Détails sur les performances :&nbsp;<a href="https://redis.io/blog/announcing-redis-86-performance-improvements-streams/"></a><a href="https://redis.io/blog/announcing-redis-86-performance-improvements-streams/">https://redis.io/blog/announcing-redis-86-performance-improvements-streams/</a></p><p>Note de version :&nbsp;<a href="https://github.com/redis/redis/releases/tag/8.6.0">https://github.com/redis/redis/releases/tag/8.6.0</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

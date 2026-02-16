@@ -31,21 +31,21 @@
     <div><div> <p><strong>South Korea’s Personal Information Protection Commission (PIPC) announced last week that it has issued significant fines to several major luxury brands over a recent hacker attack that resulted in massive data breaches.&nbsp;</strong> </p><p>The fines, totaling 36 billion Korean won ($25 million), were imposed on Louis Vuitton, Dior, and Tiffany, all owned by the Paris-based multinational luxury goods conglomerate LVMH. </p><p>According to the Korean regulator, Louis Vuitton received a fine of roughly $15 million for cybersecurity failures that involved employee devices getting infected with malware and the information of approximately 3.6 million individuals getting compromised. </p><p>Dior was fined the equivalent of more than $8.4 million for exposing the information of 1.95 million individuals after an employee fell for a voice phishing attack. </p><p>Tiffany has been ordered to pay $1.6 million for exposing the details of roughly 4,600 people after also falling victim to a voice phishing attack. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

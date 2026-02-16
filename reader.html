@@ -631,25 +631,29 @@
             });
         }
 
-        function scrollArticleFrame(toBottom) {
+        function scrollArticleFrame(direction) {
             const iframe = document.getElementById('articleFrame');
             if (!iframe) return;
             const iframeWindow = iframe.contentWindow;
             if (!iframeWindow) return;
+            const isDown = direction === 'down';
+            const isUp = direction === 'up';
+            const step = Math.max(220, Math.round(window.innerHeight * 0.72));
 
             // Preferred path: ask generated local article to scroll itself.
             try {
                 iframeWindow.postMessage({
                     type: 'AI_PULSE_SCROLL',
-                    direction: toBottom ? 'bottom' : 'top'
+                    direction: isDown ? 'down' : 'up',
+                    step
                 }, '*');
             } catch (_) {
                 // Continue with fallbacks below.
             }
 
-            // Cross-origin fallback: request a large relative scroll.
+            // Cross-origin fallback: relative smooth scroll only (no jump top/bottom).
             try {
-                const delta = toBottom ? 1000000 : -1000000;
+                const delta = isDown ? step : -step;
                 iframeWindow.scrollBy(0, delta);
             } catch (_) {
                 // Continue with same-origin strategy below when possible.
@@ -667,7 +671,8 @@
                     (body ? body.scrollHeight : 0),
                     (scrolling ? scrolling.scrollHeight : 0)
                 );
-                const targetTop = toBottom ? maxTop : 0;
+                const currentTop = (scrolling && Number.isFinite(scrolling.scrollTop)) ? scrolling.scrollTop : 0;
+                const targetTop = Math.max(0, Math.min(maxTop, currentTop + (isDown ? step : -step)));
 
                 // Deterministic absolute positioning on all common scroll roots.
                 try { iframeWindow.scrollTo(0, targetTop); } catch (_) {}
@@ -680,7 +685,8 @@
                 containers.forEach((el) => {
                     try {
                         const localMax = Math.max(0, (el.scrollHeight || 0) - (el.clientHeight || 0));
-                        el.scrollTop = toBottom ? localMax : 0;
+                        const nextTop = Math.max(0, Math.min(localMax, (el.scrollTop || 0) + (isDown ? step : -step)));
+                        el.scrollTop = nextTop;
                     } catch (_) {}
                 });
             } catch (_) {
@@ -690,12 +696,12 @@
 
         const articleScrollTopBtn = document.getElementById('articleScrollTopBtn');
         if (articleScrollTopBtn) {
-            articleScrollTopBtn.addEventListener('click', () => scrollArticleFrame(false));
+            articleScrollTopBtn.addEventListener('click', () => scrollArticleFrame('up'));
         }
 
         const articleScrollBottomBtn = document.getElementById('articleScrollBottomBtn');
         if (articleScrollBottomBtn) {
-            articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame(true));
+            articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
         }
     </script>
 

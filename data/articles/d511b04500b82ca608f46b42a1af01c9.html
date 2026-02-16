@@ -24,7 +24,11 @@
 <body>
   <h1>Monaco-PSG : «On commence la vraie Ligue des champions», savoure Luis Enrique, très discret sur le cas Dembélé</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Le Figaro | Date: 2/16/2026 6:14:16 PM | Lang: FR |
+=======
+    Source: Le Figaro | Date: 2/16/2026 5:14:16 PM | Lang: FR |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.lefigaro.fr/sports/football/ligue-des-champions/monaco-psg-on-commence-la-vraie-ligue-des-champions-savoure-luis-enrique-tres-discret-sur-le-cas-dembele-20260216" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -35,21 +39,21 @@
 </a></p> <p><strong>La philosophie de jeu</strong>&nbsp;: «<em>On veut améliorer notre efficacité parce qu’on a beaucoup de joueurs avec cette qualité. Il y a différents moments en termes de confiance dans une saison. Mais la confiance dans les joueurs et l’équipe est là. On a cette qualité. Il faut prendre conscience de la difficulté de ce match, c’est dur de gagner à l’extérieur. Mais on a confiance en ce qu’on a fait par le passé. (…) L’année dernière, on a commencé la Ligue des champions avec le même manque d’efficacité que cette saison sur quelques matchs. Mais quand tu es capable de créer beaucoup d’occasions, ça veut dire que tu es supérieur à l’adversaire. Je suis sûr qu’on va retrouver cela très vite. C’est l’objectif.</em>»</p> <p><strong>Une soirée tranquille, contrairement aux derniers matchs à Monaco</strong>&nbsp;: «<em>Je ne sais pas, on verra demain. Peut-être qu’on jouera sans gardien, aucun gardien ne veut jouer (rires)</em>». (<a href="http://www.lefigaro.fr/sports/football/ligue-1/ligue-1-singo-aurait-du-etre-exclu-pour-avoir-lacere-le-visage-de-donnarumma-lors-de-monaco-psg-reconnait-la-dta-20250107">Gigio Donnarumma</a>&nbsp;et&nbsp;<a href="http://www.lefigaro.fr/sports/football/ligue-1/ligue-1-ma-carriere-aurait-pu-prendre-un-tournant-estime-un-lucas-chevalier-chanceux-20251129">Lucas Chevalier sont repartis blessés lors des deux derniers Monaco-PSG</a>, NDLR)</p> <p>Propos recueillis en conférence de presse</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>

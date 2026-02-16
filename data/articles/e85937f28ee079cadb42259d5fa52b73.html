@@ -24,7 +24,11 @@
 <body>
   <h1>Game over, losers. The iPad won</h1>
   <div class="metadata">
+<<<<<<< HEAD
     Source: Macworld | Date: 2/14/2026 4:12:10 PM | Lang: EN |
+=======
+    Source: Macworld | Date: 2/14/2026 3:12:10 PM | Lang: EN |
+>>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
     <a href="https://www.macworld.com/article/3056614/game-over-apple-ipad-won.html" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -33,21 +37,21 @@
 </blockquote> <p>Of course, the standard caveats about how good analysts’ estimates are apply (spoiler: not very good), but when you try to think about the last time you saw someone using an Android tablet, you realize these numbers are at least directionally correct if not precise.</p> <div><p>The fact that Apple continues to have the most market share and surely far more profit share is all wryly amusing to the horny one as he recalls roundly being told how the iPad was doomed because Android tablets were set to surpass it, the same way Android phones surpassed the iPhone.</p><p>In 2010, <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.macalope.com/2010/02/08/nobody-wants-an-ipad/&amp;xcust=1-1-3056614-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056614/game-over-apple-ipad-won.html" target="_blank">one firm said</a> the iPad “failed to convince buyers” after its unveiling because the number of people who said they were uninterested in the iPad nearly doubled. Small footnote to that survey that somehow didn’t make the headline: the number of people who said they _would_ like to buy an iPad tripled.</p></div> <p>The Macalope’s favorite pundit gag of 2011 was lauding the <a href="https://www.pcworld.com/article/495135/motorola_xoom-2.html">Motorola Xoom</a> because it had 4G connectivity and the iPad 2 did not. Case closed! Advantage: Xoom! Oh, well, except, ha-ha, small note, just a tiny thing, really: the Xoom didn’t actually have it, either. It was simply promised that, at some point in the future, you’d be able to mail your Xoom in to add 4G to it. And that didn’t happen for seven months.</p> <div><figure><img src="https://legacy-us-images.foundryco.app/images/idge/imported/imageapi/2021/12/28/13/macalope-2021-100915055-orig.jpg?quality=50&amp;strip=all" alt="Macalope"><figcaption><p><strong>If you’d like to receive regular news and updates to your inbox, sign up for </strong><a href="https://www.macworld.com/newsletters/signup%E2%80%9D"><strong>our newsletters</strong></a><strong>, including The Macalope and</strong><a href="https://www.macworld.com/opinion/apple-breakfast%E2%80%9D"><strong> Apple Breakfast</strong></a><strong>, David Price’s weekly, bite-sized roundup of all the latest Apple news and rumors.</strong></p></figcaption></figure><p>Foundry</p></div> <p>Somehow, despite clearly being a better product in the eyes of pundits, Motorola sadly does not make the Xoom anymore. Or exist, because the company was <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.computerworld.com/article/1513878/with-motorola-sold-google-can-focus-on-robots-glass-and-smart-homes.html&amp;xcust=1-1-3056614-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056614/game-over-apple-ipad-won.html" target="_blank">sold</a> for parts to Google and Lenovo.</p> <p>In 2012, <a href="https://www.macworld.com/article/218149/macalope_ipad_dooooomed.html">we were told</a> that Android tablets were “beating out the iPad in business and IT.” Oh, no! How did Android fans know? Because of the companies that had not already bought iPads, 44 percent said they were going to buy Android-based tablets.</p> <p>That… um… okay. That’s some real faith-based mathematical analysis, but… You do you. Apart from these people simply reading what they wanted to see in survey results, it’s important to point out that surveys of buying intent are notoriously garbage. So there’s that, too.</p> <p>The Macalope could go on for hours about how wrong pundits were about the iPad (and often does, be glad you don’t know him in real life). But as the numbers above show, this battle is largely over. And the iPad won. This year’s updates will likely be incremental because tablets as a whole are a mature market, and while Apple will wow us every few years by making them even thinner and more capable, the company’s not likely to get huge growth from the category in the future.</p> <p>Don’t fret, though. If you want real innovation in tablets–all sloppy and wet with weird results, like when Chicago invented deep dish pizza — a host of <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.engadget.com/mobile/tablets/best-e-ink-tablet-130037939.html&amp;xcust=1-1-3056614-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056614/game-over-apple-ipad-won.html" target="_blank">wacky companies</a> are doing some craaazy things with <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://sixcolors.com/post/2024/01/two-e-readers-that-made-me-reconsider-why-i-use-e-readers/&amp;xcust=1-1-3056614-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056614/game-over-apple-ipad-won.html" target="_blank">e-ink screens.</a> None are likely to hit the big time like the iPad, but the Macalope has found it fun to watch.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
   </div>
   <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'top') scrollToTop();
-      if (data.direction === 'bottom') scrollToBottom();
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     });
   </script>
 </body>
