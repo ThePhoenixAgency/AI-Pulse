@@ -85,6 +85,32 @@ const Tracker = {
 
     /**
      * -------------------------------------------------------------------------
+     * MÉTHODE : getSecureRandomValues()
+     * -------------------------------------------------------------------------
+     * Remplit un tableau typé avec des valeurs aléatoires.
+     *
+     * Utilise un générateur cryptographiquement sûr (crypto.getRandomValues)
+     * lorsqu'il est disponible, et retombe sur Math.random() sinon.
+     */
+    getSecureRandomValues: function (typedArray) {
+        // Navigateur moderne ou environnement avec crypto.getRandomValues
+        var cryptoObj = (typeof globalThis !== 'undefined' && globalThis.crypto) ||
+                        (typeof window !== 'undefined' && window.crypto) ||
+                        (typeof self !== 'undefined' && self.crypto);
+
+        if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
+            return cryptoObj.getRandomValues(typedArray);
+        }
+
+        // Fallback : utiliser Math.random() (moins sûr, mais garantit le fonctionnement)
+        for (var i = 0; i < typedArray.length; i++) {
+            typedArray[i] = Math.floor(Math.random() * 256);
+        }
+        return typedArray;
+    },
+
+    /**
+     * -------------------------------------------------------------------------
      * MÉTHODE : generateUUID()
      * -------------------------------------------------------------------------
      * Génère un identifiant unique universel (UUID v4).
@@ -104,17 +130,31 @@ const Tracker = {
      *     la personne car il n'est pas partagé avec des serveurs.
      */
     generateUUID: function () {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            // Générer un nombre aléatoire entre 0 et 15
-            var r = Math.random() * 16 | 0;
+        // Générer 16 octets aléatoires
+        var bytes = new Uint8Array(16);
+        this.getSecureRandomValues(bytes);
 
-            // Pour 'x': utiliser le nombre aléatoire directement
-            // Pour 'y': appliquer un masque pour obtenir 8, 9, a, ou b
-            var v = c === 'x' ? r : (r & 0x3 | 0x8);
+        // Ajuster la version (4) et la variante (RFC 4122)
+        bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
+        bytes[8] = (bytes[8] & 0x3f) | 0x80; // variante 10xxxxxx
 
-            // Convertir en hexadécimal (base 16)
-            return v.toString(16);
-        });
+        // Convertir en chaîne hexadécimale UUID
+        var hex = [];
+        for (var i = 0; i < bytes.length; i++) {
+            var h = bytes[i].toString(16);
+            if (h.length === 1) {
+                h = '0' + h;
+            }
+            hex.push(h);
+        }
+
+        return (
+            hex[0] + hex[1] + hex[2] + hex[3] + '-' +
+            hex[4] + hex[5] + '-' +
+            hex[6] + hex[7] + '-' +
+            hex[8] + hex[9] + '-' +
+            hex[10] + hex[11] + hex[12] + hex[13] + hex[14] + hex[15]
+        );
     },
 
     getCookie: function (name) {
