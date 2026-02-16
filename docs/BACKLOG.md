@@ -14,6 +14,16 @@ Last updated: 2026-02-16
 
 ## Termine
 
+- [x] Reader/Articles: suppression du panneau bloquant injecté en lecture
+  - `reader.html`: overlay de chargement/erreur rendu non bloquant (plus d'affichage panneau)
+  - `reader.html`: suppression active des overlays/modales/paywalls/cookie dans l'iframe
+  - `src/aggregator.js`: nettoyage renforcé des panneaux bloquants à la génération des articles
+
+- [x] Reader: cache persistant des articles locaux pour accélérer les refresh
+  - `reader.html`: lecture prioritaire cache `localStorage` puis `sessionStorage`
+  - `reader.html`: index LRU simple (max 40 entrées) pour éviter la croissance infinie
+  - `tests/reader_routing.test.js`: garde anti-régression sur l'usage du cache persistant
+
 - [x] Sources: ajout catégorie `local` (Grenoble + météo locale)
   - France 3 Alpes, Le Dauphiné Grenoble, Place Gre'net, Actu Grenoble, Météo France Grenoble
 

@@ -116,6 +116,37 @@
             background: var(--bg-dark);
         }
 
+        #view-article .iframe-container {
+            padding-top: 48px;
+        }
+
+        .article-topbar {
+            position: absolute;
+            top: 8px;
+            left: 10px;
+            right: 10px;
+            z-index: 2147483647;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            pointer-events: auto;
+        }
+
+        .article-topbar-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.84);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        .article-topbar-btn:hover {
+            background: rgba(15, 23, 42, 0.95);
+        }
+
         .back-to-previous {
             position: absolute;
             top: 12px;
@@ -135,17 +166,18 @@
             background: rgba(15, 23, 42, 0.9);
         }
 
-        .article-elevator {
-            position: absolute;
+        .reader-elevator {
+            position: fixed;
             right: 12px;
-            bottom: 16px;
-            z-index: 60;
+            top: 58px;
+            bottom: auto;
+            z-index: 2147483646;
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
 
-        .article-elevator-btn {
+        .reader-elevator-btn {
             width: 36px;
             height: 36px;
             border: 1px solid rgba(255, 255, 255, 0.22);
@@ -158,8 +190,23 @@
             backdrop-filter: blur(4px);
         }
 
-        .article-elevator-btn:hover {
+        .reader-elevator-btn:hover {
             background: rgba(15, 23, 42, 0.95);
+        }
+
+        .article-mobile-footer {
+            display: none;
+        }
+
+        .article-mobile-footer-btn {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.9);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 12px;
+            padding: 10px 14px;
+            cursor: pointer;
         }
 
         iframe {
@@ -177,6 +224,8 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--primary-color);
+            display: none !important;
+            pointer-events: none !important;
         }
 
         .spinner {
@@ -207,7 +256,7 @@
 
         /* Error Message */
         .error-message {
-            display: none;
+            display: none !important;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -219,6 +268,7 @@
             text-align: center;
             max-width: 500px;
             border: 1px solid var(--border-color);
+            pointer-events: none !important;
         }
 
         .error-icon {
@@ -288,9 +338,21 @@
                 padding: 7px 10px;
             }
 
-            .article-elevator {
+            .reader-elevator {
                 right: 10px;
-                bottom: 12px;
+                top: 56px;
+                bottom: auto;
+            }
+
+            .article-mobile-footer {
+                position: fixed;
+                left: 10px;
+                right: 10px;
+                bottom: calc(env(safe-area-inset-bottom, 0px) + 8px);
+                z-index: 2147483647;
+                display: flex;
+                justify-content: center;
+                pointer-events: auto;
             }
         }
 
@@ -331,6 +393,10 @@
         </div>
 
         <div class="iframe-container">
+            <div class="article-topbar" id="articleTopbar">
+                <button class="article-topbar-btn" id="articleBackBtn" type="button">Retour</button>
+                <button class="article-topbar-btn" id="articleHomeBtn" type="button">Accueil</button>
+            </div>
             <button class="back-to-previous" id="backToPreviousBtn" type="button">Page précédente</button>
             <div class="loading" id="loading">
                 <div class="spinner"></div>
@@ -343,10 +409,13 @@
                 <h2>Impossible de charger l'article</h2>
                 <p>Nous sommes désolés, cet article est indisponible ou bloque l'affichage dans le lecteur.</p>
             </div>
-            <div class="article-elevator" aria-label="Navigation article">
-                <button class="article-elevator-btn" id="articleScrollTopBtn" type="button" title="Remonter">▲</button>
-                <button class="article-elevator-btn" id="articleScrollBottomBtn" type="button" title="Descendre">▼</button>
+            <div class="reader-elevator" aria-label="Navigation article">
+                <button class="reader-elevator-btn" id="articleScrollTopBtn" type="button" title="Remonter">▲</button>
+                <button class="reader-elevator-btn" id="articleScrollBottomBtn" type="button" title="Descendre">▼</button>
             </div>
+        </div>
+        <div class="article-mobile-footer" id="articleMobileFooter">
+            <button class="article-mobile-footer-btn" id="articleJumpBottomBtn" type="button">Bas de page</button>
         </div>
     <footer class="site-footer" id="readerFooter">
             <div class="footer-links">
@@ -367,6 +436,22 @@
     <script>
         // View Management
         let currentView = 'home';
+        function ensureReaderElevatorVisible() {
+            const elevator = document.querySelector('#view-article .reader-elevator');
+            if (!elevator) return;
+            elevator.style.setProperty('display', 'flex', 'important');
+            elevator.style.setProperty('visibility', 'visible', 'important');
+            elevator.style.setProperty('opacity', '1', 'important');
+            elevator.style.setProperty('pointer-events', 'auto', 'important');
+            elevator.style.setProperty('z-index', '2147483646', 'important');
+            const buttons = elevator.querySelectorAll('.reader-elevator-btn');
+            buttons.forEach((btn) => {
+                btn.style.setProperty('display', 'inline-flex', 'important');
+                btn.style.setProperty('visibility', 'visible', 'important');
+                btn.style.setProperty('opacity', '1', 'important');
+                btn.style.setProperty('pointer-events', 'auto', 'important');
+            });
+        }
 
         function showView(viewName) {
             document.querySelectorAll('.view').forEach(view => {
@@ -388,6 +473,9 @@
             }
 
             currentView = viewName;
+            if (viewName === 'article') {
+                ensureReaderElevatorVisible();
+            }
         }
 
         // Parse URL Parameters
@@ -397,6 +485,9 @@
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
         const articleRuntimeCache = new Map();
+        const LOCAL_ARTICLE_CACHE_PREFIX = 'ai_pulse_article_html:';
+        const LOCAL_ARTICLE_CACHE_INDEX_KEY = 'ai_pulse_article_html:index';
+        const LOCAL_ARTICLE_CACHE_MAX_ITEMS = 40;
 
         function normalizeLocalArticlePath(url) {
             if (!url) return '';
@@ -409,15 +500,35 @@
             return /^data\/articles\/.+\.html$/i.test(path);
         }
 
+        function stripLocalArticleElevatorHtml(html) {
+            if (!html) return html;
+            return String(html)
+                .replace(/<div[^>]*class=["'][^"']*\barticle-elevator\b[^"']*["'][^>]*>[\s\S]*?<\/div>/gi, '');
+        }
+
         async function fetchCachedLocalArticleHtml(url) {
             const normalizedPath = normalizeLocalArticlePath(url);
-            const cacheKey = `ai_pulse_article_html:${normalizedPath}`;
+            const cacheKey = `${LOCAL_ARTICLE_CACHE_PREFIX}${normalizedPath}`;
             if (articleRuntimeCache.has(cacheKey)) return articleRuntimeCache.get(cacheKey);
+            try {
+                const localPersisted = localStorage.getItem(cacheKey);
+                if (localPersisted && localPersisted.length > 0) {
+                    const cleanedPersisted = stripLocalArticleElevatorHtml(localPersisted);
+                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
+                    try {
+                        sessionStorage.setItem(cacheKey, cleanedPersisted);
+                    } catch (_) {}
+                    return cleanedPersisted;
+                }
+            } catch (_) {
+                // Ignore localStorage access failures.
+            }
             try {
                 const persisted = sessionStorage.getItem(cacheKey);
                 if (persisted && persisted.length > 0) {
-                    articleRuntimeCache.set(cacheKey, persisted);
-                    return persisted;
+                    const cleanedPersisted = stripLocalArticleElevatorHtml(persisted);
+                    articleRuntimeCache.set(cacheKey, cleanedPersisted);
+                    return cleanedPersisted;
                 }
             } catch (_) {
                 // Ignore sessionStorage access failures.
@@ -426,10 +537,29 @@
             if (!response.ok) {
                 throw new Error(`local-article-fetch-failed:${response.status}`);
             }
-            const html = await response.text();
+            const html = stripLocalArticleElevatorHtml(await response.text());
             articleRuntimeCache.set(cacheKey, html);
             try {
                 sessionStorage.setItem(cacheKey, html);
+            } catch (_) {
+                // Ignore storage quota failures.
+            }
+            try {
+                localStorage.setItem(cacheKey, html);
+                const now = Date.now();
+                const indexRaw = localStorage.getItem(LOCAL_ARTICLE_CACHE_INDEX_KEY);
+                const parsedIndex = indexRaw ? JSON.parse(indexRaw) : {};
+                const index = (parsedIndex && typeof parsedIndex === 'object') ? parsedIndex : {};
+                index[cacheKey] = now;
+                const orderedKeys = Object.keys(index).sort((a, b) => Number(index[b] || 0) - Number(index[a] || 0));
+                const staleKeys = orderedKeys.slice(LOCAL_ARTICLE_CACHE_MAX_ITEMS);
+                staleKeys.forEach((key) => {
+                    try {
+                        localStorage.removeItem(key);
+                        delete index[key];
+                    } catch (_) {}
+                });
+                localStorage.setItem(LOCAL_ARTICLE_CACHE_INDEX_KEY, JSON.stringify(index));
             } catch (_) {
                 // Ignore storage quota failures.
             }
@@ -487,8 +617,81 @@
             const loading = document.getElementById('loading');
             const errorMessage = document.getElementById('errorMessage');
             if (loading) loading.style.display = 'none';
-            if (errorMessage) errorMessage.style.display = 'block';
+            if (errorMessage) errorMessage.style.display = 'none';
             console.warn('Inline article fallback:', reason || 'unknown');
+        }
+
+        function stripBlockingPanelsInIframeDoc(iframeDoc, iframeWindow) {
+            if (!iframeDoc || !iframeDoc.querySelectorAll) return;
+            const selector = [
+                '[id*="overlay"]',
+                '[class*="overlay"]',
+                '[id*="modal"]',
+                '[class*="modal"]',
+                '[id*="popup"]',
+                '[class*="popup"]',
+                '[id*="paywall"]',
+                '[class*="paywall"]',
+                '[id*="subscribe"]',
+                '[class*="subscribe"]',
+                '[id*="cookie"]',
+                '[class*="cookie"]',
+                '[id*="consent"]',
+                '[class*="consent"]',
+                '[id*="gdpr"]',
+                '[class*="gdpr"]',
+                '[role="dialog"]',
+                '[aria-modal="true"]'
+            ].join(', ');
+            const markerPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+
+            try {
+                if (iframeDoc.head && !iframeDoc.getElementById('aiPulsePanelKillerStyle')) {
+                    const style = iframeDoc.createElement('style');
+                    style.id = 'aiPulsePanelKillerStyle';
+                    style.textContent = `
+                    [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+                    [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+                    [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+                        display: none !important;
+                        visibility: hidden !important;
+                        pointer-events: none !important;
+                    }
+                    body, html {
+                        overflow: auto !important;
+                    }`;
+                    iframeDoc.head.appendChild(style);
+                }
+            } catch (_) {
+                // Cross-origin or restricted access, ignore.
+            }
+
+            try {
+                iframeDoc.querySelectorAll(selector).forEach((node) => node.remove());
+                iframeDoc.querySelectorAll('div, section, aside').forEach((node) => {
+                    const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+                    const classAndId = `${String(node.className || '').toLowerCase()} ${String(node.id || '').toLowerCase()}`;
+                    const text = String(node.textContent || '').slice(0, 900);
+                    const hasKeyword = markerPattern.test(classAndId) || markerPattern.test(text);
+                    const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+                    const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+                    if (hasKeyword && (looksFixed || hasPriority)) {
+                        node.remove();
+                    }
+                });
+
+                const body = iframeDoc.body;
+                const docEl = iframeDoc.documentElement;
+                if (body) {
+                    body.style.overflow = 'auto';
+                    body.style.pointerEvents = 'auto';
+                }
+                if (docEl) {
+                    docEl.style.overflow = 'auto';
+                }
+            } catch (_) {
+                // Cross-origin or restricted access, ignore.
+            }
         }
 
         // If article parameters exist and URL is valid, show article view
@@ -553,10 +756,11 @@
                 if (recursiveTargets.some(name => lowerTarget.includes(name))) {
                     redirectToArticle404('recursive-target');
                 } else {
+                    const isLocalArticleTarget = isLocalGeneratedArticleUrl(safeArticleUrl);
                     let loadCount = 0;
                     let firstLoadAt = 0;
                 iframe.style.visibility = 'hidden';
-                if (loading) loading.style.display = 'block';
+                if (loading) loading.style.display = 'none';
 
                 const loadViaSrc = () => {
                     iframe.src = safeArticleUrl;
@@ -598,9 +802,24 @@
                         // But if it's cross-origin and NOT blocked, it should show content.
                         // We can't really know for sure, but we can check if it's blank.
                         const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                        if (isLocalArticleTarget) {
+                            try {
+                                iframeDoc.querySelectorAll('.article-elevator, .article-elevator-btn').forEach((node) => node.remove());
+                                iframeDoc.querySelectorAll('[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"]').forEach((node) => node.remove());
+                                if (iframeDoc.body) iframeDoc.body.style.overflow = 'auto';
+                                if (iframeDoc.documentElement) iframeDoc.documentElement.style.overflow = 'auto';
+                                const readerElevator = document.querySelector('#view-article .reader-elevator');
+                                if (readerElevator) {
+                                    readerElevator.style.setProperty('display', 'flex', 'important');
+                                }
+                            } catch (_) {}
+                        } else {
+                            stripBlockingPanelsInIframeDoc(iframeDoc, iframe.contentWindow);
+                            ensureReaderElevatorVisible();
+                        }
                         if (!iframeDoc || !iframeDoc.body || iframeDoc.body.innerHTML === '') {
-                            // This might be blocked
-                            errorMessage.style.display = 'block';
+                            // Keep non-blocking behavior; no overlay panel.
+                            if (errorMessage) errorMessage.style.display = 'none';
                         }
                     } catch (e) {
                         // Cross-origin access error: This is expected for most external sites.
@@ -658,12 +877,28 @@
 
         // Back to previous page in navigation history (fallback to list).
         const backToPreviousBtn = document.getElementById('backToPreviousBtn');
+        const articleBackBtn = document.getElementById('articleBackBtn');
+        const articleHomeBtn = document.getElementById('articleHomeBtn');
+
+        function navigateBackOrHome() {
+            if (window.history.length > 1) {
+                window.history.back();
+                return;
+            }
+            const fallbackUrl = new URL(window.location.href);
+            fallbackUrl.search = '';
+            fallbackUrl.hash = '';
+            window.location.assign(fallbackUrl.toString());
+        }
+
         if (backToPreviousBtn) {
-            backToPreviousBtn.addEventListener('click', () => {
-                if (window.history.length > 1) {
-                    window.history.back();
-                    return;
-                }
+            backToPreviousBtn.addEventListener('click', navigateBackOrHome);
+        }
+        if (articleBackBtn) {
+            articleBackBtn.addEventListener('click', navigateBackOrHome);
+        }
+        if (articleHomeBtn) {
+            articleHomeBtn.addEventListener('click', () => {
                 const fallbackUrl = new URL(window.location.href);
                 fallbackUrl.search = '';
                 fallbackUrl.hash = '';
@@ -735,6 +970,11 @@
         if (articleScrollBottomBtn) {
             articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
         }
+        const articleJumpBottomBtn = document.getElementById('articleJumpBottomBtn');
+        if (articleJumpBottomBtn) {
+            articleJumpBottomBtn.addEventListener('click', () => scrollArticleFrame('down'));
+        }
+        setTimeout(ensureReaderElevatorVisible, 120);
     </script>
 
     </body>

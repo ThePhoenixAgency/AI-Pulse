@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Privacy: test to enforce header logo uses `./assets/logo_final.png`
 
 ### Changed
+- Reader: removed blocking in-reader overlay panel (loading/error) to keep article interaction always available
+- Reader: added runtime cleanup for injected overlay/modal/paywall/cookie panels inside same-origin article iframe
+- Reader: added persistent local cache for generated local articles (`localStorage` + runtime memory + session fallback) to speed up page reloads
+- Aggregator: strengthened article HTML cleanup to strip blocking overlay/modal/paywall/cookie containers before save
 - Reader list: removed iframe encapsulation for article links (`data/articles/*` now open directly)
 - Reader: article info title bar is now permanently hidden to remove the white strip above embedded articles
 - Reader: added local `file://` fallback loader (hidden iframe to `README.md`) when fetch is blocked locally

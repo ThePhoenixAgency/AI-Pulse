@@ -449,6 +449,45 @@ function getLinkDensity(node) {
   return linkTextLength / textLength;
 }
 
+function removeBlockingPanels(root) {
+  if (!root || !root.querySelectorAll) return;
+  const blockerSelector = [
+    '[id*="overlay"]',
+    '[class*="overlay"]',
+    '[id*="modal"]',
+    '[class*="modal"]',
+    '[id*="popup"]',
+    '[class*="popup"]',
+    '[id*="paywall"]',
+    '[class*="paywall"]',
+    '[id*="subscribe"]',
+    '[class*="subscribe"]',
+    '[id*="consent"]',
+    '[class*="consent"]',
+    '[id*="cookie"]',
+    '[class*="cookie"]',
+    '[id*="gdpr"]',
+    '[class*="gdpr"]',
+    '[aria-modal="true"]',
+    '[role="dialog"]'
+  ].join(', ');
+  const blockerTextPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+
+  root.querySelectorAll(blockerSelector).forEach((node) => node.remove());
+
+  root.querySelectorAll('div, section, aside').forEach((node) => {
+    const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+    const classAndId = `${String(node.className || '').toLowerCase()} ${String(node.id || '').toLowerCase()}`;
+    const text = sanitizeText(node.textContent || '').slice(0, 800);
+    const hasBlockingKeyword = blockerTextPattern.test(classAndId) || blockerTextPattern.test(text);
+    const looksFixedLayer = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+    const hasVisualPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+    if (hasBlockingKeyword && (looksFixedLayer || hasVisualPriority)) {
+      node.remove();
+    }
+  });
+}
+
 function removePromotionalNodes(root) {
   if (!root || !root.querySelectorAll) return;
   const candidates = root.querySelectorAll('p, div, section, article, aside, li, ul, ol, figure, figcaption, footer, nav, header');
@@ -749,6 +788,7 @@ function cleanupNoiseHtml(input, options = {}) {
       }
     });
 
+    removeBlockingPanels(body);
     removePromotionalNodes(body);
 
     let cleaned = trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
@@ -1370,6 +1410,13 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -1385,6 +1432,20 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture)\\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\\s*:\\s*(fixed|sticky)|inset\\s*:|top\\s*:|left\\s*:|right\\s*:|bottom\\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -1397,6 +1458,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>`;
@@ -1494,6 +1559,13 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -1509,6 +1581,20 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\\s]?vous|inscrivez[-\\s]?vous|continue reading|continuez la lecture)\\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\\s*:\\s*(fixed|sticky)|inset\\s*:|top\\s*:|left\\s*:|right\\s*:|bottom\\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\\s*:\\s*[1-9]\\d{1,}|backdrop-filter|overflow\\s*:\\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -1521,6 +1607,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>`;
