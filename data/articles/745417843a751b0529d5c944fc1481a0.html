@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Study Uncovers 25 Password Recovery Attacks in Major Cloud Password Managers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Study Uncovers 25 Password Recovery Attacks in Major Cloud Password Managers</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/16/2026 6:06:00 PM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/study-uncovers-25-password-recovery.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBPbskdafjFepjzUnEOcPNFvk1UceqE9lVwhurVxvrqJ3_1VhbKg-XcZjTrVpt2aqk_uv6Sodg9NMcoTvkVEeoAhNUU9X_0ltI9oHpnTIA-a28iDGnudnxJklcADpfz5llcUEStKI7Nt7IjW3vhA_DyO7rKG03dgj8KTFfrpxamTqy7xEciFwLzeS-lXEb/s1600/password-managers.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgBPbskdafjFepjzUnEOcPNFvk1UceqE9lVwhurVxvrqJ3_1VhbKg-XcZjTrVpt2aqk_uv6Sodg9NMcoTvkVEeoAhNUU9X_0ltI9oHpnTIA-a28iDGnudnxJklcADpfz5llcUEStKI7Nt7IjW3vhA_DyO7rKG03dgj8KTFfrpxamTqy7xEciFwLzeS-lXEb/s1600/password-managers.jpg"></a></p>
+<p>A new study has <a href="https://ethz.ch/en/news-and-events/eth-news/news/2026/02/password-managers-less-secure-than-promised.html" target="_blank">found</a> that multiple cloud-based password managers, including Bitwarden, Dashlane, and LastPass, are susceptible to password recovery attacks under certain conditions.</p>
+<p>"The attacks range in severity from integrity violations to the complete compromise of all vaults in an organization," researchers Matteo Scarlata, Giovanni Torrisi, Matilda Backendal, and Kenneth G. Paterson <a href="https://zkae.io/" target="_blank">said</a>. "The majority of the attacks allow the recovery of passwords."</p>
+<p>It's worth noting that the threat actor, per the study from ETH Zurich and Università della Svizzera italiana, supposes a malicious server and aims to examine the password manager's zero-knowledge encryption (ZKE) promises made by the three solutions. ZKE is a cryptographic technique that allows one party to prove knowledge of a secret to another party without actually revealing the secret itself.</p>
+<p>ZKE is also a little different from end-to-end encryption (E2EE). While E2EE refers to a method of securing data in transit, ZKE is mainly about storing data in an encrypted format such that only the person with the key can access that information. Password manager vendors are known to implement ZKE to "enhance" user privacy and security by ensuring that the vault data cannot be tampered with.</p>
+<p>However, the latest research has uncovered 12 distinct attacks against Bitwarden, seven against LastPass, and six against Dashlane, ranging from integrity violations of targeted user vaults to a total compromise of all the vaults associated with an organization. Collectively, these password management solutions serve over 60 million users and nearly 125,000 businesses.</p> <p>"Despite vendors' attempts to achieve security in this setting, we uncover several common design anti-patterns and cryptographic misconceptions that resulted in vulnerabilities," the researchers said in an accompanying paper.</p>
+<p>The attacks fall under four broad categories -</p>
+<ul>
+<li>Attacks that exploit the "Key Escrow" account recovery mechanism to compromise the confidentiality guarantees of Bitwarden and LastPass, resulting from vulnerabilities in their key escrow designs.</li>
+<li>Attacks that exploit flawed item-level encryption -- i.e., encrypting data items and sensitive user settings as separate objects and often combine with unencrypted or unauthenticated metadata, to result in integrity violations, metadata leakage, field swapping, and key derivation function (<a href="https://en.wikipedia.org/wiki/Key_derivation_function" target="_blank">KDF</a>) downgrade.</li>
+<li>Attacks that exploit sharing features to compromise vault integrity and confidentiality.</li>
+<li>Attacks that exploit backwards compatibility with legacy code that result in downgrade attacks in Bitwarden and Dashlane.</li>
+</ul>
+<p>The study also found that 1Password, another popular password manager, is vulnerable to both item-level vault encryption and sharing attacks. However, 1Password has opted to treat them as arising from already known architectural limitations.</p>
+<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaXS3vUuMd4jGNj1mDrOFc-Jo8_DsbYaQRaXCMl9t11C53ZmQ9WiSY6U5rs7ufndVsqh0BvV8XljNn-ZsGeUBpd7JZxFZzpMh_bPt4tgpmE80nIA5F7i-K4iw77n1IXIt-qzlS_nu5s3C7D0Zh5eUUypkv4Lk8xgMZrVykfhU1RCvwwdcby9Gnqw1EvZ3T/s1600/password.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgaXS3vUuMd4jGNj1mDrOFc-Jo8_DsbYaQRaXCMl9t11C53ZmQ9WiSY6U5rs7ufndVsqh0BvV8XljNn-ZsGeUBpd7JZxFZzpMh_bPt4tgpmE80nIA5F7i-K4iw77n1IXIt-qzlS_nu5s3C7D0Zh5eUUypkv4Lk8xgMZrVykfhU1RCvwwdcby9Gnqw1EvZ3T/s1600/password.jpg"></a></td></tr><tr><td>Summary of attacks (BW stands for Bitwarden, LP for LastPass, and DL for Dashlane)</td></tr></tbody></table>
+<p>When reached for comment, Jacob DePriest, Chief Information Security Officer and Chief Information Officer at 1Password, told The Hacker News that the company's security reviewed the paper in detail and found no new attack vectors beyond those already documented in its publicly available <a href="https://agilebits.github.io/security-design/" target="_blank">Security Design White Paper</a>.</p>
+<p>"We are committed to continually strengthening our <a href="https://support.1password.com/1password-security/" target="_blank">security architecture</a> and evaluating it against advanced threat models, including malicious-server scenarios like those described in the research, and evolving it over time to maintain the protections our users rely on," DePriest added.</p>
+<p>"For example, 1Password uses <a href="https://support.1password.com/secure-remote-password/" target="_blank">Secure Remote Password</a> (SRP) to authenticate users without transmitting encryption keys to our servers, helping mitigate entire classes of server-side attacks. More recently, we introduced a <a href="https://support.1password.com/cs/dns-record/" target="_blank">new capability</a> for enterprise-managed credentials, which from the start are created and secured to withstand sophisticated threats."</p> <p>As for the rest, Bitwarden, Dashlane, and LastPass have all implemented countermeasures to mitigate the risks highlighted in the research, with LastPass also planning to harden its admin password reset and sharing workflows to counter the threat posed by a malicious intermediary. There is no evidence that any of these issues has been exploited in the wild.</p> <p>Specifically, Dashlane has patched an issue where a successful compromise of its servers could have allowed a downgrade of the encryption model used to generate encryption keys and protect user vaults. The issue was fixed by removing support for legacy cryptography methods with Dashlane Extension <a href="https://support.dashlane.com/hc/en-us/articles/33346483084050-Security-advisory-Cryptography-downgrade-issue" target="_blank">version 6.2544.1</a> released in November 2025.</p>
+<p>"This downgrade could result in the compromise of a weak or easily guessable Master Password, and the compromise of individual 'downgraded' vault items," Dashlane <a href="https://www.dashlane.com/blog/zero-knowledge-malicious-server" target="_blank">said</a>. "This issue was the result of the allowed use of legacy cryptography. This legacy cryptography was supported by Dashlane in certain cases for backwards compatibility and migration flexibility."</p>
+<p>Bitwarden said all identified issues are being addressed. "Seven of which have been resolved or are in active remediation by the Bitwarden team," it <a href="https://bitwarden.com/blog/security-through-transparency-eth-zurich-audits-bitwarden-cryptography/" target="_blank">said</a>. "The remaining three issues have been accepted as intentional design decisions necessary for product functionality."</p>
+<p>In a similar advisory, LastPass <a href="https://blog.lastpass.com/posts/details-on-hardening-in-response-to-eth-zurich-reported-security-issues" target="_blank">said</a> it's "actively working to add stronger integrity guarantees to better cryptographically bind items, fields, and metadata, thereby helping to maintain integrity assurance."</p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>

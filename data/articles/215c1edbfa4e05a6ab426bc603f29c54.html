@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Build your apps real, simple.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Build your apps real, simple.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 7:18:36 PM | Lang: EN |
+    <a href="https://breadboards.io/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <div> <p><span>Readable logic</span></p><h3>Create powerful functionalities with logic blocks</h3> <p>Forget complex syntax. Build logic by stacking simple, readable blocks — just like a to-do list. If you can write a sentence, you can build an app!</p> </div> <p><img src="https://breadboards.io/images/feature_1_1.png"> <img src="https://breadboards.io/images/feature_1_2.png"> <img src="https://breadboards.io/images/feature_1_3.png"> </p> </div> <div> <div> <p><span>Screen UI design</span></p><h3>Assemble screens with ready-to-use components or your own UI designs</h3> <p>Import your UI designs or sketch with our style editor &amp; native components. Create high-quality, production-ready interface.</p> </div> <p><img src="https://breadboards.io/images/feature_2_1.png"> <img src="https://breadboards.io/images/feature_2_2.png"> <img src="https://breadboards.io/images/feature_2_3.png"> <img src="https://breadboards.io/images/feature_2_4.png"> <img src="https://breadboards.io/images/feature_2_5.png"> </p> </div> <div> <div> <p><span>Build with AI</span></p><h3>Bring your favorite AI as pair programmer</h3> <p>Stuck on the logic? We help you generate the perfect prompt to send to any AI model. It's like having a seasoned developer sitting next to you, telling you exactly which block to stack.</p> </div> <p><img src="https://breadboards.io/images/feature_3_1.png"> <img src="https://breadboards.io/images/feature_3_2.png"> <img src="https://breadboards.io/images/feature_3_3.png"> <img src="https://breadboards.io/images/feature_3_4.png"> <img src="https://breadboards.io/images/feature_3_5.png"> <img src="https://breadboards.io/images/feature_3_6.png"> </p> </div> <div> <div> <p><span>Web app publish</span></p><h3>In production with just one click</h3> <p>No servers, no command lines, no headaches. Hit 'Publish' and your app is live, responsive, and ready for your users instantly.</p> </div> <p><img src="https://breadboards.io/images/feature_4_1.png"> <img src="https://breadboards.io/images/feature_4_2.png"> <img src="https://breadboards.io/images/feature_4_3.png"> </p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+  </div>
+  <script>
+    function scrollStep(direction) {
+      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
+      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up') scrollStep(-1);
+      if (data.direction === 'down') scrollStep(1);
+      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
