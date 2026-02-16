@@ -422,6 +422,14 @@
             .top-nav { padding: 0 10px; }
             .top-nav label { display: none; }
             .top-nav select { min-width: 150px; font-size: 0.8rem; }
+            .prefs-toggle {
+                padding: 7px 10px;
+                font-size: 0.78rem;
+                border-radius: 7px;
+                box-shadow: none;
+                white-space: nowrap;
+            }
+            .prefs-toggle:hover { transform: none; box-shadow: none; }
             .content-area { padding: 60px 15px 60px; }
             .prefs-panel { width: 100%; right: -100%; }
         }
@@ -472,6 +480,14 @@
             <h4>Articles par section</h4>
             <input type="range" id="prefMaxArticles" min="3" max="50" value="30">
             <span class="range-value" id="prefMaxArticlesValue">30</span>
+        </div>
+
+        <div class="prefs-section">
+            <h4>Lecture</h4>
+            <label>
+                <input type="checkbox" id="prefHideRead">
+                Masquer les articles deja lus
+            </label>
         </div>
 
         <button class="prefs-reset" id="prefsReset">Réinitialiser les préférences</button>
@@ -665,32 +681,29 @@
             };
         }
 
-                    const label = document.createElement('label');
-                    const input = document.createElement('input');
-
-                    input.type = 'checkbox';
-                    input.setAttribute('data-cat', cat);
-                    if (prefs.categories[cat] !== false) {
-                        input.checked = true;
-                    }
-
-                    label.appendChild(input);
-                    label.appendChild(document.createTextNode(' '));
-                    label.appendChild(document.createTextNode(heading.textContent));
-
-                    container.appendChild(label);
+        function buildPrefCategories(prefs) {
             const container = document.getElementById('prefCategories');
+            if (!container) return;
+
             const sections = document.querySelectorAll('#readme-content section[data-category]');
+            container.innerHTML = '';
+
             sections.forEach(section => {
                 const cat = section.getAttribute('data-category');
                 const heading = section.querySelector('h2');
-                if (heading && cat) {
-                    const checked = prefs.categories[cat] !== false ? 'checked' : '';
-                    html += `<label><input type="checkbox" data-cat="${cat}" ${checked}> ${heading.textContent}</label>`;
-                }
-            });
+                if (!heading || !cat) return;
 
-            container.innerHTML = html;
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+
+                input.type = 'checkbox';
+                input.setAttribute('data-cat', cat);
+                input.checked = prefs.categories[cat] !== false;
+
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(' ' + heading.textContent));
+                container.appendChild(label);
+            });
         }
 
         // ─── Apply Filters ──────────────────────────────────
@@ -774,6 +787,8 @@
                     section.appendChild(readSection);
                 }
             });
+            buildSectionNav();
+        }
 
         // ─── Intersection Observer for active section ───────
         function setupScrollSpy() {
