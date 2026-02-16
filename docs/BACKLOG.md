@@ -4,13 +4,14 @@ Last updated: 2026-02-16
 
 ## En cours
 
-- [ ] Reader UX: filtrage local (stockage local) + langue par defaut (GeoIP si dispo, sinon navigateur)
-  - Le stockage se cree a la premiere visite et se met a jour lors des filtres
-
 - [ ] Reader UX: clic sur tag (mot-cle) pour ancrer vers categorie et eviter le scroll long
 
 
 ## Termine
+
+- [x] Reader UX: langue par defaut auto (GeoIP stats locale si dispo, sinon navigateur)
+  - Switch rapide FR/EN dans la barre du reader
+  - Choix utilisateur persiste en localStorage
 
 - [x] Fix: mini logo casse dans le header de `privacy.html` (corrige `./assets/logo_text.png` -> `./assets/logo_final.png`)
 

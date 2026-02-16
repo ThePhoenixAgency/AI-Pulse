@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reader: move prefs toggle into the top navigation
 - Reader: robust section detection from `h2` headings to auto-fill "Aller a" and keep anchor navigation functional
 - Reader: compact "Filtres" button in top bar (less intrusive, mobile-first)
+- Reader: language default uses local GeoIP stats when available, otherwise browser language
+- Reader: bilingual quick labels in UI (EN/FR) including filters and section navigation
+- Reader: removed third-party Google tag from iframe reader page
 - Stats: privacy-first tracker (localStorage + first-party session cookie)
 - Portfolio: GitHub links point to the repositories tab (no viewer indirection)
 - Privacy: fix header logo reference (`logo_text.png` -> `logo_final.png`)
