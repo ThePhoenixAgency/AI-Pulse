@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- 2026-02-16: Validation locale `node --test` (12/12) [OK]
 - Tests: `node --test` [OK]
 - Reader: tests for prefs toggle placement (mobile-first)
 - Theme: test to assert `css/style.css` exists

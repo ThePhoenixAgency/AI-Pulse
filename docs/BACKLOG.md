@@ -1,6 +1,6 @@
 # BACKLOG
 
-Last updated: 2026-02-15
+Last updated: 2026-02-16
 
 ## En cours
 
@@ -9,10 +9,11 @@ Last updated: 2026-02-15
 
 - [ ] Reader UX: clic sur tag (mot-cle) pour ancrer vers categorie et eviter le scroll long
 
-- [ ] Fix: mini logo casse dans le header de `privacy.html` (corriger `./assets/logo_text.png` -> `./assets/logo_final.png`)
-
 
 ## Termine
+
+- [x] Fix: mini logo casse dans le header de `privacy.html` (corrige `./assets/logo_text.png` -> `./assets/logo_final.png`)
+
 
 - [x] Stats: ne pas compter un visiteur 2 fois pendant une session
   - Cookie de session (30 min, expiration glissante)
