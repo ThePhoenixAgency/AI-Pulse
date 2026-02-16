@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mistralai/mistral-vibe: Minimal CLI coding agent by Mistral</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - mistralai/mistral-vibe: Minimal CLI coding agent by Mistral</h1>
+  <div class="metadata">
+    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN |
+    <a href="https://github.com/mistralai/mistral-vibe" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>Mistral Vibe</h2><a href="#mistral-vibe"></a><p></p>
+<p><a href="https://pypi.org/project/mistral-vibe"><img src="https://camo.githubusercontent.com/adbb1f512e1f9d9bac5869c0fe4bd7038767b48c7edbad236038b8cd61ea9227/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6d69737472616c2d76696265" alt="PyPI Version" /></a>
+<a href="https://www.python.org/downloads/release/python-3120/"><img src="https://camo.githubusercontent.com/6120cf2b115d295ea38792cdeeded70a0da746a65133500dac736b58df6de2d5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31322532422d626c7565" alt="Python Version" /></a>
+<a href="https://github.com/mistralai/mistral-vibe/actions/workflows/ci.yml"><img src="https://github.com/mistralai/mistral-vibe/actions/workflows/ci.yml/badge.svg" alt="CI Status" /></a>
+<a href="https://github.com/mistralai/mistral-vibe/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/3e057fbeaea9d40e3b72141439de20eba5226f4561d2bc67a614a1e8a1655773/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6d69737472616c61692f6d69737472616c2d76696265" alt="License" /></a></p>
+<div><pre><code>██████████████████░░
+██████████████████░░
+████  ██████  ████░░
+████    ██    ████░░
+████          ████░░
+████  ██  ██  ████░░
+██      ██      ██░░
+██████████████████░░
+██████████████████░░
+</code></pre></div>
+<p><strong>Mistral's open-source CLI coding assistant.</strong></p>
+<p>Mistral Vibe is a command-line coding assistant powered by Mistral's models. It provides a conversational interface to your codebase, allowing you to use natural language to explore, modify, and interact with your projects through a powerful set of tools.</p>
+<div><p>Warning</p><p>Mistral Vibe works on Windows, but we officially support and target UNIX environments.</p>
+</div>
+<p></p><h3>One-line install (recommended)</h3><a href="#one-line-install-recommended"></a><p></p>
+<p><strong>Linux and macOS</strong></p>
+<div><pre>curl -LsSf https://mistral.ai/vibe/install.sh <span>|</span> bash</pre></div>
+<p><strong>Windows</strong></p>
+<p>First, install uv</p>
+<div><pre>powershell -ExecutionPolicy ByPass -c <span><span>"</span>irm https://astral.sh/uv/install.ps1 | iex<span>"</span></span></pre></div>
+<p>Then, use uv command below.</p>
+<p></p><h3>Using uv</h3><a href="#using-uv"></a><p></p>
+<div><pre>uv tool install mistral-vibe</pre></div>
+<p></p><h3>Using pip</h3><a href="#using-pip"></a><p></p>
+<div><pre>pip install mistral-vibe</pre></div>
+<p></p><h2>Table of Contents</h2><a href="#table-of-contents"></a><p></p>
+<ul>
+<li><a href="#features">Features</a>
+<ul>
+<li><a href="#built-in-agents">Built-in Agents</a></li>
+<li><a href="#subagents-and-task-delegation">Subagents and Task Delegation</a></li>
+<li><a href="#interactive-user-questions">Interactive User Questions</a></li>
+</ul>
+</li>
+<li><a href="#terminal-requirements">Terminal Requirements</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#usage">Usage</a>
+<ul>
+<li><a href="#interactive-mode">Interactive Mode</a></li>
+<li><a href="#trust-folder-system">Trust Folder System</a></li>
+<li><a href="#programmatic-mode">Programmatic Mode</a></li>
+</ul>
+</li>
+<li><a href="#slash-commands">Slash Commands</a>
+<ul>
+<li><a href="#built-in-slash-commands">Built-in Slash Commands</a></li>
+<li><a href="#custom-slash-commands-via-skills">Custom Slash Commands via Skills</a></li>
+</ul>
+</li>
+<li><a href="#skills-system">Skills System</a>
+<ul>
+<li><a href="#creating-skills">Creating Skills</a></li>
+<li><a href="#skill-discovery">Skill Discovery</a></li>
+<li><a href="#managing-skills">Managing Skills</a></li>
+</ul>
+</li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#configuration-file-location">Configuration File Location</a></li>
+<li><a href="#api-key-configuration">API Key Configuration</a></li>
+<li><a href="#custom-system-prompts">Custom System Prompts</a></li>
+<li><a href="#custom-agent-configurations">Custom Agent Configurations</a></li>
+<li><a href="#tool-management">Tool Management</a></li>
+<li><a href="#mcp-server-configuration">MCP Server Configuration</a></li>
+<li><a href="#session-management">Session Management</a></li>
+<li><a href="#update-settings">Update Settings</a></li>
+<li><a href="#custom-vibe-home-directory">Custom Vibe Home Directory</a></li>
+</ul>
+</li>
+<li><a href="#editorsides">Editors/IDEs</a></li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<p></p><h2>Features</h2><a href="#features"></a><p></p>
+<ul>
+<li><strong>Interactive Chat</strong>: A conversational AI agent that understands your requests and breaks down complex tasks.</li>
+<li><strong>Powerful Toolset</strong>: A suite of tools for file manipulation, code searching, version control, and command execution, right from the chat prompt.
+<ul>
+<li>Read, write, and patch files (<code>read_file</code>, <code>write_file</code>, <code>search_replace</code>).</li>
+<li>Execute shell commands in a stateful terminal (<code>bash</code>).</li>
+<li>Recursively search code with <code>grep</code> (with <code>ripgrep</code> support).</li>
+<li>Manage a <code>todo</code> list to track the agent's work.</li>
+<li>Ask interactive questions to gather user input (<code>ask_user_question</code>).</li>
+<li>Delegate tasks to subagents for parallel work (<code>task</code>).</li>
+</ul>
+</li>
+<li><strong>Project-Aware Context</strong>: Vibe automatically scans your project's file structure and Git status to provide relevant context to the agent, improving its understanding of your codebase.</li>
+<li><strong>Advanced CLI Experience</strong>: Built with modern libraries for a smooth and efficient workflow.
+<ul>
+<li>Autocompletion for slash commands (<code>/</code>) and file paths (<code>@</code>).</li>
+<li>Persistent command history.</li>
+<li>Beautiful Themes.</li>
+</ul>
+</li>
+<li><strong>Highly Configurable</strong>: Customize models, providers, tool permissions, and UI preferences through a simple <code>config.toml</code> file.</li>
+<li><strong>Safety First</strong>: Features tool execution approval.</li>
+<li><strong>Multiple Built-in Agents</strong>: Choose from different agent profiles tailored for specific workflows.</li>
+</ul>
+<p></p><h3>Built-in Agents</h3><a href="#built-in-agents"></a><p></p>
+<p>Vibe comes with several built-in agent profiles, each designed for different use cases:</p>
+<ul>
+<li><strong><code>default</code></strong>: Standard agent that requires approval for tool executions. Best for general use.</li>
+<li><strong><code>plan</code></strong>: Read-only agent for exploration and planning. Auto-approves safe tools like <code>grep</code> and <code>read_file</code>.</li>
+<li><strong><code>accept-edits</code></strong>: Auto-approves file edits only (<code>write_file</code>, <code>search_replace</code>). Useful for code refactoring.</li>
+<li><strong><code>auto-approve</code></strong>: Auto-approves all tool executions. Use with caution.</li>
+</ul>
+<p>Use the <code>--agent</code> flag to select a different agent:</p>
+<div><pre>vibe --agent plan</pre></div>
+<p></p><h3>Subagents and Task Delegation</h3><a href="#subagents-and-task-delegation"></a><p></p>
+<p>Vibe supports subagents for delegating tasks. Subagents run independently and can perform specialized work without user interaction, preventing the context from being overloaded.</p>
+<p>The <code>task</code> tool allows the agent to delegate work to subagents:</p>
+<div><pre><code>&gt; Can you explore the codebase structure while I work on something else?
+
+🤖 I'll use the task tool to delegate this to the explore subagent.
+
+&gt; task(task="Analyze the project structure and architecture", agent="explore")
+</code></pre></div>
+<p>Create custom subagents by adding <code>agent_type = "subagent"</code> to your agent configuration. Vibe comes with a built-in subagent called <code>explore</code>, a read-only subagent for codebase exploration used internally for delegation.</p>
+<p></p><h3>Interactive User Questions</h3><a href="#interactive-user-questions"></a><p></p>
+<p>The <code>ask_user_question</code> tool allows the agent to ask you clarifying questions during its work. This enables more interactive and collaborative workflows.</p>
+<div><pre><code>&gt; Can you help me refactor this function?
+
+🤖 I need to understand your requirements better before proceeding.
+
+&gt; ask_user_question(questions=[{
+    "question": "What's the main goal of this refactoring?",
+    "options": [
+        {"label": "Performance", "description": "Make it run faster"},
+        {"label": "Readability", "description": "Make it easier to understand"},
+        {"label": "Maintainability", "description": "Make it easier to modify"}
+    ]
+}])
+</code></pre></div>
+<p>The agent can ask multiple questions at once, displayed as tabs. Each question supports 2-4 options plus an automatic "Other" option for free text responses.</p>
+<p></p><h2>Terminal Requirements</h2><a href="#terminal-requirements"></a><p></p>
+<p>Vibe's interactive interface requires a modern terminal emulator. Recommended terminal emulators include:</p>
+<ul>
+<li><strong>WezTerm</strong> (cross-platform)</li>
+<li><strong>Alacritty</strong> (cross-platform)</li>
+<li><strong>Ghostty</strong> (Linux and macOS)</li>
+<li><strong>Kitty</strong> (Linux and macOS)</li>
+</ul>
+<p>Most modern terminals should work, but older or minimal terminal emulators may have display issues.</p>
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<ol>
+<li>
+<p>Navigate to your project's root directory:</p>
+<div><pre><span>cd</span> /path/to/your/project</pre></div>
+</li>
+<li>
+<p>Run Vibe:</p>
+<div><pre>vibe</pre></div>
+</li>
+<li>
+<p>If this is your first time running Vibe, it will:</p>
+<ul>
+<li>Create a default configuration file at <code>~/.vibe/config.toml</code></li>
+<li>Prompt you to enter your API key if it's not already configured</li>
+<li>Save your API key to <code>~/.vibe/.env</code> for future use</li>
+</ul>
+<p>Alternatively, you can configure your API key separately using <code>vibe --setup</code>.</p>
+</li>
+<li>
+<p>Start interacting with the agent!</p>
+<div><pre><code>&gt; Can you find all instances of the word "TODO" in the project?
+
+🤖 The user wants to find all instances of "TODO". The `grep` tool is perfect for this. I will use it to search the current directory.
+
+&gt; grep(pattern="TODO", path=".")
+
+... (grep tool output) ...
+
+🤖 I found the following "TODO" comments in your project.
+</code></pre></div>
+</li>
+</ol>
+<p></p><h2>Usage</h2><a href="#usage"></a><p></p>
+<p></p><h3>Interactive Mode</h3><a href="#interactive-mode"></a><p></p>
+<p>Simply run <code>vibe</code> to enter the interactive chat loop.</p>
+<ul>
+<li><strong>Multi-line Input</strong>: Press <code>Ctrl+J</code> or <code>Shift+Enter</code> for select terminals to insert a newline.</li>
+<li><strong>File Paths</strong>: Reference files in your prompt using the <code>@</code> symbol for smart autocompletion (e.g., <code>&gt; Read the file @src/agent.py</code>).</li>
+<li><strong>Shell Commands</strong>: Prefix any command with <code>!</code> to execute it directly in your shell, bypassing the agent (e.g., <code>&gt; !ls -l</code>).</li>
+<li><strong>External Editor</strong>: Press <code>Ctrl+G</code> to edit your current input in an external editor.</li>
+<li><strong>Tool Output Toggle</strong>: Press <code>Ctrl+O</code> to toggle the tool output view.</li>
+<li><strong>Todo View Toggle</strong>: Press <code>Ctrl+T</code> to toggle the todo list view.</li>
+<li><strong>Auto-Approve Toggle</strong>: Press <code>Shift+Tab</code> to toggle auto-approve mode on/off.</li>
+</ul>
+<p>You can start Vibe with a prompt using the following command:</p>
+<div><pre>vibe <span><span>"</span>Refactor the main function in cli/main.py to be more modular.<span>"</span></span></pre></div>
+<p><strong>Note</strong>: The <code>--auto-approve</code> flag automatically approves all tool executions without prompting. In interactive mode, you can also toggle auto-approve on/off using <code>Shift+Tab</code>.</p>
+<p></p><h3>Trust Folder System</h3><a href="#trust-folder-system"></a><p></p>
+<p>Vibe includes a trust folder system to ensure you only run the agent in directories you trust. When you first run Vibe in a new directory which contains a <code>.vibe</code> subfolder, it may ask you to confirm whether you trust the folder.</p>
+<p>Trusted folders are remembered for future sessions. You can manage trusted folders through its configuration file <code>~/.vibe/trusted_folders.toml</code>.</p>
+<p>This safety feature helps prevent accidental execution in sensitive directories.</p>
+<p></p><h3>Programmatic Mode</h3><a href="#programmatic-mode"></a><p></p>
+<p>You can run Vibe non-interactively by piping input or using the <code>--prompt</code> flag. This is useful for scripting.</p>
+<div><pre>vibe --prompt <span><span>"</span>Refactor the main function in cli/main.py to be more modular.<span>"</span></span></pre></div>
+<p>By default, it uses <code>auto-approve</code> mode.</p>
+<p></p><h4>Programmatic Mode Options</h4><a href="#programmatic-mode-options"></a><p></p>
+<p>When using <code>--prompt</code>, you can specify additional options:</p>
+<ul>
+<li><strong><code>--max-turns N</code></strong>: Limit the maximum number of assistant turns. The session will stop after N turns.</li>
+<li><strong><code>--max-price DOLLARS</code></strong>: Set a maximum cost limit in dollars. The session will be interrupted if the cost exceeds this limit.</li>
+<li><strong><code>--enabled-tools TOOL</code></strong>: Enable specific tools. In programmatic mode, this disables all other tools. Can be specified multiple times. Supports exact names, glob patterns (e.g., <code>bash*</code>), or regex with <code>re:</code> prefix (e.g., <code>re:^serena_.*$</code>).</li>
+<li><strong><code>--output FORMAT</code></strong>: Set the output format. Options:
+<ul>
+<li><code>text</code> (default): Human-readable text output</li>
+<li><code>json</code>: All messages as JSON at the end</li>
+<li><code>streaming</code>: Newline-delimited JSON per message</li>
+</ul>
+</li>
+</ul>
+<p>Example:</p>
+<div><pre>vibe --prompt <span><span>"</span>Analyze the codebase<span>"</span></span> --max-turns 5 --max-price 1.0 --output json</pre></div>
+<p></p><h2>Slash Commands</h2><a href="#slash-commands"></a><p></p>
+<p>Use slash commands for meta-actions and configuration changes during a session.</p>
+<p></p><h3>Built-in Slash Commands</h3><a href="#built-in-slash-commands"></a><p></p>
+<p>Vibe provides several built-in slash commands. Use slash commands by typing them in the input box:</p>
+<div><pre><code>&gt; /help
+</code></pre></div>
+<p></p><h3>Custom Slash Commands via Skills</h3><a href="#custom-slash-commands-via-skills"></a><p></p>
+<p>You can define your own slash commands through the skills system. Skills are reusable components that extend Vibe's functionality.</p>
+<p>To create a custom slash command:</p>
+<ol>
+<li>Create a skill directory with a <code>SKILL.md</code> file</li>
+<li>Set <code>user-invocable = true</code> in the skill metadata</li>
+<li>Define the command logic in your skill</li>
+</ol>
+<p>Example skill metadata:</p>
+<div><pre><span>---</span>
+<span>name</span>: <span>my-skill</span>
+<span>description</span>: <span>My custom skill with slash commands</span>
+<span>user-invocable</span>: <span>true</span>
+<span>---</span></pre></div>
+<p>Custom slash commands appear in the autocompletion menu alongside built-in commands.</p>
+<p></p><h2>Skills System</h2><a href="#skills-system"></a><p></p>
+<p>Vibe's skills system allows you to extend functionality through reusable components. Skills can add new tools, slash commands, and specialized behaviors.</p>
+<p>Vibe follows the <a href="https://agentskills.io/specification">Agent Skills specification</a> for skill format and structure.</p>
+<p></p><h3>Creating Skills</h3><a href="#creating-skills"></a><p></p>
+<p>Skills are defined in directories with a <code>SKILL.md</code> file containing metadata in YAML frontmatter. For example, <code>~/.vibe/skills/code-review/SKILL.md</code>:</p>
+<div><pre><span>---</span>
+<span>name</span>: <span>code-review</span>
+<span>description</span>: <span>Perform automated code reviews</span>
+<span>license</span>: <span>MIT</span>
+<span>compatibility</span>: <span>Python 3.12+</span>
+<span>user-invocable</span>: <span>true</span>
+<span>allowed-tools</span>:
+  - <span>read_file</span>
+  - <span>grep</span>
+  - <span>ask_user_question</span>
+<span>---</span>
+
+<span># <span>Code Review Skill</span></span>
+
+This skill helps analyze code quality and suggest improvements.</pre></div>
+<p></p><h3>Skill Discovery</h3><a href="#skill-discovery"></a><p></p>
+<p>Vibe discovers skills from multiple locations:</p>
+<ol>
+<li><strong>Global skills directory</strong>: <code>~/.vibe/skills/</code></li>
+<li><strong>Local project skills</strong>: <code>.vibe/skills/</code> in your project</li>
+<li><strong>Custom paths</strong>: Configured in <code>config.toml</code></li>
+</ol>
+<div><pre><span>skill_paths</span> = [<span><span>"</span>/path/to/custom/skills<span>"</span></span>]</pre></div>
+<p></p><h3>Managing Skills</h3><a href="#managing-skills"></a><p></p>
+<p>Enable or disable skills using patterns in your configuration:</p>
+<div><pre><span><span>#</span> Enable specific skills</span>
+<span>enabled_skills</span> = [<span><span>"</span>code-review<span>"</span></span>, <span><span>"</span>test-*<span>"</span></span>]
+
+<span><span>#</span> Disable specific skills</span>
+<span>disabled_skills</span> = [<span><span>"</span>experimental-*<span>"</span></span>]</pre></div>
+<p>Skills support the same pattern matching as tools (exact names, glob patterns, and regex).</p>
+<p></p><h2>Configuration</h2><a href="#configuration"></a><p></p>
+<p></p><h3>Configuration File Location</h3><a href="#configuration-file-location"></a><p></p>
+<p>Vibe is configured via a <code>config.toml</code> file. It looks for this file first in <code>./.vibe/config.toml</code> and then falls back to <code>~/.vibe/config.toml</code>.</p>
+<p></p><h3>API Key Configuration</h3><a href="#api-key-configuration"></a><p></p>
+<p>To use Vibe, you'll need a Mistral API key. You can obtain one by signing up at <a href="https://console.mistral.ai/">https://console.mistral.ai</a>.</p>
+<p>You can configure your API key using <code>vibe --setup</code>, or through one of the methods below.</p>
+<p>Vibe supports multiple ways to configure your API keys:</p>
+<ol>
+<li>
+<p><strong>Interactive Setup (Recommended for first-time users)</strong>: When you run Vibe for the first time or if your API key is missing, Vibe will prompt you to enter it. The key will be securely saved to <code>~/.vibe/.env</code> for future sessions.</p>
+</li>
+<li>
+<p><strong>Environment Variables</strong>: Set your API key as an environment variable:</p>
+<div><pre><span>export</span> MISTRAL_API_KEY=<span><span>"</span>your_mistral_api_key<span>"</span></span></pre></div>
+</li>
+<li>
+<p><strong><code>.env</code> File</strong>: Create a <code>.env</code> file in <code>~/.vibe/</code> and add your API keys:</p>
+<div><pre>MISTRAL_API_KEY=your_mistral_api_key</pre></div>
+<p>Vibe automatically loads API keys from <code>~/.vibe/.env</code> on startup. Environment variables take precedence over the <code>.env</code> file if both are set.</p>
+</li>
+</ol>
+<p><strong>Note</strong>: The <code>.env</code> file is specifically for API keys and other provider credentials. General Vibe configuration should be done in <code>config.toml</code>.</p>
+<p></p><h3>Custom System Prompts</h3><a href="#custom-system-prompts"></a><p></p>
+<p>You can create custom system prompts to replace the default one (<code>prompts/cli.md</code>). Create a markdown file in the <code>~/.vibe/prompts/</code> directory with your custom prompt content.</p>
+<p>To use a custom system prompt, set the <code>system_prompt_id</code> in your configuration to match the filename (without the <code>.md</code> extension):</p>
+<div><pre><span><span>#</span> Use a custom system prompt</span>
+<span>system_prompt_id</span> = <span><span>"</span>my_custom_prompt<span>"</span></span></pre></div>
+<p>This will load the prompt from <code>~/.vibe/prompts/my_custom_prompt.md</code>.</p>
+<p></p><h3>Custom Agent Configurations</h3><a href="#custom-agent-configurations"></a><p></p>
+<p>You can create custom agent configurations for specific use cases (e.g., red-teaming, specialized tasks) by adding agent-specific TOML files in the <code>~/.vibe/agents/</code> directory.</p>
+<p>To use a custom agent, run Vibe with the <code>--agent</code> flag:</p>
+<div><pre>vibe --agent my_custom_agent</pre></div>
+<p>Vibe will look for a file named <code>my_custom_agent.toml</code> in the agents directory and apply its configuration.</p>
+<p>Example custom agent configuration (<code>~/.vibe/agents/redteam.toml</code>):</p>
+<div><pre><span><span>#</span> Custom agent configuration for red-teaming</span>
+<span>active_model</span> = <span><span>"</span>devstral-2<span>"</span></span>
+<span>system_prompt_id</span> = <span><span>"</span>redteam<span>"</span></span>
+
+<span><span>#</span> Disable some tools for this agent</span>
+<span>disabled_tools</span> = [<span><span>"</span>search_replace<span>"</span></span>, <span><span>"</span>write_file<span>"</span></span>]
+
+<span><span>#</span> Override tool permissions for this agent</span>
+[<span>tools</span>.<span>bash</span>]
+<span>permission</span> = <span><span>"</span>always<span>"</span></span>
+
+[<span>tools</span>.<span>read_file</span>]
+<span>permission</span> = <span><span>"</span>always<span>"</span></span></pre></div>
+<p>Note: This implies that you have set up a redteam prompt named <code>~/.vibe/prompts/redteam.md</code>.</p>
+<p></p><h3>Tool Management</h3><a href="#tool-management"></a><p></p>
+<p></p><h4>Enable/Disable Tools with Patterns</h4><a href="#enabledisable-tools-with-patterns"></a><p></p>
+<p>You can control which tools are active using <code>enabled_tools</code> and <code>disabled_tools</code>.
+These fields support exact names, glob patterns, and regular expressions.</p>
+<p>Examples:</p>
+<div><pre><span><span>#</span> Only enable tools that start with "serena_" (glob)</span>
+<span>enabled_tools</span> = [<span><span>"</span>serena_*<span>"</span></span>]
+
+<span><span>#</span> Regex (prefix with re:) — matches full tool name (case-insensitive)</span>
+<span>enabled_tools</span> = [<span><span>"</span>re:^serena_.*$<span>"</span></span>]
+
+<span><span>#</span> Disable a group with glob; everything else stays enabled</span>
+<span>disabled_tools</span> = [<span><span>"</span>mcp_*<span>"</span></span>, <span><span>"</span>grep<span>"</span></span>]</pre></div>
+<p>Notes:</p>
+<ul>
+<li>MCP tool names use underscores, e.g., <code>serena_list</code> not <code>serena.list</code>.</li>
+<li>Regex patterns are matched against the full tool name using fullmatch.</li>
+</ul>
+<p></p><h3>MCP Server Configuration</h3><a href="#mcp-server-configuration"></a><p></p>
+<p>You can configure MCP (Model Context Protocol) servers to extend Vibe's capabilities. Add MCP server configurations under the <code>mcp_servers</code> section:</p>
+<div><pre><span><span>#</span> Example MCP server configurations</span>
+[[<span>mcp_servers</span>]]
+<span>name</span> = <span><span>"</span>my_http_server<span>"</span></span>
+<span>transport</span> = <span><span>"</span>http<span>"</span></span>
+<span>url</span> = <span><span>"</span>http://localhost:8000<span>"</span></span>
+<span>headers</span> = { <span>"Authorization"</span> = <span><span>"</span>Bearer my_token<span>"</span></span> }
+<span>api_key_env</span> = <span><span>"</span>MY_API_KEY_ENV_VAR<span>"</span></span>
+<span>api_key_header</span> = <span><span>"</span>Authorization<span>"</span></span>
+<span>api_key_format</span> = <span><span>"</span>Bearer {token}<span>"</span></span>
+
+[[<span>mcp_servers</span>]]
+<span>name</span> = <span><span>"</span>my_streamable_server<span>"</span></span>
+<span>transport</span> = <span><span>"</span>streamable-http<span>"</span></span>
+<span>url</span> = <span><span>"</span>http://localhost:8001<span>"</span></span>
+<span>headers</span> = { <span>"X-API-Key"</span> = <span><span>"</span>my_api_key<span>"</span></span> }
+
+[[<span>mcp_servers</span>]]
+<span>name</span> = <span><span>"</span>fetch_server<span>"</span></span>
+<span>transport</span> = <span><span>"</span>stdio<span>"</span></span>
+<span>command</span> = <span><span>"</span>uvx<span>"</span></span>
+<span>args</span> = [<span><span>"</span>mcp-server-fetch<span>"</span></span>]
+<span>env</span> = { <span>"DEBUG"</span> = <span><span>"</span>1<span>"</span></span>, <span>"LOG_LEVEL"</span> = <span><span>"</span>info<span>"</span></span> }</pre></div>
+<p>Supported transports:</p>
+<ul>
+<li><code>http</code>: Standard HTTP transport</li>
+<li><code>streamable-http</code>: HTTP transport with streaming support</li>
+<li><code>stdio</code>: Standard input/output transport (for local processes)</li>
+</ul>
+<p>Key fields:</p>
+<ul>
+<li><code>name</code>: A short alias for the server (used in tool names)</li>
+<li><code>transport</code>: The transport type</li>
+<li><code>url</code>: Base URL for HTTP transports</li>
+<li><code>headers</code>: Additional HTTP headers</li>
+<li><code>api_key_env</code>: Environment variable containing the API key</li>
+<li><code>command</code>: Command to run for stdio transport</li>
+<li><code>args</code>: Additional arguments for stdio transport</li>
+<li><code>startup_timeout_sec</code>: Timeout in seconds for the server to start and initialize (default 10s)</li>
+<li><code>tool_timeout_sec</code>: Timeout in seconds for tool execution (default 60s)</li>
+<li><code>env</code>: Environment variables to set for the MCP server of transport type stdio</li>
+</ul>
+<p>MCP tools are named using the pattern <code>{server_name}_{tool_name}</code> and can be configured with permissions like built-in tools:</p>
+<div><pre><span><span>#</span> Configure permissions for specific MCP tools</span>
+[<span>tools</span>.<span>fetch_server_get</span>]
+<span>permission</span> = <span><span>"</span>always<span>"</span></span>
+
+[<span>tools</span>.<span>my_http_server_query</span>]
+<span>permission</span> = <span><span>"</span>ask<span>"</span></span></pre></div>
+<p>MCP server configurations support additional features:</p>
+<ul>
+<li><strong>Environment variables</strong>: Set environment variables for MCP servers</li>
+<li><strong>Custom timeouts</strong>: Configure startup and tool execution timeouts</li>
+</ul>
+<p>Example with environment variables and timeouts:</p>
+<div><pre>[[<span>mcp_servers</span>]]
+<span>name</span> = <span><span>"</span>my_server<span>"</span></span>
+<span>transport</span> = <span><span>"</span>http<span>"</span></span>
+<span>url</span> = <span><span>"</span>http://localhost:8000<span>"</span></span>
+<span>env</span> = { <span>"DEBUG"</span> = <span><span>"</span>1<span>"</span></span>, <span>"LOG_LEVEL"</span> = <span><span>"</span>info<span>"</span></span> }
+<span>startup_timeout_sec</span> = <span>15</span>
+<span>tool_timeout_sec</span> = <span>120</span></pre></div>
+<p></p><h3>Session Management</h3><a href="#session-management"></a><p></p>
+<p></p><h4>Session Continuation and Resumption</h4><a href="#session-continuation-and-resumption"></a><p></p>
+<p>Vibe supports continuing from previous sessions:</p>
+<ul>
+<li><strong><code>--continue</code></strong> or <strong><code>-c</code></strong>: Continue from the most recent saved session</li>
+<li><strong><code>--resume SESSION_ID</code></strong>: Resume a specific session by ID (supports partial matching)</li>
+</ul>
+<div><pre><span><span>#</span> Continue from last session</span>
+vibe --continue
+
+<span><span>#</span> Resume specific session</span>
+vibe --resume abc123</pre></div>
+<p>Session logging must be enabled in your configuration for these features to work.</p>
+<p></p><h4>Working Directory Control</h4><a href="#working-directory-control"></a><p></p>
+<p>Use the <code>--workdir</code> option to specify a working directory:</p>
+<div><pre>vibe --workdir /path/to/project</pre></div>
+<p>This is useful when you want to run Vibe from a different location than your current directory.</p>
+<p></p><h3>Update Settings</h3><a href="#update-settings"></a><p></p>
+<p></p><h4>Auto-Update</h4><a href="#auto-update"></a><p></p>
+<p>Vibe includes an automatic update feature that keeps your installation current. This is enabled by default.</p>
+<p>To disable auto-updates, add this to your <code>config.toml</code>:</p>
+<div><pre><span>enable_auto_update</span> = <span>false</span></pre></div>
+<p></p><h3>Custom Vibe Home Directory</h3><a href="#custom-vibe-home-directory"></a><p></p>
+<p>By default, Vibe stores its configuration in <code>~/.vibe/</code>. You can override this by setting the <code>VIBE_HOME</code> environment variable:</p>
+<div><pre><span>export</span> VIBE_HOME=<span><span>"</span>/path/to/custom/vibe/home<span>"</span></span></pre></div>
+<p>This affects where Vibe looks for:</p>
+<ul>
+<li><code>config.toml</code> - Main configuration</li>
+<li><code>.env</code> - API keys</li>
+<li><code>agents/</code> - Custom agent configurations</li>
+<li><code>prompts/</code> - Custom system prompts</li>
+<li><code>tools/</code> - Custom tools</li>
+<li><code>logs/</code> - Session logs</li>
+</ul>
+<p></p><h2>Editors/IDEs</h2><a href="#editorsides"></a><p></p>
+<p>Mistral Vibe can be used in text editors and IDEs that support <a href="https://agentclientprotocol.com/overview/clients">Agent Client Protocol</a>. See the <a href="https://github.com/mistralai/mistral-vibe/blob/main/docs/acp-setup.md">ACP Setup documentation</a> for setup instructions for various editors and IDEs.</p>
+<p></p><h2>Resources</h2><a href="#resources"></a><p></p>
+<ul>
+<li><a href="https://github.com/mistralai/mistral-vibe/blob/main/CHANGELOG.md">CHANGELOG</a> - See what's new in each version</li>
+<li><a href="https://github.com/mistralai/mistral-vibe/blob/main/CONTRIBUTING.md">CONTRIBUTING</a> - Guidelines for feature requests, feedback and bug reports</li>
+</ul>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>Copyright 2025 Mistral AI</p>
+<p>Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at</p>
+<div><pre><code>http://www.apache.org/licenses/LICENSE-2.0
+</code></pre></div>
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the <a href="https://github.com/mistralai/mistral-vibe/blob/main/LICENSE">LICENSE</a> file for the full license text.</p>
+</article></div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - logtide-dev/logtide: 🛡️ Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - logtide-dev/logtide: 🛡️ Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/logtide-dev/logtide" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article>
+<br />
+<blockquote>
+<p><strong>⚠️ ALPHA RELEASE:</strong> LogTide is currently in active Alpha.
+The Cloud version is <strong>100% FREE</strong> for early adopters. We are looking for feedback to improve stability!</p>
+</blockquote>
+<blockquote>
+<p><strong>📢 Rebranded:</strong> LogTide was previously known as LogWard. We changed our name due to a trademark conflict. <a href="https://github.com/orgs/logtide-dev/discussions/81">Read more about the rebrand</a>.</p>
+</blockquote>
+<hr />
+<p></p><h2>👋 What is LogTide?</h2><a href="#-what-is-logtide"></a><p></p>
+<p>LogTide is an open-source alternative to Datadog, Splunk, and ELK.
+Designed for developers and European SMBs who need <strong>GDPR compliance</strong>, <strong>data ownership</strong>, and <strong>simplicity</strong> without the complexity of managing an ElasticSearch cluster.</p>
+<p></p><h3>Why LogTide?</h3><a href="#why-logtide"></a><p></p>
+<ul>
+<li>🇪🇺 <strong>GDPR Friendly:</strong> Keep data on your servers or use our EU-based cloud.</li>
+<li>⚡ <strong>Lightweight:</strong> Built on <strong>TimescaleDB</strong> &amp; <strong>Fastify</strong> (low RAM usage compared to Java stacks).</li>
+<li>🚀 <strong>Developer Experience:</strong> 5-minute setup with Docker. Native SDKs.</li>
+<li>💰 <strong>Cost Effective:</strong> Self-host for free.</li>
+</ul>
+<hr />
+<p></p><h2>📸 Screenshots</h2><a href="#-screenshots"></a><p></p>
+<p></p><h3>Logs Explorer</h3><a href="#logs-explorer"></a><p></p>
+<p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/logs.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/logs.png" alt="LogTide Logs" /></a></p>
+<p></p><h3>Distributed Tracing</h3><a href="#distributed-tracing"></a><p></p>
+<p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/traces.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/traces.png" alt="LogTide Traces" /></a></p>
+<p></p><h3>Error Groups</h3><a href="#error-groups"></a><p></p>
+<p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/errors.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/errors.png" alt="LogTide Errors" /></a></p>
+<p></p><h3>SIEM Dashboard</h3><a href="#siem-dashboard"></a><p></p>
+<p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/security.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/security.png" alt="LogTide Security" /></a></p>
+<p></p><h3>Alerts &amp; Notifications</h3><a href="#alerts--notifications"></a><p></p>
+<p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/alerts.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/alerts.png" alt="LogTide Alerts" /></a></p>
+<hr />
+<p></p><h2>🚀 Quick Start</h2><a href="#-quick-start"></a><p></p>
+<p>Choose how you want to use LogTide.</p>
+<p></p><h3>Option A: Cloud (Fastest &amp; Free)</h3><a href="#option-a-cloud-fastest--free"></a><p></p>
+<p>We host it for you. Perfect for testing and small projects. <strong>Currently Free.</strong></p>
+<ol>
+<li><strong>Sign up:</strong> Go to <a href="https://logtide.dev/"><strong>logtide.dev</strong></a>.</li>
+<li><strong>Create Project:</strong> Create an organization and a project.</li>
+<li><strong>Get API Key:</strong> Copy your project-scoped API Key.</li>
+<li><strong>Send a Log:</strong>
+<div><pre>curl -X POST https://api.logtide.dev/api/v1/ingest \
+  -H <span><span>"</span>X-API-Key: YOUR_API_KEY<span>"</span></span> \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{ "logs": [{ "service": "test", "level": "info", "message": "Hello Cloud!" }] }<span>'</span></span></pre></div>
+</li>
+</ol>
+<p></p><h3>Option B: Self-Hosted (Docker)</h3><a href="#option-b-self-hosted-docker"></a><p></p>
+<p>Total control over your data. <strong>No build required</strong> - uses pre-built images from Docker Hub.</p>
+<p><strong>Prerequisites:</strong> Docker &amp; Docker Compose.</p>
+<ol>
+<li>
+<p><strong>Download configuration</strong></p>
+<div><pre>mkdir logtide <span>&amp;&amp;</span> <span>cd</span> logtide
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/docker-compose.yml
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/.env.example
+mv .env.example .env</pre></div>
+</li>
+<li>
+<p><strong>Edit <code>.env</code></strong> with secure passwords</p>
+<div><pre>nano .env</pre></div>
+<p>Required variables:</p>
+<div><pre>DB_PASSWORD=your_secure_db_password
+REDIS_PASSWORD=your_secure_redis_password  <span><span>#</span> optional since v0.5.0</span>
+API_KEY_SECRET=your_32_character_secret_key_here</pre></div>
+</li>
+<li>
+<p><strong>Start the stack</strong></p>
+<div><pre>docker compose up -d</pre></div>
+</li>
+<li>
+<p><strong>Access LogTide</strong></p>
+<ul>
+<li><strong>Frontend:</strong> <code>http://localhost:3000</code></li>
+<li><strong>API:</strong> <code>http://localhost:8080</code></li>
+<li><strong>First Time?</strong> Click "Sign up" to create your account</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> Database migrations run automatically on first start.</p>
+</blockquote>
+<ol>
+<li><strong>(Optional) Enable Docker log collection with Fluent Bit</strong>
+<div><pre><span><span>#</span> Download Fluent Bit configuration files</span>
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/fluent-bit.conf
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/parsers.conf
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/extract_container_id.lua
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/wrap_logs.lua
+curl -O https://raw.githubusercontent.com/logtide-dev/logtide/main/docker/map_syslog_level.lua
+
+<span><span>#</span> Set your LogTide API key in .env</span>
+<span>echo</span> <span><span>"</span>FLUENT_BIT_API_KEY=your_api_key_here<span>"</span></span> <span>&gt;&gt;</span> .env
+
+<span><span>#</span> Start with logging profile</span>
+docker compose --profile logging up -d</pre></div>
+</li>
+</ol>
+<p><strong>Docker Images:</strong> <a href="https://hub.docker.com/r/logtide/backend">Docker Hub</a> | <a href="https://github.com/logtide-dev/logtide/pkgs/container/logtide-backend">GitHub Container Registry</a></p>
+<blockquote>
+<p><strong>Production:</strong> Pin versions with <code>LOGTIDE_BACKEND_IMAGE=logtide/backend:0.6.1</code> in your <code>.env</code> file.</p>
+</blockquote>
+<blockquote>
+<p><strong>ARM64 / Raspberry Pi:</strong> LogTide images support <code>linux/amd64</code> and <code>linux/arm64</code>. For Fluent Bit on ARM64, set <code>FLUENT_BIT_IMAGE=cr.fluentbit.io/fluent/fluent-bit:4.2.2</code> in your <code>.env</code> file.</p>
+</blockquote>
+<blockquote>
+<p><strong>Horizontal Scaling:</strong> For scaling multiple backend instances, see <a href="https://logtide.dev/docs/deployment#horizontal-scaling">deployment docs</a>.</p>
+</blockquote>
+<p></p><h3>Option C: Kubernetes (Helm)</h3><a href="#option-c-kubernetes-helm"></a><p></p>
+<p>Deploy LogTide on any Kubernetes cluster with our official Helm chart.</p>
+<p><strong>Prerequisites:</strong> Kubernetes 1.25+, Helm 3.10+</p>
+<ol>
+<li>
+<p><strong>Add the Helm repository</strong></p>
+<div><pre>helm repo add logtide https://logtide-dev.github.io/logtide-helm-chart
+helm repo update</pre></div>
+</li>
+<li>
+<p><strong>Install LogTide</strong></p>
+<div><pre>helm install logtide logtide/logtide \
+  --namespace logtide \
+  --create-namespace \
+  --set timescaledb.auth.password=<span>&lt;</span>your-db-password<span>&gt;</span> \
+  --set redis.auth.password=<span>&lt;</span>your-redis-password<span>&gt;</span></pre></div>
+</li>
+<li>
+<p><strong>Access LogTide</strong></p>
+<div><pre>kubectl port-forward svc/logtide-frontend 3000:3000 -n logtide</pre></div>
+<p>Open <code>http://localhost:3000</code></p>
+</li>
+</ol>
+<p><strong>Includes:</strong> Backend (2+ replicas), Frontend, Worker, TimescaleDB, Redis, HPA, Ingress support, Prometheus monitoring.</p>
+<blockquote>
+<p><strong>Helm Chart:</strong> <a href="https://artifacthub.io/packages/helm/logtide/logtide">Artifact Hub</a> | <a href="https://github.com/logtide-dev/logtide-helm-chart">GitHub</a> | <a href="https://logtide.dev/docs/deployment#kubernetes">Full Docs</a></p>
+</blockquote>
+<hr />
+<p></p><h2>📦 SDKs &amp; Integrations</h2><a href="#-sdks--integrations"></a><p></p>
+<p>We have ready-to-use SDKs for the most popular languages.</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Status</th>
+<th>Package / Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Node.js</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://www.npmjs.com/package/@logtide/sdk-node"><code>@logtide/sdk-node</code></a></td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://pypi.org/project/logtide-sdk/"><code>logtide-sdk</code></a></td>
+</tr>
+<tr>
+<td><strong>Go</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://github.com/logtide-dev/logtide-sdk-go"><code>logtide-sdk-go</code></a></td>
+</tr>
+<tr>
+<td><strong>PHP</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://packagist.org/packages/logtide-dev/sdk-php"><code>logtide-dev/sdk-php</code></a></td>
+</tr>
+<tr>
+<td><strong>Kotlin</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://github.com/logtide-dev/logtide-sdk-kotlin"><code>logtide-sdk-kotlin</code></a></td>
+</tr>
+<tr>
+<td><strong>C# / .NET</strong></td>
+<td>✅ Ready</td>
+<td><a href="https://github.com/logtide-dev/lgoward-sdk-csharp"><code>LogTide.SDK</code></a></td>
+</tr>
+<tr>
+<td><strong>Docker</strong></td>
+<td>✅ Ready</td>
+<td>Use Fluent Bit / Syslog driver</td>
+</tr>
+<tr>
+<td><strong>HTTP</strong></td>
+<td>✅ Ready</td>
+<td><a href="#">API Reference</a></td>
+</tr>
+<tr>
+<td><strong>OpenTelemetry</strong></td>
+<td>✅ Ready</td>
+<td>OTLP endpoint (logs + traces)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>✨ Features available in Alpha</h2><a href="#-features-available-in-alpha"></a><p></p>
+<ul>
+<li>✅ <strong>High-Performance Ingestion:</strong> Batch API handling thousands of logs/sec.</li>
+<li>✅ <strong>Real-time Live Tail:</strong> See logs as they arrive via Server-Sent Events (SSE).</li>
+<li>✅ <strong>Powerful Search:</strong> Filter by service, level, time range. Two search modes: <strong>Full-text</strong> (word-based with stemming) and <strong>Substring</strong> (find text anywhere in messages, e.g., find "bluez" in "spa.bluez5.native").</li>
+<li>✅ <strong>Multi-Organization:</strong> Isolate teams and projects strictly.</li>
+<li>✅ <strong>Alerting:</strong> Get notified via Email or Webhook (Slack/Discord) on error spikes.</li>
+<li>✅ <strong>Retention Policy:</strong> Automatic cleanup of old logs via TimescaleDB.</li>
+<li>✅ <strong>Sigma Rules Detection:</strong> Built-in engine to run security detection rules (YAML) against your logs for threat detection.</li>
+<li>✅ <strong>SIEM Dashboard:</strong> Security dashboard with incident management, MITRE ATT&amp;CK mapping, and PDF report export.</li>
+<li>✅ <strong>OpenTelemetry Support:</strong> Native OTLP ingestion for logs and traces (protobuf + JSON).</li>
+<li>✅ <strong>Distributed Tracing:</strong> Trace viewer with span timeline, service dependencies graph, and trace-to-logs correlation.</li>
+<li>✅ <strong>Redis Optional:</strong> Run without Redis using PostgreSQL-based alternatives for simpler deployments. <em>(New in 0.5.0)</em></li>
+<li>✅ <strong>Detection Packs:</strong> Pre-configured Sigma rule bundles for common security use cases. <em>(New in 0.5.0)</em></li>
+<li>✅ <strong>Event Correlation:</strong> Link related logs by <code>request_id</code>, <code>trace_id</code>, <code>user_id</code>, or custom fields. <em>(New in 0.5.0)</em></li>
+<li>✅ <strong>Alert Preview:</strong> Test alert rules against historical data before enabling them. <em>(New in 0.5.0)</em></li>
+</ul>
+<hr />
+<p></p><h2>🛡️ Security &amp; Sigma Rules</h2><a href="#️-security--sigma-rules"></a><p></p>
+<p>LogTide goes beyond simple monitoring by transforming your logs into a security advantage. We support <strong>Sigma Rules</strong>, the industry-standard format for describing log signatures.</p>
+<ul>
+<li><strong>Threat Detection:</strong> Automatically detect suspicious activities (e.g., SSH brute force, clearing of history, web shells).</li>
+<li><strong>Standard Format:</strong> Write rules in standard YAML or import existing ones from the <a href="https://github.com/SigmaHQ/sigma">Sigma community</a>.</li>
+<li><strong>Real-time Matching:</strong> Rules are evaluated against incoming logs in real-time.</li>
+</ul>
+<p><strong>Example Rule (Detecting History Clear):</strong></p>
+<div><pre><span>title</span>: <span>Clear Command History</span>
+<span>status</span>: <span>stable</span>
+<span>logsource</span>:
+    <span>product</span>: <span>linux</span>
+<span>detection</span>:
+    <span>selection</span>:
+        <span>command</span>:
+            - <span><span>'</span>history -c<span>'</span></span>
+            - <span><span>'</span>cat /dev/null &gt; ~/.bash_history<span>'</span></span>
+    <span>condition</span>: <span>selection</span>
+<span>level</span>: <span>high</span></pre></div>
+<hr />
+<p></p><h2>🚨 SIEM Dashboard &amp; Incident Management (New in 0.3.0)</h2><a href="#-siem-dashboard--incident-management-new-in-030"></a><p></p>
+<p>LogTide now includes a full-featured <strong>Security Information and Event Management (SIEM)</strong> dashboard, turning your log platform into a lightweight security operations center.</p>
+<p></p><h3>Security Dashboard</h3><a href="#security-dashboard"></a><p></p>
+<ul>
+<li><strong>Summary Stats:</strong> Total detections, open incidents, critical alerts at a glance</li>
+<li><strong>Top Threats Chart:</strong> Sigma rules ranked by detection count</li>
+<li><strong>Detection Timeline:</strong> Time-series visualization of security events</li>
+<li><strong>Affected Services:</strong> Quick view of which services triggered detections</li>
+<li><strong>Severity Distribution:</strong> Pie chart breakdown (Critical/High/Medium/Low)</li>
+<li><strong>MITRE ATT&amp;CK Heatmap:</strong> Visualize detected techniques across the ATT&amp;CK matrix</li>
+</ul>
+<p></p><h3>Incident Management</h3><a href="#incident-management"></a><p></p>
+<ul>
+<li><strong>Incident Workflow:</strong> Track incidents through Open → Investigating → Resolved → False Positive</li>
+<li><strong>Comments &amp; Collaboration:</strong> Add notes and discuss incidents with your team</li>
+<li><strong>Activity Timeline:</strong> Full audit trail of all status changes and actions</li>
+<li><strong>Detection Events:</strong> View matched fields and log context for each detection</li>
+<li><strong>PDF Export:</strong> Generate incident reports for compliance and documentation</li>
+</ul>
+<hr />
+<p></p><h2>🏗️ Tech Stack</h2><a href="#️-tech-stack"></a><p></p>
+<p>We use modern, type-safe tools to ensure performance and maintainability.</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>SvelteKit 5 (Runes) + TailwindCSS + shadcn-svelte</td>
+</tr>
+<tr>
+<td><strong>Backend</strong></td>
+<td>Fastify + TypeScript + Kysely ORM</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>PostgreSQL 16 + TimescaleDB (Time-series optimization)</td>
+</tr>
+<tr>
+<td><strong>Queue</strong></td>
+<td>Redis 7 + BullMQ (or PostgreSQL + graphile-worker)</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Docker + Docker Compose</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>📄 License</h2><a href="#-license"></a><p></p>
+<p>Distributed under the <strong>GNU AGPLv3</strong> License. See <code>LICENSE</code> for more information.</p>
+<ul>
+<li><strong>Free for Internal Use:</strong> You can use LogTide internally for free.</li>
+<li><strong>Open Source:</strong> The code is available for audit and contribution.</li>
+<li><strong>Commercial Protection:</strong> If you offer LogTide as a SaaS (Service) to others, you must release your source code or purchase a Commercial License.</li>
+</ul>
+<hr />
+
+</article></div></div>
+  </div>
+</body>
+</html>

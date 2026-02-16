@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>SSHStalker : Flare révèle un botnet Linux mêlant tactiques de piratage « à l’ancienne » et automatisation de masse moderne | UnderNews</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>SSHStalker : Flare révèle un botnet Linux mêlant tactiques de piratage « à l’ancienne » et automatisation de masse moderne | UnderNews</h1>
+  <div class="metadata">
+    Source: UnderNews | Date: 2/12/2026 | Lang: FR |
+    <a href="https://www.undernews.fr/undernews/sshstalker-flare-revele-un-botnet-linux-melant-tactiques-de-piratage-a-lancienne-et-automatisation-de-masse-moderne.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            
+            <p><strong>L’équipe de recherche de Flare, leader du Threat Exposure Management, a annoncé la découverte d’une opération de botnet Linux jusqu’ici non documentée, baptisée « SSHStalker ». Ce réseau malveillant se distingue par un mélange surprenant de méthodes de commande et de contrôle (C2) héritées de 2009 et d’une automatisation de compromission de masse à la pointe de la technologie. </strong><em>Tribune.</em></p>
+<h2>Une infrastructure hybride : entre « old school » et modernité</h2>
+<p>Contrairement aux menaces contemporaines qui misent sur la sophistication furtive, SSHStalker repose sur l’architecture robuste et peu coûteuse de l’Internet Relay Chat (IRC) pour piloter ses bots. L’analyse de Flare révèle que ce botnet utilise des variantes classiques de malware (en C, Perl, Tsunami, Keiten) pour assurer la redondance de ses canaux de communication.</p>
+<p>Malgré ces méthodes en apparence rétro, son exécution est redoutable. Le botnet utilise un pipeline automatisé qui enchaîne un scanner SSH (développé en Golang) avec une installation rapide d’outils de compilation (GCC) pour générer et exécuter des binaires directement sur les hôtes infectés.</p>
+<h3>Une résilience exceptionnelle et une persistance implacable</h3>
+<p>L’une des caractéristiques les plus marquantes de SSHStalker est sa capacité de récupération. Le kit déploie un système de surveillance (watchdog) via des tâches cron exécutées chaque minute. Si un processus malveillant est interrompu par un défenseur, le bot se relance automatiquement en moins de 60 secondes. Pour masquer son activité sur les canaux IRC, le botnet utilise le framework EnergyMech pour générer du camouflage comportemental : un « bruit » de fond constitué de phrases aléatoires simulant une activité humaine.</p>
+<h3>7 000 cibles identifiées et une menace sur l’infrastructure « oubliée »</h3>
+<p>Les recherches de Flare ont permis d’identifier près de 7 000 résultats issus d’un scanner SSH en janvier 2026, principalement associés à des fournisseurs de cloud comme Oracle Cloud Infrastructure. SSHStalker dispose d’un arsenal impressionnant de 81 artefacts d’exploitation couvrant 16 CVE distinctes ciblant principalement les noyaux Linux 2.6.x (datant de 2009-2010). Si ces vulnérabilités sont obsolètes pour les systèmes modernes, Flare estime qu’elles menacent encore 1 % à 3 % des serveurs Linux exposés sur Internet, une proportion qui monte à 5 % à 10 % dans les environnements hérités (legacy), les appareils industriels et les serveurs VPS abandonnés.</p>
+<h4>Capacités offensives et origine probable</h4>
+<p>SSHStalker a été observé dans une phase de « persistance dormante » sans impact immédiat, mais son arsenal est complet :</p>
+<ul>
+<li>Minage de cryptomonnaies (vraisemblablement Ethereum Classic) vers des portefeuilles spécifiques</li>
+<li>Collecte d’identifiants AWS via un scanner HTTP/HTTPS ciblant plus de 33 000 chemins de fichiers</li>
+<li>Attaques DDoS et capacités de ver informatique pour une propagation autonome</li>
+</ul>
+<p>SSHStalker présente des similitudes structurelles avec les botnets historiques Outlaw ou Maxlas; toutefois, Flare n’a trouvé aucun indicateur technique direct (hashs ou noms de fichiers identiques) permettant une attribution formelle. La présence massive d’argot, de pseudonymes et de commentaires roumains dans le code suggère néanmoins fortement un opérateur dérivé ou un « copycat » issu de cet écosystème.</p>
+<p>Flare recommande aux administrateurs système de surveiller tout usage inhabituel de compilateurs (GCC, make) sur les serveurs de production, de bloquer les connexions IRC sortantes non justifiées et de désactiver l’authentification par mot de passe SSH au profit d’une authentification par clé.</p>
+        </div></div>
+  </div>
+</body>
+</html>

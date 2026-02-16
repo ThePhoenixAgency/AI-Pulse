@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Multiples vulnérabilités dans les produits Intel</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Multiples vulnérabilités dans les produits Intel</h1>
+  <div class="metadata">
+    Source: CERT-FR | Date: 2/11/2026 | Lang: FR |
+    <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0148/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+    
+      <section>
+  
+    <div>
+      
+      
+        <p><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0148/json/">
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+  </a>
+</p>
+      
+    </div>
+
+    
+
+
+
+
+    <div>
+      <p>
+        </p><h2>Avis du CERT-FR</h2>
+        <hr />
+      <p></p>
+    </div>
+    
+    
+    <div>
+  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+</div>
+  
+</section>
+      <div>
+      
+
+        
+          <h2>Risques</h2>
+        
+
+        <ul>
+          
+            <li>Atteinte à la confidentialité des données</li>
+          
+            <li>Déni de service à distance</li>
+          
+            <li>Élévation de privilèges</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>AI Playground software versions antérieures à 2.6.1 beta.</li>
+          
+            <li>BIOS and System Firmware Update Package (SFUP) for Windows and Linux for Intel Server D50DNP Family versions antérieures à R01.02.0004.</li>
+          
+            <li>BIOS and System Firmware Update Package (SFUP) for Windows and Linux for Intel Server M50FCP Family versions antérieures à R01.02.0004.</li>
+          
+            <li>ESXi base driver (icen) for Intel 800 Series Ethernet versions antérieures à 2.2.2.0 (ESXi 8.0).
+
+ESXi base driver (icen) for Intel 800 Series Ethernet versions antérieures à 2.2.3.0 (ESXi 9.0).</li>
+          
+            <li>Intel Battery Life Diagnostic Tool software versions antérieures à 2.7.</li>
+          
+            <li>Intel Ethernet Adapters 800 Series Controllers and associated adapters versions 30.3 or later.
+
+</li>
+          
+            <li>Intel MAS software versions antérieures à 2.5.2</li>
+          
+            <li>Intel oneAPI Base Toolkits versions antérieures à 2025.0.</li>
+          
+            <li>Intel Optane PMem management software versions CR_MGMT_01.00.00.3584, CR_MGMT_02.00.00.4052, CR_MGMT_03.00.00.0538.</li>
+          
+            <li>Intel Server Board D50TNP Family BIOS and System Firmware Update Package (SFUP) for Windows and Linux versions antérieures à R01.01.0010.</li>
+          
+            <li>Intel Server Board M50CYP Family BIOS and System Firmware Update Package (SFUP) for Windows and Linux versions antérieures à R01.01.0010.</li>
+          
+            <li>Intel Server Chipset Driver Software versions antérieures à 10.1.20266.8668 for Windows for Intel Server Boards and Systems Based on Intel 741 Chipset.</li>
+          
+            <li>Intel Server Firmware Update Utility software versions antérieures à 16.0.12.</li>
+          
+            <li>System Firmware Update Utility (SysFwUpdt) for Intel Server Boards and Intel Server Systems Based versions antérieures à 16.0.12.</li>
+          
+            <li>VTune Profiler software versions antérieures à 2025.0.</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p>De multiples vulnérabilités ont été découvertes dans les produits Intel. Elles permettent à un attaquant de provoquer une élévation de privilèges, un déni de service à distance et une atteinte à la confidentialité des données.</p>
+
+        </div>
+
+      <div>
+        <h2>Solutions</h2>
+<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01171 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01171.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01171.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01265 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01265.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01265.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01314 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01314.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01314.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01315 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01315.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01315.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01323 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01323.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01323.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01325 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01325.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01325.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01385 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01385.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01385.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01396 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01396.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01396.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01397 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01397.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01397.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01399 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01399.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01399.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01401 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01401.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01401.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01403 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01403.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01403.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01406 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01406.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01406.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01408 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01408.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01408.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01411 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01411.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01411.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01412 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01412.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01412.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01414 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01414.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01414.html</a>
+          
+              <li>Bulletin de sécurité Intel INTEL-SA-01415 du 10 février 2026</li>
+              <a href="https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01415.html">https://www.intel.com/content/www/us/en/security-center/advisory/intel-sa-01415.html</a>
+          
+
+          
+          
+
+          
+            <li>Référence CVE CVE-2025-20070</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-20070">https://www.cve.org/CVERecord?id=CVE-2025-20070</a>
+          
+            <li>Référence CVE CVE-2025-20080</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-20080">https://www.cve.org/CVERecord?id=CVE-2025-20080</a>
+          
+            <li>Référence CVE CVE-2025-20106</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-20106">https://www.cve.org/CVERecord?id=CVE-2025-20106</a>
+          
+            <li>Référence CVE CVE-2025-22453</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-22453">https://www.cve.org/CVERecord?id=CVE-2025-22453</a>
+          
+            <li>Référence CVE CVE-2025-22849</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-22849">https://www.cve.org/CVERecord?id=CVE-2025-22849</a>
+          
+            <li>Référence CVE CVE-2025-22885</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-22885">https://www.cve.org/CVERecord?id=CVE-2025-22885</a>
+          
+            <li>Référence CVE CVE-2025-24851</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-24851">https://www.cve.org/CVERecord?id=CVE-2025-24851</a>
+          
+            <li>Référence CVE CVE-2025-25058</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-25058">https://www.cve.org/CVERecord?id=CVE-2025-25058</a>
+          
+            <li>Référence CVE CVE-2025-25210</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-25210">https://www.cve.org/CVERecord?id=CVE-2025-25210</a>
+          
+            <li>Référence CVE CVE-2025-27243</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27243">https://www.cve.org/CVERecord?id=CVE-2025-27243</a>
+          
+            <li>Référence CVE CVE-2025-27535</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27535">https://www.cve.org/CVERecord?id=CVE-2025-27535</a>
+          
+            <li>Référence CVE CVE-2025-27560</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27560">https://www.cve.org/CVERecord?id=CVE-2025-27560</a>
+          
+            <li>Référence CVE CVE-2025-27572</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27572">https://www.cve.org/CVERecord?id=CVE-2025-27572</a>
+          
+            <li>Référence CVE CVE-2025-27708</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27708">https://www.cve.org/CVERecord?id=CVE-2025-27708</a>
+          
+            <li>Référence CVE CVE-2025-27940</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-27940">https://www.cve.org/CVERecord?id=CVE-2025-27940</a>
+          
+            <li>Référence CVE CVE-2025-30508</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-30508">https://www.cve.org/CVERecord?id=CVE-2025-30508</a>
+          
+            <li>Référence CVE CVE-2025-30513</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-30513">https://www.cve.org/CVERecord?id=CVE-2025-30513</a>
+          
+            <li>Référence CVE CVE-2025-31648</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-31648">https://www.cve.org/CVERecord?id=CVE-2025-31648</a>
+          
+            <li>Référence CVE CVE-2025-31655</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-31655">https://www.cve.org/CVERecord?id=CVE-2025-31655</a>
+          
+            <li>Référence CVE CVE-2025-31944</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-31944">https://www.cve.org/CVERecord?id=CVE-2025-31944</a>
+          
+            <li>Référence CVE CVE-2025-32003</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32003">https://www.cve.org/CVERecord?id=CVE-2025-32003</a>
+          
+            <li>Référence CVE CVE-2025-32007</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32007">https://www.cve.org/CVERecord?id=CVE-2025-32007</a>
+          
+            <li>Référence CVE CVE-2025-32008</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32008">https://www.cve.org/CVERecord?id=CVE-2025-32008</a>
+          
+            <li>Référence CVE CVE-2025-32092</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32092">https://www.cve.org/CVERecord?id=CVE-2025-32092</a>
+          
+            <li>Référence CVE CVE-2025-32452</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32452">https://www.cve.org/CVERecord?id=CVE-2025-32452</a>
+          
+            <li>Référence CVE CVE-2025-32453</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32453">https://www.cve.org/CVERecord?id=CVE-2025-32453</a>
+          
+            <li>Référence CVE CVE-2025-32467</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32467">https://www.cve.org/CVERecord?id=CVE-2025-32467</a>
+          
+            <li>Référence CVE CVE-2025-32735</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32735">https://www.cve.org/CVERecord?id=CVE-2025-32735</a>
+          
+            <li>Référence CVE CVE-2025-32739</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-32739">https://www.cve.org/CVERecord?id=CVE-2025-32739</a>
+          
+            <li>Référence CVE CVE-2025-33030</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-33030">https://www.cve.org/CVERecord?id=CVE-2025-33030</a>
+          
+            <li>Référence CVE CVE-2025-35992</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-35992">https://www.cve.org/CVERecord?id=CVE-2025-35992</a>
+          
+            <li>Référence CVE CVE-2025-35998</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-35998">https://www.cve.org/CVERecord?id=CVE-2025-35998</a>
+          
+            <li>Référence CVE CVE-2025-35999</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-35999">https://www.cve.org/CVERecord?id=CVE-2025-35999</a>
+          
+            <li>Référence CVE CVE-2025-36511</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-36511">https://www.cve.org/CVERecord?id=CVE-2025-36511</a>
+          
+            <li>Référence CVE CVE-2025-36522</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2025-36522">https://www.cve.org/CVERecord?id=CVE-2025-36522</a>
+          
+        </ul>
+      
+    </div>
+      <div>
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 11 février 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+        </dl>
+      </ol>
+    </div>
+    
+  </article></div>
+  </div>
+</body>
+</html>

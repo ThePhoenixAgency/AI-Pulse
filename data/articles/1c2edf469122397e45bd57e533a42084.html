@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Multiples vulnérabilités dans Microsoft Windows</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Multiples vulnérabilités dans Microsoft Windows</h1>
+  <div class="metadata">
+    Source: CERT-FR | Date: 2/11/2026 | Lang: FR |
+    <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0150/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+    
+      <section>
+  
+    <div>
+      
+      
+        <p><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0150/json/">
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+  </a>
+</p>
+      
+    </div>
+
+    
+
+
+
+
+    <div>
+      <p>
+        </p><h2>Avis du CERT-FR</h2>
+        <hr />
+      <p></p>
+    </div>
+    
+    
+    <div>
+  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
+</div>
+  
+</section>
+      <div>
+      
+
+        
+          <h2>Risques</h2>
+        
+
+        <ul>
+          
+            <li>Atteinte à la confidentialité des données</li>
+          
+            <li>Contournement de la politique de sécurité</li>
+          
+            <li>Déni de service à distance</li>
+          
+            <li>Exécution de code arbitraire à distance</li>
+          
+            <li>Élévation de privilèges</li>
+          
+        </ul>
+      
+
+      
+        <h2>Systèmes affectés</h2>
+        <ul>
+          
+            <li>.NET 10.0 installed sur Windows versions antérieures à 10.0.3</li>
+          
+            <li>.NET 8.0 installed sur Windows versions antérieures à 8.0.24</li>
+          
+            <li>.NET 9.0 installed sur Windows versions antérieures à 9.0.13</li>
+          
+            <li>Windows 10 Version 1607 pour systèmes 32 bits versions antérieures à 10.0.14393.8868</li>
+          
+            <li>Windows 10 Version 1607 pour systèmes x64 versions antérieures à 10.0.14393.8868</li>
+          
+            <li>Windows 10 Version 1809 pour systèmes 32 bits versions antérieures à 10.0.17763.8389</li>
+          
+            <li>Windows 10 Version 1809 pour systèmes x64 versions antérieures à 10.0.17763.8389</li>
+          
+            <li>Windows 10 Version 21H2 pour systèmes 32 bits versions antérieures à 10.0.19044.6937</li>
+          
+            <li>Windows 10 Version 21H2 pour systèmes ARM64 versions antérieures à 10.0.19044.6937</li>
+          
+            <li>Windows 10 Version 21H2 pour systèmes x64 versions antérieures à 10.0.19044.6937</li>
+          
+            <li>Windows 10 Version 22H2 pour systèmes 32 bits versions antérieures à 10.0.19045.6937</li>
+          
+            <li>Windows 10 Version 22H2 pour systèmes ARM64 versions antérieures à 10.0.19045.6937</li>
+          
+            <li>Windows 10 Version 22H2 pour systèmes x64 versions antérieures à 10.0.19045.6937</li>
+          
+            <li>Windows 11 Version 23H2 pour systèmes ARM64 versions antérieures à 10.0.22631.6649</li>
+          
+            <li>Windows 11 Version 23H2 pour systèmes x64 versions antérieures à 10.0.22631.6649</li>
+          
+            <li>Windows 11 Version 24H2 pour systèmes ARM64 versions antérieures à 10.0.26100.7781</li>
+          
+            <li>Windows 11 Version 24H2 pour systèmes x64 versions antérieures à 10.0.26100.7781</li>
+          
+            <li>Windows 11 Version 25H2 pour systèmes ARM64 versions antérieures à 10.0.26200.7781</li>
+          
+            <li>Windows 11 Version 25H2 pour systèmes x64 versions antérieures à 10.0.26200.7781</li>
+          
+            <li>Windows 11 Version 26H1 pour systèmes ARM64 versions antérieures à 10.0.28000.1575</li>
+          
+            <li>Windows 11 version 26H1 pour systèmes x64 antérieures à 10.0.28000.1575</li>
+          
+            <li>Windows App pour Mac versions antérieures à 11.3.2</li>
+          
+            <li>Windows Notepad versions antérieures à 11.2510</li>
+          
+            <li>Windows Server 2012 (Server Core installation) versions antérieures à 6.2.9200.25923</li>
+          
+            <li>Windows Server 2012 R2 (Server Core installation) versions antérieures à 6.3.9600.23022</li>
+          
+            <li>Windows Server 2012 R2 versions antérieures à 6.3.9600.23022</li>
+          
+            <li>Windows Server 2012 versions antérieures à 6.2.9200.25923</li>
+          
+            <li>Windows Server 2016 (Server Core installation) versions antérieures à 10.0.14393.8868</li>
+          
+            <li>Windows Server 2016 versions antérieures à 10.0.14393.8868</li>
+          
+            <li>Windows Server 2019 (Server Core installation) versions antérieures à 10.0.17763.8389</li>
+          
+            <li>Windows Server 2019 versions antérieures à 10.0.17763.8389</li>
+          
+            <li>Windows Server 2022 (Server Core installation) versions antérieures à 10.0.20348.4711</li>
+          
+            <li>Windows Server 2022 versions antérieures à 10.0.20348.4711</li>
+          
+            <li>Windows Server 2022, 23H2 Edition (Server Core installation) versions antérieures à 10.0.25398.2149</li>
+          
+            <li>Windows Server 2025 (Server Core installation) versions antérieures à 10.0.26100.32313</li>
+          
+            <li>Windows Server 2025 versions antérieures à 10.0.26100.32313</li>
+          
+        </ul>
+      
+
+      
+
+      <div>
+          <h2>Résumé</h2>
+          <p>De multiples vulnérabilités ont été découvertes dans Microsoft Windows. Certaines d'entre elles permettent à un attaquant de provoquer une exécution de code arbitraire à distance, une élévation de privilèges et un déni de service à distance.</p>
+<p>Microsoft indique que les vulnérabilités CVE-2026-21510, CVE-2026-21513, CVE-2026-21519, CVE-2026-21525 et CVE-2026-21533 sont activement exploitées.</p>
+
+        </div>
+
+      <div>
+        <h2>Solutions</h2>
+<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p>
+
+      </div>
+
+      
+        <h2>Documentation</h2>
+
+        <ul>
+          
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2023-2804 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-2804">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-2804</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-20841 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20841">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20841</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-20846 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20846">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-20846</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21218 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21218">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21218</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21222 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21222">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21222</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21231 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21231">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21231</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21232 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21232">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21232</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21234 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21234">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21234</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21235 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21235">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21235</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21236 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21236">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21236</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21237 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21237">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21237</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21238 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21238">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21238</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21239 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21239">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21239</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21240 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21240">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21240</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21241 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21241">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21241</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21242 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21242">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21242</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21243 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21243">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21243</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21244 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21244">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21244</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21245 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21245">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21245</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21246 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21246">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21246</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21247 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21247">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21247</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21248 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21248">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21248</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21249 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21249">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21249</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21250 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21250">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21250</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21251 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21251">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21251</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21253 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21253">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21253</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21255 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21255">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21255</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21508 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21508">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21508</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21510 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21510">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21510</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21513 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21513">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21513</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21517 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21517">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21517</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21519 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21519">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21519</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21525 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21525">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21525</a>
+          
+              <li>Bulletin de sécurité Microsoft Windows CVE-2026-21533 du 10 février 2026</li>
+              <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21533">https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-21533</a>
+          
+
+          
+          
+
+          
+            <li>Référence CVE CVE-2023-2804</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2023-2804">https://www.cve.org/CVERecord?id=CVE-2023-2804</a>
+          
+            <li>Référence CVE CVE-2026-20841</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-20841">https://www.cve.org/CVERecord?id=CVE-2026-20841</a>
+          
+            <li>Référence CVE CVE-2026-20846</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-20846">https://www.cve.org/CVERecord?id=CVE-2026-20846</a>
+          
+            <li>Référence CVE CVE-2026-21218</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21218">https://www.cve.org/CVERecord?id=CVE-2026-21218</a>
+          
+            <li>Référence CVE CVE-2026-21222</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21222">https://www.cve.org/CVERecord?id=CVE-2026-21222</a>
+          
+            <li>Référence CVE CVE-2026-21231</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21231">https://www.cve.org/CVERecord?id=CVE-2026-21231</a>
+          
+            <li>Référence CVE CVE-2026-21232</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21232">https://www.cve.org/CVERecord?id=CVE-2026-21232</a>
+          
+            <li>Référence CVE CVE-2026-21234</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21234">https://www.cve.org/CVERecord?id=CVE-2026-21234</a>
+          
+            <li>Référence CVE CVE-2026-21235</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21235">https://www.cve.org/CVERecord?id=CVE-2026-21235</a>
+          
+            <li>Référence CVE CVE-2026-21236</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21236">https://www.cve.org/CVERecord?id=CVE-2026-21236</a>
+          
+            <li>Référence CVE CVE-2026-21237</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21237">https://www.cve.org/CVERecord?id=CVE-2026-21237</a>
+          
+            <li>Référence CVE CVE-2026-21238</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21238">https://www.cve.org/CVERecord?id=CVE-2026-21238</a>
+          
+            <li>Référence CVE CVE-2026-21239</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21239">https://www.cve.org/CVERecord?id=CVE-2026-21239</a>
+          
+            <li>Référence CVE CVE-2026-21240</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21240">https://www.cve.org/CVERecord?id=CVE-2026-21240</a>
+          
+            <li>Référence CVE CVE-2026-21241</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21241">https://www.cve.org/CVERecord?id=CVE-2026-21241</a>
+          
+            <li>Référence CVE CVE-2026-21242</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21242">https://www.cve.org/CVERecord?id=CVE-2026-21242</a>
+          
+            <li>Référence CVE CVE-2026-21243</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21243">https://www.cve.org/CVERecord?id=CVE-2026-21243</a>
+          
+            <li>Référence CVE CVE-2026-21244</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21244">https://www.cve.org/CVERecord?id=CVE-2026-21244</a>
+          
+            <li>Référence CVE CVE-2026-21245</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21245">https://www.cve.org/CVERecord?id=CVE-2026-21245</a>
+          
+            <li>Référence CVE CVE-2026-21246</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21246">https://www.cve.org/CVERecord?id=CVE-2026-21246</a>
+          
+            <li>Référence CVE CVE-2026-21247</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21247">https://www.cve.org/CVERecord?id=CVE-2026-21247</a>
+          
+            <li>Référence CVE CVE-2026-21248</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21248">https://www.cve.org/CVERecord?id=CVE-2026-21248</a>
+          
+            <li>Référence CVE CVE-2026-21249</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21249">https://www.cve.org/CVERecord?id=CVE-2026-21249</a>
+          
+            <li>Référence CVE CVE-2026-21250</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21250">https://www.cve.org/CVERecord?id=CVE-2026-21250</a>
+          
+            <li>Référence CVE CVE-2026-21251</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21251">https://www.cve.org/CVERecord?id=CVE-2026-21251</a>
+          
+            <li>Référence CVE CVE-2026-21253</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21253">https://www.cve.org/CVERecord?id=CVE-2026-21253</a>
+          
+            <li>Référence CVE CVE-2026-21255</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21255">https://www.cve.org/CVERecord?id=CVE-2026-21255</a>
+          
+            <li>Référence CVE CVE-2026-21508</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21508">https://www.cve.org/CVERecord?id=CVE-2026-21508</a>
+          
+            <li>Référence CVE CVE-2026-21510</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21510">https://www.cve.org/CVERecord?id=CVE-2026-21510</a>
+          
+            <li>Référence CVE CVE-2026-21513</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21513">https://www.cve.org/CVERecord?id=CVE-2026-21513</a>
+          
+            <li>Référence CVE CVE-2026-21517</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21517">https://www.cve.org/CVERecord?id=CVE-2026-21517</a>
+          
+            <li>Référence CVE CVE-2026-21519</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21519">https://www.cve.org/CVERecord?id=CVE-2026-21519</a>
+          
+            <li>Référence CVE CVE-2026-21525</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21525">https://www.cve.org/CVERecord?id=CVE-2026-21525</a>
+          
+            <li>Référence CVE CVE-2026-21533</li>
+            <a href="https://www.cve.org/CVERecord?id=CVE-2026-21533">https://www.cve.org/CVERecord?id=CVE-2026-21533</a>
+          
+        </ul>
+      
+    </div>
+      <div>
+      <h2>Gestion détaillée du document</h2>
+      <ol>
+        <dl>
+          
+          <dt><strong>le 11 février 2026</strong></dt>
+          <dd>Version initiale</dd>
+          
+        </dl>
+      </ol>
+    </div>
+    
+  </article></div>
+  </div>
+</body>
+</html>

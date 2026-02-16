@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New ClickFix attack abuses nslookup to retrieve PowerShell payload via DNS</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>New ClickFix attack abuses nslookup to retrieve PowerShell payload via DNS</h1>
+  <div class="metadata">
+    Source: Bleeping Computer | Date: 2/16/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/new-clickfix-attack-abuses-nslookup-to-retrieve-powershell-payload-via-dns/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="Hacker starting at a box" src="https://www.bleepstatic.com/content/hl-images/2024/05/07/hacker-box.jpg" /></p>
+
+
+<p>Threat actors are now abusing DNS queries as part of ClickFix social engineering attacks to deliver malware, making this the first known use of DNS as a channel in these campaigns.</p>
+
+
+<p>ClickFix attacks typically trick users into manually executing malicious commands under the guise of fixing errors, installing updates, or enabling functionality.</p>
+
+
+<p>However, this new variant uses a novel technique in which an attacker-controlled DNS server delivers the second-stage payload via DNS lookups.</p>
+
+<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
+</p>
+
+
+<h2>DNS queries deliver a malicious PowerShell script</h2>
+
+<p>In a new ClickFix campaign seen by Microsoft, victims are instructed to run the nslookup command that queries an attacker-controlled DNS server instead of the system's default DNS server.</p>
+
+
+<p>The command returns a query containing a malicious PowerShell script that is then executed on the device to install malware.</p>
+
+
+<p>"Microsoft Defender researchers observed attackers using yet another evasion approach to the ClickFix technique: Asking targets to run a command that executes a custom DNS lookup and parses the Name: response to receive the next-stage payload for execution," reads an X post from Microsoft Threat Intelligence.</p>
+
+
+<p><a href="http://x.com/msftsecintel/status/2022456612120629742" target="_blank"><img alt="Microsoft tweet" src="https://www.bleepstatic.com/images/news/security/c/clickfix/dns-query/microsoft-clickfix-dns.jpg" /></a></p>
+
+
+<p>While it is unclear what the lure is to trick users into running the command, Microsoft says the ClickFix attack instructs users to run the command in the Windows Run dialog box.</p>
+
+
+<p>This command will issue a DNS lookup for the hostname "example.com" against the threat actor's DNS server at 84[.]21.189[.]20 and then execute the resulting response via the Windows command interpreter (cmd.exe).</p>
+
+
+<p>This DNS <a href="https://digwebinterface.com/?hostnames=example.com&amp;type=&amp;useresolver=9.9.9.10&amp;ns=self&amp;nameservers=84.21.189.20" target="_blank">response</a> returns a "NAME:" field that contains the second PowerShell payload that is executed on the device.</p>
+
+
+<div>
+<figure><img alt="DNS query response containing the second PowerShell command to execute" src="https://www.bleepstatic.com/images/news/security/c/clickfix/dns-query/microsoft-dns-query.jpg" /><figcaption><strong>DNS query response containing the second PowerShell command to execute</strong><br /><em>Source: Microsoft</em></figcaption></figure></div>
+
+<p>While this server is no longer available, Microsoft says that the second-stage PowerShell command downloaded additional malware from attacker-controlled infrastructure.</p>
+
+
+<p>This attack ultimately downloads a ZIP archive containing a Python runtime executable and malicious scripts that perform reconnaissance on the infected device and domain.</p>
+
+
+<p>The attack then establishes persistence by creating <code>%APPDATA%\WPy64-31401\python\script.vbs</code> and a <code>%STARTUP%\MonitoringService.lnk</code> shortcut to launch the VBScript file on startup.</p>
+
+
+<p>The final payload is a remote access trojan known as ModeloRAT, which allows attackers to control compromised systems remotely.</p>
+
+
+<p>Unlike the usual ClickFix attacks, which commonly retrieve payloads via HTTP, this technique uses DNS as a communication and staging channel.</p>
+
+
+<p>By using DNS responses to deliver malicious PowerShell scripts, attackers can modify payloads on the fly while blending in with normal DNS traffic.</p>
+
+
+<h2>ClickFix attacks rapidly evolving</h2>
+
+<p>ClickFix attacks have rapidly evolved over the past year, with threat actors experimenting with new delivery tactics and payload types that target a wide variety of operating systems.</p>
+
+
+<p>Previously reported <a href="https://www.bleepingcomputer.com/tag/clickfix/" target="_blank">ClickFix campaigns</a> relied on convincing users to execute PowerShell or shell commands directly on their operating systems to install malware.</p>
+
+
+<p>In more recent campaigns, attackers have expanded their techniques beyond traditional malware payload delivery over the web.</p>
+
+
+<p>For example, a recent ClickFix attack called "<a href="https://www.bleepingcomputer.com/news/security/new-consentfix-attack-hijacks-microsoft-accounts-via-azure-cli/" target="_blank">ConsentFix</a>" abuses the Azure CLI OAuth app to hijack Microsoft accounts without a password and bypass multi-factor authentication (MFA).</p>
+
+
+<p>With the rise in popularity of AI LLMs for everyday use, threat actors have begun using <a href="https://www.bleepingcomputer.com/news/security/google-ads-for-shared-chatgpt-grok-guides-push-macos-infostealer-malware/" target="_blank">shared ChatGPT and Grok pages</a>, as well as <a href="https://www.bleepingcomputer.com/news/security/claude-llm-artifacts-abused-to-push-mac-infostealers-in-clickfix-attack/" target="_blank">Claude Artifact pages</a>, to promote fake guides for ClickFix attacks.</p>
+
+
+<p>BleepingComputer also reported today about a novel <a href="https://www.bleepingcomputer.com/news/security/pastebin-comments-push-clickfix-javascript-attack-to-hijack-crypto-swaps/" target="_blank">ClickFix attack promoted through Pastebin comments</a> that tricked cryptocurrency users into executing malicious JavaScript directly in their browser while visiting a cryptocurrency exchange to hijack transactions. </p>
+
+
+<p>This is one of the first ClickFix campaigns designed to execute JavaScript in the browser and hijack web application functionality rather than deploy malware.</p>
+
+
+
+	   
+<div>
+    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
+            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
+    </p>
+    <div>
+        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
+
+        </div>
+</div>
+
+           
+          
+ 
+	  </div></div>
+  </div>
+</body>
+</html>

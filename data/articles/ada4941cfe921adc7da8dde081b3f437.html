@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Faille de sécurité massive chez DJI : des milliers d'aspirateurs robots exposés !</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Faille de sécurité massive chez DJI : des milliers d'aspirateurs robots exposés !</h1>
+  <div class="metadata">
+    Source: GNT | Date: 2/16/2026 | Lang: FR |
+    <a href="https://www.generation-nt.com/actualites/dji-romo-faille-securite-camera-espionnage-vulnerabilite-2070810" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+			<p>
+				Publié le
+				<time>
+					16 février 2026 à 13:45</time>
+									par <a href="https://www.generation-nt.com/informations/a-propos/mathieu.m"><span>Mathieu M.</span></a>
+											</p>
+
+			
+			
+			
+			<section>
+				<div>
+											
+										<p><span>Une faille de sécurité critique a été découverte dans les aspirateurs robots DJI Romo. Un chercheur, en tentant de piloter son appareil avec une manette de jeu, a obtenu un accès non autorisé à des milliers d'unités dans le monde, lui permettant de voir et d'entendre à travers leurs caméras et micros. DJI affirme avoir corrigé le problème mais l'incident laisse des traces.</span></p>
+				</div>
+
+																	
+					
+											<a href="https://img.generation-nt.com/dji-romo-0_0800048001713473.webp">
+							<div>
+								
+	
+		        
+                    
+        		<img src="https://img.generation-nt.com/dji-romo-0_0298000001713473.jpg" alt="Dji Romo 0" />
+	
+							</div>
+						</a>
+									
+								
+			</section>
+
+			
+			<div><p>Ce qui a commencé comme un projet amusant s'est transformé en un incident de sécurité majeur. <strong>Sammy Azdoufal</strong>, en voulant simplement contrôler son nouvel aspirateur robot, a mis au jour une brèche béante. Sans le vouloir, il a obtenu un <strong>accès administrateur</strong> à près de <strong>7 000 appareils à travers le monde</strong>, exposant potentiellement l'intimité de leurs propriétaires. Une démonstration inquiétante de la fragilité de nos objets connectés.</p>
+<h2>Comment une simple manette de jeu a-t-elle révélé une faille mondiale ?</h2>
+<p>L'histoire est presque surréaliste. Sammy Azdoufal, stratège en IA, n'avait <strong>aucune intention malveillante</strong>. Son objectif : le plaisir de piloter son <a href="https://www.generation-nt.com/actualites/dji-romo-aspirateur-robot-drone-lidar-2065055"><strong>DJI Romo</strong></a> avec une manette de console. Mais en développant sa propre application, il a découvert que les <strong>serveurs MQTT</strong> de DJI ne filtraient pas correctement les accès. En utilisant simplement le jeton d'authentification de son propre appareil, il a pu s'abonner aux flux de données de tous les autres.</p>
+<p><a href="https://img.generation-nt.com/dji-romo-03_01720043.webp" target="_blank">
+		        
+                    
+        		<img src="https://img.generation-nt.com/dji-romo-03_0960045301720043.jpg" alt="Dji Romo_03" />
+	
+</a></p>
+<p>Le résultat fut stupéfiant. Des milliers de robots lui rapportaient leur position, leur statut, le plan des pièces nettoyées et les obstacles rencontrés, le tout <strong>en temps réel et en clair</strong>. Il pouvait potentiellement accéder aux flux vidéo et audio en direct, contournant même les <strong>codes PIN de sécurité</strong>. En quelques minutes à peine, son ordinateur a catalogué plus de 6 700 appareils DJI répartis dans 24 pays différents.</p>
+<h2>Quelle a été la réaction de DJI face à cette exposition ?</h2>
+<p>Alerté par Azdoufal et le média The Verge, DJI a d'abord réagi de manière confuse. La société a affirmé avoir résolu la <a href="https://www.generation-nt.com/actualites/microsoft-windows-11-securite-consentement-permissions-application-2070731"><strong>vulnérabilité</strong></a> alors que le chercheur pouvait encore accéder à des milliers d'appareils, y compris celui d'un journaliste réalisant un test. Cette <strong>communication hasardeuse</strong> a semé le doute sur la maîtrise réelle de la situation par le géant chinois, déjà sous surveillance pour des questions de protection des données.</p>
+<p><a href="https://img.generation-nt.com/dji-romo-02_01720045.webp" target="_blank">
+		        
+                    
+        		<img src="https://img.generation-nt.com/dji-romo-02_0883052c01720045.jpg" alt="Dji Romo_02" />
+	
+</a></p>
+<p>Finalement, DJI a admis l'existence d'un "problème de validation des autorisations backend". L'entreprise a ensuite déployé un correctif complet. Selon elle, la communication était chiffrée, mais cela ne protégeait pas les données une fois sur le serveur. Cet incident rappelle d'autres scandales et fragilise la confiance des utilisateurs envers la <a href="https://www.generation-nt.com/actualites/entainement-ia-donnees-contenus-pedopornographiques-amazon-2070037"><strong>sécurité</strong></a> des objets connectés.</p>
+<h2>Les aspirateurs connectés sont-ils une menace pour notre vie privée ?</h2>
+<p>Cet incident pose des questions fondamentales. Un <a href="https://www.generation-nt.com/actualites/aspirateur-robot-ilife-backdoor-espionnage-kill-switch-2065350"><strong>aspirateur</strong></a> a-t-il vraiment besoin d'un microphone ? La centralisation des données sur des serveurs, même basés aux États-Unis, garantit-elle leur confidentialité ? Des experts soulignent que la <strong>localisation d'un serveur</strong> n'empêche en rien les employés d'une entreprise, où qu'ils soient, d'accéder aux informations si les contrôles d'accès sont insuffisants.</p>
+<p><a href="https://img.generation-nt.com/dji-romo-01_01720044.webp" target="_blank">
+		        
+                    
+        		<img src="https://img.generation-nt.com/dji-romo-01_096007b201720044.jpg" alt="Dji Romo_01" />
+	
+</a></p>
+<p>Pour l'utilisateur, le risque est tangible. La cartographie précise de nos intérieurs, l'accès aux caméras et aux micros représentent une <strong>intrusion massive</strong> dans la vie privée. Le fait que Sammy Azdoufal ait trouvé cette faille sans même la chercher laisse craindre ce que des <strong>acteurs malveillants</strong> pourraient découvrir. L'affaire du DJI Romo est un avertissement sévère sur un enjeu à ne jamais prendre à la légère.</p>
+<h3><strong>Foire Aux Questions (FAQ)</strong></h3>
+
+<h3><strong>La faille de sécurité des aspirateurs DJI est-elle corrigée ?</strong></h3>
+<p>Oui, selon DJI, la vulnérabilité principale a été corrigée via deux mises à jour déployées début février. L'accès non autorisé aux flux de données de milliers d'appareils n'est théoriquement plus possible.</p>
+<h3><strong>Mes données personnelles ont-elles été exposées ?</strong></h3>
+<p>DJI affirme que les cas d'accès réels ont été "extrêmement rares" et principalement liés à des chercheurs en sécurité testant leurs propres appareils. Cependant, la faille existait et le potentiel d'exposition était bien réel pour des milliers d'utilisateurs.</p>
+<h3><strong>Est-il sûr d'utiliser la caméra de mon aspirateur robot ?</strong></h3>
+<p>Cet incident montre que les fonctionnalités connectées comme les caméras et micros comportent des risques inhérents. Il est conseillé de n'activer ces fonctions que si absolument nécessaire et de toujours utiliser des codes PIN robustes. Désactiver la vidéo à distance reste l'option la plus sûre.</p>
+
+
+
+</div>
+
+    <div>
+            
+            <p>Journaliste GNT spécialisé imprimantes 3D et nouvelles technologies</p>
+        </div>
+    
+
+    
+    
+
+    <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p>
+
+    
+    </article></div>
+  </div>
+</body>
+</html>

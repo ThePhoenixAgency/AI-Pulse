@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>OpenVAS - Le scanner de vulnérabilités open source qui vous dit la vérité sur votre serveur</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>OpenVAS - Le scanner de vulnérabilités open source qui vous dit la vérité sur votre serveur</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/15/2026 | Lang: FR |
+    <a href="https://korben.info/openvas-scanner-vulnerabilites-gratuit-audit-secur.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p>Vous avez un serveur, un NAS, quelques services qui tournent chez vous ou au boulot, et vous vous demandez si tout ça est bien sécurisé ? Alors plutôt que d'attendre qu'un petit malin vous le fasse savoir de manière désagréable, autant prendre les devants avec un scanner de vulnérabilités.</p><p><strong>Attention :</strong> si vous scannez le réseau de votre boulot, demandez toujours une autorisation écrite avant car scanner sans permission, c'est illégal et ça peut vous coûter cher. Et ne comptez pas sur moi pour vous apporter des oranges en prison.</p><p><strong>OpenVAS</strong> (Open Vulnerability Assessment Scanner), c'est l'un des scanners open source les plus connus, maintenu par Greenbone. Une fois en place sur votre réseau, il scanne vos services exposés et vous balance un rapport avec ce qui craint : Ports ouverts, services mal configurés, failles connues, certificats expirés... De quoi repérer une bonne partie de ce qu'un attaquant pourrait exploiter.</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/openvas-scanner-vulnerabilites-gratuit-audit-secur/openvas-scanner-vulnerabilites-gratuit-audit-secur-2.png" alt="" /></p><p><em>L'interface principale d'OpenVAS</em></p></div><p>Ce qui est cool, c'est que vous restez en mode défensif. C'est pas un outil de pentest offensif ou de hacking pur et dur mais juste un audit de votre propre infra pour savoir où vous en êtes. Et ça tourne avec un feed de vulnérabilités (le Greenbone Community Feed) qui est régulièrement mis à jour, ce qui permet de détecter les failles récentes.</p><p>Pour l'installer, une des méthodes c'est de passer par Docker. Greenbone fournit une stack complète avec docker-compose. Après vous cherchez plutôt à analyser spécifiquement vos images de conteneurs,
+<a href="https://korben.info/analyse-vulnerabilites-conteneurs-docker-avec-grype.html">Grype pourrait aussi vous intéresser</a>
+.</p><p>Pour OpenVAS, vous créez un répertoire, vous téléchargez leur fichier de config (jetez toujours un œil dedans avant de l'exécuter, c'est une bonne pratique), et hop :</p><div><pre><code><span><span>mkdir -p ~/greenbone-community-container
+</span></span><span><span>cd ~/greenbone-community-container
+</span></span><span><span>curl -f -O -L https://greenbone.github.io/docs/latest/_static/docker-compose.yml
+</span></span><span><span>docker compose pull
+</span></span><span><span>docker compose up -d
+</span></span></code></pre></div><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/openvas-scanner-vulnerabilites-gratuit-audit-secur/openvas-scanner-vulnerabilites-gratuit-audit-secur-3.png" alt="" /></p><p><em>L'assistant de configuration initiale</em></p></div><p>Après ça, vous accédez à l'interface web via <code>http://localhost:9392</code>.</p><p>Et pour le login, attention, car sur les versions récentes du conteneur communautaire, le mot de passe admin est <strong>généré aléatoirement</strong> au premier démarrage. Il faut donc aller voir les logs pour le récupérer (<code>docker compose logs -f</code>). Si ça ne marche pas, tentez le classique admin/admin, mais changez-le direct.</p><p>La première synchro des feeds peut prendre un moment, le temps que la base de vulnérabilités se télécharge. Vous avez le temps d'aller vous faire un café, c'est pas instantané.</p><p>Niveau config machine, la documentation recommande au moins 2 CPU et 4 Go de RAM pour que ça tourne, mais pour scanner un réseau un peu costaud, doublez ça (4 CPU / 8 Go) pour être à l'aise. Et une fois connecté, direction la section scans pour créer une cible avec votre IP ou plage d'adresses. Ensuite vous pouvez lancer un scan avec le profil de votre choix :</p><p>Le mode "<strong>Discovery</strong>" se contente de lister les services et ports ouverts tandis que le mode "<strong>Full and Fast</strong>" lance une batterie complète de tests de vulnérabilités. Il est conçu pour être "safe" (ne pas planter les services), mais le risque zéro n'existe pas en réseau donc évitez de scanner votre prod en pleine journée sans prévenir.</p><p>Les résultats arrivent sous forme de rapport avec un score de criticité comme ça vous avez le détail de ce qui pose problème et souvent des pistes pour corriger. Genre si vous avez un service SSH avec une config un peu lâche ou un serveur web trop bavard, le rapport vous le dira.</p><p>Par contre, c'est vrai que l'interface est assez austère comparée à des solutions commerciales comme Nessus mais c'est gratuit, c'est open source, et ça fait le taf pour un audit interne. La version Community a quand même quelques limitations (feed communautaire vs feed entreprise, support, etc.), mais pour surveiller son infra perso ou sa PME, c'est déjà très puissant.</p><p>Du coup, si vous voulez savoir ce qui traîne sur votre réseau avant que quelqu'un d'autre le découvre, OpenVAS est un excellent point de départ. Et c'est toujours mieux de découvrir ses failles soi-même que de les lire dans un mail de rançon... enfin, je pense ^^.</p><p><a href="https://www.greenbone.net/en/openvas-free/">A découvrir ici !</a></p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+  </div>
+</body>
+</html>

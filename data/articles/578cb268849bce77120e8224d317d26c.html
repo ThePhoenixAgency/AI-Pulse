@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CTM360: Lumma Stealer and Ninja Browser malware campaign abusing Google Groups</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>CTM360: Lumma Stealer and Ninja Browser malware campaign abusing Google Groups</h1>
+  <div class="metadata">
+    Source: Bleeping Computer | Date: 2/15/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/ctm360-lumma-stealer-and-ninja-browser-malware-campaign-abusing-google-groups/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="LummaStealer + Ninja Browser malware campaign" src="https://www.bleepstatic.com/content/posts/2026/02/12/CTM360-REPORT-BANNER.jpg" /></p>
+
+<p>CTM360 reports that more than 4,000 malicious Google Groups and 3,500 Google-hosted URLs are being used in an active malware campaign targeting global organizations.</p>
+
+<p>The attackers abuse Google’s trusted ecosystem to distribute credential-stealing malware and establish persistent access on compromised devices.</p>
+
+<p>The activity is global, with attackers embedding organization names and industry-relevant keywords into posts to increase credibility and drive downloads.</p>
+
+<p>Read the full report here: <a href="https://www.ctm360.com/reports/ninja-browser-lumma-infostealer">https://www.ctm360.com/reports/ninja-browser-lumma-infostealer</a></p>
+
+<h2>How the campaign works</h2>
+
+<p>The attack chain begins with social engineering inside Google Groups. Threat actors infiltrate industry-related forums and post technical discussions that appear legitimate, covering topics such as network issues, authentication errors, or software configurations</p>
+
+<p>Within these threads, attackers embed download links disguised as: “Download {Organization_Name} for Windows 10”</p>
+
+<p>To evade detection, they use URL shorteners or Google-hosted redirectors via Docs and Drive. The redirector is designed to detect the victim’s operating system and deliver different payloads depending on whether the target is using Windows or Linux<br />
+ </p>
+
+<p><img alt="Malware lifecycle" src="https://www.bleepstatic.com/images/news/security/c/ctm360/lummastealer-ninjabrowser/ctl360-malware-lifecycle.jpg" /></p>
+
+<h2>Windows Infection Flow: Lumma Info-Stealer</h2>
+
+<p>For Windows users, the campaign delivers a password-protected compressed archive hosted on a malicious file-sharing infrastructure</p>
+
+<h3>Oversized archive to evade detection</h3>
+
+<p>The decompressed archive size is approximately 950MB, though the actual malicious payload is only around 33MB. CTM360 researchers found that the executable was padded with null bytes — a technique designed to exceed antivirus file-size scanning thresholds and disrupt static analysis engines.</p>
+
+<h3>AutoIt-based reconstruction</h3>
+
+<p>Once executed, the malware:</p>
+
+<ul><li>
+	<p>Reassembles segmented binary files.</p>
+	</li>
+	<li>
+	<p>Launches an AutoIt-compiled executable.</p>
+	</li>
+	<li>
+	<p>Decrypts and executes a memory-resident payload.</p>
+	</li>
+</ul><p>The behavior matches Lumma Stealer, a commercially sold infostealer frequently used in credential-harvesting campaigns</p>
+
+<h3>Observed behavior includes:</h3>
+
+<ul><li>
+	<p>Browser credential exfiltration.</p>
+	</li>
+	<li>
+	<p>Session cookie harvesting.</p>
+	</li>
+	<li>
+	<p>Shell-based command execution.</p>
+	</li>
+	<li>
+	<p>HTTP POST requests to C2 infrastructure (e.g., healgeni[.]live).</p>
+	</li>
+	<li>
+	<p>Use of multipart/form-data POST requests to mask exfiltrated content.</p>
+	</li>
+</ul><p>CTM360 identified multiple associated IP addresses and SHA-256 hashes linked to the Lumma-stealer payload.</p>
+
+
+<h2>Linux Infection Flow: Trojanized “Ninja Browser”</h2>
+
+<p>Linux users are redirected to download a trojanized Chromium-based browser branded as “Ninja Browser.”</p>
+
+<p>The software presents itself as a privacy-focused browser with built-in anonymity features.</p>
+
+<p>However, CTM360’s analysis reveals that it silently installs malicious extensions without user consent and implements hidden persistence mechanisms that enable future compromise by the threat actor.</p>
+
+<h3>Malicious extension behavior</h3>
+
+<p>A built-in extension named “NinjaBrowserMonetisation” was observed to:</p>
+
+<ul><li>
+	<p>Track users via unique identifiers</p>
+	</li>
+	<li>
+	<p>Inject scripts into web sessions</p>
+	</li>
+	<li>
+	<p>Load remote content</p>
+	</li>
+	<li>
+	<p>Manipulate browser tabs and cookies</p>
+	</li>
+	<li>
+	<p>Store data externally</p>
+	</li>
+</ul><p>The extension contains heavily obfuscated JavaScript using XOR and Base56-like encoding</p>
+
+<p>While not immediately activating all embedded domains, the infrastructure suggests future payload deployment capability.</p>
+
+<div>
+<figure><img alt="The installed extensions by the threat actor to the browser from server-side view" src="https://www.bleepstatic.com/images/news/security/c/ctm360/lummastealer-ninjabrowser/ctm360-ninjabrowser-extension.jpg" /><figcaption><strong>The installed extensions by the threat actor to the browser from server-side view</strong><br /><em>Source: <a href="http://www.ctm360.com/reports/ninja-browser-lumma-infostealer" target="_blank">CTM360</a></em></figcaption></figure></div>
+
+<h3>Silent persistence mechanism</h3>
+
+<p>CTM360 also identified scheduled tasks configured to:</p>
+
+<ul><li>
+	<p>Poll attacker-controlled servers daily</p>
+	</li>
+	<li>
+	<p>Silently install updates without user interaction</p>
+	</li>
+	<li>
+	<p>Maintain long-term persistence</p>
+	</li>
+</ul><p>Additionally, researchers observed that the browser defaults to a Russian-based search engine named “X-Finder” and redirects to another suspicious AI-themed search page</p>
+
+<p>The infrastructure appears tied to domains such as:</p>
+
+<ul><li>
+	<p>ninja-browser[.]com</p>
+	</li>
+	<li>
+	<p>nb-download[.]com</p>
+	</li>
+	<li>
+	<p>nbdownload[.]space</p>
+	</li>
+</ul><h2>Campaign Infrastructure &amp; Indicators of Compromise</h2>
+
+<p>CTM360 linked the activity to infrastructure, including:</p>
+
+<p><strong>IPs:</strong></p>
+
+<ul><li>
+	<p>152.42.139[.]18</p>
+	</li>
+	<li>
+	<p>89.111.170[.]100</p>
+	</li>
+</ul><p><strong>C2 domain:</strong></p>
+
+<ul><li>
+	<p>healgeni[.]live</p>
+	</li>
+</ul><p>Multiple SHA-256 hashes and domains associated with credential harvesting and info-stealer distribution were identified and are available in the report.</p>
+
+<h2>Risks to organizations</h2>
+
+<h3>Lumma Stealer risks:</h3>
+
+<ul><li>
+	<p>Credential and session token theft</p>
+	</li>
+	<li>
+	<p>Account takeover</p>
+	</li>
+	<li>
+	<p>Financial fraud</p>
+	</li>
+	<li>
+	<p>Lateral movement in enterprise environments</p>
+	</li>
+</ul><h3>Ninja Browser risks:</h3>
+
+<ul><li>
+	<p>Silent credential harvesting</p>
+	</li>
+	<li>
+	<p>Remote command execution</p>
+	</li>
+	<li>
+	<p>Backdoor-like persistence</p>
+	</li>
+	<li>
+	<p>Automatic malicious updates without user consent</p>
+	</li>
+</ul><p>Because the campaign abuses Google-hosted services, the attack bypasses traditional trust-based filtering mechanisms and increases user confidence in malicious content.</p>
+
+<h2>Defensive recommendations</h2>
+
+<p>CTM360 advises organizations to:</p>
+
+<ul><li>
+	<p>Inspect shortened URLs and Google Docs/Drive redirect chains.</p>
+	</li>
+	<li>
+	<p>Block the IoCs at firewall and EDR levels.</p>
+	</li>
+	<li>
+	<p>Educate users against downloading software from public forums/sources without verification.</p>
+	</li>
+	<li>
+	<p>Monitor scheduled task creation on endpoints.</p>
+	</li>
+	<li>
+	<p>Audit browser extension installations.</p>
+	</li>
+</ul><p>The campaign highlights a broader trend: attackers are increasingly weaponizing trusted SaaS platforms as delivery infrastructure to evade detection.</p>
+
+<h2>About the Research</h2>
+
+<p>The findings were published in CTM360’s February 2026 threat intelligence report, “Ninja Browser &amp; Lumma Infostealer Delivered via Weaponized Google Services”</p>
+
+<p><a href="https://www.ctm360.com/" target="_blank">CTM360</a> continues to monitor this activity and track related infrastructure.</p>
+
+<p><strong>Read the full report here: <a href="https://www.ctm360.com/reports/ninja-browser-lumma-infostealer" target="_blank">https://www.ctm360.com/reports/ninja-browser-lumma-infostealer</a></strong></p>
+
+<h2>Detect Cyber Threats 24/7 with CTM360</h2>
+
+<p>Monitor, analyze, and promptly mitigate risks across your external digital landscape with the CTM360.</p>
+
+<p><strong><a href="https://www.ctm360.com/free-access">Join our Community Edition</a></strong></p>
+<p><i>Sponsored and written by <a href="https://www.ctm360.com/free-access" target="_blank">CTM360</a>.</i></p>
+
+	   
+            
+	  </div></div>
+  </div>
+</body>
+</html>

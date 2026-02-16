@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google patches first Chrome zero-day exploited in attacks this year</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Google patches first Chrome zero-day exploited in attacks this year</h1>
+  <div class="metadata">
+    Source: Bleeping Computer | Date: 2/16/2026 | Lang: EN |
+    <a href="https://www.bleepingcomputer.com/news/security/google-patches-first-chrome-zero-day-exploited-in-attacks-this-year/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+	   
+<p><img alt="Google Chrome" src="https://www.bleepstatic.com/content/hl-images/2024/04/02/Google-Chrome.jpg" /></p>
+
+
+<p>Google has released emergency updates to fix a high-severity Chrome vulnerability exploited in zero-day attacks, marking the first such security flaw patched since the start of the year.</p>
+
+
+<p>"Google is aware that an exploit for CVE-2026-2441 exists in the wild," Google said in a <a href="https://chromereleases.googleblog.com/2026/02/stable-channel-update-for-desktop_13.html" target="_blank">security advisory</a> issued on Friday.</p>
+
+
+<p>According to the Chromium commit history, this use-after-free vulnerability (reported by security researcher Shaheen Fazim) is due to an iterator invalidation bug in CSSFontFeatureValuesMap, Chrome's implementation of CSS font feature values. Successful exploitation can allow attackers to trigger browser crashes, rendering issues, data corruption, or other undefined behavior.</p>
+
+<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
+</p>
+
+
+<p>The commit message also notes that the CVE-2026-2441 patch addresses "the immediate problem" but indicates there's "remaining work" tracked in <a href="https://crbug.com/483936078" target="_blank">bug 483936078</a>, suggesting this might be a temporary fix or that related issues still need to be addressed.</p>
+
+
+<p>The patch was tagged as "cherry-picked" (or backported) across multiple commits, indicating that it was important enough to include in a stable release rather than waiting for the next major version (likely because the vulnerability is being exploited in the wild).</p>
+
+
+<p>Although Google found evidence of attackers exploiting this zero-day flaw in the wild, it did not share additional details regarding these incidents.</p>
+
+
+<p>"Access to bug details and links may be kept restricted until a majority of users are updated with a fix. We will also retain restrictions if the bug exists in a third party library that other projects similarly depend on, but haven't yet fixed," it noted.</p>
+
+
+<p><img alt="Chrome 145.0.7632.76" src="https://www.bleepstatic.com/images/news/u/1109292/2026/Chrome%20145_0_7632_76.png" /></p>
+
+
+<p>Google has now fixed this vulnerability for users in the Stable Desktop channel, with new versions rolling out to Windows, macOS (145.0.7632.75/76), and Linux users (144.0.7559.75) worldwide over the coming days or weeks.</p>
+
+
+<p>If you don't want to update manually, you can also let Chrome check for updates automatically and install them after the next launch.</p>
+
+
+<p>While this is the first actively exploited Chrome security vulnerability patched since the start of 2026, last year Google addressed a total of <a href="https://www.bleepingcomputer.com/news/security/google-fixes-eighth-chrome-zero-day-exploited-in-attacks-in-2025/" target="_blank">eight zero-days abused in the wild</a>, many of them reported by the company's Threat Analysis Group (TAG), widely known for tracking and identifying zero-days exploited in spyware attacks targeting high-risk individuals.</p>
+
+
+
+	   
+<div>
+    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
+            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
+    </p>
+    <div>
+        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
+
+        </div>
+</div>
+
+           
+          
+ 
+	  </div></div>
+  </div>
+</body>
+</html>

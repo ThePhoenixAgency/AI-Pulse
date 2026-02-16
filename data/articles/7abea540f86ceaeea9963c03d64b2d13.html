@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Linux 7.0 Merges The Code To Replace The Tux Boot Logo At Build Time</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Linux 7.0 Merges The Code To Replace The Tux Boot Logo At Build Time</h1>
+  <div class="metadata">
+    Source: Phoronix | Date: 2/16/2026 | Lang: EN |
+    <a href="https://www.phoronix.com/news/Linux-7.0-FBDEV-Alternate-Logo" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp" /></p><p>
+Linus Torvalds merged the code this weekend that allows easily replacing the Tux penguin boot logo used during the boot process. This new code optionally allows specifying an alternative boot logo at compile/build time.
+</p><p>
+The year started off with <a href="https://www.phoronix.com/news/LInux-Kconfig-Tux-Boot-Logo">patches to more easily change the Tux kernel boot logo</a> with Kconfig options to easily specify alternative PPM files to use. Later in January <a href="https://www.phoronix.com/news/Linux-7.0-Custom-Boot-Logo">those patches were picked up by the FBDEV Git branch</a>.
+</p><p>
+Linux creator Linus Torvalds took no issue with allowing this flexibility or making it more easy to replace the venerable Tux penguin logo. He merged all of the FBDEV patches this weekend, including that custom boot logo support at compile-time. This makes it easier for those wanting to set an alternate logo to do so without having to otherwise patch the kernel build.
+</p><p><img src="https://www.phoronix.net/image.php?id=2022&amp;image=tux_boot_scroll" alt="Tux boot logo" /></p>
+<p>The <a href="https://lore.kernel.org/dri-devel/aZBlTsIwTzS0tqBD@carbonx1/">FBDEV pull request</a> had that work plus various other frame-buffer device improvementsclean-ups. The Microsoft Hyper-V frame-buffer driver has also been removed in favor of the Hyper-V DRM driver that is in better shape and more capable.
+</p><p>
+The <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> merge window is now half-way over and proving to be quite  a busy cycle coincidentally timed with this big version bump. Linux 7.0 stable meanwhile will be out in mid-April.</p></div></div>
+  </div>
+</body>
+</html>

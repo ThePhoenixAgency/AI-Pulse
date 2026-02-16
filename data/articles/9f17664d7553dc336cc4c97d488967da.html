@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Prompt Poaching: Why I Built Secret Sanitizer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Prompt Poaching: Why I Built Secret Sanitizer</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/souvikghosh957/prompt-poaching-why-i-built-secret-sanitizer-4g32" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+              <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbphqsy7m6lwumvygps2v.png">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbphqsy7m6lwumvygps2v.png" alt="Cover image for Prompt Poaching: Why I Built Secret Sanitizer" />
+              </a>
+
+            <div>
+                  <p><a href="https://dev.to/souvikghosh957"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2079481%2F86c5f98d-dc6a-4333-aa53-fb61ffe76a5f.png" alt="Souvik Ghosh" /></a>
+                  </p>
+                  
+                </div>
+          </div><div>
+                <p>Last year, I pasted a chunk of terminal output into ChatGPT to debug a failing deploy. Helpful answer. Great experience. Then I noticed my AWS keys sitting right there in the prompt — logged on someone else's servers, probably forever.</p>
+
+<p>I rotated them immediately. Nothing happened. But it stuck with me.</p>
+
+<p>Then in late 2025, security researchers discovered something worse: <strong>Chrome extensions with millions of users were silently harvesting every AI conversation and selling the data to brokers.</strong> Extensions with Google's "Featured" badge. Extensions marketed as privacy tools.</p>
+
+<p>They called it <a href="https://thehackernews.com/2026/01/two-chrome-extensions-caught-stealing.html" target="_blank"><strong>Prompt Poaching</strong></a> — and nearly 9 million users were affected.</p>
+
+<p>That's when I realized the problem is two layers deep. It's not just about what you send to the AI provider. It's also about what your browser extensions can see before it even gets there.</p>
+
+<p>I needed something that sat between my clipboard and the chat input. So I built it.</p>
+
+
+<hr />
+
+<h2>
+  <a name="meet-secret-sanitizer" href="#meet-secret-sanitizer">
+  </a>
+  Meet Secret Sanitizer
+</h2>
+
+<p>An open-source Chrome extension that masks secrets <strong>before</strong> they reach any AI chat.</p>
+
+<p>
+  <a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469" alt="Secret Sanitizer demo" /></a>
+</p>
+
+<p>The idea is simple:<br />
+</p>
+
+<div>
+<pre><code>You copy:     DATABASE_URL=postgres://admin:s3cret@prod.internal:5432/app
+You paste:    DATABASE_URL=[MASKED]
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>When you paste into ChatGPT, Claude, Gemini, Grok, Perplexity, DeepSeek — or any custom site you add — the extension intercepts the paste, runs regex patterns <strong>locally in your browser</strong>, replaces detected secrets with <code>[MASKED]</code>, and shows a quick toast confirming what was blocked.</p>
+
+<p>The AI still gets your question. It just doesn't get your credentials.</p>
+
+<p>Originals are stored in a local encrypted vault you can unmask anytime.</p>
+
+
+<hr />
+
+<h2>
+  <a name="what-it-catches" href="#what-it-catches">
+  </a>
+  What it catches
+</h2>
+
+<p>API keys (AWS, GCP, Azure, Stripe, GitHub, OpenAI, and many more), passwords, bearer tokens, JWTs, database connection strings, private key blocks, <code>.env</code> key-value pairs, and even Indian PII like Aadhaar and PAN numbers.</p>
+
+<p>Every pattern can be toggled on or off individually — no false-positive headaches.</p>
+
+
+<hr />
+
+<h2>
+  <a name="why-you-should-trust-it" href="#why-you-should-trust-it">
+  </a>
+  Why you should trust it
+</h2>
+
+<p>After writing about extensions that betray trust, I'd be a hypocrite asking for blind trust. So every design decision optimizes for verifiability:</p>
+
+<ul>
+<li>
+<strong>100% local</strong> — no <code>fetch()</code>, no <code>XMLHttpRequest</code>, no network calls. Verify yourself: <code>grep -r "fetch\|XMLHttpRequest" content_script.js</code>
+</li>
+<li>
+<strong>Works offline</strong> — disable Wi-Fi and try it</li>
+<li>
+<strong>38 KB total</strong> — there's nowhere to hide malicious code in 38 KB</li>
+<li>
+<strong>Open source</strong> — MIT licensed. <a href="https://github.com/souvikghosh957/secret-sanitizer-extension" target="_blank">Read every line</a>
+</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="other-features" href="#other-features">
+  </a>
+  Other features
+</h2>
+
+<ul>
+<li>
+<strong>Test Mode</strong> — preview what gets masked without modifying your paste</li>
+<li>
+<strong>Stats dashboard</strong> — track secrets blocked, see which patterns fire most</li>
+<li>
+<strong>Custom sites</strong> — protect any domain with one click</li>
+<li>
+<strong>Backup and restore</strong> — export/import your config</li>
+<li>
+<strong>Dark mode</strong> and keyboard shortcuts</li>
+</ul>
+
+
+<hr />
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try it
+</h2>
+
+<p><strong>Chrome Web Store</strong> — <a href="https://chromewebstore.google.com/detail/secret-sanitizer/genolcmpopiemhpbdnhkaefllchgekja" target="_blank">one-click install</a></p>
+
+<p><strong>GitHub</strong> — <a href="https://github.com/souvikghosh957/secret-sanitizer-extension" target="_blank">source code, issues, contributions welcome</a></p>
+
+
+<hr />
+
+<h2>
+  <a name="whats-next" href="#whats-next">
+  </a>
+  What's next
+</h2>
+
+<p>Firefox support, smart restore (auto-restore secrets when copying AI responses), and community pattern packs are all on the roadmap.</p>
+
+<p>If you try it, I'd love to hear — <strong>what patterns am I missing? Any false positives? Would you use a Firefox version?</strong></p>
+
+<p>Drop a comment or <a href="https://github.com/souvikghosh957/secret-sanitizer-extension/issues" target="_blank">open an issue</a>. And if it saves you from a leak, a ⭐ on GitHub helps other devs find it.</p>
+
+<p><em>Paste safely out there 💚.</em></p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

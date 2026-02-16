@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft says Windows 11 update causes BSOD on some GPU config, broke WPA3 Wi‑Fi, but a fix is rolling out</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Microsoft says Windows 11 update causes BSOD on some GPU config, broke WPA3 Wi‑Fi, but a fix is rolling out</h1>
+  <div class="metadata">
+    Source: Windows Latest | Date: 2/15/2026 | Lang: EN |
+    <a href="https://www.windowslatest.com/2026/02/15/microsoft-says-windows-11-update-causes-bsod-on-some-gpu-config-broke-wpa3-wi%e2%80%91fi-but-a-fix-is-rolling-out/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+            <p><a href="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-11-GPU-BSOD.jpg"><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-11-GPU-BSOD-696x358.jpg" alt="Windows 11 GPU BSOD" /></a></p>
+            <p>Microsoft says it is aware of two separate issues that could affect some Windows 11 installs, including a fatal bug that crashes affected PCs with certain GPU configurations, likely not just Nvidia GPUs. If only Nvidia GPUs were having issues, Microsoft would have specifically admitted it. Moreover, Microsoft has confirmed another bug that causes issues with WPA3 Wi-Fi.</p>
+<p>According to Microsoft, a bug in Windows 11 causes certain PCs to crash with a Black Screen of Death (BSOD), and the error code is KERNEL_SECURITY_CHECK_FAILURE. The kernel security error code is not exactly new, as reports of the issue date back to 2023, and there is also a very detailed <a href="https://learn.microsoft.com/en-us/windows-hardware/drivers/debugger/bug-check-0x139--kernel-security-check-failure" target="_blank">support document</a> that explains what causes the problem.</p>
+<p>However, it appears that after recent Windows updates, more testers started running into this KERNEL_SECURITY_CHECK_FAILURE error, which can also show a green screen instead of black. The blue screen was recently updated to use a black screen as part of modernization efforts in Windows 11.</p>
+<p><img src="https://www.windowslatest.com/wp-content/uploads/2026/02/Windows-11-GPU-BSOD-1.jpg" alt="Windows 11 GPU BSOD" /></p>
+<p>In a <a href="https://aka.ms/AAzrxwp" target="_blank">Feedback Hub post</a>, one user noted that they run into the BSOD error KERNEL_SECURITY_CHECK_FAILURE when trying to play Genshin Impact if kernel-mode hardware-enforced stack protection is enabled. There’s also a <a href="https://www.reddit.com/r/Genshin_Impact/comments/12dveeb/psa_windows_11_kernel_security_check_failure_fix/" target="_blank">thread on Reddit</a> that points out similar issues.</p>
+<p>Thankfully, it’s all patched up now, after a long delay. In the <a href="https://support.microsoft.com/en-us/topic/february-10-2026-kb5077181-os-builds-26200-7840-and-26100-7840-f0fa9e54-a22a-4a06-96b6-bf5b2aded506" target="_blank">release notes</a> of <a href="https://www.windowslatest.com/2026/02/10/i-tested-windows-11-february-2026-updates-everything-new-improved-and-fixed/">Windows 11’s February 2026 Update</a>, Microsoft quietly confirmed that it was aware of the GPU BSOD bug and is now rolling out a fix:</p>
+<p><em>“[Graphics] Fixed: This update addresses an issue where certain GPU configurations might recently have experienced a system error related to dxgmms2.sys, resulting in the KERNEL_SECURITY_CHECK_FAILURE error.”</em></p>
+<p>According to Microsoft, if you don’t install the recent updates, some PCs could run into a system error involving dxgmms2.sys, which is a core DirectX graphics memory management component.</p>
+<p>When that happens, Windows may stop with KERNEL_SECURITY_CHECK_FAILURE (Bug Check 0x139), an error that appears when the kernel detects corruption or an invalid change in a critical internal data structure and shuts down to protect the system.</p>
+<p>After the update, you should no longer run into BSODs due to your GPU.</p>
+<p>This issue is patched in Windows 11 Build 26200.7840 or newer.</p>
+<h2>Microsoft confirms Wi-Fi issues on Windows 11</h2>
+<p>In <a href="https://support.microsoft.com/en-us/topic/february-10-2026-kb5077181-os-builds-26200-7840-and-26100-7840-f0fa9e54-a22a-4a06-96b6-bf5b2aded506" target="_blank">another support document</a>, Microsoft admitted that a bug in Windows 11 prevents some PCs from connecting to WPA3-based Wi-Fi networks, but the company insists that it affects only certain networks, and it does not have a list of affected adapters.</p>
+<p>According to Microsoft, this issue originates from the January 2026 optional update (<a href="https://www.windowslatest.com/2026/01/30/windows-11-kb5074105-25h2-adds-android-resume-feature-direct-download-links-for-msu-offline-installer/">KB5074105</a>), and is finally getting fixed in Build 26200.7840 (KB5077181).</p>
+<p>“[Networking] Fixed: This update addresses an issue that prevented some devices from connecting to certain WPA3-Personal Wi-Fi networks. The issue might occur after you install KB5074105,” Microsoft confirmed in the <a href="https://support.microsoft.com/en-us/topic/february-10-2026-kb5077181-os-builds-26200-7840-and-26100-7840-f0fa9e54-a22a-4a06-96b6-bf5b2aded506" target="_blank">updated release notes</a> spotted by Windows Latest.</p>
+<p>While these issues are patched in Windows 11’s February 2026 Update, it is important to note that fixes are rolling out gradually. Even if the patch is installed, you might still run into the problem until the fix is fully applied to your system.</p>
+<p>In addition, <a href="https://www.windowslatest.com/2026/02/15/windows-11-kb5077181-fixes-gaming-bugs-nvidia-black-screen-and-performance-issue-affecting-explorer-exe-taskbar-and-start-menu/">Microsoft confirmed it fixed black screen and other gaming issues</a> hitting some Nvidia GPUs.</p>
+
+        
+
+        
+                </div></div>
+  </div>
+</body>
+</html>

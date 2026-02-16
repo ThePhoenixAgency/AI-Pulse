@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - chadbyte/claude-relay: Access Claude Code on your machine, from anywhere. One command, no install.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - chadbyte/claude-relay: Access Claude Code on your machine, from anywhere. One command, no install.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/chadbyte/claude-relay" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>claude-relay</h2><a href="#claude-relay"></a><p></p>
+<p>
+  <a target="_blank" href="https://github.com/chadbyte/claude-relay/blob/main/media/phone.gif"><img src="https://github.com/chadbyte/claude-relay/raw/main/media/phone.gif" alt="claude-relay on phone" /></a>
+</p>
+<p></p><h3>Web UI for Claude Code. Any device. Push notifications.</h3><a href="#web-ui-for-claude-code-any-device-push-notifications"></a><p></p>
+<p><a href="https://www.npmjs.com/package/claude-relay"><img src="https://camo.githubusercontent.com/f191073145abf3cc8b7ff37797c8658ab86bf74e17ced64f233d3738b1af32fc/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f636c617564652d72656c6179" alt="npm version" /></a> <a href="https://www.npmjs.com/package/claude-relay"><img src="https://camo.githubusercontent.com/d13f155fb6f25a32b5cb4b9e409a9eb0b1c857cf0e55d7389df6ec7a19101c94/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f64772f636c617564652d72656c6179" alt="npm downloads" /></a> <a href="https://github.com/chadbyte/claude-relay"><img src="https://camo.githubusercontent.com/360aa78c5ad13166dfb1e87b1bf6f94197db46cf04974d65a274cd8162135d59/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f63686164627974652f636c617564652d72656c6179" alt="GitHub stars" /></a></p>
+<p>Claude Code. Anywhere.<br />
+Same session. Same files. Same machine.<br />
+Your files stay on your computer. Nothing leaves for the cloud.</p>
+<p>Pick up the same Claude Code session on your phone.<br />
+Start in the terminal, continue on your phone, switch back anytime.</p>
+<p>Claude Code is automating more of your editing and execution workflow.
+But when it needs approval or asks a question, it halts in the terminal. If you walk away, it just sits there waiting.</p>
+<p>claude-relay eliminates this bottleneck.
+It is not a thin wrapper that intercepts input/output. It drives Claude Code via the Claude Agent SDK and relays the stream from your local machine to your browser.</p>
+<p>Get approval notifications while grabbing a coffee.
+Continue working from the sofa on your iPad.
+Split your browser: claude-relay on one side, your app preview on the other, and watch the code change in real time.</p>
+<div><pre><span>cd</span> <span>~</span>/your-project
+npx claude-relay
+<span><span>#</span> First run: Set Port/PIN -&gt; Scan QR -&gt; Connect</span></pre></div>
+<hr />
+<p></p><h2>Never Miss an Approval</h2><a href="#never-miss-an-approval"></a><p></p>
+<p>When Claude Code requests permission before executing a tool, you get a notification on your phone.
+One tap, and Claude Code gets back to work.</p>
+<p>
+  <a target="_blank" href="https://github.com/chadbyte/claude-relay/blob/main/media/push-notification.jpg"><img src="https://github.com/chadbyte/claude-relay/raw/main/media/push-notification.jpg" alt="push notification" /></a>
+</p>
+<p>It works in browser tabs too. When input is awaited, the favicon blinks and the tab title changes to alert you.</p>
+<p></p><h2>Side by Side Workflow</h2><a href="#side-by-side-workflow"></a><p></p>
+<p>
+  <a target="_blank" href="https://github.com/chadbyte/claude-relay/blob/main/media/split.gif"><img src="https://github.com/chadbyte/claude-relay/raw/main/media/split.gif" alt="split-screen workflow" /></a>
+</p>
+<p>Keep claude-relay on one side and your localhost on the other.
+Watch the results update live while Claude Code fixes your source files.</p>
+<p>Mermaid diagrams render as diagrams, and tables appear as actual tables.
+You can explore files in the sidebar and use the built-in terminal to run shell commands.</p>
+<p></p><h2>All in One Place</h2><a href="#all-in-one-place"></a><p></p>
+<p>Run <code>npx claude-relay</code> in each project to register them to the same server.
+Manage all your active sessions from a single dashboard.</p>
+<div><pre><span>cd</span> <span>~</span>/projects/backend <span>&amp;&amp;</span> npx claude-relay    <span><span>#</span> Register project</span>
+<span>cd</span> <span>~</span>/projects/frontend <span>&amp;&amp;</span> npx claude-relay   <span><span>#</span> Adds to the same server</span></pre></div>
+<p>The server runs in the background. Even if you close the terminal window, your sessions and the server remain active.</p>
+<hr />
+<p></p><h2>Getting Started</h2><a href="#getting-started"></a><p></p>
+<div><pre>npx claude-relay</pre></div>
+<p>
+  <a target="_blank" href="https://github.com/chadbyte/claude-relay/blob/main/media/start.gif"><img src="https://github.com/chadbyte/claude-relay/raw/main/media/start.gif" alt="npx claude-relay" /></a>
+</p>
+<p>On the first run, you'll set a port and PIN to launch the server.
+Scan the QR code with your phone to connect instantly, or open the URL displayed in your terminal.</p>
+<p></p><h2>Key Features</h2><a href="#key-features"></a><p></p>
+<ul>
+<li><strong>Push Approvals</strong> - Approve or reject from your phone while away, so Claude Code does not get stuck waiting.</li>
+<li><strong>Multi Project Daemon</strong> - Manage all projects via a single port.</li>
+<li><strong>Auto Session Logs (JSONL)</strong> - Conversations and execution history are always saved locally. No data loss on crashes or restarts. Location: <code>./.claude-relay/sessions/</code></li>
+<li><strong>File Browser and Terminal</strong> - Inspect files and execute commands directly from the browser.</li>
+</ul>
+<blockquote>
+<p>Note: Session logs may contain prompts, outputs, and commands. Do not share this folder.</p>
+</blockquote>
+
+View Full Feature List
+<p><strong>Notifications</strong></p>
+<ul>
+<li><strong>Push Notifications</strong> - Approvals, completions, errors, and questions. Add to Home Screen (PWA) to receive notifications without opening the app. Behavior depends on OS and browser. Tested on iPhone (Home Screen PWA) and desktop Chrome.</li>
+<li><strong>Favicon and Title Blinking</strong> - Visual cues when input is awaited.</li>
+<li><strong>Sound Alerts</strong> - Supports browser notifications, desktop notifications, and audio alerts.</li>
+</ul>
+<p><strong>Projects and Sessions</strong></p>
+<ul>
+<li><strong>Multi Project</strong> - Single port management for all projects.</li>
+<li><strong>Project Names</strong> - Custom names make it easy to distinguish tabs.</li>
+<li><strong>Session Persistence</strong> - Sessions survive server restarts, browser crashes, and network drops.</li>
+<li><strong>Session Handoff</strong> - Start in the terminal, continue on your phone, pass back to desktop.</li>
+<li><strong>Rewind (Native Claude Code)</strong> - Accessible directly from the browser UI.</li>
+</ul>
+<p><strong>Rendering and Tools</strong></p>
+<ul>
+<li><strong>Mermaid and Markdown</strong> - Proper rendering for diagrams, tables, and code blocks.</li>
+<li><strong>Syntax Highlighting</strong> - Support for over 180 languages with copy buttons on every block.</li>
+<li><strong>File Browser</strong> - Sidebar navigation with file previews and markdown rendering.</li>
+<li><strong>Built in Terminal</strong> - Full shell access within the browser.</li>
+<li><strong>Slash Commands</strong> - Execute standard Claude Code commands from the browser, with autocomplete.</li>
+</ul>
+<p><strong>UI</strong></p>
+<ul>
+<li><strong>Mobile Optimized</strong> - Large approve and reject buttons. Behaves like a native app via PWA.</li>
+<li><strong>Real time Sync</strong> - All devices view the exact same session state.</li>
+<li><strong>QR Code</strong> - Scan to connect instantly.</li>
+<li><strong>Image Paste</strong> - Paste images directly from your clipboard into the input.</li>
+</ul>
+<p><strong>Server and Security</strong></p>
+<ul>
+<li><strong>Background Daemon</strong> - Server persists even if the CLI is closed.</li>
+<li><strong>Keep Awake</strong> - Prevents macOS sleep to keep sessions alive. Configurable toggle.</li>
+<li><strong>PIN Protection</strong> - Restrict access with a 6 digit PIN.</li>
+<li><strong>HTTPS</strong> - Automatic certificate generation via mkcert.</li>
+<li><strong>Zero Config</strong> - Inherits your existing Claude Code configuration.</li>
+</ul>
+
+<p></p><h2>Network</h2><a href="#network"></a><p></p>
+<p>On the same Wi Fi, it just works. Open the URL shown in the terminal on any device.</p>
+<p>For remote access, <a href="https://tailscale.com/">Tailscale</a> is recommended. Install it on both devices and log in with the same account to connect via an encrypted tunnel without port forwarding. Free for personal use.</p>
+<p></p><h2>Security</h2><a href="#security"></a><p></p>
+<p>claude-relay opens on your local network to allow access from other devices such as phones and tablets on the same Wi Fi.
+Setting a PIN is highly recommended.</p>
+<p>Anyone on your network with the URL and PIN can access the session. PIN protection can be enabled during the initial setup.</p>
+<p>Do not expose this directly to the public internet. Usage on public or shared networks is not recommended.
+For remote access, use <a href="https://tailscale.com/">Tailscale</a> or a VPN.</p>
+<p>Users are responsible for their network configuration and exposure scope.</p>
+<p></p><h2>HTTPS for Push</h2><a href="#https-for-push"></a><p></p>
+<p>Basic features work out of the box. Only push notifications require HTTPS.</p>
+<p>Set it up once using <a href="https://github.com/FiloSottile/mkcert">mkcert</a>:</p>
+<div><pre>brew install mkcert
+mkcert -install</pre></div>
+<p>Certificates are generated automatically. The setup wizard handles the rest.</p>
+<p>If push registration fails: check whether your browser trusts HTTPS and whether your phone can access the address.</p>
+<p></p><h2>CLI Options</h2><a href="#cli-options"></a><p></p>
+<div><pre>npx claude-relay              <span><span>#</span> Default (port 2633)</span>
+npx claude-relay -p 8080      <span><span>#</span> Specify port</span>
+npx claude-relay --no-https   <span><span>#</span> Disable HTTPS</span>
+npx claude-relay --no-update  <span><span>#</span> Skip update check</span>
+npx claude-relay --debug      <span><span>#</span> Enable debug panel</span></pre></div>
+<p></p><h2>Requirements</h2><a href="#requirements"></a><p></p>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code CLI</a> installed and authenticated</li>
+<li>Node.js 18+</li>
+<li><a href="https://github.com/FiloSottile/mkcert">mkcert</a> - For push notifications (optional)</li>
+<li><a href="https://tailscale.com/">Tailscale</a> - For remote access (optional)</li>
+</ul>
+<p></p><h2>Architecture</h2><a href="#architecture"></a><p></p>
+<p>claude-relay is not a wrapper that intercepts standard input/output.
+It is a local relay server that drives Claude Code execution via the <a href="https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk">Claude Agent SDK</a> and streams data to the browser via WebSocket.</p>
+<section>
+  <div>
+      <pre>graph LR
+    Browser["Browser&lt;br/&gt;(Phone / Desktop)"]
+    WS["WebSocket"]
+    Server["HTTP Server&lt;br/&gt;lib/server.js"]
+    Project["Project Context&lt;br/&gt;lib/project.js"]
+    SDK["Claude Agent SDK"]
+    Claude["Claude Code&lt;br/&gt;Process"]
+    Push["Push Service"]
+
+    Browser &lt;--&gt;|Real time stream| WS
+    WS &lt;--&gt; Server
+    Server --&gt;|slug routing| Project
+    Project &lt;--&gt;|async iterable| SDK
+    SDK &lt;--&gt;|Prompt / Response| Claude
+    Project --&gt;|Approval request| Push
+    Push --&gt;|Notification| Browser
+</pre>
+    </div>
+  <span>
+    <span>
+      <span>Loading</span>
+</span>
+  </span>
+</section>
+
+<p>For a detailed sequence diagram, daemon structure, and design decisions, refer to <a href="https://github.com/chadbyte/claude-relay/blob/main/docs/architecture.md">docs/architecture.md</a>.</p>
+<p></p><h2>Star History</h2><a href="#star-history"></a><p></p>
+<a href="https://star-history.com/#chadbyte/claude-relay&amp;Date">
+ 
+   
+   
+   <img alt="Star History Chart" src="https://camo.githubusercontent.com/9a69fac8845a7b1d4d52d33cff8f2fec09d41aee5eeb7c75420fed8fff032dca/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d63686164627974652f636c617564652d72656c617926747970653d44617465" />
+ 
+</a>
+<hr />
+<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
+<p>Bug fixes and typos are welcome. For feature suggestions, please open an issue first:
+<a href="https://github.com/chadbyte/claude-relay/issues">https://github.com/chadbyte/claude-relay/issues</a></p>
+<p>If you are using claude-relay, let us know how you are using it in Discussions:
+<a href="https://github.com/chadbyte/claude-relay/discussions">https://github.com/chadbyte/claude-relay/discussions</a></p>
+<p></p><h2>Disclaimer</h2><a href="#disclaimer"></a><p></p>
+<p>This is an independent project and is not affiliated with Anthropic. Claude is a trademark of Anthropic.</p>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>MIT</p>
+</article></div></div>
+  </div>
+</body>
+</html>

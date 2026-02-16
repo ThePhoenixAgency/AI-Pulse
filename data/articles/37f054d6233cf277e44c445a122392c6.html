@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - f/check-ai: Audit any repository for AI-readiness.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - f/check-ai: Audit any repository for AI-readiness.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: FR |
+    <a href="https://github.com/f/check-ai" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p>
+  <a target="_blank" href="https://github.com/f/check-ai/blob/main/logo.svg"><img src="https://github.com/f/check-ai/raw/main/logo.svg" alt="check-ai logo" /></a>
+</p>
+<p></p><h2>npx check-ai</h2><a href="#npx-check-ai"></a><p></p>
+<p><strong>Audit any repository for AI-readiness.</strong></p>
+<p><a href="https://github.com/f/check-ai"><img src="https://camo.githubusercontent.com/63430a7c45709673651dcaba2c2b2b9db0399feeca1b9360ab2333ee24ea5386/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f414925323052656164792d43253230342e3925324631302d79656c6c6f77" alt="AI Ready" /></a></p>
+
+<p>One command. 66 checks. Zero dependencies. Scans for agent configs, repo hygiene, grounding docs, testing safety nets, prompt templates, MCP integrations, AI dependencies — and scores it all on a <strong>0–10 scale</strong>.</p>
+<div><pre><code>  🧹 Repo Hygiene  ████████████░░░  77% (26/34)
+  📄 Grounding Docs ██████████░░░░░  65% (15/23)
+  🧪 Testing       ██████████████░  90% (9/10)
+  🤖 Agent Configs  ████████████░░░  75% (55/73)
+  🔒 AI Context    ██████░░░░░░░░░  40% (6/15)
+  🧩 Prompts       ████░░░░░░░░░░░  28% (5/18)
+  🔌 MCP           ███████████████  100% (11/11)
+  📦 AI Deps       ███████████████  100% (4/4)
+
+  ──────────────────────────────────────────────────
+
+   A   Strong — AI-ready
+
+  ████████████████████████████████░░░░░░░░  7.8/10
+  38 of 66 checks passed · 131/188 pts
+
+  ──────────────────────────────────────────────────
+</code></pre></div>
+<p></p><h2>Install &amp; Run</h2><a href="#install--run"></a><p></p>
+<div><pre>npx check-ai</pre></div>
+<p>Scan a specific repo:</p>
+<div><pre>npx check-ai /path/to/repo</pre></div>
+<p></p><h3>Options</h3><a href="#options"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--json</code></td>
+<td>Machine-readable JSON output</td>
+</tr>
+<tr>
+<td><code>--verbose</code>, <code>-v</code></td>
+<td>Include low-priority (nice-to-have) recommendations</td>
+</tr>
+<tr>
+<td><code>--no-interactive</code></td>
+<td>Disable animated output (auto-detected in CI / pipes)</td>
+</tr>
+<tr>
+<td><code>--ci</code></td>
+<td>Alias for <code>--no-interactive</code></td>
+</tr>
+<tr>
+<td><code>-h</code>, <code>--help</code></td>
+<td>Show help</td>
+</tr>
+<tr>
+<td><code>--version</code></td>
+<td>Show version</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>CI Integration</h3><a href="#ci-integration"></a><p></p>
+<p><code>check-ai</code> exits with code <strong>1</strong> when the score is below 3/10, so you can use it as a CI gate:</p>
+<div><pre><span><span>#</span> GitHub Actions</span>
+- <span>name</span>: <span>AI Readiness Check</span>
+  <span>run</span>: <span>npx check-ai</span></pre></div>
+<div><pre><span><span>#</span> GitLab CI</span>
+<span>ai-audit</span>:
+  <span>script</span>: <span>npx check-ai --ci</span></pre></div>
+<p></p><h3>JSON Output</h3><a href="#json-output"></a><p></p>
+<p>Pipe results into other tools or dashboards:</p>
+<div><pre>npx check-ai --json <span>|</span> jq <span><span>'</span>.score<span>'</span></span></pre></div>
+<div><pre>{
+  <span>"score"</span>: <span>7.8</span>,
+  <span>"grade"</span>: <span><span>"</span>A<span>"</span></span>,
+  <span>"label"</span>: <span><span>"</span>Strong — AI-ready<span>"</span></span>,
+  <span>"checks"</span>: { <span>"passed"</span>: <span>38</span>, <span>"total"</span>: <span>66</span> },
+  <span>"sections"</span>: { <span>... </span>},
+  <span>"findings"</span>: [ <span>... </span>]
+}</pre></div>
+<hr />
+<p></p><h2>What It Audits</h2><a href="#what-it-audits"></a><p></p>
+<p><code>check-ai</code> runs <strong>66 checks</strong> grouped into <strong>8 sections</strong>. Each check has a weight based on real-world impact.</p>
+<p></p><h3>🧹 Repo Hygiene</h3><a href="#-repo-hygiene"></a><p></p>
+<p>A clean, well-structured repo is the foundation for AI agents to work effectively.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Git repo</td>
+<td><code>.git</code> directory</td>
+</tr>
+<tr>
+<td>Gitignore</td>
+<td><code>.gitignore</code></td>
+</tr>
+<tr>
+<td>Env example</td>
+<td><code>.env.example</code>, <code>.env.sample</code>, <code>.env.template</code></td>
+</tr>
+<tr>
+<td>Editor config</td>
+<td><code>.editorconfig</code></td>
+</tr>
+<tr>
+<td>Linter</td>
+<td>ESLint, Pylint, Ruff, RuboCop, golangci-lint configs</td>
+</tr>
+<tr>
+<td>Formatter</td>
+<td>Prettier, Biome, deno fmt, clang-format, rustfmt configs</td>
+</tr>
+<tr>
+<td>CI pipeline</td>
+<td>GitHub Actions, GitLab CI, CircleCI, Jenkins, Travis, Bitbucket Pipelines</td>
+</tr>
+<tr>
+<td>Standard scripts</td>
+<td><code>start</code>, <code>test</code>, <code>lint</code> in package.json or Makefile</td>
+</tr>
+<tr>
+<td>Dev container</td>
+<td><code>.devcontainer/</code> for reproducible environments</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>📄 Grounding Docs</h3><a href="#-grounding-docs"></a><p></p>
+<p>Documentation that helps AI agents understand what your project is and how it works.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README</td>
+<td><code>README.md</code></td>
+</tr>
+<tr>
+<td>README quality</td>
+<td>Checks for install instructions, usage, structure, code blocks, headings</td>
+</tr>
+<tr>
+<td>Contributing guide</td>
+<td><code>CONTRIBUTING.md</code></td>
+</tr>
+<tr>
+<td>Architecture doc</td>
+<td><code>architecture.md</code>, <code>ARCHITECTURE.md</code>, <code>docs/architecture.md</code></td>
+</tr>
+<tr>
+<td>Tech stack doc</td>
+<td><code>tech-stack.md</code>, <code>docs/tech-stack.md</code></td>
+</tr>
+<tr>
+<td>AI requirements</td>
+<td><code>.ai/requirements</code>, <code>.ai/docs</code>, <code>docs/prd</code></td>
+</tr>
+<tr>
+<td>llms.txt</td>
+<td><code>llms.txt</code>, <code>llms-full.txt</code> (the <a href="https://llmstxt.org/">llms.txt standard</a>)</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>🧪 Testing Safety Net</h3><a href="#-testing-safety-net"></a><p></p>
+<p>Tests catch agent-introduced regressions before they ship.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test directory</td>
+<td><code>tests/</code>, <code>test/</code>, <code>__tests__/</code>, <code>spec/</code>, <code>e2e/</code>, <code>cypress/</code>, <code>playwright/</code></td>
+</tr>
+<tr>
+<td>Test runner config</td>
+<td>Jest, Vitest, Playwright, Cypress, pytest, RSpec configs</td>
+</tr>
+<tr>
+<td>Coverage config</td>
+<td>nyc, c8, coveragerc, Codecov configs</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>🤖 Agent Configs</h3><a href="#-agent-configs"></a><p></p>
+<p>The core of AI-readiness. Having <strong>at least one</strong> AI tool configured earns a large bonus — because in practice, teams use one tool (Cursor <strong>or</strong> Windsurf <strong>or</strong> Claude Code), not all of them at once.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>At least one AI tool</strong></td>
+<td>Any tool-specific config found (big bonus)</td>
+</tr>
+<tr>
+<td>AGENTS.md</td>
+<td>Universal cross-tool agent instructions (<a href="https://agents.md/">agents.md</a>)</td>
+</tr>
+<tr>
+<td>AGENTS.md quality</td>
+<td>Content analysis: build commands, test instructions, style guide, code examples</td>
+</tr>
+<tr>
+<td>Nested AGENTS.md</td>
+<td>Deep scan for per-module AGENTS.md files</td>
+</tr>
+<tr>
+<td>.agents/</td>
+<td>Agent assets directory (skills, plans)</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><code>CLAUDE.md</code>, <code>.claude/</code>, <code>.claude/settings.json</code></td>
+</tr>
+<tr>
+<td>Cursor</td>
+<td><code>.cursorrules</code>, <code>.cursor/rules/</code></td>
+</tr>
+<tr>
+<td>Windsurf</td>
+<td><code>.windsurfrules</code> (legacy), <code>.windsurf/rules/</code> (new), <code>.windsurf/skills/</code>, <code>.windsurf/workflows/</code></td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td><code>.github/copilot-instructions.md</code>, <code>.github/instructions/</code></td>
+</tr>
+<tr>
+<td>OpenAI Codex</td>
+<td><code>.codex/</code>, <code>CODEX.md</code></td>
+</tr>
+<tr>
+<td>Google Gemini</td>
+<td><code>.gemini/</code></td>
+</tr>
+<tr>
+<td>Aider</td>
+<td><code>.aider.conf.yml</code></td>
+</tr>
+<tr>
+<td>Roo Code</td>
+<td><code>.roo/</code></td>
+</tr>
+<tr>
+<td>Continue</td>
+<td><code>.continue/</code>, <code>.continuerc.json</code></td>
+</tr>
+<tr>
+<td>Amp (Sourcegraph)</td>
+<td>Reads AGENTS.md (counted via AGENTS.md check)</td>
+</tr>
+<tr>
+<td>JetBrains Junie</td>
+<td><code>.junie/</code>, <code>.junie/guidelines.md</code></td>
+</tr>
+<tr>
+<td>Entire HQ</td>
+<td><code>.entire/</code> (captures AI agent sessions per git push)</td>
+</tr>
+<tr>
+<td>OpenCode</td>
+<td><code>opencode.json</code>, <code>.opencode/</code> (agents, commands, skills, plugins)</td>
+</tr>
+<tr>
+<td>Zed</td>
+<td><code>.rules</code></td>
+</tr>
+<tr>
+<td>Trae</td>
+<td><code>.trae/rules/</code></td>
+</tr>
+<tr>
+<td>Cline</td>
+<td><code>.clinerules</code></td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>🔒 AI Context</h3><a href="#-ai-context"></a><p></p>
+<p>Files that control what AI agents can and cannot see.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cursor ignore</td>
+<td><code>.cursorignore</code></td>
+</tr>
+<tr>
+<td>Cursor indexing ignore</td>
+<td><code>.cursorindexingignore</code></td>
+</tr>
+<tr>
+<td>AI ignore</td>
+<td><code>.aiignore</code>, <code>.aiexclude</code></td>
+</tr>
+<tr>
+<td>CodeRabbit</td>
+<td><code>.coderabbit.yaml</code></td>
+</tr>
+<tr>
+<td>Copilot ignore</td>
+<td><code>.copilotignore</code></td>
+</tr>
+<tr>
+<td>Codeium ignore</td>
+<td><code>.codeiumignore</code></td>
+</tr>
+<tr>
+<td>Instruction files</td>
+<td>Deep scan for <code>.instructions.md</code> files</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>🧩 Prompts &amp; Skills</h3><a href="#-prompts--skills"></a><p></p>
+<p>Reusable prompt templates and agent skill definitions.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prompt templates (.yml)</td>
+<td>Deep scan for <code>.prompt.yml</code> files</td>
+</tr>
+<tr>
+<td>Prompt templates (.md)</td>
+<td>Deep scan for <code>.prompt.md</code> files</td>
+</tr>
+<tr>
+<td>Prompts directory</td>
+<td><code>prompts/</code>, <code>.prompts/</code>, <code>.ai/prompts/</code></td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>Deep scan for <code>SKILL.md</code> files</td>
+</tr>
+<tr>
+<td>Claude commands</td>
+<td><code>.claude/commands/</code></td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>🔌 MCP (Model Context Protocol)</h3><a href="#-mcp-model-context-protocol"></a><p></p>
+<p>Tool integrations that extend agent capabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCP config</td>
+<td><code>.mcp.json</code>, <code>mcp.json</code></td>
+</tr>
+<tr>
+<td>MCP server count</td>
+<td>Parses config and counts configured servers</td>
+</tr>
+<tr>
+<td>MCP directory</td>
+<td><code>.mcp/</code></td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>📦 AI Dependencies</h3><a href="#-ai-dependencies"></a><p></p>
+<p>Detects AI SDK usage in your project.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What it looks for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI SDKs</td>
+<td>Scans <code>package.json</code>, <code>requirements.txt</code>, <code>pyproject.toml</code> for OpenAI, Anthropic, LangChain, Vercel AI SDK, Google AI, Hugging Face, MCP SDK, vector DBs, tokenizers, and more (~40 packages)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>How Scoring Works</h2><a href="#how-scoring-works"></a><p></p>
+<p>Each check has a <strong>weight</strong> based on how much it impacts AI-readiness.</p>
+<p>The raw score is normalized to a <strong>0–10 scale</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Score</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A+</strong></td>
+<td>9–10</td>
+<td>Exemplary — fully AI-ready</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>7–9</td>
+<td>Strong — AI-ready</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>5–7</td>
+<td>Decent — partially AI-ready</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>3–5</td>
+<td>Weak — minimal AI setup</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>1–3</td>
+<td>Poor — barely AI-aware</td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>0–1</td>
+<td>None — not AI-ready</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Scoring Philosophy</h3><a href="#scoring-philosophy"></a><p></p>
+<ul>
+<li><strong>Having any one AI tool configured earns a big bonus.</strong> People use Cursor or Windsurf or Claude Code — not all at once. The tool doesn't penalize you for picking one.</li>
+<li><strong>AGENTS.md is weighted highest</strong> among individual checks because it's the universal, cross-tool standard.</li>
+<li><strong>Content quality matters</strong>, not just file existence. AGENTS.md and README.md are analyzed for real signals like build commands, test instructions, code examples, and headings.</li>
+<li><strong>Deep scanning</strong> walks your file tree (up to 6 levels) to find nested AGENTS.md, .prompt.yml, SKILL.md, and .instructions.md files.</li>
+</ul>
+<hr />
+<p></p><h2>Interactive Mode</h2><a href="#interactive-mode"></a><p></p>
+<p>When run in a terminal (TTY), <code>check-ai</code> shows:</p>
+<ul>
+<li><strong>Spinner</strong> with live progress during scanning</li>
+<li><strong>Animated score bar</strong> that fills in real-time</li>
+<li><strong>Section-by-section reveal</strong> with staggered items</li>
+</ul>
+<p>Automatically falls back to static output when piped or in CI environments.</p>
+<hr />
+<p></p><h2>Zero Dependencies</h2><a href="#zero-dependencies"></a><p></p>
+<p>Built entirely with Node.js built-ins (<code>fs</code>, <code>path</code>, <code>readline</code>). No install required beyond <code>npx</code>. Works offline — no network calls, pure static analysis.</p>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>MIT</p>
+</article></div></div>
+  </div>
+</body>
+</html>

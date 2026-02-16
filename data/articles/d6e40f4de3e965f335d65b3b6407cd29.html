@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - rookedsysc/kanvibe: Self-hosted Kanban board with browser terminals for AI coding agents. Hook-driven auto-tracking — manage tmux/zellij sessions and git worktrees from one board.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - rookedsysc/kanvibe: Self-hosted Kanban board with browser terminals for AI coding agents. Hook-driven auto-tracking — manage tmux/zellij sessions and git worktrees from one board.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/rookedsysc/kanvibe" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><div>
+<p></p><h2>KanVibe</h2><a href="#kanvibe"></a><p></p>
+<p><strong>AI Agent Task Management Kanban Board</strong></p>
+<p>A web-based terminal Kanban board for managing AI coding agent (Claude Code, etc.) tasks in real-time.
+Monitor tmux/zellij sessions directly in your browser while tracking task progress on a drag &amp; drop Kanban board.
+Automatically track task status via <a href="#claude-code-hooks---automatic-status-tracking">Claude Code Hooks</a> — no manual updates needed.</p>
+<p><a href="https://buymeacoffee.com/rookedsysc"><img src="https://camo.githubusercontent.com/bf57f06b3bfa942e99c0876fdf37f7297dc777a6eff975fb08c73fd7602cc1d1/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4275792532304d6525323041253230436f666665652d4646444430303f7374796c653d666f722d7468652d6261646765266c6f676f3d6275792d6d652d612d636f66666565266c6f676f436f6c6f723d626c61636b" alt="Buy Me A Coffee" /></a></p>
+<blockquote>
+<p>Buying me a coffee is nice, but honestly? A contribution would make my day even more. :)</p>
+</blockquote>
+<p><a href="https://github.com/rookedsysc/kanvibe/blob/main/docs/README.ko.md">KO</a> | <a href="https://github.com/rookedsysc/kanvibe/blob/main/docs/README.zh.md">ZH</a></p>
+</div>
+<div>
+<p><a href="https://www.youtube.com/watch?v=PBST0RIqlAA"><img src="https://camo.githubusercontent.com/a6b055e3ab846cac734f8a856e17a755f354aa1a66e6002fbff6b36106c7bd7e/68747470733a2f2f696d672e796f75747562652e636f6d2f76692f50425354305249716c41412f6d617872657364656661756c742e6a7067" alt="Demo Video" /></a></p>
+<p><em>Click the image above to watch the demo on YouTube</em></p>
+
+</div>
+<hr />
+<p></p><h2>Prerequisites</h2><a href="#prerequisites"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Dependency</th>
+<th>Version</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://nodejs.org/">Node.js</a></td>
+<td>&gt;= 22</td>
+<td><a href="https://nodejs.org/en/download/">Download</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/tmux/tmux">tmux</a> or <a href="https://github.com/zellij-org/zellij">zellij</a></td>
+<td>latest</td>
+<td><code>brew install tmux</code> / <code>apt install tmux</code></td>
+</tr>
+<tr>
+<td><a href="https://www.docker.com/">Docker</a></td>
+<td>latest</td>
+<td><a href="https://docs.docker.com/get-docker/">Download</a></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Docker is used to run the PostgreSQL database via Docker Compose.</p>
+</blockquote>
+<hr />
+<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
+<p></p><h3>1. Configure Environment</h3><a href="#1-configure-environment"></a><p></p>
+<div><pre>cp .env.example .env</pre></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PORT</code></td>
+<td>Web server port</td>
+<td><code>4885</code></td>
+</tr>
+<tr>
+<td><code>DB_PORT</code></td>
+<td>PostgreSQL port</td>
+<td><code>4886</code></td>
+</tr>
+<tr>
+<td><code>KANVIBE_USER</code></td>
+<td>Login username</td>
+<td><code>admin</code></td>
+</tr>
+<tr>
+<td><code>KANVIBE_PASSWORD</code></td>
+<td>Login password</td>
+<td><code>changeme</code> (change this!)</td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>2. Run</h3><a href="#2-run"></a><p></p>
+<div><pre>bash start.sh</pre></div>
+<p>This single command handles everything: dependency installation, PostgreSQL startup, database migration, build, and server launch.</p>
+<p>Open <code>http://localhost:4885</code> in your browser.</p>
+<hr />
+<p></p><h2>Usage Flow</h2><a href="#usage-flow"></a><p></p>
+<p></p><h3>1. Register a Project</h3><a href="#1-register-a-project"></a><p></p>
+<p>Search for your local git repository using the <strong>fzf-style folder search</strong> in project settings. KanVibe scans the directory and automatically detects existing worktree branches.</p>
+<p></p><h3>2. Create Tasks</h3><a href="#2-create-tasks"></a><p></p>
+<p>Add a TODO task from the Kanban board. When creating a task with a branch name, KanVibe automatically:</p>
+<ul>
+<li>Creates a <strong>git worktree</strong> for the branch</li>
+<li>Spawns a <strong>tmux window</strong> or <strong>zellij tab</strong> for the session</li>
+<li>Links the terminal session to the task</li>
+</ul>
+<p></p><h3>3. Work with the Kanban Board</h3><a href="#3-work-with-the-kanban-board"></a><p></p>
+<p>Tasks are managed through 5 statuses: <strong>TODO</strong> → <strong>PROGRESS</strong> → <strong>PENDING</strong> → <strong>REVIEW</strong> → <strong>DONE</strong></p>
+<p>Change statuses via drag &amp; drop, or let <a href="#claude-code-hooks---automatic-status-tracking">Claude Code Hooks</a> transition them automatically. When a task moves to <strong>DONE</strong>, its branch, worktree, and terminal session are <strong>automatically deleted</strong>.</p>
+<p></p><h3>4. Select Pane Layouts</h3><a href="#4-select-pane-layouts"></a><p></p>
+<p>Each task's terminal page supports multiple pane layouts:</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Single</strong></td>
+<td>One full-screen pane</td>
+</tr>
+<tr>
+<td><strong>Horizontal 2</strong></td>
+<td>Two panes side by side</td>
+</tr>
+<tr>
+<td><strong>Vertical 2</strong></td>
+<td>Two panes stacked</td>
+</tr>
+<tr>
+<td><strong>Left + Right TB</strong></td>
+<td>Left pane + right top/bottom split</td>
+</tr>
+<tr>
+<td><strong>Left TB + Right</strong></td>
+<td>Left top/bottom split + right pane</td>
+</tr>
+<tr>
+<td><strong>Quad</strong></td>
+<td>Four equal panes</td>
+</tr>
+</tbody>
+</table>
+<p>Each pane can run a custom command (e.g., <code>vim</code>, <code>htop</code>, <code>lazygit</code>, test runner, etc.). Configure layouts globally or per-project from the settings dialog.</p>
+<hr />
+<p></p><h2>Features</h2><a href="#features"></a><p></p>
+<p></p><h3>Kanban Board</h3><a href="#kanban-board"></a><p></p>
+<ul>
+<li>5-status task management (TODO / PROGRESS / PENDING / REVIEW / DONE)</li>
+<li>Custom task ordering with drag &amp; drop</li>
+<li>Multi-project filtering</li>
+<li>Done column pagination</li>
+<li>Real-time WebSocket updates</li>
+</ul>
+<p></p><h3>Git Worktree Integration</h3><a href="#git-worktree-integration"></a><p></p>
+<ul>
+<li>Automatic git worktree creation when a branch-based task is created</li>
+<li>Worktree scanning: existing branches are auto-registered as TODO tasks</li>
+<li>Automatic cleanup (branch + worktree + session) when task moves to DONE</li>
+</ul>
+<p></p><h3>Terminal Sessions (tmux / zellij)</h3><a href="#terminal-sessions-tmux--zellij"></a><p></p>
+<ul>
+<li><strong>tmux</strong> and <strong>zellij</strong> are both supported as terminal multiplexers</li>
+<li>Browser-based terminal via xterm.js + WebSocket</li>
+<li>SSH remote terminal support (reads <code>~/.ssh/config</code>)</li>
+<li>Nerd Font rendering support</li>
+</ul>
+<p></p><h3>Claude Code Hooks - Automatic Status Tracking</h3><a href="#claude-code-hooks---automatic-status-tracking"></a><p></p>
+<p>KanVibe integrates with <strong>Claude Code Hooks</strong> to automatically track task status. Tasks are managed through 5 statuses:</p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TODO</strong></td>
+<td>Initial state when a task is created</td>
+</tr>
+<tr>
+<td><strong>PROGRESS</strong></td>
+<td>AI is actively working on the task</td>
+</tr>
+<tr>
+<td><strong>PENDING</strong></td>
+<td>AI asked a follow-up question; waiting for user response</td>
+</tr>
+<tr>
+<td><strong>REVIEW</strong></td>
+<td>AI has finished; awaiting review</td>
+</tr>
+<tr>
+<td><strong>DONE</strong></td>
+<td>Task complete — branch, worktree, and terminal session are <strong>automatically deleted</strong></td>
+</tr>
+</tbody>
+</table>
+<div><pre><code>User sends prompt        → Task moves to PROGRESS
+AI asks question (AskUser) → Task auto-transitions to PENDING
+User answers             → Task returns to PROGRESS
+AI finishes response     → Task moves to REVIEW
+Task moved to DONE       → Branch + worktree + terminal session auto-deleted
+</code></pre></div>
+<p>Hooks are <strong>auto-installed</strong> when you register a project through KanVibe's directory scan. Hook scripts are placed in your project's <code>.claude/hooks/</code> directory.</p>
+<p></p><h4>Hook API Endpoints</h4><a href="#hook-api-endpoints"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/api/hooks/start</code></td>
+<td>POST</td>
+<td>Create a new task</td>
+</tr>
+<tr>
+<td><code>/api/hooks/status</code></td>
+<td>POST</td>
+<td>Update task status by <code>branchName</code> + <code>projectName</code></td>
+</tr>
+</tbody>
+</table>
+<p></p><h3>Pane Layout Editor</h3><a href="#pane-layout-editor"></a><p></p>
+<ul>
+<li>6 layout presets (Single, Horizontal 2, Vertical 2, Left+Right TB, Left TB+Right, Quad)</li>
+<li>Per-pane custom command configuration</li>
+<li>Global and per-project layout settings</li>
+</ul>
+<p></p><h3>Internationalization (i18n)</h3><a href="#internationalization-i18n"></a><p></p>
+<ul>
+<li>Supported languages: Korean (ko), English (en), Chinese (zh)</li>
+<li>Powered by next-intl</li>
+</ul>
+<hr />
+<p></p><h2>Tech Stack</h2><a href="#tech-stack"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Technology</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frontend/Backend</td>
+<td>Next.js 16 (App Router) + React 19 + TypeScript</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>PostgreSQL 16 + TypeORM</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Tailwind CSS v4</td>
+</tr>
+<tr>
+<td>Terminal</td>
+<td>xterm.js + WebSocket + node-pty</td>
+</tr>
+<tr>
+<td>SSH</td>
+<td>ssh2 (Node.js)</td>
+</tr>
+<tr>
+<td>Drag &amp; Drop</td>
+<td>@hello-pangea/dnd</td>
+</tr>
+<tr>
+<td>i18n</td>
+<td>next-intl</td>
+</tr>
+<tr>
+<td>Container</td>
+<td>Docker Compose</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>This project is licensed under the <strong>AGPL-3.0</strong>. You are free to use, modify, and extend it for open-source purposes. Commercial SaaS distribution is not permitted under this license. See <a href="https://github.com/rookedsysc/kanvibe/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr />
+<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
+<p>See <a href="https://github.com/rookedsysc/kanvibe/blob/main/docs/CONTRIBUTING.md">docs/CONTRIBUTING.md</a> for guidelines.</p>
+<hr />
+<p></p><h2>Inspired By</h2><a href="#inspired-by"></a><p></p>
+<ul>
+<li><a href="https://github.com/raine/workmux">workmux</a> — tmux workspace manager</li>
+<li><a href="https://github.com/BloopAI/vibe-kanban">vibe-kanban</a> — AI-powered Kanban board</li>
+</ul>
+</article></div></div>
+  </div>
+</body>
+</html>
