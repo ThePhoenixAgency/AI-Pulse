@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creating custom kernels for the AMD MI300</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Creating custom kernels for the AMD MI300</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 7/9/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/mi300kernels" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/ror"><img alt="Rémi Ouazan Reboul's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6123945a0ed258ebc83f3d56/8wMHFQHEV24G_ljl4kPxQ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/seungrokj"><img alt="seungrok jung's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/651e6aa7c14e363968e338ff/5l-LMIYAFjWzHQKACuOgN.jpeg"></a> </span> </span></p> </div></div> <h2> <a href="#amd-kernels"> </a> <span> AMD Kernels </span>
+</h2>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/title.png"><img alt="Title card" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/title.png"></a></p>
+<h2> <a href="#introduction"> </a> <span> Introduction </span>
+</h2>
+<p>More than a billion per day: that’s a low estimate of how many requests ChatGPT handles daily, a number which is unlikely to go down soon. For each request and each generated token, we run an inference of a multi-billion parameters model. This is why model optimization is paramount at each and every level: when one deals with these kinds of scale, even a 1% latency or power gain can bring huge savings. </p>
+<p>But where might that gain come from? Model architectures are already well established, and popular models have had quantized weight for a long time now. However, a crucial level at which we can optimize model inference remains: the kernel level. Kernels are the algorithms executed when you do any operation in your network: there are matrix multiplication kernels, convolution kernels, batch normalization kernels, etc. Kernels are low-level, highly-optimized algorithms, often tailored for the device they will be running on. They are notoriously long and hard to write, and require a good understanding of the inner working of the GPU. </p>
+<p>Kernels are essential for running operations in neural networks—without a kernel, an operation effectively can't be used. Because of this, new innovations often launch with a "day 0" kernel, typically optimized only for the latest Nvidia hardware. This approach excludes many other devices, particularly AMD GPUs, which, despite offering comparable or superior specs, are often overlooked by kernel developers. Hugging Face collaborated with AMD to deliver state-of-the-art performance on AMD platforms and make it benefit the open source community. As part of this partnership, we decided with AMD to focus on delivering open-source optimized kernels to improve the performance of serving <a href="https://huggingface.co/meta-llama/Llama-3.1-405B">Llama 3.1 405B</a> in FP8 on a node of 8 MI300X using VLLM. </p>
+<p>In this blog post, we'll explore how we optimized performance for the MI300X and how each kernel was individually fine-tuned. But first, let’s look at the performance gains achieved using our custom kernels. By combining the following three optimized kernels:</p>
+<ul>
+<li>Fused residual connection, RMS norm and FP8 conversion kernel</li>
+<li>Fused SwiGLU activation and FP8 conversion kernel</li>
+<li>Skinny GEMM kernel</li>
+</ul>
+<p>we achieved significant speedups when running VLLM on a node powered by MI300X GPUs.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/results_figure.png"><img alt="Latency gains" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/results_figure.png"></a></p>
+<p>Measures were taken with input size 1 and output size 128 to mimic decoding regime. We measure decoding latency using the median over 30 iterations. </p>
+<p>Those performance gains were measured in VLLM, but you may also use the kernels separately, as described in the “How to” section that follows.</p>
+<h2> <a href="#how-to-use-these-kernels"> </a> <span> How to use these kernels </span>
+</h2>
+<h3> <a href="#the-hf-rocm-kernels-repo"> </a> <span> The <code>hf-rocm-kernels</code> repo </span>
+</h3>
+<p>All kernels described previously are available on the <code>hf-rocm-kernels</code> repository located <a href="https://github.com/huggingface/hf-rocm-kernels"><strong>here</strong></a>. In it, you will find instructions on how to install the package, the source code for each kernels, their respective python bindings, various benchmarking scripts and a test suite. Using benchmarking scripts and a MI300X, you may even reproduce from this blog post. To ensure same results for Torch or VLLM, you can use the same <a href="https://hub.docker.com/layers/rocm/vllm/rocm6.3.1_mi300_ubuntu22.04_py3.12_vllm_0.6.6/images/sha256-9a12ef62bbbeb5a4c30a01f702c8e025061f575aa129f291a49fbd02d6b4d6c9">container</a> as we did.
+You can also use the repo as a base to build your own kernels: it has instructions on how to bind a CUDA-style kernel to python and a simple sample kernel. You may even have a look at branches under development for new kernels, like a compute-and-communicate kernel as described <a href="https://discuss.pytorch.org/t/distributed-w-torchtitan-introducing-async-tensor-parallelism-in-pytorch/209487">here</a>. </p>
+<h3> <a href="#integration-in-vllm"> </a> <span> Integration in VLLM </span>
+</h3>
+<p>The kernels described will soon be integrated in the AMD fork of the VLLM project, but if you want to have a look at how you might do something like that yourself, you may check out this <a href="https://github.com/remi-or/vllm/tree/patch_hfrk">branch</a> and this <a href="https://github.com/remi-or/vllm/blob/patch_hfrk/HFRK_readme.md">document</a>.</p>
+<h2> <a href="#optimization-process"> </a> <span> Optimization process </span>
+</h2>
+<p>We are first going to do a quick refresher on the architecture of the device we are working on: the MI300X. Then, we are going to take a look at the state of our model’s inference before optimizing it. This will allow us to identify bottlenecks and know which custom kernels we need to write. Then, we will take a look at each kernel we have written, which will give us an opportunity to explore how kernel optimization is conducted through many angles.</p>
+<h2> <a href="#a-quick-introduction-to-the-mi300x"> </a> <span> A quick introduction to the MI300X </span>
+</h2>
+<p>Before we dive into optimizing GPU code, we need to know how a GPU works. There are a lot of resources out there that already do a great job of explaining the inner workings of your GPU, which I will link right <a href="https://tinkerd.net/blog/machine-learning/cuda-basics/">here</a>, <a href="https://siboehm.com/articles/22/CUDA-MMM">here</a> and <a href="https://www.youtube.com/watch?v=OUIkkAPaw4M">here</a>. We are still going to run through the different levels of the GPU, as a quick refresher.
+If you want to skip the refresher and get directly into the details of our custom kernels, click <a href="#rms-norm-kernel">here</a>!</p>
+<h3> <a href="#threads"> </a> <span> Threads </span>
+</h3>
+<p>The smallest unit of work in the GPU is the <strong>thread</strong>. Any time any work is done on a GPU, it’s because a thread executed an instruction. Instructions are basic operations like additions, multiplication, conversion from one data type to another, or loads and stores. Each thread has its own memory, called registers (or VGPRs), which only it can access. A thread can have a maximum of 256 registers, each 32-bit wide. Below is represented a thread with access to its 256 VGPRs.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/thread_global.png"><img alt="Representation of a thread" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/thread_global.png"></a></p>
+<p>Threads, except when using load or store instructions, can only execute instructions on their own registers. For instance, to add two vectors A and B together, each thread is going to 1) load in its registers an element from A and 2) another from B, then 3) perform the addition and store the result in another register, and finally 4) store the value from that register in memory. That’s a total of 4 instructions.</p>
+<h3> <a href="#warps"> </a> <span> Warps </span>
+</h3>
+<p>The next unit of work is a warp: each warp is composed of 64 threads. Warps don’t have their own memory, but they are of interest to us because all threads in a warp must execute the same instruction at the same time. This is both a guarantee and a constraint.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/warp_global.png"><img alt="Representation of a warp" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/warp_global.png"></a></p>
+<p>Warps also allow for different threads to exchange information coming from their registers with other threads in the same warp. Although different threads in a warp have access to different data, the fact that they all have to execute the same instructions means that when writing a kernel, warp-level behavior is what you need to think about.</p>
+<h3> <a href="#compute-units"> </a> <span> Compute units </span>
+</h3>
+<p>Warps are bundled together into <strong>thread blocks</strong>: thread blocks are software abstractions, but run on a hardware component called a <strong>compute unit (CU)</strong>. A single compute unit can run multiple thread blocks at once, but it can only fit 16 warps. Each compute unit has a dedicated L1 cache and shared memory. L1 cache cannot be controlled or allocated and helps with data reuse of all warps situated on the CU. Conversely, shared memory can be allocated and used as a storage shared by all warps. For instance, when we want all warps (and thus threads) in a compute unit to access the same buffer, we allocate it in shared memory. Both shared memory and L1 cache are fast to access because they are “close” to the threads.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/cu_global.png"><img alt="Representation of a compute unit" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/cu_global.png"></a></p>
+<p>Thread blocks also offer the ability to synchronize all threads running inside: this is quite useful when dealing with operations that impact shared memory, like initializing an array in shared memory to zero or reduction operations. In general, when writing a kernel, thread blocks are the highest level to take into consideration: it’s very hard to synchronize different thread blocks or make them interact in any way whatsoever. Kernel throughput is tightly linked to the number of compute unit present on the GPU: the more CUs there are, the more thread blocks can be run at the same time, which increases throughput if you manage to use all CUs. </p>
+<h3> <a href="#xcds"> </a> <span> XCDs </span>
+</h3>
+<p>Compute units are then grouped into <strong>accelerator complex dies (XCDs),</strong> which hold 38 compute units each. Although CUs may not interact with each others, they all share a L2 cache which you can’t control but still may prove useful when re-using data. For instance, when accessing memory, having two compute units located on the same XCD access the same data will reduce loading latency by a lot. L2 cache is quite large: it has a size of 4MB, while shared memory has a size of 64kB and L1 cache contains 32kB. </p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/xcd.png"><img alt="Representation of a XCD" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/xcd.png"></a></p>
+<h3> <a href="#the-entire-gpu-mi300x"> </a> <span> The entire GPU (MI300X) </span>
+</h3>
+<p>By assembling 8 XCDs (which gives us 8 * 38 = 304 CUs) and adding a last level of cache (called infinity cache, with 256MB) and a huge quantity of video ram (192GB) we get the MI300X.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/mi300x.png"><img alt="Representation of a MI300" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/mi300x.png"></a></p>
+<p>All XCDs, and thus all threads, have access to the VRAM, but getting there is quite slow. As you get further away from thread-level, memory becomes slower to access but has a larger size and larger scope, meaning it serves more threads. When optimizing a kernel, there is always a balance to strike between doing lots of operations or loading lots of data, but in general, you want to access the VRAM (commonly referred to as global memory) as little as possible. </p>
+<p>When looking at this figure, we can see why GPUs are referred to as “massively parallel”: here, we have 304 compute units, which can each run 16 warps, each with 64 threads. This means that we can have up to 311296 threads running at the same time, each executing an instruction of its own.
+Keep in mind an instruction is something basic like an addition, so simple routines like Newton’s method can be quite long to run for a single thread. GPUs are not optimized for instructions to run fast, i.e. for the latency of each instruction to be low: that would be a latency-oriented device. They are optimized for many threads to be run together, consuming and outputting a large quantity of data: it is a throughput-oriented device. When optimizing a kernel for the GPU, we adapt in consequence: it is better to have an algorithm running a few instructions on many threads at once, than having it run many instructions on a few threads. Hence calling algorithms running on GPUs “parallel”. </p>
+<p>What can get in the way of such algorithms running in an optimized manner are three things: when there is a lot of data to load (memory bound), when there are many operations to performs (compute bound) or when threads have to work together (synchronization overhead). </p>
+<h2> <a href="#day-0-performance-analysis"> </a> <span> Day 0 performance analysis </span>
+</h2>
+<p>When optimizing a workload, the first thing to do before writing a single line of code is to profile the current state of the workload. In our case, we are going to profile the model inference in VLLM to get an idea of how much time each operation is taking up. This can help identify major bottlenecks and which kernels we can tackle first for maximum speedup. For instance, here is the breakdown for batch size 32:</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/disk_figure.png"><img alt="Disk plot ok kernels latency" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/disk_figure.png"></a></p>
+<p>We can see the different parts of the network through each slice: </p>
+<ul>
+<li>the “Attention*” slice, where we grouped RoPE, attention and KV cache kernels;</li>
+<li>the “Attention GEMMs”, that encompass two projections, QKV and Output;</li>
+<li>the “Communications”, which is made up of two all-reduce operations, one after the Attention block and one after the MLP block, which are there because we are working in tensor parallel (TP8)</li>
+<li>the “MLP GEMMs”, that encompass the two projections made in the MLP, Gate / Up and Down;</li>
+<li>the “RMS norm” and “SwiGLU” slices, one for each kernel — note that the RMS norm kernel is called twice per block, once before the Attention and once before the MLP;</li>
+<li>the “Other” slice that regroups the kernels that we did not tag as part of a larger category because their impact is minor.</li>
+</ul>
+<p>Already we can see that most of the latency comes from GEMMs and communications, but also that attention and the operations surrounding it are not a major contributor to latency. This can come as a surprise, because a lot of papers focus on attention and reducing its cost, but it seems that through a combination of KV caching and FlashAttention, which has already been optimized in VLLM, this part may no longer be a top priority.
+Surprisingly, the two calls made to the “RMS norm” kernel are quite costly, so there might be a large benefit to optimizing that kernel. Along with the SwiGLU kernel, they represent 15% of the total latency, which is not negligible. All in all, working on those two kernels, plus trying to gain a small speedup on GEMMs may be our best course of action. To check that this performance breakdown is not a fluke, we can take a look at other batch sizes: </p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/bs_latency_figure.png"><img alt="Latency distribution over batch sizes" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/bs_latency_figure.png"></a></p>
+<p>We can see the pattern that emerged for batch size 32 holds up for other batch sizes, albeit with the latency contribution of GEMMs and communications becoming greater as the batch size increases. Also, it seems that batch size 32 is an outlier when it comes to the latency of GEMMs: it’s probably because the GEMMs chosen when batch size is 32 have been manually tuned or because batch size 32 presents good memory alignment patterns, so GEMMs for batch size 32 are faster than for batch size 24 or 28. </p>
+<p>Now that we have identified some hot spots to optimize, let’s take a look at the first kernel we wrote: the RMS norm kernel. </p>
+<hr>
+<h2> <a href="#rms-norm-kernel"> </a> <span> RMS norm kernel </span>
+</h2>
+<p>In each decoder block, we have two main parts: an attention block and an MLP block. Both begin with a residual connection between two inputs: the current hidden states <span><span>x x </span></span> and the residual <span><span>r r </span></span> . Both have the same shape, which is <span><span>n n </span></span> rows (as many as there are tokens) and <span><span>d d </span></span> columns. After they are added together, we apply a row-wise Root Mean Square (RMS) norm to <span><span>x x </span></span> and, since the model is in FP8, we quantize <span><span>x x </span></span> to FP8 using a scale <span><span>s s </span></span> . Simply fusing those three operations into a single kernel can deliver a nice performance boost. Mathematically, the operations we have to perform are the following:</p>
+<p><span><span><span>i+j+kx←x+rr←xV=∑i=1dxi2x←xV+ϵxQ=Qfp8(s∗x∗w)
+\begin{align} \phantom{i + j + k} &amp;\begin{aligned} x &amp;\leftarrow x + r\\ r &amp;\leftarrow x \end{aligned}\\ &amp;\begin{aligned} V &amp;= \sum_{i=1}^{d} x_i^2 \end{aligned}\\ &amp;\begin{aligned}
+x &amp;\leftarrow \frac{x}{\sqrt{V + \epsilon}} \\
+x_Q &amp;= Q_{\text{fp8}} \left( s * x * w\right) \end{aligned}
+\end{align}
+</span></span></span></p>
+<p>where <span><span>w w </span></span> is a <span><span>d d </span></span> -sized weight vector.
+Steps (1) and (3) are pretty basic. For step (1), we just need to position each thread to a different location in the tensor, load some elements of <span><span>x x </span></span> and <span><span>r r </span></span> , add them and store back <span><span>r r </span></span> . For step (3), each thread performs some scalar operations (addition, square root, division) and a conversion to FP8. All of this, each thread can do on its own: this is perfectly suited to the parallel nature of the GPU. The step to watch out for is (2): we need to sum over <span><span>d d </span></span> , which means either each thread is going to visit each of the <span><span>d d </span></span> columns, or we need to exchange data between threads. The greater <span><span>d d </span></span> is, the more data we would have to load for the first option, so the less viable it becomes. We are going to pick the second option: synchronize threads at the block level, and they will exchange data using the shared memory. Each thread is going to accumulate a part of <span><span>V V </span></span> on its own and then we are going to sum all of those parts across the thread block, which is what we call a reduction. Since <span><span>V V </span></span> is computed across an entire row, we are going to assign a thread block for each row. </p>
+<p>When compared to out-of-the-box pytorch, the bare bones version of this kernel brings about a 10x speedup. But this is not enough: there are still many optimizations we can add on top of this.</p>
+<h3> <a href="#optimization-memory-related"> </a> <span> Optimization: memory-related </span>
+</h3>
+<p>In terms of latency, one of the most costly operation is accessing VRAM, also called <strong>global memory</strong>. Luckily, there are some easy-to-follow principles that can dramatically reduce the cost of loading data. </p>
+<p>First, we can take a look at how much data a single thread can load in a single instruction: using the MI300X instruction guide, we see that the largest load we can make from global memory is 128 bits wide. Since we are loading FP16 data, we are going to load 128b / 16b = 8 elements per load. For fp32 elements, it would correspond to 4 elements per load.</p>
+<p>Secondly, we make sure memory accesses are coalesced. Since each thread is part of a warp, when one thread reaches a “load” instruction, all other threads in the warp do too. For efficiency’s sake, these “load” instructions are then bundled together across the warp. The warp then collectively fetches the data needed and each thread gets the data it requires. Maximum efficiency is reached when the warp fetches a single chunk of data without any gap in it: this is what we call <strong>contiguous</strong> data. An issue arises when we need to load more data that can be loaded in one “load” instruction, and is illustrated below.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/coalesced.png"><img alt="Two loading scenarios" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/coalesced.png"></a></p>
+<p>In this hypothetical scenario, we have two threads in the same warp. They need to collectively load 16 fp32 elements, without constraint on which thread loads which element. This is a typical “reduction” situation.
+Since a thread can only load 4 fp32 elements per instruction, we have at least two ways of reading the data, represented in scenario (a) and (b). To decide which scenario is best, we need to look at this from warp perspective, not thread perspective. In scenario (a), the first load fetches elements 0,1,2,3,8,9,10,11 : we see that the data is not contiguous, because there is a gap between elements 3 and 8. While in scenario (b), the first load fetches elements 0,1,2,3,4,5,6,7 : we load contiguous data. Same goes for the second load. Thus <strong>scenario (b) is better</strong>. Although in scenario (a) we end up with 8 contiguous elements per thread, this does not matter: what matters is whether or not the <strong>warp</strong> loads contiguous data. This matters because if the warp can only load 8 contiguous elements in one cycle, then each load of scenario (a) is processed in two cycles, while in scenario (b), each load only needs the one cycle. </p>
+<p>Third, we reduce the number of stores: when we look at steps (1) and (3) we can see that there are only two stores needed: one for <span><span>r r </span></span> and one for <span><span>xQ x_Q </span></span> . After step (1) we can already store <span><span>r r </span></span> and be done with that. But we still need to access the modified version of <span><span>x x </span></span> after step (2) is done. To do that, we can store the modified version of <span><span>x x </span></span> in global memory and reload it after step (2) is done and rely on cache hits when reloading it. Or, if <span><span>x x </span></span> is small enough, we can store its modified version in shared memory: if <span><span>x x </span></span> is in FP16 and we only have one thread block per CU, then we can store 64KB / 2B = 32 * 1024 elements in shared memory per thread block. In the case of Llama 405B, <span><span>d d </span></span> is equal to 16384, so that fits. Using shared memory provides a nice speedup over relying on cache hits, especially when many thread blocks are active at once: if the L1 cache is not big enough to fit the whole of <span><span>x x </span></span>, then we have to rely on L2 cache, which is shared by 38 CUs. </p>
+<p>Apart from memory access, we can also optimize computational efficiency, but we are going to leave that for the next kernel, as they will be similar in both cases. </p>
+<h3> <a href="#results"> </a> <span> Results </span>
+</h3>
+<p>When we apply the optimizations discussed above, we get the following results:</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/rms_latency_figure.png"><img alt="Latency of RMS norm kernels" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/mi300kernels/rms_latency_figure.png"></a></p>
+<div> <table> <thead><tr>
+<th>Number of rows</th>
+<th>Torch (μs)</th>
+<th>VLLM (μs)</th>
+<th>Ours (μs)</th>
+</tr> </thead><tbody><tr>
+<td>1</td>
+<td>38.8998</td>
+<td>5.5145</td>
+<td><strong>4.18138</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>43.2469</td>
+<td>5.65645</td>
+<td><strong>4.36976</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>41.1304</td>
+<td>5.6893</td>
+<td><strong>4.37628</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td>43.8883</td>
+<td>5.72275</td>
+<td><strong>4.39081</strong></td>
+</tr>
+<tr>
+<td>16</td>
+<td>46.8876</td>
+<td>5.85667</td>
+<td><strong>4.48165</strong></td>
+</tr>
+<tr>
+<td>32</td>
+<td>55.2276</td>
+<td>6.08502</td>
+<td><strong>4.72017</strong></td>
+</tr>
+<tr>
+<td>64</td>
+<td>75.6086</td>
+<td>6.4629</td>
+<td><strong>5.54214</strong></td>
+</tr>
+<tr>
+<td>128</td>
+<td>98.1122</td>
+<td>7.49166</td>
+<td><strong>6.27341</strong></td>
+</tr>
+<tr>
+<td>256</td>
+<td>119.727</td>
+<td>11.8812</td>
+<td><strong>10.739</strong></td>
+</tr>
+<tr>
+<td>512</td>
+<td>195.782</td>
+<td>23.1595</td>
+<td><strong>18.5549</strong></td>
+</tr>
+<tr>
+<td>1024</td>
+<td>355.42</td>
+<td>44.8143</td>
+<td><strong>34.7204</strong></td>
+</tr>
+<tr>
+<td>2048</td>
+<td>671.513</td>
+<td>81.2089</td>
+<td><strong>73.35</strong></td>
+</tr>
+</tbody> </table>
+</div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -169,3 +169,15 @@
 - [ ] Validation production des catégories `openclaw` et `raspberrypi` (quantité/qualité/tri).
 - [ ] Durcissement des sources finance/crypto pour réduire contenu faible qualité.
 - [ ] Vérifier cohérence des liens doc Supabase dans README/workflows avec chemin réel.
+
+## Update 2026-02-16 18:24 UTC
+
+### Done
+- Added dedicated `Local News / Informations locales` category with FR/EN-compatible sources.
+- Added dedicated `Weather / Météo` category with valid FR/EN feeds.
+- Added trusted French Open Source feeds in `opensource` category.
+- Added localized keyword mapping for `openclaw`, `local_news`, `weather`, `opensource`.
+- Ran feed-health check on all configured feeds: **135 total / 115 OK / 20 BAD**.
+
+### Remaining
+- Replace remaining 20 failing feeds (iot/windows/mac/finance/products) and re-run feed-health check.

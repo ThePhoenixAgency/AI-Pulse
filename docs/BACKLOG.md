@@ -99,3 +99,12 @@ Last updated: 2026-02-16
 - [ ] Valider la catégorie OpenClaw en production (volume, priorité d'affichage, qualité sources).
 - [ ] Valider la catégorie Raspberry Pi (volume suffisant et liens valides).
 - [ ] Vérifier l'alignement des chemins de doc Supabase (`docs/SUPABASE_MIGRATION.md` vs liens README/workflows).
+
+## Mise a jour 2026-02-16 18:24
+
+- [x] Categorie `local` normalisee en `Informations locales / Local News` avec sources valides (Le Dauphine Isere/Isere Sud/Une + France24 FR/EN France).
+- [x] Nouvelle categorie `weather` ajoutee (`Meteo / Weather`) avec sources valides (`meteo-paris`, `france24` FR/EN).
+- [x] Categorie `opensource` renforcee avec sources FR fiables (`Developpez.com`, `LinuxFr`, `Programmez`).
+- [x] Mots-cles localises ajoutes: `openclaw`, `local_news`, `weather`, `opensource`.
+- [x] Test reseau des flux execute: 135 flux testes, 115 OK, 20 KO (rapport en sortie de commande).
+- [ ] Remplacer les 20 flux KO restants identifies (iot/windows/mac/finance/products) pour reduire fortement les `failed fetch`.

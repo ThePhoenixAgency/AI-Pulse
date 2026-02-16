@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Kodi to RetroPie Menu</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Add Kodi to RetroPie Menu</h1>
+  <div class="metadata">
+    Source: Raspberry Pi Spy | Date: 5/6/2022 3:00:00 PM | Lang: EN |
+    <a href="https://www.raspberrypi-spy.co.uk/2022/05/add-kodi-to-retropie-menu/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article><div><p>If you run Kodi on a RetroPie system you can add Kodi to the RetroPie menu as if it is a game system.</p><p>This guide assumes you already have Kodi installed on your RetroPie system where it appears as an item under the “Ports” system.</p><p>To continue you will need to use the command line. You can get to the command line either</p><ul><li>Pressing F4 if you have a keyboard attached directly to your system</li><li>Using SSH to connect to the RetroPie system from another computer</li></ul><h2>Step 1 – Copy es_systems.cfg file</h2><p>Firstly we need to copy the default es_systems.cfg file:</p><pre><code>sudo cp /etc/emulationstation/es_systems.cfg /opt/retropie/configs/all/emulationstation/es_systems.cfg</code></pre><h2>Step 2 – Edit es_systems.cfg file</h2><p>We need to edit this file in the nano text editor:</p><pre><code>sudo nano /opt/retropie/configs/all/emulationstation/es_systems.cfg</code></pre><p>Add the following text block just after an existing &lt;/system&gt; tag :</p><pre><code>&lt;system&gt; &lt;fullname&gt;Kodi&lt;/fullname&gt; &lt;name&gt;kodi&lt;/name&gt; &lt;path&gt;~/RetroPie/roms/kodi&lt;/path&gt; &lt;extension&gt;.sh .SH&lt;/extension&gt; &lt;command&gt;bash %ROM%&lt;/command&gt; &lt;platform&gt;kodi&lt;/platform&gt; &lt;theme&gt;kodi&lt;/theme&gt;
+&lt;/system&gt;</code></pre><p>I placed this block right at the end of the file start before the final &lt;/systemlist&gt; tag.</p><p>Save the changes using CTRL-X, Y then ENTER.</p><h2>Step 3 – Create launch script</h2><p>We now need to create a Kodi rom directory to contain a script to launch Kodi:</p><pre><code>mkdir ~/RetroPie/roms/kodi</code></pre><p>then create and edit the launch script using:</p><pre><code>sudo nano ~/RetroPie/roms/kodi/kodi.sh</code></pre><p>Add the following lines:</p><pre><code>!/bin/bash
+kodi-standalone</code></pre><p>Save the changes using CTRL-X, Y then ENTER.</p><p>The script needs to be made executable using:</p><pre><code>sudo chmod +x ~/RetroPie/roms/kodi/kodi.sh</code></pre><h2>Step 4 – Restart EmulationStation</h2><p>If you used F4 to get to the command line then you can return to EmulationStation by typing:</p><pre><code>EmulationStation</code></pre><p>If you used SSH to connect then quit that session. Using a controller connected to RetroPie, press “Start” to bring up the main menu. Select “Quit” then “Restart EmulationStation”.</p><p>Once back in EmulationStation Kodi should appear in the main RetroPie menu alongside all the other system.</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/12/screenshot02-1024x576.png" alt="Kodi menu item within RetroPie"></figure><p>Selecting the single “kodi” option will launch Kodi.</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/12/screenshot03-1024x576.png" alt="Kodi menu item within the Kodi system."></figure><p>This isn’t a huge difference to selecting Kodi from the “Ports” page but it can much quicker if your Ports list is quite busy.</p><h2>Additional Resources</h2></div></article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Accelerate ND-Parallel: A guide to Efficient Multi-GPU Training</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Accelerate ND-Parallel: A guide to Efficient Multi-GPU Training</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 8/8/2025 2:00:00 AM | Lang: ES |
+    <a href="https://huggingface.co/blog/accelerate-nd-parallel" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/smohammadi"><img alt="Salman Mohammadi's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64e4d0707d26615b5d4bf775/c8EbVvgGvQW7fgHdKI6fh.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/siro1"><img alt="Matej Sirovatka's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/658f19cfa02954c982f540eb/qN2eqJZnWQ2H1xlGYeAKj.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/winglian"><img alt="wing lian's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/641dfddf3bae5a77636817c5/2IwNwh9kK98eCHUmOGoWD.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/marcsun13"><img alt="Marc Sun's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63ce875d199b36f7552d4f07/bpUrvhXDagzRqZ3vxTcSF.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/djsaunde"><img alt="Dan Saunders's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1647406334843-noauth.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#contents">Contents</a> <ul></ul> </li><li><a href="#data-parallelism">Data Parallelism</a> <ul></ul> </li><li><a href="#fully-sharded-data-parallelism">Fully Sharded Data Parallelism</a> <ul></ul> </li><li><a href="#tensor-parallelism">Tensor Parallelism</a> <ul></ul> </li><li><a href="#context-parallelism">Context Parallelism</a> <ul></ul> </li><li><a href="#nd-parallelisms">ND Parallelisms</a> <ul><li><a href="#hybrid-sharded-data-parallelism">Hybrid Sharded Data Parallelism</a> <ul></ul> </li><li><a href="#fully-sharded-data-parallelism--tensor-parallelism">Fully Sharded Data Parallelism + Tensor Parallelism</a> <ul></ul> </li><li><a href="#fully-sharded-data-parallelism--context-parallelism">Fully Sharded Data Parallelism + Context Parallelism</a> <ul></ul> </li><li><a href="#hybrid-sharded-data-parallelism--tensor-parallelism">Hybrid Sharded Data Parallelism + Tensor Parallelism</a> <ul></ul> </li></ul> </li><li><a href="#usage-notes">Usage notes</a> <ul></ul> </li></ul></nav></div><p>Training large models across multiple GPUs can be challenging due to the complexities of different parallelism strategies. In Accelerate, together with <a href="https://github.com/axolotl-ai-cloud/axolotl/">Axolotl</a>, we have integrated a quick and easy way to use any combination of parallelism strategies in your training script!</p>
+<p>Here is how to add it to your training script:</p>
+<pre><code><span>from</span> transformers <span>import</span> AutoModelForCausalLM
+<span>from</span> accelerate <span>import</span> Accelerator
+<span>from</span> accelerate.parallelism_config <span>import</span> ParallelismConfig
+<span>from</span> accelerate.utils <span>import</span> FullyShardedDataParallelPlugin <span># configure your desired parallelisms here - this particular configuration requires at least 2 nodes with 8 GPUs each. </span>
+<span># setting any parallelism degree to 1 disables it i.e. dp_replicate_size=1 disables DP.</span>
+pc = ParallelismConfig( dp_shard_size=<span>2</span>, <span># Fully Sharded Data Parallel degree</span> dp_replicate_size=<span>2</span>, <span># Data Parallel degree</span> cp_size=<span>2</span>, <span># Context Parallel degree</span> tp_size=<span>2</span>, <span># Tensor Parallel degree</span>
+) fsdp_plugin = FullyShardedDataParallelPlugin( fsdp_version=<span>2</span>, auto_wrap_policy=<span>"transformer_based_wrap"</span>, transformer_cls_names_to_wrap=[<span>"LlamaDecoderLayer"</span>], state_dict_type=<span>"SHARDED_STATE_DICT"</span>,
+) accelerator = Accelerator( parallelism_config=pc, fsdp_plugin=fsdp_plugin
+) model = AutoModelForCausalLM.from_pretrained( <span>"NousResearch/Hermes-3-Llama-3.1-8B"</span>, device_mesh=accelerator.torch_device_mesh
+) model = accelerator.prepare(model)
+</code></pre>
+<p>We've also included a more comprehensive end-to-end <a href="https://github.com/huggingface/accelerate/blob/main/examples/torch_native_parallelism/nd_parallel.py">training script</a> in the Accelerate repo which demonstrates how to setup your dataloader, optimizer, and training loop, and how to save your model after training.</p>
+<p>To further streamline fine-tuning models at scale and compose parallelism strategies with a variety of fine-tuning techniques, we've also integrated this technique into Axolotl. To help you get started right away we've tested some <a href="https://github.com/axolotl-ai-cloud/axolotl/tree/main/examples/distributed-parallel">example configs</a> which you can modify to suit your needs - try one out with:</p>
+<pre><code><span># note: this requires a minimum world size of 16 </span>
+axolotl train examples/distributed-parallel/llama-3_1-8b-hsdp-tp.yaml
+</code></pre>
+<p>You can also check out the <a href="https://docs.axolotl.ai/docs/nd_parallelism.html">Axolotl ND-Parallelism docs</a> for more details - adding ND parallel techniques to your existing configs is as simple as adding one or more of the following fields to your Axolotl config file:</p>
+<pre><code><span># Fully Sharded Data Parallel degree (<span>note:</span> also requires the fsdp_config field) </span>
+<span># see https://docs.axolotl.ai/docs/multi-gpu.html#sec-fsdp for more details</span>
+<span>dp_shard_size:</span> <span>2</span>
+<span># Data Parallel degree</span>
+<span>dp_replicate_size:</span> <span>2</span>
+<span># Context Parallel Degree</span>
+<span>context_parallel_size:</span> <span>2</span>
+<span># Tensor Parallel Degree</span>
+<span>tensor_parallel_size:</span> <span>2</span>
+</code></pre>
+<p>We've made it easy to configure the degrees of different parallelism strategies and how they are combined through the <a href="https://github.com/huggingface/accelerate/blob/v1.10.0/src/accelerate/parallelism_config.py"><code>ParallelismConfig</code></a> class in Accelerate, or through config fields in Axolotl, but how do we know which configuration will work best for our use case? As we scale to training models with tens or even hundreds of billions of parameters, the primary challenge comes from understanding the different parallelism strategies and how they interact to minimise communication overhead across devices. In this post, we'll walk through how the different parallelism strategies work, and when and how you might want to compose them. </p>
+<h2> <a href="#contents"> <span></span> </a> <span> Contents </span>
+</h2>
+<ul>
+<li><a href="#data-parallelism">Data Parallelism</a></li>
+<li><a href="#fully-sharded-data-parallelism">Fully Sharded Data Parallelism</a></li>
+<li><a href="#tensor-parallelism">Tensor Parallelism</a></li>
+<li><a href="#context-parallelism">Context Parallelism</a></li>
+<li><a href="#nd-parallelisms">ND Parallelisms</a><ul>
+<li><a href="#hybrid-sharded-data-parallelism">Hybrid Sharded Data Parallelism</a></li>
+<li><a href="#fully-sharded-data-parallelism--tensor-parallelism">Fully Sharded Data Parallelism + Tensor Parallelism</a></li>
+<li><a href="#fully-sharded-data-parallelism--context-parallelism">Fully Sharded Data Parallelism + Context Parallelism</a></li>
+<li><a href="#hybrid-sharded-data-parallelism--tensor-parallelism">Hybrid Sharded Data Parallelism + Tensor Parallelism</a></li>
+</ul>
+</li>
+<li><a href="#usage-notes">Usage Notes</a></li>
+</ul>
+<h2> <a href="#data-parallelism"> <span></span> </a> <span> Data Parallelism </span>
+</h2>
+<figure> <img alt="Diagram for Data Parallel" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/accelerate-nd-parallel/dp.png"> <figcaption> Distributed Data Parallel replicates the entire model across each device, and evenly divides the data into sub-batches for each device. (<b><i>Source: <a href="https://martynassubonis.substack.com/p/tensor-and-fully-sharded-data-parallelism">Martynas Šubonis</a></i></b>). </figcaption>
+</figure> <p>Data parallelism (DP) is the most common technique for training models across multiple GPUs, and involves replicating the model, gradients and optimizer states across each device, whilst evenly distributing data batches between GPUs, and synchronising gradients across devices before updating parameters. This can significantly increase throughput compared to single-device training, but requires that your model is able to fit on a single device. </p>
+<p>We can control the number of replicas of the model with the <code>dp_replicate_size</code> parameter in Accelerate's <code>ParallelismConfig</code> or config field in Axolotl. It's worth noting that DP is a <em>top-most-level</em> parallelism strategy, meaning that if we use <code>dp_replicate_size=2</code> and we compose it with other parallelism strategies, there would be 2 replicas of the model, each also influenced by the other parallelism strategies. For example, if we use <code>dp_replicate_size=2</code> and <code>tp_size=2</code>, we would have 2 replicas of the model, each with 2 tensor parallel shards.</p>
+<blockquote>
+<p>We use the term <em>shard</em> to describe data on a single device which is a partition of a larger piece of data.</p>
+</blockquote>
+<h2> <a href="#fully-sharded-data-parallelism"> <span></span> </a> <span> Fully Sharded Data Parallelism </span>
+</h2>
+<figure> <img alt="Diagram for Fully Sharded Data Parallel" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/accelerate-nd-parallel/fsdp.png"> <figcaption> Fully Sharded Data Parallel evenly divides each of the model's parameters across each device, and, like DDP, evenly divides the data into sub-batches for each device. To complete a forward and backwards pass, FSDP must <i>gather</i> the weights of each parameter before the forwards/backwards pass so that each device obtains a full copy of the parameter. (<b><i>Source: <a href="https://martynassubonis.substack.com/p/tensor-and-fully-sharded-data-parallelism">Martynas Šubonis</a></i></b>). </figcaption>
+</figure> <p>What if our model is too large to fit on a single device? Fully sharded data parallel (FSDP) addresses this issue by sharding (distributing evenly) the model’s weights, gradients, and optimizer states across GPUs (this is inspired by DeepSpeed’s ZeRO-3), whilst each device still receives its portion of the full batch of data. As you may notice from the diagram above, rather than requiring a full copy of the entire model on each device, we only gather the weights for a single layer at a time before the forward pass, after which the weights may be sharded again.</p>
+<p>In this way, we trade memory usage for the communication overhead of gathering sharded parameters before each forward and backward pass, and reduce-scatter-ing local gradients. We can control this trade-off in FSDP by tuning the granularity at which parameters are gathered. On one extreme, we can gather and re-shard every layer of our model, which would result in the lowest peak memory usage, but incur the highest communication costs. In practice, a common approach is to gather the weights for an entire transformer decoder block at a time. </p>
+<p>Whilst we can make further memory-compute trade-offs and offload model parameters and gradients to the CPU to train larger models, this can be prohibitively slow. Instead, let’s consider how we can effectively utilise even more devices to train larger models whilst maintaining high data throughput.</p>
+<p>We use the term <em>node</em> to refer to a single machine which hosts multiple GPUs (up to a maximum of 8), with fast intra-node communication channels using e.g. NVLink between GPUs. When using multiple nodes for training, we rely on relatively slower inter-node communication channels between machines using e.g. Infiniband. We also refer to the total number of devices in the process pool as the world size - e.g. a single node with 8 GPUs represents a world size of 8, and 4 nodes would represent a world size of 32.</p>
+<p>When using FSDP across multiple nodes, we treat the entire set of devices across nodes as if we were training on a single node. For example, with 4 nodes containing 8 GPUs each, we perform our sharding across 32 devices, and perform our collective all-reduce and reduce-scatter operations using both inter-and-intra-node communication backends. In this manner, FSDP alone can scale to a substantial number of GPUs with a large global batch size to increase data throughput. However, there comes a point where several challenges arise that may require composing FSDP with other parallelism techniques. We usually try to avoid doing FSDP across more than a full node, as the communication overhead can become too high, we'll talk about how to address this in the section on <a href="#hybrid-sharded-data-parallelism">Hybrid Sharded Data Parallelism</a>.</p>
+<blockquote>
+<p>You can use the <code>dp_shard_size</code> parameter in Accelerate's <code>ParallelismConfig</code> together with a prepared <a href="https://huggingface.co/docs/accelerate/v1.10.0/en/package_reference/utilities#accelerate.FullyShardedDataParallelPlugin"><code>FullyShardedDataParallelPlugin</code></a>, or set the <code>dp_shard_size</code> config field in Axolotl to set the degree of FSDP applied to your model. </p>
+</blockquote>
+<h2> <a href="#tensor-parallelism"> <span></span> </a> <span> Tensor Parallelism </span>
+</h2>
+<figure> <img alt="Diagram for Tensor Parallel" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/accelerate-nd-parallel/tp.png"> <figcaption> Tensor Parallelism splits large linear layers across devices, typically using column-wise sharding for the first layer and row-wise sharding for the subsequent layer. This approach requires only a single AllReduce communication operation to combine the sharded outputs, minimizing communication overhead while distributing both memory and compute across devices within a node. </figcaption>
+</figure> <p>Tensor Parallel (TP) is a kind of model parallelism technique, where shards of the model permanently live on separate devices, and in contrast to data parallel techniques, each device receives an identical batch of data. TP works by distributing the computation of linear layers across devices, so each device only computes a portion of the matrix multiplication. This technique works best when there are large linear layers, such as the feed-forward layers in transformer models, which can be split across devices. We can also use TP on each of the query, key, value, and output projections in the attention layers with almost no extra communication cost.</p>
+<p>To achieve the best performance, parameters of consecutive layers can be distributed in a specific fashion, minimizing the required communication. When working with pairs of linear layers, we can split the first layer column-wise, and the subsequent layer row-wise, allowing us to compute the output with only a single all-reduce operation to combine the sharded outputs. </p>
+<p>Unlike the dynamic sharding behaviour of FSDP, TP creates static memory partitions which result in a constant memory usage reduction scaling with the TP group size. This becomes crucial for massive models where even a single decoder layer is too large to fit into memory during the FSDP all-gather (recall that common practice in FSDP is to gather the weights of an entire decoder layer at a time). However, unlike FSDP which scales relatively linearly across nodes (up to a point - ~512 GPUs on a homogenous cluster, significantly less across lower-bandwidth connections), TP is only effective within the boundaries of a single node. TP requires frequent activation synchronization between devices during computation, as each device computes only a portion of the output, requiring the outputs from other devices to be communicated before continuing the forward pass. Thus, if we wish to utilise TP in a multi-node setup, we must consider composing TP with other parallelism techniques, while keeping TP only within a single node. Due to its large communications overhead, TP is not recommended for PCIe linked GPUs.</p>
+<blockquote>
+<p>In Accelerate, the TP size is configured through <code>tp_size</code> in <code>ParallelismConfig</code>, whilst in Axolotl you can use the <code>tensor_parallel_size</code> config field.</p>
+</blockquote>
+<h2> <a href="#context-parallelism"> <span></span> </a> <span> Context Parallelism </span>
+</h2>
+<p>Recently, reasoning capabilities in LLMs resulted in sequence lengths skyrocketing as models use more and more tokens to solve complex tasks. To achieve this behaviour through fine-tuning, we need a way to train models on very large sequence lengths - which can sometimes reach up to a million tokens!</p>
+<p>Since the attention operation in transformers scales quadratically with context length, this becomes impossible on a single GPU. For example, when fine-tuning a relatively small model such as Mistral-7B (which uses 32 attention heads), if we use a sequence length of 128k a single attention matrix will utilise 128k * 128k * 2 bytes * <code>num_heads=32</code> = ~32GB * 32 = ~1TB of activations memory! Whilst this example is not realistic when using optimised attention implementations such as FlashAttention, it helps illustrate the growth in memory requirements from increasing the context length.</p>
+<p>With context parallelism (CP), we can shard the inputs across the sequence dimension, resulting in each device only processing a chunk of the full context and computing a smaller portion of the full, prohibitively large, attention matrix. To see how this works, recall that the attention computation is described by the equation: <span><span>Attention(Q,K,V)=softmax(QKT)V \text{Attention}(Q, K, V) = \text{softmax}(QK^T)V </span></span></p>
+<p>Where <span><span>Q Q </span></span>, <span><span>K K </span></span>, and <span><span>V V </span></span> are the query, key, and value matrices respectively. Each query vector (row, or input embedding) of <span><span>Q Q </span></span> must compute the attention scores against <em>every</em> key vector of <span><span>K K </span></span> in the entire sequence to correctly apply the softmax normalisation. These attention scores are then weighted with <em>all</em> value vectors in <span><span>V V </span></span>.</p>
+<p>The crucial detail here lies in the fact that each row in <span><span>Q Q </span></span> can compute its attention score independently of one another, but each query vector still requires the full <span><span>K K </span></span> and <span><span>V V </span></span> matrices. In other words, given an input with sequence length $n$, we can expand our above attention equation as:</p>
+<p><span><span><span>Attention(Q,K,V)1=softmax(Q1KT)VAttention(Q,K,V)2=softmax(Q2KT)V⋮Attention(Q,K,V)n=softmax(QnKT)V
+\begin{align}
+\text{Attention}(Q, K, V)_1 &amp;= \text{softmax}(Q_1 K^T) V \\
+\text{Attention}(Q, K, V)_2 &amp;= \text{softmax}(Q_2 K^T) V \\
+&amp;\vdots \\
+\text{Attention}(Q, K, V)_n &amp;= \text{softmax}(Q_n K^T) V
+\end{align}
+</span></span></span></p>
+<p>where we denote each row of the query matrix as <span><span>Q1,Q2,...,Qn Q_1, Q_2, ..., Q_n </span></span>. This can be generalized as: <span><span>Attention(Q,K,V)i=softmax(QiKT)V∀i∈{1,2,...,n} \text{Attention}(Q, K, V)_i = \text{softmax}(Q_i K^T) V \quad \forall i \in \{1, 2, ..., n\} </span></span></p>
+<p>When we shard the inputs across devices, the resulting <span><span>Q Q </span></span>, <span><span>K K </span></span>, and <span><span>V V </span></span> matrices (computed from these input shards) are also automatically sharded along the sequence dimension - each GPU computes queries, keys, and values only for its portion of the sequence. For example, with a world size of <span><span>W W </span></span> GPUs and sequence length <span><span>n n </span></span>:</p>
+<ul>
+<li>GPU 0 computes <span><span>Q1:n/W Q_{1:n/W} </span></span>, <span><span>K1:n/W K_{1:n/W} </span></span>, <span><span>V1:n/W V_{1:n/W} </span></span></li>
+<li>GPU 1 computes <span><span>Qn/W+1:2n/W Q_{n/W+1:2n/W} </span></span>, <span><span>Kn/W+1:2n/W K_{n/W+1:2n/W} </span></span>, <span><span>Vn/W+1:2n/W V_{n/W+1:2n/W} </span></span></li>
+<li>...</li>
+<li>GPU <span><span>(W−1) (W-1) </span></span> computes <span><span>Q(W−1)n/W+1:n Q_{(W-1)n/W+1:n} </span></span>, <span><span>K(W−1)n/W+1:n K_{(W-1)n/W+1:n} </span></span>, <span><span>V(W−1)n/W+1:n V_{(W-1)n/W+1:n} </span></span></li>
+</ul>
+<p>How do we ensure the attention is computed correctly? As established above, each device only needs its own shard of <span><span>Q Q </span></span>, but requires the full <span><span>K K </span></span> and <span><span>V V </span></span> matrices to compute the attention correctly. We can achieve this by using a technique called <a href="https://openreview.net/forum?id=WsRHpHH4s0">RingAttention</a>, which works as follows:</p>
+<ol>
+<li>Initially, each GPU holds its shard of <span><span>Q Q </span></span>, <span><span>K K </span></span>, <span><span>V V </span></span> (e.g., GPU 0 holds <span><span>Q1:n/W Q_{1:n/W} </span></span>, <span><span>K1:n/W K_{1:n/W} </span></span>, <span><span>V1:n/W V_{1:n/W} </span></span>).</li>
+<li>Each GPU then computes a partial attention matrix <span><span>Ai,j A_{i,j} </span></span> for its shard of <span><span>Qi Q_i </span></span> and its local
+shard of <span><span>Kj K_j </span></span>, <span><span>Vj V_j </span></span>.</li>
+<li>Each GPU sends its shard of <span><span>K K </span></span>, <span><span>V V </span></span> to the next GPU in the ring.</li>
+<li>Each GPU receives a different shard of <span><span>K K </span></span>, <span><span>V V </span></span> from the previous GPU in the ring.</li>
+<li>Each GPU computes additional partial attention matrices <span><span>Ai,j+1 A_{i,j+1} </span></span>, <span><span>Ai,j+2 A_{i,j+2} </span></span>, etc. using
+the received <span><span>K K </span></span>, <span><span>V V </span></span> shards.</li>
+<li>Each GPU repeats this process until all shards of <span><span>K K </span></span>, <span><span>V V </span></span> have been received and all partial attention matrices <span><span>Ai,∗ A_{i,*} </span></span> have been computed.</li>
+</ol>
+<figure> <img alt="Diagram for Context Parallel" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/accelerate-nd-parallel/cp.png"> <figcaption> Context Parallelism shards the input sequence across GPUs, with each device holding queries and key-value pairs for its assigned segment. Ring-attention circulates K,V shards between GPUs (shown by the arrows), allowing each query to compute attention scores against keys and values from the entire sequence. The final attention output combines information from all sequence positions while distributing memory and compute across devices. </figcaption>
+</figure> <p>Accelerate enables this with the <a href="https://huggingface.co/docs/accelerate/v1.10.0/en/package_reference/accelerator#accelerate.Accelerator.maybe_context_parallel"><code>accelerator.maybe_context_parallel</code></a> decorator, which is also showcased in the Accelerate <a href="https://github.com/huggingface/accelerate/blob/main/examples/torch_native_parallelism/nd_parallel.py">example script</a>. You can also learn more about how it works and its limitations in our <a href="https://huggingface.co/docs/accelerate/main/en/concept_guides/context_parallelism">CP concept guide</a>.</p>
+<blockquote>
+<p>Similar to TP, in Accelerate the CP size is configured through <code>cp_size</code> in <code>ParallelismConfig</code>, whilst in Axolotl you can use the <code>context_parallel_size</code> config field.</p>
+</blockquote>
+<h2> <a href="#nd-parallelisms"> <span></span> </a> <span> ND Parallelisms </span>
+</h2>
+<p>In the multi-node setting, data parallel techniques such as FSDP treat the entire network topology as if it existed along a single dimension. You may find this approach limiting for a variety of reasons:</p>
+<ul>
+<li>When scaling to more nodes, FSDP's collective operations become bottlenecked by inter-node latency, making training prohibitively slow.</li>
+<li>As we mentioned above, massive models may have decoder layers which cannot fit into GPU memory, or which may be too large to perform a forward pass with, even in a sharded state.</li>
+<li>It could be impossible to achieve your ideal batch size - either the batch becomes too large for pure data parallelism to handle efficiently, or too small due to memory constraints from model size.</li>
+</ul>
+<p>To try and address some of these problems, we can think of multi-node clusters as having a two-dimensional topology: fast intra-node communication between devices along one axis, and relatively slower inter-node communication along another axis. Let’s consider how we can compose the parallelism techniques we’ve introduced so far to take advantage of this.</p>
+<h3> <a href="#hybrid-sharded-data-parallelism"> <span></span> </a> <span> Hybrid Sharded Data Parallelism </span>
+</h3>
+<figure> <img alt="Diagram for Hybrid Sharded Data Parallel" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/accelerate-nd-parallel/hsdp.png"> <figcaption> Hybrid Sharded Data Parallelism performs FSDP within each replica group and synchronizes gradients across replica groups via AllReduce, combining the memory efficiency of FSDP with the communication efficiency of DP across nodes. </figcaption>
+</figure> <p>Hybrid Sharded Data Parallelism (HSDP) is a kind of 2D parallelism which performs FSDP within a node, and DP across nodes - that is to say the model is replicated across each node, and sharded using FSDP within each node. This allows the greater communication overhead of FSDP to utilize the faster intra-node links, whilst DP minimises the slower inter-node communication overhead to a single gradient synchronisation step. You might consider this approach if you were facing problem 1 and wished to speed up training at the cost of increased memory usage.</p>
+<p>It’s important to note that we can freely configure the shape of our 2D network topology, as we aren’t constrained to the dimensions being aligned with physical node boundaries - you might apply FSDP across 2 nodes whilst replicating across groups of 2 nodes, which would result in lower memory usage but slower throughput, but still reduce the intra-node FSDP communication overhead by a factor of two. This is a knob we encourage you to tune to your specific hardware setup and fine-tuning needs.</p>
+<blockquote>
+<p>You can enable HSDP by defining both <code>dp_shard_size</code> and <code>dp_replicate_size</code> in Accelerate's <code>ParallelismConfig</code> or through Axolotl's config fields.</p>
+</blockquote>
+<h3> <a href="#fully-sharded-data-parallelism--tensor-parallelism"> <span></span> </a> <span> Fully Sharded Data Parallelism + Tensor Parallelism </span>
+</h3>
+<p>As we mentioned earlier, TP should be applied within a node to utilize the high-bandwidth intra-node communications, thus, combining TP and FSDP involves sharding the model across nodes using FSDP, and within a node using TP. To a certain degree, this potentially offers a neat solution to all three of the issues above: the latency costs from FSDP could be reduced by a factor of 8, layers that are too large to fit on a single device are now evenly distributed across devices, and since each TP group receives an identical batch of data, we can also reduce our global batch size by a factor of 8. However, if this remains insufficient, we are unable to increase the TP size across nodes and must consider an alternative approach.</p>
+<blockquote>
+<p>In Accelerate you can combine TP and FSDP by defining both <code>dp_shard_size</code> and <code>tp_size</code> in <code>ParallelismConfig</code>, whilst in Axolotl you can add both of the <code>dp_shard_size</code> and <code>tensor_parallel_size</code> config fields.</p>
+</blockquote>
+<h3> <a href="#fully-sharded-data-parallelism--context-parallelism"> <span></span> </a> <span> Fully Sharded Data Parallelism + Context Parallelism </span>
+</h3>
+<p>This is a 2D parallelism strategy that combines FSDP and CP, and while this is not very commonly used as CP already combines with FSDP (more on why in the <a href="https://huggingface.co/docs/accelerate/main/en/concept_guides/context_parallelism">accelerate concept guide</a>), it can be useful in some cases i.e. when requiring a large sequence length, consequently requiring a large <code>cp_size</code>. If this still doesn't fit into your memory budget, you can apply FSDP on top of this, further reducing the memory usage.</p>
+<blockquote>
+<p>In Accelerate you can combine CP and FSDP by defining both <code>dp_shard_size</code> and <code>cp_size</code> in <code>ParallelismConfig</code>, whilst in Axolotl you can add both of the <code>dp_shard_size</code> and <code>context_parallel_size</code> config fields.</p>
+</blockquote>
+<h3> <a href="#hybrid-sharded-data-parallelism--tensor-parallelism"> <span></span> </a> <span> Hybrid Sharded Data Parallelism + Tensor Parallelism </span>
+</h3>
+<p>With a sufficiently large world size (note: while the minimum world size for 3D parallelism is 8, it is most effective at much larger scales), we can consider combining HSDP with TP which creates a hierarchy where DP first replicates the model across groups of nodes, FSDP then shards the model within each group, and TP splits individual layers within each node. You might consider this approach when facing all of the scaling constraints we mentioned above, as it provides the most flexibility to adapt to your specific training setup by making trade-offs between memory usage and throughput.</p>
+<blockquote>
+<p>In Accelerate you can combine HSDP and TP by defining all of <code>dp_shard_size</code>, <code>dp_replicate_size</code>, and <code>tp_size</code> in <code>ParallelismConfig</code>. Similarly in Axolotl you can add all of the <code>dp_shard_size</code>, <code>dp_replicate_size</code>, and <code>tensor_parallel_size</code> config fields.</p>
+</blockquote>
+<h2> <a href="#usage-notes"> <span></span> </a> <span> Usage notes </span>
+</h2>
+<p>There are additional ways to combine multiple parallelisms which we haven't covered, such as 4D parallel using HSDP + TP + CP, but they operate very similarly to the techniques we've already covered. Most of all, we encourage you to play with different techniques and configurations - this is the best way to gain an intuition for the different ways in which you can make memory/throughput trade-offs.</p>
+<p>Below are some additional tips you may find useful when working in distributed settings:</p>
+<ul>
+<li><p>When using FSDP and working with models that are too large to fit in a single device, enabling both CPU RAM efficient loading and sharded state dict checkpointing technique is crucial. You can enable this through the <code>cpu_ram_efficient_loading</code> and <code>state_dict_type</code> parameters in Accelerate's <a href="https://huggingface.co/docs/accelerate/v1.10.0/en/package_reference/utilities#accelerate.FullyShardedDataParallelPlugin"><code>FullyShardedDataParallelPlugin</code></a>, </p>
+<pre><code>fsdp2_plugin = FullyShardedDataParallelPlugin( fsdp_version=<span>2</span>, auto_wrap_policy=<span>"transformer_based_wrap"</span>, transformer_cls_names_to_wrap=[<span>"LlamaDecoderLayer"</span>], state_dict_type=<span>"SHARDED_STATE_DICT"</span>, cpu_ram_efficient_loading=<span>True</span>
+)
+</code></pre>
+<p>or through the <code>cpu_ram_efficient_loading</code> and <code>state_dict_type</code> config fields inside the <code>fsdp_config</code> in Axolotl:</p>
+<pre><code><span>fsdp_version:</span> <span>2</span>
+<span>fsdp_config:</span> <span>auto_wrap_policy:</span> <span>TRANSFORMER_BASED_WRAP</span> <span>transformer_layer_cls_to_wrap:</span> <span>LlamaDecoderLayer</span> <span>state_dict_type:</span> <span>SHARDED_STATE_DICT</span> <span>cpu_ram_efficient_loading:</span> <span>True</span>
+</code></pre>
+</li>
+<li><p>The total batch size used during training plays an important factor in training stability, memory usage, and data throughput. When using DP and/or FSDP the effective batch size is calculated as:</p>
+<p><code>effective_batch_size = micro_batch_size * gradient_accumulation_steps * dp_world_size</code>. </p>
+<p>where <code>dp_world_size = (dp_shard_size * dp_replicate_size) / tp_size</code>. You can increase your batch size by increasing your total micro batch size or gradient accumulation steps in your training loop, or setting the <code>micro_batch_size</code> and <code>gradient_accumulation_steps</code> config fields in Axolotl, or increasing the total <code>dp_world_size</code> by adding more GPUs. As we mentioned above, this imposes a <em>minimum</em> total batch size of <code>dp_world_size</code> - when using pure DP/FSDP, this will be your total world size, and if this is too high the only way to decrease the total batch size is by introducing tensor parallelism. Finally, with a fixed number of GPUs and in memory-constrained scenarios, we recommend increasing <code>gradient_accumulation_steps</code> instead of <code>micro_batch_size</code> to achieve larger effective batch sizes, and vice-versa.</p>
+</li>
+<li><p>Correspondingly, when your effective batch size increases due to introducing data parallelism, you should scale your learning rate to maintain training stability. Common approaches include linear scaling <code>scaled_lr = base_lr * (effective_batch_size / base_batch_size)</code> or square root scaling <code>scaled_lr = base_lr * sqrt(effective_batch_size / base_batch_size)</code>. </p>
+</li>
+<li><p>When memory constraints persist even with parallelism strategies, gradient checkpointing can provide additional memory savings by trading compute for memory. During the forward pass, only a subset of activations are kept in memory (typically at transformer block boundaries), and intermediate activations are recomputed during the backward pass. This technique works seamlessly with all parallelism strategies covered above. In Accelerate, you can enable it by setting <code>activation_checkpointing=true</code> in <code>FullyShardedDataParallelPlugin</code>:</p>
+<pre><code>fsdp2_plugin = FullyShardedDataParallelPlugin( fsdp_version=<span>2</span>, auto_wrap_policy=<span>"transformer_based_wrap"</span>, transformer_cls_names_to_wrap=[<span>"LlamaDecoderLayer"</span>], state_dict_type=<span>"SHARDED_STATE_DICT"</span>, cpu_ram_efficient_loading=<span>True</span>, activation_checkpointing=<span>True</span>
+)
+</code></pre>
+<p>and similarly in Axolotl:</p>
+<pre><code><span>fsdp_version:</span> <span>2</span>
+<span>fsdp_config:</span> <span>auto_wrap_policy:</span> <span>TRANSFORMER_BASED_WRAP</span> <span>transformer_layer_cls_to_wrap:</span> <span>LlamaDecoderLayer</span> <span>state_dict_type:</span> <span>SHARDED_STATE_DICT</span> <span>cpu_ram_efficient_loading:</span> <span>True</span> <span>activation_checkpointing:</span> <span>True</span>
+</code></pre>
+<p>Note that gradient checkpointing typically increases training time by ~20-30% due to activation recomputation, but can reduce activation memory by 60-80%, making it particularly valuable when training very large models or using long sequence lengths.</p>
+</li>
+</ul>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

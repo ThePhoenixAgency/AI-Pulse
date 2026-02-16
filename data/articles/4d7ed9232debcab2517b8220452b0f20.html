@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Five Big Improvements to Gradio MCP Servers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Five Big Improvements to Gradio MCP Servers</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 7/17/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/gradio-mcp-updates" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/freddyaboulton"><img alt="Freddy Boulton's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1654278567459-626a9bfa03e2e2796f24ca11.jpeg"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#seamless-local-file-support">Seamless Local File Support</a> <ul></ul> </li><li><a href="#real-time-progress-notifications">Real-time Progress Notifications</a> <ul></ul> </li><li><a href="#transform-openapi-specs-to-mcp-in-one-line">Transform OpenAPI Specs to MCP in One Line</a> <ul></ul> </li><li><a href="#improvements-to-authentication">Improvements to Authentication</a> <ul></ul> </li><li><a href="#modifying-tool-descriptions">Modifying Tool Descriptions</a> <ul></ul> </li><li><a href="#conclusion">Conclusion</a> <ul></ul> </li></ul></nav></div><p><a href="https://gradio.app/">Gradio</a> is an open-source Python package for creating AI-powered web applications. Gradio is compliant with the <a href="https://modelcontextprotocol.io/introduction">MCP server protocol</a> and powers thousands of MCP servers hosted on <a href="https://hf.co/spaces">Hugging Face Spaces</a>. The Gradio team is <strong>betting big</strong> on Gradio and Spaces being the best way to build and host AI-powered MCP servers.</p>
+<p>To that end, here are some of the big improvements we've added to Gradio MCP servers as of version <a href="https://github.com/gradio-app/gradio/releases/tag/gradio%405.38.0">5.38.0</a>.</p>
+<h2> <a href="#seamless-local-file-support"> <span></span> </a> <span> Seamless Local File Support </span>
+</h2>
+<p>If you've tried to use a remote Gradio MCP server that takes a file as input (image, video, audio), you've probably encountered this error:</p>
+<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPError.png"></p><p>This happens because the Gradio server is hosted on a different machine, meaning any input files must be accessible via a public URL so they can be downloaded remotely.</p>
+<p>While many ways exist to host files online, they all add a manual step to your workflow. In the age of LLM agents, shouldn't we expect them to handle this for you?</p>
+<p>Gradio now includes a <strong>"File Upload" MCP server</strong> that agents can use to upload files directly to your Gradio application. If any tools in your Gradio MCP server require file inputs, the connection documentation will now show you how to start the "File Upload" MCP server:</p>
+<p><img src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPConnectionDocs.png"></p><p>Learn more about using this server (and important security considerations) in the <a href="https://www.gradio.app/guides/file-upload-mcp">Gradio Guides</a>.</p>
+<h2> <a href="#real-time-progress-notifications"> <span></span> </a> <span> Real-time Progress Notifications </span>
+</h2>
+<p>Depending on the AI task, getting results can take some time. Now, Gradio <strong>streams progress notifications</strong> to your MCP client, allowing you to monitor the status in real-time!</p> <p>As an MCP developer, it's highly recommended to implement your MCP tools to emit these progress statuses. Our <a href="https://www.gradio.app/guides/building-mcp-server-with-gradio#sending-progress-updates">guide</a> shows you how.</p>
+<h2> <a href="#transform-openapi-specs-to-mcp-in-one-line"> <span></span> </a> <span> Transform OpenAPI Specs to MCP in One Line </span>
+</h2>
+<p>If you want to integrate an existing backend API into an LLM, you have to manually map API endpoints to MCP tools. This can be a time-consuming and error prone chore. With this release, Gradio can automate the entire process for you! With a single line of code, you can integrate your business backend into any MCP-compatible LLM. </p>
+<p><a href="https://www.openapis.org/">OpenAPI</a> is a widely adopted standard for describing RESTful APIs in a machine-readable format, typically as a JSON file. Gradio now features the <code>gr.load_openapi</code> function, which creates a Gradio application directly from an OpenAPI schema. You can then launch the app with <code>mcp_server=True</code> to automatically create an MCP server for your API!</p>
+<pre><code><span>import</span> gradio <span>as</span> gr demo = gr.load_openapi( openapi_spec=<span>"https://petstore3.swagger.io/api/v3/openapi.json"</span>, base_url=<span>"https://petstore3.swagger.io/api/v3"</span>, paths=[<span>"/pet.*"</span>], methods=[<span>"get"</span>, <span>"post"</span>],
+) demo.launch(mcp_server=<span>True</span>)
+</code></pre>
+<p>Find more details in the Gradio <a href="https://www.gradio.app/guides/from-openapi-spec">Guides</a>.</p>
+<h2> <a href="#improvements-to-authentication"> <span></span> </a> <span> Improvements to Authentication </span>
+</h2>
+<p>A common pattern in MCP server development is to use authentication headers to call services on behalf of your users. As an MCP server developer, you want to clearly communicate to your users which credentials they need to provide for proper server usage.</p>
+<p>To make this possible, you can now type your MCP server arguments as <code>gr.Header</code>. Gradio will automatically extract that header from the incoming request (if it exists) and pass it to your function. The benefit of using <code>gr.Header</code> is that the MCP connection docs will automatically display the headers you need to supply when connecting to the server!</p>
+<p>In the example below, the <code>X-API-Token</code> header is extracted from the incoming request and passed in as the <code>x_api_token</code> argument to <code>make_api_request_on_behalf_of_user</code>.</p>
+<pre><code><span>import</span> gradio <span>as</span> gr <span>def</span> <span>make_api_request_on_behalf_of_user</span>(<span>prompt: <span>str</span>, x_api_token: gr.Header</span>): <span>"""Make a request to everyone's favorite API.</span>
+<span> Args:</span>
+<span> prompt: The prompt to send to the API.</span>
+<span> Returns:</span>
+<span> The response from the API.</span>
+<span> Raises:</span>
+<span> AssertionError: If the API token is not valid.</span>
+<span> """</span> <span>return</span> <span>"Hello from the API"</span> <span>if</span> <span>not</span> x_api_token <span>else</span> <span>"Hello from the API with token!"</span> demo = gr.Interface( make_api_request_on_behalf_of_user, [ gr.Textbox(label=<span>"Prompt"</span>), ], gr.Textbox(label=<span>"Response"</span>),
+) demo.launch(mcp_server=<span>True</span>)
+</code></pre>
+<p><a href="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPUploadUpdated.png"><img alt="MCP Header Connection Page" src="https://huggingface.co/datasets/freddyaboulton/bucket/resolve/main/MCPUploadUpdated.png"></a></p>
+<p>You can read more about this in the Gradio <a href="https://www.gradio.app/guides/building-mcp-server-with-gradio#using-the-gr-header-class">Guides</a>.</p>
+<h2> <a href="#modifying-tool-descriptions"> <span></span> </a> <span> Modifying Tool Descriptions </span>
+</h2>
+<p>Gradio automatically generates tool descriptions from your function names and docstrings. Now you can customize the tool description even further with the <code>api_description</code> parameter. In this example, the tool description will read "Apply a sepia filter to any image."</p>
+<pre><code><span>import</span> gradio <span>as</span> gr
+<span>import</span> numpy <span>as</span> np <span>def</span> <span>sepia</span>(<span>input_img</span>): <span>"""</span>
+<span> Args:</span>
+<span> input_img (np.array): The input image to apply the sepia filter to.</span>
+<span></span>
+<span> Returns:</span>
+<span> The sepia filtered image.</span>
+<span> """</span> sepia_filter = np.array([ [<span>0.393</span>, <span>0.769</span>, <span>0.189</span>], [<span>0.349</span>, <span>0.686</span>, <span>0.168</span>], [<span>0.272</span>, <span>0.534</span>, <span>0.131</span>] ]) sepia_img = input_img.dot(sepia_filter.T) sepia_img /= sepia_img.<span>max</span>() <span>return</span> sepia_img gr.Interface(sepia, <span>"image"</span>, <span>"image"</span>, api_description=<span>"Apply a sepia filter to any image."</span>)\ .launch(mcp_server=<span>True</span>)
+</code></pre>
+<p>Read more in the <a href="https://www.gradio.app/guides/building-mcp-server-with-gradio#modifying-tool-descriptions">guide</a>.</p>
+<h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
+</h2> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

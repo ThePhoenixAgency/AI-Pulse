@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/24/2025 3:05:12 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-2-fft-sound-spectrum-analyzer-visualizes-audio-via-oled-display" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<section>
+<div>
+<figure> <img src="https://cdn.mos.cms.futurecdn.net/VTBe3zJDEobaiqzXyBed9n.png" alt="Raspberry Pi"> <figcaption> <span>(Image credit: Dan McCreary)</span>
+</figcaption>
+</figure></div>
+<div> <p>There are all sorts of cool <a href="https://www.tomshardware.com/tag/audio">audio</a>-based <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> projects out there but sometimes you need something a little more niche. Today we're sharing a really cool creation put together by Dan McCreary that uses a <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico/raspberry-pi-pico-2-launches-with-arm-risc-v-cores-hands-on-with-the-new-dollar5-microcontroller">Raspberry Pi Pico 2</a> to drive a custom <a href="https://www.youtube.com/watch?v=mszrdmg-LGs" target="_blank"><u>FFT sound spectrum analyzer</u></a>. This gadget provides real time visual output of soundwaves and best of all, you can make it yourself!</p><div>
+<div>
+<p><span>Spectrum Analyzer using FFT running on Raspberry Pi Pico 2 - YouTube</span>
+<img src="https://img.youtube.com/vi/mszrdmg-LGs/maxresdefault.jpg" alt="Spectrum Analyzer using FFT running on Raspberry Pi Pico 2 - YouTube">
+</p>
+</div> <a href="https://youtu.be/mszrdmg-LGs" target="_blank">Watch On </a>
+</div><p>McCreary was kind enough to share plenty of details about how this project works and what its current limitations are. In the project description, he goes on to explain that the FFT analyzer operates around 17 milliseconds. The algorithm was created to work in ARM assembler using an FFT library created by Peter Hinch.</p><p>Like we mentioned before, the main board powering the project is a Raspberry Pi Pico 2. The Pico is connected to a 2.42-inch I2C OLED display which has a resolution of 128 x 64px and relies on the SSD1306 driver to operate. For audio input it uses a microphone that is capable of providing 8K samples per second.</p><p>The code for the project was created using MicroPython. Over at <a href="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer" target="_blank"><u>GitHub</u></a>, McCreary has shared details on how to recreate the project. In it, he breaks down the hardware setup as well as everything you need to build the FFT analyzer system. McCreary also shared a video to YouTube showing off the creation process as well as the final build in action.</p><p>If you want to get a closer look at this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a>, check out the project page shared to GitHub and YouTube for more details. There you'll find not only details about its construction but also steps and additional resources for developing your own FFT system from scratch.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div> <div><p>Ash Hill is a contributing writer for Tom's Hardware with a wealth of experience in the hobby electronics, 3D printing and PCs. She manages the Pi projects of the month and much of our daily Raspberry Pi reporting while also finding the best coupons and deals on all tech.</p></div>
+</section> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

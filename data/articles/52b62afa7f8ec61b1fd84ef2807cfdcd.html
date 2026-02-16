@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Run Windows 11 on Raspberry Pi 5 with Botspot Virtual Machine</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Run Windows 11 on Raspberry Pi 5 with Botspot Virtual Machine</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/9/2025 1:00:00 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/run-windows-11-on-raspberry-pi-5-with-botspot-virtual-machine" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>We’ve previously installed Windows on a <a href="https://www.tomshardware.com/how-to/install-windows-11-raspberry-pi"><u>Raspberry Pi 4</u></a> and 5 with varying levels of success. But it seems that Botspot is taking a shot at running <a href="https://www.tomshardware.com/tag/windows-11">Windows 11</a> on a Raspberry Pi with <a href="https://github.com/Botspot/bvm" target="_blank"><u>BVM (Botspot Virtual Machine).</u></a></p><p>BVM offers a simple installation process, most of which is automated via the terminal. There is also a GUI application available from the terminal which makes it even easier to use.</p><p>Windows 11 Arm in a virtual machine (VM) on your Raspberry Pi 5 has some caveats. Because it is KVM, there is no significant speed difference to running Windows 11 bare metal on the Pi 5. That said, it isn’t speedy, so don’t expect to be playing triple A games here. Older games (like 10-15 years ago) and web games should work ok.</p><h2>For this how to you will need</h2><ul><li>A Raspberry Pi 5 4GB or greater running Raspberry Pi OS</li><li>An NVMe SSD and PCIe HAT+ board for your Raspberry Pi 5.<ul><li>You’ll need at least 50GB of freespace</li></ul></li><li>Active cooling for your Raspberry Pi</li></ul><p>1. <strong>Open a terminal and clone the git repository.</strong></p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div><pre><code>git clone https://github.com/Botspot/bvm</code></pre><p>2. <strong>Run BVM for the first time. </strong>This will install all of the dependencies necessary to run the virtual machine.</p><pre><code>bvm/bvm help</code></pre><p>3. <strong>Create a Windows 11 configuration file.</strong></p><pre><code>bvm/bvm new-vm ~/win11</code></pre><p>4. <strong>Download Windows 11 and all of the necessary drivers.</strong></p><pre><code>bvm/bvm download ~/win11</code></pre><p>5. <strong>Prepare the Windows 11 downloads for the first boot.</strong></p><pre><code>bvm/bvm prepare ~/win11</code></pre><p>6. <strong>Run Windows 11 in the VM for the first time.</strong> This will take some time, so grab a drink and wait it out. The VM window will open and perform an automated install. The windows will close automatically when done. Once complete, you can optionally delete all of the ISO files from /home/pi/win11/unattended.</p><pre><code>bvm/bvm firstboot ~/win11</code></pre><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/amk7rUYHB423MmKbjfNuWM.jpg" alt="Botspot BVM Win 11">
+</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>7. <strong>Boot Windows 11 in headless mode. </strong>This will give us better performance than just running the VM directly.</p><pre><code>bvm/bvm boot-nodisplay ~/win11</code></pre><p>8. <strong>Open another terminal and connect to the headless Windows 11 session using a remote desktop. The Windows 11 desktop will appear and you can now run Windows 11 in a VM on your Raspberry Pi 5.</strong></p><pre><code>bvm/bvm connect ~/win11</code></pre><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/xgfS8kZGpBg5RuA9iiwhdM.jpg" alt="Botspot BVM Win 11">
+</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>9. <strong>When you are done, shutdown Windows 11 just like a “normal” OS install.</strong></p><p>If you’re not a fan of the terminal, then bvm has a GUI frontend which follows a simple numbered process.</p><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/cudDNR5zQdQ3K6MdJAbZgM.png" alt="Botspot BVM Win 11">
+</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>To use the GUI, open a terminal and run the following command.</p><pre><code>bvm/bvm gui</code></pre><p>It uses the same commands behind the scenes, the GUI just makes it a little friendlier to use.</p><h2>Enable USB device passthrough via bvm-config</h2><p>This is a relatively new feature, so your mileage may vary. Not all devices will work as expected. But, this is a really cool feature</p><p>1. <strong>Ensure that BVM and the Windows 11 VM is shutdown.</strong></p><p>2. Connect the USB device that you wish to use.</p><p>3. <strong>Open a terminal and list the attached USB devices.</strong></p><pre><code>lsusb</code></pre><p>4. <strong>Find your device ID and copy the ID. I’m using a USB DVD writer as my test device.</strong></p><pre><code>id.jpg</code></pre><p>5. <strong>Open the config file for editing.</strong></p><pre><code>nano ~/win11/bvm-config</code></pre><p>6. <strong>Look for the usb_passthrough entry and replace the ID with the ID of your device.</strong></p><p>7. <strong>Save and close the editor by pressing CTRL+X, then Y and Enter.</strong></p><p>8. <strong>Repeat Steps 8 and 9 in the previous section to start Windows 11 in headless mode, and then connect using RDP.</strong></p><p>9. <strong>Your USB device is now accessible to Windows 11. In my case, the USB DVD writer was accessible as a drive.</strong></p><p>We can also make the following changes via the <a href="https://github.com/Botspot/bvm/blob/main/resources/bvm-config" target="_blank"><u>bvm-config file</u></a>.</p><ul><li>Change the username and password for the account.</li><li>Set the language.</li><li>Change the remote desktop connection port.</li><li>Keep the “bloat” (debloat happens by default).</li><li>Force the VM’s RAM allocation.</li><li>Set the VM’s disk size (40GB by default).</li><li>Enable / disable animations / transparency.</li></ul><p>Just look for the relevant line in bvm-config and read the comments that explain how the configuration can be changed.</p><h2>Mount Windows 11 as a drive on the host OS</h2><p>We can mount the Windows 11 VM as a drive on the host OS, making it easier to bulk transfer files between the two operating systems. Note that we can only mount the Windows 11 VM while the VM is not running.</p><p>1. <strong>Open a terminal and run this command to mount the Windows 11 VM.</strong></p><pre><code>bvm/bvm mount ~/win11</code></pre><p>2. Open the Raspberry Pi OS file manager and navigate to /media/pi/bvmmount. Here you have full access to the Windows 11 drive and can read and write files across.</p><p>3. <strong>Unmount the drive in the file manager using the “eject” button next to its entry. You can now repeat steps 8 and 9 in the first section to start the Windows 11 VM.</strong></p><p>4. <strong>In Windows 11, navigate to where you copied the files, they will be available for use. </strong>Obviously this doesn’t apply if you bulk copied files from Windows 11 to the host OS.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tiny Mac look-a-like alarm clock transformed to run real Mac software</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Tiny Mac look-a-like alarm clock transformed to run real Mac software</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 2/15/2026 11:00:00 AM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-projects/tiny-mac-look-a-like-alarm-clock-transformed-to-run-real-mac-software" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<section> <div> <p>A vintage technology enthusiast has turned a miniature Mac-a-like desk toy alarm clock into a real Mac software-running computer. Colin from This Does Not Compute (TDNC) says he was drawn to the handsome <a href="https://target.georiot.com/Proxy.ashx?tsid=45723&amp;GR_URL=https%3A%2F%2Famazon.com%2FRayCue-Maclock-WB-8-Retro-Pixel%2Fdp%2FB0GHG4CW3S%3Ftag%3Dhawk-future-20%26ascsubtag%3Dtomshardware-us-2161495922991003330-20" target="_blank">Maclock on Amazon</a> ($30). However, its pleasingly faithful looks made him wish that it could do more than basic alarm clock duties.</p><div>
+<div>
+<p><span>I turned a CLOCK into a vintage Mac! - YouTube</span>
+<img src="https://img.youtube.com/vi/dRr5iVjMfqs/maxresdefault.jpg" alt="I turned a CLOCK into a vintage Mac! - YouTube">
+</p>
+</div> <a href="https://youtu.be/dRr5iVjMfqs" target="_blank">Watch On </a>
+</div><p>With the inspiration to go ahead, all the components were bought, and the ‘WonderMac’ project began. Cracking the Maclock case was the hardest part of the project, says the TechTuber. A bit of patience with the use of a steel spudger paid off, though.</p><p>The original Maclock screen couldn’t be re-purposed, but TDNC found a 2.8-inch Waveshare SVGA resolution touchscreen part that interfaces with the Raspberry Pi Zero W, and fitted very nicely into the alarm clock chassis.</p><p>Before going further with physically fitting the added Pi and new screen hardware, a few software steps were taken. This part of the project started with installing the latest Pi OS on an SD card and adding Waveshare 2.4-inch touchscreen drivers.</p><p>TDNC first thought about using a modern <a href="https://www.tomshardware.com/video-games/retro-gaming/a-34-year-old-apple-mac-crash-bug-would-have-gone-undiscovered-for-all-eternity-but-the-accuracy-of-the-mame-emulator-shone-a-light-on-it">Mac emulator</a> called Snow, but after a series of issues, decided on the older, lightweight Mini vMac. This wasn’t a cinch to get running, either, but after Colin recompiled the latest beta from source, it worked fine on the Pi Zero. Lastly, on the software side, Mini vMac was set to autorun from boot for a nice, slick, hands-off startup experience.</p><p>The TechTuber wanted to reuse the existing Maclock USB-C input to power the system. This wasn’t very straightforward, as it had charging circuitry that needed to be removed, so that the Pi got 5V direct from the back-facing port on the chassis. These power leads were then <a href="https://www.tomshardware.com/best-picks/best-soldering-irons">soldered</a> to two pads on the <a href="https://www.tomshardware.com/reviews/raspberry-pi-zero-2-w-review">Pi Zero W</a>’s PCB.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/rJzjaBtMHyWk6ehDtw6sEW.jpg" alt="The Maclock alarm clock on Amazon">
+</p></div><figcaption><span>The $30 Maclock alarm clock on Amazon - gets modded into a working classic Mac </span><span>(Image credit: <a href="https://target.georiot.com/Proxy.ashx?tsid=45723&amp;GR_URL=https%3A%2F%2Famazon.com%2FRayCue-Maclock-WB-8-Retro-Pixel%2Fdp%2FB0GHG4CW3S%3Ftag%3Dhawk-future-20%26ascsubtag%3Dtomshardware-us-1295256158806832757-20" target="_blank">The Maclock alarm clock on Amazon</a>)</span></figcaption></figure><p>Next, a <a href="https://www.tomshardware.com/best-picks/best-3d-printers">3D printed</a> bracket would be designed and output to secure the Pi and screen into the Maclock chassis in the correct position. Sadly, in this implementation, the brightness dial on the lower lip of the tiny Mac’s screen bezel becomes a mere cosmetic addition. Similarly, two clock control buttons that remain also don’t do anything anymore. Some other small tweaks, trims, and snips were required to fit the new brains and screen into the Maclock chassis neatly and securely.</p><p>It all worked, with a few tiny niggles. Overall, the TechTuber says he is pleased with the result, but admits it isn’t the cheapest project, costing about $100 for all the products used. Graciously, TDNC has shared project essentials like the 3D-printable screen bracket and a <a href="https://github.com/ThisDoesNotCompute/wondermac" target="_blank">WonderMac GitHub</a> repository covering the software side. These are great resources if you want to replicate or build upon this super cute classic mini Mac project.</p><a href="https://news.google.com/publications/CAAqLAgKIiZDQklTRmdnTWFoSUtFSFJ2YlhOb1lYSmtkMkZ5WlM1amIyMG9BQVAB" target="_blank"><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/7cUTDmN2PHNRiNBVqbKf56.png" alt="Google Preferred Source">
+</p></div></figure></a><p><em>Follow</em><a href="https://news.google.com/publications/CAAqLAgKIiZDQklTRmdnTWFoSUtFSFJ2YlhOb1lYSmtkMkZ5WlM1amIyMG9BQVAB" target="_blank"><em> Tom's Hardware on Google News</em></a><em>, or</em><a href="https://google.com/preferences/source?q=" target="_blank"><em> add us as a preferred source</em></a><em>, to get our latest news, analysis, &amp; reviews in your feeds.</em></p>
+</div> <div><p>Mark Tyson is a news editor at Tom's Hardware. He enjoys covering the full breadth of PC tech; from business and semiconductor design to products approaching the edge of reason.</p></div>
+</section> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

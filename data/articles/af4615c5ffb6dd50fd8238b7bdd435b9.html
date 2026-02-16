@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi and AI power open source smart city monitoring project</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi and AI power open source smart city monitoring project</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/13/2025 4:11:28 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-and-ai-power-open-source-smart-city-monitoring-project" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>If you're planning to go out, it doesn't hurt to take a look at the weather and traffic report for your area. But what if you could get even more specific? That's where this cool <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> project put together by maker and developer Glossyio comes in. Using our favorite SBC, they've crafted an AI-driven <a href="https://docs.trafficmonitor.ai/" target="_blank"><u>traffic monitor</u></a> that provides specific traffic data no matter where it is deployed.</p><p>This project, like many others we feature, is open source so there's tons of source material to dig through if you want to create it for yourself or just get a better idea about how it goes together. This particular setup is really flexible so you can add or remove components to suit your preferences. Glossyio has yet to upload a build guide but plans to in the future.</p><div><div><p>Image </p><p>1</p><p> of </p><p>3</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/qRKgYdCgncwKUJrPcXCDgL.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: Glossyio)</span></figcaption></figure></div></div><p>If you're planning to use a Raspberry Pi for an AI system like this, it's a good idea to get your hands on the latest <a href="https://www.tomshardware.com/reviews/raspberry-pi-5">Raspberry Pi 5</a> for its performance and memory capacity. In Glossyio's setup, the Pi is connected to a <a href="https://www.tomshardware.com/reviews/raspberry-pi-camera-module-v3">Raspberry Pi Camera Module 3</a> to capture images (a good choice given that it has autofocus), an OPS243-A doppler radar sensor as well as an AI co-processor to help with the AI functionality. The traffic monitor is intended to be mounted outdoors in a location with a good view of the road and obviously it will need to be housed inside of a weather-proof enclosure.</p><p>You can find a detailed explanation of the software-side of the project over at the official project website <a href="https://docs.trafficmonitor.ai/build-your-own-device-diy/software-installation" target="_blank"><u>trafficmonitor.ai</u></a>. All of the source code has been shared, as well, and can be found over at <a href="https://github.com/glossyio/traffic-monitor" target="_blank"><u>GitHub</u></a>.</p><p>If you want to get a closer look at this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a>, check out the <a href="https://docs.trafficmonitor.ai/" target="_blank"><u>AI traffic monitor</u></a> website and be sure to follow Glossyio for future updates.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

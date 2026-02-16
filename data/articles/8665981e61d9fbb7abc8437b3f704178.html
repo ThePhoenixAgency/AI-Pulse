@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pi Pico W Pinout and Power Pins</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Pi Pico W Pinout and Power Pins</h1>
+  <div class="metadata">
+    Source: Raspberry Pi Spy | Date: 11/14/2022 3:00:00 PM | Lang: EN |
+    <a href="https://www.raspberrypi-spy.co.uk/2022/11/pi-pico-w-pinout-and-power-pins/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article><div><p>The Pi Pico W Pinout is identical to that of the original Pi Pico. The Pi Pico W microcontroller board offers all the features of the Pi Pico with the addition of WiFi and Bluetooth.</p><p>The Pico W can accept 0.1″ pin-headers which can be soldered to the board as required.</p><p>Many of the pins on the Pi Pico W board can provide different features and capabilities.</p><figure><a href="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2022/11/raspberry_pi_pico_w_pinout.png"><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2022/11/raspberry_pi_pico_w_pinout-1024x636.png" alt="Pi Pico W Pinout"></a></figure><h2>Pi Pico W Physical Pin Numbering</h2><p>The diagram below shows the pins on the Pi Pico W and how they are numbered:</p><div><figure><a href="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/01/raspberry_pi_pico_physical_pin_numbering.png" target="_blank"><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/01/raspberry_pi_pico_physical_pin_numbering.png" alt="Raspberry Pi Pico Physical Pin Numbering"></a></figure></div><h2>Power Pins</h2><p>The following pins are related to power:</p><ul>
+<li>PIN40 VBUS (USB input voltage, typically 5V)</li><li>PIN39 VSYS (used to power system, can be in range 1.8V-5.5V)</li><li>PIN36 3V3</li></ul><p>The following pins provide ground:</p><ul>
+<li>PIN3</li><li>PIN8</li><li>PIN13</li><li>PIN18</li><li>PIN23</li><li>PIN28</li><li>PIN33</li><li>PIN38</li></ul><p>If you look carefully you’ll see that the ground pins have slightly square copper pads.</p><h2>Test Points</h2><p>Taking a look at the underside of the Pico board there a six test points. These may be useful for advanced projects.</p><ul>
+<li>TP1 – Ground (close coupled ground for differential USB signals)</li><li>TP2 – USB DM</li><li>TP3 – USB DP</li><li>TP4 – GPIO23/SMPS PS pin (do not use)</li><li>TP5 – GPIO25/LED (not recommended to be used)</li><li>TP6 – BOOTSEL</li></ul><h2>Pico Pinout on Linux Command Line</h2><p>It’s possible to get the Pi Pico Pinout on the Linux command line using my picopins bash script.</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2022/12/picopins_bash_script.png" alt="Pi Pico picopins Script Output"></figure><p>Please see my Pi Pico “<a href="https://www.raspberrypi-spy.co.uk/2022/12/pi-pico-pinout-display-on-the-command-line/">Pinout Display on the Command Line</a>” article for full details of how to set this up.</p><h2>Other Pi Pico Resources</h2><ul>
+<li><a href="https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf" target="_blank">Official Raspberry Pi Pico Datasheet</a></li><li><a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" target="_blank">Official RP2040 Datasheet</a></li></ul><p>The latest version of the MicroPython firmware can be downloaded from:<br><strong>Pi Pico</strong>: <a href="https://micropython.org/download/rp2-pico">https://micropython.org/download/rp2-pico</a><br><strong>Pi Pico W</strong>: <a href="https://micropython.org/download/rp2-pico-w">https://micropython.org/download/rp2-pico-w</a></p><p>Free PDF download: <a href="https://hackspace.raspberrypi.com/books/micropython-pico" target="_blank">Get Started with MicroPython on Raspberry Pi Pico</a></p><ul></ul></div></article></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

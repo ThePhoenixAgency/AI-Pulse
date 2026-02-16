@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jupyter Agents: training LLMs to reason with notebooks</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Jupyter Agents: training LLMs to reason with notebooks</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 9/10/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/jupyter-agent-2" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/baptistecolle"><img alt="Baptiste Colle's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63248499a831987cc737ea65/JGcrkDSauHo7I1VIngOsd.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/hannayukhymenko"><img alt="Hanna Yukhymenko's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/noauth/rZDwRiBcqeqlUQ7mThoyU.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/lvwerra"><img alt="Leandro von Werra's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5e48005437cb5b49818287a5/4uCXGGui-9QifAT4qelxU.png"></a> </span> </span></p> </div></div> <p>The past year has been all about giving LLMs more tools and autonomy to solve more complex and open ended tasks. The goal of the <strong>Jupyter Agent</strong> is to give the model the ultimate tool: code execution. </p>
+<p>A natural way to display multi-step code execution together with reasoning is within a Jupyter Notebook, which consists of code and markdown cells. So we built Jupyter Agent to act as an agent that can execute code directly inside a Jupyter notebook and use this environment to solve data analysis and data science tasks. Think of it like <em>Cursor</em>, but living natively inside your data science workflow.<br>We built a <a href="https://huggingface.co/spaces/lvwerra/jupyter-agent-2">demo</a> of this vision with <strong>Qwen-3 Coder</strong>, currently one of the strongest coding models. This is a follow-up to our earlier work on <a href="https://huggingface.co/spaces/lvwerra/jupyter-agent">jupyter-agent (v1)</a>.</p>
+<p>While large models are starting to show useful behavior, the key question is how we can continue improving them. To this end, we focus on strengthening smaller models to perform well on agentic data science tasks as they currently struggle to compete with the large models.</p>
+<p>The goal of this project is to build a pipeline to first generate high-quality training data, then fine-tune an existing small model, and finally evaluate whether the model's performance improves on relevant benchmarks.</p>
+<p>Let’s begin with the last step: selecting a strong benchmark for evaluating models on data science tasks.</p>
+<h2> <a href="#-primer-the-dabstep-benchmark"> </a> <span> Primer: the DABStep Benchmark </span>
+</h2>
+<p>In order to understand if we are making progress towards better data science agents we need a benchmark to measure such capabilities. Last year, in partnership with <a href="https://huggingface.co/adyen">Adyen</a>, we introduced the <strong><a href="https://huggingface.co/blog/dabstep">DABStep benchmark</a></strong>: a way to evaluate data science agents on realistic tasks. The setup is simple: provide the LLM with datasets and ask it to answer non-trivial data questions. </p>
+<p>Example tasks:</p>
+<div> <table> <thead><tr>
+<th>Question</th>
+<th>Answer</th>
+</tr> </thead><tbody><tr>
+<td>Which card scheme had the highest average fraud rate in 2023?</td>
+<td>SwiftCharge</td>
+</tr>
+<tr>
+<td>For the year 2023, focusing on the merchant <em>Crossfit Hanna</em>, if we incentivize users to switch to a different Authorization Characteristics Indicator, which option would be the most cost-effective?</td>
+<td>E:346.49</td>
+</tr>
+</tbody> </table>
+</div>
+<p>This benchmark remains challenging for today’s LLMs — e.g. the best out-of-the-box model is Claude 4 Sonnet which reaches not even 20% accuracy on the hard tasks.<br>You can explore the live leaderboard <a href="https://huggingface.co/spaces/adyen/DABstep">here</a>.</p>
+<h2> <a href="#-first-baseline"> </a> <span> First Baseline </span>
+</h2>
+<p>Now that we identified a good benchmark we can try to climb it! We set out to build a dataset for fine-tuning such that even <strong>a small data agent model</strong> could perform well on DABStep. </p>
+<p>Our first choice was <a href="https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507"><strong>Qwen3-4B-Thinking-2507</strong></a>: extremely small (fast to iterate with, easy to run), yet strong enough to act in agentic scenarios. </p>
+<p>Baseline results: </p>
+<ul>
+<li><em>Easy tasks:</em> <strong>44.4%</strong> </li>
+<li><em>Hard tasks:</em> <strong>2.1%</strong></li>
+</ul>
+<p>Not great — but a promising starting point, since it left a lot of room for improvement. Let's see how we can improve it!</p>
+<h2> <a href="#-primer-on-scaffolding"> </a> <span> Primer on Scaffolding </span>
+</h2>
+<p>A core aspect of agents that sets it apart from a pure chat model is the scaffolding built around the model to steer its behaviour. The evaluation script in DABStep for example uses <a href="https://github.com/huggingface/smolagents">smolagents</a> to execute code. Smolagents comes with predefined behaviors, prompting structures, and expected formats. </p>
+<p>We also studied the <a href="https://github.com/QwenLM/Qwen-Agent"><strong>Qwen-Agent</strong></a> codebase, where the authors tailoring scaffolding to the model. This makes sense: Claude Code, for example, works shockingly well with Claude Sonnet because their scaffolding is aligned. </p>
+<p>So, we restructured our scaffolding: </p>
+<ul>
+<li>Stripped it down to ~200 lines of code. </li>
+<li>No external dependencies. </li>
+<li>Inspired by the spirit of <a href="https://huggingface.co/blog/tiny-agents"><strong>tiny-agents</strong></a>.</li>
+</ul>
+<p> Check it out here: <a href="https://huggingface.co/spaces/lvwerra/jupyter-agent-2/blob/main/utils.py">utils.py</a>.</p>
+<p><strong>Results:</strong> accuracy jumped from <strong>44.4% → 59.7% (easy split)</strong>. </p>
+<p><strong>Our loop:</strong> </p>
+<ul>
+<li>While loop with two tools: <em>code execution</em> to run the code and <em>final_answer</em> to return the final answer. </li>
+<li>We differ from Qwen-Agent by explicitly adding a <strong>final_answer</strong> tool — which in our testing has improved performance. </li>
+<li>Compared to smolagents, we simplified the scaffolding by removing a lot of prompts and tools. Smolagents also hardcodes a lot of assumptions into the model by using the ReACT framework.</li>
+</ul>
+<h2> <a href="#-training-pipeline"> </a> <span> Training Pipeline </span>
+</h2>
+<p>With simplified scaffolding in place, we focused on fine-tuning Qwen3-4B for <strong>data science agentic tasks</strong>. </p>
+<h2> <a href="#-dataset-pipeline"> </a> <span> Dataset Pipeline </span>
+</h2>
+<p>The recipe to improve a model on a certain task or behaviour is to train it on data that reflects the tasks as closely as possible. A natural starting point is to look at real Jupyter Notebooks and find notebooks that align closely with the task that we plan to tackle, namely data analysis. </p>
+<p>Kaggle notebooks offer a wealth of high quality data analysis notebooks and are made available by Kaggle:</p>
+<p><strong>Datasets:</strong> </p>
+<ul>
+<li><strong>Kaggle Notebooks dataset</strong>: ~2TB of notebooks.</li>
+<li><strong>Kaggle Datasets</strong>: 5TB of kaggle datasets that we manually downloaded and linked to the notebooks.</li>
+<li>Rich metadata for each notebook (authors, datasets used, etc.).</li>
+</ul>
+<p>Now that we have good results with a base model it's time to build a dataset that will help us improve it even further. We designed a multi-stage pipeline using <a href="https://github.com/huggingface/datatrove">Datatrove</a> to clean and prepare Kaggle notebooks at scale. </p>
+<p><img alt="Jupyter Agent Dataset Pipeline" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/jupyter-agent-2/jupyter-agent-dataset-pipeline.png"></p><p>Here’s how each step worked:</p>
+<h3> <a href="#1-large-scale-deduplication"> </a> <span> 1. Large-scale deduplication </span>
+</h3>
+<p>We started with ~2TB of Kaggle notebooks and reduced it to ~250GB reusing our work from the BigCode project. As part of the StarCoder2 training data processing the notebooks (without output cells) were already deduplicated.
+Most Kaggle notebooks are small variations or near-identical copies, so this step was essential.<br><em>Key insight:</em> ~90% of raw notebooks are duplicates, which would have skewed training if left unfiltered.</p>
+<h3> <a href="#2-downloading-linked-datasets"> </a> <span> 2. Downloading linked datasets </span>
+</h3>
+<p>Most Kaggle notebooks reference external datasets via Kaggle metadata. To make sure the code inside notebooks could actually run, we built a pipeline that automatically fetched these linked datasets. This step was crucial, since many notebooks would otherwise be incomplete or non-executable. </p>
+<p>Using the <strong>kagglehub</strong> package, we downloaded thousands of datasets — about <strong>5TB</strong> in total. To keep things manageable and relevant: </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -157,3 +157,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [1.1.0]: https://github.com/ThePhoenixAgency/AI-Pulse/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/ThePhoenixAgency/AI-Pulse/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/ThePhoenixAgency/AI-Pulse/releases/tag/v1.0.0
+
+## [Unreleased] - 2026-02-16
+### Added
+- Dedicated categories: `Local News / Informations locales` and `Weather / Météo` with FR/EN labels.
+- French trusted Open Source feeds: `Developpez.com`, `LinuxFr`, `Programmez`.
+- Localized keyword mappings for `OpenClaw`, `Local News`, `Weather`, and `Open Source`.
+
+### Changed
+- `france` category no longer relies on `Liberation` as a required primary source.
+- `international` category source set updated to stable, validated feeds.
+- Removed several known failing feeds from AI/Cybersecurity categories.
+
+### Tested
+- Full test suite: `node --test` => **41 passed, 0 failed**.
+- Feed availability check: **135 checked, 115 OK, 20 failing**.

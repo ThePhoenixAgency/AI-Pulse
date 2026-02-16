@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vision Language Model Alignment in TRL</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Vision Language Model Alignment in TRL</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 8/7/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/trl-vlm-alignment" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/sergiopaniego"><img alt="Sergio Paniego's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61929226ded356549e20c5da/ONUjP2S5fUWd07BiFXm0i.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/qgallouedec"><img alt="Quentin Gallouédec's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1677431596830-631ce4b244503b72277fc89f.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/kashif"><img alt="Kashif Rasul's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1669189789447-629f3b18ee05727ce328ccbe.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div></div> <h2> <div><nav><ul><li><a href="#introduction">Introduction</a> <ul></ul> </li><li><a href="#table-of-contents">Table of Contents</a> <ul></ul> </li><li><a href="#alignment-for-vision-language-models">Alignment for Vision Language Models</a> <ul><li><a href="#mixed-preference-optimization-mpo">Mixed Preference Optimization (MPO)</a> <ul></ul> </li><li><a href="#multimodal-group-relative-policy-optimization-grpo">Multimodal Group Relative Policy Optimization (GRPO)</a> <ul></ul> </li><li><a href="#group-sequence-policy-optimization-gspo">Group Sequence Policy Optimization (GSPO)</a> <ul></ul> </li><li><a href="#comparison">Comparison</a> <ul></ul> </li><li><a href="#further-extensions-for-vlms">Further Extensions for VLMs</a> <ul></ul> </li></ul> </li><li><a href="#native-supervised-fine-tuning-support">Native Supervised Fine-tuning Support</a> <ul></ul> </li><li><a href="#vllm-integration-in-trl">vLLM Integration in TRL</a> <ul></ul> </li><li><a href="#useful-resources">Useful Resources</a> <ul></ul> </li></ul></nav></div> <a href="#introduction"> <span></span> </a> <span> Introduction </span>
+</h2>
+<p>Vision Language Models (VLMs) are getting stronger, but <em>aligning</em> them to human preferences still matters. In TRL, we already showed how to post-train VLMs with <a href="https://huggingface.co/docs/trl/main/en/training_vlm_sft"><strong>Supervised Fine-Tuning (SFT)</strong></a> and <a href="https://huggingface.co/learn/cookbook/fine_tuning_vlm_dpo_smolvlm_instruct"><strong>Direct Preference Optimization (DPO)</strong></a>. This time, we’re going further.</p>
+<p><strong>tl;dr</strong> Here’s what’s new in TRL:</p>
+<ul>
+<li><strong>Mixed Preference Optimization (MPO)</strong></li>
+<li><strong>Group Relative Policy Optimization (GRPO)</strong></li>
+<li><strong>Group Sequence Policy Optimization (GSPO)</strong> (a variant of GRPO)</li>
+</ul>
+<p>These go beyond pairwise DPO, extracting richer signals from preference data and scaling better with modern VLMs.</p>
+<p>We’ve also extended existing methods to support VLMs:</p>
+<ul>
+<li><strong>Reinforce Leave One Out (RLOO)</strong></li>
+<li><strong>Online Direct Preference Optimization (Online DPO)</strong></li>
+</ul>
+<p>This enables more efficient and scalable multimodal alignment.</p>
+<p>Finally:</p>
+<ul>
+<li><strong>Native Supervised Fine-tuning support for Vision Language Models</strong></li>
+<li><strong>Training scripts and demo notebooks</strong> to help you get started quickly</li>
+</ul>
+<h2> <a href="#table-of-contents"> <span></span> </a> <span> Table of Contents </span>
+</h2>
+<ul>
+<li><a href="#multimodal-alignment-for-vlms-in-trl-%EF%B8%8F">Multimodal Alignment for VLMs in TRL </a><ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#alignment-for-vision-language-models">Alignment for Vision Language Models</a><ul>
+<li><a href="#mixed-preference-optimization-mpo">Mixed Preference Optimization (MPO)</a></li>
+<li><a href="#multimodal-group-relative-policy-optimization-grpo">Multimodal Group Relative Policy Optimization (GRPO)</a></li>
+<li><a href="#group-sequence-policy-optimization-gspo">Group Sequence Policy Optimization (GSPO)</a></li>
+<li><a href="#comparison">Comparison</a></li>
+<li><a href="#further-extensions-for-vlms">Further Extensions for VLMs</a><ul>
+<li><a href="#reinforce-leave-one-out-rloo">Reinforce Leave One Out (RLOO)</a></li>
+<li><a href="#online-direct-preference-optimization-online-dpo">Online Direct Preference Optimization (Online DPO)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#native-supervised-fine-tuning-support">Native Supervised Fine-tuning Support</a></li>
+<li><a href="#vllm-integration-in-trl">vLLM Integration in TRL</a></li>
+<li><a href="#useful-resources">Useful Resources</a></li>
+</ul>
+</li>
+</ul>
+<h2> <a href="#alignment-for-vision-language-models"> <span></span> </a> <span> Alignment for Vision Language Models </span>
+</h2>
+<p>Traditionally, you would take a base model, apply SFT to follow instructions, and then apply DPO to align it to preferential data. Previously, <a href="https://huggingface.co/blog/dpo_vlm">we adapted this approach to Vision Language Models (VLMs)</a> and validated it on IDEFICS2, showing improvement in model responses. </p>
+<p>DPO works by optimizing preferences between pairs of model responses using a contrastive loss: you have a chosen and a rejected answer and you optimize your preferences based on what you want and don’t want. </p>
+<p>But in the last year, new multimodal alignment methods have gained popularity, GRPO and MPO, that can push VLM performance even further. At the end of the blog post you can find a table that showcases the differences between model responses.</p>
+<h3> <a href="#mixed-preference-optimization-mpo"> <span></span> </a> <span> Mixed Preference Optimization (MPO) </span>
+</h3>
+<p>Aligning multimodal models with SFT to do reasoning tasks falls short due to distribution shift. Meanwhile, models aligned with DPO fail to generate coherent rationales and might generate repetitive responses. To address this, there’s a new technique called <a href="https://huggingface.co/papers/2411.10442">Mixed Preference Optimization</a> (MPO) specifically made for multimodal models. This method is essentially an extension of DPO with multiple losses: preference loss from DPO (sigmoid), quality loss from Binary Classifier Optimization (BCO), and generation loss from SFT. According to the <a href="https://huggingface.co/papers/2411.10442">paper</a>, simply switching to this combined loss results in 6.2 pts improvement in MathVista! </p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/trl-vlm/image_1.png"><img alt="MPO" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/trl-vlm/image_1.png"></a></p>
+<p>Since this is only modifying the loss, we added combined loss support to TRL's <code>DPOTrainer</code> class. To use it, you can initialize the <code>DPOConfig</code>&nbsp;as follows:</p>
+<pre><code>mpo_config = DPOConfig( loss_type=[<span>"sigmoid"</span>, <span>"bco_pair"</span>, <span>"sft"</span>], <span># Loss types to combine, as used in the MPO paper</span> loss_weights=[<span>0.8</span>, <span>0.2</span>, <span>1.0</span>], <span># Corresponding weights, as used in the MPO paper</span>
+)
+</code></pre>
+<p>Then initialize the <code>DPOTrainer</code>: </p>
+<pre><code>mpo_trainer = DPOTrainer( model=model_id, args=mpo_config, processing_class=tokenizer, train_dataset=dataset,
+)
+mpo_trainer.train()
+</code></pre>
+<p>And that’s it! If you want to explore further, you can find a complete notebook example <a href="https://huggingface.co/learn/cookbook/fine_tuning_vlm_mpo">here</a>.</p>
+<h3> <a href="#multimodal-group-relative-policy-optimization-grpo"> <span></span> </a> <span> Multimodal Group Relative Policy Optimization (GRPO) </span>
+</h3>
+<p>Group Relative Policy Optimization (GRPO) is a cutting-edge alignment method initially introduced in <a href="https://huggingface.co/papers/2402.03300">DeepSeek Math</a> paper and later integrated to DeepSeek R1, the groundbreaking LLM. It’s an addition to PPO where the policy updates are done over groups (batches of trajectories that represent how a dialogue rolls out). This feature makes it more robust to reward noise, as the noise averages out within groups. Since the model learns broader sense of a good response rather than singular high reward samples, this method also makes the model highly performant.</p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/trl-vlm/image_2.png"><img alt="GRPO" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/trl-vlm/image_2.png"></a></p>
+<p>In TRL, we now introduce GRPO support for vision language models. We will not provide a full training script example, as you can find it in the notebook. Instead, we'll focus on highlighting the key component and concepts.</p>
+<p>To make the training script work effectively, we need to validate that the format of the answer is correct and that the solution itself is close to the completed parts, so we write two reward functions. In order to really see improvements in the latter reward, you would need a rather maximalist setup, where you have relatively larger models, a lot of generations, and a high-quality, diverse dataset.</p>
+<pre><code><span>import</span> re
+<span>from</span> math_verify <span>import</span> LatexExtractionConfig, parse, verify <span>def</span> <span>format_reward</span>(<span>completions, **kwargs</span>): <span>"""Reward function that checks if the completion has a specific format."""</span> pattern = <span>r"^&lt;think&gt;.*?&lt;/think&gt;\s*&lt;answer&gt;.*?&lt;/answer&gt;$"</span> matches = [re.<span>match</span>(pattern, content) <span>for</span> content <span>in</span> completions] rewards_list = [<span>1.0</span> <span>if</span> <span>match</span> <span>else</span> <span>0.0</span> <span>for</span> <span>match</span> <span>in</span> matches] rewards = [<span>1.0</span> <span>if</span> <span>match</span> <span>else</span> <span>0.0</span> <span>for</span> <span>match</span> <span>in</span> matches] <span>print</span>(completions) <span>print</span>(rewards) <span>return</span> rewards <span>def</span> <span>accuracy_reward</span>(<span>completions, **kwargs</span>): <span>"""Reward function that checks if the completion is the same as the ground truth."""</span> solutions = kwargs[<span>'solution'</span>] completion_contents = [completion[<span>0</span>][<span>"content"</span>] <span>for</span> completion <span>in</span> completions] rewards = [] <span>for</span> content, solution <span>in</span> <span>zip</span>(completion_contents, solutions): gold_parsed = parse(solution, extraction_mode=<span>"first_match"</span>, extraction_config=[LatexExtractionConfig()]) answer_parsed = parse(content, extraction_mode=<span>"first_match"</span>, extraction_config=[LatexExtractionConfig()]) <span>if</span> <span>len</span>(gold_parsed) != <span>0</span>: <span>try</span>: rewards.append(<span>float</span>(verify(answer_parsed, gold_parsed))) <span>except</span> Exception: rewards.append(<span>0.0</span>) <span>else</span>: rewards.append(<span>1.0</span>) <span>return</span> rewards
+</code></pre>
+<p>Then, you can initialize GRPOConfig and GRPOTrainer, pass in the reward functions we defined above and call train() to start training.</p>
+<pre><code><span>from</span> trl <span>import</span> GRPOConfig, GRPOTrainer training_args = GRPOConfig( learning_rate=<span>1e-5</span>, max_prompt_length=<span>None</span>, ... <span># setup other params of choice here</span>
+)
+trainer = GRPOTrainer( model=model_id, reward_funcs=[format_reward, accuracy_reward], args=training_args, train_dataset=train_dataset,
+)
+trainer.train()
+</code></pre>
+<p>Explore the full notebook example <a href="https://huggingface.co/learn/cookbook/fine_tuning_vlm_grpo_trl">here</a>.</p>
+<h3> <a href="#group-sequence-policy-optimization-gspo"> <span></span> </a> <span> Group Sequence Policy Optimization (GSPO) </span>
+</h3>
+<p><a href="https://huggingface.co/papers/2507.18071">Group Sequence Policy Optimization</a> (GSPO) is a RL alignment algorithm recently released by Qwen that overcomes some limitations of GRPO. It achieves a more stable training computing importance sampling weights at the sequence level instead of per-token. Its benefits are more <a href="https://github.com/volcengine/verl/pull/2775#issuecomment-3134375131">relevant</a> in MoE style models.</p>
+<p>Latest TRL also introduces support for GSPO and since it’s a variant of GRPO's loss, it comes with multimodal support. To create the trainer, the process is the same as with GRPO, but adding the following extra params (values are extracted from the paper).</p>
+<pre><code><span>from</span> trl <span>import</span> GRPOConfig training_args = GRPOConfig( ... importance_sampling_level=<span>"sequence"</span>, epsilon=<span>3e-4</span>, epsilon_high=<span>4e-4</span>, beta=<span>0.0</span>, loss_type=<span>"grpo"</span>, steps_per_generation=<span>1</span>, steps_per_generation=<span>4</span>
+)
+</code></pre>
+<h3> <a href="#comparison"> <span></span> </a> <span> Comparison </span>
+</h3>
+<p>Here's a table summarizing model outputs for Qwen2.5VL-3B fine-tuned with the techniques discussed above. Note that we've done minimal runs on dataset subsets, and the models were fine-tuned on different datasets, so the comparison is made for vibe-check. </p>
+Check out the answers here <p><strong>Image:</strong> <a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/vlm_math_question.png"><img alt="Image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/vlm_math_question.png"></a></p>
+<p><strong>Question:</strong> In the given figure, if the angle APO is 25.0 degrees, what is the measure of angle AOB? Choices: A: 140° B: 130° C: 120° D: 110°</p>
+<p><strong>Answer in the Dataset:</strong> To find the measure of angle AOB, we can use the property that the sum of the interior angles of a quadrilateral is equal to 360 degrees. Applying this property, we can calculate angle AOB as 360 - angle OAP - angle OBP - angle P. Since angle OAP and angle OBP are both 90 degrees, and angle P is given as 50 degrees, we can substitute these values into the equation to get angle AOB = 360 - 90 - 90 - 50 = 130 degrees. Therefore, the measure of angle AOB is 130 degrees. Therefore, the answer is option B. Answer:B</p>
+<p><strong>Base Model Output:</strong> To find the measure of angle AOB, we need to use the properties of angles subtended by the same arc in a circle. Specifically, the angle subtended by an arc at the center of the circle (angle AOB) is twice the angle subtended by the same arc at any point on the circumference (angle APO).Given that angle APO = 25°, we can calculate angle AOB as follows: Since angle AOB is twice angle APO, we have:[ Angle AOB = 2 * Angle APO ][ Angle AOB = 2 * 25° ][ Angle AOB = 50° ]However, this calculation seems incorrect based on the provided choices. Let's re-evaluate using the correct property.The correct property states that the angle subtended by an arc at the center of the circle is twice the angle subtended by the same arc at any point on the circumference. Therefore, the correct calculation should be: Angle AOB = 2 * Angle APO = 2 * 25° = 50°But since this does not match the given choices, let's consider another approach. If angle APO is 25°, and considering the properties of cyclic quadrilaterals or the fact that the sum of opposite angles in a cyclic quadrilateral is 180°, we might need to look at the supplementary angles formed by the arc and the chord.Let's assume the correct interpretation involves finding the supplementary angle to the given angle APO which would give us the measure of angle AOB. Angle AOB = 180° - Angle APO = 180° - 25° = 155°This still doesn't match the choices. Given the choices provided, it seems there might be a misunderstanding or a different interpretation needed. However, based on standard geometric principles, the correct answer should be: Angle AOB = 2 * Angle APO = 2 * 25° = 50° If this is not the case, please provide additional context or clarify the problem statement. </p>
+<p><strong>MPO Output:</strong> To find the measure of angle AOB, we need to use the properties of angles subtended by the same arc in a circle. Specifically, the angle subtended by an arc at the center of the circle (angle AOB) is twice the angle subtended by the same arc at any point on the circumference (angle APO).Given that angle APO = 25°, we can calculate angle AOB as follows: Since angle AOB is twice the angle APO, we have:[ Angle AOB = 2 * Angle APO ][ Angle AOB = 2 * 25° ][ Angle AOB = 50° ]However, this calculation seems incorrect based on the provided choices. Let's re-evaluate using the correct property.The correct property states that the angle subtended by an arc at the center of the circle is twice the angle subtended by the same arc at any point on the circumference. Therefore, the correct calculation should be: Angle AOB = 2 * Angle APO = 2 * 25° = 50°But since this does not match the given choices, let's consider another approach. If we look at the triangle OAP, angle AOP is 90° because it is a right angle (as it is inscribed in a semicircle). Now, angle APO is given as 25°, so angle AOA would be 65° (since it is supplementary to angle APO). Therefore, angle AOB would be half of this, which is 32.5°. However, this also doesn't match the choices.Let's consider the possibility that the problem might involve a different interpretation or a different geometric configuration. Given the choices, let's assume there might be a mistake in the problem statement or the choices themselves. If we were to choose from the given options, none of them seem to fit correctly based on standard geometric principles for this type of problem. </p>
+<p><strong>GRPO Output</strong>: To find the measure of angle AOB, we need to understand that angle AOB is an inscribed angle that intercepts the same arc as the central angle AOP. According to the Inscribed Angle Theorem, the measure of an inscribed angle is half the measure of the central angle that subtends the same arc.Given:- Angle APO = 25.0 degreesSince angle AOB is an inscribed angle intercepting the same arc as the central angle AOP, we can use the Inscribed Angle Theorem:The measure of angle AOB is half the measure of angle AOP.Therefore, the measure of angle AOB is 130 degrees. </p>
+<p><strong>GSPO Output:</strong> To find the measure of angle AOB, we need to understand that angle AOB is an inscribed angle that intercepts the same arc as the central angle AOP. According to the Inscribed Angle Theorem, the measure of an inscribed angle is half the measure of the central angle that subtends the same arc.Given:- Angle APO = 25.0 degreesSince angle AOB is an inscribed angle that intercepts the same arc as the central angle AOP, we can use the Inscribed Angle Theorem to find the measure of angle AOB:The measure of angle AOB is half the measure of angle AOP.Therefore, the answer is B: 130°. </p> <h3> <a href="#further-extensions-for-vlms"> <span></span> </a> <span> Further Extensions for VLMs </span>
+</h3>
+<p>In addition to MPO, GRPO, and GSPO, TRL now supports <a href="https://huggingface.co/papers/2402.14740">Reinforce Leave One Out</a> (RLOO) and <a href="https://huggingface.co/papers/2402.04792">Online Direct Preference Optimization</a> (Online DPO) for Vision Language Models (VLMs), enabling alignment on multimodal datasets.</p>
+<h4> <a href="#reinforce-leave-one-out-rloo"> <span></span> </a> <span> Reinforce Leave One Out (RLOO) </span>
+</h4>
+<p>RLOO now supports common VLMs. You can find a complete training example in the <a href="https://github.com/huggingface/trl/blob/main/examples/scripts/rloo_vlm.py"><code>rloo_vlm.py</code></a> script.</p>
+<p>Here’s how to set up a <code>RLOOTrainer</code>:</p>
+<pre><code>trainer = RLOOTrainer( model=model_name, args=training_args, reward_funcs=[think_format_reward, accuracy_reward], train_dataset=train_dataset, eval_dataset=eval_dataset,
+) trainer.train()
+</code></pre>
+<p>And to launch training directly from the example script:</p>
+<pre><code>CUDA_VISIBLE_DEVICES=1,2 python3 examples/scripts/rloo_vlm.py --model_name_or_path Qwen/Qwen2.5-VL-3B-Instruct
+</code></pre>
+<h4> <a href="#online-direct-preference-optimization-online-dpo"> <span></span> </a> <span> Online Direct Preference Optimization (Online DPO) </span>
+</h4>
+<p>Online DPO also supports VLMs. See the <a href="https://github.com/huggingface/trl/blob/main/examples/scripts/online_dpo_vlm.py"><code>online_dpo_vlm.py</code></a> script for a simple example.</p>
+<p>To run the example script (vLLM integration will be discussed later):</p>
+<pre><code>CUDA_VISIBLE_DEVICES=1,2 python3 examples/scripts/online_dpo_vlm.py --model_name_or_path Qwen/Qwen2.5-VL-3B-Instruct --use_vllm --vllm_mode server
+</code></pre>
+<blockquote>
+<p>These scripts are ready-to-run for VLM training; full parameter tuning is documented in TRL: <a href="https://huggingface.co/docs/trl/en/online_dpo_trainer">Online DPO trainer</a> <a href="https://huggingface.co/docs/trl/en/rloo_trainer">RLOO Trainer</a>.</p>
+</blockquote>
+<h2> <a href="#native-supervised-fine-tuning-support"> <span></span> </a> <span> Native Supervised Fine-tuning Support </span>
+</h2>
+<p>Previously, <a href="https://huggingface.co/docs/trl/en/sft_trainer"><code>SFTTrainer</code></a> was partially supporting vision language models. This was primarily due to many differences across VLM implementations in transformers API. With the standardization of the transformers API, we have shipped a full support for vision language models. You can simply initialize <code>SFTTrainer</code> with a VLM.</p>
+<pre><code><span>from</span> trl <span>import</span> SFTConfig, SFTTrainer
+<span>from</span> datasets <span>import</span> load_dataset trainer = SFTTrainer( model=<span>"Qwen/Qwen2.5-VL-3B-Instruct"</span>, args=SFTConfig(max_length=<span>None</span>), <span># To avoid truncation that may remove image tokens during training</span> train_dataset=load_dataset(<span>"trl-lib/llava-instruct-mix"</span>, split=<span>"train"</span>),
+)
+trainer.train()
+</code></pre>
+<p>To train a VLM, you need to provide a dataset with an additional <code>images</code> column containing the images to be processed. You can take a look at <a href="https://huggingface.co/docs/trl/en/dataset_formats#vision-datasets">Dataset Formats — Vision Datasets</a> for more information on how it should look like. A good example is <a href="https://huggingface.co/datasets/trl-lib/llava-instruct-mix">LLaVA Instruct Mix</a>.</p>
+<p>We also have a <a href="https://github.com/huggingface/trl/blob/main/examples/scripts/sft_vlm.py"><code>sft_vlm.py</code></a> script that works out of the box for transformers vision language models. </p>
+<h2> <a href="#vllm-integration-in-trl"> <span></span> </a> <span> vLLM Integration in TRL </span>
+</h2>
+<p>vLLM is integrated in TRL to support online alignment methods where you need to generate samples during training. Running the example scripts like the following enables vLLM: </p>
+<pre><code>CUDA_VISIBLE_DEVICES=1,2 python3 examples/scripts/grpo_vlm.py --model_name_or_path Qwen/Qwen2.5-VL-3B-Instruct --use_vllm --vllm_mode colocate
+</code></pre>
+<p>There’s mainly two modes: <code>colocate</code> and <code>server</code>. <a href="https://huggingface.co/blog/vllm-colocate"><code>colocate</code></a> runs vLLM in the same process as the training loop, sharing the same GPU between training and generation, creating a vLLM LLM instance inside the <code>GRPOTrainer</code>. Meanwhile <code>server</code> requires you to serve vLLM separately in a different process where you can hit the server. You can start this server with the command:</p>
+<pre><code>trl vllm-serve --model Qwen/Qwen2.5-VL-3B-Instruct --tensor-parallel-size 1 </code></pre>
+<p>Then you can run the script as follows.</p>
+<pre><code>CUDA_VISIBLE_DEVICES=1,2 python3 examples/scripts/grpo_vlm.py --model_name_or_path Qwen/Qwen2.5-VL-3B-Instruct --use_vllm --vllm_mode server
+</code></pre>
+<p>One more tip: we have added support for using vLLM with transformers backend in TRL. You can enable it when running a script with colocate or when serving the model by passing the <code>--vllm_model_impl transformers</code> flag.</p>
+<p>You can read more about vLLM integration in TRL <a href="https://huggingface.co/docs/trl/en/vllm_integration">here</a>.</p>
+<h2> <a href="#useful-resources"> <span></span> </a> <span> Useful Resources </span>
+</h2>
+<p>Below, you can find a compilation of resources to explore the alignment of VLMs in detail. Enjoy!</p>
+<ul>
+<li><a href="https://huggingface.co/blog/vlms-2025"><strong>Vision Language Models (Better, Faster, Stronger)</strong></a></li>
+<li><a href="https://huggingface.co/papers/2411.10442"><strong>Enhancing the Reasoning Ability of Multimodal Large Language Models via Mixed Preference Optimization</strong></a> (<strong>MPO paper</strong>)</li>
+<li><a href="https://huggingface.co/papers/2402.03300"><strong>DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Model</strong></a> (<strong>GRPO paper</strong>)</li>
+<li><a href="https://github.com/huggingface/open-r1"><strong>Open-R1</strong></a> <strong>repository</strong> and <a href="https://github.com/huggingface/open-r1/blob/main/src/open_r1/rewards.py"><strong>Open-R1 reward functions</strong></a></li>
+<li><a href="https://huggingface.co/docs/trl/en/index"><strong>TRL documentation</strong></a> and <a href="https://github.com/huggingface/trl"><strong>TRL repository</strong></a></li>
+<li><a href="https://huggingface.co/learn/cookbook/fine_tuning_vlm_mpo"><strong>MPO VLM recipe</strong></a></li>
+<li><a href="https://huggingface.co/learn/cookbook/fine_tuning_vlm_grpo_trl"><strong>GRPO VLM recipe</strong></a></li>
+<li><a href="https://huggingface.co/learn/cookbook/index"><strong>More multimodal alignment recipes</strong></a></li>
+<li><a href="https://github.com/huggingface/trl/tree/main/examples/scripts"><strong>TRL multimodal training scripts</strong></a></li>
+<li><a href="https://huggingface.co/docs/trl/en/vllm_integration"><strong>vLLM Integration in trl docs</strong></a></li>
+<li><a href="https://blog.vllm.ai/2025/04/11/transformers-backend.html"><strong>Transformers backend integration in vLLM</strong></a></li>
+</ul>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>
