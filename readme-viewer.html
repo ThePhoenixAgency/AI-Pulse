@@ -106,14 +106,39 @@
         }
 
         .flag-fr { background: linear-gradient(90deg, #1e3a8a 0 33%, #ffffff 33% 66%, #dc2626 66% 100%); }
-        .flag-en { background: linear-gradient(90deg, #1e40af 0 100%); position: relative; }
+        .flag-en {
+            position: relative;
+            background:
+                repeating-linear-gradient(
+                    to bottom,
+                    #b91c1c 0px,
+                    #b91c1c 1.08px,
+                    #ffffff 1.08px,
+                    #ffffff 2.16px
+                );
+            overflow: hidden;
+        }
         .flag-en::before, .flag-en::after {
             content: '';
             position: absolute;
-            background: #ffffff;
+            display: block;
         }
-        .flag-en::before { left: 45%; top: 0; width: 10%; height: 100%; }
-        .flag-en::after { top: 43%; left: 0; width: 100%; height: 14%; }
+        .flag-en::before {
+            left: 0;
+            top: 0;
+            width: 40%;
+            height: 54%;
+            background: #1e3a8a;
+        }
+        .flag-en::after {
+            left: 6%;
+            top: 8%;
+            width: 28%;
+            height: 38%;
+            background:
+                radial-gradient(circle, #ffffff 0 0.6px, transparent 0.7px) 0 0 / 4px 4px;
+            opacity: 0.9;
+        }
 
         .sr-only {
             position: absolute;
