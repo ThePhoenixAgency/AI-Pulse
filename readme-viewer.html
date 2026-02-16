@@ -407,13 +407,10 @@
 
         .quick-nav {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
             gap: 8px;
             margin: 0 0 14px;
-            overflow-x: auto;
-            overflow-y: hidden;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: thin;
+            overflow: visible;
         }
 
         .quick-tag {
@@ -425,8 +422,11 @@
             font-size: 0.78rem;
             cursor: pointer;
             transition: border-color 0.2s, background 0.2s;
-            white-space: nowrap;
-            flex: 0 0 auto;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+            flex: 0 1 auto;
+            max-width: 100%;
         }
 
         .quick-tag:hover {
@@ -473,6 +473,9 @@
             font-size: 0.9em;
             color: #ff79c6;
             border: 1px solid rgba(255, 121, 198, 0.2);
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
         }
 
         #readme-content pre {
@@ -584,12 +587,12 @@
             .prefs-toggle:hover { transform: none; box-shadow: none; }
             .quick-nav { gap: 6px; }
             .quick-tag {
-                max-width: 72vw;
-                white-space: nowrap;
+                max-width: 100%;
+                white-space: normal;
+                overflow-wrap: anywhere;
+                word-break: break-word;
                 padding: 7px 10px;
                 font-size: 0.75rem;
-                text-overflow: ellipsis;
-                overflow: hidden;
             }
             .content-area { padding: 88px 15px 60px; }
             .prefs-panel { width: 100%; transform: translateX(100%); }
@@ -650,8 +653,8 @@
 
         <div class="prefs-section">
             <h4 id="prefMaxArticlesTitle">Articles per section</h4>
-            <input type="range" id="prefMaxArticles" min="3" max="50" value="30">
-            <span class="range-value" id="prefMaxArticlesValue">30</span>
+            <input type="range" id="prefMaxArticles" min="10" max="120" value="50">
+            <span class="range-value" id="prefMaxArticlesValue">50</span>
         </div>
 
         <div class="prefs-section">
@@ -705,7 +708,7 @@
                     lang: 'auto',
                     categories: {},
                     keywords: '',
-                    maxArticles: 30,
+                    maxArticles: 50,
                     hideRead: true
                 };
             },

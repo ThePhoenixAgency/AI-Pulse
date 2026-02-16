@@ -1095,7 +1095,7 @@ async function aggregateCategory(categoryName, feeds) {
     return [];
   }
 
-  const limit = SETTINGS.articlesPerFeed || 80; // Nombre d'articles par source
+  const limit = SETTINGS.articlesPerFeed || 120; // Nombre d'articles par source
 
   // Traitement en parallèle des sources pour accélérer l'agrégation globale.
   const results = await Promise.allSettled(
@@ -1122,7 +1122,20 @@ async function aggregateCategory(categoryName, feeds) {
     .filter(Boolean);
 
   if (categoryName === 'openclaw' || categoryName === 'raspberrypi') {
-    articles = articles.filter((article) => matchesSpecialCategory(article, categoryName));
+    const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
+    if (specialOnly.length > 0) {
+      articles = specialOnly;
+    } else if (categoryName === 'openclaw') {
+      // Fallback de résilience: on garde la catégorie visible avec les meilleures
+      // sources configurées même si le mot-clé exact n'apparaît pas dans le titre/résumé.
+      articles = articles.map((article) => {
+        const tags = Array.isArray(article.tags) ? article.tags.slice() : [];
+        if (!tags.includes('OpenClaw')) tags.unshift('OpenClaw');
+        return { ...article, tags };
+      });
+    } else {
+      articles = specialOnly;
+    }
   }
 
   // Trier par priorité métier puis date.
@@ -1212,7 +1225,7 @@ const README_FOOTER = `
  */
 function generateREADME(categorizedArticles) {
   let readme = README_HEADER;
-  const maxArticles = SETTINGS.maxArticlesPerCategory || 80;
+  const maxArticles = SETTINGS.maxArticlesPerCategory || 120;
 
   function ensureLocalArticleLink(article, category) {
     const current = String((article && article.link) || '').trim();
