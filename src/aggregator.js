@@ -559,6 +559,43 @@ function cleanupNoiseHtml(input) {
   }
 }
 
+function normalizeCodeBlocksHtml(input) {
+  if (!input) return '';
+  try {
+    const dom = createSafeDom(`<body>${String(input)}</body>`, 'https://local.ai-pulse/');
+    const body = dom.window.document.body;
+
+    // Convert known "code-like" wrappers into real pre/code blocks.
+    body.querySelectorAll('div, p').forEach((node) => {
+      const className = String(node.getAttribute('class') || '').toLowerCase();
+      const hasCodeClass = /\b(code|snippet|highlight|language-)\b/.test(className);
+      const text = node.textContent || '';
+      const hasCodeShape = /[{}();=<>]/.test(text) && (text.split('\n').length >= 3 || text.length > 120);
+      if (!hasCodeClass && !hasCodeShape) return;
+      if (node.querySelector('pre, code')) return;
+      const code = dom.window.document.createElement('code');
+      code.textContent = text.trim();
+      const pre = dom.window.document.createElement('pre');
+      pre.appendChild(code);
+      node.replaceWith(pre);
+    });
+
+    // Ensure bare code nodes are wrapped in <pre> for readability.
+    body.querySelectorAll('code').forEach((code) => {
+      const parentTag = code.parentElement && code.parentElement.tagName;
+      if (parentTag === 'PRE') return;
+      const pre = dom.window.document.createElement('pre');
+      const cloned = code.cloneNode(true);
+      pre.appendChild(cloned);
+      code.replaceWith(pre);
+    });
+
+    return body.innerHTML;
+  } catch (_) {
+    return String(input);
+  }
+}
+
 function isLikelyBoilerplateExtraction(text) {
   const haystack = String(text || '').toLowerCase();
   if (!haystack) return true;
@@ -1174,9 +1211,9 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         }
 
         // Créer une page HTML propre avec le contenu
-        const sanitizedMainContent = cleanupNoiseHtml(sanitizeHtml(articleContent.content, {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-          allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'] }
+        const sanitizedMainContent = cleanupNoiseHtml(sanitizeHtml(normalizeCodeBlocksHtml(articleContent.content), {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'pre', 'code']),
+          allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'], code: ['class'] }
         }));
         const cleanHtml = `<!DOCTYPE html>
 <html lang="${lang}">
