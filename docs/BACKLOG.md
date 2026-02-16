@@ -4,10 +4,10 @@ Last updated: 2026-02-16
 
 ## En cours
 
-- [ ] Reader UX: clic sur tag (mot-cle) pour ancrer vers categorie et eviter le scroll long
-
-
 ## Termine
+
+- [x] Reader UX: clic sur tag (mot-cle/categorie) pour ancrer vers section et eviter le scroll long
+  - Tags de navigation rapides (quick-nav) construits automatiquement depuis les sections visibles
 
 - [x] Reader UX: langue par defaut auto (GeoIP stats locale si dispo, sinon navigateur)
   - Switch rapide FR/EN dans la barre du reader

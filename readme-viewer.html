@@ -287,6 +287,17 @@
             margin: 20px 0;
         }
 
+        .filter-notice {
+            display: none;
+            margin: 0 0 12px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            background: rgba(0, 217, 255, 0.08);
+            color: #bfefff;
+            font-size: 0.86rem;
+        }
+
         #readme-content {
             background: rgba(255, 255, 255, 0.03);
             padding: 30px;
@@ -354,6 +365,29 @@
             margin: 8px 0;
             padding: 10px;
             font-size: 0.9rem;
+        }
+
+        .quick-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 0 0 14px;
+        }
+
+        .quick-tag {
+            border: 1px solid rgba(0, 217, 255, 0.25);
+            background: rgba(0, 217, 255, 0.08);
+            color: #bfefff;
+            border-radius: 999px;
+            padding: 6px 10px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+        }
+
+        .quick-tag:hover {
+            border-color: #00d9ff;
+            background: rgba(0, 217, 255, 0.16);
         }
 
         #readme-content h1 {
@@ -572,6 +606,7 @@
                 <p>Chargement du README...</p>
             </div>
             <div id="error" class="error" style="display: none;"></div>
+            <div id="filterNotice" class="filter-notice"></div>
             <nav class="quick-nav" id="quickNav" style="display: none;"></nav>
             <div id="readme-content" style="display: none;"></div>
         </div>
@@ -806,9 +841,11 @@
             const select = document.getElementById('sectionSelect');
             const sections = ensureCategorySections();
             const prefs = PrefsManager.load();
+            const quickNav = document.getElementById('quickNav');
 
             // Clear existing options except first
             select.innerHTML = '<option value="">-- Sections --</option>';
+            if (quickNav) quickNav.innerHTML = '';
 
             // Add options for each visible section
             sections.forEach(section => {
@@ -820,12 +857,27 @@
                     option.value = cat;
                     option.textContent = heading.textContent;
                     select.appendChild(option);
+
+                    if (quickNav) {
+                        const chip = document.createElement('button');
+                        chip.type = 'button';
+                        chip.className = 'quick-tag';
+                        chip.textContent = heading.textContent;
+                        chip.addEventListener('click', () => {
+                            const target = document.getElementById(cat);
+                            if (target) target.scrollIntoView({ behavior: 'smooth' });
+                        });
+                        quickNav.appendChild(chip);
+                    }
                 }
             });
 
             select.disabled = select.options.length <= 1;
             if (select.disabled) {
                 select.innerHTML = '<option value="">No sections / Aucune section</option>';
+                if (quickNav) quickNav.style.display = 'none';
+            } else if (quickNav) {
+                quickNav.style.display = 'flex';
             }
 
             // Handle selection change
@@ -871,82 +923,120 @@
             const effectiveLang = resolveEffectiveLanguage(prefs);
             const sections = ensureCategorySections();
             const readArticles = ReadHistory.getAll();
+            const filterNotice = document.getElementById('filterNotice');
+            const keywords = (prefs.keywords || '')
+                .toLowerCase()
+                .split(',')
+                .map(k => k.trim())
+                .filter(k => k);
 
-            sections.forEach(section => {
-                const cat = section.getAttribute('data-category');
+            function render(passOptions = {}) {
+                const { ignoreKeywords = false, ignoreLanguage = false } = passOptions;
+                let totalVisible = 0;
 
-                // Category filter
-                if (prefs.categories[cat] === false) {
-                    section.classList.add('hidden');
-                    return;
-                }
-                section.classList.remove('hidden');
+                sections.forEach(section => {
+                    const cat = section.getAttribute('data-category');
 
-                const articles = section.querySelectorAll('.article-item');
-                let visibleCount = 0;
+                    // Category filter
+                    if (prefs.categories[cat] === false) {
+                        section.classList.add('hidden');
+                        return;
+                    }
+                    section.classList.remove('hidden');
 
-                articles.forEach(article => {
-                    let visible = true;
+                    const articles = section.querySelectorAll('.article-item');
+                    let visibleCount = 0;
 
-                    // Language filter
-                    if (effectiveLang !== 'all') {
-                        const articleLang = article.getAttribute('data-lang');
-                        if (articleLang && articleLang !== effectiveLang) {
+                    articles.forEach(article => {
+                        let visible = true;
+
+                        // Language filter
+                        if (!ignoreLanguage && effectiveLang !== 'all') {
+                            const articleLang = article.getAttribute('data-lang');
+                            if (articleLang && articleLang !== effectiveLang) {
+                                visible = false;
+                            }
+                        }
+
+                        // Keyword filter
+                        if (visible && !ignoreKeywords && keywords.length > 0) {
+                            const text = article.textContent.toLowerCase();
+                            if (!keywords.some(k => text.includes(k))) {
+                                visible = false;
+                            }
+                        }
+
+                        // Max articles per section
+                        if (visible && visibleCount >= prefs.maxArticles) {
                             visible = false;
                         }
-                    }
 
-                    // Keyword filter
-                    if (visible && prefs.keywords && prefs.keywords.trim()) {
-                        const keywords = prefs.keywords.toLowerCase().split(',').map(k => k.trim()).filter(k => k);
-                        const text = article.textContent.toLowerCase();
-                        if (keywords.length > 0 && !keywords.some(k => text.includes(k))) {
-                            visible = false;
-                        }
-                    }
-
-                    // Max articles per section
-                    if (visible && visibleCount >= prefs.maxArticles) {
-                        visible = false;
-                    }
-
-                    if (visible) {
-                        article.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        article.classList.add('hidden');
-                    }
-
-                    // Check if article is read
-                    const link = article.querySelector('a');
-                    const title = link ? link.textContent : '';
-                    const href = link ? link.getAttribute('href') : '';
-                    const isRead = readArticles.some(a => a.url === href || a.title === title);
-
-                    if (isRead) {
-                        article.classList.add('read-article');
-                        if (prefs.hideRead) {
+                        if (visible) {
+                            article.classList.remove('hidden');
+                            visibleCount++;
+                            totalVisible++;
+                        } else {
                             article.classList.add('hidden');
-                            visible = false;
                         }
+
+                        // Check if article is read
+                        const link = article.querySelector('a');
+                        const title = link ? link.textContent : '';
+                        const href = link ? link.getAttribute('href') : '';
+                        const isRead = readArticles.some(a => a.url === href || a.title === title);
+
+                        if (isRead) {
+                            article.classList.add('read-article');
+                            if (prefs.hideRead) {
+                                if (!article.classList.contains('hidden')) {
+                                    totalVisible = Math.max(0, totalVisible - 1);
+                                }
+                                article.classList.add('hidden');
+                                visible = false;
+                            }
+                        }
+                    });
+
+                    // Create "Already read" collapsible section for read articles
+                    let readSection = section.querySelector('.read-articles-group');
+                    if (readSection) readSection.remove();
+
+                    const readItems = section.querySelectorAll('.article-item.read-article:not(.hidden)');
+                    if (readItems.length > 0 && !prefs.hideRead) {
+                        readSection = document.createElement('details');
+                        readSection.className = 'read-articles-group';
+                        readSection.innerHTML = '<summary>Already read / Deja lus (' + readItems.length + ')</summary>';
+                        readItems.forEach(item => readSection.appendChild(item.cloneNode(true)));
+                        // Hide originals and append group
+                        readItems.forEach(item => {
+                            if (!item.classList.contains('hidden')) {
+                                totalVisible = Math.max(0, totalVisible - 1);
+                            }
+                            item.classList.add('hidden');
+                        });
+                        section.appendChild(readSection);
                     }
                 });
 
-                // Create "Already read" collapsible section for read articles
-                let readSection = section.querySelector('.read-articles-group');
-                if (readSection) readSection.remove();
+                return totalVisible;
+            }
 
-                const readItems = section.querySelectorAll('.article-item.read-article:not(.hidden)');
-                if (readItems.length > 0 && !prefs.hideRead) {
-                    readSection = document.createElement('details');
-                    readSection.className = 'read-articles-group';
-                    readSection.innerHTML = '<summary>Already read / Deja lus (' + readItems.length + ')</summary>';
-                    readItems.forEach(item => readSection.appendChild(item.cloneNode(true)));
-                    // Hide originals and append group
-                    readItems.forEach(item => item.classList.add('hidden'));
-                    section.appendChild(readSection);
+            const keywordSearchActive = keywords.length > 0;
+            // During keyword search, ignore language for broader matching.
+            let visibleCount = render({ ignoreKeywords: false, ignoreLanguage: keywordSearchActive });
+
+            if (keywordSearchActive && visibleCount === 0) {
+                // Fallback: keep page usable if keyword has no exact hit.
+                visibleCount = render({ ignoreKeywords: true, ignoreLanguage: false });
+                if (filterNotice) {
+                    filterNotice.textContent = 'No exact match for your keyword(s). Showing available articles with current filters.';
+                    filterNotice.style.display = 'block';
                 }
-            });
+            } else if (filterNotice) {
+                filterNotice.textContent = '';
+                filterNotice.style.display = 'none';
+            }
+
             buildSectionNav();
             syncLangSwitchUI(prefs);
         }
