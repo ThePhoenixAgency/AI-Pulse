@@ -5,56 +5,21 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Feb 2026 19:12:54 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Feb 2026 22:21:48 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
     <item>
-      <title><![CDATA[Show HN: MacMule – EMule for MacOsx]]></title>
-      <link>https://github.com/mderouet/macMule</link>
-      <description><![CDATA[I built this because I wanted to see if eMule still worked in 2025. It does — the ed2k and Kad networks are still alive.
-The problem: eMule is a Win32 application. Getting it to run on macOS means Wine, and asking non-technical users to install and configure Wine is a non-starter.
-The solution: macMule bundles eMule (community x64 build by irwir) with Wine Crossover (by Gcenx) into a single .app. Download, drag to /Applications, launch. It auto-connects to eMule Security servers and Kad on startup. Works on Apple Silicon through Rosetta 2.
-The trade-off is size (~1 GB) since Wine is bundled.]]></description>
-      <pubDate>Mon, 16 Feb 2026 18:15:11 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/mderouet/macMule</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: I built OLTP in my memory system. Looking for opinions]]></title>
-      <link>https://news.ycombinator.com/item?id=47038114</link>
-      <description><![CDATA[I've spent the past couple of months building Mnexium.com
-Originally it was supposed to just be a memory management system (and it still is very much core).
-I was thinking with all of the talk of AI replacing SaaS etc etc... How?
-Most (if not all) AI systems do not have a way to manage, store &amp; maintain records. I thought it would be an interesting project and problem to solve.
-I built it into the overall project more details here (https://www.mnexium.com/blogs/introducing-records).
-I've realized it is nearly impossible to get some kind of feedback on these types of projects.]]></description>
-      <pubDate>Mon, 16 Feb 2026 18:05:01 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://news.ycombinator.com/item?id=47038114</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Deploy a DuckLake data lakehouse on Hetzner for under €10/mo]]></title>
-      <link>https://github.com/berndsen-io/ducklake-hetzner</link>
-      <description><![CDATA[DuckLake launched recently and I wanted to try it out.
-It's DuckDB, but with a proper catalog on PostgreSQL with S3 for storage. It still takes quite a few steps to set up, so I put together a setup that runs on Hetzner.
-It sets up a VPS with PostgreSQL, an S3 bucket, and a DuckDB init script that connects everything. One 'make all' command and it works. Used OpenTofu for the infra, PyInfra for server config.
-Runs me about €9/mo with 1TB of storage. The VPS is a cx33 (4 vCPU, 8GB RAM) because Hetzner never has the cheaper tier in stock, maybe you'll get lucky.]]></description>
-      <pubDate>Mon, 16 Feb 2026 17:37:25 GMT</pubDate>
-      <source>Hacker News Show</source>
-      <category>products</category>
-      <guid>https://github.com/berndsen-io/ducklake-hetzner</guid>
-    </item>
-    <item>
-      <title><![CDATA[Show HN: Math-spec-driven LLM skill for complex system specs]]></title>
-      <link>https://github.com/Ben8t/math-spec-driven-skill</link>
-      <description><![CDATA[Natural language is often ambiguous. Writing code directly with LLMs can be brittle and hard to verify. This skill explores a middle ground: math-style specs (sets, relations, invariants) that agents can turn into architectures, APIs, and tests. URL: https://news.ycombinator.com/item?id=47037736
+      <title><![CDATA[Show HN: RuneScapeCN (open source) – UI kit with authentic OSRS styling]]></title>
+      <link>https://github.com/alns0dev/runescapecn</link>
+      <description><![CDATA[Launching RuneScapeCN today! First time doing OSS.
+It’s an OSRS-themed UI component set built on familiar shadcn patterns: - React 19 + TypeScript - Tailwind CSS v4 - Radix primitives - Vite + CVA - Hosted registry endpoints for direct component install
+Goal: keep the classic RuneScape visual identity while still being easy to ship in modern React apps.
+If you try it, I’d appreciate candid feedback on what to improve first. URL: https://news.ycombinator.com/item?id=47039839
 Points: 1
 # : 0]]></description>
-      <pubDate>Mon, 16 Feb 2026 17:31:54 GMT</pubDate>
+      <pubDate>Mon, 16 Feb 2026 20:24:08 GMT</pubDate>
       <source>Hacker News Show</source>
       <category>products</category>
-      <guid>https://github.com/Ben8t/math-spec-driven-skill</guid>
+      <guid>https://github.com/alns0dev/runescapecn</guid>
     </item>
     <item>
       <title><![CDATA[Actualité : Apple confirme son événement du 4 mars : vers un MacBook à prix inédit et un nouvel iPhone]]></title>

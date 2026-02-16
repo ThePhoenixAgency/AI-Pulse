@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: LLMFeeder – Multi-tab web to Markdown for LLM context (v2.1.0)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Show HN: LLMFeeder – Multi-tab web to Markdown for LLM context (v2.1.0)</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 9:44:49 PM | Lang: EN |
+    <a href="https://news.ycombinator.com/item?id=47040739" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><div><p>Hi HN! I shared LLMFeeder here 8 months ago when it was a simple one-click webpage-to-markdown tool. Since then, it's grown into something much more powerful, so I wanted to share the major updates.</p><p>The original problem: copying documentation/articles to feed into ChatGPT, Claude, or coding assistants like Cursor meant dealing with ads, popups, and navigation clutter and using web mcp server usually bloats the context with irrelevant stuff.</p><p>v2.1.0 adds several features specifically for LLM power users:</p><p>- Multi-tab support: The #1 requested feature. Select multiple tabs with Ctrl/Cmd+Shift+Click, then convert all at once. Options: copy merged, download merged, or download as ZIP with separate files per tab. Great for research sessions where you need context from multiple sources!</p><p>- Right-click context menus: No need to open the popup. Just right-click anywhere on a page → "Copy to Markdown". When multiple tabs are selected, you get batch options in the menu.</p><p>- Token counter: Real-time estimation using the GPT-4/Claude tokenizer (cl100k_base). Shows a progress bar with configurable context limits (4K, 8K, 16K, 32K) so you don't accidentally overflow your context window.</p><p>- Include links toggle: Strip URLs when you don't need them to save tokens. `[link text](https://...)` becomes just `link text`.
+Everything still runs 100% client-side with zero tracking. The extension has grown to 1,000+ Chrome users and 200+ Firefox users.</p><p>Tech stack: Mozilla Readability.js for content extraction, Turndown.js for Markdown conversion, and JSZip for multi-tab archives.</p><p>Links:</p><p>- GitHub: <a href="https://github.com/jatinkrmalik/LLMFeeder">https://github.com/jatinkrmalik/LLMFeeder</a>
+- Chrome: <a href="https://chromewebstore.google.com/detail/llmfeeder/cjjfhhapabcpcokkfldbiiojiphbifdk">https://chromewebstore.google.com/detail/llmfeeder/cjjfhhapa...</a>
+- Firefox: <a href="https://addons.mozilla.org/en-US/firefox/addon/llmfeeder/">https://addons.mozilla.org/en-US/firefox/addon/llmfeeder/</a></p><p>Would love feedback on what else would make the LLM context workflow smoother.
+What's still painful about feeding content to AI assistants?</p></div></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

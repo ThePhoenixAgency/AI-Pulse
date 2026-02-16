@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TWSLA (TWSNMP’s Simple Log Analyzer)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>TWSLA (TWSNMP’s Simple Log Analyzer)</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 9:05:02 PM | Lang: EN |
+    <a href="https://twsnmp.github.io/twsla/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><section> <h2>TWSLA (TWSNMP’s Simple Log Analyzer)</h2> <p><a href="https://goreportcard.com/report/github.com/twsnmp/twsla"><img src="https://img.shields.io/badge/go%20report-A+-brightgreen" alt="Go Report Card"></a>
+<img src="https://img.shields.io/github/go-mod/go-version/twsnmp/twsla" alt="GitHub Go version">
+<img src="https://img.shields.io/github/v/release/twsnmp/twsla" alt="GitHub release (latest by date)">
+<img src="https://img.shields.io/github/license/twsnmp/twsla" alt="GitHub License">
+<img src="https://img.shields.io/badge/platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform"></p> <p>TWSLA is a lightning-fast, zero-config CLI log analyzer. Designed for sysadmins who need to grep, count, and visualize patterns from massive logs instantly without setting up complex ELK stacks.</p> <p><img src="https://twsnmp.github.io/twsla/images/2026-02-15_09-59-54.png" alt="TWSLA Demo"></p> <hr> <p>TWSLA is a simple log analysis tool of the TWSNMP series.
+Works on Linux/Mac OS/Windows.</p> <p><a href="https://twsnmp.github.io/twsla/README-ja.html">日本語のREADME</a></p> <h2>Install</h2> <p>It is recommended to install on Linux/macOS using the shell script.</p> <div><pre><code><span>$</span><span> </span>curl <span>-sS</span> https://lhx98.linkclub.jp/twise.co.jp/download/install.sh | sh
+</code></pre></div> <p>On Linux/macOS, it can also be installed via Homebrew.</p> <div><pre><code><span>$</span><span> </span>brew <span>install </span>twsnmp/tap/twsla
+</code></pre></div> <p>On Windows, download the zip file from the releases page or install via scoop.</p> <div><pre><code><span>&gt;</span><span> </span>scoop bucket add twsnmp https://github.com/twsnmp/scoop-bucket
+<span>&gt;</span><span> </span>scoop <span>install </span>twsla
+</code></pre></div> <h2>Basic usage</h2> <ul> <li>Create a work directory.</li> <li>cd to that directory.</li> <li>Import the log with the import command.</li> <li>search commands are searched.</li> <li>The results can be output such as CSV.</li>
+</ul> <div><pre><code>~$mkdir test
+~$cd test
+~$twsla import -s &lt;Log file path&gt;
+~$twsla search
+</code></pre></div> <h2>Command explanation</h2> <p><a href="https://twsnmp.github.io/twsla/cli-map.html">Command system</a></p> <p><a href="https://twsnmp.github.io/twsla/cli-map-v.html">Illustration of command system</a></p> <p>You can check the commands that support the Help command.</p> <div><pre><code>$twsla help
+Simple Log Analyzer by TWSNMP Usage: twsla [command] Available Commands: ai AI-powered log analysis anomaly Anomaly log detection completion Generate the autocompletion script for the specified shell count Count log delay Search for delays in the access log email Search or count email logs extract Extract data from log heatmap Command to tally log counts by day of the week and time of day help Help about any command import Import log from source mcp MCP server relation Relation Analysis search Search logs. sigma Detect threats using SIGMA rules tfidf Log analysis using TF-IDF time Time analysis twlogeye Inmport notify,logs and report from twlogeye twsnmp Get information and logs from TWSNMP FC version Show twsla version Flags: --config string config file (default is $HOME/.twsla.yaml) -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -h, --help help for twsla -v, --not string Invert regexp filter -r, --regex string Regexp filter --sixel show chart by sixel -t, --timeRange string Time range Use "twsla [command] --help" for more information about a command.
+</code></pre></div> <p>When the command is illustrated</p> <p><img src="https://assets.st-note.com/img/1731635423-vj6JTY1yz0eEg9l4pdIskRKh.png?width=1200" alt=""></p> <h3>import command</h3> <p>This command imports logs and saves them in a searchable time-series database. The command arguments are:</p> <div><pre><code>＄twsla help import
+Import log from source
+source is file | dir | scp | ssh | twsnmp | imap | pop3 Usage: twsla import [flags] Flags: --api TWSNMP FC API Mode -c, --command string SSH Command --emailPassword string IMAP or POP3 password --emailTLS IMAP use start TLS --emailUser string IMAP or POP3 user name -p, --filePat string File name pattern -h, --help help for import --imapFolder List IMAP folder names -k, --key string SSH Key -l, --logType string TWSNNP FC log type (default "syslog") --noDelta Disable delta check --noTS Import no time stamp file -b, --size int Batch Size (default 10000) --skip TWSNMP FC API skip verify certificate (default true) -s, --source string Log source --tls TWSNMP FC API TLS --utc Force UTC Global Flags: --config string config file (default is $HOME/.twsla.yaml) -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter --sixel show chart by sixel -t, --timeRange string Time range
+</code></pre></div> <p>Specify the location of the log to read with <code>-s</code> or <code>--source</code>.
+In the latest version, you can specify files and directory names as arguments without the <code>-s</code> option.
+If you specify a file, only that file will be read.</p> <p>If it runs:</p> <div><pre><code><span>＄twsla import ~/Downloads/SSH.tag.gz
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│/ Loading path=/Users/ymi/Downloads/SSH.tar.gz:SSH.log line=655,147 byte=72 MB │
+│ Total file=1 line=655,147 byte=72 MB time=1.709061625s │
+│▆▆▆▆▆▆▆▆▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████████ 72 MB/Sec│
+└─────────────────────────────────────────────────────────────────────────────────────────┘
+</span></code></pre></div> <p>It displays the number of logs, size, and the time taken.
+When you specify a directory, it reads the files in that directory. If you specify a file pattern with <code>-p</code> or <code>--filePat</code>, you can limit the files read from the directory. This uses a simple filter.</p> <div><pre><code>＄twsla import -s ~/Downloads -p "Linux*" / Loading path=/Users/ymimacmini/Downloads/Linux_2k.log line=2,000 byte=212 kB Total file=1 line=2,000 byte=212 kB time=75.410115ms
+</code></pre></div> <p>Starting with v1.17.0, the import status display has changed.</p> <p><img src="https://assets.st-note.com/img/1758319263-BqyMKkbUO0PT91w75IvZucgi.png?width=1200" alt=""></p> <p>Displays sparklines.</p> <p>You can also specify the filename pattern when reading from a ZIP or Tar.gz file.</p> <p>When reading, you can specify a simple filter, regular expression filter, and time range to reduce the amount of data imported.</p> <p>To read SCP, SSH, or TWSNMP logs, specify the URL:</p> <p><code>scp://root@192.168.1.210/var/log/messages</code></p> <p>SSH key is required.
+Compatible with TWSNMP FC’s web API from v1.4.0.
+Specify <code>twsnmp://192.168.1.250:8080</code> in the URL of the <code>-s</code> option.
+If you specify <code>--api</code>, you can import logs via the Web API.
+<code>--logType</code> can also obtain logs other than syslog.</p> <p>From v1.20.0, support for importing from IMAP, POP3, and email files (.eml) has been added.</p> <p>To import from an IMAP server:
+<code>imap://user:password@imap.example.com:993/INBOX</code></p> <p>To list IMAP folders:
+<code>twsla import --imapFolder -s imap://user:password@imap.example.com:993</code></p> <p>To import from a POP3 server:
+<code>pop3://user:password@pop3.example.com:995</code></p> <p>You can also specify user and password via flags:
+<code>twsla import -s imap://imap.example.com --emailUser user --emailPassword password --emailTLS</code></p> <p>To import from an email file (.eml):
+<code>twsla import sample.eml</code></p> <p>If you specify <code>--json</code> when reading an EVTX file from v1.1.0, the Windows event log is read in JSON format, allowing detailed information to be displayed.</p> <p><img src="https://assets.st-note.com/img/1717709455800-myzsaGfpvI.png?width=1200" alt=""></p> <p>The log destination is specified with the <code>-d</code> option (bbolt database). If you omit it, it defaults to <code>twsla.db</code> in the current directory.
+By specifying <code>--noDelta</code> from v1.8.0, it is possible to skip the time difference calculation to speed up the process.
+Importing is faster when logs are in chronological order. Random logs are slower.</p> <h3>search command</h3> <p>You can search once the logs are imported.</p> <div><pre><code>twsla help search
+Search logs.
+Simple filters, regular expression filters, and exclusion filters can be specified. Usage: twsla search [flags] Flags: -c, --color string Color mode -h, --help help for search Global Flags: --config string config file (default is $HOME/.twsla.yaml) -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter -t, --timeRange string Time range
+</code></pre></div> <p>You can narrow down the logs by specifying a simple filter, regular expression filter, and time range. In the current version, it acts as an inverted filter when starting with a simple filter argument.</p> <div><pre><code>＄twsla search -f fail
+</code></pre></div> <p>Example search:</p> <p><img src="https://assets.st-note.com/img/1716672574781-gcWleWK4jC.png?width=1200" alt=""></p> <p>A key input help is displayed at the top right of the search result screen.
+You can save the result with the <code>S</code> key. The display is reversed with the <code>R</code> key. <code>Q</code> key exits.
+Log search results can be color-coded since v1.5.0.
+Specify <code>-c</code> or <code>--color</code> as an option for the <code>search</code> command. For the key:</p> <table> <thead> <tr> <th>Key</th> <th>Descr</th> </tr> </thead> <tbody> <tr> <td>IP</td> <td>Color display of IP address</td> </tr> <tr> <td>Mac</td> <td>Color display of MAC address</td> </tr> <tr> <td>Email</td> <td>Color display of email address</td> </tr> <tr> <td>URL</td> <td>Color display of URL</td> </tr> <tr> <td>Filter</td> <td>Color display of the string specified in the filter</td> </tr> <tr> <td>REGEXP/Pattern/Color</td> <td>Display the string that matches the regular expression in the specified color</td> </tr> </tbody>
+</table> <p>Example:</p> <div><pre><code>twsla search -f Failed -c "regex/user\s+\S+/9,ip,filter"
+</code></pre></div> <p><img src="https://assets.st-note.com/img/1726436365-hzP1IyTxiYNnQGakBf2pb6uL.png?width=1200" alt=""></p> <p>From v1.6.0, you can specify color displays from the search results screen.
+Press the <code>C</code> key to display the input screen. When you press the <code>M</code> key:</p> <p><img src="https://assets.st-note.com/img/1729478132-JVbuz3MD1LrvKYPxFHmAnpSg.png?width=1200" alt=""></p> <p>Displays the marker input screen. Following <code>simple filter</code> or <code>regex:</code>, you can specify a regular expression filter and mark the corresponding strings in the log. This is an example of an IP color and a marker for “Fail”.</p> <p><img src="https://assets.st-note.com/img/1729484628-MxPyZJRoNU0bqCkeXmh7cAEG.png?width=1200" alt=""></p> <h3>count command</h3> <p>This command aggregates the number of logs on an hourly basis, or uses data extracted from the log as a key.</p> <div><pre><code><span>＄twsla help count
+Count the number of logs.
+Count logs for each specified period.
+Number of occurrences of items extracted from the log.
+Count normalized logs by pattern:
+</span><span> $</span>twsla count <span>-e</span> normalize
+<span>Count words in logs:
+</span><span> $</span>twsla count <span>-e</span> word
+<span>Count JSON keys:
+</span><span> $</span>twsla count <span>-e</span> json <span>-n</span> Score
+<span>
+Usage: twsla count [flags] Flags: --delay int Delay filter -e, --extract string Extract pattern or mode. mode is json,grok,word,normalize --geoip string geo IP database file -g, --grok string grok pattern definitions -x, --grokPat string grok pattern -h, --help help for count -i, --interval int Specify the aggregation interval in seconds. --ip string IP info mode(host|domain|loc|country) -n, --name string Name of key -p, --pos int Specify variable location (default 1) -q, --timePos int Specify second time stamp position --utc Force UTC Global Flags:
+</span><span> --config string config file (default is $</span>HOME/.twsla.yaml<span>)</span>
+<span> -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter --sixel show chart by sixel -t, --timeRange string Time range
+</span></code></pre></div> <p>You can filter in the same way as search.
+If an extraction pattern is specified with the <code>-e</code> option, the data is aggregated by those units. If omitted, logs are aggregated by time.
+Hourly aggregation:</p> <div><pre><code><span>$</span>twsla count <span>-f</span> fail
+</code></pre></div> <p><img src="https://assets.st-note.com/img/1717709793390-R450RHfeJN.png?width=1200" alt=""></p> <p>The time interval is specified with the <code>-i</code> option. If omitted, it is set automatically.
+From v1.1.0, the time difference (Delta) from the previous log is also displayed. The average interval is shown at the top.
+You can sort by count with the <code>C</code> key, or by time with the <code>K</code> key.
+You can save the result with the <code>S</code> key. Saving with a <code>.png</code> extension will generate a graph.</p> <p><img src="https://assets.st-note.com/img/1716674447895-OPrP8zMSUQ.png?width=1200" alt=""></p> <p>From v1.5.0, you can save interactive graphs by using the <code>.html</code> extension.</p> <p><img src="https://assets.st-note.com/img/1716674531194-O7j5QXhIHo.png?width=1200" alt=""></p> <p>The TOP10 ratio graph looks like this:</p> <p><img src="https://assets.st-note.com/img/1716674623362-MkHGX4qUZ2.png?width=1200" alt=""></p> <p>A delay time filter was added in v1.16.0.</p> <div><pre><code>--delay &lt;number&gt;
+</code></pre></div>
+<p>Specifying this will cause the command to display logs with a delay higher than the specified number.</p> <div><pre><code> -q, --timePos int Specify second time stamp position --utc Force UTC
+</code></pre></div>
+<p>This mode detects the time difference between two timestamps in the log, similar to the <code>delay</code> command.</p> <h3>email command</h3> <p>This command allows searching and counting email logs stored in the database.
+It provides subcommands to search for specific emails or count emails by various fields such as From, To, Subject, Sender IP, and SPF status.
+In the search results, you can check the delay time and relay count calculated from the email headers.
+You can sort by delay with the <code>d</code> key and by relay count with the <code>r</code> key.</p> <div><pre><code><span>twsla email [search|count]
+</span></code></pre></div> <p>Examples:</p>
+<div><pre><code> twsla email search -t "last 1h" twsla email count --emailCountBy from -t "last 24h"
+</code></pre></div> <h3>extract command</h3> <p>This command extracts specific data from the logs.</p> <div><pre><code><span>$</span>twsla <span>help </span>extract
+<span>Extract data from the log.
+Numeric data, IP addresses, MAC addresses, email addresses,
+words, etc. can be extracted. Usage: twsla extract [flags] Flags: -e, --extract string Extract pattern --geoip string geo IP database file -h, --help help for extract -n, --name string Name of value (default "Value") -p, --pos int Specify variable location (default 1) Global Flags:
+</span><span> --config string config file (default is $</span>HOME/.twsla.yaml<span>)</span>
+<span> -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter -t, --timeRange string Time range
+</span></code></pre></div> <p>You can specify the same filters as the <code>search</code> command. Data extraction patterns are specified the same way as the <code>count</code> command.</p> <div><pre><code><span>$</span>twsla extract <span>-f</span> fail <span>-e</span> ip
+</code></pre></div> <p><img src="https://assets.st-note.com/img/1716674893720-WqYN0wwrvt.png?width=1200" alt=""></p> <p>This displays time-series data. You can sort by key and save results as a graph.</p> <p><img src="https://assets.st-note.com/img/1716675034354-UvMuVYryxl.png?width=1200" alt=""></p> <p>Numerical data is graphed directly, while items like IP addresses are graphed by occurrence count.</p> <p><img src="https://assets.st-note.com/img/1736891736-Mg2ahHbtJqSws7KPcUznTvkQ.png?width=1200" alt=""></p> <p>Press the <code>i</code> key while numerical data is extracted to display statistical information.</p> <p><img src="https://assets.st-note.com/img/1736891837-3wLoHPGn5ANfEsgDmyqxTKVh.png?width=1200" alt=""></p> <p>Press the <code>s</code> key to save as CSV.</p> <h3>tfidf command</h3> <p>Find rare logs using TF-IDF.</p> <div><pre><code><span>＄twsla help tfidf
+Use TF-IDF to find rare logs.
+You can specify a similarity threshold and the number of times the threshold is allowed to be exceeded. Usage: twsla tfidf [flags] Flags: -c, --count int Number of threshold crossings to exclude -h, --help help for tfidf -l, --limit float Similarity threshold between logs (default 0.5) -n, --top int Top N Global Flags:
+</span><span> --config string config file (default is $</span>HOME/.twsla.yaml<span>)</span>
+<span> -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter -t, --timeRange string Time range
+</span></code></pre></div> <p><img src="https://assets.st-note.com/img/1716675268711-yeoAjdEYAx.png?width=1200" alt=""></p> <p>The example shows three rare logs found in 2,000 entries. Thresholds can be adjusted with <code>-l</code> and <code>-c</code>. Detailed information for experts will be provided in another article.
+Since v1.10, you can use <code>-n</code> to get the top N rare cases.</p> <h3>anomaly command</h3> <p>Added in v1.1.0, this command analyzes logs to find anomalies.</p> <div><pre><code><span>
+Anomaly log detection Detect anomaly logs using isolation forests. Detection modes include walu, SQL injection, OS command injections, and directory traverses. Usage: twsla anomaly [flags] Flags: -e, --extract string Extract pattern -h, --help help for anomaly -m, --mode string Detection modes(tfidf|sql|os|dir|walu|number) (default "tfidf") Global Flags:
+</span><span> --config string config file (default is $</span>HOME/.twsla.yaml<span>)</span>
+<span> -d, --datastore string bblot log db (default "./twsla.db") -f, --filter string Simple filter -v, --not string Invert regexp filter -r, --regex string Regexp filter -t, --timeRange string Time range
+</span></code></pre></div> </section></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - sunergos-ro/scrappy: A tiny browser scraper written in Go</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - sunergos-ro/scrappy: A tiny browser scraper written in Go</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 8:49:52 PM | Lang: PT |
+    <a href="https://github.com/sunergos-ro/scrappy" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>Scrappy</h1><a href="#scrappy"></a></div>
+<p>Scrappy is a Go HTTP service that uses a warm Chrome pool to provide fast rendering and extraction APIs.</p>
+<div><h2>Endpoints</h2><a href="#endpoints"></a></div>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><code>/html</code></td>
+<td>Return page HTML</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/markdown</code></td>
+<td>Return extracted markdown-like content</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/screenshot</code></td>
+<td>Capture screenshot and upload to R2</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/pool/scale</code></td>
+<td>Resize browser pool (admin token required when configured)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/stats</code></td>
+<td>Inspect pool health/utilization (admin token required when configured)</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/health</code></td>
+<td>Liveness endpoint (bypasses IP allowlist)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>Go 1.26+</li>
+<li>Chrome/Chromium available (or let Rod launcher manage it)</li>
+<li>Optional: Cloudflare R2 credentials for <code>/screenshot</code></li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<ol>
+<li>Install dependencies:</li>
+</ol>
+<div><pre>go mod download</pre></div>
+<ol>
+<li>Configure environment:</li>
+</ol>
+<div><pre>cp .env.example .env</pre></div>
+<p>Then edit <code>.env</code> and set required values.</p>
+<ol>
+<li>Start service:</li>
+</ol>
+<div><pre>go run <span>.</span></pre></div>
+<p>Default bind address is <code>:3000</code> (<code>SCRAPPY_ADDR</code>).</p>
+<p>If calling from a non-local IP in development, set <code>SCRAPPY_ALLOWED_IPS</code> accordingly.</p>
+<div><h2>API Usage</h2><a href="#api-usage"></a></div>
+<div><h3>Render HTML</h3><a href="#render-html"></a></div>
+<div><pre>curl -X POST http://localhost:3000/html \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"url":"https://example.com","viewport":{"width":1280,"height":800}}<span>'</span></span></pre></div>
+<div><h3>Extract Markdown</h3><a href="#extract-markdown"></a></div>
+<div><pre>curl -X POST http://localhost:3000/markdown \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"url":"https://example.com"}<span>'</span></span></pre></div>
+<div><h3>Capture Screenshot</h3><a href="#capture-screenshot"></a></div>
+<div><pre>curl -X POST http://localhost:3000/screenshot \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"url":"https://example.com","viewport":{"width":1440,"height":756},"format":"jpeg","quality":90}<span>'</span></span></pre></div>
+<div><h3>Scale Pool</h3><a href="#scale-pool"></a></div>
+<div><pre>curl -X POST http://localhost:3000/pool/scale \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"size":3}<span>'</span></span></pre></div>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<p>A local CLI is available at <code>cmd/scrappy</code> for script and agent workflows.</p>
+<p>Run via Go:</p>
+<div><pre>go run ./cmd/scrappy --help</pre></div>
+<p>Example commands:</p>
+<div><pre>go run ./cmd/scrappy --base-url http://localhost:3000 html \ --url https://example.com go run ./cmd/scrappy --base-url http://localhost:3000 markdown \ --url https://example.com --wait-ms 1500 go run ./cmd/scrappy --base-url http://localhost:3000 screenshot \ --url https://example.com --format webp --quality 90 go run ./cmd/scrappy --base-url http://localhost:3000 stats
+go run ./cmd/scrappy --base-url http://localhost:3000 scale --size 3</pre></div>
+<p>Global CLI flags:</p>
+<ul>
+<li><code>--base-url</code> (env: <code>SCRAPPY_BASE_URL</code>, default <code>http://localhost:3000</code>)</li>
+<li><code>--admin-token</code> (env: <code>SCRAPPY_ADMIN_TOKEN</code>)</li>
+<li><code>--http-timeout-ms</code> (env: <code>SCRAPPY_HTTP_TIMEOUT_MS</code>, default <code>80000</code>)</li>
+<li><code>--pretty</code> (pretty-print JSON output)</li>
+</ul>
+<div><h2>MCP Server</h2><a href="#mcp-server"></a></div>
+<p>An MCP stdio server is available at <code>cmd/scrappy-mcp</code> and exposes these tools:</p>
+<ul>
+<li><code>scrappy_html</code></li>
+<li><code>scrappy_markdown</code></li>
+<li><code>scrappy_screenshot</code></li>
+<li><code>scrappy_stats</code></li>
+<li><code>scrappy_scale</code></li>
+</ul>
+<p>Quick local test:</p>
+<div><pre>go run ./cmd/scrappy-mcp --help</pre></div>
+<div><h3>Run Modes</h3><a href="#run-modes"></a></div>
+<p>Use one of these patterns:</p>
+<ul>
+<li>Run from repo root with Go:</li>
+</ul>
+<div><pre>go run ./cmd/scrappy-mcp --base-url http://127.0.0.1:3000</pre></div>
+<ul>
+<li>Build once and run from <code>PATH</code>:</li>
+</ul>
+<div><pre>go build -o ./bin/scrappy-mcp ./cmd/scrappy-mcp</pre></div>
+<p>Then make sure <code>scrappy-mcp</code> is on your <code>PATH</code>, and run:</p>
+<div><pre>scrappy-mcp --base-url http://127.0.0.1:3000</pre></div>
+<div><h3>Codex Integration</h3><a href="#codex-integration"></a></div>
+<p>Codex MCP servers are configured in <code>config.toml</code> under <code>[mcp_servers.&lt;name&gt;]</code>.</p>
+<p>If Codex is started from this repo root, use <code>go run</code>:</p>
+<div><pre>[<span>mcp_servers</span>.<span>scrappy</span>]
+<span>command</span> = <span><span>"</span>go<span>"</span></span>
+<span>args</span> = [<span><span>"</span>run<span>"</span></span>, <span><span>"</span>./cmd/scrappy-mcp<span>"</span></span>, <span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>]</pre></div>
+<p>If you want it to work from any directory, use a binary on <code>PATH</code>:</p>
+<div><pre>[<span>mcp_servers</span>.<span>scrappy</span>]
+<span>command</span> = <span><span>"</span>scrappy-mcp<span>"</span></span>
+<span>args</span> = [<span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>]</pre></div>
+<div><h3>Generic MCP Client Integration</h3><a href="#generic-mcp-client-integration"></a></div>
+<p>Most MCP clients use a JSON shape like this:</p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"scrappy"</span>: { <span>"command"</span>: <span><span>"</span>scrappy-mcp<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>] } }
+}</pre></div>
+<div><h3>Auth and Safety</h3><a href="#auth-and-safety"></a></div>
+<p>If your <code>/stats</code> or <code>/pool/scale</code> endpoints require auth, set <code>SCRAPPY_ADMIN_TOKEN</code> in the environment used to launch your MCP client, or pass <code>--admin-token</code>.</p>
+<p>Recommended setup for least privilege:</p>
+<ul>
+<li><code>scrappy</code>: no admin token (safe default for content extraction tools)</li>
+<li><code>scrappy_admin</code>: admin token enabled (only for pool ops when needed)</li>
+</ul>
+<div><h3>Typical LLM Prompts</h3><a href="#typical-llm-prompts"></a></div>
+<p>Examples that reliably trigger tool usage:</p>
+<ul>
+<li><code>Use scrappy_markdown for https://example.com and return the top 10 links.</code></li>
+<li><code>Call scrappy_html for https://example.com and extract title + canonical URL.</code></li>
+<li><code>Check scrappy_stats and report if pool saturation is high.</code></li>
+<li><code>If busy instances are above 2, call scrappy_scale with size 5.</code></li>
+</ul>
+<div><h2>Request Fields</h2><a href="#request-fields"></a></div>
+<p>Common request fields for <code>/html</code> and <code>/markdown</code>:</p>
+<ul>
+<li><code>url</code> (required)</li>
+<li><code>viewport.width</code> / <code>viewport.height</code> (optional)</li>
+<li><code>user_agent</code> (optional)</li>
+<li><code>wait_ms</code> (optional)</li>
+<li><code>timeout_ms</code> (optional)</li>
+</ul>
+<p>Request constraints:</p>
+<ul>
+<li>URL must be absolute <code>http://</code> or <code>https://</code>.</li>
+<li>URL credentials (<code>https://user:pass@...</code>) are rejected.</li>
+<li>Private/local network targets are blocked by default.</li>
+<li><code>wait_ms</code> / <code>timeout_ms</code> / viewport are capped by server limits.</li>
+</ul>
+<p>Additional fields for <code>/screenshot</code>:</p>
+<ul>
+<li><code>format</code> (<code>jpeg</code>, <code>png</code>, <code>webp</code>)</li>
+<li><code>quality</code> (ignored for png)</li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>Key environment variables:</p>
+<div><h3>Server</h3><a href="#server"></a></div>
+<ul>
+<li><code>SCRAPPY_ADDR</code> (default <code>:3000</code>)</li>
+<li><code>SCRAPPY_ALLOWED_IPS</code> (comma-separated IPs/CIDRs)</li>
+<li><code>SCRAPPY_TRUSTED_PROXY_CIDRS</code> (comma-separated proxy CIDRs allowed to set <code>X-Forwarded-For</code> / <code>X-Real-IP</code>)</li>
+</ul>
+<div><h3>Security Controls</h3><a href="#security-controls"></a></div>
+<ul>
+<li><code>SCRAPPY_ALLOWED_TARGET_HOSTS</code> (optional comma-separated host allowlist; supports exact host, <code>.example.com</code>, <code>*.example.com</code>, and CIDR for IP targets)</li>
+<li><code>SCRAPPY_BLOCK_PRIVATE_NETWORKS</code> (default <code>true</code>; blocks localhost/private/link-local/reserved targets)</li>
+<li><code>SCRAPPY_ADMIN_TOKEN</code> (optional; protects <code>/stats</code> and <code>/pool/scale</code> when set; use <code>Authorization: Bearer &lt;token&gt;</code> or <code>X-Admin-Token</code>)</li>
+<li><code>SCRAPPY_MAX_REQUEST_BODY_BYTES</code> (default <code>1048576</code>)</li>
+<li><code>SCRAPPY_MAX_WAIT_MS</code> (default <code>20000</code>)</li>
+<li><code>SCRAPPY_MAX_TIMEOUT_MS</code> (default <code>60000</code>)</li>
+<li><code>SCRAPPY_MAX_VIEWPORT_WIDTH</code> (default <code>2560</code>)</li>
+<li><code>SCRAPPY_MAX_VIEWPORT_HEIGHT</code> (default <code>2560</code>)</li>
+</ul>
+<div><h3>Browser Pool</h3><a href="#browser-pool"></a></div>
+<ul>
+<li><code>BROWSER_POOL_ENABLED</code> (default <code>true</code>)</li>
+<li><code>BROWSER_POOL_MIN_SIZE</code>, <code>BROWSER_POOL_MAX_SIZE</code></li>
+<li><code>BROWSER_POOL_LEASE_TIMEOUT</code></li>
+<li><code>BROWSER_POOL_IDLE_TTL</code></li>
+<li><code>BROWSER_POOL_MAX_REUSE</code></li>
+<li><code>BROWSER_POOL_SPAWN_TIMEOUT</code></li>
+<li><code>BROWSER_POOL_HANG_TIMEOUT</code></li>
+<li><code>BROWSER_POOL_SUPERVISOR_INTERVAL</code></li>
+<li><code>BROWSER_POOL_ALLOW_STANDALONE_FALLBACK</code> (default <code>false</code>)</li>
+</ul>
+<p>Note: pool timeout vars above are interpreted as seconds (legacy behavior in config loader).<br>
+Legacy aliases (<code>SCRAPPY_POOL_*</code>) are still supported for pool size/timeouts.</p>
+<div><h3>Render Defaults</h3><a href="#render-defaults"></a></div>
+<ul>
+<li><code>SCRAPPY_DEFAULT_VIEWPORT_WIDTH</code></li>
+<li><code>SCRAPPY_DEFAULT_VIEWPORT_HEIGHT</code></li>
+<li><code>SCRAPPY_DEFAULT_USER_AGENT</code></li>
+<li><code>SCRAPPY_DEFAULT_WAIT_MS</code></li>
+<li><code>SCRAPPY_DEFAULT_TIMEOUT_MS</code></li>
+<li><code>SCRAPPY_DEFAULT_FORMAT</code></li>
+<li><code>SCRAPPY_DEFAULT_QUALITY</code></li>
+</ul>
+<div><h3>Browser Binary</h3><a href="#browser-binary"></a></div>
+<ul>
+<li><code>SCRAPPY_CHROME_BIN</code> (optional explicit Chrome/Chromium binary)</li>
+<li><code>SCRAPPY_CHROME_NO_SANDBOX</code> (default <code>false</code>; keep disabled unless strictly required)</li>
+</ul>
+<div><h3>R2 (required only for <code>/screenshot</code>)</h3><a href="#r2-required-only-for-screenshot"></a></div>
+<ul>
+<li><code>R2_ENDPOINT</code></li>
+<li><code>R2_ACCESS_KEY_ID</code></li>
+<li><code>R2_SECRET_ACCESS_KEY</code></li>
+<li><code>R2_BUCKET</code></li>
+<li><code>R2_PUBLIC_BASE_URL</code></li>
+<li><code>R2_REGION</code> (default <code>auto</code>)</li>
+</ul>
+<div><h3>Observability</h3><a href="#observability"></a></div>
+<ul>
+<li><code>SENTRY_DSN</code> (optional)</li>
+</ul>
+<div><h2>Project Layout</h2><a href="#project-layout"></a></div>
+<p>Pool code is now split by responsibility:</p>
+<ul>
+<li><code>pool_types.go</code> - types/constants</li>
+<li><code>pool_admin.go</code> - constructor/stats/scale/shutdown</li>
+<li><code>pool_render.go</code> - public render/markdown/screenshot methods</li>
+<li><code>pool_navigation.go</code> - navigation, settle, extraction helpers</li>
+<li><code>pool_page.go</code> - page lifecycle/setup</li>
+<li><code>pool_manager.go</code> - pool internals (spawn/checkout/reap/logging)</li>
+<li><code>extraction_scripts.go</code> - browser-evaluated extraction scripts</li>
+</ul>
+<p>Request parsing/defaults:</p>
+<ul>
+<li><code>handlers.go</code></li>
+<li><code>options.go</code></li>
+<li><code>models.go</code></li>
+</ul>
+<p>For flow-level detail, see <code>ARCHITECTURE.md</code>.</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<p>Format and test before committing:</p>
+<div><pre>gofmt -w <span>*</span>.go
+go <span>test</span> ./...</pre></div>
+<div><h2>Security Notes</h2><a href="#security-notes"></a></div>
+<ul>
+<li>Do not expose this service publicly without network controls and authentication.</li>
+<li>Keep <code>SCRAPPY_ALLOWED_IPS</code> restricted to trusted callers.</li>
+<li>Configure <code>SCRAPPY_TRUSTED_PROXY_CIDRS</code> when running behind a reverse proxy.</li>
+<li>Keep <code>SCRAPPY_CHROME_NO_SANDBOX=false</code> in production.</li>
+<li>Report vulnerabilities using the process in <code>SECURITY.md</code>.</li>
+</ul>
+<div><h2>Troubleshooting Markdown Extraction</h2><a href="#troubleshooting-markdown-extraction"></a></div>
+<p>For dynamic pages (for example Webflow job pages), extraction can fail if links only exist in hidden or late-rendered nodes.</p>
+<ul>
+<li>The extractor ignores hidden content (<code>display:none</code>, <code>visibility:hidden</code>, <code>aria-hidden="true"</code>, <code>.w-condition-invisible</code>, <code>.hide</code>).</li>
+<li>Root selection prefers semantic/main containers and falls back to <code>document.body</code>.</li>
+<li>Link extraction converts relative URLs to absolute URLs using <code>document.baseURI</code>.</li>
+</ul>
+<p>Debug sequence for extraction issues:</p>
+<ol>
+<li>Call <code>/html</code> for the same URL and confirm the target <code>&lt;a href&gt;</code> exists in rendered HTML.</li>
+<li>Verify the link is not inside hidden variants/duplicated mobile or desktop nav containers.</li>
+<li>Re-run <code>/markdown</code> with a larger <code>wait_ms</code> if content is injected after initial paint.</li>
+<li>Check <code>/stats</code> for pool errors, stale pages, or repeated timeouts.</li>
+</ol>
+<div><h2>Deployment</h2><a href="#deployment"></a></div>
+<ul>
+<li>Dockerized via:
+<ul>
+<li><code>Dockerfile</code> (current project image with extra custom fonts)</li>
+<li><code>Dockerfile.sample</code> (generic baseline image without custom font bundle)</li>
+</ul>
+</li>
+<li>Kamal templates are included:
+<ul>
+<li><code>config/deploy.example.yml</code></li>
+<li><code>.kamal/secrets.example</code></li>
+</ul>
+</li>
+<li>Create local deployment files before running Kamal:</li>
+</ul>
+<div><pre>cp config/deploy.example.yml config/deploy.yml
+cp .kamal/secrets.example .kamal/secrets</pre></div>
+<ul>
+<li>Edit local copies with your registry, hosts, secrets source, and SSH user.</li>
+<li>Keep <code>config/deploy.yml</code> and <code>.kamal/secrets</code> private; both are gitignored by default.</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT. See <code>LICENSE</code>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

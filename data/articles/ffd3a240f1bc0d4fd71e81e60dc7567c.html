@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - rawalrahul/safeclaw</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - rawalrahul/safeclaw</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 8:16:48 PM | Lang: EN |
+    <a href="https://github.com/rawalrahul/safeclaw" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>SafeClaw — Secure Personal AI Assistant</h1><a href="#safeclaw--secure-personal-ai-assistant"></a></div>
+<p><strong>Sleep-by-default. Tools off by default. You hold the keys.</strong></p>
+<p>SafeClaw is a secure, privacy-first personal AI assistant you control from your phone via Telegram (and soon WhatsApp). Unlike other AI gateways that run always-on with broad permissions, SafeClaw inverts the defaults: everything is off until you explicitly turn it on.</p>
+<div><h2>Why SafeClaw?</h2><a href="#why-safeclaw"></a></div>
+<p>Most AI assistant gateways have a trust problem:</p>
+<table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>SafeClaw's Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bot hijacks your messaging account</td>
+<td><strong>Own identity</strong> — SafeClaw is its own Telegram bot, never impersonates you</td>
+</tr>
+<tr>
+<td>Always-on daemon with large attack surface</td>
+<td><strong>Dormant by default</strong> — only wakes when you send <code>/wake</code></td>
+</tr>
+<tr>
+<td>Static tool permissions set at config time</td>
+<td><strong>Runtime toggle</strong> — <code>/enable browser</code>, <code>/disable shell</code>, on the fly</td>
+</tr>
+<tr>
+<td>Dangerous actions execute immediately</td>
+<td><strong>Explicit approval</strong> — every write, delete, and execute requires <code>/confirm</code></td>
+</tr>
+<tr>
+<td>Unknown senders get error responses (info leak)</td>
+<td><strong>Silent drop</strong> — non-owners get zero response, zero acknowledgment</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>1. Create a Telegram Bot</h3><a href="#1-create-a-telegram-bot"></a></div>
+<p>Message <a href="https://t.me/BotFather">@BotFather</a> on Telegram and create a new bot. Copy the token.</p>
+<div><h3>2. Find Your Telegram ID</h3><a href="#2-find-your-telegram-id"></a></div>
+<p>Message <a href="https://t.me/userinfobot">@userinfobot</a> on Telegram. Copy your numeric user ID.</p>
+<div><h3>3. Configure</h3><a href="#3-configure"></a></div>
+<div><pre><span>cd</span> safeclaw
+cp .env.example .env
+<span><span>#</span> Edit .env:</span>
+<span><span>#</span> TELEGRAM_BOT_TOKEN=your_bot_token</span>
+<span><span>#</span> OWNER_TELEGRAM_ID=your_user_id</span></pre></div>
+<div><h3>4. Install &amp; Run</h3><a href="#4-install--run"></a></div>
+<div><pre>npm install
+npx tsx src/index.ts</pre></div>
+<div><h3>5. Chat with Your Bot</h3><a href="#5-chat-with-your-bot"></a></div>
+<p>Open Telegram, find your bot, and send <code>/wake</code>. That's it.</p>
+<div><h2>Commands</h2><a href="#commands"></a></div>
+<div><pre><code>/wake — Wake the gateway (only command that works while dormant)
+/sleep — Go back to dormant
+/kill — Emergency shutdown /tools — See all tools and their ON/OFF status
+/enable &lt;tool&gt; — Enable a tool (browser, filesystem, shell, code_exec, network, messaging)
+/disable &lt;tool&gt; — Disable a tool /confirm &lt;id&gt; — Approve a pending dangerous action
+/deny &lt;id&gt; — Reject it /status — Gateway state, uptime, enabled tools
+/audit [n] — Last N audit log events
+/help — All commands
+</code></pre></div>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><pre><code>You (Telegram) ──→ SafeClaw Bot ──→ Gateway State Machine │ ┌───────────────┼───────────────┐ │ │ │ Auth Check Tool Registry Audit Log (owner only) (all OFF) (every event) │ │ Silent drop Permission Gate if not owner (/confirm required)
+</code></pre></div>
+<p><strong>Example flow:</strong></p>
+<div><pre><code>You: /wake
+Bot: Gateway awake. All tools disabled. Auto-sleep in 30 min. You: /enable browser
+Bot: browser is now ENABLED. Dangerous actions still require /confirm. You: search latest AI news
+Bot: Action pending approval: Tool: browser Action: browse_web Details: browse_web: latest AI news Expires in: 300s Reply /confirm a1b2c3d4 or /deny a1b2c3d4 You: /confirm a1b2c3d4
+Bot: Approved. Executing... [Search results for "latest AI news"] You: /sleep
+Bot: Gateway dormant. Goodnight.
+</code></pre></div>
+<div><h2>Security Model</h2><a href="#security-model"></a></div>
+<ul>
+<li><strong>Sleep-by-default</strong>: Gateway starts dormant and ignores all messages except <code>/wake</code> from the owner</li>
+<li><strong>Single owner</strong>: Only your Telegram user ID is authorized. Everyone else is silently ignored</li>
+<li><strong>Tools off by default</strong>: All 6 tool categories disabled on every wake. You enable what you need</li>
+<li><strong>Confirm before action</strong>: Write, delete, execute, and send operations require <code>/confirm</code></li>
+<li><strong>Auto-sleep</strong>: 30-minute inactivity timeout returns to dormant (configurable)</li>
+<li><strong>Full audit trail</strong>: Every event logged to <code>~/.safeclaw/audit.jsonl</code></li>
+<li><strong>Separate identity</strong>: Bot is its own Telegram account, never acts as you</li>
+</ul>
+<div><h2>Project Structure</h2><a href="#project-structure"></a></div>
+<div><pre><code>safeclaw/
+├── src/
+│ ├── index.ts # Entry point
+│ ├── core/
+│ │ ├── types.ts # All TypeScript interfaces
+│ │ ├── gateway.ts # State machine (dormant/awake/action_pending)
+│ │ ├── auth.ts # Single-owner verification
+│ │ └── config.ts # .env config loader
+│ ├── channels/telegram/
+│ │ ├── client.ts # grammy bot setup
+│ │ ├── handler.ts # Inbound message routing + auth check
+│ │ ├── sender.ts # Outbound messages with chunking
+│ │ └── free-text.ts # Natural language → tool invocation
+│ ├── tools/
+│ │ ├── registry.ts # Enable/disable with status matrix
+│ │ ├── browser.ts # Simulated browser tool
+│ │ ├── filesystem.ts # Simulated filesystem tool
+│ │ └── shell.ts # Simulated shell tool
+│ ├── permissions/
+│ │ └── store.ts # Approval requests with expiry
+│ ├── audit/
+│ │ └── logger.ts # JSONL event logger
+│ ├── commands/
+│ │ ├── parser.ts # /command parser
+│ │ └── handlers.ts # Command execution
+│ └── storage/
+│ └── persistence.ts # JSON/JSONL file I/O
+├── SafeClaw-Architecture-Spec.docx # Full architecture document
+├── package.json
+├── tsconfig.json
+└── .env.example
+</code></pre></div>
+<div><h2>Current State</h2><a href="#current-state"></a></div>
+<p>This is a <strong>working prototype</strong> with simulated tool responses. The security architecture (auth, sleep/wake, tool gating, permission confirmation, audit logging) is fully functional. The simulated tools demonstrate the permission flow without risk.</p>
+<div><h3>What's real:</h3><a href="#whats-real"></a></div>
+<ul>
+<li>Gateway state machine with all transitions</li>
+<li>Single-owner authentication (silent drop for non-owners)</li>
+<li>Tool registry with runtime enable/disable</li>
+<li>Permission confirmation flow with expiry</li>
+<li>JSONL audit logging</li>
+<li>Telegram bot integration</li>
+<li>All chat commands</li>
+</ul>
+<div><h3>What's simulated:</h3><a href="#whats-simulated"></a></div>
+<ul>
+<li>Browser, filesystem, and shell tools return mock responses</li>
+<li>No real AI agent (LLM) connected yet</li>
+</ul>
+<div><h2>Roadmap</h2><a href="#roadmap"></a></div>
+<ul>
+<li> Connect real AI agent (Claude API / OpenAI API)</li>
+<li> WhatsApp Cloud API integration</li>
+<li> MCP (Model Context Protocol) server for extensible tools</li>
+<li> Web dashboard for visual tool management</li>
+<li> Multi-owner support with invite codes</li>
+<li> End-to-end encryption for audit logs</li>
+<li> Rate limiting per tool per session</li>
+</ul>
+<div><h2>Tech Stack</h2><a href="#tech-stack"></a></div>
+<ul>
+<li><strong>Runtime</strong>: Node.js 22+</li>
+<li><strong>Language</strong>: TypeScript (strict mode)</li>
+<li><strong>Telegram</strong>: <a href="https://grammy.dev">grammy</a></li>
+<li><strong>Storage</strong>: File-based JSON + JSONL (no database)</li>
+<li><strong>Dependencies</strong>: grammy, dotenv, uuid (minimal footprint)</li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions welcome! Please open an issue first to discuss what you'd like to change.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/rawalrahul/safeclaw/blob/main/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Kuberwastaken/picogpt: GPT in a QR Code ; The actual most atomic way to train and inference a GPT in pure, dependency-free JS/Python.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - Kuberwastaken/picogpt: GPT in a QR Code ; The actual most atomic way to train and inference a GPT in pure, dependency-free JS/Python.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 8:25:51 PM | Lang: EN |
+    <a href="https://github.com/Kuberwastaken/picogpt" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>PicoGPT: GPT in a QR Code</h1><a href="#picogpt-gpt-in-a-qr-code"></a></div>
+<p> <a target="_blank" href="/Kuberwastaken/picogpt/blob/main/qrcode.png"><img src="/Kuberwastaken/picogpt/raw/main/qrcode.png" alt="QR Code for The Backdooms"></a>
+</p>
+<p> Yes, it's small enough to fit inside a QR code. You can <a href="https://scanqr.org/">scan it</a> to try it out.
+</p>
+<div><h2>Origin</h2><a href="#origin"></a></div>
+<p>Andrej Karpathy tweeted this on X today, talking about <a href="https://gist.github.com/karpathy/8627fe009c40f57531cb18360106ce95">MicroGPT</a></p>
+<p> <a target="_blank" href="/Kuberwastaken/picogpt/blob/main/assets/karpathy-tweet.png"><img src="/Kuberwastaken/picogpt/raw/main/assets/karpathy-tweet.png" alt="QR Code for The Backdooms"></a>
+</p>
+<p>It was genuinely so cool but then I saw something that made me laugh out loud</p>
+<p> <a target="_blank" href="/Kuberwastaken/picogpt/blob/main/assets/gist-preview.png"><img src="/Kuberwastaken/picogpt/raw/main/assets/gist-preview.png" alt="QR Code for The Backdooms"></a>
+</p>
+<p>IT WASN'T MINIFIED</p>
+<p>So uh yeah, that's all this is, I minified it further and then went a step further...</p>
+<div><h2>JavaScript Port</h2><a href="#javascript-port"></a></div>
+<p>I ported the entire thing to <strong>JavaScript</strong> for native browser execution! The minified version at <a href="/Kuberwastaken/picogpt/blob/main/picogpt.qr.html">picogpt.qr.html</a> is what goes into the QR code.</p>
+<p>It works in <strong>JUST 39 LINES</strong> of pure JavaScript!</p>
+<p>For context, these 39 lines include:</p>
+<ul>
+<li>A custom Autograd engine</li>
+<li>Multi-head attention (MHA)</li>
+<li>Feed-forward MLP with GeLU² approximation</li>
+<li>AdamW Optimizer with cosine learning rate schedule</li>
+<li>Training &amp; Inference loops</li>
+<li>Seeded PRNG (xoshiro128**)</li>
+</ul>
+<div><h3>Architecture</h3><a href="#architecture"></a></div>
+<div><pre><code>Layers: 1
+Heads: 4 Embedding: 16
+Context: 8
+MLP dim: 64
+Params: 4,064
+</code></pre></div>
+<div><h2>QR Code Generation</h2><a href="#qr-code-generation"></a></div>
+<p>The <code>qrgen.py</code> script is adapted from my <strong>Doom running inside a QR code</strong> project: <a href="https://github.com/kuberwastaken/backdooms">The Backdooms</a>.</p>
+<p>The QR code contains a compressed HTML payload using the browser's native <code>DecompressionStream</code> API. When scanned:</p>
+<ol>
+<li>The browser decompresses the gzipped base64 payload</li>
+<li>Renders the full HTML page with the GPT implementation</li>
+<li>Trains the model right in your browser!</li>
+</ol>
+<p>The entire training loop, inference, and UI fits in a <strong>version-40-L QR code</strong> (2953 bytes).</p>
+<div><h2>Legacy Python Version</h2><a href="#legacy-python-version"></a></div>
+<p>The original minified Python implementation is preserved in the <code>legacy/</code> folder. It was 64 lines of minified code, but JavaScript allows for native browser execution without any dependencies so that's where we're at.</p>
+<p>It's still pretty cool though, you can read it in <a href="/Kuberwastaken/picogpt/blob/main/legacy/picogpt.py">legacy/picogpt.py</a>.</p>
+<p>As for the naming choice, iykyk</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>
