@@ -6,13 +6,26 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -21,13 +34,54 @@
     Source: FrenchWeb | Date: 1/26/2026 4:30:06 AM | <a href="https://www.frenchweb.fr/2026-le-quantique-a-lepreuve-du-reel-avec-fanny-bouton-et-olivier-ezratty/459907" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons décidé de rebaptiser FW PERSPECTIVES. En collaboration avec CanalChat Grandialogue, il s’agit d’un format de conversation et d’analyse consacré aux trajectoires longues de l’innovation, de l’industrie et du pouvoir. L’objectif est de comprendre ce qui structure réellement les technologies, les marchés et …</p>
+    <div><div> <p>FWMedia ouvre une nouvelle saison de son émission Le Club, que nous avons décidé de rebaptiser <strong>FW PERSPECTIVES</strong>. En collaboration avec <a target="_blank" href="https://www.canalchat.com/fr/">CanalChat Grandialogue</a>, il s’agit d’un format de conversation et d’analyse consacré aux trajectoires longues de l’innovation, de l’industrie et du pouvoir. L’objectif est de comprendre ce qui structure réellement les technologies, les marchés et les choix industriels, politiques et sociétaux qui en découlent.</p>
+<p>Nous démarrons avec un échange consacré aux technologies quantiques, en compagnie de deux figures reconnues de l’écosystème. <a target="_blank" href="https://www.linkedin.com/in/fannybouton"><strong>Fanny Bouton</strong></a>, directrice du quantique chez <strong>OVHcloud</strong> et cofondatrice de France Quantum, travaille au plus près des entreprises qui cherchent à structurer leurs premiers usages. <a target="_blank" href="https://www.linkedin.com/in/ezratty/"><strong>Olivier Ezratty</strong></a>, auteur de <a target="_blank" href="https://www.oezratty.net/wordpress/2025/understanding-quantum-technologies-2025/"><em>Understanding Quantum Technologies</em></a>, propose depuis plusieurs années une lecture rigoureuse des avancées scientifiques, des dynamiques industrielles et des rapports de force internationaux dans la tech.</p>
+<p>Dans cette émission, ils reviennent sur ce que 2025 a réellement changé pour le quantique. L’accès aux technologies, l’émergence de premiers signaux scientifiques ciblés, la montée en puissance des enjeux de financement et de consolidation, mais aussi les questions de sécurité, de souveraineté et de temps long. Un état des lieux destiné à celles et ceux qui souhaitent comprendre où en est le quantique, et surtout comment il commence à s’inscrire dans la réalité des entreprises et des politiques industrielles.</p>
+<p></p>
+<h2>Une année 2025 placée sous le signe de l’accès</h2>
+<p>Pour Fanny Bouton, l’année 2025 constitue avant tout un moment de structuration. Elle revient sur le lancement de la plateforme quantique d’OVHcloud, conçue pour réduire les barrières à l’entrée et offrir un parcours cohérent aux équipes de R&amp;D. L’objectif n’est pas de vendre une promesse lointaine, mais de permettre une montée en compétence progressive, depuis l’émulation jusqu’à l’accès à des machines quantiques réelles.</p>
+<p>La logique est celle d’une chaîne de valeur continue, pour tester des algorithmes, comprendre leurs limites, expérimenter à faible coût, puis, lorsque cela devient pertinent, basculer vers des ressources matérielles plus avancées. « Un client peut maintenant vraiment commencer cette journée, son cheminement de R&amp;D jusqu’à créer des produits », résume-t-elle. L’enjeu est autant technique qu’organisationnel, il s’agit de donner aux entreprises un cadre stable pour explorer, sans immobiliser des investissements lourds ni exposer leurs environnements.</p>
+<h2>Des avancées scientifiques réelles, mais encore ciblées</h2>
+<p>Olivier Ezratty situe 2025 comme une année marquée par une multiplication de publications scientifiques montrant un début d’avantage quantique, avec une précision essentielle. Ces résultats concernent principalement la simulation de systèmes quantiques, un champ où l’ordinateur quantique est naturellement pertinent, mais qui reste éloigné de la plupart des applications industrielles classiques.</p>
+<p>Interrogé sur ce qui aurait été véritablement innovant en 2025, il adopte comme à son habitude, une position volontairement décalée. « Il n’y a pas d’innovation », avance-t-il, avant de préciser son propos. Le quantique progresse par accumulation, par briques successives, dans un écosystème où recherche académique, startups et grands industriels travaillent encore sur des architectures incomplètes. « On a les briques, on n’a pas encore le château. »</p>
+<p>Cette lecture remet en perspective les annonces spectaculaires, et souligne que le cœur du travail porte aujourd’hui sur des sujets complexes et peu visibles, comme la correction d’erreurs, la tolérance aux fautes ou l’assemblage de chaînes matérielles et logicielles capables de passer à l’échelle.</p>
+<h2>Financements record et début de consolidation</h2>
+<p>Le point de bascule le plus structurant, selon Olivier Ezratty, est économique. L’année 2025 marque un niveau de financement inédit pour les startups du quantique et, surtout, l’amorce d’un mouvement de consolidation. Des acteurs fortement capitalisés commencent à racheter, à agréger des compétences, à structurer des portefeuilles technologiques complets.</p>
+<p>Dans ce contexte, la comparaison entre l’Europe et les États-Unis n’est pas technologique, mais financière et industrielle. L’Europe dispose d’acteurs solides, souvent très performants scientifiquement, mais encore fragmentés et sous-dimensionnés face à des entreprises américaines capables d’investir massivement et d’absorber leurs concurrents.</p>
+<p>Le risque identifié est de voir l’industrie se consolider avant même que la maturité technologique ne soit pleinement atteinte, au détriment d’acteurs européens manquant de moyens pour rester indépendants.</p>
+<h2>Des entreprises encore prudentes, mais de plus en plus engagées</h2>
+<p>Côté entreprises, Fanny Bouton observe une évolution sensible des perceptions. L’intérêt progresse, porté à la fois par l’effet d’entraînement autour de l’IA et par une meilleure compréhension des cas d’usage potentiels. Des équipes de R&amp;D se constituent, des feuilles de route apparaissent, souvent autour de l’expérimentation algorithmique et de la simulation.</p>
+<p>L’émulation joue ici un rôle central, comme étape intermédiaire entre la théorie et la machine. Écrire des algorithmes, les tester, mesurer des gains, puis seulement envisager une exécution sur du matériel quantique.</p>
+<p>Certains secteurs apparaissent plus actifs que d’autres, ainsi la finance et l’énergie reviennent régulièrement dans la discussion. Olivier Ezratty souligne également le rôle de grands industriels disposant d’une culture de R&amp;D avancée, capables de travailler en écosystème avec des startups, des laboratoires et des fournisseurs de cloud.</p>
+<h2>Le post-quantique comme point d’entrée opérationnel</h2>
+<p>Autre thème de notre échange : la cryptographie post-quantique. Fanny Bouton y voit un chantier structurant pour les années à venir, bien au-delà des seuls acteurs du quantique. L’apparition de normes et de recommandations engage les entreprises à réfléchir dès maintenant à la résilience de leurs systèmes de sécurité.</p>
+<p>Il ne s’agit pas d’annoncer une menace immédiate, mais de signaler un calendrier, des obligations futures et un besoin d’anticipation. Le post-quantique transforme le quantique en sujet de gouvernance IT, de gestion des risques et de conformité, y compris pour des organisations qui n’auront jamais recours au calcul quantique lui-même.</p>
+<h2>Olivier Ezratty, une somme de référence pour comprendre le quantique</h2>
+<p>Cette lecture rigoureuse irrigue également l’ouvrage d’Olivier Ezratty, <em>Understanding Quantum Technologies</em>, devenu au fil des éditions une référence dans l’écosystème. Commencé en 2018 à partir d’un travail de vulgarisation approfondie, le livre s’est transformé en une somme, nourrie de plusieurs milliers de références scientifiques, industrielles et institutionnelles.</p>
+<p><em>Understanding Quantum Technologies </em>&nbsp;peut se lire à plusieurs niveaux, allant de la vulgarisation historique et géopolitique à des analyses détaillées des architectures matérielles, logicielles et algorithmiques, à destination des ingénieurs et chercheurs.</p>
+<h2>Souveraineté, commande publique et temps long</h2>
+<p>La fin de l’échange élargit la focale, au sujet de la souveraineté, Olivier Ezratty propose une définition pragmatique, fondée d’abord sur la capacité d’accès, puis sur la capacité de production. Il évoque le rôle de la commande publique, des programmes européens et nationaux, et la nécessité d’inscrire ces stratégies dans le temps long.</p>
+<p>Vous pouvez également retrouver notre émission en podcast sur toutes les plateformes à commencer par Deezer, Apple Podcast et bien entendu Spotify.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p><p>Vous pouvez me joindre directement à RICHARD@DECODE.MEDIA</p></div> </section><section><p><a href="https://www.fw.media/" target="_blank"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/richard-menneveux-2025.png?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -40,6 +94,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

@@ -2,195 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - karpathy/nanoGPT: The simplest, fastest repository for training/finetuning medium-sized GPTs.</title>
+<title>karpathy/nanoGPT</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>GitHub - karpathy/nanoGPT: The simplest, fastest repository for training/finetuning medium-sized GPTs.</h1>
+  <h1>karpathy/nanoGPT</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 10:42:12 PM | <a href="https://github.com/karpathy/nanoGPT" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/16/2026 11:23:47 PM | <a href="https://github.com/karpathy/nanoGPT" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>nanoGPT</h1><a href="#nanogpt"></a></div>
-<p><a target="_blank" href="/karpathy/nanoGPT/blob/master/assets/nanogpt.jpg"><img src="/karpathy/nanoGPT/raw/master/assets/nanogpt.jpg" alt="nanoGPT"></a></p>
-<hr>
-<p><strong>Update Nov 2025</strong> nanoGPT has a new and improved cousin called <a href="https://github.com/karpathy/nanochat">nanochat</a>. It is very likely you meant to use/find nanochat instead. nanoGPT (this repo) is now very old and deprecated but I will leave it up for posterity.</p>
-<hr>
-<p>The simplest, fastest repository for training/finetuning medium-sized GPTs. It is a rewrite of <a href="https://github.com/karpathy/minGPT">minGPT</a> that prioritizes teeth over education. Still under active development, but currently the file </p><pre><code>train.py</code></pre> reproduces GPT-2 (124M) on OpenWebText, running on a single 8XA100 40GB node in about 4 days of training. The code itself is plain and readable: <pre><code>train.py</code></pre> is a ~300-line boilerplate training loop and <pre><code>model.py</code></pre> a ~300-line GPT model definition, which can optionally load the GPT-2 weights from OpenAI. That's it.<p></p>
-<p><a target="_blank" href="/karpathy/nanoGPT/blob/master/assets/gpt2_124M_loss.png"><img src="/karpathy/nanoGPT/raw/master/assets/gpt2_124M_loss.png" alt="repro124m"></a></p>
-<p>Because the code is so simple, it is very easy to hack to your needs, train new models from scratch, or finetune pretrained checkpoints (e.g. biggest one currently available as a starting point would be the GPT-2 1.3B model from OpenAI).</p>
-<div><h2>install</h2><a href="#install"></a></div>
-<div><pre><code>pip install torch numpy transformers datasets tiktoken wandb tqdm
-</code></pre></div>
-<p>Dependencies:</p>
-<ul>
-<li><a href="https://pytorch.org">pytorch</a> &lt;3</li>
-<li><a href="https://numpy.org/install/">numpy</a> &lt;3</li>
-<li><pre><code>transformers</code></pre> for huggingface transformers &lt;3 (to load GPT-2 checkpoints)</li>
-<li><pre><code>datasets</code></pre> for huggingface datasets &lt;3 (if you want to download + preprocess OpenWebText)</li>
-<li><pre><code>tiktoken</code></pre> for OpenAI's fast BPE code &lt;3</li>
-<li><pre><code>wandb</code></pre> for optional logging &lt;3</li>
-<li><pre><code>tqdm</code></pre> for progress bars &lt;3</li>
-</ul>
-<div><h2>quick start</h2><a href="#quick-start"></a></div>
-<p>If you are not a deep learning professional and you just want to feel the magic and get your feet wet, the fastest way to get started is to train a character-level GPT on the works of Shakespeare. First, we download it as a single (1MB) file and turn it from raw text into one large stream of integers:</p>
-<div><pre>python data/shakespeare_char/prepare.py</pre></div>
-<p>This creates a </p><pre><code>train.bin</code></pre> and <pre><code>val.bin</code></pre> in that data directory. Now it is time to train your GPT. The size of it very much depends on the computational resources of your system:<p></p>
-<p><strong>I have a GPU</strong>. Great, we can quickly train a baby GPT with the settings provided in the <a href="/karpathy/nanoGPT/blob/master/config/train_shakespeare_char.py">config/train_shakespeare_char.py</a> config file:</p>
-<div><pre>python train.py config/train_shakespeare_char.py</pre></div>
-<p>If you peek inside it, you'll see that we're training a GPT with a context size of up to 256 characters, 384 feature channels, and it is a 6-layer Transformer with 6 heads in each layer. On one A100 GPU this training run takes about 3 minutes and the best validation loss is 1.4697. Based on the configuration, the model checkpoints are being written into the </p><pre><code>--out_dir</code></pre> directory <pre><code>out-shakespeare-char</code></pre>. So once the training finishes we can sample from the best model by pointing the sampling script at this directory:<p></p>
-<div><pre>python sample.py --out_dir=out-shakespeare-char</pre></div>
-<p>This generates a few samples, for example:</p>
-<div><pre><code>ANGELO:
-And cowards it be strawn to my bed,
-And thrust the gates of my threats,
-Because he that ale away, and hang'd
-An one with him. DUKE VINCENTIO:
-I thank your eyes against it. DUKE VINCENTIO:
-Then will answer him to save the malm:
-And what have you tyrannous shall do this? DUKE VINCENTIO:
-If you have done evils of all disposition
-To end his power, the day of thrust for a common men
-That I leave, to fight with over-liking
-Hasting in a roseman.
-</code></pre></div>
-<p>lol </p><pre><code>¯\_(ツ)_/¯</code></pre>. Not bad for a character-level model after 3 minutes of training on a GPU. Better results are quite likely obtainable by instead finetuning a pretrained GPT-2 model on this dataset (see finetuning section later).<p></p>
-<p><strong>I only have a macbook</strong> (or other cheap computer). No worries, we can still train a GPT but we want to dial things down a notch. I recommend getting the bleeding edge PyTorch nightly (<a href="https://pytorch.org/get-started/locally/">select it here</a> when installing) as it is currently quite likely to make your code more efficient. But even without it, a simple train run could look as follows:</p>
-<div><pre>python train.py config/train_shakespeare_char.py --device=cpu --compile=False --eval_iters=20 --log_interval=1 --block_size=64 --batch_size=12 --n_layer=4 --n_head=4 --n_embd=128 --max_iters=2000 --lr_decay_iters=2000 --dropout=0.0</pre></div>
-<p>Here, since we are running on CPU instead of GPU we must set both </p><pre><code>--device=cpu</code></pre> and also turn off PyTorch 2.0 compile with <pre><code>--compile=False</code></pre>. Then when we evaluate we get a bit more noisy but faster estimate (<pre><code>--eval_iters=20</code></pre>, down from 200), our context size is only 64 characters instead of 256, and the batch size only 12 examples per iteration, not 64. We'll also use a much smaller Transformer (4 layers, 4 heads, 128 embedding size), and decrease the number of iterations to 2000 (and correspondingly usually decay the learning rate to around max_iters with <pre><code>--lr_decay_iters</code></pre>). Because our network is so small we also ease down on regularization (<pre><code>--dropout=0.0</code></pre>). This still runs in about ~3 minutes, but gets us a loss of only 1.88 and therefore also worse samples, but it's still good fun:<p></p>
-<div><pre>python sample.py --out_dir=out-shakespeare-char --device=cpu</pre></div>
-<p>Generates samples like this:</p>
-<div><pre><code>GLEORKEN VINGHARD III:
-Whell's the couse, the came light gacks,
-And the for mought you in Aut fries the not high shee
-bot thou the sought bechive in that to doth groan you,
-No relving thee post mose the wear
-</code></pre></div>
-<p>Not bad for ~3 minutes on a CPU, for a hint of the right character gestalt. If you're willing to wait longer, feel free to tune the hyperparameters, increase the size of the network, the context length (</p><pre><code>--block_size</code></pre>), the length of training, etc.<p></p>
-<p>Finally, on Apple Silicon Macbooks and with a recent PyTorch version make sure to add </p><pre><code>--device=mps</code></pre> (short for "Metal Performance Shaders"); PyTorch then uses the on-chip GPU that can <em>significantly</em> accelerate training (2-3X) and allow you to use larger networks. See <a href="https://github.com/karpathy/nanoGPT/issues/28">Issue 28</a> for more.<p></p>
-<div><h2>reproducing GPT-2</h2><a href="#reproducing-gpt-2"></a></div>
-<p>A more serious deep learning professional may be more interested in reproducing GPT-2 results. So here we go - we first tokenize the dataset, in this case the <a href="https://openwebtext2.readthedocs.io/en/latest/">OpenWebText</a>, an open reproduction of OpenAI's (private) WebText:</p>
-<div><pre>python data/openwebtext/prepare.py</pre></div>
-<p>This downloads and tokenizes the <a href="https://huggingface.co/datasets/openwebtext">OpenWebText</a> dataset. It will create a </p><pre><code>train.bin</code></pre> and <pre><code>val.bin</code></pre> which holds the GPT2 BPE token ids in one sequence, stored as raw uint16 bytes. Then we're ready to kick off training. To reproduce GPT-2 (124M) you'll want at least an 8X A100 40GB node and run:<p></p>
-<div><pre>torchrun --standalone --nproc_per_node=8 train.py config/train_gpt2.py</pre></div>
-<p>This will run for about 4 days using PyTorch Distributed Data Parallel (DDP) and go down to loss of ~2.85. Now, a GPT-2 model just evaluated on OWT gets a val loss of about 3.11, but if you finetune it it will come down to ~2.85 territory (due to an apparent domain gap), making the two models ~match.</p>
-<p>If you're in a cluster environment and you are blessed with multiple GPU nodes you can make GPU go brrrr e.g. across 2 nodes like:</p>
-<div><pre><span><span>#</span> Run on the first (master) node with example IP 123.456.123.456:</span>
-torchrun --nproc_per_node=8 --nnodes=2 --node_rank=0 --master_addr=123.456.123.456 --master_port=1234 train.py
-<span><span>#</span> Run on the worker node:</span>
-torchrun --nproc_per_node=8 --nnodes=2 --node_rank=1 --master_addr=123.456.123.456 --master_port=1234 train.py</pre></div>
-<p>It is a good idea to benchmark your interconnect (e.g. iperf3). In particular, if you don't have Infiniband then also prepend </p><pre><code>NCCL_IB_DISABLE=1</code></pre> to the above launches. Your multinode training will work, but most likely <em>crawl</em>. By default checkpoints are periodically written to the <pre><code>--out_dir</code></pre>. We can sample from the model by simply <pre><code>python sample.py</code></pre>.<p></p>
-<p>Finally, to train on a single GPU simply run the </p><pre><code>python train.py</code></pre> script. Have a look at all of its args, the script tries to be very readable, hackable and transparent. You'll most likely want to tune a number of those variables depending on your needs.<p></p>
-<div><h2>baselines</h2><a href="#baselines"></a></div>
-<p>OpenAI GPT-2 checkpoints allow us to get some baselines in place for openwebtext. We can get the numbers as follows:</p>
-<div><pre>$ python train.py config/eval_gpt2.py
-$ python train.py config/eval_gpt2_medium.py
-$ python train.py config/eval_gpt2_large.py
-$ python train.py config/eval_gpt2_xl.py</pre></div>
-<p>and observe the following losses on train and val:</p>
-<table>
-<thead>
-<tr>
-<th>model</th>
-<th>params</th>
-<th>train loss</th>
-<th>val loss</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>gpt2</td>
-<td>124M</td>
-<td>3.11</td>
-<td>3.12</td>
-</tr>
-<tr>
-<td>gpt2-medium</td>
-<td>350M</td>
-<td>2.85</td>
-<td>2.84</td>
-</tr>
-<tr>
-<td>gpt2-large</td>
-<td>774M</td>
-<td>2.66</td>
-<td>2.67</td>
-</tr>
-<tr>
-<td>gpt2-xl</td>
-<td>1558M</td>
-<td>2.56</td>
-<td>2.54</td>
-</tr>
-</tbody>
-</table>
-<p>However, we have to note that GPT-2 was trained on (closed, never released) WebText, while OpenWebText is just a best-effort open reproduction of this dataset. This means there is a dataset domain gap. Indeed, taking the GPT-2 (124M) checkpoint and finetuning on OWT directly for a while reaches loss down to ~2.85. This then becomes the more appropriate baseline w.r.t. reproduction.</p>
-<div><h2>finetuning</h2><a href="#finetuning"></a></div>
-<p>Finetuning is no different than training, we just make sure to initialize from a pretrained model and train with a smaller learning rate. For an example of how to finetune a GPT on new text go to </p><pre><code>data/shakespeare</code></pre> and run <pre><code>prepare.py</code></pre> to download the tiny shakespeare dataset and render it into a <pre><code>train.bin</code></pre> and <pre><code>val.bin</code></pre>, using the OpenAI BPE tokenizer from GPT-2. Unlike OpenWebText this will run in seconds. Finetuning can take very little time, e.g. on a single GPU just a few minutes. Run an example finetuning like:<p></p>
-<div><pre>python train.py config/finetune_shakespeare.py</pre></div>
-<p>This will load the config parameter overrides in </p><pre><code>config/finetune_shakespeare.py</code></pre> (I didn't tune them much though). Basically, we initialize from a GPT2 checkpoint with <pre><code>init_from</code></pre> and train as normal, except shorter and with a small learning rate. If you're running out of memory try decreasing the model size (they are <pre><code>{'gpt2', 'gpt2-medium', 'gpt2-large', 'gpt2-xl'}</code></pre>) or possibly decreasing the <pre><code>block_size</code></pre> (context length). The best checkpoint (lowest validation loss) will be in the <pre><code>out_dir</code></pre> directory, e.g. in <pre><code>out-shakespeare</code></pre> by default, per the config file. You can then run the code in <pre><code>sample.py --out_dir=out-shakespeare</code></pre>:<p></p>
-<div><pre><code>THEODORE:
-Thou shalt sell me to the highest bidder: if I die,
-I sell thee to the first; if I go mad,
-I sell thee to the second; if I
-lie, I sell thee to the third; if I slay,
-I sell thee to the fourth: so buy or sell,
-I tell thee again, thou shalt not sell my
-possession. JULIET:
-And if thou steal, thou shalt not sell thyself. THEODORE:
-I do not steal; I sell the stolen goods. THEODORE:
-Thou know'st not what thou sell'st; thou, a woman,
-Thou art ever a victim, a thing of no worth:
-Thou hast no right, no right, but to be sold.
-</code></pre></div>
-<p>Whoa there, GPT, entering some dark place over there. I didn't really tune the hyperparameters in the config too much, feel free to try!</p>
-<div><h2>sampling / inference</h2><a href="#sampling--inference"></a></div>
-<p>Use the script </p><pre><code>sample.py</code></pre> to sample either from pre-trained GPT-2 models released by OpenAI, or from a model you trained yourself. For example, here is a way to sample from the largest available <pre><code>gpt2-xl</code></pre> model:<p></p>
-<div><pre>python sample.py \ --init_from=gpt2-xl \ --start=<span><span>"</span>What is the answer to life, the universe, and everything?<span>"</span></span> \ --num_samples=5 --max_new_tokens=100</pre></div>
-<p>If you'd like to sample from a model you trained, use the </p><pre><code>--out_dir</code></pre> to point the code appropriately. You can also prompt the model with some text from a file, e.g. <pre><code>python sample.py --start=FILE:prompt.txt</code></pre>.<p></p>
-<div><h2>efficiency notes</h2><a href="#efficiency-notes"></a></div>
-<p>For simple model benchmarking and profiling, </p><pre><code>bench.py</code></pre> might be useful. It's identical to what happens in the meat of the training loop of <pre><code>train.py</code></pre>, but omits much of the other complexities.<p></p>
-<p>Note that the code by default uses <a href="https://pytorch.org/get-started/pytorch-2.0/">PyTorch 2.0</a>. At the time of writing (Dec 29, 2022) this makes </p><pre><code>torch.compile()</code></pre> available in the nightly release. The improvement from the one line of code is noticeable, e.g. cutting down iteration time from ~250ms / iter to 135ms / iter. Nice work PyTorch team!<p></p>
-<div><h2>todos</h2><a href="#todos"></a></div>
-<ul>
-<li>Investigate and add FSDP instead of DDP</li>
-<li>Eval zero-shot perplexities on standard evals (e.g. LAMBADA? HELM? etc.)</li>
-<li>Finetune the finetuning script, I think the hyperparams are not great</li>
-<li>Schedule for linear batch size increase during training</li>
-<li>Incorporate other embeddings (rotary, alibi)</li>
-<li>Separate out the optim buffers from model params in checkpoints I think</li>
-<li>Additional logging around network health (e.g. gradient clip events, magnitudes)</li>
-<li>Few more investigations around better init etc.</li>
-</ul>
-<div><h2>troubleshooting</h2><a href="#troubleshooting"></a></div>
-<p>Note that by default this repo uses PyTorch 2.0 (i.e. </p><pre><code>torch.compile</code></pre>). This is fairly new and experimental, and not yet available on all platforms (e.g. Windows). If you're running into related error messages try to disable this by adding <pre><code>--compile=False</code></pre> flag. This will slow down the code but at least it will run.<p></p>
-<p>For some context on this repository, GPT, and language modeling it might be helpful to watch my <a href="https://karpathy.ai/zero-to-hero.html">Zero To Hero series</a>. Specifically, the <a href="https://www.youtube.com/watch?v=kCc8FmEb1nY">GPT video</a> is popular if you have some prior language modeling context.</p>
-<p>For more questions/discussions feel free to stop by <strong>#nanoGPT</strong> on Discord:</p>
-<p><a href="https://discord.gg/3zy8kqD9Cp"><img src="https://camo.githubusercontent.com/7865a780c3f22ea200aeb7d9fbefc310895e1babba63f752d902598004ea7e0a/68747470733a2f2f646362616467652e76657263656c2e6170702f6170692f7365727665722f337a79386b71443943703f636f6d706163743d74727565267374796c653d666c6174" alt=""></a></p>
-<div><h2>acknowledgements</h2><a href="#acknowledgements"></a></div>
-<p>All nanoGPT experiments are powered by GPUs on <a href="https://lambdalabs.com">Lambda labs</a>, my favorite Cloud GPU provider. Thank you Lambda labs for sponsoring nanoGPT!</p>
+    <p>The simplest, fastest repository for training/finetuning medium-sized GPTs. nanoGPT Update Nov 2025 nanoGPT has a new and improved cousin called nanochat. It is very likely you meant to use/find nanochat instead. nanoGPT (this repo) is now very old and deprecated but I will leave it up for posterity. The simplest, fastest repository for training/finetuning medium-sized GPTs. It is a rewrite of minGPT that prioritizes teeth over education. Still under active development, but currently the file train.py reproduces GPT-2 (124M) on OpenWebText, running on a single 8XA100 40GB node in about 4 days of training. The code itself is plain and readable: train.py is a ~300-line boilerplate training loop and model.py a ~300-line GPT model definition, which can optionally load the GPT-2 weights from OpenAI. That's it. Because the code is so simple, it is very easy to hack to your needs, train new models from scratch, or finetune pretrained checkpoints (e.g. biggest one currently available as a starting point would be the GPT-2 1.3B model from OpenAI). install pip install torch numpy transformers datasets tiktoken wandb tqdm Dependencies:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -203,6 +61,10 @@ Thou hast no right, no right, but to be sold.
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,13 +28,27 @@
     Source: France 24 France (FR) | Date: 2/14/2026 7:46:27 AM | <a href="https://www.france24.com/fr/france/20260214-temp%C3%AAte-nils-le-risque-se-prolonge-en-gironde-et-dans-le-lot-et-garonne-en-alerte-rouge-pour-crues-inondations-evacuations-pluies" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>Le phénomène de <a href="https://www.france24.com/fr/vid%C3%A9o/20260212-la-temp%C3%AAte-nils-fait-d%C3%A9border-la-garonne-et-tue-une-personne-900-000-foyers-priv%C3%A9s-d-%C3%A9lectricit%C3%A9" target="_self">"crue généralisée"</a> qui touche la France dépasse "tous (les) records" depuis que Vigicrues a été créé en 2006, a indiqué samedi 14 février la directrice de ce service public d'information sur les risques de crues,&nbsp;en disant ne pas attendre de "retour à la normale pour les prochains jours".&nbsp;</p> <p>"Aujourd'hui, ça fait 30 jours qu'on est en vigilance orange ou rouge discontinue quelque part sur le territoire national (...) c'est 81 départements en vigilance simultanément pour 154 rivières, donc on a dépassé tous nos records", a indiqué Lucie Chadourne-Facon, directrice de Vigicrues, dans un entretien à l'AFP.</p> <p>En outre, la France a atteint un indice de l'humidité des sols "le plus élevé", "son record absolu", depuis le début de compilation de cette donnée en 1959.</p> <p>La pluie continue de tomber samedi, faisant craindre de nouveaux risques pour la sécurité. La <a href="https://www.france24.com/fr/vid%C3%A9o/20260213-france-inondations-le-sud-ouest-du-pays-apr%C3%A8s-le-passage-de-la-temp%C3%AAte-nils" target="_self">vigilance rouge pour crues</a> est maintenue ce week-end en Gironde et dans le Lot-et-Garonne, touchés par un important épisode sur la Garonne favorisé par le passage de la <a href="https://www.france24.com/fr/%C3%A9missions/%C3%A9l%C3%A9ment-terre-la-quotidienne/20260212-nils-une-temp%C3%AAte-amplifi%C3%A9e-par-le-d%C3%A9r%C3%A8glement-climatique" target="_self">tempête Nils</a>, a annoncé Météo-France samedi.</p> <p>"De nombreux cours d'eau ont déjà atteint des niveaux de débordements localisés, voire dommageables", écrit Vigicrues dans son bulletin de 6 h 00. "Pour les cours d'eau en vigilance orange ou rouge, des débordements importants et majeurs sont en cours ou attendus dans les prochaines 24 heures."</p> <p>Samedi et dimanche, une dizaine de départements de l'Ouest sont placés en vigilance orange, de l'Ille-et-Vilaine à l'Ariège en passant par la Charente-Maritime, et environ 70 en vigilance jaune dans le reste du pays.</p> <p><span>À voir aussi</span><a href="https://www.france24.com/fr/%C3%A9missions/%C3%A9l%C3%A9ment-terre-la-quotidienne/20260212-nils-une-temp%C3%AAte-amplifi%C3%A9e-par-le-d%C3%A9r%C3%A8glement-climatique" target="_self">Nils, une tempête amplifiée par le dérèglement climatique</a></p> <h2>De nouvelles pluies attendues</h2> <p>Lucie Chadourne-Facon, directrice de Vigicrues, a averti vendredi que l'épisode n'est "pas du tout terminé"&nbsp;en raison de nouvelles pluies attendues.</p> <p>Après la tempête Nils, qui a causé au moins deux morts en France et fait de nombreux dégâts matériels, Météo-France a relevé de "forts cumuls" de pluies "sur des sols déjà détrempés", avec par endroits 60 à 100 mm de mardi à jeudi, "localement 150 mm en 72 heures", notamment sur le Massif central, le Périgord et la vallée de la Garonne.</p> <p><span>À lire aussi</span><a href="https://www.france24.com/fr/france/20260213-temp%C3%AAte-nils-deuxi%C3%A8me-mort-france-importantes-crues-sud-ouest-inondations-avalanches-alpes-ski" target="_self">La tempête Nils a fait un deuxième mort en France, des crues menaçantes dans le Sud-Ouest</a></p> <p>Des évacuations d'habitants ont eu lieu vendredi sur les rives de la Garonne, la crue inondant partiellement plusieurs municipalités. Dans le Lot-et-Garonne, "près de 900 personnes ont été évacuées sur 20 communes", notamment "à la suite de l'endommagement de digues naturelles", selon la préfecture d'Agen.</p> <div> <figure> <img src="https://s.france24.com/media/display/eef6533c-097a-11f1-be6b-005056bfb2b6/w:980/000-97D87NQ.jpg" alt="Un panneau routier submergé par la crue de la Garonne qui a inondé une route à Tonneins, dans le sud-ouest de la France, le 13 février 2026"> <figcaption> <span>Un panneau routier submergé par la crue de la Garonne qui a inondé une route à Tonneins, dans le sud-ouest de la France, le 13 février 2026.</span> <span> AFP, Christophe Archambault</span> </figcaption> </figure> </div> <p>À Bergerac, en Dordogne, près d'une trentaine de personnes ont fait l'objet d'une évacuation préventive.</p> <p>Vendredi soir, 70 % des foyers avaient pu être réalimentés en électricité au niveau national mais <a href="https://www.france24.com/fr/vid%C3%A9o/20260213-temp%C3%AAte-nils-des-milliers-de-foyers-priv%C3%A9s-d-%C3%A9lectricit%C3%A9-en-france" target="_self">plus de 260</a>&nbsp;<a href="https://www.france24.com/fr/vid%C3%A9o/20260213-temp%C3%AAte-nils-des-milliers-de-foyers-priv%C3%A9s-d-%C3%A9lectricit%C3%A9-en-france" target="_self">000 restaient privés de courant</a>, selon le gestionnaire de réseau Enedis.</p> <p><em>Avec AFP</em></p> </div></div>
+    <p>Après de fortes pluies sur la Garonne liées à la tempête Nils, la vigilance rouge crues reste en vigueur ce week-end, dans le Sud-Ouest de la France, en Gironde et dans le Lot-et-Garonne. Le service français d'information sur les risques parle d'un phénomène de "crue généralisée" en France qui dépasse "tous (les) records".</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -46,6 +61,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

@@ -19,6 +19,13 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,7 +34,7 @@
     Source: FrenchWeb | Date: 2/13/2026 6:29:38 AM | <a href="https://www.frenchweb.fr/la-tech-europeenne-nest-pas-sous-financee-elle-est-sur-reglementee/460337" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <div><p><a href="https://decode-link.me/3M278ND" target="_blank"><img src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/2026/02/banniere-1650-x-320-2.png?fit=1650%2C320&amp;ssl=1" alt=""></a></p></div> <article> <div><figure><img src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/2026/02/tech-startup.png?resize=780%2C470&amp;ssl=1&amp;is-pending-load=1" alt=""></figure></div> <div> <p>Dans le débat public, le constat semble établi, l’Europe manquerait de capital pour rivaliser avec la tech américaine, avec pour uniques solutions, plus de fonds, plus de subventions, plus de capital-risque.</p>
+    <div><div> <div><p><a href="https://decode-link.me/4ktI11l" target="_blank"><img src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/2025/09/Banner-FrenchWeb-2-3.png?fit=5156%2C1000&amp;ssl=1" alt=""></a></p></div> <article> <div><figure><img src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/2026/02/tech-startup.png?resize=780%2C470&amp;ssl=1&amp;is-pending-load=1" alt=""></figure></div> <div> <p>Dans le débat public, le constat semble établi, l’Europe manquerait de capital pour rivaliser avec la tech américaine, avec pour uniques solutions, plus de fonds, plus de subventions, plus de capital-risque.</p>
 <p>Dans un <a target="_blank" href="https://www.ecb.europa.eu/pub/pdf/scpwps/ecb.wp3185~74a163e02b.en.pdf">working paper de la Banque centrale européenne</a>, Jonathan Bothner, Paloma Lopez-Garcia, Daphne Momferatou, Ralph Setzer ont analysé les données de 25 pays européens sur quinze ans, et concluent que la variable déterminante n’est pas seulement le volume d’argent disponible, mais la qualité institutionnelle et réglementaire dans laquelle cet argent s’investit.</p>
 <p>En 2021, environ 17 % de l’investissement marchand européen était orienté vers des secteurs high-tech, contre près de 33 % aux États-Unis. Un écart qui n’est pas marginal et reflète une allocation différente du capital. La question devient alors : pourquoi le capital européen se dirige-t-il moins vers les secteurs les plus risqués et les plus innovants ?</p>
 <h2>Le coût de l’échec comme filtre</h2>
@@ -46,6 +53,20 @@
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -58,6 +79,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

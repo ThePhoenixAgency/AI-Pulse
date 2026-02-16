@@ -19,6 +19,13 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,7 +34,7 @@
     Source: BleepingComputer Windows | Date: 2/16/2026 7:19:09 PM | <a href="https://www.bleepingcomputer.com/news/security/eurail-says-stolen-traveler-data-now-up-for-sale-on-dark-web/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><img alt="Eurail says stolen traveler data now up for sale on dark web" src="https://www.bleepstatic.com/content/hl-images/2026/02/16/track.jpg"></p> <p>Eurail B.V., the operator that provides access to 250,000 kilometers of European railways, confirmed that data stolen in a breach earlier this year is being&nbsp;offered for sale on the dark web.</p> <p>The company said that a threat actor also published a sample of the data on the Telegram messaging platform&nbsp;but it is still trying to determine the type of records and number of customers affected.</p> <p>Eurail B.V. is a Netherlands-based firm that manages and sells passes (Eurail and <a href="https://www.interrail.eu/en/ni/data-security-incident" target="_blank">Interrail</a>) for train travel across Europe, offering flexibility for multi-country trips.</p> <p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz"></a>
+    <div><div> <p><img alt="Eurail says stolen traveler data now up for sale on dark web" src="https://www.bleepstatic.com/content/hl-images/2026/02/16/track.jpg"></p> <p>Eurail B.V., the operator that provides access to 250,000 kilometers of European railways, confirmed that data stolen in a breach earlier this year is being&nbsp;offered for sale on the dark web.</p> <p>The company said that a threat actor also published a sample of the data on the Telegram messaging platform&nbsp;but it is still trying to determine the type of records and number of customers affected.</p> <p>Eurail B.V. is a Netherlands-based firm that manages and sells passes (Eurail and <a href="https://www.interrail.eu/en/ni/data-security-incident" target="_blank">Interrail</a>) for train travel across Europe, offering flexibility for multi-country trips.</p> <p><a href="https://www.wiz.io/lp/securing-ai-agents-101?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_Securing-AI-Agents-101&amp;sfcid=701Py00000RTEWMIA5&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Agents-101" target="_blank"><img src="https://www.bleepstatic.com/c/w/Securing-AI-Agents-970x250.png" alt="Wiz"></a>
 </p> <p>Its passes are also very popular among young European travelers participating in the EU’s <a href="https://youth.europa.eu/news/updated-data-security-incident-affecting-discovereu-travellers_en" target="_blank">DiscoverEU program</a>.</p> <p>Last month, the company disclosed that it suffered a data breach when threat actors gained unauthorized access to its customer database, compromising sensitive information, including full names, passport details, ID numbers, bank account IBANs, health information, and contact details (email addresses, phone numbers).</p> <p>"We have become aware that the data has been offered for sale on the dark web and a sample data set has been published on Telegram.</p> <p>"We are currently investigating which specific data records or how many of the affected customers this concerns,"&nbsp;<a href="https://www.eurail.com/en/ni/data-security-incident" target="_blank">reads Eurail’s update</a>.</p> <p>Eurail states that it continues the investigation to determine&nbsp;exactly what data was compromised for each affected customer, and will send individual notifications for those impacted.</p> <p>Meanwhile, concerned data protection authorities have been notified in accordance with the GDPR requirements, and authorities outside the EU will be alerted soon.</p> <p>Customers who may have had their information exposed in this incident should be vigilant to potential phishing and scam attempts.</p> <p>Eurail suggests that customers update their Rail Planner app account passwords and reset them on any other platform where they use the same credentials.</p> <p>Also, customers should monitor their bank account activity closely and report any suspicious transactions to their bank immediately.</p> <p>A <a href="https://eurail.zendesk.com/hc/en-001/articles/33099495189917-What-happened" target="_blank">FAQ page</a> has been published to support customers, and any concerns may also be addressed directly via email to privacyhelp@eurail.com.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines"> </a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
 <p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
 </div> </div></div>
@@ -37,6 +44,20 @@
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -49,6 +70,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

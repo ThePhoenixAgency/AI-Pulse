@@ -13,12 +13,19 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
   <h1>Zipstack/unstract</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 10:42:09 PM | <a href="https://github.com/Zipstack/unstract" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/16/2026 11:23:47 PM | <a href="https://github.com/Zipstack/unstract" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <p>No-code LLM Platform to launch APIs and ETL Pipelines to structure unstructured documents Unstract The Data Layer for your Agentic Workflows—Automate Document-based workflows with close to 100% accuracy! Prompt Studio Prompt Studio is a purpose-built environment that supercharges your schema definition efforts. Compare outputs from different LLMs side-by-side, keep tab on costs while you develop generic prompts that work across wide-ranging document variations. And when you're ready, launch extraction APIs with a single click. Integrations that suit your environment Once you've used Prompt Studio to define your schema, Unstract makes it easy to integrate into your existing workflows. Simply choose the integration type that best fits your environment: Integration Type Description Best For Documentation MCP Servers Run Unstract as an MCP Server to provide structured data extraction to Agents or LLMs in your ecosystem. Developers building Agentic/LLM apps/tools that speak MCP. Unstract MCP Server Docs API Deployments Turn any document into JSON with an API call. Deploy any Prompt Studio project as a REST API endpoint with a single click.</p>
@@ -28,6 +35,20 @@
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -40,6 +61,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

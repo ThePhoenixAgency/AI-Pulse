@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,293 +28,27 @@
     Source: Hugging Face Blog | Date: 10/21/2025 12:00:00 AM | <a href="https://huggingface.co/blog/ocr-open-models" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: NL
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/davanstrien"><img alt="Daniel van Strien's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1627505688463-60107b385ac3e86b3ea4fc34.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/hynky"><img alt="Hynek Kydlicek's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/626ede24d2fa9e7d598c8709/JKS8-Y2Jw87EgNQZBRswq.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/andito"><img alt="Andres Marafioti's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/65d66b494bbd0d92b641cdbb/6-7dm7B-JxcoS1QlCPdMN.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/reach-vb"><img alt="Vaibhav Srivastav's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1655385361868-61b85ce86eb1f2c5e6233736.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div></div> <blockquote>
-We have added <a href="https://huggingface.co/datalab-to/chandra">Chandra</a> and <a href="https://huggingface.co/allenai/olmOCR-2-7B-1025">OlmOCR-2</a> to this blog, as well as OlmOCR Scores of the models </blockquote> <p>TL;DR: The rise of powerful vision-language models has transformed document AI. Each model comes with unique strengths, making it tricky to choose the right one. Open-weight models offer better cost efficiency and privacy. To help you get started with them, we’ve put together this guide.</p>
-<p>In this guide, you’ll learn:</p>
-<ul>
-<li>The landscape of current models and their capabilities </li>
-<li>When to fine-tune models vs. use models out-of-the-box </li>
-<li>Key factors to consider when selecting a model for your use case </li>
-<li>How to move beyond OCR with multimodal retrieval and document QA</li>
-</ul>
-<p>By the end, you’ll know how to choose the right OCR model, start building with it, and gain deeper insights into document AI. Let’s go!</p>
-<h2> <a href="#table-of-contents"> </a> <span> Table-of-Contents </span>
-</h2>
-<ul>
-<li><a href="#supercharge-your-ocr-pipelines-with-open-models">Supercharge your OCR Pipelines with Open Models</a><ul>
-<li><a href="#brief-introduction-to-modern-ocr">Brief Introduction to Modern OCR</a><ul>
-<li><a href="#model-capabilities">Model Capabilities</a><ul>
-<li><a href="#transcription">Transcription</a></li>
-<li><a href="#handling-complex-components-in-documents">Handling complex components in documents</a></li>
-<li><a href="#output-formats">Output formats</a></li>
-<li><a href="#locality-awareness-in-ocr">Locality Awareness in OCR</a></li>
-<li><a href="#model-prompting">Model Prompting</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#cutting-edge-open-ocr-models">Cutting-edge Open OCR Models</a><ul>
-<li><a href="#comparing-latest-models">Comparing Latest Models</a></li>
-<li><a href="#evaluating-models">Evaluating Models</a><ul>
-<li><a href="#benchmarks">Benchmarks</a></li>
-<li><a href="#cost-efficiency">Cost-efficiency</a></li>
-<li><a href="#open-ocr-datasets">Open OCR Datasets</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#tools-to-run-models">Tools to Run Models</a><ul>
-<li><a href="#locally">Locally</a></li>
-<li><a href="#remotely">Remotely</a></li>
-</ul>
-</li>
-<li><a href="#going-beyond-ocr">Going Beyond OCR</a><ul>
-<li><a href="#visual-document-retrievers">Visual Document Retrievers</a></li>
-<li><a href="#using-vision-language-models-for-document-question-answering">Using Vision Language Models for Document Question Answering</a></li>
-</ul>
-</li>
-<li><a href="#wrapping-up">Wrapping up</a></li>
-</ul>
-</li>
-</ul>
-<h2> <a href="#brief-introduction-to-modern-ocr"> </a> <span> Brief Introduction to Modern OCR </span>
-</h2>
-<p>Optical Character Recognition (OCR) is one of the earliest and longest running challenges in computer vision. Many of AI’s first practical applications focused on turning printed text into digital form.</p>
-<p>With the surge of <a href="https://huggingface.co/blog/vlms">vision-language models</a> (VLMs), OCR has advanced significantly. Recently, many OCR models have been developed by fine-tuning existing VLMs. But today’s capabilities extend far beyond OCR: you can retrieve documents by query or answer questions about them directly. Thanks to stronger vision features, these models can also handle low-quality scans, interpret complex elements like tables, charts, and images, and fuse text with visuals to answer open-ended questions across documents.</p>
-<h3> <a href="#model-capabilities"> </a> <span> Model Capabilities </span>
-</h3>
-<h4> <a href="#transcription"> </a> <span> Transcription </span>
-</h4>
-<p>Recent models transcribe texts into a machine-readable format.<br>The input can include: </p>
-<ul>
-<li>Handwritten text </li>
-<li>Various scripts like Latin, Arabic, and Japanese characters </li>
-<li>Mathematical expressions </li>
-<li>Chemical formulas </li>
-<li>Image/Layout/Page number tags</li>
-</ul>
-<p>OCR models convert them into machine-readable text that comes in many different formats like HTML, Markdown and more. </p>
-<h4> <a href="#handling-complex-components-in-documents"> </a> <span> Handling complex components in documents </span>
-</h4>
-<p>On top of text, some models can also recognize:</p>
-<ul>
-<li>Images </li>
-<li>Charts </li>
-<li>Tables</li>
-</ul>
-<p>Some models know where images are inside the document, extract their coordinates, and insert them appropriately between texts. Other models generate captions for images and insert them where they appear. This is especially useful if you are feeding the machine-readable output into an LLM. Example models are <a href="https://huggingface.co/allenai/olmOCR-7B-0825">OlmOCR by AllenAI</a>, or <a href="https://huggingface.co/PaddlePaddle/PaddleOCR-VL">PaddleOCR-VL by PaddlePaddle</a>.</p>
-<p>Models use different machine-readable output formats, such as <strong>DocTags</strong>, <strong>HTML</strong> or <strong>Markdown</strong> (explained in the next section <em>Output Formats</em>). The way a model handles tables and charts often depends on the output format they are using. Some models treat charts like images: they are kept as is. Other models convert charts into markdown tables or JSON, e.g., a bar chart can be converted as follows. </p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/chart-rendering.png"><img alt="Chart Rendering" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/chart-rendering.png"></a></p>
-<p>Similarly for tables, cells are converted into a machine-readable format while retaining context from headings and columns. </p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/table-rendering.png"><img alt="Table Rendering" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/table-rendering.png"></a></p>
-<h4> <a href="#output-formats"> </a> <span> Output formats </span>
-</h4>
-<p>Different OCR models have different output formats. Briefly, here are the common output formats used by modern models.<br><strong>DocTag:</strong> DocTag is an XML-like format for documents that expresses location, text format, component-level information, and more. Below is an illustration of a paper parsed into DocTags. This format is employed by the open Docling models. </p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/doctags_v2.png"><img alt="DocTags" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/doctags_v2.png"></a> </p>
-<ul>
-<li><strong>HTML:</strong> HTML is one of the most popular output formats used for document parsing as it properly encodes structure and hierarchical information. </li>
-<li><strong>Markdown:</strong> Markdown is the most human-readable format. It’s simpler than HTML but not as expressive. For example, it can’t represent split-column tables. </li>
-<li><strong>JSON:</strong> JSON is not a format that models use for the entire output, but it can be used to represent information in tables or charts.</li>
-</ul>
-<p>The right model depends on how you plan to use its outputs:</p>
-<ul>
-<li><strong>Digital reconstruction</strong>: To reconstruct documents digitally, choose a model with a layout-preserving format (e.g., DocTags or HTML). </li>
-<li><strong>LLM input or Q&amp;A</strong>: If the use case involves passing outputs to LLM, pick a model that outputs Markdown and image captions, since they’re closer to natural language. </li>
-<li><strong>Programmatic use</strong>: If you want to pass your outputs to a program (like data analysis), opt for a model that generates structured outputs like JSON.</li>
-</ul>
-<h4> <a href="#locality-awareness"> </a> <span> Locality Awareness </span>
-</h4>
-<p>Documents can have complex structures, like multi-column text blocks and floating figures. Older OCR models handled these documents by detecting words and then the layout of pages manually in post-processing to have the text rendered in reading order, which is brittle. Modern OCR models, on the other hand, incorporate layout metadata to help preserve reading order and accuracy. This metadata is called “anchor”, it can come in bounding boxes. This process is also called as “grounding/anchoring” because it helps with reducing hallucination.</p>
-<h4> <a href="#model-prompting"> </a> <span> Model Prompting </span>
-</h4>
-<p>OCR models can either take in images and an optional text prompt, this depends on the model architecture and the pre-training setup.<br>Some OCR models support prompt-based task switching, e.g. <a href="https://huggingface.co/ibm-granite/granite-docling-258M">granite-docling</a> can parse an entire page with the prompt “Convert this page to Docling” while it can also take prompts like “Convert this formula to LaTeX” along with a page full of formulas.<br>Other models, however, are trained only for parsing entire pages, and they are conditioned to do this through a system prompt.<br>For instance, <a href="https://huggingface.co/collections/allenai/olmocr-67af8630b0062a25bf1b54a1">OlmOCR by AllenAI</a> takes a long conditioning prompt. Like many others, OlmOCR is technically an OCR fine-tuned version of a VLM (Qwen2.5VL in this case), so you can prompt for other tasks, but its performance will not be on par with the OCR capabilities. </p>
-<h2> <a href="#cutting-edge-open-ocr-models"> </a> <span> Cutting-edge Open OCR Models </span>
-</h2>
-<p>We’ve seen an incredible wave of new models this past year. Because so much work is happening in the open, these players build on and benefit from each other’s work. A great example is AllenAI’s release of OlmOCR, which not only released a model but also the dataset used to train it. With these, others can build upon them in new directions. The field is incredibly active, but it’s not always obvious which model to use. </p>
-<h3> <a href="#comparing-latest-models"> </a> <span> Comparing Latest Models </span>
-</h3>
-<p>To make things a bit easier, we’re putting together a non-exhaustive comparison of some of our current favorite models. All of the models below are layout-aware and can parse tables, charts, and math equations. The full list of languages each model supports are detailed in their model cards, so make sure to check them if you’re interested. All models below have open-source license except for Chandra having OpenRAIL license and Nanonets license being unclear. The average scores are taken from model cards of Chandra, OlmOCR, evaluated on OlmOCR Benchmark, which is English-only.
-Many of the models in this collection have been fine-tuned from Qwen2.5-VL or Qwen3-VL, so we also provide Qwen3-VL model below as well. </p>
-<div> <table> <thead><tr>
-<th>Model Name</th>
-<th>Output formats</th>
-<th>Features</th>
-<th>Model Size</th>
-<th>Multilingual?</th>
-<th>Average Score on OlmOCR Benchmark</th>
-</tr> </thead><tbody><tr>
-<td><a href="https://huggingface.co/collections/nanonets/nanonets-ocr2-68ed207f17ee6c31d226319e">Nanonets-OCR2-3B</a></td>
-<td>structured Markdown with semantic tagging (plus HTML tables, etc.)</td>
-<td>Captions images in the documents<br>Signature &amp; watermark extraction<br>Handles checkboxes, flowcharts, and handwriting</td>
-<td>4B</td>
-<td>Supports English, Chinese, French, Arabic and more.</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/collections/PaddlePaddle/paddleocr-vl-68f0db852483c7af0bc86849">PaddleOCR-VL</a></td>
-<td>Markdown, JSON, HTML tables and charts</td>
-<td>Handles handwriting, old documents<br>Allows prompting<br>Converts tables &amp; charts to HTML<br>Extracts and inserts images directly</td>
-<td>0.9B</td>
-<td>Supports 109 languages</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/rednote-hilab/dots.ocr">dots.ocr</a></td>
-<td>Markdown, JSON</td>
-<td>Grounding<br>Extracts and inserts images<br>Handles handwriting</td>
-<td>3B</td>
-<td>Multilingual with language info not available</td>
-<td>79.1 ± 1.0</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/allenai/olmOCR-2-7B-1025">OlmOCR-2</a></td>
-<td>Markdown, HTML, LaTeX</td>
-<td>Grounding<br>Optimized for large-scale batch processing</td>
-<td>8B</td>
-<td>English-only</td>
-<td>82.3 ± 1.1</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/ibm-granite/granite-docling-258M">Granite-Docling-258M</a></td>
-<td>DocTags</td>
-<td>Prompt-based task switching<br>Ability to prompt element locations with location tokens<br>Rich output</td>
-<td>258M</td>
-<td>Supports English, Japanese, Arabic and Chinese.</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/deepseek-ai/DeepSeek-OCR">DeepSeek-OCR</a></td>
-<td>Markdown, HTML</td>
-<td>Supports general visual understanding<br>Can parse and re-render all charts, tables, and more into HTML<br>Handles handwriting<br>Memory-efficient, solves text through image</td>
-<td>3B</td>
-<td>Supports nearly 100 languages</td>
-<td>75.4 ± 1.0</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/datalab-to/chandra">Chandra</a></td>
-<td>Markdown, HTML, JSON</td>
-<td>Grounding<br>Extracts and inserts images as is</td>
-<td>9B</td>
-<td>Supports 40+ languages</td>
-<td>83.1 ± 0.9</td>
-</tr>
-<tr>
-<td><a href="https://huggingface.co/collections/Qwen/qwen3-vl">Qwen3-VL</a></td>
-<td>Vision Language Model can output in all formats</td>
-<td>Can recognize ancient text<br>Handles handwriting<br>Extracts and inserts images as is</td>
-<td>9B</td>
-<td>Supports 32 languages</td>
-<td>N/A</td>
-</tr>
-</tbody> </table>
-</div>
-<p>While Qwen3-VL itself is a powerful and versatile vision-language model post-trained for document understanding and other tasks, it isn’t optimized for a single, universal OCR prompt. In contrast, the other models were fine-tuned using one or a few fixed prompts specifically designed for OCR tasks. So to use Qwen3-VL, we recommend experimenting with prompts.</p>
-<p>Here’s a <a href="https://prithivmlmods-multimodal-ocr3.hf.space/">small demo</a> for you to try some of the latest models and compare their outputs. </p> <h3> <a href="#evaluating-models"> </a> <span> Evaluating Models </span>
-</h3>
-<h4> <a href="#benchmarks"> </a> <span> Benchmarks </span>
-</h4>
-<p>There’s no single best model, as every problem has different needs. Should tables be rendered in Markdown or HTML? Which elements should we extract? How should we quantify text accuracy and error rates? <br>While there are many evaluation datasets and tools, many don’t answer these questions. So we suggest using the following benchmarks:</p>
-<ol>
-<li><a href="https://huggingface.co/datasets/opendatalab/OmniDocBench"><strong>OmniDocBenchmark</strong></a><strong>:</strong> This widely used benchmark stands out for its diverse document types: books, magazines, and textbooks. Its evaluation criteria are well designed, accepting tables in both HTML and Markdown formats. A novel matching algorithm evaluates the reading order, and formulas are normalized before evaluation. Most metrics rely on edit distance or tree edit distance (tables). Notably, the annotations used for evaluation are not solely human-generated but are acquired through SoTA VLMs or conventional OCR methods. </li>
-<li><a href="https://huggingface.co/datasets/allenai/olmOCR-bench"><strong>OlmOCR-Bench</strong></a>: OlmOCR-Bench takes a different approach: they treat the evaluation as a set of unit tests. For example, table evaluation is done by checking the relation between selected cells of a given table. They use PDFs from public sources, and annotations are done using a wide range of closed-source VLMs. This benchmark is quite successful to evaluate on the English language. </li>
-<li><a href="https://huggingface.co/datasets/wulipc/CC-OCR"><strong>CC-OCR (Multilingual)</strong>:</a> Compared to the previous benchmarks, CC-OCR is less preferred when picking models, due to lower document quality and diversity. However, it’s the only benchmark that contains evaluation beyond English and Chinese! While the evaluation is far from perfect (images are photos with few words), it’s still the best you can do for multilingual evaluation.</li>
-</ol>
-<p>When testing different OCR models, we've found that the performance across different document types, languages, etc., varies a lot. Your domain may not be well represented in existing benchmarks! To make effective use of this new generation of VLM-based OCR models we suggest aiming to collect a dataset of representative examples of your task domain and testing a few different models to compare their performance. </p>
-<h4> <a href="#cost-efficiency"> </a> <span> Cost-efficiency </span>
-</h4>
-<p>Most OCR models are small, having between 3B and 7B parameters; you can even find models with fewer than 1B parameters, like PaddleOCR-VL. However, the cost also depends on the availability of optimized implementations for specialized inference frameworks. For example, OlmOCR-2 comes with vLLM and SGLang implementations, and the cost per million pages is 178 dollars (assuming on H100 for $2.69/hour). DeepSeek-OCR can process 200k+ pages per day on a single A100 with 40GB VRAM. With napkin math, we see that the cost per million pages is more or less similar to OlmOCR (although it depends on your A100 provider). If your use case remains unaffected, you can also opt for quantized versions of the models. The cost of running open-source models heavily depends on the hourly cost of the instance and the optimizations the model includes, but it’s guaranteed to be cheaper than many closed-source models out there on a larger scale.</p>
-<h4> <a href="#open-ocr-datasets"> </a> <span> Open OCR Datasets </span>
-</h4>
-<p>While the past year has seen a surge in open OCR models, this hasn't been matched by as many open training and evaluation datasets. An exception is AllenAI's <a href="https://huggingface.co/datasets/allenai/olmOCR-mix-0225">olmOCR-mix-0225</a>, which has been used to train at least <a href="https://huggingface.co/models?dataset=dataset:allenai/olmOCR-mix-0225">72 models on the Hub</a> – likely more, since not all models document their training data.</p>
-<p>Sharing more datasets could unlock even greater advances in open OCR models. There are several promising approaches for creating these datasets:</p>
-<ul>
-<li><strong>Synthetic data generation</strong> (e.g., <a href="https://huggingface.co/datasets/Sigurdur/isl_synthetic_ocr">isl_synthetic_ocr</a>) </li>
-<li><strong>VLM-generated transcriptions</strong> filtered manually or through heuristics </li>
-<li><strong>Using existing OCR models</strong> to generate training data for new, potentially more efficient models in specific domains </li>
-<li><strong>Leveraging existing corrected datasets</strong> like the <a href="https://huggingface.co/NationalLibraryOfScotland">Medical History of British India Dataset</a>, which contains extensively human-corrected OCR for historic documents</li>
-</ul>
-<p>It's worth noting that many such datasets exist but remain unused. Making them more readily available as 'training-ready' datasets carries a considerable potential for the open-source community.</p>
-<h2> <a href="#tools-to-run-models"> </a> <span> Tools to Run Models </span>
-</h2>
-<p>We have received many questions about getting started with OCR models, so here are a few ways you can use local inference tools and host remotely with Hugging Face.</p>
-<h3> <a href="#locally"> </a> <span> Locally </span>
-</h3>
-<p>Most cutting-edge models come with vLLM support and transformers implementation. You can get more info about how to serve each from the models’ own cards. For convenience, we show how to infer locally using vLLM here. The code below can differ from model to model, but for most models it looks like the following. </p>
-<pre><code>vllm serve nanonets/Nanonets-OCR2-3B
-</code></pre>
-<p>And then you can query as follows using e.g. OpenAI client. </p>
-<pre><code><span>from</span> openai <span>import</span> OpenAI
-<span>import</span> base64 client = OpenAI(base_url=<span>"http://localhost:8000/v1"</span>) model = <span>"nanonets/Nanonets-OCR2-3B"</span> <span>def</span> <span>encode_image</span>(<span>image_path</span>): <span>with</span> <span>open</span>(image_path, <span>"rb"</span>) <span>as</span> image_file: <span>return</span> base64.b64encode(image_file.read()).decode(<span>"utf-8"</span>) <span>def</span> <span>infer</span>(<span>img_base64</span>): response = client.chat.completions.create( model=model, messages=[ { <span>"role"</span>: <span>"user"</span>, <span>"content"</span>: [ { <span>"type"</span>: <span>"image_url"</span>, <span>"image_url"</span>: {<span>"url"</span>: <span>f"data:image/png;base64,<span>{img_base64}</span>"</span>}, }, { <span>"type"</span>: <span>"text"</span>, <span>"text"</span>: <span>"Extract the text from the above document as if you were reading it naturally."</span>, }, ], } ], temperature=<span>0.0</span>, max_tokens=<span>15000</span> ) <span>return</span> response.choices[<span>0</span>].message.content img_base64 = encode_image(your_img_path)
-<span>print</span>(infer(img_base64))
-</code></pre>
-<p><strong>Transformers</strong></p>
-<p>Transformers provides standard model definitions for easy inference and fine-tuning. Models available in transformers come with either official transformers implementation (model definitions within the library) or “remote code” implementations. Latter is defined by the model owners to enable easy loading of models into transformers interface, so you don’t have to go through the model implementation. Below is an example loading Nanonets model using transformers implementation.</p>
-<pre><code><span># make sure to install flash-attn and transformers</span>
-<span>from</span> transformers <span>import</span> AutoProcessor, AutoModelForImageTextToText model = AutoModelForImageTextToText.from_pretrained( <span>"nanonets/Nanonets-OCR2-3B"</span>, torch_dtype=<span>"auto"</span>, device_map=<span>"auto"</span>, attn_implementation=<span>"flash_attention_2"</span>
-)
-model.<span>eval</span>()
-processor = AutoProcessor.from_pretrained(<span>"nanonets/Nanonets-OCR2-3B"</span>) <span>def</span> <span>infer</span>(<span>image_url, model, processor, max_new_tokens=<span>4096</span></span>): prompt = <span>"""Extract the text from the above document as if you were reading it naturally. Return the tables in html format. Return the equations in LaTeX representation. If there is an image in the document and image caption is not present, add a small description of the image inside the &lt;img&gt;&lt;/img&gt; tag; otherwise, add the image caption inside &lt;img&gt;&lt;/img&gt;. Watermarks should be wrapped in brackets. Ex: &lt;watermark&gt;OFFICIAL COPY&lt;/watermark&gt;. Page numbers should be wrapped in brackets. Ex: &lt;page_number&gt;14&lt;/page_number&gt; or &lt;page_number&gt;9/22&lt;/page_number&gt;. Prefer using and for check boxes."""</span> image = Image.<span>open</span>(image_path) messages = [ {<span>"role"</span>: <span>"system"</span>, <span>"content"</span>: <span>"You are a helpful assistant."</span>}, {<span>"role"</span>: <span>"user"</span>, <span>"content"</span>: [ {<span>"type"</span>: <span>"image"</span>, <span>"image"</span>: image_url}, {<span>"type"</span>: <span>"text"</span>, <span>"text"</span>: prompt}, ]}, ] text = processor.apply_chat_template(messages, tokenize=<span>False</span>, add_generation_prompt=<span>True</span>) inputs = processor(text=[text], images=[image], padding=<span>True</span>, return_tensors=<span>"pt"</span>).to(model.device) output_ids = model.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=<span>False</span>) generated_ids = [output_ids[<span>len</span>(input_ids):] <span>for</span> input_ids, output_ids <span>in</span> <span>zip</span>(inputs.input_ids, output_ids)] output_text = processor.batch_decode(generated_ids, skip_special_tokens=<span>True</span>, clean_up_tokenization_spaces=<span>True</span>) <span>return</span> output_text[<span>0</span>] result = infer(image_path, model, processor, max_new_tokens=<span>15000</span>)
-<span>print</span>(result)
-</code></pre>
-<p><strong>MLX</strong><br>MLX is an open-source machine learning framework for Apple Silicon. <a href="https://github.com/Blaizzy/mlx-vlm">MLX-VLM</a> is built on top of MLX to serve vision language models easily. You can explore all the OCR models available in MLX format <a href="https://huggingface.co/models?sort=trending&amp;search=ocr">here</a>. They also come in quantized versions.<br>You can install MLX-VLM as follows.</p>
-<pre><code>pip install -U mlx-vlm
-</code></pre>
-<pre><code>wget https://huggingface.co/datasets/merve/vlm_test_images/resolve/main/throughput_smolvlm.png python -m mlx_vlm.generate --model ibm-granite/granite-docling-258M-mlx --max-tokens 4096 --temperature 0.0 --prompt "Convert this chart to JSON." --image throughput_smolvlm.png </code></pre>
-<h3> <a href="#remotely"> </a> <span> Remotely </span>
-</h3>
-<p><strong>Inference Endpoints for Managed Deployment</strong><br>You can deploy OCR models compatible with vLLM or SGLang on Hugging Face Inference Endpoints, either from a model repository “Deploy” option or directly through <a href="https://endpoints.huggingface.co/">Inference Endpoints interface</a>. Inference Endpoints serve the cutting-edge models in a fully managed environment with GPU acceleration, auto-scaling, and monitoring without manually managing the infrastructure. </p>
-<p>Here is a simple method of deploying <code>nanonets</code> using vLLM as the inference engine.</p>
-<ol>
-<li>Navigate to the model repository <a href="https://huggingface.co/nanonets/Nanonets-OCR2-3B"><code>nanonets/Nanonets-OCR2-3B</code></a> </li>
-<li>Click on the “Deploy” button and select the “HF Inference Endpoints”</li>
-</ol>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/IE.png"><img alt="Inference Endpoints" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/IE.png"></a></p>
-<ol>
-<li>Configure the deployment setup within seconds</li>
-</ol>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/IE2.png"><img alt="Inference Endpoints" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/ocr/IE2.png"></a></p>
-<ol>
-<li>After the endpoint is created, you can consume it using the OpenAI client snippet we provided in the previous section.</li>
-</ol>
-<p>You can learn more about it <a href="https://huggingface.co/docs/inference-endpoints/engines/vllm">here</a>.</p>
-<p><strong>Hugging Face Jobs for Batch Inference</strong> </p>
-<p>For many OCR applications, you want to do efficient batch inference, i.e., running a model across thousands of images as cheaply and efficiently as possible. A good approach is to use vLLM's offline inference mode. As discussed above, many recent VLM-based OCR models are supported by vLLM, which efficiently batches images and generates OCR outputs at scale.</p>
-<p>To make this even easier, we've created <a href="https://huggingface.co/datasets/uv-scripts/ocr">uv-scripts/ocr</a>, a collection of ready-to-run OCR scripts that work with Hugging Face Jobs. These scripts let you run OCR on any dataset without needing your own GPU. Simply point the script at your input dataset, and it will:</p>
-<ul>
-<li>Process all images in a dataset column using many different open OCR models </li>
-<li>Add OCR results as a new markdown column to the dataset </li>
-<li>Push the updated dataset with OCR results to the Hub</li>
-</ul>
-<p>For example, to run OCR on 100 images:</p>
-<pre><code>hf <span>jobs</span> uv run --flavor l4x1 \ https://huggingface.co/datasets/uv-scripts/ocr/raw/main/nanonets-ocr.py \ your-input-dataset your-output-dataset \ --max-samples 100
-</code></pre>
-<p>The scripts handle all the vLLM configuration and batching automatically, making batch OCR accessible without infrastructure setup.</p>
-<h3> <a href="#going-beyond-ocr"> </a> <span> Going Beyond OCR </span>
-</h3>
-<p>If you are interested in document AI, not just OCR, here are some of our recommendations. </p>
-<h4> <a href="#visual-document-retrievers"> </a> <span> Visual Document Retrievers </span>
-</h4>
-<p>Visual document retrieval is to retrieve the most relevant top-k documents when given a text query. If you have previously worked with retriever models, the difference is that you search directly on a stack of PDFs. Aside from using them standalone, you can also build multimodal RAG pipelines by combining them with a vision language model (find how to do so <a href="https://huggingface.co/merve/smol-vision/blob/main/ColPali_%2B_Qwen2_VL.ipynb">here</a>). You can find <a href="https://huggingface.co/models?pipeline_tag=visual-document-retrieval&amp;sort=trending">all of them on Hugging Face Hub</a>.</p>
-<p>There are two types of visual document retrievers, single-vector and multi-vector models. Single-vector models are more memory efficient and less performant; meanwhile, multi-vector models are more memory hungry and more performant. Most of these models often come with vLLM and transformers integrations, so you can index documents using them and then do a search easily using a vector DB.</p>
-<h4> <a href="#using-vision-language-models-for-document-question-answering"> </a> <span> Using Vision Language Models for Document Question Answering </span>
-</h4>
-<p>If you have a task at hand that only requires answering questions based on documents, you can use some of the vision language models that had document tasks in their training tasks. We’ve observed users trying to convert documents into text and passing the output to LLMs, but if your document has a complex layout, and your converted document outputs charts and so on in HTML, or images are captioned incorrectly, the LLM will miss out. Instead, feed your document and query to one of the advanced vision language models like <a href="https://huggingface.co/collections/Qwen/qwen3-vl-68d2a7c1b8a8afce4ebd2dbe">Qwen3-VL</a> not to miss out on any context. </p>
-<h2> <a href="#wrapping-up"> </a> <span> Wrapping up </span>
-</h2> <ul>
-<li><a href="https://huggingface.co/blog/vlms">Vision Language Models Explained</a> </li>
-<li><a href="https://huggingface.co/blog/vlms-2025">Vision Language Models 2025 Update</a> </li>
-<li><a href="https://huggingface.co/blog/baidu/ppocrv5">Blog on PP-OCR-v5</a></li>
-<li><a href="https://huggingface.co/merve/smol-vision/blob/main/Grounded_Fine_tuning.ipynb">Tutorial: Fine-tuning Kosmos2.5 on Grounded OCR</a></li>
-<li><a href="https://huggingface.co/merve/smol-vision/blob/main/Fine_tune_Florence_2.ipynb">Tutorial: Fine-tuning Florence-2 on DocVQA</a></li>
-<li><a href="https://huggingface.co/blog/dots-ocr-ne">SOTA OCR on-device with Core ML and dots.ocr</a></li>
-</ul>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -326,6 +61,10 @@ processor = AutoProcessor.from_pretrained(<span>"nanonets/Nanonets-OCR2-3B"</spa
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

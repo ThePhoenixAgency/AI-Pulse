@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,149 +28,27 @@
     Source: Hugging Face Blog | Date: 7/10/2025 12:00:00 AM | <a href="https://huggingface.co/blog/screenenv" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/A-Mahla"><img alt="Amir Mahla's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/67f2f500e329a81a62a05d44/DOlzc8GFQzrnfVrsOdtbN.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/m-ric"><img alt="Aymeric Roucher's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63d10d4e8eaa4831005e92b5/7p7-OmWM6PqqCs7ZStPGD.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#what-is-screenenv">What is ScreenEnv?</a> <ul></ul> </li><li><a href="#why-screenenv">Why ScreenEnv?</a> <ul><li><a href="#-one-line-setup"> <strong>One-Line Setup</strong></a> <ul></ul> </li></ul> </li><li><a href="#two-integration-approaches">Two Integration Approaches</a> <ul><li><a href="#option-1-direct-sandbox-api">Option 1: Direct Sandbox API</a> <ul></ul> </li><li><a href="#option-2-mcp-server-integration">Option 2: MCP Server Integration</a> <ul></ul> </li></ul> </li><li><a href="#-create-a-desktop-agent-with-screenenv-and-smolagents"> Create a Desktop Agent with screenenv&nbsp;and&nbsp;smolagents</a> <ul><li><a href="#1-choose-your-model"><strong>1. Choose Your Model</strong></a> <ul></ul> </li><li><a href="#2-define-your-custom-desktop-agent"><strong>2. Define Your Custom Desktop Agent</strong></a> <ul></ul> </li><li><a href="#3-run-the-agent-on-a-desktop-task">3. <strong>Run the Agent on a Desktop Task</strong></a> <ul></ul> </li></ul> </li><li><a href="#get-started-today">Get Started Today</a> <ul></ul> </li><li><a href="#whats-next">What's Next?</a> <ul></ul> </li></ul></nav></div><p><strong>TL;DR</strong>: ScreenEnv is a powerful Python library that lets you create isolated Ubuntu desktop environments in Docker containers for testing and deploying GUI Agents (aka Computer Use agents). With built-in support for the Model Context Protocol (MCP), it's never been easier to deploy desktop agents that can see, click, and interact with real applications.</p>
-<h2> <a href="#what-is-screenenv"> <span></span> </a> <span> What is ScreenEnv? </span>
-</h2>
-<hr> <hr>
-<p>Imagine you need to automate desktop tasks, test GUI applications, or build an AI agent that can interact with software. This used to require complex VM setups and brittle automation frameworks.</p>
-<p>ScreenEnv changes this by providing a <strong>sandboxed desktop environment</strong> that runs in a Docker container. Think of it as a complete virtual desktop session that your code can fully control - not just clicking buttons and typing text, but managing the entire desktop experience including launching applications, organizing windows, handling files, executing terminal commands, and recording the entire session.</p>
-<h2> <a href="#why-screenenv"> <span></span> </a> <span> Why ScreenEnv? </span>
-</h2>
-<ul>
-<li><strong> Full Desktop Control</strong>: Complete mouse and keyboard automation, window management, application launching, file operations, terminal access, and screen recording</li>
-<li><strong> Dual Integration Modes</strong>: Support both Model Context Protocol (MCP) for AI systems and direct Sandbox API - adapting to any agent or backend logic</li>
-<li><strong> Docker Native</strong>: No complex VM setup - just Docker. The environment is isolated, reproducible, and easily deployed anywhere in less than 10 seconds. Support AMD64 and ARM64 architecture.</li>
-</ul>
-<h3> <a href="#-one-line-setup"> <span></span> </a> <span> <strong>One-Line Setup</strong> </span>
-</h3>
-<pre><code><span>from</span> screenenv <span>import</span> Sandbox
-sandbox = Sandbox() <span># That's it!</span>
-</code></pre>
-<h2> <a href="#two-integration-approaches"> <span></span> </a> <span> Two Integration Approaches </span>
-</h2>
-<p>ScreenEnv provides <strong>two complementary ways</strong> to integrate with your agents and backend systems, giving you flexibility to choose the approach that best fits your architecture:</p>
-<h3> <a href="#option-1-direct-sandbox-api"> <span></span> </a> <span> Option 1: Direct Sandbox API </span>
-</h3>
-<p>Perfect for custom agent frameworks, existing backends, or when you need fine-grained control:</p>
-<pre><code><span>from</span> screenenv <span>import</span> Sandbox <span># Direct programmatic control</span>
-sandbox = Sandbox(headless=<span>False</span>)
-sandbox.launch(<span>"xfce4-terminal"</span>)
-sandbox.write(<span>"echo 'Custom agent logic'"</span>)
-screenshot = sandbox.screenshot()
-image = Image.<span>open</span>(BytesIO(screenshot_bytes))
-...
-sandbox.close()
-<span># If close() isn’t called, you might need to shut down the container yourself.</span>
-</code></pre>
-<h3> <a href="#option-2-mcp-server-integration"> <span></span> </a> <span> Option 2: MCP Server Integration </span>
-</h3>
-<p>Ideal for AI systems that support the Model Context Protocol:</p>
-<pre><code><span>from</span> screenenv <span>import</span> MCPRemoteServer
-<span>from</span> mcp <span>import</span> ClientSession
-<span>from</span> mcp.client.streamable_http <span>import</span> streamablehttp_client <span># Start MCP server for AI integration</span>
-server = MCPRemoteServer(headless=<span>False</span>)
-<span>print</span>(<span>f"MCP Server URL: <span>{server.server_url}</span>"</span>) <span># AI agents can now connect and control the desktop</span>
-<span>async</span> <span>def</span> <span>mcp_session</span>(): <span>async</span> <span>with</span> streamablehttp_client(server.server_url) <span>as</span> streams: <span>async</span> <span>with</span> ClientSession(*streams) <span>as</span> session: <span>await</span> session.initialize() <span>print</span>(<span>await</span> session.list_tools()) response = <span>await</span> session.call_tool(<span>"screenshot"</span>, {}) image_bytes = base64.b64decode(response.content[<span>0</span>].data) image = Image.<span>open</span>(BytesIO(image_bytes)) server.close()
-<span># If close() isn’t called, you might need to shut down the container yourself.</span>
-</code></pre>
-<p>This dual approach means ScreenEnv adapts to your existing infrastructure rather than forcing you to change your agent architecture.</p>
-<h2> <a href="#-create-a-desktop-agent-with-screenenv-and-smolagents"> <span></span> </a> <span> Create a Desktop Agent with screenenv&nbsp;and&nbsp;smolagents </span>
-</h2>
-<p><code>screenenv</code> natively supports <code>smolagents</code>, making it easy to build your own custom Desktop Agent for automation. Here’s how to create your own AI-powered Desktop Agent in just a few steps:</p>
-<h3> <a href="#1-choose-your-model"> <span></span> </a> <span> <strong>1. Choose Your Model</strong> </span>
-</h3>
-<p>Pick the backend VLM you want to power your agent.</p>
-<pre><code><span>import</span> os <span>from</span> smolagents <span>import</span> OpenAIServerModel
-model = OpenAIServerModel( model_id=<span>"gpt-4.1"</span>, api_key=os.getenv(<span>"OPENAI_API_KEY"</span>),
-) <span># Inference Endpoints</span>
-<span>from</span> smolagents <span>import</span> HfApiModel
-model = HfApiModel( model_id=<span>"Qwen/Qwen2.5-VL-7B-Instruct"</span>, token=os.getenv(<span>"HF_TOKEN"</span>), provider=<span>"nebius"</span>,
-) <span># Transformer models</span>
-<span>from</span> smolagents <span>import</span> TransformersModel
-model = TransformersModel( model_id=<span>"Qwen/Qwen2.5-VL-7B-Instruct"</span>, device_map=<span>"auto"</span>, torch_dtype=<span>"auto"</span>, trust_remote_code=<span>True</span>,
-) <span># Other providers</span>
-<span>from</span> smolagents <span>import</span> LiteLLMModel
-model = LiteLLMModel(model_id=<span>"anthropic/claude-sonnet-4-20250514"</span>) <span># see smolagents to get the list of available model connectors</span>
-</code></pre>
-<h3> <a href="#2-define-your-custom-desktop-agent"> <span></span> </a> <span> <strong>2. Define Your Custom Desktop Agent</strong> </span>
-</h3>
-<p>Inherit from <code>DesktopAgentBase</code> and implement the <code>_setup_desktop_tools</code> method to build your own action space!</p>
-<pre><code><span>from</span> screenenv <span>import</span> DesktopAgentBase, Sandbox
-<span>from</span> smolagents <span>import</span> Model, Tool, tool
-<span>from</span> smolagents.monitoring <span>import</span> LogLevel
-<span>from</span> typing <span>import</span> <span>List</span> <span>class</span> <span>CustomDesktopAgent</span>(<span>DesktopAgentBase</span>): <span>"""Agent for desktop automation"""</span> <span>def</span> <span>__init__</span>(<span></span>
-<span> self,</span>
-<span> model: Model,</span>
-<span> data_dir: <span>str</span>,</span>
-<span> desktop: Sandbox,</span>
-<span> tools: <span>List</span>[Tool] | <span>None</span> = <span>None</span>,</span>
-<span> max_steps: <span>int</span> = <span>200</span>,</span>
-<span> verbosity_level: LogLevel = LogLevel.INFO,</span>
-<span> planning_interval: <span>int</span> | <span>None</span> = <span>None</span>,</span>
-<span> use_v1_prompt: <span>bool</span> = <span>False</span>,</span>
-<span> **kwargs,</span>
-<span> </span>): <span>super</span>().__init__( model=model, data_dir=data_dir, desktop=desktop, tools=tools, max_steps=max_steps, verbosity_level=verbosity_level, planning_interval=planning_interval, use_v1_prompt=use_v1_prompt, **kwargs, ) <span># OPTIONAL: Add a custom prompt template - see src/screenenv/desktop_agent/desktop_agent_base.py for more details about the default prompt template</span> <span># self.prompt_templates["system_prompt"] = CUSTOM_PROMPT_TEMPLATE.replace(</span> <span># "&lt;&lt;resolution_x&gt;&gt;", str(self.width)</span> <span># ).replace("&lt;&lt;resolution_y&gt;&gt;", str(self.height))</span> <span># Important: Adjust the prompt based on your action space to improve results.</span> <span>def</span> <span>_setup_desktop_tools</span>(<span>self</span>) -&gt; <span>None</span>: <span>"""Define your custom tools here."""</span> <span> @tool</span> <span>def</span> <span>click</span>(<span>x: <span>int</span>, y: <span>int</span></span>) -&gt; <span>str</span>: <span>"""</span>
-<span> Clicks at the specified coordinates.</span>
-<span> Args:</span>
-<span> x: The x-coordinate of the click</span>
-<span> y: The y-coordinate of the click</span>
-<span> """</span> self.desktop.left_click(x, y) <span># self.click_coordinates = (x, y) to add the click coordinate to the observation screenshot </span> <span>return</span> <span>f"Clicked at (<span>{x}</span>, <span>{y}</span>)"</span> self.tools[<span>"click"</span>] = click <span> @tool</span> <span>def</span> <span>write</span>(<span>text: <span>str</span></span>) -&gt; <span>str</span>: <span>"""</span>
-<span> Types the specified text at the current cursor position.</span>
-<span> Args:</span>
-<span> text: The text to type</span>
-<span> """</span> self.desktop.write(text, delay_in_ms=<span>10</span>) <span>return</span> <span>f"Typed text: '<span>{text}</span>'"</span> self.tools[<span>"write"</span>] = write <span> @tool</span> <span>def</span> <span>press</span>(<span>key: <span>str</span></span>) -&gt; <span>str</span>: <span>"""</span>
-<span> Presses a keyboard key or combination of keys</span>
-<span> Args:</span>
-<span> key: The key to press (e.g. "enter", "space", "backspace", etc.) or a multiple keys string to press, for example "ctrl+a" or "ctrl+shift+a".</span>
-<span> """</span> self.desktop.press(key) <span>return</span> <span>f"Pressed key: <span>{key}</span>"</span> self.tools[<span>"press"</span>] = press <span> @tool</span> <span>def</span> <span>open</span>(<span>file_or_url: <span>str</span></span>) -&gt; <span>str</span>: <span>"""</span>
-<span> Directly opens a browser with the specified url or opens a file with the default application.</span>
-<span> Args:</span>
-<span> file_or_url: The URL or file to open</span>
-<span> """</span> self.desktop.<span>open</span>(file_or_url) <span># Give it time to load</span> self.logger.log(<span>f"Opening: <span>{file_or_url}</span>"</span>) <span>return</span> <span>f"Opened: <span>{file_or_url}</span>"</span> <span> @tool</span> <span>def</span> <span>launch_app</span>(<span>app_name: <span>str</span></span>) -&gt; <span>str</span>: <span>"""</span>
-<span> Launches the specified application.</span>
-<span> Args:</span>
-<span> app_name: The name of the application to launch</span>
-<span> """</span> self.desktop.launch(app_name) <span>return</span> <span>f"Launched application: <span>{app_name}</span>"</span> self.tools[<span>"launch_app"</span>] = launch_app ... <span># Continue implementing your own action space.</span>
-</code></pre>
-<h3> <a href="#3-run-the-agent-on-a-desktop-task"> <span></span> </a> <span> 3. <strong>Run the Agent on a Desktop Task</strong> </span>
-</h3>
-<pre><code><span>from</span> screenenv <span>import</span> Sandbox <span># Define your sandbox environment</span>
-sandbox = Sandbox(headless=<span>False</span>, resolution=(<span>1920</span>, <span>1080</span>)) <span># Create your agent</span>
-agent = CustomDesktopAgent(
-&nbsp; &nbsp; model=model,
-&nbsp; &nbsp; data_dir=<span>"data"</span>,
-&nbsp; &nbsp; desktop=sandbox,
-) <span># Run a task</span>
-task = <span>"Open LibreOffice, write a report of approximately 300 words on the topic ‘AI Agent Workflow in 2025’, and save the document."</span> result = agent.run(task)
-<span>print</span>(<span>f" Result: <span>{result}</span>"</span>) sandbox.close()
-</code></pre>
-<blockquote>
-<p>If you encounter acces denied docker error, you can try to run the agent with <code>sudo -E python -m test.py</code> or add your user to the <code>docker</code> group.</p>
-</blockquote>
-<blockquote>
-<p> For a comprehensive implementation, see this <a href="https://github.com/huggingface/screenenv/blob/main/examples/desktop_agent.py">CustomDesktopAgent</a> source on GitHub.</p>
-</blockquote>
-<h2> <a href="#get-started-today"> <span></span> </a> <span> Get Started Today </span>
-</h2>
-<pre><code><span># Install ScreenEnv</span>
-pip install screenenv <span># Try the examples</span>
-git <span>clone</span> git@github.com:huggingface/screenenv.git
-<span>cd</span> screenenv
-python -m examples.desktop_agent
-<span># use 'sudo -E python -m examples.desktop_agent` if you're not in 'docker' group</span>
-</code></pre>
-<h2> <a href="#whats-next"> <span></span> </a> <span> What's Next? </span>
-</h2>
-<p>ScreenEnv aims to expand beyond Linux to support <strong>Android, macOS, and Windows</strong>, unlocking true cross-platform GUI automation. This will enable developers and researchers to build agents that generalize across environments with minimal setup.</p>
-<p>These advancements pave the way for creating <strong>reproducible, sandboxed environments</strong> ideal for benchmarking and evaluation.</p>
-<p>Repository: <a href="https://github.com/huggingface/screenenv">https://github.com/huggingface/screenenv</a></p>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -182,6 +61,10 @@ python -m examples.desktop_agent
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

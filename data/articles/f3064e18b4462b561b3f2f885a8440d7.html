@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,268 +28,27 @@
     Source: Hugging Face Blog | Date: 11/25/2025 12:00:00 AM | <a href="https://huggingface.co/blog/flux-2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <h2> <a href="#welcome-flux2---bfls-new-open-image-generation-model-"> </a> <span> Welcome FLUX.2 - BFL’s new open image generation model </span>
-</h2> <div><div> <p><span><span><a href="https://huggingface.co/YiYiXu"><img alt="YiYi Xu's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1677857909367-624ef9ba9d608e459387b34e.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/dg845"><img alt="Daniel Gu's avatar" src="https://huggingface.co/avatars/35e7257e357064e77cfdcae384afe36f.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/sayakpaul"><img alt="Sayak Paul's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1649681653581-5f7fbd813e94f16a85448745.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/OzzyGT"><img alt="Alvaro Somoza's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63df091910678851bb0cd0e0/FUXFt0C-rUFSppIAu5ZDN.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/dn6"><img alt="Dhruv Nair's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1630334896986-6126e46848005fa9ca5c578c.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/linoyts"><img alt="Linoy Tsaban's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/638f308fc4444c6ca870b60a/Q11NK-8-JbiilJ-vk2LAR.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/multimodalart"><img alt="Apolinário from multimodal AI art's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1649143001781-624bebf604abc7ebb01789af.jpeg"></a> </span> </span></p> </div></div> <p>FLUX.2 is the recent series of image generation models from Black Forest Labs, preceded by the <a href="https://huggingface.co/collections/black-forest-labs/flux1">Flux.1</a> series. It is an entirely new model with a <strong>new architecture</strong> and pre-training done from scratch!
-<a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/teaser_generation.png"><img alt="generation_teaser" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/teaser_generation.png"></a>
-In this post, we discuss the key changes introduced in FLUX.2, performing inference with it under various setups, and LoRA fine-tuning.</p>
-<blockquote>
-<p> FLUX.2 is not meant to be a drop-in replacement of FLUX.1, but a new image generation and editing model.</p>
-</blockquote>
-<p><strong>Table of contents</strong></p>
-<ul>
-<li><a href="#flux2-a-brief-introduction">FLUX.2 introduction</a></li>
-<li><a href="#inference-with-diffusers">Inference with Diffusers</a></li>
-<li><a href="#advanced-prompting">Advanced Prompting</a></li>
-<li><a href="#lora-fine-tuning">LoRA fine-tuning</a></li>
-</ul>
-<h2> <a href="#flux2-a-brief-introduction"> </a> <span> FLUX.2: A Brief Introduction </span>
-</h2>
-<p>FLUX.2 can be used for both <strong>image-guided</strong> and <strong>text-guided</strong> image generation. Furthermore, it can take multiple images as reference inputs, while producing the final output image. Below, we briefly discuss the key changes introduced in FLUX.2.</p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/teaser_editing.png"><img alt="editing_teaser" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/teaser_editing.png"></a></p>
-<h3> <a href="#text-encoder"> </a> <span> Text encoder </span>
-</h3>
-<p>First, instead of two text encoders as in Flux.1, it uses a single text encoder — <a href="https://mistral.ai/news/mistral-small-3-1">Mistral Small 3.1</a>. Using a single text encoder greatly simplifies the process of computing prompt embeddings. The pipeline allows for a <code>max_sequence_length</code> of 512. Instead of using a single-layer output for the prompt embedding, FLUX.2 stacks outputs from intermediate layers, which have been <a href="https://www.arxiv.org/abs/2505.10046">known</a> to be more beneficial. </p>
-<h3> <a href="#dit"> </a> <span> DiT </span>
-</h3>
-<p>FLUX.2 follows the same general <a href="https://arxiv.org/pdf/2403.03206">multimodel diffusion transformer</a> (MM-DiT) + parallel <a href="https://arxiv.org/pdf/2212.09748">DiT</a> architecture as Flux.1. As a refresher, MM-DiT blocks first process the image latents and conditioning text in separate streams, only joining the two together for the attention operation, and are thus referred to as “double-stream” blocks. The parallel blocks then operate on the concatenated image and text streams and can be regarded as “single-stream” blocks.</p>
-<p>The key DiT changes from Flux.1 to FLUX.2 are as follows:</p>
-<ul>
-<li><p>Time and guidance information (in the form of <a href="https://arxiv.org/pdf/2212.09748">AdaLayerNorm-Zero</a> modulation parameters) is shared across all double-stream and single-stream transformer blocks, respectively, rather than having individual modulation parameters for each block as in Flux.1.</p>
-</li>
-<li><p>None of the layers in the model use <code>bias</code> parameters. In particular, neither the attention nor feedforward (FF) sub-blocks of either transformer block use <code>bias</code> parameters in any of their layers.</p>
-</li>
-<li><p>In Flux.1, the single-stream transformer blocks fused the attention output projection with the FF output projection. FLUX.2 single-stream blocks also fuse the attention QKV projections with the FF input projection, creating a <a href="https://arxiv.org/pdf/2302.05442">fully parallel transformer block</a>:</p>
-<figure> <img alt="Figure taken from the ViT-22B paper." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/image.png"> <figcaption>Figure taken from the ViT-22B paper.</figcaption>
-</figure> <p>Note that compared to the <code>ViT-22B</code> block depicted above, FLUX.2 uses a <a href="https://arxiv.org/abs/2002.05202">SwiGLU</a>-style MLP activation rather than a GELU activation (and also doesn’t use <code>bias</code> parameters).</p>
-</li>
-<li><p>A larger proportion of the transformer blocks in FLUX.2 are single-stream blocks (<code>8</code> double-stream blocks to <code>48</code> single-stream blocks, compared to <code>19</code>/<code>38</code> for Flux.1). This also means that single-stream blocks make up a larger proportion of the DiT parameters: <code>Flux.1[dev]-12B</code> has ~54% of its total parameters in the double-stream blocks, whereas <code>FLUX.2[dev]-32B</code> has ~24% of its parameters in the double-stream blocks (and ~73% in the single-stream blocks).</p>
-</li>
-</ul>
-<h3> <a href="#misc"> </a> <span> Misc </span>
-</h3>
-<ul>
-<li>A new Autoencoder aka <code>AutoencoderKLFlux2</code></li>
-<li>Better way to incorporate resolution-dependent timestep schedules</li>
-</ul>
-<h2> <a href="#inference-with-diffusers"> </a> <span> Inference With Diffusers </span>
-</h2>
-<p>FLUX.2 uses a larger DiT and Mistral3 Small as its text encoder. When used together without any kind of offloading, the inference takes more than <strong><em>80GB VRAM</em></strong>. In the following sections, we show how to perform inference with FLUX.2 in more accessible ways, under various system-level constraints.</p>
-<h3> <a href="#installation-and-authentication"> </a> <span> Installation and Authentication </span>
-</h3>
-<p>Before you try out the following code snippets, make sure you have installed <code>diffusers</code> from <code>main</code> and have run <code>hf auth login</code>.</p>
-<pre><code>pip uninstall diffusers -y &amp;&amp; pip install git+https://github.com/huggingface/diffusers -U
-</code></pre>
-<h3> <a href="#regular-inference"> </a> <span> Regular Inference </span>
-</h3>
-<pre><code><span>from</span> diffusers <span>import</span> Flux2Pipeline
-<span>import</span> torch repo_id = <span>"black-forest-labs/FLUX.2-dev"</span>
-pipe = Flux2Pipeline.from_pretrained(repo_id, torch_dtype=torch.bfloat16)
-pipe.enable_model_cpu_offload() image = pipe( prompt=<span>"dog dancing near the sun"</span>, num_inference_steps=<span>50</span>, <span># 28 is a good trade-off</span> guidance_scale=<span>4</span>, height=<span>1024</span>, width=<span>1024</span>
-).images[<span>0</span>]
-</code></pre>
-<p>The above code snippet was tested on an H100, and it isn’t sufficient to run inference on it without CPU offloading. With CPU offloading enabled, this setup takes ~62GB to run.</p>
-<p>Users who have access to Hopper-series GPUs can take advantage of <strong>Flash Attention 3</strong> to speed up inference:</p>
-<pre><code>from diffusers import Flux2Pipeline
-import torch repo_id = "black-forest-labs/FLUX.2-dev"
-pipe = Flux2Pipeline.from_pretrained(path, torch_dtype=torch.bfloat16)
-<span>+ pipe.transformer.set_attention_backend("_flash_3_hub")</span>
-pipe.enable_model_cpu_offload() image = pipe( prompt="dog dancing near the sun", num_inference_steps=50, guidance_scale=2.5, height=1024, width=1024
-).images[0]
-</code></pre>
-<blockquote>
-<p>You can check out the supported attention backends (we have many!) <a href="https://huggingface.co/docs/diffusers/main/en/optimization/attention_backends">here</a>.</p>
-</blockquote>
-<h3> <a href="#resource-constrained"> </a> <span> Resource-constrained </span>
-</h3>
-<p><strong>Using 4-bit quantization</strong></p>
-<p>Using <code>bitsandbytes</code>, we can load the transformer and text encoder models in 4-bit, allowing owners of 24GB GPUs to use the model locally. You can run this snippet on a GPU with ~20 GB of <strong>free</strong> VRAM.</p> Unfold <pre><code><span>import</span> torch
-<span>from</span> transformers <span>import</span> Mistral3ForConditionalGeneration <span>from</span> diffusers <span>import</span> Flux2Pipeline, Flux2Transformer2DModel repo_id = <span>"diffusers/FLUX.2-dev-bnb-4bit"</span>
-device = <span>"cuda:0"</span>
-torch_dtype = torch.bfloat16 transformer = Flux2Transformer2DModel.from_pretrained( repo_id, subfolder=<span>"transformer"</span>, torch_dtype=torch_dtype, device_map=<span>"cpu"</span>
-)
-text_encoder = Mistral3ForConditionalGeneration.from_pretrained( repo_id, subfolder=<span>"text_encoder"</span>, dtype=torch_dtype, device_map=<span>"cpu"</span>
-) pipe = Flux2Pipeline.from_pretrained( repo_id, transformer=transformer, text_encoder=text_encoder, torch_dtype=torch_dtype
-)
-pipe.enable_model_cpu_offload() prompt = <span>"Realistic macro photograph of a hermit crab using a soda can as its shell, partially emerging from the can, captured with sharp detail and natural colors, on a sunlit beach with soft shadows and a shallow depth of field, with blurred ocean waves in the background. The can has the text `BFL Diffusers` on it and it has a color gradient that start with #FF5733 at the top and transitions to #33FF57 at the bottom."</span> image = pipe( prompt=prompt, generator=torch.Generator(device=device).manual_seed(<span>42</span>), num_inference_steps=<span>50</span>, <span># 28 is a good trade-off</span> guidance_scale=<span>4</span>,
-).images[<span>0</span>] image.save(<span>"flux2_t2i_nf4.png"</span>)
-</code></pre> <p>Notice that we're using a repository that contains the NF4-quantized versions of the FLUX.2 DiT and the Mistral text encoder.</p>
-<p><strong>Local + remote</strong></p>
-<p>Due to the <em>modular design</em> of a Diffusers pipeline, we can isolate modules and work with them in sequence. We decouple the text encoder and deploy it to an <a href="https://endpoints.huggingface.co/">Inference Endpoint</a>. This helps us with freeing up the VRAM usage for the DiT and VAE only.</p>
-<blockquote>
-<p> To use the remote text encoder, you need to have a <a href="https://huggingface.co/docs/hub/en/security-tokens">valid token</a>. If you are already authenticated, no further action is needed.</p>
-</blockquote>
-<p>The example below uses a combination of local and remote inference. Additionally, we quantize the DiT with NF4 quantization through <code>bitsandbytes</code>.</p>
-<p>You can run this snippet on a GPU with 18 GB of VRAM:</p> Unfold <pre><code><span>from</span> diffusers <span>import</span> Flux2Pipeline, Flux2Transformer2DModel
-<span>from</span> diffusers <span>import</span> BitsAndBytesConfig <span>as</span> DiffBitsAndBytesConfig
-<span>from</span> huggingface_hub <span>import</span> get_token
-<span>import</span> requests
-<span>import</span> torch
-<span>import</span> io <span>def</span> <span>remote_text_encoder</span>(<span>prompts: <span>str</span> | <span>list</span>[<span>str</span>]</span>): <span>def</span> <span>_encode_single</span>(<span>prompt: <span>str</span></span>): response = requests.post( <span>"https://remote-text-encoder-flux-2.huggingface.co/predict"</span>, json={<span>"prompt"</span>: prompt}, headers={ <span>"Authorization"</span>: <span>f"Bearer <span>{get_token()}</span>"</span>, <span>"Content-Type"</span>: <span>"application/json"</span> } ) <span>assert</span> response.status_code == <span>200</span>, <span>f"<span>{response.status_code=}</span>"</span> <span>return</span> torch.load(io.BytesIO(response.content)) <span>if</span> <span>isinstance</span>(prompts, (<span>list</span>, <span>tuple</span>)): embeds = [_encode_single(p) <span>for</span> p <span>in</span> prompts] <span>return</span> torch.cat(embeds, dim=<span>0</span>) <span>return</span> _encode_single(prompts).to(<span>"cuda"</span>) repo_id = <span>"black-forest-labs/FLUX.2-dev"</span>
-quantized_dit_id = <span>"diffusers/FLUX.2-dev-bnb-4bit"</span>
-dit = Flux2Transformer2DModel.from_pretrained( quantized_dit_id, subfolder=<span>"transformer"</span>, torch_dtype=torch_dtype, device_map=<span>"cpu"</span>
-) pipe = Flux2Pipeline.from_pretrained( repo_id, text_encoder=<span>None</span>, transformer=dit, torch_dtype=torch.bfloat16,
-)
-pipe.enable_model_cpu_offload() <span>print</span>(<span>"Running remote text encoder "</span>)
-prompt1 = <span>"a photo of a forest with mist swirling around the tree trunks. The word 'FLUX.2' is painted over it in big, red brush strokes with visible texture"</span>
-prompt2 = <span>"a photo of a dense forest with rain. The word 'FLUX.2' is painted over it in big, red brush strokes with visible texture"</span>
-prompt_embeds = remote_text_encoder([prompt1, prompt2])
-<span>print</span>(<span>"Done "</span>) out = pipe( prompt_embeds=prompt_embeds, generator=torch.Generator(device=<span>"cuda"</span>).manual_seed(<span>42</span>), num_inference_steps=<span>50</span>, <span># 28 is a good trade-off</span> guidance_scale=<span>4</span>, height=<span>1024</span>, width=<span>1024</span>,
-) <span>for</span> idx, image <span>in</span> <span>enumerate</span>(out.images): image.save(<span>f"flux_out_<span>{idx}</span>.png"</span>)
-</code></pre> <p>For GPUs with even lower VRAM, we have <code>group_offloading</code>, which allows GPUs with as little as 8GB of <strong>free</strong> VRAM to use this model. However, you'll need 32GB of <strong>free</strong> RAM. Alternatively, if you're willing to sacrifice some speed, you can set <code>low_cpu_mem_usage=True</code> to reduce the RAM requirement to just 10GB.</p> Unfold <pre><code><span>import</span> io
-<span>import</span> os <span>import</span> requests
-<span>import</span> torch <span>from</span> diffusers <span>import</span> Flux2Pipeline, Flux2Transformer2DModel repo_id = <span>"diffusers/FLUX.2-dev-bnb-4bit"</span>
-torch_dtype = torch.bfloat16
-device = <span>"cuda"</span> <span>def</span> <span>remote_text_encoder</span>(<span>prompts: <span>str</span> | <span>list</span>[<span>str</span>]</span>): <span>def</span> <span>_encode_single</span>(<span>prompt: <span>str</span></span>): response = requests.post( <span>"https://remote-text-encoder-flux-2.huggingface.co/predict"</span>, json={<span>"prompt"</span>: prompt}, headers={<span>"Authorization"</span>: <span>f"Bearer <span>{os.environ[<span>'HF_TOKEN'</span>]}</span>"</span>, <span>"Content-Type"</span>: <span>"application/json"</span>}, ) <span>assert</span> response.status_code == <span>200</span>, <span>f"<span>{response.status_code=}</span>"</span> <span>return</span> torch.load(io.BytesIO(response.content)) <span>if</span> <span>isinstance</span>(prompts, (<span>list</span>, <span>tuple</span>)): embeds = [_encode_single(p) <span>for</span> p <span>in</span> prompts] <span>return</span> torch.cat(embeds, dim=<span>0</span>) <span>return</span> _encode_single(prompts).to(<span>"cuda"</span>) transformer = Flux2Transformer2DModel.from_pretrained( repo_id, subfolder=<span>"transformer"</span>, torch_dtype=torch_dtype, device_map=<span>"cpu"</span>
-) pipe = Flux2Pipeline.from_pretrained( repo_id, text_encoder=<span>None</span>, transformer=transformer, torch_dtype=torch_dtype,
-)
-pipe.transformer.enable_group_offload( onload_device=device, offload_device=<span>"cpu"</span>, offload_type=<span>"leaf_level"</span>, use_stream=<span>True</span>, <span># low_cpu_mem_usage=True # uncomment for lower RAM usage</span>
-)
-pipe.to(device) prompt = <span>"a photo of a forest with mist swirling around the tree trunks. The word 'FLUX.2' is painted over it in big, red brush strokes with visible texture"</span>
-prompt_embeds = remote_text_encoder(prompt) image = pipe( prompt_embeds=prompt_embeds, generator=torch.Generator(device=device).manual_seed(<span>42</span>), num_inference_steps=<span>50</span>, guidance_scale=<span>4</span>, height=<span>1024</span>, width=<span>1024</span>,
-).images[<span>0</span>]
-</code></pre> <blockquote>
-<p>You can check out other supported quantization backends <a href="https://huggingface.co/docs/diffusers/main/en/quantization/overview">here</a> and other memory-saving techniques <a href="https://huggingface.co/docs/diffusers/main/en/optimization/memory">here</a>.</p>
-</blockquote>
-<p>To check how different quantizations affect an image, you can play with the playground below or access it as standlone in the <a href="https://huggingface.co/spaces/multimodalart/flux2-quantization">FLUX.2 Quantization experiments Space</a></p> <h3> <a href="#multiple-images-as-reference"> </a> <span> Multiple images as reference </span>
-</h3>
-<p>FLUX.2 supports using multiple images as inputs, allowing you to use up to 10 images. However, keep in mind that each additional image will require more VRAM. You can reference the images by index (e.g., image 1, image 2) or by natural language (e.g., the kangaroo, the turtle). For optimal results, the best approach is to use a combination of both methods.</p> Unfold <pre><code><span>import</span> torch
-<span>from</span> transformers <span>import</span> Mistral3ForConditionalGeneration <span>from</span> diffusers <span>import</span> Flux2Pipeline, Flux2Transformer2DModel
-<span>from</span> diffusers.utils <span>import</span> load_image repo_id = <span>"diffusers-internal-dev/new-model-image-final-weights"</span>
-device = <span>"cuda:0"</span>
-torch_dtype = torch.bfloat16 pipe = Flux2Pipeline.from_pretrained( repo_id, torch_dtype=torch_dtype
-)
-pipe.enable_model_cpu_offload() image_one = load_image(<span>"https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/kangaroo.png"</span>)
-image_two = load_image(<span>"https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/turtle.png"</span>) prompt = <span>"the boxer kangaroo from image 1 and the martial artist turtle from image 2 are fighting in an epic battle scene at a beach of a tropical island, 35mm, depth of field, 50mm lens, f/3.5, cinematic lighting"</span> image = pipe( prompt=prompt, image=[image_one, image_two], generator=torch.Generator(device=device).manual_seed(<span>42</span>), num_inference_steps=<span>50</span>, guidance_scale=<span>2.5</span>, width=<span>1024</span>, height=<span>768</span>,
-).images[<span>0</span>] image.save(<span>f"./flux2_t2i.png"</span>)
-</code></pre>
-<br> <table> <caption>Multi-image input</caption> <tbody><tr> <td> <img alt="Turtle image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/turtle.png"> </td> <td> <img alt="Kangaroo image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/kangaroo.png"> </td> </tr> <tr> <td colspan="2"> <img alt="Two images result" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/two_images_result.png"> </td> </tr>
-</tbody></table> <h2> <a href="#advanced-prompting"> </a> <span> Advanced Prompting </span>
-</h2>
-<p>FLUX.2 supports advanced prompting techniques like structured JSON prompting, precise hex color control, and multi-reference image editing.
-Aside for the added control, this also allows for flexibility in changing specific attributes while maintaining others overall the same.<br>For example, let's start with this json as the base schema (taken from the <a href="https://docs.bfl.ai/guides/prompting_guide_flux2">official FLUX.2 prompting guide</a>): </p>
-<pre><code><span>{</span> <span>"scene"</span><span>:</span> <span>"overall scene description"</span><span>,</span> <span>"subjects"</span><span>:</span> <span>[</span> <span>{</span> <span>"description"</span><span>:</span> <span>"detailed subject description"</span><span>,</span> <span>"position"</span><span>:</span> <span>"where in frame"</span><span>,</span> <span>"action"</span><span>:</span> <span>"what they're doing"</span> <span>}</span> <span>]</span><span>,</span> <span>"style"</span><span>:</span> <span>"artistic style"</span><span>,</span> <span>"color_palette"</span><span>:</span> <span>[</span><span>"#hex1"</span><span>,</span> <span>"#hex2"</span><span>,</span> <span>"#hex3"</span><span>]</span><span>,</span> <span>"lighting"</span><span>:</span> <span>"lighting description"</span><span>,</span> <span>"mood"</span><span>:</span> <span>"emotional tone"</span><span>,</span> <span>"background"</span><span>:</span> <span>"background details"</span><span>,</span> <span>"composition"</span><span>:</span> <span>"framing and layout"</span><span>,</span> <span>"camera"</span><span>:</span> <span>{</span> <span>"angle"</span><span>:</span> <span>"camera angle"</span><span>,</span> <span>"lens"</span><span>:</span> <span>"lens type"</span><span>,</span> <span>"depth_of_field"</span><span>:</span> <span>"focus behavior"</span> <span>}</span>
-<span>}</span>
-</code></pre>
-<p>Building up on that, let's turn it into a prompt for a shot of a good old fashion walkman on a carpet (simply pass this prompt to your chosen diffusers inference example from above):</p>
-<pre><code>prompt = <span>"""</span>
-<span>{</span>
-<span> "scene": "Professional studio product photography setup with soft-textured carpet surface",</span>
-<span> "subjects": [</span>
-<span> {</span>
-<span> "description": "Old silver Walkman placed on a carpet in the middle of an empty room",</span>
-<span> "pose": "Stationary, lying flat",</span>
-<span> "position": "Center foreground on carpeted surface",</span>
-<span> "color_palette": ["brushed silver", "dark gray accents"]</span>
-<span> }</span>
-<span> ],</span>
-<span> "style": "Ultra-realistic product photography with commercial quality",</span>
-<span> "color_palette": ["brushed silver", "neutral beige", "soft white highlights"],</span>
-<span> "lighting": "Three-point softbox setup creating soft, diffused highlights with no harsh shadows",</span>
-<span> "mood": "Clean, professional, minimalist",</span>
-<span> "background": "Soft-textured carpet surface with subtle studio backdrop suggesting an empty room",</span>
-<span> "composition": "rule of thirds",</span>
-<span> "camera": {</span>
-<span> "angle": "high angle",</span>
-<span> "distance": "medium shot",</span>
-<span> "focus": "Sharp focus on metallic Walkman textures and physical controls",</span>
-<span> "lens-mm": 85,</span>
-<span> "f-number": "f/5.6",</span>
-<span> "ISO": 200</span>
-<span> }</span>
-<span>}</span>
-<span></span>
-<span>"""</span>
-</code></pre>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/walkman.png"><img alt="walkman" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/walkman.png"></a></p>
-<p>Now, let's change the color of the carpet to a specific teal-blue shade (#367588) and add wired headphones plugged into the walkman:</p>
-<pre><code>prompt = <span>"""</span>
-<span>{</span>
-<span> "scene": "Professional studio product photography setup with soft-textured carpet surface",</span>
-<span> "subjects": [</span>
-<span> {</span>
-<span> "description": "Old silver Walkman placed on a teal-blue carpet (#367588) in the middle of an empty room, with wired headphones plugged in",</span>
-<span> "pose": "Stationary, lying flat",</span>
-<span> "position": "Center foreground on carpeted surface",</span>
-<span> "color_palette": ["brushed silver", "dark gray accents", "#367588"]</span>
-<span> },</span>
-<span> {</span>
-<span> "description": "Wired headphones connected to the Walkman, cable loosely coiled on the carpet",</span>
-<span> "pose": "Stationary",</span>
-<span> "position": "Next to and partially in front of the Walkman on the carpet",</span>
-<span> "color_palette": ["dark gray", "soft black", "#367588"]</span>
-<span> }</span>
-<span> ],</span>
-<span> "style": "Ultra-realistic product photography with commercial quality",</span>
-<span> "color_palette": ["brushed silver", "#367588", "neutral beige", "soft white highlights"],</span>
-<span> "lighting": "Three-point softbox setup creating soft, diffused highlights with no harsh shadows",</span>
-<span> "mood": "Clean, professional, minimalist",</span>
-<span> "background": "Soft-textured teal-blue carpet surface (#367588) with subtle studio backdrop suggesting an empty room",</span>
-<span> "composition": "rule of thirds",</span>
-<span> "camera": {</span>
-<span> "angle": "high angle",</span>
-<span> "distance": "medium shot",</span>
-<span> "focus": "Sharp focus on metallic Walkman textures, wired headphones, and carpet fibers",</span>
-<span> "lens-mm": 85,</span>
-<span> "f-number": "f/5.6",</span>
-<span> "ISO": 200</span>
-<span> }</span>
-<span>}</span>
-<span>"""</span>
-</code></pre> <p>The carpet color now matches the hex code provided, and the headphones have been with small changes to the overall scene.</p>
-<blockquote>
-<p>Check out the <a href="https://docs.bfl.ai/guides/prompting_guide_flux2">official prompting guide</a> for more examples and details.</p>
-</blockquote>
-<h2> <a href="#lora-fine-tuning"> </a> <span> LoRA fine-tuning </span>
-</h2>
-<p>Being both a text-to-image and an image-to-image model, FLUX.2 makes the perfect fine-tuning candidate for many use-cases! However, as inference alone takes more than 80GB of VRAM, LoRA fine-tuning is even more challenging to run on consumer GPUs. To squeeze in as much memory saving as we can, we utilize some of the inference optimizations described above for training as well, together with shared memory saving techniques, to substantially reduce memory consumption. To train it, you can use either the diffusers code below or <a href="https://github.com/ostris/ai-toolkit">Ostris' AI Toolkit</a>.</p>
-<blockquote>
-<p>We provide both text-to-image and image-to-image training scripts, for the purpose of this blog will focus on a text-to-image training example.</p>
-</blockquote>
-<h3> <a href="#memory-optimizations-for-fine-tuning"> </a> <span> Memory optimizations for fine-tuning </span>
-</h3>
-<p>Many of these techniques complement each other and can be used together to reduce memory consumption further. However, some techniques may be mutually exclusive, so be sure to check before launching a training run.</p> Unfold to check details on the memory-saving techniques used: <ul>
-<li><strong>Remote Text Encoder:</strong> to leverage the remote text encoding for training, simply pass <code>--remote_text_encoder</code>. Note that you must either be logged in to your Hugging Face account (<code>hf auth login</code>) OR pass a token with <code>--hub_token</code>.</li>
-<li><strong>CPU Offloading:</strong> by passing <code>--offload</code> the vae and text encoder to will be offloaded to CPU memory and only moved to GPU when needed.</li>
-<li><strong>Latent Caching:</strong> Pre-encode the training images with the vae, and then delete it to free up some memory. To enable <code>latent_caching</code> simply pass <code>--cache_latents</code>.</li>
-<li><strong>QLoRA</strong>: Low Precision Training with Quantization - using 8-bit or 4-bit quantization. You can use the following flags:<ul>
-<li><strong>FP8 training</strong> with <code>torchao</code>: enable FP8 training by passing <code>--do_fp8_training</code>.
-Since we are utilizing FP8 tensor cores, we need CUDA GPUs with compute capability at least 8.9 or greater. If you're looking for memory-efficient training on relatively older cards, we encourage you to check out other trainers like <code>SimpleTuner</code>, <code>ai-toolkit</code>, etc.</li>
-<li><strong>NF4 training</strong> with <code>bitsandbytes</code>: Alternatively, you can use 8-bit or 4-bit quantization with <code>bitsandbytes</code> by passing:- <code>--bnb_quantization_config_path</code> with a corresponding path to a json file containing your config. see below for more details.</li>
-</ul>
-</li>
-<li><strong>Gradient Checkpointing and Accumulation:</strong> <code>--gradient accumulation</code> refers to the number of updates steps to accumulate before performing a backward/update pass.by passing a value &gt; 1 you can reduce the amount of backward/update passes and hence also memory reqs.* with <code>--gradient checkpointing</code> we can save memory by not storing all intermediate activations during the forward pass.Instead, only a subset of these activations (the checkpoints) are stored and the rest is recomputed as needed during the backward pass. Note that this comes at the expanse of a slower backward pass.</li>
-<li><strong>8-bit-Adam Optimizer:</strong> When training with <code>AdamW</code>(doesn't apply to <code>prodigy</code>) You can pass <code>--use_8bit_adam</code> to reduce the memory requirements of training. Make sure to install <code>bitsandbytes</code> if you want to do so.</li>
-</ul> <blockquote>
-<p>Please make sure to check out the <a href="https://github.com/huggingface/diffusers/blob/main/examples/dreambooth/README_flux2.md">README</a> for prerequisites before starting training.</p>
-</blockquote>
-<p>For this example, we’ll use <a href="https://huggingface.co/datasets/multimodalart/1920-raider-waite-tarot-public-domain"><code>multimodalart/1920-raider-waite-tarot-public-domain</code></a> dataset with the following configuration using FP8 training. Feel free to experiment more with the hyper-parameters and share your results </p>
-<pre><code>accelerate launch train_dreambooth_lora_flux2.py \ --pretrained_model_name_or_path=<span>"black-forest-labs/FLUX.2-dev"</span> \ --mixed_precision=<span>"bf16"</span> \ --gradient_checkpointing \ --remote_text_encoder \ --cache_latents \ --caption_column=<span>"caption"</span>\ --do_fp8_training \ --dataset_name=<span>"multimodalart/1920-raider-waite-tarot-public-domain"</span> \ --output_dir=<span>"tarot_card_Flux2_LoRA"</span> \ --instance_prompt=<span>"trcrd tarot card"</span> \ --resolution=1024 \ --train_batch_size=2 \ --guidance_scale=1 \ --gradient_accumulation_steps=1 \ --optimizer=<span>"adamW"</span> \ --use_8bit_adam\ --learning_rate=1e-4 \ --report_to=<span>"wandb"</span> \ --lr_scheduler=<span>"constant_with_warmup"</span> \ --lr_warmup_steps=200 \ --checkpointing_steps=250\ --max_train_steps=1000 \ --rank=8\ --validation_prompt=<span>"a trtcrd of a person on a computer, on the computer you see a meme being made with an ancient looking trollface, 'the shitposter' arcana, in the style of TOK a trtcrd, tarot style"</span> \ --validation_epochs=25 \ --seed=<span>"0"</span>\ --push_to_hub
-</code></pre>
-<table> <caption>LoRA finetuning</caption> <tbody><tr> <td> <figure> <img alt="Pre-trained FLUX.2" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/image%201.png"> <figcaption>Pre-trained FLUX.2</figcaption> </figure> </td> <td> <figure> <img alt="LoRA fine-tuned FLUX.2" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/image%202.png"> <figcaption>LoRA fine-tuned FLUX.2</figcaption> </figure> </td> </tr>
-</tbody></table> <p>The left image was generated using the pre-trained FLUX.2 model, and the right image was produced the LoRA.</p>
-<p>In case your hardware isn’t compatible with FP8 training, you can use QLoRA with <code>bitsandbytes</code>. You first need to define a <code>config.json</code> file like so:</p>
-<pre><code><span>{</span> <span>"load_in_4bit"</span><span>:</span> <span><span>true</span></span><span>,</span> <span>"bnb_4bit_quant_type"</span><span>:</span> <span>"nf4"</span>
-<span>}</span>
-</code></pre>
-<p>And then pass its path to <code>--bnb_quantization_config_path</code>:</p>
-<pre><code>accelerate launch train_dreambooth_lora_flux2.py \ --pretrained_model_name_or_path=<span>"black-forest-labs/FLUX.2-dev"</span> \ --mixed_precision=<span>"bf16"</span> \ --gradient_checkpointing \ --remote_text_encoder \ --cache_latents \ --caption_column=<span>"caption"</span>\ **--bnb_quantization_config_path=<span>"config.json"</span> \** --dataset_name=<span>"multimodalart/1920-raider-waite-tarot-public-domain"</span> \ --output_dir=<span>"tarot_card_Flux2_LoRA"</span> \ --instance_prompt=<span>"a tarot card"</span> \ --resolution=1024 \ --train_batch_size=2 \ --guidance_scale=1 \ --gradient_accumulation_steps=1 \ --optimizer=<span>"adamW"</span> \ --use_8bit_adam\ --learning_rate=1e-4 \ --report_to=<span>"wandb"</span> \ --lr_scheduler=<span>"constant_with_warmup"</span> \ --lr_warmup_steps=200 \ --max_train_steps=1000 \ --rank=8\ --validation_prompt=<span>"a trtcrd of a person on a computer, on the computer you see a meme being made with an ancient looking trollface, 'the shitposter' arcana, in the style of TOK a trtcrd, tarot style"</span> \ --seed=<span>"0"</span>
-</code></pre>
-<h2> <a href="#resources"> </a> <span> Resources </span>
-</h2>
-<ul>
-<li>FLUX.2 <a href="https://bfl.ai/blog/flux-2">announcement post</a></li>
-<li>Diffusers <a href="https://huggingface.co/docs/diffusers/main/en/api/pipelines/flux2">documentation</a></li>
-<li>FLUX.2 official <a href="https://huggingface.co/spaces/black-forest-labs/FLUX.2-dev">demo</a></li>
-<li>FLUX.2 on the <a href="https://hf.co/black-forest-labs/FLUX.2-dev">Hub</a></li>
-<li>FLUX.2 original <a href="https://github.com/black-forest-labs/flux2">codebase</a></li>
-</ul>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -301,6 +61,10 @@ Since we are utilizing FP8 tensor cores, we need CUDA GPUs with compute capabili
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

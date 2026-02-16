@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,40 +28,27 @@
     Source: Toms Hardware Raspberry Pi | Date: 3/8/2025 3:00:00 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico/how-to-use-an-rfid-reader-with-a-raspberry-pi-pico" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<section>
-<div>
-<figure> <img src="https://cdn.mos.cms.futurecdn.net/e6fzqoUWXzngGPUDd7N3Pd.jpg" alt="Pico NFC"> <figcaption> <span>(Image credit: Tom's Hardware)</span>
-</figcaption>
-</figure></div>
-<div> <p>RFID cards and tags are everywhere! We use them in buildings for access control. Printers and photocopiers can use them to identify staff members. Livestock tagging and pet identification tags all use a form of RFID. The tech to read an RFID device is cheap, for around $5 you can get the reader, and for $4, a Raspberry Pi Pico can read the IDs from the cards / tags.</p><p>In this how to, we will learn how to read RFID tags and cards using an MFRC522 reader and a Raspberry Pi Pico, the goal will be to create a fictional RFID access control system that will allow users into a building, or alert <a href="https://www.tomshardware.com/tag/security">security</a> to remove them. Before we can do that, we need to identify the ID of our cards / tags. The first section of this how to will do just that, and then we will insert some code to control two LEDs to simulate the locking mechanism.</p><h2>For this how to you will need</h2><ul><li>Raspberry Pi Pico running MicroPython</li><li>MFRC522 RFID reader</li><li>Large breadboard</li><li>11 x Male to male jumper wires</li><li>Green LED</li><li>Red LED</li><li>2 x 100 Ohm resistors (Brown - Black - Brown - Gold)</li></ul><h2>Building the Hardware</h2><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/LAwUYAfcqTaLeMYHTgg85d.jpg" alt="Pico NFC">
-</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>The hardware build is split into two sections. First is the wiring for the MFRC522 RFID reader. The reader uses SPI to communicate with the Raspberry Pi Pico and it requires seven pins to do so. Two are for power (3.3V and GND) and the rest are for SPI.</p><div><div><p>Swipe to scroll horizontally</p></div><div><table><thead><tr><th colspan="1"><p>MFRC522</p></th><th colspan="1"><p>Raspberry Pi Pico</p></th><th colspan="1"><p>Wire Color</p></th></tr></thead><tbody><tr><td colspan="1"><p>SDA</p></td><td colspan="1"><p>GP1</p></td><td colspan="1"><p>Blue</p></td></tr><tr><td colspan="1"><p>SCK</p></td><td colspan="1"><p>GP2</p></td><td colspan="1"><p>Orange</p></td></tr><tr><td colspan="1"><p>MOSI</p></td><td colspan="1"><p>GP3</p></td><td colspan="1"><p>Purple</p></td></tr><tr><td colspan="1"><p>MISO</p></td><td colspan="1"><p>GP4</p></td><td colspan="1"><p>Blue</p></td></tr><tr><td colspan="1"><p>GND</p></td><td colspan="1"><p>Any GND</p></td><td colspan="1"><p>Black</p></td></tr><tr><td colspan="1"><p>RST</p></td><td colspan="1"><p>GP0</p></td><td colspan="1"><p>White</p></td></tr><tr><td colspan="1"><p>3.3</p></td><td colspan="1"><p>3V3 Out (Physical pin 36)</p></td><td colspan="1"><p>Red</p></td></tr></tbody></table></div></div><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/LKdGRo8ecqj3qxxqB4DRzc.jpg" alt="Pico NFC">
-</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>Second are our outputs. To see if the correct card has been presented, we need to add two LEDs. Red for an incorrect RFID card, green for a correct card. The LEDs connect to a GPIO pin which we control to turn the LED on/off, and to any available GND pin via a 100 Ohm resistor. You can use a 220 or 330 Ohm resistor, I just happened to have some 100 Ohm resistors on my desk. Need to work out the correct resistor? We’ve <a href="https://www.tomshardware.com/how-to/resistor-color-codes"><u>got a guide</u></a> for you!</p><div><div><p>Swipe to scroll horizontally</p></div><div><table><thead><tr><th colspan="1"><span>Header Cell - Column 0 </span></th><th colspan="1"><p>Raspberry Pi Pico</p></th><th colspan="1"><p>Wire Color</p></th></tr></thead><tbody><tr><td colspan="1"><p>Red LED Anode (+)</p></td><td colspan="1"><p>GP14</p></td><td colspan="1"><p>Red</p></td></tr><tr><td colspan="1"><p>Red LED Cathode (-)</p></td><td colspan="1"><p>Any GND</p></td><td colspan="1"><p>Black</p></td></tr><tr><td colspan="1"><p>Green LED Anode (+)</p></td><td colspan="1"><p>GP15</p></td><td colspan="1"><p>Green</p></td></tr><tr><td colspan="1"><p>Green LED Cathode (-)</p></td><td colspan="1"><p>Any GND</p></td><td colspan="1"><p>Black</p></td></tr></tbody></table></div></div><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/wUbMUV3CEwc7xfu4SpzQ3d.jpg" alt="Pico NFC">
-</p></div><figcaption><span>(Image credit: Tom's Hardware)</span></figcaption></figure><p>Before moving on, check that your wiring is correct.</p><h2>Installing the RFID Reader Software</h2><p>The MFRC522 is a simple RFID reader, and to make it even simpler we are using a MicroPython module that will make short work of using the reader. The module, <a href="https://github.com/kevinmcaleer/pico-rfid" target="_blank"><u>pico-rfid</u></a> is from friend of Tom’s Hardware, Kevin McAleer, and is based on the work of <a href="https://github.com/danjperron/micropython-mfrc522" target="_blank"><u>Danjperron</u></a>.</p><p>1. <strong>Connect your Raspberry Pi Pico to your computer, and open Thonny.</strong> We assume that you already know how to set up your Raspberry Pi Pico. If not, <a href="https://www.tomshardware.com/how-to/raspberry-pi-pico-setup"><u>we have this handy guide.</u></a></p><p>2. <strong>Create a new blank file and copy the contents </strong><a href="https://raw.githubusercontent.com/kevinmcaleer/pico-rfid/refs/heads/main/mfrc522.py" target="_blank"><u><strong>of this link</strong></u></a><strong> into the blank file. Then save it to the Raspberry Pi Pico as mfrc522.py. </strong>This is the Python module / library that will enable our code to talk to the RFID reader.</p><h2>Writing the Project Code</h2><p>With all the setup complete, we now get down to coding the project. For this we will again use Thonny, and write code to check the ID of any RFID card presented to the reader. For this first part, we will need to make a note of the ID, as we will later use it with a conditional test that checks if the ID matches a hard coded value, then it will allow entry. If not, then we will get an ACCESS DENIED message.</p><p>1. <strong>Create a new blank file in Thonny</strong>.</p><p>2. <strong>Import three modules (libraries) for using the MFRC522 RFID reader, controlling the pace of the code, and for using the GPIO.</strong></p><pre><code>from mfrc522 import MFRC522
-import utime
-from machine import Pin</code></pre><p>3. <strong>Create an object, reader, to tell the code where the RFID reader is connected.</strong></p><pre><code>reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)</code></pre><p>4. <strong>Create two objects for the red and green LEDs</strong>, telling the code where the LEDs are connected and that they are output devices that we want to send current to.</p><pre><code>red = Pin(14, Pin.OUT)
-green = Pin(15, Pin.OUT)</code></pre><p>5. <strong>Write a short message to the user, instructing them to present the card to the reader. </strong>The “\n” is Python’s syntax to introduce a new line at the end of the print() function.</p><pre><code>print("Present the card to the reader\n")</code></pre><p>6. <strong>Create a list called “PreviousCard” and store the value zero inside of it.</strong> We’ll use this list later to store the current card ID.</p><pre><code>PreviousCard = [0]</code></pre><p>7. <strong>Create a while True loop to continually run the code within it.</strong></p><pre><code>while True:</code></pre><p>8. <strong>Initialize the reader so that it is ready for use.</strong></p><pre><code> reader.init()</code></pre><p>9. <strong>Create a tuple to store the reader status and the RFID tag type.</strong></p><pre><code> (stat, tag_type) = reader.request(reader.REQIDL)</code></pre><p>10. <strong>An if conditional will read the contents of the card if the reader is ready.</strong> Then it will update the stat and uid objects with details from the card.</p><pre><code> if stat == reader.OK: (stat, uid) = reader.SelectTagSN()</code></pre><p>11. <strong>If the uid of the card is the same as the value stored in the PreviousCard object, then the code will continue.</strong> This will happen when the same card is repeatedly shown to the reader.</p><pre><code> if uid == PreviousCard: continue</code></pre><p>12. <strong>Create an if conditional statement to check that the card read was ok.</strong></p><pre><code> if stat == reader.OK:</code></pre><p>13. <strong>Print a message to the user, and then store the card’s UID to an object called “card”. Then print the card details to the Python shell.</strong></p><pre><code> print("The card details are as follows") card = reader.tohexstring(uid) print(card)
-</code></pre><p>14. <strong>Update the PreviousCard object with the uid of the presented card.</strong></p><pre><code> PreviousCard = uid</code></pre><p>15. <strong>Create an else condition which will run when no cards are presented. Updating the PreviousCard object. Then add a 50ms pause to the code before the main loop repeats.</strong></p><pre><code> else: PreviousCard=[0] utime.sleep_ms(50)</code></pre><p>16. <strong>Save the code to the Raspberry Pi Pico as reader.py and then click on Run &gt;&gt; Run Current Script (or press the green play button). Follow the instructions and present the RFID card / tag to the reader. </strong></p><p>17. <strong>Copy the entire card details, this is the uid of the RFID card and we will need that for the next part of this how to. </strong>The uid looks something like this, yours will be different.</p><pre><code>[0x04, 0xBC, 0xA0, 0x9A, 0xB3, 0x43, 0x80]</code></pre><h2>Complete Code Listing</h2><pre><code>from mfrc522 import MFRC522
-import utime
-from machine import Pin reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
-red = Pin(14, Pin.OUT)
-green = Pin(15, Pin.OUT) print("Present the card to the reader\n")
-PreviousCard = [0] while True: reader.init() (stat, tag_type) = reader.request(reader.REQIDL) if stat == reader.OK: (stat, uid) = reader.SelectTagSN() if uid == PreviousCard: continue if stat == reader.OK: print("The card details are as follows") card = reader.tohexstring(uid) print(card) PreviousCard = uid else: PreviousCard=[0] utime.sleep_ms(50) </code></pre><p>We’ve got the code, now we need to tell the project code that we want to use that code to give us access, and to light up the green LED. If another card / tag is presented to the reader, then the red LED will light up.</p><p>1. <strong>Between these two lines, create new lines of code.</strong></p><pre><code> print(card)
-NEWCODE GOES HERE PreviousCard = uid</code></pre><p>2. <strong>Create an if condition that checks for your card’s uid. Note that it looks like a Python list, but in reality it is stored as a string, so we need to wrap the value in “ “. Don’t forget the [ ] brackets.</strong></p><pre><code> if card == "[0x04, 0xBC, 0xA0, 0x9A, 0xB3, 0x43, 0x80]":</code></pre><p>3. <strong>If the value stored in the card object matches the hard coded value, print “ACCESS GRANTED” to the Python shell.</strong></p><pre><code> print("ACCESS GRANTED")</code></pre><p>4. <strong>Create a for loop to toggle the green LED on / off ten times., with a 0.1 second gap between each change of state. Turn the green LED off at the end of the for loop.</strong></p><pre><code> for i in range(10): green.toggle() utime.sleep(0.1) green.off()</code></pre><p>5. <strong>Use an else condition for when an unrecognized card / tag is presented to the reader. </strong>This will toggle the red LED on and off just like the green LED.</p><pre><code> else: print("ACCESS DENIED") for i in range(10): red.toggle() utime.sleep(0.1) red.off()</code></pre><p>6 .<strong>Save the code as reader.py to the Raspberry Pi Pico. Click on Run &gt;&gt; Run Current Script (or press the green play button). Follow the instructions and present the RFID card / tag to the reader. If the card is correct, then the green LED will flash and the Python shell will print “ACCESS GRANTED”. Try another RFID card / tag, this should make the red LED light up, and the Python shell will print “ACCESS DENIED”</strong></p><h2>Complete Code Listing</h2><pre><code>from mfrc522 import MFRC522
-import utime
-from machine import Pin reader = MFRC522(spi_id=0,sck=2,miso=4,mosi=3,cs=1,rst=0)
-red = Pin(14, Pin.OUT)
-green = Pin(15, Pin.OUT) print("Present the card to the reader\n")
-PreviousCard = [0] while True: reader.init() (stat, tag_type) = reader.request(reader.REQIDL) if stat == reader.OK: (stat, uid) = reader.SelectTagSN() if uid == PreviousCard: continue if stat == reader.OK: print("The card details are as follows") card = reader.tohexstring(uid) print(card) if card == "[0x04, 0xBC, 0xA0, 0x9A, 0xB3, 0x43, 0x80]": print("ACCESS GRANTED") for i in range(10): green.toggle() utime.sleep(0.1) green.off() else: print("ACCESS DENIED") for i in range(10): red.toggle() utime.sleep(0.1) red.off() PreviousCard = uid else: PreviousCard=[0] utime.sleep_ms(50)
-</code></pre>
-</div> <div><p>Les Pounder is an associate editor at Tom's Hardware. He is a creative technologist and for seven years has created projects to educate and inspire minds both young and old. He has worked with the Raspberry Pi Foundation to write and deliver their teacher training program "Picademy".</p></div>
-</section> </div></div>
+    <p>ACCESS GRANTED</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -73,6 +61,10 @@ PreviousCard = [0] while True: reader.init() (stat, tag_type) = reader.request(r
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

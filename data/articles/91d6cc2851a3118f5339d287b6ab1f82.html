@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Rebuilt My Agent Framework From Scratch. Here's Why TypeScript Won.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Rebuilt My Agent Framework From Scratch. Here's Why TypeScript Won.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 11:10:42 PM | <a href="https://dev.to/wsdevguy/i-rebuilt-my-agent-framework-from-scratch-heres-why-typescript-won-3n2c" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>Six days ago I shipped a hacky Node.js CLI that could coordinate Claude, GPT, and Gemini agents. It was 700 lines of JavaScript, it spawned child processes, and it stored state in JSON files. It worked, barely.</p> <p>Then OpenAI acquired OpenClaw.</p> <p>If you missed it: OpenClaw hit 145K GitHub stars in three weeks. It's a personal AI agent that runs locally and connects through your messaging apps. The creator got acqui-hired by OpenAI on Feb 15. The project is moving to an open-source foundation.</p> <p>And I thought: the market just got validated. Multi-agent orchestration isn't a nice-to-have anymore. It's the next platform layer. But here's the thing nobody's talking about -- <strong>the entire multi-agent ecosystem is Python-first</strong>.</p> <p>LangGraph? Python. CrewAI? Python. AutoGen? Python. smolagents? Python.</p> <p>Meanwhile, TypeScript surpassed Python in GitHub contributors in 2025. There are more TS developers writing production code than ever. And when they want to build multi-agent systems, their options are... limited.</p> <p>So I rewrote MyUru from scratch. TypeScript-first. Provider-agnostic. Production-grade.</p> <h2> <a name="what-myuru-v2-actually-does" href="#what-myuru-v2-actually-does"> </a> What MyUru v2 Actually Does
+</h2> <p>At its core, MyUru gives you five primitives:</p> <p><strong>1. Agent</strong> -- wraps any LLM with instructions, tools, and built-in tracing.<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>Agent</span> <span>}</span> <span>from</span> <span>'</span><span>myuru</span><span>'</span><span>;</span>
+<span>import</span> <span>{</span> <span>anthropic</span> <span>}</span> <span>from</span> <span>'</span><span>@ai-sdk/anthropic</span><span>'</span><span>;</span> <span>const</span> <span>agent</span> <span>=</span> <span>new</span> <span>Agent</span><span>({</span> <span>name</span><span>:</span> <span>'</span><span>researcher</span><span>'</span><span>,</span> <span>model</span><span>:</span> <span>anthropic</span><span>(</span><span>'</span><span>claude-sonnet-4-5</span><span>'</span><span>),</span> <span>instructions</span><span>:</span> <span>'</span><span>You are a research assistant.</span><span>'</span><span>,</span> <span>maxSteps</span><span>:</span> <span>10</span><span>,</span> <span>budgetPerRun</span><span>:</span> <span>0.50</span><span>,</span> <span>// hard USD limit</span>
+<span>});</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>agent</span><span>.</span><span>run</span><span>(</span><span>'</span><span>Find info about TypeScript frameworks</span><span>'</span><span>);</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>result</span><span>.</span><span>text</span><span>);</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>`Cost: $</span><span>${</span><span>result</span><span>.</span><span>usage</span><span>.</span><span>estimatedCostUsd</span><span>.</span><span>toFixed</span><span>(</span><span>4</span><span>)}</span><span>`</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Every single run tells you exactly how many tokens it used and what it cost. No surprises.</p> <p><strong>2. Pipeline</strong> -- chain agents together. Sequential, parallel, or mixed.<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>Pipeline</span> <span>}</span> <span>from</span> <span>'</span><span>myuru</span><span>'</span><span>;</span> <span>const</span> <span>pipeline</span> <span>=</span> <span>new</span> <span>Pipeline</span><span>({</span> <span>name</span><span>:</span> <span>'</span><span>research-and-write</span><span>'</span><span>,</span> <span>agents</span><span>:</span> <span>{</span> <span>researcher</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>'</span><span>researcher</span><span>'</span><span>,</span> <span>model</span><span>,</span> <span>instructions</span><span>:</span> <span>'</span><span>Find key facts.</span><span>'</span> <span>},</span> <span>writer</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>'</span><span>writer</span><span>'</span><span>,</span> <span>model</span><span>,</span> <span>instructions</span><span>:</span> <span>'</span><span>Write clear content.</span><span>'</span> <span>},</span> <span>editor</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>'</span><span>editor</span><span>'</span><span>,</span> <span>model</span><span>,</span> <span>instructions</span><span>:</span> <span>'</span><span>Polish the final draft.</span><span>'</span> <span>},</span> <span>},</span> <span>steps</span><span>:</span> <span>[</span> <span>{</span> <span>agent</span><span>:</span> <span>'</span><span>researcher</span><span>'</span><span>,</span> <span>input</span><span>:</span> <span>(</span><span>ctx</span><span>)</span> <span>=&gt;</span> <span>`Research: </span><span>${</span><span>ctx</span><span>.</span><span>task</span><span>}</span><span>`</span> <span>},</span> <span>{</span> <span>agent</span><span>:</span> <span>'</span><span>writer</span><span>'</span><span>,</span> <span>input</span><span>:</span> <span>(</span><span>ctx</span><span>)</span> <span>=&gt;</span> <span>`Write using: </span><span>${</span><span>ctx</span><span>.</span><span>results</span><span>.</span><span>researcher</span><span>}</span><span>`</span> <span>},</span> <span>{</span> <span>agent</span><span>:</span> <span>'</span><span>editor</span><span>'</span><span>,</span> <span>input</span><span>:</span> <span>(</span><span>ctx</span><span>)</span> <span>=&gt;</span> <span>`Edit: </span><span>${</span><span>ctx</span><span>.</span><span>results</span><span>.</span><span>writer</span><span>}</span><span>`</span> <span>},</span> <span>],</span>
+<span>});</span> <span>const</span> <span>result</span> <span>=</span> <span>await</span> <span>pipeline</span><span>.</span><span>run</span><span>(</span><span>'</span><span>TypeScript in 2026</span><span>'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Steps can run in parallel, have conditional execution, and require human approval before proceeding.</p> <p><strong>3. ModelRouter</strong> -- picks the right model for each task.<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>ModelRouter</span> <span>}</span> <span>from</span> <span>'</span><span>myuru</span><span>'</span><span>;</span> <span>const</span> <span>router</span> <span>=</span> <span>new</span> <span>ModelRouter</span><span>({</span> <span>strategy</span><span>:</span> <span>'</span><span>cost-optimized</span><span>'</span><span>,</span> <span>models</span><span>:</span> <span>{</span> <span>complex</span><span>:</span> <span>anthropic</span><span>(</span><span>'</span><span>claude-opus-4-6</span><span>'</span><span>),</span> <span>standard</span><span>:</span> <span>anthropic</span><span>(</span><span>'</span><span>claude-sonnet-4-5</span><span>'</span><span>),</span> <span>simple</span><span>:</span> <span>anthropic</span><span>(</span><span>'</span><span>claude-haiku-4-5</span><span>'</span><span>),</span> <span>},</span> <span>budget</span><span>:</span> <span>{</span> <span>maxPerDay</span><span>:</span> <span>10.00</span> <span>},</span>
+<span>});</span> <span>const</span> <span>model</span> <span>=</span> <span>router</span><span>.</span><span>select</span><span>(</span><span>userInput</span><span>);</span>
+<span>// Short inputs -&gt; Haiku. Complex analysis -&gt; Opus. Smart defaults.</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>4. Trace</strong> -- observability built into every run. Token counts, cost estimates, step-by-step execution logs.</p> <p><strong>5. Checkpoint</strong> -- persist pipeline state to disk. If your pipeline crashes at step 4 of 7, resume from where it stopped.</p> <h2> <a name="the-stack" href="#the-stack"> </a> The Stack
+</h2> <p>MyUru is built on the <a href="https://sdk.vercel.ai/" target="_blank">Vercel AI SDK</a> which gives us provider-agnostic access to 40+ LLM providers out of the box. Anthropic, OpenAI, Google, Mistral, Groq, Fireworks, you name it. One interface, any model.</p> <p>The framework itself is:</p> <ul>
+<li>
+<strong>TypeScript strict mode</strong> -- full type safety everywhere</li>
+<li>
+<strong>ESM-only</strong> -- modern module system</li>
+<li>
+<strong>Zero Python</strong> -- runs anywhere Node.js runs</li>
+<li>
+<strong>51 unit tests</strong> -- tested before it shipped</li>
+</ul> <h2> <a name="what-i-learned-from-the-competition" href="#what-i-learned-from-the-competition"> </a> What I Learned From the Competition
+</h2> <p>I spent time studying what works and what doesn't across the ecosystem:</p> <p><strong>From OpenClaw</strong>: Their semantic snapshots (parsing accessibility trees instead of screenshots) are brilliant. 100x token reduction for web browsing. But their security is a disaster -- 13.4% of skills on their marketplace are malicious.</p> <p><strong>From LangGraph</strong>: Graph-based orchestration is powerful but the DX is painful. 33M downloads/month proves the demand; the complexity proves the opportunity.</p> <p><strong>From CrewAI</strong>: Role-based agent metaphors ("researcher", "writer") are incredibly intuitive. But CrewAI breaks in production at scale.</p> <p><strong>From OpenAI Agents SDK</strong>: Radical simplicity wins. Five concepts, that's it. But it locks you into OpenAI models.</p> <p>MyUru tries to hit the sweet spot: simple enough for a single agent, powerful enough for production pipelines, and never locked to one provider.</p> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <div>
+<pre><code>npm <span>install </span>myuru @ai-sdk/anthropic
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span>import</span> <span>{</span> <span>Agent</span> <span>}</span> <span>from</span> <span>'</span><span>myuru</span><span>'</span><span>;</span>
+<span>import</span> <span>{</span> <span>anthropic</span> <span>}</span> <span>from</span> <span>'</span><span>@ai-sdk/anthropic</span><span>'</span><span>;</span> <span>const</span> <span>agent</span> <span>=</span> <span>new</span> <span>Agent</span><span>({</span> <span>name</span><span>:</span> <span>'</span><span>assistant</span><span>'</span><span>,</span> <span>model</span><span>:</span> <span>anthropic</span><span>(</span><span>'</span><span>claude-sonnet-4-5</span><span>'</span><span>),</span> <span>instructions</span><span>:</span> <span>'</span><span>Be helpful and concise.</span><span>'</span><span>,</span>
+<span>});</span> <span>const</span> <span>{</span> <span>text</span><span>,</span> <span>usage</span> <span>}</span> <span>=</span> <span>await</span> <span>agent</span><span>.</span><span>run</span><span>(</span><span>'</span><span>Explain async/await in 3 sentences</span><span>'</span><span>);</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>text</span><span>);</span>
+<span>console</span><span>.</span><span>log</span><span>(</span><span>`</span><span>${</span><span>usage</span><span>.</span><span>totalTokens</span><span>}</span><span> tokens, $</span><span>${</span><span>usage</span><span>.</span><span>estimatedCostUsd</span><span>.</span><span>toFixed</span><span>(</span><span>4</span><span>)}</span><span>`</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>This is v2.0.0-alpha.1. The foundation is solid -- agents, pipelines, routing, tracing, checkpoints -- but there's more coming:</p> <ul>
+<li>
+<strong>Agent-to-agent handoff</strong> (structured delegation between agents)</li>
+<li>
+<strong>Long-term memory</strong> (knowledge graphs that persist across runs)</li>
+<li>
+<strong>Visual pipeline builder</strong> (design orchestrations without code)</li>
+<li>
+<strong>MCP integration</strong> (connect to any MCP server as a tool source)</li>
+</ul> <p>The repo is at <a href="https://github.com/Wittlesus/myuru" target="_blank">github.com/Wittlesus/myuru</a>. Stars, issues, and PRs all welcome.</p> <p>If you're building multi-agent systems in TypeScript and tired of wrapping Python frameworks, give it a shot. <code>npm install myuru</code> and let me know what breaks.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

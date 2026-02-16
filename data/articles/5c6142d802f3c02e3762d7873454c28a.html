@@ -6,19 +6,20 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -27,24 +28,27 @@
     Source: Siecle Digital | Date: 2/16/2026 10:28:19 AM | <a href="https://siecledigital.fr/2026/02/16/anthropic-senvole-a-380-milliards-de-dollars/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>La bataille des valorisations dans l’intelligence artificielle franchit un nouveau cap. En effet, dans un <a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation" target="_blank">communiqué de presse</a>, l’américain Anthropic annonce une <strong>valorisation de 380 milliards de dollars</strong> à l’issue d’une <strong>levée de fonds massive de 30 milliards de dollars</strong>.</p>
-<p>Une opération qui confirme l’emballement des marchés pour les acteurs capables de monétiser l’IA à grande échelle, d’autant plus qu’au total, l’entreprise aurait levé <strong>entre 64 et 69 milliards de dollars depuis sa création</strong>.</p> <p>Si la société s’est imposée en quelques années comme l’un des rivaux les plus crédibles de OpenAI, c’est notamment grâce à sa stratégie qui consiste à <strong>miser sur la fiabilité</strong>, <strong>la sécurité</strong> et surtout <strong>une offre pensée pour les entreprises et les développeurs</strong>, là où ChatGPT a conquis le grand public….</p>
-<h2>Une levée de fonds record portée par les géants de la finance</h2>
-<p>Ce tour de table de <strong>série G</strong> a été mené par le fonds souverain singapourien <strong>GIC</strong> et <strong>Coatue</strong>, avec la participation de poids lourds comme <strong>BlackRock</strong>, <strong>Goldman Sachs</strong>, <strong>JPMorgan Chase</strong>, mais aussi d’autres acteurs comme <strong>Microsoft</strong> et <strong>Nvidia</strong>.</p>
-<p>Avec cette opération, la valorisation d’Anthropic dépasse désormais celle de nombreux groupes cotés, et l’entreprise tutoie désormais la capitalisation d’acteurs historiques de la tech.</p>
-<p>Concernant cette nouvelle levée, les fonds serviront principalement à <strong>financer les infrastructures de calcul</strong>. A l’heure où la puissance GPU conditionne la compétitivité des modèles, Anthropic a déjà annoncé vouloir <strong>investir 50 milliards de dollars dans des centres de données aux États-Unis</strong>.</p>
-<p>L’entreprise s’est par ailleurs engagée à acheter pour <strong>30 milliards de dollars de capacité cloud</strong> auprès d’Azure.</p>
-<h2>Claude Code, un nouveau moteur de la croissance&nbsp;?</h2>
-<p>Aujourd’hui, Anthropic revendique un «&nbsp;<em>revenue run rate</em>«&nbsp;, c’est à dire une projection du revenu futur de l’entreprise, basée sur ses résultats actuels, de <strong>14 milliards de dollars</strong>, contre 1 milliard seulement un an plus tôt. Selon les dirigeants de l’entreprise, <strong>80% des revenus proviennent des professionnels</strong>.</p>
-<p>Au coeur de cette dynamique, impossible de ne pas mentionner <strong>Claude Code</strong>. Ouvert au grand public <a href="https://siecledigital.fr/2025/10/21/anthropic-ouvre-claude-code-au-grand-public-avec-une-version-web-et-mobile/">depuis le mois d’octobre dernier</a>, cet agent de développement génère déjà <strong>2,5 milliards de dollars de revenus par an</strong>, et les abonnements professionnels auraient même quadruplé depuis le début de l’année 2026.</p>
-<p>En termes de chiffres, Anthropic affirme que <strong>4% des commits publics sur GitHub seraient aujourd’hui générés via Claude Code</strong>, et huit des dix plus grandes entreprises américaines du classement Fortune compteraient parmi ses clients.</p>
-<p>Comme on l’apprend dans une <a href="https://www.lemonde.fr/economie/article/2026/02/12/ia-anthropic-valorise-380-milliards-de-dollars-apres-une-nouvelle-levee-de-fonds_6666551_3234.html" target="_blank">récente dépêche AFP</a>, Anthropic préparerait activement <strong>sa future introduction en bourse</strong>, et face à un OpenAI qui est également engagé dans une course aux capitaux, la confrontation pourrait bientôt se jouer sur les marchés financiers…</p> </div></div>
+    <p>La bataille des valorisations dans l’intelligence artificielle franchit un nouveau cap. En effet, dans un communiqué de presse, l’américain Anthropic annonce une valorisation de 380 milliards de dollars à l’issue d’une levée de fonds massive de 30 milliards de dollars. Une opération qui confirme l’emballement des marchés pour les acteurs capables de monétiser l’IA à […]</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -57,6 +61,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

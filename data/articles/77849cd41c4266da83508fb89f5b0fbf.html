@@ -19,6 +19,13 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -33,13 +40,27 @@
 <figure><img alt="" src="https://img-0.journaldunet.com/7KZKg3lNQuywFE-WAOz_dkCPyAA=/1080x/smart/99d970f099c64ceba4956d8fa553b42f/ccmcms-jdn/39533417.jpg">
 <figcaption>Exemple de différents graphiques générés par Claude Code. <small>&nbsp;Capture d’écran / JDN</small></figcaption>
 </figure>
-</div> <p>Côté positif : ma récupération cardiaque post-effort est excellente (25 bpm après 1 minute, un marqueur fiable de bonne santé cardiovasculaire), je m'entraîne régulièrement avec 3,9 séances par semaine, et mon rythme circadien reste stable. Les axes d'amélioration sont clairs : une fréquence cardiaque au repos à 75 bpm (élevée pour mon âge et mon niveau d'activité), un sommeil pas assez réparateur, et surtout un signal qui mérite attention : 12,4% de mes mesures de saturation en oxygène sont en dessous de 94%, ce qui pourrait indiquer un syndrome d'apnées du sommeil, même si les capteurs grand public sont connus pour leur imprécision sur cette métrique.</p> <p>Claude identifie aussi que les bénéfices de mes entraînements se manifestent avec 5 jours de décalage, ou que mon corps récupère moins bien le weekend qu'en semaine, alors qu'on s'attendrait à l'inverse. L'IA pointe vers mon décalage horaire social : je me couche plus tard le weekend, ce qui perturbe mon rythme. Des insights concrets qu'aucune application de santé grand public ne propose nativement.</p> <p>L'exercice se révèle concluant. Claude a produit en 45 minutes un rapport plus détaillé et actionnable que tout ce qu'Apple Santé propose nativement après quatre ans de collecte. Il faut toutefois accepter de se pencher sur le rapport pour en tirer le meilleur, les 36 pages générées demandent du temps d'analyse, et certaines sections techniques nécessitent un minimum d’expertise médicale pour les interpréter correctement. Ce test donne surtout un aperçu de ce que l'IA sera capable de faire nativement dans quelques années, quand les intégrations directes avec les applications de santé seront déployées.</p> </div></div>
+</div> <p>Côté positif : ma récupération cardiaque post-effort est excellente (chute de 25 bpm après 1 minute, un marqueur fiable de bonne santé cardiovasculaire), je m'entraîne régulièrement avec 3,9 séances par semaine, et mon rythme circadien reste stable. Les axes d'amélioration sont clairs : une fréquence cardiaque au repos à 75 bpm (élevée pour mon âge et mon niveau d'activité), un sommeil pas assez réparateur, et surtout un signal qui mérite attention : 12,4% de mes mesures de saturation en oxygène sont en dessous de 94%, ce qui pourrait indiquer un syndrome d'apnées du sommeil, même si les capteurs grand public sont connus pour leur imprécision sur cette métrique.</p> <p>Claude identifie aussi que les bénéfices de mes entraînements se manifestent avec 5 jours de décalage, ou que mon corps récupère moins bien le weekend qu'en semaine, alors qu'on s'attendrait à l'inverse. L'IA pointe vers mon décalage horaire social : je me couche plus tard le weekend, ce qui perturbe mon rythme. Des insights concrets qu'aucune application de santé grand public ne propose nativement.</p> <p>L'exercice se révèle concluant. Claude a produit en 45 minutes un rapport plus détaillé et actionnable que tout ce qu'Apple Santé propose nativement après quatre ans de collecte. Il faut toutefois accepter de se pencher sur le rapport pour en tirer le meilleur, les 36 pages générées demandent du temps d'analyse, et certaines sections techniques nécessitent un minimum d’expertise médicale pour les interpréter correctement. Ce test donne surtout un aperçu de ce que l'IA sera capable de faire nativement dans quelques années, quand les intégrations directes avec les applications de santé seront déployées.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -52,6 +73,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

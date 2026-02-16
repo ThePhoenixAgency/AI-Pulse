@@ -19,12 +19,19 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
   <h1>Shooting at Rhode Island ice rink leaves at least two people dead</h1>
   <div class="metadata">
-    Source: The Guardian World | Date: 2/16/2026 8:45:30 PM | <a href="https://www.theguardian.com/us-news/2026/feb/16/rhode-island-ice-rink-shooting-pawtucket" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: The Guardian World | Date: 2/16/2026 10:23:10 PM | <a href="https://www.theguardian.com/us-news/2026/feb/16/rhode-island-ice-rink-shooting-pawtucket" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div><p>At least three people are dead and three more hospitalized in critical condition in a mass shooting at an indoor ice rink in Pawtucket, <a href="https://www.theguardian.com/us-news/rhode-island">Rhode Island</a>, during a high school hockey match on Monday afternoon, the police said.</p><p>The Pawtucket police chief, Tina Goncalves, <a href="https://www.youtube.com/watch?v=tQtu0cFwwGw&amp;list=RDNS1o_PpM5-jyk&amp;index=4">told reporters</a> at a news conference that the suspect is one of the dead.</p><p>“We’re putting all the pieces together,” Goncalves said, adding that one of the shooting victims died at the Dennis M Lynch arena and a second succumbed to their wounds later at a hospital.</p><p>The attacker appears to have died from a self-inflicted gun wound,” Goncalves said.</p><p>Goncalves also said that the shooting appeared to have been a targeted event, possibly connected to a “family dispute”, but did not provide further details. Officials are not releasing names of any of the victims yet.</p><p>The Providence Journal <a href="https://www.providencejournal.com/live-story/news/crime/2026/02/16/live-coverage-shooting-at-pawtucket-ri-ice-rink/88709322007/">reported</a> that video acquired from a service that livestreams sports events captured audio of a burst of roughly 13 shots, fired in rapid succession, and showed panicked players and spectators rushing away.</p><p>A Rhode Island high school sportswriter, Eric Rueb, <a href="https://x.com/EricRueb/status/2023503159231213713">shared a video clip</a> on social media with the caption: “You cannot see anything – the noise is unmistakeable – but the reaction and chaos that follows the follows tells the story.”</p><p>The shooting took place during a boys’ hockey game with students from multiple local schools, Pawtucket’s mayor, Don Grebien, said.</p></div></div>
@@ -34,6 +41,20 @@
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -46,6 +67,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

@@ -6,13 +6,26 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -21,13 +34,178 @@
     Source: FrenchWeb | Date: 1/19/2026 9:09:11 AM | <a href="https://www.frenchweb.fr/nrf-takeaways-1-lagentic-commerce-nest-plus-un-concept-cest-une-realite/459687" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Voici le premier volet de notre série spéciale « Takeaways NRF 2026 », par Laurence Faguer, experte retail &amp; e-commerce chez FW.MEDIA. À New York, l’énergie ressentie cette année à la NRF est inhabituelle. Dense. Tendue. Et surtout très orientée exécution. Ce climat n’est pas déconnecté de la réalité économique. Aux États-Unis, les ventes de …</p>
+    <div><div> <p><strong>Voici le premier volet de notre série spéciale « Takeaways NRF 2026 », par Laurence Faguer, experte retail &amp; e-commerce chez FW.MEDIA.</strong></p>
+<p>À New York, l’énergie ressentie cette année à la NRF est inhabituelle. Dense. Tendue. Et surtout très orientée exécution.</p>
+<p>Ce climat n’est pas déconnecté de la réalité économique. Aux États-Unis, les ventes de “core retail” progressent de +3,58 % sur un an (hors restauration, automobile et stations-service, source : Retail Monitor). Le commerce aborde 2026 avec une dynamique solide, visible aussi bien dans les malls que dans les performances des grandes enseignes.</p>
+<p>Sans s’attarder sur cet appétit de consommation – déjà largement commenté – cette édition de la NRF met surtout en lumière un basculement structurel. Voici les enseignements clés à retenir.</p>
+<h2>L’IA devient un canal d’achat à part entière.</h2>
+<p>L’introduction du paiement direct dans les interfaces d’IA conversationnelles (ChatGPT, Gemini, Perplexity…) marque une rupture comparable à l’arrivée du mobile ou du paiement en ligne.</p>
+<p>En 2025, l’IA servait principalement à explorer, comparer, s’informer.<br>En 2026, elle devient transactionnelle.</p>
+<p>Selon Adobe Analytics :</p>
+<ul>
+<li>Le trafic vers les sites de retail en provenance d’IA génératives a augmenté de près de 700 % sur un an</li>
+<li>Sur la période des fêtes, ces sources ont généré des taux de conversion supérieurs de 31 % aux autres canaux</li>
+</ul>
+<p>Le sujet n’est plus “l’IA comme assistant”, mais l’IA comme point d’entrée du commerce.</p>
+<h2>Universal Commerce Protocol : standardiser le commerce agentique.</h2>
+<p>Google, via Sundar Pichai, a annoncé le lancement du <strong>Universal Commerce Protocol (UCP)</strong>, aux côtés de Shopify, Etsy, Wayfair, Target et Walmart.</p>
+<p>L’objectif est clair :<br>poser les bases techniques d’un <strong>commerce orchestré par des agents IA</strong>, interopérable entre plateformes, marchands et systèmes de paiement.</p>
+<h3>Ce que permet l’UCP</h3>
+<ul>
+<li>Un langage commun pour le commerce agentique</li>
+<li>Un protocole ouvert, standardisé</li>
+<li>Des agents capables de gérer l’ensemble du parcours : recommandation, achat, paiement, service après-vente</li>
+</ul>
+<h3>Le point clé pour les retailers</h3>
+<p>Selon ses concepteurs, <strong>le commerçant conserve la relation client</strong> : transaction, data, expérience.<br>L’agent agit, mais <strong>la marque reste structurante</strong>.</p>
+<h2>De l’achat produit à l’achat “mission”.</h2>
+<p>L’un des signaux les plus forts observés à la NRF :<br>les agents IA ne se contentent plus d’acheter des produits. Ils exécutent des <strong>intentions complètes</strong>.</p>
+<h3>Walmart : structurer l’achat par intention</h3>
+<p>Sur Walmart.com, la recherche devient une “mission” :</p>
+<ul>
+<li>organiser un anniversaire</li>
+<li>préparer une journée à la plage</li>
+<li>équiper un foyer</li>
+</ul>
+<p>L’agent prend en charge la recherche, la sélection, la transaction et la livraison.</p>
+<h3>Ralph Lauren : l’agent comme conseiller</h3>
+<p>Avec Ask Ralph, Ralph Lauren transforme l’expérience :</p>
+<ul>
+<li>auparavant : navigation → filtres → décision</li>
+<li>désormais : conversation → guidance → achat</li>
+</ul>
+<p>L’agent agit comme un vendeur expert, intégré à l’écosystème de marque.</p>
+<h3>Contenus pilotés par l’IA</h3>
+<p>Chez Zalando, 80 % des contenus marketing sont aujourd’hui générés par l’IA, avec une hausse de 70 à 80 % du taux de clics.</p>
+<p>L’IA ne remplace pas la création : elle change l’échelle et la vitesse.</p>
+<h2>Pourquoi maintenant : le basculement du parcours d’achat</h2>
+<p>Ce que l’on appelle désormais le <strong>commerce agentique</strong> repose sur une mutation profonde du comportement consommateur.</p>
+<p><strong>Le parcours se transforme :</strong></p>
+<ul>
+<li>de la recherche à la conversation</li>
+<li>des pages vitrines à l’exécution par un agent</li>
+<li>du multi-clic à l’achat quasi instantané</li>
+</ul>
+<p><strong>Des acteurs structurent déjà cet écosystème :</strong></p>
+<ul>
+<li>Shopify (infrastructure commerce)</li>
+<li>Meta (conversation transactionnelle)</li>
+<li>Google (distribution)</li>
+<li>Amazon (Rufus)</li>
+<li>Walmart (Sparky)</li>
+</ul>
+<p><strong>Conséquence directe :</strong></p>
+<ul>
+<li>moins de clics</li>
+<li>moins de pages</li>
+<li>plus de décisions prises “dans la conversation”</li>
+</ul>
+<p>La notion même de homepage et de checkout devient secondaire.</p>
+<h2>Marques et retailers : les nouveaux leviers de performance</h2>
+<p>Dans ce contexte, la question n’est pas “faut-il y aller ?” mais comment exister dans les conversations pilotées par des agents.</p>
+<h3>Les priorités stratégiques :</h3>
+<ul>
+<li>Être présent là où l’intention se forme</li>
+<li>Apporter de la valeur, pas du bruit</li>
+<li>Construire crédibilité et confiance</li>
+</ul>
+<h3>Les chantiers opérationnels :</h3>
+<p>Passer du SEO classique aux modes de recherche des LLM.</p>
+<p><strong>Repenser en profondeur les pages produit :</strong></p>
+<ul>
+<li>attributs exhaustifs</li>
+<li>données exactes (stock local, disponibilité)</li>
+<li>vidéos</li>
+<li>réponses aux questions réelles des consommateurs</li>
+</ul>
+<p><strong>Multiplier les contenus :</strong></p>
+<ul>
+<li>marque</li>
+<li>produit</li>
+<li>micro-créateurs</li>
+</ul>
+<h2>Le facteur décisif : la confiance dans le paiement</h2>
+<p>Comme aux débuts du e-commerce, tout repose sur la confiance.</p>
+<p>Jason Del Rey (<em>The Aisle</em>) observe une adoption progressive :</p>
+<ul>
+<li>premiers achats plafonnés autour de 50 dollars</li>
+<li>puis 100 à 200 dollars</li>
+<li>avant, potentiellement, des paniers plus élevés</li>
+</ul>
+<h2>Cas concrets : quand les acteurs s’engagent.</h2>
+<p>Au-delà des discours, plusieurs enseignes ont partagé des engagements tangibles.</p>
+<h3>JD Sports Fashion Plc</h3>
+<p>Le groupe souhaite s’inscrire dans le commerce agentique <strong>sans perdre le contrôle</strong> :</p>
+<ul>
+<li>des prix</li>
+<li>des stocks</li>
+<li>du checkout</li>
+<li>de la préparation et de la livraison</li>
+<li>de l’expérience client</li>
+</ul>
+<blockquote>
+<p>« Les canaux GenAI deviendront un point d’entrée majeur du commerce. Notre objectif est de rendre l’achat aussi simple que possible, quel que soit le canal. »</p>
+</blockquote>
+<h2>Inventaire intelligent : de l’outil opérationnel au levier stratégique.</h2>
+<p>Autre enseignement fort de la NRF : <strong>l’inventaire devient un actif stratégique</strong>.</p>
+<p>En 2026, les enseignes gagnantes seront celles capables de :</p>
+<ul>
+<li>garantir une disponibilité proche de 100 %</li>
+<li>libérer les équipes magasin de la recherche produit</li>
+<li>fluidifier le lien entre magasin et e-commerce</li>
+</ul>
+<p>La RFID n’est plus un outil de comptage.<br>Elle devient un levier de <strong>confiance, de fidélité et de croissance</strong>.</p>
+<h3>Cas Groupe Dynamite.</h3>
+<p><strong>Avant :</strong></p>
+<ul>
+<li>écarts d’inventaire</li>
+<li>frustration des équipes</li>
+<li>pertes de ventes</li>
+</ul>
+<p>Aujourd’hui (plateforme gStore) :</p>
+<ul>
+<li>inventaire mis à jour toutes les 10 minutes</li>
+<li>localisation fine des produits</li>
+<li>vision quasi temps réel</li>
+<li>magasin étendu au-delà de ses murs</li>
+<li>meilleure exécution omnicanale</li>
+</ul>
+<h2>Marketplace : un outil d’orchestration, pas un “side business”.</h2>
+<p>En 2026, des acteurs comme Best Buy, Nordstrom ou Target utilisent leur marketplace comme outil stratégique.</p>
+<p>Objectifs :</p>
+<ul>
+<li>élargir l’assortiment sans saturer les magasins</li>
+<li>tester de nouvelles catégories</li>
+<li>identifier les tendances (“curation at scale”)</li>
+<li>rester agile</li>
+</ul>
+<p>Walmart adopte une approche complémentaire : exposition physique de produits volumineux, QR codes pour l’information et la commande.</p>
+<h2>La citation</h2>
+<blockquote>
+<p>“One of the biggest transitions I had to make was helping the team understand that you can’t tell the customer what they want.”</p>
+</blockquote>
+<p><strong>Fran Horowitz – CEO, Abercrombie &amp; Fitch Co</strong></p>
+<p>Sous sa direction, le groupe enchaîne <strong>douze trimestres consécutifs de croissance</strong>, porté notamment par Hollister.<br>Une transformation profonde, fondée sur l’écoute terrain, jusque dans les échanges informels avec les équipes.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.frenchweb.fr/" target="_blank"> <img alt="" src="https://secure.gravatar.com/avatar/d6160ea25236fb629f04b873e6f4b771?s=250&amp;d=mm&amp;r=g"></a> </p><div><p>I’m a proud Expert Retail for FrenchWeb / DECODE MEDIA</p><p>As Business Strategist, I’m helping smart companies connect to the best tech solutions I identify in person in the U.S., to generate sales using the data that they already own. Let’s talk!</p></div> </section><section><p><a href="https://www.frenchweb.fr/" target="_blank"><img alt="" src="https://secure.gravatar.com/avatar/d6160ea25236fb629f04b873e6f4b771?s=250&amp;d=mm&amp;r=g"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -40,6 +218,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

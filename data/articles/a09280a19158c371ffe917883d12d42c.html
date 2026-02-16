@@ -6,13 +6,26 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -21,13 +34,95 @@
     Source: Hugging Face Blog | Date: 2/12/2026 12:00:00 AM | <a href="https://huggingface.co/blog/openenv-turing" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/christian-washington"><img alt="Christian Washington's avatar" src="https://huggingface.co/avatars/a8e5f060d589ef1aa7f5da4c9242236c.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ajasuja"><img alt="Ankit Jasuja's avatar" src="https://huggingface.co/avatars/e3637f78dff8c598fdb0102ac83fdaaf.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/santosh-iima"><img alt="Santosh Sah's avatar" src="https://huggingface.co/avatars/4ddd71341212435d2dba0c18cfbf59c7.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/lewtun"><img alt="Lewis Tunstall's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1594651707950-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/burtenshaw"><img alt="ben burtenshaw's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/62d648291fa3e4e7ae3fa6e8/oatOwf8Xqe5eDbCSuYqCd.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#what-is-openenv">What Is OpenEnv?</a> <ul></ul> </li><li><a href="#the-calendar-gym-a-production-grade-benchmark">The Calendar Gym: A Production-Grade Benchmark</a> <ul></ul> </li><li><a href="#what-we-learned">What We Learned</a> <ul></ul> </li><li><a href="#looking-ahead">Looking Ahead</a> <ul></ul> </li><li><a href="#appendix-common-error-cases-in-tool-use">Appendix: Common error cases in tool use</a> <ul><li><a href="#specific-error-cases-found-in-the-wild">Specific error cases found in the wild</a> <ul></ul> </li></ul> </li></ul></nav></div><p>AI agents often perform impressively in controlled research settings, yet struggle when deployed in real-world systems where they must reason across multiple steps, interact with real tools and APIs, operate under partial information, and recover from errors in stateful, permissioned environments—highlighting a persistent gap between research success and production reliability.</p>
+<p><a href="https://github.com/meta-pytorch/OpenEnv">OpenEnv</a> is an open-source framework from Meta and Hugging Face designed to address this challenge by standardizing how agents interact with real environments. As part of this collaboration, Turing contributed a production-grade calendar management <a href="https://huggingface.co/spaces/TuringEnterprises/calendar-gym/blob/main/README.md">environment</a> to study tool-using agents under realistic constraints such as access control, temporal reasoning, and multi-agent coordination.</p>
+<p>In this post, we explore how OpenEnv works in practice, why calendars serve as a powerful benchmark for real-world agent evaluation, and what our findings reveal about the current limitations of tool-using agents.</p>
+<h2> <a href="#what-is-openenv"> <span></span> </a> <span> What Is OpenEnv? </span>
+</h2>
+<p>OpenEnv is a framework for evaluating AI agents against <strong>real systems rather than simulations</strong>. It provides a standardized way to connect agents to real tools and workflows while preserving the structure needed for consistent and reliable evaluation.</p>
+<p>OpenEnv uses a gym-oriented API (<code>reset</code>, <code>step</code>, <code>action</code>, <code>observations</code>) like <a href="https://github.com/openai/gym">OpenAI's Gymnasium</a>. Also, OpenEnv uses a standard MCP tool call interface to connect to envs which provides a consistent interface across domains and simulation to production environments.</p>
+<p>The environments maintain state across multiple actions—enabling long-horizon reasoning—and can connect directly to real APIs and tools such as browsers, code repositories, or calendars. This shifts evaluation from <em>"Can this work in a controlled demo?"</em> to <em>"Can this operate reliably in the real world?"</em></p>
+<h2> <a href="#the-calendar-gym-a-production-grade-benchmark"> <span></span> </a> <span> The Calendar Gym: A Production-Grade Benchmark </span>
+</h2>
+<p><a href="https://raw.githubusercontent.com/christian-washington/blog-assets/main/DIAGRAM%202_1280x720.png"><img alt="Diagram 2" src="https://raw.githubusercontent.com/christian-washington/blog-assets/main/DIAGRAM%202_1280x720.png"></a></p>
+<p>Calendar systems are deceptively complex. While scheduling a meeting seems simple, real-world calendar management requires agents to reason over time, permissions, multiple users, and incomplete information—often across several dependent steps. These properties make calendars a powerful testbed for evaluating tool-using agents outside controlled simulations.</p>
+<p>To ground OpenEnv in this kind of realistic, demanding use case, Turing built a production-grade calendar management environment referred to as the <strong>Calendar Gym</strong>. Rather than simulating scheduling in the abstract, it exposes agents to the same constraints they would face in real calendar systems: Access Control Lists across users and calendars, limited visibility into other users' state, and multi-step workflows where actions must be chained in the correct order. Agents interact with a rich set of calendar operations—from listing calendars to modifying events and permissions—and must handle failed actions, incorrect assumptions, and missing permissions. Each session runs in an isolated environment, enabling reliable comparisons across runs.</p>
+<p>Below is a code example of how to use the Calendar Gym. We explore the environment, discover available tools, list calendars, create an event, and print the result.</p>
+<pre><code><span>from</span> openenv_wrapper.client <span>import</span> MCPEnvClient
+<span>from</span> openenv_wrapper.data_models <span>import</span> MCPAction <span>with</span> MCPEnvClient.from_hub(base_url=<span>"TuringEnterprises/calendar-gym"</span>) <span>as</span> client: <span># Connect and reset the environment</span> result = client.reset() <span>print</span>(<span>"Reset successful:"</span>, result.observation.success) <span># Discover available tools</span> result = client.step(MCPAction(action_type=<span>"ListToolsAction"</span>)) <span>print</span>(<span>"Available tools:"</span>, <span>len</span>(result.observation.tools_list)) <span># List calendars</span> result = client.step(MCPAction( action_type=<span>"ToolCallAction"</span>, tool_name=<span>"calendars_list"</span>, arguments={} )) calendars = result.observation.tool_result[<span>"items"</span>] <span>print</span>(<span>"Calendars:"</span>, calendars) <span># Create an event</span> result = client.step(MCPAction( action_type=<span>"ToolCallAction"</span>, tool_name=<span>"events_insert"</span>, arguments={ <span>"calendarId"</span>: <span>"primary"</span>, <span>"summary"</span>: <span>"Team Sync"</span>, <span>"start"</span>: {<span>"dateTime"</span>: <span>"2026-01-15T14:00:00Z"</span>}, <span>"end"</span>: {<span>"dateTime"</span>: <span>"2026-01-15T15:00:00Z"</span>} } )) <span>print</span>(<span>"Event created:"</span>, result.observation.success)
+</code></pre>
+<p>Below is an excerpt of what the Calendar Gym returns when you call <code>ListToolsAction</code>. Each entry includes the tool name plus an input schema (what arguments the tool accepts).</p> Click to expand output <pre><code><span>{</span> <span>"tools_list"</span><span>:</span> <span>[</span> <span>{</span> <span>"name"</span><span>:</span> <span>"calendars_list"</span><span>,</span> <span>"description"</span><span>:</span> <span>"List calendars visible to the current user."</span><span>,</span> <span>"input_schema"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"object"</span><span>,</span> <span>"properties"</span><span>:</span> <span>{</span><span>}</span><span>,</span> <span>"additionalProperties"</span><span>:</span> <span><span>false</span></span> <span>}</span> <span>}</span><span>,</span> <span>{</span> <span>"name"</span><span>:</span> <span>"events_insert"</span><span>,</span> <span>"description"</span><span>:</span> <span>"Create an event in a calendar."</span><span>,</span> <span>"input_schema"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"object"</span><span>,</span> <span>"properties"</span><span>:</span> <span>{</span> <span>"calendarId"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"string"</span> <span>}</span><span>,</span> <span>"summary"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"string"</span> <span>}</span><span>,</span> <span>"start"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"object"</span><span>,</span> <span>"properties"</span><span>:</span> <span>{</span> <span>"dateTime"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"string"</span> <span>}</span> <span>}</span><span>,</span> <span>"required"</span><span>:</span> <span>[</span><span>"dateTime"</span><span>]</span> <span>}</span><span>,</span> <span>"end"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"object"</span><span>,</span> <span>"properties"</span><span>:</span> <span>{</span> <span>"dateTime"</span><span>:</span> <span>{</span> <span>"type"</span><span>:</span> <span>"string"</span> <span>}</span> <span>}</span><span>,</span> <span>"required"</span><span>:</span> <span>[</span><span>"dateTime"</span><span>]</span> <span>}</span> <span>}</span><span>,</span> <span>"required"</span><span>:</span> <span>[</span><span>"calendarId"</span><span>,</span> <span>"summary"</span><span>,</span> <span>"start"</span><span>,</span> <span>"end"</span><span>]</span> <span>}</span> <span>}</span> <span>]</span>
+<span>}</span>
+</code></pre> <h2> <a href="#what-we-learned"> <span></span> </a> <span> What We Learned </span>
+</h2>
+<p>Evaluating agents in the Calendar Gym revealed consistent patterns which were common across multiple domains. While agents often perform well on individual game like actions, reliability breaks down as tasks become longer, more ambiguous, and more constrained.</p>
+<p><strong>Multi-step reasoning is the primary bottleneck.</strong> Agents struggle to correctly chain actions across longer workflows, suggesting that benchmarks need to test sustained reasoning over multiple dependent steps—not just single tool calls.</p>
+<p><strong>Ambiguity significantly degrades performance.</strong> Agents achieved close to <strong>90% success</strong> on tasks with explicit calendar identifiers, but success dropped to roughly <strong>40%</strong> when the same tasks were phrased using natural language descriptions. Building stronger lookup and validation into agent loops—rather than relying on the LLM to resolve references unaided—appears essential.</p>
+<p><strong>Correct tool choice isn't enough.</strong> Across failed interactions, more than half of errors stemmed from malformed tool arguments or incorrect ordering, even when the right tool was selected. Reliable agent behavior depends as much on execution quality and structured feedback as on tool selection—environment design matters.</p>
+<p>These challenges are not unique to scheduling and calendars. They reflect broader limitations that emerge whenever agents operate in changing systems over long periods of time, and they point toward evaluation frameworks that test permissions, partial observability, and multi-step workflows together.</p>
+<h2> <a href="#looking-ahead"> <span></span> </a> <span> Looking Ahead </span>
+</h2>
+<p>OpenEnv provides a foundation for testing agents under realistic conditions, and the Calendar Gym demonstrates how seemingly simple domains can surface deep challenges in reasoning, ambiguity resolution, and tool use. By evaluating agents where failure is measurable and constraints are real, we gain clearer insight into what it takes to build agents that operate reliably in production.</p>
+<p>For a deeper dive into the Calendar Gym's design, benchmarking methodology, and quantitative results, explore the full technical article on Turing's <a href="https://www.turing.com/blog/evaluating-tool-using-agents-in-production-oriented-environments-with-openenv">site</a>. To explore a clone of the Calendar Gym, visit the <a href="https://huggingface.co/spaces/TuringEnterprises/calendar-gym">Calendar Gym space</a>.</p>
+<h2> <a href="#appendix-common-error-cases-in-tool-use"> <span></span> </a> <span> Appendix: Common error cases in tool use </span>
+</h2>
+<p>In practice, tool integrations rarely fail in dramatic ways; they fail in small, predictable ones. When wiring up MCP tools to real APIs (like calendar operations), we encountered a handful of recurring issues.</p>
+<h3> <a href="#specific-error-cases-found-in-the-wild"> <span></span> </a> <span> Specific error cases found in the wild </span>
+</h3>
+<p>Below are three common failure modes we’ve seen in production, along with representative error payloads and mitigation strategies. These examples illustrate not just what can go wrong, but how structured errors can help agents recover gracefully.</p>
+<h4> <a href="#1-schema-validation-errors-missing-or-malformed-arguments"> <span></span> </a> <span> 1. Schema validation errors (missing or malformed arguments) </span>
+</h4>
+<p>The agent calls a valid tool (e.g. <code>events_insert</code>), but the arguments do not match the declared JSON schema.</p>
+<ul>
+<li>Missing required fields like <code>calendarId</code></li>
+<li>Incorrect nesting of <code>start</code> / <code>end</code></li>
+<li>Passing a string where an object is expected.</li>
+</ul> Click to expand error payload <pre><code><span>{</span> <span>"ok"</span><span>:</span> <span><span>false</span></span><span>,</span> <span>"error_type"</span><span>:</span> <span>"validation_error"</span><span>,</span> <span>"tool_name"</span><span>:</span> <span>"events_insert"</span><span>,</span> <span>"message"</span><span>:</span> <span>"Invalid arguments for tool 'events_insert'."</span><span>,</span> <span>"details"</span><span>:</span> <span>{</span> <span>"missing_required_fields"</span><span>:</span> <span>[</span><span>"calendarId"</span><span>,</span> <span>"end"</span><span>]</span><span>,</span> <span>"invalid_fields"</span><span>:</span> <span>[</span> <span>{</span> <span>"field"</span><span>:</span> <span>"start"</span><span>,</span> <span>"expected_type"</span><span>:</span> <span>"object"</span><span>,</span> <span>"received_type"</span><span>:</span> <span>"string"</span> <span>}</span> <span>]</span> <span>}</span>
+<span>}</span>
+</code></pre> <p>We can mitigate this by providing one canonical example of a correct 'events_insert' call in your prompt. Return structured validation errors so the model can repair and retry instead of failing silently.</p>
+<h4> <a href="#2-permission--authorization-errors-401403"> <span></span> </a> <span> 2. Permission / authorization errors (401/403) </span>
+</h4>
+<p>The tool call is syntactically correct, but the API rejects it due to insufficient permissions.</p>
+<ul>
+<li>Missing OAuth scopes </li>
+<li>Expired access token </li>
+<li>User lacks write access to the target calendar</li>
+</ul> Click to expand error payload <pre><code><span>{</span> <span>"ok"</span><span>:</span> <span><span>false</span></span><span>,</span> <span>"error_type"</span><span>:</span> <span>"permission_error"</span><span>,</span> <span>"tool_name"</span><span>:</span> <span>"events_insert"</span><span>,</span> <span>"http_status"</span><span>:</span> <span>403</span><span>,</span> <span>"message"</span><span>:</span> <span>"The authenticated user does not have write access to calendar 'primary'."</span><span>,</span> <span>"remediation"</span><span>:</span> <span>[</span> <span>"Ensure the OAuth token includes calendar write scope."</span><span>,</span> <span>"Verify the user has edit access to the target calendar."</span><span>,</span> <span>"Reconnect the integration if the token has expired."</span> <span>]</span>
+<span>}</span>
+</code></pre> <p>We can mitigate this by clearly documenting the required OAuth scopes. Return structured, actionable remediation steps so the agent can guide the user instead of retrying the same failing call.
+Clearly document required OAuth scopes. Return structured, actionable remediation steps so the agent can guide the user instead of retrying the same failing call.</p>
+<h4> <a href="#3-datetime--format-errors-rfc3339--timezone-issues"> <span></span> </a> <span> 3. Datetime / format errors (RFC3339 &amp; timezone issues) </span>
+</h4>
+<p>The event is rejected by the API, or it is created at an unexpected time.</p>
+<ul>
+<li>Missing timezone offset </li>
+<li>Non-RFC3339 datetime format </li>
+<li>Incorrect nesting of <code>start.dateTime</code> or <code>end.dateTime</code> </li>
+<li>Mixing local time and UTC without specifying an offset</li>
+</ul> Click to expand error payload <pre><code><span>{</span> <span>"ok"</span><span>:</span> <span><span>false</span></span><span>,</span> <span>"error_type"</span><span>:</span> <span>"format_error"</span><span>,</span> <span>"tool_name"</span><span>:</span> <span>"events_insert"</span><span>,</span> <span>"message"</span><span>:</span> <span>"Invalid datetime format for field 'start.dateTime'."</span><span>,</span> <span>"details"</span><span>:</span> <span>{</span> <span>"received"</span><span>:</span> <span>"02/11/2026 9:30 AM"</span><span>,</span> <span>"expected_format"</span><span>:</span> <span>"RFC3339 (e.g. 2026-02-11T09:30:00-05:00)"</span> <span>}</span>
+<span>}</span>
+</code></pre> <p>We can mitigate this by standardizing on RFC3339 with explicit timezone offsets (e.g. 2026-02-11T09:30:00-05:00). Include at least one correct datetime example in your documentation to anchor model behavior and reduce repair retries.</p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -40,6 +135,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

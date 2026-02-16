@@ -6,13 +6,26 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
@@ -21,13 +34,54 @@
     Source: Hugging Face Blog | Date: 8/12/2025 2:52:08 PM | <a href="https://huggingface.co/blog/Arm/neural-super-sampling" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/sondhiArm"><img alt="EricSondhi's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/noauth/YdisMmTuCDj0gVK2TDml7.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/willlordarm"><img alt="Will Lord's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/eraEo8s9LCgz_uJYEEOfa.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#elevated-by-machine-learning">Elevated by machine learning</a> <ul></ul> </li><li><a href="#learn-about-our-nss-model">Learn about our NSS Model</a> <ul></ul> </li><li><a href="#how-we-trained-the-model">How we trained the model</a> <ul></ul> </li><li><a href="#get-started-experimenting-with-nss-today">Get started experimenting with NSS today!</a> <ul></ul> </li></ul></nav></div><p><a href="https://cdn-uploads.huggingface.co/production/uploads/6682a9252200824e2ddc667f/mKBLpNTALoOAsoj8O3opP.png"><img alt="image/png" src="https://cdn-uploads.huggingface.co/production/uploads/6682a9252200824e2ddc667f/mKBLpNTALoOAsoj8O3opP.png"></a></p>
+<p>Neural Super Sampling (NSS), a next-generation AI-powered upscaling solution from Arm is released for graphics and gaming developers to start experimenting today!</p>
+<h2> <a href="#elevated-by-machine-learning"> <span></span> </a> <span> Elevated by machine learning </span>
+</h2>
+<p>NSS is designed for real-time performance on future mobile devices with <a href="https://newsroom.arm.com/news/arm-announces-arm-neural-technology">Arm Neural Technology</a>. However, latency depends on implementation factors such as GPU configuration, resolution, and use case. In our Enchanted Castle demo video below, NSS reduced GPU workload by 50 percent. The model rendered at 540p and upscaled to 1080p in just 4ms in sustained performance setup.</p> Your browser does not support the video tag. <h2> <a href="#learn-about-our-nss-model"> <span></span> </a> <span> Learn about our NSS Model </span>
+</h2>
+<p>Neural Super Sampling (NSS) is a parameter prediction model for real-time temporal super sampling developed by Arm, optimized for execution on Neural Accelerators (NX) in mobile GPUs. It enables high-resolution rendering at a lower compute cost by reconstructing high-quality output frames from low-resolution temporal inputs. NSS is particularly suited for mobile gaming, XR, and other power-constrained graphics use cases.</p>
+<p>Get started with our <a href="https://huggingface.co/Arm/neural-super-sampling">NSS model</a> today.</p>
+<p>If you want to go deeper check out the following resources:</p>
+<ul>
+<li><strong> Technical Blog</strong>: <a href="https://community.arm.com/arm-blog-review/b/draft-blogs/posts/how-arm-neural-super-sampling-works">How Neural Super Sampling works</a></li>
+<li><strong> White Paper:</strong> <a href="https://developer.arm.com/documentation/111019">Building for Tomorrow: Try Neural Super Sampling Today with the Unreal Plugin &amp; ML extensions for Vulkan</a></li>
+<li><strong> Technical Blog:</strong> <a href="https://community.arm.com/arm-community-blogs/b/mobile-graphics-and-gaming-blog/posts/how-to-access-arm-neural-super-sampling">Experiment with NSS</a></li>
+</ul>
+<h2> <a href="#how-we-trained-the-model"> <span></span> </a> <span> How we trained the model </span>
+</h2>
+<p>Check out the <a href="https://huggingface.co/datasets/Arm/neural-graphics-dataset">Neural Graphics Dataset</a>: A collection of reference images and image sequences along with the corresponding motion, depth and other data required to train, validate and test neural super sampling algorithms.
+<a href="https://huggingface.co/datasets/Arm/neural-graphics-dataset/resolve/main/bistro-output-colour-gamma.jpg"><img alt="" src="https://huggingface.co/datasets/Arm/neural-graphics-dataset/resolve/main/bistro-output-colour-gamma.jpg"></a></p>
+<p>The current version of the dataset includes a limited set of data for Neural Super Sampling to demonstrate how the NSS model development flow works. While this flow does not yet provide a comprehensive dataset for complete model (re)training, stay tuned for future releases of the <a href="https://github.com/arm/neural-graphics-model-gym">Neural Graphics Model Gym</a> where Arm will provide tools to capture and convert content for use in model training and retraining. </p>
+<h2> <a href="#get-started-experimenting-with-nss-today"> <span></span> </a> <span> Get started experimenting with NSS today! </span>
+</h2>
+<p>NSS has been integrated into Unreal Engine via two plugins, the <a href="https://github.com/arm/neural-graphics-for-unreal/">NSS Plugin for Unreal Engine</a> and <a href="https://github.com/arm/ml-extensions-for-vulkan-unreal-plugin/">Unreal NNE Plugin for ML extensions for Vulkan</a>. </p>
+<p>For step-by-step instructions on how to use NSS in Unreal Engine.See our learning paths:</p>
+<ul>
+<li><strong>Quickstart with ML extensions for Vulkan</strong>: <a href="https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/vulkan-ml-sample/">ML extensions for Vulkan Quickstart Guide</a></li>
+<li><strong>Quickstart with Unreal</strong>: <a href="https://learn.arm.com/learning-paths/mobile-graphics-and-gaming/nss-unreal/">Neural Super Sampling Quickstart Guide</a> for NSS integration into Unreal Engine</li>
+</ul>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -40,6 +94,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

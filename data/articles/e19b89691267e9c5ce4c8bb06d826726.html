@@ -2,187 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - brave/brave-browser: Brave browser for Android, iOS, Linux, macOS, Windows.</title>
+<title>brave/brave-browser</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>GitHub - brave/brave-browser: Brave browser for Android, iOS, Linux, macOS, Windows.</h1>
+  <h1>brave/brave-browser</h1>
   <div class="metadata">
-    Source: GitHub Trending | Date: 2/16/2026 10:42:11 PM | <a href="https://github.com/brave/brave-browser" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending | Date: 2/16/2026 11:23:47 PM | <a href="https://github.com/brave/brave-browser" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p><a target="_blank" href="/brave/brave-browser/blob/master/docs/source/_static/Brave.svg"><img src="/brave/brave-browser/raw/master/docs/source/_static/Brave.svg" alt="Brave Browser"></a></p>
-<div><h2>Overview</h2><a href="#overview"></a></div>
-<p>This repository holds the build tools needed to build the Brave desktop browser for macOS, Windows, and Linux. In particular, it fetches and syncs code from the projects defined in </p><pre><code>package.json</code></pre> and <pre><code>src/brave/DEPS</code></pre>:<p></p>
-<ul>
-<li><a href="https://chromium.googlesource.com/chromium/src.git">Chromium</a>
-<ul>
-<li>Fetches code via <pre><code>depot_tools</code></pre>.</li>
-<li>Sets the branch for Chromium (ex: 65.0.3325.181).</li>
-</ul>
-</li>
-<li><a href="https://github.com/brave/brave-core">brave-core</a>
-<ul>
-<li>Mounted at <pre><code>src/brave</code></pre>.</li>
-<li>Maintains patches for 3rd party Chromium code.</li>
-</ul>
-</li>
-<li><a href="https://github.com/brave/adblock-rust">adblock-rust</a>
-<ul>
-<li>Implements Brave's ad-block engine.</li>
-<li>Linked through <a href="https://github.com/brave/brave-core/tree/master/components/adblock_rust_ffi">brave/adblock-rust-ffi</a>.</li>
-</ul>
-</li>
-</ul>
-<div><h2>Downloads</h2><a href="#downloads"></a></div>
-<p>You can <a href="https://brave.com/download">visit our website</a> to get the latest stable release.</p>
-<div><h2>Contributing</h2><a href="#contributing"></a></div>
-<p>Please see the <a href="/brave/brave-browser/blob/master/CONTRIBUTING.md">contributing guidelines</a>.</p>
-<p>Our <a href="https://github.com/brave/brave-browser/wiki">Wiki</a> also has some useful technical information.</p>
-<div><h2>Community</h2><a href="#community"></a></div>
-<p><a href="https://community.brave.app/">Join the Q&amp;A community</a> if you'd like to get more involved with Brave. You can <a href="https://community.brave.app/c/support-and-troubleshooting">ask for help</a>,
-<a href="https://community.brave.app/c/brave-feature-requests">discuss features you'd like to see</a>, and a lot more. We'd love to have your help so that we can continue improving Brave.</p>
-<p>Help us translate Brave to your language by submitting translations at <a href="https://explore.transifex.com/brave/brave_en/">https://explore.transifex.com/brave/brave_en/</a>.</p>
-<p>Follow <a href="https://x.com/brave">@brave</a> on X for important news and announcements.</p>
-<div><h2>Install prerequisites</h2><a href="#install-prerequisites"></a></div>
-<p>Follow the instructions for your platform:</p>
-<ul>
-<li><a href="https://github.com/brave/brave-browser/wiki/macOS-Development-Environment">macOS</a></li>
-<li><a href="https://github.com/brave/brave-browser/wiki/iOS-Development-Environment">iOS</a></li>
-<li><a href="https://github.com/brave/brave-browser/wiki/Windows-Development-Environment">Windows</a></li>
-<li><a href="https://github.com/brave/brave-browser/wiki/Linux-Development-Environment">Linux</a></li>
-<li><a href="https://github.com/brave/brave-browser/wiki/Android-Development-Environment">Android</a></li>
-</ul>
-<div><h2>Clone and initialize the repo</h2><a href="#clone-and-initialize-the-repo"></a></div>
-<p>Once you have the prerequisites installed, you can get the code and initialize the build environment.</p>
-<div><pre>git clone git@github.com:brave/brave-core.git path-to-your-project-folder/src/brave
-<span>cd</span> path-to-your-project-folder/src/brave
-npm install <span><span>#</span> the Chromium source is downloaded, which has a large history (gigabytes of data)</span>
-<span><span>#</span> this might take really long to finish depending on internet speed</span> npm run init</pre></div>
-<p>brave-core based android builds should use </p><pre><code>npm run init -- --target_os=android --target_arch=arm</code></pre> (or whichever CPU type you want to build for)
-brave-core based iOS builds should use <pre><code>npm run init -- --target_os=ios</code></pre><p></p>
-<p>You can also set the target_os and target_arch for init and build using:</p>
-<div><pre><code>npm config set target_os android
-npm config set target_arch arm
-</code></pre></div>
-<p>Additional parameters needed to build are documented at <a href="https://github.com/brave/brave-browser/wiki/Build-configuration">https://github.com/brave/brave-browser/wiki/Build-configuration</a></p>
-<p>Internal developers can find more information at <a href="https://github.com/brave/internal/wiki/Build-configuration">https://github.com/brave/internal/wiki/Build-configuration</a></p>
-<div><h2>Build Brave</h2><a href="#build-brave"></a></div>
-<p>The default build type is component.</p>
-<div><pre><code># start the component build compile
-npm run build
-</code></pre></div>
-<p>To do a release build:</p>
-<div><pre><code># start the release compile
-npm run build Release
-</code></pre></div>
-<p>brave-core based android builds should use </p><pre><code>npm run build -- --target_os=android --target_arch=arm</code></pre> or set the npm config variables as specified above for <pre><code>init</code></pre><p></p>
-<p>brave-core based iOS builds should use the Xcode project found in </p><pre><code>ios/brave-ios/App</code></pre>. You can open this project directly or run <pre><code>npm run ios_bootstrap -- --open_xcodeproj</code></pre> to have it opened in Xcode. See the <a href="https://github.com/brave/brave-browser/wiki/iOS-Development-Environment#Building">iOS Developer Environment</a> for more information on iOS builds.<p></p>
-<div><h3>Build Configurations</h3><a href="#build-configurations"></a></div>
-<p>Running a release build with </p><pre><code>npm run build Release</code></pre> can be very slow and use a lot of RAM, especially on Linux with the Gold LLVM plugin.<p></p>
-<p>To run a statically linked build (takes longer to build, but starts faster):</p>
-<div><pre>npm run build -- Static</pre></div>
-<p>To run a debug build (Component build with is_debug=true):</p>
-<div><pre>npm run build -- Debug</pre></div>
-<p>NOTE: the build will take a while to complete. Depending on your processor and memory, it could potentially take a few hours.</p>
-<div><h2>Run Brave</h2><a href="#run-brave"></a></div>
-<p>To start the build:</p>
-<p></p><pre><code>npm start [Release|Component|Static|Debug]</code></pre><p></p>
-<div><h1>Update Brave</h1><a href="#update-brave"></a></div>
-<p></p><pre><code>npm run sync -- [--force] [--init] [--create] [brave_core_ref]</code></pre><p></p>
-<p><strong>This will attempt to stash your local changes in brave-core, but it's safer to commit local changes before running this</strong></p>
-<p></p><pre><code>npm run sync</code></pre> will (depending on the below flags):<p></p>
-<ol>
-<li> Update sub-projects (chromium, brave-core) to latest commit of a git ref (e.g. tag or branch)</li>
-<li> Apply patches</li>
-<li> Update gclient DEPS dependencies</li>
-<li> Run hooks (e.g. to perform <pre><code>npm install</code></pre> on child projects)</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th>flag</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><pre><code>[no flags]</code></pre></td>
-<td>updates chromium if needed and re-applies patches. If the chromium version did not change, it will only re-apply patches that have changed. Will update child dependencies <strong>only if any project needed updating during this script run</strong>. <br> **Use this if you want the script to manage keeping you up to date instead of pulling or switching branches manually. **</td>
-</tr>
-<tr>
-<td><pre><code>--force</code></pre></td>
-<td>updates both <em>Chromium</em> and <em>brave-core</em> to the latest remote commit for the current brave-core branch and the <em>Chromium</em> ref specified in brave-core/package.json (e.g. <pre><code>master</code></pre> or <pre><code>74.0.0.103</code></pre>). Will re-apply all patches. Will force update all child dependencies. <br> **Use this if you're having trouble and want to force the branches back to a known state. **</td>
-</tr>
-<tr>
-<td><pre><code>--init</code></pre></td>
-<td>force update both <em>Chromium</em> and <em>brave-core</em> to the versions specified in brave-core/package.json and force updates all dependent repos - same as <pre><code>npm run init</code></pre></td>
-</tr>
-<tr>
-<td><pre><code>--sync_chromium (true/false)</code></pre></td>
-<td>Will force or skip the chromium version update when applicable. Useful if you want to avoid a minor update when not ready for the larger build time a chromium update may result in. A warning will be output about the current code state expecting a different chromium version. Your build may fail as a result.</td>
-</tr>
-<tr>
-<td><pre><code>-D, --delete_unused_deps</code></pre></td>
-<td>Will delete from the working copy any dependencies that have been removed since the last sync. Mimics <pre><code>gclient sync -D</code></pre>.</td>
-</tr>
-</tbody>
-</table>
-<p>Run </p><pre><code>npm run sync brave_core_ref</code></pre> to checkout the specified <em>brave-core</em> ref and update all dependent repos including chromium if needed.<p></p>
-<div><h2>Scenarios</h2><a href="#scenarios"></a></div>
-<div><h4>Create a new branch:</h4><a href="#create-a-new-branch"></a></div>
-<div><pre><span>&gt;</span> <span>cd</span> src/brave
-src/brave<span>&gt;</span> git checkout -b branch_name</pre></div>
-<div><h4>Checkout an existing branch or tag:</h4><a href="#checkout-an-existing-branch-or-tag"></a></div>
-<div><pre>src/brave<span>&gt;</span> git fetch origin
-src/brave<span>&gt;</span> git checkout [-b] branch_name
-src/brave<span>&gt;</span> npm run sync
-...Updating 2 patches...
-...Updating child dependencies...
-...Running hooks...</pre></div>
-<div><h4>Update the current branch to the latest remote:</h4><a href="#update-the-current-branch-to-the-latest-remote"></a></div>
-<div><pre>src/brave<span>&gt;</span> git pull
-src/brave<span>&gt;</span> npm run sync
-...Updating 2 patches...
-...Updating child dependencies...
-...Running hooks...</pre></div>
-<div><h4>Reset to latest brave-core master (via <pre><code>init</code></pre>, will always result in a longer build and will remove any pending changes in your brave-core working directory):</h4><a href="#reset-to-latest-brave-core-master-via-init-will-always-result-in-a-longer-build-and-will-remove-any-pending-changes-in-your-brave-core-working-directory"></a></div>
-<div><pre>src/brave<span>&gt;</span> git checkout master
-src/brave<span>&gt;</span> git pull
-src/brave<span>&gt;</span> npm run sync -- --init</pre></div>
-<div><h4>When you know that DEPS didn't change, but .patch files did (quickest attempt to perform a mini-sync before a build):</h4><a href="#when-you-know-that-deps-didnt-change-but-patch-files-did-quickest-attempt-to-perform-a-mini-sync-before-a-build"></a></div>
-<div><pre>src/brave<span>&gt;</span> git checkout featureB
-src/brave<span>&gt;</span> git pull
-src/brave<span>&gt;</span> npm run apply_patches
-...Applying 2 patches...</pre></div>
-<div><h1>Enabling third-party APIs:</h1><a href="#enabling-third-party-apis"></a></div>
-<ol>
-<li><strong>Google Safe Browsing</strong>: Get an API key with SafeBrowsing API enabled from <a href="https://console.developers.google.com/">https://console.developers.google.com/</a>. Update the <pre><code>GOOGLE_API_KEY</code></pre> environment variable with your key as per <a href="https://www.chromium.org/developers/how-tos/api-keys">https://www.chromium.org/developers/how-tos/api-keys</a> to enable Google SafeBrowsing.</li>
-</ol>
-<div><h1>Development</h1><a href="#development"></a></div> <div><h1>Troubleshooting</h1><a href="#troubleshooting"></a></div>
-<p>See <a href="https://github.com/brave/brave-browser/wiki/Troubleshooting">Troubleshooting</a> for solutions to common problems.</p>
+    <p>Brave browser for Android, iOS, Linux, macOS, Windows. Overview This repository holds the build tools needed to build the Brave desktop browser for macOS, Windows, and Linux. In particular, it fetches and syncs code from the projects defined in package.json and src/brave/DEPS: Chromium Fetches code via depot_tools. Sets the branch for Chromium (ex: 65.0.3325.181). brave-core Mounted at src/brave. Maintains patches for 3rd party Chromium code. adblock-rust Implements Brave's ad-block engine. Linked through brave/adblock-rust-ffi. Downloads You can visit our website to get the latest stable release. Contributing Please see the contributing guidelines. Our Wiki also has some useful technical information. Community Join the Q&amp;A community if you'd like to get more involved with Brave. You can ask for help, discuss features you'd like to see, and a lot more. We'd love to have your help so that we can continue improving Brave. Help us translate Brave to your language by submitting translations at https://explore.transifex.com/brave/brave_en/. Follow @brave on X for important news and announcements. Install prerequisites Follow the instructions for your platform:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -195,6 +61,10 @@ src/brave<span>&gt;</span> npm run apply_patches
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

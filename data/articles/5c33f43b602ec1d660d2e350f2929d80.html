@@ -2,222 +2,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - open-webui/open-webui: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</title>
+<title>open-webui/open-webui</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
-  <h1>GitHub - open-webui/open-webui: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</h1>
+  <h1>open-webui/open-webui</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 10:42:16 PM | <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/16/2026 11:23:47 PM | <a href="https://github.com/open-webui/open-webui" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>Open WebUI </h1><a href="#open-webui-"></a></div>
-<p><a target="_blank" href="https://camo.githubusercontent.com/26427a0ed61c3edfe1b60d1f2bf2c3d7fd48dd46d9170843930b763469e45645/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/26427a0ed61c3edfe1b60d1f2bf2c3d7fd48dd46d9170843930b763469e45645/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c" alt="GitHub stars"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/44f2f4a7a2286df63e9977f4d2adad1d56186245b8c4fde2a5855610a13ead23/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/44f2f4a7a2286df63e9977f4d2adad1d56186245b8c4fde2a5855610a13ead23/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f666f726b732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c" alt="GitHub forks"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/aa0a7ddaa59e26f1a9c0f02a640ba4dd44219f62b102e22d378b57eef42b181b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f77617463686572732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c"><img src="https://camo.githubusercontent.com/aa0a7ddaa59e26f1a9c0f02a640ba4dd44219f62b102e22d378b57eef42b181b/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f77617463686572732f6f70656e2d77656275692f6f70656e2d77656275693f7374796c653d736f6369616c" alt="GitHub watchers"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/7961cd9a98d3cb275e12b4733a047be12b1ed3750565ce4e74195693a7f32bb2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f7265706f2d73697a652f6f70656e2d77656275692f6f70656e2d7765627569"><img src="https://camo.githubusercontent.com/7961cd9a98d3cb275e12b4733a047be12b1ed3750565ce4e74195693a7f32bb2/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f7265706f2d73697a652f6f70656e2d77656275692f6f70656e2d7765627569" alt="GitHub repo size"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/ca888442dfd2424594f4935b730f2807aee2953b32d689567e9615965ec196fd/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f636f756e742f6f70656e2d77656275692f6f70656e2d7765627569"><img src="https://camo.githubusercontent.com/ca888442dfd2424594f4935b730f2807aee2953b32d689567e9615965ec196fd/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f636f756e742f6f70656e2d77656275692f6f70656e2d7765627569" alt="GitHub language count"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/7c2ad79314ad08f74ad511df6e3f37f6d8bc3d8343e5189b654b146eed8e4f0c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f746f702f6f70656e2d77656275692f6f70656e2d7765627569"><img src="https://camo.githubusercontent.com/7c2ad79314ad08f74ad511df6e3f37f6d8bc3d8343e5189b654b146eed8e4f0c/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c616e6775616765732f746f702f6f70656e2d77656275692f6f70656e2d7765627569" alt="GitHub top language"></a>
-<a target="_blank" href="https://camo.githubusercontent.com/f8fb32b5973b26a828fe1dba461e9118d1fbdb1087de6d7454ccbe30ab7a312a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f6f70656e2d77656275692f6f70656e2d77656275693f636f6c6f723d726564"><img src="https://camo.githubusercontent.com/f8fb32b5973b26a828fe1dba461e9118d1fbdb1087de6d7454ccbe30ab7a312a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f6f70656e2d77656275692f6f70656e2d77656275693f636f6c6f723d726564" alt="GitHub last commit"></a>
-<a href="https://discord.gg/5rJgQTnV4s"><img src="https://camo.githubusercontent.com/2a8901c7df6d991cbf5018640c296232b0a48bf115e759e43dc13fa4739932c7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f446973636f72642d4f70656e5f57656255492d626c75653f6c6f676f3d646973636f7264266c6f676f436f6c6f723d7768697465" alt="Discord"></a>
-<a href="https://github.com/sponsors/tjbck"><img src="https://camo.githubusercontent.com/d2432db86e1cfca636933728a664bf886cff501efab549a0af6abab26fe8851b/68747470733a2f2f696d672e736869656c64732e696f2f7374617469632f76313f6c6162656c3d53706f6e736f72266d6573736167653d254532253944254134266c6f676f3d47697448756226636f6c6f723d253233666538653836" alt=""></a></p>
-<p><a target="_blank" href="/open-webui/open-webui/blob/main/banner.png"><img src="/open-webui/open-webui/raw/main/banner.png" alt="Open WebUI Banner"></a></p>
-<p><strong>Open WebUI is an <a href="https://docs.openwebui.com/features/plugin/">extensible</a>, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.</strong> It supports various LLM runners like <strong>Ollama</strong> and <strong>OpenAI-compatible APIs</strong>, with <strong>built-in inference engine</strong> for RAG, making it a <strong>powerful AI deployment solution</strong>.</p>
-<p>Passionate about open-source AI? <a href="https://careers.openwebui.com/">Join our team →</a></p>
-<p><a target="_blank" href="/open-webui/open-webui/blob/main/demo.png"><img src="/open-webui/open-webui/raw/main/demo.png" alt="Open WebUI Demo"></a></p>
-<div><p>Tip</p><p><strong>Looking for an <a href="https://docs.openwebui.com/enterprise">Enterprise Plan</a>?</strong> – <strong><a href="https://docs.openwebui.com/enterprise">Speak with Our Sales Team Today!</a></strong></p>
-<p>Get <strong>enhanced capabilities</strong>, including <strong>custom theming and branding</strong>, <strong>Service Level Agreement (SLA) support</strong>, <strong>Long-Term Support (LTS) versions</strong>, and <strong>more!</strong></p>
-</div>
-<p>For more information, be sure to check out our <a href="https://docs.openwebui.com/">Open WebUI Documentation</a>.</p>
-<div><h2>Key Features of Open WebUI </h2><a href="#key-features-of-open-webui-"></a></div>
-<ul>
-<li>
-<p> <strong>Effortless Setup</strong>: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both </p><pre><code>:ollama</code></pre> and <pre><code>:cuda</code></pre> tagged images.<p></p>
-</li>
-<li>
-<p> <strong>Ollama/OpenAI API Integration</strong>: Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with <strong>LMStudio, GroqCloud, Mistral, OpenRouter, and more</strong>.</p>
-</li>
-<li>
-<p> <strong>Granular Permissions and User Groups</strong>: By allowing administrators to create detailed user roles and permissions, we ensure a secure user environment. This granularity not only enhances security but also allows for customized user experiences, fostering a sense of ownership and responsibility amongst users.</p>
-</li>
-<li>
-<p> <strong>Responsive Design</strong>: Enjoy a seamless experience across Desktop PC, Laptop, and Mobile devices.</p>
-</li>
-<li>
-<p> <strong>Progressive Web App (PWA) for Mobile</strong>: Enjoy a native app-like experience on your mobile device with our PWA, providing offline access on localhost and a seamless user interface.</p>
-</li>
-<li>
-<p> <strong>Full Markdown and LaTeX Support</strong>: Elevate your LLM experience with comprehensive Markdown and LaTeX capabilities for enriched interaction.</p>
-</li>
-<li>
-<p> <strong>Hands-Free Voice/Video Call</strong>: Experience seamless communication with integrated hands-free voice and video call features using multiple Speech-to-Text providers (Local Whisper, OpenAI, Deepgram, Azure) and Text-to-Speech engines (Azure, ElevenLabs, OpenAI, Transformers, WebAPI), allowing for dynamic and interactive chat environments.</p>
-</li>
-<li>
-<p> <strong>Model Builder</strong>: Easily create Ollama models via the Web UI. Create and add custom characters/agents, customize chat elements, and import models effortlessly through <a href="https://openwebui.com/">Open WebUI Community</a> integration.</p>
-</li>
-<li>
-<p> <strong>Native Python Function Calling Tool</strong>: Enhance your LLMs with built-in code editor support in the tools workspace. Bring Your Own Function (BYOF) by simply adding your pure Python functions, enabling seamless integration with LLMs.</p>
-</li>
-<li>
-<p> <strong>Persistent Artifact Storage</strong>: Built-in key-value storage API for artifacts, enabling features like journals, trackers, leaderboards, and collaborative tools with both personal and shared data scopes across sessions.</p>
-</li>
-<li>
-<p> <strong>Local RAG Integration</strong>: Dive into the future of chat interactions with groundbreaking Retrieval Augmented Generation (RAG) support using your choice of 9 vector databases and multiple content extraction engines (Tika, Docling, Document Intelligence, Mistral OCR, External loaders). Load documents directly into chat or add files to your document library, effortlessly accessing them using the </p><pre><code>#</code></pre> command before a query.<p></p>
-</li>
-<li>
-<p> <strong>Web Search for RAG</strong>: Perform web searches using 15+ providers including </p><pre><code>SearXNG</code></pre>, <pre><code>Google PSE</code></pre>, <pre><code>Brave Search</code></pre>, <pre><code>Kagi</code></pre>, <pre><code>Mojeek</code></pre>, <pre><code>Tavily</code></pre>, <pre><code>Perplexity</code></pre>, <pre><code>serpstack</code></pre>, <pre><code>serper</code></pre>, <pre><code>Serply</code></pre>, <pre><code>DuckDuckGo</code></pre>, <pre><code>SearchApi</code></pre>, <pre><code>SerpApi</code></pre>, <pre><code>Bing</code></pre>, <pre><code>Jina</code></pre>, <pre><code>Exa</code></pre>, <pre><code>Sougou</code></pre>, <pre><code>Azure AI Search</code></pre>, and <pre><code>Ollama Cloud</code></pre>, injecting results directly into your chat experience.<p></p>
-</li>
-<li>
-<p> <strong>Web Browsing Capability</strong>: Seamlessly integrate websites into your chat experience using the </p><pre><code>#</code></pre> command followed by a URL. This feature allows you to incorporate web content directly into your conversations, enhancing the richness and depth of your interactions.<p></p>
-</li>
-<li>
-<p> <strong>Image Generation &amp; Editing Integration</strong>: Create and edit images using multiple engines including OpenAI's DALL-E, Gemini, ComfyUI (local), and AUTOMATIC1111 (local), with support for both generation and prompt-based editing workflows.</p>
-</li>
-<li>
-<p> <strong>Many Models Conversations</strong>: Effortlessly engage with various models simultaneously, harnessing their unique strengths for optimal responses. Enhance your experience by leveraging a diverse set of models in parallel.</p>
-</li>
-<li>
-<p> <strong>Role-Based Access Control (RBAC)</strong>: Ensure secure access with restricted permissions; only authorized individuals can access your Ollama, and exclusive model creation/pulling rights are reserved for administrators.</p>
-</li>
-<li>
-<p> <strong>Flexible Database &amp; Storage Options</strong>: Choose from SQLite (with optional encryption), PostgreSQL, or configure cloud storage backends (S3, Google Cloud Storage, Azure Blob Storage) for scalable deployments.</p>
-</li>
-<li>
-<p> <strong>Advanced Vector Database Support</strong>: Select from 9 vector database options including ChromaDB, PGVector, Qdrant, Milvus, Elasticsearch, OpenSearch, Pinecone, S3Vector, and Oracle 23ai for optimal RAG performance.</p>
-</li>
-<li>
-<p> <strong>Enterprise Authentication</strong>: Full support for LDAP/Active Directory integration, SCIM 2.0 automated provisioning, and SSO via trusted headers alongside OAuth providers. Enterprise-grade user and group provisioning through SCIM 2.0 protocol, enabling seamless integration with identity providers like Okta, Azure AD, and Google Workspace for automated user lifecycle management.</p>
-</li>
-<li>
-<p> <strong>Cloud-Native Integration</strong>: Native support for Google Drive and OneDrive/SharePoint file picking, enabling seamless document import from enterprise cloud storage.</p>
-</li>
-<li>
-<p> <strong>Production Observability</strong>: Built-in OpenTelemetry support for traces, metrics, and logs, enabling comprehensive monitoring with your existing observability stack.</p>
-</li>
-<li>
-<p> <strong>Horizontal Scalability</strong>: Redis-backed session management and WebSocket support for multi-worker and multi-node deployments behind load balancers.</p>
-</li>
-<li>
-<p> <strong>Multilingual Support</strong>: Experience Open WebUI in your preferred language with our internationalization (i18n) support. Join us in expanding our supported languages! We're actively seeking contributors!</p>
-</li>
-<li>
-<p> <strong>Pipelines, Open WebUI Plugin Support</strong>: Seamlessly integrate custom logic and Python libraries into Open WebUI using <a href="https://github.com/open-webui/pipelines">Pipelines Plugin Framework</a>. Launch your Pipelines instance, set the OpenAI URL to the Pipelines URL, and explore endless possibilities. <a href="https://github.com/open-webui/pipelines/tree/main/examples">Examples</a> include <strong>Function Calling</strong>, User <strong>Rate Limiting</strong> to control access, <strong>Usage Monitoring</strong> with tools like Langfuse, <strong>Live Translation with LibreTranslate</strong> for multilingual support, <strong>Toxic Message Filtering</strong> and much more.</p>
-</li>
-<li>
-<p> <strong>Continuous Updates</strong>: We are committed to improving Open WebUI with regular updates, fixes, and new features.</p>
-</li>
-</ul> <hr> <div><h2>How to Install </h2><a href="#how-to-install-"></a></div>
-<div><h3>Installation via Python pip </h3><a href="#installation-via-python-pip-"></a></div>
-<p>Open WebUI can be installed using pip, the Python package installer. Before proceeding, ensure you're using <strong>Python 3.11</strong> to avoid compatibility issues.</p>
-<ol>
-<li>
-<p><strong>Install Open WebUI</strong>:
-Open your terminal and run the following command to install Open WebUI:</p>
-<div><pre>pip install open-webui</pre></div>
-</li>
-<li>
-<p><strong>Running Open WebUI</strong>:
-After installation, you can start Open WebUI by executing:</p>
-<div><pre>open-webui serve</pre></div>
-</li>
-</ol>
-<p>This will start the Open WebUI server, which you can access at <a href="http://localhost:8080">http://localhost:8080</a></p>
-<div><h3>Quick Start with Docker </h3><a href="#quick-start-with-docker-"></a></div>
-<div><p>Note</p><p>Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on <a href="https://docs.openwebui.com/">Open WebUI Documentation</a> is ready to assist you.</p>
-</div>
-<div><p>Warning</p><p>When using Docker to install Open WebUI, make sure to include the </p><pre><code>-v open-webui:/app/backend/data</code></pre> in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.<p></p>
-</div>
-<div><p>Tip</p><p>If you wish to utilize Open WebUI with Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either </p><pre><code>:cuda</code></pre> or <pre><code>:ollama</code></pre>. To enable CUDA, you must install the <a href="https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/">Nvidia CUDA container toolkit</a> on your Linux/WSL system.<p></p>
-</div>
-<div><h3>Installation with Default Configuration</h3><a href="#installation-with-default-configuration"></a></div>
-<ul>
-<li>
-<p><strong>If Ollama is on your computer</strong>, use this command:</p>
-<div><pre>docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main</pre></div>
-</li>
-<li>
-<p><strong>If Ollama is on a Different Server</strong>, use this command:</p>
-<p>To connect to Ollama on another server, change the </p><pre><code>OLLAMA_BASE_URL</code></pre> to the server's URL:<p></p>
-<div><pre>docker run -d -p 3000:8080 -e OLLAMA_BASE_URL=https://example.com -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main</pre></div>
-</li>
-<li>
-<p><strong>To run Open WebUI with Nvidia GPU support</strong>, use this command:</p>
-<div><pre>docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda</pre></div>
-</li>
-</ul>
-<div><h3>Installation for OpenAI API Usage Only</h3><a href="#installation-for-openai-api-usage-only"></a></div>
-<ul>
-<li>
-<p><strong>If you're only using OpenAI API</strong>, use this command:</p>
-<div><pre>docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main</pre></div>
-</li>
-</ul>
-<div><h3>Installing Open WebUI with Bundled Ollama Support</h3><a href="#installing-open-webui-with-bundled-ollama-support"></a></div>
-<p>This installation method uses a single container image that bundles Open WebUI with Ollama, allowing for a streamlined setup via a single command. Choose the appropriate command based on your hardware setup:</p>
-<ul>
-<li>
-<p><strong>With GPU Support</strong>:
-Utilize GPU resources by running the following command:</p>
-<div><pre>docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama</pre></div>
-</li>
-<li>
-<p><strong>For CPU Only</strong>:
-If you're not using a GPU, use this command instead:</p>
-<div><pre>docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama</pre></div>
-</li>
-</ul>
-<p>Both commands facilitate a built-in, hassle-free installation of both Open WebUI and Ollama, ensuring that you can get everything up and running swiftly.</p>
-<p>After installation, you can access Open WebUI at <a href="http://localhost:3000">http://localhost:3000</a>. Enjoy! </p>
-<div><h3>Other Installation Methods</h3><a href="#other-installation-methods"></a></div> <p>Look at the <a href="https://docs.openwebui.com/getting-started/advanced-topics/development">Local Development Guide</a> for instructions on setting up a local development environment.</p>
-<div><h3>Troubleshooting</h3><a href="#troubleshooting"></a></div>
-<p>Encountering connection issues? Our <a href="https://docs.openwebui.com/troubleshooting/">Open WebUI Documentation</a> has got you covered. For further assistance and to join our vibrant community, visit the <a href="https://discord.gg/5rJgQTnV4s">Open WebUI Discord</a>.</p>
-<div><h4>Open WebUI: Server Connection Error</h4><a href="#open-webui-server-connection-error"></a></div>
-<p>If you're experiencing connection issues, it’s often due to the WebUI docker container not being able to reach the Ollama server at 127.0.0.1:11434 (host.docker.internal:11434) inside the container . Use the </p><pre><code>--network=host</code></pre> flag in your docker command to resolve this. Note that the port changes from 3000 to 8080, resulting in the link: <pre><code>http://localhost:8080</code></pre>.<p></p>
-<p><strong>Example Docker Command</strong>:</p>
-<div><pre>docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main</pre></div>
-<div><h3>Keeping Your Docker Installation Up-to-Date</h3><a href="#keeping-your-docker-installation-up-to-date"></a></div>
-<p>Check our Updating Guide available in our <a href="https://docs.openwebui.com/getting-started/updating">Open WebUI Documentation</a>.</p>
-<div><h3>Using the Dev Branch </h3><a href="#using-the-dev-branch-"></a></div>
-<div><p>Warning</p><p>The </p><pre><code>:dev</code></pre> branch contains the latest unstable features and changes. Use it at your own risk as it may have bugs or incomplete features.<p></p>
-</div>
-<p>If you want to try out the latest bleeding-edge features and are okay with occasional instability, you can use the </p><pre><code>:dev</code></pre> tag like this:<p></p>
-<div><pre>docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui --add-host=host.docker.internal:host-gateway --restart always ghcr.io/open-webui/open-webui:dev</pre></div>
-<div><h3>Offline Mode</h3><a href="#offline-mode"></a></div>
-<p>If you are running Open WebUI in an offline environment, you can set the </p><pre><code>HF_HUB_OFFLINE</code></pre> environment variable to <pre><code>1</code></pre> to prevent attempts to download models from the internet.<p></p>
-<div><pre><span>export</span> HF_HUB_OFFLINE=1</pre></div>
-<div><h2>What's Next? </h2><a href="#whats-next-"></a></div>
-<p>Discover upcoming features on our roadmap in the <a href="https://docs.openwebui.com/roadmap/">Open WebUI Documentation</a>.</p>
-<div><h2>License </h2><a href="#license-"></a></div>
-<p>This project contains code under multiple licenses. The current codebase includes components licensed under the Open WebUI License with an additional requirement to preserve the "Open WebUI" branding, as well as prior contributions under their respective original licenses. For a detailed record of license changes and the applicable terms for each section of the code, please refer to <a href="/open-webui/open-webui/blob/main/LICENSE_HISTORY">LICENSE_HISTORY</a>. For complete and updated licensing details, please see the <a href="/open-webui/open-webui/blob/main/LICENSE">LICENSE</a> and <a href="/open-webui/open-webui/blob/main/LICENSE_HISTORY">LICENSE_HISTORY</a> files.</p>
-<div><h2>Support </h2><a href="#support-"></a></div>
-<p>If you have any questions, suggestions, or need assistance, please open an issue or join our
-<a href="https://discord.gg/5rJgQTnV4s">Open WebUI Discord community</a> to connect with us! </p>
-<div><h2>Star History</h2><a href="#star-history"></a></div>
-<a href="https://star-history.com/#open-webui/open-webui&amp;Date"> <img alt="Star History Chart" src="https://camo.githubusercontent.com/fc2990ed9f8ec6f03ea508cb9c19b8c61db0a1fcad29ee26aa3b4c4be712de1c/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d6f70656e2d77656275692f6f70656e2d776562756926747970653d44617465"> </a>
-<hr>
-<p>Created by <a href="https://github.com/tjbck">Timothy Jaeryang Baek</a> - Let's make Open WebUI even more amazing together! </p>
+    <p>User-friendly AI Interface (Supports Ollama, OpenAI API, ...) Open WebUI Open WebUI is an extensible, feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline. It supports various LLM runners like Ollama and OpenAI-compatible APIs, with built-in inference engine for RAG, making it a powerful AI deployment solution. Passionate about open-source AI? Join our team → [!TIP] Looking for an Enterprise Plan? – Speak with Our Sales Team Today! Get enhanced capabilities, including custom theming and branding, Service Level Agreement (SLA) support, Long-Term Support (LTS) versions, and more! For more information, be sure to check out our Open WebUI Documentation. Key Features of Open WebUI Effortless Setup: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both :ollama and :cuda tagged images. Ollama/OpenAI API Integration: Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with LMStudio, GroqCloud, Mistral, OpenRouter, and more. Granular Permissions and User Groups:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -230,6 +61,10 @@ If you're not using a GPU, use this command instead:</p>
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>
