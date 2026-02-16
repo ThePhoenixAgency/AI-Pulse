@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>exFAT Achieves Better Sequential Read Performance With Linux 7.0</title>
 <style>
@@ -22,9 +24,19 @@
 <body>
   <h1>exFAT Achieves Better Sequential Read Performance With Linux 7.0</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/16/2026 12:15:06 AM | <a href="https://www.phoronix.com/news/Linux-7.0-exFAT" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Phoronix | Date: 2/15/2026 11:15:06 PM | <a href="https://www.phoronix.com/news/Linux-7.0-exFAT" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>The open-source Linux file-system driver for supporting Microsoft's exFAT now can deliver better sequential read performance with Linux 7.0 thanks to multi-cluster support. The work previously covered back in December for exFAT on Linux using multi-cluster support and Upcoming exFAT Linux Driver Patch Can Boost Sequential Read Performance By ~10% has been merged for Linux 7.0. This can improve performance by about 10% while also having lower overhead. This multi-cluster/contiguous cluster support can deliver better sequential read performance especially when using small cluster sizes. The 10% improvement is with a 512 byte cluster size. The exFAT code for Linux 7.0 also optimized consecutive FAT entry reads by caching buffer heads to significantly reduce sb_bread() calls. The exFAT code for Linux 7.0 also improved error code handling and other improvements. More details on the exFAT improvements merged this weekend for Linux 7.0 via this pull request.</p></div>
+  <div class="content">
+    <div><div>
+<p><img alt="LINUX STORAGE" src="https://www.phoronix.com/assets/categories/linuxstorage.webp"></p><p>
+The open-source Linux file-system driver for supporting Microsoft's exFAT now can deliver better sequential read performance with Linux 7.0 thanks to multi-cluster support.
+</p><p>
+The work previously covered back in December for <a href="https://www.phoronix.com/news/Linux-exFAT-Reads-MC-Map">exFAT on Linux using multi-cluster support</a> and <a href="https://www.phoronix.com/news/exFAT-Faster-Seq-Reads-10p">Upcoming exFAT Linux Driver Patch Can Boost Sequential Read Performance By ~10%</a> has been merged for Linux 7.0. This can improve performance by about 10% while also having lower overhead. This multi-cluster/contiguous cluster support can deliver better sequential read performance especially when using small cluster sizes. The 10% improvement is with a 512 byte cluster size.
+</p><p>
+The exFAT code for Linux 7.0 also optimized consecutive FAT entry reads by caching buffer heads to significantly reduce sb_bread() calls. The exFAT code for Linux 7.0 also improved error code handling and other improvements.
+</p><p>
+More details on the exFAT improvements merged this weekend for Linux 7.0 via <a href="https://lore.kernel.org/lkml/CAKYAXd-GBqxgaaFDMg_1Qz2Qa9VAbyuiZxs=HYtoP7OHh4zRFg@mail.gmail.com/">this pull request</a>.</p></div></div>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +55,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

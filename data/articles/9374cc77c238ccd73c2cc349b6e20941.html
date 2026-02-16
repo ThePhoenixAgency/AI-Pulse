@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -18,10 +24,67 @@
 <body>
   <h1>Implementing MCP Servers in Python: An AI Shopping Assistant with Gradio</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 7/31/2025 2:00:00 AM | <a href="https://huggingface.co/blog/gradio-vton-mcp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hugging Face Blog | Date: 7/31/2025 12:00:00 AM | <a href="https://huggingface.co/blog/gradio-vton-mcp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Summary unavailable for this article.</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/freddyaboulton"><img alt="Freddy Boulton's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1654278567459-626a9bfa03e2e2796f24ca11.jpeg"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#the-goal-your-personal-ai-stylist">The Goal: Your Personal AI Stylist</a> <ul></ul> </li><li><a href="#building-the-gradio-mcp-server">Building the Gradio MCP Server</a> <ul></ul> </li><li><a href="#configuring-vs-code">Configuring VS Code</a> <ul></ul> </li><li><a href="#putting-it-all-together">Putting It All Together</a> <ul></ul> </li><li><a href="#conclusion">Conclusion</a> <ul></ul> </li></ul></nav></div><p>Python Developers, want to give your LLM superpowers? Gradio is the fastest way to do it! With Gradio's Model Context Protocol (MCP) integration, your LLM can plug directly into the thousands of AI models and Spaces hosted on the Hugging Face <a href="https://hf.co/">Hub</a>. By pairing the general reasoning capabilities of LLMs with the specialized abilities of models found on Hugging Face, your LLM can go beyond simply answering text questions to actually solving problems in your daily life.</p>
+<p>For Python developers, Gradio makes implementing powerful MCP servers a breeze, offering features like:</p>
+<ul>
+<li><strong>Automatic conversion of python functions into LLM tools:</strong> Each API endpoint in your Gradio app is automatically converted into an MCP tool with a corresponding name, description, and input schema. The docstring of your function is used to generate the description of the tool and its parameters.</li>
+<li><strong>Real-time progress notifications:</strong> Gradio streams progress notifications to your MCP client, allowing you to monitor the status in real-time without having to implement this feature yourself.</li>
+<li><strong>Automatic file uploads</strong>, including support for public URLs and handling of various file types.</li>
+</ul>
+<p>Imagine this: you hate shopping because it takes too much time, and you dread trying on clothes yourself. What if an LLM could handle this for you? In this post, we'll create an LLM-powered AI assistant that can browse online clothing stores, find specific garments, and then use a virtual try-on model to show you how those clothes would look on you. See the demo below:</p> <h2> <a href="#the-goal-your-personal-ai-stylist"> <span></span> </a> <span> The Goal: Your Personal AI Stylist </span>
+</h2>
+<p>To bring our AI shopping assistant to life, we'll combine three key components:</p>
+<ol>
+<li><p><a href="https://huggingface.co/yisol/IDM-VTON">IDM-VTON</a> Diffusion Model: This AI model is responsible for the virtual try-on functionality. It can edit existing photos to make it appear as if a person is wearing a different garment. We'll be using the Hugging Face Space for IDM-VTON, accessible <a href="https://huggingface.co/spaces/yisol/IDM-VTON">here</a>.</p>
+</li>
+<li><p>Gradio: Gradio is an open-source Python library that makes it easy to build AI-powered web applications and, crucially for our project, to create MCP servers. Gradio will act as the bridge, allowing our LLM to call the IDM-VTON model and other tools.</p>
+</li>
+<li><p>Visual Studio Code's AI Chat Feature: We'll use VS Code's built-in AI chat, which supports adding arbitrary MCP servers, to interact with our AI shopping assistant. This will provide a user-friendly interface for issuing commands and viewing the virtual try-on results.</p>
+</li>
+</ol>
+<h2> <a href="#building-the-gradio-mcp-server"> <span></span> </a> <span> Building the Gradio MCP Server </span>
+</h2>
+<p>The core of our AI shopping assistant is the Gradio MCP server. This server will expose one main tool:</p>
+<ol>
+<li><code>vton_generation</code>: This function will take a human model image and a garment image as input and use the IDM-VTON model to generate a new image of the person wearing the garment.</li>
+</ol>
+<p>Here's the Python code for our Gradio MCP server:</p>
+<pre><code><span>from</span> gradio_client <span>import</span> Client, handle_file
+<span>import</span> gradio <span>as</span> gr
+<span>import</span> re client = Client(<span>"freddyaboulton/IDM-VTON"</span>, hf_token=<span>"&lt;Your-token&gt;"</span>) <span>def</span> <span>vton_generation</span>(<span>human_model_img: <span>str</span>, garment: <span>str</span></span>): <span>"""Use the IDM-VTON model to generate a new image of a person wearing a garment."""</span> <span>"""</span>
+<span> Args:</span>
+<span> human_model_img: The human model that is modelling the garment.</span>
+<span> garment: The garment to wear.</span>
+<span> """</span> output = client.predict( <span>dict</span>={<span>"background"</span>: handle_file(human_model_img), <span>"layers"</span>:[], <span>"composite"</span>:<span>None</span>}, garm_img=handle_file(garment), garment_des=<span>""</span>, is_checked=<span>True</span>, is_checked_crop=<span>False</span>, denoise_steps=<span>30</span>, seed=<span>42</span>, api_name=<span>"/tryon"</span> ) <span>return</span> output[<span>0</span>] vton_mcp = gr.Interface( vton_generation, inputs=[ gr.Image(<span>type</span>=<span>"filepath"</span>, label=<span>"Human Model Image URL"</span>), gr.Image(<span>type</span>=<span>"filepath"</span>, label=<span>"Garment Image URL or File"</span>) ], outputs=gr.Image(<span>type</span>=<span>"filepath"</span>, label=<span>"Generated Image"</span>)
+) <span>if</span> __name__ == <span>"__main__"</span>: vton_mcp.launch(mcp_server=<span>True</span>)
+</code></pre>
+<p>By setting mcp_server=True in the <code>launch()</code> method, Gradio automatically converts our Python functions into MCP tools that LLMs can understand and use. The docstrings of our functions are used to generate descriptions of the tools and their parameters.</p>
+<blockquote>
+<p>The original IDM-VTON space was implemented with Gradio 4.x which precedes the automatic MCP functionality. So in this demo, we'll be building a Gradio interface that queries the original space via the Gradio API client.</p>
+</blockquote>
+<p>Finally, run this script with python.</p>
+<h2> <a href="#configuring-vs-code"> <span></span> </a> <span> Configuring VS Code </span>
+</h2>
+<p>To connect our Gradio MCP server to VS Code's AI chat, we'll need to edit the <code>mcp.json</code> file. This configuration tells the AI chat where to find our MCP server and how to interact with it.</p>
+<p>You can find this file by typing <code>MCP</code> in the command panel and selecting <code>MCP: Open User Configuration</code>. Once you open it, make sure the following servers are present:</p>
+<pre><code><span>{</span> <span>"servers"</span><span>:</span> <span>{</span> <span>"vton"</span><span>:</span> <span>{</span> <span>"url"</span><span>:</span> <span>"http://127.0.0.1:7860/gradio_api/mcp/"</span> <span>}</span><span>,</span> <span>"playwright"</span><span>:</span> <span>{</span> <span>"command"</span><span>:</span> <span>"npx"</span><span>,</span> <span>"args"</span><span>:</span> <span>[</span> <span>"-y"</span><span>,</span> <span>"@playwright/mcp@latest"</span> <span>]</span> <span>}</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<p>The playwright MCP server will let our AI assistant browse the web.</p>
+<blockquote>
+<p>Make sure the URL of the <code>vton</code> server matches the url printed to the console in the previous section. To run the playwright MCP server, you need to have node <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">installed</a>.</p>
+</blockquote>
+<h2> <a href="#putting-it-all-together"> <span></span> </a> <span> Putting It All Together </span>
+</h2>
+<p>Now we can start interacting with our AI shopping assistant. Open a new chat in VS Code, and you can ask the assistant something like "Browse the Uniqlo website for blue t-shirts, and show me what I would look like in three of them, using my photo at [your-image-url]."</p>
+<p>See the above video for an example!</p>
+<h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
+</h2>
+<p>The combination of Gradio, MCP, and powerful AI models like IDM-VTON opens up exciting possibilities for creating intelligent and helpful AI assistants. By following the steps outlined in this blog post, you can build your own assistant to solve the problems you care most about!</p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

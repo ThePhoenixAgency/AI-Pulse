@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Linux 7.0 Wires Up Arm's 64-byte Single-Copy Atomic Instructions LS64/LS64V</title>
 <style>
@@ -22,18 +24,28 @@
 <body>
   <h1>Linux 7.0 Wires Up Arm's 64-byte Single-Copy Atomic Instructions LS64/LS64V</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/14/2026 12:47:21 PM | <a href="https://www.phoronix.com/news/ARM64-Linux-7.0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Phoronix | Date: 2/14/2026 11:47:21 AM | <a href="https://www.phoronix.com/news/ARM64-Linux-7.0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Beyond all of the exciting Intel/AMD x86_64 changes and improvements to enjoy with the upcoming Linux 7.0, there is one notable ARM64 feature addition this kernel cycle. The main feature for ARM64 on Linux 7.0 is now supporting 64-byte single-copy atomic instructions (LS64/LS64V). Armv8.7 introduced single-copy atomic 64-byte load and store instructions. With Linux 7.0 those new instructions are wired up, they are now exposed to user-space via /proc/cpuinfo and hardware capabilities. The patch series noted:
-"Armv8.7 introduces single-copy atomic 64-byte loads and stores instructions and its variants named under FEAT_{LS64, LS64_V}.
-...
-A real scenario for this feature is that the userspace driver can make use of this to implement direct WQE (workqueue entry) - a mechanism to fill WQE directly into the hardware."
-This accelerated, atomic movement of 64-byte blocks should help for helping ARM in more high performance Linux scenarios. The patches also take care of exposing LS64_V to Linux KVM guests. With this pull, ARM64 also now has reduced Memory Tagging Extension (MTE) overhead when executing in the kernel on AmpereOne processors. That patch explains:
-"We measured severe performance overhead (25-50%) when enabling userspace MTE and running memcached on an AmpereOne machine. We identified excessive tag checking taking place in the kernel.
-...
-For workloads with MTE enabled, we measured the series giving a 2% improvement for "perf bench futex hash" at 95% confidence. Also, we used the Phoronix Test Suite pts/memcached benchmark with a get-heavy workload (1:10 Set:Get ratio) which is where the slowdown appears most clearly. The slowdown worsens with increased core count, levelling out above 32 cores."
-With the ARM64 updates for Linux 7.0, Spectre-BHB meanwhile is worked around on HiSilicon TSV110 processors. All of the ARM64 updates for Linux 7.0 can be found via this pull request that is already merged to Linux 7.0 Git.</code></pre>
+    <div><div>
+<p><img alt="ARM" src="https://www.phoronix.com/assets/categories/arm.webp"></p><p>
+Beyond all of the exciting Intel/AMD x86_64 changes and improvements to enjoy with the upcoming Linux 7.0, there is one notable ARM64 feature addition this kernel cycle.
+</p><p>
+The main feature for ARM64 on Linux 7.0 is now supporting 64-byte single-copy atomic instructions (LS64/LS64V). Armv8.7 introduced single-copy atomic 64-byte load and store instructions. With Linux 7.0 those new instructions are wired up, they are now exposed to user-space via /proc/cpuinfo and hardware capabilities. The <a href="https://lore.kernel.org/all/20251107072127.448953-1-wangzhou1@hisilicon.com/">patch series</a> noted:
+</p><blockquote>"Armv8.7 introduces single-copy atomic 64-byte loads and stores instructions and its variants named under FEAT_{LS64, LS64_V}.
+<br>...
+<br>A real scenario for this feature is that the userspace driver can make use of this to implement direct WQE (workqueue entry) - a mechanism to fill WQE directly into the hardware."</blockquote>
+<p>This accelerated, atomic movement of 64-byte blocks should help for helping ARM in more high performance Linux scenarios. The patches also take care of exposing LS64_V to Linux KVM guests.
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=ampereone_bios_med" alt="AmpereOne BIOS"></p>
+<p>With this pull, ARM64 also now has reduced Memory Tagging Extension (MTE) overhead when executing in the kernel on AmpereOne processors. That patch explains:
+</p><blockquote>"We measured severe performance overhead (25-50%) when enabling userspace MTE and running memcached on an AmpereOne machine. <br>We identified excessive tag checking taking place in the kernel.
+<br>...
+<br>For workloads with MTE enabled, we measured the series giving a 2% improvement for "perf bench futex hash" at 95% confidence.
+<p>
+Also, we used the Phoronix Test Suite pts/memcached benchmark with a get-heavy workload (1:10 Set:Get ratio) which is where the slowdown appears most clearly. The slowdown worsens with increased core count, levelling out above 32 cores."</p></blockquote>
+<p>With the ARM64 updates for Linux 7.0, Spectre-BHB meanwhile is worked around on HiSilicon TSV110 processors.
+</p><p>
+All of the ARM64 updates for Linux 7.0 can be found via <a href="https://lore.kernel.org/lkml/aYnwpy4umKY4A5wQ@willie-the-truck/">this pull request</a> that is already merged to Linux 7.0 Git.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -53,5 +65,5 @@ With the ARM64 updates for Linux 7.0, Spectre-BHB meanwhile is worked around on 
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

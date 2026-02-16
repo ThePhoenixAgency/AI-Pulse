@@ -1,27 +1,420 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>cheahjs/free-llm-api-resources</title>
+<title>GitHub - cheahjs/free-llm-api-resources: A list of free LLM inference resources accessible via API.</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
-  <h1>cheahjs/free-llm-api-resources</h1>
+  <h1>GitHub - cheahjs/free-llm-api-resources: A list of free LLM inference resources accessible via API.</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 11:05:52 PM | <a href="https://github.com/cheahjs/free-llm-api-resources" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/16/2026 10:42:14 PM | <a href="https://github.com/cheahjs/free-llm-api-resources" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>A list of free LLM inference resources accessible via API. Free LLM API resources This lists various services that provide free access or credits towards API-based LLM usage. [!NOTE] Please don't abuse these services, else we might lose them. [!WARNING] This list explicitly excludes any services that are not legitimate (eg reverse engineers an existing chatbot) Free Providers OpenRouter Google AI Studio NVIDIA NIM Mistral (La Plateforme) Mistral (Codestral) HuggingFace Inference Providers Vercel AI Gateway Cerebras Groq Cohere GitHub Models Cloudflare Workers AI Google Cloud Vertex AI Providers with trial credits Fireworks Baseten Nebius Novita AI21 Upstage NLP Cloud Alibaba Cloud (International) Model Studio Modal Inference.net Hyperbolic SambaNova Cloud Scaleway Generative APIs Free Providers OpenRouter Limits: 20 requests/minute
-50 requests/day
-Up to 1000 requests/day with $10 lifetime topup Models share a common quota.</p>
+    <div><h1>Free LLM API resources</h1><a href="#free-llm-api-resources"></a></div>
+<p>This lists various services that provide free access or credits towards API-based LLM usage.</p>
+<div><p>Note</p><p>Please don't abuse these services, else we might lose them.</p>
+</div>
+<div><p>Warning</p><p>This list explicitly excludes any services that are not legitimate (eg reverse engineers an existing chatbot)</p>
+</div>
+<ul>
+<li><a href="#free-providers">Free Providers</a>
+<ul>
+<li><a href="#openrouter">OpenRouter</a></li>
+<li><a href="#google-ai-studio">Google AI Studio</a></li>
+<li><a href="#nvidia-nim">NVIDIA NIM</a></li>
+<li><a href="#mistral-la-plateforme">Mistral (La Plateforme)</a></li>
+<li><a href="#mistral-codestral">Mistral (Codestral)</a></li>
+<li><a href="#huggingface-inference-providers">HuggingFace Inference Providers</a></li>
+<li><a href="#vercel-ai-gateway">Vercel AI Gateway</a></li>
+<li><a href="#cerebras">Cerebras</a></li>
+<li><a href="#groq">Groq</a></li>
+<li><a href="#cohere">Cohere</a></li>
+<li><a href="#github-models">GitHub Models</a></li>
+<li><a href="#cloudflare-workers-ai">Cloudflare Workers AI</a></li>
+<li><a href="#google-cloud-vertex-ai">Google Cloud Vertex AI</a></li>
+</ul>
+</li>
+<li><a href="#providers-with-trial-credits">Providers with trial credits</a>
+<ul>
+<li><a href="#fireworks">Fireworks</a></li>
+<li><a href="#baseten">Baseten</a></li>
+<li><a href="#nebius">Nebius</a></li>
+<li><a href="#novita">Novita</a></li>
+<li><a href="#ai21">AI21</a></li>
+<li><a href="#upstage">Upstage</a></li>
+<li><a href="#nlp-cloud">NLP Cloud</a></li>
+<li><a href="#alibaba-cloud-international-model-studio">Alibaba Cloud (International) Model Studio</a></li>
+<li><a href="#modal">Modal</a></li>
+<li><a href="#inferencenet">Inference.net</a></li>
+<li><a href="#hyperbolic">Hyperbolic</a></li>
+<li><a href="#sambanova-cloud">SambaNova Cloud</a></li>
+<li><a href="#scaleway-generative-apis">Scaleway Generative APIs</a></li>
+</ul>
+</li>
+</ul>
+<div><h2>Free Providers</h2><a href="#free-providers"></a></div>
+<div><h3><a href="https://openrouter.ai">OpenRouter</a></h3><a href="#openrouter"></a></div>
+<p><strong>Limits:</strong></p>
+<p><a href="https://openrouter.ai/docs/api-reference/limits">20 requests/minute<br>50 requests/day<br>Up to 1000 requests/day with $10 lifetime topup</a></p>
+<p>Models share a common quota.</p>
+<ul>
+<li><a href="https://openrouter.ai/google/gemma-3-12b-it:free">Gemma 3 12B Instruct</a></li>
+<li><a href="https://openrouter.ai/google/gemma-3-27b-it:free">Gemma 3 27B Instruct</a></li>
+<li><a href="https://openrouter.ai/google/gemma-3-4b-it:free">Gemma 3 4B Instruct</a></li>
+<li><a href="https://openrouter.ai/nousresearch/hermes-3-llama-3.1-405b:free">Hermes 3 Llama 3.1 405B</a></li>
+<li><a href="https://openrouter.ai/meta-llama/llama-3.1-405b-instruct:free">Llama 3.1 405B Instruct</a></li>
+<li><a href="https://openrouter.ai/meta-llama/llama-3.2-3b-instruct:free">Llama 3.2 3B Instruct</a></li>
+<li><a href="https://openrouter.ai/meta-llama/llama-3.3-70b-instruct:free">Llama 3.3 70B Instruct</a></li>
+<li><a href="https://openrouter.ai/mistralai/mistral-small-3.1-24b-instruct:free">Mistral Small 3.1 24B Instruct</a></li>
+<li><a href="https://openrouter.ai/qwen/qwen-2.5-vl-7b-instruct:free">Qwen 2.5 VL 7B Instruct</a></li>
+<li><a href="https://openrouter.ai/allenai/molmo-2-8b:free">allenai/molmo-2-8b:free</a></li>
+<li><a href="https://openrouter.ai/arcee-ai/trinity-large-preview:free">arcee-ai/trinity-large-preview:free</a></li>
+<li><a href="https://openrouter.ai/arcee-ai/trinity-mini:free">arcee-ai/trinity-mini:free</a></li>
+<li><a href="https://openrouter.ai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free">cognitivecomputations/dolphin-mistral-24b-venice-edition:free</a></li>
+<li><a href="https://openrouter.ai/deepseek/deepseek-r1-0528:free">deepseek/deepseek-r1-0528:free</a></li>
+<li><a href="https://openrouter.ai/google/gemma-3n-e2b-it:free">google/gemma-3n-e2b-it:free</a></li>
+<li><a href="https://openrouter.ai/google/gemma-3n-e4b-it:free">google/gemma-3n-e4b-it:free</a></li>
+<li><a href="https://openrouter.ai/liquid/lfm-2.5-1.2b-instruct:free">liquid/lfm-2.5-1.2b-instruct:free</a></li>
+<li><a href="https://openrouter.ai/liquid/lfm-2.5-1.2b-thinking:free">liquid/lfm-2.5-1.2b-thinking:free</a></li>
+<li><a href="https://openrouter.ai/moonshotai/kimi-k2:free">moonshotai/kimi-k2:free</a></li>
+<li><a href="https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b:free">nvidia/nemotron-3-nano-30b-a3b:free</a></li>
+<li><a href="https://openrouter.ai/nvidia/nemotron-nano-12b-v2-vl:free">nvidia/nemotron-nano-12b-v2-vl:free</a></li>
+<li><a href="https://openrouter.ai/nvidia/nemotron-nano-9b-v2:free">nvidia/nemotron-nano-9b-v2:free</a></li>
+<li><a href="https://openrouter.ai/openai/gpt-oss-120b:free">openai/gpt-oss-120b:free</a></li>
+<li><a href="https://openrouter.ai/openai/gpt-oss-20b:free">openai/gpt-oss-20b:free</a></li>
+<li><a href="https://openrouter.ai/qwen/qwen3-4b:free">qwen/qwen3-4b:free</a></li>
+<li><a href="https://openrouter.ai/qwen/qwen3-coder:free">qwen/qwen3-coder:free</a></li>
+<li><a href="https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct:free">qwen/qwen3-next-80b-a3b-instruct:free</a></li>
+<li><a href="https://openrouter.ai/tngtech/deepseek-r1t-chimera:free">tngtech/deepseek-r1t-chimera:free</a></li>
+<li><a href="https://openrouter.ai/tngtech/deepseek-r1t2-chimera:free">tngtech/deepseek-r1t2-chimera:free</a></li>
+<li><a href="https://openrouter.ai/tngtech/tng-r1t-chimera:free">tngtech/tng-r1t-chimera:free</a></li>
+<li><a href="https://openrouter.ai/upstage/solar-pro-3:free">upstage/solar-pro-3:free</a></li>
+<li><a href="https://openrouter.ai/z-ai/glm-4.5-air:free">z-ai/glm-4.5-air:free</a></li>
+</ul>
+<div><h3><a href="https://aistudio.google.com">Google AI Studio</a></h3><a href="#google-ai-studio"></a></div>
+<p>Data is used for training when used outside of the UK/CH/EEA/EU.</p>
+<table><thead><tr><th>Model Name</th><th>Model Limits</th></tr></thead><tbody>
+<tr><td>Gemini 3 Flash</td><td>250,000 tokens/minute<br>20 requests/day<br>5 requests/minute</td></tr>
+<tr><td>Gemini 2.5 Flash</td><td>250,000 tokens/minute<br>20 requests/day<br>5 requests/minute</td></tr>
+<tr><td>Gemini 2.5 Flash-Lite</td><td>250,000 tokens/minute<br>20 requests/day<br>10 requests/minute</td></tr>
+<tr><td>Gemma 3 27B Instruct</td><td>15,000 tokens/minute<br>14,400 requests/day<br>30 requests/minute</td></tr>
+<tr><td>Gemma 3 12B Instruct</td><td>15,000 tokens/minute<br>14,400 requests/day<br>30 requests/minute</td></tr>
+<tr><td>Gemma 3 4B Instruct</td><td>15,000 tokens/minute<br>14,400 requests/day<br>30 requests/minute</td></tr>
+<tr><td>Gemma 3 1B Instruct</td><td>15,000 tokens/minute<br>14,400 requests/day<br>30 requests/minute</td></tr>
+</tbody></table>
+<div><h3><a href="https://build.nvidia.com/explore/discover">NVIDIA NIM</a></h3><a href="#nvidia-nim"></a></div>
+<p>Phone number verification required.
+Models tend to be context window limited.</p>
+<p><strong>Limits:</strong> 40 requests/minute</p>
+<ul>
+<li><a href="https://build.nvidia.com/models">Various open models</a></li>
+</ul>
+<div><h3><a href="https://console.mistral.ai/">Mistral (La Plateforme)</a></h3><a href="#mistral-la-plateforme"></a></div>
+<ul>
+<li>Free tier (Experiment plan) requires opting into data training</li>
+<li>Requires phone number verification.</li>
+</ul>
+<p><strong>Limits (per-model):</strong> 1 request/second, 500,000 tokens/minute, 1,000,000,000 tokens/month</p>
+<ul>
+<li><a href="https://docs.mistral.ai/getting-started/models/models_overview/">Open and Proprietary Mistral models</a></li>
+</ul>
+<div><h3><a href="https://codestral.mistral.ai/">Mistral (Codestral)</a></h3><a href="#mistral-codestral"></a></div>
+<ul>
+<li>Currently free to use</li>
+<li>Monthly subscription based</li>
+<li>Requires phone number verification</li>
+</ul>
+<p><strong>Limits:</strong> 30 requests/minute, 2,000 requests/day</p>
+<ul>
+<li>Codestral</li>
+</ul>
+<div><h3><a href="https://huggingface.co/docs/inference-providers/en/index">HuggingFace Inference Providers</a></h3><a href="#huggingface-inference-providers"></a></div>
+<p>HuggingFace Serverless Inference limited to models smaller than 10GB. Some popular models are supported even if they exceed 10GB.</p>
+<p><strong>Limits:</strong> <a href="https://huggingface.co/docs/inference-providers/en/pricing">$0.10/month in credits</a></p>
+<ul>
+<li>Various open models across supported providers</li>
+</ul>
+<div><h3><a href="https://vercel.com/docs/ai-gateway">Vercel AI Gateway</a></h3><a href="#vercel-ai-gateway"></a></div>
+<p>Routes to various supported providers.</p>
+<p><strong>Limits:</strong> <a href="https://vercel.com/docs/ai-gateway/pricing">$5/month</a></p>
+<div><h3><a href="https://cloud.cerebras.ai/">Cerebras</a></h3><a href="#cerebras"></a></div>
+<table><thead><tr><th>Model Name</th><th>Model Limits</th></tr></thead><tbody>
+<tr><td>gpt-oss-120b</td><td>30 requests/minute<br>60,000 tokens/minute<br>900 requests/hour<br>1,000,000 tokens/hour<br>14,400 requests/day<br>1,000,000 tokens/day</td></tr>
+<tr><td>Qwen 3 235B A22B Instruct</td><td>30 requests/minute<br>60,000 tokens/minute<br>900 requests/hour<br>1,000,000 tokens/hour<br>14,400 requests/day<br>1,000,000 tokens/day</td></tr>
+<tr><td>Llama 3.3 70B</td><td>30 requests/minute<br>64,000 tokens/minute<br>900 requests/hour<br>1,000,000 tokens/hour<br>14,400 requests/day<br>1,000,000 tokens/day</td></tr>
+<tr><td>Qwen 3 32B</td><td>30 requests/minute<br>64,000 tokens/minute<br>900 requests/hour<br>1,000,000 tokens/hour<br>14,400 requests/day<br>1,000,000 tokens/day</td></tr>
+<tr><td>Llama 3.1 8B</td><td>30 requests/minute<br>60,000 tokens/minute<br>900 requests/hour<br>1,000,000 tokens/hour<br>14,400 requests/day<br>1,000,000 tokens/day</td></tr>
+<tr><td>Z.ai GLM-4.6</td><td>10 requests/minute<br>60,000 tokens/minute<br>100 requests/hour<br>100,000 tokens/hour<br>100 requests/day<br>1,000,000 tokens/day</td></tr>
+</tbody></table>
+<div><h3><a href="https://console.groq.com">Groq</a></h3><a href="#groq"></a></div>
+<table><thead><tr><th>Model Name</th><th>Model Limits</th></tr></thead><tbody>
+<tr><td>Allam 2 7B</td><td>7,000 requests/day<br>6,000 tokens/minute</td></tr>
+<tr><td>Llama 3.1 8B</td><td>14,400 requests/day<br>6,000 tokens/minute</td></tr>
+<tr><td>Llama 3.3 70B</td><td>1,000 requests/day<br>12,000 tokens/minute</td></tr>
+<tr><td>Llama 4 Maverick 17B 128E Instruct</td><td>1,000 requests/day<br>6,000 tokens/minute</td></tr>
+<tr><td>Llama 4 Scout Instruct</td><td>1,000 requests/day<br>30,000 tokens/minute</td></tr>
+<tr><td>Whisper Large v3</td><td>7,200 audio-seconds/minute<br>2,000 requests/day</td></tr>
+<tr><td>Whisper Large v3 Turbo</td><td>7,200 audio-seconds/minute<br>2,000 requests/day</td></tr>
+<tr><td>canopylabs/orpheus-arabic-saudi</td><td></td></tr>
+<tr><td>canopylabs/orpheus-v1-english</td><td></td></tr>
+<tr><td>groq/compound</td><td>250 requests/day<br>70,000 tokens/minute</td></tr>
+<tr><td>groq/compound-mini</td><td>250 requests/day<br>70,000 tokens/minute</td></tr>
+<tr><td>meta-llama/llama-guard-4-12b</td><td>14,400 requests/day<br>15,000 tokens/minute</td></tr>
+<tr><td>meta-llama/llama-prompt-guard-2-22m</td><td></td></tr>
+<tr><td>meta-llama/llama-prompt-guard-2-86m</td><td></td></tr>
+<tr><td>moonshotai/kimi-k2-instruct</td><td>1,000 requests/day<br>10,000 tokens/minute</td></tr>
+<tr><td>moonshotai/kimi-k2-instruct-0905</td><td>1,000 requests/day<br>10,000 tokens/minute</td></tr>
+<tr><td>openai/gpt-oss-120b</td><td>1,000 requests/day<br>8,000 tokens/minute</td></tr>
+<tr><td>openai/gpt-oss-20b</td><td>1,000 requests/day<br>8,000 tokens/minute</td></tr>
+<tr><td>openai/gpt-oss-safeguard-20b</td><td>1,000 requests/day<br>8,000 tokens/minute</td></tr>
+<tr><td>qwen/qwen3-32b</td><td>1,000 requests/day<br>6,000 tokens/minute</td></tr>
+</tbody></table>
+<div><h3><a href="https://cohere.com">Cohere</a></h3><a href="#cohere"></a></div>
+<p><strong>Limits:</strong></p>
+<p><a href="https://docs.cohere.com/docs/rate-limits">20 requests/minute<br>1,000 requests/month</a></p>
+<p>Models share a common monthly quota.</p>
+<ul>
+<li>c4ai-aya-expanse-32b</li>
+<li>c4ai-aya-expanse-8b</li>
+<li>c4ai-aya-vision-32b</li>
+<li>c4ai-aya-vision-8b</li>
+<li>command-a-03-2025</li>
+<li>command-a-reasoning-08-2025</li>
+<li>command-a-translate-08-2025</li>
+<li>command-a-vision-07-2025</li>
+<li>command-r-08-2024</li>
+<li>command-r-plus-08-2024</li>
+<li>command-r7b-12-2024</li>
+<li>command-r7b-arabic-02-2025</li>
+</ul>
+<div><h3><a href="https://github.com/marketplace/models">GitHub Models</a></h3><a href="#github-models"></a></div>
+<p>Extremely restrictive input/output token limits.</p>
+<p><strong>Limits:</strong> <a href="https://docs.github.com/en/github-models/prototyping-with-ai-models#rate-limits">Dependent on Copilot subscription tier (Free/Pro/Pro+/Business/Enterprise)</a></p>
+<ul>
+<li>AI21 Jamba 1.5 Large</li>
+<li>Codestral 25.01</li>
+<li>Cohere Command A</li>
+<li>Cohere Command R 08-2024</li>
+<li>Cohere Command R+ 08-2024</li>
+<li>DeepSeek-R1</li>
+<li>DeepSeek-R1-0528</li>
+<li>DeepSeek-V3-0324</li>
+<li>Grok 3</li>
+<li>Grok 3 Mini</li>
+<li>Llama 4 Maverick 17B 128E Instruct FP8</li>
+<li>Llama 4 Scout 17B 16E Instruct</li>
+<li>Llama-3.2-11B-Vision-Instruct</li>
+<li>Llama-3.2-90B-Vision-Instruct</li>
+<li>Llama-3.3-70B-Instruct</li>
+<li>MAI-DS-R1</li>
+<li>Meta-Llama-3.1-405B-Instruct</li>
+<li>Meta-Llama-3.1-8B-Instruct</li>
+<li>Ministral 3B</li>
+<li>Mistral Medium 3 (25.05)</li>
+<li>Mistral Small 3.1</li>
+<li>OpenAI GPT-4.1</li>
+<li>OpenAI GPT-4.1-mini</li>
+<li>OpenAI GPT-4.1-nano</li>
+<li>OpenAI GPT-4o</li>
+<li>OpenAI GPT-4o mini</li>
+<li>OpenAI Text Embedding 3 (large)</li>
+<li>OpenAI Text Embedding 3 (small)</li>
+<li>OpenAI gpt-5</li>
+<li>OpenAI gpt-5-chat (preview)</li>
+<li>OpenAI gpt-5-mini</li>
+<li>OpenAI gpt-5-nano</li>
+<li>OpenAI o1</li>
+<li>OpenAI o1-mini</li>
+<li>OpenAI o1-preview</li>
+<li>OpenAI o3</li>
+<li>OpenAI o3-mini</li>
+<li>OpenAI o4-mini</li>
+<li>Phi-4</li>
+<li>Phi-4-mini-instruct</li>
+<li>Phi-4-mini-reasoning</li>
+<li>Phi-4-multimodal-instruct</li>
+<li>Phi-4-reasoning</li>
+</ul>
+<div><h3><a href="https://developers.cloudflare.com/workers-ai">Cloudflare Workers AI</a></h3><a href="#cloudflare-workers-ai"></a></div>
+<p><strong>Limits:</strong> <a href="https://developers.cloudflare.com/workers-ai/platform/pricing/#free-allocation">10,000 neurons/day</a></p>
+<ul>
+<li>@cf/aisingapore/gemma-sea-lion-v4-27b-it</li>
+<li>@cf/ibm-granite/granite-4.0-h-micro</li>
+<li>@cf/openai/gpt-oss-120b</li>
+<li>@cf/openai/gpt-oss-20b</li>
+<li>@cf/qwen/qwen3-30b-a3b-fp8</li>
+<li>DeepSeek R1 Distill Qwen 32B</li>
+<li>Deepseek Coder 6.7B Base (AWQ)</li>
+<li>Deepseek Coder 6.7B Instruct (AWQ)</li>
+<li>Deepseek Math 7B Instruct</li>
+<li>Discolm German 7B v1 (AWQ)</li>
+<li>Falcom 7B Instruct</li>
+<li>Gemma 2B Instruct (LoRA)</li>
+<li>Gemma 3 12B Instruct</li>
+<li>Gemma 7B Instruct</li>
+<li>Gemma 7B Instruct (LoRA)</li>
+<li>Hermes 2 Pro Mistral 7B</li>
+<li>Llama 2 13B Chat (AWQ)</li>
+<li>Llama 2 7B Chat (FP16)</li>
+<li>Llama 2 7B Chat (INT8)</li>
+<li>Llama 2 7B Chat (LoRA)</li>
+<li>Llama 3 8B Instruct</li>
+<li>Llama 3 8B Instruct (AWQ)</li>
+<li>Llama 3.1 8B Instruct (AWQ)</li>
+<li>Llama 3.1 8B Instruct (FP8)</li>
+<li>Llama 3.2 11B Vision Instruct</li>
+<li>Llama 3.2 1B Instruct</li>
+<li>Llama 3.2 3B Instruct</li>
+<li>Llama 3.3 70B Instruct (FP8)</li>
+<li>Llama 4 Scout Instruct</li>
+<li>Llama Guard 3 8B</li>
+<li>Mistral 7B Instruct v0.1</li>
+<li>Mistral 7B Instruct v0.1 (AWQ)</li>
+<li>Mistral 7B Instruct v0.2</li>
+<li>Mistral 7B Instruct v0.2 (LoRA)</li>
+<li>Mistral Small 3.1 24B Instruct</li>
+<li>Neural Chat 7B v3.1 (AWQ)</li>
+<li>OpenChat 3.5 0106</li>
+<li>OpenHermes 2.5 Mistral 7B (AWQ)</li>
+<li>Phi-2</li>
+<li>Qwen 1.5 0.5B Chat</li>
+<li>Qwen 1.5 1.8B Chat</li>
+<li>Qwen 1.5 14B Chat (AWQ)</li>
+<li>Qwen 1.5 7B Chat (AWQ)</li>
+<li>Qwen 2.5 Coder 32B Instruct</li>
+<li>Qwen QwQ 32B</li>
+<li>SQLCoder 7B 2</li>
+<li>Starling LM 7B Beta</li>
+<li>TinyLlama 1.1B Chat v1.0</li>
+<li>Una Cybertron 7B v2 (BF16)</li>
+<li>Zephyr 7B Beta (AWQ)</li>
+</ul>
+<div><h3><a href="https://console.cloud.google.com/vertex-ai/model-garden">Google Cloud Vertex AI</a></h3><a href="#google-cloud-vertex-ai"></a></div>
+<p>Very stringent payment verification for Google Cloud.</p>
+<table><thead><tr><th>Model Name</th><th>Model Limits</th></tr></thead><tbody>
+<tr><td><a href="https://console.cloud.google.com/vertex-ai/publishers/meta/model-garden/llama-3-2-90b-vision-instruct-maas">Llama 3.2 90B Vision Instruct</a></td><td>30 requests/minute<br>Free during preview</td></tr>
+<tr><td><a href="https://console.cloud.google.com/vertex-ai/publishers/meta/model-garden/llama-3-1-405b-instruct-maas">Llama 3.1 70B Instruct</a></td><td>60 requests/minute<br>Free during preview</td></tr>
+<tr><td><a href="https://console.cloud.google.com/vertex-ai/publishers/meta/model-garden/llama-3-1-405b-instruct-maas">Llama 3.1 8B Instruct</a></td><td>60 requests/minute<br>Free during preview</td></tr>
+</tbody></table>
+<div><h2>Providers with trial credits</h2><a href="#providers-with-trial-credits"></a></div>
+<div><h3><a href="https://fireworks.ai/">Fireworks</a></h3><a href="#fireworks"></a></div>
+<p><strong>Credits:</strong> $1</p>
+<p><strong>Models:</strong> <a href="https://fireworks.ai/models">Various open models</a></p>
+<div><h3><a href="https://app.baseten.co/">Baseten</a></h3><a href="#baseten"></a></div>
+<p><strong>Credits:</strong> $30</p>
+<p><strong>Models:</strong> <a href="https://www.baseten.co/library/">Any supported model - pay by compute time</a></p>
+<div><h3><a href="https://studio.nebius.com/">Nebius</a></h3><a href="#nebius"></a></div>
+<p><strong>Credits:</strong> $1</p>
+<p><strong>Models:</strong> <a href="https://studio.nebius.ai/models">Various open models</a></p>
+<div><h3><a href="https://novita.ai/?ref=ytblmjc&amp;utm_source=affiliate">Novita</a></h3><a href="#novita"></a></div>
+<p><strong>Credits:</strong> $0.5 for 1 year</p>
+<p><strong>Models:</strong> <a href="https://novita.ai/models">Various open models</a></p>
+<div><h3><a href="https://studio.ai21.com/">AI21</a></h3><a href="#ai21"></a></div>
+<p><strong>Credits:</strong> $10 for 3 months</p>
+<p><strong>Models:</strong> Jamba family of models</p>
+<div><h3><a href="https://console.upstage.ai/">Upstage</a></h3><a href="#upstage"></a></div>
+<p><strong>Credits:</strong> $10 for 3 months</p>
+<p><strong>Models:</strong> Solar Pro/Mini</p>
+<div><h3><a href="https://nlpcloud.com/home">NLP Cloud</a></h3><a href="#nlp-cloud"></a></div>
+<p><strong>Credits:</strong> $15</p>
+<p><strong>Requirements:</strong> Phone number verification</p>
+<p><strong>Models:</strong> Various open models</p>
+<div><h3><a href="https://bailian.console.alibabacloud.com/">Alibaba Cloud (International) Model Studio</a></h3><a href="#alibaba-cloud-international-model-studio"></a></div>
+<p><strong>Credits:</strong> 1 million tokens/model</p>
+<p><strong>Models:</strong> <a href="https://www.alibabacloud.com/en/product/modelstudio">Various open and proprietary Qwen models</a></p>
+<div><h3><a href="https://modal.com">Modal</a></h3><a href="#modal"></a></div>
+<p><strong>Credits:</strong> $5/month upon sign up, $30/month with payment method added</p>
+<p><strong>Models:</strong> Any supported model - pay by compute time</p>
+<div><h3><a href="https://inference.net">Inference.net</a></h3><a href="#inferencenet"></a></div>
+<p><strong>Credits:</strong> $1, $25 on responding to email survey</p>
+<p><strong>Models:</strong> Various open models</p>
+<div><h3><a href="https://app.hyperbolic.xyz/">Hyperbolic</a></h3><a href="#hyperbolic"></a></div>
+<p><strong>Credits:</strong> $1</p>
+<p><strong>Models:</strong></p>
+<ul>
+<li>DeepSeek V3</li>
+<li>DeepSeek V3 0324</li>
+<li>Llama 3.1 405B Base</li>
+<li>Llama 3.1 405B Instruct</li>
+<li>Llama 3.1 70B Instruct</li>
+<li>Llama 3.1 8B Instruct</li>
+<li>Llama 3.2 3B Instruct</li>
+<li>Llama 3.3 70B Instruct</li>
+<li>Pixtral 12B (2409)</li>
+<li>Qwen QwQ 32B</li>
+<li>Qwen2.5 72B Instruct</li>
+<li>Qwen2.5 Coder 32B Instruct</li>
+<li>Qwen2.5 VL 72B Instruct</li>
+<li>Qwen2.5 VL 7B Instruct</li>
+<li>deepseek-ai/deepseek-r1-0528</li>
+<li>openai/gpt-oss-120b</li>
+<li>openai/gpt-oss-120b-turbo</li>
+<li>openai/gpt-oss-20b</li>
+<li>qwen/qwen3-235b-a22b</li>
+<li>qwen/qwen3-235b-a22b-instruct-2507</li>
+<li>qwen/qwen3-coder-480b-a35b-instruct</li>
+<li>qwen/qwen3-next-80b-a3b-instruct</li>
+<li>qwen/qwen3-next-80b-a3b-thinking</li>
+</ul>
+<div><h3><a href="https://cloud.sambanova.ai/">SambaNova Cloud</a></h3><a href="#sambanova-cloud"></a></div>
+<p><strong>Credits:</strong> $5 for 3 months</p>
+<p><strong>Models:</strong></p>
+<ul>
+<li>E5-Mistral-7B-Instruct</li>
+<li>Llama 3.1 8B</li>
+<li>Llama 3.3 70B</li>
+<li>Llama 3.3 70B</li>
+<li>Llama-4-Maverick-17B-128E-Instruct</li>
+<li>Qwen/Qwen3-235B</li>
+<li>Qwen/Qwen3-32B</li>
+<li>Whisper-Large-v3</li>
+<li>deepseek-ai/DeepSeek-R1-0528</li>
+<li>deepseek-ai/DeepSeek-R1-Distill-Llama-70B</li>
+<li>deepseek-ai/DeepSeek-V3-0324</li>
+<li>deepseek-ai/DeepSeek-V3.1</li>
+<li>deepseek-ai/DeepSeek-V3.1-Terminus</li>
+<li>deepseek-ai/DeepSeek-V3.2</li>
+<li>openai/gpt-oss-120b</li>
+<li>tbd</li>
+</ul>
+<div><h3><a href="https://console.scaleway.com/generative-api/models">Scaleway Generative APIs</a></h3><a href="#scaleway-generative-apis"></a></div>
+<p><strong>Credits:</strong> 1,000,000 free tokens</p>
+<p><strong>Models:</strong></p>
+<ul>
+<li>BGE-Multilingual-Gemma2</li>
+<li>DeepSeek R1 Distill Llama 70B</li>
+<li>Gemma 3 27B Instruct</li>
+<li>Llama 3.1 8B Instruct</li>
+<li>Llama 3.3 70B Instruct</li>
+<li>Mistral Nemo 2407</li>
+<li>Pixtral 12B (2409)</li>
+<li>Whisper Large v3</li>
+<li>devstral-2-123b-instruct-2512</li>
+<li>gpt-oss-120b</li>
+<li>holo2-30b-a3b</li>
+<li>mistral-small-3.2-24b-instruct-2506</li>
+<li>qwen3-235b-a22b-instruct-2507</li>
+<li>qwen3-coder-30b-a3b-instruct</li>
+<li>qwen3-embedding-8b</li>
+<li>voxtral-small-24b-2507</li>
+</ul>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -41,5 +434,5 @@ Up to 1000 requests/day with $10 lifetime topup Models share a common quota.</p>
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

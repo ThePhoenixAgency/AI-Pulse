@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -18,10 +24,75 @@
 <body>
   <h1>How Top CISOs Solve Burnout and Speed up MTTR without Extra Hiring</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/9/2026 12:23:00 PM | <a href="https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: The Hacker News | Date: 2/9/2026 11:23:00 AM | <a href="https://thehackernews.com/2026/02/how-top-cisos-solve-burnout-and-speed.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Why do SOC teams keep burning out and missing SLAs even after spending big on security tools? Routine triage piles up, senior specialists get dragged into basic validation, and MTTR climbs, while stealthy threats still find room to slip through. Top CISOs have realized the solution isn’t hiring more people or stacking yet another tool onto the workflow, but giving their teams faster, clearer</p>
+    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEWlaquUArR-GMqukRCHWrs9_HN46zhN8-clTeBqbAGOl5ABkSUp-YEe32I-Da1P0TY8LZ7zbS-k9iYploghqd07vgWNP-JW71E5xH6uOHVFctuRCfRCZ_iC6oWEVdcWPexxoc-WTgl9DNZTKiTcPuAzFJ_ytpDC_u7mNZBaFBE4w4EXhOHcvV5ZTVuKs/s1600/anyrun-soc.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiEWlaquUArR-GMqukRCHWrs9_HN46zhN8-clTeBqbAGOl5ABkSUp-YEe32I-Da1P0TY8LZ7zbS-k9iYploghqd07vgWNP-JW71E5xH6uOHVFctuRCfRCZ_iC6oWEVdcWPexxoc-WTgl9DNZTKiTcPuAzFJ_ytpDC_u7mNZBaFBE4w4EXhOHcvV5ZTVuKs/s1600/anyrun-soc.jpg"></a></p>
+<p>Why do SOC teams keep burning out and missing SLAs even after spending big on security tools? Routine triage piles up, senior specialists get dragged into basic validation, and MTTR climbs, while stealthy threats still find room to slip through. Top CISOs have realized the solution isn’t hiring more people or stacking yet another tool onto the workflow, but giving their teams faster, clearer behavior evidence from the start.</p>
+<p>Here’s how they’re breaking the cycle and speeding up response without extra hiring.</p>
+<h2>Starting with Sandbox-First Investigation to Cut MTTR at the Source</h2>
+<p>The fastest way to reduce MTTR is to remove the delays baked into investigations. Static verdicts and fragmented workflows force analysts to guess, escalate, and re-check the same alerts, which drives burnout and slows containment.</p>
+<p>That’s why top CISOs are making <strong>sandbox execution the first step</strong>.</p>
+<p>With an interactive sandbox like <strong>ANY.RUN</strong>, teams can detonate suspicious files and links in an isolated environment and see real behavior immediately, so decisions happen early, not after hours of back-and-forth.</p>
+<p><a href="https://app.any.run/tasks/8189dd5e-0159-480d-8654-7b438a73f11e?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=solve_burnout&amp;utm_content=task&amp;utm_term=090226" target="_blank">Check the real case of a phishing attack exposed in 33 seconds</a></p>
+<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNV1dPGKnJnPRTGPgzH9NeOptP1zFEs_hdrV32thdz9-A-UGIRDlXR1eB5NdprRLk1pe4Rw9cdPep4_eouIfEg-IRyleDlX3rAbTDTWGLmolF2sK3pyG5cIkevMS1WHmzI13IYW2ZhThlrGj_md78b8ENcyReh9yqhPMcTqOessk_AFDkgRFbaZUhmbFc/s1600/1.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNV1dPGKnJnPRTGPgzH9NeOptP1zFEs_hdrV32thdz9-A-UGIRDlXR1eB5NdprRLk1pe4Rw9cdPep4_eouIfEg-IRyleDlX3rAbTDTWGLmolF2sK3pyG5cIkevMS1WHmzI13IYW2ZhThlrGj_md78b8ENcyReh9yqhPMcTqOessk_AFDkgRFbaZUhmbFc/s1600/1.png"></a></td></tr><tr><td>Full phishing attack chain analyzed inside an interactive sandbox in real time, revealing a fake Microsoft login page</td></tr></tbody></table>
+<p>Why CISOs prioritize sandbox-first workflows:</p>
+<ul>
+<li><strong>MTTR drops because clarity comes in minutes: </strong>Runtime evidence replaces assumptions, so qualification and containment start faster.</li>
+<li><strong>Fewer escalations, less senior time wasted: </strong>Tier-1 validates alerts with behavior proof, driving up to a <strong>30% reduction in Tier-1 → Tier-2 escalations</strong> and keeping specialists focused on real incidents.</li>
+<li><strong>Lower burnout through fewer manual steps: </strong>Less “chasing context,” fewer repeats, more predictable workloads.</li>
+</ul>
+<div>
+<p>Save up to <strong>21 minutes per case</strong> by making alert qualification evidence-driven, freeing senior time, reducing escalations, and lowering incident cost.</p>
+<p><a href="https://any.run/enterprise/?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=solve_burnout&amp;utm_content=enterprise&amp;utm_term=090226#contact-sales" target="_blank">Reduce MTTR in your SOC</a></p>
+</div> <h2>Automating Triage to Increase SOC Output and Protect SLAs</h2>
+<p>After early clarity comes scale. Even with strong visibility, SOCs slow down if every alert still demands manual effort. By automating triage, CISOs unlock measurable gains across response speed, workload balance, and SOC efficiency:</p>
+<ul>
+<li><strong>Faster investigations, faster containment: </strong>Automated execution shortens the gap between alert and decision, directly reducing MTTR.</li>
+<li><strong>Fewer errors under pressure: </strong>Consistent handling of routine steps lowers risk during high-volume periods.</li>
+<li><strong>More impact from the same team: </strong>Junior staff resolve more alerts independently, reducing escalation load on senior specialists.</li>
+<li><strong>Better use of senior expertise: </strong>Experts spend time on real incidents, not revalidating basic alerts.</li>
+<li><strong>Higher SOC efficiency overall: </strong>Less fatigue, fewer handoffs, and steadier SLA performance.</li>
+</ul>
+<p>In real phishing and malware campaigns, attackers often hide malicious behavior behind QR codes, redirect chains, or CAPTCHA gates. Manually replaying these steps costs time and attention, exactly what SOC teams don’t have.</p> <table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtGXi1wm0mL0X8owQmcy4amSar6MCXcVdfuap6YBylcExp1cB6sisrASkEc0qLiUsM4_ucuOygNOiI-VjGSJ4CmwrUPN9FbSCIhVG_i6HkUs5BVZsPbpdxdNUrHRQ3KYkyqi7p70wYy22EhAcUKR4vPIkTYA6AbWrG0gbPLd_vQO0z7SbbLUf194G4mP0/s1600/2.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgtGXi1wm0mL0X8owQmcy4amSar6MCXcVdfuap6YBylcExp1cB6sisrASkEc0qLiUsM4_ucuOygNOiI-VjGSJ4CmwrUPN9FbSCIhVG_i6HkUs5BVZsPbpdxdNUrHRQ3KYkyqi7p70wYy22EhAcUKR4vPIkTYA6AbWrG0gbPLd_vQO0z7SbbLUf194G4mP0/s1600/2.png"></a></td></tr><tr><td>Phishing attack with QR code exposed with the help of automation and interactivity, saving time and resources</td></tr></tbody></table>
+<p>With automated sandbox execution, those steps are handled instantly. Hidden URLs are opened, gating is passed, and malicious behavior is exposed within seconds, without waiting, retries, or workarounds.</p> <table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhD_UDLGKClmp3-jnfJvNosZYwTy858pCzEC1e1y7FnbHG6ZtN91sjmwEk95MLMrw9u8a5OcVQj6Qa00zVIbdGn0bbn2MGO73A1hhP4Fd5FwvM1IuoHgBKCXHNYyKBa2j1LkWKGJT6zZSv7XnpC2GvNPa1_WqAVdVqHibap6Hor6PJPu8PhyOWoeoE0vLM/s1600/3.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhD_UDLGKClmp3-jnfJvNosZYwTy858pCzEC1e1y7FnbHG6ZtN91sjmwEk95MLMrw9u8a5OcVQj6Qa00zVIbdGn0bbn2MGO73A1hhP4Fd5FwvM1IuoHgBKCXHNYyKBa2j1LkWKGJT6zZSv7XnpC2GvNPa1_WqAVdVqHibap6Hor6PJPu8PhyOWoeoE0vLM/s1600/3.png"></a></td></tr><tr><td>Malicious URL revealed inside ANY.RUN sandbox</td></tr></tbody></table>
+<p>Analysts can still step in live at any moment, inspect processes, or trigger additional actions, but they’re no longer burdened by repetitive setup work.</p>
+<p>Giving the team this dual approach, <strong>automation plus interactivity,</strong> means the following for CISOs: faster response, lower workload, and more SOC capacity, without adding headcount. Automation not only speeds up investigations but also stabilizes the team behind them.</p>
+<h2>Reducing Burnout by Removing Decision Fatigue</h2>
+<p>Burnout in the SOC isn’t caused by a lack of commitment. It’s caused by constant high-stakes decisions made with incomplete information. When teams spend their shifts deciding whether alerts are “probably fine” or “worth escalating,” stress compounds quickly.</p>
+<p>Sandbox-first and automated triage workflows change that dynamic.</p>
+<p>Instead of guessing, teams work from <strong>observable behavior. </strong>They get <strong>structured outputs</strong> they can act on immediately: behavior timelines, extracted IOCs, mapped TTPs, and clear, shareable reports that make handoffs fast and decisions defensible. When time is tight, built-in AI assistance helps summarize what matters, so analysts spend less energy interpreting noise and more time closing cases.</p> <table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtLQklp2iTJNErqgF9uN42MbpbMms0Hkjo03B1cTUk5w57__Tz50k1WuqFUSaPKzgtDV0KXLiDvN-ozKtvFmYTK9J5BPVSJYul1ymOChzhqJShvAitWTlRAQVX5cBB_4x705XdbQ-zvcJfDD1AiHwpen9A9iXEOV9szFAnuwUkoRryOLD0sJXh8hkI7I8/s1600/4.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhtLQklp2iTJNErqgF9uN42MbpbMms0Hkjo03B1cTUk5w57__Tz50k1WuqFUSaPKzgtDV0KXLiDvN-ozKtvFmYTK9J5BPVSJYul1ymOChzhqJShvAitWTlRAQVX5cBB_4x705XdbQ-zvcJfDD1AiHwpen9A9iXEOV9szFAnuwUkoRryOLD0sJXh8hkI7I8/s1600/4.png"></a></td></tr><tr><td>ANY.RUN’s auto-generated reports for fast and efficient sharing</td></tr></tbody></table>
+<p>For CISOs, the impact shows up in several ways:</p>
+<ul>
+<li><strong>More predictable workloads: </strong>Investigations follow consistent paths instead of expanding unpredictably.</li>
+<li><strong>Lower fatigue across shifts: </strong>Less manual replay, fewer tool switches, and fewer stalled cases.</li>
+<li><strong>Stronger team retention: </strong>Teams stay engaged when work leads to confident outcomes, not constant uncertainty.</li>
+</ul>
+<p>When decision fatigue drops, MTTR follows. The SOC becomes calmer, more focused, and easier to run, not because threats are simpler, but because the workflow is.</p>
+<h2>What CISOs Are Reporting After Moving to Evidence-Based Response</h2>
+<p>After shifting to sandbox-first investigation, automated triage, and built-in collaboration, CISOs are using <strong>ANY.RUN</strong> report consistent improvements in how sustainably their SOCs operate.</p> <p>Across teams, leaders are seeing:</p>
+<ul>
+<li><strong>Up to 3× increase in SOC output: </strong>More alerts handled with the same team, driven by faster qualification and fewer repeat steps.</li>
+<li><strong>MTTR reduced by up to 50%: </strong>Early execution evidence shortens investigations and accelerates containment.</li>
+<li><strong>Up to 30% fewer Tier-1 → Tier-2 escalations: </strong>Clear behavior proof enables junior staff to resolve cases confidently.</li>
+<li><strong>Higher detection rates for evasive threats: </strong>90% of organizations report higher detection rates, particularly for stealthy and evasive threats.</li>
+<li><strong>Lower burnout and steadier SLA performance: </strong>Predictable workflows replace constant firefighting, easing pressure across shifts.</li>
+</ul>
+<p>These numbers reflect real operational gains: faster response without extra hiring, better use of senior expertise, and a SOC that scales without exhausting the people running it.</p>
+<h2>Build a Faster, More Sustainable SOC Without Extra Hiring</h2>
+<p>The best SOCs don’t wait. They respond fast, protect their teams from burnout, and stay steady even when alert volume spikes. But that only happens when the investigation workflow is built for speed and sustainability.</p>
+<p>By making sandbox execution the first step, automating repetitive triage, and keeping investigation context shared and controlled, top CISOs are cutting MTTR without adding headcount.</p>
+<p><strong>ANY.RUN</strong> brings that foundation together in one place. It gives your team the visibility, automation, and enterprise-grade control needed to reduce delays, lower escalation pressure, and keep operations stable.</p>
+<p>Trusted by CISOs to deliver:</p>
+<ul>
+<li>Faster MTTR through early behavior evidence</li>
+<li>Lower risk of business disruption and costly incidents</li>
+<li>Fewer unnecessary escalations and cleaner handoffs</li>
+<li>Less burnout and better team retention</li>
+<li>Stronger ROI from existing security investments</li>
+</ul>
+<p>Ready to see what this looks like in your environment?</p>
+<p><strong><a href="https://any.run/enterprise/?utm_source=thehackernews&amp;utm_medium=article&amp;utm_campaign=solve_burnout&amp;utm_content=enterprise&amp;utm_term=090226#contact-sales" target="_blank">Request ANY.RUN access</a></strong> to build a faster, more sustainable SOC on evidence, control, and repeatable workflows, without adding headcount.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

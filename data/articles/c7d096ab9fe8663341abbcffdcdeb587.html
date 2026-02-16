@@ -1,105 +1,29 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>GitHub - juleshenry/zooplankton-image-tool: Premier zooplankton image tool (ZIT)</title>
+<title>Show HN: ZIT: Zooplankton Image Tool for 2d rendering of biological locomotion</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
-  <h1>GitHub - juleshenry/zooplankton-image-tool: Premier zooplankton image tool (ZIT)</h1>
+  <h1>Show HN: ZIT: Zooplankton Image Tool for 2d rendering of biological locomotion</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 10:47:49 PM | <a href="https://github.com/juleshenry/zooplankton-image-tool" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hacker News Show | Date: 2/16/2026 9:47:49 PM | <a href="https://github.com/juleshenry/zooplankton-image-tool" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h1>ZIT (Zooplankton Image Tool)</h1><a href="#zit-zooplankton-image-tool"></a></div>
-<pre><code>ZIT is a tool designed to enhance and composite plankton photos from video frames. It uses computer vision techniques (OpenCV MOG2 background subtraction and contour filtering) to create clean, high-quality composites showing the locomotion of zooplankton.</code></pre>
-<p><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/mari_comp.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/mari_comp.png" alt="Mariposa Example"></a></p>
-<div><h2>Features</h2><a href="#features"></a></div>
-<ul>
-<li><strong>Frame Capture:</strong> Extract frames from videos at specified intervals.</li>
-<li><strong>Motion-Based Composition:</strong> Create composites by overlaying moving entities on a stable background.</li>
-<li><strong>Entity Recognition:</strong> Uses MOG2 background subtraction to isolate animals from noise and artifacts.</li>
-<li><strong>Parameter Sweeping:</strong> Find optimal threshold values for different video conditions.</li>
-</ul>
-<div><h2>Installation</h2><a href="#installation"></a></div>
-<p>Ensure you have <a href="https://python-poetry.org/">Poetry</a> installed.</p>
-<div><pre>poetry install</pre></div>
-<div><h2>Usage</h2><a href="#usage"></a></div>
-<div><h3>CLI</h3><a href="#cli"></a></div>
-<p>Capture frames and create a composite in one command:</p>
-<div><pre><span><span>#</span> Using poetry</span>
-poetry run zit --input samples/limo.mp4 --composite --entities <span><span>#</span> If installed</span>
-zit --input samples/limo.mp4 --composite --entities</pre></div>
-<div><h3>Parameters</h3><a href="#parameters"></a></div>
-<ul>
-<li><pre><code>--input</code></pre>, <pre><code>-i</code></pre>: Path to the input video.</li>
-<li><pre><code>--interval</code></pre>: Interval in seconds for frame capture (default: <pre><code>1</code></pre>).</li>
-<li><pre><code>--composite</code></pre>: Enable composition after frame capture.</li> <li><pre><code>--epsilon</code></pre>: Difference threshold for entity detection (default: <pre><code>20.0</code></pre>). Also referred to as <pre><code>Thresh</code></pre> in sweep grids.</li>
-<li><pre><code>--noise</code></pre>: Minimum pixel area for a detected entity (default: <pre><code>50.0</code></pre>). Also referred to as <pre><code>MinArea</code></pre> in sweep grids.</li>
-<li><pre><code>--skip START END</code></pre>: Process only a specific frame range.</li>
-<li><pre><code>--out-file</code></pre>: Name of the output composite image (default: <pre><code>composited.png</code></pre>).</li>
-</ul>
-<div><h3>Parameter Sweep</h3><a href="#parameter-sweep"></a></div>
-<p>To find the optimal threshold values for your video, use the parameter sweep script. It generates a 5x5 grid of composites sweeping across </p><pre><code>MinArea</code></pre> (noise) and <pre><code>Thresh</code></pre> (epsilon).<p></p>
-<div><pre>python sweep_grid.py</pre></div>
-<div><h2>Gallery</h2><a href="#gallery"></a></div>
-<div><h3>Parameter Grids</h3><a href="#parameter-grids"></a></div>
-<p>Find the optimal thresholds for different conditions. These grids show variations in </p><pre><code>MinArea</code></pre> and <pre><code>Thresh</code></pre>.<p></p>
-<table>
-<thead>
-<tr>
-<th>Video 184368 Sweep</th>
-<th>Video 230717 Sweep</th>
-<th>Video 307555 Sweep</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/sweep_grid_184368-873181589_small.mp4.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/sweep_grid_184368-873181589_small.mp4.png"></a></td>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/sweep_grid_230717_small.mp4.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/sweep_grid_230717_small.mp4.png"></a></td>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/sweep_grid_307555_tiny.mp4.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/sweep_grid_307555_tiny.mp4.png"></a></td>
-</tr>
-</tbody>
-</table>
-<div><h3>Entity Recognition Results</h3><a href="#entity-recognition-results"></a></div>
-<p>Clean composites generated using OpenCV MOG2 and contour filtering.</p>
-<table>
-<thead>
-<tr>
-<th>Video 184368</th>
-<th>Video 230717</th>
-<th>Video 307555</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/184368_entities.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/184368_entities.png"></a></td>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/230717_entities.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/230717_entities.png"></a></td>
-<td><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/307555_entities.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/307555_entities.png"></a></td>
-</tr>
-</tbody>
-</table>
-<div><h3>Examples</h3><a href="#examples"></a></div>
-<p><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/plankt_oct15.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/plankt_oct15.png" alt="Plankton Example"></a>
-<a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/plankt_oct19.jpg"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/plankt_oct19.jpg" alt="Lovely Example 1"></a>
-<a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/plankt_oct06.jpg"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/plankt_oct06.jpg" alt="Lovely Example 2"></a></p>
-<div><h2>Cleanup</h2><a href="#cleanup"></a></div>
-<p>To remove temporary files and generated frames:</p>
-<div><pre>rm -rf temp_sweep_<span>*</span> frames/</pre></div>
+    <p>ZIT is a tiny micro-library that takes zooplankton locomotion videos and renders them into 2D flattened static images, encoding motion over time into a single frame for compact analysis. Installable via pip install zooplankton-image-tool. URL: https://news.ycombinator.com/item?id=47040776
+Points: 2
+# : 0</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -119,5 +43,5 @@ zit --input samples/limo.mp4 --composite --entities</pre></div>
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

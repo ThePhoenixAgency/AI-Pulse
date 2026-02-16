@@ -1,25 +1,33 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
-<title>The-Pocket/PocketFlow</title>
+<title>Home</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
-  <h1>The-Pocket/PocketFlow</h1>
+  <h1>Home</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 11:05:52 PM | <a href="https://github.com/The-Pocket/PocketFlow" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/16/2026 10:41:52 PM | <a href="https://github.com/The-Pocket/PocketFlow" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Pocket Flow: 100-line LLM framework. Let Agents build Agents! English | 中文 | Español | 日本語 | Deutsch | Русский | Português | Français | 한국어 Pocket Flow is a 100-line minimalist LLM framework Lightweight: Just 100 lines. Zero bloat, zero dependencies, zero vendor lock-in. Expressive: Everything you love—(Multi-)Agents, Workflow, RAG, and more. Agentic Coding: Let AI Agents (e.g., Cursor AI) build Agents—10x productivity boost! Get started with Pocket Flow: To install, pip install pocketflowor just copy the source code (only 100 lines). To learn more, check out the video tutorial and documentation Join our Discord to connect with other developers building with Pocket Flow! Pocket Flow now has Typescript, Java, C++, Go, Rust and PHP versions! Why Pocket Flow? Current LLM frameworks are bloated... You only need 100 lines for LLM Framework! Abstraction App-Specific Wrappers Vendor-Specific Wrappers Lines Size LangChain Agent, Chain Many (e.g., QA, Summarization) Many (e.g., OpenAI, Pinecone, etc.) 405K +166MB CrewAI Agent, Chain Many (e.g., FileReadTool, SerperDevTool) Many (e.g., OpenAI, Anthropic, Pinecone, etc.) 18K +173MB SmolAgent Agent Some (e.g., CodeAgent, VisitWebTool) Some (e.</p>
+    <pre><code>Pocket Flow A 100-line minimalist LLM framework for Agents, Task Decomposition, RAG, etc. Lightweight: Just the core graph abstraction in 100 lines. ZERO dependencies, and vendor lock-in. Expressive: Everything you love from larger frameworks—(Multi-)Agents, Workflow, RAG, and more. Agentic-Coding: Intuitive enough for AI agents to help humans build complex LLM applications. Core Abstraction We model the LLM workflow as a Graph + Shared Store: Node handles simple (LLM) tasks. Flow connects nodes through Actions (labeled edges). Shared Store enables communication between nodes within flows. Batch nodes/flows allow for data-intensive tasks. Async nodes/flows allow waiting for asynchronous tasks. (Advanced) Parallel nodes/flows handle I/O-bound tasks. Design Pattern From there, it’s easy to implement popular design patterns: Agent autonomously makes decisions. Workflow chains multiple tasks into pipelines. RAG integrates data retrieval with generation. Map Reduce splits data tasks into Map and Reduce steps. Structured Output formats outputs consistently. (Advanced) Multi-Agents coordinate multiple agents. Utility Function We do not provide built-in utilities. Instead, we offer examples—please implement your own: LLM Wrapper Viz and Debug Web Search Chunking Embedding Vector Databases Text-to-Speech Why not built-in?: I believe it’s a bad practice for vendor-specific APIs in a general framework: API Volatility: Frequent changes lead to heavy maintenance for hardcoded APIs. Flexibility: You may want to switch vendors, use fine-tuned models, or run them locally. Optimizations: Prompt caching, batching, and streaming are easier without vendor lock-in. Ready to build your Apps? Check out Agentic Coding Guidance, the fastest way to develop LLM projects with Pocket Flow!</code></pre>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -39,5 +47,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

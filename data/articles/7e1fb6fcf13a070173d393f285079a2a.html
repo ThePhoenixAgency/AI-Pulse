@@ -1,19 +1,15 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Guide: What is the Windows.old folder and can I delete it?</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -22,9 +18,11 @@
 <body>
   <h1>Guide: What is the Windows.old folder and can I delete it?</h1>
   <div class="metadata">
-    Source: Neowin | Date: 2/13/2026 5:00:01 PM | <a href="https://www.neowin.net/guides/guide-what-is-the-windowsold-folder-and-can-i-delete-it/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Neowin | Date: 2/13/2026 4:00:01 PM | <a href="https://www.neowin.net/guides/guide-what-is-the-windowsold-folder-and-can-i-delete-it/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>Guide &nbsp;When you purchase through links on our site, we may earn an affiliate commission. Here’s how it works. Is your storage suddenly shrinking after a Windows upgrade? There's a hidden reason most people miss, and it could be quietly eating tens of gigabytes. Usama Jawad Neowin @UsamaJawad96 · Feb 13, 2026 11:00 EST After you have upgraded to a new version of Windows, you may notice that the space on the drive volume which contains the operating system immediately decreases. While there could be many culprits, the reason behind this is usually a new folder that gets created during the installation of your update. For example, if Windows is installed on your C: drive, you'll notice a Windows.old folder now being present in that directory. For those unaware, Windows.old is a directory that gets automatically created when upgrading to a new version of Windows. It basically contains an archive of your previous installation, storing program files, some user data, core Windows components and files, and more. The purpose of this folder is to host a system backup that you can restore to, if you run into critical issues while using the new version of Windows that you upgraded to. These recovery options can be found in the System &gt; Recovery options in Windows Settings. Now that we've established that Windows.old actually serves a very useful purpose, the next question one could have is whether it is safe to delete? Well, the good thing about this directory is that it automatically deletes itself within a few weeks, so you usually don't have to worry about it. However, depending upon your drive capacity, you may still need to consider deleting it manually. I ran into this issue (which actually prompted me to write this guide), because I noticed that only 4GB of free space was left on my C: drive. Although this isn't a critical problem, I have found my latest version of Windows to be stable enough to not consider a restore. If you look at the screenshot above, you'll notice that the folder is occupying a massive ~85GB on my PC. Provided that you have administrative permissions on your PC, you can safely delete this folder and get all that occupied space back. However, do keep in mind that this essentially gets rid of a restore point on your PC, so only do so if you really need that free space and if you believe that you won't need to revert to an older Windows version in the near future. That said, you can't delete Windows.old via the File Explorer, you'll run into errors. The other way to do it is by following the instructions below: Search Disk Cleanup in Windows Search Choose the drive which contains your Windows installation Click on Clean System Files Again, select the drive which contains your Windows installation. Wait a few minutes for the scan to complete Once this scan completes, you'll see more options in the Disk Cleanup UI. Select Previous Windows installation(s) Click OK at the bottom Windows will prompt you that if you delete this folder, you won't be able to restore to this older version of the OS. Click OK Wait a few minutes for this directory to be deleted That's it! That's all there is to it. However, do keep in mind that this will irreversibly delete a restore point to the previous version of Windows, so if you do experience problems in your latest installation, this deletion of Windows.old also removes a way to go back. As such, only do so at your own risk and only if you really want that freed up space.</p></div>
+  <div class="content">
+    <p>Is your storage suddenly shrinking after a Windows upgrade? There's a hidden reason most people miss, and it could be quietly eating tens of gigabytes. ...</p>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +41,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

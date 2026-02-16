@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Business Lead Finder - Google Maps &amp; Yelp · Apify</title>
 <style>
@@ -22,10 +24,24 @@
 <body>
   <h1>Business Lead Finder - Google Maps &amp; Yelp · Apify</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 9:15:58 PM | <a href="https://apify.com/original_xenomorph/business-lead-finder" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Hacker News Show | Date: 2/16/2026 8:15:58 PM | <a href="https://apify.com/original_xenomorph/business-lead-finder" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <pre><code>Local Business Lead Finderquantifiable_bouquet/local-business-lead-finderDiscover, extract, and enrich local business leads from Google Maps. Find businesses by keyword and location, collect contact details, emails, and social profiles, and export clean, deduplicated data. Built for automation, CRMs, and recurring lead generation workflows.Hayder Al-Khalissi2Google Maps Business Scraper – Leads with Phone, Addressblayzeye/Google-maps-scraperExtract local business leads from Google Maps using a keyword and city. Get business names, ratings, and Maps URLs in structured format. Ideal for marketers, agencies, and lead generation professionals targeting local customers. Om2Yelp B2b Lead Extractorb2b_leads/yelp-b2b-lead-extractorScrape Yelp businesses by keyword and location with ease. This Actor extracts core business details and crawls associated websites to find emails and phone numbers. Perfect for B2B lead generation and building enriched prospect lists fast.Chidubem Aneke4EBEuropages B2B Scrapercodebyte/europages-b2b-scraperEuropages B2B lead finder. Extract business leads and company information from Europages - Europe's largest B2B platform. Find potential business partners, suppliers, and clients across Europe. Research competitors in your industry.Codebyte985.0(1)Yellow Pages Portugal (Paginas Amarelas) Leads Finderlead.gen.labs/yellow-pages-portugal-paginas-amarelas-leads-finderYellow Pages Portugal (Páginas Amarelas) Leads Finder is an Apify actor designed to extract business leads from Portugal’s Yellow Pages. Itgathers company names, contacts, addresses, and websites, making it perfect for sales, marketing, and lead generation. Get high-quality business data.LeadGen Labs11GMGoogle Maps Lead Enricherryanclinton/google-maps-lead-enricherSearch Google Maps for any business type and location, then automatically enrich every result with emails, phone numbers, team contacts, email patterns, and lead quality scores. Combines Google Maps Scraper with a 3-step B2B enrichment pipeline.ryan clinton1SMMA Lead Finder: Google Maps &amp; Social Auditpracticaltools/smma-lead-finder-maps-social-auditInstantly find qualified leads for your SMMA. Scrapes Google Maps for highly-rated businesses, then deep-audits their site for missing Facebook Pixels, broken Instagram links, and low follower counts. Auto-generates personalized icebreakers to help you close more deals.Practical Tools95.0(1)Lead Finder With Emails | $1.4 / 1kfatihtahta/lead-finder-with-emails-scraperGet a clean, deduped list of B2B contacts with verified emails and rich company context, sourced from multiple places. Filter by title, seniority, location, industry, headcount and more. It validates, enrich, removes duplicates and provides the list. Alternative to Apollo, ZoomInfo and Lusha.Fatih Tahta4543.8(8)Website Contact Scraper - AI-Powered Lead Findertimo.sieber/website-lead-scraperAI-powered website scraper that extracts real contact data from company sites! Finds people, positions, emails &amp; phone numbers using LLM technology. Scans team pages, contact sections &amp; company info. Perfect for B2B lead generation and sales research.Timo Sieber51Extract Furnished Finder Hostsrigelbytes/furnished-finder-hostsExtract UNLIMITED listings from Furnished Finder, get rental info, images, pricing, and host contact details. Supports proxies and retries to ensure smooth, reliable scraping.Rigel Bytes10</code></pre>
+    <p>I built a tool that extracts structured business data from Google Maps and Yelp. You give it a query (e.g., "coffee shops in Brooklyn") and it returns name, address, phone, website, rating, and review count as JSON or CSV.
+It runs as an Apify Actor, so no infrastructure to manage.
+Technical details:
+- Built with Python + Playwright for rendering JS-heavy pages
+- Handles Google Maps' infinite scroll and dynamic loading
+- Deduplicates across Google Maps and Yelp results
+- Outputs structured JSON with consistent schema
+Why I built it: Existing lead databases (ZoomInfo, Apollo) start at $100+/month and are overkill for small teams that need a few hundred local leads. I wanted something with no subscription and a simple input/output model.
+Limitations I'm upfront about:
+- Data is only as current as Google/Yelp listings
+- Very broad searches can be slow
+- Phone numbers aren't always available
+Feedback welcome. URL: https://news.ycombinator.com/item?id=47039745
+Points: 1
+# : 0</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -45,5 +61,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="fr"><head>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
 <meta charset="UTF-8">
 <title>Chiffrer ses données avant de les envoyer dans le cloud : tour d’horizon des solutions</title>
 <style>
@@ -22,9 +24,11 @@
 <body>
   <h1>Chiffrer ses données avant de les envoyer dans le cloud : tour d’horizon des solutions</h1>
   <div class="metadata">
-    Source: Next INpact | Date: 2/10/2026 5:46:53 PM | <a href="https://next.ink/218605/chiffrer-ses-donnees-avant-de-les-envoyer-dans-le-cloud-tour-dhorizon-des-solutions/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: Next INpact | Date: 2/10/2026 4:46:53 PM | <a href="https://next.ink/218605/chiffrer-ses-donnees-avant-de-les-envoyer-dans-le-cloud-tour-dhorizon-des-solutions/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
-  <div class="content"><p>Depuis le 24 décembre, Next propose à ses abonnés Premium du stockage S3&nbsp;: 1 To par défaut, avec 100 Go de plus par ancienneté du compte. Nous avons publié dans la foulée un tuto pour vous expliquer comment en profiter. Disponible sous forme de bêta, l’offre s’est ouverte à tous début février. Il est maintenant temps de passer au second gros morceau de notre dossier&nbsp;: comment chiffrer vos données avant de les envoyer dans le cloud. 1 To (et plus) de stockage S3 dans votre abonnement Next&nbsp;: c’est parti&nbsp;! Deux méthodes de protection Pour cela, nous avons&nbsp;grosso modo&nbsp;deux méthodes&nbsp;: la gestion des droits d’accès et le chiffrement. Pour la gestion des droits, c’est-à-dire la mise en place d’un mécanisme empêchant les consultations non souhaitées, il faut s’en remettre entièrement à un fournisseur&nbsp;: il doit mettre en place les outils nécessaires, mais il est impossible de les vérifier nous-mêmes, sauf par un audit hors de portée des utilisateurs lambda. Le chiffrement, en revanche, offre lui la possibilité d’être maîtrisé (sous certaines conditions) par l’utilisateur, notamment quand il reste le seul maître des clés de chiffrement. Encore faut-il choisir le bon outil, si tant est qu’il existe, et les bonnes options. Il est impossible de lister tous les produits du marché, on va en regarder quelques-uns pour vous montrer leurs principales caractéristiques, afin que vous compreniez bien leurs usages et que vous trouviez ce qui vous convient le mieux. Mais on vous le réexpliquera très prochainement dans un dossier, il vaut vraiment mieux rester maître de ses clés, donc l’exigence pour notre recherche d’outil se résumera ainsi&nbsp;: Chiffrer un dossier (pouvant être local ou distant), tout en restant bien sûr maître de la clé de chiffrement, et en y accédant localement de façon transparente. La référence disparue&nbsp;: Boxcryptor Cet outil non open source et payant cochait néanmoins de très nombreuses cases&nbsp;: chiffrement de bout en bout (E2EE comme on dit dans les milieux autorisés) fichier par fichier, maîtrise des clés de chiffrement grâce au zero knowledge (les informations principales pour le processus de chiffrement étant déduites d’un secret qui n’est stocké nulle part et n’est utilisé que localement), gestion&nbsp;multi-utilisateurs et intégration possible dans des Active Directories ou LDAP pour une utilisation professionnelle. Le chiffrement E2EE fichier par fichier avec maîtrise des secrets convenait parfaitement à ceux qui veulent protéger leurs fichiers où qu’ils soient, localement ou dans le cloud, la contrepartie étant que dans un cas d’usage avec Office (Microsoft 365), les fichiers devraient forcément être déchiffrés localement avant d’être utilisés&nbsp;: on perd l’usage des Word et Excel en ligne, mais en gagnant sur la sécurité, chacun mettant le curseur d’usage là où il le souhaite. Disparu suite à son rachat par Dropbox, il n’a guère laissé que Cryptomator comme alternative pour les mêmes cas d’usage. Nous y reviendrons un peu plus tard. E2EE ou chiffrement de bout en bout… mais de quel «&nbsp;bout&nbsp;» parle-t-on&nbsp;? Quelques exemples pour voir de quoi on parle Nous allons regarder quelques outils, et voir à quels cas d’usage ils correspondent vraiment. On en profitera pour faire un petit test de qualité, en les comparant chaque fois avec notre référence disparue (promis, on ne versera aucune larme même si l’émotion nous gagne). Vous trouverez en fin d’article un tableau récapitulatif des fonctionnalités, forces et faiblesses, ainsi que des tarifs. TrueCrypt et ses forks tels que VeraCrypt Soutenez un journalisme indépendant, libre de ton, sans pub et sans reproche. Accédez en illimité aux articles Profitez d'un média expert et unique Intégrez la communauté et prenez part aux débats Partagez des articles premium à vos contacts</p></div>
+  <div class="content">
+    <p>Il faut prendre soin de ses données, en tant que lecteurs de Next vous en êtes convaincus depuis longtemps. Que ce soit pour faire des sauvegardes dans le cloud, c’est-à-dire sur l’ordinateur de quelqu’un d’autre, ou pour les protéger des regards indiscrets, on doit souvent faire confiance à un tiers pour le chiffrement. Next vous […]</p>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +47,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

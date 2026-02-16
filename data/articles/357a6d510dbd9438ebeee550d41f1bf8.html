@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Add Kodi to RetroPie Menu</title>
 <style>
@@ -22,7 +24,7 @@
 <body>
   <h1>Add Kodi to RetroPie Menu</h1>
   <div class="metadata">
-    Source: Raspberry Pi Spy | Date: 5/6/2022 3:00:00 PM | <a href="https://www.raspberrypi-spy.co.uk/2022/05/add-kodi-to-retropie-menu/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Raspberry Pi Spy | Date: 5/6/2022 1:00:00 PM | <a href="https://www.raspberrypi-spy.co.uk/2022/05/add-kodi-to-retropie-menu/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><article><div><p>If you run Kodi on a RetroPie system you can add Kodi to the RetroPie menu as if it is a game system.</p><p>This guide assumes you already have Kodi installed on your RetroPie system where it appears as an item under the “Ports” system.</p><p>To continue you will need to use the command line. You can get to the command line either</p><ul><li>Pressing F4 if you have a keyboard attached directly to your system</li><li>Using SSH to connect to the RetroPie system from another computer</li></ul><h2>Step 1 – Copy es_systems.cfg file</h2><p>Firstly we need to copy the default es_systems.cfg file:</p><pre><code>sudo cp /etc/emulationstation/es_systems.cfg /opt/retropie/configs/all/emulationstation/es_systems.cfg</code></pre><h2>Step 2 – Edit es_systems.cfg file</h2><p>We need to edit this file in the nano text editor:</p><pre><code>sudo nano /opt/retropie/configs/all/emulationstation/es_systems.cfg</code></pre><p>Add the following text block just after an existing &lt;/system&gt; tag :</p><pre><code>&lt;system&gt; &lt;fullname&gt;Kodi&lt;/fullname&gt; &lt;name&gt;kodi&lt;/name&gt; &lt;path&gt;~/RetroPie/roms/kodi&lt;/path&gt; &lt;extension&gt;.sh .SH&lt;/extension&gt; &lt;command&gt;bash %ROM%&lt;/command&gt; &lt;platform&gt;kodi&lt;/platform&gt; &lt;theme&gt;kodi&lt;/theme&gt;
@@ -47,5 +49,5 @@ kodi-standalone</code></pre><p>Save the changes using CTRL-X, Y then ENTER.</p><
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>

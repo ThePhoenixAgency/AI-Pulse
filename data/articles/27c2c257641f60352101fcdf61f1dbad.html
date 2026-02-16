@@ -1,4 +1,6 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <title>Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display</title>
 <style>
@@ -22,9 +24,11 @@
 <body>
   <h1>Raspberry Pi Pico 2 FFT sound spectrum analyzer visualizes audio via OLED display</h1>
   <div class="metadata">
-    Source: Toms Hardware Raspberry Pi | Date: 3/24/2025 3:05:12 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-2-fft-sound-spectrum-analyzer-visualizes-audio-via-oled-display" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: Toms Hardware Raspberry Pi | Date: 3/24/2025 2:05:12 PM | <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-2-fft-sound-spectrum-analyzer-visualizes-audio-via-oled-display" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content"><p>(Image credit: Dan McCreary) There are all sorts of cool audio-based Raspberry Pi projects out there but sometimes you need something a little more niche. Today we're sharing a really cool creation put together by Dan McCreary that uses a Raspberry Pi Pico 2 to drive a custom FFT sound spectrum analyzer. This gadget provides real time visual output of soundwaves and best of all, you can make it yourself! Spectrum Analyzer using FFT running on Raspberry Pi Pico 2 - YouTube Watch On McCreary was kind enough to share plenty of details about how this project works and what its current limitations are. In the project description, he goes on to explain that the FFT analyzer operates around 17 milliseconds. The algorithm was created to work in ARM assembler using an FFT library created by Peter Hinch.Like we mentioned before, the main board powering the project is a Raspberry Pi Pico 2. The Pico is connected to a 2.42-inch I2C OLED display which has a resolution of 128 x 64px and relies on the SSD1306 driver to operate. For audio input it uses a microphone that is capable of providing 8K samples per second.The code for the project was created using MicroPython. Over at GitHub, McCreary has shared details on how to recreate the project. In it, he breaks down the hardware setup as well as everything you need to build the FFT analyzer system. McCreary also shared a video to YouTube showing off the creation process as well as the final build in action.If you want to get a closer look at this Raspberry Pi project, check out the project page shared to GitHub and YouTube for more details. There you'll find not only details about its construction but also steps and additional resources for developing your own FFT system from scratch.Get Tom's Hardware's best news and in-depth reviews, straight to your inbox. Ash Hill is a contributing writer for Tom's Hardware with a wealth of experience in the hobby electronics, 3D printing and PCs. She manages the Pi projects of the month and much of our daily Raspberry Pi reporting while also finding the best coupons and deals on all tech.</p></div>
+  <div class="content">
+    <p>Dan McCreary shows off how to create your own FFT sound spectrum analyzer using our favorite microcontroller, the Raspberry Pi Pico 2.</p>
+  </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -43,5 +47,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-
-</body></html>
+</body>
+</html>
