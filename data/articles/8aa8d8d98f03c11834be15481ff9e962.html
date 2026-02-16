@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Fork Will Outlive Your Patience. A Systems Thinking Post-Mortem.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Your Fork Will Outlive Your Patience. A Systems Thinking Post-Mortem.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/microseyuyu/your-fork-will-outlive-your-patience-a-systems-thinking-post-mortem-56pk" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <p>Every internal fork starts as a one-liner: "we just need to patch this one file." Six months later you're maintaining four parallel repositories, dreading every upstream release, and spending more time keeping your patches alive than building the thing they were supposed to enable.</p>
+
+<p>I know because I did exactly this. I forked four upstream tools to port 973 ROS packages to an unsupported OS. It worked — 61% of the packages compiled, turtlesim ran, my demo was a success. Then the fork ate me alive.</p>
+
+<p>This is not a war story. This is a <strong>system dynamics diagnosis</strong> of why forking upstream tools creates a structural trap that no amount of discipline can outrun.</p>
+
+<h2>
+  <a name="the-setup" href="#the-setup">
+  </a>
+  The Setup
+</h2>
+
+<p>I was porting <a href="https://docs.ros.org/en/jazzy/" target="_blank">ROS 2 Jazzy</a> (the Robot Operating System) to <a href="https://www.openeuler.org/en/" target="_blank">openEuler</a> 24.03 LTS — a Linux distribution that ROS does not officially support. The ROS build toolchain (bloom, rosdep, rospkg, rosdistro) hardcodes its list of supported platforms. openEuler is not on it.</p>
+
+<p>My options were:</p>
+
+<ol>
+<li>
+<strong>Contribute upstream</strong> — submit PRs to add openEuler support to the official tools. Slow, dependent on maintainer goodwill, but sustainable.</li>
+<li>
+<strong>Fork everything</strong> — clone the four repos, add openEuler support myself, build from source. Fast, self-contained, but now I own the maintenance.</li>
+</ol>
+
+<p>I chose option 2. Of course I did. I had a demo to deliver.</p>
+
+<h2>
+  <a name="the-fix-that-fails-r1" href="#the-fix-that-fails-r1">
+  </a>
+  The Fix That Fails (R1)
+</h2>
+
+<p>Here's what my fork looked like as a system:<br />
+</p>
+
+<div>
+<pre><code>        (Problem)                      (Relief)
+    TOOLCHAIN DOESN'T    ----------&gt;  TOOLCHAIN WORKS
+    RECOGNIZE openEuler                   |
+         ^                                |
+         |         (Short Term)           |
+         |          BALANCING             |
+         |            LOOP                |
+         |                                v
+         +------ &lt;FORK UPSTREAM&gt; ---------+
+         |         (Intervention)         |
+         |                                |
+         |                                |
+         |  (Long Term Side-Effect)       |
+         |    REINFORCING LOOP (R1)       |
+         |    "Fixes that Fail"           |
+         |                                |
+         |                                v
+    +-----------+                  +-----------------+
+    | FORK GETS | &lt;--------------- | UPSTREAM MOVES  |
+    | OVERWRITTEN|    (Delay)      | (pip install,   |
+    | OR STALE  |                  |  new releases)  |
+    +-----------+                  +-----------------+
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Every <code>pip install</code> in my build environment could silently overwrite my forked rosdep with the official version. The official version doesn't know openEuler exists. Suddenly my entire pipeline is dead and I'm grepping through pip logs trying to figure out what happened.</p>
+
+<p>This is textbook <strong>"Fixes that Fail"</strong> — one of the system archetypes described by Donella Meadows. The fix (forking) addresses the symptom (toolchain doesn't recognize my OS), but it creates a side effect (fragile environment that breaks on any upstream interaction) that makes the original problem recur, harder to diagnose each time.</p>
+
+<p>The reinforcing loop at the bottom is the killer. The more upstream moves, the more my fork breaks. The more it breaks, the more time I spend re-patching. The more time I spend re-patching, the less time I have to pursue the fundamental solution (contributing upstream). Which means I'm even more dependent on the fork tomorrow than I am today.</p>
+
+<h2>
+  <a name="the-data-decay-loop-r2" href="#the-data-decay-loop-r2">
+  </a>
+  The Data Decay Loop (R2)
+</h2>
+
+<p>R1 didn't run alone. I also forked <code>rosdistro</code> — the central database that maps ROS package names to OS-specific dependencies. My fork contained hand-maintained YAML files mapping ROS dependency keys to openEuler package names.<br />
+</p>
+
+<div>
+<pre><code>    Official rosdistro            Forked rosdistro
+    (constantly updated)  ------&gt;  (frozen in time)
+          ^                              |
+          |                              |
+          |       REINFORCING            v
+          |         LOOP (R2)        METADATA ROTS
+          |      "Data Decay"        (Wrong versions,
+          |                           missing packages)
+          |                              |
+          |                              v
+          |                        BUILD FAILURES
+          |                        INCREASE
+          |                              |
+          +------------------------------+
+              (Need more manual
+               patching of YAML)
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Every day the official rosdistro receives updates, my fork falls further behind. Every day it falls behind, more builds fail for reasons that have nothing to do with openEuler compatibility — they fail because my metadata is stale.</p>
+
+<p>I wrote a script (<code>auto_generate_openeuler_yaml.py</code>) that reads the official YAML and tries to map each dependency to an openEuler package via <code>dnf list</code>. But this script can only run on an actual openEuler machine. It can't run in CI. It can't run offline. It's a manual process that I have to remember to do, and every time I forget, the data rots a little more.</p>
+
+<h2>
+  <a name="what-r1-r2-look-like-in-practice" href="#what-r1-r2-look-like-in-practice">
+  </a>
+  What R1 + R2 Look Like in Practice
+</h2>
+
+<p>Here's the actual data from my system, running on <a href="https://eulermaker.compass-ci.openeuler.openatom.cn/project/overview?osProject=jazzy_ament_package" target="_blank">EulerMaker</a>:</p>
+
+<div><table>
+<thead>
+<tr>
+<th>Architecture</th>
+<th>Success</th>
+<th>Dep Gaps</th>
+<th>Failures</th>
+<th>Interrupted</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aarch64</td>
+<td><strong>606</strong></td>
+<td>215</td>
+<td>152</td>
+<td>—</td>
+<td>973</td>
+</tr>
+<tr>
+<td>x86_64</td>
+<td><strong>597</strong></td>
+<td>214</td>
+<td>151</td>
+<td>11</td>
+<td>973</td>
+</tr>
+</tbody>
+</table></div>
+
+<p>61% success rate. Turtlesim runs. That's the good news.</p>
+
+<p>The bad news: those 214 dependency gaps and 151 build failures are the <strong>accumulated stock of problems</strong> that my two reinforcing loops are feeding. Each gap is a place where my forked metadata is wrong or my forked toolchain did something the real toolchain wouldn't. And every time upstream moves, some of those 597 successes will become new failures, because my fork hasn't kept up.</p>
+
+<p>The system is not failing. The system is <strong>succeeding at producing failures</strong>, because that's what its structure is designed to do.</p>
+
+<h2>
+  <a name="the-leverage-point-i-missed" href="#the-leverage-point-i-missed">
+  </a>
+  The Leverage Point I Missed
+</h2>
+
+<p>In systems thinking, there's a concept called <strong>leverage points</strong> — places where a small change in structure produces a large change in behavior. Meadows ranked "the rules of the system" as one of the highest leverage points.</p>
+
+<p>My fork was operating under one implicit rule: <strong>"we maintain our own version of the toolchain."</strong> This rule forced every interaction with upstream into an adversarial relationship. Upstream updates weren't improvements — they were threats.</p>
+
+<p>The high-leverage alternative was to change the rule: <strong>"we get our patches accepted upstream."</strong> Under this rule, every upstream update would be an improvement that includes our platform support. The same force that was destroying my system (upstream momentum) would be sustaining it instead.</p>
+
+<p>I know why I didn't do this. Contributing upstream is slow, political, and uncertain. Forking is fast, controllable, and certain. But "fast and certain" in the short term turned into "expensive and fragile" in the long term. That's the entire point of the Fixes that Fail archetype — the symptomatic solution is always more attractive in the moment.</p>
+
+<h2>
+  <a name="what-i-actually-learned" href="#what-i-actually-learned">
+  </a>
+  What I Actually Learned
+</h2>
+
+<ol>
+<li><p><strong>A fork is a liability, not an asset.</strong> The moment you fork, you've created a maintenance obligation that grows with every upstream commit. If you can't get your changes upstream within a bounded timeframe, you are accumulating structural debt that compounds.</p></li>
+<li><p><strong>Data forks are worse than code forks.</strong> Forking code is bad. Forking data (like my rosdistro YAML files) is worse, because data goes stale silently. Code breaks loudly — a function signature changes and you get a compile error. Data rots quietly — a package version is wrong and you get a mysterious runtime failure three weeks later.</p></li>
+<li><p><strong>The brute-force approach is valuable — as a probe.</strong> v1 was not a failure. It was a deliberate brute-force survey that generated an intelligence map: here are the 973 packages, here's which ones work, here's exactly where the gaps are. The failure was in thinking the probe could become the production system. Probes are disposable. Production systems need structural integrity.</p></li>
+<li><p><strong>Know your band-aids.</strong> I have virtualenv bypasses, RHEL-clone registrations, and frozen YAML snapshots in my system. I know each one is a band-aid. Most teams don't track their band-aids. They accumulate silently until someone asks "why does our build take 45 minutes and fail 30% of the time?" and nobody can answer.</p></li>
+</ol>
+
+<h2>
+  <a name="the-followup" href="#the-followup">
+  </a>
+  The Follow-Up
+</h2>
+
+<p>v1 taught me what a brute-force pipeline looks like when it hits its structural limits. I documented the full system dynamics, including the trap architecture, in the <a href="https://github.com/microseyuyu/the_brute_force_probe" target="_blank">v1 post-mortem repo</a>.</p>
+
+<p>v2 was designed to break the cycle: verify before building, not after. Instead of feeding 973 packages into a pipeline and watching 40% of them fail, v2 probes the OS environment first, identifies gaps before consuming build resources, and operates on a verified dependency graph. Details in the <a href="https://github.com/microseyuyu/the_adaptive_verification_engine" target="_blank">v2 Verification Engine repo</a>.</p>
+
+<p>The structural lesson applies far beyond ROS porting:</p>
+
+<ul>
+<li>If you're maintaining an internal fork of an OSS library: you're running R1. Get your patches upstream or plan for the maintenance tax.</li>
+<li>If you're patching configuration files that upstream keeps overwriting: you're running R2. Automate the merge or accept the data rot.</li>
+<li>If you're using <code>--skip-broken</code>, <code>--force</code>, or <code>|| true</code> in your build scripts: you're masking symptoms. Each flag is a band-aid. Count them.</li>
+</ul>
+
+<p>Every fork starts with "just this one patch." Every addiction starts with "just this one hit."</p>
+
+<p>The system doesn't care about your intentions. It cares about its structure.</p>
+
+
+<hr />
+
+<p>*The v1 post-mortem with system dynamics diagrams: <a href="https://github.com/sebastianhayashi/the_brute_force_probe" target="_blank">the_brute_force_probe</a>. The v2 verification engine: <a href="https://github.com/sebastianhayashi/the_adaptive_verification_engine" target="_blank">the_adaptive_verification_engine</a>. </p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

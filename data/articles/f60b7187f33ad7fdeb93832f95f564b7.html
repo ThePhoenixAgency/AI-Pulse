@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - dcellison/kai: Personal AI assistant on Telegram, powered by Claude. Scheduling, persistent memory, and local tool access. Spiritual successor to OpenClaw, rebuilt from scratch on a more secure foundation.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - dcellison/kai: Personal AI assistant on Telegram, powered by Claude. Scheduling, persistent memory, and local tool access. Spiritual successor to OpenClaw, rebuilt from scratch on a more secure foundation.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/dcellison/kai" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>Kai</h2><a href="#kai"></a><p></p>
+<p><a href="https://github.com/dcellison/kai/actions/workflows/ci.yml"><img src="https://camo.githubusercontent.com/17f36cf387f6efec799df931d3a84b1dec7a045dfe694c2baef22235372ab943/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f6463656c6c69736f6e2f6b61692f63692e796d6c3f6272616e63683d6d61696e266c6162656c3d4349" alt="CI" /></a>
+<a href="https://python.org/"><img src="https://camo.githubusercontent.com/495cb303936120dab5329c75eae13aefb9b6e70bd33cc28a9faba3bc4da9747b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31332b2d626c7565" alt="Python 3.13+" /></a>
+<a href="https://github.com/dcellison/kai/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/d51518b43909a14d1b86bdf15060baa12b0ccce763143532ce1bc1dd88b35ed5/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f6463656c6c69736f6e2f6b6169" alt="License" /></a>
+<a href="https://github.com/dcellison/kai/releases"><img src="https://camo.githubusercontent.com/ebb1b97e152981c07641b297b1e933ce0d646d8e4289166dd24c1f7d5ca3314a/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f762f7461672f6463656c6c69736f6e2f6b61693f6c6162656c3d76657273696f6e" alt="Version" /></a></p>
+<p>A personal AI assistant accessed via Telegram, powered by <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>.</p>
+<p>Kai is a Telegram gateway to a persistent Claude Code process. Messages are forwarded to Claude with full tool access (shell, files, web search), and responses stream back in real time. Everything runs locally — conversations and credentials never leave your machine.</p>
+<p>For detailed guides on setup, architecture, and optional features, see the <strong><a href="https://github.com/dcellison/kai/wiki">Wiki</a></strong>.</p>
+<p></p><h2>Features</h2><a href="#features"></a><p></p>
+<p></p><h3>Streaming responses</h3><a href="#streaming-responses"></a><p></p>
+<p>Responses stream into Telegram in real time, updating the message every 2 seconds.</p>
+<p></p><h3>Model switching</h3><a href="#model-switching"></a><p></p>
+<p>Switch between Opus, Sonnet, and Haiku via <code>/models</code> (interactive picker) or <code>/model &lt;name&gt;</code> (direct). Changing models restarts the session.</p>
+<p></p><h3>Workspaces</h3><a href="#workspaces"></a><p></p>
+<p>Point Claude at any project with <code>/workspace &lt;name&gt;</code>. Names resolve relative to <code>WORKSPACE_BASE</code> (set in <code>.env</code>). Identity and memory from the home workspace carry over. Create new workspaces with <code>/workspace new &lt;name&gt;</code>. Absolute paths are not accepted — all workspaces must live under the configured base directory.</p>
+<p></p><h3>Image and file support</h3><a href="#image-and-file-support"></a><p></p>
+<p>Send photos or documents directly in chat. Supports images (JPEG, PNG, GIF, WebP) and text files (Python, JS, JSON, Markdown, and many more).</p>
+<p></p><h3>Voice input</h3><a href="#voice-input"></a><p></p>
+<p>Voice notes are transcribed locally using <a href="https://github.com/ggerganov/whisper.cpp">whisper.cpp</a> and forwarded to Claude. Requires <code>ffmpeg</code> and <code>whisper-cpp</code>. Disabled by default — set <code>VOICE_ENABLED=true</code> after installing dependencies. See the <a href="https://github.com/dcellison/kai/wiki/Voice-Setup">Voice Setup</a> wiki page.</p>
+<p></p><h3>Voice responses (TTS)</h3><a href="#voice-responses-tts"></a><p></p>
+<p>Text-to-speech via <a href="https://github.com/rhasspy/piper">Piper TTS</a>. Three modes: <code>/voice only</code> (voice note, no text), <code>/voice on</code> (text + voice), <code>/voice off</code> (text only, default). Eight curated English voices. Requires <code>pip install -e '.[tts]'</code> and <code>TTS_ENABLED=true</code>. See <a href="https://github.com/dcellison/kai/wiki/Voice-Setup">Voice Setup</a>.</p>
+<p></p><h3>Webhooks</h3><a href="#webhooks"></a><p></p>
+<p>An HTTP server receives GitHub webhook events (pushes, PRs, issues, comments, reviews) and forwards them to Telegram. Signatures are validated via HMAC-SHA256. A generic webhook endpoint (<code>POST /webhook</code>) accepts JSON from any service. See <a href="https://github.com/dcellison/kai/wiki/Exposing-Kai-to-the-Internet">Exposing Kai to the Internet</a>.</p>
+<p></p><h3>Scheduled jobs</h3><a href="#scheduled-jobs"></a><p></p>
+<p>Reminders and recurring Claude jobs with one-shot, daily, and interval schedules. Ask naturally ("remind me at 3pm") or use the HTTP API (<code>POST /api/schedule</code>). Claude jobs support conditional auto-remove for monitoring use cases (<code>CONDITION_MET</code> / <code>CONDITION_NOT_MET</code> protocol). See <a href="https://github.com/dcellison/kai/wiki/Scheduling-and-Conditional-Jobs">Scheduling and Conditional Jobs</a>.</p>
+<p></p><h3>Memory</h3><a href="#memory"></a><p></p>
+<p>Three layers of persistent context:</p>
+<ol>
+<li><strong>Auto-memory</strong> — managed by Claude Code per-workspace. Project architecture and patterns.</li>
+<li><strong>Home memory</strong> (<code>workspace/.claude/MEMORY.md</code>) — personal memory, always injected regardless of current workspace. Proactively updated by Kai.</li>
+<li><strong>Conversation history</strong> (<code>workspace/.claude/history/</code>) — JSONL logs, one file per day. Searchable for past conversations.</li>
+</ol>
+<p>Foreign workspaces also get their own <code>.claude/MEMORY.md</code> injected alongside home memory. See <a href="https://github.com/dcellison/kai/wiki/System-Architecture">System Architecture</a>.</p>
+<p></p><h3>Crash recovery</h3><a href="#crash-recovery"></a><p></p>
+<p>If interrupted mid-response, Kai notifies you on restart and asks you to resend your last message.</p>
+<p></p><h2>Commands</h2><a href="#commands"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/new</code></td>
+<td>Clear session and start fresh</td>
+</tr>
+<tr>
+<td><code>/stop</code></td>
+<td>Interrupt a response mid-stream</td>
+</tr>
+<tr>
+<td><code>/models</code></td>
+<td>Interactive model picker</td>
+</tr>
+<tr>
+<td><code>/model &lt;name&gt;</code></td>
+<td>Switch model (<code>opus</code>, <code>sonnet</code>, <code>haiku</code>)</td>
+</tr>
+<tr>
+<td><code>/workspace</code></td>
+<td>Show current workspace</td>
+</tr>
+<tr>
+<td><code>/workspace &lt;name&gt;</code></td>
+<td>Switch by name (resolved under <code>WORKSPACE_BASE</code>)</td>
+</tr>
+<tr>
+<td><code>/workspace home</code></td>
+<td>Return to default workspace</td>
+</tr>
+<tr>
+<td><code>/workspace new &lt;name&gt;</code></td>
+<td>Create a new workspace with git init</td>
+</tr>
+<tr>
+<td><code>/workspaces</code></td>
+<td>Interactive workspace picker</td>
+</tr>
+<tr>
+<td><code>/voice</code></td>
+<td>Toggle voice responses on/off</td>
+</tr>
+<tr>
+<td><code>/voice only</code></td>
+<td>Voice-only mode (no text)</td>
+</tr>
+<tr>
+<td><code>/voice on</code></td>
+<td>Text + voice mode</td>
+</tr>
+<tr>
+<td><code>/voice &lt;name&gt;</code></td>
+<td>Set voice</td>
+</tr>
+<tr>
+<td><code>/voices</code></td>
+<td>Interactive voice picker</td>
+</tr>
+<tr>
+<td><code>/stats</code></td>
+<td>Show session info, model, and cost</td>
+</tr>
+<tr>
+<td><code>/jobs</code></td>
+<td>List active scheduled jobs</td>
+</tr>
+<tr>
+<td><code>/canceljob &lt;id&gt;</code></td>
+<td>Cancel a scheduled job</td>
+</tr>
+<tr>
+<td><code>/webhooks</code></td>
+<td>Show webhook server status</td>
+</tr>
+<tr>
+<td><code>/help</code></td>
+<td>Show available commands</td>
+</tr>
+</tbody>
+</table>
+<p></p><h2>Requirements</h2><a href="#requirements"></a><p></p>
+<ul>
+<li>Python 3.13+</li>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code CLI</a> installed and authenticated</li>
+<li>A Telegram bot token from <a href="https://t.me/BotFather">@BotFather</a></li>
+<li>Your Telegram user ID (get it from <a href="https://t.me/userinfobot">@userinfobot</a>)</li>
+</ul>
+<p></p><h2>Setup</h2><a href="#setup"></a><p></p>
+<div><pre>git clone git@github.com:dcellison/kai.git
+<span>cd</span> kai
+python3 -m venv .venv
+<span>source</span> .venv/bin/activate
+pip install -e <span><span>'</span>.[dev]<span>'</span></span>
+cp .env.example .env</pre></div>
+<p></p><h3>Environment variables</h3><a href="#environment-variables"></a><p></p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Required</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TELEGRAM_BOT_TOKEN</code></td>
+<td>Yes</td>
+<td></td>
+<td>Bot token from BotFather</td>
+</tr>
+<tr>
+<td><code>ALLOWED_USER_IDS</code></td>
+<td>Yes</td>
+<td></td>
+<td>Comma-separated Telegram user IDs</td>
+</tr>
+<tr>
+<td><code>CLAUDE_MODEL</code></td>
+<td>No</td>
+<td><code>sonnet</code></td>
+<td>Default model (<code>opus</code>, <code>sonnet</code>, or <code>haiku</code>)</td>
+</tr>
+<tr>
+<td><code>CLAUDE_TIMEOUT_SECONDS</code></td>
+<td>No</td>
+<td><code>120</code></td>
+<td>Per-message timeout</td>
+</tr>
+<tr>
+<td><code>CLAUDE_MAX_BUDGET_USD</code></td>
+<td>No</td>
+<td><code>10.0</code></td>
+<td>Session budget cap</td>
+</tr>
+<tr>
+<td><code>WORKSPACE_BASE</code></td>
+<td>No</td>
+<td></td>
+<td>Base directory for workspace name resolution</td>
+</tr>
+<tr>
+<td><code>WEBHOOK_PORT</code></td>
+<td>No</td>
+<td><code>8080</code></td>
+<td>HTTP server port for webhooks and scheduling API</td>
+</tr>
+<tr>
+<td><code>WEBHOOK_SECRET</code></td>
+<td>No</td>
+<td></td>
+<td>Secret for webhook validation and scheduling API auth</td>
+</tr>
+<tr>
+<td><code>VOICE_ENABLED</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable voice message transcription</td>
+</tr>
+<tr>
+<td><code>TTS_ENABLED</code></td>
+<td>No</td>
+<td><code>false</code></td>
+<td>Enable text-to-speech voice responses</td>
+</tr>
+</tbody>
+</table>
+<p><code>CLAUDE_MAX_BUDGET_USD</code> limits how much work Claude can do in a single session via Claude Code's <code>--max-budget-usd</code> flag. On Pro/Max plans this is purely a runaway prevention mechanism (no per-token charges). The session resets on <code>/new</code>, model switch, or workspace switch.</p>
+<p></p><h2>Running</h2><a href="#running"></a><p></p>
+<div><pre>make run</pre></div>
+<p>Or manually: <code>source .venv/bin/activate &amp;&amp; python -m kai</code></p>
+<p></p><h3>Running as a service (macOS)</h3><a href="#running-as-a-service-macos"></a><p></p>
+<p>Create <code>~/Library/LaunchAgents/com.kai.bot.plist</code>:</p>
+<div><pre>&lt;?<span>xml</span><span> version</span>=<span><span>"</span>1.0<span>"</span></span><span> encoding</span>=<span><span>"</span>UTF-8<span>"</span></span>?&gt;
+&lt;!<span>DOCTYPE</span> <span>plist</span> PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd"&gt;
+&lt;<span>plist</span> <span>version</span>=<span><span>"</span>1.0<span>"</span></span>&gt;
+&lt;<span>dict</span>&gt;
+    &lt;<span>key</span>&gt;Label&lt;/<span>key</span>&gt;
+    &lt;<span>string</span>&gt;com.kai.bot&lt;/<span>string</span>&gt;
+
+    &lt;<span>key</span>&gt;ProgramArguments&lt;/<span>key</span>&gt;
+    &lt;<span>array</span>&gt;
+        &lt;<span>string</span>&gt;/path/to/kai/.venv/bin/python&lt;/<span>string</span>&gt;
+        &lt;<span>string</span>&gt;-m&lt;/<span>string</span>&gt;
+        &lt;<span>string</span>&gt;kai&lt;/<span>string</span>&gt;
+    &lt;/<span>array</span>&gt;
+
+    &lt;<span>key</span>&gt;WorkingDirectory&lt;/<span>key</span>&gt;
+    &lt;<span>string</span>&gt;/path/to/kai&lt;/<span>string</span>&gt;
+
+    &lt;<span>key</span>&gt;EnvironmentVariables&lt;/<span>key</span>&gt;
+    &lt;<span>dict</span>&gt;
+        &lt;<span>key</span>&gt;PATH&lt;/<span>key</span>&gt;
+        &lt;<span>string</span>&gt;/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin&lt;/<span>string</span>&gt;
+    &lt;/<span>dict</span>&gt;
+
+    &lt;<span>key</span>&gt;RunAtLoad&lt;/<span>key</span>&gt;
+    &lt;<span>true</span>/&gt;
+
+    &lt;<span>key</span>&gt;KeepAlive&lt;/<span>key</span>&gt;
+    &lt;<span>dict</span>&gt;
+        &lt;<span>key</span>&gt;NetworkState&lt;/<span>key</span>&gt;
+        &lt;<span>true</span>/&gt;
+    &lt;/<span>dict</span>&gt;
+
+    &lt;<span>key</span>&gt;ProcessType&lt;/<span>key</span>&gt;
+    &lt;<span>string</span>&gt;Background&lt;/<span>string</span>&gt;
+&lt;/<span>dict</span>&gt;
+&lt;/<span>plist</span>&gt;</pre></div>
+<p>Replace <code>/path/to/kai</code> with your actual project path. The <code>PATH</code> must include directories for <code>claude</code>, <code>ffmpeg</code>, and any other tools Kai shells out to.</p>
+<p>The <code>NetworkState</code> condition ensures launchd waits for network availability before starting Kai, preventing DNS failures during boot when the network isn't ready yet.</p>
+<div><pre>launchctl load <span>~</span>/Library/LaunchAgents/com.kai.bot.plist</pre></div>
+<p>Kai will start immediately and restart automatically on login or crash. Logs go to <code>logs/kai.log</code> with daily rotation (14 days of history). To stop:</p>
+<div><pre>launchctl unload <span>~</span>/Library/LaunchAgents/com.kai.bot.plist</pre></div>
+<p></p><h3>Running as a service (Linux)</h3><a href="#running-as-a-service-linux"></a><p></p>
+<p>Create <code>/etc/systemd/system/kai.service</code>:</p>
+<div><pre><span>[Unit]</span>
+<span>Description</span>=Kai Telegram Bot
+<span>After</span>=network-online.target
+<span>Wants</span>=network-online.target
+
+<span>[Service]</span>
+<span>Type</span>=simple
+<span>User</span>=YOUR_USERNAME
+<span>WorkingDirectory</span>=/path/to/kai
+<span>ExecStart</span>=/path/to/kai/.venv/bin/python -m kai
+<span>Restart</span>=always
+<span>RestartSec</span>=5
+<span>Environment</span>=<span>PATH</span>=/usr/local/bin:/usr/bin:/bin
+
+<span>[Install]</span>
+<span>WantedBy</span>=multi-user.target</pre></div>
+<p>Replace <code>YOUR_USERNAME</code> and <code>/path/to/kai</code> with your values. Add any extra directories to <code>PATH</code> where <code>claude</code>, <code>ffmpeg</code>, etc. are installed.</p>
+<p>The <code>network-online.target</code> dependency ensures systemd waits for network connectivity before starting Kai, preventing DNS failures during boot.</p>
+<div><pre>sudo systemctl <span>enable</span> kai
+sudo systemctl start kai</pre></div>
+<p>Check logs with <code>tail -f logs/kai.log</code> or <code>journalctl -u kai -f</code>. To stop:</p>
+<div><pre>sudo systemctl stop kai</pre></div>
+<p></p><h2>Project Structure</h2><a href="#project-structure"></a><p></p>
+<div><pre><code>kai/
+├── src/kai/              # Source package
+│   ├── __init__.py       # Version
+│   ├── __main__.py       # python -m kai entry point
+│   ├── main.py           # Async startup and shutdown
+│   ├── bot.py            # Telegram handlers, commands, message routing
+│   ├── claude.py         # Persistent Claude Code subprocess management
+│   ├── config.py         # Environment config loading
+│   ├── sessions.py       # SQLite session, job, and settings storage
+│   ├── cron.py           # Scheduled job execution (APScheduler)
+│   ├── webhook.py        # HTTP server: GitHub/generic webhooks, scheduling API
+│   ├── history.py        # Conversation history (read/write JSONL logs)
+│   ├── locks.py          # Per-chat async locks and stop events
+│   ├── transcribe.py     # Voice message transcription (ffmpeg + whisper-cpp)
+│   └── tts.py            # Text-to-speech synthesis (Piper TTS + ffmpeg)
+├── tests/                # Test suite
+├── logs/                 # Daily-rotated log files (gitignored)
+├── models/               # Whisper and Piper model files (gitignored)
+├── workspace/            # Claude Code working directory
+│   └── .claude/          # Identity, memory, and chat history
+├── pyproject.toml        # Package metadata and dependencies
+├── Makefile              # Common dev commands
+├── .env.example          # Environment variable template
+└── LICENSE               # Apache 2.0
+</code></pre></div>
+<p></p><h2>Development</h2><a href="#development"></a><p></p>
+<div><pre>make install    <span><span>#</span> Install in editable mode with dev tools</span>
+make lint       <span><span>#</span> Run ruff linter</span>
+make format     <span><span>#</span> Auto-format with ruff</span>
+make check      <span><span>#</span> Lint + format check (CI-friendly)</span>
+make <span>test</span>       <span><span>#</span> Run test suite</span>
+make run        <span><span>#</span> Start the bot</span></pre></div>
+<p></p><h2>License</h2><a href="#license"></a><p></p>
+<p>Apache License 2.0. See <a href="https://github.com/dcellison/kai/blob/main/LICENSE">LICENSE</a> for details.</p>
+</article></div></div>
+  </div>
+</body>
+</html>

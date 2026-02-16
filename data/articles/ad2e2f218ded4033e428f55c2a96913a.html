@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Modern Webhook Tester Because webhook.site Hasn't Changed Since 2018</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>I Built a Modern Webhook Tester Because webhook.site Hasn't Changed Since 2018</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/mackmoneymaker/i-built-a-modern-webhook-tester-because-webhooksite-hasnt-changed-since-2018-360a" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
+                  </p>
+                  
+                </div><div>
+                <h2>
+  <a name="the-problem" href="#the-problem">
+  </a>
+  The Problem
+</h2>
+
+<p>If you've ever integrated a payment provider, set up a CI/CD pipeline, or wired up any third-party service, you've probably used <a href="https://webhook.site/" target="_blank">webhook.site</a>. And if you used it recently, you noticed something: <strong>it looks and works exactly the same as it did in 2018.</strong></p>
+
+<p>No real-time updates without refreshing. No way to replay requests. No team sharing. No custom responses. It works, barely, and then you close the tab and lose everything.</p>
+
+<p>I got tired of it. So I built something better.</p>
+
+<h2>
+  <a name="meet-hookdebug" href="#meet-hookdebug">
+  </a>
+  Meet HookDebug
+</h2>
+
+<p><a href="https://hookdebug-app.fly.dev/" target="_blank">HookDebug</a> is a modern, open-source webhook testing tool built with Ruby on Rails. It does everything webhook.site does, plus everything webhook.site should have added years ago.</p>
+
+<p><strong><a href="https://hookdebug-app.fly.dev/" target="_blank">Live Demo →</a></strong><br />
+<strong><a href="https://github.com/mack-moneymaker/hookdebug" target="_blank">GitHub →</a></strong></p>
+
+<h2>
+  <a name="what-makes-it-different" href="#what-makes-it-different">
+  </a>
+  What Makes It Different
+</h2>
+
+<h3>
+  <a name="realtime-updates" href="#realtime-updates">
+  </a>
+  Real-Time Updates
+</h3>
+
+<p>When a webhook hits your endpoint, you see it instantly. No polling. No refresh button. WebSockets push every request to your browser the moment it arrives. Headers, body, query params — everything shows up live.</p>
+
+<p>This sounds basic, but webhook.site still makes you refresh the page. In 2024. Come on.</p>
+
+<h3>
+  <a name="request-replay" href="#request-replay">
+  </a>
+  Request Replay
+</h3>
+
+<p>This is the feature I built HookDebug for originally. You're debugging a Stripe webhook, you trigger a payment, the webhook fires, something's wrong with your handler. On webhook.site, you have to trigger another payment. With HookDebug, you hit <strong>Replay</strong> and the exact same request fires again.</p>
+
+<p>During development, I was replaying requests dozens of times per session. It completely changed my debugging workflow.</p>
+
+<h3>
+  <a name="custom-responses" href="#custom-responses">
+  </a>
+  Custom Responses
+</h3>
+
+<p>Most webhook senders check the response. Stripe retries on 500s. GitHub expects a 200. Some services parse the response body.</p>
+
+<p>HookDebug lets you configure exactly what comes back: status code, headers, body. Want to test how your provider handles a 503? Set it and fire away. Want to return a specific JSON payload? Done.</p>
+
+<h3>
+  <a name="team-sharing" href="#team-sharing">
+  </a>
+  Team Sharing
+</h3>
+
+<p>This is where webhook.site really falls apart. You're debugging an integration with a colleague, and you both need to see the same requests. With webhook.site, you share a URL and hope for the best.</p>
+
+<p>HookDebug has proper team sharing built in. Create an endpoint, share it with your team, everyone sees requests in real-time. No more Slack messages saying "hey can you trigger that webhook again, I missed it."</p>
+
+<h3>
+  <a name="dark-theme" href="#dark-theme">
+  </a>
+  Dark Theme
+</h3>
+
+<p>I know, I know. But seriously — if I'm staring at webhook payloads for an hour, I don't want to burn my retinas. HookDebug has a proper dark theme that doesn't look like an afterthought.</p>
+
+<h2>
+  <a name="the-tech-stack" href="#the-tech-stack">
+  </a>
+  The Tech Stack
+</h2>
+
+<p>I built HookDebug with:</p>
+
+<ul>
+<li>
+<strong>Ruby on Rails 7</strong> — Hotwire + Turbo for the real-time UI</li>
+<li>
+<strong>ActionCable</strong> — WebSocket connections for live updates</li>
+<li>
+<strong>PostgreSQL</strong> — Request storage and search</li>
+<li>
+<strong>Tailwind CSS</strong> — For the UI (dark mode included)</li>
+<li>
+<strong>Fly.io</strong> — Deployment (single region, keeps it simple)</li>
+</ul>
+
+<p>Rails gets a lot of flak, but for this kind of app it's perfect. Hotwire gives you real-time UI updates without writing a React app. ActionCable handles WebSockets natively. The whole thing is one app, one deploy, no separate frontend build step.</p>
+
+<h2>
+  <a name="why-open-source" href="#why-open-source">
+  </a>
+  Why Open Source?
+</h2>
+
+<p>Because webhook testing tools shouldn't cost money. The core functionality is simple: receive HTTP requests, display them, let people inspect them. There's no reason this needs to be a SaaS with a $20/month plan.</p>
+
+<p>HookDebug is MIT licensed. Run it locally, deploy it to your own infrastructure, fork it, whatever. The <a href="https://hookdebug-app.fly.dev/" target="_blank">hosted version</a> is free and will stay free.</p>
+
+<h2>
+  <a name="how-i-actually-use-it" href="#how-i-actually-use-it">
+  </a>
+  How I Actually Use It
+</h2>
+
+<p>My typical workflow:</p>
+
+<ol>
+<li>Create an endpoint on HookDebug</li>
+<li>Point my webhook sender at it (Stripe, GitHub, whatever)</li>
+<li>Trigger the event</li>
+<li>Inspect the request in real-time</li>
+<li>Replay it while I fix my handler</li>
+<li>Configure the response to test edge cases</li>
+<li>Once everything works, point the webhook at my actual app</li>
+</ol>
+
+<p>Steps 5 and 6 are where the magic is. Being able to replay and customize responses turns webhook debugging from a painful trial-and-error process into something almost enjoyable.</p>
+
+<h2>
+  <a name="whats-next" href="#whats-next">
+  </a>
+  What's Next
+</h2>
+
+<p>I'm working on a few things:</p>
+
+<ul>
+<li>
+<strong>Request filtering and search</strong> — Find specific requests by header, body content, or status</li>
+<li>
+<strong>Webhook forwarding</strong> — Proxy requests to your local dev server (like ngrok but built-in)</li>
+<li>
+<strong>Request diffing</strong> — Compare two requests side by side</li>
+<li>
+<strong>API access</strong> — Programmatic access to your endpoints and requests</li>
+</ul>
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try It
+</h2>
+
+<p>If you're tired of webhook.site's 2018 UI and missing features, give HookDebug a shot:</p>
+
+<ul>
+<li><strong><a href="https://hookdebug-app.fly.dev/" target="_blank">Try it live →</a></strong></li>
+<li><strong><a href="https://github.com/mack-moneymaker/hookdebug" target="_blank">Star on GitHub →</a></strong></li>
+</ul>
+
+<p>It's free, it's open source, and it actually works the way a modern dev tool should.</p>
+
+
+<hr />
+
+<p><em>If you found this useful, consider starring the <a href="https://github.com/mack-moneymaker/hookdebug" target="_blank">repo</a>. It helps more than you'd think.</em></p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building a Unified AI Gateway: "Ollama First" Architecture</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>Building a Unified AI Gateway: "Ollama First" Architecture</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/harishkotra/building-a-unified-ai-gateway-ollama-first-architecture-1fji" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    
+
+    <main>
+      <div>
+
+
+        <article>
+          
+          <header>
+              <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhe2tt3v7y9e04ksxhgp0.jpg">
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fhe2tt3v7y9e04ksxhgp0.jpg" alt="Cover image for Building a Unified AI Gateway: &quot;Ollama First&quot; Architecture" />
+              </a>
+
+            <div>
+                  <p><a href="https://dev.to/harishkotra"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F101279%2F516b4cd2-cc6d-451c-a8c8-a7d9ab5ec41a.png" alt="Harish Kotra (he/him)" /></a>
+                  </p>
+                  
+                </div>
+          </header>
+
+          <div>
+                <p>In the rapidly evolving world of Large Language Models (LLMs), developers often face a dilemma: lock into a single provider like OpenAI, or juggle multiple different APIs (Anthropic, Mistral, Local LLMs).</p>
+
+<p>Today, I built a <strong>Minimal Unified Model Gateway</strong> in Python that solves this by providing a single, OpenAI-compatible endpoint that intelligently routes traffic to the best model for the job—whether it's running in the cloud or locally on your machine via <a href="https://ollama.com/" target="_blank">Ollama</a>.</p>
+
+<h2>
+  <a name="the-architecture" href="#the-architecture">
+  </a>
+  🏗️ The Architecture
+</h2>
+
+<p>The system is built on <strong>FastAPI</strong> for high performance and uses <strong>Rediz</strong> (optional) for caching. Here's how a request flows through the system:</p>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Foiurx3w6meobbt7m9rrp.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Foiurx3w6meobbt7m9rrp.png" alt="Architecture" /></a></p>
+
+<h3>
+  <a name="1-the-core-openai-compatibility" href="#1-the-core-openai-compatibility">
+  </a>
+  1. The Core: OpenAI Compatibility
+</h3>
+
+<p>I chose to mimic the OpenAI API standard (<code>/v1/chat/completions</code>). This means you can use the official OpenAI Python/Node.js SDKs, LangChain, or any other tool that supports OpenAI, simply by changing the <code>base_url</code>.</p>
+
+<h3>
+  <a name="2-the-smart-router" href="#2-the-smart-router">
+  </a>
+  2. The Smart Router
+</h3>
+
+<p>The heart of the gateway is <code>router.py</code>. It doesn't just pass requests blindly; it inspects them.</p>
+
+<ul>
+<li>
+<strong>Intent Detection</strong>: If your prompt contains code keywords (<code>def</code>, <code>class</code>, <code>import</code>), it routes to a specialized coding model (e.g., <code>qwen3:4b</code>).</li>
+<li>
+<strong>Optimization</strong>: Short, simple prompts are routed to a smaller, faster model (e.g., <code>gemma3:4b</code>), saving compute and reducing latency.</li>
+<li>
+<strong>Reliability</strong>: If your primary local model is overloaded or fails, the gateway automatically falls back to a backup model or even a cloud provider.</li>
+</ul>
+
+<h3>
+  <a name="3-the-adapter-pattern" href="#3-the-adapter-pattern">
+  </a>
+  3. The Adapter Pattern
+</h3>
+
+<p>To support multiple providers without spaghetti code, I implemented an <strong>Adapter Pattern</strong>.</p>
+
+<ul>
+<li>
+<code>ModelAdapter</code> (Abstract Base Class): Defines the contract (<code>generate</code> method).</li>
+<li>
+<code>OllamaAdapter</code>: Handles communication with local Ollama instances and translates formatting quirks.</li>
+<li>
+<code>OpenAIAdapter</code>: Connects to any OpenAI-compatible API (GPT-4, vLLM, Groq).
+Adding a new provider (like Anthropic) is as simple as adding a new class file.</li>
+</ul>
+
+<h3>
+  <a name="4-observability-amp-caching" href="#4-observability-amp-caching">
+  </a>
+  4. Observability &amp; Caching
+</h3>
+
+<ul>
+<li>
+<strong>SQLite Logging</strong>: Every request, token usage, and latency metric is logged to a local SQLite database, giving you full visibility into your AI traffic.</li>
+<li>
+<strong>Redis Caching</strong>: Identical requests are cached (based on a hash of the prompt and parameters), providing instant responses and saving costs.</li>
+</ul>
+
+<h2>
+  <a name="why-this-matters" href="#why-this-matters">
+  </a>
+  🚀 Why This Matters
+</h2>
+
+<p>For developers, this means <strong>freedom</strong>. You can start building with a local Llama 3 model for free, and swap it out for GPT-4 in production without changing a single line of your application code. You can A/B test models, failover gracefully, and optimize costs dynamically.</p>
+
+<p>This gateway represents a "Local First" approach to AI development—powerful, private, and independent.</p>
+
+<h2>
+  <a name="code-amp-usage" href="#code-amp-usage">
+  </a>
+  🔗 Code &amp; Usage
+</h2>
+
+<p>Check out the full implementation on GitHub: <a href="https://github.com/harishkotra/unified-gateway" target="_blank">https://github.com/harishkotra/unified-gateway</a></p>
+
+
+            </div>
+          
+
+
+
+
+        </article>
+
+        
+
+          
+      </div>
+    </main>
+
+    
+  </div></div>
+  </div>
+</body>
+</html>

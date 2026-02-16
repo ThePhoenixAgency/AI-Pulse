@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Free Invoice Generator for EU Freelancers (Because Every Tool Ignores VAT Reverse Charge)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>I Built a Free Invoice Generator for EU Freelancers (Because Every Tool Ignores VAT Reverse Charge)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/mackmoneymaker/i-built-a-free-invoice-generator-for-eu-freelancers-because-every-tool-ignores-vat-reverse-charge-4bdf" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
+                  </p>
+                  
+                </div><div>
+                <h2>
+  <a name="the-rant" href="#the-rant">
+  </a>
+  The Rant
+</h2>
+
+<p>I'm a freelancer based in France. I invoice clients across the EU. This should be simple. It is not.</p>
+
+<p>Every invoicing tool I've tried — and I've tried a lot — treats Europe as an afterthought. They'll handle USD beautifully, give you a clean American-style invoice, and then completely fall apart when you need:</p>
+
+<ul>
+<li>
+<strong>VAT reverse charge</strong> ("Autoliquidation de la TVA" — required for B2B services across EU borders)</li>
+<li>
+<strong>Intra-community VAT numbers</strong> validated and displayed correctly</li>
+<li>
+<strong>IBAN/BIC</strong> payment details (not "routing number")</li>
+<li>
+<strong>Multi-currency</strong> with proper EUR formatting (1.234,56 €, not €1,234.56)</li>
+<li>
+<strong>Legally compliant French invoices</strong> with all the mandatory mentions</li>
+</ul>
+
+<p>I tried Stripe Invoicing. Wave. Invoice Ninja. Zoho. They all assume you're American, or at best, British. The EU VAT system might as well not exist.</p>
+
+<p>So I built my own.</p>
+
+<h2>
+  <a name="meet-invoiceflow" href="#meet-invoiceflow">
+  </a>
+  Meet InvoiceFlow
+</h2>
+
+<p><a href="https://invoiceflow-eu.fly.dev/" target="_blank">InvoiceFlow</a> is a free, open-source invoice generator built specifically for EU freelancers. It handles the stuff that other tools ignore.</p>
+
+<p><strong><a href="https://invoiceflow-eu.fly.dev/" target="_blank">Live App →</a></strong><br />
+<strong><a href="https://github.com/mack-moneymaker/invoiceflow" target="_blank">GitHub →</a></strong></p>
+
+<h2>
+  <a name="the-features-that-actually-matter" href="#the-features-that-actually-matter">
+  </a>
+  The Features That Actually Matter
+</h2>
+
+<h3>
+  <a name="vat-reverse-charge-done-right" href="#vat-reverse-charge-done-right">
+  </a>
+  VAT Reverse Charge (Done Right)
+</h3>
+
+<p>If you invoice a business in another EU country, you don't charge VAT. Instead, you apply the <strong>reverse charge mechanism</strong> and include the magic words on your invoice. Different countries have different requirements for how this is displayed.</p>
+
+<p>InvoiceFlow handles this automatically. Select your client's country, mark them as a business, and the correct reverse charge text appears. In French. In English. In both if you need it.</p>
+
+<p>This alone took me weeks to get right. The EU VAT directive is... something.</p>
+
+<h3>
+  <a name="intracommunity-vat-validation" href="#intracommunity-vat-validation">
+  </a>
+  Intra-Community VAT Validation
+</h3>
+
+<p>You need your client's VAT number on the invoice. But you also need to verify it's valid — HMRC and the French tax authority both require this. InvoiceFlow validates EU VAT numbers against the VIES database so you're not putting garbage on your invoices.</p>
+
+<h3>
+  <a name="iban-amp-bank-details" href="#iban-amp-bank-details">
+  </a>
+  IBAN &amp; Bank Details
+</h3>
+
+<p>American tools give you "Bank Name" and "Routing Number" fields. In Europe, we use IBAN and BIC/SWIFT. InvoiceFlow has proper IBAN fields with formatting and basic validation. Your payment details look correct because they are correct.</p>
+
+<h3>
+  <a name="multicurrency-that-works" href="#multicurrency-that-works">
+  </a>
+  Multi-Currency That Works
+</h3>
+
+<p>I invoice in EUR, but some clients want GBP or CHF. InvoiceFlow supports multiple currencies with proper locale formatting:</p>
+
+<ul>
+<li>
+<strong>EUR:</strong> 1 234,56 €</li>
+<li>
+<strong>GBP:</strong> £1,234.56</li>
+<li>
+<strong>CHF:</strong> CHF 1'234.56</li>
+</ul>
+
+<p>The little things matter. A French accountant seeing $1,234.56 on an invoice will send it back.</p>
+
+<h3>
+  <a name="french-amp-english" href="#french-amp-english">
+  </a>
+  French &amp; English
+</h3>
+
+<p>The entire interface works in both French and English. More importantly, the <strong>invoices themselves</strong> can be generated in either language (or both). This matters when your client is German but your accountant is French.</p>
+
+<h3>
+  <a name="pdf-export" href="#pdf-export">
+  </a>
+  PDF Export
+</h3>
+
+<p>One-click PDF generation with proper formatting, your logo, and all the legally required mentions. The PDFs look professional — not like someone printed a webpage.</p>
+
+<h2>
+  <a name="why-this-matters-the-eu-freelancer-tax-nightmare" href="#why-this-matters-the-eu-freelancer-tax-nightmare">
+  </a>
+  Why This Matters (The EU Freelancer Tax Nightmare)
+</h2>
+
+<p>If you've never freelanced in the EU, let me paint the picture:</p>
+
+<ol>
+<li>You do work for a client in Germany</li>
+<li>You're based in France</li>
+<li>You need to issue an invoice with: your French VAT number, their German VAT number, the reverse charge mention in the correct legal language, the correct intra-community service code, no VAT charged (but displayed as 0% with explanation), your IBAN, the invoice in a format your French accountant accepts</li>
+<li>You then need to declare this on your French CA3 VAT return, separately from domestic invoices</li>
+<li>You might also need to file an EC Sales List (DES in France)</li>
+</ol>
+
+<p>Most invoicing tools help with exactly zero of these steps. They give you a blank invoice template and wish you luck.</p>
+
+<p>InvoiceFlow won't file your taxes for you, but it will generate invoices that make your accountant happy and keep you compliant.</p>
+
+<h2>
+  <a name="the-tech-stack" href="#the-tech-stack">
+  </a>
+  The Tech Stack
+</h2>
+
+<ul>
+<li>
+<strong>Ruby on Rails 7</strong> — Server-rendered, fast, simple</li>
+<li>
+<strong>PostgreSQL</strong> — Invoice and client storage</li>
+<li>
+<strong>Prawn</strong> — PDF generation (pure Ruby, no headless Chrome needed)</li>
+<li>
+<strong>Tailwind CSS</strong> — Clean UI</li>
+<li>
+<strong>Fly.io</strong> — Deployed in Paris (CDG region, naturally)</li>
+</ul>
+
+<p>I went with server-side rendering because invoicing doesn't need a SPA. You fill out a form, you get a PDF. Rails is perfect for this.</p>
+
+<p>Prawn for PDF generation was a deliberate choice. Most Rails apps use wkhtmltopdf or headless Chrome for PDFs, but those are heavy dependencies. Prawn generates PDFs in pure Ruby — fast, lightweight, and pixel-perfect.</p>
+
+<h2>
+  <a name="who-this-is-for" href="#who-this-is-for">
+  </a>
+  Who This Is For
+</h2>
+
+<p>InvoiceFlow is built for:</p>
+
+<ul>
+<li>
+<strong>EU-based freelancers</strong> who invoice across borders</li>
+<li>
+<strong>Solo developers</strong> tired of paying Freshbooks €15/month for features they don't need</li>
+<li>
+<strong>French freelancers</strong> (micro-entrepreneur or not) who need legally compliant invoices</li>
+<li>
+<strong>Anyone</strong> who's ever tried to explain VAT reverse charge to an American invoicing tool</li>
+</ul>
+
+<p>It's NOT trying to be a full accounting suite. No expense tracking, no bank reconciliation, no payroll. Just invoices, done right.</p>
+
+<h2>
+  <a name="whats-next" href="#whats-next">
+  </a>
+  What's Next
+</h2>
+
+<ul>
+<li>
+<strong>Client management</strong> — Save client details for recurring invoices</li>
+<li>
+<strong>Invoice numbering sequences</strong> — Auto-increment with customizable formats (2024-001, etc.)</li>
+<li>
+<strong>Recurring invoices</strong> — Set it and forget it for retainer clients</li>
+<li>
+<strong>More EU languages</strong> — German, Spanish, Italian, Dutch</li>
+<li>
+<strong>E-invoicing (Factur-X)</strong> — France is mandating electronic invoicing starting 2026</li>
+</ul>
+
+<p>That last one is a big deal. France is rolling out mandatory e-invoicing for all businesses, and most tools aren't ready. I plan to have Factur-X support before the deadline.</p>
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try It
+</h2>
+
+<p>If you're an EU freelancer struggling with invoicing tools that don't understand your reality:</p>
+
+<ul>
+<li><strong><a href="https://invoiceflow-eu.fly.dev/" target="_blank">Try it live →</a></strong></li>
+<li><strong><a href="https://github.com/mack-moneymaker/invoiceflow" target="_blank">Star on GitHub →</a></strong></li>
+</ul>
+
+<p>It's free, open source, and built by someone who actually has to deal with EU VAT.</p>
+
+
+<hr />
+
+<p><em>Fellow EU freelancers — what's your biggest invoicing pain point? I'm actively building features based on real needs. Drop a comment or <a href="https://github.com/mack-moneymaker/invoiceflow/issues" target="_blank">open an issue</a>.</em></p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

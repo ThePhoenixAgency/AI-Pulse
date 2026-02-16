@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How We Added Custom Branding to Shared Video Pages</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>How We Added Custom Branding to Shared Video Pages</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/alexneamtu/how-we-added-custom-branding-to-shared-video-pages-1i54" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/alexneamtu"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F353763%2Fad2f8461-24ae-4014-8af9-f848d9cf4c5b.jpeg" alt="Alex Neamtu" /></a>
+                  </p>
+                  
+                </div><div>
+                <p>You record a product walkthrough, share the link with a prospect, and they land on a page with someone else's logo. Not yours — the tool's. Every shared video becomes an ad for the recording tool instead of reinforcing your brand.</p>
+
+<p>This is fine when you're sharing internally. But the moment a video goes to a client, a prospect, or a partner, you want the page to look like it came from you. Your logo, your colors, your name.</p>
+
+<p>We added custom branding to <a href="https://sendrec.eu/" target="_blank">SendRec</a> so the watch page reflects the sender's brand instead of ours. Here's how it works.</p>
+
+<h2>
+  <a name="the-threelayer-merge" href="#the-threelayer-merge">
+  </a>
+  The three-layer merge
+</h2>
+
+<p>Branding could live in two places: the user's account settings (applies to all their videos) or on a specific video (overrides the default for that one recording). We needed both, plus sensible defaults when neither is set.</p>
+
+<p>The resolution is a three-layer cascade:</p>
+
+<ol>
+<li>
+<strong>SendRec defaults</strong> — navy background, green accent, SendRec logo</li>
+<li>
+<strong>User branding</strong> — stored in a <code>user_branding</code> table, overrides defaults for all of the user's videos</li>
+<li>
+<strong>Video branding</strong> — nullable columns on the <code>videos</code> table, overrides user branding for a specific video
+</li>
+</ol>
+
+<div>
+<pre><code><span>func</span> <span>resolveBranding</span><span>(</span><span>ctx</span> <span>context</span><span>.</span><span>Context</span><span>,</span> <span>storage</span> <span>ObjectStorage</span><span>,</span>
+    <span>userBranding</span><span>,</span> <span>videoBranding</span> <span>brandingSettingsResponse</span><span>)</span> <span>brandingConfig</span> <span>{</span>
+
+    <span>cfg</span> <span>:=</span> <span>brandingConfig</span><span>{</span>
+        <span>CompanyName</span><span>:</span>     <span>"SendRec"</span><span>,</span>
+        <span>LogoURL</span><span>:</span>         <span>"/images/logo.png"</span><span>,</span>
+        <span>ColorBackground</span><span>:</span> <span>"#0a1628"</span><span>,</span>
+        <span>ColorSurface</span><span>:</span>    <span>"#1e293b"</span><span>,</span>
+        <span>ColorText</span><span>:</span>       <span>"#ffffff"</span><span>,</span>
+        <span>ColorAccent</span><span>:</span>     <span>"#00b67a"</span><span>,</span>
+    <span>}</span>
+
+    <span>applyOverrides</span><span>(</span><span>&amp;</span><span>cfg</span><span>,</span> <span>userBranding</span><span>)</span>
+    <span>applyOverrides</span><span>(</span><span>&amp;</span><span>cfg</span><span>,</span> <span>videoBranding</span><span>)</span>
+
+    <span>// resolve logo URL from S3...</span>
+    <span>return</span> <span>cfg</span>
+<span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>Each layer only overrides non-null fields. If you set a custom company name at the account level but leave colors alone, you get your name with SendRec's color scheme. If you then set a custom background color on one specific video, that video gets the custom background while everything else inherits from your account settings.</p>
+
+<p>The <code>applyOverrides</code> function is the same for both layers — it checks each field for non-null, non-empty values and overwrites the config. No special cases, no layer-specific logic.</p>
+
+<h2>
+  <a name="what-you-can-customize" href="#what-you-can-customize">
+  </a>
+  What you can customize
+</h2>
+
+<p>Four things:</p>
+
+<ul>
+<li>
+<strong>Company name</strong> — appears next to the logo and in the page title</li>
+<li>
+<strong>Logo</strong> — PNG or SVG, max 512KB, uploaded to S3 via presigned URL</li>
+<li>
+<strong>Colors</strong> — background, surface (cards/panels), text, and accent (buttons, links, progress bar)</li>
+<li>
+<strong>Footer text</strong> — a line at the bottom of the watch page, above the "Shared via SendRec" attribution</li>
+</ul>
+
+<p>Colors are validated as hex codes (<code>#1a2b3c</code>). We considered supporting named CSS colors but decided hex-only is simpler and avoids ambiguity. The frontend shows native color pickers with the hex value displayed alongside.</p>
+
+<h2>
+  <a name="the-logo-problem" href="#the-logo-problem">
+  </a>
+  The logo problem
+</h2>
+
+<p>Logos seem simple until you consider the states:</p>
+
+<ol>
+<li>
+<strong>No branding set</strong> — show the SendRec logo (default)</li>
+<li>
+<strong>Custom logo uploaded</strong> — show the user's logo from S3</li>
+<li>
+<strong>Logo explicitly hidden</strong> — show no logo at all</li>
+</ol>
+
+<p>State 3 is the tricky one. A user might want their company name displayed without any logo image. But the database column is nullable, and <code>NULL</code> already means "use the default." We needed a way to say "I've made a deliberate choice to have no logo."</p>
+
+<p>We used a sentinel value. The <code>logo_key</code> column stores one of three things:</p>
+
+<ul>
+<li>
+<code>NULL</code> — no preference, inherit from the layer above or use SendRec's logo</li>
+<li>A valid S3 key like <code>branding/user-id/logo.png</code> — show this image</li>
+<li>
+<code>"none"</code> — explicitly hide the logo
+</li>
+</ul>
+
+<div>
+<pre><code><span>logoKey</span> <span>:=</span> <span>resolveLogoKey</span><span>(</span><span>userBranding</span><span>.</span><span>LogoKey</span><span>,</span> <span>videoBranding</span><span>.</span><span>LogoKey</span><span>)</span>
+<span>if</span> <span>logoKey</span> <span>==</span> <span>"none"</span> <span>{</span>
+    <span>cfg</span><span>.</span><span>LogoURL</span> <span>=</span> <span>""</span>
+    <span>cfg</span><span>.</span><span>HasCustomLogo</span> <span>=</span> <span>true</span>
+<span>}</span> <span>else</span> <span>if</span> <span>logoKey</span> <span>!=</span> <span>""</span> <span>{</span>
+    <span>url</span><span>,</span> <span>err</span> <span>:=</span> <span>storage</span><span>.</span><span>GenerateDownloadURL</span><span>(</span><span>ctx</span><span>,</span> <span>logoKey</span><span>,</span> <span>1</span><span>*</span><span>time</span><span>.</span><span>Hour</span><span>)</span>
+    <span>if</span> <span>err</span> <span>==</span> <span>nil</span> <span>{</span>
+        <span>cfg</span><span>.</span><span>LogoURL</span> <span>=</span> <span>url</span>
+        <span>cfg</span><span>.</span><span>HasCustomLogo</span> <span>=</span> <span>true</span>
+    <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>The watch page template conditionally renders the logo image only if <code>LogoURL</code> is non-empty. The company name always shows.</p>
+
+<h2>
+  <a name="serverside-rendering-not-clientside-theming" href="#serverside-rendering-not-clientside-theming">
+  </a>
+  Server-side rendering, not client-side theming
+</h2>
+
+<p>The watch page is a Go HTML template, not a React component. Colors are injected as CSS custom properties in a <code>&lt;style&gt;</code> block:<br />
+</p>
+
+<div>
+<pre><code><span>&lt;style </span><span>nonce=</span><span>"{{.CSPNonce}}"</span><span>&gt;</span>
+    <span>:root</span> <span>{</span>
+        <span>--brand-bg</span><span>:</span> <span>{{</span><span>.</span><span>Branding</span><span>.</span><span>ColorBackground</span><span>}</span><span>}</span><span>;</span>
+        <span>--brand-surface</span><span>:</span> <span>{</span><span>{.Branding.ColorSurface</span><span>}</span><span>}</span><span>;</span>
+        <span>--brand-text</span><span>:</span> <span>{</span><span>{.Branding.ColorText</span><span>}</span><span>}</span><span>;</span>
+        <span>--brand-accent</span><span>:</span> <span>{</span><span>{.Branding.ColorAccent</span><span>}</span><span>}</span><span>;</span>
+    <span>}</span>
+<span>&lt;/style&gt;</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>The template CSS references these variables everywhere it previously had hardcoded hex values. This means the colors are baked into the HTML on the server — no JavaScript runs to apply theming, no flash of default colors before the custom theme kicks in.</p>
+
+<p>We kept secondary colors (muted text, borders) as fixed values rather than deriving them from the brand colors. Computing accessible contrast ratios and generating a full palette from four input colors is a rabbit hole. The four customizable colors cover the visual identity; the secondary tones are neutral enough to work with most brand palettes.</p>
+
+<h2>
+  <a name="feature-gating" href="#feature-gating">
+  </a>
+  Feature gating
+</h2>
+
+<p>Custom branding is a premium feature. On the hosted platform, it requires a paid plan. For self-hosters, it's unlocked with a single environment variable:<br />
+</p>
+
+<div>
+<pre><code><span>BRANDING_ENABLED</span><span>=</span><span>true</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>The API endpoints return 403 when branding is disabled. But the watch page rendering is not gated — if branding data exists in the database, the watch page renders it regardless of the flag. This handles the case where a user sets up branding, their subscription lapses, and their existing shared links should still look right. The gate prevents new branding changes, not viewing existing ones.</p>
+
+<p>The frontend checks <code>brandingEnabled</code> in the limits API response. When disabled, the branding section in Settings shows the fields in a disabled state so users know the feature exists.</p>
+
+<h2>
+  <a name="the-data-model" href="#the-data-model">
+  </a>
+  The data model
+</h2>
+
+<p>Two tables, seven columns each:<br />
+</p>
+
+<div>
+<pre><code><span>CREATE</span> <span>TABLE</span> <span>user_branding</span> <span>(</span>
+    <span>user_id</span>          <span>UUID</span> <span>PRIMARY</span> <span>KEY</span> <span>REFERENCES</span> <span>users</span><span>(</span><span>id</span><span>)</span> <span>ON</span> <span>DELETE</span> <span>CASCADE</span><span>,</span>
+    <span>company_name</span>     <span>TEXT</span><span>,</span>
+    <span>logo_key</span>         <span>TEXT</span><span>,</span>
+    <span>color_background</span> <span>TEXT</span><span>,</span>
+    <span>color_surface</span>    <span>TEXT</span><span>,</span>
+    <span>color_text</span>       <span>TEXT</span><span>,</span>
+    <span>color_accent</span>     <span>TEXT</span><span>,</span>
+    <span>footer_text</span>      <span>TEXT</span><span>,</span>
+    <span>created_at</span>       <span>TIMESTAMPTZ</span> <span>NOT</span> <span>NULL</span> <span>DEFAULT</span> <span>now</span><span>(),</span>
+    <span>updated_at</span>       <span>TIMESTAMPTZ</span> <span>NOT</span> <span>NULL</span> <span>DEFAULT</span> <span>now</span><span>()</span>
+<span>);</span>
+
+<span>ALTER</span> <span>TABLE</span> <span>videos</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_company_name</span>     <span>TEXT</span><span>,</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_color_background</span> <span>TEXT</span><span>,</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_color_surface</span>    <span>TEXT</span><span>,</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_color_text</span>       <span>TEXT</span><span>,</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_color_accent</span>     <span>TEXT</span><span>,</span>
+    <span>ADD</span> <span>COLUMN</span> <span>branding_footer_text</span>      <span>TEXT</span><span>;</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>All columns are nullable. This is important — null means "inherit," not "empty." An empty string would mean "the user explicitly set this to nothing," which is a different intent. We use pointer types (<code>*string</code>) in Go to preserve the distinction.</p>
+
+<p>The watch page query joins <code>user_branding</code> onto the video lookup:<br />
+</p>
+
+<div>
+<pre><code><span>SELECT</span> <span>v</span><span>.</span><span>*</span><span>,</span> <span>ub</span><span>.</span><span>company_name</span><span>,</span> <span>ub</span><span>.</span><span>logo_key</span><span>,</span> <span>ub</span><span>.</span><span>color_background</span><span>,</span> <span>...</span>
+<span>FROM</span> <span>videos</span> <span>v</span>
+<span>LEFT</span> <span>JOIN</span> <span>user_branding</span> <span>ub</span> <span>ON</span> <span>ub</span><span>.</span><span>user_id</span> <span>=</span> <span>v</span><span>.</span><span>user_id</span>
+<span>WHERE</span> <span>v</span><span>.</span><span>share_token</span> <span>=</span> <span>$</span><span>1</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<p>One query gets the video, the user's branding, and the video's branding overrides. The Go code merges them with <code>resolveBranding()</code> before passing the result to the template.</p>
+
+<h2>
+  <a name="what-we-didnt-build" href="#what-we-didnt-build">
+  </a>
+  What we didn't build
+</h2>
+
+<p><strong>Per-video logo upload.</strong> You can set a logo at the account level, but not per video. Most users want consistent branding across all their videos. If someone needs a different logo on one video, they can hide the logo for that video and mention the brand in the title.</p>
+
+<p><strong>Font customization.</strong> Custom fonts would require either hosting the font files or allowing external font URLs, which conflicts with our CSP and EU data residency principles. The system font stack works everywhere and loads instantly.</p>
+
+<p><strong>Full theme editor with preview.</strong> The Settings page shows a live mini-preview of how the colors look together, but there's no "preview your actual watch page" mode. You can just share a video and open the link — the fastest way to see the real result.</p>
+
+<p><strong>Color contrast validation.</strong> We don't warn users if their text color has poor contrast against their background. Adding WCAG contrast checking would be useful but adds complexity. Users can see the live preview and adjust if the combination looks unreadable.</p>
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try it
+</h2>
+
+<p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. Custom branding is live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — go to Settings, upload your logo, pick your colors, and share a video to see your branded watch page. The implementation is in <a href="https://github.com/sendrec/sendrec/blob/main/internal/video/branding.go" target="_blank"><code>branding.go</code></a>.</p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

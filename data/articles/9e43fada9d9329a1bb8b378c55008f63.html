@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - chasebuild/fuelcheck-cli: ⛽ Lightweight command-line utility designed to monitor and manage token consumption across the modern AI ecosystem.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>GitHub - chasebuild/fuelcheck-cli: ⛽ Lightweight command-line utility designed to monitor and manage token consumption across the modern AI ecosystem.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
+    <a href="https://github.com/chasebuild/fuelcheck-cli" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><article><p></p><h2>⛽ Fuelcheck CLI</h2><a href="#-fuelcheck-cli"></a><p></p>
+<p>Fuelcheck CLI is a Rust command-line tool that fetches usage and cost data from multiple AI providers. It emits text or JSON output compatible with CodexBar-style dashboards and scripts. (heavily inspired by <a href="https://github.com/steipete/CodexBar">CodexBar</a>)</p>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTI5ODksIm5iZiI6MTc3MTI1MjY4OSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0MzgwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI3Zjg2MDgwMDczMjM1MTUxZTIwZTQ1NTgzMGE5ZDM2MGNlMGUzNDZkODk2MjZjYjg0ZTM3MGJiNjkzN2U4NDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ajGZ3ZLba-1DYNVVEfi0aoaERUFGaEWhR-papRtgENc"><img alt="image" src="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTI5ODksIm5iZiI6MTc3MTI1MjY4OSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0MzgwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTI3Zjg2MDgwMDczMjM1MTUxZTIwZTQ1NTgzMGE5ZDM2MGNlMGUzNDZkODk2MjZjYjg0ZTM3MGJiNjkzN2U4NDImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.ajGZ3ZLba-1DYNVVEfi0aoaERUFGaEWhR-papRtgENc" /></a>
+<p><strong>Features</strong></p>
+<ul>
+<li>Multi-provider usage checks with optional status badges.</li>
+<li>JSON and JSON-only output for automation.</li>
+<li>Local cost scan for supported providers.</li>
+<li>Live TUI watch mode for continuous refresh.</li>
+<li>Configurable sources per provider (oauth, web, api, cli, local).</li>
+</ul>
+<p><strong>Install</strong>
+Install from crates.io:</p>
+<div><pre>cargo install fuelcheck-cli</pre></div>
+<p>Build from source:</p>
+<div><pre>cargo build --release</pre></div>
+<p>The binary will be at <code>target/release/fuelcheck-cli</code>.</p>
+<p>Install locally:</p>
+<div><pre>cargo install --path <span>.</span></pre></div>
+<p>Run directly during development:</p>
+<div><pre>cargo run -- --help</pre></div>
+<p><strong>Quick Start</strong>
+Create a config by detecting local credentials:</p>
+<div><pre>fuelcheck-cli setup</pre></div>
+<p>Fetch usage (defaults to enabled providers in the config):</p>
+<div><pre>fuelcheck-cli usage</pre></div>
+<p>Fetch usage for a specific provider in JSON:</p>
+<div><pre>fuelcheck-cli usage --provider codex --format json --pretty</pre></div>
+<p>Compute local cost totals (from local logs when available):</p>
+<div><pre>fuelcheck-cli cost --provider codex</pre></div>
+<p>Run the live watch TUI:</p>
+<div><pre>fuelcheck-cli usage --watch</pre></div>
+<p>Validate or inspect config:</p>
+<div><pre>fuelcheck-cli config validate
+fuelcheck-cli config dump --pretty</pre></div>
+<p><strong>Configuration</strong>
+The default config path is <code>~/.codexbar/config.json</code>. Override it with <code>--config</code> on any command.</p>
+<p>Minimal example:</p>
+<div><pre>{
+  <span>"version"</span>: <span>1</span>,
+  <span>"providers"</span>: [
+    { <span>"id"</span>: <span><span>"</span>codex<span>"</span></span>, <span>"enabled"</span>: <span>true</span>, <span>"source"</span>: <span><span>"</span>oauth<span>"</span></span> },
+    { <span>"id"</span>: <span><span>"</span>claude<span>"</span></span>, <span>"enabled"</span>: <span>true</span>, <span>"source"</span>: <span><span>"</span>oauth<span>"</span></span> }
+  ]
+}</pre></div>
+<p>Provider fields supported by the CLI:</p>
+<ul>
+<li><code>id</code>: provider id (see list below).</li>
+<li><code>enabled</code>: true/false to include by default.</li>
+<li><code>source</code>: one of <code>auto</code>, <code>oauth</code>, <code>web</code>, <code>api</code>, <code>cli</code>, <code>local</code>.</li>
+<li><code>cookie_header</code>: raw <code>Cookie:</code> header for web-based providers.</li>
+<li><code>api_key</code>: API token for API-based providers.</li>
+<li><code>region</code>: provider-specific region hint (used by z.ai and MiniMax).</li>
+<li><code>workspace_id</code>: OpenCode workspace override.</li>
+<li><code>token_accounts</code>: optional multi-account list for Codex, Claude, and Cursor.</li>
+</ul>
+<p>Example with token accounts:</p>
+<div><pre>{
+  <span>"providers"</span>: [
+    {
+      <span>"id"</span>: <span><span>"</span>claude<span>"</span></span>,
+      <span>"enabled"</span>: <span>true</span>,
+      <span>"token_accounts"</span>: {
+        <span>"active_index"</span>: <span>0</span>,
+        <span>"accounts"</span>: [
+          { <span>"label"</span>: <span><span>"</span>Work<span>"</span></span>, <span>"token"</span>: <span><span>"</span>sk-ant-oat...<span>"</span></span> },
+          { <span>"label"</span>: <span><span>"</span>Personal<span>"</span></span>, <span>"token"</span>: <span><span>"</span>sk-ant-oat...<span>"</span></span> }
+        ]
+      }
+    }
+  ]
+}</pre></div>
+<p><strong>Provider IDs</strong></p>
+<ul>
+<li>codex</li>
+<li>claude</li>
+<li>gemini</li>
+<li>cursor</li>
+<li>factory</li>
+<li>zai</li>
+<li>minimax</li>
+<li>kimi</li>
+<li>kimik2</li>
+<li>copilot</li>
+<li>kiro</li>
+<li>vertexai</li>
+<li>jetbrains</li>
+<li>amp</li>
+<li>warp</li>
+<li>opencode</li>
+</ul>
+<p>Use <code>--provider</code> multiple times or <code>--provider all</code> to query more than one.</p>
+<p><strong>Output Notes</strong></p>
+<ul>
+<li>Use <code>--format json</code> or <code>--json</code> for JSON output.</li>
+<li>Use <code>--json-only</code> to suppress all non-JSON output.</li>
+<li>Use <code>--json-output</code> to emit JSONL logs on stderr.</li>
+<li><code>--watch</code> requires text output.</li>
+</ul>
+<p><strong>Provider Setup (from CodexBar docs)</strong>
+Fuelcheck CLI uses the same credentials and tokens described in CodexBar provider docs. For cookie-based providers, you must supply a raw <code>Cookie:</code> header. A quick way to capture it is:</p>
+<ul>
+<li>Open the provider site in your browser.</li>
+<li>Open DevTools → Network and reload.</li>
+<li>Select a request to the provider domain and copy the <code>Cookie</code> request header.</li>
+<li>Paste the header into <code>cookie_header</code> or set the matching env var.</li>
+</ul>
+<p>Setup shortcuts:</p>
+<ul>
+<li><code>fuelcheck-cli setup</code> will detect Codex, Claude, and Gemini CLI credentials when present.</li>
+<li><code>fuelcheck-cli setup --claude-cookie</code>, <code>--cursor-cookie</code>, <code>--factory-cookie</code> can prefill cookie headers.</li>
+</ul>
+<p>Below is a per-provider setup summary based on CodexBar behavior and the CLI implementation.</p>
+<p></p><h3>Codex</h3><a href="#codex"></a><p></p>
+<ul>
+<li>Auth: run <code>codex</code> to create <code>~/.codex/auth.json</code> (or set <code>CODEX_HOME</code>).</li>
+<li>Source: OAuth only in this CLI build (<code>--source oauth</code> or <code>auto</code>).</li>
+<li>Multi-account: use <code>token_accounts</code> with Codex OAuth access tokens.</li>
+</ul>
+<p></p><h3>Claude</h3><a href="#claude"></a><p></p>
+<ul>
+<li>OAuth: run <code>claude</code> so <code>~/.claude/.credentials.json</code> exists (or Keychain on macOS).</li>
+<li>Web: set <code>cookie_header</code> or <code>CLAUDE_COOKIE</code> with a <code>sessionKey</code> cookie from <code>claude.ai</code>.</li>
+<li>Source: OAuth or Web (<code>--source oauth|web</code>).</li>
+<li>Multi-account: use <code>token_accounts</code> with OAuth access tokens.</li>
+</ul>
+<p></p><h3>Gemini</h3><a href="#gemini"></a><p></p>
+<ul>
+<li>Auth: run <code>gemini</code> to create <code>~/.gemini/oauth_creds.json</code> and <code>~/.gemini/settings.json</code>.</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Cursor</h3><a href="#cursor"></a><p></p>
+<ul>
+<li>Web cookies: set <code>cookie_header</code> or <code>CURSOR_COOKIE</code> from a <code>cursor.com</code> request.</li>
+<li>Source: Web only (<code>--source web</code> or <code>auto</code>).</li>
+<li>Multi-account: use <code>token_accounts</code> with per-account cookie headers.</li>
+</ul>
+<p></p><h3>Factory (Droid)</h3><a href="#factory-droid"></a><p></p>
+<ul>
+<li>Web cookies: set <code>cookie_header</code> or <code>FACTORY_COOKIE</code>/<code>DROID_COOKIE</code> from <code>app.factory.ai</code>.</li>
+<li>Optional bearer token: set <code>api_key</code> or <code>FACTORY_BEARER_TOKEN</code>.</li>
+<li>Source: Web only (<code>--source web</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>z.ai</h3><a href="#zai"></a><p></p>
+<ul>
+<li>API token: set <code>api_key</code> or <code>Z_AI_API_KEY</code>.</li>
+<li>Optional host overrides: <code>Z_AI_API_HOST</code> or <code>Z_AI_QUOTA_URL</code>.</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>MiniMax</h3><a href="#minimax"></a><p></p>
+<ul>
+<li>Preferred: set <code>api_key</code> or <code>MINIMAX_API_KEY</code>.</li>
+<li>Cookie fallback: set <code>cookie_header</code> or <code>MINIMAX_COOKIE</code>.</li>
+<li>Optional overrides: <code>MINIMAX_HOST</code>, <code>MINIMAX_REMAINS_URL</code>, or <code>region</code> in config.</li>
+</ul>
+<p></p><h3>Kimi</h3><a href="#kimi"></a><p></p>
+<ul>
+<li>Token: set <code>api_key</code> or <code>KIMI_AUTH_TOKEN</code> from the <code>kimi-auth</code> cookie.</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Kimi K2</h3><a href="#kimi-k2"></a><p></p>
+<ul>
+<li>API key: set <code>api_key</code> or <code>KIMI_K2_API_KEY</code> (also accepts <code>KIMI_API_KEY</code> or <code>KIMI_KEY</code>).</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Copilot</h3><a href="#copilot"></a><p></p>
+<ul>
+<li>API token: set <code>api_key</code> or <code>COPILOT_API_TOKEN</code> (also accepts <code>GITHUB_TOKEN</code>).</li>
+<li>Token should have access to Copilot usage for your account.</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Kiro</h3><a href="#kiro"></a><p></p>
+<ul>
+<li>Install and log in to <code>kiro-cli</code> using AWS Builder ID.</li>
+<li>The CLI runs <code>kiro-cli chat --no-interactive "/usage"</code>.</li>
+<li>Source: CLI only (<code>--source cli</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Vertex AI</h3><a href="#vertex-ai"></a><p></p>
+<ul>
+<li>Run <code>gcloud auth application-default login</code> and set a project with <code>gcloud config set project</code>.</li>
+<li>Requires Cloud Monitoring quota access in the selected project.</li>
+<li>Source: OAuth only (<code>--source oauth</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>JetBrains AI</h3><a href="#jetbrains-ai"></a><p></p>
+<ul>
+<li>Use a JetBrains IDE with AI Assistant enabled.</li>
+<li>The CLI reads <code>AIAssistantQuotaManager2.xml</code> from the IDE config directory.</li>
+<li>Source: Local only (<code>--source local</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Amp</h3><a href="#amp"></a><p></p>
+<ul>
+<li>Cookie header from <code>https://ampcode.com/settings</code>.</li>
+<li>Set <code>cookie_header</code> or <code>AMP_COOKIE</code>/<code>AMP_COOKIE_HEADER</code>.</li>
+<li>Source: Web only (<code>--source web</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>Warp</h3><a href="#warp"></a><p></p>
+<ul>
+<li>API key from <code>https://app.warp.dev/settings/account</code>.</li>
+<li>Set <code>api_key</code> or <code>WARP_API_KEY</code>/<code>WARP_TOKEN</code>.</li>
+<li>Source: API only (<code>--source api</code> or <code>auto</code>).</li>
+</ul>
+<p></p><h3>OpenCode</h3><a href="#opencode"></a><p></p>
+<ul>
+<li>Cookie header from <code>https://opencode.ai</code>.</li>
+<li>Set <code>cookie_header</code> or <code>OPENCODE_COOKIE</code>/<code>OPENCODE_COOKIE_HEADER</code>.</li>
+<li>Optional workspace override: <code>workspace_id</code> or <code>CODEXBAR_OPENCODE_WORKSPACE_ID</code>.</li>
+<li>Source: Web only (<code>--source web</code> or <code>auto</code>).</li>
+</ul>
+<p><strong>Contributing</strong>
+See <code>CONTRIBUTING.md</code> for development workflow and style guidance.</p>
+</article></div></div>
+  </div>
+</body>
+</html>

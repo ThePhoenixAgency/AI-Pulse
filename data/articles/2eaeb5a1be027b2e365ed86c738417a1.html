@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Simple Smart Home Dashboard Because Home Assistant's UI Made Me Cry</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>I Built a Simple Smart Home Dashboard Because Home Assistant's UI Made Me Cry</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/mackmoneymaker/i-built-a-simple-smart-home-dashboard-because-home-assistants-ui-made-me-cry-4gh3" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                <h2>
+  <a name="the-breaking-point" href="#the-breaking-point">
+  </a>
+  The breaking point
+</h2>
+
+<p>I love Home Assistant. I really do. It's incredibly powerful, endlessly customizable, and the community is amazing.</p>
+
+<p>But can we talk about the dashboard situation for a second?</p>
+
+<p>All I wanted was a simple wall-mounted tablet showing my home temps and which lights are on. That's it. Instead, I spent an entire weekend fighting with YAML, custom cards, card-mod CSS overrides, and Lovelace layouts that broke every time I sneezed.</p>
+
+<p>At some point around 2 AM, staring at a dashboard that <em>still</em> didn't look right on my tablet, I thought: "I'm a web developer. I can build what I actually want in less time than I've spent trying to configure this."</p>
+
+<p>So I did.</p>
+
+<h2>
+  <a name="meet-homedash" href="#meet-homedash">
+  </a>
+  Meet HomeDash
+</h2>
+
+<p><a href="https://mack-moneymaker.github.io/homedash/" target="_blank"><strong>🌐 Live Demo</strong></a> · <a href="https://github.com/mack-moneymaker/homedash" target="_blank"><strong>📦 GitHub</strong></a></p>
+
+<p>HomeDash is a glanceable smart home dashboard. Big numbers, clean design, zero clutter. It's what I wished HA's dashboard was out of the box.</p>
+
+<p>Here's what it does:</p>
+
+<ul>
+<li>
+<strong>🌡️ Sensor widgets</strong> — Temperature, humidity, lights, motion. Big readable numbers designed for across-the-room glancing</li>
+<li>
+<strong>🏡 Room-based layout</strong> — Living Room, Bedroom, Kitchen. Your home, organized the way you think about it</li>
+<li>
+<strong>📊 24h sparkline charts</strong> — Tiny inline charts showing temperature trends. No setup, they just work</li>
+<li>
+<strong>🌗 Dark &amp; light themes</strong> — Auto-switches or manual toggle. Looks great day and night</li>
+<li>
+<strong>📱 Fully responsive</strong> — Phone, tablet, desktop, wall display. Works everywhere</li>
+<li>
+<strong>🔗 Home Assistant integration</strong> — Connect with your HA URL + long-lived access token. Or skip HA entirely and add widgets manually</li>
+</ul>
+
+<h2>
+  <a name="the-part-im-most-proud-of" href="#the-part-im-most-proud-of">
+  </a>
+  The part I'm most proud of
+</h2>
+
+<p><strong>Zero dependencies. ~30KB total.</strong></p>
+
+<p>No React. No Vue. No build step. No node_modules folder the size of a small country.</p>
+
+<p>It's three files: <code>index.html</code>, <code>style.css</code>, <code>app.js</code>. Open it in a browser. That's the whole deployment.</p>
+
+<p>I'm not anti-framework — I use them at work every day. But for a dashboard that needs to load instantly on a cheap tablet and just <em>stay there</em> showing data, vanilla JS felt right.</p>
+
+<h2>
+  <a name="how-it-works" href="#how-it-works">
+  </a>
+  How it works
+</h2>
+
+<p>The app connects to Home Assistant's REST API using a long-lived access token. It polls your entities, groups them by room (using HA's area assignments), and renders them as clean widget cards.</p>
+
+<p>The sparkline charts are drawn with plain <code>&lt;canvas&gt;</code> — about 40 lines of code. They store 24 hours of readings in localStorage and draw a simple line. No charting library needed.</p>
+
+<p>If you don't use Home Assistant, you can configure widgets manually in the settings panel. It stores everything in localStorage, so there's genuinely no server component.</p>
+
+<h2>
+  <a name="who-is-this-for" href="#who-is-this-for">
+  </a>
+  Who is this for?
+</h2>
+
+<ul>
+<li>You use Home Assistant but want a <strong>simpler dashboard</strong> for wall tablets</li>
+<li>You want a <strong>quick overview</strong> of your home without opening the HA app</li>
+<li>You're tired of fighting Lovelace and just want something that <strong>looks nice by default</strong>
+</li>
+<li>You're a developer who appreciates the beauty of <strong>shipping three files</strong>
+</li>
+</ul>
+
+<h2>
+  <a name="try-it-steal-it-improve-it" href="#try-it-steal-it-improve-it">
+  </a>
+  Try it / steal it / improve it
+</h2>
+
+
+
+<p>It's fully open source. Fork it, hack it, make it yours.</p>
+
+<p>I'd genuinely love feedback — what's missing? What would make this useful for your setup? Drop a comment or open an issue on GitHub.</p>
+
+
+<hr />
+
+<p><em>Built with frustration, caffeine, and vanilla JavaScript.</em></p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>

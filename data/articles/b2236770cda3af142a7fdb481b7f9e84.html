@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Recipe Extractor Because I'm Tired of Reading Life Stories Before Getting the Ingredients</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>I Built a Recipe Extractor Because I'm Tired of Reading Life Stories Before Getting the Ingredients</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/mackmoneymaker/i-built-a-recipe-extractor-because-im-tired-of-reading-life-stories-before-getting-the-ingredients-422n" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+    
+
+    <main>
+      <div>
+
+
+        <article>
+          
+          <header>
+
+            <div>
+                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
+                  </p>
+                  
+                </div>
+          </header>
+
+          <div>
+                <p>You know the drill.</p>
+
+<p>You google "easy chicken tikka masala recipe." You click the first result. And then you're hit with 3,000 words about how the author's grandmother once visited a spice market in Jaipur during a summer that changed her life forever.</p>
+
+<p>You scroll. And scroll. And scroll past the "Jump to Recipe" button that somehow takes you to another paragraph about kitchen renovations.</p>
+
+<p>I finally snapped.</p>
+
+<h2>
+  <a name="so-i-built-justtherecipe" href="#so-i-built-justtherecipe">
+  </a>
+  So I Built JustTheRecipe
+</h2>
+
+<p><strong><a href="https://justtherecipe-app.fly.dev/" target="_blank">justtherecipe-app.fly.dev</a></strong> — paste any recipe URL, get just the ingredients and instructions. That's it. No life stories. No ads. No bloat.</p>
+
+<h2>
+  <a name="how-it-works" href="#how-it-works">
+  </a>
+  How It Works
+</h2>
+
+<ol>
+<li>You paste a recipe URL</li>
+<li>The server fetches the page and extracts the recipe data</li>
+<li>You get a clean, readable recipe card</li>
+</ol>
+
+<p>Under the hood, it tries three extraction methods in order:</p>
+
+<h3>
+  <a name="1-jsonld-the-golden-path" href="#1-jsonld-the-golden-path">
+  </a>
+  1. JSON-LD (the golden path)
+</h3>
+
+<p>Most recipe sites embed structured data using <a href="https://schema.org/Recipe" target="_blank">Schema.org Recipe markup</a>. This is the most reliable source — it's literally machine-readable recipe data sitting right there in a <code>&lt;script&gt;</code> tag.<br />
+</p>
+
+<div>
+<pre><code><span>function</span> <span>extractJsonLd</span><span>(</span><span>$</span><span>)</span> <span>{</span>
+  <span>const</span> <span>scripts</span> <span>=</span> <span>$</span><span>(</span><span>"</span><span>script[type=</span><span>\"</span><span>application/ld+json</span><span>\"</span><span>]</span><span>"</span><span>);</span>
+  <span>for </span><span>(</span><span>let</span> <span>i</span> <span>=</span> <span>0</span><span>;</span> <span>i</span> <span>&lt;</span> <span>scripts</span><span>.</span><span>length</span><span>;</span> <span>i</span><span>++</span><span>)</span> <span>{</span>
+    <span>let</span> <span>data</span> <span>=</span> <span>JSON</span><span>.</span><span>parse</span><span>(</span><span>$</span><span>(</span><span>scripts</span><span>[</span><span>i</span><span>]).</span><span>html</span><span>());</span>
+    <span>if </span><span>(</span><span>data</span><span>[</span><span>"</span><span>@graph</span><span>"</span><span>])</span> <span>data</span> <span>=</span> <span>data</span><span>[</span><span>"</span><span>@graph</span><span>"</span><span>];</span>
+    <span>const</span> <span>items</span> <span>=</span> <span>Array</span><span>.</span><span>isArray</span><span>(</span><span>data</span><span>)</span> <span>?</span> <span>data</span> <span>:</span> <span>[</span><span>data</span><span>];</span>
+    <span>for </span><span>(</span><span>const</span> <span>item</span> <span>of</span> <span>items</span><span>)</span> <span>{</span>
+      <span>if </span><span>(</span><span>item</span><span>[</span><span>"</span><span>@type</span><span>"</span><span>]</span> <span>===</span> <span>"</span><span>Recipe</span><span>"</span><span>)</span> <span>return</span> <span>normalizeRecipe</span><span>(</span><span>item</span><span>);</span>
+    <span>}</span>
+  <span>}</span>
+  <span>return</span> <span>null</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p>
+    Enter fullscreen mode
+    
+
+
+    Exit fullscreen mode
+    
+
+
+</p>
+</div>
+</div>
+
+
+
+<h3>
+  <a name="2-microdata-fallback" href="#2-microdata-fallback">
+  </a>
+  2. Microdata fallback
+</h3>
+
+<p>Some older sites use <code>itemprop</code> attributes instead of JSON-LD. We check for those too.</p>
+
+<h3>
+  <a name="3-heuristic-extraction" href="#3-heuristic-extraction">
+  </a>
+  3. Heuristic extraction
+</h3>
+
+<p>When there's no structured data at all, we look for common patterns — lists with "ingredient" in the class name, ordered lists with "instruction" or "step" in the class. It's not perfect, but it catches a surprising number of sites.</p>
+
+<h2>
+  <a name="the-stack" href="#the-stack">
+  </a>
+  The Stack
+</h2>
+
+<p>Deliberately simple:</p>
+
+<ul>
+<li>
+<strong>Express</strong> — serves the API and static files</li>
+<li>
+<strong>Cheerio</strong> — parses HTML and extracts recipe data</li>
+<li>
+<strong>Vanilla HTML/CSS/JS</strong> — no framework, no build step</li>
+<li>
+<strong>Fly.io</strong> — deployed in Paris (CDG region)</li>
+</ul>
+
+<p>The entire server is one file. The entire frontend is one HTML file. Total dependencies: 6.</p>
+
+<h2>
+  <a name="features-im-actually-proud-of" href="#features-im-actually-proud-of">
+  </a>
+  Features I'm Actually Proud Of
+</h2>
+
+<ul>
+<li>
+<strong>Checkbox ingredients</strong> — tap to cross off as you go. Game changer when cooking.</li>
+<li>
+<strong>Print mode</strong> — generates a clean recipe card. My fridge is now covered in these.</li>
+<li>
+<strong>Mobile-first</strong> — because nobody's propping up a desktop in the kitchen.</li>
+<li>
+<strong>No accounts, no tracking</strong> — paste URL, get recipe, done.</li>
+</ul>
+
+<h2>
+  <a name="try-it" href="#try-it">
+  </a>
+  Try It
+</h2>
+
+<p>👉 <strong><a href="https://justtherecipe-app.fly.dev/" target="_blank">justtherecipe-app.fly.dev</a></strong></p>
+
+<p>Grab any recipe URL from your favorite food blog and paste it in. The one with the 4,000-word preamble about autumn in Vermont? That one works great.</p>
+
+<h2>
+  <a name="what-i-learned" href="#what-i-learned">
+  </a>
+  What I Learned
+</h2>
+
+<ol>
+<li>
+<strong>Schema.org is a gift.</strong> Structured data makes the web actually usable for tools like this. If you run a recipe site, please use JSON-LD.</li>
+<li>
+<strong>You don't need React for everything.</strong> Vanilla JS + a single HTML file loads instantly and does everything I need.</li>
+<li>
+<strong>Scratch your own itch.</strong> The best side projects solve problems you actually have. I cook almost every day, and this saves me real frustration.</li>
+</ol>
+
+
+<hr />
+
+<p>Built in a weekend. Already using it daily. Sometimes the best projects are the simplest ones.</p>
+
+
+            </div>
+          
+
+
+
+
+        </article>
+
+        
+
+          
+      </div>
+    </main>
+
+    
+  </div></div>
+  </div>
+</body>
+</html>

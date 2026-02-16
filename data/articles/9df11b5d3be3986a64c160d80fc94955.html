@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Portfolio Tracker for EU Investors Because Everything is USD-Only</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+</style>
+</head>
+<body>
+  <h1>I Built a Portfolio Tracker for EU Investors Because Everything is USD-Only</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    <a href="https://dev.to/mackmoneymaker/i-built-a-portfolio-tracker-for-eu-investors-because-everything-is-usd-only-414f" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
+                  </p>
+                  
+                </div><div>
+                <p>Every portfolio tracker I've tried assumes I'm American.</p>
+
+<p>Yahoo Finance? USD. Google Finance? USD. Every shiny fintech app with a waitlist and a $12/month subscription? You guessed it — USD.</p>
+
+<p>I'm a European investor. I buy stocks in EUR. I hold ETFs priced in GBP. My savings account is in CHF. And every single time I wanted to check how my portfolio was actually doing, I had to mentally convert currencies, open XE.com in another tab, and do napkin math.</p>
+
+<p>So I built <a href="https://mack-moneymaker.github.io/foliotrack/" target="_blank">FolioTrack</a>.</p>
+
+<h2>
+  <a name="the-problem-nobody-talks-about" href="#the-problem-nobody-talks-about">
+  </a>
+  The Problem Nobody Talks About
+</h2>
+
+<p>If you're investing from Europe, you're a second-class citizen in fintech. Most tools don't just default to USD — they <em>only</em> support USD. Want to see your total portfolio value in euros? Too bad. Want to track a stock listed on Euronext or the SIX Swiss Exchange? Good luck finding it.</p>
+
+<p>This isn't a niche problem. The EU has 450 million people. The eurozone alone has a GDP north of $14 trillion. But somehow, every developer building portfolio tools acts like the world ends at the US border.</p>
+
+<p>I got tired of it.</p>
+
+<h2>
+  <a name="what-i-built" href="#what-i-built">
+  </a>
+  What I Built
+</h2>
+
+<p>FolioTrack is a portfolio tracker that actually works for European investors. It's a static web app — no backend, no signup, no data leaving your browser.</p>
+
+<p>Here's what it does:</p>
+
+<ul>
+<li>
+<strong>Multi-currency support</strong> — Set your base currency to EUR, GBP, CHF, or yes, even USD if you want</li>
+<li>
+<strong>Live prices</strong> via Yahoo Finance API</li>
+<li>
+<strong>Real-time FX rates</strong> from the European Central Bank (the actual ECB, not some sketchy third-party)</li>
+<li>
+<strong>Pie chart</strong> showing your allocation at a glance</li>
+<li>
+<strong>30-day performance chart</strong> so you can see trends without obsessing over daily moves</li>
+<li>
+<strong>Dark and light themes</strong> because we're not animals</li>
+<li>
+<strong>Fully mobile responsive</strong> — works great on your phone</li>
+</ul>
+
+<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fmack-moneymaker%2Ffoliotrack%2Fmain%2Fscreenshot.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fraw.githubusercontent.com%2Fmack-moneymaker%2Ffoliotrack%2Fmain%2Fscreenshot.png" alt="FolioTrack screenshot" /></a></p>
+
+<h2>
+  <a name="the-tech-or-lack-thereof" href="#the-tech-or-lack-thereof">
+  </a>
+  The Tech (Or Lack Thereof)
+</h2>
+
+<p>Here's where it gets fun. FolioTrack has <strong>zero dependencies</strong>.</p>
+
+<p>No React. No Vue. No Svelte. No bundler. No node_modules folder that weighs more than the app itself. Just vanilla JavaScript, HTML, and CSS.</p>
+
+<p>The entire thing is <strong>~29KB</strong>. That's not a typo. Twenty-nine kilobytes. It loads instantly on any connection, even that sketchy airport WiFi you're probably on right now.</p>
+
+<p>All your data lives in <code>localStorage</code>. Nothing hits a server. Nothing gets tracked. There's no analytics, no cookies banner, no GDPR popup (because there's nothing to consent to). Your portfolio data stays on <em>your</em> device.</p>
+
+<h2>
+  <a name="why-vanilla-js" href="#why-vanilla-js">
+  </a>
+  Why Vanilla JS?
+</h2>
+
+<p>Because I didn't need anything else.</p>
+
+<p>Look, I love modern frameworks for complex apps. But a portfolio tracker isn't a complex app. It's a list of holdings, some math, two charts, and an API call. Reaching for React here would be like driving a semi-truck to pick up groceries.</p>
+
+<p>Vanilla JS meant:</p>
+
+<ul>
+<li>Zero build step (just open the HTML file)</li>
+<li>No dependency vulnerabilities to patch</li>
+<li>No framework churn to keep up with</li>
+<li>Instant load times</li>
+<li>Easy to understand and contribute to</li>
+</ul>
+
+<p>The codebase is small enough that any developer can read the whole thing in an afternoon.</p>
+
+<h2>
+  <a name="how-it-works" href="#how-it-works">
+  </a>
+  How It Works
+</h2>
+
+<ol>
+<li>You add a holding (ticker symbol + number of shares + purchase price)</li>
+<li>FolioTrack fetches the current price from Yahoo Finance</li>
+<li>It grabs the latest FX rate from the ECB</li>
+<li>It converts everything to your base currency</li>
+<li>You see your actual portfolio value, gains/losses, and allocation</li>
+</ol>
+
+<p>That's it. No account creation. No email verification. No "free trial" that expires. You open the page and start using it.</p>
+
+<h2>
+  <a name="the-business-model" href="#the-business-model">
+  </a>
+  The Business Model
+</h2>
+
+<p>Right now, the free tier gives you <strong>10 holdings</strong>. For most casual investors, that's plenty.</p>
+
+<p>I'm working on a Pro tier at <strong>€8/month</strong> that'll unlock unlimited holdings and some extra features. But the free version isn't crippled — it's genuinely useful as-is.</p>
+
+<p>I chose €8 specifically because I'm tired of seeing $9.99/mo pricing from tools that don't even support my currency. If I'm building for Europeans, I'm pricing for Europeans.</p>
+
+<h2>
+  <a name="try-it-contribute" href="#try-it-contribute">
+  </a>
+  Try It / Contribute
+</h2>
+
+<p><strong>Live app:</strong> <a href="https://mack-moneymaker.github.io/foliotrack/" target="_blank">mack-moneymaker.github.io/foliotrack</a></p>
+
+<p><strong>Source code:</strong> <a href="https://github.com/mack-moneymaker/foliotrack" target="_blank">github.com/mack-moneymaker/foliotrack</a></p>
+
+<p>It's open source. If you're a European investor frustrated by the same USD-everything problem, give it a spin. If you're a developer, PRs are welcome — especially for additional exchange support and localization.</p>
+
+<p>And if you're building fintech tools: please, <em>please</em> remember that not everyone uses dollars. The bar is literally on the floor, and most apps still trip over it.</p>
+
+
+<hr />
+
+<p><em>Built with frustration, vanilla JS, and zero dependencies. The way the web was meant to be.</em></p>
+
+
+            </div></div>
+  </div>
+</body>
+</html>
