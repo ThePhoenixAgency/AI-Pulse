@@ -376,16 +376,55 @@ function trimPromotionalTailText(input) {
 
 function cleanupNoiseHtml(input) {
   if (!input) return '';
-  const cleaned = String(input)
-    .replace(/<p[^>]*>\s*(comments?\s*0|0\s*comments?|commentaires?\s*0|0\s*commentaires?)\s*<\/p>/gi, '')
-    .replace(/<p[^>]*>\s*(comments?|commentaires?|avis)\s*<\/p>/gi, '')
-    .replace(/<p[^>]*>\s*(toute l['’]actu en un clin d['’]oeil)\s*<\/p>/gi, '')
-    .replace(/<p[^>]*>\s*(advertisement\.?\s*scroll to continue reading\.?)\s*<\/p>/gi, '')
-    .replace(/<div[^>]*>\s*<p[^>]*>\s*<span[^>]*>\s*advertisement\.?\s*scroll to continue reading\.?\s*<\/span>\s*<\/p>\s*<\/div>/gi, '')
-    .replace(/<p[^>]*>\s*(publicit[eé]|votre contenu continue ci-dessous)\s*<\/p>/gi, '')
-    .replace(/<div[^>]*>\s*(<p[^>]*>\s*(publicit[eé]|votre contenu continue ci-dessous)\s*<\/p>\s*)+<\/div>/gi, '')
-    .trim();
-  return trimPromotionalTailHtml(stripEmojiCharacters(cleaned));
+  const normalizeNoiseText = (value) => sanitizeText(value).toLowerCase().replace(/\s+/g, ' ').trim();
+  const removableParagraphs = new Set([
+    'comments 0',
+    '0 comments',
+    'commentaire 0',
+    'commentaires 0',
+    '0 commentaire',
+    '0 commentaires',
+    'comments',
+    'comment',
+    'commentaire',
+    'commentaires',
+    'avis',
+    "toute l'actu en un clin d'oeil",
+    'advertisement scroll to continue reading',
+    'advertisement. scroll to continue reading.',
+    'publicité',
+    'publicite',
+    'votre contenu continue ci-dessous'
+  ]);
+
+  try {
+    const dom = new JSDOM(`<body>${String(input)}</body>`);
+    const body = dom.window.document.body;
+    body.querySelectorAll('p').forEach((paragraph) => {
+      const normalized = normalizeNoiseText(paragraph.textContent || '');
+      if (removableParagraphs.has(normalized)) {
+        paragraph.remove();
+      }
+    });
+
+    body.querySelectorAll('div').forEach((div) => {
+      const childElements = Array.from(div.children);
+      if (childElements.length === 0) return;
+      const onlyParagraphChildren = childElements.every((node) => node.tagName === 'P');
+      if (!onlyParagraphChildren) return;
+      const allParagraphsRemovable = childElements.every((paragraph) => {
+        const normalized = normalizeNoiseText(paragraph.textContent || '');
+        return removableParagraphs.has(normalized);
+      });
+      if (allParagraphsRemovable) {
+        div.remove();
+      }
+    });
+
+    return trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
+  } catch (_) {
+    return trimPromotionalTailHtml(stripEmojiCharacters(String(input).trim()));
+  }
 }
 
 function isLikelyBoilerplateExtraction(text) {
