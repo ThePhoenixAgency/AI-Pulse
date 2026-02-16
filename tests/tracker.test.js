@@ -35,7 +35,7 @@ function createCookieJar() {
   };
 }
 
-function loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now }) {
+function loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now, cryptoImpl }) {
   const trackerPath = path.join(process.cwd(), 'js', 'tracker.js');
   const code = fs.readFileSync(trackerPath, 'utf8');
 
@@ -57,12 +57,15 @@ function loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now }) {
     setTimeout,
     clearTimeout,
   };
+  if (cryptoImpl) sandbox.crypto = cryptoImpl;
 
   vm.createContext(sandbox);
   vm.runInContext(code, sandbox, { filename: 'js/tracker.js' });
 
   return sandbox;
 }
+
+const UUID_V4_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 test('Premiere visite: cree une session et increment sessions/pageViews', async () => {
   const localStorage = createLocalStorage();
@@ -139,4 +142,35 @@ test('Throttle geoip: ne refait pas fetch si lastLocUpdate recent et locations p
   loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now: 2000 });
 
   assert.equal(fetchCalls, 0);
+});
+
+test('UUID: utilise crypto.getRandomValues quand disponible', async () => {
+  const localStorage = createLocalStorage();
+  const cookieJar = createCookieJar();
+  let called = 0;
+  const cryptoImpl = {
+    getRandomValues(arr) {
+      called++;
+      for (let i = 0; i < arr.length; i++) arr[i] = i;
+      return arr;
+    }
+  };
+  const fetchImpl = async () => ({ json: async () => ({ city: 'Grenoble', country_name: 'France' }) });
+
+  const sandbox = loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now: 1000, cryptoImpl });
+  const uuid = sandbox.window.aiPulseTracker.generateUUID();
+
+  assert.ok(called > 0);
+  assert.match(uuid, UUID_V4_REGEX);
+});
+
+test('UUID: fallback Math.random si crypto indisponible', async () => {
+  const localStorage = createLocalStorage();
+  const cookieJar = createCookieJar();
+  const fetchImpl = async () => ({ json: async () => ({ city: 'Grenoble', country_name: 'France' }) });
+
+  const sandbox = loadTrackerIntoSandbox({ localStorage, cookieJar, fetchImpl, now: 1000 });
+  const uuid = sandbox.window.aiPulseTracker.generateUUID();
+
+  assert.match(uuid, UUID_V4_REGEX);
 });

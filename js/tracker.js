@@ -83,27 +83,21 @@ const Tracker = {
     },
 
 
-    /**
-     * -------------------------------------------------------------------------
-     * MÉTHODE : getSecureRandomValues()
-     * -------------------------------------------------------------------------
-     * Remplit un tableau typé avec des valeurs aléatoires.
-     *
-     * Utilise un générateur cryptographiquement sûr (crypto.getRandomValues)
-     * lorsqu'il est disponible, et retombe sur Math.random() sinon.
-     */
+    // Fournit des octets aleatoires cryptographiquement forts quand disponible.
+    // Fallback legacy: Math.random pour environnements sans Web Crypto.
     getSecureRandomValues: function (typedArray) {
-        // Navigateur moderne ou environnement avec crypto.getRandomValues
-        var cryptoObj = (typeof globalThis !== 'undefined' && globalThis.crypto) ||
-                        (typeof window !== 'undefined' && window.crypto) ||
-                        (typeof self !== 'undefined' && self.crypto);
+        const cryptoObj = (
+            (typeof globalThis !== 'undefined' && globalThis.crypto) ||
+            (typeof window !== 'undefined' && window.crypto) ||
+            null
+        );
 
         if (cryptoObj && typeof cryptoObj.getRandomValues === 'function') {
             return cryptoObj.getRandomValues(typedArray);
         }
 
         // Fallback : utiliser Math.random() (moins sûr, mais garantit le fonctionnement)
-        for (var i = 0; i < typedArray.length; i++) {
+        for (let i = 0; i < typedArray.length; i++) {
             typedArray[i] = Math.floor(Math.random() * 256);
         }
         return typedArray;
@@ -113,47 +107,22 @@ const Tracker = {
      * -------------------------------------------------------------------------
      * MÉTHODE : generateUUID()
      * -------------------------------------------------------------------------
-     * Génère un identifiant unique universel (UUID v4).
-     *
-     * EXEMPLE DE RÉSULTAT:
-     *     "a1b2c3d4-e5f6-4789-a012-b34567890abc"
-     *
-     * FORMAT:
-     *     xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
-     *     - Le 4 indique la version 4 (basée sur des nombres aléatoires)
-     *     - x = chiffre hexadécimal (0-9, a-f)
-     *     - y = 8, 9, a, ou b (variante DCE)
-     *
-     * UTILISATION:
-     *     Cet ID est stocké localement et sert à distinguer les visiteurs
-     *     dans les statistiques locales. Il ne permet PAS d'identifier
-     *     la personne car il n'est pas partagé avec des serveurs.
+     * Génère un identifiant unique universel (UUID v4) (RFC 4122).
      */
     generateUUID: function () {
-        // Générer 16 octets aléatoires
-        var bytes = new Uint8Array(16);
-        this.getSecureRandomValues(bytes);
+        const bytes = this.getSecureRandomValues(new Uint8Array(16));
 
-        // Ajuster la version (4) et la variante (RFC 4122)
-        bytes[6] = (bytes[6] & 0x0f) | 0x40; // version 4
-        bytes[8] = (bytes[8] & 0x3f) | 0x80; // variante 10xxxxxx
+        // Version 4 (0100xxxx) et variante RFC 4122 (10xxxxxx)
+        bytes[6] = (bytes[6] & 0x0f) | 0x40;
+        bytes[8] = (bytes[8] & 0x3f) | 0x80;
 
-        // Convertir en chaîne hexadécimale UUID
-        var hex = [];
-        for (var i = 0; i < bytes.length; i++) {
-            var h = bytes[i].toString(16);
-            if (h.length === 1) {
-                h = '0' + h;
-            }
-            hex.push(h);
-        }
-
+        const hex = Array.from(bytes, b => b.toString(16).padStart(2, '0'));
         return (
-            hex[0] + hex[1] + hex[2] + hex[3] + '-' +
-            hex[4] + hex[5] + '-' +
-            hex[6] + hex[7] + '-' +
-            hex[8] + hex[9] + '-' +
-            hex[10] + hex[11] + hex[12] + hex[13] + hex[14] + hex[15]
+            hex.slice(0, 4).join('') + '-' +
+            hex.slice(4, 6).join('') + '-' +
+            hex.slice(6, 8).join('') + '-' +
+            hex.slice(8, 10).join('') + '-' +
+            hex.slice(10, 16).join('')
         );
     },
 

@@ -6,6 +6,10 @@ Last updated: 2026-02-16
 
 ## Termine
 
+- [x] Security: UUID session/visitor en v4 RFC4122 avec source aleatoire cryptographique quand disponible
+  - `crypto.getRandomValues` prioritaire
+  - Fallback legacy sur `Math.random` pour compatibilite
+
 - [x] Reader UX: clic sur tag (mot-cle/categorie) pour ancrer vers section et eviter le scroll long
   - Tags de navigation rapides (quick-nav) construits automatiquement depuis les sections visibles
 

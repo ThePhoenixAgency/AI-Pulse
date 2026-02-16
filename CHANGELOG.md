@@ -24,6 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reader: removed third-party Google tag from iframe reader page
 - Reader: keyword search now ignores language while matching and falls back to visible articles if no exact match
 - Reader: category quick-tags added for one-click section anchor navigation
+- Security: Tracker UUID generation now uses RFC4122 v4 with secure randomness (`crypto.getRandomValues`) when available
+- Security: Legacy fallback for UUID randomness retained for environments without Web Crypto
 - Stats: privacy-first tracker (localStorage + first-party session cookie)
 - Portfolio: GitHub links point to the repositories tab (no viewer indirection)
 - Privacy: fix header logo reference (`logo_text.png` -> `logo_final.png`)
