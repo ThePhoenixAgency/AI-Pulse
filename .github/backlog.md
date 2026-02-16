@@ -14,6 +14,9 @@
   - Ajouter un contrôle d'intégrité des sections bilingues côté templates et parser de soumission.
   - Ajouter un test navigateur local (`file://`) pour valider le fallback iframe de `readme-viewer`.
   - Ajouter un test UI dédié pour s'assurer que la barre titre article reste masquée dans `reader.html`.
+  - Ajouter un test UI anti-boucle iframe (détection de reloads successifs et fallback erreur).
+  - Ajouter un test UI de navigation retour article -> liste pour éviter les régressions 404.
+  - Ajouter un test de liens directs `data/articles/*` (sans encapsulation iframe).
 
 ### B. Flux dépendances automatique (EN COURS)
 - **Objectif** : aligner le pipeline auto sur `dependencies -> main` sans conflits.

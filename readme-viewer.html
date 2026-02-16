@@ -723,15 +723,25 @@
             },
 
             isRead(url) {
-                return this.getAll().some(a => a.url === url);
+                const normalized = this.normalizeUrl(url);
+                return this.getAll().some(a => a.url === normalized);
+            },
+
+            normalizeUrl(url) {
+                if (!url || typeof url !== 'string') return '';
+                const trimmed = url.trim();
+                if (trimmed.startsWith('./')) return trimmed.slice(2);
+                return trimmed;
             },
 
             markRead(url, title) {
                 if (!this.isLocalStorageAvailable()) return;
                 try {
+                    const normalizedUrl = this.normalizeUrl(url);
+                    if (!normalizedUrl) return;
                     const articles = this.getAll();
-                    if (!articles.some(a => a.url === url)) {
-                        articles.push({ url, title, readAt: Date.now() });
+                    if (!articles.some(a => a.url === normalizedUrl)) {
+                        articles.push({ url: normalizedUrl, title, readAt: Date.now() });
                         // Keep max 500 entries to avoid localStorage bloat
                         const limited = articles.length > 500 ? articles.slice(-500) : articles;
                         localStorage.setItem(this.STORAGE_KEY, JSON.stringify(limited));
@@ -756,21 +766,21 @@
                 try {
                     const url = new URL(href, currentOrigin);
                     if (url.pathname.endsWith('app.html') && url.searchParams.has('url')) {
+                        // No iframe encapsulation: open the real article target directly.
                         const actualUrl = url.searchParams.get('url');
-                        const title = url.searchParams.get('title') || link.textContent;
-                        const source = url.searchParams.get('source') || 'README';
-                        const tags = url.searchParams.get('tags') || '';
-                        link.setAttribute('href', `./reader.html?url=${encodeURIComponent(actualUrl)}&title=${encodeURIComponent(title)}&source=${encodeURIComponent(source)}&tags=${encodeURIComponent(tags)}`);
-                        link.setAttribute('target', '_parent');
+                        if (actualUrl) {
+                            link.setAttribute('href', actualUrl);
+                            link.setAttribute('target', '_top');
+                        }
                     } else if (url.hostname === 'github.com' || ((url.origin === currentOrigin || url.hostname === 'thephoenixagency.github.io') && allowedInternalPages.some(page => url.pathname.endsWith(page)))) {
                         link.setAttribute('target', '_top');
                     } else if (href.startsWith('http')) {
                         link.setAttribute('target', '_blank');
                     }
-                    // For local data/articles links
+                    // For local data/articles links: open directly, no reader iframe wrapper.
                     if (href.startsWith('data/articles/')) {
-                        link.setAttribute('href', `./reader.html?url=${encodeURIComponent(href)}&title=${encodeURIComponent(link.textContent)}&source=&tags=`);
-                        link.setAttribute('target', '_parent');
+                        link.setAttribute('href', `./${href}`);
+                        link.setAttribute('target', '_top');
                     }
                 } catch (e) { /* ignore */ }
             });
@@ -958,6 +968,7 @@
             function render(passOptions = {}) {
                 const { ignoreKeywords = false, ignoreLanguage = false } = passOptions;
                 let totalVisible = 0;
+                let hiddenReadCount = 0;
 
                 sections.forEach(section => {
                     const cat = section.getAttribute('data-category');
@@ -1007,7 +1018,7 @@
                         // Check if article is read
                         const link = article.querySelector('a');
                         const title = link ? link.textContent : '';
-                        const href = link ? link.getAttribute('href') : '';
+                        const href = link ? ReadHistory.normalizeUrl(link.getAttribute('href') || '') : '';
                         const isRead = readArticles.some(a => a.url === href || a.title === title);
 
                         if (isRead) {
@@ -1018,6 +1029,7 @@
                                 }
                                 article.classList.add('hidden');
                                 visible = false;
+                                hiddenReadCount++;
                             }
                         }
                     });
@@ -1043,23 +1055,43 @@
                     }
                 });
 
-                return totalVisible;
+                return { totalVisible, hiddenReadCount };
             }
 
             const keywordSearchActive = keywords.length > 0;
             // During keyword search, ignore language for broader matching.
-            let visibleCount = render({ ignoreKeywords: false, ignoreLanguage: keywordSearchActive });
+            let renderResult = render({ ignoreKeywords: false, ignoreLanguage: keywordSearchActive });
+            let visibleCount = renderResult.totalVisible;
+            let hiddenReadCount = renderResult.hiddenReadCount;
 
             if (keywordSearchActive && visibleCount === 0) {
                 // Fallback: keep page usable if keyword has no exact hit.
-                visibleCount = render({ ignoreKeywords: true, ignoreLanguage: false });
+                renderResult = render({ ignoreKeywords: true, ignoreLanguage: false });
+                visibleCount = renderResult.totalVisible;
+                hiddenReadCount = renderResult.hiddenReadCount;
                 if (filterNotice) {
                     filterNotice.textContent = 'No exact match for your keyword(s). Showing available articles with current filters.';
                     filterNotice.style.display = 'block';
                 }
             } else if (filterNotice) {
-                filterNotice.textContent = '';
-                filterNotice.style.display = 'none';
+                if (prefs.hideRead && hiddenReadCount > 0) {
+                    filterNotice.innerHTML = `Read articles hidden: ${hiddenReadCount}. <button id="showReadBypassBtn" type="button">Show read / Afficher lus</button>`;
+                    filterNotice.style.display = 'block';
+                    const bypassBtn = document.getElementById('showReadBypassBtn');
+                    if (bypassBtn) {
+                        bypassBtn.addEventListener('click', () => {
+                            const p = PrefsManager.load();
+                            p.hideRead = false;
+                            PrefsManager.save(p);
+                            const hideReadCb = document.getElementById('prefHideRead');
+                            if (hideReadCb) hideReadCb.checked = false;
+                            applyFilters();
+                        }, { once: true });
+                    }
+                } else {
+                    filterNotice.textContent = '';
+                    filterNotice.style.display = 'none';
+                }
             }
 
             buildSectionNav();
@@ -1260,6 +1292,17 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readme-content').style.display = 'block';
                 document.getElementById('readme-content').innerHTML = html;
+
+                // Mark articles as read on click before navigation.
+                const contentRoot = document.getElementById('readme-content');
+                contentRoot.addEventListener('click', (event) => {
+                    const link = event.target.closest('.article-item a');
+                    if (!link) return;
+                    const href = ReadHistory.normalizeUrl(link.getAttribute('href') || '');
+                    const title = (link.textContent || '').trim();
+                    if (href) ReadHistory.markRead(href, title);
+                });
+
                 ensureCategorySections();
 
                 // Post-render setup
