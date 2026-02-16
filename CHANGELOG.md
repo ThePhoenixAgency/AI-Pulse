@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added
+- **2026-02-16 06:23 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - Tests: `node --test` [OK]
 - Reader: tests for prefs toggle placement (mobile-first)
 - Theme: test to assert `css/style.css` exists
@@ -22,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.1.0] - 2026-01-31
 ### Added
+- **2026-02-16 06:23 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:15 UTC**: Automated Security Batch Update (DependabotSecureFlow)
@@ -54,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.2.0] - 2026-02-01
 ### Added
+- **2026-02-16 06:23 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:15 UTC**: Automated Security Batch Update (DependabotSecureFlow)
@@ -99,6 +102,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.0] - 2025-12-10
 ### Added
+- **2026-02-16 06:23 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-14 11:26 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:16 UTC**: Automated Security Batch Update (DependabotSecureFlow)
 - **2026-02-13 06:15 UTC**: Automated Security Batch Update (DependabotSecureFlow)
