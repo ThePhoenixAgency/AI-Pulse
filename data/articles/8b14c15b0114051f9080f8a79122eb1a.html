@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>This Raspberry Pi Zero camera instantly prints photos using thermal paper</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>This Raspberry Pi Zero camera instantly prints photos using thermal paper</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/30/2025 2:30:00 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/this-raspberry-pi-zero-camera-instantly-prints-photos-using-thermal-paper" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<section>
+<div>
+<figure> <img src="https://cdn.mos.cms.futurecdn.net/q2CPueT5ReNeqZzWL9LyaR.png" alt="Raspberry Pi"> <figcaption> <span>(Image credit: Spacerower)</span>
+</figcaption>
+</figure></div>
+<div> <p>We're living in an age where digital photos reign supreme, but that hasn't stopped maker and developer Spacerower, as they are known as over at Reddit, from creating a <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a>-powered camera that creates physical photos for you on the spot. This <a href="https://www.reddit.com/r/raspberry_pi/comments/1jmpz4w/i_made_a_pizero_based_instant_camera" target="_blank"><u>handheld Pi camera</u></a> was made from the ground up from scratch and features a Raspberry Pi Zero as the main board powering the operation.</p><p>According to Spacerower, the way it works is simple — although clearly the creation of the camera was far from it. To take a photo, just press the green button one time as a short press. If you can rotate it to adjust the brightness of the image, which is visible on a small LCD screen on the back of the camera. To print the photo, just long press the green button. It has a built-in thermal printer that not only prints the photo but also does so on sticker paper.</p><div><div><p>Image </p><p>1</p><p> of </p><p>2</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/hahEyYdoqfYDM7UYV73EaZ.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: Spacerower)</span></figcaption></figure></div></div><p>Like we mentioned before, the main board powering this camera is a <a href="https://www.tomshardware.com/features/raspberry-pi-zero">Raspberry Pi Zero</a>. It's connected to a <a href="https://www.tomshardware.com/reviews/raspberry-pi-camera-module-v3">Raspberry Pi camera module</a> for capturing images. An Em5820 thermal printer is used to print the images, while an LCD screen with a resolution of 240 x 240px lets you preview them first. The unit also features a rotary encoder and a couple of 1200mAh batteries to keep the unit portable.</p><p>Unfortunately, we don't have a good look at the source code. However, the print files are available alongside a complete hardware list over at <a href="https://www.printables.com/model/1247692-pi-zero-based-instant-camera" target="_blank">Printables</a>. In the project thread description, Spacerower confirms that a custom Python script is used to capture the images with the <a href="https://www.tomshardware.com/how-to/use-picamera2-take-photos-with-raspberry-pi"><u>picamera2</u></a> library and also manages the printing portion of the project using a library called python-escpos.</p><p>If you want to get a closer look at this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a>, check out the full thread shared to <a href="https://www.reddit.com/r/raspberry_pi/comments/1jmpz4w/i_made_a_pizero_based_instant_camera" target="_blank"><u>Reddit,</u></a> and don't forget to peek at the Printables page for even more details.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div> <div><p>Ash Hill is a contributing writer for Tom's Hardware with a wealth of experience in the hobby electronics, 3D printing and PCs. She manages the Pi projects of the month and much of our daily Raspberry Pi reporting while also finding the best coupons and deals on all tech.</p></div>
+</section> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

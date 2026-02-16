@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building the Hugging Face MCP Server</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Building the Hugging Face MCP Server</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 7/10/2025 12:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/building-hf-mcp" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/evalstate"><img alt="shaun smith's avatar" src="https://huggingface.co/avatars/909635453bf62a2a7118a01dd51b811c.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/julien-c"><img alt="Julien Chaumond's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5dd96eb166059660ed1ee413/NQtzmrDdbG0H8qkZvRyGk.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/coyotte508"><img alt="Eliott Coyac's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61d2f90c3c2083e1c08af22d/jn21aKijwBnopk7aUJUkq.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/abidlabs"><img alt="Abubakar Abid's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1621947938344-noauth.png"></a> </span> </span></p> </div></div> <blockquote>
+<strong>TL;DR:</strong> The Hugging Face Official MCP Server offers unique customization options for AI Assistants accessing the Hub, along with access to thousands of AI applications through one simple URL. We used MCPs "Streamable HTTP" transport for deployment, and examine in detail the trade-offs that Server Developers have. <p>We've learned many things about building a useful MCP server in the last month - we'll describe our journey here.</p>
+</blockquote>
+<h2> <a href="#introduction"> </a> <span> Introduction </span>
+</h2>
+<p>The Model Context Protocol (MCP) is fulfilling its promise of being the standard to connect AI Assistants to the outside world. </p>
+<p>At Hugging Face, providing access to the Hub via MCP is an obvious choice, and this article shares our experience developing the <a href="https://hf.co/mcp"><code>hf.co/mcp</code></a> MCP Server.</p>
+<h2> <a href="#design-choices"> </a> <span> Design Choices </span>
+</h2>
+<p>The community uses the Hub for research, development, content creation and more. We wanted to let people customize the server for their own needs, as well as easily access thousands of AI applications available on Spaces. This meant making the MCP Server dynamic by adjusting users' tools on the fly.</p>
+<figure> <img alt="The Hugging Face MCP Settings Page" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/hf-mcp-remote/hf-mcp-settings.png"> <figcaption>The <a href="https://huggingface.co/settings/mcp">Hugging Face MCP Settings Page</a> where Users can configure their tools.</figcaption>
+</figure> <p>We also wanted to make access simple by avoiding complicated downloads and configuration, so making it remotely accessible via a simple URL was a must.</p>
+<h2> <a href="#remote-servers"> </a> <span> Remote Servers </span>
+</h2>
+<p>When building a remote MCP Server, the first decision is deciding how clients will connect to it. MCP offers several transport options, with different trade-offs. <strong>TL;DR:</strong> our open source code supports all variants, but for production we chose to go with the most modern one. This section goes through the different options in detail. </p>
+<p>Since its launch in November 2024, MCP has undergone rapid evolution with 3 protocol revisions in 9 months. This has seen the replacement of the SSE Transport with Streamable HTTP, as well as the introduction and rework of authorization.</p>
+<p>These rapid changes mean support for different MCP Features and revisions in Client applications varies, providing extra challenges for our design choices.</p>
+<p>Here is a brief summary of the Transport Options offered by the Model Context Protocol and associated SDKs: </p>
+<div> <table> <thead><tr>
+<th>Transport</th>
+<th>Notes</th>
+</tr> </thead><tbody><tr>
+<td><code>STDIO</code></td>
+<td>Typically used when the MCP Server is running on the same computer as the Client. Able to access local resources such as files if needed.</td>
+</tr>
+<tr>
+<td><code>HTTP with SSE</code></td>
+<td>Used for remote connections over HTTP. Deprecated in the 2025-03-26 version of MCP but still in use.</td>
+</tr>
+<tr>
+<td><code>Streamable HTTP</code></td>
+<td>A more flexible remote HTTP transport that provides more options for deployment than the outgoing SSE version</td>
+</tr>
+</tbody> </table>
+</div>
+<p>Both <code>STDIO</code> and <code>HTTP with SSE</code> are fully bi-directional by default - meaning that Client and Server maintain an open connection and can send messages to each other at any time. </p>
+<blockquote>
+<p>SSE refers to "Server Sent Events" - a way for HTTP Servers to maintain an open connection and send events in response to a request.</p>
+</blockquote>
+<h4> <a href="#understanding-streamable-http"> </a> <span> Understanding Streamable HTTP </span>
+</h4>
+<p>MCP Server Developers face a lot of choices when setting up the Streamable HTTP transport.</p>
+<p>There are 3 main communication patterns to choose from:</p>
+<ul>
+<li><strong>Direct Response</strong> - Simple Request/Response (like standard REST APIs). This is perfect for straightforward, stateless operations like simple searches.</li>
+<li><strong>Request Scoped Streams</strong> - Temporary SSE Streams associated with a single Request. This is useful for sending <a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/progress">Progress Updates</a> if the Tool Call takes a long time - such as Video Generation. Additionally the Server may need to request information from the user with an <a href="https://modelcontextprotocol.io/specification/2025-06-18/client/elicitation">Elicitation</a>, or conduct a Sampling request.</li>
+<li><strong>Server Push Streams</strong> - Long-lived SSE connection supporting server-initiated messages. This enables Resource, Tool and Prompt List change notifications or ad-hoc Sampling and Elicitations. These connections need extra management such as <a href="https://modelcontextprotocol.io/specification/2025-06-18/basic/utilities/ping">keep-alive</a> and resumption mechanics on re-connection.</li>
+</ul>
+<blockquote>
+<p>When using Request Scoped Streams with the official SDKs, use the <code>sendNotification()</code> and <code>sendRequest()</code> methods provided in the <code>RequestHandlerExtra</code> parameter (TypeScript) or set the <code>related_request_id</code> (Python) to send messages to the correct stream.</p>
+</blockquote>
+<p>An additional factor to consider is whether or not the MCP Server itself needs to maintain state for each connection. This is decided by the Server when the Client sends its Initialize request:</p>
+<div> <table> <thead><tr>
+<th></th>
+<th>Stateless</th>
+<th>Stateful</th>
+</tr> </thead><tbody><tr>
+<td><strong>Session IDs</strong></td>
+<td>Not needed</td>
+<td>Server responds with an <code>mcp-session-id</code></td>
+</tr>
+<tr>
+<td><strong>What it means</strong></td>
+<td>Each request is independent</td>
+<td>Server maintains client context</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Simple horizontal scaling: any instance can handle any request</td>
+<td>Need session affinity or shared state mechanisms</td>
+</tr>
+<tr>
+<td><strong>Resumption</strong></td>
+<td>Not needed</td>
+<td>May replay messages for broken connections</td>
+</tr>
+</tbody> </table>
+</div>
+<p>The table below summarizes the MCP Features and their supported communication pattern:</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

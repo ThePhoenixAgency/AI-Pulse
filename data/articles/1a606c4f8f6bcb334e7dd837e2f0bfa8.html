@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>macOS 26 bricked my AirPort Time Capsule</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>macOS 26 bricked my AirPort Time Capsule</h1>
+  <div class="metadata">
+    Source: Macworld | Date: 2/13/2026 2:19:56 PM | Lang: EN |
+    <a href="https://www.macworld.com/article/3058971/macos-26-time-capsule-erased-mac-backups-deleted.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<div><p><span>Summary created by Smart Answers AI</span></p><h3>In summary:</h3><ul><li>Macworld reports that a macOS Tahoe 26.2 update caused a critical bug where Time Machine backups consumed all available space on Apple Time Capsules.</li><li>Attempting to fix the issue by erasing the Time Capsule rendered it completely unusable due to compatibility problems with the newer macOS version.</li><li>Apple is discontinuing Time Capsule support in macOS 27, forcing users to find alternative wireless backup solutions for their Macs.</li></ul></div> <p>For the past decade, my Apple Time Capsule has faithfully backed up my Mac. I’ve been through several upgrades over the past decade—my current machine is an M3 Max MacBook Pro—and I’ve never had an issue with my Time Capsule. It’s been one of the most reliable devices I’ve ever owned, and I’ve barely had to even think about it since I bought it in 2016.</p> <p>Until recently, that is. I don’t know the exact date, but I installed macOS Tahoe 26.2 sometime near the end of 2025. I was hoping it would fix the lingering issues I had with Spotlight, but otherwise didn’t think much of it until I got a message from Time Machine telling me my backup disk was full.</p> <p>I’ve had occasional minor issues with Time Machine backups over the years, but they’ve usually been fixed by simply running the backup again. This was a new persistent error that seemed to indicate something was actually wrong with my backup system. So I started to investigate the issue, and the process ended up bricking my Time Capsule.</p> <h2>Time keeps on spinning</h2> <p>Apple introduced Time Capsule in 2008 as “a backup appliance that automatically and wirelessly backs up everything on one or more Macs.” At the time, it was a novel concept, combining an AirPort base station with a “server-grade” hard drive. It was essentially a personal NAS drive before personal NAS drives were a thing.</p> <p>I owned a couple over the years, and before Apple eventually <a href="https://www.macworld.com/article/231296/apple-discontinues-the-airport-time-capsule-airport-extreme-and-airport-express.html">discontinued Time Capsule</a> in 2018, I bought one of the last models ever made, the 802.11ac (WiFi 5) AirPort Time Capsule mini tower. It’s been running ever since.</p> <div><figure><img src="https://b2c-contenthub.com/wp-content/uploads/2026/02/Airport-time-machine.jpg?quality=50&amp;strip=all&amp;w=1200" alt="Airport time machine on a shelf"><figcaption><p>My Time Capsule has worked dutifully for over a decade.</p></figcaption></figure><p>Foundry</p></div> <p>I have a 2TB Time Capsule backing up a Mac with about 250GB filled up, so space has never been an issue. Moreover, I’ve been using the same MacBook since Sonoma, so there’s no reason why it should suddenly run out of space. I routinely clean out all backups when upgrading to a new OS and start fresh, and I keep the bulk of my files backed up on a 2TB iCloud Drive, so the physical space should be more than enough.</p> <p>So I went to my AirPort settings to inspect my Time Capsule. But it wouldn’t accept my password, the same password that I have used for at least five years and have saved in my password manager.&nbsp;</p> <p>OK, that was weird, but still, I chalked it up to user error. I reset my Time Capsule using a paper clip and changed the password. I checked the space, and it said it had less than a gig available. Also strange. My Mac isn’t anywhere near 2TB, I don’t keep old backups around, and Time Machine is supposed to automatically delete the oldest backups to clear space on a full disk and keep on running.</p> <p>Unfortunately, there’s no way to see what’s filling up a Time Machine “Data” file, so I was left with one option: Erase the drive.</p> <h2>Tahoe’s revenge</h2> <p>Apple announced last summer that it would <a href="https://www.macworld.com/article/2809452/if-you-still-use-time-capsule-to-back-up-your-mac-the-clock-is-ticking-on-support.html">no longer support</a> AirPort or other Time Capsule disks for Time Machine backups with macOS 27 coming later this year due to deprecated support for Apple Filing Protocol.&nbsp;&nbsp;So I was already preparing for the day when I had to retire my 10-year-old drive in order to stay on the latest version of macOS.&nbsp;</p> <p>I’ll admit that 10 years is a long time to use any device, let alone a 3.5-inch SATA drive. But I didn’t expect any issues with Tahoe. I thought I could clear the drive and simply start over while amassing eight or so months of backups until macOS 27 came along in September.</p> <div><figure><img src="https://b2c-contenthub.com/wp-content/uploads/2026/02/time-capsule-erase.jpg?quality=50&amp;strip=all&amp;w=1200" alt="time capsule settings showing erasing a disk"><figcaption><p>It’s easy to erase a Time Capsule disk–I just wish I wouldn’t have done it.</p></figcaption></figure><p>Foundry</p></div> <p>At this point, I probably should have put two and two together and realized something was wrong. But somewhat naively, I pressed on.</p> <p>Erasing the Time Capsule was simple. The Disks tab in AirPort Utility has a “Quick Erase” option that takes just a few seconds. I clicked through the standard, “This cannot be undone” dialogue box, but didn’t get any warnings about Tahoe specifically. The light went from amber to green, showed I now had 2TB of space, and all seemed well.</p> <p>When I went to set up the disk in the Time Machine settings, however, I got a new message: “‘Data’ can only be used if it contains existing Time Machine backups for this Mac. The next major version of macOS will no longer support Time Capsule disks for Time Machine backups.”</p> <div><figure><img src="https://b2c-contenthub.com/wp-content/uploads/2026/02/time-capsule-error.jpg?quality=50&amp;strip=all&amp;w=1200" alt="time machine settings showing an error message for time capsule"><figcaption><p>No matter how many times I try, Time Machine refuses to back up to my Time Capsule.</p></figcaption></figure><p>Foundry</p></div> <p>The second part I already knew. The first part was information that would have been useful before I erased my disk. I’ve searched for a solution and I’ve reached the conclusion that my Time Capsule backup disk is essentially a brick. To use it I’d need to downgrade to Sequoia, back up my machine, upgrade to Tahoe, and continue the backups until the disk filled up again, at which point I’d be back where I started.</p> <h2>The search for a solution</h2> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

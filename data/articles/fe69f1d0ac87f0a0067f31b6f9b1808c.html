@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Asked AI to Build Me a Pokémon Game in the Browser. It Delivered a Full AAA RPG.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>I Asked AI to Build Me a Pokémon Game in the Browser. It Delivered a Full AAA RPG.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 5:12:39 PM | Lang: EN |
+    <a href="https://dev.to/bingkahu/i-asked-ai-to-build-me-a-pokemon-game-in-the-browser-it-delivered-a-full-aaa-rpg-1h0k" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>What started as a weekend experiment turned into one of the most fun things I've shipped this year. I've been messing around with AI-assisted game dev for a few months now, and most of the time the results are... fine. A little square that moves around. Some collision detection. A basic UI. Cool for a technical demo, but completely forgettable as a <em>game</em>.</p> <p>But this time, I decided to stop asking for "a simple RPG" and started treating the AI like a <strong>Lead AAA Game Architect.</strong> By the time the dust settled, I had orchestrated a 6-AI relay race to build <strong>CodeMon: The Kernel Uprising</strong>—a fully playable, feature-rich browser RPG built entirely in vanilla HTML, CSS, and Three.js. </p> <p>No game engine. No Unity. No Unreal. Just a single <code>.html</code> file that feels like a AAA production.</p> <hr>
+<h2> <a name="the-spark-the-6-ai-challenge" href="#the-spark-the-6-ai-challenge"> </a> The Spark: The "6 AI" Challenge
+</h2> <p>The catalyst for this madness was a post by <strong>EmberNoGlow</strong> on Dev.to. They laid down a challenge to the community: <em>"Get 6 AIs to work together to create a game in HTML. This game could be a parody... Difficulty: Medium-hard... It will either be fun or boring"</em>. </p> <p>I saw that and immediately thought: <strong>"Challenge accepted."</strong></p> <hr>
+<h2> <a name="the-ai-squad-workflow-how-i-built-a-team" href="#the-ai-squad-workflow-how-i-built-a-team"> </a> The "AI Squad" Workflow: How I Built a Team
+</h2> <p>Instead of relying on one model to do everything (which usually leads to "context drift" and hallucinations), I assigned specific roles to six different AI models. They worked in a relay—passing the code forward as each specialized system was completed.</p> <ol>
+<li> <strong>The Architect (Claude 3.5 Sonnet):</strong> Defined the foundational <code>GS</code> (Game State) object. This was the "brain" that made sure the shop didn't open during a battle.</li>
+<li> <strong>The Visualist (Gemini 1.5 Pro):</strong> Handled the heavy lifting of Three.js. It optimized the 60x60 grid using <strong>Instanced Meshes</strong> to keep the draw calls low and the frame rate high.</li>
+<li> <strong>The Sound Designer (GPT-4o):</strong> Wrote the entire <strong>Procedural Sound Manager</strong>. It synthesized every "hit" and "heal" using raw Web Audio API oscillators.</li>
+<li> <strong>The Debugger (DeepSeek):</strong> Polished the O(1) collision detection. It made sure you couldn't "ghost" through the Server Towers.</li>
+<li> <strong>The UI/UX Specialist (Llama 3):</strong> Crafted the CSS "Terminal" aesthetic, the custom hit-splat animations, and the live-updating HUD.</li>
+<li> <strong>The Narrative Lead (Mistral):</strong> Scripted the dialogue for the Storyteller and the "Kernel Master" boss encounter lore.</li>
+</ol> <hr>
+<h2> <a name="technical-deep-dive-whats-actually-under-the-hood" href="#technical-deep-dive-whats-actually-under-the-hood"> </a> Technical Deep Dive: What’s Actually Under the Hood
+</h2>
+<h3> <a name="1-central-game-state-killing-mode-spaghetti" href="#1-central-game-state-killing-mode-spaghetti"> </a> 1. Central Game State — Killing Mode Spaghetti
+</h3> <p>The biggest mistake in browser gamedev is scattered global variables. We solved this by creating a single, immutable source of truth: the <code>GS</code> object.<br>
+</p> <div>
+<pre><code><span>const</span> <span>GS</span> <span>=</span> <span>{</span> <span>mode</span><span>:</span> <span>'</span><span>OVERWORLD</span><span>'</span><span>,</span> <span>// OVERWORLD | BATTLE | SHOP | DIALOGUE</span> <span>player</span><span>:</span> <span>{</span> <span>hp</span><span>:</span> <span>100</span><span>,</span> <span>bits</span><span>:</span> <span>0</span><span>,</span> <span>level</span><span>:</span> <span>5</span><span>,</span> <span>questGoal</span><span>:</span> <span>500</span><span>,</span> <span>//</span> <span>},</span> <span>world</span><span>:</span> <span>{</span> <span>collisionSet</span><span>:</span> <span>new</span> <span>Set</span><span>()</span> <span>}</span> <span>//</span>
+<span>};</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>By making every system check <code>GS.mode</code> first, we ensured that a random encounter couldn't trigger while the player was mid-conversation with an NPC.</p> <h3> <a name="2-zerofootprint-audio-manager" href="#2-zerofootprint-audio-manager"> </a> 2. Zero-Footprint Audio Manager
+</h3> <p>One of the most impressive parts of the build is that there is <strong>not a single audio file</strong> in the project. The Sound Designer AI built a "Procedural Sound Manager" that synthesizes tones live.</p> <ul>
+<li>
+<strong>Walking:</strong> A soft, low-frequency square wave triggered on every step.</li>
+<li>
+<strong>Critical Hits:</strong> A multi-frequency sawtooth burst that gives the combat "crunch".</li>
+<li>
+<strong>The Boss Motif:</strong> A low-frequency sawtooth motif that signals high stakes.</li>
+</ul> <h3> <a name="3-game-juice-and-action-cameras" href="#3-game-juice-and-action-cameras"> </a> 3. "Game Juice" and Action Cameras
+</h3> <p>To move away from "boring" combat, we implemented a dynamic camera system.</p> <ul>
+<li>
+<strong>Action Cam:</strong> During the enemy’s turn, the camera lerps to a dramatic side angle to highlight the "Syntax Error" attack.</li>
+<li>
+<strong>Companion Drone:</strong> You aren't fighting alone. A 3D bot floats beside you and fires actual <code>LineSegments</code> laser geometry whenever you attack.</li>
+<li>
+<strong>Hit Splats:</strong> When you land a hit, the DOM generates a floating number that fades out—yellow for crits, green for heals.</li>
+</ul> <hr> <h2> <a name="the-economy-bits-and-buffer-overflows" href="#the-economy-bits-and-buffer-overflows"> </a> The Economy: Bits and Buffer Overflows
+</h2> <p>The game features a fully realized economy. You farm <strong>Bits</strong> by defeating NullPointers and Bugs in the "Dead Logic Woods." You then return to the <strong>Merchant Terminal</strong> to spend them on permanent upgrades:</p> <div><table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Cost</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>OVERCLOCK.exe</strong></td>
+<td>₿400</td>
+<td>Permanent increase to base Attack Power</td>
+</tr>
+<tr>
+<td><strong>BUFFER.alloc</strong></td>
+<td>₿300</td>
+<td>Increases Max HP by 30 points</td>
+</tr>
+<tr>
+<td><strong>RECOVERY.exe</strong></td>
+<td>₿150</td>
+<td>Refills 2 Heal Charges for your REFACTOR tool</td>
+</tr>
+<tr>
+<td><strong>FIREWALL.conf</strong></td>
+<td>₿350</td>
+<td>Permanent increase to base Defense</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="lessons-learned-from-the-onefile-challenge" href="#lessons-learned-from-the-onefile-challenge"> </a> Lessons Learned from the "One-File" Challenge
+</h2> <ol>
+<li> <strong>Instanced Meshes are Non-Negotiable:</strong> Rendering 3,600 individual floor tiles will tank your FPS. Instancing them collapsed that into just 4 draw calls per biome.</li>
+<li> <strong>O(1) Collision is King:</strong> Instead of raycasting every frame, we registered every "solid" coordinate into a <code>Set</code>. Collision checking is now a simple <code>.has()</code> check, which is lightning-fast.</li>
+<li> <strong>Prompt Specificity is the Whole Game:</strong> The first version of this was a player square. This version is <strong>1,700+ lines</strong> of structured code because I asked for <em>architecture</em>, not just <em>features</em>.</li>
+</ol> <h2> <a name="whats-next-for-codemon" href="#whats-next-for-codemon"> </a> What's Next for CodeMon?
+</h2> <p>The journey doesn't end here. Now that the engine is solid, I’m planning:</p> <ul>
+<li>
+<strong>The "Memory Leak" Swamp:</strong> A biome where movement is slowed and the UI starts to visually "corrupt."</li>
+<li>
+<strong>Local Storage Save System:</strong> So you can keep your Level 10 Coder and your hoard of Bits across sessions.</li>
+<li>
+<strong>Inventory UI:</strong> Moving from instant upgrades to a "backpack" of items you can use in battle.</li>
+</ul> <p>Huge thanks again to <strong>EmberNoGlow</strong> for the original challenge idea—it proved that AI can build something truly "AAA" when you steer it with the right team of experts.</p> <p><strong>What do you think? Would you play an RPG built by a 6-AI squad? Let’s talk in the comments.</strong></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

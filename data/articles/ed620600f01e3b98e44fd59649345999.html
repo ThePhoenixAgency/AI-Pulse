@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - vseplet/smith: Hackable skinny Clawdbot for Telegram</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - vseplet/smith: Hackable skinny Clawdbot for Telegram</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 4:45:49 PM | Lang: EN |
+    <a href="https://github.com/vseplet/smith" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/vseplet/smith/blob/main/banner.png"><img src="/vseplet/smith/raw/main/banner.png" alt="AgentSmith"></a>
+</p>
+<p> <a target="_blank" href="https://camo.githubusercontent.com/28389e6ace89e6feffa5a4e6491704866d5452dcb76e21e35d3170db30037e8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f44656e6f2d322b2d626c75653f6c6f676f3d64656e6f"><img src="https://camo.githubusercontent.com/28389e6ace89e6feffa5a4e6491704866d5452dcb76e21e35d3170db30037e8b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f44656e6f2d322b2d626c75653f6c6f676f3d64656e6f" alt="Deno"></a> <a href="https://github.com/vseplet/AgentSmith"><img src="https://camo.githubusercontent.com/9b14cee4f481005fc8a317d49394437b5c5a50d1b72a16579a570866fd28ffe3/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f767365706c65742f4167656e74536d6974683f7374796c653d666c6174" alt="Stars"></a> <a href="https://t.me/agentsmithdev"><img src="https://camo.githubusercontent.com/41c7c870cf0e4e7bc8f842360191a747026a76c81135c647451a95fdfdfd619a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f54656c656772616d2d436861742d3236413545343f6c6f676f3d74656c656772616d266c6f676f436f6c6f723d7768697465" alt="Telegram Chat"></a> <a href="https://github.com/vseplet/AgentSmith/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/5caa455d8debc46fb23abbadb45a733a937f3910a73fc875c2f7820468e1bb54/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d677265656e" alt="MIT License"></a>
+</p>
+<div><h1>Agent Smith</h1><a href="#agent-smith"></a></div>
+<p>A hackable AI agent framework for Telegram. ~4K lines of TypeScript, 6 LLM providers, 16 tools, full agent loop with memory -- and every piece of code is small enough to read and modify in minutes. Clone it, make it yours.</p>
+<div><pre><code>You: check disk space and tell me if anything is above 80%
+Smith: /dev/sda1 is at 87%, the rest is fine Maybe stop hoarding cat pictures, Mr Anderson You: what's the weather in tokyo tomorrow?
+Smith: Tokyo: 12C, cloudy, rain in the evening Even the weather weeps for humanity You: take a screenshot
+Smith: [approval required: take_screenshot] Yes / No *sends screenshot of your desktop*
+</code></pre></div>
+<div><h2>Why</h2><a href="#why"></a></div>
+<p>This is not a black-box SaaS. It's a starting point -- a minimal, readable codebase that you fork and bend to your needs. Want to add a tool? One file, one export. New LLM provider? Implement two functions. Custom personality? Edit a string.</p>
+<ul>
+<li><strong>~4K lines total</strong> no abstractions for the sake of abstractions. Every file does one thing, every file is short enough to fully understand</li>
+<li><strong>Designed to be extended</strong> adding a tool is ~30 lines, a new LLM provider is ~40 lines, a skill is a trigger + a prompt. The architecture stays out of your way</li>
+<li><strong>Any LLM</strong> DeepSeek, OpenAI, Claude, Ollama, LMStudio, or ChatGPT via OAuth. Switch with one command, or add your own provider</li>
+<li><strong>Runs anywhere</strong> VPS, Raspberry Pi, NAS, Docker. If it runs Deno, it runs Smith</li>
+<li><strong>Safe by design</strong> dangerous tools (shell, eval, screenshot) require explicit approval via inline buttons. 2-min timeout = auto-deny</li>
+<li><strong>Memory</strong> remembers conversations, auto-summarizes old context</li>
+<li><strong>Multi-user</strong> share your bot with trusted people via <code>/code</code> auth</li>
+</ul>
+<div><h2>Getting Started</h2><a href="#getting-started"></a></div>
+<div><h3>1. Create a Telegram bot</h3><a href="#1-create-a-telegram-bot"></a></div>
+<p>Open <a href="https://t.me/BotFather">@BotFather</a> in Telegram, create a bot, save the token.</p>
+<div><h3>2. Get an LLM API key</h3><a href="#2-get-an-llm-api-key"></a></div>
+<p>Pick any provider: <a href="https://platform.deepseek.com/">DeepSeek</a>, <a href="https://platform.openai.com/">OpenAI</a>, <a href="https://console.anthropic.com/">Anthropic</a>, or use a local model via <a href="https://ollama.ai/">Ollama</a> / <a href="https://lmstudio.ai/">LMStudio</a>.</p>
+<div><h3>3. Install</h3><a href="#3-install"></a></div>
+<div><pre>curl -fsSL https://raw.githubusercontent.com/vseplet/AgentSmith/main/scripts/install.sh <span>|</span> sh</pre></div>
+<p>This installs Deno (if needed) and the <code>smith</code> CLI globally.</p>
+<div><h3>4. First-time setup</h3><a href="#4-first-time-setup"></a></div>
+<div><pre>smith setup</pre></div>
+<p>The interactive wizard will ask for:</p>
+<ul>
+<li><strong>Agent profile</strong> -- personality preset (<code>smith</code> or <code>default</code>)</li>
+<li><strong>Telegram Bot API Key</strong> -- the token from BotFather</li>
+<li><strong>Authorization code</strong> -- a secret code for <code>/code</code> auth (you choose it)</li>
+<li><strong>LLM provider</strong> -- pick a provider and enter the API key / model</li>
+</ul>
+<div><h3>5. Run</h3><a href="#5-run"></a></div>
+<div><pre>smith</pre></div>
+<p>The bot starts and listens for messages. Logs appear in the terminal.</p>
+<div><h3>6. Authorize users</h3><a href="#6-authorize-users"></a></div>
+<p>Send <code>/code &lt;your_code&gt;</code> to your bot in Telegram (the code you set during setup). Each person who sends the correct code gets added as an authorized user. Each user gets their own conversation context in DMs.</p>
+<div><h2>LLM Providers</h2><a href="#llm-providers"></a></div>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>API</th>
+<th>Auth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>deepseek</code></td>
+<td>Chat Completions</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><code>openai</code></td>
+<td>Chat Completions</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><code>openai-oauth</code></td>
+<td>Responses API (SSE)</td>
+<td>ChatGPT Plus/Pro OAuth</td>
+</tr>
+<tr>
+<td><code>anthropic</code></td>
+<td>Chat Completions</td>
+<td>API key</td>
+</tr>
+<tr>
+<td><code>ollama</code></td>
+<td>Chat Completions</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>lmstudio</code></td>
+<td>Chat Completions</td>
+<td>--</td>
+</tr>
+</tbody>
+</table>
+<p>Switch anytime: <code>smith setup llm</code></p>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<p>The agent can autonomously decide which tools to use based on your request:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>run_shell_command</code></td>
+<td>Execute any shell command</td>
+</tr>
+<tr>
+<td><code>eval_code</code></td>
+<td>Run JavaScript/TypeScript code</td>
+</tr>
+<tr>
+<td><code>web_search</code></td>
+<td>Search the web</td>
+</tr>
+<tr>
+<td><code>get_system_info</code></td>
+<td>OS, CPU, memory, disk</td>
+</tr>
+<tr>
+<td><code>get_uptime</code></td>
+<td>System uptime</td>
+</tr>
+<tr>
+<td><code>list_processes</code></td>
+<td>Running processes</td>
+</tr>
+<tr>
+<td><code>ask_claude</code></td>
+<td>Query Claude as a sub-agent</td>
+</tr>
+<tr>
+<td><code>search_history</code></td>
+<td>Search conversation logs</td>
+</tr>
+<tr>
+<td><code>wttr</code></td>
+<td>Weather forecast</td>
+</tr>
+<tr>
+<td><code>rate_sx</code></td>
+<td>Crypto exchange rates</td>
+</tr>
+<tr>
+<td><code>cheat_sh</code></td>
+<td>Programming cheat sheets</td>
+</tr>
+<tr>
+<td><code>ifconfig</code></td>
+<td>Public IP info</td>
+</tr>
+<tr>
+<td><code>take_screenshot</code></td>
+<td>Capture screen and send as photo</td>
+</tr>
+<tr>
+<td><code>telegram_send</code></td>
+<td>Send messages to Telegram users/groups</td>
+</tr>
+<tr>
+<td><code>telegram_contacts</code></td>
+<td>List known contacts</td>
+</tr>
+<tr>
+<td><code>telegram_groups</code></td>
+<td>List known groups</td>
+</tr>
+</tbody>
+</table>
+<p>Tools marked as <code>dangerous</code> require your approval via inline buttons before execution.</p>
+<div><h2>Bot Commands</h2><a href="#bot-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/code &lt;code&gt;</code></td>
+<td>Authorize as a user</td>
+</tr>
+<tr>
+<td><code>/config</code></td>
+<td>View configuration (masked secrets)</td>
+</tr>
+<tr>
+<td><code>/clear</code></td>
+<td>Clear conversation memory</td>
+</tr>
+<tr>
+<td><code>/context</code></td>
+<td>Show current context (summary + recent messages)</td>
+</tr>
+<tr>
+<td><code>/contacts</code></td>
+<td>List known contacts</td>
+</tr>
+<tr>
+<td><code>/groups</code></td>
+<td>List known groups</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Docker</h3><a href="#docker"></a></div>
+<div><pre>cp .env.example .env
+<span><span>#</span> edit .env</span> docker compose up -d</pre></div>
+<p>Data persists in the <code>smith-data</code> volume across container restarts.</p>
+<p>--</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><h3>Requirements</h3><a href="#requirements"></a></div>
+<ul>
+<li><a href="https://deno.land/">Deno</a> v2+</li>
+<li>Telegram Bot Token</li>
+<li>API key for at least one LLM provider</li>
+</ul>
+<div><h3>Commands</h3><a href="#commands"></a></div>
+<div><pre>deno task dev <span><span>#</span> run with hot-reload</span>
+deno task check <span><span>#</span> type checking</span>
+deno task fmt <span><span>#</span> format</span>
+deno task lint <span><span>#</span> lint</span>
+deno task <span>test</span> <span><span>#</span> tests</span></pre></div>
+<div><h3>Configuration</h3><a href="#configuration"></a></div>
+<p>Priority: ENV &gt; Deno KV &gt; defaults.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AGENT_PROFILE</code></td>
+<td>Agent profile (<code>smith</code>, <code>default</code>)</td>
+<td><code>smith</code></td>
+</tr>
+<tr>
+<td><code>LLM_PROVIDER</code></td>
+<td>LLM provider</td>
+<td><code>deepseek</code></td>
+</tr>
+<tr>
+<td><code>DEEPSEEK_API_KEY</code></td>
+<td>DeepSeek API key</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>DEEPSEEK_MODEL_NAME</code></td>
+<td>DeepSeek model</td>
+<td><code>deepseek-chat</code></td>
+</tr>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>OpenAI API key</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>OPENAI_MODEL_NAME</code></td>
+<td>OpenAI model</td>
+<td><code>gpt-4o</code></td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Anthropic API key</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_MODEL_NAME</code></td>
+<td>Anthropic model</td>
+<td><code>claude-sonnet-4-20250514</code></td>
+</tr>
+<tr>
+<td><code>LMSTUDIO_BASE_URL</code></td>
+<td>LMStudio API URL</td>
+<td><code>http://localhost:1234/v1</code></td>
+</tr>
+<tr>
+<td><code>LMSTUDIO_MODEL_NAME</code></td>
+<td>LMStudio model</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>OLLAMA_BASE_URL</code></td>
+<td>Ollama API URL</td>
+<td><code>http://localhost:11434/v1</code></td>
+</tr>
+<tr>
+<td><code>OLLAMA_MODEL_NAME</code></td>
+<td>Ollama model</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_BOT_API_KEY</code></td>
+<td>Telegram bot token</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_USER_ID</code></td>
+<td>Authorized user IDs (comma-separated)</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_CODE</code></td>
+<td>Authorization code</td>
+<td>--</td>
+</tr>
+<tr>
+<td><code>MOLTBOOK_API_KEY</code></td>
+<td>Moltbook API key</td>
+<td>--</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Extend It</h3><a href="#extend-it"></a></div>
+<p><strong>Add a tool</strong> -- one file, one export, register in <code>tools/mod.ts</code>:</p>
+<div><pre><span>// source/tools/my-tool.ts</span>
+<span>import</span> <span>*</span> <span>as</span> <span>v</span> <span>from</span> <span>"@valibot/valibot"</span><span>;</span>
+<span>import</span> <span>{</span> <span>defineTool</span> <span>}</span> <span>from</span> <span>"$/core/define-tool.ts"</span><span>;</span> <span>export</span> <span>const</span> <span>myTool</span> <span>=</span> <span>defineTool</span><span>(</span><span>{</span> <span>name</span>: <span>"my_tool"</span><span>,</span> <span>description</span>: <span>"Does something useful"</span><span>,</span> <span>dangerous</span>: <span>true</span><span>,</span> <span>// requires owner approval before execution</span> <span>parameters</span>: <span>v</span><span>.</span><span>object</span><span>(</span><span>{</span> <span>query</span>: <span>v</span><span>.</span><span>pipe</span><span>(</span><span>v</span><span>.</span><span>string</span><span>(</span><span>)</span><span>,</span> <span>v</span><span>.</span><span>description</span><span>(</span><span>"Input"</span><span>)</span><span>)</span><span>,</span> <span>}</span><span>)</span><span>,</span> <span>execute</span>: <span>async</span> <span>(</span><span>args</span><span>,</span> <span>ctx</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// args.query -- typed and validated by valibot</span> <span>// ctx.chatId, ctx.userId, ctx.messageId -- Telegram context (auto-injected)</span> <span>return</span> <span>{</span> <span>result</span>: <span>"done"</span> <span>}</span><span>;</span> <span>}</span><span>,</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<p><strong>Add an LLM provider</strong> -- implement <code>getProviderConfig()</code> + <code>setupFields</code>, register in <code>llms/mod.ts</code>. That's it.</p>
+<p><strong>Change personality</strong> -- edit the profile string in <code>source/agent/profiles/</code>.</p>
+<div><h3>Architecture</h3><a href="#architecture"></a></div>
+<div><h4>Context Assembly</h4><a href="#context-assembly"></a></div>
+<p>On each message, <code>buildContext()</code> assembles the full agent context:</p>
+<div><pre><code>1. System prompt +-- Profile (smith / default) +-- Skill instructions (if triggers matched)
+2. Memory (if chatId exists) +-- Conversation summary +-- Last 20 messages
+3. User message
+4. Tools -- 15 instruments as JSON Schema
+</code></pre></div>
+<div><h4>Agent Loop</h4><a href="#agent-loop"></a></div>
+<p><code>chat()</code> runs up to <code>MAX_STEPS=10</code> iterations:</p>
+<div><pre><code>resolveProvider() -&gt; pick LLM from config
+buildContext() -&gt; assemble messages + tools | v +---&gt; complete(messages, tools, provider) | | | +-- finish_reason: "stop" | | +-- return text, save to memory | | | +-- finish_reason: "tool_calls" | +-- approve dangerous tools (if needed) | +-- execute each tool call | +-- add results to messages | +--&gt;+ next step | +-- (repeat until MAX_STEPS or "stop")
+</code></pre></div>
+<div><h4>Tool Approval</h4><a href="#tool-approval"></a></div>
+<p>Before executing <code>run_shell_command</code> or <code>eval_code</code>, the bot edits the progress message to show the tool name and arguments with inline buttons. Owner has 2 minutes to approve or deny. No response = auto-deny.</p>
+<div><h3>Project Structure</h3><a href="#project-structure"></a></div>
+<div><pre><code>source/ main.ts # entry point core/ types.ts # types and interfaces config.ts # configuration (ENV + KV) common.ts # shibui core + Deno KV singleton loop.ts # agent loop with tool calling context.ts # context assembly (system prompt + memory + tools) system-prompt.ts # system prompt builder memory.ts # memory with auto-summarization dump.ts # dumps to ~/.smith/dumps/ llms/ # LLM providers (deepseek, openai, openai-oauth, anthropic, ollama, lmstudio) telegram/ mod.ts # Grammy bot approval.ts # dangerous tool approval (inline buttons) contacts.ts # contacts and groups helpers.ts # telegram API helpers cli/ mod.ts # CLI wiring (Cliffy commands) commands/ run.ts # start agent + bot (default action) config.ts # show configuration setup.ts # interactive setup wizard tools/ # agent tools (~30 lines each) profiles/ # agent profiles (smith, default) skills/ # skills (detected by triggers)
+</code></pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>This project is licensed under the <a href="/vseplet/smith/blob/main/LICENSE">MIT License</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

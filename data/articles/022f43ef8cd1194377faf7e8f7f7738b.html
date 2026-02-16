@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Say hello to `hf`: a faster, friendlier Hugging Face CLI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Say hello to `hf`: a faster, friendlier Hugging Face CLI</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 7/25/2025 12:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/hf-cli" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Wauplin"><img alt="Lucain Pouget's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1659336880158-6273f303f6d63a28483fde12.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/celinah"><img alt="Célina Hanouti's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6192895f3b8aa351a46fadfd/2VifD-AAKYk24AUmfSr_X.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/julien-c"><img alt="Julien Chaumond's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5dd96eb166059660ed1ee413/NQtzmrDdbG0H8qkZvRyGk.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#getting-started">Getting started</a> <ul></ul> </li><li><a href="#-migration"> Migration</a> <ul></ul> </li><li><a href="#one-more-thing--hf-jobs">One more thing... <code>hf jobs</code></a> <ul></ul> </li></ul></nav></div><p>We are glad to announce a long-awaited quality-of-life improvement: the Hugging Face CLI has been officially renamed from <code>huggingface-cli</code> to <code>hf</code>!</p>
+<p>So... why this change?</p>
+<p>Typing <code>huggingface-cli</code> constantly gets old fast. More importantly, the CLI’s command structure became messy as new features were added over time (upload, download, cache management, repo management, etc.). Renaming the CLI is a chance to reorganize commands into a clearer, more consistent format.</p>
+<p>We decided not to reinvent the wheel and instead follow a well-known CLI pattern: <strong><code>hf &lt;resource&gt; &lt;action&gt;</code></strong>. This predictable grammar makes the Hugging Face CLI more ergonomic and discoverable, while also setting the stage for upcoming features.</p>
+<h2> <a href="#getting-started"> <span></span> </a> <span> Getting started </span>
+</h2>
+<p>To start playing with the new CLI, you’ll need to install the latest <code>huggingface_hub</code> version:</p>
+<pre><code>pip install -U huggingface_hub
+</code></pre>
+<p>and reload your terminal session. To test the install completed successfully, run <code>hf version</code>:</p>
+<pre><code>➜ hf version
+huggingface_hub version: 0.34.0
+</code></pre>
+<p>Next, let’s explore the new syntax with <code>hf --help</code>:</p>
+<pre><code>➜ hf --help
+usage: hf &lt;command&gt; [&lt;args&gt;] positional arguments: {auth,cache,download,jobs,repo,repo-files,upload,upload-large-folder,env,version,lfs-enable-largefiles,lfs-multipart-upload} hf command helpers auth Manage authentication (login, logout, etc.). cache Manage local cache directory. download Download files from the Hub jobs Run and manage Jobs on the Hub. repo Manage repos on the Hub. repo-files Manage files in a repo on the Hub. upload Upload a file or a folder to the Hub. Recommended for single-commit uploads. upload-large-folder Upload a large folder to the Hub. Recommended for resumable uploads. env Print information about the environment. version Print information about the hf version. options: -h, --help show this help message and exit
+</code></pre>
+<p>As we can see, commands are grouped by "resource" (<code>hf auth</code>, <code>hf cache</code>, <code>hf repo</code>, etc.). We also surface <code>hf upload</code> and <code>hf download</code>at the root level since they’re expected to be the most-used commands.</p>
+<p>To dive deeper into any command group, simply append <code>--help</code>:</p>
+<pre><code>➜ hf auth --help
+usage: hf &lt;command&gt; [&lt;args&gt;] auth [-h] {login,logout,whoami,switch,list} ... positional arguments: {login,logout,whoami,switch,list} Authentication subcommands login Log in using a token from huggingface.co/settings/tokens logout Log out whoami Find out which huggingface.co account you are logged in as. switch Switch between access tokens list List all stored access tokens options: -h, --help show this help message and exit
+</code></pre>
+<h2> <a href="#-migration"> <span></span> </a> <span> Migration </span>
+</h2>
+<p>If you are used to <code>huggingface-cli</code>, most commands will look familiar. The biggest change affects authentication:</p>
+<pre><code>huggingface-cli login
+<span># became</span>
+hf auth login
+</code></pre>
+<pre><code>huggingface-cli <span>whoami</span>
+<span># became</span>
+hf auth <span>whoami</span>
+</code></pre>
+<pre><code>huggingface-cli <span>logout</span>
+<span># became</span>
+hf auth <span>logout</span>
+</code></pre>
+<p>All <code>auth</code> commands have been grouped together with the existing <code>hf auth switch</code> (to switch between different local profiles) and <code>hf auth list</code> (to list local profiles).</p>
+<p>The legacy <code>huggingface-cli</code> remains active and fully-functional. We’re keeping it around to ease the transition. If you use any command from the legacy CLI, you’ll see a warning that points you to the new CLI equivalent:</p>
+<pre><code>➜ huggingface-cli <span>whoami</span> Warning: <span>'huggingface-cli whoami'</span> is deprecated. Use <span>'hf auth whoami'</span> instead.
+Wauplin
+orgs: huggingface,competitions,hf-internal-testing,templates,HF-test-lab,Gradio-Themes,autoevaluate,HuggingFaceM4,HuggingFaceH4,open-source-metrics,sd-concepts-library,hf-doc-build,hf-accelerate,HFSmolCluster,open-llm-leaderboard,pbdeeplinks,discord-community,llhf,sllhf,mt-metrics,DDUF,hf-inference,changelog,tiny-agents
+</code></pre>
+<h2> <a href="#one-more-thing--hf-jobs"> <span></span> </a> <span> One more thing... <code>hf jobs</code> </span>
+</h2>
+<p>We couldn’t resist shipping our first dedicated command: <strong>hf jobs</strong>.</p>
+<p>Hugging Face Jobs is a new service that lets you run any script or Docker image on Hugging Face Infrastructure using the hardware flavor of your choice. Billing is "pay-as-you-go", meaning you pay only for the seconds you use. Here’s how to launch your first command:</p>
+<pre><code><span># Run "nvidia-smi" on an A10G GPU</span>
+hf <span>jobs</span> run --flavor=a10g-small ubuntu nvidia-smi
+</code></pre>
+<p>The CLI is heavily inspired by Docker’s familiar commands:</p>
+<pre><code>➜ hf <span>jobs</span> --<span>help</span>
+usage: hf &lt;<span>command</span>&gt; [&lt;args&gt;] <span>jobs</span> [-h] {inspect,logs,ps,run,cancel,uv} ... positional arguments: {inspect,logs,ps,run,cancel,uv} huggingface.co <span>jobs</span> related commands inspect Display detailed information on one or more Jobs logs Fetch the logs of a Job ps List Jobs run Run a Job cancel Cancel a Job uv Run UV scripts (Python with inline dependencies) on HF infrastructure options: -h, --<span>help</span> show this <span>help</span> message and <span>exit</span>
+</code></pre>
+<p>Learn more about Jobs by <a href="https://huggingface.co/docs/huggingface_hub/main/en/guides/jobs">reading the guide</a>.</p>
+<blockquote>
+<p><strong>Hugging Face Jobs</strong> are available only to <a href="https://huggingface.co/pro">Pro users</a> and <a href="https://huggingface.co/enterprise">Team or Enterprise organizations</a>. Upgrade your plan to get started!</p>
+</blockquote>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

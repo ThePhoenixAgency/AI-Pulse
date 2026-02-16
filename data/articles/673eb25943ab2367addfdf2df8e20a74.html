@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - amanjain/kuberoku: Heroku-like PaaS CLI for vanilla Kubernetes. Zero server-side components.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - amanjain/kuberoku: Heroku-like PaaS CLI for vanilla Kubernetes. Zero server-side components.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 4:26:50 PM | Lang: EN |
+    <a href="https://github.com/amanjain/kuberoku" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p> </p><div><h1>kuberoku</h1><a href="#kuberoku"></a></div> <p>Heroku-like DX on vanilla Kubernetes.<br>CLI + SDK. Zero server-side components. Open source.</p>
+<p></p>
+<p> <a href="https://github.com/amanjain/kuberoku/actions"><img src="https://github.com/amanjain/kuberoku/actions/workflows/tests.yml/badge.svg" alt="CI"></a> <a href="https://pypi.org/project/kuberoku/"><img src="https://camo.githubusercontent.com/33dc4bec1e51a6e47807f07e9fe128e1c6d7a851d1a52b0a5aa20753e571d5db/68747470733a2f2f696d672e736869656c64732e696f2f707970692f762f6b756265726f6b75" alt="PyPI"></a> <a href="https://pypi.org/project/kuberoku/"><img src="https://camo.githubusercontent.com/22f12d229cae0bc69ec941450bce5098c1e0af0f76c83a6e8f7d9eaee685bb7f/68747470733a2f2f696d672e736869656c64732e696f2f707970692f707976657273696f6e732f6b756265726f6b75" alt="Python"></a> <a href="/amanjain/kuberoku/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/39a434c39c97856247fc55ebc90e8cc1cb9871558a37bf1bf83cbaca3be89d69/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d417061636865253230322e302d626c7565" alt="License"></a>
+</p>
+<hr>
+<p>You bring a Kubernetes cluster. Kuberoku gives you <code>apps:create</code>, <code>deploy</code>, <code>config:set</code>, <code>services:logs --tail</code>, and everything else you loved about Heroku — without vendor lock-in, without YAML, without installing anything on your cluster.</p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>pipx install kuberoku <span><span>#</span> Python (recommended)</span>
+pip install kuberoku <span><span>#</span> Python (alternative)</span></pre></div>
+<div><pre><span><span>#</span> Linux / macOS binary</span>
+curl -fsSL https://github.com/amanjain/kuberoku/releases/latest/download/install.sh <span>|</span> sh</pre></div>
+<div><pre><span><span>#</span> Windows (PowerShell)</span>
+irm https:<span>//</span><span>github.com</span><span>/</span>amanjain<span>/</span>kuberoku<span>/</span>releases<span>/</span>latest<span>/</span>download<span>/</span>install.ps1 <span>|</span> iex</pre></div>
+<p>Pre-built binaries for Linux, macOS, and Windows are available on the <a href="https://github.com/amanjain/kuberoku/releases">GitHub Releases</a> page.</p>
+<p>Requires <code>kubectl</code> configured with a valid kubeconfig. The Python install requires Python 3.11+; the binary install has no Python dependency.</p>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<div><h3>Already have a cluster?</h3><a href="#already-have-a-cluster"></a></div>
+<p>From zero to a running app accessible on the internet:</p>
+<div><pre>kuberoku clusters:doctor <span><span>#</span> verify your cluster is ready</span>
+kuberoku apps:create myapi
+kuberoku deploy --app myapi --image nginx:1.27 --expose web:80/http
+<span><span>#</span> → https://myapi.apps.mycluster.com (auto-domain when base_domain is configured)</span>
+kuberoku config:set --app myapi GREETING=hello SECRET_KEY=abc123
+kuberoku services:logs --app myapi --tail</pre></div>
+<p>That's it. No Deployments, Services, ConfigMaps, or Ingress manifests. Kuberoku created them all.</p> <strong>How ports work</strong>
+<table>
+<thead>
+<tr>
+<th>Suffix</th>
+<th>Meaning</th>
+<th>What happens on deploy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/http</code></td>
+<td>HTTP service</td>
+<td>Auto-creates a domain via Ingress (<code>myapp.apps.example.com</code>) with TLS</td>
+</tr>
+<tr>
+<td><code>/https</code></td>
+<td>Same as <code>/http</code></td>
+<td>Alias — TLS is always via Ingress + cert-manager</td>
+</tr>
+<tr>
+<td><code>/tcp</code></td>
+<td>Raw TCP</td>
+<td>ClusterIP Service; use <code>services:expose:on</code> for external IP</td>
+</tr>
+<tr>
+<td><code>/udp</code></td>
+<td>Raw UDP</td>
+<td>ClusterIP Service; use <code>services:expose:on</code> for external IP</td>
+</tr>
+</tbody>
+</table>
+<p>If you don't specify <code>--expose</code>, kuberoku defaults to a single <code>web</code> process on <code>8080/http</code>.</p> <div><h3>Need a cluster first?</h3><a href="#need-a-cluster-first"></a></div>
+<p><strong>Local (fastest way to try):</strong></p>
+<p>We recommend <a href="https://k3d.io">k3d</a> — it's the fastest to start and lightest on resources.</p> <strong>macOS</strong>
+<div><pre><span><span>#</span> k3d (recommended)</span>
+brew install k3d <span>&amp;&amp;</span> k3d cluster create dev <span><span>#</span> or kind</span>
+brew install kind <span>&amp;&amp;</span> kind create cluster <span><span>#</span> or minikube</span>
+brew install minikube <span>&amp;&amp;</span> minikube start</pre></div> <strong>Ubuntu / Debian</strong>
+<div><pre><span><span>#</span> k3d (recommended) — requires Docker</span>
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh <span>|</span> bash
+k3d cluster create dev <span><span>#</span> or kind</span>
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+chmod +x ./kind <span>&amp;&amp;</span> sudo mv ./kind /usr/local/bin/kind
+kind create cluster <span><span>#</span> or minikube</span>
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+minikube start</pre></div> <strong>Fedora / RHEL</strong>
+<div><pre><span><span>#</span> k3d (recommended) — requires Docker or Podman</span>
+curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh <span>|</span> bash
+k3d cluster create dev <span><span>#</span> or kind</span>
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+chmod +x ./kind <span>&amp;&amp;</span> sudo mv ./kind /usr/local/bin/kind
+kind create cluster</pre></div> <strong>Arch Linux</strong>
+<div><pre><span><span>#</span> k3d (recommended)</span>
+yay -S k3d-bin <span>&amp;&amp;</span> k3d cluster create dev <span><span>#</span> or kind</span>
+pacman -S kind <span>&amp;&amp;</span> kind create cluster</pre></div> <p>Then run the commands above.</p> <strong>Cloud (DigitalOcean, Linode, AWS, GCP, Azure, etc.)</strong>
+<p>Three steps — same for every provider:</p>
+<p><strong>1. Download your kubeconfig</strong></p>
+<p>Every managed K8s provider gives you a kubeconfig file. Download it from your dashboard:</p>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Where to find it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DigitalOcean</strong></td>
+<td>Kubernetes → your cluster → <strong>Download Config</strong></td>
+</tr>
+<tr>
+<td><strong>Linode</strong></td>
+<td>Kubernetes → your cluster → <strong>Download kubeconfig</strong></td>
+</tr>
+<tr>
+<td><strong>AWS (EKS)</strong></td>
+<td><code>aws eks update-kubeconfig --name my-cluster</code></td>
+</tr>
+<tr>
+<td><strong>GCP (GKE)</strong></td>
+<td><code>gcloud container clusters get-credentials my-cluster</code></td>
+</tr>
+<tr>
+<td><strong>Azure (AKS)</strong></td>
+<td><code>az aks get-credentials -g my-group -n my-cluster</code></td>
+</tr>
+</tbody>
+</table>
+<p>AWS/GCP/Azure CLI commands auto-merge into <code>~/.kube/config</code>. For DigitalOcean and Linode (or any provider that gives you a file), merge it yourself:</p>
+<div><pre><span><span>#</span> First time — just copy it</span>
+mkdir -p <span>~</span>/.kube
+cp <span>~</span>/Downloads/your-kubeconfig.yaml <span>~</span>/.kube/config</pre></div>
+<div><pre><span><span>#</span> Already have a config? Merge the new one in (this MUST be one command):</span>
+KUBECONFIG=<span>~</span>/.kube/config:<span>~</span>/Downloads/new-kubeconfig.yaml kubectl config view --flatten <span>&gt;</span> /tmp/merged <span>&amp;&amp;</span> mv /tmp/merged <span>~</span>/.kube/config</pre></div>
+<blockquote>
+<p><strong>Common mistake:</strong> Running <code>KUBECONFIG=...</code> on its own line does nothing — it must be on the same line as the <code>kubectl</code> command.</p>
+</blockquote>
+<p><strong>2. Verify you can connect</strong></p>
+<div><pre>kubectl get nodes</pre></div>
+<p>If you see your nodes listed, you're connected. If not, double-check your kubeconfig.</p>
+<p><strong>3. Run kuberoku</strong></p>
+<div><pre>kuberoku clusters:setup <span><span>#</span> checks your cluster and fixes what it can</span>
+kuberoku apps:create myapi
+kuberoku deploy --app myapi --image nginx:1.27 --expose web:80/http</pre></div>
+<p>That's it. Kuberoku works on any conformant K8s cluster (1.33+). No special setup required.</p> <strong>Multiple clusters?</strong>
+<p>If you have more than one cluster (e.g. staging + production):</p>
+<div><pre><span><span>#</span> See your available kubectl contexts</span>
+kubectl config get-contexts <span><span>#</span> Register them in kuberoku</span>
+kuberoku clusters:add staging --context do-nyc1-staging --namespace kuberoku
+kuberoku clusters:add production --context lke-prod --namespace kuberoku --default <span><span>#</span> Switch between them</span>
+kuberoku clusters:switch staging
+kuberoku clusters:switch production</pre></div> <div><h2>What you get</h2><a href="#what-you-get"></a></div>
+<div><h3>Clusters and health checks</h3><a href="#clusters-and-health-checks"></a></div>
+<div><pre>kuberoku clusters:add production --context prod-eks
+kuberoku clusters:add staging --context staging-k3d
+kuberoku clusters:switch production
+kuberoku clusters:doctor <span><span>#</span> API, RBAC, CNI, Ingress, cert-manager, ...</span>
+kuberoku clusters:doctor --fix <span><span>#</span> generate RBAC YAML for missing permissions</span>
+kuberoku clusters:setup --base-domain apps.myteam.dev <span><span>#</span> configure auto-domains + DNS instructions</span></pre></div>
+<p>Doctor validates everything kuberoku needs: K8s API, namespace access, CRUD for all resource types, StorageClass, NetworkPolicy CNI, Ingress controller, cert-manager, LoadBalancer support, RBAC permissions, and base domain configuration.</p>
+<div><h3>Deploy and scale</h3><a href="#deploy-and-scale"></a></div>
+<div><pre><span><span>#</span> Simple: one process, default port 8080/http</span>
+kuberoku deploy --app myapi --image myapi:v2 <span><span>#</span> Multi-process: each --expose declares a process type and its ports</span>
+kuberoku deploy --app myapi --image myapi:v2 \ --expose web:8080/http \ --expose api:3000/http <span><span>#</span> Push a local Docker image to the registry and deploy</span>
+kuberoku deploy --app myapi --image myapi:v2 --local kuberoku ps:scale --app myapi web=3 worker=2 <span><span>#</span> scale independently</span>
+kuberoku ps:restart --app myapi <span><span>#</span> rolling restart</span>
+kuberoku ps:type --app myapi web --cpu 500m --memory 512Mi</pre></div>
+<div><h3>Config and secrets</h3><a href="#config-and-secrets"></a></div>
+<div><pre>kuberoku config:set --app myapi DATABASE_URL=postgres://... API_KEY=secret
+kuberoku config:set --app myapi --secret STRIPE_KEY=sk_live_...
+kuberoku config --app myapi <span><span>#</span> secrets are masked</span>
+kuberoku config:unset --app myapi API_KEY <span><span>#</span> Or set config inline during deploy (one atomic operation, one restart):</span>
+kuberoku deploy --app myapi --image myapi:v2 \ --env DATABASE_URL=postgres://... \ --secret-env STRIPE_KEY=sk_live_...</pre></div>
+<p>Config changes automatically trigger a rolling restart and create a new release.</p>
+<div><h3>Services, logs and exec</h3><a href="#services-logs-and-exec"></a></div>
+<div><pre>kuberoku services:logs --app myapi --tail <span><span>#</span> stream logs</span>
+kuberoku services:logs --app myapi --type worker <span><span>#</span> filter by process type</span>
+kuberoku services:exec --app myapi -- bash <span><span>#</span> shell into a running pod</span>
+kuberoku services:connect --app myapi <span><span>#</span> port-forward to localhost</span>
+kuberoku services:open --app myapi <span><span>#</span> open in browser</span></pre></div>
+<p>Expose a process to the internet:</p>
+<div><pre>kuberoku services:expose:on --app myapi web <span><span>#</span> HTTP: auto-domain via Ingress</span>
+kuberoku services:expose:on --app myapi game \ --method loadbalancer <span><span>#</span> TCP/UDP: external LoadBalancer IP</span>
+kuberoku services:expose:off --app myapi web <span><span>#</span> revert to internal-only</span></pre></div>
+<p>Manage ports without redeploying:</p>
+<div><pre>kuberoku services:ports:add 9090/tcp --app myapi <span><span>#</span> add a port</span>
+kuberoku services:ports:remove 9090 --app myapi <span><span>#</span> remove a port</span></pre></div>
+<div><h3>Domains and TLS</h3><a href="#domains-and-tls"></a></div>
+<div><pre>kuberoku domains:add myapi.example.com --app myapi <span><span>#</span> custom domain with auto-TLS</span>
+kuberoku domains:add api.example.com --app myapi --type api <span><span>#</span> route to specific process</span>
+kuberoku domains:add internal.example.com --app myapi --no-tls <span><span>#</span> HTTP only, no TLS</span>
+kuberoku domains --app myapi <span><span>#</span> list all domains</span>
+kuberoku domains:remove myapi.example.com --app myapi
+kuberoku domains:clear --app myapi <span><span>#</span> remove all custom domains</span></pre></div>
+<p>When you deploy with <code>/http</code> ports, kuberoku auto-creates a domain (<code>myapp.apps.example.com</code>) with TLS via cert-manager. Custom domains added with <code>domains:add</code> also get auto-TLS by default.</p>
+<div><h3>Releases and rollbacks</h3><a href="#releases-and-rollbacks"></a></div>
+<div><pre>kuberoku releases --app myapi <span><span>#</span> list all releases</span>
+kuberoku releases:info --app myapi 3 <span><span>#</span> inspect a specific release</span>
+kuberoku releases:rollback --app myapi <span><span>#</span> roll back to previous</span>
+kuberoku releases:rollback --app myapi 2 <span><span>#</span> roll back to specific version</span>
+kuberoku releases:prune --app myapi --keep 10 <span><span>#</span> clean up old releases</span></pre></div>
+<p>Every deploy, config change, and rollback creates an immutable release. Full audit trail.</p>
+<div><h3>Built-in addons</h3><a href="#built-in-addons"></a></div>
+<div><pre>kuberoku addons:create --app myapi postgres <span><span>#</span> PostgreSQL 16</span>
+kuberoku addons:create --app myapi redis <span><span>#</span> Redis 7</span>
+kuberoku addons:create --app myapi redis --as cache <span><span>#</span> named instances</span>
+kuberoku addons:credentials --app myapi postgres <span><span>#</span> show connection string</span>
+kuberoku addons:backup --app myapi postgres <span><span>#</span> pg_dump backup</span>
+kuberoku addons:exec --app myapi postgres <span><span>#</span> shell into addon pod</span></pre></div>
+<p><code>DATABASE_URL</code> and <code>REDIS_URL</code> are injected automatically. Addons run as StatefulSets with persistent storage.</p> <strong>Maintenance mode</strong>
+<div><pre>kuberoku apps:maintenance:on --app myapi <span><span>#</span> scale all processes to 0, preserve replica counts</span>
+kuberoku apps:maintenance:off --app myapi <span><span>#</span> restore previous replica counts</span></pre></div>
+<p>Deploy while in maintenance mode to update the image without running pods. When maintenance is turned off, the new image starts.</p> <strong>Non-HTTP services</strong>
+<p>Not everything is a web app. Deploy SMTP servers, game servers, DNS, gRPC — anything TCP/UDP:</p>
+<div><pre>kuberoku apps:create gameserver
+kuberoku deploy --app gameserver --image game:v1 \ --expose game:7777/udp,7778/tcp
+kuberoku services:expose:on --app gameserver game --method loadbalancer
+<span><span>#</span> External IP: 34.123.45.67 :7777/udp :7778/tcp</span></pre></div>
+<p><code>/tcp</code> and <code>/udp</code> ports get a ClusterIP by default — use <code>services:expose:on</code> for an external LoadBalancer IP. <code>/http</code> ports auto-create a domain via Ingress (no <code>expose:on</code> needed).</p> <div><h3>Preview environments</h3><a href="#preview-environments"></a></div>
+<p>Spin up a full copy of your app for every pull request — from any CI provider:</p>
+<div><pre>kuberoku preview:deploy \ --app myapi-pr-42 \ --image myapi:pr-42 \ --expose web:8080/http \ --addon postgres \ --env RAILS_ENV=staging \ --ttl 48h \ --output json</pre></div>
+<p>Each preview gets its own database, its own URL, and auto-destroys after the TTL expires:</p>
+<div><pre>kuberoku preview:list <span><span>#</span> see all active previews</span>
+kuberoku preview:status --app myapi-pr-42 <span><span>#</span> inspect one</span>
+kuberoku preview:destroy --app myapi-pr-42 <span><span>#</span> tear down manually</span>
+kuberoku preview:cleanup <span><span>#</span> destroy all expired</span></pre></div>
+<p>Set up your cluster's base domain for preview URLs:</p>
+<div><pre>kuberoku clusters:setup --base-domain apps.myteam.dev</pre></div>
+<p>This configures the base domain for auto-generated preview URLs and shows DNS setup instructions. Each preview app gets a URL like <code>myapi-pr-42.apps.myteam.dev</code>.</p>
+<div><h3>Shell completions</h3><a href="#shell-completions"></a></div>
+<p>Tab-complete commands, options, and arguments:</p>
+<div><pre><span>eval</span> <span><span>"</span><span><span>$(</span>kuberoku completions bash<span>)</span></span><span>"</span></span> <span><span>#</span> bash — add to ~/.bashrc</span>
+<span>eval</span> <span><span>"</span><span><span>$(</span>kuberoku completions zsh<span>)</span></span><span>"</span></span> <span><span>#</span> zsh — add to ~/.zshrc</span>
+kuberoku completions fish <span>|</span> <span>source</span> <span><span>#</span> fish — add to config.fish</span></pre></div>
+<div><h2>SDK</h2><a href="#sdk"></a></div>
+<p>Every CLI command maps 1:1 to a Python method:</p>
+<div><pre><span>from</span> <span>kuberoku</span> <span>import</span> <span>Kuberoku</span> <span>k</span> <span>=</span> <span>Kuberoku</span>() <span># Create and deploy</span>
+<span>app</span> <span>=</span> <span>k</span>.<span>apps</span>.<span>create</span>(<span>"myapi"</span>)
+<span>k</span>.<span>config</span>.<span>set</span>(<span>"myapi"</span>, {<span>"DATABASE_URL"</span>: <span>"postgres://..."</span>})
+<span>release</span> <span>=</span> <span>k</span>.<span>deploy</span>.<span>deploy</span>(<span>"myapi"</span>, <span>image</span><span>=</span><span>"myapi:v2"</span>) <span># defaults to web:8080/http</span> <span># Inspect</span>
+<span>for</span> <span>app</span> <span>in</span> <span>k</span>.<span>apps</span>.<span>list</span>(): <span>print</span>(<span>f"<span><span>{</span><span>app</span>.<span>name</span><span>}</span></span> v<span><span>{</span><span>app</span>.<span>release_version</span><span>}</span></span> (<span><span>{</span><span>'maintenance'</span> <span>if</span> <span>app</span>.<span>maintenance</span> <span>else</span> <span>'active'</span><span>}</span></span>)"</span>) <span># Scale and rollback</span>
+<span>k</span>.<span>ps</span>.<span>scale</span>(<span>"myapi"</span>, {<span>"web"</span>: <span>3</span>})
+<span>k</span>.<span>releases</span>.<span>rollback</span>(<span>"myapi"</span>)</pre></div>
+<p>All methods return frozen dataclasses. No K8s types leak into your code.</p>
+<div><h2>All commands</h2><a href="#all-commands"></a></div>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Commands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>clusters</strong></td>
+<td><code>add</code> <code>remove</code> <code>switch</code> <code>current</code> <code>info</code> <code>doctor</code> <code>setup</code> <code>registry:add</code> <code>registry:remove</code></td>
+</tr>
+<tr>
+<td><strong>apps</strong></td>
+<td><code>create</code> <code>destroy</code> <code>info</code> <code>rename</code> <code>status</code> <code>link:add</code> <code>link:remove</code> <code>maintenance:on</code> <code>maintenance:off</code></td>
+</tr>
+<tr>
+<td><strong>completions</strong></td>
+<td><code>bash</code> <code>zsh</code> <code>fish</code></td>
+</tr>
+<tr>
+<td><strong>deploy</strong></td>
+<td><code>deploy</code> (image or build-from-git, <code>--env</code>, <code>--secret-env</code>)</td>
+</tr>
+<tr>
+<td><strong>config</strong></td>
+<td><code>set</code> <code>get</code> <code>unset</code></td>
+</tr>
+<tr>
+<td><strong>ps</strong></td>
+<td><code>scale</code> <code>restart</code> <code>stop</code> <code>type</code> <code>set</code> <code>commands</code></td>
+</tr>
+<tr>
+<td><strong>services</strong></td>
+<td><code>expose:on</code> <code>expose:off</code> <code>open</code> <code>connect</code> <code>ports:add</code> <code>ports:remove</code> <code>logs</code> <code>exec</code> <code>maintenance:on</code> <code>maintenance:off</code></td>
+</tr>
+<tr>
+<td><strong>domains</strong></td>
+<td><code>add</code> <code>remove</code> <code>clear</code></td>
+</tr>
+<tr>
+<td><strong>releases</strong></td>
+<td><code>info</code> <code>rollback</code> <code>prune</code></td>
+</tr>
+<tr>
+<td><strong>addons</strong></td>
+<td><code>create</code> <code>destroy</code> <code>info</code> <code>scale</code> <code>migrate</code> <code>migrate-rollback</code> <code>credentials</code> <code>credentials-rotate</code> <code>exec</code> <code>backup</code> <code>expose:on</code> <code>expose:off</code> <code>connect</code></td>
+</tr>
+<tr>
+<td><strong>preview</strong></td>
+<td><code>deploy</code> <code>destroy</code> <code>list</code> <code>cleanup</code> <code>status</code></td>
+</tr>
+<tr>
+<td><strong>plugins</strong></td>
+<td><code>(list)</code> <code>install</code> <code>uninstall</code> <code>search</code></td>
+</tr>
+</tbody>
+</table>
+<p>Run <code>kuberoku &lt;group&gt; --help</code> for details on any command.</p>
+<div><h2>How it works</h2><a href="#how-it-works"></a></div>
+<p>Kuberoku stores all state in standard Kubernetes resources — ConfigMaps, Secrets, Deployments, Services, Ingress, NetworkPolicies. No CRDs, no operators, no server-side components. Uninstall kuberoku and your apps keep running.</p>
+<div><pre><code>You ──&gt; kuberoku CLI (Click) ──&gt; SDK (business logic) ──&gt; K8s API | also importable as Python SDK
+</code></pre></div>
+<p>The SDK is a strict three-layer architecture. The CLI never touches K8s directly. A <code>typing.Protocol</code> abstracts the K8s client, making the entire stack testable with an in-memory fake.</p>
+<p>See <a href="/amanjain/kuberoku/blob/main/docs/NORTHSTAR.txt"><code>docs/NORTHSTAR.txt</code></a> for the complete specification.</p>
+<div><h2>Project status</h2><a href="#project-status"></a></div>
+<p><strong>Alpha.</strong> Kuberoku is under active development. The core commands work and are well-tested, but the API may change between releases. Use it for development, staging, and side projects. Evaluate thoroughly before using in production.</p>
+<p>If something breaks, please <a href="https://github.com/amanjain/kuberoku/issues">open an issue</a>.</p>
+<div><h2>Security</h2><a href="#security"></a></div>
+<p>If you discover a security vulnerability, please report it responsibly via <a href="https://github.com/amanjain/kuberoku/security/advisories/new">GitHub's private security reporting</a> instead of opening a public issue.</p>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions welcome. Start with the <a href="/amanjain/kuberoku/blob/main/docs/NORTHSTAR.txt">NORTHSTAR spec</a> to understand the architecture.</p>
+<div><pre>git clone https://github.com/amanjain/kuberoku.git
+<span>cd</span> kuberoku
+python -m venv .venv <span>&amp;&amp;</span> <span>source</span> .venv/bin/activate
+pip install -e <span><span>"</span>.[dev]<span>"</span></span>
+pytest tests/ -v
+mypy src/kuberoku/ --strict <span><span>#</span> strict type checking</span>
+ruff check src/ tests/ <span><span>#</span> lint</span></pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/amanjain/kuberoku/blob/main/LICENSE">Apache 2.0</a></p>
+<div><h2>Author</h2><a href="#author"></a></div>
+<p>Built by <a href="https://github.com/amanjain">Aman Kumar Jain</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

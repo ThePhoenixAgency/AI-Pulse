@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Show HN: Post-Interface Design – A manifesto on the abolition of UI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Show HN: Post-Interface Design – A manifesto on the abolition of UI</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 4:40:03 PM | Lang: EN |
+    <a href="https://news.ycombinator.com/item?id=47037129" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><table><tbody><tr><td><span></span></td><td><a href="https://news.ycombinator.com/vote?id=47037129&amp;how=up&amp;goto=item%3Fid%3D47037129"></a></td><td><span><a href="https://news.ycombinator.com/item?id=47037129">Show HN: Post-Interface Design – A manifesto on the abolition of UI</a></span></td></tr><tr><td></td><td><span><span>2 points</span> by <a href="https://news.ycombinator.com/user?id=andreabergonzi">andreabergonzi</a> <span><a href="https://news.ycombinator.com/item?id=47037129">39 minutes ago</a></span> <span></span> | <a href="https://news.ycombinator.com/hide?id=47037129&amp;goto=item%3Fid%3D47037129">hide</a> | <a href="https://hn.algolia.com/?query=Show%20HN%3A%20Post-Interface%20Design%20%E2%80%93%20A%20manifesto%20on%20the%20abolition%20of%20UI&amp;type=story&amp;dateRange=all&amp;sort=byDate&amp;storyText=false&amp;prefix&amp;page=0">past</a> | <a href="https://news.ycombinator.com/fave?id=47037129&amp;auth=11738f6a25c367cd87f18f262f500ea80de91a63">favorite</a> | <a href="https://news.ycombinator.com/item?id=47037129">4&nbsp;comments</a></span></td></tr><tr><td></td><td><div><p>Hi HN,</p><p>I just published a manifesto arguing that Chatbots are a transitional phase and "Silence" is the future of interface.</p><p>It covers the "Synthetic Subconscious," the death of the App, and the ethics of the "Surveillance Bargain."</p><p>Read it here: <a href="https://postinterface.design/">https://postinterface.design</a>
+(PDF available on site)</p><p>Would love your feedback on the "Serendipity Deficit" concept.</p></div></td></tr><tr></tr><tr><td></td><td>&nbsp;<a href="https://news.ycombinator.com/formatdoc"><span>help</span></a></td></tr></tbody></table><br>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

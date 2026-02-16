@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Creator makes Wi-Fi sound like dial-up Internet — uses Raspberry Pi and 2-watt speaker to convert digital data…</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Creator makes Wi-Fi sound like dial-up Internet — uses Raspberry Pi and 2-watt speaker to convert digital data…</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 10/26/2025 10:30:00 AM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/creator-makes-wi-fi-sound-like-dial-up-internet-uses-raspberry-pi-and-2-watt-speaker-to-convert-digital-data-into-analog-signals" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<section>
+<div>
+<figure> <img src="https://cdn.mos.cms.futurecdn.net/BfEmqMiECP27h5GWgCHVUU.jpg" alt="Raspberry Pi Wi-Fi to sound converter"> <figcaption> <span>(Image credit: Nick Bild / YouTube)</span>
+</figcaption>
+</figure></div>
+<div> <p>The <a href="https://www.tomshardware.com/service-providers/network-providers/aols-dial-up-internet-service-killed-with-a-final-modem-screech-this-week-after-34-years-america-online-goes-offline-but-other-dual-up-services-still-exist">end of dial-up internet</a> means future generations will no longer hear the iconic screech of the dial-up handshake. However, YouTube creator <a href="https://www.youtube.com/watch?v=OxAJHiVkBEM" target="_blank">Nick Bild</a> did not want this experience to be lost to history, so he used a Raspberry Pi 3 and a USB Wi-Fi adapter to gather network traffic and convert it into an analog signal that is blasted out of a small speaker. According to Bild’s <a href="https://hackaday.io/project/204286-making-wi-fi-sound-like-dial-up-internet" target="_blank">Hackaday</a> project, he had to add random amplitude and frequency adjustments to make the output sound more interesting, but all the data is sourced from the Wi-Fi network.</p><p>Back before the days of DSL and fiber-optic internet, all our data had to travel over phone lines. Since these weren’t designed for digital signals, internet companies had to use modems to convert them into analog signals (i.e., sound) that could be transmitted over the already existing telephone network. The nostalgic screeching sound many born in the ‘90s and earlier hear when connecting to the internet is just the handshake signal between two computers negotiating which protocol they’ll use to communicate. Once the connection has been established, the screeching just turns to static, which is what actual data sounds like.</p><div>
+<div>
+<p><span>Making Wi-Fi Sound Like Dial-Up Internet - YouTube</span>
+<img src="https://img.youtube.com/vi/OxAJHiVkBEM/maxresdefault.jpg" alt="Making Wi-Fi Sound Like Dial-Up Internet - YouTube">
+</p>
+</div> <a href="https://youtu.be/OxAJHiVkBEM" target="_blank">Watch On </a>
+</div><p>This was a relatively easy build for Bild, who used a Raspberry Pi 3 with a secondary USB Wi-Fi adapter to collect network traffic from a target computer. These are then sent to an Adafruit QT Py microcontroller, which converts the data to a specific amplitude and outputs an analog signal via an onboard DAC. The output is then fed into a small amplifier so that the tiny 2-watt speaker can play it. Nick says that since the signal is random, you’re bound to hear nothing but static. Although he added random variations to the output to mimic the old sound a bit more, it’s still based on the actual data being transmitted and received by the target computer.</p><p>The sound this contraption makes isn’t the same as what we hear from the old modem. After all, dial-up internet made that sound so users could listen to whether the connection was working as expected. Advancements in networking technology meant we no longer needed to do that (and it would probably be annoying to hear that sound from all the devices connected to the internet around us). Still, it would be nice to hear this nostalgic sound, or something similar, to remind us how slow the internet used to be.</p><a href="https://news.google.com/publications/CAAqLAgKIiZDQklTRmdnTWFoSUtFSFJ2YlhOb1lYSmtkMkZ5WlM1amIyMG9BQVAB" target="_blank"><figure><div><p> <img src="https://cdn.mos.cms.futurecdn.net/7cUTDmN2PHNRiNBVqbKf56.png" alt="Google Preferred Source">
+</p></div></figure></a><p><em>Follow</em><a href="https://news.google.com/publications/CAAqLAgKIiZDQklTRmdnTWFoSUtFSFJ2YlhOb1lYSmtkMkZ5WlM1amIyMG9BQVAB" target="_blank"><em> Tom's Hardware on Google News</em></a><em>, or</em><a href="https://google.com/preferences/source?q=" target="_blank"><em> add us as a preferred source</em></a><em>, to get our latest news, analysis, &amp; reviews in your feeds.</em></p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div> <div><p>Jowi Morales is a tech enthusiast with years of experience working in the industry. He’s been writing with several tech publications since 2021, where he’s been interested in tech hardware and consumer electronics.</p></div>
+</section> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

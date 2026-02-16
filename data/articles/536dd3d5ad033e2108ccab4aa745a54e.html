@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>This Raspberry Pi Pico protractor has all of the angles covered!</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>This Raspberry Pi Pico protractor has all of the angles covered!</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/6/2025 3:55:00 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/this-raspberry-pi-pico-protractor-has-all-of-the-angles-covered" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>The <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> maker community never ceases to amaze us and today we have a project that's no exception. Maker and developer Yaluke demonstrates with their latest creation how easy it is to create a <a href="https://www.hackster.io/luke35/protractor-e2c351" target="_blank"><u>Raspberry Pi Pico-powered protractor</u></a> module from scratch. This isn't the same as the static measuring tool you might find in a school but rather is an electronic component that's surprisingly useful in the world of gaming.</p><p>This Pi-powered protractor is intended to be used to calculate rotational angles in real time. This particular module is able to convert said measurement into a USB signal which makes it an excellent go to device for simulating steering wheels. If you want to emulate a driving game, this is the sort of setup you could use to make a controller from scratch.</p><div><div><p>Image </p><p>1</p><p> of </p><p>2</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/sporpwb8d392edY3LKU3yR.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: Yaluke)</span></figcaption></figure></div></div><p>The project page indicates that the main board powering the operation is a <a href="https://www.tomshardware.com/reviews/raspberry-pi-pico-review">Raspberry Pi Pico</a> but you could likely get away with using the latest <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-pico-2-w-review">Raspberry Pi Pico 2</a> instead. The Pico is connected to a DFRobot incremental photoelectric rotary encoder along with a Pimoroni Pico Proto Board. Data can be viewed in real-time using a 4-digit 7-segment TM1637 display module. All of the hardware is housed inside of a custom, <a href="https://www.tomshardware.com/best-picks/best-3d-printers"><u>3D-printed</u></a> case.</p><p>The software for the protractor was created using C++ for its USB support and extensive compatibility with the PIO (Programmable IO) on the Pico. However, Yaluke mentions experimenting with both MicroPython and CircuitPython before settling on C++.</p><p>Yaluke was kind enough to create a build guide for this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a> so you can follow along and make your own. Check it out over at <a href="https://www.hackster.io/luke35/protractor-e2c351" target="_blank"><u>Hackster</u></a> for more details and an in-depth look at its creation.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

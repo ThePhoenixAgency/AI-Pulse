@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Arc Virtual Cell Challenge: A Primer</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Arc Virtual Cell Challenge: A Primer</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 7/18/2025 12:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/virtual-cell-challenge" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/FL33TW00D-HF"><img alt="Christopher Fleetwood's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6597e9f42235d4056bc6980a/6N_Eira5Rj5e8ZdgekKPQ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/abhinadduri"><img alt="Abhinav Adduri's avatar" src="https://huggingface.co/avatars/4f1d6a533004f896178fe6ee32604ebd.svg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#training-data">Training data</a> <ul><li><a href="#modelling-the-challenge">Modelling the challenge</a> <ul></ul> </li></ul> </li><li><a href="#state-transition-model-st">State Transition Model (ST)</a> <ul></ul> </li><li><a href="#state-embedding-model-se">State Embedding Model (SE)</a> <ul><li><a href="#a-little-biological-detour">A little biological detour</a> <ul></ul> </li><li><a href="#back-to-the-model">Back to the model</a> <ul></ul> </li></ul> </li><li><a href="#perturbation-discrimination">Perturbation Discrimination</a> <ul></ul> </li><li><a href="#differential-expression">Differential Expression</a> <ul></ul> </li><li><a href="#conclusion">Conclusion</a> <ul></ul> </li></ul></nav></div><p><a href="https://arcinstitute.org/">Arc Institute</a> recently unveiled the <a href="https://virtualcellchallenge.org/">Virtual Cell Challenge</a>. Participants are required to train a model capable of predicting the effect of silencing a gene in a (partially) unseen cell type, a task they term <em>context generalization</em>.
+For ML engineers with little to no biology background, the jargon and required context can seem quite daunting. To encourage participation, we recapitulate the challenge in a form better suited to engineers from other disciplines. </p>
+<blockquote>
+<p><strong>Goal</strong> <br>Train a model to predict the effect on a cell of silencing a gene using CRISPR.</p>
+</blockquote>
+<p>Doing things in the world of atoms is expensive, laborious and error prone. What if we could test thousands of drug candidates without ever touching a petri dish?
+This is the goal of the virtual cell challenge — a model (most likely a neural network) that can simulate exactly what happens
+to a cell when we change some parameter. Given that tightening your feedback loop is often the best way to speed up progress,
+a model capable of doing this accurately would have significant impact.</p>
+<p>To train this neural network, we will need data. For the challenge, Arc has curated a dataset of ~300k single-cell RNA sequencing profiles. It may be worthwhile to revisit the <a href="https://www.khanacademy.org/science/biology/gene-expression-central-dogma/central-dogma-transcription/v/rna-transcription-and-translation">Central Dogma</a> before continuing. This essay will build off of this to provide the ~minimum biology knowledge you'll need for the challenge.</p>
+<h2> <a href="#training-data"> <span></span> </a> <span> Training data </span>
+</h2>
+<p>The training set consists of a sparse matrix and some associated metadata. More specifically, we have 220k cells, and
+for each cell we have a <a href="https://en.wikipedia.org/wiki/Transcriptome">transcriptome</a>. This transcriptome is a sparse row vector, where each
+entry is the <strong>raw count of RNA molecules</strong> (transcripts) that the corresponding gene (our column) encodes for. Of the 220k cells,
+~38k are <em>unperturbed</em>, meaning no gene has been silenced using CRISPR. These control cells are crucial as we will see shortly. </p>
+<p>To understand the dataset more concretely, let's select a gene, TMSB4X (the most frequently silenced gene in the dataset) and compare the number of RNA molecules detected for a control cell and a
+perturbed cell. </p>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/TMSB4X.png"><br>
+</p> <p>We can see that the cell with TMSB4X silenced has a greatly reduced number of transcripts compared with the control
+cells.</p>
+<h3> <a href="#modelling-the-challenge"> <span></span> </a> <span> Modelling the challenge </span>
+</h3>
+<p>The astute among you may be wondering why you don't just measure the count of the RNA molecules before and after
+silencing the gene — why do we need the control cells at all? Unfortunately, <strong>reading the transcriptome destroys the cell</strong>, which is a problem reminiscent of the <a href="https://en.wikipedia.org/wiki/Observer_effect_(physics)">observer effect</a>. </p>
+<p>This inability to measure the cell state before and after introduces many issues, as we are forced to use a population of <strong>basal</strong>
+(a.k.a control, unperturbed) cells as a reference point. The control cells and perturbed cells are not entirely
+homogeneous even prior to the perturbation. This means that we have to now separate out our true signal, the perturbation, from
+noise induced by the heterogeneity.</p>
+<p>More formally, we can model observed gene expression in perturbed cells as:</p>
+<p><span><span><span>X^p∼T^p(Dbasal)+H(Dbasal)+ε,ε∼Pε
+\hat{X}_p \sim \hat{T}_p(\mathcal{D}_{\text{basal}}) + H(\mathcal{D}_{\text{basal}}) + \varepsilon, \quad \varepsilon \sim P_\varepsilon </span></span></span></p>
+<p>where:</p>
+<ul>
+<li><span><span>X^p\hat{X}_p</span></span>: The observed gene expression measurements in cells with perturbation <span><span>pp</span></span></li>
+<li><span><span>Dbasal\mathcal{D}_{\text{basal}}</span></span>: The distribution of the unperturbed, baseline cell population.</li>
+<li><span><span>T^p(Dbasal)\hat{T}_p(\mathcal{D}_{\text{basal}})</span></span>: True effect caused by perturbation <span><span>pp</span></span> on the population.</li>
+<li><span><span>H(Dbasal)H(\mathcal{D}_{\text{basal}})</span></span>: Biological heterogeneity of the baseline population.</li>
+<li><span><span>ε\varepsilon</span></span>: Experiment-specific technical noise, assumed independent of the unperturbed cell state and <span><span>Dbasal\mathcal{D}_{\text{basal}}</span></span>.</li>
+</ul>
+<h2> <a href="#state-the-baseline-from-arc"> <span></span> </a> <span> STATE: The baseline from Arc </span>
+</h2>
+<p>Prior to the Virtual Cell Challenge, Arc released <a href="https://arcinstitute.org/manuscripts/State">STATE</a>, their own attempt to solve the challenge
+using a pair of transformer based models. This serves as a strong baseline for participants to start with, so we will
+explore it in detail.</p>
+<p>STATE consists of two models, the <strong>State Transition Model</strong> (ST) and the <strong>State Embedding Model</strong> (SE). SE is designed to produce rich semantic embeddings of cells in an effort to improve cross cell type generalization. ST is the "cell simulator", that takes in either a transcriptome of a control cell, or an embedding of a cell produced by SE, along with a one hot encoded vector representing the perturbation of interest, and outputs the perturbed transcriptome. </p>
+<h2> <a href="#state-transition-model-st"> <span></span> </a> <span> State Transition Model (ST) </span>
+</h2>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/ST.png"><br>
+</p> <p>The State Transition Model is a relatively simple transformer with a Llama backbone that operates upon the following: </p>
+<ol>
+<li>A set of transcriptomes (or SE embeddings) for covariate matched basal cells.</li>
+<li>A set of one hot vectors representing our gene perturbation for each cell.</li>
+</ol>
+<p>Using a covariate matched set of control cells with paired target cells should assist the model in discerning the
+actual effect of our intended perturbation. Both the control set tensor and the perturbation tensor are fed through independent encoders, which are simply 4 layer MLPs with GELU activations.
+If working directly in gene expression space (i.e producing a full transcriptome), they pass the output through a learned
+decoder.</p>
+<p>ST is trained using <a href="https://en.wikipedia.org/wiki/Kernel_embedding_of_distributions">Maximum Mean Discrepancy</a>. Put simply, the model learns to minimize the difference between the two probability distributions.</p>
+<h2> <a href="#state-embedding-model-se"> <span></span> </a> <span> State Embedding Model (SE) </span>
+</h2>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/SE.png"><br>
+</p> <p>The State Embedding Model is a BERT-like autoencoder. To understand this more deeply, first we have to
+take a little detour for some more biological grounding. </p>
+<h3> <a href="#a-little-biological-detour"> <span></span> </a> <span> A little biological detour </span>
+</h3>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/alt_splicing.gif"><br>
+</p> <p>A gene consists of <em>exons</em> (protein coding sections) and <em>introns</em> (non-protein coding sections). DNA is first <em>transcribed</em> into pre-mRNA, as shown above. The cell then performs <a href="https://en.wikipedia.org/wiki/Alternative_splicing">Alternative Splicing</a>. This is basically "pick and choose exons", cut out all introns. You can think of the gene as an IKEA manual for making a table. One could also construct a 3 legged table, perhaps an odd bookshelf with some effort, by leaving out some parts. These different objects are analogous to <strong>protein isoforms</strong>, proteins coded for by the same gene.</p>
+<h3> <a href="#back-to-the-model"> <span></span> </a> <span> Back to the model </span>
+</h3>
+<p>With this basic understanding, we can move on to how the SE model works. Remember, our core goal for SE is to create <strong>meaningful
+cell embeddings</strong>. To do this, we must first create meaningful gene embeddings.</p>
+<p>To produce a single gene embedding, we first obtain the amino acid sequence (e.g <span><span>SDKPDMAEI\texttt{SDKPDMAEI}</span></span>... for TMSB4X) of all the different protein isoforms encoded for by the gene in question. We then feed these sequences to <a href="https://huggingface.co/facebook/esm2_t48_15B_UR50D">ESM2</a>, a 15B parameter Protein Language Model from FAIR. ESM produces an embedding <em>per amino acid</em>, and we mean pool them together to obtain a "transcript" (a.k.a protein isoform) embedding. </p>
+<p>Now we have all of these protein isoform embeddings, we then just mean pool those to get the gene embedding. Next, we project these gene embeddings to our model dimension using a learned encoder as follows:</p>
+<p><span><span><span>g~j=SiLU(LayerNorm(gjWg+bg))
+\tilde{g}_j = \text{SiLU}(\text{LayerNorm}(g_j \mathbf{W}_g + \mathbf{b}_g))
+</span></span></span></p>
+<p>We've now obtained a gene embedding, but what we really want is a <em>cell embedding</em>. To do this, Arc represents each cell
+as the top 2048 genes ranked by <a href="https://en.wikipedia.org/wiki/Fold_change#Fold_changes_in_genomics_and_bioinformatics">log fold expression level</a>.</p>
+<p>We then construct a "cell sentence" from our 2048 gene embeddings as follows:
+<span><span><span>c~(i)=[zcls,g~1(i),g~2(i),…,g~L(i),zds]∈R(L+2)×h
+\tilde{\mathbf{c}}^{(i)} = \left[\mathbf{z}_{\text{cls}}, \tilde{\mathbf{g}}_1^{(i)}, \tilde{\mathbf{g}}_2^{(i)}, \ldots, \tilde{\mathbf{g}}_L^{(i)}, \mathbf{z}_{\text{ds}}\right] \in \mathbb{R}^{(L+2) \times h}
+</span></span></span></p>
+<p>We add a <span><span>[CLS]\texttt{[CLS]}</span></span> token and <span><span>[DS]\texttt{[DS]}</span></span> token to our sentence. The <span><span>[CLS]\texttt{[CLS]}</span></span> token ends up being used as our "cell embedding" (very BERT-like)
+and the <span><span>[DS]\texttt{[DS]}</span></span> token is used to "disentangle dataset-specific effects". Although the genes are sorted by log fold
+expression level, Arc further enforces the magnitude of each genes expression by incorporating the transcriptome in a
+fashion analogous to positional embeddings. Through an odd <a href="https://github.com/ArcInstitute/state/blob/main/src/state/emb/nn/model.py#L374">"soft binning" algorithm</a> and 2 MLPs, they create some
+"expression encodings" which they then add to each gene embedding. This should modulate the magnitude of each gene
+embedding by how intensely it is expressed in the transcriptome.</p>
+<p>To train the model, they mask 1280 genes per cell, and the model is tasked with predicting them. The 1280 genes are
+selected such that they have a wide range of expression intensities. For the graphically inclined, the below
+demonstrates the construction of the cell sentence. </p>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/SE_path.png"><br>
+</p> <h2> <a href="#evaluations"> <span></span> </a> <span> Evaluations </span>
+</h2>
+<p>Understanding how your submission will be evaluated is key to success. The 3 evaluation metrics chosen by Arc are <strong>Perturbation Discrimination</strong>, <strong>Differential Expression</strong> and <strong>Mean Average Error</strong>. Given that Mean Average Error is simple and exactly as it sounds, we will omit it from our analysis.</p>
+<h2> <a href="#perturbation-discrimination"> <span></span> </a> <span> Perturbation Discrimination </span>
+</h2>
+<p> <img alt="" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/virtual-cell-challenge/pert_disc.png"><br>
+</p> <p>Perturbation Discrimination intends to evaluate how well your model can uncover <em>relative differences</em> between
+perturbations. To do this, we compute the Manhattan distances for all the measured perturbed transcriptomes in the test set (the ground
+truth we are trying to predict, <span><span>yty_t</span></span> and all other perturbed transcriptomes, <span><span>ypny_p^n</span></span>) to our predicted transcriptome <span><span>y^t\hat{y}_t</span></span>. We then rank where the
+ground truth lands with respect to all transcriptomes as follows:</p>
+<p><span><span><span>rt=∑p≠t1{d(y^t,yp)&lt;d(y^t,yt)}
+r_t = \sum_{p \neq t} \mathbf{1}\{d(\hat{y}_t, y_p) &lt; d(\hat{y}_t, y_t)\}
+</span></span></span></p>
+<p>After, we normalize by the total number of transcriptomes:</p>
+<p><span><span><span>PDisct=rtT
+\text{PDisc}_t = \frac{r_t}{T}
+</span></span></span></p>
+<p>Where <span><span>00</span></span> would be a perfect match. The overall score for your predictions is the mean of all $$\text{PDisc}_t$$. This is then normalized to: </p>
+<p><span><span><span>PDiscNorm=1−2PDisc
+\text{PDiscNorm} = 1 - 2\text{PDisc}
+</span></span></span> </p>
+<p>We multiply by 2 as for a random prediction, ~half of the results would be closer and half would be further away.</p>
+<h2> <a href="#differential-expression"> <span></span> </a> <span> Differential Expression </span>
+</h2>
+<p>Differential Expression intends to evaluate what fraction of the truly affected genes did you correctly identify as significantly affected. Firstly, for each gene compute a <span><span>pp</span></span>-value using a <a href="https://en.wikipedia.org/wiki/Mann%E2%80%93Whitney_U_test">Wilcoxon rank-sum test with tie correction</a>. We do this for both our predicted perturbation distribution and the ground truth perturbation distribution.</p>
+<p>Next, we apply the <a href="https://en.wikipedia.org/wiki/False_discovery_rate#Benjamini%E2%80%93Hochberg_procedure">Benjamini-Hochberg procedure</a>, basically some stats to modulate the <span><span>pp</span></span>-values, as with <span><span>20,00020,000</span></span> genes and a <span><span>pp</span></span>-value threshold of <span><span>0.050.05</span></span>, you'd expect <span><span>1,0001,000</span></span> false positives. We denote our set of predicted differentially expressed genes <span><span>Gp,predG_{p,pred}</span></span>, and the ground truth set of differentially expressed genes <span><span>Gp,trueG_{p,true}</span></span>. </p>
+<p>If the size of our set is less than the ground truth set size, take the intersection of the sets, and divide by the true number of differentially expressed genes as follows:</p>
+<p><span><span><span>DEp=Gp,pred∩Gp,truenp,true
+DE_p = \frac{G_{p,pred} \cap G_{p,true}}{n_{p,true}}
+</span></span></span></p>
+<p>If the size of our set is greater than the ground truth set size, select the subset we predict are most differentially expressed (our "most confident" predictions, denoted <span><span>G~p,pred\tilde{G}_{p,pred}</span></span>), take the intersection with the ground truth set, and then divide by the true number.</p>
+<p><span><span><span>DEp=G~p,pred∩Gp,truenp,true
+DE_p = \frac{\tilde{G}_{p,pred} \cap G_{p,true}}{n_{p,true}}
+</span></span></span></p>
+<p>Do this for all predicted perturbations and take the mean to obtain the final score.</p>
+<h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
+</h2>
+<p>If this challenge has piqued your interest, how can one get started? Fortunately, Arc has provided a <a href="https://colab.research.google.com/drive/1QKOtYP7bMpdgDJEipDxaJqOchv7oQ-_l?usp=sharing">Colab notebook</a> that walks through the entire process of training their STATE model. Furthermore, STATE will be hitting <code>transformers</code>
+very soon, so starting with their pretrained models will be as simple as:</p>
+<pre><code><span>import</span> torch
+<span>from</span> transformers <span>import</span> StateEmbeddingModel model_name = <span>"arcinstitute/SE-600M"</span>
+model = StateEmbeddingModel.from_pretrained(model_name) input_ids = torch.randn((<span>1</span>, <span>1</span>, <span>5120</span>), dtype=torch.float32)
+mask = torch.ones((<span>1</span>, <span>1</span>, <span>5120</span>), dtype=torch.<span>bool</span>)
+mask[:, :, <span>2560</span>:] = <span>False</span> outputs = model(input_ids, mask)
+</code></pre>
+<p>Best of luck to all participants! </p>
+<p><em>This post was originally published <a href="https://fleetwood.dev/posts/virtual-cell-challenge">here</a>.</em></p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

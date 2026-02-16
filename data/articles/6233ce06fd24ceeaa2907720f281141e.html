@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Raspberry Pi 5 powered 'wall arcade' features a big, low-res RGB LED matrix display</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Raspberry Pi 5 powered 'wall arcade' features a big, low-res RGB LED matrix display</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 3/20/2025 1:21:39 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/raspberry-pi-5-powered-wall-arcade-features-a-big-low-res-rgb-led-matrix-display" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>There's nothing like retro gaming on the <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> but we haven't quite seen a gaming rig like this. Leave it to the Pi community to blow our minds and expectations out of the water. This project, created by maker and developer John Park is using our favorite SBC — the <a href="https://www.tomshardware.com/reviews/raspberry-pi-5">Raspberry Pi 5</a> — to drive a cool <a href="https://learn.adafruit.com/led-matrix-wall-arcade/overview" target="_blank"><u>wall arcade</u></a> featuring RGB LED matrix panels as the main display.</p><p>The project is built around the latest Raspberry Pi 5 which not only drives multiple HUB75 RGB matrix panels but also runs the operating system used for gaming. The hardware is housed inside of an Ikea Sannahed picture frame which has been fitted with some custom <a href="https://www.tomshardware.com/best-picks/best-3d-printers"><u>3D-printed</u></a> components to mount everything together. The brackets are part of the design and can be seen around the perimeter adding a nice dash of color to its overall look.</p><div><div><p>Image </p><p>1</p><p> of </p><p>2</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/QcSTUisDhSUarsCnmTeSS8.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: John Park)</span></figcaption></figure></div></div><p>The board Park selected to run this setup is the Raspberry Pi 5 4GB model. It's connected to four 64 x 64px HUB75 RGB LED matrix panels via an Adafruit RGB matrix bonnet that makes short work of proving power and data to the display. A USB external stereo speaker provides <a href="https://www.tomshardware.com/tag/audio">audio</a> output. For user input, it relies on a couple of USB controllers.</p><p>The software used to run the arcade games is known as <a href="https://www.lexaloffle.com/pico-8.php" target="_blank"><u>PICO-8 Fantasy Console</u></a>. This is a system that comes with a handful of custom games that are reminiscent of existing titles. It's not freeware, however, and costs $15 (USD). It's compatible not only with the Raspberry Pi but also Mac and Windows machines. PICO-8 can also be used to code, create music and even develop game assets like sprites and maps.</p><p>If you want to get a closer look at this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a>, you're in luck. Park uploaded a full build guide for the project complete with links to everything you need to reconstruct it at home over at the <a href="https://learn.adafruit.com/led-matrix-wall-arcade/overview" target="_blank"><u>Adafruit</u></a> website.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

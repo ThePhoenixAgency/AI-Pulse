@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>This Raspberry Pi transparent display is made using a glass dome</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>This Raspberry Pi transparent display is made using a glass dome</h1>
+  <div class="metadata">
+    Source: Toms Hardware Raspberry Pi | Date: 2/23/2025 5:45:00 PM | Lang: EN |
+    <a href="https://www.tomshardware.com/raspberry-pi/this-raspberry-pi-transparent-display-is-made-using-a-glass-dome" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>One of the coolest aspects of the <a href="https://www.tomshardware.com/raspberry-pi"><u>Raspberry Pi</u></a> is its compatibility with a wide range of hardware. For example, makers use all kinds of screens ranging from super wide touch screens to eInk panels. However, <a href="https://www.youtube.com/watch?v=vGyMrAtvg8A" target="_blank"><u>VEEB Projects</u></a> over at YouTube has put together a really cool transparent display using an optical illusion and a glass dome.</p><div>
+<div>
+<p><span>We Built a Transparent Computer Using a 150-Year-Old Illusion! - YouTube</span>
+<img src="https://img.youtube.com/vi/vGyMrAtvg8A/maxresdefault.jpg" alt="We Built a Transparent Computer Using a 150-Year-Old Illusion! - YouTube">
+</p>
+</div> <a href="https://youtu.be/vGyMrAtvg8A" target="_blank">Watch On </a>
+</div><p>Inside the glass dome is a clear reflector that's positioned at a 45-degree angle. The Pi is actually outputting to a small round LCD panel housed in the base of the dome. According to VEEB Projects, it took a bit of algebra to get the distortion just right so the effect looks like an invisible or transparent screen. A privacy shield was also created so you can't easily see the source image from the LCD panel.</p><div><div><p>Image </p><p>1</p><p> of </p><p>3</p></div><div><figure><div><img src="https://cdn.mos.cms.futurecdn.net/ZBKF2LAroHcabjhSLMVaXc.png" alt="Raspberry Pi"></div><figcaption><span>(Image credit: VEEB Projects)</span></figcaption></figure></div></div><p>VEEB Projects opted to use a 16GB model Raspberry Pi 5 to power the project but you could recreate it with a lighter model like the Raspberry Pi Zero 2. The Pi is connected to a round display, that we mentioned before, which fits easily in the base of the dome. This base was created from scratch by VEEB Projects just for this project and was 3D printed to house all of the hardware inside.</p><p>VEEB Projects was kind enough to make the project open source, sharing all of the code you need to recreate the effect and even the 3D models used for the custom base. If you want to get a closer look at the source code, head over to this project page shared to <a href="https://github.com/veebch/pepper" target="_blank"><u>GitHub</u></a>. That said, it might be tricky find the exact dome you need to fit the design in this project.</p><p>If you want to see this <a href="https://www.tomshardware.com/features/best-raspberry-pi-projects"><u>Raspberry Pi project</u></a> in action, head over to the official VEEB Projects <a href="https://www.youtube.com/watch?v=vGyMrAtvg8A" target="_blank"><u>YouTube channe</u></a>l. Be sure to follow them for more cool creations as well as any future updates to this one.</p><div><section><p>Get Tom's Hardware's best news and in-depth reviews, straight to your inbox.</p></section></div>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - ConstantineB6/comfy-pilot: MCP server + embedded terminal that lets Claude Code see and edit your ComfyUI workflows</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - ConstantineB6/comfy-pilot: MCP server + embedded terminal that lets Claude Code see and edit your ComfyUI workflows</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 4:51:51 PM | Lang: EN |
+    <a href="https://github.com/ConstantineB6/comfy-pilot" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>Comfy Pilot</h1><a href="#comfy-pilot"></a></div>
+<p><a href="https://github.com/ConstantineB6/Comfy-Pilot/stargazers"><img src="https://camo.githubusercontent.com/969905312b03b23f99dfadbe3b095f1df73415c908211c99b72bb219ee46ae46/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f436f6e7374616e74696e6542362f436f6d66792d50696c6f74" alt="Stars"></a>
+<a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://registry.comfy.org/publishers/constantine/nodes/comfy-pilot"><img src="https://camo.githubusercontent.com/33f508ff27dd9145a460a2ecae1ee1b54f34a82a0b233882e252120a8c48a18a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f436f6d667955492d52656769737472792d626c7565" alt="ComfyUI Registry"></a></p>
+<p>Talk to your ComfyUI workflows. Comfy Pilot gives Claude Code direct access to see, edit, and run your workflows — with an embedded terminal right inside ComfyUI.</p>
+<p><a target="_blank" href="/ConstantineB6/comfy-pilot/blob/main/thumbnail.jpg"><img src="/ConstantineB6/comfy-pilot/raw/main/thumbnail.jpg" alt="Comfy Pilot"></a></p>
+<div><h2>Why?</h2><a href="#why"></a></div>
+<p>Building ComfyUI workflows means manually searching for nodes, dragging connections, and tweaking values one at a time. With Comfy Pilot, you just describe what you want:</p>
+<ul>
+<li><em>"Build me an SDXL workflow with ControlNet"</em> — Claude creates all the nodes, connects them, and sets the parameters</li>
+<li><em>"Look at the output and increase the detail"</em> — Claude sees your generated image and adjusts the workflow</li>
+<li><em>"Download the FLUX schnell model and set up a workflow for it"</em> — Claude downloads the model and builds a workflow from scratch</li>
+</ul>
+<p>No copy-pasting node names. No hunting through menus. Just say what you want.</p>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<p><strong>CLI (Recommended):</strong></p>
+<div><pre>comfy node install comfy-pilot</pre></div>
+<p><strong>ComfyUI Manager:</strong></p>
+<ol>
+<li>Open ComfyUI</li>
+<li>Click <strong>Manager</strong> → <strong>Install Custom Nodes</strong></li>
+<li>Search for "Comfy Pilot"</li>
+<li>Click <strong>Install</strong></li>
+<li>Restart ComfyUI</li>
+</ol>
+<p><strong>Git Clone:</strong></p>
+<div><pre><span>cd</span> <span>~</span>/Documents/ComfyUI/custom_nodes <span>&amp;&amp;</span> git clone https://github.com/ConstantineB6/comfy-pilot.git</pre></div>
+<p>Claude Code CLI will be installed automatically if not found.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>ComfyUI</li>
+<li>Python 3.8+</li>
+</ul>
+<div><h2>Features</h2><a href="#features"></a></div>
+<ul>
+<li><strong>MCP Server</strong> - Gives Claude Code direct access to view, edit, and run your ComfyUI workflows</li>
+<li><strong>Embedded Terminal</strong> - Full xterm.js terminal running Claude Code right inside ComfyUI</li>
+<li><strong>Image Viewing</strong> - Claude can see outputs from Preview Image and Save Image nodes</li>
+<li><strong>Graph Editing</strong> - Create, delete, move, and connect nodes programmatically</li>
+</ul>
+<div><h2>Demo</h2><a href="#demo"></a></div> <span>comfy-pilot-demo.mp4</span> <span></span> <div><h2>Usage</h2><a href="#usage"></a></div>
+<ol>
+<li>Restart ComfyUI after installation</li>
+<li>The floating Claude Code terminal appears in the top-right corner</li>
+<li>The MCP server is automatically configured for Claude Code</li>
+<li>Ask Claude to help with your workflow:
+<ul>
+<li>"What nodes are in my current workflow?"</li>
+<li>"Add a KSampler node connected to my checkpoint loader"</li>
+<li>"Look at the preview image and tell me what you see"</li>
+<li>"Run the workflow up to node 5"</li>
+</ul>
+</li>
+</ol>
+<div><h2>MCP Tools</h2><a href="#mcp-tools"></a></div>
+<p>The MCP server provides these tools to Claude Code:</p>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_workflow</code></td>
+<td>Get the current workflow from the browser</td>
+</tr>
+<tr>
+<td><code>summarize_workflow</code></td>
+<td>Human-readable workflow summary</td>
+</tr>
+<tr>
+<td><code>get_node_types</code></td>
+<td>Search available node types with filtering</td>
+</tr>
+<tr>
+<td><code>get_node_info</code></td>
+<td>Get detailed info about a specific node type</td>
+</tr>
+<tr>
+<td><code>get_status</code></td>
+<td>Queue status, system stats, and execution history</td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td>Run workflow (optionally up to a specific node) or interrupt</td>
+</tr>
+<tr>
+<td><code>edit_graph</code></td>
+<td>Batch create, delete, move, connect, and configure nodes</td>
+</tr>
+<tr>
+<td><code>view_image</code></td>
+<td>View images from Preview Image / Save Image nodes</td>
+</tr>
+<tr>
+<td><code>search_custom_nodes</code></td>
+<td>Search ComfyUI Manager registry for custom nodes</td>
+</tr>
+<tr>
+<td><code>install_custom_node</code></td>
+<td>Install a custom node from the registry</td>
+</tr>
+<tr>
+<td><code>uninstall_custom_node</code></td>
+<td>Uninstall a custom node</td>
+</tr>
+<tr>
+<td><code>update_custom_node</code></td>
+<td>Update a custom node to latest version</td>
+</tr>
+<tr>
+<td><code>download_model</code></td>
+<td>Download models from Hugging Face, CivitAI, or direct URLs</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Example: Creating Nodes</h3><a href="#example-creating-nodes"></a></div>
+<div><pre><code>Create a KSampler and connect it to my checkpoint loader
+</code></pre></div>
+<p>Claude will use <code>edit_graph</code> to:</p>
+<ol>
+<li>Create the KSampler node</li>
+<li>Connect the MODEL output from CheckpointLoader to KSampler's model input</li>
+<li>Position it appropriately in the graph</li>
+</ol>
+<div><h3>Example: Viewing Images</h3><a href="#example-viewing-images"></a></div>
+<div><pre><code>Look at the preview image and describe what you see
+</code></pre></div>
+<p>Claude will use <code>view_image</code> to fetch and analyze the image output.</p>
+<div><h3>Example: Downloading Models</h3><a href="#example-downloading-models"></a></div>
+<div><pre><code>Download the FLUX.1 schnell model for me
+</code></pre></div>
+<p>Claude will use <code>download_model</code> to download from Hugging Face to your ComfyUI models folder. Supports:</p>
+<ul>
+<li>Hugging Face (including gated models with token auth)</li>
+<li>CivitAI</li>
+<li>Direct download URLs</li>
+</ul>
+<div><h2>Terminal Controls</h2><a href="#terminal-controls"></a></div>
+<ul>
+<li><strong>Drag</strong> title bar to move</li>
+<li><strong>Drag</strong> bottom-right corner to resize</li>
+<li><strong>−</strong> Minimize</li>
+<li><strong>×</strong> Close</li>
+<li><strong>↻</strong> Reconnect session</li>
+</ul>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>┌─────────────────────────────────────────────────────┐
+│ Browser (ComfyUI) │
+│ ┌─────────────────┐ ┌──────────────────────────┐ │
+│ │ xterm.js │ │ Workflow State │ │
+│ │ Terminal │ │ (synced to backend) │ │
+│ └────────┬────────┘ └────────────┬─────────────┘ │
+│ │ WebSocket │ REST API │
+└───────────┼────────────────────────┼────────────────┘ │ │ ▼ ▼
+┌─────────────────────────────────────────────────────┐
+│ ComfyUI Server │
+│ ┌─────────────────┐ ┌──────────────────────────┐ │
+│ │ PTY Process │ │ Plugin Endpoints │ │
+│ │ (claude CLI) │ │ /claude-code/* │ │
+│ └─────────────────┘ └──────────────────────────┘ │
+└─────────────────────────────────────────────────────┘ │ │ │ ▼ │ ┌──────────────────────────┐ └──────────│ MCP Server │ │ (stdio transport) │ └──────────────────────────┘
+</code></pre></div>
+<div><h2>Files</h2><a href="#files"></a></div>
+<ul>
+<li><code>__init__.py</code> - Plugin backend: WebSocket terminal, REST endpoints</li>
+<li><code>js/claude-code.js</code> - Frontend: xterm.js terminal, workflow sync</li>
+<li><code>mcp_server.py</code> - MCP server for Claude Code integration</li>
+<li><code>CLAUDE.md</code> - Instructions for Claude when working with ComfyUI</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<div><h3>"Command 'claude' not found"</h3><a href="#command-claude-not-found"></a></div>
+<p>Install Claude Code CLI:</p>
+<p><strong>macOS / Linux / WSL:</strong></p>
+<div><pre>curl -fsSL https://claude.ai/install.sh <span>|</span> bash</pre></div>
+<p><strong>Windows (PowerShell):</strong></p>
+<div><pre>irm https:<span>//</span>claude.ai<span>/</span>install.ps1 <span>|</span> iex</pre></div>
+<p><strong>Windows (CMD):</strong></p>
+<div><pre>curl -fsSL https://claude.ai/install.cmd -o install.cmd <span>&amp;&amp;</span> install.cmd <span>&amp;&amp;</span> <span>del</span> install.cmd</pre></div>
+<div><h3>MCP server not connecting</h3><a href="#mcp-server-not-connecting"></a></div>
+<p>The plugin auto-configures MCP on startup. Check ComfyUI console for errors, or manually add to <code>~/.claude.json</code>:</p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"comfyui"</span>: { <span>"command"</span>: <span><span>"</span>python3<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>/path/to/comfy-pilot/mcp_server.py<span>"</span></span>] } }
+}</pre></div>
+<div><h3>Terminal disconnected</h3><a href="#terminal-disconnected"></a></div>
+<p>Click the ↻ button to reconnect, or check ComfyUI console for errors.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>
