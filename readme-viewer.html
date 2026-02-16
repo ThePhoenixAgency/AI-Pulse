@@ -77,13 +77,14 @@
             background: linear-gradient(135deg, #00d9ff, #825ee4);
             color: white;
             border: none;
-            padding: 10px 18px;
+            padding: 8px 12px;
             border-radius: 8px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 217, 255, 0.28);
             transition: all 0.2s;
+            min-width: 82px;
         }
 
         .prefs-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5); }
@@ -446,7 +447,7 @@
         <select id="sectionSelect">
             <option value="">-- Sections --</option>
         </select>
-        <button class="prefs-toggle" id="prefsToggle" type="button">Personnaliser</button>
+        <button class="prefs-toggle" id="prefsToggle" type="button">Filtres</button>
     </nav>
     <div class="prefs-overlay" id="prefsOverlay"></div>
 
@@ -647,10 +648,57 @@
             return div.innerHTML;
         }
 
+        function slugifyCategory(value) {
+            return (value || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .replace(/[^a-z0-9]+/g, '-')
+                .replace(/^-+|-+$/g, '');
+        }
+
+        function ensureCategorySections() {
+            const container = document.getElementById('readme-content');
+            if (!container) return [];
+
+            const existing = Array.from(container.querySelectorAll('section[data-category]'));
+            if (existing.length > 0) {
+                existing.forEach((section, index) => {
+                    const heading = section.querySelector('h2');
+                    const fallback = `section-${index + 1}`;
+                    const cat = section.getAttribute('data-category')
+                        || (heading ? slugifyCategory(heading.textContent) : '')
+                        || fallback;
+                    section.setAttribute('data-category', cat);
+                    if (!section.id) section.id = cat;
+                });
+                return existing;
+            }
+
+            const headings = Array.from(container.querySelectorAll('h2'));
+            headings.forEach((heading, index) => {
+                const cat = slugifyCategory(heading.textContent) || `section-${index + 1}`;
+                const section = document.createElement('section');
+                section.setAttribute('data-category', cat);
+                section.id = cat;
+                heading.parentNode.insertBefore(section, heading);
+                section.appendChild(heading);
+
+                let cursor = section.nextSibling;
+                while (cursor && !(cursor.nodeType === 1 && cursor.tagName === 'H2')) {
+                    const next = cursor.nextSibling;
+                    section.appendChild(cursor);
+                    cursor = next;
+                }
+            });
+
+            return Array.from(container.querySelectorAll('section[data-category]'));
+        }
+
         // ─── Build Section Nav (top dropdown) ──────────────────────────────
         function buildSectionNav() {
             const select = document.getElementById('sectionSelect');
-            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const sections = ensureCategorySections();
             const prefs = PrefsManager.load();
 
             // Clear existing options except first
@@ -669,6 +717,11 @@
                 }
             });
 
+            select.disabled = select.options.length <= 1;
+            if (select.disabled) {
+                select.innerHTML = '<option value="">Aucune section</option>';
+            }
+
             // Handle selection change
             select.onchange = function() {
                 if (this.value) {
@@ -685,7 +738,7 @@
             const container = document.getElementById('prefCategories');
             if (!container) return;
 
-            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const sections = ensureCategorySections();
             container.innerHTML = '';
 
             sections.forEach(section => {
@@ -709,7 +762,7 @@
         // ─── Apply Filters ──────────────────────────────────
         function applyFilters() {
             const prefs = PrefsManager.load();
-            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const sections = ensureCategorySections();
             const readArticles = ReadHistory.getAll();
 
             sections.forEach(section => {
@@ -798,7 +851,7 @@
                 return;
             }
 
-            const sections = document.querySelectorAll('#readme-content section[data-category]');
+            const sections = ensureCategorySections();
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -940,6 +993,7 @@
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('readme-content').style.display = 'block';
                 document.getElementById('readme-content').innerHTML = html;
+                ensureCategorySections();
 
                 // Post-render setup
                 const prefs = PrefsManager.load();

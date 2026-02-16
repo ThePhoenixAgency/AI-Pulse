@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Reader: move prefs toggle into the top navigation
+- Reader: robust section detection from `h2` headings to auto-fill "Aller a" and keep anchor navigation functional
+- Reader: compact "Filtres" button in top bar (less intrusive, mobile-first)
 - Stats: privacy-first tracker (localStorage + first-party session cookie)
 - Portfolio: GitHub links point to the repositories tab (no viewer indirection)
 - Privacy: fix header logo reference (`logo_text.png` -> `logo_final.png`)
