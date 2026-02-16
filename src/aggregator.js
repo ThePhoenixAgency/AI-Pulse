@@ -1280,7 +1280,8 @@ function generateREADME(categorizedArticles) {
 
     // Début de la section avec attributs pour le filtrage
     readme += `<section id="${category}" data-category="${category}">\n\n`;
-    readme += `## ${labelEn} / ${labelFr}\n\n`;
+    const headingLabel = labelEn === labelFr ? labelEn : `${labelEn} / ${labelFr}`;
+    readme += `## ${headingLabel}\n\n`;
 
     // Si pas d'articles dans cette catégorie
     if (articles.length === 0) {
