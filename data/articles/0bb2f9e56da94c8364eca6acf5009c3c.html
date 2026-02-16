@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Show HN: Meshcraft – Turn any photo into a 3D model in seconds</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>Show HN: Meshcraft – Turn any photo into a 3D model in seconds</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 4:28:30 PM | Lang: EN |
-    <a href="https://news.ycombinator.com/item?id=47036981" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 4:28:30 PM | Lang: EN
   </div>
   <div class="content">
     <div><div><div><p>My 10-year-old son and I were building a Roblox game together. AI wrote the Lua code, generated concept art. But when we needed 3D models for the game, there was nothing usable.</p><p>AI can write code, generate images, compose music, make videos. But 3D? There's no "Midjourney for meshes" yet. So I built one.</p><p>The tech: TripoSR (open source by Stability AI + Tripo) deployed on a HuggingFace Space with a shared H200 GPU, wrapped in a Gradio web app. Upload any photo, it removes the background, runs the image through a vision transformer, predicts a 3D density grid, extracts the mesh via marching cubes, and gives you a downloadable .obj or .glb in under 5 seconds.</p><p>What works well: objects with clean silhouettes on contrasting backgrounds. A green Hot Wheels on a white surface came out great. A grey truck on grey carpet, not so much.</p><p>What it's NOT: this isn't replacing Blender or ZBrush. Vertex-colored meshes, no UV-mapped textures (that needs 16GB+ VRAM for baking). 256 marching cubes grid resolution. But for quick prototyping, reference meshes, or game jam assets, it gets the job done.</p><p>Stack: Python, Gradio, PyTorch, HuggingFace Spaces (ZeroGPU).</p><p>Live at <a href="https://meshcraft.xyz/">https://meshcraft.xyz</a> - beta access is $9.97/mo (unlimited generations). Happy to answer technical questions.</p><p>Solo dev, 20+ years experience. Idea to deployed product in about 48 hours.</p></div></div></div>
@@ -48,5 +45,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

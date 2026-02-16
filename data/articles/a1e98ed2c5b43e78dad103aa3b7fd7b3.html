@@ -1,59 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub Agentic Workflows are now in technical preview</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>GitHub Agentic Workflows are now in technical preview</h1>
   <div class="metadata">
-    Source: GitHub Changelog | Date: 2/13/2026 | Lang: EN |
-    <a href="https://github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview" target="_blank">Original Article</a>
+    Source: GitHub Changelog | Date: 2/13/2026 3:00:26 PM | <a href="https://github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-				
-<p>GitHub Agentic Workflows let you automate repository tasks using AI agents that run within GitHub Actions. Write workflows in plain Markdown instead of complex YAML, and let AI handle intelligent decision-making for issue triage, pull request reviews, CI failure analysis, and repository maintenance.</p>
-<p>By adding Markdown files to <code>.github/workflows/</code>, you can describe automation goals in natural language. The <code>gh aw</code> CLI converts these into standard GitHub Actions workflows that execute using GitHub Copilot CLI or other coding agents. Workflows run with read-only permissions by default and use preapproved “safe outputs” for write operations.</p>
-<p>The feature is available in technical preview through the <code>gh aw</code> CLI extension.</p>
-<h2><a href="#demo">Demo</a></h2>
-<p></p>
-<h2><a href="#key-benefits">Key benefits</a></h2>
-<ul>
-<li><strong>Natural language workflows</strong>: Write automation in Markdown instead of YAML. Describe what you want in natural language, and the AI agent figures out how to do it.</li>
-<li><strong>Security-first design</strong>: Read-only by default with sandboxed execution, network isolation, SHA-pinned dependencies, and sanitized write operations through safe outputs.</li>
-<li><strong>Multiple coding agents</strong>: Works with GitHub Copilot CLI (default) or other AI coding agents. Same workflow format across all engines.</li>
-<li><strong>Deep GitHub integration</strong>: Native access to repositories, issues, pull requests, actions, and security through the GitHub MCP Server. Additional tools for browser automation, web search, and custom MCPs.</li>
-<li><strong>Flexible triggers</strong>: Respond to issues and pull request events, run on schedules, dispatch manually, or invoke via commands in comments.</li>
-<li><strong>Easy to start</strong>: Install the CLI extension, create a Markdown file, compile, and commit. They run as standard GitHub Actions.</li>
-<li><strong>Agentic authoring</strong>: Create, edit, debug, and optimize workflows using AI agents in VS Code, github.com, or your preferred coding agent.</li>
-<li><strong>Open source</strong>: Fully open source on GitHub under the MIT license. Community contributions are welcome.</li>
-</ul>
-<h2><a href="#examples">Examples</a></h2>
-<p>Imagine repository automation that automatically triages incoming issues, investigates root causes of CI failures, maintains documentation, improves test coverage, monitors compliance, and even boosts team morale. With agentic workflows, you define these behaviors in simple Markdown files.</p>
-<p>Not sure where to begin? Check out <a href="https://github.github.com/gh-aw/blog/2026-01-12-welcome-to-pelis-agent-factory/">Peli’s Agent Factory</a> which showcases over 50 specialized agentic workflows for different use cases.</p>
-<h2><a href="#getting-started">Getting started</a></h2>
-<p>Learn more by reading the <a href="https://github.github.com/gh-aw/">GitHub Agentic Workflows documentation</a>. See what others are building, join the discussion and <a href="https://gh.io/aw-tp-community-feedback">share your thoughts and feedback in the Community</a> and in the <a href="https://gh.io/next-discord">GitHub Next Discord</a>.</p>
-<p>GitHub Agentic Workflows are a collaboration among GitHub Next, Microsoft Research, and Azure Core Upstream. The implementation is open source on GitHub in the <a href="https://github.com/github/gh-aw"><code>gh-aw</code> repository</a>.</p>
-<p>Read more on the <a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/">GitHub Blog post introducing Agentic Workflows</a>.</p>
-
-			</div></div>
+    
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

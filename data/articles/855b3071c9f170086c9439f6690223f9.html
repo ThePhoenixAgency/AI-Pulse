@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>How We Added Custom Branding to Shared Video Pages</title>
 <style>
@@ -30,12 +28,11 @@
 <body>
   <h1>How We Added Custom Branding to Shared Video Pages</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/alexneamtu/how-we-added-custom-branding-to-shared-video-pages-1i54" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
-                  <p><a href="https://dev.to/alexneamtu"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F353763%2Fad2f8461-24ae-4014-8af9-f848d9cf4c5b.jpeg" alt="Alex Neamtu" /></a>
+                  <p><a href="https://dev.to/alexneamtu"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F353763%2Fad2f8461-24ae-4014-8af9-f848d9cf4c5b.jpeg" alt="Alex Neamtu"></a>
                   </p>
                   
                 </div><div>
@@ -90,16 +87,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Each layer only overrides non-null fields. If you set a custom company name at the account level but leave colors alone, you get your name with SendRec's color scheme. If you then set a custom background color on one specific video, that video gets the custom background while everything else inherits from your account settings.</p>
 
@@ -174,16 +167,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>The watch page template conditionally renders the logo image only if <code>LogoURL</code> is non-empty. The company name always shows.</p>
 
@@ -193,7 +182,7 @@
   Server-side rendering, not client-side theming
 </h2>
 
-<p>The watch page is a Go HTML template, not a React component. Colors are injected as CSS custom properties in a <code>&lt;style&gt;</code> block:<br />
+<p>The watch page is a Go HTML template, not a React component. Colors are injected as CSS custom properties in a <code>&lt;style&gt;</code> block:<br>
 </p>
 
 <div>
@@ -211,16 +200,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>The template CSS references these variables everywhere it previously had hardcoded hex values. This means the colors are baked into the HTML on the server — no JavaScript runs to apply theming, no flash of default colors before the custom theme kicks in.</p>
 
@@ -232,7 +217,7 @@
   Feature gating
 </h2>
 
-<p>Custom branding is a premium feature. On the hosted platform, it requires a paid plan. For self-hosters, it's unlocked with a single environment variable:<br />
+<p>Custom branding is a premium feature. On the hosted platform, it requires a paid plan. For self-hosters, it's unlocked with a single environment variable:<br>
 </p>
 
 <div>
@@ -243,16 +228,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>The API endpoints return 403 when branding is disabled. But the watch page rendering is not gated — if branding data exists in the database, the watch page renders it regardless of the flag. This handles the case where a user sets up branding, their subscription lapses, and their existing shared links should still look right. The gate prevents new branding changes, not viewing existing ones.</p>
 
@@ -264,7 +245,7 @@
   The data model
 </h2>
 
-<p>Two tables, seven columns each:<br />
+<p>Two tables, seven columns each:<br>
 </p>
 
 <div>
@@ -294,20 +275,16 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
 <p>All columns are nullable. This is important — null means "inherit," not "empty." An empty string would mean "the user explicitly set this to nothing," which is a different intent. We use pointer types (<code>*string</code>) in Go to preserve the distinction.</p>
 
-<p>The watch page query joins <code>user_branding</code> onto the video lookup:<br />
+<p>The watch page query joins <code>user_branding</code> onto the video lookup:<br>
 </p>
 
 <div>
@@ -321,16 +298,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>One query gets the video, the user's branding, and the video's branding overrides. The Go code merges them with <code>resolveBranding()</code> before passing the result to the template.</p>
 
@@ -356,11 +329,9 @@
 
 <p><a href="https://sendrec.eu/" target="_blank">SendRec</a> is open source (AGPL-3.0) and self-hostable. Custom branding is live at <a href="https://app.sendrec.eu/" target="_blank">app.sendrec.eu</a> — go to Settings, upload your logo, pick your colors, and share a video to see your branded watch page. The implementation is in <a href="https://github.com/sendrec/sendrec/blob/main/internal/video/branding.go" target="_blank"><code>branding.go</code></a>.</p>
 
-
             </div></div>
   </div>
   
-
 
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -382,5 +353,5 @@
     });
 
   </script>
-</body>
-</html>
+
+</body></html>

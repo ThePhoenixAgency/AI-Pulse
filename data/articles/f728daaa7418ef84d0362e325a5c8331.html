@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>[$] Open source security in spite of AI</title>
 <style>
@@ -18,35 +16,33 @@
 <body>
   <h1>[$] Open source security in spite of AI</h1>
   <div class="metadata">
-    Source: LWN.net | Date: 2/16/2026 7:13:36 PM | Lang: EN |
-    <a href="https://lwn.net/Articles/1058266/" target="_blank">Original Article</a>
+    Source: LWN.net | Date: 2/16/2026 8:13:36 PM | <a href="https://lwn.net/Articles/1058266/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <p>The curl project has found AI-powered tools to be a mixed bag when
-it comes to security reports. At FOSDEM 2026, curl creator and
+it comes to security reports. At FOSDEM&nbsp;2026, curl creator and
 lead developer Daniel Stenberg used his keynote session to discuss his
 experience receiving a slew of low-quality reports and, at the same
 time, realizing that large language model (LLM) tools can sometimes
 find flaws that other tools have missed.</p>
-    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

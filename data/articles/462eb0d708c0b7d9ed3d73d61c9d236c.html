@@ -1,118 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Community spotlight: MyEmbeddedStuff</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Community spotlight: MyEmbeddedStuff</h1>
   <div class="metadata">
-    Source: Arduino Blog | Date: 1/29/2026 | Lang: EN |
-    <a href="https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/" target="_blank">Original Article</a>
+    Source: Arduino Blog | Date: 1/29/2026 3:26:38 PM | <a href="https://blog.arduino.cc/2026/01/29/community-spotlight-myembeddedstuff/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content">
-    <div><div>
-				
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/UNO-Q-1024x684.jpg" alt="" /></p></figure>
-
-
-
-<p>One of the things we love most about the Arduino community is the way knowledge flows freely – makers, engineers, and hobbyists sharing what they’ve learned so others can build on it. Case in point, the in-depth technical analyses coming from <a href="https://myembeddedstuff.com/">MyEmbeddedStuff</a>, a blog dedicated to embedded systems written by an engineer with over seven years of professional experience and a genuine passion for understanding how things work at a low level. </p>
-
-
-
-<p>Since the <a href="https://blog.arduino.cc/2025/10/07/a-new-chapter-for-arduino-with-qualcomm-uno-q-and-you/">launch of the Arduino UNO Q in October</a>, MyEmbeddedStuff has started publishing detailed posts exploring the board’s architecture, communication protocols, and real-world performance. We reached out to learn more about the person behind the blog and what drew them to explore the Arduino UNO Q so thoroughly. Their story will resonate with many in the Arduino community: curiosity, persistence, and a belief that sharing knowledge makes everyone stronger.</p>
-
-
-
-<h2>From blink to… a career in tech</h2>
-
-
-
-<p>Like many embedded engineers, the author of MyEmbeddedStuff started young. “From a very young age, I’ve always been passionate about computers and technology,” they explain. “At one point I even considered studying something more focused on computer science, but I felt I was missing interaction with the real world. That’s when I started leaning more towards electronics, and especially robotics: seeing how small systems could actually do things was the real turning point for me.”</p>
-
-
-
-<p>That curiosity led to the classic electronics “hello world” – blinking an LED – and from there, a deep dive into microcontrollers, programming, and everything that makes embedded systems tick. After completing both a Bachelor’s and Master’s degree in Electronic Systems, they’ve spent their career working on everything from ultra-low-power IoT devices to complex multicore systems running embedded Linux.</p>
-
-
-
-<p>And Arduino? “Arduino was also a key learning tool for me when I was starting out,” they say. It’s a refrain we hear often, and it never gets old – Arduino as the gateway that makes embedded systems accessible to anyone curious enough to try.</p>
-
-
-
-<h2>Why UNO Q?</h2>
-
-
-
-<p>Over the past few years, MyEmbeddedStuff has noticed a clear trend in professional embedded development: increasingly complex systems combining real-time microcontrollers with Linux-based processors. That’s exactly why the UNO Q immediately stood out.</p>
-
-
-
-<p>“The release of the UNO Q immediately caught my attention, as it brings together both worlds: a Linux-based system on one side, and an STM32 handling time-critical tasks on the other,” they explain. “I believe that a board like the UNO Q, at a relatively accessible cost, can be a very powerful learning platform for people who are getting into embedded systems today.”</p>
-
-
-
-<p>But beyond its educational potential, the UNO Q addressed a practical problem they’ve encountered professionally: communication between microcontrollers or between microcontrollers and host systems. “In several of my professional projects, communication between microcontrollers or between microcontrollers and a host system has been one of the most complex and time-consuming parts. That’s precisely why the approach taken by the UNO Q caught my interest.”</p>
-
-
-
-<h2>Beyond the documentation</h2>
-
-
-
-<p>What sets MyEmbeddedStuff’s analysis apart is the depth of investigation. While the UNO Q code is available on GitHub and the README files provide solid documentation, that wasn’t enough. “I’m quite curious by nature and like to understand things at a low level,” they note. “Reading the documentation wasn’t enough for me: I wanted to observe it with a logic analyzer, measure real timings between messages, and understand exactly how the frames exchanged between the MPU and the MCU were structured.”</p>
-
-
-
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/UNO-Q-1-1-1024x732.jpg" alt="" /></p></figure>
-
-
-
-<p>This kind of rigorous, hands-on exploration resulted in detailed blog posts that have become valuable resources for the community. Their <a href="https://myembeddedstuff.com/arduino-uno-q-rpc-explained">deep dive into the RPC communication protocol</a> breaks down exactly how the microcontroller and processor talk to each other, complete with timing diagrams and real measurements. </p>
-
-
-
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/arduino_uno_q_serial-1024x198.png" alt="" /></p></figure>
-
-
-
-<p>Their <a href="https://myembeddedstuff.com/arduino-uno-q-boot-time">analysis of boot time</a> addresses misinformation circulating online with objective data: “Some people mentioned 20 seconds, others 40, and so on. After measuring it objectively, the actual boot time is around 40 seconds from power-on to the execution of a preloaded sketch. […] Many people see [the boot time] as a negative point, but in reality it’s completely normal for any SBC. There’s a lot happening under the hood: system boot, kernel initialization, services starting up, etc. The issue isn’t the boot time itself, but rather comparing it to boards based solely on microcontrollers, where startup is almost instantaneous. They belong to different categories.”</p>
-
-
-
-<p>This kind of clear, technically grounded analysis can help understand the true purpose of UNO Q: “From my point of view, the UNO Q doesn’t replace traditional Arduino boards: it fills a different space. It’s well suited for projects that need the flexibility and power of a Linux system combined with real-time control and low latency, without consuming resources on the main processor. In that context, the architecture makes a lot of sense.”</p>
-
-
-
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/01/arduino_uno_q_power_on_mcu_mpu_difference_time-1024x306.png" alt="" /></p></figure>
-
-
-
-<h2>Why sharing matters</h2>
-
-
-
-<p>We asked MyEmbeddedStuff why they started their blog in the first place: “I’m not a big fan of the current trend in embedded systems development,” they said. “It seems to me that, with the rise of artificial intelligence, there’s no longer as much research or sharing in forums, nor are different techniques discussed as frequently as before. I think many people might enjoy a blog-like format again, a space where ideas can be developed at their own pace.”Interested in finding out more? Check out <a href="https://myembeddedstuff.com/">MyEmbeddedStuff’s blog</a> to learn from someone who approaches embedded systems with curiosity and a genuine desire to share what they’ve learned in a clear, accessible way.</p>
-
-                
-            </div></div>
+  <div class="content"><p>One of the things we love most about the Arduino community is the way knowledge flows freely – makers, engineers, and hobbyists sharing what they’ve learned so others can build on it. Case in point, the in-depth technical analyses coming from MyEmbeddedStuff, a blog dedicated to embedded systems written by an engineer with over seven years of professional experience and a genuine passion for understanding how things work at a low level.&nbsp; Since the launch of the Arduino UNO Q in October, MyEmbeddedStuff has started publishing detailed posts exploring the board’s architecture, communication protocols, and real-world performance. We reached out to learn more about the person behind the blog and what drew them to explore the Arduino&nbsp;UNO Q so thoroughly. Their story will resonate with many in the Arduino community: curiosity, persistence, and a belief that sharing knowledge makes everyone stronger. From blink to… a career in tech Like many embedded engineers, the author of MyEmbeddedStuff started young. “From a very young age, I’ve always been passionate about computers and technology,” they explain. “At one point I even considered studying something more focused on computer science, but I felt I was missing interaction with the real world. That’s when I started leaning more towards electronics, and especially robotics: seeing how small systems could actually do things was the real turning point for me.” That curiosity led to the classic electronics “hello world” – blinking an LED – and from there, a deep dive into microcontrollers, programming, and everything that makes embedded systems tick. After completing both a Bachelor’s and Master’s degree in Electronic Systems, they’ve spent their career working on everything from ultra-low-power IoT devices to complex multicore systems running embedded Linux. And Arduino? “Arduino was also a key learning tool for me when I was starting out,” they say. It’s a refrain we hear often, and it never gets old – Arduino as the gateway that makes embedded systems accessible to anyone curious enough to try. Why UNO Q? Over the past few years, MyEmbeddedStuff has noticed a clear trend in professional embedded development: increasingly complex systems combining real-time microcontrollers with Linux-based processors. That’s exactly why the UNO Q immediately stood out. “The release of the UNO Q immediately caught my attention, as it brings together both worlds: a Linux-based system on one side, and an STM32 handling time-critical tasks on the other,” they explain. “I believe that a board like the UNO Q, at a relatively accessible cost, can be a very powerful learning platform for people who are getting into embedded systems today.” But beyond its educational potential, the UNO Q addressed a practical problem they’ve encountered professionally: communication between microcontrollers or between microcontrollers and host systems. “In several of my professional projects, communication between microcontrollers or between microcontrollers and a host system has been one of the most complex and time-consuming parts. That’s precisely why the approach taken by the UNO Q caught my interest.” Beyond the documentation What sets MyEmbeddedStuff’s analysis apart is the depth of investigation. While the UNO Q code is available on GitHub and the README files provide solid documentation, that wasn’t enough. “I’m quite curious by nature and like to understand things at a low level,” they note. “Reading the documentation wasn’t enough for me: I wanted to observe it with a logic analyzer, measure real timings between messages, and understand exactly how the frames exchanged between the MPU and the MCU were structured.” This kind of rigorous, hands-on exploration resulted in detailed blog posts that have become valuable resources for the community. Their deep dive into the RPC communication protocol breaks down exactly how the microcontroller and processor talk to each other, complete with timing diagrams and real measurements. Their analysis of boot time addresses misinformation circulating online with objective data: “Some people mentioned 20 seconds, others 40, and so on. After measuring it objectively, the actual boot time is around 40 seconds from power-on to the execution of a preloaded sketch. […] Many people see [the boot time] as a negative point, but in reality it’s completely normal for any SBC. There’s a lot happening under the hood: system boot, kernel initialization, services starting up, etc. The issue isn’t the boot time itself, but rather comparing it to boards based solely on microcontrollers, where startup is almost instantaneous. They belong to different categories.” This kind of clear, technically grounded analysis can help understand the true purpose of UNO Q: “From my point of view, the UNO Q doesn’t replace traditional Arduino boards: it fills a different space. It’s well suited for projects that need the flexibility and power of a Linux system combined with real-time control and low latency, without consuming resources on the main processor. In that context, the architecture makes a lot of sense.” Why sharing matters We asked MyEmbeddedStuff why they started their blog in the first place: “I’m not a big fan of the current trend in embedded systems development,” they said. “It seems to me that, with the rise of artificial intelligence, there’s no longer as much research or sharing in forums, nor are different techniques discussed as frequently as before. I think many people might enjoy a blog-like format again, a space where ideas can be developed at their own pace.”Interested in finding out more? Check out MyEmbeddedStuff’s blog to learn from someone who approaches embedded systems with curiosity and a genuine desire to share what they’ve learned in a clear, accessible way.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

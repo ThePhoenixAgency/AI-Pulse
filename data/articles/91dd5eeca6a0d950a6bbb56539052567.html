@@ -1,72 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
-<title>GitHub - github/gh-aw: GitHub Agentic Workflows</title>
+<title>github/gh-aw</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
-  <h1>GitHub - github/gh-aw: GitHub Agentic Workflows</h1>
+  <h1>github/gh-aw</h1>
   <div class="metadata">
-    Source: GitHub Trending | Date: Invalid Date | Lang: EN |
-    <a href="https://github.com/github/gh-aw" target="_blank">Original Article</a>
+    Source: GitHub Trending | Date: 2/16/2026 11:05:52 PM | <a href="https://github.com/github/gh-aw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><article>
-<p></p><h2>GitHub Agentic Workflows</h2><a href="#github-agentic-workflows"></a><p></p>
-<p>Write agentic workflows in natural language markdown, and run them in GitHub Actions.</p>
-<p></p><h2>Contents</h2><a href="#contents"></a><p></p>
-<ul>
-<li><a href="#quick-start">Quick Start</a></li>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#guardrails">Guardrails</a></li>
-<li><a href="#documentation">Documentation</a></li>
-<li><a href="#contributing">Contributing</a></li>
-<li><a href="#share-feedback">Share Feedback</a></li>
-<li><a href="#pelis-agent-factory">Peli's Agent Factory</a></li>
-<li><a href="#related-projects">Related Projects</a></li>
-</ul>
-<p></p><h2>Quick Start</h2><a href="#quick-start"></a><p></p>
-<p>Ready to get your first agentic workflow running? Follow our step-by-step <a href="https://github.github.com/gh-aw/setup/quick-start/">Quick Start Guide</a> to install the extension, add a sample workflow, and see it in action.</p>
-<p></p><h2>Overview</h2><a href="#overview"></a><p></p>
-<p>Learn about the concepts behind agentic workflows, explore available workflow types, and understand how AI can automate your repository tasks. See <a href="https://github.github.com/gh-aw/introduction/how-they-work/">How It Works</a>.</p>
-<p></p><h2>Guardrails</h2><a href="#guardrails"></a><p></p>
-<p>Guardrails, safety and security are foundational to GitHub Agentic Workflows. Workflows run with read-only permissions by default, with write operations only allowed through sanitized <code>safe-outputs</code>. The system implements multiple layers of protection including sandboxed execution, input sanitization, network isolation, supply chain security (SHA-pinned dependencies), tool allow-listing, and compile-time validation. Access can be gated to team members only, with human approval gates for critical operations, ensuring AI agents operate safely within controlled boundaries. See the <a href="https://github.github.com/gh-aw/introduction/architecture/">Security Architecture</a> for comprehensive details on threat modeling, implementation guidelines, and best practices.</p>
-<p>Using agentic workflows in your repository requires careful attention to security considerations and careful human supervision, and even then things can still go wrong. Use it with caution, and at your own risk.</p>
-<p></p><h2>Documentation</h2><a href="#documentation"></a><p></p>
-<p>For complete documentation, examples, and guides, see the <a href="https://github.github.com/gh-aw/">Documentation</a>.</p>
-<p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
-<p>For development setup and contribution guidelines, see <a href="https://github.com/github/gh-aw/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a>.</p>
-<p></p><h2>Share Feedback</h2><p></p>
-<p>We welcome your feedback on GitHub Agentic Workflows!</p>
-<ul>
-<li><a href="https://github.com/orgs/community/discussions/186451">Community Feedback Discussions</a></li>
-<li><a href="https://gh.io/next-discord">GitHub Next Discord</a></li>
-</ul>
-<p></p><h2>Peli's Agent Factory</h2><a href="#pelis-agent-factory"></a><p></p>
-<p>See the <a href="https://github.github.com/gh-aw/blog/2026-01-12-welcome-to-pelis-agent-factory/">Peli's Agent Factory</a> for a guided tour through many uses of agentic workflows.</p>
-<p></p><h2>Related Projects</h2><a href="#related-projects"></a><p></p>
-<p>GitHub Agentic Workflows is supported by companion projects that provide additional security and integration capabilities:</p>
-<ul>
-<li><strong><a href="https://github.com/github/gh-aw-firewall">Agent Workflow Firewall (AWF)</a></strong> - Network egress control for AI agents, providing domain-based access controls and activity logging for secure workflow execution</li>
-<li><strong><a href="https://github.com/github/gh-aw-mcpg">MCP Gateway</a></strong> - Routes Model Context Protocol (MCP) server calls through a unified HTTP gateway for centralized access management</li>
-</ul>
-</article></div></div>
+    <p>GitHub Agentic Workflows GitHub Agentic Workflows Write agentic workflows in natural language markdown, and run them in GitHub Actions. Contents Quick Start Overview Guardrails Documentation Contributing Share Feedback Peli's Agent Factory Related Projects Quick Start Ready to get your first agentic workflow running? Follow our step-by-step Quick Start Guide to install the extension, add a sample workflow, and see it in action. Overview Learn about the concepts behind agentic workflows, explore available workflow types, and understand how AI can automate your repository tasks. See How It Works. Guardrails Guardrails, safety and security are foundational to GitHub Agentic Workflows. Workflows run with read-only permissions by default, with write operations only allowed through sanitized safe-outputs. The system implements multiple layers of protection including sandboxed execution, input sanitization, network isolation, supply chain security (SHA-pinned dependencies), tool allow-listing, and compile-time validation. Access can be gated to team members only, with human approval gates for critical operations, ensuring AI agents operate safely within controlled boundaries.</p>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

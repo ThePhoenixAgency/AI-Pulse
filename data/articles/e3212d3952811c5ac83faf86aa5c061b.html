@@ -1,118 +1,56 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Ces extensions Chrome vous espionnent en silence</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>Ces extensions Chrome vous espionnent en silence</h1>
   <div class="metadata">
-    Source: GNT | Date: 2/16/2026 | Lang: FR |
-    <a href="https://www.generation-nt.com/actualites/extensions-chrome-espionnage-donnees-navigation-securite-2070813" target="_blank">Original Article</a>
+    Source: GNT | Date: 2/16/2026 5:10:01 PM | <a href="https://www.generation-nt.com/actualites/extensions-chrome-espionnage-donnees-navigation-securite-2070813" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
-  <div class="content">
-    <div><article>
-			<p>
-				Publié le
-				<time>
-					16 février 2026 à 17:10</time>
-									par <a href="https://www.generation-nt.com/informations/a-propos/mathieu.m"><span>Mathieu M.</span></a>
-											</p>
-
-			
-			
-			
-			<section>
-				<div>
-											
-										<p><span>Des enquêtes récentes révèlent une surveillance de masse via des extensions de navigateur sur Chrome. Des dizaines de millions d'utilisateurs sont concernés par le vol de leurs conversations avec des IA, de leur historique de navigation et de leurs données personnelles, souvent par des outils se faisant passer pour des services de sécurité ou de productivité.</span></p>
-				</div>
-
-																	
-					
-											<a href="https://img.generation-nt.com/google-chrome-faille_050002D001705342.webp">
-							<div>
-								
-	
-		        
-                    
-        		<img src="https://img.generation-nt.com/google-chrome-faille_0298000001705342.jpg" alt="google-chrome-faille" />
-	
-							</div>
-						</a>
-									
-								
-			</section>
-
-			
-			<div><p>Des centaines d'extensions de navigateur, téléchargées des dizaines de millions de fois, ne se contentent pas de fournir le service promis. Elles opèrent comme de véritables <strong>mouchards numériques</strong>, aspirant en silence une quantité vertigineuse d'informations personnelles. De récentes enquêtes menées par des sociétés de cybersécurité comme<strong> <a href="https://www.koi.ai/blog/urban-vpn-browser-extension-ai-conversations-data-collection" target="_blank">KOI</a> et LayerX</strong>, ainsi que par des chercheurs indépendants, lèvent le voile sur cet <strong>écosystème opaque</strong> où la confiance de l'utilisateur est trahie pour alimenter le marché des courtiers en données.</p>
-<h2>Quelles informations sont secrètement collectées ?</h2>
-<p>Le cas d'Urban VPN Proxy est emblématique : ces <a href="https://www.generation-nt.com/actualites/copilot-windows-11-file-explorer-ia-2068837"><strong>extensions</strong></a>, installées par des millions de personnes, enregistraient systématiquement les <strong>conversations avec des chatbots IA</strong> comme ChatGPT, Gemini ou Claude. Prompts, réponses, et métadonnées étaient exfiltrés, et ce, <strong>même lorsque le VPN n'était pas activé</strong>.</p>
-<p><a href="https://img.generation-nt.com/hacker_01689803.webp" target="_blank">
-		        
-                    
-        		<img src="https://img.generation-nt.com/hacker_04b002a301689803.jpg" alt="hacker" />
-	
-</a></p>
-<p>Mais l'espionnage va bien <strong>au-delà des IA</strong>. D'autres outils malveillants, souvent déguisés en services de productivité, ciblent des informations encore plus sensibles. Quinze d'entre eux visaient spécifiquement les <strong>comptes Gmail</strong>, capables de lire et d'extraire le contenu des emails. Le siphonnage de l'historique de <a href="https://www.generation-nt.com/actualites/microsoft-edge-faille-securite-mise-jour-critique-chromium-2068880"><strong>navigation</strong></a> complet est une autre pratique courante, transformant <strong>chaque clic</strong> en une donnée monétisable.</p>
-<h2>Comment fonctionnent ces mouchards et qui en profite ?</h2>
-<p>L'ingéniosité technique de ces logiciels est redoutable. Dès qu'un utilisateur visite une page ciblée, un <strong>script s'injecte</strong> pour intercepter les requêtes réseau. Les informations sont alors déviées vers des serveurs contrôlés par les éditeurs avant d'être transmises à des tiers. Certaines extensions vont jusqu'à intégrer des mécanismes de <strong>reconnaissance vocale</strong>, pouvant être activés à distance pour enregistrer l'<strong>environnement sonore de la victime</strong>.</p>
-<p><a href="https://img.generation-nt.com/hacker-2_01702169.webp" target="_blank">
-		        
-                    
-        		<img src="https://img.generation-nt.com/hacker-2_05b0033001702169.jpg" alt="hacker 2" />
-	
-</a></p>
-<p>Derrière ces opérations se trouvent des entreprises spécialisées dans la <a href="https://www.generation-nt.com/actualites/arnaque-sms-appel-fraude-arnaque-double-detente-sms-fraude-cybersecurite-hameconnage-2069227"><strong>données</strong></a>. Urban Cyber Security Inc., par exemple, est liée à <strong>BiScience</strong>, un courtier bien connu. D'autres géants comme <strong>Similarweb</strong> et Semrush sont également cités comme destinataires de ces historiques volés. Pour plus de la moitié des cas identifiés, l'identité du collecteur final reste un mystère, soulignant l'opacité d'un <strong>marché gris florissant</strong>.</p>
-<h2>Quels sont les risques réels et comment s'en protéger ?</h2>
-<p>Les implications dépassent largement la simple publicité ciblée. La collecte de l'historique de navigation peut mener à de l'<strong>espionnage industriel</strong>, lorsque des employés installent sans le savoir des outils sur leur <a href="https://www.generation-nt.com/actualites/chrome-extensions-ia-malware-aiframe-securite-2070763"><strong>Chrome</strong></a> qui capturent des URL internes. Les conversations avec les IA, riches en informations professionnelles et personnelles, représentent une manne financière colossale et un <strong>risque de fuite majeur</strong>.</p>
-<p><a href="https://img.generation-nt.com/hacker_01702171.webp" target="_blank">
-		        
-                    
-        		<img src="https://img.generation-nt.com/hacker_05b0033001702171.jpg" alt="hacker" />
-	
-</a></p>
-<p>La protection passe par une <strong>hygiène numérique stricte</strong>. Les experts recommandent de désinstaller immédiatement les extensions suspectes. Avant toute installation, il est crucial de vérifier systématiquement les <strong>permissions demandées</strong> et de privilégier les solutions <strong>open source</strong> dont le code est auditable. La règle d'or est simple : moins, c'est mieux. N'installez que ce qui est absolument nécessaire.</p>
-<h3><strong>Foire Aux Questions (FAQ)</strong></h3>
-
-<h3><strong>Les VPN gratuits sont-ils tous dangereux ?</strong></h3>
-
-<p>Pas nécessairement tous, mais le risque est très élevé. Un service gratuit doit bien financer son infrastructure. Si vous n'êtes pas le client, <strong>vous êtes souvent le produit</strong>. La monétisation des données de navigation est un modèle économique courant pour ces acteurs, ce qui va à l'encontre de la promesse de confidentialité.</p>
-<h3><strong>Comment repérer une extension potentiellement malveillante ?</strong></h3>
-
-<p>Méfiez-vous des <strong>permissions excessives</strong>. Une extension de traduction n'a aucune raison d'accéder à l'historique de tous vos sites. Lisez les avis des autres utilisateurs, mais avec prudence. Privilégiez les développeurs connus et, si possible, les <strong>extensions open source</strong> qui offrent plus de transparence.</p>
-<h3><strong>Pourquoi Google n'arrive-t-il pas à nettoyer le Chrome Web Store ?</strong></h3>
-
-<p>L'ampleur du problème est immense, avec des dizaines de milliers d'extensions disponibles. La modération, bien qu'existante, peine à suivre le rythme des nouvelles publications et des mises à jour malveillantes. De plus, certaines entreprises exploitent habilement des <strong>zones grises</strong> dans les politiques de Google pour rester dans une légalité formelle tout en violant l'esprit des règles de protection des utilisateurs.</p>
-
-
-
-</div>
-
-    <div>
-            
-            <p>Journaliste GNT spécialisé imprimantes 3D et nouvelles technologies</p>
-        </div>
-    
-
-    
-    
-
-    <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p>
-
-    
-    </article></div>
+  <div class="content"><p>Publié le 16 février 2026 à 17:10 par Mathieu M. Des enquêtes récentes révèlent une surveillance de masse via des extensions de navigateur sur Chrome. Des dizaines de millions d'utilisateurs sont concernés par le vol de leurs conversations avec des IA, de leur historique de navigation et de leurs données personnelles, souvent par des outils se faisant passer pour des services de sécurité ou de productivité. Des centaines d'extensions de navigateur, téléchargées des dizaines de millions de fois, ne se contentent pas de fournir le service promis. Elles opèrent comme de véritables mouchards numériques, aspirant en silence une quantité vertigineuse d'informations personnelles. De récentes enquêtes menées par des sociétés de cybersécurité comme KOI et LayerX, ainsi que par des chercheurs indépendants, lèvent le voile sur cet écosystème opaque où la confiance de l'utilisateur est trahie pour alimenter le marché des courtiers en données.
+Quelles informations sont secrètement collectées ?
+Le cas d'Urban VPN Proxy est emblématique : ces extensions, installées par des millions de personnes, enregistraient systématiquement les conversations avec des chatbots IA comme ChatGPT, Gemini ou Claude. Prompts, réponses, et métadonnées étaient exfiltrés, et ce, même lorsque le VPN n'était pas activé. Mais l'espionnage va bien au-delà des IA. D'autres outils malveillants, souvent déguisés en services de productivité, ciblent des informations encore plus sensibles. Quinze d'entre eux visaient spécifiquement les comptes Gmail, capables de lire et d'extraire le contenu des emails. Le siphonnage de l'historique de navigation complet est une autre pratique courante, transformant chaque clic en une donnée monétisable.
+Comment fonctionnent ces mouchards et qui en profite ?
+L'ingéniosité technique de ces logiciels est redoutable. Dès qu'un utilisateur visite une page ciblée, un script s'injecte pour intercepter les requêtes réseau. Les informations sont alors déviées vers des serveurs contrôlés par les éditeurs avant d'être transmises à des tiers. Certaines extensions vont jusqu'à intégrer des mécanismes de reconnaissance vocale, pouvant être activés à distance pour enregistrer l'environnement sonore de la victime. Derrière ces opérations se trouvent des entreprises spécialisées dans la données. Urban Cyber Security Inc., par exemple, est liée à BiScience, un courtier bien connu. D'autres géants comme Similarweb et Semrush sont également cités comme destinataires de ces historiques volés. Pour plus de la moitié des cas identifiés, l'identité du collecteur final reste un mystère, soulignant l'opacité d'un marché gris florissant.
+Quels sont les risques réels et comment s'en protéger ?
+Les implications dépassent largement la simple publicité ciblée. La collecte de l'historique de navigation peut mener à de l'espionnage industriel, lorsque des employés installent sans le savoir des outils sur leur Chrome qui capturent des URL internes. Les conversations avec les IA, riches en informations professionnelles et personnelles, représentent une manne financière colossale et un risque de fuite majeur. La protection passe par une hygiène numérique stricte. Les experts recommandent de désinstaller immédiatement les extensions suspectes. Avant toute installation, il est crucial de vérifier systématiquement les permissions demandées et de privilégier les solutions open source dont le code est auditable. La règle d'or est simple : moins, c'est mieux. N'installez que ce qui est absolument nécessaire.
+Foire Aux Questions (FAQ) Les VPN gratuits sont-ils tous dangereux ? Pas nécessairement tous, mais le risque est très élevé. Un service gratuit doit bien financer son infrastructure. Si vous n'êtes pas le client, vous êtes souvent le produit. La monétisation des données de navigation est un modèle économique courant pour ces acteurs, ce qui va à l'encontre de la promesse de confidentialité.
+Comment repérer une extension potentiellement malveillante ? Méfiez-vous des permissions excessives. Une extension de traduction n'a aucune raison d'accéder à l'historique de tous vos sites. Lisez les avis des autres utilisateurs, mais avec prudence. Privilégiez les développeurs connus et, si possible, les extensions open source qui offrent plus de transparence.
+Pourquoi Google n'arrive-t-il pas à nettoyer le Chrome Web Store ? L'ampleur du problème est immense, avec des dizaines de milliers d'extensions disponibles. La modération, bien qu'existante, peine à suivre le rythme des nouvelles publications et des mises à jour malveillantes. De plus, certaines entreprises exploitent habilement des zones grises dans les politiques de Google pour rester dans une légalité formelle tout en violant l'esprit des règles de protection des utilisateurs. Journaliste GNT spécialisé imprimantes 3D et nouvelles technologies Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. En savoir plus.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

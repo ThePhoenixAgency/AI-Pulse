@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub - pinkhairs/cutemagick: Self-host websites with infinite undo</title>
 <style>
@@ -23,18 +21,17 @@
 <body>
   <h1>GitHub - pinkhairs/cutemagick: Self-host websites with infinite undo</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/14/2026 | Lang: EN |
-    <a href="https://github.com/pinkhairs/cutemagick" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div><article><p></p><h2>Cute Magick</h2><a href="#cute-magick"></a><p></p>
 <p>Cute Magick is a self-hosted, Git-backed website environment with <strong>built-in infinite undo</strong>.</p>
-<p><a target="_blank" href="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png"><img src="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png" alt="Cute Magick screenshot" /></a></p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png"><img src="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png" alt="Cute Magick screenshot"></a></p>
 <p>It's for people who want to build real websites—but don't want to fight platforms, config, and SaaS billing just to experiment, learn, or keep infinite projects alive.</p>
 <p>You get a real server, real files, real URLs, and the ability to rewind your site's entire history at any time.</p>
 <p> <strong>Full documentation:</strong>
 <a href="https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90">https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90</a></p>
-<hr />
+<hr>
 <p></p><h2>Get Started</h2><a href="#get-started"></a><p></p>
 <p></p><h3>Hosted — up and running in a minute</h3><a href="#hosted--up-and-running-in-a-minute"></a><p></p>
 <p>The fastest way to try Cute Magick is the hosted version. Sign up, get your admin link, and you're in.</p>
@@ -61,7 +58,7 @@ The cheapest VPS is usually overkill.
 Your laptop won't notice it's running.</p>
 <p> <strong>Full installation and setup:</strong>
 See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
-<hr />
+<hr>
 <p></p><h2>What is Cute Magick?</h2><a href="#what-is-cute-magick"></a><p></p>
 <p>Cute Magick starts from a simple idea:</p>
 <blockquote>
@@ -84,7 +81,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 <li>optional Git remotes for backup</li>
 </ul>
 <p>Your sites are just folders and files. Your history is just Git.</p>
-<hr />
+<hr>
 <p></p><h2>Why Cute Magick?</h2><a href="#why-cute-magick"></a><p></p>
 <p>If you:</p>
 <ul>
@@ -95,7 +92,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 </ul>
 <p>Cute Magick is designed for you.</p>
 <p>It's a <strong>workspace</strong> where websites are allowed to be unfinished, experimental, and reversible.</p>
-<hr />
+<hr>
 <p></p><h2>Core Concepts (Short Version)</h2><a href="#core-concepts-short-version"></a><p></p>
 <p></p><h3>Sites</h3><a href="#sites"></a><p></p>
 <p>A site is just a folder.</p>
@@ -112,7 +109,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 <li><strong>preview#123</strong> (on-demand, disposable private version render)</li>
 <li><strong>live</strong> (what the world sees)</li>
 </ul>
-<hr />
+<hr>
 <p></p><h3>Versions (Time Machine)</h3><a href="#versions-time-machine"></a><p></p>
 <p>Every file save, upload, delete, rename creates a snapshot automatically.</p>
 <p>You can:</p>
@@ -123,7 +120,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 <li>undo mistakes from months ago</li>
 </ul>
 <p>Under the hood, this is Git—but you don't need to know Git to use it.</p>
-<hr />
+<hr>
 <p></p><h3>Secrets</h3><a href="#secrets"></a><p></p>
 <p>Secrets are stored as environment variables in a hidden <code>.env</code> file:</p>
 <ul>
@@ -137,7 +134,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 <li>not included in exports</li>
 <li>injected at runtime only</li>
 </ul>
-<hr />
+<hr>
 <p></p><h3>Databases</h3><a href="#databases"></a><p></p>
 <p>Each site can use SQLite databases.</p>
 <p>SQLite is:</p>
@@ -148,7 +145,7 @@ See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 </ul>
 <p>Databases persist across previews and versions.
 Your site history rewinds; your data does not—by design.</p>
-<hr />
+<hr>
 <p></p><h3>Remotes (Optional)</h3><a href="#remotes-optional"></a><p></p>
 <p>You can connect a Git remote (GitHub, GitLab, your own server) to:</p>
 <ul>
@@ -157,7 +154,7 @@ Your site history rewinds; your data does not—by design.</p>
 <li>work locally and sync back</li>
 </ul>
 <p>Secrets and database contents are never pushed.</p>
-<hr />
+<hr>
 <p></p><h2>Under the Hood</h2><a href="#under-the-hood"></a><p></p>
 <p>Cute Magick stores all persistent state in <code>/data</code>.</p>
 <p>Key directories:</p>
@@ -169,7 +166,7 @@ Your site history rewinds; your data does not—by design.</p>
 <li><code>/data/keys</code> — generated SSH keys</li>
 </ul>
 <p>Everything is transparent. If you understand <code>/data</code>, you understand Cute Magick.</p>
-<hr />
+<hr>
 <p></p><h2>Runtime</h2><a href="#runtime"></a><p></p>
 <p>Cute Magick executes server-side code per request.</p>
 <p>File extensions determine runtime automatically:</p>
@@ -182,7 +179,7 @@ Your site history rewinds; your data does not—by design.</p>
 <li><code>.html</code>, <code>.css</code> → served as-is</li>
 </ul>
 <p>No configuration. No build step. Just save a file.</p>
-<hr />
+<hr>
 <p></p><h2>Philosophy</h2><a href="#philosophy"></a><p></p>
 <p>Cute Magick favors:</p>
 <ul>
@@ -192,7 +189,7 @@ Your site history rewinds; your data does not—by design.</p>
 <li>ownership over lock-in</li>
 </ul>
 <p>You can't permanently break your site. And if you ever want to leave, you can.</p>
-<hr />
+<hr>
 <p></p><h2>Feedback</h2><a href="#feedback"></a><p></p>
 <p>If you're using it and have thoughts—especially confusion or friction—that feedback is actively shaping the project, particularly around:</p>
 <ul>
@@ -205,5 +202,5 @@ Your site history rewinds; your data does not—by design.</p>
 <strong>Diana Lopez</strong> — <a href="mailto:me@diana.nu">me@diana.nu</a></p>
 </article></div></div>
   </div>
-</body>
-</html>
+
+</body></html>

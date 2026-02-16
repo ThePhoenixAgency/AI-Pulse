@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Breaking the Sound Barrier, Part II: Exploiting CVE-2024-54529</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>Breaking the Sound Barrier, Part II: Exploiting CVE-2024-54529</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 1/30/2026 | Lang: EN |
-    <a href="https://projectzero.google/2026/01/sound-barrier-2.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 1/30/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -73,10 +70,10 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 <p>Exploiting such a vulnerability seemed simple enough: if we could control the address being dereferenced at offset <code>0x168</code> of the <code>rax</code> register, we could hijack control flow. But it wasn’t quite that simple. The <code>HALS_Object</code> fetched from the heap was dereferenced several times before the <code>call</code> instruction happened:</p>
 
 <p>Thus, the exploit required establishing a pointer chain. First, we needed to set a value at offset <code>0x68</code> of a <code>HALS_Object</code> to point to a region we controlled in memory. This region, in turn, needed to contain a pointer at its own offset <code>0x0</code> that pointed to a fake vtable, also under our control. With this chain in place, we could write our target address at offset <code>0x168</code> of the fake vtable to hijack control flow. The approach would look like this:
- </p>
+&nbsp;</p>
 
-<p><img alt="" />
- </p>
+<p><img alt="">
+&nbsp;</p>
 
 <h2>Initial Exploitation Attempts and the <code>CFString</code> Hurdle</h2>
 
@@ -84,7 +81,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>I found a nice looking API in <code>coreaudiod</code> I could call that would set offset <code>0x68</code> to an attacker-controlled <code>CFString</code>:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>However, this approach quickly hit a wall. The <code>CFString</code> type has an <a href="https://github.com/apple-oss-distributions/CF/blob/dc54c6bb1c1e5e0b9486c1d26dd5bef110b20bf3/CFString.c#L166">uncontrollable header</a>, which meant that even though I could control the <em>content</em> of the <code>CFString</code>, I couldn’t control the object’s header. For this exploit to work, I needed the data at offset <code>0x0</code> of the <code>CFString</code> to be a pointer to data I controlled. The <code>CFString</code>’s header made this impossible.</p>
 
@@ -96,7 +93,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>The most useful of these was a custom object dumper I wrote using Ivan Fratric’s <a href="https://github.com/googleprojectzero/TinyInst/blob/master/hook.md">TinyInst Hook API</a>. This tool hooked into the process and iterated through the <code>HALS_ObjectMap</code> linked list, dumping the raw contents, size, type, and subtype of every <code>HALS_Object</code> currently on the heap. This gave me a powerful method to inspect the composition of each object, search for controllable data, and see if any interesting pointers already existed at the critical <code>0x68</code> offset.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>Alongside this dynamic analysis tool, I used an IDAPython script to perform targeted static analysis, hunting for any code paths that wrote to offsets of interest after an object was fetched via <code>CopyObjectByObjectID</code>. This combination of dynamic and static analysis was essential for systematically mapping out the exploitation surface.</p>
 
@@ -173,7 +170,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>Running <code>coreaudiod</code> with these settings, I discovered an object type, <code>ngne</code>, that had a peculiar property: a portion of the object’s memory was uninitialized. Specifically, 6 high bytes of a pointer-sized field at the correct offset were not being cleared upon allocation, leaving them with the <code>0xAA</code> pattern from <code>PreScribble</code>.</p>
 
-<p><em><img alt="" /></em></p>
+<p><em><img alt=""></em></p>
 
 <p>This was a game-changer. An uninitialized memory vulnerability could provide the primitive I needed to gain control of the pointer at the vulnerable offset.</p>
 
@@ -208,10 +205,10 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 <h2>Heap Feng Shui with Property Lists</h2>
 
 <p>To control large portions of memory, I turned to a common feature in Apple’s APIs: <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/PropertyList.html">Property Lists</a>. Many APIs accept user data as serialized <code>plist</code> files, which are then deserialized, allocating memory for <code>CoreFoundation</code> objects. <code>CoreAudio</code> exposed an API, <code>HALS_Object_SetPropertyData_DPList</code>, which did just that, storing it on the heap:
- </p>
+&nbsp;</p>
 
-<p><img alt="" />
- </p>
+<p><img alt="">
+&nbsp;</p>
 
 <p>A <code>plist</code> allows you to specify nested values of several types:</p>
 
@@ -262,11 +259,11 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>The overall structure would look like this:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>But you might be wondering: doesn’t this present a similar problem as when we tried to allocate a pointer to a <code>CFString</code>? (The pointer chain would try to dereference the <code>CFRuntimeBase</code> header and fail). Yes! But ironically, the clearing of the last 2 bytes at offset <code>0x68</code> opened up a new possibility: we might allocate an object over a <code>CFString</code> pointer in the middle of the array that, after the last 2 bytes were cleared, pointed to raw data. It seemed like a bit of a long shot, but I was up for the challenge!</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <h2>Freeing the Data</h2>
 
@@ -276,7 +273,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>After some painful reverse engineering, I found a way to create <code>ngne</code> objects on demand by sending a crafted Mach message to the <code>audiohald</code> service. I thought I was on the home stretch. My plan was to spray the heap, free the memory, and then immediately allocate my <code>ngne</code> object to reclaim it.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>But I quickly ran into a fundamental and frustrating roadblock: <code>malloc</code> zones.</p>
 
@@ -288,7 +285,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>This forced a pivot. If I wanted to use uninitialized memory, I needed to land an allocation in a malloc zone that didn’t get zeroed out. My analysis showed that larger <code>ngne</code> objects—over 1100 bytes—could get created and would be placed in the <code>malloc_small</code> region, which is not zeroed on allocation. The catch? I couldn’t find any user-accessible API to trigger their creation. They only seemed to be instantiated when <code>coreaudiod</code> registered an audio plugin during startup.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>So, I had found some <code>ngne</code> objects suitable for exploitation, but they were only instantiated at startup, before we could deliver our heap spray. This sparked an idea: what if I performed the heap spray and then crashed the process on purpose? When it restarted, (all system daemons automatically restart on macOS) could it allocate an object over our sprayed data?</p>
 
@@ -361,7 +358,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>Then, I modified my Object Dumper to dump only <code>ngne</code> objects, and to continually run until it found a pointer chain to the sprayed data. After much experimentation with crafting the perfect <code>plist</code>, I finally caused the stars to perfectly align!</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <h2>Building the ROP Chain</h2>
 
@@ -390,7 +387,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>With everything in place, the exploit successfully executes the ROP chain, giving me control of the <code>coreaudiod</code> process. The following shows the ROP chain sprayed in memory:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>It should be noted that this exploit was written for macOS running on Intel CPUs. On a system with Apple Silicon, exploitation using the same technique would require the ability to correctly sign pointers that make up the pointer chain and ROP gadgets.</p>
 
@@ -398,9 +395,7 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>The following video demo shows the PoC exploit in action on macOS Sequoia 15.0.1:</p>
 
-
   
-
 
 <h2>Conclusion</h2>
 
@@ -408,12 +403,11 @@ This incorrect assumption led to a crash when the code attempted to make a virtu
 
 <p>All the tools used in this research, including the <a href="https://github.com/googleprojectzero/p0tools/tree/master/CoreAudioFuzz">fuzzing harness, custom instrumentation,</a> and a <a href="https://github.com/googleprojectzero/p0tools/tree/master/CoreAudioFuzz/exploit">proof-of-concept</a> for CVE-2024-54529, are open-sourced and available.</p>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

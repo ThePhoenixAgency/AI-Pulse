@@ -4,390 +4,68 @@
 <meta charset="UTF-8">
 <title>The Strangest Bottleneck in Modern LLMs</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>The Strangest Bottleneck in Modern LLMs</h1>
   <div class="metadata">
-    Source: Towards Data Science | Date: 2/16/2026 | Lang: EN |
-    <a href="https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/" target="_blank">Original Article</a>
+    Source: Towards Data Science | Date: 2/16/2026 12:14:00 PM | <a href="https://towardsdatascience.com/the-strangest-bottleneck-in-modern-llms/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<h2>Introduction</h2>
-
-
-
-<p> are currently living in a time where Artificial Intelligence, especially Large Language models like ChatGPT, have been deeply integrated into our daily lives and workflows. These models are capable of a variety of tasks, from something as complex as writing code to as simple as summarising a piece of text. But the oh-so impressive capabilities of these models have been held back largely by a single bottleneck. Even though the hardware used can run these models at incredibly fast speeds, the actual process of getting a response from them can still feel quite slow and sluggish.</p>
-
-
-
-<h2>Motivation</h2>
-
-
-
-<p>Essentially, for every word that the model generates, the model weights have to be loaded into the GPU VRAM from system memory, where it processes the entire calculation, only to then shift everything back to system memory. As the actual calculation takes way less time than the content transfer between memories, the chip has to sit idle waiting for the next batch to arrive. This is very wasteful.</p>
-
-
-
-<p>There have been several attempts to devise algorithms that keep the chip busy, instead of letting it sit idle between memory transfers. One such technique is Speculative Decoding <strong>[2]</strong>, where a smaller model, usually much weaker, is used to draft multiple future tokens that the main model verifies at once. But because the smaller model is often far less intelligent, it makes many mistakes, which the main model then has to reject, defeating the entire purpose. On the other hand, purely parallel diffusion models can write hundreds of tokens at once, but this speed often comes at the cost of accuracy and language coherence. With the accuracy of AR models and the speed of diffusion models, an ideal architecture would lie somewhere in between.</p>
-
-
-
-<h2>The Solution: TiDAR</h2>
-
-
-
-<p>The researchers at Nvidia also thought the same, and hence they propose a novel architecture, which they call TiDAR <strong>[1]</strong>, short for “Think in Diffusion, Talk in Autoregression.”</p>
-
-
-
-<p>The genius of TiDAR lies in the way it transforms a process that is usually sequential (as in conventional LLMs) into a parallel process. TiDAR shows that even though Autoregression and Diffusion are two completely different design philosophies, they can still be unified and exploited for their advantages.</p>
-
-
-
-<p>To understand it at its core, we’ll have to look at how the input is constructed for this model. For a standard LLM, we simply feed all past words to predict tokens one at a time. In TiDAR, however, we construct a special, three-part input sequence. </p>
-
-
-
-<p>Imagine we have the sentence <strong>“The cat sat.”</strong> Glued together, the completely constructed input sequence would look something like this:</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/CodeCogsEqn-7.png" alt="" /><figcaption>(Source: Author)</figcaption></figure>
-
-
-
-<ul>
-<li><strong>The Prefix:</strong> “The”, “cat”, “sat” (The history we got from the user).</li>
-
-
-
-<li><strong>The Drafts:</strong> “on”, “the” (The guesses from the previous step that need to be checked in this iteration).</li>
-
-
-
-<li><strong>The Future Masks:</strong> [MASK], [MASK] (Empty slots where we want new guesses).</li>
-</ul>
-
-
-
-<p>Now that we have the background of the input tensor, let’s get to understanding how the actual processing happens.</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-57.png" alt="" /><figcaption>(Source: Author)<br />A full diagram of how the TiDAR architecture works</figcaption></figure>
-
-
-
-<h3>Component 1: “Talking” (The Autoregressive Verifier)</h3>
-
-
-
-<p>This is the first and most critical part of the model architecture. In this phase, the model’s job is to verify the drafts generated in the previous iteration <code>("on", "the")</code> and decide if they are good enough to be kept.</p>
-
-
-
-<h4>How Parallel Verification Works</h4>
-
-
-
-<p>At the end, you might question yourself, “If the model has to check if the drafts are good or not, how would this be any faster than just generating them instead?” Let’s answer this question.</p>
-
-
-
-<p>In a normal Autoregressive model, if you want to generate 5 words, you have to run the model 5 separate times. You feed in word 1 to get word 2, then feed in word 1+2 to get word 3, and so on. The GPU has to load the massive model weights from memory 5 separate times. This is the main bottleneck that needs to be eliminated.</p>
-
-
-
-<p>This is the exact thing that TiDAR fixes when it verifies the draft tokens, because it can do this in one shot, which means 2 words <code>["on", "the"]</code> are added to the output in just one forward pass. It uses a Causal Attention Mask for this process, which ensures:</p>
-
-
-
-<ol>
-<li>When checking “on”, the model can only see “The cat sat”.</li>
-
-
-
-<li>When checking “the”, the model can only see “The cat sat on”.</li>
-</ol>
-
-
-
-<p>Because the GPU is a massive parallel processor, it can calculate the “correctness” of all these drafts simultaneously in a single operation. It is effectively doing 2 steps of work for the price of 1 step. That is where the massive speedup comes from.</p>
-
-
-
-<h4>The Instant Correction Mechanism</h4>
-
-
-
-<p>But what happens if the draft is wrong? What if the drafts were <code>["in", "pizza"]</code> instead of <code>["on", "the"]</code>?</p>
-
-
-
-<p>The best part is that it doesn’t matter if the drafts are wrong. The correction is virtually free.</p>
-
-
-
-<p>The model verifies the drafts by calculating a probability distribution over its vocabulary, conditioned on the context it gets. If the drafts are plausible predictions that the model could’ve chosen, they are selected, but if not, the model chooses the most probable word from the distribution it just calculated.</p>
-
-
-
-<p>Since we ran this computation in the same forward pass, we don’t need to run the model again. We simply:</p>
-
-
-
-<ol>
-<li><strong>Discard</strong> the bad draft <code>["in"]</code>.</li>
-
-
-
-<li><strong>Instantly swap in</strong> the winner <code>["on"]</code> from the probability list we just calculated.</li>
-
-
-
-<li>Cut off all subsequent drafts <code>["pizza"]</code> (because they were based on the wrong word).</li>
-</ol>
-
-
-
-<p>This guarantees that the final output we end up getting is mathematically as valid as when the model was running slowly, step-by-step. We get the speed of parallel processing with the accuracy of sequential processing.</p>
-
-
-
-<h3>Component 2: “Thinking” (The Diffusion Drafter)</h3>
-
-
-
-<p>While the autoregressive “talking” component is busy in verifying which token to keep and which to reject, the “thinking” component drafts the tokens for the next iteration.</p>
-
-
-
-<h4>Filling the Empty Slots</h4>
-
-
-
-<p>Do you remember those <code>[MASK]</code> tokens at the end of our input sequence? The diffusion head tries to fill these blanks so that the autoregressive head can verify them in the next iteration.</p>
-
-
-
-<p>For this part specifically, the model looks at all the words in the sequence at once. To do this, it uses a Bidirectional Mask instead of the usual Causal mask, but just for these <code>[MASK]</code> tokens.</p>
-
-
-
-<h4>Why Bidirectional?</h4>
-
-
-
-<p>Because the diffusion head has to draft multiple tokens at once, it has to be able to relate all words to all <code>[MASK]</code>. It effectively has to capture the “vibe” of the sequence to fill in the <code>[MASK]</code> tokens and hence, the Bidirectional mask.</p>
-
-
-
-<p>For our example sequence, the Diffusion head looks at all the [MASK] tokens together, along with the history (“The cat sat on the”), and tries to “denoise” them into the most plausible and coherent text. It asks, <em>“What 2-word phrase most likely follows ‘The cat sat on the’?”</em> and it might come up with “red mat”.</p>
-
-
-
-<p>The final causal mask, combined for both components, looks like the following:</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/finalmask.jpg" alt="" /><figcaption>(Source: Author)<br />For the prefix and draft tokens, the mask is a lower-triangular matrix (causal), but for the <code>[MASK]</code> tokens, there is no restriction as to where they can attend.</figcaption></figure>
-
-
-
-<h4>The Continuous Cycle</h4>
-
-
-
-<p>This creates a continuous cycle:</p>
-
-
-
-<ol>
-<li>In Step 1, the Diffusion head guesses “on the”.</li>
-
-
-
-<li>In Step 2, those guesses move into the “Draft” position.</li>
-
-
-
-<li>The Autoregressive head verifies them (and corrects them if needed).</li>
-
-
-
-<li><em>Simultaneously</em>, the Diffusion head moves onto guessing the <em>next</em> phrase (“red mat”).</li>
-</ol>
-
-
-
-<p>By constantly drafting ahead while verifying behind, TiDAR keeps the GPU fully utilized to the brim, ensuring that no computing power is ever wasted.</p>
-
-
-
-<h2>The Results</h2>
-
-
-
-<p>The researchers put TiDAR through a variety of tests to see if their novel approach actually delivers or not. Let’s have a look at what they concluded:</p>
-
-
-
-<h3>1. Speed: A Massive Leap Forward</h3>
-
-
-
-<p>The most critical metric for this architecture is whether it can improve inference speed, to which it does, and quite substantially.</p>
-
-
-
-<p>When compared to a standard Autoregressive (AR) model, TiDAR demonstrates a significant increase in throughput. Throughput here refers to the number of tokens the model can generate per second.</p>
-
-
-
-<ul>
-<li>For the <strong>1.5B parameter model</strong>, TiDAR achieved a speedup of <strong>4.71x</strong>. This means that this architecture can generate the same amount of text nearly 5X faster than a standard LLM architecture.</li>
-
-
-
-<li>For the larger <strong>8B parameter model</strong>, the resulting speed-up has an even greater gap, reaching upto <strong>5.91x</strong>.</li>
-</ul>
-
-
-
-<p>This is a drastic improvement from the conventional Next-Token Prediction schema, moving away from generating one token to drafting multiple tokens at once.</p>
-
-
-
-<h3>2. Quality: Closing the Gap</h3>
-
-
-
-<p>Till now, purely diffusion-based LLMs like Dream <strong>[4]</strong> or Llada <strong>[5]</strong> have always found it difficult to match the reasoning capabilities and coherence of the AR models.</p>
-
-
-
-<p>TiDAR, however, with its hybrid approach, has managed to close this gap almost perfectly. By using the autoregressive head to verify the draft tokens made by the diffusion head, TiDAR can enjoy the fidelity of AR models and the speed of pure diffusion models simultaneously.</p>
-
-
-
-<ul>
-<li>On benchmarks like HumanEval (coding) <strong>[6]</strong> and GSM8K (math) <strong>[7]</strong>, TiDAR achieved scores that were “lossless” compared to the baseline AR model.</li>
-
-
-
-<li>In fact, on some metrics, it even slightly outperformed the baseline, likely due to the “look-ahead” nature of the drafting process, which helps the model plan better in reasoning tasks.</li>
-</ul>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-37.png" alt="" /><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Table 2)<br />This table shows the accuracy scores of peer models when compared to TiDAR. “Trust AR” is the standard mode, where we weigh the AR head’s opinion more than the diffusion head’s opinion when it comes to deciding if the drafts are correct. “Trust Diff” is the mode where we weigh the diffusion head more heavily than the AR head.</figcaption></figure>
-
-
-
-<h3>3. Efficiency vs. Speculative Decoding</h3>
-
-
-
-<p>The authors also tested TiDAR against the current best method of speeding up inference, called EAGLE-3 (an algorithm based off of Speculative Decoding).</p>
-
-
-
-<p>As discussed earlier, Speculative Decoding relies on a separate, smaller model to draft future tokens, which the main model can then verify. But the problem is that the smaller model makes a ton of mistakes, leading to rejected tokens and wasted compute. TiDAR, however, uses its own trunk to draft and verify the tokens. This makes the drafted tokens much more accurate and high-quality.</p>
-
-
-
-<ul>
-<li>The “Acceptance Rate” (how often the drafts are correct) was significantly higher for TiDAR for the reason stated above.</li>
-
-
-
-<li>This high acceptance rate means the model spends less time on correcting its mistakes and more time on generating the actual text.</li>
-</ul>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-38.png" alt="" /><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Table 1)<br />Shared with base: If the draft model and main model share the same trunk or not.<br />Parallel Decoding: If the drafter can write one token at a time or many tokens at once.<br />Parallel to Verification: If the architecture can draft and verify at the same time.<br /></figcaption></figure>
-
-
-
-<h3>4. The “Free Token” Advantage</h3>
-
-
-
-<p>Finally, the results validate the core hypothesis of the paper: whether we utilize the GPU up to its absolute limits.</p>
-
-
-
-<p>The experiments conducted by the authors conclude that the drafting mechanism of TiDAR adds almost no latency when compared to the standard forward pass. In a standard pass, the GPU is memory-bound, which means that the data onloading and offloading are the rate-limiting steps instead of the actual compute.</p>
-
-
-
-<p>In TiDAR, however, we can load the GPU with extra work instead of letting it sit idle. The graph below basically tells us about how many tokens we can draft in one forward pass before the computation actually becomes the bottleneck for the GPU. <br />It turns out that we can draft ~60 tokens per forward pass, before the GPU starts being compute-bound.</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-39.png" alt="" /><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Figure 1)</figcaption></figure>
-
-
-
-<p>In the graph above, the x-axis shows the number of drafted tokens and the y-axis shows the latency of the model. As observed, in the green region, the graph being flat suggests that there is no increase in latency even if we increase the number of draft tokens. It is only around 60 tokens (yellow region) that the latency starts rising, signifying that the actual computation is now taking more time than moving data to-and-from memories.<br />This means that we can theoretically generate 60 tokens at once, for no added latency.</p>
-
-
-
-<blockquote>
-<p><em>If you liked this piece, I share shorter up-to-date writeups on <a href="https://steadysurfdom.substack.com/profile">Substack</a>.<br />And if you want to support independent research writing, <a href="https://buymeacoffee.com/moulikgupta">BuyMeACoffee</a> helps keep it going</em>.</p>
-</blockquote>
-
-
-
-<p><strong>References</strong></p>
-
-
-
-<ol>
-<li>Liu, J., Dong, X., Ye, Z., et al. (2025). <em>TiDAR: Think in Diffusion, Talk in Autoregression</em>. arXiv preprint.</li>
-
-
-
-<li>Leviathan, Y., Kalman, M., &amp; Matias, Y. (2023). <em>Fast Inference from Transformers via Speculative Decoding</em>. International Conference on Machine Learning (ICML).</li>
-
-
-
-<li>Li, Y., Wei, F., Zhang, C., &amp; Zhang, H. (2025). <em>Eagle-3: Scaling up inference acceleration of large language models via training-time test</em>. arXiv preprint.</li>
-
-
-
-<li>Ye, J., et al. (2025). <em>Dream-7B: Diffusion Large Language Models</em>. arXiv preprint.</li>
-
-
-
-<li>Nie, S., et al. (2025). <em>Large Language Diffusion Models (LLaDA)</em>. arXiv preprint.</li>
-
-
-
-<li>Chen, M., et al. (2021). <em>Evaluating Large Language Models Trained on Code (HumanEval)</em>. arXiv preprint.</li>
-
-
-
-<li>Cobbe, K., et al. (2021). <em>Training Verifiers to Solve Math Word Problems (GSM8K)</em>. arXiv preprint.</li>
+<h2>Introduction</h2> <p> are currently living in a time where Artificial Intelligence, especially Large Language models like ChatGPT, have been deeply integrated into our daily lives and workflows. These models are capable of a variety of tasks, from something as complex as writing code to as simple as summarising a piece of text. But the oh-so impressive capabilities of these models have been held back largely by a single bottleneck. Even though the hardware used can run these models at incredibly fast speeds, the actual process of getting a response from them can still feel quite slow and sluggish.</p> <h2>Motivation</h2> <p>Essentially, for every word that the model generates, the model weights have to be loaded into the GPU VRAM from system memory, where it processes the entire calculation, only to then shift everything back to system memory. As the actual calculation takes way less time than the content transfer between memories, the chip has to sit idle waiting for the next batch to arrive. This is very wasteful.</p> <p>There have been several attempts to devise algorithms that keep the chip busy, instead of letting it sit idle between memory transfers. One such technique is Speculative Decoding <strong>[2]</strong>, where a smaller model, usually much weaker, is used to draft multiple future tokens that the main model verifies at once. But because the smaller model is often far less intelligent, it makes many mistakes, which the main model then has to reject, defeating the entire purpose. On the other hand, purely parallel diffusion models can write hundreds of tokens at once, but this speed often comes at the cost of accuracy and language coherence. With the accuracy of AR models and the speed of diffusion models, an ideal architecture would lie somewhere in between.</p> <h2>The Solution: TiDAR</h2> <p>The researchers at Nvidia also thought the same, and hence they propose a novel architecture, which they call TiDAR <strong>[1]</strong>, short for “Think in Diffusion, Talk in Autoregression.”</p> <p>The genius of TiDAR lies in the way it transforms a process that is usually sequential (as in conventional LLMs) into a parallel process. TiDAR shows that even though Autoregression and Diffusion are two completely different design philosophies, they can still be unified and exploited for their advantages.</p> <p>To understand it at its core, we’ll have to look at how the input is constructed for this model. For a standard LLM, we simply feed all past words to predict tokens one at a time. In TiDAR, however, we construct a special, three-part input sequence. </p> <p>Imagine we have the sentence&nbsp;<strong>“The cat sat.”</strong>&nbsp;Glued together, the completely constructed input sequence would look something like this:</p> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/CodeCogsEqn-7.png" alt=""><figcaption>(Source: Author)</figcaption></figure> <ul>
+<li><strong>The Prefix:</strong>&nbsp;“The”, “cat”, “sat”&nbsp;(The history we got from the user).</li> <li><strong>The Drafts:</strong>&nbsp;“on”, “the”&nbsp;(The guesses from the&nbsp;previous&nbsp;step that need to be checked in this iteration).</li> <li><strong>The Future Masks:</strong>&nbsp;[MASK], [MASK]&nbsp;(Empty slots where we want new guesses).</li>
+</ul> <p>Now that we have the background of the input tensor, let’s get to understanding how the actual processing happens.</p> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-57.png" alt=""><figcaption>(Source: Author)<br>A full diagram of how the TiDAR architecture works</figcaption></figure> <h3>Component 1: “Talking” (The Autoregressive Verifier)</h3> <p>This is the first and most critical part of the model architecture. In this phase, the model’s job is to verify the drafts generated in the previous iteration <code>("on", "the")</code> and decide if they are good enough to be kept.</p> <h4>How Parallel Verification Works</h4> <p>At the end, you might question yourself, “If the model has to check if the drafts are good or not, how would this be any faster than just generating them instead?” Let’s answer this question.</p> <p>In a normal Autoregressive model, if you want to generate 5 words, you have to run the model 5 separate times. You feed in word 1 to get word 2, then feed in word 1+2 to get word 3, and so on. The GPU has to load the massive model weights from memory 5 separate times. This is the main bottleneck that needs to be eliminated.</p> <p>This is the exact thing that TiDAR fixes when it verifies the draft tokens, because it can do this in one shot, which means 2 words <code>["on", "the"]</code> are added to the output in just one forward pass. It uses a Causal Attention Mask for this process, which ensures:</p> <ol>
+<li>When checking&nbsp;“on”, the model can only see&nbsp;“The cat sat”.</li> <li>When checking&nbsp;“the”, the model can only see&nbsp;“The cat sat on”.</li>
+</ol> <p>Because the GPU is a massive parallel processor, it can calculate the “correctness” of&nbsp;all&nbsp;these drafts simultaneously in a single operation. It is effectively doing 2 steps of work for the price of 1 step. That is where the massive speedup comes from.</p> <h4>The Instant Correction Mechanism</h4> <p>But what happens if the draft is wrong? What if the drafts were <code>["in", "pizza"]</code> instead of <code>["on", "the"]</code>?</p> <p>The best part is that it doesn’t matter if the drafts are wrong. The correction is virtually free.</p> <p>The model verifies the drafts by calculating a probability distribution over its vocabulary, conditioned on the context it gets. If the drafts are plausible predictions that the model could’ve chosen, they are selected, but if not, the model chooses the most probable word from the distribution it just calculated.</p> <p>Since we ran this computation in the same forward pass, we don’t need to run the model again. We simply:</p> <ol>
+<li><strong>Discard</strong>&nbsp;the bad draft <code>["in"]</code>.</li> <li><strong>Instantly swap in</strong>&nbsp;the winner <code>["on"]</code> from the probability list we just calculated.</li> <li>Cut off all subsequent drafts <code>["pizza"]</code> (because they were based on the wrong word).</li>
+</ol> <p>This guarantees that the final output we end up getting is mathematically as valid as when the model was running slowly, step-by-step. We get the speed of parallel processing with the accuracy of sequential processing.</p> <h3>Component 2: “Thinking” (The Diffusion Drafter)</h3> <p>While the autoregressive “talking” component is busy in verifying which token to keep and which to reject, the “thinking” component drafts the tokens for the next iteration.</p> <h4>Filling the Empty Slots</h4> <p>Do you remember those <code>[MASK]</code> tokens at the end of our input sequence? The diffusion head tries to fill these blanks so that the autoregressive head can verify them in the next iteration.</p> <p>For this part specifically, the model looks at all the words in the sequence at once. To do this, it uses a Bidirectional Mask instead of the usual Causal mask, but just for these <code>[MASK]</code> tokens.</p> <h4>Why Bidirectional?</h4> <p>Because the diffusion head has to draft multiple tokens at once, it has to be able to relate all words to all <code>[MASK]</code>. It effectively has to capture the “vibe” of the sequence to fill in the <code>[MASK]</code> tokens and hence, the Bidirectional mask.</p> <p>For our example sequence, the Diffusion head looks at all the&nbsp;[MASK]&nbsp;tokens together, along with the history (“The cat sat on the”), and tries to “denoise” them into the most plausible and coherent text. It asks,&nbsp;<em>“What 2-word phrase most likely follows ‘The cat sat on the’?”</em>&nbsp;and it might come up with&nbsp;“red mat”.</p> <p>The final causal mask, combined for both components, looks like the following:</p> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/finalmask.jpg" alt=""><figcaption>(Source: Author)<br>For the prefix and draft tokens, the mask is a lower-triangular matrix (causal), but for the <code>[MASK]</code> tokens, there is no restriction as to where they can attend.</figcaption></figure> <h4>The Continuous Cycle</h4> <p>This creates a continuous cycle:</p> <ol>
+<li>In Step 1, the Diffusion head guesses&nbsp;“on the”.</li> <li>In Step 2, those guesses move into the “Draft” position.</li> <li>The Autoregressive head verifies them (and corrects them if needed).</li> <li><em>Simultaneously</em>, the Diffusion head moves onto guessing the&nbsp;<em>next</em>&nbsp;phrase (“red mat”).</li>
+</ol> <p>By constantly drafting ahead while verifying behind, TiDAR keeps the GPU fully utilized to the brim, ensuring that no computing power is ever wasted.</p> <h2>The Results</h2> <p>The researchers put TiDAR through a variety of tests to see if their novel approach actually delivers or not. Let’s have a look at what they concluded:</p> <h3>1. Speed: A Massive Leap Forward</h3> <p>The most critical metric for this architecture is whether it can improve inference speed, to which it does, and quite substantially.</p> <p>When compared to a standard Autoregressive (AR) model, TiDAR demonstrates a significant increase in throughput. Throughput here refers to the number of tokens the model can generate per second.</p> <ul>
+<li>For the&nbsp;<strong>1.5B parameter model</strong>, TiDAR achieved a speedup of&nbsp;<strong>4.71x</strong>. This means that this architecture can generate the same amount of text nearly 5X faster than a standard LLM architecture.</li> <li>For the larger&nbsp;<strong>8B parameter model</strong>, the resulting speed-up has an even greater gap, reaching upto <strong>5.91x</strong>.</li>
+</ul> <p>This is a drastic improvement from the conventional Next-Token Prediction schema, moving away from generating one token to drafting multiple tokens at once.</p> <h3>2. Quality: Closing the Gap</h3> <p>Till now, purely diffusion-based LLMs like Dream&nbsp;<strong>[4]</strong>&nbsp;or Llada&nbsp;<strong>[5]</strong> have always found it difficult to match the reasoning capabilities and coherence of the AR models.</p> <p>TiDAR, however, with its hybrid approach, has managed to close this gap almost perfectly. By using the autoregressive head to verify the draft tokens made by the diffusion head, TiDAR can enjoy the fidelity of AR models and the speed of pure diffusion models simultaneously.</p> <ul>
+<li>On benchmarks like&nbsp;HumanEval (coding)&nbsp;<strong>[6]</strong>&nbsp;and GSM8K (math)&nbsp;<strong>[7]</strong>, TiDAR achieved scores that were “lossless” compared to the baseline AR model.</li> <li>In fact, on some metrics, it even slightly outperformed the baseline, likely due to the “look-ahead” nature of the drafting process, which helps the model plan better in reasoning tasks.</li>
+</ul> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-37.png" alt=""><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Table 2)<br>This table shows the accuracy scores of peer models when compared to TiDAR. “Trust AR” is the standard mode, where we weigh the AR head’s opinion more than the diffusion head’s opinion when it comes to deciding if the drafts are correct. “Trust Diff” is the mode where we weigh the diffusion head more heavily than the AR head.</figcaption></figure> <h3>3. Efficiency vs. Speculative Decoding</h3> <p>The authors also tested TiDAR against the current best method of speeding up inference, called EAGLE-3 (an algorithm based off of Speculative Decoding).</p> <p>As discussed earlier, Speculative Decoding relies on a separate, smaller model to draft future tokens, which the main model can then verify. But the problem is that the smaller model makes a ton of mistakes, leading to rejected tokens and wasted compute. TiDAR, however, uses its own trunk to draft and verify the tokens. This makes the drafted tokens much more accurate and high-quality.</p> <ul>
+<li>The “Acceptance Rate” (how often the drafts are correct) was significantly higher for TiDAR for the reason stated above.</li> <li>This high acceptance rate means the model spends less time on correcting its mistakes and more time on generating the actual text.</li>
+</ul> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-38.png" alt=""><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Table 1)<br>Shared with base: If the draft model and main model share the same trunk or not.<br>Parallel Decoding: If the drafter can write one token at a time or many tokens at once.<br>Parallel to Verification: If the architecture can draft and verify at the same time.<br></figcaption></figure> <h3>4. The “Free Token” Advantage</h3> <p>Finally, the results validate the core hypothesis of the paper: whether we utilize the GPU up to its absolute limits.</p> <p>The experiments conducted by the authors conclude that the drafting mechanism of TiDAR adds almost no latency when compared to the standard forward pass. In a standard pass, the GPU is memory-bound, which means that the data onloading and offloading are the rate-limiting steps instead of the actual compute.</p> <p>In TiDAR, however, we can load the GPU with extra work instead of letting it sit idle. The graph below basically tells us about how many tokens we can draft in one forward pass before the computation actually becomes the bottleneck for the GPU. <br>It turns out that we can draft ~60 tokens per forward pass, before the GPU starts being compute-bound.</p> <figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-39.png" alt=""><figcaption>(Source: Adapted from Liu et al. (2025) <strong>[1]</strong>, Figure 1)</figcaption></figure> <p>In the graph above, the x-axis shows the number of drafted tokens and the y-axis shows the latency of the model. As observed, in the green region, the graph being flat suggests that there is no increase in latency even if we increase the number of draft tokens. It is only around 60 tokens (yellow region) that the latency starts rising, signifying that the actual computation is now taking more time than moving data to-and-from memories.<br>This means that we can theoretically generate 60 tokens at once, for no added latency.</p> <blockquote>
+<p><em>If you liked this piece, I share shorter up-to-date writeups on <a href="https://steadysurfdom.substack.com/profile">Substack</a>.<br>And if you want to support independent research writing, <a href="https://buymeacoffee.com/moulikgupta">BuyMeACoffee</a> helps keep it going</em>.</p>
+</blockquote> <p><strong>References</strong></p> <ol>
+<li>Liu, J., Dong, X., Ye, Z., et al. (2025).&nbsp;<em>TiDAR: Think in Diffusion, Talk in Autoregression</em>. arXiv preprint.</li> <li>Leviathan, Y., Kalman, M., &amp; Matias, Y. (2023).&nbsp;<em>Fast Inference from Transformers via Speculative Decoding</em>. International Conference on Machine Learning (ICML).</li> <li>Li, Y., Wei, F., Zhang, C., &amp; Zhang, H. (2025).&nbsp;<em>Eagle-3: Scaling up inference acceleration of large language models via training-time test</em>. arXiv preprint.</li> <li>Ye, J., et al. (2025).&nbsp;<em>Dream-7B: Diffusion Large Language Models</em>. arXiv preprint.</li> <li>Nie, S., et al. (2025).&nbsp;<em>Large Language Diffusion Models (LLaDA)</em>. arXiv preprint.</li> <li>Chen, M., et al. (2021).&nbsp;<em>Evaluating Large Language Models Trained on Code (HumanEval)</em>. arXiv preprint.</li> <li>Cobbe, K., et al. (2021).&nbsp;<em>Training Verifiers to Solve Math Word Problems (GSM8K)</em>. arXiv preprint.</li>
 </ol>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

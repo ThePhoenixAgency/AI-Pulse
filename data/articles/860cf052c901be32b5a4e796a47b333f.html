@@ -1,45 +1,61 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Systemd-analyze - L'outil indispensable pour accélérer son boot Linux</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Systemd-analyze - L'outil indispensable pour accélérer son boot Linux</h1>
   <div class="metadata">
-    Source: Korben | Date: 2/16/2026 | Lang: FR |
-    <a href="https://korben.info/systemd-analyze-accelerer-boot-linux.html" target="_blank">Original Article</a>
+    Source: Korben | Date: 2/16/2026 10:46:00 AM | <a href="https://korben.info/systemd-analyze-accelerer-boot-linux.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>Vous trouvez que votre Linux met 3 plombes à démarrer et vous regardez l'écran de boot défiler en vous demandant ce qui peut bien prendre autant de temps ?</p><p>Hé bien bonne nouvelle los amigos del manchos, si vous utilisez une distribution basée sur <strong>systemd</strong> (comme Debian, Ubuntu, Fedora, Arch, et compagnie), il existe un outil natif déjà installé qui permet de diagnostiquer tout ça :
-<a href="https://man.archlinux.org/man/systemd-analyze.1.en">systemd-analyze</a></p><p>Ce truc c'est un peu le médecin légiste de votre démarrage système. Il dissèque chaque étape, identifie les unités qui traînent la patte, et vous permet de comprendre où part votre précieux temps. Pour ceux qui débarquent, systemd est le système d'initialisation adopté par la plupart des distributions modernes, et il permet justement de lancer plein de trucs en parallèle pour gagner du temps.</p><p>Pour commencer, la commande de base c'est tout simplement :</p><div><pre><code><span><span>systemd-analyze time
-</span></span></code></pre></div><p>Elle vous sort un récapitulatif du temps passé dans chaque phase, généralement le kernel, l'initrd (le RAM disk initial), et l'espace utilisateur. Selon votre configuration, vous pourriez aussi voir passer le firmware ou le bootloader. Ça donne un truc du genre "<em>Startup finished in 2.5s (kernel) + 19s (initrd) + 47s (userspace)</em>". Déjà là, vous savez si le problème vient de votre noyau ou de vos services.</p><p>Mais le truc vraiment cool pour fouiller un peu plus dans le détail, c'est :</p><div><pre><code><span><span>systemd-analyze blame
+    <div><div><pre><code>Hé bien bonne nouvelle los amigos del manchos, si vous utilisez une distribution basée sur systemd (comme Debian, Ubuntu, Fedora, Arch, et compagnie), il existe un outil natif déjà installé qui permet de diagnostiquer tout ça :
+systemd-analyze</code></pre><p>Ce truc c'est un peu le médecin légiste de votre démarrage système. Il dissèque chaque étape, identifie les unités qui traînent la patte, et vous permet de comprendre où part votre précieux temps. Pour ceux qui débarquent, systemd est le système d'initialisation adopté par la plupart des distributions modernes, et il permet justement de lancer plein de trucs en parallèle pour gagner du temps.</p><p>Pour commencer, la commande de base c'est tout simplement :</p><div><pre><code><span><span>systemd-analyze time
+</span></span></code></pre></div><pre><code>Elle vous sort un récapitulatif du temps passé dans chaque phase, généralement le kernel, l'initrd (le RAM disk initial), et l'espace utilisateur. Selon votre configuration, vous pourriez aussi voir passer le firmware ou le bootloader. Ça donne un truc du genre "Startup finished in 2.5s (kernel) + 19s (initrd) + 47s (userspace)". Déjà là, vous savez si le problème vient de votre noyau ou de vos services.</code></pre><p>Mais le truc vraiment cool pour fouiller un peu plus dans le détail, c'est :</p><div><pre><code><span><span>systemd-analyze blame
 </span></span></code></pre></div><p>Cette commande vous balance la liste des unités systemd, triées par le temps qu'elles ont mis à s'initialiser. C'est un peu comme un classement des cancres de la Ve République. Vous voyez direct qui sont les boulets qui ralentissent tout le monde. Genre ce service réseau qui attend 20 secondes une connexion qui n'arrivera jamais, ou ce truc de logs qui prend son temps pour se réveiller.</p><p>Attention quand même, y'a un petit piège car un service qui met 10 secondes à démarrer ne signifie pas forcément que votre boot est rallongé de 10 secondes. Pourquoi me diriez-vous ? Hé bien parce que systemd lance plein de trucs en parallèle. Un service peut donc prendre son temps tranquille pendant que d'autres bossent en même temps sans bloquer personne.</p><p>Pour vraiment piger ce qui coince sur le chemin critique, lancez plutôt :</p><div><pre><code><span><span>systemd-analyze critical-chain
 </span></span></code></pre></div><p>Ça, c'est le top car ça vous montre la chaîne critique, c'est-à-dire la séquence exacte d'événements qui détermine vraiment votre temps de démarrage final. Vous voyez exactement quelles unités sont sur le chemin et lesquelles attendent les autres. Le temps après le "@" indique quand l'unité est devenue active, et le temps après le "+" montre combien de temps elle a pris pour démarrer. C'est bien plus fiable que <em>blame</em> pour identifier les vrais goulots d'étranglement.</p><p>Et si vous êtes du genre visuel, y'a même :</p><div><pre><code><span><span>systemd-analyze plot &gt; boot.svg
 </span></span></code></pre></div><p>Et avec ça, hop, ça génèrera un magnifique graphique SVG qui représentera la chronologie de votre séquence de boot. Vous pourrez ensuite l'ouvrir dans votre navigateur et voir en un coup d'oeil ce qui démarre quand et combien de temps ça dure. C'est super pratique pour épater la galerie ou juste visualiser l'ordre de lancement.</p><p>Maintenant, une fois que vous avez identifié les coupables, comment on fait pour accélérer tout ça ?</p><p>Déjà, vous pouvez désactiver les services dont vous n'avez pas besoin avec :</p><div><pre><code><span><span>sudo systemctl disable nom-du-service
 </span></span></code></pre></div><p>Gardez en tête que <em>disable</em> supprime seulement le lancement automatique au boot, mais n'empêche pas une activation indirecte via une dépendance ou un socket. Si vous voulez vraiment qu'un service ne démarre plus jamais, utilisez <em><strong>mask</strong></em>. Et surtout, ne désactivez pas n'importe quoi comme un bourrin, hein ! Je vous connais ! Non, non, avant de toucher à un service, vérifiez d'abord ce qui en dépend :</p><div><pre><code><span><span>systemctl list-dependencies nom-du-service
-</span></span></code></pre></div><p>Car si vous cassez un truc important, votre système risque de ne plus démarrer correctement. Donc si vous n'êtes pas sûr, gardez vos mimines dans vos poches. D'ailleurs, si vous bidouillez vos fichiers d'unité (comme pour
-<a href="https://korben.info/shiori-gestionnaire-marque-pages-simple-efficace.html">automatiser Shiori</a>
-par exemple), sachez que vous pouvez aussi les vérifier pour débusquer les erreurs avec :</p><div><pre><code><span><span>systemd-analyze verify /chemin/vers/unite.service
+</span></span></code></pre></div><pre><code>Car si vous cassez un truc important, votre système risque de ne plus démarrer correctement. Donc si vous n'êtes pas sûr, gardez vos mimines dans vos poches. D'ailleurs, si vous bidouillez vos fichiers d'unité (comme pour
+automatiser Shiori
+par exemple), sachez que vous pouvez aussi les vérifier pour débusquer les erreurs avec :</code></pre><div><pre><code><span><span>systemd-analyze verify /chemin/vers/unite.service
 </span></span></code></pre></div><p>C'est super pratique pour éviter les mauvaises surprises au prochain redémarrage. Voilà et si vous cherchez d'autres astuces pour
 <a href="https://korben.info/comment-augmenter-lautonomie-de-votre-pc-portable-linux-en-moins-de-10-minutes.html">optimiser votre machine Linux</a>
-, n'hésitez pas à jeter un oeil <strong>à mon article sur TLP</strong>.</p><p>Ah j'oubliais, y'a aussi la commande <em>systemd-analyze security</em> qui permet d'analyser le niveau d'exposition sécurité de vos services. Elle attribue un score heuristique d'exposition basé sur les options de durcissement (hardening) actives. Plus le score est bas, mieux le service est protégé contre d'éventuelles failles. C'est donc un excellent point de départ pour identifier les services qui mériteraient un peu plus de love côté isolation.</p><p>Bref, cet analyseur de démarrage c'est vraiment l'outil indispensable pour qui veut comprendre et optimiser son boot Linux. C'est natif, c'est puissant, et ça vous évite de passer des heures à chercher pourquoi votre machine met autant de temps que vous à se réveiller le matin ^^.</p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+, n'hésitez pas à jeter un oeil <strong>à mon article sur TLP</strong>.</p><pre><code>Ah j'oubliais, y'a aussi la commande systemd-analyze security qui permet d'analyser le niveau d'exposition sécurité de vos services. Elle attribue un score heuristique d'exposition basé sur les options de durcissement (hardening) actives. Plus le score est bas, mieux le service est protégé contre d'éventuelles failles. C'est donc un excellent point de départ pour identifier les services qui mériteraient un peu plus de love côté isolation.</code></pre><p>Bref, cet analyseur de démarrage c'est vraiment l'outil indispensable pour qui veut comprendre et optimiser son boot Linux. C'est natif, c'est puissant, et ça vous évite de passer des heures à chercher pourquoi votre machine met autant de temps que vous à se réveiller le matin ^^.</p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

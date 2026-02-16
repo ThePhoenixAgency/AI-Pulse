@@ -1,143 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Broadband IoT vs. Narrowband IoT: Enterprise Connectivity Strategies for 2026 and Beyond</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Broadband IoT vs. Narrowband IoT: Enterprise Connectivity Strategies for 2026 and Beyond</h1>
   <div class="metadata">
-    Source: IoT Business News | Date: 2/13/2026 | Lang: EN |
-    <a href="https://iotbusinessnews.com/2026/02/13/broadband-iot-vs-narrowband-iot-enterprise-connectivity-strategies-for-2026-and-beyond/" target="_blank">Original Article</a>
+    Source: IoT Business News | Date: 2/13/2026 4:39:28 PM | <a href="https://iotbusinessnews.com/2026/02/13/broadband-iot-vs-narrowband-iot-enterprise-connectivity-strategies-for-2026-and-beyond/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-
-                                        
-                                        					                                                
-<p><img src="https://iotbusinessnews.com/WordPress/wp-content/uploads/2026/02/double-binary-data-flows.jpg" alt="Broadband IoT vs. Narrowband IoT: Enterprise Connectivity Strategies for 2026 and Beyond" /></p>
-<p><strong>Key Insights (AI-assisted):</strong><br />
-The growing tension between broadband and narrowband approaches is forcing enterprises to design multi-tier connectivity architectures rather than single-technology bets. This shift elevates module roadmapping, roaming policy, and lifecycle management to board-level planning issues, as devices must traverse several network generations over 10–15 years. It also accelerates demand for intermediate performance layers such as Cat 1 bis and RedCap that can absorb future data growth without wholesale redesigns. Ultimately, IoT connectivity is converging with broader trends in heterogeneous, software-defined networking and coverage abstraction.
-</p>
-<p>By Manuel Nau, Editorial Director at IoT Business News.</p>
-<p><strong>Enterprise IoT connectivity</strong> is no longer a simple trade-off between “cheap LPWA” and “fast cellular.” In 2026, device makers and large-scale IoT operators must build connectivity strategies that survive network sunsets, uneven roaming realities, growing security expectations, and the arrival of new middle-tier 5G options such as RedCap (Reduced Capability).</p>
-<p>This article breaks down <strong>broadband IoT vs. narrowband IoT</strong> from an enterprise architecture perspective, and proposes a decision framework to choose (and combine) LTE-M, NB-IoT, LTE Cat 1 bis, full LTE/5G, RedCap/eRedCap, and emerging satellite NTN layers.</p>
-<h2>Defining the battlefield: what “narrowband” and “broadband” mean in 2026</h2>
-<p><strong>Narrowband IoT</strong> typically refers to LPWA cellular technologies optimised for low throughput, low power, and deep coverage—most notably <strong>NB-IoT</strong> and <strong>LTE-M</strong>. These technologies are designed for massive sensor fleets, long battery life, and low-cost modules, at the expense of data rate and (often) roaming consistency.</p>
-<p><strong>Broadband IoT</strong> covers higher-throughput cellular options such as <strong>LTE Cat 4/6</strong>, <strong>5G eMBB</strong>, and private cellular variants used for cameras, gateways, moving assets with heavy telemetry, and devices that need frequent firmware updates or richer data flows.</p>
-<p>In between sits the most interesting strategic battleground for 2026: <strong>mid-tier IoT</strong>, where enterprises want more throughput than LPWA, but cannot justify the cost/power footprint of full 5G. This is precisely where <strong>5G RedCap</strong> (3GPP Release 17) is positioned.</p>
-<h2>Market reality check: coverage and ecosystem maturity still matter more than specs</h2>
-<p>On paper, it’s tempting to map requirements to a “perfect” radio technology. In real deployments, enterprises still get burned by three recurring issues:</p>
-<ul>
-<li><strong>Footprint and local availability:</strong> NB-IoT and LTE-M coverage varies widely by country and operator strategy. A network being “launched” does not automatically mean it is suitable for your roaming footprint.</li>
-<li><strong>Roaming and operational scale:</strong> global fleets need predictable onboarding, profile management, and lifecycle support—especially when devices are deployed for 8–15 years.</li>
-<li><strong>Network sunsets:</strong> 2G/3G shutdowns continue to force migrations and redesigns. Even if your new design is “future-proof,” it still must survive the transition period—country by country.</li>
-</ul>
-<p>The core enterprise lesson: <strong>connectivity decisions are as much about supply chain and operational control as they are about radio performance</strong>.</p>
-<h2>Technology map for enterprise IoT in 2026</h2>
-<h3>NB-IoT: ultra-low power and deep coverage, with constraints</h3>
-<p>NB-IoT remains a strong choice for metering, simple sensors, and reporting-based assets where payloads are tiny and latency is non-critical. Its strengths—coverage extension and power efficiency—are unmatched for many low-data devices. But enterprises must validate roaming, latency tolerance, and firmware update strategy early (because “it supports updates” is not the same as “updates are operationally safe at scale”).</p>
-<h3>LTE-M: the LPWA option when mobility and interactivity matter</h3>
-<p>LTE-M is often positioned as “NB-IoT plus mobility.” For wearables, moving assets, and devices needing more interactive behaviour, LTE-M can be a better fit—especially when the product roadmap includes richer telemetry, voice features, or more frequent updates. The catch: LTE-M availability is not universal, so you must validate footprint and long-term operator support per region.</p>
-<h3>LTE Cat 1 bis: the quiet workhorse for global scale</h3>
-<p>Many enterprises in 2026 increasingly treat LTE Cat 1 bis as a pragmatic baseline where NB-IoT/LTE-M coverage or roaming is uncertain. Cat 1 bis can offer a more straightforward global story than LPWA in some footprints, with acceptable power profiles for externally powered devices or “battery plus energy-optimised design” scenarios.</p>
-<h3>5G RedCap (Release 17): the emerging mid-tier option</h3>
-<p>RedCap (Reduced Capability) was standardised in 3GPP Release 17 to reduce 5G device complexity (bandwidth, antennas, and other capabilities) while retaining significantly higher data rates than LPWA options—making it relevant for richer telemetry, industrial sensors with heavier payloads, and devices that need frequent secure updates.</p>
-<p>However, enterprises should treat RedCap as a <strong>transition technology</strong> with real-world caveats: network readiness varies, module availability differs by region, and certification/roaming realities can lag marketing timelines.</p>
-<h3>eRedCap (Release 18 direction): why operators care</h3>
-<p>Beyond classic RedCap, the industry is framing eRedCap as part of the longer migration path that eventually allows operators to simplify networks and reclaim spectrum. For enterprises, the key takeaway is not the buzzword—it’s that <strong>your device roadmap should assume multiple technology generations during a single product lifetime</strong>.</p>
-<h3>Satellite NTN enters the enterprise playbook (as an overlay, not a replacement)</h3>
-<p>Non-terrestrial networks (NTN) are becoming more concrete for enterprise IoT—particularly via standards-aligned approaches and partnerships that blend terrestrial cellular with satellite. Enterprises increasingly want a single operational model where remote coverage is handled as an overlay to existing cellular estates.</p>
-<p>In parallel, operators are pushing “multi-orbit” and roaming narratives, suggesting a future where satellite connectivity is managed more like a policy and profile choice than a separate device class—though enterprise buyers should remain cautious and validate commercial terms, regulatory constraints, and device power budgets.</p>
-<h2>A practical decision framework for enterprises</h2>
-<p>Instead of choosing “one technology,” enterprises should segment connectivity into connectivity tiers aligned to product families and operating environments.</p>
-<div>
-<table>
-<thead>
-<tr>
-<th><strong>Requirement</strong></th>
-<th><strong>Best-fit options (typical)</strong></th>
-<th><strong>Red flags to validate early</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>10–15 year battery, tiny payloads, deep indoor coverage</td>
-<td><strong>NB-IoT</strong></td>
-<td>Roaming footprint, latency tolerance, update strategy</td>
-</tr>
-<tr>
-<td>Mobility + moderate payloads, interactive devices</td>
-<td><strong>LTE-M, (sometimes Cat 1 bis)</strong></td>
-<td>LTE-M availability by country, power profile under real traffic</td>
-</tr>
-<tr>
-<td>Global scale with simpler roaming story</td>
-<td><strong>LTE Cat 1 bis</strong></td>
-<td>Module supply, certification cost, power budget</td>
-</tr>
-<tr>
-<td>Richer telemetry, frequent secure updates, mid-tier throughput</td>
-<td><strong>5G RedCap</strong></td>
-<td>Network readiness, module maturity, roaming/certification timelines</td>
-</tr>
-<tr>
-<td>Video, gateways, high data rates, low latency</td>
-<td><strong>LTE Cat 4/6, 5G eMBB, private cellular</strong></td>
-<td>Cost, power draw, coverage, backhaul constraints</td>
-</tr>
-<tr>
-<td>Remote coverage beyond terrestrial networks</td>
-<td><strong>Satellite NTN overlay (e.g., NB-IoT NTN)</strong></td>
-<td>Power budget, regulatory constraints, commercial model</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2>Connectivity strategy patterns that work in 2026</h2>
-<h3>1) Build a “two-lane” portfolio: LPWA lane + scalable mid-tier lane</h3>
-<p>For many enterprises, the winning architecture is a dual strategy:</p>
-<ul>
-<li><strong>LPWA lane (NB-IoT / LTE-M)</strong> for low-data, long-life sensor classes.</li>
-<li><strong>Scalable lane (Cat 1 bis today, RedCap tomorrow)</strong> for devices whose data needs grow over time, or where global operations and update cycles require more headroom.</li>
-</ul>
-<p>This reduces long-term redesign risk and lets you graduate product families without rewriting the whole platform.</p>
-<h3>2) Treat firmware updates as a first-class connectivity requirement</h3>
-<p>Security and compliance expectations keep rising, and “secure by design” increasingly implies <strong>repeatable update capability</strong>. If your product will need frequent patches, LPWA may still work—but you must design update workflows (delta updates, staged rollout, backoff policies, telemetry gating) to avoid bricking devices or exhausting batteries.</p>
-<h3>3) Plan explicitly for legacy shutdowns and spectrum refarming</h3>
-<p>2G/3G sunsets remain a forcing function, and they expose weak asset inventories and poor provisioning hygiene. Enterprises should maintain a continuously updated device census (model, modem category, carrier profile, firmware baseline) and include “migration triggers” in contracts and operating plans.</p>
-<h3>4) Use eSIM/eUICC (and eventually iSIM) to reduce operator lock-in—carefully</h3>
-<p>Enterprises want flexibility, but the operational reality is nuanced: profile orchestration, bootstrap connectivity, and troubleshooting can add complexity. Treat eSIM/iSIM as a strategic capability when your business model truly depends on multi-operator agility—not as a checkbox.</p>
-<h3>5) Add NTN as a policy layer for “coverage exceptions”</h3>
-<p>For many verticals—utilities, logistics, environmental monitoring, maritime—NTN is becoming a realistic overlay option rather than a niche satellite-only device class. Enterprises will increasingly buy “coverage completeness” as part of an IoT connectivity service.</p>
-<h2>What to watch from 2026 onward</h2>
-<ul>
-<li><strong>RedCap commercialisation pace:</strong> module availability, operator enablement, and certification programmes will determine how quickly RedCap becomes a default mid-tier choice.</li>
-<li><strong>Satellite IoT standardisation and roaming:</strong> partnerships are accelerating, but enterprise buyers should separate pilots from scalable commercial reality.</li>
-<li><strong>Supply-chain geopolitics in modules and chipsets:</strong> cellular module market dynamics can influence long-term BOM assumptions.</li>
-</ul>
-<h2>Bottom line: connectivity strategy is now a lifecycle strategy</h2>
-<p>In 2026, the most resilient enterprise IoT connectivity strategies are portfolio-based, not technology-singleton decisions. Narrowband IoT (NB-IoT/LTE-M) remains indispensable for low-data fleets. Broadband cellular is still required for high-data devices and gateways. The strategic battleground is the middle: Cat 1 bis and RedCap-style options that balance throughput, cost, and operational scalability—while NTN overlays begin to close the “coverage gaps” that have historically forced expensive bespoke designs.</p>
-<p>If there is one enterprise takeaway: <strong>choose connectivity the way you choose a supply chain</strong>—with redundancy, clear migration paths, and an honest view of operational constraints. The radio spec is only the beginning.</p>
-
-                                        					                                            
-                                    </div></div>
+    <pre><code>Key Insights (AI-assisted):
+The growing tension between broadband and narrowband approaches is forcing enterprises to design multi-tier connectivity architectures rather than single-technology bets. This shift elevates module roadmapping, roaming policy, and lifecycle management to board-level planning issues, as devices must traverse several network generations over 10–15 years. It also accelerates demand for intermediate performance layers such as Cat 1 bis and RedCap that can absorb future data growth without wholesale redesigns. Ultimately, IoT connectivity is converging with broader trends in heterogeneous, software-defined networking and coverage abstraction. By Manuel Nau, Editorial Director at IoT Business News.
+Enterprise IoT connectivity is no longer a simple trade-off between “cheap LPWA” and “fast cellular.” In 2026, device makers and large-scale IoT operators must build connectivity strategies that survive network sunsets, uneven roaming realities, growing security expectations, and the arrival of new middle-tier 5G options such as RedCap (Reduced Capability).
+This article breaks down broadband IoT vs. narrowband IoT from an enterprise architecture perspective, and proposes a decision framework to choose (and combine) LTE-M, NB-IoT, LTE Cat 1 bis, full LTE/5G, RedCap/eRedCap, and emerging satellite NTN layers.
+Defining the battlefield: what “narrowband” and “broadband” mean in 2026
+Narrowband IoT typically refers to LPWA cellular technologies optimised for low throughput, low power, and deep coverage—most notably NB-IoT and LTE-M. These technologies are designed for massive sensor fleets, long battery life, and low-cost modules, at the expense of data rate and (often) roaming consistency.
+Broadband IoT covers higher-throughput cellular options such as LTE Cat 4/6, 5G eMBB, and private cellular variants used for cameras, gateways, moving assets with heavy telemetry, and devices that need frequent firmware updates or richer data flows.
+In between sits the most interesting strategic battleground for 2026: mid-tier IoT, where enterprises want more throughput than LPWA, but cannot justify the cost/power footprint of full 5G. This is precisely where 5G RedCap (3GPP Release 17) is positioned.
+Market reality check: coverage and ecosystem maturity still matter more than specs
+On paper, it’s tempting to map requirements to a “perfect” radio technology. In real deployments, enterprises still get burned by three recurring issues: Footprint and local availability: NB-IoT and LTE-M coverage varies widely by country and operator strategy. A network being “launched” does not automatically mean it is suitable for your roaming footprint.
+Roaming and operational scale: global fleets need predictable onboarding, profile management, and lifecycle support—especially when devices are deployed for 8–15 years.
+Network sunsets: 2G/3G shutdowns continue to force migrations and redesigns. Even if your new design is “future-proof,” it still must survive the transition period—country by country. The core enterprise lesson: connectivity decisions are as much about supply chain and operational control as they are about radio performance.
+Technology map for enterprise IoT in 2026
+NB-IoT: ultra-low power and deep coverage, with constraints
+NB-IoT remains a strong choice for metering, simple sensors, and reporting-based assets where payloads are tiny and latency is non-critical. Its strengths—coverage extension and power efficiency—are unmatched for many low-data devices. But enterprises must validate roaming, latency tolerance, and firmware update strategy early (because “it supports updates” is not the same as “updates are operationally safe at scale”).
+LTE-M: the LPWA option when mobility and interactivity matter
+LTE-M is often positioned as “NB-IoT plus mobility.” For wearables, moving assets, and devices needing more interactive behaviour, LTE-M can be a better fit—especially when the product roadmap includes richer telemetry, voice features, or more frequent updates. The catch: LTE-M availability is not universal, so you must validate footprint and long-term operator support per region.
+LTE Cat 1 bis: the quiet workhorse for global scale
+Many enterprises in 2026 increasingly treat LTE Cat 1 bis as a pragmatic baseline where NB-IoT/LTE-M coverage or roaming is uncertain. Cat 1 bis can offer a more straightforward global story than LPWA in some footprints, with acceptable power profiles for externally powered devices or “battery plus energy-optimised design” scenarios.
+5G RedCap (Release 17): the emerging mid-tier option
+RedCap (Reduced Capability) was standardised in 3GPP Release 17 to reduce 5G device complexity (bandwidth, antennas, and other capabilities) while retaining significantly higher data rates than LPWA options—making it relevant for richer telemetry, industrial sensors with heavier payloads, and devices that need frequent secure updates.
+However, enterprises should treat RedCap as a transition technology with real-world caveats: network readiness varies, module availability differs by region, and certification/roaming realities can lag marketing timelines.
+eRedCap (Release 18 direction): why operators care
+Beyond classic RedCap, the industry is framing eRedCap as part of the longer migration path that eventually allows operators to simplify networks and reclaim spectrum. For enterprises, the key takeaway is not the buzzword—it’s that your device roadmap should assume multiple technology generations during a single product lifetime.
+Satellite NTN enters the enterprise playbook (as an overlay, not a replacement)
+Non-terrestrial networks (NTN) are becoming more concrete for enterprise IoT—particularly via standards-aligned approaches and partnerships that blend terrestrial cellular with satellite. Enterprises increasingly want a single operational model where remote coverage is handled as an overlay to existing cellular estates.
+In parallel, operators are pushing “multi-orbit” and roaming narratives, suggesting a future where satellite connectivity is managed more like a policy and profile choice than a separate device class—though enterprise buyers should remain cautious and validate commercial terms, regulatory constraints, and device power budgets.
+A practical decision framework for enterprises
+Instead of choosing “one technology,” enterprises should segment connectivity into connectivity tiers aligned to product families and operating environments. Requirement
+Best-fit options (typical)
+Red flags to validate early 10–15 year battery, tiny payloads, deep indoor coverage
+NB-IoT
+Roaming footprint, latency tolerance, update strategy Mobility + moderate payloads, interactive devices
+LTE-M, (sometimes Cat 1 bis)
+LTE-M availability by country, power profile under real traffic Global scale with simpler roaming story
+LTE Cat 1 bis
+Module supply, certification cost, power budget Richer telemetry, frequent secure updates, mid-tier throughput
+5G RedCap
+Network readiness, module maturity, roaming/certification timelines Video, gateways, high data rates, low latency
+LTE Cat 4/6, 5G eMBB, private cellular
+Cost, power draw, coverage, backhaul constraints Remote coverage beyond terrestrial networks
+Satellite NTN overlay (e.g., NB-IoT NTN)
+Power budget, regulatory constraints, commercial model Connectivity strategy patterns that work in 2026
+1) Build a “two-lane” portfolio: LPWA lane + scalable mid-tier lane
+For many enterprises, the winning architecture is a dual strategy: LPWA lane (NB-IoT / LTE-M) for low-data, long-life sensor classes.
+Scalable lane (Cat 1 bis today, RedCap tomorrow) for devices whose data needs grow over time, or where global operations and update cycles require more headroom. This reduces long-term redesign risk and lets you graduate product families without rewriting the whole platform.
+2) Treat firmware updates as a first-class connectivity requirement
+Security and compliance expectations keep rising, and “secure by design” increasingly implies repeatable update capability. If your product will need frequent patches, LPWA may still work—but you must design update workflows (delta updates, staged rollout, backoff policies, telemetry gating) to avoid bricking devices or exhausting batteries.
+3) Plan explicitly for legacy shutdowns and spectrum refarming
+2G/3G sunsets remain a forcing function, and they expose weak asset inventories and poor provisioning hygiene. Enterprises should maintain a continuously updated device census (model, modem category, carrier profile, firmware baseline) and include “migration triggers” in contracts and operating plans.
+4) Use eSIM/eUICC (and eventually iSIM) to reduce operator lock-in—carefully
+Enterprises want flexibility, but the operational reality is nuanced: profile orchestration, bootstrap connectivity, and troubleshooting can add complexity. Treat eSIM/iSIM as a strategic capability when your business model truly depends on multi-operator agility—not as a checkbox.
+5) Add NTN as a policy layer for “coverage exceptions”
+For many verticals—utilities, logistics, environmental monitoring, maritime—NTN is becoming a realistic overlay option rather than a niche satellite-only device class. Enterprises will increasingly buy “coverage completeness” as part of an IoT connectivity service.
+What to watch from 2026 onward RedCap commercialisation pace: module availability, operator enablement, and certification programmes will determine how quickly RedCap becomes a default mid-tier choice.
+Satellite IoT standardisation and roaming: partnerships are accelerating, but enterprise buyers should separate pilots from scalable commercial reality.
+Supply-chain geopolitics in modules and chipsets: cellular module market dynamics can influence long-term BOM assumptions. Bottom line: connectivity strategy is now a lifecycle strategy
+In 2026, the most resilient enterprise IoT connectivity strategies are portfolio-based, not technology-singleton decisions. Narrowband IoT (NB-IoT/LTE-M) remains indispensable for low-data fleets. Broadband cellular is still required for high-data devices and gateways. The strategic battleground is the middle: Cat 1 bis and RedCap-style options that balance throughput, cost, and operational scalability—while NTN overlays begin to close the “coverage gaps” that have historically forced expensive bespoke designs.
+If there is one enterprise takeaway: choose connectivity the way you choose a supply chain—with redundancy, clear migration paths, and an honest view of operational constraints. The radio spec is only the beginning.</code></pre>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Firmware Upstreamed For Supporting The Qualcomm Snapdragon X2's Adreno GPU</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Firmware Upstreamed For Supporting The Qualcomm Snapdragon X2's Adreno GPU</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/Snapdragon-X2-Adreno-GPU-FW" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/16/2026 1:35:00 PM | <a href="https://www.phoronix.com/news/Snapdragon-X2-Adreno-GPU-FW" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp" /></p><p>
+<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp"></p><p>
 Upstreamed last week to the <em>linux-firmware.git</em> repository by Qualcomm was the GPU firmware files needed for enabling the Adreno GPU on the new <a href="https://www.phoronix.com/search/Snapdragon+X2">Snapdragon X2</a> Elite laptop SoC.
 </p><p>
 Linux 6.19 <a href="https://www.phoronix.com/news/Linux-6.19-Graphics-Drivers">added the X2-85 GPU support to the Qualcomm MSM DRM driver</a>. Mesa 26.0 also has <a href="https://www.phoronix.com/news/Freedreno-Lands-Adreno-Gen-8">initial support for these Gen8 Adreno graphics</a>. Now the necessary firmware files for driver support are in place via the de facto Linux Firmware Git repository so that these open-source drivers can actually function.
 </p><p>
 With this Adreno X2-85 GPU found on the Snapdragon X2 SoCs, there thankfully isn't any dependence on OEM firmware to avoid that mess that for the X1 did require extracting firmware from Windows on ARM installations from most of the laptop models out there. With the Snapdragon X2 graphics the firmware support is upstream but other component firmware will still depend upon the respective OEM firmware binaries from Windows or those OEMs opting to do the right thing of upstreaming their binaries to linux-firmware.git.
-</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=x2_gpu_firmware" alt="Snapdragon X2 GPU firmware" /></p>
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=x2_gpu_firmware" alt="Snapdragon X2 GPU firmware"></p>
 <p><a href="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/commit/?id=0364daaa28a266252de482995109d7baff1959e8">This commit</a> is what added the GPU firmware binaries for the Snadragon X2 "Glymur" hardware.</p></div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

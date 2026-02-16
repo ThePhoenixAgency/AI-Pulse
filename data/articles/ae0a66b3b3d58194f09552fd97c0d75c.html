@@ -24,8 +24,7 @@
 <body>
   <h1>Tokenization in Transformers v5: Simpler, Clearer, and More Modular</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 12/18/2025 1:00:00 AM | Lang: EN |
-    <a href="https://huggingface.co/blog/tokenizers" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 12/18/2025 1:00:00 AM | <a href="https://huggingface.co/blog/tokenizers" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/itazap"><img alt="Ita Zaporozhets's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/658f3fc8c0b1372b2e991992/SZspcJ3Z5S-W5vayJo-vJ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ariG23498"><img alt="Aritra Roy Gosthipaty's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/608aabf24955d2bfc3cd99c6/-YxmtpzEmf3NKOTktODRP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ArthurZ"><img alt="Arthur Zucker's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1674683851722-62441cb7456803e95009a08f.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/sergiopaniego"><img alt="Sergio Paniego's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61929226ded356549e20c5da/ONUjP2S5fUWd07BiFXm0i.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div></div> <p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/tokenizers/thumbnail.png"><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/tokenizers/thumbnail.png"></a></p>
@@ -114,23 +113,11 @@ tokens = tokenizer(text) <span>print</span>(tokens[<span>"input_ids"</span>])
 </code></pre>
 <h2> <a href="#tokenization-algorithms"> </a> <span> Tokenization algorithms </span>
 </h2>
-<p>The following algorithms dominate modern language model tokenizers:</p>
-<ol>
-<li><strong>Byte Pair Encoding (BPE)</strong> iteratively merges the most frequent character pairs. This algorithm is deterministic and widely used. (Read more about <a href="https://huggingface.co/learn/llm-course/en/chapter6/5">BPE</a>)</li>
-</ol>
-<pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"openai/gpt-oss-20b"</span>)
+<p>The following algorithms dominate modern language model tokenizers:</p> <pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"openai/gpt-oss-20b"</span>)
 <span>print</span>(tokenizer._tokenizer.model) <span># BPE(...)</span>
-</code></pre>
-<ol>
-<li><strong>Unigram</strong> takes a probabilistic approach, selecting the most likely segmentation from a large initial vocabulary. This is more flexible than the strict BPE. (Read more about <a href="https://huggingface.co/learn/llm-course/en/chapter6/7">Unigram</a>)</li>
-</ol>
-<pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"google-t5/t5-base"</span>)
+</code></pre> <pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"google-t5/t5-base"</span>)
 <span>print</span>(tokenizer._tokenizer.model) <span># Unigram(...)</span>
-</code></pre>
-<ol>
-<li><strong>WordPiece</strong> resembles BPE but uses different merge criteria based on likelihood. (Read more about <a href="https://huggingface.co/learn/llm-course/en/chapter6/6">WordPiece</a>)</li>
-</ol>
-<pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"bert-base-uncased"</span>)
+</code></pre> <pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"bert-base-uncased"</span>)
 <span>print</span>(tokenizer._tokenizer.model) <span># WordPiece(...)</span>
 </code></pre>
 <h2> <a href="#accessing-tokenizers-through-transformers"> </a> <span> Accessing tokenizers through transformers </span>
@@ -239,9 +226,7 @@ text = tokenizer.apply_chat_template( messages, tokenize=<span>False</span>, add
 </ul>
 <p>The SentencePiece backend inherits from <code>PythonBackend</code> rather than directly from <code>PreTrainedTokenizerBase</code> because it shares much of the same interface and padding/truncation logic.</p>
 <h2> <a href="#autotokenizer-automatically-selects-the-correct-tokenizer-class"> </a> <span> AutoTokenizer automatically selects the correct tokenizer class </span>
-</h2>
-<p><a href="https://github.com/huggingface/transformers/blob/7f52a2a4ea8ab49b7f069df7fac58a5b280d4919/src/transformers/models/auto/tokenization_auto.py#L531"><code>AutoTokenizer</code></a> is the recommended entry point for loading tokenizers. It automatically determines which tokenizer class to use for a given model and returns an instance of that class.</p>
-<pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"gpt2"</span>)
+</h2> <pre><code><span>from</span> transformers <span>import</span> AutoTokenizer tokenizer = AutoTokenizer.from_pretrained(<span>"gpt2"</span>)
 </code></pre>
 <p>Behind the scenes, <code>AutoTokenizer</code> performs these steps:</p>
 <ol>

@@ -4,57 +4,43 @@
 <meta charset="UTF-8">
 <title>Apple Fixes Exploited Zero-Day Affecting iOS, macOS, and Other Devices</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Apple Fixes Exploited Zero-Day Affecting iOS, macOS, and Other Devices</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/12/2026 | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/12/2026 6:39:00 AM | <a href="https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 12, 2026</span></span><span>Zero-Day / Vulnerability</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXXnmQ69hHRCiUryP62cYqb4c5ShYwdmXYG1eTU8ujwrWwGICQBUVPzWAAqAW2fvWYURCEtEsBnhwDXKzV6oMBKSCFhfGMTsIRAoVrqRTHgHebhPRIMMPIBvNsvP8jwzh3ts578kUFyLiIs2mgKUiMQgoUmINM8JOOEVWMWA-W3_wAx07J-nm3oGihE_0v/s1600/apple.gif"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjXXnmQ69hHRCiUryP62cYqb4c5ShYwdmXYG1eTU8ujwrWwGICQBUVPzWAAqAW2fvWYURCEtEsBnhwDXKzV6oMBKSCFhfGMTsIRAoVrqRTHgHebhPRIMMPIBvNsvP8jwzh3ts578kUFyLiIs2mgKUiMQgoUmINM8JOOEVWMWA-W3_wAx07J-nm3oGihE_0v/s1600/apple.gif" /></a></p>
-<p>Apple on Wednesday <a href="https://support.apple.com/en-us/100100" target="_blank">released</a> iOS, iPadOS, macOS Tahoe, tvOS, watchOS, and visionOS updates to address a zero-day flaw that it said has been exploited in sophisticated cyber attacks.</p>
-<p>The vulnerability, tracked as <strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-20700" target="_blank">CVE-2026-20700</a></strong> (CVSS score: 7.8), has been described as a memory corruption issue in dyld, Apple's Dynamic Link Editor. Successful exploitation of the vulnerability could allow an attacker with memory write capability to execute arbitrary code on susceptible devices. Google Threat Analysis Group (TAG) has been credited with discovering and reporting the bug.</p>
-<p>"Apple is aware of a report that this issue may have been exploited in an extremely sophisticated attack against specific targeted individuals on versions of iOS before iOS 26," the company said in an advisory. "CVE-2025-14174 and CVE-2025-43529 were also issued in response to this report."</p>
-
-<p>It's worth noting that both CVE-2025-14174 and CVE-2025-43529 were <a href="https://thehackernews.com/2025/12/apple-issues-security-updates-after-two.html" target="_blank">addressed</a> by Cupertino in December 2025, with the former first disclosed by Google as having been exploited in the wild. <a href="https://thehackernews.com/2025/12/chrome-targeted-by-active-in-wild.html" target="_blank">CVE-2025-14174</a> (CVSS score: 8.8) relates to an out-of-bounds memory access in ANGLE's Metal renderer component. Metal is a high-performance hardware-accelerated graphics and compute API developed by Apple.</p>
-
-<p>CVE-2025-43529 (CVSS score: 8.8), on the other hand, is a use-after-free vulnerability in WebKit that may lead to arbitrary code execution when processing maliciously crafted web content.</p>
-<p>The updates are available for the following devices and operating systems -</p>
-<ul>
-<li><strong><a href="https://support.apple.com/en-us/126346" target="_blank">iOS 26.3 and iPadOS 26.3</a></strong> - iPhone 11 and later, iPad Pro 12.9-inch 3rd generation and later, iPad Pro 11-inch 1st generation and later, iPad Air 3rd generation and later, iPad 8th generation and later, and iPad mini 5th generation and later</li>
-<li><strong><a href="https://support.apple.com/en-us/126348" target="_blank">macOS Tahoe 26.3</a></strong> - Macs running macOS Tahoe</li>
-<li><strong><a href="https://support.apple.com/en-us/126351" target="_blank">tvOS 26.3</a></strong> - Apple TV HD and Apple TV 4K (all models)</li>
-<li><strong><a href="https://support.apple.com/en-us/126352" target="_blank">watchOS 26.3</a></strong> - Apple Watch Series 6 and later</li>
-<li><strong><a href="https://support.apple.com/en-us/126353" target="_blank">visionOS 26.3</a></strong> - Apple Vision Pro (all models)</li>
-</ul>
-<p>In addition, Apple has also released updates to resolve various vulnerabilities in older versions of iOS, iPadOs, macOS, and Safari -</p>
-<ul>
-<li><strong><a href="https://support.apple.com/en-us/126347" target="_blank">iOS 18.7.5 and iPadOS 18.7.5</a></strong> - iPhone XS, iPhone XS Max, iPhone XR, iPad 7th generation</li>
-<li><strong><a href="https://support.apple.com/en-us/126349" target="_blank">macOS Sequoia 15.7.4</a></strong> - Macs running macOS Sequoia</li>
-<li><strong><a href="https://support.apple.com/en-us/126350" target="_blank">macOS Sonoma 14.8.4</a></strong> - Macs running macOS Sonoma</li>
-<li><strong><a href="https://support.apple.com/en-us/126354" target="_blank">Safari 26.3</a></strong> - Macs running macOS Sonoma and macOS Sequoia</li>
-</ul>
-<p>With the latest development, Apple has moved to address its first actively exploited zero-day in 2026. Last year, the company patched nine zero-day vulnerabilities that were exploited in the wild.</p>
-
-<p>Found this article interesting?  Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
-</div></div>
+    <p>Apple on Wednesday released iOS, iPadOS, macOS Tahoe, tvOS, watchOS, and visionOS updates to address a zero-day flaw that it said has been exploited in sophisticated cyber attacks.
+The vulnerability, tracked as CVE-2026-20700 (CVSS score: 7.8), has been described as a memory corruption issue in dyld, Apple's Dynamic Link Editor. Successful exploitation of the vulnerability could allow an</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

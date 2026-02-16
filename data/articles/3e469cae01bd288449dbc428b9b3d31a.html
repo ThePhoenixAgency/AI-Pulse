@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Your AI Agent Knows Your Passwords — Here's How I Fixed It</title>
 <style>
@@ -18,8 +16,7 @@
 <body>
   <h1>Your AI Agent Knows Your Passwords — Here's How I Fixed It</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/demojacob/your-ai-agent-knows-your-passwords-heres-how-i-fixed-it-4kcd" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -33,7 +30,7 @@
   The Problem
 </h2>
 
-<p>AI agents like OpenClaw, Claude Desktop, and Cursor can automate browsers — filling forms, clicking buttons, navigating pages. But when they hit a login page, the typical flow looks like this:<br />
+<p>AI agents like OpenClaw, Claude Desktop, and Cursor can automate browsers — filling forms, clicking buttons, navigating pages. But when they hit a login page, the typical flow looks like this:<br>
 </p>
 
 <div>
@@ -47,16 +44,12 @@ Agent: "Logging in..."
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>That password just traveled through:</p>
 
@@ -83,7 +76,7 @@ Agent: "Logging in..."
 <p>The AI writes the logic using placeholders. Real credentials are substituted locally and injected directly into the browser. The LLM never sees your actual password.</p>
 </blockquote>
 
-<p>Instead of passing real credentials, the AI agent sends instructions like this:<br />
+<p>Instead of passing real credentials, the AI agent sends instructions like this:<br>
 </p>
 
 <div>
@@ -101,16 +94,12 @@ Agent: "Logging in..."
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Cerberus KeyRouter — an MCP (Model Context Protocol) server running on your machine — intercepts this call, fetches the real credentials from your local Vaultwarden instance, replaces the <code>{{placeholders}}</code>, and executes the actions via Chrome DevTools Protocol (CDP).</p>
 
@@ -121,8 +110,6 @@ Agent: "Logging in..."
   </a>
   Architecture
 </h2>
-
-
 
 <div>
 <pre><code>AI Agent (OpenClaw, Claude Desktop, etc.)
@@ -146,16 +133,12 @@ Vaultwarden (Docker, localhost:8443)
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Everything runs locally. Passwords never leave your machine.</p>
 
@@ -183,8 +166,6 @@ Vaultwarden (Docker, localhost:8443)
   Quick Start
 </h2>
 
-
-
 <div>
 <pre><code>git clone https://github.com/DemoJacob/cerberus-keyrouter.git
 <span>cd </span>cerberus-keyrouter
@@ -197,16 +178,12 @@ docker compose up <span>--build</span> <span>-d</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>This gives you:</p>
 
@@ -219,7 +196,7 @@ docker compose up <span>--build</span> <span>-d</span>
 
 <p>Open the admin panel at <code>http://localhost:8899/admin</code>, add your Vaultwarden account, and copy the generated bearer token.</p>
 
-<p>Connect your AI agent via MCP:<br />
+<p>Connect your AI agent via MCP:<br>
 </p>
 
 <div>
@@ -239,16 +216,12 @@ docker compose up <span>--build</span> <span>-d</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Done. Your agent can now log into any site in your vault — without knowing a single password.</p>
 
@@ -266,7 +239,7 @@ docker compose up <span>--build</span> <span>-d</span>
   Multi-Step Login
 </h2>
 
-<p>Banks and other sites often split login across multiple pages. Handle this with separate calls:<br />
+<p>Banks and other sites often split login across multiple pages. Handle this with separate calls:<br>
 </p>
 
 <div>
@@ -288,16 +261,12 @@ docker compose up <span>--build</span> <span>-d</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h2>
   <a name="realworld-usage" href="#realworld-usage">
@@ -309,8 +278,8 @@ docker compose up <span>--build</span> <span>-d</span>
 
 <p>The agent reports: <em>"I didn't touch any plaintext passwords. I only passed the placeholders {{email}} and {{password}}. Cerberus fetched the credentials from your local Vaultwarden vault and filled them directly into the browser."</em></p>
 
-<p>No password in the LLM context. No password in the logs. No password leaving my machine.<br />
-<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png" alt=" " /></a></p>
+<p>No password in the LLM context. No password in the logs. No password leaving my machine.<br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fyqjqzqfk55l0ugde9id3.png" alt=" "></a></p>
 
 <h2>
   <a name="technical-stack" href="#technical-stack">
@@ -362,8 +331,7 @@ docker compose up <span>--build</span> <span>-d</span>
 
 <p>Feedback, issues, and stars are all welcome. If you're building AI agents that need to handle authentication, I'd love to hear about your use case.</p>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

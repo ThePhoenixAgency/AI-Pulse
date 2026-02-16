@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Your Fork Will Outlive Your Patience. A Systems Thinking Post-Mortem.</title>
 <style>
@@ -30,8 +28,7 @@
 <body>
   <h1>Your Fork Will Outlive Your Patience. A Systems Thinking Post-Mortem.</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/microseyuyu/your-fork-will-outlive-your-patience-a-systems-thinking-post-mortem-56pk" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -66,7 +63,7 @@
   The Fix That Fails (R1)
 </h2>
 
-<p>Here's what my fork looked like as a system:<br />
+<p>Here's what my fork looked like as a system:<br>
 </p>
 
 <div>
@@ -98,16 +95,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Every <code>pip install</code> in my build environment could silently overwrite my forked rosdep with the official version. The official version doesn't know openEuler exists. Suddenly my entire pipeline is dead and I'm grepping through pip logs trying to figure out what happened.</p>
 
@@ -121,7 +114,7 @@
   The Data Decay Loop (R2)
 </h2>
 
-<p>R1 didn't run alone. I also forked <code>rosdistro</code> — the central database that maps ROS package names to OS-specific dependencies. My fork contained hand-maintained YAML files mapping ROS dependency keys to openEuler package names.<br />
+<p>R1 didn't run alone. I also forked <code>rosdistro</code> — the central database that maps ROS package names to OS-specific dependencies. My fork contained hand-maintained YAML files mapping ROS dependency keys to openEuler package names.<br>
 </p>
 
 <div>
@@ -147,16 +140,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>Every day the official rosdistro receives updates, my fork falls further behind. Every day it falls behind, more builds fail for reasons that have nothing to do with openEuler compatibility — they fail because my metadata is stale.</p>
 
@@ -256,16 +245,13 @@
 
 <p>The system doesn't care about your intentions. It cares about its structure.</p>
 
-
-<hr />
+<hr>
 
 <p>*The v1 post-mortem with system dynamics diagrams: <a href="https://github.com/sebastianhayashi/the_brute_force_probe" target="_blank">the_brute_force_probe</a>. The v2 verification engine: <a href="https://github.com/sebastianhayashi/the_adaptive_verification_engine" target="_blank">the_adaptive_verification_engine</a>. </p>
-
 
             </div></div>
   </div>
   
-
 
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -287,5 +273,5 @@
     });
 
   </script>
-</body>
-</html>
+
+</body></html>

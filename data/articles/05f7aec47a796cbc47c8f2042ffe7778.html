@@ -24,8 +24,7 @@
 <body>
   <h1>Ancienne élue de la majorité Piolle, Maud Wadelec (LFI) s'engage avec Allan Brunon : « Une partie de la gauche préfère parler d’égalité en théorie… »</h1>
   <div class="metadata">
-    Source: Le Dauphiné Isère | Date: 2/16/2026 8:11:00 PM | Lang: FR |
-    <a href="https://www.ledauphine.com/elections/2026/02/16/ancienne-elue-de-la-majorite-piolle-maud-wadelec-(lfi)-s-engage-avec-allan-brunon-une-partie-de-la-gauche-prefere-parler-d-egalite-en-theorie" target="_blank">Original Article</a>
+    Source: Le Dauphiné Isère | Date: 2/16/2026 9:11:00 PM | <a href="https://www.ledauphine.com/elections/2026/02/16/ancienne-elue-de-la-majorite-piolle-maud-wadelec-(lfi)-s-engage-avec-allan-brunon-une-partie-de-la-gauche-prefere-parler-d-egalite-en-theorie" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <article> <div> <div> <div> <p><span>Le Dauphiné Libéré </span> - <span> Aujourd'hui à 21:11 | mis à jour aujourd'hui à 21:12 - Temps de lecture : <span></span> </span>
@@ -34,21 +33,21 @@
 </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

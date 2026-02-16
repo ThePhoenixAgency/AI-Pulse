@@ -24,8 +24,7 @@
 <body>
   <h1>Concealing payloads in URL credentials</h1>
   <div class="metadata">
-    Source: PortSwigger Research | Date: 10/23/2024 2:59:05 PM | Lang: EN |
-    <a href="https://portswigger.net/research/concealing-payloads-in-url-credentials" target="_blank">Original Article</a>
+    Source: PortSwigger Research | Date: 10/23/2024 2:59:05 PM | <a href="https://portswigger.net/research/concealing-payloads-in-url-credentials" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
@@ -37,7 +36,7 @@
 </p><p><code>https://alert(1)@portswigger-labs.net<br>&lt;img src onerror=alert(URL.slice(8,16))&gt;</code></p><p><a href="https://alert(1)@portswigger-labs.net/xss/xss.php?x=%3Cimg%20src%20onerror=alert(URL.slice(8,16))%3E">Grab payload from credentials</a></p><p>After fuzzing to identify which <a href="https://shazzer.co.uk/vectors/66565698b1ba6bb6f9133d13">characters are encoded in the credentials part of the URL
 </a>, Shazzer discovered that Firefox doesn't URL-encode single quotes. This is particularly useful in <a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">DOM XSS</a> scenarios, if the site removes the query string and hash. As it makes vulnerabilities like this exploitable in Firefox:
 </p>
-<p><code>function getBase(url) {<br> return url.split(/[?#]/)[0];<br>}<br>document.write(`&lt;script&gt;const url='${getBase(document.URL)}';&lt;\/script&gt;`);
+<p><code>function getBase(url) {<br>&nbsp;&nbsp;&nbsp;return url.split(/[?#]/)[0];<br>}<br>document.write(`&lt;script&gt;const url='${getBase(document.URL)}';&lt;\/script&gt;`);
 </code></p><p>To exploit this you need to provide the payload in the credentials part on Firefox like this:
 </p><p><code>https://'-alert(1)-'@example.com</code></p><p>This can be delivered using redirection or user navigation. You can even use this technique to control the username or password properties of anchor links. This works because every anchor element has these properties, which store the credentials from the URL. If it's a relative link, it inherits the parent credentials, allowing you to clobber these values:
 </p>

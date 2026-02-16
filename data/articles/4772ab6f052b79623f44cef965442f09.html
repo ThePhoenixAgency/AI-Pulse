@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Converting Large JSON, NDJSON, CSV and XML Files without Blowing Up Memory</title>
 <style>
@@ -23,12 +21,11 @@
 <body>
   <h1>Converting Large JSON, NDJSON, CSV and XML Files without Blowing Up Memory</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
-    <a href="https://dev.to/bruno_hanss_6b82bb52cd0fa/converting-large-json-ndjson-csv-and-xml-files-without-blowing-up-memory-20ao" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
-                <p>Most of us have written something like this at some point:<br />
+                <p>Most of us have written something like this at some point:<br>
 </p>
 
 <div>
@@ -39,22 +36,18 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
 <p>It works.</p>
 
 <p>Until it doesn't.</p>
 
-<p>At some point the file grows.\<br />
+<p>At some point the file grows.\<br>
 50MB. 200MB. 1GB. 5GB.</p>
 
 <p>And suddenly:</p>
@@ -70,7 +63,7 @@
 
 <p>It's a buffering problem.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="the-real-issue-buffering-vs-streaming" href="#the-real-issue-buffering-vs-streaming">
   </a>
@@ -98,15 +91,15 @@
 
 <p>That architectural difference matters far more than micro-optimizations.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="why-i-built-a-streaming-converter" href="#why-i-built-a-streaming-converter">
   </a>
   Why I Built a Streaming Converter
 </h2>
 
-<p>I've been working on a project called <strong>convert-buddy-js</strong>, a Rust-based<br />
-streaming conversion engine compiled to WebAssembly and exposed as a<br />
+<p>I've been working on a project called <strong>convert-buddy-js</strong>, a Rust-based<br>
+streaming conversion engine compiled to WebAssembly and exposed as a<br>
 JavaScript library.</p>
 
 <p>It supports:</p>
@@ -124,10 +117,10 @@ JavaScript library.</p>
 <p>Keep memory usage flat, even as file size grows.</p>
 </blockquote>
 
-<p>Not "be the fastest library ever."\<br />
+<p>Not "be the fastest library ever."\<br>
 Just predictable. Stable. Bounded.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="what-does-low-memory-actually-mean" href="#what-does-low-memory-actually-mean">
   </a>
@@ -163,10 +156,10 @@ Just predictable. Stable. Bounded.</p>
 
 <p>The difference is architectural.</p>
 
-<p>The streaming engine processes elements incrementally instead of<br />
+<p>The streaming engine processes elements incrementally instead of<br>
 constructing large intermediate structures.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="csv-%E2%86%92-json-benchmarks" href="#csv-%E2%86%92-json-benchmarks">
   </a>
@@ -239,10 +232,10 @@ constructing large intermediate structures.</p>
 </tbody>
 </table></div>
 
-<p>In most CSV scenarios tested, the streaming approach resulted in roughly<br />
+<p>In most CSV scenarios tested, the streaming approach resulted in roughly<br>
 3x--4x throughput improvements, with dramatically lower memory overhead.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="where-streaming-isnt-always-faster" href="#where-streaming-isnt-always-faster">
   </a>
@@ -275,16 +268,16 @@ constructing large intermediate structures.</p>
 
 <p>That's expected.</p>
 
-<p>When files are extremely small, the overhead of streaming infrastructure<br />
-can outweigh benefits.\<br />
-Native <code>JSON.parse</code> is heavily optimized in engines and extremely<br />
+<p>When files are extremely small, the overhead of streaming infrastructure<br>
+can outweigh benefits.\<br>
+Native <code>JSON.parse</code> is heavily optimized in engines and extremely<br>
 efficient for small payloads.</p>
 
 <p>The goal here isn't to replace native JSON for everything.</p>
 
 <p>It's to handle realistic and large workloads predictably.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="ndjson-%E2%86%92-json-performance" href="#ndjson-%E2%86%92-json-performance">
   </a>
@@ -312,18 +305,18 @@ efficient for small payloads.</p>
 </tbody>
 </table></div>
 
-<p>That's where streaming and incremental transformation shine ---<br />
-especially when the workload involves structured transformation rather<br />
+<p>That's where streaming and incremental transformation shine ---<br>
+especially when the workload involves structured transformation rather<br>
 than just parsing.</p>
 
-<hr />
+<hr>
 <h2>
   <a name="what-the-library-looks-like" href="#what-the-library-looks-like">
   </a>
   What the Library Looks Like
 </h2>
 
-<p>Install:<br />
+<p>Install:<br>
 </p>
 
 <div>
@@ -334,18 +327,14 @@ than just parsing.</p>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p>Then:<br />
+<p>Then:<br>
 </p>
 
 <div>
@@ -388,16 +377,12 @@ than just parsing.</p>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>It works in:</p>
 
@@ -409,8 +394,7 @@ than just parsing.</p>
 
 <p>Because the core engine is written in Rust and compiled to WebAssembly.</p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="why-rust-webassembly" href="#why-rust-webassembly">
@@ -429,11 +413,10 @@ than just parsing.</p>
 <li>  Easier control over allocations</li>
 </ul>
 
-<p>WebAssembly allows that engine to run safely in the browser without<br />
+<p>WebAssembly allows that engine to run safely in the browser without<br>
 server uploads.</p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="when-this-tool-makes-sense" href="#when-this-tool-makes-sense">
@@ -459,8 +442,7 @@ server uploads.</p>
 <li>  You want predictable memory footprint</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="what-i-learned-building-it" href="#what-i-learned-building-it">
@@ -475,8 +457,7 @@ server uploads.</p>
 <li>  Memory predictability matters more than peak throughput.</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="closing-thoughts" href="#closing-thoughts">
@@ -486,8 +467,8 @@ server uploads.</p>
 
 <p>There are many good parsing libraries in the JavaScript ecosystem.</p>
 
-<p>PapaParse is mature.\<br />
-csv-parse is robust.\<br />
+<p>PapaParse is mature.\<br>
+csv-parse is robust.\<br>
 Native JSON.parse is extremely optimized.</p>
 
 <p>convert-buddy-js is simply an option focused on:</p>
@@ -503,15 +484,14 @@ Native JSON.parse is extremely optimized.</p>
 
 <p>If not, the ecosystem already has excellent tools.</p>
 
-<p>If you're curious, the full benchmarks and scenarios are available in<br />
-the repository.<br />
-<a href="https://www.npmjs.com/package/convert-buddy-js" target="_blank">convert-buddy-js — npm</a><br />
+<p>If you're curious, the full benchmarks and scenarios are available in<br>
+the repository.<br>
+<a href="https://www.npmjs.com/package/convert-buddy-js" target="_blank">convert-buddy-js — npm</a><br>
 <a href="https://github.com/brunohanss/convert-buddy" target="_blank">brunohanss/convert-buddy</a></p>
 
 <p>And if you have workloads where streaming would make a difference, I’d be interested in feedback.</p>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

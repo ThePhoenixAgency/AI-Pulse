@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,32 +18,11 @@
 <body>
   <h1>BeyondTrust Fixes Critical Pre-Auth RCE Vulnerability in Remote Support and PRA</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/9/2026 9:03:00 AM | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/9/2026 9:03:00 AM | <a href="https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 09, 2026</span></span><span>Enterprise Security / Network Security</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoSFjfJhHXUMJ0_vAj8LwmTeAMOkqVJomqws8hEaofSam7jnpED75EtkDhrEkofhEd0o_z-gZngp5Ue2kgvyhX3GrQA3gUp3v2H4OmEvpjYQb93gmQNeSppy5WIH6LJNg97OIEAsMXmelNMrq9VR5sN3ZrCnWwgfum_0MUCW5hHoqPQ2gmVxWFGwdr5l2t/s1600/bt.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjoSFjfJhHXUMJ0_vAj8LwmTeAMOkqVJomqws8hEaofSam7jnpED75EtkDhrEkofhEd0o_z-gZngp5Ue2kgvyhX3GrQA3gUp3v2H4OmEvpjYQb93gmQNeSppy5WIH6LJNg97OIEAsMXmelNMrq9VR5sN3ZrCnWwgfum_0MUCW5hHoqPQ2gmVxWFGwdr5l2t/s1600/bt.jpg"></a></p>
-<p>BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.</p>
-<p>"BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability," the company <a href="https://www.beyondtrust.com/trust-center/security-advisories/bt26-02" target="_blank">said</a> in an advisory released February 6, 2026.</p>
-<p>"By sending specially crafted requests, an unauthenticated remote attacker may be able to execute operating system commands in the context of the site user."</p>
-<p>The vulnerability, categorized as an <a href="https://cwe.mitre.org/data/definitions/78.html" target="_blank">operating system command injection</a>, has been assigned the CVE identifier <strong>CVE-2026-1731</strong>. It's rated 9.9 on the CVSS scoring system.</p> <p>BeyondTrust said successful exploitation of the shortcoming could allow an unauthenticated remote attacker to execute operating system commands in the context of the site user, resulting in unauthorized access, data exfiltration, and service disruption.</p>
-<p>The issue affects the following versions -</p>
-<ul>
-<li>Remote Support versions 25.3.1 and prior</li>
-<li>Privileged Remote Access versions 24.3.4 and prior</li>
-</ul>
-<p>It has been patched in the following versions -</p>
-<ul>
-<li>Remote Support - Patch BT26-02-RS, 25.3.2 and later</li>
-<li>Privileged Remote Access - Patch BT26-02-PRA, 25.1.1 and later</li>
-</ul> <p>The company is also urging self-hosted customers of Remote Support and Privileged Remote Access to manually apply the patch if their instance is not subscribed to automatic updates. Those running a Remote Support version older than 21.3 or on Privileged Remote Access older than 22.1 are also required to upgrade to a newer version to apply this patch.</p>
-<p>"Self-hosted customers of PRA may also upgrade to 25.1.1 or a newer version to remediate this vulnerability," it added.</p> <p>According to security researcher and Hacktron AI co-founder Harsh Jaiswal, the vulnerability was discovered on January 31, 2026, through an artificial intelligence (AI)-enabled variant analysis, adding that it found about 11,000 instances exposed to the internet. Additional details of the flaw have been withheld to give users time to apply the patches.</p>
-<p>"About ~8,500 of those are on-prem deployments, which remain potentially vulnerable if patches aren't applied," Jaiswal and Mohan Sri Rama Krishna Pedhapati <a href="https://www.hacktron.ai/blog/cve-2026-1731-beyondtrust-remote-support-rce" target="_blank">said</a>.</p>
-<p>With security flaws in BeyondTrust Privileged Remote Access and Remote Support having <a href="https://thehackernews.com/2024/12/cisa-adds-critical-flaw-in-beyondtrust.html" target="_blank">come under</a> <a href="https://thehackernews.com/2025/02/beyondtrust-zero-day-breach-exposes-17.html" target="_blank">active exploitation</a> in the past, it's essential that users update to the latest version as soon as possible for optimal protection.</p>
-<h3>Update</h3>
-<p>According to <a href="https://censys.com/advisory/cve-2026-1731" target="_blank">data</a> from attack surface management platform Censys, there are about 190,832 exposed web properties, although it's currently not clear how many of those are susceptible to the flaw. The majority of the exposures are in the U.S., followed by Germany, Canada, the U.K., France, Switzerland, Australia, and India.</p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
-</div></div>
+    <p>BeyondTrust has released updates to address a critical security flaw impacting Remote Support (RS) and Privileged Remote Access (PRA) products that, if successfully exploited, could result in remote code execution.
+"BeyondTrust Remote Support (RS) and certain older versions of Privileged Remote Access (PRA) contain a critical pre-authentication remote code execution vulnerability," the company</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

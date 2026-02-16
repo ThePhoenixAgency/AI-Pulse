@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,66 +18,10 @@
 <body>
   <h1>Measuring Open-Source Llama Nemotron Models on DeepResearch Bench</h1>
   <div class="metadata">
-<<<<<<< HEAD
-    Source: Hugging Face Blog | Date: 8/4/2025 9:51:50 PM | Lang: EN |
-=======
-    Source: Hugging Face Blog | Date: 8/4/2025 7:51:50 PM | Lang: EN |
->>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
-    <a href="https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 8/4/2025 9:51:50 PM | <a href="https://huggingface.co/blog/nvidia/ai-q-top-ranking-open-portable-deep-research-agent" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/jayrodge"><img alt="Jay Rodge's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/60799ef8c5e1e416b294ea3c/9jL2z0OfVStgo1NGrJoTH.png"></a> </span> </span></p> </div> <div><nav><ul><li><a href="#core-stack-model-choices-and-technical-innovations">Core Stack: Model Choices and Technical Innovations</a> <ul></ul> </li><li><a href="#deep-reasoning-with-llama-nemotron">Deep Reasoning with Llama Nemotron</a> <ul></ul> </li><li><a href="#evaluation-transparency-and-robustness-in-metrics">Evaluation: Transparency and Robustness in Metrics</a> <ul></ul> </li><li><a href="#benchmark-results-deepresearch-bench">Benchmark Results: DeepResearch Bench</a> <ul></ul> </li><li><a href="#for-the-hugging-face-developer-community">For the Hugging Face Developer Community</a> <ul></ul> </li><li><a href="#takeaways">Takeaways</a> <ul></ul> </li></ul></nav></div><p><strong>Contributors:</strong> David Austin, Raja Biswas, Gilberto Titericz Junior, NVIDIA</p>
-<p><a href="https://build.nvidia.com/nvidia/aiq">NVIDIA’s AI-Q Blueprint</a>—the leading portable, open deep research agent—recently climbed to the top of the <a href="https://huggingface.co/spaces/Ayanami0730/DeepResearch-Leaderboard">Hugging Face “LLM with Search” leaderboard on DeepResearch Bench</a>. This is a significant step forward for the open-source AI stack, proving that developer-accessible models can power advanced agentic workflows that rival or surpass closed alternatives.</p>
-<p>What sets AI-Q apart? It fuses two high-performance open LLMs—Llama 3.3-70B Instruct and Llama-3.3-Nemotron-Super-49B-v1.5—to orchestrate long-context retrieval, agentic reasoning, and robust synthesis.</p>
-<h2> <a href="#core-stack-model-choices-and-technical-innovations"> <span></span> </a> <span> Core Stack: Model Choices and Technical Innovations </span>
-</h2>
-<ul>
-<li><a href="https://build.nvidia.com/meta/llama-3_3-70b-instruct">Llama 3.3-70B Instruct</a>: The foundation for fluent, structured report generation, derived from Meta’s Llama series and open-licensed for unrestricted deployment.</li>
-<li><a href="https://build.nvidia.com/nvidia/llama-3_3-nemotron-super-49b-v1_5">Llama-3.3-Nemotron-Super-49B-v1.5</a>: An optimized, reasoning-focused variant. Built via Neural Architecture Search (NAS), knowledge distillation, and successive rounds of supervised and reinforcement learning, it excels at multi-step reasoning, query planning, tool use, and reflection—all with a reduced memory footprint for efficient deployment on standard GPUs.</li>
-</ul>
-<p><strong>The AI-Q reference example also includes</strong>:</p>
-<ul>
-<li><a href="https://build.nvidia.com/explore/retrieval">NVIDIA NeMo Retriever</a> for scalable, multimodal search (internal+external).</li>
-<li><a href="https://developer.nvidia.com/nemo-agent-toolkit">NVIDIA NeMo Agent toolkit</a> for orchestrating complex, multistep agentic workflows.</li>
-</ul>
-<p>The architecture supports parallel, low-latency search over local and web data, making it ideal for use cases that demand privacy, compliance, or on-premise deployment for reduced latency.</p>
-<h2> <a href="#deep-reasoning-with-llama-nemotron"> <span></span> </a> <span> Deep Reasoning with Llama Nemotron </span>
-</h2>
-<p>NVIDIA Llama Nemotron Super isn’t just a fine-tuned instruct model—it’s post-trained for explicit agentic reasoning and supports reasoning ON/OFF toggles via system prompts. You can use it in standard chat LLM mode or switch to deep, chain-of-thought reasoning for agent pipelines—enabling dynamic, context-sensitive workflows.</p>
-<p>Key highlights:</p>
-<ul>
-<li><strong>Multi-phase post-training</strong>: Combines instruction following, mathematical/programmatic reasoning, and tool-calling skills.</li>
-<li><strong>Transparent model lineage</strong>: Directly traceable from open Meta weights, with additional openness around synthetic data and tuning datasets.</li>
-<li><strong>Efficiency</strong>: 49B parameters with context windows up to 128K tokens can run on a single H100 GPU or smaller, keeping inference costs predictable and fast.</li>
-</ul>
-<h2> <a href="#evaluation-transparency-and-robustness-in-metrics"> <span></span> </a> <span> Evaluation: Transparency and Robustness in Metrics </span>
-</h2>
-<p>One of the core strengths of AI-Q is transparency—not just in outputs, but in reasoning traces and intermediate steps. During development, the NVIDIA team leveraged both standard and new metrics, such as:</p>
-<ul>
-<li><strong>Hallucination detection</strong>: Each factual claim is checked at generation.</li>
-<li><strong>Multi-source synthesis</strong>: Synthesis of new insights from disparate evidence.</li>
-<li><strong>Citation trustworthiness</strong>: Automated assessment of claim-evidence links.</li>
-<li><a href="https://docs.ragas.io/en/latest/concepts/metrics/available_metrics/nvidia_metrics/"><strong>RAGAS</strong></a> metrics: Automated scoring of retrieval-augmented generation accuracy.</li>
-</ul>
-<p>The architecture lends itself perfectly to granular, stepwise evaluation and debugging—one of the biggest pain points in agentic pipeline development.</p>
-<h2> <a href="#benchmark-results-deepresearch-bench"> <span></span> </a> <span> Benchmark Results: DeepResearch Bench </span>
-</h2>
-<p>DeepResearch Bench evaluates agent stacks using a set of 100+ long-context, real-world research tasks (across science, finance, art, history, software, and more). Unlike traditional QA, tasks require report-length synthesis and complex multi-hop reasoning:</p>
-<ul>
-<li><strong>AI-Q achieved an overall score of 40.52 in the LLM with Search category as of August 2025</strong>, currently holding the top spot for any fully open-licensed stack.</li>
-<li><strong>Strongest metrics</strong>: comprehensiveness (depth of report), insightfulness (quality of analysis), and citation quality.</li>
-</ul>
-<h2> <a href="#for-the-hugging-face-developer-community"> <span></span> </a> <span> For the Hugging Face Developer Community </span>
-</h2>
-<ul>
-<li>Both Llama-3.3-Nemotron-Super-49B-v1.5 and Llama 3.3-70B Instruct are available for direct use/download on Hugging Face. Try them in your own pipelines using a few lines of Python, or deploy with vLLM for fast inference and tool-calling support (see the model card for code/serving examples).</li>
-<li>Open post-training data, transparent evaluation methods, and permissive licensing enable experimentation and reproducibility.</li>
-</ul>
-<h2> <a href="#takeaways"> <span></span> </a> <span> Takeaways </span>
-</h2>
-<p>The open-source ecosystem is rapidly closing the gap—and, in some areas, leading—on real-world agent tasks that matter. AI-Q, built on Llama Nemotron, demonstrates that you don’t need to compromise on transparency or control to achieve state-of-the-art results.</p>
-<p>Try the stack or adapt it to your own research agent projects from Hugging Face or <a href="https://huggingface.co/blog/nvidia/build.nvidia.com">build.nvidia.com</a>.</p>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

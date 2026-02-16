@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
-<title>« C’est du délire » : une faille permet d’accéder à tous les aspirateurs robots DJI Romo</title>
+<title>«&nbsp;C’est du délire&nbsp;» : une faille permet d’accéder à tous les aspirateurs robots DJI Romo</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.5em; }
@@ -21,10 +19,9 @@
 </style>
 </head>
 <body>
-  <h1>« C’est du délire » : une faille permet d’accéder à tous les aspirateurs robots DJI Romo</h1>
+  <h1>«&nbsp;C’est du délire&nbsp;» : une faille permet d’accéder à tous les aspirateurs robots DJI Romo</h1>
   <div class="metadata">
-    Source: Frandroid | Date: 2/14/2026 | Lang: FR |
-    <a href="https://www.frandroid.com/marques/2977963_cest-du-delire-une-faille-permet-dacceder-a-tous-les-aspirateurs-robots-dji-romo" target="_blank">Original Article</a>
+    Source: Frandroid | Date: 2/14/2026 | Lang: FR
   </div>
   <div class="content">
     <div><div>
@@ -32,13 +29,9 @@
 <p>On savait que les <a href="https://www.frandroid.com/guide-dachat/guide-objets-connectes/616642_quels-sont-les-meilleurs-robots-aspirateurs-pour-dire-adieu-aux-corvees">robots aspirateurs</a> n’étaient pas des modèles de discrétion, mais là, DJI fait fort. Une faille monumentale a permis à un utilisateur d’accéder aux caméras, aux micros et aux plans de milliers de logements à travers le monde.</p>
 </div>
 
-
-<figure><a target="_blank" href="https://images.frandroid.com/wp-content/uploads/2025/10/image-82-1.jpg"><img src="https://c0.lestechnophiles.com/images.frandroid.com/wp-content/uploads/2025/10/image-82-1.jpg?resize=1200&amp;key=b8d9e211&amp;watermark" alt="" /></a><figcaption>DJI Romo P // Crédits : Frandroid</figcaption></figure>
-
-
+<figure><a target="_blank" href="https://images.frandroid.com/wp-content/uploads/2025/10/image-82-1.jpg"><img src="https://c0.lestechnophiles.com/images.frandroid.com/wp-content/uploads/2025/10/image-82-1.jpg?resize=1200&amp;key=b8d9e211&amp;watermark" alt=""></a><figcaption>DJI Romo P // Crédits : Frandroid</figcaption></figure>
 
 <p>Sammy Azdoufal ne cherchait pas à devenir le Big Brother des <a href="https://www.frandroid.com/guide-dachat/guide-objets-connectes/616642_quels-sont-les-meilleurs-robots-aspirateurs-pour-dire-adieu-aux-corvees">aspirateurs</a>. Il voulait juste s’amuser. Son objectif ? Contrôler son tout nouveau <strong><a href="https://www.frandroid.com/marques/dji/2830829_test-dji-romo-p">DJI Romo</a></strong> avec <a href="https://www.frandroid.com/produits/manettes/sony/1310767-sony-playstation-dualsense">une manette de PlayStation 5</a>. Un projet de bidouilleur classique, aidé par l’IA Claude Code pour décortiquer les protocoles de communication de DJI.</p>
-
 
 <div>
                                     <div>
@@ -46,29 +39,27 @@
                 9 <span>/10</span>
             </span>
         </p>
-            <img alt="DJI-Romo-S-Frandroid-2025" />    </div>
+            <img alt="DJI-Romo-S-Frandroid-2025">    </div>
                         <div>
             <p><span>
                 9 <span>/10</span>
             </span>
         </p>
-            <img alt="DJI-Romo-P-Frandroid-2025" />    </div>
+            <img alt="DJI-Romo-P-Frandroid-2025">    </div>
                         <div>
             <p><span>
                 9 <span>/10</span>
             </span>
         </p>
-            <img alt="DJI-Romo-A-Frandroid-2025" />    </div>
+            <img alt="DJI-Romo-A-Frandroid-2025">    </div>
                             </div>
 
-
 <p>Mais en connectant son application aux serveurs de la marque, la réalité l’a rattrapé. Ce n’est pas son robot qui a répondu, mais une armée de <strong>6 700 appareils</strong> répartis dans 24 pays. Sans rien pirater, sans forcer la moindre porte, il a reçu en temps réel les numéros de série, l’état de la batterie, et surtout, l’accès aux flux vidéo et audio de milliers d’inconnus.</p>
-
 
 <div>
                     
                             <div>
-                <img alt="Box Zendure – Février 2026" />            </div>
+                <img alt="Box Zendure – Février 2026">            </div>
                 <div>
                             <p>
                     Pack SolarFlow 2400AC+ avec 2 batteries et compteur à -490 €                </p>
@@ -78,51 +69,32 @@
                     </div>
     </div>
 
-
-
-
 <p>Le plus inquiétant ? En ajoutant les stations de charge <strong>DJI Power</strong>, qui utilisent les mêmes serveurs, c’est un parc de <strong>10 000 appareils</strong> qui se retrouvait à nu. </p>
-
-
 
 <h2>Une passoire nommée MQTT</h2>
 
-
-
 <p>Voici comment ça marche. Les appareils DJI communiquent avec les serveurs via un protocole nommé MQTT. En récupérant son propre jeton d’accès (token), Sammy Azdoufal a réalisé que le serveur ne vérifiait pas si les données demandées appartenaient bien à l’utilisateur. Une fois identifié avec sa clé, il pouvait demander les informations de n’importe quel autre robot en utilisant simplement son numéro de série.</p>
-
-
 
 <p>Lors d’une démonstration pour <em><a target="_blank" href="https://www.theverge.com/tech/879088/dji-romo-hack-vulnerability-remote-control-camera-access-mqtt">The Verge</a></em>, le constat a été immédiat. Avec le numéro de série d’un robot de test situé dans un autre pays, Azdoufal a pu voir en quelques secondes que l’appareil nettoyait le salon et qu’il lui restait <strong>80 % de batterie</strong>. Plus grave encore, il a généré le plan 2D précis de l’appartement en temps réel. Le flux vidéo, lui, était accessible en contournant totalement le code PIN de sécurité défini par l’utilisateur.</p>
 
-
-
 <p>Le problème ne vient pas du chiffrement en transit (le fameux TLS), mais de ce qui se passe à l’intérieur du tuyau. DJI se défend en affirmant que les données sont stockées sur des serveurs <strong>AWS aux États-Unis</strong>, mais comme le souligne le chercheur Kevin Finisterre, cela n’empêche absolument pas un employé en Chine ou un utilisateur malin d’accéder aux informations si les droits d’accès au niveau du serveur sont mal configurés. </p>
-
-
 
 <h2>Un timing désastreux pour DJI</h2>
 
-
-
 <p>Cette faille arrive au pire moment pour DJI. Alors que la marque lutte <a href="https://www.frandroid.com/marques/dji/2919827_les-etats-unis-interdisent-dji-et-tous-les-drones-etrangers-voici-les-consequences-directes">pour ne pas être bannie du sol américain</a> pour des soupçons d’espionnage, voir qu’un utilisateur lambda peut voir à travers les yeux de milliers de robots n’aide pas à la confiance. DJI a bien tenté de minimiser l’affaire, affirmant que la faille avait été corrigée avant sa divulgation publique. La réalité ? Lors des tests effectués mardi dernier, la vulnérabilité était encore bien présente.</p>
 
-
 <p>
-    <span>Pour aller plus loin</span><br />
+    <span>Pour aller plus loin</span><br>
             <a href="https://www.frandroid.com/marques/dji/2919827_les-etats-unis-interdisent-dji-et-tous-les-drones-etrangers-voici-les-consequences-directes">Les États-Unis interdisent DJI et tous les drones étrangers : voici les conséquences directes</a>
             </p>
 
-
-
 <p>Il a fallu une seconde mise à jour, déployée en urgence le 10 février, pour que le scanner du chercheur s’arrête enfin de recevoir des paquets de données. Pourtant, tout n’est pas réglé. Le chercheur affirme que certaines failles persistent, comme la possibilité de voir son propre flux vidéo sans PIN, ou d’autres vulnérabilités plus critiques qu’il préfère taire pour l’instant.</p>
 
-
 <p>
-    <span>Pour aller plus loin</span><br />
+    <span>Pour aller plus loin</span><br>
             <a href="https://www.frandroid.com/marques/dji/2830829_test-dji-romo-p">Test du DJI Romo P : le maître du ciel s’attaque au sol</a>
             </p>
-<hr /><p>Envie de rejoindre une communauté de passionnés ? <a href="https://discord.com/invite/frandroid-311789172149190657" target="_blank">Notre Discord</a> vous accueille, c’est un lieu d’entraide et de passion autour de la tech.</p>            </div></div>
+<hr><p>Envie de rejoindre une communauté de passionnés ? <a href="https://discord.com/invite/frandroid-311789172149190657" target="_blank">Notre Discord</a> vous accueille, c’est un lieu d’entraide et de passion autour de la tech.</p>            </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

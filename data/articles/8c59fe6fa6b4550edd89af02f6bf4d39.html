@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
+<!DOCTYPE html><html lang="pt"><head>
 <meta charset="UTF-8">
 <title>GitHub - sunergos-ro/scrappy: A tiny browser scraper written in Go</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>GitHub - sunergos-ro/scrappy: A tiny browser scraper written in Go</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 8:49:52 PM | Lang: PT |
-    <a href="https://github.com/sunergos-ro/scrappy" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 9:49:52 PM | <a href="https://github.com/sunergos-ro/scrappy" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
   </div>
   <div class="content">
     <div><h1>Scrappy</h1><a href="#scrappy"></a></div>
@@ -41,33 +38,33 @@
 </thead>
 <tbody>
 <tr>
-<td><code>POST</code></td>
-<td><code>/html</code></td>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/html</code></pre></td>
 <td>Return page HTML</td>
 </tr>
 <tr>
-<td><code>POST</code></td>
-<td><code>/markdown</code></td>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/markdown</code></pre></td>
 <td>Return extracted markdown-like content</td>
 </tr>
 <tr>
-<td><code>POST</code></td>
-<td><code>/screenshot</code></td>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/screenshot</code></pre></td>
 <td>Capture screenshot and upload to R2</td>
 </tr>
 <tr>
-<td><code>POST</code></td>
-<td><code>/pool/scale</code></td>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/pool/scale</code></pre></td>
 <td>Resize browser pool (admin token required when configured)</td>
 </tr>
 <tr>
-<td><code>GET</code></td>
-<td><code>/stats</code></td>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/stats</code></pre></td>
 <td>Inspect pool health/utilization (admin token required when configured)</td>
 </tr>
 <tr>
-<td><code>GET</code></td>
-<td><code>/health</code></td>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/health</code></pre></td>
 <td>Liveness endpoint (bypasses IP allowlist)</td>
 </tr>
 </tbody>
@@ -76,7 +73,7 @@
 <ul>
 <li>Go 1.26+</li>
 <li>Chrome/Chromium available (or let Rod launcher manage it)</li>
-<li>Optional: Cloudflare R2 credentials for <code>/screenshot</code></li>
+<li>Optional: Cloudflare R2 credentials for <pre><code>/screenshot</code></pre></li>
 </ul>
 <div><h2>Quick Start</h2><a href="#quick-start"></a></div>
 <ol>
@@ -87,13 +84,13 @@
 <li>Configure environment:</li>
 </ol>
 <div><pre>cp .env.example .env</pre></div>
-<p>Then edit <code>.env</code> and set required values.</p>
+<p>Then edit </p><pre><code>.env</code></pre> and set required values.<p></p>
 <ol>
 <li>Start service:</li>
 </ol>
 <div><pre>go run <span>.</span></pre></div>
-<p>Default bind address is <code>:3000</code> (<code>SCRAPPY_ADDR</code>).</p>
-<p>If calling from a non-local IP in development, set <code>SCRAPPY_ALLOWED_IPS</code> accordingly.</p>
+<p>Default bind address is </p><pre><code>:3000</code></pre> (<pre><code>SCRAPPY_ADDR</code></pre>).<p></p>
+<p>If calling from a non-local IP in development, set </p><pre><code>SCRAPPY_ALLOWED_IPS</code></pre> accordingly.<p></p>
 <div><h2>API Usage</h2><a href="#api-usage"></a></div>
 <div><h3>Render HTML</h3><a href="#render-html"></a></div>
 <div><pre>curl -X POST http://localhost:3000/html \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"url":"https://example.com","viewport":{"width":1280,"height":800}}<span>'</span></span></pre></div>
@@ -104,7 +101,7 @@
 <div><h3>Scale Pool</h3><a href="#scale-pool"></a></div>
 <div><pre>curl -X POST http://localhost:3000/pool/scale \ -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \ -d <span><span>'</span>{"size":3}<span>'</span></span></pre></div>
 <div><h2>CLI</h2><a href="#cli"></a></div>
-<p>A local CLI is available at <code>cmd/scrappy</code> for script and agent workflows.</p>
+<p>A local CLI is available at </p><pre><code>cmd/scrappy</code></pre> for script and agent workflows.<p></p>
 <p>Run via Go:</p>
 <div><pre>go run ./cmd/scrappy --help</pre></div>
 <p>Example commands:</p>
@@ -112,19 +109,19 @@
 go run ./cmd/scrappy --base-url http://localhost:3000 scale --size 3</pre></div>
 <p>Global CLI flags:</p>
 <ul>
-<li><code>--base-url</code> (env: <code>SCRAPPY_BASE_URL</code>, default <code>http://localhost:3000</code>)</li>
-<li><code>--admin-token</code> (env: <code>SCRAPPY_ADMIN_TOKEN</code>)</li>
-<li><code>--http-timeout-ms</code> (env: <code>SCRAPPY_HTTP_TIMEOUT_MS</code>, default <code>80000</code>)</li>
-<li><code>--pretty</code> (pretty-print JSON output)</li>
+<li><pre><code>--base-url</code></pre> (env: <pre><code>SCRAPPY_BASE_URL</code></pre>, default <pre><code>http://localhost:3000</code></pre>)</li>
+<li><pre><code>--admin-token</code></pre> (env: <pre><code>SCRAPPY_ADMIN_TOKEN</code></pre>)</li>
+<li><pre><code>--http-timeout-ms</code></pre> (env: <pre><code>SCRAPPY_HTTP_TIMEOUT_MS</code></pre>, default <pre><code>80000</code></pre>)</li>
+<li><pre><code>--pretty</code></pre> (pretty-print JSON output)</li>
 </ul>
 <div><h2>MCP Server</h2><a href="#mcp-server"></a></div>
-<p>An MCP stdio server is available at <code>cmd/scrappy-mcp</code> and exposes these tools:</p>
+<p>An MCP stdio server is available at </p><pre><code>cmd/scrappy-mcp</code></pre> and exposes these tools:<p></p>
 <ul>
-<li><code>scrappy_html</code></li>
-<li><code>scrappy_markdown</code></li>
-<li><code>scrappy_screenshot</code></li>
-<li><code>scrappy_stats</code></li>
-<li><code>scrappy_scale</code></li>
+<li><pre><code>scrappy_html</code></pre></li>
+<li><pre><code>scrappy_markdown</code></pre></li>
+<li><pre><code>scrappy_screenshot</code></pre></li>
+<li><pre><code>scrappy_stats</code></pre></li>
+<li><pre><code>scrappy_scale</code></pre></li>
 </ul>
 <p>Quick local test:</p>
 <div><pre>go run ./cmd/scrappy-mcp --help</pre></div>
@@ -135,18 +132,18 @@ go run ./cmd/scrappy --base-url http://localhost:3000 scale --size 3</pre></div>
 </ul>
 <div><pre>go run ./cmd/scrappy-mcp --base-url http://127.0.0.1:3000</pre></div>
 <ul>
-<li>Build once and run from <code>PATH</code>:</li>
+<li>Build once and run from <pre><code>PATH</code></pre>:</li>
 </ul>
 <div><pre>go build -o ./bin/scrappy-mcp ./cmd/scrappy-mcp</pre></div>
-<p>Then make sure <code>scrappy-mcp</code> is on your <code>PATH</code>, and run:</p>
+<p>Then make sure </p><pre><code>scrappy-mcp</code></pre> is on your <pre><code>PATH</code></pre>, and run:<p></p>
 <div><pre>scrappy-mcp --base-url http://127.0.0.1:3000</pre></div>
 <div><h3>Codex Integration</h3><a href="#codex-integration"></a></div>
-<p>Codex MCP servers are configured in <code>config.toml</code> under <code>[mcp_servers.&lt;name&gt;]</code>.</p>
-<p>If Codex is started from this repo root, use <code>go run</code>:</p>
+<p>Codex MCP servers are configured in </p><pre><code>config.toml</code></pre> under <pre><code>[mcp_servers.&lt;name&gt;]</code></pre>.<p></p>
+<p>If Codex is started from this repo root, use </p><pre><code>go run</code></pre>:<p></p>
 <div><pre>[<span>mcp_servers</span>.<span>scrappy</span>]
 <span>command</span> = <span><span>"</span>go<span>"</span></span>
 <span>args</span> = [<span><span>"</span>run<span>"</span></span>, <span><span>"</span>./cmd/scrappy-mcp<span>"</span></span>, <span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>]</pre></div>
-<p>If you want it to work from any directory, use a binary on <code>PATH</code>:</p>
+<p>If you want it to work from any directory, use a binary on </p><pre><code>PATH</code></pre>:<p></p>
 <div><pre>[<span>mcp_servers</span>.<span>scrappy</span>]
 <span>command</span> = <span><span>"</span>scrappy-mcp<span>"</span></span>
 <span>args</span> = [<span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>]</pre></div>
@@ -155,120 +152,118 @@ go run ./cmd/scrappy --base-url http://localhost:3000 scale --size 3</pre></div>
 <div><pre>{ <span>"mcpServers"</span>: { <span>"scrappy"</span>: { <span>"command"</span>: <span><span>"</span>scrappy-mcp<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>--base-url<span>"</span></span>, <span><span>"</span>http://127.0.0.1:3000<span>"</span></span>] } }
 }</pre></div>
 <div><h3>Auth and Safety</h3><a href="#auth-and-safety"></a></div>
-<p>If your <code>/stats</code> or <code>/pool/scale</code> endpoints require auth, set <code>SCRAPPY_ADMIN_TOKEN</code> in the environment used to launch your MCP client, or pass <code>--admin-token</code>.</p>
-<p>Recommended setup for least privilege:</p>
-<ul>
-<li><code>scrappy</code>: no admin token (safe default for content extraction tools)</li>
-<li><code>scrappy_admin</code>: admin token enabled (only for pool ops when needed)</li>
+<p>If your </p><pre><code>/stats</code></pre> or <pre><code>/pool/scale</code></pre> endpoints require auth, set <pre><code>SCRAPPY_ADMIN_TOKEN</code></pre> in the environment used to launch your MCP client, or pass <pre><code>--admin-token</code></pre>.<p></p> <ul>
+<li><pre><code>scrappy</code></pre>: no admin token (safe default for content extraction tools)</li>
+<li><pre><code>scrappy_admin</code></pre>: admin token enabled (only for pool ops when needed)</li>
 </ul>
 <div><h3>Typical LLM Prompts</h3><a href="#typical-llm-prompts"></a></div>
 <p>Examples that reliably trigger tool usage:</p>
 <ul>
-<li><code>Use scrappy_markdown for https://example.com and return the top 10 links.</code></li>
-<li><code>Call scrappy_html for https://example.com and extract title + canonical URL.</code></li>
-<li><code>Check scrappy_stats and report if pool saturation is high.</code></li>
-<li><code>If busy instances are above 2, call scrappy_scale with size 5.</code></li>
+<li><pre><code>Use scrappy_markdown for https://example.com and return the top 10 links.</code></pre></li>
+<li><pre><code>Call scrappy_html for https://example.com and extract title + canonical URL.</code></pre></li>
+<li><pre><code>Check scrappy_stats and report if pool saturation is high.</code></pre></li>
+<li><pre><code>If busy instances are above 2, call scrappy_scale with size 5.</code></pre></li>
 </ul>
 <div><h2>Request Fields</h2><a href="#request-fields"></a></div>
-<p>Common request fields for <code>/html</code> and <code>/markdown</code>:</p>
+<p>Common request fields for </p><pre><code>/html</code></pre> and <pre><code>/markdown</code></pre>:<p></p>
 <ul>
-<li><code>url</code> (required)</li>
-<li><code>viewport.width</code> / <code>viewport.height</code> (optional)</li>
-<li><code>user_agent</code> (optional)</li>
-<li><code>wait_ms</code> (optional)</li>
-<li><code>timeout_ms</code> (optional)</li>
+<li><pre><code>url</code></pre> (required)</li>
+<li><pre><code>viewport.width</code></pre> / <pre><code>viewport.height</code></pre> (optional)</li>
+<li><pre><code>user_agent</code></pre> (optional)</li>
+<li><pre><code>wait_ms</code></pre> (optional)</li>
+<li><pre><code>timeout_ms</code></pre> (optional)</li>
 </ul>
 <p>Request constraints:</p>
 <ul>
-<li>URL must be absolute <code>http://</code> or <code>https://</code>.</li>
-<li>URL credentials (<code>https://user:pass@...</code>) are rejected.</li>
+<li>URL must be absolute <pre><code>http://</code></pre> or <pre><code>https://</code></pre>.</li>
+<li>URL credentials (<pre><code>https://user:pass@...</code></pre>) are rejected.</li>
 <li>Private/local network targets are blocked by default.</li>
-<li><code>wait_ms</code> / <code>timeout_ms</code> / viewport are capped by server limits.</li>
+<li><pre><code>wait_ms</code></pre> / <pre><code>timeout_ms</code></pre> / viewport are capped by server limits.</li>
 </ul>
-<p>Additional fields for <code>/screenshot</code>:</p>
+<p>Additional fields for </p><pre><code>/screenshot</code></pre>:<p></p>
 <ul>
-<li><code>format</code> (<code>jpeg</code>, <code>png</code>, <code>webp</code>)</li>
-<li><code>quality</code> (ignored for png)</li>
+<li><pre><code>format</code></pre> (<pre><code>jpeg</code></pre>, <pre><code>png</code></pre>, <pre><code>webp</code></pre>)</li>
+<li><pre><code>quality</code></pre> (ignored for png)</li>
 </ul>
 <div><h2>Configuration</h2><a href="#configuration"></a></div>
 <p>Key environment variables:</p>
 <div><h3>Server</h3><a href="#server"></a></div>
 <ul>
-<li><code>SCRAPPY_ADDR</code> (default <code>:3000</code>)</li>
-<li><code>SCRAPPY_ALLOWED_IPS</code> (comma-separated IPs/CIDRs)</li>
-<li><code>SCRAPPY_TRUSTED_PROXY_CIDRS</code> (comma-separated proxy CIDRs allowed to set <code>X-Forwarded-For</code> / <code>X-Real-IP</code>)</li>
+<li><pre><code>SCRAPPY_ADDR</code></pre> (default <pre><code>:3000</code></pre>)</li>
+<li><pre><code>SCRAPPY_ALLOWED_IPS</code></pre> (comma-separated IPs/CIDRs)</li>
+<li><pre><code>SCRAPPY_TRUSTED_PROXY_CIDRS</code></pre> (comma-separated proxy CIDRs allowed to set <pre><code>X-Forwarded-For</code></pre> / <pre><code>X-Real-IP</code></pre>)</li>
 </ul>
 <div><h3>Security Controls</h3><a href="#security-controls"></a></div>
 <ul>
-<li><code>SCRAPPY_ALLOWED_TARGET_HOSTS</code> (optional comma-separated host allowlist; supports exact host, <code>.example.com</code>, <code>*.example.com</code>, and CIDR for IP targets)</li>
-<li><code>SCRAPPY_BLOCK_PRIVATE_NETWORKS</code> (default <code>true</code>; blocks localhost/private/link-local/reserved targets)</li>
-<li><code>SCRAPPY_ADMIN_TOKEN</code> (optional; protects <code>/stats</code> and <code>/pool/scale</code> when set; use <code>Authorization: Bearer &lt;token&gt;</code> or <code>X-Admin-Token</code>)</li>
-<li><code>SCRAPPY_MAX_REQUEST_BODY_BYTES</code> (default <code>1048576</code>)</li>
-<li><code>SCRAPPY_MAX_WAIT_MS</code> (default <code>20000</code>)</li>
-<li><code>SCRAPPY_MAX_TIMEOUT_MS</code> (default <code>60000</code>)</li>
-<li><code>SCRAPPY_MAX_VIEWPORT_WIDTH</code> (default <code>2560</code>)</li>
-<li><code>SCRAPPY_MAX_VIEWPORT_HEIGHT</code> (default <code>2560</code>)</li>
+<li><pre><code>SCRAPPY_ALLOWED_TARGET_HOSTS</code></pre> (optional comma-separated host allowlist; supports exact host, <pre><code>.example.com</code></pre>, <pre><code>*.example.com</code></pre>, and CIDR for IP targets)</li>
+<li><pre><code>SCRAPPY_BLOCK_PRIVATE_NETWORKS</code></pre> (default <pre><code>true</code></pre>; blocks localhost/private/link-local/reserved targets)</li>
+<li><pre><code>SCRAPPY_ADMIN_TOKEN</code></pre> (optional; protects <pre><code>/stats</code></pre> and <pre><code>/pool/scale</code></pre> when set; use <pre><code>Authorization: Bearer &lt;token&gt;</code></pre> or <pre><code>X-Admin-Token</code></pre>)</li>
+<li><pre><code>SCRAPPY_MAX_REQUEST_BODY_BYTES</code></pre> (default <pre><code>1048576</code></pre>)</li>
+<li><pre><code>SCRAPPY_MAX_WAIT_MS</code></pre> (default <pre><code>20000</code></pre>)</li>
+<li><pre><code>SCRAPPY_MAX_TIMEOUT_MS</code></pre> (default <pre><code>60000</code></pre>)</li>
+<li><pre><code>SCRAPPY_MAX_VIEWPORT_WIDTH</code></pre> (default <pre><code>2560</code></pre>)</li>
+<li><pre><code>SCRAPPY_MAX_VIEWPORT_HEIGHT</code></pre> (default <pre><code>2560</code></pre>)</li>
 </ul>
 <div><h3>Browser Pool</h3><a href="#browser-pool"></a></div>
 <ul>
-<li><code>BROWSER_POOL_ENABLED</code> (default <code>true</code>)</li>
-<li><code>BROWSER_POOL_MIN_SIZE</code>, <code>BROWSER_POOL_MAX_SIZE</code></li>
-<li><code>BROWSER_POOL_LEASE_TIMEOUT</code></li>
-<li><code>BROWSER_POOL_IDLE_TTL</code></li>
-<li><code>BROWSER_POOL_MAX_REUSE</code></li>
-<li><code>BROWSER_POOL_SPAWN_TIMEOUT</code></li>
-<li><code>BROWSER_POOL_HANG_TIMEOUT</code></li>
-<li><code>BROWSER_POOL_SUPERVISOR_INTERVAL</code></li>
-<li><code>BROWSER_POOL_ALLOW_STANDALONE_FALLBACK</code> (default <code>false</code>)</li>
+<li><pre><code>BROWSER_POOL_ENABLED</code></pre> (default <pre><code>true</code></pre>)</li>
+<li><pre><code>BROWSER_POOL_MIN_SIZE</code></pre>, <pre><code>BROWSER_POOL_MAX_SIZE</code></pre></li>
+<li><pre><code>BROWSER_POOL_LEASE_TIMEOUT</code></pre></li>
+<li><pre><code>BROWSER_POOL_IDLE_TTL</code></pre></li>
+<li><pre><code>BROWSER_POOL_MAX_REUSE</code></pre></li>
+<li><pre><code>BROWSER_POOL_SPAWN_TIMEOUT</code></pre></li>
+<li><pre><code>BROWSER_POOL_HANG_TIMEOUT</code></pre></li>
+<li><pre><code>BROWSER_POOL_SUPERVISOR_INTERVAL</code></pre></li>
+<li><pre><code>BROWSER_POOL_ALLOW_STANDALONE_FALLBACK</code></pre> (default <pre><code>false</code></pre>)</li>
 </ul>
 <p>Note: pool timeout vars above are interpreted as seconds (legacy behavior in config loader).<br>
-Legacy aliases (<code>SCRAPPY_POOL_*</code>) are still supported for pool size/timeouts.</p>
+Legacy aliases (</p><pre><code>SCRAPPY_POOL_*</code></pre>) are still supported for pool size/timeouts.<p></p>
 <div><h3>Render Defaults</h3><a href="#render-defaults"></a></div>
 <ul>
-<li><code>SCRAPPY_DEFAULT_VIEWPORT_WIDTH</code></li>
-<li><code>SCRAPPY_DEFAULT_VIEWPORT_HEIGHT</code></li>
-<li><code>SCRAPPY_DEFAULT_USER_AGENT</code></li>
-<li><code>SCRAPPY_DEFAULT_WAIT_MS</code></li>
-<li><code>SCRAPPY_DEFAULT_TIMEOUT_MS</code></li>
-<li><code>SCRAPPY_DEFAULT_FORMAT</code></li>
-<li><code>SCRAPPY_DEFAULT_QUALITY</code></li>
+<li><pre><code>SCRAPPY_DEFAULT_VIEWPORT_WIDTH</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_VIEWPORT_HEIGHT</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_USER_AGENT</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_WAIT_MS</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_TIMEOUT_MS</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_FORMAT</code></pre></li>
+<li><pre><code>SCRAPPY_DEFAULT_QUALITY</code></pre></li>
 </ul>
 <div><h3>Browser Binary</h3><a href="#browser-binary"></a></div>
 <ul>
-<li><code>SCRAPPY_CHROME_BIN</code> (optional explicit Chrome/Chromium binary)</li>
-<li><code>SCRAPPY_CHROME_NO_SANDBOX</code> (default <code>false</code>; keep disabled unless strictly required)</li>
+<li><pre><code>SCRAPPY_CHROME_BIN</code></pre> (optional explicit Chrome/Chromium binary)</li>
+<li><pre><code>SCRAPPY_CHROME_NO_SANDBOX</code></pre> (default <pre><code>false</code></pre>; keep disabled unless strictly required)</li>
 </ul>
-<div><h3>R2 (required only for <code>/screenshot</code>)</h3><a href="#r2-required-only-for-screenshot"></a></div>
+<div><h3>R2 (required only for <pre><code>/screenshot</code></pre>)</h3><a href="#r2-required-only-for-screenshot"></a></div>
 <ul>
-<li><code>R2_ENDPOINT</code></li>
-<li><code>R2_ACCESS_KEY_ID</code></li>
-<li><code>R2_SECRET_ACCESS_KEY</code></li>
-<li><code>R2_BUCKET</code></li>
-<li><code>R2_PUBLIC_BASE_URL</code></li>
-<li><code>R2_REGION</code> (default <code>auto</code>)</li>
+<li><pre><code>R2_ENDPOINT</code></pre></li>
+<li><pre><code>R2_ACCESS_KEY_ID</code></pre></li>
+<li><pre><code>R2_SECRET_ACCESS_KEY</code></pre></li>
+<li><pre><code>R2_BUCKET</code></pre></li>
+<li><pre><code>R2_PUBLIC_BASE_URL</code></pre></li>
+<li><pre><code>R2_REGION</code></pre> (default <pre><code>auto</code></pre>)</li>
 </ul>
 <div><h3>Observability</h3><a href="#observability"></a></div>
 <ul>
-<li><code>SENTRY_DSN</code> (optional)</li>
+<li><pre><code>SENTRY_DSN</code></pre> (optional)</li>
 </ul>
 <div><h2>Project Layout</h2><a href="#project-layout"></a></div>
 <p>Pool code is now split by responsibility:</p>
 <ul>
-<li><code>pool_types.go</code> - types/constants</li>
-<li><code>pool_admin.go</code> - constructor/stats/scale/shutdown</li>
-<li><code>pool_render.go</code> - public render/markdown/screenshot methods</li>
-<li><code>pool_navigation.go</code> - navigation, settle, extraction helpers</li>
-<li><code>pool_page.go</code> - page lifecycle/setup</li>
-<li><code>pool_manager.go</code> - pool internals (spawn/checkout/reap/logging)</li>
-<li><code>extraction_scripts.go</code> - browser-evaluated extraction scripts</li>
+<li><pre><code>pool_types.go</code></pre> - types/constants</li>
+<li><pre><code>pool_admin.go</code></pre> - constructor/stats/scale/shutdown</li>
+<li><pre><code>pool_render.go</code></pre> - public render/markdown/screenshot methods</li>
+<li><pre><code>pool_navigation.go</code></pre> - navigation, settle, extraction helpers</li>
+<li><pre><code>pool_page.go</code></pre> - page lifecycle/setup</li>
+<li><pre><code>pool_manager.go</code></pre> - pool internals (spawn/checkout/reap/logging)</li>
+<li><pre><code>extraction_scripts.go</code></pre> - browser-evaluated extraction scripts</li>
 </ul>
 <p>Request parsing/defaults:</p>
 <ul>
-<li><code>handlers.go</code></li>
-<li><code>options.go</code></li>
-<li><code>models.go</code></li>
+<li><pre><code>handlers.go</code></pre></li>
+<li><pre><code>options.go</code></pre></li>
+<li><pre><code>models.go</code></pre></li>
 </ul>
-<p>For flow-level detail, see <code>ARCHITECTURE.md</code>.</p>
+<p>For flow-level detail, see </p><pre><code>ARCHITECTURE.md</code></pre>.<p></p>
 <div><h2>Development</h2><a href="#development"></a></div>
 <p>Format and test before committing:</p>
 <div><pre>gofmt -w <span>*</span>.go
@@ -276,37 +271,37 @@ go <span>test</span> ./...</pre></div>
 <div><h2>Security Notes</h2><a href="#security-notes"></a></div>
 <ul>
 <li>Do not expose this service publicly without network controls and authentication.</li>
-<li>Keep <code>SCRAPPY_ALLOWED_IPS</code> restricted to trusted callers.</li>
-<li>Configure <code>SCRAPPY_TRUSTED_PROXY_CIDRS</code> when running behind a reverse proxy.</li>
-<li>Keep <code>SCRAPPY_CHROME_NO_SANDBOX=false</code> in production.</li>
-<li>Report vulnerabilities using the process in <code>SECURITY.md</code>.</li>
+<li>Keep <pre><code>SCRAPPY_ALLOWED_IPS</code></pre> restricted to trusted callers.</li>
+<li>Configure <pre><code>SCRAPPY_TRUSTED_PROXY_CIDRS</code></pre> when running behind a reverse proxy.</li>
+<li>Keep <pre><code>SCRAPPY_CHROME_NO_SANDBOX=false</code></pre> in production.</li>
+<li>Report vulnerabilities using the process in <pre><code>SECURITY.md</code></pre>.</li>
 </ul>
 <div><h2>Troubleshooting Markdown Extraction</h2><a href="#troubleshooting-markdown-extraction"></a></div>
-<p>For dynamic pages (for example Webflow job pages), extraction can fail if links only exist in hidden or late-rendered nodes.</p>
+<pre><code>For dynamic pages (for example Webflow job pages), extraction can fail if links only exist in hidden or late-rendered nodes.</code></pre>
 <ul>
-<li>The extractor ignores hidden content (<code>display:none</code>, <code>visibility:hidden</code>, <code>aria-hidden="true"</code>, <code>.w-condition-invisible</code>, <code>.hide</code>).</li>
-<li>Root selection prefers semantic/main containers and falls back to <code>document.body</code>.</li>
-<li>Link extraction converts relative URLs to absolute URLs using <code>document.baseURI</code>.</li>
+<li>The extractor ignores hidden content (<pre><code>display:none</code></pre>, <pre><code>visibility:hidden</code></pre>, <pre><code>aria-hidden="true"</code></pre>, <pre><code>.w-condition-invisible</code></pre>, <pre><code>.hide</code></pre>).</li>
+<li>Root selection prefers semantic/main containers and falls back to <pre><code>document.body</code></pre>.</li>
+<li>Link extraction converts relative URLs to absolute URLs using <pre><code>document.baseURI</code></pre>.</li>
 </ul>
 <p>Debug sequence for extraction issues:</p>
 <ol>
-<li>Call <code>/html</code> for the same URL and confirm the target <code>&lt;a href&gt;</code> exists in rendered HTML.</li>
+<li>Call <pre><code>/html</code></pre> for the same URL and confirm the target <pre><code>&lt;a href&gt;</code></pre> exists in rendered HTML.</li>
 <li>Verify the link is not inside hidden variants/duplicated mobile or desktop nav containers.</li>
-<li>Re-run <code>/markdown</code> with a larger <code>wait_ms</code> if content is injected after initial paint.</li>
-<li>Check <code>/stats</code> for pool errors, stale pages, or repeated timeouts.</li>
+<li>Re-run <pre><code>/markdown</code></pre> with a larger <pre><code>wait_ms</code></pre> if content is injected after initial paint.</li>
+<li>Check <pre><code>/stats</code></pre> for pool errors, stale pages, or repeated timeouts.</li>
 </ol>
 <div><h2>Deployment</h2><a href="#deployment"></a></div>
 <ul>
 <li>Dockerized via:
 <ul>
-<li><code>Dockerfile</code> (current project image with extra custom fonts)</li>
-<li><code>Dockerfile.sample</code> (generic baseline image without custom font bundle)</li>
+<li><pre><code>Dockerfile</code></pre> (current project image with extra custom fonts)</li>
+<li><pre><code>Dockerfile.sample</code></pre> (generic baseline image without custom font bundle)</li>
 </ul>
 </li>
 <li>Kamal templates are included:
 <ul>
-<li><code>config/deploy.example.yml</code></li>
-<li><code>.kamal/secrets.example</code></li>
+<li><pre><code>config/deploy.example.yml</code></pre></li>
+<li><pre><code>.kamal/secrets.example</code></pre></li>
 </ul>
 </li>
 <li>Create local deployment files before running Kamal:</li>
@@ -315,10 +310,10 @@ go <span>test</span> ./...</pre></div>
 cp .kamal/secrets.example .kamal/secrets</pre></div>
 <ul>
 <li>Edit local copies with your registry, hosts, secrets source, and SSH user.</li>
-<li>Keep <code>config/deploy.yml</code> and <code>.kamal/secrets</code> private; both are gitignored by default.</li>
+<li>Keep <pre><code>config/deploy.yml</code></pre> and <pre><code>.kamal/secrets</code></pre> private; both are gitignored by default.</li>
 </ul>
 <div><h2>License</h2><a href="#license"></a></div>
-<p>MIT. See <code>LICENSE</code>.</p>
+<p>MIT. See </p><pre><code>LICENSE</code></pre>.<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -338,5 +333,5 @@ cp .kamal/secrets.example .kamal/secrets</pre></div>
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

@@ -4,55 +4,42 @@
 <meta charset="UTF-8">
 <title>Watering Hole Attacks Push ScanBox Keylogger</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Watering Hole Attacks Push ScanBox Keylogger</h1>
   <div class="metadata">
-    Source: Threatpost | Date: 8/30/2022 | Lang: EN |
-    <a href="https://threatpost.com/watering-hole-attacks-push-scanbox-keylogger/180490/" target="_blank">Original Article</a>
+    Source: Threatpost | Date: 8/30/2022 6:00:43 PM | <a href="https://threatpost.com/watering-hole-attacks-push-scanbox-keylogger/180490/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><p>Researchers uncover a watering hole attack likely carried out by APT TA423, which attempts to plant the ScanBox JavaScript-based reconnaissance tool.</p><div>
-											<p>A China-based threat actor has ramped up efforts to distribute the ScanBox reconnaissance framework to victims that include domestic Australian organizations and offshore energy firms in the South China Sea. The bait used by the advanced threat group (APT) is targeted messages that supposedly link back to Australian news websites.</p>
-<p>The cyber-espionage campaigns are believed to have launched April 2022 through mid-June 2022, according to a <a href="https://www.proofpoint.com/us/blog/threat-insight/chasing-currents-espionage-south-china-sea">Tuesday report</a> by Proofpoint’s Threat Research Team and PwC’s Threat Intelligence team.</p>
-<p>The threat actor, according to researchers, is believed to be the China-based APT TA423, also known as Red Ladon. “Proofpoint assesses with moderate confidence that this activity may be attributable to the threat actor TA423 / Red Ladon, which <a href="https://www.cisa.gov/uscert/ncas/alerts/aa21-200a">multiple</a> <a href="https://www.mandiant.com/resources/apt40-examining-a-china-nexus-espionage-actor">reports</a> <a href="https://intrusiontruth.wordpress.com/2020/01/15/hainan-xiandun-technology-company-is-apt40/">assess</a> to operate out of Hainan Island, China,” according to the report.</p>
-<p>The APT is most recently known for a recent indictment. “A 2021 indictment by the US Department of Justice assessed that TA423 / Red Ladon provides long-running support to the Hainan Province Ministry of State Security (MSS),” researchers said.</p>
-<p>MSS is the civilian intelligence, security and cyber police agency for the People’s Republic of China. It is believed responsible for counter-intelligence, foreign intelligence, political security and tied to industrial and cyber espionage efforts by China.</p>
-<h2><strong>Dusting Off the ScanBox </strong></h2>
-<p>The campaign leverages the ScanBox framework. ScanBox is a customizable and multifunctional Javascript-based framework used by adversaries to conducting covert reconnaissance.</p>
-<p>ScanBox has been used by adversaries for nearly a decade and is noteworthy because criminals can use the tool to conduct counter intelligence without having to plant malware on a targets system.</p>
-<p>“ScanBox is particularly dangerous as it doesn’t require malware to be successfully deployed to disk in order to steal information – the keylogging functionality simply requires the JavaScript code to be executed by a web browser,” according to PwC researchers <a href="https://threatpost.com/four-distinct-watering-hole-attacks-dropping-scanbox-keylogger/109061/">referring to a previous campaign</a>.</p>
-<p>In lieu of malware, attackers can use ScanBox in conjunction with watering hole attacks. Adversaries load the malicious JavaScript onto a compromised website where the ScanBox acts as a keylogger snagging all of a user’s typed activity on the infected watering hole website.</p>
-<p>TA423’s attacks began with phishing emails, with such titles as “Sick Leave,” “User Research” and “Request Cooperation.” Often, the emails purported to come from an employee of the “Australian Morning News,” a fictional organization. The employee implored targets to visit their “humble news website,” australianmorningnews[.]com.</p>
-<p>“Upon clicking the link and redirecting to the site, visitors were served the ScanBox framework,” researchers wrote.</p>
-<p>The link directed targets to a web page with content copied from actual news sites, like the BBC and Sky News. In the process, it also delivered the ScanBox malware framework.</p>
-<p>ScanBox keylogger data culled from waterholes is part of a multi-stage attack, giving attackers insight into the potential targets that will help them launch future attacks against them. This technique is often called browser fingerprinting.</p>
-<p>The primary, initial script sources a list of information about the target computer, including the operating system, language and version of Adobe Flash installed. ScanBox additionally runs a check for browser extensions, plugins and components such WebRTC.</p>
-<p>“The module implements WebRTC, a free and open-source technology supported on all major browsers, which allows web browsers and mobile applications to perform real-time communication (RTC) over application programming interfaces (APIs). This allows ScanBox to connect to a set of pre-configured targets,” researchers explain.</p>
-<p>Adversaries can then leverage a technology called <a href="https://en.wikipedia.org/wiki/STUN" target="_blank">STUN</a> (Session Traversal Utilities for NAT). This is a standardized set of methods, including a network protocol, that allows interactive communications (including real-time voice, video, and messaging applications) to traverse network address translator (NAT) gateways, researchers explain.</p>
-<p>“STUN is supported by the WebRTC protocol. Through a third-party STUN server located on the Internet, it allows hosts to discover the presence of a NAT, and to discover the mapped IP address and port number that the NAT has allocated for the application’s User Datagram Protocol (UDP) flows to remote hosts. ScanBox implements NAT traversal using STUN servers as part of <a href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment" target="_blank">Interactive Connectivity Establishment</a> (ICE), a peer-to-peer communication method used for clients to communicate as directly as possible, avoiding having to communicate through NATs, firewalls, or other solutions,” according to researchers.</p>
-<p>“This means that the ScanBox module can set up ICE communications to STUN servers, and communicate with victim machines even if they are behind NAT,” they explain.</p>
-<h2>Threat Actors</h2>
-<p>The threat actors “support the Chinese government in matters related to the South China Sea, including during the recent tensions in Taiwan,” Sherrod DeGrippo, vice president of threat research and detection at Proofpoint, explained in a statement, “This group specifically wants to know who is active in the region and, while we can’t say for certain, their focus on naval issues is likely to remain a constant priority in places like Malaysia, Singapore, Taiwan, and Australia.”</p>
-<p>The group has, in the past, expanded well beyond Australasia. According to a Department of Justice <a href="https://www.justice.gov/opa/pr/four-chinese-nationals-working-ministry-state-security-charged-global-computer-intrusion">indictment</a> from July, 2021, the group has “stolen trade secrets and confidential business information” from victims in “the United States, Austria, Cambodia, Canada, Germany, Indonesia, Malaysia, Norway, Saudi Arabia, South Africa, Switzerland and the United Kingdom. Targeted industries included, among others, aviation, defense, education, government, health care, biopharmaceutical and maritime.”</p>
-<p>Despite the DoJ indictment, analysts “have not observed a distinct disruption of operational tempo” from TA423, and they “collectively expect TA423 / Red Ladon to continue pursuing its intelligence-gathering and espionage mission.”</p>
-											
-										</div></div>
+    <p>Researchers uncover a watering hole attack likely carried out by APT TA423, which attempts to plant the ScanBox JavaScript-based reconnaissance tool.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

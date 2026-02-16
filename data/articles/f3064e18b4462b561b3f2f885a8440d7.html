@@ -24,8 +24,7 @@
 <body>
   <h1>Diffusers welcomes FLUX-2</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 11/25/2025 1:00:00 AM | Lang: FR |
-    <a href="https://huggingface.co/blog/flux-2" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 11/25/2025 1:00:00 AM | <a href="https://huggingface.co/blog/flux-2" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <h2> <a href="#welcome-flux2---bfls-new-open-image-generation-model-"> </a> <span> Welcome FLUX.2 - BFL’s new open image generation model </span>
@@ -162,7 +161,7 @@ pipe.enable_model_cpu_offload() image_one = load_image(<span>"https://huggingfac
 image_two = load_image(<span>"https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/turtle.png"</span>) prompt = <span>"the boxer kangaroo from image 1 and the martial artist turtle from image 2 are fighting in an epic battle scene at a beach of a tropical island, 35mm, depth of field, 50mm lens, f/3.5, cinematic lighting"</span> image = pipe( prompt=prompt, image=[image_one, image_two], generator=torch.Generator(device=device).manual_seed(<span>42</span>), num_inference_steps=<span>50</span>, guidance_scale=<span>2.5</span>, width=<span>1024</span>, height=<span>768</span>,
 ).images[<span>0</span>] image.save(<span>f"./flux2_t2i.png"</span>)
 </code></pre>
-<br> <table> <caption>Multi-image input</caption> <tbody><tr> <td> <img alt="Turtle image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/turtle.png"> </td> <td> <img alt="Kangaroo image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/kangaroo.png"> </td> </tr> <tr> <td> <img alt="Two images result" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/two_images_result.png"> </td> </tr>
+<br> <table> <caption>Multi-image input</caption> <tbody><tr> <td> <img alt="Turtle image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/turtle.png"> </td> <td> <img alt="Kangaroo image" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/kangaroo.png"> </td> </tr> <tr> <td colspan="2"> <img alt="Two images result" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/flux2_blog/two_images_result.png"> </td> </tr>
 </tbody></table> <h2> <a href="#advanced-prompting"> </a> <span> Advanced Prompting </span>
 </h2>
 <p>FLUX.2 supports advanced prompting techniques like structured JSON prompting, precise hex color control, and multi-reference image editing.

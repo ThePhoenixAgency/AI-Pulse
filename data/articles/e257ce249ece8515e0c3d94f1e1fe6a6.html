@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>A look at an Android ITW DNG exploit</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>A look at an Android ITW DNG exploit</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 12/12/2025 | Lang: EN |
-    <a href="https://projectzero.google/2025/12/android-itw-dng.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 12/12/2025 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -107,8 +104,8 @@ Strip Byte Counts               : 1
 
 <p>Although the image was saved with a <code>jpeg</code> extension, this image is in fact a Digital Negative (DNG) image. According to <a href="https://en.wikipedia.org/wiki/Digital_Negative">Wikipedia</a>:</p>
 
-<p><em>Digital Negative (DNG) is an open source, lossless, well defined camera RAW data container with the goal to replace a range of proprietary, closed source raw image containers. It has been developed by Adobe.</em><br />
-<em>…</em><br />
+<p><em>Digital Negative (DNG) is an open source, lossless, well defined camera RAW data container with the goal to replace a range of proprietary, closed source raw image containers. It has been developed by Adobe.</em><br>
+<em>…</em><br>
 <em>DNG is based on the TIFF/EP standard format, and mandates significant use of metadata. The specification of the file format is open and not subject to any intellectual property restrictions or patents.</em></p>
 
 <p>The image width and height look suspiciously small. And what are these opcode lists?</p>
@@ -149,7 +146,7 @@ Strip Byte Counts               : 1
 
 <p>Every opcode has an opcode ID and varying number and type of parameters. The <a href="https://helpx.adobe.com/camera-raw/digital-negative.html">latest specification</a> (1.7.1.0 from September 2023), contains 14 distinct opcodes, with opcode IDs going from 1 to 14. Below is an example of opcode description found in the specification:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>For this exploit, only 3 opcodes will be of interest:</p>
 
@@ -357,8 +354,8 @@ Count: 1
 
 <div><p>Below is an example of a 6x6 image with its different color planes and to what offsets the pixel values map in the raw pixel buffer. During stage 2 and stage 3 image processing, each pixel value in each color plane takes 16 bits.</p><p>
 
-<img alt="" />
-<br />
+<img alt="">
+<br>
 There are two issues in that handler function:</p></div>
 
 <ul>
@@ -419,9 +416,9 @@ There are two issues in that handler function:</p></div>
 </ul>
 
 <p>These different objects and their relationship are illustrated below:
-<br />
-<img alt="" />
-<br />
+<br>
+<img alt="">
+<br>
 There are two “pixel buffers” at play here, which can be a bit confusing: the <code>QuramDngPixelBuffer</code> object and the raw buffer with pixel values. In what comes, when we talk about “raw pixel buffer”, we refer to the latter.</p>
 
 <p><code>QuramDngImage</code> and <code>QuramDngPixelBuffer</code> will land in different heap regions since they belong to different scudo allocation class sizes. The raw pixel buffer may end up in the same heap region as a <code>QuramDngImage</code> depending on its size. Its size is calculated by <code>ComputeBufferSize</code>. For the dimensions of the stage 3 image of the exploit (width 1 by length 1 with 3 color planes) it will calculate a size of 0x30 bytes (even though 6 bytes would suffice). For the stage 1 and stage 2 images, the sizes are different and will be allocated in a different heap region.</p>
@@ -467,7 +464,7 @@ There are two “pixel buffers” at play here, which can be a bit confusing: th
 
 <div><p>The eventual heap layout for chunks of size 0x30 is illustrated below. The annotated offsets will be important later on.</p><p>
 
-<img alt="" /></p><p>
+<img alt=""></p><p>
 
 Note that because of scudo’s randomization strategy, the allocations of different opcode lists will actually overlap slightly (on the order of 52 allocations), but given enough allocations this effect can be neglected.</p></div>
 
@@ -554,7 +551,7 @@ Count: 65536
 
 <div><p>This opcode will act on offset <code>5120 x 2 bytes/pixel x 3 colors/pixel = 0x7800</code> from the raw pixel buffer, which is in the region of those 641 TrimBounds opcodes.</p><p>
 
-<img alt="" /></p><p>
+<img alt=""></p><p>
 
 It is corrupting the lower 2 bytes of the vtable pointer of a <code>TrimBounds</code> opcode object. Looking at the substitution table, most values are mapped to itself, however a few are not. (We had to write an additional script to parse this out, since <code>dng_validate</code>’s output of these long substitution tables is truncated).
 For example, the value 0xecf0 is mapped to 0xed30. Looking at the <code>libimagecodec.quram.so</code> binary, the new address points to the <code>MapTable</code> vtable. This trick allows the attackers to “type confuse” a <code>TrimBounds</code> opcode to a <code>MapTable</code> opcode, by moving the vtable pointer to a different one, without having to leak any ASLR first.</p></div>
@@ -564,7 +561,7 @@ For example, the value 0xecf0 is mapped to 0xed30. Looking at the <code>libimage
 <table>
   <thead>
     <tr>
-      <th> </th>
+      <th>&nbsp;</th>
       <th><code>libimagecodec.quram.so</code> version x</th>
       <th><code>libimagecodec.quram.so</code> version y</th>
     </tr>
@@ -679,7 +676,7 @@ After:
   <li>The bogus <code>MapTable</code> will now substitute the offsets from the vtable into their respective values, effectively writing a leaked pointer into memory.</li>
 </ol>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>The memory used for preparing these pointers is at offset 0xf000 from the raw pixel buffer, which contains the last series of 1040 “unknown” opcodes. This memory will become the JOP chain.</p>
 
@@ -694,7 +691,7 @@ After:
 <table>
   <thead>
     <tr>
-      <th>Raw pixel buffer offset</th>
+      <th>Raw&nbsp;pixel&nbsp;buffer&nbsp;offset</th>
       <th>Leaked value</th>
       <th>Remapped value for JOP chain</th>
     </tr>
@@ -741,15 +738,15 @@ After:
   <li>a JOP chain prepared at 0xf000. Note that it is preceded by one of the 1040 <code>Unknown</code> opcodes with opcode ID 23 (0x17)</li>
 </ul>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <ul>
   <li>a shell command at offset 0x10000. Note again how it is within the region of the <code>Unknown</code> opcodes</li>
 </ul>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <h3>Triggering the JOP chain</h3>
 
@@ -872,14 +869,14 @@ qpng_error:
   <thead>
     <tr>
       <th>Gadget</th>
-      <th>Relevant instructions</th>
+      <th>Relevant&nbsp;instructions</th>
       <th>Purpose</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><code>qpng_read_data</code></td>
-      <td><code>MOV X19, X0<br />MOV X20, X2</code></td>
+      <td><code>MOV X19, X0<br>MOV X20, X2</code></td>
       <td>Copy the opcode address into <code>x19</code> and the <code>QuramDngImage</code> address into <code>x20</code></td>
     </tr>
     <tr>
@@ -899,12 +896,12 @@ qpng_error:
     </tr>
     <tr>
       <td><code>__ink_jpeg_enc_process_image+64</code></td>
-      <td><code>LDR X8, [X19,#0x928]</code><br /><code>MOV X0, X19</code><br /><code>BLR X8</code></td>
+      <td><code>LDR X8, [X19,#0x928]</code><br><code>MOV X0, X19</code><br><code>BLR X8</code></td>
       <td>Copy the raw pixel buffer from <code>x19</code> into <code>x0</code> and call <code>system</code>. The raw pixel buffer was corrupted before the JOP chain to point at the shell command</td>
     </tr>
     <tr>
       <td><code>system</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
       <td>Execute the shell command</td>
     </tr>
   </tbody>
@@ -1024,12 +1021,11 @@ content write <span>--uri</span> <span>"content://com.samsung.cmh/files?service_
   <li>Clement Lecigne of Google Threat Intelligence Group for assisting in the analysis</li>
 </ul>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

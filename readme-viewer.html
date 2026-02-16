@@ -1212,27 +1212,32 @@
             if (quickNav) quickNav.innerHTML = '';
 
             // Add options for each visible section
+            const navEntries = [];
             sections.forEach(section => {
                 const cat = section.getAttribute('data-category');
                 const heading = section.querySelector('h2');
                 // Only show if category is not filtered out
                 if (heading && cat && prefs.categories[cat] !== false) {
-                    const option = document.createElement('option');
-                    option.value = cat;
-                    option.textContent = heading.textContent;
-                    select.appendChild(option);
+                    navEntries.push({ cat, label: heading.textContent });
+                }
+            });
+            navEntries.sort((a, b) => a.label.localeCompare(b.label, undefined, { sensitivity: 'base' }));
+            navEntries.forEach(({ cat, label }) => {
+                const option = document.createElement('option');
+                option.value = cat;
+                option.textContent = label;
+                select.appendChild(option);
 
-                    if (quickNav) {
-                        const chip = document.createElement('button');
-                        chip.type = 'button';
-                        chip.className = 'quick-tag';
-                        chip.textContent = heading.textContent;
-                        chip.addEventListener('click', () => {
-                            const target = document.getElementById(cat);
-                            jumpToSection(target);
-                        });
-                        quickNav.appendChild(chip);
-                    }
+                if (quickNav) {
+                    const chip = document.createElement('button');
+                    chip.type = 'button';
+                    chip.className = 'quick-tag';
+                    chip.textContent = label;
+                    chip.addEventListener('click', () => {
+                        const target = document.getElementById(cat);
+                        jumpToSection(target);
+                    });
+                    quickNav.appendChild(chip);
                 }
             });
 

@@ -24,30 +24,27 @@
 <body>
   <h1>Ukraine ex-energy minister named suspect in laundering probe</h1>
   <div class="metadata">
-    Source: France 24 (EN) | Date: 2/16/2026 7:24:48 PM | Lang: EN |
-    <a href="https://www.france24.com/en/ukraine-ex-energy-minister-named-suspect-in-laundering-probe" target="_blank">Original Article</a>
+    Source: France 24 (EN) | Date: 2/16/2026 8:24:48 PM | <a href="https://www.france24.com/en/ukraine-ex-energy-minister-named-suspect-in-laundering-probe" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <div> <p>To display this content from YouTube, you must enable advertisement tracking and audience measurement.</p> </div>
-<div> <p>One of your browser extensions seems to be blocking the video player from loading. To watch this content, you may need to disable it on this site.</p> </div> <figure> <img src="https://s.france24.com/media/display/406aa61c-0b6c-11f1-beaf-005056bf30b7/w:1024/p:16x9/EN-20260216-201026-201155-CS.jpg" alt="Ukraine ex-energy minister named suspect in laundering probe"> <figcaption> <span> France 24</span> </figcaption> <p>
-<time>01:28</time> </p> </figure> </div> <div> <div> <p><span></span> Europe </p> </div> <div> <p><span>Issued on: <time>16/02/2026 - 20:24</time></span></p> </div> </div> </div></div>
+    <p>Ukraine's former energy minister German Galushchenko has been formally named as a suspect in a high-profile money laundering probe, investigators said Monday. The announcement comes one day after Galushchenko was detained by law enforcement attempting to leave Ukraine, and is the latest development in a corruption scandal in the energy sector that rocked the government last year. FRANCE 24's Emerald Maxwell reports.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

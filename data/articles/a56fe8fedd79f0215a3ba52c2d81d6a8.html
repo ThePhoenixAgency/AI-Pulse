@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,31 +18,11 @@
 <body>
   <h1>China-Linked DKnife AitM Framework Targets Routers for Traffic Hijacking, Malware Delivery</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/6/2026 3:56:00 PM | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/6/2026 3:56:00 PM | <a href="https://thehackernews.com/2026/02/china-linked-dknife-aitm-framework.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 06, 2026</span></span><span>Malware / IoT Security</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYyMn4uLO-VZgiUrwRtAtJIOgkMnxpxz8eAMF1qozW3TT6F7vTTebQnOZu_ZHcioB-mqEHV7AT35sHZPKp5X2W6kJj0l8fZDPZoS11oLDOMh3v8_6rX_C5IiLlxrlv0eCEPFUZ2Nv6VG4BNcEiDH7yJ0HyJ-5CvN2EL-VsQP85QydfaaLQ62BME9d_-frU/s1600/hijacking.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYyMn4uLO-VZgiUrwRtAtJIOgkMnxpxz8eAMF1qozW3TT6F7vTTebQnOZu_ZHcioB-mqEHV7AT35sHZPKp5X2W6kJj0l8fZDPZoS11oLDOMh3v8_6rX_C5IiLlxrlv0eCEPFUZ2Nv6VG4BNcEiDH7yJ0HyJ-5CvN2EL-VsQP85QydfaaLQ62BME9d_-frU/s1600/hijacking.jpg"></a></p>
-<p>Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed <strong>DKnife</strong> that's operated by China-nexus threat actors since at least 2019.</p>
-<p>The framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to be Chinese-speaking users, an assessment based on the presence of credential harvesting phishing pages for Chinese email services, exfiltration modules for popular Chinese mobile applications like WeChat, and code references to Chinese media domains.</p>
-<p>"DKnife's attacks target a wide range of devices, including PCs, mobile devices, and Internet of Things (IoT) devices," Cisco Talos researcher Ashley Shen <a href="https://blog.talosintelligence.com/knife-cutting-the-edge/" target="_blank">noted</a> in a Thursday report. "It delivers and interacts with the <a href="https://thehackernews.com/2025/11/shadowpad-malware-actively-exploits.html" target="_blank">ShadowPad</a> and <a href="https://thehackernews.com/2024/12/hackers-target-uyghurs-and-tibetans.html" target="_blank">DarkNimbus</a> backdoors by hijacking binary downloads and Android application updates."</p>
-<p>The cybersecurity company said it discovered DKnife as part of its ongoing monitoring of another Chinese threat activity cluster codenamed Earth Minotaur that's linked to tools like the <a href="https://thehackernews.com/2024/12/hackers-target-uyghurs-and-tibetans.html" target="_blank">MOONSHINE exploit kit and the DarkNimbus (aka DarkNights) backdoor</a>. Interestingly, the backdoor has also been put to use by a third China-aligned advanced persistent threat (APT) group called TheWizards.</p> <p>An analysis of DKnife's infrastructure has uncovered an IP address hosting WizardNet, a Windows implant deployed by <a href="https://thehackernews.com/2025/04/chinese-hackers-abuse-ipv6-slaac-for.html" target="_blank">TheWizards</a> via an AitM framework referred to as Spellbinder. Details of the toolkit were documented by ESET in April 2025.</p>
-<p>The targeting of Chinese-speaking users, Cisco said, hinges on the discovery of configuration files obtained from a single command-and-control (C2) server, raising the possibility that there could be other servers hosting similar configurations for different regional targeting.</p>
-<p>This is significant in light of infrastructural connections between DKnife and WizardNet, as TheWizards is known to target individuals and the gambling sector across Cambodia, Hong Kong, Mainland China, the Philippines, and the United Arab Emirates.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgM-QbFTTlKKIOdKW1fcbkZqwR0dbhTuaAy0vt197hlZRcYr6rUdjCo-k7FgOIwc1QSvu53bdv4I4frK64JQ9i1Js77prFPf3jxZSpW1VZD3aKTizpMA436TE5fUSPr_7vNMQy57AJlKHCAeC1tPEww9VJ64K_U1Mr0Zpkc2raC5hVD7rfQnVsZom94O1u5/s1600/postapi.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgM-QbFTTlKKIOdKW1fcbkZqwR0dbhTuaAy0vt197hlZRcYr6rUdjCo-k7FgOIwc1QSvu53bdv4I4frK64JQ9i1Js77prFPf3jxZSpW1VZD3aKTizpMA436TE5fUSPr_7vNMQy57AJlKHCAeC1tPEww9VJ64K_U1Mr0Zpkc2raC5hVD7rfQnVsZom94O1u5/s1600/postapi.jpg"></a></td></tr><tr><td>Functions of seven DKnife components</td></tr></tbody></table>
-<p>Unlike WizardNet, DKnife is engineered to be run on Linux-based devices. Its modular architecture enables operators to serve a wide range of functions, ranging from packet analysis to traffic manipulation. Delivered by means of an ELF downloader, it contains seven different components -</p>
-<ul>
-<li>dknife.bin - The central nervous system of the framework responsible for deep packet inspection, user activities reporting, binary download hijacking, and DNS hijacking</li>
-<li>postapi.bin - A data reporter module that acts as a relay by receiving traffic from DKnife and reporting to remote C2</li>
-<li>sslmm.bin - A reverse proxy module modified from HAProxy that performs TLS termination, email decryption, and URL rerouting</li>
-<li>mmdown.bin - An updater module that connects to a hard-coded C2 server to download APKs used for the attack</li>
-<li>yitiji.bin - A packet forwarder module that creates a <a href="https://blog.cloudflare.com/virtual-networking-101-understanding-tap/" target="_blank">bridged TAP interface</a> on the router to host and route attacker-injected LAN traffic</li>
-<li>remote.bin - A peer-to-peer (P2P) VPN client module that creates a communication channel to remote C2</li>
-<li>dkupdate.bin - An updater and watchdog module that keeps the various components alive</li>
-</ul>
-<p>"DKnife can harvest credentials from a major Chinese email provider and host phishing pages for other services," Talos said. "For harvesting email credentials, the sslmm.bin component presents its own TLS certificate to clients, terminates and decrypts POP3/IMAP connections, and inspects the plaintext stream to extract usernames and passwords."</p>
-<p>"Extracted credentials are tagged with 'PASSWORD,' forwarded to the postapi.bin component, and ultimately relayed to remote C2 servers."</p> <p>The core component of the framework is "dknife.bin," which takes care of deep packet inspection, allowing operators to conduct traffic monitoring campaigns ranging from "covert monitoring of user activity to active in-line attacks that replace legitimate downloads with malicious payloads." This includes -</p> </div></div>
+    <p>Cybersecurity researchers have taken the wraps off a gateway-monitoring and adversary-in-the-middle (AitM) framework dubbed DKnife that's operated by China-nexus threat actors since at least 2019.
+The framework comprises seven Linux-based implants that are designed to perform deep packet inspection, manipulate traffic, and deliver malware via routers and edge devices. Its primary targets seem to</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

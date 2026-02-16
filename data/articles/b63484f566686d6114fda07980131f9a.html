@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<title>GitHub - EvanZhouDev/viewlint: Find UI issues on live websites.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - EvanZhouDev/viewlint: Find UI issues on live websites.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 9:14:17 PM | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> <img src="/EvanZhouDev/viewlint/raw/main/apps/docs/public/viewlint-logo.svg" alt="ViewLint Logo"> ViewLint
+</h1><a href="#------------viewlint"></a></div>
+<p><a href="https://viewlint.vercel.app/">Documentation</a> | <a href="https://www.npmjs.com/package/viewlint">NPM</a></p>
+<p>ViewLint helps identify UI issues by analyzing the rendered output a human sees, not just source code.</p>
+<p>Built for modern coding workflows and AI Agents, ViewLint accelerates workflows from development to shipping. It's designed to be ready to use out-of-the-box and extensible when you need it, making it perfect for individual developers to enterprise organizations.</p>
+<p><a target="_blank" href="/EvanZhouDev/viewlint/blob/main/apps/docs/public/viewlint-visualized.png"><img src="/EvanZhouDev/viewlint/raw/main/apps/docs/public/viewlint-visualized.png" alt="ViewLint visualized"></a></p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Initialize ViewLint:</p>
+<div><pre>npm init @viewlint/config@latest</pre></div>
+<p>Run it on a URL:</p>
+<div><pre>npx viewlint https://example.com</pre></div>
+<p>For setup details and advanced configuration, see the <a href="https://viewlint.vercel.app/docs/getting-started">Getting Started guide</a>.</p>
+<div><h2>The UI Linting Problem</h2><a href="#the-ui-linting-problem"></a></div>
+<p>UI issues such as clipped content, overflow, low contrast, and obscured hit targets are often hard to catch from source code alone.</p>
+<p>Instead, ViewLint validates your UI the same way a human does, looking at and interacting with the actual rendered browser output to catch potential issues.</p>
+<div><h3>UI's Broken Feedback Loop</h3><a href="#uis-broken-feedback-loop"></a></div>
+<p>LLMs are fantastic at writing code. They're not so great at making UI.</p>
+<p>As it turns out, that's because Coding Agents have a closed feedback loop to validate their code and logic. But when it comes to UI, inspecting the DOM tree manually and taking screenshots just aren't concrete and actionable enough to close that feedback loop.</p>
+<p><a target="_blank" href="/EvanZhouDev/viewlint/blob/main/apps/docs/public/broken-feedback-loop.png"><img src="/EvanZhouDev/viewlint/raw/main/apps/docs/public/broken-feedback-loop.png" alt="Broken feedback loop"></a></p>
+<p>ViewLint closes the feedback loop with UI design, allowing the agent to get live, actionable feedback on the rendered output of the website it's working on.</p>
+<p><a target="_blank" href="/EvanZhouDev/viewlint/blob/main/apps/docs/public/closed-feedback-loop-small.png"><img src="/EvanZhouDev/viewlint/raw/main/apps/docs/public/closed-feedback-loop-small.png" alt="Broken feedback loop"></a></p>
+<p>ViewLint significantly improves the UI design performance of AI Agents. Learn more and see the difference at the <a href="https://viewlint.vercel.app/#viewlint-closes-the-loop">ViewLint documentation</a>.</p>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<p>Get started exploring ViewLint and add it to your project with the ViewLint documentation at <a href="https://viewlint.vercel.app">viewlint.vercel.app</a>.</p>
+<ul>
+<li><a href="https://viewlint.vercel.app/docs">Introduction</a></li>
+<li><a href="https://viewlint.vercel.app/docs/getting-started">Getting Started</a></li>
+<li><a href="https://viewlint.vercel.app/docs/configure-viewlint">Configure ViewLint</a></li>
+<li><a href="https://viewlint.vercel.app/docs/cli-reference">CLI Reference</a></li>
+<li><a href="https://viewlint.vercel.app/docs/rules-reference">Rules Reference</a></li>
+<li><a href="https://viewlint.vercel.app/docs/mcp-server">MCP Server Setup</a></li>
+</ul>
+<div><h2>Repo Structure</h2><a href="#repo-structure"></a></div>
+<p>ViewLint is a monorepo, hosting a series of packages in the ViewLint ecosystem as well as the documentation site.</p>
+<ul>
+<li><code>apps/</code>
+<ul>
+<li><code>docs/</code>: ViewLint documentation, hosted at <a href="https://viewlint.vercel.app">viewlint.vercel.app</a></li>
+</ul>
+</li>
+<li><code>packages/</code>
+<ul>
+<li><code>viewlint/</code>: Core ViewLint package and CLI (<code>viewlint</code> on <a href="https://www.npmjs.com/package/viewlint">NPM</a>)</li>
+<li><code>rules/</code>: Core ViewLint rules (<code>@viewlint/rules</code> on <a href="https://www.npmjs.com/package/@viewlint/rules">NPM</a>)</li>
+<li><code>create-config/</code>: ViewLint config initializer (<code>@viewlint/create-config</code> on <a href="https://www.npmjs.com/package/@viewlint/create-config">NPM</a>)</li>
+<li><code>mcp/</code>: ViewLint MCP server (<code>@viewlint/mcp</code> on <a href="https://www.npmjs.com/package/@viewlint/mcp">NPM</a>)</li>
+<li><code>typescript-config/</code>: Shared TS config for monorepo</li>
+</ul>
+</li>
+</ul>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>AGPL-3.0-only</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

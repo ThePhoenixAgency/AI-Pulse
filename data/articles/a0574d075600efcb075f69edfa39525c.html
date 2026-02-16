@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>A 0-click exploit chain for the Pixel 9 Part 3: Where do we go from here?</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>A 0-click exploit chain for the Pixel 9 Part 3: Where do we go from here?</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 1/14/2026 | Lang: EN |
-    <a href="https://projectzero.google/2026/01/pixel-0-click-part-3.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 1/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -36,8 +33,6 @@
 <h2>Audio Attack Surface</h2>
 
 <p>The Dolby UDC is part of the 0-click attack surface of most Android devices because of audio transcription in the Google Messages application. Incoming audio messages are transcribed before a user interacts with the message. On Pixel 9, a second process <code>com.google.android.tts</code> also decodes incoming audio. Its purpose is not completely clear, but it seems to be related to making incoming messages searchable.</p>
-
-
 
 <p>Both processes decode audio using all decoders available on the device, including the UDC, which is integrated by the OEMs of most devices, though the bulk of incoming messages use a small number of audio formats. In particular, it is very unlikely that an incoming message will contain audio in formats supported by the Dolby UDC, as Android devices do not provide encoders for these formats, and they are mostly used by commercial media, such as movies and TV shows. Removing the UDC and other uncommonly-used decoders from the 0-click attack surface of Android would protect users from the worst consequences of vulnerabilities in these codecs.</p>
 
@@ -115,5 +110,5 @@
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

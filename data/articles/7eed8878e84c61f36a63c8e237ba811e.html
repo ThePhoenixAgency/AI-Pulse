@@ -4,106 +4,63 @@
 <meta charset="UTF-8">
 <title>Cookie Chaos: How to bypass __Host and __Secure cookie prefixes</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Cookie Chaos: How to bypass __Host and __Secure cookie prefixes</h1>
   <div class="metadata">
-    Source: PortSwigger Research | Date: 9/3/2025 | Lang: EN |
-    <a href="https://portswigger.net/research/cookie-chaos-how-to-bypass-host-and-secure-cookie-prefixes" target="_blank">Original Article</a>
+    Source: PortSwigger Research | Date: 9/3/2025 4:46:23 PM | <a href="https://portswigger.net/research/cookie-chaos-how-to-bypass-host-and-secure-cookie-prefixes" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-    
-    
-    
-<div>
-    <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png" /></p>
-</div>
-    <ul>
-        <li>
-            <p><span></span><strong>Published: </strong>03 September 2025 at 14:46 UTC</p>
-        </li>
-        <li>
-            <p><strong>Updated: </strong>03 September 2025 at 14:46 UTC</p>
-        </li>
-        <li>
-        </li>
-    </ul>
-    <p>Browsers added cookie prefixes to protect your sessions and stop attackers from setting harmful cookies. In this post, you’ll see how to bypass cookie defenses using discrepancies in browser and server logic.</p>
+    <div><div> <div> <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>03 September 2025 at 14:46 UTC</p> </li> <li> <p><strong>Updated: </strong>03 September 2025 at 14:46 UTC</p> </li> <li> </li> </ul> <p>Browsers added cookie prefixes to protect your sessions and stop attackers from setting harmful cookies. In this post, you’ll see how to bypass cookie defenses using discrepancies in browser and server logic.</p>
 <p>For a visual walk‑through, see the SteelCon livestream recording:</p>
-<p></p>
-
-<h2><a>Overwriting Cookies with Unicode Whitespace</a></h2>
+<p></p> <h2><a>Overwriting Cookies with Unicode Whitespace</a></h2>
 <p>Cookie prefixes were introduced in <a href="https://datatracker.ietf.org/doc/html/draft-ietf-httpbis-rfc6265bis">RFC 6265bis</a> to strengthen cookie security through naming rules:</p><ul><li>A cookie with the <b>__Host-</b> prefix must be host-only, meaning it cannot be shared across subdomains</li><li>A cookie with the <b>__Secure-</b> prefix must be set from a secure origin.</li></ul>
 <p>These restrictions are enforced by browsers to prevent attacks like cookie tossing or session fixation. However, inconsistencies in how browsers and servers handle cookie encoding and parsing can introduce subtle but dangerous flaws.</p>
 <p>According to the original <a href="https://datatracker.ietf.org/doc/html/rfc6265#:~:text=NOTE%3A%20Despite%20its,valid%20UTF%2D8.">RFC 6265</a>, the Cookie header is defined as a sequence of octets, not characters. This means the browser sends raw bytes on the wire, and it’s the server’s responsibility to decode those bytes into a string. If the browser and server interpret those bytes differently, parsing discrepancies can occur.</p>
-<p>By using UTF-8 encoding, an attacker can disguise a restricted cookie - such as one that starts with <b>__Host-</b> in a way that bypasses browser protections. The browser may treat it as a non-restricted cookie, but the server might decode and normalize it in a way that causes it to be interpreted as a protected one.</p>
-
-<p>Here’s a minimal proof of concept that demonstrates this behavior:</p><p><code><span>document</span>.<span>cookie</span>=<br /><span>`</span>${<span>String</span>.<span>fromCodePoint</span>(<span>0x2000</span>)}<span>__Host-name</span>=injected; <span>Domain</span>=.example.com; <span>Path</span>=/;<span>`</span></code></p><p>This whitespace-prefixed cookie is interpreted by the browser as a non-prefixed, non-restricted value and is therefore sent to all subdomains within the target domain’s scope.</p>
+<p>By using UTF-8 encoding, an attacker can disguise a restricted cookie - such as one that starts with <b>__Host-</b> in a way that bypasses browser protections. The browser may treat it as a non-restricted cookie, but the server might decode and normalize it in a way that causes it to be interpreted as a protected one.</p> <p>Here’s a minimal proof of concept that demonstrates this behavior:</p><p><code><span>document</span>.<span>cookie</span>=<br><span>`</span>${<span>String</span>.<span>fromCodePoint</span>(<span>0x2000</span>)}<span>__Host-name</span>=injected; <span>Domain</span>=.example.com; <span>Path</span>=/;<span>`</span></code></p><p>This whitespace-prefixed cookie is interpreted by the browser as a non-prefixed, non-restricted value and is therefore sent to all subdomains within the target domain’s scope.</p>
 <p>During testing, I discovered that certain server-side frameworks, such as Django and ASP.NET, apply normalization and trimming to cookie names before processing. Specifically, when the server interprets U+2000 as a whitespace character, it removes it, resulting in a cookie name that becomes equivalent to <b>__Host-name</b>.</p>
-<p>Django uses Python’s built-in <span>.strip()</span> method to process cookie keys and values. This method removes a wide range of Unicode whitespace characters, including <span>[133, 160, 5760, 8192–8202, 8232, 8233, 8239, 8287, 12288]</span>, effectively treating them as a space.</p>
-
-
-
-<p>Interestingly, Safari handles this case differently. It does not support multibyte Unicode whitespace characters in cookie names, which prevents values like U+2000 from being used. However, single-byte characters such as U+0085 (NEL) and U+00A0 (non-breaking space) are still permitted.</p>
-
-
-
-<h2><a>Overwriting Cookies with legacy parsing</a></h2>
-
-
-
-<p>In addition to Unicode tricks, legacy cookie parsing behavior can also be abused to bypass prefix protections. As shown in the previous blog post, if a Cookie header begins with <span>$Version=1</span>, some Java-based web servers, such as Apache Tomcat and Jetty, switch into a legacy parsing. In this mode, a single cookie string may be interpreted as multiple separate cookies. For example, the following JavaScript sets a cookie that includes a forged <b>__Host-</b> pair:</p>
-<p><code><span>document</span>.<span>cookie</span>=<br /><span>`</span><span>$Version=1,</span><span>__Host-name</span>=injected; <span>Path</span>=/somethingreallylong/; <span>Domain</span>=.example.com;<span>`</span>;
-</code></p><p>This lets the attacker bypass the browser’s prefix checks and inject high-privilege cookies from a subdomain or over an insecure origin.</p>
-
-
-
-<h2><a>Full attack scenario</a></h2>
-
-
-
-<p>Suppose you discover an <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vulnerability where a cookie value is reflected into a web page without proper escaping. The application uses a __Host- prefixed cookie, which normally prevents overwriting from untrusted subdomains due to browser-enforced restrictions. However, using one of the techniques described earlier, you inject a forged __Host-name cookie using JavaScript:</p>
-<p><code><span>document</span>.<span>cookie</span>=<br /><span>`</span>${<span>String</span>.<span>fromCodePoint</span>(<span>0x2000</span>)}<span>__Host-name</span>=<span>&lt;img src=x onerror=alert(1)&gt;</span>; 
-<span>Domain</span>=example.com; 
-<span>Path</span>=/;<span>`</span></code></p><p>The browser, unaware that this cookie is equivalent to the protected one, accepts it and includes both the original and attacker-controlled cookies in the request. On the wire, the browser sends the following header:</p>
-
-<p><code><span>Cookie:</span> __Host-name=Carlos; <span>â€€</span>__Host-name=&lt;img src=x onerror=alert(1)&gt;;</code></p><p>When this request reaches the backend, the server parses the Cookie header. If multiple cookies with the same name are present, many frameworks, including Django, resolve the conflict by accepting only one value, typically the last occurrence. In this case, the attacker-controlled value takes precedence.</p>
-<p>If the application reflects this cookie value into the response without proper encoding, the result is a <a href="https://portswigger.net/web-security/cross-site-scripting">cross-site scripting</a> vulnerability. Alternatively, if the same cookie is used for <a href="https://portswigger.net/web-security/csrf">CSRF</a> protection or session identification, this behavior can also lead to session fixation or other privilege escalation paths.</p>
-
-<p>Django responded to my vulnerability report:
-
-</p><blockquote>The official Django documentation has a warning against permitting cookies from untrusted subdomains as this is vulnerable to attacks: <a href="https://docs.djangoproject.com/en/5.0/topics/http/sessions/#topics-session-security">https://docs.djangoproject.com/en/5.0/topics/http/sessions/#topics-session-security</a>. As this attack relies on this, this will not be treated as a security vulnerability.</blockquote> 
-
-
-<h2><a>Takeaways</a></h2>
-
-
-
-<p>The same cookie can be interpreted in different ways by the browser and the backend. This mismatch can quietly break the guarantees of cookie confidentiality and integrity, even when the strongest browser-side protections. To help test for the issues discussed here I’ve created a lightweight <a href="https://github.com/PortSwigger/bambdas/blob/main/CustomAction/CookiePrefixBypass.bambda">Custom Action for Burp Suite</a>.</p>
-<p>It can quickly detect conditions where a backend may be vulnerable to cookie prefix bypasses.</p>
-
-
-
-<p>This blog post concludes our exploration into cookie parsing inconsistencies and how they can be exploited to bypass security mechanisms. If you haven’t already, make sure to check out the previous article in this series, where we demonstrated how <a href="https://portswigger.net/research/stealing-httponly-cookies-with-the-cookie-sandwich-technique">the cookie sandwich technique can be used to steal HttpOnly cookies</a>.</p>
-    
-    <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+<p>Django uses Python’s built-in <span>.strip()</span> method to process cookie keys and values. This method removes a wide range of Unicode whitespace characters, including <span>[133, 160, 5760, 8192–8202, 8232, 8233, 8239, 8287, 12288]</span>, effectively treating them as a space.</p> <p>Interestingly, Safari handles this case differently. It does not support multibyte Unicode whitespace characters in cookie names, which prevents values like U+2000 from being used. However, single-byte characters such as U+0085 (NEL) and U+00A0 (non-breaking space) are still permitted.</p> <h2><a>Overwriting Cookies with legacy parsing</a></h2> <p>In addition to Unicode tricks, legacy cookie parsing behavior can also be abused to bypass prefix protections. As shown in the previous blog post, if a Cookie header begins with <span>$Version=1</span>, some Java-based web servers, such as Apache Tomcat and Jetty, switch into a legacy parsing. In this mode, a single cookie string may be interpreted as multiple separate cookies. For example, the following JavaScript sets a cookie that includes a forged <b>__Host-</b> pair:</p>
+<p><code><span>document</span>.<span>cookie</span>=<br><span>`</span><span>$Version=1,</span><span>__Host-name</span>=injected; <span>Path</span>=/somethingreallylong/; <span>Domain</span>=.example.com;<span>`</span>;
+</code></p><p>This lets the attacker bypass the browser’s prefix checks and inject high-privilege cookies from a subdomain or over an insecure origin.</p> <h2><a>Full attack scenario</a></h2> <p>Suppose you discover an <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vulnerability where a cookie value is reflected into a web page without proper escaping. The application uses a __Host- prefixed cookie, which normally prevents overwriting from untrusted subdomains due to browser-enforced restrictions. However, using one of the techniques described earlier, you inject a forged __Host-name cookie using JavaScript:</p>
+<p><code><span>document</span>.<span>cookie</span>=<br><span>`</span>${<span>String</span>.<span>fromCodePoint</span>(<span>0x2000</span>)}<span>__Host-name</span>=<span>&lt;img src=x onerror=alert(1)&gt;</span>; <span>Domain</span>=example.com; <span>Path</span>=/;<span>`</span></code></p><p>The browser, unaware that this cookie is equivalent to the protected one, accepts it and includes both the original and attacker-controlled cookies in the request. On the wire, the browser sends the following header:</p> <p><code><span>Cookie:</span> __Host-name=Carlos; <span>â€€</span>__Host-name=&lt;img src=x onerror=alert(1)&gt;;</code></p><p>When this request reaches the backend, the server parses the Cookie header. If multiple cookies with the same name are present, many frameworks, including Django, resolve the conflict by accepting only one value, typically the last occurrence. In this case, the attacker-controlled value takes precedence.</p>
+<p>If the application reflects this cookie value into the response without proper encoding, the result is a <a href="https://portswigger.net/web-security/cross-site-scripting">cross-site scripting</a> vulnerability. Alternatively, if the same cookie is used for <a href="https://portswigger.net/web-security/csrf">CSRF</a> protection or session identification, this behavior can also lead to session fixation or other privilege escalation paths.</p> <p>Django responded to my vulnerability report: </p><blockquote>The official Django documentation has a warning against permitting cookies from untrusted subdomains as this is vulnerable to attacks: <a href="https://docs.djangoproject.com/en/5.0/topics/http/sessions/#topics-session-security">https://docs.djangoproject.com/en/5.0/topics/http/sessions/#topics-session-security</a>. As this attack relies on this, this will not be treated as a security vulnerability.</blockquote> <h2><a>Takeaways</a></h2> <p>The same cookie can be interpreted in different ways by the browser and the backend. This mismatch can quietly break the guarantees of cookie confidentiality and integrity, even when the strongest browser-side protections. To help test for the issues discussed here I’ve created a lightweight <a href="https://github.com/PortSwigger/bambdas/blob/main/CustomAction/CookiePrefixBypass.bambda">Custom Action for Burp Suite</a>.</p>
+<p>It can quickly detect conditions where a backend may be vulnerable to cookie prefix bypasses.</p> <p>This blog post concludes our exploration into cookie parsing inconsistencies and how they can be exploited to bypass security mechanisms. If you haven’t already, make sure to check out the previous article in this series, where we demonstrated how <a href="https://portswigger.net/research/stealing-httponly-cookies-with-the-cookie-sandwich-technique">the cookie sandwich technique can be used to steal HttpOnly cookies</a>.</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

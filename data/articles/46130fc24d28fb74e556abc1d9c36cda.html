@@ -4,47 +4,46 @@
 <meta charset="UTF-8">
 <title>THJCC CTF 2026</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>THJCC CTF 2026</h1>
   <div class="metadata">
-    Source: CTFtime | Date: Invalid Date | Lang: EN |
-    <a href="https://ctftime.org/event/3088" target="_blank">Original Article</a>
+    Source: CTFtime | Date: 2/16/2026 11:26:07 PM | <a href="https://ctftime.org/event/3088" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-
-<p>High school student in Taiwan manage CTF !<br />? ? ? Whether you are a beginner, a working professional, or an experienced CTF player, you are welcome to participate. THJCC CTF is a beginner-friendly competition. ? ? ? </p>
-
-<p>Organizers: SCINT 北臺灣學生資訊社群、SCIST 南臺灣學生資訊社群<br />Partners: SCAICT 中部高中電資社團聯合會議、桃園市立大園國際高級中等學校 程式設計社<br />Sponsors: 社團法人台灣駭客協會、NCSE Network</p>
-
-<p>Time: 2026/2/21 8:00 ~ 22 21:00 (UTC+8)</p>
-
-<p>Registration link (Taiwan high school students only): <a href="https://form.thjcc.org/">https://form.thjcc.org/</a><br />Join our Discord: <a href="https://dc.thjcc.org/">https://dc.thjcc.org/</a></p>
-
-</div><div>
-<p>? First Place: NT$3,000 + one mystery prize + a certificate<br />? Second Place: NT$2,000 + one mystery prize + a certificate<br />?Third Place: NT$1,000 + a certificate<br />4⃣ Fourth Place: NT$800 + a certificate<br />Fifth to Tenth Place: One month of Discord Nitro + a certificate</p>
-
-<p>Potential Award: After evaluation of the write-ups by the organizers (including what was learned, technical details, and analysis), two outstanding participants will be selected to receive NT$500 + a certificate</p>
-
-<p>*Only high school students in Taiwan are eligible for prizes, but all participants will receive a certificate of participation.</p>
-
-</div></div>
+    <p>Name: THJCC CTF 2026 (an THJCC CTF event.)
+[add to calendar]
+On-line
+https://ctf2026.thjcc.org/
+CakeisTheFake</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

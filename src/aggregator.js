@@ -300,6 +300,41 @@ function sanitizeText(input) {
   }));
 }
 
+function escapeHtmlAttribute(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function normalizeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || '').trim());
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') return '';
+    return url.toString();
+  } catch (_) {
+    return '';
+  }
+}
+
+function renderOriginalLinkMeta(value) {
+  const safe = normalizeExternalUrl(value);
+  if (!safe) return '';
+  const escaped = escapeHtmlAttribute(safe);
+  return ` | <a href="${escaped}" target="_blank" rel="noopener noreferrer">Lien</a>`;
+}
+
+function renderArticleMetadataLine({ sourceName, pubDate, lang, originalUrl }) {
+  const safeSource = sanitizeText(sourceName || 'Unknown') || 'Unknown';
+  const safeLang = String(lang || 'en').toUpperCase();
+  const rawDate = pubDate ? new Date(pubDate) : new Date();
+  const safeDate = Number.isNaN(rawDate.getTime()) ? new Date() : rawDate;
+  const datePart = `${safeDate.toLocaleDateString()} ${safeDate.toLocaleTimeString()}`;
+  const linkPart = renderOriginalLinkMeta(originalUrl);
+  return `Source: ${safeSource} | Date: ${datePart}${linkPart} | Lang: ${safeLang}`;
+}
+
 function stripEmojiCharacters(input) {
   if (!input) return '';
   return String(input)
@@ -344,7 +379,8 @@ const PROMOTIONAL_MARKERS = [
   /\bavis\b/i,
   /\btoute l['’]actu en un clin d['’]oeil\b/i,
   /\badvertisement\.?\s*scroll to continue reading\b/i,
-  /\brelated\b/i
+  /\best apparu en premier sur\b/i,
+  /\bappeared first on\b/i
 ];
 
 function isPromotionalContent(text) {
@@ -368,11 +404,40 @@ function cleanupNoiseText(input) {
     .replace(/\b(abonnez[-\s]?vous|inscrivez[-\s]?vous|suivez[-\s]?nous)\b/gi, ' ')
     .replace(/\b(follow us|read more|lire aussi|you may also like|recommended)\b/gi, ' ')
     .replace(/\btoute l['’]actu en un clin d['’]oeil\b/gi, ' ')
+    .replace(/\bl['’]article[\s\S]{0,260}?\best apparu en premier sur\b[\s\S]*$/gi, ' ')
+    .replace(/\bthis article[\s\S]{0,260}?\bappeared first on\b[\s\S]*$/gi, ' ')
     .replace(/\bpublicit[eé]\b/gi, ' ')
     .replace(/\bpublicit\b/gi, ' ')
     .replace(/\b(votre contenu continue ci-dessous)\b/gi, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim());
+}
+
+function hasSevereTruncationArtifact(text) {
+  const value = sanitizeText(text || '').replace(/\s+/g, ' ').trim();
+  if (!value) return true;
+  if (/\best apparu en premier sur\b/i.test(value) || /\bappeared first on\b/i.test(value)) return true;
+  if (/\.\.\.\s*$/.test(value) || /…\s*$/.test(value)) return true;
+  if (/…\s+[A-ZÀÂÄÉÈÊËÎÏÔÖÙÛÜŸ][^.!?]{0,160}\best apparu en premier sur\b/i.test(value)) return true;
+  if (/[█▓▒]{3,}/.test(value)) return true;
+  return false;
+}
+
+function isPaywallText(text) {
+  const value = sanitizeText(text || '').toLowerCase().replace(/\s+/g, ' ').trim();
+  if (!value) return false;
+  return [
+    /abonnez[-\s]?vous/,
+    /subscribe/,
+    /reserved? for subscribers?/,
+    /reserve aux abonnes?/,
+    /contenu reserve/,
+    /pour lire la suite/,
+    /deja abonne/,
+    /se connecter/,
+    /offre d'abonnement/,
+    /essai gratuit/
+  ].some((re) => re.test(value));
 }
 
 function getLinkDensity(node) {
@@ -388,6 +453,8 @@ function removePromotionalNodes(root) {
   if (!root || !root.querySelectorAll) return;
   const candidates = root.querySelectorAll('p, div, section, article, aside, li, ul, ol, figure, figcaption, footer, nav, header');
   candidates.forEach((node) => {
+    // Never remove table containers as they carry core article data.
+    if (node.querySelector('table, thead, tbody, tr, th, td')) return;
     const text = sanitizeText(node.textContent || '');
     if (!text) return;
     const normalized = text.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -417,6 +484,7 @@ function removePromotionalNodes(root) {
   ];
 
   root.querySelectorAll('section, div, article, aside').forEach((node) => {
+    if (node.querySelector('table, thead, tbody, tr, th, td')) return;
     const heading = node.querySelector('h1, h2, h3, h4, h5, h6');
     if (!heading) return;
     const title = sanitizeText(heading.textContent || '');
@@ -466,6 +534,130 @@ function shouldSuppressExtractionLog(url, error) {
   return /timeout|timed out|forbidden|403|401|socket hang up/i.test(message);
 }
 
+function detectSourceProfile(articleUrl, sourceName) {
+  const source = String(sourceName || '').toLowerCase();
+  let host = '';
+  try {
+    host = new URL(String(articleUrl || '')).hostname.toLowerCase();
+  } catch (_) {
+    host = '';
+  }
+  if (host.includes('github.com') || source.includes('github')) return 'repo';
+  if (host.includes('medium.com') || source.includes('blog')) return 'blog';
+  if (host.includes('reuters') || host.includes('apnews') || host.includes('afp')) return 'wire';
+  if (host.includes('stackoverflow') || host.includes('stackexchange')) return 'forum';
+  return 'news';
+}
+
+const BLOCKED_SOURCE_HOST_PATTERNS = [
+  'news.google.',
+  'google.com',
+  'google.fr',
+  'google.co',
+  'yahoo.com',
+  'yahoo.',
+  'news.yahoo.',
+  'finance.yahoo.',
+  'news.google.com'
+];
+
+const RELIABLE_HOSTS_BY_CATEGORY = {
+  ai: [
+    'openai.com',
+    'huggingface.co',
+    'technologyreview.com',
+    'techcrunch.com',
+    'theverge.com',
+    'medium.com',
+    'towardsdatascience.com',
+    'freedium.cloud',
+    'venturebeat.com',
+    'siecledigital.fr',
+    'numerama.com',
+    'actuia.com'
+  ],
+  openclaw: [
+    'openai.com',
+    'huggingface.co',
+    'technologyreview.com',
+    'techcrunch.com',
+    'theverge.com',
+    'wired.com',
+    'numerama.com',
+    'freedium.cloud'
+  ],
+  cybersecurity: [
+    'securityweek.com',
+    'krebsonsecurity.com',
+    'bleepingcomputer.com',
+    'portswigger.net',
+    'cert.ssi.gouv.fr',
+    'thehackernews.com',
+    'zataz.com'
+  ],
+  local: [
+    'ledauphine.com',
+    'lemonde.fr',
+    'france24.com',
+    'franceinfo.fr',
+    'ouest-france.fr',
+    'bbc.com'
+  ],
+  france: [
+    'lemonde.fr',
+    'lefigaro.fr',
+    'franceinfo.fr',
+    'france24.com',
+    'ouest-france.fr'
+  ],
+  international: [
+    'bbc.com',
+    'theguardian.com',
+    'reuters.com',
+    'apnews.com',
+    'france24.com',
+    'aljazeera.com',
+    'nytimes.com'
+  ],
+  mac: [
+    'apple.com',
+    'macg.co',
+    'igen.fr',
+    'macrumors.com',
+    '9to5mac.com',
+    'appleinsider.com',
+    'macworld.com',
+    'theverge.com',
+    'consomac.fr',
+    'iphon.fr'
+  ]
+};
+
+function extractHost(url) {
+  try {
+    return new URL(String(url || '').trim()).hostname.toLowerCase();
+  } catch (_) {
+    return '';
+  }
+}
+
+function hostMatches(host, suffix) {
+  return host === suffix || host.endsWith(`.${suffix}`);
+}
+
+function isReliableSourceForCategory(url, categoryName) {
+  const host = extractHost(url);
+  if (!host) return false;
+
+  if (BLOCKED_SOURCE_HOST_PATTERNS.some((entry) => host.includes(entry))) {
+    return false;
+  }
+
+  const allow = RELIABLE_HOSTS_BY_CATEGORY[String(categoryName || '').toLowerCase()];
+  if (!Array.isArray(allow) || allow.length === 0) return true;
+  return allow.some((suffix) => hostMatches(host, suffix));
+}
+
 function createSafeDom(html, url) {
   const virtualConsole = new VirtualConsole();
   virtualConsole.on('jsdomError', () => {
@@ -494,7 +686,8 @@ function trimPromotionalTailText(input) {
   return cleanupNoiseText(kept.join('\n'));
 }
 
-function cleanupNoiseHtml(input) {
+function cleanupNoiseHtml(input, options = {}) {
+  const sourceProfile = options.sourceProfile || 'news';
   if (!input) return '';
   const normalizeNoiseText = (value) => sanitizeText(value).toLowerCase().replace(/\s+/g, ' ').trim();
   const removableParagraphs = new Set([
@@ -522,7 +715,11 @@ function cleanupNoiseHtml(input) {
     const body = dom.window.document.body;
     body.querySelectorAll('p').forEach((paragraph) => {
       const normalized = normalizeNoiseText(paragraph.textContent || '');
-      if (removableParagraphs.has(normalized)) {
+      if (
+        removableParagraphs.has(normalized) ||
+        /\best apparu en premier sur\b/i.test(normalized) ||
+        /\bappeared first on\b/i.test(normalized)
+      ) {
         paragraph.remove();
       }
     });
@@ -544,8 +741,9 @@ function cleanupNoiseHtml(input) {
     body.querySelectorAll('img').forEach((img) => {
       const src = String(img.getAttribute('src') || '').toLowerCase();
       const alt = String(img.getAttribute('alt') || '').toLowerCase();
-      const isPromoImage = /advert|ads?|promo|sponsor|affiliate|tracking|doubleclick|taboola|outbrain|buy\.geni\.us|utm_|ref=/.test(src)
-        || /sponsor|publicit|promo|advert/.test(alt);
+      const isPromoImage = /(?:^|[\/?&_.-])(advert|ads|adservice|promo|sponsor|affiliate|tracking|doubleclick|taboola|outbrain)(?:[\/?&_.-]|$)/.test(src)
+        || /buy\.geni\.us|[?&]utm_|[?&]ref=/.test(src)
+        || /\b(sponsor|publicit|promo|advert)\b/.test(alt);
       if (isPromoImage) {
         img.remove();
       }
@@ -553,24 +751,50 @@ function cleanupNoiseHtml(input) {
 
     removePromotionalNodes(body);
 
-    return trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
+    let cleaned = trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
+    if (sourceProfile === 'news' || sourceProfile === 'wire' || sourceProfile === 'blog') {
+      cleaned = cleaned
+        .replace(/<p[^>]*>[\s\S]*?\best apparu en premier sur\b[\s\S]*?<\/p>/gi, '')
+        .replace(/<p[^>]*>[\s\S]*?\bappeared first on\b[\s\S]*?<\/p>/gi, '');
+    }
+    return cleaned;
   } catch (_) {
     return trimPromotionalTailHtml(stripEmojiCharacters(String(input).trim()));
   }
 }
 
-function normalizeCodeBlocksHtml(input) {
+function normalizeCodeBlocksHtml(input, options = {}) {
+  const allowCodeWrap = options.allowCodeWrap !== false;
   if (!input) return '';
   try {
     const dom = createSafeDom(`<body>${String(input)}</body>`, 'https://local.ai-pulse/');
     const body = dom.window.document.body;
+    const looksLikeCode = (raw) => {
+      const text = String(raw || '').trim();
+      if (!text) return false;
+      if (/```/.test(text)) return true;
+
+      const symbolMatches = (text.match(/[{}[\]();=<>]/g) || []).length;
+      const nonWhitespace = text.replace(/\s+/g, '');
+      const symbolDensity = nonWhitespace.length > 0 ? symbolMatches / nonWhitespace.length : 0;
+      const lineCount = text.split('\n').length;
+      const hasCodeKeywords = /\b(function|const|let|var|class|return|import|export|from|if|else|for|while|switch|case|try|catch|async|await|SELECT|INSERT|UPDATE|DELETE|CREATE|DROP|ALTER)\b/i.test(text);
+      const hasTagLikeMarkup = /<\/?[a-z][^>]*>/i.test(text);
+
+      // Require strong technical signals to avoid wrapping normal prose.
+      if (hasCodeKeywords && (lineCount >= 3 || symbolMatches >= 6)) return true;
+      if (hasTagLikeMarkup && (lineCount >= 3 || symbolDensity >= 0.06)) return true;
+      if (symbolDensity >= 0.12 && lineCount >= 3) return true;
+      return false;
+    };
 
     // Convert known "code-like" wrappers into real pre/code blocks.
     body.querySelectorAll('div, p').forEach((node) => {
+      if (!allowCodeWrap) return;
       const className = String(node.getAttribute('class') || '').toLowerCase();
       const hasCodeClass = /\b(code|snippet|highlight|language-)\b/.test(className);
       const text = node.textContent || '';
-      const hasCodeShape = /[{}();=<>]/.test(text) && (text.split('\n').length >= 3 || text.length > 120);
+      const hasCodeShape = looksLikeCode(text);
       if (!hasCodeClass && !hasCodeShape) return;
       if (node.querySelector('pre, code')) return;
       const code = dom.window.document.createElement('code');
@@ -582,6 +806,7 @@ function normalizeCodeBlocksHtml(input) {
 
     // Ensure bare code nodes are wrapped in <pre> for readability.
     body.querySelectorAll('code').forEach((code) => {
+      if (!allowCodeWrap) return;
       const parentTag = code.parentElement && code.parentElement.tagName;
       if (parentTag === 'PRE') return;
       const pre = dom.window.document.createElement('pre');
@@ -707,6 +932,11 @@ function trimPromotionalTailHtml(input) {
       for (let i = minIndex; i < blocks.length; i++) {
         const block = blocks[i];
         if (!isPromotionalContent(block.textContent || '')) continue;
+        const text = sanitizeText(block.textContent || '');
+        const shortBlock = text.length < 320;
+        const linkDense = getLinkDensity(block) > 0.33;
+        const manyLinks = block.querySelectorAll('a').length >= 3;
+        if (!(shortBlock || linkDense || manyLinks)) continue;
         const parent = block.parentElement || body;
         let cursor = block;
         while (cursor) {
@@ -886,7 +1116,9 @@ function enrichArticleTags(baseTags, category, title, summary) {
   if (eligibleCategory && containsOpenClawSignal(combined) && !uniqueTags.includes('OpenClaw')) {
     uniqueTags.unshift('OpenClaw');
   }
-  return uniqueTags;
+  return uniqueTags.sort((a, b) =>
+    String(a || '').localeCompare(String(b || ''), undefined, { sensitivity: 'base' })
+  );
 }
 
 function resolveDisplayKeyword(tags, lang, category) {
@@ -894,6 +1126,7 @@ function resolveDisplayKeyword(tags, lang, category) {
   const normalizedTags = Array.isArray(tags)
     ? tags.map((t) => String(t || '').trim()).filter(Boolean)
     : [];
+  normalizedTags.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
   const normalizedTagSet = new Set(normalizedTags.map((t) => t.toLowerCase()));
   const normalizedCategory = String(category || '').toLowerCase();
 
@@ -1098,7 +1331,11 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   const rawSummary = cleanupNoiseText(sanitizeText(article.contentSnippet) || '');
   let computedSummary = rawSummary;
   const articleUrl = article.link;
+  if (!isReliableSourceForCategory(articleUrl, category)) {
+    return null;
+  }
   const resolvedArticleUrl = await resolveArticleUrl(articleUrl);
+  const sourceProfile = detectSourceProfile(resolvedArticleUrl || articleUrl, sourceName);
 
   // Créer un hash MD5 unique pour l'article (basé sur l'URL)
   // Cela permet de créer un nom de fichier unique et prévisible
@@ -1138,7 +1375,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 <body>
   <h1>${safeTitle}</h1>
   <div class="metadata">
-    Source: ${sourceName} | Date: ${new Date(article.pubDate || Date.now()).toLocaleDateString()} ${new Date(article.pubDate || Date.now()).toLocaleTimeString()} | Lang: ${lang.toUpperCase()}
+    ${renderArticleMetadataLine({ sourceName, pubDate: article.pubDate || Date.now(), lang, originalUrl: articleUrl })}
   </div>
   <div class="content">
     <p>${safeSummary}</p>
@@ -1199,6 +1436,9 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       }
 
       if (articleContent && articleContent.textContent) {
+        if (isPaywallText(articleContent.textContent)) {
+          writeFallbackLocalArticle();
+        } else {
         if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
           writeFallbackLocalArticle();
         } else {
@@ -1211,10 +1451,28 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         }
 
         // Créer une page HTML propre avec le contenu
-        const sanitizedMainContent = cleanupNoiseHtml(sanitizeHtml(normalizeCodeBlocksHtml(articleContent.content), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'pre', 'code']),
-          allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'], code: ['class'] }
-        }));
+        const sanitizedMainContent = cleanupNoiseHtml(sanitizeHtml(normalizeCodeBlocksHtml(articleContent.content, {
+          allowCodeWrap: sourceProfile === 'repo'
+        }), {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img', 'pre', 'code', 'table', 'thead', 'tbody', 'tr', 'th', 'td']),
+          allowedAttributes: {
+            ...sanitizeHtml.defaults.allowedAttributes,
+            img: ['src', 'alt'],
+            code: ['class'],
+            table: ['class'],
+            th: ['colspan', 'rowspan'],
+            td: ['colspan', 'rowspan']
+          }
+        }), { sourceProfile });
+        const sanitizedTextContent = sanitizeText(sanitizedMainContent || '');
+        const sanitizedHasEnoughText = sanitizedTextContent.length >= 180;
+        const safeFallbackParagraph = smartTruncate(
+          cleanupNoiseText(rawSummary || articleContent.textContent || ''),
+          1600
+        ) || 'Summary unavailable for this article.';
+        const finalMainContent = sanitizedHasEnoughText
+          ? sanitizedMainContent
+          : `<p>${sanitizeText(safeFallbackParagraph)}</p>`;
         const cleanHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -1241,10 +1499,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 <body>
   <h1>${sanitizeText(articleContent.title)}</h1>
   <div class="metadata">
-    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} ${new Date(article.pubDate).toLocaleTimeString()} | Lang: ${lang.toUpperCase()}
+    ${renderArticleMetadataLine({ sourceName, pubDate: article.pubDate, lang, originalUrl: articleUrl })}
   </div>
   <div class="content">
-    ${sanitizedMainContent}
+    ${finalMainContent}
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -1272,6 +1530,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         }
       }
       }
+      }
   } catch (e) {
     if (!shouldSuppressExtractionLog(resolvedArticleUrl, e)) {
       console.error(`    Could not extract content for: ${articleUrl}`);
@@ -1293,7 +1552,16 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 
   // Retourner l'objet article traité
   const normalizedTags = enrichArticleTags(tags, category, article.title || '', rawSummary || '');
-  const safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.');
+  let safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.');
+  if (hasSevereTruncationArtifact(safeSummary)) {
+    const repaired = cleanupNoiseText(safeSummary)
+      .replace(/\bl['’]article[\s\S]{0,260}?\best apparu en premier sur\b[\s\S]*$/i, '')
+      .replace(/\bthis article[\s\S]{0,260}?\bappeared first on\b[\s\S]*$/i, '')
+      .replace(/[█▓▒]{3,}/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+    safeSummary = smartTruncate(repaired || sanitizeText(article.title) || 'Summary unavailable.');
+  }
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
     link: finalReaderLink,
@@ -1304,7 +1572,8 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     category: category,
     lang: detectedLang || feedLang || 'en',
     summary: safeSummary,
-    hasLocalContent: hasLocalContent
+    hasLocalContent: hasLocalContent,
+    sourceProfile
   };
 }
 
@@ -1514,7 +1783,7 @@ function generateREADME(categorizedArticles) {
 </head>
 <body>
   <h1>${safeTitle}</h1>
-  <div class="metadata">Source: ${sanitizeText((article && article.source) || category || 'Unknown')}</div>
+  <div class="metadata">${renderArticleMetadataLine({ sourceName: sanitizeText((article && article.source) || category || 'Unknown'), pubDate: article && article.pubDate, lang: (article && article.lang) || 'en', originalUrl: article && article.originalLink })}</div>
   <div class="content">
     <p>${safeSummary}</p>
   </div>
@@ -1566,6 +1835,13 @@ function generateREADME(categorizedArticles) {
 
   readme += README_FOOTER;
   return readme;
+}
+
+function writeReadmeAtomically(readmeContent) {
+  const readmePath = path.join(__dirname, '..', 'README.md');
+  const tempPath = `${readmePath}.tmp`;
+  fs.writeFileSync(tempPath, readmeContent, 'utf8');
+  fs.renameSync(tempPath, readmePath);
 }
 
 
@@ -1903,9 +2179,10 @@ async function main() {
   // Garde-fou OpenClaw: compléter la catégorie avec les bons signaux croisés.
   backfillSpecialCategory(categorizedArticles, 'openclaw', 8);
 
-  // Générer et afficher le README (sera capturé par le workflow)
+  // Générer le README localement (écriture atomique pour éviter les fichiers vides).
   const readme = generateREADME(categorizedArticles);
-  console.log(readme);
+  writeReadmeAtomically(readme);
+  console.error('README.md updated');
 
   // Générer la table de correspondance URL source -> article local rendu.
   writeArticleMap(categorizedArticles);

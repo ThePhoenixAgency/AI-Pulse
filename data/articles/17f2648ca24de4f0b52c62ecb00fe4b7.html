@@ -4,116 +4,47 @@
 <meta charset="UTF-8">
 <title>Alyah : Toward Robust Evaluation of Emirati Dialect Capabilities in Arabic LLMs</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Alyah : Toward Robust Evaluation of Emirati Dialect Capabilities in Arabic LLMs</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 1/27/2026 | Lang: EN |
-    <a href="https://huggingface.co/blog/tiiuae/emirati-benchmarks" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 1/27/2026 11:26:42 AM | <a href="https://huggingface.co/blog/tiiuae/emirati-benchmarks" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-					<p><a href="https://huggingface.co/blog">
-							Back to Articles</a></p>
-
-					
-					
-					
-					<div><div>
-
-<p><span><span><a href="https://huggingface.co/Omar-Alkaabi"><img alt="Omar saif alkaabi's avatar" src="https://huggingface.co/avatars/598fc631df6c75ae458eed55f883820e.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/amztheory"><img alt="Ahmed Alzubaidi's avatar" src="https://huggingface.co/avatars/874c3eac1d738f805fa9b42d19bf4472.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/Hamza-Alobeidli"><img alt="Hamza Alobeidli's avatar" src="https://huggingface.co/avatars/72e24bc95b8760e6201a8fa479286156.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/Shaikha710"><img alt="Shaikha Alsuwaidi's avatar" src="https://huggingface.co/avatars/8e5820fba338243e3066ca758097c7e2.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/Alyafeai"><img alt="Mohammed Alyafeai's avatar" src="https://huggingface.co/avatars/395da10395add29f0868a5b27a5bfdda.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/LeenAlQadi"><img alt="Leen AlQadi's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/66c8620a79b42e5c941b0265/0D9sHcrQYDhIWXzkoSAhB.png" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/basma-b"><img alt="Basma Boussaha's avatar" src="https://huggingface.co/avatars/598ecc79af157308a031693aec53dcf2.svg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/HakimHacid"><img alt="Hakim Hacid's avatar" src="https://huggingface.co/avatars/aedda547f2ca40dfa898e76be787952f.svg" /></a>
-				</span>
-	</span></p>
-			</div></div>
-					
-
-					
-
-
-<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/kMGBSt8XXrpjWXB5ot7No.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/kMGBSt8XXrpjWXB5ot7No.png" /></a></p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Omar-Alkaabi"><img alt="Omar saif alkaabi's avatar" src="https://huggingface.co/avatars/598fc631df6c75ae458eed55f883820e.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/amztheory"><img alt="Ahmed Alzubaidi's avatar" src="https://huggingface.co/avatars/874c3eac1d738f805fa9b42d19bf4472.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Hamza-Alobeidli"><img alt="Hamza Alobeidli's avatar" src="https://huggingface.co/avatars/72e24bc95b8760e6201a8fa479286156.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Shaikha710"><img alt="Shaikha Alsuwaidi's avatar" src="https://huggingface.co/avatars/8e5820fba338243e3066ca758097c7e2.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Alyafeai"><img alt="Mohammed Alyafeai's avatar" src="https://huggingface.co/avatars/395da10395add29f0868a5b27a5bfdda.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/LeenAlQadi"><img alt="Leen AlQadi's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/66c8620a79b42e5c941b0265/0D9sHcrQYDhIWXzkoSAhB.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/basma-b"><img alt="Basma Boussaha's avatar" src="https://huggingface.co/avatars/598ecc79af157308a031693aec53dcf2.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/HakimHacid"><img alt="Hakim Hacid's avatar" src="https://huggingface.co/avatars/aedda547f2ca40dfa898e76be787952f.svg"></a> </span> </span></p> </div></div> <p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/kMGBSt8XXrpjWXB5ot7No.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/kMGBSt8XXrpjWXB5ot7No.png"></a></p>
 <p>Arabic is one of the most widely spoken languages in the world, with hundreds of millions of speakers across more than twenty countries. Despite this global reach, Arabic is not a monolithic language. Modern Standard Arabic coexists with a rich landscape of regional dialects that differ significantly in vocabulary, syntax, phonology, and cultural grounding. These dialects are the primary medium of daily communication, oral storytelling, poetry, and social interaction. However, most existing benchmarks for Arabic large language models focus almost exclusively on Modern Standard Arabic, leaving dialectal Arabic largely under-evaluated and under-represented.</p>
-<p>This gap is particularly problematic as large language models increasingly interact with users in informal, culturally grounded, and conversational settings. A model that performs well on formal newswire text may still fail to understand a greeting, an idiomatic expression, or a short anecdote expressed in a local dialect. To address this limitation, our team introduces <strong>Alyah</strong> <strong>الياه</strong> (which means North Star  in Emirati), an Emirati-centric benchmark designed to assess how well Arabic LLMs capture the linguistic, cultural, and pragmatic aspects of the Emirati dialect.</p>
-<h2>
-	<a href="#benchmark-motivation-and-scope">
-		
-	</a>
-	<span>
-		Benchmark Motivation and Scope
-	</span>
+<p>This gap is particularly problematic as large language models increasingly interact with users in informal, culturally grounded, and conversational settings. A model that performs well on formal newswire text may still fail to understand a greeting, an idiomatic expression, or a short anecdote expressed in a local dialect. To address this limitation, our team introduces <strong>Alyah</strong> <strong>الياه</strong> (which means North Star in Emirati), an Emirati-centric benchmark designed to assess how well Arabic LLMs capture the linguistic, cultural, and pragmatic aspects of the Emirati dialect.</p>
+<h2> <a href="#benchmark-motivation-and-scope"> </a> <span> Benchmark Motivation and Scope </span>
 </h2>
 <p>The Emirati dialect is deeply intertwined with local culture, heritage, and history. It appears in everyday greetings, oral poetry, proverbs, folk narratives, and expressions whose meanings cannot be inferred through literal translation alone. Our benchmark is intentionally designed to probe this depth. Rather than testing surface-level lexical knowledge, it challenges models on their ability to interpret culturally embedded meaning, pragmatic usage, and dialect-specific nuances.</p>
 <p>The benchmark covers a wide range of content, including common and uncommon local expressions, culturally grounded greetings, short anecdotes, heritage-related questions, and references to Emirati poetry. The goal is not only to measure correctness, but also to understand where models systematically succeed or fail when confronted with authentic Emirati language use.</p>
-<h2>
-	<a href="#dataset-structure">
-		
-	</a>
-	<span>
-		Dataset Structure
-	</span>
+<h2> <a href="#dataset-structure"> </a> <span> Dataset Structure </span>
 </h2>
 <p>Following further development and consolidation, the benchmark has been unified into a single dataset called <strong>Alyah</strong>. The final benchmark contains <strong>1,173 samples</strong>, all collected manually from native Emirati speakers to ensure linguistic authenticity and cultural grounding. This manual curation step was essential to capture expressions, meanings, and usages that are rarely documented in written resources and are difficult to infer from Modern Standard Arabic alone.</p>
 <p>Each sample is formulated as a multiple-choice question with <strong>four candidate answers</strong>, exactly one of which is correct. Large language models were used to synthetically generate the distractor choices, after which they were reviewed to ensure plausibility and semantic closeness to the correct answer. To avoid positional bias during evaluation, the index of the correct answer follows a randomized distribution across the dataset. Below is the distribution of word count per query and candidate answers.</p>
-<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/aVy4yDGFREmtD09f2dZI7.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/aVy4yDGFREmtD09f2dZI7.png" /></a></p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/aVy4yDGFREmtD09f2dZI7.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/aVy4yDGFREmtD09f2dZI7.png"></a></p>
 <p>Alyah spans a broad spectrum of linguistic and cultural phenomena in the Emirati dialect, ranging from everyday expressions to culturally sensitive and figurative language. The distribution across categories is summarized below.</p>
-<div>
-	<table>
-		<thead><tr>
+<div> <table> <thead><tr>
 <th>Category</th>
 <th>Number of Samples</th>
 <th>Difficulty</th>
-</tr>
-
-		</thead><tbody><tr>
+</tr> </thead><tbody><tr>
 <td>Greetings &amp; Daily Expressions</td>
 <td>61</td>
 <td>Easy</td>
@@ -148,50 +79,27 @@
 <td>619</td>
 <td>Difficult</td>
 </tr>
-</tbody>
-	</table>
+</tbody> </table>
 </div>
 <p>Below are examples of each category:</p>
-<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/eR5RiHgJaG070nMHI3RXo.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/eR5RiHgJaG070nMHI3RXo.png" /></a></p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/eR5RiHgJaG070nMHI3RXo.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/eR5RiHgJaG070nMHI3RXo.png"></a></p>
 <p>This composition allows Alyah to jointly evaluate surface-level conversational fluency and deeper cultural, semantic, and pragmatic understanding, with a particular emphasis on dialect-specific language phenomena that remain challenging for current models.</p>
-<h2>
-	<a href="#model-evaluation-setup">
-		
-	</a>
-	<span>
-		Model Evaluation Setup
-	</span>
+<h2> <a href="#model-evaluation-setup"> </a> <span> Model Evaluation Setup </span>
 </h2>
 <p>We evaluated a total of <strong>54 language models</strong>, comprising <strong>23 base models</strong> and <strong>31 instruction-tuned models</strong>, spanning several architectural and training paradigms. These include Arabic-native LLMs such as Jais and Allam, multilingual models with strong Arabic support such as Qwen and LLaMA, and adapted or regionally specialized models such as Fanar and AceGPT. For each family, both base and instruction-tuned variants were evaluated in order to understand the impact of alignment and instruction tuning on dialectal performance.</p>
 <p>All models were evaluated under a consistent prompting and scoring protocol. Responses were assessed for semantic correctness and appropriateness with respect to Emirati usage, rather than literal overlap with a reference answer. This is particularly important for dialectal evaluation, where multiple valid phrasings may exist.</p>
 <p>For each question category, we estimated difficulty empirically based on model performance. Categories where most models struggled were labeled as harder, while those consistently answered correctly across model families were considered easier. This approach allows difficulty to emerge from observed behavior rather than from subjective annotation alone.</p>
-<h2>
-	<a href="#evaluation-results-on-alyah-emirati-dialect">
-		
-	</a>
-	<span>
-		Evaluation Results on Alyah (Emirati Dialect)
-	</span>
+<h2> <a href="#evaluation-results-on-alyah-emirati-dialect"> </a> <span> Evaluation Results on Alyah (Emirati Dialect) </span>
 </h2>
 <p>We evaluate a broad set of contemporary Arabic and multilingual large language models on <strong>Alyah</strong>, using <strong>accuracy</strong> on multiple-choice questions as the primary metric. The evaluation covers <strong>53 models</strong> in total, including <strong>22 base models</strong> and <strong>31 instruction-tuned models</strong>, spanning Arabic-native, multilingual, and regionally adapted systems. Below is a radar plot showing the performance of top models of different sizes per question category.</p>
-<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/iYHygJ2EG5k6Ysi6qx-ln.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/iYHygJ2EG5k6Ysi6qx-ln.png" /></a></p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/iYHygJ2EG5k6Ysi6qx-ln.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/659bc8a7b0f43ed69f0b2300/iYHygJ2EG5k6Ysi6qx-ln.png"></a></p>
 <p>These results are intended as <strong>reference measurements</strong> within the scope of Alyah, rather than absolute rankings across all Arabic benchmarks.</p>
-<h3>
-	<a href="#base-models">
-		
-	</a>
-	<span>
-		Base Models
-	</span>
+<h3> <a href="#base-models"> </a> <span> Base Models </span>
 </h3>
-<div>
-	<table>
-		<thead><tr>
+<div> <table> <thead><tr>
 <th>Model</th>
 <th>Accuracy</th>
-</tr>
-
-		</thead><tbody><tr>
+</tr> </thead><tbody><tr>
 <td>google/gemma-3-27b-pt</td>
 <td>74.68</td>
 </tr>
@@ -279,25 +187,14 @@
 <td>Qwen/Qwen3-4B-Base</td>
 <td>27.45</td>
 </tr>
-</tbody>
-	</table>
+</tbody> </table>
 </div>
-<h3>
-	<a href="#instruction-tuned-models">
-		
-	</a>
-	<span>
-		Instruction-Tuned Models
-	</span>
+<h3> <a href="#instruction-tuned-models"> </a> <span> Instruction-Tuned Models </span>
 </h3>
-<div>
-	<table>
-		<thead><tr>
+<div> <table> <thead><tr>
 <th>Model</th>
 <th>Accuracy</th>
-</tr>
-
-		</thead><tbody><tr>
+</tr> </thead><tbody><tr>
 <td>falcon-h1-arabic-7b-instruct</td>
 <td>82.18</td>
 </tr>
@@ -421,60 +318,20 @@
 <td>Qwen/Qwen3-8B</td>
 <td>25.66</td>
 </tr>
-</tbody>
-	</table>
+</tbody> </table>
 </div>
-<h2>
-	<a href="#analysis-and-observed-trends">
-		
-	</a>
-	<span>
-		Analysis and Observed Trends
-	</span>
+<h2> <a href="#analysis-and-observed-trends"> </a> <span> Analysis and Observed Trends </span>
 </h2>
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/TdYWyg-ZIKckW3K0ifIOy.png" />
-  <figcaption>
-    <b>Figure 1:</b> Models' accuracy across categories based on size.
-  </figcaption>
-</figure>
-
-
-
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/yakzj4kaPcWnhawTAkUoe.png" />
-  <figcaption>
-    <b>Figure 2:</b> Models' accuracy across categories based on language.
-  </figcaption>
-</figure>
-
-<p>Several trends emerge from the evaluation. Instruction-tuned models generally outperform their base counterparts as shown in Figures 1 and 2. This is particularly the case on questions involving conversational norms and culturally appropriate responses (i.e. the Etiquette &amp; Values Category). Furthermore, it is the case with questions that test imagery and figurative meaning. This can be attributed, to the model’s original strong capabilities with understanding MSA-based imagery and figurative language regardless of the dialect at hand. The models are able to draw patterns of non-literal description regardless of dialect. Generally, the most difficult categories for the models were consistently  “Language and Dialect” and “Greeting and Daily expressions” across model sizes as shown in figure 1. These results reflect the current state of Emirati dialect presence in written media, as the dialect is mostly spoken rarely written, which explains its novelty relative to the evaluated models. Nonetheless, there is a clear benefit to instruct models with understanding the dialect (and the other evaluation categories) in comparison to their counterparts, especially in small and medium models. This is particularly noticeable with the Poetry and Creative Expression category, which is where the large instruct models performed marginally better than the smaller models. </p>
-<figure>
-  <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/RizOTB3qq9YRFGlypYBqh.png" />
-  <figcaption>
-    <b>Figure 3:</b> Evaluated models average accuracy.
-  </figcaption>
-</figure>
-
-
-<p>As shown in Figure 3, even strong multilingual models show notable degradation on the most challenging Alyah questions, suggesting that dialect-specific semantic knowledge is not easily acquired through generic multilingual training alone. It must be noted that while Arabic-native models tend to perform more robustly on culturally grounded content, their performances are not uniform across all categories (figure 2). In particular, questions involving implicit meanings and rare expressions remain difficult across nearly all evaluated models. This highlights a persistent gap between surface-level dialect familiarity and deeper cultural understanding. The high variance in performance across categories , where a model that excels at imagery and figurative meaning may still struggle with poetry or heritage-related creative questions, indicates that dialectal competence is multi-dimensional and cannot be captured by a single score. Figure 3 shows that the highest scoring large model in Jais-2-70B, followed by the two small models jais-2-8B and ALLaM-7B-instruct, which are all Arabic instruct-tuned models.</p>
-<h2>
-	<a href="#conclusion-and-community-impact">
-		
-	</a>
-	<span>
-		Conclusion and Community Impact
-	</span>
+<figure> <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/TdYWyg-ZIKckW3K0ifIOy.png"> <figcaption> <b>Figure 1:</b> Models' accuracy across categories based on size. </figcaption>
+</figure> <figure> <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/yakzj4kaPcWnhawTAkUoe.png"> <figcaption> <b>Figure 2:</b> Models' accuracy across categories based on language. </figcaption>
+</figure> <p>Several trends emerge from the evaluation. Instruction-tuned models generally outperform their base counterparts as shown in Figures 1 and 2. This is particularly the case on questions involving conversational norms and culturally appropriate responses (i.e. the Etiquette &amp; Values Category). Furthermore, it is the case with questions that test imagery and figurative meaning. This can be attributed, to the model’s original strong capabilities with understanding MSA-based imagery and figurative language regardless of the dialect at hand. The models are able to draw patterns of non-literal description regardless of dialect. Generally, the most difficult categories for the models were consistently “Language and Dialect” and “Greeting and Daily expressions” across model sizes as shown in figure 1. These results reflect the current state of Emirati dialect presence in written media, as the dialect is mostly spoken rarely written, which explains its novelty relative to the evaluated models. Nonetheless, there is a clear benefit to instruct models with understanding the dialect (and the other evaluation categories) in comparison to their counterparts, especially in small and medium models. This is particularly noticeable with the Poetry and Creative Expression category, which is where the large instruct models performed marginally better than the smaller models. </p>
+<figure> <img src="https://cdn-uploads.huggingface.co/production/uploads/681b3d99ff4a468b725484d7/RizOTB3qq9YRFGlypYBqh.png"> <figcaption> <b>Figure 3:</b> Evaluated models average accuracy. </figcaption>
+</figure> <p>As shown in Figure 3, even strong multilingual models show notable degradation on the most challenging Alyah questions, suggesting that dialect-specific semantic knowledge is not easily acquired through generic multilingual training alone. It must be noted that while Arabic-native models tend to perform more robustly on culturally grounded content, their performances are not uniform across all categories (figure 2). In particular, questions involving implicit meanings and rare expressions remain difficult across nearly all evaluated models. This highlights a persistent gap between surface-level dialect familiarity and deeper cultural understanding. The high variance in performance across categories , where a model that excels at imagery and figurative meaning may still struggle with poetry or heritage-related creative questions, indicates that dialectal competence is multi-dimensional and cannot be captured by a single score. Figure 3 shows that the highest scoring large model in Jais-2-70B, followed by the two small models jais-2-8B and ALLaM-7B-instruct, which are all Arabic instruct-tuned models.</p>
+<h2> <a href="#conclusion-and-community-impact"> </a> <span> Conclusion and Community Impact </span>
 </h2>
 <p>This benchmark represents a step toward more realistic and culturally grounded evaluation of Arabic language models. By focusing on the Emirati dialect, we aim to support the development of models that better serve local communities, institutions, and users in the UAE. Beyond model ranking, the benchmark is intended as a diagnostic tool to guide future data collection, training, and adaptation efforts.</p>
 <p>We invite researchers, practitioners, and the broader community to use the benchmark, explore the results, and share feedback. Community input will be essential to refining the dataset, expanding coverage, and ensuring that dialectal Arabic receives the attention it deserves in the evaluation of Large Language Models.</p>
-<h2>
-	<a href="#citation">
-		
-	</a>
-	<span>
-		Citation
-	</span>
+<h2> <a href="#citation"> </a> <span> Citation </span>
 </h2>
 <pre><code>@misc{emirati_dialect_benchmark_2026,
 title = {Alyah: An Emirati Dialect Benchmark for Evaluating Arabic Large Language Models},
@@ -485,5 +342,23 @@ month = {january},
 </code></pre>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

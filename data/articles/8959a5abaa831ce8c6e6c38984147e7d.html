@@ -1,150 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Ubuntu 26.04 splits firmware package to reduce update sizes</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Ubuntu 26.04 splits firmware package to reduce update sizes</h1>
   <div class="metadata">
-    Source: OMG! Ubuntu | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.omgubuntu.co.uk/2026/02/ubuntu-26-04-firmware-split" target="_blank">Original Article</a>
+    Source: OMG! Ubuntu | Date: 2/16/2026 1:16:43 AM | <a href="https://www.omgubuntu.co.uk/2026/02/ubuntu-26-04-firmware-split" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-                        
-<p><strong>Ubuntu 26.04 LTS (Resolute Raccoon) is changing how hardware support updates are handled, splitting its single <code>linux-firmware</code> package into 17 vendor-specific sub-packages.</strong></p>
-
-
-
-<p>The new approach aims to reduce the size of routine firmware updates for most users. Currently, firmware files are contained in a single package, which has grown to more than 500MB in download size in recent releases (and uses as much as 1GB disk space when installed).</p>
-
-
-
-<p>For example, if a security fix is added for specialised equipment like <em>Netronome</em> or <em>Mellanox</em> network cards, primarily used in enterprise data centres, all Ubuntu systems have to download the entire <code>linux-firmware</code> package – which is over 600MB in <em>questing</em>. </p>
-
-
-
-<p>If you have a speedy, uncapped internet connection, frequent, sizeable updates for packages that don’t directly benefit you aren’t a concern. But it is ultimately a waste of energy and bandwidth for those with patchy or limited internet access.</p>
-
-
-
-<p>Canonical engineer Juerg Haefliger also noted that firmware security updates used to land in <code>-security</code> repo, which is not mirrored across multiple servers, resulting in ‘the whole world hitting a single server at the same time’.</p>
-
-
-
-<p>It’s unnecessary strain on Ubuntu’s infrastructure.</p>
-
-
-
-<p>Distro developers began discussing ways to <a href="https://www.omgubuntu.co.uk/2025/06/buntu-linux-firmware-package-size-reduction-proposal">reduce the size of firmware updates</a> last year. Now, in Ubuntu 26.04, it’s introducing meta-packaging to spread Linux firmware across 17 smaller packages in the <code>resolute</code> archives. This resolves a <a href="https://bugs.launchpad.net/ubuntu/+source/linux-firmware/+bug/1958518" target="_blank">bug filed in 2022</a>.</p>
-
-
-
-<p>The sub-packages are:</p>
-
-
-
-<ul>
-<li>linux-firmware-mellanox-spectrum</li>
-
-
-
-<li>linux-firmware-intel-wireless</li>
-
-
-
-<li>linux-firmware-intel-graphics</li>
-
-
-
-<li>linux-firmware-amd-graphics</li>
-
-
-
-<li>linux-firmware-nvidia-graphics</li>
-
-
-
-<li>linux-firmware-intel-misc</li>
-
-
-
-<li>linux-firmware-broadcom-wireless</li>
-
-
-
-<li>linux-firmware-netronome</li>
-
-
-
-<li>linux-firmware-misc</li>
-
-
-
-<li>linux-firmware-qlogic</li>
-
-
-
-<li>linux-firmware-marvell-wireless</li>
-
-
-
-<li>linux-firmware-mediatek</li>
-
-
-
-<li>linux-firmware-marvell-prestera</li>
-
-
-
-<li>linux-firmware-realtek</li>
-
-
-
-<li>linux-firmware-qualcomm-wireless</li>
-
-
-
-<li>linux-firmware-qualcomm-graphics</li>
-
-
-
-<li>linux-firmware-qualcomm-misc</li>
-</ul>
-
-
-
-<p>Most of these packages will remain installed by default to ensure that Ubuntu 26.04 LTS works with a wide range of hardware. </p>
-
-
-
-<p>The difference is that when firmware updates are released, only the packages containing changed firmware will have to be downloaded. If, say, a typo fix is made to the Intel Wireless drivers, only that package installed will pull in the update.</p>
-
-
-
-<p>All of the packages stay grouped under the auspices of the <code>linux-firmware</code>, so this is likely to be an overarching meta-package that installs them all. But updates to sub packages will be targeted, reducing download sizes and relieving bandwidth concerns. </p>
-
-
-
-<p>The change is in the process of rolling out to Ubuntu 26.04 development builds. Provided that no major hiccups are found in the new approach, expect it to be in place when Ubuntu 26.04 LTS is released in April 2026.</p>
-                                            </div></div>
+    <div><div> <p><strong>Ubuntu 26.04 LTS (Resolute Raccoon) is changing how hardware support updates are handled, splitting its single </strong></p><pre><strong><code>linux-firmware</code></strong></pre><strong> package into 17 vendor-specific sub-packages.</strong><p></p> <pre><code>The new approach aims to reduce the size of routine firmware updates for most users. Currently, firmware files are contained in a single package, which has grown to more than 500MB in download size in recent releases (and uses as much as 1GB disk space when installed).</code></pre> <p>For example, if a security fix is added for specialised equipment like <em>Netronome</em> or <em>Mellanox</em> network cards, primarily used in enterprise data centres, all Ubuntu systems have to download the entire </p><pre><code>linux-firmware</code></pre> package – which is over 600MB in <em>questing</em>. <p></p> <p>If you have a speedy, uncapped internet connection, frequent, sizeable updates for packages that don’t directly benefit you aren’t a concern. But it is ultimately a waste of energy and bandwidth for those with patchy or limited internet access.</p> <p>Canonical engineer Juerg Haefliger also noted that firmware security updates used to land in </p><pre><code>-security</code></pre> repo, which is not mirrored across multiple servers, resulting in ‘the whole world hitting a single server at the same time’.<p></p> <p>It’s unnecessary strain on Ubuntu’s infrastructure.</p> <p>Distro developers began discussing ways to <a href="https://www.omgubuntu.co.uk/2025/06/buntu-linux-firmware-package-size-reduction-proposal">reduce the size of firmware updates</a> last year. Now, in Ubuntu 26.04, it’s introducing meta-packaging to spread Linux firmware across 17 smaller packages in the </p><pre><code>resolute</code></pre> archives. This resolves a <a href="https://bugs.launchpad.net/ubuntu/+source/linux-firmware/+bug/1958518" target="_blank">bug filed in 2022</a>.<p></p> <p>The sub-packages are:</p> <ul>
+<li>linux-firmware-mellanox-spectrum</li> <li>linux-firmware-intel-wireless</li> <li>linux-firmware-intel-graphics</li> <li>linux-firmware-amd-graphics</li> <li>linux-firmware-nvidia-graphics</li> <li>linux-firmware-intel-misc</li> <li>linux-firmware-broadcom-wireless</li> <li>linux-firmware-netronome</li> <li>linux-firmware-misc</li> <li>linux-firmware-qlogic</li> <li>linux-firmware-marvell-wireless</li> <li>linux-firmware-mediatek</li> <li>linux-firmware-marvell-prestera</li> <li>linux-firmware-realtek</li> <li>linux-firmware-qualcomm-wireless</li> <li>linux-firmware-qualcomm-graphics</li> <li>linux-firmware-qualcomm-misc</li>
+</ul> <p>Most of these packages will remain installed by default to ensure that Ubuntu 26.04 LTS works with a wide range of hardware. </p> <p>The difference is that when firmware updates are released, only the packages containing changed firmware will have to be downloaded. If, say, a typo fix is made to the Intel Wireless drivers, only that package installed will pull in the update.</p> <p>All of the packages stay grouped under the auspices of the </p><pre><code>linux-firmware</code></pre>, so this is likely to be an overarching meta-package that installs them all. But updates to sub packages will be targeted, reducing download sizes and relieving bandwidth concerns. <p></p> <p>The change is in the process of rolling out to Ubuntu 26.04 development builds. Provided that no major hiccups are found in the new approach, expect it to be in place when Ubuntu 26.04 LTS is released in April 2026.</p> </div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

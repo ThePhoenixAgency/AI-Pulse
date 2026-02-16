@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Notepad : Microsoft introduit le Markdown et indirectement une vulnérabilité !</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>Notepad : Microsoft introduit le Markdown et indirectement une vulnérabilité !</h1>
   <div class="metadata">
-    Source: Programmez | Date: 2/13/2026 9:58:49 AM | Lang: FR |
-    <a href="https://www.programmez.com/actualites/notepad-microsoft-introduit-le-markdown-et-indirectement-une-vulnerabilite-39014" target="_blank">Original Article</a>
+    Source: Programmez | Date: 2/13/2026 9:58:49 AM | <a href="https://www.programmez.com/actualites/notepad-microsoft-introduit-le-markdown-et-indirectement-une-vulnerabilite-39014" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div><p>Nodepod est un des outils les plus rudimentaires de Windows. Mais Microsoft cherche à le moderniser pour le transformer en éditeur moderne avec fonctions d'édition plus complets, formatage des textes, gérer les liens et l'apparition du Markdown. Et là, c'est un peu la catastrophe. Une vulnérabilité, la CVE-2026-20841, affiche une sévérité haute. L'attaque potentielle est une injection de commande en autorisant une exécution d'applications non autorisée.&nbsp;</p><p>La faille est aussi simpliste que gênante.</p><p>1 / on crée un fichier .md</p><p>2 / ce document contient des liens vers des applications, des codes</p><p>3 / si l'utilisateur clique sur un lien embarqué, il arrive que le lien réussit à bypasser la vérification et la validation de Windows pour autoriser ou non l'installation ou l'exécution d'une app distance</p><p>Si l'utilisateur possède des droits élevés, le lien compromis les possède aussi... Les mécanismes laissent passer des protocoles et des liens sans en avertir l'utilisateur.&nbsp;</p><p>Cette faille concerne les versions 11.2510 et antérieures. Elle a été patchée dans Patch Tuesday de février. A voir si la solution apportée suffira</p></div></div>
@@ -48,5 +45,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

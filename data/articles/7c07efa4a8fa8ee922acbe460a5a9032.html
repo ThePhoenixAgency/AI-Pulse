@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,83 +18,10 @@
 <body>
   <h1>🇵🇭 FilBench - Can LLMs Understand and Generate Filipino?</h1>
   <div class="metadata">
-<<<<<<< HEAD
-    Source: Hugging Face Blog | Date: 8/12/2025 2:00:00 AM | Lang: DE |
-=======
-    Source: Hugging Face Blog | Date: 8/12/2025 12:00:00 AM | Lang: DE |
->>>>>>> 48d6193da6f49976a64b6a30483399bfb54b1b8d
-    <a href="https://huggingface.co/blog/filbench" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 8/12/2025 2:00:00 AM | <a href="https://huggingface.co/blog/filbench" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: DE
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/ljvmiranda921"><img alt="Lj V. Miranda's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1666064515342-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/acocodes"><img alt="Elyanah Aco's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6465e810e9906a259f3217ce/oPPeRu7g0gFxX2fZHFyaz.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/connermanuel"><img alt="Conner Manuel's avatar" src="https://huggingface.co/avatars/bb7a75216997ec48c47522367e178cc0.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/jcblaise"><img alt="Jan Christian Blaise Cruz's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5e89aea283fb7a4fc16792bf/h_hxnVJdufZHDU8bG-5Db.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/jcblaise"><img alt="Jan Christian Blaise Cruz's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5e89aea283fb7a4fc16792bf/h_hxnVJdufZHDU8bG-5Db.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/josephimperial"><img alt="Joseph Imperial's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/620a1e42e190de4b8f27ba1f/jhRHn5o5A_HLO-iYonZAl.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/davanstrien"><img alt="Daniel van Strien's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1627505688463-60107b385ac3e86b3ea4fc34.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/SaylorTwift"><img alt="Nathan Habib's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1678663263366-63e0eea7af523c37e5a77966.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/clefourrier"><img alt="Clémentine Fourrier's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1644340617257-noauth.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#filbench">FilBench</a> <ul></ul> </li><li><a href="#what-did-we-learn-from-filbench">What did we learn from FilBench?</a> <ul><li><a href="#finding-1-although-region-specific-llms-still-lag-behind-gpt-4-collecting-data-to-train-these-models-is-still-a-promising-direction">Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction</a> <ul></ul> </li><li><a href="#finding-2-filipino-translation-is-still-a-difficult-task-for-llms">Finding #2: Filipino translation is still a difficult task for LLMs</a> <ul></ul> </li><li><a href="#finding-3-open-llms-remain-a-cost-effective-choice-for-filipino-language-tasks">Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks</a> <ul></ul> </li></ul> </li><li><a href="#does-your-llm-work-on-philippine-languages-try-it-on-filbench">Does your LLM work on Philippine Languages? Try it on FilBench!</a> <ul></ul> </li><li><a href="#acknowledgements">Acknowledgements</a> <ul></ul> </li><li><a href="#citation">Citation</a> <ul></ul> </li></ul></nav></div><p>As large language models (LLMs) become increasingly integrated into our lives, it becomes crucial to assess whether they reflect the nuances and capabilities of specific language communities.
-For example, Filipinos are among the most active ChatGPT users globally, ranking fourth in ChatGPT traffic (behind the United States, India, and Brazil [<a href="https://blogs.worldbank.org/en/digital-development/who-on-earth-is-using-generative-ai-">1</a>] [<a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4715603">2</a>]), but despite this strong usage, we lack a clear understanding of how LLMs perform for their languages, such as Tagalog and Cebuano.
-Most of the existing evidence is anecdotal, such as screenshots of ChatGPT responding in Filipino as proof that it is fluent.
-What we need instead is a systematic evaluation of LLM capabilities in Philippine languages.</p> <p>That’s why we developed FilBench: a comprehensive evaluation suite to assess the capabilities of LLMs for Tagalog, Filipino (the standardized form of Tagalog), and Cebuano, on fluency, linguistic and translation abilities, as well as specific cultural knowledge.</p>
-<p>We used it to evaluate 20+ state-of-the-art LLMs on FilBench, providing a comprehensive assessment of their performance in Philippine languages:</p> <ul>
-<li> Paper: <a href="https://arxiv.org/abs/2508.03523">https://arxiv.org/abs/2508.03523</a></li>
-<li> GitHub: <a href="https://github.com/filbench/filbench-eval">https://github.com/filbench/filbench-eval</a></li>
-</ul>
-<h2> <a href="#filbench"> <span></span> </a> <span> FilBench </span>
-</h2>
-<p>The FilBench evaluation suite contains four major categories–Cultural Knowledge, Classical NLP, Reading Comprehension, and Generation–divided into 12 tasks.
-For example, the Classical NLP category includes tasks such as sentiment analysis, whereas Generation tasks include different aspects of translation.
-In order to ensure that these categories reflect the priorities and trends in NLP research and usage, we curate them based on a historical survey of NLP research on Philippine languages from 2006 to early 2024.
-(Most of these categories exclusively contain non-translated content to ensure faithfulness to the natural use of Philippine languages.)</p>
-<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/filbench/filbench-main.png"></p><ul>
-<li><strong>Cultural Knowledge:</strong> This category tests a language model's ability to recall factual and culturally specific information. For Cultural Knowledge, we curated a variety of examples that test an LLM's regional and factual knowledge (Global-MMLU), Filipino-centric values (KALAHI), and ability to disambiguate word sense (StingrayBench).</li>
-<li><strong>Classical NLP:</strong> This category encompasses a variety of information extraction and linguistic tasks, such as named entity recognition, sentiment analysis, and text categorization, that specialized, trained models traditionally performed. In this category, we include instances from CebuaNER, TLUnified-NER, and Universal NER for named entity recognition, and subsets of SIB-200 and BalitaNLP for text categorization and sentiment analysis.</li>
-<li><strong>Reading Comprehension:</strong> This category evaluates a language model's ability to understand and interpret Filipino text, focusing on tasks such as readability, comprehension, and natural language inference. For this category, we include instances from the Cebuano Readability Corpus, Belebele, and NewsPH NLI.</li>
-<li><strong>Generation:</strong> We dedicate a large portion of FilBench to testing an LLM's capability to faithfully translate texts, either from English to Filipino or from Cebuano to English. We include a diverse set of test examples ranging from documents (NTREX-128), realistic texts from volunteers (Tatoeba), and domain-specific text (TICO-19).</li>
-</ul>
-<p>Each of these categories provides an aggregated metric.
-To create a single representative score, we compute the weighted average based on the number of examples in each category, which we call the FilBench Score.</p>
-<p>To simplify usage and set up, we built FilBench on top of <a href="https://github.com/huggingface/lighteval">Lighteval</a>, an all-in-one framework for LLM evaluation.
-For language-specific evaluation, we first defined translation pairs from English to Tagalog (or Cebuano) for common terms used in evaluation such as "yes" (<em>oo</em>), "no" (<em>hindi</em>), and "true" (<em>totoo</em>) among others.
-Then, we used the provided templates to implement custom tasks for the capabilities we care about.</p>
-<p>FilBench is now available as a set of community tasks in the official Lighteval repository!</p>
-<h2> <a href="#what-did-we-learn-from-filbench"> <span></span> </a> <span> What did we learn from FilBench? </span>
-</h2>
-<p>By evaluating several LLMs on FilBench, we uncovered several insights into how they perform in Filipino.</p>
-<h3> <a href="#finding-1-although-region-specific-llms-still-lag-behind-gpt-4-collecting-data-to-train-these-models-is-still-a-promising-direction"> <span></span> </a> <span> Finding #1: Although region-specific LLMs still lag behind GPT-4, collecting data to train these models is still a promising direction </span>
-</h3>
-<p>In the past few years, we have seen an increase in region-specific LLMs that target Southeast Asian languages (SEA-specific), such as SEA-LION and SeaLLM.
-These are open-weight LLMs that you can freely download from HuggingFace.
-We find that SEA-specific LLMs are often the most parameter-efficient for our languages, achieving the highest FilBench scores compared to other models of their size.
-However, the best SEA-specific model is still outperformed by closed-source LLMs like GPT-4o.</p>
-<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/filbench/filbench-finding-1.png"></p><p>Building region-specific LLMs still makes sense, as we observe performance gains of 2-3% when continuously fine-tuning a base LLM with SEA-specific instruction-tuning data.
-This suggests that <strong>efforts to curate Filipino/SEA-specific training data for fine-tuning remain relevant</strong>, as they can lead to better performance on FilBench.</p>
-<h3> <a href="#finding-2-filipino-translation-is-still-a-difficult-task-for-llms"> <span></span> </a> <span> Finding #2: Filipino translation is still a difficult task for LLMs </span>
-</h3>
-<p>We also observe that across the four categories on FilBench, most models struggle with Generation capabilities.
-Upon inspecting failure modes in Generation, we find that these include cases where the model fails to follow translation instructions, generates overly verbose texts, or hallucinates another language instead of Tagalog or Cebuano.</p>
-<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/filbench/filbench-finding-2.png"></p><h3> <a href="#finding-3-open-llms-remain-a-cost-effective-choice-for-filipino-language-tasks"> <span></span> </a> <span> Finding #3: Open LLMs Remain a Cost-Effective Choice for Filipino Language Tasks </span>
-</h3>
-<p>The Philippines tends to have limited internet infrastructure and lower average incomes [<a href="https://unesdoc.unesco.org/ark:/48223/pf0000393860?posInSet=1&amp;queryId=cb72b22d-9dd3-44cd-9090-c4c89328a09c">3</a>], necessitating accessible LLMs that are cost- and compute-efficient.
-Through FilBench, we were able to identify LLMs that are on the Pareto frontier of efficiency.</p>
-<p>In general, we find that open-weight LLMs, i.e., models that you can freely download from HuggingFace, are way cheaper than commercial models without sacrificing their performance.
-If you want an alternative to GPT-4o for your Filipino language tasks, then try Llama 4 Maverick!</p>
-<p><img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/filbench/filbench-finding-3.png">
-</p> <p>We also make this information available in the HuggingFace space of the FilBench leaderboard.</p>
-<h2> <a href="#does-your-llm-work-on-philippine-languages-try-it-on-filbench"> <span></span> </a> <span> Does your LLM work on Philippine Languages? Try it on FilBench! </span>
-</h2>
-<p>We hope that FilBench provides deeper insights into LLM capabilities for Philippine languages and serves as a catalyst for advancing Filipino NLP research and development.
-The FilBench evaluation suite is built on top of Hugging Face's lighteval, allowing LLM developers to easily evaluate their models on our benchmark.
-For more information, please visit the links below:</p>
-<ul>
-<li> Paper: <a href="https://arxiv.org/abs/2508.03523">https://arxiv.org/abs/2508.03523</a></li>
-<li> GitHub: <a href="https://github.com/filbench/filbench-eval">https://github.com/filbench/filbench-eval</a></li>
-</ul>
-<h2> <a href="#acknowledgements"> <span></span> </a> <span> Acknowledgements </span>
-</h2>
-<p>The authors would like to thank Cohere Labs for providing credits through the Cohere Research Grant to run the Aya model series, and Together AI for additional computational credits for running several open models.
-We also acknowledge the Hugging Face team, particularly the OpenEvals team (Clémentine Fourrier and Nathan Habib) and Daniel van Strien, for their support in publishing this blog post.</p>
-<h2> <a href="#citation"> <span></span> </a> <span> Citation </span>
-</h2>
-<p>If you are evaluating on FilBench, please cite our work:</p>
-<pre><code>@article{filbench, title={Fil{B}ench: {C}an {LLM}s {U}nderstand and {G}enerate {F}ilipino?}, author={Miranda, Lester James V and Aco, Elyanah and Manuel, Conner and Cruz, Jan Christian Blaise and Imperial, Joseph Marvin}, journal={arXiv preprint arXiv:2508.03523}, year={2025}
-}
-</code></pre>
-</div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

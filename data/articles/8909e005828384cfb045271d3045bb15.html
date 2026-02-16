@@ -4,98 +4,48 @@
 <meta charset="UTF-8">
 <title>CISA gives feds 3 days to patch actively exploited BeyondTrust flaw</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>CISA gives feds 3 days to patch actively exploited BeyondTrust flaw</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-beyondtrust-flaw-within-three-days/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/16/2026 1:33:11 PM | <a href="https://www.bleepingcomputer.com/news/security/cisa-orders-feds-to-patch-beyondtrust-flaw-within-three-days/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-	   
-<p><img alt="BeyondTrust" src="https://www.bleepstatic.com/content/hl-images/2026/02/16/BeyondTrust.jpg" /></p>
-
-
-<p>The U.S. Cybersecurity and Infrastructure Security Agency (CISA) ordered federal agencies on Friday to secure their BeyondTrust Remote Support instances against an actively exploited vulnerability within three days.</p>
-
-
-<p>BeyondTrust provides identity security services to more than 20,000 customers across over 100 countries, including government agencies and 75% of Fortune 100 companies worldwide.</p>
-
-
-<p>Tracked as <a href="https://www.bleepingcomputer.com/news/security/beyondtrust-warns-of-critical-rce-flaw-in-remote-support-software/" target="_blank">CVE-2026-1731</a>, this remote code execution vulnerability stems from an OS command injection weakness <span>and </span>affects BeyondTrust's Remote Support 25.3.1 or earlier and Privileged Remote Access 24.3.4 or earlier.</p>
-
-<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
-</p>
-
-
-<p>While BeyondTrust patched all Remote Support and Privileged Remote Access SaaS instances on February 2, 2026, on-premise customers must install patches manually.</p>
-
-
-<p>"Successful exploitation could allow an unauthenticated remote attacker to execute operating system commands in the context of the site user," <a href="https://www.beyondtrust.com/trust-center/security-advisories/bt26-02" target="_blank">BeyondTrust said</a> when it patched the vulnerability on February 6. "Successful exploitation requires no authentication or user interaction and may lead to system compromise, including unauthorized access, data exfiltration, and service disruption."</p>
-
-
-<p>Hacktron, who <a href="https://www.hacktron.ai/blog/cve-2026-1731-beyondtrust-remote-support-rce" target="_blank">discovered the vulnerability</a> and responsibly disclosed it to BeyondTrust on January 31, warned that approximately 11,000 BeyondTrust Remote Support instances were exposed online, around 8,500 of them being on-premises deployments.</p>
-
-
-<p>On Thursday, six days after BeyondTrust released CVE-2026-1731 security patches, watchTowr head of threat intelligence Ryan Dewhurst reported that attackers are now <a href="https://www.bleepingcomputer.com/news/security/critical-beyondtrust-rce-flaw-now-exploited-in-attacks-patch-now/" target="_blank">actively exploiting the security flaw</a>, warning admins that unpatched devices should be assumed to be compromised.</p>
-
-
-<h2>Federal agencies ordered to patch immediately</h2>
-
-<p>One day later, CISA confirmed Dewhurst's report, <span><a href="https://www.cisa.gov/news-events/alerts/2026/02/13/cisa-adds-one-known-exploited-vulnerability-catalog" target="_blank">added</a> the vulnerability to its <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog?search_api_fulltext=CVE-2026-1731" target="_blank">Known Exploited Vulnerabilities (KEV) catalog,</a> and ordered</span> Federal Civilian Executive Branch (FCEB) agencies to secure their BeyondTrust instances by the end of Monday, February 16, as mandated by Binding Operational Directive (BOD) 22-01.</p>
-
-
-<p>"These types of vulnerabilities are frequent attack vectors for malicious cyber actors and pose significant risks to the federal enterprise," the U.S. cybersecurity agency warned. "Apply mitigations per vendor instructions, follow applicable BOD 22-01 guidance for cloud services, or discontinue use of the product if mitigations are unavailable."</p>
-
-
-<p>CISA's warning comes on the heels of other BeyondTrust security flaws that were exploited to compromise the systems of U.S. government agencies.</p>
-
-
-<p>For instance, the U.S. Treasury Department revealed two years ago that <a href="https://www.bleepingcomputer.com/news/security/us-treasury-department-breached-through-remote-support-platform/" target="_blank">its network had been hacked</a> in an incident <a href="https://www.bloomberg.com/news/articles/2025-01-08/white-house-rushes-to-finish-cyber-order-after-china-hacks" target="_blank">linked to the Silk Typhoon</a>,  a notorious Chinese state-backed cyberespionage group.</p>
-
-
-<p>Silk Typhoon is believed to have exploited two zero-day bugs (CVE-2024-12356 and CVE-2024-12686) to breach <a href="https://www.bleepingcomputer.com/news/security/beyondtrust-says-hackers-breached-remote-support-saas-instances/" target="_blank">BeyondTrust's systems</a> and later used a stolen API key to compromise 17 Remote Support SaaS instances, including the Treasury's instance.</p>
-
-
-<p>The Chinese hacking group has also targeted <a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-targeted-sanctions-office-in-treasury-attack/" target="_blank">the Office of Foreign Assets Control (OFAC)</a>, which administers U.S. sanctions programs, and <a href="https://www.bleepingcomputer.com/news/security/treasury-hackers-also-breached-us-foreign-investments-review-office/" target="_blank">the Committee on Foreign Investment in the United States (CFIUS)</a>, which reviews foreign investments for national security risks.</p>
-
-
-
-	   
-
-
-<div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines" />
-        </a>
-    </p>
-    <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
-<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
-
-        </div>
-</div>
-
-           
-          
- 
-	  </div></div>
+    <p>CISA ordered U.S. government agencies on Friday to secure their BeyondTrust Remote Support instances against an actively exploited vulnerability within three days. [...]</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

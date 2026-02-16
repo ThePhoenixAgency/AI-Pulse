@@ -24,8 +24,7 @@
 <body>
   <h1>AprielGuard: A Guardrail for Safety and Adversarial Robustness in Modern LLM Systems</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 12/23/2025 3:07:35 PM | Lang: EN |
-    <a href="https://huggingface.co/blog/ServiceNow-AI/aprielguard" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 12/23/2025 3:07:35 PM | <a href="https://huggingface.co/blog/ServiceNow-AI/aprielguard" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div> <p><span><span><a href="https://huggingface.co/JayKasundraSNOW"><img alt="Jaykumar Kasundra's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/667521b4585f2bf570950584/e7R-SoPu1nuG-Pb90qU4E.jpeg"></a> </span> </span></p> </div> <p>Large Language Models (LLMs) have rapidly evolved from text-only assistants into complex <em>agentic</em> systems capable of performing multi-step reasoning, calling external tools, retrieving memory, and executing code. With this evolution comes an increasingly sophisticated threat landscape: not only traditional content safety risks, but also multi-turn jailbreaks, prompt injections, memory hijacking, and tool manipulation.</p>
@@ -507,10 +506,7 @@ However, thorough testing and calibration are strongly recommended before deploy
 <li><p>Adversarial Robustness: Despite targeted training on adversarial and manipulative behaviors, the model may still exhibit vulnerability to complex or unseen attack strategies.</p>
 </li>
 <li><p>Domain Sensitivity: AprielGuard may underperform on highly specialized or technical domains (e.g., legal, medical, or scientific contexts) that require nuanced contextual understanding.</p>
-</li>
-<li><p>Latency–Interpretability Trade-off: Enabling reasoning traces enhances explainability but increases latency and compute cost. For low-latency or large-scale use cases, non-reasoning mode is recommended.</p>
-</li>
-<li><p>Reasoning Mode Sensitivity: The model exhibits occasional inconsistencies in classification outcomes between reasoning-enabled and non-reasoning inference modes.</p>
+</li> <li><p>Reasoning Mode Sensitivity: The model exhibits occasional inconsistencies in classification outcomes between reasoning-enabled and non-reasoning inference modes.</p>
 </li>
 <li><p>Intended use: AprielGuard is intended strictly for use as a safeguard and risk assessment model. It classifies potential safety risks and adversarial threats according to the AprielGuard unified taxonomy. Any deviation from the prescribed inference may lead to unintended, unsafe, or unreliable behavior.</p>
 </li>

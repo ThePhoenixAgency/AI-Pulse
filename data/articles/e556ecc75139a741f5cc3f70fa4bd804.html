@@ -4,72 +4,48 @@
 <meta charset="UTF-8">
 <title>Google Patches First Actively Exploited Chrome Zero-Day of 2026</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Google Patches First Actively Exploited Chrome Zero-Day of 2026</h1>
   <div class="metadata">
-    Source: SecurityWeek | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.securityweek.com/google-patches-first-actively-exploited-chrome-zero-day-of-2026/" target="_blank">Original Article</a>
+    Source: SecurityWeek | Date: 2/16/2026 8:54:15 AM | <a href="https://www.securityweek.com/google-patches-first-actively-exploited-chrome-zero-day-of-2026/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-		
-<p><strong>Google released an emergency Chrome update on Friday to patch a zero-day vulnerability that has been exploited in the wild.</strong>
-
-
-
-</p><p>Chrome 145.0.7632.75/76 for Windows/Mac and 144.0.7559.75 for Linux fix CVE-2026-2441, described as a high-severity use-after-free vulnerability in the browser’s CSS component.
-
-
-
-</p><p>“Google is aware that an exploit for CVE-2026-2441 exists in the wild,” Google said in its <a href="https://chromereleases.googleblog.com/2026/02/stable-channel-update-for-desktop_13.html">advisory</a>.
-
-
-
-</p><p>Google has credited researcher Shaheen Fazim for reporting the vulnerability. The actively exploited flaw was disclosed to the vendor on February 11, only two days before it was patched. 
-
-
-
-</p><p>Fazim was credited by Google last year for responsibly disclosing several high-severity Chrome vulnerabilities. 
-
-
-
-</p><p>A bug bounty reward for CVE-2026-2441 has not yet been determined. Some of his previous reports earned the researcher $7,000 and $8,000.</p>
-
-
-
-<p>There appears to be no public information about attacks exploiting CVE-2026-2441. However, based on the little information shared by Google the vulnerability can likely be exploited for arbitrary code execution by getting the targeted user to visit a malicious website.
-
-
-
-</p><p>However, the code would be executed within a sandbox, and an additional vulnerability is likely needed to escape the sandbox and achieve complete system takeover.
-
-
-
-</p><p>Nevertheless, the vulnerability could be useful for stealing data from the browser, hijacking sessions, and conducting further attacks.
-
-
-
-</p><p>Several <a href="https://www.securityweek.com/topics/Chrome/">Chrome</a> zero-days were patched in 2025. Google’s own zero-day tracker lists six flaws, while CISA’s KEV catalog includes seven.
-
-
-
-</p></div></div>
+    <div><div> <p><strong>Google released an emergency Chrome update on Friday to patch a zero-day vulnerability that has been exploited in the wild.</strong> </p><p>Chrome 145.0.7632.75/76 for Windows/Mac and 144.0.7559.75 for Linux fix CVE-2026-2441, described as a high-severity use-after-free vulnerability in the browser’s CSS component. </p><p>“Google is aware that an exploit for CVE-2026-2441 exists in the wild,” Google said in its <a href="https://chromereleases.googleblog.com/2026/02/stable-channel-update-for-desktop_13.html">advisory</a>. </p><p>Google has credited researcher Shaheen Fazim for reporting the vulnerability. The actively exploited flaw was disclosed to the vendor on February 11, only two days before it was patched.&nbsp; </p><p>Fazim was credited by Google last year for responsibly disclosing several high-severity Chrome vulnerabilities.&nbsp; </p><p>A bug bounty reward for CVE-2026-2441 has not yet been determined. Some of his previous reports earned the researcher $7,000 and $8,000.</p><div></div> <p>There appears to be no public information about attacks exploiting CVE-2026-2441. However, based on the little information shared by Google the vulnerability can likely be exploited for arbitrary code execution by getting the targeted user to visit a malicious website. </p><p>However, the code would be executed within a sandbox, and an additional vulnerability is likely needed to escape the sandbox and achieve complete system takeover. </p><p>Nevertheless, the vulnerability could be useful for stealing data from the browser, hijacking sessions, and conducting further attacks. </p><p>Several <a href="https://www.securityweek.com/topics/Chrome/">Chrome</a> zero-days were patched in 2025. Google’s own zero-day tracker lists six flaws, while CISA’s KEV catalog includes seven. </p><p><strong>Related</strong>: <a href="https://www.securityweek.com/firefox-affected-by-flaw-similar-to-chrome-zero-day-exploited-in-russia/">Firefox Affected by Flaw Similar to Chrome Zero-Day Exploited in Russia</a> </p><p><strong>Related</strong>: <a href="https://www.securityweek.com/chrome-145-patches-11-vulnerabilities/">Chrome 145 Patches 11 Vulnerabilities</a> </p><p><strong>Related</strong>: <a href="https://www.securityweek.com/apple-patches-two-zero-days-tied-to-mysterious-exploited-chrome-flaw/">Apple Patches Two Zero-Days Tied to Mysterious Exploited Chrome Flaw</a> </p></div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

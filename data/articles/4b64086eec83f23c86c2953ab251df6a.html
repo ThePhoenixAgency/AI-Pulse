@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>PHP : des corrections de bugs disponibles</title>
 <style>
@@ -24,11 +22,10 @@
 <body>
   <h1>PHP : des corrections de bugs disponibles</h1>
   <div class="metadata">
-    Source: Programmez | Date: 2/16/2026 11:54:02 AM | Lang: EN |
-    <a href="https://www.programmez.com/actualites/php-des-corrections-de-bugs-disponibles-39019" target="_blank">Original Article</a>
+    Source: Programmez | Date: 2/16/2026 11:54:02 AM | <a href="https://www.programmez.com/actualites/php-des-corrections-de-bugs-disponibles-39019" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p>Deux versions correctives sont disponibles : les 8.4.18 et 8.5.3. Ce sont des bug fix. Ces versions corrige 28 bugs dans le core, la timelib, le DOM, OpenSSL, etc.&nbsp;</p><p>Les principaux bugs fixés sont :</p><ul><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20837">GH-20837</a>&nbsp;(NULL dereference when calling ob_start() in shutdown function triggered by bailout in php_output_lock_error()).</li><li>Fix OSS-Fuzz #471533782 (Infinite loop in GC destructor fiber).</li><li>Fix OSS-Fuzz #472563272 (Borked block_pass JMP[N]Z optimization).</li><li>Fixed bug GH-<a href="https://github.com/php/php-src/issues/20914">GH-20914</a>&nbsp;(Internal enums can be cloned and compared).</li><li>Fix OSS-Fuzz #474613951 (Leaked parent property default value).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20766">GH-20766</a>&nbsp;(Use-after-free in FE_FREE with GC interaction).</li><li>Fix OSS-Fuzz #471486164 (Broken by-ref assignment to uninitialized hooked backing value).</li><li>Fix OSS-Fuzz #438780145 (Nested finally with repeated return type check may uaf).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20905">GH-20905</a>&nbsp;(Lazy proxy bailing __clone assertion).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20479">GH-20479</a>&nbsp;(Hooked object properties overflow).</li><li>Fix memory leaks when sk_X509_new_null() fails.</li><li>Fix crash when in openssl_x509_parse() when i2s_ASN1_INTEGER() fails.</li><li>Fix crash in openssl_x509_parse() when X509_NAME_oneline() fails.</li><li>Fixed bug&nbsp;<a href="https://bugs.php.net/74357">#74357</a>&nbsp;(lchown fails to change ownership of symlink with ZTS) (Jakub Zelenka)</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20843">GH-20843</a>&nbsp;(var_dump() crash with nested objects) (David Carlier)</li></ul><p>Pour en savoir plus :&nbsp;<a href="https://www.php.net/index.php">https://www.php.net/index.php</a></p></div></div>
+    <pre><code>Deux versions correctives sont disponibles : les 8.4.18 et 8.5.3. Ce sont des bug fix. Ces versions corrige 28 bugs dans le core, la timelib, le DOM, OpenSSL, etc.&nbsp;Les principaux bugs fixés sont :Fixed bug&nbsp;GH-20837&nbsp;(NULL dereference when calling ob_start() in shutdown function triggered by bailout in php_output_lock_error()).Fix OSS-Fuzz #471533782 (Infinite loop in GC destructor fiber).Fix OSS-Fuzz #472563272 (Borked block_pass JMP[N]Z optimization).Fixed bug GH-GH-20914&nbsp;(Internal enums can be cloned and compared).Fix OSS-Fuzz #474613951 (Leaked parent property default value).Fixed bug&nbsp;GH-20766&nbsp;(Use-after-free in FE_FREE with GC interaction).Fix OSS-Fuzz #471486164 (Broken by-ref assignment to uninitialized hooked backing value).Fix OSS-Fuzz #438780145 (Nested finally with repeated return type check may uaf).Fixed bug&nbsp;GH-20905&nbsp;(Lazy proxy bailing __clone assertion).Fixed bug&nbsp;GH-20479&nbsp;(Hooked object properties overflow).Fix memory leaks when sk_X509_new_null() fails.Fix crash when in openssl_x509_parse() when i2s_ASN1_INTEGER() fails.Fix crash in openssl_x509_parse() when X509_NAME_oneline() fails.Fixed bug&nbsp;#74357&nbsp;(lchown fails to change ownership of symlink with ZTS) (Jakub Zelenka)Fixed bug&nbsp;GH-20843&nbsp;(var_dump() crash with nested objects) (David Carlier)Pour en savoir plus :&nbsp;https://www.php.net/index.php</code></pre>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -48,5 +45,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Pi Pico Pinout Display on the Command Line</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>Pi Pico Pinout Display on the Command Line</h1>
   <div class="metadata">
-    Source: Raspberry Pi Spy | Date: 12/26/2022 4:41:58 PM | Lang: EN |
-    <a href="https://www.raspberrypi-spy.co.uk/2022/12/pi-pico-pinout-display-on-the-command-line/" target="_blank">Original Article</a>
+    Source: Raspberry Pi Spy | Date: 12/26/2022 4:41:58 PM | <a href="https://www.raspberrypi-spy.co.uk/2022/12/pi-pico-pinout-display-on-the-command-line/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><article><div><p>Displaying the pinout of a Raspberry Pi Pico is possible using my “picopins” script. The script displays the pinout in a colour coded format showing the location of power, ground and GPIO pins. I find it useful if I’m coding Pico projects on my laptop or Pi 400 and need to check the location of a GPIO pin.</p><p>The bash script runs from the Linux command line and I’ve tested it on Raspberry Pi OS and Ubuntu.</p><p>This can be a useful addition to other pinout resources such as the <a href="https://www.raspberrypi-spy.co.uk/2022/11/pi-pico-w-pinout-and-power-pins/">official Pi Pico diagram</a>.</p><h2>Download picopins Bash Script</h2><p>The script can be downloaded directly to your Raspberry Pi or Linux device using:</p><pre><code>wget https://raw.githubusercontent.com/RPiSpy/pi-pico/main/picopins.sh</code></pre><p>Alternatively you could clone my Pi Pico repository to your preferred location using:</p><pre><code>git clone https://github.com/RPiSpy/pi-pico.git</code></pre><p>Once downloaded navigate to the correct directory and make the script executable:</p><pre><code>chmod +x picopins.sh</code></pre><p>You can then run the script using:</p><pre><code>./picopins.sh</code></pre><p>The output of picopins looks like this:</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2022/12/picopins_bash_script.png" alt="Pi Pico picopins Script Output"><figcaption>Pi Pico Pinout Script Output</figcaption></figure><h2>Copy Script to Bin Directory</h2><p>Running the script is easy enough but it’s even easier if you copy it to the /bin directory. This would allow you to run “picopins” at any time and see the pinout output.</p><p>Copy the script using:</p><pre><code>sudo cp picopins.sh /bin/picopins</code></pre><p>Note that this changes the script name from “picopins.sh” to just “picopins”.</p><p>Now make sure it is executable:</p><pre><code>sudo chmod +x /bin/picopins</code></pre><p>Now you can run the command regardless of what directory you are currently in.</p><pre><code>picopins</code></pre><h2>Other Pi Pico Resources</h2><ul>
@@ -49,5 +46,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

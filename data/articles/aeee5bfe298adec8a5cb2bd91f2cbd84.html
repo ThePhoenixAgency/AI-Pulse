@@ -24,29 +24,27 @@
 <body>
   <h1>Une impressionnante coulée de neige coupe la route : une trentaine d’habitants du Villard isolés</h1>
   <div class="metadata">
-    Source: Le Dauphiné Une | Date: 2/16/2026 8:06:00 PM | Lang: FR |
-    <a href="https://www.ledauphine.com/faits-divers-justice/2026/02/16/une-coulee-de-neige-impressionnante-coupe-la-route-une-trentaine-d-habitants-du-villard-isoles" target="_blank">Original Article</a>
+    Source: Le Dauphiné Une | Date: 2/16/2026 9:06:00 PM | <a href="https://www.ledauphine.com/faits-divers-justice/2026/02/16/une-coulee-de-neige-impressionnante-coupe-la-route-une-trentaine-d-habitants-du-villard-isoles" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p><span>L.V. et Ga.G.</span> - <span> Aujourd'hui à 21:06 | mis à jour aujourd'hui à 21:11 - Temps de lecture : <span></span> </span>
-</p> </div><div> <p>L’avalanche s’est produite aux Belleville, sur la route d’accès au Villard à partir de Saint-Jean-de-Belleville, ce lundi 16 février en fin d’après-midi. «&nbsp;Une coulée de neige d’environ 200 mètres qui a pris toute la route et qui doit peut-être atteindre par endroits une hauteur de 10 mètres&nbsp;», selon le maire, Claude Jay.</p> <p>Ne pouvant pas décoller avec l’hélicoptère posté à Courchevel, sept agents du peloton de gendarmerie de haute montagne (PGHM) ont été mobilisés par voie terrestre ainsi que trois sapeurs-pompiers épaulés de quatre pisteurs secouristes du service des pistes des Belleville. Les gendarmes ont procédé à une levée de doute, grâce à une équipe cynophile dépêchée sur place. Et après avoir mené en parallèle une enquête de voisinage, il a été vérifié&nbsp;qu’aucune victime n’était à déplorer. L’opération a duré environ deux heures. Selon le PGHM Savoie, l’avalanche se serait déclenchée de manière naturelle.</p> <p>Lundi soir, la trentaine d’habitants du hameau était donc isolée mais avait toujours l’électricité. Claude Jay précisait qu’un chemin piétonnier avait été reconnu par les pompiers afin de pouvoir l’utiliser en cas d’urgence.</p> <div> <p>Ce contenu est bloqué car vous n'avez pas accepté les cookies et autres traceurs.</p> <p>En cliquant sur <span>« J’accepte »</span>, les cookies et autres traceurs seront déposés et vous pourrez visualiser les contenus <span></span> (<a target="_blank">plus d'informations</a>).</p> <p>En cliquant sur <span>« J’accepte tous les cookies »</span>, vous autorisez des dépôts de cookies et autres traceurs pour le stockage de vos données sur nos sites et applications à des fins de personnalisation et de ciblage publicitaire.</p> <p>Vous gardez la possibilité de retirer votre consentement à tout moment en consultant notre <a href="https://www.ledauphine.com/protection-des-donnees" target="_blank">politique de protection des données</a>. <br> Gérer mes choix </p> </div> <div> <h2>Déjà une coulée en 2021</h2><p>Dès ce mardi matin, la commune se mettra à l’œuvre pour dégager la route. Difficile, ce lundi soir, dans la nuit noire, pour le maire d’estimer le temps des travaux. En tout cas, des coulées se sont déjà produites à cet endroit, <a href="https://www.ledauphine.com/culture-loisirs/2021/01/30/le-hameau-du-villard-isole-depuis-vendredi" target="_blank">notamment en janvier 2021</a> : c’est un couloir connu et qui a déjà bénéficié de sécurisation. Les importantes chutes de neige de ces derniers jours ont fait se répéter l’histoire.</p></div> <p>Dès dimanche soir, la préfecture de la Savoie avait d’ailleurs appelé les automobilistes et les pratiquants de la montagne à la plus grande prudence, indiquant que les chutes de neige des prochains jours allaient «&nbsp;se poser sur un manteau neigeux déjà très instable avec un risque de déclenchement d’avalanches très élevé&nbsp;». Et d’insister&nbsp;: «&nbsp;Il n’est pas exclu que certaines coulées de neige puissent atteindre des enjeux routiers ou des infrastructures dès la moyenne montagne.&nbsp;»</p> </div></div>
+    <p>L’avalanche s’est produite aux Belleville, sur la route d’accès au Villard à partir de Saint-Jean-de-Belleville, ce lundi 16 février en fin d’après-midi.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

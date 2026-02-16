@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub - juleshenry/zooplankton-image-tool: Premier zooplankton image tool (ZIT)</title>
 <style>
@@ -24,12 +22,11 @@
 <body>
   <h1>GitHub - juleshenry/zooplankton-image-tool: Premier zooplankton image tool (ZIT)</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 9:47:49 PM | Lang: EN |
-    <a href="https://github.com/juleshenry/zooplankton-image-tool" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 10:47:49 PM | <a href="https://github.com/juleshenry/zooplankton-image-tool" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><h1>ZIT (Zooplankton Image Tool)</h1><a href="#zit-zooplankton-image-tool"></a></div>
-<p>ZIT is a tool designed to enhance and composite plankton photos from video frames. It uses computer vision techniques (OpenCV MOG2 background subtraction and contour filtering) to create clean, high-quality composites showing the locomotion of zooplankton.</p>
+<pre><code>ZIT is a tool designed to enhance and composite plankton photos from video frames. It uses computer vision techniques (OpenCV MOG2 background subtraction and contour filtering) to create clean, high-quality composites showing the locomotion of zooplankton.</code></pre>
 <p><a target="_blank" href="/juleshenry/zooplankton-image-tool/blob/main/assets/mari_comp.png"><img src="/juleshenry/zooplankton-image-tool/raw/main/assets/mari_comp.png" alt="Mariposa Example"></a></p>
 <div><h2>Features</h2><a href="#features"></a></div>
 <ul>
@@ -49,21 +46,19 @@ poetry run zit --input samples/limo.mp4 --composite --entities <span><span>#</sp
 zit --input samples/limo.mp4 --composite --entities</pre></div>
 <div><h3>Parameters</h3><a href="#parameters"></a></div>
 <ul>
-<li><code>--input</code>, <code>-i</code>: Path to the input video.</li>
-<li><code>--interval</code>: Interval in seconds for frame capture (default: <code>1</code>).</li>
-<li><code>--composite</code>: Enable composition after frame capture.</li>
-<li><code>--entities</code>: Use entity recognition for cleaner composites (recommended).</li>
-<li><code>--epsilon</code>: Difference threshold for entity detection (default: <code>20.0</code>). Also referred to as <code>Thresh</code> in sweep grids.</li>
-<li><code>--noise</code>: Minimum pixel area for a detected entity (default: <code>50.0</code>). Also referred to as <code>MinArea</code> in sweep grids.</li>
-<li><code>--skip START END</code>: Process only a specific frame range.</li>
-<li><code>--out-file</code>: Name of the output composite image (default: <code>composited.png</code>).</li>
+<li><pre><code>--input</code></pre>, <pre><code>-i</code></pre>: Path to the input video.</li>
+<li><pre><code>--interval</code></pre>: Interval in seconds for frame capture (default: <pre><code>1</code></pre>).</li>
+<li><pre><code>--composite</code></pre>: Enable composition after frame capture.</li> <li><pre><code>--epsilon</code></pre>: Difference threshold for entity detection (default: <pre><code>20.0</code></pre>). Also referred to as <pre><code>Thresh</code></pre> in sweep grids.</li>
+<li><pre><code>--noise</code></pre>: Minimum pixel area for a detected entity (default: <pre><code>50.0</code></pre>). Also referred to as <pre><code>MinArea</code></pre> in sweep grids.</li>
+<li><pre><code>--skip START END</code></pre>: Process only a specific frame range.</li>
+<li><pre><code>--out-file</code></pre>: Name of the output composite image (default: <pre><code>composited.png</code></pre>).</li>
 </ul>
 <div><h3>Parameter Sweep</h3><a href="#parameter-sweep"></a></div>
-<p>To find the optimal threshold values for your video, use the parameter sweep script. It generates a 5x5 grid of composites sweeping across <code>MinArea</code> (noise) and <code>Thresh</code> (epsilon).</p>
+<p>To find the optimal threshold values for your video, use the parameter sweep script. It generates a 5x5 grid of composites sweeping across </p><pre><code>MinArea</code></pre> (noise) and <pre><code>Thresh</code></pre> (epsilon).<p></p>
 <div><pre>python sweep_grid.py</pre></div>
 <div><h2>Gallery</h2><a href="#gallery"></a></div>
 <div><h3>Parameter Grids</h3><a href="#parameter-grids"></a></div>
-<p>Find the optimal thresholds for different conditions. These grids show variations in <code>MinArea</code> and <code>Thresh</code>.</p>
+<p>Find the optimal thresholds for different conditions. These grids show variations in </p><pre><code>MinArea</code></pre> and <pre><code>Thresh</code></pre>.<p></p>
 <table>
 <thead>
 <tr>
@@ -124,5 +119,5 @@ zit --input samples/limo.mp4 --composite --entities</pre></div>
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

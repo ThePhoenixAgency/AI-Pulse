@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Thinking Outside The Box [dusted off draft from 2017]</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>Thinking Outside The Box [dusted off draft from 2017]</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN |
-    <a href="https://projectzero.google/2025/12/thinking-outside-the-box.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -68,7 +65,7 @@
 <span>};</span>
 </code></pre></div>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>Chunks are freed through the methods <code>m_freem -&gt; m_free -&gt; mb_free_ext -&gt; uma_zfree -&gt; uma_zfree_arg -&gt; slirp_uma_free</code>. The <code>uma_zfree_arg()</code> function takes pointers to the real zone structure and to the chunk data as arguments and checks some assertions before calling <code>slirp_uma_free()</code> as <code>zone-&gt;pfFree()</code>:</p>
 
@@ -141,7 +138,7 @@
 
 </code></pre></div>
 
-<p>One straightforward way to abuse this issue is to send a small <code>ICMP_ECHO</code> packet with a large <code>ip_len</code> to the address 10.0.2.3, causing Slirp to send back a larger <code>ICMP_ECHOREPLY</code> with out-of-bounds heap data. However, Slirp validates the correctness of the ICMP checksum, meaning that the attacker has to guess the 16-bit checksum of the out-of-bounds heap data that the attacker is trying to leak. While it is possible to bruteforce this checksum, it is inelegant.<br />
+<p>One straightforward way to abuse this issue is to send a small <code>ICMP_ECHO</code> packet with a large <code>ip_len</code> to the address 10.0.2.3, causing Slirp to send back a larger <code>ICMP_ECHOREPLY</code> with out-of-bounds heap data. However, Slirp validates the correctness of the ICMP checksum, meaning that the attacker has to guess the 16-bit checksum of the out-of-bounds heap data that the attacker is trying to leak. While it is possible to bruteforce this checksum, it is inelegant.<br>
 An easier way to leak heap data is to use UDP with the help of a helper machine on the other side of the NAT, e.g. on the internet. UDP has a 16-bit checksum over packet data as well, but unlike ICMP, UDP treats the checksum value 0 as “don’t check the checksum”. Therefore, by sending a UDP packet with checksum 0 and a bogus length in the IP header, it is possible to reliably leak out-of-bounds heap data. Since <code>ip_len</code> can be bigger than the chunk size, this also permits leaking the headers (and contents) of following chunks, disclosing information about the heap state, the heap location and the location of the <code>struct uma_zone</code>.</p>
 
 <p>The next step is to somehow use the bug to corrupt chunk headers. Most of the code only reads from incoming packets; however, when a packet with IP options arrives in <code>udp_input()</code> or <code>tcp_input()</code>, the IP payload (meaning the TCP or UDP packet header and everything following it) is moved over the IP options using <code>ip_stripoptions()</code>:</p>
@@ -174,7 +171,7 @@ An easier way to leak heap data is to use UDP with the help of a helper machine 
 
 <p>The first step is to place the command that should be given to <code>system()</code> in memory and determine at which address it was placed. To do this, assuming that the freelist grows downwards linearly, the attacker can first send an IP fragment containing the shell command (causing the IP fragment to be stored), then send a crafted UDP packet to leak data:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>(Note: <code>le_prev</code> and <code>le_next</code> are now pointers on the list of used heap chunks (<code>free_items</code>), not the freelist, and therefore the <code>le_next</code> pointer points upwards.)</p>
 
@@ -186,18 +183,18 @@ An easier way to leak heap data is to use UDP with the help of a helper machine 
 
 <div><p>First, the attacker places a fake <code>struct uma_zone</code> (zone header) in memory and determines the address of the fake <code>struct uma_zone</code>, just like the shell command was placed in memory. Next, the attacker sends a packet containing a fake <code>struct vmox_heap_item</code> (chunk header) and moves it over the real chunk header using an adjacent UDP packet with a bogus length field and with IP options:</p><p>
 
-<img alt="" /><br />
+<img alt=""><br>
 The result is a chunk with an attacker-controlled header that points to the fake <code>struct uma_zone</code>:</p></div>
 
-<p><img alt="" />
-<br />
+<p><img alt="">
+<br>
 Next, this chunk can be freed by sending a corresponding second IP fragment, causing the member <code>pfFini</code> of the fake <code>uma_zone</code> to be called with arguments <code>zone-&gt;pData</code> (attacker-controlled), <code>item</code> (the data directly behind the fake chunk header) and <code>zone-&gt;size</code> (again attacker-controlled).</p>
 
 <p>In the case of <code>memcpy()</code>, one issue here is that the fake IP header must be valid; otherwise, the packet might not be recognized during fragment reassembly. Therefore, only the space that would normally be occupied by the ethernet header (14 bytes long) can be used to store the payload; to write larger payloads, multiple function calls must be made.</p>
 
 <p>At this point, using the write primitive, it is possible to leak the GOT contents by overwriting memory as follows (red parts are modified):</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>First, a fake heap chunk header is placed at the start of the GOT, which is writable and at a fixed address. Because after the VirtualBox process has started, only library code is executed, the corruption of the start of the GOT is not a problem. The <code>le_next</code> pointer of the fake chunk header points to a legitimate chunk that is currently in a pristine area of the original freelist. Now, the attacker can overwrite the freelist head pointer <code>free_items.lh_first</code> in the zone header, causing the fake chunk in the GOT to be returned by a legitimate future allocation.</p>
 
@@ -209,9 +206,8 @@ Next, this chunk can be freed by sending a corresponding second IP fragment, cau
 
 <p>As I noted in the introduction, none of the relevant code seems to have changed much since I found this bug in 2017 - I think if you found a similar bug in the VirtualBox networking code today, it would likely still be exploitable in a similar way.</p>
 
-<p>VirtualBox uses a separate memory region for packet memory allocations - that’s probably intended as a performance optimization. This implementation choice should also make it harder to exploit packet memory UAF bugs as a side effect, since no packets contain pointers, kind of like PartitionAlloc or kalloc_type. However, it might still be possible to exploit a packet memory UAF as TOCTOU by making use of an already-validated length value or such.<br />
+<p>VirtualBox uses a separate memory region for packet memory allocations - that’s probably intended as a performance optimization. This implementation choice should also make it harder to exploit packet memory UAF bugs as a side effect, since no packets contain pointers, kind of like PartitionAlloc or kalloc_type. However, it might still be possible to exploit a packet memory UAF as TOCTOU by making use of an already-validated length value or such.<br>
 This could have also made it harder to exploit packet memory linear OOB write bugs - but the choice of using inline metadata, and not protecting against corruption of this metadata at all, makes OOB write bugs in this allocator region highly exploitable.</p>
-
 
         </section>
       </article>
@@ -219,5 +215,5 @@ This could have also made it harder to exploit packet memory linear OOB write bu
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

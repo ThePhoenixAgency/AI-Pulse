@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub - chasebuild/fuelcheck-cli:  Lightweight command-line utility designed to monitor and manage token consumption across the modern AI ecosystem.</title>
 <style>
@@ -30,13 +28,12 @@
 <body>
   <h1>GitHub - chasebuild/fuelcheck-cli:  Lightweight command-line utility designed to monitor and manage token consumption across the modern AI ecosystem.</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
-    <a href="https://github.com/chasebuild/fuelcheck-cli" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div><article><p></p><h2> Fuelcheck CLI</h2><a href="#-fuelcheck-cli"></a><p></p>
 <p>Fuelcheck CLI is a Rust command-line tool that fetches usage and cost data from multiple AI providers. It emits text or JSON output compatible with CodexBar-style dashboards and scripts. (heavily inspired by <a href="https://github.com/steipete/CodexBar">CodexBar</a>)</p>
-<a target="_blank" href="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTM1MjksIm5iZiI6MTc3MTI1MzIyOSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0NDcwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY3MDFhMDBmZjAyNDUyZmQ4M2MyNDk2YzQ3NGM1YWQ0ZDhiZmViODk2YmY5MzNlNjNkMzVhNDAzYzY2NDc0OGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.RiCepKeazudlKyJqXOGngttkj1cD1BmfuQB221DoNAI"><img alt="image" src="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTM1MjksIm5iZiI6MTc3MTI1MzIyOSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0NDcwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY3MDFhMDBmZjAyNDUyZmQ4M2MyNDk2YzQ3NGM1YWQ0ZDhiZmViODk2YmY5MzNlNjNkMzVhNDAzYzY2NDc0OGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.RiCepKeazudlKyJqXOGngttkj1cD1BmfuQB221DoNAI" /></a>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTM1MjksIm5iZiI6MTc3MTI1MzIyOSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0NDcwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY3MDFhMDBmZjAyNDUyZmQ4M2MyNDk2YzQ3NGM1YWQ0ZDhiZmViODk2YmY5MzNlNjNkMzVhNDAzYzY2NDc0OGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.RiCepKeazudlKyJqXOGngttkj1cD1BmfuQB221DoNAI"><img alt="image" src="https://private-user-images.githubusercontent.com/56880684/550407945-9306bc2d-4426-4281-9983-aac10860986c.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNTM1MjksIm5iZiI6MTc3MTI1MzIyOSwicGF0aCI6Ii81Njg4MDY4NC81NTA0MDc5NDUtOTMwNmJjMmQtNDQyNi00MjgxLTk5ODMtYWFjMTA4NjA5ODZjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE2VDE0NDcwOVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTY3MDFhMDBmZjAyNDUyZmQ4M2MyNDk2YzQ3NGM1YWQ0ZDhiZmViODk2YmY5MzNlNjNkMzVhNDAzYzY2NDc0OGQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.RiCepKeazudlKyJqXOGngttkj1cD1BmfuQB221DoNAI"></a>
 <p><strong>Features</strong></p>
 <ul>
 <li>Multi-provider usage checks with optional status badges.</li>
@@ -248,7 +245,6 @@ See <code>CONTRIBUTING.md</code> for development workflow and style guidance.</p
   </div>
   
 
-
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
@@ -269,5 +265,5 @@ See <code>CONTRIBUTING.md</code> for development workflow and style guidance.</p
     });
 
   </script>
-</body>
-</html>
+
+</body></html>

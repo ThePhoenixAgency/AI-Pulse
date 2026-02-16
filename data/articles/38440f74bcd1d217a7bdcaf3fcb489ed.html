@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Bypassing Windows Administrator Protection - Project Zero</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>Bypassing Windows Administrator Protection - Project Zero</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 1/26/2026 | Lang: EN |
-    <a href="https://projectzero.google/2026/26/windows-administrator-protection.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 1/26/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -36,8 +33,6 @@
 <p>This blog post will give a brief overview of the new feature, how it works and how it’s different from UAC. I’ll then describe some of the security research I undertook while it was in the insider preview builds on Windows 11. Finally I’ll detail one of the nine separate vulnerabilities that I found to bypass the feature to silently gain full administrator privileges. All the issues that I reported to Microsoft have been fixed, either prior to the feature being officially released (in optional update <a href="https://support.microsoft.com/en-gb/topic/october-28-2025-kb5067036-os-builds-26200-7019-and-26100-7019-preview-ec3da7dc-63ba-4b1d-ac41-cf2494d2123a">KB5067036</a>) or as subsequent security bulletins.</p>
 
 <p><em>Note: As of 1st December 2025 the Administrator Protection feature has been disabled by Microsoft while an application compatibility issue is dealt with. The issue is unlikely to be related to anything described in this blog post so the analysis doesn’t change.</em></p>
-
-
 
 <h2>The Problem Administration Protection is Trying to Solve</h2>
 
@@ -209,8 +204,6 @@
 
 <p>There’s just one problem with this as a UAC bypass, I could never find a scenario where the limited user got code running before any administrator process was created. Once the process was created and running there’s almost a certainty that some code would open a file and therefore access the <code>\??</code> directory. By the time the limited user has control the DOS device object directory has already been created and assigned the expected access control. Still as UAC is not a security boundary there was no point reporting it, so I filed this behavior away for another day in case it ever became relevant.</p>
 
-
-
 <p>Fast forward to today, and along comes Administrator Protection. For reasons of compatibility Microsoft made calling <code>NtQueryInformationToken</code> with the <code>TokenLinkedToken</code> information class still returns an identification handle to the administrator token. But in this case it’s the shadow administrator’s token instead of the administrator version of the user’s token. But a crucial difference is while for UAC this token is the same every time, in Administrator Protection the kernel calls into the LSA and authenticates a new instance of the shadow administrator. This results in every token returned from <code>TokenLinkedToken</code> having a unique logon session, and thus does not currently have the DOS device object directory created as can be seen below:</p>
 
 <div><pre><code><span>PS</span><span>&gt;</span><span> </span><span>$t</span><span> </span><span>=</span><span> </span><span>Get-NtToken</span><span> </span><span>-Linked</span><span>
@@ -288,12 +281,11 @@
 
 <p>I do think it improves security over admin-approval UAC assuming it becomes enabled by default. It presents a more significant security boundary that should be defendable unless more serious design issues are discovered. I expect that malware will still be able to get administrator privileges even if that’s just by forcing a user to accept the elevation prompt, but any silent bypasses they might use should get fixed which would be a significant improvement on the current situation. Regardless of all that, the safest way to use Windows is to never run as an administrator, with any version of UAC. And ideally avoid getting malware on your machine in the first place.</p>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

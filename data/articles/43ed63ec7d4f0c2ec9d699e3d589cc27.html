@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,30 +18,11 @@
 <body>
   <h1>Exposed Training Open the Door for Crypto-Mining in Fortune 500 Cloud Environments</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/11/2026 12:30:00 PM | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/exposed-training-open-door-for-crypto.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/11/2026 12:30:00 PM | <a href="https://thehackernews.com/2026/02/exposed-training-open-door-for-crypto.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p><a href="https://go.pentera.io/pentera-labs-exposed-cloud-training-apps?utm_source=thn&amp;utm_medium=eblast&amp;utm_campaign=pentera_labs_door"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQeF3lExyDyGEAtnZylF2A30qkeG6Yoa-GxL_guF46TWzDUEyX7jg-j-PSO7VwdSUlFIalEmV2nCGE4KyntCePcUgW6qEBX6Mmj3rOpo5iTEqIjkQYd0YdeEOWjnpg5AWhfK0jO0wDksHchtMgjF8pq-lwcO-eHoyw2EqAGGqc48_UZRQsZ2R4ZxFG0bc/s1600/pentera.jpg"></a></p>
-<p>Intentionally vulnerable training applications are widely used for security education, internal testing, and product demonstrations. Tools such as OWASP Juice Shop, DVWA, Hackazon, and bWAPP are designed to be insecure by default, making them useful for learning how common attack techniques work in controlled environments.</p>
-<p>The issue is not the applications themselves, but how they are often deployed and maintained in real-world cloud environments.</p>
-<p>Pentera Labs examined how training and demo applications are being used across cloud infrastructures and identified a recurring pattern: applications intended for isolated lab use were frequently found exposed to the public internet, running inside active cloud accounts, and connected to cloud identities with broader access than required.</p>
-<h3><strong>Deployment Patterns Observed in the Research</strong></h3>
-<p><a href="https://go.pentera.io/pentera-labs-exposed-cloud-training-apps?utm_source=thn&amp;utm_medium=eblast&amp;utm_campaign=pentera_labs_door" target="_blank">Pentera Labs research</a> found that these applications were often deployed with default configurations, minimal isolation, and overly permissive cloud roles. The investigation uncovered that many of these exposed training environments were directly connected to active cloud identities and privileged roles, enabling attackers to move far beyond the vulnerable applications themselves and potentially into the customer’s broader cloud infrastructure.</p>
-<p>In these scenarios, a single exposed training application can act as an initial foothold. Once attackers are able to leverage connected cloud identities and privileged roles, they are no longer constrained to the original application or host. Instead, they may gain the ability to interact with other resources within the same cloud environment, significantly increasing the scope and potential impact of the compromise.</p>
-<p>As part of the investigation, Pentera Labs verified nearly <strong>2,000 live, exposed training application instances</strong>, with close to <strong>60% hosted on customer-managed infrastructure running on AWS, Azure, or GCP</strong>.</p> <p><a href="https://go.pentera.io/pentera-labs-exposed-cloud-training-apps?utm_source=thn&amp;utm_medium=eblast&amp;utm_campaign=pentera_labs_door"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3yVHggzxBUw_bb0g7KCz0rocqjD4264MkzXWnq6q_clXMqdOKY5mmS7YILyBPHKxXsJjbMynSGgxUIeggInQ_DEyRZBfsBKOwvC3FK_-fWeFcDsJbQGedM2Buue0wxWflpsHOUK9yjQ0H0cYDlL-FgT95bnHamDrMdwvnijFVCSbp-BWMDMv73JUjuV8/s1600/divider.jpg"></a></p> <h3><strong>Evidence of Active Exploitation</strong></h3>
-<p>The exposed training environments identified during the research were not simply misconfigured. Pentera Labs observed clear evidence that attackers were actively exploiting this exposure in the wild.</p>
-<p>Across the broader dataset of exposed training applications, approximately <strong>20% of instances were found to contain artifacts deployed by malicious actors</strong>, including crypto-mining activity, webshells, and persistence mechanisms. These artifacts indicated prior compromise and ongoing abuse of exposed systems.</p>
-<p>The presence of active crypto-mining and persistence tooling demonstrates that exposed training applications are not only discoverable but are already being exploited at scale.</p>
-<h3><strong>Scope of Impact</strong></h3>
-<p>The exposed and exploited environments identified during the research were not limited to small or isolated test systems. Pentera Labs observed this deployment pattern across cloud environments associated with <strong>Fortune 500 organizations and leading cybersecurity vendors,</strong> including Palo Alto, F5, and Cloudflare.</p>
-<p>While individual environments varied, the underlying pattern remained consistent: a training or demo application deployed without sufficient isolation, left publicly accessible, and connected to privileged cloud identities.</p> <h3><strong>Why This Matters</strong></h3>
-<p>Training and demo environments are frequently treated as low-risk or temporary assets. As a result, they are often excluded from standard security monitoring, access reviews, and lifecycle management processes. Over time, these environments may remain exposed long after their original purpose has passed.</p>
-<p>The research shows that exploitation does not require zero-day vulnerabilities or advanced attack techniques. Default credentials, known weaknesses, and public exposure were sufficient to turn training applications into an entry point for broader cloud access.</p>
-<p>Labeling an environment as “training” or “test” does not reduce its risk. When exposed to the internet and connected to privileged cloud identities, these systems become part of the organization’s effective attack surface.</p>
-<p>Refer to the full <strong><a href="https://go.pentera.io/pentera-labs-exposed-cloud-training-apps?utm_source=thn&amp;utm_medium=eblast&amp;utm_campaign=pentera_labs_door" target="_blank">Pentera Labs research blog</a></strong> &amp; <a href="https://go.pentera.io/pentera-labs-exposed-cloud-training-apps-webinar?utm_source=THN&amp;source=THN&amp;utm_medium=article&amp;medium=article&amp;utm_campaign=pentera%20labs%20door&amp;campaign=pentera%20labs%20door" target="_blank">join a live webinar on Feb 12th</a> to learn more about the methodology, discovery process, and real-world exploitation observed during this research.&nbsp;</p>
-<p><em>This article was written by Noam Yaffe, Senior Security Researcher at Pentera Labs. For questions or discussion, contact <a href="mailto:labs@pentera.io" target="_blank">labs@pentera.io</a></em></p> <p>Found this article interesting? <span>This article is a contributed piece from one of our valued partners.</span> Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
-</div></div>
+    <p>Intentionally vulnerable training applications are widely used for security education, internal testing, and product demonstrations. Tools such as OWASP Juice Shop, DVWA, Hackazon, and bWAPP are designed to be insecure by default, making them useful for learning how common attack techniques work in controlled environments.
+The issue is not the applications themselves, but how they are often</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

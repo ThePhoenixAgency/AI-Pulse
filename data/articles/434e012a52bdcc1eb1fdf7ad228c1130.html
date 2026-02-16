@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Show HN: GEDB – A pure-Go embedded database</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>Show HN: GEDB – A pure-Go embedded database</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 3:37:14 PM | Lang: EN |
-    <a href="https://news.ycombinator.com/item?id=47035530" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 3:37:14 PM | Lang: EN
   </div>
   <div class="content">
     <div><div><div><p>Hello HN!</p><p>These last few months I've been working on my first open source project: an embedded database written in pure-go. That took me some months, as I had to learn how to deal with such large packages. Until then, all packages I had made were quite small an did not require much. I usually did not have to worry about things like allocation optimization and instance pools until This project.</p><p>It started when I wanted to make a port of a tool to a TUI environment. I'm actually used to working with TUIs in golang, so that was my language of choice. The tool I wanted to port is written in TypeScript and uses NeDB (written in JavaScript) as database. Since I feel more comfortable working with compiled languages, I decided to create my own database, making sure it was compatible with NeDB, and that's what I did for the last few months.</p><p>And that's how GEDB was created. It's a mongodb-like embedded database, written in pure-go. It supports a subset of useful querying options of MongoDB (keywords like $lt, $exists, $in, $where, etc.). By default, it uses a in-memory-only storage, but can easily initialized with a data file.</p><p>Everything in my package can be dependency injected, as everything is controlled interfaces. Serialization, querying syntax, document structure, indexing and more, all can be replaced by implementing an interface.</p><p>I've also been considering adopting a new document model, by creating a binary type (like BSON) to reduce drastically the cost of creating, maintaining and copying documents (they currently are map[string]any).</p><p>The project is currently in an early stage, version 0.1.0, so I'm okay with making changes to the API for now, until I'm ready to release version 1.x.x</p><p>I would be really glad if you guys could check it out and give some feedback. An issue, suggestion or a star are very welcome.</p><p>My repository can be found on my github: <a href="https://github.com/vinicius-lino-figueiredo/gedb">https://github.com/vinicius-lino-figueiredo/gedb</a></p></div></div></div>
@@ -48,5 +45,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

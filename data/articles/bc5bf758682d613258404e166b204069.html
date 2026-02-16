@@ -4,123 +4,48 @@
 <meta charset="UTF-8">
 <title>Canada Goose investigating as hackers leak 600K customer records</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Canada Goose investigating as hackers leak 600K customer records</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/canada-goose-investigating-as-hackers-leak-600k-customer-records/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/16/2026 5:45:32 AM | <a href="https://www.bleepingcomputer.com/news/security/canada-goose-investigating-as-hackers-leak-600k-customer-records/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-	   
-<p><img alt="CANADA GOOSE" src="https://www.bleepstatic.com/content/hl-images/2026/02/15/canada-goose.png" /></p>
-
-
-<p>ShinyHunters, a well-known data extortion group, claims to have stolen more than 600,000 Canada Goose customer records containing personal and payment-related data.</p>
-
-
-<p>Canada Goose told BleepingComputer the dataset appears to relate to past customer transactions and that it has not found evidence of a breach of its own systems.</p>
-
-
-<p>Founded in 1957, Canada Goose is a Toronto-based performance luxury outerwear brand with a global retail footprint and nearly 4,000 employees.</p>
-
-<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
-</p>
-
-
-<h2>Canada Goose sees no evidence of breach</h2>
-
-<p>"Canada Goose is aware that a historical dataset relating to past customer transactions has recently been published online," the company told BleepingComputer.</p>
-
-
-<p>"At this time, we have no indication of any breach of our own systems. We are currently reviewing the newly released dataset to assess its accuracy and scope and will take any further steps as may be appropriate. To be clear, our review shows no evidence that unmasked financial data was involved. Canada Goose remains committed to protecting customer information."</p>
-
-
-<h2>1.67 GB dataset contains detailed order records</h2>
-
-<p>ShinyHunters added Canada Goose to its data leak site this week, claiming the archive contains more than 600,000 customer records.</p>
-
-
-<div>
-<figure><img alt="ShinyHunters data leak site with 600K customer records" src="https://www.bleepstatic.com/images/news/u/1164866/2026/Feb/canada-goose-shinyhunters/shinyhunters-canada-goose.jpg" /><figcaption><strong>ShinyHunters data leak site listing Canada Goose and 600K records</strong><br />
-(BleepingComputer)</figcaption></figure></div>
-
-<p>Samples reviewed by BleepingComputer show that the 1.67 GB dataset, released in JSON format, contains detailed e-commerce order records, including customer names, email addresses, phone numbers, billing and shipping addresses, IP addresses, and order histories.</p>
-
-
-<p>The data also includes partial payment card information such as card brand, the last four digits of card numbers, and in some cases the first six digits (<a href="https://www.rfc-editor.org/rfc/rfc4949" target="_blank">BIN</a>), along with payment authorization metadata.</p>
-
-
-<p>While the dataset does not appear to contain full payment card numbers, the exposed information could still be used for targeted phishing, social engineering, and fraud.</p>
-
-
-<p>The records also include purchase history, device and browser information, and order values, potentially allowing attackers to profile high-value customers.</p>
-
-
-<h2>Hackers deny link to recent SSO attacks</h2>
-
-<p>ShinyHunters has recently been linked to a wave of social-engineering attacks <a href="https://www.bleepingcomputer.com/news/security/mandiant-details-how-shinyhunters-abuse-sso-to-steal-cloud-data/" target="_blank">targeting single sign-on (SSO)</a> accounts and cloud environments.</p>
-
-
-<p>When asked whether the Canada Goose data was obtained through those intrusions, the group told BleepingComputer the dataset was unrelated, claiming it originated from a third-party payment processor breach and dates back to August 2025.</p>
-
-
-<p>BleepingComputer has not independently verified the claim.</p>
-
-
-<p>The dataset's schema (specifically, field names like <em>checkout_id</em>, <em>shipping_lines</em>, <em>cart_token</em>, <em>cancel_reason</em>, etc.), however, closely resembles e-commerce checkout exports commonly associated with hosted storefront and payment processing platforms, which may help explain how the data could have originated from a third-party service provider.</p>
-
-
-<h2>Who is ShinyHunters?</h2>
-
-<p><a href="https://www.bleepingcomputer.com/tag/shinyhunters/" target="_blank">ShinyHunters</a> is a prolific data extortion group known for stealing and leaking large volumes of customer data from major brands and online services.</p>
-
-
-<p>The group has been linked to <a href="https://www.bleepingcomputer.com/news/security/panera-bread-data-breach-impacts-51-million-accounts-not-14-million-customers/" target="_blank">numerous high-profile breaches</a> and data theft incidents in recent years, often targeting e-commerce platforms, SaaS services, and cloud environments.</p>
-
-
-<p>In recent reporting, security researchers <a href="https://www.bleepingcomputer.com/news/security/okta-sso-accounts-targeted-in-vishing-based-data-theft-attacks/" target="_blank">have tied the group to</a> vishing and social-engineering campaigns used to gain access to corporate accounts and cloud data.</p>
-
-
-<p>Stolen data is typically used for extortion, sold on underground forums, or published on the group's leak site when victims refuse to pay.</p>
-
-
-<p>It is not yet known how many Canada Goose customers may be affected or whether individuals will be notified. The company says it is continuing to review the dataset to determine its accuracy and scope.</p>
-
-
-
-	   
-<div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
-    </p>
-    <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
-<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
-
-        </div>
-</div>
-
-           
-          
- 
-	  </div></div>
+    <p>ShinyHunters, a well-known data extortion group, claims to have stolen more than 600,000 Canada Goose customer records containing personal and payment-related data. Canada Goose told BleepingComputer the dataset appears to relate to past customer transactions and that it has not found evidence of a breach of its own systems. [...]</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

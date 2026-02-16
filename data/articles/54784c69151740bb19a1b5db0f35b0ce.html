@@ -24,8 +24,7 @@
 <body>
   <h1>Introducing RTEB: A New Standard for Retrieval Evaluation</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 10/1/2025 2:00:00 AM | Lang: EN |
-    <a href="https://huggingface.co/blog/rteb" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 10/1/2025 2:00:00 AM | <a href="https://huggingface.co/blog/rteb" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/fzliu"><img alt="Frank Liu's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61f33092a92c9a858b654991/jFRUSeZ6DnI27dlCAQRHq.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/KennethEnevoldsen"><img alt="Kenneth C. Enevoldsen's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5ff5943752c26e9bc240bada/Exyzf3C_gJ2KdsL4K5_cq.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Samoed"><img alt="Solomatin Roman's avatar" src="https://huggingface.co/avatars/7a4067accdd1005f78c3c4adad3ee0a5.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/isaacchung"><img alt="Isaac Chung's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64cc0e80a257a3212c0c4b24/wqs6WZN8-3OQthcnQXgN7.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/tomaarsen"><img alt="Tom Aarsen's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6317233cc92fd6fee317e030/cJHSvvimr1kqgQfHOjO5n.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/fzoll"><img alt="Fődi, Zoltán's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/nXPUWOJbhmjQVCkbBtf6m.png"></a> </span> </span></p> </div></div> <p><strong>TL;DR –</strong> We’re excited to introduce the beta version of the <a href="https://huggingface.co/spaces/mteb/leaderboard?benchmark_name=RTEB%28beta%29">Retrieval Embedding Benchmark (RTEB)</a>, a new benchmark designed to reliably evaluate the retrieval accuracy of embedding models for real-world applications. Existing benchmarks struggle to measure true generalization, while RTEB addresses this with a hybrid strategy of open and private datasets. Its goal is simple: to create a fair, transparent, and application-focused standard for measuring how models perform on data they haven’t seen before.</p>
@@ -36,9 +35,7 @@
 <h2> <a href="#why-existing-benchmarks-fall-short"> </a> <span> Why Existing Benchmarks Fall Short </span>
 </h2>
 <p>While the underlying evaluation methodology and metrics (such as NDCG@10) are well-known and robust, the integrity of existing benchmarks is often set back by the following issues:</p>
-<p><strong>The Generalization Gap</strong>. The current benchmark ecosystem inadvertently encourages "teaching to the test." When training data sources overlap with evaluation datasets, a model's score can become inflated, undermining a benchmark's integrity. This practice, whether intentional or not, is evident in the training datasets of several models. This creates a feedback loop where models are rewarded for memorizing test data rather than developing robust, generalizable capabilities.</p>
-<p>Because of the above, models with a lower zero-shot score<a href="#footnote-1">[1]</a> may perform very well on the benchmark, without generalizing to new problems. For this reason, models with slightly lower benchmark performance and a higher zero-shot score are often recommended instead.</p>
-<figure> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/rteb/mteb-zero-shot-models.png"> <figcaption>From <a href="https://arxiv.org/abs/2506.21182">Chung et al. (2025)</a></figcaption>
+<p><strong>The Generalization Gap</strong>. The current benchmark ecosystem inadvertently encourages "teaching to the test." When training data sources overlap with evaluation datasets, a model's score can become inflated, undermining a benchmark's integrity. This practice, whether intentional or not, is evident in the training datasets of several models. This creates a feedback loop where models are rewarded for memorizing test data rather than developing robust, generalizable capabilities.</p> <figure> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/rteb/mteb-zero-shot-models.png"> <figcaption>From <a href="https://arxiv.org/abs/2506.21182">Chung et al. (2025)</a></figcaption>
 </figure> <p><strong>Misalignment with Today’s AI Applications</strong>. Many benchmarks are poorly aligned with the enterprise use cases that developers are building today. They often rely on academic datasets or on retrieval tasks derived from QA datasets, which, while useful in their own right, were not designed to evaluate retrieval and can fail to capture the distributional biases and complexities encountered in real-world retrieval scenarios. Benchmarks which do not possess these issues are often too narrow, focusing on a single domain like code retrieval, making them unsuitable for evaluating general-purpose models.</p>
 <h2> <a href="#introducing-rteb"> </a> <span> Introducing RTEB </span>
 </h2>
@@ -232,7 +229,151 @@
 </tbody> </table>
 </div>
 <h4> <a href="#closed"> </a> <span> Closed </span>
-</h4> </div></div>
+</h4>
+<div> <table> <thead><tr>
+<th>Dataset</th>
+<th>Dataset Groups</th>
+<th>Open/Closed</th>
+<th>Dataset URL</th>
+<th>Comments</th>
+<th>Repurposed from QA</th>
+<th>Description and Reason for Inclusion</th>
+</tr> </thead><tbody><tr>
+<td>_GermanLegal1</td>
+<td>german, legal</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This dataset is derived from real-world judicial decisions and employs a combination of legal citation matching and BM25 similarity. The BM25 baseline poses a slight risk as it biases the data outside of citation matching. A subset of the dataset was manually verified to ensure correctness and quality.</td>
+</tr>
+<tr>
+<td>_JapaneseLegal1</td>
+<td>japanese, legal</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This dataset comprises 8.75K deduplicated law records retrieved from the official Japanese government website e-Gov, ensuring authoritative and accurate content. Record titles are used as queries, while record bodies are used as documents.</td>
+</tr>
+<tr>
+<td>_FrenchLegal1</td>
+<td>french, legal</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This dataset comprises case laws from the French court "Conseil d'Etat," systematically extracted from the OPENDATA/JADE repository, focusing on tax-related cases. Queries are the title of each document, ensuring that the labels are clean.</td>
+</tr>
+<tr>
+<td>_EnglishFinance1</td>
+<td>english, finance</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This retrieval dataset has been repurposed for retrieval from TAT-QA, a large-scale QA dataset using tabular and textual content.</td>
+</tr>
+<tr>
+<td>_EnglishFinance4</td>
+<td>english, finance</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This dataset is a combination of Stanford's Alpaca and FiQA with another 1.3k pairs custom generated using GPT3.5, and then further cleaned to ensure that the data quality is high.</td>
+</tr>
+<tr>
+<td>_EnglishFinance2</td>
+<td>english, finance</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This dataset is a finance-domain dataset that is composed of questions for each conversation turn based on simulated conversation flow. The curation is done by expert annotators, ensuring a reasonably high data quality. The questions are repurposed as queries, while the conversation block is repurposed as documents for retrieval.</td>
+</tr>
+<tr>
+<td>_EnglishFinance3</td>
+<td>english, finance</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This dataset is a collection of question-answer pairs curated to address various aspects of personal finance.</td>
+</tr>
+<tr>
+<td>_Code1</td>
+<td>code</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>We extracted functions from GIthub repos. With syntactic parsing, doc strings and function signature are obtained from the functions. Only functions with docstrings are kept. Doc strings are used as queries, with function signature (which includes function name and argument names) removed to making the task harder. Each language is a subset with separate corpus.</td>
+</tr>
+<tr>
+<td>_JapaneseCode1</td>
+<td>code, japanese</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This is a subset of the CoNaLa challenge with Japanese questions.</td>
+</tr>
+<tr>
+<td>_EnglishHealthcare1</td>
+<td>english, healthcare</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This dataset comprises 2,019 question-answer pairs annotated by 15 experts, each holding at least a Master's degree in biomedical sciences. A medical doctor led the annotation team, verifying each question-answer pair to ensure data quality.</td>
+</tr>
+<tr>
+<td>_GermanHealthcare1</td>
+<td>german, healthcare</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This dataset comprises of 465 German-language medical dialogues between patients and healthcare assistants, each entry containing detailed patient descriptions and corresponding professional responses. We have manually verified a subset of the dataset for accuracy and data quality.</td>
+</tr>
+<tr>
+<td>_German1</td>
+<td>german</td>
+<td>Closed</td>
+<td></td>
+<td>No</td>
+<td></td>
+<td>This dataset is a dialogue summarization dataset derived from multiple public corpora, which have cleaned and preprocessed into a unified format. Each dialogue has been manually summarized and labeled with topics by annotators, ensuring high-quality and clean data. Dialog summaries are used as queries, while full dialogues are used as documents.</td>
+</tr>
+<tr>
+<td>_French1</td>
+<td>french</td>
+<td>Closed</td>
+<td></td>
+<td>Yes</td>
+<td></td>
+<td>This dataset comprises over 4118 French trivia question-answer pairs, each accompanied by relevant Wikipedia context. We have manually verified a subset of the dataset for accuracy and data quality.</td>
+</tr>
+</tbody> </table>
+</div> <h2> <a href="#launching-rteb-a-community-effort"> </a> <span> Launching RTEB: A Community Effort </span>
+</h2>
+<p>RTEB is launching today in beta. We believe building a robust benchmark is a community effort, and we plan to evolve RTEB based on feedback from developers and researchers alike. We encourage you to share your thoughts, suggest new datasets, find issues in existing datasets and help us build a more reliable standard for everyone. Please feel free to join the discussion or open an issue in the <a href="https://github.com/embeddings-benchmark/mteb">MTEB repository on Github</a>.</p>
+<h2> <a href="#limitations-and-future-work"> </a> <span> Limitations and Future Work </span>
+</h2>
+<p>To highlight areas for improvement we want to be transparent about RTEB's current limitations and our plans for the future.</p>
+<ul>
+<li><strong>Benchmark Scope:</strong> RTEB is focused on realistic, retrieval-first use cases. Highly challenging synthetic datasets are not a current goal but could be added in the future.</li>
+<li><strong>Modality:</strong> The benchmark currently evaluates text-only retrieval. We plan to incorporate text-image and other multimodal retrieval tasks in future releases.</li>
+<li><strong>Language Coverage:</strong> We are actively working to expand our language coverage, particularly for major languages like Chinese and Arabic, as well as more low-resource languages. If you know of high-quality datasets that fits these criteria please let us know.</li>
+<li><strong>Repurposing of QA dataset</strong>: About 50% of the current retrieval datasets are repurposed from QA datasets, which might lead to issues such as a strong lexical overlap between the question and the context, favoring models that rely on keyword matching over true semantic understanding.</li>
+<li><strong>Private datasets:</strong> To test for generalization, we utilize private datasets that are only accessible to MTEB maintainers. To maintain fairness, all maintainers commit to not publishing models trained on these datasets and only testing on these private datasets through public channels, ensuring no company or individual receives unfair advantages.</li>
+</ul>
+<p>Our goal is for RTEB to become a community-trusted standard for retrieval evaluation.</p>
+<p>The RTEB leaderboard is available today on <a href="https://huggingface.co/spaces/mteb/leaderboard?benchmark_name=RTEB%28beta%29">Hugging Face</a> as a part of the new Retrieval section on the MTEB leaderboard. We invite you to check it out, evaluate your models, and join us in building a better, more reliable benchmark for the entire AI community.</p>
+<hr>
+<p><span>[1] Zero-shot score is the proportion of the evaluation set which the model provider have explicitly stated to have trained on. This typically only includes the training split.</span></p>
+</div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

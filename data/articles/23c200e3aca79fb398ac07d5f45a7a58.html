@@ -4,144 +4,55 @@
 <meta charset="UTF-8">
 <title>Snail mail letters target Trezor and Ledger users in crypto-theft attacks</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Snail mail letters target Trezor and Ledger users in crypto-theft attacks</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/14/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/snail-mail-letters-target-trezor-and-ledger-users-in-crypto-theft-attacks/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/14/2026 4:15:25 PM | <a href="https://www.bleepingcomputer.com/news/security/snail-mail-letters-target-trezor-and-ledger-users-in-crypto-theft-attacks/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-	   
-<p><img alt="Ledger" src="https://www.bleepstatic.com/content/hl-images/2026/02/13/ledger-zoom.jpg" /></p>
-
-
-<p>Threat actors are sending physical letters pretending to be from Trezor and Ledger, makers of cryptocurrency hardware wallets, to trick users into submitting recovery phrases in crypto theft attacks.</p>
-
-
-<p>These phishing letters claim recipients must complete a mandatory "Authentication Check" or "Transaction Check" to avoid losing access to wallet functionality, creating a sense of urgency to pressure victims into scanning QR codes that lead to malicious websites.</p>
-
-
-<h2>Snail mail QR code crypto scams</h2>
-
-<p>Hardware wallet users report receiving snail mail letters printed on letterhead that impersonate official communications from Trezor and Ledger security and compliance teams.</p>
-
-<p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz" /></a>
-</p>
-
-
-<p>It is unclear what the targeting criteria are for these letters, but both <a href="https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/" target="_blank">Trezor</a> and <a href="https://www.bleepingcomputer.com/news/security/physical-addresses-of-270k-ledger-owners-leaked-on-hacker-forum/" target="_blank">Ledger</a> [<a href="https://www.bleepingcomputer.com/news/security/ledger-customers-impacted-by-third-party-global-e-data-breach/" target="_blank">2</a>] have suffered data breaches in the past couple of years that have exposed customer contact information.</p>
-
-
-<p>A letter impersonating Trezor received by cybersecurity expert <a href="https://x.com/ddd1ms/status/2022031180502380647" target="_blank">Dmitry Smilyanets</a> claims that an "Authentication Check will soon become a mandatory part of Trezor," warning users to complete the process by February 15, 2026, or risk losing functionality on their devices.</p>
-
-
-<p>"To avoid any disruption to your Trezor Suite access, please scan the QR code with your mobile device and follow the instructions on our website to enable Authentication Check by February 15th, 2026," reads the fake Trezor letter.</p>
-
-
-<p>"Note: While you may have already received the notification on your Trezor device and enabled Authentication Check, completing this process is still required to fully activate the feature and ensure your device is synchronized with the full functionality of Authentication Check."</p>
-
-
-<div>
-<figure><img alt="Physical phishing letter sent to Trezor users" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/trezor-snail-mail.jpg" /><figcaption><strong>Physical phishing letter sent to Trezor users</strong><br /><em>Source: Smilyanets</em></figcaption></figure></div>
-
-<p>A similar Ledger-themed letter was <a href="https://x.com/0x001408/status/2022110402285645873" target="_blank">shared on X</a>, claiming a "Transaction Check" would soon become mandatory and warning users to scan a QR code to enable the feature by October 15, 2025, to avoid disruptions.</p>
-
-
-<p>Scanning the QR codes leads victims to phishing sites impersonating official Trezor and Ledger setup pages, including:</p>
-
-
-<ul><li>https://trezor.authentication-check[.]io/</li>
-	<li>https://ledger.setuptransactioncheck[.]com/</li>
-</ul><p>At the time of writing, the Ledger phishing domain is offline, while the Trezor phishing site remains live but is now flagged by Cloudflare as a phishing site.</p>
-
-
-<p>The Trezor phishing page displays a warning that users must complete an authentication check by February 15, 2026, stating:</p>
-
-
-<p>"Complete Authentication Check setup by February 15, 2026 unless you purchased a Trezor Safe 7, Trezor Safe 5, Trezor Safe 3, or Trezor Safe 1 after November 30, 2025. In that case, it is already pre-configured, and no action is needed," reads the phishing site.</p>
-
-
-<div>
-<figure><img alt="Trezor phishing site &quot;Authentication Check&quot; landing page" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/trezor-authentication-site-.jpg" /><figcaption><strong>Trezor phishing site "Authentication Check" landing page</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>Clicking the "Get Started" button leads to another page that warns users that failure to complete the authentication process may result in limited or blocked access to Trezor, transaction signing errors, and disruption with future Trezor updates.</p>
-
-
-<p>These warnings are designed to create further urgency so victims continue to the next part of the setup process.</p>
-
-
-<p>If victims proceed, they are taken to a final phishing page that asks them to enter their wallet recovery phrase.</p>
-
-
-<p>The page allows users to enter 24-, 20-, or 12-word recovery phrases and claims that this information is required to verify device ownership and enable the authentication feature.</p>
-
-
-<div>
-<figure><img alt="Phishing site attempting to steal recovery phrase" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/enter-recovery-phrase.jpg" /><figcaption><strong>Phishing site attempting to steal recovery phrase</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>Once entered, the recovery phrase is transmitted to the threat actor through a backend API endpoint at https://trezor.authentication-check[.]io/black/api/send.php.</p>
-
-
-<p>This allows attackers to import the victim's wallet onto their own devices and steal funds from the wallet.</p>
-
-
-<p>While phishing emails <a href="https://www.bleepingcomputer.com/news/security/trezors-support-platform-abused-in-crypto-theft-phishing-attacks/" target="_blank">targeting Trezor</a> and <a href="https://www.bleepingcomputer.com/news/security/new-fake-ledger-data-breach-emails-try-to-steal-crypto-wallets/" target="_blank">Ledger users</a> are common, physical mail phishing campaigns remain relatively rare.</p>
-
-
-<p>In 2021, <a href="http://scammers%20mailed%20fake%20Ledger%20replacement%20devices" target="_blank">threat actors mailed modified Ledger devices</a> designed to steal recovery phrases during setup.</p>
-
-
-<p>A similar <a href="http://x.com/JacobCanfield/status/1916977850344694024" target="_blank">postal phishing campaign</a> was also reported in April targeting Ledger users.</p>
-
-
-<h2>Never share recovery phrases</h2>
-
-<p>Hardware wallet recovery phrases, also known as seed phrases, are textual representations of the private keys that control access to cryptocurrency wallets.</p>
-
-
-<p>Therefore, anyone who has access to a wallet's recovery phrase gains full control over the wallet and its funds.</p>
-
-
-<p>Hardware wallet manufacturers such as Trezor and Ledger will never ask users to enter, scan, upload, or share their recovery phrase.</p>
-
-
-<p>Recovery phrases should be entered directly on the hardware wallet device when restoring a wallet, and never on a computer, mobile device, or website.</p>
-
-
-
-	   
-<div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
-    </p>
-    <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
-<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
-
-        </div>
-</div>
-
-           
-          
- 
-	  </div></div>
+    <div><div> <p><img alt="Ledger" src="https://www.bleepstatic.com/content/hl-images/2026/02/13/ledger-zoom.jpg"></p> <p>Threat actors are sending physical letters pretending to be from Trezor and Ledger, makers of cryptocurrency hardware wallets, to trick users into submitting recovery phrases in crypto theft attacks.</p> <p>These phishing letters claim recipients must complete a mandatory "Authentication Check" or "Transaction Check" to avoid losing access to wallet functionality, creating a sense of urgency to pressure victims into scanning QR codes that lead to malicious websites.</p> <h2>Snail mail QR code crypto scams</h2> <p>Hardware wallet users report receiving snail mail letters printed on letterhead that impersonate&nbsp;official communications from Trezor and Ledger security and compliance teams.</p> <p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz"></a>
+</p> <p>It is unclear what the targeting criteria are for these letters, but both <a href="https://www.bleepingcomputer.com/news/security/trezor-support-site-breach-exposes-personal-data-of-66-000-customers/" target="_blank">Trezor</a> and <a href="https://www.bleepingcomputer.com/news/security/physical-addresses-of-270k-ledger-owners-leaked-on-hacker-forum/" target="_blank">Ledger</a> [<a href="https://www.bleepingcomputer.com/news/security/ledger-customers-impacted-by-third-party-global-e-data-breach/" target="_blank">2</a>] have suffered data breaches in the past couple of years that have exposed customer contact information.</p> <p>A letter impersonating Trezor received by cybersecurity expert <a href="https://x.com/ddd1ms/status/2022031180502380647" target="_blank">Dmitry Smilyanets</a> claims&nbsp;that an "Authentication Check&nbsp;will soon become a mandatory part of Trezor," warning users to complete the process by February 15, 2026,&nbsp;or risk losing functionality on their devices.</p> <p>"To avoid any disruption to your Trezor Suite access, please scan the QR code with your mobile device and follow the instructions on our website to enable Authentication Check by February 15th, 2026," reads the fake Trezor letter.</p> <p>"Note: While you may have already received the notification on your Trezor device and enabled Authentication Check, completing this process is still required to fully activate the feature and ensure your device is synchronized with the full functionality of Authentication Check."</p> <div>
+<figure><img alt="Physical phishing letter sent to Trezor users" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/trezor-snail-mail.jpg"><figcaption><strong>Physical phishing letter sent to Trezor users</strong><br><em>Source:&nbsp;Smilyanets</em></figcaption></figure></div> <p>A similar Ledger-themed letter was <a href="https://x.com/0x001408/status/2022110402285645873" target="_blank">shared on X</a>, claiming&nbsp;a "Transaction Check" would soon become mandatory and warning users to scan a QR code to enable the feature by October 15, 2025, to avoid disruptions.</p> <p>Scanning the QR codes leads victims to phishing sites impersonating official Trezor and Ledger setup pages, including:</p> <ul><li>https://trezor.authentication-check[.]io/</li> <li>https://ledger.setuptransactioncheck[.]com/</li>
+</ul><p>At the time of writing, the Ledger phishing domain is offline, while the Trezor phishing site remains live but is now flagged by Cloudflare as a phishing site.</p> <p>The Trezor phishing page displays a warning that users must complete an authentication check by February 15, 2026, stating:</p> <p>"Complete Authentication Check&nbsp;setup by February 15, 2026 unless you purchased a Trezor Safe 7, Trezor Safe 5, Trezor Safe 3, or Trezor Safe 1 after November 30, 2025. In that case, it is already pre-configured, and no action is needed," reads the phishing site.</p> <div>
+<figure><img alt="Trezor phishing site &quot;Authentication Check&quot; landing page" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/trezor-authentication-site-.jpg"><figcaption><strong>Trezor phishing site "Authentication Check" landing page</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>Clicking the "Get Started" button leads to another page that warns users that failure to complete the authentication process may result in limited or blocked access to Trezor, transaction signing errors, and disruption with future Trezor updates.</p> <p>These warnings are designed to create further urgency so victims continue to the next part of the setup process.</p> <p>If victims proceed, they are taken to a final phishing page that asks them to enter their wallet recovery phrase.</p> <p>The page allows users to enter 24-, 20-, or 12-word recovery phrases and claims that this information is required to verify device ownership and enable the authentication feature.</p> <div>
+<figure><img alt="Phishing site attempting to steal recovery phrase" src="https://www.bleepstatic.com/images/news/security/c/cryptocurrency/trezor-ledger-crypto-theft-snail-mail/enter-recovery-phrase.jpg"><figcaption><strong>Phishing site attempting to steal recovery phrase</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>Once entered, the recovery phrase is transmitted to the threat actor through a backend API endpoint at&nbsp;https://trezor.authentication-check[.]io/black/api/send.php.</p> <p>This allows attackers to import the victim's wallet onto their own devices and steal funds from the wallet.</p> <p>While phishing emails <a href="https://www.bleepingcomputer.com/news/security/trezors-support-platform-abused-in-crypto-theft-phishing-attacks/" target="_blank">targeting Trezor</a> and <a href="https://www.bleepingcomputer.com/news/security/new-fake-ledger-data-breach-emails-try-to-steal-crypto-wallets/" target="_blank">Ledger users</a> are common, physical mail phishing campaigns remain relatively rare.</p> <p>In 2021, <a href="http://scammers%20mailed%20fake%20Ledger%20replacement%20devices" target="_blank">threat actors mailed modified Ledger devices</a> designed to steal recovery phrases during setup.</p> <p>A similar <a href="http://x.com/JacobCanfield/status/1916977850344694024" target="_blank">postal phishing campaign</a> was also reported in April targeting Ledger users.</p> <h2>Never share recovery phrases</h2> <p>Hardware wallet recovery phrases, also known as seed phrases, are textual representations of the private keys that control access to cryptocurrency wallets.</p> <p>Therefore, anyone who has access to a wallet's recovery phrase gains full control over the wallet and its funds.</p> <p>Hardware wallet manufacturers such as Trezor and Ledger will never ask users to enter, scan, upload, or share their recovery phrase.</p> <p>Recovery phrases should be entered directly on the hardware wallet device when restoring a wallet, and never on a computer, mobile device, or website.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

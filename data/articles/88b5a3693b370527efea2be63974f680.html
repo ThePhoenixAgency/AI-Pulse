@@ -1,41 +1,57 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>led.run - Transformez n'importe quel écran en panneau LED</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>led.run - Transformez n'importe quel écran en panneau LED</h1>
   <div class="metadata">
-    Source: Korben | Date: 2/12/2026 | Lang: FR |
-    <a href="https://korben.info/led-run-ecran-panneau-led-navigateur.html" target="_blank">Original Article</a>
+    Source: Korben | Date: 2/12/2026 2:42:16 PM | <a href="https://korben.info/led-run-ecran-panneau-led-navigateur.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-1.png" alt="Image illustrant l'article : led.run - Transformez n'importe quel écran en panneau LED" /></p><div><span>Ce qu’il faut retenir</span><div><ol><li>led.run transforme n'importe quel écran en panneau LED géant via une simple URL (ex: led.run/TEXTE), sans installation, dans n'importe quel navigateur</li><li>Tous les paramètres se contrôlent par l'URL (?c=couleur, ?bg=fond, ?speed=vitesse, ?dir=direction), permettant d'automatiser des panneaux d'affichage dynamiques</li><li>20+ thèmes disponibles (néon, CRT rétro, routier, feu d'artifice, Shibuya) avec détection auto du mode statique ou défilement selon la longueur du texte</li></ol><p>Résumé généré par IA</p></div><div><p>Transformer n'importe quel écran en panneau LED géant, avec juste une URL... ça vous chauffe ? C'est en tout cas ce que propose
+    <div><div><article><p><img src="https://korben.info/cdn-cgi/image/width=2560,height=1440,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-1.png" alt="Image illustrant l'article : led.run - Transformez n'importe quel écran en panneau LED"></p><div><span>Ce qu’il faut retenir</span><pre><code>led.run transforme n'importe quel écran en panneau LED géant via une simple URL (ex: led.run/TEXTE), sans installation, dans n'importe quel navigateurTous les paramètres se contrôlent par l'URL (?c=couleur, ?bg=fond, ?speed=vitesse, ?dir=direction), permettant d'automatiser des panneaux d'affichage dynamiques20+ thèmes disponibles (néon, CRT rétro, routier, feu d'artifice, Shibuya) avec détection auto du mode statique ou défilement selon la longueur du texteRésumé généré par IA</code></pre><div><p>Transformer n'importe quel écran en panneau LED géant, avec juste une URL... ça vous chauffe ? C'est en tout cas ce que propose
 <a href="https://led.run/">led.run</a>
 , un petit outil open source sous licence MIT qui fait le taf sans avoir besoin d'installer quoi que ce soit.</p><p>En gros, vous tapez votre texte directement dans l'URL, genre
 <a href="https://led.run/KORBEN%20JE%20T%27AIME">led.run/KORBEN JE T'AIME</a>
-et hop, votre navigateur affiche un gros panneau lumineux comme ce qu'on retrouve dans les concerts ou dans les vitrines de magasin.</p><p>Et ça tourne dans n'importe quel navigateur (même celui de votre grille-pain connecté).</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-2.png" alt="" /></p><p><em>led.run en action avec le thème par défaut - sobre mais efficace</em></p></div><p>Le truc sympa, c'est qu'il y a une vingtaine de thèmes disponibles. Du néon qui clignote au style rétro avec des scanlines façon vieux moniteur CRT, en passant par un mode "panneau routier", un effet feu d'artifice ou encore une ambiance Shibuya sous la pluie. Y'a même un thème "bois artisanal" pour ceux qui veulent faire chic. Attention par contre, sur un vieux smartphone certains effets un peu chargés peuvent ramer.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-1.jpeg" alt="" /></p><p>Et tout se paramètre via l'URL. Vous voulez du texte rouge ? Ajoutez <code>?c=ff0000</code>. Un fond blanc semi-transparent ? <code>?bg=40ffffff</code>. Du défilement vers la droite à vitesse turbo ? <code>?speed=120&amp;dir=right</code>. C'est super car avec ça vous pouvez automatiser plein de trucs. Par exemple je me ferais bien un panneau d'affichage au dessus de la porte du bureau pour dire aux enfants de pas débouler en plein pendant mes
+et hop, votre navigateur affiche un gros panneau lumineux comme ce qu'on retrouve dans les concerts ou dans les vitrines de magasin.</p><p>Et ça tourne dans n'importe quel navigateur (même celui de votre grille-pain connecté).</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-2.png" alt=""></p><p><em>led.run en action avec le thème par défaut - sobre mais efficace</em></p></div><p>Le truc sympa, c'est qu'il y a une vingtaine de thèmes disponibles. Du néon qui clignote au style rétro avec des scanlines façon vieux moniteur CRT, en passant par un mode "panneau routier", un effet feu d'artifice ou encore une ambiance Shibuya sous la pluie. Y'a même un thème "bois artisanal" pour ceux qui veulent faire chic. Attention par contre, sur un vieux smartphone certains effets un peu chargés peuvent ramer.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-1.jpeg" alt=""></p><p>Et tout se paramètre via l'URL. Vous voulez du texte rouge ? Ajoutez </p><pre><code>?c=ff0000</code></pre>. Un fond blanc semi-transparent ? <pre><code>?bg=40ffffff</code></pre>. Du défilement vers la droite à vitesse turbo ? <pre><code>?speed=120&amp;dir=right</code></pre>. C'est super car avec ça vous pouvez automatiser plein de trucs. Par exemple je me ferais bien un panneau d'affichage au dessus de la porte du bureau pour dire aux enfants de pas débouler en plein pendant mes
 <a href="https://twitch.tv/korbenfr">lives Twitch</a>
-(oui c'est les vacances en ce moment...).</p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-3.png" alt="" /></p><p><em>Vive l'éducation positive !</em></p></div><p>D'ailleurs, l'outil détecte automatiquement si votre texte est court ou long. Dix caractères ou moins, ça s'affiche en mode panneau statique. Au-delà, ça défile tout seul. En fait c'est plutôt bien foutu, sauf si vous voulez un long texte en statique... dans ce cas, forcez avec <code>?mode=sign</code> ou <code>?mode=flow</code>.</p><p>Voilà c'est parfait pour transformer un vieil iPad ou une tablette Android en enseigne de bar ("HAPPY HOUR JUSQU'À 21H"), brandir votre téléphone en mode pancarte à un concert pour dire à Taylor Swift que vous voulez l'épouser, ou afficher un "NE PAS DÉRANGER ON BRASSE DU VENT" sur l'écran de la salle de réunion.</p><p>Voilà voilà. Si vous avez une vieille tablette qui traîne, vous savez quoi en faire maintenant.</p><p>C'est
+(oui c'est les vacances en ce moment...).<p></p><div><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/led-run-ecran-panneau-led-navigateur/led-run-ecran-panneau-led-navigateur-3.png" alt=""></p><p><em>Vive l'éducation positive !</em></p></div><p>D'ailleurs, l'outil détecte automatiquement si votre texte est court ou long. Dix caractères ou moins, ça s'affiche en mode panneau statique. Au-delà, ça défile tout seul. En fait c'est plutôt bien foutu, sauf si vous voulez un long texte en statique... dans ce cas, forcez avec </p><pre><code>?mode=sign</code></pre> ou <pre><code>?mode=flow</code></pre>.<p></p><pre><code>Voilà c'est parfait pour transformer un vieil iPad ou une tablette Android en enseigne de bar ("HAPPY HOUR JUSQU'À 21H"), brandir votre téléphone en mode pancarte à un concert pour dire à Taylor Swift que vous voulez l'épouser, ou afficher un "NE PAS DÉRANGER ON BRASSE DU VENT" sur l'écran de la salle de réunion.</code></pre><p>Voilà voilà. Si vous avez une vieille tablette qui traîne, vous savez quoi en faire maintenant.</p><p>C'est
 <a href="https://github.com/led-run/led.run">sur GitHub</a>
 !</p><p>Merci à Lorenper pour la découverte !</p></div>Références<section><ul><li><a href="https://led.run/" target="_blank">https://led.run/</a></li><li><a href="https://led.run/KORBEN%20JE%20T%27AIME" target="_blank">https://led.run/KORBEN%20JE%20T%27AIME</a></li></ul></section><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div></article><section><h2>Articles récents</h2></section></div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

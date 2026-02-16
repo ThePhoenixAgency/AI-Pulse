@@ -1,43 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Power Sequencing Driver For PCIe M.2 Connectors Makes It Into Linux 7.0</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Power Sequencing Driver For PCIe M.2 Connectors Makes It Into Linux 7.0</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/15/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/Linux-7.0-Power-Sequencing" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/15/2026 12:07:23 PM | <a href="https://www.phoronix.com/news/Linux-7.0-Power-Sequencing" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp" /></p><p>
+<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp"></p><p>
 The power sequencing subsystem updates have been merged for the Linux 7.0 cycle. Typically not an area of the kernel too exciting but one new driver addition is the "pwrseq-pcie-m2" to provide power sequencing for PCIe M.2 connectors.
 </p><p>
 This power sequencing driver for PCIe M.2 connectors is part of the effort for being able to <a href="https://www.phoronix.com/news/Linux-Device-Tree-PCIe-M.2">handle PCIe M.2 connectors in Device Tree files</a>. While those on the likes of AMD/Intel x86_64 systems and other ACPI-enabled platforms where the PCIe M.2 interfaces are managed by the firmware/BIOS, for Device Tree platforms the kernel needs to be able to power manage the connectors and associate with Device Tree descriptions.
 </p><p>
 Linux Device Tree support has lacked proper representation of M.2 connectors and that is finally being addressed with Linux 7.0. The Device Tree binding is merged for Mechanical Key M connectors and this initial enablement is tailored to SSDs via the PCIe interface.
-</p><p><img src="https://www.phoronix.net/image.php?id=samsung-970-evo&amp;image=samsung_970evo_4_med" alt="M.2 slot" /></p>
+</p><p><img src="https://www.phoronix.net/image.php?id=samsung-970-evo&amp;image=samsung_970evo_4_med" alt="M.2 slot"></p>
 <p>The new driver is gated by the <em>POWER_SEQUENCING_PCIE_M2</em> Kconfig option for power sequencing of PCIe M.2 connectors exposing interfaces like PCIe, SATA, and UART.
 </p><p>
 This addition in Linux 7.0 is the main highlight of <a href="https://lore.kernel.org/linux-pm/20260210091401.24342-1-bartosz.golaszewski@oss.qualcomm.com/">the power sequencing pull</a> for helping out DT platforms.</p></div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

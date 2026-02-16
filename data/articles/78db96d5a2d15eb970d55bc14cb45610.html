@@ -4,40 +4,53 @@
 <meta charset="UTF-8">
 <title>MongoDB ouvre la recherche vectorielle à ses éditions autogérées</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>MongoDB ouvre la recherche vectorielle à ses éditions autogérées</h1>
   <div class="metadata">
-    Source: ActuIA | Date: 9/24/2025 | Lang: FR |
-    <a href="https://www.actuia.com/actualite/mongodb-ouvre-la-recherche-vectorielle-a-ses-editions-autogerees/" target="_blank">Original Article</a>
+    Source: ActuIA | Date: 9/24/2025 12:40:40 PM | <a href="https://www.actuia.com/actualite/mongodb-ouvre-la-recherche-vectorielle-a-ses-editions-autogerees/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div>
-                        <p><strong>Le 19 septembre dernier, à l’occasion de sa conférence MongoDB.local NYC, l’éditeur new-yorkais a annoncé que la recherche en texte intégral et la recherche vectorielle sont désormais disponibles en avant-première publique dans ses versions autogérées, MongoDB Community Edition et MongoDB Enterprise Server. Jusqu’ici réservées à MongoDB <a href="https://www.actuia.com/acteur/atlas/">Atlas</a>, son service managé dans le cloud, ces capacités avancées deviennent accessibles aux développeurs et aux organisations souhaitant expérimenter localement ou sur site. <br /></strong></p>
+    <div><div> <p><strong>Le 19 septembre dernier, à l’occasion de sa conférence MongoDB.local NYC, l’éditeur new-yorkais a annoncé que la recherche en texte intégral et la recherche vectorielle sont désormais disponibles en avant-première publique dans ses versions autogérées, MongoDB Community Edition et MongoDB Enterprise Server. Jusqu’ici réservées à MongoDB <a href="https://www.actuia.com/acteur/atlas/">Atlas</a>, son service managé dans le cloud, ces capacités avancées deviennent accessibles aux développeurs et aux organisations souhaitant expérimenter localement ou sur site.&nbsp;<br></strong></p>
 <h2>Une réponse aux besoins croissants de l’IA</h2>
-<p>Jusqu’à présent, enrichir les environnements MongoDB autogérés de fonctionnalités de recherche impliquait de recourir à des moteurs externes ou à des bases vectorielles spécialisées. Cette fragmentation ajoutait de la complexité et des coûts, tout en fragilisant les pipelines ETL (extraction, transformation et chargement).  Avec l'intégration native des fonctions MongoDB Search et MongoDB Vector Search aux éditions Community et Enterprise, les développeurs et entreprises peuvent désormais expérimenter des applications d’IA reposant sur des données non structurées (textes, images, vidéos, fichiers audio) sans avoir à recourir à des moteurs externes. La combinaison de la recherche par mot-clé et de la recherche vectorielle permet d’améliorer la précision des résultats, un atout pour les solutions basées sur la génération augmentée par récupération (RAG) et pour les agents IA.</p>
+<p>Jusqu’à présent, enrichir les environnements MongoDB autogérés&nbsp;de fonctionnalités de recherche impliquait de recourir à des moteurs externes ou à des bases vectorielles spécialisées. Cette fragmentation ajoutait de la complexité et des coûts, tout en fragilisant les pipelines ETL (extraction, transformation et chargement).&nbsp; Avec l'intégration native des fonctions MongoDB Search et MongoDB Vector Search aux éditions Community et Enterprise,&nbsp;les développeurs et entreprises peuvent désormais expérimenter des applications d’IA reposant sur des données non structurées (textes, images, vidéos, fichiers audio) sans avoir à recourir à des moteurs externes. La combinaison de la recherche par mot-clé et de la recherche vectorielle permet d’améliorer la précision des résultats, un atout pour les solutions basées sur la génération augmentée par récupération (RAG) et pour les agents IA.</p>
 <h2>Vers une démocratisation de la recherche vectorielle</h2>
 <p>L’annonce intervient alors que la demande pour les bases vectorielles intégrées ne cesse de croître. Selon <a href="https://www.actuia.com/acteur/idc/">IDC</a>, 74 % des organisations prévoient d’y recourir dans le cadre de leurs flux de travail liés à l’IA. En intégrant ces fonctionnalités directement dans ses éditions locales, MongoDB espère séduire une base d’utilisateurs plus large, tout en facilitant la transition vers <a href="https://www.actuia.com/acteur/atlas/">Atlas</a> pour les déploiements en production et à grande échelle.</p>
-<p>Des partenaires clés, tels que <a href="https://www.actuia.com/acteur/langchain/">LangChain</a>, LlamaIndex ou <a href="https://www.actuia.com/acteur/scaleway/">Scaleway</a>, ont participé aux phases de test. Ils saluent une simplification des architectures RAG et une amélioration des performances.  <em>"Ces nouvelles capacités rationalisent le développement tout en offrant des expériences de recherche IA plus précises"</em>, souligne Jon Regueiro Martin, directeur des produits données et services managés chez <a href="https://www.actuia.com/acteur/scaleway/">Scaleway</a>.</p>
-
-                        
-                        
-                                            </div></div>
+<p>Des partenaires clés, tels que <a href="https://www.actuia.com/acteur/langchain/">LangChain</a>, LlamaIndex ou <a href="https://www.actuia.com/acteur/scaleway/">Scaleway</a>, ont participé aux phases de test. Ils saluent une simplification des architectures RAG et une amélioration des performances.&nbsp;&nbsp;<em>"Ces nouvelles capacités rationalisent le développement tout en offrant des expériences de recherche IA plus précises"</em>, souligne Jon Regueiro Martin, directeur des produits données et services managés chez <a href="https://www.actuia.com/acteur/scaleway/">Scaleway</a>.</p> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

@@ -4,120 +4,48 @@
 <meta charset="UTF-8">
 <title>One threat actor responsible for 83% of recent Ivanti RCE attacks</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>One threat actor responsible for 83% of recent Ivanti RCE attacks</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/14/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/one-threat-actor-responsible-for-83-percent-of-recent-ivanti-rce-attacks/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/14/2026 5:02:34 PM | <a href="https://www.bleepingcomputer.com/news/security/one-threat-actor-responsible-for-83-percent-of-recent-ivanti-rce-attacks/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-	   
-<p><img alt="One threat actor responsible for 83% of recent Ivanti RCE attacks" src="https://www.bleepstatic.com/content/hl-images/2023/07/24/Ivanti_headpic.jpg" /></p>
-
-
-<p><em>Update: The article initially listed the wrong CVEs. This has now been corrected to list the CVEs: CVE-2026-1286 and CVE-2026-1340</em></p>
-
-
-<p>Threat intelligence observations show that a single threat actor is responsible for most of the active exploitation of two critical vulnerabilities in Ivanti Endpoint Manager Mobile (EPMM), tracked as CVE-2026-1281 and CVE-2026-1340.</p>
-
-
-<p>The security issues have been flagged as actively <a href="https://www.bleepingcomputer.com/news/security/ivanti-warns-of-two-epmm-flaws-exploited-in-zero-day-attacks/" target="_blank">exploited in zero-day attacks</a> in Ivanti's security advisory, where the company also announced hotfixes.</p>
-
-<p><a href="https://www.wiz.io/lp/gitlab-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q4_INB_FORM_GitLab-Security-Best-Practices-Cheat-Sheet&amp;sfcid=701Vh00000Wn1rmIAB&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=GitLab-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/GitLab-970x250.png" alt="Wiz" /></a>
-</p>
-
-
-<p>Both flaws received a critical severity rating and allow an attacker to inject code without authentication, leading to remote code execution (RCE) on vulnerable systems.</p>
-
-
-<p>A single IP address hosted on bulletproof infrastructure is responsible for over 83% of exploitation activity related to the two vulnerabilities, says threat-focused internet intelligence company GreyNoise.</p>
-
-
-<p>Between February 1st and 9th, the monitoring platform observed 417 exploitation sessions originating from 8 unique source IP addresses, and centered on CVE-2026-1281 and CVE-2026-1340.</p>
-
-
-<p>The highest volume, 83%, comes from 193[.]24[.]123[.]42, hosted by PROSPERO OOO (AS200593), which Censys analysts marked as a bulletproof autonomous system used to target various software products.</p>
-
-
-<div>
-<figure><img alt="Attack sources" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/sources.jpg" /><figcaption><strong>Attack source IPs</strong><br /><em>Source: GreyNoise</em></figcaption></figure></div>
-
-<p>A sharp spike occurred on February 8, with 269 recorded sessions in a single day. The figure is almost 13 times the daily average of 22 sessions, GreyNoise noted.</p>
-
-
-<p>Of the 417 exploitation sessions, 354 (85%) used OAST-style DNS callbacks to verify command execution capability, pointing to initial access broker activity.</p>
-
-
-<p>Interestingly, several published indicators of compromise (IoCs) include IP addresses for Windscribe VPN (185[.]212[.]171[.]0/24) present in GreyNoise telemetry as scanning Oracle WebLogic instances, but no Ivanti exploitation activity.</p>
-
-
-<p>The <a href="http://www.greynoise.io/blog/active-ivanti-exploitation" target="_blank">researchers note</a> that the PROSPERO OOO IP address they saw "is not on widely published IOC lists, meaning defenders blocking only published indicators are likely missing the dominant exploitation source."</p>
-
-
-<p>This IP is not limited to Ivanti targeting, as it simultaneously exploited three more vulnerabilities: CVE-2026-21962 in Oracle WebLogic, CVE-2026-24061 in GNU Inetutils Telnetd, and CVE-2025-24799 in GLPI.</p>
-
-
-<p>The Oracle WebLogic flaw had the lion’s share in session volumes, dwarfing the rest with 2,902 sessions, followed by the Telnetd issue with 497 sessions.</p>
-
-
-<p>Exploitation activity appears fully automated, rotating between three hundred user agents.</p>
-
-
-<div>
-<figure><img alt="Targeted vulnerabilities" src="https://www.bleepstatic.com/images/news/u/1220909/2026/February/targets.jpg" /><figcaption><strong>Targeted vulnerabilities</strong><br /><em>Source: GreyNoise</em></figcaption></figure></div>
-
-<p>Ivanti's fixes for CVE-2026-1281 and CVE-2026-1340 are not permanent. The company promised to release complete patches in the first quarter of this year, with the release of EPMM version 12.8.0.0.</p>
-
-
-<p>Until then, <a href="https://hub.ivanti.com/s/article/Security-Advisory-Ivanti-Endpoint-Manager-Mobile-EPMM-CVE-2026-1281-CVE-2026-1340?language=en_US" target="_blank">it is recommended</a> to use RPM packages 12.x.0.x for EPMM versions 12.5.0.x, 12.6.0.x, and 12.7.0.x, and RPM 12.x.1.x for EPMM versions 12.5.1.0 and 12.6.1.0.</p>
-
-
-<p>The vendor notes that the most conservative approach is to build a replacement EPMM instance and migrate all data there. Instructions on how to do that are <a href="https://forums.ivanti.com/s/article/EPMM-Rebuild-the-EPMM-with-options" target="_blank">available here</a>.</p>
-
-
-<p>Update 2/15 - An Ivanti spokesperson has sent BleepingComputer the following statement: </p>
-
-
-<p>"Ivanti’s recommendation remains the same: customers who have not yet patched should do so immediately, and then review their appliance for any signs of exploitation that may have occurred prior to patching. Applying the patch is the most effective way to prevent exploitation, regardless of how IOCs change over time, especially once a POC is available. The patch requires no downtime and takes only seconds to apply. Ivanti has provided customers with high fidelity indicators of compromise, technical analysis at disclosure, and an Exploitation Detection script developed with NCSC NL, and continues to support customers as we respond to this threat." - Ivanti spokesperson</p>
-
-
-<p><strong>UPDATE [February 15th]:</strong> Article edited to correct two Ivanti vulnerabilities erroneously listed as exploited in the campaign observed by GreyNoise</p>
-
-
-
-	   
-<div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
-    </p>
-    <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
-<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
-
-        </div>
-</div>
-
-           
-          
- 
-	  </div></div>
+    <p>Threat intelligence observations show that a single threat actor is responsible for most of the active exploitation of two critical vulnerabilities in Ivanti Endpoint Manager Mobile (EPMM), tracked as CVE-2026-1281 and CVE-2026-1340. [...]</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

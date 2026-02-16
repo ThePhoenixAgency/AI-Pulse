@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Windows Exploitation Techniques: Winning Race Conditions with Path Lookups</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>Windows Exploitation Techniques: Winning Race Conditions with Path Lookups</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN |
-    <a href="https://projectzero.google/2025/12/windows-exploitation-techniques.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 12/16/2025 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -106,8 +103,8 @@
 <span>}</span>
 </code></pre></div>
 
-<p>The results are shown below:<br />
-<img alt="" /><br />
+<p>The results are shown below:<br>
+<img alt=""><br>
 While it’s a little noisy it seems like the assumption of a linear lookup time is correct. The longer the string, the longer it takes to look it up. For a 32000 character long string this seems to top out at approximately 35μs. Still not enough in my opinion for a useful primitive, but it’s certainly a start.</p>
 
 <p>Now let’s look at the recursive directory approach. In this case, the upper bound is around 16000 directories. This is because each path component must contain at least two characters, a backslash and a single character name (e.g. <strong>\A\A\A…</strong>). Therefore our maximum path limit is halved. Of course we’d make the assumption that the time to go through the lookup process is going to be greater than the time it takes to compare 4 unicode characters, but let’s test to make sure.</p>
@@ -128,7 +125,7 @@ While it’s a little noisy it seems like the assumption of a linear lookup time
 
 <p>The results are shown below:</p>
 
-<p><img alt="" /><br />
+<p><img alt=""><br>
 The results are what we might expect, it seems linear, at least until around 13000 recursive directories where there is a disjoint transition. I ran the test multiple times on the same machine and always got the same issue, however running it on an x64 machine didn’t show the same artifact so I don’t think it’s a problem with the code.</p>
 
 <p>Still, it’s unequivocal that the time to lookup an object is linear based on the number of recursive directories. For a 16000 recursive depth the average lookup time is around 1300μs or approximately 40 times larger than the long path name lookup result. Now of course this comes with downsides. For a start you need to create 16000 or so directory objects in the kernel, each directory takes up some amount of kernel pool memory. On a 64 bit platform this is unlikely to be a problem.</p>
@@ -227,8 +224,8 @@ The results are what we might expect, it seems linear, at least until around 130
 <span>}</span>
 </code></pre></div>
 
-<p>Let’s look at the results of doing this for a single directory:<br />
-<img alt="" /></p>
+<p>Let’s look at the results of doing this for a single directory:<br>
+<img alt=""></p>
 
 <p>The chart shows a more or less linear graph. For a given collision count it’s nowhere near as good as the recursive directory approach, around 100μs versus 1300μs but it is a multiplicative factor in the lookup time which we can abuse.</p>
 
@@ -238,7 +235,7 @@ The results are what we might expect, it seems linear, at least until around 130
 
 <p>The final piece of the puzzle is to bring in Shadow Directories, which allow the Object Manager a fallback path if it can’t find an entry in a directory. You can use almost any other Object Manager directory as a shadow, which will allow us to control the lookup behavior. A Shadow Directory has a crucial difference from symbolic links, they don’t cause a reparse to occur in the lookup process. This means they’re not restricted to the 64 reparse limit. This doesn’t result in an infinite loop as each lookup consumes a path component, eventually there’ll be no more path to lookup. If we put together two directories in the following arrangement we can pass a similar path to our recursive directory lookup, without actually creating all the directories.</p>
 
-<p><img alt="Shadow Directories (1).png" /><br />
+<p><img alt="Shadow Directories (1).png"><br>
 So how does this actually work? If we open a path of the form <strong>\A\A\A\A\A…</strong> the kernel will first lookup the initial A directory. This is the directory on the left of the diagram. It will then try to open the next A directory, which is on the right which again it will find. Next the kernel again looks up A, but in this case it doesn’t exist so as the directory has a shadow link to its parent it looks there instead, finds the same <strong>A</strong> directory and repeats the process. This will continue until we run out of path elements to look up.</p>
 
 <p>So let’s determine the performance of this approach. We’d perhaps expect it to be less performant relative to actually creating all those directories but hopefully it won’t be too far behind. We can use the following code to do the test:</p>
@@ -257,8 +254,8 @@ So how does this actually work? If we open a path of the form <strong>\A\A\A\A\A
 <span>}</span>
 </code></pre></div>
 
-<p>And the results are as follows, the chart includes the original test for the normal recursive lookup as well for comparison.<br />
-<img alt="" /></p>
+<p>And the results are as follows, the chart includes the original test for the normal recursive lookup as well for comparison.<br>
+<img alt=""></p>
 
 <p>Looks good, interestingly based on this test the lookup time is longer for shadow directories than for recursive directories. We still get a weird disjoint region, but in this case it starts earlier, perhaps it’s a cache effect based on the length of the string or something like that?</p>
 
@@ -302,12 +299,11 @@ So how does this actually work? If we open a path of the form <strong>\A\A\A\A\A
 
 <p>You can find the full test code on <a href="https://github.com/tyranid/poc-gtfo-13-poc">Github</a>.</p>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>iOS 26.4 Turns Stolen Device Protection On by Default for All iPhone Users</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>iOS 26.4 Turns Stolen Device Protection On by Default for All iPhone Users</h1>
   <div class="metadata">
-    Source: The Mac Observer | Date: 2/16/2026 8:12:04 PM | Lang: EN |
-    <a href="https://www.macobserver.com/news/ios-26-4-turns-stolen-device-protection-on-by-default-for-all-iphone-users/" target="_blank">Original Article</a>
+    Source: The Mac Observer | Date: 2/16/2026 9:12:04 PM | <a href="https://www.macobserver.com/news/ios-26-4-turns-stolen-device-protection-on-by-default-for-all-iphone-users/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <p>Apple is preparing a security-focused update with <a target="_blank" href="https://www.macobserver.com/news/apple-seeds-first-ios-26-4-developer-beta-after-ios-26-3-release/">iOS 26.4</a>, and this time the company is not asking users to opt in because Stolen Device Protection will automatically turn on for every iPhone after installing the update, which means the phone now protects sensitive data even if someone learns your passcode and physically takes the device.</p> <p>The change targets a real-world theft pattern where attackers watched victims unlock their phones in public and then stole the device to access banking apps, saved passwords, and account settings, so Apple redesigned the behavior of key system actions to depend on biometrics instead of only the passcode.</p> <p>According to Apple’s <a target="_blank" href="https://support.apple.com/en-us/120340">support documentation</a>, “Some features and actions have additional security requirements when your iPhone is away from familiar locations such as home or work.” The company adds that biometric checks ensure only the owner can make critical changes.</p> <h2>What the protection actually does</h2> <p>Once active, the iPhone blocks many sensitive actions unless Face ID or Touch ID confirms identity, and there is no passcode fallback for these actions:</p> <ul>
@@ -37,22 +34,22 @@
 </ol> <p>You can also allow full access at familiar locations like home while keeping protection outside.</p> <p>Before iOS 26.4, users had to enable this feature manually, and many ignored it because of the extra authentication steps, but Apple now treats the trade-off as worth it and ships the feature active by default, while the update itself is currently limited to developers with a public beta expected soon and a wider release planned for spring.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

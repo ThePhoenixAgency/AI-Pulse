@@ -1,57 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>InputPlumber 0.74 Released With Hardware Support Improvements</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>InputPlumber 0.74 Released With Hardware Support Improvements</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/16/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/InputPlumber-0.74" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/16/2026 12:20:45 PM | <a href="https://www.phoronix.com/news/InputPlumber-0.74" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp" /></p><p>
+<p><img alt="HARDWARE" src="https://www.phoronix.com/assets/categories/hardware.webp"></p><p>
 InputPlumber 0.74 is now available for this open-source input routing and control daemon for Linux systems. InputPlumber enables combining of multiple input devices, emulating different inputs, and a variety of other features particularly of benefit for Linux gaming.
 </p><p>
 InputPlumber 0.74 adds in mouse wheel support handling for both horizontal and vertical movement. There is also a number of device specific improvements in InputPlumber 0.74, especially for the GPD Win Mini.
-</p><p><img src="https://www.phoronix.net/image.php?id=2025&amp;image=inputplumber" alt="InputPlumber logo" /></p>
+</p><p><img src="https://www.phoronix.net/image.php?id=2025&amp;image=inputplumber" alt="InputPlumber logo"></p>
 <p>InputPlumber's Steam Deck target has also added the product IDs for the Lenovo Legion Go 2 as well as the MSI Claw series and other adjustments to that target.
 </p><blockquote>"Bug Fixes
 <p>
 - Add wild card matching for claw8 to match Polar Tempest Edition as well
-<br />- Hardware Support: Add new PID's for Steam Deck target
-<br />-Hardware Support: Add scroll wheel to legion go devices
-<br />- Hardware Support: Invert pitch axis for Legion Go 2
-<br />- Improve attribute matching time by only querying specified attribute
-<br />- Target Device: Combine all xbox devices into a single target
-<br />- TargetDevice: support immediate write events
+<br>- Hardware Support: Add new PID's for Steam Deck target
+<br>-Hardware Support: Add scroll wheel to legion go devices
+<br>- Hardware Support: Invert pitch axis for Legion Go 2
+<br>- Improve attribute matching time by only querying specified attribute
+<br>- Target Device: Combine all xbox devices into a single target
+<br>- TargetDevice: support immediate write events
 </p><p>
 Features
 </p><p>
 - add mouse wheel support
-<br />- Hardware Support: Add tap-to-click for GPD Win Mini
-<br />- Hardware Support: Debounce GPD Win Mini macro keys
-<br />- Hardware Support: Ignore tap during movement
-<br />- Hardware Support: Support tap-hold to drag on GPD Win Mini"</p></blockquote>
+<br>- Hardware Support: Add tap-to-click for GPD Win Mini
+<br>- Hardware Support: Debounce GPD Win Mini macro keys
+<br>- Hardware Support: Ignore tap during movement
+<br>- Hardware Support: Support tap-hold to drag on GPD Win Mini"</p></blockquote>
 <p>InputPlumber 0.74 source code as well as generic x86_64 and AArch64 binaries along with RPMs and Debian packages can be downloaded via <a href="https://github.com/ShadowBlip/InputPlumber/releases/tag/v0.74.0">GitHub</a>.</p></div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

@@ -4,54 +4,48 @@
 <meta charset="UTF-8">
 <title>Kimwolf Botnet Lurking in Corporate, Govt. Networks</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Kimwolf Botnet Lurking in Corporate, Govt. Networks</h1>
   <div class="metadata">
-    Source: Krebs on Security | Date: 1/20/2026 | Lang: EN |
-    <a href="https://krebsonsecurity.com/2026/01/kimwolf-botnet-lurking-in-corporate-govt-networks/" target="_blank">Original Article</a>
+    Source: Krebs on Security | Date: 1/20/2026 7:19:13 PM | <a href="https://krebsonsecurity.com/2026/01/kimwolf-botnet-lurking-in-corporate-govt-networks/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-												<p>A new Internet-of-Things (IoT) botnet called <strong>Kimwolf</strong> has spread to more than 2 million devices, forcing infected systems to participate in massive distributed denial-of-service (DDoS) attacks and to relay other malicious and abusive Internet traffic. Kimwolf’s ability to scan the local networks of compromised systems for other IoT devices to infect makes it a sobering threat to organizations, and new research reveals Kimwolf is surprisingly prevalent in government and corporate networks.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/ss-botnet.png" alt="" /></p><p>Image: Shutterstock, @Elzicon.</p></div>
-<p>Kimwolf grew rapidly in the waning months of 2025 by tricking various “residential proxy” services into relaying malicious commands to devices on the local networks of those proxy endpoints. Residential proxies are sold as a way to anonymize and localize one’s Web traffic to a specific region, and the biggest of these services allow customers to route their Internet activity through devices in virtually any country or city around the globe.</p>
-<p>The malware that turns one’s Internet connection into a proxy node is often quietly bundled with various mobile apps and games, and it typically forces the infected device to relay malicious and abusive traffic — including ad fraud, account takeover attempts, and mass content-scraping.</p>
-<p>Kimwolf mainly targeted proxies from <strong>IPIDEA</strong>, a Chinese service that has millions of proxy endpoints for rent on any given week. The Kimwolf operators discovered they could <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">forward malicious commands</a> to the internal networks of IPIDEA proxy endpoints, and then programmatically scan for and infect other vulnerable devices on each endpoint’s local network.</p>
-<p>Most of the systems compromised through Kimwolf’s local network scanning have been unofficial Android TV streaming boxes. These are typically Android Open Source Project devices — not Android TV OS devices or Play Protect certified Android devices — and they are generally marketed as a way to watch unlimited (read:pirated) video content from popular subscription streaming services for a one-time fee.</p>
-<p>However, a great many of these TV boxes ship to consumers with residential proxy software pre-installed. What’s more, they have no real security or authentication built-in: If you can communicate directly with the TV box, you can also easily compromise it with malware.</p>
-<p>While IPIDEA and other affected proxy providers recently have taken steps to block threats like Kimwolf from going upstream into their endpoints (reportedly with varying degrees of success), the Kimwolf malware remains on millions of infected devices.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/ipidea2023.png" alt="" /></p><p>A screenshot of IPIDEA’s proxy service.</p></div>
-<p>Kimwolf’s close association with residential proxy networks and compromised Android TV boxes might suggest we’d find relatively few infections on corporate networks. However, the security firm <strong>Infoblox</strong> said a recent review of its customer traffic found <em>nearly 25 percent of them made a query to a Kimwolf-related domain name since October 1, 2025</em>, when the botnet first showed signs of life.</p>
-<p>Infoblox found the affected customers are based all over the world and in a wide range of industry verticals, from education and healthcare to government and finance.</p>
-<p>“To be clear, this suggests that nearly 25% of customers had at least one device that was an endpoint in a residential proxy service targeted by Kimwolf operators,” Infoblox <a href="https://www.infoblox.com/blog/threat-intelligence/kimwolf-howls-from-inside-the-enterprise/" target="_blank">explained</a>. “Such a device, maybe a phone or a laptop, was essentially co-opted by the threat actor to probe the local network for vulnerable devices. A query means a scan was made, not that new devices were compromised. Lateral movement would fail if there were no vulnerable devices to be found or if the DNS resolution was blocked.”<span></span></p>
-<p><strong>Synthient</strong>, a startup that tracks proxy services and was <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">the first to disclose on January 2</a> the unique methods Kimwolf uses to spread, found proxy endpoints from IPIDEA were present in alarming numbers at government and academic institutions worldwide. Synthient said it spied at least 33,000 affected Internet addresses at universities and colleges, and nearly 8,000 IPIDEA proxies within various U.S. and foreign government networks.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/top50targetedomains.jpeg" alt="" /></p><p>The top 50 domain names sought out by users of IPIDEA’s residential proxy service, according to Synthient.</p></div>
-<p>In a webinar on January 16, experts at the proxy tracking service <strong>Spur</strong> profiled Internet addresses associated with IPIDEA and 10 other proxy services that were thought to be vulnerable to Kimwolf’s tricks. Spur found residential proxies in nearly 300 government owned and operated networks, 318 utility companies, 166 healthcare companies or hospitals, and 141 companies in banking and finance.</p>
-<p>“I looked at the 298 [government] owned and operated [networks], and so many of them were DoD [U.S. Department of Defense], which is kind of terrifying that DoD has IPIDEA and these other proxy services located inside of it,” Spur Co-Founder <strong>Riley Kilmer</strong> said. “I don’t know how these enterprises have these networks set up. It could be that [infected devices] are segregated on the network, that even if you had local access it doesn’t really mean much. However, it’s something to be aware of. If a device goes in, anything that device has access to the proxy would have access to.”</p>
-<p>Kilmer said Kimwolf demonstrates how a single residential proxy infection can quickly lead to bigger problems for organizations that are harboring unsecured devices behind their firewalls, noting that proxy services present a potentially simple way for attackers to probe other devices on the local network of a targeted organization.</p>
-<p>“If you know you have [proxy] infections that are located in a company, you can chose that [network] to come out of and then locally pivot,” Kilmer said. “If you have an idea of where to start or look, now you have a foothold in a company or an enterprise based on just that.”</p>
-<p>This is the third story in our series on the Kimwolf botnet. Next week, we’ll shed light on the myriad China-based individuals and companies connected to the <a href="https://www.humansecurity.com/learn/blog/satori-threat-intelligence-disruption-badbox-2-0/" target="_blank"><strong>Badbox 2.0 botnet</strong></a>, the collective name given to <a href="https://github.com/synthient/public-research/blob/main/2026/01/kimwolf/product_devices.csv" target="_blank">a vast number of Android TV streaming box models</a> that ship with no discernible security or authentication built-in, and with residential proxy malware pre-installed.</p>
-<p>Further reading:</p>
-<p><a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">The Kimwolf Botnet is Stalking Your Local Network</a></p>
-<p><a href="https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/" target="_blank">Who Benefitted from the Aisuru and Kimwolf Botnets?</a></p>
-<p><a href="https://synthient.com/blog/a-broken-system-fueling-botnets" target="_blank">A Broken System Fueling Botnets</a> (Synthient).</p>
-											</div></div>
+    <p>A new Internet-of-Things botnet called Kimwolf has spread to more than 2 million devices, forcing infected systems to participate in massive distributed denial-of-service (DDoS) attacks and to relay other malicious and abusive Internet traffic. Kimwolf's ability to scan the local networks of compromised systems for other IoT devices to infect makes it a sobering threat to organizations, and new research reveals Kimwolf is surprisingly prevalent in government and corporate networks.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

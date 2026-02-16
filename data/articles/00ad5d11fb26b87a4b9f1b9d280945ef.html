@@ -1,160 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub availability report: January 2026</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>GitHub availability report: January 2026</h1>
   <div class="metadata">
-    Source: GitHub Blog | Date: 2/11/2026 | Lang: EN |
-    <a href="https://github.blog/news-insights/company-news/github-availability-report-january-2026/" target="_blank">Original Article</a>
+    Source: GitHub Blog | Date: 2/12/2026 12:12:34 AM | <a href="https://github.blog/news-insights/company-news/github-availability-report-january-2026/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content">
-    <div><section>
-	
-<p>In January, we experienced two incidents that resulted in degraded performance across GitHub services.</p>
-
-
-
-<p><strong>January 13 09:38 UTC (lasting 46 minutes)</strong></p>
-
-
-
-<p>On January 13, 2026, from 09:25 to 10:11 UTC, GitHub Copilot experienced a service outage with error rates averaging 18% and peaking at 100%. This impacted chat features across Copilot Chat, VS Code, JetBrains IDEs, and other dependent products. The incident was triggered by a configuration error introduced during a model update and was initially mitigated by rolling back the change. A secondary recovery phase extended until 10:46 UTC due to upstream provider Open AI experiencing degraded availability for GPT‑4.1 model.</p>
-
-
-
-<p>We have completed a detailed root‑cause review and are implementing stronger monitors, improved test environments, and tighter configuration safeguards to prevent recurrence and accelerate detection and mitigation of future issues.</p>
-
-
-
-<p><strong>January 15 16:56 UTC (lasting 1 hour and 40 minutes)</strong></p>
-
-
-
-<p>On January 15, 2026, between 16:40 UTC and 18:20 UTC, we observed increased latency and timeouts across issues, pull requests, notifications, actions, repositories, API, account login, and an internal service, Alive, that powers live updates on GitHub. An average 1.8% of combined web and API requests saw failure, peaking briefly at 10% early on. The majority of impact was observed for unauthenticated users, but authenticated users were impacted as well.</p>
-
-
-
-<p>This was caused by an infrastructure update to some of our data stores. Upgrading this infrastructure to a new major version resulted in unexpected resource contention, leading to distributed impact in the form of slow queries and increased timeouts across services that depend on these datasets. We mitigated this by rolling back to the previous stable version.</p>
-
-
-
-<p>We are working to improve our validation process for these types of upgrades to catch issues that only occur under high load before full release, improve detection time, and reduce mitigation times in the future.</p>
-
-
-
-<p><strong>Looking ahead</strong> </p>
-
-
-
-<p>Please note that the incidents that occurred on February 9, 2026, will be included in next month’s February Availability Report. In the meantime, you can refer to <a href="https://www.githubstatus.com/incidents/lcw3tg2f6zsd" target="_blank">incident report</a> on the GitHub Status site for more details.</p>
-
-
-
-<hr />
-
-
-
-<p>Follow our <a href="https://www.githubstatus.com/">status page</a> for real-time updates on status changes and post-incident recaps. To learn more about what we’re working on, check out the engineering section on the <a href="https://github.blog/category/engineering/">GitHub Blog</a>.</p>
-	
-
-	<div>
-	<h2>
-		Written by	</h2>
-	
-			<article>
-	<div>
-				
-					
-					<img src="https://avatars.githubusercontent.com/u/6147691?v=4&amp;s=200" alt="Jakub Oleksy" />
-				
-			</div>
-</article>
-	</div>
-</section><section>
-	<h2>
-		Related posts	</h2>
-	<div>
-	<article>
-	<div>
-			<h3>
-				<a href="https://github.blog/news-insights/company-news/pick-your-agent-use-claude-and-codex-on-agent-hq/?utm_source=blog-homepage&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026" target="_self">
-					Pick your agent: Use Claude and Codex on Agent HQ 				</a>
-			</h3>
-			<p>Claude by Anthropic and OpenAI Codex are now available in public preview on GitHub and VS Code with a Copilot Pro+ or Copilot Enterprise subscription. Here’s what you need to know and how to get started today.</p>
-		</div>
-</article>
-<article>
-	
-</article>
-<article>
-	
-</article>
-</div>
-</section><div>
-	<h2>
-		Explore more from GitHub	</h2>
-	<div>
-		<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg" alt="Docs" /></p><h3>
-			Docs		</h3>
-		<p>Everything you need to master GitHub, all in one place.</p>
-					<p>
-				<a href="https://docs.github.com/" target="_blank">
-					Go to Docs											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_95220f.svg" alt="GitHub" /></p><h3>
-			GitHub		</h3>
-		<p>Build what’s next on GitHub, the place for anyone from anywhere to build anything.</p>
-					<p>
-				<a href="https://github.com/" target="_blank">
-					Start building											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_da43dc.svg" alt="Customer stories" /></p><h3>
-			Customer stories		</h3>
-		<p>Meet the companies and engineering teams that build with GitHub.</p>
-					<p>
-				<a href="https://github.com/customer-stories" target="_blank">
-					Learn more											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2023/02/galaxy23-icon.svg" alt="The GitHub Podcast" /></p><h3>
-			The GitHub Podcast		</h3>
-		<p>Catch up on the GitHub podcast, a show dedicated to the topics, trends, stories and culture in and around the open source developer community on GitHub.</p>
-					<p>
-				<a href="https://the-github-podcast.simplecast.com/" target="_blank">
-					Listen now											
-									</a>
-			</p>
-			</div>
-	</div>
-</div></div>
+  <div class="content"><p>In January, we experienced two incidents that resulted in degraded performance across GitHub services. January 13 09:38 UTC (lasting 46 minutes) On January 13, 2026, from 09:25 to 10:11 UTC, GitHub Copilot experienced a service outage with error rates averaging 18% and peaking at 100%. This impacted chat features across Copilot Chat, VS Code, JetBrains IDEs, and other dependent products. The incident was triggered by a configuration error introduced during a model update and was initially mitigated by rolling back the change. A secondary recovery phase extended until 10:46 UTC due to upstream provider Open AI experiencing degraded availability for GPT‑4.1 model. We have completed a detailed root‑cause review and are implementing stronger monitors, improved test environments, and tighter configuration safeguards to prevent recurrence and accelerate detection and mitigation of future issues. January 15 16:56 UTC (lasting 1 hour and 40 minutes) On January 15, 2026, between 16:40 UTC and 18:20 UTC, we observed increased latency and timeouts across issues, pull requests, notifications, actions, repositories, API, account login, and an internal service, Alive, that powers live updates on GitHub. An average 1.8% of combined web and API requests saw failure, peaking briefly at 10% early on. The majority of impact was observed for unauthenticated users, but authenticated users were impacted as well. This was caused by an infrastructure update to some of our data stores. Upgrading this infrastructure to a new major version resulted in unexpected resource contention, leading to distributed impact in the form of slow queries and increased timeouts across services that depend on these datasets. We mitigated this by rolling back to the previous stable version. We are working to improve our validation process for these types of upgrades to catch issues that only occur under high load before full release, improve detection time, and reduce mitigation times in the future. Looking ahead&nbsp; Please note that the incidents that occurred on February 9, 2026, will be included in next month’s February Availability Report. In the meantime, you can refer to incident report on the GitHub Status site for more details. Follow our&nbsp;status page&nbsp;for real-time updates on status changes and post-incident recaps. To learn more about what we’re working on, check out the engineering section on the&nbsp;GitHub Blog. Written by Related posts Pick your agent: Use Claude and Codex on&nbsp;Agent&nbsp;HQ&nbsp; Claude by Anthropic and OpenAI Codex are now available in public preview on GitHub and VS Code with a Copilot Pro+ or Copilot Enterprise subscription. Here’s what you need to know and how to get started today. Explore more from GitHub Docs Everything you need to master GitHub, all in one place. Go to Docs GitHub Build what’s next on GitHub, the place for anyone from anywhere to build anything. Start building Customer stories Meet the companies and engineering teams that build with GitHub. Learn more The GitHub Podcast Catch up on the GitHub podcast, a show dedicated to the topics, trends, stories and culture in and around the open source developer community on GitHub. Listen now</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>A Moog-style polyphonic synthesizer built in Python</title>
 <style>
@@ -18,30 +16,28 @@
 <body>
   <h1>A Moog-style polyphonic synthesizer built in Python</h1>
   <div class="metadata">
-    Source: Adafruit Blog | Date: 2/16/2026 8:15:36 PM | Lang: EN |
-    <a href="https://blog.adafruit.com/2026/02/16/a-moog-style-polyphonic-synthesizer-built-in-python/" target="_blank">Original Article</a>
+    Source: Adafruit Blog | Date: 2/16/2026 9:15:36 PM | <a href="https://blog.adafruit.com/2026/02/16/a-moog-style-polyphonic-synthesizer-built-in-python/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>VOOG, an Virtual Analog Synthesizer is a Moog-style polyphonic synthesizer built in Python with a tkinter GUI inspired by the Subsequent 37. Features 3 oscillators with sine, saw, square, and triangle waveforms Moog ladder filter (24dB/oct) with resonance and envelope modulation Dual ADSR envelopes for amplitude and filter LFO with 4 waveforms and 3 modulation destinations (filter, pitch, amp) […]</p>
-    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+    <p>VOOG, an Virtual Analog Synthesizer is a Moog-style polyphonic synthesizer built in Python with a tkinter GUI inspired by the Subsequent 37. Features 3 oscillators&nbsp;with sine, saw, square, and triangle waveforms Moog ladder filter&nbsp;(24dB/oct) with resonance and envelope modulation Dual ADSR envelopes&nbsp;for amplitude and filter LFO&nbsp;with 4 waveforms and 3 modulation destinations (filter, pitch, amp) […]</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

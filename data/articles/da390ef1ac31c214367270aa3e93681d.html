@@ -24,32 +24,27 @@
 <body>
   <h1>«Cela a été une véritable erreur !» : le passage au 80 km/h, un échec au coût amer</h1>
   <div class="metadata">
-    Source: Le Figaro | Date: 2/16/2026 7:41:49 PM | Lang: FR |
-    <a href="https://www.lefigaro.fr/actualite-france/cela-a-ete-une-veritable-erreur-le-passage-au-80-km-h-un-echec-au-cout-amer-20260216" target="_blank">Original Article</a>
+    Source: Le Figaro | Date: 2/16/2026 8:41:49 PM | <a href="https://www.lefigaro.fr/actualite-france/cela-a-ete-une-veritable-erreur-le-passage-au-80-km-h-un-echec-au-cout-amer-20260216" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <article> <p><span>Réservé aux abonnés</span>
-</p> <div> <figure> <p><img alt="Panneau de limitation de vitesse à 80 km/h, installé le long de la route nationale 122, à hauteur de Laveissière, dans le Cantal."> </p> <figcaption>Panneau de limitation de vitesse à 80 km/h, installé le long de la route nationale 122, à hauteur de Laveissière, dans le Cantal.<span> François BOUCHON / Le Figaro </span></figcaption> </figure> </div> <p> <strong>RÉCIT -</strong> Pas moins de 52&nbsp;départements y ont renoncé pour repasser au 90&nbsp;km/h sur le réseau départemental. La mesure imposée par Édouard Philippe, qui avait été le détonateur des «&nbsp;gilets jaunes&nbsp;», est un fiasco.</p><a href="#fig-a11y-skip-main-pave_atf_artferme"> Passer la publicité
-</a> <div> <p>Provoquant une colère noire dans le pays et déclenchant le mouvement des «&nbsp;gilets jaunes&nbsp;», le 80&nbsp;km/h, qui a détrôné le 90&nbsp;km/h sur le réseau départemental français en 2018, est aujourd’hui en perte de vitesse. Huit ans après sa mise en œuvre, la mesure qui avait creusé la fracture entre le monde rural et le monde urbain est même moribonde. Décompte implacable&nbsp;: c’est désormais plus de la moitié des départements en métropole qui ont délaissé le 80&nbsp;km/h pour revenir au 90&nbsp;km/h.</p> <p>Après la Haute-Marne - toute première à être repassée au 90&nbsp;km/h&nbsp;-, suivie de la Corrèze, du Cantal et de tant d’autres, l’Eure vient de changer ses panneaux, devenant le 52<sup>e&nbsp;</sup>département à jeter l’éponge. Après tant de reculades,&nbsp;<a href="https://www.lefigaro.fr/actualite-france/2017/12/11/01016-20171211ARTFIG00124-edouard-philippe-favorable-au-80-kmh-sur-le-reseau-secondaire.php">le 80&nbsp;km/h imposé par Édouard Philippe,</a>&nbsp;alors premier ministre, apparaît comme un fiasco. «&nbsp;<em>Cela a été une véritable erreur&nbsp;! J’en voudrai toute ma vie à Édouard Philippe de cette intransigeance&nbsp;!&nbsp;»</em>, fulmine Pascal Coste, le président de la Corrèze.</p> <p> <span>À lire aussi</span> <a href="http://www.lefigaro.fr/bordeaux/gironde-decouvrez-les-routes-les-plus-surveillees-par-les-voitures-radar-banalisees-qui-traquent-les-exces-de-vitesse-20230216"> <span>Gironde&nbsp;: découvrez les routes les plus surveillées par les «voitures radar banalisées», qui traquent les excès de vitesse</span> </a>
-</p> <p>Ce retour à la…</p> <div> <p> Cet article est réservé aux abonnés. <span>Il vous reste 91% à découvrir.</span> </p> <div> <figure> <p><img alt="Le Figaro"> </p> </figure> <p>Vous avez envie de lire la suite ?</p> <p>Débloquez tous les articles immédiatement.</p> <p> Déjà abonné&nbsp;? <a href="https://connect.lefigaro.fr/login?client=horizon_web&amp;type=main&amp;redirect_uri=https%3A%2F%2Fwww.lefigaro.fr%2Factualite-france%2Fcela-a-ete-une-veritable-erreur-le-passage-au-80-km-h-un-echec-au-cout-amer-20260216"> Connectez-vous </a> </p> </div>
-</div> </div></article> </div></div>
+    <p>RÉCIT - Pas moins de 52 départements y ont renoncé pour repasser au 90 km/h sur le réseau départemental. La mesure imposée par Édouard Philippe, qui avait été le détonateur des « gilets jaunes », est un fiasco.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

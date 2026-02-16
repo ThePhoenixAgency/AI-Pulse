@@ -4,238 +4,43 @@
 <meta charset="UTF-8">
 <title>How to Personalize Claude Code</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>How to Personalize Claude Code</h1>
   <div class="metadata">
-    Source: Towards Data Science | Date: 2/10/2026 | Lang: EN |
-    <a href="https://towardsdatascience.com/how-to-personalize-claude-code/" target="_blank">Original Article</a>
+    Source: Towards Data Science | Date: 2/10/2026 1:00:00 PM | <a href="https://towardsdatascience.com/how-to-personalize-claude-code/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p> written a lot about how maximize the effectiveness of Claude Code. I’ve written about specific techniques I apply whenever I’m using the tool. However, there are other focus areas you can have to get even more out of Claude Code. Today, I’ll be talking about one of them: Making all information accessible to Claude Code.</p>
-
-
-
-<p>I’ll discuss how I ensure that almost everything I do is both tracked and stored locally on my computer, inside a specific master folder, where all information is contained. I, for example, store:</p>
-
-
-
-<ul>
-<li>All my marketing material, like LinkedIn posts, X posts, and webinars</li>
-
-
-
-<li>All of the code I write</li>
-
-
-
-<li>Knowledge I acquire</li>
-</ul>
-
-
-
-<p>And every other piece of information I encounter during my workday. If it’s not stored locally on my computer, it should at least be accessible for Claude Code, for example, via the Notion API.</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/image-28.png" alt="" /><figcaption>This infographic highlights the main contents of this article. I’ll discuss how you can get more out of Claude Code by making all information accessible to the coding agent. To achieve this, you can follow two simple steps. Store all of your information and make it accessible to Claude Code. Image by Gemini.</figcaption></figure>
-
-
-
-<p>I’m not sponsored by Claude Code in the writing of this article; I’m simply an avid user of the product.</p>
-
-
-
-<h2>Why do you need to make information accessible?</h2>
-
-
-
-<p>Most developers know that it’s best practice to document everything they do. However, documentation can sometimes feel time-consuming and boring, and is thus not always done. </p>
-
-
-
-<p>I would argue, however, that not documenting a lot of what you do is more time-consuming in the long run. You spend more time trying to find information that is not there or having to figure out information again because you didn’t store it earlier.</p>
-
-
-
-<p>Getting into a habit of storing all the information you encounter is incredibly useful, especially when you can have easy access to all of this information with an AI agent. Furthermore, if you actively use an AI agent to complete a lot of your tasks, it will perform better because you have given it a lot more context with the documentation you’ve given it.</p>
-
-
-
-<p>Simpler put: </p>
-
-
-
-<blockquote>
-<p>You should store all your information because it saves you time and it makes your AI agents more efficient.</p>
-</blockquote>
-
-
-
-<h2>How to make all information accessible to Claude Code</h2>
-
-
-
-<p>Making all information accessible to Claude Code essentially consists of two steps.</p>
-
-
-
-<ol>
-<li>Store all the information you encounter.</li>
-
-
-
-<li>Keep it in a folder that Claude Code has access to.</li>
-</ol>
-
-
-
-<p>I’ll have one section per step to dive deeper into how to do it in practice.</p>
-
-
-
-<h3>Store all the information you encounter</h3>
-
-
-
-<p>This task sounds super simple, and in theory, it is very simple, because you simply need to store all context locally on your computer. In practice, however, it’s a bit harder. The reason for this is that storing such information can be time-consuming, and in many cases, information is only communicated orally and not in a written manner, so you have to explicitly take action in order to store it.</p>
-
-
-
-<p>I have two recommendations to make storing all information easier. Number one is using a transcription tool such as MacWhisper or Superwhisper. These tools make it super easy to press a single button, speak to your computer, and have the text quickly written down.</p>
-
-
-
-<p>This lowers the threshold for writing a lot of information to your computer, which is super valuable if you want to store a lot of information. Furthermore, this is incredibly valuable when prompting Claude Code as well, and it saves me many hours each week. Just this week, it’s already saved me four hours of writing time.</p>
-
-
-
-<p>The second is to keep the motto of storing all the information in the back of your head at all times. If you constantly remind yourself of the benefits of writing things down and having it accessible for later, it will be easier to apply this principle. I, for example, have specific task reminders that remind me to write down general knowledge I’ve learned several times per week. </p>
-
-
-
-<p>Furthermore, you should give Claude Code access to all pieces of information it needs access to. You can, for example, give it access to your Notion page where you keep a lot of your documentation. You can give it access to mail or Slack messages. Of course, you need to take into account the security concerns regarding connecting to these applications. </p>
-
-
-
-<p>If you want a safer option, you can also download content as PDFs or text files and store it locally, which, of course, reduces or completely eliminates most of the security concerns.</p>
-
-
-
-<hr />
-
-
-
-<p>I personally download the most critical pieces of information, such as the ideal customer profile, the documentation for our CDK stack, marketing material, and so on, to store them as local files and make them accessible for my agent in the future.</p>
-
-
-
-<h3>Access the information</h3>
-
-
-
-<p>Now that you’ve stored all of your information, you simply need to access it. There are, of course, many tools out there that can access or search folders of information and also access external information via APIs.</p>
-
-
-
-<p>Personally, I use Claude Code because it has a simple setup. You can easily access every piece of information I store locally on my computer, and I’ve noticed it’s super effective at navigating my folders and finding the relevant files and information I want to find.</p>
-
-
-
-<p>Claude Code does not use vector search and instead uses bash commands to search through the folders. Anthropic has itself commented on the fact that the first versions of the tool started with vector search, but they found out that searching files with bash commands gives higher quality output, though it’s a bit slower in many cases.</p>
-
-
-
-<p>If you want faster access, you can consider some options that index your folder and make it accessible much faster via retrieval augmented generation.</p>
-
-
-
-<p>Some examples of this are Warp Terminal, where you can index code bases, and it’s a great example of a tool I use when I need to find information quickly on my computer. If I know a piece of information is there, and I just need to find the location of it, I’ll typically use Warp instead of Cloud Code because I know it can access the information faster.</p>
-
-
-
-<p>Another option you have is to use Cursor. Cursor also indexes your code bases and can access the information quickly, just like Warp. There are of course many other good options out there that does essentially the exact same thing.</p>
-
-
-
-<h2>What to think about when storing all information</h2>
-
-
-
-<p>The number one thing you need to think about when storing all of your information is security concerns. Of course, though making all of this information accessible is incredibly powerful and will make you and your coding agent far more effective, it also poses a risk because all the information is accessible locally on your computer, and it’s also sent to an LLM, which has its own security concerns.</p>
-
-
-
-<p>One thing you might think about is API keys. You might store a lot of your API keys locally. And you should try to avoid files containing these keys being read and sent to an LLM inference provider such as Google, OpenAI, or Anthropic.</p>
-
-
-
-<p>Another thing to take into account is permissions. When you run Claude Code, it will initially ask for permission to perform commands for reading specific folders. </p>
-
-
-
-<p>You can auto-allow this by either whitelisting specific commands or just running dangerously skip permissions. This will naturally skip all permissions prompts and make all files accessible to Claude Code without it needing to ask for permission. Of course, this makes fetching information more effective because you don’t need to interact with AI as much, but you also run the risk of it accessing information that it shouldn’t.</p>
-
-
-
-<p>Overall, it’s up to you to ensure that you follow security best practices while still maintaining the efficiency gain that you get from storing all your information locally and accessing it with a coding agent.</p>
-
-
-
-<h2>Conclusion</h2>
-
-
-
-<p>In this article, I’ve discussed how I store all the information I encounter locally on my computer to make it available for my coding agent. This makes me far more effective because I can more easily fetch information that I’ve encountered previously. And when my coding agent performs work, it has access to more context. This is incredibly important if you want your coding agents to perform well and act according to your preferences. I thus highly recommend trying to store as much information as possible, making it easily accessible to both you and your coding agents.</p>
-
-
-
-<p><strong> My free eBook and Webinar:</strong></p>
-
-
-
-<p><strong></strong> <a href="https://www.eivindkjosbakken.com/email-course">10x Your Engineering with LLMs (Free 3-Day Email Course)</a></p>
-
-
-
-<p> <a href="https://eivindkjosbakken.com/ebook">Get my free Vision Language Models ebook</a></p>
-
-
-
-<p> <a href="https://www.eivindkjosbakken.com/webinar">My webinar on Vision Language Models</a></p>
-
-
-
-<p><strong> Find me on socials:</strong></p>
-
-
-
-<p> <a href="https://eivindkjosbakken.substack.com/about">Substack</a></p>
-
-
-
-<p> <a href="https://www.linkedin.com/in/eivind-kjosbakken/">LinkedIn</a></p>
-
-
-
-<p> <a href="https://x.com/EivindKjos">X / Twitter</a></p>
-</div></div>
+    <p>Learn how to get more out of Claude code by giving it access to more information.
+The post How to Personalize Claude Code appeared first on Towards Data Science.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

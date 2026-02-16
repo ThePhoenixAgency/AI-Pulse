@@ -24,30 +24,27 @@
 <body>
   <h1>Pourquoi Hélène Rollès, star d'Hélène et les garçons, a chanté devant 800 millions de téléspectateurs</h1>
   <div class="metadata">
-    Source: Le Dauphiné Une | Date: 2/16/2026 7:31:00 PM | Lang: FR |
-    <a href="https://www.ledauphine.com/insolite/2026/02/16/pourquoi-helene-rolles-star-d-i-helene-et-les-garcons-i-a-chante-devant-800-millions-de-telespectateurs" target="_blank">Original Article</a>
+    Source: Le Dauphiné Une | Date: 2/16/2026 8:31:00 PM | <a href="https://www.ledauphine.com/insolite/2026/02/16/pourquoi-helene-rolles-star-d-i-helene-et-les-garcons-i-a-chante-devant-800-millions-de-telespectateurs" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <article> <div> <div> <div> <p>Très populaire en Chine, la chanteuse française a formé un duo ce lundi avec l'Américain John Legend sur la principale chaîne du pays à l'occasion du Nouvel An chinois.</p> <p><span>La rédaction</span> - <span> Aujourd'hui à 20:31 - Temps de lecture : <span></span> </span>
-</p> </div> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/69d6f38e-fd0d-4230-80a4-a118e66ee051/NW_raw/helene-rolles-en-2025-au-festival-de-cannes-photo-d-archives-sipa-syspeo-1771269209.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/69d6f38e-fd0d-4230-80a4-a118e66ee051/NW_detail/helene-rolles-en-2025-au-festival-de-cannes-photo-d-archives-sipa-syspeo-1771269209.jpg" alt="Hélène Rollès en 2025 au Festival de Cannes. Photo d'archives Sipa/Syspeo"> </a> <figcaption>Hélène Rollès en 2025 au Festival de Cannes. Photo d'archives Sipa/Syspeo</figcaption></figure> </div> </div> <div> <p>Elle avait déjà été invitée à l'Élysée en 2019 lors de la réception du président chinois Xi Jinping. Cette fois, la star des années 1990 Hélène Rollès, qui a marqué toute une génération d'adolescents dans la sitcom&nbsp;<i>Hélène et les garçons</i>, a carrément chanté lundi devant 800 millions de téléspectateurs sur la principale chaîne chinoise, CCTV, à l'occasion du Nouvel An chinois.</p> <div> <h2>« C'est un peu mon deuxième pays&nbsp;»</h2><p>Agée de 59 ans, elle a interprété, en duo avec l'Américain John Legend, la chanson "The Beauty and The Beast", initialement chantée par Céline Dion.</p></div> <div> <p>Ce contenu est bloqué car vous n'avez pas accepté les cookies et autres traceurs.</p> <p>En cliquant sur <span>« J’accepte »</span>, les cookies et autres traceurs seront déposés et vous pourrez visualiser les contenus <span></span> (<a target="_blank">plus d'informations</a>).</p> <p>En cliquant sur <span>« J’accepte tous les cookies »</span>, vous autorisez des dépôts de cookies et autres traceurs pour le stockage de vos données sur nos sites et applications à des fins de personnalisation et de ciblage publicitaire.</p> <p>Vous gardez la possibilité de retirer votre consentement à tout moment en consultant notre <a href="https://www.ledauphine.com/protection-des-donnees" target="_blank">politique de protection des données</a>. <br> Gérer mes choix </p> </div> <div> <p><img src="https://cdn-files.prsmedia.fr/files/REDAC/images/svg/placeholders/twitter-X.svg" alt="Twitter PlaceHolder"></p></div> <p>Hélène Rollès est une véritable star en Chine, où elle a fait des dizaines de concerts. « C'est dingue. Ils ont ma chanson "Je m'appelle Hélène" dans le cœur depuis 30 ans. C'est devenu leur chanson. Le prénom Hélène, qu'ils prononcent Yilian signifie l'affection qu'on porte à sa famille&nbsp;», a-t-elle raconté <a href="https://www.rtl.fr/culture/musique/c-est-un-peu-mon-deuxieme-pays-helene-rolles-va-chanter-devant-800-millions-de-telespectateurs-pour-le-nouvel-an-en-chine-7900601658" target="_blank">au micro de RTL</a>. «&nbsp;J'adore être ici, c'est un peu mon deuxième pays&nbsp;», a-t-elle poursuivi.</p> </div> <div> <h2><span>Articles les plus lus</span><span>Insolite</span> </h2> </div> </div> </article>
-</div></div>
+    <p>Très populaire en Chine, la chanteuse française a formé un duo ce lundi avec l'Américain John Legend sur la principale chaîne du pays à l'occasion du Nouvel An chinois.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

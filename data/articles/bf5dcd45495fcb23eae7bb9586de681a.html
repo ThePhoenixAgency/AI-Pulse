@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>P=NP? Solving Complexity via Information Noise Subtraction (with Python Implementation)</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>P=NP? Solving Complexity via Information Noise Subtraction (with Python Implementation)</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/alessandro_monti_7a8985e3/pnp-solving-complexity-via-information-noise-subtraction-with-python-implementation-27ff" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -33,12 +30,11 @@
     <main>
       <div>
 
-
         <article>
           
           <header>
               <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fk3pt0lr3gcc4pr5drzue.png">
-                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fk3pt0lr3gcc4pr5drzue.png" alt="Cover image for P=NP? Solving Complexity via Information Noise Subtraction (with Python Implementation)" />
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fk3pt0lr3gcc4pr5drzue.png" alt="Cover image for P=NP? Solving Complexity via Information Noise Subtraction (with Python Implementation)">
               </a>
 
             
@@ -47,23 +43,22 @@
           <div>
                 <p>What if exponential complexity is just informational noise?"</p>
 
-<p>The "Density" FallacyThe current mathematical consensus treats the state space of an NP-complete problem as a dense field of relevant variables.<br />
-I argue that this "density" is actually entropic noise—informational redundancy that obscures the linear solution path. <br />
-In a system at Zero Density, the distinction between verification and resolution vanishes.+2The Theory: Manifold CollapseMy research provides a formal proof that P=NP by demonstrating that exponential time complexity is merely an artifact of informational noise.<br />
-By defining the state space $\Omega$ as a composite structure of a logical skeleton $\Gamma$ and entropic noise $\mathcal{N}$:$$\Omega = \Gamma \oplus \mathcal{N} [cite: 13, 14]$$We can apply a functional mapping—the S-Operator (Void-Filtering)—to isolate the deterministic manifold:$$S(\Omega) = \Omega \backslash \mathcal{N} \equiv \Gamma [cite: 17, 19]$$Computational Complexity CollapseIf a solution is verifiable in $O(n^k)$, the information required to construct it is already present. By applying the S-Operator, we achieve a collapse from exponential to linear time complexity:+2$$T(\Omega) = O(2^n) \rightarrow T(\Gamma) = O(n \log n) [cite: 22, 23]$$The Implementation: S-Operator UltimateBelow is the Python implementation of the Ultimate S-Operator. It follows the logic of informational noise subtraction applied to factorization, isolating the logical skeleton $\Gamma$.Pythonimport math<br />
+<p>The "Density" FallacyThe current mathematical consensus treats the state space of an NP-complete problem as a dense field of relevant variables.<br>
+I argue that this "density" is actually entropic noise—informational redundancy that obscures the linear solution path. <br>
+In a system at Zero Density, the distinction between verification and resolution vanishes.+2The Theory: Manifold CollapseMy research provides a formal proof that P=NP by demonstrating that exponential time complexity is merely an artifact of informational noise.<br>
+By defining the state space $\Omega$ as a composite structure of a logical skeleton $\Gamma$ and entropic noise $\mathcal{N}$:$$\Omega = \Gamma \oplus \mathcal{N} [cite: 13, 14]$$We can apply a functional mapping—the S-Operator (Void-Filtering)—to isolate the deterministic manifold:$$S(\Omega) = \Omega \backslash \mathcal{N} \equiv \Gamma [cite: 17, 19]$$Computational Complexity CollapseIf a solution is verifiable in $O(n^k)$, the information required to construct it is already present. By applying the S-Operator, we achieve a collapse from exponential to linear time complexity:+2$$T(\Omega) = O(2^n) \rightarrow T(\Gamma) = O(n \log n) [cite: 22, 23]$$The Implementation: S-Operator UltimateBelow is the Python implementation of the Ultimate S-Operator. It follows the logic of informational noise subtraction applied to factorization, isolating the logical skeleton $\Gamma$.Pythonimport math<br>
 import time</p>
 
-<p>def s_operator_ultimate(n):<br />
-    # Manifold equilibrium point<br />
+<p>def s_operator_ultimate(n):<br>
+    # Manifold equilibrium point<br>
     x = math.isqrt(n) + 1</p>
 
-
 <div>
-<pre><code># Void-Filtering: Information noise subtraction<br />
-while True:<br />
-    y2 = x*x - n<br />
-    if y2 &lt; 0:<br />
-        x += 1<br />
+<pre><code># Void-Filtering: Information noise subtraction<br>
+while True:<br>
+    y2 = x*x - n<br>
+    if y2 &lt; 0:<br>
+        x += 1<br>
         continue
 <div>
 <pre><code>y = math.isqrt(y2)
@@ -79,10 +74,8 @@ x += 1
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
@@ -93,19 +86,17 @@ x += 1
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 <h2>
-<br />
-  <a name="example-usage" href="#example-usage"><br />
-  </a><br />
-  Example usage:<br />
+<br>
+  <a name="example-usage" href="#example-usage"><br>
+  </a><br>
+  Example usage:<br>
 </h2>
 
 <h2>
@@ -114,18 +105,14 @@ x += 1
   result = s_operator_ultimate(your_large_number)
 </h2>
 
-<p>Practical Applications: SAT and TSPSAT Problem: The "noise" consists of assignments leading to logical contradictions. The S-Operator acts as a filter that eliminates these paths.+1Traveling Salesman Problem (TSP): Noise is represented by sub-optimal paths. By applying Void-Filtering, the S-Operator "mutes" edges that exceed the optimal threshold.<br />
-Full Research &amp; Experimental Logs This framework is part of an ongoing effort to redefine computational limits. <br />
-You can find the full formal paper, Version 5.0, and the complete experimental dataset on Zenodo.<br />
- Read the full Paper on Zenodo: <a href="https://zenodo.org/records/18650069" target="_blank">https://zenodo.org/records/18650069</a><br />
+<p>Practical Applications: SAT and TSPSAT Problem: The "noise" consists of assignments leading to logical contradictions. The S-Operator acts as a filter that eliminates these paths.+1Traveling Salesman Problem (TSP): Noise is represented by sub-optimal paths. By applying Void-Filtering, the S-Operator "mutes" edges that exceed the optimal threshold.<br>
+Full Research &amp; Experimental Logs This framework is part of an ongoing effort to redefine computational limits. <br>
+You can find the full formal paper, Version 5.0, and the complete experimental dataset on Zenodo.<br>
+ Read the full Paper on Zenodo: <a href="https://zenodo.org/records/18650069" target="_blank">https://zenodo.org/records/18650069</a><br>
 I welcome technical feedback, peer review, and forks of the implementation.</p>
-
 
             </div>
           
-
-
-
 
         </article>
 
@@ -138,5 +125,5 @@ I welcome technical feedback, peer review, and forks of the implementation.</p>
     
   </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

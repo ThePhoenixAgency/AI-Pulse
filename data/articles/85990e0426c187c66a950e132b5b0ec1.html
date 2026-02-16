@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Microsoft: New Windows LNK spoofing issues aren't vulnerabilities</title>
 <style>
@@ -23,93 +21,69 @@
 <body>
   <h1>Microsoft: New Windows LNK spoofing issues aren't vulnerabilities</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/12/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-new-windows-lnk-spoofing-issues-arent-vulnerabilities/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/12/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
 	   
-<p><img alt="Windows" src="https://www.bleepstatic.com/content/hl-images/2024/12/16/Windows.jpg" /></p>
-
+<p><img alt="Windows" src="https://www.bleepstatic.com/content/hl-images/2024/12/16/Windows.jpg"></p>
 
 <p>Today, at Wild West Hackin' Fest, security researcher Wietze Beukema disclosed multiple vulnerabilities in Windows LK shortcut files that allow attackers to deploy malicious payloads.</p>
 
-
 <p>Beukema <a href="https://wietzebeukema.nl/blog/trust-me-im-a-shortcut" target="_blank">documented four previously unknown techniques</a> for manipulating Windows LNK shortcut files to hide malicious targets from users inspecting file properties.</p>
-
 
 <p>LNK shortcuts were introduced with Windows 95 and use a complex binary format that allows attackers to create deceptive files that appear legitimate in Windows Explorer's properties dialog but execute entirely different programs when opened.</p>
 
-<p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz" /></a>
+<p>
 </p>
 
-
-<p>The <a href="https://web.cvent.com/event/1dbf78f6-bde8-4ad2-90f9-3212c148205d/websitePage:64e10132-4cb6-404c-b3b7-7cb06d280643?session=33b06565-b86b-4fe0-964f-8bf12c8c05d6&amp;shareLink=true" target="_blank">discovered issues</a> exploit inconsistencies in how Windows Explorer prioritizes conflicting target paths specified across multiple optional data structures within shortcut files.</p>
-
+<p>The <a href="https://web.cvent.com/event/1dbf78f6-bde8-4ad2-90f9-3212c148205d/websitePage:64e10132-4cb6-404c-b3b7-7cb06d280643?session=33b06565-b86b-4fe0-964f-8bf12c8c05d6&amp;shareLink=true" target="_blank">discovered issues</a>&nbsp;exploit inconsistencies in how Windows Explorer prioritizes conflicting target paths specified across multiple optional data structures within shortcut files.</p>
 
 <p>The most effective variants use forbidden Windows path characters, such as double quotes, to create seemingly valid but technically invalid paths, causing Explorer to display one target while executing another, while another uses non-conforming LinkTargetIDList values to execute a path other than the one displayed in the LinkInfo field.</p>
 
-
 <p>"This results in the strange situation where the user sees one path in the Target field, but upon execution, a completely other path is executed. Due to the field being disabled, it is also possible to "hide" any command- line arguments that are provided," Beukema said.</p>
 
-
 <p>The most powerful technique identified involves manipulating the EnvironmentVariableDataBlock structure within LNK files. By setting only the ANSI target field and leaving the Unicode field empty, attackers can display a fake target such as "invoice.pdf" in the properties window while actually executing PowerShell or other malicious commands.</p>
-
 
 <p></p>
 
 <p>"Opening the LNK executes the "actual" target immediately, not having to open it twice. Additionally, because in this case the spoofed target is in TargetIdList and the actual target in EnvironmentVariableDataBlock, the actual target may utilise environment variables," Beukema explained.</p>
 
-
 <p>"The target program/file/directory is completely spoofed," and "any command-line arguments are hidden," the researcher also noted, which makes detection extremely difficult for users.</p>
-
 
 <p>This is possible because, as Beukema said, Windows Explorer will treat all these malformed LNK shortcuts forgivingly, displaying spoofed information rather than rejecting invalid files.</p>
 
-
 <p>The researcher has also released "<a href="https://www.github.com/wietze/lnk-it-up" target="_blank">lnk-it-up</a>," an open-source tool suite that generates Windows LNK shortcuts using these techniques for testing and can identify potentially malicious LNK files by predicting what Explorer displays versus what actually executes.</p>
 
-
 <div>
-<figure><img alt="lnk-it-up generating and testing a LNK file" src="https://www.bleepstatic.com/images/news/u/1109292/2026/2026-02-12-lnk-it-up.png" /><figcaption><em>lnk-it-up generating and testing a LNK file (W.J.B. Beukema)</em></figcaption></figure></div>
+<figure><img alt="lnk-it-up generating and testing a LNK file" src="https://www.bleepstatic.com/images/news/u/1109292/2026/2026-02-12-lnk-it-up.png"><figcaption><em>lnk-it-up generating and testing a LNK file (W.J.B. Beukema)</em></figcaption></figure></div>
 
 <h2>MSRC: Not a vulnerability</h2>
 
 <p>When Beukema submitted the EnvironmentVariableDataBlock issue to the Microsoft Security Response Center in September (VULN-162145), Microsoft declined to classify it as a security vulnerability, arguing that exploitation requires user interaction and does not breach security boundaries.</p>
 
-
 <p>"These techniques do not meet the bar for immediate servicing under our severity classification guidelines as they require an attacker to trick a user into running a malicious file," a Microsoft spokesperson told BleepingComputer when asked whether the company plans to address any of the flaws.</p>
-
 
 <p>"Microsoft Defender has detections in place to identify and block this threat activity, and Smart App Control provides an additional layer of protection by blocking malicious files from the Internet. As a security best practice, we strongly encourage customers to heed security warnings and avoid opening files from unknown sources."</p>
 
+<p>Microsoft also noted&nbsp;that&nbsp;Windows identifies shortcut files (.lnk) as potentially dangerous and, when attempting to open a .lnk file downloaded from the Internet, automatically triggers a security warning advising users not to open files from unknown sources. Microsoft&nbsp;strongly recommends heeding this warning.</p>
 
-<p>Microsoft also noted that Windows identifies shortcut files (.lnk) as potentially dangerous and, when attempting to open a .lnk file downloaded from the Internet, automatically triggers a security warning advising users not to open files from unknown sources. Microsoft strongly recommends heeding this warning.</p>
+<p>However, Beukema added that&nbsp;"there is a reason attackers still like LNK files - users quickly click through these sorts of warnings. Otherwise, CVE-2025-9491 wouldn't have been as 'successful'&nbsp;as it was either."</p>
 
-
-<p>However, Beukema added that "there is a reason attackers still like LNK files - users quickly click through these sorts of warnings. Otherwise, CVE-2025-9491 wouldn't have been as 'successful' as it was either."</p>
-
-
-<p><span><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-9491" target="_blank">CVE-2025-9491,</a> the security vulnerability mentioned by the security researchers, is similar to the issues </span>Beukema discovered and <span>can be exploited to hide command-line arguments by using excessive whitespace padding. Cybercrime groups and state-backed hacking groups from North Korea, Iran, Russia, and China have been abusing this security flaw </span>for years in zero-day attacks.</p>
-
+<p><span><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-9491" target="_blank">CVE-2025-9491,</a>&nbsp;the&nbsp;security vulnerability mentioned by the security researchers, is similar to the issues&nbsp;</span>Beukema&nbsp;discovered and&nbsp;<span>can be exploited to hide command-line arguments by using excessive whitespace padding. Cybercrime groups and state-backed hacking groups from North Korea, Iran, Russia, and China have been abusing this security flaw&nbsp;</span>for years in zero-day attacks.</p>
 
 <p>While initially Microsoft said that CVE-2025-9491 doesn't break security boundaries and refused to fix the issue, it <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-mitigates-windows-lnk-flaw-exploited-as-zero-day/" target="_blank">silently changed LNK files in June 2025</a> in an apparent effort to mitigate this actively exploited vulnerability.</p>
 
-
 <p>As Trend Micro threat analysts revealed in March 2025, CVE-2025-9491 was already being widely exploited by at least <a href="http://documents.trendmicro.com/assets/txt/Figure-1-Data---ZDI-CAN-25373-blogcU9ZZ2p.txt" target="_blank">11 state-sponsored groups and cybercrime gangs</a>, including Evil Corp, Bitter, APT37, APT43 (also known as Kimsuky), Mustang Panda, SideWinder, RedHotel, Konni, and others.</p>
-
 
 <p>Cybersecurity firm Arctic Wolf also reported in October that the Mustang Panda Chinese state-backed hacking group was <a href="https://www.bleepingcomputer.com/news/security/chinese-hackers-exploit-windows-zero-day-to-spy-on-european-diplomats/" target="_blank">exploiting this Windows vulnerability</a> in zero-day attacks targeting European diplomats in Hungary, Belgium, and other European nations to deploy the PlugX remote access trojan (RAT) malware.</p>
 
-
-
 	   
 <div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
+    <p>
     </p>
     <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+        <h2></h2>
 <p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
 
         </div>
@@ -120,5 +94,5 @@
  
 	  </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

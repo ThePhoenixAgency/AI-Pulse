@@ -1,331 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>What the fastest-growing tools reveal about how software is being built</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>What the fastest-growing tools reveal about how software is being built</h1>
   <div class="metadata">
-    Source: GitHub Blog | Date: 2/3/2026 | Lang: EN |
-    <a href="https://github.blog/news-insights/octoverse/what-the-fastest-growing-tools-reveal-about-how-software-is-being-built/" target="_blank">Original Article</a>
+    Source: GitHub Blog | Date: 2/3/2026 6:00:00 PM | <a href="https://github.blog/news-insights/octoverse/what-the-fastest-growing-tools-reveal-about-how-software-is-being-built/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><section>
-	
-<p>In 2025, software development crossed a quiet threshold. In <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/">our latest Octoverse report</a>, we found that the fastest-growing languages, tools, and open source projects on GitHub are no longer about shipping more code. Instead, they’re about reducing friction in a world where AI is helping developers build more, faster.</p>
-
-
-
-<p>By looking at some of the areas of fastest growth over the past year, we can see how developers are adapting through: </p>
-
-
-
-<ul>
-<li>The programming languages that are growing most in AI-assisted development workflows.</li>
-
-
-
-<li>The tools that win when speed and reproducibility matter.</li>
-
-
-
-<li>The areas where new contributors are showing up (and what helps them stick).</li>
-</ul>
-
-
-
-<p>Rather than catalog trends, we want to focus on what those signals mean for how software is being built today and what choices you might consider heading into 2026. </p>
-
-
-
-<h2>The elephant in the room: Typescript is the new #1</h2>
-
-
-
-<p>In August 2025, <a href="https://github.blog/developer-skills/programming-languages-and-frameworks/7-learnings-from-anders-hejlsberg-the-architect-behind-c-and-typescript/">TypeScript became the most-used language on GitHub</a>, overtaking Python and JavaScript for the first time. Over the past year, <a href="https://github.blog/developer-skills/programming-languages-and-frameworks/typescripts-rise-in-the-ai-era-insights-from-lead-architect-anders-hejlsberg/">TypeScript added more than one million contributors</a>, which was the largest absolute growth of any language on GitHub. </p>
-
-
-
-<figure><img src="https://github.blog/wp-content/uploads/2025/10/octoverse-2025-top-programming-languages.png?resize=1024%2C576" alt="A chart showing the top 10 programming languages on GitHub from 2023 to 2025. TypeScript rises to #1 in 2025, overtaking Python and JavaScript, which move to #2 and #3 respectively. Other top languages include Java, C#, PHP, Shell, C++, HCL, and Go. The chart tracks ranking changes over time on a dark background with colored lines representing each language." /></figure>
-
-
-
-<p>Python also continued to grow rapidly, adding roughly 850,000 contributors (+48.78% YoY), while JavaScript grew more slowly (+24.79%, ~427,000 contributors). Together, TypeScript and Python both significantly outpaced JavaScript in both total and percentage growth. </p>
-
-
-
-<p>This shift signals more than a preference change. Typed languages are increasingly becoming the default for new development, particularly as AI-assisted coding becomes routine. Why is that?</p>
-
-
-
-<p>In practice, a significant portion of the failures teams encounter with AI-generated code surface as type mismatches, broken contracts, or incorrect assumptions between components. Stronger type systems act as early guardrails: they can help catch errors sooner, reduce review churn, and make AI-generated changes easier to reason about before code reaches production. </p>
-
-
-
-<p>If you’re going to be using AI in your software design, which more and more developers are doing on a daily basis, strongly typed languages are your friend.</p>
-
-
-
-<p><strong>Here’s what this means in practice: </strong></p>
-
-
-
-<ul>
-<li>If you’re starting a new project today, TypeScript is increasingly becoming the default (especially for teams using AI in daily development).</li>
-
-
-
-<li>If you’re introducing AI-assisted workflows into an existing JavaScript codebase, adding types may reduce friction more than switching models or tools.</li>
-</ul>
-
-
-
-<h2>Python is key for AI</h2>
-
-
-
-<p>Contributor counts show who is using a language. Repository data shows what that language is being used to build. </p>
-
-
-
-<p>When we look specifically at AI-focused repositories, Python stands apart. As of August 2025, nearly half of all new AI projects on GitHub were built primarily in Python. </p>
-
-
-
-<figure><img src="https://github.blog/wp-content/uploads/2026/01/GitHub-Octoverse-2025_Most-commonly-used-languages-inside-AI%E2%80%91tagged-repos_1920x1080_2x.png?resize=1024%2C576" alt="A chart listing the most commonly used programming languages in AI-tagged projects on GitHub in 2025. Python ranks first with 582,000 repositories (+50.7% year over year), followed by JavaScript with 88,000 (+24.8%), TypeScript with 86,000 (+77.9%), Shell with 9,000 (+324%), and C++ with 7,800 (+11%). The chart includes brief descriptions of each language’s role in AI development, displayed on a blue gradient background with green geometric ribbon graphics." /></figure>
-
-
-
-<p>This matters because AI projects now account for a disproportionate share of open source momentum. Six of the ten fastest-growing open source projects by contributors in 2025 were directly focused on AI infrastructure or tooling.</p>
-
-
-
-<figure><img src="https://github.blog/wp-content/uploads/2025/10/octoverse-2025-fastest-growing-open-source-projects-by-contributors.png?resize=1024%2C576" alt="A table listing the fastest-growing open source projects on GitHub in 2025 by contributors. The top ten are zen-browser/desktop, cline/cline, vllm-project/vllm, astral-sh/uv, microsoft/vscode, infiniflow/ragflow, sgl-project/sglang, continuedev/continue, comfyanonymous/ComfyUI, and home-assistant/core. Growth rates range from 2,301% to 6,836%, with most projects marked as AI-focused. Displayed on a blue gradient background with the GitHub Octoverse ribbon graphic." /></figure>
-
-
-
-<p>Python’s role here isn’t new, but it is evolving. The data suggests a shift from experimentation toward production-ready AI systems, with Python increasingly anchoring packaging, orchestration, and deployment rather than living only in notebooks. </p>
-
-
-
-<p>Moreover, Python is likely to continue to grow in 2026, as AI continues to gain support and additional projects.</p>
-
-
-
-<p><strong>Here’s what this means in practice: </strong><strong><br /></strong></p>
-
-
-
-<ul>
-<li>Python remains the backbone of applied AI work from training and inference to orchestration.</li>
-
-
-
-<li>Production-focused Python skills such as packaging, typing, CI, and containerization are becoming more important than exploratory scripting alone. </li>
-</ul>
-
-
-
-<h2>A deeper look at the top open source projects</h2>
-
-
-
-<p>Looking across the fastest-growing projects, a clear pattern emerges: developers are optimizing for speed, control, and predictable outcomes. </p>
-
-
-
-<p>Many of the fastest-growing tools emphasize performance and minimalism. Projects like <a href="https://github.com/astral-sh/uv">astral-sh/uv</a>, a package and project manager, focus on dramatically faster Python package management. This reflects a growing intolerance for slow feedback loops and non-deterministic environments. </p>
-
-
-
-<p>Having just one of these projects could be an anomaly, but having multiple indicates a clear trend. This trend aligns closely with AI-assisted workflows where iteration speed and reproducibility directly impact developer productivity. </p>
-
-
-
-<p><strong>Here’s what this means in practice: </strong></p>
-
-
-
-<ul>
-<li>Fast installs and deterministic builds increasingly matter as much as feature depth.</li>
-
-
-
-<li>Tools that reduce “works on my machine” moments are winning developer mindshare.</li>
-</ul>
-
-
-
-<h2>Where first-time open source contributors are showing up</h2>
-
-
-
-<p>As the developer population grows, understanding where first-time contributors show up (and why) becomes increasingly important. </p>
-
-
-
-<figure><img src="https://github.blog/wp-content/uploads/2025/10/octoverse-2025-open-source-projects-attracting-most-first-time-contributors.jpg?resize=1024%2C576" alt="A chart showing the open source projects that attracted the most first-time contributors on GitHub in 2025. The top ten are microsoft/vscode, firstcontributions/first-contributions, home-assistant/core, slackblitz/bolt.new, flutter/flutter, zen-browser/desktop, is-a-dev/register, vllm-project/vllm, comfyanonymous/ComfyUI, and ollama/ollama. Displayed on a blue gradient background with green 3D ribbon graphics." /></figure>
-
-
-
-<p>Projects like <a href="https://github.com/microsoft/vscode">VS Code</a> and <a href="https://github.com/firstcontributions/first-contributions">First Contributions</a> continued to top the list over the last year, reflecting both the scale of widely used tools and the persistent need for low-friction entry points into open source (notably, we define contributions as any content-generating activity on GitHub).</p>
-
-
-
-<p>Despite this growth, basic project governance remains uneven across the ecosystem. README files are common, but contributor guides and codes of conduct are still relatively rare even as first-time contributions increase.</p>
-
-
-
-<p>This gap represents one of the highest-leverage improvements maintainers and open source communities can make. The fact that most of the projects on this list have detailed documentation on what the project is and how to contribute shows the importance of this guidance.</p>
-
-
-
-<p><strong>Here’s what this means in practice: </strong></p>
-
-
-
-<ul>
-<li>Clear documentation lowers the cost of contribution more than new features.</li>
-
-
-
-<li>Contributor guides and codes of conduct can help convert curiosity into sustained participation.</li>
-
-
-
-<li>Improving project hygiene is often the fastest way to grow a contributor base.</li>
-</ul>
-
-
-
-<h2>Putting it all together</h2>
-
-
-
-<p>Taken together, these trends point to a shift in what developers value and how they choose tools. </p>
-
-
-
-<p>AI is no longer a separate category of development. It’s shaping the languages teams use, which tools gain traction, and which projects attract contributors. </p>
-
-
-
-<p>Typed languages like TypeScript are becoming the default for reliability at scale, while Python remains central to AI-driven systems as they move from prototypes into production. </p>
-
-
-
-<p>Across the ecosystem, developers are rewarding tools that minimize friction with faster feedback loops, reproducible environments, and clearer contribution paths.</p>
-
-
-
-<p>Developers and teams that optimize for speed, clarity, and reliability are shaping how software is being built.</p>
-
-
-
-<p>As a reminder, you can check out <a href="https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/">the full 2025 Octoverse report</a> for more information and make your own conclusions. There’s a lot of good data in there, and we’re just scratching the surface of what you can learn from it.</p>
-
-	
-
-	<div>
-	<h2>
-		Written by	</h2>
-	
-			<article>
-	<div>
-					<div>
-				
-					
-					<img src="https://avatars.githubusercontent.com/u/39363041?v=4&amp;s=200" alt="Dylan Birtolo" />
-				
-			</div>
-				
-					<p>Dylan Birtolo is a senior content writer at GitHub, where he works on sharing all the good things that GitHub has to offer. He's been a technical writer for almost 20 years, a large portion of which was working on various teams across Microsoft. In his off time, he works with animals, plays a lot of games, and professionally jousts.</p>
-			</div>
-</article>
-	</div>
-</section><section>
-	<h2>
-		Related posts	</h2>
-	<div>
-	<article>
-	
-</article>
-<article>
-	<div>
-			<h3>
-				<a href="https://github.blog/news-insights/company-news/pick-your-agent-use-claude-and-codex-on-agent-hq/?utm_source=blog-homepage&amp;utm_medium=blog&amp;utm_campaign=agent-3p-platform-feb-2026" target="_self">
-					Pick your agent: Use Claude and Codex on Agent HQ 				</a>
-			</h3>
-			<p>Claude by Anthropic and OpenAI Codex are now available in public preview on GitHub and VS Code with a Copilot Pro+ or Copilot Enterprise subscription. Here’s what you need to know and how to get started today.</p>
-		</div>
-</article>
-<article>
-	
-</article>
-</div>
-</section><div>
-	<h2>
-		Explore more from GitHub	</h2>
-	<div>
-		<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon-Circle.svg" alt="Docs" /></p><h3>
-			Docs		</h3>
-		<p>Everything you need to master GitHub, all in one place.</p>
-					<p>
-				<a href="https://docs.github.com/" target="_blank">
-					Go to Docs											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_95220f.svg" alt="GitHub" /></p><h3>
-			GitHub		</h3>
-		<p>Build what’s next on GitHub, the place for anyone from anywhere to build anything.</p>
-					<p>
-				<a href="https://github.com/" target="_blank">
-					Start building											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2024/07/Icon_da43dc.svg" alt="Customer stories" /></p><h3>
-			Customer stories		</h3>
-		<p>Meet the companies and engineering teams that build with GitHub.</p>
-					<p>
-				<a href="https://github.com/customer-stories" target="_blank">
-					Learn more											
-									</a>
-			</p>
-			</div>
-<div>
-		<p><img src="https://github.blog/wp-content/uploads/2023/02/galaxy23-icon.svg" alt="The GitHub Podcast" /></p><h3>
-			The GitHub Podcast		</h3>
-		<p>Catch up on the GitHub podcast, a show dedicated to the topics, trends, stories and culture in and around the open source developer community on GitHub.</p>
-					<p>
-				<a href="https://the-github-podcast.simplecast.com/" target="_blank">
-					Listen now											
-									</a>
-			</p>
-			</div>
-	</div>
-</div></div>
+    <pre><code>In 2025, software development crossed a quiet threshold. In our latest Octoverse report, we found that the fastest-growing languages, tools, and open source projects on GitHub are no longer about shipping more code. Instead, they’re about reducing friction in a world where AI is helping developers build more, faster. By looking at some of the areas of fastest growth over the past year, we can see how developers are adapting through:&nbsp; The programming languages that are growing most in AI-assisted development workflows. The tools that win when speed and reproducibility matter. The areas where new contributors are showing up (and what helps them stick). Rather than catalog trends, we want to focus on what those signals mean for how software is being built today and what choices you might consider heading into 2026.&nbsp; The elephant in the room: Typescript is the new #1 In August 2025, TypeScript became the most-used language on GitHub, overtaking Python and JavaScript for the first time. Over the past year, TypeScript added more than one million contributors, which was the largest absolute growth of any language on GitHub.&nbsp; Python also continued to grow rapidly, adding roughly 850,000 contributors (+48.78% YoY), while JavaScript grew more slowly (+24.79%, ~427,000 contributors). Together, TypeScript and Python both significantly outpaced JavaScript in both total and percentage growth.&nbsp; This shift signals more than a preference change. Typed languages are increasingly becoming the default for new development, particularly as AI-assisted coding becomes routine. Why is that? In practice, a significant portion of the failures teams encounter with AI-generated code surface as type mismatches, broken contracts, or incorrect assumptions between components. Stronger type systems act as early guardrails: they can help catch errors sooner, reduce review churn, and make AI-generated changes easier to reason about before code reaches production.&nbsp; If you’re going to be using AI in your software design, which more and more developers are doing on a daily basis, strongly typed languages are your friend. Here’s what this means in practice:&nbsp; If you’re starting a new project today, TypeScript is increasingly becoming the default (especially for teams using AI in daily development). If you’re introducing AI-assisted workflows into an existing JavaScript codebase, adding types may reduce friction more than switching models or tools. Python is key for AI Contributor counts show who is using a language. Repository data shows what that language is being used to build.&nbsp; When we look specifically at AI-focused repositories, Python stands apart. As of August 2025, nearly half of all new AI projects on GitHub were built primarily in Python.&nbsp; This matters because AI projects now account for a disproportionate share of open source momentum. Six of the ten fastest-growing open source projects by contributors in 2025 were directly focused on AI infrastructure or tooling. Python’s role here isn’t new, but it is evolving. The data suggests a shift from experimentation toward production-ready AI systems, with Python increasingly anchoring packaging, orchestration, and deployment rather than living only in notebooks.&nbsp; Moreover, Python is likely to continue to grow in 2026, as AI continues to gain support and additional projects. Here’s what this means in practice: Python remains the backbone of applied AI work from training and inference to orchestration. Production-focused Python skills such as packaging, typing, CI, and containerization are becoming more important than exploratory scripting alone.&nbsp; A deeper look at the top open source projects Looking across the fastest-growing projects, a clear pattern emerges: developers are optimizing for speed, control, and predictable outcomes.&nbsp; Many of the fastest-growing tools emphasize performance and minimalism. Projects like astral-sh/uv, a package and project manager, focus on dramatically faster Python package management. This reflects a growing intolerance for slow feedback loops and non-deterministic environments.&nbsp; Having just one of these projects could be an anomaly, but having multiple indicates a clear trend. This trend aligns closely with AI-assisted workflows where iteration speed and reproducibility directly impact developer productivity.&nbsp; Here’s what this means in practice:&nbsp; Fast installs and deterministic builds increasingly matter as much as feature depth. Tools that reduce “works on my machine” moments are winning developer mindshare. Where first-time open source contributors are showing up As the developer population grows, understanding where first-time contributors show up (and why) becomes increasingly important.&nbsp; Projects like VS Code and First Contributions continued to top the list over the last year, reflecting both the scale of widely used tools and the persistent need for low-friction entry points into open source (notably, we define contributions as any content-generating activity on GitHub). Despite this growth, basic project governance remains uneven across the ecosystem. README files are common, but contributor guides and codes of conduct are still relatively rare even as first-time contributions increase. This gap represents one of the highest-leverage improvements maintainers and open source communities can make. The fact that most of the projects on this list have detailed documentation on what the project is and how to contribute shows the importance of this guidance. Here’s what this means in practice:&nbsp; Clear documentation lowers the cost of contribution more than new features. Contributor guides and codes of conduct can help convert curiosity into sustained participation. Improving project hygiene is often the fastest way to grow a contributor base. Putting it all together Taken together, these trends point to a shift in what developers value and how they choose tools.&nbsp; AI is no longer a separate category of development. It’s shaping the languages teams use, which tools gain traction, and which projects attract contributors.&nbsp; Typed languages like TypeScript are becoming the default for reliability at scale, while Python remains central to AI-driven systems as they move from prototypes into production.&nbsp; Across the ecosystem, developers are rewarding tools that minimize friction with faster feedback loops, reproducible environments, and clearer contribution paths. Developers and teams that optimize for speed, clarity, and reliability are shaping how software is being built. As a reminder, you can check out the full 2025 Octoverse report for more information and make your own conclusions. There’s a lot of good data in there, and we’re just scratching the surface of what you can learn from it. Written by Dylan Birtolo is a senior content writer at GitHub, where he works on sharing all the good things that GitHub has to offer. He's been a technical writer for almost 20 years, a large portion of which was working on various teams across Microsoft. In his off time, he works with animals, plays a lot of games, and professionally jousts. Related posts Pick your agent: Use Claude and Codex on&nbsp;Agent&nbsp;HQ&nbsp; Claude by Anthropic and OpenAI Codex are now available in public preview on GitHub and VS Code with a Copilot Pro+ or Copilot Enterprise subscription. Here’s what you need to know and how to get started today. Explore more from GitHub Docs Everything you need to master GitHub, all in one place. Go to Docs GitHub Build what’s next on GitHub, the place for anyone from anywhere to build anything. Start building Customer stories Meet the companies and engineering teams that build with GitHub. Learn more The GitHub Podcast Catch up on the GitHub podcast, a show dedicated to the topics, trends, stories and culture in and around the open source developer community on GitHub. Listen now</code></pre>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

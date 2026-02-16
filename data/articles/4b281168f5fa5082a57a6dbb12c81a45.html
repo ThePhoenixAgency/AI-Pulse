@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Bypassing Administrator Protection by Abusing UI Access</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>Bypassing Administrator Protection by Abusing UI Access</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 2/12/2026 | Lang: EN |
-    <a href="https://projectzero.google/2026/02/windows-administrator-protection.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 2/12/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -38,7 +35,6 @@
 <h2>A Question of Accessibility</h2>
 
 <p>Prior to Windows Vista any process running on a user’s desktop could control any window created by another, such as by sending <a href="https://learn.microsoft.com/en-us/windows/win32/learnwin32/window-messages">window messages</a>. This behavior could be abused if a privileged user, such as SYSTEM, displayed a user interface on the desktop. A limited user could control the UI and potentially elevate privileges. This was referred to as a <a href="https://en.wikipedia.org/wiki/Shatter_attack">Shatter Attack</a>, and was usually fixed by removing user interface components from privileged code.</p>
-
 
 <p>As UAC encouraged running processes at different privilege levels on the same desktop, Microsoft introduced an additional feature, User Interface Privacy Isolation (UIPI). This used the Mandatory Integrity Control feature in UAC to limit what windows a process could interact with. If the integrity level of a process was lower than the process which created a window then it would be blocked from operations such as sending messages to that window. As an additional protection, Vista no longer ran user processes on the “service” desktop so that even if UIPI was inadequate a user interface exposed by a service process was not accessible to limited processes.</p>
 
@@ -121,7 +117,7 @@
 
 <p>Interestingly there is a <code>uiAccess</code> <a href="https://learn.microsoft.com/en-us/windows/uwp/packaging/app-capability-declarations#:~:text=in%20the%20background.-,UI,-Access">restricted capability</a> you can add to the manifest when building the MSIX which will elevate the packaged executable to High integrity UI Access. However, when you do that, installing the package requires administrator privileges as shown below and so it’s not a bypass.</p>
 
-<p><img alt="Windows dialog showing the installation of a PoC application which has the uiAccess capability set. It's requiring running the installer as an administrator." /></p>
+<p><img alt="Windows dialog showing the installation of a PoC application which has the uiAccess capability set. It's requiring running the installer as an administrator."></p>
 
 <h3>Repurposing an Existing Secure UI Access Executable</h3>
 
@@ -144,7 +140,7 @@
 
 <p>A simple way of inspecting for potential exploitable behavior is to run Process Monitor and capture events accessing the limited user’s registry hive or profile directory. It’s also possible to hijack things like the user’s <code>C:</code> drive mapping as the logon session is the same between the limited user and its UI Access processes.</p>
 
-<p><img alt="Screenshot of process monitor showing osk.exe accessing registry keys in the current user's registry hive." /></p>
+<p><img alt="Screenshot of process monitor showing osk.exe accessing registry keys in the current user's registry hive."></p>
 
 <p>This is a well known issue with UI Access and UAC so when I found it in Administrator Protection I didn’t really need to <a href="https://project-zero.issues.chromium.org/issues/437868751">report it,</a> but felt I should. To ensure it got handled appropriately I found a specific exploitable condition and sent an accompanying proof-of-concept. In this case I found that the On-Screen Keyboard loaded a DLL from a path based on the <code>CommonProgramFiles</code> environment variable. By overriding this variable in the user’s registry hive I could redirect the DLL load and get arbitrary code execution in the UI Access process.</p>
 
@@ -210,12 +206,11 @@
 
 <p>Time will tell whether Administrator Protection is successful as a security boundary or not. Microsoft is taking it seriously, but more rigorous testing during development would have prevented many pre existing UAC bypasses from being missed. I’d recommend anyone interested in this feature to take a look now it’s released and the previously known bugs have been fixed.</p>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

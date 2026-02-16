@@ -4,145 +4,55 @@
 <meta charset="UTF-8">
 <title>Pastebin comments push ClickFix JavaScript attack to hijack crypto swaps</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Pastebin comments push ClickFix JavaScript attack to hijack crypto swaps</h1>
   <div class="metadata">
-    Source: Bleeping Computer | Date: 2/15/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/pastebin-comments-push-clickfix-javascript-attack-to-hijack-crypto-swaps/" target="_blank">Original Article</a>
+    Source: Bleeping Computer | Date: 2/15/2026 4:17:27 PM | <a href="https://www.bleepingcomputer.com/news/security/pastebin-comments-push-clickfix-javascript-attack-to-hijack-crypto-swaps/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-	   
-<p><img alt="Bitcoin falling with a man grasping for them" src="https://www.bleepstatic.com/content/hl-images/2024/12/05/Cryptocurrency.jpg" /></p>
-
-
-<p>Threat actors are abusing Pastebin comments to distribute a new ClickFix-style attack that tricks cryptocurrency users into executing malicious JavaScript in their browser, allowing attackers to hijack Bitcoin swap transactions and redirect funds to attacker-controlled wallets.</p>
-
-
-<p>The campaign relies on social engineering that promises large profits from a supposed Swapzone.io arbitrage exploit, but instead runs malicious code that modifies the swap process directly within the victim's browser.</p>
-
-
-<p>It could also be the first known ClickFix attack to use JavaScript to alter a webpage's functionality for a malicious purpose.</p>
-
-<p><a href="https://www.wiz.io/lp/securing-ai-agents-101?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_Securing-AI-Agents-101&amp;sfcid=701Py00000RTEWMIA5&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Agents-101" target="_blank"><img src="https://www.bleepstatic.com/c/w/Securing-AI-Agents-970x250.png" alt="Wiz" /></a>
-</p>
-
-
-<h2>Promoted through Pastebin</h2>
-
-<p>In the campaign spotted by BleepingComputer, threat actors are iterating through Pastebin posts and leaving comments that promote an alleged cryptocurrency exploit, with a link to a URL on rawtext[.]host.</p>
-
-
-<p>The campaign is widespread, with many of our posts receiving comments over the past week claiming to be "leaked exploit documentation" that allows users to earn $13,000 in 2 days.</p>
-
-
-<div>
-<figure><img alt="Phishing comment on Pastebin" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/pastebin-comment.jpg" /><figcaption><strong>Phishing comment on Pastebin</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>The link in the comment redirects to a Google Docs page titled "Swapzone.io – ChangeNOW Profit Method," which claims to be a guide describing a method to exploit arbitrage opportunities for higher payouts.</p>
-
-
-<p>"ChangeNOW still has an older backend node connected to the Swapzone partner API. On direct ChangeNOW, this node is no longer used for public swaps," reads the fake guide.</p>
-
-
-<p>"However, when accessed through Swapzone, the rate calculation passes through Node v1.9 for certain BTC pairs. This old node applies a different conversion formula for BTC to ANY, which results in ~38% higher payouts than intended."</p>
-
-
-<p>At any given time, these documents typically show between 1 and 5 active viewers, suggesting the scam is circulating.</p>
-
-
-<div>
-<figure><img alt="Anonymous users viewing the Google Doc" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/users-browsing.jpg" /><figcaption><strong>People viewing the Google Doc</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>The fake guide provides instructions to visit Swapzone.io and manually load a Bitcoin node by executing JavaScript directly in their browser's address bar.</p>
-
-
-<p>The instructions tell victims to visit a URL on paste[.]sh and copy a JavaScript snippet hosted on the page.</p>
-
-
-<div>
-<figure><img alt="First stage JavaScript code used in ClickFix attack" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/malicious-script.jpg" /><figcaption><strong>First stage JavaScript code used in ClickFix attack</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>The guide then tells the reader to go back to the SwapZone tab, click on the address bar, type javascript:, and then paste the code. When the code has been pasted into the address, they state to press Enter on your keyboard to execute it, as explained below.</p>
-
-
-<div>
-<figure><img alt="ClickFix attack instructions in fake SwapZone exploit guide" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/clickfix-instructions.jpg" /><figcaption><strong>ClickFix attack instructions in fake SwapZone exploit guide</strong><br /><em>Source: BleepingComputer</em></figcaption></figure></div>
-
-<p>This technique abuses the browser's 'javascript:' URI feature, which allows users to execute JavaScript from the address on the currently loaded website.</p>
-
-
-<p>By convincing victims to run this code on Swapzone.io, attackers can manipulate the page and alter the swap process.</p>
-
-
-<p>BleepingComputer's analysis of the malicious script hosted at paste[.]sh shows that it loads a secondary payload from https://rawtext[.]host/raw?btulo3.</p>
-
-
-<p>This heavily obfuscated script is injected directly into the Swapzone page, overriding the legitimate Next.js script used for handling Bitcoin swaps to hijack the swap interface.</p>
-
-
-<p>The malicious script includes embedded Bitcoin addresses, which are randomly selected and injected into the swap process, replacing the legitimate deposit address generated by the exchange.</p>
-
-
-<p>Because the code executes within the Swapzone.io session, victims see a legitimate interface but end up copying and sending funds to attacker-controlled Bitcoin wallets.</p>
-
-
-<p>In addition to replacing the deposit address, BleepingComputer was told that the script modifies displayed exchange rates and offer values, making it feel like the alleged arbitrage exploit is actually working.</p>
-
-
-<p>Unfortunately, as Bitcoin transactions cannot be reversed, if you fell for this scam, there is no easy way to recover your money.</p>
-
-
-<h2>A novel ClickFix variant</h2>
-
-<p>This campaign is a variant of the <a href="https://www.bleepingcomputer.com/tag/clickfix/" target="_blank">ClickFix attacks,</a> a social engineering technique that tricks users into executing malicious commands on their computer, typically to install malware.</p>
-
-
-<p>Normally, ClickFix attacks target operating systems by telling victims to run PowerShell commands or shell scripts to fix alleged errors or enable functionality.</p>
-
-
-<p>In this case, instead of targeting the operating system, the attackers instruct victims to execute JavaScript directly in their browser while visiting a cryptocurrency exchange service.</p>
-
-
-<p>This allows the malicious code to modify the page and intercept transaction details.</p>
-
-
-<p>This may represent one of the first reported ClickFix-style attacks specifically designed to use JavaScript in the browser and steal cryptocurrency.</p>
-
-
-
-	   
-<div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" /></a>
-    </p>
-    <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
-<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
-
-        </div>
-</div>
-
-           
-          
- 
-	  </div></div>
+    <div><div> <p><img alt="Bitcoin falling with a man grasping for them" src="https://www.bleepstatic.com/content/hl-images/2024/12/05/Cryptocurrency.jpg"></p> <p>Threat actors are abusing Pastebin comments to distribute a new ClickFix-style attack that tricks cryptocurrency users into executing malicious JavaScript in their browser, allowing attackers to hijack Bitcoin swap transactions and redirect funds to attacker-controlled wallets.</p> <p>The campaign relies on social engineering that promises large profits from a supposed Swapzone.io arbitrage exploit, but instead runs malicious code that modifies the swap process directly within the victim's browser.</p> <p>It could also be the first known ClickFix attack to use JavaScript to alter a webpage's functionality for a malicious purpose.</p> <p><a href="https://www.wiz.io/lp/model-context-protocol-mcp-security-best-practices-cheat-sheet?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_MCP-BestPractices-Cheat-Sheet&amp;sfcid=701Py00000TCZuBIAX&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=MCP-Best-Practices" target="_blank"><img src="https://www.bleepstatic.com/c/w/MCP-Best-Practices-970x250.png" alt="Wiz"></a>
+</p> <h2>Promoted through Pastebin</h2> <p>In the campaign spotted by BleepingComputer, threat actors are iterating through Pastebin posts and leaving comments that promote&nbsp;an alleged&nbsp;cryptocurrency exploit, with a link to a URL on rawtext[.]host.</p> <p>The campaign is widespread, with many of our posts receiving comments over the past week claiming to be "leaked exploit documentation" that allows users&nbsp;to earn $13,000 in 2&nbsp;days.</p> <div>
+<figure><img alt="Phishing comment on Pastebin" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/pastebin-comment.jpg"><figcaption><strong>Phishing comment on Pastebin</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>The link in the comment redirects to a Google Docs page titled "Swapzone.io – ChangeNOW Profit Method,"&nbsp;which claims to be a guide describing&nbsp;a method to exploit arbitrage opportunities for higher payouts.</p> <p>"ChangeNOW still has an older backend node connected to the Swapzone partner API. On direct ChangeNOW, this node is no longer used for public swaps," reads the fake guide.</p> <p>"However, when accessed through Swapzone, the rate calculation passes through Node v1.9 for certain BTC pairs. This old node applies a different conversion formula for BTC to ANY, which results in ~38% higher payouts than intended."</p> <p>At any given time, these documents typically show between 1 and 5 active viewers, suggesting the scam is circulating.</p> <div>
+<figure><img alt="Anonymous users viewing the Google Doc" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/users-browsing.jpg"><figcaption><strong>People viewing the Google Doc</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>The fake guide provides instructions to visit Swapzone.io and manually load a Bitcoin node by executing JavaScript directly in their browser's address bar.</p> <p>The instructions tell victims to visit a URL on paste[.]sh and copy a JavaScript snippet hosted on the page.</p> <div>
+<figure><img alt="First stage JavaScript code used in ClickFix attack" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/malicious-script.jpg"><figcaption><strong>First stage JavaScript code used in ClickFix attack</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>The guide then tells the reader to go back to the SwapZone tab, click on the address bar, type javascript:, and then paste the code. When the code has been pasted into the address, they state to press Enter on your keyboard to execute it, as explained below.</p> <div>
+<figure><img alt="ClickFix attack instructions in fake SwapZone exploit guide" src="https://www.bleepstatic.com/images/news/security/c/clickfix/pastebin-javascript/clickfix-instructions.jpg"><figcaption><strong>ClickFix attack instructions in fake SwapZone exploit guide</strong><br><em>Source: BleepingComputer</em></figcaption></figure></div> <p>This technique abuses the browser's 'javascript:'&nbsp;URI&nbsp;feature, which allows users to execute JavaScript from the address on the currently loaded website.</p> <p>By convincing victims to run this code on Swapzone.io, attackers can manipulate the page and alter the swap process.</p> <p>BleepingComputer's analysis of the malicious script hosted at paste[.]sh shows that it loads a secondary payload from&nbsp;https://rawtext[.]host/raw?btulo3.</p> <p>This heavily obfuscated script&nbsp;is injected directly into the Swapzone page, overriding the legitimate Next.js script used for handling Bitcoin swaps to hijack the swap interface.</p> <p>The malicious script includes embedded Bitcoin addresses, which are randomly selected and injected into the swap process, replacing the legitimate deposit address generated by the exchange.</p> <p>Because the code executes within the Swapzone.io session, victims see a legitimate interface but end up copying and sending funds to attacker-controlled Bitcoin wallets.</p> <p>In addition to replacing the deposit address, BleepingComputer was told that the script modifies displayed exchange rates and offer values, making it feel like the alleged arbitrage exploit is actually working.</p> <p>Unfortunately, as Bitcoin transactions cannot be reversed, if you fell for this scam, there is no easy way to recover your money.</p> <h2>A novel ClickFix variant</h2> <p>This campaign is a variant of the <a href="https://www.bleepingcomputer.com/tag/clickfix/" target="_blank">ClickFix attacks,</a> a social engineering technique that tricks users into executing malicious commands on their computer, typically to install malware.</p> <p>Normally, ClickFix attacks target operating systems by telling victims to run PowerShell commands or shell scripts to fix alleged errors or enable functionality.</p> <p>In this case, instead of targeting the operating system, the attackers instruct victims to execute JavaScript directly in their browser while visiting a cryptocurrency exchange service.</p> <p>This allows the malicious code to modify the page and intercept transaction details.</p> <p>This may represent one of the first reported&nbsp;ClickFix-style attacks specifically designed to use JavaScript in the browser and steal cryptocurrency.</p> <div> <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank"> <img alt="tines" src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg"></a> </p> <div> <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+<p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p> </div>
+</div> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

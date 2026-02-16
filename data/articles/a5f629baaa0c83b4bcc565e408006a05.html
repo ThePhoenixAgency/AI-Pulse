@@ -4,108 +4,42 @@
 <meta charset="UTF-8">
 <title>Top 10 web hacking techniques of 2024</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Top 10 web hacking techniques of 2024</h1>
   <div class="metadata">
-    Source: PortSwigger Research | Date: 2/4/2025 | Lang: EN |
-    <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2024" target="_blank">Original Article</a>
+    Source: PortSwigger Research | Date: 2/4/2025 4:01:48 PM | <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2024" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-    
-    
-    
-<div>
-    <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png" /></p>
-</div>
-    <ul>
-        <li>
-            <p><span></span><strong>Published: </strong>04 February 2025 at 15:01 UTC</p>
-        </li>
-        <li>
-            <p><strong>Updated: </strong>04 February 2025 at 15:20 UTC</p>
-        </li>
-        <li>
-        </li>
-    </ul>
-    <p><img src="https://portswigger.net/cms/images/b1/8a/e435-article-top_10_web_hacking_techniques_2024_results_blog-article2.png" /><br /></p><p>Welcome to the Top 10 Web Hacking Techniques of 2024, the <a href="https://portswigger.net/research/top-10-web-hacking-techniques">18th edition</a> of our annual community-powered effort to identify the most innovative must-read web security research published in the last year.</p>
-<p>This post is the culmination of a three-step collaboration with the security community. Over the last month:
-</p><ul><li>The community <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2024-nominations-open">submitted nominations</a> for the top research from 2024</li><li>The community voted on those nominations to build a shortlist of the top 15</li><li>An expert panel voted on the shortlist to select and order the 10 finalists</li></ul>
-<p>This year, the community nominated a staggering 121 pieces of research - nearly double what we saw last time. To make the number of options in the community vote manageable, I filtered out entries consisting of articles published outside 2024 or outside the scope of <a href="https://portswigger.net/burp/application-security-testing">web application security</a>, and writeups that, while valuable, were not innovative. Even after this filter, there were 103 entries remaining! </p>
-<p>After the community vote, we were honoured to see the top fifteen included three techniques by PortSwigger Research. To avoid risking a repeat of last year, I excluded these from the panel vote. Of course, we are still very proud of them, and you can read them here:</p><ul><li><a href="https://portswigger.net/research/gotta-cache-em-all">Gotta cache 'em all: bending the rules of web cache exploitation</a></li><li><a href="https://portswigger.net/research/splitting-the-email-atom">Splitting the email atom: exploiting parsers to bypass access controls</a></li><li><a href="https://portswigger.net/research/listen-to-the-whispers-web-timing-attacks-that-actually-work">Listen to the whispers: web timing attacks that actually work</a></li></ul>
-<p>The fifteen finalists from the community vote were then analyzed and voted on by an expert panel consisting of <a href="https://bsky.app/profile/agarri.fr">Nicolas Grégoire</a>, <a href="https://uk.linkedin.com/in/sdalili">Soroush Dalili</a>, <a href="https://x.com/stokfredrik/">STÖK</a>, <a href="https://www.linkedin.com/in/liveoverflow">Fabian (LiveOverflow)</a>, and <a href="https://www.linkedin.com/in/james-kettle-albinowax/">myself</a>.</p>
-<p>This year, a single theme dominated the top five - you might be able to guess what it was.
-</p>
-
-<p>Let's begin the countdown!</p>
-
-<h4>10. Hijacking OAuth flows via Cookie Tossing</h4><p>In tenth place, <a href="https://snyk.io/articles/hijacking-oauth-flows-via-cookie-tossing/">Hijacking OAuth flows via Cookie Tossing</a> by <a href="https://www.linkedin.com/in/elliot-w-27962779/">Elliot Ward</a> introduces a novel application of the widely under-estimated Cookie Tossing technique. This research was directly inspired by <a href="https://www.thomashouhou.com/post/cookie-tossing-attacks">an earlier post</a> by <a href="https://www.linkedin.com/in/thomas-houhou/">Thomas Houhou</a></p>
-<p>Both articles are essential reading, especially if you ever find yourself stuck with a self-XSS, or XSS in an inconsequential subdomain. Cookies predate the <a href="https://portswigger.net/web-security/cors/same-origin-policy">Same-Origin Policy</a> that governs JavaScript, and this research shows that in spite of decades of security-bodges from HttpOnly to <a href="https://portswigger.net/web-security/csrf/bypassing-samesite-restrictions">SameSite</a>, they're still a hazard. Maybe it would be safer just to use localStorage for session tokens instead.</p>
-<h4>9. ChatGPT Account Takeover - Wildcard Web Cache Deception</h4>
-<p><a href="https://portswigger.net/web-security/web-cache-deception">Web Cache Deception</a> originally debuted at #2 in the <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2017">top web hacking techniques of 2017</a>, and has recently seen rapid development.</p>
-<p>In <a href="https://nokline.github.io/bugbounty/2024/02/04/ChatGPT-ATO.html">ChatGPT Account Takeover - Wildcard Web Cache Deception</a>, <a href="https://x.com/h4r3l">Harel</a> introduces a twist on the technique, exploiting inconsistent decoding to perform <a href="https://portswigger.net/web-security/file-path-traversal">path traversal</a> and escape a cache rule's intended scope. We built a Web Security Academy lab based on this technique, so you can <a href="https://portswigger.net/web-security/web-cache-deception/lab-wcd-exploiting-origin-server-normalization">try it out for yourself</a>.
-</p>
-
-<p>We highly recommend reading all the author's writeups - they were a fundamental inspiration for our own web cache deception research.</p>
-
-<h4>8. OAuth Non-Happy Path to ATO</h4>
-<p>In position 8, <a href="https://blog.voorivex.team/oauth-non-happy-path-to-ato">OAuth Non-Happy Path to ATO</a> by <a href="https://x.com/omidxrz">Oxrz</a> articulates the thought process behind a beautiful and innovative attack chain. STÖK perfectly captured why this research stands out:</p>
-
-
-<blockquote>I just love how something as seemingly benign as an app honoring a manipulated "Referer:" header can turn into a full-blown account takeover via OAuth. This chain perfectly demonstrates how inspiration from prior research (in this case, <a href="https://x.com/fransrosen">Frans Rosén's</a> almost legendary <a href="https://labs.detectify.com/writeups/account-hijacking-using-dirty-dancing-in-sign-in-oauth-flows/">Dirty Dancing</a> write-up) combined with a deep dive into the OAuth documentation can lead to some seriously creative attack chains. I had completely forgotten about this attack flow, but there’s no way I’m not automating checks for referer-based redirects whenever I’m poking at stuff from now on!</blockquote>
-
-
-<h4>7. CVE-2024-4367 - Arbitrary JavaScript execution in PDF.js</h4><p>In seventh place, we've got... a CVE! <a href="https://codeanlabs.com/blog/research/cve-2024-4367-arbitrary-js-execution-in-pdf-js/">CVE-2024-4367 - Arbitrary JavaScript execution in PDF.js</a> to be precise. It's rare that a single, patched vulnerability makes its way into the top ten, but this finding by <a href="https://www.linkedin.com/in/thomasrinsma/">Thomas Rinsma</a> is exceptional. PDF.js is widely embedded as a library, making the second-order impact both huge and difficult to predict. This research is a quality analysis of some severely overlooked attack surface, and undermines assumptions about where an attacker might get a foothold.</p>
-<p>If you enjoy PDF shenanigans like this, we highly recommend reviewing publications by <a href="https://x.com/insertScript">Alex Inführ</a> &amp; <a href="https://x.com/corkami">Ange Albertini</a>.</p>
-<h4>6. DoubleClickjacking: A New Era of UI Redressing</h4><p><a href="https://www.paulosyibelo.com/2024/12/doubleclickjacking-what.html">DoubleClickjacking: A New Era of UI Redressing</a> introduces a variation on Clickjacking that bypasses pretty much every known mitigation. This entry proved controversial with the panel because it seems simple and deceptively obvious in retrospect, but still came in highly placed due to raw, undeniable value.</p>
-<p>While glimmers of this attack concept have existed for years, <a href="https://x.com/PaulosYibelo">Paulos Yibelo</a> delivers it with a perfect execution that proves it's unequivocally the right time for this attack. Framing restrictions and SameSite cookies have largely killed Clickjacking, and browser performance has achieved a level that makes the sleight of hand pretty much invisible. Love it, hate it, or simply hate the fact that you didn't discover it first, this is not a technique to ignore!</p>
-<h4>5. Exploring the DOMPurify library: Bypasses and Fixes</h4><p>HTML sanitisation has been an XSS battleground for decades, and the DOMPurify library by Cure53 has emerged as pretty much the only defensive solution that actually works.</p>
-<p><a href="https://mizu.re/post/exploring-the-dompurify-library-bypasses-and-fixes">Exploring the DOMPurify library: Bypasses and Fixes</a> dives deep into browser HTML-parsing internals, discovering and applying novel mutation XSS (mXSS) primitives. Described by LiveOverflow as "An absolute joy to read" and "Probably the most comprehensive article for understanding mXSS and how this affects sanitizers such as DOMPurify", this is a must-read for anyone into JavaScript and XSS, and will serve as a manual for anyone looking to develop a HTML sanitisation bypass for years to come.</p>
-
-
-<p>Awesome work by <a href="https://bsky.app/profile/mizu.re">Mizu</a>.</p>
-
-<h4>4. WorstFit: Unveiling Hidden Transformers in Windows ANSI</h4>
-<p>Everyone 'knows' that charset conversion is an absolute minefield, and yet somehow it's rarely seen in real exploits. In <a href="https://blog.orange.tw/posts/2025-01-worstfit-unveiling-hidden-transformers-in-windows-ansi/">WorstFit: Unveiling Hidden Transformers in Windows ANSI</a>, <a href="https://x.com/orange_8361">Orange Tsai</a> and <a href="https://x.com/_splitline_">splitline</a> prove the true power of this attack class, racking up numerous CVEs and triggering a vendor blame-game in the process. It's always a sign of great research when something that seems like it should be fundamental platform knowledge pops up and takes everyone by surprise.</p>
-
-<p>We expect to see more discoveries in this area, and after catching this talk live at Black Hat Europe I pushed automatic detection of WorstFit-style transformations into ActiveScan++ to help out. STÖK spotted the <a href="https://worst.fit/mapping/">WorstFit mapping explorer</a> is an absolute gem for generating fuzzing wordlists, too.</p><h3>3. Unveiling TE.0 HTTP Request Smuggling</h3>
-<p>The community's understanding of request smuggling is still rapidly evolving, and <a href="https://www.bugcrowd.com/blog/unveiling-te-0-http-request-smuggling-discovering-a-critical-vulnerability-in-thousands-of-google-cloud-websites/">Unveiling TE.0 HTTP Request Smuggling: Discovering a Critical Vulnerability in Thousands of Google Cloud Websites</a> is a major, must-read contribution by <a href="https://x.com/sw33tLie">Paolo Arnolfo</a>, <a href="https://x.com/bsysop">Guillermo Gregorio</a>, and <a href="https://x.com/_medusa_1_">@_medusa_1_</a></p>
-<p>This research is personally significant for me as it taught me an important lesson. Back when I first encountered CL.0 request smuggling, I hypothesized that TE.0 could exist but that it would never be exploitable, as it would require the back-end server to accept a HTTP request starting with a number and a newline. I was very, very, wrong. Once you've mastered the fundamentals, if you want to push the boundaries, relying on prediction and analysis can hold you back. If you don't ask the question because you think you know the answer, you stay ignorant.</p>
-<p>If you're wondering how the attack actually works, my best guess is that the front-end was rewriting the body as non-chunked, but forgetting to set the Content-Length header due to the OPTIONS method. This is an insane finding which opens the door to a whole lot of possibilities. Watch this space.</p>
-<h3>2. SQL Injection Isn't Dead: Smuggling Queries at the Protocol Level</h3><p>Sometimes you can tell research is going to be amazing just from the subtitle. LiveOverflow has a great analysis:</p><blockquote>"Great research progress often happens at the intersection of fields. In <a href="https://x.com/pspaul95">Paul Gerste's</a> <a href="https://media.defcon.org/DEF%20CON%2032/DEF%20CON%2032%20presentations/DEF%20CON%2032%20-%20Paul%20Gerste%20-%20SQL%20Injection%20Isn%27t%20Dead%20Smuggling%20Queries%20at%20the%20Protocol%20Level.pdf">SQL Injection Isn't Dead Smuggling Queries at the Protocol Level</a> we can see binary memory corruption ideas being applied to the world of web hacking. We have an integer overflow that corrupts a size, and basically a heap-spray technique to hit a fake Query more reliably... beautiful."</blockquote>
-
-<p>It's a testament to how strong the competition was this year that this didn't grab first place.</p>
-<h3>1. Confusion Attacks: Exploiting Hidden Semantic Ambiguity in Apache HTTP Server</h3><p><a href="https://x.com/orange_8361">Orange Tsai</a> has claimed the #1 position for the third time with <a href="https://blog.orange.tw/posts/2024-08-confusion-attacks-en/">Confusion Attacks: Exploiting Hidden Semantic Ambiguity in Apache HTTP Server</a>. This inspiring, deep and impactful research publication left the entire panel in awe. Here's what they had to say: </p>
-<blockquote>Once again, some fantastic research by Orange! It's crazy nobody considered approaching Apache in this way before! - Nicolas</blockquote>
-
-<blockquote>I’m certain we’re just scratching the surface of what’s possible by building on this research. Can’t wait to dig deeper, hunt for fingerprints and indicators of confusions and when the time is right, go all brrrrrr! - STÖK</blockquote>
-
-<blockquote>Orange Tsai treats Apache httpd like a web CTF challenge! It's incredible how deep and impactful Orange's research (always) is. Given the popularity of httpd, this research will serve as a reference for security practitioners for a long time. - LiveOverflow</blockquote>
-
-<blockquote>Orange is confusing all the apps! - Soroush</blockquote>
-
-<p>This is incredible, must-read research and absolutely deserves top place. Congratulations Orange!</p>
-<h4>Conclusion</h4>
-<p>The security community published a record-breaking amount of high-quality research in 2024, leading to intense competition for both the community and panel votes. This wasn't just a matter of quantity - this was the highest quality crop of research I've seen since picking up the top ten project in 2018, and if the trend continues next near it's going to cause carnage. With 103 nominations and only ten spots, many great writeups didn't make the cut, so be sure to check out the <a href="https://portswigger.net/research/top-10-web-hacking-techniques-of-2024-nominations-open">full nomination list</a> and let us know what your #1 was. Also, if you spotted some exceptional research from 2024 that never got nominated, chuck me an email and I'll add it to the list.</p><p>Part of what lands an entry in the top 10 is its expected longevity, so it's well worth getting caught up with <a href="https://portswigger.net/research/top-10-web-hacking-techniques">the top ten archive</a> too. If you're interested in getting a preview of what might win from 2025, you can <a href="https://portswigger.net/research/rss">subscribe to our RSS</a>, join <a href="https://www.reddit.com/r/websecurityresearch/">r/websecurityresearch</a>, hop on <a href="https://discord.gg/tDtgSMjqsc">our Discord</a>, or follow us on social. If you're interested in doing this kind of research yourself, I've shared a few lessons I've learned over the years in <a href="https://portswigger.net/research/hunting-evasive-vulnerabilities">Hunting Evasive Vulnerabilities</a>, <a href="https://portswigger.net/research/how-i-choose-a-security-research-topic">How to choose a security research topic</a>, and <a href="https://portswigger.net/research/so-you-want-to-be-a-web-security-researcher">So you want to be a web security researcher?</a></p><p>Massive thanks to the panel for contributing their time and expertise to curating the final result, and thanks also to everyone who took part! Without your nominations, votes, and most-importantly research, this wouldn't be possible.</p><p>Till next time!</p>
-    
-    <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
-</div></div>
+    <p>Welcome to the Top 10 Web Hacking Techniques of 2024, the 18th edition of our annual community-powered effort to identify the most innovative must-read web security research published in the last year</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

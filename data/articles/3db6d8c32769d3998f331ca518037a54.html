@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>SpaceX to compete in Pentagon contest for autonomous drone tech, Bloomberg News reports</title>
 <style>
@@ -18,30 +16,28 @@
 <body>
   <h1>SpaceX to compete in Pentagon contest for autonomous drone tech, Bloomberg News reports</h1>
   <div class="metadata">
-    Source: Investing.com | Date: 2/16/2026 8:18:54 PM | Lang: FR |
-    <a href="https://www.investing.com/news/stock-market-news/spacex-to-compete-in-pentagon-contest-for-autonomous-drone-tech-bloomberg-news-reports-4507771" target="_blank">Original Article</a>
+    Source: Investing.com | Date: 2/16/2026 8:18:54 PM | <a href="https://www.investing.com/news/stock-market-news/spacex-to-compete-in-pentagon-contest-for-autonomous-drone-tech-bloomberg-news-reports-4507771" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <p>Summary unavailable for this article.</p>
-    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

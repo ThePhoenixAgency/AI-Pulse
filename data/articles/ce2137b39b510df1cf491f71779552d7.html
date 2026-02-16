@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Android 17 : Google travaille sur "Handoff", le transfert d'activité d'un appareil à un autre</title>
 <style>
@@ -8,7 +6,7 @@
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
   h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
   p { margin-bottom: 0.72em; line-height: 1.58; }
   ul, ol { margin: 0.5em 0 0.9em 1.1em; }
@@ -16,88 +14,22 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
-  .article-footer { margin-top: 1.6em; padding-top: 0.9em; border-top: 1px solid rgba(0,217,255,0.2); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.9em; }
-  .footer-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-  .footer-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(0,217,255,0.35); background: rgba(0,217,255,0.08); color: #00d9ff; text-decoration: none; font-size: 0.88em; }
-  .footer-btn:hover { background: rgba(0,217,255,0.16); }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Android 17 : Google travaille sur "Handoff", le transfert d'activité d'un appareil à un autre</h1>
   <div class="metadata">
-    Source: Les Numeriques | Date: 2/16/2026 | Lang: FR |
-    <a href="https://www.lesnumeriques.com/mobilite-c17/android-17-google-travaille-sur-handoff-le-transfert-d-activite-d-un-appareil-a-un-autre-n251577.html" target="_blank">Original Article</a>
+    Source: Les Numeriques | Date: 2/16/2026 3:30:00 PM | <a href="https://www.lesnumeriques.com/mobilite-c17/android-17-google-travaille-sur-handoff-le-transfert-d-activite-d-un-appareil-a-un-autre-n251577.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
-  <div class="content">
-    <div>
-        
-
-
-
-
-
-
-
-
-            
-
-                            
-<nav>
-    <div>
-
-                <div><p><a href="https://www.lesnumeriques.com/">
-			<img src="https://cdn.lesnumeriques.com/assets/2026/02/03/1770110525840/newebfrontstyleguide/build/img/svg/logo-horizontal.svg" alt="Les Numériques" />
-		</a></p>	
-
-		
-</div>
-
-                
-
-                <div>
-				<p>
-			<span>En ce moment :</span>
-		</p>
-
-						
-		
-			</div>
-                
-
-                
-
-                
-    </div>
-        
-</nav>
-
-
-
-    
-                
-    
-
-
-
-
-        
-            
-
-    
-
-<div>
-    <p><span>
-
+  <div class="content"><p>En ce moment&nbsp;: Publicité, votre contenu continue ci-dessous Publicité Publié le 16/02/26 à 15h30 Nos réseaux : Suivez-nous Mamun_Sheikh/Shutterstock - Android pourrait sérieusement rattraper iOS et iPadOS avec cette nouveauté. 2 Android va-t-il enfin proposer une fonctionnalité de transfert d'activité digne de ce nom dans les prochains mois ? On dirait bien. On peut préférer iOS à Android pour de multiples raisons. L'une d'elles est sans aucun doute la riche et simple interopérabilité entre les OS (iOS, iPadOS et macOS) et les appareils (iPhone, iPad et Mac) de la firme à la pomme. Google l'a bien compris et tente de rattraper son retard sur le sujet depuis quelque temps. Après son équivalent de Airdrop, la firme travaille pour Android 17 sur une fonctionnalité très prometteuse simplement baptisée Transfert (ou Handoff en anglais).à lire également :Enfin un outil pour des transitions fluides sur AndroidPour le moment non proposée sur la bêta 1 d'Android 17, Transfert est cependant évoquée par Google dans ses documents techniques à destination des développeurs. Son objectif est simple : les développeurs d'applications pourront l'intégrer pour offrir une continuité inter-appareils à leurs utilisateurs. Publicité, votre contenu continue ci-dessous Publicité En clair, il sera possible de commencer une activité sur une application, par exemple sur un smartphone, et de la continuer sans rupture sur une tablette ou un autre appareil compatible. Le transfert se fera en arrière-plan et est implémenté par activité. Les appareils éligibles à proximité pour recevoir un Transfert l'indiqueront via différents points d'entrée, comme le lanceur d'applications et la barre des tâches.Il faudra sans surprise que tous les appareils concernés aient installé l'application en question. Cependant, un transfert vers le web (pour télécharger l'application nécessaire, probablement) sera possible en tant que solution de secours.Reste désormais à voir quelles seront les capacités et les performances de cette fonctionnalité. De plus, la mention de "barre des tâches" fait sans aucun doute référence à des tablettes et grands écrans, mais une préparation du terrain d'un PC Android avec une vraie version desktop n'est également pas à exclure.
+à lire également : Publicité, votre contenu continue ci-dessous Publicité Suivez toute l'actualité des Numériques sur Google Actualités et sur la chaîne WhatsApp des Numériques Envie de faire encore plus d'économies ? Découvrez nos codes promo sélectionnés pour vous. Publications qui peuvent vous intéresser</p></div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-
   <script>
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
@@ -111,7 +43,6 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
-
   </script>
-</body>
-</html>
+
+</body></html>

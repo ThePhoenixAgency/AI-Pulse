@@ -4,51 +4,42 @@
 <meta charset="UTF-8">
 <title>Tentacles of ‘0ktapus’ Threat Group Victimize 130 Firms</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Tentacles of ‘0ktapus’ Threat Group Victimize 130 Firms</h1>
   <div class="metadata">
-    Source: Threatpost | Date: 8/29/2022 | Lang: EN |
-    <a href="https://threatpost.com/0ktapus-victimize-130-firms/180487/" target="_blank">Original Article</a>
+    Source: Threatpost | Date: 8/29/2022 4:56:19 PM | <a href="https://threatpost.com/0ktapus-victimize-130-firms/180487/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><p>Over 130 companies tangled in sprawling phishing campaign that spoofed a multi-factor authentication system.</p><div>
-											<p>Targeted attacks on Twilio and Cloudflare employees are tied to a massive phishing campaign that resulted in 9,931 accounts at over 130 organizations being compromised. The campaigns are tied to focused abuse of identity and access management firm Okta, which gained the threat actors the 0ktapus moniker, by researchers.</p>
-<p>“The primary goal of the threat actors was to obtain Okta identity credentials and multi-factor authentication (MFA) codes from users of the targeted organizations,” wrote Group-IB researchers <a href="https://www.group-ib.com/media/0ktapus-campaign/" target="_blank">in a recent report</a>. “These users received text messages containing links to phishing sites that mimicked the Okta authentication page of their organization.”</p>
-<p>Impacted were 114 US-based firms, with additional victims of sprinkled across 68 additional countries.</p>
-<p>Roberto Martinez, senior threat intelligence analyst at Group-IB, said the scope of the attacks is still an unknown. “The 0ktapus campaign has been incredibly successful, and the full scale of it may not be known for some time,” he said.</p>
-<h2><strong>What the 0ktapus Hackers Wanted</strong></h2>
-<p>The 0ktapus attackers are believed to have begun their campaign by targeting telecommunications companies in hopes of winning access to potential targets’ phone numbers.</p>
-<p>While unsure exactly how threat actors obtained a list of phone numbers used in MFA-related attacks, one theory researchers posit is that 0ktapus attackers began their campaign targeting telecommunications companies.</p>
-<p>“[A]ccording to the compromised data analyzed by Group-IB, the threat actors started their attacks by targeting mobile operators and telecommunications companies and could have collected the numbers from those initial attacks,” researchers wrote.</p>
-<p>Next, attackers sent phishing links to targets via text messages. Those links led to webpages mimicking the Okta authentication page used by the target’s employer. Victims were then asked to submit Okta identity credentials in addition to a multi-factor authentication (MFA) codes employees used to secure their logins.</p>
-<p>In an accompanying <a href="https://blog.group-ib.com/0ktapus" target="_blank">technical blog</a>, researchers at Group-IB explain that the initial compromises of mostly software-as-a-service firms were a phase-one in a multi-pronged attack. 0ktapus’ ultimate goal was to access company mailing lists or customer-facing systems in hopes of facilitating supply-chain attacks.</p>
-<p>In a possible related incident, within hours of Group-IB publishing its report late last week, the firm DoorDash revealed it was targeted in an attack with all the hallmarks of an 0ktapus-style attack.</p>
-<h2><strong>Blast Radius: MFA Attacks</strong></h2>
-<p>In a <a href="https://doordash.news/get-the-facts/how-were-responding-to-a-third-party-vendor-phishing-incident/" target="_blank">blog post</a> DoorDash revealed; “unauthorized party used the stolen credentials of vendor employees to gain access to some of our internal tools.” The attackers, according to the post, went on to steal personal information – including names, phone numbers, email and delivery addresses – from customers and delivery people.</p>
-<p>In the course of its campaign, the attacker compromised 5,441 MFA codes, Group-IB reported.</p>
-<p>“Security measures such as MFA can appear secure… but it is clear that attackers can overcome them with relatively simple tools,” researchers wrote.</p>
-<p>“This is yet another phishing attack showing how easy it is for adversaries to bypass supposedly secure multifactor authentication,” Roger Grimes, data-driven defense evangelist at KnowBe4, wrote in a statement via email. “It simply does no good to move users from easily phish-able passwords to easily phish-able MFA. It’s a lot of hard work, resources, time, and money, not to get any benefit.”</p>
-<p>To mitigate 0ktapus-style campaigns, the researchers recommended good hygiene around URLs and passwords, and using <a href="https://threatpost.com/fido-knife-murder-passwords/179031/" target="_blank">FIDO2</a>-compliant security keys for MFA.</p>
-<p>“Whatever MFA someone uses,” Grimes advised, “the user should be taught about the common types of attacks that are committed against their form of MFA, how to recognize those attacks, and how to respond. We do the same when we tell users to pick passwords but don’t when we tell them to use supposedly more secure MFA.”</p>
-
-											
-										</div></div>
+    <p>Over 130 companies tangled in sprawling phishing campaign that spoofed a multi-factor authentication system.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

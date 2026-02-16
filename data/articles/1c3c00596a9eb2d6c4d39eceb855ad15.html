@@ -1,156 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Vouch for an open source web of trust (Changelog News #180)</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Vouch for an open source web of trust (Changelog News #180)</h1>
   <div class="metadata">
-    Source: The Changelog | Date: 2/9/2026 | Lang: EN |
-    <a href="https://changelog.com/news/180" target="_blank">Original Article</a>
+    Source: The Changelog | Date: 2/9/2026 8:00:00 PM | <a href="https://changelog.com/news/180" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-      <header>
-
-        <div>
-          <div>
-            <p><a href="https://changelog.com/">
-                <img src="https://cdn.changelog.com/static/images/news/logo-597c4f4cc75e91401528bd0c8a5aa2ba.svg" alt="Changelog Logo" />
-              </a>
-            </p>
-            <h2>Changelog News! The software <span>newsletter</span> that's also a <span>podcast</span></h2>
-            <p><em>The software world moves fast... keep up the easy way! Let us track changes &amp; <a href="https://changelog.com/person/jerodsanto">Jerod</a> will let you know what's up each Monday.</em></p>
-
-            
-
-            <div>
-              <h2>29 reasons to subscribe to Changelog News</h2>
-              <ol>
-                <li>Every word is 100% crafted by humans.</li>
-                <li>You'll join 25,540 others who subscribe.</li>
-                <li>We feature the best community <a href="https://changelog.com/news/submit">submissions</a>.</li>
-                <li>We like sending email, but nothing spammy.</li>
-                <li>You like receiving email, but nothing spammy.</li>
-                <li>We do NOT redirect or track your link clicks.</li>
-                <li>Hover on a link to <a href="https://cdn.changelog.com/news/changelog-news-direct-links.mov" target="_blank">preview</a> where it's headed.</li>
-                <li>It costs the same amount as a free cup of coffee.</li>
-                <li>We've been in the software game for over 20 years.</li>
-                <li>Sometimes we take meme breaks, which are on point.</li>
-                <li>Like the one from <a href="https://changelog.com/news/66">issue #66</a> (if you commit to it).</li>
-                <li>We order our lists using the pyramid(ical) scheme.</li>
-                <li>We try hard to keep puns &amp; bad jokes to a minimum.</li>
-                <li>Even so, once in awhile they still slip through...</li>
-                <li>Dev has problem. Uses Java. Creates ProblemFactory.</li>
-                <li>Hopefully that bad joke was funnier than expected?!</li>
-                <li>You might actually start looking forward to Mondays.</li>
-                <li>We hand-pick our partners so even the ads are useful!</li>
-                <li>You can reply! We read every message &amp; respond to many.</li>
-                <li>Specialization is for ants! This is a polyglot operation.</li>
-                <li>You get to enjoy the freshest Breakmaster Cylinder <a href="https://changelog.com/beats">Beats</a>.</li>
-                <li>Who else takes the time to list 29 reasons to subscribe?!</li>
-                <li>We've been known to <code>ORDER BY LENGTH(title) ASC</code>. <a href="https://changelog.com/news/86">Seriously</a>.</li>
-                <li>Each episode has chapters that link to the stories featured.</li>
-                <li>Emoji are lovingly sprinkled on. Not too much! Just a pinch </li>
-                <li>Who doesn't want to improve constantly? Consistency always wins!</li>
-                <li>We do not rest on our laurels &amp; are committed to <a href="https://changelog.com/topic/kaizen">constant improvement</a>.</li>
-                <li>Your colleagues will be <em>so impressed</em> by how on top of the game you are!</li>
-                <li>We keep our word. This is the 29th (!) reason to subscribe to Changelog News.</li>
-              </ol>
-
-              </div>
-          </div>
-
-          <div>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/mary-1f3fdb18bff74e111f676d1a69da0581.jpg" />
-              </p>
-              <div>
-                <p>The only news I look forward to every week. Some weeks, I play it twice. Quick, witty, informative &amp; positive. Rock on, Jerod!</p>
-                <p><cite>Mary H.</cite>
-              </p></div>
-            </blockquote>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/fabien-a81132fa245d859cbe8f26abc41cddf3.jpg" />
-              </p>
-              <div>
-                <p>Every week for the last 6 months, I discover amazing stuff thanks to that newsletter. Such a gold mine of information 🏼</p>
-                <p><cite><a href="https://frica.github.io/blog/">Fabien Rica</a></cite>
-              </p></div>
-            </blockquote>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/justin-cc093612a62d7408f8f2393861284d39.jpg" />
-              </p>
-              <div>
-                <p>I gotta say the Changelog Newsletter is the best programming journalism I've seen in years.</p>
-                <p><cite><a href="https://justin.searls.co/">Justin Searls</a></cite>
-              </p></div>
-            </blockquote>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/chris-ff1a5fef8208f6d4d4ea517cb6ff72ee.jpg" />
-              </p>
-              <div>
-                <p>I get lots of information. Changelog News is the one I don't skip, in both podcast and newsletter form.</p>
-                <p><cite>Chris Woods</cite>
-              </p></div>
-            </blockquote>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/maros-9b32a720dde0905bf0c58c17144d73c2.jpg" />
-              </p>
-              <div>
-                <p>Informative, concise, funny. Pick any three </p>
-                <p><cite>Maroš Kučera</cite>
-              </p></div>
-            </blockquote>
-            <blockquote>
-              <p><img src="https://cdn.changelog.com/static/images/news/fraol-6dc4ef1d3bef07ce73b86c1084a41009.jpg" />
-              </p>
-              <div>
-                <p>The newsletter so good I consider it a competitive advantage.</p>
-                <p><cite><a href="https://github.com/frectonz">Fraol Lemecha</a></cite>
-              </p></div>
-            </blockquote>
-            
-          </div>
-
-          
-        </div>
-      </header>
-      <main>
-<article>
-<div>
-  <p><em>Issue #180</em>: Feb 9, 2026 — 8 Minutes</p>
-  
-</div>
-  <a href="https://op3.dev/e/https://cdn.changelog.com/uploads/news/180/changelog-news-180.mp3">
-    <span>LISTEN</span>
-  </a>
-
-  
-</article>
-
-
-
-
-      </main>
-    </div></div>
+    <p>Mitchell Hashimoto's trust management system for open source, Nicholas Carlini has a team of Claudes build a C compiler, Stephan Schwab recounts the history of attempted developer replacement, NanClaw is an alternative to OpenClaw, and Sophie Koonin can't wrap her head around so many people going so hard on LLM-generated code.</p>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

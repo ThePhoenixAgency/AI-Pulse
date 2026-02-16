@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>OpenClaw Guide Ch.4: Tools and Skills</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>OpenClaw Guide Ch.4: Tools and Skills</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
-    <a href="https://dev.to/linou518/openclaw-guide-ch4-tools-and-skills-hlo" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -58,8 +55,7 @@
 <li> <strong>Custom Tools</strong>: User-developed specialized tools</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="builtin-tool-reference" href="#builtin-tool-reference">
@@ -79,8 +75,6 @@
   <strong>read — Read File Contents</strong>
 </h4>
 
-
-
 <div>
 <pre><code><span># Basic usage</span>
 <span>read </span><span>file_path</span><span>=</span><span>"example.txt"</span>
@@ -96,24 +90,18 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="write-create-or-overwrite-files" href="#write-create-or-overwrite-files">
   </a>
   <strong>write — Create or Overwrite Files</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Create a new file</span>
@@ -127,16 +115,12 @@ write <span>path</span><span>=</span><span>"config.json"</span> <span>content</s
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p><strong>Safety Notes:</strong></p>
 
@@ -153,8 +137,6 @@ write <span>path</span><span>=</span><span>"config.json"</span> <span>content</s
   <strong>edit — Precise File Editing</strong>
 </h4>
 
-
-
 <div>
 <pre><code><span># Replace specific content</span>
 edit <span>file_path</span><span>=</span><span>"config.txt"</span>
@@ -166,18 +148,14 @@ edit <span>file_path</span><span>=</span><span>"config.txt"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Best Practice:</strong><br />
+<p><strong>Best Practice:</strong><br>
 </p>
 
 <div>
@@ -199,16 +177,12 @@ server.debug = true"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="42-command-execution-tools" href="#42-command-execution-tools">
@@ -221,8 +195,6 @@ server.debug = true"</span>
   </a>
   <strong>exec — Execute Shell Commands</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Basic command execution</span>
@@ -242,18 +214,14 @@ server.debug = true"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Security Configuration:</strong><br />
+<p><strong>Security Configuration:</strong><br>
 </p>
 
 <div>
@@ -273,24 +241,18 @@ server.debug = true"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="process-manage-background-processes" href="#process-manage-background-processes">
   </a>
   <strong>process — Manage Background Processes</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># List active processes</span>
@@ -310,16 +272,12 @@ process <span>action</span><span>=</span><span>"kill"</span> <span>sessionId</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="43-network-tools" href="#43-network-tools">
@@ -332,8 +290,6 @@ process <span>action</span><span>=</span><span>"kill"</span> <span>sessionId</sp
   </a>
   <strong>web_search — Web Search</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Basic search</span>
@@ -353,24 +309,18 @@ web_search <span>query</span><span>=</span><span>"OpenClaw news"</span> <span>fr
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="webfetch-fetch-web-content" href="#webfetch-fetch-web-content">
   </a>
   <strong>web_fetch — Fetch Web Content</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Fetch web page content</span>
@@ -387,24 +337,18 @@ web_fetch <span>url</span><span>=</span><span>"https://long-article.com"</span> 
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="browser-browser-automation" href="#browser-browser-automation">
   </a>
   <strong>browser — Browser Automation</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Open a web page</span>
@@ -428,16 +372,12 @@ browser <span>action</span><span>=</span><span>"act"</span> <span>request</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="44-messaging-tools" href="#44-messaging-tools">
@@ -450,8 +390,6 @@ browser <span>action</span><span>=</span><span>"act"</span> <span>request</span>
   </a>
   <strong>message — Send Messages</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Send a simple message</span>
@@ -468,24 +406,18 @@ message <span>action</span><span>=</span><span>"send"</span> <span>target</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="tts-texttospeech" href="#tts-texttospeech">
   </a>
   <strong>tts — Text-to-Speech</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Generate a voice file</span>
@@ -496,19 +428,14 @@ tts <span>text</span><span>=</span><span>"Welcome to the OpenClaw assistant"</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="skills-system" href="#skills-system">
@@ -547,8 +474,6 @@ tts <span>text</span><span>=</span><span>"Welcome to the OpenClaw assistant"</sp
   <strong>Install from ClawHub</strong>
 </h4>
 
-
-
 <div>
 <pre><code><span># List available skills</span>
 openclaw skills list
@@ -567,24 +492,18 @@ openclaw skills uninstall weather
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="local-skill-development" href="#local-skill-development">
   </a>
   <strong>Local Skill Development</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Create a skill directory</span>
@@ -613,16 +532,12 @@ When user asks for X, do Y using the following tools:
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="47-recommended-skills" href="#47-recommended-skills">
@@ -662,8 +577,7 @@ When user asks for X, do Y using the following tools:
 </tbody>
 </table></div>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="tool-security-and-configuration" href="#tool-security-and-configuration">
@@ -682,8 +596,6 @@ When user asks for X, do Y using the following tools:
   </a>
   <strong>Tool Permission Control</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -711,24 +623,18 @@ When user asks for X, do Y using the following tools:
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="network-access-control" href="#network-access-control">
   </a>
   <strong>Network Access Control</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -751,16 +657,12 @@ When user asks for X, do Y using the following tools:
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="49-tool-usage-best-practices" href="#49-tool-usage-best-practices">
@@ -773,8 +675,6 @@ When user asks for X, do Y using the following tools:
   </a>
   <strong>Error Handling</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Good practice: Check if file exists first</span>
@@ -790,24 +690,18 @@ When user asks for X, do Y using the following tools:
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="logging" href="#logging">
   </a>
   <strong>Logging</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># Log important operations</span>
@@ -820,19 +714,14 @@ When user asks for X, do Y using the following tools:
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="handson-exercise" href="#handson-exercise">
@@ -846,7 +735,7 @@ When user asks for X, do Y using the following tools:
   <strong>4.10 Comprehensive Case: Automated Report Generation</strong>
 </h3>
 
-<p><strong>Requirement</strong>: Generate a daily system status report automatically<br />
+<p><strong>Requirement</strong>: Generate a daily system status report automatically<br>
 </p>
 
 <div>
@@ -904,18 +793,14 @@ message <span>action</span><span>=</span><span>"send"</span> <span>target</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Schedule Execution:</strong><br />
+<p><strong>Schedule Execution:</strong><br>
 </p>
 
 <div>
@@ -929,16 +814,12 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="411-troubleshooting-guide" href="#411-troubleshooting-guide">
@@ -946,7 +827,7 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
   <strong>4.11 Troubleshooting Guide</strong>
 </h3>
 
-<p><strong>Error 1: exec tool denied</strong><br />
+<p><strong>Error 1: exec tool denied</strong><br>
 </p>
 
 <div>
@@ -957,18 +838,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Fix:</strong><br />
+<p><strong>Fix:</strong><br>
 </p>
 
 <div>
@@ -986,18 +863,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Error 2: File permission denied</strong><br />
+<p><strong>Error 2: File permission denied</strong><br>
 </p>
 
 <div>
@@ -1008,18 +881,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Fix:</strong><br />
+<p><strong>Fix:</strong><br>
 </p>
 
 <div>
@@ -1034,18 +903,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Error 3: Network request timeout</strong><br />
+<p><strong>Error 3: Network request timeout</strong><br>
 </p>
 
 <div>
@@ -1056,18 +921,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Fix:</strong><br />
+<p><strong>Fix:</strong><br>
 </p>
 
 <div>
@@ -1085,19 +946,14 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="chapter-summary" href="#chapter-summary">
@@ -1147,8 +1003,7 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
 <li>Configure security policies suitable for your environment</li>
 </ol>
 
-
-<hr />
+<hr>
 
 <p><strong> Further Reading:</strong></p>
 
@@ -1158,8 +1013,7 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
 <li><a href="https://docs.openclaw.ai/security" target="_blank">Security Configuration Best Practices</a></li>
 </ul>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

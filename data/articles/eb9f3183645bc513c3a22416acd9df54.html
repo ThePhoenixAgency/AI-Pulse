@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>[MàJ] Multiples vulnérabilités dans Ivanti Endpoint Manager Mobile</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>[MàJ] Multiples vulnérabilités dans Ivanti Endpoint Manager Mobile</h1>
   <div class="metadata">
-    Source: CERT-FR | Date: 1/30/2026 | Lang: FR |
-    <a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/" target="_blank">Original Article</a>
+    Source: CERT-FR | Date: 1/30/2026 | Lang: FR
   </div>
   <div class="content">
     <div><div>
@@ -36,7 +33,7 @@
       
       
         <p><a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/json/">
-    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
+    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg">
   </a>
 </p>
       
@@ -44,13 +41,10 @@
 
     
 
-
-
-
     <div>
       <p>
         </p><h2>Bulletin d'alerte du CERT-FR</h2>
-        <hr />
+        <hr>
       <p></p>
     </div>
     
@@ -95,18 +89,18 @@
 
       <div>
           <h2>Résumé</h2>
-          <p><span><b>[Mise à jour du 09 février 2026]</b></span><br />
-Le 6 février 2026, Ivanti a mis à disposition des scripts RPM de détection d'indicateurs de compromission, à utiliser en fonction de la version d'EPMM installée.<br />
+          <p><span><b>[Mise à jour du 09 février 2026]</b></span><br>
+Le 6 février 2026, Ivanti a mis à disposition des scripts RPM de détection d'indicateurs de compromission, à utiliser en fonction de la version d'EPMM installée.<br>
 L'éditeur a également mis son guide d'analyse à jour (cf. section Documentation).</p>
-<p><b>[Mise à jour du 02 février 2026]</b><br />
+<p><b>[Mise à jour du 02 février 2026]</b><br>
 Une preuve de concept est disponible publiquement.</p>
-<p><b>[Publication initiale]</b><br />
+<p><b>[Publication initiale]</b><br>
 Le 29 janvier 2026, Ivanti a publié un avis de sécurité concernant les vulnérabilités critiques CVE-2026-1281 et CVE-2026-1340 affectant Ivanti Endpoint Manager Mobile (EPMM). L'éditeur indique qu'elles permettent à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance.</p>
 <p>Ivanti indique que les vulnérabilités CVE-2026-1281 et CVE-2026-1340 sont activement exploitées dans le cadre d'attaques ciblées.</p>
 <h2>Recherche de compromission</h2>
 <p>En cas de suspicion de compromission, l'éditeur recommande  :</p>
 <ul>
-<li>d'isoler totalement les équipements EPMM et Sentry concernée du réseau, vis-à-vis d'Internet comme du réseau interne ; <br /><em>Note : Sentry est conçu pour acheminer certains types de trafic depuis les terminaux mobiles vers le réseau interne. Si vous pensez que votre équipement EPMM est compromis, Ivanti recommande d'examiner les systèmes auxquels Sentry peut accéder afin de détecter d'éventuelles traces de reconnaissances ou de mouvements latéraux.</em></li>
+<li>d'isoler totalement les équipements EPMM et Sentry concernée du réseau, vis-à-vis d'Internet comme du réseau interne ; <br><em>Note : Sentry est conçu pour acheminer certains types de trafic depuis les terminaux mobiles vers le réseau interne. Si vous pensez que votre équipement EPMM est compromis, Ivanti recommande d'examiner les systèmes auxquels Sentry peut accéder afin de détecter d'éventuelles traces de reconnaissances ou de mouvements latéraux.</em></li>
 <li>de réaliser un instantané ou effectuer une sauvegarde du disque ;</li>
 <li>de rechercher les tentatives d'exploitations dans les journaux d'accès Apache <code>/var/log/httpd/https-access_log</code>.</li>
 </ul>
@@ -123,7 +117,7 @@ Le 29 janvier 2026, Ivanti a publié un avis de sécurité concernant les vulné
             <td>GET</td>
         </tr><tr>
             <td>Chemin d'accès</td>
-            <td>/mifs/c/aftstore/fob/<br />/mifs/c/appstore/fob/<br /></td>
+            <td>/mifs/c/aftstore/fob/<br>/mifs/c/appstore/fob/<br></td>
         </tr><tr>
             <td>Code HTTP</td>
             <td>404</td>
@@ -137,7 +131,7 @@ Le 29 janvier 2026, Ivanti a publié un avis de sécurité concernant les vulné
 Les instances d'ivanti EPMM avec le correctif de sécurité appliqué produiront des faux positifs suivants lors de la recherche de requêtes HTTP malveillantes qui ressemblent à l'exemple ci-dessous :
 </p><pre>127.0.0.1:33354 - - 2026-01-28--12-00-01 "GET /mifs/c/aftstore/fob/3/0/sha256:kid=0 HTTP/1.1" 404 
 </pre>
-<p><span><b>[Mise à jour du 09 février 2026]</b><br />
+<p><span><b>[Mise à jour du 09 février 2026]</b><br>
 Précision : La présence du motif de requête, cité ci-dessus, en provenance de l'adresse de l'hôte local <i>(localhost)</i>, dans les journaux Apache, permet de confirmer que le correctif a bien été appliqué.
 </span></p><p>Deux moyens de persistance sont connus à ce jour par l'éditeur :</p>
 <ol>
@@ -243,11 +237,11 @@ Toute connexion de longue durée initiée par un Ivanti EPMM doit être considé
 
   <section>
   <p><a>
-      <img src="https://www.cert.ssi.gouv.fr/static/images/icon_toppage.png" alt="" />
+      <img src="https://www.cert.ssi.gouv.fr/static/images/icon_toppage.png" alt="">
     </a>
   </p>
 </section>
 </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

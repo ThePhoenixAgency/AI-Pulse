@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>MySQL replication setup — 6 steps to configure master-slave replication</title>
 <style>
@@ -24,8 +22,7 @@
 <body>
   <h1>MySQL replication setup — 6 steps to configure master-slave replication</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 3:51:05 PM | Lang: EN |
-    <a href="https://dev.to/freddowson/mysql-replication-setup-6-steps-to-configure-master-slave-replication-1epn" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 3:51:05 PM | Lang: EN
   </div>
   <div class="content">
     <div><div> <p>MySQL replication is a process where data from one database server (master) is copied automatically to one or more database servers (slaves). This creates redundancy and allows you to distribute read operations across multiple servers.</p> <p>Setting up replication might seem complex, but the process is actually straightforward. It takes about 15-20 minutes to configure a basic master-slave setup. The key steps involve configuring both servers, creating a replication user, and telling the slave where to read data from.</p> <p>This guide walks through a real-world replication setup. We'll use MySQL 8.0, but these steps work for MySQL 5.7 and MariaDB as well.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png" alt="MySQL replication"></a></p> <h2> <a name="why-use-mysql-replication" href="#why-use-mysql-replication"> </a> Why use MySQL replication
@@ -298,5 +295,5 @@ Slave_SQL_Running: Yes
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

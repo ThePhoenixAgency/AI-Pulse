@@ -24,29 +24,28 @@
 <body>
   <h1>Un militaire de la base aérienne 120 de Cazaux, en Gironde, meurt à la suite d'un accident en opération extéri</h1>
   <div class="metadata">
-    Source: Franceinfo | Date: 2/16/2026 6:18:05 PM | Lang: FR |
-    <a href="https://www.franceinfo.fr/faits-divers/un-militaire-de-la-base-aerienne-120-de-cazaux-en-gironde-meurt-a-la-suite-d-un-accident-en-operation-exterieure-au-moyen-orient_7809920.html#xtor=RSS-3-[lestitres]" target="_blank">Original Article</a>
+    Source: Franceinfo | Date: 2/16/2026 7:18:05 PM | <a href="https://www.franceinfo.fr/faits-divers/un-militaire-de-la-base-aerienne-120-de-cazaux-en-gironde-meurt-a-la-suite-d-un-accident-en-operation-exterieure-au-moyen-orient_7809920.html#xtor=RSS-3-[lestitres]" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <p> Le sergent-chef Thibaud Breteau était déployé depuis le 16 janvier sur la base aérienne au Levant, au sein de la division munition. Il participait à l'opération Chammal.
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 19:18</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="Le sergent-chef Thibaud Breteau est décédé le 16 février 2026, dans la matinée. (MINISTERE DES ARMEES)" src="https://www.franceinfo.fr/pictures/8kNRwUW7lHxa7bkXGxTQ0IQdAKQ/0x0:1200x675/432x243/filters:format(jpg)/2026/02/16/1200x680-6-69935ed42de48667313842.jpeg"> <figcaption>Le sergent-chef Thibaud Breteau est décédé le 16 février 2026, dans la matinée. <span>(MINISTERE DES ARMEES)</span></figcaption> </figure> </div> </div><div><p>Un militaire de 33 ans, mécanicien armement sur la base aérienne 120 de Cazaux en Gironde, est mort en opération extérieure au Moyen-Orient, rapporte <a href="https://www.francebleu.fr/nouvelle-aquitaine/gironde-33/la-teste-de-buch/un-militaire-de-la-base-aerienne-120-de-cazaux-en-gironde-decede-suite-a-un-accident-en-operation-au-levant-4203110" target="_blank">ICI Gironde</a> lundi 16 février. Il participait à <a href="https://www.franceinfo.fr/societe/armee-securite-defense/cinq-questions-sur-les-frappes-francaises-menees-en-syrie-contre-des-positions-du-groupe-etat-islamique_6990257.html" target="_self">l'opération Chammal</a>, a annoncé lundi le ministère des Armées. </p><p>Le sergent-chef Thibaud Breteau était déployé depuis le 16 janvier dernier sur la base aérienne au Levant, au sein de la division munition. Grièvement blessé samedi lors d'une opération de manutention, le militaire a succombé lundi matin à ses blessures, a précisé le ministère. L'opération Chammal apporte un soutien militaire aux forces irakiennes engagées dans la lutte contre Daech, rappelle le ministère des Armées. </p> <p>Le sergent-chef Thibaud Breteau s'était engagé dans l'armée en juin 2013 en qualité d'élève sous-officier du personnel non navigant sur la base aérienne 721 de Rochefort (Charente-Maritime), en s'orientant vers la spécialité de mécanicien armement bord et sol. Deux ans plus tard, il avait rejoint la base aérienne 705 de Tours (Indre-et-Loire) au sein de l'atelier armement de l'Escadron de soutien technique aéronautique (ESTA) 15.314 "Val de Loire". Le militaire avait été affecté en Gironde, sur la base aérienne 120 de Cazaux, au sein de l'atelier armement Alphajet de l'ESTA 15 008 "Pilat" le 31 août 2020. </p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

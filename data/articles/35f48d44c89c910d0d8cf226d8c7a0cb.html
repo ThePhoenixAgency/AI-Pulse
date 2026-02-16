@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>HTTP/3 avec Nginx sous Debian Trixie</title>
 <style>
@@ -24,13 +22,12 @@
 <body>
   <h1>HTTP/3 avec Nginx sous Debian Trixie</h1>
   <div class="metadata">
-    Source: Journal du Hacker | Date: 2/9/2026 12:33:21 PM | Lang: FR |
-    <a href="https://blog.toniob.net/post/2026/02/05/HTTP/3-avec-Nginx-sous-Debian-Trixie" target="_blank">Original Article</a>
+    Source: Journal du Hacker | Date: 2/9/2026 12:33:21 PM | <a href="https://blog.toniob.net/post/2026/02/05/HTTP/3-avec-Nginx-sous-Debian-Trixie" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div><p>La version 13 de Debian, nommée Trixie, dispose d’une version assez récente de Nginx pour pouvoir activer HTTP/3 et Quic. La syntaxe a un peu changé, y compris pour HTTP/2. Il fallait l’indiquer avant en paramètre de la directive listen :</p> <pre>listen 0.0.0.0:443 ssl http2;</pre> <p>Il s’agit maintenant d’une directive à part :</p> <pre>http2 on;
-listen 0.0.0.0:443 ssl;</pre> <p>Il est possible d’activer HTTP/3 sur un vhost avec la même syntaxe, mais une directive et des paramètres différents (il faut également que le port 443 soit ouvert en UDP sur votre firewall) :</p> <pre>http3 on;
-listen 0.0.0.0:443 quic;</pre> <p>Jusque là, pas de souci. Les problèmes arrivent toutefois à partir du moment où vous avez un backend en HTTP/1.1 (typiquement du websocket). Et là, il est possible que vous constatiez que tout est ok en HTTP/2 mais que si le client passe en HTTP/3, le backend va refuser de répondre.</p> <pre>server { listen 0.0.0.0:443 quic; … location / { include proxy_params; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection $connection_upgrade; proxy_pass http://127.0.0.1:9000; }
+listen 0.0.0.0:443 ssl;</pre> <pre><code>Il est possible d’activer HTTP/3 sur un vhost avec la même syntaxe, mais une directive et des paramètres différents (il faut également que le port 443 soit ouvert en UDP sur votre firewall) :</code></pre> <pre>http3 on;
+listen 0.0.0.0:443 quic;</pre> <pre><code>Jusque là, pas de souci. Les problèmes arrivent toutefois à partir du moment où vous avez un backend en HTTP/1.1 (typiquement du websocket). Et là, il est possible que vous constatiez que tout est ok en HTTP/2 mais que si le client passe en HTTP/3, le backend va refuser de répondre.</code></pre> <pre>server { listen 0.0.0.0:443 quic; … location / { include proxy_params; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection $connection_upgrade; proxy_pass http://127.0.0.1:9000; }
 }</pre> <p>Le problème vient du fichier proxy_params qui est packagé par Debian :</p> <pre>proxy_set_header Host $http_host;
 proxy_set_header X-Real-IP $remote_addr;
 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -54,5 +51,5 @@ proxy_set_header X-Forwarded-Proto $scheme;</pre> <p>Il envoie au proxy la valeu
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

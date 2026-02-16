@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>GitHub - gitroomhq/postiz-agent: Use Postiz CLI with AI Agents</title>
 <style>
@@ -23,14 +21,13 @@
 <body>
   <h1>GitHub - gitroomhq/postiz-agent: Use Postiz CLI with AI Agents</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/14/2026 | Lang: FR |
-    <a href="https://github.com/gitroomhq/postiz-agent" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/14/2026 | Lang: FR
   </div>
   <div class="content">
     <div><div><article><p></p><h2>Postiz CLI</h2><a href="#postiz-cli"></a><p></p>
 <p><strong>Social media automation CLI for AI agents</strong> - Schedule posts across 28+ platforms programmatically.</p>
 <p>The Postiz CLI provides a command-line interface to the Postiz API, enabling developers and AI agents to automate social media posting, manage content, and handle media uploads across platforms like Twitter/X, LinkedIn, Reddit, YouTube, TikTok, Instagram, Facebook, and more.</p>
-<hr />
+<hr>
 <p></p><h2>Installation</h2><a href="#installation"></a><p></p>
 <p></p><h3>From npm (Recommended)</h3><a href="#from-npm-recommended"></a><p></p>
 <div><pre>npm install -g postiz
@@ -49,13 +46,13 @@ pnpm link --global
 
 <span><span>#</span> Or run directly without linking</span>
 pnpm run start -- posts:list</pre></div>
-<hr />
+<hr>
 <p></p><h2>Setup</h2><a href="#setup"></a><p></p>
 <p><strong>Required:</strong> Set your Postiz API key</p>
 <div><pre><span>export</span> POSTIZ_API_KEY=your_api_key_here</pre></div>
 <p><strong>Optional:</strong> Custom API endpoint</p>
 <div><pre><span>export</span> POSTIZ_API_URL=https://your-custom-api.com</pre></div>
-<hr />
+<hr>
 <p></p><h2>Commands</h2><a href="#commands"></a><p></p>
 <p></p><h3>Discovery &amp; Settings</h3><a href="#discovery--settings"></a><p></p>
 <p><strong>List all connected integrations</strong></p>
@@ -77,7 +74,7 @@ postiz integrations:trigger youtube-456 getPlaylists
 
 <span><span>#</span> Get LinkedIn companies</span>
 postiz integrations:trigger linkedin-789 getCompanies</pre></div>
-<hr />
+<hr>
 <p></p><h3>Creating Posts</h3><a href="#creating-posts"></a><p></p>
 <p><strong>Simple scheduled post</strong></p>
 <div><pre>postiz posts:create -c <span><span>"</span>Content<span>"</span></span> -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
@@ -114,7 +111,7 @@ postiz integrations:trigger linkedin-789 getCompanies</pre></div>
 <li><code>-j, --json</code> - Path to JSON file with full post structure</li>
 <li><code>--shortLink</code> - Use short links (default: true)</li>
 </ul>
-<hr />
+<hr>
 <p></p><h3>Managing Posts</h3><a href="#managing-posts"></a><p></p>
 <p><strong>List posts</strong></p>
 <div><pre>postiz posts:list
@@ -123,7 +120,7 @@ postiz posts:list --customer <span><span>"</span>customer-id<span>"</span></span
 <p>Defaults to last 30 days to next 30 days if dates not specified.</p>
 <p><strong>Delete post</strong></p>
 <div><pre>postiz posts:delete <span>&lt;</span>post-id<span>&gt;</span></pre></div>
-<hr />
+<hr>
 <p></p><h3>Media Upload</h3><a href="#media-upload"></a><p></p>
 <p><strong>Upload file and get URL</strong></p>
 <div><pre>postiz upload <span>&lt;</span>file-path<span>&gt;</span></pre></div>
@@ -153,7 +150,7 @@ postiz posts:create -c <span><span>"</span>Check out my video!<span>"</span></sp
 <li><strong>Security:</strong> Platforms verify media sources to prevent abuse</li>
 <li><strong>Reliability:</strong> Postiz ensures your media is always accessible</li>
 </ul>
-<hr />
+<hr>
 <p></p><h2>Platform-Specific Features</h2><a href="#platform-specific-features"></a><p></p>
 <p></p><h3>Reddit</h3><a href="#reddit"></a><p></p>
 <div><pre><span><span>#</span> Get available flairs</span>
@@ -242,7 +239,7 @@ postiz posts:create \
   -m <span><span>"</span><span>$STORY_URL</span><span>"</span></span> \
   -i <span><span>"</span>instagram-id<span>"</span></span></pre></div>
 <p><strong>See <a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROVIDER_SETTINGS.md">PROVIDER_SETTINGS.md</a> for all 28+ platforms.</strong></p>
-<hr />
+<hr>
 <p></p><h2>Features for AI Agents</h2><a href="#features-for-ai-agents"></a><p></p>
 <p></p><h3>Discovery Workflow</h3><a href="#discovery-workflow"></a><p></p>
 <p>The CLI enables dynamic discovery of integration capabilities:</p>
@@ -301,7 +298,7 @@ REDDIT_ID=<span><span>$(</span>echo <span><span>"</span><span>$INTEGRATIONS</spa
   -c <span><span>"</span>Comment 1<span>"</span></span> \
   -c <span><span>"</span>Comment 2<span>"</span></span> \
   -i <span><span>"</span>integration-id<span>"</span></span></pre></div>
-<hr />
+<hr>
 <p></p><h2>Common Workflows</h2><a href="#common-workflows"></a><p></p>
 <p></p><h3>Reddit Post with Flair</h3><a href="#reddit-post-with-flair"></a><p></p>
 <div><pre><span><span>#!</span>/bin/bash</span>
@@ -343,7 +340,7 @@ CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span
     -s <span><span>"</span><span>${DATES[$i]}</span><span>"</span></span> \
     -i <span><span>"</span>twitter-id<span>"</span></span>
 <span>done</span></pre></div>
-<hr />
+<hr>
 <p></p><h2>Documentation</h2><a href="#documentation"></a><p></p>
 <p><strong>For AI Agents:</strong></p>
 <ul>
@@ -365,7 +362,7 @@ CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span
 <li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/examples/EXAMPLES.md">examples/EXAMPLES.md</a></strong> - Comprehensive examples</li>
 <li><strong><a href="https://github.com/gitroomhq/postiz-agent/blob/main/examples">examples/</a></strong> - Ready-to-use scripts and JSON files</li>
 </ul>
-<hr />
+<hr>
 <p></p><h2>API Endpoints</h2><a href="#api-endpoints"></a><p></p>
 <p>The CLI interacts with these Postiz API endpoints:</p>
 <table>
@@ -414,7 +411,7 @@ CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p></p><h2>Environment Variables</h2><a href="#environment-variables"></a><p></p>
 <table>
 <thead>
@@ -440,7 +437,7 @@ CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p></p><h2>Error Handling</h2><a href="#error-handling"></a><p></p>
 <p>The CLI provides clear error messages with exit codes:</p>
 <ul>
@@ -482,7 +479,7 @@ CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span
 </tr>
 </tbody>
 </table>
-<hr />
+<hr>
 <p></p><h2>Development</h2><a href="#development"></a><p></p>
 <p></p><h3>Project Structure</h3><a href="#project-structure"></a><p></p>
 <div><pre><code>src/
@@ -512,7 +509,7 @@ pnpm run start     <span><span>#</span> Run the built CLI</span></pre></div>
 <li><code>index.js</code> - Bundled executable with shebang</li>
 <li><code>index.js.map</code> - Source map</li>
 </ul>
-<hr />
+<hr>
 <p></p><h2>Quick Reference</h2><a href="#quick-reference"></a><p></p>
 <div><pre><span><span>#</span> Environment setup</span>
 <span>export</span> POSTIZ_API_KEY=your_key
@@ -538,7 +535,7 @@ postiz upload <span>&lt;</span>file<span>&gt;</span>                            
 <span><span>#</span> Help</span>
 postiz --help                                     <span><span>#</span> Show help</span>
 postiz posts:create --help                        <span><span>#</span> Command help</span></pre></div>
-<hr />
+<hr>
 <p></p><h2>Contributing</h2><a href="#contributing"></a><p></p>
 <p>This CLI is part of the <a href="https://github.com/gitroomhq/postiz-app">Postiz monorepo</a>.</p>
 <p>To contribute:</p>
@@ -549,10 +546,10 @@ postiz posts:create --help                        <span><span>#</span> Command h
 <li>Run tests: <code>pnpm run build</code></li>
 <li>Submit a pull request</li>
 </ol>
-<hr />
+<hr>
 <p></p><h2>License</h2><a href="#license"></a><p></p>
 <p>AGPL-3.0</p>
-<hr />
+<hr>
 <p></p><h2>Links</h2><a href="#links"></a><p></p>
 <ul>
 <li><strong>Website:</strong> <a href="https://postiz.com/">postiz.com</a></li>
@@ -560,7 +557,7 @@ postiz posts:create --help                        <span><span>#</span> Command h
 <li><strong>GitHub:</strong> <a href="https://github.com/gitroomhq/postiz-app">gitroomhq/postiz-app</a></li>
 <li><strong>Issues:</strong> <a href="https://github.com/gitroomhq/postiz-app/issues">Report bugs</a></li>
 </ul>
-<hr />
+<hr>
 <p></p><h2>Supported Platforms</h2><a href="#supported-platforms"></a><p></p>
 <p>28+ platforms including:</p>
 <table>
@@ -632,5 +629,5 @@ postiz posts:create --help                        <span><span>#</span> Command h
 <p><strong>See <a href="https://github.com/gitroomhq/postiz-agent/blob/main/PROVIDER_SETTINGS.md">PROVIDER_SETTINGS.md</a> for complete documentation.</strong></p>
 </article></div></div>
   </div>
-</body>
-</html>
+
+</body></html>

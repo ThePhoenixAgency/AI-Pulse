@@ -1,112 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
-<title>Claude dans Excel : un vrai gain de productivité, mais à quel prix ?</title>
+<title>Claude dans Excel&nbsp;: un vrai gain de productivité, mais à quel prix&nbsp;?</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
-  <h1>Claude dans Excel : un vrai gain de productivité, mais à quel prix ?</h1>
+  <h1>Claude dans Excel&nbsp;: un vrai gain de productivité, mais à quel prix&nbsp;?</h1>
   <div class="metadata">
-    Source: Journal du Net | Date: 2/12/2026 | Lang: FR |
-    <a href="https://www.journaldunet.com/intelligence-artificielle/1547967-claude-dans-excel-un-vrai-gain-de-productivite-mais-a-quel-prix/" target="_blank">Original Article</a>
+    Source: Journal du Net | Date: 2/12/2026 12:46:35 PM | <a href="https://www.journaldunet.com/intelligence-artificielle/1547967-claude-dans-excel-un-vrai-gain-de-productivite-mais-a-quel-prix/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
-  <div class="content">
-    <div><div>
-                                <p>
-                                                                                <a href="https://img-0.journaldunet.com/xWTZTaxbIPhkTX4NGc3MDf0MyXY=/1500x/smart/4057dc334b2845b49f99faaf8ada2a24/ccmcms-jdn/39533602.png">
-                        
-                            
-                            <img src="https://img-0.journaldunet.com/xWTZTaxbIPhkTX4NGc3MDf0MyXY=/1500x/smart/4057dc334b2845b49f99faaf8ada2a24/ccmcms-jdn/39533602.png" alt="Claude dans Excel : un vrai gain de productivité, mais à quel prix ?" />
-                        
-                    </a>
-                                        L'intégration de Claude dans Excel permet d'analyser et de modifier en temps réel des feuilles de calcul complexes avec l'IA. L'intégration native offre une expérience assez intelligente.</p>
-                                <p>C'était une intégration attendue depuis plusieurs mois. Depuis mi-janvier, l'<a href="https://www.journaldunet.com/intelligence-artificielle/">intelligence artificielle</a> d'Anthropic peut être intégrée sous forme de plugin dans Microsoft Excel. La seule condition ? Disposer d'un abonnement Anthropic (Pro ou Max) et d'une licence Microsoft. L'IA ne vient pas remplacer Copilot mais fonctionne différemment. Là où Copilot a un usage basique d'assistant dans Excel, Claude se comporte presque comme un agent à part entière. Il comprend l'ensemble de la structure d'un fichier et peut modifier plusieurs onglets en même temps. En somme, l'intégration est beaucoup plus poussée. Anthropic positionne son outil comme incontournable pour les services financiers.</p>
-
-<h2>Comment installer Claude dans Excel ?</h2>
-
-<p>L'installation de Claude dans Excel est on ne peut plus simple. Il suffit de se rendre sur la marketplace Microsoft et d'installer l'add-on "Claude by Anthropic in Excel". Une fois celui-ci installé, Claude s'intègre dans le panneau latéral gauche de Microsoft Excel en lieu et place de Copilot, même si les deux IA peuvent être utilisées simultanément. Il faut ensuite se connecter à son compte Claude. La configuration est alors terminée.</p>
-
-<p>L'intégration de Claude dans Excel est assez similaire à l'application native. On retrouve un sélecteur de modèle pour choisir entre Sonnet 4.5 et Opus 4.5, un chat et plusieurs options : recherche web, ajout d'un fichier ou d'une photo dans la conversation et historique des échanges. Deux modes d'action de l'IA sont disponibles : demander avant d'agir et agir sans demander. Concrètement, avec le premier mode, Claude demandera votre permission avant de modifier le fichier, et avec le second, il modifiera en totale autonomie. Il est bien sûr possible de revenir à une version précédente en utilisant le versioning d'Excel.</p>
-
-<div>
-<figure><img alt="" src="https://img-0.journaldunet.com/QPTCvBiEg7tkiT3paw0RbiFj3Nw=/1080x/smart/cc9c1c4863e04c17b1ac42c9760f7d74/ccmcms-jdn/39533596.png" />
-<figcaption>Claude dans Excel à droite. <small> Capture d’écran / JDN</small></figcaption>
-</figure>
-</div>
-
-<p>Grâce à son partenariat avec Microsoft, Anthropic a pu pleinement intégrer Claude dans le code d'Excel. L'IA est capable non seulement de comprendre le contexte global d'un fichier (seuls les formats XLSX et XLSM sont supportés) mais également d'agir sur plusieurs onglets en même temps pour remonter les références de formule. Vous pouvez poser des questions et obtenir des réponses avec en citation les cellules sources, mettre à jour des formules tout en préservant les dépendances, créer des graphiques… L'IA agit à votre place. Pour illustrer ces capacités, nous avons testé quatre cas d'usage très concrets : analyser en un coup d'œil la structuration d'un fichier complet et en générer une documentation, déboguer rapidement une formule complexe, nettoyer des données brutes et simuler rapidement un scénario.</p>
-
-<h2>1. Documenter un fichier complexe</h2>
-
-<p>Pour ce premier exemple, prenons par exemple les états financiers de l'Etat français de 2006 à 2024. Un fichier complexe qui nécessite clairement une documentation. Nous demandons simplement à l’IA : “Analyse ce fichier et génère une documentation complète : objectif de chaque onglet, dépendances entre les feuilles, formules clés utilisées.”</p>
-
-<div>
-<figure><img alt="" src="https://img-0.journaldunet.com/VeXj7uJxr3WX1u8dfntxTfmC6hU=/1080x/smart/3b5f70dc40e4449db6c106ea50b12fd0/ccmcms-jdn/39533598.png" />
-<figcaption><small> Capture d’écran / JDN</small></figcaption>
-</figure>
-</div>
-
-<p>Claude s'exécute alors et génère une documentation précise dans un nouvel onglet avec la vue d’ensemble, les différents éléments de chaque onglet et les différentes dépendances et formules identifiées. Fait intéressant, pour se souvenir des conversations passées, Claude utilise un onglet Excel avec des résumés de vos échanges.</p>
-
-<h2>2. Déboguer une formule</h2>
-
-<p>Qui ne s’est jamais cassé la tête sur une formule Excel en erreur #VALEUR! ou #NOM! ? Là encore, Claude dans Excel peut faire des miracles. Il suffit de demander à l’IA de comprendre la formule, la décomposer et d’identifier la ou les erreurs potentielles et de proposer ensuite un correctif. Exemple dans notre fichier des comptes de l’Etat, une fois les cellules problématiques sélectionnées, nous demandons à l’IA : “ces formules interdépendantes renvoient une erreur. Identifie l'erreur, propose une correction adaptée et applique la.”</p>
-
-<div>
-<figure><img alt="" src="https://img-0.journaldunet.com/erYXlhuf-HMy4DX5BuhrbgBYJeE=/1080x/smart/17857a3036744feca8f04b072f4fa821/ccmcms-jdn/39533599.png" />
-<figcaption><small> Capture d’écran / JDN</small></figcaption>
-</figure>
-</div>
-
-<p>L’IA a ainsi identifié que les formules H5 à H7 référençaient par erreur une colonne vide et des textes. Pour reconstruire les données manquantes, Claude a alors estimé leur valeur à partir du total des immobilisations (H8) par catégorie estimé par interpolation entre 2018 et 2020. Plus qu’une simple correction d’erreur, l’IA est parvenue à extrapoler les données lorsqu'elle a compris que les données n’étaient pas présentes dans le tableau. Intéressant.</p>
-
-<h2>3. Nettoyer rapidement des données brutes</h2>
-
-<p>Plus intéressant encore, il est possible de demander à Claude de nettoyer rapidement un fichier complexe et/ou mal renseigné comme c’est souvent le cas avec les fichiers <a href="https://www.journaldunet.com/open-data/">open data</a>. Nous prenons par exemple le fichier des résultats des élections municipales au second tour dans les communes de moins de 1000 habitants en France. De nombreuses données sont mal structurées (types mixtes texte/nombre, colonne vide, mélange des codes de département…) Nous demandons à l’IA de nettoyer le fichier et de classer par taux de participation décroissant.</p>
-
-<div>
-<figure><img alt="" src="https://img-0.journaldunet.com/TeXRhRjdg9hXwDh-bHsntJPclqg=/1080x/smart/6bca433ef9544cf2938c444843e5fd34/ccmcms-jdn/39533600.png" />
-<figcaption><small> Capture d’écran / JDN</small></figcaption>
-</figure>
-</div>
-
-<p>Claude s'exécute, encore une fois, sans le moindre obstacle. Les données sont cleanées et filtrées parfaitement et le fichier devient pleinement exploitable.</p>
-
-<h2>4. Simuler une hypothèse</h2>
-
-<p>Pour ce dernier test, nous reprenons le fichier des états financiers de l'Etat français de 2006 à 2024. Le but va être de faire simuler à Claude des hypothèses basées sur les données. Nous allons ainsi demander : "A partir de l'évolution historique et de la situation nette, projette 3 scénarios à horizon 2030 : poursuite de la tendance actuelle, réduction du déficit de 30% et aggravation du déficit de 20%. Crée un onglet de simulation avec les projections côte à côte et un graphique comparatif."</p>
-
-<div>
-<figure><img alt="" src="https://img-0.journaldunet.com/Gagk-YnOUBw8wj5RJEPoykBbltI=/1080x/smart/1960a152da0141e1b966656c74ab3b58/ccmcms-jdn/39533601.png" />
-<figcaption><small> Capture d’écran / JDN</small></figcaption>
-</figure>
-</div>
-
-<p>Claude analyse alors l'intégralité du bilan et génère un onglet complet avec données historiques, projections comparatives 2024-2030, graphique et synthèse. Interrogé sur la différence entre sa prévision et celle réellement constatée en 2025, Claude, après une recherche web, conclut que le déficit constaté (-124,7 Md€) est meilleur que prévu car il repose sur des hausses d'impôts. “C'est encourageant, mais la réduction de 0,6 point du déficit prévue par la loi de finances repose quasi-exclusivement sur des hausses d'impôts plutôt que sur des économies”, tranche l’IA.</p>
-
-<h2>Attention à votre quota</h2>
-
-<p>Claude dans Excel est un outil redoutablement efficace. Documentation automatique, débogage intelligent, nettoyage de données brutes, simulation prospective : l'IA a exécuté chaque tâche sans la moindre erreur, en comprenant systématiquement le contexte global du fichier et les dépendances entre onglets. On est loin d'un simple chatbot greffé à un tableur : Claude se comporte comme un véritable analyste. Bien utilisé, le gain de temps peut être considérable.</p>
-
-<p>Un bémol de taille toutefois : la consommation de tokens. En moins d'une heure de tests avec un compte Claude Pro, nous avons consommé 80% de notre quota. Chaque interaction avec un fichier volumineux engloutit une quantité significative de tokens. Pour un usage intensif au quotidien, l'abonnement Pro (20 dollars par mois) risque de se révéler insuffisant et il faudra sans doute envisager l'offre Max (100 dollars par mois minimum). Un paramètre à prendre en compte avant de déployer l'outil à l'échelle d'une équipe.</p>
-
-                            </div></div>
+  <div class="content"><p>L'intégration de Claude dans Excel permet d'analyser et de modifier en temps réel des feuilles de calcul complexes avec l'IA. L'intégration native offre une expérience assez intelligente. C'était une intégration attendue depuis plusieurs mois. Depuis mi-janvier, l'intelligence artificielle d'Anthropic peut être intégrée sous forme de plugin dans Microsoft Excel. La seule condition ? Disposer d'un abonnement Anthropic (Pro ou Max) et d'une licence Microsoft. L'IA ne vient pas remplacer Copilot mais fonctionne différemment. Là où Copilot a un usage basique d'assistant dans Excel, Claude se comporte presque comme un agent à part entière. Il comprend l'ensemble de la structure d'un fichier et peut modifier plusieurs onglets en même temps. En somme, l'intégration est beaucoup plus poussée. Anthropic positionne son outil comme incontournable pour les services financiers. Comment installer Claude dans Excel ? L'installation de Claude dans Excel est on ne peut plus simple. Il suffit de se rendre sur la marketplace Microsoft et d'installer l'add-on "Claude by Anthropic in Excel". Une fois celui-ci installé, Claude s'intègre dans le panneau latéral gauche de Microsoft Excel en lieu et place de Copilot, même si les deux IA peuvent être utilisées simultanément. Il faut ensuite se connecter à son compte Claude. La configuration est alors terminée. L'intégration de Claude dans Excel est assez similaire à l'application native. On retrouve un sélecteur de modèle pour choisir entre Sonnet 4.5 et Opus 4.5, un chat et plusieurs options : recherche web, ajout d'un fichier ou d'une photo dans la conversation et historique des échanges. Deux modes d'action de l'IA sont disponibles : demander avant d'agir et agir sans demander. Concrètement, avec le premier mode, Claude demandera votre permission avant de modifier le fichier, et avec le second, il modifiera en totale autonomie. Il est bien sûr possible de revenir à une version précédente en utilisant le versioning d'Excel. Claude dans Excel à droite. &nbsp;Capture d’écran / JDN Grâce à son partenariat avec Microsoft, Anthropic a pu pleinement intégrer Claude dans le code d'Excel. L'IA est capable non seulement de comprendre le contexte global d'un fichier (seuls les formats XLSX et XLSM sont supportés) mais également d'agir sur plusieurs onglets en même temps pour remonter les références de formule. Vous pouvez poser des questions et obtenir des réponses avec en citation les cellules sources, mettre à jour des formules tout en préservant les dépendances, créer des graphiques… L'IA agit à votre place. Pour illustrer ces capacités, nous avons testé quatre cas d'usage très concrets : analyser en un coup d'œil la structuration d'un fichier complet et en générer une documentation, déboguer rapidement une formule complexe, nettoyer des données brutes et simuler rapidement un scénario. 1. Documenter un fichier complexe Pour ce premier exemple, prenons par exemple les états financiers de l'Etat français de 2006 à 2024. Un fichier complexe qui nécessite clairement une documentation. Nous demandons simplement à l’IA : “Analyse ce fichier et génère une documentation complète&nbsp;: objectif de chaque onglet, dépendances entre les feuilles, formules clés utilisées.” &nbsp;Capture d’écran / JDN Claude s'exécute alors et génère une documentation précise dans un nouvel onglet avec la vue d’ensemble, les différents éléments de chaque onglet et les différentes dépendances et formules identifiées. Fait intéressant, pour se souvenir des conversations passées, Claude utilise un onglet Excel avec des résumés de vos échanges. 2. Déboguer une formule Qui ne s’est jamais cassé la tête sur une formule Excel en erreur #VALEUR! ou #NOM! ? Là encore, Claude dans Excel peut faire des miracles. Il suffit de demander à l’IA de comprendre la formule, la décomposer et d’identifier la ou les erreurs potentielles et de proposer ensuite un correctif. Exemple dans notre fichier des comptes de l’Etat, une fois les cellules problématiques sélectionnées, nous demandons à l’IA : “ces formules interdépendantes renvoient une erreur. Identifie l'erreur, propose une correction adaptée et applique la.” &nbsp;Capture d’écran / JDN L’IA a ainsi identifié que les formules H5 à H7 référençaient par erreur une colonne vide et des textes. Pour reconstruire les données manquantes, Claude a alors estimé leur valeur à partir du total des immobilisations (H8) par catégorie estimé par interpolation entre 2018 et 2020. Plus qu’une simple correction d’erreur, l’IA est parvenue à extrapoler les données lorsqu'elle a compris que les données n’étaient pas présentes dans le tableau. Intéressant. 3. Nettoyer rapidement des données brutes Plus intéressant encore, il est possible de demander à Claude de nettoyer rapidement un fichier complexe et/ou mal renseigné comme c’est souvent le cas avec les fichiers open data. Nous prenons par exemple le fichier des résultats des élections municipales au second tour dans les communes de moins de 1000 habitants en France. De nombreuses données sont mal structurées (types mixtes texte/nombre, colonne vide, mélange des codes de département…) Nous demandons à l’IA de nettoyer le fichier et de classer par taux de participation décroissant. &nbsp;Capture d’écran / JDN Claude s'exécute, encore une fois, sans le moindre obstacle. Les données sont cleanées et filtrées parfaitement et le fichier devient pleinement exploitable. 4. Simuler une hypothèse Pour ce dernier test, nous reprenons le fichier des états financiers de l'Etat français de 2006 à 2024. Le but va être de faire simuler à Claude des hypothèses basées sur les données. Nous allons ainsi demander : "A partir de l'évolution historique et de la situation nette, projette 3 scénarios à horizon 2030 : poursuite de la tendance actuelle, réduction du déficit de 30% et aggravation du déficit de 20%. Crée un onglet de simulation avec les projections côte à côte et un graphique comparatif." &nbsp;Capture d’écran / JDN Claude analyse alors l'intégralité du bilan et génère un onglet complet avec données historiques, projections comparatives 2024-2030, graphique et synthèse. Interrogé sur la différence entre sa prévision et celle réellement constatée en 2025, Claude, après une recherche web, conclut que le déficit constaté (-124,7 Md€) est meilleur que prévu car il repose sur des hausses d'impôts. “C'est encourageant, mais la réduction de 0,6 point du déficit prévue par la loi de finances repose quasi-exclusivement sur des hausses d'impôts plutôt que sur des économies”, tranche l’IA. Attention à votre quota Claude dans Excel est un outil redoutablement efficace. Documentation automatique, débogage intelligent, nettoyage de données brutes, simulation prospective : l'IA a exécuté chaque tâche sans la moindre erreur, en comprenant systématiquement le contexte global du fichier et les dépendances entre onglets. On est loin d'un simple chatbot greffé à un tableur : Claude se comporte comme un véritable analyste. Bien utilisé, le gain de temps peut être considérable. Un bémol de taille toutefois : la consommation de tokens. En moins d'une heure de tests avec un compte Claude Pro, nous avons consommé 80% de notre quota. Chaque interaction avec un fichier volumineux engloutit une quantité significative de tokens. Pour un usage intensif au quotidien, l'abonnement Pro (20 dollars par mois) risque de se révéler insuffisant et il faudra sans doute envisager l'offre Max (100 dollars par mois minimum). Un paramètre à prendre en compte avant de déployer l'outil à l'échelle d'une équipe.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

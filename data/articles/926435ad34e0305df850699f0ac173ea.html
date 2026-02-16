@@ -1,118 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Pourquoi mon chauffage consomme-t-il plus que prévu et comment la domotique peut-elle le prouver (et le corriger) ? - Maison et Domotique</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Pourquoi mon chauffage consomme-t-il plus que prévu et comment la domotique peut-elle le prouver (et le corriger) ? - Maison et Domotique</h1>
   <div class="metadata">
-    Source: Maison et Domotique | Date: 2/12/2026 | Lang: FR |
-    <a href="https://www.maison-et-domotique.com/168009-pourquoi-mon-chauffage-consomme-t-il-plus-que-prevu-et-comment-la-domotique-peut-elle-le-prouver-et-le-corriger/" target="_blank">Original Article</a>
+    Source: Maison et Domotique | Date: 2/12/2026 6:10:00 AM | <a href="https://www.maison-et-domotique.com/168009-pourquoi-mon-chauffage-consomme-t-il-plus-que-prevu-et-comment-la-domotique-peut-elle-le-prouver-et-le-corriger/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><article>
-                                                    
-                             
-                                                                        					                        
-                                       
-                                                  
-
-                        
-<p>La facture grimpe, le confort n’est pas toujours au rendez-vous, et pourtant les réglages semblent “normaux”. Dans beaucoup de logements, la surconsommation vient d’un mélange de petites causes qui s’additionnent : régulation imparfaite, cycles de chauffe mal maîtrisés, habitudes de programmation, ou encore un équipement qui perd en rendement avec le temps.</p>
-
-
-
-
-<p>Avant même de chercher à tout automatiser, il est souvent utile de faire vérifier que la base est saine : un appareil entretenu, des réglages cohérents et une installation qui fonctionne correctement. Dans ce contexte, s’appuyer sur <a href="https://www.monchauffagiste.com/" target="_blank">un expert en entretien d’équipements de chauffage</a> permet de lever rapidement les doutes sur l’état réel de l’installation. Ensuite, la domotique devient un excellent “outil de preuve” : elle mesure, compare et met en évidence ce qui fait réellement consommer.</p>
-
-
-
-<h2>Quand la surconsommation vient… de la régulation plutôt que du chauffage lui-même</h2>
-
-
-
-<p>La première idée reçue, c’est de penser que “la chaudière (ou la PAC) consomme trop”. En réalité, l’équipement suit souvent des consignes qui ne sont pas optimales. Un thermostat mal positionné, une sonde de température influencée par un courant d’air, un radiateur masqué, ou un réglage de consigne trop agressif peuvent pousser le système à surchauffer puis à compenser, en boucle.</p>
-
-
-
-<p>Autre situation classique : le chauffage fonctionne par à-coups. Sur une chaudière, on parle souvent de cycles courts (allumage, arrêt, redémarrage), qui dégradent le rendement. Sur une pompe à chaleur, des variations trop fréquentes et des consignes trop changeantes peuvent aussi réduire l’efficacité et augmenter la consommation électrique. Sans mesure précise, ces phénomènes restent invisibles, et l’on se contente de “sentir” que ça chauffe… sans savoir à quel prix.</p>
-
-
-
-
-<h2>Ce que la domotique “voit” que l’on ne voit pas</h2>
-
-
-
-<p>La domotique n’est pas qu’un gadget de confort : bien utilisée, c’est un tableau de bord. L’idée est simple : si l’on mesure la température, l’humidité, les périodes de chauffe et la consommation (électricité ou gaz via compteur, prise mesurante, module dédié, ou intégration du système), on peut relier les causes et les effets.</p>
-
-
-
-<p>Par exemple, un suivi régulier peut montrer que la température intérieure dépasse la consigne à certaines heures, ou qu’une pièce met anormalement longtemps à monter en température. On peut aussi constater que la chaudière se déclenche même lorsque personne n’est présent, ou qu’elle compense une chute de température liée à une aération prolongée. Avec quelques semaines de données, on obtient une “signature” du logement : quand ça chauffe, combien de temps, à quelle fréquence, et avec quelle dépense énergétique.</p>
-
-
-
-<p>Cette approche est aussi très utile pour distinguer un problème de pilotage d’un problème technique. Si la consommation augmente alors que la météo est similaire et que les habitudes n’ont pas changé, un réglage qui a dérivé, une vanne bloquée, un circulateur fatigué ou un échangeur encrassé peuvent être en cause. Les données n’effectuent pas le diagnostic à votre place, mais elles évitent de chercher au hasard.</p>
-
-
-
-<h2>Les corrections les plus efficaces : petites actions, grands écarts</h2>
-
-
-
-<p>Une fois les mesures en main, on vise des actions simples et cohérentes. La première consiste souvent à stabiliser la consigne plutôt qu’à la faire varier brutalement. Beaucoup de systèmes consomment davantage lorsqu’on impose des “montées” rapides, surtout dans les logements avec de l’inertie (plancher chauffant, murs lourds). La domotique peut aider en lissant la chauffe : anticiper légèrement, maintenir un niveau stable, puis réduire progressivement en cas d’absence.</p>
-
-
-
-<p>Ensuite, l’occupation réelle compte énormément. Un thermostat connecté ou un système domotique peut abaisser automatiquement la température quand le logement est vide, puis revenir à une consigne confortable avant le retour. L’important est de rester raisonnable : une baisse modérée et bien planifiée vaut mieux qu’un yo-yo permanent.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/thermostat-home-assistant-2-702x278.png" alt="thermostat home assistant 2" /><figcaption>Un thermostat, physique ou virtuel comme ici sous Home Assistant, permet d’ajuster précisément la température</figcaption></figure>
-
-
-
-<p>Autre correction très rentable : éviter de chauffer “pour rien” quand une fenêtre est ouverte ou quand une pièce ne nécessite pas la même température que le reste de la maison. Des capteurs d’ouverture et des sondes par pièce permettent d’adapter la chauffe sans surchauffer les zones secondaires.</p>
-
-
-
-<p>Enfin, il y a le point souvent oublié : l’entretien et les réglages de l’équipement. Une installation peut fonctionner, mais moins bien qu’elle ne le devrait. Quand la domotique met en évidence des cycles anormaux, des performances irrégulières ou une consommation qui se dégrade, un contrôle professionnel (rendement, combustion, réglages, purge, équilibrage, état général) remet souvent l’ensemble sur de bons rails.</p>
-
-
-
-<h2>Comment savoir si l’on progresse vraiment</h2>
-
-
-
-<p>L’intérêt d’un suivi domotique, c’est de pouvoir comparer “avant/après” de façon factuelle. Après une modification de programmation, une optimisation de consigne ou un entretien, on observe la consommation sur une période comparable, en tenant compte de la météo. On cherche surtout des signes simples : moins de redémarrages, des durées de chauffe plus régulières, une température plus stable, et une baisse mesurable des kWh.</p>
-
-
-
-<p>Pour des repères fiables sur les températures recommandées et les bonnes pratiques d’usage, il est utile de consulter une source institutionnelle comme l’<a href="https://www.ademe.fr/" target="_blank">ADEME</a> (rubriques chauffage et sobriété énergétique). Cela permet d’ancrer les réglages dans des recommandations générales, puis d’affiner en fonction des mesures réelles du logement.</p>
-
-
-
-<p>Au final, la domotique ne remplace pas un chauffage bien réglé et bien entretenu, mais elle transforme les intuitions en preuves. Et quand on sait précisément ce qui fait consommer, on arrête de “deviner” : on corrige, on mesure, puis on optimise.</p>
-
-
-                    </article></div>
+    <div><article> <p>La facture grimpe, le confort n’est pas toujours au rendez-vous, et pourtant les réglages semblent “normaux”. Dans beaucoup de logements, la surconsommation vient d’un mélange de petites causes qui s’additionnent : régulation imparfaite, cycles de chauffe mal maîtrisés, habitudes de programmation, ou encore un équipement qui perd en rendement avec le temps.</p> <p>Avant même de chercher à tout automatiser, il est souvent utile de faire vérifier que la base est saine : un appareil entretenu, des réglages cohérents et une installation qui fonctionne correctement. Dans ce contexte, s’appuyer sur <a href="https://www.monchauffagiste.com/" target="_blank">un expert en entretien d’équipements de chauffage</a> permet de lever rapidement les doutes sur l’état réel de l’installation. Ensuite, la domotique devient un excellent “outil de preuve” : elle mesure, compare et met en évidence ce qui fait réellement consommer.</p> <h2>Quand la surconsommation vient… de la régulation plutôt que du chauffage lui-même</h2> <p>La première idée reçue, c’est de penser que “la chaudière (ou la PAC) consomme trop”. En réalité, l’équipement suit souvent des consignes qui ne sont pas optimales. Un thermostat mal positionné, une sonde de température influencée par un courant d’air, un radiateur masqué, ou un réglage de consigne trop agressif peuvent pousser le système à surchauffer puis à compenser, en boucle.</p> <p>Autre situation classique : le chauffage fonctionne par à-coups. Sur une chaudière, on parle souvent de cycles courts (allumage, arrêt, redémarrage), qui dégradent le rendement. Sur une pompe à chaleur, des variations trop fréquentes et des consignes trop changeantes peuvent aussi réduire l’efficacité et augmenter la consommation électrique. Sans mesure précise, ces phénomènes restent invisibles, et l’on se contente de “sentir” que ça chauffe… sans savoir à quel prix.</p> <h2>Ce que la domotique “voit” que l’on ne voit pas</h2> <p>La domotique n’est pas qu’un gadget de confort : bien utilisée, c’est un tableau de bord. L’idée est simple : si l’on mesure la température, l’humidité, les périodes de chauffe et la consommation (électricité ou gaz via compteur, prise mesurante, module dédié, ou intégration du système), on peut relier les causes et les effets.</p> <p>Par exemple, un suivi régulier peut montrer que la température intérieure dépasse la consigne à certaines heures, ou qu’une pièce met anormalement longtemps à monter en température. On peut aussi constater que la chaudière se déclenche même lorsque personne n’est présent, ou qu’elle compense une chute de température liée à une aération prolongée. Avec quelques semaines de données, on obtient une “signature” du logement : quand ça chauffe, combien de temps, à quelle fréquence, et avec quelle dépense énergétique.</p> <p>Cette approche est aussi très utile pour distinguer un problème de pilotage d’un problème technique. Si la consommation augmente alors que la météo est similaire et que les habitudes n’ont pas changé, un réglage qui a dérivé, une vanne bloquée, un circulateur fatigué ou un échangeur encrassé peuvent être en cause. Les données n’effectuent pas le diagnostic à votre place, mais elles évitent de chercher au hasard.</p> <h2>Les corrections les plus efficaces : petites actions, grands écarts</h2> <p>Une fois les mesures en main, on vise des actions simples et cohérentes. La première consiste souvent à stabiliser la consigne plutôt qu’à la faire varier brutalement. Beaucoup de systèmes consomment davantage lorsqu’on impose des “montées” rapides, surtout dans les logements avec de l’inertie (plancher chauffant, murs lourds). La domotique peut aider en lissant la chauffe : anticiper légèrement, maintenir un niveau stable, puis réduire progressivement en cas d’absence.</p> <p>Ensuite, l’occupation réelle compte énormément. Un thermostat connecté ou un système domotique peut abaisser automatiquement la température quand le logement est vide, puis revenir à une consigne confortable avant le retour. L’important est de rester raisonnable : une baisse modérée et bien planifiée vaut mieux qu’un yo-yo permanent.</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/thermostat-home-assistant-2-702x278.png" alt="thermostat home assistant 2"><figcaption>Un thermostat, physique ou virtuel comme ici sous Home Assistant, permet d’ajuster précisément la température</figcaption></figure> <p>Autre correction très rentable : éviter de chauffer “pour rien” quand une fenêtre est ouverte ou quand une pièce ne nécessite pas la même température que le reste de la maison. Des capteurs d’ouverture et des sondes par pièce permettent d’adapter la chauffe sans surchauffer les zones secondaires.</p> <p>Enfin, il y a le point souvent oublié : l’entretien et les réglages de l’équipement. Une installation peut fonctionner, mais moins bien qu’elle ne le devrait. Quand la domotique met en évidence des cycles anormaux, des performances irrégulières ou une consommation qui se dégrade, un contrôle professionnel (rendement, combustion, réglages, purge, équilibrage, état général) remet souvent l’ensemble sur de bons rails.</p> <h2>Comment savoir si l’on progresse vraiment</h2> <p>L’intérêt d’un suivi domotique, c’est de pouvoir comparer “avant/après” de façon factuelle. Après une modification de programmation, une optimisation de consigne ou un entretien, on observe la consommation sur une période comparable, en tenant compte de la météo. On cherche surtout des signes simples : moins de redémarrages, des durées de chauffe plus régulières, une température plus stable, et une baisse mesurable des kWh.</p> <p>Pour des repères fiables sur les températures recommandées et les bonnes pratiques d’usage, il est utile de consulter une source institutionnelle comme l’<a href="https://www.ademe.fr/" target="_blank">ADEME</a> (rubriques chauffage et sobriété énergétique). Cela permet d’ancrer les réglages dans des recommandations générales, puis d’affiner en fonction des mesures réelles du logement.</p> <p>Au final, la domotique ne remplace pas un chauffage bien réglé et bien entretenu, mais elle transforme les intuitions en preuves. Et quand on sait précisément ce qui fait consommer, on arrête de “deviner” : on corrige, on mesure, puis on optimise.</p> </article></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

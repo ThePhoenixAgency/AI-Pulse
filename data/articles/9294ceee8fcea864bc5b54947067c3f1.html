@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,28 +18,11 @@
 <body>
   <h1>Compromised dYdX npm and PyPI Packages Deliver Wallet Stealers and RAT Malware</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/6/2026 9:40:00 AM | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/6/2026 9:40:00 AM | <a href="https://thehackernews.com/2026/02/compromised-dydx-npm-and-pypi-packages.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyIStnp-bU9hiGHInOzCOAghM-ycI6Ji3sPnUabHcJU_9vmQMCof5MKezvR6uly1jV9qfrPwynL5PZjrifXYWIBJB31wQDTv70h31WQuGzptuPUE_iUkS99qMlcN1QHvbDaqtlAOu8Gy65Ge45FaApAUNqP2DtXhOBAPmtAjyijUbX3kWSb8NgygWtIsQA/s1600/npm-pypi.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyIStnp-bU9hiGHInOzCOAghM-ycI6Ji3sPnUabHcJU_9vmQMCof5MKezvR6uly1jV9qfrPwynL5PZjrifXYWIBJB31wQDTv70h31WQuGzptuPUE_iUkS99qMlcN1QHvbDaqtlAOu8Gy65Ge45FaApAUNqP2DtXhOBAPmtAjyijUbX3kWSb8NgygWtIsQA/s1600/npm-pypi.jpg"></a></p>
-<p>Cybersecurity researchers have <a href="https://socket.dev/blog/malicious-dydx-packages-published-to-npm-and-pypi" target="_blank">discovered</a> a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.</p>
-<p>The compromised versions of the two packages are listed below -</p>
-<ul>
-<li><a href="https://www.npmjs.com/package/@dydxprotocol/v4-client-js" target="_blank">@dydxprotocol/v4-client-js</a> (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&nbsp;</li>
-<li><a href="https://pypi.org/project/dydx-v4-client/" target="_blank">dydx-v4-client</a> (PyPI) - 1.1.5post1</li>
-</ul>
-<p>"The @dydxprotocol/v4-client-js (npm) and dydx-v4-client (PyPI) packages provide developers with tools to interact with the dYdX v4 protocol, including transaction signing, order placement, and wallet management," Socket security researcher Kush Pandya noted. "Applications using these packages handle sensitive cryptocurrency operations."</p>
-<p><a href="https://www.dydx.xyz/" target="_blank">dYdX</a> is a non-custodial, decentralized cryptocurrency exchange for trading margin and perpetual swaps, while allowing users to retain full control over their assets. On its website, the DeFi exchange says it has surpassed $1.5 trillion in cumulative trading volume.</p>
-<p>While it's currently how these poisoned updates were pushed, it's suspected to be a case of developer account compromise, as the rogue versions were published using legitimate publishing credentials.</p>
-<p>The changes introduced by the threat actors have been found to target both the JavaScript and Python ecosystems with different payloads. In the case of npm, the malicious code acts as a cryptocurrency wallet stealer that siphons seed phrases and device information. The Python package, on the other hand, also incorporates a remote access trojan (RAT) along with the wallet stealer functionality.</p> <p>The RAT component, which is run as soon as the package is imported, contacts an external server ("dydx.priceoracle[.]site/py") to retrieve commands for subsequent execution on the host. On Windows systems, it makes use of the "<a href="https://learn.microsoft.com/en-us/windows/win32/procthread/process-creation-flags" target="_blank">CREATE_NO_WINDOW</a>" flag to ensure that it's executed without a console window.</p>
-<p>"The threat actor demonstrated detailed knowledge of the package internals, inserting malicious code into core registry files (registry.ts, registry.js, account.py) that would execute during normal package usage," Pandya said.</p>
-<p>"The 100-iteration obfuscation in the PyPI version and the coordinated cross-ecosystem deployment suggest the threat actor had direct access to publishing infrastructure rather than exploiting a technical vulnerability in the registries themselves."</p>
-<p>Following responsible disclosure on January 28, 2026, dYdX <a href="https://x.com/dYdX/status/2016690036536721727" target="_blank">acknowledged</a> the incident in a series of posts on X, and urged users who may have downloaded the compromised versions to isolate affected machines, move funds to a new wallet from a clean system, and rotate all API keys and credentials.</p>
-<p>"The versions of dydx-v4-clients hosted in the dydxprotocol Github do not contain the malware," it added.</p>
-<p>This is not the first time the dYdX ecosystem has been the target of supply chain attacks. In September 2022, <a href="https://github.com/dydxprotocol/solo/issues/521" target="_blank">Mend</a> and <a href="https://www.bleepingcomputer.com/news/security/npm-packages-used-by-crypto-exchanges-compromised/" target="_blank">Bleeping Computer</a> reported a similar case where the npm account of a dYdX staff member was hijacked to publish new versions of multiple npm packages that contained code to steal credentials and other sensitive data.&nbsp;</p>
-<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCknEz43AWfYv1yy2qmWSo9B75dJWrfyjpVLKIPoFTTSMDNhZaW_3f6Uga_Mie4W69fRmosJk8vlfkNSUfwpb3coOc9tmY06IxEqhk_QHdDkvNKwaPGhABCJMpQgvnox3NHBIU618g-Z5Oy1w7t5kUDi2P3R8_PFkB_Xj-PkZnUEzfM5J7jh0AbG8BMcQQ/s1600/dxdx.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiCknEz43AWfYv1yy2qmWSo9B75dJWrfyjpVLKIPoFTTSMDNhZaW_3f6Uga_Mie4W69fRmosJk8vlfkNSUfwpb3coOc9tmY06IxEqhk_QHdDkvNKwaPGhABCJMpQgvnox3NHBIU618g-Z5Oy1w7t5kUDi2P3R8_PFkB_Xj-PkZnUEzfM5J7jh0AbG8BMcQQ/s1600/dxdx.png"></a></p>
-<p>Two years later, the exchange also <a href="https://x.com/dYdX/status/1815780835473129702" target="_blank">divulged</a> that the website associated with its now-discontinued <a href="https://www.dydx.xyz/blog/v3-product-sunset" target="_blank">dYdX v3 platform</a> was compromised to redirect users to a phishing site with the goal of draining their wallets.</p> </div></div>
+    <p>Cybersecurity researchers have discovered a new supply chain attack in which legitimate packages on npm and the Python Package Index (PyPI) repository have been compromised to push malicious versions to facilitate wallet credential theft and remote code execution.
+The compromised versions of the two packages are listed below - @dydxprotocol/v4-client-js (npm) - 3.4.1, 1.22.1, 1.15.2, 1.0.31&amp;</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

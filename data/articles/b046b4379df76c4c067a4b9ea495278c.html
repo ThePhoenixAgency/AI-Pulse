@@ -24,30 +24,27 @@
 <body>
   <h1>France opens murder probe as killing of far-right activist stokes tensions</h1>
   <div class="metadata">
-    Source: France 24 (EN) | Date: 2/16/2026 7:27:43 PM | Lang: EN |
-    <a href="https://www.france24.com/en/france-opens-murder-probe-as-killing-of-far-right-activist-stokes-tensions" target="_blank">Original Article</a>
+    Source: France 24 (EN) | Date: 2/16/2026 8:27:43 PM | <a href="https://www.france24.com/en/france-opens-murder-probe-as-killing-of-far-right-activist-stokes-tensions" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <div> <div> <p>To display this content from YouTube, you must enable advertisement tracking and audience measurement.</p> </div>
-<div> <p>One of your browser extensions seems to be blocking the video player from loading. To watch this content, you may need to disable it on this site.</p> </div> <figure> <img src="https://s.france24.com/media/display/be427d08-0b6c-11f1-bb42-005056bfb2b6/w:1024/p:16x9/EN-20260216-201338-201530-CS.jpg" alt="France opens murder probe as killing of far-right activist stokes tensions"> <figcaption> <span> France 24</span> </figcaption> <p>
-<time>01:52</time> </p> </figure> </div> <div> <div> <p><span></span> France </p> </div> <div> <p><span>Issued on: <time>16/02/2026 - 20:27</time></span><span>Modified: <time>16/02/2026 - 20:37</time></span></p> </div> </div> </div></div>
+    <p>French authorities have opened a murder probe into the death of a far-right activist last week, a public prosecutor said Monday, in a killing the government has blamed partly on the hard left. Quentin Deranque, 23, died after sustaining a severe brain injury when he was attacked Thursday by "at least six" people on the sidelines of a far-right protest against a left-wing politician speaking at a university in Lyon. FRANCE 24's Carys Garland reports.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

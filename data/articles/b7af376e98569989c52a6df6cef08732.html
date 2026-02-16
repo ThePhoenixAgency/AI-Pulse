@@ -4,125 +4,42 @@
 <meta charset="UTF-8">
 <title>« C’est vraiment bizarre d’avoir un micro sur un aspirateur », il bidouille son aspirateur robot et découvre une faille géante</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>« C’est vraiment bizarre d’avoir un micro sur un aspirateur », il bidouille son aspirateur robot et découvre une faille géante</h1>
   <div class="metadata">
-    Source: Numerama Tech | Date: 2/16/2026 | Lang: FR |
-    <a href="https://www.numerama.com/cyberguerre/2180301-cest-vraiment-bizarre-davoir-un-micro-sur-un-aspirateur-il-bidouille-son-aspirateur-robot-et-decouvre-une-faille-geante.html" target="_blank">Original Article</a>
+    Source: Numerama Tech | Date: 2/16/2026 5:29:00 PM | <a href="https://www.numerama.com/cyberguerre/2180301-cest-vraiment-bizarre-davoir-un-micro-sur-un-aspirateur-il-bidouille-son-aspirateur-robot-et-decouvre-une-faille-geante.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div>
-    <div>
-<p>Dans un article publié le 14 février 2026, le média américain The Verge revient sur la découverte involontaire d’une faille de sécurité affectant les appareils de la marque chinoise DJI. En bidouillant son aspirateur connecté pour le piloter avec une manette PlayStation, un utilisateur a pu accéder à des données de milliers d’appareils à travers le monde.</p>
-</div>
-
-
-<p>Il y a quelques mois, nous vous racontions <a href="https://www.numerama.com/cyberguerre/2103247-le-jour-ou-mon-aspirateur-intelligent-sest-retourne-contre-moi-un-developpeur-raconte-comment-un-produit-bon-marche-a-cartographie-son-domicile.html" target="_blank">l’histoire de ce développeur « <em>un peu paranoïaque</em> »</a> qui avait fini par démonter son aspirateur connecté pour l’empêcher d’envoyer des informations à l’autre bout du monde.</p>
-
-
-
-<p>Cette fois, le décor change : l’appareil n’est plus un iLife A11, mais un DJI Romo, et le protagoniste est davantage joueur que méfiant. Mais, une constante demeure. Les aspirateurs connectés peuvent parfois obéir à d’autres forces que celles de leur propriétaire.</p>
-
-
-
-<p>Dans un article <a href="https://www.theverge.com/tech/879088/dji-romo-hack-vulnerability-remote-control-camera-access-mqtt" target="_blank">retraçant cette découverte fortuite</a>, publié le 14 février 2026, Sammy Azdoufal explique qu’à la base, son projet consistait simplement à connecter son aspirateur à une manette de PlayStation. Une expérience qui lui a permis de découvrir une faille majeure dans la gestion des permissions backend chez DJI, lui donnant accès à environ 7 000 aspirateurs Romo dispersés un peu partout dans le monde.</p>
-
-
-
-<figure><div>        <p>                    </p>        <div>        <p>            Ce contenu est bloqué car vous n’avez pas accepté les cookies et autres traceurs. Ce contenu est fourni par YouTube.<br />            Pour pouvoir le visualiser, vous devez accepter l’usage étant opéré par YouTube avec vos données qui pourront être utilisées pour les finalités suivantes : vous permettre de visualiser et de partager des contenus avec des médias sociaux, favoriser le développement et l’amélioration des produits d’Humanoid et de ses partenaires, vous afficher des publicités personnalisées par rapport à votre profil et activité, vous définir un profil publicitaire personnalisé, mesurer la performance des publicités et du contenu de ce site et mesurer l’audience de ce site <a href="#" target="_blank">(en savoir plus)</a>        </p>        <p>            En cliquant sur « J’accepte tout », vous consentez aux finalités susmentionnées pour l’ensemble des cookies et autres traceurs déposés par Humanoid et .        </p>        <p>            Vous gardez la possibilité de retirer votre consentement à tout moment. Pour plus d’informations, nous vous invitons à prendre connaissance de notre <a href="https://www.numerama.com/politique-cookies">Politique cookies</a>.        </p>    </div>    </div></figure>
-
-
-
-<h2>Près de 7000 aspirateurs en accès libre</h2>
-
-
-
-<p>Pour décrypter les communications des aspirateurs DJI, Sammy Azdoufal s’est appuyé sur l’IA<a href="https://www.numerama.com/tech/2178207-claude-ai-ameliore-sa-version-gratuite-anthropic-defie-chatgpt-avec-plusieurs-nouveautes.html"> Claude Code</a> et a créé une application capable de repérer tous les appareils connectés.</p>
-
-<div>
-                    
-                            <div>
-                <img alt="Bitdefender new Box" />            </div>
-                <div>
-                            <p>
-                    Votre vie privée doit rester privée.                </p>
-                                        <p>
-                    Face aux cyberattaques, déjouez les pronostics. Les nouvelles arnaques sont plus complexes et plus sophistiquées, alors ne devenez pas une victime de plus, il existe des solutions performantes et accessibles.                </p>
-                                        
-                    </div>
-    </div>
-
-
-
-
-<p>Un fonctionnement parfaitement expliqué par <a href="https://www.frandroid.com/marques/2977963_cest-du-delire-une-faille-permet-dacceder-a-tous-les-aspirateurs-robots-dji-romo" target="_blank">nos confrères de Frandroid</a> : pour interagir avec leurs serveurs, les aspirateurs DJI s’appuient sur un système appelé MQTT, pour Message Queuing Telemetry Transport.</p>
-
-
-
-<p>Le problème, c’est qu’une fois connecté avec son propre code d’accès (token), le serveur ne vérifie pas si vous êtes le propriétaire des données demandées. Et avec un seul numéro de série, Sammy était donc en mesure d’espionner tous les autres.</p>
-
-
-
-<p>Les résultats auxquels il est parvenu sont impressionnants. Lors d’un test présenté à The Verge, le bidouilleur a récolté de nombreuses données sur un aspirateur situé à des milliers de km : la pièce qu’il nettoyait, son niveau de charge, le plan 2D précis de l’appartement, et même sa position approximative via l’adresse IP.</p>
-
-
-
-<p>« <em>Neuf minutes après le début de l’opération, l’ordinateur portable d’Azdoufal avait déjà répertorié 6 700 appareils DJI répartis dans 24 pays et collecté plus de 100 000 de leurs messages</em> », raconte <a href="https://www.theverge.com/authors/sean-hollister" target="_blank">Sean Hollister</a>, journaliste de The Verge et témoin du test. Il précise qu’en ajoutant les stations d’alimentation portables DJI Power, Azdoufal avait accès à plus de 10 000 appareils.</p>
-
-
-
-<h2>DJI de nouveau dans la tourmente</h2>
-
-
-
-<p>Le test est allé encore plus loin lorsque Sammy Azdoufal a ouvert le flux vidéo en direct de son propre DJI Romo, contournant complètement son code de sécurité.</p>
-
-
-
-<p>Ce qui frappe dans cette histoire, c’est que tous les tests ont été réalisés sans pirater les serveurs de DJI, comme le rappelle le principal protagoniste : « <em>Je n’ai enfreint aucune règle, je n’ai utilisé aucune méthode de contournement, aucune force brute, rien de tout cela.</em> »</p>
-
-
-
-<p>S’il devait y avoir une bonne nouvelle dans cette affaire : la veille du test, DJI avait déjà restreint l’accès aux caméras et microphones après le signalement de Sammy Azdoufal et du journaliste de The Verge. La faille de scan généralisé a, quant à elle, été colmatée le lendemain.</p>
-
-
-
-<p>Une réaction post-signalement qui ne devrait pas apaiser les inquiétudes sur la cybersécurité de DJI. L’entreprise a bien reconnu un « <em>problème de validation des autorisations côté serveur</em> » qui aurait théoriquement permis à des pirates d’accéder aux flux vidéo en direct, mais en a minimisé sa portée : « <em>Bien que ce problème ait créé un risque théorique d’accès non autorisé à la vidéo en direct de l’appareil ROMO, notre enquête confirme que les occurrences réelles étaient extrêmement rares. Presque toutes les activités identifiées étaient liées à des chercheurs en sécurité indépendants testant leurs propres appareils à des fins de rapport, à quelques rares exceptions près.</em> »</p>
-
-
-
-<p>Pour rappel, DJI tente de faire patte blanche <a href="https://www.numerama.com/cyberguerre/2147883-dji-sur-liste-noire-cette-decision-americaine-peut-elle-bouleverser-le-marche-des-drones.html">après l’interdiction de ses drones aux États-Unis depuis fin 2025.</a> Cette découverte ne plaide pas en sa faveur : « <em>C’est vraiment bizarre d’avoir un microphone sur un aspirateur</em> », relève Sammy Azdoufal.</p>
-
-
-
-
-
-
-
-
-<div>
-        <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/iPhone-16-pro-vDJtn9o4_vzSsPIGCFDc5.png" alt="Toute l'actu tech en un clien d'oeil" />
-        </p>
-        <div>
-                <p>Toute l'actu tech en un clin d'œil</p>
-            <p>Ajoutez Numerama à votre écran d'accueil et restez connectés au futur !</p>
-        </div>
-        <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/logo-card-pwa-coupe-vCvPQ_Q_ysBNfqKp6w7gG.svg" alt="Logo PWA" />
-        </p>
-    </div>
-
-<hr />        </div></div>
+    <p>Dans un article publié le 14 février 2026, le média américain The Verge revient sur la découverte involontaire d'une faille de sécurité affectant les appareils de la marque chinoise DJI. En bidouillant son aspirateur connecté pour le piloter avec une manette PlayStation, un utilisateur a pu accéder à des données de milliers d'appareils à travers le monde.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

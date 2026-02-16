@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Fake AI Chrome extensions with 300K users steal credentials, emails</title>
 <style>
@@ -23,32 +21,25 @@
 <body>
   <h1>Fake AI Chrome extensions with 300K users steal credentials, emails</h1>
   <div class="metadata">
-    Source: BleepingComputer Windows | Date: 2/12/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/fake-ai-chrome-extensions-with-300k-users-steal-credentials-emails/" target="_blank">Original Article</a>
+    Source: BleepingComputer Windows | Date: 2/12/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
 	   
-<p><img alt="Fake AI Chrome extensions with 300K users steal credentials, emails" src="https://www.bleepstatic.com/content/hl-images/2024/03/27/Google_Chrome.jpg" /></p>
-
+<p><img alt="Fake AI Chrome extensions with 300K users steal credentials, emails" src="https://www.bleepstatic.com/content/hl-images/2024/03/27/Google_Chrome.jpg"></p>
 
 <p>A set of 30 malicious Chrome extensions that have been installed by more than 300,000 users are masquerading as AI assistants to steal credentials, email content, and browsing information.</p>
 
-
 <p>Some of the extensions are still present in the Chrome Web Store and have been installed by tens of thousands of users, while others show a small install count.</p>
-
 
 <p>Researchers at browser security platform LayerX discovered the malicious extension campaign and named it AiFrame. They found that all analyzed extensions are part of the same malicious effort as they communicate with infrastructure under a single domain, <em>tapnetic[.]pro</em>.</p>
 
-<p><a href="https://www.wiz.io/lp/securing-ai-agents-101?utm_source=bleepingcomputer&amp;utm_medium=display&amp;utm_campaign=FY26Q3_INB_FORM_Securing-AI-Agents-101&amp;sfcid=701Py00000RTEWMIA5&amp;utm_term=FY27-bleepingcomputer-article-970x250&amp;utm_content=AI-Agents-101" target="_blank"><img src="https://www.bleepstatic.com/c/w/Securing-AI-Agents-970x250.png" alt="Wiz" /></a>
+<p>
 </p>
 
-
-<p>According to them, the most popular extension in the AiFrame campaign had 80,000 users and was called Gemini AI Sidebar (fppbiomdkfbhgjjdmojlogeceejinadg), but it is no longer on the Chrome Web Store.</p>
-
+<p>According to them, the most popular extension in the&nbsp;AiFrame campaign had 80,000 users and was called Gemini AI Sidebar (fppbiomdkfbhgjjdmojlogeceejinadg), but it is no longer on the Chrome Web Store.</p>
 
 <p>However, BleepingComputer found that other extensions with thousands of users are still present on Google's repository for Chrome extensions. It should be noted that the names may be different in some cases, but the identification is the same.</p>
-
 
 <ol><li><strong>AI Sidebar</strong> (gghdfkafnhfpaooiolhncejnlgglhkhe) – 70,000 users</li>
 	<li><strong>AI Assistant</strong> (nlhpidbjmmffhoogcennoiopekbiglbp) – 60,000 users</li>
@@ -59,48 +50,33 @@
 	<li><strong>Google Gemini</strong> (fdlagfnfaheppaigholhoojabfaapnhb) – 10,000 users</li>
 </ol><p>LayerX found that all 30 extensions share the same internal structure, JavaScript logic, permissions, and backend infrastructure.</p>
 
-
 <p>The malicious browser add-ons do not implement AI functionality locally; instead, they deliver the promised feature by rendering a full-screen iframe to load content from a remote domain.</p>
 
-
-<p>This, by itself, is risky, as publishers can change the extensions’ logic at any time without pushing an update - just like in the case of <a href="https://www.bleepingcomputer.com/news/security/microsoft-store-outlook-add-in-hijacked-to-steal-4-000-microsoft-accounts/" target="_blank">Microsoft Office Add-ins</a> - thus avoiding a new review.</p>
-
+<p>This, by itself, is risky, as publishers can change the extensions’ logic at any time without pushing an update - just like in the case of <a href="https://www.bleepingcomputer.com/news/security/microsoft-store-outlook-add-in-hijacked-to-steal-4-000-microsoft-accounts/" target="_blank">Microsoft Office Add-ins</a>&nbsp;- thus avoiding a new review.</p>
 
 <p>In the background, the extensions extract page content from websites the user visits, including sensitive authentication pages, using Mozilla’s Readability library.</p>
 
-
-<p>LayerX says that a subset of 15 extensions specifically targets Gmail data, using a dedicated content script that runs at ‘document_start’ on ‘mail.google.com’ and injects UI elements.</p>
-
+<p>LayerX&nbsp;says that a subset of 15 extensions specifically targets Gmail data, using a dedicated content script that runs at ‘document_start’ on ‘mail.google.com’ and injects UI elements.</p>
 
 <p>The script reads visible email content directly from the DOM and repeatedly extracts email thread text via ‘.textContent.’ The researchers note that even email drafts can be captured.</p>
 
-
-<p>“When Gmail-related features such as AI-assisted replies or summaries are invoked, the extracted email content is passed into the extension’s logic and transmitted to third-party backend infrastructure controlled by the extension operator,” <a href="https://layerxsecurity.com/blog/aiframe-fake-ai-assistant-extensions-targeting-260000-chrome-users-via-injected-iframes/?utm_source=BC" target="_blank">LayerX explains</a> in a report today.</p>
-
+<p>“When Gmail-related features such as AI-assisted replies or summaries are invoked, the extracted email content is passed into the extension’s logic and transmitted to third-party backend infrastructure controlled by the extension operator,”  in a report today.</p>
 
 <p>“As a result, email message text and related contextual data may be sent off-device, outside of Gmail’s security boundary, to remote servers.”</p>
 
-
 <p>The extensions also feature a remotely triggered voice recognition and transcript generation mechanism using the ‘Web Speech API,’ returning the results to the operators. Depending on the granted permissions, the extensions may even siphon conversations from the victim’s environment.</p>
-
 
 <p>BleepingComputer has contacted Google for a comment on LayerX findings, but we have not received a response by publication time.</p>
 
-
 <p>It is recommended to check LayerX's list of indicators of compromise for the complete set of malicious extensions. If compromise is confirmed, users should reset passwords for all accounts.</p>
-
-
 
 	   
 
-
 <div>
-    <p><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">
-            <img src="https://www.bleepstatic.com/c/t/tines-in-art-square.jpg" alt="tines" />
-        </a>
+    <p>
     </p>
     <div>
-        <h2><a href="https://www.tines.com/access/guide/the-future-of-it-infrastructure/?utm_source=BleepingComputer&amp;utm_medium=paid_media&amp;utm_content=ROS-inarticlebanner-0102" target="_blank">The future of IT infrastructure is here</a></h2>
+        <h2></h2>
 <p>Modern IT infrastructure moves faster than manual workflows can handle.</p><p>In this new Tines guide, learn how your team can reduce hidden manual delays, improve reliability through automated response, and build and scale intelligent workflows on top of tools you already use.</p>
 
         </div>
@@ -111,5 +87,5 @@
  
 	  </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

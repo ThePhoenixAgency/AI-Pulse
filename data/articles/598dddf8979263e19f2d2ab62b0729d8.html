@@ -4,82 +4,48 @@
 <meta charset="UTF-8">
 <title>Who Benefited from the Aisuru and Kimwolf Botnets?</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Who Benefited from the Aisuru and Kimwolf Botnets?</h1>
   <div class="metadata">
-    Source: Krebs on Security | Date: 1/8/2026 | Lang: EN |
-    <a href="https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/" target="_blank">Original Article</a>
+    Source: Krebs on Security | Date: 1/9/2026 12:23:43 AM | <a href="https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-												<p>Our <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">first story of 2026</a> revealed how a destructive new botnet called <strong>Kimwolf</strong> has infected more than two million devices by mass-compromising a vast number of unofficial <strong>Android TV streaming boxes</strong>. Today, we’ll dig through digital clues left behind by the hackers, network operators and services that appear to have benefitted from Kimwolf’s spread.</p>
-<p>On Dec. 17, 2025, the Chinese security firm <strong>XLab</strong> published <a href="https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/jsalton@keepersecurity.com" target="_blank">a deep dive on Kimwolf</a>, which forces infected devices to participate in distributed denial-of-service (DDoS) attacks and to relay abusive and malicious Internet traffic for so-called “residential proxy” services.</p>
-<p>The software that turns one’s device into a residential proxy is often quietly bundled with mobile apps and games. Kimwolf specifically targeted residential proxy software that is factory installed on <a href="https://github.com/synthient/public-research/blob/main/2026/01/kimwolf/product_devices.csv" target="_blank">more than a thousand different models</a> of unsanctioned Android TV streaming devices. Very quickly, the residential proxy’s Internet address starts funneling traffic that is linked to ad fraud, account takeover attempts and mass content scraping.</p>
-<p>The XLab report explained its researchers found “definitive evidence” that the same cybercriminal actors and infrastructure were used to deploy both Kimwolf and the <strong>Aisuru botnet </strong>— an earlier version of Kimwolf that also enslaved devices for use in DDoS attacks and proxy services.</p>
-<p>XLab said it suspected since October that Kimwolf and Aisuru had the same author(s) and operators, based in part on shared code changes over time. But it said those suspicions were confirmed on December 8 when it witnessed both botnet strains being distributed by the same Internet address at <strong>93.95.112[.]59</strong>.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/XLab-resito.png" alt="" /></p><p>Image: XLab.</p></div>
-<h2>RESI RACK</h2>
-<p>Public records show the Internet address range flagged by XLab is assigned to Lehi, Utah-based <strong>Resi Rack LLC</strong>. Resi Rack’s website bills the company as a “Premium Game Server Hosting Provider.” Meanwhile, Resi Rack’s ads on the Internet moneymaking forum <strong>BlackHatWorld</strong> refer to it as a “Premium Residential Proxy Hosting and Proxy Software Solutions Company.”</p>
-<p>Resi Rack co-founder <strong>Cassidy Hales</strong> told KrebsOnSecurity his company received a notification on December 10 about Kimwolf using their network “that detailed what was being done by one of our customers leasing our servers.”</p>
-<p>“When we received this email we took care of this issue immediately,” Hales wrote in response to an email requesting comment. “This is something we are very disappointed is now associated with our name and this was not the intention of our company whatsoever.”</p>
-<p>The Resi Rack Internet address cited by XLab on December 8 came onto KrebsOnSecurity’s radar more than two weeks before that. <strong>Benjamin Brundage</strong> is founder of <a href="https://synthient.com/" target="_blank">Synthient</a>, a startup that tracks proxy services. In late October 2025, Brundage shared that the people selling various proxy services which benefitted from the Aisuru and Kimwolf botnets were doing so at a new Discord server called <strong>resi[.]to</strong>.</p>
-<div><p><a href="https://krebsonsecurity.com/wp-content/uploads/2026/01/resito-93-95-112-53.png" target="_blank"><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/resito-93-95-112-53.png" alt="" /></a></p><p>On November 24, 2025, a member of the resi-dot-to Discord channel shares an IP address responsible for proxying traffic over Android TV streaming boxes infected by the Kimwolf botnet.</p></div>
-<p>When KrebsOnSecurity joined the resi[.]to Discord channel in late October as a silent lurker, the server had fewer than 150 members, including “<strong>Shox</strong>” — the nickname used by Resi Rack’s co-founder Mr. Hales — and his business partner “<strong>Linus</strong>,” who did not respond to requests for comment.</p>
-<p>Other members of the resi[.]to Discord channel would periodically <a href="https://krebsonsecurity.com/wp-content/uploads/2026/01/resito-hackerpakistan.png" target="_blank">post new IP addresses</a> that were responsible for proxying traffic over the Kimwolf botnet. As the screenshot from resi[.]to above shows, that Resi Rack Internet address flagged by XLab was used by Kimwolf to direct proxy traffic as far back as November 24, if not earlier. All told, Synthient said it tracked at least seven static Resi Rack IP addresses connected to Kimwolf proxy infrastructure between October and December 2025.</p>
-<p>Neither of Resi Rack’s co-owners responded to follow-up questions. Both have been active in selling proxy services via Discord for nearly two years. According to a review of Discord messages indexed by the cyber intelligence firm <strong>Flashpoint</strong>, Shox and Linus spent much of 2024 selling static “ISP proxies” by routing various Internet address blocks at major U.S. Internet service providers.</p>
-<p>In February 2025, AT&amp;T <a href="https://serviceguidenew.att.com/sg_CustomPreviewer?attachmentId=00PPV00001Jf2Qf2AJ" target="_blank">announced</a> that effective July 31, 2025, it would no longer originate routes for network blocks that are not owned and managed by AT&amp;T (other major ISPs have since made similar moves). Less than a month later, Shox and Linus told customers they would soon cease offering static ISP proxies as a result of these policy changes.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/shox-linus-static-att.png" alt="" /></p><p>Shox and Linux, talking about their decision to stop selling ISP proxies.</p></div>
-<h2>DORT &amp; SNOW</h2>
-<p>The stated owner of the resi[.]to Discord server went by the abbreviated username “D.” That initial appears to be short for the hacker handle “<strong>Dort</strong>,” a name that was invoked frequently throughout these Discord chats.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/resito-d-profile.png" alt="" /></p><p>Dort’s profile on resi dot to.</p></div>
-<p>This “Dort” nickname came up in KrebsOnSecurity’s recent conversations with “<a href="https://krebsonsecurity.com/tag/forky/" target="_blank"><strong>Forky</strong></a>,” a Brazilian man who <a href="https://krebsonsecurity.com/2025/05/krebsonsecurity-hit-with-near-record-6-3-tbps-ddos/" target="_blank">acknowledged</a> being involved in the marketing of the Aisuru botnet at its inception in late 2024. But Forky vehemently denied having anything to do with <a href="https://krebsonsecurity.com/2025/10/ddos-botnet-aisuru-blankets-us-isps-in-record-ddos/" target="_blank">a series of massive and record-smashing DDoS attacks</a> in the latter half of 2025 that were blamed on Aisuru, saying the botnet by that point had been taken over by rivals.</p>
-<p>Forky asserts that Dort is a resident of Canada and one of at least two individuals currently in control of the Aisuru/Kimwolf botnet. The other individual Forky named as an Aisuru/Kimwolf botmaster goes by the nickname “<strong>Snow</strong>.”</p>
-<p>On January 2 — just hours after our story on Kimwolf was published — the historical chat records on resi[.]to were erased without warning and replaced by <a href="https://krebsonsecurity.com/wp-content/uploads/2026/01/fsckben.png" target="_blank">a profanity-laced message</a> for Synthient’s founder. Minutes after that, the entire server disappeared.</p>
-<p>Later that same day, several of the more active members of the now-defunct resi[.]to Discord server moved to a Telegram channel where they posted Brundage’s personal information, and generally complained about being unable to find reliable “bulletproof” hosting for their botnet.</p>
-<p>Hilariously, a user by the name “Richard Remington” briefly appeared in the group’s Telegram server to post a crude “Happy New Year” sketch that claims Dort and Snow are now in control of 3.5 million devices infected by Aisuru and/or Kimwolf. Richard Remington’s Telegram account has since been deleted, but it previously stated its owner <a href="https://krebsonsecurity.com/wp-content/uploads/2026/01/remington-dstat.png" target="_blank">operates a website</a> that caters to DDoS-for-hire or “stresser” services seeking to test their firepower.</p>
-<p><a href="https://krebsonsecurity.com/wp-content/uploads/2026/01/dort-snow-kimwolf-aisuru.png" target="_blank"><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/dort-snow-kimwolf-aisuru.png" alt="" /></a><span></span></p>
-<h2>BYTECONNECT, PLAINPROXIES, AND 3XK TECH</h2>
-<p>Reports from both Synthient and XLab found that Kimwolf was used to deploy programs that turned infected systems into Internet traffic relays for multiple residential proxy services. Among those was a component that installed a software development kit (SDK) called <strong>ByteConnect,</strong> which is distributed by a provider known as <strong>Plainproxies</strong>.</p>
-<p>ByteConnect says it specializes in “monetizing apps ethically and free,” while Plainproxies advertises the ability to provide content scraping companies with “unlimited” proxy pools. However, Synthient said that upon connecting to ByteConnect’s SDK they instead observed a mass influx of credential-stuffing attacks targeting email servers and popular online websites.</p>
-<p>A search on LinkedIn finds the CEO of Plainproxies is <strong>Friedrich Kraft</strong>, whose <a href="https://www.linkedin.com/in/friedrich-kr%C3%A4ft-1478a3248/" target="_blank">resume</a> says he is co-founder of ByteConnect Ltd. Public Internet routing records show Mr. Kraft also operates a hosting firm in Germany called <strong>3XK Tech GmbH</strong>. Mr. Kraft did not respond to repeated requests for an interview.</p>
-<p>In July 2025, Cloudflare reported that 3XK Tech (a.k.a. Drei-K-Tech) had become <a href="https://blog.cloudflare.com/ddos-threat-report-for-2025-q2/" target="_blank">the Internet’s largest source of application-layer DDoS attacks</a>. In November 2025, the security firm <strong>GreyNoise Intelligence</strong> <a href="https://www.greynoise.io/blog/palo-alto-scanning-surges-90-day-high" target="_blank">found</a> that Internet addresses on 3XK Tech were responsible for roughly three-quarters of the Internet scanning being done at the time for a newly discovered and critical vulnerability in security products made by Palo Alto Networks.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/cloudflare-3XKTech.png" alt="" /></p><p>Source: Cloudflare’s Q2 2025 DDoS threat report.</p></div>
-<p>LinkedIn has <a href="https://www.linkedin.com/in/juliadml/" target="_blank">a profile</a> for another Plainproxies employee, <strong>Julia Levi</strong>, who is listed as co-founder of ByteConnect. Ms. Levi did not respond to requests for comment. Her resume says she previously worked for two major proxy providers: Netnut Proxy Network, and Bright Data.</p>
-<p>Synthient likewise said Plainproxies ignored their outreach, noting that the Byteconnect SDK continues to remain active on devices compromised by Kimwolf.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/julialevi-plainproxies.png" alt="" /></p><p>A post from the LinkedIn page of Plainproxies Chief Revenue Officer Julia Levi, explaining how the residential proxy business works.</p></div>
-<h2>MASKIFY</h2>
-<p>Synthient’s <a href="https://synthient.com/blog/a-broken-system-fueling-botnets" target="_blank">January 2 report</a> said another proxy provider heavily involved in the sale of Kimwolf proxies was <strong>Maskify</strong>, which currently advertises on multiple cybercrime forums that it has more than six million residential Internet addresses for rent.</p>
-<p>Maskify prices its service at a rate of 30 cents per gigabyte of data relayed through their proxies. According to Synthient, that price range is insanely low and is far cheaper than any other proxy provider in business today.</p>
-<p>“Synthient’s Research Team received screenshots from other proxy providers showing key Kimwolf actors attempting to offload proxy bandwidth in exchange for upfront cash,” the Synthient report noted. “This approach likely helped fuel early development, with associated members spending earnings on infrastructure and outsourced development tasks. Please note that resellers know precisely what they are selling; proxies at these prices are not ethically sourced.”</p>
-<p>Maskify did not respond to requests for comment.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/synthient-maskify.png" alt="" /></p><p>The Maskify website. Image: Synthient.</p></div>
-<h2>BOTMASTERS LASH OUT</h2>
-<p>Hours after <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">our first Kimwolf story</a> was published last week, the resi[.]to Discord server vanished, Synthient’s website was hit with a DDoS attack, and the Kimwolf botmasters took to doxing Brundage via their botnet.</p>
-<p>The harassing messages appeared as text records uploaded to the <a href="https://support.ens.domains/en/articles/7900404-what-is-ens" target="_blank">Ethereum Name Service</a> (ENS), a distributed system for supporting smart contracts deployed on the Ethereum blockchain. As documented by XLab, in mid-December the Kimwolf operators upgraded their infrastructure and began using ENS to better withstand the near-constant takedown efforts targeting the botnet’s control servers.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/pawsat-eth.png" alt="" /></p><p>An ENS record used by the Kimwolf operators taunts security firms trying to take down the botnet’s control servers. Image: XLab.</p></div>
-<p>By telling infected systems to seek out the Kimwolf control servers via ENS, even if the servers that the botmasters use to control the botnet are taken down the attacker only needs to update the ENS text record to reflect the new Internet address of the control server, and the infected devices will immediately know where to look for further instructions.</p>
-<p>“This channel itself relies on the decentralized nature of blockchain, unregulated by Ethereum or other blockchain operators, and cannot be blocked,” XLab wrote.</p>
-<p>The text records included in Kimwolf’s ENS instructions can also feature short messages, such as those that carried Brundage’s personal information. Other ENS text records associated with Kimwolf offered some sage advice: “If flagged, we encourage the TV box to be destroyed.”</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/01/ens-destroytvbox.png" alt="" /></p><p>An ENS record tied to the Kimwolf botnet advises, “If flagged, we encourage the TV box to be destroyed.”</p></div>
-<p>Both Synthient and XLabs say Kimwolf targets a vast number of Android TV streaming box models, all of which have zero security protections, and many of which ship with proxy malware built in. Generally speaking, if you can send a data packet to one of these devices you can also seize administrative control over it.</p>
-<p>If you own a TV box that matches <a href="https://github.com/synthient/public-research/blob/main/2026/01/kimwolf/product_devices.csv" target="_blank">one of these model names and/or numbers</a>, please just rip it out of your network. If you encounter one of these devices on the network of a family member or friend, send them a link to this story (or to <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">our January 2 story on Kimwolf</a>) and explain that it’s not worth the potential hassle and harm created by keeping them plugged in.</p>
-											</div></div>
+    <p>Our first story of 2026 revealed how a destructive new botnet called Kimwolf rapidly grew to infect more than two million devices by mass-compromising a vast number of unofficial Android TV streaming boxes. Today, we'll dig through digital clues left behind by the hackers, network operators, and cybercrime services that appear to have benefitted from Kimwolf's spread.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

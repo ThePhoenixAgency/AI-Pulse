@@ -524,14 +524,18 @@
             }
 
             if (articleTags) {
-                const tags = decodeURIComponent(articleTags).split(',');
+                const tags = decodeURIComponent(articleTags)
+                    .split(',')
+                    .map(tag => tag.trim())
+                    .filter(Boolean)
+                    .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
                 const tagsEl = document.getElementById('articleTags');
                 if (tagsEl) {
                     tagsEl.textContent = ''; // Clear
                     tags.forEach(tag => {
                         const span = document.createElement('span');
                         span.className = 'tag';
-                        span.textContent = tag.trim(); // Safe textContent
+                        span.textContent = tag; // Safe textContent
                         tagsEl.appendChild(span);
                     });
                 }

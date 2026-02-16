@@ -1,51 +1,40 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Pimmich – Un cadre photo connecté open source basé sur Raspberry Pi</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Pimmich – Un cadre photo connecté open source basé sur Raspberry Pi</h1>
   <div class="metadata">
-    Source: Framboise 314 | Date: 1/7/2026 | Lang: FR |
-    <a href="https://www.framboise314.fr/pimmich-cadre-photo-connecte-raspberry-pi-immich/" target="_blank">Original Article</a>
+    Source: Framboise 314 | Date: 1/7/2026 11:57:57 AM | <a href="https://www.framboise314.fr/pimmich-cadre-photo-connecte-raspberry-pi-immich/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><article>
-				
-
-				<div>
-			
-<div><p>Au sommaire :</p><ul><li><a href="#Pimmich_Un_cadre_photo_connecte_open_source_base_sur_Raspberry_Pi"><span>1</span> Pimmich – Un cadre photo connecté open source basé sur Raspberry Pi</a><ul><li><a href="#Fan_de_Raspberry"><span>1.1</span> Fan de Raspberry</a></li><li><a href="#_Fiche_didentite_du_projet"><span>1.2</span>  Fiche d’identité du projet</a></li><li><a href="#Immich_la_decouverte"><span>1.3</span> Immich, la découverte</a></li><li><a href="#Le_codage_assiste_par_lIA"><span>1.4</span> Le codage assisté par l’IA </a></li><li><a href="#Le_Vibe_Coding"><span>1.5</span> Le “Vibe Coding”</a></li><li><a href="#_Quest-ce_que_Pimmich"><span>1.6</span>  Qu’est-ce que Pimmich ?</a></li><li><a href="#_Synchronisation_avec_Immich"><span>1.7</span>  Synchronisation avec Immich</a><ul><li><a href="#_Une_interface_de_configuration_intuitive"><span>1.7.1</span>  Une interface de configuration intuitive</a></li><li><a href="#Les_dernieres_nouveautes"><span>1.7.2</span> Les dernières nouveautés :</a></li><li><a href="#Installation_et_partage"><span>1.7.3</span> Installation et partage</a></li></ul></li><li><a href="#_Essayez-le_et_partagez"><span>1.8</span>  Essayez-le et partagez !</a></li></ul></li></ul></div>
-
-<h2><span>Fan de Raspberry</span></h2>
+    <div><article> <div> <div><p>Au sommaire :</p><ul><li><a href="#Pimmich_Un_cadre_photo_connecte_open_source_base_sur_Raspberry_Pi"><span>1</span> Pimmich – Un cadre photo connecté open source basé sur Raspberry Pi</a><ul><li><a href="#Fan_de_Raspberry"><span>1.1</span> Fan de Raspberry</a></li><li><a href="#_Fiche_didentite_du_projet"><span>1.2</span> Fiche d’identité du projet</a></li><li><a href="#Immich_la_decouverte"><span>1.3</span> Immich, la découverte</a></li><li><a href="#Le_codage_assiste_par_lIA"><span>1.4</span> Le codage assisté par l’IA </a></li><li><a href="#Le_Vibe_Coding"><span>1.5</span> Le “Vibe Coding”</a></li><li><a href="#_Quest-ce_que_Pimmich"><span>1.6</span> Qu’est-ce que Pimmich ?</a></li><li><a href="#_Synchronisation_avec_Immich"><span>1.7</span> Synchronisation avec Immich</a><ul><li><a href="#_Une_interface_de_configuration_intuitive"><span>1.7.1</span> Une interface de configuration intuitive</a></li><li><a href="#Les_dernieres_nouveautes"><span>1.7.2</span> Les dernières nouveautés :</a></li><li><a href="#Installation_et_partage"><span>1.7.3</span> Installation et partage</a></li></ul></li><li><a href="#_Essayez-le_et_partagez"><span>1.8</span> Essayez-le et partagez !</a></li></ul></li></ul></div> <h2><span>Fan de Raspberry</span></h2>
 <p>Depuis une dizaine d’années, le Raspberry Pi est mon terrain de jeu favori :</p>
 <ul>
 <li>Domotique avec <strong>Home Assistant</strong></li>
 <li>Borne d’arcade avec <strong>Retropie</strong></li>
 <li>Contrôle d’imprimantes 3D avec <strong>OctoPi</strong></li>
 </ul>
-<p>Mais récemment, un changement dans les conditions d’utilisation de Google a rendu obsolète un outil que j’utilisais depuis de nombreuses années pour mes cadres photos : <strong>Photoframe de Henric Andersson</strong>. Ce programme en Python permettait de diffuser des photos provenant d’un album Google sur un écran recyclé.</p>
-
-<p>C’était parfait pour fabriquer des cadres photos pour ma famille, et leur envoyer facilement des photos.</p>
-<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/cadre_fini.jpg" alt="Cadre Pimmich" /></p>
-<hr />
+<p>Mais récemment, un changement dans les conditions d’utilisation de Google a rendu obsolète un outil que j’utilisais depuis de nombreuses années pour mes cadres photos : <strong>Photoframe de Henric Andersson</strong>. Ce programme en Python permettait de diffuser des photos provenant d’un album Google sur un écran recyclé.</p> <p>C’était parfait pour fabriquer des cadres photos pour ma famille, et leur envoyer facilement des photos.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/cadre_fini.jpg" alt="Cadre Pimmich"></p>
+<hr>
 <h2><span><strong> Fiche d’identité du projet</strong></span></h2>
 <table>
 <tbody>
@@ -90,22 +79,21 @@
 <h2><span>Immich, la découverte</span></h2>
 <p>C’est comme ça que l’histoire de <strong>Pimmich</strong> a débuté. Depuis plusieurs mois, je testais différentes solutions d’auto-hébergement de photos. Après en avoir essayé plusieurs, pas toujours adaptées, je suis tombé sur <strong>Immich</strong>, une solution auto-hébergée qui cochait toutes les cases.</p>
 <p><em>Petite anecdote :</em> Immich est né d’une demande personnelle. La femme de son auteur attendait un heureux événement et voulait une solution libre et indépendante des GAFA pour stocker les photos de leur futur bébé.</p>
-<p>Quand mes problèmes avec Google Photos sont arrivés, j’ai eu le déclic :<br />
- <em>Pourquoi ne pas développer moi-même un cadre connecté qui récupère un album depuis Immich via l’API, et l’affiche sur mon outil préféré : le Raspberry Pi ?</em></p>
+<p>Quand mes problèmes avec Google Photos sont arrivés, j’ai eu le déclic :<br> <em>Pourquoi ne pas développer moi-même un cadre connecté qui récupère un album depuis Immich via l’API, et l’affiche sur mon outil préféré : le Raspberry Pi ?</em></p>
 <p>Ainsi, les bases de <strong>Pimmich</strong> étaient posées.</p>
-<hr />
+<hr>
 <h2><span>Le codage assisté par l’IA </span></h2>
 <p>Je venais de terminer un petit projet perso : ressusciter un vieux poste TSF en y cachant un Raspberry Pi et des enceintes. L’idée : diffuser automatiquement des musiques des années 30 au passage des visiteurs dans une expo.</p>
 <p>Pour coder, je m’étais déjà servi de <strong>ChatGPT</strong>.</p>
 <p>N’étant pas un développeur professionnel, j’ai collaboré avec des IA conversationnelles.</p>
 <p>J’ai commencé avec ChatGPT, que j’ai surnommé <strong>Shenron </strong>, pour obtenir une première version fonctionnelle en quelques heures. J’ai ensuite intégré <strong>Gemini Code Assist</strong> directement dans Visual Studio Code pour peaufiner le projet. Cette approche permet d’apprendre énormément : l’IA explique ses choix de code, et l’on devient progressivement plus critique et efficace</p>
-<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/codage_pimmich.jpg" alt="coder avec Gemini code assist" /></p>
-<hr />
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/codage_pimmich.jpg" alt="coder avec Gemini code assist"></p>
+<hr>
 <h2><span>Le “Vibe Coding”</span></h2>
 <p>C’est à ce moment que j’ai découvert que cette façon de coder avait un nom : le <strong>Vibe Coding</strong>.</p>
 <p>Merci à Andrej Karpathy d’avoir trouvé ce terme. En bon français : “programmation au ressenti”. L’idée : discuter avec une IA conversationnelle, qui génère du code, qu’on teste, puis on recommence. Exactement ce que je faisais !</p>
 <p>Évidemment, tout n’est pas parfait. L’IA se trompe parfois, s’obstine dans de mauvaises pistes, ou refuse carrément de répondre. Il faut alors découper son prompt et ruser. Mais au final, le jeu en vaut la chandelle.</p>
-<hr />
+<hr>
 <h2><span> Qu’est-ce que Pimmich ?</span></h2>
 <p><strong>Pimmich, c’est un cadre photo numérique :</strong></p>
 <ul>
@@ -115,14 +103,14 @@
 <li> Facile à installer sur un Raspberry Pi 3 ou 4</li>
 <li> Extensible grâce à une architecture Python/Flask open source</li>
 </ul>
-<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/projet_pimmich.jpg" alt="Le projet Pimmich" /></p>
-<hr />
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/projet_pimmich.jpg" alt="Le projet Pimmich"></p>
+<hr>
 <h2><span> Synchronisation avec Immich</span></h2>
-<p>Pimmich se connecte à Immich, un gestionnaire de photos auto-hébergé moderne.<br />
+<p>Pimmich se connecte à Immich, un gestionnaire de photos auto-hébergé moderne.<br>
 Il récupère automatiquement vos albums partagés, redimensionne les images pour l’écran du Raspberry Pi, et les affiche joliment avec transitions et filtres. D’autres sources sont disponibles : Clefs USB ou partage Windows (smb)</p>
 <h3><span> Une interface de configuration intuitive</span></h3>
 <p>L’interface web est accessible depuis n’importe quel appareil du réseau, organisée en onglets thématiques pour simplifier la navigation.</p>
-<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/interface-300x206.jpg" alt="Interface de PImmich" /></p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/08/interface-300x206.jpg" alt="Interface de PImmich"></p>
 <h3><span>Les dernières nouveautés :</span></h3>
 <ul>
 <li>
@@ -151,17 +139,27 @@ Il récupère automatiquement vos albums partagés, redimensionne les images pou
 <p><span><b><span>L’installation manuelle :</span></b><span> Via le dépôt GitHub</span></span><span>.</span></p>
 </li>
 </ol>
-<h2><span> Essayez-le et partagez !</span></h2>
-<p>Si vous aimez les projets Raspberry Pi, le DIY, ou si vous cherchez une alternative libre aux solutions commerciales, <strong>Pimmich est fait pour vous</strong>.</p>
-<p><strong> </strong>Serveur Discord Pimmich : <a href="https://discord.gg/UzSevatn"><u>https://discord.gg/UzSevatn</u></a>.<br />
- GitHub : <a href="https://github.com/gotenash/pimmich">github.com/gotenash/pimmich</a><br />
- Site officiel : <a href="https://www.pimmich.ovh/">www.pimmich.ovh</a></p>
+<h2><span> Essayez-le et partagez !</span></h2> <p><strong> </strong>Serveur Discord Pimmich : <a href="https://discord.gg/UzSevatn"><u>https://discord.gg/UzSevatn</u></a>.<br> GitHub : <a href="https://github.com/gotenash/pimmich">github.com/gotenash/pimmich</a><br> Site officiel : <a href="https://www.pimmich.ovh/">www.pimmich.ovh</a></p>
 <p>J’espère que Pimmich trouvera sa place sur vos Raspberry Pi, et que vous prendrez autant de plaisir à l’utiliser que j’en ai eu à le développer.</p>
-<p><em>Aurélien (alias Goten), créateur de Pimmich</em></p>
-					</div>
-		
-								
-	</article></div>
+<p><em>Aurélien (alias Goten), créateur de Pimmich</em></p> </div> </article></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

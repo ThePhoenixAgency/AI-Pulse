@@ -1,140 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>HomeKit Weekly: The Onvis CS2 turns a simple door sensor into multiple use cases for Apple Home</h1>
   <div class="metadata">
-    Source: 9to5Mac | Date: 2/13/2026 | Lang: EN |
-    <a href="https://9to5mac.com/2026/02/13/onvis-cs2/" target="_blank">Original Article</a>
+    Source: 9to5Mac | Date: 2/13/2026 8:14:00 PM | <a href="https://9to5mac.com/2026/02/13/onvis-cs2/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-					
-<figure>
-
-	<img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/bradley.jpg?quality=82&amp;strip=all&amp;w=1600" alt="Onvis CS2" />
-	</figure>
-
-<p>When automating your smart home, much of the attention centers on cameras and lights, but I believe HomeKit door sensors are arguably among the most critical devices to add to your setup. I’ve written about Onvis before, but the <a href="https://amzn.to/4sTggo0">Smart Security Alarm Contact Sensor (CS2)</a> takes the concept of a simple door sensor and turns it into a lot more. It supports Thread, but the really cool add-on here is a 120dB siren built right into the sensor. Let’s take a look at the Onvis CS2.</p>
-
-
-
-
-
-
-
-
-
-<p><em><strong><a href="https://9to5mac.com/guides/homekit-weekly/">HomeKit Weekly</a></strong> is a series focused on smart home accessories, automation tips and tricks, and everything to do with Apple’s smart home framework.</em></p>
-
-
-
-<hr />
-
-
-
-<h2>More than just open and shut</h2>
-
-
-
-<p>Most HomeKit door sensors do one thing: tell you if a door is open or closed. The Onvis CS2 aims to be a “4-in-1” device. It handles open/close, but it also acts as a thermometer and hygrometer. However, the security bonus feature is 120dAlarm. Unlike standard sensors that silently send a push notification to your phone (which you might miss if you’re sleeping or driving), this sensor screams at you. It has different security modes (Stay, Away, Night, and Off) that let you decide when it should be silent and when it should make noise.</p>
-
-
-
-<p>You might be wondering why you need an alarm on the door itself if you get alerts on your iPhone and Apple Watch. There are a few use cases where this is a game-changer:</p>
-
-
-
-<ul>
-<li><strong>Pool Safety:</strong> If you have a pool, you know the worry of a child wandering out the back door unnoticed. With the OnvisCS2, you can set it to chime or alarm immediately when that door opens, alerting you instantly, even if you don’t have your iPhone near you.</li>
-
-
-
-<li><strong>Deterrence:</strong> If someone kicks in a door at 3:00 AM, a notification to your Apple Watch isn’t enough. A 120dB siren is loud enough to wake you up and, hopefully, scare off the intruder before they make it past the door.</li>
-
-
-
-<li><strong>Cabinets:</strong> You can place this on a medicine or liquor cabinet or a pantry door and set a chime to know if the kids are getting into things they shouldn’t be.</li>
-</ul>
-
-
-
-<h2>Installation process of the Onvis CS2</h2>
-
-
-
-<p>Installing the <a href="https://amzn.to/3J0gCUo">Onvis CS2</a> is just as simple as their previous models, with a few extra options for the alarm features.</p>
-
-
-
-
-
-<ul>
-<li><strong>Power it up:</strong> The device runs on AAA batteries, which I can appreciate because I always have plenty of them.</li>
-
-
-
-<li><strong>Scan the HomeKit code:</strong> Since the Onvis CS2 runs over Thread, open the Apple Home app, tap “Add Accessory,” and scan the code on the device. Because it uses Thread, it’s incredibly fast and reliable.</li>
-
-
-
-<li><strong>Configure the settings:</strong> Once it’s added to your Apple Home setup, you’ll see the contact sensor, temperature sensor, and humidity sensor in the main view. To configure the specific alarm sounds and volume, you will want to use the <a href="https://apps.apple.com/us/app/onvis-home/id1434369138">Onvis iPhone app</a> to fine-tune the decibel level and delay times to get out</li>
-</ul>
-
-
-
-<h2>Apple Home automations</h2>
-
-
-
-<p>Because the CS2 exposes so much data to Apple Home, your automation options are really nice. Since it tracks temperature and humidity, you can create an automation to turn on a ceiling fan or adjust your thermostat if the room gets too hot or humid. </p>
-
-
-
-<p>You can also tie the alarm state to your HomeKit scenes. For example, when you run your “Night” scene, you can have the Onvis CS2 automatically arm itself to “Night” mode. If the door opens while everyone is sleeping, the siren goes off. Your “Morning” scene can disarm it so you can let the dog out without waking up everyone in the home.</p>
-
-
-
-<h2>Wrap up on Onvis CS2</h2>
-
-
-
-<p>The <a href="https://amzn.to/3J0gCUo">Onvis CS2</a> is a fantastic upgrade over the standard Apple Home contact sensor. Adding temperature, humidity, and a 120dB siren to a single battery-powered device solves multiple problems at once. Whether you are trying to keep kids safe or want to be alerted if someone comes in, the audible alert gives you a layer of peace of mind that a silent push alert simply cannot match.</p>
-
-
-
-<p>With Thread support, it reacts instantly, and it runs on standard AAA batteries. It’s an easy recommendation for any HomeKit user.</p>
-
-
-
-
-
-<p>You can pick up the Onvis CS2 from <a href="https://amzn.to/4sTggo0">Amazon</a> or directly from <a href="https://onvishome.com/collections/sensor/products/onvis-security-sensor-cs2-apple-homekit-over-thread-4-in-1-wireless-door-window-contact-sensor-alarm-system-thermometer-hygrometer-for-smart-home-automation">Onvis</a>.</p>
-	<p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com">
-			<img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google" />
-			<img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google" />
-		</a>
-	</p>
-	<div><p><em>FTC: We use income earning auto affiliate links.</em> <a href="https://9to5mac.com/about/#affiliate">More.</a></p><p><a href="https://benqurl.biz/3WZyqpL"><img src="https://9to5mac.com/wp-content/uploads/sites/6/2025/12/native-banner_750_150.jpg?quality=82&amp;strip=all" alt="" /></a></p></div>				</div></div>
+    <pre><code>When automating your smart home, much of the attention centers on cameras and lights, but I believe HomeKit door sensors are arguably among the most critical devices to add to your setup. I’ve written about Onvis before, but the Smart Security Alarm Contact Sensor (CS2) takes the concept of a simple door sensor and turns it into a lot more. It supports Thread, but the really cool add-on here is a 120dB siren built right into the sensor. Let’s take a look at the Onvis CS2. HomeKit Weekly is a series focused on smart home accessories, automation tips and tricks, and everything to do with Apple’s smart home framework. More than just open and shut Most HomeKit door sensors do one thing: tell you if a door is open or closed. The Onvis CS2 aims to be a “4-in-1” device. It handles open/close, but it also acts as a thermometer and hygrometer. However, the security bonus feature is 120dAlarm. Unlike standard sensors that silently send a push notification to your phone (which you might miss if you’re sleeping or driving), this sensor screams at you. It has different security modes (Stay, Away, Night, and Off) that let you decide when it should be silent and when it should make noise. You might be wondering why you need an alarm on the door itself if you get alerts on your iPhone and Apple Watch. There are a few use cases where this is a game-changer: Pool Safety: If you have a pool, you know the worry of a child wandering out the back door unnoticed. With the OnvisCS2, you can set it to chime or alarm immediately when that door opens, alerting you instantly, even if you don’t have your iPhone near you. Deterrence: If someone kicks in a door at 3:00 AM, a notification to your Apple Watch isn’t enough. A 120dB siren is loud enough to wake you up and, hopefully, scare off the intruder before they make it past the door. Cabinets: You can place this on a medicine or liquor cabinet or a pantry door and set a chime to know if the kids are getting into things they shouldn’t be. Installation process of the Onvis CS2 Installing the Onvis CS2 is just as simple as their previous models, with a few extra options for the alarm features. Power it up:&nbsp;The device runs on AAA batteries, which I can appreciate because I always have plenty of them. Scan the HomeKit code:&nbsp;Since the Onvis CS2 runs over Thread, open the Apple Home app, tap “Add Accessory,” and scan the code on the device. Because it uses Thread, it’s incredibly fast and reliable. Configure the settings:&nbsp;Once it’s added to your Apple Home setup, you’ll see the contact sensor, temperature sensor, and humidity sensor in the main view. To configure the specific alarm sounds and volume, you will want to use the Onvis iPhone app to fine-tune the decibel level and delay times to get out Apple Home automations Because the CS2 exposes so much data to Apple Home, your automation options are really nice. Since it tracks temperature and humidity, you can create an automation to turn on a ceiling fan or adjust your thermostat if the room gets too hot or humid. You can also tie the alarm state to your HomeKit scenes. For example, when you run your “Night” scene, you can have the Onvis CS2 automatically arm itself to “Night” mode. If the door opens while everyone is sleeping, the siren goes off. Your “Morning” scene can disarm it so you can let the dog out without waking up everyone in the home. Wrap up on Onvis CS2 The Onvis CS2 is a fantastic upgrade over the standard Apple Home contact sensor. Adding temperature, humidity, and a 120dB siren to a single battery-powered device solves multiple problems at once. Whether you are trying to keep kids safe or want to be alerted if someone comes in, the audible alert gives you a layer of peace of mind that a silent push alert simply cannot match. With Thread support, it reacts instantly, and it runs on standard AAA batteries. It’s an easy recommendation for any HomeKit user. You can pick up the Onvis CS2 from Amazon or directly from Onvis. FTC: We use income earning auto affiliate links. More.</code></pre>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

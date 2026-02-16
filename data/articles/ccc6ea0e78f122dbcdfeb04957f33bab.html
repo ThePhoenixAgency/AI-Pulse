@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Multi-Lane SPI Support Merged For Linux 7.0</title>
 <style>
@@ -23,21 +21,20 @@
 <body>
   <h1>Multi-Lane SPI Support Merged For Linux 7.0</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/Linux-7.0-Multi-Lane-SPI" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp" /></p><p>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp"></p><p>
 With the Serial Peripheral Interface "SPI" subsystem updates for the Linux 7.0 kernel comes support for multi-lane SPI.
 </p><p>
 Multi-lane SPI support is for SPI controllers and peripherals having multiple data lanes with those data lanes being independent sets of SDI/SDO lines and each with their own serialize/deserializer attached.
-</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=multi_lane_spi_sml" alt="Multi-Lane SPI" /></p>
+</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=multi_lane_spi_sml" alt="Multi-Lane SPI"></p>
 <p>The <a href="https://lore.kernel.org/all/20260123-spi-add-multi-bus-support-v6-5-12af183c06eb@baylibre.com/">documentation patch</a> for this multi-lane work led by BayLibre's David Lechner explains the ins and outs of multi-lane SPI.
 </p><blockquote>"The highlight here is that David Lechner has added support for multi-lane SPI devices.  Unlike the existing dual/quad SPI support this is for devices (typically ADCs/DACs) which support multiple independent data streams over multiple data lanes, instead of sending one data stream N times as fast they simultaneously transfer N different data streams. This is very similar to the case where multiple devices are grouped together but in this case it's a single device in a way that's visible to software.
 <p>
 Otherwise there's been quite a bit of work on existing drivers, both cleanup and feature improvement, and a reasonable collection of new drivers."</p></blockquote>
 <p>More details on these SPI changes for Linux 7.0 via <a href="https://lore.kernel.org/lkml/20260209162649.EE5881AC57EB@finisterre.sirena.org.uk/">this pull</a> that has already been merged to Git.</p></div></div>
   </div>
-</body>
-</html>
+
+</body></html>

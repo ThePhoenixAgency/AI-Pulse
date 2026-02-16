@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub - rawalrahul/safeclaw</title>
 <style>
@@ -24,13 +22,12 @@
 <body>
   <h1>GitHub - rawalrahul/safeclaw</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 8:16:48 PM | Lang: EN |
-    <a href="https://github.com/rawalrahul/safeclaw" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 9:16:48 PM | <a href="https://github.com/rawalrahul/safeclaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><h1>SafeClaw — Secure Personal AI Assistant</h1><a href="#safeclaw--secure-personal-ai-assistant"></a></div>
 <p><strong>Sleep-by-default. Tools off by default. You hold the keys.</strong></p>
-<p>SafeClaw is a secure, privacy-first personal AI assistant you control from your phone via Telegram (and soon WhatsApp). Unlike other AI gateways that run always-on with broad permissions, SafeClaw inverts the defaults: everything is off until you explicitly turn it on.</p>
+<pre><code>SafeClaw is a secure, privacy-first personal AI assistant you control from your phone via Telegram (and soon WhatsApp). Unlike other AI gateways that run always-on with broad permissions, SafeClaw inverts the defaults: everything is off until you explicitly turn it on.</code></pre>
 <div><h2>Why SafeClaw?</h2><a href="#why-safeclaw"></a></div>
 <p>Most AI assistant gateways have a trust problem:</p>
 <table>
@@ -47,15 +44,15 @@
 </tr>
 <tr>
 <td>Always-on daemon with large attack surface</td>
-<td><strong>Dormant by default</strong> — only wakes when you send <code>/wake</code></td>
+<td><strong>Dormant by default</strong> — only wakes when you send <pre><code>/wake</code></pre></td>
 </tr>
 <tr>
 <td>Static tool permissions set at config time</td>
-<td><strong>Runtime toggle</strong> — <code>/enable browser</code>, <code>/disable shell</code>, on the fly</td>
+<td><strong>Runtime toggle</strong> — <pre><code>/enable browser</code></pre>, <pre><code>/disable shell</code></pre>, on the fly</td>
 </tr>
 <tr>
 <td>Dangerous actions execute immediately</td>
-<td><strong>Explicit approval</strong> — every write, delete, and execute requires <code>/confirm</code></td>
+<td><strong>Explicit approval</strong> — every write, delete, and execute requires <pre><code>/confirm</code></pre></td>
 </tr>
 <tr>
 <td>Unknown senders get error responses (info leak)</td>
@@ -78,7 +75,7 @@ cp .env.example .env
 <div><pre>npm install
 npx tsx src/index.ts</pre></div>
 <div><h3>5. Chat with Your Bot</h3><a href="#5-chat-with-your-bot"></a></div>
-<p>Open Telegram, find your bot, and send <code>/wake</code>. That's it.</p>
+<p>Open Telegram, find your bot, and send </p><pre><code>/wake</code></pre>. That's it.<p></p>
 <div><h2>Commands</h2><a href="#commands"></a></div>
 <div><pre><code>/wake — Wake the gateway (only command that works while dormant)
 /sleep — Go back to dormant
@@ -102,12 +99,12 @@ Bot: Gateway dormant. Goodnight.
 </code></pre></div>
 <div><h2>Security Model</h2><a href="#security-model"></a></div>
 <ul>
-<li><strong>Sleep-by-default</strong>: Gateway starts dormant and ignores all messages except <code>/wake</code> from the owner</li>
+<li><strong>Sleep-by-default</strong>: Gateway starts dormant and ignores all messages except <pre><code>/wake</code></pre> from the owner</li>
 <li><strong>Single owner</strong>: Only your Telegram user ID is authorized. Everyone else is silently ignored</li>
 <li><strong>Tools off by default</strong>: All 6 tool categories disabled on every wake. You enable what you need</li>
-<li><strong>Confirm before action</strong>: Write, delete, execute, and send operations require <code>/confirm</code></li>
+<li><strong>Confirm before action</strong>: Write, delete, execute, and send operations require <pre><code>/confirm</code></pre></li>
 <li><strong>Auto-sleep</strong>: 30-minute inactivity timeout returns to dormant (configurable)</li>
-<li><strong>Full audit trail</strong>: Every event logged to <code>~/.safeclaw/audit.jsonl</code></li>
+<li><strong>Full audit trail</strong>: Every event logged to <pre><code>~/.safeclaw/audit.jsonl</code></pre></li>
 <li><strong>Separate identity</strong>: Bot is its own Telegram account, never acts as you</li>
 </ul>
 <div><h2>Project Structure</h2><a href="#project-structure"></a></div>
@@ -144,7 +141,7 @@ Bot: Gateway dormant. Goodnight.
 └── .env.example
 </code></pre></div>
 <div><h2>Current State</h2><a href="#current-state"></a></div>
-<p>This is a <strong>working prototype</strong> with simulated tool responses. The security architecture (auth, sleep/wake, tool gating, permission confirmation, audit logging) is fully functional. The simulated tools demonstrate the permission flow without risk.</p>
+<pre><code>This is a working prototype with simulated tool responses. The security architecture (auth, sleep/wake, tool gating, permission confirmation, audit logging) is fully functional. The simulated tools demonstrate the permission flow without risk.</code></pre>
 <div><h3>What's real:</h3><a href="#whats-real"></a></div>
 <ul>
 <li>Gateway state machine with all transitions</li>
@@ -201,5 +198,5 @@ Bot: Gateway dormant. Goodnight.
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

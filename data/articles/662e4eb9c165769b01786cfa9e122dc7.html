@@ -1,116 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>New Raspberry Pi 4 models splits RAM across dual chips</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>New Raspberry Pi 4 models splits RAM across dual chips</h1>
   <div class="metadata">
-    Source: OMG! Ubuntu | Date: 2/5/2026 | Lang: EN |
-    <a href="https://www.omgubuntu.co.uk/2026/02/raspberry-pi-4-rev-1-5-dual-ram" target="_blank">Original Article</a>
+    Source: OMG! Ubuntu | Date: 2/5/2026 5:48:25 PM | <a href="https://www.omgubuntu.co.uk/2026/02/raspberry-pi-4-rev-1-5-dual-ram" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-                        
-<p><strong>A new version of the Raspberry Pi 4 Model B has been (quietly) introduced. The key difference? It now uses a dual-RAM configuration.</strong></p>
-
-
-
-<p>The Raspberry Pi 4 Model B (PCB 13a) adopts a dual-RAM configuration to ‘improve supply chain flexibility’ and manufacturing efficiency, per a company product change notice document.</p>
-
-
-
-<p>Earlier versions of the Raspberry Pi 4 use a single RAM chip on the top of the board. The new revision adds a second LPDDR4 chip to the underside, with a couple of passive components also moved over.</p>
-
-
-
-<h3>Why use dual-RAM? </h3>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/raspberry-pi-4-revision-1-5.webp?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/raspberry-pi-4-revision-1-5.webp?resize=750%2C394&amp;ssl=1" alt="Raspberry Pi 4 Model B Revision 1.5 showing the second RAM module on the underside." /></a><figcaption>Second RAM module on the underside of the Pi 4 PCB</figcaption></figure>
-</div>
-
-
-<p>Even those living under rocks will know that RAM prices are high right now, which is why Raspberry Pi announced big <a href="https://www.omgubuntu.co.uk/2026/02/raspberry-pi-annouce-more-price-rises">price increases for the Pi 4, 5 and Compute Module</a> range last week.</p>
-
-
-
-<p>Cost and availability is why switching to dual-RAM chips is necessary. In moving to a dual-chip layout, Raspberry Pi can combine two smaller – and marginally cheaper – modules to hit the same RAM totals amidst fluctuating component costs.</p>
-
-
-
-<p>The official document also mentions this revision uses ‘intrusive reflow soldering’. This is a manufacturing tweak that enables fast assembly times since through-hole pieces get soldered the same time as pieces on the top.</p>
-
-
-
-<p>Faster, efficient production generally means less expense.</p>
-
-
-
-<h3>No difference in performance or compatibility</h3>
-
-
-
-<p>This change will not impact performance (for better or worse). The Broadcom BCM2711 SoC has a 32-bit wide memory interface so the bandwidth stays identical; this is not doubling the memory bus, it’s just a physical split, not a logical one.</p>
-
-
-
-<p>Plus, the new board is fully compatible with existing official accessories, HATs and add-ons. All operating systems that support the Pi 4 will work, but as the memory setup is different a new version of the boot-loader will need to be flashed first. </p>
-
-
-
-<p>Older firmware (included on pre-existing images, like Ubuntu’s) won’t “see” the RAM on the new board. Attempting to run an older image will likely get you a flashing LED error code where the green light flashes but nothing boots.</p>
-
-
-
-<p>This is easily fixed by flashing the latest Raspberry Pi OS to an SD card and running through the standard <code>rpi-eeprom</code> update flow to install the <code>pieeprom-2026-01-09.bin</code> or later.</p>
-
-
-
-<h3>Pi 4 Dual-RAM Availability</h3>
-
-
-
-<p>If you’re wanting to use a Pi for an upcoming project – assuming the aforementioned price increases haven’t rendered it an expensive folly – don’t think you need to hunt for an earlier revision. This is still a Raspberry Pi 4, just with a different (cost-effective) arrangement of RAM modules.</p>
-
-
-
-<p>The new revision may be available from approved Raspberry Pi resellers already, but sans an official ‘announcement’, it’s just… a revision. Outlets likely have stock of earlier revisions, so if you want this revision specifically it may be best to check before buying.</p>
-
-
-
-<p>Don’t know which revision you have? You’ll be able to identify the new board easily – without using the terminal – just by looking at it.</p>
-
-
-
-<p>If you see a large, square RAM chip soldered to the bottom, it’s the new hardware revision. If you see “ 2025” in silkscreen near the top of the CPU on the front, it’s the redesign. This date is strictly for the hardware revision and not (AIUI) the manufacturing date.</p>
-
-
-
-<p><em>Raspberry Pi (<a href="https://www.notebookcheck.net/Raspberry-Pi-relaunching-Raspberry-Pi-4-Model-B-with-new-version.1220501.0.html?ref=omgubuntu.co.uk" target="_blank">via Notebookcheck</a>)</em></p>
-
-
-
-<p><em>Article amended to stop referring to this hardware revision as ‘revision 1.5’</em></p>
-                                            </div></div>
+    <div><div> <pre><code>A new version of the Raspberry Pi 4 Model B has been (quietly) introduced. The key difference? It now uses a dual-RAM configuration.</code></pre> <pre><code>The Raspberry Pi 4 Model B (PCB 13a) adopts a dual-RAM configuration to ‘improve supply chain flexibility’ and manufacturing efficiency, per a company product change notice document.</code></pre> <p>Earlier versions of the Raspberry Pi 4 use a single RAM chip on the top of the board. The new revision adds a second LPDDR4 chip to the underside, with a couple of passive components also moved over.</p> <h3>Why use dual-RAM? </h3> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/raspberry-pi-4-revision-1-5.webp?ssl=1"></a><figcaption>Second RAM module on the underside of the Pi 4 PCB</figcaption></figure>
+</div> <p>Even those living under rocks will know that RAM prices are high right now, which is why Raspberry Pi announced big <a href="https://www.omgubuntu.co.uk/2026/02/raspberry-pi-annouce-more-price-rises">price increases for the Pi 4, 5 and Compute Module</a> range last week.</p> <p>Cost and availability is why switching to dual-RAM chips is necessary. In moving to a dual-chip layout, Raspberry Pi can combine two smaller – and marginally cheaper – modules to hit the same RAM totals amidst fluctuating component costs.</p> <p>The official document also mentions this revision uses ‘intrusive reflow soldering’. This is a manufacturing tweak that enables fast assembly times since through-hole pieces get soldered the same time as pieces on the top.</p> <p>Faster, efficient production generally means less expense.</p> <h3>No difference in performance or compatibility</h3> <pre><code>This change will not impact performance (for better or worse). The Broadcom BCM2711 SoC has a 32-bit wide memory interface so the bandwidth stays identical; this is not doubling the memory bus, it’s just a physical split, not a logical one.</code></pre> <p>Plus, the new board is fully compatible with existing official accessories, HATs and add-ons. All operating systems that support the Pi 4 will work, but as the memory setup is different a new version of the boot-loader will need to be flashed first. </p> <pre><code>Older firmware (included on pre-existing images, like Ubuntu’s) won’t “see” the RAM on the new board. Attempting to run an older image will likely get you a flashing LED error code where the green light flashes but nothing boots.</code></pre> <p>This is easily fixed by flashing the latest Raspberry Pi OS to an SD card and running through the standard&nbsp;</p><pre><code>rpi-eeprom</code></pre> update flow to install the&nbsp;<pre><code>pieeprom-2026-01-09.bin</code></pre> or later.<p></p> <h3>Pi 4 Dual-RAM Availability</h3> <pre><code>If you’re wanting to use a Pi for an upcoming project – assuming the aforementioned price increases haven’t rendered it an expensive folly – don’t think you need to hunt for an earlier revision. This is still a Raspberry Pi 4, just with a different (cost-effective) arrangement of RAM modules.</code></pre> <p>The new revision may be available from approved Raspberry Pi resellers already, but sans an official ‘announcement’, it’s just… a revision. Outlets likely have stock of earlier revisions, so if you want this revision specifically it may be best to check before buying.</p> <p>Don’t know which revision you have? You’ll be able to identify the new board easily – without using the terminal – just by looking at it.</p> <pre><code>If you see a large, square RAM chip soldered to the bottom, it’s the new hardware revision. If you see&nbsp;“ 2025” in silkscreen near the top of the CPU on the front, it’s the redesign. This date is strictly for the hardware revision and not (AIUI) the manufacturing date.</code></pre> <p><em>Raspberry Pi (<a href="https://www.notebookcheck.net/Raspberry-Pi-relaunching-Raspberry-Pi-4-Model-B-with-new-version.1220501.0.html?ref=omgubuntu.co.uk" target="_blank">via Notebookcheck</a>)</em></p> <p><em>Article amended to stop referring to this hardware revision as ‘revision 1.5’</em></p> </div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

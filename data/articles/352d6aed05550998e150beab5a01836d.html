@@ -2,36 +2,26 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Multiples vulnérabilités dans HAProxy - CERT-FR</title>
+<title>Multiples vulnérabilités dans HAProxy (13 février 2026)</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
-  <h1>Multiples vulnérabilités dans HAProxy - CERT-FR</h1>
+  <h1>Multiples vulnérabilités dans HAProxy (13 février 2026)</h1>
   <div class="metadata">
-    Source: CERT-FR | Date: 2/13/2026 1:00:00 AM | Lang: FR |
-    <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0163/" target="_blank">Original Article</a>
+    Source: CERT-FR | Date: 2/13/2026 1:00:00 AM | <a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0163/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><article> <section> <div> <p><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0163/json/"> <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg"> </a>
-</p> </div> <div> <p> </p><h2>Avis du CERT-FR</h2> <hr> <p></p> </div> <div> <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
-</div> </section> <div> <h2>Risque</h2> <ul> <li>Déni de service à distance</li> </ul> <h2>Systèmes affectés</h2> <ul> <li>HAProxy ALOHA versions 16.5.x antérieures à 16.5.30</li> <li>HAProxy ALOHA versions 17.0.x antérieures à 17.0.18</li> <li>HAProxy ALOHA versions 17.5.x antérieures à 17.5.16</li> <li>HAProxy Community / Performance Packages versions 3.0.x antérieures à 3.0.16</li> <li>HAProxy Community / Performance Packages versions 3.1.x antérieures à 3.1.14</li> <li>HAProxy Community / Performance Packages versions 3.2.x antérieures à 3.2.12</li> <li>HAProxy Community / Performance Packages versions 3.3.x antérieures à 3.3.3</li> <li>HAProxy Enterprise versions 3.0 antérieures à 3.0r1-1.0.0-351.929</li> <li>HAProxy Enterprise versions 3.1 antérieures à 3.1r1-1.0.0-355.744</li> <li>HAProxy Enterprise versions 3.2 antérieures à 3.2r1-1.0.0-365.548</li> </ul> <div> <h2>Résumé</h2> <p>De multiples vulnérabilités ont été découvertes dans HAProxy. Elles permettent à un attaquant de provoquer un déni de service à distance.</p> </div> <div> <h2>Solutions</h2>
-<p>Se référer au bulletin de sécurité de l'éditeur pour l'obtention des correctifs (cf. section Documentation).</p> </div> <h2>Documentation</h2> <ul> <li>Bulletin de sécurité HAProxy cves-2026-quic-denial-of-service du 12 février 2026</li> <a href="https://www.haproxy.com/blog/cves-2026-quic-denial-of-service">https://www.haproxy.com/blog/cves-2026-quic-denial-of-service</a> <li>Référence CVE CVE-2026-26080</li> <a href="https://www.cve.org/CVERecord?id=CVE-2026-26080">https://www.cve.org/CVERecord?id=CVE-2026-26080</a> <li>Référence CVE CVE-2026-26081</li> <a href="https://www.cve.org/CVERecord?id=CVE-2026-26081">https://www.cve.org/CVERecord?id=CVE-2026-26081</a> </ul> </div> <div> <h2>Gestion détaillée du document</h2> <ol> <dl> <dt><strong>le 13 février 2026</strong></dt> <dd>Version initiale</dd> </dl> </ol> </div> </article></div>
+    <p>De multiples vulnérabilités ont été découvertes dans HAProxy. Elles permettent à un attaquant de provoquer un déni de service à distance.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

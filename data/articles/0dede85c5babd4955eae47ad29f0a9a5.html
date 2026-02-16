@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>GitHub - zachlatta/freeflow: Free and open source alternative to Wispr Flow / Superwhisper / Monologue / etc</title>
 <style>
@@ -24,17 +22,12 @@
 <body>
   <h1>GitHub - zachlatta/freeflow: Free and open source alternative to Wispr Flow / Superwhisper / Monologue / etc</h1>
   <div class="metadata">
-    Source: Hacker News Show | Date: 2/16/2026 9:10:44 PM | Lang: EN |
-    <a href="https://github.com/zachlatta/freeflow" target="_blank">Original Article</a>
+    Source: Hacker News Show | Date: 2/16/2026 10:10:44 PM | <a href="https://github.com/zachlatta/freeflow" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p> <a target="_blank" href="/zachlatta/freeflow/blob/main/Resources/AppIcon-README.png"><img src="/zachlatta/freeflow/raw/main/Resources/AppIcon-README.png" alt="FreeFlow icon"></a>
+    <p> <a target="_blank" href="/zachlatta/freeflow/blob/main/Resources/AppIcon-README.png"></a>
 </p>
-<div><h1>FreeFlow</h1><a href="#freeflow"></a></div>
-<p> Free and open source alternative to <a href="https://wisprflow.ai">Wispr Flow</a>, <a href="https://superwhisper.com">Superwhisper</a>, and <a href="https://monologue.to">Monologue</a>.
-</p>
-<p> <a href="https://github.com/zachlatta/freeflow/releases/latest/download/FreeFlow.dmg"><b> Download FreeFlow.dmg</b></a><br> <sub>Works on all Macs (Apple Silicon + Intel)</sub>
-</p>
+<div><h1>FreeFlow</h1><a href="#freeflow"></a></div> <pre><code> Download FreeFlow.dmg Works on all Macs (Apple Silicon + Intel)</code></pre>
 <hr>
 <p> <a target="_blank" href="/zachlatta/freeflow/blob/main/Resources/demo.gif"><img src="/zachlatta/freeflow/raw/main/Resources/demo.gif" alt="FreeFlow demo"></a>
 </p>
@@ -44,15 +37,10 @@
 <ol>
 <li>Download the app from above or <a href="https://github.com/zachlatta/freeflow/releases/latest/download/FreeFlow.dmg">click here</a></li>
 <li>Get a free Groq API key from <a href="https://groq.com/">groq.com</a></li>
-<li>Press and hold <code>Fn</code> anytime to start recording and have whatever you say pasted into the current text field</li>
+<li>Press and hold <pre><code>Fn</code></pre> anytime to start recording and have whatever you say pasted into the current text field</li>
 </ol>
 <p>One of the cool features is that it's context aware. If you're replying to an email, it'll read the names of the people you're replying to and make sure to spell their names correctly. Same with if you're dictating into a terminal or another app. This is the same thing as Monologue's "Deep Context" feature.</p>
-<p>An added bonus is that there's no FreeFlow server, so no data is stored or retained - making it more privacy friendly than the SaaS apps. The only information that leaves your computer are the API calls to Groq's transcription and LLM API (LLM is for post-processing the transcription to adapt to context).</p>
-<div><h3>FAQ</h3><a href="#faq"></a></div>
-<p><strong>Why does this use Groq instead of a local transcription model?</strong></p>
-<p>I love this idea, and originally planned to build FreeFlow using local models, but to have post-processing (that's where you get correctly spelled names when replying to emails / etc), you need to have a local LLM too.</p>
-<p>If you do that, the total pipeline takes too long for the UX to be good (5-10 seconds per transcription instead of &lt;1s). I also had concerns around battery life.</p>
-<p>Some day!</p>
+<pre><code>An added bonus is that there's no FreeFlow server, so no data is stored or retained - making it more privacy friendly than the SaaS apps. The only information that leaves your computer are the API calls to Groq's transcription and LLM API (LLM is for post-processing the transcription to adapt to context).</code></pre>
 <div><h2>License</h2><a href="#license"></a></div>
 <p>Licensed under the MIT license.</p>
   </div>
@@ -74,5 +62,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

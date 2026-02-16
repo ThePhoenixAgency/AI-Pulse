@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Build and run real-time media pipelines, Speech to Text, Voice Agents, live audio processing</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,17 +16,13 @@
 <body>
   <h1>Build and run real-time media pipelines, Speech to Text, Voice Agents, live audio processing</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 9:21:32 PM | Lang: EN |
-    <a href="https://dev.to/jucateck/build-and-run-real-time-media-pipelines-speech-to-text-voice-agents-live-audio-processing-m8p" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 10:21:32 PM | <a href="https://dev.to/jucateck/build-and-run-real-time-media-pipelines-speech-to-text-voice-agents-live-audio-processing-m8p" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <main> <div> <article> <header> <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2nx6xjwq02cew4yp7x47.png"> <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2nx6xjwq02cew4yp7x47.png" alt="Cover image for Build and run real-time media pipelines, Speech to Text, Voice Agents, live audio processing"> </a> <div> <p><a href="https://dev.to/jucateck"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774925%2Fd79b7b3e-95a3-468b-9cc0-ce2c82dbf752.png" alt="John "></a> </p> </div> </header> <div> <p>With StreamKit.dev one can build and run real-time media pipelines on your own infrastructure. Speech-to-text, voice agents, live audio processing — composable, observable, self-hosted. It is totally open source. Full references and description at <a href="https://streamkit.dev/" target="_blank">https://streamkit.dev/</a></p> <p>Who is this for?<br>
-StreamKit is built for developers who need to process real-time media — whether you’re building voice features for an app, prototyping an AI audio pipeline, or self-hosting alternatives to cloud speech APIs.</p> <p>What you can build<br>
-Live transcription — Ingest audio via MoQ, run Whisper or SenseVoice STT, stream transcription updates to clients<br>
-Voice agents — TTS-powered bots using Kokoro, Piper, or Matcha that respond to audio input<br>
-Real-time translation — Bilingual streams with live subtitles using NLLB or Helsinki models<br>
-Audio processing — Mixing, gain control, format conversion, encoding/decoding pipelines<br>
-Content analysis — VAD for speech detection, keyword spotting, or custom safety filters.</p> <p>one can try the powerful engine at <a href="https://demo.streamkit.dev/" target="_blank">https://demo.streamkit.dev/</a> </p> </div> </article> </div> </main> </div></div>
+    <p>With StreamKit.dev one can build and run real-time media pipelines on your own infrastructure. Speech-to-text, voice agents, live audio processing — composable, observable, self-hosted. It is totally open source. Full references and description at https://streamkit.dev/
+Who is this for?
+What you can build
+one can try the powerful engine at https://demo.streamkit.dev/</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -54,5 +42,5 @@ Content analysis — VAD for speech detection, keyword spotting, or custom safet
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>iOS 26.4 beta adds new ‘Playlist Playground’ AI feature for Apple Music</title>
 <style>
@@ -24,29 +22,29 @@
 <body>
   <h1>iOS 26.4 beta adds new ‘Playlist Playground’ AI feature for Apple Music</h1>
   <div class="metadata">
-    Source: 9to5Mac | Date: 2/16/2026 8:18:23 PM | Lang: EN |
-    <a href="https://9to5mac.com/2026/02/16/ios-26-4-beta-adds-new-playlist-playground-ai-feature-in-music/" target="_blank">Original Article</a>
+    Source: 9to5Mac | Date: 2/16/2026 9:18:23 PM | <a href="https://9to5mac.com/2026/02/16/ios-26-4-beta-adds-new-playlist-playground-ai-feature-in-music/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/playlist-playground-2.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""> </figure> <p>Apple released the first beta of iOS 26.4 for developers today, and it includes a new Apple Intelligence feature for Apple Music. </p> <p>Dubbed “Playlist Playground,” this feature lets you create playlists based on text descriptions.</p> <p>This feature is labeled as a “beta” for now. You can access it in the Apple Music app by tapping the new playlist icon in the upper-right corner of the “Library” page. </p> <p>You can then simply enter a text prompt and Apple Music will generate a playlist based on your request. There are also built-in “New Playlist Ideas” prompts as well. </p> <p>iOS 26.4 is available to developer beta testers. A public beta is expected within the next several weeks. </p> <figure><img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/playlist-playground.jpg?quality=82&amp;strip=all&amp;w=1024" alt=""></figure> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
+    <p>Apple released the first beta of iOS 26.4 for developers today, and it includes a new Apple Intelligence feature for Apple Music. Dubbed “Playlist Playground,” this feature lets you create playlists based on text descriptions.
+more…</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

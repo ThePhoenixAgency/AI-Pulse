@@ -1,294 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Linux Release Roundup (January 2026)</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Linux Release Roundup (January 2026)</h1>
   <div class="metadata">
-    Source: OMG! Ubuntu | Date: 2/1/2026 | Lang: EN |
-    <a href="https://www.omgubuntu.co.uk/2026/02/linux-release-roundup-january-2026" target="_blank">Original Article</a>
+    Source: OMG! Ubuntu | Date: 2/2/2026 12:57:00 AM | <a href="https://www.omgubuntu.co.uk/2026/02/linux-release-roundup-january-2026" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-                        
-<p><strong>January 2026 was a productive month for Linux app releases, with updates to VLC, GIMP, Vivaldi, and VirtualBox among those pushed out. </strong></p>
-
-
-
-<p>I covered many of the month’s biggest releases, like <a href="https://www.omgubuntu.co.uk/2026/01/firefox-147-released">Firefox 147</a>, <a href="https://www.omgubuntu.co.uk/2026/01/wine-11-0-released">Wine 11.0</a> and <a href="https://www.omgubuntu.co.uk/2026/01/transmission-4-1-0-released">Transmission 4.1</a> with dedicated articles. </p>
-
-
-
-<p>Below, I roundup a bunch of January’s other notable software releases, Many of these updates were maintenance bumps, but others added some long-awaited features.</p>
-
-
-
-<h2>VLC 3.0.23</h2>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vlc-dark-palette-option.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vlc-dark-palette-option.jpg?resize=750%2C394&amp;ssl=1" alt="VLC 3.0.23 on Ubuntu showing dark mode option in settings." /></a><figcaption>Manual option to set a theme preference in VLC 3.0.23</figcaption></figure>
-</div>
-
-
-<p>After a bit of <em>“is it actually out”</em> limbo, <a href="https://www.videolan.org/news.html#news-2026-01-08" target="_blank">VLC 3.0.23 has officially rolled out</a> across all supported OSes. </p>
-
-
-
-<p>Key highlight? That’ll be dark mode support on Linux and Windows. Head to Settings &gt; Interface and check the ‘Use a dark palette’ option as the UI won’t switch automatically on Linux – it does, however, on Windows. Annoying.</p>
-
-
-
-<p>Beyond that, the 24th update in the VLC 3.x series mostly ships bug, codec and performance fixes, with funding given from the Sovereign Tech Fund. Major development effort is squarely focused on VLC 4.0.</p>
-
-
-
-<p>Codec updates improve MPEG-2 stream handling and fix seeking behaviour in FLV files. The teletext module has been ported to Windows using ZVBI (something Linux users already had), and codec libraries have been refreshed.</p>
-
-
-
-<p>There’s also a security vulnerability in the RTSP server component (<a href="https://www.videolan.org/security/sb-vlc3022.html" target="_blank">SA-2026-01-08</a>) which, despite the severity rating, is unlikely to have impacted common use cases.</p>
-
-
-
-<p>VLC 3.0.23 is available to download from the <a href="https://videolan.org/">VLC website</a> as an AppImage, or you can get the update from Flathub (unverified build) or the Canonical Snap Store (official). </p>
-
-
-
-<h2>Vivaldi 7.8</h2>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vivaldi-tile-drag-and-drop.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vivaldi-tile-drag-and-drop.jpg?resize=750%2C394&amp;ssl=1" alt="Vivaldi 7.8 on Ubuntu showing a tab being dropped on to a tile group with the destination reading drop to tile." /></a><figcaption>Drag tabs and drop them on a web page to create tiled layouts</figcaption></figure>
-</div>
-
-
-<p>The latest major update to Vivaldi web browser adds <strong>drag-and-drop to tab tiling</strong>. Grab tabs (yes, plural; you can move several at the same time) and drop them on to the page area to create side-by-side(-by-side) or grid layouts.</p>
-
-
-
-<p>You can also open links directly to an existing tiled layout. Right-click a link on a web page and select the <em>Open link &gt; Tiled tab </em>option for it to slot into. Firefox and Chrome limit you to two split tabs, but Vivaldi lets you add as many as you like. Nice!</p>
-
-
-
-<p>Use pinned tabs? Domain restrictions were implemented Vivaldi 7.8. This means, for instance, if you pin Gmail as a tab, it stays locked to Gmail; if you click a link inside of the pinned tab that would take you outside of the domain, it will open as a new tab.</p>
-
-
-
-<p>Beyond that, <em>Vivaldi Mail </em>can be used across all browser windows and workspaces rather than being confined to a single window, making one of this browser’s most overlooked features more easily accessible to those with heavy tab-based workflows.</p>
-
-
-
-<p>The new tab page offers the option to use a background image from Unsplash that gets refreshed daily, caret browsing is promoted to a dedicated accessibility setting, and the usual glut of fixes and security patches are baked-in.</p>
-
-
-
-<p>Download Vivaldi from the Vivaldi website for Windows, macOS, and Linux. It’s also available as a snap app on the Snap Store. An unverified Flathub list is also available, maintained by Vivaldi but not rubber-stamped due to Chromium sandbox issues.</p>
-
-
-
-<h2>VirtualBox 7.2.6</h2>
-
-
-
-<p>The <a href="https://www.virtualbox.org/wiki/Changelog-7.2#v06" target="_blank">latest maintenance update to VirtualBox 7.2</a> adds Linux kernel 6.19 support ahead of its release in February, along with additional fixes for RHEL 9.8, 10.1, and 10.2. Booting older Red Hat guests on AMD Zen 4 systems reportedly works again too.</p>
-
-
-
-<p>High CPU usage during NAT operations is resolved, full-screen mode on multi-monitor setups behaves more reliably, and the <em>Resource Manager</em> tab shows VMs correctly. There’s also improved filename checking during drag-and-drop from host to guests. </p>
-
-
-
-<p>Previously proprietary features migrated to the open-source base package: VRDP server for remote desktop access, USB smartcard emulation, and VM encryption. This means you no longer need the Extension Pack to access in Guests.</p>
-
-
-
-<p>Finally, VirtualBox 7.2.6 resolves a bunch of VM crash scenarios affecting Windows Hosts (only), and ensures that if you’re running it on a Windows 11 ARM Host, you can now shut down your VMs properly.</p>
-
-
-
-<p>You can <a href="https://virtualbox.org/">download VirtualBox from the official website</a>, with builds provided for Windows, macOS, Linux, and Solaris.</p>
-
-
-
-<h2>Shotcut 26.1.30</h2>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/shotcut-hardware-decoding-option-1.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/shotcut-hardware-decoding-option-1.jpg?resize=750%2C394&amp;ssl=1" alt="Shotcut video editor on Ubuntu showing the option to use hardware decoding." /></a><figcaption>Stress your CPU less with GPU decoding in Shotcut 26.1</figcaption></figure>
-</div>
-
-
-<p>The latest update to Shotcut adds GPU hardware decoding – finally! This will reduce CPU usage during editing and previewing which benefits everyone, but will be more noticeable if you’re editing video on a lower-spec’d system.</p>
-
-
-
-<p>Shotcut 26.1.30 enables hardware decoding by default across all platforms, using VA-API on Linux (except NVIDIA GPUs), Media Foundation on Windows, and Video Toolbox on macOS. Managed via<em> Settings &gt; Preview Scaling &gt; Use Hardware Decoder</em>.</p>
-
-
-
-<p>The feature will fall back to software decoding if needed, such as when working with a codec not supported by hardware, and it is limited to preview scaling or 1080p/60fps (or lower) sources – this can be overridden on more capable systems. </p>
-
-
-
-<p>Elsewhere in Shotcut 26.1.x, proxy generation now updates clips right away if you enable <em>Settings &gt; Proxy &gt; Use Proxy</em> (it was previously a toggle). A new contextual help feature lets you click a “What’s This?” icon to read relevant documentation. </p>
-
-
-
-<p>8K video resolution is now available in <em>Video Mode</em> and <em>Export</em>, outline effects in the text filters have been improved and a <em>Blend Mode</em> filter and track option added for use in Linear 10-bit GPU/CPU processing mode.</p>
-
-
-
-<p>Download Shotcut 26.1 from shotcut.org for Windows, macOS or Linux – the latter can also grab this update from Flathub.</p>
-
-
-
-<h2>Amarok 3.3.2</h2>
-
-
-
-<p>Faithful fans of Amarok, the <a href="https://www.omgubuntu.co.uk/2024/04/amarok-3-0-released">revived Qt-based music player</a>, will want to upgrade to <a href="https://blogs.kde.org/2026/01/18/amarok-3.3.2-released/" target="_blank">Amarok 3.3.2</a> to benefit from a small set of improvements and a change in how the collection browser works: single-click now opens items, double-click adds them to the playlist.</p>
-
-
-
-<p><em>“Additionally, ‘added to collection’ date, which previously was available in collection search only, is now displayed in track’s details in tag dialog,” </em>according to the release announcement.  </p>
-
-
-
-<p>Fixes resolve issues in Magnatune collection integration (so playback and updates work properly again), podcast sort order and stream URL saving in playlists. A bug where repeatedly toggling mute could punt the player to an unresponsive loop is also solved.</p>
-
-
-
-<p>Amarok 3.3.2 requires KDE Frameworks 6.5 as minimum, bumping the dependency from earlier versions.</p>
-
-
-
-<p>You can download older versions of your Amarok from your distro’s repositories, or get the latest version as a Flatpak <a href="https://flathub.org/en/apps/org.kde.amarok" target="_blank">from Flathub</a>.</p>
-
-
-
-<h2>SuperFile 1.5.0</h2>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/superfile-video-preview.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/superfile-video-preview.jpg?resize=750%2C394&amp;ssl=1" alt="" /></a><figcaption>Image: SuperFile</figcaption></figure>
-</div>
-
-
-<p>Video and PDF file previews are available in <em>SuperFile</em>, the (surprisingly usable) <a href="https://www.omgubuntu.co.uk/2025/08/superfile-terminal-file-manager-linux-ubuntu">terminal file manager</a>. </p>
-
-
-
-<p><a href="https://github.com/yorukot/superfile/releases/tag/v1.5.0" target="_blank">SuperFile 1.5.0</a> loads the first frame or page is loaded as an image<sup><a href="#26902298-1d94-4ea1-9bb8-029cc44e947e">1</a></sup>, which makes it easier to check you’ve found the right file before you hit <kbd>enter</kbd> to open it fully. </p>
-
-
-
-<p>The file panel can now display optional file date, size, and permission columns. A dynamic layout will hide configurable columns if there’s not enough room (and a <a href="https://github.com/yorukot/superfile/pull/1268" target="_blank">configurable name-width</a> can be set if you’d rather hide them past a certain point).</p>
-
-
-
-<p>You can <a href="https://github.com/yorukot/superfile/pull/1197" target="_blank">configure which apps open specific file extensions</a>. For example, you might want <code>.md</code> files to open in a Markdown-specific editor rather than your system’s default text editor, or have <code>.svg</code> files open in a vector editor like <em>Inkscape</em>.</p>
-
-
-
-<p>Other changes include Terminal stdout support for shell commands, fixes for modal confirmations, layout issues in small terminals, and other minor tweaks.</p>
-
-
-
-<p>SuperFile 1.5.0 is free, open source software. The latest release is available from the project’s GitHub releases page, but you’ll find the <a href="https://superfile.dev/getting-started/installation/#linux--macos" target="_blank">official installation instructions</a> more helpful for getting it up and running. </p>
-
-
-
-<h2>GIMP 3.0.8 </h2>
-
-
-
-<p>January delivered a <a href="https://www.gimp.org/news/2026/01/24/gimp-3-0-8-released/" target="_blank">GIMP 3.0.8 maintenance update</a>, likely the final update in the 3.0.x series as the stable release of GIMP 3.2 is imminent.</p>
-
-
-
-<p>Fixes tackle woes with lossless WebP exports being corrupted by lossy compression settings if quality was set below 100%. This led to exports applying lossy compression even though lossless mode was selected – now it ignores irrelevant settings.</p>
-
-
-
-<p>Faster font loading is included, back-ported from <a href="https://www.omgubuntu.co.uk/2025/12/gimp-3-2-rc2-released-for-testing">GIMP 3.2 RC2</a>. The image editor now waits to load images until fonts are initialised, resolving scrappy display quirks that often occurred when opening XCF files with half-loaded fonts.</p>
-
-
-
-<p>Other fixes include a PDF export bug, ensuring default colour profiles load correctly on Windows, and better stability of the non-destructive filter code when working with layers and images that have filters attached.</p>
-
-
-
-<p>You can download GIMP 3.0.8 from the project homepage as an AppImage for Linux, or get the latest release as a Flatpak from Flathub. Prefer Snap? There’s an <a href="https://snapcraft.io/gimp" target="_blank">official GIMP snap</a>.</p>
-
-
-
-<h2>Typhoon 1.5.0</h2>
-
-
-<div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/typhoon.jpg?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/typhoon.jpg?resize=750%2C394&amp;ssl=1" alt="Typhoon Linux weather app showing forecasts for two locations." /></a><figcaption>Multi-locations and wind direction arrows in Typhoon 1.5.0</figcaption></figure>
-</div>
-
-
-<p><a href="https://archisman-panigrahi.github.io/typhoon/" target="_blank"><em>Typhoon</em></a>, the desktop Linux weather app (a continuation of <em>Stormcloud</em>, if you’ve used Ubuntu long enough to recall that dominating Ubuntu Software Center’s paid-apps charts), saw a flurry of releases in January, gaining some minor changes.</p>
-
-
-
-<p>Multiple location support was added in Typhoon 1.4.1 to let you keep an eye on temperature and current conditions across different locales and switch between them. Weather info refreshes a couple of seconds after a location switch to ensure data is fresh.</p>
-
-
-
-<p>Other changes see wind direction now marked by an arrow, location search matching triggered once you finish typing, rather than trying to match whilst you’re typing, and an assortment of minor fixes and styling quirks. </p>
-
-
-
-<p>Typhoon is free, open-source software. You can install the latest release on Ubuntu, Linux Mint et al by adding the Typhoon PPA, or install the release from the Snap Store or Flathub (sandboxed versions have some minor feature impairments).</p>
-
-
-
-<h3>A bumper month of updates</h3>
-
-
-
-<p>Other updates of note to slip out in January: <a href="https://www.scribus.net/scribus-1-7-2-released/" target="_blank">Scribus 1.7.2</a> (bug fixes), <a href="https://github.com/Nokse22/high-tide/releases/tag/v1.2.0" target="_blank">High Tide 1.2.0</a> (bug fixes), and <a href="https://github.com/PintaProject/Pinta/releases/tag/3.1.1" target="_blank">Pinta 3.1.1</a> (bug fixes). And Thunderbird 147? That delivered – you guessed it – bug fixes also.</p>
-
-
-
-<p><a href="https://github.com/raspberrypi/rpi-imager/releases/tag/v2.0.5" target="_blank">Raspberry Pi Imager 2.0.5</a> delivered more than bug fixes, adding a ‘Liquid Glass’ icon for macOS 26 users. Disk management tool <a href="https://sourceforge.net/projects/gparted/files/gparted/gparted-1.8.0/" target="_blank">GParted 1.8 </a>arrived with fixes, including one for a nasty application hang caused when entering a FAT label that matched a root folder entry.</p>
-
-
-
-<hr />
-
-
-
-<p>That’s it for the January roundup. These updates didn’t get full cover and their own headline but are still worth knowing about. </p>
-
-
-
-<p><em><strong>If you hear about a software update you think I should cover, the contact form is always open!</strong></em></p>
-
-
-<ol><li>Image support depends on terminal compatibility with the <a href="https://sw.kovidgoyal.net/kitty/graphics-protocol/">Kitty protocol</a>.  <a href="#26902298-1d94-4ea1-9bb8-029cc44e947e-link">︎</a></li></ol>                                            </div></div>
+    <div><div> <p><strong>January 2026 was a productive month for Linux app releases, with updates to VLC, GIMP, Vivaldi, and VirtualBox among those pushed out. </strong></p> <p>I covered many of the month’s biggest releases, like <a href="https://www.omgubuntu.co.uk/2026/01/firefox-147-released">Firefox 147</a>, <a href="https://www.omgubuntu.co.uk/2026/01/wine-11-0-released">Wine 11.0</a> and <a href="https://www.omgubuntu.co.uk/2026/01/transmission-4-1-0-released">Transmission 4.1</a> with dedicated articles. </p> <p>Below, I roundup a bunch of January’s other notable software releases, Many of these updates were maintenance bumps, but others added some long-awaited features.</p> <h2>VLC 3.0.23</h2> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vlc-dark-palette-option.jpg?ssl=1"></a><figcaption>Manual option to set a theme preference in VLC 3.0.23</figcaption></figure>
+</div> <p>After a bit of <em>“is it actually out”</em> limbo, <a href="https://www.videolan.org/news.html#news-2026-01-08" target="_blank">VLC 3.0.23 has officially rolled out</a> across all supported OSes. </p> <pre><code>Key highlight? That’ll be dark mode support on Linux and Windows. Head to Settings &gt; Interface and check the ‘Use a dark palette’ option as the UI won’t switch automatically on Linux – it does, however, on Windows. Annoying.</code></pre> <p>Beyond that, the 24th update in the VLC 3.x series mostly ships bug, codec and performance fixes, with funding given from the Sovereign Tech Fund. Major development effort is squarely focused on VLC 4.0.</p> <pre><code>Codec updates improve MPEG-2 stream handling and fix seeking behaviour in FLV files. The teletext module has been ported to Windows using ZVBI (something Linux users already had), and codec libraries have been refreshed.</code></pre> <pre><code>There’s also a security vulnerability in the RTSP server component (SA-2026-01-08) which, despite the severity rating, is unlikely to have impacted common use cases.</code></pre> <pre><code>VLC 3.0.23 is available to download from the VLC website as an AppImage, or you can get the update from Flathub (unverified build) or the Canonical Snap Store (official).</code></pre> <h2>Vivaldi 7.8</h2> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/vivaldi-tile-drag-and-drop.jpg?ssl=1"></a><figcaption>Drag tabs and drop them on a web page to create tiled layouts</figcaption></figure>
+</div> <pre><code>The latest major update to Vivaldi web browser adds drag-and-drop to tab tiling. Grab tabs (yes, plural; you can move several at the same time) and drop them on to the page area to create side-by-side(-by-side) or grid layouts.</code></pre> <pre><code>You can also open links directly to an existing tiled layout. Right-click a link on a web page and select the Open link &gt; Tiled tab option for it to slot into. Firefox and Chrome limit you to two split tabs, but Vivaldi lets you add as many as you like. Nice!</code></pre> <pre><code>Use pinned tabs? Domain restrictions were implemented Vivaldi 7.8. This means, for instance, if you pin Gmail as a tab, it stays locked to Gmail; if you click a link inside of the pinned tab that would take you outside of the domain, it will open as a new tab.</code></pre> <p>Beyond that, <em>Vivaldi Mail </em>can be used across all browser windows and workspaces rather than being confined to a single window, making one of this browser’s most overlooked features more easily accessible to those with heavy tab-based workflows.</p> <p>The new tab page offers the option to use a background image from Unsplash that gets refreshed daily, caret browsing is promoted to a dedicated accessibility setting, and the usual glut of fixes and security patches are baked-in.</p> <p>Download Vivaldi from the Vivaldi website for Windows, macOS, and Linux. It’s also available as a snap app on the Snap Store. An unverified Flathub list is also available, maintained by Vivaldi but not rubber-stamped due to Chromium sandbox issues.</p> <h2>VirtualBox 7.2.6</h2> <p>The <a href="https://www.virtualbox.org/wiki/Changelog-7.2#v06" target="_blank">latest maintenance update to VirtualBox 7.2</a> adds Linux kernel 6.19 support ahead of its release in February, along with additional fixes for RHEL 9.8, 10.1, and 10.2. Booting older Red Hat guests on AMD Zen 4 systems reportedly works again too.</p> <p>High CPU usage during NAT operations is resolved, full-screen mode on multi-monitor setups behaves more reliably, and the <em>Resource Manager</em> tab shows VMs correctly. There’s also improved filename checking during drag-and-drop from host to guests. </p> <p>Previously proprietary features migrated to the open-source base package: VRDP server for remote desktop access, USB smartcard emulation, and VM encryption. This means you no longer need the Extension Pack to access in Guests.</p> <pre><code>Finally, VirtualBox 7.2.6 resolves a bunch of VM crash scenarios affecting Windows Hosts (only), and ensures that if you’re running it on a Windows 11 ARM Host, you can now shut down your VMs properly.</code></pre> <p>You can <a href="https://virtualbox.org/">download VirtualBox from the official website</a>, with builds provided for Windows, macOS, Linux, and Solaris.</p> <h2>Shotcut 26.1.30</h2> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/shotcut-hardware-decoding-option-1.jpg?ssl=1"></a><figcaption>Stress your CPU less with GPU decoding in Shotcut 26.1</figcaption></figure>
+</div> <p>The latest update to Shotcut adds GPU hardware decoding – finally! This will reduce CPU usage during editing and previewing which benefits everyone, but will be more noticeable if you’re editing video on a lower-spec’d system.</p> <pre><code>Shotcut 26.1.30 enables hardware decoding by default across all platforms, using VA-API on Linux (except NVIDIA GPUs), Media Foundation on Windows, and Video Toolbox on macOS. Managed via Settings &gt; Preview Scaling &gt; Use Hardware Decoder.</code></pre> <pre><code>The feature will fall back to software decoding if needed, such as when working with a codec not supported by hardware, and it is limited to preview scaling or 1080p/60fps (or lower) sources – this can be overridden on more capable systems.</code></pre> <pre><code>Elsewhere in Shotcut 26.1.x, proxy generation now updates clips right away if you enable Settings &gt; Proxy &gt; Use Proxy (it was previously a toggle). A new contextual help feature lets you click a “What’s This?” icon to read relevant documentation.</code></pre> <p>8K video resolution is now available in&nbsp;<em>Video Mode</em>&nbsp;and&nbsp;<em>Export</em>, outline effects in the text filters have been improved and a&nbsp;<em>Blend Mode</em>&nbsp;filter and track option added for use in&nbsp;Linear 10-bit GPU/CPU&nbsp;processing mode.</p> <p>Download Shotcut 26.1 from shotcut.org for Windows, macOS or Linux – the latter can also grab this update from Flathub.</p> <h2>Amarok 3.3.2</h2> <p>Faithful fans of Amarok, the <a href="https://www.omgubuntu.co.uk/2024/04/amarok-3-0-released">revived Qt-based music player</a>, will want to upgrade to <a href="https://blogs.kde.org/2026/01/18/amarok-3.3.2-released/" target="_blank">Amarok 3.3.2</a> to benefit from a small set of improvements and a change in how the collection browser works: single-click now opens items, double-click adds them to the playlist.</p> <p><em>“Additionally, ‘added to collection’ date, which previously was available in collection search only, is now displayed in track’s details in tag dialog,” </em>according to the release announcement. </p> <pre><code>Fixes resolve issues in Magnatune collection integration (so playback and updates work properly again), podcast sort order and stream URL saving in playlists. A bug where repeatedly toggling mute could punt the player to an unresponsive loop is also solved.</code></pre> <p>Amarok 3.3.2 requires KDE Frameworks 6.5 as minimum, bumping the dependency from earlier versions.</p> <p>You can download older versions of your Amarok from your distro’s repositories, or get the latest version as a Flatpak <a href="https://flathub.org/en/apps/org.kde.amarok" target="_blank">from Flathub</a>.</p> <h2>SuperFile 1.5.0</h2> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/superfile-video-preview.jpg?ssl=1"></a><figcaption>Image: SuperFile</figcaption></figure>
+</div> <p>Video and PDF file previews are available in <em>SuperFile</em>, the (surprisingly usable) <a href="https://www.omgubuntu.co.uk/2025/08/superfile-terminal-file-manager-linux-ubuntu">terminal file manager</a>. </p> <p><a href="https://github.com/yorukot/superfile/releases/tag/v1.5.0" target="_blank">SuperFile 1.5.0</a> loads the first frame or page is loaded as an image<sup><a href="#26902298-1d94-4ea1-9bb8-029cc44e947e">1</a></sup>, which makes it easier to check you’ve found the right file before you hit <kbd>enter</kbd> to open it fully. </p> <pre><code>The file panel can now display optional file date, size, and permission columns. A dynamic layout will hide configurable columns if there’s not enough room (and a configurable name-width can be set if you’d rather hide them past a certain point).</code></pre> <p>You can <a href="https://github.com/yorukot/superfile/pull/1197" target="_blank">configure which apps open specific file extensions</a>. For example, you might want&nbsp;</p><pre><code>.md</code></pre>&nbsp;files to open in a Markdown-specific editor rather than your system’s default text editor, or have <pre><code>.svg</code></pre> files open in a vector editor like <em>Inkscape</em>.<p></p> <p>Other changes include Terminal stdout support for shell commands, fixes for modal confirmations, layout issues in small terminals, and other minor tweaks.</p> <p>SuperFile 1.5.0 is free, open source software. The latest release is available from the project’s GitHub releases page, but you’ll find the <a href="https://superfile.dev/getting-started/installation/#linux--macos" target="_blank">official installation instructions</a> more helpful for getting it up and running. </p> <h2>GIMP 3.0.8 </h2> <p>January delivered a <a href="https://www.gimp.org/news/2026/01/24/gimp-3-0-8-released/" target="_blank">GIMP 3.0.8 maintenance update</a>, likely the final update in the 3.0.x series as the stable release of GIMP 3.2 is imminent.</p> <p>Fixes tackle woes with lossless WebP exports being corrupted by lossy compression settings if quality was set below 100%. This led to exports applying lossy compression even though lossless mode was selected – now it ignores irrelevant settings.</p> <p>Faster font loading is included, back-ported from <a href="https://www.omgubuntu.co.uk/2025/12/gimp-3-2-rc2-released-for-testing">GIMP 3.2 RC2</a>. The image editor now waits to load images until fonts are initialised, resolving scrappy display quirks that often occurred when opening XCF files with half-loaded fonts.</p> <p>Other fixes include a PDF export bug, ensuring default colour profiles load correctly on Windows, and better stability of the non-destructive filter code when working with layers and images that have filters attached.</p> <p>You can download GIMP 3.0.8 from the project homepage as an AppImage for Linux, or get the latest release as a Flatpak from Flathub. Prefer Snap? There’s an <a href="https://snapcraft.io/gimp" target="_blank">official GIMP snap</a>.</p> <h2>Typhoon 1.5.0</h2> <div>
+<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/typhoon.jpg?ssl=1"></a><figcaption>Multi-locations and wind direction arrows in Typhoon 1.5.0</figcaption></figure>
+</div> <pre><code>Typhoon, the desktop Linux weather app (a continuation of Stormcloud, if you’ve used Ubuntu long enough to recall that dominating Ubuntu Software Center’s paid-apps charts), saw a flurry of releases in January, gaining some minor changes.</code></pre> <p>Multiple location support was added in Typhoon 1.4.1 to let you keep an eye on temperature and current conditions across different locales and switch between them. Weather info refreshes a couple of seconds after a location switch to ensure data is fresh.</p> <p>Other changes see wind direction now marked by an arrow, location search matching triggered once you finish typing, rather than trying to match whilst you’re typing, and an assortment of minor fixes and styling quirks. </p> <pre><code>Typhoon is free, open-source software. You can install the latest release on Ubuntu, Linux Mint et al by adding the Typhoon PPA, or install the release from the Snap Store or Flathub (sandboxed versions have some minor feature impairments).</code></pre> <h3>A bumper month of updates</h3> <pre><code>Other updates of note to slip out in January: Scribus 1.7.2 (bug fixes), High Tide 1.2.0 (bug fixes), and Pinta 3.1.1 (bug fixes). And Thunderbird 147? That delivered – you guessed it – bug fixes also.</code></pre> <p><a href="https://github.com/raspberrypi/rpi-imager/releases/tag/v2.0.5" target="_blank">Raspberry Pi Imager 2.0.5</a> delivered more than bug fixes, adding a ‘Liquid Glass’ icon for macOS 26 users. Disk management tool <a href="https://sourceforge.net/projects/gparted/files/gparted/gparted-1.8.0/" target="_blank">GParted 1.8 </a>arrived with fixes, including one for a nasty application hang caused when entering a FAT label that matched a root folder entry.</p> <hr> <p>That’s it for the January roundup. These updates didn’t get full cover and their own headline but are still worth knowing about. </p> <p><em><strong>If you hear about a software update you think I should cover, the contact form is always open!</strong></em></p> <ol><li>Image support depends on terminal compatibility with the <a href="https://sw.kovidgoyal.net/kitty/graphics-protocol/">Kitty protocol</a>. <a href="#26902298-1d94-4ea1-9bb8-029cc44e947e-link">︎</a></li></ol> </div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

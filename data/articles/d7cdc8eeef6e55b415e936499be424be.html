@@ -4,50 +4,43 @@
 <meta charset="UTF-8">
 <title>APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>APT36 and SideCopy Launch Cross-Platform RAT Campaigns Against Indian Entities</h1>
   <div class="metadata">
-    Source: The Hacker News | Date: 2/11/2026 | Lang: EN |
-    <a href="https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html" target="_blank">Original Article</a>
+    Source: The Hacker News | Date: 2/11/2026 3:52:00 PM | <a href="https://thehackernews.com/2026/02/apt36-and-sidecopy-launch-cross.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbazpuuwU1rJbldu2fNhcDhnmgmpygU-Ci4lvjJXXo3TlmbV06oWZJ-FEJjMtQnkzg9-cBOt9h8aCA5d2EuO3gRaDlbzzc1w4cZRsdDUY1YwMTXv9f3ebp4CrZ-0jIar70HO_pyuhzHdClzTo85wpHJF8wiabXv8ko9fxQbp5WFmWdVwvtqqAkh5mk2_hv/s1600/india.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjbazpuuwU1rJbldu2fNhcDhnmgmpygU-Ci4lvjJXXo3TlmbV06oWZJ-FEJjMtQnkzg9-cBOt9h8aCA5d2EuO3gRaDlbzzc1w4cZRsdDUY1YwMTXv9f3ebp4CrZ-0jIar70HO_pyuhzHdClzTo85wpHJF8wiabXv8ko9fxQbp5WFmWdVwvtqqAkh5mk2_hv/s1600/india.jpg" /></a></p>
-<p>Indian defense sector and government-aligned organizations have been targeted by multiple campaigns that are designed to compromise Windows and Linux environments with remote access trojans capable of stealing sensitive data and ensuring continued access to infected machines.</p>
-<p>The campaigns are characterized by the use of malware families like <a href="https://thehackernews.com/2025/04/pakistan-linked-hackers-expand-targets.html" target="_blank">Geta RAT</a>, <a href="https://thehackernews.com/2025/07/tag-140-deploys-drat-v2-rat-targeting.html" target="_blank">Ares RAT</a>, and <a href="https://thehackernews.com/2025/10/apt36-targets-indian-government-with.html" target="_blank">DeskRAT</a>, which are often attributed to Pakistan-aligned threat clusters tracked as SideCopy and APT36 (aka Transparent Tribe). SideCopy, active since at least 2019, is assessed to operate as a subdivision of Transparent Tribe.</p>
-<p>"Taken together, these campaigns reinforce a familiar but evolving narrative," Aditya K. Sood, vice president of Security Engineering and AI Strategy at Aryaka, <a href="https://www.aryaka.com/blog/espionage-without-noise-apt36-enduring-campaigns/" target="_blank">said</a>. "Transparent Tribe and SideCopy are not reinventing espionage – they are refining it."</p>
-
-<p>"By expanding cross-platform coverage, leaning into memory-resident techniques, and experimenting with new delivery vectors, this ecosystem continues to operate below the noise floor while maintaining strategic focus."</p>
-<p>Common to all the campaigns is the use of phishing emails containing malicious attachments or embedded download links that lead prospective targets to attacker-controlled infrastructure. These initial access mechanisms serve as a conduit for Windows shortcuts (LNK), ELF binaries, and PowerPoint Add-In files that, when opened, launch a multi-stage process to drop the trojans.</p>
-<p>The malware families are designed to provide persistent remote access, enable system reconnaissance, collect data, execute commands, and facilitate long-term post-compromise operations across both Windows and Linux environments.</p>
-<p>One of the attack chains is as follows: a malicious LNK file invokes "mshta.exe" to execute an HTML Application (HTA) file hosted on compromised legitimate domains. The HTA payload contains JavaScript to decrypt an embedded DLL payload, which, in turn, processes an embedded data blob to write a decoy PDF to disk, connects to a hard-coded command-and-control (C2) server, and displays the saved decoy file.</p>
-
-<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEheRJn0G58-h5eLeFY81az1SoeN0DlVv75lan2-3xrQvGEcyYQImr8lxqR0Fv4BF41I7MzUff2h79hpdC8wVtUPc9CMRwxRw9GqNXcz5s7OF3apNxWioLgWHExzKwUbsqdIvNLqj60SY-VioBAyNCIedXBWBXApsHzgOD1viry_J_1HQSuPFOE2t7PFFgXz/s1600/xml.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEheRJn0G58-h5eLeFY81az1SoeN0DlVv75lan2-3xrQvGEcyYQImr8lxqR0Fv4BF41I7MzUff2h79hpdC8wVtUPc9CMRwxRw9GqNXcz5s7OF3apNxWioLgWHExzKwUbsqdIvNLqj60SY-VioBAyNCIedXBWBXApsHzgOD1viry_J_1HQSuPFOE2t7PFFgXz/s1600/xml.jpg" /></a></p>
-<p>After the lure document is displayed, the malware checks for installed security products and adapts its persistence method accordingly prior to deploying Geta RAT on the compromised host. It's worth noting this attack chain was detailed by <a href="https://thehackernews.com/2026/01/transparent-tribe-launches-new-rat.html" target="_blank">CYFIRMA</a> and Seqrite Labs researcher <a href="https://x.com/PrakkiSathwik/status/2007457956636590184" target="_blank">Sathwik Ram Prakki</a> in late December 2025.</p>
-<p>Geta RAT supports various commands to collect system information, enumerate running processes, terminate a specified process, list installed apps, gather credentials, retrieve and replace clipboard contents with attacker-supplied data, capture screenshots, perform file operations, run arbitrary shell commands, and harvest data from connected USB devices.</p>
-<p>Running parallel to this Windows-focused campaign is a Linux variant that employs a Go binary as a starting point to drop a Python-based Ares RAT by means of a shell script downloaded from an external server. Like Geta RAT, Ares RAT can also run a wide range of commands to harvest sensitive data and run Python scripts or commands issued by the threat actor.</p>
-
-<p>Aryaka said it also observed another campaign where the Golang malware, DeskRAT, is delivered via a rogue PowerPoint Add-In file that runs embedded macro to establish outbound communication with a remote server to fetch the malware. APT36's use of DeskRAT was <a href="https://thehackernews.com/2025/10/apt36-targets-indian-government-with.html" target="_blank">documented</a> by Sekoia and QiAnXin XLab in October 2025.</p>
-<p>"These campaigns demonstrate a well-resourced, espionage-focused threat actor deliberately targeting Indian defense, government, and strategic sectors through defense-themed lures, impersonated official documents, and regionally trusted infrastructure," the company said. "The activity extends beyond defense to policy, research, critical infrastructure, and defense-adjacent organizations operating within the same trusted ecosystem."</p>
-<p>"The deployment of DeskRAT, alongside Geta RAT and Ares RAT, underscores an evolving toolkit optimized for stealth, persistence, and long-term access."</p>
-
-<p>Found this article interesting?  Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
-</div></div>
+    <p>Indian defense sector and government-aligned organizations have been targeted by multiple campaigns that are designed to compromise Windows and Linux environments with remote access trojans capable of stealing sensitive data and ensuring continued access to infected machines.
+The campaigns are characterized by the use of malware families like Geta RAT, Ares RAT, and DeskRAT, which are often</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

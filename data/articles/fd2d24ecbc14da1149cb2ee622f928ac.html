@@ -4,32 +4,31 @@
 <meta charset="UTF-8">
 <title>Patch Tuesday, January 2026 Edition</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Patch Tuesday, January 2026 Edition</h1>
   <div class="metadata">
-    Source: Krebs on Security | Date: 1/14/2026 | Lang: EN |
-    <a href="https://krebsonsecurity.com/2026/01/patch-tuesday-january-2026-edition/" target="_blank">Original Article</a>
+    Source: Krebs on Security | Date: 1/14/2026 1:47:38 AM | <a href="https://krebsonsecurity.com/2026/01/patch-tuesday-january-2026-edition/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-												<p><strong>Microsoft</strong> today issued patches to plug at least 113 security holes in its various <strong>Windows</strong> operating systems and supported software. Eight of the vulnerabilities earned Microsoft’s most-dire “critical” rating, and the company warns that attackers are already exploiting one of the bugs fixed today.</p>
-<p><img src="https://krebsonsecurity.com/wp-content/uploads/2021/07/windupate.png" alt="" /></p>
+    <div><div> <p><strong>Microsoft</strong> today issued patches to plug at least 113 security holes in its various <strong>Windows</strong> operating systems and supported software. Eight of the vulnerabilities earned Microsoft’s most-dire “critical” rating, and the company warns that attackers are already exploiting one of the bugs fixed today.</p>
+<p><img src="https://krebsonsecurity.com/wp-content/uploads/2021/07/windupate.png" alt=""></p>
 <p>January’s Microsoft zero-day flaw — <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-20805" target="_blank">CVE-2026-20805</a> — is brought to us by a flaw in the <strong>Desktop Window Manager</strong> (DWM), a key component of Windows that organizes windows on a user’s screen. <strong>Kev Breen</strong>, senior director of cyber threat research at <strong>Immersive</strong>, said despite awarding CVE-2026-20805 a middling CVSS score of 5.5, Microsoft has confirmed its active exploitation in the wild, indicating that threat actors are already leveraging this flaw against organizations.</p>
 <p>Breen said vulnerabilities of this kind are commonly used to undermine <a href="https://en.wikipedia.org/wiki/Address_space_layout_randomization" target="_blank">Address Space Layout Randomization</a> (ASLR), a core operating system security control designed to protect against buffer overflows and other memory-manipulation exploits.</p>
 <p>“By revealing where code resides in memory, this vulnerability can be chained with a separate code execution flaw, transforming a complex and unreliable exploit into a practical and repeatable attack,” Breen said. “Microsoft has not disclosed which additional components may be involved in such an exploit chain, significantly limiting defenders’ ability to proactively threat hunt for related activity. As a result, rapid patching currently remains the only effective mitigation.”</p>
@@ -43,10 +42,27 @@
 <p>Immersive, Ivanti and Rapid7 all called attention to <a href="https://msrc.microsoft.com/update-guide/en-US/advisory/CVE-2026-21265" target="_blank">CVE-2026-21265</a>, which is a critical Security Feature Bypass vulnerability affecting Windows Secure Boot. This security feature is designed to protect against threats like rootkits and bootkits, and it relies on a set of certificates that are set to expire in June 2026 and October 2026. Once these 2011 certificates expire, Windows devices that do not have the new 2023 certificates can no longer receive Secure Boot security fixes.</p>
 <p>Barnett cautioned that when updating the bootloader and BIOS, it is essential to prepare fully ahead of time for the specific OS and BIOS combination you’re working with, since incorrect remediation steps can lead to an unbootable system.</p>
 <p>“Fifteen years is a very long time indeed in information security, but the clock is running out on the Microsoft root certificates which have been signing essentially everything in the Secure Boot ecosystem since the days of Stuxnet,” Barnett said. “Microsoft issued replacement certificates back in 2023, alongside CVE-2023-24932 which covered relevant Windows patches as well as subsequent steps to remediate the Secure Boot bypass exploited by the BlackLotus bootkit.”</p>
-<p>Goettl noted that <strong>Mozilla</strong> has released updates for <strong>Firefox</strong> and <strong>Firefox ESR</strong> resolving a total of 34 vulnerabilities, two of which are suspected to be exploited (CVE-2026-0891 and CVE-2026-0892). Both are resolved in Firefox 147 (MFSA2026-01) and CVE-2026-0891 is resolved in Firefox ESR 140.7 (MFSA2026-03).</p>
+<p>Goettl noted that <strong>Mozilla</strong>&nbsp;has released updates for <strong>Firefox</strong> and <strong>Firefox ESR</strong> resolving a total of 34 vulnerabilities, two of which are suspected to be exploited (CVE-2026-0891 and CVE-2026-0892). Both are resolved in Firefox 147 (MFSA2026-01) and CVE-2026-0891 is resolved in Firefox ESR 140.7 (MFSA2026-03).</p>
 <p>“Expect <strong>Google Chrome</strong> and <strong>Microsoft Edge</strong> updates this week in addition to a high severity vulnerability in Chrome WebView that was resolved in the January 6 Chrome update (CVE-2026-0628),” Goettl said.</p>
-<p>As ever, the <a href="https://isc.sans.edu/forums/diary/January%202026%20Microsoft%20Patch%20Tuesday%20Summary/32624/" target="_blank">SANS Internet Storm Center</a> has a per-patch breakdown by severity and urgency. Windows admins should keep an eye on <a href="https://www.askwoody.com/2026/january-2026-updates/" target="_blank">askwoody.com</a> for any news about patches that don’t quite play nice with everything. If you experience any issues related installing January’s patches, please drop a line in the comments below.</p>
-											</div></div>
+<p>As ever, the <a href="https://isc.sans.edu/forums/diary/January%202026%20Microsoft%20Patch%20Tuesday%20Summary/32624/" target="_blank">SANS Internet Storm Center</a> has a per-patch breakdown by severity and urgency. Windows admins should keep an eye on <a href="https://www.askwoody.com/2026/january-2026-updates/" target="_blank">askwoody.com</a> for any news about patches that don’t quite play nice with everything. If you experience any issues related installing January’s patches, please drop a line in the comments below.</p> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

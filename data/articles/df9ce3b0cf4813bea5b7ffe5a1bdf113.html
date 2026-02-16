@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>OpenClaw Guide Ch.3: Your First Agent</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>OpenClaw Guide Ch.3: Your First Agent</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN |
-    <a href="https://dev.to/linou518/openclaw-guide-ch3-your-first-agent-5gd3" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -54,8 +51,7 @@
 <li> Focus on specific task domains</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="agent-configuration-structure" href="#agent-configuration-structure">
@@ -68,8 +64,6 @@
   </a>
   <strong>Basic Configuration Template</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -98,16 +92,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="configuration-field-reference" href="#configuration-field-reference">
@@ -164,8 +154,7 @@
 </tbody>
 </table></div>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="handson-creating-your-first-agent" href="#handson-creating-your-first-agent">
@@ -194,8 +183,6 @@
   <strong>Step 2: Create the Workspace</strong>
 </h3>
 
-
-
 <div>
 <pre><code><span># Navigate to the OpenClaw workspace</span>
 <span>cd</span> ~/.openclaw/workspace-main
@@ -213,16 +200,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="step-3-write-the-agent-configuration" href="#step-3-write-the-agent-configuration">
@@ -230,7 +213,7 @@
   <strong>Step 3: Write the Agent Configuration</strong>
 </h3>
 
-<p>Edit <code>~/.openclaw/workspace-main/openclaw.json</code>:<br />
+<p>Edit <code>~/.openclaw/workspace-main/openclaw.json</code>:<br>
 </p>
 
 <div>
@@ -283,16 +266,12 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="step-4-create-agent-identity-files" href="#step-4-create-agent-identity-files">
@@ -305,8 +284,6 @@
   </a>
   <strong>SOUL.md — Agent Personality</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># SOUL.md — Personal Assistant Personality</span>
@@ -334,24 +311,18 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="usermd-user-information" href="#usermd-user-information">
   </a>
   <strong>USER.md — User Information</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># USER.md — User Information</span>
@@ -385,24 +356,18 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h4>
   <a name="memorymd-initial-memory" href="#memorymd-initial-memory">
   </a>
   <strong>MEMORY.md — Initial Memory</strong>
 </h4>
-
-
 
 <div>
 <pre><code><span># MEMORY.md — Personal Assistant Memory</span>
@@ -432,19 +397,14 @@
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="launch-and-test-the-agent" href="#launch-and-test-the-agent">
@@ -457,8 +417,6 @@
   </a>
   <strong>Step 1: Start the OpenClaw Gateway</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Make sure you're in the correct workspace</span>
@@ -475,18 +433,14 @@ openclaw gateway start
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Expected Log Output</strong>:<br />
+<p><strong>Expected Log Output</strong>:<br>
 </p>
 
 <div>
@@ -501,24 +455,18 @@ openclaw gateway start
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="step-2-api-test" href="#step-2-api-test">
   </a>
   <strong>Step 2: API Test</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Test Agent response</span>
@@ -539,24 +487,18 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="expected-response" href="#expected-response">
   </a>
   <strong>Expected Response</strong>:
 </h3>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -578,19 +520,14 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="basic-conversation-tests" href="#basic-conversation-tests">
@@ -603,8 +540,6 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
   </a>
   <strong>Test 1: Basic Interaction</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Request</span>
@@ -622,24 +557,18 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="test-2-tool-usage" href="#test-2-tool-usage">
   </a>
   <strong>Test 2: Tool Usage</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Request</span>
@@ -657,24 +586,18 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="test-3-information-search" href="#test-3-information-search">
   </a>
   <strong>Test 3: Information Search</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Request</span>
@@ -692,19 +615,14 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="integrate-with-telegram-bot-optional" href="#integrate-with-telegram-bot-optional">
@@ -738,7 +656,7 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
   <strong>Configure Telegram Integration</strong>
 </h3>
 
-<p>Edit <code>openclaw.json</code> and add the Telegram configuration:<br />
+<p>Edit <code>openclaw.json</code> and add the Telegram configuration:<br>
 </p>
 
 <div>
@@ -786,24 +704,18 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="restart-and-test" href="#restart-and-test">
   </a>
   <strong>Restart and Test</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># Restart the Gateway to load the Telegram configuration</span>
@@ -817,19 +729,14 @@ openclaw gateway restart
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="tool-usage-examples" href="#tool-usage-examples">
@@ -843,8 +750,6 @@ openclaw gateway restart
   <strong>File Operations</strong>
 </h3>
 
-
-
 <div>
 <pre><code><span># User: "Create a shopping list for me"</span>
 <span># Agent executes:</span>
@@ -855,24 +760,18 @@ write<span>(</span><span>"shopping-list.md"</span>, <span>"# Shopping List</span
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="information-search" href="#information-search">
   </a>
   <strong>Information Search</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># User: "What's the weather like in Tokyo today?"</span>
@@ -885,24 +784,18 @@ web_search<span>(</span><span>"Tokyo weather today"</span><span>)</span>
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="memory-operations" href="#memory-operations">
   </a>
   <strong>Memory Operations</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># User: "Remember that I like coffee"</span>
@@ -914,19 +807,14 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="troubleshooting" href="#troubleshooting">
@@ -940,8 +828,6 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
   <strong>Issue 1: Agent Fails to Start</strong>
 </h3>
 
-
-
 <div>
 <pre><code>[ERROR] Failed to load agent personal-assistant: Invalid model configuration
 </code></pre>
@@ -950,16 +836,12 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p><strong>Solution</strong>:</p>
 
@@ -977,8 +859,6 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
   <strong>Issue 2: Tool Permission Error</strong>
 </h3>
 
-
-
 <div>
 <pre><code>[ERROR] Tool 'web_search' not allowed for agent personal-assistant
 </code></pre>
@@ -987,19 +867,15 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Solution</strong>:<br />
-Add the required tool to <code>tools.allowlists</code>:<br />
+<p><strong>Solution</strong>:<br>
+Add the required tool to <code>tools.allowlists</code>:<br>
 </p>
 
 <div>
@@ -1014,24 +890,18 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="issue-3-memory-file-not-accessible" href="#issue-3-memory-file-not-accessible">
   </a>
   <strong>Issue 3: Memory File Not Accessible</strong>
 </h3>
-
-
 
 <div>
 <pre><code>[ERROR] Cannot read MEMORY.md: ENOENT
@@ -1041,18 +911,14 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-<p><strong>Solution</strong>:<br />
+<p><strong>Solution</strong>:<br>
 </p>
 
 <div>
@@ -1068,24 +934,18 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="issue-4-telegram-bot-not-responding" href="#issue-4-telegram-bot-not-responding">
   </a>
   <strong>Issue 4: Telegram Bot Not Responding</strong>
 </h3>
-
-
 
 <div>
 <pre><code>[ERROR] Telegram polling failed: 401 Unauthorized
@@ -1095,16 +955,12 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p><strong>Solution</strong>:</p>
 
@@ -1115,8 +971,7 @@ Add the required tool to <code>tools.allowlists</code>:<br />
 </li>
 </ol>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="agent-optimization-tips" href="#agent-optimization-tips">
@@ -1129,8 +984,6 @@ Add the required tool to <code>tools.allowlists</code>:<br />
   </a>
   <strong>Performance Optimization</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -1154,24 +1007,18 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="security-configuration" href="#security-configuration">
   </a>
   <strong>Security Configuration</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span>{</span><span>
@@ -1194,19 +1041,14 @@ Add the required tool to <code>tools.allowlists</code>:<br />
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="monitoring-and-logging" href="#monitoring-and-logging">
@@ -1219,8 +1061,6 @@ Add the required tool to <code>tools.allowlists</code>:<br />
   </a>
   <strong>Check Agent Status</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># View all Agent statuses</span>
@@ -1237,24 +1077,18 @@ openclaw status personal-assistant
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <h3>
   <a name="performance-monitoring" href="#performance-monitoring">
   </a>
   <strong>Performance Monitoring</strong>
 </h3>
-
-
 
 <div>
 <pre><code><span># View system resource usage</span>
@@ -1268,19 +1102,14 @@ openclaw stats personal-assistant
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
 
-
-
-
-<hr />
+<hr>
 
 <h2>
   <a name="chapter-summary" href="#chapter-summary">
@@ -1300,8 +1129,7 @@ openclaw stats personal-assistant
 <li>[x] Known solutions for common issues</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="next-steps" href="#next-steps">
@@ -1313,8 +1141,7 @@ openclaw stats personal-assistant
 
 <p><strong><a href="https://../chapter4/README.md">Next Chapter: Tools and Skills →</a></strong></p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="practice-exercises" href="#practice-exercises">
@@ -1337,8 +1164,7 @@ openclaw stats personal-assistant
 
 <p><strong>Ready to explore more advanced features?</strong> </p>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

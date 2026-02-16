@@ -4,210 +4,100 @@
 <meta charset="UTF-8">
 <title>Transformers.js v4 Preview: Now Available on NPM!</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Transformers.js v4 Preview: Now Available on NPM!</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 2/9/2026 | Lang: FR |
-    <a href="https://huggingface.co/blog/transformersjs-v4" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 2/9/2026 1:00:00 AM | <a href="https://huggingface.co/blog/transformersjs-v4" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div>
-					<p><a href="https://huggingface.co/blog">
-							Back to Articles</a></p>
-
-					
-					
-					
-					<div><div>
-
-<p><span><span><a href="https://huggingface.co/Xenova"><img alt="Joshua's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61b253b7ac5ecaae3d1efe0c/hwiQ0uvz3t-L5a-NtBIO6.png" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/nico-martin"><img alt="Nico Martin's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6468b720b2321e47d32683da/aWAEJJ03I9Z5syqDxHObT.jpeg" /></a>
-				</span>
-	</span></p>
-			</div></div>
-					
-
-					
-<p><img alt="Overview" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/thumbnail-wide.png" /></p><div><nav><ul><li><a href="#performance--runtime-improvements">Performance &amp; Runtime Improvements</a>
-									<ul></ul>
-								</li><li><a href="#repository-restructuring">Repository Restructuring</a>
-									<ul><li><a href="#pnpm-workspaces">PNPM Workspaces</a>
-												<ul></ul>
-											</li><li><a href="#modular-class-structure">Modular Class Structure</a>
-												<ul></ul>
-											</li><li><a href="#examples-repository">Examples Repository</a>
-												<ul></ul>
-											</li><li><a href="#prettier">Prettier</a>
-												<ul></ul>
-											</li></ul>
-								</li><li><a href="#new-models-and-architectures">New Models and Architectures</a>
-									<ul></ul>
-								</li><li><a href="#new-build-system">New Build System</a>
-									<ul></ul>
-								</li><li><a href="#standalone-tokenizersjs-library">Standalone Tokenizers.js Library</a>
-									<ul></ul>
-								</li><li><a href="#miscellaneous-improvements">Miscellaneous Improvements</a>
-									<ul></ul>
-								</li><li><a href="#acknowledgements">Acknowledgements</a>
-									<ul></ul>
-								</li></ul></nav></div><p>We're excited to announce that Transformers.js v4 (preview) is now available on NPM! After nearly a year of development (we started in March 2025 ), we're finally ready for you to test it out. Previously, users had to install v4 directly from source via GitHub, but now it's as simple as running a single command!</p>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Xenova"><img alt="Joshua's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61b253b7ac5ecaae3d1efe0c/hwiQ0uvz3t-L5a-NtBIO6.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/nico-martin"><img alt="Nico Martin's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6468b720b2321e47d32683da/aWAEJJ03I9Z5syqDxHObT.jpeg"></a> </span> </span></p> </div></div> <p><img alt="Overview" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/thumbnail-wide.png"></p><div><nav><ul><li><a href="#performance--runtime-improvements">Performance &amp; Runtime Improvements</a> <ul></ul> </li><li><a href="#repository-restructuring">Repository Restructuring</a> <ul><li><a href="#pnpm-workspaces">PNPM Workspaces</a> <ul></ul> </li><li><a href="#modular-class-structure">Modular Class Structure</a> <ul></ul> </li><li><a href="#examples-repository">Examples Repository</a> <ul></ul> </li><li><a href="#prettier">Prettier</a> <ul></ul> </li></ul> </li><li><a href="#new-models-and-architectures">New Models and Architectures</a> <ul></ul> </li><li><a href="#new-build-system">New Build System</a> <ul></ul> </li><li><a href="#standalone-tokenizersjs-library">Standalone Tokenizers.js Library</a> <ul></ul> </li><li><a href="#miscellaneous-improvements">Miscellaneous Improvements</a> <ul></ul> </li><li><a href="#acknowledgements">Acknowledgements</a> <ul></ul> </li></ul></nav></div><p>We're excited to announce that Transformers.js v4 (preview) is now available on NPM! After nearly a year of development (we started in March 2025 ), we're finally ready for you to test it out. Previously, users had to install v4 directly from source via GitHub, but now it's as simple as running a single command!</p>
 <pre><code>npm i @huggingface/transformers@next
 </code></pre>
 <p>We'll continue publishing v4 releases under the <code>next</code> tag on NPM until the full release, so expect regular updates!</p>
-<h2>
-	<a href="#performance--runtime-improvements">
-		<span></span>
-	</a>
-	<span>
-		Performance &amp; Runtime Improvements
-	</span>
+<h2> <a href="#performance--runtime-improvements"> <span></span> </a> <span> Performance &amp; Runtime Improvements </span>
 </h2>
 <p>The biggest change is undoubtedly the adoption of a new WebGPU Runtime, completely rewritten in C++. We've worked closely with the ONNX Runtime team to thoroughly test this runtime across our ~200 supported model architectures, as well as many new v4-exclusive architectures.</p>
 <p>In addition to better operator support (for performance, accuracy, and coverage), this new WebGPU runtime allows the same transformers.js code to be used across a wide variety of JavaScript environments, including browsers, server-side runtimes, and desktop applications. That's right, you can now run WebGPU-accelerated models directly in Node, Bun, and Deno!</p>
-<p><img alt="WebGPU Overview" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/webgpu.png" /></p><p>We've proven that it's possible to run state-of-the-art AI models 100% locally in the browser, and now we're focused on performance: making these models run as fast as possible, even in resource-constrained environments. This required completely rethinking our export strategy, especially for large language models. We achieve this by re-implementing new models operation by operation, leveraging specialized ONNX Runtime <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md">Contrib Operators</a> like <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.GroupQueryAttention">com.microsoft.GroupQueryAttention</a>, <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.MatMulNBits">com.microsoft.MatMulNBits</a>, or <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.QMoE">com.microsoft.QMoE</a> to maximize performance.</p>
+<p><img alt="WebGPU Overview" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/webgpu.png"></p><p>We've proven that it's possible to run state-of-the-art AI models 100% locally in the browser, and now we're focused on performance: making these models run as fast as possible, even in resource-constrained environments. This required completely rethinking our export strategy, especially for large language models. We achieve this by re-implementing new models operation by operation, leveraging specialized ONNX Runtime <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md">Contrib Operators</a> like <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.GroupQueryAttention">com.microsoft.GroupQueryAttention</a>, <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.MatMulNBits">com.microsoft.MatMulNBits</a>, or <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.QMoE">com.microsoft.QMoE</a> to maximize performance.</p>
 <p>For example, adopting the <a href="https://github.com/microsoft/onnxruntime/blob/main/docs/ContribOperators.md#com.microsoft.MultiHeadAttention">com.microsoft.MultiHeadAttention</a> operator, we were able to achieve a ~4x speedup for BERT-based embedding models.</p>
-<p><img alt="Optimized ONNX Exports" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/speedups.png" /></p><p>This update enables full offline support by caching WASM files locally in the browser, allowing users to run Transformers.js applications without an internet connection after the initial download.</p>
-<h2>
-	<a href="#repository-restructuring">
-		<span></span>
-	</a>
-	<span>
-		Repository Restructuring
-	</span>
+<p><img alt="Optimized ONNX Exports" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/speedups.png"></p><p>This update enables full offline support by caching WASM files locally in the browser, allowing users to run Transformers.js applications without an internet connection after the initial download.</p>
+<h2> <a href="#repository-restructuring"> <span></span> </a> <span> Repository Restructuring </span>
 </h2>
 <p>Developing a new major version gave us the opportunity to invest in the codebase and tackle long-overdue refactoring efforts.</p>
-<h3>
-	<a href="#pnpm-workspaces">
-		<span></span>
-	</a>
-	<span>
-		PNPM Workspaces
-	</span>
+<h3> <a href="#pnpm-workspaces"> <span></span> </a> <span> PNPM Workspaces </span>
 </h3>
 <p>Until now, the GitHub repository served as our npm package. This worked well as long as the repository only exposed a single library. However, looking to the future, we saw the need for various sub-packages that depend heavily on the Transformers.js core while addressing different use cases, like library-specific implementations, or smaller utilities that most users don't need but are essential for some.</p>
 <p>That's why we converted the repository to a monorepo using pnpm workspaces. This allows us to ship smaller packages that depend on <code>@huggingface/transformers</code> without the overhead of maintaining separate repositories.</p>
-<h3>
-	<a href="#modular-class-structure">
-		<span></span>
-	</a>
-	<span>
-		Modular Class Structure
-	</span>
+<h3> <a href="#modular-class-structure"> <span></span> </a> <span> Modular Class Structure </span>
 </h3>
 <p>Another major refactoring effort targeted the ever-growing models.js file. In v3, all available models were defined in a single file spanning over 8,000 lines, becoming increasingly difficult to maintain. For v4, we split this into smaller, focused modules with a clear distinction between utility functions, core logic, and model-specific implementations. This new structure improves readability and makes it much easier to add new models. Developers can now focus on model-specific logic without navigating through thousands of lines of unrelated code.</p>
-<h3>
-	<a href="#examples-repository">
-		<span></span>
-	</a>
-	<span>
-		Examples Repository
-	</span>
+<h3> <a href="#examples-repository"> <span></span> </a> <span> Examples Repository </span>
 </h3>
 <p>In v3, many Transformers.js example projects lived directly in the main repository. For v4, we've moved them to a <a href="https://github.com/huggingface/transformers.js-examples">dedicated repository</a>, allowing us to maintain a cleaner codebase focused on the core library. This also makes it easier for users to find and contribute to examples without sifting through the main repository.</p>
-<h3>
-	<a href="#prettier">
-		<span></span>
-	</a>
-	<span>
-		Prettier
-	</span>
+<h3> <a href="#prettier"> <span></span> </a> <span> Prettier </span>
 </h3>
 <p>We updated the Prettier configuration and reformatted all files in the repository. This ensures consistent formatting throughout the codebase, with all future PRs automatically following the same style. No more debates about formatting... Prettier handles it all, keeping the code clean and readable for everyone.</p>
-<h2>
-	<a href="#new-models-and-architectures">
-		<span></span>
-	</a>
-	<span>
-		New Models and Architectures
-	</span>
+<h2> <a href="#new-models-and-architectures"> <span></span> </a> <span> New Models and Architectures </span>
 </h2>
 <p>Thanks to our new export strategy and ONNX Runtime's expanding support for custom operators, we've been able to add many new models and architectures to Transformers.js v4. These include popular models like GPT-OSS, Chatterbox, GraniteMoeHybrid, LFM2-MoE, HunYuanDenseV1, Apertus, Olmo3, FalconH1, and Youtu-LLM. Many of these required us to implement support for advanced architectural patterns, including Mamba (state-space models), Multi-head Latent Attention (MLA), and Mixture of Experts (MoE). Perhaps most importantly, these models are all compatible with WebGPU, allowing users to run them directly in the browser or server-side JavaScript environments with hardware acceleration. Stay tuned for some exciting demos showcasing these new models in action!</p>
-<h2>
-	<a href="#new-build-system">
-		<span></span>
-	</a>
-	<span>
-		New Build System
-	</span>
+<h2> <a href="#new-build-system"> <span></span> </a> <span> New Build System </span>
 </h2>
 <p>We've migrated our build system from Webpack to esbuild, and the results have been incredible. Build times dropped from 2 seconds to just 200 milliseconds, a 10x improvement that makes development iteration significantly faster. Speed isn't the only benefit, though: bundle sizes also decreased by an average of 10% across all builds. The most notable improvement is in transformers.web.js, our default export, which is now 53% smaller, meaning faster downloads and quicker startup times for users.</p>
-<h2>
-	<a href="#standalone-tokenizersjs-library">
-		<span></span>
-	</a>
-	<span>
-		Standalone Tokenizers.js Library
-	</span>
+<h2> <a href="#standalone-tokenizersjs-library"> <span></span> </a> <span> Standalone Tokenizers.js Library </span>
 </h2>
-<p>A frequent request from users was to extract the tokenization logic into a separate library, and with v4, that's exactly what we've done. <a href="https://www.npmjs.com/package/@huggingface/tokenizers">@huggingface/tokenizers</a> is a complete refactor of the tokenization logic, designed to work seamlessly across browsers and server-side runtimes. At just 8.8kB (gzipped) with zero dependencies, it's incredibly lightweight while remaining fully type-safe.</p>
-
-See example code
-
-<pre><code><span>import</span> { <span>Tokenizer</span> } <span>from</span> <span>"@huggingface/tokenizers"</span>;
-
-<span>// Load from Hugging Face Hub</span>
+<p>A frequent request from users was to extract the tokenization logic into a separate library, and with v4, that's exactly what we've done. <a href="https://www.npmjs.com/package/@huggingface/tokenizers">@huggingface/tokenizers</a> is a complete refactor of the tokenization logic, designed to work seamlessly across browsers and server-side runtimes. At just 8.8kB (gzipped) with zero dependencies, it's incredibly lightweight while remaining fully type-safe.</p> See example code <pre><code><span>import</span> { <span>Tokenizer</span> } <span>from</span> <span>"@huggingface/tokenizers"</span>; <span>// Load from Hugging Face Hub</span>
 <span>const</span> modelId = <span>"HuggingFaceTB/SmolLM3-3B"</span>;
-<span>const</span> tokenizerJson = <span>await</span> <span>fetch</span>(
-  <span>`https://huggingface.co/<span>${modelId}</span>/resolve/main/tokenizer.json`</span>
-).<span>then</span>(<span><span>res</span> =&gt;</span> res.<span>json</span>());
-
-<span>const</span> tokenizerConfig = <span>await</span> <span>fetch</span>(
-  <span>`https://huggingface.co/<span>${modelId}</span>/resolve/main/tokenizer_config.json`</span>
-).<span>then</span>(<span><span>res</span> =&gt;</span> res.<span>json</span>());
-
-<span>// Create tokenizer</span>
-<span>const</span> tokenizer = <span>new</span> <span>Tokenizer</span>(tokenizerJson, tokenizerConfig);
-
-<span>// Tokenize text</span>
+<span>const</span> tokenizerJson = <span>await</span> <span>fetch</span>( <span>`https://huggingface.co/<span>${modelId}</span>/resolve/main/tokenizer.json`</span>
+).<span>then</span>(<span><span>res</span> =&gt;</span> res.<span>json</span>()); <span>const</span> tokenizerConfig = <span>await</span> <span>fetch</span>( <span>`https://huggingface.co/<span>${modelId}</span>/resolve/main/tokenizer_config.json`</span>
+).<span>then</span>(<span><span>res</span> =&gt;</span> res.<span>json</span>()); <span>// Create tokenizer</span>
+<span>const</span> tokenizer = <span>new</span> <span>Tokenizer</span>(tokenizerJson, tokenizerConfig); <span>// Tokenize text</span>
 <span>const</span> tokens = tokenizer.<span>tokenize</span>(<span>"Hello World"</span>);
-<span>// ['Hello', 'ĠWorld']</span>
-
-<span>const</span> encoded = tokenizer.<span>encode</span>(<span>"Hello World"</span>);
+<span>// ['Hello', 'ĠWorld']</span> <span>const</span> encoded = tokenizer.<span>encode</span>(<span>"Hello World"</span>);
 <span>// { ids: [9906, 4435], tokens: ['Hello', 'ĠWorld'], ... }</span>
-</code></pre>
-
-
-<p>This separation keeps the core of Transformers.js focused and lean while offering a versatile, standalone tool that any WebML project can use independently.</p>
-<h2>
-	<a href="#miscellaneous-improvements">
-		<span></span>
-	</a>
-	<span>
-		Miscellaneous Improvements
-	</span>
+</code></pre> <p>This separation keeps the core of Transformers.js focused and lean while offering a versatile, standalone tool that any WebML project can use independently.</p>
+<h2> <a href="#miscellaneous-improvements"> <span></span> </a> <span> Miscellaneous Improvements </span>
 </h2>
 <p>We've made several quality-of-life improvements across the library. The type system has been enhanced with dynamic pipeline types that adapt based on inputs, providing better developer experience and type safety.</p>
-<p><img alt="Type Improvements" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/types.png" /></p><p>Logging has been improved to give users more control and clearer feedback during model execution. Additionally, we've added support for larger models exceeding 8B parameters. In our tests, we've been able to run GPT-OSS 20B (q4f16) at ~60 tokens per second on an M4 Pro Max.</p>
-<h2>
-	<a href="#acknowledgements">
-		<span></span>
-	</a>
-	<span>
-		Acknowledgements
-	</span>
+<p><img alt="Type Improvements" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformersjs-v4/types.png"></p><p>Logging has been improved to give users more control and clearer feedback during model execution. Additionally, we've added support for larger models exceeding 8B parameters. In our tests, we've been able to run GPT-OSS 20B (q4f16) at ~60 tokens per second on an M4 Pro Max.</p>
+<h2> <a href="#acknowledgements"> <span></span> </a> <span> Acknowledgements </span>
 </h2>
 <p>We want to extend our heartfelt thanks to everyone who contributed to this major release, especially the ONNX Runtime team for their incredible work on the new WebGPU runtime and their support throughout development, as well as all external contributors and early testers.</p>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

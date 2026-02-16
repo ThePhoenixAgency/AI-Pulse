@@ -4,42 +4,42 @@
 <meta charset="UTF-8">
 <title>Ransomware Attacks are on the Rise</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Ransomware Attacks are on the Rise</h1>
   <div class="metadata">
-    Source: Threatpost | Date: 8/26/2022 | Lang: EN |
-    <a href="https://threatpost.com/ransomware-attacks-are-on-the-rise/180481/" target="_blank">Original Article</a>
+    Source: Threatpost | Date: 8/26/2022 6:44:27 PM | <a href="https://threatpost.com/ransomware-attacks-are-on-the-rise/180481/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><p>Lockbit is by far this summer’s most prolific ransomware group, trailed by two offshoots of the Conti group.</p><div>
-											<p>After a recent dip, ransomware attacks are back on the rise. According to <a href="https://www.mynewsdesk.com/nccgroup/news/ncc-group-monthly-threat-pulse-july-2022-452756">data</a><u> released by </u>NCC Group, the resurgence is being led by old ransomware-as-a-service (RaaS) groups.</p>
-<p>With data gathered by “actively monitoring the leak sites used by each ransomware group and scraping victim details as they are released,” researchers have determined that Lockbit was by far the most prolific ransomware gang in July, behind 62 attacks. That’s ten more than the month prior, and more than twice as many as the second and third most prolific groups combined. “Lockbit 3.0 maintain their foothold as the most threatening ransomware group,” the authors wrote, “and one with which all organizations should aim to be aware of.”</p>
-<p>Those second and third most prolific groups are Hiveleaks – 27 attacks – and BlackBasta – 24 attacks. These figures represent rapid rises for each group – since June, a 440 percent rise for Hiveleaks, and a 50 percent rise for BlackBasta.</p>
-<p>It may well be that the resurgence in ransomware attacks, and the rise of these two particular groups, are intimately connected.</p>
-<h2>Why Ransomware Has Bounced</h2>
-<p>Researchers from NCC Group counted 198 successful ransomware campaigns in July – up 47 percent from June. Sharp as that incline may be, it still falls some ways short of the high-water mark set this Spring, with nearly 300 such campaigns in both March and April.</p>
-<h2>Why the Flux?</h2>
-<p>Well, in May, the United States government ramped up its efforts against Russian cybercrime by <a href="https://www.state.gov/reward-offers-for-information-to-bring-conti-ransomware-variant-co-conspirators-to-justice/">offering</a> up to $15 million for prized information about Conti, then the world’s foremost ransomware gang. “It is likely that the threat actors that were undergoing structural changes,” the authors of the report speculated, “and have begun settling into their new modes of operating, resulting in their total compromises increasing in conjunction.”</p>
-<p>Hiveleaks and BlackBasta are the result of that restructuring. Both groups are “associated with Conti,” the authors noted, Hiveleaks as an affiliate and BlackBasta as a replacement strain. “As such, it appears that it has not taken long for Conti’s presence to filter back into the threat landscape, albeit under a new identity.”</p>
-<p>Now that Conti’s properly split in two, the authors speculated, “it would not be surprising to see these figures further increase as we move into August.”</p>
-											
-										</div></div>
+    <p>Lockbit is by far this summer’s most prolific ransomware group, trailed by two offshoots of the Conti group.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

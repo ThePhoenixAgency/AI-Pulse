@@ -1,306 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4</h1>
   <div class="metadata">
-    Source: OMG! Ubuntu | Date: 2/8/2026 | Lang: EN |
-    <a href="https://www.omgubuntu.co.uk/2026/02/linux-6-19-kernel-features-amd-performance" target="_blank">Original Article</a>
+    Source: OMG! Ubuntu | Date: 2/8/2026 4:35:47 AM | <a href="https://www.omgubuntu.co.uk/2026/02/linux-6-19-kernel-features-amd-performance" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-                        
-<p><strong>Linus Torvalds has <a href="https://lkml.org/lkml/2026/2/8/418" target="_blank">released</a> Linux 6.19 kernel, moving legacy AMD Radeon GPUs to the modern </strong><code>amdgpu</code><strong> driver and enabling larger block sizes in ext4 for improved storage performance.</strong></p>
-
-
-
-<p>The AMD driver switch brings native Vulkan support to the Radeon R9 290 and HD 7000 series GPUs, while the ext4 filesystem breaks the 4KB page size limit to improve write operations by up to 50%.</p>
-
-
-
-<p><a href="https://lwn.net/Articles/1055839/?ref=omgubuntu.co.uk" target="_blank">Following a one-week delay,</a> this kernel saw an extended eight-week development cycle. As Ubuntu 26.04 LTS will ship with the next kernel release, officially named Linux 7.0, current Ubuntu users can install mainline 6.19 builds via unsupported methods.</p>
-
-
-
-<p>Linux 6.19 also introduces HDR colour pipeline support, better hardware compatibility for the Steam Deck and ROG Ally, and filesystem optimisations that go beyond the headline improvements.</p>
-
-
-
-<h2>What’s New in Linux 6.19? </h2>
-
-
-
-<h3>Older AMD Radeon GPUs Get Native Vulkan on Linux</h3>
-
-
-
-<p>Got an old AMD GPU gathering dust in a drawer? Linux 6.19 gives you a reason to dig it out.</p>
-
-
-
-<p>Thanks to work by Valve’s <em>Timur Kristóf</em>, this kernel breathes new life into AMD’s “Southern Islands” (GCN 1.0) and “Sea Islands” (GCN 1.1) cards by switching them to the modern <code>amdgpu</code> driver rather than the legacy <code>radeon</code> driver.</p>
-
-
-
-<p>Cards like the<strong>AMD Radeon HD 7970, R9 280 and R9 290X</strong> are gaining native RADV Vulkan support as a result. Under specific OpenGL and Vulkan workloads, <a href="https://www.phoronix.com/review/linux-619-amdgpu-radeon" target="_blank">benchmarks show</a> a performance boost of up to 40% – impressive for 2012-era GPUs in 2026!</p>
-
-
-
-<p>Of course, that leap is both comparative and a ‘best-case’ scenario. But enabling older cards to work with modern translation layers like <strong>DXVK and Proton</strong> does mean that a library of games that didn’t work well on the legacy driver, may now run decently.</p>
-
-
-
-<h3>DRM Colour Pipeline API Brings Hardware-Accelerated HDR</h3>
-
-
-
-<p>Linux 6.19 introduces the <strong>DRM Color Pipeline API</strong>, which paves the way for hardware-accelerated HDR on the Linux desktop.</p>
-
-
-
-<p>This API enables HDR colour transformation to be handled on dedicated colour-processing hardware (like <strong>AMD’s display engine</strong>) rather than using GPU shaders (which use the same GPU processing cores your games do).</p>
-
-
-
-<p>As a result, the system should respond to HDR content changes, and potentially reduce power usage and extend battery life on handhelds and laptops.</p>
-
-
-
-<p>Not that any of this  just “magically” works. It relies on compatible GPUs with the right ‘blocks’, and desktops environments and compositors will need to be updated to make use of the new API kernel paths that enable it – as GNOME and KDE are doing.</p>
-
-
-
-<p>But, with Linux 6.19 providing the underlying pieces, we’re a step closer to having stable, power-efficient HDR on Linux.</p>
-
-
-
-<h3>ext4 Gets Larger Block Sizes and Performance Tweaks</h3>
-
-
-
-<p>As mentioned, the ext4 filesystem can now support block sizes larger than the system page size. This makes saving, archive extraction and large file copying more efficient since the system has to juggle fewer, larger chunks of data than before.</p>
-
-
-
-<p>This change may <strong>improve buffered I/O write performance </strong>by up to 50%, but like all benchmarks, those are raw figures under specific idealised workloads. Direct I/O performance can decrease with larger block sizes, so real-world gains may be more modest.</p>
-
-
-
-<p>Linux 6.19 also introduces smarter caching of folder permissions (POSIX Access Control Lists, or ACLs) on ext4 filesystems. In earlier versions, the kernel verifies your access rights every time you open a folder of files, even if said files don’t use ACLs (spoiler: most don’t).</p>
-
-
-
-<p>But ‘smarter’ caching in 6.19 means the kernel can remember if a file/folder does not have a POSIX ACL and skip checking in the future. Performance gains from this tweak aren’t individually huge, but cumulative; folders with 100s of files will load a smidgen faster.</p>
-
-
-
-<p>Other ext4 changes include <strong>per-CPU caching </strong>for disk requests. This reduces CPU usage during heavy workloads by giving each processor core its own ‘path’ to talk to the storage system, eliminating the bottleneck where processor cores had to wait their turn.</p>
-
-
-
-<p>In some use cases where page cache is bypassed, performance could be worse, but generally standard file writes are improved (how much will vary by workload and drive). It’ll be interesting to see how real-world benchmarks bear this change out.</p>
-
-
-
-<p><strong>However, these improvements are primarily for buffered I/O workloads—direct I/O performance may actually decrease with larger block sizes, so users should choose their block size based on their specific use case</strong></p>
-
-
-
-<p>Rounding things out is an improved approach to <strong>online defragmentation</strong> using folios, rather than buffer heads. </p>
-
-
-
-<p>Defragging may give a few of you scary Windows flashbacks, but it’s how ext4 keeps data ordered as the system is running. Folios bring more efficient memory management and greater ‘throughput’, so the kernel can reorganise files faster and put less strain on the CPU.</p>
-
-
-
-<h3>Mainline ROG Ally and Steam Deck Support</h3>
-
-
-
-<p>Linux 6.19 also sees the <strong>ASUS ROG Ally</strong> gain mainline kernel support for hardware controls.</p>
-
-
-
-<p>The new ASUS Armoury driver (<code>asus-armoury</code>) exposes BIOS-level VRAM allocation, TDP limits and power profiles via <code>sysfs</code>, so users can tweak performance and extend battery life without needing to rely on Windows-only tools.</p>
-
-
-
-<p>Valve’s indomitable Steam Deck isn’t left out. </p>
-
-
-
-<p>Linux 6.19 adds the <strong>Steam Deck</strong>‘s APU ID to the <code>k10temp</code> driver. If you run Ubuntu (or another distro) on your Steam Deck with this kernel, temperature monitoring will work out of the box, something that previously needed Valve’s specific kernel patches.</p>
-
-
-
-<h3>Laptop &amp; Motherboard Hardware Support Expands</h3>
-
-
-
-<p>An updated <strong>Alienware WMI WMAX driver</strong> adds<strong> </strong>support for the Area-51, x16 and 16X laptops. Power mode switching, thermal controls and other features found in the Alienware Command Center (AWCC) are all available in Linux 6.19.</p>
-
-
-
-<p>Users of older <strong>TUXEDO laptops</strong> can access battery charge rate limiting and RGB controls on selected models via the newly upstreamed Uniwell laptop driver, and the <strong>Lenovo IdeaPad</strong> now has Rapid Charge support on Linux for fast battery top-ups. </p>
-
-
-
-<p>The <code>asus-nb-wmi</code> driver now supports the display toggle key on the <strong>ASUS Zenbook 14</strong>. The Zenbook UX425QA and UM425QA models benefit from assorted fixes in the <code>i8042</code> driver.</p>
-
-
-
-<p>With this update, it’s now possible to monitor temperature, power and current stats on select Apple Silicon devices via the new <code>macsmc_hwmon</code> driver, and to read and control fan speed through the System Management Controller (SMC).</p>
-
-
-
-<p>On the desktop side, a slew of <strong>ASUS motherboards gain sensor support,</strong> including the ROG STRIX X470-I GAMING, ROG STRIX X870-F GAMING WIFI, and ROG STRIX X870E-H GAMING WIFI-7 for CPU, package, motherboard and VRM temperature reading.</p>
-
-
-
-<h3>Live Update Orchestrator </h3>
-
-
-
-<p>Not a desktop-oriented feature, but this kernel merges Google’s <strong>Live Update Orchestrator (LUO)</strong> code, which changes the way kernel updates work in cloud environments and hypervisors, i.e., places where a regular “reboot” would result in expensive downtime. </p>
-
-
-
-<p>The LUO is a subsystem able to manage “warm” reboots via the <strong>Kexec Handover (KHO) framework</strong>, working across four distinct states: Normal, Prepared, Frozen, and Updated.</p>
-
-
-
-<p>This means the kernel can preserve the state of selected resources, like <code>memfd</code> file descriptors, during the transition from one kernel version to another. Without the need for a full hardware reboot, upgrades go from taking minutes to a few milliseconds. </p>
-
-
-
-<p>Wondering if that’s what Ubuntu’s Live Patch does? No; Live Patch only applies kernel <em>patches</em> to the current kernel without the need for a reboot. It isn’t able to switch out the entire kernel without a reboot.</p>
-
-
-
-<h3>Blue Screen Panic Support Expands to More GPUs</h3>
-
-
-
-<p>Usually, if the Linux kernel hits an issue during booting it… goes black. In recent versions of the Linux kernel, work has gone in to showing a “Blue Screen” message during critical kernel errors to give users some idea of what went wrong.</p>
-
-
-
-<p>In 6.19, the kernel’s ‘Blue Screen’ messages expand to work on more types of hardware.</p>
-
-
-
-<p>The <strong>Intel GPU driver</strong> adds DRM Panic support in this release, allowing “Blue Screen of Death” messages to show for users on Intel integrated and discrete graphics, as does the modern amdgpu driver (which, as noted earlier, now supports older Radeon GPUs too).</p>
-
-
-
-<p>As the blue screen is shown on the display with info, it needs to show even when things are really screwed up – like when the system’s main memory is corrupted. Kernel 6.19 allows panic support to work directly on VRAM.</p>
-
-
-
-<h3>Assorted Changes</h3>
-
-
-
-<p>There’s a lot more to this kernel update than the key highlights above. </p>
-
-
-
-<p>Other changes deliver pronounced improvements, not least in the <strong>networking stack </strong>where 6.19 touts a “4x improvement” in heavy transfer (TX) workloads. This is achieved by replacing the standard ‘busy lock’ in the transfer queueing layer with a lock-less list.</p>
-
-
-
-<p>Wow-sounding though this is, don’t expect an uptick in general computing. The change largely benefits high-density AI/ML clusters and networked GPU environments, i.e., high-end networking – no, streaming YouTube in 4K doesn’t count ;). </p>
-
-
-
-<p><strong>Rust integration </strong>continues, with 6.19 adding new module parameters to offer parity with traditional C drivers as well as the first abstractions for <strong>I2C (Inter-Integrated Circuit) bus drivers </strong>written in Rust.</p>
-
-
-
-<p>Other changes:</p>
-
-
-
-<ul>
-<li><strong>Removal of the named ‘genocide’ function</strong>, now <code>kill_litter_super</code></li>
-
-
-
-<li><strong>Hyper-V L1VH mode</strong> lets Linux hypervisors drive Azure hosts</li>
-
-
-
-<li><strong>New console font</strong> ‘Terminus 10×18’</li>
-
-
-
-<li><strong>Btrfs scrub and device replace</strong> now suspend properly during system sleep</li>
-
-
-
-<li><strong>Realtek RTW89 support</strong> for RTL8922DE (Wi-Fi 7)</li>
-
-
-
-<li><strong>Adreno X2-85 GPU mainline support</strong> for Snapdragon X2 Elite ARM laptops</li>
-
-
-
-<li><strong>Parallel CPU hot-plugging support </strong>(RISC-V)</li>
-
-
-
-<li><strong>Initial Intel Xe3P graphics</strong> for upcoming Nova Lake processors</li>
-
-
-
-<li><strong>PCIe Link Encryption</strong>  for confidential VMs </li>
-</ul>
-
-
-
-<p>In all, a solid kernel update – well worth the extra week’s wait!</p>
-
-
-
-<p>The HDR graphics support will bear fruit in the long term as compositors and hardware make use of it, but the ext4 optimisations will be felt by most and AMD GPU support changes will deliver immediate benefits if you own older Radeon cards. </p>
-
-
-
-<h2>Getting Linux 6.19 in Ubuntu</h2>
-
-
-
-<p>If you’re reading from Ubuntu you won’t get an update to Linux kernel 6.19 automatically. To benefit from the latest changes you need to install Linux 6.19 yourself via unofficial means, be that a mainline kernel PPA, DEB packages or compiling the kernel from source.</p>
-
-
-
-<p>Installing Canonical’s mainline kernel builds is not recommended in most cases. They lack certain enablements and hooks that certified Ubuntu Linux kernels do offer. If your system is working well, don’t be impatient to upgrade, however easy some methods may make it.</p>
-
-
-
-<p>Ubuntu 26.04 LTS is out in April 2026 and will ship with the Linux 7.0 kernel by default. That will contain all of the improvements here, plus the next batch.</p>
-                                            </div></div>
+    <p>Linux 6.19 brings native Vulkan support to older AMD Radeon GPUs, hardware-accelerated HDR via the DRM Colour Pipeline API and ext4 speed boosts.
+You're reading Linux 6.19: 40% Speed Boost on Old AMD GPUs &amp; Faster Ext4, a blog post from OMG! Ubuntu. Do not reproduce elsewhere without permission.</p>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Sheaves Ready To Play A Bigger Role In Linux 7.0</title>
 <style>
@@ -23,12 +21,11 @@
 <body>
   <h1>Sheaves Ready To Play A Bigger Role In Linux 7.0</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/13/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/Linux-7.0-Slab-Sheaves" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/13/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
-<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp" /></p><p>
+<p><img alt="LINUX KERNEL" src="https://www.phoronix.com/assets/categories/linuxkernel.webp"></p><p>
 The slab memory allocator feature updates have been merged for the <a href="https://www.phoronix.com/search/Linux+7.0">Linux 7.0</a> kernel. Most notable this cycle is expanded use of the recently-introduced Sheaves functionality.
 </p><p>
 <a href="https://www.phoronix.com/news/Linux-6.18-Slab-Sheaves">Merged back in Linux 6.19 was Sheaves</a> as what began as <a href="https://www.phoronix.com/news/Linux-6.18-Likely-Sheaves">an opt-in, per-CPU array-based caching layer</a> with <a href="https://www.phoronix.com/news/Linux-Sheaves-AMD-Performance">the potential of further helping Linux performance</a>. Now with Linux 7.0 the Sheaves functionality is taking on a much bigger role.
@@ -41,5 +38,5 @@ The <a href="https://lore.kernel.org/lkml/34ac32fe-e082-485b-bead-4e6b9ae6a153@s
   The lockless slab freelist+counters update operation using try_cmpxchg128/64 remains and is crucial for freeing remote NUMA objects, and to allow flushing objects from sheaves to slabs mostly without the node list_lock."</p></blockquote>
 <p>The merged slab code for Linux 7.0 also elimates slabobj_ext metadata overhead where possible as an efficiency improvement by reusing leftover space in a slab or per-object padding.</p></div></div>
   </div>
-</body>
-</html>
+
+</body></html>

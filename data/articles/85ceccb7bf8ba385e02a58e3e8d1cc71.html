@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Trump lashes out at California governor’s green energy deal with UK</title>
 <style>
@@ -24,29 +22,28 @@
 <body>
   <h1>Trump lashes out at California governor’s green energy deal with UK</h1>
   <div class="metadata">
-    Source: The Guardian World | Date: 2/16/2026 7:23:52 PM | Lang: EN |
-    <a href="https://www.theguardian.com/us-news/2026/feb/16/gavin-newsom-a-loser-says-trump-california-green-energy-deal-uk" target="_blank">Original Article</a>
+    Source: The Guardian World | Date: 2/16/2026 8:23:52 PM | <a href="https://www.theguardian.com/us-news/2026/feb/16/gavin-newsom-a-loser-says-trump-california-green-energy-deal-uk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div><p>Donald Trump has vented his fury against a green energy deal between the British government and California’s governor, Gavin Newsom, a likely future Democratic <a href="https://www.theguardian.com/us-news/2025/oct/26/gavin-newsom-2028-presidential-race">presidential candidate</a>.</p><p>“The UK’s got enough trouble without getting involved with Gavin Newscum,” Trump said in an <a href="https://www.politico.com/news/2026/02/16/trump-calls-gavin-newsoms-clean-energy-deal-with-the-u-k-inappropriate-00782974?utm_content=politico/magazine/Politics&amp;utm_source=flipboard">interview with Politico,</a> using the derogatory nickname he reserves for Newsom. “Gavin is a loser. Everything he’s touched turns to garbage. His state has gone to hell, and his environmental work is a disaster.”</p><p>In an intervention that is likely to be clocked by British government officials wary of potential new landmines in the UK’s relationship with the White House, Trump went on to say it was “inappropriate” for Newsom to strike such agreements and “inappropriate for them [the UK] to be dealing with him”.</p><p>Newsom, one of the loudest domestic opponents of the US president on issues ranging from ICE deportation raids to the climate crisis, signed a memorandum of understanding in London with the UK’s energy secretary, <a href="https://www.theguardian.com/politics/edmiliband">Ed Miliband</a>.</p><p>Their agreement is aimed at deepening existing cooperation between the UK and California and creates a new framework to scale up clean energy technologies and enhance ties between businesses and researchers in Britain and the US state, which is in effect the world’s <a href="https://www.bbc.co.uk/news/articles/cly80zlk1lyo">fourth largest</a> global economy.</p><p>The UK and <a href="https://www.theguardian.com/us-news/california">California</a> will also share practical expertise on protecting biodiversity and building resilience amid extreme weather, Miliband’s department announced on Monday.</p><p>Miliband said: “Strong international partnerships like today’s announcement with the state of California strengthen opportunities for UK businesses and secure investment for our country.”</p><p>The signing follows their meeting in New York in September. On Monday in London, Newsom and Miliband also discussed AI and the implications for energy, and lessons from California’s wildfires – over which Trump and Newsom have clashed, the US president blaming them on the state’s management of fires.</p><p>A source close to Miliband said: “It was a productive meeting based on the huge clean energy jobs and investment opportunities that the UK and California can bring to one another.”</p><p>Newsom was in London just after attending the Munich Security Conference, where he said: “Donald Trump’s administration is temporary. California’s commitment is not.”</p><p>The governor also used his visit to Europe to continue cultivating European leaders who have been notably outspoken in their opposition to policies pursued by the Trump administration.</p><p>Last week he met Spain’s prime minister, Pedro Sánchez, who was quick to <a href="https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/presidencia/Documents/040126%20Comunicado%20VENEZUELA.pdf">join Latin American countries</a> in condemning the recent US military intervention in Venezuela, and the German chancellor, Friedrich Merz, who used an appearance in Munich to <a href="https://www.theguardian.com/world/2026/feb/13/us-not-powerful-enough-to-go-it-alone-merz-tells-munich-conference">criticise Trump’s reorientation of US foreign policy</a>.</p><p>Both Newsom and Miliband are bete noires for the new populist right. Nigel Farage, the leader of the hard-right Reform UK party, said on Monday that he believed Miliband was the most likely candidate to take over from Keir Starmer if the latter is forced out in the event of a disastrous Labour party performance in upcoming local elections. Farage said Labour would then “shift to the left”.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

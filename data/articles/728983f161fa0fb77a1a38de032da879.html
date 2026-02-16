@@ -1,198 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>SwitchBot Hub IA : un vrai cerveau local pour votre maison connectée, avec OpenClaw, Frigate, et Home Assistant - Maison et Domotique</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>SwitchBot Hub IA : un vrai cerveau local pour votre maison connectée, avec OpenClaw, Frigate, et Home Assistant - Maison et Domotique</h1>
   <div class="metadata">
-    Source: Maison et Domotique | Date: 2/10/2026 | Lang: FR |
-    <a href="https://www.maison-et-domotique.com/167946-switchbot-hub-ia-un-vrai-cerveau-local-pour-votre-maison-connectee-avec-openclaw-frigate-et-home-assistant/" target="_blank">Original Article</a>
+    Source: Maison et Domotique | Date: 2/10/2026 6:12:00 AM | <a href="https://www.maison-et-domotique.com/167946-switchbot-hub-ia-un-vrai-cerveau-local-pour-votre-maison-connectee-avec-openclaw-frigate-et-home-assistant/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><article>
-                                                    
-                             
-                                                                        					                        
-                                       
-                                                  
-
-                        
-<p>Après une <a href="https://www.maison-et-domotique.com/166749-switchbot-ces-2026/">présentation rapide au CES de Las Vegas</a> en début d’année, SwitchBot vient d’officialiser le lancement de son <a href="https://eu.switch-bot.com/products/switchbot-ai-hub/?sca_ref=1022356.4i7fixtDp6&amp;utm_source=uppromote&amp;utm_medium=affiliate&amp;utm_campaign=1022356" target="_blank">SwitchBot Hub IA</a>, avec une promesse qui parle tout de suite aux passionnés de maison connectée : faire tourner un “agent” IA à domicile, en local, et pas sur un serveur quelque part dans le monde. Le Hub IA est présenté comme le premier agent IA domestique local compatible OpenClaw (framework open source d’agents IA autonomes).</p>
-
-
-
-
-<p>L’idée n’est pas de rajouter “encore une IA”, mais de réunir au même endroit trois briques qui, séparées, existent déjà chez beaucoup de gens : un hub domotique (pour piloter des appareils), une partie vidéo (caméras / sonnette), et une couche d’analyse capable de comprendre une scène et d’en tirer des actions. C’est exactement le positionnement annoncé : calcul en périphérie (edge), modèles vision-langage (VLM) pour interpréter ce qui se passe, automatisations pilotées par l’IA, et un rôle de NVR local via Frigate.</p>
-
-
-
-<h2>OpenClaw : piloter la maison… depuis ses applis de messagerie</h2>
-
-
-
-<p>Le point le plus original, c’est l’intégration d’OpenClaw. SwitchBot annonce la prise en charge officielle de l’exécution d’OpenClaw sur le Hub IA d’ici fin février, via mise à jour. Concrètement, OpenClaw devient un “contact bot” que l’on peut solliciter dans jusqu’à 50 applications de messagerie, dont WhatsApp, iMessage et Discord.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-06-1x-76e19db0-beea-4828-bffa-0c24a5c03b5d.webp" alt="ai hub en amazon images 1600x1600 06 1x 76e19db0 beea 4828 bffa 0c24a5c03b5d" /></figure>
-
-
-
-<p>Le scénario est simple à imaginer : au lieu d’ouvrir trois apps (caméra, domotique, serrure), vous posez une question en langage naturel. “Quelqu’un est passé devant la porte ?”, “Montrez-moi la caméra du salon”, “Éteignez les lumières du rez-de-chaussée”, “Lancez le mode absence”. SwitchBot indique aussi qu’OpenClaw peut accéder à des appareils et plateformes tierces via les Skills appropriées, notamment Home Assistant, Apple Home et Google Home.</p>
-
-
-
-
-<p>Si SwitchBot insiste autant sur la compatibilité OpenClaw, ce n’est pas un hasard : OpenClaw est devenu en quelques semaines l’un des frameworks “agentiques” les plus commentés du moment, parce qu’il coche exactement les cases que le grand public attend d’une IA. Pas une IA qui répond, mais une IA qui agit. Le concept est simple : au lieu de multiplier les applications, l’agent devient un “contact” que l’on sollicite depuis les messageries déjà utilisées au quotidien (WhatsApp, Telegram, Discord, etc.), et il exécute ensuite des actions concrètes via des “Skills” (extensions) et des intégrations.</p>
-
-
-
-<p>Cette approche “chat-first” explique une bonne partie de l’engouement. Pour beaucoup d’utilisateurs, c’est plus naturel d’écrire “mets la maison en mode absence” dans une conversation que d’aller ouvrir une app domotique, naviguer dans des menus, puis valider une scène. C’est aussi ce qui rend OpenClaw très viral : une démo se comprend en 10 secondes, et l’usage est immédiat.</p>
-
-
-
-<p><a href="https://openclaw.ai/" target="_blank">OpenClaw</a> est un projet open source qui a connu une montée en popularité fulgurante depuis son lancement récent. Il a aussi été beaucoup commenté parce qu’il a changé de nom au fil de son ascension (ClawdBot / MoltBot / OpenClaw), ce qui a renforcé sa présence dans l’actu tech.</p>
-
-
-
-<p>Mais la vraie du “buzz”, c’est l’écosystème de Skills. C’est ce qui transforme un agent générique en assistant réellement utile, capable d’interagir avec des services, des appareils, des fichiers, voire d’exécuter des tâches sur une machine locale. C’est puissant… </p>
-
-
-
-<p>Dans le cas du Hub IA SwitchBot, l’intérêt est clair : OpenClaw devient la couche conversationnelle “universelle” au-dessus de la maison. SwitchBot annonce la prise en charge officielle de l’exécution d’OpenClaw sur le Hub IA d’ici fin février, puis l’accès aux “SwitchBot Skills” d’ici fin mars, afin de piloter depuis les messageries les appareils rattachés au Hub IA et les automatisations créées sur le Hub.<br />Et SwitchBot cite aussi des passerelles possibles vers des plateformes tierces comme Home Assistant, Apple Home ou Google Home via les Skills adaptées, ce qui peut devenir très intéressant dans une maison déjà multi-marques !</p>
-
-
-
-<h2>Une IA qui “voit” : le VLM au service de la sécurité, des proches… et des animaux</h2>
-
-
-
-<p>Là où beaucoup de hubs restent cantonnés à “si capteur alors action”, SwitchBot met l’accent sur la compréhension d’événements du monde réel via la vidéo. Le Hub IA peut fonctionner avec les caméras SwitchBot Pan/Tilt 2K/3K Plus, la sonnette vidéo SwitchBot, mais aussi des caméras RTSP tierces.</p>
-
-
-
-<p>Grâce aux modèles vision-langage (VLM), l’objectif est de produire autre chose qu’un simple clip de mouvement : une description claire de l’événement, des résumés, des rapports quotidiens, de la recherche “intelligente” dans les séquences, et des alertes plus précises.<br />SwitchBot donne des exemples très parlants d’événements reconnus (chute d’une personne âgée, animal qui sort, activité inhabituelle).</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-00-1x-63aa5af8-e3cf-4fce-be35-af6d34c560df.webp" alt="ai hub en amazon images 1600x1600 00 1x 63aa5af8 e3cf 4fce be35 af6d34c560df" /></figure>
-
-
-
-<p>Et c’est là que le Hub IA devient intéressant en domotique : ces résumés IA peuvent servir de déclencheurs d’automatisation, pour créer rapidement des scénarios orientés sécurité, “care” (surveillance bienveillante) ou animaux.<br />On n’est plus seulement sur “détection de mouvement”, mais sur “interprétation”, puis action.</p>
-
-
-
-<h2>Frigate intégré : un NVR local (jusqu’à 8 caméras) et du stockage extensible</h2>
-
-
-
-<p>SwitchBot annonce un système NVR local basé sur Frigate, avec prise en charge jusqu’à huit caméras et enregistrement local gratuit, plus une vue “écran unique” pour surveiller la maison.</p>
-
-
-
-<p>Le fait que SwitchBot s’appuie sur Frigate mérite aussi qu’on s’y attarde un peu plus, parce que ce n’est pas un simple module “NVR”. Frigate s’est fait une place particulière dans l’univers Home Assistant car il combine enregistrement vidéo local et détection d’objets en temps réel, le tout sans dépendre du cloud. La philosophie est assumée : un NVR complet, local, pensé pour Home Assistant, capable de faire de la détection IA sur des flux de caméras IP. Je vous l’avais d’ailleurs présenté lors d’un guide expliquant <a href="https://www.maison-et-domotique.com/146929-installation-frigate-mini-pc-nipogi-gk3-plus/">comment installer Frigate sur un mini PC</a>, pour l’intégrer ensuite à Home Assistant.</p>
-
-
-
-<p>Ce qui fait la différence au quotidien, c’est la façon dont Frigate structure l’analyse vidéo. Il s’appuie sur la détection de mouvement comme premier filtre, puis lance l’analyse d’objets quand il y a “quelque chose qui se passe” dans l’image. C’est exactement ce qui permet de limiter la charge, tout en évitant de lancer de l’IA en permanence sur chaque frame.<br />Ensuite, tout l’art consiste à “dompter” la scène, et Frigate fournit pour ça des outils très concrets, connus de ceux qui ont déjà mis les mains dedans.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-01-1x-3ac11fbf-a9f3-429b-bce0-1c83f980e2dd.webp" alt="ai hub en amazon images 1600x1600 01 1x 3ac11fbf a9f3 429b bce0 1c83f980e2dd" /></figure>
-
-
-
-<p>Il y a d’abord les masques de mouvement : ils servent à ignorer certaines zones qui déclenchent de faux positifs (un timestamp incrusté, le ciel, des reflets, une route au loin). C’est un point clé pour rendre un système fiable, surtout en extérieur.<br />Il y a ensuite les zones, qui permettent de raisonner en “endroits” plutôt qu’en caméras. Au lieu de dire “détection sur caméra entrée”, on peut dire “détection dans la zone perron” ou “dans la zone allée”, et même gérer des notions comme le “loitering”, c’est-à-dire un objet qui reste anormalement longtemps dans une zone (typique pour détecter quelqu’un qui traîne devant une porte).</p>
-
-
-
-<p>Et surtout, Frigate est redoutable pour la domotique car il expose ses informations via MQTT et via l’intégration Home Assistant. Concrètement, Home Assistant récupère des entités et des capteurs (compteurs d’objets actifs, états par caméra ou par zone), ce qui permet de déclencher des automatisations très fines : allumer un éclairage seulement si une “personne” est détectée dans la zone entrée, déclencher une alarme si un “véhicule” est détecté sur l’allée en mode absence, envoyer une notification uniquement si un “colis” apparaît dans la zone porche, etc.</p>
-
-
-
-<p>Pour finir, Frigate ne se limite pas à “détecter”. Il gère aussi une logique de conservation et de rétention (enregistrer selon mouvement/objets, conserver plus longtemps ce qui est jugé important, garder des snapshots), avec une approche très pragmatique pour équilibrer pertinence et stockage.<br />C’est précisément cette philosophie “local, structuré, exploitable par Home Assistant” qui explique pourquoi Frigate revient si souvent dans les tutos, et pourquoi son intégration annoncée par SwitchBot est intéressante : si le Hub IA tient la promesse d’un Frigate “prêt à l’emploi” jusqu’à 8 caméras et stockage extensible (jusqu’à 16 To via disque externe), cela peut abaisser drastiquement la barrière d’entrée pour tous ceux qui veulent une vidéo intelligente sans serveur dédié.</p>
-
-
-
-<p>En pratique, ça répond à une demande très concrète : conserver la vidéo chez soi, limiter la dépendance au cloud, et éviter de multiplier les boîtiers (NVR d’un côté, hub domotique de l’autre…).</p>
-
-
-
-<h2>Un “hub de plus” ? Pas vraiment : pont Matter, écosystème SwitchBot et ouverture domotique</h2>
-
-
-
-<p>Le Hub IA est aussi présenté comme le premier hub “edge” de SwitchBot : il se connecte à plus de 100 appareils SwitchBot et fait pont Matter pour jusqu’à 30 appareils SwitchBot.<br />Il gère le Wi-Fi bi-bande et étend la portée Bluetooth, avec une portée annoncée jusqu’à 200 mètres en environnement dégagé.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-07-1x-1.webp" alt="ai hub en amazon images 1600x1600 07 1x 1" /></figure>
-
-
-
-<p>Point qui va parler aux utilisateurs avancés : le fabricant évoque Home Assistant “pré-installé”. Il s’agit en fait d’une “installation optionnelle de Home Assistant”, dans l’idée d’offrir une base stable et réactive pour l’intelligence de toute la maison.<br />Autrement dit, SwitchBot vise autant le grand public (app SwitchBot, scènes simples) que ceux qui veulent une couche plus puissante au-dessus.</p>
-
-
-
-<h2>Cas d’usage : ce que ça change vraiment dans une maison connectée</h2>
-
-
-
-<p>Le Hub IA sait “faire” en solo (compréhension VLM, automatisations IA, NVR Frigate, hub SwitchBot), et quand on ajoute OpenClaw, on obtient une couche conversationnelle capable d’aller interroger l’état de la maison, de renvoyer des images, d’actionner des équipements, et même de proposer des actions de façon proactive.</p>
-
-
-
-<p>Un exemple donné est parlant : quelqu’un sonne. La sonnette détecte une présence, le Hub IA capture l’événement, et OpenClaw envoie une image dans l’application de messagerie habituelle pour vous laisser décider si la porte doit être déverrouillée à distance (par exemple via une serrure SwitchBot).<br />C’est typiquement le genre de “petit pont” entre vidéo et action qui manque souvent dans les installations multi-marques.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/15.jpg" alt="15" /></figure>
-
-
-
-<p>Autre exemple très réaliste : vous recevez un résumé clair plutôt qu’une avalanche de notifications “mouvement détecté”. Et si le résumé correspond à votre contexte (animal seul à la maison, proche âgé, mode absence), l’automatisation peut enclencher l’action adaptée : éclairage, sirène, message, enregistrement, etc.</p>
-
-
-
-<h2>Conclusion</h2>
-
-
-
-<p>Le SwitchBot Hub IA est annoncé au <a href="https://eu.switch-bot.com/products/switchbot-ai-hub/?sca_ref=1022356.4i7fixtDp6&amp;utm_source=uppromote&amp;utm_medium=affiliate&amp;utm_campaign=1022356" target="_blank">prix public conseillé de 259,99</a> € (via son site officiel, ainsi que sur Amazon). A noter que vous pouvez bénéficier de 20% grâce au code <strong>MKMK20</strong> pour son lancement.<br />L’exécution d’OpenClaw sur le Hub IA est annoncée pour fin février, et l’accès élargi aux SwitchBot Skills via OpenClaw pour fin mars.</p>
-
-
-    
- 
-
-
-
-<p>Sur le papier, SwitchBot coche plusieurs cases que beaucoup cherchaient sans forcément vouloir monter un mini-serveur à la maison : IA locale “always-on”, vidéo centralisée façon NVR, compatibilité RTSP, pont Matter, et une ouverture vers des plateformes comme Home Assistant.</p>
-
-
-
-<p>Si les promesses VLM (résumés fiables, déclencheurs pertinents, alertes plus intelligentes) tiennent en conditions réelles, le Hub IA pourrait devenir un vrai pivot entre sécurité, confort et domotique multi-écosystèmes… et pas juste “un hub de plus” sur l’étagère. En tout cas c’est un produit qui m’interpelle beaucoup, et j’espère pouvoir vous en proposer un test complet très bientot !</p>
-
-
-                    </article></div>
+    <div><article> <p>Après une <a href="https://www.maison-et-domotique.com/166749-switchbot-ces-2026/">présentation rapide au CES de Las Vegas</a> en début d’année, SwitchBot vient d’officialiser le lancement de son <a href="https://eu.switch-bot.com/products/switchbot-ai-hub/?sca_ref=1022356.4i7fixtDp6&amp;utm_source=uppromote&amp;utm_medium=affiliate&amp;utm_campaign=1022356" target="_blank">SwitchBot Hub IA</a>, avec une promesse qui parle tout de suite aux passionnés de maison connectée : faire tourner un “agent” IA à domicile, en local, et pas sur un serveur quelque part dans le monde. Le Hub IA est présenté comme le premier agent IA domestique local compatible OpenClaw (framework open source d’agents IA autonomes).</p> <p>L’idée n’est pas de rajouter “encore une IA”, mais de réunir au même endroit trois briques qui, séparées, existent déjà chez beaucoup de gens : un hub domotique (pour piloter des appareils), une partie vidéo (caméras / sonnette), et une couche d’analyse capable de comprendre une scène et d’en tirer des actions. C’est exactement le positionnement annoncé : calcul en périphérie (edge), modèles vision-langage (VLM) pour interpréter ce qui se passe, automatisations pilotées par l’IA, et un rôle de NVR local via Frigate.</p> <h2>OpenClaw : piloter la maison… depuis ses applis de messagerie</h2> <p>Le point le plus original, c’est l’intégration d’OpenClaw. SwitchBot annonce la prise en charge officielle de l’exécution d’OpenClaw sur le Hub IA d’ici fin février, via mise à jour. Concrètement, OpenClaw devient un “contact bot” que l’on peut solliciter dans jusqu’à 50 applications de messagerie, dont WhatsApp, iMessage et Discord.</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-06-1x-76e19db0-beea-4828-bffa-0c24a5c03b5d.webp" alt="ai hub en amazon images 1600x1600 06 1x 76e19db0 beea 4828 bffa 0c24a5c03b5d"></figure> <p>Le scénario est simple à imaginer : au lieu d’ouvrir trois apps (caméra, domotique, serrure), vous posez une question en langage naturel. “Quelqu’un est passé devant la porte ?”, “Montrez-moi la caméra du salon”, “Éteignez les lumières du rez-de-chaussée”, “Lancez le mode absence”. SwitchBot indique aussi qu’OpenClaw peut accéder à des appareils et plateformes tierces via les Skills appropriées, notamment Home Assistant, Apple Home et Google Home.</p> <p>Si SwitchBot insiste autant sur la compatibilité OpenClaw, ce n’est pas un hasard : OpenClaw est devenu en quelques semaines l’un des frameworks “agentiques” les plus commentés du moment, parce qu’il coche exactement les cases que le grand public attend d’une IA. Pas une IA qui répond, mais une IA qui agit. Le concept est simple : au lieu de multiplier les applications, l’agent devient un “contact” que l’on sollicite depuis les messageries déjà utilisées au quotidien (WhatsApp, Telegram, Discord, etc.), et il exécute ensuite des actions concrètes via des “Skills” (extensions) et des intégrations.</p> <p>Cette approche “chat-first” explique une bonne partie de l’engouement. Pour beaucoup d’utilisateurs, c’est plus naturel d’écrire “mets la maison en mode absence” dans une conversation que d’aller ouvrir une app domotique, naviguer dans des menus, puis valider une scène. C’est aussi ce qui rend OpenClaw très viral : une démo se comprend en 10 secondes, et l’usage est immédiat.</p> <p><a href="https://openclaw.ai/" target="_blank">OpenClaw</a> est un projet open source qui a connu une montée en popularité fulgurante depuis son lancement récent. Il a aussi été beaucoup commenté parce qu’il a changé de nom au fil de son ascension (ClawdBot / MoltBot / OpenClaw), ce qui a renforcé sa présence dans l’actu tech.</p> <p>Mais la vraie du “buzz”, c’est l’écosystème de Skills. C’est ce qui transforme un agent générique en assistant réellement utile, capable d’interagir avec des services, des appareils, des fichiers, voire d’exécuter des tâches sur une machine locale. C’est puissant… </p> <p>Dans le cas du Hub IA SwitchBot, l’intérêt est clair : OpenClaw devient la couche conversationnelle “universelle” au-dessus de la maison. SwitchBot annonce la prise en charge officielle de l’exécution d’OpenClaw sur le Hub IA d’ici fin février, puis l’accès aux “SwitchBot Skills” d’ici fin mars, afin de piloter depuis les messageries les appareils rattachés au Hub IA et les automatisations créées sur le Hub.<br>Et SwitchBot cite aussi des passerelles possibles vers des plateformes tierces comme Home Assistant, Apple Home ou Google Home via les Skills adaptées, ce qui peut devenir très intéressant dans une maison déjà multi-marques !</p> <h2>Une IA qui “voit” : le VLM au service de la sécurité, des proches… et des animaux</h2> <p>Là où beaucoup de hubs restent cantonnés à “si capteur alors action”, SwitchBot met l’accent sur la compréhension d’événements du monde réel via la vidéo. Le Hub IA peut fonctionner avec les caméras SwitchBot Pan/Tilt 2K/3K Plus, la sonnette vidéo SwitchBot, mais aussi des caméras RTSP tierces.</p> <p>Grâce aux modèles vision-langage (VLM), l’objectif est de produire autre chose qu’un simple clip de mouvement : une description claire de l’événement, des résumés, des rapports quotidiens, de la recherche “intelligente” dans les séquences, et des alertes plus précises.<br>SwitchBot donne des exemples très parlants d’événements reconnus (chute d’une personne âgée, animal qui sort, activité inhabituelle).</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-00-1x-63aa5af8-e3cf-4fce-be35-af6d34c560df.webp" alt="ai hub en amazon images 1600x1600 00 1x 63aa5af8 e3cf 4fce be35 af6d34c560df"></figure> <p>Et c’est là que le Hub IA devient intéressant en domotique : ces résumés IA peuvent servir de déclencheurs d’automatisation, pour créer rapidement des scénarios orientés sécurité, “care” (surveillance bienveillante) ou animaux.<br>On n’est plus seulement sur “détection de mouvement”, mais sur “interprétation”, puis action.</p> <h2>Frigate intégré : un NVR local (jusqu’à 8 caméras) et du stockage extensible</h2> <p>SwitchBot annonce un système NVR local basé sur Frigate, avec prise en charge jusqu’à huit caméras et enregistrement local gratuit, plus une vue “écran unique” pour surveiller la maison.</p> <p>Le fait que SwitchBot s’appuie sur Frigate mérite aussi qu’on s’y attarde un peu plus, parce que ce n’est pas un simple module “NVR”. Frigate s’est fait une place particulière dans l’univers Home Assistant car il combine enregistrement vidéo local et détection d’objets en temps réel, le tout sans dépendre du cloud. La philosophie est assumée : un NVR complet, local, pensé pour Home Assistant, capable de faire de la détection IA sur des flux de caméras IP. Je vous l’avais d’ailleurs présenté lors d’un guide expliquant <a href="https://www.maison-et-domotique.com/146929-installation-frigate-mini-pc-nipogi-gk3-plus/">comment installer Frigate sur un mini PC</a>, pour l’intégrer ensuite à Home Assistant.</p> <p>Ce qui fait la différence au quotidien, c’est la façon dont Frigate structure l’analyse vidéo. Il s’appuie sur la détection de mouvement comme premier filtre, puis lance l’analyse d’objets quand il y a “quelque chose qui se passe” dans l’image. C’est exactement ce qui permet de limiter la charge, tout en évitant de lancer de l’IA en permanence sur chaque frame.<br>Ensuite, tout l’art consiste à “dompter” la scène, et Frigate fournit pour ça des outils très concrets, connus de ceux qui ont déjà mis les mains dedans.</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-01-1x-3ac11fbf-a9f3-429b-bce0-1c83f980e2dd.webp" alt="ai hub en amazon images 1600x1600 01 1x 3ac11fbf a9f3 429b bce0 1c83f980e2dd"></figure> <p>Il y a d’abord les masques de mouvement : ils servent à ignorer certaines zones qui déclenchent de faux positifs (un timestamp incrusté, le ciel, des reflets, une route au loin). C’est un point clé pour rendre un système fiable, surtout en extérieur.<br>Il y a ensuite les zones, qui permettent de raisonner en “endroits” plutôt qu’en caméras. Au lieu de dire “détection sur caméra entrée”, on peut dire “détection dans la zone perron” ou “dans la zone allée”, et même gérer des notions comme le “loitering”, c’est-à-dire un objet qui reste anormalement longtemps dans une zone (typique pour détecter quelqu’un qui traîne devant une porte).</p> <p>Et surtout, Frigate est redoutable pour la domotique car il expose ses informations via MQTT et via l’intégration Home Assistant. Concrètement, Home Assistant récupère des entités et des capteurs (compteurs d’objets actifs, états par caméra ou par zone), ce qui permet de déclencher des automatisations très fines : allumer un éclairage seulement si une “personne” est détectée dans la zone entrée, déclencher une alarme si un “véhicule” est détecté sur l’allée en mode absence, envoyer une notification uniquement si un “colis” apparaît dans la zone porche, etc.</p> <p>Pour finir, Frigate ne se limite pas à “détecter”. Il gère aussi une logique de conservation et de rétention (enregistrer selon mouvement/objets, conserver plus longtemps ce qui est jugé important, garder des snapshots), avec une approche très pragmatique pour équilibrer pertinence et stockage.<br>C’est précisément cette philosophie “local, structuré, exploitable par Home Assistant” qui explique pourquoi Frigate revient si souvent dans les tutos, et pourquoi son intégration annoncée par SwitchBot est intéressante : si le Hub IA tient la promesse d’un Frigate “prêt à l’emploi” jusqu’à 8 caméras et stockage extensible (jusqu’à 16 To via disque externe), cela peut abaisser drastiquement la barrière d’entrée pour tous ceux qui veulent une vidéo intelligente sans serveur dédié.</p> <p>En pratique, ça répond à une demande très concrète : conserver la vidéo chez soi, limiter la dépendance au cloud, et éviter de multiplier les boîtiers (NVR d’un côté, hub domotique de l’autre…).</p> <h2>Un “hub de plus” ? Pas vraiment : pont Matter, écosystème SwitchBot et ouverture domotique</h2> <p>Le Hub IA est aussi présenté comme le premier hub “edge” de SwitchBot : il se connecte à plus de 100 appareils SwitchBot et fait pont Matter pour jusqu’à 30 appareils SwitchBot.<br>Il gère le Wi-Fi bi-bande et étend la portée Bluetooth, avec une portée annoncée jusqu’à 200 mètres en environnement dégagé.</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ai-hub-en-amazon-images-1600x1600-07-1x-1.webp" alt="ai hub en amazon images 1600x1600 07 1x 1"></figure> <p>Point qui va parler aux utilisateurs avancés : le fabricant évoque Home Assistant “pré-installé”. Il s’agit en fait d’une “installation optionnelle de Home Assistant”, dans l’idée d’offrir une base stable et réactive pour l’intelligence de toute la maison.<br>Autrement dit, SwitchBot vise autant le grand public (app SwitchBot, scènes simples) que ceux qui veulent une couche plus puissante au-dessus.</p> <h2>Cas d’usage : ce que ça change vraiment dans une maison connectée</h2> <p>Le Hub IA sait “faire” en solo (compréhension VLM, automatisations IA, NVR Frigate, hub SwitchBot), et quand on ajoute OpenClaw, on obtient une couche conversationnelle capable d’aller interroger l’état de la maison, de renvoyer des images, d’actionner des équipements, et même de proposer des actions de façon proactive.</p> <p>Un exemple donné est parlant : quelqu’un sonne. La sonnette détecte une présence, le Hub IA capture l’événement, et OpenClaw envoie une image dans l’application de messagerie habituelle pour vous laisser décider si la porte doit être déverrouillée à distance (par exemple via une serrure SwitchBot).<br>C’est typiquement le genre de “petit pont” entre vidéo et action qui manque souvent dans les installations multi-marques.</p> <figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/15.jpg" alt="15"></figure> <p>Autre exemple très réaliste : vous recevez un résumé clair plutôt qu’une avalanche de notifications “mouvement détecté”. Et si le résumé correspond à votre contexte (animal seul à la maison, proche âgé, mode absence), l’automatisation peut enclencher l’action adaptée : éclairage, sirène, message, enregistrement, etc.</p> <h2>Conclusion</h2> <p>Le SwitchBot Hub IA est annoncé au <a href="https://eu.switch-bot.com/products/switchbot-ai-hub/?sca_ref=1022356.4i7fixtDp6&amp;utm_source=uppromote&amp;utm_medium=affiliate&amp;utm_campaign=1022356" target="_blank">prix public conseillé de 259,99</a> € (via son site officiel, ainsi que sur Amazon). A noter que vous pouvez bénéficier de 20% grâce au code <strong>MKMK20</strong> pour son lancement.<br>L’exécution d’OpenClaw sur le Hub IA est annoncée pour fin février, et l’accès élargi aux SwitchBot Skills via OpenClaw pour fin mars.</p> <p>Sur le papier, SwitchBot coche plusieurs cases que beaucoup cherchaient sans forcément vouloir monter un mini-serveur à la maison : IA locale “always-on”, vidéo centralisée façon NVR, compatibilité RTSP, pont Matter, et une ouverture vers des plateformes comme Home Assistant.</p> <p>Si les promesses VLM (résumés fiables, déclencheurs pertinents, alertes plus intelligentes) tiennent en conditions réelles, le Hub IA pourrait devenir un vrai pivot entre sécurité, confort et domotique multi-écosystèmes… et pas juste “un hub de plus” sur l’étagère. En tout cas c’est un produit qui m’interpelle beaucoup, et j’espère pouvoir vous en proposer un test complet très bientot !</p> </article></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

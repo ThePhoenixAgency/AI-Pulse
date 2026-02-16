@@ -1,52 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Linux 7.0 Wires Up Arm's 64-byte Single-Copy Atomic Instructions LS64/LS64V</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Linux 7.0 Wires Up Arm's 64-byte Single-Copy Atomic Instructions LS64/LS64V</h1>
   <div class="metadata">
-    Source: Phoronix | Date: 2/14/2026 | Lang: EN |
-    <a href="https://www.phoronix.com/news/ARM64-Linux-7.0" target="_blank">Original Article</a>
+    Source: Phoronix | Date: 2/14/2026 12:47:21 PM | <a href="https://www.phoronix.com/news/ARM64-Linux-7.0" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p><img alt="ARM" src="https://www.phoronix.com/assets/categories/arm.webp" /></p><p>
-Beyond all of the exciting Intel/AMD x86_64 changes and improvements to enjoy with the upcoming Linux 7.0, there is one notable ARM64 feature addition this kernel cycle.
-</p><p>
-The main feature for ARM64 on Linux 7.0 is now supporting 64-byte single-copy atomic instructions (LS64/LS64V). Armv8.7 introduced single-copy atomic 64-byte load and store instructions. With Linux 7.0 those new instructions are wired up, they are now exposed to user-space via /proc/cpuinfo and hardware capabilities. The <a href="https://lore.kernel.org/all/20251107072127.448953-1-wangzhou1@hisilicon.com/">patch series</a> noted:
-</p><blockquote>"Armv8.7 introduces single-copy atomic 64-byte loads and stores instructions and its variants named under FEAT_{LS64, LS64_V}.
-<br />...
-<br />A real scenario for this feature is that the userspace driver can make use of this to implement direct WQE (workqueue entry) - a mechanism to fill WQE directly into the hardware."</blockquote>
-<p>This accelerated, atomic movement of 64-byte blocks should help for helping ARM in more high performance Linux scenarios. The patches also take care of exposing LS64_V to Linux KVM guests.
-</p><p><img src="https://www.phoronix.net/image.php?id=2026&amp;image=ampereone_bios_med" alt="AmpereOne BIOS" /></p>
-<p>With this pull, ARM64 also now has reduced Memory Tagging Extension (MTE) overhead when executing in the kernel on AmpereOne processors. That patch explains:
-</p><blockquote>"We measured severe performance overhead (25-50%) when enabling userspace MTE and running memcached on an AmpereOne machine. 
-<br />We identified excessive tag checking taking place in the kernel.
-<br />...
-<br />For workloads with MTE enabled, we measured the series giving a 2% improvement for "perf bench futex hash" at 95% confidence.
-<p>
-Also, we used the Phoronix Test Suite pts/memcached benchmark with a get-heavy workload (1:10 Set:Get ratio) which is where the slowdown appears most clearly. The slowdown worsens with increased core count, levelling out above 32 cores."</p></blockquote>
-<p>With the ARM64 updates for Linux 7.0, Spectre-BHB meanwhile is worked around on HiSilicon TSV110 processors.
-</p><p>
-All of the ARM64 updates for Linux 7.0 can be found via <a href="https://lore.kernel.org/lkml/aYnwpy4umKY4A5wQ@willie-the-truck/">this pull request</a> that is already merged to Linux 7.0 Git.</p></div></div>
+    <pre><code>Beyond all of the exciting Intel/AMD x86_64 changes and improvements to enjoy with the upcoming Linux 7.0, there is one notable ARM64 feature addition this kernel cycle. The main feature for ARM64 on Linux 7.0 is now supporting 64-byte single-copy atomic instructions (LS64/LS64V). Armv8.7 introduced single-copy atomic 64-byte load and store instructions. With Linux 7.0 those new instructions are wired up, they are now exposed to user-space via /proc/cpuinfo and hardware capabilities. The patch series noted:
+"Armv8.7 introduces single-copy atomic 64-byte loads and stores instructions and its variants named under FEAT_{LS64, LS64_V}.
+...
+A real scenario for this feature is that the userspace driver can make use of this to implement direct WQE (workqueue entry) - a mechanism to fill WQE directly into the hardware."
+This accelerated, atomic movement of 64-byte blocks should help for helping ARM in more high performance Linux scenarios. The patches also take care of exposing LS64_V to Linux KVM guests. With this pull, ARM64 also now has reduced Memory Tagging Extension (MTE) overhead when executing in the kernel on AmpereOne processors. That patch explains:
+"We measured severe performance overhead (25-50%) when enabling userspace MTE and running memcached on an AmpereOne machine. We identified excessive tag checking taking place in the kernel.
+...
+For workloads with MTE enabled, we measured the series giving a 2% improvement for "perf bench futex hash" at 95% confidence. Also, we used the Phoronix Test Suite pts/memcached benchmark with a get-heavy workload (1:10 Set:Get ratio) which is where the slowdown appears most clearly. The slowdown worsens with increased core count, levelling out above 32 cores."
+With the ARM64 updates for Linux 7.0, Spectre-BHB meanwhile is worked around on HiSilicon TSV110 processors. All of the ARM64 updates for Linux 7.0 can be found via this pull request that is already merged to Linux 7.0 Git.</code></pre>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

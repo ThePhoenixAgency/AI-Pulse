@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,62 +18,10 @@
 <body>
   <h1>Scaleway on Hugging Face Inference Providers</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 9/19/2025 2:00:00 AM | Lang: EN |
-    <a href="https://huggingface.co/blog/inference-providers-scaleway" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 9/19/2025 2:00:00 AM | <a href="https://huggingface.co/blog/inference-providers-scaleway" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/gnoale"><img alt="Guillaume Noale's avatar" src="https://huggingface.co/avatars/51eb3ee3e4c3bcfd7b3255344e9b936c.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/fpagny"><img alt="Franck Pagny's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/TnZrfDYAYirbLep4LDMu9.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/f14e"><img alt="Fred Bardolle's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/qCc3ryGfc4pRT6PQuHTsP.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/gcalmettes"><img alt="Guillaume Calmettes's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/668d61aa17676d77918ba471/-0SH78MDDcdifu5kBFFJo.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/C-morales"><img alt="Constance Morales's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/noauth/ItPk2dGdlQ7w-WnJGahzy.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/celinah"><img alt="Célina Hanouti's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6192895f3b8aa351a46fadfd/2VifD-AAKYk24AUmfSr_X.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/julien-c"><img alt="Julien Chaumond's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5dd96eb166059660ed1ee413/NQtzmrDdbG0H8qkZvRyGk.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/sbrandeis"><img alt="Simon Brandeis's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1608146735109-5fcfb7c407408029ba3577e2.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Wauplin"><img alt="Lucain Pouget's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1659336880158-6273f303f6d63a28483fde12.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#how-it-works">How it works</a> <ul><li><a href="#in-the-website-ui">In the website UI</a> <ul></ul> </li><li><a href="#from-the-client-sdks">From the client SDKs</a> <ul></ul> </li></ul> </li><li><a href="#billing">Billing</a> <ul></ul> </li><li><a href="#feedback-and-next-steps">Feedback and next steps</a> <ul></ul> </li></ul></nav></div><p><a href="https://huggingface.co/blog/assets/inference-providers/welcome-scaleway.jpg"><img alt="banner image" src="https://huggingface.co/blog/assets/inference-providers/welcome-scaleway.jpg"></a></p> <p>We're thrilled to share that <strong>Scaleway</strong> is now a supported Inference Provider on the Hugging Face Hub!
-Scaleway joins our growing ecosystem, enhancing the breadth and capabilities of serverless inference directly on the Hub’s model pages. Inference Providers are also seamlessly integrated into our client SDKs (for both JS and Python), making it super easy to use a wide variety of models with your preferred providers.</p>
-<p>This launch makes it easier than ever to access popular open-weight models like <a href="https://huggingface.co/openai/gpt-oss-120b?inference_provider=scaleway">gpt-oss</a>, <a href="https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct?inference_provider=scaleway">Qwen3</a>, <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Llama-70B?inference_provider=scaleway">DeepSeek R1</a>, and <a href="https://huggingface.co/google/gemma-3-27b-it?inference_provider=scaleway">Gemma 3</a> — right from Hugging Face. You can browse Scaleway's org on the Hub at <a href="https://huggingface.co/scaleway">https://huggingface.co/scaleway</a> and try trending supported models at <a href="https://huggingface.co/models?inference_provider=scaleway&amp;sort=trending">https://huggingface.co/models?inference_provider=scaleway&amp;sort=trending</a>.</p>
-<p><em>Scaleway Generative APIs</em> is a fully managed, serverless service that provides access to frontier AI models from leading research labs via simple API calls. The service offers competitive pay-per-token pricing starting at €0.20 per million tokens.</p>
-<p>The service runs on secure infrastructure located in European data centers (Paris, France), ensuring data sovereignty and low latency for European users. The platform supports advanced features including structured outputs, function calling, and multimodal capabilities for both text and image processing.</p>
-<p>Built for production use, Scaleway's inference infrastructure delivers sub-200ms response times for first tokens, making it ideal for interactive applications and agentic workflows. The service supports both text generation and embedding models. You can learn more about Scaleway's platform and infrastructure at <a href="https://www.scaleway.com/en/generative-apis/">https://www.scaleway.com/en/generative-apis/</a>.</p>
-<p>Read more about how to use Scaleway as an Inference Provider in its dedicated <a href="https://huggingface.co/docs/inference-providers/providers/scaleway">documentation page</a>.</p>
-<p>See the list of supported models <a href="https://huggingface.co/models?inference_provider=scaleway&amp;sort=trending">here</a>.</p>
-<h2> <a href="#how-it-works"> <span></span> </a> <span> How it works </span>
-</h2>
-<h3> <a href="#in-the-website-ui"> <span></span> </a> <span> In the website UI </span>
-</h3>
-<ol>
-<li>In your user account settings, you are able to:</li>
-</ol>
-<ul>
-<li>Set your own API keys for the providers you’ve signed up with. If no custom key is set, your requests will be routed through HF.</li>
-<li>Order providers by preference. This applies to the widget and code snippets in the model pages.</li>
-</ul>
-<p><img alt="Inference Providers" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/inference-providers/user-settings-updated.png"></p><ol>
-<li>As mentioned, there are two modes when calling Inference Providers:</li>
-</ol>
-<ul>
-<li>Custom key (calls go directly to the inference provider, using your own API key of the corresponding inference provider)</li>
-<li>Routed by HF (in that case, you don't need a token from the provider, and the charges are applied directly to your HF account rather than the provider's account)</li>
-</ul>
-<p><img alt="Inference Providers" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/inference-providers/explainer.png"></p><ol>
-<li>Model pages showcase third-party inference providers (the ones that are compatible with the current model, sorted by user preference)</li>
-</ol>
-<p><img alt="Inference Providers" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/inference-providers/model-widget-updated.png"></p><h3> <a href="#from-the-client-sdks"> <span></span> </a> <span> From the client SDKs </span>
-</h3>
-<h4> <a href="#from-python-using-huggingface_hub"> <span></span> </a> <span> from Python, using huggingface_hub </span>
-</h4>
-<p>The following example shows how to use OpenAI's gpt-oss-120b using Scaleway as the inference provider. You can use a <a href="https://huggingface.co/settings/tokens">Hugging Face token</a> for automatic routing through Hugging Face, or your own Scaleway API key if you have one.</p>
-<p>Note: this requires using a recent version of <code>huggingface_hub</code> (&gt;= 0.34.6).</p>
-<pre><code><span>import</span> os
-<span>from</span> huggingface_hub <span>import</span> InferenceClient client = InferenceClient( provider=<span>"scaleway"</span>, api_key=os.environ[<span>"HF_TOKEN"</span>],
-) messages = [ { <span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"Write a poem in the style of Shakespeare"</span> }
-] completion = client.chat.completions.create( model=<span>"openai/gpt-oss-120b"</span>, messages=messages,
-) <span>print</span>(completion.choices[<span>0</span>].message)
-</code></pre>
-<h4> <a href="#from-js-using-huggingfaceinference"> <span></span> </a> <span> from JS using @huggingface/inference </span>
-</h4>
-<pre><code><span>import</span> { <span>InferenceClient</span> } <span>from</span> <span>"@huggingface/inference"</span>; <span>const</span> client = <span>new</span> <span>InferenceClient</span>(process.<span>env</span>.<span>HF_TOKEN</span>); <span>const</span> chatCompletion = <span>await</span> client.<span>chatCompletion</span>({ <span>model</span>: <span>"openai/gpt-oss-120b"</span>, <span>messages</span>: [ { <span>role</span>: <span>"user"</span>, <span>content</span>: <span>"Write a poem in the style of Shakespeare"</span>, }, ], <span>provider</span>: <span>"scaleway"</span>,
-}); <span>console</span>.<span>log</span>(chatCompletion.<span>choices</span>[<span>0</span>].<span>message</span>);
-</code></pre>
-<h2> <a href="#billing"> <span></span> </a> <span> Billing </span>
-</h2>
-<p>Here is how billing works:</p>
-<p>For direct requests, i.e. when you use the key from an inference provider, you are billed by the corresponding provider. For instance, if you use a Scaleway API key you're billed on your Scaleway account.</p>
-<p>For routed requests, i.e. when you authenticate via the Hugging Face Hub, you'll only pay the standard provider API rates. There's no additional markup from us; we just pass through the provider costs directly. (In the future, we may establish revenue-sharing agreements with our provider partners.)</p>
-<p><strong>Important Note</strong> PRO users get $2 worth of Inference credits every month. You can use them across providers. </p> </div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

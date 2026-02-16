@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>FUNDAMENTAL lève 216 millions d’euros et dévoile NEXUS, un “Large Tabular Model”</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -24,23 +16,10 @@
 <body>
   <h1>FUNDAMENTAL lève 216 millions d’euros et dévoile NEXUS, un “Large Tabular Model”</h1>
   <div class="metadata">
-    Source: FrenchWeb | Date: 2/6/2026 8:03:30 AM | Lang: FR |
-    <a href="https://www.frenchweb.fr/fundamental-leve-216-millions-deuros-et-devoile-nexus-un-large-tabular-model/460153" target="_blank">Original Article</a>
+    Source: FrenchWeb | Date: 2/6/2026 8:03:30 AM | <a href="https://www.frenchweb.fr/fundamental-leve-216-millions-deuros-et-devoile-nexus-un-large-tabular-model/460153" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div> <p>Depuis l’irruption de ChatGPT, l’intelligence artificielle occupe l’espace médiatique et organisationnel comme rarement auparavant. Mais si ses performances impressionnent, son mode opératoire reste largement fondé sur l’ingestion et l’interprétation de masses de données non structurées. Or, dans la plupart des grandes organisations, les décisions qui engagent réellement des budgets, des responsabilités ou des risques s’élaborent d’abord à partir de données structurées, organisées en tables.</p>
-<p>Sur ce terrain, chacun l’a constaté, les LLM sont moins à l’aise, et ce pour la raison simple qu’ils ont été conçus pour modéliser du langage, et non pour calculer sur du tabulaire.</p>
-<p>Ainsi un modèle de langage apprend à prédire le token suivant à partir d’une séquence. Cette mécanique fonctionne très bien pour du texte, où l’information est portée par la syntaxe, le contexte et des régularités linguistiques. Une table, au contraire, encode l’information dans une structure logique : colonnes typées, cellules, clés, valeurs manquantes, relations implicites entre variables.</p>
-<p>Pour faire « digérer » une table à un LLM, on doit généralement la sérialiser (la convertir en texte ou en JSON). On y perd une partie de la structure, et l’on se heurte surtout à une contrainte matérielle : la fenêtre de contexte. Un LLM ne peut raisonner que sur ce qu’il “voit”. Au-delà de quelques milliers, ou dizaines de milliers de lignes, il bascule de la lecture à l’échantillonnage, voire au résumé. Or, les entreprises travaillent couramment sur des jeux de données qui comptent des millions, parfois des milliards de lignes.</p>
-<p>Et même lorsque la table tient dans le contexte, les LLM restent mal adaptés aux opérations qui font la valeur du tabulaire : calculs reproductibles, agrégations à grande échelle, détection de signaux faibles dans des distributions, traitement rigoureux des valeurs manquantes, des outliers, des ruptures et changements de régime. Ils peuvent produire une explication plausible, mais ils sont moins fiables lorsqu’il s’agit de délivrer un résultat stable, et strictement identique à chaque exécution, ce qui est un impératif dans des environnements métiers exigeants.</p>
-<p>C’est précisément là que se positionnent les approches dites <a href="https://www.frenchweb.fr/quest-ce-quun-large-tabular-model-la-prochaine-frontiere-de-lia-orientee-entreprise/460163"><em>Large Tabular Models</em></a>, conçues pour raisonner directement sur des données structurées. C’est précisément celle de <a target="_blank" href="https://fundamental.tech/">Fundamental,</a> un laboratoire d’IA qui vient de sortir de l’ombre en dévoilant NEXUS, son modèle fondationnel conçu pour exploiter la donnée structurée à l’échelle des grandes organisations.</p>
-<p>La thèse de départ est relativement simple : les entreprises ont déjà la donnée, souvent en quantité massive, mais une partie de sa valeur reste inaccessible parce que l’outillage prédictif traditionnel fonctionne encore trop souvent comme une industrie artisanale. Fundamental propose un socle unique capable de s’appliquer à une grande variété de problèmes, que ce soit des prévisions de la demande, la définition de prix, la prévision de churn, risque, fraude, et ce sans avoir à reconstruire l’architecture à chaque itération.</p>
-<p>Le pari technologique repose sur une rupture avec les modèles de langage. NEXUS est présenté comme un <a href="https://www.frenchweb.fr/quest-ce-quun-large-tabular-model-la-prochaine-frontiere-de-lia-orientee-entreprise/460163">Large Tabular Model</a>, et non comme un LLM “adapté au tableur”. L’objectif est de produire des prédictions et des recommandations au plus près des exigences métiers, notamment en terme de reproductibilité.</p>
-<p>L’autre point mis en avant concerne l’échelle. Là où les architectures les plus répandues dans l’IA actuelle se heurtent rapidement aux limites de lecture d’un dataset massif, l’ambition de Fundamental est de traiter des volumes qui ressemblent à la réalité des grandes entreprises : des tables gigantesques, issues de bases transactionnelles, de data warehouses et d’outils de pilotage, parfois avec des milliards de lignes.</p>
-<p>Ainsi la startup a noué un partenariat stratégique avec AWS pour permettre aux entreprises clientes de déployer NEXUS directement dans leurs environnements cloud existants. L’objectif est de réduire les frictions d’intégration, rapprocher le modèle des données, et aligner l’approche avec les exigences de sécurité et de conformité qui rendent, en pratique, beaucoup de promesses IA difficiles à industrialiser.</p>
-<p>Si sur le plan commercial, Fundamental ne communique sur son portefeuille client, ele recrute actuellement un Enterprise Account Manager expérimenté pour piloter et développer les relations avec des clients du Fortune 100, une indication sur l’approche marché de la startup.</p>
-<p>Jusqu’ici restée très discrète, Fundamental annonce avoir levé 255 millions de dollars pour une valorisation de 1,2 milliard de dollars. Le tour comprend une série A de 225 millions de dollars menée par OAK HC/FT, avec la participation de VALOR EQUITY PARTNERS, BATTERY VENTURES, SALESFORCE VENTURES et HETZ VENTURES, ainsi qu’un seed de 30 millions de dollars réuni notamment auprès de QUADRILLE CAPITAL, <a href="https://www.frenchweb.fr/kima-ventures">KIMA VENTURES</a>, MOTIER VENTURES et de business angels, dont ARAVIND SRINIVAS (Perplexity), HENRIQUE DUBUGRAS (Brex) et OLIVIER POMEL (Datadog).</p>
-<p>A l’origine de Fundamental, un attelage “business × science × exécution”. JEREMY FRAENKEL (CEO) issu de J.P. MORGAN puis BRIDGEWATER, et qui a déjà cofondé une startup avec DRIFT (ex-Arkifi) avant Fundamental. MARTA GARNELO (CSO) vient pour sa part de GOOGLE DEEPMIND, où elle a été chercheuse plus de sept ans. Enfin GABRIEL SUISSA complète l’équipe avec un profil orienté croissance, passé par J.P. MORGAN puis GREENFIELD PARTNERS.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p></div> </section><section><p><a href="https://www.fw.media/" target="_blank"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
+    
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -60,5 +39,5 @@
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

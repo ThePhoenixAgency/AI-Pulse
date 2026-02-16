@@ -24,28 +24,27 @@
 <body>
   <h1>‘Joyful yet tearful’: Khalil Hathaleen on charges for Yinon Levi</h1>
   <div class="metadata">
-    Source: Al Jazeera | Date: 2/16/2026 7:29:20 PM | Lang: EN |
-    <a href="https://www.aljazeera.com/video/newsfeed/2026/2/16/joyful-yet-tearful-khalil-hathaleen-on-charges-for-yinon-levi?traffic_source=rss" target="_blank">Original Article</a>
+    Source: Al Jazeera | Date: 2/16/2026 8:29:20 PM | <a href="https://www.aljazeera.com/video/newsfeed/2026/2/16/joyful-yet-tearful-khalil-hathaleen-on-charges-for-yinon-levi?traffic_source=rss" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div><header><span><a href="https://www.aljazeera.com/video/newsfeed/"><span>NewsFeed</span></a></span></header><p>The brother of slain Palestinian Awdah Hathaleen says Israeli prosecutors’ plan to indict settler Yinon Levi is welcome news, but a charge of manslaughter “doesn’t rise to the level of the crime.” Levi was recorded wildly firing his gun after antagonising locals in Umm al-Khair.</p><div><p><span>Published On 16 Feb 2026</span></p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

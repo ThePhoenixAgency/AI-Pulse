@@ -4,213 +4,48 @@
 <meta charset="UTF-8">
 <title>[MàJ] Vulnérabilité dans React Server Components</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>[MàJ] Vulnérabilité dans React Server Components</h1>
   <div class="metadata">
-    Source: CERT-FR | Date: 12/5/2025 | Lang: FR |
-    <a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-014/" target="_blank">Original Article</a>
+    Source: CERT-FR | Date: 12/5/2025 1:00:00 AM | <a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-014/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div>
-  <article>
-    
-      <section>
-  
-    <div>
-      
-      
-        <p><a href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-014/json/">
-    <img src="https://www.cert.ssi.gouv.fr/static/images/json_icon.svg" />
-  </a>
-</p>
-      
-    </div>
-
-    
-
-
-
-
-    <div>
-      <p>
-        </p><h2>Bulletin d'alerte du CERT-FR</h2>
-        <hr />
-      <p></p>
-    </div>
-    
-    
-    <div>
-  <p>Une gestion de version détaillée se trouve à la fin de ce document.</p>
-</div>
-  
-</section>
-      <div>
-      
-
-        
-          <h2>Risque</h2>
-        
-
-        <ul>
-          
-            <li>Exécution de code arbitraire à distance</li>
-          
-        </ul>
-      
-
-      
-        <h2>Systèmes affectés</h2>
-        <ul>
-          
-            <li>Expo sans les versions correctives de react-server-dom-webpack</li>
-          
-            <li>Next.js versions 14.x canary</li>
-          
-            <li>Next.js versions 15.0.x antérieures à 15.0.5</li>
-          
-            <li>Next.js versions 15.1.x antérieures à 15.1.9</li>
-          
-            <li>Next.js versions 15.2.x antérieures à 15.2.6</li>
-          
-            <li>Next.js versions 15.3.x antérieures à 15.3.6</li>
-          
-            <li>Next.js versions 15.4.x antérieures à 15.4.8</li>
-          
-            <li>Next.js versions 15.5.x antérieures à 15.5.7</li>
-          
-            <li>Next.js versions 16.0.x antérieures à 16.0.7</li>
-          
-            <li>React router avec le support de l'API RSC sans les derniers correctifs de sécurité</li>
-          
-            <li>react-server-dom-webpack, react-server-dom-parcel et react-server-dom-turbopack versions 19.0.x antérieures à 19.0.1</li>
-          
-            <li>react-server-dom-webpack, react-server-dom-parcel et react-server-dom-turbopack versions 19.1.x antérieures à 19.1.2</li>
-          
-            <li>react-server-dom-webpack, react-server-dom-parcel et react-server-dom-turbopack versions 19.2.x antérieures à 19.2.1</li>
-          
-            <li>Redwood SDK versions antérieures à 1.0.0-alpha.0</li>
-          
-            <li>Vitejs avec le greffon plugin-rsc sans les derniers correctifs de sécurité</li>
-          
-            <li>Waku sans les versions correctives de react-server-dom-webpack</li>
-          
-        </ul>
-      
-
-      
-
-      <div>
-          <h2>Résumé</h2>
-          <p><strong><span>[Mise à jour du 11 décembre 2025]</span></strong></p>
-<p>Le CERT-FR a connaissance de multiples exploitations de la vulnérabilité CVE-2025-55182. Les serveurs avec une version vulnérable exposés après la publication des preuves de concept publiques du 5 décembre 2025 doivent être considérés comme compromis.</p>
-<p>Certains billets de blogues [1] [2] incluent des indicateurs de compromission. Ces indicateurs n'ont pas été qualifiés par le CERT-FR.</p>
-<p><strong>[Mise à jour du 08 décembre 2025]</strong></p>
-<p>Le CERT-FR a connaissance d'exploitations pour la vulnérabilité CVE-2025-55182.</p>
-<p><strong>[Publication initiale]</strong></p>
-<p>Le 3 décembre 2025, React a publié un avis de sécurité relatif à la vulnérabilité CVE-2025-55182 affectant React Server Components et qui permet à un attaquant non authentifié de provoquer une exécution de code arbitraire à distance. L'éditeur de Next.js a également publié un avis de sécurité faisant référence à l'identifiant CVE-2025-66478. Cet identifiant a été rejeté en raison du doublon avec l'identifiant utilisé par React. Cette faille de sécurité est également connue sous le nom de <em>React2Shell</em>. </p>
-<p>Cette vulnérabilité concerne plus précisément les React Server Functions. Même si une application n'utilise pas explicitement de telles fonctions, elle peut être vulnérable si elle supporte les React Server Components. En particulier, plusieurs cadriciels tels que Next.js implémentent de telles fonctions par défaut. </p>
-<p>Les technologies React Server Components et React Server Functions sont relativement récentes (la version 19 de React a été publiée fin 2024) et toutes les applications utilisant la technologie React ne sont ainsi pas nécessairement affectées. Veuillez vous référer à la section systèmes affectés pour plus d'informations.</p>
-<p>Le CERT-FR a connaissance de preuves de concept publiques pour cette vulnérabilité et anticipe des exploitations en masse.</p>
-<p><em>Note : Le CERT-FR a connaissance de la mise en place de règles de blocages de la vulnérabilité au niveau de plusieurs pare-feu applicatifs web populaires. Bien que ces mécanismes puissent rendre l'exploitation de la vulnérabilité plus difficile, ils ne peuvent pas remplacer une mise à jour vers une version corrective.</em> </p>
-
-        </div>
-
-      <div>
-        <h2>Solutions</h2>
-<p>Le CERT-FR recommande de mettre à jour au plus vite les composants vers les versions correctives listées dans les avis éditeurs (cf. section Documentation). </p>
-
-      </div>
-
-      
-        <h2>Documentation</h2>
-
-        <ul>
-          
-          
-              <li>Billet de blogue React relatif à la vulnérabilité CVE-2025-55182 du 03 décembre 2025</li>
-              <a href="https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components">https://react.dev/blog/2025/12/03/critical-security-vulnerability-in-react-server-components</a>
-          
-              <li>Billet de blogue Vercel relatif à la vulnérabilité CVE-2025-55182 du 03 décembre 2025</li>
-              <a href="https://vercel.com/changelog/cve-2025-55182">https://vercel.com/changelog/cve-2025-55182</a>
-          
-              <li>Bulletin de sécurité Facebook CVE-2025-55182 du 03 décembre 2025</li>
-              <a href="https://www.facebook.com/security/advisories/cve-2025-55182">https://www.facebook.com/security/advisories/cve-2025-55182</a>
-          
-
-          
-          
-              <li>[1] Billet de Blogue de Wiz.io, analyse et indicateurs de compromission </li>
-              <a href="https://www.wiz.io/blog/nextjs-cve-2025-55182-react2shell-deep-dive">https://www.wiz.io/blog/nextjs-cve-2025-55182-react2shell-deep-dive</a>
-          
-              <li>[2] Billet de Blogue de Huntress, analyse et indicateurs de compromission</li>
-              <a href="https://www.huntress.com/blog/peerblight-linux-backdoor-exploits-react2shell">https://www.huntress.com/blog/peerblight-linux-backdoor-exploits-react2shell</a>
-          
-              <li>Bulletin d'actualité CERTFR-2025-ACT-053 du 04 décembre 2025</li>
-              <a href="https://cert.ssi.gouv.fr/actualite/CERTFR-2025-ACT-053/">https://cert.ssi.gouv.fr/actualite/CERTFR-2025-ACT-053/</a>
-          
-              <li>Compromission système - Endiguement</li>
-              <a href="https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-006/">https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-006/</a>
-          
-              <li>Compromission système - Qualification</li>
-              <a href="https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-005/">https://www.cert.ssi.gouv.fr/fiche/CERTFR-2024-RFX-005/</a>
-          
-
-          
-            <li>Référence CVE CVE-2025-55182</li>
-            <a href="https://www.cve.org/CVERecord?id=CVE-2025-55182">https://www.cve.org/CVERecord?id=CVE-2025-55182</a>
-          
-            <li>Référence CVE CVE-2025-66478</li>
-            <a href="https://www.cve.org/CVERecord?id=CVE-2025-66478">https://www.cve.org/CVERecord?id=CVE-2025-66478</a>
-          
-        </ul>
-      
-    </div>
-      <div>
-      <h2>Gestion détaillée du document</h2>
-      <ol>
-        <dl>
-          
-          <dt><strong>le 05 décembre 2025</strong></dt>
-          <dd>Version initiale</dd>
-          
-          <dt><strong>le 08 décembre 2025</strong></dt>
-          <dd>connaissance d'exploitations pour la vulnérabilité CVE-2025-55182</dd>
-          
-          <dt><strong>le 11 décembre 2025</strong></dt>
-          <dd>Recherche de compromission, références des fiches système de qualification et endiguement</dd>
-          
-          <dt><strong>le 12 février 2026</strong></dt>
-          <dd>     Clôture de l'alerte. Cela ne signifie pas la fin d'une menace. Seule l'application de la mise à jour permet de vous prémunir contre l'exploitation de la vulnérabilité correspondante.</dd>
-          
-        </dl>
-      </ol>
-    </div>
-    
-  </article>
-
-  <section>
-  <p><a>
-      <img src="https://www.cert.ssi.gouv.fr/static/images/icon_toppage.png" alt="" />
-    </a>
-  </p>
-</section>
-</div></div>
+    <p>**[Mise à jour du 11 décembre 2025]** Le CERT-FR a connaissance de multiples exploitations de la vulnérabilité CVE-2025-55182. Les serveurs avec une version vulnérable exposés après la publication des preuves de concept publiques du 5 décembre 2025 doivent être considérés comme compromis....</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

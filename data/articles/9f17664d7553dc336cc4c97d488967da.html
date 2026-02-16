@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Prompt Poaching: Why I Built Secret Sanitizer</title>
 <style>
@@ -23,17 +21,16 @@
 <body>
   <h1>Prompt Poaching: Why I Built Secret Sanitizer</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/souvikghosh957/prompt-poaching-why-i-built-secret-sanitizer-4g32" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
               <a href="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbphqsy7m6lwumvygps2v.png">
-                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbphqsy7m6lwumvygps2v.png" alt="Cover image for Prompt Poaching: Why I Built Secret Sanitizer" />
+                <img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fbphqsy7m6lwumvygps2v.png" alt="Cover image for Prompt Poaching: Why I Built Secret Sanitizer">
               </a>
 
             <div>
-                  <p><a href="https://dev.to/souvikghosh957"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2079481%2F86c5f98d-dc6a-4333-aa53-fb61ffe76a5f.png" alt="Souvik Ghosh" /></a>
+                  <p><a href="https://dev.to/souvikghosh957"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2079481%2F86c5f98d-dc6a-4333-aa53-fb61ffe76a5f.png" alt="Souvik Ghosh"></a>
                   </p>
                   
                 </div>
@@ -50,8 +47,7 @@
 
 <p>I needed something that sat between my clipboard and the chat input. So I built it.</p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="meet-secret-sanitizer" href="#meet-secret-sanitizer">
@@ -62,10 +58,10 @@
 <p>An open-source Chrome extension that masks secrets <strong>before</strong> they reach any AI chat.</p>
 
 <p>
-  <a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469" alt="Secret Sanitizer demo" /></a>
+  <a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgithub.com%2Fuser-attachments%2Fassets%2F9dc1eeb6-55a4-4be2-8a93-c21709b32469" alt="Secret Sanitizer demo"></a>
 </p>
 
-<p>The idea is simple:<br />
+<p>The idea is simple:<br>
 </p>
 
 <div>
@@ -77,16 +73,12 @@ You paste:    DATABASE_URL=[MASKED]
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>When you paste into ChatGPT, Claude, Gemini, Grok, Perplexity, DeepSeek — or any custom site you add — the extension intercepts the paste, runs regex patterns <strong>locally in your browser</strong>, replaces detected secrets with <code>[MASKED]</code>, and shows a quick toast confirming what was blocked.</p>
 
@@ -94,8 +86,7 @@ You paste:    DATABASE_URL=[MASKED]
 
 <p>Originals are stored in a local encrypted vault you can unmask anytime.</p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="what-it-catches" href="#what-it-catches">
@@ -107,8 +98,7 @@ You paste:    DATABASE_URL=[MASKED]
 
 <p>Every pattern can be toggled on or off individually — no false-positive headaches.</p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="why-you-should-trust-it" href="#why-you-should-trust-it">
@@ -131,8 +121,7 @@ You paste:    DATABASE_URL=[MASKED]
 </li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="other-features" href="#other-features">
@@ -153,8 +142,7 @@ You paste:    DATABASE_URL=[MASKED]
 <strong>Dark mode</strong> and keyboard shortcuts</li>
 </ul>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="try-it" href="#try-it">
@@ -166,8 +154,7 @@ You paste:    DATABASE_URL=[MASKED]
 
 <p><strong>GitHub</strong> — <a href="https://github.com/souvikghosh957/secret-sanitizer-extension" target="_blank">source code, issues, contributions welcome</a></p>
 
-
-<hr />
+<hr>
 
 <h2>
   <a name="whats-next" href="#whats-next">
@@ -183,8 +170,7 @@ You paste:    DATABASE_URL=[MASKED]
 
 <p><em>Paste safely out there .</em></p>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

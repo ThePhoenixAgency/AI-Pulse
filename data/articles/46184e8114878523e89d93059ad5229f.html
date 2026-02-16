@@ -4,88 +4,30 @@
 <meta charset="UTF-8">
 <title>Introducing Daggr: Chain apps programmatically, inspect visually</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Introducing Daggr: Chain apps programmatically, inspect visually</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 1/29/2026 | Lang: EN |
-    <a href="https://huggingface.co/blog/daggr" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 1/29/2026 1:00:00 AM | <a href="https://huggingface.co/blog/daggr" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-					<p><a href="https://huggingface.co/blog">
-							Back to Articles</a></p>
-
-					
-					
-					
-					<div><div>
-
-<p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/ysharma"><img alt="yuvraj sharma's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1624431552569-noauth.jpeg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/abidlabs"><img alt="Abubakar Abid's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1621947938344-noauth.png" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/hysts"><img alt="hysts's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1643012094339-61914f536d34e827404ceb99.jpeg" /></a>
-				</span>
-	</span></p>
-			</div><div>
-
-<p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg" /></a>
-				</span>
-	</span></p>
-			</div></div>
-					
-
-					
-<div><nav><ul><li><a href="#table-of-contents">Table of Contents</a>
-									<ul></ul>
-								</li><li><a href="#background">Background</a>
-									<ul></ul>
-								</li><li><a href="#getting-started">Getting Started</a>
-									<ul><li><a href="#node-types">Node Types</a>
-												<ul></ul>
-											</li><li><a href="#sharing-your-workflows">Sharing Your Workflows</a>
-												<ul></ul>
-											</li></ul>
-								</li><li><a href="#end-to-end-example-with-different-nodes">End-to-End Example with Different Nodes</a>
-									<ul></ul>
-								</li><li><a href="#next-steps">Next Steps</a>
-									<ul></ul>
-								</li></ul></nav></div><p><strong>TL;DR:</strong> <a href="https://github.com/gradio-app/daggr">Daggr</a> is a new, open-source Python library for building AI workflows that connect Gradio apps, ML models, and custom functions. It automatically generates a visual canvas where you can inspect intermediate outputs, rerun individual steps, and manage state for complex pipelines, all in a few lines of Python code!</p>
-
-<h2>
-	<a href="#table-of-contents">
-		<span></span>
-	</a>
-	<span>
-		Table of Contents
-	</span>
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/merve"><img alt="merve's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6141a88b3a0ec78603c9e784/DJsxSmWV39M33JFheLobC.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ysharma"><img alt="yuvraj sharma's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1624431552569-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/abidlabs"><img alt="Abubakar Abid's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1621947938344-noauth.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/hysts"><img alt="hysts's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1643012094339-61914f536d34e827404ceb99.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pcuenq"><img alt="Pedro Cuenca's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1617264212503-603d25b75f9d390ab190b777.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#table-of-contents">Table of Contents</a> <ul></ul> </li><li><a href="#background">Background</a> <ul></ul> </li><li><a href="#getting-started">Getting Started</a> <ul><li><a href="#node-types">Node Types</a> <ul></ul> </li><li><a href="#sharing-your-workflows">Sharing Your Workflows</a> <ul></ul> </li></ul> </li><li><a href="#end-to-end-example-with-different-nodes">End-to-End Example with Different Nodes</a> <ul></ul> </li><li><a href="#next-steps">Next Steps</a> <ul></ul> </li></ul></nav></div><p><strong>TL;DR:</strong> <a href="https://github.com/gradio-app/daggr">Daggr</a> is a new, open-source Python library for building AI workflows that connect Gradio apps, ML models, and custom functions. It automatically generates a visual canvas where you can inspect intermediate outputs, rerun individual steps, and manage state for complex pipelines, all in a few lines of Python code!</p> <h2> <a href="#table-of-contents"> <span></span> </a> <span> Table of Contents </span>
 </h2>
 <ol>
 <li><a href="#background">Background</a></li>
@@ -94,13 +36,7 @@
 <li><a href="#end-to-end-example-with-different-nodes">End-to-End Example with Different Nodes</a></li>
 <li><a href="#next-steps">Next Steps</a></li>
 </ol>
-<h2>
-	<a href="#background">
-		<span></span>
-	</a>
-	<span>
-		Background
-	</span>
+<h2> <a href="#background"> <span></span> </a> <span> Background </span>
 </h2>
 <p>If you've built AI applications that combine multiple models or processing steps, you know the pain: chaining API calls, debugging pipelines, and losing track of intermediate results. When something goes wrong in step 5 of a 10-step workflow, you often have to re-run everything just to see what happened.</p>
 <p>Most developers either build fragile scripts that are hard to debug or turn to heavy orchestration platforms designed for production pipelines—not rapid experimentation.</p>
@@ -109,13 +45,7 @@
 <p><strong>Inspect and Rerun Any Step</strong>: The visual canvas isn't just for show. You can inspect the output of any node, modify inputs, and rerun individual steps without executing the entire pipeline. This is invaluable when you're debugging a 10-step workflow and only step 7 is misbehaving. You can even provide “backup nodes” – replacing one model or Space with another – to build resilient workflows.</p>
 <p><strong>First-Class Gradio Integration</strong>: Since Daggr is built by the Gradio team, it works seamlessly with Gradio Spaces. Point to any public (or private) Space and you can use it as a node in your workflow. No adapters, no wrappers—just reference the Space name and API endpoint.</p>
 <p><strong>State Persistence</strong>: Daggr automatically saves your workflow state, input values, cached results, canvas position—so you can pick up where you left off. Use "sheets" to maintain multiple workspaces within the same app.</p>
-<h2>
-	<a href="#getting-started">
-		<span></span>
-	</a>
-	<span>
-		Getting Started
-	</span>
+<h2> <a href="#getting-started"> <span></span> </a> <span> Getting Started </span>
 </h2>
 <p>Install daggr with pip or uv, it just requires Python 3.10 or higher:</p>
 <pre><code>pip install daggr
@@ -124,229 +54,102 @@ uv pip install daggr
 <p>Here's a simple example that generates an image and removes its background. Check out <a href="https://huggingface.co/spaces/hf-applications/Z-Image-Turbo">this Space’s API reference</a> from the bottom of the Space to see which inputs it takes and which outputs it yields. In this example, the Space returns both original image and the edited image, so we return only the edited image.</p>
 <pre><code><span>import</span> random
 <span>import</span> gradio <span>as</span> gr
-<span>from</span> daggr <span>import</span> GradioNode, Graph
-
-<span># Generate an image using a Gradio Space</span>
-image_gen = GradioNode(
-    <span>"hf-applications/Z-Image-Turbo"</span>,
-    api_name=<span>"/generate_image"</span>,
-    inputs={
-        <span>"prompt"</span>: gr.Textbox(
-            label=<span>"Prompt"</span>,
-            value=<span>"A cheetah sprints across the grassy savanna."</span>,
-            lines=<span>3</span>,
-        ),
-        <span>"height"</span>: <span>1024</span>,
-        <span>"width"</span>: <span>1024</span>,
-        <span>"seed"</span>: random.random,
-    },
-    outputs={
-        <span>"image"</span>: gr.Image(label=<span>"Generated Image"</span>),
-    },
-)
-
-<span># Remove background using another Gradio Space</span>
-bg_remover = GradioNode(
-    <span>"hf-applications/background-removal"</span>,
-    api_name=<span>"/image"</span>,
-    inputs={
-        <span>"image"</span>: image_gen.image,  <span># Connect to previous node's output</span>
-    },
-    outputs={
-        <span>"original_image"</span>: <span>None</span>,  <span># Hide this output</span>
-        <span>"final_image"</span>: gr.Image(label=<span>"Final Image"</span>),
-    },
-)
-
-graph = Graph(
-    name=<span>"Transparent Background Generator"</span>, 
-    nodes=[image_gen, bg_remover]
+<span>from</span> daggr <span>import</span> GradioNode, Graph <span># Generate an image using a Gradio Space</span>
+image_gen = GradioNode( <span>"hf-applications/Z-Image-Turbo"</span>, api_name=<span>"/generate_image"</span>, inputs={ <span>"prompt"</span>: gr.Textbox( label=<span>"Prompt"</span>, value=<span>"A cheetah sprints across the grassy savanna."</span>, lines=<span>3</span>, ), <span>"height"</span>: <span>1024</span>, <span>"width"</span>: <span>1024</span>, <span>"seed"</span>: random.random, }, outputs={ <span>"image"</span>: gr.Image(label=<span>"Generated Image"</span>), },
+) <span># Remove background using another Gradio Space</span>
+bg_remover = GradioNode( <span>"hf-applications/background-removal"</span>, api_name=<span>"/image"</span>, inputs={ <span>"image"</span>: image_gen.image, <span># Connect to previous node's output</span> }, outputs={ <span>"original_image"</span>: <span>None</span>, <span># Hide this output</span> <span>"final_image"</span>: gr.Image(label=<span>"Final Image"</span>), },
+) graph = Graph( name=<span>"Transparent Background Generator"</span>, nodes=[image_gen, bg_remover]
 )
 graph.launch()
 </code></pre>
 <p>That's it. Run this script and you get a visual canvas served on port 7860 launched automatically, as well as a shareable live link, showing both nodes connected, with inputs you can modify and outputs you can inspect at each step.</p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app1.png"><img alt="App" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app1.png" /></a></p>
-<h3>
-	<a href="#node-types">
-		<span></span>
-	</a>
-	<span>
-		Node Types
-	</span>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app1.png"><img alt="App" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app1.png"></a></p>
+<h3> <a href="#node-types"> <span></span> </a> <span> Node Types </span>
 </h3>
 <p>Daggr supports three types of nodes:</p>
 <p><strong>GradioNode</strong> calls a Gradio Space API endpoint or locally served Gradio app. Passing <code>run_locally=True</code>, Daggr automatically clones the Space, creates an isolated virtual environment, and launches the app. If local execution fails, it gracefully falls back to the remote API.</p>
-<pre><code>node = GradioNode(
-    <span>"username/space-name"</span>,
-    api_name=<span>"/predict"</span>,
-    inputs={<span>"text"</span>: gr.Textbox(label=<span>"Input"</span>)},
-    outputs={<span>"result"</span>: gr.Textbox(label=<span>"Output"</span>)},
-)
-
-<span># clone a Space locally and serve</span>
-node = GradioNode(
-    <span>"hf-applications/background-removal"</span>,
-    api_name=<span>"/image"</span>,
-    run_locally=<span>True</span>,
-    inputs={<span>"image"</span>: gr.Image(label=<span>"Input"</span>)},
-    outputs={<span>"final_image"</span>: gr.Image(label=<span>"Output"</span>)},
+<pre><code>node = GradioNode( <span>"username/space-name"</span>, api_name=<span>"/predict"</span>, inputs={<span>"text"</span>: gr.Textbox(label=<span>"Input"</span>)}, outputs={<span>"result"</span>: gr.Textbox(label=<span>"Output"</span>)},
+) <span># clone a Space locally and serve</span>
+node = GradioNode( <span>"hf-applications/background-removal"</span>, api_name=<span>"/image"</span>, run_locally=<span>True</span>, inputs={<span>"image"</span>: gr.Image(label=<span>"Input"</span>)}, outputs={<span>"final_image"</span>: gr.Image(label=<span>"Output"</span>)},
 </code></pre>
 <p><strong>FnNode</strong> — runs a custom Python function:</p>
-<pre><code><span>def</span> <span>process</span>(<span>text: <span>str</span></span>) -&gt; <span>str</span>:
-    <span>return</span> text.upper()
-
-node = FnNode(
-    fn=process,
-    inputs={<span>"text"</span>: gr.Textbox(label=<span>"Input"</span>)},
-    outputs={<span>"result"</span>: gr.Textbox(label=<span>"Output"</span>)},
+<pre><code><span>def</span> <span>process</span>(<span>text: <span>str</span></span>) -&gt; <span>str</span>: <span>return</span> text.upper() node = FnNode( fn=process, inputs={<span>"text"</span>: gr.Textbox(label=<span>"Input"</span>)}, outputs={<span>"result"</span>: gr.Textbox(label=<span>"Output"</span>)},
 )
 </code></pre>
 <p><strong>InferenceNode</strong> — calls a model via Hugging Face Inference Providers:</p>
-<pre><code>node = InferenceNode(
-    model=<span>"moonshotai/Kimi-K2.5:novita"</span>,
-    inputs={<span>"prompt"</span>: gr.Textbox(label=<span>"Prompt"</span>)},
-    outputs={<span>"response"</span>: gr.Textbox(label=<span>"Response"</span>)},
+<pre><code>node = InferenceNode( model=<span>"moonshotai/Kimi-K2.5:novita"</span>, inputs={<span>"prompt"</span>: gr.Textbox(label=<span>"Prompt"</span>)}, outputs={<span>"response"</span>: gr.Textbox(label=<span>"Response"</span>)},
 )
 </code></pre>
-<h3>
-	<a href="#sharing-your-workflows">
-		<span></span>
-	</a>
-	<span>
-		Sharing Your Workflows
-	</span>
+<h3> <a href="#sharing-your-workflows"> <span></span> </a> <span> Sharing Your Workflows </span>
 </h3>
 <p>Generate a public URL with Gradio's tunneling:</p>
 <pre><code>graph.launch(share=<span>True</span>)
 </code></pre>
 <p>For permanent hosting, deploy on Hugging Face Spaces using the Gradio SDK—just add <code>daggr</code> to your <code>requirements.txt</code>.</p>
-<h2>
-	<a href="#end-to-end-example-with-different-nodes">
-		<span></span>
-	</a>
-	<span>
-		End-to-End Example with Different Nodes
-	</span>
+<h2> <a href="#end-to-end-example-with-different-nodes"> <span></span> </a> <span> End-to-End Example with Different Nodes </span>
 </h2>
 <p>We will now develop an app that takes in an image and generates a 3D asset. This demo can run on daggr 0.4.3. Here are the steps:</p>
 <ol>
-<li><strong>Take an image, remove the background:</strong> For this, we will clone the <a href="https://huggingface.co/spaces/merve/background-removal">BiRefNet Space</a> and run it locally.  </li>
-<li><strong>Downscale the image for efficiency:</strong> We will write a simple function for this with FnNode.  </li>
-<li><strong>Generate an image in 3D asset style for better results:</strong> We will use InferenceNode with <a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B">Flux.2-klein-4B model</a> on Inference Providers.  </li>
+<li><strong>Take an image, remove the background:</strong> For this, we will clone the <a href="https://huggingface.co/spaces/merve/background-removal">BiRefNet Space</a> and run it locally. </li>
+<li><strong>Downscale the image for efficiency:</strong> We will write a simple function for this with FnNode. </li>
+<li><strong>Generate an image in 3D asset style for better results:</strong> We will use InferenceNode with <a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B">Flux.2-klein-4B model</a> on Inference Providers. </li>
 <li>Pass the output image to a 3D generator: We will send the output image to the Trellis.2 Space hosted on Spaces.</li>
 </ol>
 <blockquote>
 <p>Spaces that are run locally might take models to CUDA (with <code>to.(“cuda”)</code>) or ZeroGPU within the application file. To disable this behavior to run the model on CPU (useful if you have a device with no NVIDIA GPU) duplicate the Space you want to use and clone it. </p>
 </blockquote>
 <p>The resulting graph looks like below.</p>
-<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app2.png"><img alt="App" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app2.png" /></a></p>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app2.png"><img alt="App" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/daggr-blog/app2.png"></a></p>
 <p>Let’s write the first step, which is the background remover. We will clone and run <a href="https://huggingface.co/spaces/merve/background-removal">this Space</a> locally. This Space runs on CPU, and takes ~13 seconds to run. You can swap with <a href="https://huggingface.co/spaces/hf-applications/background-removal">this app</a> if you have an NVIDIA GPU.</p>
-<pre><code><span>from</span> daggr <span>import</span> FnNode, GradioNode, InferenceNode, Graph
-
-background_remover = GradioNode(
-   <span>"merve/background-removal"</span>,
-   api_name=<span>"/image"</span>,
-   run_locally=<span>True</span>, 
-   inputs={
-       <span>"image"</span>: gr.Image(),
-   },
-   outputs={
-       <span>"original_image"</span>: <span>None</span>,
-       <span>"final_image"</span>: gr.Image(
-           label=<span>"Final Image"</span>
-       ),
-   },
+<pre><code><span>from</span> daggr <span>import</span> FnNode, GradioNode, InferenceNode, Graph background_remover = GradioNode( <span>"merve/background-removal"</span>, api_name=<span>"/image"</span>, run_locally=<span>True</span>, inputs={ <span>"image"</span>: gr.Image(), }, outputs={ <span>"original_image"</span>: <span>None</span>, <span>"final_image"</span>: gr.Image( label=<span>"Final Image"</span> ), },
 )
 </code></pre>
 <p>For the second step, we need to write a helper function to downscale the image and pass it to <code>FnNode</code>.</p>
 <pre><code><span>from</span> PIL <span>import</span> Image
-<span>from</span> daggr.state <span>import</span> get_daggr_files_dir
-
-
-<span>def</span> <span>downscale_image_to_file</span>(<span>image: <span>Any</span>, scale: <span>float</span> = <span>0.25</span></span>) -&gt; <span>str</span> | <span>None</span>:
-   pil_img = Image.<span>open</span>(image)
-   scale_f = <span>max</span>(<span>0.05</span>, <span>min</span>(<span>1.0</span>, <span>float</span>(scale)))
-   w, h = pil_img.size
-   new_w = <span>max</span>(<span>1</span>, <span>int</span>(w * scale_f))
-   new_h = <span>max</span>(<span>1</span>, <span>int</span>(h * scale_f))
-   resized = pil_img.resize((new_w, new_h), resample=Image.LANCZOS)
-   out_path = get_daggr_files_dir() / <span>f"<span>{uuid.uuid4()}</span>.png"</span>
-
-   resized.save(out_path)
-   <span>return</span> <span>str</span>(out_path)
+<span>from</span> daggr.state <span>import</span> get_daggr_files_dir <span>def</span> <span>downscale_image_to_file</span>(<span>image: <span>Any</span>, scale: <span>float</span> = <span>0.25</span></span>) -&gt; <span>str</span> | <span>None</span>: pil_img = Image.<span>open</span>(image) scale_f = <span>max</span>(<span>0.05</span>, <span>min</span>(<span>1.0</span>, <span>float</span>(scale))) w, h = pil_img.size new_w = <span>max</span>(<span>1</span>, <span>int</span>(w * scale_f)) new_h = <span>max</span>(<span>1</span>, <span>int</span>(h * scale_f)) resized = pil_img.resize((new_w, new_h), resample=Image.LANCZOS) out_path = get_daggr_files_dir() / <span>f"<span>{uuid.uuid4()}</span>.png"</span> resized.save(out_path) <span>return</span> <span>str</span>(out_path)
 </code></pre>
 <p>We can now pass in the function to initialize the <code>FnNode</code>. </p>
-<pre><code>downscaler = FnNode(
-   downscale_image_to_file,
-   name=<span>"Downscale image for Inference"</span>,
-   inputs={
-       <span>"image"</span>: background_remover.final_image,
-       <span>"scale"</span>: gr.Slider(
-           label=<span>"Downscale factor"</span>,
-           minimum=<span>0.25</span>,
-           maximum=<span>0.75</span>,
-           step=<span>0.05</span>,
-           value=<span>0.25</span>,
-       ),
-   },
-   outputs={
-       <span>"image"</span>: gr.Image(label=<span>"Downscaled Image"</span>, <span>type</span>=<span>"filepath"</span>),
-   },
+<pre><code>downscaler = FnNode( downscale_image_to_file, name=<span>"Downscale image for Inference"</span>, inputs={ <span>"image"</span>: background_remover.final_image, <span>"scale"</span>: gr.Slider( label=<span>"Downscale factor"</span>, minimum=<span>0.25</span>, maximum=<span>0.75</span>, step=<span>0.05</span>, value=<span>0.25</span>, ), }, outputs={ <span>"image"</span>: gr.Image(label=<span>"Downscaled Image"</span>, <span>type</span>=<span>"filepath"</span>), },
 )
 </code></pre>
 <p>We will now write the <code>InferenceNode</code> with the Flux model.</p>
-<pre><code>flux_enhancer = InferenceNode(
-   model=<span>"black-forest-labs/FLUX.2-klein-4B:fal-ai"</span>,
-   inputs={
-       <span>"image"</span>: downscaler.image,
-       <span>"prompt"</span>: gr.Textbox(
-           label=<span>"prompt"</span>,
-           value=(<span>"Transform this into a clean 3D asset render"</span>),
-           lines=<span>3</span>,
-       ),
-   },
-   outputs={
-       <span>"image"</span>: gr.Image(label=<span>"3D-Ready Enhanced Image"</span>),
-   },
+<pre><code>flux_enhancer = InferenceNode( model=<span>"black-forest-labs/FLUX.2-klein-4B:fal-ai"</span>, inputs={ <span>"image"</span>: downscaler.image, <span>"prompt"</span>: gr.Textbox( label=<span>"prompt"</span>, value=(<span>"Transform this into a clean 3D asset render"</span>), lines=<span>3</span>, ), }, outputs={ <span>"image"</span>: gr.Image(label=<span>"3D-Ready Enhanced Image"</span>), },
 )
 </code></pre>
 <blockquote>
 <p>When deploying apps with InferenceNode to Hugging Face Spaces, use a fine-grained Hugging Face access token with the option "Make calls to Inference Providers" only.</p>
 </blockquote>
 <p>Last node is 3D generation with querying the Trellis.2 Space on Hugging Face. </p>
-<pre><code>trellis_3d = GradioNode(
-   <span>"microsoft/TRELLIS.2"</span>,
-   api_name=<span>"/image_to_3d"</span>,
-   inputs={
-       <span>"image"</span>: flux_enhancer.image,
-       <span>"ss_guidance_strength"</span>: <span>7.5</span>,   
-       <span>"ss_sampling_steps"</span>: <span>12</span>,     
-   },
-   outputs={
-       <span>"glb"</span>: gr.HTML(label=<span>"3D Asset (GLB preview)"</span>),
-   },
+<pre><code>trellis_3d = GradioNode( <span>"microsoft/TRELLIS.2"</span>, api_name=<span>"/image_to_3d"</span>, inputs={ <span>"image"</span>: flux_enhancer.image, <span>"ss_guidance_strength"</span>: <span>7.5</span>, <span>"ss_sampling_steps"</span>: <span>12</span>, }, outputs={ <span>"glb"</span>: gr.HTML(label=<span>"3D Asset (GLB preview)"</span>), },
 )
 </code></pre>
 <p>Chaining them together and launching the app is as simple as follows.</p>
-<pre><code>graph = Graph(
-   name=<span>"Image to 3D Asset Pipeline"</span>,
-   nodes=[background_remover, downscaler, flux_enhancer, trellis_3d],
-)
-
-<span>if</span> __name__ == <span>"__main__"</span>:
-   graph.launch()
+<pre><code>graph = Graph( name=<span>"Image to 3D Asset Pipeline"</span>, nodes=[background_remover, downscaler, flux_enhancer, trellis_3d],
+) <span>if</span> __name__ == <span>"__main__"</span>: graph.launch()
 </code></pre>
 <p>You can find the complete example running in <a href="https://huggingface.co/spaces/merve/daggr-image-to-3d">this Space</a>, to run locally you just need to take app.py, install requirements and login to Hugging Face Hub.</p>
-<h2>
-	<a href="#next-steps">
-		<span></span>
-	</a>
-	<span>
-		Next Steps
-	</span>
+<h2> <a href="#next-steps"> <span></span> </a> <span> Next Steps </span>
 </h2>
 <p>Daggr is in beta and intentionally lightweight. APIs may change between versions, and while we persist workflow state locally, data loss is possible during updates. If you have feature requests or find bugs, please open an issue <a href="https://github.com/gradio-app/daggr/issues">here</a>. We’re looking forward to your feedback! Share your daggr workflows on socials with Gradio for a chance to be featured. Check out all the featured works <a href="https://huggingface.co/collections/ysharma/daggr-hf-spaces">here</a>.</p>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

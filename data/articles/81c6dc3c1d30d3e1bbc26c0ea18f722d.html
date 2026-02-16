@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>AMOS infostealer targets macOS through a popular AI app</title>
 <style>
@@ -23,23 +21,22 @@
 <body>
   <h1>AMOS infostealer targets macOS through a popular AI app</h1>
   <div class="metadata">
-    Source: BleepingComputer Windows | Date: 2/12/2026 | Lang: EN |
-    <a href="https://www.bleepingcomputer.com/news/security/amos-infostealer-targets-macos-through-a-popular-ai-app/" target="_blank">Original Article</a>
+    Source: BleepingComputer Windows | Date: 2/12/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
 	   
-<p><img alt="Flare Infostealer header" src="https://www.bleepstatic.com/content/posts/2026/02/10/infostealer-header-image.jpg" /></p>
+<p><img alt="Flare Infostealer header" src="https://www.bleepstatic.com/content/posts/2026/02/10/infostealer-header-image.jpg"></p>
 
-<p>Infostealers like <a href="http://flare.io/learn/resources/blog/the-macos-stealer-gold-rush-how-cybercriminals-are-racing-to-exploit-apples-ecosystem?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">Atomic MacOS Stealer</a> (AMOS) represent far more than a standalone malware. They are foundational components of a mature cybercrime economy built around harvesting, trading, and operationalizing stolen digital identities.</p>
+<p>Infostealers like &nbsp;(AMOS) represent far more than a standalone malware. They are foundational components of a mature cybercrime economy built around harvesting, trading, and operationalizing stolen digital identities.</p>
 
-<p>Rather than acting as the end goal, modern stealers function as large-scale data collection engines that feed underground markets, where stolen credentials, sessions, and financial data are bought and sold to fuel account takeovers, fraud, and follow-on intrusions. </p>
+<p>Rather than acting as the end goal, modern stealers function as large-scale data collection engines that feed underground markets, where stolen credentials, sessions, and financial data are bought and sold to fuel account takeovers, fraud, and follow-on intrusions.&nbsp;</p>
 
-<p>What makes these campaigns particularly effective is their highly opportunistic social engineering approach: attackers continuously adapt to technology trends, abusing trusted platforms, popular software, search engines, and even emerging AI ecosystems to trick users into executing malware themselves. </p>
+<p>What makes these campaigns particularly effective is their highly opportunistic social engineering approach: attackers continuously adapt to technology trends, abusing trusted platforms, popular software, search engines, and even emerging AI ecosystems to trick users into executing malware themselves.&nbsp;</p>
 
 <p>This combination of industrialized data monetization and adaptive social engineering has made infostealers one of the most reliable and scalable entry points in today’s cybercrime landscape.</p>
 
-<p>In the new <a href="https://flare.io/learn/resources/2026-enterprise-infostealer-identity-exposure/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">2026 Enterprise Infostealer Identity Exposure report</a>, Flare researchers highlight the growing dominance of infostealers within the cybercrime economy and the expanding impact of identity exposure on organizations.</p>
+<p>In the new , Flare researchers highlight the growing dominance of infostealers within the cybercrime economy and the expanding impact of identity exposure on organizations.</p>
 
 <p>In this article, we examine the AMOS infostealer as a case study, exploring its evolution, operational model, and real-world activity across its active years.</p>
 
@@ -47,7 +44,7 @@
 
 <p>Infostealers operate as one of the most critical enablers in the modern cybercrime kill chain because they transform a single infection into large-scale credential, session, and identity compromise.</p>
 
-<p>In general, once executed on a victim machine, an infostealer rapidly enumerates browsers, system credential stores, crypto wallets, messaging apps, and local files, extracting authentication data, session cookies, and sensitive documents before exfiltrating them to attacker-controlled infrastructure. </p>
+<p>In general, once executed on a victim machine, an infostealer rapidly enumerates browsers, system credential stores, crypto wallets, messaging apps, and local files, extracting authentication data, session cookies, and sensitive documents before exfiltrating them to attacker-controlled infrastructure.&nbsp;</p>
 
 <h2>ClawHavoc - The Most Recent Campaign</h2>
 
@@ -57,27 +54,27 @@
 
 <p>While the specific details are impressive, what matters more is the underlying tactic. AMOS distributors are capitalizing on OpenClaw's popularity as AI-hyped software.</p>
 
-<p>As users rush to install it for personal or organizational gains, attackers see an opportunity to bundle AMOS malware within it to steal valuable PII, credentials, and sensitive data.  </p>
+<p>As users rush to install it for personal or organizational gains, attackers see an opportunity to bundle AMOS malware within it to steal valuable PII, credentials, and sensitive data.&nbsp;&nbsp;</p>
 
 <p>The delivery model: attackers uploaded skills (OpenClaw add-ons) that looked legitimate: crypto tools, productivity utilities, YouTube helpers, finance or Google Workspace integrations, etc.</p>
 
-<p>Once installed, the malware could steal credentials, crypto wallet data, browser sessions, SSH keys, and other sensitive data, highlighting how AI agent extension ecosystems can become high-impact distribution channels when marketplace vetting is weak. </p>
+<p>Once installed, the malware could steal credentials, crypto wallet data, browser sessions, SSH keys, and other sensitive data, highlighting how AI agent extension ecosystems can become high-impact distribution channels when marketplace vetting is weak.&nbsp;</p>
 
 <p>This is the latest campaign, let’s remember how it all started…</p>
 <div>
-<h2><a href="https://try.flare.io/bleeping-computer/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">Monitor Stealer Logs Before Attackers Strike</a></h2>
+<h2></h2>
 
 <p>Flare tracks over 1 million new stealer logs weekly from dark web markets and Telegram channels.</p>
 
 <p>Detect compromised credentials, active session cookies, and corporate access before threat actors weaponize them in account takeover attacks.</p>
-<p><a href="https://try.flare.io/bleeping-computer/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">Start Free Trial</a></p></div>
+<p></p></div>
 
 <h2>AMOS the Malware - First Sighting of AMOS</h2>
 
 <p>AMOS first appeared around May 2023 on a Telegram channel.</p>
 
 <div>
-<figure><img alt="AMOS ad describing the malware’s capabilities" src="https://www.bleepstatic.com/images/news/security/f/flare/a/amos-stealer-ai-extensions/telegram.jpg" /><figcaption><strong>AMOS ad describing the malware’s capabilities</strong></figcaption></figure></div>
+<figure><img alt="AMOS ad describing the malware’s capabilities" src="https://www.bleepstatic.com/images/news/security/f/flare/a/amos-stealer-ai-extensions/telegram.jpg"><figcaption><strong>AMOS ad describing the malware’s capabilities</strong></figcaption></figure></div>
 
 <p>Stating its capabilities, which include exporting passwords from the Mac keychain, file grabber, system info, and macOS password exfiltration, browser session theft, crypto wallet data theft with various infostealer management capabilities (web-panel, tests, Telegram logs, etc).</p>
 
@@ -85,10 +82,10 @@
 
 <p>Since then, AMOS infostealer has become a part of the underground ecosystem, threat actors are willing to buy stealer logs that were extracted from infostealers (such as AMOS) in order to use them as an initial access to their own nefarious business.</p>
 
-<p>For instance, below you can see that a Russian-speaking threat actor dealing with Crypto wallet theft is looking for relevant AMOS logs. </p>
+<p>For instance, below you can see that a Russian-speaking threat actor dealing with Crypto wallet theft is looking for relevant AMOS logs.&nbsp;</p>
 
 <div>
-<figure><img alt="A dark web advertisement looking to buy AMOS logs for a follow-up crypto wallet theft." src="https://www.bleepstatic.com/images/news/security/f/flare/a/amos-stealer-ai-extensions/lolzguru-post.jpg" /><figcaption><strong>A dark web advertisement looking to buy AMOS logs for a follow-up crypto wallet theft.</strong><br /><em><a href="http://app.flare.io/#/forum_post/lolz_guru/61359472" target="_blank">View in Flare</a> - sign up for a free trial to access</em></figcaption></figure></div>
+<figure><img alt="A dark web advertisement looking to buy AMOS logs for a follow-up crypto wallet theft." src="https://www.bleepstatic.com/images/news/security/f/flare/a/amos-stealer-ai-extensions/lolzguru-post.jpg"><figcaption><strong>A dark web advertisement looking to buy AMOS logs for a follow-up crypto wallet theft.</strong><br><em><a href="http://app.flare.io/#/forum_post/lolz_guru/61359472" target="_blank">View in Flare</a> - sign up for a free trial to access</em></figcaption></figure></div>
 
 <h2>AMOS Modus-Operandi</h2>
 
@@ -98,11 +95,9 @@
 
 <p>In an underground forum, we saw a post about LastPass that warned of an ongoing AMOS campaign.</p>
 
-<p>This campaign was targeting macOS users through fake applications distributed via fraudulent GitHub repositories, where attackers impersonate over 100 well-known software brands to increase legitimacy. </p>
+<p>This campaign was targeting macOS users through fake applications distributed via fraudulent GitHub repositories, where attackers impersonate over 100 well-known software brands to increase legitimacy.&nbsp;</p>
 
-
-
-<p>The operation relies on SEO poisoning across Google and Bing to push these malicious repositories into search results, ultimately leading victims to ClickFix-style pages that socially engineer them into pasting Terminal commands, which download and execute the AMOS payload. </p>
+<p>The operation relies on SEO poisoning across Google and Bing to push these malicious repositories into search results, ultimately leading victims to ClickFix-style pages that socially engineer them into pasting Terminal commands, which download and execute the AMOS payload.&nbsp;</p>
 
 <p>The campaign is particularly resilient because attackers continuously generate new GitHub repositories using automated account creation, highlighting how trusted developer platforms and search engines are increasingly abused as scalable malware distribution infrastructure.</p>
 
@@ -116,7 +111,7 @@
 
 <h3>Traditional Dissemination Channels</h3>
 
-<p>Modern macOS infostealer campaigns rely heavily on social engineering–driven distribution rather than technical exploits. Threat actors commonly create <a href="https://flare.io/learn/resources/cybercrime-favorite-target-gamers/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">fake installers for popular software</a> such as Tor Browser, Photoshop, or Microsoft Office, packaging malware inside realistic-looking DMG disk images.</p>
+<p>Modern macOS infostealer campaigns rely heavily on social engineering–driven distribution rather than technical exploits. Threat actors commonly create&nbsp; such as Tor Browser, Photoshop, or Microsoft Office, packaging malware inside realistic-looking DMG disk images.</p>
 
 <p>In parallel, they use malvertising through platforms like Google Ads to drive victims to spoofed download sites that closely mimic legitimate vendors.</p>
 
@@ -130,13 +125,13 @@
 
 <h2>The Underground Economy Model</h2>
 
-<p>The AMOS ecosystem operates as a structured <a href="https://flare.io/learn/resources/blog/malware-as-a-service/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">Malware-as-a-Service (MaaS)</a> supply chain, where the developers (often tracked in underground forums as AMOS sellers or affiliates) provide the stealer platform, updates, infrastructure components, and sometimes management panels for a subscription cost historically advertised around ~$1,000 per month, typically paid in cryptocurrency. </p>
+<p>The AMOS ecosystem operates as a structured  supply chain, where the developers (often tracked in underground forums as AMOS sellers or affiliates) provide the stealer platform, updates, infrastructure components, and sometimes management panels for a subscription cost historically advertised around ~$1,000 per month, typically paid in cryptocurrency.&nbsp;</p>
 
 <p>Downstream threat actors purchase access to the stealer kit, customize lures or distribution channels (malvertising, fake installers, phishing, SEO poisoning, supply-chain abuse, or social engineering campaigns), and focus on maximizing infection volume.</p>
 
-<p>The primary output is a list of stolen credentials, PII, and session logs. This becomes a tradable commodity in <a href="https://flare.io/dark-web-monitoring?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">underground markets</a>. </p>
+<p>The primary output is a list of stolen credentials, PII, and session logs. This becomes a tradable commodity in .&nbsp;</p>
 
-<p>These <a href="https://flare.io/glossary/stealer-logs/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions&amp;utm_content=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">stealer logs</a> are purchased by secondary actors such as access brokers, account takeover specialists, and crypto cash-out operators, who use them for follow-on operations, including SaaS account compromise, financial fraud, ransomware initial access, or cryptocurrency theft.</p>
+<p>These &nbsp;are purchased by secondary actors such as access brokers, account takeover specialists, and crypto cash-out operators, who use them for follow-on operations, including SaaS account compromise, financial fraud, ransomware initial access, or cryptocurrency theft.</p>
 
 <p>This multi-stage monetization model turns AMOS infections into a repeatable revenue pipeline, where each actor in the chain specializes in development, distribution, or monetization, reflecting the broader industrialization of the modern infostealer economy.</p>
 
@@ -144,7 +139,7 @@
 
 <p>The resulting “stealer logs” are then sold or traded in underground markets, where other threat actors use them for account takeover, lateral movement, fraud, or follow-on attacks, defacto making infostealers a foundational data-supply layer for the broader cybercrime economy.</p>
 
-<p>The distributor layer is where we typically see the “innovative” or “creative” side of these <a href="https://flare.io/learn/resources/a-tale-of-two-campaigns-infostealer-infections-victim-screenshots-and-a-glimpse-into-the-worlds-strangest-economy/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions" target="_blank">campaigns</a> - and it’s what usually makes the headlines. This is the layer behind narratives like “AMOS is now targeting AI apps” or “AMOS campaigns are hitting LastPass users.”</p>
+<p>The distributor layer is where we typically see the “innovative” or “creative” side of these &nbsp;- and it’s what usually makes the headlines. This is the layer behind narratives like “AMOS is now targeting AI apps” or “AMOS campaigns are hitting LastPass users.”</p>
 
 <p>In reality, the core malware developers often remain consistent, occasionally adding a new feature or improving packaging and evasion, but the underlying capability set changes incrementally.</p>
 
@@ -152,12 +147,12 @@
 
 <p>The distributors, however, are the ones driving real campaign evolution: they decide who to target, define campaign scope, choose distribution channels, and continuously refine the psychological and social engineering techniques used to manipulate victims as part of their operational playbook.</p>
 
-<p><strong><a href="https://try.flare.io/bleeping-computer/?utm_campaign=35747122-Bleeping%20Computer%20-%20Jan%2027%20-%20From%20Cipher%20to%20Fear&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=From%20Cipher%20to%20Fear&amp;utm_content=From%20Cipher%20to%20Fear" target="_blank">Learn more by signing up for our free trial</a>.</strong></p>
-<p><i>Sponsored and written by <a href="https://try.flare.io/bleeping-computer/?utm_campaign=37618530-AMOS%20Infostealer%20Targets%20MacOS%20Through%20Poisoned%20AI%20Extensions%20-%20Bleeping%20Computer%20Feb%2012&amp;utm_source=Paid%20Media&amp;utm_medium=Bleeping%20Computer&amp;utm_term=Identity%20Theft%20at%20Scale%3A%20AMOS%20Infostealer%20Targe" target="_blank">Flare</a>.</i></p>
+<p><strong>.</strong></p>
+<p><i>Sponsored and written by .</i></p>
 
 	   
             
 	  </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

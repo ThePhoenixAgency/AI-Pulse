@@ -1,108 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Papers adds handwriting &amp; text annotations in latest Nightly builds</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Papers adds handwriting &amp; text annotations in latest Nightly builds</h1>
   <div class="metadata">
-    Source: OMG! Ubuntu | Date: 2/4/2026 | Lang: EN |
-    <a href="https://www.omgubuntu.co.uk/2026/02/papers-gnome-app-annotations-signature" target="_blank">Original Article</a>
+    Source: OMG! Ubuntu | Date: 2/4/2026 1:31:24 AM | <a href="https://www.omgubuntu.co.uk/2026/02/papers-gnome-app-annotations-signature" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content">
-    <div><div>
-                        <div>
-<figure><a href="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/gnome-papers-ink-text-annotations.webp?ssl=1"><img src="https://i0.wp.com/www.omgubuntu.co.uk/wp-content/uploads/2026/02/gnome-papers-ink-text-annotations.webp?resize=750%2C394&amp;ssl=1" alt="A screenshot of the GNOME Papers app showing a PDF document being annotated with freehand ink drawings and added text boxes." /></a></figure>
-</div>
-
-
-<p><strong>Handwriting and markup features have been added to <em><a href="https://apps.gnome.org/Papers/" target="_blank">Papers</a></em>, GNOME’s – and<a href="https://www.omgubuntu.co.uk/2025/03/ubuntu-25-04-new-features">since 25.04</a>, Ubuntu’s – default document viewer app.</strong></p>
-
-
-
-<p>The latest nightly builds of <em>Papers</em> let you draw on documents with ink tools to add callouts, doodles or your own signature to PDF files, and pepper pages with text boxes to type on forms that don’t otherwise support input.</p>
-
-
-
-<p>Papers already has text highlighting and an annotations sidebar, but it lacked <em>freeform</em> pen tools or moveable text boxes. Fleshing out the document editing tools is welcome as it will save the hassle of installing additional software.</p>
-
-
-
-<h3>Adding the PDF Annotation features </h3>
-
-
-
-<p>Developer Lucas Baudin worked on adding the new PDF annotation tools to Papers, having tried a decade ago with GNOME document viewer <em>Evince</em>, for which Papers is a spiritual successor. </p>
-
-
-
-<p>But <a href="https://lbaudin.pages.gitlab.gnome.org/blog/posts/drawing-writing-with-papers/" target="_blank">he says he ‘quickly gave up’</a>.</p>
-
-
-
-<p>Thankfully, he looped back to the idea. It required a number of changes to <a href="https://poppler.freedesktop.org/" target="_blank">poppler</a> (the open-source PDF rendering library) and to Papers’ UI, but ink and text annotations have landed upstream, ahead of the GNOME 50 release next month.</p>
-
-
-
-<p><em>“This is the result of the joint work of several people who designed, developed, and tested all the little details. It required adding support for ink and free text annotations in the GLib bindings of poppler, then adding support for highlight ink annotations there”,</em> says Baudin.  </p>
-
-
-
-<p>Better yet, he also mentions that in adding PDF editing tools to Papers it provided ‘an opportunity to improve document forms, which are now more accessible’ in the latest nightly builds, which is great.</p>
-
-
-
-<h3>Why forking is sometimes smarter</h3>
-
-
-
-<p>When Evince, the original GNOME document viewer, was forked into Papers, a few folks wondered why take that approach when ‘maintaining Evince’ was surely the more obvious solution.</p>
-
-
-
-<p>Here, the justification for forking feels evident: major modernisation of old, unmaintained codebases is hard. Decades of old code, bugs, decisions and interplay that made sense to someone at some point gets lost to time.</p>
-
-
-
-<p>Ripping out walls to modernise is easier than papering over cracks.</p>
-
-
-
-<p>Contributors are more likely to be drawn to a codebase that’s easy to work with, uses modern languages and technologies, and doesn’t demand a degree in FOSS archaeology to understand!</p>
-
-
-
-<p>Forking also kept users who like Evince – and the way it looks – happy as they can continue to use it. The UI changes were not forced on them during distro upgrades – you can install Evince <em>alongside</em> Papers on most Linux distributions, Ubuntu included.</p>
-
-
-
-<h3>Available to test in Nightly Builds </h3>
-
-
-
-<p>You can test <em>Papers</em> and its new PDF annotation tools by installing it from the <a href="https://nightly.gnome.org/">GNOME Nightly</a> repo. But keep in mind that nightly software is raw, potentially buggy and comes with no guarantees of stability, so don’t do edit critical documents.</p>
-
-
-
-<p>Otherwise, these features should make it to the GNOME 50 release, which is out in March and will ship as the default desktop on Ubuntu 26.04 LTS in April.</p>
-                                            </div></div>
+  <div class="content"><p>Handwriting and markup features have been added to Papers, GNOME’s – andsince 25.04, Ubuntu’s – default document viewer app. The latest nightly builds of Papers let you draw on documents with ink tools to add callouts, doodles or your own signature to PDF files, and pepper pages with text boxes to type on forms that don’t otherwise support input. Papers already has text highlighting and an annotations sidebar, but it lacked freeform pen tools or moveable text boxes. Fleshing out the document editing tools is welcome as it will save the hassle of installing additional software. Adding the PDF Annotation features Developer Lucas Baudin worked on adding the&nbsp;new&nbsp;PDF&nbsp;annotation&nbsp;tools to Papers, having tried a decade ago with GNOME document viewer Evince, for which Papers is a spiritual successor. But he says he ‘quickly gave up’. Thankfully, he looped back to the idea. It required a number of changes to poppler (the open-source PDF rendering library) and to Papers’ UI, but ink and text annotations have landed upstream, ahead of the GNOME 50 release next month. “This is the result of the joint work of several people who designed, developed, and tested all the little details. It required adding support for ink and free text annotations in the GLib bindings of poppler, then adding support for highlight ink annotations there”, says Baudin. Better yet, he also mentions that in adding PDF editing tools to Papers it provided ‘an opportunity to improve document forms, which are now more accessible’ in the latest nightly builds, which is great. Why forking is sometimes smarter When Evince, the original GNOME document viewer, was forked into Papers, a few folks wondered why take that approach when ‘maintaining Evince’ was surely the more obvious solution. Here, the justification for forking feels evident: major modernisation of old, unmaintained codebases is hard. Decades of old code, bugs, decisions and interplay that made sense to someone at some point gets lost to time. Ripping out walls to modernise is easier than papering over cracks. Contributors are more likely to be drawn to a codebase that’s easy to work with, uses modern languages and technologies, and doesn’t demand a degree in FOSS archaeology to understand! Forking also kept users who like Evince – and the way it looks – happy as they can continue to use it. The UI changes were not forced on them during distro upgrades – you can install Evince alongside Papers on most Linux distributions, Ubuntu included. Available to test in Nightly Builds You can test Papers and its new PDF annotation tools by installing it from the&nbsp;GNOME Nightly&nbsp;repo. But keep in mind that nightly software is raw, potentially buggy and comes with no guarantees of stability, so don’t do edit critical documents. Otherwise, these features should make it to the GNOME 50 release, which is out in March and will ship as the default desktop on Ubuntu 26.04 LTS in April.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

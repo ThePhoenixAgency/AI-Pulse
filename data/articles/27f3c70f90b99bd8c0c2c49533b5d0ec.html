@@ -4,108 +4,58 @@
 <meta charset="UTF-8">
 <title>Shadow Repeater:AI-enhanced manual testing</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Shadow Repeater:AI-enhanced manual testing</h1>
   <div class="metadata">
-    Source: PortSwigger Research | Date: 2/20/2025 | Lang: EN |
-    <a href="https://portswigger.net/research/shadow-repeater-ai-enhanced-manual-testing" target="_blank">Original Article</a>
+    Source: PortSwigger Research | Date: 2/20/2025 2:20:19 PM | <a href="https://portswigger.net/research/shadow-repeater-ai-enhanced-manual-testing" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-    
-    
-    
-<div>
-    <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png" /></p>
-</div>
-    <ul>
-        <li>
-            <p><span></span><strong>Published: </strong>20 February 2025 at 13:20 UTC</p>
-        </li>
-        <li>
-            <p><strong>Updated: </strong>25 February 2025 at 09:06 UTC</p>
-        </li>
-        <li>
-        </li>
-    </ul>
-    <p><img src="https://portswigger.net/cms/images/6a/14/5e0e-article-shadow_repeater-article.png" alt="Shows a few different vectors in different colours" /><br /></p><p><b>Have you ever wondered how many vulnerabilities you've missed by a hair's breadth, due to a single flawed choice?</b>
+    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>20 February 2025 at 13:20 UTC</p> </li> <li> <p><strong>Updated: </strong>25 February 2025 at 09:06 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/6a/14/5e0e-article-shadow_repeater-article.png" alt="Shows a few different vectors in different colours"><br></p><p><b>Have you ever wondered how many vulnerabilities you've missed by a hair's breadth, due to a single flawed choice?</b>
 </p><p>We've just released Shadow Repeater, which enhances your manual testing with AI-powered, fully automatic variation testing. Simply use Burp Repeater as you normally would, and behind the scenes Shadow Repeater will monitor your attacks, try permutations, and report any discoveries via Organizer.
-</p><p>Shadow Repeater aids deep, targeted testing by analysing your payloads so when you have a near miss due to sending the wrong syntax, incorrect encoding, file path, or simply a typo, it can find the bug for you. It's fully automatic, and doesn't require any changes to your normal manual testing workflow.</p>
-
-<h2>How does Shadow Repeater work</h2>
-
-<p>Shadow Repeater monitors your Repeater requests and identifies which parameters you're changing. It then extracts the payloads you've placed in these parameters, and sends them to an AI model which generates variants. Finally, it attacks the target with these payload variations and uses response diffing to identify whether any of them triggered a new interesting code path. This approach allows it to build on a manual tester's expertise to uncover unexpected behaviors, such as unconventional <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vectors, successful <a href="https://portswigger.net/web-security/file-path-traversal">path traversal</a> attempts, and even novel vulnerabilities like email splitting attacks.
-</p>
-
-
-<p>You can get the source code for <a href="https://github.com/hackvertor/shadow-repeater">Shadow Repeater on Github</a> and it's available on the BApp store.</p>
-<p></p>
-
-<h2>Installation instructions</h2>
-
-<p><b>In <a href="https://portswigger.net/burp/pro">Burp Suite Professional</a>, go to Extensions-&gt;BApp store and search for Shadow Repeater. Click the install button and then navigate to the installed tab then select Shadow Repeater and check the "Use AI" checkbox in the Extension tab.</b></p><p><img src="https://portswigger.net/cms/images/48/59/649a-article-shadow-repeater-install-screenshot.png" alt="Screenshot of Shadow Repeater Extension tab" /><br /></p>
-
-<h2>Usage</h2>
-
-<p>By default, Shadow repeater gets invoked on the 5th repeater request you make, and it requires a parameter or header to be changed. You simply try to hack a target by altering the request in some way. In the background Shadow repeater will send variations and look for differences in the response. When it's found something interesting it will send it to the organiser for inspection.</p>
-
-<h2>The journey to Shadow Repeater</h2>
-
-
-<p>At PortSwigger we had an opportunity to pitch our ideas for an AI feature in a Dragons Den style competition. I thought it wouldn't be cool if Burp could analyse Repeater requests and find variations of whatever you're testing for even unknown vulnerabilities. I failed. I couldn't see how it would work. I choose instead to focus on finding unknown encodings with AI Hackvertor.</p>
-
-
-
-<p>Using my experience of improving AI Hackvertor, I found myself more comfortable with how the AI works, how to send user input safely and how to get responses that were actually useful. If you know me, you'll know I can't leave things alone. I once came back to exploit the <a href="https://portswigger.net/web-security/cross-site-scripting/contexts/client-side-template-injection">AngularJS</a> HTML filter 2 years after I originally tested it. This dragon dens idea was no exception, I came back to work on it recently. 
-
-
-
-
-</p><p>My first breakthrough was to think about differences, previously I was sending entire Repeater requests to the AI for analysis and getting it to parse the request. Parsing entire requests was of course a bad idea. However, I needed this failed experiment to see what the AI was capable of. I thought about using diffing logic in a Github style diff of requests and responses. I chatted with James and he suggested using differences in parameters. So I wrote a Request Differ in Java to analyse the headers, parameters and URL path and only send the changing values to the AI. Now the AI was only analysing a small amount of data that was very focussed on what you are trying to hack.</p>
-
-
-
-<p>My second breakthrough was instead of telling the AI to understand what is being tested, I simply told it to find variations of it. This meant giving the AI general instructions to find variations but not going to detail about what it's actually testing. This works surprisingly well: it's aware of the context thanks to the Request Differ and knows the data you're testing. It generated variations for Path Traversal, XSS and other types of vulnerabilities.</p>
-
-
-
-<p>I was successfully generating variations of what the user was testing but how do I know the variation is relevant? This is where response diffing comes into play. I borrowed the legend that is Mr Kettle as he'd done extensive work in Backslash Powered Scanner diffing logic. He gave me some code samples on how his response diffing works and I added each variation generated by the AI to the analysis list as well as the user's request and some random control values. I then looked for invariant attributes of the response that changed when a variation was sent. This gave some cool results! This technique was able to find that spaces are allowed in a XSS vector, if a path traversal vector actually works and even unknown vulnerabilities such as email splitting attacks.</p>
-
-<p>
-
-This is just one example of what's now possible thanks to AI-powered extensions in Burp Suite. Check it out for yourself - Shadow Repeater is now available from the BApp Store for users on the Early Adopter release channel of Burp Suite Professional.
-
-</p>
-<p>
-
-Feeling inspired? Try <a href="https://portswigger.net/burp/documentation/desktop/extensions/creating/creating-ai-extensions">creating an AI-powered extension yourself</a> using Burp's built-in Montoya API and its dedicated interfaces for handling traffic between your extension and PortSwigger's trusted AI platform.
-
-</p>
-
-
-<h2>AI security &amp; privacy</h2>
+</p><p>Shadow Repeater aids deep, targeted testing by analysing your payloads so when you have a near miss due to sending the wrong syntax, incorrect encoding, file path, or simply a typo, it can find the bug for you. It's fully automatic, and doesn't require any changes to your normal manual testing workflow.</p> <h2>How does Shadow Repeater work</h2> <p>Shadow Repeater monitors your Repeater requests and identifies which parameters you're changing. It then extracts the payloads you've placed in these parameters, and sends them to an AI model which generates variants. Finally, it attacks the target with these payload variations and uses response diffing to identify whether any of them triggered a new interesting code path. This approach allows it to build on a manual tester's expertise to uncover unexpected behaviors, such as unconventional <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vectors, successful <a href="https://portswigger.net/web-security/file-path-traversal">path traversal</a> attempts, and even novel vulnerabilities like email splitting attacks.
+</p> <p>You can get the source code for <a href="https://github.com/hackvertor/shadow-repeater">Shadow Repeater on Github</a> and it's available on the BApp store.</p>
+<p></p> <h2>Installation instructions</h2> <p><b>In <a href="https://portswigger.net/burp/pro">Burp Suite Professional</a>, go to Extensions-&gt;BApp store and search for Shadow Repeater. Click the install button and then navigate to the installed tab then select Shadow Repeater and check the "Use AI" checkbox in the Extension tab.</b></p><p><img src="https://portswigger.net/cms/images/48/59/649a-article-shadow-repeater-install-screenshot.png" alt="Screenshot of Shadow Repeater Extension tab"><br></p> <h2>Usage</h2> <p>By default, Shadow repeater gets invoked on the 5th repeater request you make, and it requires a parameter or header to be changed. You simply try to hack a target by altering the request in some way. In the background Shadow repeater will send variations and look for differences in the response. When it's found something interesting it will send it to the organiser for inspection.</p> <h2>The journey to Shadow Repeater</h2> <p>At PortSwigger we had an opportunity to pitch our ideas for an AI feature in a Dragons Den style competition. I thought it wouldn't be cool if Burp could analyse Repeater requests and find variations of whatever you're testing for even unknown vulnerabilities. I failed. I couldn't see how it would work. I choose instead to focus on finding unknown encodings with AI Hackvertor.</p> <p>Using my experience of improving AI Hackvertor, I found myself more comfortable with how the AI works, how to send user input safely and how to get responses that were actually useful. If you know me, you'll know I can't leave things alone. I once came back to exploit the <a href="https://portswigger.net/web-security/cross-site-scripting/contexts/client-side-template-injection">AngularJS</a> HTML filter 2 years after I originally tested it. This dragon dens idea was no exception, I came back to work on it recently.&nbsp; </p><p>My first breakthrough was to think about differences, previously I was sending entire Repeater requests to the AI for analysis and getting it to parse the request. Parsing entire requests was of course a bad idea. However, I needed this failed experiment to see what the AI was capable of. I thought about using diffing logic in a Github style diff of requests and responses. I chatted with James and he suggested using differences in parameters. So I wrote a Request Differ in Java to analyse the headers, parameters and URL path and only send the changing values to the AI. Now the AI was only analysing a small amount of data that was very focussed on what you are trying to hack.</p> <p>My second breakthrough was instead of telling the AI to understand what is being tested, I simply told it to find variations of it. This meant giving the AI general instructions to find variations but not going to detail about what it's actually testing. This works surprisingly well: it's aware of the context thanks to the Request Differ and knows the data you're testing. It generated variations for Path Traversal, XSS and other types of vulnerabilities.</p> <p>I was successfully generating variations of what the user was testing but how do I know the variation is relevant? This is where response diffing comes into play. I borrowed the legend that is Mr Kettle as he'd done extensive work in Backslash Powered Scanner diffing logic. He gave me some code samples on how his response diffing works and I added each variation generated by the AI to the analysis list as well as the user's request and some random control values. I then looked for invariant attributes of the response that changed when a variation was sent. This gave some cool results! This technique was able to find that spaces are allowed in a XSS vector, if a path traversal vector actually works and even unknown vulnerabilities such as email splitting attacks.</p> <p> This is just one example of what's now possible thanks to AI-powered extensions in Burp Suite. Check it out for yourself - Shadow Repeater is now available from the BApp Store for users on the Early Adopter release channel of Burp Suite Professional. </p>
+<p> Feeling inspired? Try <a href="https://portswigger.net/burp/documentation/desktop/extensions/creating/creating-ai-extensions">creating an AI-powered extension yourself</a> using Burp's built-in Montoya API and its dedicated interfaces for handling traffic between your extension and PortSwigger's trusted AI platform. </p> <h2>AI security &amp; privacy</h2>
 <p>
 We've updated our docs to reflect how we handle data sent to the AI please check out the <a href="https://portswigger.net/burp/documentation/desktop/extensions/ai-security-privacy-data-handling">detailed documentation</a> and the <a href="https://portswigger.net/blog/why-its-time-for-appsec-to-embrace-ai-how-portswigger-is-leading-the-charge">blog post</a>.
-</p>
-    
-    <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
 </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

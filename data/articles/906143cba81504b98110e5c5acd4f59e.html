@@ -1,56 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Dino Crisis 1 and 2 arrive on Steam but they need tweaks to run on Linux / SteamOS</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Dino Crisis 1 and 2 arrive on Steam but they need tweaks to run on Linux / SteamOS</h1>
   <div class="metadata">
-    Source: GamingOnLinux | Date: 2/13/2026 | Lang: EN |
-    <a href="https://www.gamingonlinux.com/2026/02/dino-crisis-1-and-2-arrive-on-steam-but-they-need-tweaks-to-run-on-linux-steamos/" target="_blank">Original Article</a>
+    Source: GamingOnLinux | Date: 2/13/2026 2:58:27 PM | <a href="https://www.gamingonlinux.com/2026/02/dino-crisis-1-and-2-arrive-on-steam-but-they-need-tweaks-to-run-on-linux-steamos/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-						<p><a href="https://www.gamingonlinux.com/2025/01/dino-crisis-and-dino-crisis-2-now-available-on-gog-plus-gog-dreamlist-replaces-community-wishlist/" target="_blank">After arriving on GOG early in 2025</a>, Dino Crisis 1 and 2 are now available directly on Steam but they have issues running on Linux / SteamOS. The Steam page also notes they both come with "The Enigma Protector" DRM.</p>
+    <div><div> <p><a href="https://www.gamingonlinux.com/2025/01/dino-crisis-and-dino-crisis-2-now-available-on-gog-plus-gog-dreamlist-replaces-community-wishlist/" target="_blank">After arriving on GOG early in 2025</a>, Dino Crisis 1 and 2 are now available directly on Steam but they have issues running on Linux / SteamOS. The Steam page also notes they both come with "The Enigma Protector" DRM.</p>
 <p>They're pretty old, so it's not really surprising that they have issues, and neither of them will work at all out of the box. You'll end up seeing an error like this:</p>
-<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/13559366901770990991gol2.png" /></p>
+<p></p>
 <p>For Dino Crisis 1, we at least have a workaround.</p>
-<p>You'll need to install a program called <em>protontricks</em> which is available on <a href="https://flathub.org/en-GB/apps/com.github.Matoking.protontricks" target="_blank">Flathub</a> (or via KDE Discover / GNOME Software). We need to use this to manually add the Windows registry file from each game, which is available in their installed folder.</p>
+<pre><code>You'll need to install a program called protontricks which is available on Flathub (or via KDE Discover / GNOME Software). We need to use this to manually add the Windows registry file from each game, which is available in their installed folder.</code></pre>
 <p>Open up the game install folder that will be somewhere like this for Dino Crisis 1:</p>
-<p><code>/steamapps/common/4249130_DinoCrisis/</code></p>
+<p></p><pre><code>/steamapps/common/4249130_DinoCrisis/</code></pre><p></p>
 <p>Inside there you'll see a file "dc1.reg", you should copy that to your /home folder to make this next step simpler.</p>
-<p>Once protontricks is installed: open <em>regedit</em> on each game. You can just do this real quick command in terminal (like KDE Konsole), the ID number in this example is for Dino Crisis 1:</p>
-<p><code>protontricks 4249130 regedit</code></p>
+<pre><code>Once protontricks is installed: open regedit on each game. You can just do this real quick command in terminal (like KDE Konsole), the ID number in this example is for Dino Crisis 1:</code></pre>
+<p></p><pre><code>protontricks 4249130 regedit</code></pre><p></p>
 <p>You'll then be given a UI screen that looks like this:</p>
-<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/4341818181770987852gol2.png" /></p>
+<p></p>
 <p>Select Registry from the top left menu, import key, and select the "dc1.reg" file mentioned earlier and it will register it. Then you can just close the registry editor.</p>
 <p>Finally, in the Steam game launch options pop this in the box:</p>
-<p><code>WINEDLLOVERRIDES="ddraw=n,b" %command%</code></p>
-<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/6896335301770989679gol2.png" /></p>
+<p></p><pre><code>WINEDLLOVERRIDES="ddraw=n,b" %command%</code></pre><p></p>
+<p></p>
 <p>After that, Dino Crisis 1 works fine. Screenshot below in Dino Crisis taken just today:</p>
-<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/14347335511770988115gol2.jpg" /></p>
+<p></p>
 <p>How about Dino Crisis 2? Well, so far <em>no</em> luck on that one. The registry file included with the Steam release of Dino Crisis 2 is mostly empty, and adding it the same way as for Dino Crisis 1 doesn't help it launch.</p>
-<p>Hopefully Valve will be able to update Proton soon to make both games launch properly without workarounds. If not, eventually we'll look to do a proper even clearer guide in <a href="https://www.gamingonlinux.com/guides/" target="_blank">our fancy guides section</a> once we figure out the issue with Dino Crisis 2.</p>
-						<p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span>
-						
-					</p></div></div>
+<p>Hopefully Valve will be able to update Proton soon to make both games launch properly without workarounds. If not, eventually we'll look to do a proper even clearer guide in <a href="https://www.gamingonlinux.com/guides/" target="_blank">our fancy guides section</a> once we figure out the issue with Dino Crisis 2.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

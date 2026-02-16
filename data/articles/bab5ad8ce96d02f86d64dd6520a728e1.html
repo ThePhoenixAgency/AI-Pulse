@@ -4,52 +4,48 @@
 <meta charset="UTF-8">
 <title>Kimwolf Botnet Swamps Anonymity Network I2P</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Kimwolf Botnet Swamps Anonymity Network I2P</h1>
   <div class="metadata">
-    Source: Krebs on Security | Date: 2/11/2026 | Lang: EN |
-    <a href="https://krebsonsecurity.com/2026/02/kimwolf-botnet-swamps-anonymity-network-i2p/" target="_blank">Original Article</a>
+    Source: Krebs on Security | Date: 2/11/2026 5:08:11 PM | <a href="https://krebsonsecurity.com/2026/02/kimwolf-botnet-swamps-anonymity-network-i2p/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-												<p>For the past week, the massive “Internet of Things” (IoT) botnet known as <strong>Kimwolf</strong> has been disrupting <strong>The Invisible Internet Project</strong> (I2P), a decentralized, encrypted communications network designed to anonymize and secure online communications. I2P users started reporting disruptions in the network around the same time the Kimwolf botmasters began relying on it to evade takedown attempts against the botnet’s control servers.</p>
-<p>Kimwolf is a botnet that surfaced in late 2025 and quickly infected millions of systems, turning poorly secured IoT devices like TV streaming boxes, digital picture frames and routers into relays for malicious traffic and <a href="https://krebsonsecurity.com/2025/10/ddos-botnet-aisuru-blankets-us-isps-in-record-ddos/" target="_blank">abnormally large</a> distributed denial-of-service (DDoS) attacks.</p>
-<p>I2P is a decentralized, privacy-focused network that allows people to communicate and share information anonymously.</p>
-<p>“It works by routing data through multiple encrypted layers across volunteer-operated nodes, hiding both the sender’s and receiver’s locations,” the <a href="https://i2p.net/" target="_blank">I2P website explains</a>. “The result is a secure, censorship-resistant network designed for private websites, messaging, and data sharing.”</p>
-<p>On February 3, I2P users began <a href="https://github.com/PurpleI2P/i2pd/issues/2312#issuecomment-3875275177" target="_blank">complaining on the organization’s GitHub page</a> about tens of thousands of routers suddenly overwhelming the network, preventing existing users from communicating with legitimate nodes. Users reported a rapidly increasing number of new routers joining the network that were unable to transmit data, and that the mass influx of new systems had overwhelmed the network to the point where users could no longer connect.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/i2p-github.png" alt="" /></p><p>I2P users complaining about service disruptions from a rapidly increasing number of routers suddenly swamping the network.</p></div>
-<p>When one I2P user asked whether the network was under attack, another user replied, “Looks like it. My physical router freezes when the number of connections exceeds 60,000.”</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/i2pconnections.png" alt="" /></p><p>A graph shared by I2P developers showing a marked drop in successful connections on the I2P network around the time the Kimwolf botnet started trying to use the network for fallback communications.</p></div>
-<p>The same day that I2P users began noticing the outages, <a href="https://krebsonsecurity.com/2026/01/who-benefited-from-the-aisuru-and-kimwolf-botnets/" target="_blank">the individuals in control of Kimwolf</a> posted to their Discord channel that they had accidentally disrupted I2P after attempting to join 700,000 Kimwolf-infected bots as nodes on the network.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/dort-killedi2p.png" alt="" /></p><p>The Kimwolf botmaster openly discusses what they are doing with the botnet in a Discord channel with my name on it.</p></div>
-<p>Although Kimwolf is known as a potent weapon for launching DDoS attacks, the outages caused this week by some portion of the botnet attempting to join I2P are what’s known as a “<a href="https://en.wikipedia.org/wiki/Sybil_attack" target="_blank">Sybil attack</a>,” a threat in peer-to-peer networks where a single entity can disrupt the system by creating, controlling, and operating a large number of fake, pseudonymous identities.<span></span></p>
-<p>Indeed, the number of Kimwolf-infected routers that tried to join I2P this past week was many times the network’s normal size. I2P’s <a href="https://en.wikipedia.org/wiki/I2P" target="_blank">Wikipedia page</a> says the network consists of roughly 55,000 computers distributed throughout the world, with each participant acting as both a router (to relay traffic) and a client.</p>
-<p>However, <strong>Lance James</strong>, founder of the New York City based cybersecurity consultancy <a href="https://unit221b.com/" target="_blank">Unit 221B</a> and the original founder of I2P, told KrebsOnSecurity the entire I2P network now consists of between 15,000 and 20,000 devices on any given day.</p>
-<div><p><img src="https://krebsonsecurity.com/wp-content/uploads/2026/02/i2p-gh-graph.png" alt="" /></p><p>An I2P user posted this graph on Feb. 10, showing tens of thousands of routers — mostly from the United States — suddenly attempting to join the network.</p></div>
-<p><strong>Benjamin Brundage</strong> is founder of <a href="https://synthient.com/" target="_blank">Synthient</a>, a startup that tracks proxy services and was the first to <a href="https://krebsonsecurity.com/2026/01/the-kimwolf-botnet-is-stalking-your-local-network/" target="_blank">document Kimwolf’s unique spreading techniques</a>. Brundage said the Kimwolf operator(s) have been trying to build a command and control network that can’t easily be taken down by security companies and network operators that are working together to combat the spread of the botnet.</p>
-<p>Brundage said the people in control of Kimwolf have been experimenting with using I2P and a similar anonymity network — <a href="https://www.torproject.org/" target="_blank">Tor</a> — as a backup command and control network, although there have been no reports of widespread disruptions in the Tor network recently.</p>
-<p>“I don’t think their goal is to take I2P down,” he said. “It’s more they’re looking for an alternative to keep the botnet stable in the face of takedown attempts.”</p>
-<p>The Kimwolf botnet created challenges for Cloudflare late last year when it began instructing millions of infected devices to use Cloudflare’s domain name system (DNS) settings, causing control domains associated with Kimwolf to <a href="https://krebsonsecurity.com/2025/11/cloudflare-scrubs-aisuru-botnet-from-top-domains-list/" target="_blank">repeatedly usurp </a><strong>Amazon</strong>, <strong>Apple</strong>, <strong>Google</strong> and <strong>Microsoft</strong> in Cloudflare’s public ranking of the most frequently requested websites.</p>
-<p>James said the I2P network is still operating at about half of its normal capacity, and that a new release is rolling out which should bring some stability improvements over the next week for users.</p>
-<p>Meanwhile, Brundage said the good news is Kimwolf’s overlords appear to have quite recently alienated some of their more competent developers and operators, leading to a rookie mistake this past week that caused the botnet’s overall numbers to drop by more than 600,000 infected systems.</p>
-<p>“It seems like they’re just testing stuff, like running experiments in production,” he said. “But the botnet’s numbers are dropping significantly now, and they don’t seem to know what they’re doing.”</p>
-											</div></div>
+    <p>For the past week, the massive "Internet of Things" (IoT) botnet known as Kimwolf has been disrupting the The Invisible Internet Project (I2P), a decentralized, encrypted communications network designed to anonymize and secure online communications. I2P users started reporting disruptions in the network around the same time the Kimwolf botmasters began relying on it to evade takedown attempts against the botnet's control servers.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

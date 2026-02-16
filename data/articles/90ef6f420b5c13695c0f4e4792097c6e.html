@@ -1,50 +1,47 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
-<title>IA agentique : quand la vitesse d'exécution dépasse le contrôle humain</title>
+<title>IA agentique&nbsp;: quand la vitesse d'exécution dépasse le contrôle humain</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
-  <h1>IA agentique : quand la vitesse d'exécution dépasse le contrôle humain</h1>
+  <h1>IA agentique&nbsp;: quand la vitesse d'exécution dépasse le contrôle humain</h1>
   <div class="metadata">
-    Source: Journal du Net | Date: 2/13/2026 | Lang: FR |
-    <a href="https://www.journaldunet.com/cybersecurite/1547991-ia-agentique-quand-la-vitesse-d-execution-depasse-le-controle-humain/" target="_blank">Original Article</a>
+    Source: Journal du Net | Date: 2/13/2026 3:23:23 PM | <a href="https://www.journaldunet.com/cybersecurite/1547991-ia-agentique-quand-la-vitesse-d-execution-depasse-le-controle-humain/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
-  <div class="content">
-    <div><div>
-                                <p>
-                                        Les IA agentiques, autonomes et interconnectées, accroissent les risques d'abus, de fraudese et d'attaques. Les entreprises doivent intégrer gouvernance, contrôle et audit dès la conception.</p>
-                                <p>Dans la saga Terminator, Skynet n’était pas dangereux parce qu’il était intelligent, mais parce qu’il opérait de manière indépendante, se coordonnait à grande échelle et agissait plus vite que les interventions humaines. Ce que nous observons aujourd'hui, c’est l’émergence précoce de ces mêmes caractéristiques structurelles, sans les cadres de gouvernance nécessaires pour les gérer en toute sécurité.</p>
-
-<p>Jusqu’à présent, les systèmes d’IA traditionnels ont été largement limités à l’intention d’un utilisateur unique, mais surtout par une supervision humaine. À l’inverse, les écosystèmes d’agents font émerger de nouvelles dynamiques sociales pour lesquelles les modèles actuels de sécurité et de gouvernance n’ont jamais été conçus.</p>
-
-<p>Les risques ne sont plus hypothétiques : des agents se sont déjà livrés à des abus d’API, au vol d’identifiants, à des interactions trompeuses avec d’autres agents et à des escroqueries financières, notamment des fraudes aux cryptomonnaies. C’est cette rupture qui distingue fondamentalement l’IA « agentique » des vagues technologiques précédentes et en fait un sujet de préoccupation croissante pour les équipes de sécurité, de gestion des risques et de gouvernance.</p>
-
-<p>À court terme, ces équipes devront composer avec un manque critique de visibilité. En effet, les agents autonomes ne correspondent pas clairement aux catégories existantes (utilisateurs, comptes de service ou applications), compliquant la surveillance, l’attribution et l’application de politiques adéquates.</p>
-
-<p>Cette situation va élargir la surface d’attaque. Des agents mal configurés ou dotés de privilèges excessifs augmentent le risque d’exposition de données, de détournement d’identifiants et d’actions involontaires exécutées à la vitesse des machines. Il est également fort probable que des attaquants exploitent les structures des agents eux-mêmes pour automatiser la reconnaissance, la manipulation et les mouvements latéraux au sein des réseaux. Sur le plan technologique, cela accélérera la demande de nouveaux contrôles axés sur l’identité des agents, la surveillance comportementale, la validation des intentions et les dispositifs d'arrêt d'urgence (kill-switch).</p>
-
-<p>Face à ces enjeux, les organisations doivent y voir un signal clair pour repenser la conception et la gouvernance des systèmes agentiques. L’autonomie doit être intentionnelle et délimitée. Les feuilles de route de ces agents devraient donner la priorité à l’observabilité, au contrôle des permissions et à l’auditabilité avant d’étendre leur autonomie. Les entreprises doivent partir du principe que leurs agents interagiront avec d’autres agents, y compris des agents non fiables, et concevoir leurs systèmes en conséquence.</p>
-
-<p>Plus important encore, la gouvernance des agents ne peut être une réflexion après coup. Les équipes de sécurité, de risque et de conformité doivent être impliquées dès la phase de conception, et non après le déploiement. Les organisations qui réussiront seront celles qui traiteront les agents comme une nouvelle couche opérationnelle, et non comme une simple fonctionnalité de productivité.</p>
-
-                            </div></div>
+  <div class="content"><p>Les IA agentiques, autonomes et interconnectées, accroissent les risques d'abus, de fraudese et d'attaques. Les entreprises doivent intégrer gouvernance, contrôle et audit dès la conception. Dans la saga Terminator, Skynet n’était pas dangereux parce qu’il était intelligent, mais parce qu’il opérait de manière indépendante, se coordonnait à grande échelle et agissait plus vite que les interventions humaines. Ce que nous observons aujourd'hui, c’est l’émergence précoce de ces mêmes caractéristiques structurelles, sans les cadres de gouvernance nécessaires pour les gérer en toute sécurité. Jusqu’à présent, les systèmes d’IA traditionnels ont été largement limités à l’intention d’un utilisateur unique, mais surtout par une supervision humaine. À l’inverse, les écosystèmes d’agents font émerger de nouvelles dynamiques sociales pour lesquelles les modèles actuels de sécurité et de gouvernance n’ont jamais été conçus. Les risques ne sont plus hypothétiques : des agents se sont déjà livrés à des abus d’API, au vol d’identifiants, à des interactions trompeuses avec d’autres agents et à des escroqueries financières, notamment des fraudes aux cryptomonnaies. C’est cette rupture qui distingue fondamentalement l’IA « agentique » des vagues technologiques précédentes et en fait un sujet de préoccupation croissante pour les équipes de sécurité, de gestion des risques et de gouvernance. À court terme, ces équipes devront composer avec un manque critique de visibilité. En effet, les agents autonomes ne correspondent pas clairement aux catégories existantes (utilisateurs, comptes de service ou applications), compliquant la surveillance, l’attribution et l’application de politiques adéquates. Cette situation va élargir la surface d’attaque. Des agents mal configurés ou dotés de privilèges excessifs augmentent le risque d’exposition de données, de détournement d’identifiants et d’actions involontaires exécutées à la vitesse des machines. Il est également fort probable que des attaquants exploitent les structures des agents eux-mêmes pour automatiser la reconnaissance, la manipulation et les mouvements latéraux au sein des réseaux. Sur le plan technologique, cela accélérera la demande de nouveaux contrôles axés sur l’identité des agents, la surveillance comportementale, la validation des intentions et les dispositifs d'arrêt d'urgence (kill-switch). Face à ces enjeux, les organisations doivent y voir un signal clair pour repenser la conception et la gouvernance des systèmes agentiques. L’autonomie doit être intentionnelle et délimitée. Les feuilles de route de ces agents devraient donner la priorité à l’observabilité, au contrôle des permissions et à l’auditabilité avant d’étendre leur autonomie. Les entreprises doivent partir du principe que leurs agents interagiront avec d’autres agents, y compris des agents non fiables, et concevoir leurs systèmes en conséquence. Plus important encore, la gouvernance des agents ne peut être une réflexion après coup. Les équipes de sécurité, de risque et de conformité doivent être impliquées dès la phase de conception, et non après le déploiement. Les organisations qui réussiront seront celles qui traiteront les agents comme une nouvelle couche opérationnelle, et non comme une simple fonctionnalité de productivité.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

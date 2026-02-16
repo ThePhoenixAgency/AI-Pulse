@@ -4,288 +4,43 @@
 <meta charset="UTF-8">
 <title>AI in Multiple GPUs: Understanding the Host and Device Paradigm</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>AI in Multiple GPUs: Understanding the Host and Device Paradigm</h1>
   <div class="metadata">
-    Source: Towards Data Science | Date: 2/12/2026 | Lang: EN |
-    <a href="https://towardsdatascience.com/understanding-the-host-and-device-paradigm/" target="_blank">Original Article</a>
+    Source: Towards Data Science | Date: 2/12/2026 2:00:00 PM | <a href="https://towardsdatascience.com/understanding-the-host-and-device-paradigm/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-<p> is part of a series about distributed AI across multiple GPUs:</p>
-
-
-
-<ul>
-<li><strong>Part 1: Understanding the Host and Device Paradigm</strong> (this article)</li>
-
-
-
-<li><a href="https://towardsdatascience.com/point-to-point-and-collective-operations/">Part 2: Point-to-Point and Collective Operations</a></li>
-
-
-
-<li>Part 3: How GPUs Communicate <em>(coming soon)</em></li>
-
-
-
-<li>Part 4: Gradient Accumulation &amp; Distributed Data Parallelism (DDP) <em>(coming soon)</em></li>
-
-
-
-<li>Part 5: ZeRO <em>(coming soon)</em></li>
-
-
-
-<li>Part 6: Tensor Parallelism <em>(coming soon)</em></li>
-</ul>
-
-
-
-<h2>Introduction</h2>
-
-
-
-<p>This guide explains the foundational concepts of how a CPU and a discrete graphics card (GPU) work together. It’s a high-level introduction designed to help you build a mental model of the host-device paradigm. We will focus specifically on NVIDIA GPUs, which are the most commonly used for AI workloads.</p>
-
-
-
-<p><em>For integrated GPUs, such as those found in Apple Silicon chips, the architecture is slightly different, and it won’t be covered in this post.</em></p>
-
-
-
-<h2>The Big Picture: The Host and The Device</h2>
-
-
-
-<p>The most important concept to grasp is the relationship between the <strong>Host</strong> and the <strong>Device</strong>.</p>
-
-
-
-<ul>
-<li><strong>The Host:</strong> This is your <strong>CPU</strong>. It runs the operating system and executes your Python script line by line. The Host is the commander; it’s in charge of the overall logic and tells the Device what to do.</li>
-
-
-
-<li><strong>The Device:</strong> This is your <strong>GPU</strong>. It’s a powerful but specialized coprocessor designed for massively parallel computations. The Device is the accelerator; it doesn’t do anything until the Host gives it a task.</li>
-</ul>
-
-
-
-<p>Your program always starts on the CPU. When you want the GPU to perform a task, like multiplying two large matrices, the CPU sends the instructions and the data over to the GPU.</p>
-
-
-
-<h2>The CPU-GPU Interaction</h2>
-
-
-
-<p>The Host talks to the Device through a queuing system.</p>
-
-
-
-<ol>
-<li><strong>CPU Initiates Commands:</strong> Your script, running on the CPU, encounters a line of code intended for the GPU (e.g., <code>tensor.to('cuda')</code>).</li>
-
-
-
-<li><strong>Commands are Queued:</strong> The CPU doesn’t wait. It simply places this command onto a special to-do list for the GPU called a <strong>CUDA Stream</strong> — more on this in the next section.</li>
-
-
-
-<li><strong>Asynchronous Execution:</strong> The CPU does not wait for the actual operation to be completed by the GPU, the host moves on to the next line of your script. This is called <strong>asynchronous execution</strong>, and it’s a key to achieving high performance. While the GPU is busy crunching numbers, the CPU can work on other tasks, like preparing the next batch of data.</li>
-</ol>
-
-
-
-<h2>CUDA Streams</h2>
-
-
-
-<p>A <strong>CUDA Stream</strong> is an ordered queue of GPU operations. Operations submitted to a single stream execute <strong>in order</strong>, one after another. However, operations across <em>different</em> streams can execute <strong>concurrently</strong> — the GPU can juggle multiple independent workloads at the same time.</p>
-
-
-
-<p>By default, every PyTorch GPU operation is enqueued on the <strong>current active stream</strong> (it’s usually the default stream which is automatically created). This is simple and predictable: every operation waits for the previous one to finish before starting. For most code, you never notice this. But it leaves performance on the table when you have work that <em>could</em> overlap.</p>
-
-
-
-<h3>Multiple Streams: Concurrency<a href="http://localhost:3376/posts/2025-09-21-first-steps-gpu/#multiple-streams-concurrency"></a></h3>
-
-
-
-<p>The classic use case for multiple streams is <strong>overlapping computation with data transfers</strong>. While the GPU processes batch N, you can simultaneously copy batch N+1 from CPU RAM to GPU VRAM:</p>
-
-
-
-<pre><code>Stream 0 (compute): [process batch 0]────[process batch 1]───
-Stream 1 (data):   ────[copy batch 1]────[copy batch 2]───</code></pre>
-
-
-
-<p>This pipeline is possible because compute and data transfer happen on separate hardware units inside the GPU, enabling true parallelism. In PyTorch, you create streams and schedule work onto them with context managers:</p>
-
-
-
-<pre><code>compute_stream = torch.cuda.Stream()
-transfer_stream = torch.cuda.Stream()
-
-with torch.cuda.stream(transfer_stream):
-    # Enqueue the transfer on transfer_stream
-    next_batch = next_batch_cpu.to('cuda', non_blocking=True)
-
-with torch.cuda.stream(compute_stream):
-    # This runs concurrently with the transfer above
-    output = model(current_batch)</code></pre>
-
-
-
-<p>Note the <code>non_blocking=True</code> flag on <code>.to()</code>. Without it, the transfer would still block the CPU thread even when you intend it to run asynchronously.</p>
-
-
-
-<h3>Synchronization Between Streams<a href="http://localhost:6270/posts/2025-09-21-first-steps-gpu/#synchronization-between-streams"></a></h3>
-
-
-
-<p>Since streams are independent, you need to explicitly signal when one depends on another. The blunt tool is:</p>
-
-
-
-<pre><code>torch.cuda.synchronize()  # waits for ALL streams on the device to finish</code></pre>
-
-
-
-<p>A more surgical approach uses <strong>CUDA Events</strong>. An event marks a specific point in a stream, and another stream can wait on it without halting the CPU thread:</p>
-
-
-
-<pre><code>event = torch.cuda.Event()
-
-with torch.cuda.stream(transfer_stream):
-    next_batch = next_batch_cpu.to('cuda', non_blocking=True)
-    event.record()  # mark: transfer is done
-
-with torch.cuda.stream(compute_stream):
-    compute_stream.wait_event(event)  # don't start until transfer completes
-    output = model(next_batch)</code></pre>
-
-
-
-<p>This is more efficient than <code>stream.synchronize()</code> because it only stalls the dependent stream on the GPU side — the CPU thread stays free to keep queuing work.</p>
-
-
-
-<p>For day-to-day PyTorch training code you won’t need to manage streams manually. But features like <code>DataLoader(pin_memory=True)</code> and prefetching rely heavily on this mechanism under the hood. Understanding streams helps you recognize why those settings exist and gives you the tools to diagnose subtle performance bottlenecks when they appear.</p>
-
-
-
-<h2>PyTorch Tensors</h2>
-
-
-
-<p>PyTorch is a powerful framework that abstracts away many details, but this abstraction can sometimes obscure what is happening under the hood.</p>
-
-
-
-<p>When you create a PyTorch tensor, it has two parts: metadata (like its shape and data type) and the actual numerical data. So when you run something like this <code>t = torch.randn(100, 100, device=device)</code>, the tensor’s metadata is stored in the host’s RAM, while its data is stored in the GPU’s VRAM.</p>
-
-
-
-<p>This distinction is important. When you run <code>print(t.shape)</code>, the CPU can immediately access this information because the metadata is already in its own RAM. But what happens if you run <code>print(t)</code>, which requires the actual data living in VRAM?</p>
-
-
-
-<h2>Host-Device Synchronization</h2>
-
-
-
-<p>Accessing GPU data from the CPU can trigger a <strong>Host-Device Synchronization</strong>, a common performance bottleneck. This occurs whenever the CPU needs a result from the GPU that isn’t yet available in the CPU’s RAM.</p>
-
-
-
-<p>For example, consider the line <code>print(gpu_tensor)</code> which prints a tensor that is still being computed by the GPU. The CPU cannot print the tensor’s values until the GPU has finished all the calculations to obtain the final result. When the script reaches this line, the CPU is forced to <strong>block</strong>, i.e. it stops and waits for the GPU to finish. Only after the GPU completes its work and copies the data from its VRAM to the CPU’s RAM can the CPU proceed.</p>
-
-
-
-<p>As another example, what’s the difference between <code>torch.randn(100, 100).to(device)</code> and <code>torch.randn(100, 100, device=device)</code>? The first method is less efficient because it creates the data on the CPU and then transfers it to the GPU. The second method is more efficient because it creates the tensor directly on the GPU; the CPU only sends the creation command.</p>
-
-
-
-<p>These synchronization points can severely impact performance. Effective GPU programming involves minimizing them to ensure both the Host and Device stay as busy as possible. After all, you want your GPUs to go <em>brrrrr</em>.</p>
-
-
-
-<figure><img src="https://contributor.insightmediagroup.io/wp-content/uploads/2026/02/gpus-go-brr-1024x683.png" alt="" /><figcaption>Image by author: generated with ChatGPT</figcaption></figure>
-
-
-
-<h2>Scaling Up: Distributed Computing and Ranks</h2>
-
-
-
-<p>Training large models, such as Large Language Models (LLMs), often requires more compute power than a single GPU can offer. Coordinating work across multiple GPUs brings you into the world of distributed computing.</p>
-
-
-
-<p>In this context, a new and important concept emerges: the <strong>Rank</strong>.</p>
-
-
-
-<ul>
-<li>Each <strong>rank</strong> is a CPU process which gets assigned a single device (GPU) and a unique ID. If you launch a training script across two GPUs, you will create two processes: one with <code>rank=0</code> and another with <code>rank=1</code>.</li>
-</ul>
-
-
-
-<p>This means you are launching two separate instances of your Python script. On a single machine with multiple GPUs (a single node), these processes run on the same CPU but remain independent, without sharing memory or state. <code>Rank 0</code> commands its assigned GPU (<code>cuda:0</code>), while <code>Rank 1</code> commands another GPU (<code>cuda:1</code>). Although both ranks run the same code, you can leverage a variable that holds the rank ID to assign different tasks to each GPU, like having each one process a different portion of the data (we’ll see examples of this in the next blog post of this series).</p>
-
-
-
-<h2>Conclusion</h2>
-
-
-
-<p>Congratulations for reading all the way to the end! In this post, you learned about:</p>
-
-
-
-<ul>
-<li>The Host/Device relationship</li>
-
-
-
-<li>Asynchronous execution</li>
-
-
-
-<li>CUDA Streams and how they enable concurrent GPU work</li>
-
-
-
-<li>Host-Device synchronization</li>
-</ul>
-
-
-
-<p><strong>In the next blog post, we will dive deeper into Point-to-Point and Collective Operations, which enable multiple GPUs to coordinate complex workflows such as distributed neural network training.</strong></p>
-</div></div>
+    <p>Learn how CPU and GPUs interact in the host-device paradigm
+The post AI in Multiple GPUs: Understanding the Host and Device Paradigm appeared first on Towards Data Science.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

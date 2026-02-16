@@ -4,49 +4,42 @@
 <meta charset="UTF-8">
 <title>Firewall Bug Under Active Attack Triggers CISA Warning</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Firewall Bug Under Active Attack Triggers CISA Warning</h1>
   <div class="metadata">
-    Source: Threatpost | Date: 8/23/2022 | Lang: EN |
-    <a href="https://threatpost.com/firewall-bug-under-active-attack-cisa-warning/180467/" target="_blank">Original Article</a>
+    Source: Threatpost | Date: 8/23/2022 3:19:58 PM | <a href="https://threatpost.com/firewall-bug-under-active-attack-cisa-warning/180467/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><p>CISA is warning that Palo Alto Networks’ PAN-OS is under active attack and needs to be patched ASAP. </p><div>
-											<p>Software running Palo Alto Networks’ firewalls is under attack, prompting U.S. Cybersecurity and Infrastructure Security Agency (CISA) to issue a warning to public and federal IT security teams to apply available fixes. Federal agencies urged to patch the bug by September 9.</p>
-<p>Earlier this month, Palo Alto Networks issued a fix for the high-severity bug (CVE-2022-0028) that it says adversaries attempted to exploit. The flaw could be used by remote hackers to carry out reflected and amplified denial-of-service (DoS) attacks without having to authenticate targeted systems.</p>
-<p>Palo Alto Networks maintains the flaw can only be exploited on a limited number of systems, under certain conditions and that the vulnerable systems are not part of a common firewall configuration. Any additional attacks exploiting the bug have either not occurred or been publicly reported.</p>
-<h2>Affected Products and OS Versions</h2>
-<p>Affected products include those running the PAN-OS firewall software include PA-Series, VM-Series and CN-Series devices. PAN-OS versions vulnerable to attack, with patches available, include PAN-OS prior to 10.2.2-h2, PAN-OS prior to 10.1.6-h6, PAN-OS prior to 10.0.11-h1, PAN-OS prior to 9.1.14-h4, PAN-OS prior to 9.0.16-h3 and PAN-OS prior to 8.1.23-h1.</p>
-<p>According to <a href="https://security.paloaltonetworks.com/CVE-2022-0028">Palo Alto Networks advisory</a>; “A PAN-OS URL filtering policy misconfiguration could allow a network-based attacker to conduct reflected and amplified TCP denial-of-service (RDoS) attacks. The DoS attack would appear to originate from a Palo Alto Networks PA-Series (hardware), VM-Series (virtual) and CN-Series (container) firewall against an attacker-specified target.”</p>
-<p>The advisory describes the non-standard configuration at risk as the “firewall configuration must have a URL filtering profile with one or more blocked categories assigned to a security rule with a source zone that has an external facing network interface.”</p>
-<p>The configuration is likely unintended by the network administrator, the advisory said.</p>
-<h2><strong>CISA Adds Bug to KEV Catalog</strong></h2>
-<p>On Monday, CISA added the Palo Alto Networks bug to its list of <a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog">Known Exploited Vulnerabilities Catalog</a>.</p>
-<p>The CISA Known Exploited Vulnerabilities (<a href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog">KEV</a>) Catalog is a curated list of flaws that have been exploited in the wild. It is also a list of KEVs that the agency “strongly recommends” public and private organizations pay close attention to in order to “prioritize remediation” to “reduce the likelihood of compromise by known threat actors.”</p>
-<h2><strong>Reflective and Amplification DoS Attacks</strong></h2>
-<p>One of the most notable evolutions in the DDoS landscape is the growth in the peak size of volumetric attacks. Attackers continue to use reflection/amplification techniques to exploit vulnerabilities in DNS, NTP, SSDP, CLDAP, Chargen and other protocols to maximize the scale of their attacks.</p>
-<p>Reflected and amplified denial-of-service attacks are not new and have steadily become <a href="https://threatpost.com/ddos-attacks-get-bigger-smarter-and-more-diverse/134028/">more common over the years</a>.</p>
-<p>Distributed denial of service attacks, bent on taking websites offline by overwhelming domains or specific application infrastructure with massive traffic flows, continue to pose a major challenge to businesses of all stripes. Being knocked offline impacts revenue, customer service and basic business functions – and worryingly, the bad actors behind these attacks are honing their approaches to become ever more successful over time.</p>
-<p>Unlike limited volume DDoS attacks, reflective and amplified DoS attacks can produce much higher volumes of disruptive traffic. This type of attack allows an adversary to magnify the amount of malicious traffic they generate while obscuring the sources of the attack traffic. An HTTP-based DDoS attack, for example, sends junk HTTP requests to a target’s server tying up resources and locking out users from using a particular site or service.</p>
-<p>A TCP attack, believed used in the recent Palo Alto Networks attack, is when an attacker sends a spoofed SYN packet, with the original source IP replaced by the victim’s IP address, to a range of random or pre-selected reflection IP addresses. The services at the reflection addresses reply with a SYN-ACK packet to the victim of the spoofed attack. If the victim does not respond, the reflection service will continue to retransmit the SYN-ACK packet, resulting in amplification. The amount of amplification depends on the number of SYN-ACK retransmits by the reflection service, which can be defined by the attacker.</p>
-											
-										</div></div>
+    <p>CISA is warning that Palo Alto Networks’ PAN-OS is under active attack and needs to be patched ASAP.</p>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

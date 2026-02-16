@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Stop Building Humanoid Agents: The Case for "Octopus Architecture"</title>
 <style>
@@ -18,8 +16,7 @@
 <body>
   <h1>Stop Building Humanoid Agents: The Case for "Octopus Architecture"</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
-    <a href="https://dev.to/dariusz_newecki_e35b0924c/stop-building-humanoid-agents-the-case-for-octopus-architecture-5dag" target="_blank">Original Article</a>
+    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -92,7 +89,7 @@ This is why most agents are procedural: they <em>must</em> write to disk to test
 
 <p>To solve this, I built a virtual overlay filesystem called LimbWorkspace. It merges Future Truth (the code the agent wants to write) with Historical Truth (the code currently on disk).</p>
 
-<p>Here is the actual logic from src/shared/infrastructure/context/limb_workspace.py:<br />
+<p>Here is the actual logic from src/shared/infrastructure/context/limb_workspace.py:<br>
 </p>
 
 <div>
@@ -126,16 +123,12 @@ This is why most agents are procedural: they <em>must</em> write to disk to test
     Enter fullscreen mode
     
 
-
     Exit fullscreen mode
     
-
 
 </p>
 </div>
 </div>
-
-
 
 <p>This simple pattern changes everything.</p>
 
@@ -199,8 +192,7 @@ The code for the LimbWorkspace and the Reflex Loop is open source and available 
 
 <p><strong>Check out the repo here</strong>: <a href="https://github.com/DariuszNewecki/CORE" target="_blank">https://github.com/DariuszNewecki/CORE</a></p>
 
-
             </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

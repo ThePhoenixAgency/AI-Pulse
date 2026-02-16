@@ -24,8 +24,7 @@
 <body>
   <h1>Finding that one weird endpoint, with Bambdas</h1>
   <div class="metadata">
-    Source: PortSwigger Research | Date: 12/12/2023 3:11:17 PM | Lang: EN |
-    <a href="https://portswigger.net/research/finding-that-one-weird-endpoint-with-bambdas" target="_blank">Original Article</a>
+    Source: PortSwigger Research | Date: 12/12/2023 3:11:17 PM | <a href="https://portswigger.net/research/finding-that-one-weird-endpoint-with-bambdas" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <div> <p><img alt="James Kettle" src="https://portswigger.net/content/images/profiles/callout_james_kettle_112px.png"></p>
@@ -39,9 +38,9 @@
 <p><code>return requestResponse.response().statedMimeType() == MimeType.HTML &amp;&amp; utilities().byteUtils().countMatches( requestResponse.response().body().getBytes(), "&lt;/html&gt;".getBytes()) &gt; 1;
 </code></p><h3>Incorrect content-length</h3><p>I love to exploit sketchy HTTP middleware and one thing some of the worst middleware does is inject extra content into responses but fail to correct the Content-Length. This one is super easy to detect:
 </p><p><code>int realContentLength = requestResponse.response().body().length();
-int declaredContentLength = Integer.parseInt(<br> requestResponse.response().headerValue("Content-Length"));
+int declaredContentLength = Integer.parseInt(<br>&nbsp; &nbsp; &nbsp;requestResponse.response().headerValue("Content-Length"));
 return declaredContentLength != realContentLength;
-</code></p><h3>Malformed HTTP header</h3><p>Finally, I decided to look for responses containing a space in the header name. I wasn't really looking for anything in particular, and it yielded a bunch of servers running SMTP on port 443!</p><p><code>return requestResponse.response().headers().stream().anyMatch(<br> e -&gt; e.name().contains(" "));
+</code></p><h3>Malformed HTTP header</h3><p>Finally, I decided to look for responses containing a space in the header name. I wasn't really looking for anything in particular, and it yielded a bunch of servers running SMTP on port 443!</p><p><code>return requestResponse.response().headers().stream().anyMatch(<br>&nbsp; &nbsp; &nbsp;e -&gt; e.name().contains(" "));
 </code></p><p>I'll pass you over to <a href="https://portswigger.net/research/gareth-heyes" target="_blank">Gareth</a> now for some of his.</p> <h3>Find all JSON endpoints with no or text/html mime type</h3><p>I absolutely love Bambdas and as James mentioned they provide a quick way to easily test your proxy history and find interesting nuggets that have been missed by standard filtering. When writing a Bambda it's useful to have a question in mind. One of those questions was "What sites are still using an invalid content-type for JSON responses?". Browsers nowadays are pretty strict when it comes to content sniffing however, if a site declares a text/html mime type with JSON data HTML will be rendered of course! I wrote a couple of lines of code and in no time I was finding stuff that I didn't know existed in my massive project file.</p>
 <p><code>if(!requestResponse.hasResponse()) { return false;
 }

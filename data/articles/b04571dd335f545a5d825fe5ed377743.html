@@ -24,28 +24,27 @@
 <body>
   <h1>JO d'hiver 2026 - Hockey sur glace. Pierre Crinon exclu des JO après sa bagarre et « son comportement ...</h1>
   <div class="metadata">
-    Source: Le Dauphiné Isère | Date: 2/16/2026 8:13:00 PM | Lang: FR |
-    <a href="https://www.ledauphine.com/jeux-olympiques/2026/02/16/pierre-crinon-exclu-des-jo-apres-sa-bagarre-et-son-comportement-provocant-contre-le-canada" target="_blank">Original Article</a>
+    Source: Le Dauphiné Isère | Date: 2/16/2026 9:13:00 PM | <a href="https://www.ledauphine.com/jeux-olympiques/2026/02/16/pierre-crinon-exclu-des-jo-apres-sa-bagarre-et-son-comportement-provocant-contre-le-canada" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <p>Pourquoi gâcher cette opportunité historique&nbsp;? En quelques secondes, <a href="https://www.ledauphine.com/p/pierre-crinon" target="_blank">Pierre Crinon</a> a à la fois mis fin à son rêve, a donné une mauvaise image de l’équipe de France et a pénalisé ses coéquipiers avant le décisif match de barrage face à l’Allemagne, ce mardi 17&nbsp;février. <a href="https://www.ledauphine.com/jeux-olympiques/2026/02/16/enorme-bagarre-face-au-canada-pierre-crinon-est-convoque" target="_blank">En cause, une bagarre</a> , complètement interdite aux Jeux olympiques, en fin de rencontre, dimanche 15&nbsp;février au sein de la Santagiulia Arena, face au Canada.</p> <p>Alors que le Grenoblois aurait pu continuer le <a href="https://www.ledauphine.com/jeux-olympiques/jo-hiver" target="_blank">tournoi olympique</a> , la fédération internationale de hockey sur glace n’ayant pas pris de sanction supplémentaire, la fédération française a voulu marquer le coup. D’autant plus que le défenseur a continué à avoir un geste inapproprié après son exclusion en rentrant au vestiaire.</p> <p>«&nbsp;Le comportement provocant de Pierre Crinon à sa sortie de la glace, alors même qu’il venait de se faire exclure de la rencontre pour une bagarre, constitue une violation manifeste de l’esprit olympique et porte également atteinte aux valeurs de notre sport&nbsp;», souligne la FFHG.&nbsp;</p> <p>Avant de préciser&nbsp;: «&nbsp;Décision a donc été prise, en plein alignement avec le comité national olympique et sportif français, de ne pas autoriser sa participation pour la/les prochaine(s) rencontre(s) du tournoi olympique.&nbsp;»</p> <div> <h2>«&nbsp;Rappeler au joueur les engagements personnels qu’il a pris&nbsp;»</h2><p>Le hockeyeur des Brûleurs de loups avait été convoqué plus tôt dans la journée, lundi 16&nbsp;février. Il a été entendu par Pierre-Yves Gerbeau, président de la FFHG et chef de mission adjoint de la délégation française, <a href="https://www.ledauphine.com/p/fabien-saguez" target="_blank">Fabien Saguez</a>, chef de mission de la délégation olympique, le directeur technique national de la FFHG et le staff de l’équipe de France. Il s’agissait entre de «&nbsp;rappeler au joueur les engagements personnels qu’il a pris dans le cadre de sa sélection en équipe de France olympique&nbsp;».</p></div> <p>La fédération tient aussi à «&nbsp;rappeler les valeurs de tout joueur portant le maillot&nbsp;» des Bleus&nbsp;ainsi que son devoir d’exemplarité. Début décembre, Pierre Crinon avait été suspendu sept matches après une bagarre lors du match entre les Brûleurs de loups et les Ducs d’Angers. «&nbsp;J’ai commis une succession de gestes que je regrette profondément&nbsp;», avait-il indiqué par la suite.</p> <p>Des excuses qui avaient entre autres conduit à l’entraîneur, <a href="https://www.ledauphine.com/p/yorick-treille" target="_blank">Yorick Treille</a>, à le sélectionner. D’autant que le défenseur ne voulait pas manquer cette opportunité. Il le confiait au <i>Dauphiné Libéré</i> , dans le village olympique à Milan, juste avant le début du tournoi olympique&nbsp;: «&nbsp;On rêvait de ce moment depuis longtemps. Nous sommes très excités.&nbsp;» Un rêve qui s’est brisé pour lui sur une nouvelle rixe.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

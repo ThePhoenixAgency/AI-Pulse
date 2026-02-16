@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>A 0-click exploit chain for the Pixel 9 Part 1: Decoding Dolby</title>
 <style>
@@ -23,8 +21,7 @@
 <body>
   <h1>A 0-click exploit chain for the Pixel 9 Part 1: Decoding Dolby</h1>
   <div class="metadata">
-    Source: Google Project Zero | Date: 1/14/2026 | Lang: EN |
-    <a href="https://projectzero.google/2026/01/pixel-0-click-part-1.html" target="_blank">Original Article</a>
+    Source: Google Project Zero | Date: 1/14/2026 | Lang: EN
   </div>
   <div class="content">
     <div><div>
@@ -34,8 +31,6 @@
           <p>Over the past few years, several AI-powered features have been added to mobile phones that allow users to better search and understand their messages. One effect of this change is increased 0-click attack surface, as efficient analysis often requires message media to be decoded before the message is opened by the user. One such feature is audio transcription. Incoming SMS and RCS audio attachments received by Google Messages are now automatically decoded with no user interaction. As a result, audio decoders are now in the 0-click attack surface of most Android phones.</p>
 
 <p>I’ve spent a fair bit of time investigating these decoders, first reporting <a href="https://project-zero.issues.chromium.org/issues/368695689">CVE-2025-49415</a> in the <a href="https://www.monkeysaudio.com/">Monkey’s Audio</a> codec on Samsung devices. Based on this research, the team reviewed the Dolby Unified Decoder, and Ivan Fratric and I reported <a href="https://project-zero.issues.chromium.org/issues/428075495">CVE-2025-54957</a>. This vulnerability is likely in the 0-click attack surface of most Android devices in use today. In parallel, Seth Jenkins investigated a driver accessible from the sandbox the decoder runs in on a Pixel 9, and reported CVE-2025-36934.</p>
-
-
 
 <p>As I’ve shared this research, vendors as well as members of the security community have questioned whether such vulnerabilities are exploitable, as well as whether 0-click exploits are possible for all but the most well-resourced attackers in the modern Android Security environment. We were also asked whether code execution in the context of a media decoder is practically useful to an attacker and how platforms can reduce the risks such a capability presents to users.</p>
 
@@ -75,7 +70,7 @@
     </tr>
     <tr>
       <td><code>if(skiple)</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code><b>skipl</b></code></td>
@@ -87,7 +82,7 @@
     </tr>
     <tr>
       <td><code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -106,7 +101,7 @@
   <tbody>
     <tr>
       <td><code>emdf_sync(){</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code><b>syncword</b></code></td>
@@ -118,7 +113,7 @@
     </tr>
     <tr>
       <td><code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -137,7 +132,7 @@
   <tbody>
     <tr>
       <td><code>emdf_container() {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code><b>emdf_version</b></code></td>
@@ -145,15 +140,15 @@
     </tr>
     <tr>
       <td> <code>if (emdf_version == 3) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code>emdf_version += variable_bits(2)</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code><b>key_id</b></code></td>
@@ -161,15 +156,15 @@
     </tr>
     <tr>
       <td> <code>if (key_id == 7) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code>key_id += variable_bits(3)</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>while (<b>emdf_payload_id</b> != 0x0) {</code></td>
@@ -177,23 +172,23 @@
     </tr>
     <tr>
       <td>  <code>if (emdf_payload_id == 0x1F) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>   <code>emdf_payload_id += variable_bits(5)</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>emdf_payload_config()</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code><b>emdf_payload_size</b></code></td>
@@ -201,7 +196,7 @@
     </tr>
     <tr>
       <td> <code>for (i = 0; i &lt; payload_size; i++) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code><b>emdf_payload_byte</b></code></td>
@@ -209,15 +204,15 @@
     </tr>
     <tr>
       <td> <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>emdf_protection()</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td><code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -234,15 +229,15 @@
   <tbody>
     <tr>
       <td><code>variable_bits (n_bits) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>value = 0;</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>do {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code>value += <b>read</b></code></td>
@@ -254,35 +249,35 @@
     </tr>
     <tr>
       <td>  <code>if (read_more) {</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>   <code>value &lt;&lt;= n_bits;</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>   <code>value += (1&lt;&lt;n_bits);</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td>  <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>while (read_more);</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td> <code>return value</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
     <tr>
       <td><code>}</code></td>
-      <td> </td>
+      <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
@@ -400,7 +395,7 @@
 
 <p>The following diagram shows where the skip buffer and evo heap are located in relation to these buffers:</p>
 
-<p><img alt="" /><br />
+<p><img alt=""><br>
 The evo heap is located at offset 0x61d28 in the static buffer, and immediately afterwards is the pointer used to write to the skip buffer when processing EMDF, which I will call the ‘skip pointer’.  It points 0x1000 below the skip buffer, and 0x1000 is added to its value to calculate the address that skip data (<code>skipfld</code>) is written to each time a syncframe is processed.</p>
 
 <p>This means the vulnerability has the potential to overwrite a pointer that is later written to with attacker-controllable content, the skip data of the next syncframe. Unfortunately, this is not as simple as using the buffer overrun capability to overwrite the pointer, as the evo heap is 0x1f08 bytes long, and the maximum value of <code>skipl</code> is 3066 (0xbfa = 0x1ff * 6 audio blocks), meaning that the value the skip pointer would be overwritten with is not immediately controllable by simply decoding an EMDF payload that contains the bug.</p>
@@ -434,7 +429,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>A different approach was needed, so I revisited the static buffer, looking for other fields I could overflow near the end of the evo_heap. One looked interesting:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>The <code>heap_len</code> is used to set the allocation limit of the evo heap during the processing of each syncframe. If it could be overwritten, it would be possible for the evo heap to allocate memory outside of its original bounds.This was a very promising possibility, as it had the potential to enable a primitive that would allow relative writes within the static buffer. For example, if I overwrote the heap length with a very large value, then allocated 0x286e8 bytes, since the evo heap starts at offset 0x61d28 and I am able to allocate and write to evo heap memory, would I then be able to write to offset  0x61d28 + 0x286e8 = 0x8a410?</p>
 
@@ -446,7 +441,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>The heap header of the dynamic buffer is as follows:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>The memory between offset 0x00 and 0x50 is unused by the scudo heap because this is a secondary (large) allocation, but unfortunately, there is a guard page before the header, and 0x50 bytes is not enough space for the EMDF container needed to overwrite the skip pointer and heap length, so I investigated ways to increase the unused memory between the guard page and allocation header. I discovered:</p>
 
@@ -463,7 +458,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>I did an experiment on a Pixel to see how this value was randomized and it seemed fairly even.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>So the only option here is to guess this value, which means this exploit would work 1 out of every 16 times. This isn’t prohibitive, though, as an attacker could send the exploit repeatedly until it works, and if the heap nibble value is wrong, the decoding process crashes and respawns after roughly three seconds, which means the exploit would succeed on average in 24 seconds.</p>
 
@@ -475,7 +470,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>It turns out that there are some other fields after the heap length in the static buffer.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>To understand what these are, and why they are causing problems, we need to look more closely at how evo memory is allocated when EMDF payloads are processed. In highly simplified pseudocode, it works something like this.</p>
 
@@ -549,11 +544,9 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>The layout of allocations on the evo heap is as follows:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>If an EMDF container contained two EMDF payloads, the data for the second payload would be allocated at <code>num_payloads</code> × 96 + <code>payload_1_size</code> + <code>payload_extra</code>. This allows payload_extra bytes to be allocated in the static buffer, but not overwritten by the payload. Since the length and contents of payload data is controllable by the attacker, it would be possible to write basically any data at any relative location in the static buffer if I could find some way to overwrite <code>payload_extra</code> with controlled data. The fact that <code>payload_1_size</code> is also set from syncframe data makes this even more convenient. Since all the writes this exploit requires are fairly close to each other in memory, <code>payload_extra</code> only needs to be written once, so <code>heap_base</code> + <code>num_payloads</code> × 96 + <code>payload_1_size</code> + <code>payload_extra</code> is equal to the <code>X0</code> parameter of <code>DLB_CLqmf_analysisL</code> (more on why this is a good choice later.) Then, by modifying the size of <code>payload_1_size</code>, the address of individual writes can be shifted by that many bytes. For example, if <code>payload_1_size</code> is 14 × 8, the function pointer in the static buffer discussed above will be overwritten.</p>
-
-
 
 <p>Unfortunately, the method used for overwriting the heap length is not sufficient to overwrite <code>payload_extra</code> as well, and the corruption that occurred while gaining PC control did not provide adequate control of the values overwriting <code>payload_extra</code> to perform the steps above. Remember, the heap length was overwritten by audio data in the dynamic buffer that happened to be written at an address soon after the static buffers’s scudo heap header, and <code>payload_extra</code> was overwritten by a pointer. For just extending the heap length, setting the value to ‘random garbage’ was enough, but for multiple overwrites via <code>payload_extra</code>, a specific value is needed.</p>
 
@@ -573,7 +566,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>Now, there is a scudo heap header at <code>dynamic_base + 0x4800</code> that is not actively in use and does not get overwritten by baps that can be used to create an EMDF container that will overwrite <code>payload_extra</code>. But there is one problem. I explained earlier that, when filling a buffer using DYNAMIC WRITE, the exploit needs to perform overlapping writes downwards, because the next EMDF container, which is needed to move the skip pointer for the next step, overwrites some data at the start of the write. This doesn’t matter when writing a long page of data, because the next write can fix the previous one, but it does in this case. The layout of the heap header is as follows:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>I needed to write specific data to exactly offset 0xc8, but couldn’t corrupt the ‘prev chunk ptr’ because it was needed to overwrite the skip pointer during the copy. There’s 0x60 bytes between these, which is not enough for a payload that moves the skip pointer.</p>
 
@@ -659,7 +652,7 @@ The evo heap is located at offset 0x61d28 in the static buffer, and immediately 
 
 <p>The upper nibble of the second byte of where these functions are loaded is randomized by ASLR on Android. I tested this, and saw the behavior below, which is fairly uniform.</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>So my only options were to use ROP gadgets that involve only overwriting the first byte of the function pointers, or add additional unreliability to the exploit. The available gadgets weren’t promising, so I decided to just guess this offset in my exploit, which adds another 1/16 probability, meaning the exploit will work one out of 256 times total. Considering the decoder process takes three seconds to respawn, this means the exploit would take on average around six minutes to succeed, which isn’t prohibitive.</p>
 
@@ -712,8 +705,6 @@ ret
 
 <p>Another question is whether this math would work generally, even on devices that have libc compiled with different offsets. I believe it would. In each version of libc, there are at least four call locations that will end up calling <code>pwrite</code>: <code>pwrite</code>, <code>pwrite</code>’s PLT, <code>pwrite64</code> and <code>pwrite64</code>’s PLT. If those don’t work, there’s combinations of <code>seek</code> and <code>write</code> or <code>fseek</code> and <code>fwrite</code>. Worst case, the exploit could change the GOT entry that’s read, so the math starts with a different function pointer than <code>fopen</code>. There are a very large number of possibilities and more than one is likely to work on every libc compilation.</p>
 
-
-
 <p>Now, it was time to write the third file of the exploit. This turned out to be fairly complicated, with some unexpected problems. In order to explain these, this section will go through the third file of the exploit, one syncframe at a time. You can follow along <a href="https://project-zero.issues.chromium.org/428075495#attachment72535031">here</a>. Note that filenames that begin with numbers, for example, <code>10_write_x0</code> contain the actual syncframe data for that syncframe, meanwhile files with names like <code>make_10_write_x0.py</code> contain Python that generates the frame, often created with Gemini. Files with no corresponding Python were either handforged or exact copies of previous syncframes. Files appended with the suffix <code>_special</code> were generated with the corresponding Python, then altered by hand. The syncframes can be combined into a single MP4 file with correct checksums by running <code>combine_frames.py</code>.</p>
 
 <h4>longmem</h4>
@@ -744,7 +735,7 @@ ret
 
 <p>To understand this and future syncframes, it’s important to understand the functionality of WRITE STATIC in a bit more detail. The memory this primitive can write, which is eventually the X0 parameter to <code>DLB_CLqmf_analysisL</code> is laid out as follows:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>The function pointer for the direct call is available to be overwritten, as are its parameters, ARM64 registers X0 through X3. The indirect function parameters are also calculated from values in this structure, which I will explain in more detail later.</p>
 
@@ -841,7 +832,7 @@ ret
 
 <p>As a refresher, the evo heap is laid out as follows:</p>
 
-<p><img alt="" /></p>
+<p><img alt=""></p>
 
 <p>The new WRITE DYNAMIC allocates the perfect number of payloads so that the allocation size of the pointer array plus the payload structs is exactly even with the skip pointer, and then the first payload’s data overlaps with the pointer, and can be used to overwrite it.</p>
 
@@ -937,12 +928,11 @@ ret
 
 <p>Now that we’ve gained code execution in the mediacodec context, it is time to escalate to kernel! Stay tuned for <a href="https://projectzero.google/2026/01/pixel-0-click-part-2.html">Part 2: Cracking the Sandbox with a Big Wave</a>.</p>
 
-
         </section>
       </article>
       
       
     </div></div>
   </div>
-</body>
-</html>
+
+</body></html>

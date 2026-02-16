@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>Microsoft Patch Tuesday, December 2025 Edition</title>
 <style>
@@ -23,30 +21,29 @@
 <body>
   <h1>Microsoft Patch Tuesday, December 2025 Edition</h1>
   <div class="metadata">
-    Source: Krebs on Security | Date: 12/9/2025 | Lang: EN |
-    <a href="https://krebsonsecurity.com/2025/12/microsoft-patch-tuesday-december-2025-edition/" target="_blank">Original Article</a>
+    Source: Krebs on Security | Date: 12/9/2025 | Lang: EN
   </div>
   <div class="content">
     <div><div>
 												<p><strong>Microsoft</strong> today pushed updates to fix at least 56 security flaws in its <strong>Windows</strong> operating systems and supported software. This final Patch Tuesday of 2025 tackles one zero-day bug that is already being exploited, as well as two publicly disclosed vulnerabilities.</p>
-<p><img src="https://krebsonsecurity.com/wp-content/uploads/2022/07/winupdatedate.png" alt="" /></p>
+<p><img src="https://krebsonsecurity.com/wp-content/uploads/2022/07/winupdatedate.png" alt=""></p>
 <p>Despite releasing a lower-than-normal number of security updates these past few months, Microsoft patched a whopping 1,129 vulnerabilities in 2025, an 11.9% increase from 2024. According to <strong>Satnam Narang</strong> at <strong>Tenable</strong>, this year marks the second consecutive year that Microsoft patched over one thousand vulnerabilities, and the third time it has done so since its inception.</p>
 <p>The zero-day flaw patched today is <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62221" target="_blank">CVE-2025-62221</a>, a privilege escalation vulnerability affecting <strong>Windows 10</strong> and later editions. The weakness resides in a component called the “<strong>Windows Cloud Files Mini Filter Driver</strong>” — a system driver that enables cloud applications to access file system functionalities.</p>
 <p>“This is particularly concerning, as the mini filter is integral to services like OneDrive, Google Drive, and iCloud, and remains a core Windows component, even if none of those apps were installed,” said <strong>Adam Barnett</strong>, lead software engineer at <strong>Rapid7</strong>.</p>
 <p>Only three of the flaws patched today earned Microsoft’s most-dire “critical” rating: Both <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62554" target="_blank">CVE-2025-62554</a> and <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62557" target="_blank">CVE-2025-62557</a> involve <strong>Microsoft Office</strong>, and both can exploited merely by viewing a booby-trapped email message in the Preview Pane. Another critical bug — <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62562" target="_blank">CVE-2025-62562</a> — involves <strong>Microsoft Outlook</strong>, although Redmond says the Preview Pane is not an attack vector with this one.<span></span></p>
 <p>But according to Microsoft, the vulnerabilities most likely to be exploited from this month’s patch batch are other (non-critical) privilege escalation bugs, including:</p>
-<p>–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62458" target="_blank">CVE-2025-62458</a> — Win32k<br />
-–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62470" target="_blank">CVE-2025-62470</a> — Windows Common Log File System Driver<br />
-–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62472" target="_blank">CVE-2025-62472</a> — Windows Remote Access Connection Manager<br />
-–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59516" target="_blank">CVE-2025-59516</a> — Windows Storage VSP Driver<br />
+<p>–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62458" target="_blank">CVE-2025-62458</a> — Win32k<br>
+–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62470" target="_blank">CVE-2025-62470</a> — Windows Common Log File System Driver<br>
+–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-62472" target="_blank">CVE-2025-62472</a> — Windows Remote Access Connection Manager<br>
+–<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59516" target="_blank">CVE-2025-59516</a> — Windows Storage VSP Driver<br>
 –<a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-59517" target="_blank">CVE-2025-59517</a> — Windows Storage VSP Driver</p>
 <p><strong>Kev Breen</strong>, senior director of threat research at <strong>Immersive</strong>, said privilege escalation flaws are observed in almost every incident involving host compromises.</p>
 <p>“We don’t know why Microsoft has marked these specifically as more likely, but the majority of these components have historically been exploited in the wild or have enough technical detail on previous CVEs that it would be easier for threat actors to weaponize these,” Breen said. “Either way, while not actively being exploited, these should be patched sooner rather than later.”</p>
 <p>One of the more interesting vulnerabilities patched this month is <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-64671" target="_blank">CVE-2025-64671</a>, a remote code execution flaw in the <strong>Github Copilot Plugin for Jetbrains</strong> AI-based coding assistant that is used by Microsoft and GitHub. Breen said this flaw would allow attackers to execute arbitrary code by tricking the large language model (LLM) into running commands that bypass the user’s “auto-approve” settings.</p>
-<p>CVE-2025-64671 is part of a broader, more systemic security crisis that security researcher <strong>Ari Marzuk</strong> has branded <a href="https://maccarita.com/posts/idesaster/" target="_blank">IDEsaster</a> (IDE  stands for “integrated development environment”), which encompasses more than 30 separate vulnerabilities reported in nearly a dozen market-leading AI coding platforms, including <strong>Cursor</strong>, <strong>Windsurf</strong>, <strong>Gemini CLI</strong>, and <strong>Claude Code</strong>.</p>
+<p>CVE-2025-64671 is part of a broader, more systemic security crisis that security researcher <strong>Ari Marzuk</strong> has branded <a href="https://maccarita.com/posts/idesaster/" target="_blank">IDEsaster</a> (IDE&nbsp; stands for “integrated development environment”), which encompasses more than 30 separate vulnerabilities reported in nearly a dozen market-leading AI coding platforms, including <strong>Cursor</strong>, <strong>Windsurf</strong>, <strong>Gemini CLI</strong>, and <strong>Claude Code</strong>.</p>
 <p>The other publicly-disclosed vulnerability patched today is <a href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2025-54100" target="_blank">CVE-2025-54100</a>, a remote code execution bug in <strong>Windows Powershell</strong> on Windows Server 2008 and later that allows an unauthenticated attacker to run code in the security context of the user.</p>
 <p>For anyone seeking a more granular breakdown of the security updates Microsoft pushed today, check out the roundup at the <a href="https://isc.sans.edu/diary/Microsoft%20Patch%20Tuesday%20December%202025/32550" target="_blank">SANS Internet Storm Center</a>. As always, please leave a note in the comments if you experience problems applying any of this month’s Windows patches.</p>
 											</div></div>
   </div>
-</body>
-</html>
+
+</body></html>

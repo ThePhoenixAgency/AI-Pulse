@@ -1,79 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>This Stream Deck alternative runs on an Arduino UNO Q</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>This Stream Deck alternative runs on an Arduino UNO Q</h1>
   <div class="metadata">
-    Source: Arduino Blog | Date: 2/1/2026 | Lang: EN |
-    <a href="https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/" target="_blank">Original Article</a>
+    Source: Arduino Blog | Date: 2/1/2026 10:57:21 PM | <a href="https://blog.arduino.cc/2026/02/01/this-stream-deck-alternative-runs-on-an-arduino-uno-q/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
-  <div class="content">
-    <div><div>
-            <h3>This Stream Deck alternative runs on an Arduino UNO Q</h3>
-            <p><span>Arduino Team</span> — <span>February 1st, 2026</span>
-            </p>
-
-
-            <div>
-				
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/02/main-1024x576.jpg" alt="" /></p></figure>
-
-
-
-<p>If you do a lot of creative work, you’ve probably found that your computer’s keyboard and mouse alone just don’t cut it. There are simply too many different shortcuts and macros to cover with memorable key combos. That’s why BlommeJan used an Arduino UNO Q to <a href="https://github.com/BlommeJan/Starkpad?tab=readme-ov-file">build the Starkpad</a>.</p>
-
-
-
-<p>Starkpad is similar to an Elgato Stream Deck. But instead of having a bunch of physical buttons with their own screens, Starkpad has a single touchscreen that displays a configurable set of shortcuts. As a bonus, that touchscreen can also display a virtual keyboard and even a touchpad.</p>
-
-
-
-<figure><p><img src="https://blog.arduino.cc/wp-content/uploads/2026/02/top-1024x576.jpg" alt="" /></p></figure>
-
-
-
-<p>That works smoothly because Starkpad runs on a dedicated <a href="https://www.arduino.cc/product-uno-q">Arduino UNO Q</a>, which loads a Tony Stark–inspired user interface built in LVGL on top of the Linux operating system. LVGL is incredibly flexible, so users can customize the interface however they like. But BlommeJan’s UI is a good starting point for most people.</p>
-
-
-
-<p>Commands get from the UNO Q to the user’s computer through the onboard microcontroller. That sends commands to an RP2040-based development board, which appears as a standard USB HID to the computer. Because that is a USB HID, it can enter regular key presses that will work on any computer and in any software. Simply assign a key combo, like SHIFT+T+K, to whatever action or macro you want, then tell the RP2040 to press that combo when commanded to do so.</p>
-
-
-
-<p>If that appeals to you, all of the code you need for Starkpad is <a href="https://github.com/BlommeJan/Starkpad">on its GitHub page</a>.</p>
-
-
-
-<figure><p>
-
-</p></figure>
-
-
-
-
-
-                
-            </div>
-        </div></div>
+  <div class="content"><p>This Stream Deck alternative runs on an Arduino UNO Q Arduino Team — February 1st, 2026 If you do a lot of creative work, you’ve probably found that your computer’s keyboard and mouse alone just don’t cut it. There are simply too many different shortcuts and macros to cover with memorable key combos. That’s why BlommeJan used an Arduino UNO Q to build the Starkpad. Starkpad is similar to an Elgato Stream Deck. But instead of having a bunch of physical buttons with their own screens, Starkpad has a single touchscreen that displays a configurable set of shortcuts. As a bonus, that touchscreen can also display a virtual keyboard and even a touchpad. That works smoothly because Starkpad runs on a dedicated Arduino UNO Q, which loads a Tony Stark–inspired user interface built in LVGL on top of the Linux operating system. LVGL is incredibly flexible, so users can customize the interface however they like. But BlommeJan’s UI is a good starting point for most people. Commands get from the UNO Q to the user’s computer through the onboard microcontroller. That sends commands to an RP2040-based development board, which appears as a standard USB HID to the computer. Because that is a USB HID, it can enter regular key presses that will work on any computer and in any software. Simply assign a key combo, like SHIFT+T+K, to whatever action or macro you want, then tell the RP2040 to press that combo when commanded to do so. If that appeals to you, all of the code you need for Starkpad is on its GitHub page.</p></div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
-</body>
-</html>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

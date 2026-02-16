@@ -1,260 +1,49 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
 <meta charset="UTF-8">
 <title>Intégrer votre robot tondeuse Mammotion à Home Assistant : contrôle, capteurs, automatisations - Maison et Domotique</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
-
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
-
 </style>
 </head>
 <body>
   <h1>Intégrer votre robot tondeuse Mammotion à Home Assistant : contrôle, capteurs, automatisations - Maison et Domotique</h1>
   <div class="metadata">
-    Source: Maison et Domotique | Date: 2/5/2026 | Lang: FR |
-    <a href="https://www.maison-et-domotique.com/167771-integrer-robot-tondeuse-mammotion-home-assistant/" target="_blank">Original Article</a>
+    Source: Maison et Domotique | Date: 2/5/2026 6:13:00 AM | <a href="https://www.maison-et-domotique.com/167771-integrer-robot-tondeuse-mammotion-home-assistant/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><article>
-                                                    
-                             
-                                                                        					                        
-                                       
-                                                  
-
-                        
-<p>Un robot tondeuse <a href="https://www.maison-et-domotique.com/tag/mammotion/">Mammotion</a>, c’est un peu comme un collègue autonome : tant qu’on le laisse travailler dans son coin via l’application officielle, tout roule… jusqu’au jour où l’on veut lui imposer de vraies règles de vie. Ne pas sortir quand la pluie menace, éviter de passer quand les enfants jouent dans le jardin, profiter d’un pic de production solaire, ou synchroniser la tonte avec le planning familial. C’est exactement ce que permet <a href="https://www.maison-et-domotique.com/tag/home-assistant/">Home Assistant</a> : transformer le LUBA ou le YUKA en un équipement domotique à part entière, avec des capteurs exploitables, des commandes accessibles partout, et surtout des automatisations qui font gagner du temps (et évitent quelques sueurs froides). Aujourd’hui je vous propose de découvrir comment intégrer votre robot tondeuse Mammotion dans Home Assistant, pour que la tonte s’intègre enfin dans votre maison… au lieu de rester enfermée dans une appli.</p>
-
-
-
-
-
-
-
-<h2>Ce que l’intégration Mammotion apporte concrètement</h2>
-
-
-
-<p>L’intérêt, c’est de sortir la tonte du “silo application”. Une fois le LUBA ou le YUKA dans Home Assistant, le robot devient un appareil domotique comme un autre : vous récupérez des capteurs (batterie, état, GPS, satellites, zone de travail, type de connexion…) et vous déclenchez des actions (démarrer, mettre en pause, arrêter, renvoyer à la base/dock).</p>
-
-
-
-<p>Résultat : vos scénarios peuvent enfin prendre de bonnes décisions à la place du robot (ou en complément). Exemple typique : on coupe court à une tonte si la pluie arrive, on évite les heures de canicule, on profite d’un créneau de surplus solaire, ou on empêche une tonte quand les enfants jouent dehors… bref, du concret, pas du gadget.</p>
-
-
-
-<h2>Pré-requis avant de démarrer</h2>
-
-
-
-<p>Vérifiez d’abord que votre Home Assistant est à jour : l’intégration annonce une version minimale Home Assistant 2025.3.0.</p>
-
-
-
-
-<p>Il vous faut aussi HACS (Home Assistant Community Store), puisqu’on installe ici une intégration communautaire… et elle n’est pas dans le catalogue HACS “par défaut”, il faut l’ajouter en dépôt personnalisé.</p>
-
-
-
-<p>Dernier point important : il est vivement recommandé de créer un <strong>second compte Mammotion</strong> dédié à Home Assistant. Sinon, en vous connectant avec le compte principal, vous risquez d’être déconnecté de l’application mobile, et ça devient vite enquiquinant :)</p>
-
-
-
-<h2>Étape 1 : créer un second compte Mammotion</h2>
-
-
-
-<p>Ouvrez l’app Mammotion et créez un nouveau compte (un autre email suffit). Ensuite, reconnectez-vous sur votre compte principal, puis allez dans le partage d’appareil pour partager votre robot vers ce second compte. Enfin, reconnectez-vous sur le second compte et acceptez le partage : c’est ce compte “secondaire” que vous utiliserez uniquement dans Home Assistant.</p>
-
-
-
-<p>Oui, c’est un peu “administratif”… mais ça évite des prises de tête après (et des messages du genre “pourquoi mon app se déconnecte toute seule ?!”).</p>
-
-
-
-<h2>Étape 2 : installer l’intégration Mammotion via HACS</h2>
-
-
-
-<p>Dans Home Assistant, ouvrez HACS, puis allez dans <strong>Intégrations</strong>. Dans le menu (les trois points en haut à droite), ouvrez <strong>Dépôts personnalisés</strong> et ajoutez le dépôt <code>https://github.com/mikey0000/Mammotion-HA</code> en choisissant la catégorie <strong>Integration</strong>. </p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-01.png" alt="home assistant mammotion 01" /></figure>
-
-
-
-<p>Cherchez ensuite “Mammotion” dans HACS, installez l’intégration, puis redémarrez Home Assistant.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-02.png" alt="home assistant mammotion 02" /></figure>
-
-
-
-<h2>Étape 3 : ajouter l’intégration dans Home Assistant</h2>
-
-
-
-<p>Après redémarrage, allez dans <strong>Paramètres → Appareils et services → Ajouter une intégration</strong>, cherchez “Mammotion”, puis lancez la configuration.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-03-702x261.png" alt="home assistant mammotion 03" /></figure>
-
-
-
-<p>À ce stade, deux notions comptent vraiment :</p>
-
-
-
-<ul>
-<li>D’abord, la connexion. L’intégration prévoit du <strong>Bluetooth (BLE)</strong> et du <strong>Wi-Fi</strong> (y compris via SIM 4G, selon les modèles), avec une feuille de route orientée contrôle, planification, zones, etc.</li>
-
-
-
-<li>Ensuite, si vous partez sur du Bluetooth et que votre Home Assistant est loin du robot, un <strong>Bluetooth Proxy ESPHome</strong> peut être très utile (un petit ESP32 placé au bon endroit, et Home Assistant “étend” sa portée BLE).</li>
-</ul>
-
-
-
-<p>Ici nous partirons sur une liaison Wifi, plus simple, puisque tout le jardin est parfaitement couvert.</p>
-
-
-
-<p>Il suffit de renseigner l’adresse email et le mot de passe du second compte Mammotion créé:</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-04-667x500.png" alt="home assistant mammotion 04" /></figure>
-
-
-
-<h2>Étape 4 : vérifier les entités et capteurs remontés</h2>
-
-
-
-<p>Une fois l’intégration en place, vous devriez voir apparaître votre robot avec des commandes et pas mal de capteurs. Ici je récupère mon <a href="https://www.maison-et-domotique.com/166571-test-robot-tondeuse-mammotion-luba-mini-awd-lidar/">Luba Mini AWD Lidar testé récemment</a>. Côté infos utiles, on retrouve typiquement le niveau de batterie, le statut (tonte, charge, idle…), le type de connexion, la position GPS, le nombre de satellites, la zone de travail, etc. </p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-06-1.png" alt="home assistant mammotion 06 1" /></figure>
-
-
-
-<h2>Étape 5 : lancer une tonte depuis Home Assistant</h2>
-
-
-
-<p>L’intégration expose une action dédiée <code>mammotion.start_mow</code>. Pour tester rapidement, allez dans <strong>Outils de développement → Actions</strong>, choisissez <code>mammotion.start_mow</code>, ciblez votre tondeuse, puis renseignez les paramètres que votre modèle supporte.</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/mammotion-home-assistant-tonte.png" alt="mammotion home assistant tonte" /></figure>
-
-
-
-<p>Exemple simple (à adapter à vos entités/aires) :</p>
-
-
-
-<pre><code>action: mammotion.start_mow
-data:
-  is_mow: true
-  speed: 0.3
-  border_mode: "1"
-  ultra_wave: "2"
-  areas: [switch.mower_1]
-</code></pre>
-
-
-
-<p>Selon le wiki, il existe des options universelles (ordre de tonte, vitesse, détection d’obstacles, mode de trajectoire, etc.), des options spécifiques YUKA (collecte/dépose, bordures…), et des options spécifiques LUBA comme la hauteur de coupe.</p>
-
-
-
-<h2>Idées d’automatisations vraiment utiles</h2>
-
-
-
-<p>A partir de maintenant, il est possible de créer diverses automatisations intégrant son robot tondeuse. Par exemple:</p>
-
-
-
-<ul>
-<li>Arrêt “météo intelligente”. Si votre station météo (Netatmo, capteurs Zigbee, ou une intégration météo) annonce une forte probabilité de pluie, Home Assistant peut renvoyer la tondeuse à la base avant que le jardin ne se transforme en patinoire. </li>
-
-
-
-<li>Anti-canicule. Si la température extérieure dépasse un seuil (30°C, par exemple), vous pouvez reporter la tonte au soir ou au lendemain. Ce n’est pas juste du confort : sur certains terrains secs, tondre en plein cagnard peut aussi être moins “propre”.</li>
-
-
-
-<li>Tonte au surplus solaire. Si vous suivez votre production photovoltaïque dans Home Assistant, déclencher la tonte quand vous avez du surplus entre deux horaires (par exemple fin de matinée/début d’après-midi) est une astuce toute simple pour recharger votre robot sur l’énergie solaire produite.</li>
-
-
-
-<li>Sécurité “présence au jardin”. Si un capteur d’ouverture de portail s’active, si une caméra détecte une présence, ou si le mode “barbecue” est activé, vous pouvez mettre la tondeuse en pause automatiquement (parce qu’un robot discret dans l’herbe, ça se fait oublier… jusqu’au moment où il passe au mauvais endroit).</li>
-
-
-
-<li>Selon planning familial. Si on a intégré les calendriers de la famille dans Home Assistant, il est facile de connaitre les moments où le robot ne dérangera pas en se promenant dans le jardin.</li>
-</ul>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/action-tonte-mammotion-home-assistant-641x500.png" alt="action tonte mammotion home assistant" /></figure>
-
-
-
-<h2>Un dashboard personnalisé</h2>
-
-
-
-<p>Avec toutes les informations récupérées du robot, il est possible de se réaliser un dashboard personnalisé intégrant son robot tondeuse Mammotion. J’ai réalisé par exemple ce dashboard:</p>
-
-
-
-<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/01/home-assistant-mammotion-09.png" alt="home assistant mammotion 09" /></figure>
-
-
-
-<p>En ayant recours aux <a href="https://www.maison-et-domotique.com/167373-ha-animated-cards-animations-intelligentes-home-assistant/">HA-Animated-Cards</a> par exemple, il est possible de faire des choses assez sympa (je dois encore bosser dessus, mais les deux premières tuiles donnent un aperçu).</p>
-
-
-
-<h2>Dépannage rapide</h2>
-
-
-
-<p>Si vous tombez sur un timeout vers l’API <code>api.link.aliyun.com</code>, le dépôt mentionne qu’il faut vérifier que votre réseau ou firewall ne bloque pas des services “hébergés en Chine”. C’est le genre de détail qui fait perdre une heure si on ne le sait pas.</p>
-
-
-
-<p>Et si l’ajout de compte refuse votre email, le dépôt indique que parfois “le numéro de compte” fonctionne mieux que l’adresse email (oui, c’est étrange, mais autant le garder sous le coude).</p>
-
-
-
-<h2>Conclusion</h2>
-
-
-
-<p>Au final, intégrer un robot tondeuse Mammotion (LUBA ou YUKA) dans Home Assistant, ce n’est pas juste “ajouter un gadget de plus” à son tableau de bord. C’est surtout reprendre la main sur la tonte, en la reliant à des informations réelles du quotidien : météo, présence au jardin, horaires, production solaire, modes de vie de la maison. Une fois les entités en place, on se rend vite compte que les meilleurs gains viennent des automatisations simples : éviter les mauvais créneaux, arrêter au bon moment, et lancer la tonte quand tout est réuni. Et c’est là que Mammotion + Home Assistant prend tout son sens : une pelouse entretenue, sans y penser, et sans surprises.</p>
-
-
-                    </article></div>
+    <p>Intégrez votre robot tondeuse Mammotion (LUBA / YUKA) dans Home Assistant : installation via HACS, configuration Wi-Fi ou Bluetooth, capteurs disponibles et idées d’automatisations concrètes (pluie, canicule, surplus solaire, zones).</p>
   </div>
-</body>
-</html>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+
+</body></html>

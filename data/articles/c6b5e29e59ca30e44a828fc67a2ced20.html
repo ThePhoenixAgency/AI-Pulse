@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="UTF-8">
 <title>macOS 26.4 will notify users of Rosetta 2 discontinuation</title>
 <style>
@@ -24,31 +22,29 @@
 <body>
   <h1>macOS 26.4 will notify users of Rosetta 2 discontinuation</h1>
   <div class="metadata">
-    Source: 9to5Mac | Date: 2/16/2026 7:52:48 PM | Lang: EN |
-    <a href="https://9to5mac.com/2026/02/16/macos-26-4-will-notify-users-of-rosetta-2-discontinuation/" target="_blank">Original Article</a>
+    Source: 9to5Mac | Date: 2/16/2026 8:52:48 PM | <a href="https://9to5mac.com/2026/02/16/macos-26-4-will-notify-users-of-rosetta-2-discontinuation/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2023/09/Apple-Silicon-chips.jpg?quality=82&amp;strip=all&amp;w=1600" alt="Apple Silicon chip arm iPhone iPad Mac"> </figure> <p>Last June at WWDC25, Apple announced that Rosetta 2, the software that translates Intel apps for Apple silicon, would be discontinued starting after macOS 27. Now, Apple will begin notifying users of apps that will soon be incompatible.</p> <p>At WWDC20, alongside the <a href="https://9to5mac.com/2020/06/28/wwdc-2020-ios-14-wrap-up/">announcement</a> of Mac’s transition to Apple silicon, Apple launched Rosetta 2. This is a translation layer that allows Apple silicon-based Macs to run apps created for Intel models. However, like with the transition to Intel, Rosetta 2 was intended to be temporary. </p> <p>At WWDC25, Apple announced that Rosetta 2 would be fully supported through macOS 27. Starting with macOS 28, Rosetta 2 will be largely discontinued. Apple <a href="https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment/">says</a> that after that point, it “will keep a subset of Rosetta functionality aimed at supporting older unmaintained gaming titles, that rely on Intel-based frameworks.” </p> <p>Starting with today’s macOS 26.4 beta 1, users <a href="https://support.apple.com/en-us/102527">will now be notified</a> when launching an app that requires Rosetta 2 that it will soon be discontinued.</p> <p>macOS 28 will likely be released in the fall of 2027, so users still have plenty of time to make sure their apps are updated to native Apple silicon versions. The popup introduced in macOS 26.4 is meant to give users that early head’s up about the change so they can seek out updated versions of the app. It also serves as a reminder for developers who haven’t yet updated their apps to be native on Apple silicon. </p> <p>As a reminder, macOS 26 will also be the final release for Intel-based Mac models. After that, Apple <a href="https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment/">says</a> that Intel Macs will continue to receive security updates for three years.</p> <p><em>Chance Miller contributed to this story.</em></p> <hr> <p><strong>My favorite Apple accessories:</strong></p> <ul>
-<li><a href="https://amzn.to/427Gdoa" target="_blank">Beats Pill</a></li> <li><a href="https://amzn.to/4nbrhxl" target="_blank">MOFT MagSafe iPhone Stand</a></li> <li><a href="https://amzn.to/47oBbat" target="_blank">Satechi Vegan Leather Desk Mat</a></li> <li><a href="https://amzn.to/46nrrw4" target="_blank">BenQ ScreenBar Pro</a></li> <li><a href="https://amzn.to/4pihIyH" target="_blank">AirPods Pro 3</a></li> <li><a href="https://amzn.to/481bPQ5" target="_blank">elago Magnetic iPad Stand</a></li> <li><a href="https://amzn.to/3XQYvHI">Anker Nano 30W Charger</a></li> <li><a href="https://amzn.to/46hpd1i" target="_blank">Apple 40W–60W Charger</a></li>
-</ul> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
+    <p>Last June at WWDC25, Apple announced that Rosetta 2, the software that translates Intel apps for Apple silicon, would be discontinued starting after macOS 27. Now, Apple will begin notifying users of apps that will soon be incompatible.
+more…</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
-</body>
-</html>
+
+</body></html>

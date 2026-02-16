@@ -24,29 +24,28 @@
 <body>
   <h1>Trac, stress, tension, équilibre... Dans la tête des athlètes au départ de leur défi olympique</h1>
   <div class="metadata">
-    Source: Le Figaro | Date: 2/16/2026 7:30:00 PM | Lang: FR |
-    <a href="https://www.lefigaro.fr/sports/jeux-olympiques/trac-stress-tension-equilibre-dans-la-tete-des-athletes-au-depart-de-leur-defi-olympique-20260216" target="_blank">Original Article</a>
+    Source: Le Figaro | Date: 2/16/2026 8:30:00 PM | <a href="https://www.lefigaro.fr/sports/jeux-olympiques/trac-stress-tension-equilibre-dans-la-tete-des-athletes-au-depart-de-leur-defi-olympique-20260216" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <figure> <p><img alt="Emily Harrop, Timothy Loubineaud et Steven Amiez décrivent leurs sentiments juste avant de s’élancer."> </p> <figcaption>Emily Harrop, Timothy Loubineaud et Steven Amiez décrivent leurs sentiments juste avant de s’élancer.<span> AFP / FABRICE COFFRINI / REUTERS / Yves Herman / REUTERS / Gintare Karpaviciute </span></figcaption> </figure> </div><p> <strong>RÉCIT - </strong>Dans le portillon, au départ sur la glace, les athlètes partagent les sentiments violents qui les traversent.</p><div> <p>Les Jeux se construisent avec patience. Dans l’ombre. Avant le jour&nbsp;J, quand il faut porter à ébullition des mois, voire une vie dédiée à cet objectif. Les acteurs de théâtre évoquent la mise à nu, le vertige éprouvé quand résonnent les trois coups. Que se passe-t-il dans les instants qui précèdent le plongeon dans une&nbsp;<a href="http://www.lefigaro.fr/sports/jeux-olympiques/jo-2026-pas-de-finale-pour-les-bleus-elimines-dans-l-epreuve-par-equipes-de-patinage-artistique-20260207">épreuve olympique</a>&nbsp;? Que ressentent et à quoi pensent ceux qui s’élancent&nbsp;? Avec honnêteté, sensibilité, émotion, les athlètes français ont levé le voile sur ces instants fragiles.</p> <p><a href="http://www.lefigaro.fr/sports/autres-sports/ski-alpinisme-victoire-de-harrop-sur-le-sprint-de-courchevel-les-bleus-brillent-20260115">Emily Harrop</a>&nbsp;(ski-alpinisme, dont la discipline fera son entrée jeudi aux JO) confie&nbsp;: <em>«&nbsp;J’ai beaucoup le trac. Même à l’entraînement, ça m’arrive d’avoir le trac parce que je sais que je vais me faire mal, que ça va être une séance vraiment difficile, même si je suis toute seule face à moi-même. En début de saison, le trac est encore plus élevé. Et au bout d’un moment, avec l’habitude, je guéris un petit peu. Les deux disciplines olympiques </em>(sprint et relais) <em>sont celles où je peux…</em></p> <div> <p> Cet article est réservé aux abonnés. <span>Il vous reste 82% à découvrir.</span> </p> <div> <figure> <p><img alt="Le Figaro"> </p> </figure> <p>Vous avez envie de lire la suite ?</p> <p>Débloquez tous les articles immédiatement.</p> <p> Déjà abonné&nbsp;? <a href="https://connect.lefigaro.fr/login?client=horizon_web&amp;type=main&amp;redirect_uri=https%3A%2F%2Fwww.lefigaro.fr%2Fsports%2Fjeux-olympiques%2Ftrac-stress-tension-equilibre-dans-la-tete-des-athletes-au-depart-de-leur-defi-olympique-20260216"> Connectez-vous </a> </p> </div>
 </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

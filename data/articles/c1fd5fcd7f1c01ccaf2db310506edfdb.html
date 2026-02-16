@@ -24,8 +24,7 @@
 <body>
   <h1>The Open Evaluation Standard: Benchmarking NVIDIA Nemotron 3 Nano with NeMo Evaluator</h1>
   <div class="metadata">
-    Source: Hugging Face Blog | Date: 12/17/2025 2:22:18 PM | Lang: EN |
-    <a href="https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe" target="_blank">Original Article</a>
+    Source: Hugging Face Blog | Date: 12/17/2025 2:22:18 PM | <a href="https://huggingface.co/blog/nvidia/nemotron-3-nano-evaluation-recipe" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
     <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/sephmard1"><img alt="Seph Mard's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/688cf7e6026af0cf8ac969dd/zYPjGkU8LznN4CWbzaIO-.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/ihulseman0220"><img alt="Isabel Hulseman's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/692f256930af6df4c8e042f5/1We0xkKlpRmt-pkBdDUJY.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/bnushi"><img alt="Besmira Nushi's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/68bb534130831116302a08e9/0S9P-vSjBgt7CCI3POFCk.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pjanuszewski"><img alt="Piotr Januszewski's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/noauth/pc70yQmek1B-1kaZI7EoJ.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/grzegorzchlebus"><img alt="Grzegorz Chlebus's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/66fe3caae9e5b5c3e4b09886/bqlbZWAFzZiu9EcFsTR9F.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/viviennezhang"><img alt="VivienneZhang's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64b7415efe6a108d03fdf0fa/hmj1uLvUr9Wy2EZSgmtZi.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/wprazuch"><img alt="Wojciech Prazuch's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/654a15c16167ff03f7f593e8/DYI_7XkRw4xGGLC4mBK4m.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/pribalta"><img alt="Pablo Ribalta's avatar" src="https://huggingface.co/avatars/9d7549803c0ab5202a261fb08142155b.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/spirinus"><img alt="Nik Spirin's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/67d8b4505f83c2f3979a5603/uJLlQODJ-SkEA9LvNeVRo.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/fgalko"><img alt="Ferenc Galko's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/655525fcc26023b5b1997c47/ellB4qkBxGVEKXvA07BEw.jpeg"></a> </span> </span></p> </div></div> <p>It has become increasingly challenging to assess whether a model’s
@@ -274,10 +273,7 @@ evaluation</u></a> for <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3-
 export NGC_API_KEY="your-ngc-api-key" # Hugging Face access
 export HF_TOKEN="your-huggingface-token" # Required only for judge-based benchmarks such as HLE
 export JUDGE_API_KEY="your-judge-api-key"
-</code></pre>
-<p><em>Optional but recommended for faster reruns:</em>
-<code>export HF_HOME="/path/to/your/huggingface/cache"</code></p>
-<h3> <a href="#3-model-endpoint"> </a> <span> 3. Model endpoint </span>
+</code></pre> <h3> <a href="#3-model-endpoint"> </a> <span> 3. Model endpoint </span>
 </h3>
 <p>The evaluation uses the NVIDIA API endpoint hosted on
 <a href="https://build.nvidia.com/nvidia/nemotron-3-nano-30b-a3b"><u>build.nvidia.com</u></a>:</p>
