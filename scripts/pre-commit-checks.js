@@ -5,7 +5,15 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 function run(cmd, args, opts = {}) {
-  const res = spawnSync(cmd, args, { stdio: 'pipe', encoding: 'utf8', ...opts });
+  const res = spawnSync(cmd, args, {
+    stdio: 'pipe',
+    encoding: 'utf8',
+    maxBuffer: 64 * 1024 * 1024,
+    ...opts
+  });
+  if (res.error) {
+    throw res.error;
+  }
   return res;
 }
 
@@ -81,7 +89,9 @@ function main() {
     return;
   }
 
+  info(`Validation pre-commit: ${files.length} fichiers staged`);
   const root = process.cwd();
+  let validatedCount = 0;
 
   for (const rel of files) {
     const filePath = path.join(root, rel);
@@ -102,11 +112,12 @@ function main() {
           throw new Error('fichier vide');
         }
       }
-      info(`Validation fichier OK: ${rel}`);
+      validatedCount += 1;
     } catch (error) {
       fail(`Validation fichier KO (${rel}): ${error.message}`);
     }
   }
+  info(`Validation fichiers terminee: ${validatedCount}/${files.length}`);
 
   try {
     checkDiffSecrets();

@@ -51,10 +51,10 @@ KEY = bytes([ 0x89,0xE7,0xFF,0xBE,0xEB,0x2D,0x73,0xF5, 0xA9,0x10,0xFC,0x42,0x5B,
   </div>
   <script>
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
     function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;

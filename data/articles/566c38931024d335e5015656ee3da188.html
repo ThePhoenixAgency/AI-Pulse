@@ -76,10 +76,10 @@ DEFAULT_PAYLOADS = ["OR 1=1 OR", "AND 1=0 AND", "OR 'a'='a' OR"] def extract_sql
   </div>
   <script>
     function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'auto' });
     }
     function scrollToBottom() {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
