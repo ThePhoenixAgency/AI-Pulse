@@ -882,6 +882,15 @@
             return Array.from(variants);
         }
 
+        function sortUniqueKeywords(input) {
+            return Array.from(new Set(
+                String(input || '')
+                    .split(',')
+                    .map((k) => k.trim())
+                    .filter(Boolean)
+            )).sort((a, b) => a.localeCompare(b, undefined, { sensitivity: 'base' }));
+        }
+
         function updateI18nUI(lang) {
             const effectiveLang = (lang === 'fr' || lang === 'en') ? lang : FALLBACK_LANG;
             const t = (key) => translate(key, effectiveLang);
@@ -1115,6 +1124,63 @@
             return lang.startsWith('fr') ? 'fr' : 'en';
         }
 
+        async function fetchGeoFromIpApi() {
+            try {
+                const response = await fetch('https://ipapi.co/json/', {
+                    credentials: 'omit',
+                    cache: 'no-store'
+                });
+                if (!response.ok) return null;
+                const data = await response.json();
+                return {
+                    city: String(data.city || ''),
+                    country: String(data.country_name || ''),
+                    countryCode: String(data.country_code || '').toUpperCase(),
+                    languages: String(data.languages || '').toLowerCase()
+                };
+            } catch (_) {
+                return null;
+            }
+        }
+
+        function persistGeoToStats(location) {
+            if (!location || (!location.city && !location.country && !location.countryCode && !location.languages)) return;
+            try {
+                const raw = localStorage.getItem('ai_pulse_stats');
+                const stats = raw ? JSON.parse(raw) : {};
+                if (!Array.isArray(stats.locations)) stats.locations = [];
+                const last = stats.locations[stats.locations.length - 1] || {};
+                const sameAsLast =
+                    String(last.city || '').toLowerCase() === String(location.city || '').toLowerCase() &&
+                    String(last.country || '').toLowerCase() === String(location.country || '').toLowerCase() &&
+                    String(last.countryCode || '').toUpperCase() === String(location.countryCode || '').toUpperCase() &&
+                    String(last.languages || '').toLowerCase() === String(location.languages || '').toLowerCase();
+                if (!sameAsLast) {
+                    stats.locations.push({
+                        city: location.city || '',
+                        country: location.country || '',
+                        countryCode: location.countryCode || '',
+                        languages: location.languages || ''
+                    });
+                    if (stats.locations.length > 100) {
+                        stats.locations = stats.locations.slice(-100);
+                    }
+                }
+                localStorage.setItem('ai_pulse_stats', JSON.stringify(stats));
+            } catch (_) {
+                // Ignore storage failures
+            }
+        }
+
+        async function ensureGeoStatsWarm(prefs) {
+            const selected = (prefs && prefs.lang) || 'auto';
+            if (selected !== 'auto' && selected !== 'all') return;
+            const geo = detectGeoFromStats();
+            if (geo.countryCode || geo.country || geo.city) return;
+            const freshGeo = await fetchGeoFromIpApi();
+            if (freshGeo) persistGeoToStats(freshGeo);
+        }
+
         function resolveEffectiveLanguage(prefs) {
             const selected = (prefs && prefs.lang) || 'auto';
             if (selected === 'fr' || selected === 'en' || selected === 'all') return selected;
@@ -1224,11 +1290,7 @@
             const isFrance = geo.countryCode === 'FR' || geo.country.includes('france');
             const readArticles = ReadHistory.getAll();
             const filterNotice = document.getElementById('filterNotice');
-            const rawKeywords = (prefs.keywords || '')
-                .toLowerCase()
-                .split(',')
-                .map(k => k.trim())
-                .filter(k => k);
+            const rawKeywords = sortUniqueKeywords(prefs.keywords || '').map((k) => k.toLowerCase());
             const keywords = getKeywordVariants(rawKeywords);
 
             function render(passOptions = {}) {
@@ -1492,7 +1554,9 @@
                 clearTimeout(keywordTimeout);
                 keywordTimeout = setTimeout(() => {
                     const p = PrefsManager.load();
-                    p.keywords = e.target.value;
+                    const sortedKeywords = sortUniqueKeywords(e.target.value);
+                    p.keywords = sortedKeywords.join(', ');
+                    e.target.value = p.keywords;
                     PrefsManager.save(p);
                     applyFilters();
                 }, 300);
@@ -1679,8 +1743,10 @@
 
                 // Post-render setup
                 const prefs = PrefsManager.load();
+                await ensureGeoStatsWarm(prefs);
+                const refreshedPrefs = PrefsManager.load();
                 buildSectionNav();
-                buildPrefCategories(prefs);
+                buildPrefCategories(refreshedPrefs);
                 applyFilters();
                 setupPrefsPanel();
 

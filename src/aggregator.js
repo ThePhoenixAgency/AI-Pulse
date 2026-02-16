@@ -96,7 +96,7 @@ const { Readability } = require('@mozilla/readability');
  * jsdom : Crée un DOM virtuel pour manipuler le HTML côté serveur
  * Permet d'utiliser Readability sur du HTML récupéré
  */
-const { JSDOM } = require('jsdom');
+const { JSDOM, VirtualConsole } = require('jsdom');
 
 /**
  * crypto (module natif Node.js) : Pour créer des hachages (MD5, SHA256)
@@ -323,6 +323,22 @@ const PROMOTIONAL_MARKERS = [
   /\bshop now\b/i,
   /\bbuy now\b/i,
   /\bpublicit[eé]\b/i,
+  /\bpublicit/i,
+  /\bsponsors?\b/i,
+  /\bsponsoris[eé]\b/i,
+  /\babonnez[-\s]?vous\b/i,
+  /\binscrivez[-\s]?vous\b/i,
+  /\bsuivez[-\s]?nous\b/i,
+  /\bfollow us\b/i,
+  /\bread more\b/i,
+  /\blire aussi\b/i,
+  /\barticles? connexes?\b/i,
+  /\byou may also like\b/i,
+  /\brecommended\b/i,
+  /\bvisit website\b/i,
+  /\blaunch team\b/i,
+  /\balternatives?\b/i,
+  /\breviews?\b/i,
   /\bvotre contenu continue ci-dessous\b/i,
   /\bcommentaires?\b/i,
   /\bavis\b/i,
@@ -347,11 +363,115 @@ function cleanupNoiseText(input) {
     .replace(/\bcomments?\b/gi, ' ')
     .replace(/\bcommentaires?\b/gi, ' ')
     .replace(/\bavis\b/gi, ' ')
+    .replace(/\bsponsors?\b/gi, ' ')
+    .replace(/\bsponsoris[eé]\b/gi, ' ')
+    .replace(/\b(abonnez[-\s]?vous|inscrivez[-\s]?vous|suivez[-\s]?nous)\b/gi, ' ')
+    .replace(/\b(follow us|read more|lire aussi|you may also like|recommended)\b/gi, ' ')
     .replace(/\btoute l['’]actu en un clin d['’]oeil\b/gi, ' ')
     .replace(/\bpublicit[eé]\b/gi, ' ')
+    .replace(/\bpublicit\b/gi, ' ')
     .replace(/\b(votre contenu continue ci-dessous)\b/gi, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim());
+}
+
+function getLinkDensity(node) {
+  if (!node) return 0;
+  const textLength = ((node.textContent || '').trim().length);
+  if (textLength === 0) return 0;
+  const linkTextLength = Array.from(node.querySelectorAll('a'))
+    .reduce((sum, a) => sum + ((a.textContent || '').trim().length), 0);
+  return linkTextLength / textLength;
+}
+
+function removePromotionalNodes(root) {
+  if (!root || !root.querySelectorAll) return;
+  const candidates = root.querySelectorAll('p, div, section, article, aside, li, ul, ol, figure, figcaption, footer, nav, header');
+  candidates.forEach((node) => {
+    const text = sanitizeText(node.textContent || '');
+    if (!text) return;
+    const normalized = text.toLowerCase().replace(/\s+/g, ' ').trim();
+    const promoSignal = isPromotionalContent(normalized) ||
+      /\b(et vous|source[s]?\s*:|suivez[-\s]?nous|abonnez[-\s]?vous|inscrivez[-\s]?vous|follow us|sponsors?)\b/i.test(normalized);
+    if (!promoSignal) return;
+    const shortBlock = normalized.length < 320;
+    const linkDense = getLinkDensity(node) > 0.33;
+    const manyLinks = node.querySelectorAll('a').length >= 3;
+    if (shortBlock || linkDense || manyLinks) {
+      node.remove();
+    }
+  });
+
+  const structuralNoiseSignals = [
+    /\bnewsletter\b/i,
+    /\b(abonnez[-\s]?vous|inscrivez[-\s]?vous)\b/i,
+    /\bsponsors?\b/i,
+    /\blaunch team\b/i,
+    /\bnotes?\s*&\s*links?\b/i,
+    /\bchapters?\b/i,
+    /\btranscript\b/i,
+    /\bcommentaires?\b/i,
+    /\bauteur\b/i,
+    /\bet vous\b/i,
+    /\bsource[s]?\s*:/i
+  ];
+
+  root.querySelectorAll('section, div, article, aside').forEach((node) => {
+    const heading = node.querySelector('h1, h2, h3, h4, h5, h6');
+    if (!heading) return;
+    const title = sanitizeText(heading.textContent || '');
+    if (!title) return;
+    if (structuralNoiseSignals.some((pattern) => pattern.test(title))) {
+      node.remove();
+    }
+  });
+}
+
+function shouldSkipRemoteExtraction(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    const blockedHosts = new Set([
+      'openai.com',
+      'www.openai.com',
+      'wired.com',
+      'www.wired.com',
+      'numerama.com',
+      'www.numerama.com'
+    ]);
+    return blockedHosts.has(host);
+  } catch (_) {
+    return false;
+  }
+}
+
+function shouldSuppressExtractionLog(url, error) {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    const noisyHosts = [
+      'openai.com',
+      'wired.com',
+      'numerama.com',
+      'huggingface.co',
+      'towardsdatascience.com',
+      'venturebeat.com',
+      'artificialintelligence-news.com'
+    ];
+    if (noisyHosts.some((h) => host === h || host.endsWith(`.${h}`))) {
+      return true;
+    }
+  } catch (_) {
+    // ignore parse errors
+  }
+  const message = String((error && error.message) || '');
+  return /timeout|timed out|forbidden|403|401|socket hang up/i.test(message);
+}
+
+function createSafeDom(html, url) {
+  const virtualConsole = new VirtualConsole();
+  virtualConsole.on('jsdomError', () => {
+    // Ignore noisy CSS parsing errors from third-party pages.
+  });
+  return new JSDOM(html, { url, virtualConsole });
 }
 
 function trimPromotionalTailText(input) {
@@ -398,7 +518,7 @@ function cleanupNoiseHtml(input) {
   ]);
 
   try {
-    const dom = new JSDOM(`<body>${String(input)}</body>`);
+    const dom = createSafeDom(`<body>${String(input)}</body>`, 'https://local.ai-pulse/');
     const body = dom.window.document.body;
     body.querySelectorAll('p').forEach((paragraph) => {
       const normalized = normalizeNoiseText(paragraph.textContent || '');
@@ -420,6 +540,18 @@ function cleanupNoiseHtml(input) {
         div.remove();
       }
     });
+
+    body.querySelectorAll('img').forEach((img) => {
+      const src = String(img.getAttribute('src') || '').toLowerCase();
+      const alt = String(img.getAttribute('alt') || '').toLowerCase();
+      const isPromoImage = /advert|ads?|promo|sponsor|affiliate|tracking|doubleclick|taboola|outbrain|buy\.geni\.us|utm_|ref=/.test(src)
+        || /sponsor|publicit|promo|advert/.test(alt);
+      if (isPromoImage) {
+        img.remove();
+      }
+    });
+
+    removePromotionalNodes(body);
 
     return trimPromotionalTailHtml(stripEmojiCharacters(body.innerHTML.trim()));
   } catch (_) {
@@ -529,7 +661,7 @@ async function resolveArticleUrl(articleUrl) {
 function trimPromotionalTailHtml(input) {
   if (!input) return '';
   try {
-    const dom = new JSDOM(`<body>${input}</body>`);
+    const dom = createSafeDom(`<body>${input}</body>`, 'https://local.ai-pulse/');
     const body = dom.window.document.body;
     const blocks = Array.from(body.querySelectorAll('p, div, section, article, aside, ul, ol, figure'))
       .filter((el) => (el.textContent || '').trim().length > 0);
@@ -558,7 +690,8 @@ function trimPromotionalTailHtml(input) {
         break;
       }
     }
-    body.querySelectorAll('aside, .ad, .ads, .advert, .sponsor, [class*="sponsor"], [id*="sponsor"], [class*="advert"], [id*="advert"]').forEach((el) => el.remove());
+    body.querySelectorAll('aside, .ad, .ads, .advert, .sponsor, [class*="sponsor"], [id*="sponsor"], [class*="advert"], [id*="advert"], [class*="newsletter"], [id*="newsletter"], [class*="cookie"], [id*="cookie"]').forEach((el) => el.remove());
+    removePromotionalNodes(body);
     return stripEmojiCharacters(body.innerHTML.trim());
   } catch (_) {
     return stripEmojiCharacters(String(input).trim());
@@ -968,12 +1101,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 <body>
   <h1>${safeTitle}</h1>
   <div class="metadata">
-    Source: ${sourceName} | Date: ${new Date(article.pubDate || Date.now()).toLocaleDateString()} ${new Date(article.pubDate || Date.now()).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
-    <a href="${resolvedArticleUrl}" target="_blank">Original Article</a>
+    Source: ${sourceName} | Date: ${new Date(article.pubDate || Date.now()).toLocaleDateString()} ${new Date(article.pubDate || Date.now()).toLocaleTimeString()} | Lang: ${lang.toUpperCase()}
   </div>
   <div class="content">
     <p>${safeSummary}</p>
-    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
@@ -999,8 +1130,10 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   };
 
   // Essayer de récupérer et sauvegarder le contenu complet
-  if (!fs.existsSync(localPath)) {
-    try {
+  try {
+      if (shouldSkipRemoteExtraction(resolvedArticleUrl)) {
+        writeFallbackLocalArticle();
+      } else {
       // Récupérer la page web complète
       const response = await axios.get(resolvedArticleUrl, {
         timeout: 8000,
@@ -1008,7 +1141,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       });
 
       // Créer un DOM virtuel pour manipuler le HTML
-      const dom = new JSDOM(response.data, { url: resolvedArticleUrl });
+      const dom = createSafeDom(response.data, resolvedArticleUrl);
 
       let articleContent = null;
 
@@ -1071,8 +1204,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 <body>
   <h1>${sanitizeText(articleContent.title)}</h1>
   <div class="metadata">
-    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} ${new Date(article.pubDate).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
-    <a href="${resolvedArticleUrl}" target="_blank">Original Article</a>
+    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} ${new Date(article.pubDate).toLocaleTimeString()} | Lang: ${lang.toUpperCase()}
   </div>
   <div class="content">
     ${sanitizedMainContent}
@@ -1102,11 +1234,13 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
         fs.writeFileSync(localPath, cleanHtml);
         }
       }
-    } catch (e) {
+      }
+  } catch (e) {
+    if (!shouldSuppressExtractionLog(resolvedArticleUrl, e)) {
       console.error(`    Could not extract content for: ${articleUrl}`);
-      // Toujours générer une page locale de secours pour garder un comportement uniforme.
-      writeFallbackLocalArticle();
     }
+    // Toujours générer une page locale de secours pour garder un comportement uniforme.
+    writeFallbackLocalArticle();
   }
 
   // Sécurité: si aucune page n'existe encore (cas parse vide sans throw), générer un fallback.
@@ -1328,7 +1462,6 @@ function generateREADME(categorizedArticles) {
       const lang = article && article.lang === 'fr' ? 'fr' : 'en';
       const safeTitle = sanitizeText((article && article.title) || 'Untitled');
       const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), 1200) || 'Summary unavailable.';
-      const originalLink = sanitizeText((article && (article.originalLink || article.link)) || '');
       const fallbackHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
@@ -1347,8 +1480,6 @@ function generateREADME(categorizedArticles) {
   <div class="metadata">Source: ${sanitizeText((article && article.source) || category || 'Unknown')}</div>
   <div class="content">
     <p>${safeSummary}</p>
-    <p>Sorry, this source could not be rendered fully right now.</p>
-    ${originalLink ? `<p><a href="${originalLink}" target="_blank">Original Article</a></p>` : ''}
   </div>
 </body>
 </html>`;

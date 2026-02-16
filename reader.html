@@ -106,14 +106,14 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            background: white;
+            background: var(--bg-dark);
             overflow: hidden;
         }
 
         .iframe-container {
             flex: 1;
             position: relative;
-            background: white;
+            background: var(--bg-dark);
         }
 
         .back-to-previous {
@@ -166,6 +166,7 @@
             width: 100%;
             height: 100%;
             border: none;
+            background: var(--bg-dark);
         }
 
         /* Loading State */
@@ -341,10 +342,6 @@
                 <div class="error-icon">⚠️</div>
                 <h2>Impossible de charger l'article</h2>
                 <p>Nous sommes désolés, cet article est indisponible ou bloque l'affichage dans le lecteur.</p>
-                <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
-                    <span>🔗</span>
-                    <span>Ouvrir sur le site source</span>
-                </a>
             </div>
             <div class="article-elevator" aria-label="Navigation article">
                 <button class="article-elevator-btn" id="articleScrollTopBtn" type="button" title="Remonter">▲</button>
@@ -399,6 +396,45 @@
         const articleTitle = params.get('title');
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
+        const articleRuntimeCache = new Map();
+
+        function normalizeLocalArticlePath(url) {
+            if (!url) return '';
+            const value = String(url).trim();
+            return value.replace(/^\.\//, '').replace(/^\//, '');
+        }
+
+        function isLocalGeneratedArticleUrl(url) {
+            const path = normalizeLocalArticlePath(url);
+            return /^data\/articles\/.+\.html$/i.test(path);
+        }
+
+        async function fetchCachedLocalArticleHtml(url) {
+            const normalizedPath = normalizeLocalArticlePath(url);
+            const cacheKey = `ai_pulse_article_html:${normalizedPath}`;
+            if (articleRuntimeCache.has(cacheKey)) return articleRuntimeCache.get(cacheKey);
+            try {
+                const persisted = sessionStorage.getItem(cacheKey);
+                if (persisted && persisted.length > 0) {
+                    articleRuntimeCache.set(cacheKey, persisted);
+                    return persisted;
+                }
+            } catch (_) {
+                // Ignore sessionStorage access failures.
+            }
+            const response = await fetch(`./${normalizedPath}`, { cache: 'force-cache' });
+            if (!response.ok) {
+                throw new Error(`local-article-fetch-failed:${response.status}`);
+            }
+            const html = await response.text();
+            articleRuntimeCache.set(cacheKey, html);
+            try {
+                sessionStorage.setItem(cacheKey, html);
+            } catch (_) {
+                // Ignore storage quota failures.
+            }
+            return html;
+        }
 
         function resolveArticleUrlFromMapSync(rawUrl) {
             if (!rawUrl || !rawUrl.startsWith('http')) return rawUrl;
@@ -450,18 +486,8 @@
         function showInlineArticleError(reason) {
             const loading = document.getElementById('loading');
             const errorMessage = document.getElementById('errorMessage');
-            const openExternalError = document.getElementById('openExternalError');
             if (loading) loading.style.display = 'none';
             if (errorMessage) errorMessage.style.display = 'block';
-            if (openExternalError && articleUrl) {
-                try {
-                    openExternalError.href = articleUrl.startsWith('http')
-                        ? new URL(articleUrl).toString()
-                        : ('./' + articleUrl);
-                } catch (_) {
-                    // Keep existing fallback href.
-                }
-            }
             console.warn('Inline article fallback:', reason || 'unknown');
         }
 
@@ -470,11 +496,9 @@
         if (articleUrl && isValidHttpUrl(articleUrl)) {
             showView('article');
 
-            // Show article tab and external link button if they existed in DOM (checking safety)
+            // Show article tab if it exists in DOM.
             const tabArticle = document.getElementById('tab-article');
-            const openExternal = document.getElementById('openExternal');
             if (tabArticle) tabArticle.style.display = 'inline-flex';
-            if (openExternal) openExternal.style.display = 'inline-flex';
 
             let safeArticleUrl;
             if (articleUrl.startsWith('http')) {
@@ -513,11 +537,6 @@
                 }
             }
 
-            // Configure external links
-            if (openExternal) openExternal.href = safeArticleUrl;
-            const openExternalError = document.getElementById('openExternalError');
-            if (openExternalError) openExternalError.href = safeArticleUrl;
-
             // Load article in iframe
             const iframe = document.getElementById('articleFrame');
             const loading = document.getElementById('loading');
@@ -532,8 +551,24 @@
                 } else {
                     let loadCount = 0;
                     let firstLoadAt = 0;
+                iframe.style.visibility = 'hidden';
+                if (loading) loading.style.display = 'block';
 
-                iframe.src = safeArticleUrl;
+                const loadViaSrc = () => {
+                    iframe.src = safeArticleUrl;
+                };
+
+                if (isLocalGeneratedArticleUrl(safeArticleUrl)) {
+                    fetchCachedLocalArticleHtml(safeArticleUrl)
+                        .then((html) => {
+                            iframe.srcdoc = html;
+                        })
+                        .catch(() => {
+                            loadViaSrc();
+                        });
+                } else {
+                    loadViaSrc();
+                }
 
                 let loadTimeout = setTimeout(() => {
                     if (loading && loading.style.display !== 'none') {
@@ -544,6 +579,7 @@
                 iframe.onload = function () {
                     clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
+                    iframe.style.visibility = 'visible';
                     const now = Date.now();
                     if (!firstLoadAt) firstLoadAt = now;
                     loadCount += 1;
