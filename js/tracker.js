@@ -246,6 +246,8 @@ const Tracker = {
                 const locationObj = {
                     city: data.city,           // Ville
                     country: data.country_name, // Pays
+                    countryCode: data.country_code || '', // Code pays ISO (ex: FR)
+                    languages: data.languages || '', // Langues déclarées (ex: fr,en-US)
                     timestamp: Date.now()       // Quand cette info a été récupérée
                 };
 
@@ -377,7 +379,7 @@ const PrefsManager = {
             lang: 'all',        // Toutes les langues
             categories: {},     // Toutes les catégories (objet vide = toutes)
             keywords: '',       // Pas de filtrage par mots-clés
-            maxArticles: 30     // 30 articles maximum par catégorie
+            maxArticles: 80     // 80 articles maximum par catégorie
         };
     },
 

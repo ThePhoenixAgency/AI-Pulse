@@ -52,8 +52,8 @@ Cette section contient les **paramètres généraux** de l'agrégateur.
 
 ```json
 "settings": {
-  "articlesPerFeed": 15,
-  "maxArticlesPerCategory": 30,
+  "articlesPerFeed": 80,
+  "maxArticlesPerCategory": 80,
   "summaryMaxLength": 600,
   "deduplication": {
     "enabled": true,
@@ -67,8 +67,8 @@ Cette section contient les **paramètres généraux** de l'agrégateur.
 
 | Paramètre | Valeur par défaut | Description |
 |-----------|-------------------|-------------|
-| `articlesPerFeed` | 15 | Nombre maximum d'articles récupérés **par source RSS**. Si une source a 50 articles, seuls les 15 plus récents sont gardés. |
-| `maxArticlesPerCategory` | 30 | Nombre maximum d'articles affichés **par catégorie** sur le site. Même si on a 100 articles IA, on n'en montre que 30. |
+| `articlesPerFeed` | 80 | Nombre maximum d'articles récupérés **par source RSS**. Si une source a 50 articles, seuls les 80 plus récents sont gardés. |
+| `maxArticlesPerCategory` | 80 | Nombre maximum d'articles affichés **par catégorie** sur le site. Même si on a 100 articles IA, on n'en montre que 80. |
 | `summaryMaxLength` | 600 | Longueur maximale du résumé d'un article (en caractères). Les résumés trop longs sont coupés. |
 
 ### Sous-section "deduplication" :

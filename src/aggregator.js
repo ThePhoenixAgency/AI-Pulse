@@ -283,10 +283,174 @@ function sanitizeText(input) {
   if (!input) return '';
 
   // sanitizeHtml avec aucune balise autorisée = texte pur
-  return sanitizeHtml(input, {
+  return stripEmojiCharacters(sanitizeHtml(input, {
     allowedTags: [],       // Aucune balise autorisée
     allowedAttributes: {}  // Aucun attribut autorisé
-  });
+  }));
+}
+
+function stripEmojiCharacters(input) {
+  if (!input) return '';
+  return String(input)
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .replace(/[\uFE0F\u200D]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
+const PROMOTIONAL_MARKERS = [
+  /want to learn more/i,
+  /check out\s+ai\s*&?\s*big data expo/i,
+  /ai news is powered by/i,
+  /techforge media/i,
+  /\badvertisement\b/i,
+  /\bsponsored\b/i,
+  /\baffiliate\b/i,
+  /\bpromo(?:tion| code)?\b/i,
+  /\bnewsletter\b/i,
+  /\bsubscribe\b/i,
+  /\bshop now\b/i,
+  /\bbuy now\b/i,
+  /\bpublicit[eé]\b/i,
+  /\bvotre contenu continue ci-dessous\b/i,
+  /\bcommentaires?\b/i,
+  /\bavis\b/i,
+  /\btoute l['’]actu en un clin d['’]oeil\b/i,
+  /\badvertisement\.?\s*scroll to continue reading\b/i,
+  /\brelated\b/i
+];
+
+function isPromotionalContent(text) {
+  const normalized = stripEmojiCharacters(sanitizeText(text || '')).toLowerCase();
+  if (!normalized) return false;
+  return PROMOTIONAL_MARKERS.some((pattern) => pattern.test(normalized));
+}
+
+function cleanupNoiseText(input) {
+  if (!input) return '';
+  return stripEmojiCharacters(String(input)
+    .replace(/\bcomments?\s*0\b/gi, ' ')
+    .replace(/\b0\s*comments?\b/gi, ' ')
+    .replace(/\bcommentaires?\s*0\b/gi, ' ')
+    .replace(/\b0\s*commentaires?\b/gi, ' ')
+    .replace(/\bcomments?\b/gi, ' ')
+    .replace(/\bcommentaires?\b/gi, ' ')
+    .replace(/\bavis\b/gi, ' ')
+    .replace(/\btoute l['’]actu en un clin d['’]oeil\b/gi, ' ')
+    .replace(/\bpublicit[eé]\b/gi, ' ')
+    .replace(/\b(votre contenu continue ci-dessous)\b/gi, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim());
+}
+
+function trimPromotionalTailText(input) {
+  if (!input) return '';
+  const lines = String(input)
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (lines.length === 0) return '';
+
+  let cutIndex = -1;
+  const minIndex = Math.floor(lines.length * 0.45);
+  for (let i = minIndex; i < lines.length; i++) {
+    if (isPromotionalContent(lines[i])) {
+      cutIndex = i;
+      break;
+    }
+  }
+  const kept = cutIndex >= 0 ? lines.slice(0, cutIndex) : lines;
+  return cleanupNoiseText(kept.join('\n'));
+}
+
+function cleanupNoiseHtml(input) {
+  if (!input) return '';
+  const cleaned = String(input)
+    .replace(/<p[^>]*>\s*(comments?\s*0|0\s*comments?|commentaires?\s*0|0\s*commentaires?)\s*<\/p>/gi, '')
+    .replace(/<p[^>]*>\s*(comments?|commentaires?|avis)\s*<\/p>/gi, '')
+    .replace(/<p[^>]*>\s*(toute l['’]actu en un clin d['’]oeil)\s*<\/p>/gi, '')
+    .replace(/<p[^>]*>\s*(advertisement\.?\s*scroll to continue reading\.?)\s*<\/p>/gi, '')
+    .replace(/<div[^>]*>\s*<p[^>]*>\s*<span[^>]*>\s*advertisement\.?\s*scroll to continue reading\.?\s*<\/span>\s*<\/p>\s*<\/div>/gi, '')
+    .replace(/<p[^>]*>\s*(publicit[eé]|votre contenu continue ci-dessous)\s*<\/p>/gi, '')
+    .replace(/<div[^>]*>\s*(<p[^>]*>\s*(publicit[eé]|votre contenu continue ci-dessous)\s*<\/p>\s*)+<\/div>/gi, '')
+    .trim();
+  return trimPromotionalTailHtml(stripEmojiCharacters(cleaned));
+}
+
+function isLikelyBoilerplateExtraction(text) {
+  const haystack = String(text || '').toLowerCase();
+  if (!haystack) return true;
+  const boilerplateMarkers = [
+    'navigation menu',
+    'skip to content',
+    'saved searches',
+    'provide feedback',
+    'you must be signed in',
+    'appearance settings'
+  ];
+  const markerHits = boilerplateMarkers.filter((m) => haystack.includes(m)).length;
+  return markerHits >= 2;
+}
+
+function extractGitHubMainContent(document) {
+  if (!document) return null;
+  const selectors = [
+    '#readme article.markdown-body',
+    'article.markdown-body',
+    '[data-testid="readme"] article',
+    '.markdown-body'
+  ];
+  for (const selector of selectors) {
+    const node = document.querySelector(selector);
+    if (!node) continue;
+    const text = sanitizeText(node.textContent || '');
+    if (text.length < 120) continue;
+    return {
+      title: sanitizeText(document.title || 'GitHub Repository'),
+      content: node.innerHTML,
+      textContent: text
+    };
+  }
+  return null;
+}
+
+function trimPromotionalTailHtml(input) {
+  if (!input) return '';
+  try {
+    const dom = new JSDOM(`<body>${input}</body>`);
+    const body = dom.window.document.body;
+    const blocks = Array.from(body.querySelectorAll('p, div, section, article, aside, ul, ol, figure'))
+      .filter((el) => (el.textContent || '').trim().length > 0);
+    if (blocks.length > 0) {
+      const minIndex = Math.floor(blocks.length * 0.45);
+      for (let i = minIndex; i < blocks.length; i++) {
+        const block = blocks[i];
+        if (!isPromotionalContent(block.textContent || '')) continue;
+        const parent = block.parentElement || body;
+        let cursor = block;
+        while (cursor) {
+          const next = cursor.nextElementSibling;
+          cursor.remove();
+          cursor = next;
+        }
+        // Prune empty wrappers after trimming tail.
+        let wrapper = parent;
+        while (wrapper && wrapper !== body) {
+          const hasText = (wrapper.textContent || '').trim().length > 0;
+          const hasElementChildren = wrapper.children && wrapper.children.length > 0;
+          if (hasText || hasElementChildren) break;
+          const nextWrapper = wrapper.parentElement;
+          wrapper.remove();
+          wrapper = nextWrapper;
+        }
+        break;
+      }
+    }
+    body.querySelectorAll('aside, .ad, .ads, .advert, .sponsor, [class*="sponsor"], [id*="sponsor"], [class*="advert"], [id*="advert"]').forEach((el) => el.remove());
+    return stripEmojiCharacters(body.innerHTML.trim());
+  } catch (_) {
+    return stripEmojiCharacters(String(input).trim());
+  }
 }
 
 
@@ -340,6 +504,21 @@ function smartTruncate(text, maxLength) {
 
   // En dernier recours, couper brutalement avec "..."
   return truncated.trim() + '...';
+}
+
+function containsOpenClawSignal(text) {
+  if (!text) return false;
+  return /\bopenclaw\b/i.test(text);
+}
+
+function enrichArticleTags(baseTags, category, title, summary) {
+  const uniqueTags = Array.from(new Set((baseTags || []).filter(Boolean)));
+  const eligibleCategory = category === 'ai' || category === 'cybersecurity';
+  const combined = `${title || ''}\n${summary || ''}`;
+  if (eligibleCategory && containsOpenClawSignal(combined) && !uniqueTags.includes('OpenClaw')) {
+    uniqueTags.unshift('OpenClaw');
+  }
+  return uniqueTags;
 }
 
 
@@ -522,7 +701,8 @@ function deduplicateArticles(articles) {
  */
 async function processArticle(article, sourceName, tags, category, feedLang) {
   // Nettoyer le résumé (supprimer le HTML)
-  const rawSummary = sanitizeText(article.contentSnippet) || '';
+  const rawSummary = cleanupNoiseText(sanitizeText(article.contentSnippet) || '');
+  let computedSummary = rawSummary;
   const articleUrl = article.link;
 
   // Créer un hash MD5 unique pour l'article (basé sur l'URL)
@@ -540,6 +720,59 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   }
   const lang = detectedLang || feedLang || 'en';
 
+  const writeFallbackLocalArticle = () => {
+    const safeTitle = sanitizeText(article.title) || 'Untitled';
+    const safeSummary = smartTruncate(cleanupNoiseText(rawSummary || ''), 1200) || 'Summary unavailable for this article.';
+    const fallbackHtml = `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+<meta charset="UTF-8">
+<title>${safeTitle}</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>${safeTitle}</h1>
+  <div class="metadata">
+    Source: ${sourceName} | Date: ${new Date(article.pubDate || Date.now()).toLocaleDateString()} ${new Date(article.pubDate || Date.now()).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
+    <a href="${articleUrl}" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p>${safeSummary}</p>
+    <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>`;
+    fs.writeFileSync(localPath, fallbackHtml);
+  };
+
   // Essayer de récupérer et sauvegarder le contenu complet
   if (!fs.existsSync(localPath)) {
     try {
@@ -552,75 +785,129 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
       // Créer un DOM virtuel pour manipuler le HTML
       const dom = new JSDOM(response.data, { url: articleUrl });
 
-      // Utiliser Readability pour extraire le contenu principal
-      // (même technologie que le mode lecture de Firefox)
-      const reader = new Readability(dom.window.document);
-      const articleContent = reader.parse();
+      let articleContent = null;
+
+      // Cas spécial GitHub : extraire uniquement le README / contenu projet,
+      // jamais le menu/navigation complet de la page.
+      const host = (() => {
+        try { return new URL(articleUrl).hostname.toLowerCase(); } catch (_) { return ''; }
+      })();
+      const isGitHubHost = host === 'github.com' || host === 'www.github.com';
+      if (isGitHubHost) {
+        articleContent = extractGitHubMainContent(dom.window.document);
+      }
+
+      // Fallback générique via Readability.
+      if (!articleContent) {
+        const reader = new Readability(dom.window.document);
+        articleContent = reader.parse();
+      }
 
       if (articleContent && articleContent.textContent) {
+        if (isLikelyBoilerplateExtraction(articleContent.textContent)) {
+          writeFallbackLocalArticle();
+        } else {
+        if (!computedSummary || computedSummary.trim().length < 20) {
+          computedSummary = trimPromotionalTailText(cleanupNoiseText(sanitizeText(articleContent.textContent.slice(0, 1400))));
+        }
         // Détecter la langue depuis le contenu complet si pas encore fait
         if (!detectedLang) {
           detectedLang = detectLang(articleContent.textContent.slice(0, 500));
         }
 
         // Créer une page HTML propre avec le contenu
+        const sanitizedMainContent = cleanupNoiseHtml(sanitizeHtml(articleContent.content, {
+          allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
+          allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'] }
+        }));
         const cleanHtml = `<!DOCTYPE html>
 <html lang="${lang}">
 <head>
 <meta charset="UTF-8">
 <title>${sanitizeText(articleContent.title)}</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>${sanitizeText(articleContent.title)}</h1>
   <div class="metadata">
-    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} | Lang: ${lang.toUpperCase()} |
+    Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} ${new Date(article.pubDate).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
     <a href="${articleUrl}" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    ${sanitizeHtml(articleContent.content, {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img']),
-      allowedAttributes: { ...sanitizeHtml.defaults.allowedAttributes, img: ['src', 'alt'] }
-    })}
+    ${sanitizedMainContent}
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>`;
 
         // Sauvegarder le fichier HTML localement
         fs.writeFileSync(localPath, cleanHtml);
+        }
       }
     } catch (e) {
       console.error(`    Could not extract content for: ${articleUrl}`);
+      // Toujours générer une page locale de secours pour garder un comportement uniforme.
+      writeFallbackLocalArticle();
     }
+  }
+
+  // Sécurité: si aucune page n'existe encore (cas parse vide sans throw), générer un fallback.
+  if (!fs.existsSync(localPath)) {
+    writeFallbackLocalArticle();
   }
 
   // Vérifier si on a un fichier local
   const hasLocalContent = fs.existsSync(localPath);
 
-  // Utiliser le lien local si disponible, sinon le lien original
-  const finalReaderLink = hasLocalContent ? relativeLink : articleUrl;
+  // Le reader doit toujours ouvrir la version locale rendue.
+  const finalReaderLink = relativeLink;
 
   // Retourner l'objet article traité
+  const normalizedTags = enrichArticleTags(tags, category, article.title || '', rawSummary || '');
+  const safeSummary = smartTruncate(trimPromotionalTailText(cleanupNoiseText((computedSummary || '').trim())) || sanitizeText(article.title) || 'Summary unavailable.');
   return {
     title: (sanitizeText(article.title) || 'Untitled').slice(0, 200),
     link: finalReaderLink,
     originalLink: articleUrl, // Always set to ensure RSS feeds have valid external URLs
     pubDate: new Date(article.pubDate || Date.now()),
     source: sourceName,
-    tags: tags,
+    tags: normalizedTags,
     category: category,
     lang: detectedLang || feedLang || 'en',
-    summary: smartTruncate(rawSummary),
+    summary: safeSummary,
     hasLocalContent: hasLocalContent
   };
 }
@@ -652,7 +939,7 @@ async function aggregateCategory(categoryName, feeds) {
     return [];
   }
 
-  const limit = SETTINGS.articlesPerFeed || 15; // Nombre d'articles par source
+  const limit = SETTINGS.articlesPerFeed || 80; // Nombre d'articles par source
 
   // Traitement en parallèle des sources pour accélérer l'agrégation globale.
   const results = await Promise.allSettled(
@@ -677,8 +964,16 @@ async function aggregateCategory(categoryName, feeds) {
     .filter(r => r.status === 'fulfilled')
     .flatMap(r => r.value);
 
-  // Trier par date (plus récent en premier)
-  const sorted = articles.sort((a, b) => b.pubDate - a.pubDate);
+  // Trier par priorité métier puis date.
+  // Pour AI/Cybersécurité, OpenClaw doit remonter en haut de catégorie.
+  const sorted = articles.sort((a, b) => {
+    if (categoryName === 'ai' || categoryName === 'cybersecurity') {
+      const aBoost = Array.isArray(a.tags) && a.tags.includes('OpenClaw') ? 1 : 0;
+      const bBoost = Array.isArray(b.tags) && b.tags.includes('OpenClaw') ? 1 : 0;
+      if (bBoost !== aBoost) return bBoost - aBoost;
+    }
+    return b.pubDate - a.pubDate;
+  });
 
   // Dédupliquer et retourner
   return deduplicateArticles(sorted);
@@ -756,7 +1051,7 @@ const README_FOOTER = `
  */
 function generateREADME(categorizedArticles) {
   let readme = README_HEADER;
-  const maxArticles = SETTINGS.maxArticlesPerCategory || 30;
+  const maxArticles = SETTINGS.maxArticlesPerCategory || 80;
 
   // Parcourir chaque catégorie
   for (const [category, articles] of Object.entries(categorizedArticles)) {
@@ -780,11 +1075,14 @@ function generateREADME(categorizedArticles) {
       const tags = article.tags.map(t => `\`${t}\``).join(' ');
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const alsoOn = article.alsoPublishedOn ? ` | *Also on: ${article.alsoPublishedOn.join(', ')}*` : '';
+      const summaryText = (article.summary && String(article.summary).trim().length > 0)
+        ? article.summary
+        : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'));
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
       readme += `### ${index + 1}. ${langBadge} [${article.title}](${article.link})\n`;
       readme += `**Source:** ${article.source} | **Tags:** ${tags}${alsoOn}\n`;
-      readme += `${article.summary}\n\n`;
+      readme += `${summaryText}\n\n`;
       readme += `</div>\n\n`;
     });
 
@@ -1023,6 +1321,22 @@ async function sendEmailDigests(categorizedArticles) {
   console.error(`\nEmail digest summary: ${sentCount} sent, ${failedCount} failed`);
 }
 
+function writeArticleMap(categorizedArticles) {
+  try {
+    const allArticles = Object.values(categorizedArticles).flat();
+    const map = {};
+    for (const article of allArticles) {
+      if (!article || !article.originalLink || !article.link) continue;
+      if (!String(article.link).startsWith('data/articles/')) continue;
+      map[String(article.originalLink)] = String(article.link);
+    }
+    const mapPath = path.join(__dirname, '..', 'data', 'article-map.json');
+    fs.writeFileSync(mapPath, JSON.stringify(map, null, 2));
+  } catch (error) {
+    console.error(`Article map generation failed: ${error.message}`);
+  }
+}
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FONCTION PRINCIPALE
@@ -1067,6 +1381,9 @@ async function main() {
   // Générer et afficher le README (sera capturé par le workflow)
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
+
+  // Générer la table de correspondance URL source -> article local rendu.
+  writeArticleMap(categorizedArticles);
 
   // Générer les flux RSS sans bloquer la publication du README en cas d'erreur.
   try {
@@ -1125,5 +1442,17 @@ async function main() {
   console.error('\nAggregation complete!');
 }
 
-// Lancer le script
-main().catch(console.error);
+if (require.main === module) {
+  // Lancer le script
+  main().catch(console.error);
+}
+
+module.exports = {
+  stripEmojiCharacters,
+  isPromotionalContent,
+  trimPromotionalTailText,
+  cleanupNoiseText,
+  trimPromotionalTailHtml,
+  cleanupNoiseHtml,
+  writeArticleMap
+};

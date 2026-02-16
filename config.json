@@ -1,7 +1,7 @@
 {
   "settings": {
-    "articlesPerFeed": 15,
-    "maxArticlesPerCategory": 30,
+    "articlesPerFeed": 80,
+    "maxArticlesPerCategory": 80,
     "summaryMaxLength": 600,
     "deduplication": {
       "enabled": true,
@@ -18,7 +18,6 @@
         { "name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "tags": ["AI", "Startups", "Tech"], "lang": "en" },
         { "name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/", "tags": ["AI", "Enterprise", "Business"], "lang": "en" },
         { "name": "AI News", "url": "https://www.artificialintelligence-news.com/feed/", "tags": ["AI", "News", "Industry"], "lang": "en" },
-        { "name": "Google AI Blog", "url": "https://ai.googleblog.com/feeds/posts/default", "tags": ["AI", "Research", "Google"], "lang": "en" },
         { "name": "MIT Technology Review", "url": "https://www.technologyreview.com/feed/", "tags": ["AI", "Research", "Innovation"], "lang": "en" },
         { "name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "tags": ["AI", "LLM", "GPT"], "lang": "en" },
         { "name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "tags": ["AI", "ML", "Open Source"], "lang": "en" },
@@ -42,7 +41,6 @@
         { "name": "SecurityWeek", "url": "https://www.securityweek.com/feed/", "tags": ["Security", "CVE", "News"], "lang": "en" },
         { "name": "Threatpost", "url": "https://threatpost.com/feed/", "tags": ["Security", "Threats", "CVE"], "lang": "en" },
         { "name": "Penta Security", "url": "https://www.pentasecurity.com/blog/feed/", "tags": ["Security", "WAF", "Encryption"], "lang": "en" },
-        { "name": "Google Project Zero", "url": "https://googleprojectzero.blogspot.com/feeds/posts/default", "tags": ["Security", "0day", "Research"], "lang": "en" },
         { "name": "PortSwigger Research", "url": "https://portswigger.net/research/rss", "tags": ["Security", "WebSec", "Research"], "lang": "en" },
         { "name": "HackerOne Blog", "url": "https://www.hackerone.com/blog.rss", "tags": ["Bug Bounty", "Security", "Hacking"], "lang": "en" },
         { "name": "Bugcrowd Blog", "url": "https://www.bugcrowd.com/blog/feed", "tags": ["Bug Bounty", "Security", "Pentesting"], "lang": "en" },
@@ -153,7 +151,6 @@
       "priority": 9,
       "feeds": [
         { "name": "MarketWatch", "url": "https://feeds.marketwatch.com/marketwatch/topstories/", "tags": ["Finance", "Markets", "Stocks"], "lang": "en" },
-        { "name": "Yahoo Finance", "url": "https://finance.yahoo.com/rss/", "tags": ["Finance", "Markets", "Economy"], "lang": "en" },
         { "name": "Reuters Business", "url": "https://www.reuters.com/business/finance/rss", "tags": ["Finance", "Business", "Global"], "lang": "en" },
         { "name": "Investing.com", "url": "https://www.investing.com/rss/news.rss", "tags": ["Finance", "Trading", "Markets"], "lang": "en" },
         { "name": "Zonebourse", "url": "https://www.zonebourse.com/rss/", "tags": ["Bourse", "Actions", "Finance"], "lang": "fr" },
