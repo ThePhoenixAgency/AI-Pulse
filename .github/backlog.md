@@ -11,6 +11,9 @@
 - **Reste à faire** :
   - Ajouter un test CI dédié qui simule une source cassée et vérifie que des articles restent publiés.
   - Vérifier sur un run GitHub Actions complet (logs + README publié).
+  - Ajouter un contrôle d'intégrité des sections bilingues côté templates et parser de soumission.
+  - Ajouter un test navigateur local (`file://`) pour valider le fallback iframe de `readme-viewer`.
+  - Ajouter un test UI dédié pour s'assurer que la barre titre article reste masquée dans `reader.html`.
 
 ### B. Flux dépendances automatique (EN COURS)
 - **Objectif** : aligner le pipeline auto sur `dependencies -> main` sans conflits.
@@ -21,6 +24,14 @@
 - **Reste à faire** :
   - Confirmer le merge auto bout-en-bout en production (checks + auto-merge).
   - Nettoyer les checks historiques legacy encore visibles.
+
+### C. Soumissions bilingues (EN COURS)
+- **Objectif** : Garantir un texte FR/EN homogène sur les formulaires de soumission.
+- **Fait** :
+  - Templates `subscribe` et `new-source` harmonisés FR/EN.
+  - Parser `manage-subscriber` rendu tolérant aux variantes de libellés FR/EN.
+- **Reste à faire** :
+  - Ajouter un test automatique qui valide la correspondance labels template ↔ mapping workflow.
 
 ## 🔴 PROBLÈMES CRITIQUES À CORRIGER
 

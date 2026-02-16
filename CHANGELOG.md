@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Privacy: test to enforce header logo uses `./assets/logo_final.png`
 
 ### Changed
+- Reader: article info title bar is now permanently hidden to remove the white strip above embedded articles
+- Reader: added local `file://` fallback loader (hidden iframe to `README.md`) when fetch is blocked locally
 - Workflow: `update-ai-pulse.yml` now keeps previous README as fallback when aggregation fails or generated README is invalid
 - Aggregator: category-level isolation so one failing category does not block publication of others
 - Aggregator: RSS generation and email digest steps switched to non-blocking best-effort mode

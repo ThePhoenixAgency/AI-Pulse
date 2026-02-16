@@ -51,11 +51,11 @@
             background: var(--bg-primary);
             border-bottom: 1px solid var(--border-color);
             padding: 16px 24px;
-            display: none;
+            display: none !important;
         }
 
         .article-info-bar.visible {
-            display: block;
+            display: none !important;
         }
 
         .article-title-text {
@@ -385,8 +385,6 @@
             if (articleTitle) {
                 const titleEl = document.getElementById('articleTitleText');
                 if (titleEl) titleEl.textContent = decodeURIComponent(articleTitle);
-                const barEl = document.getElementById('articleInfoBar');
-                if (barEl) barEl.classList.add('visible');
             }
 
             if (articleSource) {
@@ -394,8 +392,6 @@
                 if (sourceEl) {
                     // Use textContent for safety, prepend emoji
                     sourceEl.textContent = `📰 ${decodeURIComponent(articleSource)}`;
-                    const barEl = document.getElementById('articleInfoBar');
-                    if (barEl) barEl.classList.add('visible');
                 }
             }
 

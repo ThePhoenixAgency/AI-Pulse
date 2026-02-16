@@ -1192,6 +1192,33 @@
             try {
                 let markdown = '';
 
+                const loadMarkdownViaLocalIframe = () => new Promise((resolve, reject) => {
+                    const frame = document.createElement('iframe');
+                    frame.style.display = 'none';
+                    frame.setAttribute('aria-hidden', 'true');
+                    frame.src = './README.md';
+                    frame.onload = () => {
+                        try {
+                            const doc = frame.contentDocument || frame.contentWindow?.document;
+                            const text = doc?.body?.innerText || doc?.documentElement?.innerText || '';
+                            frame.remove();
+                            if (text && text.trim().length > 0) {
+                                resolve(text);
+                            } else {
+                                reject(new Error('Local iframe README empty'));
+                            }
+                        } catch (e) {
+                            frame.remove();
+                            reject(e);
+                        }
+                    };
+                    frame.onerror = () => {
+                        frame.remove();
+                        reject(new Error('Local iframe README failed'));
+                    };
+                    document.body.appendChild(frame);
+                });
+
                 const fetchWithTimeout = async (resource, options = {}) => {
                     const { timeout = 2000 } = options;
                     const controller = new AbortController();
@@ -1209,12 +1236,17 @@
                         throw new Error('Local fetch failed');
                     }
                 } catch (e) {
-                    console.log('Local README fetch failed, falling back to GitHub API...');
-                    const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
-                        headers: { 'Accept': 'application/vnd.github.v3.raw' }
-                    });
-                    if (!apiResponse.ok) throw new Error('All fetches failed');
-                    markdown = await apiResponse.text();
+                    console.log('Local README fetch failed, trying local iframe fallback...');
+                    try {
+                        markdown = await loadMarkdownViaLocalIframe();
+                    } catch (iframeError) {
+                        console.log('Local iframe fallback failed, falling back to GitHub API...');
+                        const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
+                            headers: { 'Accept': 'application/vnd.github.v3.raw' }
+                        });
+                        if (!apiResponse.ok) throw new Error('All fetches failed');
+                        markdown = await apiResponse.text();
+                    }
                 }
 
                 let rawHtml = marked.parse(markdown);
