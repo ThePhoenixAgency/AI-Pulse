@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -30,23 +35,23 @@
 </h2>
 
 <blockquote>
-<p>🎯 Learning Objective: Successfully create and configure your first AI Agent and perform basic conversational interactions</p>
+<p> Learning Objective: Successfully create and configure your first AI Agent and perform basic conversational interactions</p>
 </blockquote>
 
 <h2>
   <a name="what-is-an-agent" href="#what-is-an-agent">
   </a>
-  🤖 <strong>What Is an Agent?</strong>
+   <strong>What Is an Agent?</strong>
 </h2>
 
 <p>In OpenClaw, an Agent is an AI instance with a unique identity, memory, and capabilities. Each Agent functions like a dedicated AI assistant that can:</p>
 
 <ul>
-<li>🧠 Maintain independent memory and learning capabilities</li>
-<li>🛠️ Use a specific set of tools</li>
-<li>📁 Manage its own workspace</li>
-<li>💬 Interact with users across different channels</li>
-<li>🎯 Focus on specific task domains</li>
+<li> Maintain independent memory and learning capabilities</li>
+<li> Use a specific set of tools</li>
+<li> Manage its own workspace</li>
+<li> Interact with users across different channels</li>
+<li> Focus on specific task domains</li>
 </ul>
 
 
@@ -55,7 +60,7 @@
 <h2>
   <a name="agent-configuration-structure" href="#agent-configuration-structure">
   </a>
-  🏗️ <strong>Agent Configuration Structure</strong>
+   <strong>Agent Configuration Structure</strong>
 </h2>
 
 <h3>
@@ -122,37 +127,37 @@
 <tbody>
 <tr>
 <td><code>id</code></td>
-<td>✅</td>
+<td></td>
 <td>Unique Agent identifier</td>
 <td>"main", "coding-assistant"</td>
 </tr>
 <tr>
 <td><code>name</code></td>
-<td>❌</td>
+<td></td>
 <td>Display name</td>
 <td>"Coding Helper", "Life Manager"</td>
 </tr>
 <tr>
 <td><code>model</code></td>
-<td>✅</td>
+<td></td>
 <td>AI model</td>
 <td>"anthropic/claude-sonnet-4"</td>
 </tr>
 <tr>
 <td><code>systemPrompt</code></td>
-<td>❌</td>
+<td></td>
 <td>System prompt</td>
 <td>Defines the Agent's role and behavior</td>
 </tr>
 <tr>
 <td><code>workspace.root</code></td>
-<td>❌</td>
+<td></td>
 <td>Working directory</td>
 <td>"./agents/coding"</td>
 </tr>
 <tr>
 <td><code>tools.allowlist</code></td>
-<td>❌</td>
+<td></td>
 <td>Tool allowlist</td>
 <td>["read", "write", "exec"]</td>
 </tr>
@@ -165,7 +170,7 @@
 <h2>
   <a name="handson-creating-your-first-agent" href="#handson-creating-your-first-agent">
   </a>
-  🎯 <strong>Hands-On: Creating Your First Agent</strong>
+   <strong>Hands-On: Creating Your First Agent</strong>
 </h2>
 
 <h3>
@@ -177,10 +182,10 @@
 <p>Let's create a "Personal Assistant" Agent with these capabilities:</p>
 
 <ul>
-<li>📅 Schedule management and reminders</li>
-<li>📝 Note-taking and organization</li>
-<li>🌐 Information search and summarization</li>
-<li>💻 Basic file operations</li>
+<li> Schedule management and reminders</li>
+<li> Note-taking and organization</li>
+<li> Information search and summarization</li>
+<li> Basic file operations</li>
 </ul>
 
 <h3>
@@ -307,10 +312,10 @@
 <pre><code><span># SOUL.md — Personal Assistant Personality</span>
 
 <span>## Core Traits</span>
-<span>-</span> 🎯 <span>**Proactive**</span>: Anticipates user needs and offers helpful suggestions
-<span>-</span> 🧠 <span>**Smart &amp; Efficient**</span>: Quickly understands instructions, provides precise solutions
-<span>-</span> 😊 <span>**Friendly &amp; Thoughtful**</span>: Warm communication style, cares about the user
-<span>-</span> 🔒 <span>**Trustworthy**</span>: Protects privacy, executes tasks reliably
+<span>-</span>  <span>**Proactive**</span>: Anticipates user needs and offers helpful suggestions
+<span>-</span>  <span>**Smart &amp; Efficient**</span>: Quickly understands instructions, provides precise solutions
+<span>-</span>  <span>**Friendly &amp; Thoughtful**</span>: Warm communication style, cares about the user
+<span>-</span>  <span>**Trustworthy**</span>: Protects privacy, executes tasks reliably
 
 <span>## Communication Style</span>
 <span>-</span> Uses concise, clear language
@@ -444,7 +449,7 @@
 <h2>
   <a name="launch-and-test-the-agent" href="#launch-and-test-the-agent">
   </a>
-  🚀 <strong>Launch and Test the Agent</strong>
+   <strong>Launch and Test the Agent</strong>
 </h2>
 
 <h3>
@@ -562,7 +567,7 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
     </span><span>{</span><span>
       </span><span>"message"</span><span>:</span><span> </span><span>{</span><span>
         </span><span>"role"</span><span>:</span><span> </span><span>"assistant"</span><span>,</span><span>
-        </span><span>"content"</span><span>:</span><span> </span><span>"Hello! 😊 I'm your personal assistant AI. I can help you with:</span><span>\n\n</span><span>📅 **Scheduling**: Arrange meetings, set reminders</span><span>\n</span><span>📝 **Information**: Search and organize documents</span><span>\n</span><span>💻 **File Management**: Create, edit, and manage files</span><span>\n</span><span>🔍 **Research**: Search the web and summarize findings</span><span>\n\n</span><span>I'll remember our conversations and your preferences to provide increasingly personalized service. How can I help you?"</span><span>
+        </span><span>"content"</span><span>:</span><span> </span><span>"Hello!  I'm your personal assistant AI. I can help you with:</span><span>\n\n</span><span> **Scheduling**: Arrange meetings, set reminders</span><span>\n</span><span> **Information**: Search and organize documents</span><span>\n</span><span> **File Management**: Create, edit, and manage files</span><span>\n</span><span> **Research**: Search the web and summarize findings</span><span>\n\n</span><span>I'll remember our conversations and your preferences to provide increasingly personalized service. How can I help you?"</span><span>
       </span><span>}</span><span>
     </span><span>}</span><span>
   </span><span>]</span><span>
@@ -590,7 +595,7 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
 <h2>
   <a name="basic-conversation-tests" href="#basic-conversation-tests">
   </a>
-  💬 <strong>Basic Conversation Tests</strong>
+   <strong>Basic Conversation Tests</strong>
 </h2>
 
 <h3>
@@ -704,7 +709,7 @@ curl <span>-X</span> POST http://localhost:18789/v1/chat/completions <span>\</sp
 <h2>
   <a name="integrate-with-telegram-bot-optional" href="#integrate-with-telegram-bot-optional">
   </a>
-  📱 <strong>Integrate with Telegram Bot (Optional)</strong>
+   <strong>Integrate with Telegram Bot (Optional)</strong>
 </h2>
 
 <h3>
@@ -829,7 +834,7 @@ openclaw gateway restart
 <h2>
   <a name="tool-usage-examples" href="#tool-usage-examples">
   </a>
-  🛠️ <strong>Tool Usage Examples</strong>
+   <strong>Tool Usage Examples</strong>
 </h2>
 
 <h3>
@@ -926,7 +931,7 @@ memory_update<span>(</span><span>"User preferences"</span>, <span>"Beverages: Li
 <h2>
   <a name="troubleshooting" href="#troubleshooting">
   </a>
-  ❗ <strong>Troubleshooting</strong>
+   <strong>Troubleshooting</strong>
 </h2>
 
 <h3>
@@ -1116,7 +1121,7 @@ Add the required tool to <code>tools.allowlists</code>:<br />
 <h2>
   <a name="agent-optimization-tips" href="#agent-optimization-tips">
   </a>
-  🎯 <strong>Agent Optimization Tips</strong>
+   <strong>Agent Optimization Tips</strong>
 </h2>
 
 <h3>
@@ -1206,7 +1211,7 @@ Add the required tool to <code>tools.allowlists</code>:<br />
 <h2>
   <a name="monitoring-and-logging" href="#monitoring-and-logging">
   </a>
-  📊 <strong>Monitoring and Logging</strong>
+   <strong>Monitoring and Logging</strong>
 </h2>
 
 <h3>
@@ -1280,7 +1285,7 @@ openclaw stats personal-assistant
 <h2>
   <a name="chapter-summary" href="#chapter-summary">
   </a>
-  ✅ <strong>Chapter Summary</strong>
+   <strong>Chapter Summary</strong>
 </h2>
 
 <p>After this chapter, you should have:</p>
@@ -1301,7 +1306,7 @@ openclaw stats personal-assistant
 <h2>
   <a name="next-steps" href="#next-steps">
   </a>
-  🚀 <strong>Next Steps</strong>
+   <strong>Next Steps</strong>
 </h2>
 
 <p>Congratulations! You now have a working AI Agent. Next, you can:</p>
@@ -1314,7 +1319,7 @@ openclaw stats personal-assistant
 <h2>
   <a name="practice-exercises" href="#practice-exercises">
   </a>
-  📝 <strong>Practice Exercises</strong>
+   <strong>Practice Exercises</strong>
 </h2>
 
 <ol>
@@ -1330,7 +1335,7 @@ openclaw stats personal-assistant
 <strong>Error Handling</strong>: Deliberately introduce bad configurations and practice troubleshooting</li>
 </ol>
 
-<p><strong>Ready to explore more advanced features?</strong> 🎯</p>
+<p><strong>Ready to explore more advanced features?</strong> </p>
 
 
             </div></div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Google patches a critical Chrome vulnerability already being exploited in the wild</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
+</style>
+</head>
+<body>
+  <h1>Google patches a critical Chrome vulnerability already being exploited in the wild</h1>
+  <div class="metadata">
+    Source: Neowin | Date: 2/16/2026 | Lang: EN |
+    <a href="https://www.neowin.net/news/google-patches-a-critical-chrome-vulnerability-already-being-exploited-in-the-wild/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+                                                    <span>When you purchase through links on our site, we may earn an affiliate commission. <a href="https://www.neowin.net/terms">Here’s how it works</a>.</span>
+                        
+                        
+                        <h5>
+                             Google patches a critical Chrome vulnerability already under attack by hackers. Users should update their browsers immediately.
+                        </h5>
+
+                        <p>
+    <span>
+            <a href="https://www.neowin.net/profile/723061-ivan-jenic/">Ivan Jenic</a>
+        <span></span>
+        <span>Neowin</span>
+        <a href="https://www.twitter.com/ivan_jenic">@ivan_jenic</a>        ·
+    </span>
+    <time>
+    Feb 16, 2026 06:24 EST
+    </time>
+            
+    
+    
+    </p>
+
+                    </div><div>
+                                                                        <figure><a href="https://cdn.neowin.com/news/images/uploaded/2026/02/1771240145_google_chrome_vulnerability.webp"><img alt="Google Chrome vulnerability" src="https://cdn.neowin.com/news/images/uploaded/2026/02/1771240145_google_chrome_vulnerability_story.webp" /></a></figure>
+
+<p>Google recently patched a serious zero-day vulnerability in Chrome that could allow attackers to execute malicious code within the browser’s sandbox.</p>
+
+<p>The vulnerability, tracked as CVE-2026-2441, was discovered and reported by security researcher Shaheen Fazim on February 11. Google quickly released the security fix two days later, on Friday. This vulnerability is a high-severity use-after-free bug, with a CVSS score of 8.8.</p>
+
+<p>A use-after-free occurs when Chrome attempts to access memory that has already been freed or deleted. This process leaves empty memory space that allows attackers to manipulate it and execute malicious code.</p>
+
+                            
+            <p>This particular vulnerability targets the part of Chrome that deals with CSS, more precisely, the CSSFontFeatureValuesMap engine for handling advanced fonts. Hackers can create a sneaky web page, possibly featuring special fonts, that could trick the browser into running their malicious code. The worst part is that a potential exploit doesn’t require you to click or download anything. Simply loading an infected web page could trigger the attack and run malicious code in Chrome’s memory.</p>
+
+<p>Google confirmed that the flaw is exploited "in the wild," which means that attackers are actively using it, though real-world cases weren't explicitly mentioned. The good news is that Chrome’s built-in sandbox limits the potential damage to some extent. Unlike<a href="https://www.neowin.net/news/microsoft-patches-notepad-flaw-that-could-let-attackers-hijack-windows-pcs/"> vulnerabilities inside native OS components</a>, this one doesn’t directly allow attackers to easily gain control over the entire computer, but they could very well access users’ browsing data, spy on open tabs, or try further tricks to escape the sandbox.</p>
+
+<p>Google released the patch for Chrome 145.0.7632.75/76 (Windows/macOS) and 144.0.7559.75 (Linux), with a gradual global rollout. Users are highly advised to update their browsers immediately. To update your Google Chrome version, go to <strong>Help </strong>&gt; <strong>About Google Chrome</strong> and check for updates. Once the update appears, wait for Chrome to install it, relaunch the browser, and you should be in the clear.</p>
+
+<p>You can check out the entire <a href="https://nvd.nist.gov/vuln/detail/cve-2026-2441">CVE-2026-2441 changelog on the National Vulnerability Database website</a>.</p>
+                        
+                        
+                                                                    </div></div>
+  </div>
+</body>
+</html>

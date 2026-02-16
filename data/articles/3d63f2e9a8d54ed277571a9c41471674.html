@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -42,15 +47,15 @@
   <a href="https://trendshift.io/repositories/20830"><img src="https://camo.githubusercontent.com/1955d7d654e34d2f53cb25301436996f83cafbad9d69d5a0df65356ca34af334/68747470733a2f2f7472656e6473686966742e696f2f6170692f62616467652f7265706f7369746f726965732f3230383330" alt="alibaba%2Fzvec | Trendshift" /></a>
 </p>
 <p>
-  <a href="https://zvec.org/en/docs/quickstart/">🚀 <strong>Quickstart</strong> </a> |
-  <a href="https://zvec.org/en/">🏠 <strong>Home</strong> </a> |
-  <a href="https://zvec.org/en/docs/">📚 <strong>Docs</strong> </a> |
-  <a href="https://zvec.org/en/docs/benchmarks/">📊 <strong>Benchmarks</strong> </a> |
-  <a href="https://discord.gg/rKddFBBu9z">🎮 <strong>Discord</strong> </a> |
-  <a href="https://x.com/zvec_ai">🐦 <strong>X (Twitter)</strong> </a>
+  <a href="https://zvec.org/en/docs/quickstart/"> <strong>Quickstart</strong> </a> |
+  <a href="https://zvec.org/en/"> <strong>Home</strong> </a> |
+  <a href="https://zvec.org/en/docs/"> <strong>Docs</strong> </a> |
+  <a href="https://zvec.org/en/docs/benchmarks/"> <strong>Benchmarks</strong> </a> |
+  <a href="https://discord.gg/rKddFBBu9z"> <strong>Discord</strong> </a> |
+  <a href="https://x.com/zvec_ai"> <strong>X (Twitter)</strong> </a>
 </p>
 <p><strong>Zvec</strong> is an open-source, in-process vector database — lightweight, lightning-fast, and designed to embed directly into applications. Built on <strong>Proxima</strong> (Alibaba's battle-tested vector search engine), it delivers production-grade, low-latency, scalable similarity search with minimal setup.</p>
-<p></p><h2>💫 Features</h2><a href="#-features"></a><p></p>
+<p></p><h2> Features</h2><a href="#-features"></a><p></p>
 <ul>
 <li><strong>Blazing Fast</strong>: Searches billions of vectors in milliseconds.</li>
 <li><strong>Simple, Just Works</strong>: <a href="#-installation">Install</a> and start searching in seconds. No servers, no config, no fuss.</li>
@@ -58,20 +63,20 @@
 <li><strong>Hybrid Search</strong>: Combine semantic similarity with structured filters for precise results.</li>
 <li><strong>Runs Anywhere</strong>: As an in-process library, Zvec runs wherever your code runs — notebooks, servers, CLI tools, or even edge devices.</li>
 </ul>
-<p></p><h2>📦 Installation</h2><a href="#-installation"></a><p></p>
+<p></p><h2> Installation</h2><a href="#-installation"></a><p></p>
 <p></p><h3><a href="https://pypi.org/project/zvec/">Python</a></h3><a href="#python"></a><p></p>
 <p><strong>Requirements</strong>: Python 3.10 - 3.12</p>
 <div><pre>pip install zvec</pre></div>
 <p></p><h3><a href="https://www.npmjs.com/package/@zvec/zvec">Node.js</a></h3><a href="#nodejs"></a><p></p>
 <div><pre>npm install @zvec/zvec</pre></div>
-<p></p><h3>✅ Supported Platforms</h3><a href="#-supported-platforms"></a><p></p>
+<p></p><h3> Supported Platforms</h3><a href="#-supported-platforms"></a><p></p>
 <ul>
 <li>Linux (x86_64, ARM64)</li>
 <li>macOS (ARM64)</li>
 </ul>
-<p></p><h3>🛠️ Building from Source</h3><a href="#️-building-from-source"></a><p></p>
+<p></p><h3> Building from Source</h3><a href="#-building-from-source"></a><p></p>
 <p>If you prefer to build Zvec from source, please check the <a href="https://zvec.org/en/docs/build/">Building from Source</a> guide.</p>
-<p></p><h2>⚡ One-Minute Example</h2><a href="#-one-minute-example"></a><p></p>
+<p></p><h2> One-Minute Example</h2><a href="#-one-minute-example"></a><p></p>
 <div><pre><span>import</span> <span>zvec</span>
 
 <span># Define collection schema</span>
@@ -97,16 +102,16 @@
 
 <span># Results: list of {'id': str, 'score': float, ...}, sorted by relevance</span>
 <span>print</span>(<span>results</span>)</pre></div>
-<p></p><h2>📈 Performance at Scale</h2><a href="#-performance-at-scale"></a><p></p>
+<p></p><h2> Performance at Scale</h2><a href="#-performance-at-scale"></a><p></p>
 <p>Zvec delivers exceptional speed and efficiency, making it ideal for demanding production workloads.</p>
 <p><a target="_blank" href="https://camo.githubusercontent.com/04f41c5eb156827e64769555ed83ead209c980b3185b99a00af73369ca7e9c65/68747470733a2f2f7a7665632e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f7170735f31304d2e737667"><img src="https://camo.githubusercontent.com/04f41c5eb156827e64769555ed83ead209c980b3185b99a00af73369ca7e9c65/68747470733a2f2f7a7665632e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f7170735f31304d2e737667" alt="Zvec Performance Benchmarks" /></a></p>
 <p>For detailed benchmark methodology, configurations, and complete results, please see our <a href="https://zvec.org/en/docs/benchmarks/">Benchmarks documentation</a>.</p>
-<p></p><h2>🤝 Join Our Community</h2><a href="#-join-our-community"></a><p></p>
+<p></p><h2> Join Our Community</h2><a href="#-join-our-community"></a><p></p>
 <div>
 <p>Stay updated and get support — scan or click:</p>
 
 </div>
-<p></p><h2>❤️ Contributing</h2><a href="#️-contributing"></a><p></p>
+<p></p><h2> Contributing</h2><a href="#-contributing"></a><p></p>
 <p>We welcome and appreciate contributions from the community! Whether you're fixing a bug, adding a feature, or improving documentation, your help makes Zvec better for everyone.</p>
 <p>Check out our <a href="https://github.com/alibaba/zvec/blob/main/CONTRIBUTING.md">Contributing Guide</a> to get started!</p>
 </article></div></div>

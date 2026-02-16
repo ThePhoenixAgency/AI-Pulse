@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -65,7 +70,7 @@
 									<ul></ul>
 								</li><li><a href="#acknowledgements">Acknowledgements</a>
 									<ul></ul>
-								</li></ul></nav></div><p>We're excited to announce that Transformers.js v4 (preview) is now available on NPM! After nearly a year of development (we started in March 2025 🤯), we're finally ready for you to test it out. Previously, users had to install v4 directly from source via GitHub, but now it's as simple as running a single command!</p>
+								</li></ul></nav></div><p>We're excited to announce that Transformers.js v4 (preview) is now available on NPM! After nearly a year of development (we started in March 2025 ), we're finally ready for you to test it out. Previously, users had to install v4 directly from source via GitHub, but now it's as simple as running a single command!</p>
 <pre><code>npm i @huggingface/transformers@next
 </code></pre>
 <p>We'll continue publishing v4 releases under the <code>next</code> tag on NPM until the full release, so expect regular updates!</p>

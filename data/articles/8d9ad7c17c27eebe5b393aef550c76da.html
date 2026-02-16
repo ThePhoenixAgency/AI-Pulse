@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -30,13 +35,13 @@
 </h2>
 
 <blockquote>
-<p>🎯 Learning Objective: Master OpenClaw's built-in tools, learn to install and use Skill packages, and create custom tools</p>
+<p> Learning Objective: Master OpenClaw's built-in tools, learn to install and use Skill packages, and create custom tools</p>
 </blockquote>
 
 <h2>
   <a name="tool-system-overview" href="#tool-system-overview">
   </a>
-  📚 <strong>Tool System Overview</strong>
+   <strong>Tool System Overview</strong>
 </h2>
 
 <p>OpenClaw's power lies in its rich tool ecosystem. Agents interact with the external world through tools to perform a wide variety of tasks.</p>
@@ -48,9 +53,9 @@
 </h3>
 
 <ul>
-<li>🔧 <strong>Built-in Tools</strong>: Core tools provided by OpenClaw</li>
-<li>🎨 <strong>Skills</strong>: Installable extension packages</li>
-<li>🛠️ <strong>Custom Tools</strong>: User-developed specialized tools</li>
+<li> <strong>Built-in Tools</strong>: Core tools provided by OpenClaw</li>
+<li> <strong>Skills</strong>: Installable extension packages</li>
+<li> <strong>Custom Tools</strong>: User-developed specialized tools</li>
 </ul>
 
 
@@ -59,7 +64,7 @@
 <h2>
   <a name="builtin-tool-reference" href="#builtin-tool-reference">
   </a>
-  🔧 <strong>Built-in Tool Reference</strong>
+   <strong>Built-in Tool Reference</strong>
 </h2>
 
 <h3>
@@ -508,7 +513,7 @@ tts <span>text</span><span>=</span><span>"Welcome to the OpenClaw assistant"</sp
 <h2>
   <a name="skills-system" href="#skills-system">
   </a>
-  🎨 <strong>Skills System</strong>
+   <strong>Skills System</strong>
 </h2>
 
 <h3>
@@ -663,7 +668,7 @@ When user asks for X, do Y using the following tools:
 <h2>
   <a name="tool-security-and-configuration" href="#tool-security-and-configuration">
   </a>
-  🛠️ <strong>Tool Security and Configuration</strong>
+   <strong>Tool Security and Configuration</strong>
 </h2>
 
 <h3>
@@ -832,7 +837,7 @@ When user asks for X, do Y using the following tools:
 <h2>
   <a name="handson-exercise" href="#handson-exercise">
   </a>
-  🎯 <strong>Hands-On Exercise</strong>
+   <strong>Hands-On Exercise</strong>
 </h2>
 
 <h3>
@@ -1097,7 +1102,7 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
 <h2>
   <a name="chapter-summary" href="#chapter-summary">
   </a>
-  📋 <strong>Chapter Summary</strong>
+   <strong>Chapter Summary</strong>
 </h2>
 
 <h3>
@@ -1145,7 +1150,7 @@ openclaw cron add <span>--name</span> <span>"daily-report"</span>
 
 <hr />
 
-<p><strong>📚 Further Reading:</strong></p>
+<p><strong> Further Reading:</strong></p>
 
 <ul>
 <li><a href="https://docs.openclaw.ai/tools" target="_blank">OpenClaw Official Tool Docs</a></li>

@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -168,7 +173,7 @@ Dans cette partie 1, je valide l’installation et le premier modèle LLM en loc
 
 
 <p>Le passage sur un tag précis avec <em><strong>git checkout</strong></em> permet de figer le code source de <strong>HailoRT</strong> sur une version identifiée et stable. Cela garantit que la compilation et les tests seront reproductibles, indépendamment des évolutions ultérieures du dépôt principal.</p>
-<p>👉 Pour <strong>Debian 13 (Trixie)</strong> + <strong>Hailo-10H</strong> / <strong>AI HAT+ 2</strong>, on part sur la version stable la plus récente : <strong>v5.1.1</strong> (API stabilisée, support GenAI à jour). (tapez git tag pour avoir la liste des versions)</p>
+<p> Pour <strong>Debian 13 (Trixie)</strong> + <strong>Hailo-10H</strong> / <strong>AI HAT+ 2</strong>, on part sur la version stable la plus récente : <strong>v5.1.1</strong> (API stabilisée, support GenAI à jour). (tapez git tag pour avoir la liste des versions)</p>
 
 
 
@@ -408,7 +413,7 @@ Dans cette partie 1, je valide l’installation et le premier modèle LLM en loc
 
 
 <div>
-<p>🐳 Docker, c’est quoi au juste ?</p>
+<p> Docker, c’est quoi au juste ?</p>
 <p><strong>Docker</strong> est une plateforme de <strong>conteneurisation</strong> : elle vous permet d’exécuter une application dans un <strong>conteneur</strong>, c’est-à-dire un environnement d’exécution <strong>isolé</strong> et <strong>léger</strong>.<br />
 L’idée clé : vos applications peuvent cohabiter sur la même machine sans “se marcher dessus”.</p>
 <p>Un <strong>conteneur</strong> embarque <strong>tout ce dont l’application a besoin</strong> (dépendances, bibliothèques, config…), mais <strong>sans</strong> embarquer un système d’exploitation complet comme une machine virtuelle. Il <strong>partage le noyau</strong> (kernel) du système hôte, ce qui le rend généralement <strong>plus léger</strong> et <strong>plus rapide à démarrer/arrêter</strong> qu’une VM.</p>
@@ -476,7 +481,7 @@ L’idée clé : vos applications peuvent cohabiter sur la même machine sans �
 			</div>
 
 
-<p>⚠️ <strong>Important</strong> : ce changement prend effet après la prochaine déconnexion / reconnexion (ou reboot). D’où la seconde ligne qui redémarre l’OS.</p>
+<p> <strong>Important</strong> : ce changement prend effet après la prochaine déconnexion / reconnexion (ou reboot). D’où la seconde ligne qui redémarre l’OS.</p>
 <h3><span>Vérifier l’accès à Docker sans privilèges administrateur</span></h3>
 <p>Après le redémarrage, il est important de vérifier que l’utilisateur courant peut désormais utiliser Docker sans <em><strong>sudo</strong></em>. Cette vérification confirme que l’appartenance au groupe docker est bien prise en compte et que l’environnement est prêt pour lancer les services LLM.</p>
 
@@ -497,7 +502,7 @@ L’idée clé : vos applications peuvent cohabiter sur la même machine sans �
 <p>et vous devez obtenir le message <span>Hello from Docker !</span> comme précédemment.</p>
 <h2><span>Préparer le support noyau (DKMS)</span></h2>
 <p>Pour que les composants <strong>Hailo</strong> puissent s’intégrer correctement au noyau Linux (gestion du matériel, mises à jour du kernel), la documentation prévoit l’utilisation de <strong>DKMS</strong> (Dynamic Kernel Module Support). DKMS permet de reconstruire automatiquement les modules nécessaires lorsqu’un noyau est mis à jour.<br />
-👉 Même si nous avons compilé HailoRT depuis les sources, DKMS reste un prérequis propre et standard pour la suite de la pile Hailo.</p>
+ Même si nous avons compilé HailoRT depuis les sources, DKMS reste un prérequis propre et standard pour la suite de la pile Hailo.</p>
 
 
 
@@ -875,7 +880,7 @@ Le lancer à ce stade permet de vérifier que le driver noyau, HailoRT et le ser
 La suite (mesures de performances, essais de modèles plus gros, cas d’usage concrets, et ajout d’une interface type WebUI) fera l’objet d’un <strong>deuxième article</strong> dédié.<br />
 Dans la partie 2, on mesurera latence, débit de tokens, et on testera des modèles plus gros + une WebUI.</p>
 <div>
-<p>📌 Contexte et évolution rapide de la pile logicielle Hailo</p>
+<p> Contexte et évolution rapide de la pile logicielle Hailo</p>
 <p>La pile logicielle <strong>Hailo</strong> (driver noyau, runtime, outils et applications) évolue rapidement, en particulier autour du support du <strong>Raspberry Pi 5</strong> et de <strong>Debian 13 (Trixie)</strong>.</p>
 <p>La procédure décrite dans cet article est <strong>documentée et validée à la date d’écriture</strong> (décembre 2025). Elle a été suivie pas à pas afin de comprendre finement les différentes couches de la pile (noyau, runtime, serveur d’inférence) et de valider le bon fonctionnement de la carte <strong>AI HAT+ 2 / Hailo-10H</strong>.</p>
 <p>Depuis, <strong>Hailo propose une installation unifiée via le paquet <code>hailo-all</code></strong>, qui simplifie considérablement la mise en place pour la majorité des utilisateurs. Cette méthode regroupe driver, runtime et outils dans un flux d’installation plus direct. L’approche détaillée ici reste néanmoins pertinente pour la compréhension, le diagnostic et les usages avancés, notamment dans un contexte d’expérimentation ou d’analyse technique.</p>

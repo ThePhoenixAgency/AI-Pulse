@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Microsoft Warns of ClickFix Attack Abusing DNS Lookups</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
+</style>
+</head>
+<body>
+  <h1>Microsoft Warns of ClickFix Attack Abusing DNS Lookups</h1>
+  <div class="metadata">
+    Source: SecurityWeek | Date: 2/16/2026 | Lang: EN |
+    <a href="https://www.securityweek.com/microsoft-warns-of-clickfix-attack-abusing-dns-lookups/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+		
+<p><strong>Microsoft has warned users that threat actors are leveraging a new variant of the ClickFix technique to deliver malware.</strong>
+
+
+
+</p><p>The <a href="https://www.securityweek.com/topics/clickfix/">ClickFix</a> attack method has been increasingly used in the past year by both cybercriminals and state-sponsored threat groups.
+
+
+
+</p><p>The attack involves attackers displaying a fake error message on a compromised or malicious site. The message instructs the target to address the issue by pressing specific keys, then performing additional steps (eg, running a command). By following the attacker’s instructions, the user unknowingly grants elevated permissions, downloads malware, or executes attacker-supplied scripts.
+
+
+
+</p><p>In a recent ClickFix attack observed by Microsoft the attacker asked targets to run a command that executes a custom DNS lookoup.
+
+
+</p><div>
+<figure><img src="https://www.securityweek.com/wp-content/uploads/2026/02/ClickFix-DNS-1024x504.jpg" alt="" /></figure>
+</div>
+
+
+<p>“The initial command runs through cmd.exe and performs a DNS lookup against a hard-coded external DNS server, rather than the system’s default resolver. The output is filtered to extract the ‘Name:’ DNS response, which is executed as the second-stage payload,” Microsoft <a href="https://x.com/MsftSecIntel/status/2022456612120629742">explained</a>.
+
+
+
+</p><p>This tactic enables the attacker to reach their infrastructure and validate execution of the second-stage payload, increasing their chances of evading detection by blending malicious traffic into regular network traffic. 
+
+
+
+</p><p>The second-stage payload downloads and executes a malicious Python script designed for reconnaissance. The final payload is then dropped and a persistence mechanism is deployed.</p>
+
+
+
+<p>The final payload is a remote access trojan named ModeloRAT, which enables attackers to collect information about the compromised system and execute other payloads.
+
+
+
+</p><p>While Microsoft has not shared any information on the attacks, Huntress reported recently that a threat actor tracked as KongTuke had been deploying ModeloRAT through a ClickFix variant dubbed <a href="https://www.securityweek.com/malicious-chrome-extension-crashes-browser-in-clickfix-variant-crashfix/">CrashFix</a>. The campaign was aimed at corporate environments. 
+
+
+
+</p></div></div>
+  </div>
+</body>
+</html>

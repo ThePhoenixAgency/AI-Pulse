@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OVHcloud on Hugging Face Inference Providers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>OVHcloud on Hugging Face Inference Providers</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 11/24/2025 5:08:47 PM | Lang: EN |
+    <a href="https://huggingface.co/blog/OVHcloud/inference-providers-ovhcloud" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/Gilles-Closset"><img alt="Gilles Closset's avatar" src="https://huggingface.co/avatars/d34fa52995152de839374718de46cf6e.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/fabric"><img alt="Fabien Ric's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/633325bcf695c3df38d94e1c/IHjqW8KjFkLCT5jtXD8Jg.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/eliqs"><img alt="Elias Tourneux's avatar" src="https://huggingface.co/avatars/5354edbde2e830384fd2a03f10e436c0.svg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#how-it-works">How it works</a> <ul><li><a href="#in-the-website-ui">In the website UI</a> <ul></ul> </li></ul> </li><li><a href="#from-the-client-sdks">From the client SDKs</a> <ul><li><a href="#from-python-using-huggingface_hub">From Python, using huggingface_hub</a> <ul></ul> </li><li><a href="#from-js-using-huggingfaceinference">From JS using @huggingface/inference</a> <ul></ul> </li></ul> </li><li><a href="#billing">Billing</a> <ul></ul> </li><li><a href="#feedback-and-next-steps">Feedback and next steps</a> <ul></ul> </li></ul></nav></div><p><a href="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/PwyOJcHxLrJFwEvyS-clw.jpeg"><img alt="welcome-ovhcloud" src="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/PwyOJcHxLrJFwEvyS-clw.jpeg"></a></p>
+<p>We're thrilled to share that <strong>OVHcloud</strong> is now a supported Inference Provider on the Hugging Face Hub! OVHcloud joins our growing ecosystem, enhancing the breadth and capabilities of serverless inference directly on the Hub's model pages. Inference Providers are also seamlessly integrated into our client SDKs (for both JS and Python), making it super easy to use a wide variety of models with your preferred providers.</p>
+<p>This launch makes it easier than ever to access popular open-weight models like gpt-oss, Qwen3, DeepSeek R1, and Llama — right from Hugging Face. You can browse OVHcloud's org on the Hub at <a href="https://huggingface.co/ovhcloud">https://huggingface.co/ovhcloud</a> and try trending supported models at <a href="https://huggingface.co/models?inference_provider=ovhcloud&amp;sort=trending">https://huggingface.co/models?inference_provider=ovhcloud&amp;sort=trending</a>.</p>
+<p>OVHcloud AI Endpoints are a fully managed, serverless service that provides access to frontier AI models from leading research labs via simple API calls. The service offers competitive pay-per-token pricing starting at €0.04 per million tokens.</p>
+<p>The service runs on secure infrastructure located in European data centers, ensuring data sovereignty and low latency for European users. The platform supports advanced features including structured outputs, function calling, and multimodal capabilities for both text and image processing.</p>
+<p>Built for production use, OVHcloud's inference infrastructure delivers sub-200ms response times for first tokens, making it ideal for interactive applications and agentic workflows. The service supports both text generation and embedding models. You can learn more about OVHcloud's platform and infrastructure at <a href="https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog/">https://www.ovhcloud.com/en/public-cloud/ai-endpoints/catalog/</a>.</p>
+<p>Read more about how to use OVHcloud as an Inference Provider in its dedicated documentation page.</p>
+<p>See the list of supported models here.</p>
+<h2> <a href="#how-it-works"> <span></span> </a> <span> How it works </span>
+</h2>
+<h3> <a href="#in-the-website-ui"> <span></span> </a> <span> In the website UI </span>
+</h3>
+<p>In your user account settings, you are able to:</p>
+<ul>
+<li>Set your own API keys for the providers you've signed up with. If no custom key is set, your requests will be routed through HF.</li>
+<li>Order providers by preference. This applies to the widget and code snippets in the model pages.</li>
+</ul>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/ptWLP8cqPh5zNikiz-c5H.jpeg"><img alt="provider_HF" src="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/ptWLP8cqPh5zNikiz-c5H.jpeg"></a></p>
+<p>As mentioned, there are two modes when calling Inference Providers:</p>
+<ul>
+<li><strong>Custom key</strong> (calls go directly to the inference provider, using your own API key of the corresponding inference provider)</li>
+<li><strong>Routed by HF</strong> (in that case, you don't need a token from the provider, and the charges are applied directly to your HF account rather than the provider's account)</li>
+</ul>
+<p><a href="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/inference-providers/explainer.png"><img alt="Inference Providers" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/inference-providers/explainer.png"></a></p>
+<p>Model pages showcase third-party inference providers (the ones that are compatible with the current model, sorted by user preference)</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/D1r8U_vAMD9KAC2TJn8je.png"><img alt="playground" src="https://cdn-uploads.huggingface.co/production/uploads/691ca54ee1e4ac5a319e443c/D1r8U_vAMD9KAC2TJn8je.png"></a></p>
+<h2> <a href="#from-the-client-sdks"> <span></span> </a> <span> From the client SDKs </span>
+</h2>
+<h3> <a href="#from-python-using-huggingface_hub"> <span></span> </a> <span> From Python, using huggingface_hub </span>
+</h3>
+<p>The following example shows how to use OpenAI's gpt-oss-120b using OVHcloud as the inference provider. You can use a Hugging Face token for automatic routing through Hugging Face, or your own OVHcloud AI Endpoints API key if you have one.</p>
+<p><strong>Note:</strong> this requires using a recent version of huggingface_hub (&gt;= 1.1.5).</p>
+<pre><code><span>import</span> os
+<span>from</span> huggingface_hub <span>import</span> InferenceClient client = InferenceClient( api_key=os.environ[<span>"HF_TOKEN"</span>],
+) completion = client.chat.completions.create( model=<span>"openai/gpt-oss-120b:ovhcloud"</span>, messages=[ { <span>"role"</span>: <span>"user"</span>, <span>"content"</span>: <span>"What is the capital of France?"</span> } ],
+) <span>print</span>(completion.choices[<span>0</span>].message)
+</code></pre>
+<h3> <a href="#from-js-using-huggingfaceinference"> <span></span> </a> <span> From JS using @huggingface/inference </span>
+</h3>
+<pre><code><span>import</span> { <span>InferenceClient</span> } <span>from</span> <span>"@huggingface/inference"</span>; <span>const</span> client = <span>new</span> <span>InferenceClient</span>(process.<span>env</span>.<span>HF_TOKEN</span>); <span>const</span> chatCompletion = <span>await</span> client.<span>chatCompletion</span>({ <span>model</span>: <span>"openai/gpt-oss-120b:ovhcloud"</span>, <span>messages</span>: [ { <span>role</span>: <span>"user"</span>, <span>content</span>: <span>"What is the capital of France?"</span>, }, ],
+}); <span>console</span>.<span>log</span>(chatCompletion.<span>choices</span>[<span>0</span>].<span>message</span>);
+</code></pre>
+<h2> <a href="#billing"> <span></span> </a> <span> Billing </span>
+</h2>
+<p>Here is how billing works:</p>
+<ul>
+<li><p>For <strong>direct requests</strong>, i.e. when you use the key from an inference provider, you are billed by the corresponding provider. For instance, if you use an OVHcloud API key you're billed on your OVHcloud account.</p>
+</li>
+<li><p>For <strong>routed requests</strong>, i.e. when you authenticate via the Hugging Face Hub, you'll only pay the standard provider API rates. There's no additional markup from us; we just pass through the provider costs directly. (In the future, we may establish revenue-sharing agreements with our provider partners.)</p>
+</li>
+</ul>
+<p><strong>Important Note </strong> PRO users get $2 worth of Inference credits every month. You can use them across providers. </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

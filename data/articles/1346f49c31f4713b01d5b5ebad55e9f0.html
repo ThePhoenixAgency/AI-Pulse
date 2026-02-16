@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CISA Warns of Exploited SolarWinds, Notepad++, Microsoft Vulnerabilities</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
+</style>
+</head>
+<body>
+  <h1>CISA Warns of Exploited SolarWinds, Notepad++, Microsoft Vulnerabilities</h1>
+  <div class="metadata">
+    Source: SecurityWeek | Date: 2/13/2026 | Lang: EN |
+    <a href="https://www.securityweek.com/cisa-warns-of-exploited-solarwinds-notepad-microsoft-vulnerabilities/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+		
+<p><strong>The US cybersecurity agency CISA on Thursday warned that recently disclosed SolarWinds, Notepad++, and Apple vulnerabilities have been exploited in the wild.</strong>
+
+
+
+</p><p>Tracked as CVE-2025-40536 (CVSS score of 8.1) and <a href="https://www.securityweek.com/solarwinds-patches-critical-web-help-desk-vulnerabilities/">disclosed</a> at the end of January, the SolarWinds flaw is described as a security control bypass in Web Help Desk (WHD) that could allow unauthenticated attackers to access restricted functionality.
+
+
+
+</p><p>The security defect was found and reported by Horizon3.ai, which warned that it could be exploited to create a valid AjaxProxy instance, allowing attackers to exploit additional bugs to achieve remote code execution (RCE).
+
+
+
+</p><p>On Thursday, <a href="https://www.cisa.gov/news-events/alerts/2026/02/12/cisa-adds-four-known-exploited-vulnerabilities-catalog">CISA added</a> CVE-2025-40536 to its Known Exploited Vulnerabilities (KEV) list, urging federal agencies to patch it within three days.
+
+
+
+</p><p>The agency has not shared details on the observed exploitation, but its warning comes a week after Microsoft said that CVE-2025-40536 might have been <a href="https://www.securityweek.com/recent-solarwinds-flaws-potentially-exploited-as-zero-days/">exploited as a zero-day</a> in an attack observed in December 2025.
+
+
+
+</p><p>The tech giant said that CVE-2025-40551, another fresh WHD issue that was <a href="https://www.securityweek.com/fresh-solarwinds-vulnerability-exploited-in-attacks/">added to CISA’s KEV list</a> last week, might have been targeted as a zero-day as well, in the same attack.</p>
+
+
+
+<p>Another zero-day added to CISA’s KEV list on Thursday is CVE-2026-20700, a buffer overflow vulnerability that Apple has just patched, warning <a href="https://www.securityweek.com/apple-patches-ios-zero-day-exploited-in-extremely-sophisticated-attack/">it has been exploited</a> in an extremely sophisticated attack.
+
+
+
+</p><p>Another newly disclosed vulnerability that has made it to CISA’s KEV list is CVE-2025-15556, an update integrity verification flaw in Notepad++ patched in early February.
+
+
+
+</p><p>Rooted in the lack of cryptographic verification of downloaded update metadata and installers, the issue affects Notepad++ deployments using the WinGUp updater and could allow attackers to intercept update traffic and supply modified installers, achieving arbitrary code execution.
+
+
+
+</p><p>China-linked hackers were seen <a href="https://www.securityweek.com/notepad-supply-chain-hack-conducted-by-china-via-hosting-provider/">exploiting the flaw for initial access</a> in attacks that likely started in June 2025. Rapid7 has attributed the campaign to the cyberespionage group tracked as Lotus Blossom.
+
+
+
+</p><p>The fourth CVE added to CISA’s KEV list on Thursday is CVE-2024-43468, a critical-severity RCE flaw in Microsoft Configuration Manager that was <a href="https://www.securityweek.com/patch-tuesday-microsoft-confirms-exploited-zero-day-in-windows-management-console/">resolved in October 2024</a>. 
+
+
+
+</p><p>It is described as an SQL injection bug that can be exploited without authentication or user interaction via specially crafted requests. 
+
+
+
+</p><p>Proof-of-concept (PoC) code targeting CVE-2024-43468 has been publicly available for over a year, but there appear to have been no reports of it being exploited in attacks prior to CISA’s warning.
+
+
+
+</p><p>CISA has given federal agencies three weeks to apply patches for the Apple, Microsoft, and Notepad++ vulnerabilities.
+
+
+
+</p><p><strong>Related:</strong> <a href="https://www.securityweek.com/chrome-145-patches-11-vulnerabilities/">Chrome 145 Patches 11 Vulnerabilities</a>
+
+
+
+</p><p><strong>Related:</strong> <a href="https://www.securityweek.com/chipmaker-patch-tuesday-over-80-vulnerabilities-addressed-by-intel-and-amd/">Chipmaker Patch Tuesday: Over 80 Vulnerabilities Addressed by Intel and AMD</a>
+
+
+
+</p><p><strong>Related:</strong> <a href="https://www.securityweek.com/6-actively-exploited-zero-days-patched-by-microsoft-with-february-2026-updates/">6 Actively Exploited Zero-Days Patched by Microsoft With February 2026 Updates</a>
+
+
+
+</p><p><strong>Related:</strong> <a href="https://www.securityweek.com/critical-smartermail-vulnerability-exploited-in-ransomware-attacks/">Critical SmarterMail Vulnerability Exploited in Ransomware Attacks</a>
+			</p></div></div>
+  </div>
+</body>
+</html>

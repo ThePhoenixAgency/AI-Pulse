@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Safari 26.3 includes welcome improvements for users and developers, here’s what’s new</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Safari 26.3 includes welcome improvements for users and developers, here’s what’s new</h1>
+  <div class="metadata">
+    Source: 9to5Mac | Date: 2/11/2026 10:16:20 PM | Lang: EN |
+    <a href="https://9to5mac.com/2026/02/11/safari-26-3-includes-welcome-improvements-for-users-and-developers-heres-whats-new/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2025/07/safari-ios26.jpg?quality=82&amp;strip=all&amp;w=1600" alt="Safari iOS 26"> </figure> <p>Alongside today’s system <a href="https://9to5mac.com/2026/02/11/apple-releases-ios-26-3-for-iphone-heres-whats-new/">updates</a>, Apple has released Safari 26.3, with a mix of under-the-hood improvements and at least one major usability upgrade for Vision Pro users. Here are the details.</p> <h2>Better fullscreen handling on visionOS, efficiency improvements for all</h2> <p>With Safari 26.3, Vision Pro users on visionOS 26.3 will see Safari automatically dim their surroundings when a video enters fullscreen, a change Apple says helps “put the focus on the content.”</p> <p>In addition, Safari 26.3 introduces support for Zstandard (Zstd), an open, real-time compression algorithm <a href="https://facebook.github.io/zstd/">developed by Meta</a> that essentially compresses text-based web assets before they’re delivered to browsers and then decompresses them quickly on-device.</p> <p>Apple says that “Zstandard decompresses quickly, reducing the workload on users’ devices. It also compresses fast enough to do on-the-fly, whereas Brotli is typically pre-compressed during your build process.”</p> <p>Apple notes that users need to be running Safari 26.3 on iOS 26.3, iPadOS 26.3, visionOS 26.3, and macOS Tahoe 26.3 for Zstd support to work.</p> <p>If you’re a developer, you might be happy to know that Safati 26.3’s Navigation API now “exposes a <code>AbortSignal</code> on <code>NavigateEvent</code> which triggers when the navigation is aborted,” which Apple says is a “reliable way to cancel ongoing work when a navigation gets interrupted.”</p> <p>Finally, WebKit for Safari 26.3 contains the following developer-facing <a href="https://webkit.org/blog/17798/webkit-features-for-safari-26-3/">bug fixes and improvements</a>:</p> <blockquote>
+<h3>CSS</h3> <ul>
+<li>Fixed a style resolution loop that occurred when a&nbsp;<code>position-try</code>&nbsp;box was inside a&nbsp;<code>display: none</code>&nbsp;ancestor. (163691885)</li> <li>Fixed an issue where anchor-positioned elements repeatedly transitioning from&nbsp;<code>display: block</code>&nbsp;to&nbsp;<code>display: none</code>&nbsp;cause position jumps during animation. (163862003)</li> <li>Fixed an issue where&nbsp;<code>fixed</code>-positioned boxes using&nbsp;<code>position-area</code>&nbsp;were incorrectly included in the scrollable containing block calculation. (164017310)</li> <li>Fixed an issue where&nbsp;<code>text-decoration: underline</code>&nbsp;was rendered too high when&nbsp;<code>text-box-trim</code>&nbsp;was applied to the root inline box. (165945326)</li> <li>Fixed a multi-column layout issue where the&nbsp;<code>widows</code>&nbsp;and&nbsp;<code>text-indent</code>&nbsp;properties are applied cause an incorrect indent on the portion of the paragraph that flows into the next column. (165945497)</li> <li>Fixed an issue where CSS cursors like&nbsp;<code>move</code>,&nbsp;<code>all-scroll</code>,&nbsp;<code>ew-resize</code>, and&nbsp;<code>ns-resize</code>&nbsp;did not display correctly. (166731882)</li>
+</ul> <h3>DOM</h3> <ul>
+<li>Fixed incorrect timestamp handling and switched to use the raw touch timestamp. (164262652)</li>
+</ul> <h3>Media</h3> <ul>
+<li>Fixed an issue where the fullscreen button in visionOS inline video controls did not visually indicate interactivity by extending the glow effect to all&nbsp;<code>button.circular</code>&nbsp;elements. (164259201)</li> <li>Fixed Video Viewer mode for&nbsp;<code>iframe</code>&nbsp;videos on macOS. (164484608)</li> <li>Fixed an issue where Safari could not play live videos when the&nbsp;<code>sourceBuffer</code>&nbsp;content is removed and re-added causing the seek to not complete. (165628836)</li>
+</ul> <h3>Rendering</h3> <ul>
+<li>Fixed an issue where positioned or transformed&nbsp;<code>&lt;img&gt;</code>&nbsp;elements containing HDR JPEGs with gain maps would incorrectly render as SDR. (163517157)</li>
+</ul> <h3>Safe Browsing</h3> <ul>
+<li>Fixed a bug where if Safe Browsing queried for an entry on the Public Suffix List, and a Safe Browsing vendor responded that the whole effective TLD was unsafe, the whole site would be marked as unsafe. (168155375)</li>
+</ul>
+</blockquote> <p>To learn more about Safari 26.3, <a href="https://webkit.org/blog/17798/webkit-features-for-safari-26-3/">follow this link</a>.</p> <h4>Accessory deals on Amazon</h4> <ul>
+<li><strong><a href="https://www.amazon.com/Apple-Cancellation-Translation-Headphones-High-Fidelity/dp/B0FQFB8FMG?tag=marcmendes-20" target="_blank">AirPods Pro 3</a></strong></li> <li><a href="https://www.amazon.com/Apple-MX542LL-A-AirTag-Pack/dp/B0D54JZTHY/?tag=marcmendes-20" target="_blank">Apple AirTag 4 Pack</a></li> <li><a href="https://www.amazon.com/Beats-Charging-Durable-Tangle-Free-Compatible/dp/B0F1W7B5R1?tag=marcmendes-20" target="_blank">Beats USB-C to USB-C Woven Short Cable</a></li> <li><a href="https://www.amazon.com/gp/product/B0F6T6N2B1?tag=marcmendes-20" target="_blank">Wireless CarPlay adapter</a></li> <li><a href="https://amzn.to/3KmIQN7" target="_blank">Logitech MX Master 4</a></li>
+</ul> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

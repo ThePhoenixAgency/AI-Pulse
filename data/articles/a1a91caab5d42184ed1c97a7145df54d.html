@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -27,7 +32,7 @@
         <article>
             
             <section>
-                <p>Je suis de retour sur Rivalcfg ! 🎉️</p>
+                <p>Je suis de retour sur Rivalcfg ! </p>
 <p>Pour ceux qui ne connaissent pas le projet, il s'agit d'un outil en ligne de commande et d'une bibliothèque Python permettant de configurer les souris <em>gaming</em> de la marque SteelSeries. Ces souris sont en effet très <em>[trop ?]</em> configurables.</p>
 <p>On peut par exemple changer la sensibilité du capteur, configurer les paramètres d'alimentation (pour les modèles sans fil), les faire clignoter de toutes les couleurs <em>[pire qu'un sapin de Noël !]</em> ou encore réassigner les boutons comme on le souhaite. Certaines des souris de la marque disposent même de vibreurs et d'écrans OLED <em>[ouais c'est un peu too much là !]</em>.</p>
 <div>
@@ -49,7 +54,7 @@
 <li><a href="https://buymeacoffee.com/flozz/2025-review-part-1-free-open-source-projects">2025 in Review PART 1: Free and Open Source Projects</a></li>
 <li><a href="https://buymeacoffee.com/flozz/2025-review-part-2-blog-articles">2025 in Review PART 2: Blog and Articles</a></li>
 </ul>
-<p><em>[Oui je sais, c'est tout en anglais, mais j'ai pas eu le courage de refaire un article sur ce blog en janvier, désolé. 😬️]</em></p>
+<p><em>[Oui je sais, c'est tout en anglais, mais j'ai pas eu le courage de refaire un article sur ce blog en janvier, désolé. ]</em></p>
 <p>Mais revenons-en à Rivalcfg. Dans le titre de l'article je parle d'« une longue pause », car ça fait bien 2 ans pour moi que je n'ai pas travaillé « sérieusement » sur ce projet. En 2024 je me suis surtout efforcé de faire quelques ajouts faciles histoire de maintenir le projet en vie, et en 2025 j'ai presque rien fait.</p>
 <p>En 2025 j'ai en effet sorti une seule et unique version de Rivalcfg (la v4.15.0)... Et j'ai eu beaucoup de mal à la sortir. Non pas qu'elle contienne quoi que ce soit de compliqué techniquement. J'étais juste épuisé. J'étais sur une sorte de <em>mini-burnout</em> sur le projet. Dès que je voyais passer un email en rapport avec Rivalcfg j'avais juste envie de l'enterrer et de ne plus y penser. Je suis d'ailleurs désolé de ne pas avoir toujours répondu aux messages, j'en avais pas la force.</p>
 <p>Heureusement les choses ont commencé à aller mieux sur la fin de l'année, j'ai même eu des semaines où j'ai été particulièrement en forme ce qui m'a permis de publier plein d'articles sur cette période. Et puis fin décembre / début janvier, je me suis remis tranquillement sur Rivalcfg. J'ai pu travailler sur pas mal de sujets qui traînaient depuis trop longtemps et j'ai également pu rajouter le support de quelques nouvelles souris sorties en 2025.</p>
@@ -70,29 +75,29 @@
 <li><a href="https://blog.flozz.fr/2020/08/24/rivalcfg-comment-jai-cree-un-peu-par-hasard-cet-outil-de-configuration-pour-les-souris-steelseries/">Rivalcfg : comment j'ai créé, un peu par hasard, cet outil de configuration pour les souris SteelSeries</a></li>
 </ul>
 <p>Tout ça pour dire qu'aujourd'hui Rivalcfg vise à supporter toutes les souris <em>gaming</em> de la marque SteelSeries. Actuellement 73 modèles sont supportés si on en croit la commande "rivalcfg <span>--list"</span>, mais il ne faut pas s'y fier. Certaines souris y sont en effet listées en double (lorsqu'elles disposent de deux <em>product id</em> différents pour leur mode filaire et sans fil). Et puis certaines souris ne sont que des déclinaisons esthétiques d'un même modèle et sont identiques d'un point de vue technique.</p>
-<p>Si je recompte à la main, je tombe plutôt sur le chiffre de 24 familles de souris, ce qui est déjà pas mal ! 😄️</p>
+<p>Si je recompte à la main, je tombe plutôt sur le chiffre de 24 familles de souris, ce qui est déjà pas mal ! </p>
 </div>
 <div>
 <h2><a href="#toc-entry-3">Un p'tit logo pour fêter ça !</a></h2>
-<p>Pour fêter mon retour sur le projet (ou plutôt le retour de ma motivation), j'ai enfin dessiné un petit logo pour Rivalcfg. Il représente l'avant d'une souris avec sa molette de défilement, le tout formant un « R », comme dans « [R]ivalcfg ». Le logo reprend les codes de celui de SteelSeries mais en reste suffisamment éloigné pour ne pas risquer d'avoir de problème juridique... 😬️</p>
+<p>Pour fêter mon retour sur le projet (ou plutôt le retour de ma motivation), j'ai enfin dessiné un petit logo pour Rivalcfg. Il représente l'avant d'une souris avec sa molette de défilement, le tout formant un « R », comme dans « [R]ivalcfg ». Le logo reprend les codes de celui de SteelSeries mais en reste suffisamment éloigné pour ne pas risquer d'avoir de problème juridique... </p>
 <div>
 <p><a href="https://blog.flozz.fr/2026/02/16/je-me-suis-remis-sur-rivalcfg-apres-une-longue-pause/images/rivalcfg-logo-plaquette.png">
 <img alt="Logo de Rivalcfg" src="https://blog.flozz.fr/2026/02/16/je-me-suis-remis-sur-rivalcfg-apres-une-longue-pause/images/rivalcfg-logo-plaquette.png" />
 </a></p><p>Logo de Rivalcfg</p>
 </div>
-<p>Pour le moment le logo n'est utilisé que sur le site Web, il faut encore que je le colle sur GitHub et dans la doc. À terme il pourra également être utilisé par l'interface graphique... Si elle arrive un jour... 😅️</p>
+<p>Pour le moment le logo n'est utilisé que sur le site Web, il faut encore que je le colle sur GitHub et dans la doc. À terme il pourra également être utilisé par l'interface graphique... Si elle arrive un jour... </p>
 </div>
 <div>
 <h2><a href="#toc-entry-4">Enfin un site Web !</a></h2>
 <p>Après 10 ans d'existence, il était grand temps que le projet ait son propre site Web. Je me suis donc penché sur la réalisation d'un template <a href="https://getpelican.com/">Pelican</a> (le générateur de site statique que j'utilise également pour ce blog) qui sera facilement réutilisable pour tous mes sites de projet.</p>
-<p>Ce template est basé sur celui que j'ai déjà réalisé pour le blog sur lequel vous êtes en train de lire le présent article <em>[enfin... sauf si vous me lisez depuis votre lecteur de flux RSS... 😅️]</em> afin de conserver une cohérence visuelle entre mes différents sites.</p>
+<p>Ce template est basé sur celui que j'ai déjà réalisé pour le blog sur lequel vous êtes en train de lire le présent article <em>[enfin... sauf si vous me lisez depuis votre lecteur de flux RSS... ]</em> afin de conserver une cohérence visuelle entre mes différents sites.</p>
 <p>Voici à quoi le site de Rivalcfg ressemble :</p>
 <div>
 <p><a href="https://blog.flozz.fr/2026/02/16/je-me-suis-remis-sur-rivalcfg-apres-une-longue-pause/images/screenshot_rivalcfg_website_home.webp">
 <img alt="Capture d'écran de la page d'accueil de Rivalcfg" src="https://blog.flozz.fr/2026/02/16/je-me-suis-remis-sur-rivalcfg-apres-une-longue-pause/images/screenshot_rivalcfg_website_home.webp" />
 </a></p><p>Capture d'écran de la page d'accueil de Rivalcfg</p>
 </div>
-<p>Ce site me permettra de pointer autre chose que GitHub lorsque je veux partager un lien vers mon projet (par les temps qui courent, qui sait combien de temps on va encore pouvoir rester sur GitHub...). Et puis je vais enfin pouvoir centraliser les <em>news</em> autour du projet à un seul endroit, et en anglais pour que ça soit accessible au plus grand nombre. Jusqu'à présent, je publiais de temps à autre des nouvelles sur ma page <em>Buy Me a Coffee</em>, sur ce blog, sur les release GitHub, sur Discord... C'était pas forcément facile à suivre ! 😅️</p>
+<p>Ce site me permettra de pointer autre chose que GitHub lorsque je veux partager un lien vers mon projet (par les temps qui courent, qui sait combien de temps on va encore pouvoir rester sur GitHub...). Et puis je vais enfin pouvoir centraliser les <em>news</em> autour du projet à un seul endroit, et en anglais pour que ça soit accessible au plus grand nombre. Jusqu'à présent, je publiais de temps à autre des nouvelles sur ma page <em>Buy Me a Coffee</em>, sur ce blog, sur les release GitHub, sur Discord... C'était pas forcément facile à suivre ! </p>
 <p>Vous pouvez donc à présent retrouver le site officiel de Rivalcfg à l'adresse suivante et vous abonner au flux RSS (enfin Atom) :</p>
 <ul>
 <li><a href="https://rivalcfg.flozz.org/">https://rivalcfg.flozz.org/</a></li>
@@ -111,7 +116,7 @@
 <p>Par facilité Rivalcfg utilisait jusqu'à présent une fonction linéaire pour faire un <em>mapping</em> approximatif, mais on pouvait dans certains cas tomber sur des valeurs qui n'existent pas, et dont le comportement est indéfini... Maintenant une table de correspondance a été implémentée pour les 3 capteurs, ce qui évitera tout problème à l'avenir.</p>
 <p>D'un point de vue plus technique, cette version prend en charge <strong>Python 3.14</strong>, qui est sorti en fin d'année dernière, et <strong>Python 3.9</strong> n'est plus officiellement supporté. En pratique, il est probable que ça continue à fonctionner avec cette version, mais elle n'est plus testée et aucun effort ne sera fait pour maintenir le code compatible avec.</p>
 <p>J'ai également profité de cette version pour moderniser le <em>packaging</em> (Python) du projet. On passe du vénérable couple "setup.py" / setuptools au plus moderne "pyproject.toml" / Flit.</p>
-<p>Si vous voulez en apprendre plus sur cette version, je vous laisse lire les <em>release notes</em> sur le tout nouveau site du projet : 😄️</p>
+<p>Si vous voulez en apprendre plus sur cette version, je vous laisse lire les <em>release notes</em> sur le tout nouveau site du projet : </p>
 <ul>
 <li><a href="https://rivalcfg.flozz.org/news/release_v4.16.0/">https://rivalcfg.flozz.org/news/release_v4.16.0/</a></li>
 </ul>
@@ -129,8 +134,8 @@
 </div>
 <div>
 <h2><a href="#toc-entry-7">C'est tout pour aujourd'hui</a></h2>
-<p>Voilà, c'est tout pour ce petit point de reprise du projet. Je me suis remis à développer sur Rivalcfg, mais je vais y aller tranquillement. Faut que j'arrête de me mettre la pression quand ça avance pas assez vite à mon goût, sinon je risque de recommencer à faire le mort pendant des mois, ça serait dommage. 😅️</p>
-<p>À bientôt <em>[enfin peut être,]</em> pour de nouveaux articles ! 😉️</p>
+<p>Voilà, c'est tout pour ce petit point de reprise du projet. Je me suis remis à développer sur Rivalcfg, mais je vais y aller tranquillement. Faut que j'arrête de me mettre la pression quand ça avance pas assez vite à mon goût, sinon je risque de recommencer à faire le mort pendant des mois, ça serait dommage. </p>
+<p>À bientôt <em>[enfin peut être,]</em> pour de nouveaux articles ! </p>
 </div>
 
             </section>

@@ -29,6 +29,18 @@
         { "name": "Numerama Tech", "url": "https://www.numerama.com/feed/", "tags": ["IA", "Tech", "Science"], "lang": "fr" }
       ]
     },
+    "openclaw": {
+      "labels": { "en": "OpenClaw", "fr": "OpenClaw" },
+      "icon": "sparkles",
+      "priority": 2,
+      "feeds": [
+        { "name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "tags": ["OpenClaw", "AI", "Startups"], "lang": "en" },
+        { "name": "OpenAI Blog", "url": "https://openai.com/blog/rss.xml", "tags": ["OpenClaw", "AI", "Official"], "lang": "en" },
+        { "name": "Numerama Tech", "url": "https://www.numerama.com/feed/", "tags": ["OpenClaw", "IA", "France"], "lang": "fr" },
+        { "name": "Wired", "url": "https://www.wired.com/feed/rss", "tags": ["OpenClaw", "AI", "News"], "lang": "en" },
+        { "name": "The Verge", "url": "https://www.theverge.com/rss/index.xml", "tags": ["OpenClaw", "AI", "Tech"], "lang": "en" }
+      ]
+    },
     "cybersecurity": {
       "labels": { "en": "Cybersecurity", "fr": "Cybersécurité" },
       "icon": "shield",
@@ -54,10 +66,57 @@
         { "name": "LeMagIT - Securite", "url": "https://www.lemagit.fr/rss/Securite.xml", "tags": ["Securite", "Entreprise", "France"], "lang": "fr" }
       ]
     },
+    "local": {
+      "labels": { "en": "Local News (Grenoble Region)", "fr": "Actualités locales (région Grenoble)" },
+      "icon": "map-pin",
+      "priority": 3,
+      "feeds": [
+        { "name": "France 3 Alpes", "url": "https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/isere/grenoble/rss", "tags": ["Local", "Grenoble", "Isere"], "lang": "fr" },
+        { "name": "Le Dauphine - Grenoble", "url": "https://www.ledauphine.com/edition-grenoble/rss", "tags": ["Local", "Grenoble", "Isere"], "lang": "fr" },
+        { "name": "Place Gre'net", "url": "https://www.placegrenet.fr/feed/", "tags": ["Local", "Grenoble", "Isere"], "lang": "fr" },
+        { "name": "Actu Grenoble", "url": "https://actu.fr/auvergne-rhone-alpes/grenoble_38185/rss.xml", "tags": ["Local", "Grenoble", "Isere"], "lang": "fr" },
+        { "name": "Meteo France Grenoble", "url": "https://meteofrance.com/rss/previsions-meteo-france/grenoble/38000", "tags": ["Meteo", "Local", "Grenoble"], "lang": "fr" }
+      ]
+    },
+    "raspberrypi": {
+      "labels": { "en": "Raspberry Pi", "fr": "Raspberry Pi" },
+      "icon": "cpu",
+      "priority": 6,
+      "feeds": [
+        { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/news/feed/", "tags": ["RaspberryPi", "IoT", "Hardware"], "lang": "en" },
+        { "name": "Raspberry Pi Spy", "url": "https://www.raspberrypi-spy.co.uk/feed/", "tags": ["RaspberryPi", "Tutorials", "DIY"], "lang": "en" },
+        { "name": "Framboise 314", "url": "https://www.framboise314.fr/feed/", "tags": ["RaspberryPi", "IoT", "DIY"], "lang": "fr" },
+        { "name": "Toms Hardware Raspberry Pi", "url": "https://www.tomshardware.com/feeds/tag/raspberry-pi", "tags": ["RaspberryPi", "Hardware", "Projects"], "lang": "en" }
+      ]
+    },
+    "france": {
+      "labels": { "en": "France News", "fr": "Journaux France" },
+      "icon": "newspaper",
+      "priority": 4,
+      "feeds": [
+        { "name": "Le Monde", "url": "https://www.lemonde.fr/rss/une.xml", "tags": ["France", "National", "Politique"], "lang": "fr" },
+        { "name": "Le Figaro", "url": "https://www.lefigaro.fr/rss/figaro_actualites.xml", "tags": ["France", "National", "Actualites"], "lang": "fr" },
+        { "name": "Liberation", "url": "https://www.liberation.fr/arc/outboundfeeds/rss-all/?outputType=xml", "tags": ["France", "National", "Actualites"], "lang": "fr" },
+        { "name": "Franceinfo", "url": "https://www.francetvinfo.fr/titres.rss", "tags": ["France", "National", "Actualites"], "lang": "fr" },
+        { "name": "Ouest-France", "url": "https://www.ouest-france.fr/rss/une", "tags": ["France", "National", "Actualites"], "lang": "fr" }
+      ]
+    },
+    "international": {
+      "labels": { "en": "International News", "fr": "Journaux internationaux" },
+      "icon": "globe",
+      "priority": 5,
+      "feeds": [
+        { "name": "Reuters World", "url": "https://www.reutersagency.com/feed/?best-topics=world&post_type=best", "tags": ["International", "World", "News"], "lang": "en" },
+        { "name": "BBC World", "url": "https://feeds.bbci.co.uk/news/world/rss.xml", "tags": ["International", "World", "News"], "lang": "en" },
+        { "name": "Associated Press", "url": "https://feeds.apnews.com/rss/apf-topnews", "tags": ["International", "World", "News"], "lang": "en" },
+        { "name": "Le Monde International", "url": "https://www.lemonde.fr/international/rss_full.xml", "tags": ["International", "Monde", "Actualites"], "lang": "fr" },
+        { "name": "France 24", "url": "https://www.france24.com/en/rss", "tags": ["International", "World", "News"], "lang": "en" }
+      ]
+    },
     "iot": {
       "labels": { "en": "IoT - Internet of Things", "fr": "IdO - Internet des Objets" },
       "icon": "cpu",
-      "priority": 3,
+      "priority": 6,
       "feeds": [
         { "name": "Raspberry Pi", "url": "https://www.raspberrypi.com/news/feed/", "tags": ["IoT", "RaspberryPi", "Hardware"], "lang": "en" },
         { "name": "Arduino Blog", "url": "https://blog.arduino.cc/feed/", "tags": ["IoT", "Arduino", "Hardware"], "lang": "en" },
@@ -76,7 +135,7 @@
     "windows": {
       "labels": { "en": "Windows", "fr": "Windows" },
       "icon": "monitor",
-      "priority": 4,
+      "priority": 7,
       "feeds": [
         { "name": "Windows Central", "url": "https://www.windowscentral.com/feed", "tags": ["Windows", "Microsoft", "PC"], "lang": "en" },
         { "name": "Neowin", "url": "https://www.neowin.net/news/rss/", "tags": ["Windows", "Microsoft", "Tech"], "lang": "en" },
@@ -89,20 +148,23 @@
     "mac": {
       "labels": { "en": "Mac / Apple", "fr": "Mac / Apple" },
       "icon": "apple",
-      "priority": 5,
+      "priority": 8,
       "feeds": [
+        { "name": "Apple Newsroom", "url": "https://www.apple.com/newsroom/rss-feed.rss", "tags": ["Apple", "Official", "News"], "lang": "en" },
         { "name": "9to5Mac", "url": "https://9to5mac.com/feed/", "tags": ["Apple", "Mac", "iOS"], "lang": "en" },
         { "name": "MacRumors", "url": "https://feeds.macrumors.com/MacRumors-All", "tags": ["Apple", "Mac", "Rumors"], "lang": "en" },
         { "name": "AppleInsider", "url": "https://appleinsider.com/rss/news/", "tags": ["Apple", "Mac", "News"], "lang": "en" },
+        { "name": "Macworld", "url": "https://www.macworld.com/index.rss", "tags": ["Apple", "Mac", "Guides"], "lang": "en" },
+        { "name": "The Verge Apple", "url": "https://www.theverge.com/apple/rss/index.xml", "tags": ["Apple", "Tech", "News"], "lang": "en" },
         { "name": "The Mac Observer", "url": "https://www.macobserver.com/feed/", "tags": ["Apple", "Mac", "Reviews"], "lang": "en" },
-        { "name": "MacGeneration", "url": "https://www.macgeneration.com/rss", "tags": ["Apple", "Mac", "France"], "lang": "fr" },
-        { "name": "iGeneration", "url": "https://www.igen.fr/rss", "tags": ["Apple", "iOS", "France"], "lang": "fr" }
+        { "name": "MacGeneration", "url": "https://www.macg.co/rss.xml", "tags": ["Apple", "Mac", "France"], "lang": "fr" },
+        { "name": "iGeneration", "url": "https://www.igen.fr/rss.xml", "tags": ["Apple", "iOS", "France"], "lang": "fr" }
       ]
     },
     "linux": {
       "labels": { "en": "Linux", "fr": "Linux" },
       "icon": "terminal",
-      "priority": 6,
+      "priority": 9,
       "feeds": [
         { "name": "OMG! Ubuntu", "url": "https://www.omgubuntu.co.uk/feed", "tags": ["Linux", "Ubuntu", "Open Source"], "lang": "en" },
         { "name": "Its FOSS", "url": "https://itsfoss.com/feed/", "tags": ["Linux", "Open Source", "Tutorials"], "lang": "en" },
@@ -117,7 +179,7 @@
     "tech": {
       "labels": { "en": "General Tech", "fr": "Tech Générale" },
       "icon": "zap",
-      "priority": 7,
+      "priority": 10,
       "feeds": [
         { "name": "The Verge", "url": "https://www.theverge.com/rss/index.xml", "tags": ["Tech", "News", "Reviews"], "lang": "en" },
         { "name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index", "tags": ["Tech", "Science", "Analysis"], "lang": "en" },
@@ -132,7 +194,7 @@
     "entrepreneurship": {
       "labels": { "en": "Entrepreneurship", "fr": "Entrepreneuriat" },
       "icon": "rocket",
-      "priority": 8,
+      "priority": 11,
       "feeds": [
         { "name": "TechCrunch Startups", "url": "https://techcrunch.com/category/startups/feed/", "tags": ["Startups", "Fundraising", "Tech"], "lang": "en" },
         { "name": "Entrepreneur.com", "url": "https://www.entrepreneur.com/latest/feed", "tags": ["Entrepreneurship", "Business", "Startups"], "lang": "en" },
@@ -148,7 +210,7 @@
     "finance": {
       "labels": { "en": "Stock Market & Finance", "fr": "Bourse & Finance" },
       "icon": "trending-up",
-      "priority": 9,
+      "priority": 12,
       "feeds": [
         { "name": "MarketWatch", "url": "https://feeds.marketwatch.com/marketwatch/topstories/", "tags": ["Finance", "Markets", "Stocks"], "lang": "en" },
         { "name": "Reuters Business", "url": "https://www.reuters.com/business/finance/rss", "tags": ["Finance", "Business", "Global"], "lang": "en" },
@@ -162,7 +224,7 @@
     "crypto": {
       "labels": { "en": "Crypto & Blockchain", "fr": "Crypto & Blockchain" },
       "icon": "link",
-      "priority": 10,
+      "priority": 13,
       "feeds": [
         { "name": "CoinDesk", "url": "https://www.coindesk.com/arc/outboundfeeds/rss/", "tags": ["Crypto", "Bitcoin", "Blockchain"], "lang": "en" },
         { "name": "CoinTelegraph", "url": "https://cointelegraph.com/rss", "tags": ["Crypto", "Blockchain", "DeFi"], "lang": "en" },
@@ -176,7 +238,7 @@
     "opensource": {
       "labels": { "en": "Open Source & GitHub", "fr": "Open Source & GitHub" },
       "icon": "git-branch",
-      "priority": 11,
+      "priority": 14,
       "feeds": [
         { "name": "GitHub Blog", "url": "https://github.blog/feed/", "tags": ["GitHub", "Open Source", "DevTools"], "lang": "en" },
         { "name": "GitHub Changelog", "url": "https://github.blog/changelog/feed/", "tags": ["GitHub", "Updates", "Features"], "lang": "en" },
@@ -191,7 +253,7 @@
     "products": {
       "labels": { "en": "Products & Innovation", "fr": "Produits & Innovation" },
       "icon": "package",
-      "priority": 12,
+      "priority": 15,
       "feeds": [
         { "name": "Product Hunt", "url": "https://www.producthunt.com/feed", "tags": ["Products", "Launch", "Startups"], "lang": "en" },
         { "name": "Hacker News Show", "url": "https://hnrss.org/show", "tags": ["Products", "Launch", "HackerNews"], "lang": "en" },

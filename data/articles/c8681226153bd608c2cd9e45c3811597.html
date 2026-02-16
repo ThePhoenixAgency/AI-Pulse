@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open ASR Leaderboard: Trends and Insights with New Multilingual &amp; Long-Form Tracks</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Open ASR Leaderboard: Trends and Insights with New Multilingual &amp; Long-Form Tracks</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 11/21/2025 1:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/open-asr-leaderboard" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/bezzam"><img alt="Eric Bezzam's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6384db7fb2906edaf835a91d/MOTXxaOmjlTZ8wONYifnD.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Steveeeeeeen"><img alt="Steven Zheng's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/654bcb6fae75d15300d48205/T4L1RZUgCZgdik4ZhEWCq.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/eustlb"><img alt="Eustache Le Bihan's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/660bc459d81d6112496f30f8/jMrpAckFyg-_iHMI7sn2h.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/reach-vb"><img alt="Vaibhav Srivastav's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1655385361868-61b85ce86eb1f2c5e6233736.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#1-conformer-encoder--llm-decoder-tops-the-charts-">1. Conformer encoder LLM decoder tops the charts </a> <ul></ul> </li><li><a href="#2-speedaccuracy-tradeoffs-">2. Speed–accuracy tradeoffs </a> <ul></ul> </li><li><a href="#3-multilingual-">3. Multilingual </a> <ul></ul> </li><li><a href="#4-long-form-transcription-is-a-different-game-">4. Long-form transcription is a different game </a> <ul></ul> </li></ul></nav></div><p>While everyone (and their grandma ) is spinning up new ASR models, picking the right one for your use case can feel more overwhelming than choosing your next Netflix show. As of 21 Nov 2025, there are <strong>150 <a href="https://huggingface.co/models?pipeline_tag=audio-text-to-text&amp;sort=trending">Audio-Text-to-Text</a></strong> and <strong>27K <a href="https://huggingface.co/models?pipeline_tag=automatic-speech-recognition&amp;sort=trending">ASR models</a></strong> on the Hub </p>
+<p>Most benchmarks focus on <strong>short-form English transcription (&lt;30s),</strong> and overlook other important tasks, such as (1) multilingual performance and (2) model throughput, which can a be deciding factor for long-form audio like meetings and podcasts.</p>
+<p>Over the past two years, the <a href="https://huggingface.co/spaces/hf-audio/open_asr_leaderboard"><strong>Open ASR Leaderboard</strong></a> has become a standard for comparing open and closed-source models on both <strong>accuracy</strong> and <strong>efficiency</strong>. Recently, <strong>multilingual</strong> and <strong>long-form transcription</strong> tracks have been added to the leaderboard </p>
+<h3> <a href="#tldr---open-asr-leaderboard"> <span></span> </a> <span> TL;DR - <a href="https://huggingface.co/spaces/hf-audio/open_asr_leaderboard">Open ASR Leaderboard</a> </span>
+</h3>
+<ul>
+<li>&nbsp;<strong>New preprint</strong> on ASR trends from the leaderboard: <a href="https://hf.co/papers/2510.06961">https://hf.co/papers/2510.06961</a></li>
+<li> <strong>Best accuracy:</strong> Conformer encoder + LLM decoders (open-source ftw )</li>
+<li> <strong>Fastest:</strong> CTC / TDT decoders</li>
+<li> <strong>Multilingual:</strong> Comes at the cost of single-language performance</li>
+<li> <strong>Long-form:</strong> Closed-source systems still lead (for now )</li>
+<li> <strong>Fine-tuning guides</strong> (<a href="https://github.com/Deep-unlearning/Finetune-Parakeet">Parakeet</a>, <a href="https://github.com/Deep-unlearning/Finetune-Voxtral-ASR">Voxtral</a>, <a href="https://huggingface.co/learn/audio-course/chapter5/fine-tuning">Whisper</a>): to continue pushing performance</li>
+</ul>
+<h2> <a href="#takeaways-from-60-models"> <span></span> </a> <span> Takeaways from 60+ models </span>
+</h2>
+<p>As of 21 Nov 2025, the <em>Open ASR Leaderboard</em> compares <strong>60+ open and closed-source models</strong> from <strong>18 organizations</strong>, across <strong>11 datasets</strong>.</p>
+<p>In a recent <a href="https://hf.co/papers/2510.06961">preprint</a>, we dive into the technical setup and highlight some key trends in modern ASR. Here are the big takeaways </p>
+<h2> <a href="#1-conformer-encoder--llm-decoder-tops-the-charts-"> <span></span> </a> <span> 1. Conformer encoder LLM decoder tops the charts </span>
+</h2>
+<p><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/open_asr_leaderboard/leaderboard_WER.png">
+</p> <p>Models combining <a href="https://huggingface.co/papers/2005.08100"><strong>Conformer encoders</strong></a> with <strong>large language model (LLM) decoders</strong> currently lead in English transcription accuracy. For example, <strong>NVIDIA’s <a href="https://huggingface.co/nvidia/canary-qwen-2.5b">Canary-Qwen-2.5B</a></strong>, <strong>IBM’s <a href="https://huggingface.co/ibm-granite/granite-speech-3.3-8b">Granite-Speech-3.3-8B</a></strong>, and <strong>Microsoft’s <a href="https://huggingface.co/microsoft/Phi-4-multimodal-instruct">Phi-4-Multimodal-Instruct</a></strong> achieve the lowest word error rates (<a href="https://huggingface.co/learn/audio-course/en/chapter5/evaluation#word-error-rate">WER</a>), showing that integrating LLM reasoning can significantly boost ASR accuracy.</p>
+<p> <em>Pro-tip: NVIDIA introduced <a href="https://huggingface.co/papers/2305.05084">Fast Conformer</a>, a 2x faster variant of the Conformer, that is used in their Canary and Parakeet suite of models.</em></p>
+<h2> <a href="#2-speedaccuracy-tradeoffs-"> <span></span> </a> <span> 2. Speed–accuracy tradeoffs </span>
+</h2>
+<p><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/open_asr_leaderboard/leaderboard_RTX.png">
+</p> <p>While highly accurate, these LLM decoders tend to be <strong>slower</strong> than simpler approaches. On the <em>Open ASR Leaderboard</em>, efficiency is measured using <em>inverse real-time factor</em> (RTFx), where higher is better.</p>
+<p>For even faster inference, <a href="https://huggingface.co/learn/audio-course/en/chapter3/ctc#ctc-architectures"><strong>CTC</strong></a> and <a href="https://huggingface.co/papers/2304.06795"><strong>TDT</strong></a> decoders deliver <strong>10–100× faster throughput</strong>, albeit with slightly higher error rates. This makes them ideal for <strong>real-time</strong>, <strong>offline</strong>, or <strong>batch transcription</strong> tasks (such as meetings, lectures, or podcasts).</p>
+<h2> <a href="#3-multilingual-"> <span></span> </a> <span> 3. Multilingual </span>
+</h2>
+<p><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/open_asr_leaderboard/multilingual.png">
+</p> <p>OpenAI’s <a href="https://huggingface.co/openai/whisper-large-v3"><strong>Whisper Large v3</strong></a> remains a strong multilingual baseline, supporting <strong>99 languages</strong>. However, <strong>fine-tuned or distilled variants</strong> like <a href="https://huggingface.co/distil-whisper/distil-large-v3.5"><strong>Distil-Whisper</strong></a> and <a href="https://huggingface.co/nyrahealth/CrisperWhisper"><strong>CrisperWhisper</strong></a> often outperform the original on <strong>English-only</strong> tasks, showing how targeted fine-tuning can improve specialization (<em>how to fine-tune? Check out guides for <a href="https://huggingface.co/learn/audio-course/chapter5/fine-tuning">Whisper</a>, <a href="https://github.com/Deep-unlearning/Finetune-Parakeet">Parakeet</a>, and <a href="https://github.com/Deep-unlearning/Finetune-Voxtral-ASR">Voxtral</a></em>).</p>
+<p>That said, focusing on English tends to <strong>reduce multilingual coverage</strong> a classic case of the tradeoff between specialization and generalization. Similarly, while <strong>self-supervised</strong> systems like Meta’s <a href="https://huggingface.co/facebook/mms-1b-all"><strong>Massively Multilingual Speech (MMS)</strong></a> and <a href="https://github.com/facebookresearch/omnilingual-asr"><strong>Omnilingual ASR</strong></a> can support 1K+ languages, they trail behind language-specific encoders in accuracy.</p>
+<p>&nbsp;<em>While just five languages are currently benchmarked, we’re planning to expand to more languages and are excited for new dataset and models contributions to multilingual ASR through GitHub <a href="https://github.com/huggingface/open_asr_leaderboard">pull requests</a>.</em></p>
+<p> Alongside multilingual benchmarks, several <strong>community-driven leaderboards</strong> focus on individual languages. For example, the <a href="https://huggingface.co/spaces/elmresearchcenter/open_universal_arabic_asr_leaderboard"><strong>Open Universal Arabic ASR Leaderboard</strong></a> compares models across <strong>Modern Standard Arabic and regional dialects</strong>, highlighting how speech variation and diglossia challenge current systems. Similarly. the <a href="https://huggingface.co/spaces/Vikhrmodels/Russian_ASR_Leaderboard"><strong>Russian ASR Leaderboard</strong></a> provides a growing hub for evaluating encoder-decoder and CTC models on <strong>Russian-specific phonology and morphology</strong>. These localized efforts mirror the broader multilingual leaderboard’s mission to encourage <strong>dataset sharing, fine-tuned checkpoints, and transparent model comparisons</strong>, especially in languages with fewer established ASR resources.</p>
+<h2> <a href="#4-long-form-transcription-is-a-different-game-"> <span></span> </a> <span> 4. Long-form transcription is a different game </span>
+</h2>
+<p><img alt="thumbnail" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/open_asr_leaderboard/long_form.png">
+</p> <p>For <strong>long-form audio</strong> (e.g., podcasts, lectures, meetings), <strong>closed-source systems</strong> still edge out open ones. It could be due to domain tuning, custom chunking, or production-grade optimization.</p>
+<p>Among open models, <strong>OpenAI’s Whisper Large v3</strong> performs the best. But for throughput, <strong>CTC-based Conformers</strong> shine for example, <strong>NVIDIA’s <a href="https://huggingface.co/nvidia/parakeet-ctc-1.1b">Parakeet CTC 1.1B</a></strong> achieves an <strong>RTFx of 2793.75</strong>, compared to <strong>68.56</strong> for Whisper Large v3, with only a moderate WER degradation (<strong>6.68</strong> and <strong>6.43</strong> respectively).</p>
+<p>The tradeoff? Parakeet is <strong>English-only,</strong> again reminding us of that multilingual and specialization tradeoff .</p>
+<p> <em>While closed systems still lead, there’s huge potential for open-source innovation here. Long-form ASR remains one of the most exciting frontiers for the community to tackle next!</em></p>
+<h2> <a href="#-the-show-must-go-on"> <span></span> </a> <span> The Show Must Go On </span>
+</h2>
+<p>Given how fast ASR is evolving, we’re excited to see what new architectures push performance and efficiency, and how the <em>Open ASR Leaderboard</em> continues to serve as a <strong>transparent, community-driven benchmark</strong> for the field, and as a reference for other leaderboards (<a href="https://huggingface.co/spaces/Vikhrmodels/Russian_ASR_Leaderboard">Russian</a>, <a href="https://huggingface.co/spaces/elmresearchcenter/open_universal_arabic_asr_leaderboard">Arabic</a>, and <a href="https://huggingface.co/spaces/Speech-Arena-2025/Speech-DF-Arena">Speech DeepFake Detection</a>).</p>
+<p>We’ll keep expanding the <em>Open ASR LeaderBoard</em> with <strong>more models, more languages, and more datasets</strong> so stay tuned </p>
+<p> <strong>Want to contribute?</strong> Head on over to the <a href="https://github.com/huggingface/open_asr_leaderboard">GitHub repo</a> to open a <em>pull request</em> </p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

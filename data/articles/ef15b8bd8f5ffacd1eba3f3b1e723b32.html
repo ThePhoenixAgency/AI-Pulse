@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -47,7 +52,7 @@
 </p><p>The first step was to use the AI to identify the vulnerability and produce a JSON object to help the next agent:
 </p><p><code>
    "param": {<br />        "values": ["wiener"],<br />        "name": "id",<br />        "type": "URL",<br />        "vulnerabilityClass": "IDOR"<br />    }
-</code></p><p>The AI correctly identified what you may be testing for and noticed that based on the requests you sent to it you are testing the URL with a parameter called id. The initial probe was to probe for wiener 😂. The AI then takes this probe and tries to find something uniquely identifiable in the response:
+</code></p><p>The AI correctly identified what you may be testing for and noticed that based on the requests you sent to it you are testing the URL with a parameter called id. The initial probe was to probe for wiener . The AI then takes this probe and tries to find something uniquely identifiable in the response:
 </p><p><code>
 "responseRegexes": [[<br />     "Your username is: wiener",<br />      "Your API Key is: [A-Za-z0-9]{32}",<br />      "&lt;a href=\"/my-account\\?id=wiener\"&gt;My account&lt;\/a&gt;"<br />  ]]
 </code></p><p>Pretty cool the AI has identified the username reflection and the API key and I told it to match the structure of the data so it can find more rather than the specific key. Now it tries to reproduce the finding by making the request with the probe before it generates the new Strike Rule. If the replication was successful, Repeater Strike then prompts you for a Strike Rule name.

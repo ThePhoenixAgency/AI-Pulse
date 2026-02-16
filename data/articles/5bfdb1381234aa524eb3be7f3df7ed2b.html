@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -23,7 +28,7 @@
   </div>
   <div class="content">
     <div><div><article><a href="https://www.youtube.com/watch?v=5AWoGo-L16I">
-  <img alt="rowboat-github-2" src="https://private-user-images.githubusercontent.com/6592213/547591215-fc463b99-01b3-401c-b4a4-044dad480901.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDc0ODUsIm5iZiI6MTc3MTI0NzE4NSwicGF0aCI6Ii82NTkyMjEzLzU0NzU5MTIxNS1mYzQ2M2I5OS0wMWIzLTQwMWMtYjRhNC0wNDRkYWQ0ODA5MDEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTMwNjI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YWM1MDExZmEzNGI2NWQxZTBlODFjZDhiMjQ4Y2E3Zjc4MzQ2ZjIxMTRjMmQ1MGQ1NGVkYWM3NDQ3MTI5NzkwMyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.RS_yFaVBnsb4QeeESNeah5YqV4vm5gZNsGCS_uu2EAI" />
+  <img alt="rowboat-github-2" src="https://private-user-images.githubusercontent.com/6592213/547591215-fc463b99-01b3-401c-b4a4-044dad480901.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDY1NTQsIm5iZiI6MTc3MTI0NjI1NCwicGF0aCI6Ii82NTkyMjEzLzU0NzU5MTIxNS1mYzQ2M2I5OS0wMWIzLTQwMWMtYjRhNC0wNDRkYWQ0ODA5MDEucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTI1MDU0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MjczYmY0NzhiNWQ3NGYyMTBiNzA4Mjk0OTVmYTVkYjJmYzYzMWIyYjY3ZDk1NmFiNGNjMDBkMWI1ZTc5OGI2NyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.qc2Ia3XV3J8Xh0CNvjng7pP5VXut27XL3aKnT0XdQ0I" />
 </a>
 <p></p><h2>Rowboat</h2><a href="#rowboat"></a><p></p>
 <p><strong>Open-source AI coworker that turns work into a knowledge graph and acts on it</strong></p>
@@ -38,7 +43,7 @@
 </ul>
 <p>Download latest for Mac/Windows/Linux: <a href="https://www.rowboatlabs.com/downloads">Download</a></p>
 <p></p><h2>Demo</h2><a href="#demo"></a><p></p>
-<p><a href="https://www.youtube.com/watch?v=5AWoGo-L16I"><img src="https://private-user-images.githubusercontent.com/6592213/547586875-3f560bcf-d93c-4064-81eb-75a9fae31742.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDc0ODUsIm5iZiI6MTc3MTI0NzE4NSwicGF0aCI6Ii82NTkyMjEzLzU0NzU4Njg3NS0zZjU2MGJjZi1kOTNjLTQwNjQtODFlYi03NWE5ZmFlMzE3NDIuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTMwNjI1WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MTY0ZTg5ZTZmNjMyNjk5NDIxN2VkNGY1YjFjYTRlNTA4OWJiZjZmMjM2OGUxMDQzYTE3NDRlODNkNDgwZWI5NyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.KI0XolDA72C2VZkLMwljg6O8aUzOJc-m3WjD_WhYHeo" alt="Demo" /></a></p>
+<p><a href="https://www.youtube.com/watch?v=5AWoGo-L16I"><img src="https://private-user-images.githubusercontent.com/6592213/547586875-3f560bcf-d93c-4064-81eb-75a9fae31742.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDY1NTQsIm5iZiI6MTc3MTI0NjI1NCwicGF0aCI6Ii82NTkyMjEzLzU0NzU4Njg3NS0zZjU2MGJjZi1kOTNjLTQwNjQtODFlYi03NWE5ZmFlMzE3NDIuZ2lmP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTI1MDU0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NTVkZjA2NzEyYmUwNzViODFkYTE3NDI4MTY5MWRjZDU3YTg5MWQyZGZhYmViMGQ5NDE2ODQ2NDhkZDFkYzhjZiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.3XXFBjqG4n7h3cPHpdjmg8_4CRq_Ui5dO7KRVD_AEv0" alt="Demo" /></a></p>
 <p><a href="https://www.youtube.com/watch?v=5AWoGo-L16I">Watch the full video</a></p>
 <hr />
 <p></p><h2>Installation</h2><a href="#installation"></a><p></p>

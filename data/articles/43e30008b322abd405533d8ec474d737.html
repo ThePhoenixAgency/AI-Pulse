@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New Proton Experimental update adds controller support to more launchers on Linux / SteamOS</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>New Proton Experimental update adds controller support to more launchers on Linux / SteamOS</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/11/2026 8:13:41 PM | Lang: EN |
+    <a href="https://www.gamingonlinux.com/2026/02/proton-experimental-update-adds-controller-support-to-more-launchers-linux-steamos/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Valve have released a new update to Proton Experimental, their testing ground for getting more Windows games running on Linux / SteamOS systems. Since there's a few different versions of Proton it's easy to get confused, so check out what they're for <a href="https://www.gamingonlinux.com/guides/view/why-are-there-so-many-different-proton-versions-proton-8-proton-9-experimental-ge-proton/" target="_blank">in the GamingOnLinux guide</a>.</p>
+<p>For the February 11th update here's what's changed:</p>
+<blockquote>
+<ul>
+<li>Now playable: Metal Fatigue.</li>
+<li>Updated Xalia to <a href="https://github.com/madewokherd/xalia/releases/tag/xalia-0.4.7">0.4.7</a>:
+<ul>
+<li>Fixed Xalia wrongly selecting option from unfocused tabs in Rayman: Raving Rabbids.</li>
+<li>Added controller support for DirectX Runtime Components installer when launching BioShock for the first time.</li>
+<li>Added controller support for launchers of the following games: Rocket Knight, Puddle, Zero Escape: The Nonary Games, Metal Slug XX, Mortal Kombat Komplete Edition, Disney Epic Mickey 2: The Power of Two, Batman: Arkham Asylum GOTY, LocoCycle, Ys SEVEN.</li>
+</ul>
+</li>
+<li>Fixed Experimental regression that made Tom Clancy's Ghost Recon Wildlands unplayable.</li>
+<li>Fixed controller hotplug not working for 8BitDo Ultimate 2C and other controllers that expose multiple HID devices.</li>
+<li>Fixed Sea of Solitude showing black screen on Proton.</li>
+</ul>
+</blockquote>
+<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/527906751770837109gol2.jpg"><br>Pictured - Batman: Arkham Asylum Game of the Year Edition</p>
+<p>If you already have it downloaded, it will just show as an update in your Steam Downloads, otherwise you can search for it to install it manually. To use Proton Experimental, go into the game Properties and into the Compatibility menu. Tick the box at the top, then select Proton Experimental from the drop-down box that appears and it will be set for that specific game.</p>
+<p>Source: <a href="https://github.com/ValveSoftware/Proton/wiki/Changelog" target="_blank">Valve GitHub</a></p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

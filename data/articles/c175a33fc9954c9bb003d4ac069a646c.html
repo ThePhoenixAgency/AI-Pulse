@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -51,13 +56,13 @@
 trained on data from over <strong>45 global exchanges</strong>.</p>
 </blockquote>
 
-<p></p><h2>📰 News</h2><a href="#-news"></a><p></p>
+<p></p><h2> News</h2><a href="#-news"></a><p></p>
 <ul>
-<li>🚩 <strong>[2025.11.10]</strong> Kronos has been accpeted by AAAI 2026.</li>
-<li>🚩 <strong>[2025.08.17]</strong> We have released the scripts for fine-tuning! Check them out to adapt Kronos to your own tasks.</li>
-<li>🚩 <strong>[2025.08.02]</strong> Our paper is now available on <a href="https://arxiv.org/abs/2508.02739">arXiv</a>!</li>
+<li> <strong>[2025.11.10]</strong> Kronos has been accpeted by AAAI 2026.</li>
+<li> <strong>[2025.08.17]</strong> We have released the scripts for fine-tuning! Check them out to adapt Kronos to your own tasks.</li>
+<li> <strong>[2025.08.02]</strong> Our paper is now available on <a href="https://arxiv.org/abs/2508.02739">arXiv</a>!</li>
 </ul>
-<p></p><h2>📜 Introduction</h2><a href="#-introduction"></a><p></p>
+<p></p><h2> Introduction</h2><a href="#-introduction"></a><p></p>
 <p><strong>Kronos</strong> is a family of decoder-only foundation models, pre-trained specifically for the "language" of financial markets—K-line sequences. Unlike general-purpose TSFMs, Kronos is designed to handle the unique, high-noise characteristics of financial data. It leverages a novel two-stage framework:</p>
 <ol>
 <li>A specialized tokenizer first quantizes continuous, multi-dimensional K-line data (OHLCV) into <strong>hierarchical discrete tokens</strong>.</li>
@@ -66,10 +71,10 @@ trained on data from over <strong>45 global exchanges</strong>.</p>
 <p>
     <a target="_blank" href="https://github.com/shiyu-coder/Kronos/blob/master/figures/overview.png"><img src="https://github.com/shiyu-coder/Kronos/raw/master/figures/overview.png" alt="" /></a>
 </p>
-<p></p><h2>✨ Live Demo</h2><a href="#-live-demo"></a><p></p>
+<p></p><h2> Live Demo</h2><a href="#-live-demo"></a><p></p>
 <p>We have set up a live demo to visualize Kronos's forecasting results. The webpage showcases a forecast for the <strong>BTC/USDT</strong> trading pair over the next 24 hours.</p>
-<p><strong>👉 <a href="https://shiyu-coder.github.io/Kronos-demo/">Access the Live Demo Here</a></strong></p>
-<p></p><h2>📦 Model Zoo</h2><a href="#-model-zoo"></a><p></p>
+<p><strong> <a href="https://shiyu-coder.github.io/Kronos-demo/">Access the Live Demo Here</a></strong></p>
+<p></p><h2> Model Zoo</h2><a href="#-model-zoo"></a><p></p>
 <p>We release a family of pre-trained models with varying capacities to suit different computational and application needs. All models are readily accessible from the Hugging Face Hub.</p>
 <table>
 <thead>
@@ -87,38 +92,38 @@ trained on data from over <strong>45 global exchanges</strong>.</p>
 <td><a href="https://huggingface.co/NeoQuasar/Kronos-Tokenizer-2k">Kronos-Tokenizer-2k</a></td>
 <td>2048</td>
 <td>4.1M</td>
-<td>✅ <a href="https://huggingface.co/NeoQuasar/Kronos-mini">NeoQuasar/Kronos-mini</a></td>
+<td> <a href="https://huggingface.co/NeoQuasar/Kronos-mini">NeoQuasar/Kronos-mini</a></td>
 </tr>
 <tr>
 <td>Kronos-small</td>
 <td><a href="https://huggingface.co/NeoQuasar/Kronos-Tokenizer-base">Kronos-Tokenizer-base</a></td>
 <td>512</td>
 <td>24.7M</td>
-<td>✅ <a href="https://huggingface.co/NeoQuasar/Kronos-small">NeoQuasar/Kronos-small</a></td>
+<td> <a href="https://huggingface.co/NeoQuasar/Kronos-small">NeoQuasar/Kronos-small</a></td>
 </tr>
 <tr>
 <td>Kronos-base</td>
 <td><a href="https://huggingface.co/NeoQuasar/Kronos-Tokenizer-base">Kronos-Tokenizer-base</a></td>
 <td>512</td>
 <td>102.3M</td>
-<td>✅ <a href="https://huggingface.co/NeoQuasar/Kronos-base">NeoQuasar/Kronos-base</a></td>
+<td> <a href="https://huggingface.co/NeoQuasar/Kronos-base">NeoQuasar/Kronos-base</a></td>
 </tr>
 <tr>
 <td>Kronos-large</td>
 <td><a href="https://huggingface.co/NeoQuasar/Kronos-Tokenizer-base">Kronos-Tokenizer-base</a></td>
 <td>512</td>
 <td>499.2M</td>
-<td>❌</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<p></p><h2>🚀 Getting Started</h2><a href="#-getting-started"></a><p></p>
+<p></p><h2> Getting Started</h2><a href="#-getting-started"></a><p></p>
 <p></p><h3>Installation</h3><a href="#installation"></a><p></p>
 <ol>
 <li>Install Python 3.10+, and then install the dependencies:</li>
 </ol>
 <div><pre>pip install -r requirements.txt</pre></div>
-<p></p><h3>📈 Making Forecasts</h3><a href="#-making-forecasts"></a><p></p>
+<p></p><h3> Making Forecasts</h3><a href="#-making-forecasts"></a><p></p>
 <p>Forecasting with Kronos is straightforward using the <code>KronosPredictor</code> class. It handles data preprocessing, normalization, prediction, and inverse normalization, allowing you to get from raw data to forecasts in just a few lines of code.</p>
 <p><strong>Important Note</strong>: The <code>max_context</code> for <code>Kronos-small</code> and <code>Kronos-base</code> is <strong>512</strong>. This is the maximum sequence length the model can process. For optimal performance, it is recommended that your input data length (i.e., <code>lookback</code>) does not exceed this limit. The <code>KronosPredictor</code> will automatically handle truncation for longer contexts.</p>
 <p>Here is a step-by-step guide to making your first forecast.</p>
@@ -207,7 +212,7 @@ trained on data from over <strong>45 global exchanges</strong>.</p>
     <a target="_blank" href="https://github.com/shiyu-coder/Kronos/blob/master/figures/prediction_example.png"><img src="https://github.com/shiyu-coder/Kronos/raw/master/figures/prediction_example.png" alt="Forecast Example" /></a>
 </p>
 <p>Additionally, we provide a script that makes predictions without Volume and Amount data, which can be found in <a href="https://github.com/shiyu-coder/Kronos/blob/master/examples/prediction_wo_vol_example.py"><code>examples/prediction_wo_vol_example.py</code></a>.</p>
-<p></p><h2>🔧 Finetuning on Your Own Data (A-Share Market Example)</h2><p></p>
+<p></p><h2> Finetuning on Your Own Data (A-Share Market Example)</h2><p></p>
 <p>We provide a complete pipeline for finetuning Kronos on your own datasets. As an example, we demonstrate how to use <a href="https://github.com/microsoft/qlib">Qlib</a> to prepare data from the Chinese A-share market and conduct a simple backtest.</p>
 <blockquote>
 <p><strong>Disclaimer:</strong> This pipeline is intended as a demonstration to illustrate the finetuning process. It is a simplified example and not a production-ready quantitative trading system. A robust quantitative strategy requires more sophisticated techniques, such as portfolio optimization and risk factor neutralization, to achieve stable alpha.</p>
@@ -261,16 +266,16 @@ python finetune/qlib_test.py --device cuda:0</pre></div>
 <p>
     <a target="_blank" href="https://github.com/shiyu-coder/Kronos/blob/master/figures/backtest_result_example.png"><img src="https://github.com/shiyu-coder/Kronos/raw/master/figures/backtest_result_example.png" alt="Backtest Example" /></a>
 </p>
-<p></p><h3>💡 From Demo to Production: Important Considerations</h3><a href="#-from-demo-to-production-important-considerations"></a><p></p>
+<p></p><h3> From Demo to Production: Important Considerations</h3><a href="#-from-demo-to-production-important-considerations"></a><p></p>
 <ul>
 <li><strong>Raw Signals vs. Pure Alpha</strong>: The signals generated by the model in this demo are raw predictions. In a real-world quantitative workflow, these signals would typically be fed into a portfolio optimization model. This model would apply constraints to neutralize exposure to common risk factors (e.g., market beta, style factors like size and value), thereby isolating the <strong>"pure alpha"</strong> and improving the strategy's robustness.</li>
 <li><strong>Data Handling</strong>: The provided <code>QlibDataset</code> is an example. For different data sources or formats, you will need to adapt the data loading and preprocessing logic.</li>
 <li><strong>Strategy and Backtesting Complexity</strong>: The simple top-K strategy used here is a basic starting point. Production-level strategies often incorporate more complex logic for portfolio construction, dynamic position sizing, and risk management (e.g., stop-loss/take-profit rules). Furthermore, a high-fidelity backtest should meticulously model transaction costs, slippage, and market impact to provide a more accurate estimate of real-world performance.</li>
 </ul>
 <blockquote>
-<p><strong>📝 AI-Generated Comments</strong>: Please note that many of the code comments within the <code>finetune/</code> directory were generated by an AI assistant (Gemini 2.5 Pro) for explanatory purposes. While they aim to be helpful, they may contain inaccuracies. We recommend treating the code itself as the definitive source of logic.</p>
+<p><strong> AI-Generated Comments</strong>: Please note that many of the code comments within the <code>finetune/</code> directory were generated by an AI assistant (Gemini 2.5 Pro) for explanatory purposes. While they aim to be helpful, they may contain inaccuracies. We recommend treating the code itself as the definitive source of logic.</p>
 </blockquote>
-<p></p><h2>📖 Citation</h2><a href="#-citation"></a><p></p>
+<p></p><h2> Citation</h2><a href="#-citation"></a><p></p>
 <p>If you use Kronos in your research, we would appreciate a citation to our <a href="https://arxiv.org/abs/2508.02739">paper</a>:</p>
 <div><pre><code>@misc{shi2025kronos,
       title={Kronos: A Foundation Model for the Language of Financial Markets}, 
@@ -282,7 +287,7 @@ python finetune/qlib_test.py --device cuda:0</pre></div>
       url={https://arxiv.org/abs/2508.02739}, 
 }
 </code></pre></div>
-<p></p><h2>📜 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>This project is licensed under the <a href="https://github.com/shiyu-coder/Kronos/blob/master/LICENSE">MIT License</a>.</p>
 </article></div></div>
   </div>

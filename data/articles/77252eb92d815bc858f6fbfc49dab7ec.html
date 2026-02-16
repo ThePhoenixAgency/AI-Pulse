@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New crazy payloads in the URL Validation Bypass Cheat Sheet</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>New crazy payloads in the URL Validation Bypass Cheat Sheet</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 10/29/2024 2:59:13 PM | Lang: EN |
+    <a href="https://portswigger.net/research/new-crazy-payloads-in-the-url-validation-bypass-cheat-sheet" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>29 October 2024 at 13:59 UTC</p> </li> <li> <p><strong>Updated: </strong>22 November 2024 at 09:06 UTC</p> </li> <li> </li> </ul> <p> <img src="https://portswigger.net/cms/images/64/c6/9fed-article-81a7457a-352e-4be5-a489-adfa890fc960.png" alt="URL validation bypass cheat sheet">The strength of our <a href="https://portswigger.net/url-cheat-sheet">URL Validation Bypass Cheat Sheet</a> lies in the contributions from the web security community, and today’s update is no exception. We are excited to introduce a new and improved IP address calculator, inspired by <a href="https://x.com/e1abrador" target="_blank">@e1abrador's</a> <a href="https://github.com/PortSwigger/encode-ip/tree/main">Encode IP Burp Suite Extension</a> and many more.
+</p><h2>New IP validation bypass techniques</h2><p> In addition to the existing ways of representing an IPv4 address, we’ve added the following new formats, supported by Chrome, Firefox, Safari.&nbsp;For example, the cloud metadata IP address&nbsp;<a href="https://portswigger.net/url-cheat-sheet#id=0ccb496127f4b822d7284638041456c0cf9903a9" target="_blank">169.254.169.254</a>&nbsp;can be represented in the following ways:</p><ul> <li>169.254.43518 <p> Partial Decimal (Class B) format combines the third and fourth parts of the IP address into a decimal number</p> </li> <li> 169.16689662 <p> Partial Decimal (Class A) format combines the second, third, and fourth parts of the IP address</p> </li> <li> 0xA9.254.0251.0376 <p> Mixed Encodings: each segment of the IP address can be presented in different formats: hexadecimal, decimal, or octal. To keep our tool efficient, we don’t generate all possible combinations. Instead, we convert the first segment to hexadecimal, the second to decimal, and the last two segments to octal</p> </li></ul><p> The cheat sheet now also supports IPv6 addresses. When a valid IPv6 address is entered into the attacker’s hostname, the wordlist will be updated with the expanded form of the address. If the IPv6 address contains an embedded IPv4 address, the cheat sheet will extract it and generate all the previously mentioned formats. This behaviour can be disabled in the advanced settings.
+</p><p> Additionally, you can encode the resulting IP formats using special encodings like Circled Latin letters and numbers, Fullwidth Forms, or even Seven-segment display characters. To apply these, open the Advanced settings, go to Normalization settings, and select one or more encoding options.
+</p><h2>Userinfo parsing discrepancies</h2><p> We’ve added an intriguing new payload to our cheat sheet that targets discrepancies in userinfo parsing, submitted by <a href="https://x.com/SeanPesce" target="_blank">@SeanPesce</a>:
+</p><ul> <li><a href="https://portswigger.net/url-cheat-sheet#id=1da2f627d702248b9e61cc23912d2c729e52f878">https://example.com[@attacker.com</a></li></ul><p> The “left square bracket” character <code>[</code> in the userinfo segment can cause Spring’s UriComponentsBuilder to return a hostname value that differs from how major browsers interpret it. This discrepancy can potentially lead to vulnerabilities such as open redirects or <a href="https://portswigger.net/web-security/ssrf">SSRF</a>. While testing this payload with our cheat sheet, I was also able to reproduce a separate <a href="https://portswigger.net/url-cheat-sheet#id=8372598e5b45fc427bfec93fddd1c57a48a001a7">exploit</a> that was patched in the same <a href="https://github.com/spring-projects/spring-framework/commit/297cbae2990e1413537c55845a7e0ea0ffd9f9bb">update</a>. This is a perfect example of how our URL Validation Bypass Cheat Sheet can be used to identify real-world vulnerabilities.
+</p><h2>CORS validation bypass cheat sheet update</h2> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

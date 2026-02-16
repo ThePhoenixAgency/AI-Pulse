@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pandoc - Convertir vos documents sans logiciel proprio</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Pandoc - Convertir vos documents sans logiciel proprio</h1>
+  <div class="metadata">
+    Source: Korben | Date: 2/11/2026 10:23:04 AM | Lang: FR |
+    <a href="https://korben.info/pandoc-convertir-documents-web.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p>Si vous avez déjà galéré à convertir un fichier .docx en Markdown propre, ou un document LaTeX en HTML sans que la mise en page explose... vous connaissez la douleur. <strong>Pandoc</strong> règle ça depuis des années en ligne de commande, mais pour ceux que le terminal rebute, y'a du nouveau. Le convertisseur universel de John MacFarlane tourne maintenant dans le navigateur, sans rien installer. Même pas un petit npm install ^^.</p><p>Pour ceux qui débarquent, Pandoc c'est un outil open source (licence GPL) créé par un prof de philo à Berkeley, qui gère une centaine de formats en entrée et en sortie... du .md au .docx en passant par le LaTeX, l'EPUB, le HTML, le reStructuredText et même les slides reveal.js. Bon, en gros, c'est la pierre de Rosette (non pas de Lyon) de la conversion de docs.</p><h2>La version web (zéro install)</h2><p>Alors pour ça, direction
+<a href="https://pandoc.org/app/">pandoc.org/app</a>
+. L'interface est basique, vous glissez-déposez votre .docx ou .tex, vous choisissez le format de sortie dans le menu déroulant, et vous cliquez sur Convert. Et c'est terminé.</p><p>Et le truc cool c'est que rien ne quitte votre navigateur. Le moteur Pandoc tourne en WebAssembly directement dans l'onglet de votre navigteur, du coup vos fichiers ne transitent par aucun serveur. Vous pouvez vérifier ça dans les DevTools réseau... et après le chargement initial de ~15 Mo, c'est clean. Donc même pour des docs un peu sensibles, y'a pas de souci.</p><p><img src="https://korben.info/cdn-cgi/image/width=1200,fit=scale-down,quality=90,f=avif/pandoc-convertir-documents-web/pandoc-convertir-documents-web-2.png" alt=""></p><p>Attention, la version web a quand même ses limites. Elle peut générer du PDF grâce à Typst (embarqué en WASM aussi), mais les très gros fichiers vont faire ramer votre navigateur. Après pour le reste, ça fait le taf.</p><h2>En ligne de commande (pour les power users)</h2><p>Après si vous avez des gros volumes de fichiers à traiter ou des conversions récurrentes, la CLI reste imbattable. Sur macOS c'est un <code>brew install pandoc</code>, sur Linux un <code>apt install pandoc</code> et sur Windows y'a un .msi sur le site officiel. En deux minutes c'est installé.</p><p>La syntaxe ensuite est limpide :</p><div><pre><code><span><span>pandoc monfichier.md -o monfichier.docx
+</span></span></code></pre></div><p>Et là, magie, votre fichier .md se transforme en document Word propre avec les titres, les listes, le gras, tout y est. Dans l'autre sens ça marche aussi :</p><div><pre><code><span><span>pandoc rapport.docx -o rapport.md
+</span></span></code></pre></div><p>Pratique pour récupérer un vieux rapport.docx et le transformer en Markdown exploitable dans
+<a href="https://korben.info/jimmy-convertisseur-notes-markdown-universel.html">Obsidian ou Logseq</a>
+.</p><h2>Cas d'usage concrets</h2><p>Allez, imaginons que vous ayez 200 fichiers .md dans Obsidian et vous vouliez les envoyer à quelqu'un qui ne jure que par Word ? Un petit convert.sh avec une boucle <code>for f in *.md</code> et c'est plié en 30 secondes.</p><p>Et si votre CV est en LaTeX (parce que vous êtes un vrai barbu, ahaha), mais que le recruteur veut un .docx parce que lui c'est pas un vrai barbu (ah le faible ^^), au lieu de copier-coller comme un sauvage, faites un petit <code>pandoc cv.tex -o cv.docx</code> et c'est au propre. Attention quand même, les tableaux LaTeX complexes peuvent casser à la conversion.</p><p>Ou encors si vous rédigez en Markdown (parce que c'est rapide et surtout versionnable avec git) et que vous exportez ça ensuite en PDF ou HTML selon le destinataire, avec l'option <code>--css style.css</code> ou un template perso en .yaml, le rendu sera propre.</p><p>Bref, vous l'aurez compris, Pandoc c'est flexible.</p><h2>Web vs CLI, on choisit quoi ?</h2><p>La version web c'est donc parfait pour les conversions ponctuelles. Vous avez UN fichier .odt ou .rst à convertir, pas envie d'ouvrir un terminal, hop vous allez sur
+<a href="https://pandoc.org/app/">pandoc.org/app</a>
+et c'est réglé en 10 secondes.</p><p>La CLI, elle, assurera grave dès qu'on parlera d'automatisation. Scripts bash, intégration dans des pipelines CI/CD, conversions avec des templates perso, filtres Lua... Là c'est un autre monde. D'ailleurs, pas mal d'outils comme
+<a href="https://korben.info/markitdown-convertisseur-fichiers-markdown.html">MarkItDown</a>
+ou
+<a href="https://korben.info/convertx-convertisseur-fichiers-self-hosted-docker.html">ConvertX</a>
+utilisent Pandoc en backend.</p><p>Voilà, comme ça tout le monde y trouve son compte et Pandoc peut enfin régner sur le monde !!!</p></div><p><small>Cet article peut contenir des images générées à l'aide de l'IA - J'apporte le plus grand soin à chaque article, toutefois, si vous repérez une boulette, faites-moi signe !</small></p></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -22,7 +27,7 @@
     <a href="https://github.com/SynkraAI/aios-core" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    <div><div><article><p></p><h2>Synkra AIOS: Framework Universal de Agentes IA 🚀</h2><a href="#synkra-aios-framework-universal-de-agentes-ia-"></a><p></p>
+    <div><div><article><p></p><h2>Synkra AIOS: Framework Universal de Agentes IA </h2><a href="#synkra-aios-framework-universal-de-agentes-ia-"></a><p></p>
 <p><a href="https://www.npmjs.com/package/aios-core"><img src="https://camo.githubusercontent.com/3bd76099993b1949a851dc3fb9fe4bd33e070245ee3b69b6ef76026711f77468/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f61696f732d636f72652e737667" alt="Versão NPM" /></a>
 <a href="https://github.com/SynkraAI/aios-core/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="Licença: MIT" /></a>
 <a href="https://nodejs.org/"><img src="https://camo.githubusercontent.com/092e0007be85a7ff2897fc519179f0288db62202dfda73be27b46cb89cdaa3d6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6e6f64652d25334525334431382e302e302d627269676874677265656e2e737667" alt="Versão Node.js" /></a>
@@ -80,7 +85,7 @@
 <p><strong>1. Planejamento Agêntico:</strong> Agentes dedicados (analyst, pm, architect) colaboram com você para criar documentos de PRD e Arquitetura detalhados e consistentes. Através de engenharia avançada de prompts e refinamento com human-in-the-loop, estes agentes de planejamento produzem especificações abrangentes que vão muito além da geração genérica de tarefas de IA.</p>
 <p><strong>2. Desenvolvimento Contextualizado por Engenharia:</strong> O agente sm (Scrum Master) então transforma estes planos detalhados em histórias de desenvolvimento hiperdetalhadas que contêm tudo que o agente dev precisa - contexto completo, detalhes de implementação e orientação arquitetural incorporada diretamente nos arquivos de histórias.</p>
 <p>Esta abordagem de duas fases elimina tanto a <strong>inconsistência de planejamento</strong> quanto a <strong>perda de contexto</strong> - os maiores problemas no desenvolvimento assistido por IA. Seu agente dev abre um arquivo de história com compreensão completa do que construir, como construir e por quê.</p>
-<p><strong>📖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/user-guide.md">Veja o fluxo de trabalho completo no Guia do Usuário</a></strong> - Fase de planejamento, ciclo de desenvolvimento e todos os papéis dos agentes</p>
+<p><strong> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/user-guide.md">Veja o fluxo de trabalho completo no Guia do Usuário</a></strong> - Fase de planejamento, ciclo de desenvolvimento e todos os papéis dos agentes</p>
 <p></p><h2>Pré-requisitos</h2><a href="#pré-requisitos"></a><p></p>
 <ul>
 <li>Node.js &gt;=18.0.0 (v20+ recomendado)</li>
@@ -92,9 +97,9 @@
 </blockquote>
 <p><strong>Guias específicos por plataforma:</strong></p>
 <ul>
-<li>📖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/macos.md">Guia de Instalação para macOS</a></li>
-<li>📖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/windows.md">Guia de Instalação para Windows</a></li>
-<li>📖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/linux.md">Guia de Instalação para Linux</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/macos.md">Guia de Instalação para macOS</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/windows.md">Guia de Instalação para Windows</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/installation/linux.md">Guia de Instalação para Linux</a></li>
 </ul>
 <p><strong>Documentação multilíngue disponível:</strong> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/pt/installation">Português</a> | <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/es/installation">Español</a></p>
 <p></p><h2>Navegação Rápida</h2><a href="#navegação-rápida"></a><p></p>
@@ -105,7 +110,7 @@
 <li><strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/user-guide.md#the-core-development-cycle-ide">Ciclo Principal de Desenvolvimento (IDE)</a></strong> - Como os agentes sm, dev e qa colaboram através de arquivos de histórias</li>
 </ol>
 <blockquote>
-<p>⚠️ <strong>Estes diagramas explicam 90% da confusão sobre o fluxo Synkra AIOS Agentic Agile</strong> - Entender a criação de PRD+Arquitetura e o fluxo de trabalho sm/dev/qa e como os agentes passam notas através de arquivos de histórias é essencial - e também explica por que isto NÃO é taskmaster ou apenas um simples executor de tarefas!</p>
+<p> <strong>Estes diagramas explicam 90% da confusão sobre o fluxo Synkra AIOS Agentic Agile</strong> - Entender a criação de PRD+Arquitetura e o fluxo de trabalho sm/dev/qa e como os agentes passam notas através de arquivos de histórias é essencial - e também explica por que isto NÃO é taskmaster ou apenas um simples executor de tarefas!</p>
 </blockquote>
 <p></p><h3>O que você gostaria de fazer?</h3><a href="#o-que-você-gostaria-de-fazer"></a><p></p>
 <ul>
@@ -123,14 +128,14 @@
 <div><pre>npx aios-core@latest install</pre></div>
 <p>Isto vai:</p>
 <ul>
-<li>✅ Detectar automaticamente sua instalação existente</li>
-<li>✅ Atualizar apenas os arquivos que mudaram</li>
-<li>✅ Criar arquivos de backup <code>.bak</code> para quaisquer modificações customizadas</li>
-<li>✅ Preservar suas configurações específicas do projeto</li>
+<li> Detectar automaticamente sua instalação existente</li>
+<li> Atualizar apenas os arquivos que mudaram</li>
+<li> Criar arquivos de backup <code>.bak</code> para quaisquer modificações customizadas</li>
+<li> Preservar suas configurações específicas do projeto</li>
 </ul>
 <p>Isto facilita beneficiar-se das últimas melhorias, correções de bugs e novos agentes sem perder suas customizações!</p>
 <p></p><h2>Início Rápido</h2><a href="#início-rápido"></a><p></p>
-<p></p><h3>🚀 Instalação via NPX (Recomendado)</h3><a href="#-instalação-via-npx-recomendado"></a><p></p>
+<p></p><h3> Instalação via NPX (Recomendado)</h3><a href="#-instalação-via-npx-recomendado"></a><p></p>
 <p><strong>Instale o Synkra AIOS com um único comando:</strong></p>
 <div><pre><span><span>#</span> Criar um novo projeto com assistente interativo moderno</span>
 npx aios-core init meu-projeto
@@ -141,29 +146,29 @@ npx aios-core install
 
 <span><span>#</span> Ou usar uma versão específica</span>
 npx aios-core@latest init meu-projeto</pre></div>
-<p></p><h3>✨ Assistente de Instalação Moderno</h3><a href="#-assistente-de-instalação-moderno"></a><p></p>
+<p></p><h3> Assistente de Instalação Moderno</h3><a href="#-assistente-de-instalação-moderno"></a><p></p>
 <p>O Synkra AIOS agora inclui uma experiência de instalação interativa de última geração, inspirada em ferramentas modernas como Vite e Next.js:</p>
 <p><strong>Recursos do Instalador Interativo:</strong></p>
 <ul>
-<li>🎨 <strong>Interface Moderna</strong>: Prompts coloridos e visuais com @clack/prompts</li>
-<li>✅ <strong>Validação em Tempo Real</strong>: Feedback instantâneo sobre entradas inválidas</li>
-<li>🔄 <strong>Indicadores de Progresso</strong>: Spinners para operações longas (cópia de arquivos, instalação de deps)</li>
-<li>📦 <strong>Seleção Multi-Componente</strong>: Escolha quais componentes instalar com interface intuitiva</li>
-<li>⚙️ <strong>Escolha de Gerenciador de Pacotes</strong>: Selecione entre npm, yarn ou pnpm</li>
-<li>⌨️ <strong>Suporte a Cancelamento</strong>: Ctrl+C ou ESC para sair graciosamente a qualquer momento</li>
-<li>📊 <strong>Resumo de Instalação</strong>: Visualize todas as configurações antes de prosseguir</li>
-<li>⏱️ <strong>Rastreamento de Duração</strong>: Veja quanto tempo levou a instalação</li>
+<li> <strong>Interface Moderna</strong>: Prompts coloridos e visuais com @clack/prompts</li>
+<li> <strong>Validação em Tempo Real</strong>: Feedback instantâneo sobre entradas inválidas</li>
+<li> <strong>Indicadores de Progresso</strong>: Spinners para operações longas (cópia de arquivos, instalação de deps)</li>
+<li> <strong>Seleção Multi-Componente</strong>: Escolha quais componentes instalar com interface intuitiva</li>
+<li> <strong>Escolha de Gerenciador de Pacotes</strong>: Selecione entre npm, yarn ou pnpm</li>
+<li> <strong>Suporte a Cancelamento</strong>: Ctrl+C ou ESC para sair graciosamente a qualquer momento</li>
+<li> <strong>Resumo de Instalação</strong>: Visualize todas as configurações antes de prosseguir</li>
+<li> <strong>Rastreamento de Duração</strong>: Veja quanto tempo levou a instalação</li>
 </ul>
 <p><strong>O instalador oferece:</strong></p>
 <ul>
-<li>✅ Download da versão mais recente do NPM</li>
-<li>✅ Assistente de instalação interativo moderno</li>
-<li>✅ Configuração automática do IDE (Windsurf, Cursor ou Claude Code)</li>
-<li>✅ Configuração de todos os agentes e fluxos de trabalho AIOS</li>
-<li>✅ Criação dos arquivos de configuração necessários</li>
-<li>✅ Inicialização do sistema de meta-agentes</li>
-<li>✅ Verificações de saúde do sistema</li>
-<li>✅ <strong>Suporte Cross-Platform</strong>: Testado em Windows, macOS e Linux</li>
+<li> Download da versão mais recente do NPM</li>
+<li> Assistente de instalação interativo moderno</li>
+<li> Configuração automática do IDE (Windsurf, Cursor ou Claude Code)</li>
+<li> Configuração de todos os agentes e fluxos de trabalho AIOS</li>
+<li> Criação dos arquivos de configuração necessários</li>
+<li> Inicialização do sistema de meta-agentes</li>
+<li> Verificações de saúde do sistema</li>
+<li> <strong>Suporte Cross-Platform</strong>: Testado em Windows, macOS e Linux</li>
 </ul>
 <blockquote>
 <p><strong>É isso!</strong> Sem clonar, sem configuração manual - apenas um comando e você está pronto para começar com uma experiência de instalação moderna e profissional.</p>
@@ -184,15 +189,15 @@ npx aios-core@latest init meu-projeto</pre></div>
 </ol>
 <p></p><h4>Para Claude Code:</h4><a href="#para-claude-code"></a><p></p>
 <ul>
-<li>✅ Já configurado! O arquivo <code>.claude/CLAUDE.md</code> é carregado automaticamente</li>
+<li> Já configurado! O arquivo <code>.claude/CLAUDE.md</code> é carregado automaticamente</li>
 </ul>
 <p>Estas regras fornecem:</p>
 <ul>
-<li>🤖 Reconhecimento e integração de comandos de agentes</li>
-<li>📋 Fluxo de trabalho de desenvolvimento dirigido por histórias</li>
-<li>✅ Rastreamento automático de checkboxes</li>
-<li>🧪 Padrões de teste e validação</li>
-<li>📝 Padrões de código específicos do AIOS</li>
+<li> Reconhecimento e integração de comandos de agentes</li>
+<li> Fluxo de trabalho de desenvolvimento dirigido por histórias</li>
+<li> Rastreamento automático de checkboxes</li>
+<li> Padrões de teste e validação</li>
+<li> Padrões de código específicos do AIOS</li>
 </ul>
 <p></p><h3>Início Mais Rápido com Interface Web (2 minutos)</h3><a href="#início-mais-rápido-com-interface-web-2-minutos"></a><p></p>
 <ol>
@@ -228,17 +233,17 @@ npx aios-core update      Atualizar para versão mais recente
 npx aios-core uninstall   Remover Synkra AIOS</pre></div>
 <p><strong>Recursos da CLI:</strong></p>
 <ul>
-<li>✅ <strong>Help System Abrangente</strong>: <code>--help</code> em qualquer comando mostra documentação detalhada</li>
-<li>✅ <strong>Validação de Entrada</strong>: Feedback imediato sobre parâmetros inválidos</li>
-<li>✅ <strong>Mensagens Coloridas</strong>: Erros em vermelho, sucessos em verde, avisos em amarelo</li>
-<li>✅ <strong>Cross-Platform</strong>: Funciona perfeitamente em Windows, macOS e Linux</li>
-<li>✅ <strong>Suporte a Dry-Run</strong>: Teste instalações sem modificar arquivos</li>
+<li> <strong>Help System Abrangente</strong>: <code>--help</code> em qualquer comando mostra documentação detalhada</li>
+<li> <strong>Validação de Entrada</strong>: Feedback imediato sobre parâmetros inválidos</li>
+<li> <strong>Mensagens Coloridas</strong>: Erros em vermelho, sucessos em verde, avisos em amarelo</li>
+<li> <strong>Cross-Platform</strong>: Funciona perfeitamente em Windows, macOS e Linux</li>
+<li> <strong>Suporte a Dry-Run</strong>: Teste instalações sem modificar arquivos</li>
 </ul>
-<p></p><h3>💡 Exemplos de Uso</h3><a href="#-exemplos-de-uso"></a><p></p>
+<p></p><h3> Exemplos de Uso</h3><a href="#-exemplos-de-uso"></a><p></p>
 <p></p><h4>Instalação Interativa Completa</h4><a href="#instalação-interativa-completa"></a><p></p>
 <div><pre>$ npx aios-core install
 
-🚀 Synkra AIOS Installation
+ Synkra AIOS Installation
 
 ◆ What is your project name<span>?</span>
 │  my-awesome-project
@@ -270,7 +275,7 @@ npx aios-core uninstall   Remover Synkra AIOS</pre></div>
 ▸ Configuring environment...
 ▸ Running post-installation setup...
 
-✔ Installation completed successfully<span>!</span> (34.2s)
+ Installation completed successfully<span>!</span> (34.2s)
 
 Next steps:
   <span>cd</span> my-awesome-project
@@ -279,7 +284,7 @@ Next steps:
 <p></p><h4>Instalação Silenciosa (CI/CD)</h4><a href="#instalação-silenciosa-cicd"></a><p></p>
 <div><pre><span><span>#</span> Instalação automatizada sem prompts</span>
 $ npx aios-core install --quiet --force
-✔ Synkra AIOS installed successfully</pre></div>
+ Synkra AIOS installed successfully</pre></div>
 <p></p><h4>Simulação de Instalação (Dry-Run)</h4><a href="#simulação-de-instalação-dry-run"></a><p></p>
 <div><pre><span><span>#</span> Testar instalação sem modificar arquivos</span>
 $ npx aios-core install --dry-run
@@ -288,32 +293,32 @@ $ npx aios-core install --dry-run
 [DRY RUN] Would copy: .aios-core/ (45 files)
 [DRY RUN] Would initialize: Git repository
 [DRY RUN] Would install: npm dependencies
-✔ Dry run completed - no files were modified</pre></div>
+ Dry run completed - no files were modified</pre></div>
 <p></p><h4>Diagnóstico do Sistema</h4><a href="#diagnóstico-do-sistema"></a><p></p>
 <div><pre>$ npx aios-core doctor
 
-🏥 AIOS System Diagnostics
+ AIOS System Diagnostics
 
-✔ Node.js version: v20.10.0 (meets requirement: <span>&gt;</span>=18.0.0)
-✔ npm version: 10.2.3
-✔ Git installed: version 2.43.0
-✔ GitHub CLI: gh 2.40.1
-✔ Synkra AIOS: v1.0.0
+ Node.js version: v20.10.0 (meets requirement: <span>&gt;</span>=18.0.0)
+ npm version: 10.2.3
+ Git installed: version 2.43.0
+ GitHub CLI: gh 2.40.1
+ Synkra AIOS: v1.0.0
 
 Configuration:
-✔ .aios-core/ directory exists
-✔ Agent files: 11 found
-✔ Workflow files: 8 found
-✔ Templates: 15 found
+ .aios-core/ directory exists
+ Agent files: 11 found
+ Workflow files: 8 found
+ Templates: 15 found
 
 Dependencies:
-✔ @clack/prompts: ^0.7.0
-✔ commander: ^12.0.0
-✔ execa: ^9.0.0
-✔ fs-extra: ^11.0.0
-✔ picocolors: ^1.0.0
+ @clack/prompts: ^0.7.0
+ commander: ^12.0.0
+ execa: ^9.0.0
+ fs-extra: ^11.0.0
+ picocolors: ^1.0.0
 
-✅ All checks passed<span>!</span> Your installation is healthy.</pre></div>
+ All checks passed<span>!</span> Your installation is healthy.</pre></div>
 <p></p><h4>Obter Ajuda</h4><a href="#obter-ajuda"></a><p></p>
 <div><pre>$ npx aios-core --help
 
@@ -353,7 +358,7 @@ npx aios-core@latest install
 <span><span>#</span> 1. Detectar instalação existente (se houver)</span>
 <span><span>#</span> 2. Instalar/atualizar framework AIOS</span>
 <span><span>#</span> 3. Configurar agentes e workflows</span></pre></div>
-<p></p><h2>🌟 Além do Desenvolvimento de Software - Squads</h2><a href="#-além-do-desenvolvimento-de-software---squads"></a><p></p>
+<p></p><h2> Além do Desenvolvimento de Software - Squads</h2><a href="#-além-do-desenvolvimento-de-software---squads"></a><p></p>
 <p>O framework de linguagem natural do AIOS funciona em QUALQUER domínio. Os Squads fornecem agentes IA especializados para escrita criativa, estratégia de negócios, saúde e bem-estar, educação e muito mais. Além disso, os Squads podem expandir o núcleo do Synkra AIOS com funcionalidade específica que não é genérica para todos os casos. <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Veja o Guia de Squads</a> e aprenda a criar os seus próprios!</p>
 <p></p><h2>Agentes Disponíveis</h2><a href="#agentes-disponíveis"></a><p></p>
 <p>O Synkra AIOS vem com 11 agentes especializados:</p>
@@ -379,25 +384,25 @@ npx aios-core@latest install
 <p></p><h2>Documentação e Recursos</h2><a href="#documentação-e-recursos"></a><p></p>
 <p></p><h3>Guias Essenciais</h3><a href="#guias-essenciais"></a><p></p>
 <ul>
-<li>📖 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/user-guide.md">Guia do Usuário</a></strong> - Passo a passo completo desde a concepção até a conclusão do projeto</li>
-<li>🏗️ <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ARCHITECTURE-INDEX.md">Arquitetura Principal</a></strong> - Mergulho técnico profundo e design do sistema</li>
-<li>🚀 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a></strong> - Estenda o AIOS para qualquer domínio além do desenvolvimento de software</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/user-guide.md">Guia do Usuário</a></strong> - Passo a passo completo desde a concepção até a conclusão do projeto</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ARCHITECTURE-INDEX.md">Arquitetura Principal</a></strong> - Mergulho técnico profundo e design do sistema</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a></strong> - Estenda o AIOS para qualquer domínio além do desenvolvimento de software</li>
 </ul>
 <p></p><h3>Documentação Adicional</h3><a href="#documentação-adicional"></a><p></p>
 <ul>
-<li>🤖 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a></strong> - Crie e publique equipes de agentes IA</li>
-<li>📋 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/getting-started.md">Primeiros Passos</a></strong> - Tutorial passo a passo para iniciantes</li>
-<li>🔧 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/troubleshooting.md">Solução de Problemas</a></strong> - Soluções para problemas comuns</li>
-<li>🎯 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/GUIDING-PRINCIPLES.md">Princípios Orientadores</a></strong> - Filosofia e melhores práticas do AIOS</li>
-<li>🏛️ <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ARCHITECTURE-INDEX.md">Visão Geral da Arquitetura</a></strong> - Visão detalhada da arquitetura do sistema</li>
-<li>⚙️ <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/performance-tuning-guide.md">Guia de Ajuste de Performance</a></strong> - Otimize seu fluxo de trabalho AIOS</li>
-<li>🔒 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/security-best-practices.md">Melhores Práticas de Segurança</a></strong> - Segurança e proteção de dados</li>
-<li>🔄 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/migration-guide.md">Guia de Migração</a></strong> - Migração de versões anteriores</li>
-<li>📦 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/versioning-and-releases.md">Versionamento e Releases</a></strong> - Política de versões</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a></strong> - Crie e publique equipes de agentes IA</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/getting-started.md">Primeiros Passos</a></strong> - Tutorial passo a passo para iniciantes</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/troubleshooting.md">Solução de Problemas</a></strong> - Soluções para problemas comuns</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/GUIDING-PRINCIPLES.md">Princípios Orientadores</a></strong> - Filosofia e melhores práticas do AIOS</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ARCHITECTURE-INDEX.md">Visão Geral da Arquitetura</a></strong> - Visão detalhada da arquitetura do sistema</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/performance-tuning-guide.md">Guia de Ajuste de Performance</a></strong> - Otimize seu fluxo de trabalho AIOS</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/security-best-practices.md">Melhores Práticas de Segurança</a></strong> - Segurança e proteção de dados</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/migration-guide.md">Guia de Migração</a></strong> - Migração de versões anteriores</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/versioning-and-releases.md">Versionamento e Releases</a></strong> - Política de versões</li>
 </ul>
-<p></p><h2>🤖 AIOS Autonomous Development Engine (ADE)</h2><a href="#-aios-autonomous-development-engine-ade"></a><p></p>
+<p></p><h2> AIOS Autonomous Development Engine (ADE)</h2><a href="#-aios-autonomous-development-engine-ade"></a><p></p>
 <p>O Synkra AIOS v1.0.0 introduz o <strong>Autonomous Development Engine (ADE)</strong> - um sistema completo para desenvolvimento autônomo que transforma requisitos em código funcional.</p>
-<p></p><h3>🎯 O Que é o ADE?</h3><a href="#-o-que-é-o-ade"></a><p></p>
+<p></p><h3> O Que é o ADE?</h3><a href="#-o-que-é-o-ade"></a><p></p>
 <p>O ADE é um conjunto de <strong>7 Epics</strong> que habilitam execução autônoma de desenvolvimento:</p>
 <table>
 <thead>
@@ -445,14 +450,14 @@ npx aios-core@latest install
 </tr>
 </tbody>
 </table>
-<p></p><h3>🔄 Fluxo Principal</h3><a href="#-fluxo-principal"></a><p></p>
+<p></p><h3> Fluxo Principal</h3><a href="#-fluxo-principal"></a><p></p>
 <div><pre><code>User Request → Spec Pipeline → Execution Engine → QA Review → Working Code
                                       ↓
                               Recovery System
                                       ↓
                                Memory Layer
 </code></pre></div>
-<p></p><h3>⚡ Quick Start ADE</h3><a href="#-quick-start-ade"></a><p></p>
+<p></p><h3> Quick Start ADE</h3><a href="#-quick-start-ade"></a><p></p>
 <div><pre><span><span>#</span> 1. Criar spec a partir de requisito</span>
 @pm <span>*</span>gather-requirements
 @architect <span>*</span>assess-complexity
@@ -467,7 +472,7 @@ npx aios-core@latest install
 
 <span><span>#</span> 3. QA Review</span>
 @qa <span>*</span>review-build STORY-42</pre></div>
-<p></p><h3>📖 Documentação ADE</h3><a href="#-documentação-ade"></a><p></p>
+<p></p><h3> Documentação ADE</h3><a href="#-documentação-ade"></a><p></p>
 <ul>
 <li><strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/ade-guide.md">Guia Completo do ADE</a></strong> - Tutorial passo a passo</li>
 <li><strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ADE-AGENT-CHANGES.md">Alterações nos Agentes</a></strong> - Comandos e capabilities por agente</li>
@@ -479,7 +484,7 @@ npx aios-core@latest install
 <li><strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ADE-EPIC6-HANDOFF.md">Epic 6 - QA Evolution</a></strong></li>
 <li><strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/architecture/ADE-EPIC7-HANDOFF.md">Epic 7 - Memory Layer</a></strong></li>
 </ul>
-<p></p><h3>🆕 Novos Comandos por Agente</h3><a href="#-novos-comandos-por-agente"></a><p></p>
+<p></p><h3> Novos Comandos por Agente</h3><a href="#-novos-comandos-por-agente"></a><p></p>
 <p><strong>@devops:</strong></p>
 <ul>
 <li><code>*create-worktree</code>, <code>*list-worktrees</code>, <code>*merge-worktree</code>, <code>*cleanup-worktrees</code></li>
@@ -543,41 +548,41 @@ npx aios-core@latest install
 <p>Para mais informações, execute <code>npx aios-core pro --help</code> após a instalação.</p>
 <p></p><h2>Suporte &amp; Comunidade</h2><a href="#suporte--comunidade"></a><p></p>
 <ul>
-<li>📖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/community.md">Guia da Comunidade</a> - Como participar e contribuir</li>
-<li>💬 <a href="https://github.com/SynkraAI/aios-core/discussions">Discussões GitHub</a> - Hub central da comunidade</li>
-<li>💡 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/FEATURE_PROCESS.md">Processo de Features</a> - Como propor novas funcionalidades</li>
-<li>🐛 <a href="https://github.com/SynkraAI/aios-core/issues">Rastreador de Issues</a></li>
-<li>📋 <a href="https://github.com/SynkraAI/aios-core/blob/main/CONTRIBUTING.md">Como Contribuir</a></li>
-<li>🗺️ <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/roadmap.md">Roadmap</a> - Veja o que estamos construindo</li>
-<li>🤖 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a> - Crie equipes de agentes IA</li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/community.md">Guia da Comunidade</a> - Como participar e contribuir</li>
+<li> <a href="https://github.com/SynkraAI/aios-core/discussions">Discussões GitHub</a> - Hub central da comunidade</li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/FEATURE_PROCESS.md">Processo de Features</a> - Como propor novas funcionalidades</li>
+<li> <a href="https://github.com/SynkraAI/aios-core/issues">Rastreador de Issues</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/CONTRIBUTING.md">Como Contribuir</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/roadmap.md">Roadmap</a> - Veja o que estamos construindo</li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/guides/squads-guide.md">Guia de Squads</a> - Crie equipes de agentes IA</li>
 </ul>
 <p></p><h2>Git Workflow e Validação</h2><a href="#git-workflow-e-validação"></a><p></p>
 <p>O Synkra AIOS implementa um sistema de validação de múltiplas camadas para garantir qualidade do código e consistência:</p>
-<p></p><h3>🛡️ Defense in Depth - 3 Camadas de Validação</h3><a href="#️-defense-in-depth---3-camadas-de-validação"></a><p></p>
+<p></p><h3> Defense in Depth - 3 Camadas de Validação</h3><a href="#-defense-in-depth---3-camadas-de-validação"></a><p></p>
 <p><strong>Camada 1: Pre-commit (Local - Rápida)</strong></p>
 <ul>
-<li>✅ ESLint - Qualidade de código</li>
-<li>✅ TypeScript - Verificação de tipos</li>
-<li>⚡ Performance: &lt;5s</li>
-<li>💾 Cache habilitado</li>
+<li> ESLint - Qualidade de código</li>
+<li> TypeScript - Verificação de tipos</li>
+<li> Performance: &lt;5s</li>
+<li> Cache habilitado</li>
 </ul>
 <p><strong>Camada 2: Pre-push (Local - Validação de Stories)</strong></p>
 <ul>
-<li>✅ Validação de checkboxes de histórias</li>
-<li>✅ Consistência de status</li>
-<li>✅ Seções obrigatórias</li>
+<li> Validação de checkboxes de histórias</li>
+<li> Consistência de status</li>
+<li> Seções obrigatórias</li>
 </ul>
 <p><strong>Camada 3: CI/CD (Cloud - Obrigatório para merge)</strong></p>
 <ul>
-<li>✅ Todos os testes</li>
-<li>✅ Cobertura de testes (80% mínimo)</li>
-<li>✅ Validações completas</li>
-<li>✅ GitHub Actions</li>
+<li> Todos os testes</li>
+<li> Cobertura de testes (80% mínimo)</li>
+<li> Validações completas</li>
+<li> GitHub Actions</li>
 </ul>
-<p></p><h3>📖 Documentação Detalhada</h3><a href="#-documentação-detalhada"></a><p></p>
+<p></p><h3> Documentação Detalhada</h3><a href="#-documentação-detalhada"></a><p></p>
 <ul>
-<li>📋 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/git-workflow-guide.md">Guia Completo de Git Workflow</a></strong> - Guia detalhado do fluxo de trabalho</li>
-<li>📋 <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></strong> - Guia de contribuição</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/docs/git-workflow-guide.md">Guia Completo de Git Workflow</a></strong> - Guia detalhado do fluxo de trabalho</li>
+<li> <strong><a href="https://github.com/SynkraAI/aios-core/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a></strong> - Guia de contribuição</li>
 </ul>
 <p></p><h3>Comandos Disponíveis</h3><a href="#comandos-disponíveis"></a><p></p>
 <div><pre><span><span>#</span> Validações locais</span>
@@ -599,7 +604,7 @@ node .aios-core/utils/aios-validator.js stories      <span><span>#</span> Valida
 <li>Acesso de admin ao repositório</li>
 </ul>
 <p></p><h2>Contribuindo</h2><a href="#contribuindo"></a><p></p>
-<p><strong>Estamos empolgados com contribuições e acolhemos suas ideias, melhorias e Squads!</strong> 🎉</p>
+<p><strong>Estamos empolgados com contribuições e acolhemos suas ideias, melhorias e Squads!</strong> </p>
 <p>Para contribuir:</p>
 <ol>
 <li>Fork o repositório</li>
@@ -610,10 +615,10 @@ node .aios-core/utils/aios-validator.js stories      <span><span>#</span> Valida
 </ol>
 <p>Veja também:</p>
 <ul>
-<li>📋 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/how-to-contribute-with-pull-requests.md">Como Contribuir com Pull Requests</a></li>
-<li>📋 <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/git-workflow-guide.md">Guia de Git Workflow</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/how-to-contribute-with-pull-requests.md">Como Contribuir com Pull Requests</a></li>
+<li> <a href="https://github.com/SynkraAI/aios-core/blob/main/docs/git-workflow-guide.md">Guia de Git Workflow</a></li>
 </ul>
-<p></p><h2>📄 Legal</h2><a href="#-legal"></a><p></p>
+<p></p><h2> Legal</h2><a href="#-legal"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -672,9 +677,9 @@ node .aios-core/utils/aios-validator.js stories      <span><span>#</span> Valida
 </table>
 <p></p><h2>Reconhecimentos</h2><a href="#reconhecimentos"></a><p></p>
 <p><a href="https://github.com/SynkraAI/aios-core/graphs/contributors"><img src="https://camo.githubusercontent.com/4306e8dc6c2409b9bbd184c082f59e06d5c7fd9cd084e8affecf1b6c3146471a/68747470733a2f2f636f6e747269622e726f636b732f696d6167653f7265706f3d53796e6b726141492f61696f732d636f7265" alt="Contributors" /></a></p>
-<p><sub>Construído com ❤️ para a comunidade de desenvolvimento assistido por IA</sub></p>
+<p><sub>Construído com  para a comunidade de desenvolvimento assistido por IA</sub></p>
 <hr />
-<p><strong><a href="#synkra-aios-framework-universal-de-agentes-ia-">⬆ Voltar ao topo</a></strong></p>
+<p><strong><a href="#synkra-aios-framework-universal-de-agentes-ia-"> Voltar ao topo</a></strong></p>
 </article></div></div>
   </div>
 </body>

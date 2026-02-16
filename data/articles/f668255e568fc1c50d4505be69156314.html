@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -47,7 +52,7 @@
 <section>
 <h2><span>La carte – vue de dessous</span></h2>
 <p><img src="https://www.framboise314.fr/wp-content/uploads/2026/01/Sunfounder_Fusion_HAT_001a.jpg" alt="" /></p>
-<p>Dessous, SunFounder a eu la bonne idée d’imprimer un <strong>pense-bête</strong> directement sur le PCB : “SPECIFICATION” avec la <strong>batterie 7,4 V Li-ion</strong>, la <strong>charge</strong>, et les rails d’alimentation (dont le <strong>5 V</strong> et le <strong>3,3 V</strong>). On trouve aussi un tableau qui rappelle le <strong>mapping</strong> des canaux moteurs vers des broches (Pxx), et plusieurs <strong>pastilles / points de test</strong> utiles pour le debug. Bref : ce n’est pas juste “le côté moche avec les soudures” : c’est aussi une mini fiche technique intégrée.N’oubliez pas que ces infos seront « sous » la carte une fois qu’elle sera fixée sur le Raspberry Pi 😀<br />
+<p>Dessous, SunFounder a eu la bonne idée d’imprimer un <strong>pense-bête</strong> directement sur le PCB : “SPECIFICATION” avec la <strong>batterie 7,4 V Li-ion</strong>, la <strong>charge</strong>, et les rails d’alimentation (dont le <strong>5 V</strong> et le <strong>3,3 V</strong>). On trouve aussi un tableau qui rappelle le <strong>mapping</strong> des canaux moteurs vers des broches (Pxx), et plusieurs <strong>pastilles / points de test</strong> utiles pour le debug. Bref : ce n’est pas juste “le côté moche avec les soudures” : c’est aussi une mini fiche technique intégrée.N’oubliez pas que ces infos seront « sous » la carte une fois qu’elle sera fixée sur le Raspberry Pi <br />
 Le petit bloc métallique au dessus de l’inscription « FUSION »‘ est le microphone, je vais y revenir.</p>
 <section>
 <h2><span>Alimentation – prise de charge USB-C et pack batterie 2×18650</span></h2>
@@ -428,7 +433,7 @@ En pratique, les commandes <em>“light on”</em> et <em>“light off”</em> f
 <li><strong>À garder en tête</strong> : l’audio mobilise l’I²S du Pi (donc ces GPIO ne sont plus “libres”), le pack 2×18650 fourni (2000 mAh) donne une autonomie correcte pour des démos mais pourra être un peu juste sur un robot gourmand, et les drivers moteurs restent dimensionnés pour de la “petite” motorisation (ce n’est pas un contrôleur pour moteurs de trottinette, hein).</li>
 </ul>
 <p>Bref : si vous cherchez une base propre pour monter un robot Raspberry Pi qui ne ressemble pas à un millefeuille de modules (et que vous voulez ajouter de la voix, des capteurs, un peu d’“intelligence”) la Fusion HAT+ est une très bonne candidate. Dans la suite, l’intérêt sera de la mettre face à un <strong>vrai projet</strong> (robot mobile, mécanisme, pompe/irrigation, assistant vocal “atelier”…), histoire de voir comment elle se comporte sur la durée, avec de la charge sur les moteurs, des servos qui bougent pour de bon, et un Pi qui fait tourner autre chose qu’un simple script de démo.</p>
-<p><em>Et puis soyons honnêtes : une carte qui gère l’alim, fait bouger des moteurs et répond à “allume / éteint”… c’est déjà un début d’obéissance. Reste à lui apprendre à ranger l’atelier.</em> 😄</p>
+<p><em>Et puis soyons honnêtes : une carte qui gère l’alim, fait bouger des moteurs et répond à “allume / éteint”… c’est déjà un début d’obéissance. Reste à lui apprendre à ranger l’atelier.</em> </p>
 <h2><span>Sources</span></h2>
 <p><a href="https://www.sunfounder.com/products/sunfounder-fusion-hat-expansion-board">SunFounder Fusion HAT+ Expansion Board for Raspberry Pi 5/4/3B+/Zero 2W, Rechargeable Battery, 4 DC Motor Drivers, 12 PWM Servo, ADC, Speaker &amp; Mic, Works with AI LLMs（ChatGPT-4o/Gemini）</a></p>
 <p><a href="https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/_shared/component/cpn_fusion_hat.html" target="_blank">https://docs.sunfounder.com/projects/ai-lab-kit/en/latest/_shared/component/cpn_fusion_hat.html</a></p>

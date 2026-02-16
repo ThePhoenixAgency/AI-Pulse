@@ -85,12 +85,16 @@ jobs:
             const catMap = {
               'AI / IA': 'ai',
               'Cybersecurity': 'cybersecurity',
+              'Cybersecurity / Cybersécurité': 'cybersecurity',
               'IoT': 'iot',
               'Windows': 'windows',
               'Mac / Apple': 'mac',
               'Linux': 'linux',
+              'Tech Generale': 'tech',
               'Tech Générale': 'tech',
+              'Tech Générale / General Tech': 'tech',
               'Entrepreneuriat': 'entrepreneurship',
+              'Entrepreneuriat / Entrepreneurship': 'entrepreneurship',
               'Bourse & Finance': 'finance',
               'Crypto & Blockchain': 'crypto',
               'Open Source & GitHub': 'opensource',
@@ -98,8 +102,8 @@ jobs:
             };
 
             const categories = selectedCats.map(c => catMap[c]).filter(Boolean);
-            const lang = langRaw.includes('Français') ? 'fr' : langRaw.includes('English') ? 'en' : 'all';
-            const frequency = freqRaw.includes('Quotidien') ? 'daily' : 'each_update';
+            const lang = /fran[cç]ais|french/i.test(langRaw) ? 'fr' : /anglais|english/i.test(langRaw) ? 'en' : 'all';
+            const frequency = /quotidien|daily/i.test(freqRaw) ? 'daily' : 'each_update';
 
             // Read subscribers
             const subsPath = 'data/subscribers.json';

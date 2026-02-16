@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SyGra: The One-Stop Framework for Building Data for LLMs and SLMs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>SyGra: The One-Stop Framework for Building Data for LLMs and SLMs</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 9/22/2025 8:45:05 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/ServiceNow-AI/sygra-data-gen-framework" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/bidyapati"><img alt="Bidyapati Pradhan's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/648bec975e0614c7eaa4d938/0ZUxti9xnSTIVcF5zs5Yd.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/vipulmitt"><img alt="Vipul Mittal's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64b77aec90b38df833830b5a/1oeuFQGwm_mepB-d_Mqsu.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/amitsaha"><img alt="Amit Kumar Saha's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64a3bbc378edd17f9652bf3b/XJM8hvtNUxRSMrWvznLHT.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/surajit"><img alt="Surajit Dasgupta's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/603c6bf03249b99991dbcbd0/IZDS9PIg-9b8QleK08Zan.png"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#enter-sygra-one-framework-for-every-data-challenge">Enter SyGra: One Framework for Every Data Challenge</a> <ul></ul> </li><li><a href="#why-sygra-matters">Why SyGra&nbsp;Matters</a> <ul></ul> </li><li><a href="#sygra-architecture">SyGra Architecture</a> <ul></ul> </li><li><a href="#final-thoughts">Final Thoughts</a> <ul></ul> </li><li><a href="#references">References</a> <ul></ul> </li></ul></nav></div><p>When we think about building a model - be it a Large Language Model (LLM) or a Small Language Model (SLM) - the first thing we need is data. While a vast amount of open data is available, it rarely comes in the exact format required to train or align models.
+In practice, we often face scenarios where the raw data isn't enough. We need data that is more structured, domain-specific, complex, or aligned with the task at hand. Let's look at some common situations:</p>
+<h4> <a href="#complex-scenarios-missing"> <span></span> </a> <span> Complex Scenarios Missing </span>
+</h4>
+<p>&nbsp;You start with a simple dataset, but the model fails on advanced reasoning tasks. How do you generate more complex datasets to strengthen performance?</p>
+<h4> <a href="#knowledge-base-to-qa"> <span></span> </a> <span> Knowledge Base to Q&amp;A </span>
+</h4>
+<p>&nbsp;You already have a knowledge base, but it's not in Q&amp;A format. How can you transform it into a usable question-answering dataset?</p>
+<h4> <a href="#from-sft-to-dpo"> <span></span> </a> <span> From SFT to DPO </span>
+</h4>
+<p>&nbsp;You've prepared a supervised fine-tuning (SFT) dataset. But now you want to align your model using Direct Preference Optimization (DPO). How can you generate preference pairs?</p>
+<h4> <a href="#depth-of-questions"> <span></span> </a> <span> Depth of Questions </span>
+</h4>
+<p>&nbsp;You have a Q&amp;A dataset, but the questions are shallow. How can you create in-depth, multi-turn, or reasoning-heavy questions?</p>
+<h4> <a href="#domain-specific-mid-training"> <span></span> </a> <span> Domain-Specific Mid-Training </span>
+</h4>
+<p>&nbsp;You possess a massive corpus but need to filter and curate data for mid-training on a specific domain.</p>
+<h4> <a href="#pdfs-and-images-to-documents"> <span></span> </a> <span> PDFs and Images to Documents </span>
+</h4>
+<p>&nbsp;Your data lives in PDFs or images, and you need to convert them into structured documents for building a Q&amp;A system.</p>
+<h4> <a href="#boosting-reasoning-ability"> <span></span> </a> <span> Boosting Reasoning Ability </span>
+</h4>
+<p>&nbsp;You already have reasoning datasets, but want to push models toward better "thinking tokens" for step-by-step problem-solving.</p>
+<h4> <a href="#quality-filtering"> <span></span> </a> <span> Quality Filtering </span>
+</h4>
+<p>&nbsp;Not all data is good data. How do you automatically filter out poor-quality samples and keep only the high-value ones?</p>
+<h4> <a href="#small-to-large-contexts"> <span></span> </a> <span> Small to Large Contexts </span>
+</h4>
+<p>&nbsp;Your dataset has small chunks of context, but you want to build larger-context datasets optimized for RAG (Retrieval-Augmented Generation) pipelines.</p>
+<h4> <a href="#cross-language-conversion"> <span></span> </a> <span> Cross-Language Conversion </span>
+</h4>
+<p>&nbsp;You have German datasets but need to translate, adapt, and repurpose them into English Q&amp;A systems.
+And the list goes on. The needs around data building never end when working with modern AI models.</p>
+<hr>
+<h2> <a href="#enter-sygra-one-framework-for-every-data-challenge"> <span></span> </a> <span> Enter SyGra: One Framework for Every Data Challenge </span>
+</h2>
+<p>This is where <a href="https://github.com/ServiceNow/SyGra">SyGra</a> comes in.
+<a href="https://github.com/ServiceNow/SyGra">SyGra</a> is a low-code/no-code framework designed to simplify dataset creation, transformation, and alignment for LLMs and SLMs. Instead of writing complex scripts and pipelines, you can focus on prompt engineering, while <a href="https://github.com/ServiceNow/SyGra">SyGra</a> takes care of the heavy lifting.
+<br>Key Features of&nbsp;<a href="https://github.com/ServiceNow/SyGra">SyGra</a>:</p>
+<ul>
+<li> Python Library + Framework: Easy to integrate into existing ML workflows with SyGra library.</li>
+<li> Supports Multiple Inference Backends: Works seamlessly with vLLM, Hugging Face TGI, Triton, Ollama, and more.</li>
+<li> Low-Code/No-Code: Build complex datasets without heavy engineering effort.</li>
+<li> Flexible Data Generation: From Q&amp;A to DPO, reasoning to multi-language, SyGra adapts to your use case.</li>
+</ul> <p><img src="https://raw.githubusercontent.com/ServiceNow/SyGra/refs/heads/main/docs/resources/images/component_model_client.png"></p><hr>
+<h2> <a href="#why-sygra-matters"> <span></span> </a> <span> Why SyGra&nbsp;Matters </span>
+</h2>
+<p>Data is the foundation of AI. The quality, diversity, and structure of your data often matter more than model architecture tweaks. By enabling flexible and scalable dataset creation, SyGra helps teams:</p>
+<ul>
+<li>Accelerate model alignment (SFT, DPO, RAG pipelines).</li>
+<li>Save engineering time with plug-and-play workflows.</li>
+<li>Improve model robustness across complex and domain-specific tasks.</li>
+<li>Reduce manual dataset curation effort.</li> <p>Note: An example implementation can be found at <a href="https://github.com/ServiceNow/SyGra/blob/main/docs/tutorials/image_to_qna_tutorial.md">https://github.com/ServiceNow/SyGra/blob/main/docs/tutorials/image_to_qna_tutorial.md</a></p>
+<h2> <a href="#sygra-architecture"> <span></span> </a> <span> SyGra Architecture </span>
+</h2>
+<img src="https://raw.githubusercontent.com/ServiceNow/SyGra/refs/heads/main/docs/resources/images/sygra_architecture.png"> <p><b>Few Example Task</b>
+<a href="https://github.com/ServiceNow/SyGra/tree/main/tasks/examples">https://github.com/ServiceNow/SyGra/tree/main/tasks/examples</a></p>
+<h2> <a href="#final-thoughts"> <span></span> </a> <span> Final Thoughts </span>
+</h2>
+<p>The journey of building and refining datasets never ends. Each use case brings new challenges - from translation and knowledge base conversion to reasoning enhancement and domain filtering. With SyGra, you don't have to reinvent the wheel every time.
+Instead, you get a unified framework that empowers you to generate, filter, and align data for your models - so you can focus on what really matters: building smarter AI systems.</p>
+<h2> <a href="#references"> <span></span> </a> <span> References </span>
+</h2>
+<ul>
+<li>Paper Link: https://arxiv.org/abs/2508.15432</li>
+<li>Documentation: https://servicenow.github.io/SyGra/</li>
+<li>Git Repository: https://github.com/ServiceNow/SyGra</li>
+</ul></ul></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

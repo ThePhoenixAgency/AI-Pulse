@@ -123,6 +123,7 @@ const linkedinHelper = require('./linkedin-helper');
  * Résultat : /chemin/vers/AI-Pulse/config.json
  */
 const CONFIG_PATH = path.join(__dirname, '..', 'config.json');
+const KEYWORD_MAP_PATH = path.join(__dirname, '..', 'data', 'keyword-mapping.json');
 let config, SETTINGS, CATEGORIES;
 try {
   if (!fs.existsSync(CONFIG_PATH)) {
@@ -143,6 +144,16 @@ try {
   console.error(`ERROR: Failed to load or parse config.json: ${e.message}`);
   console.error('Please check that config.json is valid JSON and properly formatted.');
   process.exit(1);
+}
+
+let KEYWORD_MAPPING = {};
+try {
+  if (fs.existsSync(KEYWORD_MAP_PATH)) {
+    KEYWORD_MAPPING = JSON.parse(fs.readFileSync(KEYWORD_MAP_PATH, 'utf-8')) || {};
+  }
+} catch (e) {
+  console.error(`WARNING: Failed to load keyword mapping: ${e.message}`);
+  KEYWORD_MAPPING = {};
 }
 
 
@@ -414,6 +425,68 @@ function extractGitHubMainContent(document) {
   return null;
 }
 
+function parseGitHubRepoPath(articleUrl) {
+  try {
+    const parsed = new URL(articleUrl);
+    const host = parsed.hostname.toLowerCase();
+    if (host !== 'github.com' && host !== 'www.github.com') return null;
+    const parts = parsed.pathname.split('/').filter(Boolean);
+    if (parts.length !== 2) return null;
+    return { owner: parts[0], repo: parts[1] };
+  } catch (_) {
+    return null;
+  }
+}
+
+function buildGitHubIndexCandidates(articleUrl) {
+  const repoPath = parseGitHubRepoPath(articleUrl);
+  if (!repoPath) return [];
+  const owner = repoPath.owner;
+  const repo = repoPath.repo;
+  const repoLower = repo.toLowerCase();
+  const ownerLower = owner.toLowerCase();
+  const isUserPagesRepo = repoLower === `${ownerLower}.github.io`;
+
+  const candidates = [
+    `https://raw.githubusercontent.com/${owner}/${repo}/main/index.html`,
+    `https://raw.githubusercontent.com/${owner}/${repo}/master/index.html`
+  ];
+
+  if (isUserPagesRepo) {
+    candidates.push(`https://${owner}.github.io/`);
+  } else {
+    candidates.push(`https://${owner}.github.io/${repo}/`);
+  }
+
+  return candidates;
+}
+
+async function resolveArticleUrl(articleUrl) {
+  const candidates = buildGitHubIndexCandidates(articleUrl);
+  if (candidates.length === 0) return articleUrl;
+
+  for (const candidate of candidates) {
+    try {
+      const response = await axios.get(candidate, {
+        timeout: 5000,
+        maxRedirects: 5,
+        headers: { 'User-Agent': 'AI-Pulse/3.0' }
+      });
+      const contentType = String(response.headers && response.headers['content-type'] || '').toLowerCase();
+      const body = typeof response.data === 'string' ? response.data : '';
+      if (response.status >= 200 && response.status < 300 && contentType.includes('text/html') && body.trim().length > 120) {
+        return candidate;
+      }
+    } catch (_) {
+      // Continue vers le candidat suivant.
+    }
+  }
+
+  // Pas d'index.html exploitable: on conserve l'URL GitHub d'origine
+  // pour permettre l'extraction du README et éviter de perdre l'article.
+  return articleUrl;
+}
+
 function trimPromotionalTailHtml(input) {
   if (!input) return '';
   try {
@@ -451,6 +524,23 @@ function trimPromotionalTailHtml(input) {
   } catch (_) {
     return stripEmojiCharacters(String(input).trim());
   }
+}
+
+function matchesSpecialCategory(article, categoryName) {
+  if (!article) return false;
+  const haystack = [
+    article.title || '',
+    article.summary || '',
+    Array.isArray(article.tags) ? article.tags.join(' ') : ''
+  ].join(' ').toLowerCase();
+
+  if (categoryName === 'openclaw') {
+    return /\bopenclaw\b|\bclowdbot\b|\bmoltbot\b/.test(haystack);
+  }
+  if (categoryName === 'raspberrypi') {
+    return /raspberry\s*pi|\bframboise\s*314\b|\brpi\b/.test(haystack);
+  }
+  return true;
 }
 
 
@@ -519,6 +609,32 @@ function enrichArticleTags(baseTags, category, title, summary) {
     uniqueTags.unshift('OpenClaw');
   }
   return uniqueTags;
+}
+
+function resolveDisplayKeyword(tags, lang, category) {
+  const safeLang = lang === 'fr' ? 'fr' : 'en';
+  const normalizedTags = Array.isArray(tags)
+    ? tags.map((t) => String(t || '').trim()).filter(Boolean)
+    : [];
+  const normalizedTagSet = new Set(normalizedTags.map((t) => t.toLowerCase()));
+  const normalizedCategory = String(category || '').toLowerCase();
+
+  for (const [key, entry] of Object.entries(KEYWORD_MAPPING || {})) {
+    const aliases = Array.isArray(entry.aliases) ? entry.aliases.map((a) => String(a).toLowerCase()) : [];
+    const keyMatch = normalizedCategory === key.toLowerCase();
+    const aliasMatch = aliases.some((alias) => normalizedTagSet.has(alias));
+    if (keyMatch || aliasMatch) {
+      return sanitizeText(entry[safeLang] || entry.en || entry.fr || key);
+    }
+  }
+
+  if (normalizedTags.length > 0) {
+    const first = sanitizeText(normalizedTags[0]);
+    const oneWord = first.split(/\s+/)[0];
+    return oneWord || 'News';
+  }
+
+  return safeLang === 'fr' ? 'Actu' : 'News';
 }
 
 
@@ -704,6 +820,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   const rawSummary = cleanupNoiseText(sanitizeText(article.contentSnippet) || '');
   let computedSummary = rawSummary;
   const articleUrl = article.link;
+  const resolvedArticleUrl = await resolveArticleUrl(articleUrl);
 
   // Créer un hash MD5 unique pour l'article (basé sur l'URL)
   // Cela permet de créer un nom de fichier unique et prévisible
@@ -744,7 +861,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   <h1>${safeTitle}</h1>
   <div class="metadata">
     Source: ${sourceName} | Date: ${new Date(article.pubDate || Date.now()).toLocaleDateString()} ${new Date(article.pubDate || Date.now()).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
-    <a href="${articleUrl}" target="_blank">Original Article</a>
+    <a href="${resolvedArticleUrl}" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <p>${safeSummary}</p>
@@ -777,20 +894,20 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   if (!fs.existsSync(localPath)) {
     try {
       // Récupérer la page web complète
-      const response = await axios.get(articleUrl, {
+      const response = await axios.get(resolvedArticleUrl, {
         timeout: 8000,
         headers: { 'User-Agent': 'AI-Pulse/3.0' }
       });
 
       // Créer un DOM virtuel pour manipuler le HTML
-      const dom = new JSDOM(response.data, { url: articleUrl });
+      const dom = new JSDOM(response.data, { url: resolvedArticleUrl });
 
       let articleContent = null;
 
       // Cas spécial GitHub : extraire uniquement le README / contenu projet,
       // jamais le menu/navigation complet de la page.
       const host = (() => {
-        try { return new URL(articleUrl).hostname.toLowerCase(); } catch (_) { return ''; }
+        try { return new URL(resolvedArticleUrl).hostname.toLowerCase(); } catch (_) { return ''; }
       })();
       const isGitHubHost = host === 'github.com' || host === 'www.github.com';
       if (isGitHubHost) {
@@ -847,7 +964,7 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
   <h1>${sanitizeText(articleContent.title)}</h1>
   <div class="metadata">
     Source: ${sourceName} | Date: ${new Date(article.pubDate).toLocaleDateString()} ${new Date(article.pubDate).toLocaleTimeString()} | Lang: ${lang.toUpperCase()} |
-    <a href="${articleUrl}" target="_blank">Original Article</a>
+    <a href="${resolvedArticleUrl}" target="_blank">Original Article</a>
   </div>
   <div class="content">
     ${sanitizedMainContent}
@@ -960,9 +1077,14 @@ async function aggregateCategory(categoryName, feeds) {
     })
   );
 
-  const articles = results
+  let articles = results
     .filter(r => r.status === 'fulfilled')
-    .flatMap(r => r.value);
+    .flatMap(r => r.value)
+    .filter(Boolean);
+
+  if (categoryName === 'openclaw' || categoryName === 'raspberrypi') {
+    articles = articles.filter((article) => matchesSpecialCategory(article, categoryName));
+  }
 
   // Trier par priorité métier puis date.
   // Pour AI/Cybersécurité, OpenClaw doit remonter en haut de catégorie.
@@ -1053,6 +1175,51 @@ function generateREADME(categorizedArticles) {
   let readme = README_HEADER;
   const maxArticles = SETTINGS.maxArticlesPerCategory || 80;
 
+  function ensureLocalArticleLink(article, category) {
+    const current = String((article && article.link) || '').trim();
+    if (current.startsWith('data/articles/')) return current;
+
+    const seed = String((article && (article.originalLink || article.link || article.title)) || '');
+    const hash = crypto.createHash('md5').update(seed).digest('hex');
+    const localFileName = `${hash}.html`;
+    const localPath = path.join(__dirname, '..', 'data', 'articles', localFileName);
+    const relativeLink = `data/articles/${localFileName}`;
+
+    if (!fs.existsSync(localPath)) {
+      const lang = article && article.lang === 'fr' ? 'fr' : 'en';
+      const safeTitle = sanitizeText((article && article.title) || 'Untitled');
+      const safeSummary = smartTruncate(cleanupNoiseText((article && article.summary) || ''), 1200) || 'Summary unavailable.';
+      const originalLink = sanitizeText((article && (article.originalLink || article.link)) || '');
+      const fallbackHtml = `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+<meta charset="UTF-8">
+<title>${safeTitle}</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  a { color: #00d9ff; }
+</style>
+</head>
+<body>
+  <h1>${safeTitle}</h1>
+  <div class="metadata">Source: ${sanitizeText((article && article.source) || category || 'Unknown')}</div>
+  <div class="content">
+    <p>${safeSummary}</p>
+    <p>Sorry, this source could not be rendered fully right now.</p>
+    ${originalLink ? `<p><a href="${originalLink}" target="_blank">Original Article</a></p>` : ''}
+  </div>
+</body>
+</html>`;
+      fs.writeFileSync(localPath, fallbackHtml);
+    }
+
+    if (article) article.link = relativeLink;
+    return relativeLink;
+  }
+
   // Parcourir chaque catégorie
   for (const [category, articles] of Object.entries(categorizedArticles)) {
     const catConfig = CATEGORIES[category];
@@ -1072,16 +1239,17 @@ function generateREADME(categorizedArticles) {
 
     // Générer la liste des articles
     articles.slice(0, maxArticles).forEach((article, index) => {
-      const tags = article.tags.map(t => `\`${t}\``).join(' ');
+      const keyword = resolveDisplayKeyword(article.tags, article.lang, category);
       const langBadge = article.lang === 'fr' ? '`FR`' : '`EN`';
       const alsoOn = article.alsoPublishedOn ? ` | *Also on: ${article.alsoPublishedOn.join(', ')}*` : '';
       const summaryText = (article.summary && String(article.summary).trim().length > 0)
         ? article.summary
         : smartTruncate(sanitizeText(article.title || 'Summary unavailable.'));
+      const localLink = ensureLocalArticleLink(article, category);
 
       readme += `<div class="article-item" data-lang="${article.lang}" data-category="${category}" data-source="${article.source}">\n\n`;
-      readme += `### ${index + 1}. ${langBadge} [${article.title}](${article.link})\n`;
-      readme += `**Source:** ${article.source} | **Tags:** ${tags}${alsoOn}\n`;
+      readme += `### ${index + 1}. ${langBadge} [${article.title}](${localLink})\n`;
+      readme += `**Source:** ${article.source} | **Keyword:** \`${keyword}\`${alsoOn}\n`;
       readme += `${summaryText}\n\n`;
       readme += `</div>\n\n`;
     });
@@ -1454,5 +1622,9 @@ module.exports = {
   cleanupNoiseText,
   trimPromotionalTailHtml,
   cleanupNoiseHtml,
+  parseGitHubRepoPath,
+  buildGitHubIndexCandidates,
+  matchesSpecialCategory,
+  resolveDisplayKeyword,
   writeArticleMap
 };

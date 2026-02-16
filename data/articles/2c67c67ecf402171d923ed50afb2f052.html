@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>TeamPCP Worm Exploits Cloud Infrastructure to Build Criminal Infrastructure</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/9/2026 9:37:00 AM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/teampcp-worm-exploits-cloud.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiW_jUJE_4sQRwRYF1TXG-rmM3C4nC_15zd82rYQuuLdwncMPrT8M2X-45Ap_KPH09DynvlzyzTd62EEy9116zPjR4FAO92QedrPRA6jxz9pgXSlUi_TsryFlxVcApwV89bUUTWmFuFx-nbXDBBt2WPi-RO6_Iaq3II98RcOqL4XaedeBVKoKX4vb3dQr6/s1600/cloud-infra.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiW_jUJE_4sQRwRYF1TXG-rmM3C4nC_15zd82rYQuuLdwncMPrT8M2X-45Ap_KPH09DynvlzyzTd62EEy9116zPjR4FAO92QedrPRA6jxz9pgXSlUi_TsryFlxVcApwV89bUUTWmFuFx-nbXDBBt2WPi-RO6_Iaq3II98RcOqL4XaedeBVKoKX4vb3dQr6/s1600/cloud-infra.jpg"></a></p>
+<p>Cybersecurity researchers have called attention to a "massive campaign" that has systematically targeted cloud native environments to set up malicious infrastructure for follow-on exploitation.</p>
+<p>The activity, observed around December 25, 2025, and described as "worm-driven," leveraged exposed Docker APIs, Kubernetes clusters, Ray dashboards, and Redis servers, along with the recently disclosed <a href="https://thehackernews.com/2026/02/hackers-exploit-react2shell-to-hijack.html" target="_blank">React2Shell</a> (CVE-2025-55182, CVSS score: 10.0) vulnerability. The campaign has been attributed to a threat cluster known as <strong>TeamPCP</strong> (aka DeadCatx3, PCPcat, PersyPCP, and ShellForce).</p>
+<p>TeamPCP is known to be active since at least November 2025, with the first instance of Telegram activity dating back to July 30, 2025. The TeamPCP Telegram channel currently has over 700 members, where the group publishes stolen data from diverse victims across Canada, Serbia, South Korea, the U.A.E., and the U.S. Details of the threat actor were <a href="https://thehackernews.com/2025/12/react2shell-vulnerability-actively.html" target="_blank">first documented</a> by Beelzebub in December 2025 under the name Operation PCPcat.</p>
+<p>"The operation's goals were to build a distributed proxy and scanning infrastructure at scale, then compromise servers to exfiltrate data, deploy ransomware, conduct extortion, and mine cryptocurrency," Flare security researcher Assaf Morag <a href="https://flare.io/learn/resources/blog/teampcp-cloud-native-ransomware" target="_blank">said</a> in a report published last week.</p> <p>TeamPCP is said to function as a cloud-native cybercrime platform, leveraging misconfigured Docker APIs, Kubernetes APIs, Ray dashboards, Redis servers, and vulnerable React/Next.js applications as main infection pathways to breach modern cloud infrastructure to facilitate data theft and extortion.</p>
+<p>In addition, the compromised infrastructure is misused for a wide range of other purposes, ranging from cryptocurrency mining and data hosting to proxy and command-and-control (C2) relays.</p>
+<p>Rather than employing any novel tradecraft, TeamPCP leans on tried-and-tested attack techniques, such as existing tools, known vulnerabilities, and prevalent misconfigurations, to build an exploitation platform that automates and industrializes the whole process. This, in turn, transforms the exposed infrastructure into a "self-propagating criminal ecosystem," Flare noted.</p> <p>Successful exploitation paves the way for the deployment of next-stage payloads from external servers, including shell- and Python-based scripts that seek out new targets for further expansion. One of the core components is "proxy.sh," which installs proxy, peer-to-peer (P2P), and tunneling utilities, and delivers various scanners to continuously search the internet for vulnerable and misconfigured servers.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzLJ-wNmmcGXgPpF4UBNQxr-t2RfTOjOdnAEDUW8W-PbpNglCLfCI7bIiv1AQJEfxzzSUbvM-9C4dtYjSDZqbUQ942cvDDJxCMXxoHKAtCim9SIwi1afEOQqBS4S6t5J8Qq-8OttNRJEuc5jAJi5JD_7dwkzA1Iz-Ag8HoyB4catwmi_d1ppHX7-OIcFI-/s1600/kuber.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzLJ-wNmmcGXgPpF4UBNQxr-t2RfTOjOdnAEDUW8W-PbpNglCLfCI7bIiv1AQJEfxzzSUbvM-9C4dtYjSDZqbUQ942cvDDJxCMXxoHKAtCim9SIwi1afEOQqBS4S6t5J8Qq-8OttNRJEuc5jAJi5JD_7dwkzA1Iz-Ag8HoyB4catwmi_d1ppHX7-OIcFI-/s1600/kuber.jpg"></a></p>
+<p>"Notably, proxy.sh performs environment fingerprinting at execution time," Morag said. "Early in its runtime, it checks whether it is running inside a Kubernetes cluster."</p>
+<p>"If a Kubernetes environment is detected, the script branches into a separate execution path and drops a cluster-specific secondary payload, indicating that TeamPCP maintains distinct tooling and tradecraft for cloud-native targets rather than relying on generic Linux malware alone."</p>
+<p>A brief description of the other payloads is as follows -</p>
+<ul>
+<li>scanner.py, which is designed to find misconfigured Docker APIs and Ray dashboards by downloading Classless Inter-Domain Routing (CIDR) lists from a GitHub account named "<a href="https://github.com/DeadCatx3" target="_blank">DeadCatx3</a>," while also featuring options to run a cryptocurrency miner ("mine.sh").</li>
+<li>kube.py, which includes Kubernetes-specific functionality to conduct cluster credential harvesting and API-based discovery of resources such as pods and namespaces, followed by dropping "proxy.sh" into accessible pods for broader propagation and setting up a persistent backdoor by deploying a privileged pod on every node that mounts the host.</li>
+<li>react.py, which is designed to exploit the React flaw (CVE-2025-29927) to achieve remote command execution at scale.</li>
+<li>pcpcat.py, which is designed to discover exposed Docker APIs and Ray dashboards across large IP address ranges and automatically deploy a malicious container or job that executes a Base64-encoded payload.</li>
+</ul>
+<p>Flare said the C2 server node located at 67.217.57[.]240 has also been linked to the operation of <a href="https://thehackernews.com/2023/01/threat-actors-turn-to-sliver-as-open.html" target="_blank">Sliver</a>, an open-source C2 framework that's known to be abused by threat actors for post-exploitation purposes.</p> <p>Data from the cybersecurity company shows that the threat actors mainly single out Amazon Web Services (AWS) and Microsoft Azure environments. The attacks are assessed to be opportunistic in nature, primarily targeting infrastructure that supports its goals rather than going after specific industries. The result is that organizations that run such infrastructure become "collateral victims" in the process.&nbsp;</p>
+<p>"The PCPcat campaign demonstrates a full lifecycle of scanning, exploitation, persistence, tunneling, data theft, and monetization built specifically for modern cloud infrastructure," Morag said. "What makes TeamPCP dangerous is not technical novelty, but their operational integration and scale. Deeper analysis shows that most of their exploits and malware are based on well-known vulnerabilities and lightly modified open-source tools."</p>
+<p>"At the same time, TeamPCP blends infrastructure exploitation with data theft and extortion. Leaked CV databases, identity records, and corporate data are published through ShellForce to fuel ransomware, fraud, and cybercrime reputation building. This hybrid model allows the group to monetize both compute and information, giving it multiple revenue streams and resilience against takedowns."</p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SSHStalker Botnet Uses IRC C2 to Control Linux Systems via Legacy Kernel Exploits</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>SSHStalker Botnet Uses IRC C2 to Control Linux Systems via Legacy Kernel Exploits</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/11/2026 10:56:00 AM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/sshstalker-botnet-uses-irc-c2-to.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 11, 2026</span></span><span>Linux / Botnet</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIWksXdbZ0O2Uys7zlFHh363x_928N5gROvDQuqYlRb952YgIX5wXoIOhRZy6ZBS0Lswnax_SfsXm77mjIojyvIYLn8PQID-pGysGygXRuDj4MPbLlxHnwjVJ48IeW0Yf4K0Yw8mwxXkmFjYF3JnLoms3GbRYZbjWX28y2FuV2xyLFTaDM1NgQafp_j1uS/s1600/linux-botnet.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiIWksXdbZ0O2Uys7zlFHh363x_928N5gROvDQuqYlRb952YgIX5wXoIOhRZy6ZBS0Lswnax_SfsXm77mjIojyvIYLn8PQID-pGysGygXRuDj4MPbLlxHnwjVJ48IeW0Yf4K0Yw8mwxXkmFjYF3JnLoms3GbRYZbjWX28y2FuV2xyLFTaDM1NgQafp_j1uS/s1600/linux-botnet.jpg"></a></p>
+<p>Cybersecurity researchers have disclosed details of a new botnet operation called <strong>SSHStalker</strong> that relies on the Internet Relay Chat (<a href="https://en.wikipedia.org/wiki/IRC" target="_blank">IRC</a>) communication protocol for command-and-control (C2) purposes.</p>
+<p>"The toolset blends stealth helpers with legacy-era Linux exploitation: Alongside log cleaners (utmp/wtmp/lastlog tampering) and rootkit-class artifacts, the actor keeps a large back-catalog of Linux 2.6.x-era exploits (2009–2010 CVEs)," cybersecurity company Flare <a href="https://flare.io/learn/resources/blog/old-school-irc-new-victims-inside-the-newly-discovered-sshstalker-linux-botnet" target="_blank">said</a>. "These are low value against modern stacks, but remain effective against 'forgotten' infrastructure and long-tail legacy environments."</p>
+<p>SSHStalker combines IRC botnet mechanics with an automated mass-compromise operation that uses an SSH scanner and other readily available scanners to co-opt susceptible systems into a network and enroll them in IRC channels.</p>
+<p>However, unlike other campaigns that typically leverage such botnets for opportunistic efforts like distributed denial-of-service (DDoS) attacks, proxyjacking, or cryptocurrency mining, SSHStalker has been found to maintain persistent access without any follow-on post-exploitation behavior.</p> <p>This dormant behavior sets it apart, raising the possibility that the compromised infrastructure is being used for staging, testing, or strategic access retention for future use.</p>
+<p>A core component of SSHStalker is a Golang scanner that scans for port 22 for servers with open SSH in order to extend its reach in a worm-like fashion. Also dropped are several payloads, including variants of an IRC-controlled bot and a Perl file bot that connects to an UnrealIRCd IRC Server, joins a control channel, and waits for commands that allow it to carry out flood-style traffic attacks and commandeer the bots.</p>
+<p>The attacks are also characterized by the execution of C program files to clean SSH connection logs and erase traces of malicious activity from logs to reduce forensic visibility. Furthermore, the malware toolkit contains a "keep-alive" component that ensures the main malware process is relaunched within 60 seconds in the event it's terminated by a security tool.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp8xk9mZUVHl-3LyR_dG5dY7clQ_BrtCnx81k5ak63YZBnTEb-kopA8mZm9-1lSwJJmWEqfgKWh9oPz-oo-SW4tMS1aaUtrMhdwJVoExkAbYmQQq552muic-sHIiR7yLZp_jTVnYSnqOwErlA6QvTQIkUS9BIoSm30fwRA3WKDDk7jJa1K4dBjIATDC2_k/s1600/ssh.jpeg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgp8xk9mZUVHl-3LyR_dG5dY7clQ_BrtCnx81k5ak63YZBnTEb-kopA8mZm9-1lSwJJmWEqfgKWh9oPz-oo-SW4tMS1aaUtrMhdwJVoExkAbYmQQq552muic-sHIiR7yLZp_jTVnYSnqOwErlA6QvTQIkUS9BIoSm30fwRA3WKDDk7jJa1K4dBjIATDC2_k/s1600/ssh.jpeg"></a></p>
+<p>SSHStalker is notable for blending mass compromise automation with a catalog of 16 distinct vulnerabilities impacting the Linux kernel, some going all the way back to 2009. Some of the flaws used in the exploit module are <a href="https://nvd.nist.gov/vuln/detail/cve-2009-2692" target="_blank">CVE-2009-2692</a>, <a href="https://nvd.nist.gov/vuln/detail/cve-2009-2698" target="_blank">CVE-2009-2698</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2010-3849" target="_blank">CVE-2010-3849</a>, <a href="https://nvd.nist.gov/vuln/detail/cve-2010-1173" target="_blank">CVE-2010-1173</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2009-2267" target="_blank">CVE-2009-2267</a>, <a href="https://nvd.nist.gov/vuln/detail/cve-2009-2908" target="_blank">CVE-2009-2908</a>, <a href="https://nvd.nist.gov/vuln/detail/cve-2009-3547" target="_blank">CVE-2009-3547</a>, <a href="https://nvd.nist.gov/vuln/detail/CVE-2010-2959" target="_blank">CVE-2010-2959</a>, and <a href="https://nvd.nist.gov/vuln/detail/cve-2010-3437" target="_blank">CVE-2010-3437</a>.</p>
+<p>Flare's investigation of the staging infrastructure associated with the threat actor has uncovered an extensive repository of open-source offensive tooling and previously published malware samples. These include -&nbsp;</p>
+<ul>
+<li>Rootkits to facilitate stealth and persistence</li>
+<li>Cryptocurrency miners&nbsp;</li>
+<li>A Python script that executes a binary called "website grabber" to steal exposed Amazon Web Services (AWS) secrets from targeted websites</li>
+<li>EnergyMech, an IRC bot that provides C2 and remote command execution capabilities</li>
+</ul> <p>It's suspected that the threat actor behind the activity could be of Romanian origin, given the presence of "Romanian-style nicknames, slang patterns, and naming conventions inside IRC channels and configuration wordlists." What's more, the operational fingerprint exhibits strong overlaps with that of a hacking group known as <a href="https://thehackernews.com/2025/04/outlaw-group-uses-ssh-brute-force-to.html" target="_blank">Outlaw</a> (aka Dota).</p>
+<p>"SSHStalker does not appear to focus on novel exploit development but instead demonstrates operational control through mature implementation and orchestration, by primarily using C for core bot and low-level components, shell for orchestration and persistence, and limited Python and Perl usage mainly for utility or supporting automation tasks inside the attack chain and running the IRCbot," Flare said.</p>
+<p>"The threat actor is not developing zero-days or novel rootkits, but demonstrating strong operational discipline in mass compromise workflows, infrastructure recycling, and long-tail persistence across heterogeneous Linux environments."</p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

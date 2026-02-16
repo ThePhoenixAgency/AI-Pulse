@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -127,9 +132,9 @@
 <p>The <a href="https://huggingface.co/nvidia/nemotron-colembed-vl-8b-v2">nemotron-colembed-vl-8b-v2</a>, <a href="https://huggingface.co/nvidia/nemotron-colembed-vl-4b-v2">nemotron-colembed-vl-4b-v2</a> and <a href="https://huggingface.co/nvidia/llama-nemotron-colembed-vl-3b-v2">llama-nemotron-colembed-vl-3b-v2</a> models were trained using a bi-encoder architecture, independently. This involves encoding a pair of sentences (for example, a query and a document) independently using the embedding model. Using contrastive learning, it is used to maximize the late interaction similarity between the query and the document that contains the answer, while minimizing the similarity between the query and sampled negative documents not useful to answer the question.</p>
 <p>The llama-nemotron-colembed-vl-3b-v2 model was trained in a two-stage pipeline:  it was first fine-tuned with 12.5M textQA pairs, and subsequently fine-tuned with text–image pairs. The nemotron-colembed-vl-8b-v2,  nemotron-colembed-vl-4b-v2 models were fine-tuned using only text-image pairs (2nd stage).</p>
 <p>Our training datasets contain both text-only and text-image pairs, and we apply hard negative mining following the positive-aware hard negative mining methods presented in the NV-Retriever <a href="https://arxiv.org/pdf/2407.15831">paper</a> to improve retrieval performance.</p>
-<p>✨ <strong>Key Improvements over V1:</strong></p>
-<p>⚗️ Advanced Model Merging: Utilizes post-training model merging to combine the strengths of multiple fine-tuned checkpoints. This delivers the accuracy stability of an ensemble without any additional inference latency.<br /></p>
-<p>🌍 Enhanced Synthetic Data: We significantly enriched our training mixture with diverse multilingual synthetic data, improving semantic alignment across languages and complex document types.</p>
+<p> <strong>Key Improvements over V1:</strong></p>
+<p> Advanced Model Merging: Utilizes post-training model merging to combine the strengths of multiple fine-tuned checkpoints. This delivers the accuracy stability of an ensemble without any additional inference latency.<br /></p>
+<p> Enhanced Synthetic Data: We significantly enriched our training mixture with diverse multilingual synthetic data, improving semantic alignment across languages and complex document types.</p>
 <p><a href="https://cdn-uploads.huggingface.co/production/uploads/6814af6d59c3d8d6f9b09f2b/J7JIKCDriMjztO1ULw0k3.png"><img alt="modelperfs_vidorev3" src="https://cdn-uploads.huggingface.co/production/uploads/6814af6d59c3d8d6f9b09f2b/J7JIKCDriMjztO1ULw0k3.png" /></a></p>
 <h2>
 	<a href="#start-building-with-nemotron-colembed-v2">

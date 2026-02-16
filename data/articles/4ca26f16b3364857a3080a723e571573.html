@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -28,13 +33,13 @@
 <a href="https://huggingface.co/spaces/ResembleAI/chatterbox-turbo-demo"><img src="https://camo.githubusercontent.com/13709428e1cb127bc3a2db60f8dc3f1e7ae6d44fbcb67a05a5b3d267fd7ccf3a/68747470733a2f2f68756767696e67666163652e636f2f64617461736574732f68756767696e67666163652f6261646765732f7265736f6c76652f6d61696e2f6f70656e2d696e2d68662d7370616365732d736d2e737667" alt="Alt Text" /></a>
 <a href="https://podonos.com/resembleai/chatterbox"><img src="https://camo.githubusercontent.com/07d8444f82d6518aca598452c49217af576ea7239aac9d2eeadc11a605b347ef/68747470733a2f2f7374617469632d7075626c69632e706f646f6e6f732e636f6d2f6261646765732f696e73696768742d6f6e2d70646e732d736d2d6461726b2e737667" alt="Alt Text" /></a>
 <a href="https://discord.gg/rJq9cRJBJ6"><img src="https://camo.githubusercontent.com/fdbbfb5d9a2995104f65f65959cd5945b329f186a1572cf5970aa0fb9a509af6/68747470733a2f2f696d672e736869656c64732e696f2f646973636f72642f313337373737333234393739383334343737363f6c6162656c3d6a6f696e253230646973636f7264266c6f676f3d646973636f7264267374796c653d666c6174" alt="Discord" /></a></p>
-<p>_Made with ♥️ by <a href="https://resemble.ai/"><img alt="resemble-logo-horizontal" src="https://private-user-images.githubusercontent.com/660224/448166448-35cf756b-3506-4943-9c72-c05ddfa4e525.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDc0ODUsIm5iZiI6MTc3MTI0NzE4NSwicGF0aCI6Ii82NjAyMjQvNDQ4MTY2NDQ4LTM1Y2Y3NTZiLTM1MDYtNDk0My05YzcyLWMwNWRkZmE0ZTUyNS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjE2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIxNlQxMzA2MjVaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT05MjcxMjQ3NmZmZmIwNDY2M2ExNDdhZjRhYjhlZmQzOTdkOTQ4Y2U1YjUyYWM3ZWQ3NDRiMmQ2N2QzNzZjYTVmJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.LzL4B5ym-8Zc322amKUeuOGrp4BCHgwcxMH-KuMTy2U" /></a></p>
+<p>_Made with  by <a href="https://resemble.ai/"><img alt="resemble-logo-horizontal" src="https://private-user-images.githubusercontent.com/660224/448166448-35cf756b-3506-4943-9c72-c05ddfa4e525.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNDY1NTQsIm5iZiI6MTc3MTI0NjI1NCwicGF0aCI6Ii82NjAyMjQvNDQ4MTY2NDQ4LTM1Y2Y3NTZiLTM1MDYtNDk0My05YzcyLWMwNWRkZmE0ZTUyNS5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMjE2JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDIxNlQxMjUwNTRaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT01ZTM0ZjA1NTc5YWM5MTUwZjA1Y2RiODQ5OWEyNDdkMGU5ODBkZTIxZmU4NWM2OTg0NDVjYjFhNjI0YzUxZWViJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.EkiTL9T_HuZt3BKXO3jBofZSJmMIUo--PjNazz4vT50" /></a></p>
 <p><strong>Chatterbox</strong> is a family of three state-of-the-art, open-source text-to-speech models by Resemble AI.</p>
 <p>We are excited to introduce <strong>Chatterbox-Turbo</strong>, our most efficient model yet. Built on a streamlined 350M parameter architecture, <strong>Turbo</strong> delivers high-quality speech with less compute and VRAM than our previous models. We have also distilled the speech-token-to-mel decoder, previously a bottleneck, reducing generation from 10 steps to just <strong>one</strong>, while retaining high-fidelity audio output.</p>
 <p><strong>Paralinguistic tags</strong> are now native to the Turbo model, allowing you to use <code>[cough]</code>, <code>[laugh]</code>, <code>[chuckle]</code>, and more to add distinct realism. While Turbo was built primarily for low-latency voice agents, it excels at narration and creative workflows.</p>
 <p>If you like the model but need to scale or tune it for higher accuracy, check out our competitively priced TTS service (<a href="https://resemble.ai/">link</a>). It delivers reliable performance with ultra-low latency of sub 200ms—ideal for production use in agents, applications, or interactive media.</p>
 <p><a target="_blank" href="https://camo.githubusercontent.com/f2b60765b26498c771a24c4430f80297d2dc0a2a3611c8343fdb5ef6996016e7/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f63686174746572626f782d64656d6f2d73616d706c65732f747572626f2f706f646f6e6f735f747572626f2e706e67"><img alt="Podonos Turbo Eval" src="https://camo.githubusercontent.com/f2b60765b26498c771a24c4430f80297d2dc0a2a3611c8343fdb5ef6996016e7/68747470733a2f2f73746f726167652e676f6f676c65617069732e636f6d2f63686174746572626f782d64656d6f2d73616d706c65732f747572626f2f706f646f6e6f735f747572626f2e706e67" /></a></p>
-<p></p><h3>⚡ Model Zoo</h3><a href="#-model-zoo"></a><p></p>
+<p></p><h3> Model Zoo</h3><a href="#-model-zoo"></a><p></p>
 <p>Choose the right model for your application.</p>
 <table>
 <thead>
@@ -44,7 +49,7 @@
 <th>Languages</th>
 <th>Key Features</th>
 <th>Best For</th>
-<th>🤗</th>
+<th></th>
 <th>Examples</th>
 </tr>
 </thead>
@@ -172,7 +177,7 @@ pip install -e <span>.</span></pre></div>
 <span>print</span>(<span>f"Extracted watermark: <span><span>{</span><span>watermark</span><span>}</span></span>"</span>)
 <span># Output: 0.0 (no watermark) or 1.0 (watermarked)</span></pre></div>
 <p></p><h2>Official Discord</h2><a href="#official-discord"></a><p></p>
-<p>👋 Join us on <a href="https://discord.gg/rJq9cRJBJ6">Discord</a> and let's build something awesome together!</p>
+<p> Join us on <a href="https://discord.gg/rJq9cRJBJ6">Discord</a> and let's build something awesome together!</p>
 <p></p><h2>Evaluation</h2><a href="#evaluation"></a><p></p>
 <p>Chatterbox Turbo was evaluated using Podonos, a platform for reproducible subjective speech evaluation.</p>
 <p>We compared Chatterbox Turbo to competitive TTS systems using Podonos' standardized evaluation suite, focusing on overall preference, naturalness, and expressiveness.</p>

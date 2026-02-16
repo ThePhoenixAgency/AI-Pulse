@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -51,7 +56,7 @@
 <p><a href="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/sAbRvxS84gKtil9BEaqXP.png"><img alt="image" src="https://cdn-uploads.huggingface.co/production/uploads/68e529af513e724edd8702f6/sAbRvxS84gKtil9BEaqXP.png" /></a></p>
 <p>Welcome back! This is the second part of <a href="https://huggingface.co/blog/Photoroom/prx-open-source-t2i-model">our series on training efficient text-to-image models from scratch</a>.</p>
 <p>In the <a href="https://huggingface.co/blog/Photoroom/prx-part1-architectures">first post of this series</a>, we introduced our goal: training a competitive text-to-image foundation model entirely from scratch, in the open, and at scale. We focused primarily on architectural choices and motivated the core design decisions behind our model <strong>PRX</strong>.
-We also <a href="https://huggingface.co/spaces/Photoroom/PRX-1024-beta-version">released an early, small (1.2B parameters) version of the model</a> as a preview of what we are building (go try it if you haven't already 😉).</p>
+We also <a href="https://huggingface.co/spaces/Photoroom/PRX-1024-beta-version">released an early, small (1.2B parameters) version of the model</a> as a preview of what we are building (go try it if you haven't already ).</p>
 <p>In this post, we shift our focus from architecture to training. <strong>The goal is to document what actually moved the needle for us</strong> when trying to make models train faster, converge more reliably, and learn better representations. The field is moving quickly and the list of “training tricks” keeps growing, so rather than attempting an exhaustive survey, we structured this as an experimental logbook: we reproduce (or adapt) a set of recent ideas, implement them in a consistent setup, and report how they affect optimization and convergence in practice. Finally, we do not only report these techniques in isolation; we also explore which ones remain useful when combined.</p>
 <p>In the next post, <strong>we will publish the full training recipe as code</strong>, including the experiments in this post. <strong>We will also run and report on a public "speedrun"</strong> where we put the best pieces together into a single configuration and stress-test it end-to-end. This exercise will serve both as a stress test of our current training pipeline and as a concrete demonstration of how far careful training design can go under tight constraints. 
 If you haven’t already, we invite you to join our <a href="https://discord.gg/HXp7Znc3">Discord</a> to continue the discussion. A significant part of this project has been shaped by exchanges with community members, and we place a high value on external feedback, ablations, and alternative interpretations of the results.</p>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mesa 25.3.5 arrives with bug fixes for open source Linux graphics drivers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Mesa 25.3.5 arrives with bug fixes for open source Linux graphics drivers</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/9/2026 12:21:35 PM | Lang: EN |
+    <a href="https://www.gamingonlinux.com/2026/02/mesa-25-3-5-arrives-with-bug-fixes-for-open-source-linux-graphics-drivers/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Over the weekend we saw the release of Mesa 25.3.5, as we near the end of updates to Mesa 25.3 with developers moving onto the upcoming Mesa 26.</p>
+<p>Developer Dylan Baker said in the release announcement:</p>
+<blockquote>
+<p>We're a bit late with this one, we had to sort out some CI issues.</p>
+<p>Anyway, I'm pleased to announce that 25.3.5 is now available. This release has seen little slowdown on the set of bug fixes, with Intel and AMD leading the pack in fixes, but with a good number of releases across the board.</p>
+<p>We have one more planned release in two weeks, and I will see you all then.</p>
+</blockquote>
+<p>The bug fixes noted from the <a href="https://docs.mesa3d.org/relnotes/25.3.5.html" target="_blank">changelog</a>:</p>
+<blockquote>
+<ul>
+<li>Transcoding mpeg2video with ffmpeg h264_vulkan on Intel cause Conversion failed!.</li>
+<li>static linking regression since !37495 - spirv-tools shared library required at runtime if exists at build time.</li>
+<li>tu: GPU faults during LRZ clears on unallocated transient attachments in gmem mode.</li>
+<li>Shader inputs/outputs for vertex/pixel shaders that have the integer (int) type are broken on RDNA 3 and 4 graphics cards.</li>
+<li>ACO: assertion in insert_exec_mask().</li>
+<li>[radv] Regression causes glitches in Strange Brigade (Vulkan renderer).</li>
+<li>radv, regression : Crysis 2 Remastered raytracing blocky reflections.</li>
+</ul>
+</blockquote>
+<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/2027118371770636018gol2.jpg"><br><em>Pictured - Strange Brigade</em></p>
+<p>For the current plans on the next set of releases here's the release schedule:</p>
+<div>
+<table>
+<thead>
+<tr>
+<td>
+<p>Branch</p>
+</td>
+<td>
+<p>Expected date</p>
+</td>
+<td>
+<p>Release</p>
+</td>
+<td>
+<p>Notes</p>
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<p>25.3</p>
+</td>
+<td>
+<p>2026-02-18</p>
+</td>
+<td>
+<p>25.3.6</p>
+</td>
+<td>
+<p>Last planned 25.3 release</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>26.0</p>
+</td>
+<td>
+<p>2026-02-11</p>
+</td>
+<td>
+<p>26.0.0-rc4</p>
+</td>
+<td>
+<p>or 26.0.0 final</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>26.1</p>
+</td>
+<td>
+<p>2026-04-15</p>
+</td>
+<td>
+<p>26.1.0-rc1</p>
+</td>
+<td>
+<p>26.1 branchpoint</p>
+</td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-22</p>
+</td>
+<td>
+<p>26.1.0-rc2</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-04-29</p>
+</td>
+<td>
+<p>26.1.0-rc3</p>
+</td>
+<td> </td>
+</tr>
+<tr>
+<td> </td>
+<td>
+<p>2026-05-06</p>
+</td>
+<td>
+<p>26.1.0-rc4</p>
+</td>
+<td>
+<p>or 26.1.0 final</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>What are you most looking forward to for new features in Mesa 26 and Mesa 26.1? Should be some nice Ray Tracing upgrades we've covered previously.</p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

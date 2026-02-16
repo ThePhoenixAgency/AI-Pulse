@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - logtide-dev/logtide: 🛡️ Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</title>
+<title>GitHub - logtide-dev/logtide:  Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.5em; }
@@ -13,10 +13,15 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
-  <h1>GitHub - logtide-dev/logtide: 🛡️ Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</h1>
+  <h1>GitHub - logtide-dev/logtide:  Open-source, self-hosted log management. Privacy-first alternative to Datadog &amp; ELK. Lightweight, GDPR-compliant, and deployed in minutes with Docker.</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/16/2026 | Lang: EN |
     <a href="https://github.com/logtide-dev/logtide" target="_blank">Original Article</a>
@@ -25,25 +30,25 @@
     <div><div><article>
 <br />
 <blockquote>
-<p><strong>⚠️ ALPHA RELEASE:</strong> LogTide is currently in active Alpha.
+<p><strong> ALPHA RELEASE:</strong> LogTide is currently in active Alpha.
 The Cloud version is <strong>100% FREE</strong> for early adopters. We are looking for feedback to improve stability!</p>
 </blockquote>
 <blockquote>
-<p><strong>📢 Rebranded:</strong> LogTide was previously known as LogWard. We changed our name due to a trademark conflict. <a href="https://github.com/orgs/logtide-dev/discussions/81">Read more about the rebrand</a>.</p>
+<p><strong> Rebranded:</strong> LogTide was previously known as LogWard. We changed our name due to a trademark conflict. <a href="https://github.com/orgs/logtide-dev/discussions/81">Read more about the rebrand</a>.</p>
 </blockquote>
 <hr />
-<p></p><h2>👋 What is LogTide?</h2><a href="#-what-is-logtide"></a><p></p>
+<p></p><h2> What is LogTide?</h2><a href="#-what-is-logtide"></a><p></p>
 <p>LogTide is an open-source alternative to Datadog, Splunk, and ELK.
 Designed for developers and European SMBs who need <strong>GDPR compliance</strong>, <strong>data ownership</strong>, and <strong>simplicity</strong> without the complexity of managing an ElasticSearch cluster.</p>
 <p></p><h3>Why LogTide?</h3><a href="#why-logtide"></a><p></p>
 <ul>
 <li>🇪🇺 <strong>GDPR Friendly:</strong> Keep data on your servers or use our EU-based cloud.</li>
-<li>⚡ <strong>Lightweight:</strong> Built on <strong>TimescaleDB</strong> &amp; <strong>Fastify</strong> (low RAM usage compared to Java stacks).</li>
-<li>🚀 <strong>Developer Experience:</strong> 5-minute setup with Docker. Native SDKs.</li>
-<li>💰 <strong>Cost Effective:</strong> Self-host for free.</li>
+<li> <strong>Lightweight:</strong> Built on <strong>TimescaleDB</strong> &amp; <strong>Fastify</strong> (low RAM usage compared to Java stacks).</li>
+<li> <strong>Developer Experience:</strong> 5-minute setup with Docker. Native SDKs.</li>
+<li> <strong>Cost Effective:</strong> Self-host for free.</li>
 </ul>
 <hr />
-<p></p><h2>📸 Screenshots</h2><a href="#-screenshots"></a><p></p>
+<p></p><h2> Screenshots</h2><a href="#-screenshots"></a><p></p>
 <p></p><h3>Logs Explorer</h3><a href="#logs-explorer"></a><p></p>
 <p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/logs.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/logs.png" alt="LogTide Logs" /></a></p>
 <p></p><h3>Distributed Tracing</h3><a href="#distributed-tracing"></a><p></p>
@@ -55,7 +60,7 @@ Designed for developers and European SMBs who need <strong>GDPR compliance</stro
 <p></p><h3>Alerts &amp; Notifications</h3><a href="#alerts--notifications"></a><p></p>
 <p><a target="_blank" href="https://github.com/logtide-dev/logtide/blob/main/docs/images/alerts.png"><img src="https://github.com/logtide-dev/logtide/raw/main/docs/images/alerts.png" alt="LogTide Alerts" /></a></p>
 <hr />
-<p></p><h2>🚀 Quick Start</h2><a href="#-quick-start"></a><p></p>
+<p></p><h2> Quick Start</h2><a href="#-quick-start"></a><p></p>
 <p>Choose how you want to use LogTide.</p>
 <p></p><h3>Option A: Cloud (Fastest &amp; Free)</h3><a href="#option-a-cloud-fastest--free"></a><p></p>
 <p>We host it for you. Perfect for testing and small projects. <strong>Currently Free.</strong></p>
@@ -159,7 +164,7 @@ helm repo update</pre></div>
 <p><strong>Helm Chart:</strong> <a href="https://artifacthub.io/packages/helm/logtide/logtide">Artifact Hub</a> | <a href="https://github.com/logtide-dev/logtide-helm-chart">GitHub</a> | <a href="https://logtide.dev/docs/deployment#kubernetes">Full Docs</a></p>
 </blockquote>
 <hr />
-<p></p><h2>📦 SDKs &amp; Integrations</h2><a href="#-sdks--integrations"></a><p></p>
+<p></p><h2> SDKs &amp; Integrations</h2><a href="#-sdks--integrations"></a><p></p>
 <p>We have ready-to-use SDKs for the most popular languages.</p>
 <table>
 <thead>
@@ -172,71 +177,71 @@ helm repo update</pre></div>
 <tbody>
 <tr>
 <td><strong>Node.js</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://www.npmjs.com/package/@logtide/sdk-node"><code>@logtide/sdk-node</code></a></td>
 </tr>
 <tr>
 <td><strong>Python</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://pypi.org/project/logtide-sdk/"><code>logtide-sdk</code></a></td>
 </tr>
 <tr>
 <td><strong>Go</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://github.com/logtide-dev/logtide-sdk-go"><code>logtide-sdk-go</code></a></td>
 </tr>
 <tr>
 <td><strong>PHP</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://packagist.org/packages/logtide-dev/sdk-php"><code>logtide-dev/sdk-php</code></a></td>
 </tr>
 <tr>
 <td><strong>Kotlin</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://github.com/logtide-dev/logtide-sdk-kotlin"><code>logtide-sdk-kotlin</code></a></td>
 </tr>
 <tr>
 <td><strong>C# / .NET</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="https://github.com/logtide-dev/lgoward-sdk-csharp"><code>LogTide.SDK</code></a></td>
 </tr>
 <tr>
 <td><strong>Docker</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td>Use Fluent Bit / Syslog driver</td>
 </tr>
 <tr>
 <td><strong>HTTP</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td><a href="#">API Reference</a></td>
 </tr>
 <tr>
 <td><strong>OpenTelemetry</strong></td>
-<td>✅ Ready</td>
+<td> Ready</td>
 <td>OTLP endpoint (logs + traces)</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<p></p><h2>✨ Features available in Alpha</h2><a href="#-features-available-in-alpha"></a><p></p>
+<p></p><h2> Features available in Alpha</h2><a href="#-features-available-in-alpha"></a><p></p>
 <ul>
-<li>✅ <strong>High-Performance Ingestion:</strong> Batch API handling thousands of logs/sec.</li>
-<li>✅ <strong>Real-time Live Tail:</strong> See logs as they arrive via Server-Sent Events (SSE).</li>
-<li>✅ <strong>Powerful Search:</strong> Filter by service, level, time range. Two search modes: <strong>Full-text</strong> (word-based with stemming) and <strong>Substring</strong> (find text anywhere in messages, e.g., find "bluez" in "spa.bluez5.native").</li>
-<li>✅ <strong>Multi-Organization:</strong> Isolate teams and projects strictly.</li>
-<li>✅ <strong>Alerting:</strong> Get notified via Email or Webhook (Slack/Discord) on error spikes.</li>
-<li>✅ <strong>Retention Policy:</strong> Automatic cleanup of old logs via TimescaleDB.</li>
-<li>✅ <strong>Sigma Rules Detection:</strong> Built-in engine to run security detection rules (YAML) against your logs for threat detection.</li>
-<li>✅ <strong>SIEM Dashboard:</strong> Security dashboard with incident management, MITRE ATT&amp;CK mapping, and PDF report export.</li>
-<li>✅ <strong>OpenTelemetry Support:</strong> Native OTLP ingestion for logs and traces (protobuf + JSON).</li>
-<li>✅ <strong>Distributed Tracing:</strong> Trace viewer with span timeline, service dependencies graph, and trace-to-logs correlation.</li>
-<li>✅ <strong>Redis Optional:</strong> Run without Redis using PostgreSQL-based alternatives for simpler deployments. <em>(New in 0.5.0)</em></li>
-<li>✅ <strong>Detection Packs:</strong> Pre-configured Sigma rule bundles for common security use cases. <em>(New in 0.5.0)</em></li>
-<li>✅ <strong>Event Correlation:</strong> Link related logs by <code>request_id</code>, <code>trace_id</code>, <code>user_id</code>, or custom fields. <em>(New in 0.5.0)</em></li>
-<li>✅ <strong>Alert Preview:</strong> Test alert rules against historical data before enabling them. <em>(New in 0.5.0)</em></li>
+<li> <strong>High-Performance Ingestion:</strong> Batch API handling thousands of logs/sec.</li>
+<li> <strong>Real-time Live Tail:</strong> See logs as they arrive via Server-Sent Events (SSE).</li>
+<li> <strong>Powerful Search:</strong> Filter by service, level, time range. Two search modes: <strong>Full-text</strong> (word-based with stemming) and <strong>Substring</strong> (find text anywhere in messages, e.g., find "bluez" in "spa.bluez5.native").</li>
+<li> <strong>Multi-Organization:</strong> Isolate teams and projects strictly.</li>
+<li> <strong>Alerting:</strong> Get notified via Email or Webhook (Slack/Discord) on error spikes.</li>
+<li> <strong>Retention Policy:</strong> Automatic cleanup of old logs via TimescaleDB.</li>
+<li> <strong>Sigma Rules Detection:</strong> Built-in engine to run security detection rules (YAML) against your logs for threat detection.</li>
+<li> <strong>SIEM Dashboard:</strong> Security dashboard with incident management, MITRE ATT&amp;CK mapping, and PDF report export.</li>
+<li> <strong>OpenTelemetry Support:</strong> Native OTLP ingestion for logs and traces (protobuf + JSON).</li>
+<li> <strong>Distributed Tracing:</strong> Trace viewer with span timeline, service dependencies graph, and trace-to-logs correlation.</li>
+<li> <strong>Redis Optional:</strong> Run without Redis using PostgreSQL-based alternatives for simpler deployments. <em>(New in 0.5.0)</em></li>
+<li> <strong>Detection Packs:</strong> Pre-configured Sigma rule bundles for common security use cases. <em>(New in 0.5.0)</em></li>
+<li> <strong>Event Correlation:</strong> Link related logs by <code>request_id</code>, <code>trace_id</code>, <code>user_id</code>, or custom fields. <em>(New in 0.5.0)</em></li>
+<li> <strong>Alert Preview:</strong> Test alert rules against historical data before enabling them. <em>(New in 0.5.0)</em></li>
 </ul>
 <hr />
-<p></p><h2>🛡️ Security &amp; Sigma Rules</h2><a href="#️-security--sigma-rules"></a><p></p>
+<p></p><h2> Security &amp; Sigma Rules</h2><a href="#-security--sigma-rules"></a><p></p>
 <p>LogTide goes beyond simple monitoring by transforming your logs into a security advantage. We support <strong>Sigma Rules</strong>, the industry-standard format for describing log signatures.</p>
 <ul>
 <li><strong>Threat Detection:</strong> Automatically detect suspicious activities (e.g., SSH brute force, clearing of history, web shells).</li>
@@ -256,7 +261,7 @@ helm repo update</pre></div>
     <span>condition</span>: <span>selection</span>
 <span>level</span>: <span>high</span></pre></div>
 <hr />
-<p></p><h2>🚨 SIEM Dashboard &amp; Incident Management (New in 0.3.0)</h2><a href="#-siem-dashboard--incident-management-new-in-030"></a><p></p>
+<p></p><h2> SIEM Dashboard &amp; Incident Management (New in 0.3.0)</h2><a href="#-siem-dashboard--incident-management-new-in-030"></a><p></p>
 <p>LogTide now includes a full-featured <strong>Security Information and Event Management (SIEM)</strong> dashboard, turning your log platform into a lightweight security operations center.</p>
 <p></p><h3>Security Dashboard</h3><a href="#security-dashboard"></a><p></p>
 <ul>
@@ -276,7 +281,7 @@ helm repo update</pre></div>
 <li><strong>PDF Export:</strong> Generate incident reports for compliance and documentation</li>
 </ul>
 <hr />
-<p></p><h2>🏗️ Tech Stack</h2><a href="#️-tech-stack"></a><p></p>
+<p></p><h2> Tech Stack</h2><a href="#-tech-stack"></a><p></p>
 <p>We use modern, type-safe tools to ensure performance and maintainability.</p>
 <table>
 <thead>
@@ -309,7 +314,7 @@ helm repo update</pre></div>
 </tbody>
 </table>
 <hr />
-<p></p><h2>📄 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>Distributed under the <strong>GNU AGPLv3</strong> License. See <code>LICENSE</code> for more information.</p>
 <ul>
 <li><strong>Free for Internal Use:</strong> You can use LogTide internally for free.</li>

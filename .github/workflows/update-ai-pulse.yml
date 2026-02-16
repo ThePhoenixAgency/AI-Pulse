@@ -258,9 +258,18 @@ jobs:
           exit 0
         fi
 
-        # Validation minimale: le README généré doit contenir des sections/articles
+        # Validation stricte: le README généré doit contenir des sections
+        # ET au moins un article exploitable.
         if [ ! -s NEW-README.md ] || ! grep -Eq "<section id=|## " NEW-README.md; then
-          echo "[WARNING] Generated README is empty/invalid. Keeping previous README."
+          echo "[WARNING] Generated README is empty/invalid (no sections). Keeping previous README."
+          mv README.BACKUP.md README.md
+          rm -f NEW-README.md
+          exit 0
+        fi
+
+        ARTICLE_COUNT=$(grep -Eo "\\(data/articles/[^)]*\\)" NEW-README.md | wc -l | tr -d ' ')
+        if [ "${ARTICLE_COUNT}" = "0" ]; then
+          echo "[WARNING] Generated README contains zero articles. Keeping previous README."
           mv README.BACKUP.md README.md
           rm -f NEW-README.md
           exit 0

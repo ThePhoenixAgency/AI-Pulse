@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -249,12 +254,12 @@ The guardrail asks "should I block this?" The hypervisor answers "this cannot ex
 <hr />
 <p></p><h2>What This Is NOT</h2><a href="#what-this-is-not"></a><p></p>
 <ul>
-<li>❌ <strong>Not a guardrail</strong> — we don't filter outputs</li>
-<li>❌ <strong>Not a policy engine</strong> — we don't block actions</li>
-<li>❌ <strong>Not an orchestrator</strong> — we don't manage multiple agents</li>
-<li>❌ <strong>Not an LLM wrapper</strong> — we don't add more AI</li>
-<li>❌ <strong>Not a workflow tool</strong> — we don't define agent processes</li>
-<li>❌ <strong>Not production-ready</strong> — this is a proof-of-concept</li>
+<li> <strong>Not a guardrail</strong> — we don't filter outputs</li>
+<li> <strong>Not a policy engine</strong> — we don't block actions</li>
+<li> <strong>Not an orchestrator</strong> — we don't manage multiple agents</li>
+<li> <strong>Not an LLM wrapper</strong> — we don't add more AI</li>
+<li> <strong>Not a workflow tool</strong> — we don't define agent processes</li>
+<li> <strong>Not production-ready</strong> — this is a proof-of-concept</li>
 </ul>
 <p><strong>We define what world the agent inhabits.</strong></p>
 <hr />
@@ -291,7 +296,7 @@ pytest</pre></div>
 </ul>
 <hr />
 <p></p><h2>Current Status</h2><a href="#current-status"></a><p></p>
-<p>🚧 <strong>Proof of Concept — seeking feedback</strong></p>
+<p> <strong>Proof of Concept — seeking feedback</strong></p>
 <p>The architectural concept is defined and a working Hello World implementation exists. It has not been fully tested or hardened for production use.</p>
 <p><strong>The demo shows:</strong></p>
 <ul>

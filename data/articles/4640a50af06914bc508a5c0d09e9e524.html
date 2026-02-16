@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Weekly Recap: AI Skill Malware, 31Tbps DDoS, Notepad++ Hack, LLM Backdoors and More</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/9/2026 1:59:00 PM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/weekly-recap-ai-skill-malware-31tbps.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 09, 2026</span></span><span>Hacking News / Cybersecurity</span></p></div><div>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUQI___vJxIaWlqG1lWOUAxD5Ur1U6VZA2denhtk0dqfyI4yIlzqTGJkg1vqQVn5twAhjY9JraokCa2Ly2xBoZ4wXwX5XRncJcZpbANC1j8RtIBi9-jezYgF56QIny6kJRuqCXqgVGXQWX935VYiaLlPqu88xmqmg5n2_PJgtFZsx75cnOAlgWcyp0A_SK/s1600/recap-main.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUQI___vJxIaWlqG1lWOUAxD5Ur1U6VZA2denhtk0dqfyI4yIlzqTGJkg1vqQVn5twAhjY9JraokCa2Ly2xBoZ4wXwX5XRncJcZpbANC1j8RtIBi9-jezYgF56QIny6kJRuqCXqgVGXQWX935VYiaLlPqu88xmqmg5n2_PJgtFZsx75cnOAlgWcyp0A_SK/s1600/recap-main.jpg"></a></p> <p>Cyber threats are no longer coming from just malware or exploits. They’re showing up inside the tools, platforms, and ecosystems organizations use every day. As companies connect AI, cloud apps, developer tools, and communication systems, attackers are following those same paths.</p>
+<p>A clear pattern this week: attackers are abusing trust. Trusted updates, trusted marketplaces, trusted apps, even trusted AI workflows. Instead of breaking security controls head-on, they’re slipping into places that already have access.</p>
+<p>This recap brings together those signals — showing how modern attacks are blending technology abuse, ecosystem manipulation, and large-scale targeting into a single, expanding threat surface.</p>
+<h2><strong> Threat of the Week</strong></h2>
+<p><strong><a href="https://thehackernews.com/2026/02/openclaw-integrates-virustotal-scanning.html" target="_blank">OpenClaw announces VirusTotal Partnership</a> </strong>— OpenClaw has announced a partnership with Google's VirusTotal malware scanning platform to scan skills that are being uploaded to ClawHub as part of a defense-in-depth approach to improve the security of the agentic ecosystem. The development comes as the cybersecurity community has raised concerns that autonomous artificial intelligence (AI) tools' persistent memory, broad permissions, and user‑controlled configuration could amplify existing risks, leading to prompt injections, data exfiltration, and exposure to unvetted components. This has also been complemented by the discovery of <a href="https://www.gendigital.com/blog/insights/research/openclaw-autonomy-risks" target="_blank">malicious skills on ClawHub</a>, a public skills registry to augment the capabilities of AI agents, once again demonstrating that marketplaces are a gold mine for criminals who populate the store with malware to prey on developers. To make matters worse, Trend Micro disclosed that it observed malicious actors on the Exploit.in forum actively discussing the deployment of OpenClaw skills to support activities such as botnet operations. Another report from Veracode <a href="https://www.veracode.com/blog/clawing-for-scraps-openclaw-clawdbot/" target="_blank">revealed</a> that the number of packages on npm and PyPI with the name "claw" has increased exponentially from nearly zero at the start of the year to over 1,000 as of early February 2026, providing new avenues for threat actors to smuggle malicious typosquats. "Unsupervised deployment, broad permissions, and high autonomy can turn theoretical risks into tangible threats, not just for individual users but also across entire organizations," Trend Micro <a href="https://www.trendmicro.com/en_us/research/26/b/what-openclaw-reveals-about-agentic-assistants.html" target="_blank">said</a>. "Open-source agentic tools like OpenClaw require a higher baseline of user security competence than managed platforms."&nbsp;</p> <h2><strong> Top News</strong></h2> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

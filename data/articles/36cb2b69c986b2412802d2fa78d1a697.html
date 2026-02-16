@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -34,7 +39,7 @@ alternatively under a commercial license from Element).</p>
 <p>There is no support provided by Element unless you have a subscription from
 Element.</p>
 <a name="user-content-getting-started"></a>
-<p></p><h2>🚀 Getting started</h2><a href="#-getting-started"></a><p></p>
+<p></p><h2> Getting started</h2><a href="#-getting-started"></a><p></p>
 <p>This component is developed and maintained by <a href="https://element.io/">Element</a>.
 It gets shipped as part of the <strong>Element Server Suite (ESS)</strong> which provides the
 official means of deployment.</p>
@@ -52,7 +57,7 @@ of ESS Pro focused on the requirements of TI-Messenger Pro and ePA as
 specified by the German National Digital Health Agency Gematik</li>
 </ul>
 <a name="user-content-standalone-installation-and-configuration"></a>
-<p></p><h2>🛠️ Standalone installation and configuration</h2><a href="#️-standalone-installation-and-configuration"></a><p></p>
+<p></p><h2> Standalone installation and configuration</h2><a href="#-standalone-installation-and-configuration"></a><p></p>
 <p>The Synapse documentation describes <a href="https://element-hq.github.io/synapse/latest/setup/installation.html">options for installing Synapse standalone</a>. See
 below for more useful documentation links.</p>
 <ul>
@@ -62,15 +67,15 @@ below for more useful documentation links.</p>
 <li><a href="https://element-hq.github.io/synapse/develop/upgrade.html">Upgrading Synapse</a></li>
 </ul>
 <a name="user-content-troubleshooting-and-support"></a>
-<p></p><h2>🎯 Troubleshooting and support</h2><a href="#-troubleshooting-and-support"></a><p></p>
+<p></p><h2> Troubleshooting and support</h2><a href="#-troubleshooting-and-support"></a><p></p>
 <a name="user-content-professional-support"></a>
-<p></p><h3>🚀 Professional support</h3><a href="#-professional-support"></a><p></p>
+<p></p><h3> Professional support</h3><a href="#-professional-support"></a><p></p>
 <p>Enterprise quality support for Synapse including SLAs is available as part of an
 <a href="https://element.io/pricing">Element Server Suite (ESS)</a> subscription.</p>
 <p>If you are an existing ESS subscriber then you can raise a <a href="https://ems.element.io/support">support request</a>
 and access the <a href="https://docs.element.io/">Element product documentation</a>.</p>
 <a name="user-content-community-support"></a>
-<p></p><h3>🤝 Community support</h3><a href="#-community-support"></a><p></p>
+<p></p><h3> Community support</h3><a href="#-community-support"></a><p></p>
 <p>The <a href="https://element-hq.github.io/synapse/latest/usage/administration/admin_faq.html">Admin FAQ</a>
 includes tips on dealing with some common problems. For more details, see
 <a href="https://element-hq.github.io/synapse/latest/">Synapse's wider documentation</a>.</p>
@@ -78,7 +83,7 @@ includes tips on dealing with some common problems. For more details, see
 support room <a href="https://matrix.to/#/#synapse:matrix.org"><code>#synapse:matrix.org</code></a> (from a matrix.org account if necessary). We do not use GitHub
 issues for support requests, only for bug reports and feature requests.</p>
 <a name="user-content-development"></a>
-<p></p><h2>🛠️ Development</h2><a href="#️-development"></a><p></p>
+<p></p><h2> Development</h2><a href="#-development"></a><p></p>
 <p>We welcome contributions to Synapse from the community!
 The best place to get started is our
 <a href="https://element-hq.github.io/synapse/latest/development/contributing_guide.html">guide for contributors</a>.

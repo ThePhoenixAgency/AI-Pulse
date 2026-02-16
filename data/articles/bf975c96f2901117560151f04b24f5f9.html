@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>SolarWinds Web Help Desk Exploited for RCE in Multi-Stage Attacks on Exposed Servers</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/9/2026 3:42:00 PM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/solarwinds-web-help-desk-exploited-for.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1coFDcJGaV6fnBzpBs3TXSas4-odFMjYTlXPM-cyQcpzDyCshc0pH8HMEo1XmNUoVPRU4J56lg3ApR_-KpFn8L6aiATW4A5Xx_cIUbCYO1MI9W6lTiW-vlJWPK7Bc-SkXNcjQ-CnP7_HCOwhRYn1HsJnuE6sCOQZ6S4m-LC3zySGT_mHorlhwwJA4SLlO/s1600/1000054453.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1coFDcJGaV6fnBzpBs3TXSas4-odFMjYTlXPM-cyQcpzDyCshc0pH8HMEo1XmNUoVPRU4J56lg3ApR_-KpFn8L6aiATW4A5Xx_cIUbCYO1MI9W6lTiW-vlJWPK7Bc-SkXNcjQ-CnP7_HCOwhRYn1HsJnuE6sCOQZ6S4m-LC3zySGT_mHorlhwwJA4SLlO/s1600/1000054453.jpg"></a></p> <p>Microsoft has <a href="https://www.microsoft.com/en-us/security/blog/2026/02/06/active-exploitation-solarwinds-web-help-desk/" target="_blank">revealed</a> that it observed a multi‑stage intrusion that involved the threat actors exploiting internet‑exposed SolarWinds Web Help Desk (WHD) instances to obtain initial access and move laterally across the organization's network to other high-value assets.</p>
+<p>That said, the Microsoft Defender Security Research Team said it's not clear whether the activity weaponized <a href="https://thehackernews.com/2026/01/solarwinds-fixes-four-critical-web-help.html" target="_blank">recently disclosed flaws</a> (CVE-2025-40551, CVSS score: 9.8, and CVE-2025-40536, CVSS score: 8.1), or a <a href="https://thehackernews.com/2025/09/solarwinds-releases-hotfix-for-critical.html" target="_blank">previously patched vulnerability</a> (CVE-2025-26399, CVSS score: 9.8).</p>
+<p>"Since the attacks occurred in December 2025 and on machines vulnerable to both the old and new set of CVEs at the same time, we cannot reliably confirm the exact CVE used to gain an initial foothold," the company said in a report published last week.</p> <p>While CVE-2025-40536 is a security control bypass vulnerability that could allow an unauthenticated attacker to gain access to certain restricted functionality, CVE-2025-40551 and CVE-2025-26399 both refer to untrusted data deserialization vulnerabilities that could lead to remote code execution.</p>
+<p>Last week, the U.S. Cybersecurity and Infrastructure Security Agency (CISA) <a href="https://thehackernews.com/2026/02/cisa-adds-actively-exploited-solarwinds.html" target="_blank">added</a> CVE-2025-40551 to its Known Exploited Vulnerabilities (KEV) catalog, citing evidence of active exploitation in the wild. Federal Civilian Executive Branch (FCEB) agencies were ordered to apply the fixes for the flaw by February 6, 2026.</p>
+<p>In the attacks detected by Microsoft, successful exploitation of the exposed SolarWinds WHD instance allowed the attackers to achieve unauthenticated remote code execution and run arbitrary commands within the WHD application context.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgybQtO5QCT7zGEYEOANdw80ww8JsRZgiLy2EmG4GueP6auygFR_rw6kF3eC3kCGnzI7G5Eaj3cw3S_XRWYhpCt8r6A98ZZWxBM9WaruuGZUTBBuW11j1LbHddP1b6wOqq95TuQrzvsMCSIpvdpsMJzHKjRbdHbZiTgMJ2GzJFlAbVbmAzbg1LymgOI-o0w/s1600/msms.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgybQtO5QCT7zGEYEOANdw80ww8JsRZgiLy2EmG4GueP6auygFR_rw6kF3eC3kCGnzI7G5Eaj3cw3S_XRWYhpCt8r6A98ZZWxBM9WaruuGZUTBBuW11j1LbHddP1b6wOqq95TuQrzvsMCSIpvdpsMJzHKjRbdHbZiTgMJ2GzJFlAbVbmAzbg1LymgOI-o0w/s1600/msms.jpg"></a></p>
+<p>"Upon successful exploitation, the compromised service of a WHD instance spawned PowerShell to leverage <a href="https://learn.microsoft.com/en-us/windows/win32/bits/background-intelligent-transfer-service-portal" target="_blank">BITS</a> [Background Intelligent Transfer Service] for payload download and execution," researchers Sagar Patil, Hardik Suri, Eric Hopper, and Kajhon Soyini noted.</p>
+<p>In the next stage, the threat actors downloaded legitimate components associated with Zoho ManageEngine, a legitimate remote monitoring and management (RMM) solution, to enable persistent remote control over the infected system. The attackers followed it up with a series of actions -</p>
+<ul>
+<li>Enumerated sensitive domain users and groups, including Domain Admins.</li>
+<li>Established persistence via reverse SSH and RDP access, with the attackers also attempting to create a scheduled task to launch a QEMU virtual machine under the SYSTEM account at system startup to cover up the tracks within a virtualized environment while exposing SSH access via port forwarding.</li>
+<li>Used DLL side-loading on some hosts by using "wab.exe," a legitimate system executable associated with the Windows Address Book, to launch a rogue DLL ("sspicli.dll") to dump the contents of LSASS memory and conduct credential theft.</li>
+</ul> <p>In at least one case, Microsoft said the threat actors conducted a <a href="https://attack.mitre.org/techniques/T1003/006/" target="_blank">DCSync attack</a>, where a Domain Controller (DC) is <a href="https://www.semperis.com/blog/dcsync-attack/" target="_blank">simulated</a> to request <a href="https://www.sentinelone.com/blog/active-directory-dcsync-attacks/" target="_blank">password hashes</a> and other sensitive information from an Active Directory (AD) database.</p>
+<p>To counter the threat, users are advised to keep the WHD instances up-to-date, find and remove any unauthorized RMM tools, rotate service and admin accounts, and isolate compromised machines to limit the breach.</p>
+<p>"This activity reflects a common but high-impact pattern: a single exposed application can provide a path to full domain compromise when vulnerabilities are unpatched or insufficiently monitored," the Windows maker said.</p> <p>"In this intrusion, attackers relied heavily on living-off-the-land techniques, legitimate administrative tools, and low-noise persistence mechanisms. These tradecraft choices reinforce the importance of defense in depth, timely patching of internet-facing services, and behavior-based detection across identity, endpoint, and network layers."</p> <h3>Update</h3>
+<p>In a report published on February 8, 2026, cybersecurity company Huntress <a href="https://www.huntress.com/blog/active-exploitation-solarwinds-web-help-desk-cve-2025-26399" target="_blank">said</a> it investigated a case of SolarWinds WHD exploitation, in which the threat actor rapidly deployed Zoho Meetings and Cloudflare tunnels for persistence, as well as a legitimate forensics tool called <a href="https://thehackernews.com/2025/10/hackers-turn-velociraptor-dfir-tool.html" target="_blank">Velociraptor</a> for command-and-control (C2). The incident occurred on February 7, 2026.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1bIRNHRPZA16AUKVfHaFPU9UCBqWpM452jXFp-APoKUmtf5sj1OJ_N7kK7g_nPHmb4Qx6FqlZmLwmdB_8fsZaORqG7Oa6kEuQnF6-Pwus4WPg24dj-UCG5pNI4rPFpd6KnKxWUTFL2p5My4SzNLJlMfEJT-Vdu10cSJBQi7drHOM7L7b62CptbiM1XDMo/s1600/helpdesk.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1bIRNHRPZA16AUKVfHaFPU9UCBqWpM452jXFp-APoKUmtf5sj1OJ_N7kK7g_nPHmb4Qx6FqlZmLwmdB_8fsZaORqG7Oa6kEuQnF6-Pwus4WPg24dj-UCG5pNI4rPFpd6KnKxWUTFL2p5My4SzNLJlMfEJT-Vdu10cSJBQi7drHOM7L7b62CptbiM1XDMo/s1600/helpdesk.jpg"></a></p>
+<p>The following sequence of post-exploitation actions describes how the attack unfolded -</p>
+<ul>
+<li>Launched "cmd.exe" to install a remote MSI payload associated with Zoho ManageEngine RMM and established remote access by configuring the Zoho Assist agent for unattended access and registering the compromised host to a Zoho Assist account tied to a Proton Mail address "esmahyft@proton[.]me."</li>
+<li>Executed Active Directory discovery commands to enumerate domain-joined machines for reconnaissance.</li>
+<li>Leveraged the Zoho Assist remote session to deploy Velociraptor version 0.73.4, an outdated version with a known privilege escalation vulnerability (<a href="https://docs.velociraptor.app/announcements/advisories/cve-2025-6264/" target="_blank">CVE-2025-6264</a>).</li>
+<li>Used the Velociraptor agent to execute PowerShell commands to check for the presence of "code.exe," a Visual Studio Code binary with the likely intent of establishing a remote tunnel.</li>
+<li>Installed <a href="https://github.com/cloudflare/cloudflared" target="_blank">Cloudflared</a> to establish an additional tunnel-based channel for redundant access to the compromised host.</li>
+<li>Executed a PowerShell script that collects comprehensive system information and transmits it directly to an attacker-controlled Elastic Cloud instance.</li>
+<li>Disabled Windows Defender and Windows Firewall via Registry modifications.</li>
+<li>Executed a script that implements a live C2 failover mechanism for the Velociraptor agent to connect it to a different server ("v2-api.mooo[.]com") if the original Cloudflare workers[.]dev domain has been detected. It achieves this by sending a request to the failover server and checking the HTTP response code. If the status is <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/406" target="_blank">406 Not Acceptable</a>, the Velociraptor is reconfigured to talk to the new server.</li>
+<li>Created scheduled tasks that use QEMU to open an SSH backdoor as a persistence mechanism.</li>
+</ul>
+<p>"The Velociraptor server URL, https://auth.qgtxtebl.workers[.]dev/, utilizes a Cloudflare Worker from the same Cloudflare account we have seen before across multiple intrusions involving ToolShell exploitation, and <a href="https://thehackernews.com/2025/10/hackers-turn-velociraptor-dfir-tool.html" target="_blank">Warlock</a> ransomware deployment, identified by the shared per-account identifier component of the subdomain: qgtxtebl," Huntress researchers noted.</p> <p>When asked if the latest set of attacks could also be the work of the Warlock ransomware crew, given the indicators of compromise, Jamie Levy, director of adversary tactics at Huntress, told The Hacker News in an email that "there are definitely some similarities that show that this recent campaign of attacks is from the same threat actor group."</p>
+<p>This includes the "usage of the same tools and tactics post compromise," along with reused infrastructure observed in prior campaigns. "We also saw one customer come on after they had been compromised and ransomed, cementing our suspicions even further," Levy added.</p>
+<p><em>(The story was updated after publication to include a response from Huntress.)</em></p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

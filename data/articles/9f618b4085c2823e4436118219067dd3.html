@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Claude Opus 4.6 Finds 500+ High-Severity Flaws Across Major Open-Source Libraries</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/6/2026 6:49:00 AM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/claude-opus-46-finds-500-high-severity.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div>
+<p><span><i></i><span>Ravie Lakshmanan</span><i></i><span>Feb 06, 2026</span></span><span>Artificial Intelligence / Vulnerability</span></p></div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3INhSQ0eqV1r5O9Q_JGSGDCw6r657lTF_JXgvwnA7iHLRer8FgbUzV37ALPlKD0MNHNUltUI8BjJNLOb2iL8FRZ3xlBO74k2HCxEsTcY8z0wN6xfNacnOK7eRHDmrw0mEbBvYINLHTQs7AEDhffz2DRXd2uOJgPh7tJg-xVZFx070Lo36hdfu7HpEEeRO/s1600/claude-opus-4.6.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg3INhSQ0eqV1r5O9Q_JGSGDCw6r657lTF_JXgvwnA7iHLRer8FgbUzV37ALPlKD0MNHNUltUI8BjJNLOb2iL8FRZ3xlBO74k2HCxEsTcY8z0wN6xfNacnOK7eRHDmrw0mEbBvYINLHTQs7AEDhffz2DRXd2uOJgPh7tJg-xVZFx070Lo36hdfu7HpEEeRO/s1600/claude-opus-4.6.jpg"></a></p>
+<p>Artificial intelligence (AI) company Anthropic <a href="https://red.anthropic.com/2026/zero-days/" target="_blank">revealed</a> that its latest large language model (LLM), Claude Opus 4.6, has found more than 500 previously unknown high-severity security flaws in open-source libraries, including <a href="https://ghostscript.com/" target="_blank">Ghostscript</a>, <a href="https://github.com/OpenSC/OpenSC" target="_blank">OpenSC</a>, and <a href="https://github.com/dloebl/cgif" target="_blank">CGIF</a>.</p>
+<p>Claude Opus 4.6, which was <a href="https://www.anthropic.com/news/claude-opus-4-6" target="_blank">launched</a> Thursday, comes with improved coding skills, including code review and debugging capabilities, along with enhancements to tasks like financial analyses, research, and document creation.</p>
+<p>Stating that the model is "notably better" at discovering high-severity vulnerabilities without requiring any task-specific tooling, custom scaffolding, or specialized prompting, Anthropic said it is putting it to use to find and help fix vulnerabilities in open-source software.</p> <p>"Opus 4.6 reads and reasons about code the way a human researcher would—looking at past fixes to find similar bugs that weren't addressed, spotting patterns that tend to cause problems, or understanding a piece of logic well enough to know exactly what input would break it," it added.</p>
+<p>Prior to its debut, Anthropic's Frontier Red Team put the model to test inside a virtualized environment and gave it the necessary tools, such as debuggers and fuzzers, to find flaws in open-source projects. The idea, it said, was to assess the model's out-of-the-box capabilities without providing any instructions on how to use these tools or providing information that could help it better flag the vulnerabilities.</p>
+<p>The company also said it validated every discovered flaw to make sure that it was not made up (i.e., hallucinated), and that the LLM was used as a tool to prioritize the most severe memory corruption vulnerabilities that were identified.</p>
+<p>Some of the security defects that were flagged by Claude Opus 4.6 are listed below. They have since been patched by the respective maintainers.</p> <ul>
+<li>Parsing the Git commit history to identify a vulnerability in Ghostscript that could result in a crash by taking advantage of a missing bounds check</li>
+<li>Searching for function calls like strrchr() and strcat() to identify a buffer overflow vulnerability in OpenSC</li>
+<li>A heap buffer overflow vulnerability in CGIF (Fixed in <a href="https://github.com/dloebl/cgif/releases/tag/v0.5.1" target="_blank">version 0.5.1</a>)</li>
+</ul>
+<p>"This vulnerability is particularly interesting because triggering it requires a conceptual understanding of the LZW algorithm and how it relates to the GIF file format," Anthropic said of the CGIF bug. "Traditional fuzzers (and even coverage-guided fuzzers) struggle to trigger vulnerabilities of this nature because they require making a particular choice of branches."</p>
+<p>"In fact, even if CGIF had 100% line- and branch-coverage, this vulnerability could still remain undetected: it requires a very specific sequence of operations."</p> <p>The company has pitched AI models like Claude as a critical tool for defenders to "level the playing field." But it also emphasized that it will adjust and update its safeguards as potential threats are discovered and put in place additional guardrails to prevent misuse.</p>
+<p>The disclosure comes weeks after Anthropic said its current Claude models can succeed at multi-stage attacks on networks with dozens of hosts using only standard, open-source tools by finding and exploiting known security flaws.</p>
+<p>"This illustrates how barriers to the use of AI in relatively autonomous cyber workflows are rapidly coming down, and highlights the importance of security fundamentals like promptly patching known vulnerabilities," it <a href="https://red.anthropic.com/2026/cyber-toolkits-update/" target="_blank">said</a>.</p> <p>Found this article interesting? Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

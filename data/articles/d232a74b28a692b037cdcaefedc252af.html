@@ -4,15 +4,27 @@
 <meta charset="UTF-8">
 <title>Weekly Recap: Outlook Add-Ins Hijack, 0-Day Patches, Wormable Botnet &amp; AI Malware</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   img { max-width: 100%; height: auto; border-radius: 8px; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-footer { margin-top: 1.6em; padding-top: 0.9em; border-top: 1px solid rgba(0,217,255,0.2); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.9em; }
+  .footer-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(0,217,255,0.35); background: rgba(0,217,255,0.08); color: #00d9ff; text-decoration: none; font-size: 0.88em; }
+  .footer-btn:hover { background: rgba(0,217,255,0.16); }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -28,13 +40,13 @@
 <p>This week’s recap shows how small gaps are turning into big entry points. Not always through new exploits, often through tools, add-ons, cloud setups, or workflows that people already trust and rarely question.</p>
 <p>Another signal: attackers are mixing old and new methods. Legacy botnet tactics, modern cloud abuse, AI assistance, and supply-chain exposure are being used side by side, whichever path gives the easiest foothold.</p>
 <p>Below is the full weekly recap — a condensed scan of the incidents, flaws, and campaigns shaping the threat landscape right now.</p>
-<h2><strong>⚡ Threat of the Week</strong></h2>
+<h2><strong> Threat of the Week</strong></h2>
 <p><strong><a href="https://thehackernews.com/2026/02/first-malicious-outlook-add-in-found.html" target="_blank">Malicious Outlook Add-in Turns Into Phishing Kit</a> </strong>— In an unusual case of a supply chain attack, the legitimate AgreeTo add-in for Outlook has been hijacked and turned into a phishing kit that stole more than 4,000 Microsoft account credentials. This was made possible by seizing control of a domain associated with the now-abandoned project to serve a fake Microsoft login page. The incident demonstrates how overlooked and abandoned assets turn into attack vectors. "What makes Office add-ins particularly concerning is the combination of factors: they run inside Outlook, where users handle their most sensitive communications, they can request permissions to read and modify emails, and they're distributed through Microsoft's own store, which carries implicit trust," Koi Security's Idan Dardikman said. Microsoft has since removed the add-in from its store. </p>
 
 
 
 
-<h2><strong>🔔 Top News</strong></h2>
+<h2><strong> Top News</strong></h2>
 <ul>
 <li><strong><a href="https://thehackernews.com/2026/02/new-chrome-zero-day-cve-2026-2441-under.html" target="_blank">Google Releases Fixes for Actively Exploited Chrome 0-Day</a> </strong>— Google shipped security updates for its Chrome browser to address a flaw that it said has been exploited in the wild. The high-severity vulnerability, tracked as CVE-2026-2441 (CVSS score: 8.8), has been described as a use-after-free bug in CSS that could result in arbitrary code execution. Google did not disclose any details about how the vulnerability is being exploited in the wild, by whom, or who may have been targeted, but it acknowledged that "an exploit for CVE-2026-2441 exists in the wild." CVE-2026-2441 is the first actively exploited Chrome flaw patched by Google this year.</li>
 <li><strong><a href="https://thehackernews.com/2026/02/researchers-observe-in-wild.html" target="_blank">BeyondTrust Flaw Comes Under Active Exploitation</a> </strong>— A newly disclosed critical vulnerability in BeyondTrust Remote Support and Privileged Remote Access products has come under active exploitation in the wild less than 24 hours after the publication of a proof-of-concept (PoC) exploit. The vulnerability in question is CVE-2026-1731 (CVS score: 9.9), which could allow an unauthenticated attacker to achieve remote code execution by sending specially crafted requests. According to BeyondTrust, successful exploitation of the shortcoming could allow an unauthenticated remote attacker to execute operating system commands in the context of the site user, resulting in unauthorized access, data exfiltration, and service disruption. Data from GreyNoise revealed that a single IP accounted for 86% of all observed reconnaissance sessions so far.</li>
@@ -45,19 +57,19 @@
 <li><strong><a href="https://thehackernews.com/2026/02/google-links-china-iran-russia-north.html" target="_blank">Nation-State Hackers Go After Defense Industrial Base</a> </strong>— Digital threats targeting the defense industrial base (DIB) sector are expanding beyond traditional espionage into supply chain attacks, workforce infiltration, and cyber operations that lend nations a strategic advantage on the battlefield. The development comes as the cyber domain becomes increasingly intertwined with national defense. Google Threat Intelligence Group said the DIB sector faces a "relentless barrage" of cyber operations conducted by state-sponsored actors and criminal groups. These activities are primarily driven by Chinese, Iranian, North Korean, and Russian threat actors. This is also complemented by pre-positioning efforts to gain covert access through zero-day vulnerabilities in edge network devices to maintain persistent access for future strategic advantage. "In modern warfare, the front lines are no longer confined to the battlefield; they extend directly into the servers and supply chains of the industry that safeguards the nation," the tech giant said.</li>
 </ul>
 
-<h2><strong>‎️‍🔥 Trending CVEs</strong></h2>
+<h2><strong>‎ Trending CVEs</strong></h2>
 <p>New vulnerabilities surface daily, and attackers move fast. Reviewing and patching early keeps your systems resilient.</p>
 <p>Here are this week’s most critical flaws to check first — <a href="https://thehackernews.com/2026/02/new-chrome-zero-day-cve-2026-2441-under.html" target="_blank">CVE-2026-2441</a> (Google Chrome), <a href="https://thehackernews.com/2026/02/apple-fixes-exploited-zero-day.html" target="_blank">CVE-2026-20700</a> (Apple iOS, iPadOS, macOS Tahoe, tvOS, watchOS, and visionOS), <a href="https://thehackernews.com/2026/02/microsoft-patches-59-vulnerabilities.html" target="_blank">CVE-2026-21510, CVE-2026-21513, CVE-2026-21514, CVE-2026-21519, CVE-2026-21525, CVE-2026-21533</a> (Microsoft Windows), <a href="https://thehackernews.com/2026/02/beyondtrust-fixes-critical-pre-auth-rce.html" target="_blank">CVE-2026-1731</a> (BeyondTrust Remote Support and Privileged Remote Access), <a href="https://kb.cert.org/vuls/id/458422" target="_blank">CVE-2026-1774</a> (CASL Ability), <a href="https://github.com/axios/axios/security/advisories/GHSA-43fc-jf86-j433" target="_blank">CVE-2026-25639</a> (Axios), <a href="https://github.com/pnggroup/libpng/security/advisories/GHSA-g8hp-mq4h-rqm3" target="_blank">CVE-2026-25646</a> (libpng), <a href="https://nvd.nist.gov/vuln/detail/CVE-2026-1357" target="_blank">CVE-2026-1357</a> (WPvivid Backup &amp; Migration plugin), <a href="https://socket.dev/blog/high-severity-rce-vulnerability-disclosed-in-next-mdx-remote" target="_blank">CVE-2026-0969</a> (next-mdx-remote), <a href="https://github.com/nyariv/SandboxJS/security/advisories/GHSA-ww7g-4gwx-m7wj" target="_blank">CVE-2026-25881</a> (SandboxJS), <a href="https://github.com/gofiber/fiber/security/advisories/GHSA-68rr-p4fp-j59v" target="_blank">CVE-2025-66630</a> (Fiber v2), and a <a href="https://kb.cert.org/vuls/id/504749" target="_blank">path traversal vulnerability</a> in PyMuPDF (no CVE).</p>
 
 
-<h2><strong>🎥 Cybersecurity Webinars</strong></h2>
+<h2><strong> Cybersecurity Webinars</strong></h2>
 <ul>
 <li><a href="https://thehacker.news/post-quantum-cryptography?source=recap" target="_blank">Quantum-Ready Security: Preparing for Post-Quantum Cryptography Risks</a> — Quantum computing is advancing fast and it could soon break today’s encryption. Attackers are already collecting encrypted data to decrypt later using quantum power. In this webinar, learn how post-quantum cryptography (PQC) protects sensitive data, ensures compliance, and prepares your organization for future threats. Discover practical strategies, hybrid encryption models, and real solutions from Zscaler to secure your business for the quantum era.</li>
 <li><a href="https://thehacker.news/ai-agents-attack-surface?source=urecap" target="_blank">AI Agents Are Expanding Your Attack Surface — Learn How to Secure Them</a> — AI agents are no longer just chatbots; they browse the web, run code, and access company systems. This creates new security risks beyond prompts. In this session, Rahul Parwani explains how attackers target AI agents and what teams can do to protect them in real-world use.</li>
 <li><a href="https://thehacker.news/forensics-reimagined?source=recap" target="_blank">Faster Cloud Breach Analysis With Context-Aware Forensics</a> — Cloud attacks don’t leave clear evidence, and traditional forensics can’t keep up. In this webinar, learn how context-aware forensics and AI help security teams investigate cloud incidents faster, capture the right host-level data, and reconstruct attacks in minutes instead of days, so you understand what happened and respond with confidence.</li>
 </ul>
 
-<h2><strong>📰 Around the Cyber World</strong></h2>
+<h2><strong> Around the Cyber World</strong></h2>
 <ul>
 <li><strong>DragonForce Ransomware Cartel Detailed </strong>— In a new analysis, S2W detailed the workings of DragonForce, a ransomware group active since December 2023 that operates under a Ransomware-as-a-Service (RaaS) model and promotes itself as a cartel to expand its influence. The group has carried out attacks against 363 companies from December 2023 to January 2026, while affiliating with LockBit and Qilin. DragonForce also maintains the RansomBay service to support affiliates with customized payload generation and configuration options. In addition, it is active on several dark web forums, including BreachForums, RAMP, and Exploit to advertise its RaaS operations and recruit pentesters. "DragonForce has been expanding its operational scope through attacks on other groups as well as through cooperative relationships, which is assessed as an effort to strengthen its position within the ransomware ecosystem," S2W <a href="https://medium.com/s2wblog/inside-the-ecosystem-operations-dragonforce-11048db4cbb0" target="_blank">said</a>.</li>
 <li><strong>New Browser Fingerprinting Technique Uses Ad Block Filters </strong>— Aș browser fingerprinting techniques continue to evolve, new research has <a href="https://melvin.ovh/adbleed/" target="_blank">found</a> that country-specific adblock filter lists installed on the browser can be used to de-anonymize VPN users. The approach has been codenamed <a href="https://adbleed.eu/" target="_blank">Adbleed</a> by security researcher Melvin Lammerts. "Users of ad blockers with country-specific filter lists (e.g., EasyList Germany, Liste FR) can be partially de-anonymized even when using a VPN," the researcher said. "By probing blocked domains unique to each country's filter list, we can identify which lists are active, revealing the user's likely country or language. If 20+ out of 30 probed domains are blocked instantly, we conclude that the country's filter list is active."</li>
@@ -73,7 +85,7 @@
 </ul>
 
 
-<h2><strong>🔧 Cybersecurity Tools</strong></h2>
+<h2><strong> Cybersecurity Tools</strong></h2>
 <ul>
 <li><a href="https://github.com/1Password/SCAM" target="_blank">SCAM</a> (Security Comprehension Awareness Measure) — It is a benchmark by 1Password that tests how safely AI agents handle sensitive information in real workplace situations. Instead of asking agents to identify obvious scams, it places them inside everyday tasks—email, credentials, web forms—where hidden threats like phishing links and fake domains appear naturally. The goal is to measure whether AI can recognize, avoid, and report risks before damage happens.</li>
 <li><a href="https://github.com/RSAC-Labs/Quantickle" target="_blank">Quantickle</a> — It is a browser-based graph visualization tool designed to help analysts map and explore threat intelligence data. It turns complex relationships—IPs, domains, malware, actors—into interactive network graphs, making patterns, connections, and attack paths easier to see, investigate, and explain.</li>
@@ -86,5 +98,29 @@
 <p>Found this article interesting?  Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
 </div></div>
   </div>
+  
+
+
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+
+  <script>
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+
+  </script>
 </body>
 </html>

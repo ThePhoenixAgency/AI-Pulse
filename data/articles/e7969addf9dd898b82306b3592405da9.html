@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -42,14 +47,14 @@
     <img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/mother_of_ai_project_rag_architecture.gif" alt="RAG Architecture" />
   </a>
 </p>
-<p></p><h2>📖 About This Course</h2><a href="#-about-this-course"></a><p></p>
+<p></p><h2> About This Course</h2><a href="#-about-this-course"></a><p></p>
 <p>This is a <strong>learner-focused project</strong> where you'll build a complete research assistant system that automatically fetches academic papers, understands their content, and answers your research questions using advanced RAG techniques.</p>
 <p><strong>The arXiv Paper Curator</strong> will teach you to build a <strong>production-grade RAG system using industry best practices</strong>. Unlike tutorials that jump straight to vector search, we follow the <strong>professional path</strong>: master keyword search foundations first, then enhance with vectors for hybrid retrieval.</p>
 <blockquote>
-<p><strong>🎯 The Professional Difference:</strong> We build RAG systems the way successful companies do - solid search foundations enhanced with AI, not AI-first approaches that ignore search fundamentals.</p>
+<p><strong> The Professional Difference:</strong> We build RAG systems the way successful companies do - solid search foundations enhanced with AI, not AI-first approaches that ignore search fundamentals.</p>
 </blockquote>
 <p>By the end of this course, you'll have your own AI research assistant and the deep technical skills to build production RAG systems for any domain.</p>
-<p></p><h3><strong>🎓 What You'll Build</strong></h3><a href="#-what-youll-build"></a><p></p>
+<p></p><h3><strong> What You'll Build</strong></h3><a href="#-what-youll-build"></a><p></p>
 <ul>
 <li><strong>Week 1:</strong> Complete infrastructure with Docker, FastAPI, PostgreSQL, OpenSearch, and Airflow</li>
 <li><strong>Week 2:</strong> Automated data pipeline fetching and parsing academic papers from arXiv</li>
@@ -60,7 +65,7 @@
 <li><strong>Week 7:</strong> <strong>Agentic RAG with LangGraph and Telegram Bot for mobile access</strong></li>
 </ul>
 <hr />
-<p></p><h2>🏗️ System Architecture Evolution</h2><a href="#️-system-architecture-evolution"></a><p></p>
+<p></p><h2> System Architecture Evolution</h2><a href="#-system-architecture-evolution"></a><p></p>
 <p></p><h3>Week 7: Agentic RAG &amp; Telegram Bot Integration</h3><a href="#week-7-agentic-rag--telegram-bot-integration"></a><p></p>
 <div>
   <p><a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week7_telegram_and_agentic_ai.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week7_telegram_and_agentic_ai.png" alt="Week 7 Telegram and Agentic AI Architecture" /></a></p><p><em>Complete Week 7 architecture showing Telegram bot integration with the agentic RAG system</em></p>
@@ -80,15 +85,15 @@
 <li><strong>Transparency</strong>: Full reasoning step tracking for debugging and trust</li>
 </ul>
 <hr />
-<p></p><h2>🚀 Quick Start</h2><a href="#-quick-start"></a><p></p>
-<p></p><h3><strong>📋 Prerequisites</strong></h3><a href="#-prerequisites"></a><p></p>
+<p></p><h2> Quick Start</h2><a href="#-quick-start"></a><p></p>
+<p></p><h3><strong> Prerequisites</strong></h3><a href="#-prerequisites"></a><p></p>
 <ul>
 <li><strong>Docker Desktop</strong> (with Docker Compose)</li>
 <li><strong>Python 3.12+</strong></li>
 <li><strong>UV Package Manager</strong> (<a href="https://docs.astral.sh/uv/getting-started/installation/">Install Guide</a>)</li>
 <li><strong>8GB+ RAM</strong> and <strong>20GB+ free disk space</strong></li>
 </ul>
-<p></p><h3><strong>⚡ Get Started</strong></h3><a href="#-get-started"></a><p></p>
+<p></p><h3><strong> Get Started</strong></h3><a href="#-get-started"></a><p></p>
 <div><pre><span><span>#</span> 1. Clone and setup</span>
 git clone <span>&lt;</span>repository-url<span>&gt;</span>
 <span>cd</span> arxiv-paper-curator
@@ -107,7 +112,7 @@ docker compose up --build -d
 
 <span><span>#</span> 5. Verify everything works</span>
 curl http://localhost:8000/health</pre></div>
-<p></p><h3><strong>📚 Weekly Learning Path</strong></h3><a href="#-weekly-learning-path"></a><p></p>
+<p></p><h3><strong> Weekly Learning Path</strong></h3><a href="#-weekly-learning-path"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -168,7 +173,7 @@ curl http://localhost:8000/health</pre></div>
 </tr>
 </tbody>
 </table>
-<p><strong>📥 Clone a specific week's release:</strong></p>
+<p><strong> Clone a specific week's release:</strong></p>
 <div><pre><span><span>#</span> Clone a specific week's code</span>
 git clone --branch <span>&lt;</span>WEEK_TAG<span>&gt;</span> https://github.com/jamwithai/arxiv-paper-curator
 <span>cd</span> arxiv-paper-curator
@@ -177,7 +182,7 @@ docker compose down -v
 docker compose up --build -d
 
 <span><span>#</span> Replace &lt;WEEK_TAG&gt; with: week1.0, week2.0, etc.</span></pre></div>
-<p></p><h3><strong>📊 Access Your Services</strong></h3><a href="#-access-your-services"></a><p></p>
+<p></p><h3><strong> Access Your Services</strong></h3><a href="#-access-your-services"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -216,9 +221,9 @@ docker compose up --build -d
 </table>
 <p></p><h4><strong>NOTE</strong>: Check airflow/simple_auth_manager_passwords.json.generated for Airflow username and password</h4><a href="#note-check-airflowsimple_auth_manager_passwordsjsongenerated-for-airflow-username-and-password"></a><p></p>
 <hr />
-<p></p><h2>📚 Week 1: Infrastructure Foundation ✅</h2><a href="#-week-1-infrastructure-foundation-"></a><p></p>
+<p></p><h2> Week 1: Infrastructure Foundation </h2><a href="#-week-1-infrastructure-foundation-"></a><p></p>
 <p><strong>Start here!</strong> Master the infrastructure that powers modern RAG systems.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives"></a><p></p>
 <ul>
 <li>Complete infrastructure setup with Docker Compose</li>
 <li>FastAPI development with automatic documentation and health checks</li>
@@ -228,7 +233,7 @@ docker compose up --build -d
 <li>Service orchestration and health monitoring</li>
 <li>Professional development environment with code quality tools</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week1_infra_setup.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week1_infra_setup.png" alt="Week 1 Infrastructure Setup" /></a>
 </p>
@@ -240,16 +245,16 @@ docker compose up --build -d
 <li><strong>Apache Airflow 3.0</strong>: Workflow orchestration (Port 8080)</li>
 <li><strong>Ollama</strong>: Local LLM server (Port 11434)</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 1 notebook</span>
 uv run jupyter notebook notebooks/week1/week1_setup.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week1/week1_setup.ipynb">Week 1 notebook</a> for hands-on setup and verification steps.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/the-infrastructure-that-powers-rag">The Infrastructure That Powers RAG Systems</a> - Detailed walkthrough and production insights</p>
 <hr />
-<p></p><h2>📚 Week 2: Data Ingestion Pipeline ✅</h2><a href="#-week-2-data-ingestion-pipeline-"></a><p></p>
+<p></p><h2> Week 2: Data Ingestion Pipeline </h2><a href="#-week-2-data-ingestion-pipeline-"></a><p></p>
 <p><strong>Building on Week 1 infrastructure:</strong> Learn to fetch, process, and store academic papers automatically.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-1"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-1"></a><p></p>
 <ul>
 <li>arXiv API integration with rate limiting and retry logic</li>
 <li>Scientific PDF parsing using Docling</li>
@@ -257,28 +262,28 @@ uv run jupyter notebook notebooks/week1/week1_setup.ipynb</pre></div>
 <li>Metadata extraction and storage workflows</li>
 <li>Complete paper processing from API to database</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-1"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-1"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week2_data_ingestion_flow.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week2_data_ingestion_flow.png" alt="Week 2 Data Ingestion Architecture" /></a>
 </p>
 <p><strong>Data Pipeline Components:</strong></p>
 <ul>
-<li><strong>MetadataFetcher</strong>: 🎯 Main orchestrator coordinating the entire pipeline</li>
+<li><strong>MetadataFetcher</strong>:  Main orchestrator coordinating the entire pipeline</li>
 <li><strong>ArxivClient</strong>: Rate-limited paper fetching with retry logic</li>
 <li><strong>PDFParserService</strong>: Docling-powered scientific document processing</li>
 <li><strong>Airflow DAGs</strong>: Automated daily paper ingestion workflows</li>
 <li><strong>PostgreSQL Storage</strong>: Structured paper metadata and content</li>
 </ul>
-<p></p><h3><strong>📓 Implementation Guide</strong></h3><a href="#-implementation-guide"></a><p></p>
+<p></p><h3><strong> Implementation Guide</strong></h3><a href="#-implementation-guide"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 2 notebook  </span>
 uv run jupyter notebook notebooks/week2/week2_arxiv_integration.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week2/week2_arxiv_integration.ipynb">Week 2 notebook</a> for hands-on implementation and verification steps.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-1"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-1"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/bringing-your-rag-system-to-life">Building Data Ingestion Pipelines for RAG</a> - arXiv API integration and PDF processing</p>
 <hr />
-<p></p><h2>📚 Week 3: Keyword Search First - The Critical Foundation</h2><a href="#-week-3-keyword-search-first---the-critical-foundation"></a><p></p>
+<p></p><h2> Week 3: Keyword Search First - The Critical Foundation</h2><a href="#-week-3-keyword-search-first---the-critical-foundation"></a><p></p>
 <p><strong>Building on Weeks 1-2 foundation:</strong> Implement the keyword search foundation that professional RAG systems rely on.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-2"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-2"></a><p></p>
 <ul>
 <li>Why keyword search is essential for RAG systems (foundation first approach)</li>
 <li>OpenSearch index management, mappings, and search optimization</li>
@@ -287,7 +292,7 @@ uv run jupyter notebook notebooks/week2/week2_arxiv_integration.ipynb</pre></div
 <li>Search analytics for measuring relevance and performance</li>
 <li>Production patterns used by real companies</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-2"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-2"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week3_opensearch_flow.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week3_opensearch_flow.png" alt="Week 3 OpenSearch Flow Architecture" /></a>
 </p>
@@ -298,16 +303,16 @@ uv run jupyter notebook notebooks/week2/week2_arxiv_integration.ipynb</pre></div
 <li><strong>Learning Materials</strong>: <code>notebooks/week3/</code> - Complete OpenSearch integration guide</li>
 <li><strong>Quality Metrics</strong>: Precision, recall, and relevance scoring</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide-1"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide-1"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 3 notebook</span>
 uv run jupyter notebook notebooks/week3/week3_opensearch.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week3/week3_opensearch.ipynb">Week 3 notebook</a> for hands-on OpenSearch setup and BM25 search implementation.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-2"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-2"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/the-search-foundation-every-rag-system">The Search Foundation Every RAG System Needs</a> - Complete BM25 implementation with OpenSearch</p>
 <hr />
-<p></p><h2>📚 Week 4: Chunking &amp; Hybrid Search - The Semantic Layer</h2><a href="#-week-4-chunking--hybrid-search---the-semantic-layer"></a><p></p>
+<p></p><h2> Week 4: Chunking &amp; Hybrid Search - The Semantic Layer</h2><a href="#-week-4-chunking--hybrid-search---the-semantic-layer"></a><p></p>
 <p><strong>Building on Week 3 foundation:</strong> Add the semantic layer that makes search truly intelligent.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-3"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-3"></a><p></p>
 <ul>
 <li>Section-based chunking with intelligent document segmentation</li>
 <li>Production embeddings with Jina AI integration and fallback strategies</li>
@@ -315,7 +320,7 @@ uv run jupyter notebook notebooks/week3/week3_opensearch.ipynb</pre></div>
 <li>Unified API design with single endpoint supporting multiple search modes</li>
 <li>Performance analysis and trade-offs between search approaches</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-3"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-3"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week4_hybrid_opensearch.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week4_hybrid_opensearch.png" alt="Week 4 Hybrid Search Architecture" /></a>
 </p>
@@ -326,16 +331,16 @@ uv run jupyter notebook notebooks/week3/week3_opensearch.ipynb</pre></div>
 <li><strong>Hybrid Search API</strong>: <code>src/routers/hybrid_search.py</code> - Unified search API supporting all modes</li>
 <li><strong>Learning Materials</strong>: <code>notebooks/week4/</code> - Complete hybrid search implementation guide</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide-2"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide-2"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 4 notebook</span>
 uv run jupyter notebook notebooks/week4/week4_hybrid_search.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week4/week4_hybrid_search.ipynb">Week 4 notebook</a> for hands-on implementation and verification steps.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-3"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-3"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/chunking-strategies-and-hybrid-rag">The Chunking Strategy That Makes Hybrid Search Work</a> - Production chunking and RRF fusion implementation</p>
 <hr />
-<p></p><h2>📚 Week 5: Complete RAG Pipeline with LLM Integration</h2><a href="#-week-5-complete-rag-pipeline-with-llm-integration"></a><p></p>
+<p></p><h2> Week 5: Complete RAG Pipeline with LLM Integration</h2><a href="#-week-5-complete-rag-pipeline-with-llm-integration"></a><p></p>
 <p><strong>Building on Week 4 hybrid search:</strong> Add the LLM layer that turns search into intelligent conversation.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-4"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-4"></a><p></p>
 <ul>
 <li>Local LLM integration with Ollama for complete data privacy</li>
 <li>Performance optimization with 80% prompt reduction (6x speed improvement)</li>
@@ -343,7 +348,7 @@ uv run jupyter notebook notebooks/week4/week4_hybrid_search.ipynb</pre></div>
 <li>Dual API design with standard and streaming endpoints</li>
 <li>Interactive Gradio interface with advanced parameter controls</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-4"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-4"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week5_complete_rag.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week5_complete_rag.png" alt="Week 5 Complete RAG System Architecture" /></a>
 </p>
@@ -355,7 +360,7 @@ uv run jupyter notebook notebooks/week4/week4_hybrid_search.ipynb</pre></div>
 <li><strong>Gradio Interface</strong>: <code>src/gradio_app.py</code> - Interactive web UI with streaming support</li>
 <li><strong>Launcher Script</strong>: <code>gradio_launcher.py</code> - Easy-launch script (runs on port 7861)</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide-3"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide-3"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 5 notebook</span>
 uv run jupyter notebook notebooks/week5/week5_complete_rag_system.ipynb
 
@@ -363,12 +368,12 @@ uv run jupyter notebook notebooks/week5/week5_complete_rag_system.ipynb
 uv run python gradio_launcher.py
 <span><span>#</span> Open http://localhost:7861</span></pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week5/week5_complete_rag_system.ipynb">Week 5 notebook</a> for hands-on LLM integration and RAG pipeline implementation.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-4"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-4"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/the-complete-rag-system">The Complete RAG System</a> - Complete RAG system with local LLM integration and optimization techniques</p>
 <hr />
-<p></p><h2>📚 Week 6: Production Monitoring and Caching</h2><a href="#-week-6-production-monitoring-and-caching"></a><p></p>
+<p></p><h2> Week 6: Production Monitoring and Caching</h2><a href="#-week-6-production-monitoring-and-caching"></a><p></p>
 <p><strong>Building on Week 5 complete RAG system:</strong> Add observability, performance optimization, and production-grade monitoring.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-5"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-5"></a><p></p>
 <ul>
 <li>Langfuse integration for end-to-end RAG pipeline tracing</li>
 <li>Redis caching strategy with intelligent cache keys and TTL management</li>
@@ -376,7 +381,7 @@ uv run python gradio_launcher.py
 <li>Production patterns for observability and optimization</li>
 <li>Cost analysis and LLM usage optimization (150-400x speedup with caching)</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-5"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-5"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week6_monitoring_and_caching.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week6_monitoring_and_caching.png" alt="Week 6 Monitoring &amp; Caching Architecture" /></a>
 </p>
@@ -388,16 +393,16 @@ uv run python gradio_launcher.py
 <li><strong>Docker Config</strong>: <code>docker-compose.yml</code> - Added Redis service and Langfuse local instance</li>
 <li><strong>Learning Materials</strong>: <code>notebooks/week6/</code> - Complete monitoring and caching implementation guide</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide-4"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide-4"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 6 notebook</span>
 uv run jupyter notebook notebooks/week6/week6_cache_testing.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week6/week6_cache_testing.ipynb">Week 6 notebook</a> for hands-on Langfuse tracing and Redis caching implementation.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-5"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-5"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/production-ready-rag-monitoring-and">Production-ready RAG: Monitoring &amp; Caching</a> - Production-ready RAG with monitoring and caching</p>
 <hr />
-<p></p><h2>📚 Week 7: Agentic RAG with LangGraph and Telegram Bot</h2><a href="#-week-7-agentic-rag-with-langgraph-and-telegram-bot"></a><p></p>
+<p></p><h2> Week 7: Agentic RAG with LangGraph and Telegram Bot</h2><a href="#-week-7-agentic-rag-with-langgraph-and-telegram-bot"></a><p></p>
 <p><strong>Building on Week 6 production system:</strong> Add intelligent reasoning, multi-step decision-making, and Telegram bot integration for mobile-first AI interactions.</p>
-<p></p><h3><strong>🎯 Learning Objectives</strong></h3><a href="#-learning-objectives-6"></a><p></p>
+<p></p><h3><strong> Learning Objectives</strong></h3><a href="#-learning-objectives-6"></a><p></p>
 <ul>
 <li>LangGraph workflows for state-based agent orchestration with decision nodes</li>
 <li>Guardrail implementation for query validation and domain boundary detection</li>
@@ -407,7 +412,7 @@ uv run jupyter notebook notebooks/week6/week6_cache_testing.ipynb</pre></div>
 <li>Telegram bot integration with async operations and error handling</li>
 <li>Reasoning transparency by exposing agent decision-making process</li>
 </ul>
-<p></p><h3><strong>🏗️ Architecture Overview</strong></h3><a href="#️-architecture-overview-6"></a><p></p>
+<p></p><h3><strong> Architecture Overview</strong></h3><a href="#-architecture-overview-6"></a><p></p>
 <p>
   <a target="_blank" href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/static/week7_telegram_and_agentic_ai.png"><img src="https://github.com/jamwithai/production-agentic-rag-course/raw/main/static/week7_telegram_and_agentic_ai.png" alt="Week 7 Agentic RAG &amp; Telegram Architecture" /></a>
 </p>
@@ -419,14 +424,14 @@ uv run jupyter notebook notebooks/week6/week6_cache_testing.ipynb</pre></div>
 <li><strong>Agentic Endpoint</strong>: <code>src/routers/agentic_ask.py</code> - Agentic RAG API endpoint</li>
 <li><strong>Learning Materials</strong>: <code>notebooks/week7/</code> - Week 7 learning materials and examples</li>
 </ul>
-<p></p><h3><strong>📓 Setup Guide</strong></h3><a href="#-setup-guide-5"></a><p></p>
+<p></p><h3><strong> Setup Guide</strong></h3><a href="#-setup-guide-5"></a><p></p>
 <div><pre><span><span>#</span> Launch the Week 7 notebook</span>
 uv run jupyter notebook notebooks/week7/week7_agentic_rag.ipynb</pre></div>
 <p><strong>Completion Guide:</strong> Follow the <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/notebooks/week7/week7_agentic_rag.ipynb">Week 7 notebook</a> for hands-on LangGraph agentic RAG and Telegram bot implementation.</p>
-<p></p><h3><strong>📖 Deep Dive</strong></h3><a href="#-deep-dive-6"></a><p></p>
+<p></p><h3><strong> Deep Dive</strong></h3><a href="#-deep-dive-6"></a><p></p>
 <p><strong>Blog Post:</strong> <a href="https://jamwithai.substack.com/p/agentic-rag-with-langgraph-and-telegram">Agentic RAG with LangGraph and Telegram</a> - Building intelligent agents with decision-making, adaptive retrieval, and mobile access</p>
 <hr />
-<p></p><h2>⚙️ Configuration</h2><a href="#️-configuration"></a><p></p>
+<p></p><h2> Configuration</h2><a href="#-configuration"></a><p></p>
 <p><strong>Setup:</strong></p>
 <div><pre>cp .env.example .env
 <span><span>#</span> Edit .env for your environment</span></pre></div>
@@ -438,8 +443,8 @@ uv run jupyter notebook notebooks/week7/week7_agentic_rag.ipynb</pre></div>
 </ul>
 <p><strong>Complete Configuration:</strong> See <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/.env.example">.env.example</a> for all available options and detailed documentation.</p>
 <hr />
-<p></p><h2>🔧 Reference &amp; Development Guide</h2><a href="#-reference--development-guide"></a><p></p>
-<p></p><h3><strong>🛠️ Technology Stack</strong></h3><a href="#️-technology-stack"></a><p></p>
+<p></p><h2> Reference &amp; Development Guide</h2><a href="#-reference--development-guide"></a><p></p>
+<p></p><h3><strong> Technology Stack</strong></h3><a href="#-technology-stack"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -452,47 +457,47 @@ uv run jupyter notebook notebooks/week7/week7_agentic_rag.ipynb</pre></div>
 <tr>
 <td><strong>FastAPI</strong></td>
 <td>REST API with automatic docs</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>PostgreSQL 16</strong></td>
 <td>Paper metadata and content storage</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>OpenSearch 2.19</strong></td>
 <td>Hybrid search engine (BM25 + Vector)</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>Apache Airflow 3.0</strong></td>
 <td>Workflow automation</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>Jina AI</strong></td>
 <td>Embedding generation (Week 4)</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>Ollama</strong></td>
 <td>Local LLM serving (Week 5)</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>Redis</strong></td>
 <td>High-performance caching (Week 6)</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 <tr>
 <td><strong>Langfuse</strong></td>
 <td>RAG pipeline observability (Week 6)</td>
-<td>✅ Ready</td>
+<td> Ready</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Development Tools:</strong> UV, Ruff, MyPy, Pytest, Docker Compose</p>
-<p></p><h3><strong>🏗️ Project Structure</strong></h3><a href="#️-project-structure"></a><p></p>
+<p></p><h3><strong> Project Structure</strong></h3><a href="#-project-structure"></a><p></p>
 <div><pre><code>arxiv-paper-curator/
 ├── src/                    # Main application code
 │   ├── routers/            # API endpoints (search, ask, papers)
@@ -505,7 +510,7 @@ uv run jupyter notebook notebooks/week7/week7_agentic_rag.ipynb</pre></div>
 ├── tests/                  # Test suite
 └── compose.yml             # Docker service orchestration
 </code></pre></div>
-<p></p><h3><strong>📡 API Endpoints Reference</strong></h3><a href="#-api-endpoints-reference"></a><p></p>
+<p></p><h3><strong> API Endpoints Reference</strong></h3><a href="#-api-endpoints-reference"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -549,7 +554,7 @@ uv run jupyter notebook notebooks/week7/week7_agentic_rag.ipynb</pre></div>
 </tbody>
 </table>
 <p><strong>API Documentation:</strong> Visit <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> for interactive API explorer</p>
-<p></p><h3><strong>🔧 Essential Commands</strong></h3><a href="#-essential-commands"></a><p></p>
+<p></p><h3><strong> Essential Commands</strong></h3><a href="#-essential-commands"></a><p></p>
 <p></p><h4><strong>Using the Makefile</strong> (Recommended)</h4><a href="#using-the-makefile-recommended"></a><p></p>
 <div><pre><span><span>#</span> View all available commands</span>
 make <span>help</span>
@@ -624,7 +629,7 @@ docker compose up --build -d    <span><span>#</span> Start services</span>
 docker compose ps               <span><span>#</span> Check status</span>
 docker compose logs            <span><span>#</span> View logs</span>
 uv run pytest                 <span><span>#</span> Run tests</span></pre></div>
-<p></p><h3><strong>🎓 Target Audience</strong></h3><a href="#-target-audience"></a><p></p>
+<p></p><h3><strong> Target Audience</strong></h3><a href="#-target-audience"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -648,7 +653,7 @@ uv run pytest                 <span><span>#</span> Run tests</span></pre></div>
 </tbody>
 </table>
 <hr />
-<p></p><h2>🛠️ Troubleshooting</h2><a href="#️-troubleshooting"></a><p></p>
+<p></p><h2> Troubleshooting</h2><a href="#-troubleshooting"></a><p></p>
 <p><strong>Common Issues:</strong></p>
 <ul>
 <li><strong>Services not starting?</strong> Wait 2-3 minutes, check <code>docker compose logs</code></li>
@@ -662,7 +667,7 @@ uv run pytest                 <span><span>#</span> Run tests</span></pre></div>
 <li>Complete reset: <code>docker compose down --volumes &amp;&amp; docker compose up --build -d</code></li>
 </ul>
 <hr />
-<p></p><h2>💰 Cost Structure</h2><a href="#-cost-structure"></a><p></p>
+<p></p><h2> Cost Structure</h2><a href="#-cost-structure"></a><p></p>
 <p><strong>This course is completely free!</strong> You'll only need minimal costs for optional services:</p>
 <ul>
 <li><strong>Local Development:</strong> $0 (everything runs locally)</li>
@@ -670,13 +675,13 @@ uv run pytest                 <span><span>#</span> Run tests</span></pre></div>
 </ul>
 <hr />
 <div>
-  <p></p><h3>🎉 Ready to Start Your AI Engineering Journey?</h3><a href="#-ready-to-start-your-ai-engineering-journey"></a><p></p>
+  <p></p><h3> Ready to Start Your AI Engineering Journey?</h3><a href="#-ready-to-start-your-ai-engineering-journey"></a><p></p>
   <p><strong>Begin with the Week 1 setup notebook and build your first production RAG system!</strong></p>
   <p><em>For learners who want to master modern AI engineering</em></p>
   <p><strong>Built with love by Jam With AI</strong></p>
 </div>
 <hr />
-<p></p><h2>📄 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>MIT License - see <a href="https://github.com/jamwithai/production-agentic-rag-course/blob/main/LICENSE">LICENSE</a> file for details.</p>
 </article></div></div>
   </div>

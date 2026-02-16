@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -46,16 +51,16 @@
 <p>En utilisant le SPI, les données destinées aux LEDs sont encodées sous forme de motifs binaires compatibles avec le protocole des WS2812B, puis envoyées de manière déterministe via le matériel. Cette approche devrait éviter les interruptions et les variations de timing responsables des scintillements ou des LEDs fantômes observés avec les bibliothèques historiques sur Raspberry Pi 5. (j’ai quand même noté quelques « <em>pétouilles</em>« )</p>
 <p>Enfin, le SPI étant pleinement supporté par la nouvelle architecture du Pi 5, cette solution s’avère stable, reproductible et parfaitement adaptée aux projets makers et pédagogiques nécessitant un pilotage fiable des LEDs adressables.</p>
 <div>
-<p>✔ Lorsque vous voyez <code>/dev/spidev0.0</code> ou <code>/dev/spidev0.1</code>, il ne s’agit pas d’une émulation logicielle, mais bien de l’accès à un <strong>contrôleur SPI matériel intégré directement dans la puce</strong> du Raspberry Pi.</p>
-<p>✔ Linux s’appuie sur un <strong>driver SPI du noyau</strong>, basé sur ce contrôleur matériel, qui génère le signal SPI de manière déterministe, indépendamment du scheduler Linux ou de la charge CPU (au moins pour l’émission et la réception des octets).</p>
-<p>📎 Référence : documentation officielle Raspberry Pi – SPI bus<br />
+<p> Lorsque vous voyez <code>/dev/spidev0.0</code> ou <code>/dev/spidev0.1</code>, il ne s’agit pas d’une émulation logicielle, mais bien de l’accès à un <strong>contrôleur SPI matériel intégré directement dans la puce</strong> du Raspberry Pi.</p>
+<p> Linux s’appuie sur un <strong>driver SPI du noyau</strong>, basé sur ce contrôleur matériel, qui génère le signal SPI de manière déterministe, indépendamment du scheduler Linux ou de la charge CPU (au moins pour l’émission et la réception des octets).</p>
+<p> Référence : documentation officielle Raspberry Pi – SPI bus<br />
 <a href="https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/raspberry-pi/spi-bus-on-raspberry-pi.adoc" target="_blank"><br />
 GitHub – raspberrypi/documentation<br />
 </a></p>
 </div>
 <h2><span>La bibliothèque retenue : rpi5-ws2812 (niklasr22)</span></h2>
 <p>La bibliothèque <strong>rpi5-ws2812</strong> a été écrite spécifiquement pour le <strong>Raspberry Pi 5</strong>, car la référence historique <code>rpi_ws281x</code> n’est pas encore compatible avec cette nouvelle plateforme. Un point important : cette bibliothèque ne pilote les WS2812B <strong>qu’en utilisant le bus SPI</strong>.</p>
-<p>📎 Dépôt GitHub : <a href="https://github.com/niklasr22/rpi5-ws2812" target="_blank">https://github.com/niklasr22/rpi5-ws2812<br />
+<p> Dépôt GitHub : <a href="https://github.com/niklasr22/rpi5-ws2812" target="_blank">https://github.com/niklasr22/rpi5-ws2812<br />
 </a></p>
 <h3></h3>
 <p>Les LEDs WS2812B imposent un signal extrêmement sensible au timing, ce qui rend leur pilotage délicat sur un système multitâche comme Linux. Avec <strong>rpi5-ws2812</strong>, les couleurs (au format <strong>GRB</strong>) sont encodées en une trame binaire compatible WS2812, puis envoyées via le<br />
@@ -89,7 +94,7 @@ chip-select CE0.</p>
 			</div>
 
 
-<p>Ce contournement est prévu par la PEP 668 : on force l’installation dans le Python système en acceptant un risque théorique de conflit, ce qui reste acceptable dans le cadre d’un projet maker dédié. 📎 Référence PEP 668 : <a href="https://peps.python.org/pep-0668/" target="_blank">https://peps.python.org/pep-0668/<br />
+<p>Ce contournement est prévu par la PEP 668 : on force l’installation dans le Python système en acceptant un risque théorique de conflit, ce qui reste acceptable dans le cadre d’un projet maker dédié.  Référence PEP 668 : <a href="https://peps.python.org/pep-0668/" target="_blank">https://peps.python.org/pep-0668/<br />
 </a></p>
 <h3><span>Alternative « propre » pour éviter l’utilisation de root</span></h3>
 <p>La documentation de <strong>rpi5-ws2812</strong> indique qu’il est possible d’éviter <code>sudo</code> en autorisant l’utilisateur à accéder au bus SPI.</p>
@@ -146,7 +151,7 @@ chip-select CE0.</p>
 <li><strong>GND du ruban WS2812B</strong> → <strong>GND du Raspberry Pi </strong>(par exemple broche 6)</li>
 <li><strong>+5 V du ruban WS2812B</strong> → <strong>alimentation 5 V stable </strong>(broche 2 du Raspberry Pi ou alimentation externe dédiée)</li>
 </ul>
-<p>⚠️ Les WS2812B fonctionnent exclusivement en <strong>5 V</strong>. Il ne faut en aucun cas les alimenter en 3,3 V. La masse (<strong>GND</strong>) du ruban doit impérativement être commune avec elle du Raspberry Pi.<br />
+<p> Les WS2812B fonctionnent exclusivement en <strong>5 V</strong>. Il ne faut en aucun cas les alimenter en 3,3 V. La masse (<strong>GND</strong>) du ruban doit impérativement être commune avec elle du Raspberry Pi.<br />
 Dans cette configuration, le bus utilisé est <strong>SPI0 / CE0</strong>, ce qui correspond au périphérique <code>/dev/spidev0.0</code>.</p>
 <h3><span>À propos des niveaux logiques</span></h3>
 <p>Le Raspberry Pi 5 délivre un signal logique en <strong>3,3 V</strong> sur sa broche MOSI, alors que les WS2812B attendent idéalement un signal proche de <strong>5 V</strong>.<br />

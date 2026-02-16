@@ -2,11 +2,10 @@
 <html lang="fr">
 
 <head>
-    <!-- Redirect to index.html if opened directly (not in iframe) -->
+    <!-- Keep reader usable as a standalone entry page (no hard redirect). -->
     <script>
-        if (window.self === window.top) {
-            window.location.replace('./index.html');
-        }
+        const __readerParams = new URLSearchParams(window.location.search);
+        const __hasArticleUrl = Boolean(__readerParams.get('url'));
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +24,14 @@
         }
 
         :root {
+            /* Template variables used by css/style.css (footer parity) */
+            --primary: #00d9ff;
+            --secondary: #825ee4;
+            --bg-dark: #0a0e27;
+            --text-light: #ffffff;
+            --text-dim: #94a3b8;
+
+            /* Reader-specific variables */
             --primary-color: #5e72e4;
             --secondary-color: #825ee4;
             --bg-primary: #ffffff;
@@ -38,7 +45,7 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-secondary);
+            background: var(--bg-dark);
             color: var(--text-primary);
             height: 100vh;
             overflow: hidden;
@@ -107,6 +114,52 @@
             flex: 1;
             position: relative;
             background: white;
+        }
+
+        .back-to-previous {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 40;
+            background: rgba(15, 23, 42, 0.78);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+
+        .back-to-previous:hover {
+            background: rgba(15, 23, 42, 0.9);
+        }
+
+        .article-elevator {
+            position: absolute;
+            right: 12px;
+            bottom: 16px;
+            z-index: 60;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .article-elevator-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 10px;
+            background: rgba(15, 23, 42, 0.82);
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+            backdrop-filter: blur(4px);
+        }
+
+        .article-elevator-btn:hover {
+            background: rgba(15, 23, 42, 0.95);
         }
 
         iframe {
@@ -227,6 +280,17 @@
             .article-info-bar {
                 padding: 12px 16px;
             }
+
+            .back-to-previous {
+                top: 10px;
+                font-size: 12px;
+                padding: 7px 10px;
+            }
+
+            .article-elevator {
+                right: 10px;
+                bottom: 12px;
+            }
         }
 
         /* View States */
@@ -241,38 +305,7 @@
             flex-direction: column;
         }
 
-        /* Footer */
-        .footer {
-            background: var(--bg-primary);
-            border-top: 1px solid var(--border-color);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-        }
-
-        .footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.2s;
-        }
-
-        .footer a:hover {
-            opacity: 0.7;
-        }
-
-        .main-container {
-            padding-bottom: 50px;
-        }
+        /* Footer style is intentionally inherited from css/style.css */
     </style>
 
     <!-- DOMPurify for XSS protection -->
@@ -297,6 +330,7 @@
         </div>
 
         <div class="iframe-container">
+            <button class="back-to-previous" id="backToPreviousBtn" type="button">Page précédente</button>
             <div class="loading" id="loading">
                 <div class="spinner"></div>
                 <p class="loading-text">Chargement de l'article...</p>
@@ -306,13 +340,31 @@
             <div class="error-message" id="errorMessage">
                 <div class="error-icon">⚠️</div>
                 <h2>Impossible de charger l'article</h2>
-                <p>Ce site bloque l'affichage dans un lecteur intégré pour des raisons de sécurité.</p>
+                <p>Nous sommes désolés, cet article est indisponible ou bloque l'affichage dans le lecteur.</p>
                 <a href="#" id="openExternalError" class="btn btn-primary" target="_blank">
                     <span>🔗</span>
                     <span>Ouvrir sur le site source</span>
                 </a>
             </div>
+            <div class="article-elevator" aria-label="Navigation article">
+                <button class="article-elevator-btn" id="articleScrollTopBtn" type="button" title="Remonter">▲</button>
+                <button class="article-elevator-btn" id="articleScrollBottomBtn" type="button" title="Descendre">▼</button>
+            </div>
         </div>
+    <footer class="site-footer" id="readerFooter">
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a>
+                <span>•</span>
+                <a href="stats.html">Statistics</a>
+                <span>•</span>
+                <a href="portfolio.html">Portfolio</a>
+                <span>•</span>
+                <a href="https://github.com/ThePhoenixAgency/AI-Pulse" target="_blank" rel="noopener">GitHub</a>
+                <span>•</span>
+                <a href="https://github.com/ThePhoenixAgency/AI-Pulse/issues/new?template=subscribe.yml" target="_blank" rel="noopener">S'abonner</a>
+            </div>
+            <p>&copy; 2026 <a href="https://ThePhoenixAgency.github.io" target="_blank" rel="noopener">ThePhoenixAgency</a>. All rights reserved.</p>
+        </footer>
     </div>
 
     <script>
@@ -333,6 +385,11 @@
             if (view) view.classList.add('active');
             if (tab) tab.classList.add('active');
 
+            const readerFooter = document.getElementById('readerFooter');
+            if (readerFooter) {
+                readerFooter.style.display = viewName === 'article' ? 'none' : '';
+            }
+
             currentView = viewName;
         }
 
@@ -343,14 +400,37 @@
         const articleSource = params.get('source');
         const articleTags = params.get('tags');
 
+        function resolveArticleUrlFromMapSync(rawUrl) {
+            if (!rawUrl || !rawUrl.startsWith('http')) return rawUrl;
+            try {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', './data/article-map.json', false);
+                xhr.send(null);
+                if ((xhr.status === 200 || xhr.status === 0) && xhr.responseText) {
+                    const map = JSON.parse(xhr.responseText);
+                    if (map && typeof map === 'object' && map[rawUrl]) {
+                        return map[rawUrl];
+                    }
+                }
+            } catch (_) {
+                // Keep original URL when map is unavailable.
+            }
+            return rawUrl;
+        }
+        const mappedArticleUrl = resolveArticleUrlFromMapSync(rawArticleUrl);
+
         // Validate URL scheme to prevent XSS
         function isValidHttpUrl(string) {
             if (!string) return false;
-            // Allow internal data paths
-            if (string.startsWith('data/')) return true;
+            const value = String(string).trim();
+            // Allow internal generated article paths in all common forms.
+            if (value.startsWith('data/') || value.startsWith('./data/') || value.startsWith('/data/')) return true;
             try {
-                const url = new URL(string, window.location.origin);
-                return url.protocol === 'http:' || url.protocol === 'https:';
+                const url = new URL(value, window.location.href);
+                if (url.protocol === 'http:' || url.protocol === 'https:') return true;
+                // Support local file previews for generated articles.
+                if (url.protocol === 'file:' && /\/data\/articles\/.*\.html$/i.test(url.pathname)) return true;
+                return false;
             } catch (_) {
                 return false;
             }
@@ -358,8 +438,31 @@
 
         // Validate and sanitize URL - only proceed if URL is safe
         let articleUrl = null;
-        if (rawArticleUrl && isValidHttpUrl(rawArticleUrl)) {
-            articleUrl = rawArticleUrl; // Now articleUrl is guaranteed to be a valid http(s) URL
+        if (mappedArticleUrl && isValidHttpUrl(mappedArticleUrl)) {
+            articleUrl = mappedArticleUrl; // URL resolved to local rendered page when available.
+        }
+
+        function redirectToArticle404(reason) {
+            const target = `./404.html?context=article&reason=${encodeURIComponent(reason || 'broken-link')}`;
+            window.location.replace(target);
+        }
+
+        function showInlineArticleError(reason) {
+            const loading = document.getElementById('loading');
+            const errorMessage = document.getElementById('errorMessage');
+            const openExternalError = document.getElementById('openExternalError');
+            if (loading) loading.style.display = 'none';
+            if (errorMessage) errorMessage.style.display = 'block';
+            if (openExternalError && articleUrl) {
+                try {
+                    openExternalError.href = articleUrl.startsWith('http')
+                        ? new URL(articleUrl).toString()
+                        : ('./' + articleUrl);
+                } catch (_) {
+                    // Keep existing fallback href.
+                }
+            }
+            console.warn('Inline article fallback:', reason || 'unknown');
         }
 
         // If article parameters exist and URL is valid, show article view
@@ -377,8 +480,9 @@
             if (articleUrl.startsWith('http')) {
                 safeArticleUrl = new URL(articleUrl).toString();
             } else {
-                // Internal path
-                safeArticleUrl = './' + articleUrl;
+                // Internal path (normalized to avoid ././data/... variants)
+                const normalizedLocalPath = articleUrl.replace(/^\.\//, '').replace(/^\//, '');
+                safeArticleUrl = './' + normalizedLocalPath;
             }
 
             // Display article information
@@ -420,18 +524,34 @@
             const errorMessage = document.getElementById('errorMessage');
 
             if (iframe) {
+                // Guard: prevent recursive/nested reader targets that can cause endless loading loops.
+                const recursiveTargets = ['reader.html', 'app.html', 'readme-viewer.html', 'index.html'];
+                const lowerTarget = String(safeArticleUrl).toLowerCase();
+                if (recursiveTargets.some(name => lowerTarget.includes(name))) {
+                    redirectToArticle404('recursive-target');
+                } else {
+                    let loadCount = 0;
+                    let firstLoadAt = 0;
+
                 iframe.src = safeArticleUrl;
 
                 let loadTimeout = setTimeout(() => {
                     if (loading && loading.style.display !== 'none') {
-                        loading.style.display = 'none';
-                        errorMessage.style.display = 'block';
+                        showInlineArticleError('load-timeout');
                     }
                 }, 8000);
 
                 iframe.onload = function () {
                     clearTimeout(loadTimeout);
                     if (loading) loading.style.display = 'none';
+                    const now = Date.now();
+                    if (!firstLoadAt) firstLoadAt = now;
+                    loadCount += 1;
+                    // If iframe reloads too many times in a short window, consider it a redirect loop.
+                    if (loadCount >= 6 && (now - firstLoadAt) < 5000) {
+                        showInlineArticleError('redirect-loop');
+                        return;
+                    }
 
                     try {
                         // If we can't access contentDocument, it might be blocked or just cross-origin
@@ -452,9 +572,9 @@
 
                 iframe.onerror = function () {
                     clearTimeout(loadTimeout);
-                    if (loading) loading.style.display = 'none';
-                    if (errorMessage) errorMessage.style.display = 'block';
+                    showInlineArticleError('iframe-error');
                 };
+                }
             }
 
             setTimeout(function () {
@@ -478,8 +598,13 @@
             });
 
         } else {
-            // Show home view by default
-            showView('home');
+            // No article requested: show the article list.
+            // Redirect to 404 only when an explicit url parameter is present but invalid.
+            if (mappedArticleUrl) {
+                redirectToArticle404('invalid-url');
+            } else {
+                showView('home');
+            }
         }
 
         // Tab click handler for article tab (if it exists)
@@ -489,6 +614,88 @@
                 e.preventDefault();
                 showView('article');
             });
+        }
+
+        // Back to previous page in navigation history (fallback to list).
+        const backToPreviousBtn = document.getElementById('backToPreviousBtn');
+        if (backToPreviousBtn) {
+            backToPreviousBtn.addEventListener('click', () => {
+                if (window.history.length > 1) {
+                    window.history.back();
+                    return;
+                }
+                const fallbackUrl = new URL(window.location.href);
+                fallbackUrl.search = '';
+                fallbackUrl.hash = '';
+                window.location.assign(fallbackUrl.toString());
+            });
+        }
+
+        function scrollArticleFrame(toBottom) {
+            const iframe = document.getElementById('articleFrame');
+            if (!iframe) return;
+            const iframeWindow = iframe.contentWindow;
+            if (!iframeWindow) return;
+
+            // Preferred path: ask generated local article to scroll itself.
+            try {
+                iframeWindow.postMessage({
+                    type: 'AI_PULSE_SCROLL',
+                    direction: toBottom ? 'bottom' : 'top'
+                }, '*');
+            } catch (_) {
+                // Continue with fallbacks below.
+            }
+
+            // Cross-origin fallback: request a large relative scroll.
+            try {
+                const delta = toBottom ? 1000000 : -1000000;
+                iframeWindow.scrollBy(0, delta);
+            } catch (_) {
+                // Continue with same-origin strategy below when possible.
+            }
+
+            try {
+                const iframeDoc = iframe.contentDocument || (iframeWindow && iframeWindow.document);
+                if (!iframeWindow || !iframeDoc || !iframeDoc.body) return;
+                const docEl = iframeDoc.documentElement;
+                const body = iframeDoc.body;
+                const scrolling = iframeDoc.scrollingElement || docEl || body;
+                const maxTop = Math.max(
+                    0,
+                    (docEl ? docEl.scrollHeight : 0),
+                    (body ? body.scrollHeight : 0),
+                    (scrolling ? scrolling.scrollHeight : 0)
+                );
+                const targetTop = toBottom ? maxTop : 0;
+
+                // Deterministic absolute positioning on all common scroll roots.
+                try { iframeWindow.scrollTo(0, targetTop); } catch (_) {}
+                if (docEl) docEl.scrollTop = targetTop;
+                if (body) body.scrollTop = targetTop;
+                if (scrolling) scrolling.scrollTop = targetTop;
+
+                // Additional fallback for internal scroll containers.
+                const containers = iframeDoc.querySelectorAll('main, article, .content, .container, [style*="overflow"]');
+                containers.forEach((el) => {
+                    try {
+                        const localMax = Math.max(0, (el.scrollHeight || 0) - (el.clientHeight || 0));
+                        el.scrollTop = toBottom ? localMax : 0;
+                    } catch (_) {}
+                });
+            } catch (_) {
+                // Cross-origin iframe: scrolling is not accessible.
+            }
+        }
+
+        const articleScrollTopBtn = document.getElementById('articleScrollTopBtn');
+        if (articleScrollTopBtn) {
+            articleScrollTopBtn.addEventListener('click', () => scrollArticleFrame(false));
+        }
+
+        const articleScrollBottomBtn = document.getElementById('articleScrollBottomBtn');
+        if (articleScrollBottomBtn) {
+            articleScrollBottomBtn.addEventListener('click', () => scrollArticleFrame(true));
         }
     </script>
 

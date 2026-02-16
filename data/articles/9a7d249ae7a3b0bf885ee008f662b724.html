@@ -4,62 +4,34 @@
 <meta charset="UTF-8">
 <title>I Built a Grail Finder That Searches Vinted, eBay, Depop and More at Once</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>I Built a Grail Finder That Searches Vinted, eBay, Depop and More at Once</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    Source: Dev.to Open Source | Date: 2/16/2026 4:12:53 PM | Lang: EN |
     <a href="https://dev.to/mackmoneymaker/i-built-a-grail-finder-that-searches-vinted-ebay-depop-and-more-at-once-1oj0" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    <div><div>
-                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
-                  </p>
-                  
-                </div><div>
-                <p>You know the drill. You're looking for a specific pair of Nike Dunk Lows from 2003, or that one Arc'teryx jacket everyone sold out of two years ago. So you open Vinted. Then eBay. Then Depop. Then Grailed. Then Vestiaire Collective. Then Poshmark.</p>
-
-<p>Six apps. Six searches. Six times a day. Every day. For weeks.</p>
-
-<p>I got tired of it, so I built <strong>GrailSearch</strong> — a single search bar that queries all those platforms at once and shows you everything in one feed.</p>
-
-<h2>
-  <a name="the-problem" href="#the-problem">
-  </a>
-  The Problem
-</h2>
-
-<p>Resale is booming. There are amazing deals out there, but the inventory is scattered across a dozen platforms. Each one has its own search, its own filters, its own app. If you're hunting for something specific — a "grail" — you're basically doing a full-time job just refreshing tabs.</p>
-
-<p>The worst part? By the time you spot something on platform #4, someone already bought it while you were still scrolling through platform #2.</p>
-
-<h2>
-  <a name="the-solution" href="#the-solution">
-  </a>
-  The Solution
-</h2>
-
-<p>GrailSearch is a Rails 8.1 app that aggregates results from multiple resale platforms into a single, clean interface. You type what you're looking for, and it searches everywhere simultaneously.</p>
-
-<p>Right now it pulls live results from <strong>eBay</strong> (via their API) and <strong>Vinted</strong> (scraping), and generates direct search links for <strong>Depop</strong>, <strong>Grailed</strong>, <strong>Vestiaire Collective</strong>, and <strong>Poshmark</strong> so you're one click away from any platform.</p>
-
-<h3>
-  <a name="key-features" href="#key-features">
-  </a>
-  Key Features
-</h3>
-
-<ul>
+    <div><div> <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack"></a> </p> </div><div> <p>You know the drill. You're looking for a specific pair of Nike Dunk Lows from 2003, or that one Arc'teryx jacket everyone sold out of two years ago. So you open Vinted. Then eBay. Then Depop. Then Grailed. Then Vestiaire Collective. Then Poshmark.</p> <p>Six apps. Six searches. Six times a day. Every day. For weeks.</p> <p>I got tired of it, so I built <strong>GrailSearch</strong> — a single search bar that queries all those platforms at once and shows you everything in one feed.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Resale is booming. There are amazing deals out there, but the inventory is scattered across a dozen platforms. Each one has its own search, its own filters, its own app. If you're hunting for something specific — a "grail" — you're basically doing a full-time job just refreshing tabs.</p> <p>The worst part? By the time you spot something on platform #4, someone already bought it while you were still scrolling through platform #2.</p> <h2> <a name="the-solution" href="#the-solution"> </a> The Solution
+</h2> <p>GrailSearch is a Rails 8.1 app that aggregates results from multiple resale platforms into a single, clean interface. You type what you're looking for, and it searches everywhere simultaneously.</p> <p>Right now it pulls live results from <strong>eBay</strong> (via their API) and <strong>Vinted</strong> (scraping), and generates direct search links for <strong>Depop</strong>, <strong>Grailed</strong>, <strong>Vestiaire Collective</strong>, and <strong>Poshmark</strong> so you're one click away from any platform.</p> <h3> <a name="key-features" href="#key-features"> </a> Key Features
+</h3> <ul>
 <li>
 <strong>One search, all platforms</strong> — stop tab-hopping</li>
 <li>
@@ -68,17 +40,8 @@
 <strong>Price tracking</strong> — see how prices trend over time for popular items</li>
 <li>
 <strong>Clean, fast UI</strong> — built with Tailwind CSS, no JavaScript framework bloat</li>
-</ul>
-
-<h2>
-  <a name="the-stack" href="#the-stack">
-  </a>
-  The Stack
-</h2>
-
-<p>I kept it deliberately simple:</p>
-
-<ul>
+</ul> <h2> <a name="the-stack" href="#the-stack"> </a> The Stack
+</h2> <p>I kept it deliberately simple:</p> <ul>
 <li>
 <strong>Ruby 4.0.1 / Rails 8.1</strong> — the latest and greatest. Rails 8 is genuinely a joy to work with</li>
 <li>
@@ -91,60 +54,35 @@
 <strong>Tailwind CSS v4</strong> — fast styling without the overhead</li>
 <li>
 <strong>Fly.io</strong> — deployment in one command, scales to zero when nobody's using it</li>
-</ul>
-
-<p>No Redis. No Sidekiq. No separate cache server. Rails 8 gives you all of that out of the box with Solid Queue and Solid Cache backed by your existing Postgres database. The whole thing runs on a single $5/mo Fly.io machine.</p>
-
-<h2>
-  <a name="how-it-works" href="#how-it-works">
-  </a>
-  How It Works
-</h2>
-
-<p>When you search, GrailSearch fires off requests to each platform concurrently:</p>
-
-<ol>
+</ul> <p>No Redis. No Sidekiq. No separate cache server. Rails 8 gives you all of that out of the box with Solid Queue and Solid Cache backed by your existing Postgres database. The whole thing runs on a single $5/mo Fly.io machine.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>When you search, GrailSearch fires off requests to each platform concurrently:</p> <ol>
 <li>
 <strong>eBay</strong> — uses the official Browse API with OAuth tokens</li>
 <li>
 <strong>Vinted</strong> — makes authenticated requests to their internal API</li>
 <li>
 <strong>Others</strong> — generates properly formatted search URLs for one-click access</li>
-</ol>
-
-<p>Results get normalized into a common format (title, price, image, platform, link) and displayed in a unified feed sorted by relevance.</p>
-
-<p>For saved searches, a SolidQueue recurring job runs every hour, checks each saved search against the platforms, and fires off an email via Action Mailer if there are new listings since the last check.</p>
-
-<h2>
-  <a name="what-i-learned" href="#what-i-learned">
-  </a>
-  What I Learned
-</h2>
-
-<p><strong>Rails 8 is incredible for solo devs.</strong> The Solid* gems mean you can run a production app with background jobs, caching, and WebSockets on a single server with just Postgres. No infrastructure complexity.</p>
-
-<p><strong>Scraping is fragile but necessary.</strong> Not every platform has a public API. Vinted doesn't, so I had to reverse-engineer their internal endpoints. It works, but I expect it to break occasionally.</p>
-
-<p><strong>The resale market is massive.</strong> While building this, I realized how many people have the exact same problem. The market for cross-platform search tools is wide open.</p>
-
-<h2>
-  <a name="try-it-out" href="#try-it-out">
-  </a>
-  Try It Out
-</h2>
-
-<p>GrailSearch is live at <a href="https://grailsearch-app.fly.dev/" target="_blank">grailsearch-app.fly.dev</a>. Create a free account, search for your grails, and set up alerts for the items you're hunting.</p>
-
-<p>If you're a developer interested in the code, it's built with standard Rails conventions — nothing exotic. Happy to chat about the architecture in the comments.</p>
-
-
-<hr />
-
-<p><em>What's your grail? Drop it in the comments — I'm curious what people are hunting for.</em></p>
-
-
-            </div></div>
+</ol> <p>Results get normalized into a common format (title, price, image, platform, link) and displayed in a unified feed sorted by relevance.</p> <p>For saved searches, a SolidQueue recurring job runs every hour, checks each saved search against the platforms, and fires off an email via Action Mailer if there are new listings since the last check.</p> <h2> <a name="what-i-learned" href="#what-i-learned"> </a> What I Learned
+</h2> <p><strong>Rails 8 is incredible for solo devs.</strong> The Solid* gems mean you can run a production app with background jobs, caching, and WebSockets on a single server with just Postgres. No infrastructure complexity.</p> <p><strong>Scraping is fragile but necessary.</strong> Not every platform has a public API. Vinted doesn't, so I had to reverse-engineer their internal endpoints. It works, but I expect it to break occasionally.</p> <p><strong>The resale market is massive.</strong> While building this, I realized how many people have the exact same problem. The market for cross-platform search tools is wide open.</p> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p>GrailSearch is live at <a href="https://grailsearch-app.fly.dev/" target="_blank">grailsearch-app.fly.dev</a>. Create a free account, search for your grails, and set up alerts for the items you're hunting.</p> <p>If you're a developer interested in the code, it's built with standard Rails conventions — nothing exotic. Happy to chat about the architecture in the comments.</p> <hr> <p><em>What's your grail? Drop it in the comments — I'm curious what people are hunting for.</em></p> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

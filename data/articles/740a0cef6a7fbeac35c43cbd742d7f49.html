@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building Deep Research: How we Achieved State of the Art</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Building Deep Research: How we Achieved State of the Art</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 11/24/2025 6:40:14 PM | Lang: EN |
+    <a href="https://huggingface.co/blog/Tavily/tavily-deep-research" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/michaelgriff"><img alt="Michael Griff's avatar" src="https://huggingface.co/avatars/39a4595c4ae9312a15ca0282230d96d9.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/deansaco"><img alt="Dean Sacoransky's avatar" src="https://huggingface.co/avatars/6fe971f49bdfa13e375998061622d9d9.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/noahnefsky"><img alt="Noah Nefsky's avatar" src="https://huggingface.co/avatars/324a01f4796487e4baeb6607fcb17de1.svg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#building-for-the-future">Building for the Future</a> <ul><li><a href="#agent-harness">Agent Harness</a> <ul></ul> </li><li><a href="#models">Models</a> <ul></ul> </li><li><a href="#tools">Tools</a> <ul></ul> </li><li><a href="#takeaways">Takeaways</a> <ul></ul> </li></ul> </li><li><a href="#context-engineering--an-exercise-in-curation">Context Engineering — An Exercise in Curation</a> <ul><li><a href="#context-managed-web-retrieval">Context-Managed Web Retrieval</a> <ul></ul> </li><li><a href="#modeling-the-human-web-interaction">Modeling the Human-Web Interaction</a> <ul></ul> </li><li><a href="#doing-more-with-less">Doing More with Less</a> <ul></ul> </li></ul> </li><li><a href="#productionizing-agents--an-ongoing-challenge">Productionizing Agents — an Ongoing Challenge</a> <ul><li><a href="#engineering-with-non-determinism">Engineering with Non-Determinism</a> <ul></ul> </li><li><a href="#optimal-tooling--less-is-more">Optimal Tooling — Less is More</a> <ul></ul> </li><li><a href="#evals">Evals</a> <ul></ul> </li></ul> </li></ul></nav></div><p>Research agents are rapidly becoming one of the most important applications of AI. Research is a foundational knowledge-work task: collecting, reading, and synthesizing information underpins everything from writing and decision-making to coding itself. Yet human-driven research is constrained by memory, reading speed, and time. AI research agents, by contrast, can process vast amounts of information, synthesize insights instantly, and scale effortlessly. Because of this, research agents are emerging as a top use case for AI today and will soon become a core subcomponent of broader agentic workflows across content generation, coding, sales, and more. In this post, we share the technical and philosophical lessons we’ve learned building a <strong>state-of-the-art research agent</strong>, and where we believe the field is headed.</p>
+<hr>
+<h2> <a href="#building-for-the-future"> <span></span> </a> <span> Building for the Future </span>
+</h2>
+<h3> <a href="#agent-harness"> <span></span> </a> <span> Agent Harness </span>
+</h3>
+<p>The task of building an <a href="https://www.vtrivedy.com/posts/claude-code-sdk-haas-harness-as-a-service?ref=blog.langchain.com">agent harness</a> is to create a software layer that enhances a model’s runtime execution through context management, tool invocations, loop control, orchestration, and error handling. Building applications on top of rapidly improving models is, however, a modern engineering challenge. How can we design software today that absorbs the performance gains from future model releases?</p>
+<p>This requires forecasting how models will evolve, staying optimistic about their progress, limiting assumptions, and avoiding hand-crafted optimizations.</p>
+<p>We learned this the hard way seven months ago, when we had to abandon our first attempt at deep research and rebuild the entire system from scratch. The first architecture was complicated and sophisticated (we thought this was a good thing), but its assumptions became bottlenecks when the next generation of models arrived.</p>
+<h3> <a href="#models"> <span></span> </a> <span> Models </span>
+</h3>
+<p>Over the last seven months, model capabilities have quietly but meaningfully evolved (especially in their tool-calling abilities). This single optimization focus has pushed us from workflows to agents. We believe future models will be trained to solve the current pain points of agent developers. Every model is ultimately consumed by a harness, so models should evolve in service of that harness. We hope to see models improve in high-recall summarization (for context compression), tool-calling reliability, and concision in writing.</p>
+<h3> <a href="#tools"> <span></span> </a> <span> Tools </span>
+</h3>
+<p>Similarly, tools should evolve to support LLMs and widely adopted agent harnesses. The best tools should perform some context engineering on the tool side, abstracted away from the agent. They should return only the most relevant data instead of dumping large volumes of tokens into the context window. As a tool provider, we’ve invested heavily in our <a href="https://docs.tavily.com/documentation/api-reference/endpoint/search#body-search-depth">advanced search</a> feature, which has context engineering baked in. This in turn lowers hallucinations and latency for the downstream agent processes.</p>
+<h3> <a href="#takeaways"> <span></span> </a> <span> Takeaways </span>
+</h3>
+<p>To build agents that improve over time, we followed a few guiding principles:</p>
+<ol>
+<li>Simplify orchestration logic and lean into autonomy.</li>
+<li>Pay close attention to what models and tools are being optimized for, and leverage their emerging capabilities.</li>
+<li>Focus on context engineering (more on this in the next section).</li>
+</ol>
+<hr>
+<h2> <a href="#context-engineering--an-exercise-in-curation"> <span></span> </a> <span> Context Engineering — An Exercise in Curation </span>
+</h2>
+<p>Long-horizon research tasks expose a fundamental challenge in current agent design: the task of maintaining a clean, optimized context window over time. If curating context is not a task the engineer pays close attention to, the agent is almost destined for failure. The following outlines our thinking around this concept within the deep research domain.</p>
+<h3> <a href="#context-managed-web-retrieval"> <span></span> </a> <span> Context-Managed Web Retrieval </span>
+</h3>
+<p>Using Tavily’s Advanced Search is the natural first step to take in overcoming this challenge, in that it abstracts away the processing of raw web content and returns only the most relevant content chunks from each source. In leveraging this functionality, we let Tavily Search do the heavy lifting and allow Tavily Research to reap the benefit, gathering the most valuable content in a latency-efficient manner.</p>
+<p>Ensuring that the agent does not overfit to a single research thread is the next step towards an effective context-gathering pipeline. It is in this regard that global state persistence and source deduplication is paramount, and in our case, it helps threefold:</p>
+<ol>
+<li>It ensures the agent is exposed only to fresh information.</li>
+<li>It allows the engineer to recognize when the information scope is narrowing and to prompt the agent to explore untapped relevant domains.</li>
+<li>It lends to effective source attribution later on in the generation process.</li>
+</ol>
+<p>At Tavily, interacting with the web is our bread and butter. Architecting a refined web-retrieval system engineered for deep research was a foundational building block for our deep research agent design as a whole.</p>
+<h3> <a href="#modeling-the-human-web-interaction"> <span></span> </a> <span> Modeling the Human-Web Interaction </span>
+</h3>
+<p>Humans research in an inherently unstructured, iterative way. We start by defining the task: what we’re trying to accomplish and what information we need. We next gather data from our sources, extracting the key insights and holding them in short-term memory, letting these distilled thoughts guide our subsequent actions.</p>
+<p>This cycle repeats: collect information, distill it, decide what to do next. Only once we’ve gathered enough understanding to produce the final deliverable do we return to the original sources, using them as references to assemble the finished product.</p>
+<p>We believe that deep research agents should be designed in a similar manner, in that tool outputs should be distilled into reflections, and <strong>only</strong> the set of past reflections should be used as context for your tool caller. Similar to humans, it is only at the point when your agent begins to prepare the final deliverable that you must provide the raw information as context, so as to ensure there is no information loss.</p>
+<h3> <a href="#doing-more-with-less"> <span></span> </a> <span> Doing More with Less </span>
+</h3>
+<p>This approach differs from traditional context structuring in a ReAct agent-based architecture. Typically, tool calls and outputs are propagated through the tool calling loop, with previously retrieved/generated tokens being persisted in the context window on each subsequent iteration. This pattern can be seen in <a href="https://github.com/langchain-ai/open_deep_research">LangChain’s Open Deep Research</a> agent implementation, and from a token consumption perspective, it can be modeled by the following quadratic series, where <span><span>n n </span></span> is the amount of tokens the tool calling model is invoked with on each tool calling iteration, and <span><span>m m </span></span> is the number of tool calling iterations.</p>
+<p><span><span><span>n+2n+3n+⋯+mn = n⋅m(m+1)2n + 2n + 3n + \cdots + mn \;=\; n \cdot \frac{m(m+1)}{2}</span></span></span></p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/zBVSQrGwtMnMVOZwaRRhh.png"><img alt="Group 29" src="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/zBVSQrGwtMnMVOZwaRRhh.png"></a></p>
+<p>Contrarily, our proposed method of context engineering removes this token propagation (as the knowledge distillations, even when aggregated, are negligible when compared to the quantity of tokens gathered from web) and can be modeled by the following linear series.</p>
+<p><span><span><span>n+n+n+⋯+n = nmn + n + n + \cdots + n \;=\; nm</span></span></span></p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/1W0Y8YDgXIYhcRuH3ZDwv.png"><img alt="Group 30" src="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/1W0Y8YDgXIYhcRuH3ZDwv.png"></a></p>
+<p>When comparing the two approaches, tokens are saved on a per-agent basis by a factor of <span><span>m+12 \frac{m+1}{2} </span></span>, and when extrapolating this over a multi-agent system and with consumption at scale, the absolute value of tokens saved becomes even more significant.</p>
+<p>Through this methodology, we were able to <strong>reduce token consumption by 66%</strong> (when compared to Open Deep Research) while achieving SOTA on <a href="https://huggingface.co/spaces/muset-ai/DeepResearch-Bench-Leaderboard">DeepResearch Bench</a> – the intersection of quality and efficiency in full effect.</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/-Lrd_LdJo1ftNUQs1InZO.png"><img alt="Group 33" src="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/-Lrd_LdJo1ftNUQs1InZO.png"></a></p>
+<hr>
+<h2> <a href="#productionizing-agents--an-ongoing-challenge"> <span></span> </a> <span> Productionizing Agents — an Ongoing Challenge </span>
+</h2>
+<p>Building production-grade agents is a balancing act. We leaned into autonomy to maximize performance and quality, while still meeting strict requirements for latency, cost, and reliability.</p>
+<h3> <a href="#engineering-with-non-determinism"> <span></span> </a> <span> Engineering with Non-Determinism </span>
+</h3>
+<p>LLMs are inherently non-deterministic, and we found that giving them guard-railed freedom to reason and iterate produces the strongest results. Autonomy, when gone wrong, can cause agent behavior to go off track. Tools can be called incorrectly, LLMs can overfit to a subtopic, and expected reasoning patterns may break. No single safeguard will catch all of these issues.</p>
+<p>A shift in engineering mindset is required: treat failure modes as core design considerations, not afterthoughts. Simple guardrails like tool-call retries or model cascades help, but proactively anticipating anomalies, reinforcing proper patterns in prompting and edge-case testing is what enables production-grade, long-running agents.</p>
+<p><a href="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/60DF_Va37-llPC263W6_B.png"><img alt="Group 34" src="https://cdn-uploads.huggingface.co/production/uploads/691cbf41fd922ec2d851f771/60DF_Va37-llPC263W6_B.png"></a></p>
+<h3> <a href="#optimal-tooling--less-is-more"> <span></span> </a> <span> Optimal Tooling — Less is More </span>
+</h3>
+<p>From our experience, it’s better to expose a small, essential toolset to the agent rather than a large, complex one. We were tempted to over-engineer by adding many tools that seemed useful in theory, but in practice this created new failure modes and made it harder for LLMs to consistently choose the right tool and iterate effectively.</p>
+<h3> <a href="#evals"> <span></span> </a> <span> Evals </span>
+</h3>
+<p>We used evals to steer our development process but also recognize their shortcomings. LLM-as-a-judge evals are difficult to trust: current models are non‑deterministic, uninterpretable in their reasoning, and can turn into bottlenecks, especially for long‑running agents where a single experiment can take days to complete.</p>
+<p>Rather than optimizing for benchmark scores, we optimized for directional feedback. The core question was always: did this change make the agent more reliable and more useful in practice? Evals became a tool for validating that direction, not the optimization target. Intuition and careful agent‑trace monitoring consistently provided higher‑signal feedback than any single eval score.
+Overall, the best outcome is rarely the highest numerical score. For production systems, improvements like reduced token usage, reliability, lower latency, and fewer failures are more valuable than a one‑point bump on an eval.</p>
+<hr>
+<p>If you’re interested in experiencing the result of these findings in practice, you can sign up for early access to <strong>Tavily Research</strong> <a href="https://deepresearch.tavily.com/">here</a>.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

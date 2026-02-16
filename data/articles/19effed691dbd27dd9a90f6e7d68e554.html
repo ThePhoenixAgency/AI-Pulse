@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Home Assistant 2026.2 : un gros coup de polish… et deux nouveautés qui vont vous faire gagner du temps - Maison et Domotique</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.5em; }
+  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  img { max-width: 100%; height: auto; border-radius: 8px; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 1em; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
+</style>
+</head>
+<body>
+  <h1>Home Assistant 2026.2 : un gros coup de polish… et deux nouveautés qui vont vous faire gagner du temps - Maison et Domotique</h1>
+  <div class="metadata">
+    Source: Maison et Domotique | Date: 2/9/2026 | Lang: FR |
+    <a href="https://www.maison-et-domotique.com/167911-home-assistant-2026-2-un-gros-coup-de-polish-et-deux-nouveautes-qui-vont-vous-faire-gagner-du-temps/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><article>
+                                                    
+                             
+                                                                        					                        
+                                       
+                                                  
+
+                        
+<p>La <a href="https://www.home-assistant.io/blog/2026/02/04/release-20262/" target="_blank">version 2026.2 de Home Assistant</a> est disponible depuis quelques jours maintenant, et elle a un petit côté “on a rangé la maison, et d’un coup tout semble plus simple”. Pas parce que Home Assistant devient basique (ce n’est pas son style), mais parce que l’équipe continue d’enlever les aspérités qui bloquent surtout… quand on veut aller vite. Cette mise à jour tourne autour de cinq chantiers très concrets : la nouvelle Vue d’ensemble (le tableau de bord “Home” devient la norme), la recherche rapide façon palette de commandes, les automatisations qui parlent plus humain, les add-ons rebaptisés “Apps”, et un projet plus ambitieux qu’il n’y paraît : une base de données ouverte des appareils.</p>
+
+
+
+
+<h2>La Vue d’ensemble devient le tableau de bord par défaut</h2>
+
+
+
+<p>Le changement le plus visible, c’est que le “Home Dashboard” devient officiellement “Overview” et s’impose comme la vue par défaut sur les nouvelles installations. Si vous êtes utilisateur de longue date et que vous n’aviez jamais vraiment touché à la vue par défaut, Home Assistant vous proposera de basculer. Si vous avez déjà un Lovelace custom aux petits oignons, rien n’est cassé : vous restez maître à bord, et vous pouvez aussi recréer un tableau de bord “Overview (legacy)” si vous aimez l’ancienne approche.</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/overview.png" alt="overview" /></figure>
+
+
+
+<p>Dans la pratique, cette Vue d’ensemble “nouvelle génération” joue la carte du dashboard dynamique : elle s’adapte à l’écran, regroupe mieux les infos, et pousse surtout l’organisation par pièces (Areas) et par catégories. Concrètement, c’est moins de temps à aligner des cartes, plus de temps à piloter la maison.</p>
+
+
+
+<p>Un détail qui change la vie quand on ajoute du matériel : une carte “Discovered devices” apparaît dans la section “For You”. Elle affiche les appareils détectés et vous permet de les ajouter tout de suite, ou de sauter directement vers leur gestion, sans fouiller dans les menus.</p>
+
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/ajout.png" alt="ajout" /></figure>
+
+
+
+<p>Et comme une maison connectée, ce n’est pas juste “des entités”, Home Assistant insiste encore sur le rangement. Une zone dédiée récupère ce qui n’est pas assigné à une pièce, puis l’interface vous “pousse” gentiment à classer les appareils au bon endroit. Le but est clair : garder une instance propre même quand on ajoute des capteurs à la pelle (oui, on connaît tous cette pente glissante).</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/assign-devices-page-659x500.png" alt="assign devices page" /></figure>
+
+
+
+<h2>Petites retouches d’interface : thèmes, zones, navigation</h2>
+
+
+
+<p>Home Assistant continue son grand ménage visuel. La barre bleue du thème par défaut disparaît au profit d’un rendu plus cohérent avec la page Paramètres, ce qui met davantage en avant les cartes et les données.</p>
+
+
+
+<p>Autre changement malin : les thèmes se gèrent désormais au niveau du profil utilisateur. En clair, chaque personne peut appliquer son look (utile si l’un veut un thème très lisible sur tablette murale et l’autre un thème plus sombre sur mobile).</p>
+
+
+
+<p>Côté zones (Areas), l’édition devient plus rapide : sur certaines pages, un raccourci depuis le bouton d’édition permet d’aller directement modifier les capteurs “principaux” d’une pièce, comme la température ou l’humidité.</p>
+
+
+
+<h2>Recherche rapide Ctrl/⌘+K : le “centre de commande” de Home Assistant</h2>
+
+
+
+<p>Si vous aimez piloter au clavier, c’est probablement la nouveauté la plus addictive. La “quick bar” a été totalement repensée et s’appelle maintenant Quick search. L’idée : une seule recherche pour tout faire, avec des filtres par catégories (navigation, commandes, entités, appareils, zones). Raccourci universel : ⌘+K sur macOS, Ctrl+K sur Windows/Linux.</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/recherche.png" alt="recherche" /></figure>
+
+
+
+<p>Ce n’est pas juste une recherche “de noms”. Vous pouvez chercher une pièce, un type d’appareil, lancer une action, ouvrir un écran précis… et tout se parcourt au clavier (flèches, Entrée, Échap). Dans la présentation officielle, l’équipe insiste vraiment sur ce côté “muscle memory” : une fois le réflexe pris, vous naviguez dans l’instance sans toucher la souris.</p>
+
+
+
+<p>Bonne nouvelle : les anciens raccourcis restent utiles. Les touches “e”, “d”, “c” continuent de fonctionner, mais ouvrent Quick search directement filtrée (entités, devices, commandes). Donc on ne détruit pas vos habitudes, on les modernise.</p>
+
+
+
+<h2>Automatisations : des déclencheurs et conditions “qui parlent votre langue”</h2>
+
+
+
+<p>Home Assistant continue de pousser ses “purpand conditions”, disponibles via Home Assistant Labs. L’objectif est simple : arrêter de raisonner en “changement d’état” ultra technique et choisir des blocs qui expriment une intention claire.</p>
+
+
+
+<p>Avec la mise à jour 2026.2, de nouveaux déclencheurs arrivent, notamment pour les calendriers (début/fin d’événement), les personnes (arrive à la maison / quitte la maison) et les aspirateurs (retour à la base). <br />Exemple très concret : “Quand Elise quitte la maison, alors passer le chauffage en éco » et activer à manipuler manuellement des états home/not_home ou des attributs parfois obscurs ». Même idée avec “quand l’aspirateur retourne à sa base, notifier la fin du cycle”, ou “quand un événement de calendrier commence, basculer la maison en mode présence”. </p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/declencheurs.png" alt="declencheurs" /></figure>
+
+
+
+<p>La grosse marche de février, ce sont surtout les conditions “purpose-specific” qui s’étendent enfin à beaucoup de domaines. On peut désormais exprimer “si la serrure est verrouillée”, “si le chauffage est en mode chauffe”, “si l’alarme est armée”, “si une personne est à la maison”, “si l’aspirateur est docké”, “si la tondeuse est en train de tondre”, etc., sans faire de comparaisons d’états à la main. <br />Pour les installateurs, c’est une petite pépite : ces blocs réduisent les erreurs de logique et rendent les automatisations plus faciles à relire, donc plus faciles à maintenir sur la durée.</p>
+
+
+
+<h2>Les add-ons deviennent des “Applications”</h2>
+
+
+
+<p>C’est un changement de vocabulaire… mais pas seulement. À partir de 2026.2, les add-ons s’appellent Applications, avec une explication très terre-à-terre : “add-ons” et “integrations” se ressemblent trop pour un nouveau venu, alors que “app”, tout le monde voit ce que c’est. </p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/apps-570x500.png" alt="apps" /></figure>
+
+
+
+<p>Home Assistant rappelle aussi la différence, et elle est importante quand on dépanne quelqu’un (ou un client) : une Application, c’est une application qui tourne à côté de Home Assistant (éditeur de code, broker MQTT, Node-RED, etc.), tandis qu’une intégration, c’est le connecteur qui relie Home Assistant à un appareil ou un service. </p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/apps1-702x234.png" alt="apps1" /></figure>
+
+
+
+<p>L’interface Applications a également été “remplacée sous le capot” pour devenir plus réactive, tout en restant familière visuellement.</p>
+
+
+
+<h2>Device database : le projet discret… mais potentiellement énorme</h2>
+
+
+
+<p>Home Assistant met aussi en avant un chantier porté par l’Open Home Foundation : une<a href="https://openhomefoundation.grafana.net/public-dashboards/1cb22c82e90c4f64afb366c6125a8489" target="_blank"> base de données ouverte des appareils</a>, alimentée par la communauté, à partir de données réelles (et anonymisées) des installations. L’équipe parle clairement d’un “Wikipedia des appareils domotiques”, avec l’idée de répondre à des questions très pratiques avant achat : est-ce que ce produit expose bien tel capteur ? Est-ce qu’il fonctionne localement ? Via quelles intégrations et protocoles ?</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/device-database-statistics-689x500.png" alt="device database statistics" /></figure>
+
+
+
+<p>Concrètement, ça passe par Home Assistant Labs : vous pouvez “opt-in” pour partager des informations agrégées et anonymisées sur vos appareils. Une section “Device analytics” apparaît alors, et vous pouvez même prévisualiser ce qui est envoyé. </p>
+
+
+
+<p>Au <a href="https://www.home-assistant.io/blog/2026/02/02/about-device-database/" target="_blank">moment de l’annonce</a>, Home Assistant indique déjà plus de 10 000 appareils uniques remontés à travers plus de 260 intégrations, ce qui donne une idée de la traction du projet. A termes, l’ambition est aussi d’améliorer l’expérience “plug &amp; play”, avec de meilleures icônes, unités et catégories préconfigurées quand un appareil est reconnu.</p>
+
+
+
+<h2>Nouvelle carte “Distribution” : visualiser des répartitions en un coup d’œil</h2>
+
+
+
+<p>Home Assistant introduit une nouvelle carte de tableau de bord : <em>Distribution card</em>. Elle affiche une répartition sous forme de barre horizontale proportionnelle, avec une légende interactive (masquer/afficher un élément, recalcul des pourcentages, clic pour ouvrir le détail.</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/distribution-card-603x500.png" alt="distribution card" /></figure>
+
+
+
+<p>Sur le papier, ce n’est “qu’un graphique”, mais il y a des usages très domotiques. Exemple énergie : visualiser la part de consommation par gros poste (chauffage, ECS, recharge VE, serveurs/NAS, etc.) ou la répartition de puissance instantanée par phase si vous suivez votre installation de près.</p>
+
+
+
+<h2>Énergie : enfin plus souple avec certains capteurs de puissance</h2>
+
+
+
+<p>Petit point qui fera plaisir à ceux qui bricolent des compteurs, des pinces ou des intégrations solaires : le tableau de bord Énergie accepte désormais des capteurs de puissance dans d’autres formats sans passer par un template sensor. Home Assistant indique notamment la possibilité d’utiliser un seul capteur avec polarité inversée pour réseau/batterie, ou deux capteurs positifs séparés pour charge/décharge (import/export). Une modification qui va bien nous simplifier la vie !</p>
+
+
+
+<h2>Outils développeur déplacés dans Paramètres (et une sidebar qui pourrait évoluer)</h2>
+
+
+
+<p>Les Developer Tools déménagent dans la section Settings. L’objectif affiché : regrouper tout ce qui est “administration / système” au même endroit, et alléger l’interface. Home Assistant reconnaît que ça demande un temps d’adaptation, et évoque même une piste attendue par beaucoup : une personnalisation complète de la sidebar à l’avenir.</p>
+
+
+
+<figure><img src="https://www.maison-et-domotique.com/wp-content/uploads/2026/02/dev-702x368.png" alt="dev" /></figure>
+
+
+
+<p>L’idée est aussi de ne pas “mettre sous le nez” des outils techniques à des utilisateurs non techniques, tout en rendant l’accès aux réglages plus cohérent.</p>
+
+
+
+<h2>Intégrations : nouveautés, améliorations, et encore plus de “tout en UI”</h2>
+
+
+
+<p>Comme chaque mois, il y a le lot d’intégrations. Côté nouveautés mises en avant dans l’annonce officielle, on trouve par exemple <a href="https://www.home-assistant.io/integrations/cloudflare_r2" target="_blank">Cloudflare R2</a> (sauvegardes dans le cloud, avec un positionnement intéressant sur les coûts), mais aussi des intégrations orientées énergie, ventilation, qualité de l’air, vidéo HDMI/AV, ou recharge VE locale selon les cas.</p>
+
+
+
+<p>Autre point très “terrain” : plusieurs intégrations deviennent configurables directement depuis l’interface, sans YAML. Home Assistant cite notamment <a href="https://www.home-assistant.io/integrations/namecheapdns" target="_blank">Namecheap DynamicDNS</a>, <a href="https://www.home-assistant.io/integrations/openevse" target="_blank">OpenEVSE</a>, <a href="https://www.home-assistant.io/integrations/proxmoxve" target="_blank">Proxmox VE</a> et <a href="https://www.home-assistant.io/integrations/waterfurnace" target="_blank">WaterFurnace</a>. Et oui, voir Proxmox VE arriver en configuration UI, c’est le genre de détail qui fait sourire tous ceux qui ont une stack domotique “sérieuse” à la maison :D</p>
+
+
+
+<h2>Ce qu’il faut retenir</h2>
+
+
+
+<p>Si vous installez Home Assistant pour la première fois (ou que vous accompagnez des proches, des clients, un chantier), 2026.2 est une très bonne nouvelle : la Vue d’ensemble par défaut, l’aide au rangement des appareils, et le renommage Apps/Intégrations réduisent les incompréhensions dès le départ.</p>
+
+
+
+<p>Si vous êtes utilisateur avancé, le duo gagnant, c’est Quick search et les automatisations “purpose-specific”. Le premier vous fait gagner du temps à chaque navigation, le second vous fait gagner du temps à chaque scénario… et vous évite des automatismes “fragiles” basés sur des états trop bas niveau.</p>
+
+
+
+<p>Et si vous vous intéressez à la domotique au sens large, gardez un œil sur la device database : c’est typiquement le genre de fondation qui, une fois assez alimentée, change la façon de choisir du matériel (et de comprendre pourquoi “chez l’un ça marche, chez l’autre non”).</p>
+
+
+
+<figure><p>
+
+</p></figure>
+
+
+                    </article></div>
+  </div>
+</body>
+</html>

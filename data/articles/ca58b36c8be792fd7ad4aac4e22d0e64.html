@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DeepMath: A lightweight math reasoning Agent with smolagents</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>DeepMath: A lightweight math reasoning Agent with smolagents</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 12/4/2025 1:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/intel-deepmath" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/danf"><img alt="Daniel Fleischer's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/62d93cd728f9c86a4031562e/ix_LD-wjW8vCltosCVUmV.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/mber"><img alt="Moshe Berchansky's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63e0c8875c6964861ebb0c49/yzkhPSxgXtJCM62iMBOOK.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/moshew"><img alt="Moshe Wasserblat's avatar" src="https://huggingface.co/avatars/e05ca715004b39e79472399f75010bda.svg"></a> </span> </span></p> </div></div> <p>
+<img alt="An LLM is using a calculator to answer questions." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/intel-deepmath/deepmath-figure.jpg">
+</p> <div><nav><ul><li><a href="#why-deepmath">Why DeepMath?</a> <ul></ul> </li><li><a href="#how-it-works">How It Works</a> <ul></ul> </li><li><a href="#training-with-grpo">Training with GRPO</a> <ul></ul> </li><li><a href="#evaluation">Evaluation</a> <ul></ul> </li><li><a href="#why-it-matters">Why It Matters</a> <ul></ul> </li><li><a href="#conclusion">Conclusion</a> <ul></ul> </li><li><a href="#try-it-yourself">Try It Yourself</a> <ul></ul> </li><li><a href="#citation">Citation</a> <ul></ul> </li><li><a href="#limitations--future-work">Limitations &amp; Future Work</a> <ul></ul> </li><li><a href="#references">References</a> <ul></ul> </li></ul></nav></div><p><em>By Intel AI Software Group</em></p>
+<p><a href="https://huggingface.co/Intel/deepmath-v1">DeepMath</a> is an aligned math reasoning agent built on <strong><a href="https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507">Qwen3-4B Thinking</a></strong> and fine-tuned with <strong>GRPO (Group Relative Policy Optimization)</strong>. Instead of verbose text, the model emits <strong>tiny Python snippets</strong> for intermediate steps, runs them in a secure sandbox, and folds the results back into its reasoning, reducing errors and output length. The agent is implemented using the <strong><a href="https://github.com/huggingface/smolagents">smolagents library</a></strong>.</p>
+<p>We evaluate DeepMath on four math datasets: <strong><a href="https://huggingface.co/datasets/HuggingFaceH4/MATH-500">MATH500</a>, <a href="https://huggingface.co/datasets/opencompass/AIME2025">AIME</a>, <a href="https://huggingface.co/datasets/MathArena/hmmt_feb_2025">HMMT</a>, and <a href="https://huggingface.co/datasets/cais/hle">HLE</a>,</strong> and show that:</p>
+<ul>
+<li><p> The math agent alone reduces output lengths by up to 66%, while often improving accuracy.</p>
+</li>
+<li><p> GRPO training improves the agent performance even further, in almost all benchmarks.</p>
+</li>
+</ul>
+<p> Code and evaluation scripts: <a href="https://github.com/IntelLabs/DeepMath">https://github.com/IntelLabs/DeepMath</a> <br> Model: <a href="https://huggingface.co/Intel/deepmath-v1">https://huggingface.co/Intel/deepmath-v1</a></p>
+<h2> <a href="#why-deepmath"> <span></span> </a> <span> Why DeepMath? </span>
+</h2>
+<p>Large language models (LLMs) have advanced reasoning capabilities, but mathematical problem-solving remains challenging; chain-of-thought traces can be lengthy and prone to arithmetic mistakes. Recent works[^1][^2] demonstrate that small models can reach strong performance, and other studies[^3] investigate tool use to improve reliability. What those papers generally do not emphasize is reducing trace verbosity or explicitly training models to prefer short, computation-oriented traces executed in a constrained, auditable environment.</p>
+<p>We focused on two goals:</p>
+<ol>
+<li><p><strong>Offload deterministic computation</strong> to a safe executor.</p>
+</li>
+<li><p><strong>Train models to prefer concise, computation-oriented traces</strong> over verbose text.</p>
+</li>
+</ol>
+<p><strong>DeepMath</strong> tackles this by combining a small Python executor with a fine-tuned LLM, enabling concise, computation-driven reasoning. The model learns to generate short Python snippets, which are executed in a sandbox and reintegrated into the context. GRPO fine-tuning encourages this behavior by rewarding correctness and encouraging shorter outputs.</p>
+<h2> <a href="#how-it-works"> <span></span> </a> <span> How It Works </span>
+</h2>
+<ul>
+<li>Base model: <a href="https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507">Qwen3-4B Thinking</a>.</li>
+<li>Executor constraints: sandboxed environment, allow-list of imported modules, per-snippet timeout.</li>
+<li>Inference: based on <a href="https://github.com/huggingface/smolagents/">smolagents</a>, a math agent was created. <a href="https://github.com/vllm-project/vLLM">vLLM</a> is used as the inference engine.</li>
+<li>Training: based on the GRPO trainer in <a href="https://github.com/huggingface/trl">TRL</a>, we modified TRL's vLLM client and server to generate GRPO completions using our DeepMath agent.</li>
+</ul>
+<p>
+<img alt="Changes to vLLM client and server in TRL library." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/intel-deepmath/trl-grpo-vllm-deepmath.png"><br>
+<em>Figure 1: The vLLM client and server were modified to use the DeepMath agent in generating the candidates, while using the vLLM backend.</em>
+</p> <ul>
+<li><p><strong>Agent Interface:</strong> During inference, the model can output normal tokens or special agent calls containing Python snippets.</p>
+</li>
+<li><p><strong>Execution:</strong> Snippets run in a sandboxed environment with strict safety constraints (no file I/O, no network, timeouts).</p>
+</li>
+<li><p><strong>Design Goals:</strong></p>
+<ul>
+<li><p><strong>Concision:</strong> Replace multi-line textual calculations with short, focused snippets.</p>
+</li>
+<li><p><strong>Determinism &amp; Safety:</strong> Enforce strict execution limits.</p>
+</li>
+<li><p><strong>Interpretability:</strong> Snippets are readable and auditable.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+<img alt="Output example: it contains a short python snippet as well as its output which is used in the reasoning process." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/intel-deepmath/output-example.png"><br>
+<em>Figure 2: Output example where python code is generated, evaluated and the answer is inserted into the trace and used for context.</em>
+</p> <h2> <a href="#training-with-grpo"> <span></span> </a> <span> Training with GRPO </span>
+</h2>
+<p>We fine-tune the model using <strong>GRPO</strong>, a reward-based optimization that balances:</p>
+<ul>
+<li><p><strong>Accuracy Reward:</strong> +1 for correct answers.</p>
+</li>
+<li><p><strong>Using code snippets:</strong> +1 for generating code snippets, weighted 10:1 vs. the accuracy reward.</p>
+</li>
+<li><p><strong>Length reduction:</strong> shorter lengths are encouraged by limiting the GRPO completion candidates to 5k tokens.</p>
+</li>
+<li><p><strong>Temperature Scheduling:</strong> We implemented linear temperature scheduling (T=1.2 → T=0.7) to balance exploration and stability during training. This approach aims to enhance experimentation during the initial training phases, subsequently reducing the temperature as we refine our proficiency in the skill.</p>
+</li>
+<li><p><strong>In-context Learning</strong>: we include 4 solved examples where the trace contains agent calls and executor outputs, so the model learns the syntax and the call/response pattern.</p>
+</li>
+<li><p><strong>Dataset</strong>: we used the Tool-Integrated Reasoning (TIR) subset of the <a href="https://huggingface.co/datasets/nvidia/OpenMathReasoning">OpenMathReasoning</a> dataset. Note that GRPO only uses the <u>problem</u>, not the solution in the data. This dataset was chosen to ensure the problems benefit from the external tool.</p>
+</li>
+</ul>
+<h2> <a href="#evaluation"> <span></span> </a> <span> Evaluation </span>
+</h2>
+<p>We benchmarked DeepMath against baselines on four datasets. Metrics include:</p>
+<ul>
+<li><p><strong>majority@16</strong>: robustness across samples, as used in previous math reasoning works, see references.</p>
+</li>
+<li><p><strong>Mean output length</strong>: brevity.</p>
+</li>
+</ul>
+<p>
+<img alt="Main results table." src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/intel-deepmath/main-results.png">
+</p> <ul>
+<li><p>We compare a baseline configuration (<a href="https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507">Qwen3-4B-Thinking-2507</a>, no agenting) with our DeepMath model. As ablation, we evaluate the agentic framework we developed running with the untrained Qwen3 model, denoted by <strong>+Agent</strong>. Additionally, we examine whether the GRPO training (for agentic use) improves non-agentic inference, denoted by <strong>+GRPO</strong>. Thus the two ablations are independent, not additive.</p>
+</li>
+<li><p>We observe the agentic inference reduces output lengths, with mixed accuracy results. The DeepMath model is both GRPO-trained and run in agentic mode, and shows the highest accuracy with shortened traces. We conclude <strong>both GRPO training and agentic inference are needed</strong> for best results.</p>
+</li>
+</ul>
+<p><strong>Key Insight:</strong> DeepMath reduces output length by up to <strong>66%</strong> while improving accuracy on challenging datasets.</p>
+<h2> <a href="#why-it-matters"> <span></span> </a> <span> Why It Matters </span>
+</h2>
+<ul>
+<li><p><strong>Accuracy:</strong> Offloading computation reduces arithmetic errors.</p>
+</li>
+<li><p><strong>Efficiency:</strong> Shorter outputs mean faster inference and easier interpretability.</p>
+</li>
+<li><p><strong>Safety:</strong> Sandbox execution mitigates risks of running arbitrary code.</p>
+</li>
+</ul>
+<h2> <a href="#conclusion"> <span></span> </a> <span> Conclusion </span>
+</h2>
+<p>DeepMath demonstrates a practical and lightweight way to combine a small executor with an LLM and to train the model to prefer short, computation-driven traces. Offloading deterministic computation reduces arithmetic and numerical errors and shortens traces, and GRPO fine-tuning further encourages concise, correct answers. The result is a more accurate and more interpretable math-solving agent without requiring a massive model or heavyweight external tools.</p>
+<h2> <a href="#try-it-yourself"> <span></span> </a> <span> Try It Yourself </span>
+</h2>
+<p>Check out the <a href="https://github.com/IntelLabs/DeepMath">GitHub repo</a> and share your feedback! Contributions welcome. </p>
+<h2> <a href="#citation"> <span></span> </a> <span> Citation </span>
+</h2>
+<p>If you use DeepMath in your research, please cite:</p>
+<pre><code>@software{deepmath2025, author = {Fleischer, Daniel and Berchansky, Moshe and Wasserblat, Moshe}, title = {DeepMath: A Lightweight Math Reasoning Agent for LLMs}, year = {2025}, publisher = {Intel AI Labs}, url = {https://github.com/IntelLabs/DeepMath}
+}
+</code></pre>
+<h2> <a href="#limitations--future-work"> <span></span> </a> <span> Limitations &amp; Future Work </span>
+</h2>
+<ul>
+<li><p><strong>Scope</strong>: we focused on a small model and on mathematical reasoning.</p>
+</li>
+<li><p><strong>Generalization</strong>: evaluated on contest-style math; results may not transfer to open-ended mathematical creativity or formal proofs.</p>
+</li>
+<li><p>Executing generated code is inherently risky. DeepMath uses strict sandboxing and resource limits, but any deployment should carefully manage attack surfaces and enforce rate limits.</p>
+</li>
+</ul>
+<h2> <a href="#references"> <span></span> </a> <span> References </span>
+</h2>
+<p>[1] Luo, Michael, Sijun Tan, Justin Wong, et al. 2025. “DeepScaleR: Surpassing O1-Preview with a 1.5B Model by Scaling RL.” <a href="https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2">https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2</a></p>
+<p>[2] Liu, Mingjie, Shizhe Diao, Ximing Lu, et al. 2025. “ProRL: Prolonged Reinforcement Learning Expands Reasoning Boundaries in Large Language Models.” arXiv:2505.24864. Preprint, arXiv, May 30. <a href="https://doi.org/10.48550/arXiv.2505.24864">https://doi.org/10.48550/arXiv.2505.24864</a></p>
+<p>[3] Moshkov, Ivan, Darragh Hanley, Ivan Sorokin, et al. 2025. “AIMO-2 Winning Solution: Building State-of-the-Art Mathematical Reasoning Models with OpenMathReasoning Dataset.” arXiv:2504.16891. Preprint, arXiv, April 23. <a href="https://doi.org/10.48550/arXiv.2504.16891">https://doi.org/10.48550/arXiv.2504.16891</a></p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

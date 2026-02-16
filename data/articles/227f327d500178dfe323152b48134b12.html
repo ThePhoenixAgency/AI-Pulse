@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>From Ransomware to Residency: Inside the Rise of the Digital Parasite</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>From Ransomware to Residency: Inside the Rise of the Digital Parasite</h1>
+  <div class="metadata">
+    Source: The Hacker News | Date: 2/10/2026 2:59:00 PM | Lang: EN |
+    <a href="https://thehackernews.com/2026/02/from-ransomware-to-residency-inside.html" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div><p><a href="https://hubs.ly/Q040rJR50"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQoj8tRn4h4a-02GeyaLk1WyJz3XGX4AjYVezcSfqmsaz0v-9DZj6F1Tb6v7cAv7QaxHfnrZQtSZoOa1R5dwFLyNNhY369Lni0PKU-tfPndW0No6o9_wBUCLZpKVFdD762JQuhWRqmcLua6DqCBXbsvtVjtnIF7J_3JOL3h_7zl8nDP1qhv-C5H4Gqs1Y/s1600/picus.jpg"></a></p>
+<p>Are ransomware and encryption still the defining signals of modern cyberattacks, or has the industry been too fixated on noise while missing a more dangerous shift happening quietly all around them?</p>
+<p>According to Picus Labs’ new <a href="https://hubs.ly/Q040rJR50" target="_blank">Red Report 2026,</a> which analyzed over 1.1 million malicious files and mapped 15.5 million adversarial actions observed across 2025, attackers are no longer optimizing for disruption. Instead, their goal is now long-term, invisible access.</p>
+<p>To be clear, ransomware isn’t going anywhere, and adversaries continue to innovate. But the data shows a clear strategic pivot away from loud, destructive attacks toward techniques designed to evade detection, persist inside environments, and quietly exploit identity and trusted infrastructure. Rather than breaking in and burning systems down, today’s attackers increasingly behave like Digital Parasites. They live inside the host, feed on credentials and services, and remain undetected for as long as possible.</p>
+<p>Public attention often gravitates toward dramatic outages and visible impact. The data in this year’s Red Report tells a quieter story, one that reveals where defenders are actually losing visibility.</p>
+<h2>The Ransomware Signal Is Fading</h2>
+<p>For the past decade, ransomware encryption served as the clearest signal of cyber risk. When your systems locked up and your operations froze, compromise was undeniable.</p>
+<p>That signal is now losing relevance. Year over year, <a href="https://www.picussecurity.com/resource/blog/mitre-attck-t1486-data-encrypted-for-impact" target="_blank">Data Encrypted for Impact (T1486)</a> dropped by 38%, declining from 21.00% in 2024 to 12.94% in 2025. This decline doesn’t show reduced attacker capability. It reflects a deliberate shift in strategy instead.</p>
+<p>Rather than locking data to force payment, threat actors are shifting toward data extortion as their primary monetization model. By avoiding encryption, attackers keep systems operational while they:</p>
+<ul>
+<li>Quietly exfiltrate sensitive data</li>
+<li>Harvest credentials and tokens</li>
+<li>Remain embedded in environments for extended periods</li>
+<li>Apply pressure later through extortion rather than disruption</li>
+</ul>
+<p>The implication is clear: impact is no longer defined by locked systems, but by how long attackers can maintain access within a host’s systems without being detected.</p>
+<blockquote><em>"The adversary's business model has shifted from immediate disruption to long-lived access."</em> <em>– Picus Red Report 2026</em></blockquote>
+<h2>Credential Theft Becomes the Control Plane (A Quarter of Attacks)</h2>
+<p>As attackers shift toward prolonged, stealthy persistence, identity becomes the most reliable path to control.</p>
+<p><a href="https://hubs.ly/Q040rJR50" target="_blank">The Red Report 2026</a> shows that <a href="https://www.picussecurity.com/resource/blog/mitre-attack-t1555-credentials-from-password-stores" target="_blank">Credentials from Password Stores (T1555)</a> appear in nearly one out of every four attacks (23.49%), making credential theft one of the most prevalent behaviors observed over the last year.</p>
+<p>Rather than relying on noisy credential dumping or complex exploit chains, attackers are increasingly extracting saved credentials directly from browsers, keychains, and password managers. Once they have valid credentials, privilege escalation and lateral movement are usually just a little native administrative tooling away.</p>
+<p>More and more modern malware campaigns are behaving like digital parasites. There are no alarms, no crashes, and no obvious indicators. Just an eerie quiet.</p>
+<p>This same logic now shapes attacker tradecraft more broadly.</p>
+<p><a href="https://hubs.ly/Q040rJR50"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEis5TSntTdKwdwXzDvdHZeHBmdzJPlwaf7Qe8R1tGPvc1UMzYEJEgQSzvXV-6UpZNy1XEbwcWM2bvd0uEJRatifk56VrIUuedsPJUiGWBEVeQ2tAYiikOBfYqeKxXZiRanAe9QpDhysfPKs-EL1orKzET7vztW5ROBgise0KjYqMt5tB_RNjC6LBYYu5Ks/s1600/1.png"></a></p>
+<h2>80% of Top ATT&amp;CK Techniques Now Favor Stealth</h2>
+<p>Despite the breadth of the <a href="https://www.picussecurity.com/mitre-attack-framework-beginners-guide" target="_blank">MITRE ATT&amp;CK framework</a>, real-world malware activity continues to concentrate around a small set of techniques that are increasingly prioritizing evasion and persistence.</p>
+<p>The Red Report 2026 reveals a stark imbalance: Eight of the Top Ten MITRE ATT&amp;CK techniques are now primarily dedicated to evasion, persistence, or stealthy command-and-control. This represents the highest concentration of stealth-focused tradecraft Picus Labs has ever recorded, signaling a fundamental shift in attacker success metrics.</p>
+<p>Rather than prioritizing immediate impact, modern adversaries are optimizing for maximum dwell time. Techniques that enable attackers to hide, blend in, and remain operational for extended periods now outweigh those designed for disruption.</p>
+<p>Here are some of the most commonly observed behaviors from this year’s report:</p>
+<ul>
+<li>T1055 – <a href="https://www.picussecurity.com/resource/blog/t1055-process-injection" target="_blank">Process Injection</a> allows malware to run inside trusted system processes, making malicious activity difficult to distinguish from legitimate execution.</li>
+<li>T1547 – <a href="https://www.picussecurity.com/resource/blog/t1547-boot-or-logon-autostart-execution" target="_blank">Boot or Logon Autostart Execution</a> ensures persistence by surviving reboots and user logins.</li>
+<li>T1071 – <a href="https://www.picussecurity.com/resource/blog/mitre-attck-t1071-application-layer-protocol" target="_blank">Application Layer Protocols</a> provide “whisper channels” for command-and-control, blending attacker traffic into normal web and cloud communications.</li>
+<li>T1497 – <a href="https://www.picussecurity.com/resource/virtualization/sandbox-evasion-how-attackers-avoid-malware-analysis" target="_blank">Virtualization and Sandbox Evasion</a> enables malware to detect analysis environments and refuse to execute when it suspects it is being observed.</li>
+</ul>
+<p>The combined effect is powerful. Legitimate-looking processes use legitimate tools to quietly operate over widely trusted channels. Signature-based detection struggles in this environment, while behavioral analysis becomes increasingly important for identifying illicit activity deliberately designed to appear normal.</p>
+<p>Where encryption once defined the attack, stealth now defines its success.</p>
+<p><a href="https://hubs.ly/Q040rJR50"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgrOEjfTwMeJ3sd066k2shmxKuOcR_7fzG9kVmrnLms21inz1LuQOpIOaL4CtYJ5lv-efnzuPjCe-Kxm3pvI6TI_l0S8mkmeSCazX2VWLvMN_UAXxjWI4r8xZ3SkzBUqO0-hYqobUvuFtm9T5PV2PfN0dvJTyRjKNhJ3ryC_Lr_N7DOVp8riCbPOLK01c0/s1600/2.png"></a></p>
+<h2>Self-Aware Malware Refuses to Be Analyzed</h2>
+<p>When stealth becomes the primary measure of success, evading detection alone is no longer enough. Attackers must also avoid triggering the tools defenders rely on to observe their malicious behavior in the first place. The Red Report 2026 shows this clearly in the rise of Virtualization and Sandbox Evasion (T1497), which moved into the top tier of attacker tradecraft in 2025.</p> <p>Modern malware increasingly evaluates <em>where</em> it is before deciding <em>whether</em> to act. Instead of relying on simple artifact checks, some samples assess execution context and user interaction to determine if they’re actually operating in a real environment.&nbsp;</p>
+<p>In one example highlighted in the report, <a href="https://www.picussecurity.com/resource/blog/lumma-infostealer-continues-its-github-social-engineering-campaign" target="_blank">LummaC2</a> analyzed mouse movement patterns using geometry, calculating Euclidean distance and cursor angles to distinguish human interaction from the linear motion typical of automated sandbox environments. When conditions appeared artificial, it deliberately suppressed any execution and just sat there, quietly biding its time.</p>
+<p>This behavior reflects a deeper shift in attacker logic. Malware can no longer be relied on to reveal itself in sandbox environments. It withholds activity by design, remaining dormant until it reaches a real production system.&nbsp;</p>
+<p>In an ecosystem dominated by stealth and persistence, <em>inaction itself</em> has become a core evasion technique.</p>
+<h2>AI Hype vs. Reality: Evolution, Not Revolution</h2>
+<p>With attackers demonstrating increasingly adaptive behavior, it’s natural to ask <em>where artificial intelligence fits into this picture</em>.&nbsp;</p>
+<p>The Red Report 2026 data suggests a measured answer. Despite widespread speculation, almost <em>anticipation,</em> about AI reshaping the malware landscape, Picus Labs observed no meaningful increase in AI-driven malware techniques across the 2025 dataset.</p>
+<p>Instead, the most prevalent behaviors remain familiar. Longstanding techniques such as Process Injection and Command and Scripting Interpreter continue to dominate real-world intrusions, reinforcing that attackers do not require advanced AI to bypass modern defenses.</p>
+<p>Some malware families have begun experimenting with large language model APIs, but so far their use has remained limited in scope. In observed cases, LLM services were primarily used to retrieve predefined commands or act as a convenient communication layer. These implementations improve efficiency, but they’re not fundamentally altering attacker decision-making or execution logic.</p>
+<p>So far, the data shows that AI is being <em>absorbed into </em>existing tradecraft rather than <em>redefining it</em>. The mechanics of the Digital Parasite remain unchanged: credential theft, stealthy persistence, abuse of trusted processes, and longer and longer dwell times.&nbsp;</p>
+<p>Attackers are not winning by inventing radically new techniques. They’re winning by becoming quieter, more patient, and increasingly hard to distinguish from legitimate activity.</p> <h2>Back to Basics for a Different Threat Model</h2>
+<p>Having run these reports annually for some time now, we see a continuing trend with many of the same tactics appearing year after year. What has fundamentally changed is the objective.</p>
+<p>Modern attacks prioritize:</p>
+<ul>
+<li>remaining invisible</li>
+<li>abusing trusted identities and tools</li>
+<li>disabling defenses quietly</li>
+<li>maintaining access over time</li>
+</ul>
+<p>By doubling down on modern security fundamentals, behavior-based detection, credential hygiene, and <a href="https://www.picussecurity.com/use-case/adversarial-exposure-validation" target="_blank">continuous Adversarial Exposure Validation</a>, organizations can focus less on dramatic attack scenarios and more on the threats that are actually succeeding today.</p>
+<p><a href="https://hubs.ly/Q040rJR50"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiWYfmdC6BlDRBC372vrfptGHm9JsXUUWJyQeX7XMhj88gR6a0YRvze0MlDTwl8TPk_kE_cfpDhigvb1APCRIeIdldt8goiAfUzKaEgtiDLZ2Zx3LAwQJsA-yMH1IDIL27nLvtG6Vj-0xqSQop7qv8zVoOWbHsuvnRWn8ffMJ-6uQwqszzeOx8DZIxIMeE/s1600/3.png"></a></p>
+<h2>Ready to Validate Against the Digital Parasite?</h2>
+<p>While ransomware headlines still dominate the news cycle, the Red Report 2026 shows that, more and more, the real risk lies in silent, persistent compromise. Picus Security focuses on validating defenses against the specific techniques attackers are using right now, not just the ones making the most noise.</p>
+<p>Ready to see the full data behind the Digital Parasite model?&nbsp;</p>
+<p><a href="https://hubs.ly/Q040rJR50" target="_blank">Download the Picus Red Report 2026</a> to explore this year’s findings and understand how modern adversaries are staying inside networks longer than ever before.</p>
+<p>Note: This article was written by <a href="https://www.linkedin.com/in/silaozeren/" target="_blank">Sıla Özeren Hacıoğlu</a>, Security Research Engineer at Picus Security.</p> <p>Found this article interesting? <span>This article is a contributed piece from one of our valued partners.</span> Follow us on <a href="https://news.google.com/publications/CAAqLQgKIidDQklTRndnTWFoTUtFWFJvWldoaFkydGxjbTVsZDNNdVkyOXRLQUFQAQ" target="_blank">Google News</a>, <a href="https://twitter.com/thehackersnews" target="_blank">Twitter</a> and <a href="https://www.linkedin.com/company/thehackernews/" target="_blank">LinkedIn</a> to read more exclusive content we post.</p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -4,109 +4,43 @@
 <meta charset="UTF-8">
 <title>I Built a Grail Finder That Searches Vinted, eBay, Depop and More at Once</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>I Built a Grail Finder That Searches Vinted, eBay, Depop and More at Once</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    Source: Dev.to Open Source | Date: 2/16/2026 4:20:52 PM | Lang: EN |
     <a href="https://dev.to/mackmoneymaker/i-built-a-grail-finder-that-searches-vinted-ebay-depop-and-more-at-once-16n0" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    <div><div>
-                  <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack" /></a>
-                  </p>
-                  
-                </div><div>
-                <p>If you've ever obsessively hunted for a specific item on resale apps, you know the pain.</p>
-
-<p>You want a pair of Nike Dunk Low "Ceramic" in size 10. Or a vintage Carhartt Detroit jacket in navy. Or that one discontinued Arc'teryx shell that everyone pretends they don't want.</p>
-
-<p>So what do you do? You open Vinted. Search. Nothing good. Open eBay. Search. Too expensive. Open Depop. Search. Wrong size. Open Grailed. Vestiaire Collective. Poshmark. Rinse and repeat. Every. Single. Day.</p>
-
-<p>My co-founder Thomas finally snapped. He was tired of checking six apps every morning for the same three items. He looked at me and said: "Why isn't there one search that checks all of them?"</p>
-
-<p>Good question. So I built it.</p>
-
-<h2>
-  <a name="meet-grailsearch" href="#meet-grailsearch">
-  </a>
-  Meet GrailSearch
-</h2>
-
-<p><a href="https://grailsearch-app.fly.dev/" target="_blank">GrailSearch</a> is a unified search engine for secondhand fashion. Type in what you're looking for, and it searches across <strong>eBay, Vinted, Depop, Grailed, Vestiaire Collective, and Poshmark</strong> — all at once, from one page.</p>
-
-<p>No more app-switching. No more repeating the same search six times. Just results, aggregated and sorted.</p>
-
-<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgrailsearch-app.fly.dev"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgrailsearch-app.fly.dev" alt="GrailSearch screenshot" /></a></p>
-
-<h2>
-  <a name="why-i-built-this" href="#why-i-built-this">
-  </a>
-  Why I Built This
-</h2>
-
-<p>I've built dev tools before. CLIs, APIs, things developers use. This is different. GrailSearch is consumer-facing, born out of a real personal frustration.</p>
-
-<p>The resale market is massive — over $200 billion globally — but the experience is fragmented. Every platform is its own silo. Sellers list on one app. Buyers search on another. The best deal might be sitting on Vinted while you're doom-scrolling Depop.</p>
-
-<p>I realized the problem wasn't that good items don't exist. It's that <strong>finding them is a full-time job</strong>.</p>
-
-<h2>
-  <a name="how-it-works" href="#how-it-works">
-  </a>
-  How It Works
-</h2>
-
-<p>The core is simple: you search, we fan out to multiple marketplaces in parallel and merge the results.</p>
-
-<p>Under the hood:</p>
-
-<ul>
+    <div><div> <p><a href="https://dev.to/mackmoneymaker"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3774417%2F0e100261-4ad3-4b51-ace9-2b58b9edb470.png" alt="Mack"></a> </p> </div><div> <p>If you've ever obsessively hunted for a specific item on resale apps, you know the pain.</p> <p>You want a pair of Nike Dunk Low "Ceramic" in size 10. Or a vintage Carhartt Detroit jacket in navy. Or that one discontinued Arc'teryx shell that everyone pretends they don't want.</p> <p>So what do you do? You open Vinted. Search. Nothing good. Open eBay. Search. Too expensive. Open Depop. Search. Wrong size. Open Grailed. Vestiaire Collective. Poshmark. Rinse and repeat. Every. Single. Day.</p> <p>My co-founder Thomas finally snapped. He was tired of checking six apps every morning for the same three items. He looked at me and said: "Why isn't there one search that checks all of them?"</p> <p>Good question. So I built it.</p> <h2> <a name="meet-grailsearch" href="#meet-grailsearch"> </a> Meet GrailSearch
+</h2> <p><a href="https://grailsearch-app.fly.dev/" target="_blank">GrailSearch</a> is a unified search engine for secondhand fashion. Type in what you're looking for, and it searches across <strong>eBay, Vinted, Depop, Grailed, Vestiaire Collective, and Poshmark</strong> — all at once, from one page.</p> <p>No more app-switching. No more repeating the same search six times. Just results, aggregated and sorted.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgrailsearch-app.fly.dev"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fgrailsearch-app.fly.dev" alt="GrailSearch screenshot"></a></p> <h2> <a name="why-i-built-this" href="#why-i-built-this"> </a> Why I Built This
+</h2> <p>I've built dev tools before. CLIs, APIs, things developers use. This is different. GrailSearch is consumer-facing, born out of a real personal frustration.</p> <p>The resale market is massive — over $200 billion globally — but the experience is fragmented. Every platform is its own silo. Sellers list on one app. Buyers search on another. The best deal might be sitting on Vinted while you're doom-scrolling Depop.</p> <p>I realized the problem wasn't that good items don't exist. It's that <strong>finding them is a full-time job</strong>.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>The core is simple: you search, we fan out to multiple marketplaces in parallel and merge the results.</p> <p>Under the hood:</p> <ul>
 <li>
 <strong>eBay</strong> — Uses the official <a href="https://developer.ebay.com/api-docs/buy/browse/overview.html" target="_blank">Browse API</a>. Clean, well-documented, reliable.</li>
 <li>
 <strong>Vinted</strong> — No public API, so we reverse-engineered their internal endpoints. This was the fun part. Their search API is actually pretty good once you figure out the auth flow.</li>
 <li>
 <strong>Depop, Grailed, Vestiaire, Poshmark</strong> — A mix of APIs and scraping, each with their own quirks.</li>
-</ul>
-
-<p>The whole thing is built with <strong>Ruby on Rails</strong>. I know, not the trendy choice. But Rails lets me move fast, and for a product like this — server-rendered pages, background jobs for alerts, user accounts, payments — it's perfect. No need for a separate frontend framework when Hotwire does the job.</p>
-
-<h2>
-  <a name="saved-searches-amp-alerts" href="#saved-searches-amp-alerts">
-  </a>
-  Saved Searches &amp; Alerts
-</h2>
-
-<p>Searching once is nice. But the real power is <strong>saved searches</strong>.</p>
-
-<p>You save a search — say, "Jordan 1 Bred size 10 under €200" — and GrailSearch checks all six platforms periodically. When a new listing matches, you get an <strong>email alert</strong>.</p>
-
-<p>This is the feature Thomas actually wanted. He didn't want to check apps. He wanted apps to check for him.</p>
-
-<p><strong>Free tier:</strong> 3 saved searches. Enough to track a few grails.</p>
-
-<p><strong>Pro ($8/mo):</strong> Unlimited saved searches + email alerts. If you're seriously hunting, it pays for itself the first time you catch a deal before someone else does.</p>
-
-<h2>
-  <a name="the-technical-bits" href="#the-technical-bits">
-  </a>
-  The Technical Bits
-</h2>
-
-<p>For the devs reading this, here's what's under the hood:</p>
-
-<ul>
+</ul> <p>The whole thing is built with <strong>Ruby on Rails</strong>. I know, not the trendy choice. But Rails lets me move fast, and for a product like this — server-rendered pages, background jobs for alerts, user accounts, payments — it's perfect. No need for a separate frontend framework when Hotwire does the job.</p> <h2> <a name="saved-searches-amp-alerts" href="#saved-searches-amp-alerts"> </a> Saved Searches &amp; Alerts
+</h2> <p>Searching once is nice. But the real power is <strong>saved searches</strong>.</p> <p>You save a search — say, "Jordan 1 Bred size 10 under €200" — and GrailSearch checks all six platforms periodically. When a new listing matches, you get an <strong>email alert</strong>.</p> <p>This is the feature Thomas actually wanted. He didn't want to check apps. He wanted apps to check for him.</p> <p><strong>Free tier:</strong> 3 saved searches. Enough to track a few grails.</p> <p><strong>Pro ($8/mo):</strong> Unlimited saved searches + email alerts. If you're seriously hunting, it pays for itself the first time you catch a deal before someone else does.</p> <h2> <a name="the-technical-bits" href="#the-technical-bits"> </a> The Technical Bits
+</h2> <p>For the devs reading this, here's what's under the hood:</p> <ul>
 <li>
 <strong>Rails 7</strong> with Hotwire/Turbo for reactive UI without JavaScript framework overhead</li>
 <li>
@@ -118,31 +52,9 @@
 <li>
 <strong>Stripe</strong> for payments</li>
 <li>Rate limiting and caching to be respectful to the platforms we're searching</li>
-</ul>
-
-<p>The trickiest part was Vinted. They don't have a public API, and their auth tokens rotate. Getting reliable, consistent results required some creative session management. I won't go into the details here, but if you're curious, the <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">source is on GitHub</a>.</p>
-
-<h2>
-  <a name="open-source" href="#open-source">
-  </a>
-  Open Source
-</h2>
-
-<p>Yeah, it's open source. The whole thing.</p>
-
-<p>👉 <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">github.com/mack-moneymaker/grailsearch</a></p>
-
-<p>I believe in building in the open. If you want to self-host it, fork it, or just poke around the code — go for it. PRs welcome.</p>
-
-<h2>
-  <a name="whats-next" href="#whats-next">
-  </a>
-  What's Next
-</h2>
-
-<p>This is v1. Here's what I'm working on:</p>
-
-<ul>
+</ul> <p>The trickiest part was Vinted. They don't have a public API, and their auth tokens rotate. Getting reliable, consistent results required some creative session management. I won't go into the details here, but if you're curious, the <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">source is on GitHub</a>.</p> <h2> <a name="open-source" href="#open-source"> </a> Open Source
+</h2> <p>Yeah, it's open source. The whole thing.</p> <p> <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">github.com/mack-moneymaker/grailsearch</a></p> <p>I believe in building in the open. If you want to self-host it, fork it, or just poke around the code — go for it. PRs welcome.</p> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>This is v1. Here's what I'm working on:</p> <ul>
 <li>
 <strong>More platforms</strong> — Mercari, Facebook Marketplace, and others</li>
 <li>
@@ -151,27 +63,26 @@
 <strong>Smarter alerts</strong> — Filter by condition, seller rating, location</li>
 <li>
 <strong>Mobile app</strong> — Push notifications instead of email</li>
-</ul>
-
-<h2>
-  <a name="try-it" href="#try-it">
-  </a>
-  Try It
-</h2>
-
-<p>If you've ever spent 20 minutes checking six apps for the same pair of sneakers, <a href="https://grailsearch-app.fly.dev/" target="_blank">give GrailSearch a try</a>. It's free to search, free to save 3 searches, and if you're a heavy hunter, Pro is $8/mo.</p>
-
-<p>And if you're a dev who's into resale, fashion, or just wants to see how a Rails app talks to six different marketplace APIs — <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">check out the repo</a>.</p>
-
-<p>I built this because I was tired of the grind. Hope it saves you some too.</p>
-
-
-<hr />
-
-<p><em>What items are you hunting for? Drop a comment — I'm curious what people's grails are.</em></p>
-
-
-            </div></div>
+</ul> <h2> <a name="try-it" href="#try-it"> </a> Try It
+</h2> <p>If you've ever spent 20 minutes checking six apps for the same pair of sneakers, <a href="https://grailsearch-app.fly.dev/" target="_blank">give GrailSearch a try</a>. It's free to search, free to save 3 searches, and if you're a heavy hunter, Pro is $8/mo.</p> <p>And if you're a dev who's into resale, fashion, or just wants to see how a Rails app talks to six different marketplace APIs — <a href="https://github.com/mack-moneymaker/grailsearch" target="_blank">check out the repo</a>.</p> <p>I built this because I was tired of the grind. Hope it saves you some too.</p> <hr> <p><em>What items are you hunting for? Drop a comment — I'm curious what people's grails are.</em></p> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

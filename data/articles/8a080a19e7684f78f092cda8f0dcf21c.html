@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - github/spec-kit: 💫 Toolkit to help you get started with Spec-Driven Development</title>
+<title>GitHub - github/spec-kit:  Toolkit to help you get started with Spec-Driven Development</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.5em; }
@@ -13,17 +13,22 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
-  <h1>GitHub - github/spec-kit: 💫 Toolkit to help you get started with Spec-Driven Development</h1>
+  <h1>GitHub - github/spec-kit:  Toolkit to help you get started with Spec-Driven Development</h1>
   <div class="metadata">
     Source: GitHub Trending Python | Date: Invalid Date | Lang: EN |
     <a href="https://github.com/github/spec-kit" target="_blank">Original Article</a>
   </div>
   <div class="content">
     <div><div><article><div>
-    <p><a target="_blank" href="https://github.com/github/spec-kit/blob/main/media/logo_large.webp"><img src="https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" /></a></p><p></p><h2>🌱 Spec Kit</h2><a href="#-spec-kit"></a><p></p>
+    <p><a target="_blank" href="https://github.com/github/spec-kit/blob/main/media/logo_large.webp"><img src="https://github.com/github/spec-kit/raw/main/media/logo_large.webp" alt="Spec Kit Logo" /></a></p><p></p><h2> Spec Kit</h2><a href="#-spec-kit"></a><p></p>
     <p></p><h3><em>Build high-quality software faster.</em></h3><a href="#build-high-quality-software-faster"></a><p></p>
 </div>
 <p>
@@ -38,26 +43,26 @@
 <hr />
 <p></p><h2>Table of Contents</h2><a href="#table-of-contents"></a><p></p>
 <ul>
-<li><a href="#-what-is-spec-driven-development">🤔 What is Spec-Driven Development?</a></li>
-<li><a href="#-get-started">⚡ Get Started</a></li>
-<li><a href="#%EF%B8%8F-video-overview">📽️ Video Overview</a></li>
-<li><a href="#-supported-ai-agents">🤖 Supported AI Agents</a></li>
-<li><a href="#-specify-cli-reference">🔧 Specify CLI Reference</a></li>
-<li><a href="#-core-philosophy">📚 Core Philosophy</a></li>
-<li><a href="#-development-phases">🌟 Development Phases</a></li>
-<li><a href="#-experimental-goals">🎯 Experimental Goals</a></li>
-<li><a href="#-prerequisites">🔧 Prerequisites</a></li>
-<li><a href="#-learn-more">📖 Learn More</a></li>
-<li><a href="#-detailed-process">📋 Detailed Process</a></li>
-<li><a href="#-troubleshooting">🔍 Troubleshooting</a></li>
-<li><a href="#-maintainers">👥 Maintainers</a></li>
-<li><a href="#-support">💬 Support</a></li>
-<li><a href="#-acknowledgements">🙏 Acknowledgements</a></li>
-<li><a href="#-license">📄 License</a></li>
+<li><a href="#-what-is-spec-driven-development"> What is Spec-Driven Development?</a></li>
+<li><a href="#-get-started"> Get Started</a></li>
+<li><a href="#%EF%B8%8F-video-overview"> Video Overview</a></li>
+<li><a href="#-supported-ai-agents"> Supported AI Agents</a></li>
+<li><a href="#-specify-cli-reference"> Specify CLI Reference</a></li>
+<li><a href="#-core-philosophy"> Core Philosophy</a></li>
+<li><a href="#-development-phases"> Development Phases</a></li>
+<li><a href="#-experimental-goals"> Experimental Goals</a></li>
+<li><a href="#-prerequisites"> Prerequisites</a></li>
+<li><a href="#-learn-more"> Learn More</a></li>
+<li><a href="#-detailed-process"> Detailed Process</a></li>
+<li><a href="#-troubleshooting"> Troubleshooting</a></li>
+<li><a href="#-maintainers"> Maintainers</a></li>
+<li><a href="#-support"> Support</a></li>
+<li><a href="#-acknowledgements"> Acknowledgements</a></li>
+<li><a href="#-license"> License</a></li>
 </ul>
-<p></p><h2>🤔 What is Spec-Driven Development?</h2><a href="#-what-is-spec-driven-development"></a><p></p>
+<p></p><h2> What is Spec-Driven Development?</h2><a href="#-what-is-spec-driven-development"></a><p></p>
 <p>Spec-Driven Development <strong>flips the script</strong> on traditional software development. For decades, code has been king — specifications were just scaffolding we built and discarded once the "real work" of coding began. Spec-Driven Development changes this: <strong>specifications become executable</strong>, directly generating working implementations rather than just guiding them.</p>
-<p></p><h2>⚡ Get Started</h2><a href="#-get-started"></a><p></p>
+<p></p><h2> Get Started</h2><a href="#-get-started"></a><p></p>
 <p></p><h3>1. Install Specify CLI</h3><a href="#1-install-specify-cli"></a><p></p>
 <p>Choose your preferred installation method:</p>
 <p></p><h4>Option 1: Persistent Installation (Recommended)</h4><a href="#option-1-persistent-installation-recommended"></a><p></p>
@@ -103,10 +108,10 @@ specify check</pre></div>
 <p>Use <strong><code>/speckit.implement</code></strong> to execute all tasks and build your feature according to the plan.</p>
 <div><pre>/speckit.implement</pre></div>
 <p>For detailed step-by-step instructions, see our <a href="https://github.com/github/spec-kit/blob/main/spec-driven.md">comprehensive guide</a>.</p>
-<p></p><h2>📽️ Video Overview</h2><a href="#️-video-overview"></a><p></p>
+<p></p><h2> Video Overview</h2><a href="#-video-overview"></a><p></p>
 <p>Want to see Spec Kit in action? Watch our <a href="https://www.youtube.com/watch?v=a9eR1xsfvHg&amp;pp=0gcJCckJAYcqIYzv">video overview</a>!</p>
 <p><a href="https://www.youtube.com/watch?v=a9eR1xsfvHg&amp;pp=0gcJCckJAYcqIYzv"><img src="https://github.com/github/spec-kit/raw/main/media/spec-kit-video-header.jpg" alt="Spec Kit video header" /></a></p>
-<p></p><h2>🤖 Supported AI Agents</h2><a href="#-supported-ai-agents"></a><p></p>
+<p></p><h2> Supported AI Agents</h2><a href="#-supported-ai-agents"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -118,102 +123,102 @@ specify check</pre></div>
 <tbody>
 <tr>
 <td><a href="https://qoder.com/cli">Qoder CLI</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://aws.amazon.com/developer/learning/q-developer-cli/">Amazon Q Developer CLI</a></td>
-<td>⚠️</td>
+<td></td>
 <td>Amazon Q Developer CLI <a href="https://github.com/aws/amazon-q-developer-cli/issues/3064">does not support</a> custom arguments for slash commands.</td>
 </tr>
 <tr>
 <td><a href="https://ampcode.com/">Amp</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://docs.augmentcode.com/cli/overview">Auggie CLI</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://www.anthropic.com/claude-code">Claude Code</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://www.codebuddy.ai/cli">CodeBuddy CLI</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/openai/codex">Codex CLI</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://cursor.sh/">Cursor</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://code.visualstudio.com/">GitHub Copilot</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://www.ibm.com/products/bob">IBM Bob</a></td>
-<td>✅</td>
+<td></td>
 <td>IDE-based agent with slash command support</td>
 </tr>
 <tr>
 <td><a href="https://jules.google.com/">Jules</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/Kilo-Org/kilocode">Kilo Code</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://opencode.ai/">opencode</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/QwenLM/qwen-code">Qwen Code</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://roocode.com/">Roo Code</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://github.com/ovh/shai">SHAI (OVHcloud)</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://windsurf.com/">Windsurf</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
 <td><a href="https://agy.ai/">Antigravity (agy)</a></td>
-<td>✅</td>
+<td></td>
 <td></td>
 </tr>
 </tbody>
 </table>
-<p></p><h2>🔧 Specify CLI Reference</h2><a href="#-specify-cli-reference"></a><p></p>
+<p></p><h2> Specify CLI Reference</h2><a href="#-specify-cli-reference"></a><p></p>
 <p>The <code>specify</code> command supports the following options:</p>
 <p></p><h3>Commands</h3><a href="#commands"></a><p></p>
 <table>
@@ -418,7 +423,7 @@ specify check</pre></div>
 </tr>
 </tbody>
 </table>
-<p></p><h2>📚 Core Philosophy</h2><a href="#-core-philosophy"></a><p></p>
+<p></p><h2> Core Philosophy</h2><a href="#-core-philosophy"></a><p></p>
 <p>Spec-Driven Development is a structured process that emphasizes:</p>
 <ul>
 <li><strong>Intent-driven development</strong> where specifications define the "<em>what</em>" before the "<em>how</em>"</li>
@@ -426,7 +431,7 @@ specify check</pre></div>
 <li><strong>Multi-step refinement</strong> rather than one-shot code generation from prompts</li>
 <li><strong>Heavy reliance</strong> on advanced AI model capabilities for specification interpretation</li>
 </ul>
-<p></p><h2>🌟 Development Phases</h2><a href="#-development-phases"></a><p></p>
+<p></p><h2> Development Phases</h2><a href="#-development-phases"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -453,7 +458,7 @@ specify check</pre></div>
 </tr>
 </tbody>
 </table>
-<p></p><h2>🎯 Experimental Goals</h2><a href="#-experimental-goals"></a><p></p>
+<p></p><h2> Experimental Goals</h2><a href="#-experimental-goals"></a><p></p>
 <p>Our research and experimentation focus on:</p>
 <p></p><h3>Technology independence</h3><a href="#technology-independence"></a><p></p>
 <ul>
@@ -477,7 +482,7 @@ specify check</pre></div>
 <li>Provide robust iterative feature development workflows</li>
 <li>Extend processes to handle upgrades and modernization tasks</li>
 </ul>
-<p></p><h2>🔧 Prerequisites</h2><a href="#-prerequisites"></a><p></p>
+<p></p><h2> Prerequisites</h2><a href="#-prerequisites"></a><p></p>
 <ul>
 <li><strong>Linux/macOS/Windows</strong></li>
 <li><a href="#-supported-ai-agents">Supported</a> AI coding agent.</li>
@@ -486,13 +491,13 @@ specify check</pre></div>
 <li><a href="https://git-scm.com/downloads">Git</a></li>
 </ul>
 <p>If you encounter issues with an agent, please open an issue so we can refine the integration.</p>
-<p></p><h2>📖 Learn More</h2><a href="#-learn-more"></a><p></p>
+<p></p><h2> Learn More</h2><a href="#-learn-more"></a><p></p>
 <ul>
 <li><strong><a href="https://github.com/github/spec-kit/blob/main/spec-driven.md">Complete Spec-Driven Development Methodology</a></strong> - Deep dive into the full process</li>
 <li><strong><a href="#-detailed-process">Detailed Walkthrough</a></strong> - Step-by-step implementation guide</li>
 </ul>
 <hr />
-<p></p><h2>📋 Detailed Process</h2><a href="#-detailed-process"></a><p></p>
+<p></p><h2> Detailed Process</h2><a href="#-detailed-process"></a><p></p>
 
 Click to expand the detailed step-by-step walkthrough
 <p>You can use the Specify CLI to bootstrap your project, which will bring in the required artifacts in your environment. Run:</p>
@@ -698,7 +703,7 @@ The AI agent will execute local CLI commands (such as <code>dotnet</code>, <code
 <p>Once the implementation is complete, test the application and resolve any runtime errors that may not be visible in CLI logs (e.g., browser console errors). You can copy and paste such errors back to your AI agent for resolution.</p>
 
 <hr />
-<p></p><h2>🔍 Troubleshooting</h2><a href="#-troubleshooting"></a><p></p>
+<p></p><h2> Troubleshooting</h2><a href="#-troubleshooting"></a><p></p>
 <p></p><h3>Git Credential Manager on Linux</h3><a href="#git-credential-manager-on-linux"></a><p></p>
 <p>If you're having issues with Git authentication on Linux, you can install Git Credential Manager:</p>
 <div><pre><span><span>#!</span>/usr/bin/env bash</span>
@@ -711,16 +716,16 @@ sudo dpkg -i gcm-linux_amd64.2.6.1.deb
 git config --global credential.helper manager
 <span>echo</span> <span><span>"</span>Cleaning up...<span>"</span></span>
 rm gcm-linux_amd64.2.6.1.deb</pre></div>
-<p></p><h2>👥 Maintainers</h2><a href="#-maintainers"></a><p></p>
+<p></p><h2> Maintainers</h2><a href="#-maintainers"></a><p></p>
 <ul>
 <li>Den Delimarsky (<a href="https://github.com/localden">@localden</a>)</li>
 <li>John Lam (<a href="https://github.com/jflam">@jflam</a>)</li>
 </ul>
-<p></p><h2>💬 Support</h2><a href="#-support"></a><p></p>
+<p></p><h2> Support</h2><a href="#-support"></a><p></p>
 <p>For support, please open a <a href="https://github.com/github/spec-kit/issues/new">GitHub issue</a>. We welcome bug reports, feature requests, and questions about using Spec-Driven Development.</p>
-<p></p><h2>🙏 Acknowledgements</h2><a href="#-acknowledgements"></a><p></p>
+<p></p><h2> Acknowledgements</h2><a href="#-acknowledgements"></a><p></p>
 <p>This project is heavily influenced by and based on the work and research of <a href="https://github.com/jflam">John Lam</a>.</p>
-<p></p><h2>📄 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>This project is licensed under the terms of the MIT open source license. Please refer to the <a href="https://github.com/github/spec-kit/blob/main/LICENSE">LICENSE</a> file for the full terms.</p>
 </article></div></div>
   </div>

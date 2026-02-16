@@ -1,0 +1,77 @@
+name: Self Maintenance Guard
+
+on:
+  schedule:
+    - cron: '30 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  guard-and-heal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: self-maintenance-guard
+      cancel-in-progress: false
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify publication artifacts
+        id: verify
+        run: |
+          set -e
+          README_COUNT=$(grep -Eo "\(data/articles/[^)]*\)" README.md | wc -l | tr -d ' ')
+          FEED_COUNT=$(grep -Eo "<item>" feed.xml | wc -l | tr -d ' ')
+          echo "readme_count=$README_COUNT" >> $GITHUB_OUTPUT
+          echo "feed_count=$FEED_COUNT" >> $GITHUB_OUTPUT
+          if [ "${README_COUNT}" -gt 0 ] && [ "${FEED_COUNT}" -gt 0 ]; then
+            echo "healthy=true" >> $GITHUB_OUTPUT
+          else
+            echo "healthy=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Setup Node.js
+        if: steps.verify.outputs.healthy == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Restore artifacts by rerunning aggregator
+        if: steps.verify.outputs.healthy == 'false'
+        run: |
+          set -e
+          npm ci || npm install
+          cp README.md README.BACKUP.md
+          if node src/aggregator.js > NEW-README.md; then
+            NEW_COUNT=$(grep -Eo "\(data/articles/[^)]*\)" NEW-README.md | wc -l | tr -d ' ')
+            if [ "${NEW_COUNT}" -gt 0 ]; then
+              mv NEW-README.md README.md
+              rm -f README.BACKUP.md
+            else
+              mv README.BACKUP.md README.md
+              rm -f NEW-README.md
+            fi
+          else
+            mv README.BACKUP.md README.md
+            rm -f NEW-README.md
+          fi
+
+      - name: Commit and push self-healing changes
+        if: steps.verify.outputs.healthy == 'false'
+        run: |
+          set -e
+          git config --global user.name 'PhoenixProject-AutoSync'
+          git config --global user.email '${{ secrets.GIT_AUTHOR_EMAIL }}'
+          # Security-first: do not auto-commit externally fetched HTML article files.
+          # Keep auto-healing limited to generated index artifacts.
+          git add README.md feed*.xml || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(maintenance): self-heal content artifacts"
+            git push
+          fi

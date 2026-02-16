@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -27,13 +32,13 @@
 <p><a target="_blank" href="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png"><img src="https://raw.githubusercontent.com/pinkhairs/cutemagick/refs/heads/main/screenshot.png" alt="Cute Magick screenshot" /></a></p>
 <p>It's for people who want to build real websites—but don't want to fight platforms, config, and SaaS billing just to experiment, learn, or keep infinite projects alive.</p>
 <p>You get a real server, real files, real URLs, and the ability to rewind your site's entire history at any time.</p>
-<p>📚 <strong>Full documentation:</strong>
+<p> <strong>Full documentation:</strong>
 <a href="https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90">https://pixelswithin.notion.site/Cute-Magick-Docs-2fdb91326d968024b11cc40c73a18e90</a></p>
 <hr />
 <p></p><h2>Get Started</h2><a href="#get-started"></a><p></p>
 <p></p><h3>Hosted — up and running in a minute</h3><a href="#hosted--up-and-running-in-a-minute"></a><p></p>
 <p>The fastest way to try Cute Magick is the hosted version. Sign up, get your admin link, and you're in.</p>
-<p>👉 <strong><a href="https://cutemagick.com/#pricing">cutemagick.com/#pricing</a></strong></p>
+<p> <strong><a href="https://cutemagick.com/#pricing">cutemagick.com/#pricing</a></strong></p>
 <p>No Docker, no terminal, no setup.</p>
 <p></p><h3>Self-hosted</h3><a href="#self-hosted"></a><p></p>
 <p>Cute Magick is open source. You can run it anywhere Docker runs. It does not phone home and does not require any external service to function.</p>
@@ -54,7 +59,7 @@
 <p>A Raspberry Pi 4 can run it.
 The cheapest VPS is usually overkill.
 Your laptop won't notice it's running.</p>
-<p>📖 <strong>Full installation and setup:</strong>
+<p> <strong>Full installation and setup:</strong>
 See the docs for VPS deployment, reverse proxy setup, and configuration.</p>
 <hr />
 <p></p><h2>What is Cute Magick?</h2><a href="#what-is-cute-magick"></a><p></p>

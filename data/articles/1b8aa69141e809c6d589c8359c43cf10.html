@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -27,8 +32,8 @@
 			<div>
 					
 		
-		<p><span><span><i></i> 3 minute read</span></span><br />
-		<time>Feb 16th, 2026 12:26 PM EET</time> | <a href="https://www.macobserver.com/features/news/">News</a>
+		<p><span><span><i></i> 2 minute read</span></span><br />
+		<time>Feb 7th, 2026 7:53 PM EET</time> | <a href="https://www.macobserver.com/features/news/">News</a>
 		</p>				</div>
 		</header>
 
@@ -40,33 +45,27 @@
 
 
 
-<p>Developers could see the first public build as a developer beta around the <strong>week of February 23, 2026.</strong> Apple usually follows developer previews with a public beta one to two weeks later, then a full release in late March or early April. Final timing will depend on test results and any further issues uncovered during the beta period.</p>
+<p>Based on internal timelines and long-standing release patterns, iOS 26.4 beta 1 is expected to arrive between late February and early March 2026. Apple has already committed to launching the finished update in spring, which lines up with a public release window in late March or April.</p>
 
 
 
-<p>iOS 26.4 sits on top of the broader iOS 26 platform that Apple introduced in 2025 with a refreshed interface, known as <em><a target="_blank" href="https://www.macobserver.com/tips/how-to/liquid-glass-explained-what-it-is-and-how-to-customize-it/">Liquid Glass</a></em>, and several redesigned core apps. That release marked one of the biggest iOS redesigns in years and set expectations for significant follow-on updates.</p>
+<p>Apple often uses x.4 updates to deliver larger feature drops that miss the fall release. This makes iOS 26.4 more important than a typical mid-cycle update.</p>
 
 
 
-<h2>Expected Dates</h2>
+<h2>iOS .4 betas in previous years</h2>
 
 
 
-<ul>
-<li><strong>Developer beta release</strong>: Week of February 23, 2026 (expected)</li>
+<p>Looking back at recent iOS cycles helps narrow down the likely timing. The gap between x.3 and x.4 releases has stayed fairly consistent, even when features slipped.</p>
 
 
 
-<li><strong>Public beta</strong>: Early March (likely)</li>
+<figure><table><thead><tr><th>iOS version</th><th>Beta 1 release</th><th>Gap after .3</th><th>Public release</th></tr></thead><tbody><tr><td>iOS 18.4</td><td>February 21</td><td>About 25 days</td><td>March 31</td></tr><tr><td>iOS 17.4</td><td>January 25</td><td>About 3 days</td><td>March 5</td></tr><tr><td>iOS 16.4</td><td>February 16</td><td>About 24 days</td><td>March 27</td></tr><tr><td>iOS 15.4</td><td>January 27</td><td>About 1 day</td><td>March 14</td></tr></tbody></table></figure>
 
 
 
-<li><strong>Stable public release</strong>: Late March to early April (possible)</li>
-
-
-
-<li><strong>Some Siri features delayed</strong>: iOS 26.5 (May 2026) or iOS 27 (September 2026)</li>
-</ul>
+<p>If Apple follows this pattern, iOS 26.4 beta 1 should land in early March at the latest. That would give Apple four to six weeks of testing before pushing the update to everyone.</p>
 
 
 
@@ -74,36 +73,82 @@
 
 
 
-<p>iOS 26.4 will focus on a mix of user-facing upgrades, under-the-hood fixes, and early AI improvements. Some features are confirmed by multiple leaks, while others still appear speculative.</p>
+<p>iOS 26.4 is shaping up to be a feature-heavy update, largely because of Siri. Apple is using this release to finally deliver the Apple Intelligence-powered assistant it previewed earlier and then delayed.</p>
 
 
 
-<p><strong>Here are the main additions expected in iOS 26.4:</strong></p>
+<h3>Siri revamp</h3>
+
+
+
+<p>The biggest change in iOS 26.4 is a <a target="_blank" href="https://www.macobserver.com/news/new-report-confirms-internal-apple-deadline-for-revamped-siri/">ground-up rebuild</a> of Siri. Apple is replacing the old multi-model system with a single large language model core. This gives Siri the ability to reason through requests instead of reacting to keywords.</p>
+
+
+
+<p>Today’s Siri works well for basic tasks but struggles with anything complex. It cannot handle multi-step actions, follow natural language well, or keep context across requests. The new architecture aims to fix that.</p>
+
+
+
+<p>Key Siri improvements expected in iOS 26.4 include:</p>
 
 
 
 <ul>
-<li>A more <a target="_blank" href="https://www.macobserver.com/news/new-report-confirms-internal-apple-deadline-for-revamped-siri/">powerful Siri with better context understanding</a>. Early code and reporting suggest that Siri will be able to look across apps for personal data, including messages, emails, and calendars, to provide richer answers.</li>
+<li>An LLM-based core that understands intent and nuance, not just commands</li>
 
 
 
-<li>Smarter on-screen awareness, letting Siri help with tasks based on what’s visible on your iPhone.</li>
+<li>Personal context, allowing Siri to reference emails, messages, files, and photos</li>
 
 
 
-<li>Expanded voice and cross-app controls, so you can ask Siri to trigger actions in third-party apps when permissions allow.</li>
+<li>On-screen awareness, so Siri knows what you are looking at and can act on it</li>
 
 
 
-<li>New <a target="_blank" href="https://www.macobserver.com/news/apples-next-emoji-update-could-bring-a-pickle-butterfly-and-new-thumbs/">emoji additions</a>, like icons for everyday objects and symbols, adding variety to typing options.</li>
+<li>Deeper app integration, enabling actions across multiple apps in one request</li>
+</ul>
 
 
 
-<li>A <a target="_blank" href="https://www.macobserver.com/news/ios-26-4-leaks-offer-early-look-at-ios-27-and-ios-28-features/">refreshed Health app</a>, with layout changes and easier-to-use metrics, according to leaks from internal test builds.</li>
+<p>Apple is not turning Siri into a full chatbot yet. Conversations will still be short and task-focused. Long-term memory and free-flow chat are planned for a later release.</p>
 
 
 
-<li>Minor tweaks in apps such as Freeform and core utilities, like the ability to organize Freeform boards into folders.</li>
+<h3>Google Gemini plays a key role</h3>
+
+
+
+<p>Another major shift is Apple’s decision to work with Google’s Gemini team. For now, many public-facing AI features in Siri will <a target="_blank" href="https://www.macobserver.com/news/apple-may-demo-gemini-powered-siri-in-ios-26-4-beta-next-month/">rely on a custom Gemini-based model</a> built with Apple. Apple will still run some tasks on the device and <a target="_blank" href="https://www.macobserver.com/news/apple-explains-how-gemini-fits-into-siri-with-private-cloud-compute/">use Private Cloud Compute to protect</a> user privacy.</p>
+
+
+
+<p>Apple says personal data will stay on the device whenever possible, requests will be anonymized, and all AI features will remain optional.</p>
+
+
+
+<h3>Other changes rumored for iOS 26.4</h3>
+
+
+
+<p>While Siri is the headline feature, iOS 26.4 is expected to include smaller quality-of-life updates as well.</p>
+
+
+
+<ul>
+<li>New <a target="_blank" href="https://www.macobserver.com/news/apples-next-emoji-update-could-bring-a-pickle-butterfly-and-new-thumbs/">emoji added</a> to the system set</li>
+
+
+
+<li>Expanded AutoFill support for third-party apps</li>
+
+
+
+<li>Folders inside Freeform for better organization</li>
+
+
+
+<li>Security improvements related to device verification</li>
 
 
 
@@ -112,43 +157,27 @@
 
 
 
-<p>These enhancements reflect Apple’s strategy to improve daily use of the iPhone while gradually introducing more advanced capabilities. Some features will show up first in beta before wider public availability.</p>
+<p>Some <a target="_blank" href="https://www.macobserver.com/news/ios-26-4-leaks-offer-early-look-at-ios-27-and-ios-28-features/">reports also point to early groundwork</a> for future Health app upgrades, though major changes there may come later.</p>
 
 
 
-<h3>Google Gemini plays a key role</h3>
+<p>Apple’s delay of the smarter Siri, first shown in 2024, became a major internal issue. The company admitted that its hybrid AI system failed and had to be replaced entirely. That decision pushed Siri’s relaunch into 2026.</p>
 
 
 
-<p>Another major shift is Apple’s decision to work with Google’s Gemini team. For now, many public-facing AI features in Siri will <a target="_blank" href="https://www.macobserver.com/news/apple-may-demo-gemini-powered-siri-in-ios-26-4-beta-next-month/">rely on a custom Gemini-based model</a> built by Apple. Apple will still run some tasks on the device and <a target="_blank" href="https://www.macobserver.com/news/apple-explains-how-gemini-fits-into-siri-with-private-cloud-compute/">use Private Cloud Compute to protect</a> user privacy.</p>
+<p>Since then, Apple has restructured its AI leadership and shifted strategy. Executives have said this new approach allows Apple to deliver more than it originally promised. iOS 26.4 is the first real test of that claim.</p>
 
 
 
-<p>However, <a target="_blank" href="https://www.macobserver.com/news/ios-26-4-faces-delays-as-apple-struggles-to-ship-gemini-powered-siri/">reports now say</a> that Apple’s most advanced <strong>Siri features may not ship with iOS 26.4.</strong> Internal testing has revealed quality problems and performance issues, particularly with the parts powered by machine learning. Bloomberg’s Mark Gurman said that key context-aware functions and deeper app integrations have been postponed to later releases, like iOS 26.5 in May or even iOS 27 in September.</p>
+<h2>Expect this next</h2>
 
 
 
-<p>Testing setbacks appear to have slowed down the planned rollout. Some capabilities, such as Siri acting as a full chatbot with long ongoing conversations and deeper responses, are now expected in iOS 27 instead of iOS 26.4.</p>
+<p>If Apple stays on schedule, developers should see the first iOS 26.4 beta by late February or early March. The public release should follow in late March or April.</p>
 
 
 
-<h3>Devices that will get iOS 26.4</h3>
-
-
-
-<p>iOS updates typically support all devices that already run the parent version, unless there are specific hardware requirements. iOS 26.4 should work on all iPhones that support iOS 26. That list includes recent models with an A13 Bionic chip or newer. Older devices that no longer receive updates will not get this build.</p>
-
-
-
-<p>Some Siri and Apple Intelligence features need newer chips, often starting with the A17-class silicon in recent iPhone models. This hardware requirement makes contextual AI features more reliable on modern devices with dedicated neural engines.</p>
-
-
-
-<h2>Summary</h2>
-
-
-
-<p>iOS 26.4 is on track to be a meaningful iPhone update this spring. It will introduce smarter Siri behavior, context-aware controls, new emoji, and improvements in several built-in apps. The first beta could arrive in late February, with a wider rollout soon after. Some of the most advanced AI and chatbot-style features that were first announced long ago are reportedly pushed to later releases. These delays show how complex modern AI features can be, especially when built on third-party models like Google’s Gemini.</p>
+<p>This update will not make Siri a chatbot yet, but it sets the foundation. Apple plans to push even further with iOS 27, where Siri is expected to gain full conversational abilities. For now, iOS 26.4 marks Apple’s most important Siri update in years.</p>
 
 				
 							</div>

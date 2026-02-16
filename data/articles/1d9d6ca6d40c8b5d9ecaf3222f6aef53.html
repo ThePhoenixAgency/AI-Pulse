@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -2174,12 +2179,12 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
 
 <span>URL</span> <span>=</span> <span>'https://www.youtube.com/watch?v=BaW_jenozKc'</span>
 
-<span># ℹ️ See help(yt_dlp.YoutubeDL) for a list of available options and public functions</span>
+<span>#  See help(yt_dlp.YoutubeDL) for a list of available options and public functions</span>
 <span>ydl_opts</span> <span>=</span> {}
 <span>with</span> <span>yt_dlp</span>.<span>YoutubeDL</span>(<span>ydl_opts</span>) <span>as</span> <span>ydl</span>:
     <span>info</span> <span>=</span> <span>ydl</span>.<span>extract_info</span>(<span>URL</span>, <span>download</span><span>=</span><span>False</span>)
 
-    <span># ℹ️ ydl.sanitize_info makes the info json-serializable</span>
+    <span>#  ydl.sanitize_info makes the info json-serializable</span>
     <span>print</span>(<span>json</span>.<span>dumps</span>(<span>ydl</span>.<span>sanitize_info</span>(<span>info</span>)))</pre></div>
 <p></p><h4>Download using an info-json</h4><a href="#download-using-an-info-json"></a><p></p>
 <div><pre><span>import</span> <span>yt_dlp</span>
@@ -2198,7 +2203,7 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
 
 <span>ydl_opts</span> <span>=</span> {
     <span>'format'</span>: <span>'m4a/bestaudio/best'</span>,
-    <span># ℹ️ See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments</span>
+    <span>#  See help(yt_dlp.postprocessor) for a list of available Postprocessors and their arguments</span>
     <span>'postprocessors'</span>: [{  <span># Extract audio using ffmpeg</span>
         <span>'key'</span>: <span>'FFmpegExtractAudio'</span>,
         <span>'preferredcodec'</span>: <span>'m4a'</span>,
@@ -2248,7 +2253,7 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
         <span>print</span>(<span>msg</span>)
 
 
-<span># ℹ️ See "progress_hooks" in help(yt_dlp.YoutubeDL)</span>
+<span>#  See "progress_hooks" in help(yt_dlp.YoutubeDL)</span>
 <span>def</span> <span>my_hook</span>(<span>d</span>):
     <span>if</span> <span>d</span>[<span>'status'</span>] <span>==</span> <span>'finished'</span>:
         <span>print</span>(<span>'Done downloading, now post-processing ...'</span>)
@@ -2266,7 +2271,7 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
 
 <span>URLS</span> <span>=</span> [<span>'https://www.youtube.com/watch?v=BaW_jenozKc'</span>]
 
-<span># ℹ️ See help(yt_dlp.postprocessor.PostProcessor)</span>
+<span>#  See help(yt_dlp.postprocessor.PostProcessor)</span>
 <span>class</span> <span>MyCustomPP</span>(<span>yt_dlp</span>.<span>postprocessor</span>.<span>PostProcessor</span>):
     <span>def</span> <span>run</span>(<span>self</span>, <span>info</span>):
         <span>self</span>.<span>to_screen</span>(<span>'Doing stuff'</span>)
@@ -2274,7 +2279,7 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
 
 
 <span>with</span> <span>yt_dlp</span>.<span>YoutubeDL</span>() <span>as</span> <span>ydl</span>:
-    <span># ℹ️ "when" can take any value in yt_dlp.utils.POSTPROCESS_WHEN</span>
+    <span>#  "when" can take any value in yt_dlp.utils.POSTPROCESS_WHEN</span>
     <span>ydl</span>.<span>add_post_processor</span>(<span>MyCustomPP</span>(), <span>when</span><span>=</span><span>'pre_process'</span>)
     <span>ydl</span>.<span>download</span>(<span>URLS</span>)</pre></div>
 <p></p><h4>Use a custom format selector</h4><a href="#use-a-custom-format-selector"></a><p></p>
@@ -2442,7 +2447,7 @@ Plugin packages (containing a <code>yt_dlp_plugins</code> namespace folder) can 
 <li>
 <p><code>--compat-options allow-unsafe-ext</code>: Allow files with any extension (including unsafe ones) to be downloaded (<a href="https://github.com/yt-dlp/yt-dlp/security/advisories/GHSA-79w7-vh3h-8g4j">GHSA-79w7-vh3h-8g4j</a>)</p>
 <blockquote>
-<p>⚠️ Only use if a valid file download is rejected because its extension is detected as uncommon</p>
+<p> Only use if a valid file download is rejected because its extension is detected as uncommon</p>
 <p><strong>This option can enable remote code execution! Consider <a href="https://github.com/yt-dlp/yt-dlp/issues/new/choose">opening an issue</a> instead!</strong></p>
 </blockquote>
 </li>

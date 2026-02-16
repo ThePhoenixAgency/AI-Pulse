@@ -1,5 +1,5 @@
 name: S'abonner a AI-Pulse / Subscribe to AI-Pulse
-description: Recevez votre digest personnalise par email
+description: Recevez votre digest personnalise par email / Get your personalized digest by email
 title: "[SUBSCRIBE] "
 labels: ["subscription"]
 body:
@@ -16,13 +16,13 @@ body:
       label: Catégories souhaitées / Desired categories
       options:
         - label: AI / IA
-        - label: Cybersecurity
+        - label: Cybersecurity / Cybersécurité
         - label: IoT
         - label: Windows
         - label: Mac / Apple
         - label: Linux
-        - label: Tech Generale
-        - label: Entrepreneuriat
+        - label: Tech Générale / General Tech
+        - label: Entrepreneuriat / Entrepreneurship
         - label: Bourse & Finance
         - label: Crypto & Blockchain
         - label: Open Source & GitHub
@@ -32,8 +32,8 @@ body:
     attributes:
       label: Langue préférée / Preferred language
       options:
-        - Français
-        - English
+        - Français / French
+        - Anglais / English
         - Les deux / Both
     validations:
       required: true
@@ -42,7 +42,7 @@ body:
     attributes:
       label: Fréquence / Frequency
       options:
-        - Chaque mise a jour (toutes les 3h) / Every update
+        - Chaque mise à jour (toutes les 3h) / Every update (every 3h)
         - Quotidien / Daily digest
     validations:
       required: true

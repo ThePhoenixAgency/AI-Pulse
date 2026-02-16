@@ -9,6 +9,12 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0a0e27 0%, #1a1e47 100%);
@@ -54,6 +60,7 @@
             font-family: inherit;
             cursor: pointer;
             min-width: 200px;
+            max-width: 52vw;
         }
 
         .top-nav select:hover {
@@ -165,7 +172,12 @@
             cursor: pointer;
             box-shadow: 0 2px 10px rgba(0, 217, 255, 0.28);
             transition: all 0.2s;
-            min-width: 82px;
+            min-width: 72px;
+            max-width: 108px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex: 0 1 auto;
         }
 
         .prefs-toggle:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 217, 255, 0.5); }
@@ -184,7 +196,7 @@
         .prefs-panel {
             position: fixed;
             top: 0;
-            right: -420px;
+            right: 0;
             width: 400px;
             height: 100vh;
             background: rgba(10, 14, 39, 0.98);
@@ -192,11 +204,12 @@
             z-index: 301;
             padding: 25px;
             overflow-y: auto;
-            transition: right 0.3s ease;
+            transform: translateX(104%);
+            transition: transform 0.3s ease;
             backdrop-filter: blur(15px);
         }
 
-        .prefs-panel.open { right: 0; }
+        .prefs-panel.open { transform: translateX(0); }
 
         .prefs-panel h2 {
             color: #00d9ff;
@@ -394,9 +407,13 @@
 
         .quick-nav {
             display: flex;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
             gap: 8px;
             margin: 0 0 14px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
         }
 
         .quick-tag {
@@ -408,6 +425,8 @@
             font-size: 0.78rem;
             cursor: pointer;
             transition: border-color 0.2s, background 0.2s;
+            white-space: nowrap;
+            flex: 0 0 auto;
         }
 
         .quick-tag:hover {
@@ -535,22 +554,45 @@
 
         /* ─── Responsive ─── */
         @media (max-width: 768px) {
-            .top-nav { padding: 0 10px; }
+            .top-nav {
+                padding: 6px 10px;
+                height: auto;
+                min-height: 50px;
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+            .top-nav > * { min-width: 0; }
             .top-nav label { display: none; }
-            .top-nav select { min-width: 150px; font-size: 0.8rem; }
+            .top-nav select {
+                min-width: 136px;
+                max-width: calc(100vw - 130px);
+                font-size: 0.8rem;
+                padding: 7px 10px;
+            }
             .lang-switch { margin-left: 8px; gap: 5px; }
             .flag-btn { width: 30px; height: 24px; }
             .flag { width: 20px; height: 12px; }
             .prefs-toggle {
-                padding: 7px 10px;
-                font-size: 0.78rem;
+                padding: 6px 8px;
+                font-size: 0.74rem;
                 border-radius: 7px;
                 box-shadow: none;
                 white-space: nowrap;
+                min-width: 62px;
+                max-width: 92px;
             }
             .prefs-toggle:hover { transform: none; box-shadow: none; }
-            .content-area { padding: 60px 15px 60px; }
-            .prefs-panel { width: 100%; right: -100%; }
+            .quick-nav { gap: 6px; }
+            .quick-tag {
+                max-width: 72vw;
+                white-space: nowrap;
+                padding: 7px 10px;
+                font-size: 0.75rem;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+            .content-area { padding: 88px 15px 60px; }
+            .prefs-panel { width: 100%; transform: translateX(100%); }
         }
     </style>
 
@@ -561,7 +603,7 @@
 <body>
     <!-- Top Navigation Bar -->
     <nav class="top-nav" id="topNav">
-        <label for="sectionSelect">Go to / Aller a :</label>
+        <label for="sectionSelect" id="sectionSelectLabel">Go to:</label>
         <select id="sectionSelect">
             <option value="">-- Sections --</option>
         </select>
@@ -575,20 +617,20 @@
                 <span class="sr-only">English</span>
             </button>
         </div>
-        <button class="prefs-toggle" id="prefsToggle" type="button">Filters / Filtres</button>
+        <button class="prefs-toggle" id="prefsToggle" type="button">Filters</button>
     </nav>
     <div class="prefs-overlay" id="prefsOverlay"></div>
 
     <!-- Preferences Panel -->
     <div class="prefs-panel" id="prefsPanel">
         <button class="prefs-close" id="prefsClose">&times;</button>
-        <h2>Customize / Personnaliser</h2>
+        <h2 id="prefsPanelTitle">Customize</h2>
 
         <div class="prefs-section">
-            <h4>Langue / Language</h4>
+            <h4 id="prefLangTitle">Language</h4>
             <select id="prefLang">
-                <option value="auto">Auto (IP / Navigateur)</option>
-                <option value="all">Toutes / All</option>
+                <option value="auto" id="prefLangAutoOption">Auto (IP / Browser)</option>
+                <option value="all" id="prefLangAllOption">All</option>
                 <option value="fr">Français</option>
                 <option value="en">English</option>
             </select>
@@ -602,25 +644,25 @@
         </div>
 
         <div class="prefs-section">
-            <h4>Mots-cles / Keywords</h4>
-            <input type="text" id="prefKeywords" placeholder="Ex: LLM, ransomware, Ubuntu...">
+            <h4 id="prefKeywordsTitle">Keywords</h4>
+            <input type="text" id="prefKeywords" placeholder="e.g. LLM, ransomware, Ubuntu...">
         </div>
 
         <div class="prefs-section">
-            <h4>Articles par section</h4>
+            <h4 id="prefMaxArticlesTitle">Articles per section</h4>
             <input type="range" id="prefMaxArticles" min="3" max="50" value="30">
             <span class="range-value" id="prefMaxArticlesValue">30</span>
         </div>
 
         <div class="prefs-section">
-            <h4>Lecture</h4>
+            <h4 id="prefReadTitle">Reading</h4>
             <label>
                 <input type="checkbox" id="prefHideRead">
-                Masquer les articles deja lus
+                <span id="prefHideReadLabel">Hide already read articles</span>
             </label>
         </div>
 
-        <button class="prefs-reset" id="prefsReset">Reset preferences / Reinitialiser</button>
+        <button class="prefs-reset" id="prefsReset">Reset preferences</button>
     </div>
 
     <!-- Main Content -->
@@ -628,7 +670,7 @@
         <div class="content-area">
             <div class="loading" id="loading">
                 <div class="spinner"></div>
-                <p>Chargement du README...</p>
+                <p id="loadingText">Loading README...</p>
             </div>
             <div id="error" class="error" style="display: none;"></div>
             <div id="filterNotice" class="filter-notice"></div>
@@ -704,6 +746,142 @@
             }
         };
 
+        const FALLBACK_LANG = 'en';
+        const I18N = {
+            en: {
+                sectionLabel: 'Go to:',
+                sectionPlaceholder: '-- Sections --',
+                noSections: 'No sections',
+                prefsToggle: 'Filter',
+                prefsTitle: 'Customize',
+                prefsLangTitle: 'Language',
+                prefLangAuto: 'Auto (IP / Browser)',
+                prefLangAll: 'All',
+                keywordsTitle: 'Keywords',
+                keywordsPlaceholder: 'e.g. LLM, ransomware, Ubuntu...',
+                maxArticlesTitle: 'Articles per section',
+                readTitle: 'Reading',
+                hideReadLabel: 'Hide already read articles',
+                resetPrefs: 'Reset preferences',
+                loading: 'Loading README...',
+                noKeywordMatch: 'No exact match for your keyword(s). Showing available articles with current filters.',
+                readHidden: (count) => `Read articles hidden: ${count}.`,
+                showRead: 'Show read',
+                readGroup: (count) => `Already read (${count})`
+            },
+            fr: {
+                sectionLabel: 'Aller à :',
+                sectionPlaceholder: '-- Sections --',
+                noSections: 'Aucune section',
+                prefsToggle: 'Filtrer',
+                prefsTitle: 'Personnaliser',
+                prefsLangTitle: 'Langue',
+                prefLangAuto: 'Auto (IP / Navigateur)',
+                prefLangAll: 'Toutes',
+                keywordsTitle: 'Mots-clés',
+                keywordsPlaceholder: 'Ex: LLM, ransomware, Ubuntu...',
+                maxArticlesTitle: 'Articles par section',
+                readTitle: 'Lecture',
+                hideReadLabel: 'Masquer les articles déjà lus',
+                resetPrefs: 'Réinitialiser',
+                loading: 'Chargement du README...',
+                noKeywordMatch: 'Aucun résultat exact pour vos mots-clés. Affichage des articles disponibles avec les filtres actuels.',
+                readHidden: (count) => `Articles lus masqués : ${count}.`,
+                showRead: 'Afficher les lus',
+                readGroup: (count) => `Déjà lus (${count})`
+            }
+        };
+
+        // Couples de mots-clés traduits (FR <-> EN) pour une recherche synchronisée.
+        const KEYWORD_TRANSLATIONS = {
+            'artificial intelligence': 'intelligence artificielle',
+            'intelligence artificielle': 'artificial intelligence',
+            'machine learning': 'apprentissage automatique',
+            'apprentissage automatique': 'machine learning',
+            'deep learning': 'apprentissage profond',
+            'apprentissage profond': 'deep learning',
+            'cybersecurity': 'cybersecurite',
+            'cybersécurité': 'cybersecurity',
+            'cybersecurite': 'cybersecurity',
+            'privacy': 'vie privee',
+            'vie privée': 'privacy',
+            'vie privee': 'privacy',
+            'vulnerability': 'vulnerabilite',
+            'vulnérabilité': 'vulnerability',
+            'vulnerabilite': 'vulnerability',
+            'stock market': 'bourse',
+            'bourse': 'stock market',
+            'cryptocurrency': 'cryptomonnaie',
+            'cryptomonnaie': 'cryptocurrency',
+            'entrepreneurship': 'entrepreneuriat',
+            'entrepreneuriat': 'entrepreneurship',
+            'investment': 'investissement',
+            'investissement': 'investment',
+            'new product': 'nouveau produit',
+            'nouveau produit': 'new product',
+            'home automation': 'domotique',
+            'domotique': 'home automation',
+            'open source': 'logiciel libre',
+            'logiciel libre': 'open source',
+            'openclaw': 'openclaw'
+        };
+
+        function translate(key, lang = FALLBACK_LANG) {
+            const langPack = I18N[lang] || I18N[FALLBACK_LANG];
+            return langPack[key] ?? I18N[FALLBACK_LANG][key] ?? key;
+        }
+
+        function normalizeKeyword(text) {
+            return (text || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .trim();
+        }
+
+        function getKeywordVariants(inputKeywords) {
+            const variants = new Set();
+            inputKeywords.forEach((kw) => {
+                const normalized = normalizeKeyword(kw);
+                if (!normalized) return;
+                variants.add(normalized);
+                const translated = KEYWORD_TRANSLATIONS[normalized];
+                if (translated) variants.add(normalizeKeyword(translated));
+            });
+            return Array.from(variants);
+        }
+
+        function updateI18nUI(lang) {
+            const effectiveLang = (lang === 'fr' || lang === 'en') ? lang : FALLBACK_LANG;
+            const t = (key) => translate(key, effectiveLang);
+
+            const setText = (id, text) => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = text;
+            };
+
+            setText('sectionSelectLabel', t('sectionLabel'));
+            setText('prefsToggle', t('prefsToggle'));
+            setText('prefsPanelTitle', t('prefsTitle'));
+            setText('prefLangTitle', t('prefsLangTitle'));
+            setText('prefLangAutoOption', t('prefLangAuto'));
+            setText('prefLangAllOption', t('prefLangAll'));
+            setText('prefKeywordsTitle', t('keywordsTitle'));
+            setText('prefMaxArticlesTitle', t('maxArticlesTitle'));
+            setText('prefReadTitle', t('readTitle'));
+            setText('prefHideReadLabel', t('hideReadLabel'));
+            setText('prefsReset', t('resetPrefs'));
+            setText('loadingText', t('loading'));
+
+            const keywordsInput = document.getElementById('prefKeywords');
+            if (keywordsInput) keywordsInput.placeholder = t('keywordsPlaceholder');
+
+            const sectionSelect = document.getElementById('sectionSelect');
+            if (sectionSelect && sectionSelect.options.length > 0) {
+                sectionSelect.options[0].textContent = t('sectionPlaceholder');
+            }
+        }
+
         // ─── Read History ───────────────────────────────────
         const ReadHistory = {
             STORAGE_KEY: 'ai_pulse_read_articles',
@@ -766,20 +944,25 @@
                 try {
                     const url = new URL(href, currentOrigin);
                     if (url.pathname.endsWith('app.html') && url.searchParams.has('url')) {
-                        // No iframe encapsulation: open the real article target directly.
+                        // Normalize legacy app links to reader for consistent behavior.
                         const actualUrl = url.searchParams.get('url');
                         if (actualUrl) {
-                            link.setAttribute('href', actualUrl);
+                            const readerUrl = `./reader.html?url=${encodeURIComponent(actualUrl)}`;
+                            link.setAttribute('href', readerUrl);
                             link.setAttribute('target', '_top');
                         }
                     } else if (url.hostname === 'github.com' || ((url.origin === currentOrigin || url.hostname === 'thephoenixagency.github.io') && allowedInternalPages.some(page => url.pathname.endsWith(page)))) {
                         link.setAttribute('target', '_top');
                     } else if (href.startsWith('http')) {
-                        link.setAttribute('target', '_blank');
+                        // Keep article reading inside AI-Pulse reader for a consistent UX.
+                        const readerUrl = `./reader.html?url=${encodeURIComponent(url.toString())}`;
+                        link.setAttribute('href', readerUrl);
+                        link.setAttribute('target', '_top');
                     }
-                    // For local data/articles links: open directly, no reader iframe wrapper.
+                    // For local generated articles: route through reader like all categories.
                     if (href.startsWith('data/articles/')) {
-                        link.setAttribute('href', `./${href}`);
+                        const readerUrl = `./reader.html?url=${encodeURIComponent(`./${href}`)}`;
+                        link.setAttribute('href', readerUrl);
                         link.setAttribute('target', '_top');
                     }
                 } catch (e) { /* ignore */ }
@@ -795,6 +978,31 @@
                 .replace(/[\u0300-\u036f]/g, '')
                 .replace(/[^a-z0-9]+/g, '-')
                 .replace(/^-+|-+$/g, '');
+        }
+
+        function splitBilingualLabel(label) {
+            const safeLabel = (label || '').trim();
+            const parts = safeLabel.split(/\s*\/\s*/).map(p => p.trim()).filter(Boolean);
+            if (parts.length >= 2) {
+                return { en: parts[0], fr: parts[1], raw: safeLabel };
+            }
+            return { en: safeLabel, fr: safeLabel, raw: safeLabel };
+        }
+
+        function localizeSectionHeadings(lang) {
+            const effectiveLang = (lang === 'fr' || lang === 'en') ? lang : FALLBACK_LANG;
+            const sections = ensureCategorySections();
+            sections.forEach((section) => {
+                const heading = section.querySelector('h2');
+                if (!heading) return;
+                const sourceLabel = heading.getAttribute('data-label-raw') || heading.textContent || '';
+                const labels = splitBilingualLabel(sourceLabel);
+                heading.setAttribute('data-label-raw', labels.raw);
+                heading.setAttribute('data-label-en', labels.en);
+                heading.setAttribute('data-label-fr', labels.fr);
+                heading.textContent = effectiveLang === 'fr' ? labels.fr : labels.en;
+            });
+            return sections;
         }
 
         function ensureCategorySections() {
@@ -844,7 +1052,9 @@
                 if (locations.length === 0) return null;
                 const latest = locations[locations.length - 1];
                 const country = ((latest && latest.country) || '').toLowerCase();
-                if (country.includes('france')) return 'fr';
+                const countryCode = ((latest && latest.countryCode) || '').toUpperCase();
+                const languages = ((latest && latest.languages) || '').toLowerCase();
+                if (countryCode === 'FR' || country.includes('france') || languages.includes('fr')) return 'fr';
                 return 'en';
             } catch (_) {
                 return null;
@@ -869,17 +1079,24 @@
             if (!frBtn || !enBtn) return;
             frBtn.classList.toggle('active', effective === 'fr');
             enBtn.classList.toggle('active', effective === 'en');
+            updateI18nUI(effective);
+            localizeSectionHeadings(effective);
         }
 
         // ─── Build Section Nav (top dropdown) ──────────────────────────────
         function buildSectionNav() {
             const select = document.getElementById('sectionSelect');
-            const sections = ensureCategorySections();
             const prefs = PrefsManager.load();
             const quickNav = document.getElementById('quickNav');
+            const effectiveLang = resolveEffectiveLanguage(prefs);
+            const t = (key) => translate(key, effectiveLang === 'all' ? FALLBACK_LANG : effectiveLang);
+            const sections = localizeSectionHeadings(effectiveLang);
+            const maxQuickTags = window.matchMedia('(max-width: 768px)').matches ? 6 : 12;
+            let quickTagsCount = 0;
+            let quickTagsHidden = 0;
 
             // Clear existing options except first
-            select.innerHTML = '<option value="">-- Sections --</option>';
+            select.innerHTML = `<option value="">${t('sectionPlaceholder')}</option>`;
             if (quickNav) quickNav.innerHTML = '';
 
             // Add options for each visible section
@@ -894,22 +1111,42 @@
                     select.appendChild(option);
 
                     if (quickNav) {
-                        const chip = document.createElement('button');
-                        chip.type = 'button';
-                        chip.className = 'quick-tag';
-                        chip.textContent = heading.textContent;
-                        chip.addEventListener('click', () => {
-                            const target = document.getElementById(cat);
-                            if (target) target.scrollIntoView({ behavior: 'smooth' });
-                        });
-                        quickNav.appendChild(chip);
+                        if (quickTagsCount < maxQuickTags) {
+                            const chip = document.createElement('button');
+                            chip.type = 'button';
+                            chip.className = 'quick-tag';
+                            chip.textContent = heading.textContent;
+                            chip.addEventListener('click', () => {
+                                const target = document.getElementById(cat);
+                                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                            });
+                            quickNav.appendChild(chip);
+                            quickTagsCount++;
+                        } else {
+                            quickTagsHidden++;
+                        }
                     }
                 }
             });
 
+            if (quickNav && quickTagsHidden > 0) {
+                const moreChip = document.createElement('button');
+                moreChip.type = 'button';
+                moreChip.className = 'quick-tag';
+                moreChip.textContent = `+${quickTagsHidden}`;
+                moreChip.title = 'Show all sections in filters';
+                moreChip.addEventListener('click', () => {
+                    const prefsPanel = document.getElementById('prefsPanel');
+                    const prefsOverlay = document.getElementById('prefsOverlay');
+                    if (prefsPanel) prefsPanel.classList.add('open');
+                    if (prefsOverlay) prefsOverlay.classList.add('open');
+                });
+                quickNav.appendChild(moreChip);
+            }
+
             select.disabled = select.options.length <= 1;
             if (select.disabled) {
-                select.innerHTML = '<option value="">No sections / Aucune section</option>';
+                select.innerHTML = `<option value="">${t('noSections')}</option>`;
                 if (quickNav) quickNav.style.display = 'none';
             } else if (quickNav) {
                 quickNav.style.display = 'flex';
@@ -931,7 +1168,7 @@
             const container = document.getElementById('prefCategories');
             if (!container) return;
 
-            const sections = ensureCategorySections();
+            const sections = localizeSectionHeadings(resolveEffectiveLanguage(prefs));
             container.innerHTML = '';
 
             sections.forEach(section => {
@@ -956,14 +1193,15 @@
         function applyFilters() {
             const prefs = PrefsManager.load();
             const effectiveLang = resolveEffectiveLanguage(prefs);
-            const sections = ensureCategorySections();
+            const sections = localizeSectionHeadings(effectiveLang);
             const readArticles = ReadHistory.getAll();
             const filterNotice = document.getElementById('filterNotice');
-            const keywords = (prefs.keywords || '')
+            const rawKeywords = (prefs.keywords || '')
                 .toLowerCase()
                 .split(',')
                 .map(k => k.trim())
                 .filter(k => k);
+            const keywords = getKeywordVariants(rawKeywords);
 
             function render(passOptions = {}) {
                 const { ignoreKeywords = false, ignoreLanguage = false } = passOptions;
@@ -996,7 +1234,7 @@
 
                         // Keyword filter
                         if (visible && !ignoreKeywords && keywords.length > 0) {
-                            const text = article.textContent.toLowerCase();
+                            const text = normalizeKeyword(article.textContent);
                             if (!keywords.some(k => text.includes(k))) {
                                 visible = false;
                             }
@@ -1042,7 +1280,8 @@
                     if (readItems.length > 0 && !prefs.hideRead) {
                         readSection = document.createElement('details');
                         readSection.className = 'read-articles-group';
-                        readSection.innerHTML = '<summary>Already read / Deja lus (' + readItems.length + ')</summary>';
+                        const t = (key) => translate(key, effectiveLang === 'all' ? FALLBACK_LANG : effectiveLang);
+                        readSection.innerHTML = '<summary>' + t('readGroup')(readItems.length) + '</summary>';
                         readItems.forEach(item => readSection.appendChild(item.cloneNode(true)));
                         // Hide originals and append group
                         readItems.forEach(item => {
@@ -1058,26 +1297,51 @@
                 return { totalVisible, hiddenReadCount };
             }
 
+            function renumberVisibleArticles() {
+                sections.forEach((section) => {
+                    const visibleArticles = Array.from(section.querySelectorAll('.article-item:not(.hidden)'));
+                    visibleArticles.forEach((articleEl, idx) => {
+                        const heading = articleEl.querySelector('h3');
+                        if (!heading) return;
+                        // Preserve inner links/markup: update only the leading text node.
+                        let numberNode = null;
+                        for (const node of heading.childNodes) {
+                            if (node.nodeType === 3) {
+                                numberNode = node;
+                                break;
+                            }
+                        }
+                        if (numberNode) {
+                            numberNode.textContent = (numberNode.textContent || '').replace(/^\s*\d+\.\s*/, `${idx + 1}. `);
+                        } else {
+                            heading.insertBefore(document.createTextNode(`${idx + 1}. `), heading.firstChild);
+                        }
+                    });
+                });
+            }
+
             const keywordSearchActive = keywords.length > 0;
             // During keyword search, ignore language for broader matching.
             let renderResult = render({ ignoreKeywords: false, ignoreLanguage: keywordSearchActive });
             let visibleCount = renderResult.totalVisible;
             let hiddenReadCount = renderResult.hiddenReadCount;
 
-            if (keywordSearchActive && visibleCount === 0) {
-                // Fallback: keep page usable if keyword has no exact hit.
-                renderResult = render({ ignoreKeywords: true, ignoreLanguage: false });
-                visibleCount = renderResult.totalVisible;
-                hiddenReadCount = renderResult.hiddenReadCount;
-                if (filterNotice) {
-                    filterNotice.textContent = 'No exact match for your keyword(s). Showing available articles with current filters.';
-                    filterNotice.style.display = 'block';
-                }
-            } else if (filterNotice) {
-                if (prefs.hideRead && hiddenReadCount > 0) {
-                    filterNotice.innerHTML = `Read articles hidden: ${hiddenReadCount}. <button id="showReadBypassBtn" type="button">Show read / Afficher lus</button>`;
-                    filterNotice.style.display = 'block';
-                    const bypassBtn = document.getElementById('showReadBypassBtn');
+                if (keywordSearchActive && visibleCount === 0) {
+                    // Fallback: keep page usable if keyword has no exact hit.
+                    renderResult = render({ ignoreKeywords: true, ignoreLanguage: false });
+                    visibleCount = renderResult.totalVisible;
+                    hiddenReadCount = renderResult.hiddenReadCount;
+                    if (filterNotice) {
+                    const t = (key) => translate(key, effectiveLang === 'all' ? FALLBACK_LANG : effectiveLang);
+                    filterNotice.textContent = t('noKeywordMatch');
+                        filterNotice.style.display = 'block';
+                    }
+                } else if (filterNotice) {
+                    if (prefs.hideRead && hiddenReadCount > 0) {
+                    const t = (key) => translate(key, effectiveLang === 'all' ? FALLBACK_LANG : effectiveLang);
+                    filterNotice.innerHTML = `${t('readHidden')(hiddenReadCount)} <button id="showReadBypassBtn" type="button">${t('showRead')}</button>`;
+                        filterNotice.style.display = 'block';
+                        const bypassBtn = document.getElementById('showReadBypassBtn');
                     if (bypassBtn) {
                         bypassBtn.addEventListener('click', () => {
                             const p = PrefsManager.load();
@@ -1094,6 +1358,7 @@
                 }
             }
 
+            renumberVisibleArticles();
             buildSectionNav();
             syncLangSwitchUI(prefs);
         }

@@ -4,15 +4,27 @@
 <meta charset="UTF-8">
 <title>Nintendo s’attaque encore à l’émulation de la Switch en compliquant l’accès aux logiciels</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
   img { max-width: 100%; height: auto; border-radius: 8px; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-footer { margin-top: 1.6em; padding-top: 0.9em; border-top: 1px solid rgba(0,217,255,0.2); display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; color: #94a3b8; font-size: 0.9em; }
+  .footer-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .footer-btn { display: inline-flex; align-items: center; justify-content: center; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(0,217,255,0.35); background: rgba(0,217,255,0.08); color: #00d9ff; text-decoration: none; font-size: 0.88em; }
+  .footer-btn:hover { background: rgba(0,217,255,0.16); }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -37,7 +49,29 @@
 
  <p>Sur le fond, l’émulation reste un terrain juridique complexe. Aux États-Unis, les tribunaux ont historiquement reconnu la légalité des émulateurs développés indépendamment, comme ce fut le cas pour les émulateurs PlayStation par le passé. <strong>Ce qui demeure flou, c’est l’application des règles anti-contournement aux consoles modernes équipées de systèmes cryptographiques sophistiqués.</strong></p> <p>Le procès très médiatisé contre Yuzu s’est conclu par un règlement à l’amiable de 2,4 millions de dollars et la fermeture définitive du projet, mais sans établir de précédent juridique clair. <a href="https://www.01net.com/actualites/stop-killing-games-un-million-deuropeens-refusent-la-date-de-peremption-des-jeux.html">Les défenseurs des droits numériques, comme l’Electronic Frontier Foundation</a>, argumentent que les interprétations larges du DMCA freinent les travaux légitimes de préservation, tandis que les détenteurs de plateformes insistent sur la nécessité d’une application stricte pour combattre le piratage massif.</p>
 
- <h2>Pourquoi ça va être une galère pour les utilisateurs d’émulateurs ?</h2> <p>Au-delà des considérations juridiques, la disparition des dépôts GitHub crée un vide que des hackers peuvent exploiter. Lorsque les sources officielles disparaissent, les utilisateurs se tournent vers des résultats de recherche aléatoires et des plateformes moins fiables, où prospèrent les faux installateurs et les versions piégées par des malwares.</p> <p>Après les précédentes vagues de suppressions, de nombreux builds contrefaits et infectés ont circulé en ligne, <strong>ciblant des utilisateurs incapables de distinguer les versions légitimes des imitations dangereuses</strong>. GitHub offrait non seulement une couche de sécurité, mais aussi une communauté capable d’identifier les bugs et de fournir un support technique.</p> <p>Malgré cette offensive sans précédent, la communauté de l’émulation reste confiante. Tant que la demande existera et que le code source circulera librement, de nouveaux projets continueront d’émerger sous différents noms. Nintendo peut ralentir le mouvement, rendre l’accès plus difficile, mais <strong>l’histoire suggère qu’il est impossible d’éradiquer complètement ces projets.</strong></p> <blockquote> <p>🟣 Pour ne manquer aucune news sur le Journal du Geek, <a href="https://profile.google.com/cp/CgwvZy8xejJ2N182c2MaHmh0dHBzOi8vd3d3LmpvdXJuYWxkdWdlZWsuY29tLw==?pf=6" target="_blank">suivez-nous sur Google</a> et sur notre canal <a href="https://whatsapp.com/channel/0029VaClM5y4tRry12tb7D2h" target="_blank">WhatsApp</a>. Et si vous nous adorez, on a <a href="https://www.journaldugeek.com/newsletter/" target="_blank">une newsletter tous les matins</a>.</p> </blockquote>                  </div></div>
+ <h2>Pourquoi ça va être une galère pour les utilisateurs d’émulateurs ?</h2> <p>Au-delà des considérations juridiques, la disparition des dépôts GitHub crée un vide que des hackers peuvent exploiter. Lorsque les sources officielles disparaissent, les utilisateurs se tournent vers des résultats de recherche aléatoires et des plateformes moins fiables, où prospèrent les faux installateurs et les versions piégées par des malwares.</p> <p>Après les précédentes vagues de suppressions, de nombreux builds contrefaits et infectés ont circulé en ligne, <strong>ciblant des utilisateurs incapables de distinguer les versions légitimes des imitations dangereuses</strong>. GitHub offrait non seulement une couche de sécurité, mais aussi une communauté capable d’identifier les bugs et de fournir un support technique.</p> <p>Malgré cette offensive sans précédent, la communauté de l’émulation reste confiante. Tant que la demande existera et que le code source circulera librement, de nouveaux projets continueront d’émerger sous différents noms. Nintendo peut ralentir le mouvement, rendre l’accès plus difficile, mais <strong>l’histoire suggère qu’il est impossible d’éradiquer complètement ces projets.</strong></p> <blockquote> <p> Pour ne manquer aucune news sur le Journal du Geek, <a href="https://profile.google.com/cp/CgwvZy8xejJ2N182c2MaHmh0dHBzOi8vd3d3LmpvdXJuYWxkdWdlZWsuY29tLw==?pf=6" target="_blank">suivez-nous sur Google</a> et sur notre canal <a href="https://whatsapp.com/channel/0029VaClM5y4tRry12tb7D2h" target="_blank">WhatsApp</a>. Et si vous nous adorez, on a <a href="https://www.journaldugeek.com/
+
+
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
+
+  <script>
+    
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+
+  </script>
 </body>
 </html>

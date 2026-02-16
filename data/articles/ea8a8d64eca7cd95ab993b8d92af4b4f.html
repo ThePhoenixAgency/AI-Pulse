@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -140,7 +145,7 @@
 <p>The <code>task</code> tool allows the agent to delegate work to subagents:</p>
 <div><pre><code>&gt; Can you explore the codebase structure while I work on something else?
 
-🤖 I'll use the task tool to delegate this to the explore subagent.
+ I'll use the task tool to delegate this to the explore subagent.
 
 &gt; task(task="Analyze the project structure and architecture", agent="explore")
 </code></pre></div>
@@ -149,7 +154,7 @@
 <p>The <code>ask_user_question</code> tool allows the agent to ask you clarifying questions during its work. This enables more interactive and collaborative workflows.</p>
 <div><pre><code>&gt; Can you help me refactor this function?
 
-🤖 I need to understand your requirements better before proceeding.
+ I need to understand your requirements better before proceeding.
 
 &gt; ask_user_question(questions=[{
     "question": "What's the main goal of this refactoring?",
@@ -193,13 +198,13 @@
 <p>Start interacting with the agent!</p>
 <div><pre><code>&gt; Can you find all instances of the word "TODO" in the project?
 
-🤖 The user wants to find all instances of "TODO". The `grep` tool is perfect for this. I will use it to search the current directory.
+ The user wants to find all instances of "TODO". The `grep` tool is perfect for this. I will use it to search the current directory.
 
 &gt; grep(pattern="TODO", path=".")
 
 ... (grep tool output) ...
 
-🤖 I found the following "TODO" comments in your project.
+ I found the following "TODO" comments in your project.
 </code></pre></div>
 </li>
 </ol>

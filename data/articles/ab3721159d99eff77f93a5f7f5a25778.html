@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -122,7 +127,7 @@ postiz posts:list --customer <span><span>"</span>customer-id<span>"</span></span
 <p></p><h3>Media Upload</h3><a href="#media-upload"></a><p></p>
 <p><strong>Upload file and get URL</strong></p>
 <div><pre>postiz upload <span>&lt;</span>file-path<span>&gt;</span></pre></div>
-<p><strong>⚠️ IMPORTANT: Upload Files Before Posting</strong></p>
+<p><strong> IMPORTANT: Upload Files Before Posting</strong></p>
 <p>You <strong>must</strong> upload media files to Postiz before using them in posts. Many platforms (especially TikTok, Instagram, and YouTube) require verified/trusted URLs and will reject external links.</p>
 <p><strong>Workflow:</strong></p>
 <ol>
@@ -200,7 +205,7 @@ postiz posts:create \
 <p></p><h3>X (Twitter)</h3><a href="#x-twitter"></a><p></p>
 <div><pre><span><span>#</span> Create thread</span>
 postiz posts:create \
-  -c <span><span>"</span>Thread 1/3 🧵<span>"</span></span> \
+  -c <span><span>"</span>Thread 1/3 <span>"</span></span> \
   -c <span><span>"</span>Thread 2/3<span>"</span></span> \
   -c <span><span>"</span>Thread 3/3<span>"</span></span> \
   -s <span><span>"</span>2024-12-31T12:00:00Z<span>"</span></span> \
@@ -330,7 +335,7 @@ postiz posts:create \
 <p></p><h3>Batch Scheduling</h3><a href="#batch-scheduling"></a><p></p>
 <div><pre><span><span>#!</span>/bin/bash</span>
 DATES=(<span><span>"</span>2024-02-14T09:00:00Z<span>"</span></span> <span><span>"</span>2024-02-15T09:00:00Z<span>"</span></span> <span><span>"</span>2024-02-16T09:00:00Z<span>"</span></span>)
-CONTENT=(<span><span>"</span>Monday motivation 💪<span>"</span></span> <span><span>"</span>Tuesday tips 💡<span>"</span></span> <span><span>"</span>Wednesday wisdom 🧠<span>"</span></span>)
+CONTENT=(<span><span>"</span>Monday motivation <span>"</span></span> <span><span>"</span>Tuesday tips <span>"</span></span> <span><span>"</span>Wednesday wisdom <span>"</span></span>)
 
 <span>for</span> <span>i</span> <span>in</span> <span><span>"</span><span>${<span>!</span>DATES[@]}</span><span>"</span></span><span>;</span> <span>do</span>
   postiz posts:create \
@@ -423,7 +428,7 @@ CONTENT=(<span><span>"</span>Monday motivation 💪<span>"</span></span> <span><
 <tbody>
 <tr>
 <td><code>POSTIZ_API_KEY</code></td>
-<td>✅ Yes</td>
+<td> Yes</td>
 <td>-</td>
 <td>Your Postiz API key</td>
 </tr>

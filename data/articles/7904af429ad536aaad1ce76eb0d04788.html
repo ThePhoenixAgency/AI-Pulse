@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -280,7 +285,7 @@
 <p></p><h3>Terminal-Based UI</h3><a href="#terminal-based-ui"></a><p></p>
 <p>Rich tab titles and pane management. Dynamic status lines show learning signals, context usage, and current task state. Your terminal is a command center.</p>
 <hr />
-<p></p><h2>🚀 Installation</h2><a href="#-installation"></a><p></p>
+<p></p><h2> Installation</h2><a href="#-installation"></a><p></p>
 <div><p>Caution</p><p><strong>Project in Active Development</strong> — PAI is evolving rapidly. Expect breaking changes, restructuring, and frequent updates. We are working on stable and development branches, but currently it's all combined.</p>
 </div>
 <p></p><h3>Which Install Path Should I Use?</h3><a href="#which-install-path-should-i-use"></a><p></p>
@@ -392,7 +397,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 </ul>
 <p><strong>No forced structure. No mandatory setup. Take what's useful, leave the rest.</strong></p>
 <hr />
-<p></p><h2>📦 Packs</h2><a href="#-packs"></a><p></p>
+<p></p><h2> Packs</h2><a href="#-packs"></a><p></p>
 <p>PAI capabilities are distributed as <strong>Packs</strong>—self-contained, AI-installable modules that add specific capabilities to your system.</p>
 <p>Each pack includes everything needed: code, workflows, installation instructions, and verification tests. Your DA reads the pack and installs it into your system—no manual copying required.</p>
 <p></p><h3>Infrastructure Packs</h3><a href="#infrastructure-packs"></a><p></p>
@@ -513,7 +518,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 <p><strong>23 packs total</strong> — 5 infrastructure + 18 skills. All extracted from production PAI systems.</p>
 </blockquote>
 <hr />
-<p></p><h2>📦 Bundles</h2><a href="#-bundles"></a><p></p>
+<p></p><h2> Bundles</h2><a href="#-bundles"></a><p></p>
 <p><strong>Bundles</strong> are curated collections of packs designed to work together.</p>
 <table>
 <thead>
@@ -536,7 +541,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 <span>cd</span> PAI/Bundles/Official <span>&amp;&amp;</span> bun run install.ts</pre></div>
 <p><a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/Bundles"><strong>Learn more about bundles →</strong></a></p>
 <hr />
-<p></p><h2>❓ FAQ</h2><a href="#-faq"></a><p></p>
+<p></p><h2> FAQ</h2><a href="#-faq"></a><p></p>
 <p></p><h3>How is PAI different from just using Claude Code?</h3><a href="#how-is-pai-different-from-just-using-claude-code"></a><p></p>
 <p>PAI isn't a replacement for Claude Code—it's what you build <em>on top of it</em>. Claude Code gives you an AI that can read files, write code, and execute commands. But it's generic. It doesn't know your goals, your preferred workflows, your history, or your specific context.</p>
 <p>PAI provides the scaffolding to make that generic AI <em>yours</em>:</p>
@@ -576,7 +581,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 <li><strong>DA can fix it</strong> — Your DA helped build it, it can help repair it</li>
 </ul>
 <hr />
-<p></p><h2>🎯 Roadmap</h2><a href="#-roadmap"></a><p></p>
+<p></p><h2> Roadmap</h2><a href="#-roadmap"></a><p></p>
 <table>
 <thead>
 <tr>
@@ -608,7 +613,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 </tbody>
 </table>
 <hr />
-<p></p><h2>🌐 Community</h2><a href="#-community"></a><p></p>
+<p></p><h2> Community</h2><a href="#-community"></a><p></p>
 <p><strong>GitHub Discussions:</strong> <a href="https://github.com/danielmiessler/PAI/discussions">Join the conversation</a></p>
 <p><strong>UL Community Discord:</strong> PAI is discussed in the <a href="https://danielmiessler.com/upgrade">Unsupervised Learning community</a> along with other AI projects</p>
 <p><strong>Twitter/X:</strong> <a href="https://twitter.com/danielmiessler">@danielmiessler</a></p>
@@ -622,7 +627,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
  
 </a>
 <hr />
-<p></p><h2>🤝 Contributing</h2><a href="#-contributing"></a><p></p>
+<p></p><h2> Contributing</h2><a href="#-contributing"></a><p></p>
 <p></p><h3>Submit a Pack</h3><a href="#submit-a-pack"></a><p></p>
 <ol>
 <li><strong>Fork the repository</strong></li>
@@ -633,20 +638,20 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 <p>Packs are reviewed for completeness, code quality, security, and usefulness. Most packs reviewed within 7 days.</p>
 <p><strong>Pack authors maintain their packs</strong> — respond to issues, fix bugs, consider feature requests.</p>
 <hr />
-<p></p><h2>📜 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>MIT License - see <a href="https://github.com/danielmiessler/Personal_AI_Infrastructure/blob/main/LICENSE">LICENSE</a> for details.</p>
 <hr />
-<p></p><h2>🙏 Credits</h2><a href="#-credits"></a><p></p>
+<p></p><h2> Credits</h2><a href="#-credits"></a><p></p>
 <p><strong>Anthropic and the Claude Code team</strong> — First and foremost. You are moving AI further and faster than anyone right now. Claude Code is the foundation that makes all of this possible.</p>
 <p><strong><a href="https://www.youtube.com/@indydevdan">IndyDevDan</a></strong> — For great videos on meta-prompting and custom agents that have inspired parts of PAI.</p>
 <p></p><h3>Contributors</h3><a href="#contributors"></a><p></p>
 <p><strong><a href="https://github.com/fayerman-source">fayerman-source</a></strong> — Google Cloud TTS provider integration and Linux audio support for the voice system.</p>
 <p><strong>Matt Espinoza</strong> — Extensive testing, ideas, and feedback for the PAI 2.3 release, plus roadmap contributions.</p>
 <hr />
-<p></p><h2>💜 Support This Project</h2><a href="#-support-this-project"></a><p></p>
+<p></p><h2> Support This Project</h2><a href="#-support-this-project"></a><p></p>
 
 <hr />
-<p></p><h2>📚 Related Reading</h2><a href="#-related-reading"></a><p></p>
+<p></p><h2> Related Reading</h2><a href="#-related-reading"></a><p></p>
 <ul>
 <li><a href="https://danielmiessler.com/blog/real-internet-of-things">The Real Internet of Things</a> — The vision behind PAI</li>
 <li><a href="https://danielmiessler.com/blog/ai-predictable-path-7-components-2024">AI's Predictable Path: 7 Components</a> — Visual walkthrough of where AI is heading</li>
@@ -654,7 +659,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 </ul>
 <hr />
 
-<strong>📜 Update History</strong>
+<strong> Update History</strong>
 
 <p><strong>v2.5.0 (2026-01-30) — Think Deeper, Execute Faster</strong></p>
 <ul>
@@ -701,7 +706,7 @@ and DA="MyAI". Set up the hooks, save the code, and verify it works.
 </ul>
 
 <hr />
-<p></p><h2>⭐ Star History</h2><a href="#-star-history"></a><p></p>
+<p></p><h2> Star History</h2><a href="#-star-history"></a><p></p>
 <p><a href="https://star-history.com/#danielmiessler/Personal_AI_Infrastructure&amp;Date"><img src="https://camo.githubusercontent.com/faeced632b621b99283dd9e30293301a6736fd55e3318c05c1f7507f452a7f9f/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d64616e69656c6d696573736c65722f506572736f6e616c5f41495f496e66726173747275637475726526747970653d44617465" alt="Star History Chart" /></a></p>
 <hr />
 

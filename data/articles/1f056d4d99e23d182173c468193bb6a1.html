@@ -4,330 +4,113 @@
 <meta charset="UTF-8">
 <title>MySQL replication setup — 6 steps to configure master-slave replication</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>MySQL replication setup — 6 steps to configure master-slave replication</h1>
   <div class="metadata">
-    Source: Dev.to Open Source | Date: 2/16/2026 | Lang: EN |
+    Source: Dev.to Open Source | Date: 2/16/2026 3:51:05 PM | Lang: EN |
     <a href="https://dev.to/freddowson/mysql-replication-setup-6-steps-to-configure-master-slave-replication-1epn" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    <div><div>
-                <p>MySQL replication is a process where data from one database server (master) is copied automatically to one or more database servers (slaves). This creates redundancy and allows you to distribute read operations across multiple servers.</p>
-
-<p>Setting up replication might seem complex, but the process is actually straightforward. It takes about 15-20 minutes to configure a basic master-slave setup. The key steps involve configuring both servers, creating a replication user, and telling the slave where to read data from.</p>
-
-<p>This guide walks through a real-world replication setup. We'll use MySQL 8.0, but these steps work for MySQL 5.7 and MariaDB as well.</p>
-
-<p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png" alt="MySQL replication" /></a></p>
-
-<h2>
-  <a name="why-use-mysql-replication" href="#why-use-mysql-replication">
-  </a>
-  Why use MySQL replication
-</h2>
-
-<p>Replication solves several practical problems. You get automatic data redundancy without manually copying databases. Read operations can be distributed to slave servers, reducing load on the master. And if your master server fails, you can promote a slave to take over.</p>
-
-<p>The performance benefits are real. A single master handling all reads and writes will eventually hit limits. With replication, you can send all writes to the master and distribute reads across multiple slaves. Some applications see 60-70% load reduction on the master server just from this split.</p>
-
-<p>Replication is not the same as backups though. If someone accidentally deletes a table on the master, that deletion will replicate to all slaves within seconds. You still need proper <a href="https://databasus.com/mysql-backup" target="_blank">MySQL backup</a> for actual data protection.</p>
-
-<h2>
-  <a name="prerequisites-for-setting-up-replication" href="#prerequisites-for-setting-up-replication">
-  </a>
-  Prerequisites for setting up replication
-</h2>
-
-<p>You need two MySQL servers. They can be physical servers, VMs, or Docker containers. Both servers should run the same MySQL version or at least compatible versions. Mixing MySQL 5.7 and 8.0 works, but stay within the same major version when possible.</p>
-
-<p>Network connectivity between servers is critical. The slave must be able to reach the master on MySQL's port (usually 3306). If you're using cloud servers, check security groups and firewall rules. Test connectivity with <code>telnet master-ip 3306</code> before starting.</p>
-
-<p>You'll also need root access to both MySQL instances. Replication requires changing configuration files and creating users with specific privileges. Make sure you can edit <code>/etc/mysql/my.cnf</code> or equivalent on both servers.</p>
-
-<h2>
-  <a name="step-1-configure-the-master-server" href="#step-1-configure-the-master-server">
-  </a>
-  Step 1: Configure the master server
-</h2>
-
-<p>Open the MySQL configuration file on your master server. On Ubuntu/Debian, this is usually <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>. On CentOS/RHEL, check <code>/etc/my.cnf</code>.</p>
-
-<p>Add these lines under the <code>[mysqld]</code> section:<br />
-</p>
-
-<div>
+    <div><div> <p>MySQL replication is a process where data from one database server (master) is copied automatically to one or more database servers (slaves). This creates redundancy and allows you to distribute read operations across multiple servers.</p> <p>Setting up replication might seem complex, but the process is actually straightforward. It takes about 15-20 minutes to configure a basic master-slave setup. The key steps involve configuring both servers, creating a replication user, and telling the slave where to read data from.</p> <p>This guide walks through a real-world replication setup. We'll use MySQL 8.0, but these steps work for MySQL 5.7 and MariaDB as well.</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F4ufr4y21qek75avt8sgl.png" alt="MySQL replication"></a></p> <h2> <a name="why-use-mysql-replication" href="#why-use-mysql-replication"> </a> Why use MySQL replication
+</h2> <p>Replication solves several practical problems. You get automatic data redundancy without manually copying databases. Read operations can be distributed to slave servers, reducing load on the master. And if your master server fails, you can promote a slave to take over.</p> <p>The performance benefits are real. A single master handling all reads and writes will eventually hit limits. With replication, you can send all writes to the master and distribute reads across multiple slaves. Some applications see 60-70% load reduction on the master server just from this split.</p> <p>Replication is not the same as backups though. If someone accidentally deletes a table on the master, that deletion will replicate to all slaves within seconds. You still need proper <a href="https://databasus.com/mysql-backup" target="_blank">MySQL backup</a> for actual data protection.</p> <h2> <a name="prerequisites-for-setting-up-replication" href="#prerequisites-for-setting-up-replication"> </a> Prerequisites for setting up replication
+</h2> <p>You need two MySQL servers. They can be physical servers, VMs, or Docker containers. Both servers should run the same MySQL version or at least compatible versions. Mixing MySQL 5.7 and 8.0 works, but stay within the same major version when possible.</p> <p>Network connectivity between servers is critical. The slave must be able to reach the master on MySQL's port (usually 3306). If you're using cloud servers, check security groups and firewall rules. Test connectivity with <code>telnet master-ip 3306</code> before starting.</p> <p>You'll also need root access to both MySQL instances. Replication requires changing configuration files and creating users with specific privileges. Make sure you can edit <code>/etc/mysql/my.cnf</code> or equivalent on both servers.</p> <h2> <a name="step-1-configure-the-master-server" href="#step-1-configure-the-master-server"> </a> Step 1: Configure the master server
+</h2> <p>Open the MySQL configuration file on your master server. On Ubuntu/Debian, this is usually <code>/etc/mysql/mysql.conf.d/mysqld.cnf</code>. On CentOS/RHEL, check <code>/etc/my.cnf</code>.</p> <p>Add these lines under the <code>[mysqld]</code> section:<br>
+</p> <div>
 <pre><code><span>[mysqld]</span>
 <span>server-id</span> <span>=</span> <span>1</span>
 <span>log_bin</span> <span>=</span> <span>/var/log/mysql/mysql-bin.log</span>
 <span>binlog_do_db</span> <span>=</span> <span>production_db</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>The <code>server-id</code> must be unique across all servers in your replication setup. Use 1 for the master, 2 for the first slave, and so on. The <code>log_bin</code> parameter tells MySQL where to store binary logs. These logs contain all changes made to the database. The slave reads these logs to replicate changes.</p>
-
-<p>The <code>binlog_do_db</code> parameter is optional but recommended. It limits replication to specific databases. If you want to replicate all databases, remove this line. If you have multiple databases to replicate, add multiple <code>binlog_do_db</code> lines.</p>
-
-<p>Restart MySQL to apply changes:<br />
-</p>
-
-<div>
+</div> <p>The <code>server-id</code> must be unique across all servers in your replication setup. Use 1 for the master, 2 for the first slave, and so on. The <code>log_bin</code> parameter tells MySQL where to store binary logs. These logs contain all changes made to the database. The slave reads these logs to replicate changes.</p> <p>The <code>binlog_do_db</code> parameter is optional but recommended. It limits replication to specific databases. If you want to replicate all databases, remove this line. If you have multiple databases to replicate, add multiple <code>binlog_do_db</code> lines.</p> <p>Restart MySQL to apply changes:<br>
+</p> <div>
 <pre><code><span>sudo </span>systemctl restart mysql
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Verify the binary log is working by logging into MySQL and running:<br />
-</p>
-
-<div>
+</div> <p>Verify the binary log is working by logging into MySQL and running:<br>
+</p> <div>
 <pre><code><span>SHOW</span> <span>MASTER</span> <span>STATUS</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>You should see output showing the binary log file name and position. If you see an error, check the MySQL error log at <code>/var/log/mysql/error.log</code>.</p>
-
-<h2>
-  <a name="step-2-create-a-replication-user" href="#step-2-create-a-replication-user">
-  </a>
-  Step 2: Create a replication user
-</h2>
-
-<p>The slave needs credentials to connect to the master. Create a dedicated user with replication privileges. Log into the master MySQL server:<br />
-</p>
-
-<div>
+</div> <p>You should see output showing the binary log file name and position. If you see an error, check the MySQL error log at <code>/var/log/mysql/error.log</code>.</p> <h2> <a name="step-2-create-a-replication-user" href="#step-2-create-a-replication-user"> </a> Step 2: Create a replication user
+</h2> <p>The slave needs credentials to connect to the master. Create a dedicated user with replication privileges. Log into the master MySQL server:<br>
+</p> <div>
 <pre><code>mysql <span>-u</span> root <span>-p</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Create the replication user:<br />
-</p>
-
-<div>
+</div> <p>Create the replication user:<br>
+</p> <div>
 <pre><code><span>CREATE</span> <span>USER</span> <span>'replica_user'</span><span>@</span><span>'%'</span> <span>IDENTIFIED</span> <span>BY</span> <span>'strong_password_here'</span><span>;</span>
 <span>GRANT</span> <span>REPLICATION</span> <span>SLAVE</span> <span>ON</span> <span>*</span><span>.</span><span>*</span> <span>TO</span> <span>'replica_user'</span><span>@</span><span>'%'</span><span>;</span>
 <span>FLUSH</span> <span>PRIVILEGES</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>The <code>'%'</code> means this user can connect from any IP address. In production, replace <code>%</code> with the slave server's specific IP for better security. For example, <code>'replica_user'@'192.168.1.50'</code>.</p>
-
-<p>The password should be strong. Replication traffic is not encrypted by default, so anyone with network access could potentially intercept it. You can enable SSL for replication, but that's beyond basic setup.</p>
-
-<p>Keep these credentials handy. You'll need them in step 4 when configuring the slave.</p>
-
-<h2>
-  <a name="step-3-get-the-master-position-and-create-initial-backup" href="#step-3-get-the-master-position-and-create-initial-backup">
-  </a>
-  Step 3: Get the master position and create initial backup
-</h2>
-
-<p>Before setting up the slave, you need to capture the exact position in the binary log where replication should start. You also need a copy of the master's data.</p>
-
-<p>Lock the master database to prevent changes:<br />
-</p>
-
-<div>
+</div> <p>The <code>'%'</code> means this user can connect from any IP address. In production, replace <code>%</code> with the slave server's specific IP for better security. For example, <code>'replica_user'@'192.168.1.50'</code>.</p> <p>The password should be strong. Replication traffic is not encrypted by default, so anyone with network access could potentially intercept it. You can enable SSL for replication, but that's beyond basic setup.</p> <p>Keep these credentials handy. You'll need them in step 4 when configuring the slave.</p> <h2> <a name="step-3-get-the-master-position-and-create-initial-backup" href="#step-3-get-the-master-position-and-create-initial-backup"> </a> Step 3: Get the master position and create initial backup
+</h2> <p>Before setting up the slave, you need to capture the exact position in the binary log where replication should start. You also need a copy of the master's data.</p> <p>Lock the master database to prevent changes:<br>
+</p> <div>
 <pre><code><span>FLUSH</span> <span>TABLES</span> <span>WITH</span> <span>READ</span> <span>LOCK</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>This prevents any writes to the database. Your application will still be able to read data, but writes will block. Work quickly through the next steps.</p>
-
-<p>Get the current binary log position:<br />
-</p>
-
-<div>
+</div> <p>This prevents any writes to the database. Your application will still be able to read data, but writes will block. Work quickly through the next steps.</p> <p>Get the current binary log position:<br>
+</p> <div>
 <pre><code><span>SHOW</span> <span>MASTER</span> <span>STATUS</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Write down the <code>File</code> and <code>Position</code> values. You'll need these exact values later. They look something like <code>mysql-bin.000003</code> and <code>157</code>.</p>
-
-<p>Now create a backup of your database. Open another terminal session (don't close the MySQL session with the lock) and run:<br />
-</p>
-
-<div>
+</div> <p>Write down the <code>File</code> and <code>Position</code> values. You'll need these exact values later. They look something like <code>mysql-bin.000003</code> and <code>157</code>.</p> <p>Now create a backup of your database. Open another terminal session (don't close the MySQL session with the lock) and run:<br>
+</p> <div>
 <pre><code>mysqldump <span>-u</span> root <span>-p</span> production_db <span>&gt;</span> master_backup.sql
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Wait for the dump to complete. The time depends on your database size. Once finished, go back to your MySQL session and unlock the tables:<br />
-</p>
-
-<div>
+</div> <p>Wait for the dump to complete. The time depends on your database size. Once finished, go back to your MySQL session and unlock the tables:<br>
+</p> <div>
 <pre><code><span>UNLOCK</span> <span>TABLES</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Your master is now free to accept writes again. Transfer the backup file to your slave server:<br />
-</p>
-
-<div>
+</div> <p>Your master is now free to accept writes again. Transfer the backup file to your slave server:<br>
+</p> <div>
 <pre><code>scp master_backup.sql user@slave-server:/tmp/
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<h2>
-  <a name="step-4-configure-the-slave-server" href="#step-4-configure-the-slave-server">
-  </a>
-  Step 4: Configure the slave server
-</h2>
-
-<p>The slave configuration is similar to the master. Edit the MySQL configuration file on the slave server and add these lines:<br />
-</p>
-
-<div>
+</div> <h2> <a name="step-4-configure-the-slave-server" href="#step-4-configure-the-slave-server"> </a> Step 4: Configure the slave server
+</h2> <p>The slave configuration is similar to the master. Edit the MySQL configuration file on the slave server and add these lines:<br>
+</p> <div>
 <pre><code><span>[mysqld]</span>
 <span>server-id</span> <span>=</span> <span>2</span>
 <span>relay-log</span> <span>=</span> <span>/var/log/mysql/mysql-relay-bin</span>
@@ -335,292 +118,85 @@
 <span>binlog_do_db</span> <span>=</span> <span>production_db</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>The <code>server-id</code> must be different from the master. Use 2 for your first slave. The <code>relay-log</code> parameter specifies where the slave stores logs received from the master. The slave processes these relay logs to apply changes.</p>
-
-<p>Including <code>log_bin</code> on the slave is optional but useful. If you ever need to chain replication (slave of a slave), you'll need binary logs enabled. It also helps with backup tools that read binary logs.</p>
-
-<p>Restart the slave MySQL server:<br />
-</p>
-
-<div>
+</div> <p>The <code>server-id</code> must be different from the master. Use 2 for your first slave. The <code>relay-log</code> parameter specifies where the slave stores logs received from the master. The slave processes these relay logs to apply changes.</p> <p>Including <code>log_bin</code> on the slave is optional but useful. If you ever need to chain replication (slave of a slave), you'll need binary logs enabled. It also helps with backup tools that read binary logs.</p> <p>Restart the slave MySQL server:<br>
+</p> <div>
 <pre><code><span>sudo </span>systemctl restart mysql
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Import the backup you transferred earlier:<br />
-</p>
-
-<div>
+</div> <p>Import the backup you transferred earlier:<br>
+</p> <div>
 <pre><code>mysql <span>-u</span> root <span>-p</span> production_db &lt; /tmp/master_backup.sql
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>This ensures the slave starts with the exact same data as the master had at the moment you locked tables.</p>
-
-<h2>
-  <a name="step-5-start-replication" href="#step-5-start-replication">
-  </a>
-  Step 5: Start replication
-</h2>
-
-<p>Log into the slave MySQL server and tell it where to replicate from. Use the master position you wrote down in step 3:<br />
-</p>
-
-<div>
-<pre><code><span>STOP</span> <span>SLAVE</span><span>;</span>
-
-<span>CHANGE</span> <span>MASTER</span> <span>TO</span>
-  <span>MASTER_HOST</span><span>=</span><span>'master-ip-address'</span><span>,</span>
-  <span>MASTER_USER</span><span>=</span><span>'replica_user'</span><span>,</span>
-  <span>MASTER_PASSWORD</span><span>=</span><span>'strong_password_here'</span><span>,</span>
-  <span>MASTER_LOG_FILE</span><span>=</span><span>'mysql-bin.000003'</span><span>,</span>
-  <span>MASTER_LOG_POS</span><span>=</span><span>157</span><span>;</span>
-
-<span>START</span> <span>SLAVE</span><span>;</span>
+</div> <p>This ensures the slave starts with the exact same data as the master had at the moment you locked tables.</p> <h2> <a name="step-5-start-replication" href="#step-5-start-replication"> </a> Step 5: Start replication
+</h2> <p>Log into the slave MySQL server and tell it where to replicate from. Use the master position you wrote down in step 3:<br>
+</p> <div>
+<pre><code><span>STOP</span> <span>SLAVE</span><span>;</span> <span>CHANGE</span> <span>MASTER</span> <span>TO</span> <span>MASTER_HOST</span><span>=</span><span>'master-ip-address'</span><span>,</span> <span>MASTER_USER</span><span>=</span><span>'replica_user'</span><span>,</span> <span>MASTER_PASSWORD</span><span>=</span><span>'strong_password_here'</span><span>,</span> <span>MASTER_LOG_FILE</span><span>=</span><span>'mysql-bin.000003'</span><span>,</span> <span>MASTER_LOG_POS</span><span>=</span><span>157</span><span>;</span> <span>START</span> <span>SLAVE</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Replace <code>master-ip-address</code> with your master server's IP. Use the exact <code>MASTER_LOG_FILE</code> and <code>MASTER_LOG_POS</code> values from step 3. Getting these wrong means the slave won't know where to start reading.</p>
-
-<p>Check if replication is working:<br />
-</p>
-
-<div>
+</div> <p>Replace <code>master-ip-address</code> with your master server's IP. Use the exact <code>MASTER_LOG_FILE</code> and <code>MASTER_LOG_POS</code> values from step 3. Getting these wrong means the slave won't know where to start reading.</p> <p>Check if replication is working:<br>
+</p> <div>
 <pre><code><span>SHOW</span> <span>SLAVE</span> <span>STATUS</span><span>\</span><span>G</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Look for these two lines in the output:<br />
-</p>
-
-<div>
+</div> <p>Look for these two lines in the output:<br>
+</p> <div>
 <pre><code>Slave_IO_Running: Yes
 Slave_SQL_Running: Yes
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Both must say "Yes". If either says "No" or "Connecting", something went wrong. Check the error messages in the same output. Common issues include wrong credentials, network connectivity problems, or incorrect log positions.</p>
-
-<p>The <code>Seconds_Behind_Master</code> value shows replication lag. Zero means the slave is caught up. A few seconds is normal. If this number keeps growing, the slave can't keep up with the master's write load.</p>
-
-<h2>
-  <a name="step-6-test-the-replication" href="#step-6-test-the-replication">
-  </a>
-  Step 6: Test the replication
-</h2>
-
-<p>Create a test table on the master to verify replication works. Log into the master MySQL:<br />
-</p>
-
-<div>
+</div> <p>Both must say "Yes". If either says "No" or "Connecting", something went wrong. Check the error messages in the same output. Common issues include wrong credentials, network connectivity problems, or incorrect log positions.</p> <p>The <code>Seconds_Behind_Master</code> value shows replication lag. Zero means the slave is caught up. A few seconds is normal. If this number keeps growing, the slave can't keep up with the master's write load.</p> <h2> <a name="step-6-test-the-replication" href="#step-6-test-the-replication"> </a> Step 6: Test the replication
+</h2> <p>Create a test table on the master to verify replication works. Log into the master MySQL:<br>
+</p> <div>
 <pre><code><span>USE</span> <span>production_db</span><span>;</span>
-<span>CREATE</span> <span>TABLE</span> <span>replication_test</span> <span>(</span>
-  <span>id</span> <span>INT</span> <span>PRIMARY</span> <span>KEY</span><span>,</span>
-  <span>message</span> <span>VARCHAR</span><span>(</span><span>100</span><span>)</span>
-<span>);</span>
-
-<span>INSERT</span> <span>INTO</span> <span>replication_test</span> <span>VALUES</span> <span>(</span><span>1</span><span>,</span> <span>'Replication is working'</span><span>);</span>
+<span>CREATE</span> <span>TABLE</span> <span>replication_test</span> <span>(</span> <span>id</span> <span>INT</span> <span>PRIMARY</span> <span>KEY</span><span>,</span> <span>message</span> <span>VARCHAR</span><span>(</span><span>100</span><span>)</span>
+<span>);</span> <span>INSERT</span> <span>INTO</span> <span>replication_test</span> <span>VALUES</span> <span>(</span><span>1</span><span>,</span> <span>'Replication is working'</span><span>);</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Now check the slave. Log into the slave MySQL and run:<br />
-</p>
-
-<div>
+</div> <p>Now check the slave. Log into the slave MySQL and run:<br>
+</p> <div>
 <pre><code><span>USE</span> <span>production_db</span><span>;</span>
 <span>SELECT</span> <span>*</span> <span>FROM</span> <span>replication_test</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>You should see the same data. The table and row should appear on the slave within seconds. If you don't see it, replication is not working properly. Go back and check the slave status with <code>SHOW SLAVE STATUS\G</code>.</p>
-
-<p>Try updating and deleting rows on the master. All changes should replicate to the slave. But remember: never write data directly to the slave. The slave should be read-only except for replication. You can enforce this by adding <code>read_only=1</code> to the slave's MySQL configuration.</p>
-
-<h2>
-  <a name="common-replication-issues" href="#common-replication-issues">
-  </a>
-  Common replication issues
-</h2>
-
-<p>The most frequent problem is replication stopping after a while. This usually happens when a query succeeds on the master but fails on the slave. For example, if you have a unique key constraint and somehow the same value gets inserted twice (maybe from manual changes to the slave).</p>
-
-<p>When replication stops, <code>SHOW SLAVE STATUS\G</code> will show an error message. Read it carefully. It tells you exactly what query failed and why. Sometimes you can skip the problematic query:<br />
-</p>
-
-<div>
+</div> <p>You should see the same data. The table and row should appear on the slave within seconds. If you don't see it, replication is not working properly. Go back and check the slave status with <code>SHOW SLAVE STATUS\G</code>.</p> <p>Try updating and deleting rows on the master. All changes should replicate to the slave. But remember: never write data directly to the slave. The slave should be read-only except for replication. You can enforce this by adding <code>read_only=1</code> to the slave's MySQL configuration.</p> <h2> <a name="common-replication-issues" href="#common-replication-issues"> </a> Common replication issues
+</h2> <p>The most frequent problem is replication stopping after a while. This usually happens when a query succeeds on the master but fails on the slave. For example, if you have a unique key constraint and somehow the same value gets inserted twice (maybe from manual changes to the slave).</p> <p>When replication stops, <code>SHOW SLAVE STATUS\G</code> will show an error message. Read it carefully. It tells you exactly what query failed and why. Sometimes you can skip the problematic query:<br>
+</p> <div>
 <pre><code><span>STOP</span> <span>SLAVE</span><span>;</span>
 <span>SET</span> <span>GLOBAL</span> <span>SQL_SLAVE_SKIP_COUNTER</span> <span>=</span> <span>1</span><span>;</span>
 <span>START</span> <span>SLAVE</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>This skips one event from the master. Use it carefully because you're intentionally making the slave different from the master. Only skip events if you understand why the error happened and know skipping won't cause data inconsistency.</p>
-
-<p>Another common issue is replication lag. The slave falls behind because it can't process changes fast enough. This happens when the master has high write load. The slave processes changes sequentially by default, while the master uses multiple threads.</p>
-
-<p>MySQL 8.0 supports parallel replication which helps a lot. Enable it on the slave:<br />
-</p>
-
-<div>
+</div> <p>This skips one event from the master. Use it carefully because you're intentionally making the slave different from the master. Only skip events if you understand why the error happened and know skipping won't cause data inconsistency.</p> <p>Another common issue is replication lag. The slave falls behind because it can't process changes fast enough. This happens when the master has high write load. The slave processes changes sequentially by default, while the master uses multiple threads.</p> <p>MySQL 8.0 supports parallel replication which helps a lot. Enable it on the slave:<br>
+</p> <div>
 <pre><code><span>STOP</span> <span>SLAVE</span><span>;</span>
 <span>SET</span> <span>GLOBAL</span> <span>slave_parallel_type</span> <span>=</span> <span>'LOGICAL_CLOCK'</span><span>;</span>
 <span>SET</span> <span>GLOBAL</span> <span>slave_parallel_workers</span> <span>=</span> <span>4</span><span>;</span>
 <span>START</span> <span>SLAVE</span><span>;</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>This allows the slave to use 4 threads for applying changes. Adjust the number based on your slave server's CPU cores.</p>
-
-<h2>
-  <a name="replication-vs-backups" href="#replication-vs-backups">
-  </a>
-  Replication vs backups
-</h2>
-
-<p>Here's something important to understand: replication is not a backup solution. New MySQL administrators often confuse the two. Replication creates live copies of your data, but if you accidentally drop a table on the master, that drop command replicates instantly to all slaves.</p>
-
-<div><table>
+</div> <p>This allows the slave to use 4 threads for applying changes. Adjust the number based on your slave server's CPU cores.</p> <h2> <a name="replication-vs-backups" href="#replication-vs-backups"> </a> Replication vs backups
+</h2> <p>Here's something important to understand: replication is not a backup solution. New MySQL administrators often confuse the two. Replication creates live copies of your data, but if you accidentally drop a table on the master, that drop command replicates instantly to all slaves.</p> <div><table>
 <thead>
 <tr>
 <th>Feature</th>
@@ -655,76 +231,28 @@ Slave_SQL_Running: Yes
 <td>Yes</td>
 </tr>
 </tbody>
-</table></div>
-
-<p>You need both. Use replication for availability and performance. Use proper backups for actual data protection. Databasus handles MySQL backups with scheduled dumps, compression and storage to S3 or other locations. It's an industry standard for MySQL backup tools and works alongside replication without issues.</p>
-
-<h2>
-  <a name="monitoring-replication-health" href="#monitoring-replication-health">
-  </a>
-  Monitoring replication health
-</h2>
-
-<p>Set up monitoring for replication status. At minimum, check these metrics every few minutes:</p>
-
-<ul>
+</table></div> <p>You need both. Use replication for availability and performance. Use proper backups for actual data protection. Databasus handles MySQL backups with scheduled dumps, compression and storage to S3 or other locations. It's an industry standard for MySQL backup tools and works alongside replication without issues.</p> <h2> <a name="monitoring-replication-health" href="#monitoring-replication-health"> </a> Monitoring replication health
+</h2> <p>Set up monitoring for replication status. At minimum, check these metrics every few minutes:</p> <ul>
 <li>
 <code>Slave_IO_Running</code> and <code>Slave_SQL_Running</code> must be "Yes"</li>
 <li>
 <code>Seconds_Behind_Master</code> should stay low (under 10 seconds for most applications)</li>
 <li>
 <code>Last_Error</code> should be empty</li>
-</ul>
-
-<p>Write a simple monitoring script:<br />
-</p>
-
-<div>
+</ul> <p>Write a simple monitoring script:<br>
+</p> <div>
 <pre><code><span>#!/bin/bash</span>
-<span>SLAVE_STATUS</span><span>=</span><span>$(</span>mysql <span>-u</span> root <span>-p</span><span>'password'</span> <span>-e</span> <span>"SHOW SLAVE STATUS</span><span>\G</span><span>"</span><span>)</span>
-
-<span>IO_RUNNING</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$SLAVE_STATUS</span><span>"</span> | <span>grep</span> <span>"Slave_IO_Running:"</span> | <span>awk</span> <span>'{print $2}'</span><span>)</span>
+<span>SLAVE_STATUS</span><span>=</span><span>$(</span>mysql <span>-u</span> root <span>-p</span><span>'password'</span> <span>-e</span> <span>"SHOW SLAVE STATUS</span><span>\G</span><span>"</span><span>)</span> <span>IO_RUNNING</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$SLAVE_STATUS</span><span>"</span> | <span>grep</span> <span>"Slave_IO_Running:"</span> | <span>awk</span> <span>'{print $2}'</span><span>)</span>
 <span>SQL_RUNNING</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$SLAVE_STATUS</span><span>"</span> | <span>grep</span> <span>"Slave_SQL_Running:"</span> | <span>awk</span> <span>'{print $2}'</span><span>)</span>
-<span>SECONDS_BEHIND</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$SLAVE_STATUS</span><span>"</span> | <span>grep</span> <span>"Seconds_Behind_Master:"</span> | <span>awk</span> <span>'{print $2}'</span><span>)</span>
-
-<span>if</span> <span>[</span> <span>"</span><span>$IO_RUNNING</span><span>"</span> <span>!=</span> <span>"Yes"</span> <span>]</span> <span>||</span> <span>[</span> <span>"</span><span>$SQL_RUNNING</span><span>"</span> <span>!=</span> <span>"Yes"</span> <span>]</span><span>;</span> <span>then
-  </span><span>echo</span> <span>"ALERT: Replication stopped"</span>
-  <span>exit </span>1
-<span>fi
-
-if</span> <span>[</span> <span>"</span><span>$SECONDS_BEHIND</span><span>"</span> <span>-gt</span> 60 <span>]</span><span>;</span> <span>then
-  </span><span>echo</span> <span>"WARNING: Replication lag is </span><span>$SECONDS_BEHIND</span><span> seconds"</span>
+<span>SECONDS_BEHIND</span><span>=</span><span>$(</span><span>echo</span> <span>"</span><span>$SLAVE_STATUS</span><span>"</span> | <span>grep</span> <span>"Seconds_Behind_Master:"</span> | <span>awk</span> <span>'{print $2}'</span><span>)</span> <span>if</span> <span>[</span> <span>"</span><span>$IO_RUNNING</span><span>"</span> <span>!=</span> <span>"Yes"</span> <span>]</span> <span>||</span> <span>[</span> <span>"</span><span>$SQL_RUNNING</span><span>"</span> <span>!=</span> <span>"Yes"</span> <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>"ALERT: Replication stopped"</span> <span>exit </span>1
+<span>fi if</span> <span>[</span> <span>"</span><span>$SECONDS_BEHIND</span><span>"</span> <span>-gt</span> 60 <span>]</span><span>;</span> <span>then </span><span>echo</span> <span>"WARNING: Replication lag is </span><span>$SECONDS_BEHIND</span><span> seconds"</span>
 <span>fi</span>
 </code></pre>
 <div>
-<p>
-    Enter fullscreen mode
-    
-
-
-    Exit fullscreen mode
-    
-
-
-</p>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
 </div>
-</div>
-
-
-
-<p>Run this script via cron every 5 minutes. Send alerts to your monitoring system or just email them. You need to know immediately if replication breaks.</p>
-
-<h2>
-  <a name="scaling-beyond-one-slave" href="#scaling-beyond-one-slave">
-  </a>
-  Scaling beyond one slave
-</h2>
-
-<p>Once you have one slave working, adding more is easy. Each additional slave follows the same process. Just remember to use a unique <code>server-id</code> for each slave.</p>
-
-<p>Some applications use multiple slaves for different purposes. One slave handles reporting queries that run for minutes. Another slave serves read traffic from the application. This prevents slow queries from affecting application performance.</p>
-
-<div><table>
+</div> <p>Run this script via cron every 5 minutes. Send alerts to your monitoring system or just email them. You need to know immediately if replication breaks.</p> <h2> <a name="scaling-beyond-one-slave" href="#scaling-beyond-one-slave"> </a> Scaling beyond one slave
+</h2> <p>Once you have one slave working, adding more is easy. Each additional slave follows the same process. Just remember to use a unique <code>server-id</code> for each slave.</p> <p>Some applications use multiple slaves for different purposes. One slave handles reporting queries that run for minutes. Another slave serves read traffic from the application. This prevents slow queries from affecting application performance.</p> <div><table>
 <thead>
 <tr>
 <th>Slave type</th>
@@ -749,24 +277,26 @@ if</span> <span>[</span> <span>"</span><span>$SECONDS_BEHIND</span><span>"</span
 <td>Delays replication during backup window</td>
 </tr>
 </tbody>
-</table></div>
-
-<p>You can also set up a delayed slave. This slave runs a few hours behind the master on purpose. If someone accidentally deletes data, you have a few hours to stop the delayed slave before the deletion replicates. Configure it with <code>CHANGE MASTER TO MASTER_DELAY = 10800</code> (3 hours in seconds).</p>
-
-<h2>
-  <a name="conclusion" href="#conclusion">
-  </a>
-  Conclusion
-</h2>
-
-<p>MySQL replication setup takes about 20 minutes once you know the steps. Configure the master to enable binary logging, create a replication user, capture the log position, set up the slave configuration, start replication and verify it works.</p>
-
-<p>The most common mistakes are using the wrong binary log position or having network connectivity issues. Take your time with step 3 and double-check the position values. Monitor your replication setup actively.</p>
-
-<p>And remember: replication provides high availability and read scaling, but it doesn't replace backups. Use both together for a robust database infrastructure.</p>
-
-
-            </div></div>
+</table></div> <p>You can also set up a delayed slave. This slave runs a few hours behind the master on purpose. If someone accidentally deletes data, you have a few hours to stop the delayed slave before the deletion replicates. Configure it with <code>CHANGE MASTER TO MASTER_DELAY = 10800</code> (3 hours in seconds).</p> <h2> <a name="conclusion" href="#conclusion"> </a> Conclusion
+</h2> <p>MySQL replication setup takes about 20 minutes once you know the steps. Configure the master to enable binary logging, create a replication user, capture the log position, set up the slave configuration, start replication and verify it works.</p> <p>The most common mistakes are using the wrong binary log position or having network connectivity issues. Take your time with step 3 and double-check the position values. Monitor your replication setup actively.</p> <p>And remember: replication provides high availability and read scaling, but it doesn't replace backups. Use both together for a robust database infrastructure.</p> </div></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apple @ Work: DDM OS Reminder 2.0 fixes the biggest flaw in Declarative Device Management software updates</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Apple @ Work: DDM OS Reminder 2.0 fixes the biggest flaw in Declarative Device Management software updates</h1>
+  <div class="metadata">
+    Source: 9to5Mac | Date: 2/14/2026 3:00:00 PM | Lang: EN |
+    <a href="https://9to5mac.com/2026/02/14/ddm-os-reminder-2-0/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/01/DDM-OS-Reminder.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""> </figure> <p><em><a href="https://mosyle.net/3RDn" target="_blank">Apple @ Work is exclusively brought to you by Mosyle</a>, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional-grade platform all the solutions necessary to seamlessly and automatically deploy, manage &amp; protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work-ready with no effort and at an affordable cost. <a href="https://mosyle.net/3RDn" target="_blank">Request your EXTENDED TRIAL</a> today and understand why Mosyle is everything you need to work with Apple</em>.</p> <p>Declarative Device Management is no longer the future of Apple device management for IT teams, it’s the present. There is no debate there. It moves the logic from the server to the device, making things faster, more autonomous, and more reliable. One of the best uses of DDM is managing software updates. You set a deadline, and the device enforces it. Coming from the legacy technology, DDM for software updates was a huge upgrade that really solved some major pain points.</p> <p><strong>About Apple @ Work:</strong> Bradley Chambers managed an enterprise IT network from 2009 to 2021. Through his experience deploying and managing firewalls, switches, a mobile device management system, enterprise grade Wi-Fi, 1000s of Macs, and 1000s of iPads, Bradley will highlight ways in which Apple IT managers deploy Apple devices, build networks to support them, train users, stories from the trenches of IT management, and ways Apple could improve its products for IT departments.</p> <figure><a href="https://mosyle.net/3RDn"><img src="https://9to5mac.com/wp-content/uploads/sites/6/2024/02/mosyle-banner-2024.webp?w=1024" alt=""></a></figure> <hr> <p>However, if you have deployed DDM macOS updates in production, you have probably noticed that Apple’s native notifications are subtle. End users often miss them, ignore them, or simply don’t realize a forced restart for the update is coming until it happens. <a href="https://snelson.us/2025/12/ddm-os-reminder-2-0-0/">DDM OS Reminder 2.0</a> is an incredible tool to fill the gap.</p> <h2>What problem does it solve?</h2> <p>If you are new to this solution, the concept is simple. Apple’s native DDM notifications are designed to be unintrusive, which is great for a home user but terrible for a knowledge worker who is about to lose unsaved work.</p> <p>DDM OS Reminder runs locally on the machine. It utilizes a <code>LaunchDaemon</code> to watch the <code>/var/log/install.log</code> file for specific entries that indicate a software update through DDM is pending and has an enforced deadline. When DDM OS Reminder sees that a deadline is approaching, it uses <a href="https://swiftdialog.app/">swiftDialog</a> to display a notification to the user.</p> <p>The key with DDM OS Reminder is that it’s “intelligently intrusive.” It attempts to detect whether someone is in an online meeting using Zoom or Teams before alerting the user, so you aren’t interrupting a presentation, etc. It gives the user a clear countdown and the ability to start the update on their own terms before the forced restart kicks in.</p> <h2>Version 2.0 brings new features</h2> <figure><img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/01/ddmOSReminder_swiftDialog_2.png.webp" alt=""></figure> <p>The initial version of DDM OS Reminder was excellent, but it required some manual work to get it up and running. You often had to edit the script directly to change settings, icons, or text. Version 2.0 changes that workflow entirely. Here’s what’s new:</p> <h3>Configuration Profile support</h3> <p>This is the headline feature. Instead of modifying the script, you can now deploy a standard <code>.mobileconfig</code> profile via your device management service to control the app’s behavior. This separates the logic from the configuration. You can update the messaging or the deadline threshold without redeploying the entire package to your users.</p> <h3>Demo mode</h3> <p>Testing update notifications can be difficult because you usually have to wait for an actual macOS update to be available. Version 2.0 introduces a “Demo Mode” that allows admins to simulate the experience. You can see exactly what your users will see without waiting for Apple to release a new update.</p> <h2>Refactored logic</h2> <p>The update also refines the “Blur Screen” feature. As the deadline gets closer, DDM OS Reminder can blur the user’s screen to capture their attention. In version 2.0, this logic has been moved to a seconds-based calculation rather than days, giving admins much tighter control over that final alerting experience.</p> <h2>Wrap up on DDM OS Reminder</h2> <p>With DDM as the modern standard for managing macOS software updates, you need a way to communicate with your users that matches the reliability of the enforcement. DDM OS Reminder takes the “surprise” out of forced reboots and gives your users clear information about what and why.</p> <p>You can learn more about DDM OS Reminder and the 2.X update on <a href="https://snelson.us/2026/02/ddm-os-reminder-2-4-0/">Dan’s website</a>. He also notes that version 3.0.0, currently in its first alpha release, will support multiple languages.</p> <p><em><a href="https://mosyle.net/3RDn" target="_blank">Apple @ Work is exclusively brought to you by Mosyle</a>, the only Apple Unified Platform. Mosyle is the only solution that integrates in a single professional-grade platform all the solutions necessary to seamlessly and automatically deploy, manage &amp; protect Apple devices at work. Over 45,000 organizations trust Mosyle to make millions of Apple devices work-ready with no effort and at an affordable cost. <a href="https://mosyle.net/3RDn" target="_blank">Request your EXTENDED TRIAL</a> today and understand why Mosyle is everything you need to work with Apple</em>. </p> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

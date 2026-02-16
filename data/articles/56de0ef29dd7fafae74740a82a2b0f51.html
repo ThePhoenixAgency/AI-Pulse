@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -287,7 +292,7 @@ x64\Release\cli-transcriber.exe --model-path <span>&lt;</span>path from the down
 <p>To give it a try for yourself, run this built-in example:</p>
 <div><pre>python -m moonshine_voice.intent_recognizer</pre></div>
 <p>This will present you with a menu of command phrases, and then start listening to the microphone. If you say something that's a variant on one of the phrases you'll see a "triggered" log message telling you which action was matched, along with how confident the system is in the match.</p>
-<div><pre>📝 Let there be light.
+<div><pre> Let there be light.
 <span><span>'</span>TURN ON THE LIGHTS<span>'</span></span> triggered by <span><span>'</span>Let there be light.<span>'</span></span> with 76% confidence</pre></div>
 <p>To show that you can modify these at run time, try supplying your own list of phrases as a comma-separated string argument to <code>--intents</code>.</p>
 <div><pre>python -m moonshine_voice.intent_recognizer --intents <span><span>"</span>Turn left, turn right, go backwards, go forward<span>"</span></span></pre></div>

@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -160,7 +165,7 @@ ping -M do -s 8972 10.0.2.1    # Gateway salle 2 - ÉCHEC
   </li>
 </ul>
 
-<div><p>☢️</p><p>Surveillez particulièrement les interfaces exposées à des MTU variables (connexions WAN, VPN).</p></div><h3><strong><em>Que faire si j'ai un mélange d'équipements anciens et récents ?</em></strong></h3><p>Si certains équipements ne supportent pas les Jumbo Frames, vous avez deux options :</p><ol><li><strong>Segmentation réseau</strong> : Créez des VLANs séparés avec MTU 9000 pour les équipements modernes (stockage, virtualisation) et gardez MTU 1500 pour le reste</li><li><strong>Maintenir MTU 1500 partout</strong> : Solution la plus simple et fiable si les gains de performance ne justifient pas l'investissement dans de nouveaux équipements</li></ol><p>La cohabitation de différents MTU sur un même chemin réseau est possible mais complexe à gérer et source d'erreurs. Privilégiez l'homogénéité.</p><h3><strong><em>Les conteneurs Docker sont-ils affectés par le MTU ?</em></strong></h3><p>Oui, absolument. Docker utilise des réseaux virtuels (bridge par défaut) qui héritent du MTU de l'interface hôte, mais peuvent aussi ajouter de l'overhead d'encapsulation (overlay networks). Si votre hôte utilise un MTU 9000, configurez le MTU Docker à environ 8950 pour tenir compte de l'encapsulation. Modifiez <em>/etc/docker/daemon.json</em> :</p>
+<div><p></p><p>Surveillez particulièrement les interfaces exposées à des MTU variables (connexions WAN, VPN).</p></div><h3><strong><em>Que faire si j'ai un mélange d'équipements anciens et récents ?</em></strong></h3><p>Si certains équipements ne supportent pas les Jumbo Frames, vous avez deux options :</p><ol><li><strong>Segmentation réseau</strong> : Créez des VLANs séparés avec MTU 9000 pour les équipements modernes (stockage, virtualisation) et gardez MTU 1500 pour le reste</li><li><strong>Maintenir MTU 1500 partout</strong> : Solution la plus simple et fiable si les gains de performance ne justifient pas l'investissement dans de nouveaux équipements</li></ol><p>La cohabitation de différents MTU sur un même chemin réseau est possible mais complexe à gérer et source d'erreurs. Privilégiez l'homogénéité.</p><h3><strong><em>Les conteneurs Docker sont-ils affectés par le MTU ?</em></strong></h3><p>Oui, absolument. Docker utilise des réseaux virtuels (bridge par défaut) qui héritent du MTU de l'interface hôte, mais peuvent aussi ajouter de l'overhead d'encapsulation (overlay networks). Si votre hôte utilise un MTU 9000, configurez le MTU Docker à environ 8950 pour tenir compte de l'encapsulation. Modifiez <em>/etc/docker/daemon.json</em> :</p>
 
 <pre><code>
 {

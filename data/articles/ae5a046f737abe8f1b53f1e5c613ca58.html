@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>How to bring back macOS Launchpad with this neat command-line tool</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>How to bring back macOS Launchpad with this neat command-line tool</h1>
+  <div class="metadata">
+    Source: AppleInsider | Date: 2/11/2026 5:10:27 AM | Lang: EN |
+    <a href="https://appleinsider.com/inside/macos-tahoe/tips/how-to-bring-back-macos-launchpad-with-this-neat-command-line-tool?utm_source=rss" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Apple power users on <a href="https://appleinsider.com/inside/macos-tahoe">macOS Tahoe</a> are deliberately undoing parts of Apple's latest interface overhaul in order to remove the Liquid Glass design.
+</p><p>There's an unofficial workaround that brings back the classic Launchpad app grid and reduces Liquid Glass's heavy translucency. The tool allows users to enjoy macOS Tahoe's performance and feature updates without fully embracing its new visual style.
+</p><p>Liquid Glass looks polished in screenshots and marketing videos, with layered blur and reflections giving a sense of depth and motion. In daily use, those effects can feel intrusive, particularly on large displays or detailed wallpapers.
+</p><p>Menus and controls lose contrast, and text has to compete with background content. The interface demands more visual attention than many productivity-focused users are willing to give.
+</p><p>The familiar full-screen grid of apps in Launchpad, manually organized into pages and folders, is replaced by Spotlight's expanded search experience and an <a href="https://appleinsider.com/inside/ios">iOS</a>-style App Library that automatically categorizes applications. Spotlight is more capable now, and some users find it faster than browsing.
+</p><p>However, it also shifts focus away from visual memory and hands-on organization, which have been central to many longstanding Mac workflows.
+</p><p>Apple doesn't provide a system setting to reverse changes like bringing back Launchpad or disabling Liquid Glass. Because of this, users who are comfortable with technology are turning to community-developed tools.
+</p><p>These tools selectively roll back specific design decisions without permanently altering macOS.
+</p><h2>Why Apple moved away from Launchpad</h2><p>Apple has been integrating app discovery into Spotlight across macOS, iOS, and iPadOS for years. Spotlight has evolved from a simple file search tool into a systemwide launcher and content index, absorbing features that once lived in separate interfaces.
+</p><p>On macOS, recent updates emphasize Spotlight actions, inline results, and contextual suggestions, reducing reliance on dedicated launch views like Launchpad. This change mirrors Apple's approach on iOS and iPadOS, where App Library replaced manual home screen organization as the default app-management model.
+</p><p>The approach prioritizes search-first navigation as app libraries grow and reduces the need for users to manage visual layouts. For longtime Mac users, the shift trades discoverability and visual memory for speed, offering fewer options for those who prefer browsing over typing.
+</p><h2>What the Undye workaround actually does</h2><p>The solution most users have converged on is an open-source tool called Undye, available on GitHub at <a href="https://github.com/nfzerox/launchbad-revived">Launchpad Revived</a>. Undye automates the entire process and makes each step explicit.
+</p><p>Under the hood, Undye replaces macOS Tahoe's Dock with an older Apple-signed Dock binary from an early macOS 26 beta, back when Launchpad was still part of the system. A binary is a compiled system executable, and in this case it's one produced and signed by Apple itself, not modified or patched by a third party.
+</p><p>Undye also reinstalls the Launchpad app, which Apple removed from later macOS Tahoe builds.
+</p><p>Because these components are authentic and unaltered, macOS recognizes them as legitimate system software. It avoids code injection, memory patching, or hidden feature flags.
+</p><p>Launchpad is restored and behaves as it did in earlier macOS versions, with reduced translucency across menus, Control Center, and other system panels.
+</p><p><a href="https://photos5.appleinsider.com/gallery/66342-139704-iFrameScreenshot---2426,-447-PM-2-xl.jpg" target="_blank"><img src="https://photos5.appleinsider.com/gallery/66342-139704-iFrameScreenshot---2426,-447-PM-2-xl.jpg" alt="macOS Launchpad showing a full-screen grid of colorful app icons arranged in rows on a blue gradient background with the Dock visible at the bottom."></a><span>Launchpad as it appeared before macOS Tahoe</span></p><p>This approach isn't supported by Apple, and a future macOS update could break compatibility. However, because Undye relies on Apple-signed binaries rather than exploits or hacks, it has remained functional through several macOS Tahoe updates.
+</p><p>If Apple tightens validation around Dock components, users would need to remove the workaround before updating.
+</p><h2>Who should and should not attempt this</h2><p>This workaround is intended for personal Macs that users fully own and administer themselves. It's best suited for people comfortable working in macOS Recovery, entering Terminal commands, and maintaining reliable system backups.
+</p><p>It should not be used on work-issued Macs, managed systems, or devices governed by mobile device management policies. Anyone uncomfortable temporarily disabling System Integrity Protection or restoring from a backup should avoid the process altogether.
+</p><p>Because Undye modifies system files, Apple doesn't support the configuration. Apple Support may ask users to revert the changes before troubleshooting unrelated hardware or software issues.
+</p><h2>Step one: download Undye</h2><p>Open a web browser and navigate to the Undye GitHub repository at <a href="https://github.com/nfzerox/launchbad-revived">GitHub</a>. Click the Code button and download the project as a ZIP file.
+</p><p>ZIP preserves file permissions and ensures you receive the complete, unmodified project. After downloading, extract the archive and move the resulting folder to a convenient location, such as a newly created folder inside Downloads.
+</p><p>The extracted folder contains a single script along with the Apple-signed system components Undye installs during the process.
+</p><h2>Step two: disable System Integrity Protection</h2><p>System Integrity Protection prevents modification of critical macOS components and must be disabled temporarily for the workaround to function.
+</p><ol> <li>Restart the Mac.</li> <li>Enter macOS Recovery.</li> <li>On Intel Macs, immediately press and hold Command + R until the Apple logo or spinning globe appears.</li> <li>On <a href="https://appleinsider.com/inside/apple-silicon">Apple Silicon</a> Macs, shut down the Mac, then press and hold the power button until "Loading startup options" appears, select Options, and click Continue.</li> <li>Once the macOS Utilities screen appears, open Terminal from the Utilities menu.</li>
+</ol><p>In Terminal, enter:
+</p><p><code>csrutil disable</code>
+</p><p>After receiving confirmation, restart the Mac normally.
+</p><h2>Step three: run the Undye script</h2><p>Open Terminal in macOS and navigate to the extracted Undye folder. Carefully copy and paste the command below, making sure it's entered exactly as written.
+</p><p><code>sudo ./launchpad</code>
+</p><p>Enter your administrator password when prompted. The script replaces the Dock, reinstalls Launchpad, and restarts the necessary system services automatically.
+</p><p>During execution, Undye prints code-signing information so users can confirm that the installed components are signed by Apple.
+</p><h2>Confirming Launchpad and reduced translucency</h2><p>Once the script finishes, Launchpad should appear in the Dock or respond to its usual keyboard shortcut. Opening it reveals the same paginated grid of apps with folder support that longtime Mac users expect.
+</p><p>System UI elements such as Control Center and menus should appear more opaque and readable than before. Additional opacity can be enabled separately using the Reduce Transparency option in System Settings under Accessibility, which is independent of Undye.
+</p><div><p><a href="https://photos5.appleinsider.com/gallery/66342-139703-iFrameScreenshot---2426,-447-PM-xl.jpg" target="_blank"><img src="https://photos5.appleinsider.com/gallery/66342-139703-iFrameScreenshot---2426,-447-PM-xl.jpg" alt="macOS Tahoe desktop showing Spotlight-based app browsing with translucent interface elements."></a></p><p><span>Spotlight and App Library remain available alongside restored Launchpad</span></p></div><p>Dynamic icons such as Calendar appear static within Launchpad, as they did in older macOS versions. Minor visual quirks may appear in some Finder views or system panels, but these are cosmetic and don't affect core functionality.
+</p><h2>Re-enabling System Integrity Protection</h2><p>After confirming everything works as expected, System Integrity Protection should be re-enabled.
+</p><p>Restart into macOS Recovery, open Terminal, and run:
+</p><p><code>csrutil enable</code>
+</p><p>Restart the Mac normally. The restored Dock and Launchpad continue working with System Integrity Protection enabled.
+</p><p>The Undye script is fully reversible. Running the same script again with System Integrity Protection disabled restores Apple's original Dock and removes Launchpad.
+</p><p>After reverting, users can re-enable System Integrity Protection and return to macOS Tahoe's default Liquid Glass interface and Spotlight-based app launching. Apple may change or block this behavior in future releases, so users should reassess compatibility before major system updates.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

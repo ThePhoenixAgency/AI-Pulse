@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -869,7 +874,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>album</td><td>✅ Verified</td><td>Album name</td></tr><tr><td>album_uri</td><td>✅ Verified</td><td>Spotify URI for the album</td></tr><tr><td>artist</td><td>✅ Verified</td><td>Artist name</td></tr><tr><td>artist_uri</td><td>✅ Verified</td><td>Spotify URI for the artist</td></tr><tr><td>duration_ms</td><td>✅ Verified</td><td>Track length in milliseconds</td></tr><tr><td>release_date</td><td>✅ Verified</td><td>Release date, supports arbitrary cutoffs</td></tr><tr><td>popularity</td><td>✅ Verified</td><td>0–100 index. Proxy for streams, not a precise count</td></tr><tr><td>explicit</td><td>✅ Verified</td><td>Boolean flag for explicit content</td></tr><tr><td>genre</td><td>✅ Verified</td><td>Genre tags for track/artist</td></tr><tr><td>language_of_performance</td><td>✅ Verified</td><td>Language code. “zxx” (no linguistic content) used as instrumentalness proxy</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>album</td><td> Verified</td><td>Album name</td></tr><tr><td>album_uri</td><td> Verified</td><td>Spotify URI for the album</td></tr><tr><td>artist</td><td> Verified</td><td>Artist name</td></tr><tr><td>artist_uri</td><td> Verified</td><td>Spotify URI for the artist</td></tr><tr><td>duration_ms</td><td> Verified</td><td>Track length in milliseconds</td></tr><tr><td>release_date</td><td> Verified</td><td>Release date, supports arbitrary cutoffs</td></tr><tr><td>popularity</td><td> Verified</td><td>0–100 index. Proxy for streams, not a precise count</td></tr><tr><td>explicit</td><td> Verified</td><td>Boolean flag for explicit content</td></tr><tr><td>genre</td><td> Verified</td><td>Genre tags for track/artist</td></tr><tr><td>language_of_performance</td><td> Verified</td><td>Language code. “zxx” (no linguistic content) used as instrumentalness proxy</td></tr></tbody></table></figure>
 
 
 
@@ -877,7 +882,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>energy</td><td>✅ Verified</td><td>Available as filterable field</td></tr><tr><td>tempo</td><td>✅ Verified</td><td>BPM, available as filterable field</td></tr><tr><td>key / mode</td><td>❌ Unavailable</td><td>“Would have to infer from knowledge; no verified field”</td></tr><tr><td>danceability</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>valence</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>acousticness</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>speechiness</td><td>❌ Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>instrumentalness</td><td>❌ Unavailable</td><td>Replaced by language_of_performance == “zxx” workaround</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>energy</td><td> Verified</td><td>Available as filterable field</td></tr><tr><td>tempo</td><td> Verified</td><td>BPM, available as filterable field</td></tr><tr><td>key / mode</td><td> Unavailable</td><td>“Would have to infer from knowledge; no verified field”</td></tr><tr><td>danceability</td><td> Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>valence</td><td> Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>acousticness</td><td> Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>speechiness</td><td> Unavailable</td><td>Not exposed despite existing in Spotify’s public API</td></tr><tr><td>instrumentalness</td><td> Unavailable</td><td>Replaced by language_of_performance == “zxx” workaround</td></tr></tbody></table></figure>
 
 
 
@@ -885,7 +890,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>user_play_count</td><td>✅ Verified</td><td>Total plays per track. Observed: 122, 210, 276</td></tr><tr><td>user_ms_played</td><td>✅ Verified</td><td>Total milliseconds streamed per track, album, artist</td></tr><tr><td>user_skip_count</td><td>✅ Verified</td><td>Total skips per track. Observed: 64, 86</td></tr><tr><td>user_saved</td><td>✅ Verified</td><td>Whether track is in Liked Songs</td></tr><tr><td>user_saved_album</td><td>✅ Verified</td><td>Whether the album is saved to library</td></tr><tr><td>user_saved_date</td><td>✅ Verified</td><td>Timestamp of when the track/album was saved</td></tr><tr><td>user_first_played</td><td>✅ Verified</td><td>Timestamp of first play</td></tr><tr><td>user_last_played</td><td>✅ Verified</td><td>Timestamp of most recent play</td></tr><tr><td>user_days_since_played</td><td>✅ Verified</td><td>Pre-computed convenience field for recency filtering</td></tr><tr><td>user_streamed_track</td><td>✅ Verified</td><td>Boolean: ever streamed this track</td></tr><tr><td>user_streamed_track_recently</td><td>✅ Verified</td><td>Boolean: streamed in approx. last 6 months</td></tr><tr><td>user_streamed_artist</td><td>✅ Verified</td><td>Boolean: ever streamed this artist</td></tr><tr><td>user_streamed_artist_recently</td><td>✅ Verified</td><td>Boolean: streamed this artist recently</td></tr><tr><td>user_added_at</td><td>✅ Verified</td><td>When a track was added to a playlist</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>user_play_count</td><td> Verified</td><td>Total plays per track. Observed: 122, 210, 276</td></tr><tr><td>user_ms_played</td><td> Verified</td><td>Total milliseconds streamed per track, album, artist</td></tr><tr><td>user_skip_count</td><td> Verified</td><td>Total skips per track. Observed: 64, 86</td></tr><tr><td>user_saved</td><td> Verified</td><td>Whether track is in Liked Songs</td></tr><tr><td>user_saved_album</td><td> Verified</td><td>Whether the album is saved to library</td></tr><tr><td>user_saved_date</td><td> Verified</td><td>Timestamp of when the track/album was saved</td></tr><tr><td>user_first_played</td><td> Verified</td><td>Timestamp of first play</td></tr><tr><td>user_last_played</td><td> Verified</td><td>Timestamp of most recent play</td></tr><tr><td>user_days_since_played</td><td> Verified</td><td>Pre-computed convenience field for recency filtering</td></tr><tr><td>user_streamed_track</td><td> Verified</td><td>Boolean: ever streamed this track</td></tr><tr><td>user_streamed_track_recently</td><td> Verified</td><td>Boolean: streamed in approx. last 6 months</td></tr><tr><td>user_streamed_artist</td><td> Verified</td><td>Boolean: ever streamed this artist</td></tr><tr><td>user_streamed_artist_recently</td><td> Verified</td><td>Boolean: streamed this artist recently</td></tr><tr><td>user_added_at</td><td> Verified</td><td>When a track was added to a playlist</td></tr></tbody></table></figure>
 
 
 
@@ -893,7 +898,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>source</td><td>✅ Verified</td><td>Play source: playlist, album, radio, autoplay, etc.</td></tr><tr><td>source_index</td><td>✅ Verified</td><td>Position within the source</td></tr><tr><td>matched_playlist_name</td><td>✅ Verified</td><td>Which playlist a track belongs to. No cross-playlist aggregation.</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>source</td><td> Verified</td><td>Play source: playlist, album, radio, autoplay, etc.</td></tr><tr><td>source_index</td><td> Verified</td><td>Position within the source</td></tr><tr><td>matched_playlist_name</td><td> Verified</td><td>Which playlist a track belongs to. No cross-playlist aggregation.</td></tr></tbody></table></figure>
 
 
 
@@ -901,7 +906,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>period_ms_played</td><td>✅ Verified</td><td>Milliseconds played within a rolling time window</td></tr><tr><td>period_plays</td><td>✅ Verified</td><td>Play count within a rolling time window</td></tr><tr><td>period_skips</td><td>✅ Verified</td><td>Skip count within a rolling time window</td></tr><tr><td>period_total</td><td>✅ Verified</td><td>Total engagement metric within a rolling time window</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>period_ms_played</td><td> Verified</td><td>Milliseconds played within a rolling time window</td></tr><tr><td>period_plays</td><td> Verified</td><td>Play count within a rolling time window</td></tr><tr><td>period_skips</td><td> Verified</td><td>Skip count within a rolling time window</td></tr><tr><td>period_total</td><td> Verified</td><td>Total engagement metric within a rolling time window</td></tr></tbody></table></figure>
 
 
 
@@ -909,7 +914,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>title_query</td><td>✅ Verified</td><td>Fuzzy text matching on track titles</td></tr><tr><td>artist_query</td><td>✅ Verified</td><td>Fuzzy text matching on artist names</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Description</strong></td></tr><tr><td>title_query</td><td> Verified</td><td>Fuzzy text matching on track titles</td></tr><tr><td>artist_query</td><td> Verified</td><td>Fuzzy text matching on artist names</td></tr></tbody></table></figure>
 
 
 
@@ -917,7 +922,7 @@
 
 
 
-<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Notes</strong></td></tr><tr><td>Global stream counts</td><td>❌ Unavailable</td><td>Cannot filter by exact play count (e.g., “under 10M streams”)</td></tr><tr><td>Cross-playlist count</td><td>❌ Unavailable</td><td>Cannot count how many playlists a track appears in</td></tr><tr><td>Family/household data</td><td>❌ Unavailable</td><td>Cannot access other users’ listening data</td></tr><tr><td>Download status</td><td>⚠️ Unreliable</td><td>Agent served results but most tracks lacked download indicators. Likely device-local.</td></tr></tbody></table></figure>
+<figure><table><tbody><tr><td><strong>Field</strong></td><td><strong>Status</strong></td><td><strong>Notes</strong></td></tr><tr><td>Global stream counts</td><td> Unavailable</td><td>Cannot filter by exact play count (e.g., “under 10M streams”)</td></tr><tr><td>Cross-playlist count</td><td> Unavailable</td><td>Cannot count how many playlists a track appears in</td></tr><tr><td>Family/household data</td><td> Unavailable</td><td>Cannot access other users’ listening data</td></tr><tr><td>Download status</td><td> Unreliable</td><td>Agent served results but most tracks lacked download indicators. Likely device-local.</td></tr></tbody></table></figure>
 </div></div>
   </div>
 </body>

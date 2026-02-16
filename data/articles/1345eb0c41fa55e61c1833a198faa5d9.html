@@ -13,12 +13,17 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
   <h1>GitHub - ruvnet/wifi-densepose: Production-ready implementation of InvisPose - a revolutionary WiFi-based dense human pose estimation system that enables real-time full-body tracking through walls using commodity mesh routers</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: Invalid Date | Lang: EN |
+    Source: GitHub Trending | Date: Invalid Date | Lang: EN |
     <a href="https://github.com/ruvnet/wifi-densepose" target="_blank">Original Article</a>
   </div>
   <div class="content">
@@ -31,7 +36,7 @@
 <a href="https://github.com/ruvnet/wifi-densepose"><img src="https://camo.githubusercontent.com/b3545ae1bcdb4ea486f71f87b43001e82dd21933bc8035d44601706c851265da/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f636f7665726167652d3130302532352d627269676874677265656e2e737667" alt="Test Coverage" /></a>
 <a href="https://hub.docker.com/r/ruvnet/wifi-densepose"><img src="https://camo.githubusercontent.com/7aa3db3a76815f8fcf908306a6362b4d888fb1666e3ca528782576d6da67b986/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f646f636b65722d72656164792d626c75652e737667" alt="Docker" /></a></p>
 <p>A cutting-edge WiFi-based human pose estimation system that leverages Channel State Information (CSI) data and advanced machine learning to provide real-time, privacy-preserving pose detection without cameras.</p>
-<p></p><h2>🚀 Key Features</h2><a href="#-key-features"></a><p></p>
+<p></p><h2> Key Features</h2><a href="#-key-features"></a><p></p>
 <ul>
 <li><strong>Privacy-First</strong>: No cameras required - uses WiFi signals for pose detection</li>
 <li><strong>Real-Time Processing</strong>: Sub-50ms latency with 30 FPS pose estimation</li>
@@ -43,7 +48,7 @@
 <li><strong>WebSocket Streaming</strong>: Real-time pose data streaming for live applications</li>
 <li><strong>100% Test Coverage</strong>: Thoroughly tested with comprehensive test suite</li>
 </ul>
-<p></p><h2>🦀 Rust Implementation (v2)</h2><a href="#-rust-implementation-v2"></a><p></p>
+<p></p><h2> Rust Implementation (v2)</h2><a href="#-rust-implementation-v2"></a><p></p>
 <p>A high-performance Rust port is available in <code>/rust-port/wifi-densepose-rs/</code>:</p>
 <p></p><h3>Performance Benchmarks (Validated)</h3><a href="#performance-benchmarks-validated"></a><p></p>
 <table>
@@ -132,8 +137,8 @@
 </tr>
 <tr>
 <td>WASM Support</td>
-<td>❌</td>
-<td>✅</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>Binary Size</td>
@@ -155,14 +160,14 @@ cargo bench --package wifi-densepose-signal</pre></div>
 <p></p><h3>Validation Tests</h3><a href="#validation-tests"></a><p></p>
 <p>Mathematical correctness validated:</p>
 <ul>
-<li>✅ Phase unwrapping: 0.000000 radians max error</li>
-<li>✅ Amplitude RMS: Exact match</li>
-<li>✅ Doppler shift: 33.33 Hz (exact)</li>
-<li>✅ Correlation: 1.0 for identical signals</li>
-<li>✅ Phase coherence: 1.0 for coherent signals</li>
+<li> Phase unwrapping: 0.000000 radians max error</li>
+<li> Amplitude RMS: Exact match</li>
+<li> Doppler shift: 33.33 Hz (exact)</li>
+<li> Correlation: 1.0 for identical signals</li>
+<li> Phase coherence: 1.0 for coherent signals</li>
 </ul>
 <p>See <a href="https://github.com/ruvnet/wifi-densepose/blob/main/rust-port/wifi-densepose-rs/docs">Rust Port Documentation</a> for ADRs and DDD patterns.</p>
-<p></p><h2>🚨 WiFi-Mat: Disaster Response Module</h2><a href="#-wifi-mat-disaster-response-module"></a><p></p>
+<p></p><h2> WiFi-Mat: Disaster Response Module</h2><a href="#-wifi-mat-disaster-response-module"></a><p></p>
 <p>A specialized extension for <strong>search and rescue operations</strong> - detecting and localizing survivors trapped in rubble, earthquakes, and natural disasters.</p>
 <p></p><h3>Key Capabilities</h3><a href="#key-capabilities"></a><p></p>
 <table>
@@ -226,11 +231,11 @@ response<span>.</span><span>start_scanning</span><span>(</span><span>)</span><sp
 <div><pre><span>cd</span> rust-port/wifi-densepose-rs
 cargo build --release --package wifi-densepose-mat
 cargo <span>test</span> --package wifi-densepose-mat</pre></div>
-<p></p><h2>📋 Table of Contents</h2><a href="#-table-of-contents"></a><p></p>
+<p></p><h2> Table of Contents</h2><a href="#-table-of-contents"></a><p></p>
 <table>
 <tbody><tr>
 <td>
-<p><strong>🚀 Getting Started</strong></p>
+<p><strong> Getting Started</strong></p>
 <ul>
 <li><a href="#-key-features">Key Features</a></li>
 <li><a href="#-rust-implementation-v2">Rust Implementation (v2)</a></li>
@@ -253,7 +258,7 @@ cargo <span>test</span> --package wifi-densepose-mat</pre></div>
 </ul>
 </li>
 </ul>
-<p><strong>🖥️ Usage &amp; Configuration</strong></p>
+<p><strong> Usage &amp; Configuration</strong></p>
 <ul>
 <li><a href="#%EF%B8%8F-cli-usage">CLI Usage</a>
 <ul>
@@ -281,7 +286,7 @@ cargo <span>test</span> --package wifi-densepose-mat</pre></div>
 </ul>
 </td>
 <td>
-<p><strong>⚙️ Advanced Topics</strong></p>
+<p><strong> Advanced Topics</strong></p>
 <ul>
 <li><a href="#%EF%B8%8F-configuration">Configuration</a>
 <ul>
@@ -306,7 +311,7 @@ cargo <span>test</span> --package wifi-densepose-mat</pre></div>
 </ul>
 </li>
 </ul>
-<p><strong>📊 Performance &amp; Community</strong></p>
+<p><strong> Performance &amp; Community</strong></p>
 <ul>
 <li><a href="#-performance-metrics">Performance Metrics</a>
 <ul>
@@ -330,7 +335,7 @@ cargo <span>test</span> --package wifi-densepose-mat</pre></div>
 </td>
 </tr>
 </tbody></table>
-<p></p><h2>🏗️ System Architecture</h2><a href="#️-system-architecture"></a><p></p>
+<p></p><h2> System Architecture</h2><a href="#-system-architecture"></a><p></p>
 <p>WiFi DensePose consists of several key components working together:</p>
 <div><pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   WiFi Router   │    │   WiFi Router   │    │   WiFi Router   │
@@ -376,7 +381,7 @@ cargo <span>test</span> --package wifi-densepose-mat</pre></div>
 <li><strong>WebSocket Streaming</strong>: Real-time pose data broadcasting</li>
 <li><strong>Analytics Engine</strong>: Advanced analytics including fall detection and activity recognition</li>
 </ul>
-<p></p><h2>📦 Installation</h2><a href="#-installation"></a><p></p>
+<p></p><h2> Installation</h2><a href="#-installation"></a><p></p>
 <p></p><h3>Using pip (Recommended)</h3><a href="#using-pip-recommended"></a><p></p>
 <p>WiFi-DensePose is now available on PyPI for easy installation:</p>
 <div><pre><span><span>#</span> Install the latest stable version</span>
@@ -406,7 +411,7 @@ docker run -p 8000:8000 ruvnet/wifi-densepose:latest</pre></div>
 <li><strong>Network</strong>: WiFi interface with CSI capability</li>
 <li><strong>GPU</strong>: Optional but recommended (NVIDIA GPU with CUDA support)</li>
 </ul>
-<p></p><h2>🚀 Quick Start</h2><a href="#-quick-start"></a><p></p>
+<p></p><h2> Quick Start</h2><a href="#-quick-start"></a><p></p>
 <p></p><h3>1. Basic Setup</h3><a href="#1-basic-setup"></a><p></p>
 <div><pre><span><span>#</span> Install the package</span>
 pip install wifi-densepose
@@ -464,7 +469,7 @@ wifi-densepose status</pre></div>
 
 <span># Run the streaming client</span>
 <span>asyncio</span>.<span>run</span>(<span>stream_poses</span>())</pre></div>
-<p></p><h2>🖥️ CLI Usage</h2><a href="#️-cli-usage"></a><p></p>
+<p></p><h2> CLI Usage</h2><a href="#-cli-usage"></a><p></p>
 <p>WiFi DensePose provides a comprehensive command-line interface for easy system management, configuration, and monitoring.</p>
 <p></p><h3>CLI Installation</h3><a href="#cli-installation"></a><p></p>
 <p>The CLI is automatically installed with the package:</p>
@@ -657,23 +662,23 @@ wifi-densepose db status
 <span><span>#</span> Restart services</span>
 wifi-densepose stop
 wifi-densepose start</pre></div>
-<p></p><h2>📚 Documentation</h2><a href="#-documentation"></a><p></p>
+<p></p><h2> Documentation</h2><a href="#-documentation"></a><p></p>
 <p>Comprehensive documentation is available to help you get started and make the most of WiFi-DensePose:</p>
-<p></p><h3>📖 Core Documentation</h3><a href="#-core-documentation"></a><p></p>
+<p></p><h3> Core Documentation</h3><a href="#-core-documentation"></a><p></p>
 <ul>
 <li><strong><a href="https://github.com/ruvnet/wifi-densepose/blob/main/docs/user_guide.md">User Guide</a></strong> - Complete guide covering installation, setup, basic usage, and examples</li>
 <li><strong><a href="https://github.com/ruvnet/wifi-densepose/blob/main/docs/api_reference.md">API Reference</a></strong> - Detailed documentation of all public classes, methods, and endpoints</li>
 <li><strong><a href="https://github.com/ruvnet/wifi-densepose/blob/main/docs/deployment.md">Deployment Guide</a></strong> - Production deployment, Docker setup, Kubernetes, and scaling strategies</li>
 <li><strong><a href="https://github.com/ruvnet/wifi-densepose/blob/main/docs/troubleshooting.md">Troubleshooting Guide</a></strong> - Common issues, solutions, and diagnostic procedures</li>
 </ul>
-<p></p><h3>🚀 Quick Links</h3><a href="#-quick-links"></a><p></p>
+<p></p><h3> Quick Links</h3><a href="#-quick-links"></a><p></p>
 <ul>
 <li><strong>Interactive API Docs</strong>: <a href="http://localhost:8000/docs">http://localhost:8000/docs</a> (when running)</li>
 <li><strong>Health Check</strong>: <a href="http://localhost:8000/api/v1/health">http://localhost:8000/api/v1/health</a></li>
 <li><strong>Latest Poses</strong>: <a href="http://localhost:8000/api/v1/pose/latest">http://localhost:8000/api/v1/pose/latest</a></li>
 <li><strong>System Status</strong>: <a href="http://localhost:8000/api/v1/system/status">http://localhost:8000/api/v1/system/status</a></li>
 </ul>
-<p></p><h3>📋 API Overview</h3><a href="#-api-overview"></a><p></p>
+<p></p><h3> API Overview</h3><a href="#-api-overview"></a><p></p>
 <p>The system provides a comprehensive REST API and WebSocket streaming:</p>
 <p></p><h4>Key REST Endpoints</h4><a href="#key-rest-endpoints"></a><p></p>
 <div><pre><span><span>#</span> Pose estimation</span>
@@ -708,7 +713,7 @@ ws:<span>//localhost:8000/ws/system/status</span><span></span></pre></div>
 <span>occupancy</span> <span>=</span> <span>client</span>.<span>get_zone_occupancy</span>(<span>"living_room"</span>)
 <span>print</span>(<span>f"Living room occupancy: <span><span>{</span><span>occupancy</span>.<span>person_count</span><span>}</span></span>"</span>)</pre></div>
 <p>For complete API documentation with examples, see the <a href="https://github.com/ruvnet/wifi-densepose/blob/main/docs/api_reference.md">API Reference Guide</a>.</p>
-<p></p><h2>🔧 Hardware Setup</h2><a href="#-hardware-setup"></a><p></p>
+<p></p><h2> Hardware Setup</h2><a href="#-hardware-setup"></a><p></p>
 <p></p><h3>Supported Hardware</h3><a href="#supported-hardware"></a><p></p>
 <p>WiFi DensePose works with standard WiFi equipment that supports CSI extraction:</p>
 <p></p><h4>Recommended Routers</h4><a href="#recommended-routers"></a><p></p>
@@ -751,7 +756,7 @@ sudo iwconfig wlan0 channel 6
 
 <span># Apply calibration</span>
 <span>calibrator</span>.<span>apply_calibration</span>()</pre></div>
-<p></p><h2>⚙️ Configuration</h2><a href="#️-configuration"></a><p></p>
+<p></p><h2> Configuration</h2><a href="#-configuration"></a><p></p>
 <p></p><h3>Environment Variables</h3><a href="#environment-variables"></a><p></p>
 <p>Copy <code>example.env</code> to <code>.env</code> and configure:</p>
 <div><pre><span><span>#</span> Application Settings</span>
@@ -840,7 +845,7 @@ ENABLE_HISTORICAL_DATA=true</pre></div>
         <span>"iou_threshold"</span>: <span>0.3</span>
     }
 )</pre></div>
-<p></p><h2>🧪 Testing</h2><a href="#-testing"></a><p></p>
+<p></p><h2> Testing</h2><a href="#-testing"></a><p></p>
 <p>WiFi DensePose maintains 100% test coverage with comprehensive testing:</p>
 <p></p><h3>Running Tests</h3><a href="#running-tests"></a><p></p>
 <div><pre><span><span>#</span> Run all tests</span>
@@ -913,7 +918,7 @@ pytest tests/ --mock-hardware</pre></div>
         <span>run</span>: <span>pytest --cov=wifi_densepose --cov-report=xml</span>
       - <span>name</span>: <span>Upload coverage</span>
         <span>uses</span>: <span>codecov/codecov-action@v1</span></pre></div>
-<p></p><h2>🚀 Deployment</h2><a href="#-deployment"></a><p></p>
+<p></p><h2> Deployment</h2><a href="#-deployment"></a><p></p>
 <p></p><h3>Production Deployment</h3><a href="#production-deployment"></a><p></p>
 <p></p><h4>Using Docker</h4><a href="#using-docker-1"></a><p></p>
 <div><pre><span><span>#</span> Build production image</span>
@@ -1076,7 +1081,7 @@ docker run -d \
     ]
   }
 }</pre></div>
-<p></p><h2>📊 Performance Metrics</h2><a href="#-performance-metrics"></a><p></p>
+<p></p><h2> Performance Metrics</h2><a href="#-performance-metrics"></a><p></p>
 <p></p><h3>Benchmark Results</h3><a href="#benchmark-results"></a><p></p>
 <p></p><h4>Latency Performance</h4><a href="#latency-performance"></a><p></p>
 <ul>
@@ -1138,7 +1143,7 @@ ab -n 10000 -c 100 http://localhost:8000/api/v1/pose/latest
 
 <span><span>#</span> WebSocket load testing</span>
 python scripts/websocket_load_test.py --connections 1000 --duration 300</pre></div>
-<p></p><h2>🤝 Contributing</h2><a href="#-contributing"></a><p></p>
+<p></p><h2> Contributing</h2><a href="#-contributing"></a><p></p>
 <p>We welcome contributions to WiFi DensePose! Please follow these guidelines:</p>
 <p></p><h3>Development Setup</h3><a href="#development-setup"></a><p></p>
 <div><pre><span><span>#</span> Clone the repository</span>
@@ -1204,7 +1209,7 @@ Describe the use case and benefits.
 
 <span>**</span>Implementation Ideas<span>**</span>
 Any ideas on how to implement this feature.</pre></div>
-<p></p><h2>📄 License</h2><a href="#-license"></a><p></p>
+<p></p><h2> License</h2><a href="#-license"></a><p></p>
 <p>This project is licensed under the MIT License - see the <a href="https://github.com/ruvnet/wifi-densepose/blob/main/LICENSE">LICENSE</a> file for details.</p>
 <div><pre><code>MIT License
 
@@ -1228,14 +1233,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </code></pre></div>
-<p></p><h2>🙏 Acknowledgments</h2><a href="#-acknowledgments"></a><p></p>
+<p></p><h2> Acknowledgments</h2><a href="#-acknowledgments"></a><p></p>
 <ul>
 <li><strong>Research Foundation</strong>: Based on groundbreaking research in WiFi-based human sensing</li>
 <li><strong>Open Source Libraries</strong>: Built on PyTorch, FastAPI, and other excellent open source projects</li>
 <li><strong>Community</strong>: Thanks to all contributors and users who make this project possible</li>
 <li><strong>Hardware Partners</strong>: Special thanks to router manufacturers for CSI support</li>
 </ul>
-<p></p><h2>📞 Support</h2><a href="#-support"></a><p></p>
+<p></p><h2> Support</h2><a href="#-support"></a><p></p>
 <ul>
 <li><strong>Documentation</strong>:
 <ul>

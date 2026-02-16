@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Introducing the URL validation bypass cheat sheet</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Introducing the URL validation bypass cheat sheet</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 9/3/2024 4:52:12 PM | Lang: EN |
+    <a href="https://portswigger.net/research/introducing-the-url-validation-bypass-cheat-sheet" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img alt="Zakhar Fedotkin" src="https://portswigger.net/content/images/profiles/callout_zakhar_fedotkin_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>03 September 2024 at 14:52 UTC</p> </li> <li> <p><strong>Updated: </strong>05 September 2024 at 12:36 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/ba/2f/b01a-article-087ffac4-bf9f-4653-8947-b5e52b536f4e.png">URL validation bypasses are the root cause of numerous vulnerabilities including many instances of <a href="https://portswigger.net/web-security/ssrf">SSRF</a>, <a href="https://portswigger.net/web-security/cors">CORS misconfiguration</a>, and <a href="https://portswigger.net/web-security/dom-based/open-redirection">open redirection</a>. These work by using ambiguous URLs to trigger URL parsing discrepancies and bypass validation. However, many of these techniques are poorly documented and overlooked as a result.<br></p><p> To address this, we wanted to create a cheat sheet that consolidates all known payloads, saving you the time and effort of searching and gathering information from across the Internet. Today, we're excited to introduce a new tool designed to solve this problem: <a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet">the URL Validation Bypass Cheat Sheet</a>.
+</p><p> We hope you find it useful! This is a frequently updated repository of all known techniques, allowing you to quickly generate a wordlist that meets your needs.
+</p><h2>How to get started</h2><p> The URL Validation Bypass Cheat Sheet is a brand new interactive web application that automatically adjusts its settings based on your context. Currently, there are three contexts available:
+</p><ul> <li> A fully qualified absolute URL - useful for a situation where URL is used in a request query parameter for example. All payloads are designed to be Burp Suite Intruder friendly, so you don't have to worry about the correct encoding. </li> <li> Only hostname - direct input of the domain, such as in the Host header value. </li> <li> <a href="https://portswigger.net/web-security/cors">CORS</a> Origin - where the hostname is intended to be used in a valid browser origin header. </li></ul><p> Initially, the cheat sheet provides six types of payload wordlists. The advanced settings allow you to select a specific wordlist or use all of them simultaneously. Here's a brief overview of the most important ones:
+</p><ul> <li> Domain Allow List Bypass: Designed for domain confusion attacks. You can customize the testing domains by entering the allowed and attacker domains accordingly. </li> <li> Fake Relative URLs: This includes the browser-valid absolute URLs that might be incorrectly validated by client-side code. </li> <li> Loopback Address: This wordlist includes various representations of IPv4, IPv6 addresses, and their normalizations. </li></ul><h2>Encodings</h2><p>The <a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet">URL Validation Cheat Sheet</a> supports several types of string encoding:</p><ul><li> Intruder's Percent Encoding: This option encodes a payload string by replacing certain characters with one to four escape sequences that represent the UTF-8 encoding of the character. It excludes Burp Suite Intruder's default characters and is enabled by default, making it easily compatible with Burp Suite
+</li><li> Everything: This option percent-encodes all characters except alphanumeric ones
+</li>
+<li>The Special Chars option encodes everything except the following characters: <code>["!","$","'","\"","(",")","*",",","-",".","/","\\",":",";","[","]","^","_","{","}","|","~"]</code></li><li> Unicode Escape: This option represents a payload string as a six-character escape sequence <code>\uXXXX</code>, except for the following characters: <code>['"','\\','\b','\f','\n','\r','\t']</code> and those in the range <code>[0x0020 - 0x007f]</code></li></ul><p> <b>Note:</b> Unencoded strings should be used with caution, as Unicode values may not be transmitted correctly.
+</p><h2>Advanced settings</h2><h3>IPv4 Addresses representation</h3><p> When working with web applications, encoding IP addresses into different formats can be crucial for testing, validation, and security purposes. The cheat sheet supports standard IPv4 address as attacker IP input and returns an array of encoded representations, including octal, hexadecimal, binary, and decimal formats. It also converts an IPv4 address into its IPv6-mapped address format.
+</p><p>Encoding Details:</p><ul> <li> Octal: Each segment of the IP address is converted to an octal number and padded to 4 digits. For example, the loopback IP address 127.0.0.1 would be represented as <code>0177.0000.0000.0001</code> </li> <li> Hexadecimal: Each segment is converted to a hexadecimal number, prefixed with 0x, and padded to 2 digits. The same loopback IP address would be <code>0x7F.0x00.0x00.0x01</code> </li> <li> Binary: Each segment is converted to an 8-bit binary number. The example IP address would be <code>01111111.00000000.00000000.00000001</code> </li> <li> Partial Decimal: Combines the third and fourth parts of the IP address into a single decimal number: <code>127.0.1</code> </li> <li> DWORD Notation: The entire IP address is converted into an unsigned 32-bit integer: <code>2130706433</code> </li> <li> DWORD Notation with overflow: The result from the previous conversion is added to 2^32 * 10 = <code>45080379393</code> </li> <li> IPv6 Mapped Address: Converts the IPv4 segments into hexadecimal and formats them into a standard IPv6-mapped address. The loopback IP address can be represented as <code>[::FFFF:7F00:0001]</code> or <code>::FFFF:127.0.0.1</code> </li></ul><h3>Normalization</h3><p> The wordlists include numerous payloads that exploit Unicode string normalization. For instance, the normalization of the following characters results in an empty string:
+</p><ul> <li><a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet#id=a72c5cf60d09c89718bcae7129a21fa21d72ee0a">ZeroWidthSpace, NegativeVeryThinSpace, NegativeThinSpace, NegativeMediumSpace, NegativeThickSpace</a></li> <li><a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet#id=c420c74fcd31811b4edf3a681b8e7b676a01eb2a">Word Joiner (U+2060) (&amp; NoBreak;)</a></li> <li><a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet#id=e73aa1dc3d1e050be2108a6c73362c35cd9b89b2">Soft Hyphen Character U+00AD (&amp;shy;)</a></li></ul><p>These techniques can be used to bypass Web Application Firewalls (WAFs).</p><p> Another example of an allowed domain bypass occurs when a validation regular expression permits multiline strings. For instance, if the regex ^allowed_domain$ is used, the following can bypass the validation:
+</p><ul> <li><a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet#id=9b1cb80212d530707269740ff78c2904885e4bb2">attacker_domain(U+2028)allowed_domain</a> (Line Separator)</li> <li><a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet#id=db71091f2fac46753094e03913880af31dd36fec">attacker_domain(U+2029)allowed_domain</a> (Paragraph Separator)</li></ul><h2>Credits</h2><p> This cheat sheet wouldn't be possible without the web security community who share their research. Big thanks to: <a href="https://x.com/garethheyes">Gareth Heyes</a>, <a href="https://x.com/albinowax">James Kettle</a>, <a href="https://infosec.exchange/@jann">Jann Horn</a>, <a href="https://x.com/terminatorLM">Liv Matan</a>, <a href="https://github.com/t-tera">Takeshi Terada</a>, <a href="https://x.com/orange_8361">Orange Tsai</a>, <a href="https://x.com/Agarri_FR">Nicolas Grégoire</a>.
+</p><p> We published all payloads at our GitHub account<a href="https://github.com/PortSwigger/url-cheatsheet-data"> </a><a href="https://github.com/PortSwigger/url-cheatsheet-data">https://github.com/PortSwigger/url-cheatsheet-data</a>, so you can contribute to this cheat sheet by creating a <a href="https://github.com/PortSwigger/url-cheatsheet-data/issues">new issue</a> or updating the JSON files and submitting a <a href="https://github.com/PortSwigger/url-cheatsheet-data/pulls">pull request</a>.
+</p><p> We look forward to your interesting discoveries using our new <a href="https://portswigger.net/web-security/ssrf/url-validation-bypass-cheat-sheet">URL validation bypass cheat sheet</a>!
+</p> <p><a href="https://portswigger.net/research/articles">Back to all articles</a></p>
+</div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

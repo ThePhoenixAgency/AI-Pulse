@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Chiffrer ses données avant de les envoyer dans le cloud : tour d’horizon des solutions</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Chiffrer ses données avant de les envoyer dans le cloud : tour d’horizon des solutions</h1>
+  <div class="metadata">
+    Source: Next INpact | Date: 2/10/2026 5:46:53 PM | Lang: FR |
+    <a href="https://next.ink/218605/chiffrer-ses-donnees-avant-de-les-envoyer-dans-le-cloud-tour-dhorizon-des-solutions/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>Depuis le 24 décembre, Next propose à ses abonnés Premium du stockage S3&nbsp;: 1 To par défaut, avec 100 Go de plus par ancienneté du compte. Nous avons publié dans la foulée un <a href="https://next.ink/215712/tuto-next-1-to-de-stockage-offert-comment-sauvegarder-ses-donnees-sur-le-s3-next/">tuto pour vous expliquer comment en profiter</a>. Disponible sous forme de bêta, l’offre s’est <a href="https://next.ink/222478/1-to-et-plus-de-stockage-s3-dans-votre-abonnement-next-cest-parti/">ouverte à tous début février</a>.</p> <p>Il est maintenant temps de passer au second gros morceau de notre dossier&nbsp;: comment chiffrer vos données avant de les envoyer dans le cloud.</p> <ul>
+<li><a href="https://next.ink/222478/1-to-et-plus-de-stockage-s3-dans-votre-abonnement-next-cest-parti/">1 To (et plus) de stockage S3 dans votre abonnement Next&nbsp;: c’est parti&nbsp;!</a></li>
+</ul> <h2>Deux méthodes de protection</h2> <p>Pour cela, nous avons&nbsp;<em>grosso modo</em>&nbsp;deux méthodes&nbsp;: la gestion des droits d’accès et le chiffrement. Pour la gestion des droits, c’est-à-dire la mise en place d’un mécanisme empêchant les consultations non souhaitées, il faut s’en remettre entièrement à un fournisseur&nbsp;: il doit mettre en place les outils nécessaires, mais il est impossible de les vérifier nous-mêmes, sauf par un audit hors de portée des utilisateurs lambda.</p> <p> Le chiffrement, en revanche, offre lui la possibilité d’être maîtrisé (sous certaines conditions) par l’utilisateur, notamment quand il reste le seul maître des clés de chiffrement. Encore faut-il choisir le bon outil, si tant est qu’il existe, et les bonnes options.</p> <p>Il est impossible de lister tous les produits du marché, on va en regarder quelques-uns pour vous montrer leurs principales caractéristiques, afin que vous compreniez bien leurs usages et que vous trouviez ce qui vous convient le mieux. Mais on vous le réexpliquera très prochainement dans un dossier, il vaut vraiment mieux rester <a href="https://www.youtube.com/watch?v=O0MFVwALWsg" target="_blank">maître de ses clés</a>, donc l’exigence pour notre recherche d’outil se résumera ainsi&nbsp;:</p> <blockquote>
+<p><em>Chiffrer un dossier (pouvant être local </em>ou<em> <strong>distant</strong>), tout en restant bien sûr maître de la clé de chiffrement, et en y accédant localement de façon transparente.</em></p>
+</blockquote> <h3>La référence disparue&nbsp;: Boxcryptor</h3> <p>Cet outil non open source et payant cochait néanmoins de très nombreuses cases&nbsp;: chiffrement de bout en bout (E2EE comme on dit dans les milieux autorisés) fichier par fichier, maîtrise des clés de chiffrement grâce au z<em>ero knowledge </em>(les informations principales pour le processus de chiffrement étant déduites d’un secret qui n’est stocké nulle part et n’est utilisé que localement), gestion&nbsp;multi-utilisateurs et intégration possible dans des Active Directories ou LDAP pour une utilisation professionnelle.</p> <p>Le chiffrement E2EE fichier par fichier avec maîtrise des secrets convenait parfaitement à ceux qui veulent protéger leurs fichiers où qu’ils soient, localement ou dans le cloud, la contrepartie étant que dans un cas d’usage avec Office (Microsoft 365), les fichiers devraient forcément être déchiffrés localement avant d’être utilisés&nbsp;: on perd l’usage des Word et Excel en ligne, mais en gagnant sur la sécurité, chacun mettant le curseur d’usage là où il le souhaite.</p> <p>Disparu suite à son <a href="https://next.ink/1448/retour-sur-rachat-boxcryptor-par-dropbox-entre-flou-et-quete-dalternatives/" target="_blank">rachat par Dropbox</a>, il n’a guère laissé que Cryptomator comme alternative pour les mêmes cas d’usage. Nous y reviendrons un peu plus tard. </p> <ul>
+<li><a href="https://next.ink/212815/e2ee-ou-chiffrement-de-bout-en-bout-mais-de-quel-bout-parle-t-on/">E2EE ou chiffrement de bout en bout… mais de quel «&nbsp;bout&nbsp;» parle-t-on&nbsp;?</a></li>
+</ul> <h3>Quelques exemples pour voir de quoi on parle</h3> <p>Nous allons regarder quelques outils, et voir à quels cas d’usage ils correspondent vraiment. On en profitera pour faire un petit test de qualité, en les comparant chaque fois avec notre référence disparue (promis, on ne versera aucune larme même si l’émotion nous gagne).</p> <p>Vous trouverez en fin d’article un tableau récapitulatif des fonctionnalités, forces et faiblesses, ainsi que des tarifs. </p> <h2>TrueCrypt et ses forks tels que VeraCrypt</h2> <div> <p><img src="https://next.ink/wp-content/themes/next-theme/asset/media/webp/next-overclock-your-spirit.webp" alt="Cadenas en colère - Contenu premium"> </p> <div> <h3> Soutenez un journalisme indépendant, <br> libre de ton, sans pub et sans reproche. </h3> <p> Accédez en illimité aux articles </p> <p> Profitez d'un média expert et unique </p> <p> Intégrez la communauté et prenez part aux débats </p> <p> Partagez des articles premium à vos contacts </p> </div> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

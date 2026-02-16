@@ -17,6 +17,23 @@
   - Ajouter un test UI anti-boucle iframe (détection de reloads successifs et fallback erreur).
   - Ajouter un test UI de navigation retour article -> liste pour éviter les régressions 404.
   - Ajouter un test de liens directs `data/articles/*` (sans encapsulation iframe).
+  - Validation visuelle finale utilisateur sur footer template dans `reader.html`.
+
+- **Correctifs appliqués (session en cours)** :
+  - UX mobile: quick-tags limités + scroll horizontal pour garder un header compact sur mobile.
+  - Mots-clés: passage à un mot-clé unique par article via mapping JSON (`data/keyword-mapping.json`).
+  - Catégories dédiées: ajout `openclaw` et `raspberrypi` avec filtrage strict par mots-clés.
+  - Sources éditoriales: ajout des catégories `france` et `international` (journaux fiables).
+  - UX mobile: quick-tags limités + scroll horizontal pour garder un header compact sur mobile.
+  - Mots-clés: passage à un mot-clé unique par article via mapping JSON (`data/keyword-mapping.json`).
+  - Catégories dédiées: ajout `openclaw` et `raspberrypi` avec filtrage strict par mots-clés.
+  - Reader: mapping `URL source -> article local` via `data/article-map.json` pour éviter l’encapsulation de site externe.
+  - Articles: coupe de fin non éditoriale (pub/slogans/comments/avis/related) dans le pipeline et nettoyage rétroactif.
+  - Articles: flèches locales `▲/▼` ajoutées dans chaque HTML généré + support `postMessage` `AI_PULSE_SCROLL`.
+  - Reader/Articles: mode article-only appliqué (masquage footer site en vue article + suppression footer injecté dans les pages d’articles).
+  - Sources locales: ajout catégorie `local` (Grenoble/Isère + météo locale).
+  - Journaux: ajout catégories `france` et `international` pour renforcer la couverture généraliste fiable.
+  - Apple/Mac: renforcement des flux pour éviter les catégories vides (Apple Newsroom, Macworld, The Verge Apple + URLs FR corrigées).
 
 ### B. Flux dépendances automatique (EN COURS)
 - **Objectif** : aligner le pipeline auto sur `dependencies -> main` sans conflits.
@@ -139,3 +156,16 @@
 ### À Tester
 - ⏳ Attendre prochain run workflow (toutes les 3h) pour voir les nouveaux liens avec reader.html
 - ⏳ Vérifier que les articles s'ouvrent correctement dans l'iframe avec UTM
+
+## 🔧 Demandes Utilisateur Restantes (session)
+
+- [ ] Corriger définitivement la régression Investing signalée (analyst-ratings) + test dédié.
+- [ ] Zéro 404 article visible: fallback local obligatoire si source échoue.
+- [ ] Rendu article unifié pour toutes catégories (même template, même UX de navigation).
+- [ ] Retour article -> liste fonctionnel partout (haut et bas de page).
+- [ ] Footer template global présent et stylé correctement dans toutes les pages article.
+- [ ] Flèches article (haut/bas) fiabilisées et testées sur l'ensemble des articles générés.
+- [ ] Validation production de l'auto-détection langue IP/navigateur + switch manuel.
+- [ ] Validation production des catégories `openclaw` et `raspberrypi` (quantité/qualité/tri).
+- [ ] Durcissement des sources finance/crypto pour réduire contenu faible qualité.
+- [ ] Vérifier cohérence des liens doc Supabase dans README/workflows avec chemin réel.

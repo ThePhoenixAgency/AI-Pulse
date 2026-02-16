@@ -31,3 +31,9 @@ test('readme-viewer: prefHideRead control exists in preferences panel', () => {
   );
 });
 
+test('readme-viewer: renumbering must not rewrite heading textContent (keeps article links clickable)', () => {
+  assert.ok(
+    !html.includes('heading.textContent = text.replace('),
+    'destructive renumbering detected: it can remove article links'
+  );
+});

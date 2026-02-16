@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -33,7 +38,7 @@
                   
                 </div>
           </div><div>
-                <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqi9nn6dxwo43eaj2fizq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqi9nn6dxwo43eaj2fizq.png" alt=" " /></a># Using AI to Build a Local AI Assistant That Actually Manages Your Linux System 🖥️🤖</p>
+                <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqi9nn6dxwo43eaj2fizq.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fqi9nn6dxwo43eaj2fizq.png" alt=" " /></a># Using AI to Build a Local AI Assistant That Actually Manages Your Linux System </p>
 
 <p><code>ai #python #langchain #ollama #opensource #linux #automation #localllm</code></p>
 
@@ -51,13 +56,13 @@
 <h2>
   <a name="whats-working-really-well" href="#whats-working-really-well">
   </a>
-  🚀 What’s Working Really Well
+   What’s Working Really Well
 </h2>
 
 <h3>
   <a name="1-real-system-management" href="#1-real-system-management">
   </a>
-  🧠 1. Real System Management
+   1. Real System Management
 </h3>
 
 <p>zkzkAgent can:</p>
@@ -76,7 +81,7 @@
 <h3>
   <a name="2-network-awareness" href="#2-network-awareness">
   </a>
-  🌐 2. Network Awareness
+   2. Network Awareness
 </h3>
 
 <ul>
@@ -91,7 +96,7 @@
 <h3>
   <a name="3-optional-voice-control" href="#3-optional-voice-control">
   </a>
-  🎤 3. Optional Voice Control
+   3. Optional Voice Control
 </h3>
 
 <ul>
@@ -109,7 +114,7 @@
 <h2>
   <a name="%F0%9F%9B%A0-how-i-built-it" href="#%F0%9F%9B%A0-how-i-built-it">
   </a>
-  🛠 How I Built It
+   How I Built It
 </h2>
 
 <p>AI wasn’t just autocomplete — it accelerated development massively. It helped me:</p>
@@ -132,7 +137,7 @@
 <h2>
   <a name="whats-still-basic-honest-section" href="#whats-still-basic-honest-section">
   </a>
-  🧪 What’s Still Basic (Honest Section)
+   What’s Still Basic (Honest Section)
 </h2>
 
 <ul>
@@ -142,10 +147,10 @@
 </ul>
 
 <p>The foundation is strong:<br />
-AI agent ✔<br />
-Voice ✔<br />
-Network-aware ✔<br />
-Streaming responses ✔</p>
+AI agent <br />
+Voice <br />
+Network-aware <br />
+Streaming responses </p>
 
 
 <hr />
@@ -153,7 +158,7 @@ Streaming responses ✔</p>
 <h2>
   <a name="why-i-built-this" href="#why-i-built-this">
   </a>
-  💡 Why I Built This
+   Why I Built This
 </h2>
 
 <p>I wanted <strong>an AI sysadmin on my machine</strong>:</p>
@@ -172,7 +177,7 @@ Streaming responses ✔</p>
 <h2>
   <a name="%F0%9F%9B%A0-quick-start" href="#%F0%9F%9B%A0-quick-start">
   </a>
-  🛠 Quick Start
+   Quick Start
 </h2>
 
 
@@ -209,7 +214,7 @@ python main.py
 <h2>
   <a name="example-interaction" href="#example-interaction">
   </a>
-  🎯 Example Interaction
+   Example Interaction
 </h2>
 
 
@@ -219,7 +224,7 @@ python main.py
 AI: [Searches project folders → Returns paths]
 
 User: Check if internet is up
-AI: Connected ✅
+AI: Connected 
 
 User: Deploy my backend script
 AI: Running deploy_v2.sh in background… PID 12345
@@ -250,7 +255,7 @@ AI: Done.
 <h2>
   <a name="next-steps" href="#next-steps">
   </a>
-  🔮 Next Steps
+   Next Steps
 </h2>
 
 <ul>
@@ -266,7 +271,7 @@ AI: Done.
 <h2>
   <a name="who-this-is-for" href="#who-this-is-for">
   </a>
-  🧠 Who This Is For
+   Who This Is For
 </h2>
 
 <p>If you’re into:</p>
@@ -282,7 +287,7 @@ AI: Done.
 
 <p>PRs, issues, and feedback are welcome.</p>
 
-<p>Built with ❤️ in Cairo by Zkzk (zkzkGamal on GitHub).</p>
+<p>Built with  in Cairo by Zkzk (zkzkGamal on GitHub).</p>
 
 
             </div></div>

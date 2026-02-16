@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>OffSec’s Exploit Database Archive</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>OffSec’s Exploit Database Archive</h1>
+  <div class="metadata">
+    Source: Exploit-DB | Date: 12/25/2025 1:00:00 AM | Lang: EN |
+    <a href="https://www.exploit-db.com/exploits/52464" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <pre><code># Exploit Title: Chained Quiz 1.3.5 - Unauthenticated Insecure Direct Object Reference via Cookie
+# Date: 19-12-2025
+# Exploit Author: Karuppiah Sabari Kumar(0xsabre)
+# Vendor Homepage: https://wordpress.org/plugins/chained-quiz/
+# Software Link: https://downloads.wordpress.org/plugin/chained-quiz.1.3.3.zip
+# Version: &lt;= 1.3.3
+# Tested on: WordPress / Linux
+# CVE: CVE-2025-10493 ------------------------------------------------------------ ## Vulnerability Type
+Insecure Direct Object Reference (IDOR) / Improper Authorization ------------------------------------------------------------ ## Description
+The Chained Quiz plugin stores each quiz attempt using a predictable,
+auto-incrementing database ID (completion_id) and exposes this value
+directly in a client-side cookie named: chained_completion_id&lt;quiz_id&gt; When submitting or re-submitting quiz answers via admin-ajax.php, the
+server updates the quiz attempt record based solely on this cookie value,
+without verifying that the attempt belongs to the currently authenticated
+user. No authentication is required to exploit this vulnerability when the
+plugin is used with default settings. The server retrieves the quiz attempt directly using the completion_id
+from the cookie and performs an UPDATE query without verifying ownership. As a result, an attacker can hijack or tamper with other users’ quiz
+attempts by guessing or enumerating valid completion_id values and
+replaying answer submissions. ------------------------------------------------------------ ## Affected Component
+Quiz submission and results handling functionality via admin-ajax.php ------------------------------------------------------------ ## Proof of Concept (PoC) ### Step 1: Victim user submission
+A user completes a quiz. The submission is stored using a completion ID
+and associated with the user’s session via a cookie, for example: chained_completion_id1=2 ------------------------------------------------------------ ### Step 2: Attacker interception
+The attacker completes the same quiz and intercepts their own submission
+request using a proxy or browser developer tools. Example request: POST /wp-admin/admin-ajax.php HTTP/1.1
+Host: localhost
+Cookie: chained_completion_id1=1
+Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded answer=0&amp;question_id=1&amp;quiz_id=1&amp;post_id=117&amp;question_type=radio&amp;points=0&amp;action=chainedquiz_ajax&amp;chainedquiz_action=answer&amp;total_questions=1 ------------------------------------------------------------ ### Step 3: Tampering
+The attacker modifies the cookie value to match another user’s quiz
+attempt, for example: chained_completion_id1=2 The attacker may also modify parameters such as "answer" or "points" to
+manipulate quiz responses or scores. The modified request is then sent to the server. ------------------------------------------------------------ ### Step 4: Result
+The server overwrites the victim user’s quiz submission, including answers
+and points, without validating ownership of the completion ID. ------------------------------------------------------------ ## Impact
+An attacker can arbitrarily modify quiz answers, scores, or results
+belonging to other users. This results in an integrity violation of quiz
+data and allows unauthorized manipulation of finalized quiz attempts.
+In environments where quiz results are used for assessments, leaderboards,
+or certificates, this can undermine trust in the platform and affect any
+downstream integrations that rely on quiz completion data. ------------------------------------------------------------ ## CWE
+- CWE-639: Authorization Bypass Through User-Controlled Key
+- CWE-285: Improper Authorization ------------------------------------------------------------ </code></pre> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

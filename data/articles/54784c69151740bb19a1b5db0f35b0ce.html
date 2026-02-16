@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Introducing RTEB: A New Standard for Retrieval Evaluation</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Introducing RTEB: A New Standard for Retrieval Evaluation</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 10/1/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/rteb" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/fzliu"><img alt="Frank Liu's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/61f33092a92c9a858b654991/jFRUSeZ6DnI27dlCAQRHq.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/KennethEnevoldsen"><img alt="Kenneth C. Enevoldsen's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/5ff5943752c26e9bc240bada/Exyzf3C_gJ2KdsL4K5_cq.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Samoed"><img alt="Solomatin Roman's avatar" src="https://huggingface.co/avatars/7a4067accdd1005f78c3c4adad3ee0a5.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/isaacchung"><img alt="Isaac Chung's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/64cc0e80a257a3212c0c4b24/wqs6WZN8-3OQthcnQXgN7.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/tomaarsen"><img alt="Tom Aarsen's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6317233cc92fd6fee317e030/cJHSvvimr1kqgQfHOjO5n.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/fzoll"><img alt="Fődi, Zoltán's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/no-auth/nXPUWOJbhmjQVCkbBtf6m.png"></a> </span> </span></p> </div></div> <p><strong>TL;DR –</strong> We’re excited to introduce the beta version of the <a href="https://huggingface.co/spaces/mteb/leaderboard?benchmark_name=RTEB%28beta%29">Retrieval Embedding Benchmark (RTEB)</a>, a new benchmark designed to reliably evaluate the retrieval accuracy of embedding models for real-world applications. Existing benchmarks struggle to measure true generalization, while RTEB addresses this with a hybrid strategy of open and private datasets. Its goal is simple: to create a fair, transparent, and application-focused standard for measuring how models perform on data they haven’t seen before.</p>
+<p>The performance of many AI applications, from RAG and agents to recommendation systems, is fundamentally limited by the quality of search and retrieval. As such, accurately measuring the retrieval quality of embedding models is a common pain point for developers. How do you <em>really</em> know how well a model will perform in the wild?</p>
+<p>This is where things get tricky. The current standard for evaluation often relies on a model's "zero-shot" performance on public benchmarks. However, this is, at best, an approximation of a model's true generalization capabilities. When models are repeatedly evaluated against the same public datasets, a gap emerges between their reported scores and their actual performance on new, unseen data.</p>
+<figure> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/rteb/rteb-public-vs-closed.png"> <figcaption>Performance Discrepancy Between Public and Closed Datasets</figcaption>
+</figure> <p>To address these challenges, we developed RTEB, a benchmark built to provide a reliable standard for evaluating retrieval models.</p>
+<h2> <a href="#why-existing-benchmarks-fall-short"> </a> <span> Why Existing Benchmarks Fall Short </span>
+</h2>
+<p>While the underlying evaluation methodology and metrics (such as NDCG@10) are well-known and robust, the integrity of existing benchmarks is often set back by the following issues:</p>
+<p><strong>The Generalization Gap</strong>. The current benchmark ecosystem inadvertently encourages "teaching to the test." When training data sources overlap with evaluation datasets, a model's score can become inflated, undermining a benchmark's integrity. This practice, whether intentional or not, is evident in the training datasets of several models. This creates a feedback loop where models are rewarded for memorizing test data rather than developing robust, generalizable capabilities.</p>
+<p>Because of the above, models with a lower zero-shot score<a href="#footnote-1">[1]</a> may perform very well on the benchmark, without generalizing to new problems. For this reason, models with slightly lower benchmark performance and a higher zero-shot score are often recommended instead.</p>
+<figure> <img src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/rteb/mteb-zero-shot-models.png"> <figcaption>From <a href="https://arxiv.org/abs/2506.21182">Chung et al. (2025)</a></figcaption>
+</figure> <p><strong>Misalignment with Today’s AI Applications</strong>. Many benchmarks are poorly aligned with the enterprise use cases that developers are building today. They often rely on academic datasets or on retrieval tasks derived from QA datasets, which, while useful in their own right, were not designed to evaluate retrieval and can fail to capture the distributional biases and complexities encountered in real-world retrieval scenarios. Benchmarks which do not possess these issues are often too narrow, focusing on a single domain like code retrieval, making them unsuitable for evaluating general-purpose models.</p>
+<h2> <a href="#introducing-rteb"> </a> <span> Introducing RTEB </span>
+</h2>
+<p>Today, we’re excited to introduce the <strong>Retrieval Embedding Benchmark (RTEB)</strong>. Its goal is to create a new, reliable, high-quality benchmark that measures the true retrieval accuracy of embedding models.</p>
+<h3> <a href="#a-hybrid-strategy-for-true-generalization"> </a> <span> A Hybrid Strategy for True Generalization </span>
+</h3>
+<p>To combat benchmark overfitting, RTEB implements a hybrid strategy using both open and private datasets:</p>
+<ul>
+<li><strong>Open Datasets:</strong> The corpus, queries, and relevance labels are fully public. This ensures transparency and allows any user to reproduce the results.</li>
+<li><strong>Private Datasets:</strong> These datasets are kept private, and evaluation is handled by the MTEB maintainers to ensure impartiality. This setup provides a clear, unbiased measure of a model’s ability to generalize to unseen data. For transparency, we provide descriptive statistics, a dataset description, and sample <code>(query, document, relevance)</code> triplets for each private dataset.</li>
+</ul>
+<p>This hybrid approach encourages the development of models with broad, robust generalization. A model with a significant performance drop between the open and the private datasets would suggest overfitting, providing a clear signal to the community. This is already apparent with some models, which show a notable drop in performance on RTEB's private datasets.</p>
+<h3> <a href="#built-for-real-world-domains"> </a> <span> Built for Real-World Domains </span>
+</h3>
+<p>RTEB is designed with a particular emphasis on enterprise use cases. Instead of a complex hierarchy, it uses simple groups for clarity. A single dataset can belong to multiple groups (e.g., a German law dataset exists in both the "law" and "German" groups).</p>
+<ul>
+<li><strong>Multilingual in Nature:</strong> The benchmark datasets cover 20 languages, from common ones like English or Japanese to rarer languages such as Bengali or Finnish.</li>
+<li><strong>Domain-Specific Focus:</strong> The benchmark includes datasets from critical enterprise domains like law, healthcare, code, and finance.</li>
+<li><strong>Efficient Dataset Sizes:</strong> Datasets are large enough to be meaningful (at least 1k documents and 50 queries) without being so large that they make evaluation time-consuming and expensive.</li>
+<li><strong>Retrieval-First Metric:</strong> The default leaderboard metric is <strong>NDCG@10</strong>, a gold-standard measure for the quality of ranked search results.</li>
+</ul>
+<p>A complete list of the datasets can be found below. We plan to continually update both the open as well as closed portion with different categories of datasets and actively encourage participation from the community; please open an issue on the <a href="https://github.com/embeddings-benchmark/mteb/issues">MTEB repository on GitHub</a> if you would like to suggest other datasets.</p> RTEB Datasets <h4> <a href="#open"> </a> <span> Open </span>
+</h4>
+<div> <table> <thead><tr>
+<th>Dataset</th>
+<th>Dataset Groups</th>
+<th>Open/Closed</th>
+<th>Dataset URL</th>
+<th>Repurposed from QA</th>
+<th>Description and Reason for Inclusion</th>
+</tr> </thead><tbody><tr>
+<td>AILACasedocs</td>
+<td>english, legal</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/mteb/AILA_casedocs">https://huggingface.co/datasets/mteb/AILA_casedocs</a></td>
+<td>No</td>
+<td>This dataset comprises approximately 3,000 Supreme Court of India case documents and is designed to evaluae the retrieval of relevant prior cases for given legal situations. It includes 50 queries, each outlining a specific scenario. We include this dataset in the benchmark because the documents are reasonably challenging, the queries are non-synthetic, and the labels are of high quality.</td>
+</tr>
+<tr>
+<td>AILAStatutes</td>
+<td>english, legal</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/mteb/AILA_statutes">https://huggingface.co/datasets/mteb/AILA_statutes</a></td>
+<td>No</td>
+<td>The dataset comprises descriptions of 197 Supreme Court of India statutes, designed to facilitate the retrieval of relevant prior statutes for given legal situations. It includes 50 queries, each outlining a specific scenario. We include this dataset in the benchmark because the documents are reasonably challenging, the queries are non-synthetic, and the labels are of high quality.</td>
+</tr>
+<tr>
+<td>LegalSummarization</td>
+<td>english, legal</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/mteb/legal_summarization">https://huggingface.co/datasets/mteb/legal_summarization</a></td>
+<td>No</td>
+<td>The dataset comprises 446 pairs of legal text excerpts and their corresponding plain English summaries, sourced from reputable websites dedicated to clarifying legal documents. The summaries have been manually reviewed for quality, ensuring that the data is clean and suitable for evaluating legal retrieval.</td>
+</tr>
+<tr>
+<td>LegalQuAD</td>
+<td>german, legal</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/mteb/LegalQuAD">https://huggingface.co/datasets/mteb/LegalQuAD</a></td>
+<td>No</td>
+<td>The corpus consists of 200 real-world legal documents and the query set consists of 200 questions pertaining to legal documents.</td>
+</tr>
+<tr>
+<td>FinanceBench</td>
+<td>english, finance</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/virattt/financebench">https://huggingface.co/datasets/virattt/financebench</a></td>
+<td>Yes</td>
+<td>The FinanceBench dataset is derived from the PatronusAI/financebench-test dataset, containing only the PASS examples processed into a clean format for question-answering tasks in the financial domain. FinanceBench-rtl has been repurposed for retrieval.</td>
+</tr>
+<tr>
+<td>HC3Finance</td>
+<td>english, finance</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/Hello-SimpleAI/HC3">https://huggingface.co/datasets/Hello-SimpleAI/HC3</a></td>
+<td>No</td>
+<td>The HC3 dataset comprises tens of thousands of comparison responses from both human experts and ChatGPT across various domains, including open-domain, financial, medical, legal, and psychological areas. The data collection process involved sourcing publicly available question-answering datasets and wiki texts, ensuring that the human answers were either expert-provided or high-quality user responses, thereby minimizing mislabeling and enhancing the dataset's reliability.</td>
+</tr>
+<tr>
+<td>FinQA</td>
+<td>english, finance</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/ibm/finqa">https://huggingface.co/datasets/ibm/finqa</a></td>
+<td>Yes</td>
+<td>FinQA is a large-scale dataset with 2.8k financial reports for 8k Q&amp;A pairs to study numerical reasoning with structured and unstructured evidence.</td>
+</tr>
+<tr>
+<td>HumanEval</td>
+<td>code</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/openai/openai_humaneval">https://huggingface.co/datasets/openai/openai_humaneval</a></td>
+<td>Yes</td>
+<td>The HumanEval dataset released by OpenAI includes 164 programming problems with a handwritten function signature, docstring, body, and several unit tests for each problem. The dataset was handcrafted by engineers and researchers at OpenAI.</td>
+</tr>
+<tr>
+<td>MBPP</td>
+<td>code</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/google-research-datasets/mbpp">https://huggingface.co/datasets/google-research-datasets/mbpp</a></td>
+<td>Yes</td>
+<td>The MBPP dataset consists of around 1,000 crowd-sourced Python programming problems, designed to be solvable by entry level programmers, covering programming fundamentals, standard library functionality, and so on. Each problem consists of a task description, code solution and 3 automated test cases. As described in the paper, a subset of the data has been hand-verified by the dataset authors to ensure quality.</td>
+</tr>
+<tr>
+<td>MIRACLHardNegatives</td>
+<td></td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/mteb/miracl-hard-negatives">https://huggingface.co/datasets/mteb/miracl-hard-negatives</a></td>
+<td>No</td>
+<td>MIRACL (Multilingual Information Retrieval Across a Continuum of Languages) is a multilingual retrieval dataset that focuses on search across 18 different languages. The hard negative version has been created by pooling the 250 top documents per query from BM25, e5-multilingual-large and e5-mistral-instruct.</td>
+</tr>
+<tr>
+<td>APPS</td>
+<td>code, english</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/codeparrot/apps">https://huggingface.co/datasets/codeparrot/apps</a></td>
+<td>Yes</td>
+<td>APPS is a benchmark for code generation with 10000 problems. It can be used to evaluate the ability of language models to generate code from natural language specifications. To create the APPS dataset, the authors manually curated problems from open-access sites where programmers share problems with each other, including Codewars, AtCoder, Kattis, and Codeforces.</td>
+</tr>
+<tr>
+<td>DS1000</td>
+<td>code, english</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/xlangai/DS-1000">https://huggingface.co/datasets/xlangai/DS-1000</a></td>
+<td>Yes</td>
+<td>DS-1000 is a code generation benchmark with a thousand data science problems spanning seven Python libraries, such as NumPy and Pandas. It employs multi-criteria evaluation metrics, including functional correctness and surface-form constraints, resulting in a high-quality dataset with only 1.8% incorrect solutions among accepted Codex-002 predictions.</td>
+</tr>
+<tr>
+<td>WikiSQL</td>
+<td>code, english</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/Salesforce/wikisql">https://huggingface.co/datasets/Salesforce/wikisql</a></td>
+<td>Yes</td>
+<td>WikiSQL is a dataset comprising 80,654 hand-annotated examples of natural language questions and corresponding SQL queries across 24,241 tables from Wikipedia.</td>
+</tr>
+<tr>
+<td>ChatDoctor_HealthCareMagic</td>
+<td>english, healthcare</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/lavita/ChatDoctor-HealthCareMagic-100k">https://huggingface.co/datasets/lavita/ChatDoctor-HealthCareMagic-100k</a></td>
+<td>No</td>
+<td>The ChatDoctor-HealthCareMagic-100k dataset comprises 112,000 real-world medical question-and-answer pairs, providing a substantial and diverse collection of authentic medical dialogues. There is a slight risk to this dataset since there are grammatical inconsistencies in many of the questions and answers, but this can potentially help separate strong healthcare retrieval models from weak ones.</td>
+</tr>
+<tr>
+<td>HC3 Medicine</td>
+<td>english, healthcare</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/Hello-SimpleAI/HC3">https://huggingface.co/datasets/Hello-SimpleAI/HC3</a></td>
+<td>No</td>
+<td>The HC3 dataset comprises tens of thousands of comparison responses from both human experts and ChatGPT across various domains, including open-domain, financial, medical, legal, and psychological areas. The data collection process involved sourcing publicly available question-answering datasets and wiki texts, ensuring that the human answers were either expert-provided or high-quality user responses, thereby minimizing mislabeling and enhancing the dataset's reliability.</td>
+</tr>
+<tr>
+<td>HC3 French OOD</td>
+<td>french, healthcare</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/almanach/hc3_french_ood">https://huggingface.co/datasets/almanach/hc3_french_ood</a></td>
+<td>No</td>
+<td>The HC3 dataset comprises tens of thousands of comparison responses from both human experts and ChatGPT across various domains, including open-domain, financial, medical, legal, and psychological areas. The data collection process involved sourcing publicly available question-answering datasets and wiki texts, ensuring that the human answers were either expert-provided or high-quality user responses, thereby minimizing mislabeling and enhancing the dataset's reliability.</td>
+</tr>
+<tr>
+<td>JaQuAD</td>
+<td>japanese</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/SkelterLabsInc/JaQuAD">https://huggingface.co/datasets/SkelterLabsInc/JaQuAD</a></td>
+<td>Yes</td>
+<td>The JaQuAD dataset comprises 39,696 human-annotated question-answer pairs based on Japanese Wikipedia articles, with 88.7% of the contexts sourced from curated high-quality articles.</td>
+</tr>
+<tr>
+<td>Cure</td>
+<td>english, healthcare</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/clinia/CUREv1">https://huggingface.co/datasets/clinia/CUREv1</a></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>TripClick</td>
+<td>english, healthcare</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/datasets/irds/tripclick">https://huggingface.co/datasets/irds/tripclick</a></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td>FreshStack</td>
+<td>english</td>
+<td>Open</td>
+<td><a href="https://huggingface.co/papers/2504.13128">https://huggingface.co/papers/2504.13128</a></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody> </table>
+</div>
+<h4> <a href="#closed"> </a> <span> Closed </span>
+</h4> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

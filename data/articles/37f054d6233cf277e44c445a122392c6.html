@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -30,14 +35,14 @@
 <p><a href="https://github.com/f/check-ai"><img src="https://camo.githubusercontent.com/63430a7c45709673651dcaba2c2b2b9db0399feeca1b9360ab2333ee24ea5386/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f414925323052656164792d43253230342e3925324631302d79656c6c6f77" alt="AI Ready" /></a></p>
 
 <p>One command. 66 checks. Zero dependencies. Scans for agent configs, repo hygiene, grounding docs, testing safety nets, prompt templates, MCP integrations, AI dependencies — and scores it all on a <strong>0–10 scale</strong>.</p>
-<div><pre><code>  🧹 Repo Hygiene  ████████████░░░  77% (26/34)
-  📄 Grounding Docs ██████████░░░░░  65% (15/23)
-  🧪 Testing       ██████████████░  90% (9/10)
-  🤖 Agent Configs  ████████████░░░  75% (55/73)
-  🔒 AI Context    ██████░░░░░░░░░  40% (6/15)
-  🧩 Prompts       ████░░░░░░░░░░░  28% (5/18)
-  🔌 MCP           ███████████████  100% (11/11)
-  📦 AI Deps       ███████████████  100% (4/4)
+<div><pre><code>   Repo Hygiene  ████████████░░░  77% (26/34)
+   Grounding Docs ██████████░░░░░  65% (15/23)
+   Testing       ██████████████░  90% (9/10)
+   Agent Configs  ████████████░░░  75% (55/73)
+   AI Context    ██████░░░░░░░░░  40% (6/15)
+   Prompts       ████░░░░░░░░░░░  28% (5/18)
+   MCP           ███████████████  100% (11/11)
+   AI Deps       ███████████████  100% (4/4)
 
   ──────────────────────────────────────────────────
 
@@ -109,7 +114,7 @@
 <hr />
 <p></p><h2>What It Audits</h2><a href="#what-it-audits"></a><p></p>
 <p><code>check-ai</code> runs <strong>66 checks</strong> grouped into <strong>8 sections</strong>. Each check has a weight based on real-world impact.</p>
-<p></p><h3>🧹 Repo Hygiene</h3><a href="#-repo-hygiene"></a><p></p>
+<p></p><h3> Repo Hygiene</h3><a href="#-repo-hygiene"></a><p></p>
 <p>A clean, well-structured repo is the foundation for AI agents to work effectively.</p>
 <table>
 <thead>
@@ -157,7 +162,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>📄 Grounding Docs</h3><a href="#-grounding-docs"></a><p></p>
+<p></p><h3> Grounding Docs</h3><a href="#-grounding-docs"></a><p></p>
 <p>Documentation that helps AI agents understand what your project is and how it works.</p>
 <table>
 <thead>
@@ -197,7 +202,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>🧪 Testing Safety Net</h3><a href="#-testing-safety-net"></a><p></p>
+<p></p><h3> Testing Safety Net</h3><a href="#-testing-safety-net"></a><p></p>
 <p>Tests catch agent-introduced regressions before they ship.</p>
 <table>
 <thead>
@@ -221,7 +226,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>🤖 Agent Configs</h3><a href="#-agent-configs"></a><p></p>
+<p></p><h3> Agent Configs</h3><a href="#-agent-configs"></a><p></p>
 <p>The core of AI-readiness. Having <strong>at least one</strong> AI tool configured earns a large bonus — because in practice, teams use one tool (Cursor <strong>or</strong> Windsurf <strong>or</strong> Claude Code), not all of them at once.</p>
 <table>
 <thead>
@@ -317,7 +322,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>🔒 AI Context</h3><a href="#-ai-context"></a><p></p>
+<p></p><h3> AI Context</h3><a href="#-ai-context"></a><p></p>
 <p>Files that control what AI agents can and cannot see.</p>
 <table>
 <thead>
@@ -357,7 +362,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>🧩 Prompts &amp; Skills</h3><a href="#-prompts--skills"></a><p></p>
+<p></p><h3> Prompts &amp; Skills</h3><a href="#-prompts--skills"></a><p></p>
 <p>Reusable prompt templates and agent skill definitions.</p>
 <table>
 <thead>
@@ -389,7 +394,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>🔌 MCP (Model Context Protocol)</h3><a href="#-mcp-model-context-protocol"></a><p></p>
+<p></p><h3> MCP (Model Context Protocol)</h3><a href="#-mcp-model-context-protocol"></a><p></p>
 <p>Tool integrations that extend agent capabilities.</p>
 <table>
 <thead>
@@ -413,7 +418,7 @@
 </tr>
 </tbody>
 </table>
-<p></p><h3>📦 AI Dependencies</h3><a href="#-ai-dependencies"></a><p></p>
+<p></p><h3> AI Dependencies</h3><a href="#-ai-dependencies"></a><p></p>
 <p>Detects AI SDK usage in your project.</p>
 <table>
 <thead>

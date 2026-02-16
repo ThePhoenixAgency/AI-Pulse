@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building the Open Agent Ecosystem Together: Introducing OpenEnv</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Building the Open Agent Ecosystem Together: Introducing OpenEnv</h1>
+  <div class="metadata">
+    Source: Hugging Face Blog | Date: 10/23/2025 2:00:00 AM | Lang: EN |
+    <a href="https://huggingface.co/blog/openenv" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://huggingface.co/blog"> Back to Articles</a></p> <div><div> <p><span><span><a href="https://huggingface.co/spisakjo"><img alt="Joseph Spisak's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63b467f4103617b0a5ac17d8/H0Fcdp5s1kMW0Auz-wMhH.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/darktex"><img alt="Davide Testuggine's avatar" src="https://huggingface.co/avatars/c74a3d2b8ffd75afcad35da39f5fad51.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/zkwentz"><img alt="Zach Wentz's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/6494d8058244c6997625ea36/PsZ673gZwYNqe6-VadBpP.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/mortimerp9"><img alt="Pierre Andrews's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/63071f424d2c7796a4f30160/PoXHEWZPnRwLuwMzbUZJx.png"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Sanyam"><img alt="Sanyam Bhutani's avatar" src="https://huggingface.co/avatars/d9268db49fa6892301a006184f4a4a67.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Hamid-Nazeri"><img alt="Hamid Shojanazeri's avatar" src="https://huggingface.co/avatars/cd7a25fff646834eccc3af15f205672b.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/Pankit01"><img alt="Pankit Thapar's avatar" src="https://huggingface.co/avatars/5e435813c3be91c81184c8cbd31724fa.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/emre0"><img alt="Emre Guven's avatar" src="https://huggingface.co/avatars/7a4470d037a01ac3caa0cd6c57526239.svg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/lewtun"><img alt="Lewis Tunstall's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1594651707950-noauth.jpeg"></a> </span> </span></p> </div><div> <p><span><span><a href="https://huggingface.co/reach-vb"><img alt="Vaibhav Srivastav's avatar" src="https://cdn-avatars.huggingface.co/v1/production/uploads/1655385361868-61b85ce86eb1f2c5e6233736.jpeg"></a> </span> </span></p> </div></div> <div><nav><ul><li><a href="#the-problem">The Problem</a> <ul></ul> </li><li><a href="#the-solution">The Solution</a> <ul></ul> </li><li><a href="#the-rfcs">The RFCs</a> <ul></ul> </li><li><a href="#use-cases">Use cases</a> <ul></ul> </li><li><a href="#whats-next">What’s Next</a> <ul></ul> </li></ul></nav></div><p>With tools like <a href="https://github.com/huggingface/trl">TRL</a>, <a href="https://github.com/meta-pytorch/torchforge">TorchForge</a> and <a href="https://github.com/volcengine/verl">verl</a>, the open-source community has shown how to scale AI across complex compute infrastructure. But compute is only one side of the coin. The other side is the developer community; the people and tools that make agentic systems possible. That’s why Meta and Hugging Face are partnering to launch the <a href="https://huggingface.co/openenv">OpenEnv Hub</a>: a shared and open community hub for agentic environments.</p>
+<p>Agentic environments define everything an agent needs to perform a task: the tools, APIs, credentials, execution context, and nothing else. They bring clarity, safety, and sandboxed control to agent behavior.</p>
+<p>These environments can be used for both training and deployment, and serve as the foundation for scalable agentic development.</p>
+<h2> <a href="#the-problem"> <span></span> </a> <span> The Problem </span>
+</h2>
+<p>Modern AI agents can act autonomously across thousands of tasks. However, a large language model isn’t enough to get those tasks to actually run — it needs access to the right tools. Exposing millions of tools directly to a model isn’t reasonable (or safe). Instead, we need <strong>agentic environments</strong>: secure, semantically clear sandboxes that define exactly what’s required for a task, and nothing more. These environments handle the critical details:</p>
+<ul>
+<li>Clear semantics about what a task needs</li>
+<li>Sandboxed execution and safety guarantees</li>
+<li>Seamless access to authenticated tools and APIs</li>
+</ul>
+<h2> <a href="#the-solution"> <span></span> </a> <span> The Solution </span>
+</h2>
+<p>To supercharge this next wave of agentic development, Meta-PyTorch and Hugging Face are partnering to launch a <a href="https://huggingface.co/openenv">Hub for Environments</a>: a shared space where developers can build, share, and explore OpenEnv-compatible environments for both training and deployment. The figure below shows how <strong>OpenEnv</strong> fits in the new post-training stack being developed by <strong>Meta</strong>, with integrations for other libraries like <strong>TRL</strong>, <strong>SkyRL</strong>, and <strong>Unsloth</strong> underway:</p>
+<p> <img alt="rl_stack" src="https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/blog/openenv/rl-stack.png">
+</p> <p>Starting next week, developers can:</p>
+<ul>
+<li>Visit the new <a href="https://huggingface.co/openenv">Environment Hub</a> on Hugging Face where we will seed some initial environments</li>
+<li>Interact with environments directly as a Human Agent</li>
+<li>Enlist a model to solve tasks within the environment</li>
+<li>Inspect which tools the environment exposes and how it defines its observations</li>
+<li>Every environment uploaded to the Hub that conforms to the OpenEnv specification automatically gains this functionality — making it fast and easy to validate and iterate before running full RL training.</li>
+</ul>
+<p>Alongside this, we’re releasing the <a href="https://github.com/meta-pytorch/OpenEnv/blob/main/rfcs/002-env-spec.md">OpenEnv 0.1 Spec (RFC)</a> to gather community feedback and help shape the standard.</p>
+<h2> <a href="#the-rfcs"> <span></span> </a> <span> The RFCs </span>
+</h2>
+<p>In the current state of the repository, environment creators can create environments using <code>step()</code>, <code>reset()</code>, <code>close()</code> APIs (part of RFCs below). A few examples on how to create such environments can be seen <a href="https://github.com/meta-pytorch/OpenEnv/tree/main/src/envs">here</a>. Environment users can play with local Docker based environments for all environments already available in the repo. Following RFCs are under review:</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

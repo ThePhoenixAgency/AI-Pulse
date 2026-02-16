@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - zboralski/unflutter: Static analyzer for Flutter/Dart AOT snapshots</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - zboralski/unflutter: Static analyzer for Flutter/Dart AOT snapshots</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 3:55:57 PM | Lang: EN |
+    <a href="https://github.com/zboralski/unflutter" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>unflutter</h1><a href="#unflutter"></a></div>
+<p>Static analyzer for Flutter/Dart AOT snapshots. Recovers function names, class hierarchies, call graphs, and behavioral signals from <code>libapp.so</code> — without embedding or executing the Dart VM.</p>
+<div><h2>Why Not Blutter</h2><a href="#why-not-blutter"></a></div>
+<p><a href="https://github.com/aspect-sec/blutter">Blutter</a> solves Flutter reverse engineering by embedding the Dart VM itself. It calls <code>Dart_Initialize</code>, creates an isolate group from the snapshot, and walks the deserialized heap with internal VM APIs. No Dart code from the snapshot is executed — the VM is used purely for introspection. But this still means Blutter must compile a matching Dart SDK for every target version and link against VM internals.</p>
+<p>unflutter takes a different path. No VM. No SDK compilation. The snapshot is a byte stream with a known grammar. We parse it directly.</p>
+<p>The tradeoff: Blutter gets perfect fidelity because it deserializes through the VM's own code paths. unflutter gets portability, speed, and the ability to analyze snapshots from any Dart version without building anything version-specific. The cost is that every format change across Dart versions must be handled explicitly in our parser — there is no runtime to fall back on.</p>
+<div><h2>Design</h2><a href="#design"></a></div>
+<p>Constraint elimination. We treat the snapshot as a deterministic binary grammar.</p>
+<div><pre><code>Omega = all possible interpretations of the byte stream C = { ELF invariants, snapshot magic (0xf5f5dcdc), version hash (32-byte ASCII), CID table (class ID -&gt; cluster handler), cluster grammar (alloc counts, fill encoding), instruction layout (stubs + code regions)
+} R = Omega reduced by C
+</code></pre></div>
+<p>Each constraint narrows the space. ELF validation eliminates non-ARM64 binaries. The snapshot magic eliminates non-Dart data. The version hash selects exactly one CID table and tag encoding. Cluster alloc counts fix the object population. Fill parsing recovers field values within that fixed population. What survives all constraints is the analysis result.</p>
+<div><pre><code>if |R| == 0 → HALT: overconstrained (bug in our model)
+if |R| &gt; 1 → HALT: underdetermined (missing constraint)
+if |R| == 1 → COMMIT: the answer
+</code></pre></div>
+<p>No heuristics. No runtime fallback. No inference outside constraints.</p>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<div><h3>Snapshot reconstruction</h3><a href="#snapshot-reconstruction"></a></div>
+<p>Dart AOT snapshot = two-phase serialization: <strong>alloc</strong> then <strong>fill</strong>.</p>
+<p><strong>Alloc</strong> walks clusters in CID order. Each cluster declares how many objects of that class exist. This assigns sequential reference IDs to every object. No data is read yet — just counts.</p>
+<p><strong>Fill</strong> walks the same clusters again. This time it reads the actual field values: string bytes, reference IDs pointing to other objects, integer scalars. The fill encoding varies by object type and Dart version.</p>
+<p>We replay both phases from raw bytes. The alloc phase gives us the object census. The fill phase gives us names, strings, and cross-references. Combined with the instructions table (which maps code objects to their machine code offsets), we recover the full function-name-to-address mapping that Blutter gets from the VM API.</p>
+<div><h3>Code recovery</h3><a href="#code-recovery"></a></div>
+<p>The isolate instructions image contains two regions:</p>
+<p><strong>Stubs</strong> (indices 0 through <code>FirstEntryWithCode-1</code>): runtime trampolines — type-check handlers, allocation stubs, dispatch helpers — that Dart AOT places before user code.</p>
+<p><strong>Code</strong> (indices <code>FirstEntryWithCode</code> onward): user functions and framework code. Each Code object maps to a PC offset via the instructions table.</p>
+<p>We resolve both regions, producing a complete function map that covers the entire executable range.</p>
+<div><h3>ARM64 disassembly and call edges</h3><a href="#arm64-disassembly-and-call-edges"></a></div>
+<p>Each function's code bytes are decoded instruction-by-instruction using <code>arm64asm.Decode</code>. Branch detection handles B, B.cond, CBZ, CBNZ, TBZ, TBNZ, RET — all from raw 32-bit encodings.</p>
+<p><strong>CFG construction</strong> follows a 3-phase algorithm:</p>
+<ol>
+<li>Collect block leaders: instruction 0, branch targets, instructions after terminators</li>
+<li>Sort and partition into basic blocks</li>
+<li>Walk blocks, compute successor edges from terminal instructions</li>
+</ol>
+<p><strong>Call edge extraction</strong> distinguishes two kinds:</p>
+<ul>
+<li><strong>BL (direct call)</strong>: decode target address from imm26 field, resolve to function name via symbol map</li>
+<li><strong>BLR (indirect call)</strong>: resolve target register provenance via <code>RegTracker</code> (sliding window W=8)</li>
+</ul>
+<p>The register tracker traces how BLR target registers get their values:</p>
+<table>
+<thead>
+<tr>
+<th>Provenance</th>
+<th>Pattern</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PP (object pool)</td>
+<td><code>LDR Xt, [X27, #imm]</code></td>
+<td>X27 is the pool pointer. Pool index = byte_offset / 8</td>
+</tr>
+<tr>
+<td>THR (thread)</td>
+<td><code>LDR Xt, [X26, #imm]</code></td>
+<td>X26 is the thread pointer. Resolved via version-specific offset maps</td>
+</tr>
+<tr>
+<td>Peephole PP</td>
+<td><code>ADD Xd, X27, #hi; LDR Xt, [Xd, #lo]</code></td>
+<td>Two-instruction PP for large pool indices</td>
+</tr>
+<tr>
+<td>Dispatch table</td>
+<td><code>LDR Xn, [X21, Xm, LSL #3]</code></td>
+<td>X21 is the dispatch table register</td>
+</tr>
+</tbody>
+</table>
+<p>Each BLR gets annotated with its provenance (e.g., <code>PP[42] Widget.build</code>, <code>THR.AllocateArray_ep</code>, <code>dispatch_table</code>).</p>
+<div><h3>Graph construction</h3><a href="#graph-construction"></a></div>
+<p>Call edges and CFGs are converted to <a href="https://github.com/zboralski/lattice">lattice</a> types — an architecture-neutral graph IR shared with SpiderMonkey-dumper (for JS bytecode analysis). The lattice library provides DOT rendering.</p>
+<div><h3>Decompilation (Ghidra + IDA)</h3><a href="#decompilation-ghidra--ida"></a></div>
+<p>Both decompilers share a common metadata pipeline. <code>flutter-meta</code> generates <code>flutter_meta.json</code> with function names, class struct layouts, THR fields, string references, and pointer size metadata. Each decompiler's script consumes this file.</p>
+<p><strong>Ghidra</strong> (<code>unflutter decompile</code>) runs a headless pipeline:</p>
+<ol>
+<li>Pre-script registers a <code>__dartcall</code> calling convention via <code>SpecExtension</code> (marks X15/X26-X28 as unaffected, kills scratch registers)</li>
+<li>Post-script applies all metadata:
+<ul>
+<li>Disassembles at all known function addresses</li>
+<li>Creates/renames functions</li>
+<li>Creates Dart class struct types with correct field sizes (4-byte for compressed pointers, 8-byte otherwise)</li>
+<li>Creates a <code>DartThread</code> struct (200 fields) for THR (X26) accesses</li>
+<li>Applies typed function signatures (<code>this</code> pointer, parameter count, return type)</li>
+<li>Sets EOL comments for THR fields, PP pool references, and string literals</li>
+<li><strong>Register retyping</strong>: renames decompiler variables for Dart-specific registers and types X26 as <code>DartThread*</code>, enabling struct field resolution:</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Register</th>
+<th>Variable</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X15</td>
+<td><code>SHADOW_SP</code></td>
+<td>Dart shadow call stack</td>
+</tr>
+<tr>
+<td>X21</td>
+<td><code>DT</code></td>
+<td>Dispatch table pointer</td>
+</tr>
+<tr>
+<td>X22</td>
+<td><code>DART_NULL</code></td>
+<td>Dart null object</td>
+</tr>
+<tr>
+<td>X26</td>
+<td><code>THR</code> (DartThread*)</td>
+<td>Thread pointer — field accesses resolve to names</td>
+</tr>
+<tr>
+<td>X27</td>
+<td><code>PP</code></td>
+<td>Object pool pointer</td>
+</tr>
+<tr>
+<td>X28</td>
+<td><code>HEAP_BASE</code></td>
+<td>Compressed pointer base</td>
+</tr>
+<tr>
+<td>X29</td>
+<td><code>FP</code></td>
+<td>Frame pointer</td>
+</tr>
+<tr>
+<td>X30</td>
+<td><code>LR</code></td>
+<td>Link register</td>
+</tr>
+</tbody>
+</table>
+<p><strong>IDA</strong> (<code>unflutter ida</code>) runs via idalib (headless):</p>
+<ol>
+<li>Generates C header with all struct types, parsed via <code>idc_parse_types()</code> in one shot</li>
+<li>Creates functions with Dart checked/unchecked entry point splitting (splits IDA-merged functions at metadata addresses)</li>
+<li>Applies function signatures via <code>apply_type()</code> (IL2CppDumper pattern)</li>
+<li>Sets repeatable comments (visible in Hex-Rays decompiler)</li>
+<li>Hex-Rays register retyping (same register table as Ghidra)</li>
+</ol>
+<p><strong>Ghidra vs IDA output quality:</strong></p>
+<p>Ghidra wins on readability: struct field resolution (<code>THR-&gt;stack_limit</code> vs <code>THR + 72</code>), indexed access (<code>SHADOW_SP[-2]</code> vs <code>*(_QWORD*)(SHADOW_SP - 16)</code>), and no <code>_QWORD</code>/<code>_DWORD</code> casts.</p>
+<p>IDA wins on type cleanliness: zero <code>undefined</code> types, zero <code>unaff_</code> register names, zero warnings. IDA uses <code>__int64</code> and <code>_QWORD</code> casts which are verbose but type-correct.</p>
+<p>The THR struct field resolution gap is a Hex-Rays microcode limitation — <code>set_lvar_type()</code> doesn't restructure the decompiler's AST to use struct member syntax.</p>
+<div><h3>Version handling</h3><a href="#version-handling"></a></div>
+<table>
+<thead>
+<tr>
+<th>Dart</th>
+<th>Tag Style</th>
+<th>Pointers</th>
+<th>Key change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.10.0</td>
+<td>CID-Int32</td>
+<td>Uncompressed</td>
+<td>4 header fields, pre-canonical-split</td>
+</tr>
+<tr>
+<td>2.13.0</td>
+<td>CID-Int32</td>
+<td>Uncompressed</td>
+<td>5 header fields, split canonical</td>
+</tr>
+<tr>
+<td>2.14.0</td>
+<td>CID-Shift1</td>
+<td>Uncompressed</td>
+<td>CID shifted into uint64 tag</td>
+</tr>
+<tr>
+<td>2.15.0</td>
+<td>CID-Shift1</td>
+<td>Uncompressed</td>
+<td>NativePointer CID inserted</td>
+</tr>
+<tr>
+<td>2.16.0</td>
+<td>CID-Shift1</td>
+<td>Uncompressed</td>
+<td>ConstMap/ConstSet added</td>
+</tr>
+<tr>
+<td>2.17.6</td>
+<td>CID-Shift1</td>
+<td>Uncompressed</td>
+<td>Last unsigned-ref version</td>
+</tr>
+<tr>
+<td>2.18.0</td>
+<td>CID-Shift1</td>
+<td>Compressed</td>
+<td>Signed refs, compressed pointers</td>
+</tr>
+<tr>
+<td>2.19.0</td>
+<td>CID-Shift1</td>
+<td>Compressed</td>
+<td>64-byte alignment</td>
+</tr>
+<tr>
+<td>3.0.5-3.3.0</td>
+<td>CID-Shift1</td>
+<td>Compressed</td>
+<td>Progressive CID table changes</td>
+</tr>
+<tr>
+<td>3.4.3-3.10.7</td>
+<td>ObjectHeader</td>
+<td>Compressed</td>
+<td>New tag encoding, record types</td>
+</tr>
+</tbody>
+</table>
+<p>No version-conditional architecture. The version hash selects a constraint set. Same pipeline runs.</p>
+<div><h2>Build and Install</h2><a href="#build-and-install"></a></div>
+<p>Requires Go 1.24+. One external dependency: <code>golang.org/x/arch</code> (ARM64 instruction decoding).</p>
+<div><pre>make build <span><span>#</span> build ./unflutter binary</span>
+make install <span><span>#</span> install binary to /usr/local/bin, scripts to ~/.unflutter/</span>
+make <span>test</span> <span><span>#</span> run tests</span></pre></div>
+<p>Ghidra integration requires Ghidra 11.x with Jython support. Auto-detected from <code>GHIDRA_HOME</code>, <code>PATH</code>, or common brew locations.</p>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Full pipeline (default)</h3><a href="#full-pipeline-default"></a></div>
+<div><pre>unflutter libapp.so</pre></div>
+<p>Runs ELF parse, disassembly, signal analysis, and metadata generation in one shot:</p>
+<div><pre><code>elf Dart SDK 3.10.7 code 284352 bytes at VA 0x569a8 instructions: 1465 entries (0 stubs + 1465 code) ranges: 1465 (0 stubs + 1465 code) classes: 402 layouts disasm 1465 functions, pool 1511 entries (1318 resolved) functions: 1465 -&gt; samples/evil-patched.unflutter/asm call edges: 5937 (822 BLR: 757 annotated, 65 unannotated) string refs: 620 BLR annotation: 92.1% signal 71 signal + 1076 context, 4178 edges net: 40 url: 4 base64: 1 cloaking: 1 asm snippets: 1142 -&gt; signal_graph.json (900218 bytes) -&gt; signal.html (456296 bytes) -&gt; signal.dot (5809 bytes) -&gt; signal_cfg.dot (51 functions, 50855 bytes) -&gt; signal.svg (18136 bytes) -&gt; signal_cfg.svg (145979 bytes) meta 1465 functions focus: 71 signal functions (use --all for everything) dart: 3.10.7 ptr_size: 4 thr_fields: 272 classes: 402 layouts comments: 1363 from asm files string refs: +461 comments -&gt; flutter_meta.json (577230 bytes) summary output: samples/evil-patched.unflutter dart: 3.10.7 functions: 1465 classes: 402 signal: 71 next open samples/evil-patched.unflutter/signal.html unflutter ghidra libapp.so --from samples/evil-patched.unflutter unflutter ida libapp.so --from samples/evil-patched.unflutter
+</code></pre></div>
+<p>Use <code>--quiet</code> / <code>-q</code> to suppress verbose output. Use <code>--out</code> to set the output directory (default: <code>&lt;basename&gt;.unflutter/</code>).</p>
+<div><h3>Quick scan</h3><a href="#quick-scan"></a></div>
+<div><pre>unflutter scan libapp.so <span><span>#</span> print snapshot info</span></pre></div>
+<div><h3>Signal only (skip metadata)</h3><a href="#signal-only-skip-metadata"></a></div>
+<p>The default pipeline already includes signal analysis. Use <code>unflutter signal</code> to run the same pipeline but skip the metadata generation stage:</p>
+<div><pre>unflutter signal libapp.so <span><span>#</span> default pipeline without meta</span>
+unflutter signal libapp.so -k 3 <span><span>#</span> custom context depth (default: 2)</span>
+unflutter signal libapp.so --from out/target <span><span>#</span> rerun signal from existing disasm</span></pre></div>
+<div><h3>Ghidra decompilation</h3><a href="#ghidra-decompilation"></a></div>
+<div><pre>unflutter ghidra libapp.so <span><span>#</span> full pipeline + Ghidra headless</span>
+unflutter ghidra libapp.so --from out/target <span><span>#</span> reuse existing disasm output</span>
+unflutter ghidra libapp.so --all <span><span>#</span> decompile ALL functions</span></pre></div>
+<div><h3>IDA decompilation</h3><a href="#ida-decompilation"></a></div>
+<div><pre>unflutter ida libapp.so <span><span>#</span> full pipeline + IDA idalib</span>
+unflutter ida libapp.so --from out/target <span><span>#</span> reuse existing disasm output</span>
+unflutter ida libapp.so --all <span><span>#</span> decompile ALL functions</span></pre></div>
+<div><h3>Metadata only</h3><a href="#metadata-only"></a></div>
+<div><pre>unflutter meta libapp.so <span><span>#</span> full pipeline, produce flutter_meta.json</span>
+unflutter meta --from out/target <span><span>#</span> regenerate from existing disasm</span></pre></div>
+<div><h3>Output artifacts</h3><a href="#output-artifacts"></a></div>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>functions.jsonl</code></td>
+<td>Function records: name, address, size, owner, param count</td>
+</tr>
+<tr>
+<td><code>call_edges.jsonl</code></td>
+<td>Call edges: BL/BLR with resolved targets and provenance</td>
+</tr>
+<tr>
+<td><code>classes.jsonl</code></td>
+<td>Class layouts: fields, offsets, instance sizes</td>
+</tr>
+<tr>
+<td><code>string_refs.jsonl</code></td>
+<td>String references from PP loads</td>
+</tr>
+<tr>
+<td><code>dart_meta.json</code></td>
+<td>Snapshot metadata: Dart version, pointer size, THR fields</td>
+</tr>
+<tr>
+<td><code>flutter_meta.json</code></td>
+<td>Unified metadata for Ghidra/IDA: functions, classes, THR fields, comments</td>
+</tr>
+<tr>
+<td><code>asm/*.txt</code></td>
+<td>Annotated ARM64 disassembly per function</td>
+</tr>
+<tr>
+<td><code>cfg/*.dot</code></td>
+<td>Per-function control flow graphs (with <code>--graph</code>)</td>
+</tr>
+<tr>
+<td><code>callgraph.dot</code></td>
+<td>Full call graph (with <code>--graph</code>)</td>
+</tr>
+<tr>
+<td><code>signal.html</code></td>
+<td>Behavioral signal report</td>
+</tr>
+<tr>
+<td><code>decompiled/*.c</code></td>
+<td>Ghidra decompiled C output</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>internal/ elfx/ ELF validation, ARM64 symbol extraction snapshot/ Region extraction, header parsing, version profiles dartfmt/ Dart VM stream encoding (variable-length integers) cluster/ Two-phase snapshot deserialization (alloc + fill) disasm/ ARM64 decode, CFG, call edge provenance, register tracking callgraph/ Lattice graph builders (call graph + CFG) signal/ Behavioral string classification render/ HTML/DOT visualization output/ JSONL serialization
+</code></pre></div>
+<div><h3>Pipeline</h3><a href="#pipeline"></a></div>
+<div><pre><code>libapp.so → ELF parse (elfx) → snapshot region extraction (snapshot) → header + version detection (snapshot) → cluster alloc scan (cluster) → cluster fill parse (cluster) → instructions table: stubs + code (cluster) → ARM64 disassembly + CFG (disasm) → call edge extraction with register tracking (disasm) → lattice graph construction (callgraph) → signal classification (signal) → Ghidra metadata + decompilation (ghidra-meta / decompile) → JSON / DOT / HTML artifacts
+</code></pre></div>
+<p>Each stage is a pure function from bytes to structured data. No mutable global state. No VM runtime. Same input, same output.</p>
+<div><h2>Known Limitations</h2><a href="#known-limitations"></a></div>
+<ul>
+<li><strong>AOT only.</strong> No JIT mode support.</li>
+<li><strong>ARM64 only.</strong> No x86 or RISC-V.</li>
+<li><strong>No source reconstruction.</strong> Output is function names, call edges, structs, strings — not Dart source.</li>
+<li><strong>BLR tracking window.</strong> Register provenance uses a sliding window (W=8). Complex register chains outside the window are unresolved.</li>
+<li><strong>Dart 2.12.x not validated.</strong> No samples available.</li>
+<li><strong>Every format change must be modeled.</strong> There is no runtime to handle it automatically.</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

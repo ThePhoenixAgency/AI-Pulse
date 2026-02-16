@@ -13,6 +13,11 @@
   blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
   pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+
 </style>
 </head>
 <body>
@@ -25,7 +30,7 @@
     <div><div><article><div>
 <p><a target="_blank" href="https://github.com/HKUDS/RAG-Anything/blob/main/assets/logo.png"><img src="https://github.com/HKUDS/RAG-Anything/raw/main/assets/logo.png" alt="RAG-Anything Logo" /></a>
 </p>
-<p></p><h2>🚀 RAG-Anything: All-in-One RAG Framework</h2><a href="#-rag-anything-all-in-one-rag-framework"></a><p></p>
+<p></p><h2> RAG-Anything: All-in-One RAG Framework</h2><a href="#-rag-anything-all-in-one-rag-framework"></a><p></p>
 <p><a href="https://trendshift.io/repositories/14959"><img src="https://camo.githubusercontent.com/b7d262712df3f0d8c5822a912b14f75d8879ed98333f5dccb8166f1d301a0946/68747470733a2f2f7472656e6473686966742e696f2f6170692f62616467652f7265706f7369746f726965732f3134393539" alt="HKUDS%2FRAG-Anything | Trendshift" /></a></p>
 <p><a target="_blank" href="https://camo.githubusercontent.com/ee0ffc9f8a8b338b4342f708bc183aa91ef92fc20187fe9e9e583d038b52b32d/68747470733a2f2f726561646d652d747970696e672d7376672e6865726f6b756170702e636f6d3f666f6e743d4f72626974726f6e2673697a653d3234266475726174696f6e3d333030302670617573653d3130303026636f6c6f723d3030443946462663656e7465723d74727565267643656e7465723d747275652677696474683d363030266c696e65733d57656c636f6d652b746f2b5241472d416e797468696e673b4e6578742d47656e2b4d756c74696d6f64616c2b5241472b53797374656d3b506f77657265642b62792b416476616e6365642b41492b546563686e6f6c6f6779"><img src="https://camo.githubusercontent.com/ee0ffc9f8a8b338b4342f708bc183aa91ef92fc20187fe9e9e583d038b52b32d/68747470733a2f2f726561646d652d747970696e672d7376672e6865726f6b756170702e636f6d3f666f6e743d4f72626974726f6e2673697a653d3234266475726174696f6e3d333030302670617573653d3130303026636f6c6f723d3030443946462663656e7465723d74727565267643656e7465723d747275652677696474683d363030266c696e65733d57656c636f6d652b746f2b5241472d416e797468696e673b4e6578742d47656e2b4d756c74696d6f64616c2b5241472b53797374656d3b506f77657265642b62792b416476616e6365642b41492b546563686e6f6c6f6779" alt="Typing Animation" /></a>
 </p>
@@ -39,16 +44,16 @@
 <hr />
 
 <hr />
-<p></p><h2>🎉 News</h2><a href="#-news"></a><p></p>
+<p></p><h2> News</h2><a href="#-news"></a><p></p>
 <ul>
-<li> [2025.10]🎯📢 🚀 We have released the technical report of <a href="http://arxiv.org/abs/2510.12323">RAG-Anything</a>. Access it now to explore our latest research findings.</li>
-<li> [2025.08]🎯📢 🔍 RAG-Anything now features <strong>VLM-Enhanced Query</strong> mode! When documents include images, the system seamlessly integrates them into VLM for advanced multimodal analysis, combining visual and textual context for deeper insights.</li>
-<li> [2025.07]🎯📢 RAG-Anything now features a <a href="https://github.com/HKUDS/RAG-Anything/blob/main/docs/context_aware_processing.md">context configuration module</a>, enabling intelligent integration of relevant contextual information to enhance multimodal content processing.</li>
-<li> [2025.07]🎯📢 🚀 RAG-Anything now supports multimodal query capabilities, enabling enhanced RAG with seamless processing of text, images, tables, and equations.</li>
-<li> [2025.07]🎯📢 🎉 RAG-Anything has reached 1k🌟 stars on GitHub! Thank you for your incredible support and valuable contributions to the project.</li>
+<li> [2025.10]  We have released the technical report of <a href="http://arxiv.org/abs/2510.12323">RAG-Anything</a>. Access it now to explore our latest research findings.</li>
+<li> [2025.08]  RAG-Anything now features <strong>VLM-Enhanced Query</strong> mode! When documents include images, the system seamlessly integrates them into VLM for advanced multimodal analysis, combining visual and textual context for deeper insights.</li>
+<li> [2025.07] RAG-Anything now features a <a href="https://github.com/HKUDS/RAG-Anything/blob/main/docs/context_aware_processing.md">context configuration module</a>, enabling intelligent integration of relevant contextual information to enhance multimodal content processing.</li>
+<li> [2025.07]  RAG-Anything now supports multimodal query capabilities, enabling enhanced RAG with seamless processing of text, images, tables, and equations.</li>
+<li> [2025.07]  RAG-Anything has reached 1k stars on GitHub! Thank you for your incredible support and valuable contributions to the project.</li>
 </ul>
 <hr />
-<p></p><h2>🌟 System Overview</h2><a href="#-system-overview"></a><p></p>
+<p></p><h2> System Overview</h2><a href="#-system-overview"></a><p></p>
 <p><em>Next-Generation Multimodal Intelligence</em></p>
 <div>
 <p>Modern documents increasingly contain diverse multimodal content—text, images, tables, equations, charts, and multimedia—that traditional text-focused RAG systems cannot effectively process. <strong>RAG-Anything</strong> addresses this challenge as a comprehensive <strong>All-in-One Multimodal Document Processing RAG system</strong> built on <a href="https://github.com/HKUDS/LightRAG">LightRAG</a>.</p>
@@ -56,42 +61,42 @@
 <p>Users can query documents containing <strong>interleaved text</strong>, <strong>visual diagrams</strong>, <strong>structured tables</strong>, and <strong>mathematical formulations</strong> through <strong>one cohesive interface</strong>. This consolidated approach makes RAG-Anything particularly valuable for academic research, technical documentation, financial reports, and enterprise knowledge management where rich, mixed-content documents demand a <strong>unified processing framework</strong>.</p>
 <p><a target="_blank" href="https://github.com/HKUDS/RAG-Anything/blob/main/assets/rag_anything_framework.png"><img src="https://github.com/HKUDS/RAG-Anything/raw/main/assets/rag_anything_framework.png" alt="RAG-Anything" /></a>
 </p></div>
-<p></p><h3>🎯 Key Features</h3><a href="#-key-features"></a><p></p>
+<p></p><h3> Key Features</h3><a href="#-key-features"></a><p></p>
 <div>
 <ul>
-<li><strong>🔄 End-to-End Multimodal Pipeline</strong> - Complete workflow from document ingestion and parsing to intelligent multimodal query answering</li>
-<li><strong>📄 Universal Document Support</strong> - Seamless processing of PDFs, Office documents, images, and diverse file formats</li>
-<li><strong>🧠 Specialized Content Analysis</strong> - Dedicated processors for images, tables, mathematical equations, and heterogeneous content types</li>
-<li><strong>🔗 Multimodal Knowledge Graph</strong> - Automatic entity extraction and cross-modal relationship discovery for enhanced understanding</li>
-<li><strong>⚡ Adaptive Processing Modes</strong> - Flexible MinerU-based parsing or direct multimodal content injection workflows</li>
-<li><strong>📋 Direct Content List Insertion</strong> - Bypass document parsing by directly inserting pre-parsed content lists from external sources</li>
-<li><strong>🎯 Hybrid Intelligent Retrieval</strong> - Advanced search capabilities spanning textual and multimodal content with contextual understanding</li>
+<li><strong> End-to-End Multimodal Pipeline</strong> - Complete workflow from document ingestion and parsing to intelligent multimodal query answering</li>
+<li><strong> Universal Document Support</strong> - Seamless processing of PDFs, Office documents, images, and diverse file formats</li>
+<li><strong> Specialized Content Analysis</strong> - Dedicated processors for images, tables, mathematical equations, and heterogeneous content types</li>
+<li><strong> Multimodal Knowledge Graph</strong> - Automatic entity extraction and cross-modal relationship discovery for enhanced understanding</li>
+<li><strong> Adaptive Processing Modes</strong> - Flexible MinerU-based parsing or direct multimodal content injection workflows</li>
+<li><strong> Direct Content List Insertion</strong> - Bypass document parsing by directly inserting pre-parsed content lists from external sources</li>
+<li><strong> Hybrid Intelligent Retrieval</strong> - Advanced search capabilities spanning textual and multimodal content with contextual understanding</li>
 </ul>
 </div>
 <hr />
-<p></p><h2>🏗️ Algorithm &amp; Architecture</h2><a href="#️-algorithm--architecture"></a><p></p>
+<p></p><h2> Algorithm &amp; Architecture</h2><a href="#-algorithm--architecture"></a><p></p>
 <div>
 <p></p><h3>Core Algorithm</h3><a href="#core-algorithm"></a><p></p>
 <p><strong>RAG-Anything</strong> implements an effective <strong>multi-stage multimodal pipeline</strong> that fundamentally extends traditional RAG architectures to seamlessly handle diverse content modalities through intelligent orchestration and cross-modal understanding.</p>
 </div>
 <div>
       <div>
-        <p>📄</p>
+        <p></p>
         <p>Document Parsing</p>
       </div>
       <p>→</p>
       <div>
-        <p>🧠</p>
+        <p></p>
         <p>Content Analysis</p>
       </div>
       <p>→</p>
       <div>
-        <p>🔍</p>
+        <p></p>
         <p>Knowledge Graph</p>
       </div>
       <p>→</p>
       <div>
-        <p>🎯</p>
+        <p></p>
         <p>Intelligent Retrieval</p>
       </div>
     </div>
@@ -101,13 +106,13 @@
 <p><strong>Key Components:</strong></p>
 <ul>
 <li>
-<p><strong>⚙️ MinerU Integration</strong>: Leverages <a href="https://github.com/opendatalab/MinerU">MinerU</a> for high-fidelity document structure extraction and semantic preservation across complex layouts.</p>
+<p><strong> MinerU Integration</strong>: Leverages <a href="https://github.com/opendatalab/MinerU">MinerU</a> for high-fidelity document structure extraction and semantic preservation across complex layouts.</p>
 </li>
 <li>
-<p><strong>🧩 Adaptive Content Decomposition</strong>: Automatically segments documents into coherent text blocks, visual elements, structured tables, mathematical equations, and specialized content types while preserving contextual relationships.</p>
+<p><strong> Adaptive Content Decomposition</strong>: Automatically segments documents into coherent text blocks, visual elements, structured tables, mathematical equations, and specialized content types while preserving contextual relationships.</p>
 </li>
 <li>
-<p><strong>📁 Universal Format Support</strong>: Provides comprehensive handling of PDFs, Office documents (DOC/DOCX/PPT/PPTX/XLS/XLSX), images, and emerging formats through specialized parsers with format-specific optimization.</p>
+<p><strong> Universal Format Support</strong>: Provides comprehensive handling of PDFs, Office documents (DOC/DOCX/PPT/PPTX/XLS/XLSX), images, and emerging formats through specialized parsers with format-specific optimization.</p>
 </li>
 </ul>
 </div>
@@ -117,13 +122,13 @@
 <p><strong>Key Components:</strong></p>
 <ul>
 <li>
-<p><strong>🎯 Autonomous Content Categorization and Routing</strong>: Automatically identify, categorize, and route different content types through optimized execution channels.</p>
+<p><strong> Autonomous Content Categorization and Routing</strong>: Automatically identify, categorize, and route different content types through optimized execution channels.</p>
 </li>
 <li>
-<p><strong>⚡ Concurrent Multi-Pipeline Architecture</strong>: Implements concurrent execution of textual and multimodal content through dedicated processing pipelines. This approach maximizes throughput efficiency while preserving content integrity.</p>
+<p><strong> Concurrent Multi-Pipeline Architecture</strong>: Implements concurrent execution of textual and multimodal content through dedicated processing pipelines. This approach maximizes throughput efficiency while preserving content integrity.</p>
 </li>
 <li>
-<p><strong>🏗️ Document Hierarchy Extraction</strong>: Extracts and preserves original document hierarchy and inter-element relationships during content transformation.</p>
+<p><strong> Document Hierarchy Extraction</strong>: Extracts and preserves original document hierarchy and inter-element relationships during content transformation.</p>
 </li>
 </ul>
 </div>
@@ -133,7 +138,7 @@
 <p><strong>Specialized Analyzers:</strong></p>
 <ul>
 <li>
-<p><strong>🔍 Visual Content Analyzer</strong>:</p>
+<p><strong> Visual Content Analyzer</strong>:</p>
 <ul>
 <li>Integrate vision model for image analysis.</li>
 <li>Generates context-aware descriptive captions based on visual semantics.</li>
@@ -141,7 +146,7 @@
 </ul>
 </li>
 <li>
-<p><strong>📊 Structured Data Interpreter</strong>:</p>
+<p><strong> Structured Data Interpreter</strong>:</p>
 <ul>
 <li>Performs systematic interpretation of tabular and structured data formats.</li>
 <li>Implements statistical pattern recognition algorithms for data trend analysis.</li>
@@ -149,7 +154,7 @@
 </ul>
 </li>
 <li>
-<p><strong>📐 Mathematical Expression Parser</strong>:</p>
+<p><strong> Mathematical Expression Parser</strong>:</p>
 <ul>
 <li>Parses complex mathematical expressions and formulas with high accuracy.</li>
 <li>Provides native LaTeX format support for seamless integration with academic workflows.</li>
@@ -157,7 +162,7 @@
 </ul>
 </li>
 <li>
-<p><strong>🔧 Extensible Modality Handler</strong>:</p>
+<p><strong> Extensible Modality Handler</strong>:</p>
 <ul>
 <li>Provides configurable processing framework for custom and emerging content types.</li>
 <li>Enables dynamic integration of new modality processors through plugin architecture.</li>
@@ -172,16 +177,16 @@
 <p><strong>Core Functions:</strong></p>
 <ul>
 <li>
-<p><strong>🔍 Multi-Modal Entity Extraction</strong>: Transforms significant multimodal elements into structured knowledge graph entities. The process includes semantic annotations and metadata preservation.</p>
+<p><strong> Multi-Modal Entity Extraction</strong>: Transforms significant multimodal elements into structured knowledge graph entities. The process includes semantic annotations and metadata preservation.</p>
 </li>
 <li>
-<p><strong>🔗 Cross-Modal Relationship Mapping</strong>: Establishes semantic connections and dependencies between textual entities and multimodal components. This is achieved through automated relationship inference algorithms.</p>
+<p><strong> Cross-Modal Relationship Mapping</strong>: Establishes semantic connections and dependencies between textual entities and multimodal components. This is achieved through automated relationship inference algorithms.</p>
 </li>
 <li>
-<p><strong>🏗️ Hierarchical Structure Preservation</strong>: Maintains original document organization through "belongs_to" relationship chains. These chains preserve logical content hierarchy and sectional dependencies.</p>
+<p><strong> Hierarchical Structure Preservation</strong>: Maintains original document organization through "belongs_to" relationship chains. These chains preserve logical content hierarchy and sectional dependencies.</p>
 </li>
 <li>
-<p><strong>⚖️ Weighted Relationship Scoring</strong>: Assigns quantitative relevance scores to relationship types. Scoring is based on semantic proximity and contextual significance within the document structure.</p>
+<p><strong> Weighted Relationship Scoring</strong>: Assigns quantitative relevance scores to relationship types. Scoring is based on semantic proximity and contextual significance within the document structure.</p>
 </li>
 </ul>
 </div>
@@ -191,18 +196,18 @@
 <p><strong>Retrieval Mechanisms:</strong></p>
 <ul>
 <li>
-<p><strong>🔀 Vector-Graph Fusion</strong>: Integrates vector similarity search with graph traversal algorithms. This approach leverages both semantic embeddings and structural relationships for comprehensive content retrieval.</p>
+<p><strong> Vector-Graph Fusion</strong>: Integrates vector similarity search with graph traversal algorithms. This approach leverages both semantic embeddings and structural relationships for comprehensive content retrieval.</p>
 </li>
 <li>
-<p><strong>📊 Modality-Aware Ranking</strong>: Implements adaptive scoring mechanisms that weight retrieval results based on content type relevance. The system adjusts rankings according to query-specific modality preferences.</p>
+<p><strong> Modality-Aware Ranking</strong>: Implements adaptive scoring mechanisms that weight retrieval results based on content type relevance. The system adjusts rankings according to query-specific modality preferences.</p>
 </li>
 <li>
-<p><strong>🔗 Relational Coherence Maintenance</strong>: Maintains semantic and structural relationships between retrieved elements. This ensures coherent information delivery and contextual integrity.</p>
+<p><strong> Relational Coherence Maintenance</strong>: Maintains semantic and structural relationships between retrieved elements. This ensures coherent information delivery and contextual integrity.</p>
 </li>
 </ul>
 </div>
 <hr />
-<p></p><h2>🚀 Quick Start</h2><a href="#-quick-start"></a><p></p>
+<p></p><h2> Quick Start</h2><a href="#-quick-start"></a><p></p>
 <p><em>Initialize Your AI Journey</em></p>
 <p><a target="_blank" href="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif"><img src="https://user-images.githubusercontent.com/74038190/212284158-e840e285-664b-44d7-b79b-e264b5e54825.gif" /></a>
 </p>
@@ -243,7 +248,7 @@ uv sync --all-extras                 <span><span>#</span> All optional features<
 <li><strong><code>[all]</code></strong> - Includes all Python optional dependencies</li>
 </ul>
 <blockquote>
-<p><strong>⚠️ Office Document Processing Requirements:</strong></p>
+<p><strong> Office Document Processing Requirements:</strong></p>
 <ul>
 <li>Office documents (.doc, .docx, .ppt, .pptx, .xls, .xlsx) require <strong>LibreOffice</strong> installation</li>
 <li>Download from <a href="https://www.libreoffice.org/download/download/">LibreOffice official website</a></li>
@@ -258,7 +263,7 @@ uv sync --all-extras                 <span><span>#</span> All optional features<
 mineru --version
 
 <span><span>#</span> Check if properly configured</span>
-python -c <span><span>"</span>from raganything import RAGAnything; rag = RAGAnything(); print('✅ MinerU installed properly' if rag.check_parser_installation() else '❌ MinerU installation issue')<span>"</span></span></pre></div>
+python -c <span><span>"</span>from raganything import RAGAnything; rag = RAGAnything(); print(' MinerU installed properly' if rag.check_parser_installation() else ' MinerU installation issue')<span>"</span></span></pre></div>
 <p>Models are downloaded automatically on first use. For manual download, refer to <a href="https://github.com/opendatalab/MinerU/blob/master/README.md#22-model-source-configuration">MinerU Model Source Configuration</a>.</p>
 <p></p><h3>Usage Examples</h3><a href="#usage-examples"></a><p></p>
 <p></p><h4>1. End-to-End Document Processing</h4><a href="#1-end-to-end-document-processing"></a><p></p>
@@ -604,9 +609,9 @@ python -c <span><span>"</span>from raganything import RAGAnything; rag = RAGAnyt
 
     <span># Check if previous LightRAG instance exists</span>
     <span>if</span> <span>os</span>.<span>path</span>.<span>exists</span>(<span>lightrag_working_dir</span>) <span>and</span> <span>os</span>.<span>listdir</span>(<span>lightrag_working_dir</span>):
-        <span>print</span>(<span>"✅ Found existing LightRAG instance, loading..."</span>)
+        <span>print</span>(<span>" Found existing LightRAG instance, loading..."</span>)
     <span>else</span>:
-        <span>print</span>(<span>"❌ No existing LightRAG instance found, will create new one"</span>)
+        <span>print</span>(<span>" No existing LightRAG instance found, will create new one"</span>)
 
     <span># Create/load LightRAG instance with your configuration</span>
     <span>lightrag_instance</span> <span>=</span> <span>LightRAG</span>(
@@ -894,7 +899,7 @@ python -c <span><span>"</span>from raganything import RAGAnything; rag = RAGAnyt
 <li>You have cached parsing results that you want to reuse</li>
 </ul>
 <hr />
-<p></p><h2>🛠️ Examples</h2><a href="#️-examples"></a><p></p>
+<p></p><h2> Examples</h2><a href="#-examples"></a><p></p>
 <p><em>Practical Implementation Demos</em></p>
 <p><a target="_blank" href="https://user-images.githubusercontent.com/74038190/212257455-13e3e01e-d6a6-45dc-bb92-3ab87b12dfc1.gif"><img src="https://user-images.githubusercontent.com/74038190/212257455-13e3e01e-d6a6-45dc-bb92-3ab87b12dfc1.gif" /></a>
 </p>
@@ -931,7 +936,7 @@ python examples/image_format_test.py --check-pillow --file dummy
 <span><span>#</span> Check ReportLab installation</span>
 python examples/text_format_test.py --check-reportlab --file dummy</pre></div>
 <hr />
-<p></p><h2>🔧 Configuration</h2><a href="#-configuration"></a><p></p>
+<p></p><h2> Configuration</h2><a href="#-configuration"></a><p></p>
 <p><em>System Optimization Parameters</em></p>
 <p></p><h3>Environment Variables</h3><a href="#environment-variables"></a><p></p>
 <p>Create a <code>.env</code> file (refer to <code>.env.example</code>):</p>
@@ -1013,10 +1018,10 @@ mineru -p input.pdf -o output_dir -b pipeline --device cuda  <span><span>#</span
 <li><strong>Text Files</strong> (.txt, .md): Install with <code>pip install raganything[text]</code></li>
 </ul>
 <blockquote>
-<p><strong>📋 Quick Install</strong>: Use <code>pip install raganything[all]</code> to enable all format support (Python dependencies only - LibreOffice still needs separate installation)</p>
+<p><strong> Quick Install</strong>: Use <code>pip install raganything[all]</code> to enable all format support (Python dependencies only - LibreOffice still needs separate installation)</p>
 </blockquote>
 <hr />
-<p></p><h2>🧪 Supported Content Types</h2><a href="#-supported-content-types"></a><p></p>
+<p></p><h2> Supported Content Types</h2><a href="#-supported-content-types"></a><p></p>
 <p></p><h3>Document Formats</h3><a href="#document-formats"></a><p></p>
 <ul>
 <li><strong>PDFs</strong> - Research papers, reports, presentations</li>
@@ -1033,10 +1038,10 @@ mineru -p input.pdf -o output_dir -b pipeline --device cuda  <span><span>#</span
 </ul>
 <p><em>For installation of format-specific dependencies, see the <a href="#-configuration">Configuration</a> section.</em></p>
 <hr />
-<p></p><h2>📖 Citation</h2><a href="#-citation"></a><p></p>
+<p></p><h2> Citation</h2><a href="#-citation"></a><p></p>
 <p><em>Academic Reference</em></p>
 <div>
-      <p>📖</p>
+      <p></p>
     </div>
 <p>If you find RAG-Anything useful in your research, please cite our paper:</p>
 <div><pre><span>@misc</span>{<span>guo2025raganythingallinoneragframework</span>,
@@ -1049,11 +1054,11 @@ mineru -p input.pdf -o output_dir -b pipeline --device cuda  <span><span>#</span
       <span>url</span>=<span><span>{</span>https://arxiv.org/abs/2510.12323<span>}</span></span>,
 }</pre></div>
 <hr />
-<p></p><h2>🔗 Related Projects</h2><a href="#-related-projects"></a><p></p>
+<p></p><h2> Related Projects</h2><a href="#-related-projects"></a><p></p>
 <p><em>Ecosystem &amp; Extensions</em></p>
 
 <hr />
-<p></p><h2>⭐ Star History</h2><a href="#-star-history"></a><p></p>
+<p></p><h2> Star History</h2><a href="#-star-history"></a><p></p>
 <p><em>Community Growth Trajectory</em></p>
 <div>
   <a href="https://star-history.com/#HKUDS/RAG-Anything&amp;Date">
@@ -1065,7 +1070,7 @@ mineru -p input.pdf -o output_dir -b pipeline --device cuda  <span><span>#</span
   </a>
 </div>
 <hr />
-<p></p><h2>🤝 Contribution</h2><a href="#-contribution"></a><p></p>
+<p></p><h2> Contribution</h2><a href="#-contribution"></a><p></p>
 <p><em>Join the Innovation</em></p>
 <p>
   We thank all our contributors for their valuable contributions.
@@ -1090,9 +1095,9 @@ mineru -p input.pdf -o output_dir -b pipeline --device cuda  <span><span>#</span
   </p>
 </div>
 <div>
-    <p><span>⭐</span>
+    <p><span></span>
       <span>Thank you for visiting RAG-Anything!</span>
-      <span>⭐</span>
+      <span></span>
     </p>
     <p>Building the Future of Multimodal AI</p>
   </div>

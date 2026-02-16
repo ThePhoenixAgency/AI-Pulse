@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vulkan-based translation layer D7VK officially expands to include Direct3D 5 support</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Vulkan-based translation layer D7VK officially expands to include Direct3D 5 support</h1>
+  <div class="metadata">
+    Source: GamingOnLinux | Date: 2/9/2026 12:11:10 PM | Lang: EN |
+    <a href="https://www.gamingonlinux.com/2026/02/vulkan-based-translation-layer-d7vk-officially-expands-to-include-direct3d-5-support/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>The Vulkan-based translation layer D7VK has version 1.3 out now, which officially expands it to also cover Direct3D 5 support for running more games on Linux. So now it supports Direct3D 5, 6 and 7. Impressive work for the DXVK fork focusing on older versions of Direct3D!</p>
+<p>You would pair this up with Wine / Proton, to hopefully give improved accuracy and performance in certain older games compared to plain Wine.</p>
+<p>As <a href="https://github.com/WinterSnowfall/d7vk/releases/tag/v1.3" target="_blank">announced</a> by the developer:</p>
+<blockquote>
+<p>I'm afraid we've run out of 3DMark versions at this point, and the <em>Final Reality</em> benchmark isn't yet workable, however this release officially introduces support for D3D5. Don't worry, you won't run into any GPU-related performance limitations in this cursed land of our 3D forefathers, no matter what you use for translation to more modern APIs. Mind you, in the vast majority of cases you're better off using the Glide renderers that nearly all such late last century games offer as an alternative.</p>
+<p>In addition to that, the D3D7/D3D6 sides have also seen a fair share of fixes and improvements (see below).</p>
+<p>Fixes/additions:</p>
+<ul>
+<li>Starting with v1.3 we are opting in to FSAA emulation, rather than enabling it globally by default and keeping it disabled until the game decides to use it (or not). That will save quite a bit of memory bandwidth, since it does away with multi-sampled surface use, unless a game is known to offer support for FSAA. You can still force enable FSAA emulation at your leisure, of course, however note that AMD users may run into issues with it in some cases due to a known driver limitation around 16-bit texel buffers.</li>
+<li>Also starting with v1.3 logging verbosity and log file path environment variables are prefixed with <code>D7VK_</code>, to allow for better logging segregation between D7VK and DXVK.</li>
+<li>Thanks to <a href="https://github.com/CkNoSFeRaTU">@CkNoSFeRaTU</a>, an obscure FPU mode setup bug, that affected all D3D6/5 titles, was spotted and fixed. The new way of handing things has done away with glaring rendering issues in titles such as <em>Legacy of Kain: Soul Reaver</em> (yes, Raziel is finally play-worthy, as he should be!), <em>Homeworld: Emergence (aka Cataclysm)</em> and subtle precision issues in many others.</li>
+<li>Fixed a D3D6/5 texture loading oversight which prevented us from hitting an optimal level of performance in many D3D6 titles (e.g. <em>Drakan: Order of the Flame</em>, <em>Freespace 2</em> and <em>Arabian Nights</em>) and sometimes caused texture corruption.</li>
+<li>Thanks again to the now notorious detective skills of <a href="https://github.com/CkNoSFeRaTU">@CkNoSFeRaTU</a>, we've managed to do away with our proxy interface workaround, which <em>technically</em> enables various games to run under Windows (e.g. <em>Gothic 1/2</em>, <em>Ground Control</em>, <em>No One Lives Forever</em>, <em>Blood 2: The Chosen</em> and other LithTech engine games) and ensures intro videos and other back buffers surfaces used by these games are displayed properly.</li>
+<li>Finalized an assortment of DDraw legacy surface groundwork, which was needed to properly support various D3D5 games.</li>
+</ul>
+</blockquote>
+<p>A few of the titles noted to work well with it include:</p>
+<ul>
+<li>Carmageddon II: Carpocalypse Now</li>
+<li>Tomb Raider II</li>
+<li>Mortal Kombat 4</li>
+<li>Nightmare Creatures</li>
+<li>N.I.C.E 2</li>
+<li>Mobil 1 Rally Championship</li>
+<li>Deathtrap Dungeon</li>
+<li>Lands of Lore III</li>
+</ul>
+<p><img src="https://uploads.golmedia.net/uploads/articles/article_media/15661481651770635301gol2.png"><br><em>Pictured - Carmageddon II: Carpocalypse Now</em></p>
+<p>Source: <a href="https://github.com/WinterSnowfall/d7vk" target="_blank">GitHub</a></p> <p><span>Article taken from <a href="https://www.gamingonlinux.com/">GamingOnLinux.com.</a></span> </p></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

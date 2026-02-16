@@ -4,96 +4,63 @@
 <meta charset="UTF-8">
 <title>ChatGPT : OpenAI introduit un mode Lockdown et un système d'alerte</title>
 <style>
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.8; color: #e2e8f0; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #0a0e27; }
-  h1 { color: #00d9ff; margin-bottom: 0.5em; }
-  .metadata { color: #94a3b8; font-size: 0.9em; margin-bottom: 2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 1em; }
-  img { max-width: 100%; height: auto; border-radius: 8px; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 1em; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 15px; color: #94a3b8; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
   code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 15px; border-radius: 6px; overflow-x: auto; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
 </style>
 </head>
 <body>
   <h1>ChatGPT : OpenAI introduit un mode Lockdown et un système d'alerte</h1>
   <div class="metadata">
-    Source: GNT | Date: 2/16/2026 | Lang: FR |
+    Source: GNT | Date: 2/16/2026 3:30:01 PM | Lang: FR |
     <a href="https://www.generation-nt.com/actualites/chatgpt-openai-mode-lockdown-elevated-risk-2070833" target="_blank">Original Article</a>
   </div>
   <div class="content">
-    <div><article>
-			<p>
-				Publié le
-				<time>
-					16 février 2026 à 15:30</time>
-									par <a href="https://www.generation-nt.com/informations/a-propos/jerome.g"><span>Jérôme G.</span></a>
-											</p>
-
-			
-			
-			
-			<section>
-				<div>
-											
-										<p><span>Face à la menace grandissante des attaques par injection de prompt, OpenAI dégaine une nouvelle parade de sécurité pour protéger les données les plus sensibles d'utilisateurs de ChatGPT.</span></p>
-				</div>
-
-																	
-					
-											<a href="https://img.generation-nt.com/chatgpt-elevated-risk_0640038401720106.webp">
-							<div>
-								
-	
-		        
-                    
-        		<img src="https://img.generation-nt.com/chatgpt-elevated-risk_0298000001720106.jpg" alt="chatgpt-elevated-risk" />
-	
-							</div>
-						</a>
-									
-								
-			</section>
-
-			
-			<div><p>Alors que les systèmes d'IA sont de plus en plus intégrés à des tâches complexes impliquant le Web et des applications connectées, les enjeux de sécurité évoluent. Pour répondre à la menace émergente de l'<strong>injection de prompt</strong>, OpenAI dévoile de nouvelles protections.</p>
+    <div><article> <p> Publié le <time> 16 février 2026 à 15:30</time> par <a href="https://www.generation-nt.com/informations/a-propos/jerome.g"><span>Jérôme G.</span></a> </p> <section> <div> <p><span>Face à la menace grandissante des attaques par injection de prompt, OpenAI dégaine une nouvelle parade de sécurité pour protéger les données les plus sensibles d'utilisateurs de ChatGPT.</span></p> </div> <a href="https://img.generation-nt.com/chatgpt-elevated-risk_0640038401720106.webp"> <div> <img src="https://img.generation-nt.com/chatgpt-elevated-risk_0298000001720106.jpg" alt="chatgpt-elevated-risk"> </div> </a> </section> <div><p>Alors que les systèmes d'IA sont de plus en plus intégrés à des tâches complexes impliquant le Web et des applications connectées, les enjeux de sécurité évoluent. Pour répondre à la menace émergente de l'<strong>injection de prompt</strong>, OpenAI dévoile de nouvelles protections.</p>
 <h2>Qu'est-ce que le mode Lockdown de verrouillage ?</h2>
 <p>Le <a href="https://help.openai.com/en/articles/20001061-lockdown-mode" target="_blank"><strong>mode Lockdown</strong></a> est un paramètre de sécurité avancé et optionnel, conçu pour une catégorie spécifique d'utilisateurs de ChatGPT. Son objectif principal est de réduire le risque d'exfiltration de données<a href="https://www.generation-nt.com/"></a> via des attaques par injection de prompt, en limitant les interactions de ChatGPT avec des systèmes externes.</p>
 <p>Ce mode de verrouillage <strong>désactive ou restreint</strong> certaines fonctionnalités. Par exemple, la navigation web est limitée au contenu en cache, empêchant toute requête réseau en direct de quitter l'environnement contrôlé d'OpenAI, tandis que la recherche approfondie (<a href="https://www.generation-nt.com/actualites/chatgpt-deep-research-gpt-5-2-openai-2070679">Deep Research</a>) ou le mode Agent sont totalement désactivés.</p>
 <p>Une telle approche vise à bloquer la dernière étape d'une attaque, qui consiste à envoyer les données volées à l'attaquant.</p>
 <h2>Bientôt avec ChatGPT grand public</h2>
-<p>Le mode Lockdown est actuellement disponible pour les offres comme ChatGPT Enterprise<a href="https://www.generation-nt.com/"></a>, ChatGPT Edu, ChatGPT for Healthcare et ChatGPT for Teachers. Il est prévu pour le forfait <strong>ChatGPT grand public dans les prochains mois</strong>.</p>
+<p>Le mode Lockdown est actuellement disponible pour les offres comme&nbsp;ChatGPT Enterprise<a href="https://www.generation-nt.com/"></a>, ChatGPT Edu, ChatGPT for Healthcare et ChatGPT for Teachers. Il est prévu pour le forfait <strong>ChatGPT grand public dans les prochains mois</strong>.</p>
 <p>Les administrateurs d'espaces de travail peuvent l'activer en créant un rôle personnalisé dans les paramètres de leur console. Cela leur permet d'appliquer des restrictions supplémentaires par-dessus les contrôles existants.</p>
 <p>De la flexibilité est au programme pour les administrateurs, notamment en ce qui concerne les applications connectées. Ils peuvent définir quelles actions au sein de ces applications restent accessibles aux utilisateurs.</p>
-<p>En complément, la plateforme Compliance API Logs propose une visibilité détaillée sur l'utilisation des applications et les données partagées.</p>
-<p><a href="https://img.generation-nt.com/chatgpt-mode-lockdown_01720107.webp" target="_blank">
-		        
-                    
-        		<img src="https://img.generation-nt.com/chatgpt-mode-lockdown_04b0032001720107.jpg" alt="chatgpt-mode-lockdown" />
-	
-</a></p>
+<p>En complément, la plateforme Compliance API Logs&nbsp;propose une visibilité détaillée sur l'utilisation des applications et les données partagées.</p>
+<p><a href="https://img.generation-nt.com/chatgpt-mode-lockdown_01720107.webp" target="_blank"> <img src="https://img.generation-nt.com/chatgpt-mode-lockdown_04b0032001720107.jpg" alt="chatgpt-mode-lockdown"> </a></p>
 <h2>Que sont les labels Elevated Risk ?</h2>
-<p>En parallèle du mode Lockdown, OpenAI standardise son système d'alerte avec les labels Elevated Risk. Ces <strong>étiquettes de risque élevé</strong> sont apposées sur certaines fonctionnalités de ChatGPT, ChatGPT Atlas et Codex qui peuvent introduire des risques de sécurité supplémentaires.</p>
-<p>Un exemple est donné avec l'assistant de codage <a href="https://www.generation-nt.com/actualites/gpt-5-3-codex-openai-ia-codage-agent-2070357">Codex</a>. Lorsqu'un développeur lui accorde un accès réseau pour consulter de la documentation en ligne, le label Elevated Risk apparaît pour expliquer les conséquences de cette autorisation.</p>
-<p>OpenAI souligne qu'à mesure du renforcement des garde-fous pour les fonctionnalités, le label Elevated Risk sera retiré une fois que les avancées en matière de sécurité auront suffisamment atténué les risques pour un usage général.</p>
-
-
-
-</div>
-
-    <div>
-            
-            <p>Journaliste GNT spécialisé en nouvelles technologies</p>
-        </div>
-    
-
-    
-    
-
-    <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p>
-
-    
-    </article></div>
+<p>En parallèle du mode Lockdown, OpenAI standardise son système d'alerte avec les labels&nbsp;Elevated Risk. Ces <strong>étiquettes de risque élevé</strong> sont apposées sur certaines fonctionnalités de ChatGPT, ChatGPT Atlas et Codex qui peuvent introduire des risques de sécurité supplémentaires.</p>
+<p>Un exemple est donné avec l'assistant de codage&nbsp;<a href="https://www.generation-nt.com/actualites/gpt-5-3-codex-openai-ia-codage-agent-2070357">Codex</a>. Lorsqu'un développeur lui accorde un accès réseau pour consulter de la documentation en ligne, le label Elevated Risk apparaît pour expliquer les conséquences de cette autorisation.</p>
+<p>OpenAI souligne qu'à mesure du renforcement des garde-fous pour les fonctionnalités, le label Elevated Risk sera retiré une fois que les avancées en matière de sécurité&nbsp;auront suffisamment atténué les risques pour un usage général.</p> </div> <div> <p>Journaliste GNT spécialisé en nouvelles technologies</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
   </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
 </body>
 </html>

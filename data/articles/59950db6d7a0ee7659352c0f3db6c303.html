@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - txtx/axel-app: Peaceful task list meticulously crafted for Agents in war mode.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - txtx/axel-app: Peaceful task list meticulously crafted for Agents in war mode.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 3:42:50 PM | Lang: EN |
+    <a href="https://github.com/txtx/axel-app" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div> <img alt="Surfpool is the best place to train before surfing Solana"> </div>
+<p>Axel is for anyone who wants the <strong>calm</strong> of a task list and their agents in <strong>war mode</strong> — without losing track of what's running, where, or why.</p>
+<p>It pairs a native macOS app with a fast <a href="https://github.com/txtx/axel">RUST CLI</a> to orchestrate many AI agents across tmux panes, Ghostty based terminals, and git worktrees — with a user interface inspired by <strong>Things</strong>.</p>
+<div><p>Important</p><p>Axel is currently in beta and may have bugs. Contributions and bug reports are welcome.</p>
+</div>
+<hr>
+<div><h2>What Axel Feels Like</h2><a href="#what-axel-feels-like"></a></div>
+<ul>
+<li>A clean, Things‑like inbox for tasks and priorities.</li>
+<li>A living map of your active agents, each anchored to a worktree and terminal.</li>
+<li>A system that literally makes “spin up another agent in a new git worktree” feel as cheap as “open a new tab.”</li>
+</ul>
+<hr>
+<div><h2>What Axel Does</h2><a href="#what-axel-does"></a></div>
+<p>Axel turns agent work into a first‑class workflow:</p>
+<ul>
+<li><strong>Tasks with intent</strong>: queue, run, and complete agent tasks with status, priority, and context.</li>
+<li><strong>Real terminals</strong>: manage live sessions (Claude, Codex, etc.) in tmux panes and Ghostty.</li>
+<li><strong>Worktree‑first isolation</strong>: one agent, one branch — no more stepping on each other.</li>
+<li><strong>Inbox &amp; permissions</strong>: see agent requests in a single stream and approve quickly.</li>
+<li><strong>Skills &amp; context</strong>: reusable prompts from <code>./skills</code> and <code>~/.config/axel/skills</code>.</li>
+<li><strong>Sync built‑in</strong>: Automerge CRDT + Supabase for conflict‑free collaboration.</li>
+</ul>
+<hr>
+<div><h2>How Axel Works (Short Version)</h2><a href="#how-axel-works-short-version"></a></div>
+<ol>
+<li>You create a task in the app.</li>
+<li>Axel spawns a terminal session via the CLI.</li>
+<li>The agent runs in tmux, optionally inside a new git worktree.</li>
+<li>The app shows live output, events, and permission prompts.</li>
+<li>When the work is done, you close the loop and ship.</li>
+</ol>
+<hr>
+<div><h2>Components</h2><a href="#components"></a></div>
+<p><strong>Native macOS app (SwiftUI)</strong></p>
+<ul>
+<li>Five‑column workspace layout for tasks, inbox, terminals, skills, and team.</li>
+<li>SSE inbox for real‑time agent events and permission requests.</li>
+<li>SwiftData + Automerge for local state + cross‑device sync.</li>
+</ul>
+<p><strong>Axel CLI (Rust)</strong></p>
+<ul>
+<li>Launches tmux grids and agent panes.</li>
+<li>Reads <code>AXEL.md</code> layouts and skills.</li>
+<li>Manages worktrees and session recovery.</li>
+</ul>
+<p><strong>Terminal layer</strong></p>
+<ul>
+<li>Ghostty for fast, modern terminal emulation.</li>
+<li>tmux for pane orchestration.</li>
+<li>git worktrees for clean agent isolation.</li>
+</ul>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Requirements: macOS 14+, Xcode 15+ (for app), Rust (for CLI dev)</p>
+<div><pre><span><span>#</span> Open the app in Xcode</span>
+open Axel.xcodeproj <span><span>#</span> Run the app (Debug)</span>
+./run.sh</pre></div>
+<p>When you launch Axel, it can install the CLI to <code>~/.local/bin</code> if it isn’t already present.</p>
+<hr>
+<div><h2>A Typical Flow</h2><a href="#a-typical-flow"></a></div>
+<div><pre><code>1. Create a task “Refactor API caching”
+2. Assign it to Claude in a new worktree
+3. Claude runs in tmux + Ghostty
+4. Permission requests appear in Inbox
+5. Review output, merge, and mark done
+</code></pre></div>
+<hr>
+<div><h2>Project Structure (Partial)</h2><a href="#project-structure-partial"></a></div>
+<div><pre><code>Axel/
+├── Views/macOS/ # macOS UI (tasks, inbox, terminals)
+├── Services/ # SSE inbox, sync, CLI orchestration
+├── Models/ # SwiftData entities
+Packages/
+├── GhosttyKit/ # terminal emulation
+├── AutomergeWrapper/ # CRDT sync wrapper
+</code></pre></div>
+<hr>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>We want Axel to feel like a tool you <em>want</em> to use daily.</p>
+<p>Here’s what we value in contributions:</p>
+<ul>
+<li><strong>Workflow‑first</strong>: every feature should reduce mental overhead for multi‑agent work.</li>
+<li><strong>Beautifully restrained UI</strong>: clarity and delight, never clutter.</li>
+<li><strong>Terminal authenticity</strong>: real tmux panes, real worktrees, no fakery.</li>
+<li><strong>Performance</strong>: fast startup, fast rendering, fast agent recovery.</li>
+</ul>
+<p>If you’re interested, open an issue or send a PR with:</p>
+<ul>
+<li>a short problem statement</li>
+<li>a proposed solution</li>
+<li>any design notes or workflow details</li>
+</ul>
+<hr>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>
