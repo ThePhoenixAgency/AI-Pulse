@@ -229,19 +229,45 @@ jobs:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         API_RESEND: ${{ secrets.API_RESEND }}
       run: |
+        # Backup du README actuel pour fallback en cas d'échec
+        cp README.md README.BACKUP.md
+
         # Exécuter l'agrégateur et sauvegarder le résultat
         # La sortie standard (console.log) va dans NEW-README.md
         # Les erreurs (console.error) s'affichent dans les logs GitHub
-        node src/aggregator.js > NEW-README.md
+        if node src/aggregator.js > NEW-README.md; then
+          echo "AGGREGATION_OK=true" >> $GITHUB_ENV
+        else
+          echo "AGGREGATION_OK=false" >> $GITHUB_ENV
+        fi
 
     # -------------------------------------------------------------------------
     # ÉTAPE 6 : Mettre à jour le README
     # -------------------------------------------------------------------------
-    # Remplace l'ancien README.md par le nouveau
-    # mv = move (renommer/déplacer un fichier)
+    # Remplace l'ancien README.md par le nouveau seulement si valide.
+    # Sinon, conserver l'ancien README pour garantir des articles toujours visibles.
     - name: Update README with new content
       run: |
+        set -e
+
+        # Si l'agrégateur a échoué, conserver le README précédent
+        if [ "${AGGREGATION_OK}" != "true" ]; then
+          echo "[WARNING] Aggregation failed. Keeping previous README."
+          mv README.BACKUP.md README.md
+          rm -f NEW-README.md
+          exit 0
+        fi
+
+        # Validation minimale: le README généré doit contenir des sections/articles
+        if [ ! -s NEW-README.md ] || ! grep -Eq "<section id=|## " NEW-README.md; then
+          echo "[WARNING] Generated README is empty/invalid. Keeping previous README."
+          mv README.BACKUP.md README.md
+          rm -f NEW-README.md
+          exit 0
+        fi
+
         mv NEW-README.md README.md
+        rm -f README.BACKUP.md
 
     # -------------------------------------------------------------------------
     # ÉTAPE 7 : Commit et push des changements

@@ -1,5 +1,27 @@
 # BACKLOG AI-PULSE
 
+## 🚀 PRIORITÉS ACTUELLES (2026-02-16)
+
+### A. Continuité des articles (EN COURS)
+- **Objectif** : Toujours afficher des articles même en cas d'erreur partielle.
+- **Fait** :
+  - Workflow durci: fallback `README.BACKUP.md` si agrégation échoue ou README généré invalide.
+  - Agrégateur durci: une catégorie en erreur ne bloque plus les autres catégories.
+  - RSS/email en best-effort: erreurs non bloquantes pour la publication.
+- **Reste à faire** :
+  - Ajouter un test CI dédié qui simule une source cassée et vérifie que des articles restent publiés.
+  - Vérifier sur un run GitHub Actions complet (logs + README publié).
+
+### B. Flux dépendances automatique (EN COURS)
+- **Objectif** : aligner le pipeline auto sur `dependencies -> main` sans conflits.
+- **Fait** :
+  - PR legacy `security` fermée.
+  - Nouvelle PR `dependencies -> main` ouverte.
+  - Workflow Dependabot migré pour `target-branch: dependencies`.
+- **Reste à faire** :
+  - Confirmer le merge auto bout-en-bout en production (checks + auto-merge).
+  - Nettoyer les checks historiques legacy encore visibles.
+
 ## 🔴 PROBLÈMES CRITIQUES À CORRIGER
 
 ### 1. Double logo (EN COURS)

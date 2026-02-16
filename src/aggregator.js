@@ -454,8 +454,10 @@ function deduplicateArticles(articles) {
                      SETTINGS.deduplication.similarityThreshold <= 1) 
                     ? SETTINGS.deduplication.similarityThreshold 
                     : 0.7;
+  const titleThreshold = threshold;
+  const contentThreshold = Math.max(0.5, threshold - 0.2);
   const kept = [];
-  const normalizedTitles = [];
+  const normalizedData = [];
 
   for (const article of articles) {
     // Normaliser le titre et le résumé de l'article courant
@@ -645,29 +647,35 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
 async function aggregateCategory(categoryName, feeds) {
   console.error(`\nAggregating ${categoryName} feeds...`);
 
-  const articles = [];
+  if (!Array.isArray(feeds) || feeds.length === 0) {
+    console.error(`  Warning: No valid feeds configured for category "${categoryName}".`);
+    return [];
+  }
+
   const limit = SETTINGS.articlesPerFeed || 15; // Nombre d'articles par source
 
-  // Parcourir chaque source
-  for (const feed of feeds) {
-    try {
-      console.error(`  Fetch: ${feed.name}`);
-
-      // Récupérer et parser le flux RSS
-      const feedData = await parser.parseURL(feed.url);
-
-      // Traiter chaque article (limité au nombre configuré)
-      const items = [];
-      for (const item of feedData.items.slice(0, limit)) {
-        const processed = await processArticle(item, feed.name, feed.tags, categoryName, feed.lang);
-        items.push(processed);
+  // Traitement en parallèle des sources pour accélérer l'agrégation globale.
+  const results = await Promise.allSettled(
+    feeds.map(async (feed) => {
+      try {
+        console.error(`  Fetch: ${feed.name}`);
+        const feedData = await parser.parseURL(feed.url);
+        const items = await Promise.all(
+          feedData.items.slice(0, limit).map((item) =>
+            processArticle(item, feed.name, feed.tags, categoryName, feed.lang)
+          )
+        );
+        return items;
+      } catch (error) {
+        console.error(`  Error: Failed to fetch ${feed.name}: ${error.message}`);
+        return [];
       }
+    })
+  );
 
-      articles.push(...items);
-    } catch (error) {
-      console.error(`  Error: Failed to fetch ${feed.name}: ${error.message}`);
-    }
-  }
+  const articles = results
+    .filter(r => r.status === 'fulfilled')
+    .flatMap(r => r.value);
 
   // Trier par date (plus récent en premier)
   const sorted = articles.sort((a, b) => b.pubDate - a.pubDate);
@@ -1048,18 +1056,31 @@ async function main() {
 
   // Agréger chaque catégorie
   for (const [categoryName, catConfig] of sortedCategories) {
-    categorizedArticles[categoryName] = await aggregateCategory(categoryName, catConfig.feeds);
+    try {
+      categorizedArticles[categoryName] = await aggregateCategory(categoryName, catConfig.feeds);
+    } catch (error) {
+      console.error(`  Error: Category "${categoryName}" failed: ${error.message}`);
+      categorizedArticles[categoryName] = [];
+    }
   }
 
   // Générer et afficher le README (sera capturé par le workflow)
   const readme = generateREADME(categorizedArticles);
   console.log(readme);
 
-  // Générer les flux RSS
-  writeRSSFeeds(categorizedArticles);
+  // Générer les flux RSS sans bloquer la publication du README en cas d'erreur.
+  try {
+    writeRSSFeeds(categorizedArticles);
+  } catch (error) {
+    console.error(`RSS generation failed: ${error.message}`);
+  }
 
-  // Envoyer les emails
-  await sendEmailDigests(categorizedArticles);
+  // Envoyer les emails sans interrompre le pipeline.
+  try {
+    await sendEmailDigests(categorizedArticles);
+  } catch (error) {
+    console.error(`Email digest step failed: ${error.message}`);
+  }
 
   // Poster sur LinkedIn
   try {

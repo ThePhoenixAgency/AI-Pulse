@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Privacy: test to enforce header logo uses `./assets/logo_final.png`
 
 ### Changed
+- Workflow: `update-ai-pulse.yml` now keeps previous README as fallback when aggregation fails or generated README is invalid
+- Aggregator: category-level isolation so one failing category does not block publication of others
+- Aggregator: RSS generation and email digest steps switched to non-blocking best-effort mode
+- CI: Dependabot automation flow migrated from legacy `security` path to `dependencies -> main`
 - Reader: move prefs toggle into the top navigation
 - Reader: robust section detection from `h2` headings to auto-fill "Aller a" and keep anchor navigation functional
 - Reader: compact "Filtres" button in top bar (less intrusive, mobile-first)
