@@ -6,6 +6,9 @@ Last updated: 2026-02-16
 
 ## Termine
 
+- [x] Dependabot flow: unification du nom de branche en `security` (plus `securite`)
+  - Auto-merge, auto-commit et auto-PR aligns sur `security -> main`
+
 - [x] Security: UUID session/visitor en v4 RFC4122 avec source aleatoire cryptographique quand disponible
   - `crypto.getRandomValues` prioritaire
   - Fallback legacy sur `Math.random` pour compatibilite
