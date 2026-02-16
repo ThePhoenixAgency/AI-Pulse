@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - berndsen-io/ducklake-hetzner: DuckLake on Hetzner for under 10 euros a month.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - berndsen-io/ducklake-hetzner: DuckLake on Hetzner for under 10 euros a month.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:37:25 PM | Lang: EN |
+    <a href="https://github.com/berndsen-io/ducklake-hetzner" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>DuckLake on Hetzner</h1><a href="#ducklake-on-hetzner"></a></div>
+<p>Deploy a <a href="https://ducklake.select/">DuckLake</a> data lakehouse on Hetzner for under €10/month.</p>
+<p><strong>What you get:</strong> PostgreSQL for metadata, Hetzner Object Storage (S3) for data, DuckDB as the query engine. All managed with OpenTofu and PyInfra.</p>
+<div><h2>Prerequisites</h2><a href="#prerequisites"></a></div>
+<ul>
+<li><a href="https://opentofu.org/">OpenTofu</a> (Terraform fork)</li>
+<li><a href="https://docs.astral.sh/uv/">uv</a> (Python package manager)</li>
+<li><a href="https://duckdb.org/">DuckDB</a> v1.3.0+</li>
+<li>A <a href="https://www.hetzner.com/cloud/">Hetzner Cloud</a> account with:
+<ul>
+<li>An API token (Cloud Console → Security → API Tokens)</li>
+<li>Object Storage access keys (Cloud Console → Object Storage → Manage keys)</li>
+</ul>
+</li>
+</ul>
+<div><h2>Structure</h2><a href="#structure"></a></div>
+<div><pre><code>terraform/ # OpenTofu infrastructure (server + S3 bucket)
+config/ # PyInfra server provisioning (PostgreSQL, firewall)
+init.sql # DuckDB initialization script
+Makefile # Deployment automation
+</code></pre></div>
+<div><h2>Setup</h2><a href="#setup"></a></div>
+<div><h3>1. Configure environment</h3><a href="#1-configure-environment"></a></div>
+<div><pre>cp .env.sample .env</pre></div>
+<p>Fill in your Hetzner API token, storage keys, and a PostgreSQL password. Then source it:</p>
+<div><pre><span>set</span> -a <span>&amp;&amp;</span> <span>source</span> .env <span>&amp;&amp;</span> <span>set</span> +a</pre></div>
+<div><h3>2. Generate SSH keys (if needed)</h3><a href="#2-generate-ssh-keys-if-needed"></a></div>
+<div><pre>ssh-keygen -t ed25519 -f <span>~</span>/.ssh/id_rsa</pre></div>
+<p>Update <code>TF_VAR_ssh_public_key_path</code> and <code>SSH_KEY_PATH</code> in <code>.env</code> if using a different path.</p>
+<div><h3>3. Deploy</h3><a href="#3-deploy"></a></div>
+<div><pre>make init <span><span>#</span> initialize OpenTofu</span>
+make all <span><span>#</span> provision infrastructure + configure server</span></pre></div>
+<p>This creates a Hetzner VPS with PostgreSQL and an S3 bucket. After <code>make all</code> completes, set <code>POSTGRES_HOST</code> in your <code>.env</code> to the server IP printed in the Terraform output.</p>
+<div><h3>4. Connect with DuckDB</h3><a href="#4-connect-with-duckdb"></a></div>
+<div><pre><span>set</span> -a <span>&amp;&amp;</span> <span>source</span> .env <span>&amp;&amp;</span> <span>set</span> +a
+make duckdb <span><span>#</span> this runs duckdb -init init.sql, loading all relevant information</span></pre></div>
+<p>You're now connected to your DuckLake. Try it:</p>
+<div><pre><span>CREATE</span> <span>TABLE</span> <span>flights</span> <span>AS</span> <span>SELECT</span> <span>*</span> <span>FROM</span> <span><span>'</span>https://duckdb.org/data/flights.csv<span>'</span></span>; <span>SELECT</span> <span>*</span> <span>FROM</span> flights <span>LIMIT</span> <span>10</span>;</pre></div>
+<div><h2>Security</h2><a href="#security"></a></div>
+<p>This setup configures PostgreSQL to accept connections from all IP addresses (<code>0.0.0.0/0</code>). This is intentionally simple for getting started. For production use, restrict access in <code>config/tasks/postgres.py</code> by changing the <code>pg_hba.conf</code> line to your specific IP:</p>
+<div><pre><span>line</span><span>=</span><span>"host ducklake_catalog ducklake YOUR_IP/32 md5"</span>,</pre></div>
+<p>The server firewall (iptables) only allows SSH (port 22) and PostgreSQL (port 5432). fail2ban is installed for SSH brute-force protection.</p>
+<div><h2>Cost</h2><a href="#cost"></a></div>
+<ul>
+<li><strong>VPS (cx33):</strong> ~€5.49/month — 4 vCPU, 8GB RAM, 80GB NVMe SSD</li>
+<li><strong>Object Storage:</strong> ~€3.50/TB/month</li>
+<li><strong>Static IPv4:</strong> included with VPS</li>
+</ul>
+<p>Under €10/month for 1TB of data.</p>
+<blockquote>
+<p><strong>Note:</strong> The cheapest option is cx23 (~€3.49/month, 2 vCPU, 4GB RAM), but Hetzner frequently lacks capacity for this tier. The default cx33 is used for reliable provisioning. To try cx23, change <code>server_type</code> in <code>terraform/hetzner.tf</code>.</p>
+</blockquote>
+<div><h2>Resources</h2><a href="#resources"></a></div>
+<ul>
+<li><a href="https://ducklake.select/">DuckLake documentation</a></li>
+<li><a href="https://duckdb.org/docs/extensions/postgres.html">DuckDB PostgreSQL Catalog</a></li>
+<li><a href="https://duckdb.org/docs/extensions/httpfs/s3api.html">DuckDB S3 Configuration</a></li>
+<li><a href="https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs">Hetzner Terraform Provider</a></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

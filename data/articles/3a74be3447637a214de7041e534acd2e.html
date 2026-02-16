@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>From Portfolio Widget to npm Package: Building a Spotify Now Playing Card</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>From Portfolio Widget to npm Package: Building a Spotify Now Playing Card</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 5:24:56 PM | Lang: EN |
+    <a href="https://dev.to/basskibo/from-portfolio-widget-to-npm-package-building-a-spotify-now-playing-card-13p2" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="introduction" href="#introduction"> </a> Introduction
+</h2> <p>In my <a href="https://www.jageticbojan.com/" target="_blank">personal website</a> I had a small <strong>Spotify "Now Playing" widget</strong> in the footer, I find it usefull to have it there so I can show which music I am currently listening on Spotify and who knows, maybe some uknown visitor likes the song so at least I can do in this case is recommend some good music :)</p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6tp4ftop17li50dx5oc4.png"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F6tp4ftop17li50dx5oc4.png" alt="Spotify card example"></a></p> <p>It was working fine, but had two issues:</p> <ul> <li>It was tightly coupled to the project (Next.js API + Tailwind classes)</li> <li>I couldn't easily share or reuse it as I wanted to use it in my other projects, it was not really practical to copy and paste the code into each project especially when I wanted to make some changes. </li>
+</ul> <p>So I came to the conclusion that I need to create a <a href="https://www.npmjs.com/package/spotify-now-playing-card" target="_blank">npm package</a> that I can use in my other projects and that I can easily share or reuse. Anyway maybe someone else would find it usefull so that was one more plus for this idea.<br>
+In the worst case scenario I can use it without any effort in other projects and that's the main reason why I decided to create a npm package and make my life easierr.</p> <p>In this post I will go through the entire process:</p> <ul>
+<li>how I extracted the widget into a **pure React + TypeScript component** so its reusable</li>
+<li>how I created the **Spotify API layer** that I can use in multiple projects</li>
+<li>how I packaged everything into an **npm package** with better DX (CSS, TypeScript types, setup CLI)</li>
+</ul> <p>The goal is that by the end you can install the package with less code and less effort and do:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>SpotifyCard</span> <span>}</span> <span>from</span> <span>"</span><span>spotify-now-playing-card</span><span>"</span>
+<span>import</span> <span>"</span><span>spotify-now-playing-card/dist/styles.css</span><span>"</span> <span>export</span> <span>default</span> <span>function</span> <span>Footer</span><span>()</span> <span>{</span> <span>return</span> <span>&lt;</span><span>SpotifyCard</span> <span>apiUrl</span><span>=</span><span>"</span><span>/api/spotify</span><span>"</span> <span>/&gt;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="api-layer-without-it-there-is-no-music" href="#api-layer-without-it-there-is-no-music"> </a> API layer – without it there is no music </h2> <p>The first part is the standard <strong>Spotify API flow</strong> with a refresh token.<br>
+First and foremost we need to get the access token from Spotify, sou you should have a Spotify account and you should be able to get your credentials from Spotify developer portal.<br>
+After that we have credentials we can start with the API layer. </p> <p>For Next.js App Router (<code>app/api/spotify/route.ts</code>) it looks like this:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>NextResponse</span> <span>}</span> <span>from</span> <span>"</span><span>next/server</span><span>"</span> <span>const</span> <span>SPOTIFY_CLIENT_ID</span> <span>=</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>SPOTIFY_CLIENT_ID</span>
+<span>const</span> <span>SPOTIFY_CLIENT_SECRET</span> <span>=</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>SPOTIFY_CLIENT_SECRET</span>
+<span>const</span> <span>SPOTIFY_REFRESH_TOKEN</span> <span>=</span> <span>process</span><span>.</span><span>env</span><span>.</span><span>SPOTIFY_REFRESH_TOKEN</span> <span>let</span> <span>accessToken</span><span>:</span> <span>string</span> <span>|</span> <span>null</span> <span>=</span> <span>null</span>
+<span>let</span> <span>tokenExpiry</span> <span>=</span> <span>0</span> <span>async</span> <span>function</span> <span>getAccessToken</span><span>():</span> <span>Promise</span><span>&lt;</span><span>string</span><span>&gt;</span> <span>{</span> <span>if </span><span>(</span><span>accessToken</span> <span>&amp;&amp;</span> <span>Date</span><span>.</span><span>now</span><span>()</span> <span>&lt;</span> <span>tokenExpiry</span><span>)</span> <span>return</span> <span>accessToken</span> <span>if </span><span>(</span><span>!</span><span>SPOTIFY_CLIENT_ID</span> <span>||</span> <span>!</span><span>SPOTIFY_CLIENT_SECRET</span> <span>||</span> <span>!</span><span>SPOTIFY_REFRESH_TOKEN</span><span>)</span> <span>{</span> <span>throw</span> <span>new</span> <span>Error</span><span>(</span><span>"</span><span>Spotify credentials not configured</span><span>"</span><span>)</span> <span>}</span> <span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>fetch</span><span>(</span><span>"</span><span>https://accounts.spotify.com/api/token</span><span>"</span><span>,</span> <span>{</span> <span>method</span><span>:</span> <span>"</span><span>POST</span><span>"</span><span>,</span> <span>headers</span><span>:</span> <span>{</span> <span>"</span><span>Content-Type</span><span>"</span><span>:</span> <span>"</span><span>application/x-www-form-urlencoded</span><span>"</span><span>,</span> <span>Authorization</span><span>:</span> <span>"</span><span>Basic </span><span>"</span> <span>+</span> <span>Buffer</span><span>.</span><span>from</span><span>(</span><span>`</span><span>${</span><span>SPOTIFY_CLIENT_ID</span><span>}</span><span>:</span><span>${</span><span>SPOTIFY_CLIENT_SECRET</span><span>}</span><span>`</span><span>).</span><span>toString</span><span>(</span><span>"</span><span>base64</span><span>"</span><span>),</span> <span>},</span> <span>body</span><span>:</span> <span>new</span> <span>URLSearchParams</span><span>({</span> <span>grant_type</span><span>:</span> <span>"</span><span>refresh_token</span><span>"</span><span>,</span> <span>refresh_token</span><span>:</span> <span>SPOTIFY_REFRESH_TOKEN</span><span>,</span> <span>}),</span> <span>})</span> <span>if </span><span>(</span><span>!</span><span>response</span><span>.</span><span>ok</span><span>)</span> <span>{</span> <span>throw</span> <span>new</span> <span>Error</span><span>(</span><span>`Failed to get access token: </span><span>${</span><span>await</span> <span>response</span><span>.</span><span>text</span><span>()}</span><span>`</span><span>)</span> <span>}</span> <span>const</span> <span>data</span> <span>=</span> <span>await</span> <span>response</span><span>.</span><span>json</span><span>()</span> <span>accessToken</span> <span>=</span> <span>data</span><span>.</span><span>access_token</span> <span>tokenExpiry</span> <span>=</span> <span>Date</span><span>.</span><span>now</span><span>()</span> <span>+</span> <span>55</span> <span>*</span> <span>60</span> <span>*</span> <span>1000</span> <span>// ~55 min</span> <span>return</span> <span>accessToken</span><span>!</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>After that we need to return the format that the package expects:<br>
+</p> <div>
+<pre><code><span>export</span> <span>async</span> <span>function</span> <span>GET</span><span>()</span> <span>{</span> <span>try</span> <span>{</span> <span>const</span> <span>token</span> <span>=</span> <span>await</span> <span>getAccessToken</span><span>()</span> <span>const</span> <span>response</span> <span>=</span> <span>await</span> <span>fetch</span><span>(</span><span>"</span><span>https://api.spotify.com/v1/me/player/currently-playing</span><span>"</span><span>,</span> <span>{</span> <span>headers</span><span>:</span> <span>{</span> <span>Authorization</span><span>:</span> <span>`Bearer </span><span>${</span><span>token</span><span>}</span><span>`</span> <span>},</span> <span>})</span> <span>if </span><span>(</span><span>response</span><span>.</span><span>status</span> <span>===</span> <span>204</span> <span>||</span> <span>!</span><span>response</span><span>.</span><span>ok</span><span>)</span> <span>{</span> <span>return</span> <span>NextResponse</span><span>.</span><span>json</span><span>({</span> <span>isPlaying</span><span>:</span> <span>false</span> <span>})</span> <span>}</span> <span>const</span> <span>data</span> <span>=</span> <span>await</span> <span>response</span><span>.</span><span>json</span><span>()</span> <span>if </span><span>(</span><span>!</span><span>data</span><span>.</span><span>item</span><span>)</span> <span>return</span> <span>NextResponse</span><span>.</span><span>json</span><span>({</span> <span>isPlaying</span><span>:</span> <span>false</span> <span>})</span> <span>return</span> <span>NextResponse</span><span>.</span><span>json</span><span>({</span> <span>isPlaying</span><span>:</span> <span>data</span><span>.</span><span>is_playing</span><span>,</span> <span>title</span><span>:</span> <span>data</span><span>.</span><span>item</span><span>.</span><span>name</span><span>,</span> <span>artist</span><span>:</span> <span>data</span><span>.</span><span>item</span><span>.</span><span>artists</span><span>.</span><span>map</span><span>((</span><span>a</span><span>:</span> <span>any</span><span>)</span> <span>=&gt;</span> <span>a</span><span>.</span><span>name</span><span>).</span><span>join</span><span>(</span><span>"</span><span>, </span><span>"</span><span>),</span> <span>album</span><span>:</span> <span>data</span><span>.</span><span>item</span><span>.</span><span>album</span><span>.</span><span>name</span><span>,</span> <span>albumImageUrl</span><span>:</span> <span>data</span><span>.</span><span>item</span><span>.</span><span>album</span><span>.</span><span>images</span><span>[</span><span>0</span><span>]?.</span><span>url</span><span>,</span> <span>songUrl</span><span>:</span> <span>data</span><span>.</span><span>item</span><span>.</span><span>external_urls</span><span>.</span><span>spotify</span><span>,</span> <span>})</span> <span>}</span> <span>catch </span><span>(</span><span>error</span><span>)</span> <span>{</span> <span>console</span><span>.</span><span>error</span><span>(</span><span>"</span><span>Spotify API error:</span><span>"</span><span>,</span> <span>error</span><span>)</span> <span>return</span> <span>NextResponse</span><span>.</span><span>json</span><span>({</span> <span>isPlaying</span><span>:</span> <span>false</span> <span>})</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This API endpoint is the only dependency that the package has from your project.</p> <h2> <a name="react-typescript-component" href="#react-typescript-component"> </a> React + TypeScript component
+</h2> <p>You can see the full implementation and more details on my <a href="https://www.jageticbojan.com/post/from-portoflio-to-npm-widget" target="_blank">personal blog post</a>. In the package the component looks like this:<br>
+</p> <div>
+<pre><code><span>export</span> <span>interface</span> <span>SpotifyCardProps</span> <span>{</span> <span>apiUrl</span><span>?:</span> <span>string</span> <span>fallbackUrl</span><span>?:</span> <span>string</span> <span>className</span><span>?:</span> <span>string</span> <span>styles</span><span>?:</span> <span>{</span> <span>container</span><span>?:</span> <span>string</span> <span>link</span><span>?:</span> <span>string</span> <span>image</span><span>?:</span> <span>string</span> <span>title</span><span>?:</span> <span>string</span> <span>artist</span><span>?:</span> <span>string</span> <span>album</span><span>?:</span> <span>string</span> <span>icon</span><span>?:</span> <span>string</span> <span>}</span> <span>showAlbum</span><span>?:</span> <span>boolean</span> <span>notPlayingText</span><span>?:</span> <span>string</span> <span>refreshInterval</span><span>?:</span> <span>number</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <div>
+<pre><code><span>const</span> <span>SpotifyCard</span><span>:</span> <span>React</span><span>.</span><span>FC</span><span>&lt;</span><span>SpotifyCardProps</span><span>&gt;</span> <span>=</span> <span>({</span> <span>apiUrl</span> <span>=</span> <span>"</span><span>/api/spotify</span><span>"</span><span>,</span> <span>fallbackUrl</span> <span>=</span> <span>"</span><span>https://open.spotify.com</span><span>"</span><span>,</span> <span>className</span> <span>=</span> <span>""</span><span>,</span> <span>styles</span> <span>=</span> <span>{},</span> <span>showAlbum</span> <span>=</span> <span>true</span><span>,</span> <span>notPlayingText</span> <span>=</span> <span>"</span><span>Currently not listening</span><span>"</span><span>,</span> <span>refreshInterval</span> <span>=</span> <span>30000</span><span>,</span> <span>...</span><span>props</span>
+<span>})</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>{</span> <span>data</span><span>,</span> <span>error</span> <span>}</span> <span>=</span> <span>useSWR</span><span>&lt;</span><span>SpotifyData</span><span>&gt;</span><span>(</span><span>apiUrl</span><span>,</span> <span>fetcher</span><span>,</span> <span>{</span> <span>refreshInterval</span><span>,</span> <span>revalidateOnFocus</span><span>:</span> <span>true</span><span>,</span> <span>})</span> <span>const</span> <span>defaultStyles</span> <span>=</span> <span>{</span> <span>container</span><span>:</span> <span>"</span><span>spotify-card-container</span><span>"</span><span>,</span> <span>link</span><span>:</span> <span>"</span><span>spotify-card-link</span><span>"</span><span>,</span> <span>image</span><span>:</span> <span>"</span><span>spotify-card-image</span><span>"</span><span>,</span> <span>title</span><span>:</span> <span>"</span><span>spotify-card-title</span><span>"</span><span>,</span> <span>artist</span><span>:</span> <span>"</span><span>spotify-card-artist</span><span>"</span><span>,</span> <span>album</span><span>:</span> <span>"</span><span>spotify-card-album</span><span>"</span><span>,</span> <span>icon</span><span>:</span> <span>"</span><span>spotify-card-icon</span><span>"</span><span>,</span> <span>}</span> <span>const</span> <span>merged</span> <span>=</span> <span>{</span> <span>/* merging default + custom styles */</span> <span>}</span> <span>const</span> <span>isPlaying</span> <span>=</span> <span>data</span><span>?.</span><span>isPlaying</span> <span>const</span> <span>titleClass</span> <span>=</span> <span>isPlaying</span> <span>?</span> <span>"</span><span>spotify-card-title-gradient</span><span>"</span> <span>:</span> <span>""</span> <span>return </span><span>(</span> <span>&lt;</span><span>div</span> <span>className</span><span>=</span><span>{</span><span>merged</span><span>.</span><span>container</span><span>}</span> <span>{...</span><span>props</span><span>}</span><span>&gt;</span><span>{</span><span>/* ... image, title, album, icon, gradient title ... */</span><span>}</span><span>&lt;</span><span>/div</span><span>&gt;
+</span> <span>)</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Important decisions:</p> <ul> <li> SWR for caching + polling</li> <li> TypeScript types (`SpotifyCardProps`, `SpotifyData`) are exported to `dist/index.d.ts`</li> <li> props for styles so people can customize it with Tailwind or plain CSS</li>
+</ul> <h2> <a name="css-that-works-everywhere-without-tailwind" href="#css-that-works-everywhere-without-tailwind"> </a> CSS that works everywhere (without Tailwind)
+</h2> <p>The original widget was pure Tailwind and i find it not really practical as my other project were not using Tailwind so there were no benefits in using it. You can see the original implementation in footer of my <a href="https://www.jageticbojan.com/" target="_blank">website</a>. <br>
+For the npm package this is not desirable so I decided to use plain CSS as it can be used more easily in variety of projects.</p> <p>So the solution was a <strong>small CSS file in the package</strong>:<br>
+</p> <div>
+<pre><code><span>.spotify-card-container</span> <span>{</span> <span>color</span><span>:</span> <span>#94a3b8</span><span>;</span> <span>border</span><span>:</span> <span>1px</span> <span>solid</span> <span>#262626</span><span>;</span> <span>border-radius</span><span>:</span> <span>0.5rem</span><span>;</span> <span>width</span><span>:</span> <span>100%</span><span>;</span> <span>margin</span><span>:</span> <span>0.5rem</span> <span>1.25rem</span><span>;</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>In the Rollup configuration I just copy <code>src/styles.css</code> to <code>dist/styles.css</code> and the user can import it like this:<br>
+</p> <div>
+<pre><code><span>import</span> <span>"</span><span>spotify-now-playing-card/dist/styles.css</span><span>"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If you want full Tailwind control – simply pass your classes through the <code>styles</code> prop.</p> <h2> <a name="packaging-with-rollup-typescript-setup" href="#packaging-with-rollup-typescript-setup"> </a> Packaging with Rollup + TypeScript setup
+</h2> <p>Short, <code>rollup.config</code>:<br>
+</p> <div>
+<pre><code><span>export</span> <span>default</span> <span>{</span> <span>input</span><span>:</span> <span>"</span><span>src/index.ts</span><span>"</span><span>,</span> <span>output</span><span>:</span> <span>[</span> <span>{</span> <span>file</span><span>:</span> <span>packageJson</span><span>.</span><span>main</span><span>,</span> <span>format</span><span>:</span> <span>"</span><span>cjs</span><span>"</span><span>,</span> <span>sourcemap</span><span>:</span> <span>true</span><span>,</span> <span>exports</span><span>:</span> <span>"</span><span>named</span><span>"</span> <span>},</span> <span>{</span> <span>file</span><span>:</span> <span>packageJson</span><span>.</span><span>module</span><span>,</span> <span>format</span><span>:</span> <span>"</span><span>esm</span><span>"</span><span>,</span> <span>sourcemap</span><span>:</span> <span>true</span> <span>},</span> <span>],</span> <span>plugins</span><span>:</span> <span>[</span> <span>resolve</span><span>({</span> <span>browser</span><span>:</span> <span>true</span> <span>}),</span> <span>commonjs</span><span>(),</span> <span>typescript</span><span>({</span> <span>tsconfig</span><span>:</span> <span>"</span><span>./tsconfig.json</span><span>"</span><span>,</span> <span>declaration</span><span>:</span> <span>true</span><span>,</span> <span>declarationDir</span><span>:</span> <span>"</span><span>./dist</span><span>"</span><span>,</span> <span>}),</span> <span>copy</span><span>({</span> <span>targets</span><span>:</span> <span>[{</span> <span>src</span><span>:</span> <span>"</span><span>src/styles.css</span><span>"</span><span>,</span> <span>dest</span><span>:</span> <span>"</span><span>dist</span><span>"</span> <span>}]</span> <span>}),</span> <span>],</span> <span>external</span><span>:</span> <span>[</span><span>"</span><span>react</span><span>"</span><span>,</span> <span>"</span><span>react-dom</span><span>"</span><span>,</span> <span>"</span><span>react/jsx-runtime</span><span>"</span><span>,</span> <span>"</span><span>axios</span><span>"</span><span>,</span> <span>"</span><span>swr</span><span>"</span><span>,</span> <span>"</span><span>react-icons/si</span><span>"</span><span>],</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This gives:</p> <ul>
+<li>
+<strong>dist/index.js</strong> (CJS)</li>
+<li>
+<strong>dist/index.esm.js</strong> (ESM)</li>
+<li>
+<strong>dist/index.d.ts</strong> + <strong>SpotifyCard.d.ts</strong> (tipovi)</li>
+<li><strong>dist/styles.css</strong></li>
+</ul> <h2> <a name="small-cli-for-easier-setup" href="#small-cli-for-easier-setup"> </a> Small CLI for easier setup
+</h2> <p>For better DX I added a <strong>bin script</strong>:<br>
+</p> <div>
+<pre><code><span> </span><span>"bin"</span><span>:</span><span> </span><span>{</span><span> </span><span>"spotify-card-setup"</span><span>:</span><span> </span><span>"bin/setup.js"</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The user can then run:<br>
+</p> <div>
+<pre><code>npx spotify-now-playing-card-setup
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The script:</p> <ul>
+<li>asks for <code>clientId</code>, <code>clientSecret</code>, <code>refreshToken</code>
+</li>
+<li>creates the corresponding API endpoint (App router or Pages router)</li>
+<li>writes the values to <code>.env.local</code>
+</li>
+</ul> <p>Less copy/paste, less errors.</p> <h2> <a name="usage-in-the-application" href="#usage-in-the-application"> </a> Usage in the application
+</h2> <p>Minimal code example in Next.js app:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>SpotifyCard</span> <span>}</span> <span>from</span> <span>"</span><span>spotify-now-playing-card</span><span>"</span>
+<span>import</span> <span>"</span><span>spotify-now-playing-card/dist/styles.css</span><span>"</span> <span>export</span> <span>default</span> <span>function</span> <span>Footer</span><span>()</span> <span>{</span> <span>return </span><span>(</span> <span>&lt;</span><span>footer</span><span>&gt;</span> <span>&lt;</span><span>SpotifyCard</span> <span>apiUrl</span><span>=</span><span>"</span><span>/api/spotify</span><span>"</span> <span>/&gt;</span> <span>&lt;</span><span>/footer</span><span>&gt;
+</span> <span>)</span> <span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>With custom styles:<br>
+</p> <div>
+<pre><code>
+<span>&lt;</span><span>SpotifyCard</span> <span>apiUrl</span><span>=</span><span>"</span><span>/api/spotify</span><span>"</span> <span>styles</span><span>=</span><span>{{</span> <span>container</span><span>:</span> <span>"</span><span>bg-gray-900/80 rounded-2xl border border-gray-700</span><span>"</span><span>,</span> <span>title</span><span>:</span> <span>"</span><span>text-white text-lg font-semibold</span><span>"</span><span>,</span> <span>artist</span><span>:</span> <span>"</span><span>text-gray-300</span><span>"</span><span>,</span> <span>}}</span> <span>showAlbum</span> <span>notPlayingText</span><span>=</span><span>"</span><span>Currently off Spotify</span><span>"</span>
+<span>/&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="conclusion" href="#conclusion"> </a> Conclusion
+</h2> <p>If you have some <strong>custom widget</strong> in your project that you want to share with others, probably someone else would find it useful. I write more about similar topics on my <a href="https://www.jageticbojan.com/blog" target="_blank">personal blog</a> where I share my experiences building web applications. <br>
+And if you don't want to share it, at least you can use it in your other projects without any effort I highly recommend you to do it.<br>
+With a little extra effort around the API, DX and packaging, you can turn it into a real <strong>npm package</strong> that lives outside of one project.<br>
+In my case it was the Spotify card – in your case it can be anything: GitHub card, Dev.to feed, custom loader…<br>
+Please let me know if you have any questions or suggestions on how to improve the package or the code, as well as how to make it more usefull to the masses.<br>
+Hope you enjoyed and plese check it out on npm :)</p> <p><a href="https://www.npmjs.com/package/spotify-now-playing-card" target="_blank">Check out the package on npm</a></p> <hr> <p><strong>If you found this post useful, you can check <a href="https://www.jageticbojan.com/post/from-portoflio-to-npm-widget" target="_blank">original post</a>, check out more articles on my <a href="https://www.jageticbojan.com/routes/blog" target="_blank">personal blog</a> where I write about Nodejs, React, TypeScript, and web development in general!</strong></p> <p>You can also check out my <a href="https://github.com/basskibo" target="_blank">GitHub</a> for more projects and open source contributions.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

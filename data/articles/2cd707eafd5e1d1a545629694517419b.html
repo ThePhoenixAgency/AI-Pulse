@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Overview - lastversion docs</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Overview - lastversion docs</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:59:54 PM | Lang: EN |
+    <a href="https://dvershinin.github.io/lastversion/" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <p><a href="https://github.com/dvershinin/lastversion/actions/workflows/pythonpackage.yml"><img alt="Python package" src="https://github.com/dvershinin/lastversion/actions/workflows/pythonpackage.yml/badge.svg"></a>
+<a href="https://badge.fury.io/py/lastversion"><img alt="PyPI version" src="https://badge.fury.io/py/lastversion.svg"></a>
+<a href="https://github.com/dvershinin/lastversion/releases"><img alt="GitHub Release" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Flastversion-api.getpagespeed.com%2Fdvershinin%2Flastversion&amp;query=version&amp;label=Release"></a>
+<a href="https://lastversion.getpagespeed.com/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/lastversion/badge/?version=latest"></a>
+<a href="https://www.codacy.com/manual/GetPageSpeed/lastversion?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dvershinin/lastversion&amp;utm_campaign=Badge_Grade"><img alt="Codacy Badge" src="https://api.codacy.com/project/badge/Grade/380e3a38dc524112b4dcfc0492d5b816"></a>
+<a href="https://www.codacy.com/gh/dvershinin/lastversion/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dvershinin/lastversion&amp;utm_campaign=Badge_Coverage"><img alt="Codacy Badge" src="https://app.codacy.com/project/badge/Coverage/380e3a38dc524112b4dcfc0492d5b816"></a>
+<a href="https://www.buymeacoffee.com/dvershinin"><img alt="Buy Me a Coffee" src="https://img.shields.io/badge/dynamic/json?color=blue&amp;label=Buy%20me%20a%20Coffee&amp;prefix=%23&amp;query=next_time_total&amp;url=https%3A%2F%2Fwww.getpagespeed.com%2Fbuymeacoffee.json&amp;logo=buymeacoffee"></a></p>
+<p><img alt="Using lastversion in terminal" src="https://www.getpagespeed.com/img/lastversion.gif"></p>
+<p>English | <a href="https://dvershinin.github.io/lastversion/README-ZH-CN/">简体中文</a></p>
+<p>A tiny command-line utility that helps to answer a simple question:</p>
+<blockquote>
+<p>What is the latest <em>stable</em> version for a project?</p>
+</blockquote>
+<p>... and, optionally, download/install it.</p>
+<p><code>lastversion</code> allows finding well-formatted, the latest release version of a project from these supported locations:</p>
+<ul>
+<li><a href="https://github.com/dvershinin/lastversion/wiki/GitHub-specifics">GitHub</a></li>
+<li>GitLab</li>
+<li>BitBucket</li>
+<li>PyPI</li>
+<li>Mercurial</li>
+<li>SourceForge</li>
+<li>Wikipedia</li>
+<li>WordPress plugin directory</li>
+<li>Arbitrary software sites which publish releases in RSS/ATOM feeds</li>
+</ul>
+<h2>Why you need <code>lastversion</code><a href="#why-you-need-lastversion">¤</a></h2>
+<p>In general, quite many project authors complicate finding the latest version by:</p>
+<ul>
+<li>
+<p>Creating a formal release that is clearly a Release Candidate (<code>rc</code> in tag), but forgetting to mark it as a pre-release</p>
+</li>
+<li>
+<p>Putting extraneous text in release tag e.g. <code>release-1.2.3</code> or <code>name-1.2.3-2019</code> anything fancy like that</p>
+</li>
+<li>
+<p>Putting or not putting the <code>v</code> prefix inside release tags. Today yes, tomorrow not. I'm not consistent about it myself :)</p>
+</li>
+<li>
+<p>Switching from one version format to another, e.g. <code>v20150121</code> to <code>v2.0.1</code></p>
+</li>
+</ul>
+<p>There is no consistency in human beings.</p>
+<p>To deal with all this mess and get a well-formatted, last <em>stable</em> version (or download URL!) on the command line, you can use <code>lastversion</code>.</p>
+<p><code>lastversion</code> is particularly useful in automated build systems where tracking the latest release versions is essential.</p>
+<p><code>lastversion</code> does a little bit of AI to detect if releasers mistakenly filed a beta version as a
+stable release.
+It incorporates logic for cleaning up human inconsistency from
+version information.</p>
+<h2>Synopsis<a href="#synopsis">¤</a></h2>
+<div><pre><span></span><code>lastversion<span> </span>apache/incubator-pagespeed-ngx
+<span>#&gt; 1.13.35.2</span> lastversion<span> </span>download<span> </span>apache/incubator-pagespeed-ngx
+<span>#&gt; downloaded incubator-pagespeed-ngx-v1.13.35.2-stable.tar.gz</span> lastversion<span> </span>download<span> </span>apache/incubator-pagespeed-ngx<span> </span>-o<span> </span>pagespeed.tar.gz
+<span>#&gt; downloads with chosen filename</span> lastversion<span> </span>https://transmissionbt.com/
+<span>#&gt; 3.0</span> lastversion<span> </span>format<span> </span><span>"mysqld Ver 5.6.51-91.0 for Linux"</span>
+<span>#&gt; 5.6.51</span>
+</code></pre></div>
+<h2>Installation for RPM-based systems<a href="#installation-for-rpm-based-systems">¤</a></h2>
+<p>Supported:</p>
+<ul>
+<li>CentOS/RHEL 7, 8, 9 including clones like AlmaLinux and Rocky Linux</li>
+<li>Amazon Linux 2, Amazon Linux 2023</li>
+<li>Fedora Linux</li>
+</ul>
+<div><pre><span></span><code>sudo<span> </span>yum<span> </span>-y<span> </span>install<span> </span>https://extras.getpagespeed.com/release-latest.rpm
+sudo<span> </span>yum<span> </span>-y<span> </span>install<span> </span>lastversion
+</code></pre></div>
+<h2>Installation for other systems<a href="#installation-for-other-systems">¤</a></h2>
+<p>Installing with <code>pip</code> is easiest:</p>
+<div><pre><span></span><code>pip<span> </span>install<span> </span>lastversion
+</code></pre></div>
+<h2>Usage<a href="#usage">¤</a></h2>
+<p>Typically, you would just pass a repository URL (or repo owner/name to it) as the only argument,
+e.g.:</p>
+<div><pre><span></span><code>lastversion<span> </span>https://github.com/gperftools/gperftools
+</code></pre></div>
+<p>Equivalently accepted invocation with the same output is:</p>
+<div><pre><span></span><code>lastversion<span> </span>gperftools/gperftools
+</code></pre></div>
+<p>If you're lazy to even copy-paste a project's URL, you can just type its name as argument, which
+will use repository search API (slower).
+Helps to answer what is the latest Linux version:</p>
+<div><pre><span></span><code>lastversion<span> </span>linux
+</code></pre></div>
+<p>Or wondering what is the latest version of WordPress?</p>
+<div><pre><span></span><code>lastversion<span> </span>wordpress
+</code></pre></div>
+<p>A special value of <code>self</code> for the main argument, will look up the last release of <code>lastversion</code>
+itself.</p>
+<p>For more options to control output or behavior, see <code>--help</code> output:</p>
+<div><pre><span></span><code>usage: lastversion [-h] [--pre] [--sem {major,minor,patch,any}] [-v] [-d [FILENAME]] [--format {version,assets,source,json,tag}] [--assets] [--source] [-gt VER] [-b MAJOR] [--only REGEX] [--exclude REGEX] [--filter REGEX] [--having-asset [ASSET]] [-su] [--even] [--changelog] [--at {github,gitlab,bitbucket,pip,hg,sf,website-feed,local,helm_chart,wiki,system,wp,gitea}] [-y] [--version] [{get,download,extract,unzip,test,format,install,update-spec}] &lt;repo URL or string&gt; Find the latest software release. positional arguments: {get,download,extract,unzip,test,format,install,update-spec} Action to run. Default: get &lt;repo URL or string&gt; Repository in format owner/name or any URL that belongs to it, or a version string optional arguments: -h, --help show this help message and exit --pre Include pre-releases in potential versions --sem {major,minor,patch,any} Semantic versioning level base to print or compare against -v, --verbose Will give you an idea of what is happening under the hood, -vv to increase verbosity level -d [FILENAME], -o [FILENAME], --download [FILENAME], --output [FILENAME] Download with custom filename --format {version,assets,source,json,tag} Output format --assets Returns assets download URLs for last release --source Returns only source URL for last release -gt VER, --newer-than VER Output only if last version is newer than given version -b MAJOR, --major MAJOR, --branch MAJOR Only consider releases of a specific major version, e.g. 2.1.x --only REGEX Only consider releases containing this text. Useful for repos with multiple projects inside --exclude REGEX Only consider releases NOT containing this text. Useful for repos with multiple projects inside --even Only even versions like 1.[2].x, or 3.[6].x are considered as stable --filter REGEX Filters --assets result by a regular expression --having-asset [ASSET] Only consider releases with this asset -su, --shorter-urls A tiny bit shorter URLs produced --at {github,gitlab,bitbucket,pip,hg,sf,website-feed,local,helm_chart,wiki,system,wp,gitea} If the repo argument is one word, specifies where to look up the project. The default is via internal lookup or GitHub Search -y, --assumeyes Automatically answer yes for all questions --version show program's version number and exit --changelog Generate RPM %changelog entry (1–7 concise bullets)
+</code></pre></div>
+<p>The <code>--format</code> will affect what kind of information from the last release and in which format will be displayed, e.g.:</p>
+<ul>
+<li>
+<p><code>version</code> is the default. Simply outputs well-formatted version number of the latest release</p>
+</li>
+<li>
+<p><code>assets</code> will output a newline-separated list of assets URLs (if any), otherwise link to sources archive</p>
+</li>
+<li>
+<p><code>source</code> will output link to source archive, no matter if the release has some assets added</p>
+</li>
+<li>
+<p><code>json</code> can be used by external Python modules or for debugging, it is dict/JSON output of an API call that satisfied last version checks</p>
+</li>
+<li>
+<p><code>tag</code> will emit just the latest release's tag name, which useful if you're constructing download URL yourself or need the tag name otherwise</p>
+</li>
+</ul>
+<p>An asset is a downloadable file that typically represents an executable, or otherwise
+"ready to launch" project. It's what you see filed under formal releases, and is usually a compiled
+(for a specific platform), program.</p>
+<p>Source files are either tarballs or zipballs of sources for the source code of release.</p>
+<p>You can display either assets or source URLs of the latest release, by passing the corresponding <code>--format flag</code>, e.g. <code>--format source</code></p>
+<p>You also simply pass <code>--source</code> instead of <code>--format source</code>, and <code>--assets</code> instead of
+<code>--format assets</code>, as in:</p>
+<div><pre><span></span><code>lastversion<span> </span>--assets<span> </span>mautic/mautic
+<span>#&gt; https://github.com/mautic/mautic/archive/2.15.1/mautic-2.15.1.tar.gz</span>
+</code></pre></div>
+<p>By default, <code>lastversion</code> filters output of <code>--assets</code> to be OS-specific. Who needs <code>.exe</code> on Linux?</p>
+<p>To override this behavior, you can use <code>--filter</code>, which has a regular expression as its argument.
+To disable OS filtering, use <code>--filter .</code>, this will match everything.</p>
+<p>You can naturally use <code>--filter</code> in place where you would use <code>grep</code>, e.g.
+<code>lastversion --assets --filter win REPO</code></p>
+<h3>Use case: Work with a multi-project repository<a href="#use-case-work-with-a-multi-project-repository">¤</a></h3>
+<p>Sometimes a single repository actually hosts many components, and creates releases that
+have separate version line for each component.</p>
+<p>To help <code>lastversion</code> get a component's version for such repos, use <code>--only</code> and <code>--exclude</code>
+switches.
+They make <code>lastversion</code> look at only those releases which are tagged (or not) with specified
+strings.</p>
+<p><a href="https://github.com/lastversion-test-repos/autoscaler/tags">Example</a>:</p>
+<div><pre><span></span><code>lastversion<span> </span>--only<span> </span>chart<span> </span>https://github.com/lastversion-test-repos/autoscaler
+</code></pre></div>
+<p>The above will report <code>9.16.0</code>.</p>
+<div><pre><span></span><code>lastversion<span> </span>--exclude<span> </span>chart<span> </span>https://github.com/lastversion-test-repos/autoscaler
+</code></pre></div>
+<p>The above will report a non-chart latest version, <code>1.23.0</code>.</p>
+<p>Useful for hard cases, you can pass in regular expressions for both arguments, by prepending them
+with tilde, like so:</p>
+<div><pre><span></span><code>lastversion<span> </span>--only<span> </span><span>'~-po.-'</span><span> </span>https://github.com/lastversion-test-repos/autoscaler
+</code></pre></div>
+<p>The above will consider only releases tagged with -po<em>d</em>-, or -po<em>v</em>-, etc.</p>
+<h3>Use case: How to download the latest version of something<a href="#use-case-how-to-download-the-latest-version-of-something">¤</a></h3>
+<p>You can also use <code>lastversion</code> to download assets/sources for the latest release.</p>
+<p>Download the most recent Mautic source release:</p>
+<div><pre><span></span><code>lastversion<span> </span>download<span> </span>mautic/mautic
+</code></pre></div>
+<p>Customize downloaded filename (works only for sources, which is the default):</p>
+<div><pre><span></span><code>lastversion<span> </span>download<span> </span>mautic/mautic<span> </span>-o<span> </span>mautic.tar.gz
+</code></pre></div>
+<p>You can also directly fetch and extract the latest release's file into the current working directory
+by using <code>extract</code> command:</p>
+<div><pre><span></span><code>lastversion<span> </span>extract<span> </span>wordpress
+</code></pre></div>
+<p>You can have <code>lastversion</code> output sources/assets URLs and have those downloaded by
+something else:</p>
+<div><pre><span></span><code>wget<span> </span><span>$(</span>lastversion<span> </span>--assets<span> </span>mautic/mautic<span>)</span>
+</code></pre></div>
+<p>This will download all assets of the newest stable Mautic, which are two zip files.</p>
+<p>How this works: <code>lastversion</code> outputs all asset URLs, each on a new line, and <code>wget</code> is smart
+enough to download each URL. Magic :)</p>
+<p>For releases that have no assets added, it will download the source archive.</p>
+<p>To always download the source, use <code>--source</code> instead:</p>
+<div><pre><span></span><code>wget<span> </span><span>$(</span>lastversion<span> </span>--source<span> </span>mautic/mautic<span>)</span>
+</code></pre></div>
+<h3>Use case: Download specific asset under specified filename<a href="#use-case-download-specific-asset-under-specified-filename">¤</a></h3>
+<p>If you want to download specific asset of the last version's release and save the downloaded file under a desired name, combine <code>-d</code> option (for download name) and <code>--filter</code> for specifying assets filter.</p>
+<p>Example:</p>
+<div><pre><span></span><code>lastversion<span> </span>--pre<span> </span>Aircoookie/WLED<span> </span>--format<span> </span>assets<span> </span>--filter<span> </span>ESP32.bin<span> </span>-d<span> </span>ESP32.bin
+</code></pre></div>
+<h3>Use case: Get the last version (betas are fine)<a href="#use-case-get-the-last-version-betas-are-fine">¤</a></h3>
+<p>We consider the latest release is the one that is stable / not marked as beta.
+If you think otherwise, then pass <code>--pre</code> switch and if the latest version of repository is a
+pre-release, then you'll get its version instead:</p>
+<div><pre><span></span><code>lastversion<span> </span>--pre<span> </span>mautic/mautic
+<span>#&gt; 2.15.2b0</span>
+</code></pre></div>
+<h3>Use case: version of a specific branch<a href="#use-case-version-of-a-specific-branch">¤</a></h3>
+<p>For some projects, there may be several stable releases available simultaneously, in different
+branches. An obvious example is PHP. You can use <code>--major</code> flag to specify the major release
+version to match with, to help you find the latest stable release of a branch, like so:</p>
+<div><pre><span></span><code>lastversion<span> </span>php/php-src<span> </span>--major<span> </span><span>7</span>.2
+</code></pre></div>
+<p>This will give you current stable version of PHP 7.2.x, e.g. <code>7.2.28</code>.</p>
+<p>Branch selector is easy to be specified after semicolon, and together with the search API,
+a clean invocation for the same would be:</p>
+<div><pre><span></span><code>lastversion<span> </span>php:7.2
+</code></pre></div>
+<p>The branch selector can also be used to get specific release details, e.g.:</p>
+<div><pre><span></span><code>lastversion<span> </span>php:7.2.33<span> </span>--assets
+</code></pre></div>
+<h3>Use case: releases with specific assets<a href="#use-case-releases-with-specific-assets">¤</a></h3>
+<p>Sometimes a project makes nice formal releases but delay in uploading assets for releases.
+And you might be interested in specific asset type always.
+Then you can make <code>lastversion</code> consider as latest only the last release with specific asset name.
+Easy with the <code>--having-asset</code> switch:</p>
+<div><pre><span></span><code>lastversion<span> </span>telegramdesktop/tdesktop<span> </span>--having-asset<span> </span><span>"Linux 64 bit: Binary"</span>
+</code></pre></div>
+<p>The argument value to <code>--having-asset</code> can be made as regular expression. For this, prepend it
+with tilde sign. E.g. to get releases with macOS installers:</p>
+<div><pre><span></span><code>lastversion<span> </span>telegramdesktop/tdesktop<span> </span>--having-asset<span> </span><span>"~\.dmg</span>$<span>"</span>
+</code></pre></div>
+<p>You can pass no value to <code>--having-asset</code> at all. Then <code>lastversion</code> will only return the latest
+release which has <strong>any</strong> assets added to it:</p>
+<div><pre><span></span><code>lastversion<span> </span>telegramdesktop/tdesktop<span> </span>--having-asset
+</code></pre></div>
+<h3>Use case: version of an operating system<a href="#use-case-version-of-an-operating-system">¤</a></h3>
+<p>The operating systems are usually <em>not</em> versioned through GitHub releases or such.
+It is a challenge to get the last stable version of an OS other than from its website,
+or other announcement channels.</p>
+<p>An easy compromise that <code>lastversion</code> does about this, is hard coding well-known OS names, and using
+Wikipedia behind the scenes:</p>
+<div><pre><span></span><code>lastversion<span> </span>rocky<span> </span><span>#&gt; 8.4</span>
+lastversion<span> </span>windows<span> </span><span>#&gt; 10.0.19043.1081</span>
+lastversion<span> </span>ios<span> </span><span>#&gt; 14.6</span>
+</code></pre></div>
+<p>You can supply a fully qualified URL to a Wikipedia page for an OS/software project to get version
+from there, e.g.:</p>
+<div><pre><span></span><code>lastversion<span> </span>https://en.wikipedia.org/wiki/Rocky_Linux<span> </span><span>#&gt; 8.4</span>
+</code></pre></div>
+<h3>Special use case: NGINX stable vs mainline branch version<a href="#special-use-case-nginx-stable-vs-mainline-branch-version">¤</a></h3>
+<div><pre><span></span><code>lastversion<span> </span>https://nginx.org<span> </span>--major<span> </span>stable<span> </span><span>#&gt; 1.16.1</span>
+lastversion<span> </span>https://nginx.org<span> </span>--major<span> </span>mainline<span> </span><span>#&gt; 1.17.9</span>
+</code></pre></div>
+<p>Behind the scenes, this checks with <code>hg.nginx.org</code> which is a Mercurial web repo.
+Those are supported as well, e.g.</p>
+<div><pre><span></span><code>lastversion<span> </span>https://hg.example.com/project/
+</code></pre></div>
+<p>Mercurial repositories are rather rare these days, but support has been added primarily for NGINX.</p>
+<h3>Special use case: find the release of a PyPI project<a href="#special-use-case-find-the-release-of-a-pypi-project">¤</a></h3>
+<p>Most Python libraries/apps are hosted on PyPI. To check versions of a project on PyPI, you can use:</p>
+<div><pre><span></span><code>lastversion<span> </span>https://pypi.org/project/requests/
+</code></pre></div>
+<p>If you prefer using a shorter repo name, ensure <code>--at pip</code> switch, like so:</p>
+<div><pre><span></span><code>lastversion<span> </span>requests<span> </span>--at<span> </span>pip
+</code></pre></div>
+<h3>Install an RPM asset<a href="#install-an-rpm-asset">¤</a></h3>
+<p>If a project provides <code>.rpm</code> assets and your system has <code>yum</code> or <code>dnf</code>, you can install the project's RPM directly, like so:</p>
+<div><pre><span></span><code>sudo<span> </span>lastversion<span> </span>install<span> </span>mailspring
+</code></pre></div>
+<p>This finds <a href="https://github.com/Foundry376/Mailspring">MailSpring</a>, gets its latest release info,
+filters assets for <code>.rpm</code> and passes it to <code>yum</code> / <code>dnf</code>.</p>
+<p>You can even set up an auto-updater cron job which will ensure you are on the latest version of a package, like so:</p>
+<div><pre><span></span><code>@daily<span> </span>/usr/bin/lastversion<span> </span>install<span> </span>mailspring<span> </span>-y<span> </span><span>2</span>&gt;/dev/null
+</code></pre></div>
+<p>If the Mailspring GitHub repo posts a release with newer <code>.rpm</code>, then it will be automatically installed, making sure you are running the latest and greatest Mailspring version.</p>
+<p>You'll even get an email alert after update (standard cron feature).</p>
+<p>Needless to say, more often than not, such RPM packages have no idea about all potentially missing
+dependencies. Thus, only use <code>lastversion install ...</code> if the software is missing from the base
+<code>yum</code> repositories.</p>
+<h3>Install an AppImage<a href="#install-an-appimage">¤</a></h3>
+<p>If a project provides <code>.AppImage</code>, you can install those directly using <code>lastversion</code>.
+The <code>AppImage</code> is self-contained Linux executable file. What <code>lastversion</code> does for you, is fetch
+the latest release's <code>AppImage</code>, installs it under <code>~/Applications/&lt;app&gt;</code> and makes it executable.
+Just run:</p>
+<div><pre><span></span><code>lastversion<span> </span>install<span> </span>fluent-reader
+</code></pre></div>
+<h3>Test version parser<a href="#test-version-parser">¤</a></h3>
+<p>The <code>test</code> command can be used for troubleshooting or simply well formatting a string with version:</p>
+<div><pre><span></span><code>lastversion<span> </span><span>test</span><span> </span><span>'blah-1.2.3-devel'</span><span> </span><span># &gt; 1.2.3.dev0</span>
+lastversion<span> </span><span>test</span><span> </span><span>'1.2.x'</span><span> </span><span># &gt; False (no clear version)</span>
+lastversion<span> </span><span>test</span><span> </span><span>'1.2.3-rc1'</span><span> </span><span># &gt; 1.2.3rc1</span>
+</code></pre></div>
+<h3>Scripting with <code>lastversion</code> in <code>bash</code><a href="#scripting-with-lastversion-in-bash">¤</a></h3>
+<h4>Semantic versioning support<a href="#semantic-versioning-support">¤</a></h4>
+<p>Sometimes you only want to check updates for a specific semantic versioning level.
+Does a project have a new minor release? Does a project have a new major release?
+To print just the necessary semantic versioning base, use <code>--sem</code> option.</p>
+<p>Acceptable values are <code>major</code>, <code>minor</code>, and <code>patch</code>.</p>
+<div><pre><span></span><code>lastversion<span> </span>wordpress<span> </span>--sem<span> </span>major
+<span>#&gt; 5</span>
+</code></pre></div>
+<div><pre><span></span><code>lastversion<span> </span>wordpress<span> </span>--sem<span> </span>minor
+<span>#&gt; 5.9</span>
+</code></pre></div>
+<div><pre><span></span><code>lastversion<span> </span>wordpress<span> </span>--sem<span> </span>patch
+<span>#&gt; 5.9.3</span>
+</code></pre></div>
+<p>The value <code>--sem patch</code> can be used to <em>normalize</em> a given result to semantic versioning,
+if a project doesn't follow the semantics strictly. E.g. sometimes WordPress would publish an x.y
+release while it's implicitly x.y.0. So let's say WordPress released "5.10":</p>
+<div><pre><span></span><code>lastversion<span> </span>wordpress<span> </span>--sem<span> </span>patch
+<span>#&gt; 5.10.0</span>
+</code></pre></div>
+<h4>Format any version string<a href="#format-any-version-string">¤</a></h4>
+<p>Say you ran <code>mysqld --version</code> and got this output:</p>
+<blockquote>
+<p>mysqld Ver 5.6.51-91.0 for Linux on x86_64 (Percona Server (GPL), Release 91.0, Revision b59139e)</p>
+</blockquote>
+<p>This is rather hard to parse in bash if you want to just extract the major MySQL server version.</p>
+<p><code>lastversion</code> can easily parse out and give the desired information based on desired semantic
+versioning level:</p>
+<div><pre><span></span><code>lastversion<span> </span>--sem<span> </span>major<span> </span>format<span> </span><span>"mysqld Ver 5.6.51-91.0 for Linux on x86_64 (Percona Server (GPL) , Release 91.0, Revision b59139e)"</span>
+<span>#&gt; 5</span>
+</code></pre></div>
+<h4>Compare arbitrary versions<a href="#compare-arbitrary-versions">¤</a></h4>
+<p>Use <code>lastversion</code> for easy comparison of versions on the command line.
+Compare two versions, the command will output the highest version:</p>
+<div><pre><span></span><code>lastversion<span> </span><span>1</span>.2.3<span> </span>-gt<span> </span><span>1</span>.2.4
+<span>#&gt; 1.2.4</span>
+</code></pre></div>
+<p>See the exit codes below, to find whether the first argument is a higher version, or the second.</p>
+<p>The <code>--sem</code> option described earlier will affect both what's being printed and what semantic
+versioning base level is being compared, thus the result.</p>
+<h4>Check for NEW release<a href="#check-for-new-release">¤</a></h4>
+<p>When you're building some upstream package, and you did this before, there is a known "last build"
+version.
+Automatic builds become easy with:</p>
+<div><pre><span></span><code><span>CURRENTLY_BUILT_VER</span><span>=</span><span>1</span>.2.3<span> </span><span># stored somewhere, e.g. spec file in my case</span>
+<span>LAST_VER</span><span>=</span><span>$(</span>lastversion<span> </span>repo/owner<span> </span>-gt<span> </span><span>${</span><span>CURRENTLY_BUILT_VER</span><span>}</span><span>)</span>
+<span>if</span><span> </span><span>[[</span><span> </span><span>$?</span><span> </span>-eq<span> </span><span>0</span><span> </span><span>]]</span><span>;</span><span> </span><span>then</span>
+<span> </span><span># LAST_VER is newer, update and trigger build</span>
+<span> </span><span># ....</span>
+<span>fi</span>
+</code></pre></div>
+<p>Here, the <code>-gt</code> is actually a switch passed to <code>lastversion</code>, which acts in a similar fashion to <code>-gt</code> comparison in bash.</p>
+<p>There is more to it if you want to make this reliable.
+See my ranting on
+<a href="https://github.com/dvershinin/lastversion/wiki/Use-in-RPM-building">RPM auto-builds with <code>lastversion</code></a></p>
+<h4>Check if there is a newer kernel for your Linux machine<a href="#check-if-there-is-a-newer-kernel-for-your-linux-machine">¤</a></h4>
+<div><pre><span></span><code><span>LATEST_KERNEL</span><span>=</span><span>$(</span>lastversion<span> </span>linux<span> </span>-gt<span> </span><span>$(</span>uname<span> </span>-r<span> </span><span>|</span><span> </span>cut<span> </span>-d<span> </span><span>'-'</span><span> </span>-f<span> </span><span>1</span><span>))</span>
+<span>if</span><span> </span><span>[[</span><span> </span><span>$?</span><span> </span>-eq<span> </span><span>0</span><span> </span><span>]]</span><span>;</span><span> </span><span>then</span>
+<span> </span><span>echo</span><span> </span><span>"I better update my kernel now, because </span><span>${</span><span>LATEST_KERNEL</span><span>}</span><span> is there"</span>
+<span>else</span>
+<span> </span><span>echo</span><span> </span><span>"My kernel is latest and greatest."</span>
+<span>fi</span>
+</code></pre></div>
+<h4>Exit Status codes<a href="#exit-status-codes">¤</a></h4>
+<p>Exit status codes are the usual means of communicating a command's execution success or failure.
+So <code>lastversion</code> follows this: successful command returns <code>0</code> while anything else is an error of
+some kind.
+For example, when the latest stable release version if found, <code>0</code> is returned.
+<code>0</code> is also returned for <code>-gt</code> comparison when leftmost argument is newer than rightmost argument.</p>
+<p>Exit status code <code>1</code> is returned for cases like no release tag existing for repository at all, or
+repository does not exist.</p>
+<p>Exit status code <code>2</code> is returned for <code>-gt</code> version comparison negative lookup, that is when rightmost argument is newer
+than leftmost argument.</p>
+<p>Exit status code <code>3</code> is returned when filtering assets of last release yields empty URL set
+(no match)</p>
+<h2>Tips<a href="#tips">¤</a></h2>
+<p>Getting the latest version is heavy on the API, because GitHub does not allow to fetch tags in
+chronological order, and some repositories switch from one version format to another, so <em>we can't
+just consider the highest version to be latest</em>.
+We have to fetch every tag's commit date, and see if it's actually more recent. Thus, it's slower
+with larger repositories, which have potentially a lot of tags.</p>
+<p>Thus, <code>lastversion</code> makes use of caching API response to be fast and light on GitHub API,
+It does conditional ETag validation, which, as per GitHub API will not count towards rate limit.
+The cache is stored in <code>~/.cache/lastversion</code> on Linux systems.</p>
+<p>It is <em>much recommended</em> to set up your <a href="https://github.com/settings/tokens">GitHub API token</a>.
+Bare API token is enough, you may deselect all permissions.
+You can then increase your rate limit by adding the following <code>~/.bashrc</code> file:</p>
+<div><pre><span></span><code><span>export</span><span> </span><span>GITHUB_API_TOKEN</span><span>=</span>xxxxxxxxxxxxxxx
+</code></pre></div>
+<p>You can use either <code>GITHUB_API_TOKEN</code> or <code>GITHUB_TOKEN</code> environment variable.
+The former has priority.</p>
+<p>For GitLab, you can use a
+<a href="https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html">Personal Access Token</a>:</p>
+<div><pre><span></span><code><span>export</span><span> </span><span>GITLAB_PA_TOKEN</span><span>=</span>xxxxxxxxxxxxxxx
+</code></pre></div>
+<p>Then run <code>source ~/.bashrc</code>. After this, <code>lastversion</code> will use it to get larger API calls allowance
+from GitHub.</p>
+<h2>Usage in a Python module<a href="#usage-in-a-python-module">¤</a></h2>
+<p>You can use <code>lastversion.has_update(...)</code> to find whether an update for existing version of something is available, simply:</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>lastversion</span><span> </span><span>import</span> <span>has_update</span>
+<span>latest_version</span> <span>=</span> <span>has_update</span><span>(</span><span>repo</span><span>=</span><span>"mautic/mautic"</span><span>,</span> <span>current_version</span><span>=</span><span>'1.2.3'</span><span>)</span>
+<span>if</span> <span>latest_version</span><span>:</span> <span>print</span><span>(</span><span>f</span><span>'Newer Mautic version is available: </span><span>{</span><span>latest_version</span><span>}</span><span>'</span><span>)</span>
+<span>else</span><span>:</span> <span>print</span><span>(</span><span>'No update is available'</span><span>)</span>
+</code></pre></div>
+<p>The <code>lastversion.has_update(...)</code> function accepts any URL from a repository (or its short name
+, e.g. <code>owner/name</code>) and you should pass an existing/current version.</p>
+<p>If you are checking version of a project on PyPi, supply an additional <code>at='pip'</code> argument,
+in order to avoid passing the full PyPI URI of a project, and remove ambiguity with GitHub hosted projects. For example, checking for newer Requests
+library:</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>lastversion</span><span> </span><span>import</span> <span>has_update</span>
+<span>latest_version</span> <span>=</span> <span>has_update</span><span>(</span><span>repo</span><span>=</span><span>"requests"</span><span>,</span> <span>at</span><span>=</span><span>'pip'</span><span>,</span> <span>current_version</span><span>=</span><span>'1.2.3'</span><span>)</span>
+<span>if</span> <span>latest_version</span><span>:</span> <span>print</span><span>(</span><span>'Newer Requests library is available: </span><span>{latest_version}</span><span>'</span><span>)</span>
+<span>else</span><span>:</span> <span>print</span><span>(</span><span>'No update is available'</span><span>)</span>
+</code></pre></div>
+<p>The <code>has_update</code> function returns either:</p>
+<ul>
+<li>The <a href="https://packaging.pypa.io/en/latest/version.html#packaging.version.Version">Version</a> object</li>
+<li><code>False</code> if there is no newer version than the one given</li>
+</ul>
+<p>Alternatively, invoke <code>lastversion.latest(...)</code> function to get the latest version information for a repo.</p>
+<div><pre><span></span><code><span>from</span><span> </span><span>lastversion</span><span> </span><span>import</span> <span>latest</span>
+<span>from</span><span> </span><span>packaging</span><span> </span><span>import</span> <span>version</span> <span>latest_mautic_version</span> <span>=</span> <span>latest</span><span>(</span><span>"mautic/mautic"</span><span>,</span> <span>output_format</span><span>=</span><span>'version'</span><span>,</span> <span>pre_ok</span><span>=</span><span>True</span><span>)</span> <span>print</span><span>(</span><span>f</span><span>'Latest Mautic version: </span><span>{</span><span>latest_mautic_version</span><span>}</span><span>'</span><span>)</span> <span>if</span> <span>latest_mautic_version</span> <span>&gt;=</span> <span>version</span><span>.</span><span>parse</span><span>(</span><span>'1.8.1'</span><span>):</span> <span>print</span><span>(</span><span>'It is newer'</span><span>)</span>
+</code></pre></div>
+<p>With <code>output_format='version'</code> (the default), the function returns a
+<a href="https://packaging.pypa.io/en/latest/version.html#packaging.version.Version">Version</a> object, or <code>None</code>. So you can do things like above, namely version comparison, checking dev status, etc.</p>
+<p>With <code>output_format='dict'</code>, a dictionary returned with the latest release information, or <code>False</code>.
+The dictionary keys vary between different project locations (GitHub vs BitBucket, for example),
+but are guaranteed to always have these keys:</p>
+<ul>
+<li><code>version</code>: <a href="https://packaging.pypa.io/en/latest/version.html#packaging.version.Version">Version</a> object, contains the found release version, e.g. <code>1.2.3</code></li>
+<li><code>source</code>: string, the identifier of the project source, e.g. <code>github</code>, or <code>gitlab</code></li>
+<li><code>tag_date</code>: datetime object, the release date, e.g. <code>2020-12-15 14:41:39</code></li>
+<li><code>from</code>: string, contains fully qualified URL of the project</li>
+<li><code>tag_name</code>: string, version control tag name corresponding to the release</li>
+</ul>
+<p>The <code>lastversion.latest</code> function accepts 3 arguments</p>
+<ul>
+<li><code>repo</code>, in format of <code>&lt;owner&gt;/&lt;name&gt;</code>, or any URL under this repository, e.g. <code>https://github.com/dvershinin/lastversion/issues</code></li>
+<li><code>format</code>, which accepts the same values as when you run <code>lastversion</code> interactively, as well as <code>dict</code> to return a dictionary as described above</li>
+<li><code>pre_ok</code>, boolean for whether to include pre-releases as potential versions</li>
+<li><code>at</code>, specifies project location when using one-word repo names, one of <code>github</code>, <code>gitlab</code>, <code>bitbucket</code>, <code>pip</code>, <code>hg</code>, <code>sf</code>, <code>website-feed</code>, <code>local</code></li>
+</ul>
+<h2>Using in Continuous Integration<a href="#using-in-continuous-integration">¤</a></h2>
+<p>You can also use <code>lastversion</code> directly in your GitHub action workflows,
+with <a href="https://github.com/dvershinin/lastversion-action"><code>lastversion-action</code></a>.</p>
+<h2>Hosted API Option<a href="#hosted-api-option">¤</a></h2>
+<p>Prefer a hosted, no-install solution for getting the latest versions?
+Check out the <a href="https://rapidapi.com/ciapnz/api/lastversion">lastversion API on RapidAPI</a>.</p>
+<p><strong>Highlights:</strong>
+- <strong>No Installation Needed</strong>: Access the latest release info of any project from any environment—CI/CD pipelines, serverless functions, or front-end code—without installing <code>lastversion</code>.
+- <strong>Multiple Endpoints</strong>: Fetch just the version, assets, or the full release details with flexible JSON responses.
+- <strong>Commercial Support</strong>: For users who need a quick, fully hosted solution (or can’t install on certain systems), the API may be more convenient.</p>
+<p><em>Of course, the open-source CLI remains free and fully featured. This API is an optional hosted service.</em></p>
+<h2>Feature Requests and Enhancements<a href="#feature-requests-and-enhancements">¤</a></h2>
+<p>Only features that are essential to GitHub releases are prioritized. If your issue or suggested feature is outside the current focus, here's how you can help make it happen:</p>
+<ul>
+<li><strong>Contribute</strong>: We encourage you to submit a pull request with your proposed changes or enhancement.</li>
+<li><strong>Donate</strong>: If you'd like to see a feature developed but cannot contribute code, consider <a href="https://github.com/sponsors/dvershinin">making a donation</a>. Your donations help us allocate resources to work on additional features and improvements.</li>
+</ul>
+<h2>Project Independence<a href="#project-independence">¤</a></h2>
+<p><strong>lastversion</strong> is an independent open-source project maintained by contributors. It is not affiliated with any commercial entities.</p>
+<hr>
+<p><em>This project is developed using <a href="https://www.jetbrains.com/">JetBrains</a> tools.</em></p> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

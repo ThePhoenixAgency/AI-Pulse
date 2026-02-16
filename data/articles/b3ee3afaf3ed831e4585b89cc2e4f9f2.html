@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your Phone Already Has the Hardware to Prove a Photo Is Real. Nothing Uses It.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Your Phone Already Has the Hardware to Prove a Photo Is Real. Nothing Uses It.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 6:22:01 PM | Lang: EN |
+    <a href="https://dev.to/franciscuo/your-phone-already-has-the-hardware-to-prove-a-photo-is-real-nothing-uses-it-3ik6" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/franciscuo"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3749376%2F8fedd4bd-2017-403f-8059-36f615f1d4a6.PNG" alt="Francisco López"></a> </p> </div><div> <h2> <a name="your-phone-already-has-the-hardware-to-prove-a-photo-is-real-nothing-uses-it" href="#your-phone-already-has-the-hardware-to-prove-a-photo-is-real-nothing-uses-it"> </a> Your Phone Already Has the Hardware to Prove a Photo Is Real. Nothing Uses It.
+</h2> <p><code>#opensource</code> <code>#mobile</code> <code>#security</code> <code>#reactnative</code></p> <h2> <a name="the-problem-is-already-here" href="#the-problem-is-already-here"> </a> The Problem Is Already Here
+</h2> <p>In 2025 Adobe's Content Authenticity Initiative reported that <strong>97% of organizations</strong> have encountered AI-generated content being used against them. Deepfakes, synthetic product photos, fabricated evidence.</p> <p>Meanwhile every phone in your pocket has a tamper-resistant cryptographic chip sitting idle. Secure Enclave on iOS. StrongBox or TEE on Android. Hardware designed to sign things in a way that can't be extracted or faked.</p> <p>Nobody is connecting these two facts.</p> <h2> <a name="c2pa-the-standard-nobody-talks-about" href="#c2pa-the-standard-nobody-talks-about"> </a> C2PA: The Standard Nobody Talks About
+</h2> <p>C2PA is an open standard from Adobe, Microsoft, Intel and others. It works like HTTPS but for media files. A cryptographic manifest gets embedded directly into the JPEG containing:</p> <ul>
+<li>What device captured it</li>
+<li>When and where</li>
+<li>Every edit made after capture</li>
+<li>A signature that breaks if a single pixel changes</li>
+</ul> <p>Leica, Sony and Nikon already ship C2PA in some cameras. But on mobile, where 90%+ of photos are taken? Almost nothing.</p> <h2> <a name="enter-raw-attestationphotomobile-endraw-" href="#enter-raw-attestationphotomobile-endraw-"> </a> Enter <code>attestation-photo-mobile</code>
+</h2> <p>I built <strong><a href="https://github.com/RoloBits/attestation-photo-mobile" target="_blank"><code>attestation-photo-mobile</code></a></strong> to close that gap.</p> <p>It's a React Native package. You bring your own camera lib, take a photo, and pass the path. The package does the rest: hashes the image, signs it with hardware-backed keys, and embeds a full C2PA manifest before the file ever touches disk.</p> <h3> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h3> <p>The architecture has three layers:</p> <ol>
+<li>
+<strong>Native layer (Swift/Kotlin):</strong> Handles hardware keystore access. Provisions an ECDSA P-256 key inside Secure Enclave or StrongBox. This key never leaves the hardware.</li>
+<li>
+<strong>Rust layer (c2pa-rs):</strong> Builds the JUMBF manifest, computes the asset hash, constructs the C2PA claim. I tried doing this in pure JS first. Don't.</li>
+<li>
+<strong>React Native bridge:</strong> Exposes a single <code>signPhoto(path)</code> function and a <code>useAttestedCapture</code> hook that handles key provisioning, location prefetch, and error wrapping.</li>
+</ol> <h3> <a name="usage" href="#usage"> </a> Usage
+</h3> <div>
+<pre><code><span>import</span> <span>{</span> <span>useAttestedCapture</span><span>,</span> <span>saveToGallery</span> <span>}</span> <span>from</span> <span>'</span><span>@rolobits/attestation-photo-mobile</span><span>'</span><span>;</span> <span>function</span> <span>CaptureScreen</span><span>()</span> <span>{</span> <span>const</span> <span>{</span> <span>signPhoto</span><span>,</span> <span>isReady</span> <span>}</span> <span>=</span> <span>useAttestedCapture</span><span>({</span> <span>includeLocation</span><span>:</span> <span>true</span><span>,</span> <span>appName</span><span>:</span> <span>"</span><span>My App</span><span>"</span><span>,</span> <span>nonce</span><span>:</span> <span>"</span><span>server-challenge-token</span><span>"</span><span>,</span> <span>});</span> <span>const</span> <span>onCapture</span> <span>=</span> <span>async </span><span>(</span><span>photoPath</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// Sign and embed C2PA manifest</span> <span>const</span> <span>signed</span> <span>=</span> <span>await</span> <span>signPhoto</span><span>(</span><span>photoPath</span><span>);</span> <span>// signed.trustLevel -&gt; "secure_enclave" | "strongbox" | "tee"</span> <span>// signed.embeddedManifest -&gt; true</span> <span>// signed.signature -&gt; SHA-256 hex of original asset</span> <span>await</span> <span>saveToGallery</span><span>({</span> <span>filePath</span><span>:</span> <span>signed</span><span>.</span><span>path</span> <span>});</span> <span>};</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The output JPEG can be verified with any C2PA tool. Upload it to <a href="https://verify.contentauthenticity.org/" target="_blank">verify.contentauthenticity.org</a> or run:<br>
+</p> <div>
+<pre><code>cargo <span>install </span>c2patool
+c2patool verify output.jpg
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="what-gets-blocked" href="#what-gets-blocked"> </a> What Gets Blocked
+</h3> <p>The SDK runs device integrity checks before signing. Jailbroken or rooted devices get <code>E_COMPROMISED_DEVICE</code>. No Secure Enclave or StrongBox? <code>E_NO_TRUSTED_HARDWARE</code>. You can control this with <code>requireTrustedHardware: true|false</code>.</p> <h2> <a name="where-this-actually-matters" href="#where-this-actually-matters"> </a> Where This Actually Matters
+</h2> <p>This isn't a solution looking for a problem. These are scenarios where someone has a financial incentive to submit fake photos:</p> <ul>
+<li>
+<strong>Insurance claims:</strong> Snap damage photos in-app. Each one is hardware-signed with device, location, timestamp. The adjuster's backend verifies the manifest automatically.</li>
+<li>
+<strong>Marketplace listings:</strong> Verified photos for cars, real estate, rentals. Buyers know the images aren't AI-generated or recycled from 2019.</li>
+<li>
+<strong>Field inspections:</strong> Construction sites, equipment audits. Timestamped proof of conditions for compliance.</li>
+<li>
+<strong>KYC:</strong> Selfie-based identity verification where the photo is provably from a real device, not a generated face fed through a virtual camera.</li>
+</ul> <p>This is a v1. Here's what's missing:</p> <ul>
+<li>
+<strong>Self-signed certificates.</strong> The signing key has no CA chain. Verifiers will show a valid signature but "unknown signer." This means tamper detection works today but attribution doesn't. CA integration is the next priority.</li>
+</ul> <p> <strong><a href="https://github.com/RoloBits/attestation-photo-mobile" target="_blank">GitHub: RoloBits/attestation-photo-mobile</a></strong></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

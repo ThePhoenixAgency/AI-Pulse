@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why I Open-Sourced My LinkedIn AI Assistant</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>Why I Open-Sourced My LinkedIn AI Assistant</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/16/2026 6:24:29 PM | Lang: EN |
+    <a href="https://dev.to/egorceo/why-i-open-sourced-my-linkedin-ai-assistant-4hk2" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>I built an AI-powered LinkedIn comment assistant as a SaaS product. Then I gave it all away for free. Here's why — and how it works under the hood.</p> <h2> <a name="what-is-lipilot" href="#what-is-lipilot"> </a> What is LiPilot?
+</h2> <p><a href="https://lipilot.com/" target="_blank">LiPilot</a> is a Chrome extension that helps you write better LinkedIn comments, replies, and DMs using AI. It sits right inside your LinkedIn feed, reads the context of a post (including images), and suggests a thoughtful comment in <em>your</em> voice — not generic ChatGPT-speak.</p> <p>You pick your LLM provider (OpenAI, Anthropic, Gemini, or even a local Ollama instance), plug in your API key, and you're set. No account creation. No subscription. No server in between.</p> <h2> <a name="why-i-went-from-commercial-to-opensource" href="#why-i-went-from-commercial-to-opensource"> </a> Why I Went From Commercial to Open-Source
+</h2> <p>I originally built LiPilot as a paid tool. The plan was straightforward: freemium Chrome extension, usage-based pricing, the usual SaaS playbook.</p> <p>But as I used it myself and watched others interact with similar tools, something felt off. Most AI writing assistants for LinkedIn are black boxes — your data flows through someone else's server, your writing patterns get stored who-knows-where, and you're paying a monthly fee for what is essentially an API call wrapper.</p> <p>I'm a co-founder of <a href="https://travel-code.com/" target="_blank">Travel Code</a>, an AI-powered corporate travel platform. That's my main business. LiPilot was a side project born out of a real need: I spend a lot of time on LinkedIn, and I wanted to engage more without it eating hours of my day.</p> <p>So I made a decision: <strong>AI tools that help professionals communicate should be free and private.</strong> I open-sourced the entire thing under the MIT license.</p> <p>No catch. No "open core" with paid features. The full product.</p> <h2> <a name="technical-overview" href="#technical-overview"> </a> Technical Overview
+</h2> <p>LiPilot is a standard Chrome Extension v3 (Manifest V3) built with:</p> <ul>
+<li>
+<strong>React 18</strong> for the UI</li>
+<li>
+<strong>Vite</strong> for builds</li>
+<li>
+<strong>Tailwind CSS</strong> for styling</li>
+<li>
+<strong>TypeScript</strong> throughout</li>
+</ul> <p>The architecture is intentionally simple. There's no backend server. The extension injects a content script into LinkedIn pages, renders its UI via shadow DOM (to avoid CSS conflicts), and communicates directly with your chosen LLM provider's API from the browser.<br>
+</p> <div>
+<pre><code>User's Browser
+├── Content Script (injected into linkedin.com)
+│ ├── Post/comment context extraction
+│ ├── Shadow DOM UI overlay
+│ └── Image analysis (multimodal)
+├── Background Service Worker
+│ ├── LLM API calls (OpenAI / Anthropic / Gemini / Ollama)
+│ └── Voice profile storage (chrome.storage.local)
+└── Options Page └── Provider config, voice settings, preferences
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>All LLM calls go directly from the service worker to the provider API. Your API key stays in <code>chrome.storage.local</code>. Nothing routes through our servers because there are no servers.</p> <p>Supporting multiple providers was a deliberate choice. If you want to use a local Ollama model for complete privacy, you can. If you prefer Claude or GPT-4, just swap the config. The prompt engineering layer is provider-agnostic.</p> <h2> <a name="how-learn-your-voice-works" href="#how-learn-your-voice-works"> </a> How "Learn Your Voice" Works
+</h2> <p>This is the feature I'm most proud of. Most AI writing tools produce output that sounds like... an AI writing tool. LiPilot learns how <em>you</em> actually communicate.</p> <p>Here's the mechanism: every time LiPilot suggests a comment and you edit it before posting, the extension captures that delta. Over time, it builds a communication style profile — your preferred tone, sentence structure patterns, phrases you gravitate toward, and things you consistently remove.</p> <p>This profile is stored entirely in <code>chrome.storage.local</code> and gets injected into the system prompt when generating suggestions. The result: after a week or two of use, suggestions start sounding like you wrote them, not like a language model did.</p> <p>No training data leaves your machine. The profile never hits a server. It's your voice, kept private.</p> <h2> <a name="key-features" href="#key-features"> </a> Key Features
+</h2> <p>Beyond basic comment generation, LiPilot packs a few things I haven't seen in other tools:</p> <ul>
+<li><p><strong>Multimodal awareness</strong> — If a post contains images, LiPilot analyzes them via the vision capabilities of your chosen model. It won't suggest "Great post!" on an infographic it can't see.</p></li>
+<li><p><strong>Thread-aware replies</strong> — When replying to a comment within a thread, the extension captures the full conversation context, not just the top-level post.</p></li>
+<li><p><strong>DM co-pilot</strong> — Works in LinkedIn messaging too. Suggests responses based on conversation history.</p></li>
+<li><p><strong>Comment scoring</strong> — Before you post, LiPilot scores your comment on relevance and engagement potential. Useful for catching low-effort responses.</p></li>
+<li><p><strong>Service offer integration</strong> — If you configure your professional services, LiPilot can naturally weave relevant context into comments where appropriate (without being spammy — it scores for that too).</p></li>
+</ul> <h2> <a name="privacy-first" href="#privacy-first"> </a> Privacy First
+</h2> <p>Let me be explicit about what LiPilot does <em>not</em> do:</p> <ul>
+<li> No account required</li>
+<li> No analytics or tracking</li>
+<li> No data collection</li>
+<li> No server-side processing</li>
+<li> No cookies or fingerprinting</li>
+</ul> <p>Your LinkedIn content, your API keys, your voice profile — everything stays in your browser's local storage. The source code is MIT-licensed and fully auditable. If you don't trust me, read the code. That's the point.</p> <h2> <a name="install-in-2-minutes" href="#install-in-2-minutes"> </a> Install in 2 Minutes
+</h2> <div>
+<pre><code>git clone https://github.com/egorceo/lipilot.git
+<span>cd </span>lipilot
+npm <span>install
+</span>npm run build
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then in Chrome:</p> <ol>
+<li>Navigate to <code>chrome://extensions</code>
+</li>
+<li>Enable "Developer mode"</li>
+<li>Click "Load unpacked"</li>
+<li>Select the <code>dist</code> folder</li>
+</ol> <p>Open LinkedIn, and you'll see LiPilot's UI appear on posts. Configure your LLM provider in the extension options, and you're ready to go.</p> <h2> <a name="whats-next" href="#whats-next"> </a> What's Next
+</h2> <p>LiPilot is fully functional today, but there's plenty of room to grow. Some things on my radar:</p> <ul>
+<li>Firefox support</li>
+<li>More granular voice profile controls</li>
+<li>Export/import of voice profiles</li>
+<li>Better Ollama model recommendations for local use</li>
+</ul> <p>Contributions are very welcome. It's a clean React + TypeScript codebase — easy to jump into.</p> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <ul>
+<li>
+<strong>GitHub:</strong> <a href="https://github.com/egorceo/lipilot" target="_blank">github.com/egorceo/lipilot</a>
+</li>
+<li>
+<strong>Website:</strong> <a href="https://lipilot.com/" target="_blank">lipilot.com</a>
+</li>
+</ul> <p>If you find it useful, star the repo. If you find a bug, open an issue. If you have ideas, PRs are open.</p> <p>I'd especially love feedback from folks who are active on LinkedIn and have opinions about AI-assisted writing. What feels helpful vs. what feels fake? That's the line I'm trying to walk.</p> <hr> <p><em>I'm Egor Karpovich, co-founder of <a href="https://travel-code.com/" target="_blank">Travel Code</a>. LiPilot is a side project supported by Travel Code. Hit me up on <a href="https://github.com/egorceo" target="_blank">GitHub</a> or LinkedIn if you want to chat about it.</em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

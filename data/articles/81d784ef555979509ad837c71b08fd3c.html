@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - RYJOX-Technologies/Synrix-Memory-Engine: Local-first AI memory with O(k) semantic queries. Your data, your machine.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - RYJOX-Technologies/Synrix-Memory-Engine: Local-first AI memory with O(k) semantic queries. Your data, your machine.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:25:39 PM | Lang: EN |
+    <a href="https://github.com/RYJOX-Technologies/Synrix-Memory-Engine" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>Synrix Memory Engine</h1><a href="#synrix-memory-engine"></a></div>
+<p>Synrix is a local-first persistent memory engine for AI systems.</p>
+<p>It runs entirely on your machine and provides fast, predictable retrieval without cloud latency, vendor lock-in, or external dependencies.</p>
+<p>Think of Synrix as structured AI memory optimized for deterministic recall rather than brute-force similarity scans.</p>
+<p><a href="https://python.langchain.com/"><img src="https://camo.githubusercontent.com/dc6c4952ab3ee505286005e4b00dcd341350d74fbadb8019488e61fde11d5a8e/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c616e67636861696e2d636f6d70617469626c652d627269676874677265656e" alt="LangChain Compatible"></a>
+<a href="https://platform.openai.com/"><img src="https://camo.githubusercontent.com/b2f0fd448abb63b8950886756da17c4c2c0f6643c41bfbe132e0978de72d43cf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6170692d6f70656e61692d2d636f6d70617469626c652d626c7565" alt="OpenAI API"></a>
+<a href="/RYJOX-Technologies/Synrix-Memory-Engine/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/c76fe82529220571655293e7923d70a09f0e3206b2639e6ede258a43965ae7e4/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d495425323025324625323050726f70726965746172792d6c6967687467726579" alt="License"></a></p>
+<div><h2><a href="http://www.ryjoxtechnologies.com">www.ryjoxtechnologies.com</a></h2><a href="#wwwryjoxtechnologiescom"></a></div>
+<div><h2>Why Synrix?</h2><a href="#why-synrix"></a></div>
+<p>Most AI memory stacks rely on:</p>
+<ul>
+<li>Cloud-hosted vector databases (latency, cost, vendor lock-in)</li>
+<li>Approximate global search that degrades as datasets grow</li>
+<li>Heavy indexing and tuning pipelines</li>
+</ul>
+<p>Synrix runs locally and uses deterministic retrieval:</p>
+<ul>
+<li>Queries scale with results (O(k)), not total dataset size</li>
+<li>Microsecond-scale local lookups</li>
+<li>No network variance</li>
+<li>No cold starts</li>
+<li>No per-query cloud latency</li>
+</ul>
+<hr>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Your App → Python SDK → Synrix Engine (DLL) → Local Storage
+</code></pre></div>
+<ul>
+<li><strong>Python SDK:</strong> MIT licensed</li>
+<li><strong>Engine:</strong> local binary</li>
+<li>No network calls required</li>
+</ul>
+<hr>
+<div><h2>Quick Start (2–3 minutes)</h2><a href="#quick-start-23-minutes"></a></div>
+<div><h3>1. Download</h3><a href="#1-download"></a></div>
+<p>Download the Windows package from <a href="https://github.com/RYJOX-Technologies/Synrix-Memory-Engine/releases">Releases</a>:</p>
+<ul>
+<li><strong><code>synrix-windows.zip</code></strong></li>
+</ul>
+<p>Unzip it. You get the engine DLL and runtimes (e.g. <code>libsynrix.dll</code>, OpenSSL DLLs). The same binary is used for all tiers.</p>
+<p>If you do not set a license key, Synrix runs with a free default cap (~25k nodes), so you can try it immediately.</p>
+<hr>
+<div><h3>2. Install the Python SDK</h3><a href="#2-install-the-python-sdk"></a></div>
+<p>The SDK lives in this repo. Clone the repo, then install one of the SDKs (e.g. agent-memory or robotics):</p>
+<div><pre>git clone https:<span>//</span><span>github.com</span><span>/</span>RYJOX<span>-</span>Technologies<span>/</span>Synrix<span>-</span>Memory<span>-</span>Engine.git
+cd Synrix<span>-</span>Memory<span>-</span>Engine\Synrix\synrix<span>-</span>sdks\agent<span>-</span>memory<span>-</span>sdk
+pip install <span>-</span>e .</pre></div>
+<p>Put the unzipped engine DLLs in the same folder as your script, or in the SDK’s <code>synrix/</code> folder, or set <code>SYNRIX_LIB_PATH</code> to the folder containing <code>libsynrix.dll</code>.</p>
+<hr>
+<div><h3>3. Use It</h3><a href="#3-use-it"></a></div>
+<div><pre><span>from</span> <span>synrix</span>.<span>raw_backend</span> <span>import</span> <span>RawSynrixBackend</span> <span># Open or create a memory store (25k default)</span>
+<span>backend</span> <span>=</span> <span>RawSynrixBackend</span>(<span>"example.lattice"</span>, <span>max_nodes</span><span>=</span><span>25_000</span>) <span># Store data</span>
+<span>backend</span>.<span>add_node</span>(<span>"TASK:login"</span>, <span>"Implement user login"</span>, <span>5</span>) <span># Query by prefix</span>
+<span>results</span> <span>=</span> <span>backend</span>.<span>find_by_prefix</span>(<span>"TASK:"</span>)
+<span>for</span> <span>r</span> <span>in</span> <span>results</span>: <span>print</span>(<span>r</span>[<span>"name"</span>], <span>r</span>[<span>"data"</span>]) <span>backend</span>.<span>close</span>()</pre></div>
+<p>That’s it. You’re storing and querying AI memory locally.</p>
+<hr>
+<div><h2>What Makes This Different?</h2><a href="#what-makes-this-different"></a></div>
+<p><strong>O(k) queries</strong><br>
+Many vector databases rely on approximate global search that degrades as datasets grow. Synrix queries scale with the number of matching results, not the total dataset size.</p>
+<p><strong>Local-first</strong><br>
+Everything runs on your machine. No cloud dependency. No data leaves your environment.</p>
+<p><strong>Single binary</strong><br>
+Same engine for everyone. Node limits are set by a signed license key at runtime.</p>
+<hr>
+<div><h2>Use Cases</h2><a href="#use-cases"></a></div>
+<ul>
+<li>Retrieval Augmented Generation (RAG)</li>
+<li>AI agent memory</li>
+<li>Structured task storage</li>
+<li>Local AI state management</li>
+<li>Low-latency recall pipelines</li>
+</ul>
+<hr>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li><strong>Windows x64</strong></li>
+<li><strong>Python 3.8+</strong></li>
+<li><strong>Engine:</strong> <code>libsynrix.dll</code> (included in <code>synrix-windows.zip</code>) plus the runtime DLLs in that zip</li>
+<li><strong>RAM:</strong> &lt;1GB for ~25k nodes (scales with node count)</li>
+<li><strong>Disk:</strong> ~1GB per 1M nodes</li>
+</ul>
+<hr>
+<div><h2>Platform Support</h2><a href="#platform-support"></a></div>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows x64</td>
+<td>Ready</td>
+</tr>
+<tr>
+<td>Linux ARM64</td>
+<td>In progress</td>
+</tr>
+<tr>
+<td>Linux x86_64</td>
+<td>In progress</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td>In progress</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<ul>
+<li><strong>Python SDK:</strong> MIT</li>
+<li><strong>Engine:</strong> Proprietary</li>
+</ul>
+<p>The engine runs freely up to ~25k nodes without a key. Higher limits (1M / 10M / 50M / unlimited) are enabled via signed license keys.</p>
+<p>See <a href="/RYJOX-Technologies/Synrix-Memory-Engine/blob/main/LICENSE">LICENSE</a> for details.</p>
+<hr>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<p><strong>DLL not found or process exits on init?</strong><br>
+Ensure <code>libsynrix.dll</code>, <code>libcrypto-3-x64.dll</code>, and <code>libssl-3-x64.dll</code> are in the same folder as your script or on PATH.</p>
+<p><strong>Hit the node cap?</strong><br>
+Set <code>SYNRIX_LICENSE_KEY</code> to a higher-tier key.</p>
+<p><strong>Python cannot find the SDK?</strong><br>
+Install from this repo (<code>Synrix/synrix-sdks/agent-memory-sdk</code> or <code>robotics-sdk</code>) with <code>pip install -e .</code> or ensure <code>synrix</code> is on <code>sys.path</code>.</p>
+<hr>
+<div><h2>Getting Help</h2><a href="#getting-help"></a></div>
+<ul>
+<li>Open a <a href="https://github.com/RYJOX-Technologies/Synrix-Memory-Engine/issues">GitHub issue</a></li>
+<li>See this repo’s <code>Synrix/synrix-sdks/</code> for SDK source and READMEs</li>
+</ul>
+<hr>
+<p><strong>Synrix Memory Engine</strong> — Fast, local AI memory. Your data. Your machine.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

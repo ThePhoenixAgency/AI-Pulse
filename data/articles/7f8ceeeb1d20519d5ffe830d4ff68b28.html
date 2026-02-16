@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I.T Never Ends by Dadbod Games</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>I.T Never Ends by Dadbod Games</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:22:06 PM | Lang: EN |
+    <a href="https://dadbodgames.itch.io/it-never-ends" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><div> <p>NEXUS SYSTEMS INC. — TERMINAL — I.T. NEVER ENDS</p> <div> <p>HELLO, WORLD. WELCOME TO HELL.</p> <p><span>Incoming tickets (sample)</span> <span><span>Ticket #404:</span> <span>User cannot find their soul.</span></span> <span><span>Ticket #500:</span> <span>The printer is breathing again.</span></span> <span><span>Ticket #237:</span> <span>URGENT — Floor 3.5 won't stop existing.</span></span></p><p>MEMO — STEAM RELEASE</p> <p><span>I.T. NEVER ENDS is graduating to Steam.</span> Adding this to your Wishlist helps the algorithm (and our sanity) more than you know.</p> <p>ABOUT THE GAME</p> <p>In <span>I.T. NEVER ENDS</span>, you are the newly hired Systems Administrator at Nexus Systems Inc.—a company that was definitely founded in 2015, regardless of what the USB drive buried in the wall says.</p> <p>Your job? Process tickets. Keep the lights on. Don't let the coffee machine's prophecies ruin anyone's morning.</p> <p>The pay is bad. The hours are worse. If any of your metrics hit zero, you're not fired—you're <span>gone</span>. And something tells you the Bahamas aren't in your future.</p> <p>TECHNICAL NOTES</p> <p><span>Since this runs in the browser, if you encounter a fatal error or want to restart from scratch, you can reset your game state by clearing your session storage/cookies for this site.</span></p> <p><span>Thank you for playing and supporting indie horror.</span><br>— Stefan (dev guy)</p> </div> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

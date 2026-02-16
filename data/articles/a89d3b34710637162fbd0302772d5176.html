@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - RoloBits/attestation-photo-mobile</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - RoloBits/attestation-photo-mobile</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 6:07:42 PM | Lang: EN |
+    <a href="https://github.com/RoloBits/attestation-photo-mobile" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p> </p><div><h1>@rolobits/attestation-photo-mobile</h1><a href="#rolobitsattestation-photo-mobile"></a></div> <p> Hardware-attested photo capture for React Native with embedded C2PA manifests. </p>
+<p></p>
+<p> <a href="https://www.npmjs.com/package/@rolobits/attestation-photo-mobile"><img src="https://camo.githubusercontent.com/fd78b8b78313e887379f11025b9a70dc473b1102a80a7b4847f826f410c9713d/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f762f40726f6c6f626974732f6174746573746174696f6e2d70686f746f2d6d6f62696c653f7374796c653d666c61742d73717561726526636f6c6f723d626c7565" alt="npm"></a> <a target="_blank" href="https://camo.githubusercontent.com/39be8b414e6cc6cf39fe9353ce064770b487c5a5654721f70bf7c4d988cad61a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f74797065732d547970655363726970742d626c75653f7374796c653d666c61742d737175617265"><img src="https://camo.githubusercontent.com/39be8b414e6cc6cf39fe9353ce064770b487c5a5654721f70bf7c4d988cad61a/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f74797065732d547970655363726970742d626c75653f7374796c653d666c61742d737175617265" alt="TypeScript"></a> <a href="/RoloBits/attestation-photo-mobile/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/604f7b036fc12342704336e12d3d1654eeeab77560e2125d12466f048d4249db/68747470733a2f2f696d672e736869656c64732e696f2f6e706d2f6c2f40726f6c6f626974732f6174746573746174696f6e2d70686f746f2d6d6f62696c653f7374796c653d666c61742d737175617265" alt="license"></a>
+</p>
+<br>
+<p>Every photo taken through this SDK is signed by the device's tamper-resistant hardware, Secure Enclave on iOS and StrongBox/TEE on Android, and embedded with a <a href="https://c2pa.org/">C2PA</a> manifest before the file is ever written to disk. The resulting JPEG can be verified with any standard C2PA tool.</p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><h3>1. npm</h3><a href="#1-npm"></a></div>
+<div><pre>npm install @rolobits/attestation-photo-mobile</pre></div>
+<table>
+<thead>
+<tr>
+<th>Peer dependency</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>react</code></td>
+<td>&gt;= 18</td>
+</tr>
+<tr>
+<td><code>react-native</code></td>
+<td>&gt;= 0.73</td>
+</tr>
+</tbody>
+</table>
+<div><h3>2. Rust toolchain, one-time setup</h3><a href="#2-rust-toolchain-one-time-setup"></a></div>
+<div><pre><span><span>#</span> Install Rust (if not already installed)</span>
+curl --proto <span><span>'</span>=https<span>'</span></span> --tlsv1.2 -sSf https://sh.rustup.rs <span>|</span> sh <span><span>#</span> Add mobile targets</span>
+rustup target add aarch64-apple-ios <span><span>#</span> iOS device</span>
+rustup target add aarch64-apple-ios-sim <span><span>#</span> iOS simulator (Apple Silicon)</span>
+rustup target add aarch64-linux-android <span><span>#</span> Android</span> <span><span>#</span> Android builds require cargo-ndk</span>
+cargo install cargo-ndk</pre></div>
+<div><h3>3. iOS</h3><a href="#3-ios"></a></div>
+<p>The Rust static library is compiled automatically via a CocoaPods script phase. No manual Xcode linking required.</p>
+<div><pre><span>cd</span> ios <span>&amp;&amp;</span> pod install</pre></div>
+<div><h3>4. Android</h3><a href="#4-android"></a></div>
+<p>The Rust shared library is compiled automatically via a Gradle task. Just build your app as usual.</p>
+<div><h3>5. Permissions</h3><a href="#5-permissions"></a></div>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>iOS <code>Info.plist</code></th>
+<th>Android <code>AndroidManifest.xml</code></th>
+<th>Required?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Camera</td>
+<td><code>NSCameraUsageDescription</code></td>
+<td><code>android.permission.CAMERA</code></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Location</td>
+<td><code>NSLocationWhenInUseUsageDescription</code></td>
+<td><code>android.permission.ACCESS_FINE_LOCATION</code></td>
+<td>Only with <code>includeLocation: true</code></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<p>This library is headless, it handles attestation and signing, you bring your own camera (<code>react-native-vision-camera</code>, <code>expo-camera</code>, or anything that produces a JPEG path). See the <a href="/RoloBits/attestation-photo-mobile/blob/main/example">example app</a> for a full implementation.</p>
+<div><pre><span>import</span> <span>{</span> <span>useRef</span><span>,</span> <span>useCallback</span> <span>}</span> <span>from</span> <span>"react"</span><span>;</span>
+<span>import</span> <span>{</span> <span>Camera</span><span>,</span> <span>useCameraDevice</span><span>,</span> <span>useCameraPermission</span> <span>}</span> <span>from</span> <span>"react-native-vision-camera"</span><span>;</span>
+<span>import</span> <span>{</span> <span>useAttestedCapture</span><span>,</span> <span>saveToGallery</span> <span>}</span> <span>from</span> <span>"@rolobits/attestation-photo-mobile"</span><span>;</span> <span>function</span> <span>CaptureScreen</span><span>(</span><span>)</span> <span>{</span> <span>const</span> <span>cameraRef</span> <span>=</span> <span>useRef</span><span>&lt;</span><span>Camera</span><span>&gt;</span><span>(</span><span>null</span><span>)</span><span>;</span> <span>const</span> <span>device</span> <span>=</span> <span>useCameraDevice</span><span>(</span><span>"back"</span><span>)</span><span>;</span> <span>const</span> <span>{</span> hasPermission<span>,</span> requestPermission <span>}</span> <span>=</span> <span>useCameraPermission</span><span>(</span><span>)</span><span>;</span> <span>const</span> <span>{</span> signPhoto<span>,</span> status<span>,</span> isReady <span>}</span> <span>=</span> <span>useAttestedCapture</span><span>(</span><span>{</span> <span>includeLocation</span>: <span>true</span><span>,</span> <span>// embed GPS in the C2PA manifest</span> <span>appName</span>: <span>"My App"</span><span>,</span> <span>// shown in Content Credentials</span> <span>nonce</span>: <span>"server-challenge-token"</span><span>,</span> <span>// replay prevention</span> <span>}</span><span>)</span><span>;</span> <span>const</span> <span>onPressCapture</span> <span>=</span> <span>useCallback</span><span>(</span><span>async</span> <span>(</span><span>)</span> <span>=&gt;</span> <span>{</span> <span>// 1. Take a photo with VisionCamera</span> <span>const</span> <span>rawPhoto</span> <span>=</span> <span>await</span> <span>cameraRef</span><span>.</span><span>current</span><span>!</span><span>.</span><span>takePhoto</span><span>(</span><span>)</span><span>;</span> <span>// 2. Sign &amp; embed the C2PA manifest — that's it</span> <span>const</span> <span>signed</span> <span>=</span> <span>await</span> <span>signPhoto</span><span>(</span><span>rawPhoto</span><span>.</span><span>path</span><span>)</span><span>;</span> <span>// 3. (Optional) save to gallery</span> <span>await</span> <span>saveToGallery</span><span>(</span><span>{</span> <span>filePath</span>: <span>signed</span><span>.</span><span>path</span> <span>}</span><span>)</span><span>;</span> <span>}</span><span>,</span> <span>[</span><span>signPhoto</span><span>]</span><span>)</span><span>;</span> <span>return</span> <span>&lt;</span><span>Camera</span> <span>ref</span><span>=</span><span>{</span><span>cameraRef</span><span>}</span> <span>device</span><span>=</span><span>{</span><span>device</span><span>!</span><span>}</span> <span>isActive</span> <span>photo</span> <span>/&gt;</span><span>;</span>
+<span>}</span></pre></div>
+<p><code>useAttestedCapture</code> handles everything behind the scenes: hardware key provisioning, device integrity checks, location prefetch &amp; refresh, <code>file://</code> prefix stripping, and error wrapping into typed <code>AttestedCameraError</code> codes.</p>
+<div><h3><code>useAttestedCapture</code> options</h3><a href="#useattestedcapture-options"></a></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>includeLocation</code></td>
+<td><code>boolean</code></td>
+<td><code>false</code></td>
+<td>Embed GPS coordinates in the C2PA manifest.</td>
+</tr>
+<tr>
+<td><code>requireTrustedHardware</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code></td>
+<td>Reject signing on devices without Secure Enclave / StrongBox / TEE.</td>
+</tr>
+<tr>
+<td><code>appName</code></td>
+<td><code>string</code></td>
+<td><code>"Attestation Mobile"</code></td>
+<td>App name shown in C2PA Content Credentials.</td>
+</tr>
+<tr>
+<td><code>nonce</code></td>
+<td><code>string</code></td>
+<td>—</td>
+<td>Server challenge token for replay prevention.</td>
+</tr>
+</tbody>
+</table>
+<div><h3><code>useAttestedCapture</code> return value</h3><a href="#useattestedcapture-return-value"></a></div>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>signPhoto</code></td>
+<td><code>(photoPath: string) =&gt; Promise&lt;SignedPhoto&gt;</code></td>
+<td>Sign a photo at the given path. Strips <code>file://</code> prefix automatically. Rejects with <code>AttestedCameraError</code> on trust or signing failures.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>AttestationStatus | null</code></td>
+<td>Current attestation status (<code>null</code> while loading on mount).</td>
+</tr>
+<tr>
+<td><code>isReady</code></td>
+<td><code>boolean</code></td>
+<td><code>true</code> once key provisioning and status check have completed.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Lower-level functions</h3><a href="#lower-level-functions"></a></div>
+<p>For advanced use cases where you need full control over each step, every function the hook uses is also exported individually:</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Returns</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getAttestationStatus()</code></td>
+<td><code>Promise&lt;AttestationStatus&gt;</code></td>
+<td>Check device integrity and hardware trust level.</td>
+</tr>
+<tr>
+<td><code>ensureHardwareKey()</code></td>
+<td><code>Promise&lt;{ trustLevel }&gt;</code></td>
+<td>Provision the hardware-backed signing key. Idempotent.</td>
+</tr>
+<tr>
+<td><code>captureAndSignAtomic(params)</code></td>
+<td><code>Promise&lt;SignedPhoto&gt;</code></td>
+<td>Hash, sign, and embed a C2PA manifest into a JPEG.</td>
+</tr>
+<tr>
+<td><code>saveToGallery(params)</code></td>
+<td><code>Promise&lt;{ uri }&gt;</code></td>
+<td>Save a file to the device photo gallery.</td>
+</tr>
+<tr>
+<td><code>hashPhotoAtPath(params)</code></td>
+<td><code>Promise&lt;{ sha256Hex }&gt;</code></td>
+<td>Compute the SHA-256 hash of a photo file.</td>
+</tr>
+<tr>
+<td><code>signPayload(params)</code></td>
+<td><code>Promise&lt;{ signatureBase64, trustLevel }&gt;</code></td>
+<td>Sign arbitrary base64 data with the hardware key.</td>
+</tr>
+<tr>
+<td><code>prefetchLocation()</code></td>
+<td><code>Promise&lt;{ latitude, longitude } | null&gt;</code></td>
+<td>Pre-fetch GPS location in background for faster captures.</td>
+</tr>
+</tbody>
+</table>
+<div><h2>SignedPhoto</h2><a href="#signedphoto"></a></div>
+<p>The object returned by <code>captureAndSignAtomic()</code>:</p>
+<div><pre><span>interface</span> <span>SignedPhoto</span> <span>{</span> <span>path</span>: <span>string</span><span>;</span> <span>// File path to the signed JPEG</span> <span>signature</span>: <span>string</span><span>;</span> <span>// SHA-256 hex of the original asset</span> <span>algorithm</span>: <span>"ECDSA_P256_SHA256"</span><span>;</span> <span>// Signing algorithm used</span> <span>manifestFormat</span>: <span>"c2pa-jumbf"</span><span>;</span> <span>// Always JUMBF</span> <span>trustLevel</span>: <span>PlatformTrustLevel</span><span>;</span> <span>// "secure_enclave" | "strongbox" | "tee" | "software_fallback"</span> <span>embeddedManifest</span>?: <span>boolean</span><span>;</span> <span>// true when real C2PA manifest is embedded</span> <span>metadata</span>: <span>CaptureMetadata</span><span>;</span> <span>// Device model, OS, timestamp, nonce, etc.</span>
+<span>}</span></pre></div>
+<div><h2>Verifying output</h2><a href="#verifying-output"></a></div>
+<p>Upload the output JPEG to <a href="https://verify.contentauthenticity.org">verify.contentauthenticity.org</a> or use the CLI:</p>
+<div><pre>cargo install c2patool
+c2patool verify output.jpg</pre></div>
+<p>The verifier will show a valid signature with an unknown signer. This is expected for self-signed certificates. See <a href="#limitations">Limitations</a> below.</p>
+<div><h2>Error codes</h2><a href="#error-codes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>E_COMPROMISED_DEVICE</code></td>
+<td>Device shows signs of jailbreak or root. Capture is blocked.</td>
+</tr>
+<tr>
+<td><code>E_NO_TRUSTED_HARDWARE</code></td>
+<td>No Secure Enclave, StrongBox, or TEE available and <code>requireTrustedHardware</code> is <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>E_ATTESTATION_FAILED</code></td>
+<td>Hardware key provisioning failed.</td>
+</tr>
+<tr>
+<td><code>E_CAPTURE_FAILED</code></td>
+<td>Camera capture or file I/O failed.</td>
+</tr>
+<tr>
+<td><code>E_SIGNING_FAILED</code></td>
+<td>Hardware signing operation rejected.</td>
+</tr>
+<tr>
+<td><code>E_C2PA_EMBED_FAILED</code></td>
+<td>C2PA manifest could not be built or embedded.</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Limitations</h2><a href="#limitations"></a></div>
+<ul>
+<li><strong>Self-signed certificates</strong> — The signing key has a self-signed X.509 certificate with no CA chain. Verifiers will report an unknown signer. Tamper detection works, but attribution requires a CA integration (not yet implemented).</li>
+<li><strong>Camera injection</strong> — On a compromised device, an attacker could feed synthetic frames to the camera API. The SDK signs whatever the camera returns.</li>
+<li><strong>Heuristic root detection</strong> — Jailbreak/root detection uses basic signals. Sophisticated root hides are not detected. Consider layering with Play Integrity (Android) or App Attest (iOS) for higher assurance.</li>
+</ul>
+<div><h2>Platform requirements</h2><a href="#platform-requirements"></a></div>
+<table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Minimum</th>
+<th>Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iOS</td>
+<td>14.0</td>
+<td>16.0+</td>
+</tr>
+<tr>
+<td>Android</td>
+<td>API 28 / Android 9</td>
+<td>API 30+ / Android 11+ for higher StrongBox availability</td>
+</tr>
+<tr>
+<td>Rust</td>
+<td>1.75.0</td>
+<td>stable</td>
+</tr>
+<tr>
+<td>Node</td>
+<td>18</td>
+<td>22</td>
+</tr>
+</tbody>
+</table>
+<div><h2>License</h2><a href="#license"></a></div>
+<p><a href="/RoloBits/attestation-photo-mobile/blob/main/LICENSE">MIT</a></p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - Ben8t/math-spec-driven-skill: Natural language is often ambiguous. Writing code directly with LLMs can be brittle and hard to verify. This skill explores a middle ground: math-style specs (sets, relations, invariants) that agents can turn into architectures, APIs, and tests.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - Ben8t/math-spec-driven-skill: Natural language is often ambiguous. Writing code directly with LLMs can be brittle and hard to verify. This skill explores a middle ground: math-style specs (sets, relations, invariants) that agents can turn into architectures, APIs, and tests.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 5:31:54 PM | Lang: EN |
+    <a href="https://github.com/Ben8t/math-spec-driven-skill" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>Math Spec-Driven Skill</h1><a href="#math-spec-driven-skill"></a></div>
+<p>The Math Spec-Driven skill helps you turn vague requirements into precise, testable specifications.</p>
+<p>It treats mathematics as a specification method (not just a school subject), using sets, functions, relations, invariants, and explicit edge cases to define what a system is and what it must do.</p>
+<div><h2>Why this skill exists</h2><a href="#why-this-skill-exists"></a></div>
+<p>Natural language is often ambiguous. This skill is designed for situations where precision and correctness matter more than narrative description.</p>
+<p>It enforces three principles:</p>
+<ul>
+<li>Explicitness: every assumption is stated</li>
+<li>Composability: parts can be specified independently, then combined safely</li>
+<li>Falsifiability: claims are written so they can be proven or disproven</li>
+</ul>
+<div><h2>When to use it</h2><a href="#when-to-use-it"></a></div>
+<p>Use this skill when you need:</p>
+<ul>
+<li>Clear boundaries for ambiguous requirements</li>
+<li>Reliable behavior across many interacting rules</li>
+<li>Guaranteed input/output contracts</li>
+<li>Invariants that must always hold</li>
+<li>Complete edge-case coverage (including empty and error states)</li>
+</ul>
+<div><h2>Method at a glance</h2><a href="#method-at-a-glance"></a></div>
+<ol>
+<li>Model the domain with mathematical primitives (sets, functions, relations, predicates).</li>
+<li>Define the universe of discourse (what exists, what is excluded, what empty means).</li>
+<li>Specify each function with signature, preconditions, postconditions, and invariants.</li>
+<li>State invariants explicitly and define failure modes.</li>
+<li>Handle boundary and degenerate cases as first-class behavior.</li>
+<li>Verify composition between components (domain/codomain alignment).</li>
+<li>Quantify uncertainty when needed (probability, expectation, variance).</li>
+</ol>
+<div><h2>Expected output structure</h2><a href="#expected-output-structure"></a></div>
+<p>When using the skill, outputs should generally follow:</p>
+<ol>
+<li>Domain Model</li>
+<li>Functions / Operations</li>
+<li>Invariants</li>
+<li>Edge Cases</li>
+<li>Composition / Interaction</li>
+<li>Open Questions</li>
+</ol>
+<div><h2>Example prompt (TicTacToe)</h2><a href="#example-prompt-tictactoe"></a></div>
+<p>Use this prompt to ask an AI assistant to create a math-spec-driven design for TicTacToe before implementation:</p>
+<div><pre><code>Create a formal mathematical specification for a TicTacToe game engine, then derive an implementation plan. Requirements:
+- Use a 3x3 board, two players (X and O), alternating turns.
+- Define all sets, types, and state variables explicitly.
+- Specify core operations with signatures and contracts: - initializeGame - makeMove - checkWinner - isDraw - nextPlayer
+- For each operation, provide preconditions, postconditions, and invariants.
+- Include explicit edge cases: invalid coordinates, occupied cell, out-of-turn move, move after terminal state, and empty board behavior.
+- Define terminal states and prove mutual exclusion where applicable (for example, game cannot be both win and draw).
+- Describe composition flow for one full turn and for complete game progression.
+- List open questions separately from the formal spec. Output format:
+1) Domain Model
+2) Functions / Operations
+3) Invariants
+4) Edge Cases
+5) Composition / Interaction
+6) Open Questions After the spec, provide pseudocode and a minimal test matrix that maps each invariant to at least one test.
+</code></pre></div>
+<div><h2>Source</h2><a href="#source"></a></div>
+<p>The full skill definition lives at:</p>
+<ul>
+<li><code>skills/math-spec-driven/SKILL.md</code></li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'top') scrollToTop();
+      if (data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>
