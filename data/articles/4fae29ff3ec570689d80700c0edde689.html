@@ -33,21 +33,21 @@
 <time>02:06</time> </p> </figure> </div> <p>Il n’existe qu’un seul cas documenté d’un individu exposé à ce poison et qui y a survécu&nbsp;: un laborantin aux États-Unis en 2010. Mais <a href="https://www.tandfonline.com/doi/full/10.3109/15563650.2010.508747" target="_blank">le récit de son sauvetage</a>, à l’aide d’antihistaminiques, "soulève beaucoup de questions", tient à nuancer Alastair Hay.</p> <p>Une substance difficile à contrer… et à déceler. "Il suffit d’une dose relativement faible pour être mortel, ce qui signifie que les traces dans l’organisme sont difficiles à trouver lors des analyses", explique le toxicologue britannique.</p> <p>C’est d’autant moins évident si on ne sait pas quoi chercher. Et comme l'épibatidine ne semble jamais avoir été utilisée auparavant dans des cas d’empoisonnements, ce n’est pas la première toxine que les analystes vont tenter d’identifier dans l’organisme.</p> <p>Ce poison est également assez simple à administrer&nbsp;: "On sait qu’on peut être empoisonné en l’ingérant, en y étant exposé par voie cutanée et, bien que ce soit moins documenté, c’est probablement un poison qui peut agir en étant inhalé", détaille Alastair Hay.</p> <h2>Navalny, un cobaye&nbsp;?</h2> <p>Tous ces aspects ne suffisent pas à justifier le recours à l’épibatidine contre un opposant déjà en mauvaise santé et derrière les barreaux en Russie, estime Kevin Riehle. "La seule raison qui me vient à l’esprit, et qui est assez monstrueuse, serait qu’Alexeï Navalny a servi de cobaye pour ce poison", affirme-t-il.</p> <p>En effet, cette toxine "est connue depuis des décennies par les scientifiques qui ont cherché à l’utiliser comme antalgique. La substance peut aujourd’hui être reproduite en laboratoire", confirme Alastair Hay. "La mise au point de cette arme n’est pas difficile", mais encore faut-il s’assurer de son efficacité, reconnaît Luca Trenta.</p> <p>Pour Moscou, il peut aussi s’agir d’une manière de rappeler que "leurs laboratoires, qui travaillent depuis des décennies sur la mise au point de poisons, sont toujours capables d’élaborer de nouvelles toxines complexes et efficaces", souligne Mark Galeotti, spécialiste des questions de sécurité en Russie et directeur du cabinet de conseil Mayak Intelligence.</p> <p>Le recours à l’épibatidine sert, d’après cet expert, à créer "une ambiguïté constructive". "D’un côté, les autorités russes pouvaient espérer que l’empoisonnement passe inaperçu ; mais de l’autre, s’il est découvert, autant utiliser un poison rare et exotique", note Mark Galeotti. Cette manière de frapper les esprits avec des images de grenouilles mortelles et de venin venu de très loin "permet de créer un récit qui démontre jusqu’où le Kremlin est prêt à aller pour faire taire ses critiques", précise ce spécialiste.</p> <p>Enfin, "le recours au poison est aussi une question de vengeance contre les opposants au pouvoir russe", assure Luca Trenta. Et pour&nbsp;faire de la mort d'un empêcheur de tourner en rond du calibre d’Alexeï Navalny un exemple retentissant, quelle meilleure manière qu’avec un poison&nbsp;exotique, inédit et particulièrement virulent&nbsp;?</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

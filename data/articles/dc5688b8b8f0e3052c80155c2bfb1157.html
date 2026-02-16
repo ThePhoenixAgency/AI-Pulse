@@ -36,21 +36,21 @@
 <li><figure><img alt="L’entrée de l’église a notamment été vandalisée."><figcaption><span>L’entrée de l’église a notamment été vandalisée. | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 17h58</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h52</span></time></span> </span> </header> </div> <div> <p><q>On avait déjà eu ça près du terrain de foot</q>, se remémore Élisabeth Motas, adjointe au maire de la commune nouvelle d’Écouves<a href="https://www.ouest-france.fr/normandie/alencon-61000/" target="_blank">, près d’Alençon (Orne)</a>. À Radon, trois tags ont fleuri sur les murs du bourg, lundi 16&nbsp;février. En se basant sur l’épaisseur du trait de peinture, les fauteurs de troubles ont vandalisé tout d’abord le lavoir, avant de s’attaquer à l’entrée de l’église et de finir, quelques centaines de mètres plus loin, leurs méfaits sur le...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

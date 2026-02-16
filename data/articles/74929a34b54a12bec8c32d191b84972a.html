@@ -37,21 +37,21 @@
 <p>So yeah, it’s nice to have insurance, it’s nice to have a paycheck and all that kind of stuff, doing it the Tailscale way… I don’t know where it will end up, though. I mean, I really – I love what I do. I mean, the fact that I get a paycheck reliably every month is fantastic. But there’s that phrase… Do you remember – of course, you’ve got Mike Judge playing behind you on Silicon Valley… You remember Office Space, right? Where he has the interview with the Bobs…</p> </div> <div> <p>Yes…</p> </div> <div> <p>If [unintelligible <a href="#t=00:46:01.09">00:46:01.09</a>] ships a few extra units, I don’t see an extra dime. Where’s the motivation?</p> </div> <div> <p>Right…</p> </div> <div> <p>And of course, my motivation is I get a paycheck every month… But if the channel goes from 1,600 subscribers to 53,000 subscribers, I still get paid the same, you know?</p> </div> <div> <p>Yeah.</p> </div> <div> <p>I suppose the validation is that I can –</p> </div> <div> <p>You could negotiate, though… Right?</p> </div> <div> <p>Well, I suppose…</p> </div> <div> <p>You could hinge some hallmarks and some milestones… Well, you get to hire too, so you get to make some friends…</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

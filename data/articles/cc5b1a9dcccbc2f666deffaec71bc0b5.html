@@ -62,21 +62,21 @@
 <p>So a feature comes in… If it’s like a GitHub issue, I have a command that I run to have it read the issue, and it’s usually like “Let’s look at – like, is this a legitimate thing?” And so if it is, it’ll run through that and be like “Oh yeah, I see that it’s on this line of code, where I think the problem is.” And that’s how I do a lot of reactive stuff, is like that… But I don’t just trust it and say “Oh yeah, that’s it.” I have like example apps, that are just like vanilla – they have WorkOS AuthKit set up in them, or whatever… And I just have them – I’m like “Okay, let’s create a test page in that app.” And you can do like /add dir, and have it work in multiple directories at the same time…</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

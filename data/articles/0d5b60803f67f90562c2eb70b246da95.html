@@ -31,21 +31,21 @@
     <div><div> <p>Figure bien connue des Maliens, <a href="https://www.france24.com/fr/%C3%A9missions/en-t%C3%AAte-%C3%A0-t%C3%AAte/20260128-imam-dicko-est-la-garantie-retour-%C3%A0-la-d%C3%A9mocratie-dit-opposant-malien-guindo" target="_self">l'imam Mahmoud Dicko</a> était à la tête du mouvement de contestation qui a précipité la chute en 2020 du dernier président malien élu, Ibrahim Boubacar Keïta, renversé par l'armée.</p> <p>Un temps favorable aux militaires putschistes qui ont pris le pouvoir à Bamako, cet imam tenant d'un islam rigoriste a pris ces dernières années des positions très critiques vis-à-vis de cette même junte, qui le considère désormais comme un ennemi.</p> <p>Exilé en <a href="https://www.france24.com/fr/tag/alg%C3%A9rie/" target="_self">Algérie</a>, il a récemment rejoint un nouveau mouvement, la <a href="https://www.france24.com/fr/%C3%A9missions/en-t%C3%AAte-%C3%A0-t%C3%AAte/20260128-imam-dicko-est-la-garantie-retour-%C3%A0-la-d%C3%A9mocratie-dit-opposant-malien-guindo" target="_self">Coalition des forces pour la République</a> (CFR) et ambitionne de renouer le dialogue entre les différentes parties et de faire tomber les militaires au pouvoir au <a href="https://www.france24.com/fr/tag/mali/" target="_self">Mali</a>.&nbsp;</p> <h2>"Médiateur" pour les forces d'opposition</h2> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

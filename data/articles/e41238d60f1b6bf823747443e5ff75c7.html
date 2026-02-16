@@ -31,21 +31,21 @@
     <div><div><p>Major Bitcoin-holding institutions may eventually lose patience with Bitcoin developers for not addressing quantum computing concerns quickly enough, according to venture capitalist Nic Carter.</p><p>“I think the big institutions that now exist in Bitcoin, they will get fed up, and they will fire the devs and put in new devs,” Carter <a href="https://x.com/laurashin/status/2021708643603763399?s=20" target="_blank">said</a> during the <em>Bits and Bips</em> podcast episode published on Thursday.</p><p>“I think the devs will continue to do nothing,” Carter said. </p><figure> <img alt="Cryptocurrencies, Bitcoin Price, Quantum Computing" src="https://s3.cointelegraph.com/uploads/2026-02/019c5ff4-92b7-73d3-9a09-0be29c4dc986.png"><figcaption><em>Source: </em><a href="https://x.com/Cointelegraph/status/2022038259249856955?s=20" target="_blank"><em>Cointelegraph</em></a></figcaption></figure><p>“If you’re BlackRock and you have billions of dollars of client assets in this thing and its problems aren’t being addressed, what choice do you have?” he said.&nbsp;</p><h2>“Corporate takeover” is a possibility, says Carter</h2><p>BlackRock, the world’s largest asset manager, <a href="https://www.ishares.com/us/products/333011/ishares-bitcoin-trust" target="_blank">holds</a> around 761,801 Bitcoin (<a href="https://cointelegraph.com/bitcoin-price">BTC</a>), valued at roughly $50.15 billion as of publication. That amounts to around 3.62% of Bitcoin’s total supply.</p><p>Carter warned that if Bitcoin developers don’t move quickly to implement quantum-resistant cryptography, it will lead to “a corporate takeover,” arguing that it will be “a successful one.”</p><figure> <img alt="Cryptocurrencies, Bitcoin Price, Quantum Computing" src="https://s3.cointelegraph.com/uploads/2026-02/019c5fdb-6e86-7364-9d56-08da0f010652.png"><figcaption><em>Nic Carter joined three other crypto executives on the Bits and Bops podcast on Thursday. Source: </em><a href="https://x.com/laurashin/status/2021708643603763399?s=20" target="_blank"><em>Laura Shin</em></a></figcaption></figure><p>Zero Knowledge Consulting founder Austin Campbell echoed a similar sentiment. “If there is a structural problem here, and they have a large view, eventually they are going to be required to speak up,” Campbell said.</p><p>Carter has been vocal recently about the threat that quantum computing poses to Bitcoin. He said on Jan. 21 that Bitcoin's “mysterious” <a href="https://cointelegraph.com/news/bitcoin-quantum-computing-fears-btc-price-catalyst">price underperformance</a> is “due to quantum” and is “the only story that matters this year.” </p><p>Bitcoin is trading at $70,281 at the time of publication, down 26.25% over the past 30 days, <a href="https://coinmarketcap.com/" target="_blank">according</a> to CoinMarketCap.</p><p>However, not everyone agrees that institutions would attempt to influence the network. Lumida Wealth Management founder Ram Ahluwahlia said that major institutions in Bitcoin are “passive” investors. “They are not activists,” he said.</p><h2>Industry split over urgency of Bitcoin quantum risk</h2><p>It comes as the broader industry continues to debate how imminent the threat to Bitcoin really is.&nbsp;</p></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -36,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 13:39</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="Un véhicule de police. (SEBASTIEN SALOM-GOMIS / AFP)" src="https://www.franceinfo.fr/pictures/hwGfzEvwiLDJcAfTJQAOUchn6aM/0x337:6437x3958/432x243/filters:format(jpg)/2024/04/08/000-34nc97c-6613f73830755891765624.jpg"> <figcaption>Un véhicule de police. <span>(SEBASTIEN SALOM-GOMIS / AFP)</span></figcaption> </figure> </div> </div><div><p>Une femme d'une cinquantaine d'années a été retrouvée morte dans un appartement à Valence (Drôme) dans la nuit du dimanche 15 au lundi 16 février après avoir été rouée de coups, indique le parquet de Valence <a href="https://www.francebleu.fr/auvergne-rhone-alpes/drome-26/valence/une-femme-tuee-par-son-compagnon-a-valence-feminicide-compagnon-garde-a-vue-7976520" target="_blank">à ICI Drôme Ardèche</a>. Son concubin, âgé de 21&nbsp;ans, a été placé en garde à vue. C'est lui qui a prévenu la police, affirmant avoir tué sa conjointe.</p><p>À l'arrivée des secours et des forces de l'ordre, le jeune homme se trouvait toujours dans l'appartement. Ce dernier est déjà connu des services de police pour des antécédents de violences intrafamiliales. La victime a été déclarée décédée sur place, confirme le parquet, en précisant qu'aucun objet contondant n'a été utilisé.</p><p>Le procureur de la République indique qu'une enquête a été ouverte pour homicide par conjoint ou concubin et que la nature exacte de la relation entre la victime et le suspect doit encore être établie précisément. La direction de la criminalité territoriale a été saisie. Il s'agit du sixième féminicide en France en 2026, selon le décompte de l'association Nous Toutes.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

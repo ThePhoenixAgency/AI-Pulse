@@ -35,21 +35,21 @@
 </blockquote> </div> <p>While this revelation about internal Microsoft conflicts is certainly interesting, many haven't taken too kindly to Parakhin's stance on social media. Most notably, Windows developer Rafael Rivera has <a href="https://x.com/WithinRafael/status/2022465774481547304">pointed towards</a> the executive being a key figure behind the decision to insert "garbage ads, scams, and other unwanted junk" in Windows, Edge, and Widgets.</p> <p>Regardless, it's good news that after years of hearing that <a href="https://www.neowin.net/news/microsoft-says-changing-taskbar-location-in-windows-11-is-not-important/">vertical taskbar is "not important"</a>, Microsoft is finally working towards ending a pain point for Windows 11 customers. The improvement should arrive sometime in summer, along with the ability to resize the taskbar.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -33,21 +33,21 @@
 </div> <p>Difficile d’allier réalisme et amusement pur dans un jeu vidéo. L’un n’empêche pas l’autre, mais cela implique une pirouette narrative, ainsi qu’un mélange qui n’est pas toujours homogène, notamment en termes de gameplay et de ce que cela apporte réellement à l’expérience de jeu. Une leçon que Bethesda Game Studios a apprise lorsque le studio planchait sur sa vision de la licence Fallout avec l’épisode 3.</p> <figure><a href="https://www.numerama.com/wp-content/uploads/2026/02/fallout-3-decors.jpg"><img alt="Fallout 3 // Source : Bethesda"></a><figcaption><em>Fallout 3</em> // Source : Bethesda</figcaption></figure> <p>Emil Pagliarulo, concepteur et scénariste chez Bethesda, raconte dans un entretien accordé <a href="https://gameinformer.com/FalloutOralHistory-PartII" target="_blank">au site Game Informer</a> le 6 février 2026 que le studio avait envisagé que « <em>le métro soit entièrement souterrain</em> » sur la carte de Washington DC de <em>Fallout 3</em>. « <em>À l’origine, nous avions imaginé un métro entièrement souterrain. Mais nous avons réalisé que le projet était beaucoup trop vaste, trop étendu. Nous avons dû en réduire la taille, et c’est une leçon que nous avons apprise au fil des ans&nbsp;: le réalisme n’est pas toujours synonyme de plaisir</em> », raconte le développeur.</p> <p>Emil Pagliarulo ajoute que si le réalisme peut être amusant selon le type de jeu, « <em>parcourir des kilomètres de stations de métro souterraines s’avère, au final, très réaliste, et pas forcément très divertissant</em> ». </p> <h2>Je vois ma maison&nbsp;!</h2> <p>Par réalisme, on entend ici la vraisemblance de l’univers et de la vie quotidienne. Parcourir des lignes de métro interminables ou des rues identiques peut vite devenir répétitif et ennuyeux, même si c’est « <em>réaliste</em> ». Pour garder le plaisir de jeu, il faut parfois sacrifier ce réalisme exact au profit d’un réalisme ressenti, qui conserve la crédibilité du monde sans nuire au rythme et à l’amusement.</p> <p>Angela Browder, directrice du studio Bethesda Game Studios, va plus loin dans la réflexion et ajoute : « <em>C’est toujours amusant de faire des choses qui se déroulent là où on habite. Je crois que c’est inhérent à tout jeu qui nous transporte dans un lieu familier&nbsp;: on cherche toujours un élément qui le relie d’une manière ou d’une autre à la réalité dans laquelle on a vécu.</em> » Une réalité que l’on apprécie retrouver dans nos jeux, mais dont on préfère souvent s’affranchir des contraintes.</p> <figure><a href="https://www.numerama.com/wp-content/uploads/2026/02/fallout-3-decors-2.jpg"><img alt="Fallout 3 // Source : Bethesda"></a><figcaption><em>Fallout 3</em> // Source : Bethesda</figcaption></figure> <p>Si <em>Fallout 3</em> se déroule à Washington, D.C., c’est notamment parce que l’équipe de Bethesda Game Studios y était installée. La plupart des développeuses et développeurs connaissaient donc très bien la région, ce qui a permis de limiter les recherches préalables. Comme l’explique Istvan Pely, développeur sur <em>Fallout 3</em>, il s’agit toutefois « <em>de notre vision de Washington D.C. </em>». L’équipe a dû prendre de nombreuses libertés afin d’adapter le paysage et la carte du monde aux capacités d’un studio relativement restreint à l’époque. Une grande partie du travail a ainsi consisté à trouver le bon équilibre entre authenticité et jouabilité.</p> <p>Même si le plaisir de jeu prime sur le réalisme, celui-ci s’invite donc par petites touches et finit tout de même par jouer un rôle essentiel et à renforcer l’immersion. Une démarche similaire également adoptée par la série <a href="https://www.numerama.com/series-tv/fallout/"><em>Fallout</em></a> diffusée sur Amazon.</p> <div> <a href="https://www.numerama.com/series-tv/fallout/"> <img alt="Fallout // Source : Amazon Prime Video"> </a> </div> <div> <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/iPhone-16-pro-vDJtn9o4_vzSsPIGCFDc5.png" alt="Toute l'actu tech en un clien d'oeil"> </p> <div> <p>Toute l'actu tech en un clin d'œil</p> <p>Ajoutez Numerama à votre écran d'accueil et restez connectés au futur !</p> </div> <p><img src="https://www.numerama.com/wp-content/themes/numerama-next/dist/images/premium/logo-card-pwa-coupe-vCvPQ_Q_ysBNfqKp6w7gG.svg" alt="Logo PWA"> </p> </div> <hr> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

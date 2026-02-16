@@ -32,21 +32,21 @@
 </ul> <p>Of course, this is only a high-level summary, so if you're an Android developer, make sure to check out the changes <a href="https://android-developers.googleblog.com/2026/02/the-first-beta-of-android-17.html">here</a>.</p> <p>In terms of consumer-facing enhancements available in Android 17 Beta 1, <a href="https://9to5google.com/2026/02/13/android-17-beta-1-everything-new/">9to5Google</a> has spotted cosmetic changes to the Search widget, an updated brightness icon, a slightly darker location indicator, the availability of the Gemini screen shrink animation now available from the corner swipe, more compact settings menu, a new volume overflow icon, and confirmation that the dessert-themed internal codename of this Android version is indeed "Cinnamon Bun".</p> <p>If you want to download this beta over-the-air, you'll have to join the associated program through an eligible Pixel device <a href="https://www.google.com/android/beta">here</a>. Shortly after that, you'll see the update on your Android device when you check for updates.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

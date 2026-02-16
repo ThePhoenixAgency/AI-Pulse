@@ -39,21 +39,21 @@
 </a><p>Lui aussi dit que ce centre a changé sa vie. "<em>On est restés trois ans sans médecin traitant... Quand on a eu notre premier enfant, on devait aller à SOS médecins ou aux urgences</em>, se souvient-il. <em>Ici, on est tous suivis, comment vont faire les enfants s’ils ferment ? Tous les médecins qu’on appelle sur Grenoble, Echirolles, ils n’ont plus de place, ils ne prennent plus de nouveaux patients.</em>" Le but de l'expérimentation était aussi de désengorger un système de santé saturé.</p><p>"<em>Le Village 2 santé c’est notre soleil, notre espoir</em>" conclut Chafia Bouaziz. Tous sont déterminés à lutter avec les soignants et travailleurs sociaux pour que la structure survive.</p><p>"<em>On a besoin du soutien de tout le monde, on espère avoir une influence pour que le gouvernement revienne sur cette décision</em>" indique le Dr. Guibert. <a href="https://www.change.org/p/non-%C3%A0-la-suppression-des-structures-d-exercice-coordonn%C3%A9-participatives-sec-pa" target="_blank">Une pétition a été lancée</a> pour demander le maintien de ces structures de santé à vocation social. Ce vendredi 6 février, elle avait recueilli plus de 8 500 signatures.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div> <div> <p><img src="https://joinrollin.com/assets/rollin1-final.png" alt="ROLLIN"></p><p>Know before you go.</p> </div> <p> ROLLIN is America's wheelchair accessibility map. We help people with mobility challenges find restaurants, bars, and cafes that are <strong>actually accessible</strong>. </p> <p> Across <strong>6 states and 22 regions</strong>, we provide real accessibility data — wheelchair entries, accessible restrooms, parking, elevators, and more. Verified by the community, not a checkbox. </p> <a href="https://joinrollin.com/about"> <p> See how the sausage is made</p> <p>The algorithm. The API. The trust system.</p> <span>Nerd out with us →</span> </a> <p><a href="https://joinrollin.com/about"> Building with AI? Check out our API → </a></p><div> <p>Built with + by</p> <p>Stackline Studio</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

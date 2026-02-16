@@ -32,21 +32,21 @@
 </div> <p>De fait, la Jeune Garde a été impliquée, malgré sa courte existence, dans un certain nombre de faits de violence de rue, et ce «&nbsp;dès sa création&nbsp;», affirme le décret de dissolution. Plusieurs rixes et agressions sont ainsi constatées dans l’agglomération lyonnaise au printemps 2018, avant d’essaimer ailleurs en France. Huit membres de la Jeune Garde ont ainsi été mis en examen en 2024 pour violence en réunion aggravée après l’agression à caractère antisémite d’un garçon de 15 ans, traité de «&nbsp;sioniste&nbsp;» et giflé à plusieurs reprises avant d’être contraint de crier «&nbsp;Vive la Palestine&nbsp;».</p> <div> <h2>«&nbsp;La Jeune Garde est essentielle&nbsp;», estime la France insoumise</h2><p>Le décret de dissolution fait également état de deux faits survenus à Strasbourg, dont l’un à l’encontre de l’Action française. Le 11&nbsp;septembre 2024, une «&nbsp;demi-douzaine&nbsp;» de membres de la section locale de la Jeune Grade auraient «&nbsp;aspergé de gaz lacrymogène et frappé&nbsp;» trois étudiants qui sortaient d’une conférence du groupuscule d’extrême droite, dont faisait partie Quentin Deranque à Lyon. Des faits «&nbsp;qui ont donné lieu à des condamnations de leurs auteurs&nbsp;», précise le texte.</p></div> <p>La Jeune Garde a déposé un recours devant la Conseil d’État à l’encontre de sa dissolution. Celui-ci devait être examiné mercredi dernier par la plus haute juridiction administrative, mais l’audience a été reportée sine die. Dans un communiqué de presse, le groupe LFI à l’Assemblée nationale a pris la défense du groupe “antifa”, dénonçant une attaque «&nbsp;à la liberté d’expression et à la liberté associative&nbsp;». «&nbsp;Nous le disons fièrement, écrit LFI. La Jeune Garde est essentielle justement parce qu’elle a pour mission depuis sa création de lutter contre l’extrême droite, contre des groupes fascistes et néonazis de plus en plus violents partout en France ».</p> <p>Dans un communiqué publié dimanche, l’avocate du groupe antifasciste affirme que celui-ci «se saurait être tenu pour responsable des tragiques événements ayant eu lieu à Lyon».</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

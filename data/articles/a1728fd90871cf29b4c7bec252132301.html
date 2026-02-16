@@ -32,21 +32,21 @@
 <li><figure><img alt="L’ancien ministre français de la Culture, Jack Lang, a présenté sa démission de l’Institut du Monde Arabe de Paris&nbsp;(IMA), qu’il présidait depuis 2013, en raison de ses liens avec l’affaire Epstein. Il a livré ce lundi 16&nbsp;février son discours d’adieu en se disant ravi que «&nbsp;la justice se mette en branle&nbsp;»."><figcaption><span>L’ancien ministre français de la Culture, Jack Lang, a présenté sa démission de l’Institut du Monde Arabe de Paris&nbsp;(IMA), qu’il présidait depuis 2013, en raison de ses liens avec l’affaire Epstein. Il a livré ce lundi 16&nbsp;février son discours d’adieu en se disant ravi que «&nbsp;la justice se mette en branle&nbsp;». | </span>AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 18h27</span></time></span> </span> </header> </div> <div> <p>Les documents déclassifiés issus de l’enquête américaine montrent <a href="https://www.ouest-france.fr/monde/etats-unis/jeffrey-epstein/recit-la-semaine-qui-a-pousse-jack-lang-a-la-demission-apres-les-revelations-sur-ses-liens-avec-jeffrey-epstein-868c4fa0-0474-11f1-b297-4335c8ab3868" target="_self">une familiarité évidente entre l’ancien ministre de la Culture et le financier américain</a>. Dans un message envoyé en 2014 alors qu’il présidait déjà l’IMA, Jack Lang s’adresse à Epstein avec une chaleur non dissimulée&nbsp;: <strong>«&nbsp;Cher Jeffrey, je serais très heureux de vous accompagner au Maroc&nbsp;».</strong> Dans ce même échange, Jack Lang décrit son séjour à Tan-Tan, dans le désert marocain, à l’occasion d’un festival de musique traditionnelle. Il évoque la présence de son entourage proche, dont sa fille Caroline, ainsi que des amies. Il prend même soin de prévenir Epstein des conditions rudimentaires du séjour&nbsp;: <strong>«&nbsp;Ce ne sera peut-être pas très confortable pour vous&nbsp;!&nbsp;».</strong></p> <p>L’Institut du Monde Arabe apparaît en toile de fond de ces échanges. Jack Lang évoque notamment ses déplacements prévus en octobre et novembre&nbsp;2014 pour préparer un événement consacré à la <strong>«&nbsp;créativité au Maroc&nbsp;»,</strong> programmé à l’IMA. Il indique alors qu’il transmettra à...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div><p><em>Five European countries have accused Russia of using a toxin from dart frogs to kill the Kremlin critic.</em></p></div><div><p><span>Published On 16 Feb 2026</span></p></div><div><p>The Kremlin has “strongly” rejected an <a href="https://www.aljazeera.com/news/2026/2/14/russias-alexey-navalny-killed-by-dart-frog-poison-european-nations-allege">assessment</a> by five European countries that the Russian state killed jailed opposition leader Alexey Navalny by poisoning him.</p><p>Navalny, President Vladimir Putin’s fiercest domestic opponent for years, died in an Arctic prison colony on February 16, 2024 while serving a 19-year sentence for “extremism”, a charge he and his supporters said was punishment for his opposition work.</p><section><h2>Recommended Stories </h2><span>list of 3 items</span><ul><li><span>list 1 of 3</span><a href="https://www.aljazeera.com/economy/2026/2/14/are-lasers-the-future-of-anti-drone-warfare">Are lasers the future of anti-drone warfare?</a></li><li><span>list 2 of 3</span><a href="https://www.aljazeera.com/news/2026/2/14/deadly-drone-strikes-cloud-us-brokered-russia-ukraine-talks-in-geneva">Deadly drone strikes cloud US-brokered Russia-Ukraine talks in Geneva</a></li><li><span>list 3 of 3</span><a href="https://www.aljazeera.com/news/2026/2/14/russias-alexey-navalny-killed-by-dart-frog-poison-european-nations-allege">Russia’s Alexey Navalny killed by dart frog poison, European nations allege</a></li></ul><span>end of list</span></section><p>The United Kingdom, France, Germany, the Netherlands and Sweden issued a joint statement on Saturday saying they believed he had been poisoned with epibatidine – a toxin <a href="https://www.aljazeera.com/news/2026/2/15/what-is-the-dart-frog-toxin-said-to-be-linked-to-alexey-navalnys-death">found</a> in poison dart frogs – and that the Russian state had the “means, motive and opportunity” to administer it.</p><p>“We naturally do not accept such accusations. We disagree with them. We consider them biased and baseless,” Kremlin spokesman Dmitry Peskov told reporters during a daily briefing call on Monday.</p><p>“In fact, we strongly reject them,” he added.</p><p>His comments came as dozens of Navalny’s supporters and some foreign diplomats visited his grave in Moscow on Monday to mark the anniversary of his death. Some of those who attended wore masks or scarves over their faces.</p><p>Russian authorities designated Navalny and his organisation “extremist” before his death at the age of 47, and anyone who mentions him or his exiled anticorruption foundation is liable for prosecution.</p><p>Epibatidine is found naturally in the small and brightly coloured dart frogs, which typically live in rainforests in South America. It can also be manufactured in a lab, something European scientists suspect was the case in the alleged poisoning of Navalny.</p><p>The poison works&nbsp;on the body in a similar way to nerve agents, causing shortness of breath, convulsions, seizures, a slowed heart rate and ultimately death.</p><p>Navalny had already survived a suspected poisoning with the Novichok nerve agent in 2020.</p><p>Two years ago, Russia’s prison service said the Yale-educated lawyer died after going for a walk and falling ill. Since Navalny’s death, Russia’s opposition has remained largely exiled and fragmented.</p><p>Navalny’s widow, Yulia Navalnaya, pledged to take the mantle of Russia’s opposition in the wake of his death but has struggled to galvanise widespread support.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

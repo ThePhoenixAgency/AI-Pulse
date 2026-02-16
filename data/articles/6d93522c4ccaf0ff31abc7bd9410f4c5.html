@@ -32,21 +32,21 @@
 <li><figure><img alt="Un candidat à la mairie de Saint-Thégonnec-Loc-Eguiner&nbsp;(Finistère), n’a pas réglé plusieurs mois de loyers à Pleyber-Christ&nbsp;(Finistère), où il avait son local professionnel. Il évoque des problèmes de santé."><figcaption><span>Un candidat à la mairie de Saint-Thégonnec-Loc-Eguiner&nbsp;(Finistère), n’a pas réglé plusieurs mois de loyers à Pleyber-Christ&nbsp;(Finistère), où il avait son local professionnel. Il évoque des problèmes de santé. | </span>OUEST FRANCE ARCHIVES</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h52</span></time></span> <span>Publié le <time>16/02/2026 <span> à 18h30</span></time></span> </span> </header> </div> <div> <p><q>C’est une information publique que j’ai retransmise&nbsp;»,</q> pose Thierry Piriou, élu à Pleyber-Christ&nbsp;(Finistère). Lors du <a href="https://www.ouest-france.fr/bretagne/pleyber-christ-29410/la-commune-de-pleyber-christ-a-vote-ses-budgets-primitifs-21a37ba8-0a92-11f1-9018-5ad7ac48f8c6" target="_blank">dernier conseil municipal de la commune</a>, notamment consacré au budget, le conseiller a attiré l’attention sur des impayés de loyer pour les Ateliers de la gare, une zone destinée à accueillir des artisans dans la commune. Une entreprise, Artidéco, n’a pas réglé pour près de <q>17&nbsp;000&nbsp;€&nbsp;</q>de loyer, entre 2020 et 2023 environ.</p> <p>Ce qui a fait réagir l’élu, c’est que le gérant d’Artidéco, société de travaux de peinture et vitrerie,...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

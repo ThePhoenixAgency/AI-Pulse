@@ -32,21 +32,21 @@
 <li><figure><img alt="Deux agents surveillent la digue de La Belle poule&nbsp;entre Les Ponts-de-Cé et La Daguenière."><figcaption><span>Deux agents surveillent la digue de La Belle poule&nbsp;entre Les Ponts-de-Cé et La Daguenière. | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h59</span></time></span> <span>Publié le <time>16/02/2026 <span> à 18h50</span></time></span> </span> </header> </div> <div> <p>Ce lundi 16&nbsp;février, 10&nbsp;h, sur la levée de La Belle poule entre Les Ponts-de-Cé et La Daguenière, près d’Angers&nbsp;(Maine-et-Loire), <a href="https://www.vigicrues.gouv.fr/station/L800001020" target="_self">la hauteur d’eau est à 4,60&nbsp;m selon la station de Saumur.</a> Près de 4&nbsp;000&nbsp;m³ d’eau par seconde dévalent de l’amont du fleuve et poussent encore plus contre la levée de la Loire.</p> <p><strong>«&nbsp;La digue est sous pression&nbsp;»</strong>, admet Benjamin Javaux, responsable du service Gestion des milieux aquatiques et de la prévention des inondations&nbsp;(Gemapi) à Angers Loire métropole. <strong>«&nbsp;Entre aujourd’hui et demain, on va peut-être prendre trente centimètres. Mais si tous les jours, on prend trente centimètres, cela va faire beaucoup…&nbsp;»</strong></p> <p><a href="https://www.ouest-france.fr/meteo/inondation/le-maine-et-loire-bascule-en-vigilance-rouge-pour-les-crues-4c95d288-0b47-11f1-8f27-f38523081a88" target="_self">Le Maine-et-Loire est passé en vigilance rouge crues ce lundi après-midi</a> pour les Basses vallées angevine et la Loire saumuroise. L’eau...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

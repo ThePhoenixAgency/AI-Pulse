@@ -33,21 +33,21 @@
 </blockquote> <p>"Les start-up de l'espace représentent un pari plutôt risqué. Les revenus arrivent après plusieurs années et tous les fonds d'investissement ne sont pas à l'aise avec ce type de modèle, d’autant que, dans la dynamique actuelle, les investisseurs exigent un retour sur liquidités rapide. Mais ce n'est pas le rythme du NewSpace", explique <a href="https://www.linkedin.com/in/matthieu-baret-a9944/">Matthieu Baret</a>, managing partner pour le fonds Eurazeo qui a notamment investi dans Exotrail (qui commercialise des moteurs pour satellite de petite taille) et Space Cargo (qui construit une microstation orbitale européenne). "On a fait de réels progrès. Mais il faut que davantage de fonds s'emparent du sujet", ajoute de son côté <a href="https://www.linkedin.com/in/raphael-cattan-b7285160/">Raphaël Cattan</a>, directeur des investissements, également pour Eurazeo.</p> <p>Malgré tout, le NewSpace français a semé des belles promesses&nbsp;: "Des start-up comme Look Up Space (<em>qui déploie un réseau de radars de surveillance de l'espace, ndlr</em>) et Unseenlabs (<em>spécialiste de la détection radiofréquence depuis l'espace, ndlr</em>) s'en sortent bien", tempère Michael Thomas. "Malheureusement, on est encore assez loin de l'industrialisation et du passage à l'échelle". Maintenant, le secteur doit passer un cap pour transformer ces promesses en véritable leader&nbsp;: "Dans le digital, on sait comment scaler un logiciel. Ce n'est pas encore le cas pour le NewSpace. C'est bien de recruter des profils qui viennent de chez Thalès ou Airbus mais il y a une différence entre appliquer des process déjà établis et en créer de nouveaux", souligne Raphaël Cattan.</p> <h2>Pas encore de passage à l'échelle</h2> <p>Pour aider les start-up à se structurer et à atteindre le fameux passage à l'échelle, il semble que les grands groupes industriels et l'Etat doivent jouer leur rôle&nbsp;: "On a les entrepreneurs et la technologie. L'industrialisation passera par la commande des grandes entreprises et de l'Etat. SpaceX a frôlé le dépôt de bilan avant d'être sauvée par la Nasa", rappelle Matthieu Baret.</p> <p>"Le triptyque Etat, grands groupes et start-up ne fonctionne pas assez bien", déplore effectivement Michael Thomas. "Culturellement, notre pays favorise davantage les grandes entreprises que les jeunes pousses qui ne captent que des miettes dans les appels d'offres. Mais le talent est là". Pour le moment, les planètes ne sont pas encore alignées pour que le NewSpace français change définitivement de dimension.&nbsp;</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

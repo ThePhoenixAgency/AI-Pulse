@@ -34,21 +34,21 @@
 <img alt="" src="https://www.meteo-paris.com/_next/image?url=https%3A%2F%2Fs.meteo-villes.com%2Fuploads%2Factu%2Fcarte%2520-%25202026-02-09T114904.032.png&amp;w=1920&amp;q=75"></p> <p><em><strong>Risque de neige en plaine en fin de semaine sur la France</strong></em> – Météo-Villes</p> <p>À lire également :</p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-villes.com/actualites/les-tempetes-memorables-de-fevrier-1990" target="_blank">Les tempêtes mémorables de février 1990</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-paris.com/actualites/menace-de-tempete-sur-la-moitie-sud-pour-jeudi" target="_blank">Menace de tempête sur la moitié sud pour jeudi</a></p> <p>&gt;&gt;&gt;&nbsp;<a href="https://www.meteo-paris.com/actualites/l-episode-de-pluies-verglacantes-de-la-mi-fevrier-1978" target="_blank">L'épisode de pluies verglaçantes de la mi-février 1978</a></p> <p>&gt;&gt;&gt; <a href="https://www.meteo-villes.com/france/previsions" target="_blank">Notre bulletin météo réactualisé quotidiennement</a></p> <p>&gt;&gt;&gt; <a href="https://x.com/Meteovilles" target="_blank">Notre compte Twitter très suivi et référence dans tous les médias !</a></p> <p>Auteur : <a href="https://x.com/BergenTristan" target="_blank">Tristan Bergen</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

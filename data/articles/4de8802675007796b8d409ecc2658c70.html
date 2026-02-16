@@ -33,21 +33,21 @@
 </div> <p>Le 2 décembre 2016, le véhicule de service est volé au domicile du salarié. Alors que l'entreprise aurait pu décider de ne pas donner une nouvelle voiture, elle décide d'attribuer immédiatement un nouveau véhicule au consultant technique. Les conditions restent les mêmes, à savoir une autorisation de s'en servir à des fins personnelles.</p> <p>Début avril 2019, l'employeur supprime le véhicule de service du salarié de manière unilatérale. Il affirme que c'est un outil de travail et qu'il peut par conséquent le retirer comme il l'entend, sans qu'il s'agisse d'un droit acquis par le salarié. A partir du retrait de sa voiture, le consultant cesse de se rendre sur son lieu de travail. Il explique qu'il a besoin du véhicule, ajoutant même que son état de santé (invalidité reconnue depuis mars 2019) rendait le véhicule impératif pour lui.</p> <p>Le 17 avril 2019, le travailleur est licencié pour faute grave, à savoir abandon de poste. "Le salarié disait que la cause de l'abandon de poste était le retrait de la voiture et donc que c'était uniquement de la faute de l'employeur", décrit Anthony Coursaget. Il saisit donc la juridiction prud'homale pour obtenir un licenciement sans cause réelle et sérieuse. Il l'obtient finalement devant la Cour d'appel de Douai le 23 février 2024. L'employeur forme un pourvoi en cassation.</p> <p>"Attention, un véhicule de service peut devenir un véhicule de fonction et donc un avantage en nature. On ne peut pas le retirer brutalement, surtout ici où il permettait au salarié de travailler", ajoute l'avocat. Appliquant ce raisonnement, la Cour de cassation rejette le pourvoi de l'employeur et le condamne au paiement de diverses indemnités.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

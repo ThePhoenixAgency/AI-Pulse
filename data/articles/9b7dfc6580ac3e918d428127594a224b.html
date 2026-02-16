@@ -31,21 +31,21 @@
     <div><div><p>Iranian authorities have without prior warning transferred <a href="https://www.theguardian.com/world/nobelpeaceprize">Nobel peace prize</a> laureate Narges Mohammadi to a prison in the north of the country as concern grows over her health, her family said on Saturday.</p><p>Mohammadi, who won the peace prize in 2023 in recognition for more than two decades of campaigning, was arrested on 12 December in the eastern city of Mashhad after speaking out against Iran’s clerical authorities at a funeral ceremony.</p><p>She spent time on hunger strike earlier this month and had been hospitalised before being returned to prison.</p><p>The Norwegian Nobel committee said this week it was “deeply appalled” by reports detailing “physical abuse and ongoing life-threatening mistreatment” of Mohammadi during her arrest and in detention.</p><p>After her arrest, Mohammadi had been held in Mashhad at the detention facility of the intelligence ministry.</p><p>But she has now been transferred to a prison in the city of Zanjan in the north of the country, said her husband, Taghi Rahmani, who is based in Paris.</p><p>“This action was carried out without informing her family or her lawyer,” he said on X, adding it was “intended to exile and displace Narges”.</p><p>Mohammadi’s foundation, which is run by her supporters and family, said she had been transferred on Tuesday but she had only been able to reveal the news on Saturday in a phone call with her Iranian lawyer, Mostafa Nili.</p><p>Since her arrest in December, she has only been allowed one phone call with a brother inside Iran and now just two more with her Iranian lawyer.</p><p>“In our short conversation, she spoke of the violence inflicted during her arrest, the pressure of interrogations, and particularly severe blows to her head,” Nili wrote in a post on X.</p><p>“These blows have resulted in dizziness, double vision and blurred vision. Bruises and marks of severe physical assault remain on her body,” he added.</p><p>Mohammadi was arrested before protests erupted nationwide later in December. The movement peaked in January, with authorities launching a crackdown that activists say has left thousands dead.</p><p>Earlier this month she was handed a further six years in prison on charges of harming national security and a one-and-a-half-year prison sentence for propaganda against Iran’s Islamic system. She also went on hunger strike for almost a week to protest the conditions of her detention.</p><p>Over the past quarter of a century, Mohammadi, 53, has been repeatedly tried and jailed for her campaigning against Iran’s use of capital punishment and the mandatory dress code for women.</p><p>She was born in Zanjan but is resident in Tehran. Her foundation said she had on two occasions during previous jail stints been transferred to Zanjan prison where she suffered ill treatment.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

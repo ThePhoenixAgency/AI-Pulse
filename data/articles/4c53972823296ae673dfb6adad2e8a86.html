@@ -31,21 +31,21 @@
     <div><div><p>Python reste le langage le plus recherché selon l'index TIOBE. Par contre derrière, il y a du changement sur u : C++ laisse la 2e place au C. Java est 4e, surprise, VB continue à remonter, il est 7e. Grosse progression pour R. Rust perd une place (14e) et PHP en gagne une (13e). Notons la grosse chute de Go : -8 plaves. Kotlin est désormais dans le top 20. Swift le talonne. Oui Python perd 2 % mais parler d'un effritement, non. Python, notamment sur la Data Science et l'IA, peut être remplacé par des langages spécialisés. La progression de R illustre cela.</p><p>Le top 10 complet :&nbsp;</p><p>Python</p><p>C</p><p>C++</p><p>Java</p><p>C#</p><p>JavaScript</p><p>Visual Basic</p><p>R</p><p>SQL</p><p>Delphi / Pascal objet</p><p>Rappelons que l'index TIOBE repose sur plus de 20 moteurs de recherche et sites pour mesurer la popularité des langages dans les recherches. Il n'indique pas l'usage réel du langage.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

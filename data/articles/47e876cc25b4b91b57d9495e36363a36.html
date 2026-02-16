@@ -112,21 +112,21 @@
 <p>I was just telling Jerod too the other day that for a while there I was bummed that I thought that “Well, there’s going to be a market shift and a market correction in terms of the way enterprises or even teams are built these days.” And you may see layoffs, but I think by and large we’re going to see a massive, massive influx into folks becoming what are called software developers, because there’s tooling that allows them to operate like a senior engineer, or with senior engineer abilities. And that’s amazing. I’m all for it. In the moment, I was just like “Gosh, do we now have a toll booth in front of our ability to show up as developers?” And that was just kind of a bummer.</p> </div> <div> <p>I think subscription fatigue gets to us all.</p> </div> <div> <p>It does.</p> </div> <div> <p>Yes.</p> </div> <div> <p>You know, when you’re paying per token, you’re basically paying that subscription fatigue. Well, Deepak, I know you are hitting up against a hard stop. We appreciate you spending a few extra minutes with us… Kiro looks really cool, I love all the innovations going on… I think that spec-driven development is a very awesome stake in the ground, to claim like “Here’s a way of doing agentic things that is better.” And I hope you guys all the best in building it out and realizing that vision of what you’re trying to build. It’s cool stuff, man.</p> </div> <div> <p>Thanks for having me. It was fun talking to you. And as I said before, I think we started – I’ve probably heard… I started listening to the Changelog at episode one, so it’s great to actually talk to you folks.</p> </div> <div> <p>That’s so cool.</p> </div> <div> <p>I appreciate it.</p> </div> <div> <p>So cool.</p> </div> <div> <p>That’s beyond cool. Thanks so much for being a listener all these years. Appreciate that.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -31,21 +31,21 @@
     <div><div> <p>5,94</p><p>Mamadou DIOP (19 matches)</p></div><div> <p>5,53</p><p><span>Gaëtan PAQUIEZ (19 matches)</span></p></div><div> <p>5,07</p><p><span>Yadaly DIABY (15 matches)<br>Clément VIDAL (14 matches)</span></p></div><div> <p><span>4,93</span></p><p><span>Loris MOUYOKOLO (15 matches)</span></p></div><div> <p><span>4,92</span></p><p><span>Nesta ELPHEGE (12 matches)</span></p></div><div> <p>4,81</p><p><span>Shaquil DELOS (16 matches)<br></span></p></div><div> <p><span>4,79</span></p><p><span>Matthéo XANTIPPE (19 matches)</span></p></div><div> <p><span>4,25</span></p><p><span>Samba LÉLÉ DIBA (12 matches)</span></p></div><p><i>Sont pris en compte uniquement les joueurs qui ont disputé au moins le tiers des matches.</i></p><div> <p>Les joueurs qui ne rentrent pas dans le classement</p> <p>&nbsp;5,67</p><p>Arthur LALLIAS (3 matches)</p><p>5,5</p><p>Bobby ALLAIN (4 matches)<br>Lucas BERNARDOU (2 matches)</p><p>5,25</p><p>Efe SARIKAYA (4 matches)</p><p>5,14</p><p>Baptiste MOUAZAN (7 matches)</p><p>5</p><p>Moussa DJITTE (4 matches)</p><p>4,83</p><p>Mathieu MION (6 matches)</p><p>4,29</p><p><span>Mamady BANGRÉ (7 matches)</span></p><p>4</p><p>Alan K<span>É</span>ROUÉDAN (2 matches)</p><p>3,83</p><p><span>Hianga'a MBOCK (</span><span>6</span><span><span>&nbsp;</span>matches)</span></p><p>3</p><p>Mohamed BECHIKH (1 match)</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

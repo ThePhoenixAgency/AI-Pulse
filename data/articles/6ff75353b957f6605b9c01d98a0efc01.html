@@ -39,21 +39,21 @@
 </a><p>Les enquêteurs sont aussi à la recherche de témoignages qui pourraient <em>"consolider le parcours de vie de Jacques Leveugle"</em>. Au total, près de 150 personnes ont été entendues à ce jour. <em>"Le temps presse"</em>, a souligné le procureur. Pour cause, la prescription joue dans ce dossier : les faits commis avant 1993 seraient ainsi déjà exclus. <em>"Si des victimes souhaitent se manifester, qu'elles le fassent maintenant, parce qu'il faudra, dans l'année 2026, clôturer cette information judiciaire si on veut effectivement pouvoir juger dans des délais raisonnables"</em>, a indiqué Etienne Manteaux.</p><p>Dans ses mémoires, l'homme a également écrit <em>"avoir volontairement donné la mort à deux personnes"</em>, a ajouté le procureur. Le suspect a reconnu au cours de l'enquête avoir étouffé à l'aide d'un coussin sa mère atteinte d'un cancer en phase terminale dans les années 1970, puis sa tante, âgée de 92 ans dans les années 1990, de la même manière.</p><p>Il raconte au sujet de sa tante <em>"qu'il devait repartir dans les Cévennes et qu'elle le suppliait de ne pas partir, il a fait le choix de lui donner la mort également et donc profitant de son sommeil a pris un coussin et l'a étouffée"</em>, a indiqué le procureur. Une enquête distincte de celle sur les viols et agressions sexuelles a été ouverte pour ces deux faits. Le prévenu a, là aussi, reconnu les faits.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

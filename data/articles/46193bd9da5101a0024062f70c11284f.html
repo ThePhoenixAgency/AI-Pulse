@@ -39,21 +39,21 @@ Selon la proportion de d�cisions respectant la loi pour les trois variables si
 <p><b>Discussion</b></p><p>Dans une pr�c�dente �tude, les chercheurs ont constat� que GPT �tait plus formaliste que les juges dans le sens o� il suivait syst�matiquement les pr�c�dents pertinents et n'�tait pas influenc� par des facteurs non juridiques, � savoir la mesure dans laquelle le d�fendeur �tait pr�sent� de mani�re sympathique ou antipathique. Les d�cisions du GPT �taient similaires � celles des �tudiants qui ont particip� � une deuxi�me exp�rience.</p><p>Ce sch�ma a soulev� plusieurs questions. Faut-il consid�rer les juges humains comme la r�f�rence pour �valuer les LLM ou la r�f�rence devrait-elle �tre la conformit� formelle � la loi ? Le fait que les �tudiants se conforment davantage � la loi que les juges professionnels soul�ve la possibilit� que, pour rendre des jugements socialement souhaitables, les juges doivent s'�carter des r�gles formelles afin d'�viter les injustices ou les mauvaises pratiques politiques, un �l�ment essentiel de la th�orie de la r�alit� juridique.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

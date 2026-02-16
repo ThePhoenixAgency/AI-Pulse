@@ -31,21 +31,21 @@
     <div><div><p>At least 12 Palestinians were killed and several more injured across the Gaza Strip on Sunday as the Israeli military said it carried out airstrikes in response to ceasefire violations by Hamas.</p><p>The <a href="https://www.theguardian.com/world/gaza">Gaza</a> civil defence agency said five people were killed and several others hurt when an airstrike targeted a tent sheltering displaced people in the northern city of Jabaliya.</p><p>According to the agency, which operates as a rescue force under <a href="https://www.theguardian.com/world/hamas">Hamas</a> authorities, five more people were killed and several injured in a separate early morning strike in the southern city of Khan Younis. It said one more person was killed after Israeli shelling in Gaza City, while one person was killed by Israeli gunfire in Beit Lahia.</p><p>Hazem Qassem, a Hamas spokesperson in Gaza, accused Israel of committing a new massacre against displaced Palestinians, calling it a serious breach of the ceasefire days before the first meeting of Donald Trump’s <a href="https://www.theguardian.com/us-news/2026/feb/13/dispute-future-of-gaza-trump-board-of-peace-eu-un">Board of Peace</a>.</p><p>Trump urged Hamas to move forward with disarmament under his plan for postwar Gaza on Sunday and said members of the Board of Peace had pledged $5bn (£3.7bn) towards the Palestinian territory’s reconstruction.</p><p>Despite a US-brokered truce that <a href="https://www.theguardian.com/world/2026/jan/14/us-witkoff-announces-start-of-gaza-ceasefire-second-phase">entered its second phase</a> last month, violence has continued in Gaza, with Israel and Hamas accusing each other of violating the agreement.</p><p>Al-Shifa and Nasser hospitals confirmed they had received the bodies of at least seven people.</p><p>“Israel doesn’t understand ceasefires or truces,” Osama Abu Askar, who lost his nephew in the Jabaliya attack, told Agence France-Presse. He said the people killed there were hit as they slept.</p><p>“We’ve been living under a truce for months and they’ve still targeted us. Israel operates on this principle – saying one thing and doing another,” Askar added.</p><figure><div><img alt="Women in Gaza overcome by grief" src="https://i.guim.co.uk/img/media/12ce139980fc962fc4c08c84d9e84e80c91fb40a/0_0_4530_3094/master/4530.jpg?width=445&amp;dpr=1&amp;s=none&amp;crop=none"></div><figcaption><span></span><span>The families of those killed gathered at Nasser hospital in Khan Younis before the funerals.</span> Photograph: Ramadan Abed/Reuters</figcaption></figure><p>Dozens of relatives and mourners gathered at Nasser hospital where the bodies of some of those killed were laid out in white shrouds. Men and women stood in prayer before the funeral, facing the corpses in the hospital compound.</p><p>A military official said Israeli forces attacked in response to Hamas violations of the ceasefire agreement. Under the terms of the agreement, which took effect on 10 October, Israeli troops withdrew to positions behind a so-called <a href="https://www.theguardian.com/world/2025/dec/08/yellow-line-that-divides-gaza-under-trump-plan-is-new-border-for-israel-says-military-chief">yellow line</a>, although they remain in control of more than half the territory.</p><p>“The violation included an identification of several armed terrorists who took cover under debris east of the yellow line and adjacent to IDF troops, likely after exiting underground infrastructure in the area,” the official said.</p><figure></figure><p>“Crossing the yellow line in the vicinity of IDF troops, while armed is an explicit ceasefire violation and demonstrates how Hamas systematically violates the ceasefire agreement with intent to harm the troops.”</p><p>Israel has unilaterally moved the yellow line deeper into Gaza even though Israeli withdrawals are part of the ceasefire deal, and Hamas has so far rejected demands to lay down its weapons, also part of the plan. Israel has said it will have to force Hamas to disarm if it does not do so voluntarily.</p><p>Gaza’s health ministry has said at least 601 people have been killed since the truce began. The Israeli military said at least four of its soldiers had been killed in the same period.</p><p><em>Agence France-Presse and Reuters contributed to this report</em></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

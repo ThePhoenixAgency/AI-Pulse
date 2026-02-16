@@ -32,21 +32,21 @@
 <li><figure><img alt="Le prix du poireau payé au producteur couvre à peine la moitié du coût de revient. Ici Gwénaël, Liam et Bastien au nettoyage des poireaux, chez Philippe Réveillard, producteur à Saint-Suliac&nbsp;(Ille-et-Vilaine)."><figcaption><span>Le prix du poireau payé au producteur couvre à peine la moitié du coût de revient. Ici Gwénaël, Liam et Bastien au nettoyage des poireaux, chez Philippe Réveillard, producteur à Saint-Suliac&nbsp;(Ille-et-Vilaine). | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 17h48</span></time></span> <span>Publié le <time>16/02/2026 <span> à 16h14</span></time></span> </span> </header> </div> <div> <p><strong>«&nbsp;C’est la crise la plus grave que j’ai connue&nbsp;»</strong>, assure Marc Kerangueven, président du <a href="https://www.ouest-france.fr/economie/agriculture/depuis-soixante-ans-lunion-fait-la-force-des-legumiers-bretons-4a6be48c-89ad-11f0-86eb-dac26b435301" target="_blank">Cerafel, l’union des organisations de producteurs</a> de légumes de Bretagne nord&nbsp;(2&nbsp;000 légumiers). Un secteur pourtant rompu aux aléas. <strong>«&nbsp;On dit souvent que l’on connaît au moins une crise par an sur un produit&nbsp;»</strong>, mais cette année, tous les légumes d’hiver sont touchés.<strong> «&nbsp;On n’a rien pour nous sauver. Aucun légume ne sort du lot pour limiter les dégâts&nbsp;»</strong>.</p> <p>En décembre déjà,<a href="https://www.ouest-france.fr/economie/agriculture/lhiver-doux-mene-la-vie-dure-aux-producteurs-de-choux-fleurs-bretons-d5a1a772-daa1-11f0-9747-9a2b95e61f84" target="_blank"> la filière avait alerté sur la chute des cours du chou-fleur.</a> La conséquence de températures trop clémentes qui, en accélérant la pousse du légume, entraînent un surplus de volumes sur les marchés. Y compris en Allemagne, au Royaume-Uni ou en Pologne, où s’exportent habituellement les légumes bretons.</p> <p>Phénomène aggravant, l’hiver doux n’incite pas à manger du chou-fleur, ni du poireau. Pour encourager la consommation, plusieurs enseignes&nbsp;(Auchan, Carrefour, Casino, Coopérative U et Intermarché) ont annoncé la semaine dernière des opérations pour stimuler les ventes, en mettant en avant le poireau français. Objectif&nbsp;: soutenir...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

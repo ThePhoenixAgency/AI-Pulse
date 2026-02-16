@@ -5,8 +5,66 @@
     <link>https://thephoenixagency.github.io/AI-Pulse</link>
     <description>Products & Innovation news from AI-Pulse</description>
     <language>en</language>
-    <lastBuildDate>Mon, 16 Feb 2026 18:26:20 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 16 Feb 2026 19:12:54 GMT</lastBuildDate>
     <atom:link href="https://thephoenixagency.github.io/AI-Pulse/feed-products.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title><![CDATA[Show HN: MacMule – EMule for MacOsx]]></title>
+      <link>https://github.com/mderouet/macMule</link>
+      <description><![CDATA[I built this because I wanted to see if eMule still worked in 2025. It does — the ed2k and Kad networks are still alive.
+The problem: eMule is a Win32 application. Getting it to run on macOS means Wine, and asking non-technical users to install and configure Wine is a non-starter.
+The solution: macMule bundles eMule (community x64 build by irwir) with Wine Crossover (by Gcenx) into a single .app. Download, drag to /Applications, launch. It auto-connects to eMule Security servers and Kad on startup. Works on Apple Silicon through Rosetta 2.
+The trade-off is size (~1 GB) since Wine is bundled.]]></description>
+      <pubDate>Mon, 16 Feb 2026 18:15:11 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/mderouet/macMule</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: I built OLTP in my memory system. Looking for opinions]]></title>
+      <link>https://news.ycombinator.com/item?id=47038114</link>
+      <description><![CDATA[I've spent the past couple of months building Mnexium.com
+Originally it was supposed to just be a memory management system (and it still is very much core).
+I was thinking with all of the talk of AI replacing SaaS etc etc... How?
+Most (if not all) AI systems do not have a way to manage, store &amp; maintain records. I thought it would be an interesting project and problem to solve.
+I built it into the overall project more details here (https://www.mnexium.com/blogs/introducing-records).
+I've realized it is nearly impossible to get some kind of feedback on these types of projects.]]></description>
+      <pubDate>Mon, 16 Feb 2026 18:05:01 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://news.ycombinator.com/item?id=47038114</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Deploy a DuckLake data lakehouse on Hetzner for under €10/mo]]></title>
+      <link>https://github.com/berndsen-io/ducklake-hetzner</link>
+      <description><![CDATA[DuckLake launched recently and I wanted to try it out.
+It's DuckDB, but with a proper catalog on PostgreSQL with S3 for storage. It still takes quite a few steps to set up, so I put together a setup that runs on Hetzner.
+It sets up a VPS with PostgreSQL, an S3 bucket, and a DuckDB init script that connects everything. One 'make all' command and it works. Used OpenTofu for the infra, PyInfra for server config.
+Runs me about €9/mo with 1TB of storage. The VPS is a cx33 (4 vCPU, 8GB RAM) because Hetzner never has the cheaper tier in stock, maybe you'll get lucky.]]></description>
+      <pubDate>Mon, 16 Feb 2026 17:37:25 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/berndsen-io/ducklake-hetzner</guid>
+    </item>
+    <item>
+      <title><![CDATA[Show HN: Math-spec-driven LLM skill for complex system specs]]></title>
+      <link>https://github.com/Ben8t/math-spec-driven-skill</link>
+      <description><![CDATA[Natural language is often ambiguous. Writing code directly with LLMs can be brittle and hard to verify. This skill explores a middle ground: math-style specs (sets, relations, invariants) that agents can turn into architectures, APIs, and tests. URL: https://news.ycombinator.com/item?id=47037736
+Points: 1
+# : 0]]></description>
+      <pubDate>Mon, 16 Feb 2026 17:31:54 GMT</pubDate>
+      <source>Hacker News Show</source>
+      <category>products</category>
+      <guid>https://github.com/Ben8t/math-spec-driven-skill</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Apple confirme son événement du 4 mars : vers un MacBook à prix inédit et un nouvel iPhone]]></title>
+      <link>https://www.lesnumeriques.com/ordinateur-portable/apple-confirme-son-evenement-du-4-mars-vers-un-macbook-a-prix-inedit-et-un-nouvel-iphone-n251580.html</link>
+      <description><![CDATA[Les rumeurs vous ont embrouillés, tant elles tablent sur des lancements de produits à des dates variées ? Cette fois, c'est du concret, puisque c'est Apple qui l'annonce. Il y aura bien un événement de présentation de produits organisé par la Pomme, et ce sera pour le 4 mars. Le rendez-vous est pris non pas dans son fief californien, mais à New York,...]]></description>
+      <pubDate>Mon, 16 Feb 2026 15:03:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/ordinateur-portable/apple-confirme-son-evenement-du-4-mars-vers-un-macbook-a-prix-inedit-et-un-nouvel-iphone-n251580.html</guid>
+    </item>
     <item>
       <title><![CDATA[Google corrige Android 16 avant de lancer Android 17]]></title>
       <link>https://www.journaldugeek.com/2026/02/16/google-corrige-android-16-avant-de-lancer-android-17/</link>
@@ -24,6 +82,24 @@
       <source>Journal du Geek</source>
       <category>products</category>
       <guid>https://www.journaldugeek.com/dossier/stargate-sg-1-sur-netflix-les-7-meilleurs-episodes-de-la-serie-de-science-fiction/</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : Xiaomi 17 et 17 Ultra : les prix en Europe ont fuité, et c'est une excellente surprise]]></title>
+      <link>https://www.lesnumeriques.com/telephone-portable/xiaomi-17-et-17-ultra-les-prix-en-europe-ont-fuite-et-c-est-une-excellente-surprise-n251571.html</link>
+      <description><![CDATA[Toujours bien informé, ce site de bons plans. Expert en matière de fuites de prix avant la sortie de nouveaux produits - il semble que ses sources soient très proches d’au moins un revendeur français -, Dealabs dévoile le prix de vente des futurs smartphones premium de Xiaomi. En l’absence de mention de ses sources et en attendant l’officialisation d...]]></description>
+      <pubDate>Mon, 16 Feb 2026 11:31:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/telephone-portable/xiaomi-17-et-17-ultra-les-prix-en-europe-ont-fuite-et-c-est-une-excellente-surprise-n251571.html</guid>
+    </item>
+    <item>
+      <title><![CDATA[Actualité : “Une année exceptionnelle pour le Mac” : Apple prépare une avalanche de nouveautés pour les prochaines semaines]]></title>
+      <link>https://www.lesnumeriques.com/ordinateur-portable/une-annee-exceptionnelle-pour-le-mac-apple-prepare-une-avalanche-de-nouveautes-pour-les-prochaines-semaines-n251570.html</link>
+      <description><![CDATA[Outre l’iPhone 17e, probablement annoncé dans les jours à venir, Apple aurait d’autres produits en stock pour ce début d’année 2026. D’après le très bien renseigné Mark Gurman, les prochaines semaines et les prochains mois seraient en effet riches en nouveautés pour l’univers Mac. La liste des produits attendus pour l’occasion a d’ailleurs été partag...]]></description>
+      <pubDate>Mon, 16 Feb 2026 10:30:00 GMT</pubDate>
+      <source>Les Numeriques</source>
+      <category>products</category>
+      <guid>https://www.lesnumeriques.com/ordinateur-portable/une-annee-exceptionnelle-pour-le-mac-apple-prepare-une-avalanche-de-nouveautes-pour-les-prochaines-semaines-n251570.html</guid>
     </item>
   </channel>
 </rss>

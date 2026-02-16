@@ -32,21 +32,21 @@
 <li><figure><img alt="À Carhaix, Intermarché s’exprime après les témoignages d’automobilistes concernant la présence d’eau dans le gasoil."><figcaption><span>À Carhaix, Intermarché s’exprime après les témoignages d’automobilistes concernant la présence d’eau dans le gasoil. | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h49</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h38</span></time></span> </span> </header> </div> <div> <p>Il y a quelques jours, <a href="https://www.ouest-france.fr/societe/faits-divers/dans-le-finistere-des-voitures-en-panne-apres-de-leau-retrouvee-dans-des-reservoirs-d49f97a8-082d-11f1-900b-ad4c91c3d8b7?utm_source=troove&amp;utm_medium=site" target="_blank">plusieurs automobilistes témoignaient de leur mésaventure après être passés à la pompe, à Carhaix</a> (Finistère). Certains expliquaient être tombés en panne après avoir fait le plein de gasoil. Quatre des huit garages que nous avions contactés confirmaient avoir reçu des véhicules dans ce cadre mais il leur était difficile de s’avancer sur les causes réelles des pannes.</p> <p>Ce lundi 16&nbsp;février 2026, l’enseigne Intermarché communique, sur Facebook&nbsp;: <q>Nous informons notre aimable clientèle...</q></p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

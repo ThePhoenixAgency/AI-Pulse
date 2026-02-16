@@ -31,21 +31,21 @@
     <div><p>Découvrez sur notre carte les sites Seveso situés près de chez vous. Chaque point de la carte correspond à un de ces sites.</p><p>En <span>rouge</span>, les&nbsp;établissements classés Seveso III, seuil haut.</p><p>En <span>bleu</span>, les établissements classés Seveso II,&nbsp;seuil bas.</p><p>Cliquez sur chaque point pour plus d'informations.</p><div> <p>Si la carte ne s'affiche pas, tentez de désactiver votre bloqueur de publicité.</p> </div><div> <p>Qu’est-ce qu’un site Seveso ?</p> <p>Seveso est le nom d’une commune dans la banlieue de Milan, en Italie, qui a connu une catastrophe écologique à l’été 1976. Un nuage d’herbicide contenant des produits toxiques s’est échappé d’une usine chimique voisine et a causé la mort de dizaines de milliers d’animaux, la contamination de près de 200 personnes et la pollution des sols et des maisons de sept communes environnantes. Si aucune victime humaine n’avait été déplorée, cet épisode a révélé l’absence de plan d’urgence par l’industriel et les autorités.</p><p>Une directive européenne de 1982, reprenant le nom de la commune, impose aux États membres d’identifier les sites industriels à risques et de prévoir des plans de prévention en conséquence. Sa dernière mise à jour date de 2012. Les sites sont classés «&nbsp;seuil haut&nbsp;» ou «&nbsp;seuil bas&nbsp;» selon les risques (activité, type et quantité de produits, localisation sur un terrain naturellement à risque ou non …). Il existe un peu moins de 1&nbsp;400 sites Seveso en France, départements d’outre-mer compris. Les sites militaires et nucléaires n’en font pas partie.</p><p>Certains sites peuvent faire l’objet d’une protection renforcée temporaire, comme l’usine Air Products de Saint-Quentin-Fallavier, en Isère, après qu’elle a été la cible d’un d’attentat le 26 juin 2015, le premier acte terroriste à viser spécifiquement un bâtiment industriel à risques.</p> <p>Théo Blain</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

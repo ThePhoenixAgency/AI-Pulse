@@ -31,21 +31,21 @@
     <div><p>Créée en 1933, le Loterie nationale connaît son premier tirage le 7 novembre de la même année, au Trocadéro à Paris.</p><p>Selon les chiffres provisoires de l'Autorité nationale des Jeux, les Français ont joué pour 8,2 miliards d'euros de mises lors du premier semestre 2023, l'année de ses 90 ans.&nbsp;Le marché des jeux reste très fructeux, avec une croissance du PBJ de 10,2% entre 2021 et 2022.</p><p> </p><h2>Découvrez&nbsp;le top 10 des gains les plus importants remportés dans nos départements :</h2><p></p><div> <p>Ce contenu est bloqué car vous n'avez pas accepté les cookies et autres traceurs.</p> <p>En cliquant sur <span>« J’accepte »</span>, les cookies et autres traceurs seront déposés et vous pourrez visualiser les contenus DynamicMap (<a target="_blank">plus d'informations</a>).</p> <p>En cliquant sur <span>« J’accepte tous les cookies »</span>, vous autorisez des dépôts de cookies et autres traceurs pour le stockage de vos données sur nos sites et applications à des fins de personnalisation et de ciblage publicitaire.</p> <p> Vous gardez la possibilité de retirer votre consentement à tout moment en consultant notre <a href="https://www.ledauphine.com/protection-des-donnees" target="_blank">politique de protection des données</a>. <br> Gérer mes choix </p> </div><p>Un Isérois a eu le bonheur de remporter 19 millions d'euros lors de Noël 2020. Un beau cadeau qui tombe du ciel qui s'est répété six jours plus tard, toujours en Isère, avec un autre chanceux qui remportait un jackpot de près de 13 millions d'euros, <a href="https://www.ledauphine.com/insolite/2020/12/26/un-iserois-remporte-19-millions-d-euros-au-loto" target="_blank">les plaçant dans le top 3 des plus gros gains remportés dans le département.</a></p><p>Quant à la première place dans nos départements, elle est occupée depuis 2006 par le gain remporté par un habitant d'Évian-les-Bains à l'EuroMillions : 61 millions d'euros.</p><p>La Haute-Savoie est d'ailleurs un territoire qui sourit aux joueurs de jeux de hasard puisqu'en 2008, un joueur qui avait validé sa grille sur Internet avait remporté plus de 28 millions d'euros.</p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

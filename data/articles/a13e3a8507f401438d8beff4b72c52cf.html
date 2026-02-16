@@ -37,21 +37,21 @@
 <div><p>Maximisez votre expérience Cointribune avec notre programme 'Read to Earn' ! Pour chaque article que vous lisez, gagnez des points et accédez à des récompenses exclusives. Inscrivez-vous dès maintenant et commencez à cumuler des avantages.</p><br><div><p><span></span><br><span>Rejoindre le programme</span></p></div></div> <div> <div> <p><span>A</span> </p> <p><span>A</span> </p> </div> <div> <p>Lien copié</p> </div> </div> <div> <div> <div> <p><img alt="Ifeoluwa O. avatar" src="https://www.cointribune.com/app/uploads/2025/11/Ifeoluwa-5-150x150.png"> </p> <p><span>Ifeoluwa O.</span> </p></div> <ul> </ul> </div> <div> <p>Ifeoluwa specializes in Web3 writing and marketing, with over 5 years of experience creating insightful and strategic content. Beyond this, he trades crypto and is skilled at conducting technical, fundamental, and on-chain analyses.</p> </div> </div> </div><div> <p>DISCLAIMER</p> <p>Les propos et opinions exprimés dans cet article n'engagent que leur auteur, et ne doivent pas être considérés comme des conseils en investissement. Effectuez vos propres recherches avant toute décision d'investissement.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

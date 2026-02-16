@@ -33,21 +33,21 @@
 <time>05:50</time> </p> </figure> </div> <div> <p><span>Issued on: <time>16/02/2026 - 11:59</time></span><span>Modified: <time>16/02/2026 - 11:59</time></span></p> <div> <p> 05:50 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/business/"> <p>From the show</p> <img src="https://s.france24.com/media/display/6daaaf5a-0eb2-11ee-818e-005056bf30b7/EN-business-daily.svg" alt="Business"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> According to preliminary data released on Monday, Japan's economy grew by 0.2 percent annually in the last quarter of 2025, bouncing back from a contraction in the previous quarter but far below expectations of +1.6&nbsp;percent growth. Also in this edition, Warner Bros. Discovery is reportedly considering reopening sale talks with Paramount Skydance. Plus, China's successful "winter economy" could be a blueprint to bolster domestic consumption.&nbsp; </p> <div> <p><span> By: </span></p><div> <img src="https://s.france24.com/media/display/16e8ad68-e074-11ee-a075-005056bfb2b6/w:388/p:1x1/avatar-Charles_Pellegrin.jpg" alt="Charles Pellegrin"> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

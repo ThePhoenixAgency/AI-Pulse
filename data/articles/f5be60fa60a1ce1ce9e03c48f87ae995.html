@@ -35,21 +35,21 @@
 </ul> <p>LinkedIn est utilisé pour des messages <a href="https://www.linkedin.com/in/emmanuelmacron/recent-activity/all/" target="_blank">très orientés</a> vers le monde des affaires (ArcelorMittal, investissement dans l’intelligence artificielle) et celui de la défense, quand le compte du Président n’est pas cédé le temps de quelques publications à des étudiants de la Prépa Talents pour leur donner de la visibilité. </p> <p><a href="https://www.tiktok.com/@emmanuelmacron" target="_blank">TikTok</a> permet de véhiculer des vidéos plus légères, des entretiens avec des médias comme Brut, ou, toujours, des extraits des propos du président à Davos, ou son entraînement avec des militaires et le youtubeur TiboInShape.</p> <div> <p><img src="https://next.ink/wp-content/themes/next-theme/asset/media/webp/next-overclock-your-spirit.webp" alt="Cadenas en colère - Contenu premium"> </p> <div> <h3> Soutenez un journalisme indépendant, <br> libre de ton, sans pub et sans reproche. </h3> <p> Accédez en illimité aux articles </p> <p> Profitez d'un média expert et unique </p> <p> Intégrez la communauté et prenez part aux débats </p> <p> Partagez des articles premium à vos contacts </p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

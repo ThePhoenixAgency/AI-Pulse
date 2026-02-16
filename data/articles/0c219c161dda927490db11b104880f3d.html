@@ -35,21 +35,21 @@
 </blockquote> <p>Dès lors, «&nbsp;<em>les partenariats étaient rares </em>» et «&nbsp;<em>le dialogue limité</em>&nbsp;» entre les deux professions, la Silicon Valley considérant l'information comme «&nbsp;<em>un mauvais modèle économique</em>&nbsp;», «&nbsp;<em>sans se soucier outre mesure de son impact sur notre compréhension du monde qui nous entoure et du rôle essentiel que joue la fiabilité de l'information dans le soutien de nos idéaux démocratiques</em>&nbsp;».</p> <h3>43 communautés, couverts par 100 journalistes</h3> <p>«&nbsp;<em>Nous avons choisi une voie différente</em>&nbsp;», se targue aujourd'hui OpenAI, au motif qu' «&nbsp;<em>un secteur médiatique prospère et indépendant n'est pas seulement compatible avec l'IA, il en est essentiel</em>&nbsp;», que «<em> les gens veulent connaître les sources des informations qu'ils voient sur ChatGPT, et le fait de proposer un journalisme de haute qualité rend ChatGPT plus utile et plus informatif </em>».</p> <p>Lancé en janvier 2025, le <a href="https://www.axios.com/press-past-releases/axios-openai-partner-to-expand-local-news-coverage" target="_blank">partenariat</a> entre OpenAI et Axios vise à étendre le nombre de villes couvertes afin de fournir aux utilisateurs de ChatGPT des informations locales validées par des journalistes. <a href="https://www.axios.com/newsletters/local" target="_blank">Axios Local</a>, qui avait lui-même été initié en 2021, couvrait l'an passé 30 villes et ses newsletters dépassaient les 2 millions d'abonnés.</p> <p>Axios et OpenAI veulent aujourd'hui y rajouter neuf autres villes, portant le réseau à 43 communautés, couverts par 100 journalistes, co-financés par 13&nbsp;000 abonnés payants. «&nbsp;<em>Grâce à OpenAI, Axios peut désormais embaucher davantage de journalistes locaux pour couvrir les petites agglomérations urbaines, un modèle qui lui permettra à terme d'atteindre des milliers de zones défavorisées en matière d'information à travers le pays</em>&nbsp;», résume le <a href="https://www.axios.com/press-past-releases/axios-openai-expand-partnership-to-scale-local-news" target="_blank">communiqué</a> d'Axios.</p> <p>Ni Axios ni OpenAI ne détaillent les montants dont il serait question.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

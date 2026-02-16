@@ -31,21 +31,21 @@
     <div><article><div><p>Disabling the ability to login to your Pi via SSH using a password can be a useful security enhancement. If someone is attempting to guess or brute force there way into your Pi via SSH disabling the password route will massively increase their chances of failure.</p><p>Obviously you should only disable the ability to login using a password when you have successfully configured SSH keys. For that reason I would complete the steps below using an SSH connection that uses SSH keys. That ensures you have a method to connect to your Pi once the password route has been closed.</p><p><strong>Note: </strong>This procedure does not prevent logging into your Raspberry Pi desktop if you are using Raspberry Pi OS with the desktop environment. It only effects connections made to your Pi via SSH.</p><h2>Setup SSH Keys</h2><p>If you don’t already have SSH keys setup then you can follow my <a href="https://www.raspberrypi-spy.co.uk/2019/02/setting-up-ssh-keys-on-the-raspberry-pi/">“Setting Up SSH Keys on the Raspberry Pi” blog post</a>.</p><p>Now that you’ve checked you can access your Pi via SSH using keys let’s get started.</p><p>Edit the SSH config file:</p><pre><code>sudo nano /etc/ssh/sshd_config</code></pre><p>Find the entry for “PasswordAuthentication”. You may have to scroll down the available items. It is likely to be disabled with a leading # character and set to “yes”. Remove the # character and change “yes” to “no”.</p><p>You should then have a line that states:</p><pre><code>PasswordAuthentication no</code></pre><p>Save the changes and exit the text editor by using [CTRL-X], [Y] and [ENTER].</p><h2>Activate Changes</h2><p>For the changes to take effect you either need to restart the SSH service using:</p><pre><code>sudo /etc/init.d/ssh restart</code></pre><p>or reboot the Pi using:</p><pre><code>sudo reboot</code></pre><h2>Re-Enable SSH Password Login</h2><p>To re-enable SSH Password login you can repeat the process but change the PasswordAuthentication line to:</p><pre><code>PasswordAuthentication yes</code></pre><h2>Final Thoughts</h2><p>This is a really quick and easy security improvement you can make to your Pi setups. Just make sure you keep your SSH Keys safe so that you are always in a position to re-configure your SSH/sFTP client if you change PC/laptop/phone.</p><p>As a memory jogger, the Public key goes on the device you will access and the Private key is needed by the device you are connecting from.</p></div></article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

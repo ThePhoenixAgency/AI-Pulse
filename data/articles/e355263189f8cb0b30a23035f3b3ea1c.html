@@ -32,21 +32,21 @@
 <li><figure><img alt="Christophe Morin a récupéré les clés de sa maison de Saint-Vran, en janvier&nbsp;2026."><figcaption><span>Christophe Morin a récupéré les clés de sa maison de Saint-Vran, en janvier&nbsp;2026. | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h47</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h32</span></time></span> </span> </header> </div> <div> <p><q>Écœuré</q>, <q>désabusé</q>, <q>fatigué</q>… Christophe Morin, 55&nbsp;ans, ne trouve pas assez de qualificatifs pour exprimer son désarroi. Propriétaire d’une maison à <a href="https://www.ouest-france.fr/bretagne/loudeac-22600/" target="_self">Saint-Vran&nbsp;(Côtes-d’Armor), près de Loudéac</a>, il vient de récupérer son bien, en janvier&nbsp;2026, après plus de deux ans d’occupation <q>sans droit, ni titre</q>, selon un jugement du tribunal judiciaire de Saint-Brieuc du 6&nbsp;octobre 2025.</p> <p>Acquise par le quinquagénaire en 2017, cette maison est <a href="https://www.ouest-france.fr/societe/faits-divers/cest-epuisant-depuis-un-an-ce-proprietaire-breton-se-bat-contre-un-couple-de-squatteurs-a2902108-6547-11f0-a6af-fdbae6127de0" target="_self">au centre d’un litige depuis 2023, moment où il a décidé de la céder.</a> Le propriétaire s’accorde avec un couple d’acquéreurs sur...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

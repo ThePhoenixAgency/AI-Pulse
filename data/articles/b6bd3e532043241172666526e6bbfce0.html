@@ -37,21 +37,21 @@
 </a><p>Les enquêteurs envisageraient la piste d’un commanditaire à l'étranger, qui recruterait "<em>des petites mains ultra-violentes</em>", selon une source policière.</p><p>La JIRS (juridiction interrégionale spécialisée) de Lyon reste en charge de l’enquête. Celle-ci devra déterminer si l’enlèvement de Saint-Martin-le-Vinoux a un lien avec les autres faits similaires liés aux cryptomonnaies survenus en janvier dans les Alpes :</p><ul><li>Mi-janvier, deux septuagénaires avaient été victimes du même mode opératoire en Haute-Savoie. Les ravisseurs avaient réclamé une rançon de plusieurs millions d'euros au fils des victimes, lui-même propriétaire de cryptomonnaie.</li><li>Le 25 janvier, trois personnes avaient été mises en examen après l’enlèvement et la séquestration d’un septuagénaire à Voiron, en Isère, dans le but d’extorquer une rançon en cryptomonnaie à son fils.</li></ul> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

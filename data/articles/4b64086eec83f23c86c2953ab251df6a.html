@@ -31,21 +31,21 @@
     <div><div><p>Deux versions correctives sont disponibles : les 8.4.18 et 8.5.3. Ce sont des bug fix. Ces versions corrige 28 bugs dans le core, la timelib, le DOM, OpenSSL, etc.&nbsp;</p><p>Les principaux bugs fixés sont :</p><ul><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20837">GH-20837</a>&nbsp;(NULL dereference when calling ob_start() in shutdown function triggered by bailout in php_output_lock_error()).</li><li>Fix OSS-Fuzz #471533782 (Infinite loop in GC destructor fiber).</li><li>Fix OSS-Fuzz #472563272 (Borked block_pass JMP[N]Z optimization).</li><li>Fixed bug GH-<a href="https://github.com/php/php-src/issues/20914">GH-20914</a>&nbsp;(Internal enums can be cloned and compared).</li><li>Fix OSS-Fuzz #474613951 (Leaked parent property default value).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20766">GH-20766</a>&nbsp;(Use-after-free in FE_FREE with GC interaction).</li><li>Fix OSS-Fuzz #471486164 (Broken by-ref assignment to uninitialized hooked backing value).</li><li>Fix OSS-Fuzz #438780145 (Nested finally with repeated return type check may uaf).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20905">GH-20905</a>&nbsp;(Lazy proxy bailing __clone assertion).</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20479">GH-20479</a>&nbsp;(Hooked object properties overflow).</li><li>Fix memory leaks when sk_X509_new_null() fails.</li><li>Fix crash when in openssl_x509_parse() when i2s_ASN1_INTEGER() fails.</li><li>Fix crash in openssl_x509_parse() when X509_NAME_oneline() fails.</li><li>Fixed bug&nbsp;<a href="https://bugs.php.net/74357">#74357</a>&nbsp;(lchown fails to change ownership of symlink with ZTS) (Jakub Zelenka)</li><li>Fixed bug&nbsp;<a href="https://github.com/php/php-src/issues/20843">GH-20843</a>&nbsp;(var_dump() crash with nested objects) (David Carlier)</li></ul><p>Pour en savoir plus :&nbsp;<a href="https://www.php.net/index.php">https://www.php.net/index.php</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

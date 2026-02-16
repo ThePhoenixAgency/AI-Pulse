@@ -32,21 +32,21 @@
 <li><figure><img alt="La ligne C ne circulera pas demain, mardi 17&nbsp;février."><figcaption><span>La ligne C ne circulera pas demain, mardi 17&nbsp;février. | </span>CO - JOSSELIN CLAIR</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 18h19</span></time></span> </span> </header> </div> <div> <p>Alors que le niveau de la Maine continue de monter et que le département du Maine-et-Loire a été placé en vigilance rouge, à 16&nbsp;heures ce lundi 16&nbsp;février 2026, la Ville d’Angers et le réseau Irigo ont décidé d’interrompre <q>partiellement</q> la circulation du tramway.</p> <p><strong>&gt;&nbsp;A LIRE AUSSI | <a href="https://www.ouest-france.fr/meteo/inondation/pris-au-piege-par-les-inondations-en-loire-un-troupeau-de-bufs-evacue-in-extremis-af87866c-0b37-11f1-8d8f-93b36c1239ba" target="_blank">Un troupeau de bœufs pris au piège par la crue de la Loire&nbsp;: deux éleveurs et un pêcheur l’évacuent in extremis</a></strong></p> <h2>Plusieurs stations non desservies</h2> <p>Dès mardi 17&nbsp;février, les stations Doutre, Molière et Ralliement ne sont plus desservies. Dans un communiqué, les services de la Ville précisent que <q>la ligne A circulera normalement et les fréquences seront renforcées.&nbsp;La ligne B fonctionnera en deux parties&nbsp;: de Belle Beille Campus au Quai et du Centre de Congrès à Monplaisir.&nbsp;La ligne C ne circulera pas.</q></p> <div> <div> <figure> <p><img> </p> <figcaption>Renseignez-vous, si vous comptez prendre le tramway ce mardi à Angers. | ARCHIVES LAURENT COMBET</figcaption> </figure> </div> <figure> <figcaption>Renseignez-vous, si vous comptez prendre le tramway ce mardi à Angers. | ARCHIVES LAURENT COMBET</figcaption> </figure> </div> <p><strong>&gt;&nbsp;LIRE AUSSI&nbsp;: <a href="https://www.ouest-france.fr/meteo/inondation/inondations-le-maine-et-loire-bascule-en-vigilance-rouge-f0cf59de-0b40-11f1-8f27-f38523081a88" target="_self">Inondations&nbsp;: le Maine-et-Loire bascule en vigilance rouge aux crues</a></strong></p> <h2>Circulation des bus</h2> <p>Pour pallier l’interruption partielle du réseau, <q>des navettes en bus assureront la liaison entre Le Quai et le Centre de Congrès. Elles desserviront les arrêts Château, CCI, Foch Haras, Foch Saint-Aubin et Foch Maison Bleue, avec un passage toutes les 8 à 10&nbsp;minutes. Le réseau de bus fonctionne aux horaires habituels. Toutefois, des perturbations restent possibles en fonction des conditions de circulation.</q></p> <p><strong>&gt;&nbsp;LIRE AUSSI&nbsp;: <a href="https://www.ouest-france.fr/meteo/la-maine-en-crue-a-angers-les-voies-sur-berge-ferment-a-la-circulation-pour-etre-inondees-demain-a741ead6-0b25-11f1-8d8f-93b36c1239ba" target="_self">La Maine en crue à Angers&nbsp;: les voies sur berge ferment à la circulation pour être inondées</a></strong></p> <p>Ce lundi matin, lors d’une <q>cellule de vigilance crue</q> organisée en mairie, le réseau Irigo expliquait devoir, en cas de montée des eaux, enlever les alimentations par le sol&nbsp;(APS). Une intervention qui mobilisera les agents d’Irigo pendant une dizaine d’heures.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

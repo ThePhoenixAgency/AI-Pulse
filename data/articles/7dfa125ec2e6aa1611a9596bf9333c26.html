@@ -31,21 +31,21 @@
     <div><p>Bitcoin round tripped gains after a spike to $70,000 as liquidity traps began to characterize BTC price action on the US bank holiday.</p><div><div><p>Bitcoin (<a href="https://cointelegraph.com/bitcoin-price">BTC</a>) took out long and short positions during Monday as low-volume trading sparked short-term volatility.</p><p><strong>Key points:</strong></p><ul><li><p>Bitcoin sees low-time frame manipulation clear both longs and shorts on the US bank holiday.</p></li><li><p>BTC price action offers “breakouts and shakeouts” while staying in a narrow range.</p></li><li><p>2022 bear market comparisons continue, now focused on weekly RSI.</p></li></ul><h2>BTC price liquidity squeezes shake out traders</h2><p>Data from <a href="https://www.tradingview.com/chart/Aiej0hLA/?symbol=BITSTAMP%3ABTCUSD" target="_blank">TradingView</a> captured sharp moves within a narrow BTC price range on the US bank holiday which topped out at $70,000.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c6753-cd07-716c-81a2-20d50fcda24e.png"><figcaption><em>BTC/USD one-hour chart. Source: Cointelegraph/TradingView</em></figcaption></figure><p><br>With Wall Street closed, thinner order books overall made it easier for large-volume entities to influence short-term price action. This resulted in multiple “squeezes” that impacted both longs and shorts.</p><p>Data from monitoring resource <a href="https://www.coinglass.com/liquidations" target="_blank">CoinGlass</a> showed $120 million in crypto liquidations for the four hours to the time of writing.</p><p>Blocks of bids and asks were cleared on the day, with new “walls” placed immediately above price as it fell, adding to downward pressure.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c6752-165a-7f13-a083-d4dacb2688a6.png"><figcaption><em>BTC liquidation heatmap. Source: CoinGlass</em></figcaption></figure><p><br>“Volatility is much higher which is something that we also see in pretty much all other markets lately. Definitely not a calm period for markets around the world,” trader Daan Crypto Trades <a href="https://x.com/DaanCrypto/status/2023432389246988791" target="_blank">commented</a> in a post on X.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c6751-592b-70b6-abaf-22c2d6a32f8f.jpeg"><figcaption><em>Bitcoin historical volatility. Source: Daan Crypto Trades/X</em></figcaption></figure><p><br>Trading resource Material Indicators <a href="https://x.com/MI_Algos/status/2023426867248988651" target="_blank">described</a> the latest BTC price performance as “breakouts and shakeouts.”</p><p>An accompanying chart monitored both liquidity and whale activity on Binance’s BTC/USDT pair.</p><figure> <img alt="" src="https://s3.cointelegraph.com/uploads/2026-02/019c6750-d1cb-7517-aa17-33905d5bd837.jpeg"><figcaption><em>BTC/USDT order-book liquidity data with whale volume. Source: Material Indicators/X</em></figcaption></figure><p><br>Trader CW nonetheless observed that buying pressure was more robust than on Sunday, with the exception of exchange OKX.</p><blockquote><p>What's different about <a href="https://twitter.com/search?q=%24BTC&amp;src=ctag&amp;ref_src=twsrc%5Etfw">$BTC</a> from yesterday is that net buying is maintained except for OKX. <a href="https://t.co/x3Y1OegrsI">pic.twitter.com/x3Y1OegrsI</a></p>— CW (@CW8900) <a href="https://twitter.com/CW8900/status/2023428871333519465?ref_src=twsrc%5Etfw">February 16, 2026</a></blockquote> <h2><br>Bitcoin RSI teases “once per cycle lows”</h2><p>Continuing on the wider status quo, Material Indicators cofounder Keith Alan stressed ongoing resemblances between this year and Bitcoin’s <a href="https://cointelegraph.com/news/bitcoin-record-10k-drop-model-93-5k-only-return-2028" target="_self">2022 bear market</a>.</p></div><p><span>This article does not contain investment advice or recommendations. Every investment and trading move involves risk, and readers should conduct their own research when making a decision. While we strive to provide accurate and timely information, Cointelegraph does not guarantee the accuracy, completeness, or reliability of any information in this article. This article may contain forward-looking statements that are subject to risks and uncertainties. Cointelegraph will not be liable for any loss or damage arising from your reliance on this information.</span></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -32,21 +32,21 @@
 </div> <h2>Quatre&nbsp;départements aussi en vigilance orange pluies-inondations</h2> <p>Concernant le risque de crues, la Gironde et le Lot-et-Garonne restent en rouge tandis que 14 départements du sud et de l'ouest de la France sont maintenus en vigilance orange.</p> <p>Quatre départements sont en outre en vigilance orange pluies-inondations pour toute la journée de lundi&nbsp;: l'Ariège, la Haute-Garonne, les Pyrénées-Atlantiques et les Hautes-Pyrénées.</p> <p>Si les vigilances orange avalanches dans les Pyrénées doivent être levées lundi après-midi, elles seront maintenues dans les départements de Savoie, Haute-Savoie et Isère jusqu'à mardi 10 h.</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

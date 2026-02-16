@@ -32,21 +32,21 @@
 </p><p>The iPhone has some built-in features allowing it to be used in a signal black spot, especially in an emergency. While the features, such as <a href="https://appleinsider.com/inside/iphone/tips/how-to-use-your-iphones-satellite-features-in-an-emergency">Emergency SOS Via Satellite</a>, are limited in what they can currently do, a rumored connectivity change could make it even more useful to users. </p><p>According to a <a href="https://www.weibo.com/5821279480/QrkWa2TEB">Wednesday post</a> by Weibo leaker "Fixed Focus Digital," Apple will be incorporating support for NR-NTN (New Radio for Non-Terrestrial Networks) into its next C2 modem. This will happen soon, the leaker believes, with support added later in 2026. </p><p>NR-NTN is a technology that can be used for satellite-based connectivity beyond the current system. Rather than being a low-bandwidth service, it can be used for 5G signal, potentially allowing for calls and other high-bandwidth uses. </p><p>In effect, it could be used to provide 5G signal coverage in areas that aren't covered by traditional phone masts, but are visible to the satellites. </p><p>This support will follow after Huawei's public testing of similar features at the end of 2025. While progress is apparently slower in China than the rest of the world, the leaker believes that Apple's feature inclusion will be good news for the market, and could trigger wider adoption by other manufacturers. </p><p>Weibo leakers don't have the best reputation when it comes to accuracy, with a tendency to regurgitate rumors from elsewhere without much in the way of fact-checking. Fixed Focus Digital is one of the more prominent leakers, but it still has a mixed track record. </p><p>However, the post is buoyed by the rumor being brought up in the past. </p><h2>Internet from orbit</h2><p>In <a href="https://appleinsider.com/articles/25/11/09/apple-has-big-plans-for-more-satellite-features-in-future-iphones">November</a>, the more reliable Mark Gurman wrote about Apple's work to improve its satellite-centric iPhone features. That list of features included 5G NTN support to increase device coverage areas. </p><p>The use of the new tech stands to provide more bandwidth and signal strength than currently available to iPhone users. This could be applied in a number of ways. </p><p>For a start, it's possible that future iPhones will be able to establish a connection to a satellite while in the user's pocket, instead of being aimed at the sky by hand. For users, this would mean continuous messaging and updates, without needing to manually establish a connection. </p><p>The significant increase in bandwidth will also mean users will have an experience closer to using it on a cellular network, instead of the hyper-limited messaging of current features. This may not necessarily extend to enabling video calling, but it could allow other apps to update more regularly. </p><p>Apple has also been rumored to be working on an API for app developers to use for satellite communications. If created, this will expand the capabilities of satellite-based services to apps by third-party developers. </p><p>When it comes to hardware support, this connectivity expansion is probably going to be made primarily for devices using the C2 modem. This would mean Apple's inbound <a href="https://appleinsider.com/inside/iphone-18">iPhone 18</a> generation at a minimum, with a small chance of it being adopted by <a href="https://appleinsider.com/articles/25/05/06/iphone-13-gains-carrier-provided-satellite-connectivity-in-ios-185">earlier generations</a>. </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

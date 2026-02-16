@@ -31,21 +31,21 @@
     <div><div><div><p><a href="https://www.theverge.com/authors/jess-weatherbed"><img alt="Jess Weatherbed" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/author_profile_images/195820/JESSICA_WEATHERBED.0.jpg?quality=90&amp;strip=all&amp;crop=0%2C0%2C100%2C100&amp;w=96"></a></p><div><p><span><span><span><span></span></span><span>Jess Weatherbed</span></span></span></p> <p><span>is a news writer focused on creative industries, computing, and internet culture. Jess started her career at TechRadar, covering news and hardware reviews.</span></p></div></div><div><p>Apple is hosting a “special Apple experience” in New York City on Wednesday, March 4th at 9AM ET, instead of at the Apple Park location it typically uses for events. It’s also hosting press in the cities of London and Shanghai at the same time.</p><p>The invitation includes the words “You’re invited” and an Apple logo depicted in segmented discs of yellow, green, and blue (the rumored colors of a new low-cost MacBook). Otherwise, it provides no hints about the purpose of the so-called experience. However, <a href="https://9to5mac.com/2026/02/15/apple-launching-5-new-products-over-the-next-several-weeks-per-report/"><em>Bloomberg</em>’s Mark Gurman</a> has previously said that he’s expecting Apple to launch a low-cost A18 Pro chip-powered MacBook and new MacBook Airs, MacBook Pros, and Mac displays ”over the course of the next several weeks,“ alongside the iPhone 17e, a new base model iPad, and an M4 iPad Air. And maybe we’ll even see a preview of Apple’s new <a href="https://www.theverge.com/tech/877494/apple-siri-ai-overhaul-ios-personalized">AI-infused Siri</a>.</p><div><p><a href="https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/Screenshot_20260216-091435.Gmail_.png?quality=90&amp;strip=all&amp;crop=0,0,100,100" target="_blank"><img alt="The press invitation for Apple’s event on March 4th, 2026." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/02/Screenshot_20260216-091435.Gmail_.png?quality=90&amp;strip=all&amp;crop=0%2C0%2C100%2C100&amp;w=2400"></a></p></div><p>Apple’s don’t-call-it-an-event will be taking place during the big Mobile World Congress show Barcelona, Spain, which is running between March 2nd-5th.</p><div><p><span><strong>Follow topics and authors</strong> from this story to see more like this in your personalized homepage feed and to receive email updates.</span></p><ul><li><span><span><span></span><span>Jess Weatherbed</span></span></span></li><li></li><li></li><li></li><li></li><li></li><li></li></ul></div></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

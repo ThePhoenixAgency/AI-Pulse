@@ -34,21 +34,21 @@
 </a></p> <h2>Une soirée contrastée selon les régions</h2> <p>En soirée, les pluies s’installent franchement sur la façade atlantique et le nord, tandis que la bande centrale voit l’accalmie se refermer. L’air océanique continue de dominer, maintenant une grande douceur, même sous la pluie. Seul le sud-est échappe encore la grisaille. La Côte d’Azur et la vallée du Rhône profiteront d’un temps radieux, presque printanier, avec des maximales atteignant localement 18°C sous un généreux&nbsp;<a href="https://video.lefigaro.fr/figaro/sports/c-est-un-rayon-de-soleil-c-est-une-fille-lumineuse-les-journalistes-du-figaro-live-unanimes-sur-la-porte-drapeau-francaise-et-snowboardeuse-chloe-trespeuch-20260212">soleil</a>.</p> <p>Dès mercredi, les dépressions atlantiques reprendront le dessus. Les pluies s’enchaîneront sur la moitié ouest et le nord du pays, tandis que les sols, déjà gorgés d’eau, resteront sous surveillance. Le sud-est conservera des conditions plus clémentes, avec un ensoleillement généreux et des températures toujours très douces pour un mois de février.</p> <hr> <p><em>*La Chaîne Météo appartient au groupe Figaro</em></p> </div></article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

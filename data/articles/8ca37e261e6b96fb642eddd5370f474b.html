@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - mderouet/macMule</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - mderouet/macMule</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 7:15:11 PM | Lang: EN |
+    <a href="https://github.com/mderouet/macMule" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <div><h1>macMule</h1><a href="#macmule"></a></div>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/9265133/549947685-fecd35db-88db-461e-85eb-5e50ad17dc47.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNjk0NzQsIm5iZiI6MTc3MTI2OTE3NCwicGF0aCI6Ii85MjY1MTMzLzU0OTk0NzY4NS1mZWNkMzVkYi04OGRiLTQ2MWUtODVlYi01ZTUwYWQxN2RjNDcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTkxMjU0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YjlmNGM1OTQ1MjcwY2Q4MGE0OTk1YWFhYTQwMzIxNjg5YzFjMmY3OTA1MzY1YTViODE3Y2M1ZDRhNjk3Njc4OSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.JWJfo0nre5aqVd2pF48L2XXKl_GwxhudFBCme_agnls"><img alt="Screenshot 2026-02-14 at 21 16 58" src="https://private-user-images.githubusercontent.com/9265133/549947685-fecd35db-88db-461e-85eb-5e50ad17dc47.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyNjk0NzQsIm5iZiI6MTc3MTI2OTE3NCwicGF0aCI6Ii85MjY1MTMzLzU0OTk0NzY4NS1mZWNkMzVkYi04OGRiLTQ2MWUtODVlYi01ZTUwYWQxN2RjNDcucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNiUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTZUMTkxMjU0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YjlmNGM1OTQ1MjcwY2Q4MGE0OTk1YWFhYTQwMzIxNjg5YzFjMmY3OTA1MzY1YTViODE3Y2M1ZDRhNjk3Njc4OSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.JWJfo0nre5aqVd2pF48L2XXKl_GwxhudFBCme_agnls"></a>
+<div><h2>Original eMule for macOS — download, drag to Applications, run.</h2><a href="#original-emule-for-macos--download-drag-to-applications-run"></a></div>
+<p>macMule packages <a href="https://github.com/irwir/eMule">eMule</a> (the ed2k/Kad file-sharing client) as a self-contained macOS <code>.app</code> using Wine. No configuration needed — it auto-connects to the eMule Security server and the Kad network on first launch.</p>
+<div><h2>Download</h2><a href="#download"></a></div>
+<p>Grab the latest <code>.dmg</code> from <a href="/mderouet/macMule/releases"><strong>Releases</strong></a>, open it, drag <strong>macMule</strong> to your Applications folder, and launch.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>macOS 10.15.4 (Catalina) or later</li>
+<li>Apple Silicon (M1/M2/M3/M4) or Intel Mac</li>
+<li>Rosetta 2 (automatically prompted on Apple Silicon)</li>
+<li>~1 GB disk space</li>
+</ul>
+<div><h2>How It Works</h2><a href="#how-it-works"></a></div>
+<p>macMule bundles:</p>
+<ul>
+<li><strong>eMule</strong> (community x64 build by <a href="https://github.com/irwir/eMule">irwir</a>)</li>
+<li><strong>Wine Crossover</strong> (x86_64 Windows compatibility layer by <a href="https://github.com/Gcenx">Gcenx</a>)</li>
+</ul>
+<p>On first launch, it copies a Wine prefix and eMule files to <code>~/Library/Application Support/macMule/</code>. Your downloads go to <code>~/Library/Application Support/macMule/drive_c/eMule/Incoming/</code>.</p>
+<div><h2>Building from Source</h2><a href="#building-from-source"></a></div>
+<p>Prerequisites:</p>
+<ul>
+<li><a href="https://github.com/Gcenx/wine-crossover">Wine Crossover</a>: <code>brew install --cask gcenx/wine/wine-crossover</code></li>
+<li>Rosetta 2: <code>softwareupdate --install-rosetta --agree-to-license</code></li>
+<li>GitHub CLI: <code>brew install gh</code></li>
+</ul>
+<p>Then:</p>
+<div><pre>git clone https://github.com/mderouet/macMule.git
+<span>cd</span> macMule
+./build.sh <span><span>#</span> builds latest stable release</span>
+./build.sh 0.70b <span><span>#</span> builds a specific version</span>
+./build.sh 0.72a <span><span>#</span> also works for pre-releases</span></pre></div>
+<p>This produces <code>build/macMule-v&lt;version&gt;.dmg</code>.</p>
+<div><h2>License</h2><a href="#license"></a></div>
+<ul>
+<li><strong>eMule</strong>: <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL v2</a></li>
+<li><strong>Wine</strong>: <a href="https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html">LGPL 2.1</a></li>
+</ul>
+<div><h2>Credits</h2><a href="#credits"></a></div>
+<ul>
+<li><a href="https://github.com/irwir/eMule">irwir/eMule</a> — eMule community build</li>
+<li><a href="https://www.winehq.org/">Wine</a> / <a href="https://github.com/Gcenx">Gcenx</a> — Wine Crossover for macOS</li>
+<li><a href="https://www.emule-security.org/">eMule Security</a> — Server list and Kad nodes</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

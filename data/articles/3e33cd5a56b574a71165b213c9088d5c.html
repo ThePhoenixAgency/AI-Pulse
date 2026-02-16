@@ -31,21 +31,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2025/02/siri-iphone.jpeg?quality=82&amp;strip=all&amp;w=1600" alt=""> </figure> <p>Bloomberg’s Mark Gurman <a href="https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/">yesterday reported</a> that Apple’s new Siri initiative was facing internal delays, having originally been planned to start rolling out with iOS 26.4. Gurman suggested features may start appearing in iOS 26.5, or later releases in the year.</p> <p>That report has seemingly rocked investor confidence, with Apple stock plummeting today. Seemingly in response, <a href="https://www.cnbc.com/2026/02/12/apple-stock-worst-day-ftc-siri.html">CNBC’s Steve Kovach</a> says Apple confirmed to him that it remains on track to launch new Siri this year, which is essentially reaffirming what it has promised publicly all along.</p> <p>To be clear, this does not deny Bloomberg’s reporting about internal Siri work falling behind schedule. It hasn’t officially commented on those claims, in the affirmative or the negative.</p> <p>The renewed commitment Apple gave to CNBC reiterates what Apple had already pledged publicly several times. Since last year, the company has told customers to expect the long-promised-but-delayed Siri features (first announced during WWDC 2024) to be available to customers sometime in 2026.</p> <p>Those features include empowering Siri with personal context, support for rich in-app actions, and onscreen awareness, so users can seamlessly ask questions to their iPhone’s voice assistant about what they are looking at, and perform relevant contextual actions. </p> <p>While ‘2026’ was the public timeline, many sources indicate that Apple intended to finally get these features out the door for iOS 26.4. What the Bloomberg report revealed was that this target will likely not be met.</p> <p>When they do finally arrive, these are the first Siri features to be backed by Google Gemini models behind the scenes, as a result of a partnership that Apple and Google <a href="https://9to5mac.com/2026/01/12/apple-confirms-googles-gemini-will-power-new-siri-features/">announced earlier this year</a>. </p> <p>For iOS 27, Apple is expected to be even more ambitious, with a new Siri chatbot experience that is powered by foundation models based on the latest and greatest versions of Google Gemini. </p> <p>But if the more primitive stuff is running behind schedule, maybe the iOS 27 stuff will get delayed as well. In a fast-moving marketplace like artificial intelligence, investor confidence relies on Apple catching up as quickly as possible.</p> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

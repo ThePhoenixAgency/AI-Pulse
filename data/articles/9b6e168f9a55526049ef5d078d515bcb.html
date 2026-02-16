@@ -31,21 +31,21 @@
     <div><div><p>PrestaShop annonce le lancement du thème Hummingbird v2.0.0. Il est le thème par défaut depuis la version 9.1 du CMS. Il est ambitieux : 490 commits, des centaines de changements, 50 000 suppressions de codes.</p><p>L'éditeur met en avant de nombreux avantages :</p><p>- un thème plus performant et une optimisation SEO</p><p>- une accessibilité facilité</p><p>- une structure plus facile à personnaliser</p><p>- un code plus lisible</p><p>- nouveaux modules hooks pour faciliter l'intégration avec les modules tiers</p><p>- meilleure séparation entre les styles Bootstrap et PrestaShop</p><p>- plus de besoin de jQuery</p><p>- une organisation des fichiers plus simple&nbsp;</p><p>- nouvelle architecture CSS : modulaire et plus facile à monter en charge</p><p>- @layer en CSS pour mieux gérer les styles à prioritisés</p><p>- mode sombre</p><p>- environnement de développement basé sur Docker</p><p>- package.json a été nettoyé des dépendances inutiles</p><p>Annonce :&nbsp;<a href="https://github.com/PrestaShop/hummingbird/releases/tag/v2.0.0">https://github.com/PrestaShop/hummingbird/releases/tag/v2.0.0</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

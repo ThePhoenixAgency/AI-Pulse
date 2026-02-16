@@ -31,21 +31,21 @@
     <div><div><p>The <a href="https://www.theguardian.com/artanddesign/national-gallery">National Gallery</a> is to make significant cuts in the face of an £8.2m deficit in the coming year, which could mean fewer free exhibitions and ticketed shows, less international borrowing of artworks and more expensive tickets.</p><p>As a result of considerably increased running costs and stagnant income, the gallery has said it will be looking to cut spending in areas “such as public programmes, and activities where, for a number of reasons beyond our control, we can no longer justify their costs”.</p><p>There will also be a “voluntary exit scheme” available to all staff of the National Gallery and its commercial arm, which will include financial incentives to leave. If this does not raise sufficient savings, compulsory redundancies are possible.</p><p>“Due to many widely reported circumstances which are beyond our control, such as rises in operational costs and commercial pressures, we have now reached a point where we must make difficult and painful decisions,” a spokesperson for the gallery said. “To achieve sustainability, we must balance our artistic and educational mission with a new operating structure.”</p><p>There had been little indication of the gallery’s growing deficit after last year’s financial results received a major boost from its Van Gogh exhibition, which attracted a record 335,000 visitors. It will host another blockbuster exhibition this year when all of Van Eyck’s surviving portraits <a href="https://www.nationalgallery.org.uk/exhibitions/van-eyck-the-portraits">are united for the first time</a>.</p><p>But in the current financial year, which ends in March, the gallery expects to face a deficit of about £2m. Without immediate remedial action, that was expected to grow by a further £6.2 million next year to reach £8.2m, the Art Newspaper reported.</p><p>It comes as cuts to public spending, rising operational costs and weak footfall have put considerable strain on UK museums. The National Gallery’s visitor numbers have still not recovered to their level before Covid, when it had six million a year. The figure for the 12 months to September 2025 was 3.8 million.</p><p>Last May’s reopening of the Sainsbury Wing led to an improvement in footfall, but visitors usually come for for the free permanent collection rather than ticketed exhibitions. The gallery has also had to navigate new business rates and national insurance payments, as well as inflation.</p><p>It recently celebrated its bicentenary with NG200 and is looking to the future with Project Domani, the <a href="https://www.theguardian.com/artanddesign/2025/sep/09/national-gallery-lifts-ban-post-1900-paintings-375m-investment">planned construction of a major new wing to display modern art</a>. It has received pledges of £150m each from Michael Moritz’s Crankstart Foundation and the Julia Rausing Trust , thought to be the two largest ever publicly reported single cash donations to a museum or gallery anywhere in the world. The budgets for both projects are ringfenced.</p><p>“We have been successful in developing and vastly expanding our free offer, which is now hugely popular both in person and online,” the gallery’s spokesperson said. “We have also attracted huge investment in a landmark future project. However, in the present global landscape and with the cost of living crisis, like many other institutions, we face increasing competition for people’s time and share of wallet.”</p><figure></figure><p>The National Gallery currently receives an annual government grant of £32m. The Department for Culture, Media and Sport has said it is in close contact with the gallery about its financial position. Decisions “relating to staffing and operational matters” were taken by the gallery’s trustees, it said.</p><p>The gallery emphasised the need for a “strategic reset”. “We know this is hard, but we all must understand that things have changed in the world, and we must respond to them,” it said. “We need to make tough decisions now to futureproof the gallery for the years ahead.”</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

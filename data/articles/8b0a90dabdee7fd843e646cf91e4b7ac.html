@@ -33,21 +33,21 @@
 </div> <p>Mis en cause sur les réseaux sociaux, l'assistant parlementaire de Raphaël Arnault, Jacques-Elie Favrot, a indiqué dimanche via son avocat Me Bertrand Sayn qu'il "dément formellement être responsable de ce drame". Il s'est également déclaré "menacé de mort par l'extrême droite dans tout le pays et en Europe".</p> <h2>Un rassemblement devant la Sorbonne</h2> <p>Plusieurs dizaines de personnes se sont par ailleurs rassemblées dimanche après-midi devant l'université de la Sorbonne à Paris pour demander "justice pour Quentin" parmi lesquels des élus et cadres du <a href="https://www.france24.com/fr/tag/rassemblement-national/" target="_self">Rassemblement national</a>, et des personnalités d'extrême droite, dont <a href="https://www.france24.com/fr/tag/marion-mar%C3%A9chal/" target="_self">Marion Maréchal</a> et <a href="https://www.france24.com/fr/tag/%C3%A9ric-zemmour/" target="_self">Éric Zemmour</a>.</p> <p>Plusieurs des candidats au scrutin municipal de Lyon ont fait part de leur émotion à l'annonce de la mort du jeune homme et indiqué qu'ils suspendaient leur campagne électorale.</p> <p>"J'étais vers chez moi, au bout de la rue, j'entends des cris, ça se frappait avec des barres en fer, etc. Quand je suis venu sur place, j'ai vu des individus en sang", a relaté dimanche pour l'AFP un témoin de l'agression, qui s'est présenté sous le seul prénom de Adem. "D'où j'étais, si on entendait les cris jusque là, c'est que c'était vraiment violent", a-t-il ajouté.</p> <p>Une vidéo présumée de l'agression diffusée par TF1, filmée depuis un immeuble, montre une dizaine de personnes portant des coups à trois personnes gisant à terre, dont deux parviennent à s'échapper.</p> <p>À l'église Saint-Georges, que fréquentait le jeune homme et où il était bénévole pour des oeuvres caritatives, le recteur Laurent Spriet a appelé dimanche à "prier pour le repos de l'âme de Quentin" et à "laisser faire la police et la justice".</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

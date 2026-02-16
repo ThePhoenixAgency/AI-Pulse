@@ -35,21 +35,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2023/12/itunes.webp?w=1600" alt=""> </figure> <p>The legacy iTunes Wish List feature for saving movies and TV shows to buy or rent later is “going away soon,” according to Apple. For customers with items still saved to an iTunes Wish List, Apple is providing one last chance to migrate to the modern equivalent.</p> <p>Apple still runs the iTunes Store for buying and renting movies and TV shows or purchasing music. However, <a href="https://apple.co/3ZkQifi">Apple Music</a> and the <a href="https://apple.co/2YznsMM">Apple TV</a> app have long become the destination for streaming content instead. </p> <p>Now it appears Apple is preparing to completely remove the old iTunes Wish List feature.</p> <p>“Your iTunes Wish List of movies and shows is going away soon and will no longer be accessible,” the company says in an email notifying affected users. “iTunes Wish List is also referred to as Favorites on tvOS. iTunes Wish List feature will no longer be accessible on Apple platforms.”</p> <p>Apple’s email to customers includes a PDF containing a list of titles with links for manually adding each movie and TV show to the Apple TV Watchlist for future access.</p> <p>“Links to the movies and shows on your Wish List are attached to this email. To move Wish List items to your Apple TV Watchlist, follow the links and tap the + button. This will make your Watchlist items appear in the Continue Watching row on the Apple TV app Home tab. Otherwise, no action is needed.”</p> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

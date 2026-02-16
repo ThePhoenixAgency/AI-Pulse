@@ -39,21 +39,21 @@
 </a></p> <p>Plus encore, l’auteur de <em>France, le choc ou la chute</em> (éd. de l’Observatoire) alerte quant à un «<em>possible point de bascule</em>» tant «<em>les propos de certains élus de la France insoumise sont extrêmement ambigus sur le volet de l’usage de la violence</em>». Et insiste sur une différence, fondamentale selon lui, entre les deux bords de l’échiquier des groupuscules politiques&nbsp;: «<em>Dans la France de 2026, contrairement à l’ultragauche, les groupuscules d’ultradroite ne bénéficient d’aucun soutien direct ou indirect dans aucun parti politique. Quand Jean-Luc Mélenchon dit ce 15 février&nbsp;:&nbsp;</em><a href="http://www.lefigaro.fr/actualite-france/mort-de-quentin-attaques-de-toutes-parts-les-insoumis-cherchent-a-inverser-l-accusation-20260215" target="_blank"><em>«C’est nous qui sommes agressés»</em></a> <em>, se rend-on compte de la gravité de son propos&nbsp;? Faut-il rappeler qu’il disait à la&nbsp;</em><a href="http://www.lefigaro.fr/actualite-france/mort-de-quentin-en-allemagne-alice-weidel-emboite-le-pas-a-marine-le-pen-et-demande-a-classer-les-antifas-comme-organisations-terroristes-20260215" target="_blank"><em>Jeune Garde&nbsp;</em></a> <em>l’an dernier que les Insoumis étaient avec eux&nbsp;?</em>».</p> </div></article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

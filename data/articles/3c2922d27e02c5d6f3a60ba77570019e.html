@@ -111,21 +111,21 @@
 <p>Collaboration is really what I would like to see more of, and I am starting to do more podcasts and various kinds of – I started a working group with the Chaos Metrics people around package manager metadata, as trying to share the kind of learnings that I’ve done in developing Ecosyste.ms, and being able to kind of like map metadata across different ecosystems into standardized ways… But if they’re interested in ways of understanding and using data in open source to have impacts, then Ecosyste.ms is literally rearing up right now through the Alpha Omega grant that we just received to be able to bring more people into this space and help them have real impact on/knock on effects of improving open source.</p> </div> <div> <p>Wow, very cool. I’m glad COVID is over, obviously… I’m glad that you’re poking your head out of the hole, little rabbit, and showing the world what you’ve got. It’s kind of cool, I like it.</p> </div> <div> <p>Good stuff, Andrew. Thanks for coming on the show again.</p> </div> <div> <p>Yeah, thanks so much for having me.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

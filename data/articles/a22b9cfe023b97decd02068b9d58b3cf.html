@@ -37,21 +37,21 @@
 <time>05:28</time> </p> </figure> </div> <div> <p><span>Issued on: <time>16/02/2026 - 16:35</time></span><span>Modified: <time>16/02/2026 - 16:40</time></span></p> <div> <p> 05:28 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/down-earth/"> <p>From the show</p> <img src="https://s.france24.com/media/display/01be7668-0eb3-11ee-adf4-005056bf30b7/EN-down-to-earth.svg" alt="Down to Earth"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> This year, the Winter Olympics are taking place in the north of Italy, against a backdrop of climate change and rising temperatures, which are casting a shadow over the future of the Games.&nbsp;Like many of its predecessors, Milan Cortina is relying on artificial snow, pumping 50,000 cubic metres of water, or the equivalent of 20 Olympic-sized pools. Our environment editor Valérie Dekimpe tells us more. </p> <div> <p><span> By: </span></p><div> <img src="https://s.france24.com/media/display/f0d43756-e059-11ee-88d3-005056a97e36/w:388/p:1x1/avatar-Val%C3%A9rie_Dekimpe.jpg" alt="Valérie Dekimpe"> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

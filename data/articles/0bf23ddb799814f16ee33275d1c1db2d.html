@@ -31,21 +31,21 @@
     <div><div><p>Armed assailants on motorbikes killed at least 32 people and burned houses and shops during raids on three villages in north-west Nigeria’s Niger state early on Saturday, local officials and residents who escaped the violence said.</p><p>The dawn raids targeted the communities of Tunga-Makeri, Konkoso, and Pissa.</p><p>The attacks on villages in the Borgu local government area, near the border with Benin Republic, are part of a surge in attacks blamed on “bandits” who have carried out deadly assaults, abductions for ransom, and displaced communities across northern Nigeria.</p><div><p>Niger State police spokesperson Wasiu Abiodun said six people died in the attack on Tunga-Makeri, adding that a “yet to be ascertained number of persons were abducted.”</p><p> Abiodun confirmed that the Konkoso community was attacked, but provided no further details. “Joint security teams have been mobilised to the scene for assessment and effort to rescue the victims is ongoing,” he said.</p></div><p>Insecurity is a pressing concern in Nigeria and the government is under mounting pressure to restore stability.</p><div><p>Northern Nigeria is in the grip of a complex security crisis featuring both Islamic militants and armed gangs kidnapping people for ransom.</p><p> Saturday’s attacks follow a deadly attack earlier this month in neighboring Kwara State that killed 162 people.</p><p> In the past few months, Nigeria has been in the crosshairs of the US government, which has accused the Nigerian authorities of not protecting Christians, although attacks affect both Christians and Muslims.</p><p> The accusation has resulted in a security partnership between both countries that has involved US strikes targeting armed groups in Nigerian territories in December, as well as presence of a team of US military in the West African country.</p></div><p>Jeremiah Timothy, a resident of Konkoso who fled to a nearby locality, said the attack on his village on Saturday began in the early hours with sporadic gunfire.</p><p>“At least 26 people were killed so far in the village after they set the police station ablaze,” said Timothy, adding that the attackers entered Konkoso around 6am (5am GMT), shooting indiscriminately.</p><p>He said residents heard military jets flying overhead.</p><p>Another witness, who requested anonymity, said the attackers, riding more than 200 motorbikes, swept through the area targeting the villages.</p><p>Auwal Ibrahim, a resident of Tunga-Makeri, recounted the early-morning assault on his village at approximately 2am GMT.</p><p>“The bandits stormed our town around 3am (local time), riding so many motorcycles while shooting sporadically, beheading six people and killing others. They set shops on fire and forced the whole village to flee,” Ibrahim said.</p><p>He added that many villagers fear returning as the gunmen remain nearby.</p><p><em>With Reuters and Agence France-Presse</em></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

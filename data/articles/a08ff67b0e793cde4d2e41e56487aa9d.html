@@ -47,21 +47,21 @@ Les scans en arrière-plan ajoutent une charge supplémentaire au support de sto
 <p>Chaque antivirus fonctionne à sa façon selon ses réglages et ses options. Le niveau de protection et le type d’analyse influent directement sur la vitesse. Les utilisateurs peuvent remarquer de vrais changements dans la réactivité de la machine.</p> <h2>Quels tests permettent de mesurer le ralentissement causé par un antivirus ?</h2><p>Pour savoir si un antivirus ralentit votre PC, il faut faire des tests précis. Les benchmarks mesurent la vitesse d’ouverture des programmes. Ils vérifient aussi l’accès aux documentss et la réactivité du système. Ces tests se font sur Windows et sur Apple.</p><p>On compare les performances avant et après l’installation du logiciel. Le ralentissement est plus visible sur les machines anciennes ou avec un espace presque plein.</p><p>On mesure aussi le temps nécessaire pour lancer une application. La navigation sur internet est testée pour voir l’impact sur le navigateur. Les analyses automatiques des fichiers ajoutent une charge sur le processeur et la mémoire. Certaines solutions ont peu d’impact sur la vitesse. D’autres rendent l’ordinateur lent au quotidien.</p><p>Les tests indiquent la quantité de ressources utilisées. Ils montrent le niveau de charge imposé au système par l’antivirus. On peut ainsi comparer différents logiciels et leurs performances.</p><p>On teste également la vitesse du PC pour voir l’effet de l’antivirus. On regarde le temps pour copier des documents, installer des applications ou ouvrir des programmes. Des organismes comme AV-TEST et AV-Comparatives publient des comparatifs pour montrer les différences. Ils analysent la performance des programmess de sécurité sur plusieurs périodes et différents types d’utilisation.</p><p>Les tests permettent de comparer les différents porgrammes. Ils montrent quel antivirus équilibre mieux sécurité et performance. On constate des variations dans la vitesse selon le logiciel utilisé. Chaque antivirus agit différemment selon ses paramètres et ses fonctionnalités.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

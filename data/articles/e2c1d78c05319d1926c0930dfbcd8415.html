@@ -35,21 +35,21 @@
 </div> <p>Une performance qui contraste brutalement avec celles affichées par les plateformes sociales (+15%), le retail media (+13%) et même les offres de streaming des chaînes TV (+22%) et des services de vidéo à la demande (+21%). "Ce déséquilibre entre les plateformes et les publishers n’est pas lié à un problème de qualité mais d’accès à la demande&nbsp;: l’open web n’a pas le même accès à la demande des annonceurs&nbsp;que les grandes plateformes. Une large partie du dynamisme de ce marché est le fait de petits et moyens annonceurs qui cherchent la simplicité et la rapidité pour atteindre des audiences massives partout dans le monde, d’où l’attractivité des outils d’achat des plateformes. L’open web, qui ne dispose pas de la même accessibilité structurelle et technique, subit ce déséquilibre dans le fléchage des investissements", analyse Jean-Baptiste Rouet, président de la commission digitale de l’Udecam.</p> <p>Et ce n’est pas tout&nbsp;: "Il y a fort à parier que le trafic et les revenus des éditeurs s’effondrent encore plus vite que prévu avec la montée en puissance des robots conversationnels et de leurs offres publicitaires", analyse Maïté Dailleau, partner chez Oliver Wyman.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

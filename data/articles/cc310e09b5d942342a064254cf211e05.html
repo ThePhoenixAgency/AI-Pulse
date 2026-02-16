@@ -31,21 +31,21 @@
     <div><div> <p>Entre Netflix, YouTube, Prime Video, les chaînes télé et des dizaines de milliers de podcasts, le choix donne le tournis. À force d’ouvrir des onglets et d’empiler les épisodes «&nbsp;à voir plus tard&nbsp;», certains ont décidé de tricher un peu avec l’horloge.</p> <h2>Et si on appuyait sur le bouton «&nbsp;x2&nbsp;»&nbsp;?</h2> <p>Le principe est simple&nbsp;: modifier la vitesse de lecture. Sur YouTube, l’option se cache dans les paramètres. Sur l’app Podcasts d’Apple ou sur Audible, elle est à portée de clic. En revanche, Netflix, Hulu ou HBO ne proposent pas officiellement d’accélération, même si les plus motivés peuvent passer par des extensions Chrome ou un lecteur comme VLC.</p> <p>Les adeptes de la lecture accélérée mettent en avant un argument imparable&nbsp;: le gain de temps. Une saison visionnée à 1,5x ou 2x, ce sont des heures récupérées. Beaucoup commencent modestement, à 1,2x, une vitesse à peine perceptible, puis augmentent progressivement. À force d’habitude, le cerveau s’adapte, assurent-ils, et la compréhension resterait intacte.</p> <p>L’argument séduit notamment les gros consommateurs de podcasts. Sur un épisode de 45 minutes, accélérer légèrement permet d’économiser plusieurs minutes. Multipliez cela par trois ou quatre écoutes quotidiennes&nbsp;: à la fin de la semaine, le compteur affiche un joli bonus. Pour certains, il ne s’agit pas de maltraiter les œuvres, mais d’optimiser des formats jugés trop longs ou trop étirés. Les séries télé, calibrées sur des durées fixes, seraient parfois plus bavardes que nécessaire. Accélérer deviendrait alors une manière d’aller à l’essentiel.</p> <p>Face à cet engouement, les puristes montent au créneau. Une large majorité d’auditeurs et de spectateurs interrogés dans un sondage en ligne du podcast <a href="http://www.slashfilm.com/category/features/slashfilmcast/"><em>Slashfilmcast</em></a> jugeaient la pratique presque sacrilège (une «&nbsp;abomination&nbsp;» pour 79&nbsp;% d’entre eux&nbsp;!). Accélérer un film ou une série reviendrait, selon eux, à en altérer la nature même. Car une œuvre audiovisuelle n’est pas qu’un flux d’informations. Elle repose sur un rythme, des silences, des respirations. Les pauses, les regards, les temps morts sont souvent chargés de sens. Les lire à vitesse 2x, c’est sacrifier des éléments essentiels dans une narration.</p> <p>Des créateurs estiment ainsi que l’accélération transforme l’expérience en simple consommation. On «&nbsp;avale&nbsp;» l’épisode, mais on ne laisse plus le temps à l’émotion de s’installer. Les effets comiques perdent leur timing, les moments dramatiques leur intensité. C’est comme multiplier les plats pour en goûter davantage, au risque de ne plus rien savourer vraiment. On ingère plus de contenus, certes, mais on s’éloigne de l’intention initiale.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

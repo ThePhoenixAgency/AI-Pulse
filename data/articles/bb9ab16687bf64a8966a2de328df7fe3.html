@@ -31,21 +31,21 @@
     <div><div> <p>Le chef des pompiers de la commune de Crans-Montana, où l'incendie d'un bar a fait&nbsp;<a href="https://www.ledauphine.com/faits-divers-justice/2026/02/01/drame-de-crans-montana-un-blesse-est-decede-le-bilan-grimpe-a-41-morts" target="_blank">41 morts et 115 blessés</a> la nuit du nouvel an, a été entendu ce lundi par la police en tant que témoin. David Vocat est entré dans le commissariat central de Sion par une porte dérobée, avec son avocat Me Jean-Marie Röthlisberger. Il est également sorti du commissariat un instant pour discuter avec d'autres avocats, sans toutefois répondre aux questions des journalistes.</p> <p>L'incendie a été provoqué selon l'enquête par les étincelles de bougies « fontaine » qui ont enflammé une mousse insonorisante au plafond du sous-sol du bar Le Constellation. L'enquête doit lever le voile sur les circonstances exactes de l'incendie, le respect des normes de sécurité par les propriétaires français et les responsabilités, la commune ayant déjà reconnu l'absence de contrôles incendie dans le bar depuis 2019 alors qu'ils doivent être effectués tous les ans.</p> <div> <h2>Présent lors d'un précédent contrôle du bar</h2><p>Le chef des pompiers de Crans-Montana était présent lors du contrôle des mesures de sécurité et de défense contre les incendies qui s'était déroulé en 2018, selon les médias suisses. A cette occasion, l'ancien chargé de sécurité de la commune avait dressé une liste de manquements au propriétaire valaisan des lieux et au gérant du bar, Jacques Moretti, qui a racheté l'établissement en 2022 avec son épouse.</p></div> <p>L'enquête pour « homicide par négligence, lésions corporelles par négligence et incendie par négligence » vise les propriétaires français du bar ainsi que l'actuel responsable du service de sécurité de Crans-Montana et son prédécesseur, qui a quitté son poste en 2024.L'audition du chef des pompiers David Vocat, qui a lui été entendu ce lundi comme personne appelée à donner des renseignements, était très attendue par les avocats des parties civiles, après des révélations de la télévision suisse publique RTS dimanche affirmant l'existence d'un audit datant de 2023, faisant état de graves manquements dans la sécurité incendie de la commune.</p> <p>« Je m'étonne que ce rapport sorte seulement un mois et demi après le début des faits, alors que la commune nous avait dit qu'elle collaborait pour la vérité au niveau de la justice. Je vois malheureusement que ce n'est pas le cas », a réagi Me Alain Viscolo, avocat de parties civiles.&nbsp;« Pour l'instant, ça fait un mois et demi que nous entendons beaucoup de personnes. On a eu beaucoup d'attentes et on a toujours été déçus », a-t-il été ajouté.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

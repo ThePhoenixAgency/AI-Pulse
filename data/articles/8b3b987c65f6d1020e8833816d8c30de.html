@@ -33,21 +33,21 @@
 </p> <figure> <p><img alt=""> </p> <figcaption>Clément Noël remet son titre olympique en jeu sur le slalom.<span> Denis Balibouse / REUTERS </span></figcaption> </figure> </div> </div> <div> <p><time>09:47</time> </p> <p>Un beau programme aujourd’hui pour les Français</p> <div> <p>Outre Clément Noël, d’autres Français seront présents à Bormio. Paco Rassat peut également réaliser de grandes choses sur le slalom et les deux autres Français, Léo Anguenot (6e du géant samedi) et Steven Amiez, sont en embuscade.</p> <p>Il n’y a pas que du ski alpin aujourd’hui, puisque Romain Heinrich et Dorian Hautervill entameront leur concours en bobsleigh à deux, à 10h également. Margot Boch, en embuscade pour le podium, finira quant à elle son concours en mono bob, à partir de 19h. Il y aura également le programme libre du patinage de couple avec Camille et Pavel Kovalev.</p> <p>Le programme complet du jour est à retrouver&nbsp;<a href="http://www.lefigaro.fr/sports/jeux-olympiques/calendrier-20260112" target="_blank">ici</a>.</p> </div> </div> <div> <p><time>09:41</time> </p> <p>L’heure du record pour la France ?</p> <div> <p>Clément Noël est prêt à rentrer dans l’histoire, et la France avec lui. Le champion olympique du slalom en 2022 à Pékin (Chine) remet son titre en jeu aujourd’hui, avec la ferme intention d’être le premier skieur à réaliser le doublé. En cas de médailles (et on rêve du titre), il permettrait à la France de dépasser son record de médailles sur une Olympiade. La France a égalé son meilleur bilan hier, en atteignant 15 médailles, à l’issue d’une belle journée.</p> <p>Le slalome Hommes du ski alpin sera le gros événement du jour. La première manche aura lieu dès 10h, avant la manche finale en début d’après-midi (13h30).</p> </div> </div> <div> <p><time>09:38</time> </p> <p>Bonjour à toutes et à tous !</p> <p>Bienvenue sur le site du <em>Figaro</em> pour suivre en direct et en notre compagnie la dixième journée olympique à Milan-Cortina.</p> </div> <div> <p><span>Les publications apparaîtront ici</span> </p></div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

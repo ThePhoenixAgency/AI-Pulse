@@ -50,21 +50,21 @@
 <p>Pour l’Europe, historiquement moins dominante sur les modèles de langage généralistes, cette approche orientée systèmes métiers représente une opportunité stratégique.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.fw.media/" target="_blank"> <img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a> </p><div><p>Pour nous contacter, nous vous avons préparé un petit formulaire pour bien gérer votre demande et pouvoir l'adresser en toute confidentialité. <a href="https://www.frenchweb.fr/contacter-la-redaction">Cliquez ici pour y accéder</a></p></div> </section><section><p><a href="https://www.fw.media/" target="_blank"><img alt="" src="https://i0.wp.com/www.frenchweb.fr/wp-content/uploads/gravatar/la-redaction-frenchweb-6.jpg?w=250&amp;ssl=1"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

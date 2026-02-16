@@ -41,21 +41,21 @@
 <p><strong>Break</strong>: [<a href="#t=00:53:52.23">00:53:52.23</a>]</p> </div> <div> <p>Here’s a thought I’ve had recently, and I think Adam’s made me think this thought. I don’t think I’m a power user anymore. I just feel like I’m a regular user…</p> </div> <div> <p>You’re just a developer style user.</p> </div> <div> <p>Yeah, yeah, I’m dicing.</p> </div> <div> <p>You have developer tools, but it’s not exactly a niche. It’s a very common user.</p> </div> <div> <p>No, it’s not anymore, is it? I just don’t do weird stuff that much. Like, I’m just trying to write software. That’s the weirdest thing I do, is I like code. But everything else I do is pretty normal computer stuff. And so I don’t bump up against the limitations that macOS… I see the headlines, and I definitely see the direction they’re heading, and I know about the gatekeeper stuff, and now I’m talking technical gatekeeper, not the social or political gatekeeping… Like, I know that they’re definitely moving more and more away from tinkerers and power users, and my ability to call it my own computer… And intellectually, I despise that. That I can have a computer that I can’t control and do whatever I want on it. But practically, I just don’t care, because I just don’t ever –</p> </div> <div> <p>It doesn’t really affect you.</p> </div> <div> <p>No, it doesn’t. It just doesn’t really… And so I don’t have the – I mean, wanderlust is the wrong word to it… But Adam is ricing, or he’s hopping. He’s… Whatever he’s doing. He’s sampling, because he wants to do stuff that macOS is holding him back from. Which is mostly like hardware stuff, but it’s stuff he wants to do. And I just –</p> </div> <div> <p>Really hard to get four DIMMs into a [unintelligible <a href="#t=01:00:10.29">01:00:10.29</a>]</p> </div> <div> <p>Oh, gosh…</p> </div> <div> <p>[laughs] Yeah, man, the four DIMM problem is real on the Mac side, for sure.</p> </div> <div> <p>Also, Jerod, I’ve got to acknowledge… Thank you for wearing a shirt that I produced.</p> </div> <div> <p>Oh, I’m glad you noticed it. I put it on for you. I’ve got my Elixir T-shirt on… Now, did you make this design in Linux land?</p> </div> <div> <p>So that design is the official Elixir logo, so I did not make it…</p> </div> <div> <p>Okay. But somehow you had to send this to the printer.</p> </div> <div> <p>Yeah. I sent the original that I got from Jose to the printer… Printed with permission, and all that.</p> </div> <div> <p>Cool. Yeah, so you’ve been doing Elixir stuff… I guess we could hard transition that way via this shirt, which makes it –</p> </div> <div> <p>Hard to swerve. Actually, I can bring us there. Because you’re saying you do development and you don’t hit weird quirks with macOS, and stuff…</p> </div> <div> <p>Yeah, not really.</p> </div> <div> <p>So I used to mostly do Elixir development, like straight up web dev, and generally did not have problems, because a lot of Elixir development happens on macOS. It’s pretty straightforward. But I’ve increasingly been doing embedded Linux and Elixir development, and that takes me straight out of the mainstream. I compile Linux kernels multiple times a day. Buildroot, the thing I use for building Linux kernels, does not run on macOS. You can run it in Docker, but it’s a lot slower.</p> </div> <div> <p>I do not run Docker, for that reason…</p> </div> <div> <p>Yeah. And in this case, it’s just like raw compiles and the disk abstractions for Docker slows everything down. Actually, Macs are super-fast at doing all these compiles, if you just put a Linux virtual machine in them. So abstracted, they’re very fast.</p> </div> <div> <p>[<a href="#t=01:02:04.12">01:02:04.12</a>] So what have you been working on then? You’re making some embedded systems here? What have you been working on?</p> </div> <div> <p>Yeah, so there is an embedded Linux framework… It’s an IoT framework, but I have to say embedded Linux, so that the embedded microcontroller people don’t get mad… Because they’ll go “Oh, you call that embedded these days?”</p> </div> <div> <p>Oh… So a pecking order.</p> </div> <div> <p>Yes, I know you’re dealing with kilobytes and I’m dealing with gigabytes. It’s fine. It’s still called embedded by some people.</p> </div> <div> <p>Yeah, you’re still embedding that.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

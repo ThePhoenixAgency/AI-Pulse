@@ -31,21 +31,21 @@
     <div><div> <p>While offering relief for nightclub owners after nearly 16 months of closures, capacity remains capped at 75 percent of normal, and proof of vaccination or a recent<a target="_self" href="https://www.france24.com/en/tag/coronavirus/"> negative test </a>will be required for entry.</p><p>That has made many clubs reluctant to open, since only 21 percent of people aged 18 to 29 - the key clubbing demographic - have been fully vaccinated with two doses.</p><p>Masks are also recommended but not mandatory, and if a steamy recent viral advert is any indication, most patrons won't want to cover up.</p><p>The vaccine campaign poster, released by regional health authorities last weekend, shows a couple engaging in a passionate French kiss under the caption "Yes, vaccination can have desirable side-effects."</p><p>For Martin Munier, manager and artistic director of the Sacre club in central <a target="_self" href="https://www.france24.com/en/tag/paris/">Paris</a>, the answer was to team up with a neighbouring pharmacy to set up a testing tent right outside.</p><p>"It's a relief to be able to open, even though not fully back at 100 percent right away," he told AFP.</p><p>In the western city of Nantes, a group that owns four clubs in the city is offering free entry to 18 to 25-year-olds who have had at least one Covid jab.</p><p>The majority of clubs will stay shut, however, preferring to collect government aid while awaiting more visibility on how the surge in Delta cases will play out.</p><p>President <a target="_self" href="https://www.france24.com/en/tag/emmanuel-macron/">Emmanuel Macron</a> will address <a target="_self" href="https://www.france24.com/en/tag/france/">the country</a> in a prime-time TV speech on Monday following a meeting with top ministers involved in the health crisis, his office said, adding to the uncertainty as the summer holidays loom.</p><p>Macron has long been expected to address France over his long cherished pension reform project but he may also set out measures on the pandemic, including possible obligatory vaccination for healthworkers.</p><p><strong>'Very vigilant'</strong></p><p>French officials on Thursday warned citizens against travel to Spain or Portugal because of a spike in Covid-19 cases, urging people instead to stay home for the holidays.</p><p>Health Minister Olivier Veran acknowledged that only a third of French nightclubs would reopen as soon as Friday, "because 70 percent were unable to apply the strict health protocols."</p><p>"We will remain very vigilant, and obviously if we have to reverse course because things are going badly, we will do what we have to," he told France Inter radio.</p><p>Veran added that Delta cases now account for nearly 50 percent of the total, and "will soon account for the majority, probably this weekend, in our country."</p><p>His comments came as the government's virus advisory body of top scientists urged making vaccination mandatory for health workers and retirement home staff, many of whom remain reluctant to get the jab.</p><p>It said that at retirement homes just 40 percent of employees have been vaccinated with at least one dose, compared with 52 percent for the population overall.</p><p>"The pandemic will only be brought under control when 90 to 95 percent are vaccinated or inoculated," the scientists said, a figure above the traditional 60 or 65 percent for so-called "herd immunity" because of the more infectious Covid variants.</p><p><em>(AFP)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

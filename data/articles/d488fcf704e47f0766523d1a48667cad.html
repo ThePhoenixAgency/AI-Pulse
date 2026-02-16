@@ -34,21 +34,21 @@
 <li><a href="https://datasheets.raspberrypi.com/pico/pico-datasheet.pdf" target="_blank">Official Raspberry Pi Pico Datasheet</a></li><li><a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" target="_blank">Official RP2040 Datasheet</a></li></ul><p>The latest version of the MicroPython firmware can be downloaded from:<br><strong>Pi Pico</strong>: <a href="https://micropython.org/download/rp2-pico">https://micropython.org/download/rp2-pico</a><br><strong>Pi Pico W</strong>: <a href="https://micropython.org/download/rp2-pico-w">https://micropython.org/download/rp2-pico-w</a></p><p>Free PDF download: <a href="https://hackspace.raspberrypi.com/books/micropython-pico" target="_blank">Get Started with MicroPython on Raspberry Pi Pico</a></p></div></article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

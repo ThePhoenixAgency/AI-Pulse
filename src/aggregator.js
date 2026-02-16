@@ -573,7 +573,7 @@ function matchesSpecialCategory(article, categoryName) {
   ].join(' ').toLowerCase();
 
   if (categoryName === 'openclaw') {
-    return /\bopen\s*claw\b|\bopenclaw\b|\bclowdbot\b|\bmoltbot\b|\bclawhub\b|\bpeter\s+steinberger\b/.test(haystack);
+    return /\bopen\s*claw\b|\bopenclaw\b|\bnanclaw\b|\bclowdbot\b|\bmoltbot\b|\bclawhub\b|\bpeter\s+steinberger\b/.test(haystack);
   }
   if (categoryName === 'raspberrypi') {
     return /raspberry\s*pi|\bframboise\s*314\b|\brpi\b/.test(haystack);
@@ -976,21 +976,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     <p><strong>Notice:</strong> Complete extraction unavailable. Use "Original Article" for full content.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>
@@ -1078,21 +1078,21 @@ async function processArticle(article, sourceName, tags, category, feedLang) {
     ${sanitizedMainContent}
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>
@@ -1164,6 +1164,7 @@ async function aggregateCategory(categoryName, feeds) {
     return [];
   }
 
+  const maxArticles = SETTINGS.maxArticlesPerCategory || 120;
   const limit = SETTINGS.articlesPerFeed || 120; // Nombre d'articles par source
 
   // Traitement en parallèle des sources pour accélérer l'agrégation globale.
@@ -1190,11 +1191,16 @@ async function aggregateCategory(categoryName, feeds) {
     .flatMap(r => r.value)
     .filter(Boolean);
 
-  if (categoryName === 'openclaw' || categoryName === 'raspberrypi') {
+  if (categoryName === 'openclaw') {
+    const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
+    // Keep strict OpenClaw matches when there are enough; otherwise keep broader feed results
+    // so the category never collapses to 0-1 item because of narrow keyword hits.
+    if (specialOnly.length >= Math.min(5, maxArticles)) {
+      articles = specialOnly;
+    }
+  } else if (categoryName === 'raspberrypi') {
     const specialOnly = articles.filter((article) => matchesSpecialCategory(article, categoryName));
     if (specialOnly.length > 0) {
-      articles = specialOnly;
-    } else {
       articles = specialOnly;
     }
   }
@@ -1412,8 +1418,9 @@ function generateRSSFeed(articles, title, description, category) {
   const baseUrl = 'https://thephoenixagency.github.io/AI-Pulse';
   const now = new Date().toUTCString();
 
-  // Générer les items RSS (max 50 articles)
-  let items = articles.slice(0, 50).map(article => `    <item>
+  // Générer les items RSS sans limite artificielle côté serveur.
+  // La limite éventuelle doit être gérée par le lecteur client.
+  let items = articles.map(article => `    <item>
       <title><![CDATA[${article.title}]]></title>
       <link>${article.originalLink || article.link}</link>
       <description><![CDATA[${article.summary || ''}]]></description>
@@ -1638,6 +1645,52 @@ function writeArticleMap(categorizedArticles) {
   }
 }
 
+/**
+ * Renforce une catégorie spéciale avec des articles repérés dans les autres catégories.
+ * Empêche un rendu vide quand les flux dédiés sont trop limités.
+ *
+ * @param {Object<string, Object[]>} categorizedArticles
+ * @param {string} categoryName
+ * @param {number} minTarget
+ */
+function backfillSpecialCategory(categorizedArticles, categoryName, minTarget = 8) {
+  const maxArticles = SETTINGS.maxArticlesPerCategory || 120;
+  const current = Array.isArray(categorizedArticles[categoryName]) ? categorizedArticles[categoryName] : [];
+  if (current.length >= minTarget) return;
+
+  const seen = new Set(
+    current.map((a) => String(a?.originalLink || a?.link || a?.title || '').trim()).filter(Boolean)
+  );
+  const pool = [];
+
+  for (const [name, articles] of Object.entries(categorizedArticles)) {
+    if (name === categoryName || !Array.isArray(articles)) continue;
+    for (const article of articles) {
+      if (!article || !matchesSpecialCategory(article, categoryName)) continue;
+      const key = String(article.originalLink || article.link || article.title || '').trim();
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      pool.push({
+        ...article,
+        category: categoryName,
+        tags: Array.isArray(article.tags) && article.tags.includes('OpenClaw')
+          ? article.tags
+          : ['OpenClaw', ...(Array.isArray(article.tags) ? article.tags : [])]
+      });
+    }
+  }
+
+  if (pool.length === 0) return;
+
+  pool.sort((a, b) => {
+    const scoreDiff = computeCategoryRelevance(b, categoryName) - computeCategoryRelevance(a, categoryName);
+    if (scoreDiff !== 0) return scoreDiff;
+    return new Date(b.pubDate || 0) - new Date(a.pubDate || 0);
+  });
+
+  categorizedArticles[categoryName] = deduplicateArticles([...current, ...pool]).slice(0, maxArticles);
+}
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FONCTION PRINCIPALE
@@ -1678,6 +1731,9 @@ async function main() {
       categorizedArticles[categoryName] = [];
     }
   }
+
+  // Garde-fou OpenClaw: compléter la catégorie avec les bons signaux croisés.
+  backfillSpecialCategory(categorizedArticles, 'openclaw', 8);
 
   // Générer et afficher le README (sera capturé par le workflow)
   const readme = generateREADME(categorizedArticles);
@@ -1758,6 +1814,7 @@ module.exports = {
   parseGitHubRepoPath,
   buildGitHubIndexCandidates,
   matchesSpecialCategory,
+  backfillSpecialCategory,
   computeCategoryRelevance,
   getCategoryTemperature,
   resolveDisplayKeyword,

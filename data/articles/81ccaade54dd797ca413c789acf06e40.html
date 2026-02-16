@@ -31,21 +31,21 @@
     <div><div><header><div><div><a href="https://github.com/AkshayS96/claude-rank" target="_blank">Star</a><p><a href="https://clauderank.vercel.app/auth/login">Login</a></p></div></div><p>Global telemetry for high-velocity engineering teams. Tracking <span>0</span> tokens shipped.</p><div><p>Loading...</p><p><a href="https://clauderank.vercel.app/setup">How to Setup</a></p></div></header><div><div><p>Active Nodes (24h)</p><p>0</p></div><div><p>24h Volume</p><p>0</p></div><div><p>Peak T/s</p><p>0</p></div><div><p>System Status</p><p>ONLINE</p></div></div><div><div><p>#</p><p>User</p><p>Tokens</p><p>Eff.</p><p>Cache</p></div><div><p>Scanning network...</p></div></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

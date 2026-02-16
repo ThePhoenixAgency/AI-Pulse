@@ -52,21 +52,21 @@
 </blockquote></article><article><header></header><p>The Times <a href="https://www.thetimes.com/uk/royal-family/article/local-elections-ministers-drop-plans-cancel-vc03tqnp3">is reporting</a> that the government “has abandoned<a href="https://www.theguardian.com/politics/2026/jan/22/local-elections-to-be-delayed-in-29-areas-in-england-as-part-of-shake-up-of-councils"> its attempt to delay elections to 30 councils</a> across the country, after being warned by lawyers that the move would be illegal”.</p><p>Reform UK said it was going to challenge this decision via judicial review, and the first mainn court hearing in the case was due later this week.</p><p>The government has not commented on the Times story yet. I’ll post their response as soon as I get it.</p></article><article><header></header><p>The <strong>Internet Watch Foundation</strong> has welcomed the government’s commitment to tighten rules relating to social media and teenagers. (See <a href="https://www.theguardian.com/politics/live/2026/feb/16/social-media-online-safety-act-keir-starmer-uk-politics-live-news-updates?page=with%3Ablock-6992cdff8f0893c883d52809#block-6992cdff8f0893c883d52809">9.32am</a> and <a href="https://www.theguardian.com/politics/live/2026/feb/16/social-media-online-safety-act-keir-starmer-uk-politics-live-news-updates?page=with%3Ablock-699302348f0850a9db9260f4#block-699302348f0850a9db9260f4">11.55am</a>.) <strong><br></strong>Hannah Swirsky, its head of policy, said:</p><p><em>New tech can be a dangerous frontier. It is crucial legislation can keep pace with the evolving threats …</em></p><p><em>We are very pleased to see the government taking further steps. Now, we urge them to provide clear guidelines on how companies must build platforms which are safe by design, and where children are a central consideration rather than an afterthought.</em></p></article><article><header></header><figure><div><img alt="Keir Starmer speaking to residents about the online safety of children at St Mary's Church in Putney, south-west London, this morning." src="https://i.guim.co.uk/img/media/d9d6f8b40844ff4a876601726600991638b1a289/0_0_4663_3108/master/4663.jpg?width=465&amp;dpr=1&amp;s=none&amp;crop=none"></div><figcaption><span></span><span>Keir Starmer speaking to residents about the online safety of children at St Mary's Church in Putney, south-west London, this morning.</span> Photograph: Carlos Jasso/PA</figcaption></figure></article></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

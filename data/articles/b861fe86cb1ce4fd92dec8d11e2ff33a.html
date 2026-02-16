@@ -58,21 +58,21 @@
 <p>We have seen these configs at as much as $120 off a couple times and a one-day Cyber Monday offer at $150 off, but beyond that the offers we have today are on par with the Amazon lows.</p> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Apple-Terra-Cotta-Alpine-Loop.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Apple’s Terra Cotta orange <a href="https://9to5toys.com/2026/02/12/apple-terra-cotta-orange-alpine-loop-medium-deal/">Alpine Loop in size medium just hit one of its best prices ever</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/01/Apple-Trail-Loop-blue-2026.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Apple’s latest <a href="https://9to5toys.com/2026/02/12/apple-latest-blue-trail-loop-deals-2/">Blue Trail Loop is up to 30% off right now, Natural finish model at new all-time low</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Apple-Crossbody-Strap-black.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2><a href="https://9to5toys.com/2026/02/12/apple-black-crossbody-strap-best-prices/">Apple’s black Crossbody Strap hits new Amazon all-time low at $35, more from $27 (Up to 54% off)</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2025/07/satechi-OntheGo-collection-with-new-hybrid-USB-C-lanyard-charging-data-cable.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Satechi’s crossbody <a href="https://9to5toys.com/2026/02/12/satechi-usbc-crossbody-cable-strap/">USB-C cable lanyard transfers data and carries your phone down at $24</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2024/05/Best-leather-iPad-case-Burton-Goods-deal.jpeg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2><a href="https://9to5toys.com/2026/02/11/burton-goods-leather-ipad-pro-case-sale/">Gorgeous Burton Goods leather M4/M5 iPad Pro cases hit clearance pricing, now up to 47% off with this code</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2025/10/Anker-2025-Prime-25W-MagSafe-charging-gear.jpg?quality=82&amp;strip=all&amp;w=1500" alt=""></figure> <h2>Anker’s impressive <a href="https://9to5toys.com/2026/02/11/anke-qi2-25w-3-in-1-prime-magsafe-charger-lowest-price/">Qi2 25W 3-in-1 Prime MagSafe Charger w/ Smart Display hits all-time low at $100 off</a></h2> <h2>Anker’s white model <a href="https://9to5toys.com/2026/02/11/anker-white-smart-display-25w-magsafe-charger-hits-all-time-low/">25W Smart Display MagSafe charger hits all-time low today at $90 off,</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Sony-WH-1000XM6-earbuds-2026-launch-review-FI.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2><a href="https://9to5toys.com/2026/02/12/wh1000xm6-earbuds-launch-sony-review/">Sony just launched its next-gen WF-1000XM6 wireless earbuds</a></h2> <p>The new Sony WF-1000XM6 wireless earbuds have arrived in two colorways, including Black and Platinum Silver <a href="https://howl.link/cnsloy6cnktns">carrying a <strong>$329.99</strong> list price</a>. They are now <a href="https://howl.link/cnsloy6cnktns">available for purchase directly from Sony</a> and <a href="https://amzn.to/4rf9DeI">will be live very soon over at Amazon</a>.</p> <figure><img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/BH-SSD-deals.webp?w=1024" alt=""></figure> <h2>Today’s accessories and charging deals:</h2> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

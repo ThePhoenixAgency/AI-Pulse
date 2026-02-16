@@ -32,21 +32,21 @@
 <li><figure><img alt="Un homme de 32&nbsp;ans est soupçonné d’avoir une jeune femme dans la rue à Caen (Calvados), dans la nuit du 6 au 7&nbsp;février 2026."><figcaption><span>Un homme de 32&nbsp;ans est soupçonné d’avoir une jeune femme dans la rue à Caen (Calvados), dans la nuit du 6 au 7&nbsp;février 2026. | </span>ARCHIVES GUILLAUME SALIGOT / OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 19h09</span></time></span> <span>Publié le <time>16/02/2026 <span> à 18h45</span></time></span> </span> </header> </div> <div> <p>Un homme de 32&nbsp;ans est suspecté <a href="https://www.ouest-france.fr/societe/securite/violences-vols-stupefiants-voici-ce-quindiquent-les-chiffres-2025-de-la-delinquance-dans-le-calvados-76af196c-0908-11f1-8d8f-93b36c1239ba" target="_blank">d’avoir violé</a> une jeune femme de 20&nbsp;ans dans la rue, dans<a href="https://www.ouest-france.fr/societe/justice/meurtre-du-serveur-jp-a-caen-le-deroulement-dune-funeste-soiree-se-devoile-au-premier-jour-du-proces-3a3db06a-0377-11f1-b002-a12469be8537" target="_blank"> le quartier de la Pierre-Heuzé,</a> au nord-est de Caen (Calvados), dans la nuit du vendredi&nbsp;6 au samedi 7&nbsp;février 2026.</p> <p>Interpellé rapidement par la police nationale, le trentenaire a été placé en garde à vue et présenté à un juge d’instruction le 8&nbsp;février. Une information confirmée par Joël Garrigue, le...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

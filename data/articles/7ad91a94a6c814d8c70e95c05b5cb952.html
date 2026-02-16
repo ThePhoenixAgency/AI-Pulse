@@ -35,21 +35,21 @@
     <div><div> <p>Ce lundi 9 février, un randonneur à ski âgé d'une trentaine d'années est mort emporté par une avalanche dans le massif de Belledonne, en Isère. L'homme qui l'accompagnait a pu s'extraire de l'avalanche. Selon les secours, les deux trentenaires "originaires de la région de Grenoble" étaient "équipés et expérimentés".</p> <div> <p> L’actu des régions </p> <p> Chaque jour, un tour d’horizon des principales infos de toutes les régions. </p> </div> <p>Un skieur de randonnée âgé d'une trentaine d'années a été retrouvé mort au bas d'une barre rocheuse après une avalanche dans le massif de Belledonne (Isère), ce lundi 9 février, indique la CRS Alpes.</p><p>La coulée de neige s'est déclenchée aux environs de 16h00, près du lac de Crop dans le secteur du Grand Replomb, dans un secteur hors-piste.</p><p>Les deux hommes âgés d’une trentaine d’années ont été pris dans une importante coulée de neige. L’un des deux randonneurs à ski a pu s’extraire avant l’arrivée des secours, mais le second a été emporté par l'avalanche qui a parcouru <em>"environ 500 mètres de dénivelé et a sauté une barre rocheuse. La victime a été retrouvée décédée au pied de celle-ci",</em> précise la CRS Alpes.</p><p>Selon les secours, les deux skieurs, originaires de la région grenobloise étaient <em>"expérimentés et équipés"</em>.</p><p>Ce lundi, le risque avalanche était évalué à 3/5 (risque marqué) dans le massif de Belledonne. Cette saison, dans les Alpes du Nord, de nombreuses avalanches ont eu lieu, causant la mort de plusieurs skieurs.</p><p>Le week-end du 10 et 11 janvier, six personnes sont décédées dans des avalanches en Savoie et Haute-Savoie. Et le 26 janvier, un skieur d’une cinquantaine d’années a perdu la vie, emporté par une coulée de neige à Tignes, dans un secteur hors-piste, alors que le risque avalanche était marqué (3/5).</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

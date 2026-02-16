@@ -37,21 +37,21 @@
 </a><p>"<em>J'ai entendu une énorme détonation et trois jeunes filles hurler, elles étaient accompagnées d'un enfant</em>" raconte Julie, la patronne de Julie Esthétique, un salon de beauté situé à quelques pas de la scène.</p><p>"<em>Je suis vite sortie, ça paraissait comme un énorme accident de voiture, mais des passants nous ont dit que c'était une grenade lancée dans l'institut à côté,</em> continue-t-elle. <em>Là, je ne vois même pas la rue tellement il y a de camions de pompiers et de gens, ce n'est pas très rassurant, il y a beaucoup de monde et c'est le chaos complet.</em>"</p><p>Elle indique qu'elle travaille dans ce quartier depuis sept ans et qu'il est habituellement calme. "<em>On n'a pas vraiment d'informations, on attend de voir si on peut fermer la boutique</em>" conclut-elle.</p><p>Une cellule psychologique a été mise en place par le CHU de Grenoble.</p><p>Peu avant 17 heures ce vendredi, une vidéo a été publiée sur les réseaux sociaux. On y voit un homme masqué sortir en courant de l'institut de beauté, juste avant qu'une explosion ait lieu à l'intérieur du commerce. Le deuxième individu, celui qui filme, prend la fuite avec son complice. "<em>Ce que cela démontre, c'est la désinhibition de la délinquance</em>" commente Étienne Manteaux, procureur de la République de Grenoble.</p><p>Pour lui, il pourrait s'agir d'une tentative d'intimidation : "<em>Si on veut tuer, on utilise d'autres engins. Là, ce n'est pas un engin pour tuer, la charge explosive était faible et il n'y avait pas d'éléments métalliques</em>" ajoute-t-il, avant d'évoquer le caractère "<em>inhabituel</em>" des faits.</p><p>Des doutes persistent quant à la nature précise de l'objet explosif : "<em>Ce n'est pas du tout une grenade militaire</em>", affirme le procureur. D'après les premiers éléments de l'enquête, l'objet explosif "<em>a été lancé sans détermination précise de qui était là.</em>" Il conclut en indiquant que l'exploitation de la vidéosurveillance des lieux permettra aux enquêteurs de progresser dans leurs investigations.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

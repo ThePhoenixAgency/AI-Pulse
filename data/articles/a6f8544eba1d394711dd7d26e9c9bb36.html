@@ -32,21 +32,21 @@
 <li><figure><img alt="Florence Poher&nbsp;(à gauche), chargée des ressources humaines chez Daunat, Martine Denis&nbsp;(au centre), employée chez Daunat, et Rosemarie Le Louarn&nbsp;(à droite), conseillère en développement à France Travail."><figcaption><span>Florence Poher&nbsp;(à gauche), chargée des ressources humaines chez Daunat, Martine Denis&nbsp;(au centre), employée chez Daunat, et Rosemarie Le Louarn&nbsp;(à droite), conseillère en développement à France Travail. | </span>OUEST FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 19h12</span></time></span> <span>Publié le <time>16/02/2026 <span> à 07h17</span></time></span> </span> </header> </div> <div> <p><q>On entend que les seniors ont du mal à trouver du travail, c’est vrai. Mais je veux dire à tous les gens qui ont mon âge que c’est encore possible. Les jeunes ne sont pas forcément plus rapides que nous.</q> Martine Denis, 58&nbsp;ans, habitante de Lannion&nbsp;(Côtes-d’Armor), se sent chanceuse. À son âge, où les reconversions sont compliquées, elle ne pensait plus pouvoir obtenir un poste en CDI.</p> <p><q>J’ai été licenciée à 57&nbsp;ans. Ma retraite est dans sept&nbsp;ans et demi, car j’ai été artisan pendant&nbsp;onze ans et que...</q></p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

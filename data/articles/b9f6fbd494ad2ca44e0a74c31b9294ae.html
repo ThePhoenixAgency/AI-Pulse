@@ -37,21 +37,21 @@
 <time>15:18</time> </p> </figure> </div> <div> <p><span>Issued on: <time>16/02/2026 - 13:49</time></span><span>Modified: <time>16/02/2026 - 13:49</time></span></p> <div> <p> 15:18 min </p></div> </div> <a href="https://www.france24.com/en/tv-shows/paris-des-arts/"> <p>From the show</p> <img src="https://s.france24.com/media/display/7b619e90-75ba-11ef-9b26-005056bfb2b6/EN-header-paris-arts.svg" alt="Paris des arts"> </a> <div> <p><span>Reading time</span> 1 min</p></div> <p> This week on Paris des Arts, Valérie Fayolle sits down with actor and comedian Michel Boujenah. He's currently starring in "Toute la famille que j'aime" ("The whole family I love"), a witty comedy at the Théâtre des Variétés. Lilly Wood &amp; the Prick also feature in this edition as they return with a fifth album "Christina", 10 years after the worldwide success of "Prayer in C". </p> <p>Plus, we catch a glimpse of vintage prints of the late <a href="https://www.france24.com/en/tag/brigitte-bardot/" target="_self">Brigitte Bardot</a> at the Galerie de l'Instant.&nbsp;It's a&nbsp;retrospective dedicated to the "BB" of the 1950s and 60s, who revolutionised the concept of femininity.</p> <div> <p><span> By: </span></p><div> <p><span> Valérie FAYOLLE </span> </p> </div> <div> <p><span> Pauline HEILMANN </span> </p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -32,21 +32,21 @@
 </p> </div> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/adc3f63f-4eb7-454b-ae39-dcfb1ba5b5ac/NW_raw/photo-millo-moravski-agence-zoom-1771259776.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/adc3f63f-4eb7-454b-ae39-dcfb1ba5b5ac/NW_detail/photo-millo-moravski-agence-zoom-1771259776.jpg" alt="Photo Millo Moravski/Agence Zoom"> </a> <figcaption>Photo Millo Moravski/Agence Zoom</figcaption></figure> </div> </div><div> <p>Le 23 février, dès 17h45, Albertville accueillera à l’occasion d’une grande fête populaire le retour du drapeau olympique et de la délégation française de Milan Cortina. Un évènement co-organisé par le Comité national olympique et sportif français et la Région Auvergne Rhône-Alpes. Dans un premier temps, plusieurs milliers de places avaient été ouvertes à la réservation et dès ce lundi 16 février, après-midi, d’autres vont l’être (rendez-vous sur le site de la Région&nbsp;: <a href="https://www.billetweb.fr/region-20260223-retour-drapeau-delegation-francaise-gp">https://www.billetweb.fr/region-20260223-retour-drapeau-delegation-francaise-gp</a>).</p> <div> <h2>6500 spectateurs attendus</h2><p>«&nbsp;Des places offertes&nbsp;», comme l’a souligné le président de la Région Aura, <a href="https://www.ledauphine.com/p/fabrice-pannekoucke" target="_blank">Fabrice Pannekoucke</a>, non sans avoir précisé que dès les premières 24 heures plus de 2000 places s’étaient envolées. Au total, 6500 spectateurs sont attendus pour cette fête qui se déroulera entre le mât olympique et la Halle d’olympique d’Albertville.</p></div> <p>Avec parmi les invités&nbsp;: des athlètes des JO de 1992, de Paris 2024, et une partie de la délégation française actuellement à Milan Cortina ainsi que des athlètes paralympiques. Côté spectacle&nbsp;: sont notamment annoncés un son et lumière et un concert avec Bigflo et Oli, ainsi qu’un DJ set avec Charles B.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

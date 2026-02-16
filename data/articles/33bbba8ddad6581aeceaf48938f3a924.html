@@ -31,21 +31,21 @@
     <div><div> <p>French President <a href="https://www.france24.com/en/tag/emmanuel-macron/" target="_self">Emmanuel Macron</a> on Monday said he "neither supported nor approved" the <a href="https://www.france24.com/en/tag/us-military/" target="_self">US military</a> operation to grab Venezuelan leader <a href="https://www.france24.com/en/tag/nicolas-maduro/" target="_self">Nicolas Maduro</a>, a government spokesman said.</p> <p>His comment clarified an initial public reaction Macron made that Venezuelans "can only rejoice" at Maduro's overthrow.</p> <p>That first reaction drew criticism from several political figures in <a href="https://www.france24.com/en/tag/france/" target="_self">France</a>, some of whom saw the French president as kowtowing to US President <a href="https://www.france24.com/en/tag/donald-trump/" target="_self">Donald Trump</a>.</p> <p>It also contrasted with a reaction from French Foreign Minister Jean-Noel Barrot who on Saturday condemned the US operation&nbsp;– saying it undermined international law, while stressing that no solution to <a href="https://www.france24.com/en/tag/venezuela/" target="_self">Venezuela</a>'s crisis can be imposed from the outside.</p> <p><span>Read more</span><a href="https://www.france24.com/en/americas/20260105-live-maduro-us-court-new-york-federal-indictment" target="_self">Live: Macron says France ‘does not approve’ of method US used to overthrow Maduro</a></p> <p>On Monday, government spokeswoman Maud Bregeon reported Macron as telling cabinet ministers: "We defend international law and the freedom of peoples. The method employed is neither supported nor approved."</p> <p>She said Macron added that, for Venezuela, "if there is to be a transition, then the 2024 winner must obviously play a central role in it".</p> <p>That was in reference to Venezuelan presidential candidate <a href="https://www.france24.com/en/tag/edmundo-gonzalez-urrutia/" target="_self">Edmundo Gonzalez Urrutia</a>, who was widely considered the rightful victor of a 2024 presidential election.</p> <p>Maduro, however, was proclaimed the winner, sparking deadly riots that were brutally repressed.</p> <p>Maduro's vice president, Delcy Rodriguez, has taken over Venezuela's government as interim leader, and said she wants to discuss "cooperation" with Washington. The country's military has said it recognises her authority.</p> <p>Trump says the US <a href="https://www.france24.com/en/americas/20260104-live-venezuela-maduro-held-in-us-custody-as-trump-vows-to-run-the-country-us" target="_self">is now "in charge" of Venezuela</a>. The White House on Sunday indicated it does not want regime change, just a pliant new Venezuelan government, even if filled with former Maduro associates.</p> <p><em>(FRANCE 24 with AFP)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

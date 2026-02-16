@@ -109,21 +109,21 @@
 <p>Amazon is now offering a straight up $100 off all iPad mini configs. This includes all three storage options – 128GB, 256GB, and the 512GB – and all four colors of each.&nbsp;</p> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/01/Apple-Trail-Loop-blue-2026.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Apple’s latest <a href="https://9to5toys.com/2026/02/12/apple-latest-blue-trail-loop-deals-2/">Blue Trail Loop is up to 30% off right now, Natural finish model at new all-time low</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Apple-40W-Dynamic-Power-Adapter-deal.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2>Apple’s 40W Dynamic Power Adapter <a href="https://9to5toys.com/2026/02/10/apple-40w-dynamic-power-adapter-amazon-deal/">delivers ‘50% charge in 20 minutes’ – now at $27 Amazon low</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Best-Buy-Presidents-Day-sale-poster.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2><a href="https://9to5toys.com/2026/02/16/best-buy-presidents-day-sale-up-to-1800-off-tvs-gaming-more/">LAST DAY – Best Buy’s Presidents Day sale: Apple and Google tech, appliances up to $1,800 off, TVs, gaming, more</a></h2> <figure><img src="https://9to5toys.com/wp-content/uploads/sites/5/2026/02/Walmart-Presidents-Day-sale-2026.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""></figure> <h2><a href="https://9to5toys.com/2026/02/16/walmart-2026-presidents-day-sale-live-tech/">Walmart 2026 Presidents Day sale now live: Tech under $50, LEGO from $20, clearance from $5, more</a></h2> <figure></figure> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

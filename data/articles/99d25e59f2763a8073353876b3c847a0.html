@@ -40,21 +40,21 @@
 <p>«&nbsp;<em>Si le bow­ling doit recou­vrer sa dimen­sion musi­cale, artis­tique et cultu­relle, il doit aussi per­mettre aux Grenoblois.e.s de pro­fi­ter à nou­veau d’un des plus beaux lieux de convi­via­lité de la ville</em>&nbsp;», estiment enfin les repre­neurs. Qui comptent offrir «&nbsp;<em>deux nou­veaux ren­dez-vous de res­tau­ra­tion et de rafraî­chis­se­ment</em>&nbsp;» avec la réha­bi­li­ta­tion des ter­rasses de l’ex-bow­ling et du pavillon. En somme, un pro­jet en appa­rence très simi­laire… à ce que pro­po­sait La Bobine depuis plu­sieurs années.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

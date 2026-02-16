@@ -31,21 +31,21 @@
     <div><div><div><p>This is the 2nd launch from Lovon AI therapy. </p><a href="https://www.producthunt.com/products/lovon/launches"><span>View more</span> </a></div><section><img src="https://ph-files.imgix.net/a305efcb-9472-45be-a0c8-67a3fa16b54b.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=56&amp;h=56&amp;fit=crop&amp;frame=1" alt="Lovon AI Therapy"><div><div><h2>Lovon AI Therapy</h2><p>Launched this week</p></div><p><span>Talk it out and feel better</span></p></div></section><p>AI therapy you can actually talk to. Just speak naturally and get support anytime you need it.</p><div><section><div><p><img src="https://ph-files.imgix.net/4446dc2a-76b8-491b-902b-74355859200d.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=391&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/edf0d82b-e31a-4eb9-985d-a2753138337d.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/3630b7fb-120b-4515-b9b2-0d610cb3907b.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/17f258f0-de81-4bdb-8eac-77fd6f1e62df.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/df42baea-68ef-4505-9cdf-ab985df8ac35.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div><div><p><img src="https://ph-files.imgix.net/07ff56ce-8bd6-4f5a-9fd1-554a691ed335.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=368&amp;h=220&amp;fit=max&amp;frame=1" alt="Lovon AI Therapy gallery image"></p></div></section></div><section><p>Free Options</p><div><p><span>Launch tags:</span></p><p><a target="_blank" href="https://www.producthunt.com/topics/artificial-intelligence">Artificial Intelligence</a><span>•</span><a target="_blank" href="https://www.producthunt.com/topics/health">Health</a></p></div></section><div><div><p>Launch Team </p><p>/ Built With</p></div><div><a target="_blank" href="https://www.producthunt.com/@ponikarovskii"></a><a target="_blank" href="https://www.producthunt.com/@thxgrey"></a><a target="_blank" href="https://www.producthunt.com/@ilichev"></a><p><a target="_blank" href="https://www.producthunt.com/products/notion"><img src="https://ph-files.imgix.net/ff3e2acf-884a-4f4c-a383-6edfe3de0d88.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=40&amp;h=40&amp;fit=crop&amp;frame=1" alt="Notion"></a></p><p><a target="_blank" href="https://www.producthunt.com/products/cursor"><img src="https://ph-files.imgix.net/d2edfb12-0064-4ea2-af46-12b43bbb2842.png?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=40&amp;h=40&amp;fit=crop&amp;frame=1" alt="Cursor"></a></p><p><a target="_blank" href="https://www.producthunt.com/products/figma"><img src="https://ph-files.imgix.net/db00a7a1-6778-4e51-a953-de5a9a339bc9.jpeg?auto=compress&amp;codec=mozjpeg&amp;cs=strip&amp;auto=format&amp;w=40&amp;h=40&amp;fit=crop&amp;frame=1" alt="Figma"></a></p></div></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

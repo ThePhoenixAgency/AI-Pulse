@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - HourSense/picrust</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+</style>
+</head>
+<body>
+  <h1>GitHub - HourSense/picrust</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 7:30:18 PM | Lang: FR |
+    <a href="https://github.com/HourSense/picrust" target="_blank">Original Article</a>
+  </div>
+  <div class="content">
+    <p> <a target="_blank" href="/HourSense/picrust/blob/main/docs/picrust.png"><img src="/HourSense/picrust/raw/main/docs/picrust.png" alt="PiCrust"></a>
+</p>
+<div><h1>PiCrust: Pi, but in Rust </h1><a href="#picrust-pi-but-in-rust-"></a></div>
+<p> <strong><a href="https://github.com/openagentsinc/openagents/tree/main/packages/pi">Pi</a>, but in Rust</strong><br> The agent loop that powers OpenClaw, with parallel runtimes, native binaries, and structured permissions.
+</p>
+<p> <a href="https://github.com/HourSense/picrust/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/7013272bd27ece47364536a221edb554cd69683b68a46fc0ee96881174c4214c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="License: MIT"></a> <a href="https://crates.io/crates/picrust"><img src="https://camo.githubusercontent.com/c9f814276e09168868bcfdaec1746f34bf2bd0b48e28d7331f697d08e0a25e81/68747470733a2f2f696d672e736869656c64732e696f2f6372617465732f762f706963727573742e737667" alt="Crates.io"></a> <a href="https://docs.rs/picrust"><img src="https://camo.githubusercontent.com/0d1012f6d4b865ab03eb826ffcee8022202379a1d8e542e927ab3d9b15e04f98/68747470733a2f2f696d672e736869656c64732e696f2f646f637372732f70696372757374" alt="docs.rs"></a>
+</p>
+<p> <a href="#philosophy">Philosophy</a> • <a href="#quick-start">Quick Start</a> • <a href="https://docs.framework.vibeworkapp.com/">Documentation</a>
+</p>
+<hr>
+<div><h2>Philosophy</h2><a href="#philosophy"></a></div>
+<p><a href="https://github.com/openagentsinc/openagents/tree/main/packages/pi">Pi</a> proved that the best agent architecture is the simplest one: a while loop with tools. No graphs, no DAGs, no state machines. Just call the LLM, execute whatever tools it asks for, feed results back, repeat. <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> proves this works at scale.</p>
+<p>PiCrust takes that insight and rebuilds it in Rust for a different use case: <strong>AI employees</strong>.</p>
+<div><h3>Assistants vs. Employees</h3><a href="#assistants-vs-employees"></a></div>
+<p>A coding assistant (Claude Code, Cursor, Pi) sits in your terminal, pair-programs with you, and waits for instructions. An AI employee does work on its own. It handles your email while you're in a meeting. It builds a presentation from a brief overnight. It juggles multiple tasks concurrently, the way a human employee would.</p>
+<p>Most agent frameworks are built for the assistant model. PiCrust is built for the employee model. That difference drives every architectural decision.</p>
+<div><h3>What an AI employee actually needs</h3><a href="#what-an-ai-employee-actually-needs"></a></div>
+<ul>
+<li><strong>Long-running, crash-safe sessions.</strong> An employee doesn't lose its memory when the process restarts. It needs append-only persistence that survives power failures, OOM kills, and deployment restarts without corrupting state.</li>
+<li><strong>Parallel task execution.</strong> A human employee doesn't finish one task before starting another. They context-switch. An AI employee needs the same: multiple agent loops running concurrently on a single runtime, each with isolated state but sharing compute resources.</li>
+<li><strong>Full system access.</strong> Filesystem, desktop apps, browser automation, shell execution. The ability to reach out and actually touch things, not just generate text in a sandbox.</li>
+<li><strong>Structured permission controls.</strong> With great access comes great responsibility. You need hooks, permission layers, and safety guardrails that can intercept dangerous operations before they execute, without crippling the agent's autonomy.</li>
+<li><strong>Cross-platform native binaries.</strong> If your AI employee runs on each user's machine, you can't afford to ship a Python runtime or Node.js installation with it. You need a single binary that runs anywhere.</li>
+</ul>
+<div><h3>Why Rust</h3><a href="#why-rust"></a></div>
+<p>Rust makes agent code easier for both humans and LLMs to understand. No inheritance hierarchies. No dynamic typing. No runtime magic. Every function signature tells you exactly what goes in and what comes out. When Claude reads PiCrust's source to understand how to build on it, there's zero ambiguity. The types tell the whole story.</p>
+<p>The practical benefits go beyond readability. Rust compiles to a native binary. No runtime. No dependencies beyond the OS. No Node.js overhead, no Python version conflicts, no dependency hell. For an AI employee that ships to user machines or runs in per-user VMs, a single native binary with zero runtime dependencies is table stakes.</p>
+<div><h3>Where we diverge from Pi</h3><a href="#where-we-diverge-from-pi"></a></div>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pi</th>
+<th>PiCrust</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Language</strong></td>
+<td>TypeScript</td>
+<td>Rust</td>
+</tr>
+<tr>
+<td><strong>Tools</strong></td>
+<td>4 built-in, self-extending</td>
+<td>9 built-in + Tool trait</td>
+</tr>
+<tr>
+<td><strong>Extensions</strong></td>
+<td>Dynamic hot-reload</td>
+<td>Compiled Rust traits</td>
+</tr>
+<tr>
+<td><strong>MCP</strong></td>
+<td>Not included (by design)</td>
+<td>Built-in via ToolProvider</td>
+</tr>
+<tr>
+<td><strong>Concurrency</strong></td>
+<td>One agent per process</td>
+<td>Many agents on one async runtime</td>
+</tr>
+<tr>
+<td><strong>Target</strong></td>
+<td>Coding assistants</td>
+<td>AI employees</td>
+</tr>
+</tbody>
+</table>
+<p>Pi's approach of "four tools and extend yourself" is elegant for a coding agent where the human is in the loop. For an AI employee running autonomously, you need a richer base toolkit, compile-time safety, and parallel runtimes from day one.</p>
+<blockquote>
+<p>Read the full story: <a href="https://vibework.ai/blog/picrust">PiCrust: What If Pi Was Written in Rust?</a></p>
+</blockquote>
+<hr>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Installation</h3><a href="#installation"></a></div>
+<p>Add to your <code>Cargo.toml</code>:</p>
+<div><pre>[<span>dependencies</span>]
+<span>picrust</span> = { <span>path</span> = <span><span>"</span>path/to/picrust<span>"</span></span> }
+<span>tokio</span> = { <span>version</span> = <span><span>"</span>1<span>"</span></span>, <span>features</span> = [<span><span>"</span>full<span>"</span></span>] }
+<span>anyhow</span> = <span><span>"</span>1.0<span>"</span></span></pre></div>
+<div><h3>Minimal Example</h3><a href="#minimal-example"></a></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+  </script>
+</body>
+</html>

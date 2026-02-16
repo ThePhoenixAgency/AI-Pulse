@@ -36,21 +36,21 @@
 <div><p><span>Summary created by Smart Answers AI</span></p><h3>In summary:</h3><ul><li>Macworld reports the iPhone 17e may launch within a week, featuring a ‘binned’ A19 chip that’s less powerful than the standard A19 processor.</li><li>The device is expected to cost $599 with 8GB RAM, 48MP camera, Dynamic Island, and improved low-light photography capabilities.</li><li>While offering solid mid-range features, the iPhone 17e appears to make processor compromises that may disappoint performance-focused users.</li></ul></div> <p>The iPhone 17e, one of Apple’s most highly anticipated products for 2026, could arrive <a href="https://www.macworld.com/article/3052191/iphone-17e-set-to-launch-on-19-february-only-one-camera-but-finally-magsafe.html">in less than a week</a>. But the announcement is unlikely to hold many surprises, because the leaks are now coming thick and fast.</p> <p>Take the tech specs. We’re reasonably confident that the 17e will feature most or all of the following: an A19 processor, 8GB of RAM, 256GB of starting storage (up from 128GB), a C1X modem, the same single 48MP rear-facing camera as on the 16e (although the selfie camera could get an upgrade), a 60Hz 6.1-inch screen, support for MagSafe, and a starting price of $599. These theories have all been fairly consistent for some time.</p> <p>Even if those theories are all correct, however, there’s still room for nuance. Such as the A19 processor. Will Apple give the 17e the same A19 as on the iPhone 17, or a version that’s slightly less powerful?</p> <p>Last year’s iPhone 16e has the A18, but it’s a “binned” version of the one in the iPhone 16; that means Apple takes the chips with minor manufacturing defects (fewer CPU or GPU cores) and uses those in its cheaper products. This is all done in an open and transparent way (the iPhone 16e is listed as having just four GPU cores compared to the iPhone 16’s five for precisely this reason) but does mean what seems on first glance to be the same processor can vary in its actual performance.</p> <p>Until now it’s not been clear whether Apple intended to use the same binned-chip strategy with the iPhone 17e. But a <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.youtube.com/watch?v=jZKEPROweXs&amp;xcust=1-1-3060687-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3060687/the-iphone-17e-might-not-be-as-powerful-as-we-hoped.html" target="_blank">new video</a> from the controversial YouTuber Jon Prosser makes the confident prediction (confidence being one of Prosser’s principal characteristics) that it will.</p> <figure><p> </p></figure> <p>“Inside iPhone 17e you’re getting a slightly binned A19 chip,” he says. “Trust me, the people buying this phone aren’t going to notice.”</p> <p>The second sentence might end up being a self-fulfilling prophecy, of course… or a self-solving problem. Because the tech-savvier buyers who would have an issue with binned-chip performance will be aware of it and simply not get an iPhone 17e.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

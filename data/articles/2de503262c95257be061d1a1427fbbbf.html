@@ -35,21 +35,21 @@
     <div><div> <p>À partir du 17 mars prochain, l’offre télé Universal+ va connaître un changement important en France. Deux chaînes emblématiques vont évoluer et vont changer le quotidien de milliers de Français. Pour les abonnés concernés, notamment de nombreuses offres <a href="https://www.journaldugeek.com/2026/02/05/free-a-un-tres-beau-cadeau-pour-ses-abonnes-freebox/">Freebox</a>, la transition se fera automatiquement, sans démarche à effectuer ni coût supplémentaire.</p> <p>Le changement le plus visible concerne la fin d’E!, la chaîne connue pour ses programmes autour des célébrités et de la pop culture, notamment la télé-réalité des Kardashian. Elle sera remplacée par <em>Bravo</em>, une chaîne très populaire aux États-Unis, spécialisée dans la télé-réalité haut de gamme. Concrètement, les téléspectateurs français verront apparaître davantage d’émissions de type docu-réalité et lifestyle, avec des franchises déjà bien installées à l’international.</p> <p>Parmi les programmes annoncés figurent notamment <strong><em>The Real Housewives of Beverly Hills</em></strong>, la franchise maritime <strong><em>Below Deck</em> </strong>(et ses déclinaisons), ou encore de nouveaux formats comme <strong><em>Bravo’s Love Hotel</em></strong>. Si vous regardiez E! pour ses contenus people, la transition pourrait être assez naturelle, car une partie de la programmation s’en rapproche. En revanche, les émissions spécifiques à E! pourraient disparaître ou ne plus être diffusées.</p> <p>La seconde évolution concerne la chaîne SYFY qui devient SciFi. Il ne s’agit pas d’un arrêt mais d’un changement d’identité, accompagné d’une nouvelle charte visuelle. La chaîne continuera de proposer des séries et films de science-fiction, de fantastique et d’aventure. De nouveaux programmes sont déjà annoncés, dont <em>War of the Kingdoms, Domino Day</em> ou encore une nouvelle saison de <em>The Librarians&nbsp;: The Next Chapter</em>.</p> <h2>Qu’est-ce que ça change pour les consommateurs&nbsp;?</h2> <p>Cette modification s’inscrit dans une stratégie du groupe NBCUniversal visant à harmoniser ses chaînes françaises avec ses marques internationales. Universal+ est inclus dans plusieurs abonnements TV, notamment sur Freebox Ultra, Delta, Pop (avec TV by Canal) et Révolution (avec TV by Canal). Le bouquet est aussi disponible chez d’autres opérateurs ou en option payante, au tarif d’environ 5,99&nbsp;€ par mois.</p> <p>Pour les consommateurs, l’impact principal concerne donc le contenu, pas l’accès. Le numéro de chaîne peut changer selon les opérateurs, mais l’offre reste incluse dans les abonnements existants. Il n’est pas nécessaire de résilier, de se réinscrire ou de modifier son contrat.</p> <p>Si vous êtes abonné à Universal+ via une box internet, vous n’avez rien à faire, la bascule se fera automatiquement le 17 mars. En cas de problème d’accès après cette date, un simple redémarrage du décodeur ou une mise à jour de la liste des chaînes devrait suffire.</p> <p>Pour les téléspectateurs français, il s’agit surtout d’un changement d’habillage et de programmation, pas d’une disparition du service, ce qui est une bonne nouvelle. Reste à voir si ces nouvelles chaînes parviendront à séduire autant que leurs versions précédentes.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -38,21 +38,21 @@
 <p>Dans le cadre du pro­to­cole, les infir­miers seront en mesure de réa­li­ser «&nbsp;<em>un pre­mier accueil, une écoute et l’amorce d’un lien de confiance avec le patient</em>&nbsp;», «&nbsp;<em>une éva­lua­tion cli­nique struc­tu­rée, com­plé­tée par l’utilisation d’échelles de symp­tômes psy­chia­triques stan­dar­di­sées</em>&nbsp;», et la pres­crip­tion de cer­tains trai­te­ments ou d’exa­mens com­plé­men­taires. De même qu’un suivi du patient avec des rééva­lua­tions à court terme et une orien­ta­tion vers des pro­fes­sion­nels ou des struc­tures plus adap­tées, si besoin.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

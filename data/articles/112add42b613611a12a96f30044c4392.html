@@ -35,21 +35,21 @@
     <div><div><article><div><div><p><time>13 hours ago</time></p></div><p><span></span></p><div><p><span>Harry Sekulich</span></p></div><p></p></div><div><figure><div><p><img src="https://static.files.bbci.co.uk/bbcdotcom/web/20260205-130046-240c8e457e-web-2.39.1-1/grey-placeholder.png"><img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/4cbd/live/71862300-0ac4-11f1-9972-d3f265c101c6.jpg.webp" alt="Reuters Israeli Prime Minister Benjamin Netanyahu gestures as he speaks during the Conference of Presidents of Major American Jewish Organisations, in Jerusalem,"><span>Reuters</span></p></div></figure></div><div><p>Israeli Prime Minister Benjamin Netanyahu says the US must require Iran to relinquish all of its enriched uranium and be barred from enriching more, as part of any nuclear deal with Tehran.</p></div><div><p>In a speech in Jerusalem on Sunday, he outlined several conditions he wanted, including that "all enriched material has to leave Iran" and that "there should be no enrichment capability".</p></div><div><p>His comments come as Iranian and US officials prepare for a second round of talks in Switzerland on Tuesday.</p></div><div><p>Iran will consider compromises to reach a nuclear deal if the US is willing to discuss lifting sanctions, Iranian deputy foreign minister Majid Takht-Ravanchi told the BBC in Tehran.</p></div><div><p>However, Iran regards zero enrichment as a red line and a violation of its rights under the nuclear non-proliferation treaty.</p></div><div><p>The US has piled pressure on Iran to reach a deal and has built up its military capabilities in the Middle East, sending two aircraft carriers – including its largest-ever warship – to the region.</p></div><div><p>Additional American naval forces will protect against any potential threats in the region, US Secretary of State Marco Rubio told a news conference in Slovakia.</p></div><div><p>He said US President Donald Trump "prefers diplomacy and an outcome of negotiated settlement" over direct attacks on Iran.</p></div><div><p>Trump's top envoy Steve Witkoff and son-in-law Jared Kushner are set to meet Iranian negotiators including Foreign Minister Abbas Araghchi, who is travelling to Geneva.</p></div><div><p>"No-one's ever been able to do a successful deal with Iran, but we're going to try," Rubio said.</p></div><div><p>Under the <a target="_self" href="https://www.bbc.com/news/world-middle-east-33521655">2015 nuclear deal</a>, from which Trump withdrew, Iran had agreed to limit its nuclear activities and allow international inspections in return for the lifting of crippling economic sanctions.</p></div><div><p>Ahead of the latest round of talks, Takht-Ravanchi told the BBC Tehran has offered to dilute its 60%-enriched uranium as evidence of its willingness to compromise.</p></div><div><p>Highly enriched uranium, at near weapons-grade level, has deepened suspicions that the Islamic Republic is moving towards the development of a nuclear weapon, something it has always denied.</p></div></article></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

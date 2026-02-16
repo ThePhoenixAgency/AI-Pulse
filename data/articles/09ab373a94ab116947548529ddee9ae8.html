@@ -38,21 +38,21 @@
 <p>Les territoires fréquentés par le loup se sont continuellement étendus en dix ans, passant de moins de 10&nbsp;départements à plus de 60, et les flambées d'attaques sont un sujet sensible sur fond de colère agricole. En Haute-Marne, 800&nbsp;animaux d'élevage ont été tués en 2025 et 124 depuis le 1er janvier, selon la ministre. En France, <a href="https://www.franceinfo.fr/environnement/biodiversite/animaux/le-nombre-de-loups-en-france-est-reste-relativement-stable-en-2025-estime-a-1-082-individus_7645190.html">le nombre d'animaux d'élevage tués est reparti à la hausse, avec 12&nbsp;000 victimes</a> selon les premiers chiffres de 2025.</p></div> </section> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

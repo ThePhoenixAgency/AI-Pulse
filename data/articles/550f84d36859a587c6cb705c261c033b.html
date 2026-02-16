@@ -31,21 +31,21 @@
     <div><div><p>En 2025, environ 230 000 offres d'emploi concernaient l'IT et la tech, selon HelloWork. Par rapport à 2024, il s'agit d'un recul de 28 %. Il ne faut pas forcément y voir une baisse de recrutement mais de nouvelles pratiques avec quelques priorités technologiques.&nbsp;</p><p>Les dernières études de HelloWorks fournissent plusieurs stats intéressantes :</p><ul><li>1 offre IT sur 2 est localisée en Île-de-France ou en Auvergne-Rhône-Alpes : sans grande surprise</li><li>La baisse des recrutements concerne la plupart des régions, mais PACA (-17 %) résiste mieux</li><li>Les métiers des systèmes, réseaux, infrastructures, du développement et du pilotage SI représentent 3 recrutements IT sur 4</li></ul><ul><li>Technicien de maintenance informatique (+48 %)</li><li>Ingénieur de recherche en IA (+47 %)</li><li>Ingénieur systèmes d’information (+43 %)</li><li>Technicien data center (+41 %)</li></ul><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/helloworks.png?itok=SgusUiCx"></p><p>Les métiers et profils autour de l'IA progressent fortement, là encore, tout sauf une surprise. En 2025, trois profils de développeurs sont reçus le plus de candidatures :</p><p>- développeur full stack</p><p>- développeur web</p><p>- développeur Python</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

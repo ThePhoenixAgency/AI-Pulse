@@ -35,21 +35,21 @@
     <div><div> <div> <p>Live</p> <div> <p><span></span> Europe </p> </div> <div> <p><span>Issued on: <time>16/02/2026 - 15:22</time></span><span>Modified: <time>16/02/2026 - 17:59</time></span></p> <div> <p><span> By: </span></p> </div> </div> <div> <figure> <img src="https://s.france24.com/media/display/1f006ae2-0b40-11f1-a8b3-005056bf30b7/w:1024/p:16x9/000-34M33CG.jpg" alt="Minister for Energy of Ukraine German Galushchenko speaks during a press conference in a bomb shelter in Kyiv, on March 25, 2024"> <figcaption> <span>Minister for Energy of Ukraine German Galushchenko speaks during a press conference in a bomb shelter in Kyiv on March 25, 2024.</span> <span> Anatolii Stapanov, AFP</span> </figcaption> </figure> </div> </div> <div> <p> Ukrainian investigators named former energy minister German Galushchenko as a suspect in a laundering probe after alleging they found approximately $12 million in bank accounts linked to his family, investigators said Monday. Galushchenko was accused in November of taking part in a $100-million kickback scheme from contractors building fortifications to defend energy infrastructure against Russian attacks. Follow our liveblog for the latest. </p> <div> <h2><a href="https://www.france24.com/en/europe/20260215-live-russia-says-ukrainian-drones-struck-black-sea-port-rubio-visits-hungary-slovakia" target="_self">Key developments from yesterday:</a></h2> <ul> <li><a href="https://www.france24.com/en/tag/ukraine/" target="_self">Ukraine</a>'s army said&nbsp;it hit a key oil terminal in southern <a href="https://www.france24.com/en/tag/russia/" target="_self">Russia</a> near Moscow-annexed <a href="https://www.france24.com/en/tag/crimea/" target="_self">Crimea</a> in its latest cross-border attack. Russian officials said Ukrainian <a href="https://www.france24.com/en/tag/drones/" target="_self">drones</a> had caused fires in the Krasnodar region and that dozens of drones had been shot down.&nbsp;</li> <li>Ukraine's NABU anti-corruption force says it arrested the country's former <a href="https://www.france24.com/en/tag/energy/" target="_self">energy</a> minister German Galushchenko – who resigned last year during a massive <a href="https://www.france24.com/en/tag/corruption/" target="_self">corruption</a> scandal – as he tried to cross Ukraine's border.&nbsp;</li> <li>Russia's army chief Valery Gerasimov has visited Moscow's troops in Ukraine and said the <a href="https://www.france24.com/en/tag/kremlin/" target="_self">Kremlin</a>'s forces seized a dozen eastern villages in February, the defence ministry said.&nbsp;</li> </ul> <p><em>(With AFP, AP and Reuters)&nbsp;</em></p> </div> </div> <div> <p>Keywords for this article</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

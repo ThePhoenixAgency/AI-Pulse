@@ -35,21 +35,21 @@
     <div><div><article><div><div><p><time>4 hours ago</time></p></div><p><span></span></p><div><p><span>Laura Gozzi</span></p></div><p></p></div><div><figure><p></p><figcaption>Alexei Navalny's mother joins mourners laying flowers at son's grave</figcaption><p></p></figure></div><div><p>The mother of the late Russian opposition figure Alexei Navalny says the assessment that her son died of poisoning has validated her belief that he was murdered.</p></div><div><p>On Saturday, the UK and European allies put out a statement saying Navalny, who died in 2024, was killed using a <a target="_self" href="https://www.bbc.co.uk/news/articles/cwyk4lz4e3eo">poison developed from a dart frog toxin</a>, and that "only the Russian state had the means, motive and opportunity to deploy this lethal toxin".</p></div><div><p>"This confirms what we knew from the very beginning," Lyudmila Navalnaya said while visiting her son's grave in Moscow on Monday - the second anniversary of his death. "We knew that our son did not simply die in prison, he was murdered."</p></div><div><p>Russia has firmly rejected the accusations.</p></div><div><p>"Of course, we do not accept such accusations. We disagree with them, we consider them biased and unfounded. And, in fact, we resolutely reject them," Kremlin spokesman Dmitry Peskov said on Monday. </p></div><div><p>Navalny's widow Yulia has also marked the two-year anniversary of his death, writing in a social media post: "We have achieved truth and we will achieve justice one day too." </p></div><div><p>The Kremlin did not comment on her statements at the time. </p></div><div><figure><div><p><img src="https://static.files.bbci.co.uk/bbcdotcom/web/20260205-130046-240c8e457e-web-2.39.1-1/grey-placeholder.png"><img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/6749/live/aeb0d500-0b36-11f1-89e7-89779f9c687a.jpg.webp" alt="Reuters Russian opposition politician Alexei Navalny takes part in a rally to mark the 5th anniversary of opposition politician Boris Nemtsov's murder and to protest against proposed amendments to the country's constitution, in Moscow, Russia February 29, 2020. "><span>Reuters</span></p></div><p></p><figcaption>Navalny was a fierce critic of Russian President Vladimir Putin</figcaption><p></p></figure></div><div><p>Dozens of Muscovites, as well as several foreign diplomats, visited Borisovskoye cemetery on Monday, heaping flowers on Navalny's grave.</p></div><div><p>A note left on the grave read: "Alexei, we remember you every day".</p></div><div><p>Navalny was 47 when he died in the Siberian penal colony where he was serving a 19-year sentence for "extremism".</p></div><div><p>A fierce and charismatic critic of President Vladimir Putin, he mounted campaigns highlighting high-level corruption in government, bringing hundreds of thousands onto the streets and becoming known abroad as Russia's only opposition leader.</p></div><div><p>He survived a suspected poisoning with the Novichok nerve agent in 2020, for which he received treatment in a German hospital. He returned to Russia the following year, saying he did not want to "give up either my country or my beliefs". </p></div><div><p>Police arrested him on arrival. Just over a year later, he died in the Polar Wolf penal colony above the Arctic Circle.</p></div><div><p>At the time, the Kremlin said Navalny had died of natural causes. Although the authorities initially refused to release his body, he was eventually buried in Moscow in March 2024.</p></div><div><p>His funeral, which was attended by thousands of mourners who defied fears of a police crackdown, was the last time like-minded Russians gathered publicly. </p></div><div><p>Repression in Russia has steadily intensified over the years, ramping up following Moscow's invasion of Ukraine in February 2022. Punitive new laws have been introduced and displays of anti-government stance – whether in the form of street protests or online posts – are routinely met with long prison sentences.</p></div><div><p>Many associates of Navalny have been jailed or have fled Russia.</p></div><div><p>His widow Yulia – who has since taken the helm of Navalny's Anti-Corruption Foundation – also faces arrest, and lives abroad alongside their two children.</p></div><div><p>The Russian opposition in exile is politically fragmented and has struggled to present a united front, with different factions publicly falling out.</p></div></article></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

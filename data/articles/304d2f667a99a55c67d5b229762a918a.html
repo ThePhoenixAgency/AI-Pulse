@@ -31,21 +31,21 @@
     <div><div> <p>Fondée en 2008 et spécialisée dans la conception, le design et la fabrication de puces électroniques pour des applications embarquées, la PME grenobloise Asygn vient de présenter sa dernière solution baptisée ColibryNPU. «&nbsp;Depuis 18 ans, nous concevons des solutions qui permettent à nos clients de rendre leurs...</p> </div><div> <p>...pour lire la suite, rejoignez notre communauté d'abonnés</p> <p>et accédez à l'intégralité de nos articles sur le site et l'application mobile</p> <p> à partir de 1 € le 1er mois, sans engagement de durée </p> <p>Google : 1€ le 1er mois puis 12,99€</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -34,21 +34,21 @@
 </div> <p>La chanteuse, qui se considère queer, utilise sa notoriété pour faire passer des messages sur les inégalités.</p> <p>"Quand tu es une fille noire et que tu fais de la musique en France, tu dois te battre cinq fois plus. Parce que personne n'aime les filles noires", a-t-elle lâché dans une récente interview au magazine musical américain The Fader.</p> <p>"Si je n'avais pas réussi à me faire une place, vous ne me verriez même pas, parce qu'on vit dans un pays raciste", avait assuré la chanteuse, engagée contre l'extrême droite.</p> <p>En décembre, elle s'était insurgée après une story TikTok du président du RN,&nbsp;<a href="https://www.france24.com/fr/tag/jordan-bardella/" target="_self">Jordan Bardella</a>, reprenant sa musique.</p> <p>"Je ne partagerai jamais vos idées, vos valeurs, ni vos projets politiques néfastes, dangereux et profondément méprisants envers des personnes comme moi", avait-elle martelé sur Instagram.</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

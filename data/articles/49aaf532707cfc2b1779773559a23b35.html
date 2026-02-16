@@ -37,21 +37,21 @@
 </a><p><em>"Tous ces déchets-là auraient pu être évités si les gens avaient eu comme réflexe de jeter leur emballage. Souvent, on peut avoir cette tendance un peu facile de jet dans la nature parce que ce sont des endroits à l’écart. On se dit que personne ne tombera dessus et que ce n’est pas très grave. Alors que non, le message que l’on passe, c’est que le geste doit être fait partout y compris dans la nature et dans les endroits comme ça où on n’a pas de poubelles sous la main. Et il y a encore du travail, aujourd’hui seulement une canette sur deux est recyclée en France", </em>déplore Florian.</p><p>L'objectif est d'arriver à 100 % de canettes recyclées. Pour cela, la sensibilisation est importante. La tournée de l'association, commencée ce lundi 9 février à Villard-de-Lans, en Isère, se poursuit jusqu'au 4 mars. L'association ira notamment à Chamrousse, l'Alpe d'Huez, les Deux Alpes mais aussi en Savoie, à La Plagne, Tignes et Courchevel.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

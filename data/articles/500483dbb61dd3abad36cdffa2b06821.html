@@ -32,21 +32,21 @@
 <li><figure><img alt="Le maire Horizons de Nice Christian Estrosi le 14&nbsp;février 2025."><figcaption><span>Le maire Horizons de Nice Christian Estrosi le 14&nbsp;février 2025. | </span>ALEJANDRO MARTINEZ GONZALEZ/HANS LUCAS VIA AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 19h24</span></time></span> </span> </header> </div> <div> <p>Christian Estrosi, maire Horizons de Nice et candidat à <a href="https://www.ouest-france.fr/elections/municipales/municipales-2026-a-nice-christian-estrosi-eric-ciotti-qui-sont-les-onze-candidats-en-lice-au-premier-tour-f86c9000-da60-11f0-8d76-cbe9a6da9c82" target="_blank">sa réélection aux municipales,</a> a annoncé lundi 16&nbsp;février 2026 porter plainte contre X après une rumeur le disant atteint de Parkinson. <strong>«&nbsp;J’ai déposé plainte contre X afin que la justice puisse identifier l’origine des rumeurs et des comportements indignes qui circulent depuis plusieurs semaines,</strong> a-t-il écrit <a href="https://x.com/cestrosi/status/2023454314782445708" target="_blank">sur X.</a>&nbsp;<strong>La diffamation et l’instrumentalisation de la maladie n’ont pas leur place dans le débat public.&nbsp;»</strong></p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

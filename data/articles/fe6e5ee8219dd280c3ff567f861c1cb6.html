@@ -35,21 +35,21 @@
     <div><div><p>Gisèle Pelicot has told BBC Newsnight's Victoria Derbyshire that her strength comes from her "DNA". </p><p>Ms Pelicot was at the centre of the largest rape trial in French history. For almost a decade, she had been drugged unconscious by her husband Dominique Pelicot and raped by dozens of men he had recruited on internet chat rooms.</p><p>She made the remarkable decision to let the world know who she was, waiving her legal right to anonymity, before the trial began.</p><p>In this interview, she reveals she found it "inconceivable" that the man she shared her life with "could have committed these horrors" and how she is now rebuilding her life.</p><ul><li><a target="_self" href="https://www.bbc.co.uk/news/articles/c9q5l22ryy4o">Gisèle Pelicot tells BBC: I felt crushed by horror - but I don't feel anger</a></li><li><a target="_self" href="https://www.bbc.co.uk/news/articles/ckgl9vljk13o">Queen's letter of support left Pelicot 'overwhelmed'</a></li></ul></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

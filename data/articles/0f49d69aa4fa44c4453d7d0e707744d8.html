@@ -46,21 +46,21 @@ KEY = bytes([ 0x89,0xE7,0xFF,0xBE,0xEB,0x2D,0x73,0xF5, 0xA9,0x10,0xFC,0x42,0x5B,
 ]) def recv_exact(sock: socket.socket, n: int) -&gt; bytes: out = bytearray() while len(out) &lt; n: chunk = sock.recv(n - len(out)) if not chunk: raise ConnectionError('socket closed') out += chunk return bytes(out) def pad16_zero(b: bytes) -&gt; bytes: r = len(b) &amp; 0x0F return b if r == 0 else (b + b'\x00' * (16 - r)) def hdr_checksum(hdr: bytes) -&gt; int: return (sum(hdr[0:0x0C]) + sum(hdr[0x10:HDR_LEN])) &amp; 0xFFFFFFFF def build_header(flag: int, msg: int, payload_len: int) -&gt; bytes: hdr = bytearray(HDR_LEN) hdr[0] = flag &amp; 0xFF hdr[1] = msg &amp; 0xFF struct.pack_into('&lt;I', hdr, 0x08, payload_len &amp; 0xFFFFFFFF) struct.pack_into('&lt;I', hdr, 0x0C, hdr_checksum(hdr)) return bytes(hdr) class RFPipeSession: def __init__(self, key: bytes, iv0: bytes): self.key = key self.send_iv = iv0 self.recv_iv = iv0 def enc_send(self, sock: socket.socket, data: bytes) -&gt; None: cipher = AES.new(self.key, AES.MODE_CBC, iv=self.send_iv) ct = cipher.encrypt(data) self.send_iv = ct[-16:] sock.sendall(ct) def dec_recv(self, sock: socket.socket, n_plain: int) -&gt; bytes: if n_plain &lt;= 0: return b'' n_padded = (n_plain + 15) &amp; ~15 ct = recv_exact(sock, n_padded) cipher = AES.new(self.key, AES.MODE_CBC, iv=self.recv_iv) pt = cipher.decrypt(ct) self.recv_iv = ct[-16:] return pt[:n_plain] def send_header(self, sock: socket.socket, hdr_plain: bytes) -&gt; None: if len(hdr_plain) != HDR_LEN: raise ValueError('header must be 0x90 bytes') self.enc_send(sock, hdr_plain) def recv_header(self, sock: socket.socket) -&gt; bytes: ct = recv_exact(sock, HDR_LEN) cipher = AES.new(self.key, AES.MODE_CBC, iv=self.recv_iv) pt = cipher.decrypt(ct) self.recv_iv = ct[-16:] return pt def connect_any(host: str, port: int) -&gt; socket.socket: infos = socket.getaddrinfo(host, port, socket.AF_UNSPEC, socket.SOCK_STREAM) last_err = None for fam, st, proto, _, sa in infos: s = socket.socket(fam, st, proto) try: s.connect(sa) return s except Exception as e: last_err = e s.close() raise ConnectionError(f'connect failed: {last_err}') def main(): ap = argparse.ArgumentParser(description='rfpiped command client (msg 0x01)') ap.add_argument('target', help='IPv4/IPv6 address') ap.add_argument('command', help='command string (e.g., "mo-info system")') ap.add_argument('--nul', action='store_true', help='append NUL terminator to command') ap.add_argument('--recv', action='store_true', help='receive and print response') args = ap.parse_args() payload = args.command.encode('utf-8') if args.nul: payload += b'\x00' hdr_plain = build_header(flag=0x00, msg=0x01, payload_len=len(payload)) sess = RFPipeSession(KEY, IV0) with connect_any(args.target, PORT) as s: sess.send_header(s, hdr_plain) if payload: sess.enc_send(s, pad16_zero(payload)) if args.recv: rh = sess.recv_header(s) flag = rh[0]; rmsg = rh[1] rlen = struct.unpack_from('&lt;I', rh, 0x08)[0] print(f'Response: flag=0x{flag:02x} msg=0x{rmsg:02x} length={rlen}') if rmsg in (0x03, 0x05): return if rlen: body = sess.dec_recv(s, rlen) if body.endswith(b'\x00'): body = body[:-1] try: print(body.decode('utf-8', errors='replace')) except Exception: print(body.hex()) if __name__ == '__main__': main() </code></pre> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -35,21 +35,21 @@
     <div><div><article><div><div><p><time>9 hours ago</time></p></div><p><span></span></p><div><p><span>Alicia Curry</span></p></div><p></p></div><div><figure><p></p><figcaption>Protesters, police and military clash</figcaption><p></p></figure></div><div><p>Two female Israeli soldiers had to be rescued by police after being chased by a crowd of ultra-Orthodox Jewish men.</p></div><div><p>Footage from the city of Bnei Brak showed the women running through streets strewn with rubbish and overturned bins as police officers formed a protective barrier. More than 20 people were arrested.</p></div><div><p>Reports suggest the Israel Defense Forces (IDF) soldiers were wrongly believed to be trying to deliver army conscription orders. Military service is mandatory for most Jewish Israelis, but ultra‑Orthodox Jews have long been exempt. Moves to reform this have caused outrage among the community.</p></div><div><p>Israeli Prime Minister Benjamin Netanyahu condemned the incident as "unacceptable".</p></div><div><figure><div><p><img src="https://static.files.bbci.co.uk/bbcdotcom/web/20260205-130046-240c8e457e-web-2.39.1-1/grey-placeholder.png"><img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/d42a/live/7139f310-0aa9-11f1-adb1-dfcb996ae067.jpg.webp" alt="Reuters Three ultra-Orthodox Jewish children run from a stun grenade explosion, one covers his ears. The grenade has exploded into a small ball of light a short distance from the young boys."><span>Reuters</span></p></div><p></p><figcaption>Police used stun grenades to disperse the crowds in the city of Bnei Brak</figcaption><p></p></figure></div><div><p>"This is an extreme minority that does not represent the entire Haredi [ultra-Orthodox] community," Netanyahu said in a post on X. </p></div><div><p>"We will not allow anarchy, and we will not tolerate any harm to IDF servicemen and security forces who carry out their duties with dedication and determination."</p></div><div><p>Jewish religious leaders also condemned the actions of those involved in the unrest.</p></div><div><p>Riot police in Bnei Brak, on the edge of Tel Aviv, used stun grenades against the crowd and arrested 23 people, police said in a statement.</p></div><div><p>Three officers were injured and several police vehicles damaged, including a patrol car that was overturned and a police motorcycle that was set on fire, police added.</p></div><div><p>The IDF servicewomen had been on an official home visit to another soldier when the confrontation broke out, Israeli broadcaster Kan reported.</p></div><div><figure><div><p><img src="https://static.files.bbci.co.uk/bbcdotcom/web/20260205-130046-240c8e457e-web-2.39.1-1/grey-placeholder.png"><img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/2a78/live/5c60c480-0ab5-11f1-8a5a-ef57761b4594.jpg.webp" alt="Reuters Dozens of ultra-Orthodox Jews form a crowd in the streets, a stun grenade disperses in front of them, creating a plume of smoke and sparks to fly."><span>Reuters</span></p></div><p></p><figcaption>The ultra-Orthodox population now accounts for 14% of the Israeli population</figcaption><p></p></figure></div><div><p>The issue of conscription has become increasingly contentious during the war in Gaza, with the Israeli government now debating draft legislation that would require ultra-Orthodox men not in full-time religious study to serve.</p></div><div><p>Since the State of Israel was declared in 1948, students enrolled full-time at a religious school, or yeshiva, have been exempted from conscription. </p></div><div><p>That exemption was ruled unconstitutional by Israel's High Court of Justice more than a decade ago. Temporary arrangements to continue it were formally ended by the court last year, forcing the government to begin conscripting the community.</p></div><div><p>The ultra-Orthodox population has more than doubled its share of Israel's population over the past seven decades, and now accounts for 14%.</p></div></article></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

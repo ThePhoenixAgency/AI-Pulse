@@ -36,21 +36,21 @@
 </p> </div><div> <div> <p><span> Publié <time>le 16/02/2026 12:04</time> </span> <span></span> <span> Mis à jour <time>le 16/02/2026 14:00</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="L'ancien ministre de la Culture, Jack Lang, à Paris, le 5 octobre 2018. (LUCAS BARIOULET / AFP)" src="https://www.franceinfo.fr/pictures/qgWARNL5ZMJGDzZDQvot1OLxGiU/0x53:1024x629/432x243/filters:format(jpg)/2026/02/16/000-96ja8cq-6992f9fceb020001880493.jpg"> <figcaption>L'ancien ministre de la Culture, Jack Lang, à Paris, le 5 octobre 2018. <span>(LUCAS BARIOULET / AFP)</span></figcaption> </figure> </div> </div><div><p>Des perquisitions sont menées à l'Institut du monde arabe et dans <em>"divers lieux" </em>dans le cadre de <a href="https://www.franceinfo.fr/monde/usa/affaire-jeffrey-epstein/affaire-epstein-jack-lang-et-sa-fille-caroline-vises-par-une-enquete-du-parquet-national-financier-pour-blanchiment-de-fraude-fiscale-aggravee_7789148.html" target="_blank">l'enquête ouverte pour blanchiment de fraude fiscale aggravée</a> visant Jack Lang et sa fille Caroline, a annoncé le Parquet national financier (PNF) lundi 16 février. <em>"Elles s'inscrivent dans le cadre d'une enquête préliminaire ouverte par le parquet national financier le 6&nbsp;février"</em>, écrit le PNF dans son communiqué.</p><p>Cette enquête avait été ouverte après la publication par <a href="https://www.mediapart.fr/journal/france/020226/les-intenses-liens-financiers-de-jeffrey-epstein-avec-la-famille-lang" target="_blank">Mediapart</a> d'une enquête sur les liens financiers supposés de l'ancien ministre de la Culture de François Mitterrand et de sa fille avec le financier américain Jeffrey Epstein. <em>"Je suis totalement serein, confiant",</em> a confié Jack Lang à l'AFP. <em>"Je me réjouis que la justice financière se mette en branle"</em>, a également l'ancien président de l'Institut du monde arabe lors d'un discours d'adieux lundi matin, sans faire référence explicitement aux perquisitions, selon un journaliste de l'AFP présent.</p><p>Si aucune charge ne pèse à ce stade contre Jack Lang, qui a quitté la tête de l'Institut du monde arabe sous la pression, les millions de documents rendus publics par la justice américaine mentionnent son nom à 673 reprises dans des échanges avec le criminel sexuel Jeffrey Epstein et révèlent des liens d'intérêt avec le financier américain, mort en détention en 2019. Selon l'enquête de Mediapart, sa fille Caroline Lang a notamment fondé en 2016 une société offshore domiciliée aux Iles vierges américaines avec le sulfureux financier.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

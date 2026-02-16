@@ -35,21 +35,21 @@
 </ul></div><p><span>SEC chair Paul Atkins said Thursday that the Wall Street regulator could soon involve itself in the regulation of prediction markets—a move that could have significant implications for the exploding sector.</span></p><p><span>During testimony before the Senate Banking Committee, Atkins identified prediction markets as an industry that should potentially be overseen by both the SEC and its more hands-off sister agency, the commodities-focused CFTC. Up to now, the CFTC has been considered the default regulator for prediction markets.</span></p><p><span>“Prediction markets are exactly one thing where there’s overlapping jurisdiction potentially,” Atkins said, in response to a question from Sen. Dave McCormick (R-PA). “That is a huge issue we’re focused on.”</span></p><p>“It’s mostly, at least currently, on the CFTC side,” the SEC chair continued. “But we need to be harmonized in the way we’re addressing these markets.”</p><p>When McCormick asked whether the SEC would need legislation passed by Congress to involve itself in regulating prediction markets, the agency chief indicated the agency is ready to move now.</p><p><span>“I think we have enough authority,” Atkins replied. “A security is a security regardless of how it is, and some of the nuance with prediction markets and the products depends on wording and what exactly is being done.”</span></p><p><span>It is as of yet unclear what exactly Atkins meant by the comment. </span><i><span>Decrypt </span></i><span>reached out to the SEC for clarification but did not immediately receive a response.</span></p><p><span>The SEC could, for instance, involve itself in prediction markets tracking assets already regulated as securities, such as stocks. Security futures—derivatives contracts that track the price of individual stocks and narrow-based securities indexes—are already </span><a href="https://www.cftc.gov/IndustryOversight/ContractsProducts/SecurityFuturesProduct/index.htm" target="_blank"><span>jointly regulated</span></a><span> by the CFTC and SEC.</span></p><p><span>Prediction markets enable their users to wager on the outcome of virtually anything</span><span>—from elections, sports, and cultural events to cryptocurrency and stock market prices. The industry has&nbsp;</span><span>more than quadrupled in size last year, emerging as a </span><a href="https://decrypt.co/357583/prediction-markets-grew-4x-to-63-5b-in-2025-but-risk-structural-strain-certik" target="_blank"><span>$63.5 billion</span></a><span> market barely two years after beginning operation in the United States. The sector’s two top players, Kalshi and Polymarket, have surged in recent months to </span><a href="https://decrypt.co/357519/jump-trading-earn-stakes-polymarket-kalshi" target="_blank"><span>massive valuations</span></a><span> of $11 billion and $9 billion, respectively.</span></p><p><span>Since their explosion last year, prediction market companies have enjoyed extremely hands-off regulation by the CFTC, which relies heavily on registered platforms to </span><a href="https://decrypt.co/345961/sports-betting-scandals-nba-prediction-markets" target="_blank"><span>self-regulate</span></a><span>.&nbsp;</span></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -32,21 +32,21 @@
 <li><figure><img alt="La pause des tournages de «&nbsp;Meurtres à…&nbsp;» n’est pas définitive."><figcaption><span>La pause des tournages de «&nbsp;Meurtres à…&nbsp;» n’est pas définitive. | </span> FABIEN MALOT - FRANCE TÉLÉVISIONS -</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 18h45</span></time></span> </span> </header> </div> <div> <p>Elle est l’un des succès les plus durables de France Télévisions ces dernières années. Depuis plus de dix ans, la recette des polars <em>Meurtres à…</em> reste inchangée et le succès toujours au rendez-vous&nbsp;: un meurtre à résoudre par un duo d’enquêteurs - différent pour chaque numéro - dans une région de France qui varie d’épisode en épisode. Malgré une légère baisse d’audience, la collection réunit toujours entre 4 et 5&nbsp;millions de téléspectateurs à chaque diffusion.</p> <p>Mais en décembre&nbsp;2025, France Télévisions a annoncé <a href="https://programmetv.ouest-france.fr/france-televisions-b1000/meurtres-a-france-televisions-suspend-les-tournages-de-sa-collection-de-polars-regionaux-5f6d264e-d0f6-11f0-8aae-c226ab82a7d1" target="_self">la suspension des tournages de sa série régionale</a>. Le contexte financier du groupe audiovisuel public l’a en effet obligé à réduire drastiquement les coûts de production de ses programmes de flux - dont <a href="https://programmetv.ouest-france.fr/divers/divertissement/eurovision/eurovision-junior-france-televisions-renonce-a-organiser-la-prochaine-edition-du-concours-pour-faire-des-economies-c1a62f04-dcd6-11f0-ae25-7dba037201f1" target="_self">l’organisation de l’Eurovision junior 2026</a>, à laquelle il a renoncé -, ainsi qu’à arrêter certaines émissions et proposer davantage de rediffusions.</p> <p><strong>Lire aussi&nbsp;:</strong>&nbsp;<a href="https://programmetv.ouest-france.fr/serie/policiere/meurtres-a-m172729151/meurtres-a-quelles-regions-sont-les-plus-et-les-moins-representees-dans-la-serie-d9da75f0-eabd-11ef-92ea-2fca82364a08" target="_self">«&nbsp;Meurtres à…&nbsp;»&nbsp;: quelles régions sont les plus&nbsp;(et les moins) représentées dans la série&nbsp;?</a></p> <h2>«&nbsp;On n’abandonne pas cette marque&nbsp;»</h2> <p>Mais en marge d’un point presse tenu lundi 9&nbsp;février 2026, la direction de la stratégie éditoriale de France Télévisions a tenu à rassurer les téléspectateurs. <strong>«&nbsp;On est suffisamment doté en <em>Meurtres à…</em> pour voir venir. Donc c’était pour ne pas embouteiller. Là, on fait simplement une pause,</strong> a assuré Laurent Sarrazin, responsable d’études fiction du groupe, rapporte <em> <a href="https://www.ozap.com/actu/cest-simplement-une-mise-en-pause-france-televisions-assure-que-le-groupe-nabandonne-pas-la-collection-meurtres-a/653684" target="_blank">Puremédias</a> </em>. <em> <strong>Meurtres à…</strong> </em> <strong> était une clé d’entrée très forte à France Télévisions pour les producteurs donc ils en proposaient beaucoup. Mais là, on avait un stock suffisant pour se dire qu’on pouvait faire une pause.&nbsp;»</strong></p> <p>Et d’ajouter&nbsp;: <strong>«&nbsp;Mais à date, on n’abandonne pas cette marque, on demande juste de ne plus nous envoyer de projet parce qu’on ne pourra pas les traiter dans l’immédiat. On a suffisamment de stock pour voir venir.&nbsp;»</strong> Les tournages de <em>Meurtres à…</em> reprendront donc bel et bien, à moyen ou long terme. Car à ce jour, la collection reste la deuxième marque la plus consommée en streaming sur&nbsp;france.tv, juste derrière <em> <a href="https://programmetv.ouest-france.fr/feuilleton/policier/un-si-grand-soleil-m136353979/" target="_self">Un si grand soleil</a> </em>.</p> <p><strong>Lire aussi&nbsp;:</strong>&nbsp;<a href="https://programmetv.ouest-france.fr/serie/policiere/meurtres-a-m172729151/entretien-elodie-frege-mene-lenquete-dans-meurtres-a-millau-ce-role-est-un-cadeau-235b637c-f820-11f0-bcbd-01f0839eab22" target="_self">ENTRETIEN. Élodie Frégé mène l’enquête dans «&nbsp;Meurtres à Millau&nbsp;»&nbsp;: «&nbsp;Ce rôle est un cadeau&nbsp;!&nbsp;»</a></p> <p>Pour l’heure, plusieurs épisodes de <em>Meurtres à…</em> sont encore en cours de production, après de récents tournages en Haute-Vienne, en Corrèze, dans les Vosges ou encore à Fontainebleau&nbsp;(Seine-et-Marne). Ils devraient être diffusés courant 2026.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

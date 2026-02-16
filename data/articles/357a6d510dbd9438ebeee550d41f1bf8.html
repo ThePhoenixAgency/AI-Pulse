@@ -33,21 +33,21 @@
 kodi-standalone</code></pre><p>Save the changes using CTRL-X, Y then ENTER.</p><p>The script needs to be made executable using:</p><pre><code>sudo chmod +x ~/RetroPie/roms/kodi/kodi.sh</code></pre><h2>Step 4 – Restart EmulationStation</h2><p>If you used F4 to get to the command line then you can return to EmulationStation by typing:</p><pre><code>EmulationStation</code></pre><p>If you used SSH to connect then quit that session. Using a controller connected to RetroPie, press “Start” to bring up the main menu. Select “Quit” then “Restart EmulationStation”.</p><p>Once back in EmulationStation Kodi should appear in the main RetroPie menu alongside all the other system.</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/12/screenshot02-1024x576.png" alt="Kodi menu item within RetroPie"></figure><p>Selecting the single “kodi” option will launch Kodi.</p><figure><img src="https://www.raspberrypi-spy.co.uk/wp-content/uploads/2021/12/screenshot03-1024x576.png" alt="Kodi menu item within the Kodi system."></figure><p>This isn’t a huge difference to selecting Kodi from the “Ports” page but it can much quicker if your Ports list is quite busy.</p><h2>Additional Resources</h2></div></article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

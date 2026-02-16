@@ -31,21 +31,21 @@
     <div><div> <p>A retrouver dans l’émission</p> <img src="https://s.france24.com/media/display/770608e0-6e59-11ee-843a-005056bfb2b6/FR-PlanB-header.svg" alt="Plan B, l’économie autrement"> </div><p> SOS, les sols s’épuisent&nbsp;! L’agriculture mondiale épand aujourd’hui six fois plus d’engrais chimiques que dans les années 1960. L’Afrique est le continent qui en utilise le moins, et pourtant… au Bénin, par exemple, 62 % des terres sont dégradées, d’où le virage national vers l’agroécologie, avec une feuille de route déployée jusqu’en 2030. Objectif&nbsp;: réduire ou supprimer les intrants de synthèse pour préserver les rendements à long terme. À Ouidah, Lidwine et Jaurès ont devancé l’appel. Ce couple d’ingénieurs agronomes travaille en coopération avec la nature. Leur devise&nbsp;: ferme les yeux et mange&nbsp;! </p><div> <p>Invités&nbsp;:</p> <p>. Lidwine Baloitcha, co-fondatrice du CeVAD, Centre de Valorisation pour l’Agriculture Durable</p> <p>. Jaurès Baloitcha, co-fondateur du CeVAD, Centre de Valorisation pour l’Agriculture Durable</p> <p>. Cédric Yehouenou, coopérative villageoise des maraîchers de Ahozon</p> <p>. Agathe Ouora NGobi, ingénieure agronome à l’AFD</p> <p><em>Autrice &amp; rédactrice en cheffe adjointe&nbsp;: Myriam Mascarello</em></p> <p><em>Réalisation&nbsp;: Marie Gasnier - Juliette Lacharnay</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

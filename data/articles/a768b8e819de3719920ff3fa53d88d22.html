@@ -31,21 +31,21 @@
     <div><div><p>TypeScript 6 est une version charnière pour le langage. Il s'agit de la dernière version basée sur JavaScript. Au-delà de cette version, Go remplacera JS dans le langage et le compilateur. Deux avantages justifient cette migration :</p><p>- performance</p><p>- le partage mémoire en contexte multi-threadé</p><p>Cette 6.0 est un lien entre la 5.9 et la future 7.0. Certains changements de cette version prépare la v7.</p><p>Quelques nouveautés à retenir :</p><p>- nouveau flag --stableTypeOrdering : va aider à migration à venir.</p><p>- es2025 pour target et lib : le langage supporte l'option es2025. Même si toutes les nouveautés JavaScript ne sont pas intégrés, es2025 ajoute de nouveaux types pour les API (ex. RegExp).</p><p>- nouveaux types pour Temporal : proposer des objets et des fonctions standards pour manipuler les dates et les heures. Fonctionnalité attendue.</p><p>let yesterday = Temporal.Now.instant().subtract({</p><p>&nbsp; &nbsp; hours: 24,</p><p>});</p><p>let tomorrow = Temporal.Now.instant().add({</p><p>&nbsp; &nbsp; hours: 24,</p><p>});</p><p>console.log(`Yesterday: ${yesterday}`);</p><p>console.log(`Tomorrow: ${tomorrow}`);</p><p>- sur les méthodes upsert : ajout des nouvelles méthodes Map et WeakMap</p><p>- lib.dom.iterable.d.ts et lib.dom.asynciterable.d.ts sont pleinement inclus dans lib.dom.d.ts.&nbsp;</p><p>Précisons que TS 6 est pleinement compatible avec les API et les codes de TS 5.9.&nbsp;</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

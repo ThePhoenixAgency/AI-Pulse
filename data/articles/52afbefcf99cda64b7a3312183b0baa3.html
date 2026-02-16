@@ -45,21 +45,21 @@
 </a><p>Les échanges tendus entre les élus se sont aussi cristallisés autour de la question plus large de la crise de l'hébergement en France. D'après <a href="https://www.fondationpourlelogement.fr/31e-rapport-sur-letat-du-mal-logement-en-france-en-2026/" target="_blank">le dernier rapport de la Fondation pour le logement</a> publié le 29 janvier, en 2024, 912 personnes sont mortes dans la rue "<em>dont 31 enfants de moins de quatre ans</em>". Un nombre total de victimes supérieur de 16 % à l'année précédente.</p><p>20 000 personnes supplémentaires se sont retrouvées sans domicile entre 2023 et 2024, d'après le même rapport, qui note également que "<em>2,8 millions de ménages sont en attente d’un logement social en 2025, un nouveau record, contre 2,1 millions en 2017. 93 100 ménages reconnus prioritaires DALO sont toujours en attente de relogement depuis 2008, dont 85 395 hors délais. 24 556 expulsions locatives avec le concours de la force publique en 2024, un record historique, soit une hausse de 29 % en un an et de 223 % en 20 ans.</em>"</p><p>La délibération ouvrant la voie à la signature des conventions pour six mois entre la Métropole et les communes, a finalement été adoptée. Jérôme Rubes espère que la moitié des occupants pourront ainsi être logés "<em>à la fin du mois de février</em>".</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

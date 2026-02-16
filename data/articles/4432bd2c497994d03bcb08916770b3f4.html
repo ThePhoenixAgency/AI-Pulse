@@ -31,21 +31,21 @@
     <div><p>Ce mercredi&nbsp;(14h45), le GF38 (Ligue 2) reçoit Monaco en Coupe de France. En 2009, en battant la formation monégasque en quarts de finale de la compétition, Grenoble avait atteint pour la première fois de son histoire les demi-finales. Le 21 avril de cette année-là, le club isérois, à l'époque en Ligue 1, avait alors joué au Stade des Alpes contre Rennes pour une place au Stade de France. Un match finalement perdu 1 à 0, sur un but de Moussa Sow. Du côté rennais, on retrouvait également sur la pelouse Nicolas Douchez, Rod Fanni, Jérôme Leroy ou encore Stéphane M'Bia. Mais vous souvenez-vous des joueurs grenoblois ayant disputé cette rencontre ? Vous avez quatre minutes pour tous les retrouver...</p><div> <p>Ce contenu est bloqué car vous n'avez pas accepté les cookies et autres traceurs.</p> <p>En cliquant sur <span>« J’accepte »</span>, les cookies et autres traceurs seront déposés et vous pourrez visualiser le contenu.</p> <p>En cliquant sur <span>« J’accepte tous les cookies »</span>, vous autorisez des dépôts de cookies et autres traceurs pour le stockage de vos données sur nos sites et applications à des fins de personnalisation et de ciblage publicitaire.</p> <p> Vous gardez la possibilité de retirer votre consentement à tout moment en consultant notre <a href="https://www.ledauphine.com/protection-des-donnees" target="_blank">politique de protection des données</a>. <br> Gérer mes choix </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

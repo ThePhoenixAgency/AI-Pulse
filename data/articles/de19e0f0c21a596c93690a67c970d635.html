@@ -31,21 +31,21 @@
     <div><div><p>Flutter distribue la version 3.41. Il s'agit d'une version importante avec plus de 860 commits, 145 contributeurs. Pour 2026, Flutter prévoit 4 versions stables :</p><p>Flutter 3.41 -&gt; février</p><p>Flutter 3.44 -&gt; mai</p><p>Flutter 3.47 -&gt; août</p><p>Flutter 3.50 : novembre</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/flutter341.png?itok=tZr1T2Lm"></p><p>Un des chantiers en cours est séparer Material et Cupertina dans des paquets différents pour une approche plus modulaire. Cette modularité doit permettre de :&nbsp;</p><p>- des cycles de développement plus rapide sans attendre les SDK pour faire évoluer Materiel et Cupertino</p><p>- mise à jour indépendante des paquets de design</p><p>- adaptive design : mieux coller aux évolutions d'interface des systèmes iOS et Android</p><p>Sur la partie iOS, les équipes continuent à migrer de CocoaPods à Swift Package Manager. Il est fortement conseillé aux développeurs d'utiliser Swift Package Manager. Sur Android, l'alignement sur les briques les plus récentes se poursuit, notamment avec la sortie d'Android Grade Plugin 9. Attention : il ne faut pas migrer vos apps Flutter vers Android Grade Plugin 9. L'équipe travaille dessus.</p><p>Cette version introduit beaucoup de nouveautés et d'améliorations, petite sélection :</p><p>- réduction du délai d'affichage quand vous divisez les shaders : introduction de decodeImageFromPixelsSync</p><p>- Widget Preview est toujours en expérimentation. Cette version supporte Flutter Inspector.&nbsp;</p><p>- Accessibilité : divers ajouts pour améliorer l'accessibilité des apps Flutter. Par exemple :&nbsp;Flutter prend désormais en compte les préférences d'espacement du texte des utilisateurs sur les navigateurs.</p><p>- DevTools : utilisation de dart2wasm pour la compilation</p><p>Présentation des nouveautés &nbsp;:&nbsp;<a href="https://blog.flutter.dev/whats-new-in-flutter-3-41-302ec140e632"></a><a href="https://blog.flutter.dev/whats-new-in-flutter-3-41-302ec140e632">https://blog.flutter.dev/whats-new-in-flutter-3-41-302ec140e632</a></p><p>Note de version :&nbsp;<a href="https://docs.flutter.dev/release/release-notes/release-notes-3.41.0">https://docs.flutter.dev/release/release-notes/release-notes-3.41.0</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

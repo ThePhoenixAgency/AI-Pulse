@@ -37,21 +37,21 @@
 </a><p><em>"Le but c’est de faire au plus vite, on en a encore pour plusieurs semaines, on voit l’étendue des travaux à réaliser et les différents corps de métiers qui doivent intervenir. On espère pouvoir mettre en place la circulation sur une voie pour début mars"</em>, précise Ingrid Simon.</p><p>Pour pallier l'absence de trains, la SNCF a mis en place des cars de substitution dont les horaires sont mis en ligne la veille à 17 heures <a href="https://www.ter.sncf.com/auvergne-rhone-alpes/se-deplacer/info-trafic/perturbations" target="_blank">sur son site</a>. <em>"L'offre de substitution routière étant réduite, nous vous conseillons, dans la mesure du possible, de différer votre déplacement"</em>, recommande encore l'entreprise ferroviaire.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

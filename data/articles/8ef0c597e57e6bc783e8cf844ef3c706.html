@@ -31,21 +31,21 @@
     <div><div><p>Une des nouveautés les plus importantes est l'intégration Soft Navigations. L'équipe Chrome présente ainsi cette appelleration : a soft navigation est quand JavaScript intercepte une navigation (clic sur un lien) et met à jour le contenu dans la page existente, plutôt que de charger une nouvelle page et que l'URL se mette à jour dans la barre d'adresse. Pour l'utilisateur, cela change peu de choses. Dans Chrome 145, les Soft navigations sont visibles sur le panneau Performance et dans la vue des traces si le site est une SPA.&nbsp;</p><p><strong>Un timer plus précis</strong></p><p>Après l'enregistrement d'une trace dans le panneau Performances, le panneau Sources affiche les temps d'exécution observés ligne par ligne. Vous pouvez ainsi identifier précisément les lignes de code qui consomment le plus de temps.Auparavant, cette fonctionnalité présentait des bogues qui la rendaient peu fiable lorsque le code source était formaté (à l'aide du bouton {}) ou lors de l'utilisation de scripts avec mappage de sources.&nbsp;</p><p>Le panneau réseau inclut maintenant une colonne dédiée Render blocking. Cela permet de voir les ressources qui bloquent le bon affichage. Autre amélioration : un meilleur debug pour @starting-style.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

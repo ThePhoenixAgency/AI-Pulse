@@ -31,21 +31,21 @@
     <div><div><p>Dozens of universities are facing legal action from more than 170,000 students seeking compensation after their studies were moved online during Covid.</p><p>Pre-action claim letters have been sent to 36 universities in England and Wales, including Bath, Bristol, Exeter, Cardiff, Leeds, Imperial College London, Liverpool and Warwick, on behalf of aggrieved students.</p><p>It follows a settlement last week between University College London and the Student Group Claim, representing 6,000 UCL students whose studies were affected by the pandemic.</p><p>The university admitted no liability and the terms of the settlement are confidential, but lawyers involved in the case have previously said UK undergraduates at university during Covid could each claim £5,000. The case had been due to be heard in court next week.</p><p>The last-minute deal has paved the way for large-scale legal action across the sector, which lawyers estimate could cost universities millions, depending on the number of students involved in each claim.</p><p>The legal action is being brought under consumer law, which states that where a consumer pays for a service but is provided with a different service of lower value, they may be entitled to compensation.</p><p>Lawyers argue that students paid annual tuition fees for in-person teaching and full access to facilities, but Covid restrictions meant campuses were closed and courses moved online.</p><p>Fees for online degree courses are typically 25-50% less than those for traditional in-person courses, and the students’ lawyers maintain their clients are owed “fair financial compensation”.</p><p>Shimon Goldwater, partner at Asserson, which is representing students, said: “UK undergraduates at university during the pandemic borrowed money at ridiculous interest rates to fund courses which were ruined by online teaching and closed facilities.</p><p>“Student Group Claim is helping students challenge universities to do what they should have done during Covid: pay students compensation for not providing them with the in-person teaching for which they paid.”</p><p>Other universities facing legal action include Birmingham, Coventry, De Montfort, East Anglia, Leeds Beckett, London School of Economics and Political Science, Loughborough, Manchester, Newcastle, Nottingham, Southampton and York. More could follow if other students come forward before a September 2026 deadline.</p><p>Georgia Johnson, 28, was doing a year-long post-graduate teaching degree when Covid hit. She said: “With teaching you have to get into the classroom as soon as possible. I sat in a room learning how to teach over Zoom.”</p><figure><div><img alt="Student Georgia Johnson sitting with a dog." src="https://i.guim.co.uk/img/media/86013119a3ab74d408a6d41a4b8012dbf72b92cd/0_56_1882_1505/master/1882.jpg?width=445&amp;dpr=1&amp;s=none&amp;crop=none"></div><figcaption><span></span><span>Georgia Johnson, a postgraduate student, says her degree was impacted by the pandemic.</span> Photograph: Georgia Johnson</figcaption></figure><p>The experience affected her mental health and delayed her career. She added: “It was a massive set-back. I had to take time out of university because it got too much. I definitely didn’t get what I should have got while I was there.”</p><p>Commenting on the settlement, Dr Michael Spence, UCL president and provost, said: “We recognise that the Covid years were incredibly difficult for students. Covid-19 created disruption across society, and universities were no exception.</p><p>“Throughout the pandemic we provided clear routes for students to seek redress, and many secured compensation through those established processes. This resolution enables us to focus on our core mission of delivering world-leading research and education.”</p><p>A spokesperson for <a href="https://www.theguardian.com/education/universities">Universities</a> UK, which represents 142 institutions, said universities, like other sectors, had followed government guidance to adapt to a fast-changing situation during the pandemic.</p><p>They said: “During some periods of lockdown, universities were not permitted to offer in-person teaching as usual and instead they adjusted quickly and creatively to allow students to complete their degrees.”</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

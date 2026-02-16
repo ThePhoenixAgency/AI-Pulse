@@ -31,21 +31,21 @@
     <div><div><h2>Users will be able to interact with ticker symbols in posts and execute trades within the app, the company's head of product said.</h2><p><span> Feb 14, 2026, 5:33 p.m. </span></p></div><div><p>Elon Musk’s social media platform X is set to soon let users trade stocks and cryptocurrencies directly from their timelines as the company pushes deeper into financial services.</p><p>The upcoming features, described by the company’s head of product, Nikita Bier, will include "Smart Cashtags.” These will allow users to interact with ticker symbols in posts and execute trades from the app.</p><div><p><span>STORY CONTINUES BELOW</span></p></div><p>The announcement comes as the company prepares to launch an external beta of X Money, its in-house payments system. Musk <a href="https://x.com/xai/status/2021667200885829667?s=20" target="_blank">said</a> the tool is already live in internal testing and will be available to a limited group of users within one to two months.</p><p>The idea is to make X a one-stop platform where users can message, post, send money and invest, a version of Musk’s “everything app” vision.</p><p>He’s compared the rollout of financial tools like X Money to adding banking services inside the app, saying users could eventually manage most of their daily digital activity without leaving the platform.</p><p>Elon Musk’s companies have been involved with crypto in the past. His electric car maker Tesla owns 11,509 bitcoin on its balance sheet, down from an initial investment of 42,300 made in early 2021. SpaceX currently <a href="https://bitcointreasuries.net/private-companies" target="_blank">controls around 8,285 BTC.</a> </p><p>Over the years Musk has also shown support for the meme-inspired cryptocurrency dogecoin. In 2022, he said SpaceX would accept DOGE for some merchanside, echoing an earlier move from Tesla. Earlier this month, Musk said he may put <a href="https://www.coindesk.com/markets/2026/02/03/attention-dogecoin-bulls-musk-says-spacex-may-put-doge-on-the-moon-next-year">DOGE “on the moon.”</a></p></div><div><p><span>AI Disclaimer: Parts of this article were generated with the assistance from AI tools and reviewed by our editorial team to ensure accuracy and adherence to </span><a href="https://www.coindesk.com/ethics">our standards</a>. <span>For more information, see </span><a href="https://www.coindesk.com/coindesk-news/2023/04/14/how-coindesk-will-use-generative-ai-tools">CoinDesk's full AI Policy</a>.</p></div><div><p>More For You</p><div><p>From Wall Street to Web3: This is crypto’s year of integration, Silicon Valley Bank says</p><div><p>50 minutes ago</p></div><figure><img alt="Wall street signs, traffic light, New York City" src="https://www.coindesk.com/_next/image?url=https%3A%2F%2Fcdn.sanity.io%2Fimages%2Fs3y3vcno%2Fproduction%2F462aa44fc614504ef506e076687060227de07a47-1919x1080.jpg%3Fauto%3Dformat&amp;w=3840&amp;q=75"></figure><p>From bank-led stablecoins to tokenized T-bills and AI-powered wallets, digital assets will move from pilot projects to financial plumbing this year.</p><div><p>What to know: </p><div><ul><li>Silicon Valley Bank's Anthony Vassallo says institutional adoption of crypto is accelerating, pushing bigger venture capital checks, more bank-led custody and lending, and deeper M&amp;A consolidation.</li><li>Stablecoins are emerging as the “internet’s dollar,” fueled by clearer regulation and enterprise demand for payments and settlement.</li><li>Tokenized real-world assets and AI-driven crypto applications are shifting blockchain from speculation to core infrastructure, the bank said.</li></ul></div></div><p><a href="https://www.coindesk.com/business/2026/02/16/from-wall-street-to-web3-this-is-crypto-s-year-of-integration-silicon-valley-bank-says">Read full story</a></p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

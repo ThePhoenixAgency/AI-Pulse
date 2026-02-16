@@ -34,21 +34,21 @@
 </a></p> <h2>Un site internet entièrement dédié au «cheval qui pleure»</h2> <p>Zhang Huoqing, la responsable de la boutique où a été vendue la peluche, ne s’est pas laissée paralyser par le succès inattendu de ce «cheval qui pleure». Au contraire. De deux lignes de production, son usine est passée à dix pour répondre à la demande grandissante pour la version mélancolique de la mascotte. Le jouet est désormais vendu à 15.000 exemplaires quotidiens, elle qui n’en vendait que quelques centaines auparavant. Généreuse, elle a aussi décidé de récompenser l’ouvrier qui a commis l’heureuse erreur. Ou plutôt, les ouvriers&nbsp;: <em>«Puisqu’on ne peut pas identifier qui a fait l’erreur, on va donner à tout le monde un bonus»</em>, a-t-elle déclaré au<em> Quotidien du peuple, </em>l’organe de presse officiel chinois.</p> <p>Un site internet entièrement dédié au «cheval qui pleure» et à son frère souriant a également vu le jour sous sa houlette - proposant des livraisons mondiales via Amazon. Cette agilité commerciale, Ya Kaigang, doyen de l’Institut de l’innovation et du développement de la culture et du tourisme de l’Université de Zhejiang Gongshang, l’attribue dans <em>Le Quotidien du peuple</em> à la souplesse de la&nbsp;<a href="http://www.lefigaro.fr/international/a-yiwu-capitale-du-made-in-china-le-peu-d-inquietude-face-a-la-guerre-commerciale-de-donald-trump-20250831">ville de Yiwu</a>, capable de répondre aux demandes fluctuantes du marché avec ses quelque 75.000 fournisseurs.</p> <p>Cet engouement inspire également des conclusions plus sérieuses. Selon le quotidien hongkongais <em>South China Morning Post</em>, il est à relier avec les conditions de travail des jeunes Chinois, soumis au&nbsp;<a href="http://emploi.lefigaro.fr/vie-bureau/le-9-9-6-cette-methode-de-travail-qui-fait-des-emules-chez-les-salaries-de-la-tech-20251006" target="_blank">système de travail 9-9-6</a>&nbsp;- des journées de 9h à 21h, six jours sur sept. Une organisation pourtant en théorie abolie depuis 2021, mais les salariés chinois subissent toujours la pression de longues semaines de travail. Ce petit poney se révèle alors être une source de réconfort pour de nombreux internautes, et d’espoir pour une année meilleure. Le premier acheteur de la peluche devenue virale le confesse&nbsp;:<em> «Ce petit cheval a l’air si triste et pitoyable, tout comme moi au travail.»&nbsp;</em></p> </div></article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

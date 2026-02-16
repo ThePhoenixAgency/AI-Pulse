@@ -31,21 +31,21 @@
     <div><div> <p>3 milliards d'euros d'investissements concentrés sur un parking de 20 hectares, le projet a de quoi faire réfléchir, à plus forte raison quand on entend partout parler de l'IA comme de la technologie d'avenir par excellence. </p> <p>Mais comment se positionner face à une enveloppe potentielle si pharamineuse&nbsp;? Quel avis prononcer sur un projet dont les contours sont encore flous, pour ne pas dire inexistants&nbsp;? Enfin, quelle attitude adopter dans un contexte de campagne en vue des élections municipales des 15 et 22 mars prochain&nbsp;? </p> <p>Voilà en substance la pièce qui s'est jouée vendredi 30 janvier dans l'hémicycle de Bordeaux Métropole (l'agglomération qui réunit la ville éponyme et 27 communes voisines). Les élus devaient en effet se prononcer sur une délibération accordant à la présidence de la collectivité le pouvoir d'engager des discussions avec le promoteur immobilier porteur du projet BXIA. </p> <p>Révélé par Pierre Hurmic, maire de Bordeaux, le 7 janvier dernier, lors de la soirée des vœux au monde économique du Medef local, ce projet <a href="https://next.ink/brief_article/bxia-bordeaux-se-prepare-a-accueillir-un-datacenter-ia-a-plusieurs-milliards-deuros/">ambitionne, pour mémoire,</a> de construire un ensemble de datacenters dédiés à l'IA sur le parking actuel du Parc des expositions de Bordeaux.</p> <h3>Le DC qui valait 3 milliards</h3> <p>À ce stade, il n'y a que deux acteurs clairement identifiés&nbsp;: un promoteur, NFU, cofondé et présidé par un ancien président de Bordeaux Métropole, Vincent Feltesse, accompagné d'un fonds d'investissement spécialisé dans l'immobilier, Osae Partners. </p> <p>Les deux partenaires parlent d'un ensemble industriel qui combinerait à terme cinq datacenters, pour une puissance de calcul informatique totale équivalente à 250 MW, avec une alimentation électrique globale à l'échelle du site de l'ordre de 380 MW. Le tout pour une enveloppe prévisionnelle qui atteindrait donc, en cas de complétion, quelque 3 milliards d'euros. </p> <p>L'échelle n'est pas aussi impressionnante que celle des <a href="https://next.ink/204900/campus-ia-que-sait-on-du-megaprojet-de-data-center-a-14-gw-et-50-milliards-deuros/">50 milliards d'euros</a> promis à Fouju pour le <a href="https://next.ink/209367/campus-ia-la-souverainete-absolue-nexiste-pas/">fameux Campus IA financé par MGX</a>, mais elle a de quoi faire tourner les têtes à Bordeaux (à titre de comparaison, la Métropole a voté un budget primitif à 2,2 milliards d'euros pour 2026), dont l'agglomération compte aujourd'hui une dizaine de petits datacenters. Le plus récent, <a href="https://next.ink/4909/equinix-a-bordeaux-bx1-datacenter-a-croisee-chemins-pour-sceller-lamitie/">BX1 d'Equinix, inauguré en 2021</a>, représente par exemple 6 MW d'alimentation électrique, et ce alors qu'il fait office de point de terminaison pour le câble transatlantique Amitié.</p> <h3>Un projet au nom de la souveraineté (mais laquelle&nbsp;?)</h3> <div> <p><img src="https://next.ink/wp-content/themes/next-theme/asset/media/webp/next-overclock-your-spirit.webp" alt="Cadenas en colère - Contenu premium"> </p> <div> <h3> Soutenez un journalisme indépendant, <br> libre de ton, sans pub et sans reproche. </h3> <p> Accédez en illimité aux articles </p> <p> Profitez d'un média expert et unique </p> <p> Intégrez la communauté et prenez part aux débats </p> <p> Partagez des articles premium à vos contacts </p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

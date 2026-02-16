@@ -31,21 +31,21 @@
     <div><div> <span>When you purchase through links on our site, we may earn an affiliate commission. <a href="https://www.neowin.net/terms">Here’s how it works</a>.</span> <h5> Microsoft just dropped a new command center for AI security, promising tighter control and clearer insight for teams without adding extra cost. </h5> <p> <span> <a href="https://www.neowin.net/profile/523233-usama-jawad/">Usama Jawad</a> <span></span> <span>Neowin</span> <a href="https://www.twitter.com/UsamaJawad96">@UsamaJawad96</a> · </span> <time> Feb 13, 2026 12:50 EST </time> · <span>Hot!</span> </p> </div><div> <figure><a href="https://cdn.neowin.com/news/images/uploaded/2022/03/1647998187_49guqu_(16).jpg"><img alt="Purple background with skull opening lock with key" src="https://cdn.neowin.com/news/images/uploaded/2022/03/1647998187_49guqu_(16)_story.jpg"></a></figure> <p>Microsoft has been focusing a lot on cybersecurity initiatives lately. Last month, it revealed a new tool that <a href="https://www.neowin.net/news/microsoft-has-a-new-tool-for-it-admins-to-investigate-security-breaches/">empowers IT admins to investigate security breaches at scale</a>, and also talked about how it is <a href="https://www.neowin.net/news/windows-11-is-getting-a-big-security-update/">making Windows more secure by default</a>. As AI continues to creep into organizational workflows, Microsoft has announced a new utility that enables IT admins and cybersecurity personnel to manage the security posture of their AI infrastructure.</p> <p>Microsoft is publicly previewing Security Dashboard for AI in response to security professionals demanding a better way to manage their AI agents, apps, and platforms in a unified manner. This is exactly what this dashboard does, as it combines signals from Microsoft Defender, Entra, and Purview in real-time, allowing CISOs and risk leaders to enforce better governance policies.</p> <p>The Redmond tech giant <a href="https://techcommunity.microsoft.com/blog/microsoft-security-blog/introducing-security-dashboard-for-ai-now-in-public-preview/4494637">believes</a> that this unification of risk signals will improve efficiency, as it will offer a consolidated view in an interactive dashboard. This dashboard offers an Overview tab with an AI risk scorecard, while also providing remediation actions in case of any issues. It's also worth noting that any integrated services such as Microsoft 365 Copilot, Microsoft Copilot Studio agents, and Microsoft Foundry, along with third-party models like Gemini and ChatGPT.</p> <figure><a href="https://cdn.neowin.com/news/images/uploaded/2026/02/1771002987_image_5.webp"><img alt="A screenshot of the Microsoft Security Dashboard for AI" src="https://cdn.neowin.com/news/images/uploaded/2026/02/1771002987_image_5_story.webp"></a></figure> <p>There is also an AI inventory to support asset discovery, allowing security leaders not only to identify risks, but also to understand threats to their business. Following that, IT admins can leverage Security Copilot to perform further investigations through a chat-based interface.</p> <p>Interestingly, the dashboard also takes into account the best practices and policies recommended by Microsoft and enforced by organizations. It surfaces tailored suggestions, along with offering the ability to delegate recommended action items to relevant personnel.</p> <p>Microsoft hopes that this dashboard will reduce fragmentation in the cybersecurity landscape. Customers who have enterprise licenses for Defender, Entra, or Purview do not need to pay extra in order to gain access to the public preview of Security Dashboard for AI, available <a href="http://ai.security.microsoft.com/">here</a>.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

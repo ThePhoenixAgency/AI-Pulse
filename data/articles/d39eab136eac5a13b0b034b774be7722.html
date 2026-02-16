@@ -81,21 +81,21 @@
 <p>So editors in the past have – a couple of years ago there was an editor revolt of sorts, where they pressured the foundation to tone down some of that alarmist rhetoric about how Wikipedia will go away. And guess what? The fundraising tanked that year, and they had to lay off a bunch of people. And I mentioned that Wikimedia Enterprise was a client of ours… That was really the reason why they had to let us go, because they didn’t [unintelligible <a href="#t=01:21:22.03">01:21:22.03</a>] I hope they don’t get mad about me saying that if they hear this. No hard feelings, truly, but… I mean, that is what happened.</p> </div> <div> <p>[laughs] Now it’s clear.</p> </div> <div> <p>Yeah, now it’s clear. The truth comes out, an hour and 15 in…</p> </div> <div> <p>Ha-hah! Get the transcript, put it on Wikipedia.</p> </div> <div> <p>Right. The economics, though. I wanna get to the economics, or the ecosystem. So I have wished in the past that Wikipedia had developed an ecosystem like, say, Linux. And I’ve tried making this argument in the past, that there’s no such thing as the Red Hat of Wikipedia. If there was, I think we would be it. But there is this – and this also gets to Wikipedia having kind of like a left-leaning disposition… I’ve mentioned the academics, but there is also kind of an anti-corporate atmosphere around Wikipedia, which is a principle challenge to the work that we do, but it’s also a reason why our service is viable to begin with… Because it is difficult to work on company topics. Like, if you’re a regular old Wikipedia editor, editing in your own spare time, and you just happen to be really interested in writing corporate biographies, other Wikipedia editors are going to look at you and be very skeptical, because few editors get into Wikipedia because they want to work on corporate profiles. Unless it’s like Nintendo, or…</p> </div> <div> <p>Some beloved…</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

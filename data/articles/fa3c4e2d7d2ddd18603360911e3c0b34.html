@@ -31,21 +31,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/iPadOS-26.4-b1.jpg?quality=82&amp;strip=all&amp;w=1600" alt="iPadOS 26.4 beta 1"> </figure> <p>Apple has released iPadOS 26.4 beta 1 for developers, here’s what we’re expecting from the new beta software.</p> <h2>Apple releases iPadOS 26.4 beta 1 for developers</h2> <p>Last week, Apple <a href="https://9to5mac.com/2026/02/11/ipados-26-3-available-now-for-ipad-heres-whats-new/">launched iPadOS 26.3</a> to all users. Now today, the company has wasted little time kicking off its next beta cycle.</p> <p>iPadOS 26.4 beta 1 is here, launching for developers today with a public beta expected to follow soon.</p> <p>Apple’s last wave of software updates was light on new features, but that’s likely to change with the 26.4 lineup.</p> <p>For a while, iOS and iPadOS 26.4 were expected to introduce the new and improved Siri.</p> <p>Recently though, Mark Gurman at <em>Bloomberg</em> <a href="https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/">reported</a> that at least some of the Siri upgrades were being pushed back into iOS 26.5 and even iOS 27.</p> <p>However, Gurman has not ruled out the possibility of some Siri features launching in 26.4. So we’ll be interested to see if anything new is available today in this first beta.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

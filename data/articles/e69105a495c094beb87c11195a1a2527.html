@@ -33,21 +33,21 @@
 </div> <p>"La Jeune Garde ayant suspendu toutes ses activités dans l'attente d'une décision du Conseil d'État, elle ne saurait être tenue pour responsable des tragiques événements ayant eu lieu à Lyon" jeudi, a réagi le groupe antifasciste dans un communiqué signé de son avocate, M<sup>e</sup>&nbsp;Aïnoha Pascual.</p> <p>"Nous n'avons rien à voir avec cette histoire et ceux qui nous accusent sont des calomniateurs", a réagi de son côté Jean-Luc Mélenchon lors d'un meeting, dimanche, à Montpellier. "Nous exprimons notre sidération, mais aussi notre empathie et notre compassion pour la famille, pour les proches", a-t-il ajouté, soulignant avoir "dit des dizaines de fois que nous étions hostiles et opposés à la violence".</p> <p>Un message martelé un peu plus tôt par ses lieutenants. "La France insoumise ne porte aucune responsabilité" dans ce drame, a ainsi affirmé dimanche <a href="https://www.france24.com/fr/tag/manuel-bompard/" target="_self">Manuel Bompard</a> sur LCI, certifiant que les membres du service d'ordre présents avec Rima Hassan "n'ont eu aucun contact avec aucun des groupes qui se trouvaient à l'extérieur".</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

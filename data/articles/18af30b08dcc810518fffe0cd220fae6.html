@@ -33,21 +33,21 @@
 <time>07:32</time> </p> </figure> </div> <p>She has been charged with complicity in organised theft and criminal conspiracy with a view to preparing a crime.</p> <p>The magistrate justified the detention of the woman, who lives in the French capital's northern suburb of La Courneuve, on the grounds of a "risk of collusion" and "disturbance of public order".</p> <p>The man was charged with organised theft and criminal conspiracy with a view to preparing a crime, the Paris prosecutor said.</p> <p>The individual was known to the judicial authorities for previous theft offences, she said.</p> <p>He has been placed in pre-trial detention pending a hearing to take place in the coming days, the prosecutor added.</p> <p>"Both individuals denied any involvement in the events," Beccuau said.</p> <h2>'Like drift nets'</h2> <p>Last month, thieves wielding power tools raided the <a href="https://www.france24.com/en/tag/louvre/" target="_self">Louvre</a>, the world's most visited art museum, in broad daylight, taking just seven minutes to steal jewellery worth an estimated $102 million.</p> <p>French authorities initially announced the arrest of two male suspects over the Louvre robbery, and this week prosecutors said that police had arrested five more people including a main suspect.</p> <p>Adrien Sorrentino, a lawyer for the woman who was remanded in custody, said his client "vehemently" denied the charges against her.</p> <p><span>Read more</span><a href="https://www.france24.com/en/video/20251022-louvre-heist-turns-into-political-quagmire-over-museum-s-security-measures" target="_self">Louvre heist turns into political quagmire over museum's security measures</a></p> <p>"She is devastated," he told reporters.</p> <p>"This is a spectacular heist, and the decision that has just been made is a spectacular one: a young woman has just been placed in detention despite being presumed innocent."</p> <p>Sofia Bougrine, a lawyer for one of the people arrested this week but later released, pointed to what she said was the indiscriminate nature of some of the arrests.</p> <p>"In these serious crime cases, we find that waves of arrests look more like drift nets," Bougrine told AFP.</p> <h2>Minister still 'confident'</h2> <p>The first two men arrested earlier were charged with theft and criminal conspiracy after "partially admitting to the charges", Beccuau said earlier this week.</p> <p>They are suspected of being the two who broke into the gallery while two accomplices waited outside.</p> <p>Both lived in the northeastern Paris suburb of Aubervilliers.</p> <p>One is a 34-year-old Algerian national living in France, who was identified by DNA traces found on one of the scooters used to flee the heist. The second man is a 39-year-old unlicensed taxi driver.</p> <p>Both were known to the police for having committed thefts.</p> <p>The first was arrested as he was about to board a plane for Algeria at Paris Charles de Gaulle airport.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

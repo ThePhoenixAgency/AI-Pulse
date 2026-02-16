@@ -36,21 +36,21 @@
 <li><figure><img alt="De fortes pluies sont attendues sur les Côtes-d’Armor, du 17 au 19&nbsp;février 2026."><figcaption><span>De fortes pluies sont attendues sur les Côtes-d’Armor, du 17 au 19&nbsp;février 2026. | </span>MATHIEU PATTIER / ARCHIVES OUEST FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h12</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h44</span></time></span> </span> </header> </div> <div> <p>Ce début d’année 2026 est particulièrement arrosé dans les Côtes-d’Armor, avec quasiment le double de précipitations par rapport à la norme. Et, malheureusement, il va falloir passer par un nouvel épisode pluvieux avant de pouvoir retrouver un temps sec. <q>Le pire arrive</q>, lâche le météorologue breton Stéven Tual, aux manettes des pages <a href="https://www.instagram.com/tempsbreton/?hl=fr" target="_self">Temps Breton</a> sur les réseaux sociaux.</p> <p><strong>Lire aussi&nbsp;:</strong> <a href="https://www.ouest-france.fr/meteo/direct-meteo-la-gironde-et-le-lot-et-garonne-en-vigilance-rouge-crues-une-nouvelle-perturbation-pluvieuse-attendue-c690db51-d5af-481f-a799-b779e9f0f919" target="_blank">DIRECT. Crues&nbsp;: le Maine-et-Loire passe en vigilance rouge et rejoint la Gironde et le Lot-et-Garonne</a></p> <p>Une forte perturbation, longue de trente-six heures, est annoncée sur le département, du mardi 17&nbsp;février 2026 en fin d’après-midi au jeudi&nbsp;19 au matin, avec de très fortes précipitations. <q>Durant cette période, l’équivalent de plusieurs semaines de pluie va tomber sur les Côtes-d’Armor avec des cumuls annoncés de 20 à 40&nbsp;mm, voire un peu plus dans le Kreiz-Breizh</q>, annonce le spécialiste.</p> <h2>Des inondations à redouter</h2> <p>Malheureusement, des risques d’inondations et <a href="https://www.vigicrues.gouv.fr/territoire/8" target="_self">de crues</a> sont à prévoir, car les sols sont déjà saturés et les niveaux des étangs, lacs et autres cours d’eau sont déjà très élevés, à cause des épisodes pluvieux précédents. L’eau ne va donc pas pouvoir être absorbée et va ruisseler.</p> <p>De plus, un autre facteur est à prendre en compte&nbsp;: cette perturbation va être accentuée par<a href="https://maree.shom.fr/" target="_self"> les forts coefficients de marée</a>. Ils seront de 82 et 87&nbsp;mardi, 91 et 94&nbsp;mercredi, 96 et 97, jeudi et vendredi. <q>Ces grandes marées ne permettront pas à l’eau de s’évacuer facilement vers la mer</q>, précise Stéven Tual. Les villes côtières du département pourraient en subir les conséquences.</p> <h2>L’accalmie à partir de vendredi</h2> <p>Et comme dit le dicton populaire&nbsp;: «&nbsp;Après la pluie vient le beau temps. » Ce n’est peut-être pas un grand soleil qui brillera sur le département, mais les pluies devraient cesser pour quelques jours. <q>On voit le bout du tunnel avec un épisode anticyclonique qui devrait commencer vendredi et durer jusqu’à la fin du mois.</q></p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

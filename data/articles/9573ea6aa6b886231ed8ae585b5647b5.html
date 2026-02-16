@@ -31,21 +31,21 @@
     <div><div><p>Michael Saylor, the co-founder of Bitcoin (BTC) treasury company Strategy, indicated that the firm is buying more BTC amid the ongoing market dip, marking the 12th week of consecutive purchases.</p><p>Saylor <a href="https://x.com/saylor/status/2023013346757484588" target="_blank">posted</a> the Strategy BTC accumulation chart on X on Sunday. The chart has become synonymous with the company's BTC purchases, as it touts its upcoming 99th BTC transaction.</p><p>Strategy’s <a href="https://cointelegraph.com/news/saylor-strategy-1142-bitcoin-purchase-79k-per-btc">most recent BTC purchase</a> occurred on Feb. 9, when the company bought 1,142 BTC for more than $90 million, bringing its total holdings to 714,644 BTC, valued at about $49.3 billion at market prices as of publication.</p><figure> <img alt="Stocks, MicroStrategy, Michael Saylor" src="https://s3.cointelegraph.com/uploads/2026-02/019c628b-5a6d-7817-bf21-7fce687c0657.png"><figcaption><em>A visual history of Strategy’s Bitcoin purchases that Saylor posts on social media, signaling the company is about to acquire more BTC. Source: </em><a href="https://saylortracker.com/?tab=home" target="_blank"><em>Saylortracker.com</em></a></figcaption></figure><p>Bitcoin and the broader crypto markets declined sharply following a <a href="https://cointelegraph.com/news/trump100-tariffs-china-bitcoin-plummets-110k">flash crash in October</a> that caused the price of BTC to <a href="https://cointelegraph.com/news/crypto-sentiment-at-lowest-point-since-luna-crash-as-btc-tanks-to-60k">decline by over 50%</a> from the <a href="https://cointelegraph.com/news/bitcoin-on-exchanges-falls-to-six-year-low-as-btc-returns-to-124k">all-time high above $125,000</a> and <a href="https://cointelegraph.com/news/bitcoin-crashes-76k-strategy-cost-basis-2b-liquidation">below Strategy’s $76,000 cost basis</a>, its average price of acquisition per BTC.</p><p>The company has continued to accumulate amid the market downturn, defying analyst <a href="https://cointelegraph.com/news/strategy-s-nav-falls-under-1-critics-raise-alarm-after-dollar5-7b-bitcoin-wallet-move">suggestions that Strategy would dump its Bitcoin</a> holdings or pause accumulation in the event of a market-wide downturn. </p></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

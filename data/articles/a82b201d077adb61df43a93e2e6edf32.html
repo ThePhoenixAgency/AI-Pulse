@@ -38,21 +38,21 @@
 </a></p> <h2>Une mise en retrait</h2> <p>Une décision qui intervient alors que Jacques-Élie Favrot avait annoncé dimanche, dans un communiqué publié par l’intermédiaire de son avocat, Me Bertrand Sayn, se <em>«retirer de ses fonctions d’assistant parlementaire durant le temps de l’enquête»</em> et <em>«se mettre à la disposition de la justice»</em>. Figure du mouvement antifasciste lyonnais et cofondateur avec Raphaël Arnault de la «Jeune Garde», groupuscule dissous par le gouvernement l’année dernière, Jacques-Élie Favrot a été désigné par le collectif identitaire Némésis comme l’un des agresseurs présents lors de l’agression qui a coûté la vie à Quentin. Il <em>«nie formellement être responsable de ce drame»</em>.</p> </div></article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

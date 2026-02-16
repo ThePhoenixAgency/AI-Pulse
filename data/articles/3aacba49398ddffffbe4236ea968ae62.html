@@ -36,21 +36,21 @@
 <li><figure><img alt="La reine de la pop, ici photographiée lors d’une cérémonie musicale en 2022 à Bruxelles, nie fermement avoir dissimulé une partie de ses revenus au fisc français."><figcaption><span>La reine de la pop, ici photographiée lors d’une cérémonie musicale en 2022 à Bruxelles, nie fermement avoir dissimulé une partie de ses revenus au fisc français. | </span>JAMES ARTHUR GEKIERE / BELGA VIA AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 18h07</span></time></span> </span> </header> </div> <div> <p>Elle réfute toute accusation concernant une dissimulation de revenus. Dans un communiqué publié ce lundi 16&nbsp;février 2026, <a href="https://www.ouest-france.fr/leditiondusoir/2021-12-07/comment-angele-est-devenue-une-icone-feministe-populaire-ee11e669-fa6b-4c92-97a4-403bdc3bbbb3" target="_self">la chanteuse Angèle,</a> de son vrai nom Angèle Van Laeken riposte, après la publication d’informations faisant état de l’ouverture d’une enquête par l’administration fiscale française, relate l’<em>Agence France-Presse</em>&nbsp;(<em>AFP</em>). Ce texte confirme que ces investigations ont notamment&nbsp;mené à une visite domiciliaire de son appartement, un <strong>«&nbsp;pied-à-terre privé à Paris&nbsp;»</strong>.</p> <p>Dans...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -33,21 +33,21 @@
 <time>46:18</time> </p> </figure> </div> <h2>Les réseaux sociaux dans le viseur</h2> <p>Pour lutter "contre le poison de la haine numérique", la France "demandera des comptes aux grandes plateformes et des résultats mesurables dans le retrait rapide des contenus haineux".</p> <p>"Si les engagements ne sont pas tenus, nous activerons le droit européen qui prévoit des amendes significatives", a-t-il assuré.</p> <p>"N'en déplaise à certaines puissances qui voudraient nous donner des leçons : dans la France des Lumières, le free speech (NDLR: la liberté de parole) s'arrête à l'antisémitisme et au racisme", a-t-il insisté dans une allusion aux États-Unis.</p> <p>Emmanuel Macron souhaite une "peine d'inéligibilité obligatoire" pour les élus coupables "d'actes et propos antisémites, racistes et discriminatoires" car les politiques doivent être "des sentinelles de la République".</p> <p>"Trop souvent, les peines délivrées contre les auteurs de délits et crimes antisémites semblent dérisoires", a-t-il jugé en indiquant que le gouvernement et le Parlement "travailleront à un renforcement de la pénalisation des actes antisémites et racistes".</p> <p>La cérémonie s'est tenue 20 ans jour pour jour après la mort du jeune homme, retrouvé agonisant le long d'une voie ferrée et décédé lors de son transfert à l'hôpital au terme de trois semaines de sévices.</p> <p>Le chef de l'État a ensuite planté un chêne dans le jardin de l'Élysée, "symbole d'enracinement de la mémoire d'Ilan Halimi dans la République".</p> <p><em>Avec AFP</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

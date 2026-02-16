@@ -33,21 +33,21 @@
 </p> <header><p>Apple organise un nouvel événement le 4 mars prochain. Si son programme n'est pas encore officiel, les rumeurs qui circulent avec insistances depuis quelques mois permettent d'espérer y découvrir un MacBook à prix très abordable et un certain iPhone 17e.</p></header> </div> </section> <div> <p>Les rumeurs vous ont embrouillés, tant elles tablent sur des lancements de produits à des dates variées ? Cette fois, c'est du concret, puisque c'est Apple qui l'annonce. Il y aura bien un événement de présentation de produits organisé par la Pomme, et ce sera pour le 4 mars. Le rendez-vous est pris non pas dans son fief californien, mais à New York, où une vague d'annonces est à prévoir.</p> </div> </article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -37,21 +37,21 @@
 </div> <figure><a target="_blank" href="https://images.frandroid.com/wp-content/uploads/2026/02/programme-live-twitch-frandroid-0902-1.jpg"><img src="https://c0.lestechnophiles.com/images.frandroid.com/wp-content/uploads/2026/02/programme-live-twitch-frandroid-0902-1.jpg?resize=1200&amp;key=60252cd8&amp;watermark" alt="PROGRAMME LIVE TWITCH FRANDROID_0902"></a><figcaption>Source : Frandroid</figcaption></figure> <p><em>Frandroid</em> sur Twitch, demandez le programme ! Chaque semaine, nous vous donnons rendez-vous presque tous les jours pour découvrir et vivre en direct nos divers programmes sur <strong><a href="https://www.twitch.tv/frandroidlive" target="_blank">notre chaîne Frandroidlive</a></strong>&nbsp;: les Matinales, l’émission <strong><a href="https://www.frandroid.com/tag/emission-unlock">Unlock Talk</a></strong> et l’émission <strong><a href="https://www.frandroid.com/survoltes/velo-electrique/2346476_survoltes-lance-son-emission-twitch-date-rubrique-invites-tout-ce-quil-faut-savoir">Survoltés</a></strong>.</p> <h2>Unlock Talk est dans la place</h2> <p>Comme vous en avez désormais l’habitude, une semaine sans Unlock Talk rive avec un total de <strong>trois Matinales Tech’</strong> sur notre chaîne Frandroidlive.. Nous continuons d’ailleurs de mettre en place notre nouvelle formule, avec quelques ajustements ça et là au fil des éditions pilotes. </p> <p>Cette semaine, c’est au tour d’<strong>Omar Belkaab</strong> d’ouvrir le bal dès mardi 17 à 9h30, suivi de <strong>Sylvain Pichot</strong> – une première pour notre spécialiste audio et TV – le jeudi 19 et <strong>d’Hugo Cléry</strong> (responsable PC et gaming) vendredi 20.</p> <figure><a href="https://images.frandroid.com/wp-content/uploads/2025/03/unlock-talk-photo.jpg" target="_blank"><img src="https://images.frandroid.com/wp-content/uploads/2025/03/unlock-talk-photo-1200x802.jpg" alt="Unlock Talk photo"></a><figcaption>Source : Frandroid</figcaption></figure> <h2>Unlock Talk, c’est quoi ?</h2> <p>Unlock Talk, c’est l’émission tech de <em>Frandroid</em> qui décortique l’actualité,&nbsp;<a href="https://www.frandroid.com/test" target="_blank">teste des produits</a>&nbsp;et analyse les grandes tendances technologiques de l’année. Sur&nbsp;<a href="https://www.twitch.tv/frandroidlive" target="_blank">Twitch</a>,&nbsp;<a href="https://www.youtube.com/@unlocktalk" target="_blank">YouTube</a>&nbsp;et en&nbsp;<a href="https://shows.acast.com/unlock" target="_blank">podcast</a>, ce rendez-vous bimensuel alterne débats en plateau, démos concrètes et regards critiques sur la tech, du dernier&nbsp;<a href="https://www.frandroid.com/produits-android/smartphone" target="_blank">smartphone</a>&nbsp;aux enjeux de l’<a href="https://www.frandroid.com/culture-tech/intelligence-artificielle" target="_blank">intelligence artificielle</a>.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

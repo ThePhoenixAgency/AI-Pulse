@@ -31,21 +31,21 @@
     <div><div><p>Spain and Portugal have endured another storm over the weekend, just days after the deadly flooding and major damage caused by Storm Kristin and Storm Leonardo last week. Storm Marta passed over the Iberian peninsula on Saturday, bringing fresh torrential rain and killing two people. Storm Kristin killed at least five people after it made landfall on 28 January with <a href="https://www.theguardian.com/environment/2026/feb/06/weather-tracker-storm-leonardo-europe-portugal-spain-northern-africa">Storm Leonardo claiming another victim last Wednesday</a>.</p><p>The outlook for this week is for more rain across Spain, <a href="https://www.theguardian.com/world/portugal">Portugal</a> and France, especially across north-west Portugal, where more than 100mm is possible during the first half of the week. Some of the heaviest of the rain will transfer to southern Italy and western parts of Greece and Turkey later in the week.</p><p>High rainfall totals are also expected across parts of <a href="https://www.theguardian.com/world/southafrica">South Africa</a> and Lesotho this week. By Saturday, provinces including the Free State, KwaZulu-Natal and Eastern Cape in South Africa could record fairly widespread rainfall totals of 80-100mm as a result of heavy showers or thunderstorms, with daily rainfall totals perhaps reaching 50mm where storms are particularly intense.</p><p>Already, the South African Weather Service has issued warnings and advisories for severe thunderstorms through the first half of this week with a risk of excessive lightning, gusty winds, and hail. As a result, flooding, mudslides, and infrastructure damage is expected, potentially affecting more than 10 million people.</p><p>Japan and Korea continued to be gripped by cold weather last week as temperatures remained below average, reaching a peak over the weekend. Temperatures in Tokyo fell to almost 10C below average on Sunday as temperatures struggled to rise above zero, with snow falling too.</p><p>Tokyo sits on a similar latitude to the most northern parts of Africa and Athens, but despite this, snow is not unheard of, occurring on average about once or twice a year. This is due to Japan being positioned between a cold northerly flow from continental eastern Asia, as well as a supply of moisture from both the Sea of Japan to the north and the Philippine Sea to the south.</p><p>Western areas of Japan tend to see the most significant snowfall, as was the case this time with the Hokuriku region seeing more than 50cm in 24 hours. Temperatures are expected to quickly rise through later this week, reaching the mid to high teens in Tokyo by the weekend.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

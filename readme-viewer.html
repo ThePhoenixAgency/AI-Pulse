@@ -685,14 +685,26 @@
     </div>
 
     <div class="elevator">
-        <button class="elevator-btn" onclick="scrollPageStep(-1)" title="Scroll up">&#9650;</button>
-        <button class="elevator-btn" onclick="scrollPageStep(1)" title="Scroll down">&#9660;</button>
+        <button class="elevator-btn" onclick="scrollPageTo('top')" title="Scroll up">&#9650;</button>
+        <button class="elevator-btn" onclick="scrollPageTo('bottom')" title="Scroll down">&#9660;</button>
     </div>
 
     <script>
-        function scrollPageStep(direction) {
-            const step = Math.max(240, Math.round(window.innerHeight * 0.72));
-            window.scrollBy({ top: direction * step, behavior: 'smooth' });
+        function scrollPageTo(direction) {
+            const goBottom = direction === 'bottom';
+            const targetTop = goBottom
+                ? Math.max(
+                    document.documentElement?.scrollHeight || 0,
+                    document.body?.scrollHeight || 0
+                )
+                : 0;
+            window.scrollTo(0, targetTop);
+        }
+
+        function jumpToSection(target) {
+            if (!target) return;
+            const top = Math.max(0, (target.getBoundingClientRect().top + window.pageYOffset) - 80);
+            window.scrollTo(0, top);
         }
 
         // ─── Preferences Manager ────────────────────────────
@@ -1151,7 +1163,7 @@
                         chip.textContent = heading.textContent;
                         chip.addEventListener('click', () => {
                             const target = document.getElementById(cat);
-                            if (target) target.scrollIntoView({ behavior: 'smooth' });
+                            jumpToSection(target);
                         });
                         quickNav.appendChild(chip);
                     }
@@ -1170,9 +1182,7 @@
             select.onchange = function() {
                 if (this.value) {
                     const target = document.getElementById(this.value);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    jumpToSection(target);
                     this.value = ''; // Reset after navigation
                 }
             };
@@ -1521,6 +1531,39 @@
             syncLangSwitchUI(prefs);
         }
 
+        const README_CACHE_KEY = 'ai_pulse_readme_cache_v1';
+
+        function isUsableReadme(markdown) {
+            if (!markdown || typeof markdown !== 'string') return false;
+            const hasArticles = /\n###\s+\d+\./.test(markdown);
+            const hasSections = /<section id="/.test(markdown);
+            return hasArticles && hasSections;
+        }
+
+        function loadCachedReadme() {
+            try {
+                const raw = localStorage.getItem(README_CACHE_KEY);
+                if (!raw) return '';
+                const parsed = JSON.parse(raw);
+                const markdown = parsed && typeof parsed.markdown === 'string' ? parsed.markdown : '';
+                return isUsableReadme(markdown) ? markdown : '';
+            } catch (e) {
+                return '';
+            }
+        }
+
+        function saveCachedReadme(markdown) {
+            if (!isUsableReadme(markdown)) return;
+            try {
+                localStorage.setItem(README_CACHE_KEY, JSON.stringify({
+                    markdown,
+                    updatedAt: Date.now()
+                }));
+            } catch (e) {
+                // Ignore cache write failures (private mode / quota)
+            }
+        }
+
         // ─── Load README ────────────────────────────────────
         async function loadReadme() {
             try {
@@ -1565,23 +1608,47 @@
                 try {
                     const localResponse = await fetchWithTimeout('./README.md');
                     if (localResponse.ok) {
-                        markdown = await localResponse.text();
+                        const localMarkdown = await localResponse.text();
+                        if (!isUsableReadme(localMarkdown)) {
+                            throw new Error('Local README invalid');
+                        }
+                        markdown = localMarkdown;
                     } else {
                         throw new Error('Local fetch failed');
                     }
                 } catch (e) {
                     console.log('Local README fetch failed, trying local iframe fallback...');
                     try {
-                        markdown = await loadMarkdownViaLocalIframe();
+                        const iframeMarkdown = await loadMarkdownViaLocalIframe();
+                        if (!isUsableReadme(iframeMarkdown)) {
+                            throw new Error('Local iframe README invalid');
+                        }
+                        markdown = iframeMarkdown;
                     } catch (iframeError) {
                         console.log('Local iframe fallback failed, falling back to GitHub API...');
-                        const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
-                            headers: { 'Accept': 'application/vnd.github.v3.raw' }
-                        });
-                        if (!apiResponse.ok) throw new Error('All fetches failed');
-                        markdown = await apiResponse.text();
+                        try {
+                            const apiResponse = await fetch('https://api.github.com/repos/ThePhoenixAgency/AI-Pulse/readme', {
+                                headers: { 'Accept': 'application/vnd.github.v3.raw' }
+                            });
+                            if (!apiResponse.ok) throw new Error('GitHub README fetch failed');
+                            const apiMarkdown = await apiResponse.text();
+                            if (!isUsableReadme(apiMarkdown)) {
+                                throw new Error('GitHub README invalid');
+                            }
+                            markdown = apiMarkdown;
+                        } catch (apiError) {
+                            const cached = loadCachedReadme();
+                            if (cached) {
+                                console.warn('Using cached README fallback (offline-safe mode).');
+                                markdown = cached;
+                            } else {
+                                throw new Error('No valid README source available');
+                            }
+                        }
                     }
                 }
+
+                saveCachedReadme(markdown);
 
                 // Normalize legacy README lines to keep a single keyword metadata on local render.
                 markdown = markdown.replace(/ \| \*Also on:[^\n]*\*/g, '');

@@ -32,21 +32,21 @@
 <li><figure><img alt="En raison d’un incident, un manège de la fête foraine de Granville&nbsp;(Manche) est partiellement fermé."><figcaption><span>En raison d’un incident, un manège de la fête foraine de Granville&nbsp;(Manche) est partiellement fermé. | </span>OUEST-FRANCE</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 19h02</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h07</span></time></span> </span> </header> </div> <div> <p>La fête foraine bat son plein, à Granville (Manche), à <a href="https://www.ouest-france.fr/normandie/granville-50400/carnaval-de-granville/video-carnaval-de-granville-les-enfants-font-la-fete-comme-les-grands-ce-lundi-82ac8def-3f47-4a9a-ad2e-4f519901a0a8?originTag=83213" target="_blank">l’occasion de la 152<sup>e</sup> édition du carnaval</a> qui se tient jusqu’à mardi. C’est le début des vacances scolaires, les familles viennent profiter des gourmandises, manèges et attractions installées en centre-ville.</p> <p>L’une d’elle est pour le moment restée fermée. Dans la soirée, dimanche 15 février 2026, un accident s’est produit sur un manège installé rue Saint-Sauveur. Deux personnes ont été blessées et transportées à l’hôpital. Deux autres...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

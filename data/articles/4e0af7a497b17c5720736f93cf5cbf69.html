@@ -33,21 +33,21 @@
 </div> <p>"Il appartient au juge de mettre en balance ce droit avec celui de l’employeur à la protection de ses intérêts. Le juge doit prendre en considération la teneur des propos litigieux, le contexte dans lequel ils ont été prononcés ou écrits, leur portée et leur impact au sein de l’entreprise ainsi que les conséquences négatives causées à l’employeur, puis apprécier, au regard de ces critères, si la sanction infligée était nécessaire et proportionnée", précise Kenny Lassus, avocat en droit du travail au Barreau de Paris.</p> <p>Le technicien saisit le conseil des Prud'hommes pour demander la nullité de son licenciement. Malade, il estime que c'est une discrimination liée à sa santé et que sa liberté d'expression doit être respectée. Débouté de ses demandes, le salarié saisit la Cour d'appel de Rennes. Le 9 mai 2023, les juges rennais confirment le rejet de la nullité du licenciement, estimant que l'honneur du collègue est touché. Ils jugent l'intervention légitime, sans tenir compte particulièrement de l'état de santé du salarié.</p> <p>Sur ce point, le technicien souligne qu'il a demandé un aménagement de son poste à son employeur en raison de soucis de santé. Sans succès. En prenant cet élément en compte, les dessins apparaissent davantage comme une façon d'exprimer son mal-être. "Le juge doit en effet prendre en compte le contexte dans lequel les dessins ont été remis. Il est essentiel pour le juge de vérifier la portée des dessins et leur impact au sein de l’entreprise", ajoute Kenny Lassus.</p> <p>C'est précisément ce que va faire la Cour de cassation dans une décision du 14 janvier 2026. La Haute juridiction casse l'arrêt d'appel en rappelant le caractère fondamental de la liberté d'expression. Elle reproche à la Cour d'appel de ne pas avoir suffisamment examiné le contexte autour du salarié, ainsi que le préjudice réel pour le DRH. La Cour d'appel devra donc rejuger cette affaire en prenant en compte tous les éléments pour savoir si le licenciement est nul ou non. Un conseil, attendez cette décision avant de remettre vos caricatures à votre supérieur.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

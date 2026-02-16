@@ -37,21 +37,21 @@
 </ul> <h2>The rumor mill</h2> <p><strong>New Macs</strong> are coming soon, according to <a href="https://www.macworld.com/article/3056261/report-new-macs-are-coming-soon-for-real-this-time.html">a new report</a>. For real this time!</p> <p>Sorry folks, <strong>Liquid Glass</strong> <a href="https://www.macworld.com/article/3057181/sorry-folks-liquid-glass-isnt-going-anywhere.html">isn’t going anywhere</a>. Instead of a new look, or lots of new features, <strong>iOS 27</strong> will reportedly <a href="https://www.macworld.com/article/3056460/ios-27-will-reportedly-focus-on-fixes-over-features.html">focus on fixes</a>.</p> <p><a href="https://www.macworld.com/article/3059500/dried-out-iphone-16e-stock-points-to-imminent-launch-of-17e.html">‘Dried out’ iPhone 16e stock</a> points to <strong>imminent launch of 17e</strong>.</p> <p>Apple’s <strong>cheapest iPad</strong> may soon be <a href="https://www.macworld.com/article/3056057/apples-cheapest-ipad-may-soon-be-getting-an-ai-upgrade.html">getting an AI upgrade</a>.</p> <h2>Video of the week</h2> <figure></figure> <p>Apple has been hinting that it’s going to do something for its 50th anniversary. Could that something be a cheap MacBook? We discuss the idea in our <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.tiktok.com/@macworld.com/video/7605346703738293535&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">latest short</a>. Enjoy our video on <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.tiktok.com/@macworld.com&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">TikTok</a> and <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.instagram.com/macworld_hq/&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">Instagram</a>.</p> <h2>Software updates, bugs, and problems</h2> <p>Update now! <strong>iOS 26.3</strong> contains dozens of <a href="https://www.macworld.com/article/3058798/update-now-ios-26-3-contains-dozens-of-critical-security-fixes.html">critical security fixes</a>.</p> <p>And here’s <a href="https://www.macworld.com/article/3056433/ios-26-3-is-here-with-a-focus-on-switchers-and-stalking-check-out-whats-new.html">everything else that’s new</a> in <strong>iOS 26.3</strong>.</p> <p>And with that, we’re done for this week’s Apple Breakfast. If you’d like to get regular roundups, sign up for <a href="https://www.macworld.com/newsletters/signup">our newsletters</a>, including our new email from The Macalope–an irreverent, humorous take on the latest news and rumors from a half-man, half-mythical Mac beast. You can also follow us on <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.facebook.com/Macworld/&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">Facebook</a>, <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://www.threads.net/@macworld_hq&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">Threads</a>, <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://bsky.app/profile/macworld.com&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">Bluesky</a>, or <a href="https://go.skimresources.com/?id=111346X1569486&amp;xs=1&amp;url=https://x.com/macworld&amp;xcust=1-1-3056176-1-0-0-0-0&amp;sref=https://www.macworld.com/article/3056176/apples-siri-saga-is-at-the-point-of-no-return.html" target="_blank">X</a> for discussion of breaking Apple news stories. See you next Monday, and stay Appley.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

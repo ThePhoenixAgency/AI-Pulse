@@ -37,21 +37,21 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 proxy_set_header X-Forwarded-Proto $scheme;</pre> <p>Il envoie au proxy la valeur de la variable <em>$http_host</em>. Malheureusement, en HTTP/3, le client n’envoie pas de header Host, l’information étant envoyée pendant la connexion. La variable est donc vide. Et comme en HTTP/1.1, l’en-tête Host est obligatoire, ça ne passe pas. Pour résoudre cela, il est possible de changer la variable <em>$http_host</em> en <em>$host</em>. Cette variable prend une valeur en fonction de ce qui est disponible dans la requête. Elle ne peut pas être vide.</p> <p>J’ai créé <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1126960">le bug 1126960</a>&nbsp;chez Debian pour changer la variable du fichier proxy_params par défaut.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

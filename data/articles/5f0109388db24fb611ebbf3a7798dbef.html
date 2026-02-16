@@ -33,21 +33,21 @@
 </figure> <p>Plaque tournante</p> <p>Autre avantage&nbsp;: l’accès à ces deux îles privées se faisait exclusivement par avion privé, hélicoptère ou bateau, énumère <i> <a href="https://la1ere.franceinfo.fr/martinique/jeffrey-epstein-et-la-caraibe-un-territoire-cle-au-c-ur-d-un-systeme-criminel-transnational-1668477.html" target="_blank">Martinique la 1re</a> </i>, limitant considérablement les contrôles et les témoignages extérieurs. Jeffrey Epstein exploitait la situation géographique des Caraïbes pour en faire la plaque tournante de son réseau. Il atterrissait avec son jet privé sur l’île de la capitale, Saint-Thomas. Un contrôleur aérien, cité par <i> <a href="https://www.cnbc.com/2023/05/23/jpmorgan-epstein-lawsuit-us-virgin-islands-governor-to-be-deposed.html?utm_source=chatgpt.com" target="_blank">CNBC</a></i>, a déclaré avoir vu des filles en sortir. Place ensuite à l’hélicoptère, direction Little Saint James, où une piste permettait d’atterrir. Pourtant, malgré les nombreux soupçons qui planaient depuis des années, l'évidence des faits et les témoignages qui pleuvent, jour après jour, certains disent ne rien avoir vu. Ou font semblant. A l'image de l’ancien pilote, Nicolas Van Heurck, qui assure au<i> <a href="https://www.lepoint.fr/monde/iles-vierges-americaines-comment-jeffrey-epstein-a-corrompu-tout-un-territoire-E2H6LINTNJD6VHFAKM5IGUUAZ4/" target="_blank">Point</a></i> n’avoir <b>«&nbsp;jamais, jamais eu de problème&nbsp;»</b> avec Epstein.</p> <p><b>Lire aussi&nbsp;: </b> <a href="https://www.ouest-france.fr/monde/etats-unis/jeffrey-epstein/affaire-epstein-paris-etait-un-terrain-de-chasse-alerte-la-presidente-dinnocence-en-danger-d1b48ef8-0a8b-11f1-8d8f-93b36c1239ba" target="_blank">ENTRETIEN. Affaire Epstein&nbsp;: «&nbsp;Paris était un terrain de chasse&nbsp;», alerte la présidente d’Innocence en danger</a></p> <p>Une omerta qui n’a pas empêché les soupçons de poindre chez les locaux, alors qu’Epstein est inscrit sur la liste des délinquants sexuels depuis 2008, pour avoir sollicité une prostituée mineure. Son jet privé était d'ailleurs surnommé le «&nbsp;Lolita Express&nbsp;» par les habitants de Saint-James.&nbsp;Pour se protéger, Jeffrey Epstein a pu profiter des régimes fiscaux et judiciaires locaux pour faire transiter de l’argent en toute discrétion, notamment <i>via</i>&nbsp;Jeffrey Epstein VI Foundation.</p> <p>Soupçons de corruption</p> <p>Le pédocriminel aurait aussi pu compter sur la complicité de politiciens, de fonctionnaires et de policiers corrompus. Une plainte déposée en 2023 par la banque J.P. Morgan, dont Epstein a été client, relayée par le média <i><a href="https://stthomassource.com/content/2023/11/24/lawsuit-accuses-v-i-government-of-abetting-epsteins-sex-trafficking-scheme/?utm_source=chatgpt.com" target="_blank">The Source - Saint Thomas</a></i>, affirme que <b>«&nbsp;sans le gouvernement des Îles Vierges américaines, le système de trafic sexuel d’Epstein n’aurait pu exister et prospérer en toute impunité. Au lieu de l’arrêter, ils l’ont aidé&nbsp;»</b>.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

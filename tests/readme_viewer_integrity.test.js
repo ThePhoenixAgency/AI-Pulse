@@ -37,3 +37,14 @@ test('readme-viewer: renumbering must not rewrite heading textContent (keeps art
     'destructive renumbering detected: it can remove article links'
   );
 });
+
+test('readme-viewer: section navigation is instant (no smooth animation)', () => {
+  assert.ok(
+    html.includes('function jumpToSection(target)'),
+    'jumpToSection helper missing'
+  );
+  assert.ok(
+    !html.includes("scrollIntoView({ behavior: 'smooth' })"),
+    'smooth animated section scrolling must be disabled'
+  );
+});

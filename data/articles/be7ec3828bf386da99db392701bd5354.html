@@ -36,21 +36,21 @@
 </p> </div> <div> <div> <img alt="" src="https://www.franceinfo.fr/pictures/6OeplXGYWzzWEK-NPSm5JXesoYU/100x100/filters:format(jpg)/2023/07/07/64a7df4c5fe71_placeholder-36b69ec8.png"> </div> <div> <p><span> Radio France </span> </p> </div> </div> <div> <div> <p><span> Publié <time>le 16/02/2026 17:21</time> </span> </p> <p><span> Temps de lecture : 1min </span> </p></div> <div> <figure> <img alt="Des dauphins dans un bassin du parc animalier Marineland, le 27 novembre 2025 à Antibes (Alpes-Maritimes). (VALERY HACHE / AFP)" src="https://www.franceinfo.fr/pictures/Gg5IiKSy6n71xt4neJS6NZsNG5M/0x0:5506x3097/432x243/filters:format(jpg)/2026/02/16/000-86dk4cq-69934361b7a9a315472977.jpg"> <figcaption>Des dauphins dans un bassin du parc animalier Marineland, le 27 novembre 2025 à Antibes (Alpes-Maritimes). <span>(VALERY HACHE / AFP)</span></figcaption> </figure> </div> </div> <div><p>Les <a href="https://www.franceinfo.fr/environnement/biodiversite/animaux/un-rapport-d-expertise-alerte-sur-l-etat-du-bassin-des-orques-de-marineland_7809212.html" target="_self">dauphins du Marineland</a> d'Antibes vont bien déménager au zoo de Beauval, dans le Loir-et-Cher, a appris franceinfo, lundi 16 février. La décision a été prise lundi à l'issue d'une réunion entre le ministère de la Transition écologique et tous les acteurs concernés. </p> <p>Dès 2027, le ZooParc de Beauval accueillera 23 dauphins au sein de son nouveau centre de sauvegarde. Onze proviendront du parc Planète Sauvage, près de Nantes, et 12 du Marineland d'Antibes, fermé depuis plus d'un an aux visiteurs. </p><p>Mais le sort des orques Wikie et Keijo de Marineland n'est toujours pas décidé. Pourtant, le rapport sur la <em>"dégradation structurelle avancée"</em> des bassins des orques pointe l'urgence de leur situation. Si rien n'est fait, la seule solution serait, selon les vétérinaires, d'euthanasier la femelle orque et son fils. Pour le moment, la piste d'un transfert vers un sanctuaire marin au Canada ne reste qu'un projet. </p><p>Face à l'urgence, le gouvernement envisage de relancer l'option du Loro Parque, un zoo situé sur l'île de Tenerife, aux Canaries, qui avait déjà exprimé le souhait d'accueillir les orques. Mais cette hypothèse avait été vivement dénoncée par les ONG, les bassins seraient trop petits. Le ministère promet une décision d'ici la fin du mois de mars. </p></div> </section> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

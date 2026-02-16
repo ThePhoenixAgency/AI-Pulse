@@ -31,21 +31,21 @@
     <div><div> <span>When you purchase through links on our site, we may earn an affiliate commission. <a href="https://www.neowin.net/terms">Here’s how it works</a>.</span> <h5> Microsoft is in hot water again as regulators check if its Jumpstart program nudges PC makers to favor Edge over other browsers. </h5> <p> <span> <a href="https://www.neowin.net/profile/523233-usama-jawad/">Usama Jawad</a> <span></span> <span>Neowin</span> <a href="https://www.twitter.com/UsamaJawad96">@UsamaJawad96</a> · </span> <time> Feb 13, 2026 13:49 EST </time> </p> </div><div> <figure><a href="https://cdn.neowin.com/news/images/uploaded/2022/06/1654194853_edge_in_windows_11.jpg"><img alt="A Windows 11 logo next to a Microsoft Edge Logo with a blurred background" src="https://cdn.neowin.com/news/images/uploaded/2022/06/1654194853_edge_in_windows_11_story.jpg"></a></figure> <p>Microsoft has often found itself in the crosshairs of regulators and competitors when it comes to its Windows operating system. Recently, the Browser Choice Alliance accused the Redmond tech giant of <a href="https://www.neowin.net/news/microsoft-bribes-people-to-use-edge-claims-coalition-involving-google-chrome-and-opera/">bribing customers to use Microsoft Edge</a>. Now, it is the target of scrutiny once again in a related area.</p> <p>Brazil's antitrust regulator, the Administrative Council for Economic Defense (CADE), is probing 10 major PC manufacturers in the area based on Opera's complaint that Microsoft indirectly forces OEMs to exclusively pre-install Edge on Windows PCs. Multiple OEMs have received regulatory letters, including Dell, HP, Lenovo, Asus, Acer, Positivo, Samsung, Multilaser, Daten, and LG.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

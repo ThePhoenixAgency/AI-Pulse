@@ -94,21 +94,21 @@
 <p>One thing about blowing up on Hacker News is that you do get a lot of very negative feedback.</p> </div> <div> <p>Yeah, totally.</p> </div> <div> <p>You do have to have a thick skin. My initial post about how about shipping projects in large tech companies where I was talking about how the process being fundamentally political… There were a lot of comments on that, and have been since basically saying “This man is clearly a psychopath.”</p> </div> <div> <p>[laughs]</p> </div> <div> <p>“I would not want to work with him in any capacity. I feel bad for his colleagues. He will destroy any company he works at.” I get a lot of comments like that too, which I have to just [unintelligible <a href="#t=01:15:50.05">01:15:50.05</a>]</p> </div> <div> <p>Yeah… Those - I just laugh at stuff like that. That’s good stuff. We’ve been on Hacker News a fair bit of times, and we’ve got thick skin at this point. You have to. Or you just have to not read it. Now, it’s not quite the most icily of software world, but I think that’s reserved for the R programming Subreddit, where they’ll also tear you apart, but with less intellectual ways of doing it… I don’t know if that’s a way of saying it –</p> </div> <div> <p>I was really surprised that Reddit was worse than Hacker News. I thought Reddit would be better than Hacker News… It’s not. Reddit is so much worse. The comments are so much more negative.</p> </div> <div> <p>Yes. And Reddit has a culture of piling on, especially on jokes, where if one person disses you in a funny way, there’ll be reply after reply after reply of like them one upping each other, in like a downward spiral of dirtiness.</p> </div> <div> <p>It’s hard to put yourself out there. I have people like – like, my resume is public on the site. Any post that gets sufficiently popular, there’s a handful of people who go and find my resume and tear it apart. They’re like “Oh, he’s a staff engineer, but staff engineer at like Zendesk and GitHub. Like, what does that really mean?”</p> </div> <div> <p>“What does that really mean…?” [laughs]</p> </div> <div> <p>It’s like, “I don’t know, I’m pretty proud of where I am.”</p> </div> <div> <p>I was going to say, those are good jobs, dude…</p> </div> <div> <p>I think so, but… People on the internet are always going to criticize. But I think it’s useful having my name out there. It’s useful it being me and it not being anonymous. I think that adds to the value, even though it’s kind of hard [unintelligible <a href="#t=01:17:18.24">01:17:18.24</a>]</p> </div> <div> <p>A hundred percent. The only problem is I’ve been pronouncing your name Sean Goedecke in my head, and now, after years of reading you, I know it’s Sean Goedecke. And so when I say that the next time you’re on Changelog News, I will be sure to pronounce it right. Sean, keep writing, man… Keep writing software, keep writing prose about software, we’ll keep reading them… Anything else you want to say to me or to the audience before we call it a show?</p> </div> <div> <p>No, that’s it. Just thanks to everyone for reading. As long as people keep reading, I’m going to keep writing.</p> </div> <div> <p>Awesome. We’ll let you get back to your day… This is the end of my day, but the beginning of yours, so I’m sure you have some writing and some work ahead of you. I’ll let you go. Thanks, Sean.</p> </div> <div> <p>Thanks so much.</p> </div> </div> </section> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

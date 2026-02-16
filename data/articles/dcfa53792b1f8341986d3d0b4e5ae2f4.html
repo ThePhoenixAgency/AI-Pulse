@@ -37,21 +37,21 @@
 </a><p>"<em>Il est issu d’une banlieue de Lille. Quand je l’ai vu pour la première fois, je me suis dit ‘Ok, lui, il peut faire ça, moi aussi je peux le faire’</em>, se souvient le musicien. <em>J’ai envie d’incarner le pianiste un peu rappeur, pas la vie du pianiste qu’on imagine. Le pianiste, on l’imagine en costume, moi je veux incarner un nouveau truc, un nouveau code. Pour moi, tout le monde peut faire de la musique. Mais on ne le sait pas. Moi qui venais de banlieue, si j’étais resté focus sur une idéologie, rester au quartier, je n’aurais rien fait. Il y en a plein que je connais qui se sont mis au piano, qui me demandent des conseils. Ça me fait vraiment plaisir.</em>"</p><p>Une ambition de partage qui ne lui fait pas perdre de vue ses objectifs personnels. Car Aziz Hammedi ne compte pas s'arrêter en si bonne voie. "<em>Ok, j’ai l’oreille, j’ai de l’émotion à donner, une bonne main gauche, j’ai des bonnes techniques… Mais il y a des règles que je ne connais pas, que je ne peux pas appliquer pour aller plus loin dans mes compositions et parfois, ça me frustre. Il faudrait que je prenne des profs, bientôt. Si je veux travailler avec de grands orchestres, je dois apprendre à lire des partitions.</em>"</p><p>S'il se voit déjà sur les grandes scènes, collaborer avec des artistes qu'il aime et de prestigieuses formations, il n'oublie toutefois pas de savourer la visibilité que lui accordent les médias, depuis quelques mois. "<em>Je crois que je suis en train de vivre mon rêve. Si on m’avait dit ça, il y a cinq, dix ans, j’aurais rigolé. Le fait juste d’être en interview, pouvoir raconter ce que je ressens, j’en rêvais ! C’est un rêve éveillé</em>" conclut Aziz Hammedi.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -35,21 +35,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2023/12/Apple-Park.jpg?quality=82&amp;strip=all&amp;w=1600" alt="Apple Park | AAPL (9to5Mac image)"> </figure> <p>Earlier this month, Apple confirmed its blockbuster $2 billion acquisition of the <a href="https://9to5mac.com/2026/01/29/apple-acquires-secretive-q%E2%80%A4ai-startup-for-2-billion/">mysterious AI startup Q.ai</a>. In addition to that deal, Apple also recently acquired a database company called Kuzu. Here’s an in-depth list of recent acquisitions made by Apple.</p> <p>Kuzu’s LinkedIn page describes the company as an “embedded graph database built for query speed, scalability, and ease of use.” For full context, Apple has its own cross-platform relational database system called FileMaker, operated by its subsidiary Claris.</p> <p>The Kuzu acquisition, which was first spotted by <a href="https://appleinsider.com/articles/26/02/11/faster-more-flexible-databases-could-be-coming-to-filemaker-or-iwork"><em>AppleInsider</em></a>, occurred in October. Kuzu has scrubbed most of its online presence, which is common when a company is acquired by Apple.</p> <p>It’s unclear how much Apple paid for the company, but it was likely a relatively small deal. Still, it was large enough to trigger the European Union to add it to its list acquisitions.</p> <p>Pursuant to the Digital Markets Act, so-called “gatekeepers” are required to report acquisitions above a certain size to the EU.</p> <p>The <a href="https://digital-markets-act-cases.ec.europa.eu/acquisitions">webpage on the EU’s website</a> is actually quite interesting. It’s useful to see all of Apple’s reported acquisitions listed in one place.</p> <p>For example, here is a rundown of all the qualifying acquisitions Apple made in 2025:</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

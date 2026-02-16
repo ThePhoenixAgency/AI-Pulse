@@ -33,21 +33,21 @@
 </div> <p>Le 27 février 2024, la CPAM refuse de considérer cette mésaventure comme un accident de travail. "La CPAM estime que ce n'est pas sur le temps de travail car c'est 2 minutes après", décrit l'avocat. La salariée forme un recours auprès de la Commission du Recours Amiable (CRA), pour contester le refus. Elle essuie un nouveau refus quelques semaines plus tard. Elle saisit donc le Pôle social du Tribunal Judiciaire de Nancy.</p> <p>Les juges nancéens estiment que le recours de la salariée est légitime. La CPAM fait alors appel de cette décision, menant l'affaire devant la Cour d'appel de Nancy. Une audience est donc organisée devant la Cour d'appel. D'un côté l'Assurance Maladie qui argumente que la salariée a débadgé puis éteint son ordinateur. De l'autre, la salariée qui estime qu'elle a bel et bien subi un accident du travail. Le 14 janvier 2026, la Cour d'appel prend le parti de la salariée, estimant que se relever de sa chaise de travail est une "continuité d'action" rattachée à l'obligation professionnelle.</p> <p>Les juges soulignent également que la salariée aurait facilement pu modifier l'horaire pour faciliter les démarches. Cette preuve de bonne foi motive également leur décision. Pour l'heure, on ne sait pas encore si cette décision va faire l'objet d'une contestation devant la Cour de cassation. "Ce n'est vraiment pas certain que cette décision soit confirmée par la Cour de cassation. Confirmer serait l'ouverture d'une boite de Pandore en matière d'accident du travail et de télétravail", prévient Anthony Coursaget.</p> <p>En cas d'accident de travail pendant une journée de télétravail, le mieux est de faire un mail le plus rapidement possible à son employeur, en notant précisément le déroulement de votre accident, avec des heures. Cela peut éviter un long chemin juridique pour obtenir la qualification d'accident de travail. L'autre solution, plus simple, est de regarder où vous mettez les pieds, lorsque vous quittez votre bureau.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

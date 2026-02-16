@@ -31,21 +31,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2026/02/iOS-26.4-b1.jpg?quality=82&amp;strip=all&amp;w=1600" alt="iOS 26.4 beta 1"> </figure> <p>Apple has released the first iOS 26.4 beta for iPhone. While we originally <a href="https://9to5mac.com/2026/01/25/apple-siri-gemini-partnership-set-to-launch-next-month-ios-26-4/">expected</a> iOS 26.4 to include upgraded Siri, it <a href="https://9to5mac.com/2026/02/11/apple-reportedly-pushing-back-gemini-powered-siri-features-beyond-ios-26-4/">sounds like</a> we won’t see those changes just yet. </p> <p>What we know is that Apple <a href="https://9to5mac.com/2026/01/12/apple-confirms-googles-gemini-will-power-new-siri-features/">inked a deal with Google in January</a> to use Gemini AI technology to power some of the upcoming Siri enhancements Apple has been developing for two years. While the promised features have been public for a while, the green light to use Gemini is relatively new.</p> <p>iOS 26.4 beta 1 follows the official release of iOS 26.3, which was especially light on features and changes.</p> <p>The update added an easier way to&nbsp;<a href="https://9to5mac.com/2025/12/08/apple-and-google-team-up-to-make-iphone-and-android-switching-easier/">switch</a>&nbsp;between Android and iPhone, tweaks to the Astronomy and Weather&nbsp;<a href="https://9to5mac.com/2025/12/16/ios-26-3-adds-new-iphone-wallpaper-section-expands-gallery/">wallpaper gallery</a>, and a new feature for iPhones and iPads with Apple C1 and C1X modems for&nbsp;<a href="https://9to5mac.com/2026/01/26/ios-26-3-adds-new-feature-to-limit-location-data-shared-with-your-carrier/">limiting precise location</a>&nbsp;using cellular with select service providers.</p> <figure><p> </p></figure> <p>Stay tuned as we update our devices to Apple’s first developer beta version of iOS 26.4. We’ll report back with any changes we discover.</p> <p><a target="_blank" href="https://google.com/preferences/source?q=https://9to5mac.com"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-dark.png" alt="Add 9to5Mac as a preferred source on Google"> <img src="https://9to5mac.com/wp-content/themes/ninetofive/dist/images/google-preferred-source-badge-light.png" alt="Add 9to5Mac as a preferred source on Google"> </a> </p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

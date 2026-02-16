@@ -35,21 +35,21 @@
     <div><div> <p>Le véhicule de service de la maire d’Echirolles, Amandine Demore, a été incendié dans la nuit du lundi au mardi 13 janvier. Un acte d’intimidation pour l’élue PCF, lié à son combat contre le narcotrafic.</p> <a href="https://france3-regions.franceinfo.fr/politique/elections/elections-municipales"> <p><span></span> <span> Élections municipales 2026 </span> </p> </a> <p>Les faits se sont déroulés dans la nuit du 12 au 13 janvier 2026. Le véhicule de service de la maire d’Échirolles a été volontairement incendié, apprend-on ce lundi 2 février.</p><blockquote><p>J’ai été réveillé en pleine nuit par des bruits d’explosion et c’était mon véhicule qui était incendié en bas de chez moi. Il y avait des individus à proximité de la voiture en flammes, le visage largement couvert, qui assistaient à ça.</p><div><p><cite>Amandine Demore</cite></p><p>Maire PCF d'Echirolles </p></div></blockquote><p>Si, pour l’instant, les responsables de l’incendie n’ont pas été identifiés, la piste criminelle est privilégiée. Pour l’élue de la commune, il s’agit d’un <em>"acte d’intimidation lié à son combat, son action résolue et ses prises de position contre le narcotrafic."</em></p><p>Depuis plusieurs mois, l’élue PCF est très active pour lutter contre le trafic de drogue sur sa commune de 36&nbsp;000 habitants, située dans l’agglomération grenobloise.</p><p>En octobre 2025, elle avait pris un arrêté pour fermer et faire évacuer l'immeuble le Carrare, situé en face de la mairie, en raison de l'insécurité liée au trafic et d’une dégradation des espaces communs et des logements. L'immeuble était considéré comme l’un des points de deal les plus lucratifs de l’agglomération grenobloise. Après la fermeture de l'immeuble, Amandine Demore avait réclamé,<a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/cette-demande-est-legitime-la-maire-d-echirolles-lance-une-petition-pour-un-nouveau-commissariat-plus-de-1-200-signatures-en-trois-jours-3048667.html" target="_blank"> la mise en place d’un commissariat de plein exercice, en vain.</a></p><p>La maire d'Échirolles confie avoir déjà été victime d'actes d'intimidation dans la rue, au moment de la fermeture du Carrare notamment, mais jamais à son domicile ou à proximité.</p><p><em>"Je me suis dit : 'ils sont venus me signifier qu’ils savaient où j’habitais'. C’est une nouvelle tentative d’intimidation pour me faire taire, pour me faire renoncer. Ça me renvoie aussi le fait que les actions que l’on porte sur Échirolles avec le continuum de sécurité avec la préfecture, la police nationale, la police municipale, portent leurs fruits."</em></p><p>Face à cet acte, la maire de la commune ne faiblit pas et réitère <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/grenoble/nous-avons-nettement-affaibli-le-point-de-deal-affirme-la-maire-d-echirolles-7-mois-apres-la-fermeture-de-l-immeuble-le-carrare-3141500.html" target="_blank">son engagement</a> :<em> "Cet acte d’intimidation ne me fera pas taire et ne fait que renforcer ma détermination à agir avec force contre ce poison que représente le narcotrafic pour nos villes et les populations les plus précaires qui en subissent les conséquences au quotidien."</em></p><p>La maire PCF, candidate à sa succession aux élections municipales les 15 et 22 mars prochains, rappelle qu’<em>"un récent rapport du Sénat avait pointé les risques d’ingérence et de pression du narcotrafic dans les échéances électorales à venir".</em> <em>"Nous y sommes aujourd’hui confrontés à Échirolles"</em>, assure-t-elle.</p><p>La maire affirme avoir reçu de nombreux soutiens dans cette épreuve, notamment de la part de la préfète de l’Isère, mais aussi du procureur de la République de Grenoble, Etienne Manteaux. Elle fait part de son inquiétude vis-à-vis de sa famille : <em>"Je veux avoir une pensée pour mes proches qui ont à subir cet acte intolérable," </em>confie-t-elle.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

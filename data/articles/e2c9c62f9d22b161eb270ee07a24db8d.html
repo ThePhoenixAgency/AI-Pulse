@@ -35,21 +35,21 @@
 </a></p> <h2>Références nazies et antisémites dans plusieurs morceaux</h2> <p>Les références complotistes,&nbsp;<a href="http://www.lefigaro.fr/nice/apologie-du-terrorisme-le-rappeur-freeze-corleone-annonce-poursuivre-en-diffamation-estrosi-et-ciotti-20240214">antisémites</a>&nbsp;et nazies sont égrenées au fil des textes -&nbsp;<em>«C’est le Dieudonné du rap français»</em>, pour le procureur&nbsp;-, de même que les dates de sortie de plusieurs de ces morceaux, qui correspondent tantôt à celle du 11 septembre, tantôt à celle du 13 novembre. Ces paroles sont inéluctablement une manière <em>«de glorifier»</em> l’attentat du 14 juillet avec une comparaison qui associe <em>«la détermination et l’impact du camion et de son conducteur, à celui du rappeur dans l’industrie musicale»</em>, assène Damien Martinelli dans une voix teintée d’incompréhension. <em>«Il n’y a pas de contestation de la douleur des victimes»</em>, tente de rassurer la défense, qui brandit pendant près d’une heure la menace <em>«d’une atteinte à la liberté d’expression» </em>et conteste, méticuleusement, toute possibilité de lien avec une quelconque apologie du terrorisme de la part de son client.</p> <p>18 mois d’emprisonnement assorti d’un sursis simple, 50.000 euros d’indemnités aux victimes ainsi que trois ans d’interdiction de séjour dans le département des&nbsp;<a href="http://www.lefigaro.fr/nice/fdp-fils-de-prisonnier-la-permanence-de-louis-sarkozy-degradee-a-menton-20260216">Alpes-Maritimes</a>&nbsp;ont été demandés. La décision sera rendue le lundi 27 avril prochain. D’ici là, la défense recommande chaudement au ministère public de lire un livre <em>«d’histoire du rap français»</em>.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

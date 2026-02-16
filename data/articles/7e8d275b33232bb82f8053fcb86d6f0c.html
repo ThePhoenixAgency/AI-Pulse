@@ -45,21 +45,21 @@
 <p>Selon <a href="https://www.wrecksite.eu/" target="_blank">Wrecksite, qui répertorie les épaves dans le monde,</a> il y aurait&nbsp;209&nbsp;640&nbsp;bateaux connus pour avoir coulé, dont 179&nbsp;110&nbsp;localisés. La Base de données mondiale des épaves maritimes&nbsp;(GMWD), citée dans un article de la <i> <a href="https://www.bbc.com/future/article/20230609-how-many-shipwrecks-are-there-in-the-worlds-oceans" target="_blank">BBC</a> </i> <a href="https://www.bbc.com/future/article/20230609-how-many-shipwrecks-are-there-in-the-worlds-oceans" target="_blank">, Société de radiodiffusion britannique,</a> compte, quant à elle, 250&nbsp;000&nbsp;navires coulés.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

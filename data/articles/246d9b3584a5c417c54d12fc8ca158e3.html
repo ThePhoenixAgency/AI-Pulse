@@ -31,21 +31,21 @@
     <div><div><p>I've spent the past couple of months building Mnexium.com</p><p>Originally it was supposed to just be a memory management system (and it still is very much core).</p><p>I was thinking with all of the talk of AI replacing SaaS etc etc... How?</p><p>Most (if not all) AI systems do not have a way to manage, store &amp; maintain records. I thought it would be an interesting project and problem to solve.</p><p>I built it into the overall project more details here (<a href="https://www.mnexium.com/blogs/introducing-records">https://www.mnexium.com/blogs/introducing-records</a>).</p><p>I've realized it is nearly impossible to get some kind of feedback on these types of projects.</p><p>I really just want people to lend their opinion.</p><p>This is needed? This is not needed? Needed but implemented incorrectly. etc</p><p>Happy to answer any questions -</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

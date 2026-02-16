@@ -31,21 +31,21 @@
     <div><div><p><strong>Wayanad, India –</strong> The migrant workforce, as in most countries, is the backbone of India’s economy. And Kerala, being among the states with the highest emigration rate in India, is largely dependent on workers from other regions to run its industries.</p><p>All businesses, including the beautiful tea, coffee, rubber, spice and coconut plantations spread across the state, are heavily dependent on workers from neighbouring or northern and eastern areas of India, with Uttar Pradesh, Bihar, Jharkhand and Odisha among the top origins.</p><p>According to the United Nations, India recorded the highest number of people migrating abroad – more than 6.63 million – in 2024. There is no readily available data on migration within the country in recent years, as the census, which remains the primary source of information in India, was last conducted in 2011.</p><p>However, talk to people working in shops, factories, or any of these farms, and the chances are high that you will come across workers from other states.</p><p>Rajkumar Jani, a 23-year-old botany graduate from Odisha, is among them. Working at a tea garden in the hilly, verdant Wayanad, he did not have much time to spare as he wanted to pluck as many tender tea leaves as he could to meet the target he set for himself.</p><p>“We don’t work for a salary. Our earnings depend on the quantity of tea leaves we collect. So no work, no payment,” Jani says, gliding his harvesting shears along the top layer of the tea plants, careful to pluck only fresh, flavourful green leaves.</p><p>Asked how he landed in Kerala, about 1,600km (1,000 miles) from his hometown, Koraput in Odisha, Jani said he needed a job to support his family, and there were no decent work offers back home. He got the opportunity through his friend and coworker, Shyam Kalpadia, 26, also from Koraput.</p><p>“I was the first to come here six years ago. I came here looking for opportunities as many people from my hometown were arriving here for jobs,” says Kalpadia, who introduced many others to the tea industry in the southern state, including Rutu Nandiwali, 23, and 18-year-old Lakshman Kumar, who were all busy harvesting with him in the picturesque setting.</p><p>For Kalpadia, a decent income was the main reason behind moving to Kerala. He said he made 1,500 to 2,000 rupees ($17-$22) a day, much more than he could earn in Odisha, a state with a high poverty rate. In addition to providing payments, employers also arrange accommodation and some provisions for the workers – additional benefits – allowing them to save some money for home.</p><p>Being in “God’s own country” – a term coined in the 1980s to define Kerala’s abundant natural beauty, including its serene backwaters, lush greenery, rich flora and fauna, and long stretches of beaches, often linked to local legends in which the land was created by the gods – was another motivation for Kalpadia.</p><p>“This place is so beautiful. Wherever you go, it’s so green. People are also nice here,” he said.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

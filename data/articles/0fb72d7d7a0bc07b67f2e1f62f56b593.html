@@ -55,21 +55,21 @@ Te: trailers
 Connection: keep-alive ctl00%24ScriptManager1=ctl00%24ScriptManager1%7Cctl00%24ContentPlaceHolder1%24lnkVerTrabajador&amp;ctl00%24ContentPlaceHolder1%24filtroNombre=[SQL_INJECTION_POINT]&amp;ctl00%24ContentPlaceHolder1%24ddlEmpresa=&amp;ctl00%24ContentPlaceHolder1%24filtroCentro=&amp;ctl00%24ContentPlaceHolder1%24filtroUO=&amp;ctl00%24ContentPlaceHolder1%24filtroPuesto=&amp;__EVENTTARGET=ctl00%24ContentPlaceHolder1%24lnkVerTrabajador&amp;__EVENTARGUMENT=&amp;__LASTFOCUS=&amp;__VIEWSTATE=...&amp;__VIEWSTATEGENERATOR=...&amp;__ASYNCPOST=true&amp; </code></pre> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

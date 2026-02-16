@@ -35,21 +35,21 @@
     <div><div> <p>French police conducted raids at various locations, including the Arab World Institute (IMA) in Paris, on Monday as part of the investigation into the institution's former head <a target="_self" href="https://www.france24.com/en/tag/jack-lang/">Jack Lang</a> for his alleged financial ties to <a target="_self" href="https://www.france24.com/en/tag/jeffrey-epstein/">Jeffrey Epstein</a>, Pascal Prache, head of the national financial prosecutor's office, said in a statement.&nbsp;</p> <p>Lang, a former French culture minister under ​socialist president <a target="_self" href="https://www.france24.com/en/tag/fran%C3%A7ois-mitterrand/">François Mitterrand</a>, resigned earlier this month from ​the organisation which he ​had led since 2013.</p> <p><span>Watch more</span><a target="_self" href="https://www.france24.com/en/former-french-minister-resigns-over-epstein-linked-tax-fraud-probe">Former French minister Jack Lang resigns over Epstein-linked tax fraud probe</a></p> <p>The Arab World Institute is a ​Paris-based cultural and research institution under the supervision of France's foreign ministry that promotes understanding of the <a target="_self" href="https://www.france24.com/en/tag/arab-world/">Arab world</a>.</p> <p>Lang, who corresponded ⁠with Epstein from 2012 and 2019, has denied&nbsp;any wrongdoing, saying he was "shocked" that his name appeared in the statutes of an offshore company Epstein founded in 2016.</p> <p>Lang's daughter Caroline, who allegedly owned half the shares in the company, has resigned from two positions.</p> <p>The raid, announced by the national financial prosecutor's office, occurred as he said goodbye to former colleagues in a ceremony at the institute after more than a decade as its president.</p> <p>"I'm pleased to see the financial judiciary is at work," he said during his speech.</p> <p>"I'm delighted because I have nothing to hide."</p> <h2>French prosecutors announce special team for Epstein files</h2> <p>The raids came after French prosecutors&nbsp;opened ‌a preliminary investigation ​into alleged tax fraud against Lang and his ​daughter following the ​release of documents ​by the US ​Department of Justice.</p> <p>The Paris prosecutor's office on Saturday&nbsp;announced that it was setting up a special team of magistrates to analyse evidence that could implicate French nationals in the crimes of the convicted sex offender Epstein.</p> <p>With Epstein's known circle now extending to prominent French figures after the release of documents by the US authorities, the prosecutor's office said it would also thoroughly re-examine the case of a former French modelling agency executive, Jean-Luc Brunel, a close associate of the American financier who died in custody in 2022.</p> <p>The new team will work closely with prosecutors from the national financial crimes unit and police with a view to opening investigations into any suspected crimes involving French nationals, the Paris prosecutor's office told AFP.</p> <p>The aim is "to be able to extract any piece that could be usefully reused in a new investigative framework", it said.</p> <p>Brunel was found dead in his cell in a Paris prison in 2022 after having been charged with raping minors. The case against him was dropped in 2023 in the wake of his death, with no other person charged.</p> <p>Prosecutors said an investigation had shown Brunel was "a close friend of Jeffrey Epstein" who had offered modelling jobs to young girls from poor backgrounds.</p> <p>Brunel had engaged in sexual acts with underage girls in the United States, the US Virgin Islands, Paris and the south of France, they said.</p> <p>Ten women had made accusations against Brunel, several describing how they had been led to drink alcohol and had been subjected to forced sexual penetration, according to the prosecutor's office.</p> <h2>Senior diplomat under scrutiny</h2> <p>Several French public figures feature in the latest US Department of Justice release of material from the Epstein files, though being mentioned there does not in itself mean any offence has been committed.</p> <p>The prosecutor's office said it had been asked to look into three new specific cases involving a French diplomat, a modelling agent and a musician.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

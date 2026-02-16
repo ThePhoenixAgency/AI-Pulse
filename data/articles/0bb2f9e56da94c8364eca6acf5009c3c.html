@@ -31,21 +31,21 @@
     <div><div><div><p>My 10-year-old son and I were building a Roblox game together. AI wrote the Lua code, generated concept art. But when we needed 3D models for the game, there was nothing usable.</p><p>AI can write code, generate images, compose music, make videos. But 3D? There's no "Midjourney for meshes" yet. So I built one.</p><p>The tech: TripoSR (open source by Stability AI + Tripo) deployed on a HuggingFace Space with a shared H200 GPU, wrapped in a Gradio web app. Upload any photo, it removes the background, runs the image through a vision transformer, predicts a 3D density grid, extracts the mesh via marching cubes, and gives you a downloadable .obj or .glb in under 5 seconds.</p><p>What works well: objects with clean silhouettes on contrasting backgrounds. A green Hot Wheels on a white surface came out great. A grey truck on grey carpet, not so much.</p><p>What it's NOT: this isn't replacing Blender or ZBrush. Vertex-colored meshes, no UV-mapped textures (that needs 16GB+ VRAM for baking). 256 marching cubes grid resolution. But for quick prototyping, reference meshes, or game jam assets, it gets the job done.</p><p>Stack: Python, Gradio, PyTorch, HuggingFace Spaces (ZeroGPU).</p><p>Live at <a href="https://meshcraft.xyz/">https://meshcraft.xyz</a> - beta access is $9.97/mo (unlimited generations). Happy to answer technical questions.</p><p>Solo dev, 20+ years experience. Idea to deployed product in about 48 hours.</p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

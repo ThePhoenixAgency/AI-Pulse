@@ -31,21 +31,21 @@
     <div><div> <p>The <a href="https://www.france24.com/en/tag/france/" target="_self">French</a> government closely follows recommendations made by the Haute Autorite de la Sante (HAS), which also advised using mRNA-based Pfizer or Moderna<a href="https://www.france24.com/en/tag/vaccine/" target="_self"> vaccines</a> to slow the spread of the highly contagious <a href="https://www.france24.com/en/tag/coronavirus/" target="_self">Delta variant</a> because they offered more protection than other shots.</p><p>"While the number of new cases and the pressure on the hospital system remain relatively low, the dynamic of the epidemic in France is significant and could quickly lead to a deterioration in the health situation," HAS said in a statement.</p><p>President <a href="https://www.france24.com/en/tag/emmanuel-macron/" target="_self">Emmanuel Macron</a> is expected to address the nation on Monday on the progress of the epidemic and his government's strategy to dampen the impact of what many scientists say is an inevitable fourth wave.</p><p>Government officials have said in recent weeks that mandatory vaccination for health workers was being considered as the now-dominant Delta variant causes a sharp upturn in France's infection rate.</p><p><strong>Compulsory vaccination for everyone over 12?</strong></p><p>On Saturday, the country's National Medicine Academy, a doctors' society, pressed authorities to impose compulsory vaccination for everyone aged 12 and above.</p><p>HAS also said the government should start thinking about mandatory vaccination for the entire population, in order to be ready to take such a decision if it became necessary.</p><p>The body also recommended shortening the time period between the first and second vaccine doses and said people over 55 who received a first shot of the AstraZeneca vaccine should be given a second dose with an mRNA-based vaccine.</p><p>After falling from more than 42,000 per day mid-April to less than 2,000 per day in late June, the seven-day average of new infections has been climbing rapidly again since early July.</p><p>On Friday, the health ministry registered 4,580 new infections. In the past six days, the seven-day average number of new infections has increased by more than 50% every day, a pattern similar to the early phases of previous waves.</p><p><em>(REUTERS)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

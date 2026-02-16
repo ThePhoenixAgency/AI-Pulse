@@ -32,21 +32,21 @@
 <li><figure><img alt="Grandissime favori du concours de patinage artistique aux JO 2026, le jeune Américain Ilia Malinin, 21&nbsp;ans, a chuté à deux reprises et fini à la huitième place."><figcaption><span>Grandissime favori du concours de patinage artistique aux JO 2026, le jeune Américain Ilia Malinin, 21&nbsp;ans, a chuté à deux reprises et fini à la huitième place. | </span>VITTORIO ZUNNIO CELOTTO/GETTY IMAGES VIA AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 18h50</span></time></span> </span> </header> </div> <div> <p>Ce fut l’une des soirées <a href="https://www.ouest-france.fr/jeux-olympiques/jo-2026-ilia-malinin-au-sol-soiree-irreelle-au-patinage-tout-sest-deregle-les-favoris-ont-sombre-0a5091ae-09af-11f1-8d8f-93b36c1239ba" target="_self">les plus déconcertantes</a> de l’histoire du patinage artistique aux Jeux olympiques. Vendredi 13&nbsp;février à Milan&nbsp;(Italie), <a href="https://www.ouest-france.fr/jeux-olympiques/jo-2026-patinage-artistique-le-meilleur-de-lhistoire-sacre-champion-olympique-shaidorov-rend-hommage-a-malinin-9b1713e6-0984-11f1-8f27-f38523081a88" target="_self">le Kazakhstanais Mikhail Shaidorov</a> a été sacré champion olympique de la discipline à la surprise générale.&nbsp;Invaincu depuis plus de deux ans et grandissime favori du concours, le patineur américain Ilia Malinin <a href="https://www.ouest-france.fr/jeux-olympiques/une-debacle-catastrophique-la-presse-americaine-sous-le-choc-apres-le-cauchemar-dilia-malinin-aux-jo-2026-0f6b4230-097b-11f1-8d8f-93b36c1239ba" target="_self">a complètement sombré</a>, chutant à deux reprises et échouant à la huitième place, au cours d’une soirée irréelle où quasiment tous les favoris ont semblé submergés par la pression.</p> <h2>«&nbsp;Pression incessante et insurmontable&nbsp;»</h2> <p>Trois jours après cette désillusion, Malinin est sorti du silence. Sur son compte Instagram, le prodige américain a publié une vidéo de lui, accompagnée du message suivant&nbsp;: <q>Sur la plus grande scène du monde, ceux qui semblent les plus forts peuvent encore mener des combats invisibles à l’intérieur d’eux-mêmes. Même vos souvenirs les plus heureux peuvent finir par être ternis par le bruit. La haine ignoble en ligne attaque l’esprit et la peur l’attire dans les ténèbres, peu importent les efforts que vous déployez pour rester sain d’esprit malgré la pression incessante et insurmontable. Tout cela s’accumule à mesure que ces moments défilent devant vos yeux, entraînant un effondrement inévitable. Voici cette version de l’histoire.</q></p> <p>Le patineur américain, suivi par un million de personnes sur Instagram, a conclu sa publication par la date suivante&nbsp;: «&nbsp;21&nbsp;février 2026&nbsp;», date du gala d’exhibition qui clôture traditionnellement le calendrier olympique du patinage artistique.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

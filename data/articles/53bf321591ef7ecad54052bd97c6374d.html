@@ -31,21 +31,21 @@
     <div><div><p>JetBrains publie&nbsp;<strong>The State of Rust 2025</strong>. Ce rapport se base sur l’étude globale&nbsp;JetBrains Developer Ecosystem Survey Report 2025. Oui, le langage est utilisé, mais pour&nbsp;65 %&nbsp;des réponses, il l’est pour des&nbsp;side projects&nbsp;ou pour des projets&nbsp;personnels.&nbsp;53 %&nbsp;disent l’apprendre. L’usage professionnel&nbsp;s’établit&nbsp;à&nbsp;23 %.</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/rust-logo-512x512.png?itok=HhzRtKQ7"></p><p>30 %&nbsp;des réponses viennent de développeurs qui débutent tout juste. Les utilisateurs ayant plus d’un&nbsp;an d’expérience sont environ&nbsp;24 %. La plupart des développeurs Rust disent avoir déjà une expérience de développement. Selon ce rapport, ce ne sont pas des débutants qui utilisent Rust. Ils viennent de Python, Java, TypeScript, C++.&nbsp;Mais pas forcément&nbsp;pour changer de langage : plutôt&nbsp;en complément, pour le découvrir.</p><p><strong>Pourquoi choisir Rust ?</strong> La performance est mise en avant, ainsi que la sécurité et la robustesse du code. Pas de réelles surprises donc.</p><p><strong>Rust pour quels développements ?</strong> La programmation système, les&nbsp;CLI&nbsp;et le développement web restent les&nbsp;troisusages les plus cités. En revanche,&nbsp;peu d’usages&nbsp;dans la sécurité&nbsp;au sens strict&nbsp;et dans la data science.</p><p>Rust n’est pas forcément utilisé seul, mais&nbsp;avec&nbsp;ou en complément d’un ou plusieurs autres langages, tels que JavaScript ou Python. Les environnements de production sont essentiellement Linux (75 %).&nbsp;89 %&nbsp;disent&nbsp;utiliser&nbsp;un outil d’IA pour coder en Rust. ChatGPT est&nbsp;juste devant&nbsp;Copilot comme outil. L’intégration dans l’IDE est appréciée. La surprise vient plutôt des agents de codage. Oui, il y a un&nbsp;intérêt, mais aussi&nbsp;26 %&nbsp;qui se montrent plus prudents ou mesurés quant à leur usage.</p><p>L'étude complète :&nbsp;<a href="https://blog.jetbrains.com/rust/2026/02/11/state-of-rust-2025/">https://blog.jetbrains.com/rust/2026/02/11/state-of-rust-2025/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

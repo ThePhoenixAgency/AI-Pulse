@@ -168,21 +168,21 @@ Please let me know if you have any questions or suggestions on how to improve th
 Hope you enjoyed and plese check it out on npm :)</p> <p><a href="https://www.npmjs.com/package/spotify-now-playing-card" target="_blank">Check out the package on npm</a></p> <hr> <p><strong>If you found this post useful, you can check <a href="https://www.jageticbojan.com/post/from-portoflio-to-npm-widget" target="_blank">original post</a>, check out more articles on my <a href="https://www.jageticbojan.com/routes/blog" target="_blank">personal blog</a> where I write about Nodejs, React, TypeScript, and web development in general!</strong></p> <p>You can also check out my <a href="https://github.com/basskibo" target="_blank">GitHub</a> for more projects and open source contributions.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

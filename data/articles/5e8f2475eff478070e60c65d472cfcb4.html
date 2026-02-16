@@ -31,21 +31,21 @@
     <div><div><p>The TV news anchor Savannah Guthrie issued a fresh appeal to anyone who knows the whereabouts of her missing mother, saying that “you’re not lost or alone” and “it is never too late to do the right thing”.</p><p>The Today anchor, who is stepping away from NBC’s morning broadcast, urged “whoever has her or knows where she is” to come forward, but did not make reference to any ransom demands or communication with any abductor.</p><figure><div><img alt="a woman looks directly forward" src="https://i.guim.co.uk/img/media/f07180da3831c9dc08f6148353e492377fe9e552/0_87_1208_1510/master/1208.jpg?width=120&amp;dpr=1&amp;s=none&amp;crop=none"></div><figcaption><span></span><span>Savannah Guthrie speaks in a new video message.</span> Photograph: Savannah Guthrie/Instagram/Reuters</figcaption></figure><p>“It’s been two weeks since our mom was taken. And I just wanted to come on and say that we still have hope. And we still believe,” Savannah, 54, said in <a href="https://www.instagram.com/reels/DUzJ-_1AWWF/">a post to Instagram</a>.</p><p>She appeared in the video alone, unlike in previous ones in which her siblings joined her.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

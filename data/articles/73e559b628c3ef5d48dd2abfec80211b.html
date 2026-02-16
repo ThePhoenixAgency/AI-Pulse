@@ -31,21 +31,21 @@
     <div><p>The management company behind the university’s $56.9 billion endowment opened a new position in BlackRock's spot Ether ETF, while reducing its Bitcoin ETF stake by 21%.</p><div><div><p>The Harvard Management Company, which manages the eponymous university’s endowment, has reduced its stake in BlackRock’s spot Bitcoin exchange-traded fund and opened a new position in the asset management company’s Ether ETF.</p><p>In a Friday filing with the US Securities and Exchange Commission, Harvard’s endowment <a href="https://www.sec.gov/Archives/edgar/data/1082621/000119312526051702/xslForm13F_X02/50357.xml" target="_blank">reported</a> that it had reduced its position in the BlackRock iShares Bitcoin (<a href="https://cointelegraph.com/bitcoin-price">BTC</a>) Trust ETF to $265.8 million as of Dec. 31 from $442.9 million in <a href="https://www.sec.gov/Archives/edgar/data/1082621/000119312525283114/xslForm13F_X02/47098.xml" target="_blank">Q3 2025</a>. The investments marked the company offloading more than 1 million shares of the ETF, to 5.4 million in Q4 from 6.8 million in Q3. </p><p>In addition to the 21% reduction in its Bitcoin position, the Harvard Management Company reported a new investment with exposure to Ether (<a href="https://www.cointelegraph.com/ethereum-price">ETH</a>). According to the SEC filing, the endowment purchased more than 3.8 million shares of BlackRock’s iShares Ethereum Trust, valued at about $87 million as of Dec. 31.&nbsp;</p><p>The portfolio managers’ decisions occurred during a period of significant price volatility for Bitcoin and other cryptocurrencies. The price of BTC dropped to less than $90,000 by January 2026 from more than $120,000 at the beginning of July 2025, while Ether dropped to under $3,000 from more than $4,000 in the same period.</p></div><p>Cointelegraph is committed to independent, transparent journalism. This news article is produced in accordance with Cointelegraph’s Editorial Policy and aims to provide accurate and timely information. Readers are encouraged to verify information independently. Read our Editorial Policy <a href="https://cointelegraph.com/editorial-policy">https://cointelegraph.com/editorial-policy</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

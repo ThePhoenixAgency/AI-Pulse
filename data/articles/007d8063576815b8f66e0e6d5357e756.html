@@ -38,21 +38,21 @@
 </a><p>"<em>C’est une fusion que je regrette profondément</em>" abonde Jacques Chiron, ancien sénateur (PS) qui soutenait la liste de Pierre-Edouard Cardinal.</p><p>Ce dernier explique avoir fusionné avec la liste Les Républicains après <a href="https://www.ledauphine.com/elections/2026/02/04/notre-sondage-a-grenoble-laurence-ruffin-et-alain-carignon-vers-un-match-a-deux" target="_blank">la publication récente d’un sondage</a>, qui dessine un duel entre Laurence Ruffin et Alain Carignon dès le premier tour des municipales. "<em>On savait pertinemment quel que soit le résultat de ce premier sondage, qu’un rassemblement serait nécessaire pour gagner. Le sondage a accéléré les choses</em>" a-t-il justifié devant les journalistes.</p><p>Mais cet argument ne convainc pas Jacques Chiron. "<em>D’autres choix auraient pu être faits, avec une liste des socio-démocrates jusqu’à Horizons. Mais les ambitions individuelles sont telles que chacun est persuadé qu’il est meilleur" </em>regrette-t-il, suspectant Pierre-Edouard Cardinal d’avoir été "<em>influencé</em>" par des membres de son entourage en faveur d’une alliance avec Alain Carignon.</p><p>Une alternative qui aurait pu convenir à Camille Gaillard-Minier, députée (Renaissance) de la première circonscription de l'Isère, dont le parti avait accordé son soutien à Pierre-Edouard Cardinal. "<em>Une autre voie était possible, celle du rassemblement, que j'ai toujours défendue, des socio-démocrates, des progressistes et du centre</em>", déclare-t-elle dans un communiqué. "<em>Je condamne fermement ce ralliement</em>"</p><p>"<em>Comme le dit Camille Galliard Minier, peut-être qu’une autre issue aurait été possible, mais il aurait fallu pour cela qu’elle se mouille et qu’elle vienne chercher cette solution avec nous</em>" rétorque Emilie Chalas, ex-députée Renaissance et colistière de Pierre-Edouard Cardinal favorable au rapprochement avec Les Républicains.</p><p>Une justification visiblement contestée par Renaissance, qui annonce ce vendredi soir sa décision "<em>d’annuler l’investiture d’Émilie Chalas comme pilote municipale à Grenoble lors de la prochaine commission nationale d’investiture</em>" et la suspend <em>"de ses fonctions de présidente d’Assemblée départementale de l’Isère"</em>.</p><p>Du côté du Mouvement Démocrate, qui avait également apporté son soutien à la liste "Grenoble, la belle ambition !", la réaction a été immédiate. "<em>Nous allons demander la suspension à titre conservatoire, avant de possibles mesures disciplinaires, des candidats et candidates démocrates qui ont décidé de figurer sur la liste d’Alain Carignon à Grenoble</em>" prévient le parti dans un communiqué publié ce vendredi matin.</p><p>"<em>La décision de Pierre-Édouard Cardinal de rejoindre la candidature d’Alain Carignon ne correspond en rien à la ligne politique du Mouvement Démocrate. Ni à son histoire à Grenoble</em>" poursuit le MoDem.</p><p>Quelques heures après l’annonce de la fusion des listes, plusieurs autres têtes de liste, candidats à ces élections municipales à Grenoble, ont eux aussi réagi à coups de communiqués.</p><p>"<em>La belle ambition a fait long feu</em>", ironise Hervé Gerbi, tête de liste Horizons aux élections municipales. <em>Cet épisode de sauvetage a une vertu : il clarifie le paysage au sein du pôle central qui ne se reconnaît pas dans cette fusion absorption".</em></p><p>Valentin Gabriac, candidat Rassemblement National, dénonce pour sa part une "<em>trahison majeure des électeurs de droite</em>" et accuse Alain Carignon de tenir "<em>des propos sécuritaires de façade</em>" tout en réalisant "<em>une alliance de reniements avec les macronistes laxistes et responsables du chaos actuel</em>".</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

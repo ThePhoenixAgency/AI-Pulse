@@ -47,21 +47,21 @@
 </div> <p>Prompt : Transforme cette scène diurne en nuit de pleine lune. Remplace le ciel bleu par un ciel nocturne profond avec une pleine lune brillante positionnée au-dessus du cercle de pierres.</p> <p>klein est photographiquement plus réaliste. Par une nuit de pleine lune en contre-jour, Stonehenge apparaîtrait, très certainement, en silhouette de cette manière. C'est exactement ce qu'on obtiendrait en photo réelle. Nano Banana Pro garde artificiellement trop de détails et de texture sur les pierres alors qu'elles devraient être dans l'ombre. Klein respecte la physique de la lumière nocturne, même si cela sacrifie les détails de la scène originale.</p> <h2>Dans quel cas utiliser FLUX.2 [klein] ?</h2> <p>Nano Banana Pro garde une belle avance sur FLUX.2 [klein], notamment dans sa capacité à préserver la cohérence exacte de la scène originale, un critère qui reste fondamental en édition d'images. Sur nos quatre tests, le modèle de Google préserve systématiquement la structure, l'atmosphère et la dynamique de l'image source, là où Klein a une fâcheuse tendance à réinterpréter la scène à sa sauce. Concrètement, Nano Banana Pro reste le choix à faire quand vous avez besoin d'une précision chirurgicale sur la composition initiale, même si le rendu final peut parfois manquer de finesse. Klein, à l'inverse, produit des résultats visuellement plus aboutis sur le plan du réalisme et des textures, mais au prix d'une fidélité moindre à l'image d'origine. Il faudra alors accepter de multiplier les itérations pour obtenir un résultat qui combine qualité visuelle et respect du cadre initial.</p> <p>Mais la vraie force de FLUX.2 [klein] se joue sur un autre terrain. Côté tarifaire d'abord, le modèle s'impose comme une option nettement plus économique, particulièrement adaptée au traitement par lots. Mais l'argument clef est sans doute celui de la souveraineté des données. Contrairement à Nano Banana Pro qui impose de transiter par les serveurs cloud américains de Google, FLUX.2 [klein] s'exécute intégralement en local sur votre propre infrastructure. Aucune image n'est envoyée à l'extérieur. Un avantage considérable à l'heure de la souveraineté numérique.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

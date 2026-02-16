@@ -92,21 +92,21 @@
 <hr> <hr><div> <p> Tous les <a href="https://www.frandroid.com/guide-dachat/guide-audio"> Guides d'achat audio </a> </p> <ul> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/617347_quelle-barre-de-son-choisir-en-fonction-de-son-budget-en-2019"> Quelle est la meilleure barre de son testée par Frandroid en 2026 ? </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guides-dachat-gaming/820863_les-meilleurs-casques-gamer-ps5-et-ps4"> Quels sont les meilleurs casques à choisir pour sa PS5 (ou PS4) en 2026 ? </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/482350_quels-sont-les-meilleurs-ecouteurs-true-wireless-a-moins-de-200-euros-en-2018"> Quels sont les meilleurs écouteurs sans fil en 2026 ? </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/1042881_meilleurs-ecouteurs-sans-fil-pas-cher"> Meilleurs écouteurs sans fil à moins de 100 € : notre comparatif 2026 </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/1407721_notre-selection-des-meilleurs-micros-pour-le-podcast-et-le-streaming"> Notre sélection des meilleurs micros pour le podcast et le streaming </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/457173_guide-dachat-les-meilleurs-casques-bluetooth-sans-fil-de-2017"> Quels sont les meilleurs casques Bluetooth en 2026 ? Notre sélection </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/563148_le-chromecast-audio-est-mort-voici-ses-alternatives"> Comment connecter une chaîne hi-fi ou une platine vinyle ? Nos astuces et conseils </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/362501_smartphones-prise-jack-alternatives"> Smartphones sans prise jack : les meilleures solutions pour écouter de la musique </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/guide-audio/722626_guide-meilleures-enceintes-portables"> Comparatif : quelles sont les meilleures enceintes Bluetooth en 2026 ? </a> </li> <li> <a href="https://www.frandroid.com/guide-dachat/1995260_quels-modele-dairpods-choisir-notre-selection"> Quels AirPods d’Apple choisir selon votre budget ? Le comparatif de la gamme </a> </li> </ul> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

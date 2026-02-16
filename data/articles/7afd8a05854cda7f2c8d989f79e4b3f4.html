@@ -34,21 +34,21 @@
 Depuis des ann�es, le processus de stabilisation du noyau Linux repose sur des mainteneurs exp�riment�s qui d�cident quels correctifs appliquer aux branches dites stables. Pour les aider, <a href="https://linux.developpez.com/actu/374942/L-IA-s-immisce-dans-le-noyau-Linux-innovation-necessaire-ou-bombe-a-retardement-pour-l-ecosysteme-numerique-mondial-Certaines-voix-s-elevent-pour-demander-une-politique-officielle-d-urgence/" target="_blank">un outil baptis� AUTOSEL</a> a �t� d�velopp�. Sa mission : s�lectionner automatiquement des correctifs pertinents en se basant sur des mod�les statistiques.</p><p>Dans un discours prononc� lors du sommet Open Source Summit 2025 en Am�rique du Nord, Sasha Levin, hacker du noyau Linux et ing�nieur �m�rite chez Nvidia, a cit� l'exemple d'un petit correctif en amont apport� � git-resolve dans le noyau Linux 6.16. Cet outil r�sout les probl�mes li�s aux identifiants de commit incomplets ou incorrects, un probl�me mineur mais g�nant pour les principaux responsables de la maintenance. Levin a utilis� l'IA pour �crire l'int�gralit� de la routine : � La seule chose que j'ai faite, c'est de revoir le code et de le tester pour m'assurer qu'il fonctionnait. �</p><p>Cependant, il a averti : � C'est un excellent exemple de ce que font actuellement les LLM. Vous leur confiez une petite t�che bien d�finie, et ils s'en chargent. Et vous remarquez que ce patch n'est pas du genre "H�, LLM, va m'�crire un pilote pour mon nouveau mat�riel". Au contraire, il est tr�s sp�cifique : "convertis ce hachage particulier pour utiliser notre API standard". �</p><p>Levin a d�clar� qu'un autre avantage de l'IA est que � pour ceux d'entre nous qui ne sont pas de langue maternelle anglaise, elle aide �galement � r�diger un bon message de commit. C'est un probl�me courant dans le monde du noyau, o� il est parfois plus difficile de r�diger le message de commit que d'�crire le changement de code, et cela aide vraiment � surmonter les barri�res linguistiques. �</p><p>Pour l'avenir, Levin a sugg�r� que les LLM pourraient �tre form�s pour devenir de bons assistants des mainteneurs Linux : � Nous pouvons enseigner � l'IA les mod�les sp�cifiques au noyau. Nous montrons des exemples tir�s de notre base de code pour expliquer comment les choses sont faites. Cela signifie �galement qu'en l'ancrant dans notre base de code du noyau, nous pouvons faire en sorte que l'IA explique chaque d�cision et nous pouvons la retracer � partir d'exemples historiques. �</p><p>En outre, il a d�clar� que les LLM peuvent �tre connect�s directement � l'arborescence Git du noyau Linux, de sorte que � l'IA peut aller de l'avant et essayer d'apprendre des choses sur le d�p�t Git toute seule �.</p><p>Source : <a href="https://www.fool.com/earnings/call-transcripts/2026/02/10/spotify-spot-q4-2025-earnings-call-transcript/" target="_blank">Transcription de l�appel entre responsables de Spotify</a></p><p><b>Et vous ?</b></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

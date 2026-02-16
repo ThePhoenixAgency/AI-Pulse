@@ -31,21 +31,21 @@
     <div><div> <p>The premium experience of receiving absolutely nothing</p> <div> <p>In a world cluttered with products, services, and constant noise, we offer something revolutionary: <strong>Nothing</strong>.</p> <p>No emails. No downloads. No tracking. No confirmation. Just the pure, unadulterated experience of spending money on absolutely nothing.</p> <p>This is not minimalism. This is <em>nothingism</em>.</p> </div> <div> <div> <p>Basic Nothing</p> <p>$1<span></span></p> <ul> <li>✓ Absolutely nothing</li> <li>✓ Zero follow-up</li> <li>✓ Complete void</li> <li>✓ Existential satisfaction</li> </ul> </div> <div> <p>Popular</p> <p>Premium Nothing</p> <p>$5<span></span></p> <ul> <li>✓ Everything in Basic</li> <li>✓ Enhanced sense of superiority</li> <li>✓ Bragging rights</li> <li>✓ Premium-grade emptiness</li> </ul> </div> <div> <p>Enterprise Nothing</p> <p>$50<span></span></p> <ul> <li>✓ Everything in Premium</li> <li>✓ Blank PDF invoice</li> <li>✓ Enterprise-grade void</li> <li>✓ Ultimate flex energy</li> </ul> </div> </div> <div> <h2>What Our Customers Are (Not) Saying</h2> <div><p> "I received exactly what was promised. Nothing. 10/10 would buy nothing again." </p> </div> <div><p> "Finally, a service that doesn't spam my inbox. I got nothing and I love it." </p><p>- Someone who paid $5</p> </div> <div><p> "The blank PDF invoice really tied the whole experience together." </p><p>- Enterprise Customer</p> </div> </div> <div> <h2>Frequently Asked Questions</h2> <div> <p>What exactly am I buying?</p> <p>Nothing. Literally nothing. We promise to deliver absolutely nothing to you.</p> </div> <div> <p>Will I receive a confirmation email?</p> <p>No. That would be something, and we provide nothing.</p> </div> <div> <p>What's the difference between the tiers?</p> <p>Basic Nothing costs $1. Premium Nothing costs $5 and comes with a sense of superiority. Enterprise Nothing costs $50 and includes a blank PDF invoice. The void remains the same across all tiers.</p> </div> <div> <p>Can I get a refund?</p> <p>You received exactly what was promised: nothing. Refund requests will receive nothing in response.</p> </div> <div> <p>Is this a joke?</p> <p>This is conceptual art disguised as commerce. Or commerce disguised as conceptual art. We're not entirely sure anymore.</p> </div> <div> <p>Why would anyone buy this?</p> <p>Why does anyone buy anything? To feel something. In this case, to feel nothing.</p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

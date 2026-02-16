@@ -31,21 +31,21 @@
     <div><div> <p>"He was sick. He was a private man who hid things as long as he could," said Bernard Blistene, former director of the <a href="https://www.france24.com/en/culture/20210126-paris-s-pompidou-centre-to-close-for-four-years-for-renovation-works" target="_self">Pompidou </a>Centre&nbsp;which hosted an exhibition of Boltanski's work last year.&nbsp;</p><p>Boltanski, whose death in Paris's Cochin hospital was first reported by Le Monde newspaper, often mixed banal daily objects with photographs, videos and sculpture, while at other times creating monumental installations.</p><p>His <a href="https://www.france24.com/en/tag/contemporary-art/" target="_self">self-described works</a> of "naive psychoanalysis" include the recorded heartbeats of thousands of people on a remote Japanese island, a moving walkway with pictures of hundreds of children, and stacks of biscuit boxes bearing the names of dead people.</p><p>Boltanski made headlines in 2010 when he agreed to offer 24-hour video footage of his studio in Paris for the rest of his life to an Australian collector, in return for regular payments.</p><p>The ultimate price paid by the collector, David Walsh, who made his fortune in gambling, was to be determined by the amount of time Boltanski lived.</p><p>Under the macabre deal, if Boltanksi lived for more than eight years, then Walsh would have paid more than they estimated the work was worth.</p><p>"He has assured me that I will die before the eight years is up, because he never loses. He's probably right," Boltanski told AFP at the time. "I don't look after myself very well. But I'm going to try to survive."</p><p>Walsh told The New York Times he hoped Boltanksi would die in his studio.</p><p>Blistene called the passing of the artist "a major loss".&nbsp;</p><p>"Above all he loved transmission between people by their stories, their memories. He will remain one of the biggest storytellers of his time. He was an incredible inventor," he told AFP.</p> <div> <figcaption> </figcaption> </div> <p><strong>Marked by the Holocaust</strong></p><p>The son of a converted Jewish doctor of Ukrainian origin and a Catholic French mother, Boltanski was born on September 6, 1944, as Europe reeled from the Nazi Holocaust.</p><p>During the World War II German occupation of France, Boltanski's polio-ridden mother hid his father under the floorboards of their apartment and pretended that the couple had divorced.&nbsp;</p><p>Boltanski's childhood was haunted by stories of family friends who had survived the Holocaust, a theme which would later greatly influence his work.</p><p>Brought up with the fear of separation, he slept for many years in the same bedroom as his parents with his two brothers.</p><p>Describing himself to France Culture as an "extremely strange... very peculiar" child, he left school at the age of 13 unable to express himself.</p><p>He found his calling while experimenting with clay and paint, and soon began producing huge canvases.</p><p>He held his first exhibition in May 1968 at the age of 23, but after making some 200 works, he abandoned the paintbrush for good and went on to concentrate on new art forms, starting with short films.</p><p><strong>Clocking the seconds</strong></p><p>In 1968, he published his first book, detailing memories of his childhood from 1944 to 1950.</p><p>His big international breakthrough came in 1971 with the "Album of Family D", the first of a series of works that used patchworks made up of photographs of people.&nbsp;</p><p>In "Inventories" he described the treasure trove hidden in the bottom drawers of anonymous people.</p><p>After the death of his parents in the mid-1980s, his work became darker.</p><p>In "Personnes" in 2010, he presented visitors to the Grand Palais in Paris with great piles of clothes and switched off the heating in the vast building, a meditation on the Nazi death camps.</p><p>An exhibition at the Marian Goodman gallery in Paris in 2015 featured hologram images of himself as a young and old man, with the words "arrival" and "departure" illuminated on the walls, as well as a clock that counted the number of seconds of his life.&nbsp;</p><p>He was married to fellow contemporary artist Annette Messager. The couple decided not to have children.</p><p><em>(AFP)</em></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

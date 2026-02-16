@@ -31,21 +31,21 @@
     <div><div><p>The Delight hearing aids come preconfigured with four additional environmental modes in addition to the default setting, with room for four extra modes you can create yourself. Unfortunately, none of these made any real difference for my overall hearing clarity, no matter what kind of setting I found myself in. Streaming media comes across as fair but largely devoid of bass and unusable in loud environments.</p><p>All told, the Delight system provided fairly minimal support in even a best-case scenario (watching TV in an otherwise quiet room), and they weren’t effective at all in noisy environments, where amplified ambient sound drowned out attempts at conversation.</p><p>The app has some interesting extras waiting for the user, including a simple language translator, an environmental noise measuring system, and a remote sound capture system that lets you place your phone in front of an audio source so you can pipe sound directly to your hearing aids from its microphone. Elehear’s “Serene” soundscapes can also be used to generate various meditative background noises directly within the hearing aids, with a massive 26 track types available, including Waterfall, Cicadas, and even Cat. Ultimately, I had more fun playing with all of these bonus features than actually using the Delight aids for everyday hearing support.</p><figure><p><span><img alt="Image may contain Sphere Computer Hardware Electronics Hardware and Mouse" src="https://media.wired.com/photos/698e934b23b6b2ce65c875e1/master/w_1600%2Cc_limit/Elehear%25202%2520source%2520Chris%2520Null.png"></span></p><p><span>Photograph: Chris Null</span></p></figure><p>One downside of the Elehear app is its quirky need to be manually reconnected to the hearing aids almost every time it is opened—even if those aids are already connected via Bluetooth and working normally. It requires a few extra taps and a few extra seconds when opening the app, an unnecessary step that should be handled behind the scenes. It’s also worth noting that I had significant trouble getting the Delight aids to pair with my phone in the first place—the left aid would pair but not the right—requiring several factory resets before I finally got everything working.</p><p>If I could rate these hearing aids strictly based on their design and fit, they’d get a near-perfect score, but despite Elehear’s promises of integrating a new AI-powered audio engine with better noise cancellation and amplification, I never saw any tangible benefits from the upgrades. I hesitate to say that as a blanket dismissal, because while most hearing aid wearers are likely to benefit from the use of a tuned audiogram, others may get more benefit from this type of blunt amplification.</p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

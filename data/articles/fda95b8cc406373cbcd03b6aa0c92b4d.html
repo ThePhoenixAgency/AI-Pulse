@@ -36,21 +36,21 @@
 <li><figure><img alt="Pour endiguer la progression de la Loire, quai Dupetit-Thouars, les agents de la commune des Ponts-de-Cé ont installé des batardeaux et des passerelles, avec des parpaings et des planches"><figcaption><span>Pour endiguer la progression de la Loire, quai Dupetit-Thouars, les agents de la commune des Ponts-de-Cé ont installé des batardeaux et des passerelles, avec des parpaings et des planches | </span>OUEST-FRANCE.</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h11</span></time></span> <span>Publié le <time>16/02/2026 <span> à 18h02</span></time></span> </span> </header> </div> <div> <p>Aux Ponts-de-Cé, près d’Angers&nbsp;(Maine-et-Loire), la Loire, l’Authion et le Louet se sont mis à trois pour redessiner la commune. Sous l’effet des inondations, les paysages sont chamboulés&nbsp;; l’ordinaire ne ressemble plus à rien – de connu – et l’eau s’invite presque partout. Jusque dans les conversations.</p> <p>Devant le restaurant l’Instant, qu’elle gère depuis septembre&nbsp;2025 sur l’esplanade Jean-Sauvage, Erika Lecoublet choisit l’humour face à la montée des eaux, ce lundi matin 16&nbsp;février 2026. <q>On se croirait au bord du Louet, c’est une dinguerie</q>, lâche-t-elle en regardant le parking, en grande partie submergé. Au...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

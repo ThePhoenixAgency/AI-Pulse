@@ -38,21 +38,21 @@
 <p>Repoussée à début mars, la reprise du trafic des trains sera <em>"très limitée"</em> dans un premier temps, <em>"avec un passage à vitesse réduite sur la zone"</em> de l'éboulement. Des perturbations qui compliquent encore un peu plus la circulation dans le sud Grésivaudan, déjà impacté depuis un an et demi par <a href="https://france3-regions.franceinfo.fr/auvergne-rhone-alpes/isere/temoignages-eboulement-en-isere-c-etait-apocalyptique-on-a-vu-la-montagne-degringoler-racontent-des-habitants-3010298.html" target="_blank">l’éboulement sur la route départementale 1532 à La Rivière, le 25 juillet 2024.</a></p><p>Pour pallier l'absence de trains, la SNCF a mis en place des cars de substitution dont les horaires sont mis en ligne la veille à 17 heures <a href="https://www.ter.sncf.com/auvergne-rhone-alpes/se-deplacer/info-trafic/perturbations" target="_blank">sur son site</a>. <em>"L'offre de substitution routière étant réduite, nous vous conseillons, dans la mesure du possible, de différer votre déplacement"</em>, recommande encore l'entreprise ferroviaire.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -33,21 +33,21 @@
 </ul> <p>Before you install, back up your iPhone and make sure you have enough battery or keep it on a charger during the update.</p> <h2>Changes in iOS 26.4 beta 1</h2> <p>Apple has not positioned iOS 26.4 as a single-feature release, and early builds often focus on under-the-hood work. In other words, beta 1 can look quiet on day one, then pick up visible changes over the next few seeds.</p> <p>That said, iOS 26.4 is still expected to grow into a more meaningful update than 26.3, with attention on Siri and Apple Intelligence. We are testing this beta now, and we will report back if we spot major changes, including any Siri and Apple Intelligence updates as they appear across later betas.</p> <p>If you have installed iOS 26.4 beta 1, tell us what you are seeing so far in the comments.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

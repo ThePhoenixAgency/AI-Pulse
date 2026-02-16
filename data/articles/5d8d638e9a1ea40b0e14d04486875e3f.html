@@ -32,21 +32,21 @@
 <li><figure><img alt="Arthur Fils est au deuxième tour de l’ATP 500&nbsp;de Doha."><figcaption><span>Arthur Fils est au deuxième tour de l’ATP 500&nbsp;de Doha. | </span>ARTUR WIDAK / NURPHOTO VIA AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 19h03</span></time></span> </span> </header> </div> <div> <p>Le Français Arthur Fils&nbsp;(40e mondial) a souffert pour se défaire du Polonais Kamil Majchrzak&nbsp;(56e) 6-7&nbsp;(5/7), 6-3, 6-4 au 1er tour du tournoi ATP 500&nbsp;de Doha, lundi. Le premier set, où Fils a obtenu une balle de break sans pouvoir la convertir et Majchrzak aucune, a tourné de justesse en faveur du Polonais.</p> <h2>Carreno Busta ou Halys au deuxième tour</h2> <p>Cette perte n’a pas découragé Fils, qui a remporté le suivant où Majchrzak ne s’est une fois de plus procuré aucune balle de break. L’ex-N.1&nbsp;français, de retour à la compétition depuis début février après six mois d’arrêt en raison d’une blessure au dos, a récidivé dans le troisième où il a pris deux fois le service adverse et perdu une seule fois le sien.</p> <p><strong>Lire aussi&nbsp;:</strong> <a href="https://www.ouest-france.fr/sport/tennis/atp/tennis-de-minaur-retrouve-son-meilleur-classement-atp-rinderknech-reste-premier-francais-916ba91a-0b0f-11f1-8f27-f38523081a88" target="_blank">De Minaur retrouve son meilleur classement ATP, Rinderknech reste premier français</a></p> <p>Fils affrontera en huitièmes l’Espagnol Pablo Carreno&nbsp;(123e) ou le Français Quentin Halys&nbsp;(72e), passés tous deux par les qualifications. Un autre Français a passé lundi le 1er tour&nbsp;: Valentin Royer&nbsp;(60e), impitoyable face à son compatriote Pierre-Hughes Herbert&nbsp;(190e), battu 6-0, 6-3. Royer devrait être opposé en huitièmes au N.1&nbsp;mondial Carlos Alcaraz, si l’Espagnol élimine au 1er tour le Français Arthur Rinderknech&nbsp;(30e) qui n’a pas été gâté par le tirage au sort.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

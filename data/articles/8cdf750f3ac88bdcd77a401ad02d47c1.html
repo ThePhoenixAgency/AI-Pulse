@@ -32,21 +32,21 @@
 </p> </div> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/F48CE0A1-C9B4-4A81-A953-01EBB4F031FF/NW_raw/une-renault-alpine-des-gendarmes-roulant-au-superethanol-possible-pas-sur-pour-cause-d-autonomie-mais-l-etat-va-equipement-40-a-50000-autres-vehicules-d-ici-2030-1770721602.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/F48CE0A1-C9B4-4A81-A953-01EBB4F031FF/NW_detail/une-renault-alpine-des-gendarmes-roulant-au-superethanol-possible-pas-sur-pour-cause-d-autonomie-mais-l-etat-va-equipement-40-a-50000-autres-vehicules-d-ici-2030-1770721602.jpg" alt="Une Renault Alpine des gendarmes roulant au superéthanol, possible ? Pas sur pour cause d'autonomie, mais l'Etat va équipement 40 à 50000 autres véhicules d'ici 2030."> </a> <figcaption><p>Une Renault Alpine des gendarmes roulant au superéthanol, possible ? Pas sur pour cause d'autonomie, mais l'Etat va équipement 40 à 50000 autres véhicules d'ici 2030.</p></figcaption></figure> </div> </div><div> <p>Les flottes de véhicules de la Police, de la Gendarmerie et des Douanes étaient majoritairement composées de véhicules diesel jusque dans les années 2020.&nbsp;</p> <p>Depuis cette date, les administrations ont changé de fusil d'épaule pour s'équiper massivement en essence, hybride-essence ou hybride rechargeable-essence.&nbsp;Depuis l'Etat fait face à un probmème majeur... l'explosion de son budget carburant.</p> <p>Pour le réduire, la Gendarmerie a commencé à penser à l'ethanol en 2022. «&nbsp;<i>Un projet pilote a été mené pendant deux ans avec des boitiers de conversion sur une trentaine de véhicules à Marseille et les résultats ont été au rendez-vous</i>&nbsp;» nous explique Jérôme Loubert,&nbsp;d<span>irecteur développement Europe</span>&nbsp;de Flex Fuel Energy Développement.</p> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/bb149b1f-59d7-4cb1-a39a-dc03e23015b4/NW_raw/les-techniciens-sont-en-cours-de-formation-avant-d-equiper-les-vehicules-de-la-police-de-la-gendarmerie-et-des-douanes-1770721602.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/bb149b1f-59d7-4cb1-a39a-dc03e23015b4/NW_listC/les-techniciens-sont-en-cours-de-formation-avant-d-equiper-les-vehicules-de-la-police-de-la-gendarmerie-et-des-douanes-1770721602.jpg" alt="Les techniciens sont en cours de formation avant d'équiper les véhicules de la Police, de la Gendarmerie et des Douanes."> </a> <figcaption>Les techniciens sont en cours de formation avant d'équiper les véhicules de la Police, de la Gendarmerie et des Douanes.</figcaption> </figure> <h2>&nbsp;40 à 50 000 véhicules équipés</h2><p>Un appel d'offres a finalement été lancé et remporté en avril dernier par cette marque de boîtiers de conversion. «&nbsp;<i>L'enjeu concernait les économies sur le carburant et l'équipement d'une grande variété de véhicules et de marques. Parce que l'Etat n'équipe pas seulement les véhicules sérigraphiés et possède aussi bien des Peugeot et des Citroën, mais aussi des Renault, beaucoup de Dacia, des Skoda, des Seat et des VW&nbsp;</i>».</p></div> <p>L’estimation du marché public porte sur l’installation de 40 200 véhicules sur 4 ans à&nbsp; partir de 2026, avec un maximum de 53&nbsp;900 véhicules. Une conversion massive à l’E85 pour des économies budgétaires importantes, de l'ordre de 50 à 100 millions d'euros/an, sans oublier une réduction significative de l’empreinte carbone de la flotte d’Etat.</p> <p>Les premières formations ont débuté en novembre 2025 pour permettre les premières installations au niveau national à partir du mois de mars. «&nbsp;<i>L'Etat s'équipe et c'est une bonne chose. Cela veut dire qu'il a confiance dans l'Ethanol et qu'il donne l'exemple&nbsp;</i>».</p> <div> <p>Les avantages du Superéthanol</p> <p>Le Superéthanol-E85, un carburant durable et économique produit en France, coûte en moyenne 0,70€/L, permettant de réaliser 698€/an d'économies par véhicule pour 13 000 km parcourus et 1074€/an pour 20 000 km. Elle permet de réduire de façon significative l’empreinte carbone de la flotte, en baissant de 50% les émissions de CO2</p> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

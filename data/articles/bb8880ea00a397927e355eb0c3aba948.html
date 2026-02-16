@@ -31,21 +31,21 @@
     <div><div><main><div><p><img src="https://www.aljazeera.com/wp-content/uploads/2026/02/image-1771240692.jpg?resize=730%2C410&amp;quality=80" alt=""></p><p>Israeli police clash with ultra-Orthodox protesters over army enlistment</p></div><div><header><span><a href="https://www.aljazeera.com/video/newsfeed/"><span>NewsFeed</span></a></span></header><p>Two Israeli female soldiers were chased by an angry crowd of ultra-Orthodox men protesting military enlistment on Sunday. Who is required to serve in Israel’s army is becoming an increasingly contentious issue as the government looks to reform the system.</p><div><p><span>Published On 16 Feb 2026</span></p></div></div></main></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

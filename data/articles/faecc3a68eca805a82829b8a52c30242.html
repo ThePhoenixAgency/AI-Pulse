@@ -32,21 +32,21 @@
 <li><figure><img alt="Ces frais ont augmenté en moyenne de 5,9&nbsp;% cette année."><figcaption><span>Ces frais ont augmenté en moyenne de 5,9&nbsp;% cette année. | </span>ARCHIVES</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Publié le <time>16/02/2026 <span> à 17h52</span></time></span> </span> </header> </div> <div> <p>Avez-vous déjà fait attention à vos frais de tenue de compte&nbsp;? Pratiquement&nbsp;inexistant il y a quinze ans, leur montant ne cesse d’augmenter depuis plusieurs années. Selon l’étude 2026 du comparateur Panorabanques, portant sur 99&nbsp;établissements français, ces frais ont augmenté en moyenne de 5,9&nbsp;% cette année. Leur montant moyen passe de&nbsp;22,10 à 23,40&nbsp;€,&nbsp;indique&nbsp;<a href="https://rmc.bfmtv.com/conso/banque-et-assurance/5-9-en-2026-c-est-quoi-ces-frais-de-tenue-de-compte-que-facturent-les-banques-depuis-quelques-annees_AN-202602150026.html" target="_blank"> <em>RMC Conso</em> </a>.</p> <h2>Une hausse de 90&nbsp;% en six ans</h2> <p>La hausse est impressionnante du côté de La Banque Postale&nbsp;: +&nbsp;90&nbsp;% en seulement six ans. Ils sont aujourd’hui de 25,20&nbsp;€ contre&nbsp;13,20&nbsp;€ en 2020. Actuellement, on ne compte plus que trois établissements, hors banques en ligne, à ne pas&nbsp;faire payer ces frais&nbsp;: le Crédit coopératif, le Crédit Agricole Normandie Seine et LCL.</p> <p>Au contraire,&nbsp;certaines banques se distinguent avec des frais annuels particulièrement élevés&nbsp;: c’est le cas du&nbsp;Crédit Mutuel de Bretagne&nbsp;(35,88&nbsp;€)&nbsp;et de&nbsp;BNP Paribas&nbsp;(31,20&nbsp;€). <strong>«&nbsp;Les banques les justifient en affirmant qu’elles représentent le prix du service de gestion administrative et technique d’un compte bancaire&nbsp;»</strong>, explique&nbsp;Anna Meylacq, porte-parole de Panorabanques, à nos confrères.</p> <h2>Quelles solutions&nbsp;?</h2> <p>Anna Meylacq&nbsp;reconnaît qu’aujourd’hui, avec la digitalisation, <strong>«&nbsp;cela peut sembler incohérent&nbsp;»</strong> car <strong>«&nbsp;on fait quasiment tout par soi-même depuis son application bancaire&nbsp;»</strong>. Pour les associations de consommateurs justement, les banques appliquent avant tout une stratégie commerciale destinée à maintenir leur rentabilité.</p> <p>Comment éviter ces frais qui ne cessent de grimper&nbsp;? Opter pour une banque&nbsp;en ligne semble être l’une des façons les plus simples, indiquent nos confrères.&nbsp;Sinon, il est possible de faire des économies en passant par une offre de services groupée, à condition de bien connaître ses besoins.</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

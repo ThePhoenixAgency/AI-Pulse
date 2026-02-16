@@ -39,21 +39,21 @@
 </ul></div><p>Bitcoin and crypto markets have entered a new phase defined less by speculation and more by portfolio discipline, according to a new note from WisdomTree.</p><p>Dovile Silenskyte, director of digital assets research at WisdomTree, wrote in a note shared with <i>Decrypt&nbsp;</i>that the days of survival and price discovery are behind crypto traders.</p><p>"Crypto has moved on from its retail-led, boom-bust adolescence. Infrastructure largely works, regulation is tightening rather than retreating and capital is behaving more like institutional capital," she wrote. "This changes the rules of engagement. The key shift is subtle, but decisive, as the debate has moved from 'Should we own crypto?' to 'How do we implement it responsibly?'"</p><p>Silenskyte added that crypto investors need to understand that the nature of the market has changed, particularly because traditional diversification is under strain as inflation risk lingers, fiscal dominance is persistent, and equity-bond correlations have become unreliable.</p><p>The New York-based asset manager, founded in 2006, is best known for its exchange-traded products. That catalog of funds now includes&nbsp;institutional-grade exposure to Bitcoin, Ethereum, and broader crypto baskets.</p><p>The firm issues the WisdomTree Bitcoin Fund (BTCW), WisdomTree Ethereum Fund (ETHW), and WisdomTree Crypto Industry Innovators Fund (WCBR)—all U.S. based. In Europe, the firm has a broader offering that includes funds tied to Solana, Cardano, Polkadot, and XRP.</p><p>One of the benefits of <span><a href="https://decrypt.co/resources/what-is-bitcoin-four-minute-instant-guide-explainer" target="_blank">Bitcoin</a></span> consolidating into institutional hands is that it's led to compressed volatility, Silenskyte wrote. That's been helped along, in part, by regulation.</p><p>"Regulation is acting as a filter, not a kill switch, concentrating capital into assets and structures that meet governance, custody and transparency standards," she wrote.</p><p>At the time of writing, Bitcoin has been trading for $67,463.03 after having dropped 2.2% in the past 24 hours. The coin is now 1.6% lower than it was this time last week, according to crypto price aggregator CoinGecko.</p><div><h3>Daily Debrief Newsletter</h3><p>Start every day with the top news stories right now, plus original features, a podcast, videos and more.</p></div></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

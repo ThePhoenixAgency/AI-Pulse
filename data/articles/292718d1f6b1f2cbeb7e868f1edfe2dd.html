@@ -35,21 +35,21 @@
     <div><div> <figure> <img src="https://9to5mac.com/wp-content/uploads/sites/6/2025/12/app-store-japan-1.jpg?quality=82&amp;strip=all&amp;w=1600" alt=""> </figure> <p>Following a recent change to multiple App Store rules in Japan, a coalition representing more than 600 local companies is calling for further regulatory action. Here are the details.</p> <h2>’Not a viable option’</h2> <p>Last December, <a href="https://9to5mac.com/2025/12/17/apple-announces-sweeping-app-store-and-iphone-changes-in-japan/?utm_source=chatgpt.com">Apple announced</a> a series of changes to app distribution rules, payment options, and business terms in Japan, in an effort to comply with the country’s Mobile Software Competition Act (MSCA).</p> <p>Many of these changes should be familiar to 9to5Mac readers, since they closely mirror what Apple has been doing around the world in response to new competition laws and regulatory scrutiny.</p> <p>In Japan, that meant <a href="https://www.apple.com/newsroom/2025/12/apple-announces-changes-to-ios-in-japan/">allowing</a> developers to link users to off-app promotions and offer alternative in-app payment methods, but with new fee structures attached, including commissions of up to 15% on web-based transactions and additional charges for apps distributed outside the App Store.</p> <p>At the time, Apple <a href="https://9to5mac.com/2025/12/17/apple-announces-sweeping-app-store-and-iphone-changes-in-japan/?utm_source=chatgpt.com">lauded</a> Japan’s MSCA, claiming it did a better job of balancing openness and security than the Digital Markets Act in Europe.</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

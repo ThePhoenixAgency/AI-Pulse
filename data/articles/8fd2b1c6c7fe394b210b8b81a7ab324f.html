@@ -186,21 +186,21 @@
 <p>Sous sa direction, le groupe enchaîne <strong>douze trimestres consécutifs de croissance</strong>, porté notamment par Hollister.<br>Une transformation profonde, fondée sur l’écoute terrain, jusque dans les échanges informels avec les équipes.</p> <div><ul> <li><a href="#abh_about">À propos</a></li> <li><a href="#abh_posts">Articles récents</a></li></ul><div><section><p><a href="https://www.frenchweb.fr/" target="_blank"> <img alt="" src="https://secure.gravatar.com/avatar/d6160ea25236fb629f04b873e6f4b771?s=250&amp;d=mm&amp;r=g"></a> </p><div><p>I’m a proud Expert Retail for FrenchWeb / DECODE MEDIA</p><p>As Business Strategist, I’m helping smart companies connect to the best tech solutions I identify in person in the U.S., to generate sales using the data that they already own. Let’s talk!</p></div> </section><section><p><a href="https://www.frenchweb.fr/" target="_blank"><img alt="" src="https://secure.gravatar.com/avatar/d6160ea25236fb629f04b873e6f4b771?s=250&amp;d=mm&amp;r=g"></a></p> </section></div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

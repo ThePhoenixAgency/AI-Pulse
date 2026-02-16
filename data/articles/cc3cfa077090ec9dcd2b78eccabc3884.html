@@ -33,21 +33,21 @@
 <span>import</span> torch.nn.functional <span>as</span> F <span>def</span> <span>attention</span>(Q, K, V, d_k): scores = torch.matmul(Q, K.transpose(<span>-2</span>, <span>-1</span>)) / d_k ** <span>0.5</span> weights = F.softmax(scores, dim=<span>-1</span>) <span>return</span> torch.matmul(weights, V)</code></pre> <div> <p><span><span>This</span> <span>mechanism</span> <span>has</span> <span>several</span> <span>key</span> <span>advantages:</span></span></p> <ul> <li><span><span><strong>Parallelism</strong></span> <span>—</span> <span>unlike</span> <span>RNNs,</span> <span>all</span> <span>positions</span> <span>are</span> <span>processed</span> <span>simultaneously</span></span></li> <li><span><span><strong>Long-range&nbsp;dependencies</strong></span> <span>—</span> <span>any</span> <span>token</span> <span>can</span> <span>directly</span> <span>attend</span> <span>to</span> <span>any</span> <span>other</span></span></li> <li><span><span><strong>Interpretability</strong></span> <span>—</span> <span>attention</span> <span>weights</span> <span>show</span> <span>what</span> <span>the</span> <span>model</span> <span>focuses</span> <span>on</span></span></li> </ul> </div> <p><span><span>In</span> <span>practice,</span> <span>transformers</span> <span>use</span> <span><strong>multi-head&nbsp;attention</strong>,</span> <span>which</span> <span>runs</span> <span>several</span> <span>attention</span> <span>operations</span> <span>in</span> <span>parallel</span> <span>so</span> <span>the</span> <span>model</span> <span>can</span> <span>capture</span> <span>different</span> <span>types</span> <span>of</span> <span>relationships</span> <span>simultaneously.</span></span></p> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -38,21 +38,21 @@
 </a></p> <h2>«Nous condamnons toute forme de violence politique»</h2> <p>Dans un communiqué, le candidat explique avoir initialement choisi de ne pas médiatiser ces dégradations, affirmant vouloir faire preuve de <em>«décence»</em> dans un contexte qu’il juge douloureux, après la mort du jeune Quentin, militant nationaliste et identitaire de 23 ans, à Lyon. <em>«Nous condamnons toute forme de violence politique, comme nous l’avons toujours fait»</em>, écrit Nordine Raymond, avant d’ajouter&nbsp;: <em>«Nous, insoumis.es, sommes la cible d’attaques de l’extrême droite depuis des années à l’image de notre conférence avec Louis Boyard et Carlos Martens Bilongo attaquée à Pessac ou de notre dernier meeting avec Manon Aubry perturbé par Némésis. Nous nous retrouvons souvent bien seuls face à ces attaques et le silence des organisations républicaines, voire pire leurs calomnies à notre sujet, est lourd&nbsp;!»</em>. Le candidat LFI appelle <em>«chacun à prendre ses responsabilités»</em> afin d’<em>«apaiser la situation»</em>.</p> <figure> <p><img alt=""> </p> <figcaption>Inscriptions taguées dans la rue Abbé de l’épée, à Bordeaux, ce lundi 16 février 2026.<span> Clément Arion - Le Figaro </span></figcaption> </figure> </div></article> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

@@ -32,21 +32,21 @@
 </figure> <p>Gros travaux à prévoir</p> <p>Avant de poser ses valises, quelques travaux sont tout de même à prévoir.<b> «&nbsp;La propriété nécessite une rénovation complète&nbsp;»</b>, prévient&nbsp;Carter Jonas. Si elle a un temps appartenu à la couronne britannique, sous le règne de la reine d’Angleterre Anne Stuart&nbsp;(1702-1714), Ynys Gifftan n’est plus habitée depuis les années 1970, raconte le <i> <a href="https://www.dailymail.co.uk/travel/article-15542773/Live-like-royalty-Private-island-owned-Queen-Anne-350-000-accessible-low-tide.html" target="_blank">Daily Mail</a></i>. Sur les contreforts de l’île, au milieu de quelques arbres et des herbes folles, une ferme en pierre de deux étages et sa dépendance sont les uniques constructions encore debout. Et le confort y est des plus sommaires&nbsp;: pas d’électricité et un raccordement à l’eau courante encore incertain.</p> <p><b>Lire aussi&nbsp;: </b> <a href="https://www.ouest-france.fr/leditiondusoir/2024-02-29/il-veut-vendre-32-millions-d-euros-son-ile-censee-etre-deserte-ses-habitants-crient-au-scandale-90fc3d0d-b9c4-4312-b087-61193bdfb01f" target="_blank">Il veut vendre 32&nbsp;millions d’euros son île censée être «&nbsp;déserte&nbsp;», ses habitants crient au scandale</a></p> <p><b>«&nbsp;Par endroits, le terrain est envahi par la végétation et aurait bien besoin du pâturage et d’une gestion générale des terres pour retrouver tout son potentiel et sa productivité&nbsp;»</b>, ajoute l’annonce, également relayée par la <i> <a href="https://www.bbc.com/news/articles/cdx4xkkly9qo" target="_blank">BBC</a></i>. De fait, il faut beaucoup d’imagination pour s’imaginer vivre là, exposé aux quatre vents, au milieu des langues de sables.</p> <p>Alors, Ynys Gifftan trouvera-t-elle preneur&nbsp;? Son prix, malgré les travaux à prévoir, reste attractif&nbsp;: il est légèrement au-dessus du prix moyen d’une maison en Grande-Bretagne, qui est de 300&nbsp;000&nbsp;£&nbsp;(345&nbsp;000&nbsp;€). Par ailleurs, le très touristique village de&nbsp;Portmeirion, au style italien unique, est distant de quelques kilomètres seulement.&nbsp;Le promoteur immobilier se montre confiant. <b>«&nbsp;Je ne crois pas que nous ayons déjà vendu une île auparavant</b>,a assuré un expert de Carter Jonas à la <i>BBC</i>.<b>&nbsp;Cela a suscité beaucoup d’intérêt. C’est assurément quelque chose de différent.&nbsp;»</b></p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

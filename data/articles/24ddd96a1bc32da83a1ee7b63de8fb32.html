@@ -32,21 +32,21 @@
 </p> <div> <figure> <a href="https://cdn-s-www.ledauphine.com/images/c46a041f-d337-4289-941e-9be2efe4cd2d/NW_raw/le-petit-issa-avec-ses-parents-sina-et-viviane-a-l-hopital-femme-mere-enfant-de-mulhouse-pour-sa-prise-de-sang-hebdomadaire-photo-antonin-utz-1771264488.jpg"> <img src="https://cdn-s-www.ledauphine.com/images/c46a041f-d337-4289-941e-9be2efe4cd2d/NW_detail/le-petit-issa-avec-ses-parents-sina-et-viviane-a-l-hopital-femme-mere-enfant-de-mulhouse-pour-sa-prise-de-sang-hebdomadaire-photo-antonin-utz-1771264488.jpg" alt="Le petit Issa avec ses parents Sina et Viviane à l’hôpital Femme-mère-enfant de Mulhouse pour sa prise de sang hebdomadaire. Photo Antonin Utz"> </a> <figcaption>Le petit Issa avec ses parents Sina et Viviane à l’hôpital Femme-mère-enfant de Mulhouse pour sa prise de sang hebdomadaire. Photo Antonin Utz</figcaption></figure> </div> </div> <div> <div> <p>Dans sa grenouillère en maille, Issa est tout sourire, ses petites jambes bien toniques campées sur le lit d’hôpital. Le nourrisson de trois mois va bien aujourd’hui, mais il revient de loin, comme en témoigne le gonflement sur le côté droit de son visage. Le bébé est suivi pour une tumeur vasculaire complexe (le syndrome de Kasabach Merritt - KMS) qui...</p> </div> <div> <p>...pour lire la suite, rejoignez notre communauté d'abonnés</p> <p>et accédez à l'intégralité de nos articles sur le site et l'application mobile</p> <p> à partir de 1 € le 1er mois, sans engagement de durée </p> <p>Google : 1€ le 1er mois puis 12,99€</p> </div> </div> <div> <h2><span>Articles les plus lus</span><span>Santé</span> </h2> </div> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

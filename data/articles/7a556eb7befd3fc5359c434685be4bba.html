@@ -33,21 +33,21 @@
 </p> </div> <div> <p><span> By: </span></p><div> <p><a href="https://www.france24.com/en/author/france-24/"> FRANCE 24 </a> </p></div> </div> </div> <div> <figure> <img src="https://s.france24.com/media/display/bf4d311e-ebc0-11f0-80d8-005056a90284/w:1024/p:16x9/Snow-2-ski.jpg" alt="Skiing past the Eiffel Tower on a Champ de Mars covered in snow on January 7, 2026. "> <figcaption> <span>Skiing past the Eiffel Tower on a Champ de Mars covered in snow on January 7, 2026. </span> <span> Ludovic Marin, AFP</span> </figcaption> </figure> </div> <div> <p>Snow and ice are falling on northern and western France in a phenomenon of "rare magnitude", according to the Metéo-France weather agency.&nbsp;More than 100 flights at Charles de Gaulle airport and another 40 at Orly were <a href="https://www.france24.com/en/europe/20260107-europe-braces-for-further-travel-chaos-as-deadly-cold-snap-brings-more-snow" target="_self">cancelled on Wednesday</a>, with the French capital halting bus services starting from around 7am.</p> <p><span>Read more</span><a href="https://www.france24.com/en/europe/20260107-europe-braces-for-further-travel-chaos-as-deadly-cold-snap-brings-more-snow" target="_self">Europe faces further travel chaos as deadly cold snap brings more snow</a></p> <div> <figure> <img src="https://s.france24.com/media/display/0122d7ec-ebc1-11f0-a9d1-005056bfb2b6/w:980/Snow-5-Louvre.jpg" alt="People stand in line to enter the Louvre Museum following an overnight snowfall."> <figcaption> <span>People stand in line to enter the Louvre Museum in shivering temperatures following an overnight snowfall.</span> <span> Christophe Ena, AP</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/575323f6-ebc1-11f0-96bb-005056a90284/w:980/Snow-4-bridge.jpg" alt="People walk on a bridge after an overnight snowfall."> <figcaption> <span>People walk on a bridge in Paris after an overnight snowfall.</span> <span> Christophe Ena, AP</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/973ef77e-ebc1-11f0-bd50-005056a97e36/w:980/Snow-8-Grand-palais.jpg" alt="The Paris Opera House (Palais Garnier) lies under fresh snowfall."> <figcaption> <span>The Paris Opera House (Palais Garnier) lies under fresh snowfall.</span> <span> Christophe Delattre, AFP</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/a7cc09d2-ebc2-11f0-8881-005056bfb2b6/w:980/Snow-7-Eiffel.jpg" alt="People walk near the Eiffel Tower on streets covered in snow."> <figcaption> <span>People walk near the Eiffel Tower on streets covered in thick snow.</span> <span> Christophe Ena, AP</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/ecc58194-ebc2-11f0-8e67-005056a97e36/w:980/Snow-3-statue.jpg" alt="A snow-covered statue on the Alexandre III Bridge in Paris"> <figcaption> <span>A snow-covered statue on the Alexandre III Bridge in Paris as rare sub-zero temperatures hit northern France.</span> <span> Sarah Meyssonnier, Reuters</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/683a9e58-ebc4-11f0-b236-005056bf30b7/w:980/Snow-9-Tuileries.jpg" alt="Adults and children alike enjoy the snow at the Jardin des Tuileries"> <figcaption> <span>Adults and children alike enjoy the snow at the Jardin des Tuileries gardens in central Paris.</span> <span> Bertrand Guay, AFP</span> </figcaption> </figure> </div> <div> <figure> <img src="https://s.france24.com/media/display/b57adf44-ebc3-11f0-a66d-005056a90284/w:980/Snow-6-bridge-umbrella.jpg" alt="A pedestrian makes their way through falling snow on the Alexandre III Bridge."> <figcaption> <span>A pedestrian makes their way through falling snow on the Alexandre III Bridge.</span> <span> Sarah Meyssonnier, Reuters</span> </figcaption> </figure> </div> </div> </div> <div> <p><span>Advertising</span> </p> </div> <div> <p>Keywords for this article</p> <ul> <li> <a href="https://www.france24.com/en/tag/snow/"> snow</a> </li><li> <a href="https://www.france24.com/en/tag/paris/"> Paris</a> </li><li> <a href="https://www.france24.com/en/tag/france/"> France</a> </li><li> <a href="https://www.france24.com/en/tag/weather/"> Severe weather</a> </li> </ul> </div> </div> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>

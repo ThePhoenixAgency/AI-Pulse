@@ -36,21 +36,21 @@
 <li><figure><img alt="Les membres de la Confrérie du Sang de Sagonte défilent vêtus de toges noires à capuche."><figcaption><span>Les membres de la Confrérie du Sang de Sagonte défilent vêtus de toges noires à capuche. | </span>ARCHIVE FERMIN RODRIGUEZ/NURPHOTO VIA AFP</figcaption></figure></li> </ul> </div> </div> <div> <header> <span> <span>Modifié le <time>16/02/2026 <span> à 18h02</span></time></span> <span>Publié le <time>16/02/2026 <span> à 17h00</span></time></span> </span> </header> </div> <div> <p>Quand il s’agit de nettoyer l’édifice baroque de l’ermitage ou de repriser les traditionnelles toges noires à capuche pointue de la <em>Cofradia de la Sangre</em>&nbsp;(Confrérie du Sang), les femmes de <a href="https://www.ouest-france.fr/europe/espagne/" target="_self">Sagonte</a> sont priées de donner de leur temps. Mais quand vient le grand jour, lors du Vendredi saint, seuls les hommes sont autorisés à prendre part à la procession aux flambeaux, qui attire chaque année des milliers de fidèles et de touristes dans les rues de cette vieille cité méditerranéenne,...</p> </div> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(-1)">▲</button>
-    <button class="article-elevator-btn" type="button" onclick="scrollStep(1)">▼</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
-    function scrollStep(direction) {
-      var step = Math.max(220, Math.round(window.innerHeight * 0.72));
-      window.scrollBy({ top: direction * step, behavior: 'smooth' });
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
     }
     window.addEventListener('message', (event) => {
       const data = event && event.data;
       if (!data || data.type !== 'AI_PULSE_SCROLL') return;
-      if (data.direction === 'up') scrollStep(-1);
-      if (data.direction === 'down') scrollStep(1);
-      if (data.direction === 'top') window.scrollTo({ top: 0, behavior: 'smooth' });
-      if (data.direction === 'bottom') window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
   </script>
 </body>
