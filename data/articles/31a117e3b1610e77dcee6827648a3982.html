@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - gutfeeling/arc-agi-2-submission: This repository allows reproduction of the blog post "Agentic coding improves ARC AGI 2 performance across models"</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - gutfeeling/arc-agi-2-submission: This repository allows reproduction of the blog post "Agentic coding improves ARC AGI 2 performance across models"</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:07:05 PM | <a href="https://github.com/gutfeeling/arc-agi-2-submission" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Applying agentic coding to ARC AGI 2</h1><a href="#applying-agentic-coding-to-arc-agi-2"></a></div>
+<p><a href="https://opensource.org/licenses/MIT"><img src="https://camo.githubusercontent.com/fdf2982b9f5d7489dcf44570e714e3a15fce6253e0cc6b5aa61a075aac2ff71b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4c6963656e73652d4d49542d79656c6c6f772e737667" alt="License: MIT"></a>
+<a href="https://www.python.org/downloads/"><img src="https://camo.githubusercontent.com/36cf3d0f7992a33a063d3833577d62204f8934d82b69874c086390608db4947c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f707974686f6e2d332e31312b2d626c75652e737667" alt="Python 3.11+"></a>
+<a href="https://arcprize.org/"><img src="https://camo.githubusercontent.com/6a56dc70324221dc0a7cc6f5c1f07a0c46f487f2ea0787dbd53b091acf3a04e2/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5461736b2d4152432d2d4147492d726564" alt="ARC-AGI"></a></p>
+<p>This repository allows reproduction of the post <a href="https://pivotools.github.io/pivotools-quarto-blog/posts/agentic_coding_arc_agi/">Agentic coding improves ARC AGI 2 performance across models</a>.</p>
+<p>We found something surprising about <a href="https://arcprize.org/arc-agi/2/">ARC AGI 2: the visual puzzle benchmark aiming to measure human-like fluid intelligence</a>. Just enabling a <strong>stateful IPython based REPL</strong> via function calling significantly boosts performance across models. We got <strong>&gt; 4x</strong> performance improvement in GPT OSS 120B (high). The effect continues well into frontier territory (GPT 5.2) with double digit gains.</p>
+<p>The comparison between plain COT baseline vs. agentic coding (with stateful IPython based REPL) on the ARC AGI 2 public eval set is shown below.</p>
+<a target="_blank" href="https://private-user-images.githubusercontent.com/6130491/548119581-da9cff17-7328-4461-8bbc-77f01e285efc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzNjc2NDYsIm5iZiI6MTc3MTM2NzM0NiwicGF0aCI6Ii82MTMwNDkxLzU0ODExOTU4MS1kYTljZmYxNy03MzI4LTQ0NjEtOGJiYy03N2YwMWUyODVlZmMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTdUMjIyOTA2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9N2ZkNDdiNjI4NDA5NTFkMjdlZDViZWJlODY2ZWNhOTA2N2VkZWVjMGJmNjNmYmNiODI5MzlmY2M0YmExYTgwYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.e3OcM5v27B2gt5n9wQMpYa8hlnJddpG0zV9YNoPTsm8"><img alt="image" src="https://private-user-images.githubusercontent.com/6130491/548119581-da9cff17-7328-4461-8bbc-77f01e285efc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEzNjc2NDYsIm5iZiI6MTc3MTM2NzM0NiwicGF0aCI6Ii82MTMwNDkxLzU0ODExOTU4MS1kYTljZmYxNy03MzI4LTQ0NjEtOGJiYy03N2YwMWUyODVlZmMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI2MDIxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNjAyMTdUMjIyOTA2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9N2ZkNDdiNjI4NDA5NTFkMjdlZDViZWJlODY2ZWNhOTA2N2VkZWVjMGJmNjNmYmNiODI5MzlmY2M0YmExYTgwYyZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.e3OcM5v27B2gt5n9wQMpYa8hlnJddpG0zV9YNoPTsm8"></a>
+<p>Interleaved thinking, the model capability behind these jumps, seems fragile at the infra/client layer. We had to patch vLLM to get reliable interleaved thinking from GPT OSS 120B. Please see details <a href="#setting-up-vllm-server">below</a> and in the accompanying post.</p>
+<div><h2>1. Installing</h2><a href="#1-installing"></a></div>
+<div><pre>pip install -e <span>.</span></pre></div>
+<div><h2>2. Setting up API Keys</h2><a href="#2-setting-up-api-keys"></a></div>
+<p>Create an env file (e.g. </p><pre><code>.env</code></pre>) in the root directory and add the API keys (only for the model providers you will use for the solver).<p></p>
+<div><pre>OPENAI_API_KEY=your_openai_api_key
+VLLM_API_KEY=your_vllm_api_key
+MINIMAX_API_KEY=your_minimax_api_key</pre></div>
+<p>If using GPT-OSS 120B-High, you will need to use our patched image to start the VLLM server. See <a href="#setting-up-vllm-server">Setting up VLLM server</a> for more details.</p>
+<div><h2>3. Setting up the IPython based REPL</h2><a href="#3-setting-up-the-ipython-based-repl"></a></div>
+<p>Running our arc agi solver requires a stateful IPython based REPL to execute Python code, except for the plain COT solver, which uses reasoning models without any code interpreter.</p>
+<p>There are two options for setting up the code interpreter:</p>
+<ol>
+<li>Run code locally using <a href="https://github.com/gradion-ai/ipybox">ipybox</a>. This doesn't incur any additional cost.</li>
+<li>Run code on a remote server using <a href="https://github.com/gradion-ai/daytona">daytona</a>. This needs an user account on their platform.</li>
+</ol>
+<p>You can choose between the two options by selecting the <a href="/gutfeeling/arc-agi-2-submission/blob/master/src/arcagi2/solver/config/__init__.py">solver config you are using</a> appropriately. The configs ending with </p><pre><code>_daytona</code></pre> use Daytona, the ones ending with <pre><code>_baseline</code></pre> don't use any code interpreter, and all the others use IPyBox.<p></p>
+<div><h3>Option 1: Use IPyBox (code will be executed locally)</h3><a href="#option-1-use-ipybox-code-will-be-executed-locally"></a></div>
+<p>Build the ipybox docker image.</p>
+<div><pre>python -m ipybox build -t ipybox:solver -d ./src/arcagi2/utils/config/ipybox_dependencies_solver.txt</pre></div>
+<div><h3>Option 2: Use Daytona (code will be executed on a remote server)</h3><a href="#option-2-use-daytona-code-will-be-executed-on-a-remote-server"></a></div>
+<p>Set the env var </p><pre><code>DAYTONA_API_KEY</code></pre> in your env file.<p></p>
+<div><h2>Run the evaluation</h2><a href="#run-the-evaluation"></a></div>
+<p>Evaluations can be run using the command </p><pre><code>arcagi2-evaluate</code></pre>. Use <pre><code>arcagi2-evaluate --help</code></pre> to see all options and their meanings.<p></p>
+<div><h3>Example command for GPT OSS 120B High using IPyBox</h3><a href="#example-command-for-gpt-oss-120b-high-using-ipybox"></a></div>
+<div><pre>arcagi2-evaluate --challenge_file ./data/arc-agi_evaluation_challenges.json -c gpt_oss_120b_high -o <span>&lt;</span>output_folder<span>&gt;</span> -b <span><span>"</span>http://&lt;vllm_ip_addr&gt;:&lt;vllm_port&gt;/v1<span>"</span></span> -s <span>&lt;</span>submission_folder<span>&gt;</span> -n 2 -p <span>&lt;</span>num_parallel_workers<span>&gt;</span> -e <span>&lt;</span>path_to_env_file<span>&gt;</span> -t <span>&lt;</span>timeout_hours<span>&gt;</span></pre></div>
+<p>Running this produces:</p>
+<ul>
+<li><pre><code>submissions.json</code></pre> file under <pre><code>&lt;submission_folder&gt;</code></pre>. You will need the path to this file for scoring.</li>
+<li>detailed traces, artifacts and logs are stored in <pre><code>&lt;output_folder</code></pre>&gt;.</li>
+</ul>
+<div><h2>Score the submission</h2><a href="#score-the-submission"></a></div>
+<div><pre>arcagi2-score --solutions_file ./data/arc-agi_evaluation_solutions.json --submissions_file <span>&lt;</span>path_to_submissions_json<span>&gt;</span></pre></div>
+<div><h2>Setting up VLLM server</h2><a href="#setting-up-vllm-server"></a></div>
+<p>A patch needs to be applied to VLLM in order to use GPT-OSS 120B with reasoning effort set to </p><pre><code>high</code></pre>. You can inspect the patch by looking in the <a href="/gutfeeling/arc-agi-2-submission/blob/master/src/vllm_patch">vllm_patch folder</a>. We provide the patched docker image in the GitHub Container Registry (tag <pre><code>ghcr.io/gutfeeling/vllm-openai:v0.11.0-patch</code></pre>).
+A GitHub Actions <a href="/gutfeeling/arc-agi-2-submission/blob/master/.github/workflows/build_and_push_patched_vllm.yml">workflow</a> in this repo builds and pushes the patched image to the GitHub Container Registry.<p></p>
+<p>You can start a VLLM server with the patched image using:</p>
+<div><pre>docker run -it --gpus all -p 8000:8000 -v <span>~</span>/.cache/huggingface:/root/.cache/huggingface --ipc=host ghcr.io/gutfeeling/vllm-openai:v0.11.0-patch --model openai/gpt-oss-120b --gpu_memory_utilization 0.95 --async-scheduling --tool-call-parser openai --enable-auto-tool-choice --api-key <span>&lt;</span>your_vllm_api_key<span>&gt;</span></pre></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

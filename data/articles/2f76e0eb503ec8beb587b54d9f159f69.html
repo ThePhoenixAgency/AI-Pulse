@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - blechschmidt/terraform-provider-pkcs11: A Terraform provider for PKCS#11 (mostly authored by Claude)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - blechschmidt/terraform-provider-pkcs11: A Terraform provider for PKCS#11 (mostly authored by Claude)</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:01:45 PM | <a href="https://github.com/blechschmidt/terraform-provider-pkcs11" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>Terraform Provider for PKCS#11</h1><a href="#terraform-provider-for-pkcs11"></a></div>
+<p>A Terraform provider for managing cryptographic objects and performing cryptographic operations on PKCS#11 tokens and HSMs.</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li><a href="https://www.terraform.io/downloads.html">Terraform</a> &gt;= 1.0</li>
+<li><a href="https://golang.org/doc/install">Go</a> &gt;= 1.25 (for building)</li>
+<li>A PKCS#11 module (e.g., <a href="https://www.opendnssec.org/softhsm/">SoftHSM2</a>, YubiHSM, Thales Luna, AWS CloudHSM)</li>
+<li>CGO enabled (<pre><code>CGO_ENABLED=1</code></pre>)</li>
+</ul>
+<div><h2>Building</h2><a href="#building"></a></div>
+<div><pre>go build ./...</pre></div>
+<div><h2>Installation (local development)</h2><a href="#installation-local-development"></a></div>
+<p>Add a </p><pre><code>dev_overrides</code></pre> block to your <pre><code>~/.terraformrc</code></pre>:<p></p>
+<div><pre><span>provider_installation</span> { <span>dev_overrides</span> { <span><span>"</span>blechschmidt/pkcs11<span>"</span></span> = <span><span>"</span>/path/to/your/binary<span>"</span></span> } <span>direct</span> {}
+}</pre></div>
+<div><h2>Provider Configuration</h2><a href="#provider-configuration"></a></div>
+<div><pre><span>provider</span> <span>"pkcs11"</span> { <span><span>module_path</span> <span>=</span> </span><span><span>"</span>/usr/lib/pkcs11/yubihsm_pkcs11.so<span>"</span></span> <span><span>slot_id</span> <span>=</span> </span><span>0</span> <span><span>pin</span> <span>=</span> </span>var<span>.</span><span>pkcs11_pin</span>
+}</pre></div>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Env Var</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>module_path</code></pre></td>
+<td><pre><code>PKCS11_MODULE_PATH</code></pre></td>
+<td>Path to the PKCS#11 shared library (required)</td>
+</tr>
+<tr>
+<td><pre><code>token_label</code></pre></td>
+<td><pre><code>PKCS11_TOKEN_LABEL</code></pre></td>
+<td>Token label filter (combinable with other token filters)</td>
+</tr>
+<tr>
+<td><pre><code>serial_number</code></pre></td>
+<td><pre><code>PKCS11_SERIAL_NUMBER</code></pre></td>
+<td>Token serial number filter</td>
+</tr>
+<tr>
+<td><pre><code>token_manufacturer</code></pre></td>
+<td><pre><code>PKCS11_TOKEN_MANUFACTURER</code></pre></td>
+<td>Token manufacturer filter</td>
+</tr>
+<tr>
+<td><pre><code>token_model</code></pre></td>
+<td><pre><code>PKCS11_TOKEN_MODEL</code></pre></td>
+<td>Token model filter</td>
+</tr>
+<tr>
+<td><pre><code>slot_id</code></pre></td>
+<td><pre><code>PKCS11_SLOT_ID</code></pre></td>
+<td>Slot ID (mutually exclusive with token filters)</td>
+</tr>
+<tr>
+<td><pre><code>pin</code></pre></td>
+<td><pre><code>PKCS11_PIN</code></pre></td>
+<td>User PIN for login</td>
+</tr>
+<tr>
+<td><pre><code>so_pin</code></pre></td>
+<td><pre><code>PKCS11_SO_PIN</code></pre></td>
+<td>Security Officer PIN</td>
+</tr>
+</tbody>
+</table>
+<p>Token selection uses either </p><pre><code>slot_id</code></pre> (explicit) or one or more token filters (<pre><code>token_label</code></pre>, <pre><code>serial_number</code></pre>, <pre><code>token_manufacturer</code></pre>, <pre><code>token_model</code></pre>). When multiple filters are specified, all must match (AND logic). At least one of <pre><code>slot_id</code></pre> or a token filter is required.<p></p>
+<div><h2>Resources</h2><a href="#resources"></a></div>
+<div><h3><pre><code>pkcs11_object</code></pre></h3><a href="#pkcs11_object"></a></div>
+<p>Creates a generic PKCS#11 object on the token using </p><pre><code>C_CreateObject</code></pre>. All PKCS#11 attributes (<pre><code>CKA_*</code></pre> constants, lower-cased without the <pre><code>CKA_</code></pre> prefix) can be specified directly.<p></p>
+<div><h3><pre><code>pkcs11_key_pair</code></pre></h3><a href="#pkcs11_key_pair"></a></div>
+<p>Generates an asymmetric key pair using </p><pre><code>C_GenerateKeyPair</code></pre>. Requires a <pre><code>mechanism</code></pre> and separate <pre><code>public_key</code></pre> and <pre><code>private_key</code></pre> blocks for the respective attribute templates.<p></p>
+<div><h3><pre><code>pkcs11_symmetric_key</code></pre></h3><a href="#pkcs11_symmetric_key"></a></div>
+<p>Generates a symmetric key using </p><pre><code>C_GenerateKey</code></pre>. Requires a <pre><code>mechanism</code></pre>. All PKCS#11 attributes can be specified directly.<p></p>
+<div><h3><pre><code>pkcs11_wrapped_key</code></pre></h3><a href="#pkcs11_wrapped_key"></a></div>
+<p>Wraps (exports) an existing key using </p><pre><code>C_WrapKey</code></pre>. Produces base64-encoded wrapped key material that can be stored or transferred. Requires a wrapping key label, a target key label, and a wrapping mechanism.<p></p>
+<div><h3><pre><code>pkcs11_unwrapped_key</code></pre></h3><a href="#pkcs11_unwrapped_key"></a></div>
+<p>Unwraps (imports) a previously wrapped key using </p><pre><code>C_UnwrapKey</code></pre>. Takes base64-encoded wrapped key material and imports it back onto the token. Requires an unwrapping key label, a mechanism, and the wrapped key material.<p></p>
+<div><h2>Data Sources</h2><a href="#data-sources"></a></div>
+<table>
+<thead>
+<tr>
+<th>Data Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>pkcs11_slots</code></pre></td>
+<td>List available slots</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_token_info</code></pre></td>
+<td>Token metadata (label, model, flags)</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_mechanisms</code></pre></td>
+<td>Supported mechanisms and key sizes</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_object</code></pre></td>
+<td>Look up an object by attributes, returning all readable attributes</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_constants</code></pre></td>
+<td>PKCS#11 constant name-to-value mappings</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_encrypt</code></pre></td>
+<td>Encrypt data using a key on the token (<pre><code>C_Encrypt</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_decrypt</code></pre></td>
+<td>Decrypt data using a key on the token (<pre><code>C_Decrypt</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>pkcs11_signature</code></pre></td>
+<td>Sign data using a key on the token (<pre><code>C_Sign</code></pre>)</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Example Usage</h2><a href="#example-usage"></a></div>
+<div><pre><span>terraform</span> { <span>required_providers</span> { <span><span>pkcs11</span> <span>=</span> </span>{ source <span>=</span> <span><span>"</span>blechschmidt/pkcs11<span>"</span></span> } }
+} <span>variable</span> <span>"pkcs11_pin"</span> { <span><span>type</span> <span>=</span> </span><span>string</span> <span><span>sensitive</span> <span>=</span> </span><span>true</span>
+} <span>provider</span> <span>"pkcs11"</span> { <span><span>module_path</span> <span>=</span> </span><span><span>"</span>/usr/lib/pkcs11/yubihsm_pkcs11.so<span>"</span></span> <span><span>slot_id</span> <span>=</span> </span><span>0</span> <span><span>pin</span> <span>=</span> </span>var<span>.</span><span>pkcs11_pin</span>
+} <span><span>#</span> Create a generic data object<span></span></span>
+<span>resource</span> <span>"pkcs11_object"</span> <span>"my_data"</span> { <span><span>class</span> <span>=</span> </span><span><span>"</span>CKO_DATA<span>"</span></span> <span><span>label</span> <span>=</span> </span><span><span>"</span>my-object<span>"</span></span> <span><span>value</span> <span>=</span> </span><span>base64encode</span>(<span><span>"</span>hello world<span>"</span></span>)
+} <span><span>#</span> Generate an RSA key pair for signing<span></span></span>
+<span>resource</span> <span>"pkcs11_key_pair"</span> <span>"signing"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_RSA_PKCS_KEY_PAIR_GEN<span>"</span></span> <span><span>public_key</span> <span>=</span> </span>{ key_type <span>=</span> <span><span>"</span>CKK_RSA<span>"</span></span> class <span>=</span> <span><span>"</span>CKO_PUBLIC_KEY<span>"</span></span> token <span>=</span> <span>true</span> verify <span>=</span> <span>true</span> encrypt <span>=</span> <span>true</span> label <span>=</span> <span><span>"</span>test-signing-key<span>"</span></span> modulus_bits <span>=</span> <span>2048</span> public_exponent <span>=</span> <span><span>"</span>010001<span>"</span></span> <span><span>#</span> 65537 in hex<span></span></span> } <span><span>private_key</span> <span>=</span> </span>{ key_type <span>=</span> <span><span>"</span>CKK_RSA<span>"</span></span> class <span>=</span> <span><span>"</span>CKO_PRIVATE_KEY<span>"</span></span> sign <span>=</span> <span>true</span> decrypt <span>=</span> <span>true</span> token <span>=</span> <span>true</span> label <span>=</span> <span><span>"</span>test-signing-key<span>"</span></span> }
+} <span><span>#</span> Generate an AES-256 symmetric key<span></span></span>
+<span>resource</span> <span>"pkcs11_symmetric_key"</span> <span>"test_key"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_KEY_GEN<span>"</span></span> <span><span>label</span> <span>=</span> </span><span><span>"</span>test-symmetric-key<span>"</span></span> <span><span>class</span> <span>=</span> </span><span><span>"</span>CKO_SECRET_KEY<span>"</span></span> <span><span>key_type</span> <span>=</span> </span><span><span>"</span>CKK_AES<span>"</span></span> <span><span>value_len</span> <span>=</span> </span><span>32</span> <span><span>encrypt</span> <span>=</span> </span><span>true</span> <span><span>decrypt</span> <span>=</span> </span><span>true</span> <span><span>token</span> <span>=</span> </span><span>true</span> <span><span>sensitive</span> <span>=</span> </span><span>true</span> <span><span>extractable</span> <span>=</span> </span><span>false</span>
+} <span><span>#</span> Encrypt data with AES<span></span></span>
+<span>data</span> <span>"pkcs11_encrypt"</span> <span>"encrypted"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_ECB<span>"</span></span> <span><span>key_label</span> <span>=</span> </span><span><span>"</span>test-symmetric-key<span>"</span></span> <span><span>plaintext</span> <span>=</span> </span><span>base64encode</span>(<span><span>"</span>0123456789abcdef<span>"</span></span>) <span><span>#</span> must be base64-encoded<span></span></span>
+} <span><span>#</span> Decrypt data with AES<span></span></span>
+<span>data</span> <span>"pkcs11_decrypt"</span> <span>"decrypted"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_ECB<span>"</span></span> <span><span>key_label</span> <span>=</span> </span><span><span>"</span>test-symmetric-key<span>"</span></span> <span><span>ciphertext</span> <span>=</span> </span>data<span>.</span><span>pkcs11_encrypt</span><span>.</span><span>encrypted</span><span>.</span><span>ciphertext</span>
+} <span><span>#</span> Sign data with RSA<span></span></span>
+<span>data</span> <span>"pkcs11_signature"</span> <span>"sig"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_SHA256_RSA_PKCS<span>"</span></span> <span><span>key_label</span> <span>=</span> </span><span><span>"</span>test-signing-key<span>"</span></span> <span><span>data</span> <span>=</span> </span><span>base64encode</span>(<span><span>"</span>message to sign<span>"</span></span>)
+} <span><span>#</span> Wrap a key for export<span></span></span>
+<span>resource</span> <span>"pkcs11_symmetric_key"</span> <span>"wrapping_key"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_KEY_GEN<span>"</span></span> <span><span>label</span> <span>=</span> </span><span><span>"</span>my-wrapping-key<span>"</span></span> <span><span>class</span> <span>=</span> </span><span><span>"</span>CKO_SECRET_KEY<span>"</span></span> <span><span>key_type</span> <span>=</span> </span><span><span>"</span>CKK_AES<span>"</span></span> <span><span>value_len</span> <span>=</span> </span><span>16</span> <span><span>token</span> <span>=</span> </span><span>true</span> <span><span>sensitive</span> <span>=</span> </span><span>true</span> <span><span>extractable</span> <span>=</span> </span><span>false</span> <span><span>wrap</span> <span>=</span> </span><span>true</span> <span><span>unwrap</span> <span>=</span> </span><span>true</span>
+} <span>resource</span> <span>"pkcs11_wrapped_key"</span> <span>"wrapped"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_KEY_WRAP<span>"</span></span> <span><span>wrapping_key_label</span> <span>=</span> </span><span><span>"</span>my-wrapping-key<span>"</span></span> <span><span>key_label</span> <span>=</span> </span><span><span>"</span>test-symmetric-key<span>"</span></span>
+} <span><span>#</span> Unwrap (import) a key<span></span></span>
+<span>resource</span> <span>"pkcs11_unwrapped_key"</span> <span>"unwrapped"</span> { <span><span>mechanism</span> <span>=</span> </span><span><span>"</span>CKM_AES_KEY_WRAP<span>"</span></span> <span><span>unwrapping_key_label</span> <span>=</span> </span><span><span>"</span>my-wrapping-key<span>"</span></span> <span><span>wrapped_key_material</span> <span>=</span> </span>pkcs11_wrapped_key<span>.</span><span>wrapped</span><span>.</span><span>wrapped_key_material</span> <span><span>label</span> <span>=</span> </span><span><span>"</span>imported-key<span>"</span></span> <span><span>class</span> <span>=</span> </span><span><span>"</span>CKO_SECRET_KEY<span>"</span></span> <span><span>key_type</span> <span>=</span> </span><span><span>"</span>CKK_AES<span>"</span></span> <span><span>token</span> <span>=</span> </span><span>true</span> <span><span>sensitive</span> <span>=</span> </span><span>true</span>
+} <span><span>#</span> Look up an object (with optional existence check)<span></span></span>
+<span>data</span> <span>"pkcs11_object"</span> <span>"my_data"</span> { <span><span>label</span> <span>=</span> </span><span><span>"</span>my-object<span>"</span></span> <span><span>exists</span> <span>=</span> </span><span>false</span> <span><span>#</span> Do not error if the object is not found<span></span></span>
+}</pre></div>
+<div><h2>Attributes</h2><a href="#attributes"></a></div>
+<p>All resources and the </p><pre><code>pkcs11_object</code></pre> data source use PKCS#11 attribute names with the <pre><code>CKA_</code></pre> prefix stripped and lower-cased. For example, <pre><code>CKA_LABEL</code></pre> becomes <pre><code>label</code></pre>, <pre><code>CKA_KEY_TYPE</code></pre> becomes <pre><code>key_type</code></pre>, etc.<p></p>
+<div><h3>Type Encoding</h3><a href="#type-encoding"></a></div>
+<table>
+<thead>
+<tr>
+<th>PKCS#11 Type</th>
+<th>Terraform Type</th>
+<th>Encoding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>CK_BBOOL</code></pre></td>
+<td><pre><code>bool</code></pre></td>
+<td>Native boolean</td>
+</tr>
+<tr>
+<td><pre><code>CK_ULONG</code></pre></td>
+<td><pre><code>number</code></pre></td>
+<td>Native integer</td>
+</tr>
+<tr>
+<td>UTF-8 strings</td>
+<td><pre><code>string</code></pre></td>
+<td>Plain string</td>
+</tr>
+<tr>
+<td>Byte arrays</td>
+<td><pre><code>string</code></pre></td>
+<td>Base64-encoded</td>
+</tr>
+<tr>
+<td>Big integers</td>
+<td><pre><code>string</code></pre></td>
+<td>Hex-encoded</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Enum Attributes</h3><a href="#enum-attributes"></a></div>
+<p>Attributes that represent PKCS#11 constants (</p><pre><code>class</code></pre>, <pre><code>key_type</code></pre>, <pre><code>certificate_type</code></pre>, <pre><code>key_gen_mechanism</code></pre>, <pre><code>mechanism_type</code></pre>) accept their values as strings. You can specify them in three ways:<p></p>
+<ul>
+<li><strong>Full constant name</strong>: <pre><code>"CKO_SECRET_KEY"</code></pre>, <pre><code>"CKK_AES"</code></pre>, <pre><code>"CKM_AES_KEY_GEN"</code></pre></li>
+<li><strong>Without prefix</strong>: <pre><code>"SECRET_KEY"</code></pre>, <pre><code>"AES"</code></pre>, <pre><code>"AES_KEY_GEN"</code></pre></li>
+<li><strong>Numeric value</strong>: <pre><code>"3"</code></pre>, <pre><code>"31"</code></pre></li>
+</ul>
+<p>The </p><pre><code>mechanism</code></pre> attribute on resources (<pre><code>pkcs11_symmetric_key</code></pre>, <pre><code>pkcs11_key_pair</code></pre>, <pre><code>pkcs11_wrapped_key</code></pre>, <pre><code>pkcs11_unwrapped_key</code></pre>) and data sources (<pre><code>pkcs11_encrypt</code></pre>, <pre><code>pkcs11_decrypt</code></pre>, <pre><code>pkcs11_signature</code></pre>) also supports these formats with the <pre><code>CKM_</code></pre> prefix.<p></p>
+<p>Values are always normalized to the canonical full name in state (e.g., </p><pre><code>"SECRET_KEY"</code></pre> becomes <pre><code>"CKO_SECRET_KEY"</code></pre>).<p></p>
+<p>The </p><pre><code>pkcs11_constants</code></pre> data source is still available for looking up numeric values of all PKCS#11 constants.<p></p>
+<div><h2>Import</h2><a href="#import"></a></div>
+<div><h3><pre><code>pkcs11_object</code></pre> and <pre><code>pkcs11_symmetric_key</code></pre></h3><a href="#pkcs11_object-and-pkcs11_symmetric_key"></a></div>
+<div><pre><code>terraform import pkcs11_object.example "label/key_id_hex/CKO_CLASS_NAME"
+terraform import pkcs11_symmetric_key.example "label/key_id_hex/CKO_SECRET_KEY"
+</code></pre></div>
+<div><h3><pre><code>pkcs11_key_pair</code></pre></h3><a href="#pkcs11_key_pair-1"></a></div>
+<div><pre><code>terraform import pkcs11_key_pair.example "label/key_id_hex"
+</code></pre></div>
+<p>The import finds both the public and private key by shared label and CKA_ID.</p>
+<div><h2>Testing</h2><a href="#testing"></a></div>
+<div><pre>go <span>test</span> ./...
+go vet ./...</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License. See <a href="/blechschmidt/terraform-provider-pkcs11/blob/main/LICENSE">LICENSE</a> for details.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - brysonbw/env-gen: A lightweight utility for generating and managing environment variable files (.env) from the command line</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - brysonbw/env-gen: A lightweight utility for generating and managing environment variable files (.env) from the command line</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 8:45:18 PM | <a href="https://github.com/brysonbw/env-gen" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+  </div>
+  <div class="content">
+    <div><h1>Env Generator</h1><a href="#env-generator"></a></div>
+<p>A lightweight utility for generating and managing environment variable files (.env) from the command line.</p>
+<p><a href="https://crates.io/crates/env-gen"><img src="https://camo.githubusercontent.com/907a528d8d675d92d722586c7edf565c34c4b8d8e60a913bd3c9a0561757b28a/68747470733a2f2f696d672e736869656c64732e696f2f6372617465732f762f656e762d67656e3f7374796c653d666c6174" alt="Crates.io"></a>
+<a href="https://crates.io/crates/env-gen"><img src="https://camo.githubusercontent.com/159746fce17134f28889cf249b5e9728aa606b77ab8dc5515959872c4f367187/68747470733a2f2f696d672e736869656c64732e696f2f6372617465732f642f656e762d67656e3f7374796c653d666c6174" alt="Crates.io"></a>
+<a target="_blank" href="https://camo.githubusercontent.com/0079a4fddbe80542f145c350ed7cb323ca581cc71bb87a92f3bbae98ee471d55/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f627279736f6e62772f656e762d67656e2f63692e796d6c3f6272616e63683d6d61696e267374796c653d666c6174266c6f676f3d676974687562266c6162656c3d4349"><img src="https://camo.githubusercontent.com/0079a4fddbe80542f145c350ed7cb323ca581cc71bb87a92f3bbae98ee471d55/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f616374696f6e732f776f726b666c6f772f7374617475732f627279736f6e62772f656e762d67656e2f63692e796d6c3f6272616e63683d6d61696e267374796c653d666c6174266c6f676f3d676974687562266c6162656c3d4349" alt="CI"></a></p>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre>cargo install env-gen</pre></div>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><pre>env-gen</pre></div>
+<blockquote>
+<p>This will prompt you to create a new configuration file, optionally using an existing template file, and add key-value pairs for your environment variables. The generated </p><pre><code>.env</code></pre> file will be created in the current working directory.<p></p>
+</blockquote>
+<blockquote>
+<p>The following template files are supported (searched in the current working &gt; directory):</p>
+<ul>
+<li><pre><code>example.env</code></pre></li>
+<li><pre><code>.example.env</code></pre></li>
+<li><pre><code>env.example</code></pre></li>
+<li><pre><code>.env.example</code></pre></li>
+<li><pre><code>env.sample</code></pre></li>
+<li><pre><code>.env.sample</code></pre></li>
+<li><pre><code>.env-dist</code></pre></li>
+</ul>
+</blockquote>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

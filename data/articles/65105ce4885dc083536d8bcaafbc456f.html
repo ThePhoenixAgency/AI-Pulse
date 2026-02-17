@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>API Testing Tools in 2026: Why I Built My Own (After Comparing All the Popular Ones)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>API Testing Tools in 2026: Why I Built My Own (After Comparing All the Popular Ones)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 9:47:45 PM | <a href="https://dev.to/mbadyl/api-testing-tools-in-2026-why-i-built-my-own-after-comparing-all-the-popular-ones-3jhn" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>After years of using Postman for nearly every project, I started noticing the friction. The mandatory login, the Electron window eating my RAM, the team plan that suddenly costs way more than it used to. So I started exploring alternatives - and I genuinely tried all the popular ones. Some were great, some surprised me, and a few solved problems I didn't even know I had.</p> <p>But none of them solved the problem I cared about most: making API testing feel like a natural part of the development loop rather than a separate ritual you have to context-switch into. That frustration eventually led me to build <a href="https://octrafic.com/" target="_blank">Octrafic</a>. Before I get to that, let me give you an honest rundown of what's out there.</p> <hr> <h2> <a name="the-landscape-an-honest-comparison" href="#the-landscape-an-honest-comparison"> </a> The Landscape: An Honest Comparison
+</h2> <h3> <a name="postman" href="#postman"> </a> Postman
+</h3> <p>Postman is the undisputed industry standard, and for good reason. The ecosystem is mature - collections, environments, team workspaces, mock servers, monitors, documentation generation. If your company is onboarding a team of 20 engineers onto a shared API workflow, Postman is probably still the answer.</p> <p>The problem is that Postman has been aggressively moving upmarket. The free tier keeps shrinking, the desktop app requires you to be signed in, and it's noticeably resource-heavy for what is fundamentally an HTTP client. If you're a solo developer or a small startup, you're paying enterprise prices for features you'll never touch.</p> <p><strong>Best for:</strong> Enterprise teams with a real budget and a need for collaboration features.</p> <h3> <a name="insomnia" href="#insomnia"> </a> Insomnia
+</h3> <p>Insomnia was my go-to replacement for a while. It's genuinely lighter than Postman, has a clean UI that stays out of your way, and its GraphQL support is excellent - auto-completion from your schema, query builders, the works.</p> <p>The anxiety around Insomnia is mostly about ownership. Kong acquired it a few years back, and since then there have been some controversial moves around syncing and account requirements. The community forked it into Insomnium as a response. If you're okay with the uncertainty, it's a solid tool. If you want something more stable long-term, that uncertainty is a real factor.</p> <p><strong>Best for:</strong> Solo developers, especially those working with GraphQL.</p> <h3> <a name="thunder-client" href="#thunder-client"> </a> Thunder Client
+</h3> <p>Thunder Client is a VS Code extension, which is either its biggest strength or a dealbreaker depending on your workflow. If you live in VS Code, and a lot of developers do, having your HTTP client as a sidebar panel is genuinely ergonomic. No context switching, no separate window, requests sit right next to your code.</p> <p>The tradeoff is that you're in VS Code for everything. Advanced scripting, pre-request flows, CI/CD integration - Thunder Client handles the basics well but starts to feel limited for anything complex. It also means you're tied to the VS Code ecosystem.</p> <p><strong>Best for:</strong> Developers who use VS Code as their primary environment and mostly need quick endpoint validation.</p> <h3> <a name="hoppscotch" href="#hoppscotch"> </a> Hoppscotch
+</h3> <p>Hoppscotch is impressive as a piece of software. It's fully open-source, runs in the browser, has a modern UI, and you can self-host the entire thing. There's no installation, which makes it great for quickly sharing a request with a teammate or testing something on a machine you don't control.</p> <p>The limitation is that "runs in the browser" is both its superpower and its constraint. Offline capability is limited, and anything involving local environments or internal APIs requires some extra setup (their self-hosted agent). For pure open-source enthusiasm and accessibility, it's hard to beat.</p> <p><strong>Best for:</strong> Quick ad-hoc tests, teams that want a self-hostable open-source option, situations where installation isn't possible.</p> <h3> <a name="bruno" href="#bruno"> </a> Bruno
+</h3> <p>Bruno is the tool that's gotten the most traction among developers frustrated with Postman's direction. Its core idea is elegant: API collections are stored as plain text files on your filesystem, which means they live in your Git repo alongside your code. No cloud sync required, no proprietary format.</p> <p>It's offline-first by design, the UI is clean, and the philosophy resonates with developers who care about owning their data. The main caveat is that it's a newer tool - the ecosystem is smaller, some edge cases feel rough, and advanced scripting is still maturing. But the trajectory is good.</p> <p><strong>Best for:</strong> Teams that want their API collections version-controlled in Git, developers who want to avoid cloud lock-in.</p> <hr> <h2> <a name="the-gap-i-kept-hitting" href="#the-gap-i-kept-hitting"> </a> The Gap I Kept Hitting
+</h2> <p>After going through all of these, I had a clear picture of the tradeoffs. But I kept running into the same wall, regardless of which tool I was using.</p> <p>Manual GUI testing is fine when you're exploring a new API. But when you're deep in development - building a feature, refactoring an endpoint, dealing with a regression - the workflow becomes repetitive and tedious. Click, fill in params, click send, check response, repeat. Writing actual test scripts requires learning each tool's specific scripting API, which is its own investment.</p> <p>More fundamentally: <strong>automation felt like an afterthought in all of these tools.</strong> The core experience is built around clicking through a GUI, and scripting/CI integration is layered on top. What I wanted was the inverse - a tool where automation and repeatability are the primary experience, and the interface facilitates that rather than fighting it.</p> <p>I also noticed that nobody was taking AI seriously in this space. Not in a meaningful way, anyway. There were some autocomplete features here and there, but nothing that actually changed the testing workflow.</p> <hr> <h2> <a name="why-i-built-octrafic" href="#why-i-built-octrafic"> </a> Why I Built Octrafic
+</h2> <p>So I built <a href="https://octrafic.com/" target="_blank">Octrafic</a> - an AI-powered CLI tool for API testing, written in Go, fully open-source.</p> <p>The core idea is simple: instead of clicking through a GUI or writing test scripts in a proprietary DSL, you describe what you want to test in plain English and the AI agent handles the execution.<br>
+</p> <div>
+<pre><code><span># Start an interactive session against your API</span>
+octrafic <span>--url</span> https://api.example.com <span>--spec</span> path/to/spec
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then just describe what you want:<br>
+</p> <div>
+<pre><code>&gt; Check if the /users endpoint returns paginated results with proper metadata
+&gt; Test that creating a user with a duplicate email returns a 409 conflict
+&gt; Verify that the authentication token expires after the documented TTL
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The agent figures out what requests to make, runs them against your real endpoints, validates the responses, and tells you what it found. No test script to write. No learning a new assertion syntax.</p> <p>If you have an OpenAPI spec, you can import it and Octrafic immediately understands your full API surface - endpoints, parameters, schemas, expected responses. This makes testing substantially more precise since the AI has context about what your API is actually supposed to do.<br>
+</p> <div>
+<pre><code>octrafic <span>--spec</span> ./openapi.yaml <span>--url</span> https://api.example.com
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>A few things I want to be upfront about: Octrafic requires your own LLM API key (OpenAI, Anthropic, or any OpenAI-compatible provider including local models via Ollama). The AI-powered workflow is powerful but different from traditional testing - it's better suited to exploratory and regression testing than to pixel-perfect assertion-based test suites. It's also a young project. Version 0.3.3 is out, and I'm actively building in public.</p> <hr> <h2> <a name="sidebyside-comparison" href="#sidebyside-comparison"> </a> Side-by-Side Comparison
+</h2> <div><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Type</th>
+<th>Pricing</th>
+<th>Standout Feature</th>
+<th>AI-Powered</th>
+<th>Open Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Postman</td>
+<td>GUI Desktop</td>
+<td>Free / Paid plans</td>
+<td>Team collaboration, full ecosystem</td>
+<td>Partial</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Insomnia</td>
+<td>GUI Desktop</td>
+<td>Free / Paid plans</td>
+<td>GraphQL support, clean UI</td>
+<td>No</td>
+<td>Yes (forked)</td>
+</tr>
+<tr>
+<td>Thunder Client</td>
+<td>VS Code Extension</td>
+<td>Free / Paid plans</td>
+<td>IDE integration, zero setup</td>
+<td>No</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>Hoppscotch</td>
+<td>Web / Self-hosted</td>
+<td>Free / Paid plans</td>
+<td>No install, self-hostable</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Bruno</td>
+<td>GUI Desktop</td>
+<td>Free</td>
+<td>Git-friendly collections as files</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Octrafic</td>
+<td>CLI</td>
+<td>Free (bring your own LLM key)</td>
+<td>Natural language testing, CLI-first</td>
+<td>Yes</td>
+<td>Yes (MIT)</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="where-this-leaves-us" href="#where-this-leaves-us"> </a> Where This Leaves Us
+</h2> <p>Every tool in this list has a legitimate use case. Postman makes sense for large engineering teams who need shared workspaces and are willing to pay for it. Thunder Client is the obvious choice if you're in VS Code all day and just need fast endpoint validation. Bruno is compelling for teams who want their API collections to live in Git like everything else.</p> <p>I built Octrafic because I believe the future of API testing is conversational and automation-first. Describing what you want to verify and having an AI agent execute it is a fundamentally different experience than clicking through a GUI - and it fits better into how development actually flows when you're deep in a feature.</p> <p>If that sounds useful, the project is open-source on GitHub and I'd genuinely appreciate feedback from people trying it on real APIs. And if you're happy with one of the other tools, that's completely valid - I still think Bruno and Hoppscotch are excellent.</p> <hr> <p><em><a href="https://github.com/octrafic/octrafic-cli" target="_blank">Octrafic on GitHub</a> · <a href="https://docs.octrafic.com/" target="_blank">Documentation</a> · <a href="https://octrafic.com/" target="_blank">octrafic.com</a></em></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

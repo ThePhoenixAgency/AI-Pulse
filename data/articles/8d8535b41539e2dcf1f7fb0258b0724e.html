@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Corral — Agent-Native Auth + Payments</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Corral — Agent-Native Auth + Payments</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:03:09 PM | <a href="https://github.com/llama-farm/corral" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> </nav> <section> <a href="https://www.npmjs.com/package/create-corral" target="_blank"> <span> npm</span> <code>create-corral@0.4.1</code> <span>latest</span> </a> <p> You don't add auth to your app.<br> <span>Your agent does.</span> </p> <p> Paste one prompt. Your AI coding agent reads the spec, scaffolds auth, wires Stripe billing, adds feature gating, builds the admin dashboard. <strong>You never touch auth code.</strong> </p> <p> Works with Claude Code · Cursor · Codex · OpenClaw · Windsurf · any agent that runs CLI commands </p> <div> <p> ↓&nbsp; Copy. Paste into your agent. Done. &nbsp;↓ </p> <div> <p><span> Full Setup — auth + billing + everything</span> <span>click to copy</span> </p> <pre><span>Read: https://llama-farm.github.io/corral/llms.txt</span> <span>Add auth and Stripe billing to my app. Free tier + Pro</span>
+<span>at $29/mo with 14-day trial. Wire up everything: login,</span>
+<span>signup, profile page, admin dashboard, upgrade banners,</span>
+<span>and feature gating.</span></pre> </div> <div> <p><span> Just Auth — no billing</span> <span>click to copy</span> </p> <pre><span>Read: https://llama-farm.github.io/corral/llms.txt</span>
+<span>Add authentication to my app with email + Google login.</span></pre> </div> <div> <p><span> Add to Existing Project</span> <span>click to copy</span> </p> <pre><span>Read: https://llama-farm.github.io/corral/llms.txt</span>
+<span>Add Corral auth + billing to this project. Detect my</span>
+<span>framework and embed into my existing server.</span></pre> </div> </div> </section> <hr> <section> <p>The Problem</p> <h2>Auth is where every vibe-coded app dies</h2> <div> <p> Your agent builds the UI in 30 seconds. The API in two minutes. The database schema before you finish your coffee. Then you say <strong>"add auth and payments"</strong> and watch it hallucinate for an hour. Wrong imports. Phantom endpoints. A login page that doesn't connect to anything. <strong>Every. Single. Time.</strong> </p> <p> Auth-to-billing-to-gating is the hardest wiring in any app — too many moving parts, too many frameworks, too many ways to get it wrong. Your agent wasn't trained on your exact stack. It guesses. It breaks. </p> <p> <strong>Corral doesn't guess.</strong> It gives your agent a spec it can actually read — every endpoint, every command, every option. One YAML config. One CLI. Login, Stripe billing, feature gating, admin dashboard, usage meters — <strong>configured in minutes, not coded over days.</strong> </p> <p> You don't read auth docs. You don't write auth code. You paste a prompt, and it's done. </p> </div>
+</section> <hr> <section> <p>Why Corral</p> <h2>Your agent's auth superpowers</h2> <p> Everything your app needs to charge money and gate features. Your agent reads the spec, runs the CLI, wires the UI. You ship. </p> <div> <div> <p><span></span></p><p>Agent-Native</p> <p> Your agent reads <code>llms.txt</code>, understands every endpoint, and adds auth in 9 CLI commands. No docs to read. No Stack Overflow. Just tell it what you want. Every command outputs <code>--json</code>. Built for OpenClaw, Claude Code, Codex, and Cursor. </p> </div> <div> <p><span></span></p><p>One YAML, Everything</p> <p> <code>corral.yaml</code> defines auth providers, plans, features, and meters. Your agent edits it, everything updates. Add a plan, add a feature gate, change Stripe pricing — one file, zero wiring. Humans can read it too. </p> </div> <div> <p><span></span></p><p>Works in Minutes, Not Days</p> <p> Traditional auth setup: 2–3 days of wiring. With Corral + your agent: one conversation. Login, billing, gating, admin dashboard — all generated. Ship the actual product, not auth plumbing. </p> </div> <div> <p><span></span></p><p>Embedded, Not Hosted</p> <p> Mounts as route handlers inside <em>your</em> app. Same database, same process, same deploy. No Docker. No separate service. No per-MAU pricing surprises. </p> </div> <div> <p><span></span></p><p>Stripe Wired In</p> <p> Run <code>corral stripe push</code> and your YAML plans become Stripe products + prices. Webhooks, checkout sessions, billing portal — already handled. </p> </div> <div> <p><span></span></p><p>15 Gating Patterns</p> <p> <code>&lt;FeatureGate&gt;</code>, <code>&lt;PlanGate&gt;</code>, <code>&lt;PageGate&gt;</code>, <code>useFeatureGate()</code>, server-side gating, skeleton/blur/block modes. Every pattern you'll ever need. </p> </div> </div>
+</section> <hr> <section> <p>Agent Workflow</p> <h2>How agents use Corral</h2> <p> Six steps from "add auth" to shipping. No human touches auth code. </p> <div> <div> <p>1</p> <p><strong>Agent reads <code>llm.txt</code></strong> You paste a full URL like <code>https://corral.llamafarm.dev/llm.txt</code> into your agent context, or add that exact URL to <code>AGENTS.md</code> / <code>.cursorrules</code>. The agent now knows every command, every endpoint, every option. </p> </div> <div> <p>2</p> <p><strong>Agent runs <code>npm create corral</code></strong> Scaffolds <code>corral.yaml</code>, route handlers, components, and <code>CORRAL.md</code> into your project. Non-interactive. Idempotent. </p> </div> <div> <p>3</p> <p><strong>Agent edits <code>corral.yaml</code> for your plans</strong> Free tier, Pro at $29/mo, Enterprise — whatever you asked for. Auth providers, feature flags, usage meters. All in one file. </p> </div> <div> <p>4</p> <p><strong>Agent runs <code>corral add feature</code>, <code>corral add provider</code></strong> Incremental commands for each capability. Idempotent — safe to re-run. <code>--json</code> output on every command so the agent can branch on results. </p> </div> <div> <p>5</p> <p><strong>Agent runs <code>corral validate</code> — all green</strong> Checks config, env vars, database, Stripe sync. Exit 0 means deploy-ready. If something's wrong, the JSON error tells the agent exactly how to fix it. </p> </div> <div> <p>6</p> <p><strong>You have auth + payments. Ship it.</strong> No human touched auth code. No auth docs were read. The agent handled everything. </p> </div> </div>
+</section> <hr> <section> <p>Compatibility</p> <h2>Works with your agent</h2> <p> If it can run CLI commands and read markdown, it can use Corral. </p> <div> <div> <p> OpenClaw</p> <p>First-class support. Corral ships as an OpenClaw skill. Point it at your project, say what you need.</p> </div> <div> <p> Claude Code</p> <p>Point it at <code>llms.txt</code>. It knows what to do. Add the URL to your AGENTS.md for persistent context.</p> </div> <div> <p> Codex</p> <p><code>npm create corral</code> + <code>--json</code> flags = perfect for Codex. Structured output, no screen-scraping.</p> </div> <div> <p> Cursor</p> <p>Add <code>llms.txt</code> URL to your <code>.cursorrules</code>. Cursor handles the rest from inside your editor.</p> </div> <div> <p> Windsurf</p> <p>Add Corral's <code>llms.txt</code> to your project rules. Windsurf reads the spec and wires everything up.</p> </div> <div> <p> Any Agent</p> <p>If it can run CLI commands and read markdown, it can use Corral. The <code>--json</code> flag is on every command.</p> </div> </div> </section> <hr> <div> <p>One Config File</p> <h2>YAML in → Full auth stack out</h2> <p> One file describes your entire auth + billing topology. Corral generates the routes, components, and database schema. Your agent edits the YAML; Corral handles the wiring. </p> <div> <div> <p> corral.yaml</p> <pre><code><span>app</span>: <span>name</span>: <span>MySaaSApp</span> <span>url</span>: <span>https://myapp.com</span> <span>auth</span>: <span>providers</span>: - <span>google</span> - <span>email</span> <span>plans</span>: <span>free</span>: <span>price</span>: <span>0</span> <span>features</span>: [<span>basic_access</span>] <span>pro</span>: <span>price</span>: <span>29</span> <span>features</span>: [<span>*</span>, <span>ai_features</span>] <span>trial_days</span>: <span>14</span> <span>features</span>: <span>ai_features</span>: <span>plans</span>: [<span>pro</span>] <span>gate</span>: <span>blur</span></code></pre> </div> <p>→</p> <div> <p> Your app, fully gated</p> <div> <p><span>✓</span> Login page (Google + email magic link) </p> <p><span>✓</span> Session management + JWTs </p> <p><span>✓</span> Stripe checkout + billing portal </p> <p><span>✓</span> FeatureGate components in UI </p> <p><span>✓</span> Server-side plan checks </p> <p><span>✓</span> Usage meter tracking </p> <p><span>✓</span> Admin dashboard at <code>/admin</code> </p> <p><span>✓</span> <code>GET /llms.txt</code> for agents </p> <p><span>✓</span> <code>CORRAL.md</code> project guide </p> </div> </div> </div> </div> <hr> <section> <p>Agent-Native Design</p> <h2>Every detail built for agents</h2> <p> An agent can add full auth + billing to any app in 9 commands. No screen-scraping. No ambiguity. Just structured I/O. </p> <div> <div> <p><span></span> <code>/api/llms.txt</code> </p> <p> Auto-generated endpoint on every Corral app. Describes the project's auth config, active plans, feature gates, and API surface in a format LLMs parse cleanly. Follows the <a href="https://llmstxt.org/" target="_blank">llms.txt spec</a>. Also served at <a href="https://llama-farm.github.io/corral/llms.txt">llms.txt</a>. </p> </div> <div> <p><span></span> <code>CORRAL.md</code> </p> <p> Generated at init time and updated on every <code>corral add</code>. A project-specific guide: what's configured, what routes exist, what gates are active, how to test auth locally. Designed for agent system prompts. </p> </div> <div> <p><span></span> <code>corral add &lt;thing&gt;</code> </p> <p> Incremental commands that do one thing well. <code>corral add feature ai_analysis --plans pro --gate blur</code>. Idempotent. Safe to run twice. Agent-friendly JSON output. </p> </div> <div> <p><span></span> <code>--json</code> everywhere </p> <p> Every CLI command accepts <code>--json</code> and exits with structured output + a numeric exit code. Parse it, branch on it, pass it to the next command. No screen-scraping. </p> </div> </div> <div> <p>The 9-command workflow — from zero to auth + billing:</p> <div> <div> <p><span>agent workflow</span> </p></div> <p><span>corral analyze --json <span># 1. understand the project</span></span> <span>corral init --yes --json <span># 2. scaffold everything</span></span> <span>corral add provider google <span># 3. add OAuth</span></span> <span>corral add plan pro --price 29 <span># 4. add paid plan</span></span> <span>corral add feature ai_features --plans pro <span># 5. gate a feature</span></span> <span>corral add meter api_calls --limit 10000 <span># 6. add usage meter</span></span> <span>corral stripe push --json <span># 7. sync to Stripe</span></span> <span>corral validate --json <span># 8. verify everything</span></span> <span>corral seed --env test --json <span># 9. seed test users</span></span> </p> </div> </div>
+</section> <hr> <section> <p>Compatibility</p> <h2>Works everywhere you already work</h2> <p> Frontend frameworks, backend validators, databases, and deployment targets — Corral meets your stack. </p> <div> <div> <p>Frontend</p> <div> <p>Next.js (App Router)</p> <p>Next.js (Pages Router)</p> <p>React + Vite</p> <p>Express</p> <p>Hono</p> <p>Fastify</p> </div> </div> <div> <p>Backend Validation</p> <div> <p>Python (FastAPI)</p> <p>Go (stdlib / Gin)</p> <p>Rust (Axum / Actix)</p> <p>Ruby (Rails / Sinatra)</p> <p>Java (Spring)</p> <p>Any HTTP client</p> </div> </div> <div> <p>Database</p> <div> <p>SQLite (default)</p> <p>PostgreSQL</p> <p>MySQL / MariaDB</p> <p>Turso (libSQL)</p> <p>Cloudflare D1</p> <p>PlanetScale</p> </div> </div> <div> <p>Deploy Target</p> <div> <p>Railway</p> <p>Fly.io</p> <p>Docker / Compose</p> <p>Vercel (Edge)</p> <p>Cloudflare Workers</p> <p>Bare VM / VPS</p> </div> </div> </div>
+</section> <hr> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

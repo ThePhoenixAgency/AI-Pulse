@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - serenorg/skills: Seren Skills</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - serenorg/skills: Seren Skills</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:36:07 PM | <a href="https://github.com/serenorg/skills" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Seren Skills</h1><a href="#seren-skills"></a></div>
+<p>Community-driven skills for <a href="https://github.com/serenorg/seren-desktop">Seren Desktop</a>. Skills teach AI agents how to use APIs, run autonomous workflows, and guide users through tasks.</p>
+<div><h2>Structure</h2><a href="#structure"></a></div>
+<p>Skills are organized by org (or publisher), with each skill in a subdirectory:</p>
+<div><pre><code>seren-skills/
+├── apollo/
+│ └── api/ # Apollo.io API integration
+├── coinbase/
+│ └── grid-trader/ # Automated grid trading bot
+├── cryptobullseyezone/
+│ └── tax/ # 1099-DA to Form 8949 reconciliation guide
+├── kraken/
+│ └── grid-trader/ # Kraken grid trading bot
+├── polymarket/
+│ └── trader/ # Polymarket prediction market bot
+└── seren/ ├── browser-automation/ # Playwright browser automation ├── getting-started/ # Getting started guide ├── job-seeker/ # Job search automation └── skill-creator/ # Skill creation guide
+</code></pre></div>
+<div><h3>Slugs</h3><a href="#slugs"></a></div>
+<p>The slug is derived by joining the org and skill name with a hyphen:</p>
+<div><pre><code>coinbase/grid-trader → coinbase-grid-trader
+cryptobullseyezone/tax → cryptobullseyezone-tax
+polymarket/trader → polymarket-trader
+seren/getting-started → seren-getting-started
+seren/browser-automation → seren-browser-automation
+</code></pre></div>
+<p>Seren Desktop consumes skills by slug in a flat namespace.</p>
+<div><h2>Adding a Skill</h2><a href="#adding-a-skill"></a></div>
+<p>See <a href="/serenorg/skills/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> for the full guide.</p>
+<p>Quick version:</p>
+<ol>
+<li>Create <pre><code>&lt;org&gt;/&lt;skill-name&gt;/</code></pre> at the repo root (use an existing org or create a new one)</li>
+<li>Add a <pre><code>SKILL.md</code></pre> with required frontmatter</li>
+<li>For agent skills, include runtime code and <pre><code>requirements.txt</code></pre> / <pre><code>package.json</code></pre></li>
+<li>Open a PR</li>
+</ol>
+<div><h2>SKILL.md Frontmatter</h2><a href="#skillmd-frontmatter"></a></div>
+<p>Every skill needs a </p><pre><code>SKILL.md</code></pre> with YAML frontmatter:<p></p>
+<div><pre>---
+<span>name</span>: <span>My Skill</span>
+<span>description</span>: <span><span>"</span>What the skill does and when to use it<span>"</span></span>
+<span>kind</span>: <span>agent </span><span><span>#</span> agent | integration | guide</span>
+<span>runtime</span>: <span>python </span><span><span>#</span> python | node | bash | docs-only</span>
+<span>author</span>: <span>Your Name</span>
+<span>version</span>: <span>1.0.0</span>
+<span>tags</span>: <span>[relevant, tags]</span>
+<span>publishers</span>: <span>[seren-publishers-used] </span><span><span>#</span> optional</span>
+<span>cost_estimate</span>: <span><span>"</span>$X per operation<span>"</span></span> <span><span>#</span> optional</span>
+---</pre></div>
+<p>The </p><pre><code>kind</code></pre> field describes the nature of the skill:<p></p>
+<ul>
+<li><strong>agent</strong> — Autonomous bot that runs independently (has runtime code)</li>
+<li><strong>integration</strong> — API documentation and usage patterns (SKILL.md only)</li>
+<li><strong>guide</strong> — Tutorials and how-to content (SKILL.md only)</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

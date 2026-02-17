@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - elvismdev/mem0-mcp-selfhosted: Self-hosted mem0 MCP server for Claude Code. Run a complete memory server against self-hosted Qdrant + Neo4j + Ollama while using Claude as the main LLM.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - elvismdev/mem0-mcp-selfhosted: Self-hosted mem0 MCP server for Claude Code. Run a complete memory server against self-hosted Qdrant + Neo4j + Ollama while using Claude as the main LLM.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:21:25 PM | <a href="https://github.com/elvismdev/mem0-mcp-selfhosted" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>mem0-mcp-selfhosted</h1><a href="#mem0-mcp-selfhosted"></a></div>
+<p>Self-hosted <a href="https://github.com/mem0ai/mem0">mem0</a> MCP server for Claude Code. Run a complete memory server against self-hosted Qdrant + Neo4j + Ollama while using Claude as the main LLM.</p>
+<p>Uses the </p><pre><code>mem0ai</code></pre> package directly as a library, authenticates through your existing Claude subscription (OAT token), and exposes 11 MCP tools for full memory management.<p></p>
+<div><h2>Prerequisites</h2><a href="#prerequisites"></a></div>
+<p>You need these services running:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Required</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Qdrant</strong></td>
+<td>Yes</td>
+<td>Vector memory storage and search</td>
+</tr>
+<tr>
+<td><strong>Ollama</strong></td>
+<td>Yes</td>
+<td>Embedding generation (bge-m3 or similar)</td>
+</tr>
+<tr>
+<td><strong>Neo4j 5+</strong></td>
+<td>Optional</td>
+<td>Knowledge graph (entity relationships)</td>
+</tr>
+<tr>
+<td><strong>Anthropic API</strong></td>
+<td>Yes</td>
+<td>LLM for fact extraction, entity extraction, memory updates (auto-authenticates via Claude Code's OAT token — no paid API key required)</td>
+</tr>
+<tr>
+<td><strong>Google API</strong></td>
+<td>Optional</td>
+<td>Graph LLM for entity extraction (<pre><code>gemini</code></pre>/<pre><code>gemini_split</code></pre> providers)</td>
+</tr>
+</tbody>
+</table>
+<p>Python &gt;= 3.10.</p>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<p>Add the MCP server globally (available across all projects):</p>
+<div><pre>claude mcp add --scope user --transport stdio mem0 \ --env MEM0_QDRANT_URL=http://localhost:6333 \ --env MEM0_EMBED_URL=http://localhost:11434 \ --env MEM0_EMBED_MODEL=bge-m3 \ --env MEM0_EMBED_DIMS=1024 \ --env MEM0_USER_ID=your-user-id \ -- uvx --from git+https://github.com/elvismdev/mem0-mcp-selfhosted.git mem0-mcp-selfhosted</pre></div>
+<p>Or add it to a single project by creating </p><pre><code>.mcp.json</code></pre> in the project root:<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"mem0"</span>: { <span>"command"</span>: <span><span>"</span>uvx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>--from<span>"</span></span>, <span><span>"</span>git+https://github.com/elvismdev/mem0-mcp-selfhosted.git<span>"</span></span>, <span><span>"</span>mem0-mcp-selfhosted<span>"</span></span>], <span>"env"</span>: { <span>"MEM0_QDRANT_URL"</span>: <span><span>"</span>http://localhost:6333<span>"</span></span>, <span>"MEM0_EMBED_URL"</span>: <span><span>"</span>http://localhost:11434<span>"</span></span>, <span>"MEM0_EMBED_MODEL"</span>: <span><span>"</span>bge-m3<span>"</span></span>, <span>"MEM0_EMBED_DIMS"</span>: <span><span>"</span>1024<span>"</span></span>, <span>"MEM0_USER_ID"</span>: <span><span>"</span>your-user-id<span>"</span></span> } } }
+}</pre></div>
+<p></p><pre><code>uvx</code></pre> automatically downloads, installs, and runs the server in an isolated environment — no manual installation needed. Claude Code launches it on demand when the MCP connection starts.<p></p>
+<p>The server auto-reads your OAT token from </p><pre><code>~/.claude/.credentials.json</code></pre> — no manual token configuration needed.<p></p>
+<div><h3>Try It</h3><a href="#try-it"></a></div>
+<p>Restart Claude Code, then:</p>
+<div><pre><code>&gt; Search my memories for TypeScript preferences
+&gt; Remember that I prefer Hatch for Python packaging
+&gt; Show me all entities in my knowledge graph
+</code></pre></div>
+<div><h2>CLAUDE.md Integration</h2><a href="#claudemd-integration"></a></div>
+<p>Add these rules to your project's </p><pre><code>CLAUDE.md</code></pre> (or <pre><code>~/.claude/CLAUDE.md</code></pre> for global use) so Claude Code automatically uses memory across sessions:<p></p>
+<div><pre><span># <span>MCP Servers</span></span> <span>-</span> <span>**</span>mem0<span>**</span>: Persistent memory across sessions. At the start of each session, <span>`</span><span>search_memories</span><span>`</span> for relevant context before asking the user to re-explain anything. Use <span>`</span><span>add_memory</span><span>`</span> whenever you discover project architecture, coding conventions, debugging insights, key decisions, or user preferences. Use <span>`</span><span>update_memory</span><span>`</span> when prior context changes. Save information like: "This project uses PostgreSQL with Prisma", "Tests run with pytest -v", "Auth uses JWT validated in middleware". When in doubt, save it — future sessions benefit from over-remembering.</pre></div>
+<p>This gives Claude Code persistent memory across sessions. Instead of re-exploring the codebase every time, it retrieves what it already knows and starts productive work immediately.</p>
+<div><h2>Authentication</h2><a href="#authentication"></a></div>
+<p>The server resolves an Anthropic token using a prioritized fallback chain:</p>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Source</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><pre><code>MEM0_ANTHROPIC_TOKEN</code></pre> env var</td>
+<td>Explicit, user-controlled</td>
+</tr>
+<tr>
+<td>2</td>
+<td><pre><code>~/.claude/.credentials.json</code></pre></td>
+<td>Auto-reads Claude Code's OAT token (zero-config)</td>
+</tr>
+<tr>
+<td>3</td>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre> env var</td>
+<td>Standard pay-per-use API key</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Disabled</td>
+<td>Warns and disables Anthropic LLM features</td>
+</tr>
+</tbody>
+</table>
+<p><strong>OAT tokens</strong> (</p><pre><code>sk-ant-oat...</code></pre>) use your Claude subscription. The server automatically detects the token type and configures the SDK accordingly.<p></p>
+<p><strong>API keys</strong> (</p><pre><code>sk-ant-api...</code></pre>) use standard pay-per-use billing.<p></p>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<div><h3>Memory Tools (9 core)</h3><a href="#memory-tools-9-core"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>add_memory</code></pre></td>
+<td>Store text or conversation history as memories. Supports <pre><code>enable_graph</code></pre>, <pre><code>infer</code></pre>, <pre><code>metadata</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>search_memories</code></pre></td>
+<td>Semantic search with optional <pre><code>filters</code></pre>, <pre><code>threshold</code></pre>, <pre><code>rerank</code></pre>, <pre><code>enable_graph</code></pre>.</td>
+</tr>
+<tr>
+<td><pre><code>get_memories</code></pre></td>
+<td>List/filter memories (non-search). Supports <pre><code>limit</code></pre> and scope filters.</td>
+</tr>
+<tr>
+<td><pre><code>get_memory</code></pre></td>
+<td>Fetch a single memory by UUID.</td>
+</tr>
+<tr>
+<td><pre><code>update_memory</code></pre></td>
+<td>Replace memory text. Re-embeds and re-indexes in Qdrant.</td>
+</tr>
+<tr>
+<td><pre><code>delete_memory</code></pre></td>
+<td>Delete a single memory by UUID.</td>
+</tr>
+<tr>
+<td><pre><code>delete_all_memories</code></pre></td>
+<td>Bulk-delete all memories in a scope.</td>
+</tr>
+<tr>
+<td><pre><code>list_entities</code></pre></td>
+<td>List users/agents/runs with memory counts. Uses Qdrant Facet API.</td>
+</tr>
+<tr>
+<td><pre><code>delete_entities</code></pre></td>
+<td>Cascade-delete an entity and all its memories.</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Graph Tools</h3><a href="#graph-tools"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>search_graph</code></pre></td>
+<td>Search Neo4j entities by name substring. Returns entities + outgoing relationships.</td>
+</tr>
+<tr>
+<td><pre><code>get_entity</code></pre></td>
+<td>Get all relationships for an entity (bidirectional: incoming + outgoing).</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Prompt</h3><a href="#prompt"></a></div>
+<p>The server registers a </p><pre><code>memory_assistant</code></pre> MCP prompt that provides Claude with a quick-start guide for using the memory tools effectively.<p></p>
+<div><h3>Parameters</h3><a href="#parameters"></a></div>
+<p>All tools use Pydantic </p><pre><code>Annotated[type, Field(description=...)]</code></pre> for self-documenting parameter schemas. Common patterns:<p></p>
+<ul>
+<li><strong><pre><code>user_id</code></pre></strong> defaults to <pre><code>MEM0_USER_ID</code></pre> env var when not provided</li>
+<li><strong><pre><code>enable_graph</code></pre></strong> overrides the default <pre><code>MEM0_ENABLE_GRAPH</code></pre> per-call</li>
+<li><strong><pre><code>filters</code></pre></strong> supports structured operators: <pre><code>{"key": {"eq": "value"}}</code></pre>, <pre><code>{"AND": [...]}</code></pre></li>
+<li>All responses are JSON strings via <pre><code>json.dumps(result, ensure_ascii=False)</code></pre></li>
+</ul>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>All configuration is via environment variables. Create a </p><pre><code>.env</code></pre> file or set them in your MCP config.<p></p>
+<div><h3>Authentication</h3><a href="#authentication-1"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_ANTHROPIC_TOKEN</code></pre></td>
+<td>--</td>
+<td>Anthropic OAT or API token (priority 1)</td>
+</tr>
+<tr>
+<td><pre><code>ANTHROPIC_API_KEY</code></pre></td>
+<td>--</td>
+<td>Standard Anthropic API key (priority 3)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_OAT_HEADERS</code></pre></td>
+<td><pre><code>auto</code></pre></td>
+<td>OAT identity headers: <pre><code>auto</code></pre> or <pre><code>none</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h3>LLM</h3><a href="#llm"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_LLM_MODEL</code></pre></td>
+<td><pre><code>claude-opus-4-6</code></pre></td>
+<td>Anthropic model for all LLM operations</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_LLM_MAX_TOKENS</code></pre></td>
+<td><pre><code>16384</code></pre></td>
+<td>Max tokens for LLM responses</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_GRAPH_LLM_PROVIDER</code></pre></td>
+<td><pre><code>anthropic</code></pre></td>
+<td>Graph LLM provider (<pre><code>anthropic</code></pre>, <pre><code>anthropic_oat</code></pre>, <pre><code>ollama</code></pre>, <pre><code>gemini</code></pre>, <pre><code>gemini_split</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_GRAPH_LLM_MODEL</code></pre></td>
+<td><em>(varies)</em></td>
+<td>Graph model. Inherits <pre><code>MEM0_LLM_MODEL</code></pre> for anthropic/ollama; defaults to <pre><code>gemini-2.5-flash-lite</code></pre> for gemini/gemini_split</td>
+</tr>
+<tr>
+<td><pre><code>GOOGLE_API_KEY</code></pre></td>
+<td>--</td>
+<td>Google API key (required for <pre><code>gemini</code></pre>/<pre><code>gemini_split</code></pre> graph providers)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_GRAPH_CONTRADICTION_LLM_PROVIDER</code></pre></td>
+<td><pre><code>anthropic</code></pre></td>
+<td>Contradiction LLM provider in <pre><code>gemini_split</code></pre> mode (<pre><code>anthropic</code></pre>, <pre><code>anthropic_oat</code></pre>, <pre><code>ollama</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_GRAPH_CONTRADICTION_LLM_MODEL</code></pre></td>
+<td><em>(inherits MEM0_LLM_MODEL)</em></td>
+<td>Contradiction model in <pre><code>gemini_split</code></pre> mode</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Embedder</h3><a href="#embedder"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_EMBED_PROVIDER</code></pre></td>
+<td><pre><code>ollama</code></pre></td>
+<td>Embedding provider (<pre><code>ollama</code></pre> or <pre><code>openai</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_EMBED_MODEL</code></pre></td>
+<td><pre><code>bge-m3</code></pre></td>
+<td>Embedding model name</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_EMBED_URL</code></pre></td>
+<td><pre><code>http://localhost:11434</code></pre></td>
+<td>Ollama URL for embeddings</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_EMBED_DIMS</code></pre></td>
+<td><pre><code>1024</code></pre></td>
+<td>Embedding vector dimensions</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Vector Store (Qdrant)</h3><a href="#vector-store-qdrant"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_QDRANT_URL</code></pre></td>
+<td><pre><code>http://localhost:6333</code></pre></td>
+<td>Qdrant REST API URL</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_QDRANT_API_KEY</code></pre></td>
+<td>--</td>
+<td>Qdrant API key (for Qdrant Cloud)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_QDRANT_ON_DISK</code></pre></td>
+<td><pre><code>false</code></pre></td>
+<td>Store vectors on disk (reduces RAM, slower search)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_COLLECTION</code></pre></td>
+<td><pre><code>mem0_mcp_selfhosted</code></pre></td>
+<td>Qdrant collection name</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Graph Store (Neo4j)</h3><a href="#graph-store-neo4j"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_ENABLE_GRAPH</code></pre></td>
+<td><pre><code>false</code></pre></td>
+<td>Enable graph memory (entity extraction to Neo4j)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_NEO4J_URL</code></pre></td>
+<td><pre><code>bolt://127.0.0.1:7687</code></pre></td>
+<td>Neo4j Bolt endpoint</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_NEO4J_USER</code></pre></td>
+<td><pre><code>neo4j</code></pre></td>
+<td>Neo4j username</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_NEO4J_PASSWORD</code></pre></td>
+<td><pre><code>mem0graph</code></pre></td>
+<td>Neo4j password</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_NEO4J_DATABASE</code></pre></td>
+<td>--</td>
+<td>Neo4j database name (multi-database setups)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_NEO4J_BASE_LABEL</code></pre></td>
+<td>--</td>
+<td>Custom Neo4j base label for node type grouping</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_GRAPH_THRESHOLD</code></pre></td>
+<td><pre><code>0.7</code></pre></td>
+<td>Embedding similarity threshold for node matching</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Server</h3><a href="#server"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>MEM0_TRANSPORT</code></pre></td>
+<td><pre><code>stdio</code></pre></td>
+<td>Transport: <pre><code>stdio</code></pre>, <pre><code>sse</code></pre>, or <pre><code>streamable-http</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>MEM0_HOST</code></pre></td>
+<td><pre><code>0.0.0.0</code></pre></td>
+<td>Host for SSE/HTTP transports</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_PORT</code></pre></td>
+<td><pre><code>8081</code></pre></td>
+<td>Port for SSE/HTTP transports</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_USER_ID</code></pre></td>
+<td><pre><code>user</code></pre></td>
+<td>Default user ID for memory scoping</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_LOG_LEVEL</code></pre></td>
+<td><pre><code>INFO</code></pre></td>
+<td>Logging level (<pre><code>DEBUG</code></pre>, <pre><code>INFO</code></pre>, <pre><code>WARNING</code></pre>, <pre><code>ERROR</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>MEM0_HISTORY_DB_PATH</code></pre></td>
+<td>--</td>
+<td>SQLite path for memory change history</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>Claude Code | └── MCP stdio/SSE/streamable-http | ├── auth.py ← Hybrid token fallback chain ├── llm_anthropic.py ← Custom Anthropic LLM provider (OAT + structured outputs) ├── config.py ← Env vars → MemoryConfig dict ├── helpers.py ← Error wrapper, concurrency lock, safe bulk-delete ├── graph_tools.py ← Direct Neo4j Cypher queries (lazy driver) ├── llm_router.py ← Split-model graph LLM router (gemini_split) └── server.py ← FastMCP orchestrator (11 tools + prompt) | ├── mem0ai Memory class │ ├── Vector: LLM fact extraction → Ollama embed → Qdrant │ └── Graph: LLM entity extraction (tool calls) → Neo4j | └── Infrastructure ├── Qdrant ← Vector store ├── Ollama ← Embeddings ├── Neo4j ← Knowledge graph (optional) └── Anthropic ← LLM via OAT token
+</code></pre></div>
+<div><h2>Graph Memory &amp; Quota</h2><a href="#graph-memory--quota"></a></div>
+<p>Graph memory is <strong>disabled by default</strong> (</p><pre><code>MEM0_ENABLE_GRAPH=false</code></pre>) to protect your Claude quota. Each <pre><code>add_memory</code></pre> with graph enabled triggers 3 additional LLM calls for entity extraction, relationship generation, and conflict resolution.<p></p>
+<div><h3>Using Ollama for Graph Operations</h3><a href="#using-ollama-for-graph-operations"></a></div>
+<p>To eliminate Claude quota usage for graph ops, use a local Ollama model:</p>
+<div><pre><span>MEM0_ENABLE_GRAPH</span><span>=</span><span>true</span>
+<span>MEM0_GRAPH_LLM_PROVIDER</span><span>=</span><span>ollama</span>
+<span>MEM0_GRAPH_LLM_MODEL</span><span>=</span><span>qwen3:14b</span></pre></div>
+<p>Qwen3:14b has 0.971 tool-calling F1 (nearly matching GPT-4's 0.974) and runs in ~7-8GB VRAM with Q4_K_M quantization.</p>
+<div><h3>Using Gemini for Graph Operations</h3><a href="#using-gemini-for-graph-operations"></a></div>
+<p>Google's Gemini 2.5 Flash Lite is the cheapest option for graph ops while maintaining strong entity extraction accuracy:</p>
+<div><pre><span>MEM0_ENABLE_GRAPH</span><span>=</span><span>true</span>
+<span>MEM0_GRAPH_LLM_PROVIDER</span><span>=</span><span>gemini</span>
+<span>MEM0_GRAPH_LLM_MODEL</span><span>=</span><span>gemini-2.5-flash-lite</span>
+<span>GOOGLE_API_KEY</span><span>=</span><span>your-google-api-key</span></pre></div>
+<div><h3>Using Split-Model for Best Accuracy</h3><a href="#using-split-model-for-best-accuracy"></a></div>
+<p>The </p><pre><code>gemini_split</code></pre> provider routes graph pipeline calls to different LLMs based on the operation. Entity extraction (Calls 1 &amp; 2) goes to Gemini for speed and cost; contradiction detection (Call 3) goes to Claude for accuracy.<p></p>
+<div><pre><span>MEM0_ENABLE_GRAPH</span><span>=</span><span>true</span>
+<span>MEM0_GRAPH_LLM_PROVIDER</span><span>=</span><span>gemini_split</span>
+<span>GOOGLE_API_KEY</span><span>=</span><span>your-google-api-key</span>
+<span>MEM0_GRAPH_CONTRADICTION_LLM_PROVIDER</span><span>=</span><span>anthropic</span>
+<span>MEM0_GRAPH_CONTRADICTION_LLM_MODEL</span><span>=</span><span>claude-opus-4-6</span></pre></div>
+<p>Benchmark results across 248 test cases: Gemini scores 85.4% on entity extraction (vs Claude's 79.1%), while Claude scores 100% on contradiction detection (vs Gemini's 80%). The split-model combines the best of both.</p>
+<div><h2>Transport Modes</h2><a href="#transport-modes"></a></div>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Use Case</th>
+<th>Config</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>stdio</code></pre> (default)</td>
+<td>Claude Code integration</td>
+<td><pre><code>MEM0_TRANSPORT=stdio</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>sse</code></pre></td>
+<td>Legacy remote clients</td>
+<td><pre><code>MEM0_TRANSPORT=sse</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>streamable-http</code></pre></td>
+<td>Modern remote clients</td>
+<td><pre><code>MEM0_TRANSPORT=streamable-http</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>For remote deployments, MCP SDK &gt;= 1.23.0 enables DNS rebinding protection by default.</p>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre><span><span>#</span> Install with dev dependencies</span>
+pip install -e <span><span>"</span>.[dev]<span>"</span></span> <span><span>#</span> Run unit tests</span>
+python3 -m pytest tests/unit/ -v <span><span>#</span> Run contract tests (validates mem0ai internal API assumptions)</span>
+python3 -m pytest tests/contract/ -v <span><span>#</span> Run integration tests (requires live Qdrant + Neo4j + Ollama)</span>
+python3 -m pytest tests/integration/ -v <span><span>#</span> Run all tests</span>
+python3 -m pytest tests/ -v</pre></div>
+<div><h3>Test Structure</h3><a href="#test-structure"></a></div>
+<ul>
+<li><strong><pre><code>tests/unit/</code></pre></strong> -- Pure unit tests with mocked dependencies (auth, config, helpers, LLM provider, graph tools, LLM router)</li>
+<li><strong><pre><code>tests/contract/</code></pre></strong> -- Validates assumptions about mem0ai internals (schema detection invariant, <pre><code>vector_store.client</code></pre> access path, <pre><code>LlmFactory</code></pre> registration idempotency)</li>
+<li><strong><pre><code>tests/integration/</code></pre></strong> -- Live infrastructure tests (memory lifecycle, graph ops, bulk operations) against real Qdrant + Neo4j + Ollama. Marked with <pre><code>@pytest.mark.integration</code></pre>.</li>
+</ul>
+<p>Contract tests catch breaking changes in </p><pre><code>mem0ai</code></pre> upgrades before they reach production.<p></p>
+<div><h2>Telemetry</h2><a href="#telemetry"></a></div>
+<p>All mem0ai telemetry is suppressed. </p><pre><code>os.environ["MEM0_TELEMETRY"] = "false"</code></pre> is set at package import time, before any <pre><code>mem0</code></pre> module is loaded. No PostHog events are sent.<p></p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

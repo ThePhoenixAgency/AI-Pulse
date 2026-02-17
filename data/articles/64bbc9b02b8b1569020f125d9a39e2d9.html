@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - probablyArth/callonce-go: Request-scoped deduplication and memoization for Go. Singleflight + caching, scoped to context.Context.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - probablyArth/callonce-go: Request-scoped deduplication and memoization for Go. Singleflight + caching, scoped to context.Context.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 9:05:01 PM | <a href="https://github.com/probablyArth/callonce-go" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>callonce-go</h1><a href="#callonce-go"></a></div>
+<p><a href="https://pkg.go.dev/github.com/probablyarth/callonce-go"><img src="https://camo.githubusercontent.com/c732e53771586d0e73833eed922d7f8fc68b23ff01b50ae64a72ae0def44c8ff/68747470733a2f2f706b672e676f2e6465762f62616467652f6769746875622e636f6d2f70726f6261626c79617274682f63616c6c6f6e63652d676f2e737667" alt="Go Reference"></a>
+<a href="https://goreportcard.com/report/github.com/probablyarth/callonce-go"><img src="https://camo.githubusercontent.com/d190ee65591adae734238a2d29ec30b28e8955e1178cc0d695a09e49feb3b0e7/68747470733a2f2f676f7265706f7274636172642e636f6d2f62616467652f6769746875622e636f6d2f70726f6261626c79617274682f63616c6c6f6e63652d676f" alt="Go Report Card"></a></p>
+<p>Request-scoped deduplication and memoization for Go.</p>
+<div><h2>The problem</h2><a href="#the-problem"></a></div>
+<p>A single HTTP request often fans out into multiple goroutines (middleware, service layers, template rendering) that independently call the same downstream resource. Without coordination:</p>
+<ul>
+<li><strong>Redundant calls.</strong> The same database query or API call runs 3-5x per request.</li>
+<li><strong>Wasted resources.</strong> Each duplicate call consumes a connection, adds latency, and increases load on downstream services.</li>
+<li><strong>singleflight alone isn't enough.</strong> It deduplicates <em>in-flight</em> calls, but once a call completes, the next caller triggers it all over again. There's no caching.</li>
+</ul>
+<div><h2>The solution</h2><a href="#the-solution"></a></div>
+<p></p><pre><code>callonce</code></pre> combines <strong>singleflight deduplication</strong> with a <strong>per-request cache</strong>, scoped to a <pre><code>context.Context</code></pre> lifetime:<p></p>
+<ol>
+<li><strong>First caller</strong> for a key triggers the function and caches the result.</li>
+<li><strong>Concurrent callers</strong> for the same key share the in-flight call (singleflight).</li>
+<li><strong>Subsequent callers</strong> get the cached result instantly (~9 ns, zero allocations).</li>
+<li><strong>When the request ends</strong>, the context (and cache) is garbage collected. No TTLs, no eviction, no stale data.</li>
+</ol>
+<div><h2>Install</h2><a href="#install"></a></div>
+<div><pre><code>go get github.com/probablyarth/callonce-go
+</code></pre></div>
+<div><h2>Quick start</h2><a href="#quick-start"></a></div>
+<div><pre><span>package</span> main <span>import</span> ( <span>"context"</span> <span>"fmt"</span> callonce <span>"github.com/probablyarth/callonce-go"</span>
+) <span>var</span> <span>userKey</span> <span>=</span> callonce.<span>NewKey</span>[<span>string</span>](<span>"user"</span>) <span>func</span> <span>fetchUser</span>() (<span>string</span>, <span>error</span>) { <span>fmt</span>.<span>Println</span>(<span>"calling downstream"</span>) <span>return</span> <span>"alice"</span>, <span>nil</span>
+} <span>func</span> <span>main</span>() { <span>ctx</span> <span>:=</span> <span>callonce</span>.<span>WithCache</span>(<span>context</span>.<span>Background</span>()) <span>// First call executes fetchUser.</span> <span>user</span>, <span>_</span> <span>:=</span> <span>callonce</span>.<span>Get</span>(<span>ctx</span>, <span>userKey</span>, <span>"1"</span>, <span>fetchUser</span>) <span>fmt</span>.<span>Println</span>(<span>user</span>) <span>// alice</span> <span>// Second call returns the cached result. fetchUser is not called again.</span> <span>user</span>, <span>_</span> <span>=</span> <span>callonce</span>.<span>Get</span>(<span>ctx</span>, <span>userKey</span>, <span>"1"</span>, <span>fetchUser</span>) <span>fmt</span>.<span>Println</span>(<span>user</span>) <span>// alice</span>
+}</pre></div>
+<p>In a real app, call </p><pre><code>WithCache</code></pre> once in middleware and pass the context down.<p></p>
+<div><h2>API</h2><a href="#api"></a></div>
+<div><pre><span>// Create a typed cache key (typically a package-level var).</span>
+<span>func</span> <span>NewKey</span>[<span>T</span> <span>any</span>](<span>name</span> <span>string</span>) <span>Key</span>[<span>T</span>] <span>// Attach a new cache to a context (typically once per request).</span>
+<span>func</span> <span>WithCache</span>(<span>ctx</span> context.<span>Context</span>) context.<span>Context</span> <span>// Retrieve the cache from a context (nil if none).</span>
+<span>func</span> <span>FromContext</span>(<span>ctx</span> context.<span>Context</span>) <span>*</span><span>Cache</span> <span>// Fetch-or-compute a value. Concurrent callers for the same key + identifier</span>
+<span>// share a single in-flight call and its cached result.</span>
+<span>func</span> <span>Get</span>[<span>T</span> <span>any</span>](<span>ctx</span> context.<span>Context</span>, <span>key</span> <span>Key</span>[<span>T</span>], <span>identifier</span> <span>string</span>, <span>fn</span> <span>func</span>() (<span>T</span>, <span>error</span>)) (<span>T</span>, <span>error</span>)</pre></div>
+<div><h2>Design decisions</h2><a href="#design-decisions"></a></div>
+<div><h3>Typed keys with <pre><code>Key[T]</code></pre></h3><a href="#typed-keys-with-keyt"></a></div>
+<p>Cache keys are created with </p><pre><code>NewKey[T]</code></pre>, which encodes the Go type into the underlying key string. This means <pre><code>NewKey[string]("user")</code></pre> and <pre><code>NewKey[int]("user")</code></pre> produce different cache slots, so <strong>type collisions are impossible</strong>. The compiler enforces that the function passed to <pre><code>Get</code></pre> returns the type matching the key.<p></p>
+<div><pre><span>var</span> <span>userKey</span> <span>=</span> callonce.<span>NewKey</span>[<span>*</span><span>User</span>](<span>"user"</span>) <span>// Key[*User]</span>
+<span>var</span> <span>countKey</span> <span>=</span> callonce.<span>NewKey</span>[<span>int</span>](<span>"count"</span>) <span>// Key[int]</span> <span>// Compiler error: can't pass Key[int] where Key[*User] is expected.</span></pre></div>
+<div><h3>Declare keys once, not in hot paths</h3><a href="#declare-keys-once-not-in-hot-paths"></a></div>
+<p></p><pre><code>NewKey[T]</code></pre> uses <pre><code>fmt.Sprintf</code></pre> and reflection internally to encode the type name into the key string. This is what prevents type collisions, but it means each call allocates. Declare keys as package-level variables so the cost is paid once at init, not on every request:<p></p>
+<div><pre><span>// Good: created once at startup.</span>
+<span>var</span> <span>userKey</span> <span>=</span> callonce.<span>NewKey</span>[<span>*</span><span>User</span>](<span>"user"</span>) <span>// Bad: allocates on every call to the handler.</span>
+<span>func</span> <span>handler</span>(<span>w</span> http.<span>ResponseWriter</span>, <span>r</span> <span>*</span>http.<span>Request</span>) { <span>key</span> <span>:=</span> callonce.<span>NewKey</span>[<span>*</span><span>User</span>](<span>"user"</span>) <span>// unnecessary allocation</span> <span>...</span>
+}</pre></div>
+<div><h3>Key + identifier separation</h3><a href="#key--identifier-separation"></a></div>
+<p>The </p><pre><code>Key[T]</code></pre> represents the <em>category</em> (e.g. "user"), while the <pre><code>identifier</code></pre> string represents the <em>instance</em> (e.g. the user ID). This keeps key declarations static and reusable:<p></p>
+<div><pre><span>var</span> <span>userKey</span> <span>=</span> callonce.<span>NewKey</span>[<span>*</span><span>User</span>](<span>"user"</span>) <span>// In a handler:</span>
+<span>callonce</span>.<span>Get</span>(<span>ctx</span>, <span>userKey</span>, <span>userID</span>, <span>fetchUser</span>)</pre></div>
+<div><h3>Errors are not cached</h3><a href="#errors-are-not-cached"></a></div>
+<p>A failed call doesn't poison the cache. The next caller retries the function, which is the right default for transient errors like network timeouts or database blips.</p>
+<div><h3>Graceful degradation</h3><a href="#graceful-degradation"></a></div>
+<p>If </p><pre><code>WithCache</code></pre> was never called (no cache in context), <pre><code>Get</code></pre> calls the function directly and returns the result. No panic, no error. Your code works with or without the cache.<p></p>
+<div><h3>No TTLs or eviction</h3><a href="#no-ttls-or-eviction"></a></div>
+<p>The cache is tied to the request context. When the request ends, the context is canceled, the cache becomes unreachable, and the GC cleans it up. This eliminates an entire class of bugs around stale data, cache invalidation, and memory leaks.</p>
+<div><h3>Panic safety</h3><a href="#panic-safety"></a></div>
+<p>If the function panics, the panic propagates to all waiting goroutines (via singleflight), but the cache is <strong>not poisoned</strong>. A subsequent call with the same key will retry.</p>
+<div><h2>Behaviour summary</h2><a href="#behaviour-summary"></a></div>
+<table>
+<thead>
+<tr>
+<th>Behaviour</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Errors</td>
+<td>Not cached; a failed call can be retried</td>
+</tr>
+<tr>
+<td><pre><code>nil</code></pre> values</td>
+<td>Cached; a <pre><code>(nil, nil)</code></pre> result is stored</td>
+</tr>
+<tr>
+<td>No cache in context</td>
+<td><pre><code>fn</code></pre> is called directly (graceful degradation)</td>
+</tr>
+<tr>
+<td>Panics</td>
+<td>Propagate to all waiters without poisoning the cache</td>
+</tr>
+<tr>
+<td>Type safety</td>
+<td>Enforced at compile time via <pre><code>Key[T]</code></pre></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div>
+<blockquote>
+<p>Apple M4 Pro · Go 1.24 · </p><pre><code>go test -bench=. -benchmem</code></pre><p></p>
+</blockquote>
+<div><h3>Per-call latency</h3><a href="#per-call-latency"></a></div>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>ns/op</th>
+<th>B/op</th>
+<th>allocs/op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cache hit</td>
+<td><strong>24.4</strong> ± 3%</td>
+<td>16</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Cache miss (first call)</td>
+<td>365 ± 5%</td>
+<td>303</td>
+<td>4</td>
+</tr>
+<tr>
+<td>No cache in context</td>
+<td>2.5 ± 1%</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Error (not cached)</td>
+<td>83.5 ± 1%</td>
+<td>96</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Cache hits resolve in <strong>~24 ns</strong> with a single allocation (the key concatenation). The no-cache fallback path adds only ~2.5 ns.</p>
+<div><h3>Concurrent throughput (1 000 goroutines)</h3><a href="#concurrent-throughput-1-000-goroutines"></a></div>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>µs/op</th>
+<th>B/op</th>
+<th>allocs/op</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same key (max dedup)</td>
+<td><strong>235</strong> ± 1%</td>
+<td>49 k</td>
+<td>2 010</td>
+</tr>
+<tr>
+<td>Mixed keys (100 keys)</td>
+<td>836 ± 1%</td>
+<td>132 k</td>
+<td>3 365</td>
+</tr>
+<tr>
+<td>Unique keys (no dedup)</td>
+<td>1 904 ± 1%</td>
+<td>481 k</td>
+<td>6 190</td>
+</tr>
+</tbody>
+</table>
+<div><h3>callonce vs raw singleflight</h3><a href="#callonce-vs-raw-singleflight"></a></div>
+<p>Same 1 000-goroutine scenarios. Singleflight deduplicates in-flight calls but <strong>does not cache results</strong>, so every iteration goes through </p><pre><code>Do()</code></pre> again.<p></p>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>callonce</th>
+<th>singleflight</th>
+<th>speedup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same key</td>
+<td>235 µs</td>
+<td>682 µs</td>
+<td><strong>2.9x</strong></td>
+</tr>
+<tr>
+<td>Mixed keys</td>
+<td>836 µs</td>
+<td>636 µs</td>
+<td>0.8x</td>
+</tr>
+<tr>
+<td>Unique keys</td>
+<td>1 904 µs</td>
+<td>611 µs</td>
+<td>0.3x</td>
+</tr>
+</tbody>
+</table>
+<p>callonce shines when keys repeat. The cache eliminates redundant </p><pre><code>Do()</code></pre> calls entirely. With mostly-unique keys the caching overhead (map writes, locks) costs more than it saves; in that scenario raw singleflight is leaner.<p></p>
+<div><pre><code>go test -bench=. -benchmem ./...
+</code></pre></div>
+<div><h2>Please Consider Giving the Repo a Star </h2><a href="#please-consider-giving-the-repo-a-star-"></a></div>
+<a href="https://github.com/probablyarth/callonce-go"> <img alt="Star History Chart" src="https://camo.githubusercontent.com/95740acc9bb7fe6b41cc367cb491cae27a9e855bd2c262cc0257fbecb9fc7492/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d70726f6261626c79617274682f63616c6c6f6e63652d676f26747970653d54696d656c696e65"> </a>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>Apache-2.0</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
