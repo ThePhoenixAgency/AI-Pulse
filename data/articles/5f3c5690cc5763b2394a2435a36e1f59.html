@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Security Firewall for AI Agents — Here's Why Every MCP Server Needs One</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Security Firewall for AI Agents — Here's Why Every MCP Server Needs One</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 6:25:10 PM | <a href="https://dev.to/yalelet_dessalegn_b87ed18/i-built-a-security-firewall-for-ai-agents-heres-why-every-mcp-server-needs-one-1jha" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="the-problem-nobodys-talking-about" href="#the-problem-nobodys-talking-about"> </a> The Problem Nobody's Talking About
+</h2> <p>AI agents can now execute tools read files, run shell commands, query databases, make HTTP requests. Claude Code, Cursor, Windsurf they all use the Model Context Protocol (MCP) to talk to tool servers.</p> <p>Here's the scary part: <strong>a single prompt injection can weaponize any AI agent.</strong></p> <p>An attacker embeds instructions in a document, email, or web page. The AI reads it, follows the injected instructions, and suddenly:</p> <ol>
+<li>
+<strong>Reads</strong> your <code>.ssh/id_rsa</code>, <code>.env</code> files, API keys</li>
+<li>
+<strong>Exfiltrates</strong> data via <code>curl</code>, <code>wget</code>, or DNS tunneling</li>
+<li>
+<strong>Executes</strong> arbitrary shell commands with YOUR permissions</li>
+<li>
+<strong>Chains</strong> multiple tools to escalate from read → exfil → execute</li>
+</ol> <p>This isn't theoretical. These attacks work TODAY against unprotected MCP servers.</p> <h2> <a name="openclaw-the-personal-jarvis-or-a-security-nightmare" href="#openclaw-the-personal-jarvis-or-a-security-nightmare"> </a> OpenClaw: The "Personal JARVIS" or a Security Nightmare?
+</h2> <p>In early 2026, OpenClaw (formerly ClawdBot/MoltBot) became the fastest-growing repo in history. It promises a "24/7 JARVIS" that lives in your WhatsApp and Slack. But because it has direct access to your shell and filesystem, it has become the #1 target for Agentic Hijacking.<br>
+Recent reports show that:</p> <ul>
+<li>Malicious "Skills": Over 12% of the skills on ClawHub were found to be malicious, designed to steal session tokens.</li>
+<li>Exposed Instances: Over 18,000 OpenClaw instances are currently exposed to the public internet with full shell access.
+The One-Click RCE: Vulnerabilities like CVE-2026-25253 allow hackers to hijack an agent just by making the user visit a malicious website.</li>
+</ul> <p><strong>Introducing Agent-Wall: The Firewall for the Agentic Era</strong></p> <p>I built <strong>Agent Wall</strong> an open-source security firewall that sits between any MCP client and server:<br>
+</p> <div>
+<pre><code>MCP Client ←→ Agent Wall Proxy ←→ MCP Server agent-wall.yaml + security modules + response scanner
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Setup takes 30 seconds:</strong><br>
+</p> <div>
+<pre><code>npm <span>install</span> <span>-g</span> @agent-wall/cli
+agent-wall wrap <span>--</span> npx @modelcontextprotocol/server-filesystem /home/user
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Every tool call now passes through a 5-step defense pipeline.</p> <h2> <a name="the-defense-pipeline" href="#the-defense-pipeline"> </a> The Defense Pipeline
+</h2> <h3> <a name="inbound-request-scanning" href="#inbound-request-scanning"> </a> Inbound (Request Scanning)
+</h3> <p>Every <code>tools/call</code> request runs through:</p> <div><table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Module</th>
+<th>What it Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Kill Switch</strong></td>
+<td>Emergency deny-all (file/signal/programmatic)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Injection Detector</strong></td>
+<td>30+ patterns detect prompt injection attacks</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Egress Control</strong></td>
+<td>Block private IPs, SSRF, cloud metadata endpoints</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Policy Engine</strong></td>
+<td>YAML rules with glob matching &amp; rate limiting</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Chain Detector</strong></td>
+<td>Suspicious multi-step patterns (read→exfil)</td>
+</tr>
+</tbody>
+</table></div> <h3> <a name="outbound-response-scanning" href="#outbound-response-scanning"> </a> Outbound (Response Scanning)
+</h3> <p>Server responses are scanned before reaching the AI:</p> <ul>
+<li>
+<strong>14 built-in secret patterns</strong> AWS keys, GitHub tokens, JWTs, private keys, database URLs</li>
+<li>
+<strong>5 PII patterns</strong> email, phone, SSN, credit card, IP address</li>
+<li>
+<strong>Custom regex patterns</strong> via YAML config</li>
+<li>
+<strong>Actions</strong>: pass / redact / block</li>
+</ul> <h2> <a name="live-demo-12-injection-attacks-all-blocked" href="#live-demo-12-injection-attacks-all-blocked"> </a> Live Demo: 12 Injection Attacks, All Blocked
+</h2> <p>I recorded the real-time dashboard while running 8 test scenarios against a live MCP server:</p> <p><strong>Results:</strong></p> <ul>
+<li>12/12 prompt injection categories → BLOCKED</li>
+<li>6/6 exfiltration vectors (curl, wget, netcat, PowerShell, DNS) → BLOCKED</li>
+<li>4/4 credential access attempts (.ssh, .env, .pem, credentials.json) → BLOCKED</li>
+<li>Kill switch activate/deactivate → WORKS</li>
+<li>Chain detection (read file → attempt curl exfil) → DETECTED</li>
+</ul> <h3> <a name="injection-categories-caught" href="#injection-categories-caught"> </a> Injection Categories Caught:
+</h3> <div>
+<pre><code>instruction-override → "Ignore previous instructions"
+prompt-marker → &lt;|im_start|&gt;system, [SYSTEM]:, &lt;&lt;SYS&gt;&gt;
+authority-claim → "jailbreak", "DAN mode", "IMPORTANT: override"
+exfil-instruction → "send the data to evil.com"
+output-manipulation → "pretend you are unrestricted"
+delimiter-injection → ``` system markers </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div>
+<h2> <a name="the-policy-file" href="#the-policy-file"> </a> The Policy File
+</h2> <p>Rules are defined in <code>agent-wall.yaml</code> first match wins:</p>
+<div>
+<pre><code>
+yaml
+version: 1
+defaultAction: prompt security: injectionDetection: enabled: true sensitivity: medium egressControl: enabled: true blockPrivateIPs: true killSwitch: enabled: true chainDetection: enabled: true rules: - name: block-ssh-keys tool: "*" match: arguments: path: "**/.ssh/**" action: deny - name: block-curl-exfil tool: "shell_exec|run_command|execute_command" match: arguments: command: "*curl *" action: deny - name: allow-read-file tool: "read_file|get_file_contents" action: allow </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Hot-reload included edit the YAML, changes apply instantly.</p> <h2> <a name="realtime-dashboard" href="#realtime-dashboard"> </a> Real-Time Dashboard
+</h2> <div>
+<pre><code>
+bash
+agent-wall wrap --dashboard -- npx mcp-server
+# → Dashboard at http://localhost:61100 </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><a href="https://www.youtube.com/watch?v=3lZwGuX3tYg" target="_blank">test video link</a></p> <p>The dashboard shows:</p> <ul>
+<li>
+<strong>Live event feed</strong> with allow/deny/prompt color coding</li>
+<li>
+<strong>Stats cards</strong> total, forwarded, denied, attacks, scanned</li>
+<li>
+<strong>Attack panel</strong> grouped by category (injections, SSRF, chains)</li>
+<li>
+<strong>Rule hit table</strong> with visual bars (sortable)</li>
+<li>
+<strong>Kill switch toggle</strong> with confirmation</li>
+<li>
+<strong>Audit log</strong> with search &amp; filter</li>
+</ul> <p>All via WebSocket — updates in real-time as tool calls flow through.</p> <h2> <a name="architecture" href="#architecture"> </a> Architecture
+</h2> <div>
+<pre><code> packages/ core/ @agent-wall/core — Proxy engine, policy, security modules cli/ @agent-wall/cli — CLI (wrap, init, test, audit, scan, validate, doctor) dashboard/ @agent-wall/dashboard — React SPA for real-time monitoring </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>Key decisions:</strong></p> <ul>
+<li>
+<strong>Zero MCP SDK dependency</strong> own JSON-RPC parser, works with any MCP version</li>
+<li>
+<strong>HMAC-SHA256 signed audit logs</strong> with log rotation</li>
+<li>
+<strong>No Express, no Socket.IO</strong> Node <code>http</code> + <code>ws</code> library. Minimal footprint.</li>
+</ul> <h2> <a name="cli-tools" href="#cli-tools"> </a> CLI Tools
+</h2> <div>
+<pre><code>
+bash
+# Wrap any MCP server
+agent-wall wrap --dashboard -- npx mcp-server # Generate starter config
+agent-wall init # Dry-run a tool call against your policy
+agent-wall test --tool read_file --arg path=/home/.ssh/id_rsa
+# → DENIED by rule "block-ssh-keys" # Scan for unprotected MCP servers
+agent-wall scan # View audit log
+agent-wall audit --log ./audit.log --filter denied # Validate config
+agent-wall validate # Health check
+agent-wall doctor </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div>
+<h2> <a name="why-this-matters" href="#why-this-matters"> </a> Why This Matters
+</h2> <p>The MCP ecosystem is exploding. There are hundreds of community MCP servers filesystem, database, git, shell, browser, email. Many are built quickly without security in mind.</p> <p><strong>Agent Wall protects you regardless of which MCP server you use.</strong> It operates at the protocol level, enforcing policies on every <code>tools/call</code> before it reaches the server.</p> <p>Think of it as <strong>Cloudflare for AI agents</strong> you don't modify your backend, you put a proxy in front.</p>
+<h2> <a name="get-started" href="#get-started"> </a> Get Started
+</h2>
+<div>
+<pre><code>
+bash
+npm install -g @agent-wall/cli
+agent-wall init
+agent-wall wrap -- npx your-mcp-server </code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><strong>GitHub</strong>: <a href="https://github.com/agent-wall/agent-wall" target="_blank">agent-wall</a><br>
+<strong>npm</strong>: <a href="https://www.npmjs.com/package/@agent-wall/cli" target="_blank">agent-wall</a><br>
+<strong>Docs</strong>: <a href="https://agent-wall.github.io/agent-wall/" target="_blank">agent-wall</a></p> <hr> <p>Star the repo if you think AI agent security should be a first-class concern, not an afterthought.</p> <p>Every AI agent deserves a firewall.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,8 +34,96 @@
     Source: Framboise 314 | Date: 1/15/2026 8:04:58 AM | <a href="https://www.framboise314.fr/raspberry-pi-ai-hat-plus-2-installation-pi5/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Avec la carte Raspberry Pi AI HAT+ 2, la Fondation Raspberry Pi introduit une carte HAT+ intégrant l’accélérateur Hailo-10H et 8 Go de mémoire dédiée, conçue exclusivement pour le Raspberry Pi 5. Connectée en PCIe Gen 3, elle vise l’exécution locale de modèles d’IA sans dépendre du cloud. Dans ce premier article, je vous présente […]
-Cet article Raspberry Pi AI HAT+ 2 : présentation matérielle et installation sur Raspberry Pi 5 a été publié en premier sur Framboise 314, le Raspberry Pi à la sauce française.....</p>
+    <div><div> <p>Avec la carte <strong>Raspberry Pi AI HAT+ 2</strong>, la Fondation Raspberry Pi introduit une carte HAT+ intégrant l’accélérateur <strong>Hailo-10H et 8 Go de mémoire dédiée</strong>, conçue exclusivement pour le <strong>Raspberry Pi 5</strong>. Connectée en <strong>PCIe Gen 3</strong>, elle vise l’exécution locale de modèles d’IA sans dépendre du cloud. Dans ce premier article, je vous présente le matériel et son installation physique : conception de la carte, dissipation thermique, montage sur le Pi 5 et reconnaissance par Raspberry Pi OS. L’objectif est simple : poser les bases avant d’aborder les performances et les usages IA dans les articles suivants.</p> <div><p>Au sommaire :</p><ul><li><a href="#Raspberry_Pi_AI_HAT_2_decouverte_materielle_et_installation_sur_Raspberry_Pi_5"><span>1</span> Raspberry Pi AI HAT+ 2 : découverte matérielle et installation sur Raspberry Pi 5</a><ul><li><a href="#Presentation_de_la_carte_Raspberry_Pi_HAT_2"><span>1.1</span> Présentation de la carte Raspberry Pi HAT+ 2</a></li><li><a href="#Montage_de_la_carte_Raspberry_Pi_HAT_2_sur_le_Raspberry_Pi_5"><span>1.2</span> Montage de la carte Raspberry Pi HAT+ 2 sur le Raspberry Pi 5</a></li><li><a href="#Caracteristiques_materielles_de_la_Raspberry_Pi_AI_HAT_2"><span>1.3</span> Caractéristiques matérielles de la Raspberry Pi AI HAT+ 2</a></li><li><a href="#Le_Hailo-10H_laccelerateur_IA_au_coeur_de_la_carte"><span>1.4</span> Le Hailo-10H : l’accélérateur IA au cœur de la carte</a></li><li><a href="#Specifications_principales_du_module_Hailo-10"><span>1.5</span> Spécifications principales du module Hailo-10</a></li><li><a href="#Ecosysteme_logiciel_Hailo"><span>1.6</span> Écosystème logiciel Hailo</a></li><li><a href="#Conclusion"><span>1.7</span> Conclusion</a></li><li><a href="#Sources"><span>1.8</span> Sources</a></li></ul></li></ul></div> <h2><span>Présentation de la carte Raspberry Pi HAT+ 2</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_02.jpg" alt=""><br>
+La boîte annonce clairement la couleur : Raspberry Pi AI HAT+ 2 propulsée par un module Hailo. Il est bien indiqué que la carte est exclusivement réservée au Raspberry Pi 5.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_01.jpg" alt=""><br>
+Accélérateur Hailo-10H, 40 TOPS en INT4 et 8 Go de RAM embarquée. Tout est assumé : IA générative locale, intégration officielle Raspberry Pi et compatibilité native Pi 5.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_03.jpg" alt=""><br>
+Le bundle est complet : carte AI HAT+ 2, dissipateur thermique, entretoises, visserie et entretoises. Je n’utiliserai pas ces accessoires dans la mesure où j ‘utiliserai un Pi 5 déjà équipé d’entretoises car il sert pour les tests. Un radiateur à positionner sur la carte est également fourni. c’est un radiateur passif.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_04-scaled.jpg" alt=""><br>
+On distingue clairement le SoC Hailo-10H et la mémoire Micron LPDDR dédiée. La présence de RAM embarquée est un point clé : elle évite de consommer de la mémoire sur le Raspberry Pi pour les modèles IA.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_05.jpg" alt=""><br>
+Face arrière très propre, avec marquages réglementaires, numéros de série et points de test.<br>
+Aucun composant critique ici : toute la partie calcul et mémoire est concentrée côté supérieur. Notez la nappe (le câble plat) déjà connecté sur la carte et maintenu par un adhésif.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_06.jpg" alt=""><br>
+Le cœur de la carte : le <strong>Hailo-10H</strong>, conçu pour l’inférence IA à très faible latence. C’est lui qui permet d’atteindre les 40 TOPS (INT4) tout en restant dans une enveloppe thermique compatible avec un SBC. A sa gauche on trouve la mémoire 8 Go qui lui est dédiée. Le chiffre de 40 TOPS correspond aux performances maximales annoncées en INT4 ; avec des modèles plus précis en INT8, les performances réelles seront logiquement inférieures, en échange d’une meilleure qualité d’inférence.</p>
+<h2><span>Montage de la carte Raspberry Pi HAT+ 2 sur le Raspberry Pi 5</span></h2>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_12-scaled.jpg" alt=""><br>
+Les pâtes thermiques sont en place sur le radiateur. Il suffit de le mettre en place et de clipser les 2 rivets pour le fixer.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_11.jpg" alt=""><br>
+On peut décoller l’adhésif (délicatement). Vous voyez le rivet et son ressort à gauche de la nappe.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_10.jpg" alt=""><br>
+La nappe est libérée. ouvrez le verrou du port PCIe du Raspberry Pi 5, glissez la nappe à fond, vérifiez qu’elle est bien perpendiculaire et enfoncez le verrou.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_09.jpg" alt=""><br>
+Insérez la rehausse fournie sur le port GPIO du Raspberry Pi 5. Positionnez ensuite la carte au dessus des GPIO et enfoncez la à sa place. Attention si vous avez un radiateur actif (avec ventilateur) sur le Raspberry Pi 5, il faudra peut être insérer une cale de 1mm environ sur les entretoises, pour éviter des court-circuits avec le radiateur de la carte Raspberry Pi !<br>
+—<br>
+<img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_08.jpg" alt=""><br>
+La carte HAT+ 2 est en place.</p>
+<h2><span>Caractéristiques matérielles de la Raspberry Pi AI HAT+ 2</span></h2>
+<p>La carte <strong>Raspberry Pi AI HAT+ 2</strong> est une carte d’extension officielle au format HAT+, conçue pour apporter des capacités d’IA générative au Raspberry Pi 5. Elle repose sur l’accélérateur <strong>Hailo-10H</strong>, dédié à l’inférence IA à faible latence, et communique avec le Pi 5 via son interface PCIe Gen 3.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_13.jpg" alt=""></p>
+<p>La carte délivre jusqu’à 40 TOPS en INT4, une valeur correspondant aux performances maximales théoriques annoncées par le constructeur. En pratique, les performances dépendent du type de modèles utilisés : des modèles en INT8, plus précis, offriront un débit inférieur mais mieux adapté à certains usages. En vision par ordinateur, les performances sont comparables à celles de la Raspberry Pi AI HAT+ (26 TOPS).</p>
+<p>Un point clé de cette version <strong>HAT+ 2</strong> est l’intégration de 8<strong> Go de mémoire embarquée dédiée</strong>, indépendante de la RAM du Raspberry Pi. Cette architecture permet d’exécuter localement des LLM (Large Language Models) et des VLM (Vision-Language Models) tout en laissant les ressources mémoire du Pi disponibles pour le système et les applications.</p>
+<p>La carte est entièrement intégrée à la pile logicielle Raspberry Pi, notamment aux outils caméra (<strong><em>rpicam-apps</em></strong>), qui peuvent exploiter automatiquement l’accélérateur pour les traitements compatibles. Aucune connexion réseau n’est requise pour l’inférence, ce qui simplifie les questions de sécurité, réduit les besoins en infrastructure et évite le recours au cloud.</p>
+<p>Sur le plan mécanique, la AI HAT+ 2 respecte la spécification HAT+ et est fournie avec un dissipateur thermique optionnel, ainsi qu’un connecteur empilable 16 mm, des entretoises et la visserie nécessaire. L’ensemble est conçu pour rester compatible avec un Raspberry Pi 5 équipé du Raspberry Pi Active Cooler (vérifiez quand même que le dessous de la carte ne touche pas le radiateur du Pi5).<br>
+La plage de fonctionnement annoncée est de 0 à 50 °C (température ambiante).</p>
+<p>Enfin, Raspberry Pi indique une disponibilité en production jusqu’au moins janvier 2036, ce qui positionne clairement cette carte pour des projets industriels ou éducatifs à long terme. Le prix de vente annoncé est de 130$.</p>
+<h2><span>Le Hailo-10H : l’accélérateur IA au cœur de la carte</span></h2>
+<div>
+<div> <p>Le Hailo-10H est un accélérateur IA conçu pour l’inférence à faible latence, capable de faire tourner des modèles génératifs directement sur le Raspberry Pi 5…</p>
+</div>
+</div>
+<p>Au centre de la carte <strong>Raspberry Pi AI HAT+ 2</strong>, on trouve l’accélérateur <strong>Hailo-10H</strong>, un composant spécifiquement conçu pour l’inférence IA embarquée à très faible latence.</p>
+<p>Contrairement à un CPU ou un GPU généraliste, le Hailo-10H est une NPU (Neural Processing Unit) optimisée pour exécuter des réseaux neuronaux déjà entraînés. Son architecture interne est pensée pour enchaîner efficacement les opérations typiques de l’IA (convolutions, multiplications de matrices, activations) avec un excellent rendement énergétique.</p>
+<p>Le constructeur annonce jusqu’à 40 TOPS en INT4, une valeur correspondant au mode de calcul le plus compact et le plus rapide. En pratique, selon les modèles utilisés, on travaillera aussi en INT8, avec des performances inférieures mais une meilleure précision numérique. C’est un compromis classique en IA embarquée : vitesse contre précision, à adapter selon l’usage.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_14.jpg" alt=""></p>
+<p>Le Hailo-10H est particulièrement à l’aise sur les traitements de vision par ordinateur (détection, classification, pose, suivi), mais il est également capable de faire tourner des modèles génératifs compacts, comme des LLM ou des VLM, dès lors qu’ils sont adaptés et quantifiés pour son architecture.</p>
+<p>Autre point important : toute l’inférence est réalisée <strong>localement, sans dépendance au cloud</strong>. Les données ne quittent pas la machine, ce qui réduit la latence, simplifie les questions de confidentialité et permet un fonctionnement totalement hors ligne =&gt; un atout majeur pour les usages embarqués, industriels ou éducatifs.</p>
+<p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_15.jpg" alt=""></p>
+<p>Enfin, le Hailo-10H a été conçu pour rester dans une enveloppe thermique compatible avec un SBC comme le Raspberry Pi 5. Associé au dissipateur fourni, il permet de maintenir des performances stables dans le temps, sans <em><strong>throttling</strong> </em>brutal, même sur des charges IA soutenues. Le <em><strong>throttling</strong> </em>correspond à une réduction automatique des performances lorsque la température devient trop élevée, afin de protéger le matériel.</p>
+<h2><span>Spécifications principales du module Hailo-10</span></h2>
+<ul>
+<li>Accélérateur IA : Hailo-10H</li>
+<li>Mémoire embarquée : 8 Go de LPDDR4 sur le module</li>
+<li>Interface hôte : PCIe Gen 3 (jusqu’à 4 lignes)</li>
+<li>Consommation : &lt; 3,5 W (typique, puce seule)</li>
+<li>Frameworks IA supportés : TensorFlow, TensorFlow Lite, Keras, PyTorch, ONNX</li>
+<li>Le Hailo-10 est capable d’exécuter des modèles d’IA générative localement, par exemple :
+<ul>
+<li>Llama2-7B à environ 10 tokens par seconde, pour une consommation inférieure à 5 W</li>
+<li>Stable Diffusion 2.1, avec une génération d’image à partir de texte en moins de 5 secondes, dans la même enveloppe énergétique</li>
+</ul>
+</li>
+</ul>
+<p>Ces chiffres illustrent une tendance forte : l’IA générative quitte progressivement le cloud pour s’exécuter directement sur l’appareil, réduisant la latence, améliorant la confidentialité et permettant un fonctionnement hors ligne.</p>
+<div><p><img src="https://www.framboise314.fr/wp-content/uploads/2025/12/RaspberryPi_HAT2_Hardware_16.jpg" alt=""></p><p>Image générée par IA</p></div>
+<h2><span>Écosystème logiciel Hailo</span></h2>
+<p>Le Hailo-10 s’appuie sur la suite logicielle Hailo, déjà utilisée par les générations précédentes (Hailo-8, Hailo-15) :</p>
+<ul>
+<li>Compilateur de graphes de calcul</li>
+<li>Model Zoo compatible TensorFlow et ONNX</li>
+<li>Applications IA pré-entraînées (Hailo TAPPAS)</li>
+<li>Runtime HailoRT côté processeur hôte</li>
+<li>Firmware spécifique au Hailo-10H</li>
+</ul>
+<h2><span>Conclusion</span></h2>
+<p>Avec cette carte&nbsp; <strong>Raspberry Pi AI HAT+ 2</strong>, Raspberry Pi propose une solution matérielle sérieuse et bien intégrée pour amener l’IA générative et la vision avancée directement sur le Raspberry Pi 5. Cette première prise en main montre une carte bien conçue, pensée pour un usage réel : montage propre, dissipation maîtrisée, mémoire dédiée et intégration native dans l’écosystème Raspberry Pi.</p>
+<p>À ce stade, l’objectif était volontairement limité au matériel : comprendre ce que contient la carte, comment elle se monte et sur quelles bases techniques elle repose. Les promesses sont là, mais comme toujours en IA embarquée, tout se joue ensuite côté logiciel et usages concrets.</p>
+<p>Dans le prochain article, nous passerons à l’étape suivante avec l’installation de l’environnement logiciel Hailo et le lancement des premières applications IA fonctionnelles sur le Raspberry Pi 5.<br>
+Puis, dans un troisième article, nous irons plus loin avec des cas d’usage concrets : vision par ordinateur, détection de personnes, modèles génératifs compacts et premiers retours sur les performances réelles.</p>
+<p>Bref, le matériel est en place. Il est maintenant temps de voir ce que cette carte sait vraiment faire.<br>
+Disponible chez Kubii : <a href="https://www.kubii.com/fr/cartes-embarquees/4343-2576-ai-kit-ai-hat-pour-raspberry-pi-5-3272496319608.html#/ai_kit_hat_raspberry_pi-ai_hat2_40_tops" target="_blank">https://www.kubii.com/fr/cartes-embarquees/4343-2576-ai-kit-ai-hat-pour-raspberry-pi-5-3272496319608.html#/ai_kit_hat_raspberry_pi-ai_hat2_40_tops</a></p>
+<p>La suite dans ces articles :<br>
+<strong>Partie 1 :&nbsp;</strong><a href="https://www.framboise314.fr/installer-raspberry-pi-ai-hat-plus-2-pi5-hailort-hailo-ollama/" target="_blank">https://www.framboise314.fr/installer-raspberry-pi-ai-hat-plus-2-pi5-hailort-hailo-ollama/</a><br>
+<strong>Partie 2 :</strong> <a href="https://www.framboise314.fr/raspberry-pi-ai-hat-2-hailo-10h-video-partie-2/" target="_blank">https://www.framboise314.fr/raspberry-pi-ai-hat-2-hailo-10h-video-partie-2/</a></p>
+<h2><span>Sources</span></h2>
+<p><a href="https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/" target="_blank">https://www.raspberrypi.com/news/introducing-the-raspberry-pi-ai-hat-plus-2-generative-ai-on-raspberry-pi-5/</a></p>
+<p><a href="https://www.raspberrypi.com/products/ai-hat-plus-2/" target="_blank">https://www.raspberrypi.com/products/ai-hat-plus-2/</a></p>
+<p><a href="https://pip-assets.raspberrypi.com/categories/1319-raspberry-pi-ai-hat-2/documents/RP-009655-MM-3-raspberry-pi-ai-hat-plus-2-product-brief.pdf" target="_blank">https://pip-assets.raspberrypi.com/categories/1319-raspberry-pi-ai-hat-2/documents/RP-009655-MM-3-raspberry-pi-ai-hat-plus-2-product-brief.pdf</a></p>
+<p><a href="https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html" target="_blank">https://www.raspberrypi.com/documentation/accessories/ai-hat-plus.html</a></p>
+<p><strong>Les articles sur Framboise314 :</strong></p>
+<blockquote><p><a href="https://www.framboise314.fr/raspberry-pi-ai-hat-plus-2-installation-pi5/">Raspberry Pi AI HAT+ 2 : présentation matérielle et installation sur Raspberry Pi 5</a></p></blockquote> <blockquote><p><a href="https://www.framboise314.fr/installer-raspberry-pi-ai-hat-plus-2-pi5-hailort-hailo-ollama/">Raspberry Pi AI HAT+ 2 : installer Hailo-10H et lancer un LLM local (Partie 1)</a></p></blockquote> <blockquote><p><a href="https://www.framboise314.fr/raspberry-pi-ai-hat-2-hailo-10h-video-partie-2/">Raspberry Pi AI HAT+ 2 : vision par ordinateur en vidéo avec Hailo-10H (Partie 2)</a></p></blockquote> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

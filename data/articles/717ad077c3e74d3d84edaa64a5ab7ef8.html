@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Welcome | Burla</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Welcome | Burla</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 5:29:13 PM | <a href="https://docs.burla.dev/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><header><div><kbd><span>⌘</span><span>Ctrl</span></kbd><kbd>k</kbd></div></header><div><main><div><h3></h3><p>Burla makes it trivial to run Python functions on thousands of computers in the cloud.
+It's a package that only has <strong>one function</strong>: `remote_parallel_map`</p><p>This realtime example runs <code>my_function</code> on 1,000 separate computers in one second!</p><h3></h3><p>Burla enables anyone, even total beginners, to harness the full power of the cloud:</p><ul><li><div><p><strong>Scalable: </strong>See our <a href="https://docs.burla.dev/examples/process-2.4tb-of-parquet-files-in-76s">demo</a> where we process 2.4TB in 76s using 10,000 CPUs!</p></div></li><li><div><p><strong>Flexible: </strong>Run any code, inside any Docker container, on any hardware.</p></div></li><li><div><p><strong>Simple: </strong>Burla is just one function, with two required arguments.</p></div></li></ul><p>Easily monitor workloads, infrastructure, and manage data from our self-hostable dashboard:</p><h3></h3><p>Burla only has one function: <code>remote_parallel_map</code> When called, it runs the given function, on every input in the given list, each on a separate computer.</p><p>Running code in the cloud with Burla feels the same as coding locally:</p><ul><li><div><p>Anything you print appears in your local terminal.</p></div></li><li><div><p>Exceptions thrown in your code are thrown on your local machine.</p></div></li><li><div><p>Responses are quick, you run a million function calls in a couple seconds!</p></div></li></ul><h3></h3><div><div><h4></h4><p>Burla clusters automatically (and very quickly) install any missing python packages into all containers in the cluster.</p><h4></h4><p>Easily run code in any Docker container.
+Public or private, just paste an image URI in the settings, then hit start!</p></div><div><h4></h4><p>Need to get big data into/out of the cluster? Burla automatically mounts a cloud storage bucket to <code>./shared</code> in every container.</p><h4></h4><p>The <code>func_cpu</code> and <code>func_ram</code> args make it possible to assign more hardware to some functions, and less to others, unlocking new ways to simplify pipelines and architecture.</p></div></div><h3></h3><p>Fan code across thousands of machines, then combine results on one big machine.
+The network filesystem mounted at <code>./shared</code> makes it easy to pass big data between steps.</p><p>The above example demonstrates a basic map-reduce operation.</p><h3></h3><h3></h3><p>There are two ways to host Burla:</p><ol><li><div><p><strong>In your cloud.</strong>
+Burla is open-source, and can be deployed with one command (currently Google-Cloud only).
+<a href="https://docs.burla.dev/get-started#quickstart-self-hosted" target="_blank">Click herearrow-up-right</a> to get started with self-hosted Burla.</p></div></li><li><div><p><strong>In our cloud.
+</strong>First $1,000 in compute spend is free, try it now </p></div></li></ol><hr><p>Questions?
+<a href="http://cal.com/jakez/burla" target="_blank">Schedule a callarrow-up-right</a>, or email <strong><a href="https://docs.burla.dev/cdn-cgi/l/email-protection">[email&nbsp;protected]</a></strong>. We're always happy to talk.</p></div></main></div><div><pre><code><span><span>from burla import remote_parallel_map
+</span></span><span><span>
+</span></span><span><span>my_inputs = [1, 2, 3]
+</span></span><span><span>
+</span></span><span><span>def my_function(my_input):
+</span></span><span><span> print("I'm running on my own separate computer in the cloud!")
+</span></span><span><span> return my_input
+</span></span><span><span> </span></span><span><span>return_values = remote_parallel_map(my_function, my_inputs)</span></span></code></pre></div><div><pre><code><span><span>from burla import remote_parallel_map
+</span></span><span><span>
+</span></span><span><span># Run `process_file` on many small machines
+</span></span><span><span>results = remote_parallel_map(process_file, files)
+</span></span><span><span>
+</span></span><span><span># Combine results on one big machine
+</span></span><span><span>result = remote_parallel_map(combine_results, [results], func_ram=256)</span></span></code></pre></div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

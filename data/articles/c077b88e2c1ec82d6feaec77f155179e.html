@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Why I Built My Own AWS Deployment Tool</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Why I Built My Own AWS Deployment Tool</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 5:40:03 PM | <a href="https://dev.to/alex_dev_523ee1a46fb36a13/why-i-built-my-own-aws-deployment-tool-og7" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I'm a software engineer with over 12 years of experience across different languages, teams, and dozens of projects. I love what I do, and I'm drawn to solving real problems with clean tools.</p> <p>I've been building serverless applications on AWS for years. Across multiple jobs and projects, I've used <strong>Serverless Framework</strong> and <strong>AWS CDK</strong>. And there was always this friction — the gap between having an idea and getting it running in the cloud felt wider than it should be.</p> <p>This is the story of why I finally snapped and built my own deployment tool — one that skips <strong>CloudFormation</strong> entirely and deploys AWS resources with <strong>direct API calls</strong>.</p> <h2> <a name="the-background" href="#the-background"> </a> The Background
+</h2> <p>My serverless journey started with <strong>Serverless Framework</strong> — it was the go-to tool at the time, and it worked. Then <strong>AWS CDK</strong> came along promising infrastructure as "real code," and I jumped in. I spent a lot of time with <strong>CDK</strong> commercially, building stacks, configuring resources, trying to get everything just right.</p> <p>I've also worked with other clouds — <strong>Google Cloud</strong> and <strong>Firebase</strong> in particular. And honestly, <strong>Firebase</strong> left an impression on me. The way you could describe your functions in code, run a single CLI command, and have everything deployed — that felt like how things should work.</p> <p>That said, I always preferred AWS itself. <strong>Google Cloud</strong> felt overcomplicated — containers everywhere, things weren't obvious. <strong>AWS Lambda</strong> was simpler: no container builds, functions spun up fast, and the whole model just made more sense to me. So I loved <strong>Firebase's</strong> developer experience, but I wanted it on AWS.</p> <h2> <a name="the-pain" href="#the-pain"> </a> The Pain
+</h2> <p>With <strong>AWS CDK</strong>, I constantly found myself solving infrastructure puzzles instead of shipping features. How do I split stacks so that Lambda functions deploy faster, separate from the databases? How do I configure bundling — should I use tsup externally, or let CDK handle it? Every project started with the same yak-shaving.</p> <p>And then there was <strong>CloudFormation</strong>. Every deployment meant waiting for <strong>CloudFormation</strong> to diff, plan, and roll out changes — even for a one-line code fix. For large projects with hundreds of resources, maybe that's an acceptable trade-off. But for serverless, where the whole point is agility, it felt like dragging an anchor.</p> <p>I wanted a <em>fast loop</em>: change code, deploy, see results. Instead, I was spending my time debugging stack configurations and staring at <code>UPDATE_IN_PROGRESS</code> for minutes.</p> <h2> <a name="the-inspiration" href="#the-inspiration"> </a> The Inspiration
+</h2> <p>At some point I discovered something on my own: you can create AWS resources directly through the <strong>AWS SDK</strong>. No <strong>CloudFormation</strong> needed. And it's <em>much</em> faster — the end result is exactly the same, but you skip the entire provisioning engine. That was the moment it clicked: combine <strong>Firebase's</strong> code-as-config model with direct <strong>AWS SDK</strong> calls, and you get the best of both worlds.</p> <h2> <a name="what-i-built" href="#what-i-built"> </a> What I Built
+</h2> <p>What if you could just write your Lambda handler, declare its configuration right next to the code, and run a single command to deploy everything? <strong>No CloudFormation templates. No stack definitions. No bundler config. No IAM boilerplate.</strong></p> <p>The biggest challenge was clear from the start: I'd need to do what <strong>CloudFormation</strong> does — compare current state with desired state and sync the difference — but without <strong>CloudFormation</strong>, using direct <strong>AWS SDK</strong> calls. That's not a trivial problem.</p> <p>Three libraries gave me the confidence to try.</p> <p><strong>ts-morph</strong> — a fantastic library for analyzing TypeScript AST. It's essentially <em>metaprogramming</em>: I could extract all the infrastructure information directly from handler code instead of keeping it in separate YAML or JSON files.</p> <p><strong>Effect-TS</strong> — the project was going to be complex, orchestrating API calls, managing errors, handling concurrency. <strong>Effect</strong> gave me a way to write that kind of code without the cognitive load spiraling out of control as the codebase grew.</p> <p>And a <strong>typed AWS SDK wrapper</strong> I had built a couple of years ago — a generator that reads JSDoc from <strong>AWS SDK</strong> source, extracts all possible error types, and produces <strong>Effect</strong> wrappers where every error is known at the type level.</p> <p>With these tools in hand, I set out to build <strong>effortless-aws</strong>.</p> <p>Finding the right API took time. <strong>Firebase</strong> inspired the direction, but I didn't love everything about it. I wanted something where every handler is a single function call that takes one options object — path, method, handler logic, dependencies, parameters, everything in one place. No curried functions, no builder chains. Just one object that's easy to read and extend.</p> <p><strong>Effect-TS</strong> inspired me here too — specifically its approach to context and built-in <em>dependency injection</em>. In <strong>Effect</strong>, you can verify at the type level that all dependencies are satisfied before running anything. I wanted the same for my handlers: you declare a context factory at the Lambda level, and it's injected into every request handler with full type safety. No runtime surprises where something is undefined because you forgot to wire it up.</p> <p>This matters because some handlers need references to other resources — a Lambda that writes to a DynamoDB table, for example. A single config object makes that natural: you just add a <code>deps</code> field. Everything — context, deps, params — is <em>type-checked</em> and injected automatically.</p> <p>Here's what the simplest handler looks like:<br>
+</p> <div>
+<pre><code><span>import</span> <span>{</span> <span>defineHttp</span> <span>}</span> <span>from</span> <span>"</span><span>effortless-aws</span><span>"</span><span>;</span> <span>export</span> <span>const</span> <span>hello</span> <span>=</span> <span>defineHttp</span><span>({</span> <span>method</span><span>:</span> <span>"</span><span>GET</span><span>"</span><span>,</span> <span>path</span><span>:</span> <span>"</span><span>/hello</span><span>"</span><span>,</span> <span>onRequest</span><span>:</span> <span>async </span><span>({</span> <span>req</span> <span>})</span> <span>=&gt;</span> <span>({</span> <span>status</span><span>:</span> <span>200</span><span>,</span> <span>body</span><span>:</span> <span>{</span> <span>message</span><span>:</span> <span>"</span><span>Hello World!</span><span>"</span> <span>},</span> <span>}),</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's your <strong>Lambda</strong> function, its <strong>API Gateway</strong> route, and its <strong>IAM</strong> role — all in one file. Run <code>eff deploy</code> and it's live.</p> <h2> <a name="before-and-after" href="#before-and-after"> </a> Before and After
+</h2> <p>To appreciate the difference, here's what it takes to create a simple HTTP endpoint with a DynamoDB table in CDK:<br>
+</p> <div>
+<pre><code><span>// CDK: stack definition (separate file)</span>
+<span>const</span> <span>table</span> <span>=</span> <span>new</span> <span>dynamodb</span><span>.</span><span>Table</span><span>(</span><span>this</span><span>,</span> <span>"</span><span>Orders</span><span>"</span><span>,</span> <span>{</span> <span>partitionKey</span><span>:</span> <span>{</span> <span>name</span><span>:</span> <span>"</span><span>id</span><span>"</span><span>,</span> <span>type</span><span>:</span> <span>dynamodb</span><span>.</span><span>AttributeType</span><span>.</span><span>STRING</span> <span>},</span> <span>billingMode</span><span>:</span> <span>dynamodb</span><span>.</span><span>BillingMode</span><span>.</span><span>PAY_PER_REQUEST</span><span>,</span>
+<span>});</span> <span>const</span> <span>fn</span> <span>=</span> <span>new</span> <span>nodejs</span><span>.</span><span>NodejsFunction</span><span>(</span><span>this</span><span>,</span> <span>"</span><span>GetOrders</span><span>"</span><span>,</span> <span>{</span> <span>entry</span><span>:</span> <span>"</span><span>src/handlers/get-orders.ts</span><span>"</span><span>,</span> <span>runtime</span><span>:</span> <span>lambda</span><span>.</span><span>Runtime</span><span>.</span><span>NODEJS_20_X</span><span>,</span> <span>environment</span><span>:</span> <span>{</span> <span>TABLE_NAME</span><span>:</span> <span>table</span><span>.</span><span>tableName</span> <span>},</span> <span>bundling</span><span>:</span> <span>{</span> <span>minify</span><span>:</span> <span>true</span><span>,</span> <span>sourceMap</span><span>:</span> <span>true</span> <span>},</span>
+<span>});</span> <span>table</span><span>.</span><span>grantReadData</span><span>(</span><span>fn</span><span>);</span> <span>const</span> <span>api</span> <span>=</span> <span>new</span> <span>apigateway</span><span>.</span><span>HttpApi</span><span>(</span><span>this</span><span>,</span> <span>"</span><span>Api</span><span>"</span><span>);</span>
+<span>api</span><span>.</span><span>addRoutes</span><span>({</span> <span>path</span><span>:</span> <span>"</span><span>/orders</span><span>"</span><span>,</span> <span>methods</span><span>:</span> <span>[</span><span>apigateway</span><span>.</span><span>HttpMethod</span><span>.</span><span>GET</span><span>],</span> <span>integration</span><span>:</span> <span>new</span> <span>HttpLambdaIntegration</span><span>(</span><span>"</span><span>GetOrdersIntegration</span><span>"</span><span>,</span> <span>fn</span><span>),</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's just the infrastructure. You still need the handler file, the stack wiring, the app entry point, and <code>cdk deploy</code> with <strong>CloudFormation</strong>.</p> <p>With <strong>effortless-aws</strong>, the same thing is:<br>
+</p> <div>
+<pre><code><span>// That's it. One file.</span>
+<span>import</span> <span>{</span> <span>defineHttp</span><span>,</span> <span>defineTable</span> <span>}</span> <span>from</span> <span>"</span><span>effortless-aws</span><span>"</span><span>;</span> <span>export</span> <span>const</span> <span>orders</span> <span>=</span> <span>defineTable</span><span>({</span> <span>pk</span><span>:</span> <span>"</span><span>id</span><span>"</span><span>,</span>
+<span>});</span> <span>export</span> <span>const</span> <span>getOrders</span> <span>=</span> <span>defineHttp</span><span>({</span> <span>method</span><span>:</span> <span>"</span><span>GET</span><span>"</span><span>,</span> <span>path</span><span>:</span> <span>"</span><span>/orders</span><span>"</span><span>,</span> <span>deps</span><span>:</span> <span>{</span> <span>orders</span> <span>},</span> <span>onRequest</span><span>:</span> <span>async </span><span>({</span> <span>deps</span> <span>})</span> <span>=&gt;</span> <span>{</span> <span>const</span> <span>items</span> <span>=</span> <span>await</span> <span>deps</span><span>.</span><span>orders</span><span>.</span><span>scan</span><span>();</span> <span>return</span> <span>{</span> <span>status</span><span>:</span> <span>200</span><span>,</span> <span>body</span><span>:</span> <span>items</span> <span>};</span> <span>},</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Run <code>eff deploy</code>. Done. The table, the function, the route, the IAM permissions — all created in <strong>seconds</strong>.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>Under the hood, <code>eff deploy</code> goes through four stages. Orchestrating them was the hardest part of the project — each stage feeds into the next, errors can happen anywhere, and resources depend on each other. <strong>Effect-TS</strong> made this manageable: the whole pipeline is composable, each step is an <strong>Effect</strong> you can reason about independently.</p> <h3> <a name="1-scan" href="#1-scan"> </a> 1. Scan
+</h3> <p><strong>ts-morph</strong> reads your TypeScript source and extracts every <code>defineHttp</code> / <code>defineTable</code> call — method, path, deps, params, static files — straight from the AST. This was the part where I realized <em>metaprogramming</em> in TypeScript is actually viable. Instead of maintaining separate YAML or JSON config files, <strong>the code itself is the source of truth</strong>. <strong>ts-morph</strong> made it surprisingly elegant.</p> <h3> <a name="2-bundle" href="#2-bundle"> </a> 2. Bundle
+</h3> <p><strong>esbuild</strong> compiles each handler into a single ESM file. I had experience with <strong>esbuild</strong> before — it's fast and does its job well. But I also wanted to solve the dependency problem: in a project with many Lambda functions, they usually share the same production dependencies. Bundling <code>node_modules</code> into every handler ZIP felt wasteful. So I put shared dependencies into a <strong>Lambda Layer</strong> — one layer for the whole project. Each handler bundles into a clean single JS file, and the layer provides <code>node_modules</code> at runtime. This was its own challenge to get right, but it works reliably — at least with <code>pnpm</code> projects so far.</p> <h3> <a name="3-diff" href="#3-diff"> </a> 3. Diff
+</h3> <p>The tool checks what already exists in AWS and compares it with what your code declares. Only the differences get applied. This is essentially what <strong>CloudFormation</strong> does — syncing desired state with current state — but without the provisioning engine overhead. Getting this right was the biggest conceptual challenge: figuring out the right granularity of comparison and making sure updates are idempotent.</p> <h3> <a name="4-deploy" href="#4-deploy"> </a> 4. Deploy
+</h3> <p>Direct <strong>AWS SDK</strong> calls create, update, or reconfigure resources — <strong>Lambda</strong> functions, <strong>DynamoDB</strong> tables, <strong>API Gateway</strong> routes, <strong>IAM</strong> policies. Because every AWS call goes through the typed <strong>Effect</strong> wrappers, every possible error is known. If a function already exists — I log it and move on. If there's an internal AWS error — I stop the deploy. No guesswork, no catch-all try/catch blocks.</p> <h2> <a name="try-it-out" href="#try-it-out"> </a> Try It Out
+</h2> <p><strong>effortless-aws</strong> is currently in alpha. It works — I'm using it myself to deploy real projects: the documentation website, and a couple of personal projects that use Lambda functions, DynamoDB tables, streams, and triggers. Everything deploys and runs. But it's still in active development: there may be rough edges, and I'm constantly testing and fixing things.</p> <p>The roadmap is full of features I want to add, and the project is evolving fast. I've put together a website with documentation that covers what's available today — handlers for Lambda functions, DynamoDB tables, static websites, and more.<br>
+</p> <div>
+<pre><code>npm <span>install </span>effortless-aws
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <ul>
+<li><a href="https://github.com/effect-ak/effortless" target="_blank">GitHub</a></li>
+<li><a href="https://effortless-aws.website/" target="_blank">Website &amp; Docs</a></li>
+</ul> <p><strong>Tools I used to build this:</strong></p> <ul>
+<li>
+<a href="https://effect.website/" target="_blank">Effect-TS</a> — typed functional programming for TypeScript</li>
+<li>
+<a href="https://github.com/dsherret/ts-morph" target="_blank">ts-morph</a> — TypeScript AST analysis and manipulation</li>
+<li>
+<a href="https://esbuild.github.io/" target="_blank">esbuild</a> — fast JavaScript/TypeScript bundler</li>
+<li>
+<a href="https://github.com/aws/aws-sdk-js-v3" target="_blank">AWS SDK for JavaScript</a> — official AWS SDK v3</li>
+<li>
+<a href="https://github.com/kondaurovDev/aws-sdk" target="_blank">Typed AWS SDK wrapper</a> — Effect wrappers with typed errors for AWS SDK</li>
+</ul> <p>I'm confident in the ideas behind this project and I'll keep building it. If you're a developer who wants to ship faster — to spend your time solving real problems instead of writing infrastructure config — give it a look. I'd love your feedback.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

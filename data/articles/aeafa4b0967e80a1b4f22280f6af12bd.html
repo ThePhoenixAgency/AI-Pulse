@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,78 +28,9 @@
     Source: The Hacker News | Date: 2/12/2026 4:55:00 PM | <a href="https://thehackernews.com/2026/02/lazarus-campaign-plants-malicious.html" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div><p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48-Bb1617Je211tmVOc4BKdYLJjIst0IBibAqJyCaHUi1ZpHQd0EW_idmBrAbIlMm8fDx9yciZ0HiC4WdvabpudTHGJsa_5sOEfHf6idS0Lwv86Zk3Bb9tVvyQJrJ5d0PkByBASbHpjWr5hLU5aWWBeUH3pjMyPhEZtE5WxbpQNRbzhWTSUSSCFGwg1mU/s1600/nkorea-hacker-code.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg48-Bb1617Je211tmVOc4BKdYLJjIst0IBibAqJyCaHUi1ZpHQd0EW_idmBrAbIlMm8fDx9yciZ0HiC4WdvabpudTHGJsa_5sOEfHf6idS0Lwv86Zk3Bb9tVvyQJrJ5d0PkByBASbHpjWr5hLU5aWWBeUH3pjMyPhEZtE5WxbpQNRbzhWTSUSSCFGwg1mU/s1600/nkorea-hacker-code.jpg"></a></p> <p>Cybersecurity researchers have discovered a fresh set of malicious packages across npm and the Python Package Index (PyPI) repository linked to a fake recruitment-themed campaign orchestrated by the North Korea-linked Lazarus Group.</p>
-<p>The coordinated campaign has been codenamed <b>graphalgo </b>in reference to the first package published in the npm registry. It's assessed to be active since May 2025.</p>
-<p>"Developers are approached via social platforms like LinkedIn and Facebook, or through job offerings on forums like Reddit," ReversingLabs researcher Karlo Zanki <a href="https://www.reversinglabs.com/blog/fake-recruiter-campaign-crypto-devs" target="_blank">said</a> in a report. "The campaign includes a well-orchestrated story around a company involved in blockchain and cryptocurrency exchanges."</p>
-<p>Notably, one of the identified npm packages, bigmathutils, attracted more than 10,000 downloads after the first, non-malicious version was published, and before the second version containing a malicious payload was released. The names of the packages are listed below -</p>
-<p><b>npm -&nbsp;</b></p>
-<ul>
-<li>graphalgo</li>
-<li>graphorithm</li>
-<li>graphstruct</li>
-<li>graphlibcore</li>
-<li>netstruct</li>
-<li>graphnetworkx</li>
-<li>terminalcolor256</li>
-<li>graphkitx</li>
-<li>graphchain</li>
-<li>graphflux</li>
-<li>graphorbit</li>
-<li>graphnet</li>
-<li>graphhub</li>
-<li>terminal-kleur</li>
-<li>graphrix</li>
-<li>bignumx</li>
-<li>bignumberx</li>
-<li>bignumex</li>
-<li>bigmathex</li>
-<li>bigmathlib</li>
-<li>bigmathutils</li>
-<li>graphlink</li>
-<li>bigmathix</li>
-<li>graphflowx</li>
-</ul>
-<p><b>PyPI -</b></p>
-<ul>
-<li>graphalgo</li>
-<li>graphex</li>
-<li>graphlibx</li>
-<li>graphdict</li>
-<li>graphflux</li>
-<li>graphnode</li>
-<li>graphsync</li>
-<li>bigpyx</li>
-<li>bignum</li>
-<li>bigmathex</li>
-<li>bigmathix</li>
-<li>bigmathutils</li>
-</ul>
-<p>As with many <a href="https://thehackernews.com/2026/02/dprk-operatives-impersonate.html" target="_blank">job-focused campaigns</a> conducted by North Korean threat actors, the attack chain begins with establishing a fake company like <a href="https://www.linkedin.com/company/veltrix-capital/" target="_blank">Veltrix Capital</a> in the blockchain and cryptocurrency trading space, and then setting up the necessary digital real estate to create an illusion of legitimacy.</p> <p>This includes registering a domain and creating a related GitHub organization to host several repositories for use in coding assessments. The repositories have been found to contain projects based on Python and JavaScript.</p>
-<p>"Examination of these repositories didn't reveal any obvious malicious functionality," Zanki said. "That is because the malicious functionality was not introduced directly via the job interview repositories, but indirectly – through dependencies hosted on the npm and PyPI open-source package repositories."</p>
-<p>The idea behind setting up these repositories is to trick candidates who apply to its job listings on Reddit and Facebook Groups into running the projects on their machines, effectively installing the malicious dependency and triggering the infection. In some cases, victims are directly contacted by seemingly legitimate recruiters on LinkedIn.</p>
-<p>The packages ultimately act as a conduit to deploy a remote access trojan (RAT) that periodically fetches and executes commands from an external server. It supports various commands to gather system information, enumerate files and directories, list running processes, create folders, rename files, delete files, and upload/download files.</p>
-<p>Interestingly, the command-and-control (C2) communication is protected by a token-based mechanism to ensure that only requests with a valid token are accepted. The approach was <a href="https://thehackernews.com/2023/08/north-korean-hackers-deploy-new.html" target="_blank">previously observed</a> in 2023 campaigns linked to a North Korean hacking group called Jade Sleet, which is also known as TraderTraitor or UNC4899.</p>
-<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcG8RRGvJ18ideLabWD-1IQnUlQp1of6I6dn14ZIdrnNzBAsbhuxz6aSuW3C5OVImtB64Lj6qe48DOKgw-WFHJJJ5y2S_Hn9680a6Vf_QDcPBVAhH_0ITkpTa5abDWzvXa2tNAq_xnrw2oqjGTKh14PbfQchE_XswJGphGHZvVeU2SLbzDd4b7IY6_blrm/s1600/nkorea.jpg"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcG8RRGvJ18ideLabWD-1IQnUlQp1of6I6dn14ZIdrnNzBAsbhuxz6aSuW3C5OVImtB64Lj6qe48DOKgw-WFHJJJ5y2S_Hn9680a6Vf_QDcPBVAhH_0ITkpTa5abDWzvXa2tNAq_xnrw2oqjGTKh14PbfQchE_XswJGphGHZvVeU2SLbzDd4b7IY6_blrm/s1600/nkorea.jpg"></a></p>
-<p>It essentially works like this: the packages send system data as part of a registration step to the C2 server, which responds with a token. This token is then sent back to the C2 server in subsequent requests to establish that they are originating from an already registered infected system.</p>
-<p>"The token-based approach is a similarity [...] in both cases and has not been used by other actors in malware hosted on public package repositories as far as we know," Zanki told The Hacker News at that time.</p> <h3>More Malicious npm Packages Found</h3>
-<p>The disclosure comes as JFrog uncovered a sophisticated, malicious npm package called "duer-js" published by a user named "luizaearlyx." While the library claims to be a utility to "make the console window more visible," it harbors a Windows information stealer called Bada Stealer.</p>
-<p>It's capable of gathering Discord tokens, passwords, cookies, and autofill data from Google Chrome, Microsoft Edge, Brave, Opera, and Yandex Browser, cryptocurrency wallet details, and system information. The data is then exfiltrated to a Discord webhook, as well as the Gofile file storage service as a backup.</p> <p>"In addition to stealing information from the host it infected, the malicious package downloads a secondary payload," security researcher Guy Korolevski <a href="https://research.jfrog.com/post/duer-js-malicious-package/" target="_blank">said</a>. "This payload is designed to run on the Discord Desktop app startup, with self-updating capabilities, stealing directly from it, including payment methods used by the user."</p>
-<p>It also coincides with the discovery of another malware campaign that weaponizes npm to extort cryptocurrency payments from developers during package installation using the "npm install" command. The campaign, first recorded on February 4, 2026, has been dubbed XPACK ATTACK by OpenSourceMalware.</p>
-<table><tbody><tr><td><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuZ2x4uapvtTU_3Zy3MJOxXmP1FriuQ7URW9JbqHtwe12oykniEMeGRQQrllz-HNMA0PQ2S3qHB4eKvIxhcJRSwE9GU6N7W0SoLRy6dX8xARogD1ES0qz_DaLwBt0bOJpOunfwIE0MotfbHJERw8WgLsK1I6v_ohZw86AzJoJTRETnNg0gGoP4QIfObJhi/s1600/image5.png"><img alt="" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuZ2x4uapvtTU_3Zy3MJOxXmP1FriuQ7URW9JbqHtwe12oykniEMeGRQQrllz-HNMA0PQ2S3qHB4eKvIxhcJRSwE9GU6N7W0SoLRy6dX8xARogD1ES0qz_DaLwBt0bOJpOunfwIE0MotfbHJERw8WgLsK1I6v_ohZw86AzJoJTRETnNg0gGoP4QIfObJhi/s1600/image5.png"></a></td></tr><tr><td>duer-js malicious package flow, hijacking Discord’s Electron environment</td></tr></tbody></table>
-<p>The names of the packages, all uploaded by a user named "dev.chandra_bose," are listed below -</p>
-<ul>
-<li>xpack-per-user</li>
-<li>xpack-per-device</li>
-<li>xpack-sui</li>
-<li>xpack-subscription</li>
-<li>xpack-arc-gateway</li>
-<li>xpack-video-submission</li>
-<li>test-npm-style</li>
-<li>xpack-subscription-test</li>
-<li>testing-package-xdsfdsfsc</li>
-</ul>
-<p>"Unlike traditional malware that steals credentials or executes reverse shells, this attack innovatively abuses the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/402" target="_blank">HTTP 402 'Payment Required' status code</a> to create a seemingly legitimate payment wall," security researcher Paul McCarty <a href="https://opensourcemalware.com/blog/xpack-attack" target="_blank">said</a>. "The attack blocks installation until victims pay 0.1 USDC/ETH to the attacker's wallet, while collecting GitHub usernames and device fingerprints."</p>
-<p>"If they refuse to pay, the installation simply fails after wasting 5+ minutes of their development time, and they may not even realize they've encountered malware versus what appeared to be a legitimate paywall for package access."</p> </div></div>
+    <p>Cybersecurity researchers have discovered a fresh set of malicious packages across npm and the Python Package Index (PyPI) repository linked to a fake recruitment-themed campaign orchestrated by the North Korea-linked Lazarus Group.
+The coordinated campaign has been codenamed graphalgo in reference to the first package published in the npm registry. It's assessed to be active since May 2025.
+"</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WPLite — A Laravel-Inspired Micro Framework for WordPress Plugin Development</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>WPLite — A Laravel-Inspired Micro Framework for WordPress Plugin Development</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 5:39:00 PM | <a href="https://dev.to/bahmankhah/wplite-a-laravel-inspired-micro-framework-for-wordpress-plugin-development-1o78" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="the-problem-with-wordpress-plugin-development" href="#the-problem-with-wordpress-plugin-development"> </a> The Problem with WordPress Plugin Development
+</h2> <p>If you've ever built a WordPress plugin beyond a simple shortcode, you know the pain: tangled procedural code, global state everywhere, callbacks registering callbacks, and zero separation of concerns. Scaling becomes a nightmare.</p> <p>Meanwhile, frameworks like Laravel have taught the PHP community what clean architecture looks like — dependency injection, middleware pipelines, named routes, facades, service providers. Why can't we bring that to WordPress plugin development?</p> <p>That's exactly what <strong>WPLite</strong> does.</p> <h2> <a name="what-is-wplite" href="#what-is-wplite"> </a> What Is WPLite?
+</h2> <p><a href="https://github.com/bahmankhah/wplite" target="_blank">WPLite</a> is a lightweight, Laravel-inspired micro framework for building WordPress plugins with a modern PHP architecture. It gives you all the structural building blocks — <strong>service container</strong>, <strong>facades</strong>, <strong>middleware pipeline</strong>, <strong>routing</strong>, <strong>models with relationships</strong>, <strong>views</strong>, <strong>caching</strong>, <strong>auth guards</strong> — without requiring you to leave the WordPress ecosystem.</p> <p>It's not a replacement for WordPress. It's the scaffolding that lets you write WordPress plugins like a real application.<br>
+</p> <div>
+<pre><code>composer create-project hsm/wplite-plugin
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="key-features-at-a-glance" href="#key-features-at-a-glance"> </a> Key Features at a Glance
+</h2> <div><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Service Container</strong></td>
+<td>Automatic dependency injection with constructor resolution</td>
+</tr>
+<tr>
+<td><strong>Facades</strong></td>
+<td>Static-like access to services (<code>App</code>, <code>Route</code>, <code>View</code>, <code>Cache</code>, <code>Auth</code>, <code>Wordpress</code>)</td>
+</tr>
+<tr>
+<td><strong>4 Route Types</strong></td>
+<td>REST API, Ajax, Admin pages, and Web (frontend) routes — all from one router</td>
+</tr>
+<tr>
+<td><strong>Middleware Pipeline</strong></td>
+<td>Chain middleware on any route, just like Laravel</td>
+</tr>
+<tr>
+<td><strong>Eloquent-Style Model</strong></td>
+<td>Query builder, relationships (<code>hasMany</code>, <code>hasOne</code>, <code>belongsTo</code>, <code>hasOneMeta</code>), <code>with()</code>
+</td>
+</tr>
+<tr>
+<td><strong>Service Providers</strong></td>
+<td>Lifecycle-aware hooks: <code>register</code>, <code>boot</code>, <code>onInit</code>, <code>activate</code>, <code>deactivate</code>, <code>uninstall</code>
+</td>
+</tr>
+<tr>
+<td><strong>View Engine</strong></td>
+<td>Simple PHP-based views with <code>view('path.to.view', $data)</code>
+</td>
+</tr>
+<tr>
+<td><strong>Cache Layer</strong></td>
+<td>Driver-based caching (ships with WordPress Transients)</td>
+</tr>
+<tr>
+<td><strong>Auth Guards</strong></td>
+<td>Pluggable authentication (ships with SSO/OAuth2 guard)</td>
+</tr>
+<tr>
+<td><strong>Adapter Pattern</strong></td>
+<td>Swap implementations via config (cache drivers, auth guards, etc.)</td>
+</tr>
+<tr>
+<td><strong>JSON Resources</strong></td>
+<td>Laravel-style API resource transformers</td>
+</tr>
+<tr>
+<td><strong>Shortcode Base Class</strong></td>
+<td>OOP shortcodes with attributes and defaults</td>
+</tr>
+<tr>
+<td><strong>Namespace Isolation</strong></td>
+<td>Build tool rewrites all namespaces — zero conflicts between plugins</td>
+</tr>
+<tr>
+<td><strong>CLI Tool</strong></td>
+<td>
+<code>php wplite build</code> to scaffold and brand the framework</td>
+</tr>
+<tr>
+<td><strong><code>.env</code> Support</strong></td>
+<td>Environment variables loaded from <code>.env</code> file</td>
+</tr>
+<tr>
+<td><strong>Config System</strong></td>
+<td>Dot-notation config files (<code>appConfig('app.api.namespace')</code>)</td>
+</tr>
+<tr>
+<td><strong>Logging</strong></td>
+<td>Built-in file logger</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="getting-started" href="#getting-started"> </a> Getting Started
+</h2> <h3> <a name="1-create-a-new-plugin-project" href="#1-create-a-new-plugin-project"> </a> 1. Create a New Plugin Project
+</h3> <div>
+<pre><code>composer create-project hsm/wplite-plugin
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="2-build-the-framework-with-your-namespace" href="#2-build-the-framework-with-your-namespace"> </a> 2. Build the Framework with Your Namespace
+</h3> <p>This is the key step that makes WPLite unique among WordPress frameworks. The <code>build</code> command rewrites all framework namespaces to your plugin's namespace, so <strong>two plugins using WPLite will never conflict</strong>.<br>
+</p> <div>
+<pre><code>php vendor/hsm/wplite/wplite build <span>--prefix</span><span>=</span>MyPlugin
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This generates a <code>src/WPLite/</code> directory where every class is namespaced under <code>MyPlugin\WPLite\*</code>. The original package source is never modified.</p> <h3> <a name="3-bootstrap-your-plugin" href="#3-bootstrap-your-plugin"> </a> 3. Bootstrap Your Plugin
+</h3> <p>Your main plugin file looks clean and familiar:<br>
+</p> <div>
+<pre><code><span>&lt;?php</span>
+<span>/** * Plugin Name: My Awesome Plugin * Description: Built with WPLite. * Version: 1.0.0 */</span> <span>if</span> <span>(</span><span>!</span><span>defined</span><span>(</span><span>'ABSPATH'</span><span>))</span> <span>exit</span><span>;</span> <span>require</span> <span>__DIR__</span> <span>.</span> <span>'/vendor/autoload.php'</span><span>;</span>
+<span>require</span> <span>__DIR__</span> <span>.</span> <span>'/src/WPLite/helpers.php'</span><span>;</span> <span>use</span> <span>MyPlugin\WPLite\Facades\App</span><span>;</span> <span>App</span><span>::</span><span>setPluginFile</span><span>(</span><span>__FILE__</span><span>);</span>
+<span>App</span><span>::</span><span>setPluginPath</span><span>(</span><span>plugin_dir_path</span><span>(</span><span>__FILE__</span><span>));</span>
+<span>App</span><span>::</span><span>boot</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's it. Your plugin is running with a full service container, configuration system, environment variables, and automatic provider loading.</p> <hr> <h2> <a name="routing-four-flavors-one-syntax" href="#routing-four-flavors-one-syntax"> </a> Routing — Four Flavors, One Syntax
+</h2> <p>WPLite's router is its crown jewel. Define REST API routes, Ajax handlers, admin pages, and frontend (web) routes all with the same expressive API.</p> <h3> <a name="rest-api-routes-raw-routesrestphp-endraw-" href="#rest-api-routes-raw-routesrestphp-endraw-"> </a> REST API Routes (<code>routes/rest.php</code>)
+</h3> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Facades\Route</span><span>;</span> <span>Route</span><span>::</span><span>rest</span><span>(</span><span>function</span> <span>(</span><span>$route</span><span>)</span> <span>{</span> <span>$route</span><span>-&gt;</span><span>get</span><span>(</span><span>'/users'</span><span>,</span> <span>[</span><span>UserController</span><span>::</span><span>class</span><span>,</span> <span>'index'</span><span>]);</span> <span>$route</span><span>-&gt;</span><span>get</span><span>(</span><span>'/users/{id}'</span><span>,</span> <span>[</span><span>UserController</span><span>::</span><span>class</span><span>,</span> <span>'show'</span><span>]);</span> <span>$route</span><span>-&gt;</span><span>post</span><span>(</span><span>'/users'</span><span>,</span> <span>[</span><span>UserController</span><span>::</span><span>class</span><span>,</span> <span>'store'</span><span>])</span> <span>-&gt;</span><span>middleware</span><span>(</span><span>AuthMiddleware</span><span>::</span><span>class</span><span>);</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This registers routes under the WordPress REST API (default namespace from your <code>configs/app.php</code>). Dynamic route parameters like <code>{id}</code> are supported out of the box.</p> <h3> <a name="ajax-routes-raw-routesajaxphp-endraw-" href="#ajax-routes-raw-routesajaxphp-endraw-"> </a> Ajax Routes (<code>routes/ajax.php</code>)
+</h3> <div>
+<pre><code><span>Route</span><span>::</span><span>ajax</span><span>(</span><span>function</span> <span>(</span><span>$route</span><span>)</span> <span>{</span> <span>$route</span><span>-&gt;</span><span>post</span><span>(</span><span>'submit_form'</span><span>,</span> <span>[</span><span>FormController</span><span>::</span><span>class</span><span>,</span> <span>'handle'</span><span>])</span> <span>-&gt;</span><span>middleware</span><span>(</span><span>NonceMiddleware</span><span>::</span><span>class</span><span>);</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Automatically hooks into <code>wp_ajax_</code> and <code>wp_ajax_nopriv_</code>.</p> <h3> <a name="admin-pages-raw-routesadminphp-endraw-" href="#admin-pages-raw-routesadminphp-endraw-"> </a> Admin Pages (<code>routes/admin.php</code>)
+</h3> <div>
+<pre><code><span>Route</span><span>::</span><span>admin</span><span>(</span><span>function</span> <span>(</span><span>$route</span><span>)</span> <span>{</span> <span>$route</span><span>-&gt;</span><span>get</span><span>(</span><span>'my-plugin-settings'</span><span>,</span> <span>[</span><span>SettingsController</span><span>::</span><span>class</span><span>,</span> <span>'index'</span><span>]);</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Creates a WordPress admin menu page — no <code>add_menu_page</code> boilerplate.</p> <h3> <a name="web-routes-raw-routeswebphp-endraw-" href="#web-routes-raw-routeswebphp-endraw-"> </a> Web Routes (<code>routes/web.php</code>)
+</h3> <div>
+<pre><code><span>Route</span><span>::</span><span>web</span><span>(</span><span>function</span> <span>(</span><span>$route</span><span>)</span> <span>{</span> <span>$route</span><span>-&gt;</span><span>get</span><span>(</span><span>'/custom-page'</span><span>,</span> <span>[</span><span>PageController</span><span>::</span><span>class</span><span>,</span> <span>'show'</span><span>]);</span>
+<span>});</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Intercepts frontend requests via <code>template_redirect</code>. Perfect for custom landing pages.</p> <h3> <a name="named-routes" href="#named-routes"> </a> Named Routes
+</h3> <div>
+<pre><code><span>$route</span><span>-&gt;</span><span>get</span><span>(</span><span>'/invoices/{id}'</span><span>,</span> <span>[</span><span>InvoiceController</span><span>::</span><span>class</span><span>,</span> <span>'show'</span><span>])</span> <span>-&gt;</span><span>name</span><span>(</span><span>'invoice.show'</span><span>);</span> <span>// Later, generate the URL:</span>
+<span>$url</span> <span>=</span> <span>reverse</span><span>(</span><span>'invoice.show'</span><span>,</span> <span>[</span><span>'id'</span> <span>=&gt;</span> <span>42</span><span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="middleware-pipeline" href="#middleware-pipeline"> </a> Middleware Pipeline
+</h2> <p>Every route passes through a middleware pipeline. Global middleware is defined in your config, and per-route middleware is chained fluently:<br>
+</p> <div>
+<pre><code><span>$route</span><span>-&gt;</span><span>post</span><span>(</span><span>'/checkout'</span><span>,</span> <span>[</span><span>CheckoutController</span><span>::</span><span>class</span><span>,</span> <span>'process'</span><span>])</span> <span>-&gt;</span><span>middleware</span><span>(</span><span>AuthMiddleware</span><span>::</span><span>class</span><span>,</span> <span>LoggingMiddleware</span><span>::</span><span>class</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Writing middleware is straightforward:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Contracts\Middleware</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Pipeline</span><span>;</span> <span>class</span> <span>AuthMiddleware</span> <span>implements</span> <span>Middleware</span>
+<span>{</span> <span>public</span> <span>function</span> <span>handle</span><span>(</span><span>$request</span><span>,</span> <span>Pipeline</span> <span>$pipeline</span><span>)</span> <span>{</span> <span>if</span> <span>(</span><span>!</span><span>is_user_logged_in</span><span>())</span> <span>{</span> <span>return</span> <span>wp_send_json_error</span><span>(</span><span>'Unauthorized'</span><span>,</span> <span>401</span><span>);</span> <span>}</span> <span>return</span> <span>$pipeline</span><span>-&gt;</span><span>next</span><span>(</span><span>$request</span><span>);</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The pipeline resolves each middleware in sequence, calling <code>$pipeline-&gt;next($request)</code> to proceed — identical to how Laravel handles it.</p> <hr> <h2> <a name="service-container-amp-dependency-injection" href="#service-container-amp-dependency-injection"> </a> Service Container &amp; Dependency Injection
+</h2> <p>The container automatically resolves constructor dependencies:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Facades\App</span><span>;</span> <span>$service</span> <span>=</span> <span>App</span><span>::</span><span>make</span><span>(</span><span>OrderService</span><span>::</span><span>class</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>If <code>OrderService</code> depends on a <code>PaymentGateway</code>, and <code>PaymentGateway</code> depends on <code>Config</code>, the container resolves the entire chain automatically via reflection. You can also pass explicit parameters:<br>
+</p> <div>
+<pre><code><span>$service</span> <span>=</span> <span>App</span><span>::</span><span>make</span><span>(</span><span>ReportService</span><span>::</span><span>class</span><span>,</span> <span>[</span><span>'year'</span> <span>=&gt;</span> <span>2026</span><span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Bind services manually:<br>
+</p> <div>
+<pre><code><span>App</span><span>::</span><span>bind</span><span>(</span><span>'mailer'</span><span>,</span> <span>function</span> <span>()</span> <span>{</span> <span>return</span> <span>new</span> <span>SmtpMailer</span><span>(</span><span>appConfig</span><span>(</span><span>'mail.host'</span><span>));</span>
+<span>});</span> <span>$mailer</span> <span>=</span> <span>App</span><span>::</span><span>resolve</span><span>(</span><span>'mailer'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="service-providers-lifecycleaware-hooks" href="#service-providers-lifecycleaware-hooks"> </a> Service Providers — Lifecycle-Aware Hooks
+</h2> <p>Service providers are the backbone of plugin organization. Extend the <code>Provider</code> class and hook into the WordPress lifecycle with clear, semantic methods:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Provider</span><span>;</span> <span>class</span> <span>PaymentProvider</span> <span>extends</span> <span>Provider</span>
+<span>{</span> <span>public</span> <span>function</span> <span>register</span><span>()</span> <span>{</span> <span>// Bind services to the container</span> <span>}</span> <span>public</span> <span>function</span> <span>bootEarly</span><span>()</span> <span>{</span> <span>// Runs before WordPress `init`</span> <span>}</span> <span>public</span> <span>function</span> <span>onInit</span><span>()</span> <span>{</span> <span>// Runs on the `init` hook</span> <span>}</span> <span>public</span> <span>function</span> <span>boot</span><span>()</span> <span>{</span> <span>// Runs after WordPress is fully loaded (`wp_loaded`)</span> <span>}</span> <span>public</span> <span>function</span> <span>admin</span><span>()</span> <span>{</span> <span>// Admin-only logic</span> <span>}</span> <span>public</span> <span>function</span> <span>ajax</span><span>()</span> <span>{</span> <span>// Ajax-only logic</span> <span>}</span> <span>public</span> <span>function</span> <span>rest</span><span>()</span> <span>{</span> <span>// REST API initialization</span> <span>}</span> <span>public</span> <span>function</span> <span>activate</span><span>()</span> <span>{</span> <span>// Plugin activation (create tables, set options)</span> <span>}</span> <span>public</span> <span>function</span> <span>deactivate</span><span>()</span> <span>{</span> <span>// Plugin deactivation cleanup</span> <span>}</span> <span>public</span> <span>function</span> <span>uninstall</span><span>()</span> <span>{</span> <span>// Plugin uninstall (delete data)</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Register providers in <code>configs/app.php</code> or place them under <code>Src\Provider\</code> — they're auto-discovered.</p> <hr> <h2> <a name="models-amp-query-builder" href="#models-amp-query-builder"> </a> Models &amp; Query Builder
+</h2> <p>WPLite ships with a query builder that wraps <code>$wpdb</code> with a fluent API:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Model</span><span>;</span> <span>class</span> <span>Order</span> <span>extends</span> <span>Model</span>
+<span>{</span> <span>protected</span> <span>$table</span> <span>=</span> <span>'wp_orders'</span><span>;</span> <span>protected</span> <span>$primaryKey</span> <span>=</span> <span>'id'</span><span>;</span> <span>public</span> <span>function</span> <span>items</span><span>()</span> <span>{</span> <span>return</span> <span>$this</span><span>-&gt;</span><span>hasMany</span><span>(</span><span>'wp_order_items'</span><span>,</span> <span>'order_id'</span><span>);</span> <span>}</span> <span>public</span> <span>function</span> <span>customer</span><span>()</span> <span>{</span> <span>return</span> <span>$this</span><span>-&gt;</span><span>belongsTo</span><span>(</span><span>'wp_customers'</span><span>,</span> <span>'customer_id'</span><span>);</span> <span>}</span> <span>public</span> <span>function</span> <span>status_meta</span><span>()</span> <span>{</span> <span>return</span> <span>$this</span><span>-&gt;</span><span>hasOneMeta</span><span>(</span><span>'wp_ordermeta'</span><span>,</span> <span>'status'</span><span>,</span> <span>'id'</span><span>,</span> <span>'order_id'</span><span>);</span> <span>}</span>
+<span>}</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Query it expressively:<br>
+</p> <div>
+<pre><code><span>$order</span> <span>=</span> <span>new</span> <span>Order</span><span>();</span> <span>$results</span> <span>=</span> <span>$order</span> <span>-&gt;</span><span>select</span><span>([</span><span>'id'</span><span>,</span> <span>'total'</span><span>,</span> <span>'created_at'</span><span>])</span> <span>-&gt;</span><span>where</span><span>(</span><span>'status'</span><span>,</span> <span>'='</span><span>,</span> <span>'completed'</span><span>)</span> <span>-&gt;</span><span>orderBy</span><span>(</span><span>'created_at'</span><span>,</span> <span>'DESC'</span><span>)</span> <span>-&gt;</span><span>limit</span><span>(</span><span>10</span><span>)</span> <span>-&gt;</span><span>items</span><span>()</span> <span>// eager-load hasMany relationship</span> <span>-&gt;</span><span>customer</span><span>()</span> <span>// eager-load belongsTo relationship</span> <span>-&gt;</span><span>get</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Full support for:</p> <ul>
+<li>
+<code>select</code>, <code>where</code>, <code>join</code>, <code>orderBy</code>, <code>groupBy</code>, <code>limit</code>
+</li>
+<li>
+<code>hasMany</code>, <code>hasOne</code>, <code>belongsTo</code>, <code>hasOneMeta</code> relationships</li>
+<li>
+<code>with()</code> for custom eager-loaded computed fields</li>
+<li>
+<code>hide()</code> to strip fields from results</li>
+<li>
+<code>create</code>, <code>update</code>, <code>delete</code> operations</li>
+<li>Raw SQL access via <code>-&gt;sql()</code>
+</li>
+</ul> <hr> <h2> <a name="facades" href="#facades"> </a> Facades
+</h2> <p>Clean, static-like access to underlying services:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Facades\App</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\Route</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\View</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\Cache</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\Auth</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\Config</span><span>;</span>
+<span>use</span> <span>MyPlugin\WPLite\Facades\Wordpress</span><span>;</span> <span>// Views</span>
+<span>View</span><span>::</span><span>render</span><span>(</span><span>'dashboard.index'</span><span>,</span> <span>[</span><span>'stats'</span> <span>=&gt;</span> <span>$stats</span><span>]);</span>
+<span>// or use the helper:</span>
+<span>view</span><span>(</span><span>'dashboard.index'</span><span>,</span> <span>[</span><span>'stats'</span> <span>=&gt;</span> <span>$stats</span><span>]);</span> <span>// Cache (uses WordPress Transients by default)</span>
+<span>Cache</span><span>::</span><span>set</span><span>(</span><span>'report_data'</span><span>,</span> <span>$data</span><span>,</span> <span>3600</span><span>);</span>
+<span>$cached</span> <span>=</span> <span>Cache</span><span>::</span><span>get</span><span>(</span><span>'report_data'</span><span>);</span> <span>// WordPress hooks via facade</span>
+<span>Wordpress</span><span>::</span><span>action</span><span>(</span><span>'wp_enqueue_scripts'</span><span>,</span> <span>[</span><span>$this</span><span>,</span> <span>'enqueueAssets'</span><span>]);</span>
+<span>Wordpress</span><span>::</span><span>filter</span><span>(</span><span>'the_content'</span><span>,</span> <span>[</span><span>$this</span><span>,</span> <span>'filterContent'</span><span>]);</span>
+<span>Wordpress</span><span>::</span><span>shortcode</span><span>(</span><span>'my_shortcode'</span><span>,</span> <span>[</span><span>$this</span><span>,</span> <span>'renderShortcode'</span><span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="cache-system" href="#cache-system"> </a> Cache System
+</h2> <p>The cache layer uses the <strong>Adapter pattern</strong> — swap drivers without changing application code:<br>
+</p> <div>
+<pre><code><span>// Default driver (Transients)</span>
+<span>Cache</span><span>::</span><span>set</span><span>(</span><span>'key'</span><span>,</span> <span>'value'</span><span>,</span> <span>3600</span><span>);</span>
+<span>Cache</span><span>::</span><span>get</span><span>(</span><span>'key'</span><span>);</span>
+<span>Cache</span><span>::</span><span>delete</span><span>(</span><span>'key'</span><span>);</span>
+<span>Cache</span><span>::</span><span>clear</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Built-in driver: <strong>WordPress Transients</strong>. Add your own (Redis, file-based, etc.) by implementing <code>CacheDriver</code> and configuring it in <code>configs/adapters.php</code>.</p> <hr> <h2> <a name="auth-guards" href="#auth-guards"> </a> Auth Guards
+</h2> <p>Pluggable authentication with a contract-driven design:<br>
+</p> <div>
+<pre><code><span>Auth</span><span>::</span><span>check</span><span>();</span> <span>// Is the user authenticated?</span>
+<span>Auth</span><span>::</span><span>user</span><span>();</span> <span>// Get the current user</span>
+<span>Auth</span><span>::</span><span>login</span><span>(</span><span>$user</span><span>);</span> <span>// Log in</span>
+<span>Auth</span><span>::</span><span>logout</span><span>();</span> <span>// Log out</span>
+<span>Auth</span><span>::</span><span>attempt</span><span>(</span><span>$creds</span><span>);</span> <span>// Attempt authentication</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Ships with an <strong>SSO/OAuth2 guard</strong> out of the box. Create your own guard by implementing the <code>Guard</code> contract.</p> <hr> <h2> <a name="json-resources" href="#json-resources"> </a> JSON Resources
+</h2> <p>Transform your data for API responses:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\JsonResource</span><span>;</span> <span>class</span> <span>OrderResource</span> <span>extends</span> <span>JsonResource</span>
+<span>{</span> <span>public</span> <span>function</span> <span>toArray</span><span>()</span> <span>{</span> <span>return</span> <span>[</span> <span>'id'</span> <span>=&gt;</span> <span>$this</span><span>-&gt;</span><span>data</span><span>[</span><span>'id'</span><span>],</span> <span>'total'</span> <span>=&gt;</span> <span>number_format</span><span>(</span><span>$this</span><span>-&gt;</span><span>data</span><span>[</span><span>'total'</span><span>],</span> <span>2</span><span>),</span> <span>'status'</span> <span>=&gt;</span> <span>$this</span><span>-&gt;</span><span>data</span><span>[</span><span>'status'</span><span>],</span> <span>];</span> <span>}</span>
+<span>}</span> <span>// Single item</span>
+<span>$resource</span> <span>=</span> <span>OrderResource</span><span>::</span><span>make</span><span>(</span><span>$order</span><span>);</span>
+<span>return</span> <span>$resource</span><span>-&gt;</span><span>toArray</span><span>();</span> <span>// Collection</span>
+<span>$collection</span> <span>=</span> <span>OrderResource</span><span>::</span><span>collection</span><span>(</span><span>$orders</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="oop-shortcodes" href="#oop-shortcodes"> </a> OOP Shortcodes
+</h2> <p>Define shortcodes as classes:<br>
+</p> <div>
+<pre><code><span>use</span> <span>MyPlugin\WPLite\Shortcode</span><span>;</span> <span>class</span> <span>PricingTable</span> <span>extends</span> <span>Shortcode</span>
+<span>{</span> <span>protected</span> <span>$tag</span> <span>=</span> <span>'pricing_table'</span><span>;</span> <span>protected</span> <span>function</span> <span>defaults</span><span>():</span> <span>array</span> <span>{</span> <span>return</span> <span>[</span><span>'plan'</span> <span>=&gt;</span> <span>'basic'</span><span>,</span> <span>'columns'</span> <span>=&gt;</span> <span>3</span><span>];</span> <span>}</span> <span>public</span> <span>function</span> <span>render</span><span>()</span> <span>{</span> <span>return</span> <span>view</span><span>(</span><span>'shortcodes.pricing'</span><span>,</span> <span>[</span> <span>'plan'</span> <span>=&gt;</span> <span>$this</span><span>-&gt;</span><span>attributes</span><span>[</span><span>'plan'</span><span>],</span> <span>'columns'</span> <span>=&gt;</span> <span>$this</span><span>-&gt;</span><span>attributes</span><span>[</span><span>'columns'</span><span>],</span> <span>]);</span> <span>}</span>
+<span>}</span> <span>// Register in a provider:</span>
+<span>PricingTable</span><span>::</span><span>register</span><span>();</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Usage in WordPress: <code>[pricing_table plan="pro" columns="4"]</code></p> <hr> <h2> <a name="views" href="#views"> </a> Views
+</h2> <p>Simple, clean PHP templating:<br>
+</p> <div>
+<pre><code><span>// Renders views/emails/welcome.view.php</span>
+<span>view</span><span>(</span><span>'emails.welcome'</span><span>,</span> <span>[</span><span>'name'</span> <span>=&gt;</span> <span>'John'</span><span>]);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Inside your view file:<br>
+</p> <div>
+<pre><code><span>&lt;h1&gt;</span>Welcome, <span>&lt;?=</span> <span>$name</span> <span>?&gt;</span>!<span>&lt;/h1&gt;</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Dot notation maps to directory structure. Data is extracted into variables automatically.</p> <hr> <h2> <a name="configuration-amp-environment" href="#configuration-amp-environment"> </a> Configuration &amp; Environment
+</h2> <h3> <a name="config-files" href="#config-files"> </a> Config Files
+</h3> <p>Place PHP config files in <code>configs/</code>:<br>
+</p> <div>
+<pre><code><span>// configs/app.php</span>
+<span>return</span> <span>[</span> <span>'name'</span> <span>=&gt;</span> <span>'my-plugin'</span><span>,</span> <span>'api'</span> <span>=&gt;</span> <span>[</span> <span>'namespace'</span> <span>=&gt;</span> <span>'myplugin/v1'</span><span>,</span> <span>],</span> <span>'providers'</span> <span>=&gt;</span> <span>[</span> <span>PaymentProvider</span><span>::</span><span>class</span><span>,</span> <span>],</span> <span>'api_middlewares'</span> <span>=&gt;</span> <span>[</span> <span>AppMiddleware</span><span>::</span><span>class</span><span>,</span> <span>],</span>
+<span>];</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Access with dot notation:<br>
+</p> <div>
+<pre><code><span>$namespace</span> <span>=</span> <span>appConfig</span><span>(</span><span>'app.api.namespace'</span><span>);</span>
+<span>$name</span> <span>=</span> <span>appConfig</span><span>(</span><span>'app.name'</span><span>,</span> <span>'default-value'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h3> <a name="environment-variables" href="#environment-variables"> </a> Environment Variables
+</h3> <p>Create a <code>.env</code> file in your plugin root:<br>
+</p> <div>
+<pre><code>API_KEY=sk_live_abc123
+DEBUG_MODE=true
+SSO_CLIENT_ID=my-client
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Access via standard PHP:<br>
+</p> <div>
+<pre><code><span>$key</span> <span>=</span> <span>getenv</span><span>(</span><span>'API_KEY'</span><span>);</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="namespace-isolation-the-killer-feature" href="#namespace-isolation-the-killer-feature"> </a> Namespace Isolation — The Killer Feature
+</h2> <p>Here's the problem with most WordPress frameworks: if two plugins use the same framework, class names collide. WPLite solves this with a <strong>build-time namespace rewriting tool</strong>.<br>
+</p> <div>
+<pre><code>php vendor/hsm/wplite/wplite build <span>--prefix</span><span>=</span>MyPlugin
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>What this does:</p> <ol>
+<li>Copies the framework source to <code>src/WPLite/</code> in your project</li>
+<li>Rewrites every <code>namespace WPLite\*</code> → <code>namespace MyPlugin\WPLite\*</code>
+</li>
+<li>Rewrites every <code>use WPLite\*</code> → <code>use MyPlugin\WPLite\*</code>
+</li>
+<li>Updates all fully qualified class references and PHPDoc annotations</li>
+<li>Namespaces helper functions to prevent global collisions</li>
+</ol> <p>The result: <strong>two plugins using WPLite coexist without any conflict</strong> — even on the same WordPress installation. The configuration is saved to <code>wplite-config.json</code> so subsequent builds only need:<br>
+</p> <div>
+<pre><code>php vendor/hsm/wplite/wplite build
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>A <code>--dry-run</code> flag lets you preview all changes before committing.</p> <hr> <h2> <a name="project-structure" href="#project-structure"> </a> Project Structure
+</h2> <p>After setup, your plugin follows a clean, organized structure:<br>
+</p> <div>
+<pre><code>my-plugin/
+├── my-plugin.php # Main plugin file (bootstrap)
+├── composer.json
+├── wplite-config.json # Build configuration
+├── .env # Environment variables
+├── configs/
+│ ├── app.php # App config (providers, middleware, etc.)
+│ └── adapters.php # Adapter configs (cache, auth, etc.)
+├── routes/
+│ ├── rest.php # REST API routes
+│ ├── ajax.php # Ajax routes
+│ ├── admin.php # Admin page routes
+│ └── web.php # Frontend web routes
+├── views/
+│ └── dashboard/
+│ └── index.view.php
+├── src/
+│ ├── WPLite/ # Built framework (gitignored)
+│ ├── Controllers/
+│ ├── Models/
+│ ├── Middlewares/
+│ └── Provider/ # Auto-discovered providers
+└── vendor/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="cli-reference" href="#cli-reference"> </a> CLI Reference
+</h2> <div>
+<pre><code><span># Build framework with namespace prefix</span>
+php vendor/hsm/wplite/wplite build <span>--prefix</span><span>=</span>MyPlugin <span># Use saved prefix from wplite-config.json</span>
+php vendor/hsm/wplite/wplite build <span># Preview changes without writing files</span>
+php vendor/hsm/wplite/wplite build <span>--dry-run</span> <span># Custom output directory</span>
+php vendor/hsm/wplite/wplite build <span>--prefix</span><span>=</span>MyPlugin <span>--output</span><span>=</span>lib/Core <span># Show help</span>
+php vendor/hsm/wplite/wplite <span>--help</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <hr> <h2> <a name="why-wplite" href="#why-wplite"> </a> Why WPLite?
+</h2> <div><table>
+<thead>
+<tr>
+<th></th>
+<th>Traditional WP Plugin</th>
+<th>WPLite Plugin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Procedural spaghetti</td>
+<td>MVC + Service Providers</td>
+</tr>
+<tr>
+<td><strong>Routing</strong></td>
+<td>Manual <code>add_action</code> hooks</td>
+<td>Expressive route definitions</td>
+</tr>
+<tr>
+<td><strong>Dependencies</strong></td>
+<td>Global state, <code>new</code> everywhere</td>
+<td>Auto-resolving container</td>
+</tr>
+<tr>
+<td><strong>Middleware</strong></td>
+<td>Manual permission callbacks</td>
+<td>Chainable pipeline</td>
+</tr>
+<tr>
+<td><strong>Database</strong></td>
+<td>Raw <code>$wpdb</code> calls</td>
+<td>Fluent query builder + relationships</td>
+</tr>
+<tr>
+<td><strong>Testing</strong></td>
+<td>Difficult</td>
+<td>Isolated, injectable services</td>
+</tr>
+<tr>
+<td><strong>Multi-plugin safety</strong></td>
+<td>Class name collisions</td>
+<td>Namespace isolation per plugin</td>
+</tr>
+</tbody>
+</table></div> <hr> <h2> <a name="requirements" href="#requirements"> </a> Requirements
+</h2> <ul>
+<li>PHP &gt;= 7.4</li>
+<li>WordPress (any modern version)</li>
+<li>Composer</li>
+</ul> <hr> <h2> <a name="get-started" href="#get-started"> </a> Get Started
+</h2> <div>
+<pre><code>composer create-project hsm/wplite-plugin
+<span>cd </span>my-plugin
+php vendor/hsm/wplite/wplite build <span>--prefix</span><span>=</span>MyPlugin
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>GitHub: <a href="https://github.com/bahmankhah/wplite" target="_blank">https://github.com/bahmankhah/wplite</a></p> <p>License: MIT</p> <hr> <p><em>WPLite doesn't try to reinvent WordPress. It gives you the structural discipline of modern PHP frameworks while staying 100% inside the WordPress ecosystem. If you've ever thought "I wish WordPress plugin development felt more like Laravel" — this is for you.</em></p> <p>If you found this useful, drop a star on <a href="https://github.com/bahmankhah/wplite" target="_blank">the repo</a> and share it with a fellow WordPress developer!</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

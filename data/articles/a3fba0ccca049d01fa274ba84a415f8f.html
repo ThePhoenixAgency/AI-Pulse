@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built 5 Developer Tools That Run Entirely in Your Browser</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built 5 Developer Tools That Run Entirely in Your Browser</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 5:16:08 PM | <a href="https://dev.to/maxxmini/i-built-5-developer-tools-that-run-entirely-in-your-browser-1d6l" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/maxxmini"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3773591%2Fbcf21d98-1095-45f0-a2e6-327367c65c15.png" alt="MaxxMini"></a> </p> </div><div> <p>I got tired of signing up for yet another SaaS just to encode an HTML entity or generate a QR code. So I built my own — all browser-based, zero backend, zero tracking.</p> <p>Here are 5 tools I actually use daily. They're free, open source, and work offline after first load.</p> <h2> <a name="1-html-entity-encoder" href="#1-html-entity-encoder"> </a> 1. HTML Entity Encoder
+</h2> <p><strong>Problem:</strong> You're writing a blog post and need to escape <code>&lt;div&gt;</code> for display. You Google "html entity encoder", land on a site with 14 ads, and question your life choices.</p> <p><strong>Solution:</strong> Paste text → get encoded output. That's it.</p> <p> <strong><a href="https://maxmini0214.github.io/html-entity/" target="_blank">Try it</a></strong></p> <p>Works with all named entities (<code>&amp;amp;</code>, <code>&amp;lt;</code>, <code>&amp;gt;</code>) and numeric codes. Bidirectional — encode or decode.</p> <h2> <a name="2-markdown-preview" href="#2-markdown-preview"> </a> 2. Markdown Preview
+</h2> <p><strong>Problem:</strong> You're editing a README and want to see how it renders without pushing to GitHub 47 times.</p> <p><strong>Solution:</strong> Live preview as you type. Split pane. GitHub-flavored markdown support.</p> <p> <strong><a href="https://maxmini0214.github.io/markdown-preview/" target="_blank">Try it</a></strong></p> <p>Supports tables, code blocks with syntax highlighting, task lists, and emoji shortcodes.</p> <h2> <a name="3-qr-code-generator" href="#3-qr-code-generator"> </a> 3. QR Code Generator
+</h2> <p><strong>Problem:</strong> Your PM asks for a QR code linking to the staging URL. "Can you make it... now?"</p> <p><strong>Solution:</strong> Type/paste any URL or text → instant QR code → download as PNG.</p> <p> <strong><a href="https://maxmini0214.github.io/qr-generator/" target="_blank">Try it</a></strong></p> <p>Customizable size. Works with URLs, text, WiFi configs, vCards — anything that fits in a QR code.</p> <h2> <a name="4-color-picker-amp-palette-generator" href="#4-color-picker-amp-palette-generator"> </a> 4. Color Picker &amp; Palette Generator
+</h2> <p><strong>Problem:</strong> "What's the hex for that blue?" <em>opens DevTools, inspects, copies, pastes into another tool to get HSL...</em></p> <p><strong>Solution:</strong> Pick a color → get HEX, RGB, HSL instantly. Generate complementary/analogous palettes with one click.</p> <p> <strong><a href="https://maxmini0214.github.io/color-picker/" target="_blank">Try it</a></strong></p> <p>Copy any format to clipboard. Export palettes as CSS variables.</p> <h2> <a name="5-word-amp-character-counter" href="#5-word-amp-character-counter"> </a> 5. Word &amp; Character Counter
+</h2> <p><strong>Problem:</strong> "Your meta description must be under 160 characters." <em>opens Google Docs, pastes, checks status bar...</em></p> <p><strong>Solution:</strong> Paste text → word count, character count (with/without spaces), sentence count, reading time.</p> <p> <strong><a href="https://maxmini0214.github.io/word-counter/" target="_blank">Try it</a></strong></p> <p>Perfect for SEO meta descriptions, tweet drafts, or any length-constrained writing.</p> <h2> <a name="why-browserbased-tools" href="#why-browserbased-tools"> </a> Why browser-based tools?
+</h2> <p>I have a simple rule: <strong>if it doesn't need a server, don't use a server.</strong></p> <ul>
+<li> <strong>No install</strong> — bookmark it, done</li>
+<li> <strong>No signup</strong> — no email, no password, no "verify your account"</li>
+<li> <strong>No data collection</strong> — everything stays in your browser</li>
+<li> <strong>Works offline</strong> — after first load, no internet needed</li>
+<li> <strong>Open source</strong> — fork it, improve it, make it yours</li>
+</ul> <p>All tools live here: <a href="https://github.com/maxmini0214" target="_blank">GitHub</a></p> <h2> <a name="whats-next" href="#whats-next"> </a> What's next?
+</h2> <p>I'm building more of these. Currently working on:</p> <ul>
+<li>JSON formatter/validator</li>
+<li>Base64 encoder/decoder</li>
+<li>Regex tester with visual matching</li>
+</ul> <p><strong>What tool do you wish existed as a simple browser page?</strong> Drop it in the comments — if it's useful, I'll build it this week.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
