@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>envref — Separate config from secrets in .env files</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>envref — Separate config from secrets in .env files</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 12:22:09 AM | <a href="https://xcke.github.io/envref/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> </nav> <div> <p>Open source CLI tool</p> <h2>Keep secrets out of<br><span>.env</span> files</h2> <p> envref replaces plaintext secrets with <code>ref://</code> references that resolve at runtime from your OS keychain, 1Password, Vault, or AWS SSM. Your <code>.env</code> stays safe to commit. </p> <p><span>.env <code>ref://secrets/api_key</code></span> <span>→</span> <span>resolve <code>sk-abc...xyz</code></span> </p> <div> <p><span></span> <span></span> <span></span> <span>~/my-project</span> </p> <p>
+<span>APP_NAME</span><span>=</span><span>my-app</span>
+<span>DATABASE_URL</span><span>=</span><span>ref://secrets/database_url</span>
+<span>API_KEY</span><span>=</span><span>ref://secrets/api_key</span> <span>$</span> <span>envref resolve</span>
+<span>APP_NAME=my-app</span>
+<span>DATABASE_URL=postgres://localhost:5432/mydb</span>
+<span>API_KEY=sk-abc123...xyz</span> <span>$</span> <span>envref run</span> <span>--</span> <span>node server.js</span>
+<span>Server running on :3000</span> </p> </div> <div> <p><span>$</span> <span>brew install xcke/tap/envref</span> <span>[copy]</span> <span>Copied!</span> </p> </div> </div> <div> <p># Mental model</p> <h2>Config and secrets, separated</h2> <p> Your <code>.env</code> holds config values and references. Secrets live in secure backends. envref bridges the gap at runtime. </p> <div> <div> <p>.env file</p> <p><code>API_KEY=ref://secrets/api_key</code></p><p>Config values and secret references. Committed to git. No plaintext secrets.</p> </div> <div> <p>Secret backends</p> <p><code>keychain | vault | 1password | ssm</code></p><p>OS keychain, local vault, 1Password, AWS SSM, HashiCorp Vault, OCI, or custom plugins.</p> </div> <div> <p>envref resolve</p> <p><code>config + secrets → env vars</code></p><p>Resolves references, merges layers, interpolates variables. Output to shell, direnv, or JSON.</p> </div> </div> <div> <div> <p>&gt;_ direnv integration</p> <h3>Automatic resolution</h3> <p>Run <code>envref init --direnv</code> and secrets resolve automatically when you <code>cd</code> into the project. Sub-50ms startup.</p> </div> <div> <p>&gt;_ 7 backend types</p> <h3>Flexible storage</h3> <p>OS keychain out of the box. Add 1Password, AWS SSM, HashiCorp Vault, OCI, or write a plugin — backends chain with fallback.</p> </div> <div> <p>&gt;_ Profiles</p> <h3>Environment switching</h3> <p>Layer <code>.env</code> ← <code>.env.staging</code> ← <code>.env.local</code>. Profile-scoped secrets keep environments isolated.</p> </div> <div> <p>&gt;_ Team sharing</p> <h3>Encrypted sync</h3> <p>Share secrets with teammates via age encryption. <code>envref sync push</code> encrypts for the whole team. New members run <code>envref onboard</code>.</p> </div> <div> <p>&gt;_ Validation</p> <h3>Schema checks</h3> <p>Validate .env against .env.example or a JSON schema. <code>--ci</code> flag returns exit code 1 for pipeline integration.</p> </div> </div> </div> <div> <p># Resolution pipeline</p> <h2>How it works</h2> <p> Every <code>envref resolve</code> call follows a deterministic pipeline from file loading to formatted output. </p> <div> <div> <h4>Load &amp; merge .env files</h4> <p>Three-layer merge: <code>.env</code> (base) ← <code>.env.&lt;profile&gt;</code> (environment) ← <code>.env.local</code> (personal). Later files override earlier ones.</p> </div> <div> <h4>Variable interpolation</h4> <p>Expand <code>${VAR}</code> references within values. <code>DB_URL=postgres://${DB_HOST}:${DB_PORT}/app</code> becomes a complete connection string.</p> </div> <div> <h4>Reference resolution</h4> <p>Parse <code>ref://</code> URIs and look up each secret through the backend chain. Backends are tried in order; first match wins. Results are cached per-call.</p> </div> <div> <h4>Nested resolution</h4> <p>A second pass catches <code>${ref://secrets/key}</code> patterns embedded in interpolated values. Supports arbitrary nesting depth.</p> </div> <div> <h4>Format &amp; output</h4> <p>Emit as <code>KEY=VALUE</code> (plain), <code>export KEY=VALUE</code> (shell/direnv), JSON, or bordered table. Pipe to direnv, inject into commands, or use in CI.</p> </div> </div> </div> <div> <p># Secret backends</p> <h2>Seven ways to store secrets</h2> <p> Two built-in backends, four CLI wrappers for enterprise tools, and a plugin system for everything else. Chain them with ordered fallback. </p> <table> <thead> <tr> <th>Backend</th> <th>Type</th> <th>Use case</th> </tr> </thead> <tbody> <tr> <td>OS Keychain</td> <td><span>keychain</span></td> <td>Default — uses macOS Keychain, Linux Secret Service, or Windows Credential Manager. Zero setup.</td> </tr> <tr> <td>Local Vault</td> <td><span>vault</span></td> <td>SQLite + age encryption. For headless servers, containers, and CI environments.</td> </tr> <tr> <td>1Password</td> <td><span>1password</span></td> <td>Teams already using 1Password. Wraps the <code>op</code> CLI.</td> </tr> <tr> <td>AWS SSM</td> <td><span>aws-ssm</span></td> <td>AWS Systems Manager Parameter Store. For AWS infrastructure.</td> </tr> <tr> <td>HashiCorp Vault</td> <td><span>hashicorp-vault</span></td> <td>Enterprise secret management with KV v2 secrets engine.</td> </tr> <tr> <td>OCI Vault</td> <td><span>oci-vault</span></td> <td>Oracle Cloud Infrastructure Vault for OCI workloads.</td> </tr> <tr> <td>Plugin</td> <td><span>plugin</span></td> <td>Custom external executables via a JSON protocol. Extend to any secret store.</td> </tr> </tbody> </table> </div> <div> <p># Quickstart</p> <h2>Up and running in 60 seconds</h2> <p> Four steps from install to resolved environment variables. </p> <div> <p><span></span> <span></span> <span></span> <span>quickstart</span> </p> <p>
+<span>$</span> <span>brew install</span> <span>xcke/tap/envref</span> <span>$</span> <span>envref init</span> <span>--project</span> <span>my-app</span> <span>--direnv</span>
+<span>Created .envref.yaml</span>
+<span>Created .env with example entries</span>
+<span>Created .envrc for direnv integration</span> <span>$</span> <span>envref secret set</span> <span>database_url</span>
+<span>Enter value: ********</span>
+<span>Stored database_url in keychain backend</span> <span>$</span> <span>envref resolve</span>
+<span>APP_NAME=my-app</span>
+<span>DATABASE_URL=postgres://user:pass@localhost/mydb</span> <span>$</span> <span>envref run</span> <span>--</span> <span>node server.js</span>
+<span>Server listening on :3000</span> </p> </div> </div> <div> <p># CLI reference</p> <h2>Commands</h2> <p> 28 commands organized by workflow. Run <code>envref &lt;cmd&gt; --help</code> for full details. </p> <div> <p>Core</p> <div> <p><span>envref init</span><span>Scaffold a new envref project</span></p> <p><span>envref get &lt;KEY&gt;</span><span>Print the resolved value of a variable</span></p> <p><span>envref set &lt;KEY&gt;=&lt;VALUE&gt;</span><span>Write a variable to a .env file</span></p> <p><span>envref list</span><span>List all merged environment variables</span></p> <p><span>envref resolve</span><span>Resolve all references, output KEY=VALUE</span></p> <p><span>envref run -- &lt;cmd&gt;</span><span>Execute a command with resolved env injected</span></p> <p><span>envref edit</span><span>Open .env files in $EDITOR</span></p> </div> </div> <div> <p>Secrets</p> <div> <p><span>envref secret set|get|delete|list</span><span>Full CRUD for secrets in backends</span></p> <p><span>envref secret generate &lt;key&gt;</span><span>Generate and store a random secret</span></p> <p><span>envref secret copy &lt;key&gt; --from &lt;proj&gt;</span><span>Copy secret between projects</span></p> <p><span>envref secret rotate &lt;key&gt;</span><span>Rotate with history retention</span></p> <p><span>envref secret share &lt;key&gt; --to &lt;age-key&gt;</span><span>Encrypt secret for a recipient</span></p> </div> </div> <div> <p>Profiles</p> <div> <p><span>envref profile list|use|create|diff</span><span>Manage environment profiles</span></p> <p><span>envref profile export &lt;name&gt;</span><span>Export profile as JSON, plain, shell, or table</span></p> </div> </div> <div> <p>Validation &amp; diagnostics</p> <div> <p><span>envref validate</span><span>Check .env against schema or .env.example</span></p> <p><span>envref status</span><span>Show environment overview with actionable hints</span></p> <p><span>envref doctor</span><span>Scan .env files for common issues</span></p> <p><span>envref audit</span><span>Detect plaintext secrets via entropy analysis</span></p> <p><span>envref audit-log</span><span>View append-only log of secret operations</span></p> </div> </div> <div> <p>Team &amp; sync</p> <div> <p><span>envref sync push|pull</span><span>Sync secrets via encrypted git file</span></p> <p><span>envref team list|add|remove</span><span>Manage team members and age keys</span></p> <p><span>envref onboard</span><span>Interactive setup for new team members</span></p> </div> </div> <div> <p>Vault &amp; config</p> <div> <p><span>envref vault init|lock|unlock|export|import</span><span>Local encrypted vault management</span></p> <p><span>envref config show</span><span>Print resolved effective configuration</span></p> <p><span>envref completion &lt;shell&gt;</span><span>Generate shell completions (bash/zsh/fish)</span></p> <p><span>envref version</span><span>Print version</span></p> </div> </div> </div> <div> <p># Install</p> <h2>Get envref</h2> <p> Available for macOS and Linux via multiple package managers. Pre-built Windows binaries on GitHub Releases. </p> <div> <div> <p>Homebrew (macOS / Linux)</p> <pre><span>$</span> <span>brew install xcke/tap/envref</span></pre> </div> <div> <p>Go install</p> <pre><span>$</span> <span>go install github.com/xcke/envref/cmd/envref@latest</span></pre> </div> <div> <p>Nix</p> <pre><span>$</span> <span>nix run github:xcke/envref</span></pre> </div> <div> <p>From source</p> <pre><span>$</span> <span>git clone https://github.com/xcke/envref.git</span>
+<span>$</span> <span>cd envref &amp;&amp; make build</span></pre> </div> </div> <p> Pre-built binaries for all platforms on <a href="https://github.com/xcke/envref/releases">GitHub Releases</a>. </p> </div> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

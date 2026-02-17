@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,63 +28,17 @@
     Source: Dev.to Open Source | Date: 2/16/2026 10:42:27 PM | <a href="https://dev.to/arkforge-ceo/eu-ai-act-2026-a-practical-compliance-guide-every-developer-should-read-12kl" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><div> <h2> <a name="eu-ai-act-2026-a-practical-compliance-guide-every-developer-should-read" href="#eu-ai-act-2026-a-practical-compliance-guide-every-developer-should-read"> </a> EU AI Act 2026: A Practical Compliance Guide Every Developer Should Read
-</h2> <p>If you're building anything that uses AI — even just calling an API — the EU AI Act now applies to you. Not "might apply." Not "eventually." <strong>Right now.</strong></p> <p>The regulation entered its first enforcement phase in February 2025, and general-purpose AI rules kicked in by August 2025. If your product has users in the EU, you're in scope.</p> <p>This guide explains what you actually need to know and do. No legalese, no fear-mongering — just the practical stuff.</p> <hr> <h2> <a name="why-the-eu-ai-act-impacts-all-developers-in-2026" href="#why-the-eu-ai-act-impacts-all-developers-in-2026"> </a> Why the EU AI Act Impacts ALL Developers in 2026
-</h2> <p>You might think: "I'm not building AGI, I just call GPT-4 to summarize text." Doesn't matter. The EU AI Act covers <strong>any system that uses AI techniques to generate outputs</strong> — predictions, recommendations, decisions, or content.</p> <p>That includes:</p> <ul>
-<li>A SaaS app using OpenAI to generate reports</li>
-<li>A chatbot built with LangChain</li>
-<li>A recommendation engine powered by HuggingFace models</li>
-<li>A backend service using Claude or Mistral for classification</li>
-<li>An internal tool using TensorFlow for anomaly detection</li>
-</ul> <p>If any of these serve EU users or process EU data, you have compliance obligations. The key question isn't <em>whether</em> the law applies — it's <em>which</em> obligations apply to your specific use case.</p> <h3> <a name="whats-at-stake" href="#whats-at-stake"> </a> What's at Stake
-</h3> <p>This isn't a "best practice" guideline. It's a regulation with real penalties:</p> <ul>
-<li>
-<strong>Up to €35 million</strong> or <strong>7% of global annual turnover</strong> for the worst violations</li>
-<li>
-<strong>Up to €15 million</strong> or <strong>3%</strong> for less severe non-compliance</li>
-<li>Enforcement agencies in each EU member state, with cross-border cooperation</li>
-</ul> <p>Small company? The percentage-based fine still applies. And "we didn't know" is not a valid defense.</p> <hr> <h2> <a name="the-3-key-obligations-you-need-to-know" href="#the-3-key-obligations-you-need-to-know"> </a> The 3 Key Obligations You Need to Know
-</h2> <h3> <a name="1-classify-your-systems-risk-level" href="#1-classify-your-systems-risk-level"> </a> 1. Classify Your System's Risk Level
-</h3> <p>The entire regulation is built around a <strong>risk-based framework</strong>. Your obligations depend on which category your AI system falls into:</p> <p><strong>Unacceptable Risk (Banned)</strong><br>
-Systems that manipulate human behavior, exploit vulnerabilities, enable mass surveillance, or perform social credit scoring. If you're building any of these — stop.</p> <p><strong>High Risk</strong><br>
-AI used in critical domains: hiring and recruitment, credit scoring, education assessment, law enforcement, healthcare diagnostics, critical infrastructure management. These require full compliance: risk management systems, data governance, technical documentation, human oversight, accuracy monitoring, and cybersecurity measures.</p> <p><strong>Limited Risk</strong><br>
-Chatbots, content generation, emotion recognition, deepfake creation. Main obligation: <strong>transparency</strong>. Users must know they're interacting with AI.</p> <p><strong>Minimal Risk</strong><br>
-Spam filters, AI-assisted video games, inventory optimization. Almost no specific obligations beyond general product safety laws.</p> <p>Most developers building with LLM APIs fall into the <strong>limited risk</strong> category. That's manageable — but you still need to do the work.</p> <h3> <a name="2-document-your-ai-system" href="#2-document-your-ai-system"> </a> 2. Document Your AI System
-</h3> <p>Whatever your risk level, documentation is non-negotiable. At minimum, you need:</p> <ul>
-<li>
-<strong>What your AI system does</strong> — its intended purpose and expected behavior</li>
-<li>
-<strong>What model/API you're using</strong> — provider, version, known limitations</li>
-<li>
-<strong>What data flows through it</strong> — inputs, outputs, any stored data</li>
-<li>
-<strong>How users are informed</strong> — disclosure that AI is involved in the output</li>
-<li>
-<strong>Who is responsible</strong> — internal accountability for the system</li>
-</ul> <p>For high-risk systems, the requirements expand significantly: training data documentation, bias testing results, performance benchmarks, and ongoing monitoring plans.</p> <p>A practical starting point: <strong>add a <code>MODEL_CARD.md</code> to your repository</strong>. It takes about an hour to write and covers most limited-risk obligations. Include what the AI does, what it doesn't do, known limitations, and how to report issues.</p> <h3> <a name="3-monitor-and-maintain-compliance" href="#3-monitor-and-maintain-compliance"> </a> 3. Monitor and Maintain Compliance
-</h3> <p>Compliance isn't a one-time checkbox. The EU AI Act requires <strong>ongoing</strong> monitoring:</p> <ul>
-<li>Track how your AI system performs in production</li>
-<li>Log incidents, unexpected outputs, and user complaints</li>
-<li>Update documentation when you change models, providers, or use cases</li>
-<li>Re-assess risk level when your system's scope changes</li>
-</ul> <p>If you upgrade from GPT-3.5 to GPT-4, that's a change worth documenting. If you expand from internal use to customer-facing, your risk level might change. If users report biased outputs, you need a process to investigate and respond.</p> <hr> <h2> <a name="how-to-assess-your-ai-systems-risk-level" href="#how-to-assess-your-ai-systems-risk-level"> </a> How to Assess Your AI System's Risk Level
-</h2> <p>Here's a practical decision tree:</p> <p><strong>Step 1: Does your AI system make or influence decisions about people?</strong><br>
-If no → likely minimal or limited risk.<br>
-If yes → proceed to step 2.</p> <p><strong>Step 2: Are those decisions in a regulated domain?</strong><br>
-(Hiring, credit, insurance, law enforcement, education, healthcare, critical infrastructure)<br>
-If no → likely limited risk with transparency obligations.<br>
-If yes → likely high risk. Consult legal advice.</p> <p><strong>Step 3: Can users bypass or override the AI's output?</strong><br>
-If yes → lower risk, but document the human-in-the-loop process.<br>
-If no → higher risk. Automatic decision-making without human oversight raises significant obligations.</p> <p><strong>Step 4: Is your system generating content that could be mistaken for human-created?</strong><br>
-If yes → transparency obligation. Label AI-generated content clearly.</p> <p>For most developers reading this, the answer is: <strong>limited risk with transparency obligations</strong>. You need to inform users about AI involvement, document your system, and maintain basic monitoring.</p> <hr> <h2> <a name="what-you-should-do-this-week" href="#what-you-should-do-this-week"> </a> What You Should Do This Week
-</h2> <ol>
-<li><p><strong>Audit your AI usage.</strong> List every place in your codebase where you call an AI API or use an AI model. You might be surprised how many there are.</p></li>
-<li><p><strong>Classify each use case.</strong> Use the decision tree above. Most will be limited risk.</p></li>
-<li><p><strong>Create a MODEL_CARD.md</strong> for each AI-powered feature. Document: what it does, what model powers it, known limitations, and how users are informed.</p></li>
-<li><p><strong>Set up basic logging.</strong> Track API calls, errors, and any user feedback related to AI outputs. This doesn't need to be complex — a structured log file is a reasonable start.</p></li>
-<li><p><strong>Automate what you can.</strong> Tools like <a href="https://arkforge.fr/mcp-eu-ai-act.html" target="_blank">MCP EU AI Act</a> can scan your codebase, detect AI frameworks, and generate a compliance report automatically. Open-source and free to run locally.</p></li>
-</ol> <hr> <h2> <a name="the-bottom-line" href="#the-bottom-line"> </a> The Bottom Line
-</h2> <p>The EU AI Act isn't going away, and enforcement is ramping up. The good news: for most developers, compliance means <strong>transparency, documentation, and basic monitoring</strong> — things you should probably be doing anyway.</p> <p>The companies that treat this as a feature rather than a burden will have a competitive advantage. "EU AI Act compliant" is becoming a trust signal, especially for B2B customers evaluating AI-powered tools.</p> <p>Start with documentation. Automate what you can. And keep your risk classification current as your system evolves.</p> <p>The regulation is complex, but your compliance doesn't have to be.</p> <hr> <p><em>Building with AI in the EU? I'm tracking regulatory updates and sharing practical implementation guides. Follow for more, or drop your questions in the comments.</em></p> </div></div>
+    <p>EU AI Act 2026: A Practical Compliance Guide Every Developer Should Read If you're building anything that uses AI — even just calling an API — the EU AI Act now applies to you. Not "might apply." Not "eventually." Right now.
+The regulation entered its first enforcement phase in February 2025, and general-purpose AI rules kicked in by August 2025. If your product has users in the EU, you're in scope.
+This guide explains what you actually need to know and do. No legalese, no fear-mongering — just the practical stuff.
+You might think: "I'm not building AGI, I just call GPT-4 to summarize text." Doesn't matter. The EU AI Act covers any system that uses AI techniques to generate outputs — predictions, recommendations, decisions, or content.
+That includes:
+A SaaS app using OpenAI to generate reports
+A chatbot built with LangChain
+A recommendation engine powered by HuggingFace models
+A backend service using Claude or Mistral for classification
+An internal tool using TensorFlow for anomaly detection
+If any of these serve EU users or process EU data, you have compliance obligations. The key question isn't whether the law applies — it's which obligations apply to your specific use case.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

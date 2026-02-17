@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - NewJerseyStyle/QemuClaw: One-click isolated deployment for OpenClaw — a personal AI assistant running securely inside a QEMU virtual machine.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - NewJerseyStyle/QemuClaw: One-click isolated deployment for OpenClaw — a personal AI assistant running securely inside a QEMU virtual machine.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/16/2026 11:38:28 PM | <a href="https://github.com/NewJerseyStyle/QemuClaw" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>QemuClaw</h1><a href="#qemuclaw"></a></div>
+<p><a href="https://github.com/NewJerseyStyle/QemuClaw/actions/workflows/build.yml"><img src="https://github.com/NewJerseyStyle/QemuClaw/actions/workflows/build.yml/badge.svg" alt="Build OpenClaw VM"></a>
+<a href="https://github.com/NewJerseyStyle/QemuClaw/actions/workflows/build-app.yml"><img src="https://github.com/NewJerseyStyle/QemuClaw/actions/workflows/build-app.yml/badge.svg" alt="Build App"></a></p>
+<p>One-click isolated deployment for <a href="https://github.com/alpine/openclaw">OpenClaw</a> — a personal AI assistant running securely inside a QEMU virtual machine.</p>
+<blockquote>
+<p><strong>Think of it as an aquaculture facility for your OpenClaw</strong>: a contained environment that keeps your OpenClaw thriving without damaging your furniture (main system).
+With 1,000+ known vulnerabilities — including 4+ critical ones enabling potential remote code execution — isolation is essential.</p>
+</blockquote>
+<p><a target="_blank" href="/NewJerseyStyle/QemuClaw/blob/main/docs/img/AppStart.PNG"><img src="/NewJerseyStyle/QemuClaw/raw/main/docs/img/AppStart.PNG" alt=""></a></p>
+<div><h2>Download</h2><a href="#download"></a></div>
+<div><h3>Desktop App</h3><a href="#desktop-app"></a></div> <table>
+<thead>
+<tr>
+<th>Platform</th>
+<th>Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td><a href="https://github.com/NewJerseyStyle/QemuClaw/releases/download/app-v1.0.3/QemuClaw-Setup-1.0.3.exe">QemuClaw-Setup-1.0.3.exe</a> (includes QEMU + 7-Zip)</td>
+</tr>
+<tr>
+<td>macOS</td>
+<td><a href="https://github.com/NewJerseyStyle/QemuClaw/releases/download/app-v1.0.3/QemuClaw-1.0.3.dmg">QemuClaw-1.0.3.dmg</a></td>
+</tr>
+<tr>
+<td>Linux</td>
+<td><a href="https://github.com/NewJerseyStyle/QemuClaw/releases/download/app-v1.0.3/QemuClaw-1.0.3-linux.AppImage">QemuClaw-1.0.3-linux.AppImage</a></td>
+</tr>
+<tr>
+<td>Linux (deb)</td>
+<td><a href="https://github.com/NewJerseyStyle/QemuClaw/releases/download/app-v1.0.3/QemuClaw-1.0.3-linux.deb">QemuClaw-1.0.3-linux.deb</a></td>
+</tr>
+</tbody>
+</table> <div><h3>VM Image</h3><a href="#vm-image"></a></div> <p><a href="https://github.com/NewJerseyStyle/QemuClaw/releases/tag/vm-headless-22049810673">Download OpenClaw VM Image (vm-headless-22049810673) — multiple split files, see release page</a></p> <a target="_blank" href="https://private-user-images.githubusercontent.com/22520563/548342659-d3c5394e-bf6a-48fe-8044-d663e3b75908.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyOTIxMzgsIm5iZiI6MTc3MTI5MTgzOCwicGF0aCI6Ii8yMjUyMDU2My81NDgzNDI2NTktZDNjNTM5NGUtYmY2YS00OGZlLTgwNDQtZDY2M2UzYjc1OTA4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDAxMzAzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1MGQ5MWFhZDA4OTNkODE2OTgzODMyYTg5OTZmYmI1YWQ1N2MwYjU1MTM2ODQ5MTFkODYwNGI3MGViMDZlYzYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.bNkdjdGD3TWEH_YzdozUb82bjvVab4gX4wwJPj1s86g"><img alt="image" src="https://private-user-images.githubusercontent.com/22520563/548342659-d3c5394e-bf6a-48fe-8044-d663e3b75908.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEyOTIxMzgsIm5iZiI6MTc3MTI5MTgzOCwicGF0aCI6Ii8yMjUyMDU2My81NDgzNDI2NTktZDNjNTM5NGUtYmY2YS00OGZlLTgwNDQtZDY2M2UzYjc1OTA4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE3VDAxMzAzOFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM1MGQ5MWFhZDA4OTNkODE2OTgzODMyYTg5OTZmYmI1YWQ1N2MwYjU1MTM2ODQ5MTFkODYwNGI3MGViMDZlYzYmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.bNkdjdGD3TWEH_YzdozUb82bjvVab4gX4wwJPj1s86g"></a>
+<div><h2>Install (Desktop App)</h2><a href="#install-desktop-app"></a></div>
+<p><strong>Windows:</strong> Download and run the </p><pre><code>.exe</code></pre> installer. QEMU and 7-Zip are bundled — no extra setup.<p></p>
+<p><strong>macOS:</strong> Install QEMU first (</p><pre><code>brew install qemu</code></pre>), then open the <pre><code>.dmg</code></pre>.<p></p>
+<p><strong>Linux:</strong> Install QEMU first (</p><pre><code>sudo apt install qemu-system-x86</code></pre>), then run the <pre><code>.AppImage</code></pre> or install the <pre><code>.deb</code></pre>.<p></p>
+<p>On first launch, the app will:</p>
+<ol>
+<li>Ask you to locate QEMU if it's not bundled or found automatically</li>
+<li>Show a setup wizard for VM resources (memory, CPU, shared folder)</li>
+<li>Download the VM image if not already present</li>
+<li>Boot the VM headless — a status window shows boot progress</li>
+<li>Open the terminal for OpenClaw onboarding setup</li>
+<li>After setup, access OpenClaw via the Web UI (system tray &gt; Open Web UI)</li>
+</ol>
+<p>The app runs in the system tray. Right-click the tray icon for all options.</p>
+<table>
+<thead>
+<tr>
+<th>The icon in system tray</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a target="_blank" href="/NewJerseyStyle/QemuClaw/blob/main/assets/icon.png"><img src="/NewJerseyStyle/QemuClaw/raw/main/assets/icon.png" alt=""></a></td>
+</tr>
+</tbody>
+</table>
+<div><h2>Manual Quick Start (without Desktop App)</h2><a href="#manual-quick-start-without-desktop-app"></a></div>
+<p>If you prefer to run QEMU directly:</p>
+<ol>
+<li>Install <a href="https://www.qemu.org/download/">QEMU</a></li>
+<li>Download the VM image from the releases page (<pre><code>.qcow2</code></pre> file, or <pre><code>.tar.gz.*</code></pre> split files)</li>
+<li>If split files: <pre><code>cat *.tar.gz.* | tar xvfz -</code></pre></li>
+<li>Start the VM:
+<div><pre>qemu-system-x86_64 -m 2G -smp 2 \ -drive file=./openclaw-headless-compressed.qcow2,format=qcow2</pre></div>
+</li>
+<li>Login with username <pre><code>node</code></pre> and password <pre><code>openclaw</code></pre></li>
+<li>Run <pre><code>cd /app &amp;&amp; node dist/index.js onboard</code></pre></li>
+</ol>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>git clone https://github.com/NewJerseyStyle/QemuClaw.git
+<span>cd</span> QemuClaw
+npm install
+npm start</pre></div>
+<p>Requirements for development:</p>
+<ul>
+<li>Node.js 18+</li>
+<li>QEMU installed and on PATH (or set path in the app on first launch)</li>
+<li>7-Zip installed (for VM image extraction on Windows)</li>
+</ul>
+<div><h2>Using Local LLMs (Ollama, LM Studio, etc.)</h2><a href="#using-local-llms-ollama-lm-studio-etc"></a></div>
+<p>If you run a local LLM provider on your host machine, the VM can access it via the hostname </p><pre><code>host.local</code></pre> (resolves to <pre><code>10.0.2.2</code></pre>, the QEMU user-mode networking gateway to the host).<p></p>
+<table>
+<thead>
+<tr>
+<th>Host service</th>
+<th>URL from inside the VM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ollama (<pre><code>localhost:11434</code></pre>)</td>
+<td><pre><code>http://host.local:11434</code></pre></td>
+</tr>
+<tr>
+<td>LM Studio (<pre><code>localhost:1234</code></pre>)</td>
+<td><pre><code>http://host.local:1234</code></pre></td>
+</tr>
+<tr>
+<td>Any host service on port N</td>
+<td><pre><code>http://host.local:N</code></pre></td>
+</tr>
+</tbody>
+</table>
+<p>During OpenClaw onboarding, when asked for an API endpoint, use </p><pre><code>http://host.local:&lt;port&gt;</code></pre> instead of <pre><code>http://localhost:&lt;port&gt;</code></pre>.<p></p>
+<div><h2>Architecture</h2><a href="#architecture"></a></div>
+<div><pre><code>QemuClaw (Electron app) | |-- QEMU (headless, -display none) | |-- Serial console (TCP) --&gt; xterm.js terminal in app | |-- QMP control (TCP) --&gt; graceful shutdown, status | |-- Port forwarding --&gt; localhost:18789 (OpenClaw Web UI) | \-- Shared folder --&gt; SMB (Windows) / 9p (Linux/macOS) | \-- System tray |-- Open Web UI |-- Open Terminal |-- Update OpenClaw |-- Restart VM |-- Settings \-- Quit
+</code></pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+<div><h2>Acknowledgements</h2><a href="#acknowledgements"></a></div>
+<ul>
+<li> Thank you to <a href="https://github.com/imitation-alpha">Arthur</a> for valuable support and assistance.</li>
+<li> Thanks <a href="https://www.facebook.com/hkschoolofai/">Hong Kong School of AI ⓕ</a> for getting this project off to a strong start.</li>
+<li> Grateful to <a href="https://github.com/openclaw/openclaw">OpenClaw</a> for the impressive personal AI assistant.</li>
+<li> Thanks to the Alpine Community for providing a <a href="https://hub.docker.com/r/alpine/openclaw">handy Docker image</a>.</li>
+<li> Appreciation to <a href="https://github.com/qemu/qemu">QEMU</a> for the amazing virtualization technology.</li>
+<li> A nod to <a href="https://7-zip.org/">7-zip</a> for a powerful utility.</li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

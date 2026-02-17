@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Comfy-Org/ComfyUI-Manager</title>
+<title>GitHub - Comfy-Org/ComfyUI-Manager: ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI.</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,12 +29,573 @@
 </style>
 </head>
 <body>
-  <h1>Comfy-Org/ComfyUI-Manager</h1>
+  <h1>GitHub - Comfy-Org/ComfyUI-Manager: ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI.</h1>
   <div class="metadata">
-    Source: GitHub Trending Python | Date: 2/16/2026 11:23:49 PM | <a href="https://github.com/Comfy-Org/ComfyUI-Manager" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+    Source: GitHub Trending Python | Date: 2/17/2026 1:30:34 AM | <a href="https://github.com/Comfy-Org/ComfyUI-Manager" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI. ComfyUI Manager ComfyUI-Manager is an extension designed to enhance the usability of ComfyUI. It offers management functions to install, remove, disable, and enable various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI. NOTICE V3.38: Security patch - Manager data migrated to protected path. See Migration Guide. V3.16: Support for uv has been added. Set use_uv in config.ini. V3.10: double-click feature is removed This feature has been moved to https://github.com/ltdrdata/comfyui-connection-helper V3.3.2: Overhauled. Officially supports https://registry.comfy.org/. You can see whole nodes info on ComfyUI Nodes Info page. Installation Installation[method1] (General installation method:</p>
+    <div><h1>ComfyUI Manager</h1><a href="#comfyui-manager"></a></div>
+<p><strong>ComfyUI-Manager</strong> is an extension designed to enhance the usability of <a href="https://github.com/comfyanonymous/ComfyUI">ComfyUI</a>. It offers management functions to <strong>install, remove, disable, and enable</strong> various custom nodes of ComfyUI. Furthermore, this extension provides a hub feature and convenience functions to access a wide range of information within ComfyUI.</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/refs/heads/Main/ComfyUI-Manager/images/dialog.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/refs/heads/Main/ComfyUI-Manager/images/dialog.jpg" alt="menu"></a></p>
+<div><h2>NOTICE</h2><a href="#notice"></a></div>
+<ul>
+<li>V3.38: <strong>Security patch</strong> - Manager data migrated to protected path. See <a href="/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/v3.38-userdata-security-migration.md">Migration Guide</a>.</li>
+<li>V3.16: Support for <pre><code>uv</code></pre> has been added. Set <pre><code>use_uv</code></pre> in <pre><code>config.ini</code></pre>.</li>
+<li>V3.10: <pre><code>double-click feature</code></pre> is removed
+<ul>
+<li>This feature has been moved to <a href="https://github.com/ltdrdata/comfyui-connection-helper">https://github.com/ltdrdata/comfyui-connection-helper</a></li>
+</ul>
+</li>
+<li>V3.3.2: Overhauled. Officially supports <a href="https://registry.comfy.org/">https://registry.comfy.org/</a>.</li>
+<li>You can see whole nodes info on <a href="https://ltdrdata.github.io/">ComfyUI Nodes Info</a> page.</li>
+</ul>
+<div><h2>Installation</h2><a href="#installation"></a></div>
+<div><h3>Installation[method1] (General installation method: ComfyUI-Manager only)</h3><a href="#installationmethod1-general-installation-method-comfyui-manager-only"></a></div>
+<p>To install ComfyUI-Manager in addition to an existing installation of ComfyUI, you can follow the following steps:</p>
+<ol>
+<li>Go to <pre><code>ComfyUI/custom_nodes</code></pre> dir in terminal (cmd)</li>
+<li><pre><code>git clone https://github.com/ltdrdata/ComfyUI-Manager comfyui-manager</code></pre></li>
+<li>Restart ComfyUI</li>
+</ol>
+<div><h3>Installation[method2] (Installation for portable ComfyUI version: ComfyUI-Manager only)</h3><a href="#installationmethod2-installation-for-portable-comfyui-version-comfyui-manager-only"></a></div>
+<ol>
+<li>install git</li>
+</ol>
+<ul>
+<li><a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a></li>
+<li>standalone version</li>
+<li>select option: use windows default console window</li>
+</ul>
+<ol>
+<li>Download <a href="https://github.com/ltdrdata/ComfyUI-Manager/raw/main/scripts/install-manager-for-portable-version.bat">scripts/install-manager-for-portable-version.bat</a> into installed <pre><code>"ComfyUI_windows_portable"</code></pre> directory</li>
+</ol>
+<ul>
+<li>Don't click. Right-click the link and choose 'Save As...'</li>
+</ul>
+<ol>
+<li>Double-click <pre><code>install-manager-for-portable-version.bat</code></pre> batch file</li>
+</ol>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/portable-install.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/portable-install.jpg" alt="portable-install"></a></p>
+<div><h3>Installation[method3] (Installation through comfy-cli: install ComfyUI and ComfyUI-Manager at once.)</h3><a href="#installationmethod3-installation-through-comfy-cli-install-comfyui-and-comfyui-manager-at-once"></a></div>
+<blockquote> </blockquote>
+<ul>
+<li><strong>prerequisite: python 3, git</strong></li>
+</ul>
+<p>Windows:</p>
+<div><pre><code>python -m venv venv
+venv\Scripts\activate
+pip install comfy-cli
+comfy install
+</code></pre></div>
+<p>Linux/macOS:</p>
+<div><pre><code>python -m venv venv
+. venv/bin/activate
+pip install comfy-cli
+comfy install
+</code></pre></div>
+<ul>
+<li>See also: <a href="https://github.com/Comfy-Org/comfy-cli">https://github.com/Comfy-Org/comfy-cli</a></li>
+</ul>
+<div><h3>Installation[method4] (Installation for Linux+venv: ComfyUI + ComfyUI-Manager)</h3><a href="#installationmethod4-installation-for-linuxvenv-comfyui--comfyui-manager"></a></div>
+<p>To install ComfyUI with ComfyUI-Manager on Linux using a venv environment, you can follow these steps:</p>
+<ul>
+<li><strong>prerequisite: python-is-python3, python3-venv, git</strong></li>
+</ul>
+<ol>
+<li>Download <a href="https://github.com/ltdrdata/ComfyUI-Manager/raw/main/scripts/install-comfyui-venv-linux.sh">scripts/install-comfyui-venv-linux.sh</a> into empty install directory</li>
+</ol>
+<ul>
+<li>Don't click. Right-click the link and choose 'Save As...'</li>
+<li>ComfyUI will be installed in the subdirectory of the specified directory, and the directory will contain the generated executable script.</li>
+</ul>
+<ol>
+<li><pre><code>chmod +x install-comfyui-venv-linux.sh</code></pre></li>
+<li><pre><code>./install-comfyui-venv-linux.sh</code></pre></li>
+</ol>
+<div><h3>Installation Precautions</h3><a href="#installation-precautions"></a></div>
+<ul> <li><strong>DON'T</strong>: Decompress directly into the <pre><code>ComfyUI/custom_nodes</code></pre> location, resulting in the Manager contents like <pre><code>__init__.py</code></pre> being placed directly in that directory.
+<ul>
+<li>You have to remove all ComfyUI-Manager files from <pre><code>ComfyUI/custom_nodes</code></pre></li>
+</ul>
+</li>
+<li><strong>DON'T</strong>: In a form where decompression occurs in a path such as <pre><code>ComfyUI/custom_nodes/ComfyUI-Manager/ComfyUI-Manager</code></pre>.</li>
+<li><strong>DON'T</strong>: In a form where decompression occurs in a path such as <pre><code>ComfyUI/custom_nodes/ComfyUI-Manager-main</code></pre>.
+<ul>
+<li>In such cases, <pre><code>ComfyUI-Manager</code></pre> may operate, but it won't be recognized within <pre><code>ComfyUI-Manager</code></pre>, and updates cannot be performed. It also poses the risk of duplicate installations. Remove it and install properly via <pre><code>git clone</code></pre> method.</li>
+</ul>
+</li>
+</ul>
+<p>You can execute ComfyUI by running either </p><pre><code>./run_gpu.sh</code></pre> or <pre><code>./run_cpu.sh</code></pre> depending on your system configuration.<p></p>
+<div><h2>Colab Notebook</h2><a href="#colab-notebook"></a></div>
+<p>This repository provides Colab notebooks that allow you to install and use ComfyUI, including ComfyUI-Manager. To use ComfyUI, <a href="https://colab.research.google.com/github/ltdrdata/ComfyUI-Manager/blob/main/notebooks/comfyui_colab_with_manager.ipynb">click on this link</a>.</p>
+<ul>
+<li>Support for installing ComfyUI</li>
+<li>Support for basic installation of ComfyUI-Manager</li>
+<li>Support for automatically installing dependencies of custom nodes upon restarting Colab notebooks.</li>
+</ul>
+<div><h2>How To Use</h2><a href="#how-to-use"></a></div>
+<ol>
+<li>
+<p>Click "Manager" button on main menu</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/topbar.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/topbar.jpg" alt="mainmenu"></a></p>
+</li>
+<li>
+<p>If you click on 'Install Custom Nodes' or 'Install Models', an installer dialog will open.</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/refs/heads/Main/ComfyUI-Manager/images/dialog.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/refs/heads/Main/ComfyUI-Manager/images/dialog.jpg" alt="menu"></a></p>
+<ul>
+<li>
+<p>There are three DB modes: </p><pre><code>DB: Channel (1day cache)</code></pre>, <pre><code>DB: Local</code></pre>, and <pre><code>DB: Channel (remote)</code></pre>.<p></p>
+<ul>
+<li><pre><code>Channel (1day cache)</code></pre> utilizes Channel cache information with a validity period of one day to quickly display the list.
+<ul>
+<li>This information will be updated when there is no cache, when the cache expires, or when external information is retrieved through the Channel (remote).</li>
+<li>Whenever you start ComfyUI anew, this mode is always set as the <strong>default</strong> mode.</li>
+</ul>
+</li>
+<li><pre><code>Local</code></pre> uses information stored locally in ComfyUI-Manager.
+<ul>
+<li>This information will be updated only when you update ComfyUI-Manager.</li>
+<li>For custom node developers, they should use this mode when registering their nodes in <pre><code>custom-node-list.json</code></pre> and testing them.</li>
+</ul>
+</li>
+<li><pre><code>Channel (remote)</code></pre> retrieves information from the remote channel, always displaying the latest list.</li>
+<li>In cases where retrieval is not possible due to network errors, it will forcibly use local information.</li>
+</ul>
+</li>
+<li>
+<p>The </p><pre><code>Fetch Updates</code></pre> menu retrieves update data for custom nodes locally. Actual updates are applied by clicking the <pre><code>Update</code></pre> button in the <pre><code>Install Custom Nodes</code></pre> menu.<p></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Click 'Install' or 'Try Install' button.</p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/custom-nodes.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/custom-nodes.jpg" alt="node-install-dialog"></a></p>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/models.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/models.jpg" alt="model-install-dialog"></a></p>
+<ul>
+<li>
+<p>Installed: This item is already installed.</p>
+</li>
+<li>
+<p>Install: Clicking this button will install the item.</p>
+</li>
+<li>
+<p>Try Install: This is a custom node of which installation information cannot be confirmed. Click the button to try installing it.</p>
+</li>
+<li>
+<p>If a red background </p><pre><code>Channel</code></pre> indicator appears at the top, it means it is not the default channel. Since the amount of information held is different from the default channel, many custom nodes may not appear in this channel state.<p></p>
+<ul>
+<li>Channel settings have a broad impact, affecting not only the node list but also all functions like "Update all."</li>
+</ul>
+</li>
+<li>
+<p>Conflicted Nodes with a yellow background show a list of nodes conflicting with other extensions in the respective extension. This issue needs to be addressed by the developer, and users should be aware that due to these conflicts, some nodes may not function correctly and may need to be installed accordingly.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Share
+<a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/topbar.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/topbar.jpg" alt="menu"></a> <a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/share.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/share.jpg" alt="share"></a></p>
+</li>
+</ol>
+<ul>
+<li>You can share the workflow by clicking the Share button at the bottom of the main menu or selecting Share Output from the Context Menu of the Image node.</li>
+<li>Currently, it supports sharing via <a href="https://comfyworkflows.com/">https://comfyworkflows.com/</a>,
+<a href="https://openart.ai/workflows/dev">https://openart.ai</a>, <a href="https://youml.com">https://youml.com</a>
+as well as through the Matrix channel.</li>
+</ul>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/share-setting.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/share-setting.jpg" alt="menu"></a></p>
+<ul>
+<li>Through the Share settings in the Manager menu, you can configure the behavior of the Share button in the Main menu or Share Output button on Context Menu.
+<ul>
+<li><pre><code>None</code></pre>: hide from Main menu</li>
+<li><pre><code>All</code></pre>: Show a dialog where the user can select a title for sharing.</li>
+</ul>
+</li>
+</ul>
+<div><h2>Paths</h2><a href="#paths"></a></div>
+<p>Starting from V3.38, Manager uses a protected system path for enhanced security.</p>
+<ul>
+<li>&lt;USER_DIRECTORY&gt;
+<ul>
+<li>If executed without any options, the path defaults to ComfyUI/user.</li>
+<li>It can be set using --user-directory &lt;USER_DIRECTORY&gt;.</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ComfyUI Version</th>
+<th>Manager Path</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v0.3.76+ (with System User API)</td>
+<td><pre><code>&lt;USER_DIRECTORY&gt;/__manager/</code></pre></td>
+</tr>
+<tr>
+<td>Older versions</td>
+<td><pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/</code></pre></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Basic config files: <pre><code>config.ini</code></pre></li>
+<li>Configurable channel lists: <pre><code>channels.list</code></pre></li>
+<li>Configurable pip overrides: <pre><code>pip_overrides.json</code></pre></li>
+<li>Configurable pip blacklist: <pre><code>pip_blacklist.list</code></pre></li>
+<li>Configurable pip auto fix: <pre><code>pip_auto_fix.list</code></pre></li>
+<li>Saved snapshot files: <pre><code>snapshots/</code></pre></li>
+<li>Startup script files: <pre><code>startup-scripts/</code></pre></li>
+<li>Component files: <pre><code>components/</code></pre></li>
+</ul>
+<blockquote>
+<p><strong>Note</strong>: See <a href="/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/v3.38-userdata-security-migration.md">Migration Guide</a> for upgrade details.</p>
+</blockquote>
+<div><h2><pre><code>extra_model_paths.yaml</code></pre> Configuration</h2><a href="#extra_model_pathsyaml-configuration"></a></div>
+<p>The following settings are applied based on the section marked as </p><pre><code>is_default</code></pre>.<p></p>
+<ul>
+<li><pre><code>custom_nodes</code></pre>: Path for installing custom nodes
+<ul>
+<li>Importing does not need to adhere to the path set as <pre><code>is_default</code></pre>, but this is the path where custom nodes are installed by the <pre><code>ComfyUI Nodes Manager</code></pre>.</li>
+</ul>
+</li>
+<li><pre><code>download_model_base</code></pre>: Path for downloading models</li>
+</ul>
+<div><h2>Snapshot-Manager</h2><a href="#snapshot-manager"></a></div>
+<ul>
+<li>When you press <pre><code>Save snapshot</code></pre> or use <pre><code>Update All</code></pre> on <pre><code>Manager Menu</code></pre>, the current installation status snapshot is saved.
+<ul>
+<li>Snapshot file dir: <pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/snapshots</code></pre></li>
+<li>You can rename snapshot file.</li>
+</ul>
+</li>
+<li>Press the "Restore" button to revert to the installation status of the respective snapshot.
+<ul>
+<li>However, for custom nodes not managed by Git, snapshot support is incomplete.</li>
+</ul>
+</li>
+<li>When you press <pre><code>Restore</code></pre>, it will take effect on the next ComfyUI startup.
+<ul>
+<li>The selected snapshot file is saved in <pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/startup-scripts/restore-snapshot.json</code></pre>, and upon restarting ComfyUI, the snapshot is applied and then deleted.</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/snapshot.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/snapshot.jpg" alt="model-install-dialog"></a></p>
+<div><h2>cm-cli: command line tools for power users</h2><a href="#cm-cli-command-line-tools-for-power-users"></a></div>
+<ul>
+<li>A tool is provided that allows you to use the features of ComfyUI-Manager without running ComfyUI.</li>
+<li>For more details, please refer to the <a href="/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/cm-cli.md">cm-cli documentation</a>.</li>
+</ul>
+<div><h2>How to register your custom node into ComfyUI-Manager</h2><a href="#how-to-register-your-custom-node-into-comfyui-manager"></a></div>
+<ul>
+<li>Add an entry to <pre><code>custom-node-list.json</code></pre> located in the root of ComfyUI-Manager and submit a Pull Request.</li>
+<li>NOTE: Before submitting the PR after making changes, please check <pre><code>Use local DB</code></pre> and ensure that the extension list loads without any issues in the <pre><code>Install custom nodes</code></pre> dialog. Occasionally, missing or extra commas can lead to JSON syntax errors.</li>
+<li>The remaining JSON will be updated through scripts in the future, so you don't need to worry about it.</li>
+</ul>
+<div><h2>Custom node support guide</h2><a href="#custom-node-support-guide"></a></div>
+<ul>
+<li>
+<p><strong>NOTICE:</strong></p>
+<ul>
+<li>You should no longer assume that the GitHub repository name will match the subdirectory name under <pre><code>custom_nodes</code></pre>. The name of the subdirectory under <pre><code>custom_nodes</code></pre> will now use the normalized name from the <pre><code>name</code></pre> field in <pre><code>pyproject.toml</code></pre>.</li>
+<li>Avoid relying on directory names for imports whenever possible.</li>
+</ul>
+</li>
+<li>
+<p><a href="https://docs.comfy.org/registry/overview">https://docs.comfy.org/registry/overview</a></p>
+</li>
+<li>
+<p><a href="https://github.com/Comfy-Org/rfcs">https://github.com/Comfy-Org/rfcs</a></p>
+</li>
+</ul>
+<p><strong>Special purpose files</strong> (optional)</p>
+<ul>
+<li><pre><code>pyproject.toml</code></pre> - Spec file for comfyregistry.</li>
+<li><pre><code>node_list.json</code></pre> - When your custom nodes pattern of NODE_CLASS_MAPPINGS is not conventional, it is used to manually provide a list of nodes for reference. (<a href="https://github.com/melMass/comfy_mtb/raw/main/node_list.json">example</a>)</li>
+<li><pre><code>requirements.txt</code></pre> - When installing, this pip requirements will be installed automatically</li>
+<li><pre><code>install.py</code></pre> - When installing, it is automatically called</li>
+<li><strong>All scripts are executed from the root path of the corresponding custom node.</strong></li>
+</ul>
+<div><h2>Component Sharing</h2><a href="#component-sharing"></a></div>
+<ul>
+<li>
+<p><strong>Copy &amp; Paste</strong></p>
+<ul>
+<li><a href="https://ltdrdata.github.io/component-demo/">Demo Page</a></li>
+<li>When pasting a component from the clipboard, it supports text in the following JSON format. (text/plain)
+<div><pre><code>{ "kind": "ComfyUI Components", "timestamp": &lt;current timestamp&gt;, "components": { &lt;component name&gt;: &lt;component nodedata&gt; }
+}
+</code></pre></div>
+</li>
+<li><pre><code>&lt;current timestamp&gt;</code></pre> Ensure that the timestamp is always unique.
+<ul>
+<li>"components" should have the same structure as the content of the file stored in <pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/components</code></pre>.
+<ul>
+<li><pre><code>&lt;component name&gt;</code></pre>: The name should be in the format <pre><code>&lt;prefix&gt;::&lt;node name&gt;</code></pre>.
+<ul>
+<li><pre><code>&lt;component node data&gt;</code></pre>: In the node data of the group node.
+<ul>
+<li><pre><code>&lt;version&gt;</code></pre>: Only two formats are allowed: <pre><code>major.minor.patch</code></pre> or <pre><code>major.minor</code></pre>. (e.g. <pre><code>1.0</code></pre>, <pre><code>2.2.1</code></pre>)</li>
+<li><pre><code>&lt;datetime&gt;</code></pre>: Saved time</li>
+<li><pre><code>&lt;packname&gt;</code></pre>: If the packname is not empty, the category becomes packname/workflow, and it is saved in the .pack file in <pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/components</code></pre>.</li>
+<li><pre><code>&lt;category&gt;</code></pre>: If there is neither a category nor a packname, it is saved in the components category.</li>
+</ul>
+<div><pre><code> "version":"1.0", "datetime": 1705390656516, "packname": "mypack", "category": "util/pipe",
+</code></pre></div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Drag &amp; Drop</strong></p>
+<ul>
+<li>Dragging and dropping a <pre><code>.pack</code></pre> or <pre><code>.json</code></pre> file will add the corresponding components.</li>
+<li>Example pack: <a href="/Comfy-Org/ComfyUI-Manager/blob/main/misc/Impact.pack">Impact.pack</a></li>
+</ul>
+</li>
+<li>
+<p>Dragging and dropping or pasting a single component will add a node. However, when adding multiple components, nodes will not be added.</p>
+</li>
+</ul>
+<div><h2>Support for installing missing nodes</h2><a href="#support-for-installing-missing-nodes"></a></div>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/missing-menu.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/missing-menu.jpg" alt="missing-menu"></a></p>
+<ul>
+<li>When you click on the <pre><code>Install Missing Custom Nodes</code></pre> button in the menu, it displays a list of extension nodes that contain nodes not currently present in the workflow.</li>
+</ul>
+<p><a target="_blank" href="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/missing-list.jpg"><img src="https://raw.githubusercontent.com/ltdrdata/ComfyUI-extension-tutorials/Main/ComfyUI-Manager/images/missing-list.jpg" alt="missing-list"></a></p>
+<div><h1>Config</h1><a href="#config"></a></div>
+<ul>
+<li>
+<p>You can modify the </p><pre><code>config.ini</code></pre> file to apply the settings for ComfyUI-Manager.<p></p>
+<ul>
+<li>The path to the <pre><code>config.ini</code></pre> used by ComfyUI-Manager is displayed in the startup log messages.</li>
+<li>See also: [<a href="https://github.com/ltdrdata/ComfyUI-Manager#paths">https://github.com/ltdrdata/ComfyUI-Manager#paths</a>]</li>
+</ul>
+</li>
+<li>
+<p>Configuration options:</p>
+<div><pre><code>[default]
+git_exe = &lt;Manually specify the path to the git executable. If left empty, the default git executable path will be used.&gt;
+use_uv = &lt;Use uv instead of pip for dependency installation.&gt;
+default_cache_as_channel_url = &lt;Determines whether to retrieve the DB designated as channel_url at startup&gt;
+bypass_ssl = &lt;Set to True if SSL errors occur to disable SSL.&gt;
+file_logging = &lt;Configure whether to create a log file used by ComfyUI-Manager.&gt;
+windows_selector_event_loop_policy = &lt;If an event loop error occurs on Windows, set this to True.&gt;
+model_download_by_agent = &lt;When downloading models, use an agent instead of torchvision_download_url.&gt;
+downgrade_blacklist = &lt;Set a list of packages to prevent downgrades. List them separated by commas.&gt;
+security_level = &lt;Set the security level =&gt; strong|normal|normal-|weak&gt;
+always_lazy_install = &lt;Whether to perform dependency installation on restart even in environments other than Windows.&gt;
+network_mode = &lt;Set the network mode =&gt; public|private|offline&gt;
+</code></pre></div>
+<ul>
+<li>network_mode:
+<ul>
+<li>public: An environment that uses a typical public network.</li>
+<li>private: An environment that uses a closed network, where a private node DB is configured via <pre><code>channel_url</code></pre>. (Uses cache if available)</li>
+<li>offline: An environment that does not use any external connections when using an offline network. (Uses cache if available)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div><h2>Additional Feature</h2><a href="#additional-feature"></a></div>
+<ul>
+<li>
+<p>Logging to file feature</p>
+<ul>
+<li>This feature is enabled by default and can be disabled by setting <pre><code>file_logging = False</code></pre> in the <pre><code>config.ini</code></pre>.</li>
+</ul>
+</li>
+<li>
+<p>Fix node (recreate): When right-clicking on a node and selecting </p><pre><code>Fix node (recreate)</code></pre>, you can recreate the node. The widget's values are reset, while the connections maintain those with the same names.<p></p>
+<ul>
+<li>It is used to correct errors in nodes of old workflows created before, which are incompatible with the version changes of custom nodes.</li>
+</ul>
+</li>
+<li>
+<p>Double-Click Node Title: You can set the double-click behavior of nodes in the ComfyUI-Manager menu.</p>
+<ul>
+<li>
+<p></p><pre><code>Copy All Connections</code></pre>, <pre><code>Copy Input Connections</code></pre>: Double-clicking a node copies the connections of the nearest node.<p></p>
+<ul>
+<li>This action targets the nearest node within a straight-line distance of 1000 pixels from the center of the node.</li>
+<li>In the case of <pre><code>Copy All Connections</code></pre>, it duplicates existing outputs, but since it does not allow duplicate connections, the existing output connections of the original node are disconnected.</li>
+<li>This feature copies only the input and output that match the names.</li>
+</ul>
+</li>
+<li>
+<p></p><pre><code>Possible Input Connections</code></pre>: It connects all outputs that match the closest type within the specified range.<p></p>
+<ul>
+<li>This connection links to the closest outputs among the nodes located on the left side of the target node.</li>
+</ul>
+</li>
+<li>
+<p></p><pre><code>Possible(left) + Copy(right)</code></pre>: When you Double-Click on the left half of the title, it operates as <pre><code>Possible Input Connections</code></pre>, and when you Double-Click on the right half, it operates as <pre><code>Copy All Connections</code></pre>.<p></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Prevent downgrade of specific packages</p>
+<ul>
+<li>List the package names in the <pre><code>downgrade_blacklist</code></pre> section of the <pre><code>config.ini</code></pre> file, separating them with commas.
+<ul>
+<li>e.g</li>
+</ul>
+<div><pre><code> downgrade_blacklist = diffusers, kornia
+</code></pre></div>
+</li>
+</ul>
+</li>
+<li>
+<p>Custom pip mapping</p>
+<ul>
+<li>When you create the <pre><code>pip_overrides.json</code></pre> file, it changes the installation of specific pip packages to installations defined by the user.
+<ul>
+<li>Please refer to the <pre><code>pip_overrides.json.template</code></pre> file.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Prevent the installation of specific pip packages</p>
+<ul>
+<li>List the package names one per line in the <pre><code>pip_blacklist.list</code></pre> file.</li>
+</ul>
+</li>
+<li>
+<p>Automatically Restoring pip Installation</p>
+</li>
+<li>
+<p>If you list pip spec requirements in </p><pre><code>pip_auto_fix.list</code></pre>, similar to <pre><code>requirements.txt</code></pre>, it will automatically restore the specified versions when starting ComfyUI or when versions get mismatched during various custom node installations.<p></p>
+</li>
+<li>
+<p></p><pre><code>--index-url</code></pre> can be used.<p></p>
+</li>
+<li>
+<p>Use </p><pre><code>aria2</code></pre> as downloader<p></p>
+<ul>
+<li><a href="/Comfy-Org/ComfyUI-Manager/blob/main/docs/en/use_aria2.md">howto</a></li>
+</ul>
+</li>
+</ul>
+<div><h2>Environment Variables</h2><a href="#environment-variables"></a></div>
+<p>The following features can be configured using environment variables:</p>
+<ul>
+<li><strong>COMFYUI_PATH</strong>: The installation path of ComfyUI</li>
+<li><strong>GITHUB_ENDPOINT</strong>: Reverse proxy configuration for environments with limited access to GitHub</li>
+<li><strong>HF_ENDPOINT</strong>: Reverse proxy configuration for environments with limited access to Hugging Face</li>
+</ul>
+<div><h3>Example 1:</h3><a href="#example-1"></a></div>
+<p>Redirecting </p><pre><code>https://github.com/ltdrdata/ComfyUI-Impact-Pack</code></pre> to <pre><code>https://mirror.ghproxy.com/https://github.com/ltdrdata/ComfyUI-Impact-Pack</code></pre><p></p>
+<div><pre><code>GITHUB_ENDPOINT=https://mirror.ghproxy.com/https://github.com
+</code></pre></div>
+<div><h4>Example 2:</h4><a href="#example-2"></a></div>
+<p>Changing </p><pre><code>https://huggingface.co/path/to/somewhere</code></pre> to <pre><code>https://some-hf-mirror.com/path/to/somewhere</code></pre><p></p>
+<div><pre><code>HF_ENDPOINT=https://some-hf-mirror.com </code></pre></div>
+<div><h2>Scanner</h2><a href="#scanner"></a></div>
+<p>When you run the </p><pre><code>scan.sh</code></pre> script:<p></p>
+<ul>
+<li>
+<p>It updates the </p><pre><code>extension-node-map.json</code></pre>.<p></p>
+<ul>
+<li>To do this, it pulls or clones the custom nodes listed in <pre><code>custom-node-list.json</code></pre> into <pre><code>~/.tmp/default</code></pre>.</li>
+<li>To skip this step, add the <pre><code>--skip-update</code></pre> option.</li>
+<li>If you want to specify a different path instead of <pre><code>~/.tmp/default</code></pre>, run <pre><code>python scanner.py [path]</code></pre> directly instead of <pre><code>scan.sh</code></pre>.</li>
+</ul>
+</li>
+<li>
+<p>It updates the </p><pre><code>github-stats.json</code></pre>.<p></p>
+<ul>
+<li>This uses the GitHub API, so set your token with <pre><code>export GITHUB_TOKEN=your_token_here</code></pre> to avoid quickly reaching the rate limit and malfunctioning.</li>
+<li>To skip this step, add the <pre><code>--skip-stat-update</code></pre> option.</li>
+</ul>
+</li>
+<li>
+<p>The </p><pre><code>--skip-all</code></pre> option applies both <pre><code>--skip-update</code></pre> and <pre><code>--skip-stat-update</code></pre>.<p></p>
+</li>
+</ul>
+<div><h2>Troubleshooting</h2><a href="#troubleshooting"></a></div>
+<ul>
+<li>If your <pre><code>git.exe</code></pre> is installed in a specific location other than system git, please install ComfyUI-Manager and run ComfyUI. Then, specify the path including the file name in <pre><code>git_exe = </code></pre> in the <pre><code>&lt;USER_DIRECTORY&gt;/default/ComfyUI-Manager/config.ini</code></pre> file that is generated.</li>
+<li>If updating ComfyUI-Manager itself fails, please go to the <strong>ComfyUI-Manager</strong> directory and execute the command <pre><code>git update-ref refs/remotes/origin/main a361cc1 &amp;&amp; git fetch --all &amp;&amp; git pull</code></pre>.</li>
+<li>If you encounter the error message <pre><code>Overlapped Object has pending operation at deallocation on ComfyUI Manager load</code></pre> under Windows
+<ul>
+<li>Edit <pre><code>config.ini</code></pre> file: add <pre><code>windows_selector_event_loop_policy = True</code></pre></li>
+</ul>
+</li>
+<li>If the <pre><code>SSL: CERTIFICATE_VERIFY_FAILED</code></pre> error occurs.
+<ul>
+<li>Edit <pre><code>config.ini</code></pre> file: add <pre><code>bypass_ssl = True</code></pre></li>
+</ul>
+</li>
+</ul>
+<div><h2>Security policy</h2><a href="#security-policy"></a></div>
+<ul>
+<li>
+<p>Edit </p><pre><code>config.ini</code></pre> file: add <pre><code>security_level = &lt;LEVEL&gt;</code></pre><p></p>
+<ul>
+<li><pre><code>strong</code></pre>
+<ul>
+<li>doesn't allow <pre><code>high</code></pre> and <pre><code>middle</code></pre> level risky feature</li>
+</ul>
+</li>
+<li><pre><code>normal</code></pre>
+<ul>
+<li>doesn't allow <pre><code>high</code></pre> level risky feature</li>
+<li><pre><code>middle</code></pre> level risky feature is available</li>
+</ul>
+</li>
+<li><pre><code>normal-</code></pre>
+<ul>
+<li>doesn't allow <pre><code>high</code></pre> level risky feature if <pre><code>--listen</code></pre> is specified and not starts with <pre><code>127.</code></pre></li>
+<li><pre><code>middle</code></pre> level risky feature is available</li>
+</ul>
+</li>
+<li><pre><code>weak</code></pre>
+<ul>
+<li>all feature is available</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p></p><pre><code>high</code></pre> level risky features<p></p>
+<ul>
+<li><pre><code>Install via git url</code></pre>, <pre><code>pip install</code></pre></li>
+<li>Installation of custom nodes registered not in the <pre><code>default channel</code></pre>.</li>
+<li>Fix custom nodes</li>
+</ul>
+</li>
+<li>
+<p></p><pre><code>middle</code></pre> level risky features<p></p>
+<ul>
+<li>Uninstall/Update</li>
+<li>Installation of custom nodes registered in the <pre><code>default channel</code></pre>.</li>
+<li>Restore/Remove Snapshot</li>
+<li>Restart</li>
+</ul>
+</li>
+<li>
+<p></p><pre><code>low</code></pre> level risky features<p></p>
+<ul>
+<li>Update ComfyUI</li>
+</ul>
+</li>
+</ul>
+<div><h1>Disclaimer</h1><a href="#disclaimer"></a></div>
+<ul>
+<li>This extension simply provides the convenience of installing custom nodes and does not guarantee their proper functioning.</li>
+</ul>
+<div><h2>Credit</h2><a href="#credit"></a></div>
+<p>ComfyUI/<a href="https://github.com/comfyanonymous/ComfyUI">ComfyUI</a> - A powerful and modular stable diffusion GUI.</p>
+<p><strong>And, for all ComfyUI custom node developers</strong></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
