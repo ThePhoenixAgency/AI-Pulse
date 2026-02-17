@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WC26 MCP - FIFA World Cup 2026 Data for AI</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>WC26 MCP - FIFA World Cup 2026 Data for AI</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 2:00:34 PM | <a href="https://wc26.ai/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div> <nav> </nav> <section> <p><span></span> <span>v0.3.1 — 18 tools, ready to go</span> </p> <p> 18 tools. Zero API keys. Works with Claude, ChatGPT, Cursor, and any MCP client. </p> <div> <div> <p>104</p> <p>Matches</p> </div> <div> <p>48</p> <p>Teams</p> </div> <div> <p>16</p> <p>Venues</p> </div> <div> <p>18</p> <p>Tools</p> </div> </div> </section> <section> <p>Tools</p> <h2>Eighteen tools, zero API keys</h2> <p> All data ships with the package. No external API calls, no rate limits, no authentication required. </p> <div> <div> <p>what_to_know_now</p> <p>Zero-query temporal briefing. Detects the current tournament phase and returns the most relevant info — no parameters needed, just "brief me." Suggests follow-up tools automatically.</p> <p><span>date</span> <span>timezone</span> </p> </div> <div> <p>get_team_profile</p> <p>Coach, key players with clubs, playing style, World Cup history, and qualifying summary for any of the 48 teams. Links to related match and group tools.</p> <p><span>team</span> </p> </div> <div> <p>get_city_guide</p> <p>Travel guide for any host city. Highlights, how to get there, food &amp; drink picks, things to do, and local tips — all keyed to each venue's metro area.</p> <p><span>city</span> </p> </div> <div> <p>get_historical_matchups</p> <p>Head-to-head World Cup history between any two teams. All tournament meetings with scores, penalty results, aggregate stats, and a narrative summary.</p> <p><span>team_a</span> <span>team_b</span> </p> </div> <div> <p>get_matches</p> <p>Query matches with flexible filters. Returns enriched data with team names, flag emojis, venue details, and timezone conversion.</p> <p><span>date</span> <span>date_range</span> <span>team</span> <span>group</span> <span>venue</span> <span>round</span> <span>status</span> <span>timezone</span> </p> </div> <div> <p>get_teams</p> <p>All 48 qualified nations with FIFA rankings, confederations, groups, and flag emojis.</p> <p><span>group</span> <span>confederation</span> <span>is_host</span> </p> </div> <div> <p>get_groups</p> <p>Full group details with teams, venues, and the complete match schedule for each group.</p> <p><span>group</span> </p> </div> <div> <p>get_venues</p> <p>16 host stadiums across USA, Mexico, and Canada. Capacity, coordinates, time zones, weather averages, and notable events.</p> <p><span>country</span> <span>city</span> <span>region</span> </p> </div> <div> <p>get_nearby_venues</p> <p>Find venues near a given stadium, sorted by distance. Great for planning multi-match trips across host cities.</p> <p><span>venue</span> <span>limit</span> </p> </div> <div> <p>get_schedule</p> <p>Tournament schedule organized by date. Every match day with kick-off times and timezone conversion.</p> <p><span>date_from</span> <span>date_to</span> <span>timezone</span> </p> </div> <div> <p>get_visa_info</p> <p>Entry requirements for any team's nationals traveling to the host countries. ESTA, eTA, visa-free, or visa required — with practical tips for World Cup travelers.</p> <p><span>team</span> <span>host_country</span> </p> </div> <div> <p>get_fan_zones</p> <p>Official FIFA Fan Festival and fan zone locations across all 16 host cities. Capacity, hours, activities, transportation, and amenities for each site.</p> <p><span>city</span> <span>country</span> <span>venue_id</span> </p> </div> <div> <p>get_news</p> <p>Latest World Cup news headlines curated daily by the Scout Agent. Roster changes, venue updates, qualifying results, and tournament developments.</p> <p><span>topic</span> <span>limit</span> </p> </div> <div> <p>get_injuries</p> <p>Key player availability tracker. Injury status, expected return dates, and impact assessment for star players across all 48 teams.</p> <p><span>team</span> <span>status</span> </p> </div> <div> <p>get_odds</p> <p>Tournament favorites, golden boot predictions, group-by-group previews with narratives, and dark horse picks with reasoning.</p> <p><span>category</span> <span>group</span> </p> </div> <div> <p>compare_teams</p> <p>Side-by-side comparison of any two teams. Rankings, odds, key players, group difficulty, injury concerns, and head-to-head history — all in one view.</p> <p><span>team_a</span> <span>team_b</span> </p> </div> <div> <p>get_standings</p> <p>Group power rankings based on FIFA rankings, betting odds, and predictions. See team strength ratings, head-to-head history within each group, and group difficulty ratings.</p> <p><span>group</span> </p> </div> <div> <p>get_bracket</p> <p>Knockout bracket visualization from Round of 32 through the Final. Shows which group positions feed into each match, venues, dates, and bracket paths.</p> <p><span>round</span> </p> </div> </div> <div> <p>
+<span>{</span> <span>"team"</span><span>:</span> <span>"arg"</span> <span>}</span> </p> </div> <div> <p>
+<span>{</span> <span>"team_a"</span><span>:</span> <span>"bra"</span><span>,</span> <span>"team_b"</span><span>:</span> <span>"sco"</span> <span>}</span> </p> </div>
+</section> <section> <p>Setup</p> <h2>Pick your client, start asking</h2> <p> Choose one of the options below. Works with any MCP-compatible client. </p> <div> <div> <p>A</p> <div> <h3>Claude Desktop</h3> <p>Add to your <code>claude_desktop_config.json</code>:</p> <div> <p>{"mcpServers":{"wc26":{"command":"npx","args":["-y","wc26-mcp"]}}}</p> </div> </div> </div> <div> <p>B</p> <div> <h3>Claude Code</h3> <p>One command in your terminal:</p> <div> <p>claude mcp add wc26 -- npx -y wc26-mcp</p> </div> </div> </div> <div> <p>C</p> <div> <h3>Cursor</h3> <p>Add to your <code>.cursor/mcp.json</code>:</p> <div> <p>{"mcpServers":{"wc26":{"command":"npx","args":["-y","wc26-mcp"]}}}</p> </div> </div> </div> <div> <p>D</p> <div> <h3>Windsurf</h3> <p>Add to your <code>~/.codeium/windsurf/mcp_config.json</code>:</p> <div> <p>{"mcpServers":{"wc26":{"command":"npx","args":["-y","wc26-mcp"]}}}</p> </div> </div> </div> <div> <p>E</p> <div> <h3>ChatGPT</h3> <p>No setup needed — use the GPT directly:</p> </div> </div> <div> <p>F</p> <div> <h3>Telegram</h3> <p>No setup needed — message the bot directly:</p> </div> </div> </div> <p><span>"Brief me on the World Cup"</span> <span>"Tell me about Argentina's squad"</span> <span>"When does the USA play their first match?"</span> <span>"Show me tomorrow's matches in my timezone"</span> <span>"What's the weather like in Dallas for the semi-final?"</span> <span>"Give me a city guide for Miami"</span> <span>"What's the history between Argentina and England?"</span> <span>"Where are the fan zones in New York?"</span> <span>"What's the latest World Cup news?"</span> <span>"Do I need a visa for Mexico as a UK citizen?"</span> </p>
+</section> </div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

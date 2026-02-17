@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Building a Rails Engine #3 — Configuration DSL: Making the Gem Flexible</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Building a Rails Engine #3 — Configuration DSL: Making the Gem Flexible</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 1:23:22 PM | <a href="https://dev.to/seryllns_/building-a-rails-engine-3-configuration-dsl-making-the-gem-flexible-1nb8" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <h2> <a name="configuration-dsl-making-the-gem-flexible" href="#configuration-dsl-making-the-gem-flexible"> </a> Configuration DSL: making the gem flexible
+</h2> <blockquote>
+<p>A gem that can't adapt to its host app will never leave your own repo.</p>
+</blockquote> <h2> <a name="context" href="#context"> </a> Context
+</h2> <p>This is part 3 of the series where we build <strong>DataPorter</strong>, a mountable Rails engine for data import workflows. In <a href="https://dev.to/seryllns_/building-dataporter-1-why-build-a-data-import-engine-29f7">part 1</a>, we established the problem and architecture. <a href="https://dev.to/seryllns_/building-dataporter-2-scaffolding-a-rails-engine-gem-2mmo">Part 2</a> covered scaffolding the engine gem with <code>isolate_namespace</code>.</p> <p>In this article, we'll build the configuration layer: a clean DSL that lets host apps customize DataPorter's behavior through an initializer. By the end, you'll have a <code>DataPorter.configure</code> block that feels like any well-designed Rails gem.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The problem
+</h2> <p>Our engine needs to run inside apps we don't control. One app uses Sidekiq with a custom queue name. Another stores files on S3. A third needs every import scoped to the current hotel's account.</p> <p>Hard-coding any of these choices inside the gem would make it useless to anyone whose setup differs from ours. But making <em>everything</em> configurable turns the gem into a configuration puzzle where nobody remembers what goes where.</p> <p>The challenge is finding the line between flexibility and convention -- and expressing it through an API that feels obvious on first read.</p> <h2> <a name="what-were-building" href="#what-were-building"> </a> What we're building
+</h2> <p>Here's the end result from the host app's perspective:<br>
+</p> <div>
+<pre><code><span># config/initializers/data_porter.rb</span>
+<span>DataPorter</span><span>.</span><span>configure</span> <span>do</span> <span>|</span><span>config</span><span>|</span> <span>config</span><span>.</span><span>parent_controller</span> <span>=</span> <span>"Admin::BaseController"</span> <span>config</span><span>.</span><span>queue_name</span> <span>=</span> <span>:low_priority</span> <span>config</span><span>.</span><span>storage_service</span> <span>=</span> <span>:amazon</span> <span>config</span><span>.</span><span>preview_limit</span> <span>=</span> <span>200</span> <span>config</span><span>.</span><span>context_builder</span> <span>=</span> <span>-&gt;</span><span>(</span><span>controller</span><span>)</span> <span>{</span> <span>{</span> <span>hotel: </span><span>controller</span><span>.</span><span>current_hotel</span><span>,</span> <span>user: </span><span>controller</span><span>.</span><span>current_user</span> <span>}</span> <span>}</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This reads exactly like a Devise or Sidekiq initializer. A <code>configure</code> block yields a plain object with sensible defaults. If you don't call <code>configure</code> at all, everything still works.</p> <h2> <a name="implementation" href="#implementation"> </a> Implementation
+</h2> <h3> <a name="step-1-the-configuration-class" href="#step-1-the-configuration-class"> </a> Step 1 -- The Configuration class
+</h3> <p>We need an object that holds every configurable value and provides reasonable defaults out of the box. The simplest approach that works: a plain Ruby class with <code>attr_accessor</code> and defaults set in <code>initialize</code>.<br>
+</p> <div>
+<pre><code><span># lib/data_porter/configuration.rb</span>
+<span>module</span> <span>DataPorter</span> <span>class</span> <span>Configuration</span> <span>attr_accessor</span> <span>:parent_controller</span><span>,</span> <span>:queue_name</span><span>,</span> <span>:storage_service</span><span>,</span> <span>:cable_channel_prefix</span><span>,</span> <span>:context_builder</span><span>,</span> <span>:preview_limit</span><span>,</span> <span>:enabled_sources</span><span>,</span> <span>:scope</span> <span>def</span> <span>initialize</span> <span>@parent_controller</span> <span>=</span> <span>"ApplicationController"</span> <span>@queue_name</span> <span>=</span> <span>:imports</span> <span>@storage_service</span> <span>=</span> <span>:local</span> <span>@cable_channel_prefix</span> <span>=</span> <span>"data_porter"</span> <span>@context_builder</span> <span>=</span> <span>nil</span> <span>@preview_limit</span> <span>=</span> <span>500</span> <span>@enabled_sources</span> <span>=</span> <span>%i[csv json api]</span> <span>@scope</span> <span>=</span> <span>nil</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Every attribute has a default that makes the gem work without any initializer. <code>parent_controller</code> defaults to <code>"ApplicationController"</code> because that exists in every Rails app. <code>storage_service</code> defaults to <code>:local</code> because that requires zero setup. <code>preview_limit</code> caps at 500 rows to keep the preview page responsive.</p> <p>Two attributes default to <code>nil</code> on purpose: <code>context_builder</code> and <code>scope</code>. These are opt-in features. When <code>context_builder</code> is nil, imports run without host-specific context. When <code>scope</code> is nil, the engine shows all imports. The gem checks for nil and adapts its behavior, rather than forcing a value that might be wrong.</p> <p>Let's walk through the attributes that deserve a closer look.</p> <p><strong><code>parent_controller</code></strong> is a string, not a class. That's deliberate. At configuration time (during boot), the host app's controller class might not be loaded yet. We store the string and <code>constantize</code> it later, when Rails actually needs to resolve the inheritance chain.</p> <p><strong><code>context_builder</code></strong> is the most interesting one. It's a lambda that receives the current controller instance and returns whatever the host app needs during import. The engine calls it internally with <code>context_builder.call(controller)</code> at the start of an import, passing the result to the Orchestrator. This is how a multi-tenant app passes <code>current_hotel</code> into the import flow without the gem knowing anything about hotels. We'll use this extensively when we build the Orchestrator in part 7.</p> <p><strong><code>enabled_sources</code></strong> lets the host app restrict which source types appear in the UI. If you only deal with CSV files, you can set <code>enabled_sources = %i[csv]</code> and the JSON/API options won't clutter the interface.</p> <h3> <a name="step-2-the-modulelevel-dsl" href="#step-2-the-modulelevel-dsl"> </a> Step 2 -- The module-level DSL
+</h3> <p>The Configuration class is just a data object. We need two module-level methods to turn it into a DSL: one to access the singleton instance, and one to yield it for configuration.<br>
+</p> <div>
+<pre><code><span># lib/data_porter.rb</span>
+<span>module</span> <span>DataPorter</span> <span>class</span> <span>Error</span> <span>&lt;</span> <span>StandardError</span><span>;</span> <span>end</span> <span>def</span> <span>self</span><span>.</span><span>configuration</span> <span>@configuration</span> <span>||=</span> <span>Configuration</span><span>.</span><span>new</span> <span>end</span> <span>def</span> <span>self</span><span>.</span><span>configure</span> <span>yield</span><span>(</span><span>configuration</span><span>)</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p><code>configuration</code> uses memoization via <code>||=</code> to ensure a single instance across the application. The first call creates a <code>Configuration.new</code> with all defaults; subsequent calls return the same object. This is the singleton pattern without the ceremony of the <code>Singleton</code> module.</p> <p><code>configure</code> yields that singleton to a block. The block receives the Configuration instance and can call any writer method on it (<code>config.queue_name = :low_priority</code>). After the block runs, <code>DataPorter.configuration.queue_name</code> returns whatever the host app set -- or the default if they didn't touch it.</p> <p>There's no <code>reset!</code> method in production code. We don't need one. The configuration is set once during Rails boot and stays put for the process lifetime. We do need to reset between tests, but that's handled with <code>instance_variable_set</code> in the spec (we'll see that in a moment).</p> <h3> <a name="step-3-wiring-it-up-on-boot" href="#step-3-wiring-it-up-on-boot"> </a> Step 3 -- Wiring it up on boot
+</h3> <p>The configuration module gets required early, before the engine loads. This ensures <code>DataPorter.configure</code> is available when the host app's initializer runs.<br>
+</p> <div>
+<pre><code><span># lib/data_porter.rb (top of file)</span>
+<span>require</span> <span>"rails/engine"</span>
+<span>require_relative</span> <span>"data_porter/version"</span>
+<span>require_relative</span> <span>"data_porter/configuration"</span>
+<span>require_relative</span> <span>"data_porter/engine"</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The load order matters. <code>configuration.rb</code> comes before <code>engine.rb</code> because the Engine class might reference configuration values during setup. In practice, Rails processes initializers after the engine is loaded, so the host app's <code>configure</code> block runs with the full gem already available.</p> <p>Other parts of the gem read configuration like this:<br>
+</p> <div>
+<pre><code><span># Inside any DataPorter class</span>
+<span>DataPorter</span><span>.</span><span>configuration</span><span>.</span><span>queue_name</span>
+<span>DataPorter</span><span>.</span><span>configuration</span><span>.</span><span>context_builder</span><span>&amp;</span><span>.</span><span>call</span><span>(</span><span>controller</span><span>)</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The safe navigation operator (<code>&amp;.</code>) on <code>context_builder</code> handles the nil default gracefully. When no builder is configured, the call simply returns nil instead of raising a NoMethodError.</p> <h2> <a name="decisions-amp-tradeoffs" href="#decisions-amp-tradeoffs"> </a> Decisions &amp; tradeoffs
+</h2> <p><strong>Configuration object</strong> — Plain class with <code>attr_accessor</code> over <code>OpenStruct</code> or <code>Dry::Configurable</code>. No dependencies, easy to read, easy to document. IDE autocompletion works with real attributes.</p> <p><strong>Singleton pattern</strong> — Memoized module instance variable over the <code>Singleton</code> module or <code>Rails.application.config</code>. Simpler API (<code>DataPorter.configure</code>), no coupling to Rails config namespace, works in non-Rails test contexts.</p> <p><strong><code>context_builder</code> type</strong> — Lambda over a stored proc or method object. Lambdas enforce arity (catches wrong argument count), and the <code>-&gt;() {}</code> syntax signals "this is a callable" to the reader.</p> <p><strong><code>parent_controller</code> type</strong> — String over class constant. Avoids load-order issues: the class may not exist at configuration time, but the string can be <code>constantize</code>d later.</p> <p><strong>Default for optional features</strong> — <code>nil</code> over the null object pattern. Simpler to check <code>if context_builder</code> than to create a no-op null object. The gem has few enough optional features to keep the nil checks manageable.</p> <h2> <a name="testing-it" href="#testing-it"> </a> Testing it
+</h2> <p>The specs verify two things: that defaults are sane, and that the <code>configure</code> block actually mutates the singleton.<br>
+</p> <div>
+<pre><code><span># spec/data_porter/configuration_spec.rb</span>
+<span>RSpec</span><span>.</span><span>describe</span> <span>DataPorter</span><span>::</span><span>Configuration</span> <span>do</span> <span>subject</span><span>(</span><span>:config</span><span>)</span> <span>{</span> <span>described_class</span><span>.</span><span>new</span> <span>}</span> <span>it</span> <span>"has default parent_controller"</span> <span>do</span> <span>expect</span><span>(</span><span>config</span><span>.</span><span>parent_controller</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>"ApplicationController"</span><span>)</span> <span>end</span> <span>it</span> <span>"has default queue_name"</span> <span>do</span> <span>expect</span><span>(</span><span>config</span><span>.</span><span>queue_name</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>:imports</span><span>)</span> <span>end</span> <span>it</span> <span>"has default preview_limit"</span> <span>do</span> <span>expect</span><span>(</span><span>config</span><span>.</span><span>preview_limit</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>500</span><span>)</span> <span>end</span> <span>it</span> <span>"has nil context_builder by default"</span> <span>do</span> <span>expect</span><span>(</span><span>config</span><span>.</span><span>context_builder</span><span>).</span><span>to</span> <span>be_nil</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Notice that each default gets its own test. This is intentional. When someone changes a default six months from now, the failure message says exactly which default broke, not just "configuration test failed."</p> <p>The module-level specs test the singleton behavior and the <code>configure</code> yield pattern:<br>
+</p> <div>
+<pre><code><span># spec/data_porter/configuration_spec.rb</span>
+<span>RSpec</span><span>.</span><span>describe</span> <span>DataPorter</span> <span>do</span> <span>describe</span> <span>".configure"</span> <span>do</span> <span>after</span> <span>{</span> <span>DataPorter</span><span>.</span><span>instance_variable_set</span><span>(</span><span>:@configuration</span><span>,</span> <span>nil</span><span>)</span> <span>}</span> <span>it</span> <span>"yields the configuration"</span> <span>do</span> <span>DataPorter</span><span>.</span><span>configure</span> <span>do</span> <span>|</span><span>config</span><span>|</span> <span>config</span><span>.</span><span>queue_name</span> <span>=</span> <span>:custom_queue</span> <span>end</span> <span>expect</span><span>(</span><span>DataPorter</span><span>.</span><span>configuration</span><span>.</span><span>queue_name</span><span>).</span><span>to</span> <span>eq</span><span>(</span><span>:custom_queue</span><span>)</span> <span>end</span> <span>end</span> <span>describe</span> <span>".configuration"</span> <span>do</span> <span>after</span> <span>{</span> <span>DataPorter</span><span>.</span><span>instance_variable_set</span><span>(</span><span>:@configuration</span><span>,</span> <span>nil</span><span>)</span> <span>}</span> <span>it</span> <span>"memoizes the configuration"</span> <span>do</span> <span>expect</span><span>(</span><span>DataPorter</span><span>.</span><span>configuration</span><span>).</span><span>to</span> <span>be</span><span>(</span><span>DataPorter</span><span>.</span><span>configuration</span><span>)</span> <span>end</span> <span>end</span>
+<span>end</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The <code>after</code> block resets the singleton between tests using <code>instance_variable_set</code>. This is the one place where we reach into internals, and it's acceptable because test isolation trumps encapsulation here. A public <code>reset!</code> method would leak test concerns into production code.</p> <h2> <a name="recap" href="#recap"> </a> Recap
+</h2> <ul>
+<li>The <code>Configuration</code> class is a plain Ruby object with <code>attr_accessor</code> and defaults in <code>initialize</code>. No framework magic, no dependencies.</li>
+<li>Two module-level methods (<code>configure</code> and <code>configuration</code>) create the DSL that host apps use in their initializer.</li>
+<li>Sensible defaults mean the gem works with zero configuration. <code>context_builder</code> and <code>scope</code> are opt-in via nil defaults.</li>
+<li>Storing <code>parent_controller</code> as a string avoids boot-order issues. Using a lambda for <code>context_builder</code> enforces arity and reads clearly.</li>
+</ul> <h2> <a name="next-up" href="#next-up"> </a> Next up
+</h2> <p>Configuration tells the gem <em>how</em> to behave. In part 4, we'll tackle <em>what</em> it operates on: the data models. We'll use StoreModel and JSONB columns to store import records, validation errors, and summary reports as structured data inside a single table -- no migration per import type, no schema sprawl. If you've ever debated "extra table vs. JSON column," that's the one to read.</p> <hr> <p><em>This is part 3 of the series "Building DataPorter - A Data Import Engine for Rails". <a href="https://dev.to/seryllns_/building-dataporter-2-scaffolding-a-rails-engine-gem-2mmo">Previous: Scaffolding a Rails Engine gem</a> | Next: Modeling import data with StoreModel &amp; JSONB</em></p> <hr> <p><strong>GitHub:</strong> <a href="https://github.com/SerylLns/data_porter" target="_blank">SerylLns/data_porter</a> | <strong>RubyGems:</strong> <a href="https://rubygems.org/gems/data_porter" target="_blank">data_porter</a></p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

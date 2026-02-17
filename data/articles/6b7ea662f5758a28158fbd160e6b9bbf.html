@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - psyb0t/piraterf: PIrateRF transforms your Raspberry Pi Zero W into a portable RF signal generator that spawns its own WiFi hotspot. Control everything from FM broadcasts to digital modes through your browser - hack the airwaves from anywhere!</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - psyb0t/piraterf: PIrateRF transforms your Raspberry Pi Zero W into a portable RF signal generator that spawns its own WiFi hotspot. Control everything from FM broadcasts to digital modes through your browser - hack the airwaves from anywhere!</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 2:00:56 PM | <a href="https://github.com/psyb0t/piraterf" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1> PIrateRF - Software-Defined Radio Transmission Platform</h1><a href="#-piraterf---software-defined-radio-transmission-platform"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/piraterf.png"><img src="/psyb0t/piraterf/raw/main/assets/piraterf.png" alt="PIrateRF"></a></p>
+<p><strong>PIrateRF</strong> transforms your <strong>Raspberry Pi Zero W</strong> into a portable RF signal generator that spawns its own WiFi hotspot. Control everything from FM broadcasts to digital modes through your browser - hack the airwaves from anywhere! </p> <p><strong><a href="https://www.youtube.com/watch?v=7DeMhe47aNQ"> Click here for PIrateRF Showcase Video</a></strong></p>
+<hr>
+<p><strong> LEGAL NOTICE</strong></p>
+<p>PIrateRF is designed for amateur radio experimentation and education - including safe indoor testing without external antennas. Built for engineers who understand that good RF practices matter more than arbitrary administrative boundaries. Users are responsible for compliance with all local RF regulations and licensing requirements. I am not responsible for any of your stupid fuckin' decisions!</p>
+<p><strong>All demonstration images and testing in this documentation were performed indoors without an antenna, with a maximum range of approximately 5 meters.</strong></p>
+<hr>
+<div><h2> Table of Contents</h2><a href="#-table-of-contents"></a></div> <div><h2> 12 Different Transmission Modes</h2><a href="#-12-different-transmission-modes"></a></div>
+<ul>
+<li><strong> FM Station</strong> - Full FM broadcasting with RDS metadata, playlists, and audio processing</li>
+<li><strong> Live Microphone Broadcast</strong> - Real-time microphone streaming with configurable modulation (AM/DSB/USB/LSB/FM/RAW)</li>
+<li><strong> FT8</strong> - Long-range digital mode for weak-signal communication on HF bands</li>
+<li><strong> RTTY</strong> - Radio teletype using Baudot code and FSK modulation</li>
+<li><strong> FSK</strong> - Frequency Shift Keying for digital data transmission</li>
+<li><strong> POCSAG</strong> - Digital pager messaging system</li>
+<li><strong> Morse Code</strong> - CW transmission with configurable WPM</li>
+<li><strong> Carrier Wave</strong> - Simple carrier generation for testing</li>
+<li><strong> Frequency Sweep</strong> - RF sweeps for antenna testing and analysis</li>
+<li><strong> SSTV</strong> - Slow Scan Television image transmission</li>
+<li><strong> Spectrum Paint</strong> - Convert images to RF spectrum art</li>
+<li><strong> IQ</strong> - Raw IQ sample replay for signal reproduction and testing</li>
+</ul>
+<p>All controlled through a <strong>standalone WiFi access point</strong> - connect any device and start transmitting like the RF rebel you were meant to be! Perfect for international waters operations and regions with more... flexible spectrum policies.</p>
+<div><h2> Quick Setup Guide</h2><a href="#-quick-setup-guide"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><strong>Raspberry Pi Zero 1 W</strong> (original model) with 4GB+ SD card
+<ul>
+<li><strong> Pi Zero 2 W does NOT work</strong> - rpitx requires the BCM2835 chip (Pi Zero 1 W) for predictable clock timing. The Pi Zero 2 W uses BCM2710A1 which breaks rpitx's timing assumptions.</li>
+</ul>
+</li>
+</ul> <p>Skip all the build bullshit and get straight to RF chaos:</p>
+<ol>
+<li><strong>Download</strong> the pre-built image: <a href="https://archive.org/download/piraterf-2025-11-23-22-18-49-20251123202604/piraterf_2025-11-23_22-18-49.img">PIrateRF Image v2025-11-23</a></li> <li><strong>Boot</strong> the Pi Zero W and connect to WiFi: "" (password: "FUCKER!!!")</li>
+<li><strong>Open browser</strong>: <pre><code>https://piraterf.local</code></pre> and start transmitting immediately!</li>
+</ol>
+<p><strong>Default Settings:</strong></p>
+<ul>
+<li><strong>WiFi AP</strong>: SSID "", Password "FUCKER!!!"</li>
+<li><strong>SSH Access</strong>: User <pre><code>fucker</code></pre>, Password <pre><code>FUCKER</code></pre>, Hostname <pre><code>piraterf.local</code></pre></li>
+<li><strong>Web Interface</strong>: <a href="https://piraterf.local">https://piraterf.local</a></li>
+</ul>
+<div><h3>Option 2: Manual Build Setup</h3><a href="#option-2-manual-build-setup"></a></div>
+<div><h3> IMPORTANT: Pi Zero Setup First!</h3><a href="#-important-pi-zero-setup-first"></a></div>
+<p><strong>Before you do ANYTHING else</strong>, get your fucking Pi Zero W connected and accessible via SSH. Follow this tutorial that actually works:</p>
+<p> <strong><a href="https://ciprian.51k.eu/pi-zero-1-wh-ubuntu-24-04-usb-connection-the-tutorial-that-actually-fkin-works/">Pi Zero W USB Connection Tutorial</a></strong></p>
+<p>This will get your Pi Zero connected via USB with SSH access so you can actually deploy PIrateRF to the little bastard.</p>
+<p><strong> INTERNET SHARING REQUIRED</strong>: After USB connection is working, you MUST share internet from your computer to the Pi Zero. The setup scripts need to download packages and dependencies - no internet, no RF chaos.</p>
+<p><strong>Set up internet sharing on Ubuntu/Linux</strong>:</p>
+<ol>
+<li>
+<p><strong>Set connection to shared</strong>: In Ubuntu Network Settings, find the USB connection (usually </p><pre><code>usb0</code></pre>), click on it, go to IPv4 settings, and change the method from "Link-Local Only" to "Shared to other computers"<p></p>
+</li>
+<li>
+<p><strong>Stop Docker services</strong> (they interfere with networking):</p>
+</li>
+</ol>
+<div><pre>sudo systemctl stop docker.socket
+sudo systemctl stop docker</pre></div>
+<ol>
+<li><strong>Restart NetworkManager</strong>:</li>
+</ol>
+<div><pre>sudo systemctl restart NetworkManager</pre></div>
+<ol>
+<li><strong>Configure iptables rules</strong> (replace <pre><code>usb0</code></pre> and <pre><code>enp5s0</code></pre> with your actual interfaces):</li>
+</ol>
+<div><pre>sudo iptables -A FORWARD -i usb0 -o enp5s0 -j ACCEPT
+sudo iptables -A FORWARD -i enp5s0 -o usb0 -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -s 10.42.0.0/24 -o enp5s0 -j MASQUERADE</pre></div>
+<ol>
+<li><strong>Test it</strong>: SSH into your Pi with <pre><code>ssh fucker@piraterf.local</code></pre> (or whatever <a href="mailto:user@host.local">user@host.local</a> you set up) and run <pre><code>ping 8.8.8.8</code></pre> - if it works, you're ready to cause some RF mayhem!</li>
+</ol>
+<p><strong>Find your interfaces</strong>: Use </p><pre><code>ip link show</code></pre> to see <pre><code>usb0</code></pre> (Pi connection) and your main internet interface.<p></p>
+<div><h3>1. Initial Setup</h3><a href="#1-initial-setup"></a></div>
+<div><pre><span><span>#</span> Clone the repository</span>
+git clone https://github.com/psyb0t/piraterf.git
+<span>cd</span> piraterf <span><span>#</span> Configure your Pi settings</span>
+nano scripts/pi_config.sh
+<span><span>#</span> Set: PI_USER, PI_HOST, PI_PASS, AP_SSID, AP_PASSWORD</span></pre></div>
+<p><strong>Example configuration</strong> (modify to match your Pi setup):</p>
+<div><pre>PI_USER=<span><span>"</span>fucker<span>"</span></span> <span><span>#</span> Pi username</span>
+PI_HOST=<span><span>"</span>piraterf.local<span>"</span></span> <span><span>#</span> Pi hostname/IP</span>
+PI_PASS=<span><span>"</span>FUCKER<span>"</span></span> <span><span>#</span> Pi password</span> AP_SSID=<span><span>"</span><span>"</span></span> <span><span>#</span> WiFi AP name</span>
+AP_PASSWORD=<span><span>"</span>FUCKER!!!<span>"</span></span> <span><span>#</span> WiFi AP password</span>
+AP_CHANNEL=<span><span>"</span>7<span>"</span></span> <span><span>#</span> WiFi channel (1-14)</span>
+AP_COUNTRY=<span><span>"</span>US<span>"</span></span> <span><span>#</span> Country code</span></pre></div>
+<div><h3>2. Complete Pi Setup</h3><a href="#2-complete-pi-setup"></a></div>
+<div><pre><span><span>#</span> Run the full automated setup</span>
+make pi</pre></div>
+<p>This command will:</p>
+<ul>
+<li>Install rpitx and dependencies</li>
+<li>Configure WiFi access point</li>
+<li>Build and deploy PIrateRF</li>
+<li>Install systemd service</li>
+<li>Reboot into full pirate mode </li>
+</ul>
+<div><h3>3. Connect and Use</h3><a href="#3-connect-and-use"></a></div>
+<ol>
+<li>Connect to WiFi: Your configured SSID (default: "")</li>
+<li>Open browser: <pre><code>https://piraterf.local</code></pre></li>
+<li>Select transmission mode and start broadcasting like a proper RF pirate!</li>
+</ol>
+<div><h2> Pirate Crew Mode</h2><a href="#-pirate-crew-mode"></a></div>
+<p>Connect multiple devices to the PIrateRF access point and all access the web interface simultaneously! While only one transmission can run at a time (because GPIO doesn't fucking share), all connected devices see real-time transmission status, output logs, and can take turns controlling the RF transmissions. Perfect for fucking around with friends in a radio wave gangbang! </p>
+<p><strong>Multi-Device Features:</strong></p>
+<ul>
+<li><strong>Shared Control</strong>: Any device can start/stop transmissions</li>
+<li><strong>Live Status</strong>: All devices see real-time transmission progress</li>
+<li><strong>Output Streaming</strong>: Live RF transmission logs visible to everyone</li>
+<li><strong>Turn-Based Chaos</strong>: Pass control between devices for collaborative broadcasting</li>
+</ul>
+<div><h2> Antenna Setup</h2><a href="#-antenna-setup"></a></div>
+<p>Connect your antenna to <strong>GPIO 4 (Physical Pin 7)</strong> on the Pi Zero W:</p>
+<ul>
+<li><strong>No antenna</strong>: Extremely weak signal contained within your home - perfect for safe chaos without pissing off the neighbors</li>
+<li><strong>Short wire (10-20cm)</strong>: Minimal range for indoor experimentation</li>
+<li><strong>Wire antenna (75cm)</strong>: Longer range but square wave harmonics travel farther than intended - keep this shit indoors</li>
+<li><strong>Low-pass filter + antenna</strong>: For proper outdoor transmission (get your fucking license first)</li>
+<li><strong>Low-pass filter + amplifier + antenna</strong>: For maximum range and maximum chaos (Pi outputs milliwatts by default)</li>
+</ul>
+<p><strong> WARNING</strong>: The Raspberry Pi GPIO outputs square waves with harmonics across the entire spectrum. For proper outdoor transmission, you MUST use appropriate low-pass filters to suppress spurious emissions and comply with RF regulations. Without filtering, you're broadcasting on multiple frequencies simultaneously.</p>
+<div><h2> Transmission Modes Explained</h2><a href="#-transmission-modes-explained"></a></div>
+<div><h3> FM Station</h3><a href="#-fm-station"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/fmstation.png"><img src="/psyb0t/piraterf/raw/main/assets/fmstation.png" alt="FM Station"></a></p>
+<p>Full FM broadcasting with RDS support:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in MHz</li>
+<li><strong>Audio File</strong>: Upload MP3/WAV/FLAC/OGG or select processed files
+<blockquote>
+<p><strong>Upload Process</strong>: Files automatically converted via FFmpeg to 48kHz/16-bit/mono WAV format and saved to </p><pre><code>./files/audio/uploads/</code></pre><p></p>
+</blockquote>
+</li>
+<li><strong>Playlist Builder</strong>: UI tool to combine multiple audio files and SFX into a single WAV using Sox</li>
+<li><strong>RDS Settings</strong>:
+<ul>
+<li><strong>PI Code</strong>: 4-character station identifier</li>
+<li><strong>PS Name</strong>: 8-character station name</li>
+<li><strong>Radio Text</strong>: 64-character scrolling message</li>
+</ul>
+</li>
+<li><strong>Play Mode</strong>: Toggle between "play once" and "loop"</li>
+<li><strong>Intro/Outro</strong>: Intro and outro SFX tracks</li>
+<li><strong>PPM Clock Correction</strong>: Fine-tune frequency accuracy</li>
+<li><strong>Timeout</strong>: Auto-stop after specified seconds (0 = no timeout)</li>
+<li><strong>Microphone Recording</strong>: Record audio directly through browser interface and save as WAV</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: WFM (wideband FM)</li>
+<li><strong>RDS Signal</strong>: The transmission includes three visible signals:
+<ul>
+<li>Main signal: Contains the audio/music</li>
+<li>Two parallel RDS signals: Located at a fixed frequency offset from the main carrier, containing station metadata</li>
+</ul>
+</li>
+<li><strong>RDS Decoding</strong>: SDR++ (sdrpp-brown fork) includes a built-in RDS decoder (no plugins required) that can decode the PI code, PS name, and radio text</li>
+</ul>
+<p><strong>Applications:</strong> Underground radio broadcasting, music streaming, podcasting, community radio, pirate radio stations, rickrolling entire neighborhoods</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/fmstation-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/fmstation-demo.png" alt="FM Station Demo"></a></p>
+<div><h3> Live Microphone Broadcast</h3><a href="#-live-microphone-broadcast"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/livemic.png"><img src="/psyb0t/piraterf/raw/main/assets/livemic.png" alt="Live Microphone Broadcast"></a></p>
+<p>Real-time microphone streaming with configurable modulation:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Sample Rate</strong>: Audio sample rate (default 48000 Hz)</li>
+<li><strong>Buffer Size</strong>: Browser audio buffer (1024-16384 samples)
+<ul>
+<li>1024: Low latency, may glitch</li>
+<li>4096: Default balanced setting</li>
+<li>16384: Max quality, higher latency</li>
+</ul>
+</li>
+<li><strong>Modulation</strong>: AM, DSB, USB, LSB, FM, RAW (note: USB/LSB are slow on Pi Zero)</li>
+<li><strong>Gain</strong>: Audio gain multiplier (default 1.0)</li>
+<li><strong>Real-time processing</strong>: Browser captures microphone, streams via WebSocket into unix socket that gets piped to rpitx</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: Use the same modulation mode you selected for transmission (AM, DSB, USB, LSB, FM, or RAW)</li>
+</ul>
+<p><strong>Applications:</strong> Live commentary, emergency communications, amateur radio nets, real-time broadcasting, broadcast your burps, go live on radio while in the moshpit</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/livemic-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/livemic-demo.png" alt="Live Microphone Broadcast Demo"></a></p>
+<div><h3> FT8</h3><a href="#-ft8"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/ft8.png"><img src="/psyb0t/piraterf/raw/main/assets/ft8.png" alt="FT8"></a></p>
+<p>Ultra-weak signal digital mode for HF DX:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Base frequency in Hz (e.g., 14074000 for 20m)</li>
+<li><strong>Message</strong>: FT8 message text (e.g., "CQ CA0ALL JN06")</li>
+<li><strong>PPM Clock Correction</strong>: Fine-tune frequency accuracy</li>
+<li><strong>Frequency Offset</strong>: 0-2500 Hz within FT8 sub-band (default 1240)</li>
+<li><strong>Time Slot</strong>: Choose 15-second transmission slot (0, 1, or 2)</li>
+<li><strong>Repeat Mode</strong>: Continuous transmission every 15 seconds</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: USB mode</li>
+<li><strong>Decoding</strong>: SDR++ (sdrpp-brown fork) has a built-in FT8 decoder module that works when tuned to standard FT8 frequencies (e.g., 14.074 MHz)</li>
+<li><strong> LICENSE WARNING</strong>: DO NOT transmit FT8 without a valid amateur radio call sign - FT8 messages contain call signs and transmitting without one is direct call sign spoofing and highly illegal</li>
+</ul>
+<p><strong>Applications:</strong> Long-range DX contacts, weak signal communication, intercontinental contacts, confusing the fuck out of contesters</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/ft8-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/ft8-demo.png" alt="FT8 Demo"></a></p>
+<div><h3> RTTY</h3><a href="#-rtty"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/rtty.png"><img src="/psyb0t/piraterf/raw/main/assets/rtty.png" alt="RTTY"></a></p>
+<p>Classic digital text communication:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Space Frequency</strong>: FSK space frequency offset (default 170 Hz)</li>
+<li><strong>Message</strong>: Text to transmit</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: USB mode</li>
+<li><strong>Decoding with fldigi</strong>:
+<ul>
+<li>Set fldigi to RTTY mode</li>
+<li>Configure shift to match your space frequency (default: 45.45/170 or your selected space frequency)</li>
+<li>Configure fldigi audio input to use PulseAudio monitor of your SDR software output (SDR++, GQRX, SDRSharp, SDRAngel, etc.)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Applications:</strong> Digital text communication, news bulletins, teletype messaging, sending ASCII art over RTTY</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/rtty-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/rtty-demo.png" alt="RTTY Demo"></a></p>
+<div><h3> FSK</h3><a href="#-fsk"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/fsk.png"><img src="/psyb0t/piraterf/raw/main/assets/fsk.png" alt="FSK"></a></p>
+<p>Binary frequency shift keying for data transmission:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Input Type</strong>: Text or file mode
+<ul>
+<li><strong>Text Mode</strong>: Direct text input</li>
+<li><strong>File Mode</strong>: Upload data files (any format)
+<blockquote>
+<p><strong>Upload Process</strong>: Files moved as-is (no conversion) to </p><pre><code>./files/data/uploads/</code></pre> preserving original extension<p></p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><strong>Baud Rate</strong>: Transmission speed (default 50 baud for reliability)</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: FM mode</li>
+<li><strong>Decoding with minimodem</strong>:
+<div><pre>pw-record --target=81 --rate=48000 --channels=1 - <span>|</span> minimodem --rx 50 -q -c 1</pre></div>
+<strong>Note</strong>: <pre><code>pw-record --target=81</code></pre> captures audio from the PulseAudio monitor sink (your SDR software output). Change the <pre><code>--rx</code></pre> parameter to match your selected baud rate. Current implementation works best with 50-100 baud rates.</li>
+</ul>
+<p><strong>Applications:</strong> Digital bulletins, file transfer, packet radio, data transmission, amateur radio digital modes, sending porn like back in the dialup days</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/fsk-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/fsk-demo.png" alt="FSK Demo"></a></p>
+<div><h3> POCSAG</h3><a href="#-pocsag"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/pocsag.png"><img src="/psyb0t/piraterf/raw/main/assets/pocsag.png" alt="POCSAG"></a></p>
+<p>Digital pager messaging system:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Baud Rate</strong>: 512, 1200 (default), or 2400 bps</li>
+<li><strong>Function Bits</strong>: 0-3 (default 3) determines message type:
+<ul>
+<li>0: Numeric-only messages (BCD encoded)</li>
+<li>1-2: Ring only (actual behavior depends on pager settings)</li>
+<li>3: Alphanumeric messages (ASCII encoded, default)</li>
+</ul>
+</li>
+<li><strong>Repeat Count</strong>: Number of transmission repeats (default 4)</li>
+<li><strong>Numeric Mode</strong>: Toggle for numeric-only messages</li>
+<li><strong>Invert Polarity</strong>: Signal polarity inversion</li>
+<li><strong>Debug Mode</strong>: Enable debug output</li>
+<li><strong>Messages</strong>: Array of messages, each containing:
+<ul>
+<li><strong>Address</strong>: Pager address (non-negative integer)</li>
+<li><strong>Message</strong>: Message text to transmit</li>
+<li><strong>Function Bits</strong> (optional): Per-message function bits override (0-3)</li>
+</ul>
+</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: FM mode</li>
+<li><strong>Decoding with multimon-ng</strong>:
+<div><pre>pw-record --target=81 --rate=22050 --channels=1 - <span>|</span> multimon-ng -t raw -a POCSAG1200 -</pre></div>
+<strong>Note</strong>: <pre><code>pw-record --target=81</code></pre> captures audio from the PulseAudio monitor sink (your SDR software output). Change the multimon-ng mode based on your selected baud rate:
+<ul>
+<li>512 baud: <pre><code>-a POCSAG512</code></pre></li>
+<li>1200 baud: <pre><code>-a POCSAG1200</code></pre></li>
+<li>2400 baud: <pre><code>-a POCSAG2400</code></pre></li>
+</ul>
+</li>
+</ul>
+<p><strong>Applications:</strong> Emergency paging systems, alert notifications, pager messaging, mass notification chaos, 90s nostalgia bombing</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/pocsag-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/pocsag-demo.png" alt="POCSAG Demo"></a></p>
+<div><h3> Morse Code</h3><a href="#-morse-code"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/morse.png"><img src="/psyb0t/piraterf/raw/main/assets/morse.png" alt="Morse Code"></a></p>
+<p>Traditional CW transmission:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Rate</strong>: Transmission speed in dits per minute (default 20)</li>
+<li><strong>Message</strong>: Text to convert to Morse code</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: CW mode</li>
+<li><strong>Decoding with multimon-ng</strong>:
+<div><pre>pw-record --target=81 --rate=22050 --channels=1 - <span>|</span> multimon-ng -t raw -a MORSE_CW -d 60 -g 60 -</pre></div>
+<strong>Note</strong>: <pre><code>pw-record --target=81</code></pre> captures audio from the PulseAudio monitor sink (your SDR software output). The <pre><code>-d</code></pre> (delay) and <pre><code>-g</code></pre> (gain) parameters should be adjusted based on your transmission rate (dits per minute). Higher rates require lower delay values, lower rates need higher delay values for proper decoding.</li>
+</ul>
+<p><strong>Applications:</strong> Morse code practice, beacon transmissions, emergency communications, sending dirty messages in CW, beacon spam</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/morse-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/morse-demo.png" alt="Morse Code Demo"></a></p>
+<div><h3> Carrier Wave</h3><a href="#-carrier-wave"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/carrier.png"><img src="/psyb0t/piraterf/raw/main/assets/carrier.png" alt="Carrier Wave"></a></p>
+<p>Simple carrier generation for testing:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Carrier frequency in Hz</li>
+<li><strong>PPM Clock Correction</strong>: Fine-tune frequency accuracy</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: RAW mode</li>
+<li><strong>Signal</strong>: Simple continuous wave at the specified frequency</li>
+</ul>
+<p><strong>Applications:</strong> Antenna tuning, transmitter testing, SWR measurements, dead carrier trolling, RF circuit testing</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/carrier-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/carrier-demo.png" alt="Carrier Wave Demo"></a></p>
+<div><h3> Frequency Sweep</h3><a href="#-frequency-sweep"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/freqsweep.png"><img src="/psyb0t/piraterf/raw/main/assets/freqsweep.png" alt="Frequency Sweep"></a></p>
+<p>Automated frequency sweeps for RF analysis:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Center Frequency</strong>: Center frequency in Hz</li>
+<li><strong>Bandwidth</strong>: Sweep bandwidth in Hz (default 1 MHz)</li>
+<li><strong>Sweep Duration</strong>: Time for complete sweep in seconds (default 5.0)</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: RAW mode</li>
+<li><strong>Watch</strong>: The active carrier frequency sweep from left to right across your waterfall display</li>
+</ul>
+<p><strong>Applications:</strong> Antenna analysis, filter testing, frequency response measurements, wobbulating like a maniac, antenna torture testing</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/freqsweep-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/freqsweep-demo.png" alt="Frequency Sweep Demo"></a></p>
+<div><h3> SSTV</h3><a href="#-sstv"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/sstv.png"><img src="/psyb0t/piraterf/raw/main/assets/sstv.png" alt="SSTV"></a></p>
+<p>Slow Scan Television image transmission:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Transmission frequency in Hz</li>
+<li><strong>Picture File</strong>: Upload or select image file
+<blockquote>
+<p><strong>Upload Process</strong>: Images converted via ImageMagick to RGB 320x256 format (.rgb extension) for SSTV transmission, saved to </p><pre><code>./files/images/uploads/</code></pre> (spectrum paint .Y files also available if previously uploaded)<p></p>
+</blockquote>
+</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: USB mode</li>
+<li><strong>SSTV Mode</strong>: Martin 1</li>
+<li><strong>Decoding</strong>: Can be decoded using QSSTV or other SSTV software</li>
+<li><strong> UNVERIFIED</strong>: I've tried decoding this with QSSTV but haven't successfully received images yet. The rpitx SSTV module is trusted to generate proper Martin 1 signals. If you successfully decode SSTV transmissions from PIrateRF, please open a PR describing your setup and decoding process!</li>
+</ul>
+<p><strong>Applications:</strong> Image transmission over radio, amateur radio SSTV, visual communication, cock pic broadcasting - look at that big ass rooster</p>
+<div><h3> Spectrum Paint</h3><a href="#-spectrum-paint"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/spectrumpaint.png"><img src="/psyb0t/piraterf/raw/main/assets/spectrumpaint.png" alt="Spectrum Paint"></a></p>
+<p>Convert images to RF spectrum art:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Base transmission frequency in Hz</li>
+<li><strong>Picture File</strong>: Upload or select image file
+<blockquote>
+<p><strong>Upload Process</strong>: Images converted via ImageMagick to YUV format (.Y extension) for spectrum paint AND RGB 320x256 format (.rgb extension) for SSTV, both saved to </p><pre><code>./files/images/uploads/</code></pre><p></p>
+</blockquote>
+</li>
+<li><strong>Excursion</strong>: Frequency deviation in Hz (default 100000)</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: RAW mode</li>
+<li><strong>Waterfall Settings</strong>: Set waterfall display to full resolution (no filtering, show all spectrum peaks not just the highs) to see the complete image painted across the spectrum</li>
+</ul>
+<p><strong>Applications:</strong> RF spectrum art, spectrum visualization, signal analysis demonstrations, drawing dick pics on waterfalls, spectrum graffiti</p>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/spectrumpaint-demo.png"><img src="/psyb0t/piraterf/raw/main/assets/spectrumpaint-demo.png" alt="Spectrum Paint Demo"></a></p>
+<div><h3> IQ</h3><a href="#-iq"></a></div>
+<p><a target="_blank" href="/psyb0t/piraterf/blob/main/assets/iq.png"><img src="/psyb0t/piraterf/raw/main/assets/iq.png" alt="IQ"></a></p>
+<p>Raw IQ sample file replay for signal reproduction:</p>
+<p><strong>Configuration Options:</strong></p>
+<ul>
+<li><strong>Frequency</strong>: Carrier frequency in Hz</li>
+<li><strong>IQ File</strong>: Upload or select .iq file
+<blockquote>
+<p><strong>Upload Process</strong>: IQ files moved as-is (no conversion) to </p><pre><code>./files/iqs/uploads/</code></pre> preserving the .iq extension<p></p>
+</blockquote>
+</li>
+<li><strong>Sample Rate</strong>: Sample rate in Hz (default 48000)
+<ul>
+<li>Range: 10,000 to 2,000,000 Hz</li>
+<li>Values above 200,000 Hz trigger automatic decimation</li>
+</ul>
+</li>
+<li><strong>Harmonic</strong>: Harmonic number for transmission (default 1)</li>
+<li><strong>IQ Data Type</strong>: Sample format (u8, i16, float, double)
+<ul>
+<li>Default: i16 (16-bit signed integer)</li>
+</ul>
+</li>
+<li><strong>Power Level</strong>: Drive level from 0.0 to 7.0 (default 0.1)</li>
+<li><strong>Shared Memory Token</strong>: Optional IPC token for runtime control
+<ul>
+<li>When set, forces IQ type to float and enables shared memory control</li>
+</ul>
+</li>
+<li><strong>Timeout</strong>: Auto-stop after specified seconds (0 = no timeout, default 30)</li>
+<li><strong>Loop Mode</strong>: Continuously replay the IQ file</li>
+</ul>
+<p><strong>Reception:</strong></p>
+<ul>
+<li><strong>Demodulation</strong>: Depends on what signal was captured in the IQ file</li>
+<li><strong>Signal Type</strong>: IQ files contain raw I/Q samples that can represent any modulation scheme</li>
+<li><strong>Replay Fidelity</strong>: The transmission will reproduce the exact signal characteristics captured in the IQ file</li>
+</ul>
+<p><strong>Applications:</strong> Signal replay, repeater capture/replay, testing and validation, signal analysis, reproducing complex modulations, SDR capture replay, RF fingerprinting research</p>
+<div><h2> Preset System</h2><a href="#-preset-system"></a></div>
+<p>Stop entering the same fuckin parameters every time! PIrateRF includes a full preset management system:</p>
+<p><strong>Features:</strong></p>
+<ul>
+<li><strong>Save Configurations</strong>: Save current module settings as named presets</li>
+<li><strong>Quick Load</strong>: Select and reload saved presets with one click</li>
+<li><strong>Preset Management</strong>: Create, rename, and delete presets through the web interface</li>
+<li><strong>Per-Module Storage</strong>: Each transmission mode has its own preset directory</li>
+<li><strong>Persistent Selection</strong>: Last selected preset remembered across page refreshes</li>
+<li><strong>One-Click Revert</strong>: Reload button reverts unsaved changes back to preset values</li>
+</ul>
+<p><strong>Usage:</strong></p>
+<ol>
+<li>Configure your transmission parameters (frequency, audio file, RDS settings, etc.)</li>
+<li>Click " New" to create a preset with a custom name</li>
+<li>Select the preset from the dropdown to enable Save/Reload/Edit buttons</li>
+<li>Make changes and click " Save" to update the preset</li>
+<li>Click " Reload" to revert any unsaved changes</li>
+<li>Click " Edit" to rename or delete the preset</li>
+</ol>
+<p><strong>Storage:</strong></p>
+<p>Presets are stored as JSON files in </p><pre><code>files/presets/{modulename}/</code></pre> and can be backed up, shared, or version controlled. Perfect for maintaining your favorite doorbell replay configs, FM broadcast setups, or FT8 configurations!<p></p>
+<div><h2> Development Commands</h2><a href="#-development-commands"></a></div>
+<div><h3>Local Development</h3><a href="#local-development"></a></div>
+<div><pre>make run-dev <span><span>#</span> Run locally with development setup</span>
+make build <span><span>#</span> Cross-compile for Pi Zero ARM</span>
+make lint-fix <span><span>#</span> Format and lint code</span>
+make test-coverage <span><span>#</span> Run tests with coverage</span></pre></div>
+<div><h3>Pi Management</h3><a href="#pi-management"></a></div>
+<div><pre>make pi <span><span>#</span> Complete automated setup</span>
+make deploy <span><span>#</span> Deploy to Pi</span>
+make install <span><span>#</span> Install systemd service</span>
+make ssh <span><span>#</span> SSH into Pi</span>
+make pi-reboot <span><span>#</span> Reboot Pi</span>
+make uninstall <span><span>#</span> Remove from Pi</span>
+make pi-image <span><span>#</span> Clone and shrink Pi SD card image</span></pre></div>
+<div><h2> Project Structure</h2><a href="#-project-structure"></a></div>
+<div><pre><code>piraterf/
+├── cmd/ # Application entry points
+├── internal/pkg/services/
+│ └── piraterf/ # Core service implementation
+│ ├── http_server.go # Web server and API
+│ ├── websocket*.go # Real-time communication
+│ ├── audio_*.go # Audio processing
+│ ├── image_*.go # Image processing
+│ ├── preset_*.go # Preset management
+│ └── execution_*.go # RF transmission management
+├── scripts/ # Setup and deployment scripts
+├── html/ # Web interface templates
+├── static/ # Frontend assets (CSS/JS/images)
+├── files/ # Runtime file storage
+│ ├── audio/ # Audio files (uploads, SFX)
+│ ├── images/ # Image files (uploads)
+│ ├── data/ # Data files for FSK
+│ ├── iqs/ # IQ sample files
+│ └── presets/ # Per-module preset configurations
+│ ├── pifmrds/ # FM broadcast presets
+│ ├── sendiq/ # IQ transmission presets
+│ └── ... # Other module presets
+└── uploads/ # Temporary upload staging
+</code></pre></div>
+<div><h2> Legal and Safety Notice</h2><a href="#-legal-and-safety-notice"></a></div>
+<p><strong> IMPORTANT LEGAL REQUIREMENTS </strong></p>
+<div><h3>Amateur Radio License Required</h3><a href="#amateur-radio-license-required"></a></div>
+<ul>
+<li><strong>Most frequencies require an amateur radio license</strong></li>
+<li>FT8, RTTY, FSK, SSTV, and most HF/VHF/UHF operations need proper licensing</li>
+<li>Check your local amateur radio authority (FCC/Ofcom/etc.) for license requirements</li>
+</ul>
+<div><h3>Frequency Regulations</h3><a href="#frequency-regulations"></a></div>
+<ul>
+<li><strong>Stay within amateur bands</strong>: Use only frequencies allocated to amateur radio</li>
+<li><strong>Power limits</strong>: Pi Zero outputs only a few milliwatts - if using an amplifier, respect maximum power limitations for your license class</li>
+<li><strong>Spurious emissions</strong>: Always use appropriate low-pass filters</li>
+<li><strong>No commercial content</strong>: Amateur radio prohibits business communications</li>
+</ul>
+<div><h3>Hardware Requirements (for proper use)</h3><a href="#hardware-requirements-for-proper-use"></a></div>
+<ul>
+<li><strong>Low-pass filters mandatory</strong>: Pi GPIO outputs square waves with harmonics across the spectrum</li>
+<li><strong>Proper antenna</strong>: Use resonant antennas for your operating frequency</li>
+<li><strong>Power output</strong>: Pi Zero GPIO outputs only a few milliwatts - if you want more range, you'll need a proper amplifier and low-pass filter</li>
+<li><strong>SWR monitoring</strong>: At milliwatt power levels the Pi doesn't give a fuck about SWR, but if you're using an amplifier you need proper impedance matching or you'll fry your amp</li>
+</ul>
+<div><h3>Geographic Restrictions</h3><a href="#geographic-restrictions"></a></div>
+<ul>
+<li><strong>Band plans vary by country</strong>: US/European/Asian amateur allocations differ</li>
+<li><strong>Power limits vary</strong>: Check local regulations for your license class</li>
+<li><strong>Emergency frequencies</strong>: Never interfere with emergency/public safety communications</li>
+</ul>
+<div><h3> Indoor Testing &amp; Experimentation</h3><a href="#-indoor-testing--experimentation"></a></div>
+<ul>
+<li><strong>No antenna = minimal range</strong>: Without a proper antenna, signals are extremely weak and contained within your home</li>
+<li><strong>Testing and learning</strong>: Perfect for understanding RF concepts, digital modes, and software functionality</li>
+<li><strong>Protocol development</strong>: Test encoding/decoding without external transmission</li>
+<li><strong>Educational use</strong>: Learn about modulation, filtering, and signal processing safely indoors</li>
+</ul>
+<div><h2> Standard Operating Frequencies</h2><a href="#-standard-operating-frequencies"></a></div>
+<p>PIrateRF supports the full amateur radio spectrum. Here are common frequencies for each mode:</p>
+<div><h3>HF Amateur Bands (3-30 MHz)</h3><a href="#hf-amateur-bands-3-30-mhz"></a></div>
+<ul>
+<li><strong>80m</strong>: 3.5-4.0 MHz | <strong>40m</strong>: 7.0-7.3 MHz | <strong>30m</strong>: 10.1-10.15 MHz</li>
+<li><strong>20m</strong>: 14.0-14.35 MHz | <strong>17m</strong>: 18.068-18.168 MHz | <strong>15m</strong>: 21.0-21.45 MHz</li>
+<li><strong>12m</strong>: 24.89-24.99 MHz | <strong>10m</strong>: 28.0-29.7 MHz</li>
+</ul>
+<div><h3>VHF/UHF Amateur Bands</h3><a href="#vhfuhf-amateur-bands"></a></div>
+<ul>
+<li><strong>2m</strong>: 144-148 MHz (FM: 144.0-148.0 MHz, Repeaters: 146.0-148.0 MHz out)</li>
+<li><strong>1.25m</strong>: 222-225 MHz | <strong>70cm</strong>: 420-450 MHz (Repeaters: 440-450 MHz out)</li>
+</ul>
+<div><h3>FT8 Standard Frequencies (USB mode)</h3><a href="#ft8-standard-frequencies-usb-mode"></a></div>
+<ul>
+<li><strong>80m</strong>: 3.573 MHz | <strong>40m</strong>: 7.074 MHz | <strong>30m</strong>: 10.136 MHz</li>
+<li><strong>20m</strong>: 14.074 MHz | <strong>17m</strong>: 18.100 MHz | <strong>15m</strong>: 21.074 MHz | <strong>10m</strong>: 28.074 MHz</li>
+</ul>
+<div><h3>RTTY Standard Frequencies (USB mode)</h3><a href="#rtty-standard-frequencies-usb-mode"></a></div>
+<ul>
+<li><strong>80m</strong>: 3.580-3.600 MHz | <strong>40m</strong>: 7.035-7.045 MHz | <strong>30m</strong>: 10.130-10.150 MHz</li>
+<li><strong>20m</strong>: 14.070-14.099 MHz | <strong>15m</strong>: 21.070-21.100 MHz | <strong>10m</strong>: 28.070-28.120 MHz</li>
+</ul>
+<div><h3>SSTV Standard Frequencies</h3><a href="#sstv-standard-frequencies"></a></div>
+<ul>
+<li><strong>80m</strong>: 3.736 MHz (LSB) | <strong>40m</strong>: 7.055 MHz (LSB)</li>
+<li><strong>20m</strong>: 14.233 MHz (USB) | <strong>15m</strong>: 21.343 MHz (USB) | <strong>10m</strong>: 28.667 MHz (USB)</li>
+<li><strong>2m</strong>: 144.55 MHz (FM)</li>
+</ul>
+<div><h3>FM Repeater Standard Splits</h3><a href="#fm-repeater-standard-splits"></a></div>
+<ul>
+<li><strong>2m</strong>: Input 144-146 MHz, Output 146-148 MHz (0.6 MHz split)</li>
+<li><strong>70cm</strong>: Input 420-430 MHz, Output 440-450 MHz (5 MHz split)</li>
+</ul>
+<div><h2> Core Dependencies</h2><a href="#-core-dependencies"></a></div>
+<ul>
+<li><strong><a href="https://github.com/F5OEO/rpitx">rpitx</a></strong> - RF transmission library for Raspberry Pi GPIO</li>
+<li><strong><a href="https://github.com/psyb0t/gorpitx">gorpitx</a></strong> - Go wrapper providing clean API for rpitx</li>
+<li><strong><a href="https://github.com/psyb0t/servicepack">servicepack</a></strong> - Development and deployment framework</li>
+<li><strong><a href="https://github.com/psyb0t/aichteeteapee">aichteeteapee</a></strong> - HTTP server with WebSocket support</li>
+</ul>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>This project is licensed under WTFPL (Do What The Fuck You Want To Public License).</p>
+<div><h2>TODO</h2><a href="#todo"></a></div>
+<ul>
+<li>
+<p>(gorpitx) Add 1 extra second of carrier to RTTY transmission</p>
+</li>
+<li>
+<p>(gorpitx) Ditch minimodem in FSK and use smth else</p>
+</li>
+<li>
+<p>(gorpitx) Fix word spacing in morse code</p>
+</li>
+<li>
+<p>Actually prove SSTV works (tried with qsstv and various settings + various listeners and nope can't do it)</p>
+</li>
+<li>
+<p>Add UI help overlays: mode info buttons explaining what each transmission mode does + per-input tooltips explaining what each configuration option changes</p>
+</li>
+<li>
+<p>Fix the fuckin UI header so it's not a fkin rectangle no more that fucks up the shadow lol</p>
+</li>
+</ul>
+<p><strong> Now get out there and start broadcasting like the RF pirate you were meant to be! </strong></p>
+<p><em>Remember: With great RF power comes great responsibility. Always operate legally and don't be a dick to other operators.</em></p>
+<hr>
+<p><em>Built with spite using <a href="https://github.com/psyb0t/servicepack">https://github.com/psyb0t/servicepack</a></em></p>
+<hr>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

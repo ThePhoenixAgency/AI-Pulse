@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Copilot CLI Weekly: VS Code Integration and the Agentic Workflows Era</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Copilot CLI Weekly: VS Code Integration and the Agentic Workflows Era</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 1:07:34 PM | <a href="https://dev.to/htekdev/copilot-cli-weekly-vs-code-integration-and-the-agentic-workflows-era-lh8" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/htekdev"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F2155191%2F4eb16de9-82ac-4486-b7cd-6c0ec2b33daf.png" alt="Hector Flores"></a> </p> </div><div> <h2> <a name="the-command-line-just-got-a-copilot" href="#the-command-line-just-got-a-copilot"> </a> The Command Line Just Got a Copilot
+</h2> <p>This week GitHub turned Copilot CLI into the glue connecting your terminal, VS Code, and GitHub Actions. With three releases between February 10-17 (v0.0.409, v0.0.410, v0.0.411-0), the CLI gained VS Code integration, SDK APIs for building agentic workflows, and a mountain of polish that makes long sessions actually usable.</p> <p>If you've been watching GitHub's agentic workflows push—<a href="https://github.blog/changelog/2026-02-13-github-agentic-workflows-are-now-in-technical-preview/" target="_blank">now in technical preview</a> as of February 13—this is where it all comes together. The CLI is no longer just a terminal assistant. It's the execution engine for AI-driven repository automation, and it's getting the infrastructure to handle that load.</p> <h2> <a name="vs-code-integration-the-bridge-between-ide-and-terminal" href="#vs-code-integration-the-bridge-between-ide-and-terminal"> </a> VS Code Integration: The Bridge Between IDE and Terminal
+</h2> <p>The headline feature in <a href="https://github.com/github/copilot-cli/releases/tag/v0.0.409" target="_blank">v0.0.409</a> is native VS Code integration. Run <code>/ide</code> from Copilot CLI and you're connected to your editor. The CLI can now see which files you have open, navigate your workspace, and coordinate with the Copilot agents already running in VS Code.</p> <p>This matters because the terminal and IDE have always been separate contexts. You'd start debugging something in VS Code, drop to the terminal to run a command, lose context, and manually shuttle information between the two. Now they share state. The CLI shows an IDE file selection indicator in the status bar when connected, so you always know what's in scope.</p> <p>It's the same philosophy behind <a href="https://modelcontextprotocol.io/" target="_blank">MCP (Model Context Protocol)</a>—give AI tools a shared context model so they stop asking you to repeat yourself. I covered context engineering in <a href="https://htek.dev/articles/context-engineering-key-to-ai-development/" target="_blank">my article on how codebase quality determines AI productivity</a>, and this is exactly that principle in action.</p> <h2> <a name="sdk-apis-build-your-own-agentic-workflows" href="#sdk-apis-build-your-own-agentic-workflows"> </a> SDK APIs: Build Your Own Agentic Workflows
+</h2> <p>Version 0.0.411-0 added SDK APIs for plan mode, autopilot, fleet, and workspace files. Translation: you can now programmatically control Copilot CLI's agentic features from your own tools.</p> <p>Why does this matter? <a href="https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/" target="_blank">GitHub Agentic Workflows</a> use Copilot CLI as the default execution engine. Workflows are authored in Markdown, compiled to GitHub Actions, and executed by agents running in sandboxed containers. Those agents need to invoke plan mode, delegate tasks, and coordinate across multiple files. The SDK makes that possible.</p> <p>If you've been following my coverage of <a href="https://htek.dev/articles/github-agentic-workflows-hands-on-guide/" target="_blank">agentic workflows</a>, you know the potential here. Write a workflow in plain language—"Triage new issues and label them by category"—and let an agent execute it with full access to GitHub's API, repository state, and tooling ecosystem. The CLI's SDK turns that from a prototype into production infrastructure.</p> <h2> <a name="memory-management-fixing-the-long-session-problem" href="#memory-management-fixing-the-long-session-problem"> </a> Memory Management: Fixing the Long Session Problem
+</h2> <p>One thing that's been quietly brutal about AI coding assistants: they leak memory like a sieve during long sessions. You'd start a session, work for a few hours, and watch your RAM climb until the tool becomes unusable.</p> <p>This week's releases hammer that problem:</p> <ul>
+<li>
+<strong>v0.0.410</strong>: Fixed high memory usage when loading large sessions, reduced growth during shell commands with rapid output, and evicted transient events after compaction</li>
+<li>
+<strong>v0.0.411-0</strong>: Reduced memory usage in alt-screen mode during long sessions</li>
+<li>Multiple fixes for encoding streaming chunks and rapid logging</li>
+</ul> <p>These aren't sexy features. They don't get demo'd at conferences. But they're the difference between a tool you use for 10 minutes and a tool that runs all day in a GitHub Actions workflow processing hundreds of issues.</p> <p>If you're building <a href="https://htek.dev/articles/top-5-mistakes-creating-custom-github-copilot-agents/" target="_blank">custom Copilot agents</a>, this is critical. Your agents need to run reliably without human intervention. Memory leaks kill that. The fact that GitHub is prioritizing stability at this stage tells you they're serious about production workloads.</p> <h2> <a name="terminal-ux-polish-the-small-stuff-that-matters" href="#terminal-ux-polish-the-small-stuff-that-matters"> </a> Terminal UX Polish: The Small Stuff That Matters
+</h2> <p>Buried in the release notes are dozens of terminal improvements that won't change what the CLI can do but massively change how it feels:</p> <ul>
+<li>
+<strong>Text selection now works in the footer area</strong> (v0.0.411-0)—you can finally copy output from the status bar</li>
+<li>
+<strong>Quick help overlay</strong> (v0.0.409)—press <code>?</code> to see grouped shortcuts and commands without leaving context</li>
+<li>
+<strong>Page Up/Page Down keyboard scrolling</strong> (v0.0.410)—because mouse scrolling in a terminal is ergonomic hell</li>
+<li>
+<strong>Ctrl+Z suspend/resume support</strong> (v0.0.410)—Unix users rejoice</li>
+<li>
+<strong>Shift+Enter inserts newlines</strong> (v0.0.410) in terminals with kitty keyboard protocol</li>
+<li>
+<strong>Terminal bell rings once when agent finishes</strong> (v0.0.411-0), not on every tool completion—thank god</li>
+</ul> <p>These are the paper cuts you don't notice until they're gone. The fact that GitHub is investing in things like tilde expansion in MCP server configuration (<code>~</code> now works in paths) shows they're listening to people actually using the tool daily.</p> <h2> <a name="what-this-signals" href="#what-this-signals"> </a> What This Signals
+</h2> <p>Three releases in a week isn't normal. The velocity here suggests GitHub is racing to get Copilot CLI production-ready for agentic workflows at scale. The technical preview announcement on February 13 wasn't just about the <code>gh aw</code> CLI—it was about the entire stack. And Copilot CLI is the runtime.</p> <p>We're seeing the same pattern across GitHub's AI tooling: invest in primitives, then compose them. VS Code integration gives agents access to editor state. SDK APIs let workflows orchestrate complex multi-agent tasks. Memory fixes make long-running automation viable. Quick help and keyboard shortcuts reduce friction for daily use.</p> <p>This is what it looks like when a terminal tool graduates from "neat demo" to "critical infrastructure."</p> <h2> <a name="the-bottom-line" href="#the-bottom-line"> </a> The Bottom Line
+</h2> <p>If you've been watching GitHub Copilot CLI from the sidelines, this is the week to check back in. The tool isn't just getting features—it's becoming the connective tissue for agentic development workflows across the terminal, IDE, and CI/CD.</p> <p>VS Code integration means your agents can see what you're working on. SDK APIs mean you can build your own automation on top of the same primitives powering GitHub Agentic Workflows. And the relentless focus on memory management and terminal UX means this thing is built to run, not just to ship.</p> <p>The terminal has always been where you go when you need control. Now it's also where you go when you need AI that actually works.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

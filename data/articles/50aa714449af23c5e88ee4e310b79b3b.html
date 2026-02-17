@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - wavyrai/rm-mcp: MCP server for accessing reMarkable tablet data</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - wavyrai/rm-mcp: MCP server for accessing reMarkable tablet data</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 1:52:53 PM | <a href="https://github.com/wavyrai/rm-mcp" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><h1>reMarkable MCP Server</h1><a href="#remarkable-mcp-server"></a></div>
+<p>Unlock the full potential of your reMarkable tablet as a <strong>second brain</strong> for AI assistants. This MCP server lets Claude, VS Code Copilot, and other AI tools read, search, and traverse your entire reMarkable library — including handwritten notes via OCR.</p> <div><h2>Why rm-mcp?</h2><a href="#why-rm-mcp"></a></div>
+<p>Your reMarkable tablet is a powerful tool for thinking, note-taking, and research. But that knowledge stays trapped on the device. This MCP server changes that:</p>
+<ul>
+<li><strong>Full library access</strong> — Browse folders, search documents, read any file</li>
+<li><strong>Typed text extraction</strong> — Native support for Type Folio and typed annotations</li>
+<li><strong>Handwriting OCR</strong> — Convert handwritten notes to searchable text</li>
+<li><strong>PDF &amp; EPUB support</strong> — Extract text from documents, plus your annotations</li>
+<li><strong>Smart search</strong> — Find content across your entire library</li>
+<li><strong>Second brain integration</strong> — Use with Obsidian, note-taking apps, or any AI workflow</li>
+</ul>
+<p>Whether you're researching, writing, or developing ideas, rm-mcp lets you leverage everything on your reMarkable through AI.</p>
+<hr>
+<div><h2>Quick Install</h2><a href="#quick-install"></a></div>
+<p>Uses the reMarkable Cloud API. Requires a reMarkable Connect subscription.</p> <div><pre>uvx rm-mcp --setup</pre></div>
+<p>This opens your browser, prompts for the one-time code, and prints the ready-to-paste config for Claude Code and Claude Desktop.</p>
+<div><h3>Manual setup</h3><a href="#manual-setup"></a></div>
+<div><h4>1. Get a One-Time Code</h4><a href="#1-get-a-one-time-code"></a></div>
+<p>Go to <a href="https://my.remarkable.com/device/apps/connect">my.remarkable.com/device/browser/connect</a> and generate a code.</p>
+<div><h4>2. Convert to Token</h4><a href="#2-convert-to-token"></a></div>
+<div><pre>uvx rm-mcp --register YOUR_CODE</pre></div>
+<div><h4>3. Add to your MCP client</h4><a href="#3-add-to-your-mcp-client"></a></div>
+<p><strong>Claude Code:</strong></p>
+<div><pre>claude mcp add remarkable \ -e REMARKABLE_TOKEN=<span><span>'</span>&lt;paste token from step 2&gt;<span>'</span></span> \ -e REMARKABLE_OCR_BACKEND=sampling \ -- uvx --refresh rm-mcp</pre></div>
+<p><strong>Claude Desktop</strong> — add to </p><pre><code>claude_desktop_config.json</code></pre> (use full path to <pre><code>uvx</code></pre>, e.g. from <pre><code>which uvx</code></pre>):<p></p>
+<div><pre>{ <span>"mcpServers"</span>: { <span>"remarkable"</span>: { <span>"command"</span>: <span><span>"</span>/Users/YOU/.local/bin/uvx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>--refresh<span>"</span></span>, <span><span>"</span>rm-mcp<span>"</span></span>], <span>"env"</span>: { <span>"REMARKABLE_TOKEN"</span>: <span><span>"</span>&lt;paste token from step 2&gt;<span>"</span></span> } } }
+}</pre></div>
+<hr> <hr>
+<div><h2>Tools</h2><a href="#tools"></a></div>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>remarkable_read</code></pre></td>
+<td>Read and extract text from documents (with pagination and search)</td>
+</tr>
+<tr>
+<td><pre><code>remarkable_browse</code></pre></td>
+<td>Navigate folders in your library</td>
+</tr>
+<tr>
+<td><pre><code>remarkable_search</code></pre></td>
+<td>Search content across multiple documents</td>
+</tr>
+<tr>
+<td><pre><code>remarkable_recent</code></pre></td>
+<td>Get recently modified documents</td>
+</tr>
+<tr>
+<td><pre><code>remarkable_status</code></pre></td>
+<td>Check connection status</td>
+</tr>
+<tr>
+<td><pre><code>remarkable_image</code></pre></td>
+<td>Get PNG/SVG images of pages (supports OCR via sampling)</td>
+</tr>
+</tbody>
+</table>
+<p>All tools are <strong>read-only</strong> and return structured JSON with hints for next actions.</p>
+<p> <strong><a href="/wavyrai/rm-mcp/blob/main/docs/tools.md">Full Tools Documentation</a></strong></p>
+<div><h3>Smart Features</h3><a href="#smart-features"></a></div>
+<ul>
+<li><strong>Multi-page read</strong> — Read all pages at once with <pre><code>pages="all"</code></pre>, or a range like <pre><code>pages="1-3"</code></pre></li>
+<li><strong>Grep auto-redirect</strong> — <pre><code>grep</code></pre> automatically finds and jumps to the matching page</li>
+<li><strong>Auto-redirect</strong> — Browsing a document path returns its content automatically</li>
+<li><strong>Auto-OCR</strong> — Notebooks with no typed text automatically enable OCR (opt out with <pre><code>auto_ocr=False</code></pre>)</li>
+<li><strong>Full-text search</strong> — Reading a document indexes it for fast future searches</li>
+<li><strong>Compact mode</strong> — Use <pre><code>compact_output=True</code></pre> to reduce token usage in responses</li>
+<li><strong>Batch search</strong> — Search across multiple documents in one call</li>
+<li><strong>Vision support</strong> — Get page images for visual context (diagrams, mockups, sketches)</li>
+<li><strong>Sampling OCR</strong> — Use client's AI for OCR on images (no API key needed)</li>
+</ul>
+<div><h3>Example Usage</h3><a href="#example-usage"></a></div>
+<div><pre><span># Read a document</span>
+<span>remarkable_read</span>(<span>"Meeting Notes"</span>) <span># Read all pages at once</span>
+<span>remarkable_read</span>(<span>"Meeting Notes"</span>, <span>pages</span><span>=</span><span>"all"</span>) <span># Read a range of pages</span>
+<span>remarkable_read</span>(<span>"Research Paper"</span>, <span>pages</span><span>=</span><span>"1-3"</span>) <span># Search for keywords (auto-redirects to matching page)</span>
+<span>remarkable_read</span>(<span>"Project Plan"</span>, <span>grep</span><span>=</span><span>"deadline"</span>) <span># Enable OCR for handwritten notes</span>
+<span>remarkable_read</span>(<span>"Journal"</span>, <span>include_ocr</span><span>=</span><span>True</span>) <span># Browse your library</span>
+<span>remarkable_browse</span>(<span>"/Work/Projects"</span>) <span># Search across documents</span>
+<span>remarkable_search</span>(<span>"meeting"</span>, <span>grep</span><span>=</span><span>"action items"</span>) <span># Get recent documents with previews</span>
+<span>remarkable_recent</span>(<span>limit</span><span>=</span><span>5</span>, <span>include_preview</span><span>=</span><span>True</span>) <span># Get a page image</span>
+<span>remarkable_image</span>(<span>"UI Mockup"</span>, <span>page</span><span>=</span><span>1</span>) <span># Get image with OCR text extraction</span>
+<span>remarkable_image</span>(<span>"Handwritten Notes"</span>, <span>include_ocr</span><span>=</span><span>True</span>)</pre></div>
+<hr>
+<div><h2>Resources</h2><a href="#resources"></a></div>
+<p>Documents are automatically registered as MCP resources:</p>
+<table>
+<thead>
+<tr>
+<th>URI Scheme</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>remarkable:///{path}.txt</code></pre></td>
+<td>Extracted text content</td>
+</tr>
+<tr>
+<td><pre><code>remarkableimg:///{path}.page-{N}.png</code></pre></td>
+<td>PNG image of page N (notebooks only)</td>
+</tr>
+<tr>
+<td><pre><code>remarkablesvg:///{path}.page-{N}.svg</code></pre></td>
+<td>SVG vector image of page N (notebooks only)</td>
+</tr>
+</tbody>
+</table>
+<p> <strong><a href="/wavyrai/rm-mcp/blob/main/docs/resources.md">Full Resources Documentation</a></strong></p>
+<hr>
+<div><h2>OCR for Handwriting</h2><a href="#ocr-for-handwriting"></a></div>
+<p>rm-mcp uses <strong>sampling OCR</strong> — your MCP client's AI model extracts text from handwritten notes. No additional API keys or services needed.</p>
+<div><h3>How It Works</h3><a href="#how-it-works"></a></div>
+<p>When you use </p><pre><code>include_ocr=True</code></pre>, rm-mcp sends page images to your client's LLM (Claude, GPT-4, etc.) via MCP sampling. The model reads the handwriting and returns the text.<p></p>
+<div><h3>Usage</h3><a href="#usage"></a></div>
+<div><pre><span># OCR on a page image</span>
+<span>remarkable_image</span>(<span>"Handwritten Notes"</span>, <span>include_ocr</span><span>=</span><span>True</span>) <span># OCR when reading a notebook</span>
+<span>remarkable_read</span>(<span>"Journal"</span>, <span>include_ocr</span><span>=</span><span>True</span>)</pre></div>
+<div><h3>Requirements</h3><a href="#requirements"></a></div>
+<ul>
+<li>Your MCP client must support the <strong>sampling</strong> capability (VS Code + Copilot, Claude Desktop, etc.)</li>
+<li><pre><code>REMARKABLE_OCR_BACKEND=sampling</code></pre> (this is the default)</li>
+</ul>
+<hr>
+<div><h2>Advanced Configuration</h2><a href="#advanced-configuration"></a></div>
+<div><h3>Root Path Filtering</h3><a href="#root-path-filtering"></a></div>
+<p>Limit the MCP server to a specific folder on your reMarkable. All operations will be scoped to this folder:</p>
+<div><pre>{ <span>"servers"</span>: { <span>"remarkable"</span>: { <span>"command"</span>: <span><span>"</span>uvx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>rm-mcp<span>"</span></span>], <span>"env"</span>: { <span>"REMARKABLE_TOKEN"</span>: <span><span>"</span>your-token<span>"</span></span>, <span>"REMARKABLE_ROOT_PATH"</span>: <span><span>"</span>/Work<span>"</span></span> } } }
+}</pre></div>
+<p>With this configuration:</p>
+<ul>
+<li><pre><code>remarkable_browse("/")</code></pre> shows contents of <pre><code>/Work</code></pre></li>
+<li><pre><code>remarkable_browse("/Projects")</code></pre> shows <pre><code>/Work/Projects</code></pre></li>
+<li>Documents outside <pre><code>/Work</code></pre> are not accessible</li>
+</ul>
+<p>Useful for:</p>
+<ul>
+<li>Focusing on work documents during office hours</li>
+<li>Separating personal and professional notes</li>
+<li>Limiting scope for specific AI workflows</li>
+</ul>
+<div><h3>Custom Background Color</h3><a href="#custom-background-color"></a></div>
+<p>Set the default background color for image rendering:</p>
+<div><pre>{ <span>"servers"</span>: { <span>"remarkable"</span>: { <span>"command"</span>: <span><span>"</span>uvx<span>"</span></span>, <span>"args"</span>: [<span><span>"</span>rm-mcp<span>"</span></span>], <span>"env"</span>: { <span>"REMARKABLE_TOKEN"</span>: <span><span>"</span>your-token<span>"</span></span>, <span>"REMARKABLE_BACKGROUND_COLOR"</span>: <span><span>"</span>#FFFFFF<span>"</span></span> } } }
+}</pre></div>
+<p>Supported formats:</p>
+<ul>
+<li><pre><code>#RRGGBB</code></pre> — RGB hex (e.g., <pre><code>#FFFFFF</code></pre> for white)</li>
+<li><pre><code>#RRGGBBAA</code></pre> — RGBA hex (e.g., <pre><code>#00000000</code></pre> for transparent)</li>
+</ul>
+<p>Default is </p><pre><code>#FBFBFB</code></pre> (reMarkable paper color). This affects both the <pre><code>remarkable_image</code></pre> tool and image resources.<p></p>
+<div><h3>All Environment Variables</h3><a href="#all-environment-variables"></a></div>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>REMARKABLE_TOKEN</code></pre></td>
+<td><em>(required)</em></td>
+<td>Auth token from <pre><code>uvx rm-mcp --setup</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_ROOT_PATH</code></pre></td>
+<td><pre><code>/</code></pre></td>
+<td>Limit access to a specific folder</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_OCR_BACKEND</code></pre></td>
+<td><pre><code>sampling</code></pre></td>
+<td>OCR backend (<pre><code>sampling</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_BACKGROUND_COLOR</code></pre></td>
+<td><pre><code>#FBFBFB</code></pre></td>
+<td>Background color for rendered images (<pre><code>#RRGGBB</code></pre> or <pre><code>#RRGGBBAA</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_CACHE_TTL</code></pre></td>
+<td><pre><code>60</code></pre></td>
+<td>Collection cache TTL in seconds</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_COMPACT</code></pre></td>
+<td><em>(off)</em></td>
+<td>Set to <pre><code>1</code></pre> or <pre><code>true</code></pre> to omit hints from responses globally</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_MAX_OUTPUT_CHARS</code></pre></td>
+<td><pre><code>50000</code></pre></td>
+<td>Maximum characters in tool responses</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_PAGE_SIZE</code></pre></td>
+<td><pre><code>8000</code></pre></td>
+<td>PDF/EPUB page size in characters</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_PARALLEL_WORKERS</code></pre></td>
+<td><pre><code>5</code></pre></td>
+<td>Parallel workers for metadata fetching</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_INDEX_PATH</code></pre></td>
+<td><pre><code>~/.cache/rm-mcp/index.db</code></pre></td>
+<td>SQLite full-text search index location</td>
+</tr>
+<tr>
+<td><pre><code>REMARKABLE_INDEX_REBUILD</code></pre></td>
+<td><em>(off)</em></td>
+<td>Set to <pre><code>1</code></pre> to force index rebuild on startup</td>
+</tr>
+</tbody>
+</table>
+<p>Most users only need </p><pre><code>REMARKABLE_TOKEN</code></pre>. The rest are for advanced tuning.<p></p>
+<hr>
+<div><h2>Use Cases</h2><a href="#use-cases"></a></div>
+<div><h3>Research &amp; Writing</h3><a href="#research--writing"></a></div>
+<p>Use rm-mcp while working in an Obsidian vault or similar to transfer knowledge from your handwritten notes into structured documents. AI can read your research notes and help develop your ideas.</p> <p>Ask your AI assistant to summarize your recent notes, find action items, or identify patterns across your journal entries.</p>
+<div><h3>Document Search</h3><a href="#document-search"></a></div>
+<p>Find that half-remembered note by searching across your entire library — including handwritten content.</p>
+<div><h3>Knowledge Management</h3><a href="#knowledge-management"></a></div>
+<p>Treat your reMarkable as a second brain that AI can access. Combined with tools like Obsidian, you can build a powerful personal knowledge system.</p>
+<hr>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Guide</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/wavyrai/rm-mcp/blob/main/docs/tools.md">Tools Reference</a></td>
+<td>Detailed tool documentation</td>
+</tr>
+<tr>
+<td><a href="/wavyrai/rm-mcp/blob/main/docs/resources.md">Resources Reference</a></td>
+<td>MCP resources documentation</td>
+</tr>
+<tr>
+<td><a href="/wavyrai/rm-mcp/blob/main/docs/capabilities.md">Capability Negotiation</a></td>
+<td>MCP protocol capabilities</td>
+</tr>
+<tr>
+<td><a href="/wavyrai/rm-mcp/blob/main/docs/development.md">Development</a></td>
+<td>Contributing and development setup</td>
+</tr>
+<tr>
+<td><a href="/wavyrai/rm-mcp/blob/main/docs/future-plans.md">Future Plans</a></td>
+<td>Roadmap and planned features</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2>Development</h2><a href="#development"></a></div>
+<div><pre>git clone https://github.com/wavyrai/rm-mcp.git
+<span>cd</span> rm-mcp
+uv sync --all-extras
+uv run pytest test_server.py -v</pre></div>
+<p> <strong><a href="/wavyrai/rm-mcp/blob/main/docs/development.md">Development Guide</a></strong></p>
+<hr>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
+<hr>
+<p>Built with <a href="https://github.com/ricklupton/rmscene">rmscene</a>, <a href="https://pymupdf.readthedocs.io/">PyMuPDF</a>, and inspiration from <a href="https://github.com/ddvk/rmapi">ddvk/rmapi</a>.</p>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

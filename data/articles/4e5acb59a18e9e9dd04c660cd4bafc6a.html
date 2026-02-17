@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,42 +28,7 @@
     Source: Journal du Hacker | Date: 2/11/2026 9:03:45 AM | <a href="https://www.linuxtricks.fr/news/10-logiciels-libres/590-migrer-de-bazzite-vers-une-autre-atomique/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>Bonjour à tous,</p><p> A la suite du drama Bazzite en cours (cf. <a href="https://ba.antheas.dev/bazzite-postmortem.html">https://ba.antheas.dev/bazzite-postmortem.html</a> ) certains d'entre vous voudront basculer de Bazzite vers une autre Atomique.</p><p> Il existe plusieurs projets.</p><p> Les projets "Universal Blue" tels que :<br>
-- Bluefin (avec GNOME)<br>
-- Aurora (avec KDE)</p><p> Les projets de Fedora Atomic tels que :<br>
-- Silverblue (GNOME)<br>
-- Kinoite (KDE)</p><p> L'avantage avec les atomique c'est qu'il suffit de "rebaser" son image sur une autre distribution et nul besoin de tout réinstaller.</p><p> Cependant, notez que :<br>
-- Bazzite est optimisé pour le jeu (Steam préinstallé, réglages kernel spécifiques, etc.), tandis que Bluefin ou Aurora est orienté vers la productivité et le développement. Certains paquets spécifiques à Bazzite ne seront plus présents nativement.<br>
-- Nettoyage des paquets superposés : vous aviez ajouté des paquets manuellement avec rpm-ostree install, ils tenteront d'être conservés lors du rebasage. Cela peut parfois créer des conflits de dépendances.<br>
-- Une fois le rebase terminé, il faudra redémarrer pour basculer sur Bluefin le nouveau système. l'ancienne image Bazzite restera disponible dans le menu de démarrage (Grub) en tant qu'option de secours si quelque chose ne fonctionne pas.<br>
-- Les applications installées via Flatpak (Steam, navigateurs, etc.) et les données personnelles dans /home ne seront pas touchées par cette manipulation.</p><p> Pour identifier l'image sur laquelle on est :</p><div><p><span>Code BASH :</span></p><div><pre><pre>rpm-ostree status</pre></pre></div></div><p> Chez moi ça renvoie :</p><div><p><span>Code TEXT :</span></p><div><pre><pre>State: idle
-Deployments:
-\u25cf ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-gnome:stable Digest: sha256:51563fcb6026b077f69331f87afefc6b5a7d642325ad24ea8d800cd6235f7348 Version: 43.20260210 (2026-02-10T07:10:08Z) ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-gnome:stable Digest: sha256:1ac90ec00a4f64af6423e907b04cfbae59ddc7db5f9a6757b08f6e1acb893f1d Version: 43.20260120.1 (2026-01-20T06:08:10Z)
-&nbsp;</pre></pre></div></div><p> Avant de faire un rebase, on pourra épingler l'image actuelle via :</p><div><p><span>Code BASH :</span></p><div><pre><pre><span>sudo</span> ostree admin pin <span>0</span></pre></pre></div></div><p> Voici la commande pour rebaser sur Bluefin, qui possède l'environnement de bureau GNOME (générique) :</p><div><p><span>Code BASH :</span></p><div><pre><pre>rpm-ostree rebase ostree-unverified-registry:ghcr.io<span>/</span>ublue-os<span>/</span>bluefin:latest</pre></pre></div></div><p> Il existe plusieurs version de conteneurs, optimisés pour des architectures différentes :<br>
-<a href="https://github.com/orgs/ublue-os/packages?repo_name=bluefin">https://github.com/orgs/ublue-os/packages?repo_name=bluefin</a></p><p> Si on veut basculer sur l'édition avec NVidia, on utilisera le conteneur bluefin-nvidia :</p><div><p><span>Code BASH :</span></p><div><pre><pre>rpm-ostree rebase ostree-unverified-registry:ghcr.io<span>/</span>ublue-os<span>/</span>bluefin-nvidia:latest</pre></pre></div></div><p> Si on était sur KDE Plasma, on peut basculer sur le projet Aurora :</p><div><p><span>Code BASH :</span></p><div><pre><pre>rpm-ostree rebase ostree-unverified-registry:ghcr.io<span>/</span>ublue-os<span>/</span>aurora:latest</pre></pre></div></div><p> Comme précédemment, on a plusieurs versions d'Aurora suivant les optimisations :<br>
-<a href="https://github.com/orgs/ublue-os/packages?repo_name=aurora">https://github.com/orgs/ublue-os/packages?repo_name=aurora</a></p><p> On peut même rebase sur le projet atomique de Fedora (par exemple Silverblue) :</p><div><p><span>Code BASH :</span></p><div><pre><pre>rpm-ostree rebase ostree-unverified-registry:quay.io<span>/</span>fedora-ostree-desktops<span>/</span>silverblue:<span>43</span></pre></pre></div></div><p> Pour la démo, je suis passé de Bazzite à Bluefin.<br>
-Le rendu est le suivant :</p><div><p><span>Code TEXT :</span></p><div><pre><pre>Pulling manifest: ostree-unverified-registry:ghcr.io/ublue-os/bluefin:latest
-Importing: ostree-unverified-registry:ghcr.io/ublue-os/bluefin:latest (digest: sha256:dcc24a6f052fecb342f6c6ad2c06d50929d78063009e1832bf909f2f6bbf0698)
-ostree chunk layers needed: 73 (3,2�Go)
-[0/73] Fetching ostree chunk 88abc97d19d7a8a03ee (19,6�Mo)... done
-[1/73] Fetching ostree chunk f5e508c95b334e1c91b (384,6�Mo)... done
-[2/73] Fetching ostree chunk db549cf01950f0942ca (12,1�Mo)... done
-[3/73] Fetching ostree chunk 72d2589ff3581e0d01b (85,7�Mo)... done
-[4/73] Fetching ostree chunk 7a4879fd39025f9966e (33,3�Mo)... done
-[5/73] Fetching ostree chunk 1d018bdcd0deaa188bf (22,9�Mo)... done
-...
-[71/73] Fetching ostree chunk ad312c5c40ccd18a3c6 (2,3�Ko)... done
-[72/73] Fetching ostree chunk 5c4292c1e692886f675 (6,6�Mo)... done
-Staging deployment... done
-Freed: 7,0 Go (pkgcache branches: 0)
-&nbsp;</pre></pre></div></div><p>
-Et on a une liste des paquets ajoutés/supprimés.</p><p> Avant de reboot, j'étais sur le noyau : 6.17.7-ba25.fc43.x86_64</p><p> On reboot avec :</p><div><p><span>Code BASH :</span></p><div><pre><pre>systemctl reboot</pre></pre></div></div><p> Au reboot on a la charte graphique de Bluefin.</p><p> On constate que l'environnement a changé, on a rebasculé sur le noyau par défaut de Fedora : 6.18.8-200.fc43.x86_64</p><p> Avec un rpm-ostree status, on constate qu'on est bien sur l'image de Bluefin :</p><div><p><span>Code TEXT :</span></p><div><pre><pre>State: idle
-AutomaticUpdates: stage; rpm-ostreed-automatic.timer: inactive
-Deployments:
-\u25cf ostree-unverified-registry:ghcr.io/ublue-os/bluefin:latest Digest: sha256:dcc24a6f052fecb342f6c6ad2c06d50929d78063009e1832bf909f2f6bbf0698 Version: latest-43.20260210 (2026-02-10T19:19:05Z) ostree-image-signed:docker://ghcr.io/ublue-os/bazzite-gnome:stable Digest: sha256:51563fcb6026b077f69331f87afefc6b5a7d642325ad24ea8d800cd6235f7348 Version: 43.20260210 (2026-02-10T07:10:08Z) Pinned: yes
-&nbsp;</pre></pre></div></div><p> Une fois qu'on a vérifié que tout est fonctionnel, on pourra supprimer l'image bazzite épinglée.<br>
-Si ça ne se passe pas bien, il "suffit" au boot sur GRUB de reprendre l'image de Bazzite !<br>
-Plus d'info sur le site : <a href="https://www.linuxtricks.fr/wiki/fedora-silverblue-memo-des-commandes-rpm-ostree-et-ostree#paragraph-epingler-une-image">https://www.linuxtricks.fr/wiki/fedora-silverblue-memo-des-commandes-rpm-ostree-et-ostree#paragraph-epingler-une-image</a></p></div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

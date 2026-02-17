@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,19 @@
     Source: GNT | Date: 2/17/2026 8:55:01 AM | <a href="https://www.generation-nt.com/actualites/rcs-chiffrement-apple-iphone-android-2070906" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>Apple commence à tester le chiffrement de bout en bout des messages RCS sur iPhone. Une annonce concerne iOS 26.4 en bêta, mais la version stable ne sera pas concernée pour le grand public.</p>
+    <div><article> <p> Publié le <time> 17 février 2026 à 09:55</time> par <a href="https://www.generation-nt.com/informations/a-propos/jerome.g"><span>Jérôme G.</span></a> </p> <section> <div> <p><span>Apple commence à tester le chiffrement de bout en bout des messages RCS sur iPhone. Une annonce concerne iOS 26.4 en bêta, mais la version stable ne sera pas concernée pour le grand public.</span></p> </div> <a href="https://img.generation-nt.com/rcs-iphone_050002D001720152.webp"> <div> <img src="https://img.generation-nt.com/rcs-iphone_0298000001720152.jpg" alt="rcs-iphone"> </div> </a> </section> <div><p><a href="https://www.generation-nt.com/actualites/apple-iphone-rcs-chiffrement-ios-securite-2068956">C'était attendu</a>. Apple intègre le support du <strong>chiffrement de bout en bout</strong> pour les messages <strong>RCS</strong>. Juste un début pour le moment, même s'il s'agira au final de combler une grosse lacune de sécurité&nbsp;dans les échanges entre les utilisateurs d'iPhone et d'Android.</p>
+<h2>Quelles sont les modalités de ce premier test ?</h2>
+<p>La fonctionnalité est introduite dans la bêta&nbsp;d'iOS 26.4. Cependant, <a href="https://developer.apple.com/documentation/ios-ipados-release-notes/ios-ipados-26_4-release-notes" target="_blank">Apple souligne</a> un test initial qui ne concerne que les communications entre ses&nbsp;appareils. Ce n'est pas encore le cas avec d'autres plateformes.</p>
+<p>Par ailleurs, cette avancée ne sera pas disponible pour le grand public avec la version finale d'iOS 26.4. Apple indique que le chiffrement de bout en bout pour RCS sera déployé " <em>dans une <strong>future mise à jour</strong> logicielle&nbsp;pour iOS, iPadOS, macOS et watchOS</em> ", sans donner de calendrier précis.</p>
+<h2>Une limitation qui a son importance</h2>
+<p>L'intérêt principal du protocole RCS sur iPhone est d'améliorer l'expérience de messagerie avec les utilisateurs Android, qui représentent la majorité des smartphones dans le monde. Le manque de chiffrement est l'un des principaux arguments d'Apple pour justifier son <strong>adoption tardive</strong> de la norme.</p>
+<p>En limitant les tests <strong>aux seuls <a href="https://lnk-gnt.com/go/4434768/iphone" target="_blank">iPhone</a></strong>, Apple retarde l'arrivée de la fonctionnalité la plus cruciale : des conversations sécurisées et interopérables. Google, de son côté, avait intégré son propre chiffrement de bout en bout à RCS dès 2020, en attendant que la norme soit officiellement adoptée par la GSMA.</p>
+<h2>Quel est le contexte technique de cette évolution ?</h2>
+<p>L'intégration du chiffrement de bout en bout (<strong>E2EE</strong>) fait suite à l'annonce de la GSM Association en septembre 2024, qui a officialisé cette couche de sécurité comme une étape majeure pour le Universal Profile de RCS.</p>
+<p>Pour l'implémentation, Apple devra procéder à une mise à jour vers le Universal Profile 3.0, basé sur le protocole de sécurité MLS (Messaging Layer Security).</p>
+<p><a href="https://img.generation-nt.com/rcs_01701889.webp" target="_blank"> <img src="https://img.generation-nt.com/rcs_0780043801701889.jpg" alt="RCS"> </a></p>
+<p>Le manque de chiffrement a longtemps été un point de friction, et Google a mené une campagne active pour qu'Apple adopte <a href="https://www.generation-nt.com/actualites/rcs-france-smartphone-sms-iphone-marketing-2062403">le RCS</a> afin de mettre fin à la <strong>fragmentation</strong> de l'expérience utilisateur.</p>
+<p>L'annonce d'Apple en 2023 d'adopter le RCS avait été une victoire pour l'interopérabilité, mais la question de la sécurité restait en suspens.</p> </div> <div> <p>Journaliste GNT spécialisé en nouvelles technologies</p> </div> <p>Cette page peut contenir des liens affiliés. Si vous achetez un produit depuis ces liens, le site marchand nous reversera une commission sans que cela n'impacte en rien le montant de votre achat. <a href="https://www.generation-nt.com/informations/conditions-utilisation#affiliation">En savoir plus</a>.</p> </article></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

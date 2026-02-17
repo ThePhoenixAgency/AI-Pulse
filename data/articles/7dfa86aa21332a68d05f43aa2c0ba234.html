@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Tried Coding With AI Glasses. Here’s What Actually Happened.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Tried Coding With AI Glasses. Here’s What Actually Happened.</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 1:16:09 PM | <a href="https://dev.to/javz/i-tried-coding-with-ai-glasses-heres-what-actually-happened-27fh" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p>I was recently gifted a pair of AI glasses. This is not the kind of purchase I would make for myself. But since I now own a pair, I saw this as an interesting opportunity to assess whether these glasses could improve my daily life as a developer. </p> <p><a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckghbiieq58lkdrirfxv.jpeg"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fckghbiieq58lkdrirfxv.jpeg" alt=" "></a></p> <hr> <h2> <a name="initial-experiments" href="#initial-experiments"> </a> Initial experiments
+</h2> <p>The first thing I tried was using the integrated AI to ask me to explain code on my screen. The results were… disappointing. I tried different situations: </p> <ul>
+<li>Explaining a simple HTML file</li>
+<li>Debugging a specific line of code</li>
+<li>Providing context-aware explanations</li>
+</ul> <p>It couldn’t reliably identify what I was looking at. It lacked precise understanding of the visual context.</p> <p>I started thinking about a better pipeline:</p> <ol>
+<li>Capture frame from glasses camera</li>
+<li>Apply OCR to extract visible text</li>
+<li>Feed image + extracted context into a capable vision model</li>
+<li>Send result to an LLM</li>
+<li>Return explanation as audio through the glasses</li>
+</ol> <p>In theory, this could turn the glasses into a real-time coding assistant. However this felt like too much work, complex and expensive. And less reliable than simply prompting an assistant directly inside the editor.</p> <h2> <a name="a-different-idea-life-commits" href="#a-different-idea-life-commits"> </a> A different idea: Life commits
+</h2> <p>That’s when I realized something. </p> <p>Maybe AI glasses aren’t useful because they help you code better. Maybe they’re useful because they help you understand yourself better.</p> <p>So I tried something different.</p> <p>What if I used my glasses to capture my life? I call them life commits. Just like Git commits capture the evolution of code, life commits capture the evolution of your day.</p> <p>It is very seamless to take photos with your glasses on the fly, unlike a phone which you need to take out of your pocket, creating friction. </p> <p>The idea is simple:</p> <p>Every hour, the app prompts you to capture a moment.</p> <p>The captured image is automatically classified using Apple's Vision framework:<br>
+</p> <div>
+<pre><code>VNClassifyImageRequest()
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>This allows categorization of environments like:</p> <ul>
+<li>workspace</li>
+<li>outdoors</li>
+<li>social</li>
+<li>exercise</li>
+<li>indoors</li>
+<li>screen time</li>
+</ul> <p>Then, I associate an emotional score with each moment.</p> <p>This can be done in two ways:</p> <p>Hand gestures, detected using:<br>
+</p> <div>
+<pre><code>VNDetectHumanHandPoseRequest()
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Or manually, through the app.</p> <p>Over time, this creates a timeline of:</p> <ul>
+<li>where you spend your time</li>
+<li>what environments you inhabit</li>
+<li>how those environments correlate with your emotional state</li>
+</ul> <p>The insights and patterns could be interesting to look at over time to improve your daily life and improve your emotional state.</p> <p>Here is a demo of the flow I built:<br>
+<a href="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpdlwldk3nf2ypksaoux2.gif"><img src="https://media2.dev.to/dynamic/image/width=800%2Cheight=%2Cfit=scale-down%2Cgravity=auto%2Cformat=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fpdlwldk3nf2ypksaoux2.gif" alt=" "></a></p> <p>Here is the working prototype to test this idea: <a href="https://github.com/JulienAvezou/ai-glasses" target="_blank">https://github.com/JulienAvezou/ai-glasses</a></p> <h2> <a name="would-i-recommend-buying-ai-glasses" href="#would-i-recommend-buying-ai-glasses"> </a> Would I recommend buying AI glasses?
+</h2> <p>I surprisingly enjoy listening to music through my glasses. While it doesn’t replace a comfy headset, it’s nice to hear music clearly without having anything on or above your ears. </p> <p>Prompting the AI to provide simple explanations while coding is nice too, as it’s very convenient to just have a conversation on the go whether at the desk or moving around.</p> <p>The ease of taking photos or videos on the fly is nice too.</p> <p>But right now, AI glasses still feel like early hardware.</p> <p>Not useless. But not essential.</p> <p>They don’t fundamentally change how I code.</p> <p>But they do change how I capture and reflect on my life.</p> <p>That might be their real potential.</p> <hr> <p><strong>So what do you think? Gadget or useful?</strong></p> <p>Curious to know if someone out there is actively using AI glasses.</p> <p>How do you incorporate them into your daily routine? (exercising, coding, …)</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
