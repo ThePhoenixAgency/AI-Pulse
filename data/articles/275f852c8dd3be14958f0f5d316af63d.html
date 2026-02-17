@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,7 +34,16 @@
     Source: Siecle Digital | Date: 2/17/2026 10:41:29 AM | <a href="https://siecledigital.fr/2026/02/16/wordpress-800-000-sites-exposes-a-une-faille-critique/" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>L’écosystème WordPress est une nouvelle fois confronté à une vulnérabilité de grande ampleur. En effet, une faille de sécurité découverte dans une extension de sauvegarde très répandue permettrait à des attaquants de prendre le contrôle total d’un site web, sans même avoir besoin de s’authentifier. Avec plus de 800 000 installations actives dans le monde, […]</p>
+    <div><div> <p>L’écosystème WordPress est une nouvelle fois <strong>confronté à une vulnérabilité de grande ampleur</strong>. En effet, une faille de sécurité découverte dans une extension de sauvegarde très répandue permettrait à des attaquants de <strong>prendre le contrôle total d’un site web</strong>, sans même avoir besoin de s’authentifier.</p>
+<p>Avec <strong>plus de 800 000 installations actives</strong> dans le monde, l’exposition potentielle est massive, notamment pour les sites mal configurés…</p>
+<h2>Une faille critique dans WPvivid Backup &amp; Migration</h2>
+<p>La vulnérabilité, référencée sous le nom <strong>CVE-2026-1357</strong>, affecte l’extension <strong>WPvivid Backup &amp; Migration</strong> jusqu’à la version 0.9.123 incluse. Très utilisée pour les sauvegardes, les migrations et les environnements de test, elle souffrirait d’un problème d’upload arbitraire de fichiers sans authentification.</p> <p>Concrètement, un attaquant peut <strong>exploiter le paramètre «&nbsp;<em>wpvivid_action=send_to_site</em>«&nbsp;</strong> pour intégrer un fichier malveillant sur le serveur cible. En l’absence de contrôle strict sur les extensions et les chemins de destination, il devient possible d’<strong>écrire des fichiers PHP dans des répertoires accessibles publiquement</strong>, puis de les exécuter. Ces fichiers permettraient, ensuite, une prise de contrôle complète du site.</p>
+<p>La faille repose notamment sur une <strong>mauvaise gestion des erreurs lors du déchiffrement RSA</strong>, où lorsque la fonction «&nbsp;<em>openssl_private_decrypt()</em>&nbsp;» échoue, elle renvoie une valeur incorrectement interprétée par le système de chiffrement AES utilisé. Cette faiblesse permet aux attaquants de <strong>générer des clés prévisibles</strong> et de contourner les mécanismes de protection.</p>
+<h2>Des sites vulnérables sous conditions…</h2>
+<p>Selon les analystes, <strong>tous les sites ne seraient pas exposés par défaut</strong>, car l’exploitation nécessite que la <strong>fonctionnalité de réception de sauvegarde</strong> depuis un autre site soit activée et via une <strong>clé générée temporairement</strong> valable jusqu’à 24 heures.</p>
+<p>Si cette option est désactivée par défaut, elle peut être activée lors d’opérations de migration ou de restauration, et c’est précisément <strong>dans les cas où un administrateur active la fonctionnalité pour un transfert</strong> que le risque devient tangible.</p>
+<p>La vulnérabilité a été découverte par <strong>Lucas Montes</strong>, et révélée par <a href="https://www.bleepingcomputer.com/news/security/wordpress-plugin-with-900k-installs-vulnerable-to-critical-rce-flaw/" target="_blank">Bleeping Computer</a>, dans le cadre du programme de bug bounty de <strong>Wordfence</strong>. Entretemps, l’éditeur de l’extension a publié un correctif avec la version 0.9.124, en intégrant <strong>une vérification stricte des erreurs de déchiffrement</strong> qui limite les types de fichiers autorisés (zip, gz, tar, sql) et empêche l’écriture hors du répertoire de sauvegarde.</p>
+<p>Désormais, les administrateurs sont invités à <strong>mettre à jour immédiatement leur extension</strong> et à <strong>désactiver toute fonctionnalité de réception de sauvegarde</strong> qui ne serait pas utilisée. Alors que WordPress alimente une large part du web mondial, chaque extension devient un maillon stratégique de la chaîne de sécurité…</p> </div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

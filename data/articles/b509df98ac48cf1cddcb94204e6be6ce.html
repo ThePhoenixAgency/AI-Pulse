@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>GitHub - irqlevel/nos: x86-64 operating system kernel</title>
+<title>Show HN: Nos – a hobby x86-64 C++ OS kernel running on real KVM clouds</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -29,270 +23,26 @@
 </style>
 </head>
 <body>
-  <h1>GitHub - irqlevel/nos: x86-64 operating system kernel</h1>
+  <h1>Show HN: Nos – a hobby x86-64 C++ OS kernel running on real KVM clouds</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 6:49:20 PM | <a href="https://github.com/irqlevel/nos" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <div><h3>nos</h3><a href="#nos"></a></div>
-<p>A hobby x86-64 operating system kernel written in C++20 and NASM.
-Code is partially written by AI models (Claude, GPT) with human control over architecture decisions, testing, and code review.
-Tested primarily in QEMU/KVM environments, including Google Cloud and Yandex Cloud VMs (MBR-based disk image, virtio devices). Real hardware support has not been tested.</p>
-<div><h4>Features</h4><a href="#features"></a></div>
-<ul>
-<li><strong>SMP</strong> — up to 8 CPUs with INIT/SIPI AP bootstrap</li>
-<li><strong>Preemptive multitasking</strong> — per-CPU task queues, round-robin scheduling, load-balanced task placement</li>
-<li><strong>Virtual memory</strong> — 4-level paging (4 KB pages), high-half kernel at <pre><code>0xFFFF800001000000</code></pre>, TLB shootdown across CPUs via IPI</li>
-<li><strong>Page allocator</strong> — fixed-size block allocator (1–128 contiguous pages), pool allocator (32 B – 2 KB), <pre><code>new</code></pre>/<pre><code>delete</code></pre> support</li>
-<li><strong>ACPI</strong> — RSDP/RSDT/MADT parsing for LAPIC/IOAPIC discovery and IRQ→GSI routing</li>
-<li><strong>Interrupts</strong> — IDT with exception handlers, IOAPIC routing (edge + level-triggered), LAPIC IPI, PIC (remapped then disabled)</li>
-<li><strong>Drivers</strong> — serial (COM1), VGA text mode, PIT (10 ms tick, SeqLock-protected counters), RTC (CMOS wall clock), PS/2 keyboard (8042), PCI bus scan, LAPIC, IOAPIC, <strong>virtio-blk</strong>, <strong>virtio-net</strong>, <strong>virtio-scsi</strong>, <strong>virtio-rng</strong> (legacy + modern virtio-pci transport)</li>
-<li><strong>Block I/O</strong> — asynchronous, interrupt-driven block request queue with DMA slot pool, <pre><code>BlockRequest</code></pre> submission with <pre><code>WaitGroup</code></pre> completion, direct DMA from caller buffers (page-aligned), virtqueue locking (<pre><code>RawSpinLock</code></pre>) for safe interrupt/task concurrency, early-boot polling fallback, SoftIrq-based retry for ring-full conditions, block device abstraction, MBR partition discovery</li>
-<li><strong>Networking</strong> — virtio-net driver with asynchronous interrupt-driven TX/RX, software frame queues (256-entry TX/RX) in <pre><code>NetDevice</code></pre> base class, reference-counted <pre><code>NetFrame</code></pre> descriptors for zero-copy DMA, TX slot pool with bitmask allocation, SoftIrq-based TX retry and RX processing, IP routing (subnet mask + gateway from DHCP, off-subnet traffic forwarded to gateway), ARP (cache, request, reply, dump), IPv4/UDP transmit, ICMP echo (ping reply + send, per-type statistics), DHCP client with lease renewal (sets IP, subnet mask, gateway, DNS server), DNS resolver with 32-entry cache (A-record queries, name compression, DHCP-provided server), <strong>TCP</strong> (connection state machine, 3-way handshake, sequence/ack tracking, retransmission timers, MSS negotiation, send/receive ring buffers, graceful close with FIN exchange, RST handling, ephemeral port allocation, granular locking: <pre><code>Mutex</code></pre> for ports, <pre><code>RawSpinLock</code></pre> for pool and per-connection state, SoftIrq-driven timer processing), <strong>HTTP client</strong> (URL parsing, DNS resolution, TCP connection, request/response, redirect following for 301/302/303/307/308 with loop limit, <pre><code>wget</code></pre> shell command), UDP remote shell (execute kernel commands over the network), network device abstraction with per-protocol packet counters, <pre><code>MacAddress</code></pre>/<pre><code>IpAddress</code></pre> structs (IPv6-ready tagged union)</li>
-<li><strong>Filesystem</strong> — VFS layer with mount points and path resolution, ramfs (in-memory), nanofs (on-disk filesystem with 4 KB blocks, superblock with UUID, inode/data bitmaps, CRC32 checksums for superblock/inodes/data, file and recursive directory deletion, persistent across remount)</li>
-<li><strong>Entropy</strong> — <pre><code>EntropySource</code></pre> interface, <pre><code>EntropySourceTable</code></pre> registry, virtio-rng hardware random number generator</li>
-<li><strong>Power management</strong> — ACPI S5 shutdown, keyboard controller reset/reboot</li>
-<li><strong>Interactive shell</strong> — trace output suppressed during shell session (dmesg only), restored on shutdown; commands: <pre><code>ps</code></pre>, <pre><code>cpu</code></pre>, <pre><code>bt &lt;pid&gt;</code></pre>, <pre><code>dmesg [filter]</code></pre>, <pre><code>uptime</code></pre>, <pre><code>date</code></pre>, <pre><code>memusage</code></pre>, <pre><code>pci</code></pre>, <pre><code>disks</code></pre>, <pre><code>diskread</code></pre>, <pre><code>diskwrite</code></pre>, <pre><code>irqstat</code></pre>, <pre><code>net</code></pre>, <pre><code>arp</code></pre>, <pre><code>icmpstat</code></pre>, <pre><code>tcpstat</code></pre>, <pre><code>udpsend</code></pre>, <pre><code>ping</code></pre>, <pre><code>nslookup</code></pre>, <pre><code>dnsflush</code></pre>, <pre><code>dhcp</code></pre>, <pre><code>wget</code></pre>, <pre><code>random</code></pre>, <pre><code>format</code></pre>, <pre><code>mount</code></pre>, <pre><code>umount</code></pre>, <pre><code>ls</code></pre>, <pre><code>cat</code></pre>, <pre><code>write</code></pre>, <pre><code>mkdir</code></pre>, <pre><code>touch</code></pre>, <pre><code>del</code></pre>, <pre><code>panic</code></pre>, <pre><code>version</code></pre>, <pre><code>cls</code></pre>, <pre><code>help</code></pre>, <pre><code>poweroff</code></pre>, <pre><code>reboot</code></pre></li>
-<li><strong>Timekeeping</strong> — TSC calibration via PIT channel 2 (multi-round median), KVM paravirt clock (<pre><code>kvmclock</code></pre>) for accurate VM time, RTC wall clock, layered clock source selection (kvmclock → calibrated TSC → PIT fallback), <pre><code>GetBootTime()</code></pre> / <pre><code>GetWallTimeSecs()</code></pre> API</li>
-<li><strong>Kernel infrastructure</strong> — spinlocks, mutexes, SeqLock (single-writer/multi-reader), atomics, wait groups, SoftIrq deferred processing, IPI tasks, timers, watchdog, stack traces with symbol resolution, dmesg ring buffer (512 KB, 2048 messages), panic handler with backtrace and CPU/task context, per-device interrupt statistics, AP startup diagnostics, virtual-to-physical address translation (4-level page table walk), byte-order helpers (<pre><code>Htons</code></pre>/<pre><code>Htonl</code></pre>/<pre><code>Ntohs</code></pre>/<pre><code>Ntohl</code></pre>)</li>
-<li><strong>Optimized stdlib</strong> — <pre><code>MemSet</code></pre>, <pre><code>MemCpy</code></pre>, <pre><code>MemCmp</code></pre>, <pre><code>StrLen</code></pre>, <pre><code>StrCmp</code></pre>, <pre><code>StrStr</code></pre> implemented in x86-64 assembly using <pre><code>rep stosq</code></pre>/<pre><code>rep movsq</code></pre>/<pre><code>repe cmpsb</code></pre>/<pre><code>repne scasb</code></pre></li>
-<li><strong>Boot tests</strong> — allocator, btree, ring buffer, stack trace, multitasking, contiguous page alloc (up to 128 pages), parsing helpers, block device table, memset, memcpy, memcmp, strlen, strcmp, strstr</li>
-</ul>
-<div><h4>Build</h4><a href="#build"></a></div>
-<p>Native (requires clang, nasm, ld, grub-mkrescue):</p>
-<div><pre>make</pre></div>
-<p>Via Docker (works on macOS / Apple Silicon):</p>
-<div><pre>./scripts/build-iso-docker.sh</pre></div>
-<p>This produces </p><pre><code>nos.iso</code></pre> and <pre><code>bin/kernel64.elf</code></pre> (for GDB symbols).<p></p>
-<p>Build a bootable qcow2 disk image (MBR, 2 partitions):</p>
-<div><pre>./scripts/build-disk.sh</pre></div>
-<p>This produces </p><pre><code>nos.qcow2</code></pre> (1 GB, MBR, virtio-blk compatible, suitable for KVM-based public clouds including Google Cloud Compute Engine).<p></p>
-<div><h4>Run</h4><a href="#run"></a></div>
-<p>With KVM (Linux):</p>
-<div><pre>qemu-system-x86_64 -enable-kvm -smp 8 -cdrom nos.iso -serial file:nos.log \ -device isa-debug-exit,iobase=0xf4,iosize=0x04</pre></div>
-<p>Without KVM (macOS with TCG):</p>
-<div><pre>qemu-system-x86_64 -smp 2 -cdrom nos.iso -serial file:nos.log -s -vga std</pre></div>
-<p>Boot from disk image (with virtio-blk):</p>
-<div><pre>./scripts/qemu-disk.sh</pre></div>
-<p>Deploy to Google Cloud Compute Engine (select <strong>Skip OS adaptation</strong> when importing the image — the kernel already has the necessary drivers and no guest agent):</p>
-<div><pre><span><span>#</span> Upload disk image to a GCS bucket</span>
-gcloud storage cp nos.qcow2 gs://YOUR_BUCKET/nos.qcow2 <span><span>#</span> Create a Compute Engine image from the disk (skip OS adaptation)</span>
-gcloud compute images create nos-image \ --source-uri=gs://YOUR_BUCKET/nos.qcow2 <span><span>#</span> Launch a VM (serial console recommended)</span>
-gcloud compute instances create nos-vm \ --image=nos-image \ --machine-type=e2-small \ --metadata=serial-port-enable=true <span><span>#</span> Connect via serial console</span>
-gcloud compute connect-to-serial-port nos-vm</pre></div>
-<div><h4>Debug</h4><a href="#debug"></a></div>
-<p>Start QEMU with </p><pre><code>-s</code></pre> (GDB server on port 1234), then:<p></p>
-<div><pre>gdb -ex <span><span>"</span>symbol-file bin/kernel64.elf<span>"</span></span> \ -ex <span><span>"</span>set architecture i386:x86-64<span>"</span></span> \ -ex <span><span>"</span>target remote :1234<span>"</span></span></pre></div>
-<div><h4>Kernel parameters</h4><a href="#kernel-parameters"></a></div>
-<p>Pass via GRUB command line (edit </p><pre><code>build/grub.cfg</code></pre>):<p></p>
-<ul>
-<li><pre><code>smp=off</code></pre> — disable SMP, run on BSP only</li>
-<li><pre><code>console=serial</code></pre> — direct shell output to serial port only</li>
-<li><pre><code>console=vga</code></pre> — direct shell output to VGA only</li>
-<li><pre><code>dhcp=auto</code></pre> — start DHCP on <pre><code>eth0</code></pre> automatically at boot</li>
-<li><pre><code>dhcp=off</code></pre> — disable DHCP entirely (even via shell command)</li>
-<li><pre><code>dhcp=on</code></pre> — enable DHCP only via shell command (default)</li>
-<li><pre><code>dns=on</code></pre> — enable DNS resolver (uses DHCP-provided DNS server; requires <pre><code>dhcp=auto</code></pre>)</li>
-<li><pre><code>udpshell=PORT</code></pre> — start UDP remote shell on the given port (e.g. <pre><code>udpshell=9000</code></pre>)</li>
-</ul>
-<div><h4>UDP remote shell</h4><a href="#udp-remote-shell"></a></div>
-<p>When </p><pre><code>udpshell=PORT</code></pre> is set, the kernel listens for commands on that UDP port.
-A lightweight protocol header (16 bytes: magic, sequence number, chunk index, flags, payload length) frames every packet, enabling the client to validate replies, reassemble multi-chunk responses in order, and detect the end of a response without relying on timeouts.<p></p>
-<p>Connect with the included Python client:</p>
-<div><pre>python3 scripts/udpsh.py <span>&lt;</span>vm-ip<span>&gt;</span> [port] [timeout]</pre></div>
-<ul>
-<li>Default port is <pre><code>9000</code></pre>, default timeout is <pre><code>30</code></pre> seconds (long enough for blocking commands like <pre><code>ping</code></pre>).</li>
-<li>On protocol errors or timeouts, the client reconnects automatically and resets state.</li>
-<li>All shell commands work over the UDP session (including blocking ones like <pre><code>ping</code></pre>).</li>
-<li><strong>Warning:</strong> the UDP shell has no authentication — anyone who can reach the port has full kernel shell access. Use only for testing or behind a firewall.</li>
-</ul>
-<div><h4>Shell commands</h4><a href="#shell-commands"></a></div>
-<table>
-<thead>
-<tr>
-<th>Command</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><pre><code>cls</code></pre></td>
-<td>Clear screen</td>
-</tr>
-<tr>
-<td><pre><code>cpu</code></pre></td>
-<td>Dump CPU state</td>
-</tr>
-<tr>
-<td><pre><code>dmesg [filter]</code></pre></td>
-<td>Dump kernel log (optional substring filter)</td>
-</tr>
-<tr>
-<td><pre><code>uptime</code></pre></td>
-<td>Show uptime</td>
-</tr>
-<tr>
-<td><pre><code>date</code></pre></td>
-<td>Show wall clock date and time (RTC + boot time)</td>
-</tr>
-<tr>
-<td><pre><code>ps</code></pre></td>
-<td>Show tasks</td>
-</tr>
-<tr>
-<td><pre><code>bt &lt;pid&gt;</code></pre></td>
-<td>Dump stack trace of a task (uses IPI for remote CPUs)</td>
-</tr>
-<tr>
-<td><pre><code>watchdog</code></pre></td>
-<td>Show watchdog stats</td>
-</tr>
-<tr>
-<td><pre><code>memusage</code></pre></td>
-<td>Show memory usage</td>
-</tr>
-<tr>
-<td><pre><code>pci</code></pre></td>
-<td>Show PCI devices</td>
-</tr>
-<tr>
-<td><pre><code>disks</code></pre></td>
-<td>List block devices</td>
-</tr>
-<tr>
-<td><pre><code>diskread &lt;disk&gt; &lt;sector&gt;</code></pre></td>
-<td>Read and hex-dump a sector</td>
-</tr>
-<tr>
-<td><pre><code>diskwrite &lt;disk&gt; &lt;sector&gt; &lt;hex&gt;</code></pre></td>
-<td>Write hex data to a sector</td>
-</tr>
-<tr>
-<td><pre><code>irqstat</code></pre></td>
-<td>Show per-device interrupt counters</td>
-</tr>
-<tr>
-<td><pre><code>help</code></pre></td>
-<td>List commands</td>
-</tr>
-<tr>
-<td><pre><code>net</code></pre></td>
-<td>List network devices and per-protocol stats</td>
-</tr>
-<tr>
-<td><pre><code>arp</code></pre></td>
-<td>Show ARP table</td>
-</tr>
-<tr>
-<td><pre><code>icmpstat</code></pre></td>
-<td>Show ICMP statistics</td>
-</tr>
-<tr>
-<td><pre><code>tcpstat</code></pre></td>
-<td>Show TCP connections and statistics</td>
-</tr>
-<tr>
-<td><pre><code>wget &lt;url&gt;</code></pre></td>
-<td>Fetch a URL via HTTP GET (follows redirects)</td>
-</tr>
-<tr>
-<td><pre><code>udpsend &lt;ip&gt; &lt;port&gt; &lt;msg&gt;</code></pre></td>
-<td>Send a UDP packet</td>
-</tr>
-<tr>
-<td><pre><code>ping &lt;ip|hostname&gt;</code></pre></td>
-<td>Send 5 ICMP echo requests with RTT (resolves hostnames via DNS)</td>
-</tr>
-<tr>
-<td><pre><code>nslookup &lt;hostname&gt;</code></pre></td>
-<td>Resolve hostname to IP via DNS</td>
-</tr>
-<tr>
-<td><pre><code>dnsflush</code></pre></td>
-<td>Flush DNS cache</td>
-</tr>
-<tr>
-<td><pre><code>dhcp [dev]</code></pre></td>
-<td>Obtain IP address via DHCP</td>
-</tr>
-<tr>
-<td><pre><code>random [len]</code></pre></td>
-<td>Get random bytes as hex string</td>
-</tr>
-<tr>
-<td><pre><code>format nanofs &lt;disk&gt;</code></pre></td>
-<td>Format disk with nanofs</td>
-</tr>
-<tr>
-<td><pre><code>mount ramfs &lt;path&gt;</code></pre></td>
-<td>Mount a ramfs at path</td>
-</tr>
-<tr>
-<td><pre><code>mount nanofs &lt;disk&gt; &lt;path&gt;</code></pre></td>
-<td>Mount nanofs from disk at path</td>
-</tr>
-<tr>
-<td><pre><code>umount &lt;path&gt;</code></pre></td>
-<td>Unmount filesystem</td>
-</tr>
-<tr>
-<td><pre><code>mounts</code></pre></td>
-<td>List mount points</td>
-</tr>
-<tr>
-<td><pre><code>ls &lt;path&gt;</code></pre></td>
-<td>List directory contents</td>
-</tr>
-<tr>
-<td><pre><code>cat &lt;path&gt;</code></pre></td>
-<td>Show file contents</td>
-</tr>
-<tr>
-<td><pre><code>write &lt;path&gt; &lt;text&gt;</code></pre></td>
-<td>Write text to file (creates if needed)</td>
-</tr>
-<tr>
-<td><pre><code>mkdir &lt;path&gt;</code></pre></td>
-<td>Create directory</td>
-</tr>
-<tr>
-<td><pre><code>touch &lt;path&gt;</code></pre></td>
-<td>Create empty file</td>
-</tr>
-<tr>
-<td><pre><code>del &lt;path&gt;</code></pre></td>
-<td>Remove file or directory</td>
-</tr>
-<tr>
-<td><pre><code>panic [type]</code></pre></td>
-<td>Trigger kernel panic (direct, pagefault, divzero, ud)</td>
-</tr>
-<tr>
-<td><pre><code>version</code></pre></td>
-<td>Show kernel version</td>
-</tr>
-<tr>
-<td><pre><code>poweroff</code></pre> / <pre><code>shutdown</code></pre></td>
-<td>Power off (ACPI S5)</td>
-</tr>
-<tr>
-<td><pre><code>reboot</code></pre></td>
-<td>Reset system (keyboard controller)</td>
-</tr>
-</tbody>
-</table>
-<div><h4>Project layout</h4><a href="#project-layout"></a></div>
-<div><pre><code>boot/ Multiboot2 entry, 32→64-bit transition, AP trampoline
-kernel/ Core: scheduling, tasks, interrupts, SoftIrq, shell, timers, timekeeping (TSC, kvmclock), locks, panic, symbol table
-drivers/ Hardware: serial, VGA, PIT, RTC, 8042, PCI, PIC, LAPIC, IOAPIC, ACPI, virtio-blk, virtio-net, virtio-scsi, virtio-rng
-block/ Block I/O: device abstraction, async request queue, MBR partition discovery
-net/ Networking: device abstraction, protocol headers, ARP, ICMP, DHCP, DNS, TCP, HTTP client, UDP shell
-fs/ Filesystem: VFS, ramfs, nanofs, block I/O helpers
-mm/ Memory: page tables (4-level walk, VirtToPhys), page allocator, pool allocator
-lib/ Utilities: list, vector, btree, ring buffer, bitmap, CRC32 checksum, stdlib
-build/ Linker script, GRUB configs
-scripts/ Build, run, debug, and GDB helpers
-</code></pre></div>
+    <p>Hi HN,
+I want to share nos, a hobby x86-64 OS kernel I’ve been working on.
+I started this mainly because I wanted to learn kernel development properly, and studying the Linux kernel feels pretty overwhelming these days. It’s huge, highly optimized, and hard to follow end-to-end. So I decided to build something smaller but still realistic.
+nos is written in C++20 + NASM and currently has:
+SMP + preemptive scheduler for kernel tasks (no user-mode yet)
+virtual memory (4-level paging, high-half kernel)
+interrupts + basic ACPI
+PCI scan/probing + virtio drivers (blk + scsi + net + rng)
+IPv4/TCP, DHCP, DNS, UDP, ARP, ICMP, simple HTTP client
+small filesystem + shell (including remote)
+timekeeping (pit, tsc, kvm clock, rtc)
+It runs in QEMU/KVM — and also boots on real cloud VMs (I’ve tested it on Google Cloud using KVM-based instances e2-medium).
+This is mostly a learning project, but I tried to keep the design clean and readable while still being close to how real systems work. I’d really appreciate any feedback, especially on scheduler design, memory management, or networking.
+Repo: https://github.com/irqlevel/nos
+Thanks for reading. URL:</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
