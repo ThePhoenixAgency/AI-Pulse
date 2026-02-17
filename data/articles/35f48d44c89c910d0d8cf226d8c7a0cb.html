@@ -6,16 +6,10 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
-  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
-  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
-  li { margin: 0.18em 0; }
-  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
-  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
-  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -34,13 +28,7 @@
     Source: Journal du Hacker | Date: 2/9/2026 11:33:21 AM | <a href="https://blog.toniob.net/post/2026/02/05/HTTP/3-avec-Nginx-sous-Debian-Trixie" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <div><div><p>La version 13 de Debian, nommée Trixie, dispose d’une version assez récente de Nginx pour pouvoir activer HTTP/3 et Quic. La syntaxe a un peu changé, y compris pour HTTP/2. Il fallait l’indiquer avant en paramètre de la directive listen :</p> <pre>listen 0.0.0.0:443 ssl http2;</pre> <p>Il s’agit maintenant d’une directive à part :</p> <pre>http2 on;
-listen 0.0.0.0:443 ssl;</pre> <p>Il est possible d’activer HTTP/3 sur un vhost avec la même syntaxe, mais une directive et des paramètres différents (il faut également que le port 443 soit ouvert en UDP sur votre firewall) :</p> <pre>http3 on;
-listen 0.0.0.0:443 quic;</pre> <p>Jusque là, pas de souci. Les problèmes arrivent toutefois à partir du moment où vous avez un backend en HTTP/1.1 (typiquement du websocket). Et là, il est possible que vous constatiez que tout est ok en HTTP/2 mais que si le client passe en HTTP/3, le backend va refuser de répondre.</p> <pre>server { listen 0.0.0.0:443 quic; … location / { include proxy_params; proxy_http_version 1.1; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection $connection_upgrade; proxy_pass http://127.0.0.1:9000; }
-}</pre> <p>Le problème vient du fichier proxy_params qui est packagé par Debian :</p> <pre>proxy_set_header Host $http_host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Proto $scheme;</pre> <p>Il envoie au proxy la valeur de la variable <em>$http_host</em>. Malheureusement, en HTTP/3, le client n’envoie pas de header Host, l’information étant envoyée pendant la connexion. La variable est donc vide. Et comme en HTTP/1.1, l’en-tête Host est obligatoire, ça ne passe pas. Pour résoudre cela, il est possible de changer la variable <em>$http_host</em> en <em>$host</em>. Cette variable prend une valeur en fonction de ce qui est disponible dans la requête. Elle ne peut pas être vide.</p> <p>J’ai créé <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1126960">le bug 1126960</a>&nbsp;chez Debian pour changer la variable du fichier proxy_params par défaut.</p></div></div>
+    <p>Summary unavailable for this article.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

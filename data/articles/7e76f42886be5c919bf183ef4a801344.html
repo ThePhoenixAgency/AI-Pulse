@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: Ucpify – JSON config to UCP-compliant commerce server</title>
+<title>GitHub - hemanth/ucpify: Generate UCP-compliant commerce servers from a simple JSON config</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,14 +29,138 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: Ucpify – JSON config to UCP-compliant commerce server</h1>
+  <h1>GitHub - hemanth/ucpify: Generate UCP-compliant commerce servers from a simple JSON config</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 6:28:12 AM | <a href="https://github.com/hemanth/ucpify" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Why should standing up a commerce backend require hundreds of lines of boilerplate? ucpify takes a single merchant-config.json and generates 13 REST endpoints with Stripe, PayPal, OAuth 2.0, and SQLite. Node.js and Python. Same config, same behavior. URL: https://news.ycombinator.com/item?id=47044335
-Points: 1
-# : 0</p>
+    <div><h1>ucpify</h1><a href="#ucpify"></a></div>
+<p>Turn a JSON file into a working commerce server.</p>
+<p>You have products. Maybe in a spreadsheet, maybe in a config file. You want to sell them online without building a full backend from scratch. ucpify takes a single </p><pre><code>merchant-config.json</code></pre> and gives you a <a href="https://ucp.dev">UCP</a>-compliant commerce API with payments, persistence, and OAuth wired in.<p></p>
+<p>Node.js and Python. Same config, same behavior.</p>
+<p><a target="_blank" href="/hemanth/ucpify/blob/main/assets/ucpify-arch.png"><img src="/hemanth/ucpify/raw/main/assets/ucpify-arch.png" alt="ucpify architecture"></a></p>
+<div><h2>Get started</h2><a href="#get-started"></a></div>
+<div><pre>npm install ucpify <span><span>#</span> or: pip install ucpify</span>
+npx ucpify init <span><span>#</span> generates a sample config</span>
+npx ucpify serve merchant-config.json</pre></div>
+<p>That's it. Server is running.</p>
+<div><h2>The config</h2><a href="#the-config"></a></div>
+<p>Everything is declared in one file:</p>
+<p><a target="_blank" href="/hemanth/ucpify/blob/main/assets/ucpify-config.png"><img src="/hemanth/ucpify/raw/main/assets/ucpify-config.png" alt="ucpify config"></a></p>
+<div><pre>{ <span>"name"</span>: <span><span>"</span>My Store<span>"</span></span>, <span>"domain"</span>: <span><span>"</span>https://mystore.com<span>"</span></span>, <span>"currency"</span>: <span><span>"</span>USD<span>"</span></span>, <span>"tax_rate"</span>: <span>0.08</span>, <span>"items"</span>: [ { <span>"id"</span>: <span><span>"</span>tshirt<span>"</span></span>, <span>"title"</span>: <span><span>"</span>Classic Tee<span>"</span></span>, <span>"price"</span>: <span>2500</span> }, { <span>"id"</span>: <span><span>"</span>hoodie<span>"</span></span>, <span>"title"</span>: <span><span>"</span>Premium Hoodie<span>"</span></span>, <span>"price"</span>: <span>5999</span> } ], <span>"shipping_options"</span>: [ { <span>"id"</span>: <span><span>"</span>standard<span>"</span></span>, <span>"title"</span>: <span><span>"</span>Standard Shipping<span>"</span></span>, <span>"price"</span>: <span>500</span> }, { <span>"id"</span>: <span><span>"</span>express<span>"</span></span>, <span>"title"</span>: <span><span>"</span>Express Shipping<span>"</span></span>, <span>"price"</span>: <span>1500</span> } ], <span>"payment_handlers"</span>: [ { <span>"namespace"</span>: <span><span>"</span>com.stripe<span>"</span></span>, <span>"id"</span>: <span><span>"</span>stripe_handler<span>"</span></span> }, { <span>"namespace"</span>: <span><span>"</span>com.paypal<span>"</span></span>, <span>"id"</span>: <span><span>"</span>paypal_handler<span>"</span></span> } ], <span>"oauth"</span>: { <span>"provider"</span>: <span><span>"</span>built-in<span>"</span></span> }
+}</pre></div>
+<p>Products, shipping, payments, auth. No code to write.</p>
+<div><h2>What you get</h2><a href="#what-you-get"></a></div>
+<p><a target="_blank" href="/hemanth/ucpify/blob/main/assets/ucpify-endpoints.png"><img src="/hemanth/ucpify/raw/main/assets/ucpify-endpoints.png" alt="ucpify endpoints"></a></p>
+<p>13 endpoints covering the full checkout lifecycle and OAuth:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Path</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/.well-known/ucp</code></pre></td>
+<td>UCP discovery</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/ucp/v1/checkout-sessions</code></pre></td>
+<td>Create checkout</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/ucp/v1/checkout-sessions/:id</code></pre></td>
+<td>Get session</td>
+</tr>
+<tr>
+<td><pre><code>PUT</code></pre></td>
+<td><pre><code>/ucp/v1/checkout-sessions/:id</code></pre></td>
+<td>Update session</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>.../complete</code></pre></td>
+<td>Complete checkout</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>.../cancel</code></pre></td>
+<td>Cancel checkout</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/ucp/v1/orders</code></pre></td>
+<td>List orders</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/ucp/v1/orders/:id</code></pre></td>
+<td>Get order</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/ucp/v1/items</code></pre></td>
+<td>Product catalog</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/.well-known/oauth-authorization-server</code></pre></td>
+<td>OAuth metadata</td>
+</tr>
+<tr>
+<td><pre><code>GET</code></pre></td>
+<td><pre><code>/oauth2/authorize</code></pre></td>
+<td>Consent screen</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/oauth2/token</code></pre></td>
+<td>Token exchange</td>
+</tr>
+<tr>
+<td><pre><code>POST</code></pre></td>
+<td><pre><code>/oauth2/revoke</code></pre></td>
+<td>Token revocation</td>
+</tr>
+</tbody>
+</table>
+<p>Plus </p><pre><code>/health</code></pre> and <pre><code>/admin</code></pre> for monitoring.<p></p>
+<div><h2>Identity linking</h2><a href="#identity-linking"></a></div>
+<p>UCP uses OAuth 2.0 so AI agents can act on behalf of users without sharing credentials. ucpify supports a built-in OAuth server or an external provider:</p>
+<div><pre>{ <span>"oauth"</span>: { <span>"provider"</span>: <span><span>"</span>built-in<span>"</span></span> } }</pre></div>
+<div><pre>{ <span>"oauth"</span>: { <span>"provider"</span>: <span><span>"</span>external<span>"</span></span>, <span>"issuer"</span>: <span><span>"</span>https://...<span>"</span></span>, <span>"authorization_endpoint"</span>: <span><span>"</span>https://...<span>"</span></span>, <span>"token_endpoint"</span>: <span><span>"</span>https://...<span>"</span></span> } }</pre></div>
+<p>Register a client:</p>
+<div><pre>npx ucpify oauth:add-client merchant-config.json --name <span><span>"</span>My Agent<span>"</span></span> --redirect-uri <span><span>"</span>http://localhost:8080/callback<span>"</span></span></pre></div>
+<p>Supports Authorization Code with PKCE, token refresh, revocation, and Bearer middleware on all </p><pre><code>/ucp/v1/*</code></pre> routes.<p></p>
+<div><h2>What's included</h2><a href="#whats-included"></a></div>
+<ul>
+<li>Stripe and PayPal payment processing, webhooks included</li>
+<li>OAuth 2.0 identity linking, built-in or external</li>
+<li>SQLite with WAL mode, proper schemas, indexes</li>
+<li>Input validation and rate limiting</li>
+<li>Admin dashboard and health checks</li>
+<li>Works in Docker</li>
+</ul>
+<div><h2>Environment variables</h2><a href="#environment-variables"></a></div>
+<div><pre>STRIPE_SECRET_KEY=sk_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+PAYPAL_CLIENT_ID=...
+PAYPAL_CLIENT_SECRET=...</pre></div>
+<div><h2>CLI</h2><a href="#cli"></a></div>
+<div><pre>ucpify init <span><span>#</span> sample config</span>
+ucpify validate config.json <span><span>#</span> check your config</span>
+ucpify serve config.json <span><span>#</span> start server</span>
+ucpify serve config.json --no-db <span><span>#</span> in-memory mode</span>
+ucpify oauth:add-client config.json <span><span>#</span> register OAuth client</span></pre></div>
+<div><h2>Links</h2><a href="#links"></a></div>
+<p><a href="https://www.npmjs.com/package/ucpify">npm</a> · <a href="https://pypi.org/project/ucpify/">PyPI</a> · <a href="https://github.com/hemanth/ucpify">GitHub</a> · <a href="https://ucp.dev">UCP spec</a></p>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

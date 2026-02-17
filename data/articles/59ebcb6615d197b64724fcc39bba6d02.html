@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: Alexa-like voice interface for OpenClaw</title>
+<title>GitHub - sachaabot/openclaw-voice-agent: An open-source voice agent built on the PamirAI Distiller device, combining speech recognition, and text-to-speech to create a conversational AI assistant with OpenClaw you can talk to.</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,19 +29,171 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: Alexa-like voice interface for OpenClaw</h1>
+  <h1>GitHub - sachaabot/openclaw-voice-agent: An open-source voice agent built on the PamirAI Distiller device, combining speech recognition, and text-to-speech to create a conversational AI assistant with OpenClaw you can talk to.</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 6:01:56 AM | <a href="https://github.com/sachaabot/openclaw-voice-agent" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>I’ve been experimenting with running OpenClaw fully locally on a small PamirAI Distiller Alpha device. Something interesting happened: OpenClaw detected the device had an unused microphone + speaker, and I ended up wiring a full local voice interface on top of it, wake word, audio pipeline, and agent loop, all running 24/7 on-device.
-The result is a completely local, always-on AI agent I can talk to anytime (no cloud, no external APIs required). It executes real tasks, manages memory locally, and behaves more like a persistent system than a chatbot.
-This repo contains the minimal setup so others can replicate:
-* Local voice pipeline (mic → STT → OpenClaw → TTS → speaker)
-* Wake-word loop
-* Fully offline / local-first architecture
-* Runs on small edge devices (tested on PamirAI Distiller Alpha)
-One unexpected observation from this project: modern agents are starting to feel environment-aware. Instead of being a static program, the OpenClaw can detect what hardware and capabilities exist around it, notice when something is missing or underused, and adapt itself, sometimes even improving its own interface and workflows without explicit instructions.</p>
+    <div><h1>OpenClaw Voice Agent</h1><a href="#openclaw-voice-agent"></a></div>
+<p> <a target="_blank" href="/sachaabot/openclaw-voice-agent/blob/master/images/pamirai-openclaw.jpeg"><img src="/sachaabot/openclaw-voice-agent/raw/master/images/pamirai-openclaw.jpeg" alt="OpenClaw Voice Agent on Distiller"></a>
+</p>
+<p>Wake-word activated voice interface for OpenClaw sessions on PamirAI devices.</p>
+<p><strong>Flow:</strong> Listen for wake word → Capture speech → Transcribe with Whisper → Send to OpenClaw → Speak response</p>
+<div><h2>Requirements</h2><a href="#requirements"></a></div>
+<ul>
+<li>Raspberry Pi CM5 (PamirAI Distiller)</li>
+<li>Microphone and speaker connected</li>
+<li>Python 3.10+ (Distiller SDK venv)</li>
+<li>OpenClaw local gateway running (see below)</li>
+<li>API keys: Picovoice (wake word), OpenAI (Whisper), AI provider for OpenClaw</li>
+</ul>
+<div><h2>Setup</h2><a href="#setup"></a></div>
+<div><pre><span>cd</span> /home/distiller/Projects/openclaw-voice-agent <span><span>#</span> Install dependencies into SDK venv</span>
+<span>source</span> /opt/distiller-sdk/activate.sh
+pip install -r requirements.txt <span><span>#</span> Configure</span>
+cp config.example.yaml config.yaml
+<span><span>#</span> Edit config.yaml with your API keys and settings</span></pre></div>
+<div><h3>Porcupine Wake Word Setup</h3><a href="#porcupine-wake-word-setup"></a></div>
+<p><strong>Get Your Access Key (Free)</strong></p>
+<ol>
+<li>Visit <a href="https://console.picovoice.ai/">Picovoice Console</a> and sign up (no credit card needed)</li>
+<li>Copy your <strong>AccessKey</strong> from the dashboard</li>
+<li>Set it in <pre><code>config.yaml</code></pre>:
+<div><pre><span>porcupine</span>: <span>access_key</span>: <span><span>"</span>YOUR_PICOVOICE_ACCESS_KEY<span>"</span></span></pre></div>
+</li>
+</ol>
+<p><strong>Option 1: Built-in Keywords (Easiest)</strong></p>
+<p>Use one of the pre-trained keywords:</p>
+<ul>
+<li><pre><code>"terminator"</code></pre>, <pre><code>"porcupine"</code></pre>, <pre><code>"bumblebee"</code></pre>, <pre><code>"americano"</code></pre>, <pre><code>"blueberry"</code></pre>, and more</li>
+</ul>
+<p>Works offline and is ready to go:</p>
+<div><pre><span>porcupine</span>: <span>keywords</span>: - <span><span>"</span>jarvis<span>"</span></span> <span>sensitivities</span>: - <span>0.6</span></pre></div>
+<p><strong>Option 2: Custom Wake Word (Better UX)</strong></p>
+<p>Train a custom wake word like "hey openclaw":</p>
+<ol>
+<li>Go to <a href="https://console.picovoice.ai/">Picovoice Console</a></li>
+<li>Click <strong>"Create Custom Keyword"</strong></li>
+<li>Enter your phrase (e.g., "hey openclaw")</li>
+<li>Select your platform: <strong>Raspberry Pi (32-bit ARM)</strong> (for PamirAI/CM5)</li>
+<li>Train the model (takes ~1 min)</li>
+<li>Download the <pre><code>.ppn</code></pre> file</li>
+<li>Copy it to your project directory (e.g., <pre><code>models/hey-openclaw_en_raspberry-pi.ppn</code></pre>)</li>
+<li>Update <pre><code>config.yaml</code></pre>:
+<div><pre><span>porcupine</span>: <span>keyword_paths</span>: - <span><span>"</span>/home/distiller/Projects/openclaw-voice-agent/models/hey-openclaw_en_raspberry-pi.ppn<span>"</span></span></pre></div>
+</li>
+</ol>
+<p><strong>Fine-tune Detection</strong></p>
+<p>Adjust sensitivity (0.0–1.0) if needed:</p>
+<ul>
+<li>Higher = catches quieter speech but more false positives</li>
+<li>Lower = requires louder/clearer speech</li>
+<li>Default (0.6) works well for most cases</li>
+</ul>
+<div><h3>TTS Providers</h3><a href="#tts-providers"></a></div>
+<table>
+<thead>
+<tr>
+<th>Provider</th>
+<th>Quality</th>
+<th>Speed</th>
+<th>Offline</th>
+<th>Setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>gtts</code></pre></td>
+<td>OK</td>
+<td>Slow</td>
+<td>No</td>
+<td>None (default)</td>
+</tr>
+<tr>
+<td><pre><code>elevenlabs</code></pre></td>
+<td>Excellent</td>
+<td>Fast</td>
+<td>No</td>
+<td>API key required</td>
+</tr>
+<tr>
+<td><pre><code>piper</code></pre></td>
+<td>Good</td>
+<td>Fast</td>
+<td>Yes</td>
+<td>Download model</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Running</h2><a href="#running"></a></div>
+<div><pre><span><span>#</span> Direct</span>
+<span>source</span> /opt/distiller-sdk/activate.sh
+python3 openclaw_voice_agent.py <span><span>#</span> Or with custom config path</span>
+OPENCLAW_CONFIG=/path/to/config.yaml python3 openclaw_voice_agent.py</pre></div>
+<div><h2>Systemd Service</h2><a href="#systemd-service"></a></div>
+<p>Run the voice agent as a background service that survives SSH disconnects and auto-starts on boot.</p>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre>sudo cp openclaw-voice-agent.service /etc/systemd/system/
+sudo systemctl daemon-reload
+sudo systemctl <span>enable</span> openclaw-voice-agent
+sudo systemctl start openclaw-voice-agent</pre></div>
+<div><h3>Manage</h3><a href="#manage"></a></div>
+<div><pre>sudo systemctl start openclaw-voice-agent <span><span>#</span> Start</span>
+sudo systemctl stop openclaw-voice-agent <span><span>#</span> Stop</span>
+sudo systemctl restart openclaw-voice-agent <span><span>#</span> Restart (e.g. after code changes)</span>
+sudo systemctl status openclaw-voice-agent <span><span>#</span> Check if running</span></pre></div>
+<div><h3>Logs</h3><a href="#logs"></a></div>
+<div><pre>journalctl -u openclaw-voice-agent -f <span><span>#</span> Tail logs live</span>
+journalctl -u openclaw-voice-agent -n 50 <span><span>#</span> Last 50 lines</span>
+journalctl -u openclaw-voice-agent --since <span><span>"</span>5 min ago<span>"</span></span> <span><span>#</span> Recent logs</span></pre></div>
+<div><h3>Disable</h3><a href="#disable"></a></div>
+<div><pre>sudo systemctl stop openclaw-voice-agent
+sudo systemctl disable openclaw-voice-agent <span><span>#</span> Remove from auto-start</span></pre></div>
+<div><h2>OpenClaw Setup</h2><a href="#openclaw-setup"></a></div>
+<p>OpenClaw is a <strong>local, self-hosted Node.js gateway</strong> that connects chat platforms to AI agents. It does NOT require an OpenClaw API key; instead it uses your AI provider credentials (Anthropic, OpenAI, etc.).</p>
+<p><strong>Prerequisites:</strong></p>
+<ul>
+<li>Node.js 22+</li>
+<li>AI provider API key (Anthropic, OpenAI, etc.)</li>
+</ul>
+<p><strong>Start OpenClaw:</strong></p>
+<div><pre><span><span>#</span> Install (if not already done)</span>
+npm install -g openclaw <span><span>#</span> Configure with your AI provider key</span>
+<span><span>#</span> Edit ~/.openclaw/openclaw.json with your credentials</span> <span><span>#</span> Start the gateway</span>
+openclaw gateway start <span><span>#</span> Verify it's running</span>
+openclaw status
+<span><span>#</span> Should show: Gateway is running on http://localhost:18789</span> <span><span>#</span> List available sessions</span>
+openclaw sessions list</pre></div>
+<p><strong>Documentation:</strong></p>
+<ul>
+<li><a href="https://docs.openclaw.ai">OpenClaw Docs</a></li>
+<li><a href="https://github.com/openclaw/openclaw">GitHub</a></li>
+</ul>
+<div><h2>LED Feedback</h2><a href="#led-feedback"></a></div>
+<p>The voice agent uses the PamirAI device's onboard LED to provide visual feedback during operation:</p>
+<ul>
+<li><strong> BLUE</strong> - Wake word detected, listening for your voice</li>
+<li><strong> GREEN</strong> - Processing your speech, waiting for OpenClaw response</li>
+<li><strong> RED</strong> - Error occurred during processing</li>
+<li><strong> OFF</strong> - Idle or task complete</li>
+</ul>
+<p>The LED states help you understand what the device is doing without needing text output.</p>
+<div><h3>Customization</h3><a href="#customization"></a></div>
+<p>Control LED behavior in </p><pre><code>config.yaml</code></pre>:<p></p>
+<div><pre><span>led</span>: <span>enabled</span>: <span>true </span><span><span>#</span> Enable/disable LED feedback</span> <span>index</span>: <span>0</span> <span><span>#</span> Which LED to use (0-6 available on PamirAI)</span></pre></div>
+<div><h2>Configuration</h2><a href="#configuration"></a></div>
+<p>See </p><pre><code>config.example.yaml</code></pre> for all options. Key settings:<p></p>
+<ul>
+<li><pre><code>porcupine.access_key</code></pre> - Free from <a href="https://console.picovoice.ai/">Picovoice Console</a></li>
+<li><pre><code>whisper.api_key</code></pre> - OpenAI API key</li>
+<li><pre><code>openclaw.base_url</code></pre> - Local Gateway URL (default: <pre><code>http://localhost:18789</code></pre>)</li>
+<li><pre><code>openclaw.agent_id</code></pre> - Agent to route messages to (default: <pre><code>main</code></pre>)</li>
+<li><pre><code>openclaw.session_id</code></pre> - Optional specific session ID (overrides agent_id)</li>
+<li><pre><code>openclaw.timeout</code></pre> - Max seconds to wait for agent response (default: 60)</li>
+<li><pre><code>tts.provider</code></pre> - Choose <pre><code>gtts</code></pre>, <pre><code>elevenlabs</code></pre>, or <pre><code>piper</code></pre></li>
+<li><pre><code>audio.silence_threshold</code></pre> - Adjust if it cuts off too early or waits too long</li>
+</ul>
+<p><strong>Important:</strong> The voice agent does NOT need an OpenClaw API key. OpenClaw runs locally and uses your AI provider credentials (configured in </p><pre><code>~/.openclaw/openclaw.json</code></pre>).<p></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

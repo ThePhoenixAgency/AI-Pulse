@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: Game Engine in Julia with 400KB Exports (Vs Unity's 200MB)</title>
+<title>GitHub - sinisterMage/Open-Reality: A Julia framework for building interactive 3D experiances</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,22 +29,130 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: Game Engine in Julia with 400KB Exports (Vs Unity's 200MB)</h1>
+  <h1>GitHub - sinisterMage/Open-Reality: A Julia framework for building interactive 3D experiances</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 7:49:01 AM | <a href="https://github.com/sinisterMage/Open-Reality" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Hi HN! Built a code-first game engine called OpenReality. No visual editor - you write games in pure code.
-features:
-- Pure code workflow
-- 400KB WASM exports (Unity: 200MB+)
-- Free and open source
-- full 3D rendering
-- multiple rendering backends
-github: https://github.com/sinisterMage/Open-Reality
-Happy to answer questions about the tech or implementation! URL: https://news.ycombinator.com/item?id=47044785
-Points: 3
-# : 0</p>
+    <div><h1>OpenReality</h1><a href="#openreality"></a></div>
+<p>A declarative, code-first game engine written in Julia.</p>
+<p>OpenReality provides AAA-quality rendering with a clean functional API. Define scenes as composable entity trees, attach PBR materials and physics, and render with a single function call — on OpenGL, Vulkan, WebGPU or Metal.</p>
+<div><h2>Features</h2><a href="#features"></a></div>
+<p><strong>Rendering</strong></p>
+<ul>
+<li>Physically-Based Rendering (Cook-Torrance BRDF, metallic/roughness workflow)</li>
+<li>Deferred + forward hybrid pipeline</li>
+<li>Cascaded Shadow Maps (4 cascades)</li>
+<li>Image-Based Lighting (procedural sky, HDR environment maps)</li>
+<li>Screen-Space Reflections (SSR)</li>
+<li>Screen-Space Ambient Occlusion (SSAO)</li>
+<li>Temporal Anti-Aliasing (TAA)</li>
+<li>Post-processing: bloom, tone mapping (Reinhard, ACES, Uncharted2), FXAA</li>
+<li>Advanced materials: clear coat, subsurface scattering, parallax occlusion mapping, emissive</li>
+<li>CPU-simulated particle system with billboard rendering</li>
+<li>Immediate-mode UI/HUD (text, buttons, progress bars, images)</li>
+<li>LOD system with dithered crossfade transitions</li>
+<li>Heightmap terrain with chunk-based LOD and splatmap layers</li>
+</ul>
+<p><strong>Engine</strong></p>
+<ul>
+<li>Entity Component System with O(1) component operations</li>
+<li>Immutable, functional scene graph</li>
+<li>Four rendering backends: OpenGL, Metal (macOS), Vulkan (Linux/Windows), WebGPU (experimental)</li>
+<li>Full-featured impulse-based physics engine (PGS solver with warm-starting)</li>
+<li>6 collider shapes: AABB, Sphere, Capsule, OBB, ConvexHull, Compound</li>
+<li>Joint constraints: ball-socket, distance, hinge, fixed, slider</li>
+<li>Spatial hash broadphase, GJK+EPA narrowphase, raycasting, CCD</li>
+<li>Trigger volumes, island-based sleeping, friction and restitution</li>
+<li>Keyframe animation with step, linear, and cubic spline interpolation</li>
+<li>Skeletal animation with vertex skinning (glTF 2.0 skin loading)</li>
+<li>3D positional audio (OpenAL) with spatial attenuation and Doppler effect</li>
+<li>glTF 2.0 and OBJ model loading</li>
+<li>Built-in FPS player controller</li>
+<li>Scene export to binary ORSB format for web deployment</li>
+</ul>
+<div><h2>Quick Start</h2><a href="#quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><strong>Julia 1.9+</strong> — <a href="https://julialang.org/downloads/">julialang.org</a></li>
+<li><strong>GLFW</strong> — <pre><code>sudo apt install libglfw3 libglfw3-dev</code></pre> (Ubuntu) / <pre><code>brew install glfw</code></pre> (macOS)</li>
+<li><strong>Vulkan SDK</strong> (optional) — <a href="https://vulkan.lunarg.com/sdk/home">lunarg.com</a></li>
+</ul>
+<div><h3>Install</h3><a href="#install"></a></div>
+<div><pre><span>using</span> Pkg
+Pkg<span>.</span><span>develop</span>(path<span>=</span><span><span>"</span>/path/to/OpenReality<span>"</span></span>)</pre></div>
+<div><h3>Hello World</h3><a href="#hello-world"></a></div>
+<div><pre><span>using</span> OpenReality <span>reset_entity_counter!</span>()
+<span>reset_component_stores!</span>() s <span>=</span> <span>scene</span>([ <span>create_player</span>(position<span>=</span><span>Vec3d</span>(<span>0</span>, <span>1.7</span>, <span>5</span>)), <span>entity</span>([ <span>DirectionalLightComponent</span>(direction<span>=</span><span>Vec3f</span>(<span>0.3</span>, <span>-</span><span>1.0</span>, <span>-</span><span>0.5</span>), intensity<span>=</span><span>2.0f0</span>) ]), <span>entity</span>([ <span>cube_mesh</span>(), <span>MaterialComponent</span>(color<span>=</span><span>RGB</span><span>{Float32}</span>(<span>0.9</span>, <span>0.1</span>, <span>0.1</span>), metallic<span>=</span><span>0.9f0</span>, roughness<span>=</span><span>0.1f0</span>), <span>transform</span>(position<span>=</span><span>Vec3d</span>(<span>0</span>, <span>0.5</span>, <span>0</span>)), <span>ColliderComponent</span>(shape<span>=</span><span>AABBShape</span>(<span>Vec3f</span>(<span>0.5</span>, <span>0.5</span>, <span>0.5</span>))), <span>RigidBodyComponent</span>(body_type<span>=</span>BODY_STATIC) ]), <span>entity</span>([ <span>plane_mesh</span>(width<span>=</span><span>20.0f0</span>, depth<span>=</span><span>20.0f0</span>), <span>MaterialComponent</span>(color<span>=</span><span>RGB</span><span>{Float32}</span>(<span>0.5</span>, <span>0.5</span>, <span>0.5</span>), roughness<span>=</span><span>0.9f0</span>), <span>transform</span>() ])
+]) <span>render</span>(s)</pre></div>
+<div><h3>Controls</h3><a href="#controls"></a></div>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>W / A / S / D</td>
+<td>Move</td>
+</tr>
+<tr>
+<td>Mouse</td>
+<td>Look around</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>Sprint</td>
+</tr>
+<tr>
+<td>Space</td>
+<td>Up</td>
+</tr>
+<tr>
+<td>Ctrl</td>
+<td>Down</td>
+</tr>
+<tr>
+<td>Escape</td>
+<td>Release cursor</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Documentation</h2><a href="#documentation"></a></div>
+<table>
+<thead>
+<tr>
+<th>Guide</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/sinisterMage/Open-Reality/blob/main/docs/getting-started.md">Getting Started</a></td>
+<td>Installation, tutorials, and your first scene</td>
+</tr>
+<tr>
+<td><a href="/sinisterMage/Open-Reality/blob/main/docs/api-reference.md">API Reference</a></td>
+<td>Complete reference for all components, functions, and types</td>
+</tr>
+<tr>
+<td><a href="/sinisterMage/Open-Reality/blob/main/docs/architecture.md">Architecture</a></td>
+<td>Engine internals and design decisions</td>
+</tr>
+<tr>
+<td><a href="/sinisterMage/Open-Reality/blob/main/docs/examples.md">Examples</a></td>
+<td>Annotated code samples for common patterns</td>
+</tr>
+</tbody>
+</table>
+<div><h2>Running Tests</h2><a href="#running-tests"></a></div>
+<div><pre><span>using</span> Pkg
+Pkg<span>.</span><span>activate</span>(<span><span>"</span>.<span>"</span></span>)
+Pkg<span>.</span><span>test</span>()</pre></div>
+<div><h2>License</h2><a href="#license"></a></div>
+<p>MIT License. See <a href="/sinisterMage/Open-Reality/blob/main/LICENSE">LICENSE</a> for details.</p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

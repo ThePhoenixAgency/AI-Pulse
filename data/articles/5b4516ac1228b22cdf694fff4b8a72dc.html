@@ -2,14 +2,20 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Show HN: HJX – An AI-Native Web Language Unifying HTML, CSS and JavaScript</title>
+<title>GitHub - loayabdalslam/hjx: HJX = A Unified Language for HTML + CSS + JS Designed for AI-Native Development</title>
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -23,27 +29,389 @@
 </style>
 </head>
 <body>
-  <h1>Show HN: HJX – An AI-Native Web Language Unifying HTML, CSS and JavaScript</h1>
+  <h1>GitHub - loayabdalslam/hjx: HJX = A Unified Language for HTML + CSS + JS Designed for AI-Native Development</h1>
   <div class="metadata">
     Source: Hacker News Show | Date: 2/17/2026 4:49:50 AM | <a href="https://github.com/loayabdalslam/hjx" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
   </div>
   <div class="content">
-    <p>Show HN: HJX – A Unified Web Language Designed for AI-Native Code Generation
-Hi HN,
-I’ve been exploring a language design where structure, style, and logic live in one authoring unit — to reduce token fragmentation when AI models generate frontend code.
-HJX is a compiled UI language that unifies *structure*, *style*, and logic into a single `.hjx` file. It compiles to clean, dependency-free HTML + CSS + JavaScript — no virtual DOM, no runtime overhead, no framework lock-in. :contentReference[oaicite:1]{index=1}
-Here’s a real example from the README:
-```hjx
-component Counter
-state: count = 0
-layout: view#root.card: text.title: "Count: {{count}}" button.primary (on click -&gt; inc): "Increase"
-style: .card { padding: 16px; border: 1px solid #ddd; border-radius: 12px; } .primary { padding: 10px 14px; border-radius: 10px; cursor: pointer; }
-handlers: inc: set count = count + 1
-```
-Happy to answer questions about the hjx and open for pr
--Loaii abdalslam URL: https://news.ycombinator.com/item?id=47043811
-Points: 2
-# : 3</p>
+    <div><h1>HJX</h1><a href="#hjx"></a></div>
+<p> <strong>The Unified UI Language</strong><br> One file. HTML + CSS + JS. Zero config.
+</p>
+<p> <a href="https://github.com/loayabdalslam/hjx"><img src="https://camo.githubusercontent.com/ba535e092ec77b6ceaeadc3a563d2673de82533d9ff67066dcc4bfb9568598f7/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f76657273696f6e2d302e312e302d626c7565" alt="Version"></a> <a href="/loayabdalslam/hjx/blob/main/LICENSE"><img src="https://camo.githubusercontent.com/f8df3091bbe1149f398a5369b2c39e896766f9f6efba3477c63e9b4aa940ef14/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d677265656e" alt="License"></a> <a href="https://github.com/loayabdalslam/hjx"><img src="https://camo.githubusercontent.com/8044932e4d65e1fbb9c1a6748c252052df35e41ac18b4a6548aba1ce19a72a40/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5052732d77656c636f6d652d627269676874677265656e" alt="PRs Welcome"></a>
+</p>
+<hr>
+<div><h2>What is HJX?</h2><a href="#what-is-hjx"></a></div>
+<p>HJX is a compiled UI language that unifies <strong>structure</strong>, <strong>style</strong>, and <strong>logic</strong> into a single </p><pre><code>.hjx</code></pre> file. It compiles to clean, dependency-free <strong>HTML + CSS + JavaScript</strong> — no virtual DOM, no runtime overhead, no framework lock-in.<p></p>
+<div><pre><code>component Counter state: count = 0 layout: view#root.card: text.title: "Count: {{count}}" button.primary (on click -&gt; inc): "Increase" style: .card { padding: 16px; border: 1px solid #ddd; border-radius: 12px; } .primary { padding: 10px 14px; border-radius: 10px; cursor: pointer; } handlers: inc: set count = count + 1
+</code></pre></div>
+<p><strong>That's it.</strong> One file → a fully working interactive counter. No imports, no boilerplate, no configuration.</p>
+<hr>
+<div><h2> Showcase</h2><a href="#-showcase"></a></div>
+<div><h3> Counter — Reactive State in 15 Lines</h3><a href="#-counter--reactive-state-in-15-lines"></a></div>
+<div><pre><code>component Counter state: count = 0 layout: view#root.card: text.title: "Count: {{count}}" button.primary (on click -&gt; inc): "Increase" button.ghost (on click -&gt; dec): "Decrease" style: .card { padding: 16px; border: 1px solid #ddd; border-radius: 12px; display: inline-flex; flex-direction: column; gap: 12px; } .primary { padding: 10px 14px; border-radius: 10px; cursor: pointer; border: 0; } .ghost { padding: 10px 14px; border-radius: 10px; cursor: pointer; border: 1px solid #ddd; background: transparent; } handlers: inc: set count = count + 1 dec: set count = count - 1
+</code></pre></div>
+<div><h3> Two-Way Form Binding</h3><a href="#-two-way-form-binding"></a></div> <div><h3> Todo List — Loops, Conditionals, Dynamic Arrays</h3><a href="#-todo-list--loops-conditionals-dynamic-arrays"></a></div>
+<div><pre><code>component TodoList state: items = ["Learn HJX", "Build a UI", "Deploy to production"] newItem = "" showCompleted = false layout: view.container: view.header: text.title: "My Todo List" text.count: "Items: {{items.length}} tasks" view.input-section: input.todo-input (bind value &lt;-&gt; newItem): button.add-btn (on click -&gt; addItem): "Add" view.list: for (todo in items): view.todo-item: text: "• {{todo}}" view.footer: button.toggle-btn (on click -&gt; toggleCompleted): "Show Completed" if (showCompleted): text.completed-note: " All tasks completed!" handlers: addItem: set items = [...items, newItem] set newItem = "" toggleCompleted: set showCompleted = !showCompleted
+</code></pre></div>
+<div><h3> Real-Time Dashboard — Server-Driven Rendering</h3><a href="#-real-time-dashboard--server-driven-rendering"></a></div>
+<div><pre><code>component Dashboard imports: Card from "./components/Card.hjx" Button from "./components/Button.hjx" state: uptime = 0 serverTime = "" cpuUsage = 45 status = "Operational" alerts = ["High CPU Usage", "New login from unknown device"] script: export function init(store) { setInterval(() =&gt; { store.set({ uptime: store.get("uptime") + 1, serverTime: new Date().toLocaleTimeString(), cpuUsage: Math.floor(Math.random() * 20) + 30 }); }, 1000); } layout: view.min-h-screen.bg-slate-50.p-8: view.max-w-6xl.mx-auto.space-y-8: view.text-3xl.font-bold: "System Dashboard" view.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-4.gap-4: Card (title="Uptime"): view.text-2xl.font-bold: "{{uptime}}s" Card (title="CPU"): view.text-2xl.font-bold: "{{cpuUsage}}%" for (alert in alerts): view.bg-white.border.p-3.rounded.shadow-sm: "{{alert}}"
+</code></pre></div>
+<div><h3> Component Composition with Slots</h3><a href="#-component-composition-with-slots"></a></div>
+<div><pre><code>component CompositionDemo imports: Button from "./components/Button.hjx" Input from "./components/Input.hjx" Card from "./components/Card.hjx" state: name = "" count = 0 layout: view.min-h-screen.bg-background.flex.items-center.justify-center.p-4: Card (class="w-[400px]" title="Login" description="Enter your details below"): view.flex.flex-col.gap-4: Input (placeholder="johndoe" bind value &lt;-&gt; name) view.flex.gap-2: Button (variant="outline" on click -&gt; dec): "-" Button (on click -&gt; inc): "+" Button (class="w-full" on click -&gt; submit): "Submit" handlers: inc: set count = count + 1 dec: set count = count - 1 submit: set message = "Hello " + name + "!"
+</code></pre></div>
+<hr>
+<div><h2> Quick Start</h2><a href="#-quick-start"></a></div>
+<div><h3>Prerequisites</h3><a href="#prerequisites"></a></div>
+<ul>
+<li><strong>Node.js</strong> v18+</li>
+<li><strong>npm</strong> v9+</li>
+</ul>
+<div><h3>Install &amp; Run</h3><a href="#install--run"></a></div>
+<div><pre><span><span>#</span> 1. Clone the repository</span>
+git clone https://github.com/loayabdalslam/hjx.git
+<span>cd</span> hjx <span><span>#</span> 2. Install dependencies</span>
+npm install <span><span>#</span> 3. Build the compiler</span>
+npm run build <span><span>#</span> 4. Build an example</span>
+node dist/cli.js build examples/counter.hjx --out dist-app <span><span>#</span> 5. Start the dev server (with hot reload)</span>
+node dist/cli.js dev examples/counter.hjx --out dist-app --port 5173</pre></div>
+<p>Open <strong><a href="http://localhost:5173">http://localhost:5173</a></strong> and you're live.</p>
+<div><h3>With Server-Driven Mode (WebSocket)</h3><a href="#with-server-driven-mode-websocket"></a></div>
+<div><pre>node dist/cli.js dev examples/dashboard.hjx --out dist-app --port 5173</pre></div>
+<p>This enables <strong>real-time server-side state management</strong> via WebSocket — state lives on the server, UI updates are pushed to the client automatically.</p>
+<hr>
+<div><h2> Documentation</h2><a href="#-documentation"></a></div>
+<div><h3>File Structure</h3><a href="#file-structure"></a></div>
+<p>Every </p><pre><code>.hjx</code></pre> file follows this block structure:<p></p>
+<div><pre><code>component &lt;Name&gt; ← Component declaration
+imports: ← Optional: import other .hjx components
+state: ← Reactive variables
+script: ← Optional: server-side initialization
+layout: ← UI tree (indentation-based)
+style: ← Scoped CSS
+handlers: ← Event logic
+</code></pre></div>
+<div><h3><pre><code>component</code></pre></h3><a href="#component"></a></div>
+<p>Declares the component name. One component per file.</p>
+<div><pre><code>component MyApp
+</code></pre></div>
+<div><h3><pre><code>state:</code></pre></h3><a href="#state"></a></div>
+<p>Defines reactive, component-local variables. Supports numbers, strings, booleans, arrays, and objects.</p>
+<div><pre><code>state: count = 0 title = "Hello" enabled = true items = ["todo1", "todo2"] user = { name: "John", age: 30 }
+</code></pre></div>
+<div><h3><pre><code>layout:</code></pre></h3><a href="#layout"></a></div>
+<p>Defines the UI tree using <strong>indentation</strong>. Think of it as a cleaner, whitespace-sensitive HTML.</p>
+<table>
+<thead>
+<tr>
+<th>Syntax</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>view</code></pre></td>
+<td>Generic container (<pre><code>&lt;div&gt;</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>text</code></pre></td>
+<td>Inline text (<pre><code>&lt;span&gt;</code></pre>)</td>
+</tr>
+<tr>
+<td><pre><code>button</code></pre></td>
+<td>Button element</td>
+</tr>
+<tr>
+<td><pre><code>input</code></pre></td>
+<td>Input element</td>
+</tr>
+<tr>
+<td><pre><code>view#id.class1.class2:</code></pre></td>
+<td>ID + classes</td>
+</tr>
+<tr>
+<td><pre><code>text: "Hello {{name}}"</code></pre></td>
+<td>Text interpolation</td>
+</tr>
+<tr>
+<td><pre><code>button (on click -&gt; handler): "Label"</code></pre></td>
+<td>Event binding</td>
+</tr>
+<tr>
+<td><pre><code>input (bind value &lt;-&gt; stateVar)</code></pre></td>
+<td>Two-way binding</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Control Flow</h3><a href="#control-flow"></a></div>
+<div><pre><code>layout: if (isLoggedIn): text: "Welcome back!" if (!isLoggedIn): text: "Please log in." if (status === "active"): text: "Account is active" for (item in items): view.row: text: "{{item}}"
+</code></pre></div>
+<p><strong>Supported operators:</strong> </p><pre><code>!</code></pre> (negation), <pre><code>===</code></pre> (equality), <pre><code>!=</code></pre> (inequality)<p></p>
+<div><h3><pre><code>style:</code></pre></h3><a href="#style"></a></div>
+<p>Raw CSS, automatically <strong>scoped</strong> to the component via </p><pre><code>[data-hjx-scope]</code></pre> attribute selectors.<p></p>
+<div><pre><code>style: .card { padding: 16px; border-radius: 12px; } .primary { background: #007bff; color: white; }
+</code></pre></div>
+<p>Supports Tailwind-style class names with </p><pre><code>:</code></pre> and <pre><code>/</code></pre> characters.<p></p>
+<div><h3><pre><code>handlers:</code></pre></h3><a href="#handlers"></a></div>
+<p>Defines event handler logic using a simple statement language.</p>
+<div><pre><code>handlers: increment: set count = count + 1 reset: set count = 0 log "Counter reset"
+</code></pre></div>
+<p><strong>Statements:</strong> </p><pre><code>set &lt;var&gt; = &lt;expr&gt;</code></pre>, <pre><code>log "&lt;message&gt;"</code></pre><br>
+<strong>Expressions:</strong> numbers, identifiers, <pre><code>+ - * /</code></pre>, parentheses, state variables<p></p>
+<div><h3><pre><code>imports:</code></pre></h3><a href="#imports"></a></div>
+<p>Import and compose other </p><pre><code>.hjx</code></pre> components:<p></p>
+<div><pre><code>imports: Button from "./components/Button.hjx" Card from "./components/Card.hjx"
+</code></pre></div>
+<p>Use them in layout with <strong>props</strong> and <strong>slots</strong>:</p>
+<div><pre><code>layout: Card (title="My Card"): text: "This is slot content" Button (variant="primary" on click -&gt; save): "Save"
+</code></pre></div>
+<div><h3><pre><code>script:</code></pre> (Server-Side)</h3><a href="#script-server-side"></a></div>
+<p>Run initialization logic server-side. The </p><pre><code>init(store)</code></pre> function is called with a reactive store:<p></p>
+<div><pre><code>script: export function init(store) { setInterval(() =&gt; { store.set({ timestamp: Date.now() }); }, 1000); }
+</code></pre></div>
+<hr>
+<div><h2> CLI Reference</h2><a href="#-cli-reference"></a></div>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre><code>hjx parse &lt;file.hjx&gt;</code></pre></td>
+<td>Print the AST (JSON) for a file</td>
+</tr>
+<tr>
+<td><pre><code>hjx build &lt;file.hjx&gt; --out &lt;dir&gt;</code></pre></td>
+<td>Compile to <pre><code>index.html</code></pre> + <pre><code>app.css</code></pre> + <pre><code>app.js</code></pre></td>
+</tr>
+<tr>
+<td><pre><code>hjx dev &lt;file.hjx&gt; --out &lt;dir&gt; --port &lt;n&gt;</code></pre></td>
+<td>Build, serve, and watch with hot reload</td>
+</tr>
+</tbody>
+</table>
+<div><h3>Compilation Output</h3><a href="#compilation-output"></a></div>
+<p><strong>Vanilla target</strong> emits:</p>
+<ul>
+<li><pre><code>index.html</code></pre> — Minimal page with scoped styles</li>
+<li><pre><code>app.css</code></pre> — Scoped component styles</li>
+<li><pre><code>app.js</code></pre> — Runtime + compiled component logic</li>
+</ul>
+<p><strong>Server-driven target</strong> adds:</p>
+<ul>
+<li>WebSocket synchronization</li>
+<li>Server-managed state evaluation</li>
+<li>Real-time push updates</li>
+</ul>
+<hr>
+<div><h2> Vite Integration</h2><a href="#-vite-integration"></a></div>
+<p>HJX ships with a first-party <strong>Vite plugin</strong> for seamless integration into modern build pipelines:</p>
+<div><pre><span><span>#</span> In your Vite project:</span>
+npm install vite-plugin-hjx --save-dev</pre></div>
+<div><pre><span>// vite.config.js</span>
+<span>import</span> <span>{</span> <span>defineConfig</span> <span>}</span> <span>from</span> <span>'vite'</span><span>;</span>
+<span>import</span> <span>hjxPlugin</span> <span>from</span> <span>'vite-plugin-hjx'</span><span>;</span> <span>export</span> <span>default</span> <span>defineConfig</span><span>(</span><span>{</span> <span>plugins</span>: <span>[</span><span>hjxPlugin</span><span>(</span><span>)</span><span>]</span>
+<span>}</span><span>)</span><span>;</span></pre></div>
+<p>Then import </p><pre><code>.hjx</code></pre> files directly:<p></p>
+<div><pre><span>import</span> <span>App</span> <span>from</span> <span>'./App.hjx'</span><span>;</span>
+<span>App</span><span>.</span><span>mount</span><span>(</span><span>document</span><span>.</span><span>getElementById</span><span>(</span><span>'app'</span><span>)</span><span>)</span><span>;</span></pre></div>
+<p>Features: <strong>HMR support</strong>, <strong>CSS injection</strong>, <strong>automatic scoping</strong>.</p>
+<hr>
+<div><h2> Benchmark Overview</h2><a href="#-benchmark-overview"></a></div>
+<blockquote>
+<p>Benchmarked on <strong>Windows x64</strong> • Node.js • JSDOM environment<br>
+Date: <strong>2026-02-17</strong></p>
+</blockquote>
+<div><h3>Parser Performance</h3><a href="#parser-performance"></a></div>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parse 100 state variables</td>
+<td><strong>2.15 ms</strong></td>
+</tr>
+<tr>
+<td>Parse 1,000 state variables</td>
+<td><strong>1.90 ms</strong></td>
+</tr>
+<tr>
+<td>Parse 5,000 state variables</td>
+<td><strong>11.25 ms</strong></td>
+</tr>
+<tr>
+<td>Parse 100 static nodes</td>
+<td><strong>0.95 ms</strong></td>
+</tr>
+<tr>
+<td>Parse 1,000 static nodes</td>
+<td><strong>2.55 ms</strong></td>
+</tr>
+<tr>
+<td>Parse 5,000 static nodes</td>
+<td><strong>17.12 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Compiler Performance</h3><a href="#compiler-performance"></a></div>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Compile 100 nodes → Vanilla JS</td>
+<td><strong>1.73 ms</strong></td>
+</tr>
+<tr>
+<td>Compile 1,000 nodes → Vanilla JS</td>
+<td><strong>2.87 ms</strong></td>
+</tr>
+<tr>
+<td>Compile 5,000 nodes → Vanilla JS</td>
+<td><strong>13.19 ms</strong></td>
+</tr>
+<tr>
+<td>Scope 100 CSS rules</td>
+<td><strong>0.33 ms</strong></td>
+</tr>
+<tr>
+<td>Scope 1,000 CSS rules</td>
+<td><strong>1.86 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<div><h3>Runtime Performance (JSDOM)</h3><a href="#runtime-performance-jsdom"></a></div>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Render</th>
+<th>Update</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static 100 items</td>
+<td>33 ms</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Static 1,000 items</td>
+<td>135 ms</td>
+<td>—</td>
+</tr>
+<tr>
+<td>List 100 items</td>
+<td>59 ms</td>
+<td>27 ms</td>
+</tr>
+<tr>
+<td>List 1,000 items</td>
+<td>286 ms</td>
+<td>217 ms</td>
+</tr>
+<tr>
+<td>Conditional 100 items</td>
+<td>142 ms</td>
+<td><strong>2 ms</strong></td>
+</tr>
+<tr>
+<td>Conditional 1,000 items</td>
+<td>8,057 ms</td>
+<td><strong>14 ms</strong></td>
+</tr>
+<tr>
+<td>Text interpolation 100 items</td>
+<td>46 ms</td>
+<td><strong>2 ms</strong></td>
+</tr>
+<tr>
+<td>Input binding 100 items</td>
+<td>63 ms</td>
+<td><strong>1 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Key insight:</strong> Updates are extremely fast (sub-3ms for 100 items) thanks to targeted DOM patching. Initial render scales linearly.</p>
+</blockquote>
+<div><h3>Server Runtime</h3><a href="#server-runtime"></a></div>
+<table>
+<thead>
+<tr>
+<th>Workload</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Init session (100 handlers)</td>
+<td><strong>8.59 ms</strong></td>
+</tr>
+<tr>
+<td>Init session (1,000 handlers)</td>
+<td><strong>9.82 ms</strong></td>
+</tr>
+<tr>
+<td>Execute 1,000 handler calls</td>
+<td><strong>3,548 ms</strong> (3.5 ms/call)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<div><h2> Project Structure</h2><a href="#-project-structure"></a></div>
+<div><pre><code>hjx/
+├── src/ # Compiler source (TypeScript)
+│ ├── parser.ts # HJX → AST
+│ ├── compiler/ # AST → HTML/CSS/JS
+│ │ └── vanilla.ts # Vanilla JS target
+│ ├── runtime.ts # Client-side reactivity
+│ ├── server_session.ts # Server-driven state manager
+│ ├── devserver.ts # Dev server with HMR
+│ └── cli.ts # CLI entry point
+├── examples/ # Example .hjx files
+│ ├── counter.hjx
+│ ├── form.hjx
+│ ├── list.hjx
+│ ├── conditional.hjx
+│ ├── dashboard.hjx
+│ ├── composition_demo.hjx
+│ └── components/ # Reusable components
+│ ├── Button.hjx
+│ ├── Card.hjx
+│ └── Input.hjx
+├── packages/
+│ └── vite-plugin-hjx/ # First-party Vite plugin
+├── extensions/
+│ └── vscode/ # VS Code extension
+├── dist/ # Compiled output
+└── package.json
+</code></pre></div>
+<hr>
+<div><h2> Contributing</h2><a href="#-contributing"></a></div>
+<p>PRs are welcome! If you'd like to contribute:</p>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch (<pre><code>git checkout -b feature/my-feature</code></pre>)</li>
+<li>Commit your changes (<pre><code>git commit -m 'Add my feature'</code></pre>)</li>
+<li>Push to the branch (<pre><code>git push origin feature/my-feature</code></pre>)</li>
+<li>Open a Pull Request</li>
+</ol>
+<hr>
+<div><h2>Star History</h2><a href="#star-history"></a></div>
+<p><a href="https://www.star-history.com/#loaiabdalslam/hjx&amp;type=date&amp;legend=top-left"><img src="https://camo.githubusercontent.com/b58be420c9d07ca5dae2cc47fea2aeb93268249be4a0a9717e3064f25ed70312/68747470733a2f2f6170692e737461722d686973746f72792e636f6d2f7376673f7265706f733d6c6f6169616264616c736c616d2f686a7826747970653d64617465266c6567656e643d746f702d6c656674" alt="Star History Chart"></a></p>
+<div><h2> License</h2><a href="#-license"></a></div>
+<p>MIT <a href="https://github.com/loayabdalslam">Loay Abdalslam</a></p>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
