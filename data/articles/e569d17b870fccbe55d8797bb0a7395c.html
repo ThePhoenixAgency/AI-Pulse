@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>GitHub - ronakgh97/blaze-db: A high-performance, standalone and self-managed vector database uses LSM Tree / SSTable storage engine, SIMD vector calculation and HNSW data structure for fast queries and search.</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>GitHub - ronakgh97/blaze-db: A high-performance, standalone and self-managed vector database uses LSM Tree / SSTable storage engine, SIMD vector calculation and HNSW data structure for fast queries and search.</h1>
+  <div class="metadata">
+    Source: Hacker News Show | Date: 2/17/2026 7:00:10 AM | <a href="https://github.com/ronakgh97/blaze-db" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: PT
+  </div>
+  <div class="content">
+    <div><h1>Blaze-DB</h1><a href="#blaze-db"></a></div>
+<p><a target="_blank" href="/ronakgh97/blaze-db/blob/master/blazedb-icon.png"><img src="/ronakgh97/blaze-db/raw/master/blazedb-icon.png" alt="Blaze-DB Logo"></a></p>
+<p>Blaze-DB is a high-performance vector database written in Rust, designed for efficient storage and fast retrieval of
+embeddings using HNSW Indexing.</p>
+<div><h2>Current State</h2><a href="#current-state"></a></div>
+<ul>
+<li>Two binaries: <pre><code>blaze-server</code></pre> and <pre><code>blaze-client</code></pre>, for server and client wrapper operations respectively.</li>
+<li>Batch/Chunks processing for embedding generation (Only used in CLI Wrapper).</li>
+<li>Stores/Index embeddings on disk in binary/JSON format.</li>
+<li>Use memory-mapped files for fast loading and concurrent reads, rayon for parallel processing (where possible).</li>
+<li>Index caching (LRU), which gives about 86x faster I/O with reads and writes lockings (thread-safe).</li>
+<li>Implements HNSW (Hierarchical Navigable Small World) graph for approximate nearest neighbor search.</li>
+<li>Uses semantic similarity search with multiple distance metrics (Cosine, Euclidean, Dot Product).</li>
+<li>Performance benchmarking suite (&lt;1ms per search on War and Peace dataset, &lt;5ms per search on Amazon Product Dataset).</li>
+<li>Safe Index cache-locks for concurrent access, with cache validation and eviction policies.</li>
+<li>Crash safe write operations with temporary files and atomic renaming. (COW style )</li>
+<li>Backup and restore functionality for databases and sources. (Few caveats, need improvement, but ready for happy path)</li>
+<li>Bench ARG <pre><code>blzdb bench</code></pre> to CLI for quick benchmarking on Concurrent Write/Reads workload with Isolated environment.</li>
+</ul>
+<div><h2>Quick Links</h2><a href="#quick-links"></a></div>
+<ul>
+<li><a href="https://hub.docker.com/r/ronakgh97/blazedb">Docker Hub Image</a> - <pre><code>docker pull ronakgh97/blazedb:latest</code></pre></li>
+<li><a href="https://drive.google.com/file/d/1rnnpMNYzbwkOr9dIetZW83JeF5WCV5cL/view?usp=sharing">Pre-indexed Dataset (Google Drive)</a> -
+350K vectors, ready to use</li>
+<li><a href="https://www.kaggle.com/datasets/asaniczka/amazon-products-dataset-2023-1-4m-products">Amazon Products Source Dataset</a> -
+About 1.4M 2023 products, for indexing and testing</li>
+<li><a href="https://github.com/ronakgh97/blazedb-service">BlazeDB Service</a> - A Saas layer on top of Blaze-DB for easy hosting and
+management (In development) <pre><code>I dont like Saas honestly</code></pre></li>
+</ul>
+<div><h2>Usage</h2><a href="#usage"></a></div>
+<div><h3>Build from Source (Cargo needed)</h3><a href="#build-from-source-cargo-needed"></a></div>
+<div><pre><span><span>#</span> Initialize dotfiles</span>
+blzdb init blzdb serve [14:11:48][INFO] Starting the Server...
+[14:11:48][INFO] <span><span>"</span>Provider (Model: text-embedding-qwen3-embedding-0.6b, Url: http://local..., Key: loca...)<span>"</span></span>
+[14:11:48][INFO] Source: default_src is valid
+[14:11:48][INFO] Starting server with 1 valid source(s)
+[14:11:48][INFO] Server is running on http://0.0.0.0:8080
+[14:11:48][INFO] Using Sources: [<span><span>"</span>default_src<span>"</span></span>]
+[14:11:48][INFO] Backup scheduler enabled: <span>false</span>
+[14:11:48][INFO] Index cache capacity: 128
+[14:11:48][INFO] Server started</pre></div>
+<ul>
+<li>Download the Index
+here: <a href="https://drive.google.com/file/d/13tSMijMC3C7xV1lbV_EiWk46hfNKNuf7/view?usp=sharing">Google Drive Link</a></li>
+<li>Checksum (Sha256): <strong>2621bb7a65f3da9f38d50ebda2fd619b49332a6ade02e51f5d4c1c7b118e2763</strong></li>
+<li>Extract to <pre><code>~/.blaze/sources/default_src/amazon_products_2023/</code></pre></li>
+</ul>
+<div><h3>Docker</h3><a href="#docker"></a></div>
+<div><pre><span><span>#</span> Pull the image from Docker Hub</span>
+docker pull ronakgh97/blazedb:latest <span><span>#</span> Run the container (use --backup flag to start with backup scheduler enabled)</span>
+docker run -d \ --name blazedb \ -p 8080:8080 \ -env-file .env \ -v blazedb-config:/home/blazedb/.config/blaze \ -v blazedb-sources:/home/blazedb/blaze \ -v blazedb-backups:/home/blazedb/backups \ ronakgh97/blazedb:latest</pre></div>
+<ul>
+<li>Download Pre-Indexed
+from: <a href="https://drive.google.com/file/d/13tSMijMC3C7xV1lbV_EiWk46hfNKNuf7/view?usp=sharing">Google Drive Link</a></li>
+<li>Checksum (SHA256): <strong>2621bb7a65f3da9f38d50ebda2fd619b49332a6ade02e51f5d4c1c7b118e2763</strong></li>
+<li>Extract and copy to Docker volume</li>
+<li>Before copying, create a database <pre><code>amazon_products_2023</code></pre> using CLI or API, so that the server recognizes it.</li>
+</ul>
+<div><pre>docker cp amazon_products_2023 blazedb-server:/home/blazedb/blaze/sources/default_src/amazon_products_2023</pre></div>
+<div><h3>Query using CLI Client</h3><a href="#query-using-cli-client"></a></div>
+<div><pre>blzdb create --database amazon_products_2023 --source default_src blzdb query --database amazon_products_2023 --source default_src --search <span><span>"</span>Wireless Bluetooth Headphones with Noise Cancellation<span>"</span></span> --top_k 10</pre></div>
+<div><h2>Benchmarks</h2><a href="#benchmarks"></a></div>
+<div><h3>SEARCH ON 2023 AMAZON PRODUCT DATASET (350k Index)</h3><a href="#search-on-2023-amazon-product-dataset-350k-index"></a></div>
+<div><pre>Query: Gaming RTX 4060 Laptop with 165Hz Display
+Search completed in: 3.5474ms
+Top 100 search results <span>for</span> query: <span><span>'</span>Gaming RTX 4060 Laptop with 165Hz Display<span>'</span></span>
+1. ID: 134406, Score: 0.81
+Title: Razer Blade 16 Gaming Laptop: NVIDIA GeForce RTX 4090-13th Gen Intel 24-Core i9 HX CPU - 16<span><span>"</span> Dual Mode Mini LED (4K UHD+ 120Hz &amp; FHD+ 240Hz) - 32GB RAM - 2TB SSD - Compact GaN Charger - Windows 11</span>
+<span>2. ID: 134757, Score: 0.80</span>
+<span>Title: Razer Blade 18 Gaming Laptop: NVIDIA GeForce RTX 4090-13th Gen Intel 24-Core i9 HX CPU - 18<span>"</span></span> QHD+ 240Hz - 32GB RAM - 2TB SSD - CNC Aluminum - Compact GaN Charger - Windows 11 - Chroma RGB
+3. ID: 193739, Score: 0.78
+Title: ASUS ROG Swift PG32UQR 32” 4K HDR 144Hz DSC HDMI 2.1 Gaming Monitor - UHD (3840 x 2160), IPS, 1ms, G-SYNC Compatible, Extreme Low Motion Blur Sync, Eye Care, DisplayPort, USB, DisplayHDR 600,BLACK
+4. ID: 195982, Score: 0.78
+Title: Alienware M15 R7 Gaming Laptop, 15.6 inch QHD 240Hz 2ms Display, AMD Ryzen R7 6800H, GeForce RTX 3070Ti, 32GB DDR5 RAM, 1TB NVMe SSD, USB-C, Wi-Fi 6, RGB LED Lighting, Windows 11, Black
+5. ID: 195699, Score: 0.78
+Title: Dell 24 Inch Gaming Monitor, 1ms response time, Overclocked 144Hz AMD FreeSync Brute search results (for comparison)
+Brute search completed in: 47.3905ms
+1. ID: 134406, Score: 0.81
+Title: Razer Blade 16 Gaming Laptop: NVIDIA GeForce RTX 4090-13th Gen Intel 24-Core i9 HX CPU - 16<span><span>"</span> Dual Mode Mini LED (4K UHD+ 120Hz &amp; FHD+ 240Hz) - 32GB RAM - 2TB SSD - Compact GaN Charger - Windows 11</span>
+<span>2. ID: 134757, Score: 0.80</span>
+<span>Title: Razer Blade 18 Gaming Laptop: NVIDIA GeForce RTX 4090-13th Gen Intel 24-Core i9 HX CPU - 18<span>"</span></span> QHD+ 240Hz - 32GB RAM - 2TB SSD - CNC Aluminum - Compact GaN Charger - Windows 11 - Chroma RGB
+3. ID: 193739, Score: 0.78
+Title: ASUS ROG Swift PG32UQR 32” 4K HDR 144Hz DSC HDMI 2.1 Gaming Monitor - UHD (3840 x 2160), IPS, 1ms, G-SYNC Compatible, Extreme Low Motion Blur Sync, Eye Care, DisplayPort, USB, DisplayHDR 600,BLACK
+4. ID: 195982, Score: 0.78
+Title: Alienware M15 R7 Gaming Laptop, 15.6 inch QHD 240Hz 2ms Display, AMD Ryzen R7 6800H, GeForce RTX 3070Ti, 32GB DDR5 RAM, 1TB NVMe SSD, USB-C, Wi-Fi 6, RGB LED Lighting, Windows 11, Black
+5. ID: 195699, Score: 0.78
+Title: Dell 24 Inch Gaming Monitor, 1ms response time, Overclocked 144Hz AMD FreeSync Speedup: 13.36x</pre></div>
+<ul>
+<li>Had a classic moment here, was getting &gt;50ms, until I realized that I was running in debug mode. </li>
+<li>Anyway, &lt;5ms is pretty good for 350_000 vectors! </li>
+<li>That Accuracy is pure luck or maybe the dataset/HNSW params is just that good, but I will take it. </li>
+<li>Amazon product 2023
+dataset: <a href="https://www.kaggle.com/datasets/asaniczka/amazon-products-dataset-2023-1-4m-products?select=amazon_products.csv">Source Link</a></li>
+</ul>
+<div><h3>SEARCH ON WAR AND PEACE DATASET</h3><a href="#search-on-war-and-peace-dataset"></a></div>
+<div><pre>blzcli query --search <span><span>"</span>War and peace<span>"</span></span> --database def_db --source default_src --top-k 10 Search querying the database: def_db Item 1:
+Metadata: thousand corpses lay there, but even on the island of St. Helena <span>in</span> the peaceful solitude where he said he intended to devote his leisure to an account of the great deeds he had done, he wrote: The Russian war should have been the most popular war of modern times: it was a war of good sense, <span>for</span> real interests, <span>for</span> the tranquillity and security of all<span>;</span> it was purely pacific and conservative. It was a war <span>for</span> a great cause, the end of uncertainties and the beginning of security. A new horizon and new labors were opening out, full of well-being and prosperity <span>for</span> all. The European system was already founded<span>;</span> all that remained was to organize it. Satisfied on these great points and with tranquility everywhere, I too should have had my Congress and my Holy Alliance. Those ideas were Score: 0.56 Item 2:
+Metadata: Author: graf Leo Tolstoy Translator: Aylmer Maude Louise Maude Release date: April 1, 2001 [eBook <span><span>#</span>2600] Most recently updated: June 14, 2022 Language: English Credits: An Anonymous Volunteer and David Widger *** START OF THE PROJECT GUTENBERG EBOOK WAR AND PEACE *** WAR AND PEACE By Leo Tolstoy/Tolstoi CHAPTER I “Well, Prince, so Genoa and Lucca are now just family estates of the Buonapartes. But I warn you, if you don’t tell me that this means war, if you still try to defend the infamies and horrors perpetrated by that Antichrist—I really believe he is Antichrist—I will have nothing more to do with you and you are no longer my friend, no longer my ‘faithful slave,’ as you call yourself! But how do you do? I see I have frightened you—sit down and tell me all the news.” </span>
+Score: 0.55 Item 3:
+Metadata: when there was a war, like this one, it would be war<span>!</span> And <span>then</span> the determination of the troops would be quite different. Then all these Westphalians and Hessians whom Napoleon is leading would not follow him into Russia, and we should not go to fight <span>in</span> Austria and Prussia without knowing why. War is not courtesy but the most horrible thing <span>in</span> life<span>;</span> and we ought to understand that and not play at war. We ought to accept this terrible necessity sternly and seriously. It all lies <span>in</span> that: get rid of falsehood and <span>let</span> war be war and not a game. As it is now, war is the favorite pastime of the idle and frivolous. The military calling is the most highly honored. “But what is war<span>?</span> What is needed <span>for</span> <span>success</span> <span>in</span> warfare<span>?</span> What are the Score: 0.54 Item 4:
+Metadata: that: get rid of falsehood and <span>let</span> war be war and not a game. As it is now, war is the favorite pastime of the idle and frivolous. The military calling is the most highly honored. “But what is war<span>?</span> What is needed <span>for</span> <span>success</span> <span>in</span> warfare<span>?</span> What are the habits of the military<span>?</span> The aim of war is murder<span>;</span> the methods of war are spying, treachery, and their encouragement, the ruin of a country’s inhabitants, robbing them or stealing to provision the army, and fraud and falsehood termed military craft. The habits of the military class are the absence of freedom, that is, discipline, idleness, ignorance, cruelty, debauchery, and drunkenness. And <span>in</span> spite of all this it is the highest class, respected by everyone. All the kings, except the Chinese, wear military uniforms, and he who kills most people receives the highest rewards. Score: 0.53 Item 5:
+Metadata: of states and nations <span>in</span> their conflicts with one another is expressed <span>in</span> wars, and that as a direct result of greater or less success <span>in</span> war the political strength of states and nations increases or decreases. Strange as may be the historical account of how some king or emperor, having quarreled with another, collects an army, fights his enemy’s army, gains a victory by killing three, five, or ten thousand men, and subjugates a kingdom and an entire nation of several millions, all the facts of <span>history</span> (as far as we know it) confirm the truth of the statement that the greater or lesser success of one army against another is the cause, or at least an essential indication, of an increase or decrease <span>in</span> the strength of the nation—even though it is unintelligible why the defeat of an army—a hundredth part of a nation—should oblige Score: 0.52 Item 6:
+Metadata: fatherland, and it happened <span>in</span> the greatest of all known wars. The period of the campaign of 1812 from the battle of Borodinó to the expulsion of the French proved that the winning of a battle does not produce a conquest and is not even an invariable indication of conquest<span>;</span> it proved that the force which decides the fate of peoples lies not <span>in</span> the conquerors, nor even <span>in</span> armies and battles, but <span>in</span> something else. The French historians, describing the condition of the French army before it left Moscow, affirm that all was <span>in</span> order <span>in</span> the Grand Army, except the cavalry, the artillery, and the transport—there was no forage <span>for</span> the horses or the cattle. That was a misfortune no one could remedy, <span>for</span> the peasants of the district burned their hay rather than <span>let</span> the French have it. Score: 0.51 Item 7:
+Metadata: did <span>in</span> 1813—salute according to all the rules of art, and, presenting the hilt of their rapier gracefully and politely, hand it to their magnanimous conqueror, but at the moment of trial, without asking what rules others have adopted <span>in</span> similar cases, simply and easily pick up the first cudgel that comes to hand and strike with it till the feeling of resentment and revenge <span>in</span> their soul yields to a feeling of contempt and compassion. CHAPTER II One of the most obvious and advantageous departures from the so-called laws of war is the action of scattered groups against men pressed together <span>in</span> a mass. Such action always occurs <span>in</span> wars that take on a national character. In such actions, instead of two crowds opposing each other, the men disperse, attack singly, run away when attacked by stronger forces, but again attack when opportunity offers. This was <span>done</span> Score: 0.51 Item 8:
+Metadata: of the statement that the greater or lesser success of one army against another is the cause, or at least an essential indication, of an increase or decrease <span>in</span> the strength of the nation—even though it is unintelligible why the defeat of an army—a hundredth part of a nation—should oblige that whole nation to submit. An army gains a victory, and at once the rights of the conquering nation have increased to the detriment of the defeated. An army has suffered defeat, and at once a people loses its rights <span>in</span> proportion to the severity of the reverse, and <span>if</span> its army suffers a <span>complete</span> defeat the nation is quite subjugated. So according to <span>history</span> it has been found from the most ancient times, and so it is to our own day. All Napoleon’s wars serve to confirm this Score: 0.50 Item 9:
+Metadata: had thought it was all the same to him whether or not Moscow was taken as Smolénsk had been, was suddenly checked <span>in</span> his speech by an unexpected cramp <span>in</span> his throat. He paced up and down a few <span>times</span> <span>in</span> silence, but his eyes glittered feverishly and his lips quivered as he began speaking. “If there was none of this magnanimity <span>in</span> war, we should go to war only when it was worth <span>while</span> going to certain death, as now. Then there would not be war because Paul Ivánovich had offended Michael Ivánovich. And when there was a war, like this one, it would be war<span>!</span> And <span>then</span> the determination of the troops would be quite different. Then all these Westphalians and Hessians whom Napoleon is leading would not follow him into Russia, and we should not go to fight <span>in</span> Austria and Prussia Score: 0.50 Item 10:
+Metadata: don’t understand what is meant by ‘a skillful commander,’” replied Prince Andrew ironically. “A skillful commander<span>?</span>” replied Pierre. “Why, one who foresees all contingencies... and foresees the adversary’s intentions.” “But that’s impossible,” said Prince Andrew as <span>if</span> it were a matter settled long ago. Pierre looked at him <span>in</span> surprise. “And yet they say that war is like a game of chess<span>?</span>” he remarked. “Yes,” replied Prince Andrew, “but with this little difference, that <span>in</span> chess you may think over each move as long as you please and are not limited <span>for</span> <span>time, and with this difference too, that a knight is always stronger than a pawn, and two pawns are always stronger than one, while</span> <span>in</span> war a battalion is sometimes stronger than a division and sometimes weaker than a company. The relative strength of bodies of troops can Score: 0.50
+Time taken (sec): 0.0009919</pre></div>
+<div><h3>HHSW DEMO WITH Benchmarks (RANDOM 50,000 VECTORS)</h3><a href="#hhsw-demo-with-benchmarks-random-50000-vectors"></a></div>
+<div><pre>Building HNSW graph with 50000 nodes...
+Indexing completed <span>in</span> 263.5830083s HNSW Layer Statistics: Layer 0: 50000 nodes (100.00%) Layer 1: 3096 nodes (6.19%) Layer 2: 181 nodes (0.36%) Layer 3: 15 nodes (0.03%) Layer 4: 1 nodes (0.00%) Entry point: node 21918 at layer 4
+Querying vector: [0.21357012, -0.8388252, -0.25997758]...
+Search completed in: 0.0011535s Top 5 nearest neighbors: 1. Node 46879 - similarity: 0.09, Metadata: what a nice vector 2. Node 23231 - similarity: 0.08, Metadata: what a nice vector 3. Node 25242 - similarity: 0.08, Metadata: what a nice vector 4. Node 44287 - similarity: 0.07, Metadata: what a nice vector 5. Node 41951 - similarity: 0.07, Metadata: what a nice vector Brute-force search completed in: 0.0074883s Top 5 nearest neighbors (Brute-force): 1. Node 22258 - similarity: 0.13, Metadata: what a nice vector 2. Node 35588 - similarity: 0.12, Metadata: what a nice vector 3. Node 35335 - similarity: 0.11, Metadata: what a nice vector 4. Node 14154 - similarity: 0.11, Metadata: what a nice vector 5. Node 21531 - similarity: 0.11, Metadata: what a nice vector Speedup over brute-force: 6.49x</pre></div>
+<ul>
+<li>Curse of dimensionality applies here, due to bad random vectors</li>
+<li>HNSW implementation is basic and can be further optimized. (Which are beyond of my knowledge )</li>
+<li>Anyway, Look at that smooth exponential layer distribution! <em>chief kiss</em> </li>
+</ul>
+<div><h3>Cache Benchmarking</h3><a href="#cache-benchmarking"></a></div>
+<div><pre><code>[10:17:18][INFO] Acquired read lock for database 'test_db'
+[10:17:18][INFO] Released read lock for database 'test_db'
+[10:17:18][INFO] I/O operations for loading index or check cache took 0.0229236s
+[10:17:18][INFO] Loaded HNSW Index with 5981 entries
+[10:17:18][INFO] Performing search with Cosine metric (top_k=5)
+[10:17:18][INFO] Search complete in 0.0006869s , found 5 results
+[10:17:18][INFO] [POST /query] Query successful, returning 5 results
+[10:17:18][INFO] Cache HIT for database 'test_db'
+[10:17:18][INFO] Cache is valid for database 'test_db'
+[10:17:18][INFO] I/O operations for loading index or check cache took 0.0002841s
+[10:17:18][INFO] Loaded HNSW Index with 5981 entries
+[10:17:18][INFO] Performing search with Cosine metric (top_k=5)
+[10:17:18][INFO] Search complete in 0.0003899s , found 5 results
+[10:17:18][INFO] [POST /query] Query successful, returning 5 results
+</code></pre></div>
+<div><pre>cargo nextest run --test query_test --release --no-capture --run-ignored only Compiling blaze-db v0.1.0 (C:<span>\c</span>odes<span>\b</span>laze-db) Finished <span><span>`</span>release<span>`</span></span> profile [optimized] target(s) <span>in</span> 22.88s Nextest run ID 6e42b62d-a8d3-45b4-beb6-fe239aea1be6 with nextest profile: default Starting 1 <span>test</span> across 1 binary Running [ 00:00:00] 0/1: 0 running, 0 passed, 0 skipped START (1/1) blaze-db::query_test test_cache_and_bench running 1 <span>test</span>
+Total <span>time</span> without cache: 2.8621101s (Client: 1.7749911s, Server: 1.0871190000000002s)
+Total <span>time</span> with cache: 0.0400475s (Client: 0.0378031s, Server: 0.0022443999999999997s)
+Improvement factor (Server side): 484.37x
+<span>test</span> test_cache_and_bench ... ok</pre></div>
+<ul>
+<li>Although there is still I/O overhead during cache validation (reading checksum from metadata.json),but it's
+significantly
+reduced. Checkout this file: <a href="/ronakgh97/blaze-db/blob/master/src/server/service/queries.rs">Cache Impl</a></li>
+</ul>
+<div><h3>Concurrent Benchmarking</h3><a href="#concurrent-benchmarking"></a></div>
+<div><pre>cargo nextest run stress_test_concurrent_writes_different_databases --release --run-ignored only --no-capture Compiling blaze-db v0.1.0 (C:<span>\c</span>odes<span>\b</span>laze-db) Finished <span><span>`</span>release<span>`</span></span> profile [optimized] target(s) <span>in</span> 25.59s Nextest run ID dd45f926-c746-491b-a9d3-cd57d943f8ad with nextest profile: default Starting 1 <span>test</span> across 17 binaries (83 tests skipped) Running [ 00:00:00] 0/1: 0 running, 0 passed, 0 skipped START (1/1) blaze-db::stress_tests stress_test_concurrent_writes_different_databases running 1 <span>test</span>
+Source created, creating 50 databases...
+Databases created, starting concurrent writes... CONCURRENT WRITES TEST RESULTS: Databases written: 50 Vectors per database: 4096 Successful: 50/50 Total time: 74.3236711s Min write time: 32.3023285s Max write time: 68.0414242s Avg write time: 47.294857942s Expected <span>if</span> sequential: 2364.7428971s Speedup: 31.82x
+Concurrent writes to different databases work <span>in</span> parallel<span>!</span>
+<span>test</span> stress_test_concurrent_writes_different_databases ... ok</pre></div>
+<ul>
+<li>Concurrent writes to different databases work in parallel, with significant speedup over sequential writes! </li>
+<li>Each write operation is still quite slow due to HNSW indexing and disk I/O, but at least they don't block each
+other. (Which is a huge improvement over the previous version where all writes were serialized due to global locks. )</li>
+<li>Checkout the Test: <a href="/ronakgh97/blaze-db/blob/master/tests/stress_tests.rs">Stress Test</a></li>
+</ul>
+<div><h3>TODO:</h3><a href="#todo"></a></div>
+<ul>
+<li>HNSW (Hierarchical Navigable Small World) indexing for improved search performance. <pre><code>DONE (basic implementation)</code></pre></li>
+<li>Fix Chunking for better meaningful text segments. <pre><code>DONE, but kinda broken for now.</code></pre></li>
+<li>Write/insert functionality for adding new vectors to the database.
+<pre><code>PARTIALLY DONE (Raw vector insertion and query not implemented)</code></pre></li>
+<li>Find a way to manage multiple sources during server startup and runtime, load index into memory during it.
+<pre><code>PARTIALLY DONE (Done using LRU, but there is no startup loading)</code></pre></li>
+<li>Fixed and complete error response in API.<pre><code>IN PROGRESS</code></pre></li>
+<li>Refactor the configuration of data and source managing and more data-rich <pre><code>server_file.toml</code></pre>. <pre><code>IN PROGRESS</code></pre></li>
+<li>Use a basic In-memory (Hashmap) storage engine for thread-safe read and write operations for configs and server_files.
+<pre><code>PARTIALLY DONE</code></pre>.</li>
+<li>Too many clones across the codebase, memory explosion everywhere. <pre><code>FIXED</code></pre></li>
+<li>Too many code duplications across modules. <pre><code>NEED HELP</code></pre></li>
+<li>Similarity calculation caching for faster search queries. <pre><code>IN PROGRESS</code></pre></li>
+<li>Implement LRU for fast query. <pre><code>DONE</code></pre></li>
+<li>Make a storage engine, e.g SSTable or LSMTree based. (Actually, I have no idea how to do that. ) <pre><code>NEED HELP</code></pre></li>
+<li>Bad Indexing, Loading and Memory Explosion issues when inserting large batch of nodes. (HNSW)
+<pre><code>SIGNIFICANTLY IMPROVED - HNSW insert now uses references</code></pre></li>
+<li>Complete Refactor of storage and search modules for new HNSW architecture. <pre><code>DONE</code></pre></li>
+<li>Gotta destroy/refactor the utils module. It's a mess. <pre><code>DONE</code></pre></li>
+<li>Use gRPC/Protobuf for client-server communication?`</li>
+<li>Better API Error handling and logging. <pre><code>IN PROGRESS</code></pre></li>
+<li>API Validation, so that a stupid user/me doesnt corrupted the HNSW index. <pre><code>PARTIALLY DONE</code></pre></li>
+<li>Complete HTTP API server for remote database access. <pre><code>Insert endpoint is missing.</code></pre></li>
+<li>Better Database and Source Managing <pre><code>IN PROGRESS</code></pre></li>
+<li>Docker env and app config are conflicting <pre><code>NEED HELP</code></pre></li>
+<li>Query filtering and metadata support. <pre><code>DONE</code></pre></li>
+<li>Incremental updates without full reindex. (HNSW) <pre><code>DONE (Need better indexing matters)</code></pre></li>
+<li>Distributed storage and sharding support.</li>
+<li>Move hardcoded Values to separate config files. <pre><code>API PROVIDER CONFIG LEFT</code></pre></li>
+<li>So many Locks and IO everywhere, need a serious fix, no jokes. <pre><code>Someone help me pls. </code></pre></li>
+<li>Server logs are mess, current using my custom macros, need proper monitoring solution. <pre><code>HELP</code></pre></li>
+<li>Cloud deployment options. <pre><code>What is cloud thingy?</code></pre></li>
+<li>Missing Database ops endpoints are missing!!!</li>
+<li>Configurable distance metrics and search parameters. <pre><code>PARTIALLY DONE</code></pre></li>
+<li>Tombstone deletion and Background reindexing for better performance. <pre><code>IN PROGRESS</code></pre></li>
+<li>Add embedded Embeddings model, no more API shit <pre><code>NEED_HELP</code></pre></li>
+<li>Add Backup Mechanism, Background Jobs? API Endpoint? or something else</li>
+</ul>
+<div><h2>References</h2><a href="#references"></a></div>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">Curse of Dimensionality</a></li>
+<li><a href="https://www.pinecone.io/learn/series/faiss/hnsw/">Little Intro</a></li>
+<li><a href="https://arxiv.org/abs/2512.06636">Arvix HNSW Paper</a></li>
+</ul>
+<div><h2>Contributing</h2><a href="#contributing"></a></div>
+<p>Contributions are welcome! Please feel free to open issues or submit pull requests. Codebase is getting huge and hard to maintain it myself</p>
+<div><h3>My Rules </h3><a href="#my-rules-"></a></div>
+<ul>
+<li><strong>DO NOT USE AI CODE PLEASE</strong>, I can smell the SLOP from miles away, so get away from my trash. (Except boring
+testing code, I do use AI for that. )</li>
+<li><strong>DO NOT REMOVE THE COMMENTED OUT CODES</strong>, Those are ritual sacrifices to the coding gods , it ward off evil bugs and
+deadlocks.
+</li>
+<li><strong>DO NOT REFACTOR SERVER AND CORE MODULES</strong>, Unless there is a less I/O operations, those codes are sacred. </li>
+<li><strong>DO NOT BRING YOUR 'BEST PRACTICES' BS HERE</strong>, Im very opinionated about coding styles and still learning, so don't
+waste your time. </li>
+<li><strong>DO NOT UNDER ANY CIRCUMSTANCES, ADD ANOTHER LOCKS/THREAD SPAWNS/ASYNC AWAIT UNLESS ABSOLUTELY NECESSARY</strong>,
+Those are the reasons why this code is thread-safe AND why the code is slow, and I even dont know HOW!!!!. </li>
+</ul>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

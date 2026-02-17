@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Pre-commit Security Scanner with Claude Code</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Pre-commit Security Scanner with Claude Code</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 7:14:17 AM | <a href="https://dev.to/camof1ow/i-built-a-pre-commit-security-scanner-with-claude-code-2lk" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <main> <div> <article> <header> <div> <p><a href="https://dev.to/camof1ow"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3777035%2F62732985-c6b6-43c2-bd01-f0838bd8593f.jpeg" alt="Caleb Jeon"></a> </p> </div> </header> <div> <p>Hey DEV community! </p> <p>I recently built <strong>vibe-guardian</strong>, a Claude Code skill that scans your code for security vulnerabilities <strong>before you commit</strong>.</p> <h2> <a name="the-problem" href="#the-problem"> </a> The Problem
+</h2> <p>Most security scanners check your code <strong>after</strong> you've already pushed to GitHub. But here's the issue - even if you fix the vulnerability later, the original vulnerable code stays in your Git history forever. Anyone with repo access can see it.</p> <h2> <a name="the-solution-scan-before-commit" href="#the-solution-scan-before-commit"> </a> The Solution: Scan Before Commit
+</h2> <div>
+<pre><code>Traditional Flow (Risky):
+Code → Commit → Push → [SCAN] → Fix ↑ Already too late. Vulnerability in Git history. Vibe-Guardian Flow (Safe):
+Code → [SCAN] → Fix → Commit → Push ↑ Catch it here. Git history stays clean.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="what-is-vibeguardian" href="#what-is-vibeguardian"> </a> What is vibe-guardian?
+</h2> <p>A Claude Code skill that automatically scans AI-generated code for security vulnerabilities and quality issues. Essential for the Vibe Coding era.</p> <h3> <a name="critical-issues-detected" href="#critical-issues-detected"> </a> Critical Issues Detected
+</h3> <ul>
+<li>SQL Injection, NoSQL Injection, Command Injection</li>
+<li>XSS (Reflected, Stored, DOM-based)</li>
+<li>Hardcoded Secrets (API Keys, Passwords, JWT Secrets)</li>
+<li>Authentication/Authorization Bypass</li>
+<li>Path Traversal</li>
+</ul> <h3> <a name="warning-level-issues" href="#warning-level-issues"> </a> Warning Level Issues
+</h3> <ul>
+<li>Missing Input Validation</li>
+<li>Poor Error Handling (empty catch, exposed errors)</li>
+<li>Sensitive Logging (PII in logs)</li>
+<li>CORS Misconfiguration</li>
+<li>Performance Issues (N+1 queries, memory leaks)</li>
+</ul> <h2> <a name="installation" href="#installation"> </a> Installation
+</h2> <div>
+<pre><code><span># Clone the repository</span>
+git clone https://github.com/Camof1ow/vibe-guardian.git <span># Copy to Claude Code skills folder</span>
+<span>cp</span> <span>-r</span> vibe-guardian ~/.claude/skills/
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="usage" href="#usage"> </a> Usage
+</h2> <div>
+<pre><code>/vibe-guardian <span># Scan current file</span>
+/vibe-guardian <span>--full</span> <span># Scan entire project</span>
+/vibe-guardian <span>--fix</span> <span># Get fix suggestions</span>
+/vibe-guardian path/to/file <span># Scan specific file</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="sample-report" href="#sample-report"> </a> Sample Report
+</h2> <div>
+<pre><code>╔═══════════════════════════════════════════════════════════════╗
+║ Vibe-Guardian Security Report ║
+╠═══════════════════════════════════════════════════════════════╣
+║ Files Scanned: 12 Lines: 1,847 Duration: 2.3s ║
+╠═══════════════════════════════════════════════════════════════╣
+║ Critical: 3 │ Warning: 7 │ Info: 12 ║
+╠═══════════════════════════════════════════════════════════════╣
+║ Security Score: 72/100 ║
+╚═══════════════════════════════════════════════════════════════╝
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <h2> <a name="why-i-built-it" href="#why-i-built-it"> </a> Why I Built It
+</h2> <p>I built this entirely using <strong>Claude Code</strong> - Anthropic's CLI tool for coding. The entire development process was a collaboration with Claude.</p> <h2> <a name="features" href="#features"> </a> Features
+</h2> <ul>
+<li> Runs locally (no internet required, your code stays private)</li>
+<li> Supports JavaScript, TypeScript, Python, Java, Go</li>
+<li> 100% Free &amp; Open Source (MIT License)</li>
+<li> Detailed reports with fix suggestions</li>
+<li> Edge case generation</li>
+</ul> <h2> <a name="links" href="#links"> </a> Links
+</h2> <ul>
+<li>
+<strong>GitHub</strong>: <a href="https://github.com/Camof1ow/vibe-guardian" target="_blank">https://github.com/Camof1ow/vibe-guardian</a>
+</li>
+<li>
+<strong>Gumroad</strong>: <a href="https://astkster.gumroad.com/l/vibe-guardian" target="_blank">https://astkster.gumroad.com/l/vibe-guardian</a>
+</li>
+<li>
+<strong>Buy Me a Coffee</strong>: <a href="https://buymeacoffee.com/camof1ow" target="_blank">https://buymeacoffee.com/camof1ow</a>
+</li>
+</ul> <h2> <a name="feedback-welcome" href="#feedback-welcome"> </a> Feedback Welcome!
+</h2> <p>This is my first open source security tool, so I'd love to hear your feedback. Feel free to:</p> <ul>
+<li> Star the repo if you find it useful</li>
+<li> Report any issues</li>
+<li> Suggest new features</li>
+<li> Contribute!</li>
+</ul> <p>Thanks for reading! Let me know what you think in the comments.</p> </div> </article> </div> </main> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

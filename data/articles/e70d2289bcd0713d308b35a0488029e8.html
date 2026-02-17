@@ -19,12 +19,19 @@
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
 </style>
 </head>
 <body>
   <h1>Décrédibilisée face à une Allemagne décidée à se réarmer, la France peine à faire entendre sa voix</h1>
   <div class="metadata">
-    Source: Le Figaro | Date: 2/16/2026 4:45:00 PM | <a href="https://www.lefigaro.fr/international/decredibilisee-face-a-une-allemagne-decidee-a-se-rearmer-la-france-peine-a-faire-entendre-sa-voix-20260216" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
+    Source: Le Figaro | Date: 2/17/2026 8:32:00 AM | <a href="https://www.lefigaro.fr/international/decredibilisee-face-a-une-allemagne-decidee-a-se-rearmer-la-france-peine-a-faire-entendre-sa-voix-20260216" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
     <div><div> <figure> <p><img alt="Le chancelier allemand, Friedrich Merz et Emmanuel Macron d’adressent à la presse, le 12 février, lors du sommet de l’Union européenne, au château d’Alden Biesen, en Belgique."> </p> <figcaption>Le chancelier allemand, Friedrich Merz et Emmanuel Macron d’adressent à la presse, le 12 février, lors du sommet de l’Union européenne, au château d’Alden Biesen, en Belgique.<span> Murad Sezer / REUTERS / REUTERS </span></figcaption> </figure> </div><p> <strong>DÉCRYPTAGE - </strong>Alors que l’actualité donne raison au discours de puissance défendu de longue date par Paris, la crise politique et l’état catastrophique des finances publiques ne lui permettent pas de s’imposer face à une Allemagne décidée à se doter de l’armée la plus puissante d’Europe.</p><div> <p>Il ne faut pas réduire une relation bilatérale à une vidéo, mais celle qui, à<a href="http://www.lefigaro.fr/international/commerce-industrie-defense-les-nouveaux-rates-du-tandem-franco-allemand-20260216">&nbsp;la conférence de Munich</a>, montre Emmanuel Macron ignoré par le chancelier allemand Merz en train de parler avec le premier ministre britannique Starmer est un parfait symbole de l’état des relations entre Paris et Berlin.</p> <p>C’est le monde à l’envers&nbsp;! Quand un ministre de la Défense allemand critique la France en jugeant ses efforts de défense <em>«&nbsp;insuffisants&nbsp;», </em>c’est que quelque chose ne tourne pas rond. Depuis le début de la guerre en Ukraine, Paris a exhorté l’Allemagne à sortir de son traditionnel pacifisme et à prendre exemple sur le dynamisme militaire de la France pour investir davantage dans sa défense et donner plus aux Ukrainiens. Quatre ans après l’invasion russe, c’est comme si les rôles avaient été inversés…</p> <h2>Ambition militaire</h2> <p>Le moment devrait pourtant être celui de la France, qui appelle sans relâche ses partenaires, depuis de longues années, à bâtir l’autonomie stratégique de l’Europe. Plus encore que ses prédécesseurs…</p> <div> <p> Cet article est réservé aux abonnés. <span>Il vous reste 86% à découvrir.</span> </p> <div> <figure> <p><img alt="Le Figaro"> </p> </figure> <p>Vous avez envie de lire la suite ?</p> <p>Débloquez tous les articles immédiatement.</p> <p> Déjà abonné&nbsp;? <a href="https://connect.lefigaro.fr/login?client=horizon_web&amp;type=main&amp;redirect_uri=https%3A%2F%2Fwww.lefigaro.fr%2Finternational%2Fdecredibilisee-face-a-une-allemagne-decidee-a-se-rearmer-la-france-peine-a-faire-entendre-sa-voix-20260216"> Connectez-vous </a> </p> </div>
@@ -35,6 +42,20 @@
     <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
   </div>
   <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'auto' });
     }
@@ -47,6 +68,10 @@
       if (data.direction === 'up' || data.direction === 'top') scrollToTop();
       if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
     });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
   </script>
 </body>
 </html>

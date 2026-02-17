@@ -6,10 +6,16 @@
 <style>
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
   h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
   .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
-  p { margin-bottom: 0.72em; line-height: 1.58; }
   img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
   a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
   .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
   .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
   .article-elevator-btn:hover { background: rgba(10,14,39,1); }
@@ -28,9 +34,7 @@
     Source: Programmez | Date: 2/11/2026 3:25:03 PM | <a href="https://www.programmez.com/actualites/state-rust-quoi-de-neuf-dans-le-monde-rust-en-2025-39006" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: FR
   </div>
   <div class="content">
-    <p>JetBrains publie The State of Rust 2025. Ce rapport se base sur l’étude globale JetBrains Developer Ecosystem Survey Report 2025. Oui, le langage est utilisé, mais pour 65 % des réponses, il l’est pour des side projects ou pour des projets personnels. 53 % disent l’apprendre. L’usage professionnel s’établit à 23 %. 30 % des réponses viennent de développeurs qui débutent tout juste. Les utilisateurs ayant plus d’un an d’expérience sont environ 24 %. La plupart des développeurs Rust disent avoir déjà une expérience de développement. Selon ce rapport, ce ne sont pas des débutants qui utilisent Rust. Ils viennent de Python, Java, TypeScript, C++. Mais pas forcément pour changer de langage : plutôt en complément, pour le découvrir.
-Pourquoi choisir Rust ? La performance est mise en avant, ainsi que la sécurité et la robustesse du code. Pas de réelles surprises donc.
-Rust pour quels développements ? La programmation système, les CLI et le développement web restent les troisusages les plus cités. En revanche, peu d’usages dans la sécurité au sens strict et dans la data science.</p>
+    <div><div><p>JetBrains publie&nbsp;<strong>The State of Rust 2025</strong>. Ce rapport se base sur l’étude globale&nbsp;JetBrains Developer Ecosystem Survey Report 2025. Oui, le langage est utilisé, mais pour&nbsp;65 %&nbsp;des réponses, il l’est pour des&nbsp;side projects&nbsp;ou pour des projets&nbsp;personnels.&nbsp;53 %&nbsp;disent l’apprendre. L’usage professionnel&nbsp;s’établit&nbsp;à&nbsp;23 %.</p><p><img src="https://www.programmez.com/sites/default/files/styles/taille-maxi/public/images_actus/rust-logo-512x512.png?itok=HhzRtKQ7"></p><p>30 %&nbsp;des réponses viennent de développeurs qui débutent tout juste. Les utilisateurs ayant plus d’un&nbsp;an d’expérience sont environ&nbsp;24 %. La plupart des développeurs Rust disent avoir déjà une expérience de développement. Selon ce rapport, ce ne sont pas des débutants qui utilisent Rust. Ils viennent de Python, Java, TypeScript, C++.&nbsp;Mais pas forcément&nbsp;pour changer de langage : plutôt&nbsp;en complément, pour le découvrir.</p><p><strong>Pourquoi choisir Rust ?</strong> La performance est mise en avant, ainsi que la sécurité et la robustesse du code. Pas de réelles surprises donc.</p><p><strong>Rust pour quels développements ?</strong> La programmation système, les&nbsp;CLI&nbsp;et le développement web restent les&nbsp;troisusages les plus cités. En revanche,&nbsp;peu d’usages&nbsp;dans la sécurité&nbsp;au sens strict&nbsp;et dans la data science.</p><p>Rust n’est pas forcément utilisé seul, mais&nbsp;avec&nbsp;ou en complément d’un ou plusieurs autres langages, tels que JavaScript ou Python. Les environnements de production sont essentiellement Linux (75 %).&nbsp;89 %&nbsp;disent&nbsp;utiliser&nbsp;un outil d’IA pour coder en Rust. ChatGPT est&nbsp;juste devant&nbsp;Copilot comme outil. L’intégration dans l’IDE est appréciée. La surprise vient plutôt des agents de codage. Oui, il y a un&nbsp;intérêt, mais aussi&nbsp;26 %&nbsp;qui se montrent plus prudents ou mesurés quant à leur usage.</p><p>L'étude complète :&nbsp;<a href="https://blog.jetbrains.com/rust/2026/02/11/state-of-rust-2025/">https://blog.jetbrains.com/rust/2026/02/11/state-of-rust-2025/</a></p></div></div>
   </div>
   <div class="article-elevator" aria-label="Navigation article">
     <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>

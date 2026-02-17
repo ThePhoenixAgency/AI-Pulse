@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Your CLAUDE.md Instructions Are Being Ignored - Here's Why (and How to Fix It)</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>Your CLAUDE.md Instructions Are Being Ignored - Here's Why (and How to Fix It)</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 8:01:24 AM | <a href="https://dev.to/albert_nahas_cdc8469a6ae8/your-claudemd-instructions-are-being-ignored-heres-why-and-how-to-fix-it-23p6" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/albert_nahas_cdc8469a6ae8"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3598973%2F80d223d7-df8b-402c-b49e-5f9399825625.png" alt="albert nahas"></a> </p> </div><div> <p>If you use Claude Code, you've probably added development standards to your <code>CLAUDE.md</code> file. Something like "always fix root causes" or "no half solutions."</p> <p>And you've probably noticed Claude ignoring them mid-session.</p> <p>This isn't a bug in your instructions. It's a documented problem with how <code>CLAUDE.md</code> content gets injected.</p> <h2> <a name="the-claudemd-disclaimer-problem" href="#the-claudemd-disclaimer-problem"> </a> The CLAUDE.md Disclaimer Problem
+</h2> <p>When Claude Code loads your <code>CLAUDE.md</code>, it wraps the content in a framing that tells Claude it <em>"may or may not be relevant"</em> and should only be followed <em>"if highly relevant to your task."</em></p> <p>This is documented across multiple GitHub issues:</p> <ul>
+<li>
+<a href="https://github.com/anthropics/claude-code/issues/22309" target="_blank">#22309</a> — CLAUDE.md content wrapped in dismissive framing</li>
+<li>
+<a href="https://github.com/anthropics/claude-code/issues/21119" target="_blank">#21119</a> — Claude treats explicit instructions as suggestions</li>
+<li>
+<a href="https://github.com/anthropics/claude-code/issues/7777" target="_blank">#7777</a>, <a href="https://github.com/anthropics/claude-code/issues/15443" target="_blank">#15443</a>, <a href="https://github.com/anthropics/claude-code/issues/21385" target="_blank">#21385</a> — Various reports of Claude ignoring CLAUDE.md rules</li>
+</ul> <p>The practical effect: as your conversation grows and Claude's context fills with code, tool output, and discussion, your carefully written standards get deprioritized. And when the context window fills up and gets <a href="https://docs.anthropic.com/en/docs/claude-code/memory#context-compaction" target="_blank">compacted</a>, your CLAUDE.md values get summarized away with everything else.</p> <h2> <a name="a-better-approach-hookbased-reinforcement" href="#a-better-approach-hookbased-reinforcement"> </a> A Better Approach: Hook-Based Reinforcement
+</h2> <p>Claude Code <a href="https://docs.anthropic.com/en/docs/claude-code/hooks" target="_blank">hooks</a> are event-driven scripts that fire at specific moments in the session lifecycle. Unlike CLAUDE.md content, hook output arrives as clean <code>system-reminder</code> messages — <strong>no disclaimer, no "may or may not be relevant" framing</strong>.</p> <p>I built a plugin called <strong><a href="https://github.com/albertnahas/claude-core-values" target="_blank">Claude Core Values</a></strong> that uses a three-layer reinforcement strategy:</p> <div><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Hook Event</th>
+<th>What It Does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full injection</td>
+<td><code>SessionStart</code></td>
+<td>Injects all your values at session start — and re-injects them fresh after every compaction</td>
+</tr>
+<tr>
+<td>Per-prompt reminder</td>
+<td><code>UserPromptSubmit</code></td>
+<td>Reinforces your motto on every single prompt</td>
+</tr>
+<tr>
+<td>No disclaimer</td>
+<td>Both</td>
+<td>Hook output has no "may or may not be relevant" framing</td>
+</tr>
+</tbody>
+</table></div> <p>The <code>SessionStart</code> hook fires on <code>startup</code>, <code>resume</code>, <code>clear</code>, and crucially <code>compact</code> — meaning your values are automatically restored every time context gets compressed.</p> <p>The <code>UserPromptSubmit</code> hook adds a single-line motto reminder (~15 tokens) on every prompt. Over a 50-turn session, that's ~750 tokens — negligible against a 200k context window.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>Your values live in a simple YAML file:<br>
+</p> <div>
+<pre><code><span># ~/.claude/core-values.yml</span>
+<span>motto</span><span>:</span> <span>"</span><span>Excellence</span><span> </span><span>is</span><span> </span><span>not</span><span> </span><span>negotiable.</span><span> </span><span>Quality</span><span> </span><span>over</span><span> </span><span>speed."</span> <span>sections</span><span>:</span> <span>-</span> <span>name</span><span>:</span> <span>Quality Commitment</span> <span>values</span><span>:</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Half</span><span> </span><span>Solutions:</span><span> </span><span>Always</span><span> </span><span>fix</span><span> </span><span>everything</span><span> </span><span>until</span><span> </span><span>it's</span><span> </span><span>100%</span><span> </span><span>functional."</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Corner</span><span> </span><span>Cutting:</span><span> </span><span>Do</span><span> </span><span>the</span><span> </span><span>real</span><span> </span><span>work</span><span> </span><span>until</span><span> </span><span>completion."</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Band-Aid</span><span> </span><span>Solutions:</span><span> </span><span>Fix</span><span> </span><span>the</span><span> </span><span>root</span><span> </span><span>cause,</span><span> </span><span>not</span><span> </span><span>the</span><span> </span><span>symptom."</span> <span>-</span> <span>"</span><span>Follow</span><span> </span><span>Through:</span><span> </span><span>Continue</span><span> </span><span>until</span><span> </span><span>completely</span><span> </span><span>done</span><span> </span><span>and</span><span> </span><span>verified."</span> <span>-</span> <span>name</span><span>:</span> <span>Standards</span> <span>values</span><span>:</span> <span>-</span> <span>"</span><span>Follow</span><span> </span><span>best</span><span> </span><span>practices</span><span> </span><span>and</span><span> </span><span>highest</span><span> </span><span>industry</span><span> </span><span>standards."</span> <span>-</span> <span>"</span><span>Build</span><span> </span><span>efficient,</span><span> </span><span>modular</span><span> </span><span>code</span><span> </span><span>with</span><span> </span><span>separation</span><span> </span><span>of</span><span> </span><span>concerns."</span> <span>-</span> <span>"</span><span>Always</span><span> </span><span>consider</span><span> </span><span>performance,</span><span> </span><span>scalability,</span><span> </span><span>and</span><span> </span><span>maintainability."</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The plugin reads this file and injects it through two hooks defined in <code>hooks.json</code>:<br>
+</p> <div>
+<pre><code><span>{</span><span> </span><span>"hooks"</span><span>:</span><span> </span><span>{</span><span> </span><span>"SessionStart"</span><span>:</span><span> </span><span>[</span><span> </span><span>{</span><span> </span><span>"matcher"</span><span>:</span><span> </span><span>"*"</span><span>,</span><span> </span><span>"hooks"</span><span>:</span><span> </span><span>[</span><span> </span><span>{</span><span> </span><span>"type"</span><span>:</span><span> </span><span>"command"</span><span>,</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"bash ${CLAUDE_PLUGIN_ROOT}/scripts/inject-values.sh"</span><span>,</span><span> </span><span>"timeout"</span><span>:</span><span> </span><span>10</span><span> </span><span>}</span><span> </span><span>]</span><span> </span><span>}</span><span> </span><span>],</span><span> </span><span>"UserPromptSubmit"</span><span>:</span><span> </span><span>[</span><span> </span><span>{</span><span> </span><span>"hooks"</span><span>:</span><span> </span><span>[</span><span> </span><span>{</span><span> </span><span>"type"</span><span>:</span><span> </span><span>"command"</span><span>,</span><span> </span><span>"command"</span><span>:</span><span> </span><span>"bash ${CLAUDE_PLUGIN_ROOT}/scripts/inject-reminder.sh"</span><span>,</span><span> </span><span>"timeout"</span><span>:</span><span> </span><span>5</span><span> </span><span>}</span><span> </span><span>]</span><span> </span><span>}</span><span> </span><span>]</span><span> </span><span>}</span><span>
+</span><span>}</span><span>
+</span></code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>At session start, Claude sees:<br>
+</p> <div>
+<pre><code>## Core Values &amp; Development Standards **Excellence is not negotiable. Quality over speed.** ### Quality Commitment
+- **No Half Solutions**: Always fix everything until it's 100% functional.
+- **No Corner Cutting**: Do the real work until completion.
+...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>On every subsequent prompt, it sees:<br>
+</p> <div>
+<pre><code>Core values reminder: Excellence is not negotiable. Quality over speed.
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Both without the disclaimer. Both surviving compaction.</p> <h2> <a name="installation" href="#installation"> </a> Installation
+</h2> <p>The plugin installs directly from GitHub — no cloning needed:<br>
+</p> <div>
+<pre><code>/plugin marketplace add albertnahas/claude-core-values
+/plugin install claude-core-values@claude-core-values
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then initialize with a starter template:<br>
+</p> <div>
+<pre><code>/core-values init
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>You'll pick from four templates:</p> <div><table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Philosophy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Craftsman</strong></td>
+<td>Quality-obsessed. No half solutions. No shortcuts.</td>
+</tr>
+<tr>
+<td><strong>Startup</strong></td>
+<td>Ship fast, iterate rapidly, pragmatic quality.</td>
+</tr>
+<tr>
+<td><strong>Security-First</strong></td>
+<td>Defense in depth, zero trust, OWASP compliance.</td>
+</tr>
+<tr>
+<td><strong>Minimal</strong></td>
+<td>Simple baseline: working code, follow patterns, test before push.</td>
+</tr>
+</tbody>
+</table></div> <p>The config gets saved to <code>~/.claude/core-values.yml</code> (global) or <code>.claude/core-values.yml</code> (per-project). Edit the YAML directly anytime — changes take effect on the next session.</p> <h2> <a name="beyond-claudemd" href="#beyond-claudemd"> </a> Beyond CLAUDE.md
+</h2> <p>The plugin also solves practical management problems:</p> <ul>
+<li>
+<strong>Team distribution</strong>: <code>plugin install</code> gives everyone identical standards instead of "copy these 30 lines into your CLAUDE.md."</li>
+<li>
+<strong>Per-project overrides</strong>: Drop a different <code>core-values.yml</code> in any project's <code>.claude/</code> directory without touching global config.</li> <li>
+<strong>Starter templates</strong>: Pick a philosophy and go, instead of staring at a blank file.</li>
+</ul> <h2> <a name="the-takeaway" href="#the-takeaway"> </a> The Takeaway
+</h2> <p><code>CLAUDE.md</code> is great for project-specific context — file conventions, architecture notes, gotchas. But for development standards you want Claude to follow <em>every time, in every session, no exceptions</em> — hook-based injection is the more reliable path.</p> <p>The plugin is open source and MIT licensed: <strong><a href="https://github.com/albertnahas/claude-core-values" target="_blank">github.com/albertnahas/claude-core-values</a></strong></p> <p>Requirements: Claude Code, Python 3 (ships with macOS/Linux). PyYAML is optional — the plugin includes a zero-dependency fallback parser.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>

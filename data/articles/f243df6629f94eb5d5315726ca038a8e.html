@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Built a Claude Code Plugin That Enforces My Development Standards in Every Session</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #e2e8f0; max-width: 800px; margin: 26px auto; padding: 0 18px; background: #0a0e27; }
+  h1 { color: #00d9ff; margin-bottom: 0.35em; line-height: 1.22; font-size: clamp(1.45rem, 2.1vw, 1.95rem); font-weight: 700; }
+  h2, h3 { line-height: 1.28; margin: 1.1em 0 0.45em; }
+  .metadata { color: #94a3b8; font-size: 0.86em; margin-bottom: 1.2em; border-bottom: 1px solid rgba(0,217,255,0.2); padding-bottom: 0.7em; }
+  img { max-width: 100%; width: auto !important; height: auto !important; object-fit: contain !important; border-radius: 8px; display: block; margin: 0.6em auto; }
+  a { color: #00d9ff; }
+  p { margin-bottom: 0.72em; line-height: 1.58; }
+  ul, ol { margin: 0.5em 0 0.9em 1.1em; }
+  li { margin: 0.18em 0; }
+  blockquote { border-left: 3px solid #825ee4; padding-left: 12px; margin: 0.8em 0; color: #94a3b8; }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 3px; color: #ff79c6; }
+  pre { background: rgba(0,0,0,0.4); padding: 12px; border-radius: 6px; overflow-x: auto; }
+  .article-elevator { position: fixed; right: 14px; bottom: 14px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; }
+  .article-elevator-btn { width: 36px; height: 36px; border: 1px solid rgba(0,217,255,0.35); border-radius: 10px; background: rgba(10,14,39,0.88); color: #00d9ff; cursor: pointer; font-size: 16px; line-height: 1; }
+  .article-elevator-btn:hover { background: rgba(10,14,39,1); }
+  [id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"],
+  [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"],
+  [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+</head>
+<body>
+  <h1>I Built a Claude Code Plugin That Enforces My Development Standards in Every Session</h1>
+  <div class="metadata">
+    Source: Dev.to Open Source | Date: 2/17/2026 8:03:13 AM | <a href="https://dev.to/albert_nahas_cdc8469a6ae8/i-built-a-claude-code-plugin-that-enforces-my-development-standards-in-every-session-2ge6" target="_blank" rel="noopener noreferrer">Lien</a> | Lang: EN
+  </div>
+  <div class="content">
+    <div><div> <p><a href="https://dev.to/albert_nahas_cdc8469a6ae8"><img src="https://media2.dev.to/dynamic/image/width=50,height=50,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Fuser%2Fprofile_image%2F3598973%2F80d223d7-df8b-402c-b49e-5f9399825625.png" alt="albert nahas"></a> </p> </div><div> <p>I use Claude Code daily, and one thing that kept bugging me was how I'd start every project with the same intent — "follow best practices, no shortcuts, fix root causes" — but there was no structured way to enforce that consistently across sessions and projects.</p> <p>So I built a plugin that lets you define your development standards in a YAML file and automatically injects them into every Claude Code session.</p> <h2> <a name="what-it-does" href="#what-it-does"> </a> What It Does
+</h2> <p>You define your values once:<br>
+</p> <div>
+<pre><code><span># ~/.claude/core-values.yml</span>
+<span>motto</span><span>:</span> <span>"</span><span>Excellence</span><span> </span><span>is</span><span> </span><span>not</span><span> </span><span>negotiable.</span><span> </span><span>Quality</span><span> </span><span>over</span><span> </span><span>speed."</span> <span>sections</span><span>:</span> <span>-</span> <span>name</span><span>:</span> <span>Quality Commitment</span> <span>values</span><span>:</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Half</span><span> </span><span>Solutions:</span><span> </span><span>Always</span><span> </span><span>fix</span><span> </span><span>everything</span><span> </span><span>until</span><span> </span><span>it's</span><span> </span><span>100%</span><span> </span><span>functional."</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Corner</span><span> </span><span>Cutting:</span><span> </span><span>Do</span><span> </span><span>the</span><span> </span><span>real</span><span> </span><span>work</span><span> </span><span>until</span><span> </span><span>completion."</span> <span>-</span> <span>"</span><span>No</span><span> </span><span>Band-Aid</span><span> </span><span>Solutions:</span><span> </span><span>Fix</span><span> </span><span>the</span><span> </span><span>root</span><span> </span><span>cause,</span><span> </span><span>not</span><span> </span><span>the</span><span> </span><span>symptom."</span> <span>-</span> <span>"</span><span>Follow</span><span> </span><span>Through:</span><span> </span><span>Continue</span><span> </span><span>until</span><span> </span><span>completely</span><span> </span><span>done</span><span> </span><span>and</span><span> </span><span>verified."</span> <span>-</span> <span>name</span><span>:</span> <span>Standards</span> <span>values</span><span>:</span> <span>-</span> <span>"</span><span>Follow</span><span> </span><span>best</span><span> </span><span>practices</span><span> </span><span>and</span><span> </span><span>highest</span><span> </span><span>industry</span><span> </span><span>standards."</span> <span>-</span> <span>"</span><span>Build</span><span> </span><span>efficient,</span><span> </span><span>modular</span><span> </span><span>code</span><span> </span><span>with</span><span> </span><span>separation</span><span> </span><span>of</span><span> </span><span>concerns."</span> <span>-</span> <span>"</span><span>Always</span><span> </span><span>consider</span><span> </span><span>performance,</span><span> </span><span>scalability,</span><span> </span><span>and</span><span> </span><span>maintainability."</span> <span>-</span> <span>name</span><span>:</span> <span>Problem Solving</span> <span>values</span><span>:</span> <span>-</span> <span>"</span><span>Exhaust</span><span> </span><span>all</span><span> </span><span>possibilities</span><span> </span><span>before</span><span> </span><span>assuming</span><span> </span><span>external</span><span> </span><span>failures."</span> <span>-</span> <span>"</span><span>Avoid</span><span> </span><span>over-engineering</span><span> </span><span>—</span><span> </span><span>minimal</span><span> </span><span>changes</span><span> </span><span>required</span><span> </span><span>for</span><span> </span><span>the</span><span> </span><span>task."</span> <span>-</span> <span>"</span><span>Consider</span><span> </span><span>all</span><span> </span><span>possible</span><span> </span><span>solutions</span><span> </span><span>to</span><span> </span><span>select</span><span> </span><span>the</span><span> </span><span>best</span><span> </span><span>one."</span>
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>The plugin handles the rest. Every session, every prompt — your standards are present.</p> <h2> <a name="how-it-works" href="#how-it-works"> </a> How It Works
+</h2> <p>The plugin uses Claude Code's <a href="https://docs.anthropic.com/en/docs/claude-code/hooks" target="_blank">hooks system</a> to inject your values at two key moments:</p> <p><strong>1. Session start</strong> — Your full values are injected when a session begins. This hook also fires after context compaction, so your standards are automatically restored when Claude compresses the conversation to free up space.</p> <p><strong>2. Every prompt</strong> — A single-line motto reminder reinforces your core principle throughout the session. This is lightweight (~15 tokens) but keeps your standards top of mind as the conversation grows.<br>
+</p> <div>
+<pre><code>## Core Values &amp; Development Standards **Excellence is not negotiable. Quality over speed.** ### Quality Commitment
+- **No Half Solutions**: Always fix everything until it's 100% functional.
+- **No Corner Cutting**: Do the real work until completion.
+...
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>That's what Claude sees at the start of every session. Clean, structured, unambiguous.</p> <h2> <a name="starter-templates" href="#starter-templates"> </a> Starter Templates
+</h2> <p>Not everyone wants to write their own values from scratch. The plugin ships with four templates you can pick from:</p> <div><table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Philosophy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Craftsman</strong></td>
+<td>Quality-obsessed. No half solutions. No shortcuts.</td>
+</tr>
+<tr>
+<td><strong>Startup</strong></td>
+<td>Ship fast, iterate rapidly, pragmatic quality. Bias for action.</td>
+</tr>
+<tr>
+<td><strong>Security-First</strong></td>
+<td>Defense in depth, zero trust, OWASP compliance.</td>
+</tr>
+<tr>
+<td><strong>Minimal</strong></td>
+<td>Simple baseline: working code, follow patterns, test before push.</td>
+</tr>
+</tbody>
+</table></div> <p>Run <code>/core-values init</code>, pick one, and you're set. Or use a template as a starting point and customize it.</p> <h2> <a name="perproject-overrides" href="#perproject-overrides"> </a> Per-Project Overrides
+</h2> <p>The plugin checks two locations in order:</p> <ol>
+<li>
+<strong>Project-level</strong>: <code>.claude/core-values.yml</code> in your repo</li>
+<li>
+<strong>User-level</strong>: <code>~/.claude/core-values.yml</code> (global default)</li>
+</ol> <p>Project-level takes precedence. This means you can run "startup" values on your side project while keeping "craftsman" standards on your main codebase — without changing any global config.</p> <h2> <a name="team-distribution" href="#team-distribution"> </a> Team Distribution
+</h2> <p>This is where it gets practical for teams. Instead of telling every developer "paste these 30 lines into your CLAUDE.md," you distribute values as a plugin:<br>
+</p> <div>
+<pre><code>/plugin marketplace add albertnahas/claude-core-values
+/plugin install claude-core-values@claude-core-values
+/core-values init
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Three commands. Everyone gets identical standards. No drift, no "I forgot to update mine."</p> <h2> <a name="why-yaml-over-freeform-text" href="#why-yaml-over-freeform-text"> </a> Why YAML Over Freeform Text?
+</h2> <p>I considered just writing values in markdown, but YAML gives you:</p> <h2> <a name="the-token-budget" href="#the-token-budget"> </a> The Token Budget
+</h2> <p>A question I get: "Doesn't injecting values on every prompt waste context?"</p> <p>The numbers:</p> <ul>
+<li>
+<strong>Session start</strong>: ~300-400 tokens for the full injection (one time, plus after compactions)</li>
+<li>
+<strong>Per-prompt reminder</strong>: ~15 tokens (just the motto)</li>
+<li>
+<strong>50-turn session total</strong>: ~750 tokens from reminders</li>
+</ul> <p>Against a 200k context window, that's 0.375%. A rounding error.</p> <h2> <a name="installation" href="#installation"> </a> Installation
+</h2> <div>
+<pre><code>/plugin marketplace add albertnahas/claude-core-values
+/plugin install claude-core-values@claude-core-values
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Then:<br>
+</p> <div>
+<pre><code>/core-values init # Pick a template
+/core-values show # View active values
+</code></pre>
+<div>
+<p> Enter fullscreen mode Exit fullscreen mode </p>
+</div>
+</div> <p>Edit <code>~/.claude/core-values.yml</code> directly anytime. Changes take effect on the next session.</p> <h2> <a name="requirements" href="#requirements"> </a> Requirements
+</h2> <ul>
+<li>Claude Code</li>
+<li>Python 3 (ships with macOS and most Linux distros)</li>
+<li>PyYAML optional — includes a zero-dependency fallback parser</li>
+</ul> <hr> <p>The plugin is open source and MIT licensed: <strong><a href="https://github.com/albertnahas/claude-core-values" target="_blank">github.com/albertnahas/claude-core-values</a></strong></p> <p>If you have ideas for new templates or improvements, PRs are welcome.</p> </div></div>
+  </div>
+  <div class="article-elevator" aria-label="Navigation article">
+    <button class="article-elevator-btn" type="button" onclick="scrollToTop()">▲</button>
+    <button class="article-elevator-btn" type="button" onclick="scrollToBottom()">▼</button>
+  </div>
+  <script>
+    function stripBlockingPanels() {
+      const selector = '[id*="overlay"], [class*="overlay"], [id*="modal"], [class*="modal"], [id*="popup"], [class*="popup"], [id*="paywall"], [class*="paywall"], [id*="subscribe"], [class*="subscribe"], [id*="cookie"], [class*="cookie"], [id*="consent"], [class*="consent"], [id*="gdpr"], [class*="gdpr"], [role="dialog"], [aria-modal="true"]';
+      const textPattern = /\b(cookie|consent|gdpr|subscribe|subscription|paywall|abonnez[-\s]?vous|inscrivez[-\s]?vous|continue reading|continuez la lecture)\b/i;
+      document.querySelectorAll(selector).forEach((node) => node.remove());
+      document.querySelectorAll('div, section, aside').forEach((node) => {
+        const styleAttr = String(node.getAttribute('style') || '').toLowerCase();
+        const classAndId = String(node.className || '').toLowerCase() + ' ' + String(node.id || '').toLowerCase();
+        const text = String(node.textContent || '').slice(0, 800);
+        const hasKeyword = textPattern.test(classAndId) || textPattern.test(text);
+        const looksFixed = /(position\s*:\s*(fixed|sticky)|inset\s*:|top\s*:|left\s*:|right\s*:|bottom\s*:)/.test(styleAttr);
+        const hasPriority = /(z-index\s*:\s*[1-9]\d{1,}|backdrop-filter|overflow\s*:\s*hidden)/.test(styleAttr);
+        if (hasKeyword && (looksFixed || hasPriority)) node.remove();
+      });
+    }
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    }
+    function scrollToBottom() {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'auto' });
+    }
+    window.addEventListener('message', (event) => {
+      const data = event && event.data;
+      if (!data || data.type !== 'AI_PULSE_SCROLL') return;
+      if (data.direction === 'up' || data.direction === 'top') scrollToTop();
+      if (data.direction === 'down' || data.direction === 'bottom') scrollToBottom();
+    });
+    stripBlockingPanels();
+    setTimeout(stripBlockingPanels, 60);
+    setTimeout(stripBlockingPanels, 220);
+    setTimeout(stripBlockingPanels, 650);
+  </script>
+</body>
+</html>
