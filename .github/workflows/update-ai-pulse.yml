@@ -232,10 +232,9 @@ jobs:
         # Backup du README actuel pour fallback en cas d'échec
         cp README.md README.BACKUP.md
 
-        # Exécuter l'agrégateur et sauvegarder le résultat
-        # La sortie standard (console.log) va dans NEW-README.md
-        # Les erreurs (console.error) s'affichent dans les logs GitHub
-        if node src/aggregator.js > NEW-README.md; then
+        # Exécuter l'agrégateur (écrit README.md directement sur disque
+        # via writeReadmeAtomically, les logs vont sur stderr)
+        if node src/aggregator.js; then
           echo "AGGREGATION_OK=true" >> $GITHUB_ENV
         else
           echo "AGGREGATION_OK=false" >> $GITHUB_ENV
@@ -246,37 +245,34 @@ jobs:
     # -------------------------------------------------------------------------
     # Remplace l'ancien README.md par le nouveau seulement si valide.
     # Sinon, conserver l'ancien README pour garantir des articles toujours visibles.
-    - name: Update README with new content
+    - name: Validate README content
       run: |
         set -e
 
-        # Si l'agrégateur a échoué, conserver le README précédent
+        # Si l'agrégateur a échoué, restaurer le README précédent
         if [ "${AGGREGATION_OK}" != "true" ]; then
-          echo "[WARNING] Aggregation failed. Keeping previous README."
+          echo "[WARNING] Aggregation failed. Restoring previous README."
           mv README.BACKUP.md README.md
-          rm -f NEW-README.md
           exit 0
         fi
 
-        # Validation stricte: le README généré doit contenir des sections
-        # ET au moins un article exploitable.
-        if [ ! -s NEW-README.md ] || ! grep -Eq "<section id=|## " NEW-README.md; then
-          echo "[WARNING] Generated README is empty/invalid (no sections). Keeping previous README."
+        # Validation : le README doit contenir des sections valides
+        if ! grep -Eq "<section id=|## " README.md; then
+          echo "[WARNING] README is invalid after aggregation. Restoring backup."
           mv README.BACKUP.md README.md
-          rm -f NEW-README.md
           exit 0
         fi
 
-        ARTICLE_COUNT=$(grep -Eo "\\(data/articles/[^)]*\\)" NEW-README.md | wc -l | tr -d ' ')
+        # Validation : au moins un article exploitable
+        ARTICLE_COUNT=$(grep -Eo "\\(data/articles/[^)]*\\)" README.md | wc -l | tr -d ' ')
         if [ "${ARTICLE_COUNT}" = "0" ]; then
-          echo "[WARNING] Generated README contains zero articles. Keeping previous README."
+          echo "[WARNING] README contains zero articles. Restoring backup."
           mv README.BACKUP.md README.md
-          rm -f NEW-README.md
           exit 0
         fi
 
-        mv NEW-README.md README.md
-        rm -f README.BACKUP.md
+        rm -f README.BACKUP.md NEW-README.md
+        echo "[OK] README validated with ${ARTICLE_COUNT} articles."
 
     # -------------------------------------------------------------------------
     # ÉTAPE 7 : Commit et push des changements
